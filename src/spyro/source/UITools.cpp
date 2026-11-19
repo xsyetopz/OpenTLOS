@@ -58,7 +58,7 @@ extern s32 gDisplay;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 gpTranslation_StringArray;
-#if 0 // DRAFT: identifier 'buttonLabel' redeclared
+#if 0 // DRAFT: identifier 'buttonLabel' redeclared was declared as: 'unsigned char[28]' now declared as: 'long *[7]'
 u8 descriptor__10PromptText[0x14];                  /* unable to generate initializer: cannot parse "PromptText" as integer */
 u8 descriptor__11PromptGroup[0x14];                 /* unable to generate initializer: cannot parse .L_8035BE63 as integer */
 u8 descriptor__12OptionButton[0x14];                /* unable to generate initializer: cannot parse .L_8035BE88 as integer */
@@ -74,7 +74,7 @@ static M2C_UNK *buttonLabel[7] = {
     &.L_8035BFB0,
 };
 #endif
-#if 0 // DRAFT: identifier 'buttonString' redeclared
+#if 0 // DRAFT: identifier 'buttonString' redeclared was declared as: 'unsigned char[28]' now declared as: 'long *[7]'
 static M2C_UNK *buttonString[7] = {
     &.L_8035BFC0,
     &.L_8035BFDE,
@@ -193,7 +193,7 @@ loop_25:
         (*(f32 *) ((u8 *) &sp18 + 0x4)) = temp_f1_150;
         if (temp_f1_150 > 1.0f) {
             (*(f32 *) ((u8 *) &sp18 + 0x4)) = 1.0f;
-            temp_r3_157 = ui_cast<UISystem *, UIContainer *>(GetRoot());
+            temp_r3_157 = (void **) (ui_cast<UISystem *, UIContainer *>(GetRoot()));
             sp8 = 0xF;
             M2C_FIELD(*temp_r3_157, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
@@ -210,7 +210,7 @@ void HealthSafetyScreen::OnExit() {
     M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void HealthSafetyScreen::OnEnter() {
     f64 sp20;
     f64 sp18;
@@ -251,7 +251,7 @@ void HealthSafetyScreen::Init() {
     this->unkCC = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void LanguageButtonGroup::LoadDone() {
     s32 spC;
     s32 sp8;
@@ -268,7 +268,7 @@ void LanguageButtonGroup::LoadDone() {
         do {
             temp_r26_320 = M2C_FIELD(OptionButton::descriptor, s32 *, 8);
             if (MKHeap::Current() != NULL) {
-                var_r26_329 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_320, NULL, 0);
+                var_r26_329 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_320, NULL, 0));
             } else {
                 var_r26_329 = malloc(temp_r26_320);
             }
@@ -285,7 +285,7 @@ void LanguageButtonGroup::LoadDone() {
             Add(temp_r3_347);
             temp_r26_369 = M2C_FIELD(DSText::descriptor, s32 *, 8);
             if (MKHeap::Current() != NULL) {
-                var_r26_378 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_369, NULL, 0);
+                var_r26_378 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_369, NULL, 0));
             } else {
                 var_r26_378 = malloc(temp_r26_369);
             }
@@ -321,26 +321,26 @@ void LanguageButtonGroup::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void ScriptVideoScreen::DoExit() {
     Console_Execute(this->unk128);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptVideoScreen::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_494;
 
     if (((MKIniLine *) arg0)->IsField("onExit") != 0) {
         temp_r31_494 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk128 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_494);
+        this->unk128 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_494));
         return 1;
     }
     return UIVideoScreen::LoadLine(arg0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptVideoScreen::Deinit() {
     s8 *temp_r31_523;
 
@@ -694,7 +694,7 @@ s32 RadialButtonGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
+#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to 'void **' Too many errors printed, aborting program
 void RadialButtonGroup::Resolve() {
     UIButtonGroup::Resolve();
     SetPositions();
@@ -775,7 +775,7 @@ void RadialButtonGroup::Init() {
     this->unkFC = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to
+#if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to 'float'
 void UIPie::Draw(const RenderContext &arg0) {
     RenderContext sp100;
     Matrix spC0;
@@ -906,7 +906,7 @@ void UIPie::Init() {
     this->unk78 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void LocalizedVideoScreen::LoadDone() {
     s8 *temp_r0_1845;
     s8 *temp_r31_1836;
@@ -924,7 +924,7 @@ void LocalizedVideoScreen::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
+#if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to 'float'
 u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     RenderContext sp30;
     f64 sp28;
@@ -952,7 +952,7 @@ u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     if (temp_r4_1880 < 0) {
         return 0U;
     }
-    temp_r3_1888 = ui_cast<UIContainer *, UIObject *>(GetChild(temp_r4_1880));
+    temp_r3_1888 = (void **) (ui_cast<UIContainer *, UIObject *>(GetChild(temp_r4_1880)));
     if ((temp_r3_1888 == NULL) || ((u8) M2C_FIELD(temp_r3_1888, u8 *, 0x14) == 0)) {
         return 0U;
     }
@@ -1066,7 +1066,7 @@ void MarkerButtonGroup::Deinit() {
     M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0xC)(&this->unk80);
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MarkerButtonGroup::Init() {
     s8 *temp_r3_2218;
 
@@ -1113,7 +1113,7 @@ s32 ScriptButtonGroup::SetSelection(int arg0) {
     return 1;
 }
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 s32 ScriptButtonGroup::Message(UIMessage *arg0) {
     s32 spC;
     s32 sp8;
@@ -1145,7 +1145,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void ScriptButtonGroup::Update() {
     s32 spC;
     s32 sp8;
@@ -1174,20 +1174,20 @@ void ScriptButtonGroup::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptButtonGroup::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2454;
 
     if (((MKIniLine *) arg0)->IsField("onReset") != 0) {
         temp_r31_2454 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk80 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2454);
+        this->unk80 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2454));
         return 1;
     }
     return UIButtonGroup::LoadLine(arg0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptButtonGroup::Deinit() {
     s8 *temp_r31_2483;
 
@@ -1315,7 +1315,7 @@ void DSText::Init() {
     UIText::Init();
 }
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 s32 ScriptProgressBar::Message(UIMessage *arg0) {
     s32 temp_r0_2757;
 
@@ -1335,7 +1335,7 @@ s32 ScriptProgressBar::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void ScriptProgressBar::Update() {
     UIImage::Update();
     if ((u8) this->unkDC != 0) {
@@ -1349,7 +1349,7 @@ void ScriptProgressBar::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2850;
     s32 temp_r31_2867;
@@ -1357,17 +1357,17 @@ s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
 
     if (((MKIniLine *) arg0)->IsField("onGetValue") != 0) {
         temp_r31_2850 = ((MKIniLine *) arg0)->GetString(0);
-        this->unkD0 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850);
+        this->unkD0 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850));
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField("onIncrement") != 0) {
         temp_r31_2867 = ((MKIniLine *) arg0)->GetString(0);
-        this->unkD4 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2867);
+        this->unkD4 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2867));
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField("onDecrement") != 0) {
         temp_r31_2884 = ((MKIniLine *) arg0)->GetString(0);
-        this->unkD8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884);
+        this->unkD8 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884));
 block_7:
         return 1;
     }
@@ -1375,7 +1375,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptProgressBar::Deinit() {
     s8 *temp_r31_2913;
     s8 *temp_r31_2920;
@@ -1454,7 +1454,7 @@ void ProgressBar::LoadDone() {
     this->unkC0 = this->unk18.unk40;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 ProgressBar::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 
@@ -1479,7 +1479,7 @@ void ProgressBar::Init() {
     this->unk78 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptButton::SetOnDeselect(const char *arg0) {
     s8 *temp_r31_3190;
 
@@ -1487,11 +1487,11 @@ void ScriptButton::SetOnDeselect(const char *arg0) {
     if (temp_r31_3190 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3190);
     }
-    this->unk98 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
+    this->unk98 = (signed char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptButton::SetOnSelect(const char *arg0) {
     s8 *temp_r31_3217;
 
@@ -1499,11 +1499,11 @@ void ScriptButton::SetOnSelect(const char *arg0) {
     if (temp_r31_3217 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3217);
     }
-    this->unk94 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
+    this->unk94 = (signed char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptButton::SetOnActivate(const char *arg0) {
     s8 *temp_r31_3244;
 
@@ -1511,7 +1511,7 @@ void ScriptButton::SetOnActivate(const char *arg0) {
     if (temp_r31_3244 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3244);
     }
-    this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
+    this->unk90 = (signed char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0));
 }
 #endif
 
@@ -1542,7 +1542,7 @@ void ScriptButton::OnActivate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptButton::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_3359;
     s32 temp_r31_3376;
@@ -1550,17 +1550,17 @@ s32 ScriptButton::LoadLine(UIDataLine *arg0) {
 
     if (((MKIniLine *) arg0)->IsField("scriptActivate") != 0) {
         temp_r31_3359 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359);
+        this->unk90 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359));
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField("onSelect") != 0) {
         temp_r31_3376 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk94 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3376);
+        this->unk94 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3376));
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField("onDeselect") != 0) {
         temp_r31_3393 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk98 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393);
+        this->unk98 = (const char *) (((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393));
 block_7:
         return 1;
     }
@@ -1568,7 +1568,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ScriptButton::Deinit() {
     s8 *temp_r31_3422;
     s8 *temp_r31_3429;
@@ -1597,7 +1597,7 @@ void ScriptButton::Init() {
     this->unk98 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *' Too many errors printed, aborting program
 s32 OptionButton::Message(UIMessage *arg0) {
     s32 sp14;
     s32 sp10;
@@ -1645,7 +1645,7 @@ s32 OptionButton::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void OptionButton::Update() {
     s32 sp8;
     f32 temp_f0_3578;
@@ -1905,7 +1905,7 @@ void PromptText::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, unsigned char)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, unsigned char)' does not match 'stricmp(signed char *, long *)'
 void PromptText::Resolve() {
     s32 temp_r0_4087;
 
@@ -1927,7 +1927,7 @@ void PromptText::Init() {
     M2C_FIELD(this, s32 *, 0x78) = -1;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MCLoadCheckScreen *' and 'unsigned char *'
 void UITools_RegisterAll() {
     MCLoadCheckScreen *temp_r4_4131;
     MCLoadCheckScreen *temp_r4_4147;
@@ -2213,14 +2213,14 @@ loop_98:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UISystem *' to
+#if 0 // DRAFT: illegal operand
 u8 IsParentScreenActive(UIObject *arg0) {
     UIObject *var_r30_4452;
     u32 temp_r31_4458;
     void **temp_r3_4454;
 
     var_r30_4452 = arg0;
-    temp_r3_4454 = ui_cast<UISystem *, UIContainer *>(arg0->GetRoot());
+    temp_r3_4454 = (void **) (ui_cast<UISystem *, UIContainer *>(arg0->GetRoot()));
     temp_r31_4458 = M2C_FIELD((temp_r3_4454 + (M2C_FIELD(temp_r3_4454, s32 *, 0x6C) * 4)), u32 *, 0x70);
     if (temp_r31_4458 == 0U) {
         return 0U;

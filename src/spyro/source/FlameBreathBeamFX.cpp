@@ -34,7 +34,7 @@ void FlameBreathBeam::Deinit() {
     this->unkC8.Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FlameBreathBeam' to
+#if 0 // DRAFT: illegal implicit conversion from 'FlameBreathBeam' to 'unsigned long'
 void FlameBreathBeam::Draw() {
     Matrix sp1A0;
     f64 sp198;
@@ -314,7 +314,6 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FlameBreathBeam *' to
 void FlameBreathBeam::Update() {
     f32 *temp_r5_506;
     f32 temp_f1_508;
@@ -326,7 +325,7 @@ void FlameBreathBeam::Update() {
     var_r4_503 = 0;
     var_ctr_504 = 5;
     do {
-        temp_r5_506 = this + var_r4_503;
+        temp_r5_506 = (float *) (this + var_r4_503);
         temp_f1_508 = M2C_FIELD(temp_r5_506, f32 *, 4);
         var_r4_503 += 0x18;
         M2C_FIELD(temp_r5_506, f32 *, 0) += gUpdateTimeDelta * temp_f1_508;
@@ -359,9 +358,8 @@ void FlameBreathBeam::Update() {
         this->unk104 = var_f0_538;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void FlameBreathBeam::ResetBeamNodes(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     f64 spC0;
     f64 spB8;
@@ -421,7 +419,7 @@ void FlameBreathBeam::ResetBeamNodes(MKVector3 arg0, MKVector3 arg1, MKVector3 a
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     s8 sp1A0;
     s32 sp19C;
@@ -622,7 +620,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     s8 sp2D0;
     s32 sp2CC;
@@ -927,16 +925,15 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FlameBreathBeam::Init(const char *arg0, const char *arg1, const char *arg2, const char *arg3) {
     s32 var_r29_1611;
     s32 var_r31_1613;
     void *temp_r30_1643;
 
-    this->unkDC = MKMaterial_Create(arg0);
-    this->unkE0 = MKMaterial_Create(arg1);
-    this->unkE4 = MKMaterial_Create(arg2);
-    this->unkE8 = MKMaterial_Create(arg3);
+    this->unkDC = (MKMaterial *) (MKMaterial_Create(arg0));
+    this->unkE0 = (MKMaterial *) (MKMaterial_Create(arg1));
+    this->unkE4 = (MKMaterial *) (MKMaterial_Create(arg2));
+    this->unkE8 = (MKMaterial *) (MKMaterial_Create(arg3));
     this->unkC8.Init(4, 0U);
     var_r29_1611 = 0;
     var_r31_1613 = 0;
@@ -973,4 +970,3 @@ void FlameBreathBeam::Init(const char *arg0, const char *arg1, const char *arg2,
     this->unk10C = 1.0f;
     this->unk110 = 1.0f;
 }
-#endif

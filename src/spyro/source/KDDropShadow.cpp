@@ -91,12 +91,12 @@ s32 KDDropShadow::LoadDone() {
     MKProp::LoadDone();
     temp_r31_177 = M2C_FIELD(checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
     if (MKHeap::Current() != NULL) {
-        var_r3_185 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0);
+        var_r3_185 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0));
     } else {
         var_r3_185 = malloc(temp_r31_177 * 0x50);
     }
     this->unk4C = var_r3_185;
-    temp_r0_194 = this->unk4C + (temp_r31_177 * 0x50);
+    temp_r0_194 = (Matrix *) (this->unk4C + (temp_r31_177 * 0x50));
     this->unk50 = temp_r0_194;
     this->unk54 = temp_r0_194;
 }

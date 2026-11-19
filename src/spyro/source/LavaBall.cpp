@@ -47,7 +47,7 @@ static u8 lit_514 = 1;
 static u8 lit_518 = 1;
 static u8 lit_522 = 0;
 
-#if 0 // DRAFT: function call 'Disable(Projectile *, unsigned char, ShapedTrailFX *)' does
+#if 0 // DRAFT: function call 'Disable(Projectile *, unsigned char, ShapedTrailFX *)' does not match 'Projectile::Disable()'
 void LavaBall::Collided(MKCollisionResult &arg0) {
     s32 sp8;
     ShapedTrailFX *temp_r5_118;
@@ -125,13 +125,11 @@ void *LavaBall::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void LavaBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unkF0 = (long) (checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4")));
     pLavaBallDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void LavaBallDescriptor::Deinit() {
     pLavaBallDescriptor = NULL;

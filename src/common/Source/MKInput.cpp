@@ -446,14 +446,13 @@ void MKInput_Update() {
     eventsReady = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKInput_InitModule() {
     MKInputReceiver **var_r3_824;
     s32 var_ctr_836;
 
     MKInput_InitModulePlatformSpecific();
     if (MKHeap::Current() != NULL) {
-        var_r3_824 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xB0, NULL, 0);
+        var_r3_824 = (MKInputReceiver **) (((MKHeap *) (MKHeap::Current()))->Alloc(0xB0, NULL, 0));
     } else {
         var_r3_824 = malloc(0xB0);
     }
@@ -472,4 +471,3 @@ void MKInput_InitModule() {
     memset(&bDeviceAttachedLastFrame, 0, 7U);
     repeatEventsEnabled = 0;
 }
-#endif

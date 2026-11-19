@@ -39,7 +39,7 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 M2C_UNK __construct_array(void *, MKProp *(*)(MKProp *), MKProp *(*)(MKProp *, s16), M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
@@ -67,7 +67,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::DrawWater() {
     MKChunkSceneManager *temp_r29_63;
     MKChunkSceneManager *var_r3_0;
@@ -111,7 +111,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_FindChar(signed char *, long)' does not match
+#if 0 // DRAFT: function call 'Str_FindChar(signed char *, long)' does not match 'Str_FindChar(const char *, int)'
 MKChunkSceneManager *MKChunkSceneManager::StripExtension(const char *arg0, char arg1) {
     u8 *temp_r3_135;
 
@@ -123,7 +123,7 @@ MKChunkSceneManager *MKChunkSceneManager::StripExtension(const char *arg0, char 
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKLevelChunk **' and 'int'
 s32 MKChunkSceneManager::IsEnabled(MKProp *arg0, int arg1) {
     MKLevelChunk **temp_r0_165;
     MKLevelChunk **var_ctr_167;
@@ -159,7 +159,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKLevelChunk **' and 'int'
 s32 MKChunkSceneManager::IsEnabled(MKTerrainModel *arg0, int arg1) {
     MKLevelChunk **temp_r0_206;
     MKLevelChunk **var_ctr_208;
@@ -195,7 +195,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::DisableZones(unsigned int arg0, bool arg1, int arg2) {
     s32 var_r10_243;
     s32 var_r7_244;
@@ -222,7 +222,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::EnableZones(unsigned int arg0, bool arg1, int arg2) {
     s32 var_r10_283;
     s32 var_r7_284;
@@ -249,7 +249,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 s32 MKChunkSceneManager::GetChunkAt(const MKVector3 &arg0) {
     f32 temp_f1_348;
     f32 var_f31_328;
@@ -268,7 +268,7 @@ loop_6:
         temp_r3_337 = *(this->unkE8 + var_r31_333);
         temp_r0_338 = M2C_FIELD(temp_r3_337, s32 *, 0x90);
         if ((temp_r0_338 == 9) || (temp_r0_338 == 0xC)) {
-            temp_f1_348 = M2C_FIELD(M2C_FIELD(temp_r3_337, void **, 8), f32 (**)(MKVector3 *), 0x84)(&arg0);
+            temp_f1_348 = (MKVector3 *) (M2C_FIELD(M2C_FIELD(temp_r3_337, void **, 8), f32 (**)(MKVector3 *), 0x84)(&arg0));
             if (temp_f1_348 < var_f31_328) {
                 var_f31_328 = temp_f1_348;
                 var_r30_331 = *(this->unkE8 + var_r31_333);
@@ -286,7 +286,7 @@ MKLevelChunk *MKChunkSceneManager::GetWorkingChunk() {
     return this->unkF4;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::EnableTerrainModel(const char *arg0, bool arg1) {
     s32 temp_r0_394;
     s32 var_r30_388;
@@ -313,7 +313,7 @@ s32 MKChunkSceneManager::GetCollisionManager() {
     return M2C_BITWISE(s32, this->unkF4->unk14.unk7C);
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::SetActivePoint(const MKVector3 &arg0) {
     s32 var_r30_437;
     s32 var_r31_438;
@@ -332,7 +332,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKLevelChunk **' and 'int'
 void MKChunkSceneManager::SetWorkingChunk(MKLevelChunk *arg0) {
     MKLevelChunk **temp_r0_475;
     MKLevelChunk **var_ctr_476;
@@ -368,7 +368,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::EnableAllChunks(bool arg0) {
     MKLevelChunk *temp_r3_526;
     s32 var_r29_520;
@@ -399,17 +399,17 @@ void MKChunkSceneManager::UnlockChunk(MKLevelChunk *arg0) {
     M2C_FIELD(arg0->unk8, M2C_UNK (**)(MKLevelChunk *), 0x44)(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'char **'
 MKLevelChunk *MKChunkSceneManager::LockChunk(MKChunkRequest *arg0, char **arg1, int arg2) {
     MKLevelChunk *temp_r3_588;
 
-    temp_r3_588 = ((MKLevelChunk *) arg0)->Game_ChunkChooser((MKChunkRequest *) arg1, (s8 **) arg2, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
+    temp_r3_588 = (char **) (((MKLevelChunk *) arg0)->Game_ChunkChooser((MKChunkRequest *) arg1, (s8 **) arg2, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */)));
     M2C_FIELD(temp_r3_588->unk8, M2C_UNK (**)(s32, u8), 0x40)(arg0->unk0, arg0->unkC);
     return temp_r3_588;
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 MKLevelChunk *MKChunkSceneManager::QueueChunkLoad(const char *arg0, MKChunkRequest *arg1, char **arg2, int arg3, const char *arg4, bool arg5, bool arg6) {
     MKLevelChunk *temp_r3_622;
     MKLevelChunk *temp_r3_678;
@@ -423,7 +423,7 @@ loop_10:
     if (var_r31_617 >= (MKLevelChunk **) this->unkEC) {
         arg1->unkC = 0;
         arg1->unk8 = 0;
-        temp_r3_678 = ((MKLevelChunk *) arg1)->Game_ChunkChooser((MKChunkRequest *) arg2, (s8 **) arg3, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
+        temp_r3_678 = (char **) (((MKLevelChunk *) arg1)->Game_ChunkChooser((MKChunkRequest *) arg2, (s8 **) arg3, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */)));
         temp_r3_678->QueueChunkLoad(arg0, arg1->unk4, arg6);
         return temp_r3_678;
     }
@@ -438,7 +438,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 s32 MKChunkSceneManager::IsChunkLoaded(const char *arg0) {
     s32 var_r30_702;
     s32 var_r31_703;
@@ -458,7 +458,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::CalculateUpdateDistances() {
     s32 var_r30_750;
     s32 var_r31_751;
@@ -479,7 +479,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::CalculateVisibility(bool arg0) {
     s32 var_r30_795;
     s32 var_r31_796;
@@ -500,7 +500,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 s32 MKChunkSceneManager::GetPropsInRange(MKProp **arg0, int arg1, const MKVector3 &arg2, float arg3, int arg4, bool arg5) {
     s32 var_r29_848;
     s32 var_r30_847;
@@ -524,7 +524,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::SendMessage(MKMessage *arg0, unsigned int arg1, bool arg2, MKVector3 *arg3, float arg4, bool arg5) {
     s32 temp_r0_905;
     s32 var_r30_899;
@@ -547,7 +547,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 u32 MKChunkSceneManager::FindTerrainModel(const char *arg0) {
     MKLevelChunk *temp_r3_948;
     s32 var_r30_959;
@@ -572,7 +572,7 @@ loop_9:
         }
         temp_r3_965 = *(this->unkE8 + var_r31_960);
         if (temp_r3_965 != (MKLevelChunk *) this->unkF4) {
-            temp_r3_972 = M2C_FIELD(M2C_FIELD(temp_r3_965, void **, 8), u32 (**)(s8 *), 0x70)(arg0);
+            temp_r3_972 = (signed char *) (M2C_FIELD(M2C_FIELD(temp_r3_965, void **, 8), u32 (**)(s8 *), 0x70)(arg0));
             if (temp_r3_972 != 0) {
                 return temp_r3_972;
             }
@@ -586,7 +586,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 u32 MKChunkSceneManager::FindProp(const char *arg0) {
     MKLevelChunk *temp_r3_1005;
     s32 var_r30_1016;
@@ -611,7 +611,7 @@ loop_9:
         }
         temp_r3_1022 = *(this->unkE8 + var_r31_1017);
         if (temp_r3_1022 != (MKLevelChunk *) this->unkF4) {
-            temp_r3_1029 = M2C_FIELD(M2C_FIELD(temp_r3_1022, void **, 8), u32 (**)(s8 *), 0x6C)(arg0);
+            temp_r3_1029 = (signed char *) (M2C_FIELD(M2C_FIELD(temp_r3_1022, void **, 8), u32 (**)(s8 *), 0x6C)(arg0));
             if (temp_r3_1029 != 0) {
                 return temp_r3_1029;
             }
@@ -632,7 +632,7 @@ void MKChunkSceneManager::FindDescriptorInLocalChunk(const char *arg0) {
     M2C_FIELD(temp_r3_1056->unk8, M2C_UNK (**)(MKLevelChunk *), 0x68)(temp_r3_1056);
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 u32 MKChunkSceneManager::FindDescriptor(const char *arg0) {
     MKLevelChunk *temp_r3_1079;
     s32 var_r30_1090;
@@ -657,7 +657,7 @@ loop_9:
         }
         temp_r3_1096 = *(this->unkE8 + var_r31_1091);
         if (temp_r3_1096 != (MKLevelChunk *) this->unkF4) {
-            temp_r3_1103 = M2C_FIELD(M2C_FIELD(temp_r3_1096, void **, 8), u32 (**)(s8 *), 0x68)(arg0);
+            temp_r3_1103 = (signed char *) (M2C_FIELD(M2C_FIELD(temp_r3_1096, void **, 8), u32 (**)(s8 *), 0x68)(arg0));
             if (temp_r3_1103 != 0) {
                 return temp_r3_1103;
             }
@@ -696,7 +696,7 @@ void MKChunkSceneManager::ResolveAllProps() {
 
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::DrawTerrain(int arg0) {
     s32 temp_r0_1196;
     s32 var_r30_1190;
@@ -719,7 +719,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::DrawProps(int arg0) {
     s32 temp_r0_1236;
     s32 var_r30_1230;
@@ -742,7 +742,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::UpdateState() {
     s32 var_r30_1272;
     s32 var_r31_1273;
@@ -765,7 +765,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::Update() {
     s32 temp_r0_1327;
     s32 var_r30_1321;
@@ -837,7 +837,7 @@ void MKChunkSceneManager::Optimise() {
     this->unk19 = 1;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void *' and 'int'
 void MKChunkSceneManager::Deinit() {
     MKHeap *temp_r29_1521;
     MKLevelChunk **var_r3_1478;

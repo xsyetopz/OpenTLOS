@@ -39,7 +39,7 @@ inline void MeshChunkExplorer_GC::SetMeshChunk(int arg0, int arg1, int arg2) {
     temp_r7_322 = M2C_FIELD(this, void **, 0x48);
     temp_r3_328 = *(M2C_FIELD(temp_r7_322, s32 *, 0x68) + ((arg1 + (arg0 * M2C_FIELD(temp_r7_322, s16 *, 4))) * 4));
     if (temp_r3_328 != 0U) {
-        var_r0_332 = M2C_FIELD(temp_r7_322, s32 *, 0x6C) + temp_r3_328;
+        var_r0_332 = (void *) (M2C_FIELD(temp_r7_322, s32 *, 0x6C) + temp_r3_328);
     } else {
         var_r0_332 = NULL;
     }

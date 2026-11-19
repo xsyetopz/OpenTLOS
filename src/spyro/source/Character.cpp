@@ -262,7 +262,7 @@ void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
+#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void Character::ClearHorizForces() {
     MKVector3 sp8;
     f32 temp_f1_346;
@@ -782,7 +782,7 @@ void Character::UpdateModel() {
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp70));
 }
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
+#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void Character::StopMovement(bool arg0) {
     MKVector3 sp8;
     f32 temp_f1_1240;
@@ -806,7 +806,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier '__float_nan' Too many errors printed, aborting program
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -1409,7 +1409,7 @@ void Character::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void Character::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp2C;
     u8 sp28;
@@ -1491,7 +1491,7 @@ void Character::PlatformUpdate() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
     Animation sp30;
     f64 sp28;
@@ -1518,7 +1518,7 @@ void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodePitch(int arg0, float arg1) {
     Animation sp30;
     f64 sp28;
@@ -1545,7 +1545,7 @@ void Character::RotateNodePitch(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodeYaw(int arg0, float arg1) {
     Animation sp30;
     f64 sp28;
@@ -1679,7 +1679,7 @@ void Character::LerpModelColour(const MKVector4 &arg0, float arg1) {
     MKModel_SetColor(this->unk4, *((MKVector4 *) &sp58));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void Character::FindGroundColour(bool arg0, bool arg1) {
     MKCollisionResult sp30;
     f64 sp28;
@@ -1806,7 +1806,7 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const float' to
+#if 0 // DRAFT: illegal implicit conversion from 'const float' to 'const MKVector3 &'
 s32 Character::Teleport(const Matrix *arg0) {
     f64 sp10;
     u8 spC;
@@ -1941,7 +1941,7 @@ void Character::Despawn(bool arg0) {
     Disable();
 }
 
-#if 0 // DRAFT: function call 'UpdateModel(Character *, int, double, double, double,
+#if 0 // DRAFT: function call 'UpdateModel(Character *, int, double, double, double, double, double)' does not match 'Character::UpdateModel()'
 s32 Character::Spawn(SpawnPointRef *arg0) {
     f64 sp40;
     f64 sp38;
@@ -2512,7 +2512,7 @@ f32 Character::Resolve() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 Character::LoadDone() {
     f64 sp20;
     f64 sp10;
@@ -2537,7 +2537,7 @@ s32 Character::LoadDone() {
         if ((u32) MKModel_GetAnimation(M2C_FIELD(temp_r3_4469, MKModel **, 8))->unk18 != 0U) {
             var_r30_4473 = (s8 *)1;
         }
-        this->unk630 = ((MKAnimScript *) (((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName()))->Create(var_r30_4473, M2C_ERROR(/* Read from unset register $r5 */));
+        this->unk630 = (const char *) (((MKAnimScript *) (((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName()))->Create(var_r30_4473, M2C_ERROR(/* Read from unset register $r5 */)));
         this->unk4 = M2C_FIELD(this->unk630, MKModel **, 8);
         this->unk10 &= 0xFFFFFFFB;
     } else {
@@ -2548,7 +2548,7 @@ s32 Character::LoadDone() {
     }
     temp_r3_4504 = this->unk4;
     if (temp_r3_4504 != NULL) {
-        this->unk8 = MKModel_GetWorldMatrix(temp_r3_4504);
+        this->unk8 = (void *) (MKModel_GetWorldMatrix(temp_r3_4504));
     }
     MKProp::LoadDone();
     if (((void *) this->unk630 == NULL) && ((MKModel *) this->unk4 == NULL)) {
@@ -2623,7 +2623,7 @@ s32 Character::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
 void Character::Deinit() {
     MKMaterial *temp_r3_4790;
     SB2 *temp_r3_4766;

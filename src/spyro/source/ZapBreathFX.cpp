@@ -523,7 +523,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void ZapBreathFX::UpdateZapMissiles() {
     u8 sp4D0;
     s32 sp4CC;
@@ -821,7 +821,7 @@ void ZapBreathFX::UpdateZapMissiles() {
         if ((u8) M2C_FIELD(temp_r3_723, u8 *, 0x60) != 0) {
             M2C_FIELD(temp_r3_723, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r3_723, f32 *, 0x40) - gUpdateTimeDelta);
             sp8 = 1;
-            temp_r8_738 = ((u8 *) this->unkAC) + var_r27_718;
+            temp_r8_738 = (MKVector3 *) (((u8 *) this->unkAC) + var_r27_718);
             ((KDSoundFader *) (temp_r8_738 + 0x64))->Update(GS_SpyroSpare1, 1U, M2C_FIELD(temp_r8_738, u8 *, 0x60), NULL, temp_r8_738, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             temp_r26_745 = ((u8 *) this->unkAC) + var_r27_718;
             if (M2C_FIELD(temp_r26_745, f32 *, 0x40) <= 0.0f) {
@@ -1332,7 +1332,7 @@ void ZapBreathFX::UpdateZapMissiles() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3, const int &arg4, bool arg5) {
     MKCollisionResult spAC0;
     MKCollisionResult spA68;
@@ -1649,7 +1649,7 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     void *temp_r6_2552;
     void *temp_r6_2645;
 
-    temp_r0_2000 = &arg4;
+    temp_r0_2000 = (long) (&arg4);
     if (temp_r0_2000 == 3) {
         if (((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(3) == 0) {
             return this->unk9F4->Trigger(arg1, 0U);
@@ -2382,7 +2382,7 @@ loop_208:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void ZapBreathFX::Deinit() {
     Corona *temp_r4_4552;
     ManagedLight *temp_r4_4528;
@@ -2474,7 +2474,7 @@ void ZapBreathFX::Message(MKMessage *arg0) {
     } while (var_r30_4638 < 0xA);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void *ZapBreathFX::Update() {
     f64 sp360;
     f64 sp358;
@@ -3068,7 +3068,7 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal type
 f32 ZapBreathFX::Resolve() {
     f64 sp100;
     f64 spF8;
@@ -3140,7 +3140,7 @@ f32 ZapBreathFX::Resolve() {
     spF0 = (f64) sp70;
     spF8 = (f64) sp78;
     sp100 = (f64) sp80;
-    this->unkB0 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8), *((MKVector4 *) &spD8), 300.0f, lit_933, lit_934);
+    this->unkB0 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8), *((MKVector4 *) &spD8), 300.0f, lit_933, lit_934));
     temp_r4_5646 = this->unkB0;
     if (temp_r4_5646 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_5646, 0U);
@@ -3156,7 +3156,7 @@ f32 ZapBreathFX::Resolve() {
     spC0 = (f64) sp40;
     spC8 = (f64) sp48;
     spD0 = (f64) sp50;
-    this->unk9E4 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &spC8), *((MKVector4 *) &spB8), 5.0f, lit_938, lit_939);
+    this->unk9E4 = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &spC8), *((MKVector4 *) &spB8), 5.0f, lit_938, lit_939));
     temp_r4_5681 = this->unk9E4;
     if (temp_r4_5681 != NULL) {
         temp_r4_5681->unk31 &= ~0x40;
@@ -3198,7 +3198,7 @@ f32 ZapBreathFX::Resolve() {
         var_r27_5703 += 1;
         var_r30_5704 += 0x90;
     } while (var_r27_5703 < 0xA);
-    this->unkFC = checked_cast<MKPropDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "ZapCage"));
+    this->unkFC = (signed char *) (checked_cast<MKPropDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "ZapCage")));
 }
 #endif
 
@@ -3312,7 +3312,6 @@ void Zap::Deinit() {
     this->unk1C0 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Zap::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -3350,7 +3349,7 @@ void Zap::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unk1BC = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp78), *((MKVector4 *) &sp68), 5.0f, lit_781, lit_782);
+    this->unk1BC = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp78), *((MKVector4 *) &sp68), 5.0f, lit_781, lit_782));
     temp_r4_6072 = this->unk1BC;
     if (temp_r4_6072 != NULL) {
         temp_r4_6072->unk31 &= ~0x40;
@@ -3366,13 +3365,12 @@ void Zap::Resolve() {
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
     sp60 = (f64) sp20;
-    this->unk1C0 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp58), *((MKVector4 *) &sp48), 5.0f, lit_786, lit_787);
+    this->unk1C0 = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp58), *((MKVector4 *) &sp48), 5.0f, lit_786, lit_787));
     temp_r4_6106 = this->unk1C0;
     if (temp_r4_6106 != NULL) {
         temp_r4_6106->unk31 &= ~0x40;
     }
 }
-#endif
 
 void Zap::Init() {
     f32 var_f0_6153;

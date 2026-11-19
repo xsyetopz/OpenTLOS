@@ -75,7 +75,7 @@ static u8 lit_651 = 1;
 
 static u8 lit_750 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'ExplosiveBarrel::States'
 void ExplosiveBarrel::Ignite(float arg0) {
     f32 sp8;
 
@@ -86,7 +86,7 @@ void ExplosiveBarrel::Ignite(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'ExplosiveBarrel::States'
 void ExplosiveBarrel::Explode() {
     ExplosiveBarrel *spC;
     s32 sp8;
@@ -294,7 +294,7 @@ void ExplosiveBarrel::Enable() {
     temp_r3_500->Enable();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'ExplosiveBarrel::States'
 void ExplosiveBarrel::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -401,7 +401,7 @@ block_50:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'int *'
 void *ExplosiveBarrel::Update() {
     f64 sp20;
     f64 sp18;
@@ -468,7 +468,7 @@ void ExplosiveBarrel::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'ExplosiveBarrel::States'
 void ExplosiveBarrel::SetDefaults() {
     BurningWick *temp_r3_879;
     BurningWick *temp_r3_884;
@@ -526,7 +526,7 @@ void ExplosiveBarrel::Deinit() {
     Shatterable::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'ExplosiveBarrel::States'
 void ExplosiveBarrel::Init() {
     Shatterable::Init();
     this->unk1A8 = NULL;

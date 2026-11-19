@@ -56,7 +56,7 @@ loop_6:
             }
             temp_r9_56 = var_r5_25 + 0x50C4;
             var_r12_23 += 1;
-            temp_r7_59 = *(this->unkC + temp_r9_56);
+            temp_r7_59 = (short *) (*(this->unkC + temp_r9_56));
             var_r5_25 += 0x5168;
             *temp_r7_59 = var_r31_28;
             *(*(this->unkC + temp_r9_56) + ((var_r31_28 * 2) + 2)) = 0xFFFF;

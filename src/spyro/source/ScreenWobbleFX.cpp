@@ -67,7 +67,7 @@ void ScreenWobbleFX::DrawSpeedEffect() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
+#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void ScreenWobbleFX::AddRandomWobbleForce(float arg0) {
     MKVector3 sp58;
     MKVector3 sp48;
@@ -649,7 +649,6 @@ void ScreenWobbleFX::EnableScreenFlash(const MKVector4 &arg0, float arg1) {
     this->unk6C = arg1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ScreenWobbleFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -666,8 +665,8 @@ void ScreenWobbleFX::Init() {
     }
     this->unk0 = var_r3_1057;
     InitWobbleNodes();
-    this->unkC = MKMaterial_Create("fx_wobblemat");
-    this->unk1C = MKMaterial_Create("motionblurmat");
+    this->unkC = (MKMaterial *) (MKMaterial_Create("fx_wobblemat"));
+    this->unk1C = (MKMaterial *) (MKMaterial_Create("motionblurmat"));
     this->unk4 = 1.0f;
     this->unk10 = 1.0f;
     sp8 = 1.0f;
@@ -680,7 +679,7 @@ void ScreenWobbleFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk58 = 0;
-    this->unk5C = MKMaterial_Create("ScreenFlashMat");
+    this->unk5C = (MKMaterial *) (MKMaterial_Create("ScreenFlashMat"));
     this->unk20 = 0;
     this->unk24 = 0.0f;
     this->unk38 = 1;
@@ -692,4 +691,3 @@ void ScreenWobbleFX::Init() {
     this->unk3C = 0.0f;
     this->unk40 = 1.0f;
 }
-#endif

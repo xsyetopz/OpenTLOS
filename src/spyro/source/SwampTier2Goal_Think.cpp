@@ -231,7 +231,7 @@ void SwampTier2Goal_Attack2::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'AnimTransition *' and 'unsigned long *'
 u8 SwampTier2Goal_Attack2::Update() {
     AnimSequence *temp_r4_366;
     AnimSequence *temp_r4_381;
@@ -394,7 +394,7 @@ void SwampTier2Goal_Attack1::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'AnimTransition *' and 'unsigned long *'
 u8 SwampTier2Goal_Attack1::Update() {
     f64 sp50;
     f64 sp48;
@@ -596,7 +596,7 @@ u8 SwampTier2Goal_AlertMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
+#if 0 // DRAFT: illegal type
 void SwampTier2Goal_AlertMode::Activate() {
     IsInAlertRangeMsg sp18;
     f64 sp10;
@@ -641,7 +641,7 @@ void SwampTier2Goal_AlertMode::Activate() {
             sp10 = M2C_FIELD(temp_r5_1050, f64 *, 0x38);
             sp18.Init(*((MKVector3 *) &sp8), 1000.0f);
             temp_r7_1056 = this->unkC;
-            sp18.unk4 = temp_r7_1056;
+            sp18.unk4 = (unsigned long) (temp_r7_1056);
             M2C_FIELD(*gMK, M2C_UNK (**)(void **, IsInAlertRangeMsg *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp18, 8, 0, temp_r7_1056->unk8 + 0x30, 1, 1000.0f);
             AddSubgoal((Goal<SwampTier2> *) this->unk24);
             temp_r3_1074 = this->unk24;

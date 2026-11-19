@@ -30,7 +30,7 @@ void *Guardian::Update() {
     KDProp::Update();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 s32 Guardian::LoadDone() {
     MKAnim *var_r3_119;
     MKAnim *var_r3_137;
@@ -44,28 +44,28 @@ s32 Guardian::LoadDone() {
     KDProp::LoadDone();
     temp_r30_109 = this->unk80;
     if (temp_r30_109->Exists("idle01") != 0) {
-        var_r3_119 = temp_r30_109->GetAnim("idle01");
+        var_r3_119 = (MKAnim *) (temp_r30_109->GetAnim("idle01"));
     } else {
         var_r3_119 = NULL;
     }
     this->unk90 = var_r3_119;
     temp_r30_127 = this->unk80;
     if (temp_r30_127->Exists("CageIdle01") != 0) {
-        var_r3_137 = temp_r30_127->GetAnim("CageIdle01");
+        var_r3_137 = (MKAnim *) (temp_r30_127->GetAnim("CageIdle01"));
     } else {
         var_r3_137 = NULL;
     }
     this->unk94 = var_r3_137;
     temp_r30_145 = this->unk80;
     if (temp_r30_145->Exists("Slumped") != 0) {
-        var_r3_155 = temp_r30_145->GetAnim("Slumped");
+        var_r3_155 = (MKAnim *) (temp_r30_145->GetAnim("Slumped"));
     } else {
         var_r3_155 = NULL;
     }
     this->unk98 = var_r3_155;
     temp_r30_163 = this->unk80;
     if (temp_r30_163->Exists("Suspended") != 0) {
-        var_r3_173 = temp_r30_163->GetAnim("Suspended");
+        var_r3_173 = (MKAnim *) (temp_r30_163->GetAnim("Suspended"));
     } else {
         var_r3_173 = NULL;
     }

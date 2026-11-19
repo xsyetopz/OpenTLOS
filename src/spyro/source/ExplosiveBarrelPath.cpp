@@ -89,7 +89,7 @@ void ExplosiveBarrelPath::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1,
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath::BarrelData *' to
+#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath::BarrelData *' to 'Matrix *'
 void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1) {
     f64 sp78;
     f64 sp70;
@@ -130,7 +130,7 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg1) {
     MKCollisionResult sp320;
     f32 sp31C;
@@ -506,7 +506,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'ExplosiveBarrelPath' to
+#if 0 // DRAFT: illegal explicit conversion from 'ExplosiveBarrelPath' to 'ExplosiveBarrel *'
 s32 ExplosiveBarrelPath::GetNextInactiveBarrelID() {
     s32 var_r30_804;
     s32 var_r31_805;
@@ -557,7 +557,7 @@ void ExplosiveBarrelPath::ExplodeBarrel(int arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath *' to
+#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath *' to 'ExplosiveBarrelPath::BarrelData *'
 s32 ExplosiveBarrelPath::SpawnBarrel(MKProp *arg0) {
     s32 temp_r31_900;
     s32 temp_r3_896;
@@ -584,7 +584,7 @@ s32 ExplosiveBarrelPath::SpawnBarrel(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void ExplosiveBarrelPath::CalcStandPosAndDir() {
     MKCollisionResult sp190;
     f64 sp188;
@@ -1039,7 +1039,7 @@ f32 ExplosiveBarrelPath::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ExplosiveBarrelPath::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -1074,7 +1074,7 @@ s32 ExplosiveBarrelPath::LoadDone() {
     var_r27_1807 = 0;
     M2C_FIELD(this, f64 *, 0x208) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x208) - (f32) sp20);
     do {
-        var_r4_1814 = "P5023_BoomBarrel";
+        var_r4_1814 = (signed char *) ("P5023_BoomBarrel");
         temp_r3_1815 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
         if (temp_r3_1815 != NULL) {
             var_r3_1818 = M2C_FIELD(temp_r3_1815, void **, 4);
@@ -1092,22 +1092,22 @@ s32 ExplosiveBarrelPath::LoadDone() {
             switch ((s8) temp_r0_1837) {            /* irregular */
             case 0x61:
                 this->unk232 = 1;
-                var_r4_1814 = "P3040_BoomBarrel";
+                var_r4_1814 = (signed char *) ("P3040_BoomBarrel");
                 break;
             case 0x62:
-                var_r4_1814 = "P4036_BoomBarrel";
+                var_r4_1814 = (signed char *) ("P4036_BoomBarrel");
                 break;
             case 0x64:
             case 0x7A:
-                var_r4_1814 = "P1040_BoomBarrel";
+                var_r4_1814 = (signed char *) ("P1040_BoomBarrel");
                 break;
             case 0x63:
-                var_r4_1814 = "P0091_BoomBarrel";
+                var_r4_1814 = (signed char *) ("P0091_BoomBarrel");
                 break;
             }
         }
         temp_r26_1877 = var_r27_1807 + 0x78;
-        *(this + temp_r26_1877) = checked_cast<ExplosiveBarrel *, MKProp>(gMK->CreateProp(var_r4_1814));
+        *(this + temp_r26_1877) = (const char *) (checked_cast<ExplosiveBarrel *, MKProp>(gMK->CreateProp(var_r4_1814)));
         temp_r3_1879 = *(this + temp_r26_1877);
         if (temp_r3_1879 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_1879, void **, 0x44), M2C_UNK (**)(), 0x34)();
@@ -1121,7 +1121,7 @@ s32 ExplosiveBarrelPath::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
 s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1220,7 +1220,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void ExplosiveBarrelPath::Deinit() {
     s32 var_r29_2170;
     s32 var_r31_2171;
@@ -1288,13 +1288,11 @@ void ExplosiveBarrelPath::Init() {
     this->unk23C = 1.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void ExplosiveBarrelPathDescriptor::LoadDone() {
-    this->unk90 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustDirtPS"));
-    this->unk94 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustIcePS"));
+    this->unk90 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustDirtPS")));
+    this->unk94 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustIcePS")));
     MKPropDescriptor::LoadDone();
 }
-#endif
 
 s32 ExplosiveBarrelPathDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2324;

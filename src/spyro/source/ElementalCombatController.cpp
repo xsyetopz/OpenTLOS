@@ -48,7 +48,7 @@ M2C_UNK __destroy_arr(EventMessage *, EventMessage *(*)(EventMessage *, s16), M2
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern s32 gb;
 #endif
 
@@ -99,7 +99,7 @@ loop_2:
     temp_r3_200 = M2C_FIELD(temp_r24_155, void **, 0x18);
     if (var_r31_151 < (s32) M2C_FIELD(temp_r3_200, s32 *, 0x20)) {
         temp_r26_159 = this + var_r29_153;
-        temp_r4_163 = M2C_FIELD(temp_r3_200, s32 *, 0x24) + (var_r31_151 * M2C_FIELD(temp_r3_200, s32 *, 0x1C));
+        temp_r4_163 = (void *) (M2C_FIELD(temp_r3_200, s32 *, 0x24) + (var_r31_151 * M2C_FIELD(temp_r3_200, s32 *, 0x1C)));
         sp28 = M2C_FIELD(temp_r4_163, f64 *, 0);
         sp30 = M2C_FIELD(temp_r4_163, f64 *, 8);
         M2C_FIELD(M2C_FIELD(temp_r26_159, void **, 0x124), s32 *, 4) = (s32) (this->unk3E0 | 0x4200);
@@ -108,7 +108,7 @@ loop_2:
         sp20 = sp10;
         (*(f32 *) ((u8 *) &sp18 + 0x4)) = (*(f32 *) ((u8 *) &sp28 + 0x4));
         this->unkC8.AddSpawnPoint(((u8 *) temp_r26_159) + 0x120);
-        temp_r25_183 = ((u8 *) temp_r26_159) + 0x130;
+        temp_r25_183 = (Matrix *) (((u8 *) temp_r26_159) + 0x130);
         temp_r25_183->SetIdentity();
         M2C_FIELD(temp_r26_159, f32 *, 0x160) = (f32) sp28;
         M2C_FIELD(temp_r26_159, f32 *, 0x164) = (*(f32 *) ((u8 *) &sp28 + 0x4));
@@ -201,7 +201,7 @@ void ElementalCombatController::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to
+#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to 'MKSceneManager *'
 f32 ElementalCombatController::Resolve() {
     MKSceneManager *temp_r3_382;
     s32 temp_r30_381;
@@ -374,7 +374,7 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     return (u8) (this->unk3DC.LoadLine(arg0, "OnWave16Complete") != 0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to
+#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to 'void **'
 void ElementalCombatController::Deinit() {
     s32 temp_cr0_eq_928;
     s32 var_r30_923;

@@ -195,7 +195,7 @@ void Video_SetLooping(Video *arg0, bool arg1) {
     M2C_FIELD(&currentVideo, u8 *, 0x36) = arg1;
 }
 
-#if 0 // DRAFT: function call 'Video_GetYUVData(long, long, long)' does not match
+#if 0 // DRAFT: function call 'Video_GetYUVData(long, long, long)' does not match 'Video_GetYUVData(void **, void **, void **)'
 s32 Video_Update(Video *arg0) {
     s32 temp_r30_452;
     s32 temp_r3_387;
@@ -245,7 +245,7 @@ s32 Video_Update(Video *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sprintf(signed char *, const char[13], const char *)' does
+#if 0 // DRAFT: function call 'sprintf(signed char *, const char[13], const char *)' does not match 'sprintf(char *, const char *, ...)'
 MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3, int arg4) {
     s8 sp8;
     MKResource *temp_r29_600;

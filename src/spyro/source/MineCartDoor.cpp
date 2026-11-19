@@ -91,8 +91,8 @@ void MineCartDoor::Reset() {
 void MineCartDoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");
-    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("Open");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("Closing");
-    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
+    this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Open"));
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("Closing"));
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Closed"));
 }
 #endif

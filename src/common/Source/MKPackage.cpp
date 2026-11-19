@@ -70,7 +70,7 @@ extern s32 totalBytesInPackage;
 extern s32 totalBytesLoaded;
 static s8 packageName[0x20];
 static s8 binaryPackageName[0x20];
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_pPackageEntries_0x14'
 static struct _struct_pPackageEntries_0x14 pPackageEntries[0x400];
 #endif
 static TimerInfo packageTime;
@@ -146,7 +146,7 @@ u8 MKPackage_QIsLoaded(int arg0, float *arg1, int *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
     s32 temp_r0_135;
     s32 temp_r3_142;
@@ -164,9 +164,9 @@ s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
         nextQueueHandle += 1;
     }
     if (arg2 != NULL) {
-        var_r4_155 = arg2;
+        var_r4_155 = (signed char *) (arg2);
     } else {
-        var_r4_155 = "<Dynamic>";
+        var_r4_155 = (signed char *) ("<Dynamic>");
     }
     strcpy(((u8 *) temp_r31_139) + 4, var_r4_155);
     strncpy(((u8 *) temp_r31_139) + 0x24, arg0, 0xFFU);
@@ -177,7 +177,7 @@ s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char *)' does not match 'strcpy(char *, const char *)'
 s32 MKPackage_QLoad(const char *arg0, int arg1) {
     s32 temp_r0_193;
     s32 temp_r3_200;
@@ -201,13 +201,12 @@ s32 MKPackage_QLoad(const char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKPackage_UseQ() {
     PackageQueueInfo *var_r3_245;
 
     if ((u8) QInterface == 0) {
         if (MKHeap::Current() != NULL) {
-            var_r3_245 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x960, NULL, 0);
+            var_r3_245 = (PackageQueueInfo *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x960, NULL, 0));
         } else {
             var_r3_245 = malloc(0x960);
         }
@@ -216,7 +215,6 @@ void MKPackage_UseQ() {
         QInterface = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'RemoveFromQueue'
 void ProcessQueue() {
@@ -249,7 +247,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'PackageQueueInfo' to
+#if 0 // DRAFT: illegal explicit conversion from 'PackageQueueInfo' to 'long'
 PackageQueueInfo *FindQueuedPackage(int arg0) {
     s32 var_ctr_342;
     s32 var_r4_340;
@@ -291,7 +289,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: function call 'MKArchive_DeregisterArchive(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKArchive_DeregisterArchive(signed char *)' does not match 'MKArchive_DeregisterArchive(const char *)'
 s32 MKPackage_Free() {
     MKHeap *temp_r3_462;
     PackageQueueInfo *var_r3_544;
@@ -370,7 +368,7 @@ loop_26:
         if ((((s32) nmbrOfPackageEntries != (s32) nmbrOfAutoEntries) || (var_r25_490 != (s32) nmbrOfPackageEntries) || (System_GetCommandLineParameter("OutputPackages", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) && (strcmpi(packageName, "<Dynamic>") != 0)) {
             temp_r27_535 = (nmbrOfAutoEntries * 0x24) + 1;
             if (MKHeap::Current() != NULL) {
-                var_r3_544 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r27_535, NULL, 0, 0U);
+                var_r3_544 = (PackageQueueInfo *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r27_535, NULL, 0, 0U));
             } else {
                 var_r3_544 = malloc(temp_r27_535);
             }
@@ -465,7 +463,7 @@ u8 MKPackage_IsLoaded(float *arg0, int *arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, char *)' does not match 'strcpy(char *, const char *)'
 void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
     PackageQueueInfo *var_r3_784;
     s32 temp_r30_775;
@@ -478,7 +476,7 @@ void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
     packageTextSize = temp_r3_773;
     temp_r30_775 = temp_r3_773 + 1;
     if (MKHeap::Current() != NULL) {
-        var_r3_784 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r30_775, NULL, 0, 0U);
+        var_r3_784 = (PackageQueueInfo *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r30_775, NULL, 0, 0U));
     } else {
         var_r3_784 = malloc(temp_r30_775);
     }
@@ -493,7 +491,7 @@ void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to 'float'
 void MKPackage_Load(char *arg0, bool arg1) {
     MKHeap *temp_ret_825;
     PackageQueueInfo *var_r3_901;
@@ -525,7 +523,7 @@ void MKPackage_Load(char *arg0, bool arg1) {
     }
     temp_r30_892 = packageTextSize + 1;
     if (MKHeap::Current() != NULL) {
-        var_r3_901 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r30_892, NULL, 0, 0U);
+        var_r3_901 = (PackageQueueInfo *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r30_892, NULL, 0, 0U));
     } else {
         var_r3_901 = malloc(temp_r30_892);
     }
@@ -597,7 +595,7 @@ loop_12:
     System_GetCommandLineParameter("OutputPackages", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         if (MKHeap::Current() != NULL) {
-            var_r3_1048 = ((MKHeap *) (MKHeap::Main()))->TAlloc(0x8800, NULL, 0, 0U);
+            var_r3_1048 = (PackageQueueInfo *) (((MKHeap *) (MKHeap::Main()))->TAlloc(0x8800, NULL, 0, 0U));
         } else {
             var_r3_1048 = malloc(0x8800);
         }
@@ -662,7 +660,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPackageEntries'
+#if 0 // DRAFT: function call 'strcmpi(signed char, char *)' does not match 'strcmpi(signed char *, signed char *)'
 void AddToPackage(char *arg0, bool arg1) {
     s32 temp_r6_1223;
     s32 var_r27_1165;
@@ -684,7 +682,7 @@ loop_3:
     if ((var_r27_1165 == (s32) nmbrOfPackageEntries) && (MKArchive_Exists(arg0, (int *) &pPackageEntries[nmbrOfPackageEntries].unk8) != 0)) {
         pPackageEntries[nmbrOfPackageEntries].unk0 = arg0;
         var_r29_1204 = 0;
-        temp_r4_1207 = &pPackageEntries[nmbrOfPackageEntries];
+        temp_r4_1207 = (_struct_pPackageEntries_0x14 *) (&pPackageEntries[nmbrOfPackageEntries]);
         temp_r4_1207->unk4 = MKArchive_GetOffset(arg0);
         temp_r4_1207->unkC = 0;
         if ((arg1 != 0) || (Util_WildcardPatternMatch(arg0, gpTempMemFilePatterns) != 0)) {
@@ -703,7 +701,7 @@ s32 PackageSort(const void *arg0, const void *arg1) {
     return M2C_FIELD(arg0, s32 *, 4) - M2C_FIELD(arg1, s32 *, 4);
 }
 
-#if 0 // DRAFT: function call 'MKArchive_Open(signed char[32], int, unsigned int)' does
+#if 0 // DRAFT: function call 'MKArchive_Open(signed char[32], int, unsigned int)' does not match 'MKArchive_Open(const char *, int *, bool)' Too many errors printed, aborting 
 void MKPackage_Update() {
     PackageQueueInfo *var_r3_1494;
     PackageQueueInfo *var_r3_1595;
@@ -959,7 +957,7 @@ void LogLoadStats() {
 
 }
 
-#if 0 // DRAFT: function call 'MKArchive_SetLoadInterceptHandler(void * (*)(signed char *,
+#if 0 // DRAFT: function call 'MKArchive_SetLoadInterceptHandler(void * (*)(signed char *, long *, void *, long *))' does not match 'MKArchive_SetLoadInterceptHandler(void * (*
 void MKPackage_DeinitModule() {
     MKArchive_SetLoadInterceptHandler(pPreviousHandler);
     pPreviousHandler = NULL;
@@ -985,7 +983,7 @@ void MKPackage_InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void *PackageIntercept(const char *arg0, int *arg1, void *arg2, int *arg3) {
     s32 temp_r0_1856;
     s32 temp_r0_1865;
@@ -1055,7 +1053,7 @@ loop_20:
     }
 block_23:
     if (((void *(*)(s8 *, s32 *, void *, s32 *)) pPreviousHandler) != NULL) {
-        return pPreviousHandler(arg0, arg1, var_r30_1836, arg3);
+        return (signed char *) (pPreviousHandler(arg0, arg1, var_r30_1836, arg3));
     }
     return NULL;
 }

@@ -85,7 +85,7 @@ void CollapsibleProp::SetState(CollapsibleProp::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'CollapsibleProp::State'
 void CollapsibleProp::Message(MKMessage *arg0) {
     u8 sp10;
     s32 spC;
@@ -112,7 +112,7 @@ void CollapsibleProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float)' does not match
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float)' does not match 'HeroInterface::GetHeroType()'
 void *CollapsibleProp::Update() {
     MKAnimScript *temp_r3_269;
     f32 temp_f1_188;
@@ -174,7 +174,7 @@ void *CollapsibleProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'CollapsibleProp::State'
 void CollapsibleProp::Reset() {
     KDProp::Reset();
     this->unk94 = 0.0f;
@@ -182,7 +182,7 @@ void CollapsibleProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'CollapsibleProp::State'
 s32 CollapsibleProp::LoadDone() {
     f64 sp10;
     f64 sp8;

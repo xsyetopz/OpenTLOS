@@ -2,7 +2,7 @@
 #include "common/Source/MKIni.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(const DataMap *, long)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(const DataMap *, long)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 stricmp(s8 *);                                  /* extern */
 
 s32 DataMap_LoadLineBitfield(MKIniLine *arg0, const char *arg1, const DataMap *arg2, unsigned int *arg3) {
@@ -27,7 +27,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 DataMap_LoadLine(MKIniLine *arg0, const char *arg1, const DataMap *arg2, unsigned int *arg3) {
     s8 *sp8;
     s32 var_r31_68;

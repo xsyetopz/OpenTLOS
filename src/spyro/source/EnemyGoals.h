@@ -323,7 +323,7 @@ inline void EnemyGoal_Hide::Reset() {
     this->unk10 = 0;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 inline void EnemyGoal_PullLever::Reset() {
     this->unk8 = 1;
     this->unk10.Set(NULL);

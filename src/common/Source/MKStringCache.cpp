@@ -12,7 +12,7 @@
 #include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 M2C_UNK free(MKStringCache *);                      /* extern */
 MKStringCache *malloc(MKStringCache *);             /* extern */
 void *realloc(MKStringCache *, void *);             /* extern */
@@ -31,7 +31,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 MKStringCache *MKStringCache::Add(const char *arg0) {
     s32 temp_r3_57;
     s32 var_r3_75;
@@ -67,7 +67,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 MKStringCache *MKStringCache::Find(const char *arg0) {
     s32 temp_r3_127;
     s8 *var_r29_120;
@@ -123,12 +123,12 @@ void MKStringCache::Destroy() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'malloc'
 MKStringCache *MKStringCache::Create(int arg0) {
     MKStringCache *var_r31_257;
 
     if (MKHeap::Current() != NULL) {
-        var_r31_257 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) this, NULL, 0);
+        var_r31_257 = (MKStringCache *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) this, NULL, 0));
     } else {
         var_r31_257 = malloc(this);
     }

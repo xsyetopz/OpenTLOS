@@ -116,7 +116,6 @@ loop_9:
     goto loop_9;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int arg1) {
     f64 sp10;
     f64 sp8;
@@ -142,7 +141,7 @@ CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int
 
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_210 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0);
+            var_r3_210 = (CustomMaterialUpdater **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0));
         } else {
             var_r3_210 = malloc(0x20);
         }
@@ -161,9 +160,8 @@ CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int
     }
     return temp_r31_197;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'CustomMaterialUpdater *' and 'CustomMaterialUpdater **'
 void CustomMaterialUpdateManager::Deinit() {
     CustomMaterialUpdater **var_r31_252;
     CustomMaterialUpdater **var_r3_253;
@@ -225,7 +223,6 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CustomMaterialUpdateManager::Init() {
     CustomMaterialUpdater **temp_r3_364;
     CustomMaterialUpdater **temp_r3_370;
@@ -234,7 +231,7 @@ void CustomMaterialUpdateManager::Init() {
     s32 var_ctr_362;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_349 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
+        var_r3_349 = (CustomMaterialUpdater **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0));
     } else {
         var_r3_349 = malloc(0x58);
     }
@@ -254,4 +251,3 @@ void CustomMaterialUpdateManager::Init() {
     this->unk0 = temp_r3_370 + 4;
     M2C_FIELD(temp_r3_370, CustomMaterialUpdater ***, 4) = NULL;
 }
-#endif

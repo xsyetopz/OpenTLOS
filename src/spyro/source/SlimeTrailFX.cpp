@@ -29,7 +29,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void SlimeTrailFXManager::Deinit() {
     MKHeap *temp_r0_43;
     MKHeap *temp_r0_62;
@@ -47,7 +47,7 @@ loop_2:
         this->unk0 = (MKHeap *) &this->unk0->unk4;
         goto loop_2;
     }
-    var_r31_26 = temp_r3_22 - 4;
+    var_r31_26 = (SlimeTrailFX **) (temp_r3_22 - 4);
 loop_5:
     if (var_r31_26 != NULL) {
         temp_r3_34 = *var_r31_26;
@@ -90,7 +90,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'SlimeTrailFX *'
 void SlimeTrailFXManager::FreeTrail(SlimeTrailFX *arg0) {
     MKHeap *temp_r0_107;
     MKHeap *temp_r5_95;
@@ -159,7 +159,7 @@ loop_2:
     MKView_Pop();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void SlimeTrailFXManager::Update() {
     s8 spC1;
     u8 spC0;
@@ -289,7 +289,6 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SlimeTrailFXManager::Init() {
     MKHeap *temp_r3_443;
     MKHeap *temp_r3_449;
@@ -299,7 +298,7 @@ void SlimeTrailFXManager::Init() {
     s32 var_ctr_441;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_428 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x248, NULL, 0);
+        var_r3_428 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x248, NULL, 0));
     } else {
         var_r3_428 = malloc(0x248);
     }
@@ -331,7 +330,6 @@ loop_10:
         goto loop_10;
     }
 }
-#endif
 
 void SlimeTrailFX::Deinit() {
     MKHeap *temp_r31_491;
@@ -407,7 +405,7 @@ loop_12:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void SlimeTrailFX::Draw() {
     f64 sp1E8;
     f64 sp1E0;
@@ -600,12 +598,11 @@ void SlimeTrailFX::Reset() {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SlimeTrailFX::Init() {
     MKHeap *var_r3_944;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_944 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
+        var_r3_944 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0));
     } else {
         var_r3_944 = malloc(0x190);
     }
@@ -614,4 +611,3 @@ void SlimeTrailFX::Init() {
     this->unk18 = 0;
     this->unk1C = 0;
 }
-#endif

@@ -80,7 +80,7 @@ f32 WaterVolume::Resolve() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_98, 0x40F);
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 WaterVolume::LoadDone() {
     Matrix sp10;
     M2C_UNK spC;

@@ -11,7 +11,7 @@ M2C_UNK strupr(s8 *);                               /* extern */
 extern M2C_UNK gGameCubeDiscErrors;
 static s32 nCurrErr = -1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 void DiscErr_DrawString(char *arg0) {
     s8 sp8;
     s16 var_r29_27;
@@ -27,7 +27,7 @@ void DiscErr_DrawString(char *arg0) {
     MKInput_Update();
     VIWaitForRetrace();
     XFONTClearScreen(7U);
-    var_r31_20 = arg0;
+    var_r31_20 = (signed char *) (arg0);
     var_r29_27 = 0xB - (strlen(arg0) / 48);
 loop_1:
     temp_r3_30 = strlen(var_r31_20);
@@ -69,13 +69,12 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'DiscErr_DrawString(signed char *)' does not match
+#if 0 // DRAFT: function call 'DiscErr_DrawString(signed char *)' does not match 'DiscErr_DrawString(char *)'
 void DiscErr_DrawErrorString() {
     DiscErr_DrawString(DiscErr_GetErrorString());
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s8 *DiscErr_GetErrorString() {
     s32 var_r31_139;
     u8 temp_r3_140;
@@ -106,11 +105,10 @@ s8 *DiscErr_GetErrorString() {
             var_r31_139 = 6;
             break;
         }
-        return *(&gGameCubeDiscErrors + (var_r31_139 * 0x14) + (nCurrErr * 4));
+        return (signed char *) (*(&gGameCubeDiscErrors + (var_r31_139 * 0x14) + (nCurrErr * 4)));
     }
-    return *(&gGameCubeDiscErrors + (Translation_GetLanguage() * 0x14) + (nCurrErr * 4));
+    return (signed char *) (*(&gGameCubeDiscErrors + (Translation_GetLanguage() * 0x14) + (nCurrErr * 4)));
 }
-#endif
 
 void DiscErr_ClearError() {
     nCurrErr = -1;

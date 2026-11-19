@@ -46,11 +46,10 @@ extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ElementalShield::SetElement(int arg0) {
     this->unkA4 = arg0;
     if ((s32) this->unkA4 == 2) {
-        this->unkB0 = MKMaterial_Create("FX_BossShieldIce");
+        this->unkB0 = (MKMaterial *) (MKMaterial_Create("FX_BossShieldIce"));
         this->unkB4 = GS_IceBossForceFieldStart;
         this->unkB8 = GS_IceBossForceFieldStop;
         this->unkBC = GS_IceBossForceFieldLP;
@@ -62,13 +61,12 @@ void ElementalShield::SetElement(int arg0) {
     this->unkBC = GS_ElecBossForceFieldLP;
     this->unkC0 = GS_ElecBossFieldHurtSpyro;
 }
-#endif
 
 void ElementalShield::Disable() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void ElementalShield::Trigger(MKVector3 *arg0, float arg1, bool arg2) {
     if ((s32) this->unk90 == 0) {
         this->unk90 = 1;

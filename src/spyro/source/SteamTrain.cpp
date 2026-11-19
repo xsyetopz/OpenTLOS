@@ -299,9 +299,7 @@ u8 states__10SteamTrain[0xD8] = {
     0,
     0,
 };
-#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to
-static s8 *pSteamAnimEvents = "SteamPuff";
-#endif
+static s8 *pSteamAnimEvents = (signed char *) ("SteamPuff");
 
 static s32 lit_1019 = 0;
 static u8 lit_1020 = 1;
@@ -314,7 +312,7 @@ void SteamTrain::Stop(bool arg0) {
     ((KDStateMachine<SteamTrain> *) &this->unk378)->SetState(this, 4, 0U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
+#if 0 // DRAFT: illegal explicit conversion from 'TrainTrack' to 'double'
 void SteamTrain::StateRamUpdate() {
     s8 sp1F1;
     s8 sp1F0;
@@ -392,7 +390,7 @@ void SteamTrain::StateRamUpdate() {
     if ((u8) this->unk130 != 0) {
         this->unk38C -= gUpdateTimeDelta;
     }
-    temp_r3_314 = checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_314 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     if (temp_r3_314 != 0) {
         sp138.GetTrackZAxis(temp_r3_314, this->unk110);
         sp138.unk10 = M2C_BITWISE(f64, sp138);
@@ -600,7 +598,7 @@ void SteamTrain::StateChaseExit() {
     this->unk130 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
+#if 0 // DRAFT: undefined identifier 'sp110'
 void SteamTrain::StateChaseUpdate() {
     f32 sp16C;
     f32 sp168;
@@ -662,7 +660,7 @@ void SteamTrain::StateChaseUpdate() {
     void *temp_r3_1004;
     void *temp_r3_793;
 
-    temp_r3_768 = checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_768 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     if (temp_r3_768 != 0) {
         ((TrainTrack *) &sp108)->GetTrackZAxis(temp_r3_768, this->unk110);
         sp118 = sp108;
@@ -779,7 +777,7 @@ void SteamTrain::StateFallBackExit() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
+#if 0 // DRAFT: undefined identifier 'sp104'
 void SteamTrain::StateFallBackUpdate() {
     f32 sp14C;
     f32 sp148;
@@ -839,7 +837,7 @@ void SteamTrain::StateFallBackUpdate() {
     void *temp_r3_1273;
     void *temp_r3_1282;
 
-    temp_r3_1070 = checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_1070 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     if (temp_r3_1070 != 0) {
         temp_f2_1075 = this->unk108;
         this->unk108 = -((0.8f * temp_f2_1075 * gUpdateTimeDelta) - temp_f2_1075);
@@ -940,7 +938,7 @@ void SteamTrain::StateFleeExit() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
+#if 0 // DRAFT: undefined identifier 'sp108'
 void SteamTrain::StateFleeUpdate() {
     f32 sp15C;
     f32 sp158;
@@ -1009,7 +1007,7 @@ void SteamTrain::StateFleeUpdate() {
     void *temp_r3_1373;
     void *temp_r3_1649;
 
-    temp_r3_1330 = checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_1330 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     if (temp_r3_1330 != 0) {
         ((TrainTrack *) &sp100)->GetTrackZAxis(temp_r3_1330, this->unk110);
         sp110 = sp100;
@@ -1160,7 +1158,6 @@ void SteamTrain::StateFleeUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SteamTrain::StateFleeEnter() {
     f64 sp60;
     f64 sp58;
@@ -1197,16 +1194,15 @@ void SteamTrain::StateFleeEnter() {
         sp50 = (f64) sp20;
         sp58 = (f64) sp28;
         sp60 = (f64) sp30;
-        this->unk390 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1500.0f, lit_1019, lit_1020);
+        this->unk390 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1500.0f, lit_1019, lit_1020));
         temp_r4_1724 = this->unk390;
         if (temp_r4_1724 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1724, 1U);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void SteamTrain::Message(MKMessage *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1478,7 +1474,7 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void *SteamTrain::Update() {
     f32 sp2C;
     f32 sp28;
@@ -1575,14 +1571,14 @@ f32 SteamTrain::Resolve() {
     this->unk138.Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'pSteamAnimEvents'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 SteamTrain::LoadDone() {
     s32 var_r30_2501;
     s32 var_r31_2502;
 
     GameProp::LoadDone();
     this->unk80->InitEvents(&pSteamAnimEvents);
-    this->unk134 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
+    this->unk134 = (long) (checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3")));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
     this->unk138.Init((Matrix *) this->unk8, this->unk4, this->unk80);
     this->unk138.unkC = this;
@@ -1727,7 +1723,7 @@ void SteamTrainEffects::UpdateAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_GetRefPointMatrix(MKModel *, SteamTrainEffects,
+#if 0 // DRAFT: function call 'MKModel_GetRefPointMatrix(MKModel *, SteamTrainEffects, Matrix *, unsigned int)' does not match 'MKModel_GetRefPointMatrix(const MKModel *, int, 
 void SteamTrainEffects::DrawEffects() {
     Matrix sp10;
     M2C_UNK spC;
@@ -1882,7 +1878,7 @@ void SteamTrainEffects::EmitSmoke() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_CalculateRefPointWorldPosition(MKModel *,
+#if 0 // DRAFT: function call 'MKModel_CalculateRefPointWorldPosition(MKModel *, SteamTrainEffects, MKVector3 *)' does not match 'MKModel_CalculateRefPointWorldPosition(const M
 void SteamTrainEffects::EmitBrakingEffects() {
     MKVector3 sp8;
     f32 temp_f2_3206;
@@ -2079,7 +2075,7 @@ void SteamTrainEffects::Reset() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingNodeIndex(MKModel *, signed char *)' does
+#if 0 // DRAFT: function call 'Tools_GetMatchingNodeIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingNodeIndex(MKModel *, const char *)'
 void SteamTrainEffects::Resolve() {
     Animation sp28;
     f64 sp18;
@@ -2145,7 +2141,7 @@ void SteamTrainEffects::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 void SteamTrainEffects::Init(const Matrix *arg0, MKModel *arg1, MKAnimScript *arg2) {
     f32 var_f0_3740;
     s32 var_ctr_3731;
@@ -2155,7 +2151,7 @@ void SteamTrainEffects::Init(const Matrix *arg0, MKModel *arg1, MKAnimScript *ar
     void *temp_r5_3736;
 
     var_r7_3719 = 1;
-    this->unk0 = arg0;
+    this->unk0 = (Matrix *) (arg0);
     this->unk4 = arg1;
     var_r3_3727 = 0x18;
     this->unk8 = arg2;
@@ -2181,7 +2177,7 @@ void SteamTrainEffects::Init(const Matrix *arg0, MKModel *arg1, MKAnimScript *ar
     this->unk1DC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSmokePS"));
     this->unk1E0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSteamPS"));
     this->unk1E4 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSteamPuffPS"));
-    this->unk1E8 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
+    this->unk1E8 = (long) (checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3")));
     this->unk1EC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "caboose");
     this->unk1F0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_01");
     this->unk1F4 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_02");
@@ -2208,7 +2204,7 @@ void SteamTrainEffects::Init(const Matrix *arg0, MKModel *arg1, MKAnimScript *ar
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp260;
     Matrix sp220;

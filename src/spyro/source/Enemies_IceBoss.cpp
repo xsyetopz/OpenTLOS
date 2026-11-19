@@ -163,7 +163,7 @@ s32 IceBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x368);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBoss::UpdateWeaponCollisionCapsule() {
     Matrix sp70;
     f64 sp68;
@@ -195,7 +195,7 @@ void IceBoss::UpdateWeaponCollisionCapsule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void IceBoss::CalcSubObjWorldMatrix(int arg0, Matrix *arg1) {
     Matrix sp40;
     f64 sp38;
@@ -208,7 +208,7 @@ void IceBoss::CalcSubObjWorldMatrix(int arg0, Matrix *arg1) {
     void *temp_r3_185;
 
     MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44), &sp40);
-    temp_r3_185 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44));
+    temp_r3_185 = (void *) (MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44)));
     sp30 = M2C_FIELD(temp_r3_185, f64 *, 0);
     sp38 = M2C_FIELD(temp_r3_185, f64 *, 8);
     sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk10));
@@ -425,7 +425,7 @@ void IceBoss::DestroyShield() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void IceBoss::UpdateFormShield() {
     Matrix spF0;
     f64 spE0;
@@ -542,7 +542,7 @@ void IceBoss::FormShield() {
     this->unkFB0 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, unsigned in
 void IceBoss::DestroyWeapon() {
     s32 temp_r0_939;
     u32 temp_r5_1061;
@@ -606,7 +606,7 @@ void IceBoss::UpdatePhrasesAndSounds() {
 loop_3:
     if ((temp_f30_1125 != 0.0f) && (*(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300)) != 0.0f) && (this->unk1008 > *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300))) && (temp_f30_1125 <= *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300)))) {
         this->unk100C = M2C_FIELD(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x34C);
-        this->unk1004 = checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x2E0);
+        this->unk1004 = (signed char *) (checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x2E0));
     } else {
         var_r29_1131 += 1;
         var_r30_1132 += 0x24;
@@ -784,7 +784,7 @@ void IceBoss::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void IceBoss::UpdateFormWeapon() {
     Matrix spF0;
     f64 spE0;
@@ -938,7 +938,7 @@ void IceBoss::UpdateWeapons() {
     this->unkF90->unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
     Matrix sp40;
     f64 sp38;
@@ -951,7 +951,7 @@ void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
     void *temp_r3_1714;
 
     MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, arg0, &sp40);
-    temp_r3_1714 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, arg0);
+    temp_r3_1714 = (void *) (MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, arg0));
     sp30 = M2C_FIELD(temp_r3_1714, f64 *, 0);
     sp38 = M2C_FIELD(temp_r3_1714, f64 *, 8);
     sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk10));
@@ -969,7 +969,7 @@ void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void IceBoss::ShatterBodyParts() {
     Shatterable *temp_r5_1804;
     s32 var_r29_1793;
@@ -1050,7 +1050,6 @@ void IceBoss::UpdateBodyParts() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void IceBoss::InterceptDamage(bool *arg0) {
     s32 temp_r0_2012;
     s32 temp_r5_1988;
@@ -1074,7 +1073,7 @@ loop_13:
             if (var_r0_1989 >= temp_r5_1988) {
                 var_r0_1989 -= temp_r5_1988;
             }
-            var_r6_1984 = this->unk9DC + (var_r0_1989 * 0x38);
+            var_r6_1984 = (void *) (this->unk9DC + (var_r0_1989 * 0x38));
         }
         M2C_FIELD(var_r6_1984, u8 *, 0x34) = (u8) (M2C_FIELD(var_r6_1984, u8 *, 0x34) & ~0x80);
         if ((arg0 != NULL) && ((u8) this->unkFB8 != 0)) {
@@ -1084,7 +1083,6 @@ loop_13:
         goto loop_13;
     }
 }
-#endif
 
 s32 IceBoss::TryChangeStage() {
     f32 temp_f1_2026;
@@ -1177,7 +1175,7 @@ void IceBoss::StartPhase3() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Disable(ElementalShield *, CharacterBreathFX *)' does not
+#if 0 // DRAFT: function call 'Disable(ElementalShield *, CharacterBreathFX *)' does not match 'ElementalShield::Disable()'
 void IceBoss::StartPhase2() {
     CharacterBreathFX *temp_r4_2256;
     ElementalShield *temp_r3_2260;
@@ -1201,7 +1199,7 @@ void IceBoss::StartPhase2() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Disable(ElementalShield *, int)' does not match
+#if 0 // DRAFT: function call 'Disable(ElementalShield *, int)' does not match 'ElementalShield::Disable()'
 void IceBoss::StartPhase1() {
     CharacterBreathFX *temp_r3_2313;
     ElementalShield *temp_r3_2318;
@@ -1234,7 +1232,7 @@ u8 IceBoss::IsIceKing() {
     return this->unkA38->unk1D0 == 2;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float *' to
+#if 0 // DRAFT: illegal implicit conversion from 'float *' to 'const Matrix *'
 void IceBoss::Message(MKMessage *arg0) {
     f32 sp6C;
     f32 sp68;
@@ -1423,7 +1421,7 @@ void IceBoss::DrawSubObject(int arg0, float arg1) {
     MKModel_SetAlpha(this->unk4, temp_f31_2738);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void IceBoss::Draw() {
     Matrix spD0;
     f64 spC8;
@@ -1471,7 +1469,7 @@ void IceBoss::Draw() {
         spA0 = M2C_FIELD(temp_r7_2799, f64 *, 0x30);
         spA8 = M2C_FIELD(temp_r7_2799, f64 *, 0x38);
         MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r5_2784, s32 *, 0xE44), &spD0);
-        temp_r3_2811 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44));
+        temp_r3_2811 = (void *) (MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44)));
         sp90 = M2C_FIELD(temp_r3_2811, f64 *, 0);
         sp98 = M2C_FIELD(temp_r3_2811, f64 *, 8);
         sp20 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk10));
@@ -1485,7 +1483,7 @@ void IceBoss::Draw() {
         spC0 = (f64) spD0.unk30;
         spC8 = (f64) spD0.unk38;
         MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, (s32) this->unkEBC, &spD0);
-        temp_r3_2862 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, (s32) this->unkEBC);
+        temp_r3_2862 = (void *) (MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, (s32) this->unkEBC));
         sp90 = M2C_FIELD(temp_r3_2862, f64 *, 0);
         sp98 = M2C_FIELD(temp_r3_2862, f64 *, 8);
         sp10 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk10));
@@ -1612,7 +1610,7 @@ void IceBoss::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector3 arg3) {
     MKCollisionResult sp1C8;
     f64 sp1C0;
@@ -1743,7 +1741,7 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         } else {
             var_f5_3300 = 0.0f;
         }
-        temp_r30_3306 = M2C_BITWISE(s32, temp_r31_3217) + 0x7C;
+        temp_r30_3306 = (Matrix *) (M2C_BITWISE(s32, temp_r31_3217) + 0x7C);
         var_r29_3308 = 1;
         sp1A8 = (f32) sp1A8 * var_f5_3300;
         var_r24_3318 = 0;
@@ -1861,7 +1859,7 @@ void IceBoss::ResetWeapons() {
     this->unkECC = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[22]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void IceBoss::InitShield() {
     s8 *var_r4_3636;
 
@@ -1871,15 +1869,15 @@ void IceBoss::InitShield() {
     this->unkEC8 = 0;
     this->unkEC9 = 0;
     this->unkECC = 0.0f;
-    var_r4_3636 = "ElecKingArmour_Shield";
+    var_r4_3636 = (signed char *) ("ElecKingArmour_Shield");
     if (IsIceKing() != 0) {
-        var_r4_3636 = "IceBossArmour_Shield";
+        var_r4_3636 = (signed char *) ("IceBossArmour_Shield");
     }
-    this->unkED0 = checked_cast<Shatterable *, MKProp>(gMK->CreateProp(var_r4_3636));
+    this->unkED0 = (const char *) (checked_cast<Shatterable *, MKProp>(gMK->CreateProp(var_r4_3636)));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
     s32 temp_r30_3666;
     s32 temp_r30_3707;
@@ -1903,20 +1901,20 @@ void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
     M2C_FIELD(temp_r31_3675, f32 *, 0xE64) = 120.00001f;
     M2C_FIELD(temp_r31_3675, f32 *, 0xE68) = 180.0f;
     temp_ret_3691 = IsIceKing();
-    var_r4_3695 = "ElecKing";
+    var_r4_3695 = (signed char *) ("ElecKing");
     if (temp_ret_3691 != 0) {
-        var_r4_3695 = "IceBoss";
+        var_r4_3695 = (signed char *) ("IceBoss");
     }
     temp_r3_3704 = Str_Printf("%sArmour_%s", var_r4_3695, arg1, M2C_BITWISE(f32, temp_ret_3691));
     temp_r30_3707 = strlen(temp_r3_3704) + 1;
     if (MKHeap::Current() != NULL) {
-        var_r3_3715 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3707, NULL, 0);
+        var_r3_3715 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3707, NULL, 0));
     } else {
         var_r3_3715 = malloc(temp_r30_3707);
     }
     M2C_FIELD(temp_r31_3675, s8 **, 0xE5C) = var_r3_3715;
     strcpy(M2C_FIELD(temp_r31_3675, s8 **, 0xE5C), temp_r3_3704);
-    M2C_FIELD(temp_r31_3675, Shatterable **, 0xE60) = checked_cast<Shatterable *, MKProp>(gMK->CreateProp(M2C_FIELD(temp_r31_3675, s8 **, 0xE5C)));
+    M2C_FIELD(temp_r31_3675, Shatterable **, 0xE60) = (const char *) (checked_cast<Shatterable *, MKProp>(gMK->CreateProp(M2C_FIELD(temp_r31_3675, s8 **, 0xE5C))));
 }
 #endif
 
@@ -1931,7 +1929,7 @@ void IceBoss::InitBodyPart(IceBossBodyPart *arg0, int arg1, const char *arg2, in
     arg0->unk18 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubObjectType arg4, bool arg5) {
     s32 temp_r30_3794;
     s32 temp_r30_3833;
@@ -1952,26 +1950,25 @@ void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubOb
     M2C_FIELD(temp_r31_3803, Shatterable **, 0xB60) = NULL;
     M2C_FIELD(temp_r31_3803, s8 **, 0xB5C) = NULL;
     temp_ret_3813 = IsIceKing();
-    var_r4_3817 = "ElecKing";
+    var_r4_3817 = (signed char *) ("ElecKing");
     if (temp_ret_3813 != 0) {
-        var_r4_3817 = "IceBoss";
+        var_r4_3817 = (signed char *) ("IceBoss");
     }
     if ((arg2 == 0) && (arg5 != 0)) {
         temp_r3_3830 = Str_Printf("%sArmour_%s", var_r4_3817, arg1, M2C_BITWISE(f32, temp_ret_3813));
         temp_r30_3833 = strlen(temp_r3_3830) + 1;
         if (MKHeap::Current() != NULL) {
-            var_r3_3841 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3833, NULL, 0);
+            var_r3_3841 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3833, NULL, 0));
         } else {
             var_r3_3841 = malloc(temp_r30_3833);
         }
         M2C_FIELD(temp_r31_3803, s8 **, 0xB5C) = var_r3_3841;
         strcpy(M2C_FIELD(temp_r31_3803, s8 **, 0xB5C), temp_r3_3830);
-        M2C_FIELD(temp_r31_3803, Shatterable **, 0xB60) = checked_cast<Shatterable *, MKProp>(gMK->CreateProp(M2C_FIELD(temp_r31_3803, s8 **, 0xB5C)));
+        M2C_FIELD(temp_r31_3803, Shatterable **, 0xB60) = (const char *) (checked_cast<Shatterable *, MKProp>(gMK->CreateProp(M2C_FIELD(temp_r31_3803, s8 **, 0xB5C))));
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
 f32 IceBoss::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -1987,14 +1984,14 @@ f32 IceBoss::Resolve() {
     Shatterable *temp_ret_3887;
 
     Enemy::Resolve();
-    temp_ret_3875 = checked_cast<EventCamera *, MKProp>(this->unkB10->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_ret_3875 = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(this->unkB10->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     this->unkB10 = temp_ret_3875;
     temp_ret_3879 = checked_cast<Shatterable *, MKProp>(this->unkF98->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3875));
-    this->unkF98 = temp_ret_3879;
+    this->unkF98 = (MKSceneManager *) (temp_ret_3879);
     temp_ret_3883 = checked_cast<Shatterable *, MKProp>(this->unkF9C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3879));
-    this->unkF9C = temp_ret_3883;
+    this->unkF9C = (MKSceneManager *) (temp_ret_3883);
     temp_ret_3887 = checked_cast<Shatterable *, MKProp>(this->unkFA0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3883));
-    this->unkFA0 = temp_ret_3887;
+    this->unkFA0 = (MKSceneManager *) (temp_ret_3887);
     temp_r3_3891 = checked_cast<Shatterable *, MKProp>(this->unkFA4->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3887));
     sp8 = 0.5f;
     spC = 0.5f;
@@ -2003,15 +2000,14 @@ f32 IceBoss::Resolve() {
     sp14 = 1.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unkFFC = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(MKVector3::zero, MKVector3::zero, *((MKVector4 *) &sp18), 1000.0f, lit_248, lit_249);
+    this->unkFFC = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(MKVector3::zero, MKVector3::zero, *((MKVector4 *) &sp18), 1000.0f, lit_248, lit_249));
     temp_r4_3915 = this->unkFFC;
     if (temp_r4_3915 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_3915, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 IceBoss::LoadDone() {
     f64 sp40;
     f64 sp38;
@@ -2067,17 +2063,17 @@ s32 IceBoss::LoadDone() {
     InitShield();
     SetAnim((AnimSequenceType) 1, 0, 0, 0.15f, 0U, 0U);
     this->unkB1C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "breath");
-    var_r4_4237 = "ElecKingSword";
+    var_r4_4237 = (signed char *) ("ElecKingSword");
     if (IsIceKing() != 0) {
-        var_r4_4237 = "IceBossSword";
+        var_r4_4237 = (signed char *) ("IceBossSword");
     }
-    this->unkF94 = gMK->CreateProp(var_r4_4237);
+    this->unkF94 = (const char *) (gMK->CreateProp(var_r4_4237));
     temp_r3_4244 = this->unkF94;
     temp_r3_4244->Disable();
     UpdateWeaponCollisionCapsule();
     this->unkF90 = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_4260 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
+        var_r3_4260 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0));
     } else {
         var_r3_4260 = malloc(0x10);
     }
@@ -2133,7 +2129,7 @@ s32 IceBoss::LoadLine(MKIniLine *arg0) {
     return var_r31_4375;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'IceBoss' to
+#if 0 // DRAFT: illegal implicit conversion from 'IceBoss' to 'MKCollisionInfo *'
 void IceBoss::Deinit() {
     IceBossStalactiteSpawner *temp_r29_4496;
     MKCollisionInfo *temp_r27_4542;
@@ -2234,7 +2230,7 @@ void IceBoss::Init() {
     this->unkA3C = &temp_r30_4598->__vptr;
     this->unkFDC = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_4633 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
+        var_r3_4633 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0));
     } else {
         var_r3_4633 = malloc(0x28);
     }
@@ -2283,7 +2279,7 @@ void IceBossDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s32 IceBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp36;
     s8 sp2C;
@@ -2334,7 +2330,7 @@ void IceBossDescriptor::Deinit() {
     pIceBossDesc = NULL;
 }
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match 'strcpy(char *, const char *)'
 void IceBossDescriptor::Init() {
     s32 var_r28_4929;
     s32 var_r31_4930;

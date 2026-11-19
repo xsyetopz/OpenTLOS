@@ -41,7 +41,7 @@ static struct _struct_idleAnimTable_0x18 idleAnimTable[2];
 #endif
 static s32 lit_738 = 0;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroBreatheAnimTable::Update(Spyro *arg0) {
     u32 temp_r4_23;
     u32 temp_r4_45;
@@ -62,7 +62,7 @@ void SpyroBreatheAnimTable::Update(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroBreatheAnimTable::Start(Spyro *arg0, float arg1) {
     if ((u8) arg0->unk3D3 != 0) {
         arg0->SetAnim(this->unk4, arg1, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -93,7 +93,7 @@ u8 SpyroStartCycleAnimTable::IsAnimInTable(Spyro *arg0, MKAnim *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStartCycleAnimTable::Update(Spyro *arg0) {
     if (arg0->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) {
         arg0->SetAnim(this->unk4, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -101,7 +101,7 @@ void SpyroStartCycleAnimTable::Update(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStartCycleAnimTable::Start(Spyro *arg0, float arg1) {
     arg0->SetAnim((u32) this->unk0, arg1, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
@@ -140,7 +140,7 @@ u8 SpyroIdleAnimEntry::IsValid(MaterialIndex arg0, IdleAnimNumber arg1, IdleAnim
     return var_r8_238;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 void SpyroAnimTables_InitIndexTable(MKAnimScript *arg0) {
     SpyroIdleAnimEntry *temp_r20_270;
     s32 var_ctr_326;
@@ -164,7 +164,7 @@ void SpyroAnimTables_InitIndexTable(MKAnimScript *arg0) {
     var_r19_265 = 0;
     var_r30_268 = 0;
     do {
-        temp_r20_270 = &animEnt + var_r30_268;
+        temp_r20_270 = (SpyroIdleAnimEntry *) (&animEnt + var_r30_268);
         temp_r20_270->unk4 = arg0->GetAnim(temp_r20_270->unk0);
         var_r23_275 = 0;
         var_r29_276 = 0;
@@ -176,7 +176,7 @@ loop_3:
         var_r27_284 = 0;
 loop_4:
         if (temp_r20_270->IsValid((MaterialIndex) var_r23_275, (IdleAnimNumber) var_r18_283, (IdleAnimMoveVel) var_r24_279) != 0) {
-            *(idleAnimTable + var_r29_276 + var_r28_280 + var_r27_284) = temp_r20_270;
+            *(idleAnimTable + var_r29_276 + var_r28_280 + var_r27_284) = (signed char) (temp_r20_270);
         }
         var_r18_283 += 1;
         var_r27_284 += 4;

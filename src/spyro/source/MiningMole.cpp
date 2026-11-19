@@ -398,7 +398,7 @@ void MiningMole::Despawn(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     s8 sp170;
     s32 sp16C;

@@ -44,7 +44,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void FloatingPlatform::UpdateMove() {
     f64 sp78;
     f64 sp70;
@@ -225,7 +225,7 @@ s32 FloatingPlatform::LoadDone() {
     M2C_FIELD(this, f64 *, 0x1C0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 s32 FloatingPlatform::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_463;

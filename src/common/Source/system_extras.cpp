@@ -1,7 +1,7 @@
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: undefined identifier '__lower_map'
 s32 strnicmp(const char *arg0, const char *arg1, int arg2) {
     s32 var_ctr_11;
     s8 *var_r3_0;
@@ -11,8 +11,8 @@ s32 strnicmp(const char *arg0, const char *arg1, int arg2) {
     u8 var_r0_34;
     u8 var_r5_20;
 
-    var_r3_0 = arg0;
-    var_r4_0 = arg1;
+    var_r3_0 = (signed char *) (arg0);
+    var_r4_0 = (signed char *) (arg1);
     var_ctr_11 = arg2;
     if (arg2 > 0) {
 loop_1:

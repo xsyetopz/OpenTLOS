@@ -141,7 +141,7 @@ void HurtProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 HurtProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_241;
 
@@ -174,7 +174,7 @@ void HurtProperty::LoadDoneInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 HurtProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r31_300;
 
@@ -201,37 +201,35 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void HurtProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r0_373;
 
     if ((void **) this->unk14 == NULL) {
         temp_r0_373 = this->unk10;
         if (temp_r0_373 != NULL) {
-            this->unk14 = property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(temp_r0_373));
+            this->unk14 = (const char *) (property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(temp_r0_373)));
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 HurtProperty::LoadLine(MKIniLine *arg0) {
     if ((MKIniLine *) this->unk18 == NULL) {
         this->unk18 = arg0;
     }
-    return (u8) (arg0->LoadString("origin", &this->unk10, 0) != 0);
+    return (const char **) ((u8) (arg0->LoadString("origin", &this->unk10, 0) != 0));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 HurtProperty::HurtProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;
-    this->unk10 = "localToWorld";
+    this->unk10 = (signed char *) ("localToWorld");
     this->unk14 = NULL;
     this->unk1C = 0.0f;
     this->unk20 = 0;
 }
-#endif

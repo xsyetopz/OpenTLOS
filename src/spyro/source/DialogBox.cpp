@@ -29,7 +29,7 @@ static u8 *pTags[3] = { NULL, lit_stringBase0, .L_8035CF68 };
 #endif
 static s8 themes[0x40];
 static M2C_UNK contexts;
-#if 0 // DRAFT: identifier 'Dialog_bEnableDraw' redeclared
+#if 0 // DRAFT: identifier 'Dialog_bEnableDraw' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 static u8 Dialog_bEnableDraw = 1;
 #endif
 #if 0 // DRAFT: declaration syntax error
@@ -149,7 +149,7 @@ void DialogBox_Draw() {
             var_r28_31 = 0;
             var_r31_33 = 0;
             do {
-                temp_r27_35 = &contexts + var_r31_33;
+                temp_r27_35 = (DialogBoxContext *) (&contexts + var_r31_33);
                 if (((u32) temp_r27_35->unk30 != NULL) && ((u8) temp_r27_35->unkAC == (u8) M2C_FIELD(&gb, u8 *, 0x395))) {
                     if ((u32) temp_r27_35->unk0 != 0U) {
                         DialogBox_DrawBackground(temp_r27_35);
@@ -166,7 +166,7 @@ void DialogBox_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'unk6C'
 void DialogBox_Update() {
     DialogBoxContext *temp_r31_86;
     f32 temp_f2_94;
@@ -196,7 +196,7 @@ void DialogBox_Update() {
         bDrawnThisFrame = 0;
         var_r28_83 = 0;
         do {
-            temp_r31_86 = &contexts + var_r29_78;
+            temp_r31_86 = (DialogBoxContext *) (&contexts + var_r29_78);
             if (((u32) temp_r31_86->unk30 != NULL) && ((u8) temp_r31_86->unkAC == (u8) M2C_FIELD(&gb, u8 *, 0x395)) && ((temp_f2_94 = temp_r31_86->unk68, ((temp_f2_94 > 0.0f) == 0)) || (temp_r31_86->unk68 = temp_f2_94 - 0.033333335f, ((temp_r31_86->unk68 > 0.0f) == 0)))) {
                 temp_r31_86->unk60 += 0.033333335f;
                 temp_r31_86->unk38 += 0.033333335f * temp_r31_86->unk3C;
@@ -338,7 +338,6 @@ block_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void DialogBox_ReleaseContexts() {
     DialogBoxContext *temp_r3_422;
     s32 var_r29_418;
@@ -347,7 +346,7 @@ void DialogBox_ReleaseContexts() {
     var_r29_418 = 0;
     var_r31_420 = 0;
     do {
-        temp_r3_422 = &contexts + var_r31_420;
+        temp_r3_422 = (DialogBoxContext *) (&contexts + var_r31_420);
         if ((u32) temp_r3_422->unk30 != NULL) {
             DialogBox_ReleaseContext(temp_r3_422);
         }
@@ -355,7 +354,6 @@ void DialogBox_ReleaseContexts() {
         var_r31_420 += 0xB0;
     } while (var_r29_418 < 0xA);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6C'
 void DialogBox_ReleaseContext(DialogBoxContext *arg0) {
@@ -459,7 +457,7 @@ loop_4:
     return var_r31_484;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'DialogBoxTheme' to
+#if 0 // DRAFT: illegal implicit conversion from 'DialogBoxTheme' to 'MKMaterial *'
 void DialogBox_FreeTheme(DialogBoxTheme *arg0) {
     MKFont *temp_r3_584;
     MKMaterial *temp_r3_589;
@@ -494,7 +492,7 @@ void DialogBox_FreeTheme(DialogBoxTheme *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, long, const char *, float)' does
+#if 0 // DRAFT: function call 'Str_Printf(signed char *, long, const char *, float)' does not match 'Str_Printf(const char *, ...)'
 s8 *DialogBox_LoadTheme(const char *arg0, const char *arg1, float arg2, float arg3) {
     MKResource *temp_ret_667;
     MKResource *temp_ret_679;
@@ -532,7 +530,7 @@ loop_4:
             temp_ret_667 = MKMaterial_Create(Str_Printf((s8 *) (lit_stringBase0 + 0x12), var_r29_658 + 1, arg0, var_f1_0));
             var_f1_0 = M2C_BITWISE(f32, temp_ret_667);
             var_r29_658 += 1;
-            var_r28_637[var_r31_660] = temp_ret_667;
+            var_r28_637[var_r31_660] = (signed char) (temp_ret_667);
             var_r31_660 += 4;
         } while (var_r29_658 < 3);
         temp_ret_679 = MKMaterial_Create(Str_Printf((s8 *) (lit_stringBase0 + 0x25), arg0, var_f1_0));
@@ -543,7 +541,7 @@ loop_4:
     }
     M2C_FIELD(var_r28_637, f32 *, 0x14) = temp_f30_632;
     M2C_FIELD(var_r28_637, f32 *, 0x18) = arg3;
-    M2C_FIELD(var_r28_637, void **, 0x1C) = ((MKFont *) arg1)->Create(var_r4_636);
+    M2C_FIELD(var_r28_637, void **, 0x1C) = (const char *) (((MKFont *) arg1)->Create(var_r4_636));
     return var_r28_637;
 }
 #endif
@@ -680,7 +678,7 @@ loop_33:
                 var_f28_935 = 0.0f;
                 *var_r3_923 = 0;
                 if ((s8) (u8) spA0 != 0) {
-                    var_f28_935 = temp_f27_807 * var_r30_810->CalcLength(&spA0);
+                    var_f28_935 = (const char *) (temp_f27_807 * var_r30_810->CalcLength(&spA0));
                     if (arg0->unkC & 8) {
                         var_f1_949 = temp_r28_904->unk10;
                     } else {
@@ -734,7 +732,7 @@ loop_33:
                     var_r4_1078 = M2C_FIELD(gpTranslation_StringArray, s8 **, 0x1C);
                 }
                 temp_r3_1097 = arg0->unk0;
-                temp_f25_1098 = var_r30_810->CalcLength(var_r4_1078);
+                temp_f25_1098 = (const char *) (var_r30_810->CalcLength(var_r4_1078));
                 if ((u32) temp_r3_1097 != 0U) {
                     var_f27_1103 = 1.5f * M2C_FIELD(temp_r3_1097, f32 *, 0x14);
                 } else {
@@ -761,7 +759,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strncpy(signed char *, signed char *, unsigned long)' does not match 'strncpy(char *, const char *, unsigned int)'
 s32 DialogBox_BuildLines(MKFont *arg0, const char *arg1, DialogBoxLine *arg2, float arg3, float arg4) {
     s8 sp8;
     f32 var_f31_1245;
@@ -785,8 +783,8 @@ s32 DialogBox_BuildLines(MKFont *arg0, const char *arg1, DialogBoxLine *arg2, fl
     var_r20_1240 = 0;
     sp8 = 0;
     var_f31_1245 = 0.0f;
-    var_r25_1247 = arg1;
-    var_r24_1248 = arg1;
+    var_r25_1247 = (signed char *) (arg1);
+    var_r24_1248 = (signed char *) (arg1);
     var_r30_1249 = 0;
     var_r29_1250 = 0;
     var_r28_1251 = 0;
@@ -819,7 +817,7 @@ loop_13:
             temp_r19_1301 = &(&sp8)[var_r29_1250];
             strncpy(temp_r19_1301, var_r25_1247, temp_r18_1300);
             temp_r19_1301[temp_r18_1300] = 0;
-            var_f3_1239 = arg4 * arg0->CalcLength(&sp8);
+            var_f3_1239 = (const char *) (arg4 * arg0->CalcLength(&sp8));
             if (var_f3_1239 < arg3) {
                 var_r25_1247 = var_r24_1248;
                 var_r29_1250 += temp_r18_1300;
@@ -858,7 +856,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: undefined identifier 'sp8'
 u8 *DialogBox_strncpy(char *arg0, DialogBoxLine *arg1, int arg2, int arg3) {
     s32 sp18;
     s32 temp_r0_1501;
@@ -886,7 +884,7 @@ u8 *DialogBox_strncpy(char *arg0, DialogBoxLine *arg1, int arg2, int arg3) {
     var_r6_0 = arg3;
     var_r4_1388 = arg1->unk0;
     M2C_FIELD(arg0, s8 *, 0) = 0x3C;
-    var_r7_1392 = arg0 + 4;
+    var_r7_1392 = (signed char *) (arg0 + 4);
     M2C_FIELD(arg0, s8 *, 1) = 0x70;
     var_r0_1394 = 0;
     M2C_FIELD(arg0, s8 *, 2) = (s8) (arg1->unkC + 0x30);
@@ -1014,7 +1012,7 @@ loop_40:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'signed char *' Too many errors printed, aborting program
 void DialogBox_ColorButtons(const char *arg0, char *arg1, int arg2, int arg3) {
     s32 var_r29_1624;
     s8 *var_r27_1625;
@@ -1128,7 +1126,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void DialogBox_DrawTab(DialogBoxContext *arg0) {
     Matrix sp10;
     f32 temp_f27_1807;

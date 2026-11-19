@@ -221,7 +221,7 @@ void *EnemyDeathFX::Update() {
     }
 }
 
-#if 0 // DRAFT: identifier 'EnemyDeathFX::Resolve()' redeclared
+#if 0 // DRAFT: identifier 'EnemyDeathFX::Resolve()' redeclared was declared as: 'float ()' now declared as: 'void ()'
 void EnemyDeathFX::Resolve() {
     f64 sp40;
     f64 sp38;

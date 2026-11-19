@@ -24,7 +24,7 @@
 extern s32 GS_MenuSelect;
 extern KDMemoryCard *autosaveCard;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCSelectCardScreen::ClearDisplay() {
     s32 sp3C;
     s32 sp38;
@@ -79,7 +79,7 @@ void MCSelectCardScreen::ClearDisplay() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'KDMemoryCard *' and 'int'
 void MCSelectCardScreen::UpdateDisplay() {
     s32 spB4;
     s32 spB0;
@@ -254,7 +254,7 @@ void MCSelectCardScreen::UpdateDisplay() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void MCSelectCardScreen::Update() {
     KDMemoryCard *temp_r3_499;
     s32 temp_r0_418;
@@ -277,7 +277,7 @@ void MCSelectCardScreen::Update() {
             return;
         }
         if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && ((u32) *KDMemoryCard::numCardsPresent != 0U)) {
-            *MemoryCardScreen::selectedCard = ((KDMemoryCard *) (M2C_FIELD(this->unkE4, KDMemoryCard **, 0x68)))->GetCard((s32) (u32) (u64) KDSound_Play(GS_MenuSelect, 0U, -1));
+            *MemoryCardScreen::selectedCard = (unsigned char) (((KDMemoryCard *) (M2C_FIELD(this->unkE4, KDMemoryCard **, 0x68)))->GetCard((s32) (u32) (u64) KDSound_Play(GS_MenuSelect, 0U, -1)));
             this->unkD0 = 4;
         }
         goto block_10;
@@ -289,7 +289,7 @@ block_10:
         switch (temp_r0_418) {                      /* irregular */
         case 0:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                *MemoryCardScreen::selectedCard = autosaveCard;
+                *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
@@ -307,14 +307,14 @@ block_54:
             this->unkD0 = 2;
         case 2:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                *MemoryCardScreen::selectedCard = autosaveCard;
+                *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
             }
             if (((u8) this->unkF0 != 0) && ((u32) *KDMemoryCard::numCardsPresent == 1U)) {
-                temp_r3_499 = KDMemoryCard::GetFirstAvailable();
-                *MemoryCardScreen::selectedCard = temp_r3_499;
+                temp_r3_499 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
+                *MemoryCardScreen::selectedCard = (unsigned char) (temp_r3_499);
                 temp_r3_499->SetState((KDMCState) 3);
                 ClearDisplay();
                 this->unkD0 = 5;
@@ -323,7 +323,7 @@ block_54:
             this->unkD0 = 3;
         case 3:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                *MemoryCardScreen::selectedCard = autosaveCard;
+                *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
@@ -381,18 +381,16 @@ void MCSelectCardScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIButtonGroup *' to
 void MCSelectCardScreen::Resolve() {
     MemoryCardScreen::Resolve();
-    this->unkE4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
-    this->unkE8 = ui_cast<UIText *, UIObject *>(FindChild("SelectText"));
-    this->unkEC = ui_cast<UIText *, UIObject *>(FindChild("NoCardText"));
-    this->unkD4 = FindChild("promptBg");
-    this->unkD8 = FindPrompt((UIContainer *) this);
-    this->unkDC = ((UIContainer *) this->unkD8)->FindChild("UpDown");
-    this->unkE0 = ((UIContainer *) this->unkD8)->FindChild("Forward");
+    this->unkE4 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons")));
+    this->unkE8 = (void **) (ui_cast<UIText *, UIObject *>(FindChild("SelectText")));
+    this->unkEC = (void **) (ui_cast<UIText *, UIObject *>(FindChild("NoCardText")));
+    this->unkD4 = (void **) (FindChild("promptBg"));
+    this->unkD8 = (void **) (FindPrompt((UIContainer *) this));
+    this->unkDC = (void **) (((UIContainer *) this->unkD8)->FindChild("UpDown"));
+    this->unkE0 = (void **) (((UIContainer *) this->unkD8)->FindChild("Forward"));
 }
-#endif
 
 void MCSelectCardScreen::Init() {
     MemoryCardScreen::Init();

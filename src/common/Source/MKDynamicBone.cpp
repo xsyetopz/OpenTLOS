@@ -14,7 +14,7 @@
 #include "common/Source/MKSystem.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'gDynamicBones' redeclared
+#if 0 // DRAFT: identifier 'gDynamicBones' redeclared was declared as: 'MKDynamicBoneSystem' now declared as: 'void **'
 f64 atan2(f32, f32, f32, f32, f32);                 /* extern */
 M2C_UNK free(MKDynamicBone **);                     /* extern */
 MKDynamicBone **malloc(s32);                        /* extern */
@@ -24,7 +24,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK gMKDefaults;
 extern f32 gUpdateTimeDelta;
 extern MKDynamicBone **spareTemplates;
-#if 0 // DRAFT: identifier 'gDynamicBoneEnable' redeclared
+#if 0 // DRAFT: identifier 'gDynamicBoneEnable' redeclared was declared as: 'unsigned char[4]' now declared as: 'unsigned long'
 static u32 gDynamicBoneEnable = 1U;
 #endif
 
@@ -32,7 +32,7 @@ void MKDynamicBone::DefaultUpdater(MKDynamicBone *arg0, void *arg1) {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 void MKDynamicBone::Reset() {
     Matrix spE0;
     f64 spD0;
@@ -144,7 +144,7 @@ void MKDynamicBone::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 void MKDynamicBone::Update() {
     Matrix sp6A0;
     Matrix sp660;
@@ -830,7 +830,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKDynamicBone *' and 'Matrix *'
 void MKDynamicBoneSystem::RemoveModel(MKModel *arg0) {
     MKDynamicBone **temp_r5_1255;
     MKDynamicBone **temp_r5_1263;
@@ -880,7 +880,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk2C'
 void MKDynamicBoneSystem::AddModel(MKModel *arg0) {
     Animation *temp_r3_1311;
     MKDynamicBone **temp_r5_1330;
@@ -907,7 +907,7 @@ void MKDynamicBoneSystem::AddModel(MKModel *arg0) {
     var_ctr_1294 = temp_r0_1293;
     if (temp_r0_1293 > 0) {
 loop_1:
-        var_r29_1299 = M2C_FIELD(temp_r3_1292, s32 *, 0x60) + var_r5_1291;
+        var_r29_1299 = (unsigned short *) (M2C_FIELD(temp_r3_1292, s32 *, 0x60) + var_r5_1291);
         if ((u16) *var_r29_1299 == 7) {
 
         } else {
@@ -934,7 +934,7 @@ loop_15:
             this->unk0 = temp_r5_1330;
             temp_r30_1332 = *temp_r5_1330;
             temp_r30_1332->unk24 = arg0;
-            temp_r30_1332->unk20 = temp_r28_1319 + var_r24_1323;
+            temp_r30_1332->unk20 = (Matrix *) (temp_r28_1319 + var_r24_1323);
             temp_r30_1332->unk2C = &MKDynamicBone::DefaultUpdater;
             temp_r30_1332->unk28 = NULL;
             temp_r30_1332->unk30 = 1;
@@ -972,12 +972,12 @@ loop_11:
                 FlipEndian(temp_r30_1332->unk20 + 0x78);
                 FlipEndian(temp_r30_1332->unk20 + 0x7C);
                 FlipEndian(temp_r30_1332->unk20 + 0x72);
-                temp_r22_1402 = temp_r30_1332->unk20 + 0x50;
+                temp_r22_1402 = (float *) (temp_r30_1332->unk20 + 0x50);
                 FlipEndian(temp_r22_1402);
                 FlipEndian(temp_r22_1402 + 4);
                 FlipEndian(temp_r22_1402 + 8);
                 FlipEndian(temp_r22_1402 + 0xC);
-                temp_r22_1412 = temp_r30_1332->unk20 + 0x60;
+                temp_r22_1412 = (float *) (temp_r30_1332->unk20 + 0x60);
                 FlipEndian(temp_r22_1412);
                 FlipEndian(temp_r22_1412 + 4);
                 FlipEndian(temp_r22_1412 + 8);
@@ -992,7 +992,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKDynamicBone *' and 'MKDynamicBone **'
 void MKDynamicBoneSystem::Deinit() {
     MKDynamicBone **var_r30_1449;
     MKDynamicBone **var_r30_1491;
@@ -1070,7 +1070,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'malloc'
 void MKDynamicBoneSystem::Init() {
     MKDynamicBone **temp_r3_1580;
     MKDynamicBone **temp_r3_1587;
@@ -1086,10 +1086,10 @@ void MKDynamicBoneSystem::Init() {
 
     temp_r30_1549 = M2C_FIELD(&gMKDefaults, s32 *, 0x9C);
     if (temp_r30_1549 == 0) {
-        this->unk0 = &gEmptyPtrListDL + 4;
+        this->unk0 = (MKDynamicBone **) (&gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_1567 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1549 + 2) * 4) + (temp_r30_1549 * 0x38), NULL, 0);
+            var_r3_1567 = (MKDynamicBone **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1549 + 2) * 4) + (temp_r30_1549 * 0x38), NULL, 0));
         } else {
             var_r3_1567 = malloc(((temp_r30_1549 + 2) * 4) + (temp_r30_1549 * 0x38));
         }
@@ -1114,10 +1114,10 @@ void MKDynamicBoneSystem::Init() {
     }
     temp_r30_1602 = M2C_FIELD(&gMKDefaults, s32 *, 0xA0);
     if (temp_r30_1602 == 0) {
-        spareTemplates = &gEmptyPtrListDL + 4;
+        spareTemplates = (MKDynamicBone **) (&gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_1620 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7), NULL, 0);
+            var_r3_1620 = (MKDynamicBone **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7), NULL, 0));
         } else {
             var_r3_1620 = malloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7));
         }
@@ -1153,7 +1153,7 @@ void MKDynamicBone_SetUpdater(MKDynamicBone *arg0, void (*arg2)(MKDynamicBone *,
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKDynamicBoneSystem' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKDynamicBoneSystem' to 'void **'
 void *MKDynamicBone_GetDynamicBone(MKModel *arg0, int arg1) {
     void **var_r30_1687;
     void *temp_r3_1697;

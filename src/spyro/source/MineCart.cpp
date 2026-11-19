@@ -60,7 +60,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -228,7 +228,7 @@ void MineCart::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void MineCart::UpdateEffects() {
     f64 sp158;                                      /* compiler-managed */
     f64 sp150;
@@ -494,7 +494,7 @@ void *MineCart::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 f32 MineCart::Resolve() {
     Animation sp8;
     s32 var_r27_776;
@@ -509,7 +509,7 @@ f32 MineCart::Resolve() {
         var_r31_778 = 0;
         do {
             temp_r29_784 = Str_Printf("d_minecart_wheel_%.2d", var_r27_776 + 1);
-            temp_r26_791 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(temp_r29_784);
+            temp_r26_791 = (const char *) (((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(temp_r29_784));
             sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
             temp_r29_798 = this + var_r31_778;
             M2C_FIELD(temp_r29_798, f64 *, 0x120) = M2C_BITWISE(f64, sp8);

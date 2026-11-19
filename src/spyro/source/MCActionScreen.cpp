@@ -34,7 +34,7 @@
 
 s32 stricmp(s32, void *, void *);                   /* extern */
 extern s32 GS_MenuSelect;
-#if 0 // DRAFT: identifier 'autosaveCard' redeclared
+#if 0 // DRAFT: identifier 'autosaveCard' redeclared was declared as: 'KDMemoryCard *' now declared as: 'void *'
 extern void *autosaveCard;
 #endif
 extern GameStateMachine gGMState;
@@ -81,7 +81,7 @@ void MCActionScreen::Abort() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCActionScreen::Update() {
     s32 spA4;
     s32 spA0;
@@ -515,7 +515,7 @@ block_127:
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MCActionScreen::OnEnter() {
     s32 spB4;
     s32 spB0;
@@ -796,7 +796,7 @@ void MCActionScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIObject *' to
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MCActionScreen::Resolve() {
     UIContainer *temp_r3_1417;
     UIContainer *temp_r3_1428;
@@ -805,13 +805,13 @@ void MCActionScreen::Resolve() {
     void *temp_r30_1395;
 
     MemoryCardScreen::Resolve();
-    this->unkD0 = FindChild("promptBg");
-    this->unkD4 = FindPrompt((UIContainer *) this);
-    this->unkD8 = ((UIContainer *) this->unkD4)->FindChild("UpDown");
+    this->unkD0 = (void **) (FindChild("promptBg"));
+    this->unkD4 = (void **) (FindPrompt((UIContainer *) this));
+    this->unkD8 = (void **) (((UIContainer *) this->unkD4)->FindChild("UpDown"));
     if ((void **) this->unkD8 == NULL) {
-        this->unkD8 = ((UIContainer *) this->unkD4)->FindChild("LeftRight");
+        this->unkD8 = (void **) (((UIContainer *) this->unkD4)->FindChild("LeftRight"));
     }
-    this->unkDC = ((UIContainer *) this->unkD4)->FindChild("Forward");
+    this->unkDC = (void **) (((UIContainer *) this->unkD4)->FindChild("Forward"));
     this->unkE0 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
     temp_r30_1395 = this->unkE0;
     temp_r3_1396 = M2C_FIELD(temp_r30_1395, s8 **, 0x68);
@@ -820,7 +820,7 @@ void MCActionScreen::Resolve() {
     }
     M2C_FIELD(temp_r30_1395, s8 **, 0x68) = NULL;
     M2C_FIELD(temp_r30_1395, s32 *, 0x6C) = -1;
-    this->unkE4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
+    this->unkE4 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons")));
     temp_r3_1412 = this->unkE4;
     if (temp_r3_1412 != NULL) {
         temp_r3_1417 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) temp_r3_1412)->GetChild(0));

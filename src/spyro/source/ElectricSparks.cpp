@@ -21,7 +21,6 @@ void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, bool arg3) {
     void **temp_r7_45;
     void *temp_r3_47;
@@ -29,7 +28,7 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 
     temp_r7_41 = this->unk4C;
     if ((u32) M2C_FIELD(temp_r7_41, u32 *, -4) != 0U) {
-        temp_r7_45 = ((u8 *) temp_r7_41) - 4;
+        temp_r7_45 = (void **) (((u8 *) temp_r7_41) - 4);
         this->unk4C = temp_r7_45;
         temp_r3_47 = *temp_r7_45;
         if (temp_r3_47 != NULL) {
@@ -43,7 +42,6 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ElectricSparks::Deinit() {
@@ -96,7 +94,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void ElectricSparks::Draw() {
     Matrix sp60;
     f32 sp50;
@@ -220,7 +218,7 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void *ElectricSparks::Update() {
     f64 sp40;
     f64 sp38;
@@ -312,7 +310,7 @@ void ElectricSparks::Init() {
     temp_r4_484 = this->unk4C;
     this->unk4C = ((u8 *) temp_r4_484) + 4;
     M2C_FIELD(temp_r4_484, void **, 4) = NULL;
-    this->unk50 = MKMaterial_Create("fx_363");
+    this->unk50 = (MKMaterial *) (MKMaterial_Create("fx_363"));
     this->unk54 = MKModel_Create("FX0017_Spark", NULL, 2, NULL);
     this->unk58 = MKModel_Create("FX0041_SparksPurple", NULL, 2, NULL);
 }

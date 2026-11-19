@@ -1343,7 +1343,7 @@ void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKVector3 *' and 'MKVector3 **'
 void EarthBreathFX::Deinit() {
     MKMaterial *temp_r3_2284;
     MKVector3 **var_r31_2290;
@@ -1403,7 +1403,7 @@ void EarthBreathFX::Draw() {
     DrawShotgunMuzzelFlash();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *EarthBreathFX::Update() {
     f64 spA0;
     f64 sp98;
@@ -1512,7 +1512,7 @@ void *EarthBreathFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to 'signed char *'
 f32 EarthBreathFX::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1549,16 +1549,16 @@ f32 EarthBreathFX::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkB8 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_777, lit_778);
+    this->unkB8 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_777, lit_778));
     temp_r4_2583 = this->unkB8;
     if (temp_r4_2583 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2583, 0U);
     }
-    this->unk190 = checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "EarthBombFX"));
+    this->unk190 = (signed char *) (checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "EarthBombFX")));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBreathFX::Init() {
     EarthBombFX *temp_r3_2717;
     MKVector3 **temp_r3_2649;
@@ -1570,12 +1570,12 @@ void EarthBreathFX::Init() {
 
     BaseBreathFX::Init();
     this->unkB0 = 0;
-    this->unkB4 = MKMaterial_Create("fx_348");
+    this->unkB4 = (MKMaterial *) (MKMaterial_Create("fx_348"));
     this->unkB8 = NULL;
     this->unkA8 = 0.0f;
     this->unkAC = 0.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_2634 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28A8, NULL, 0);
+        var_r3_2634 = (MKVector3 **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x28A8, NULL, 0));
     } else {
         var_r3_2634 = malloc(0x28A8);
     }

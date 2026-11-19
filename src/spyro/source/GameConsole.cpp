@@ -32,7 +32,7 @@ extern ConCmd *pCommands;
 extern u8 **pKeyBind;
 extern u8 **pLookup;
 extern MKInputReceiver *pReceiver;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'long *'
 static M2C_UNK *pConTypeNames[6] = {
     "int ",
     &.L_8035DD7D,
@@ -341,7 +341,7 @@ void Console_RemoveMacro(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void Console_AddMacro(const char *arg0, const char *arg1) {
     ConCmd *temp_r31_112;
     ConVar *var_r31_86;
@@ -352,7 +352,7 @@ void Console_AddMacro(const char *arg0, const char *arg1) {
     temp_r31_73 = strlen(arg1);
     temp_r31_77 = strlen(arg0) + temp_r31_73 + 0x1A;
     if (MKHeap::Current() != NULL) {
-        var_r31_86 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_77, NULL, 0);
+        var_r31_86 = (ConVar *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_77, NULL, 0));
     } else {
         var_r31_86 = malloc(temp_r31_77);
     }
@@ -369,7 +369,7 @@ void Console_AddMacro(const char *arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void Console_PurgeDelayedCmds() {
     s8 ***temp_r3_148;
     s8 ***var_r30_136;
@@ -394,7 +394,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void Console_UpdateDelayedCmds() {
     s8 ***temp_r3_199;
     s8 ***var_r31_176;
@@ -465,7 +465,7 @@ s32 Console_GetLookupIndex(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_GetLookupIndex(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_GetLookupIndex(signed char *)' does not match 'Console_GetLookupIndex(const char *)'
 void Console_RemoveCommand(ConCmd *arg0) {
     ConCmd *temp_r3_296;
     ConCmd *temp_r3_302;
@@ -497,7 +497,7 @@ void Console_RemoveCommand(ConCmd *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_GetLookupIndex(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_GetLookupIndex(signed char *)' does not match 'Console_GetLookupIndex(const char *)'
 void Console_AddCommand(ConCmd *arg0) {
     ConCmd *temp_r3_395;
     s32 var_r30_376;
@@ -567,7 +567,7 @@ loop_21:
         if ((var_r3_357 > 0) && (var_r0_443 == 0U)) {
             var_r30_376 -= 4;
             var_r3_357 -= 1;
-            var_r0_443 = *(pLookup + var_r30_376);
+            var_r0_443 = (unsigned long) (*(pLookup + var_r30_376));
             goto loop_21;
         }
         if (var_r0_443 == 0U) {
@@ -612,7 +612,7 @@ s32 Console_InputReceiver(MKInputEvent *arg0, void *arg1) {
     return 1;
 }
 
-#if 0 // DRAFT: function call 'Console_SetVarAsBool(signed char *, unsigned int)' does not
+#if 0 // DRAFT: function call 'Console_SetVarAsBool(signed char *, unsigned int)' does not match 'Console_SetVarAsBool(const char *, bool)'
 void Console_ProcessInputEvent(MKInputEvent *arg0) {
     u8 *temp_r3_545;
 
@@ -636,7 +636,7 @@ void Console_ProcessInputEvent(MKInputEvent *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 ReadString(char **arg0, char *arg1, int arg2, int arg3) {
     s32 var_r30_587;
     s8 *temp_r3_590;
@@ -645,14 +645,14 @@ s32 ReadString(char **arg0, char *arg1, int arg2, int arg3) {
     u8 temp_r3_615;
     u8 temp_r3_629;
 
-    var_r29_586 = arg1;
+    var_r29_586 = (signed char *) (arg1);
     var_r30_587 = arg2;
     if (arg0 != NULL) {
-        temp_r3_590 = *arg0;
+        temp_r3_590 = (signed char *) (*arg0);
         if ((temp_r3_590 != NULL) && (var_r29_586 != NULL) && (strlen(temp_r3_590) != 0)) {
             *var_r29_586 = 0;
             if ((var_r30_587 > 0) && (arg3 >= 0)) {
-                var_r4_605 = &(*arg0)[arg3];
+                var_r4_605 = (signed char *) (&(*arg0)[arg3]);
 loop_8:
                 if (var_r4_605 != NULL) {
                     temp_r3_615 = (u8) *var_r4_605;
@@ -677,7 +677,7 @@ loop_14:
                     }
                 }
                 *var_r29_586 = 0;
-                *arg0 = var_r4_605;
+                *arg0 = (char *) (var_r4_605);
                 return 1;
             }
             return -5;
@@ -726,7 +726,7 @@ void Console_Unbind(unsigned long arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void Console_Bind(unsigned long arg0, const char *arg1) {
     ConVar *var_r3_765;
     s32 temp_r31_757;
@@ -735,7 +735,7 @@ void Console_Bind(unsigned long arg0, const char *arg1) {
         Console_Unbind(arg0);
         temp_r31_757 = strlen(arg1) + 1;
         if (MKHeap::Current() != NULL) {
-            var_r3_765 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_757, NULL, 0);
+            var_r3_765 = (ConVar *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_757, NULL, 0));
         } else {
             var_r3_765 = malloc(temp_r31_757);
         }
@@ -752,7 +752,7 @@ u8 *Console_GetBind(unsigned long arg0) {
     return NULL;
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *, unsigned char **)'
 ConCmd *Console_GetVarByName(const char *arg0) {
     u8 *var_r30_816;
     u8 *var_r31_808;
@@ -778,12 +778,12 @@ void Console_Write(const char *arg0, int arg1) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'ReadString(signed char **, signed char *, int, int)' does not match 'ReadString(char **, char *, int, int)'
 f32 Console_ExecuteBuffer(const char *arg0) {
     s8 spC;
     s8 *sp8;
 
-    sp8 = arg0;
+    sp8 = (signed char *) (arg0);
     fLastResult = 1.0f;
 loop_2:
     if (ReadString(&sp8, &spC, 0x100, 0) == 1) {
@@ -996,7 +996,7 @@ loop_52:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_GetVarByName(ConVar)' does not match
+#if 0 // DRAFT: function call 'Console_GetVarByName(ConVar)' does not match 'Console_GetVarByName(const char *)'
 void Console_Unregister(ConVar *arg0, int arg1) {
     ConCmd *temp_r3_1231;
     s32 var_r30_1225;
@@ -1019,7 +1019,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'strlen(unsigned char *)' does not match 'strlen(const char *)'
 void Console_Register(ConVar *arg0, int arg1) {
     ConVar *temp_r30_1265;
     s32 var_r29_1261;
@@ -1166,7 +1166,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'commandBuffer'
 void Console_Init() {
     ConVar *var_r3_1481;
     ConVar *var_r3_1495;
@@ -1174,13 +1174,13 @@ void Console_Init() {
     s32 var_ctr_1529;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_1481 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
+        var_r3_1481 = (ConVar *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0));
     } else {
         var_r3_1481 = malloc(0x400);
     }
     pKeyBind = &var_r3_1481->unk0;
     if (MKHeap::Current() != NULL) {
-        var_r3_1495 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x100, NULL, 0);
+        var_r3_1495 = (ConVar *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x100, NULL, 0));
     } else {
         var_r3_1495 = malloc(0x100);
     }
@@ -1188,7 +1188,7 @@ void Console_Init() {
     memset(pKeyBind, 0, 0x400U);
     memset(pLookup, 0, 0x100U);
     if (MKHeap::Current() != NULL) {
-        var_r3_1517 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x208, NULL, 0);
+        var_r3_1517 = (ConVar *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x208, NULL, 0));
     } else {
         var_r3_1517 = malloc(0x208);
     }
@@ -1213,7 +1213,7 @@ void Console_Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[3], bool,
+#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[3], bool, long)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void ConCmd::SetAsBool(bool arg0) {
     f32 var_f0_1600;
     s32 temp_r0_1576;
@@ -1248,7 +1248,7 @@ void ConCmd::SetAsBool(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[6], unsigned
+#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[6], unsigned char **)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void ConCmd::SetAsFloat(float arg0) {
     s32 temp_r0_1645;
     s32 temp_r3_1704;
@@ -1292,7 +1292,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[3], int,
+#if 0 // DRAFT: function call 'Str_snPrintf(signed char *, long, const char[3], int, long)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void ConCmd::SetAsInt(int arg0) {
     s32 temp_r0_1725;
     s32 temp_r7_1761;
@@ -1336,7 +1336,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'atoi(const char *)' does not match
+#if 0 // DRAFT: function call 'atoi(const char *)' does not match 'atoi(signed char *)'
 void ConCmd::SetAsString(const char *arg0) {
     s32 sp8;
     s32 temp_r0_1808;
@@ -1412,7 +1412,7 @@ void ConCmd::Compare(ConCmd *arg0) {
     stricmp((s8 *) *temp_r5_1957, (s8 *) *this->unk0, temp_r5_1957);
 }
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not
+#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not match 'sscanf(signed char *, float *, long *)'
 s32 ConCmd::AsInt() {
     f32 sp8;                                        /* compiler-managed */
     s32 temp_r0_1977;
@@ -1442,7 +1442,7 @@ s32 ConCmd::AsInt() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not
+#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not match 'sscanf(signed char *, float *, long *)'
 f32 ConCmd::AsFloat() {
     f32 sp8;
     f32 var_f0_2037;
@@ -1488,7 +1488,7 @@ void ConCmd::Init(ConVar *arg0) {
     this->unk8 = NULL;
 }
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdPlayMacro(int arg0, char **arg1) {
     ConCmd *temp_r3_2133;
     u8 *temp_r3_2136;
@@ -1504,7 +1504,7 @@ f32 CmdPlayMacro(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_RemoveMacro(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_RemoveMacro(signed char *)' does not match 'Console_RemoveMacro(const char *)'
 f32 CmdMacro(int arg0, char **arg1) {
     if (arg0 == 1) {
         Console_Print("Syntax: %s <<name>> [command]\n", M2C_FIELD(arg1, s8 **, 0));
@@ -1549,7 +1549,7 @@ f32 CmdDelay(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdDiv(int arg0, char **arg1) {
     f32 temp_f31_2265;
 
@@ -1562,7 +1562,7 @@ f32 CmdDiv(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdMul(int arg0, char **arg1) {
     f32 temp_f31_2302;
 
@@ -1575,7 +1575,7 @@ f32 CmdMul(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdSub(int arg0, char **arg1) {
     f32 temp_f31_2339;
 
@@ -1588,7 +1588,7 @@ f32 CmdSub(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdAdd(int arg0, char **arg1) {
     f32 temp_f31_2376;
 
@@ -1601,7 +1601,7 @@ f32 CmdAdd(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdOr(int arg0, char **arg1) {
     u8 var_r31_2410;
 
@@ -1620,7 +1620,7 @@ f32 CmdOr(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdAnd(int arg0, char **arg1) {
     u8 var_r31_2457;
 
@@ -1639,7 +1639,7 @@ f32 CmdAnd(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdLessEqual(int arg0, char **arg1) {
     f32 temp_f31_2506;
 
@@ -1655,7 +1655,7 @@ f32 CmdLessEqual(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdLess(int arg0, char **arg1) {
     f32 temp_f31_2549;
 
@@ -1671,7 +1671,7 @@ f32 CmdLess(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdGreaterEqual(int arg0, char **arg1) {
     f32 temp_f31_2591;
 
@@ -1687,7 +1687,7 @@ f32 CmdGreaterEqual(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdGreater(int arg0, char **arg1) {
     f32 temp_f31_2634;
 
@@ -1703,7 +1703,7 @@ f32 CmdGreater(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdEqual(int arg0, char **arg1) {
     f32 temp_f31_2676;
 
@@ -1719,7 +1719,7 @@ f32 CmdEqual(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdNot(int arg0, char **arg1) {
     f32 var_f0_2714;
 
@@ -1735,7 +1735,7 @@ f32 CmdNot(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_GetVarByName(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_GetVarByName(signed char *)' does not match 'Console_GetVarByName(const char *)'
 f32 CmdFor(int arg0, char **arg1) {
     ConCmd *temp_r3_2764;
     ConCmd *temp_ret_2764;
@@ -1825,7 +1825,7 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 f32 CmdIf(int arg0, char **arg1) {
     if ((arg0 < 3) || (arg0 > 4)) {
         Console_Print("Syntax: %s <<condition>> <<truecommand>> [falsecommand]\n", M2C_FIELD(arg1, s8 **, 0));
@@ -1841,7 +1841,7 @@ f32 CmdIf(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdEcho(int arg0, char **arg1) {
     if (arg0 > 1) {
         Console_Print(M2C_FIELD(arg1, s8 **, 4));
@@ -1851,7 +1851,7 @@ f32 CmdEcho(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char[5])' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char[5])' does not match 'stricmp(signed char *, signed char *, unsigned char **)'
 f32 CmdUnbind(int arg0, char **arg1) {
     s32 var_r3_3045;
 
@@ -1875,7 +1875,7 @@ f32 CmdUnbind(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 f32 CmdBind(int arg0, char **arg1) {
     s32 var_r3_3100;
 
@@ -1900,7 +1900,7 @@ f32 CmdBind(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int *)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int *)' does not match 'MKArchive_Exists(const char *, int *)'
 f32 CmdExec(int arg0, char **arg1) {
     s32 sp8;
     ConVar *var_r31_3173;
@@ -1915,7 +1915,7 @@ f32 CmdExec(int arg0, char **arg1) {
         if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8) != 0) {
             temp_r31_3163 = sp8 + 1;
             if (MKHeap::Current() != NULL) {
-                var_r31_3173 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U);
+                var_r31_3173 = (ConVar *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U));
             } else {
                 var_r31_3173 = malloc(temp_r31_3163);
             }

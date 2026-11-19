@@ -2,7 +2,7 @@
 #include "common/Source/MKIni.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 stricmp(s8 *, s32);                             /* extern */
 static MessageMap globalMessageMap = { 0xA8, 0xC4 }; /* extra bytes: 4 */
 
@@ -11,7 +11,7 @@ s32 MessageMap_LoadLine(MKIniLine *arg0, char *arg1, int *arg2) {
 
     sp8 = NULL;
     if (arg0->LoadString(arg1, &sp8, 0) != 0) {
-        *arg2 = globalMessageMap.GetIdFromString(sp8);
+        *arg2 = (const char *) (globalMessageMap.GetIdFromString(sp8));
         return 1;
     }
     return 0;

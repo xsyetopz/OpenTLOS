@@ -39,7 +39,7 @@ void UIAnimatedModel::FreeResources() {
     this->unk68.unk4 = NULL;
 }
 
-#if 0 // DRAFT: function call 'Init(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'Init(signed char *, int)' does not match 'MKAnimScript::Init(const char *, MKModel *)' 'MKAnimScript::Init(MKAnimScript *, MKModel *)'
 void UIAnimatedModel::LoadResources() {
     s8 *temp_r31_51;
 
@@ -65,7 +65,7 @@ void UIAnimatedModel::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void UIModel::UpdateMatrix(RenderContext *arg0) {
     Matrix sp40;
     MKVector3 sp30;
@@ -131,7 +131,7 @@ void UIModel::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIModel::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_299;
@@ -160,7 +160,7 @@ void UIModel::FreeResources() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not
+#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 void UIModel::LoadResources() {
     s32 var_r30_367;
     s8 *temp_r3_355;
@@ -187,7 +187,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIModel::Deinit() {
     s8 *temp_r3_428;
 

@@ -257,12 +257,12 @@ void *GuardianCageCrystal::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to 'long *'
 f32 GuardianCageCrystal::Resolve() {
     f64 sp8;
     void *temp_r31_441;
 
-    this->unk1D0 = checked_cast<GuardianCage *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "FireGuardianCage"));
+    this->unk1D0 = (long *) (checked_cast<GuardianCage *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "FireGuardianCage")));
     temp_r31_441 = checked_cast<GuardianCageCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) Tools_GetMatchingRefPointIndex(this->unk4, "beam"), &this->unk1A8);
     ((GuardianCage *) &sp8)->GetBeamPosition((s32) this->unk1D0);

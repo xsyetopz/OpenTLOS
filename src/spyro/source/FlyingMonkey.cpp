@@ -66,7 +66,7 @@ void FlyingMonkey::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *ar
     this->unk140 = 4.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *FlyingMonkey::Update() {
     MKCollisionResult sp220;
     Matrix sp1E0;

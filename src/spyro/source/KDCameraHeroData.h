@@ -158,20 +158,18 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
 inline void KDCameraHeroData::GetDir() {
     f32 sp10;
     f64 sp8;
     f64 temp_f0_5287;
     void *temp_r4_5284;
 
-    temp_r4_5284 = M2C_ERROR(/* Read from unset register $r4 */) + 0x30;
+    temp_r4_5284 = (void *) (M2C_ERROR(/* Read from unset register $r4 */) + 0x30);
     temp_f0_5287 = M2C_FIELD(temp_r4_5284, f64 *, 0) * 1.58735232e-314;
     sp8 = temp_f0_5287;
     M2C_FIELD(this, f64 *, 0) = temp_f0_5287;
     sp10 = M2C_FIELD(temp_r4_5284, f32 *, 8) * -1.0f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDCAMERAHERODATA_H

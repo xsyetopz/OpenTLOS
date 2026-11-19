@@ -83,7 +83,7 @@ s32 MCFileInfo::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MCFileInfo::Reset() {
     s32 sp10;
     s32 spC;
@@ -117,7 +117,7 @@ void MCFileInfo::Reset() {
         if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 8) != 0) {
             return;
         }
-        temp_r4_274 = *MemoryCardScreen::selectedCard + ((this->unk218 * 0xC0) + 0x40);
+        temp_r4_274 = (TimerInfo *) (*MemoryCardScreen::selectedCard + ((this->unk218 * 0xC0) + 0x40));
         if (((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA5) != 0) || ((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA4) == 0)) {
             temp_r30_282 = this->unk70;
             if (temp_r30_282 != NULL) {
@@ -185,7 +185,7 @@ loop_28:
             if (temp_ret_412 == 0) {
                 strcpy(&this->unk78, M2C_FIELD(gpTranslation_StringArray, s8 **, 0x38));
             } else {
-                var_r30_403 = M2C_FIELD(((Level *) (temp_r4_274 + 0x20))->GetChunkByName((s8 *) (u32) (u64) temp_ret_412), void **, 4);
+                var_r30_403 = (const char *) (M2C_FIELD(((Level *) (temp_r4_274 + 0x20))->GetChunkByName((s8 *) (u32) (u64) temp_ret_412), void **, 4));
                 strcpy(&this->unk78, *(gpTranslation_StringArray + (M2C_FIELD(var_r30_403, s32 *, 0x10) * 4)));
             }
         }
@@ -194,7 +194,7 @@ loop_28:
         if ((s32) M2C_FIELD(temp_r4_274, s32 *, 0x3C) != 0) {
             var_r7_456 = M2C_FIELD(gpTranslation_StringArray, void **, 0x54);
         } else {
-            var_r7_456 = "";
+            var_r7_456 = (void *) ("");
         }
         sprintf(&this->unk1B8, "%dh %dm   %s", temp_r3_434, (u32) (temp_f31_431 - (f32) (temp_r3_434 * 0xE10)) / 60U, var_r7_456);
         var_r28_463 = this->unk60;
@@ -218,7 +218,7 @@ loop_60:
                     if (var_r30_403 != NULL) {
                         var_r4_518 = M2C_FIELD(var_r30_403, void **, 4);
                     } else {
-                        var_r4_518 = "dojo";
+                        var_r4_518 = (void *) ("dojo");
                     }
                     Str_Printf("icon_%s", var_r4_518, M2C_BITWISE(f32, temp_ret_506));
                     if (stricmp((void *) temp_r29_515) == 0) {

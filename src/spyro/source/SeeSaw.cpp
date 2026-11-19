@@ -404,7 +404,7 @@ f32 SeeSaw::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SeeSaw::Deinit() {
     s32 spC;
     s32 sp8;

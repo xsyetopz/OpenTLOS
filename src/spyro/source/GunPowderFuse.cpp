@@ -86,7 +86,7 @@ extern GameGlobals gb;
 static s32 lit_743 = 2;
 static u8 lit_744 = 0;
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void GunPowderFuse::EmitBurn(float arg0) {
     f64 sp100;
     f64 spF8;
@@ -175,7 +175,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to
+#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 BurnPoint *GunPowderFuse::GetFirst() {
     f32 temp_f3_239;
     f32 var_f0_248;
@@ -208,7 +208,7 @@ BurnPoint *GunPowderFuse::GetFirst() {
         var_ctr_236 -= 1;
     } while (var_ctr_236 != 0);
     if (var_r4_233 != -1) {
-        return this + ((var_r4_233 * 0x3C) + 0xC4);
+        return (BurnPoint *) (this + ((var_r4_233 * 0x3C) + 0xC4));
     }
     return NULL;
 }
@@ -261,13 +261,13 @@ BurnPoint *GunPowderFuse::GetNextPositive(BurnPoint *arg0) {
         var_ctr_289 -= 1;
     } while (var_ctr_289 != 0);
     if (var_r6_285 != -1) {
-        return this + ((var_r6_285 * 0x3C) + 0xC4);
+        return (BurnPoint *) (this + ((var_r6_285 * 0x3C) + 0xC4));
     }
     return NULL;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'BurnPoint *'
 void GunPowderFuse::UpdatePartners() {
     f32 temp_f0_361;
     s32 var_r29_357;
@@ -280,7 +280,7 @@ void GunPowderFuse::UpdatePartners() {
         temp_r30_360 = this + var_r31_358;
         temp_f0_361 = M2C_FIELD(temp_r30_360, f32 *, 0xCC);
         if ((temp_f0_361 <= 1.0f) && (temp_f0_361 >= 0.0f)) {
-            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = GetPartner(((u8 *) temp_r30_360) + 0xC4);
+            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = (BurnPoint *) (GetPartner(((u8 *) temp_r30_360) + 0xC4));
         }
         var_r29_357 += 1;
         var_r31_358 += 0x3C;
@@ -419,7 +419,7 @@ block_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to
+#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::TooClose(float arg0) {
     f32 temp_f0_597;
     f32 var_f5_604;
@@ -450,7 +450,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to
+#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::HasAvailableBurnPoints() {
     f32 temp_f2_633;
     s32 var_ctr_630;
@@ -1056,7 +1056,7 @@ loop_114:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void *GunPowderFuse::Update() {
     f64 sp178;
     f64 sp170;
@@ -1155,7 +1155,7 @@ void *GunPowderFuse::Update() {
 
     MKProp::Update();
     if (IsBurntOut() == 0) {
-        temp_r3_1665 = gb.unk0->GetEffects();
+        temp_r3_1665 = (void *) (gb.unk0->GetEffects());
         if (temp_r3_1665 != NULL) {
             gb.GetSpyro();
             if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) == 0)) {
@@ -1214,7 +1214,7 @@ loop_15:
                 goto loop_15;
             }
         }
-        var_r4_1844 = *LiquidFXDescriptor::pFirstDesc;
+        var_r4_1844 = (void *) (*LiquidFXDescriptor::pFirstDesc);
 loop_18:
         if ((var_r4_1844 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_1844, void **, 0xE8), s32 *, 0x138) & 2)) {
             var_r4_1844 = M2C_FIELD(var_r4_1844, void **, 0xF0);
@@ -1386,7 +1386,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to
+#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::IsBurntOut() {
     f32 temp_f2_2295;
     s32 var_ctr_2292;
@@ -1413,7 +1413,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to
+#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::IsBurning() {
     f32 temp_f2_2331;
     s32 var_ctr_2328;
@@ -1435,7 +1435,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void GunPowderFuse::Burn(float arg0) {
     f64 sp30;
     KDUniformSpline sp18;
@@ -1535,7 +1535,7 @@ void GunPowderFuse::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 GunPowderFuse::Resolve() {
     f64 sp48;
     f64 sp40;
@@ -1607,7 +1607,7 @@ s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     return (u8) (this->unkC0.LoadLine(arg0, "OnNumSecondsBeforeBurnEnd") != 0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void GunPowderFuse::Deinit() {
     Corona *temp_r4_2752;
     MKMaterial *temp_r3_2739;

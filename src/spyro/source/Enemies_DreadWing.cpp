@@ -123,19 +123,19 @@ s32 DreadWing::PickUpDropBox(int arg0) {
     temp_r0_136 = this->unkA38->unkF4;
     switch (temp_r0_136) {                          /* irregular */
     case 35:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox")));
         break;
     case 36:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox")));
         break;
     case 37:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox")));
         break;
     case 38:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox")));
         break;
     case 39:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox")));
         break;
     }
     temp_r3_209 = this->unkB10;
@@ -158,7 +158,7 @@ s32 DreadWing::PickUpDropBox(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void DreadWing::UpdateDropBox() {
     Matrix sp100;
     M2C_UNK spFC;
@@ -310,26 +310,26 @@ void *DreadWing::Update() {
     UpdateDropBox();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to 'void *'
 f32 DreadWing::Resolve() {
     s32 temp_r0_561;
 
     temp_r0_561 = this->unkA38->unkF4;
     switch (temp_r0_561) {                          /* irregular */
     case 35:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox")));
         break;
     case 36:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox")));
         break;
     case 37:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox")));
         break;
     case 38:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox")));
         break;
     case 39:
-        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = (void *) (checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox")));
         break;
     }
     Enemy::Resolve();

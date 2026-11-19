@@ -275,7 +275,7 @@ void SolidSlugDescriptor::LoadDone() {
     pSolidSlugDescriptor = (MKPropDescriptor *) this;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SolidSlugDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_461;
 

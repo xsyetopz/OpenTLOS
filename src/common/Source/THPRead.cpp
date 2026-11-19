@@ -3,7 +3,7 @@
 #include "common/Source/THPPlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'ActivePlayer' redeclared
+#if 0 // DRAFT: identifier 'ActivePlayer' redeclared was declared as: 'DVDCommandBlock' now declared as: 'DVDFileInfo'
 extern DVDFileInfo ActivePlayer;
 #endif
 extern s32 ReadThreadCreated;
@@ -45,7 +45,7 @@ s32 PopReadedBuffer(void) {
     return sp8;
 }
 
-#if 0 // DRAFT: function call 'DVDReadPrio(DVDCommandBlock *, long *, long, long, int)'
+#if 0 // DRAFT: function call 'DVDReadPrio(DVDCommandBlock *, long *, long, long, int)' does not match 'DVDReadPrio(DVDFileInfo *, void *, long, long, long)'
 void Reader(void *arg0) {
     s32 temp_r3_128;
     s32 var_r28_116;

@@ -45,7 +45,7 @@ void Conveyor::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Conveyor' to
+#if 0 // DRAFT: illegal explicit conversion from 'Conveyor' to 'signed char *'
 void *Conveyor::Update() {
     f32 sp28C;
     f32 sp288;

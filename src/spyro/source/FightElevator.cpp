@@ -62,7 +62,6 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     f64 sp70;
     f64 sp68;
@@ -112,7 +111,7 @@ s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     var_ctr_102 = temp_r5_88 - 1;
     if (temp_r5_88 > 1) {
         do {
-            temp_r5_107 = this->unk18C + var_r4_84;
+            temp_r5_107 = (void *) (this->unk18C + var_r4_84);
             temp_f4_109 = M2C_FIELD(temp_r5_107, f64 *, 0);
             temp_f0_110 = sp68 - temp_f4_109;
             sp18 = temp_f0_110;
@@ -136,7 +135,6 @@ s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     }
     return var_r3_72;
 }
-#endif
 
 void FightElevator::UpdateAnchors() {
     EnergyBeam::Beam *temp_r4_186;
@@ -183,7 +181,7 @@ void FightElevator::ClearAnchors() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to
+#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to 'unsigned long'
 void FightElevator::FindAnchors() {
     f64 sp30;
     f64 sp28;
@@ -249,7 +247,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to
+#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to 'unsigned long'
 void FightElevator::SetBeamPositions() {
     f64 sp8;
     s32 var_r29_323;
@@ -279,7 +277,7 @@ void FightElevator::SetBeamPositions() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to
+#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to 'EnergyBeam::Beam *'
 void FightElevator::FreeBeams() {
     EnergyBeam::Beam *temp_r4_375;
     s32 temp_r28_374;
@@ -303,7 +301,7 @@ void FightElevator::FreeBeams() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FightElevator *' to
+#if 0 // DRAFT: illegal implicit conversion from 'FightElevator *' to 'MKVector3 *'
 void FightElevator::AllocBeams() {
     s32 var_r27_404;
     s32 var_r30_406;
@@ -340,7 +338,7 @@ void FightElevator::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to
+#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to 'void *'
 void FightElevator::Message(MKMessage *arg0) {
     u8 sp84;
     PlatformObject *sp80;
@@ -486,7 +484,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void FightElevator::UpdateMove() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -850,12 +848,12 @@ block_100:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to 'long *'
 f32 FightElevator::Resolve() {
     f32 temp_f1_1475;
 
     Platform::Resolve();
-    this->unk298 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "FightElevatorAnchor"));
+    this->unk298 = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "FightElevatorAnchor")));
     temp_f1_1475 = this->unk188;
     if (temp_f1_1475 > 0.0f) {
         this->unk1A8 /= temp_f1_1475;
@@ -865,7 +863,7 @@ f32 FightElevator::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 FightElevator::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_1562;
@@ -947,12 +945,10 @@ void FightElevator::Init() {
     this->unk2B8 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void FightElevatorDescriptor::LoadDone() {
     ((PlatformDescriptor *) this)->PlatformDescriptor::LoadDone();
-    this->unk130 = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
+    this->unk130 = (long) (checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam")));
 }
-#endif
 
 s32 FightElevatorDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1709;

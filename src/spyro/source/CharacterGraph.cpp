@@ -93,7 +93,7 @@ void CharacterGraphNodeProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'CharacterGraphNode *'
 f32 CharacterGraphNodeProp::Resolve() {
     KDSplinePathSegmentProp *var_r29_147;
     MKSceneManager *temp_r3_155;
@@ -113,7 +113,7 @@ f32 CharacterGraphNodeProp::Resolve() {
             if (temp_r3_155 != NULL) {
                 var_r29_147 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_155->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             }
-            temp_r3_164 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r30_151, MKSceneManager **, 0xDC)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+            temp_r3_164 = (long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r30_151, MKSceneManager **, 0xDC)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
             if (temp_r3_164 != 0) {
                 this->unk50.Link(temp_r3_164 + 0x50, var_r28_148, (LinkInformation) M2C_FIELD(temp_r30_151, s32 *, 0xA0), var_r29_147);
             }
@@ -131,7 +131,7 @@ f32 CharacterGraphNodeProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 s32 CharacterGraphNodeProp::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -246,7 +246,7 @@ void CharacterGraphNode::SendArriveMessage() {
     this->unk38.Send(this->unk40);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::GetLinkPath(CharacterGraphNode *arg0) {
     s32 var_ctr_606;
     s32 var_r5_605;
@@ -266,7 +266,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::GetLinkInfo(CharacterGraphNode *arg0) {
     s32 var_ctr_627;
     s32 var_r5_626;
@@ -305,7 +305,7 @@ block_5:
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode' to
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode' to 'KDGraphNode *'
 CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {
     CharacterGraphNode *var_r31_690;
     KDGraphNode *temp_r3_707;
@@ -338,7 +338,7 @@ CharacterGraphNode *CharacterGraphNode::GetLink(int arg0) const {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'const CharacterGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'const CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::IsLinked(CharacterGraphNode *arg0) const {
     s32 var_ctr_761;
     s32 var_r5_760;
@@ -358,7 +358,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::Link(CharacterGraphNode *arg0, int arg1, LinkInformation arg2, KDSplinePathSegmentProp *arg3) {
     s32 var_ctr_784;
     s32 var_r5_783;

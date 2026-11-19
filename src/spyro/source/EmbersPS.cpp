@@ -69,7 +69,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void EmbersPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const MKVector4 &arg3, float arg4) {
     void *temp_r3_170;
     void *temp_r4_173;

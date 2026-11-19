@@ -51,7 +51,7 @@ void UISystem::PushScreen_Internal(UIScreen *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UISystem::PushScreen(const char *arg0) {
     UIObject *spC;
     s32 sp8;
@@ -70,7 +70,7 @@ void UISystem::ChangeScreen_Internal(UIScreen *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UISystem::ChangeScreen(const char *arg0) {
     UIObject *spC;
     s32 sp8;
@@ -206,7 +206,7 @@ void UISystem::Deinit() {
     UIContainer::Deinit();
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MCLoadCheckScreen *' and 'unsigned char *'
 void UISystem::Init() {
     MCLoadCheckScreen *temp_r3_452;
     MCLoadCheckScreen *temp_r3_470;

@@ -64,7 +64,7 @@ void LavaDerick::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void *LavaDerickDescriptor::CalcBounds() {
     MKVector3 sp8;
     BoundingVolume *temp_r3_105;

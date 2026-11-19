@@ -74,7 +74,7 @@ void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void ExplosionFX::Deinit() {
     MKMaterial *temp_r3_181;
     MKMaterial *temp_r3_228;
@@ -163,7 +163,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ExplosionFX::DrawShockwaves() {
     f64 sp220;
     f64 sp218;
@@ -344,7 +344,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ExplosionFX::DrawTendrils() {
     f64 sp228;
     f64 sp220;
@@ -571,7 +571,6 @@ loop_10:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ExplosionFX::Init() {
     Matrix **temp_r3_940;
     Matrix **temp_r3_977;
@@ -586,7 +585,7 @@ void ExplosionFX::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_925 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x170, NULL, 0);
+        var_r3_925 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x170, NULL, 0));
     } else {
         var_r3_925 = malloc(0x170);
     }
@@ -605,9 +604,9 @@ void ExplosionFX::Init() {
     temp_r4_946 = this->unk50;
     this->unk50 = temp_r4_946 + 4;
     M2C_FIELD(temp_r4_946, Matrix ***, 4) = NULL;
-    this->unk4C = MKMaterial_Create("fx_338");
+    this->unk4C = (MKMaterial *) (MKMaterial_Create("fx_338"));
     if (MKHeap::Current() != NULL) {
-        var_r3_962 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0);
+        var_r3_962 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0));
     } else {
         var_r3_962 = malloc(0x350);
     }
@@ -626,6 +625,5 @@ void ExplosionFX::Init() {
     temp_r4_983 = this->unk58;
     this->unk58 = temp_r4_983 + 4;
     M2C_FIELD(temp_r4_983, Matrix ***, 4) = NULL;
-    this->unk54 = MKMaterial_Create("FX_007");
+    this->unk54 = (MKMaterial *) (MKMaterial_Create("FX_007"));
 }
-#endif

@@ -105,7 +105,7 @@ s32 MKLevelChunk::Update_Deinit() {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 MKLevelChunk::Update_Ready() {
     s32 var_r31_178;
     u32 temp_r3_187;
@@ -127,7 +127,7 @@ s32 MKLevelChunk::Update_Ready() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 MKLevelChunk::Update_Reset() {
     s32 var_r31_220;
 
@@ -165,7 +165,7 @@ s32 MKLevelChunk::Update_Optimise() {
     return var_r31_274;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKIni *'
 s32 MKLevelChunk::Update_Resolve() {
     s32 var_r31_305;
 
@@ -182,7 +182,7 @@ s32 MKLevelChunk::Update_Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 MKLevelChunk::Update_Init() {
     s32 var_r31_341;
 
@@ -204,7 +204,7 @@ s32 MKLevelChunk::Update_Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 MKLevelChunk::Update_Loading() {
     s32 var_r31_390;
 
@@ -223,7 +223,7 @@ s32 MKLevelChunk::Update_Loading() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 s32 MKLevelChunk::Update_LoadSound() {
     s32 sp8;
     s32 var_r30_446;
@@ -247,7 +247,7 @@ s32 MKLevelChunk::Update_LoadSound() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 MKLevelChunk::Update_LoadingIni() {
     s32 var_r31_520;
 
@@ -278,7 +278,7 @@ s32 MKLevelChunk::Update_LoadingIni() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 s32 MKLevelChunk::Update_Unloaded() {
     f32 temp_f1_656;
     s32 temp_r5_689;
@@ -385,7 +385,7 @@ void MKLevelChunk::UpdateState() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKCollisionManager *'
 void MKLevelChunk::ApplyFlags(unsigned int arg0) {
     u32 temp_r3_806;
 
@@ -401,7 +401,7 @@ void MKLevelChunk::ApplyFlags(unsigned int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKFFTWater *'
 MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
     MKModel *temp_r30_854;
     s32 temp_r31_861;
@@ -414,7 +414,7 @@ MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
     MKModel_EnableScissoring(temp_r30_854, 1U);
     temp_r31_861 = (MKModel_GetNmbrOfSubObjects(temp_r30_854, (SubObjectType) 0) + 2) * 2;
     if (MKHeap::Current() != NULL) {
-        var_r3_869 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_861, NULL, 0);
+        var_r3_869 = (signed char **) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_861, NULL, 0));
     } else {
         var_r3_869 = malloc(temp_r31_861);
     }
@@ -423,7 +423,7 @@ MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKCollisionManager *'
 s32 MKLevelChunk::DeinitChunk() {
     f32 temp_r30_917;
     u32 temp_r0_893;
@@ -568,7 +568,7 @@ loop_34:
                         var_r28_1143 = temp_r26_1137;
                         temp_ret_1146 = strstr(temp_r26_1137, ".mdl");
                         if (temp_ret_1146 == 0U) {
-                            var_r28_1143 = Str_Printf("%s%s", temp_r26_1137, ".mdl", M2C_BITWISE(f32, temp_ret_1146));
+                            var_r28_1143 = (long) (Str_Printf("%s%s", temp_r26_1137, ".mdl", M2C_BITWISE(f32, temp_ret_1146)));
                         }
                         if (MKArchive_Exists((s8 *) var_r28_1143, NULL) != 0) {
                             M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *, MKChunkSceneManager *, s32), 0x64)(this, ((MKChunkSceneManager *) temp_r26_1137)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)), temp_r27_1141);
@@ -586,13 +586,13 @@ loop_34:
         temp_r27_1196 = M2C_FIELD(gMK, MKIni **, 0x28);
         temp_r26_1197 = M2C_FIELD(&gMKDefaults, s32 *, 0xE0) << 5;
         if (MKHeap::Current() != NULL) {
-            var_r3_1206 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_1197, NULL, 0, 0U);
+            var_r3_1206 = (signed char **) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_1197, NULL, 0, 0U));
         } else {
             var_r3_1206 = malloc(temp_r26_1197);
         }
         temp_r25_1214 = M2C_FIELD(&gMKDefaults, s32 *, 0xE0) * 4;
         if (MKHeap::Current() != NULL) {
-            var_r3_1223 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r25_1214, NULL, 0, 0U);
+            var_r3_1223 = (signed char **) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r25_1214, NULL, 0, 0U));
         } else {
             var_r3_1223 = malloc(temp_r25_1214);
         }
@@ -632,7 +632,7 @@ loop_67:
                 if (var_r25_1328->GetFieldName() != NULL) {
                     var_r25_1328->GetFieldName();
                     if (stricmp("ground") == 0) {
-                        temp_r23_1350 = var_r3_1206 + var_r28_1233;
+                        temp_r23_1350 = (signed char *) (var_r3_1206 + var_r28_1233);
                         strcpy(temp_r23_1350, ((MKChunkSceneManager *) (var_r25_1328->GetString(0)))->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)));
                         *(var_r3_1223 + var_r27_1232) = temp_r23_1350;
                         var_r29_1231 += 1;
@@ -744,7 +744,7 @@ void MKLevelChunk::LockChunk(int arg0, bool arg1) {
     this->unk138 |= 0x200;
 }
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 u8 MKLevelChunk::IsReady() {
     f32 temp_r0_1659;
     u8 var_r31_1658;
@@ -758,7 +758,7 @@ u8 MKLevelChunk::IsReady() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void MKLevelChunk::QueueChunkLoad(const char *arg0, const char *arg1, bool arg2) {
     strcpy((s8 *) &this->unk14.unkEC, arg1);
     strcpy((s8 *) &this->unk14.unkCC, arg0);
@@ -770,19 +770,19 @@ void MKLevelChunk::QueueChunkLoad(const char *arg0, const char *arg1, bool arg2)
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s8 *MKLevelChunk::GetChunkName() {
     f32 temp_r0_1719;
 
     temp_r0_1719 = this->unk14.unk78;
     if ((M2C_BITWISE(s32, temp_r0_1719) == 9) || (M2C_BITWISE(s32, temp_r0_1719) == 0xC) || (M2C_BITWISE(s32, temp_r0_1719) == 0xA)) {
-        return ((MKChunkSceneManager *) (M2C_BITWISE(s32, this->unk14.unk74) + 0x1C))->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
+        return (const char *) (((MKChunkSceneManager *) (M2C_BITWISE(s32, this->unk14.unk74) + 0x1C))->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)));
     }
     if (strlen((s8 *) &this->unk14.unkAC) != 0) {
-        return ((MKChunkSceneManager *) &this->unk14.unkAC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
+        return (const char *) (((MKChunkSceneManager *) &this->unk14.unkAC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)));
     }
     if (strlen((s8 *) &this->unk14.unkEC) != 0) {
-        return ((MKChunkSceneManager *) &this->unk14.unkEC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
+        return (const char *) (((MKChunkSceneManager *) &this->unk14.unkEC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)));
     }
     return NULL;
 }
@@ -859,7 +859,7 @@ void MKLevelChunk::Activate() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
 void MKLevelChunk::Destroy() {
     s32 temp_r3_1933;
 
@@ -886,7 +886,7 @@ void MKLevelChunk::Destroy() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionManager' to 'MKCollisionManager *'
 void MKLevelChunk::Create(int arg0, int arg1, int arg2, int arg3, const char *arg4) {
     MKCollisionManager *var_r0_2045;
     s32 var_r0_2029;
@@ -894,7 +894,7 @@ void MKLevelChunk::Create(int arg0, int arg1, int arg2, int arg3, const char *ar
 
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
         if (MKHeap::Current() != NULL) {
-            var_r3_2006 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0, NULL, 0);
+            var_r3_2006 = (signed char **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0, NULL, 0));
         } else {
             var_r3_2006 = malloc(arg0);
         }

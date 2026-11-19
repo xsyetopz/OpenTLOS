@@ -58,7 +58,7 @@ void VelocityTrigger::OnEnter() {
     M2C_FIELD(*gb, M2C_UNK (**)(void **, s32 *), 0x1C)(gb, &sp8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[4]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[4]' to 'long *'
 s32 VelocityTrigger::LoadLine(MKIniLine *arg0) {
     s32 var_r31_165;
 

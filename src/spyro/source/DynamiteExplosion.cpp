@@ -75,7 +75,7 @@ static u8 lit_1080 = 1;
 
 static u8 lit_1149 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     f64 sp150;
     f64 sp148;
@@ -326,7 +326,7 @@ u8 DynamiteExplosion::UpdateFire(DynamiteExplosion::Explosion *arg1) {
     return 1U;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp3B0;
     Matrix sp370;
@@ -876,7 +876,7 @@ loop_70:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4B0;
     Matrix sp470;
@@ -1427,7 +1427,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier '__float_nan' Too many errors printed, aborting program
 void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4C0;
     Matrix sp480;
@@ -1932,7 +1932,7 @@ loop_58:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp470;
     Matrix sp430;
@@ -2545,7 +2545,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'DynamiteExplosion::Explosion *' and 'DynamiteExplosion::Explosion **'
 void DynamiteExplosion::Deinit() {
     DynamiteExplosion::Explosion **var_r31_4167;
     DynamiteExplosion::Explosion **var_r3_4168;
@@ -2655,14 +2655,13 @@ loop_17:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to 'long *'
 f32 DynamiteExplosion::Resolve() {
     MKProp::Resolve();
-    this->unk4C = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
+    this->unk4C = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void DynamiteExplosion::Init() {
     DynamiteExplosion::Explosion **temp_r3_4369;
     DynamiteExplosion::Explosion **temp_r3_4375;
@@ -2672,7 +2671,7 @@ void DynamiteExplosion::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_4354 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xBC, NULL, 0);
+        var_r3_4354 = (DynamiteExplosion::Explosion **) (((MKHeap *) (MKHeap::Current()))->Alloc(0xBC, NULL, 0));
     } else {
         var_r3_4354 = malloc(0xBC);
     }
@@ -2692,23 +2691,20 @@ void DynamiteExplosion::Init() {
     this->unk50 = temp_r3_4375 + 4;
     M2C_FIELD(temp_r3_4375, DynamiteExplosion::Explosion ***, 4) = NULL;
 }
-#endif
 
 void DynamiteExplosionDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void DynamiteExplosionDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireFlames"));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireShock"));
-    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpSmoke"));
-    this->unk6C = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpElecShock"));
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceFlash"));
-    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceShock"));
-    this->unk78 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthFlash"));
-    this->unk7C = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthShock"));
-    this->unk80 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceSnow"));
+    this->unk60 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireFlames")));
+    this->unk64 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireShock")));
+    this->unk68 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpSmoke")));
+    this->unk6C = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpElecShock")));
+    this->unk70 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceFlash")));
+    this->unk74 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceShock")));
+    this->unk78 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthFlash")));
+    this->unk7C = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthShock")));
+    this->unk80 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceSnow")));
 }
-#endif

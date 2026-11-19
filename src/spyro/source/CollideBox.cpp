@@ -56,7 +56,7 @@ s32 CollideBox::LoadDone() {
     this->unk70.unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 CollideBox::LoadLine(MKIniLine *arg0) {
     s32 var_r31_112;
 

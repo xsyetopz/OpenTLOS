@@ -71,7 +71,7 @@ void TrapSpawnPool::Reset() {
     this->unk94 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk98;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to 'float'
 f32 TrapSpawnPool::Resolve() {
     MKCollisionResult sp60;
     f32 sp58;
@@ -121,7 +121,7 @@ f32 TrapSpawnPool::Resolve() {
     var_ctr_164 = temp_r31_152;
     if (temp_r31_152 > 0) {
         do {
-            temp_r3_172 = this->unkB4.unk20 + (var_r29_158 * M2C_FIELD(this, s32 *, 0xD0));
+            temp_r3_172 = (void *) (this->unkB4.unk20 + (var_r29_158 * M2C_FIELD(this, s32 *, 0xD0)));
             M2C_FIELD(temp_r3_172, f32 *, 4) = (f32) (M2C_FIELD(temp_r3_172, f32 *, 4) + this->unk108);
             sp50 = (f64) sp50 + M2C_FIELD(temp_r3_172, f64 *, 0);
             var_r29_158 += 1;
@@ -154,8 +154,8 @@ f32 TrapSpawnPool::Resolve() {
     temp_r4_260 = M2C_FIELD(this, s32 *, 0xD0);
     temp_r5_261 = this->unkB4.unk20;
     sp58 = temp_f2_254;
-    temp_r3_265 = temp_r5_261 + ((temp_r31_152 - 2) * temp_r4_260);
-    temp_r4_266 = temp_r5_261 + ((temp_r31_152 - 1) * temp_r4_260);
+    temp_r3_265 = (void *) (temp_r5_261 + ((temp_r31_152 - 2) * temp_r4_260));
+    temp_r4_266 = (void *) (temp_r5_261 + ((temp_r31_152 - 1) * temp_r4_260));
     sp10 = M2C_FIELD(temp_r4_266, f64 *, 0) - M2C_FIELD(temp_r3_265, f64 *, 0);
     sp30 = sp10;
     sp18 = M2C_FIELD(temp_r4_266, f32 *, 8) - M2C_FIELD(temp_r3_265, f32 *, 8);
@@ -219,7 +219,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: ')' expected
 s32 TrapSpawnPool::LoadDone() {
     s32 temp_r31_411;
     s32 var_r30_426;
@@ -229,7 +229,7 @@ s32 TrapSpawnPool::LoadDone() {
     MKProp::LoadDone();
     temp_r31_411 = this->unk90 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_419 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_411, NULL, 0);
+        var_r3_419 = (void **) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_411, NULL, 0));
     } else {
         var_r3_419 = malloc(temp_r31_411);
     }
@@ -271,7 +271,7 @@ void TrapSpawnPool::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Matrix *'
 void TrapSpawnPool::Init() {
     MKProp::Init();
     this->unk90 = 0;
@@ -297,7 +297,7 @@ void TrapSpawnPool::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TrapSpawnPoolDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_669;
 

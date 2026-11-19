@@ -35,7 +35,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
     void **temp_r5_49;
     void *temp_r3_51;
@@ -43,7 +42,7 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
 
     temp_r5_45 = this->unkB0;
     if ((u32) M2C_FIELD(temp_r5_45, u32 *, -4) != 0U) {
-        temp_r5_49 = ((u8 *) temp_r5_45) - 4;
+        temp_r5_49 = (void **) (((u8 *) temp_r5_45) - 4);
         this->unkB0 = temp_r5_49;
         temp_r3_51 = *temp_r5_49;
         if (temp_r3_51 != NULL) {
@@ -53,7 +52,6 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ElecZapCrystal::Deinit() {
@@ -98,7 +96,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void ElecZapCrystal::Draw() {
     f64 sp20;
     f64 sp18;
@@ -135,7 +133,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void *ElecZapCrystal::Update() {
     f64 spB8;
     f64 spB0;
@@ -272,7 +270,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *,
+#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, signed char *)' does not match 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel 
 s32 ElecZapCrystal::LoadDone() {
     f32 var_f1_464;
     s32 temp_r0_481;

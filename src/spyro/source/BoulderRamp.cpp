@@ -184,18 +184,18 @@ u8 states__11BoulderRamp[0x90] = {
     0,
     0,
 };
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_boulderRampGroups_0x18'
 static struct _struct_boulderRampGroups_0x18 boulderRampGroups[8];
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Ball::State'
 void BoulderRamp::BoulderSinkingExit() {
     ((EventMessage *) &this->unkF4.unk14)->Send((MKProp *) this);
     this->unkF0->SetState((Ball::State) 6);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void BoulderRamp::BoulderSinkingUpdate() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
@@ -255,7 +255,7 @@ void BoulderRamp::BoulderSinkingEnter() {
     this->unkEC = 1.8f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void BoulderRamp::ReceivingBoulderUpdate() {
     f64 sp68;
     KDUniformSpline sp50;
@@ -386,7 +386,7 @@ void BoulderRamp::ReceivingBoulderEnter() {
     this->unkE8 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'BoulderRamp::State'
 void BoulderRamp::SetBoulder(Ball *arg0) {
     MKVector3 *temp_r31_397;
 
@@ -424,7 +424,7 @@ void BoulderRamp::Reset() {
     Trap::Reset();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal type
 s32 BoulderRamp::LoadDone() {
     s32 var_ctr_492;
     s32 var_r4_491;
@@ -433,7 +433,7 @@ s32 BoulderRamp::LoadDone() {
     var_r4_491 = 0;
     var_ctr_492 = 6;
 loop_1:
-    temp_r5_496 = &boulderRampGroups[this->unkE0];
+    temp_r5_496 = (_struct_boulderRampGroups_0x18 *) (&boulderRampGroups[this->unkE0]);
     if ((u32) *(temp_r5_496 + var_r4_491) == 0U) {
         *(temp_r5_496 + var_r4_491) = this;
     } else {
@@ -458,7 +458,7 @@ s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal type
 void BoulderRamp::Deinit() {
     s32 var_ctr_582;
     s32 var_r3_577;
@@ -471,7 +471,7 @@ void BoulderRamp::Deinit() {
         var_r3_577 = 0;
         var_ctr_582 = 6;
         do {
-            temp_r5_586 = &boulderRampGroups[this->unkE0];
+            temp_r5_586 = (_struct_boulderRampGroups_0x18 *) (&boulderRampGroups[this->unkE0]);
             if ((u32) *(temp_r5_586 + var_r3_577) == this) {
                 *(temp_r5_586 + var_r3_577) = 0;
             }

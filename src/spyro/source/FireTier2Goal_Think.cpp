@@ -66,7 +66,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_MWHit1;
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, unsigned in
 u8 FireTier2Goal_Think::Update() {
     f64 sp18;
     f64 sp10;
@@ -94,7 +94,7 @@ u8 FireTier2Goal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void FireTier2Goal_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     f32 var_f31_317;
@@ -232,9 +232,9 @@ void FireTier2Goal_Think::Deinit() {
     EnemyGoal_Think::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FireTier2 *' to
+#if 0 // DRAFT: pointer/array required
 void FireTier2Goal_Think::Init(Enemy *arg0) {
-    this->unk74 = checked_cast<FireTier2 *, Enemy>(arg0);
+    this->unk74 = (MKHeap *) (checked_cast<FireTier2 *, Enemy>(arg0));
     if ((u8) this->unk9 == 0) {
         operator new(0x60U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
@@ -276,7 +276,7 @@ u8 FireTier2Goal_JumpOutOfLava::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     MKCollisionResult spF8;
     f64 spF0;
@@ -659,7 +659,7 @@ void FireTier2Goal_JumpOutOfLava::Deinit() {
     this->unk9 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FireTier2 *' to
+#if 0 // DRAFT: pointer/array required
 void FireTier2Goal_JumpOutOfLava::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1350;
     Goal<Enemy> *temp_r4_1361;
@@ -667,7 +667,7 @@ void FireTier2Goal_JumpOutOfLava::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1383;
     void *var_r3_1327;
 
-    this->unk20 = checked_cast<FireTier2 *, Enemy>(arg0);
+    this->unk20 = (MKHeap *) (checked_cast<FireTier2 *, Enemy>(arg0));
     if ((arg0 != NULL) && ((u8) this->unk9 == 0)) {
         operator new(0x14U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
@@ -782,7 +782,7 @@ void FireTier2Goal_MoveToLavaEdge::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, void *, float, float)' does not
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, void *, float, float)' does not match 'Enemy::GetCollisionRadius()'
 u8 FireTier2Goal_MoveToLavaEdge::Update() {
     u8 sp138;
     s32 sp134;

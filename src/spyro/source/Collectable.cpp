@@ -67,7 +67,7 @@ void Collectable::CollectEffects() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal implicit conversion from 'Matrix' to 'void *'
 void CollectableSpawner::Emit(SpawnInfo *arg0) {
     f64 sp60;
     f64 sp58;
@@ -248,7 +248,6 @@ void CollectableSpawner::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
 void *CollectableSpawner::Update() {
     SpawnInfo *var_r0_434;
     SpawnInfo *var_r4_439;
@@ -259,7 +258,7 @@ void *CollectableSpawner::Update() {
     MKProp::Update();
     var_r31_428 = 0;
     if ((s32) this->unk60 > 0) {
-        var_r0_434 = this->unk68 + (this->unk64 * 0x28);
+        var_r0_434 = (SpawnInfo *) (this->unk68 + (this->unk64 * 0x28));
     } else {
         var_r0_434 = NULL;
     }
@@ -277,7 +276,7 @@ loop_12:
             this->unk60 -= 1;
         }
         if ((s32) this->unk60 > 0) {
-            var_r4_439 = this->unk68 + (this->unk64 * 0x28);
+            var_r4_439 = (SpawnInfo *) (this->unk68 + (this->unk64 * 0x28));
         } else {
             var_r4_439 = NULL;
         }
@@ -285,7 +284,6 @@ loop_12:
         goto loop_12;
     }
 }
-#endif
 
 void CollectableSpawner::Reset() {
     MKProp::Reset();
@@ -321,7 +319,7 @@ loop_4:
     }
     temp_r30_544 = this->unk50 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_552 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_544, NULL, 0);
+        var_r3_552 = (Matrix *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_544, NULL, 0));
     } else {
         var_r3_552 = malloc(temp_r30_544);
     }
@@ -374,7 +372,6 @@ void CollectableSpawner::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CollectableSpawner::Init() {
     Matrix *var_r3_681;
 
@@ -382,16 +379,15 @@ void CollectableSpawner::Init() {
     this->unk4C = NULL;
     this->unk54 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_681 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0);
+        var_r3_681 = (Matrix *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0));
     } else {
         var_r3_681 = malloc(0x7D0);
     }
     this->unk68 = var_r3_681;
     this->unk5C = 0x32;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 CollectableSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_706;
 
@@ -403,12 +399,10 @@ s32 CollectableSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
 void CollectableSpawnerDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = "Opal";
+    this->unk60 = (signed char *) ("Opal");
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Collectable::PlatformDetach() {
@@ -432,7 +426,7 @@ void Collectable::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void Collectable::PlatformAttach(MKProp *arg0) {
     s32 sp18;
     s8 sp14;
@@ -571,7 +565,7 @@ void Collectable::SetState(CollectableState arg0) {
     this->unkD4 = (s32) arg0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::CollectedState() {
     Matrix sp10;
     M2C_UNK spC;
@@ -622,7 +616,7 @@ void Collectable::PresentingState() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::CollectingState() {
     Matrix sp10;
     M2C_UNK spC;
@@ -662,7 +656,7 @@ void Collectable::CollectingStateInit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::MagnetisedState() {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -788,7 +782,7 @@ void Collectable::MagnetisedState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::IdleState() {
     MKHeap *temp_r3_1607;
     f32 temp_f1_1600;
@@ -824,7 +818,7 @@ void Collectable::IdleState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::JustSpawnedState() {
     MKHeap *temp_r3_1699;
     f32 temp_f0_1714;
@@ -857,7 +851,7 @@ void Collectable::JustSpawnedState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void Collectable::SpawningState() {
     f64 sp80;
     f64 sp78;
@@ -1010,7 +1004,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState' Too many errors printed, aborting program
 void Collectable::SlidingState() {
     f64 sp30;
     f64 sp28;
@@ -1043,7 +1037,7 @@ void Collectable::SlidingState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 u8 Collectable::FindGround() {
     MKCollisionResult sp90;
     f64 sp88;
@@ -1185,7 +1179,7 @@ u8 Collectable::FindGround() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void Collectable::FallingState() {
     f64 sp90;
     f64 sp88;
@@ -1284,7 +1278,7 @@ void Collectable::FallingState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     f64 sp40;
     f64 sp38;
@@ -1314,7 +1308,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     MKCollisionResult sp80;
     f64 sp78;
@@ -1466,7 +1460,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2) {
     u8 sp140;
     s32 sp13C;
@@ -1525,7 +1519,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
     void *temp_r3_3164;
 
     this->unk134 = 1.0f;
-    var_r28_3046 = arg0;
+    var_r28_3046 = (MKVector3 *) (arg0);
     this->unk138 = 0.0f;
     this->unk13C = 0;
     if (((u8) this->unk144 >> 6U) & 1) {
@@ -1883,7 +1877,7 @@ void Collectable::DrawLocator() {
     MKShape_DrawLine(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp8), this->unk124->unk88, MKVector4::one, Matrix::identity);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void Collectable::DrawShadow() {
     f64 sp2F0;
     f64 sp2E8;
@@ -2269,7 +2263,7 @@ void *Collectable::Update() {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 f32 Collectable::Resolve() {
     M2C_UNK sp8;
     MKSceneManager *temp_r3_4468;
@@ -2301,7 +2295,7 @@ void Collectable::ClearData() {
     this->unk144 &= ~0x80;
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 Collectable::LoadDone() {
     this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     this->unk58 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
@@ -2312,7 +2306,7 @@ s32 Collectable::LoadDone() {
     if (!((s32) this->unk124->unk9C & 8)) {
         this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &this->unk50));
-        this->unk8 = MKModel_GetWorldMatrix(this->unk4);
+        this->unk8 = (void *) (MKModel_GetWorldMatrix(this->unk4));
     } else {
         this->unk4 = NULL;
         this->unk8 = &Matrix::identity;
@@ -2357,10 +2351,9 @@ void Collectable::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CollectableDescriptor *' to
 void Collectable::Init() {
     MKProp::Init();
-    this->unk124 = checked_cast<CollectableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk124 = (MKHeap *) (checked_cast<CollectableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
     this->unk60.unk0 = 0.0f;
     this->unk60.unk4 = 0.0f;
     this->unk60.unk8 = 0.0f;
@@ -2406,7 +2399,6 @@ void Collectable::Init() {
     this->unk108 = 980.0f * gUpdateTimeDelta;
     this->unk10C = 1.0f;
 }
-#endif
 
 void CollectableDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkB8);
@@ -2437,7 +2429,7 @@ void CollectableDescriptor::LoadDone() {
     MKModel_SetColor(this->unk2C, *((MKVector4 *) &sp18));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 CollectableDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4856;
 
@@ -2449,7 +2441,6 @@ s32 CollectableDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CollectableDescriptor::Init() {
     f64 sp20;
     f64 sp18;
@@ -2490,6 +2481,5 @@ void CollectableDescriptor::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0xB0) = (f64) sp10;
-    this->unkB8 = MKMaterial_Create("FX_DropShadow");
+    this->unkB8 = (MKMaterial *) (MKMaterial_Create("FX_DropShadow"));
 }
-#endif

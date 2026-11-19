@@ -97,14 +97,14 @@ void FireBombFXDescriptor::Deinit() {
     ((KDPropExDescriptor *) this)->KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void FireBombFXDescriptor::LoadDone() {
     ((GamePropDescriptor *) this)->GamePropDescriptor::LoadDone();
     this->unkEC = MKMaterial_Create(this->unkE8);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 FireBombFXDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_55;
 
@@ -654,7 +654,7 @@ void FireBombFX::DrawFlameBall() {
         sp118 = sp58;
         sp270 = (f64) sp60;
         sp120 = (f64) sp60;
-        temp_r3_1007 = MKModel_GetWorldMatrix(this->unk4);
+        temp_r3_1007 = (void *) (MKModel_GetWorldMatrix(this->unk4));
         sp2C0.unk30 = M2C_FIELD(temp_r3_1007, f32 *, 0x30);
         sp2C0.unk34 = M2C_FIELD(temp_r3_1007, f32 *, 0x34);
         sp2C0.unk38 = M2C_FIELD(temp_r3_1007, f32 *, 0x38);
@@ -686,7 +686,7 @@ void FireBombFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to
+#if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to 'MKMessage *'
 void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionInfo *arg2) {
     f64 spF8;
     f64 spF0;
@@ -838,7 +838,7 @@ void FireBombFX::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *FireBombFX::Update() {
     u8 sp5E0;
     s32 sp5DC;
@@ -1319,7 +1319,7 @@ void *FireBombFX::Update() {
             Explode(*((MKVector3 *) &sp4C8), *((MKVector3 *) &sp4D8), sp5D8);
         } else {
             M2C_STRUCT_COPY((s32) &sp510.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            temp_r5_1930 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+            temp_r5_1930 = (void *) (MKModel_GetWorldMatrix(this->unk4) + 0x30);
             sp228 = sp4E8 - M2C_FIELD(temp_r5_1930, f64 *, 0);
             sp220 = 0.0f;
             sp230 = (f32) sp4F0 - M2C_FIELD(temp_r5_1930, f32 *, 8);
@@ -1540,7 +1540,7 @@ void *FireBombFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: ')' expected
 f32 FireBombFX::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -1583,7 +1583,7 @@ f32 FireBombFX::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unk108 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 1000.0f, lit_536, lit_537);
+    this->unk108 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 1000.0f, lit_536, lit_537));
     temp_r4_2600 = this->unk108;
     if (temp_r4_2600 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2600, 0U);

@@ -68,7 +68,7 @@ void *malloc(s32);                                  /* extern */
 extern void **gMK;
 extern void **gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void EnemyGoal_Think::RemoveAllInactiveSubgoals(int arg0) {
     s32 temp_r0_154;
     s32 temp_r3_114;
@@ -101,7 +101,7 @@ loop_17:
             if (var_r0_97 >= temp_r4_96) {
                 var_r0_97 -= temp_r4_96;
             }
-            var_r3_92 = this->unk1C + (var_r0_97 * 4);
+            var_r3_92 = (void ***) (this->unk1C + (var_r0_97 * 4));
         }
         temp_r3_106 = *var_r3_92;
         if (arg0 == M2C_FIELD(*temp_r3_106, s32 (**)(void **), 0x34)(temp_r3_106)) {
@@ -115,7 +115,7 @@ loop_17:
                 if (var_r0_124 >= temp_r4_123) {
                     var_r0_124 -= temp_r4_123;
                 }
-                var_r3_119 = this->unk1C + (var_r0_124 * 4);
+                var_r3_119 = (unsigned long *) (this->unk1C + (var_r0_124 * 4));
             }
             var_r31_84 = *var_r3_119;
         }
@@ -725,7 +725,7 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         RemoveAllSubgoals();
         temp_r28_1565 = this->unkC;
         var_r29_1566 = 0;
-        temp_r30_1567 = temp_r28_1565 + 0x720;
+        temp_r30_1567 = (MKVector3 *) (temp_r28_1565 + 0x720);
         if (((EnemyRegion *) (temp_r28_1565 + 0x800))->IsPointWithin(*temp_r30_1567) != 0) {
             ((EnemyRegion *) &sp18)->GetRegionPos();
             if ((f32) fabs(sp1C - temp_r30_1567->unk4) <= 500.0f) {
@@ -765,7 +765,7 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void EnemyGoal_Think::AddGoal_GroundAttackMode() {
     Goal<Enemy> *temp_r4_1701;
 
@@ -812,7 +812,7 @@ void EnemyGoal_Think::Reset() {
     this->unk70 &= ~0x20;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void EnemyGoal_Think::ArbitrateOld() {
     f32 var_f31_1867;
     s32 temp_r3_1829;
@@ -1029,7 +1029,7 @@ void EnemyGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 u8 EnemyGoal_Think::Update() {
     s32 temp_r3_2405;
     s32 temp_r3_2427;
@@ -1050,7 +1050,7 @@ u8 EnemyGoal_Think::Update() {
         ((Enemy *) temp_r3_2427)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) && ((IsActive(8) != 0) || (IsActive(0xA) != 0) || (IsActive(0xF) != 0) || (IsActive(0x10) != 0))) {
             temp_r4_2470 = this->unkC;
-            temp_r3_2475 = ((EAPManager *) (M2C_FIELD(temp_r4_2470, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_2470, temp_r4_2470 + 0x870, NULL, 0);
+            temp_r3_2475 = (AITargetData *) (((EAPManager *) (M2C_FIELD(temp_r4_2470, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_2470, temp_r4_2470 + 0x870, NULL, 0));
             if ((temp_r3_2475 != 0) && (M2C_FIELD(*temp_r3_2475, s32 *, 0x38) & 0x30000)) {
                 RemoveAllSubgoals();
                 AddSubgoal((Goal<Enemy> *) this->unk64);

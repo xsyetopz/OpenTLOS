@@ -23,7 +23,7 @@ s32 CutsceneObject::Skippable() {
     return this->unk40.Send(NULL) != 0.0f;
 }
 
-#if 0 // DRAFT: function call 'MakeCutsceneFilename(long, signed char *, char *, unsigned
+#if 0 // DRAFT: function call 'MakeCutsceneFilename(long, signed char *, char *, unsigned char)' does not match 'MakeCutsceneFilename(int, const char *, char *, bool)'
 void CutsceneObject::GetFileName(char *arg0) {
     MakeCutsceneFilename(GetNumber(), this->unk54, arg0, this->unk59);
 }
@@ -131,7 +131,7 @@ void CutsceneObject::Resolve() {
 
 }
 
-#if 0 // DRAFT: function call 'strlen(long)' does not match
+#if 0 // DRAFT: function call 'strlen(long)' does not match 'strlen(const char *)'
 s32 CutsceneObject::LoadSubLine(MKIniLine *arg0) {
     MKIniLine *var_r31_275;
     s32 var_r31_344;
@@ -153,7 +153,7 @@ loop_4:
         temp_r3_312 = strlen(arg0->GetString(0));
         if (temp_r3_312 != 0) {
             if (MKHeap::Current() != NULL) {
-                var_r3_322 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_312 + 1, NULL, 0);
+                var_r3_322 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_312 + 1, NULL, 0));
             } else {
                 var_r3_322 = malloc(temp_r3_312 + 1);
             }
@@ -247,7 +247,7 @@ CutsceneObject::CutsceneObject() {
     this->unk63 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strcpy(char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s8 *MakeCutsceneFilename(int arg0, const char *arg1, char *arg2, bool arg3) {
     s8 *var_r4_0;
     s8 *var_r4_720;
@@ -256,7 +256,7 @@ s8 *MakeCutsceneFilename(int arg0, const char *arg1, char *arg2, bool arg3) {
     void *var_r4_706;
     void *var_r4_733;
 
-    var_r4_0 = arg1;
+    var_r4_0 = (signed char *) (arg1);
     if (arg3 != 0) {
         if (var_r4_0 != NULL) {
 
@@ -288,6 +288,6 @@ s8 *MakeCutsceneFilename(int arg0, const char *arg1, char *arg2, bool arg3) {
         return var_r4_720;
     }
     strcpy(arg2, var_r4_720);
-    return arg2;
+    return (signed char *) (arg2);
 }
 #endif

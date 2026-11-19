@@ -18,7 +18,7 @@
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'gAssertBool' redeclared
+#if 0 // DRAFT: identifier 'gAssertBool' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 u64 __shl2i(M2C_UNK, M2C_UNK, s32);                 /* extern */
 M2C_UNK free(MKResource *);                         /* extern */
 MKResource *malloc(s32);                            /* extern */
@@ -32,7 +32,7 @@ extern M2C_UNK gEmptyPtrList;
 extern f32 gUpdateTimeDelta;
 extern MKResource **mkAnimScriptTemplates;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 u8 pSoundEventKeyWord__19MKAnimScriptedEvent[4];    /* unable to generate initializer: cannot parse "MKSound" as integer; const */
 u8 pSubObjectEnableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAA8 as integer; const */
 u8 pSubObjectDisableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DABA as integer; const */
@@ -56,7 +56,7 @@ void MKAnimScriptTemplate::DeinitMKAnimScriptData() {
 loop_5:
     temp_r3_44 = this->unk34;
     if (var_r29_16 < (s32) M2C_FIELD(temp_r3_44, u16 *, 8)) {
-        temp_r30_22 = ((u8 *) temp_r3_44) + (var_r31_17 + 0x10);
+        temp_r30_22 = (MKAnim *) (((u8 *) temp_r3_44) + (var_r31_17 + 0x10));
         var_r28_27 = temp_r30_22->GetFirstEvent((MKAnimScriptedEvent::EventType) 6);
         temp_r30_30 = temp_r30_22->GetNumberOfEvents((MKAnimScriptedEvent::EventType) 6);
         var_r27_31 = 0;
@@ -78,7 +78,7 @@ void MKAnimScriptedEvent::FreeMaterial() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 MKAnimScriptedEvent::GetStringSizeOfEvent(MKIniLine *arg0) {
     s8 *sp18;
     s8 *sp14;
@@ -95,7 +95,7 @@ s32 MKAnimScriptedEvent::GetStringSizeOfEvent(MKIniLine *arg0) {
         switch (temp_r0_74) {                       /* irregular */
         case 0:
             sp18 = NULL;
-            gAssertBool = arg0->AsString(0, &sp18);
+            gAssertBool = (const char **) (arg0->AsString(0, &sp18));
             var_r31_72 = strlen(sp18) + 1;
             break;
         default:
@@ -152,7 +152,7 @@ block_12:
     return var_r3_160;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseAliasMaterialEvent(MKIniLine *arg0, char *arg1) {
     s8 *spC;
     s8 *sp8;
@@ -160,10 +160,10 @@ u8 MKAnimScriptedEvent::ParseAliasMaterialEvent(MKIniLine *arg0, char *arg1) {
 
     spC = NULL;
     sp8 = NULL;
-    var_r31_227 = arg0->AsString(2, &spC);
+    var_r31_227 = (const char **) (arg0->AsString(2, &spC));
     this->unk0 = AddToStringTable(arg1, spC);
     if ((u8) var_r31_227 != 0) {
-        var_r31_227 = arg0->AsString(3, &sp8);
+        var_r31_227 = (const char **) (arg0->AsString(3, &sp8));
     }
     if ((u8) var_r31_227 != 0) {
         var_r31_227 = ParseFrameNo(arg0);
@@ -175,7 +175,7 @@ u8 MKAnimScriptedEvent::ParseAliasMaterialEvent(MKIniLine *arg0, char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseSubObjectEvent(MKIniLine *arg0, char *arg1) {
     s8 *sp8;
     s16 temp_r0_277;
@@ -186,7 +186,7 @@ u8 MKAnimScriptedEvent::ParseSubObjectEvent(MKIniLine *arg0, char *arg1) {
     sp8 = NULL;
     temp_r0_277 = this->unk4;
     if ((temp_r0_277 == 2) || (temp_r0_277 == 3)) {
-        var_r31_275 = arg0->AsString(2, &sp8);
+        var_r31_275 = (const char **) (arg0->AsString(2, &sp8));
     }
     if ((u8) var_r31_275 != 0) {
         temp_r3_293 = ParseFrameNo(arg0);
@@ -203,7 +203,7 @@ u8 MKAnimScriptedEvent::ParseSubObjectEvent(MKIniLine *arg0, char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseSoundEvent(MKIniLine *arg0, char *arg1) {
     s8 *sp8;
     u8 temp_r3_332;
@@ -211,7 +211,7 @@ u8 MKAnimScriptedEvent::ParseSoundEvent(MKIniLine *arg0, char *arg1) {
     u8 var_r31_334;
 
     sp8 = NULL;
-    temp_r3_332 = arg0->AsString(2, &sp8);
+    temp_r3_332 = (const char **) (arg0->AsString(2, &sp8));
     var_r31_334 = temp_r3_332;
     if (temp_r3_332 != 0) {
         temp_r5_340 = ParseFrameNo(arg0);
@@ -224,7 +224,7 @@ u8 MKAnimScriptedEvent::ParseSoundEvent(MKIniLine *arg0, char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseCodeEvent(MKIniLine *arg0, char *arg1) {
     s8 *sp1C;
     s8 *sp18;
@@ -240,7 +240,7 @@ u8 MKAnimScriptedEvent::ParseCodeEvent(MKIniLine *arg0, char *arg1) {
 
     sp1C = NULL;
     sp18 = NULL;
-    gAssertBool = arg0->AsString(0, &sp1C);
+    gAssertBool = (const char **) (arg0->AsString(0, &sp1C));
     gAssertBool = ParseFrameNo(arg0);
     temp_r0_380 = this->unk6;
     if ((temp_r0_380 == -1) || (temp_r0_380 == -2)) {
@@ -249,7 +249,7 @@ u8 MKAnimScriptedEvent::ParseCodeEvent(MKIniLine *arg0, char *arg1) {
         this->unk8 = -1;
         return 1U;
     }
-    gAssertBool = arg0->AsString(1, &sp18);
+    gAssertBool = (const char **) (arg0->AsString(1, &sp18));
     if (strchr(sp18, 0x2E) != NULL) {
         temp_r3_413 = sscanf(sp18, "%f-%f", &spC, &sp8);
         switch (temp_r3_413) {                      /* switch 1; irregular */
@@ -288,14 +288,14 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseFrameNo(MKIniLine *arg0) {
     f32 spC;
     s8 *sp8;
     s32 temp_r31_527;
 
     sp8 = NULL;
-    temp_r31_527 = arg0->AsString(1, &sp8);
+    temp_r31_527 = (const char **) (arg0->AsString(1, &sp8));
     sscanf(sp8, "%s", &spC);
     if (stricmp(*MKAnimScriptedEvent::pOnExitKeyWord, (s8 *) &spC) == 0) {
         this->unk6 = -1;
@@ -310,13 +310,13 @@ u8 MKAnimScriptedEvent::ParseFrameNo(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKAnimScriptedEvent::ParseEventType(MKIniLine *arg0) {
     s8 *sp8;
     s32 temp_r31_583;
 
     sp8 = NULL;
-    temp_r31_583 = arg0->AsString(0, &sp8);
+    temp_r31_583 = (const char **) (arg0->AsString(0, &sp8));
     if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSoundEventKeyWord) == 0) {
         this->unk4 = 1;
     } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSubObjectEnableEventKeyWord) == 0) {
@@ -436,7 +436,7 @@ void MKAnimScript::Destroy() {
     ((MKHeap *) this)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKAnimScript' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKAnimScript' to 'MKAnimScript *'
 MKAnimScript *MKAnimScript::Create(const char *arg0, int arg1) {
     MKAnimScript *var_r30_910;
     s8 *temp_r31_923;
@@ -527,7 +527,7 @@ void MKAnimScript::Apply(Animation *arg0, int arg1) {
     arg0->TweenNode(temp_f31_987, var_f2_1066, arg1, 1U, 1U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKAnimScript_LVECalc' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKAnimScript_LVECalc' to 'float'
 void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
     s32 sp174;
     s32 sp170;
@@ -756,7 +756,7 @@ void MKAnimScript::Check(int arg0, int arg1, MKAnimScriptedEvent &arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::AnimationSwitch'
 void MKAnimScript::CheckSwitch(MKAnimScriptedEvent::AnimationSwitch arg1) {
     M2C_UNK var_r24_1636;
     MKModel *temp_r3_1600;
@@ -877,7 +877,7 @@ loop_27:
         if (var_r29_1734 < (s16) M2C_FIELD(temp_r4_1818, s16 *, 0x1C)) {
             temp_r3_1738 = this->unk8;
             if (temp_r3_1738 != NULL) {
-                temp_r26_1742 = M2C_FIELD(temp_r4_1818, s32 *, 0x20) + var_r27_1735;
+                temp_r26_1742 = (void *) (M2C_FIELD(temp_r4_1818, s32 *, 0x20) + var_r27_1735);
                 temp_r4_1743 = M2C_FIELD(temp_r26_1742, s16 *, 6);
                 if ((temp_r4_1743 != -1) && (temp_r4_1743 != -2)) {
                     temp_r5_1749 = M2C_FIELD(temp_r26_1742, s16 *, 4);
@@ -932,7 +932,7 @@ u8 MKAnimScript::CheckEvent(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char **' to
+#if 0 // DRAFT: undefined identifier 'stricmp'
 void MKAnimScript::InitEvents(const char **arg0) {
     s32 var_r24_1885;
     s32 var_r25_1880;
@@ -944,7 +944,7 @@ void MKAnimScript::InitEvents(const char **arg0) {
     void *temp_r26_1877;
     void *temp_r29_1884;
 
-    var_r28_1874 = arg0;
+    var_r28_1874 = (signed char **) (arg0);
     var_r27_1875 = 0;
     temp_r26_1877 = M2C_FIELD(this->unk4, void **, 0x34);
 loop_10:
@@ -958,7 +958,7 @@ loop_8:
             var_r30_1886 = 0;
 loop_6:
             if (var_r24_1885 < (s16) M2C_FIELD(temp_r29_1884, s16 *, 0x1E)) {
-                temp_r23_1891 = M2C_FIELD(temp_r29_1884, s32 *, 0x20) + var_r30_1886;
+                temp_r23_1891 = (void *) (M2C_FIELD(temp_r29_1884, s32 *, 0x20) + var_r30_1886);
                 if (stricmp((MKAnim *) *var_r28_1874, M2C_FIELD(temp_r23_1891, s8 **, 0)) == 0) {
                     M2C_FIELD(temp_r23_1891, s32 *, 8) = var_r27_1875;
                 }
@@ -977,7 +977,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::EventType'
 s32 MKAnimScript::GetEvent(int arg1, MKAnimScriptedEvent::EventType arg2) {
     MKAnimScriptedEvent *temp_r31_1958;
     s16 temp_r0_1969;
@@ -1070,7 +1070,7 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::EventType'
 s8 *MKAnimScript::GetEventByName(const char *arg1, MKAnimScriptedEvent::EventType arg2) {
     MKAnim *temp_r30_2049;
     MKAnimScriptedEvent *var_r27_2054;
@@ -1087,7 +1087,7 @@ loop_7:
     if (var_r28_2041 >= (s32) M2C_FIELD(temp_r29_2044, u16 *, 8)) {
         return NULL;
     }
-    temp_r30_2049 = ((u8 *) temp_r29_2044) + (var_r31_2042 + 0x10);
+    temp_r30_2049 = (MKAnim *) (((u8 *) temp_r29_2044) + (var_r31_2042 + 0x10));
     var_r27_2054 = temp_r30_2049->GetFirstEvent(arg2);
     temp_r30_2057 = temp_r30_2049->GetNumberOfEvents(arg2);
     var_r26_2058 = 0;
@@ -1209,7 +1209,7 @@ void MKAnimScript::SetAnim(MKAnim *arg0, float arg1, float arg2, int arg3, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: type mismatch 'void *' and 'int'
 void MKAnimScript::ReadBinary(const char *arg0) {
     MKResource *temp_r3_2323;
     MKResource *temp_r4_2326;
@@ -1251,7 +1251,7 @@ void MKAnimScript::ReadBinary(const char *arg0) {
     void *temp_r8_2485;
     void *temp_r8_2507;
 
-    this->unk4 = MKArchive_Load(arg0, NULL, NULL, -1);
+    this->unk4 = (MKResource *) (MKArchive_Load(arg0, NULL, NULL, -1));
     temp_r3_2323 = this->unk4;
     M2C_FIELD(temp_r3_2323, void ***, 0x34) = (void **) (temp_r3_2323 + 0x38);
     temp_r4_2326 = this->unk4;
@@ -1429,7 +1429,7 @@ loop_4:
         goto block_12;
     }
     temp_ret_2600 = Str_Printf("%s.bad", arg0, M2C_BITWISE(f32, temp_ret_2587));
-    temp_r3_2600 = temp_ret_2600;
+    temp_r3_2600 = (MKIni *) (temp_ret_2600);
     if (temp_r3_2600->Exists((s8 *) (u32) (u64) temp_ret_2600) != 0) {
         strcpy(&spC, &temp_r3_2600->unk0);
         MKHeap::ActivateTempMemOverride();
@@ -1558,7 +1558,7 @@ void MKAnimScript::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Init(signed char *, MKModel *)' does not match
+#if 0 // DRAFT: function call 'Init(signed char *, MKModel *)' does not match 'MKAnimScript::Init(const char *, MKModel *)' 'MKAnimScript::Init(MKAnimScript *, MKModel *)'
 void MKAnimScript::Init(MKAnimScript *arg0, MKModel *arg1) {
     Init(&arg0->unk4->unk0, arg1);
 }
@@ -1646,7 +1646,7 @@ MKAnimScript::MKAnimScript() {
     this->unk4 = NULL;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::EventType'
 s16 MKAnim::GetNumberOfEvents(MKAnimScriptedEvent::EventType arg1) {
     if ((s32) arg1 != 1) {
         if ((s32) arg1 < 1) {
@@ -1668,7 +1668,7 @@ s16 MKAnim::GetNumberOfEvents(MKAnimScriptedEvent::EventType arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::EventType'
 MKAnimScriptedEvent *MKAnim::GetFirstEvent(MKAnimScriptedEvent::EventType arg1) {
     if ((s32) arg1 != 1) {
         if ((s32) arg1 < 1) {
@@ -1690,7 +1690,7 @@ MKAnimScriptedEvent *MKAnim::GetFirstEvent(MKAnimScriptedEvent::EventType arg1) 
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 MKResource *ParseBadFile(MKIni *arg0, const char *arg1, MKModel *arg2) {
     s8 sp90;
     f32 sp70;
@@ -1802,7 +1802,7 @@ loop_28:
     }
     temp_r25_3225 = (var_r26_3062 * 0x30) + (var_r31_3067 * 0x10) + var_r23_3068 + 0x10;
     if (MKHeap::Current() != NULL) {
-        var_r23_3234 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_3225 + 0x38, NULL, 0);
+        var_r23_3234 = (MKResource *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_3225 + 0x38, NULL, 0));
     } else {
         var_r23_3234 = malloc(temp_r25_3225 + 0x38);
     }
@@ -1813,7 +1813,7 @@ loop_28:
     var_r28_3258 = var_r27_3256 + (var_r28_3064 * 0x10);
     var_r24_3260 = var_r28_3258 + (var_r29_3065 * 0x10);
     var_r30_3261 = NULL;
-    temp_r29_3262 = var_r24_3260 + (var_r30_3066 * 0x10);
+    temp_r29_3262 = (signed char *) (var_r24_3260 + (var_r30_3066 * 0x10));
     M2C_FIELD(temp_r29_3262, s8 *, 1) = 0;
     M2C_FIELD(temp_r29_3262, s8 *, 0) = 0;
     var_r26_3268 = arg0->GotoLine(NULL, NULL);
@@ -1823,7 +1823,7 @@ loop_99:
             temp_r6_3275 = M2C_FIELD(var_r23_3234, void **, 0x34);
             temp_r5_3277 = M2C_FIELD(temp_r6_3275, u16 *, 8);
             M2C_FIELD(temp_r6_3275, u16 *, 8) = (u16) (temp_r5_3277 + 1);
-            var_r30_3261 = ((u8 *) temp_r6_3275) + ((temp_r5_3277 * 0x30) + 0x10);
+            var_r30_3261 = (MKAnim *) (((u8 *) temp_r6_3275) + ((temp_r5_3277 * 0x30) + 0x10));
             *var_r30_3261 = AddToStringTable(temp_r29_3262, var_r26_3268->GetSectionName());
         } else if (var_r26_3268->GetFieldName() != NULL) {
             if (var_r26_3268->IsField("mesh") != 0) {
@@ -1844,7 +1844,7 @@ loop_99:
                 temp_r7_3383 = M2C_FIELD(var_r23_3234, void **, 0x34);
                 temp_r6_3386 = M2C_FIELD(temp_r7_3383, u16 *, 8);
                 M2C_FIELD(temp_r7_3383, u16 *, 8) = (u16) (temp_r6_3386 + 1);
-                var_r30_3261 = ((u8 *) temp_r7_3383) + ((temp_r6_3386 * 0x30) + 0x10);
+                var_r30_3261 = (MKAnim *) (((u8 *) temp_r7_3383) + ((temp_r6_3386 * 0x30) + 0x10));
                 M2C_FIELD(var_r30_3261, MKAnim **, 0) = AddToStringTable(temp_r29_3262, var_r26_3268->GetString(0));
                 var_r30_3261->unk8 = 0;
                 var_r30_3261->unk4 = 0;
@@ -2008,13 +2008,13 @@ block_101:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 MKAnim *AddToStringTable(char *arg0, const char *arg1) {
     s32 temp_r3_3858;
     s8 *var_r28_3851;
     u32 temp_r30_3854;
 
-    var_r28_3851 = arg0;
+    var_r28_3851 = (signed char *) (arg0);
     temp_r30_3854 = strlen(arg1);
 loop_5:
     if ((s8) (u8) *var_r28_3851 == 0) {
@@ -2031,7 +2031,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKResource **' and 'long *'
 void MKAnimScript_DeinitModule() {
     MKResource **temp_r31_3900;
     MKResource **temp_r3_3899;
@@ -2052,13 +2052,13 @@ void MKAnimScript_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'malloc'
 void MKAnimScript_InitModule() {
     MKResource *var_r3_3943;
     s32 var_ctr_3955;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3943 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x408, NULL, 0);
+        var_r3_3943 = (MKResource *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x408, NULL, 0));
     } else {
         var_r3_3943 = malloc(0x408);
     }
@@ -2075,7 +2075,7 @@ void MKAnimScript_InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strchr(long, int)' does not match
+#if 0 // DRAFT: function call 'strchr(long, int)' does not match 'strchr(const char *, int)'
 s16 GetFrameOrProportion(MKIniLine *arg0, int arg1, MKAnim *arg2) {
     s16 temp_r31_3993;
 

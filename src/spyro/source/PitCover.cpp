@@ -48,7 +48,7 @@ extern s32 GS_PitTrapFall;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void PitCover::Message(MKMessage *arg0) {
     MKVector3 sp180;
     MKVector3 sp170;
@@ -189,7 +189,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 s32 PitCover::LoadDone() {
     s32 temp_r0_286;
     s32 var_r29_274;

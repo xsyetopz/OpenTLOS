@@ -175,7 +175,7 @@ void Step_ProbeDevice() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'WriteMKFileInfo'
 void Step_GetDirInfo() {
     CARDFileInfo *temp_r29_305;
     s32 temp_r0_387;
@@ -203,7 +203,7 @@ void Step_GetDirInfo() {
         init_788 = 1;
     }
     temp_r27_302 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
-    temp_r29_305 = &CardTemplate + 0xD0;
+    temp_r29_305 = (CARDFileInfo *) (&CardTemplate + 0xD0);
     var_r26_306 = 0;
 loop_99:
     if (var_r26_306 == 0) {
@@ -366,7 +366,7 @@ loop_99:
 }
 #endif
 
-#if 0 // DRAFT: function call 'CARDDeleteAsync(long, signed char *, int)' does not match
+#if 0 // DRAFT: function call 'CARDDeleteAsync(long, signed char *, int)' does not match 'CARDDeleteAsync(long, const char *, void (*)(long, long))'
 void Step_DeleteFile() {
     s32 temp_r30_682;
     s32 temp_r3_698;
@@ -720,7 +720,7 @@ loop_156:
 }
 #endif
 
-#if 0 // DRAFT: function call 'CARDOpen(long, signed char *, CARDFileInfo *)' does not
+#if 0 // DRAFT: function call 'CARDOpen(long, signed char *, CARDFileInfo *)' does not match 'CARDOpen(long, const char *, CARDFileInfo *)'
 void Step_ReadFile() {
     s32 temp_r28_1417;
     s32 temp_r3_1451;
@@ -1388,7 +1388,7 @@ void MKMemoryCard_DeinitModule() {
     free(temp_r31_2740);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void MKMemoryCard_InitModule() {
     f32 temp_f1_2796;
     s32 var_ctr_2809;
@@ -1448,13 +1448,13 @@ void MKMemoryCard_GetDirInfo(int arg0, MKMemoryCardFileInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int *' to
+#if 0 // DRAFT: undefined identifier 'Proccess_GetInfo'
 void MKMemoryCard_GetInfo(int arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     SetStarted(arg0, 4);
-    M2C_FIELD(&CardTemplate, s32 **, 4) = arg1;
-    M2C_FIELD(&CardTemplate, s32 **, 8) = arg2;
-    M2C_FIELD(&CardTemplate, s32 **, 0xC) = arg3;
-    M2C_FIELD(&CardTemplate, s32 **, 0x1C) = arg4;
+    M2C_FIELD(&CardTemplate, s32 **, 4) = (long *) (arg1);
+    M2C_FIELD(&CardTemplate, s32 **, 8) = (long *) (arg2);
+    M2C_FIELD(&CardTemplate, s32 **, 0xC) = (long *) (arg3);
+    M2C_FIELD(&CardTemplate, s32 **, 0x1C) = (long *) (arg4);
     Proccess_GetInfo(1U);
 }
 #endif
@@ -1469,19 +1469,19 @@ void MKMemoryCard_Load(int arg0, int arg1, void *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: undefined identifier 'lit_303'
 void MKMemoryCard_Save(int arg0, int arg1, void *arg2, int arg3, const char *arg4, TimerInfo *arg5) {
     s8 sp8;
     M2C_UNK sp4;
     s8 *temp_r27_2964;
     s8 *var_r25_2945;
 
-    var_r25_2945 = arg4;
+    var_r25_2945 = (signed char *) (arg4);
     M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_303 - 4) + 4, 0x20);
     if (var_r25_2945 == NULL) {
         var_r25_2945 = &sp8;
     }
-    temp_r27_2964 = &CardTemplate + 0xB0;
+    temp_r27_2964 = (signed char *) (&CardTemplate + 0xB0);
     memset(temp_r27_2964, 0, 0x20U);
     strcpy(temp_r27_2964, var_r25_2945);
     M2C_FIELD(&CardTemplate, s32 *, 0x40) = arg3;
@@ -1517,7 +1517,7 @@ void MKMemoryCard_Prepare(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(long *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(long *, const char *)' does not match 'strcpy(char *, const char *)'
 void MKMemoryCard_SetAppInfo(const char *arg0, const char *arg1, int *arg2) {
     f32 var_f1_3056;
     s32 var_r28_3064;

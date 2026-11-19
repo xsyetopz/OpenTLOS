@@ -162,7 +162,7 @@ loop_20:
     M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) - (f32) M2C_FIELD(this, f64 *, 0x98));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 s32 SplineProp::LoadDone() {
     KDUniformSpline sp10;
     f32 sp8;

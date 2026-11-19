@@ -424,7 +424,7 @@ loop_197:
             sp478 = 0;
             sp47C = -1;
             sp480 = 0;
-            var_r3_0 = MKCollision_SphereCollide(*((MKVector3 *) &sp3C8), 50.0f, (MKCollisionResult *) &sp430, 1, (MKCollisionMode) 7, 0);
+            var_r3_0 = (SkiffterCritter *) (MKCollision_SphereCollide(*((MKVector3 *) &sp3C8), 50.0f, (MKCollisionResult *) &sp430, 1, (MKCollisionMode) 7, 0));
             if (var_r3_0 != NULL) {
                 sp3A8 = (f64) sp440;
                 sp3B0 = (f64) sp448;
@@ -1178,7 +1178,7 @@ s32 SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_1883;
     s32 temp_r29_1863;

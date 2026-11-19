@@ -147,7 +147,6 @@ void GemMagicFX::Emit(const MKVector3 &arg0, const MKVector3 &arg1, MKVector3 *a
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void **GemMagicFX::GetTrail() {
     s32 var_ctr_201;
     s32 var_r31_200;
@@ -162,7 +161,7 @@ loop_1:
         temp_r3_208 = M2C_FIELD(temp_r3_204, void **, 0);
         M2C_FIELD(M2C_FIELD(temp_r3_208, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r3_208);
         M2C_FIELD((this->unk50 + var_r31_200), s8 *, 4) = 1;
-        return this->unk50 + var_r31_200;
+        return (void **) (this->unk50 + var_r31_200);
     }
     var_r31_200 += 8;
     var_ctr_201 -= 1;
@@ -171,9 +170,8 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void GemMagicFX::Deinit() {
     MKHeap *temp_r0_259;
     MKHeap *temp_r0_278;
@@ -224,7 +222,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GemMagicFX::Draw() {
     f64 sp248;
     f64 sp240;
@@ -714,7 +712,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void GemMagicFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -734,7 +732,7 @@ void GemMagicFX::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1038 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x558, NULL, 0);
+        var_r3_1038 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x558, NULL, 0));
     } else {
         var_r3_1038 = malloc(0x558);
     }
@@ -754,7 +752,7 @@ void GemMagicFX::Init() {
     this->unk4C = (MKHeap *) &temp_r3_1059->unk4;
     temp_r3_1059->unk4 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_1071 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0);
+        var_r3_1071 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0));
     } else {
         var_r3_1071 = malloc(0x50);
     }
@@ -762,7 +760,7 @@ void GemMagicFX::Init() {
     var_r28_1081 = 0;
     var_r30_1082 = 0;
     do {
-        temp_r3_1087 = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX"));
+        temp_r3_1087 = (long) (checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX")));
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -775,7 +773,7 @@ void GemMagicFX::Init() {
         *(this->unk50 + (var_r30_1082 + 4)) = 0;
         var_r30_1082 += 8;
     } while (var_r28_1081 < 0xA);
-    this->unk54 = MKMaterial_Create("fx_002");
+    this->unk54 = (MKMaterial *) (MKMaterial_Create("fx_002"));
 }
 #endif
 

@@ -290,7 +290,7 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDMath_BuildMatrixFromFwd(Matrix *, MKVector3, const
+#if 0 // DRAFT: function call 'KDMath_BuildMatrixFromFwd(Matrix *, MKVector3, const MKVector3 *)' does not match 'KDMath_BuildMatrixFromFwd(Matrix *, const MKVector3 &, MKVecto
 void KDMath_LocaliseVector(const MKVector3 &arg0, MKVector3 *arg1, const MKVector3 &arg2) {
     Matrix sp10;
 
@@ -300,7 +300,7 @@ void KDMath_LocaliseVector(const MKVector3 &arg0, MKVector3 *arg1, const MKVecto
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
     Matrix sp20;
     M2C_UNK sp1C;
@@ -330,7 +330,7 @@ void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void KDMath_RotateVectorByYaw(const MKVector3 &arg0, float arg1) {
     Matrix sp20;
     f32 sp18;

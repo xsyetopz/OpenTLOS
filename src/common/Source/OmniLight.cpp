@@ -121,7 +121,6 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **arg2, int arg3) {
     M2C_UNK spDC;
     M2C_UNK sp58;
@@ -161,11 +160,11 @@ s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **ar
         var_r8_186 = lightList;
         temp_r6_187 = MKView_GetCameraMatrix() + 0x30;
 loop_11:
-        temp_r7_279 = *var_r8_186;
+        temp_r7_279 = (long *) (*var_r8_186);
         if (temp_r7_279 != NULL) {
             if ((u8) M2C_FIELD(temp_r7_279, u8 *, 0x30) != 0) {
                 sp8 = M2C_FIELD(&arg0, f64 *, 0) - *(temp_r7_279 + 0x10);
-                temp_r3_202 = *var_r8_186;
+                temp_r3_202 = (long *) (*var_r8_186);
                 sp48 = sp8;
                 sp10 = arg0.unk8 - M2C_FIELD(temp_r7_279, f32 *, 0x18);
                 temp_f0_207 = arg1 + M2C_FIELD(temp_r3_202, f32 *, 0x20);
@@ -177,7 +176,7 @@ loop_11:
                     temp_f0_225 = M2C_FIELD(temp_r6_187, f64 *, 0) - M2C_FIELD(temp_r5_222, f64 *, 0);
                     sp18 = temp_f0_225;
                     temp_r9_231 = var_r31_179 - 1;
-                    *(&sp58 + var_r27_180) = temp_r7_279;
+                    *(&sp58 + var_r27_180) = (long) (temp_r7_279);
                     sp28 = temp_f0_225;
                     sp20 = M2C_FIELD(temp_r6_187, f32 *, 8) - M2C_FIELD(temp_r5_222, f32 *, 8);
                     sp30 = (f64) sp20;
@@ -216,7 +215,7 @@ loop_6:
         var_ctr_284 = var_r31_179;
         if (var_r31_179 > 0) {
             do {
-                *(arg2 + var_r3_283) = *(&sp58 + var_r3_283);
+                *(arg2 + var_r3_283) = (OmniLight *) (*(&sp58 + var_r3_283));
                 var_r3_283 += 4;
                 var_ctr_284 -= 1;
             } while (var_ctr_284 != 0);
@@ -224,9 +223,7 @@ loop_6:
     }
     return var_r31_179;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
     f64 sp50;
     f64 sp48;
@@ -256,12 +253,12 @@ void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
         temp_r4_323 = MKView_GetCameraMatrix() + 0x30;
         var_r5_324 = lightList;
 loop_9:
-        temp_r3_390 = *var_r5_324;
+        temp_r3_390 = (long *) (*var_r5_324);
         if (temp_r3_390 != NULL) {
             if ((u8) M2C_FIELD(temp_r3_390, u8 *, 0x30) != 0) {
                 temp_r3_330 = temp_r3_390 + 0x10;
                 sp8 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(temp_r3_330, f64 *, 0);
-                temp_r3_339 = *var_r5_324;
+                temp_r3_339 = (long *) (*var_r5_324);
                 sp48 = sp8;
                 sp10 = arg0.unk8 - M2C_FIELD(temp_r3_330, f32 *, 8);
                 temp_f1_344 = arg1 + M2C_FIELD(temp_r3_339, f32 *, 0x20);
@@ -269,7 +266,7 @@ loop_9:
                 sp38 = sp8;
                 sp40 = (f64) sp10;
                 if (((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < (temp_f1_344 * temp_f1_344)) && ((temp_r3_359 = temp_r3_339 + 0x10, temp_f1_362 = M2C_FIELD(temp_r4_323, f64 *, 0) - M2C_FIELD(temp_r3_359, f64 *, 0), sp18 = temp_f1_362, sp28 = temp_f1_362, sp20 = M2C_FIELD(temp_r4_323, f32 *, 8) - M2C_FIELD(temp_r3_359, f32 *, 8), sp30 = (f64) sp20, temp_f1_380 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4)))), ((var_r31_315 == NULL) != 0)) || (temp_f1_380 < var_f0_322))) {
-                    var_r31_315 = *var_r5_324;
+                    var_r31_315 = (long *) (*var_r5_324);
                     var_f0_322 = temp_f1_380;
                 }
             }
@@ -278,7 +275,6 @@ loop_9:
         }
     }
 }
-#endif
 
 u8 OmniLight_SuspendAll(bool arg0) {
     u8 temp_r0_407;
@@ -288,7 +284,7 @@ u8 OmniLight_SuspendAll(bool arg0) {
     return temp_r0_407;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: type mismatch 'long *' and 'OmniLight *'
 void OmniLight_Destroy(OmniLight *arg0) {
     M2C_UNK *temp_r0_441;
     M2C_UNK *temp_r3_430;
@@ -301,16 +297,16 @@ void OmniLight_Destroy(OmniLight *arg0) {
     }
     var_r4_425 = lightList;
 loop_6:
-    temp_r0_441 = *var_r4_425;
+    temp_r0_441 = (long *) (*var_r4_425);
     if (temp_r0_441 == NULL) {
         return;
     }
     if (temp_r0_441 == arg0) {
         temp_r3_430 = lightList;
         lightList = temp_r3_430 + 4;
-        temp_r5_433 = *temp_r3_430;
+        temp_r5_433 = (long *) (*temp_r3_430);
         *temp_r3_430 = *var_r4_425;
-        *var_r4_425 = temp_r5_433;
+        *var_r4_425 = (long) (temp_r5_433);
         return;
     }
     var_r4_425 += 4;
@@ -318,21 +314,18 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void OmniLight_Create() {
     M2C_UNK *temp_r31_457;
     M2C_UNK *temp_r3_455;
 
     temp_r3_455 = lightList - 4;
     lightList = temp_r3_455;
-    temp_r31_457 = *temp_r3_455;
+    temp_r31_457 = (long *) (*temp_r3_455);
     if (temp_r31_457 != NULL) {
         memset(temp_r31_457, 0, 0x38U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void OmniLight_DeinitModule() {
     M2C_UNK *temp_r0_485;
     M2C_UNK *temp_r0_504;
@@ -348,7 +341,7 @@ loop_3:
     temp_r0_490 = M2C_FIELD(var_r3_482, u32 *, -4);
     var_r3_482 -= 4;
     if (temp_r0_490 != 0U) {
-        temp_r0_485 = *var_r3_482;
+        temp_r0_485 = (long *) (*var_r3_482);
         if (temp_r0_485 < var_r31_481) {
             var_r31_481 = temp_r0_485;
         }
@@ -356,7 +349,7 @@ loop_3:
     }
     if (var_r3_482 != &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_504 = *var_r4_480;
+        temp_r0_504 = (long *) (*var_r4_480);
         if (temp_r0_504 != NULL) {
             if (temp_r0_504 < var_r31_481) {
                 var_r31_481 = temp_r0_504;
@@ -372,15 +365,13 @@ loop_9:
     }
     lightList = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void OmniLight_InitModule() {
     M2C_UNK *var_r3_542;
     s32 var_ctr_554;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_542 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0);
+        var_r3_542 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0));
     } else {
         var_r3_542 = malloc(0x788);
     }
@@ -397,4 +388,3 @@ void OmniLight_InitModule() {
     lightList += 4;
     M2C_FIELD(lightList, M2C_UNK **, 4) = NULL;
 }
-#endif

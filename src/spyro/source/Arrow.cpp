@@ -47,7 +47,7 @@ void Arrow::Fire(const Matrix &arg0, float arg1, float arg2) {
     this->unkE8 = arg2;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *, double)' does not match 'HeroInterface::GetProp()'
 void *Arrow::Update() {
     s8 sp119;
     s8 sp118;
@@ -109,7 +109,7 @@ void *Arrow::Update() {
     if ((temp_r3_126 & 0x20000) && (temp_r3_126 & 0x80000)) {
         temp_f29_132 = gUpdateTimeDelta;
         temp_f30_133 = -this->unkE0;
-        temp_r3_136 = MKModel_GetWorldMatrix(this->unk4) + 0x20;
+        temp_r3_136 = (void *) (MKModel_GetWorldMatrix(this->unk4) + 0x20);
         temp_f0_138 = M2C_FIELD(temp_r3_136, f64 *, 0) * temp_f30_133;
         sp48 = temp_f0_138;
         sp98 = temp_f0_138;

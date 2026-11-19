@@ -107,11 +107,11 @@ extern s32 GS_TrainingFail;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<DojoController>::State'
 static M2C_UNK lit_761;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<DojoController>::State dojoStates; /* unable to generate initializer: confusing struct layout */
 
@@ -164,7 +164,6 @@ u8 EarthDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 u8 EarthDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -206,7 +205,7 @@ u8 EarthDojoLesson::HasSucceededBreath2() {
 block_17:
                 ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
-                temp_r3_169 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
+                temp_r3_169 = (Targetable *) (checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */)));
                 if ((temp_r3_169 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_169, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
                     spC = 0;
                     sp8 = 0xE1;
@@ -224,7 +223,6 @@ block_17:
     }
     return 0U;
 }
-#endif
 
 u8 EarthDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
@@ -724,7 +722,7 @@ void EarthDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int, int)' does not match 'DialogBox_ColorButtons(const char *, char *, int, int)'
 void EarthDojoLesson::IncrementNumInterations() {
     s8 *sp14;
     s32 spC;
@@ -1466,7 +1464,7 @@ void IceDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int, int)' does not match 'DialogBox_ColorButtons(const char *, char *, int, int)'
 void IceDojoLesson::IncrementNumInterations() {
     s8 *sp14;
     s32 spC;
@@ -1759,7 +1757,7 @@ block_43:
 block_37:
                 ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
-                temp_r3_3347 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
+                temp_r3_3347 = (Targetable *) (checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */)));
                 if ((temp_r3_3347 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_3347, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
                     spC = 0;
                     sp8 = 0xE1;
@@ -1779,7 +1777,7 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'DojoController' to
+#if 0 // DRAFT: illegal explicit conversion from 'DojoController' to 'signed char *'
 u8 ElectricDojoLesson::HasSucceededBreath1() {
     s32 var_ctr_3404;
     s32 var_r4_3403;
@@ -2502,7 +2500,7 @@ void ElectricDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int, int)' does not match 'DialogBox_ColorButtons(const char *, char *, int, int)'
 void ElectricDojoLesson::IncrementNumInterations() {
     s8 *sp14;
     s32 spC;
@@ -2695,7 +2693,7 @@ u8 FireDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'DojoController' to
+#if 0 // DRAFT: illegal explicit conversion from 'DojoController' to 'signed char *'
 u8 FireDojoLesson::HasSucceededBreath2() {
     s32 temp_r0_5122;
     s32 var_ctr_5133;
@@ -2741,7 +2739,6 @@ u8 FireDojoLesson::HasSucceededBreath1() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 u8 FireDojoLesson::HasSucceededMeleeKnockBack() {
     DojoController *temp_r3_5245;
     DojoController *temp_r3_5313;
@@ -2894,7 +2891,7 @@ loop_44:
                 temp_r4_5508->unk670 = temp_r4_5508->unk674;
                 ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
-                temp_r3_5541 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
+                temp_r3_5541 = (Targetable *) (checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */)));
                 if ((temp_r3_5541 != NULL) && ((s32) M2C_FIELD(M2C_FIELD(temp_r3_5541, void **, 0xA38), s32 *, 0xF4) == 0x2D)) {
                     temp_r4_5548 = this->unk4;
                     if ((u8) temp_r4_5548->unk3C2 == 0) {
@@ -2927,7 +2924,6 @@ loop_64:
         goto block_65;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
@@ -3005,7 +3001,7 @@ block_37:
         if ((u32) temp_r4_5739->unk410 == (u32) temp_r4_5739->unk42C) {
             ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
-            temp_r3_5749 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
+            temp_r3_5749 = (Targetable *) (checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */)));
             if (temp_r3_5749 != NULL) {
                 ((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_5749, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsFlinching();
                 if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
@@ -4187,7 +4183,7 @@ void FireDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int, int)' does not match 'DialogBox_ColorButtons(const char *, char *, int, int)'
 void FireDojoLesson::IncrementNumInterations() {
     s8 *sp14;
     s32 spC;
@@ -4505,7 +4501,7 @@ void DojoController::StateDojoStatueUpUpdate() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *' Too many errors printed, aborting program
 void DojoController::StateDojoStatueUpEnter() {
     s8 sp3A;
     s8 sp39;
@@ -4577,7 +4573,7 @@ void DojoController::StateDojoFinishUpdate() {
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char[17])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[17])' does not match 'strcpy(char *, const char *)'
 void DojoController::StateDojoFinishEnter() {
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
         this->unk7F0 = 1;
@@ -4784,7 +4780,7 @@ void DojoController::StateDojoSuccessUpdate() {
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char[16])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[16])' does not match 'strcpy(char *, const char *)'
 void DojoController::StateDojoSuccessEnter() {
     s32 spC;
     s32 sp8;
@@ -4999,7 +4995,7 @@ void DojoController::StateDojoFailUpdate() {
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char[13])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[13])' does not match 'strcpy(char *, const char *)'
 void DojoController::StateDojoFailEnter() {
     DojoController *spC;
     s32 sp8;
@@ -5275,7 +5271,7 @@ void DojoController::StateDojoInstructExit() {
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char[20])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[20])' does not match 'strcpy(char *, const char *)'
 void DojoController::StateDojoInstructUpdate() {
     s8 sp12A;
     s8 sp129;
@@ -5601,7 +5597,7 @@ void DojoController::StateDojoInstructUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to
+#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to 'void *'
 void DojoController::StateDojoInstructEnter() {
     f64 sp10;
     f64 sp8;
@@ -5637,7 +5633,7 @@ void DojoController::StateDojoStatueDownExit() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void DojoController::StateDojoStatueDownUpdate() {
     s32 spC;
     s32 sp8;
@@ -5793,7 +5789,7 @@ void DojoController::PlayButtonTone() {
     KDSound_SetPitch(KDSound_Play(GS_ButtonPush4, 0U, -1), (0.1f * (f32) this->unk67C) + 0.8f);
 }
 
-#if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char *)' does not match
+#if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char *)' does not match 'PhrasePlayer_PlayEvent(const char *)'
 void *DojoController::Update() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) > 0.0f) {
         this->unk360.Update(this, 0);
@@ -5806,7 +5802,7 @@ void *DojoController::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void DojoController::SetupSmashPropsVanguard(int arg0, MKVector3 arg1, MKVector3 arg2, float arg3, bool arg4, bool arg5, float arg6) {
     Matrix sp100;
     f64 spF8;
@@ -5933,7 +5929,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode *' to
+#if 0 // DRAFT: undefined identifier 'spC0'
 void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphNode *arg1, int arg2, int arg3, CharacterGraphNode **arg4, bool arg5, float arg6, float arg7, unsigned int arg8) {
     f64 spE0;
     f64 spD8;
@@ -6013,7 +6009,7 @@ loop_69:
                 if (var_r31_11551 == 0) {
                     var_r31_11551 = 1;
                     *(arg4 + var_r22_11565) = arg1->GetRandomLink(MKRand_Int((int *) &gViewSeed, arg2, arg3));
-                    temp_r4_11579 = *(arg4 + var_r22_11565);
+                    temp_r4_11579 = (void **) (*(arg4 + var_r22_11565));
                     M2C_FIELD(*temp_r4_11579, M2C_UNK (**)(f64 *, void **), 0x30)(&spB8, temp_r4_11579);
                     var_r16_11585 = 0;
                     var_r15_11587 = 0;
@@ -6186,7 +6182,7 @@ block_67:
                     M2C_FIELD(M2C_FIELD(temp_r16_11902, void **, 0x84), s32 *, 0x24) = 0;
                 }
                 this->unk2C0.AddSpawnPoint(((u8 *) temp_r16_11902) + 0x80);
-                temp_r15_11925 = ((u8 *) temp_r16_11902) + 0x90;
+                temp_r15_11925 = (Matrix *) (((u8 *) temp_r16_11902) + 0x90);
                 temp_r15_11925->SetIdentity();
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC0) = (f32) spD8;
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
@@ -6213,7 +6209,7 @@ loop_85:
             if (var_r31_11551 == 0) {
                 var_r31_11551 = 1;
                 *(arg4 + var_r23_11966) = arg1->GetRandomLink(MKRand_Int((int *) &gViewSeed, 2, 0x10));
-                temp_r4_11980 = *(arg4 + var_r23_11966);
+                temp_r4_11980 = (void **) (*(arg4 + var_r23_11966));
                 M2C_FIELD(*temp_r4_11980, M2C_UNK (**)(f64 *, void **), 0x30)(&sp48, temp_r4_11980);
                 var_r3_11986 = 0;
                 spD8 = sp48;
@@ -6242,7 +6238,7 @@ loop_82:
                 M2C_FIELD(M2C_FIELD(temp_r16_12006, void **, 0x84), s32 *, 0x24) = 0;
             }
             this->unk310.AddSpawnPoint(((u8 *) temp_r16_12006) + 0x80);
-            temp_r15_12029 = ((u8 *) temp_r16_12006) + 0x90;
+            temp_r15_12029 = (Matrix *) (((u8 *) temp_r16_12006) + 0x90);
             temp_r15_12029->SetIdentity();
             M2C_FIELD(temp_r16_12006, f32 *, 0xC0) = (f32) spD8;
             M2C_FIELD(temp_r16_12006, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
@@ -6262,7 +6258,7 @@ loop_82:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MKVector3 arg2, float arg3, bool arg4, bool arg5, float arg6, unsigned int arg7) {
     f64 sp160;
     f64 sp158;
@@ -6388,7 +6384,7 @@ loop_19:
                 (*(f32 *) ((u8 *) &sp148 + 0x4)) = temp_f0_12305;
                 M2C_FIELD(M2C_FIELD(temp_r21_12294, void **, 0x84), u32 *, 4) = arg7;
                 this->unk2C0.AddSpawnPoint(((u8 *) temp_r21_12294) + 0x80);
-                temp_r20_12311 = ((u8 *) temp_r21_12294) + 0x90;
+                temp_r20_12311 = (Matrix *) (((u8 *) temp_r21_12294) + 0x90);
                 temp_r20_12311->SetIdentity();
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC0) = (f32) sp148;
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC4) = temp_f0_12305;
@@ -6582,7 +6578,7 @@ void DojoController::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 f32 DojoController::Resolve() {
     s32 sp24;
     s32 sp20;
@@ -6617,13 +6613,13 @@ f32 DojoController::Resolve() {
     this->unk3BE = 0;
     temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) this->unk360.SetState(this, 0, 0U)));
     this->unk60 = temp_ret_12829;
-    temp_ret_12833 = checked_cast<EventCamera *, MKProp>(this->unk5C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12829));
+    temp_ret_12833 = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(this->unk5C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12829)));
     this->unk5C = temp_ret_12833;
-    temp_ret_12837 = checked_cast<TriggerProp *, MKProp>(this->unk64->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12833));
+    temp_ret_12837 = (MKSceneManager *) (checked_cast<TriggerProp *, MKProp>(this->unk64->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12833)));
     this->unk64 = temp_ret_12837;
-    temp_ret_12841 = checked_cast<SparxHint *, MKProp>(this->unk68->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12837));
+    temp_ret_12841 = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(this->unk68->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12837)));
     this->unk68 = temp_ret_12841;
-    this->unk6C = checked_cast<SparxHint *, MKProp>(this->unk6C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12841));
+    this->unk6C = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(this->unk6C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12841)));
     temp_r3_12850 = this->unk60;
     sp24 = 0;
     sp20 = 0xBF;
@@ -6639,19 +6635,19 @@ f32 DojoController::Resolve() {
     temp_r3_12877 = this->unk6C;
     spC = 0;
     sp8 = 0xB4;
-    temp_ret_12889 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0)));
-    this->unk3D8 = temp_ret_12889 + 0x50;
-    temp_ret_12894 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12889));
-    this->unk3DC = temp_ret_12894 + 0x50;
-    temp_ret_12899 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) temp_ret_12894));
-    this->unk3E0 = temp_ret_12899 + 0x50;
-    temp_ret_12904 = checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) temp_ret_12899));
+    temp_ret_12889 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0))));
+    this->unk3D8 = (CharacterGraphNode *) (temp_ret_12889 + 0x50);
+    temp_ret_12894 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12889)));
+    this->unk3DC = (CharacterGraphNode *) (temp_ret_12894 + 0x50);
+    temp_ret_12899 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) temp_ret_12894)));
+    this->unk3E0 = (CharacterGraphNode *) (temp_ret_12899 + 0x50);
+    temp_ret_12904 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) temp_ret_12899)));
     this->unk3E4 = temp_ret_12904;
-    temp_ret_12908 = checked_cast<ElementalWall *, MKProp>(this->unk3E8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904));
+    temp_ret_12908 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3E8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904)));
     this->unk3E8 = temp_ret_12908;
-    temp_ret_12912 = checked_cast<ElementalWall *, MKProp>(this->unk3EC->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908));
+    temp_ret_12912 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3EC->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908)));
     this->unk3EC = temp_ret_12912;
-    temp_ret_12916 = checked_cast<ElementalWall *, MKProp>(this->unk3F0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12912));
+    temp_ret_12916 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3F0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12912)));
     var_r4_12916 = (u32) (u64) temp_ret_12916;
     this->unk3F0 = temp_ret_12916;
     var_r28_12918 = 0;
@@ -6666,7 +6662,7 @@ f32 DojoController::Resolve() {
     } while (var_r28_12918 < 4);
     temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(((MKSceneManager *) this->unk404)->PropResolver_Resolve((s32) var_r4_12916));
     this->unk404 = temp_ret_12937;
-    this->unk408 = checked_cast<MKProp *, MKProp>(this->unk408->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937));
+    this->unk408 = (MKSceneManager *) (checked_cast<MKProp *, MKProp>(this->unk408->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937)));
     MKProp::Resolve();
 }
 #endif
@@ -7055,7 +7051,7 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadFloat("EarthFuryDojoRadiusMul", &this->unk7E8, 0) != 0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to
+#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to 'void **'
 void DojoController::Deinit() {
     SpawnPointData *temp_r3_14510;
     SpawnPointData *temp_r3_14515;

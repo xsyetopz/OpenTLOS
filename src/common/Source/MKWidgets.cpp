@@ -25,21 +25,21 @@ s8 *malloc(M2C_UNK);                                /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern MKWidgetAttributes *MKWidgetIdentityAttributes;
 extern M2C_UNK gDisplay;
-#if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared
+#if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared was declared as: 'unsigned char[736]' now declared as: 'long'
 extern M2C_UNK gMKWidgetMetrics;
 #endif
 extern f32 gWidgetOrthoHeight;
 extern f32 gWidgetOrthoWidth;
 extern s8 *pBlankData;
-#if 0 // DRAFT: identifier 'pDescriptorList' redeclared
+#if 0 // DRAFT: identifier 'pDescriptorList' redeclared was declared as: 'MKWidgetDescriptor *' now declared as: 'void *'
 extern void *pDescriptorList;
 #endif
 extern void **pMKWidgetSystem;
-#if 0 // DRAFT: identifier 'pWidgetBlank' redeclared
+#if 0 // DRAFT: identifier 'pWidgetBlank' redeclared was declared as: 'MKMaterial *' now declared as: 'MKResource *'
 extern MKResource *pWidgetBlank;
 #endif
 extern u32 systemStackDepth;
-#if 0 // DRAFT: identifier 'pSystemStack' redeclared
+#if 0 // DRAFT: identifier 'pSystemStack' redeclared was declared as: 'unsigned char[64]' now declared as: 'MKWidgetSystem *[16]'
 static MKWidgetSystem *pSystemStack[0x10] = {
     NULL,
     NULL,
@@ -60,7 +60,7 @@ static MKWidgetSystem *pSystemStack[0x10] = {
 };
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[736]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[736]' to 'float'
 f32 MKWidget_GetMetricF(int arg0) {
     return *(&gMKWidgetMetrics + (arg0 * 0x10));
 }
@@ -91,7 +91,7 @@ void MKWidget_GetWidgetUnderPoint(MKWidgetSystem *arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 f32 MKWidget_GetLocalMousePos(MKWidget *arg0, MKVector3 *arg1) {
     Matrix sp10;
     f32 temp_f28_110;
@@ -249,7 +249,7 @@ loop_3:
     goto loop_3;
 }
 
-#if 0 // DRAFT: function call 'strcmp(const char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcmp(const char *, signed char *)' does not match 'strcmp(const char *, const char *)'
 s32 MKWidget_IsType(MKWidget *arg0, const char *arg1) {
     void *var_r31_595;
 
@@ -319,7 +319,7 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     f32 temp_f4_738;
     f64 temp_f2_722;
 
-    var_r28_675 = arg2;
+    var_r28_675 = (MKWidgetAttributes *) (arg2);
     if (var_r28_675 == NULL) {
         var_r28_675 = MKWidgetIdentityAttributes;
     }
@@ -399,7 +399,7 @@ MKWidget *MKWidget_Create(const char *arg0, const char *arg1, const MKWidgetAttr
     void *var_r31_876;
 
     var_r28_862 = arg3;
-    var_r27_865 = arg2;
+    var_r27_865 = (MKWidgetAttributes *) (arg2);
     if (var_r28_862 == NULL) {
         var_r28_862 = MKWidget_GetCurrentSystem();
     }
@@ -449,12 +449,10 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetSystem *' to
 void MKWidget_PushCurrentSystem(MKWidgetSystem *arg0) {
-    pSystemStack[systemStackDepth] = arg0;
+    pSystemStack[systemStackDepth] = (unsigned char) (arg0);
     systemStackDepth += 1;
 }
-#endif
 
 MKWidget *MKWidget_GetCurrentSystem() {
     if ((u32) systemStackDepth != 0) {
@@ -463,7 +461,7 @@ MKWidget *MKWidget_GetCurrentSystem() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetSystem' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetSystem' to 'MKWidgetSystem *'
 MKWidgetSystem *MKWidget_CreateSystem() {
     MKWidgetSystem *var_r31_1013;
 
@@ -483,34 +481,32 @@ void MKWidget_Update() {
     M2C_FIELD(*pMKWidgetSystem, M2C_UNK (**)(void **), 0x1C)(pMKWidgetSystem);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKWidget_CreateMaterial() {
     s8 *temp_r31_1088;
     s8 *var_r3_1068;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_1068 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1000, NULL, 0);
+        var_r3_1068 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x1000, NULL, 0));
     } else {
         var_r3_1068 = malloc(0x1000);
     }
     pBlankData = var_r3_1068;
     memset(var_r3_1068, 0xFF, 0x1000U);
-    temp_r31_1088 = ((Texture *) "WidgetBlank")->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
-    pWidgetBlank = MKMaterial_Create("WidgetBlank");
+    temp_r31_1088 = (const char *) (((Texture *) "WidgetBlank")->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */)));
+    pWidgetBlank = (MKMaterial *) (MKMaterial_Create("WidgetBlank"));
     ((Texture *) temp_r31_1088)->Destroy();
     MKMat_MK2_SetMaterialType((MKMaterial *) pWidgetBlank, (MKMat_MK2_Standard_MaterialType) 3);
     MKCommonDialogs_InitModule();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetSystem *' to
 void MKWidget_InitModule() {
     void **temp_r3_1130;
 
     gWidgetOrthoWidth = (f32) M2C_FIELD(&gDisplay, s32 *, 0x10);
     gWidgetOrthoHeight = (f32) M2C_FIELD(&gDisplay, s32 *, 0x14);
-    temp_r3_1130 = MKWidget_CreateSystem();
+    temp_r3_1130 = (void **) (MKWidget_CreateSystem());
     pMKWidgetSystem = temp_r3_1130;
     MKWidget_PushCurrentSystem((MKWidgetSystem *) temp_r3_1130);
 }
-#endif

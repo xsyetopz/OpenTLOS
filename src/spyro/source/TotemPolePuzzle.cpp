@@ -141,7 +141,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     s8 *sp10;
     s32 spC;
@@ -262,7 +262,7 @@ void TotemPolePiece::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'AssaultCannon *' and 'TotemPolePiece *'
 void TotemPolePiece::Message(MKMessage *arg0) {
     AssaultCannon ***temp_r5_475;
     AssaultCannon **temp_r3_497;

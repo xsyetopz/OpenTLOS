@@ -89,7 +89,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Volume' to
+#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
 void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     f64 sp200;
     Volume sp178;
@@ -497,7 +497,7 @@ void BirdCritter::SetIdleState(Bird *arg0) {
     arg0->unk54 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: ')' expected
 void *BirdCritter::Update() {
     f64 sp108;                                      /* compiler-managed */
     f64 sp100;                                      /* compiler-managed */
@@ -567,7 +567,7 @@ void *BirdCritter::Update() {
     var_r28_1063 = 0;
 loop_63:
     if (var_r31_1062 < (s32) this->unk90) {
-        temp_r30_1068 = ((u8 *) this->unk170) + var_r28_1063;
+        temp_r30_1068 = (Bird *) (((u8 *) this->unk170) + var_r28_1063);
         temp_r30_1068->unk64 -= gUpdateTimeDelta;
         temp_r30_1068->unk54 += temp_r30_1068->unk58 * gUpdateTimeDelta;
         if ((s32) M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90) != 0) {
@@ -757,7 +757,7 @@ loop_63:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: ')' expected
 f32 BirdCritter::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -774,7 +774,7 @@ f32 BirdCritter::Resolve() {
     var_r28_1496 = 0;
 loop_7:
     if (var_r31_1495 < (s32) this->unk90) {
-        temp_r30_1502 = ((u8 *) this->unk170) + var_r28_1496;
+        temp_r30_1502 = (Bird *) (((u8 *) this->unk170) + var_r28_1496);
         temp_r30_1502->unk7C = 0.0f;
         temp_r30_1502->unk80 = 0.0f;
         ((KDUniformSpline *) (temp_r30_1502 + 0x68))->Init(5, 0U);
@@ -826,7 +826,7 @@ s32 BirdCritter::LoadDone() {
     this->unk170 = var_r3_1631;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_1689;
     s32 temp_r31_1670;

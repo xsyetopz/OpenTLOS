@@ -130,7 +130,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r28_229;
     s32 temp_r0_199;

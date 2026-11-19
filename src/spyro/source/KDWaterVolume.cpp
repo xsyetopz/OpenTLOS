@@ -31,7 +31,6 @@ void KDWaterVolume::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 f32 KDWaterVolume::GetWaterSurface(const MKVector3 &arg0) {
     f32 sp8;
     f32 var_f0_86;
@@ -40,7 +39,7 @@ f32 KDWaterVolume::GetWaterSurface(const MKVector3 &arg0) {
     void *var_r31_65;
 
     var_f31_63 = -1e11f;
-    var_r31_65 = *KDWaterVolumeDescriptor::pFirstDesc;
+    var_r31_65 = (void *) (*KDWaterVolumeDescriptor::pFirstDesc);
 loop_10:
     if (var_r31_65 != NULL) {
         var_r30_70 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r31_65, MKProp **, 0x28));
@@ -61,9 +60,8 @@ loop_8:
     }
     return var_f31_63;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2, MKCollisionResult *arg3, int arg4) {
     u8 sp98;
     s32 sp94;
@@ -152,7 +150,7 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal assignment to constant
 s32 KDWaterVolume::IsWithin(const MKVector3 &arg0, float *arg1, int *arg2) {
     f32 sp8;
     f32 var_f0_262;
@@ -166,7 +164,7 @@ s32 KDWaterVolume::IsWithin(const MKVector3 &arg0, float *arg1, int *arg2) {
     if (arg1 != NULL) {
         *arg1 = 0.0f;
     }
-    var_r30_241 = *KDWaterVolumeDescriptor::pFirstDesc;
+    var_r30_241 = (void *) (*KDWaterVolumeDescriptor::pFirstDesc);
 loop_15:
     if (var_r30_241 != NULL) {
         var_r29_246 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r30_241, MKProp **, 0x28));
@@ -228,15 +226,14 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDWaterVolumeDescriptor::Deinit() {
     void *var_r3_378;
     void *var_r4_385;
 
     MKPropDescriptor::Deinit();
-    var_r3_378 = *KDWaterVolumeDescriptor::pFirstDesc;
+    var_r3_378 = (void *) (*KDWaterVolumeDescriptor::pFirstDesc);
     if (var_r3_378 == this) {
-        *KDWaterVolumeDescriptor::pFirstDesc = M2C_FIELD(var_r3_378, void **, 0x68);
+        *KDWaterVolumeDescriptor::pFirstDesc = (unsigned char) (M2C_FIELD(var_r3_378, void **, 0x68));
         return;
     }
     var_r4_385 = M2C_FIELD(var_r3_378, void **, 0x68);
@@ -252,13 +249,10 @@ loop_6:
     var_r4_385 = M2C_FIELD(var_r4_385, void **, 0x68);
     goto loop_6;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDWaterVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
-    this->unk68 = *KDWaterVolumeDescriptor::pFirstDesc;
-    *KDWaterVolumeDescriptor::pFirstDesc = this;
+    this->unk68 = (KDWaterVolumeDescriptor *) (*KDWaterVolumeDescriptor::pFirstDesc);
+    *KDWaterVolumeDescriptor::pFirstDesc = (unsigned char) (this);
 }
-#endif

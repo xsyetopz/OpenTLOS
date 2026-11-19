@@ -27,7 +27,6 @@ static Matrix pMats_827[0x80];
 static s16 pMatFlags_847[0x80];
 static BlendShapeState _defaultStateArea_913[6];
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Animation::EnableCustomMatrices(bool arg0) {
     MKHeap *temp_r3_18;
     MKHeap *var_r3_44;
@@ -41,7 +40,7 @@ void Animation::EnableCustomMatrices(bool arg0) {
         if (arg0 != 0) {
             temp_r31_36 = (s8) M2C_FIELD(M2C_FIELD(this->unk0, void **, 0x28), u8 *, 4) << 6;
             if (MKHeap::Current() != NULL) {
-                var_r3_44 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_36, NULL, 0);
+                var_r3_44 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_36, NULL, 0));
             } else {
                 var_r3_44 = malloc(temp_r31_36);
             }
@@ -51,9 +50,8 @@ void Animation::EnableCustomMatrices(bool arg0) {
         this->unk14 = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void *' and 'int'
 void AnimationData::UnpackTemplatePointers(bool arg0) {
     AnimationData *var_r30_72;
     AnimationData::BlendShape *temp_r0_120;
@@ -152,7 +150,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 BlendShapeState *Animation::CalculateBlendShape(int arg0, BlendShapeState *arg1) {
     f32 sp48;
     f32 sp8;
@@ -185,7 +183,7 @@ BlendShapeState *Animation::CalculateBlendShape(int arg0, BlendShapeState *arg1)
     temp_f31_228 = M2C_FIELD((this + (M2C_FIELD((M2C_FIELD(M2C_FIELD(this->unk0, void **, 0x28), s32 *, 0x1C) + temp_r27_220), u8 *, 8) * 0x48)), f32 *, 0x68);
     temp_r6_231 = M2C_FIELD(GetTemplate(temp_f31_228), void **, 0x28);
     var_r7_232 = 0;
-    temp_r29_236 = M2C_FIELD(temp_r6_231, s32 *, 0x1C) + temp_r27_220;
+    temp_r29_236 = (void *) (M2C_FIELD(temp_r6_231, s32 *, 0x1C) + temp_r27_220);
     var_r8_238 = M2C_FIELD(temp_r29_236, u16 *, 4) - 1;
 loop_6:
     if ((s32) (var_r8_238 - var_r7_232) > 1) {
@@ -251,7 +249,7 @@ void Animation::DecompressWeights(float *arg0, unsigned char *arg1, int arg2, fl
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: function call 'memcmp(unsigned long, Matrix *, unsigned int)' does not match 'memcmp(const void *, const void *, unsigned int)'
 Matrix *Animation::CalculateMatrices(Matrix *arg0, int arg1, short *arg2, const Matrix *arg3) {
     f64 sp50;
     f64 sp48;
@@ -336,7 +334,7 @@ Matrix *Animation::CalculateMatrices(Matrix *arg0, int arg1, short *arg2, const 
     temp_r4_441 = this->unk18;
     if ((temp_r4_441 != 0) && ((u8) this->unk24 == 0)) {
         if (arg3 != NULL) {
-            var_r4_454 = arg3;
+            var_r4_454 = (Matrix *) (arg3);
         } else {
             var_r4_454 = &Matrix::identity;
         }
@@ -433,7 +431,7 @@ block_27:
 loop_66:
     if (var_r19_607 <= var_r8_539) {
         if ((s16) *(pMatFlags_847 + var_r22_611) != 0) {
-            temp_r18_619 = this + (var_r24_609 + 0x30);
+            temp_r18_619 = (Animation::FrameInstance *) (this + (var_r24_609 + 0x30));
             if (!(((u8) M2C_FIELD(temp_r18_619, u8 *, 0x36) >> 7U) & 1)) {
                 CalculateFrame(temp_r18_619, M2C_FIELD(temp_r21_435, void **, 0x28) + (var_r23_610 + 0x20), 1U, 1U);
             }
@@ -581,7 +579,7 @@ loop_81:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to 'const Matrix *'
 void Animation::ConvertFrameToMatrix(Matrix *arg0, int arg1) {
     f64 sp70;
     f64 sp68;
@@ -1015,7 +1013,7 @@ MKHeap *Animation::GetName() {
     return (MKHeap *) this->unk0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Animation *' to 'float'
 f32 Animation::InterpolateFrameData(Animation::FrameInstance *arg1, float farg0, const MKVector3 &arg2, const MKVector4 &arg3, const MKVector3 &arg4, const MKVector3 &arg5, const MKVector4 &arg6, const MKVector3 &arg7) {
     f32 temp_f9_1876;
     f32 temp_f9_1880;
@@ -1131,13 +1129,13 @@ loop_10:
         M2C_FIELD(arg1, u16 *, 0x34) = (u16) var_r28_1910;
     }
     temp_r5_1967 = M2C_FIELD(arg2, s32 *, 0x18);
-    temp_r30_1971 = temp_r5_1967 + (var_r28_1910 * 8);
+    temp_r30_1971 = (void *) (temp_r5_1967 + (var_r28_1910 * 8));
     temp_r8_1973 = M2C_FIELD(temp_r30_1971, u16 *, 0);
     temp_r27_1974 = M2C_FIELD(GetTemplate(farg0), void **, 0x28);
     if (farg0 == (f32) temp_r8_1973) {
         temp_r31_1987 = M2C_FIELD(temp_r27_1974, s32 *, 0x18) + *(M2C_FIELD(temp_r27_1974, s32 *, 0x14) + ((s8) M2C_FIELD(arg2, u8 *, 0x17) * 8));
         if ((arg1 + 0x10) != NULL) {
-            temp_r4_1993 = temp_r31_1987 + (M2C_FIELD(temp_r30_1971, u16 *, 4) * 8);
+            temp_r4_1993 = (void *) (temp_r31_1987 + (M2C_FIELD(temp_r30_1971, u16 *, 4) * 8));
             M2C_FIELD(arg1, f32 *, 0x10) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_1993, s16 *, 0));
             M2C_FIELD(arg1, f32 *, 0x14) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_1993, s16 *, 2));
             M2C_FIELD(arg1, f32 *, 0x18) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_1993, s16 *, 4));
@@ -1151,12 +1149,12 @@ loop_10:
         }
     } else {
         temp_r28_2044 = var_r29_1921 * 8;
-        temp_r29_2046 = temp_r5_1967 + temp_r28_2044;
+        temp_r29_2046 = (void *) (temp_r5_1967 + temp_r28_2044);
         temp_r3_2047 = M2C_FIELD(temp_r29_2046, u16 *, 0);
         if (farg0 == (f32) temp_r3_2047) {
             temp_r31_2060 = M2C_FIELD(temp_r27_1974, s32 *, 0x18) + *(M2C_FIELD(temp_r27_1974, s32 *, 0x14) + ((s8) M2C_FIELD(arg2, u8 *, 0x17) * 8));
             if ((arg1 + 0x10) != NULL) {
-                temp_r4_2066 = temp_r31_2060 + (M2C_FIELD(temp_r29_2046, u16 *, 4) * 8);
+                temp_r4_2066 = (void *) (temp_r31_2060 + (M2C_FIELD(temp_r29_2046, u16 *, 4) * 8));
                 M2C_FIELD(arg1, f32 *, 0x10) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_2066, s16 *, 0));
                 M2C_FIELD(arg1, f32 *, 0x14) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_2066, s16 *, 2));
                 M2C_FIELD(arg1, f32 *, 0x18) = (f32) (0.00006103888f * (f32) M2C_FIELD(temp_r4_2066, s16 *, 4));
@@ -1170,16 +1168,16 @@ loop_10:
             }
         } else {
             temp_r31_2129 = M2C_FIELD(temp_r27_1974, s32 *, 0x18) + *(M2C_FIELD(temp_r27_1974, s32 *, 0x14) + ((s8) M2C_FIELD(arg2, u8 *, 0x17) * 8));
-            temp_r5_2131 = temp_r31_2129 + (M2C_FIELD(temp_r30_1971, u16 *, 4) * 8);
+            temp_r5_2131 = (void *) (temp_r31_2129 + (M2C_FIELD(temp_r30_1971, u16 *, 4) * 8));
             sp18 = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2131, s16 *, 0);
             sp1C = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2131, s16 *, 2);
             sp20 = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2131, s16 *, 4);
             sp24 = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2131, s16 *, 6);
             DecompressVector(temp_r31_2129 + (M2C_FIELD(temp_r30_1971, u16 *, 2) * 8), &sp58);
             DecompressVector(temp_r31_2129 + (M2C_FIELD(temp_r30_1971, u16 *, 6) * 8), &sp38);
-            temp_r31_2190 = M2C_FIELD(arg2, s32 *, 0x18) + temp_r28_2044;
+            temp_r31_2190 = (void *) (M2C_FIELD(arg2, s32 *, 0x18) + temp_r28_2044);
             temp_r30_2196 = M2C_FIELD(temp_r27_1974, s32 *, 0x18) + *(M2C_FIELD(temp_r27_1974, s32 *, 0x14) + ((s8) M2C_FIELD(arg2, u8 *, 0x17) * 8));
-            temp_r5_2198 = temp_r30_2196 + (M2C_FIELD(temp_r31_2190, u16 *, 4) * 8);
+            temp_r5_2198 = (void *) (temp_r30_2196 + (M2C_FIELD(temp_r31_2190, u16 *, 4) * 8));
             sp8 = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2198, s16 *, 0);
             spC = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2198, s16 *, 2);
             sp10 = 0.00006103888f * (f32) M2C_FIELD(temp_r5_2198, s16 *, 4);
@@ -1219,7 +1217,7 @@ void Animation::SetCustomMatrix(int arg0, const Matrix *arg1, AnimationMatrixPos
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal type
 void Animation::TweenNode(float arg0, float arg1, int arg2, bool arg3, bool arg4) {
     AnimationData::Node *temp_r5_2326;
     Animation::FrameInstance *temp_r25_2323;
@@ -1229,7 +1227,7 @@ void Animation::TweenNode(float arg0, float arg1, int arg2, bool arg3, bool arg4
     void *temp_r3_2363;
 
     temp_r3_2317 = GetTemplate(arg0);
-    temp_r25_2323 = this + ((arg2 * 0x48) + 0x30);
+    temp_r25_2323 = (Animation::FrameInstance *) (this + ((arg2 * 0x48) + 0x30));
     temp_r5_2326 = M2C_FIELD(temp_r3_2317, void **, 0x28) + ((arg2 << 5) + 0x20);
     if (!(((u8) M2C_FIELD(temp_r25_2323, u8 *, 0x36) >> 7U) & 1) && (arg1 != 1.0f)) {
         CalculateFrame(temp_r25_2323, temp_r5_2326, arg3, arg4);
@@ -1253,7 +1251,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal type
 void Animation::Tween(float arg0, float arg1) {
     AnimationData::Node *var_r29_2419;
     Animation::FrameInstance *var_r30_2418;
@@ -1277,8 +1275,8 @@ void Animation::Tween(float arg0, float arg1) {
         } else {
             var_f31_2406 = 0.0f;
         }
-        var_r30_2418 = this + 0x30;
-        var_r29_2419 = ((u8 *) temp_r3_2400) + 0x20;
+        var_r30_2418 = (Animation::FrameInstance *) (this + 0x30);
+        var_r29_2419 = (AnimationData::Node *) (((u8 *) temp_r3_2400) + 0x20);
         var_r28_2420 = 0;
 loop_13:
         if (var_r28_2420 < (s8) M2C_FIELD(M2C_FIELD(temp_r3_2397, void **, 0x28), u8 *, 4)) {
@@ -1298,7 +1296,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation' to 'void *'
 void Animation::ReloadGuts() {
     s32 var_r29_2477;
     s32 var_r31_2478;
@@ -1319,7 +1317,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation' to 'void *'
 void *Animation::GetTemplate(float arg0) {
     s32 temp_r5_2518;
     s32 var_ctr_2519;
@@ -1375,7 +1373,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKHeap *'
 void Animation::Destroy() {
     MKHeap *temp_r3_2641;
     s32 temp_r0_2615;
@@ -1418,7 +1416,7 @@ void Animation::Destroy() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 Animation *Animation::Create(const char *arg0, int arg1) {
     s8 spC;
     s32 sp8;
@@ -1460,7 +1458,7 @@ Animation *Animation::Create(const char *arg0, int arg1) {
         var_r27_2705 = temp_r27_2709 + (((s8) temp_r4_2697 + 1) << 6);
     }
     if (MKHeap::Current() != NULL) {
-        var_r29_2722 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r27_2705, NULL, 0);
+        var_r29_2722 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r27_2705, NULL, 0));
     } else {
         var_r29_2722 = malloc(var_r27_2705);
     }
@@ -1475,7 +1473,7 @@ Animation *Animation::Create(const char *arg0, int arg1) {
         var_r3_2738 = var_r29_2722 + (((s8) M2C_FIELD(temp_r4_2740, u8 *, 4) * 0x48) + 0x30);
     }
     var_r29_2722->unk1C = var_r3_2738;
-    var_r29_2722->unk20 = arg0;
+    var_r29_2722->unk20 = (signed char *) (arg0);
     if (arg0 != NULL) {
         var_r29_2722->unk18 = M2C_BITWISE(f32, (var_r29_2722 + var_r30_2696));
     } else {
@@ -1547,7 +1545,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 MKHeap *CreateTemplate(const char *arg0) {
     s32 sp8;
     s32 temp_r0_3009;
@@ -1572,9 +1570,9 @@ loop_4:
         temp_r3_2955 = Str_Printf("%s.anm", arg0);
         MKArchive_Exists(temp_r3_2955, (int *) &sp8);
         if (MKHeap::Current() != NULL) {
-            var_r31_2925 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x34, NULL, 0);
+            var_r31_2925 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x34, NULL, 0));
         } else {
-            var_r31_2925 = malloc(0x34);
+            var_r31_2925 = (signed char *) (malloc(0x34));
         }
         memset(var_r31_2925, 0, 0x34U);
         temp_r3_2978 = Animation_pTemplates;

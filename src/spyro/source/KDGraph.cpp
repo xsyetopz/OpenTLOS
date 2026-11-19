@@ -12,7 +12,7 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to
+#if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to 'MKSceneManager *'
 f32 KDGraphNodeProp::Resolve() {
     MKSceneManager *temp_r3_63;
     s32 temp_r3_67;
@@ -24,7 +24,7 @@ f32 KDGraphNodeProp::Resolve() {
     do {
         temp_r3_63 = *(this + (var_r31_60 + 0x90));
         if (temp_r3_63 != NULL) {
-            temp_r3_67 = checked_cast<KDGraphNodeProp *, MKProp>(temp_r3_63->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+            temp_r3_67 = (long) (checked_cast<KDGraphNodeProp *, MKProp>(temp_r3_63->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
             if (temp_r3_67 != 0) {
                 M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *, s32, s32), 0xC)(&this->unk50, temp_r3_67 + 0x50, var_r30_59);
             }
@@ -83,7 +83,7 @@ s32 KDGraphNode::GetLink(int arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'const KDGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'const KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::IsLinked(KDGraphNode *arg0) const {
     s32 var_ctr_263;
     s32 var_r5_262;
@@ -115,7 +115,7 @@ s32 KDGraphNode::Unlink(int arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::Unlink(KDGraphNode *arg0) {
     s32 var_ctr_303;
     s32 var_r5_302;
@@ -137,7 +137,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::Link(KDGraphNode *arg0, int arg1) {
     s32 var_ctr_332;
     s32 var_r5_331;

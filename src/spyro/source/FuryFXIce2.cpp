@@ -110,7 +110,7 @@ void FuryFXIce2::TargetAndSpawnIceSpear() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
     f64 sp128;                                      /* compiler-managed */
     f64 sp120;
@@ -285,7 +285,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: identifier 'FuryFXIce2::UpdateIceSpears()' redeclared
+#if 0 // DRAFT: identifier 'FuryFXIce2::UpdateIceSpears()' redeclared was declared as: 'Matrix ** ()' now declared as: 'void ()'
 void FuryFXIce2::UpdateIceSpears() {
     f64 sp1D8;                                      /* compiler-managed */
     f64 sp1D0;
@@ -696,7 +696,7 @@ void FuryFXIce2::SetDefaults() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void FuryFXIce2::Deinit() {
     Matrix **var_r30_1226;
     Matrix **var_r3_1227;
@@ -959,7 +959,6 @@ f32 FuryFXIce2::Resolve() {
     FuryFX::Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce2::Init() {
     Matrix **temp_r3_1614;
     Matrix **temp_r3_1620;
@@ -976,7 +975,7 @@ void FuryFXIce2::Init() {
     SetDefaults();
     this->unk104 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
     if (MKHeap::Current() != NULL) {
-        var_r3_1599 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4E28, NULL, 0);
+        var_r3_1599 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x4E28, NULL, 0));
     } else {
         var_r3_1599 = malloc(0x4E28);
     }
@@ -996,7 +995,7 @@ void FuryFXIce2::Init() {
     this->unk100 = temp_r3_1620 + 4;
     M2C_FIELD(temp_r3_1620, Matrix ***, 4) = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_1632 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
+        var_r3_1632 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0));
     } else {
         var_r3_1632 = malloc(0xA8);
     }
@@ -1017,4 +1016,3 @@ void FuryFXIce2::Init() {
     M2C_FIELD(temp_r4_1653, Targetable ****, 4) = NULL;
     this->unk114 = checked_cast<IceExplosion *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceExplosion"));
 }
-#endif

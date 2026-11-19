@@ -161,7 +161,7 @@ void KDFaderObject::Fade(KDFaderObject::FadeMode arg1, float farg0, float farg1,
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'long' to 'KDFaderObject::FadeState'
 void KDFaderObject::Update() {
     s32 temp_r3_319;
 

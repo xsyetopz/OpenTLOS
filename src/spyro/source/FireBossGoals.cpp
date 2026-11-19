@@ -76,7 +76,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 FireBossGoal_Think::Update() {
     EnemyDamageFeedback sp28;
     EnemyHudData sp8;
@@ -128,7 +127,7 @@ u8 FireBossGoal_Think::Update() {
                     if (var_r0_92 >= temp_r4_91) {
                         var_r0_92 -= temp_r4_91;
                     }
-                    var_r3_87 = this->unk1C + (var_r0_92 * 4);
+                    var_r3_87 = (void ***) (this->unk1C + (var_r0_92 * 4));
                 }
                 temp_r3_101 = *var_r3_87;
                 temp_r3_105 = M2C_FIELD(*temp_r3_101, s32 (**)(void **), 0x34)(temp_r3_101);
@@ -158,7 +157,6 @@ u8 FireBossGoal_Think::Update() {
     }
     return (u8) this->unk8;
 }
-#endif
 
 void FireBossGoal_Think::Activate() {
     Matrix sp30;
@@ -348,7 +346,7 @@ void FireBossGoal_Think::Init(FireBoss *arg0) {
         if (MKHeap::Current() != NULL) {
             var_r3_543 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
-            var_r3_543 = malloc(0xC);
+            var_r3_543 = (void *) (malloc(0xC));
         }
         this->unk1C = (s32) var_r3_543;
         this->unk10 = 3;
@@ -427,7 +425,7 @@ void FireBossGoal_Death::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 u8 FireBossGoal_Death::Update() {
     f64 sp190;
     f64 sp188;
@@ -776,7 +774,7 @@ void FireBossGoal_Stage4::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 u8 FireBossGoal_Stage4::Update() {
     f64 sp68;
     f64 sp60;
@@ -958,7 +956,7 @@ void FireBossGoal_Stage3::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 u8 FireBossGoal_Stage3::Update() {
     f64 sp68;
     f64 sp60;
@@ -1148,7 +1146,7 @@ void FireBossGoal_Stage2::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 u8 FireBossGoal_Stage2::Update() {
     f64 sp68;
     f64 sp60;
@@ -1338,7 +1336,7 @@ void FireBossGoal_Stage1::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 u8 FireBossGoal_Stage1::Update() {
     f64 sp68;
     f64 sp60;

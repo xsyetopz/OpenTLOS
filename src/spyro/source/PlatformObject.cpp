@@ -62,7 +62,7 @@ loop_6:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void PlatformObject::SimpleMessageAttached(int arg0) {
     s32 spC;
     s32 sp8;
@@ -82,7 +82,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void PlatformObject::DetachAll() {
     s32 spC;
     s32 sp8;
@@ -121,7 +121,7 @@ s8 PlatformObject::Attach(PlatformAttachment *arg0) {
     return 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void PlatformObject::UpdateAttached() {
     u8 sp70;
     void *sp6C;
@@ -345,7 +345,7 @@ void PlatformObject::EndUpdate() {
     this->unk3C = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const Matrix *'
 void PlatformObject::BeginUpdate() {
     Matrix sp40;
     M2C_UNK sp3C;

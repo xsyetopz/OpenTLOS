@@ -1219,7 +1219,7 @@ void EnemyGoal_Frozen::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpawnPointObject *' to
+#if 0 // DRAFT: illegal explicit conversion from 'SpawnPointObject *' to 'float'
 void EnemyGoal_SpawnFromEnemyGenerator::CheckPassedThroughDoor() {
     EnemyGeneratorDoor sp28;
     f64 sp20;
@@ -1328,7 +1328,7 @@ void EnemyGoal_SpawnFromEnemyGenerator::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to
+#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to 'double'
 u8 EnemyGoal_SpawnFromEnemyGenerator::Update() {
     EnemyGeneratorDoor sp48;
     f64 sp40;
@@ -1421,7 +1421,7 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to
+#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to 'double'
 void EnemyGoal_SpawnFromEnemyGenerator::Activate() {
     EnemyGeneratorDoor spA0;
     f64 sp98;
@@ -2294,7 +2294,7 @@ void EnemyGoal_OperateLever::SetParams(Lever *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void EnemyGoal_OperateLever::Reset() {
     this->unk8 = 1;
     RemoveAllSubgoals();

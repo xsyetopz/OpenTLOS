@@ -63,7 +63,7 @@ void ShapedTrailFX::Deinit() {
     this->unk60.Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void ShapedTrailFX::Draw() {
     M2C_UNK sp290;
     MKVector3 sp1F0;
@@ -269,7 +269,7 @@ loop_13:
             sp110.unk3C = 1.0f;
 loop_36:
             if (var_r6_413 < (s32) this->unk90) {
-                temp_r5_427 = &sp290 + var_r3_415;
+                temp_r5_427 = (double *) (&sp290 + var_r3_415);
                 temp_f26_429 = M2C_FIELD(temp_r5_427, f32 *, 8);
                 temp_r4_430 = &sp1F0 + var_r3_415;
                 var_r6_413 += 1;
@@ -372,7 +372,7 @@ loop_80:
 loop_72:
                 temp_r4_676 = this->unk90;
                 if (var_r6_641 < temp_r4_676) {
-                    temp_r5_654 = &sp290 + var_r3_643;
+                    temp_r5_654 = (double *) (&sp290 + var_r3_643);
                     temp_f28_656 = M2C_FIELD(temp_r5_654, f32 *, 8);
                     temp_r4_657 = &sp150 + var_r3_643;
                     var_r6_641 += 1;
@@ -490,7 +490,7 @@ void ShapedTrailFX::UpdateTrail() {
                 } else {
                     temp_r4_918 = this->unk8C;
                     if (temp_r4_918 == -1) {
-                        temp_r3_922 = MKModel_GetWorldMatrix(this->unk78);
+                        temp_r3_922 = (void *) (MKModel_GetWorldMatrix(this->unk78));
                         temp_r3_928 = this->unk84 + (this->unk88 * 0x10);
                         M2C_FIELD(temp_r3_928, f64 *, 0) = (f64) M2C_FIELD(temp_r3_922, f64 *, 0x30);
                         M2C_FIELD(temp_r3_928, f64 *, 8) = (f64) M2C_FIELD(temp_r3_922, f64 *, 0x38);
@@ -517,21 +517,20 @@ void *ShapedTrailFX::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const float *' to 'float'
 void ShapedTrailFX::InitData(MKModel *arg0, const int &arg1, char *arg2, const int &arg3, const MKVector4 &arg4, const float &arg5, bool arg6, float arg7) {
     this->unk78 = arg0;
-    this->unk8C = &arg1;
-    this->unk7C = MKMaterial_Create(arg2);
+    this->unk8C = (long) (&arg1);
+    this->unk7C = (MKMaterial *) (MKMaterial_Create(arg2));
     M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&arg4, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&arg4, f64 *, 8);
-    this->unk90 = &arg3 + 1;
+    this->unk90 = (long) (&arg3 + 1);
     this->unk98 = &arg5;
     this->unkA0 = (this->unkA0 & ~0x20) | ((arg6 << 5) & 0x20);
     this->unk9C = arg7;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ShapedTrailFX::Init() {
     MKHeap *var_r3_1047;
     MKHeap *var_r3_1061;
@@ -539,13 +538,13 @@ void ShapedTrailFX::Init() {
     MKProp::Init();
     this->unk7C = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_1047 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0);
+        var_r3_1047 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0));
     } else {
         var_r3_1047 = malloc(0x50);
     }
     this->unk80 = var_r3_1047;
     if (MKHeap::Current() != NULL) {
-        var_r3_1061 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
+        var_r3_1061 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0));
     } else {
         var_r3_1061 = malloc(0xA0);
     }
@@ -562,4 +561,3 @@ void ShapedTrailFX::Init() {
     this->unk9C = 0.2f;
     this->unk74 = NULL;
 }
-#endif

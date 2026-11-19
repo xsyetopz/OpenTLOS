@@ -456,7 +456,7 @@ void EnemyGoal_LeapAttackMiss::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 u8 EnemyGoal_LeapAttackMiss::Update() {
     f64 spA8;
     f64 spA0;
@@ -775,7 +775,7 @@ void EnemyGoal_AttackMeleeLoop::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'SetAnim(AnimSequence *, AnimSequence *, float, unsigned
+#if 0 // DRAFT: function call 'SetAnim(AnimSequence *, AnimSequence *, float, unsigned int)' does not match 'Enemy::SetAnim(MKAnim *, float, float, float, unsigned int)' 'Enemy
 u8 EnemyGoal_AttackMeleeLoop::Update() {
     MKCollisionResult sp120;
     f64 sp118;
@@ -1319,7 +1319,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Attack() {
     this->unk40 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -1490,7 +1490,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_MeleeAttackMode::AddGoal_Move() {
     f64 sp50;
     f64 sp48;
@@ -1526,7 +1526,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Move() {
         temp_r3_2660 = this->unkC;
         if ((EnemyAttack *) temp_r3_2660->unkA20 != NULL) {
             var_r30_2667 = -1;
-            temp_r28_2670 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+            temp_r28_2670 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
             temp_f1_2672 = M2C_FIELD(temp_r3_2660->__vptr, f64 (**)(s32), 0x100)(M2C_FIELD(&gb, s32 *, 0x3B8));
             temp_r3_2673 = this->unkC;
             sp18 = M2C_FIELD(temp_r3_2673, f64 *, 0xD0) * temp_f1_2672;
@@ -1722,7 +1722,7 @@ void EnemyGoal_MeleeAttackMode::Activate() {
             this->unkC->unk6C0.unk38 = 1;
         }
         temp_r3_3016 = this->unkC;
-        temp_r28_3022 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r28_3022 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_3024 = temp_r3_3016->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_3025 = this->unkC;
         sp20 = M2C_FIELD(temp_r3_3025, f64 *, 0xD0) * temp_f1_3024;

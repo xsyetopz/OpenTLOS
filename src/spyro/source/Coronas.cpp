@@ -59,7 +59,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const bool *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void *Coronas::Alloc(const MKVector3 &arg0, const MKVector4 &arg1, const float &arg2, const int &arg3, const bool &arg4) {
     s32 temp_r3_150;
     s32 temp_r3_163;
@@ -82,7 +82,7 @@ loop_1:
     if (!(((u8) M2C_FIELD(temp_r3_95, u8 *, 0x31) >> 7U) & 1)) {
         temp_r7_102 = var_r29_91 + 0x31;
         M2C_FIELD(temp_r3_95, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        temp_r4_106 = &arg4;
+        temp_r4_106 = (unsigned char) (&arg4);
         M2C_FIELD(temp_r3_95, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         temp_r3_112 = ((u8 *) this->unk4C) + (var_r29_91 + 0x10);
         M2C_FIELD(temp_r3_112, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
@@ -126,7 +126,6 @@ void *Coronas::Update() {
     MKProp::Update();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Coronas::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -141,7 +140,7 @@ void Coronas::Draw() {
     var_r29_222 = 0;
     var_r31_223 = 0;
     do {
-        temp_r4_226 = ((u8 *) this->unk4C) + var_r31_223;
+        temp_r4_226 = (Corona *) (((u8 *) this->unk4C) + var_r31_223);
         temp_r3_227 = temp_r4_226->unk31;
         if (((temp_r3_227 >> 7U) & 1) && ((temp_r3_227 >> 6U) & 1) && ((temp_r30_209 == 0) || ((temp_r3_227 >> 4U) & 1))) {
             DrawCorona(temp_r4_226, &sp10);
@@ -150,9 +149,8 @@ void Coronas::Draw() {
         var_r31_223 += 0x38;
     } while (var_r29_222 < 0x46);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'CoronasDescriptor *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
     Matrix sp260;
     f64 sp250;
@@ -273,8 +271,8 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         }
         arg0->unk28 = var_f2_307;
         temp_f31_317 = 100.0f * arg0->unk24 * var_f2_307;
-        temp_r31_319 = checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        temp_r27_323 = checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_r31_319 = (long) (checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
+        temp_r27_323 = (long) (checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
         temp_r31_330 = MKMaterial_GetParameter(M2C_FIELD((temp_r31_319 + (arg0->unk30 * 4)), MKMaterial **, 0x60), (MKMaterialParameter) 5);
         temp_r31_338 = (MKMaterial_GetParameter(M2C_FIELD((temp_r27_323 + (arg0->unk30 * 4)), MKMaterial **, 0x60), (MKMaterialParameter) 4) * 2) | temp_r31_330;
         if (((u8) arg0->unk31 >> 5U) & 1) {
@@ -556,7 +554,7 @@ void CoronasDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CoronasDescriptor' to
+#if 0 // DRAFT: illegal implicit conversion from 'CoronasDescriptor' to 'MKMaterial *'
 void CoronasDescriptor::Deinit() {
     MKMaterial *temp_r3_1035;
     s32 var_r30_1031;
@@ -576,11 +574,9 @@ void CoronasDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CoronasDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create("fx_002");
-    this->unk64 = MKMaterial_Create("fx_317");
-    this->unk68 = MKMaterial_Create("fx_174");
+    this->unk60 = (long) (MKMaterial_Create("fx_002"));
+    this->unk64 = (long) (MKMaterial_Create("fx_317"));
+    this->unk68 = (long) (MKMaterial_Create("fx_174"));
 }
-#endif

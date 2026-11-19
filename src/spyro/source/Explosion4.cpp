@@ -1428,7 +1428,7 @@ loop_44:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'unsigned long *' and 'long *'
 void Explosion4::Deinit() {
     ManagedLight *temp_r4_2254;
     u32 *temp_r31_2271;
@@ -2012,7 +2012,6 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 Explosion4::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -2049,13 +2048,12 @@ f32 Explosion4::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk4C = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_762, lit_763);
+    this->unk4C = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_762, lit_763));
     temp_r4_3181 = this->unk4C;
     if (temp_r4_3181 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_3181, 0U);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 s32 Explosion4::LoadDone() {
@@ -2065,7 +2063,6 @@ s32 Explosion4::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Explosion4::Init() {
     s32 var_ctr_3260;
     u32 *temp_r3_3262;
@@ -2081,7 +2078,7 @@ void Explosion4::Init() {
     this->unk94 = 1;
     this->unk9C = 1500.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_3247 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0);
+        var_r3_3247 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0));
     } else {
         var_r3_3247 = malloc(0x30);
     }
@@ -2098,7 +2095,6 @@ void Explosion4::Init() {
     this->unk98 = temp_r3_3267 + 4;
     M2C_FIELD(temp_r3_3267, s32 *, 4) = 0;
 }
-#endif
 
 void Explosion4Descriptor::Deinit() {
     MKModel_Destroy(this->unk68);
@@ -2115,13 +2111,11 @@ s32 Explosion4Descriptor::LoadLine(MKIniLine *arg0) {
     return var_r31_3307;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void Explosion4Descriptor::Init() {
     MKPropDescriptor::Init();
     this->unk6C = GS_Explosion2;
     this->unk70 = GS_Rumble1Soft;
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4FlamePS"));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4SmokePS"));
+    this->unk60 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4FlamePS")));
+    this->unk64 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4SmokePS")));
     this->unk68 = MKModel_Create("FX0001_Exp2Shockwave", NULL, 2, NULL);
 }
-#endif

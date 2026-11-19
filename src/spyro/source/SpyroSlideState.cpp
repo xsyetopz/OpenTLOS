@@ -216,7 +216,7 @@ void SpyroSlideState::Exit() {
     this->unk14.Exit(this);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroSlideState::Enter(SpyroStateMessages &arg0) {
     Spyro *temp_r3_275;
 

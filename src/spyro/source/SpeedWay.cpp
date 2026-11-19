@@ -16,7 +16,7 @@
 #include "spyro/source/SplineTools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal explicit conversion from 'SplitPath' to
+#if 0 // DRAFT: illegal explicit conversion from 'SplitPath' to 'double'
 void SpeedWay::GetPathMatrix(float arg0) {
     f32 sp1EC;
     f32 sp1E8;

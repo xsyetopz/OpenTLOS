@@ -202,7 +202,7 @@ void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
     f64 sp118;
     f64 sp110;
@@ -721,7 +721,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     f64 sp20;
     f64 sp18;
@@ -1317,11 +1317,10 @@ void SpyroEffects::Init(SpyroFXData *arg0, MKProp *arg1, SpyroSoundPlayer *arg2)
     this->unk14 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpyroFXData::Deinit() {
     CharacterBodyFXManager *temp_r31_2354;
 
-    temp_r31_2354 = &gb + 0x2A8;
+    temp_r31_2354 = (CharacterBodyFXManager *) (&gb + 0x2A8);
     temp_r31_2354->DestroyInstance(this->unkB4);
     temp_r31_2354->DestroyInstance(this->unk28);
     this->unk0.Deinit();
@@ -1329,9 +1328,8 @@ void SpyroFXData::Deinit() {
     MKMaterial_Destroy(this->unk30);
     temp_r31_2354->DestroyInstance(this->unkC4);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX *' to
+#if 0 // DRAFT: undefined identifier 'unk9C'
 void SpyroFXData::Init(MKProp *arg0, MKModel *arg1, MKAnimScript *arg2) {
     s32 sp14;
     s32 sp10;
@@ -1344,17 +1342,17 @@ void SpyroFXData::Init(MKProp *arg0, MKModel *arg1, MKAnimScript *arg2) {
     CharacterBodyFXManager *temp_r27_2532;
 
     this->unk40.Init();
-    this->unk10 = checked_cast<HitFX *, MKProp>(gMK->CreateProp("HitFX"));
+    this->unk10 = (long) (checked_cast<HitFX *, MKProp>(gMK->CreateProp("HitFX")));
     this->unk14 = checked_cast<FlameBreathFX *, MKProp>(gMK->CreateProp("FlameBreathFX"));
     this->unk14->unk9C = (MKHeap *) &this->unk14;
     this->unk18 = checked_cast<ZapBreathFX *, MKProp>(gMK->CreateProp("ZapBreathFX"));
     this->unk18->unk9C = &this->unk18;
     this->unk1C = checked_cast<IceBreathFX *, MKProp>(gMK->CreateProp("IceBreathFX"));
     this->unk1C->unk9C = (MKHeap *) &this->unk1C;
-    this->unk24 = checked_cast<MoltenMetalPS *, MKProp>(gMK->CreateProp("MoltenMetalPS"));
+    this->unk24 = (long) (checked_cast<MoltenMetalPS *, MKProp>(gMK->CreateProp("MoltenMetalPS")));
     this->unk20 = checked_cast<EarthBreathFX *, MKProp>(gMK->CreateProp("EarthBreathFX"));
     this->unk20->unk9C = (MKHeap *) &this->unk20;
-    this->unk34 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("TailStrikeShockwave"));
+    this->unk34 = (long) (checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("TailStrikeShockwave")));
     this->unkC8 = checked_cast<LineSegmentTrail *, MKProp>(gMK->CreateProp("LineSegmentTrail"));
     this->unkCC = checked_cast<LineSegmentTrail *, MKProp>(gMK->CreateProp("LineSegmentTrail"));
     this->unkBC = checked_cast<FuryFXConvexity *, MKProp>(gMK->CreateProp("FuryFXConvexity"));
@@ -1366,7 +1364,7 @@ void SpyroFXData::Init(MKProp *arg0, MKModel *arg1, MKAnimScript *arg2) {
     this->unkC8->SetUserData(arg2, sp14, sp10, "fx_306");
     this->unkCC->SetUserData(arg2, spC, sp8, "fx_306");
     this->unk0.Init(&spyroBodyFXData, 0xC, arg2);
-    temp_r27_2532 = &gb + 0x2A8;
+    temp_r27_2532 = (CharacterBodyFXManager *) (&gb + 0x2A8);
     this->unkB4 = checked_cast<CharacterZapFX *, CharacterBodyFX>(temp_r27_2532->CreateInstance(2));
     temp_r3_2540 = this->unkB4;
     temp_r3_2540->InitData(this, arg1, 0);
@@ -1382,7 +1380,7 @@ void SpyroFXData::Init(MKProp *arg0, MKModel *arg1, MKAnimScript *arg2) {
     this->unkB0->InitData(arg1, &spyroBodyFXData + 0x3F0, 0x21, &spyroBodyFXData + 0x61C, 7, 3, 1U);
     this->unkB0->EnableBlur(1U);
     this->unkB0->unk78 = (s32 *) &this->unkB0;
-    this->unkB8 = checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp("WaterSurfaceFX"));
+    this->unkB8 = (long) (checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp("WaterSurfaceFX")));
     this->unkC4 = checked_cast<CharacterIceCubesFX *, CharacterBodyFX>(temp_r27_2532->CreateInstance(0));
     temp_r3_2618 = this->unkC4;
     temp_r3_2618->Init();

@@ -109,7 +109,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 spC0;
     f64 spB8;
@@ -200,7 +200,6 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SkyClouds::CloudEmitter **' to
 void SkyClouds::Emit(const MKVector3 &arg1, const MKVector4 &arg2, float farg0, SkyClouds::CloudEmitter *arg3) {
     SkyClouds::CloudEmitter **temp_r3_358;
     s32 var_ctr_356;
@@ -231,7 +230,7 @@ loop_2:
             M2C_FIELD(temp_r4_407, f32 *, 4) = 0.0f;
             M2C_FIELD(temp_r4_407, f32 *, 8) = 0.0f;
             M2C_FIELD((this->unk50 + var_r29_355), SkyClouds::CloudEmitter **, 0x44) = arg3;
-            this->unk54[this->unk4C] = this->unk50 + var_r29_355;
+            this->unk54[this->unk4C] = (SkyClouds::CloudEmitter *) (this->unk50 + var_r29_355);
             this->unk4C += 1;
             return;
         }
@@ -244,9 +243,8 @@ loop_2:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'SkyClouds::CloudEmitter *' and 'SkyClouds::CloudEmitter **'
 void SkyClouds::Deinit() {
     SkyClouds::CloudEmitter **temp_r31_443;
     SkyClouds::CloudEmitter **temp_r31_457;
@@ -304,7 +302,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     f64 sp2E8;
     f64 sp2E0;
@@ -629,7 +627,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SkyClouds::Init() {
     f64 sp40;
     f64 sp38;
@@ -654,13 +651,13 @@ void SkyClouds::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1092 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1F40, NULL, 0);
+        var_r3_1092 = (SkyClouds::CloudEmitter **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x1F40, NULL, 0));
     } else {
         var_r3_1092 = malloc(0x1F40);
     }
     this->unk50 = var_r3_1092;
     if (MKHeap::Current() != NULL) {
-        var_r3_1106 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
+        var_r3_1106 = (SkyClouds::CloudEmitter **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0));
     } else {
         var_r3_1106 = malloc(0x190);
     }
@@ -674,7 +671,7 @@ void SkyClouds::Init() {
         *(this->unk50 + temp_r0_1120) = 0;
         var_ctr_1117 -= 1;
     } while (var_ctr_1117 != 0);
-    this->unk58 = MKMaterial_Create("fx_381");
+    this->unk58 = (MKMaterial *) (MKMaterial_Create("fx_381"));
     sp20 = -0.5f;
     sp18 = -0.5f;
     sp1C = -0.5f;
@@ -692,7 +689,7 @@ void SkyClouds::Init() {
     sp30 = (f64) sp10;
     this->unkC = (BoundingVolume *) &this->unk60;
     if (MKHeap::Current() != NULL) {
-        var_r3_1159 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0);
+        var_r3_1159 = (SkyClouds::CloudEmitter **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0));
     } else {
         var_r3_1159 = malloc(0x210);
     }
@@ -715,9 +712,8 @@ void SkyClouds::Init() {
     this->unkCC = 0.0f;
     this->unkD0 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to
+#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 CloudParticleCompare(const void *arg0, const void *arg1) {
     return -(s32) (M2C_FIELD(*arg0, f32 *, 0x38) - M2C_FIELD(*arg1, f32 *, 0x38));
 }

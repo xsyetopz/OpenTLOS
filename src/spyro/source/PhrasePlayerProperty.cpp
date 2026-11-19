@@ -26,7 +26,7 @@ void PhrasePlayerProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 PhrasePlayerProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_108;
 

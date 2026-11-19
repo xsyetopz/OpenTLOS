@@ -62,7 +62,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK iMeleeAttackTypeMap;
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
 SpyroTailStrikeState states__20SpyroTailStrikeState; /* unable to generate initializer: confusing struct layout */
 
@@ -126,7 +126,7 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroTailStrikeState::LandTransition() {
     u8 var_r29_105;
     u8 var_r29_123;
@@ -245,7 +245,7 @@ void SpyroTailStrikeState::LandExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroTailStrikeState::LandEnter() {
     this->unk10->unk38C = 1900.0f;
     this->unk10->SetAnim(0x43U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -328,7 +328,7 @@ void SpyroTailStrikeState::DescentExit() {
     temp_r3_487->unk428 |= 0x20000;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroTailStrikeState::DescentEnter() {
     s32 spC;
     s32 sp8;
@@ -369,7 +369,7 @@ void SpyroTailStrikeState::DescentEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroTailStrikeState::StartTransition() {
     if (((s32) this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk44 >= 2) && ((s32) this->unk14.unk0 != 1)) {
         this->unk14.SetState(this, 1, 0U);
@@ -390,7 +390,7 @@ void SpyroTailStrikeState::StartExit() {
     temp_r3_609->unk428 |= 0x20000;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroTailStrikeState::StartEnter() {
     s32 spC;
     s32 sp8;

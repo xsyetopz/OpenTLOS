@@ -298,7 +298,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FallingLeaves' to
+#if 0 // DRAFT: illegal explicit conversion from 'FallingLeaves' to 'unsigned char'
 void FallingLeaves::AddForce(const MKVector3 &arg0, const float &arg1, const float &arg2) {
     s32 var_ctr_400;
     s32 var_r7_399;
@@ -1034,7 +1034,7 @@ void FallingLeaves::Emit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const int &arg3, bool arg4) {
     s8 sp128;
     s32 sp124;

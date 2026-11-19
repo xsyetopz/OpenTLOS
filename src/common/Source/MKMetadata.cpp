@@ -13,7 +13,6 @@
 #include "common/Source/FileSys.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 M2C_UNK free(MKMetadata *);                         /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
@@ -26,14 +25,12 @@ void *MKMetadata_Resolve(MKMetadata *arg0, int arg1, const char **arg2) {
     temp_r4_14 = &temp_r3_11[arg1];
     temp_r3_16 = temp_r3_11 + M2C_FIELD(temp_r4_14, s32 *, 0x10);
     if (arg2 != NULL) {
-        *arg2 = M2C_FIELD(temp_r4_14, s8 **, 0x14);
+        *arg2 = (const char *) (M2C_FIELD(temp_r4_14, s8 **, 0x14));
         return temp_r3_16;
     }
     return temp_r3_16;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'free'
 void MKMetadata_Close(MKMetadata *arg0) {
     MKMetadata *temp_r31_31;
     MKMetadata *temp_r31_45;
@@ -56,13 +53,12 @@ void MKMetadata_Close(MKMetadata *arg0) {
     }
     free(arg0);
 }
-#endif
 
 void MKMetadata_Open(const char *arg0, const char *arg1, int *arg2) {
     MKMetadata_OpenFromBuffer(MKArchive_Load(arg0, NULL, NULL, -1), NULL, arg2);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const void *' to
+#if 0 // DRAFT: illegal type
 void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     s32 temp_r0_134;
     s32 temp_r5_132;
@@ -86,10 +82,10 @@ void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     } else {
         var_r3_118 = malloc(8);
     }
-    M2C_FIELD(var_r3_118, void **, 0) = arg0;
+    M2C_FIELD(var_r3_118, void **, 0) = (void *) (arg0);
     var_r6_125 = 0U;
     var_r4_126 = 0;
-    M2C_FIELD(var_r3_118, void **, 4) = arg1;
+    M2C_FIELD(var_r3_118, void **, 4) = (void *) (arg1);
     temp_r9_128 = M2C_FIELD(var_r3_118, void **, 0);
     temp_r7_129 = ((u8 *) temp_r9_128) + 0x10;
 loop_5:

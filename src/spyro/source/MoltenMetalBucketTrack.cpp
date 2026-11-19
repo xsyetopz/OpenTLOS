@@ -49,7 +49,7 @@ extern f32 gUpdateTimeDelta;
 static s32 lit_616 = 2;
 static s32 lit_618 = 0x05F5E0FF;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void MoltenMetalBucketTrack::Message(MKMessage *arg0) {
     f32 temp_r3_54;
     s32 temp_r0_47;
@@ -164,7 +164,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MoltenMetalBucket *'
 void *MoltenMetalBucketTrack::Update() {
     f32 sp24C;
     f32 sp248;
@@ -555,7 +555,7 @@ f32 MoltenMetalBucketTrack::Resolve() {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
 s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -678,7 +678,6 @@ void MoltenMetalBucketTrackDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void MoltenMetalBucketTrackDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -686,6 +685,5 @@ void MoltenMetalBucketTrackDescriptor::Init() {
     this->unk70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
-    this->unk80 = MKMaterial_Create("p0017_FireSteelLedgeRail");
+    this->unk80 = (MKMaterial *) (MKMaterial_Create("p0017_FireSteelLedgeRail"));
 }
-#endif

@@ -82,7 +82,7 @@ M2C_UNK free(MKCollisionInfo *);                    /* extern */
 MKCollisionInfo *malloc(M2C_UNK);                   /* extern */
 extern s32 GS_IceOgreGhostIdle;
 extern s32 GS_IceTrollHitGround;
-#if 0 // DRAFT: identifier 'fingerprintData' redeclared
+#if 0 // DRAFT: identifier 'fingerprintData' redeclared was declared as: 'unsigned char[524]' now declared as: 'long'
 extern M2C_UNK fingerprintData;
 #endif
 extern void **gMK;
@@ -342,7 +342,7 @@ void IceTier2Descriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 void IceTier2Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk2B8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "");
@@ -358,7 +358,7 @@ void IceTier1::Spawn(EnemyGeneratorDoor *arg0) {
     Enemy::Spawn(arg0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void *IceTier1::Update() {
     Matrix spC0;
     MKVector3 spA8;

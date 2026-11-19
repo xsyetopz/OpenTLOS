@@ -1150,7 +1150,7 @@ loop_151:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier 'P21ShatterableDescriptor'
 void Shatterable::SpawnGems(int arg0) {
     f64 sp50;
     f64 sp48;
@@ -1187,7 +1187,7 @@ void Shatterable::SpawnGems(int arg0) {
         sp10 = (f32) sp40 + (f32) sp30;
         sp50 = (f64) sp10;
         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk10C != 0) {
-            temp_r29_1519 = ((u8 *) this->unk8) + 0x30;
+            temp_r29_1519 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
             KDSound_Play3d(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk10C, temp_r29_1519, 0U, -1, 0.0f, 0U);
         }
         var_r27_1530 = 0;
@@ -1276,7 +1276,7 @@ void Shatterable::SetSmashPropState(SmashPropState arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *' Too many errors printed, aborting program
 void Shatterable::DestroyShatterable() {
     s32 spC;
     s32 sp8;
@@ -1454,7 +1454,7 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
             if (arg1 != NULL) {
                 var_r26_2164 = arg1;
             } else {
-                var_r26_2164 = ((u8 *) this->unk8) + 0x30;
+                var_r26_2164 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
             }
             if (arg2 == -1) {
                 var_r4_2174 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk15C;
@@ -1485,7 +1485,7 @@ loop_32:
                 this->unk16C = 2;
                 SetStateAnim(1);
                 if ((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk154 > 0.0f) && (arg4 != 0)) {
-                    temp_r29_2254 = ((u8 *) this->unk8) + 0x30;
+                    temp_r29_2254 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
                     temp_r28_2256 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r27_2259 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r26_2263 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -1498,11 +1498,11 @@ loop_32:
             }
             this->unk160.Send((MKProp *) this);
             if ((u32) M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), u32 *, 0x78) != 0U) {
-                temp_r26_2301 = *KDProperty::pInstanceMem;
-                *KDProperty::pInstanceMem = this;
+                temp_r26_2301 = (Shatterable *) (*KDProperty::pInstanceMem);
+                *KDProperty::pInstanceMem = (unsigned char) (this);
                 temp_r3_2307 = M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
-                *KDProperty::pInstanceMem = temp_r26_2301;
+                *KDProperty::pInstanceMem = (unsigned char) (temp_r26_2301);
             }
         }
         ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->ClearVisible();
@@ -1798,7 +1798,7 @@ block_84:
                         this->unk1A1 |= 0x80;
                         M2C_FIELD(temp_r31_2713, s8 *, 0x3E) = 1;
                         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk100 != 0) {
-                            temp_r28_2803 = ((u8 *) this->unk8) + 0x30;
+                            temp_r28_2803 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
                             KDSound_Play3d(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk100, temp_r28_2803, 0U, -1, 0.0f, 0U);
                         } else {
                             temp_r3_2814 = M2C_FIELD(temp_r31_2713, s32 *, 0x2C);
@@ -2088,12 +2088,12 @@ loop_223:
                 if (((s32) this->unk180 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((this->unk180 * 0x17C) + 0x2F4)) != 0)) {
                     this->unk160.Send((MKProp *) this);
                     if ((u32) *(this->unk168 + ((this->unk180 << 7) + 0x78)) != 0U) {
-                        temp_r28_3455 = *KDProperty::pInstanceMem;
-                        *KDProperty::pInstanceMem = this;
+                        temp_r28_3455 = (Shatterable *) (*KDProperty::pInstanceMem);
+                        *KDProperty::pInstanceMem = (unsigned char) (this);
                         temp_r4_3458 = this->unk168;
                         temp_r3_3461 = *(temp_r4_3458 + ((this->unk180 << 7) + 0x78));
                         M2C_FIELD(*temp_r3_3461, M2C_UNK (**)(void **, void *), 0x4C)(temp_r3_3461, temp_r4_3458);
-                        *KDProperty::pInstanceMem = temp_r28_3455;
+                        *KDProperty::pInstanceMem = (unsigned char) (temp_r28_3455);
                     }
                     this->unk180 += 1;
                     goto loop_223;
@@ -2465,7 +2465,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to 'MKCollisionInfo *'
 f32 Shatterable::Resolve() {
     MKProp *temp_r3_4287;
     MKSceneManager *temp_r3_4283;
@@ -2632,7 +2632,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Shatterable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4647;
 
@@ -2644,7 +2644,7 @@ s32 Shatterable::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Attachment *' and 'unsigned char *'
 void Shatterable::Deinit() {
     Attachment *temp_r30_4779;
     Attachment *var_r3_4776;
@@ -3004,7 +3004,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ShatterableDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *spC;
     u8 sp8;

@@ -70,7 +70,7 @@ void NPCGuardian::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
+#if 0 // DRAFT: ')' expected
 f32 NPCGuardian::Resolve() {
     MKSceneManager *temp_r3_74;
     s32 temp_r31_86;
@@ -79,7 +79,7 @@ f32 NPCGuardian::Resolve() {
     Enemy::Resolve();
     temp_r3_74 = this->unkB18;
     if (temp_r3_74 != NULL) {
-        temp_r3_78 = checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_74->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_78 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_74->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
         if (temp_r3_78 != 0U) {
             this->unkA80 = temp_r3_78 + 0x50;
             this->unkA90 = 0;

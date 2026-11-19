@@ -46,7 +46,7 @@ void *FightElevatorAnchor::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FightElevatorAnchor::GetZapAnchorPos() {
     MKVector3 sp8;
 

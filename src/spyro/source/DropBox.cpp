@@ -73,7 +73,7 @@ void DropBox::SetDefaults() {
     Shatterable::Reset();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void DropBox::Drop() {
     MKCollisionResult sp170;
     Matrix sp130;
@@ -260,7 +260,7 @@ void DropBox::Drop() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'DropBox' to
+#if 0 // DRAFT: illegal explicit conversion from 'DropBox' to 'SpawnPointObject *'
 void DropBox::Deinit() {
     SpawnerObject *temp_r31_414;
     s32 temp_r30_403;
@@ -404,7 +404,7 @@ void DropBox::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void DropBox::SpawnEnemies() {
     f32 sp5C;
     f32 sp58;

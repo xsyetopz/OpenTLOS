@@ -19,18 +19,18 @@
 #include <m2c_macros.h>
 
 extern u8 MKLight_LightMask;
-#if 0 // DRAFT: identifier 'MKMaterialGC_bForceSkinnedVertexFormat' redeclared
+#if 0 // DRAFT: identifier 'MKMaterialGC_bForceSkinnedVertexFormat' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 MKMaterialGC_bForceSkinnedVertexFormat;
 #endif
 extern s32 MKMaterial_CurrentLocalityIndex;
-#if 0 // DRAFT: identifier 'MKMaterial_LocalityArray' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_LocalityArray' redeclared was declared as: 'unsigned char[1024]' now declared as: 'long'
 extern M2C_UNK MKMaterial_LocalityArray;
 #endif
 extern u8 MKMaterial_bFogEnabled;
 extern f32 MKMaterial_fogFar;
 extern f32 MKMaterial_fogNear;
 extern u8 MKPrimitive_bAlphaModulate;
-#if 0 // DRAFT: identifier 'MKPrimitive_colorModulate' redeclared
+#if 0 // DRAFT: identifier 'MKPrimitive_colorModulate' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK MKPrimitive_colorModulate;
 #endif
 extern s32 MKView_SettingsCounter;
@@ -41,7 +41,7 @@ extern M2C_UNK gMKDefaults;
 extern MKMaterial *gpCurrentMaterial;
 extern void *gpMKMaterialTypeInfoList;
 extern MKMaterial *gpMKWhiteMaterial;
-#if 0 // DRAFT: identifier 'gpPreviousMaterial' redeclared
+#if 0 // DRAFT: identifier 'gpPreviousMaterial' redeclared was declared as: 'MKMat_MK2_Standard *' now declared as: 'long'
 extern s32 gpPreviousMaterial;
 #endif
 extern u8 init_468;
@@ -50,7 +50,7 @@ extern u8 init_500;
 extern s32 oldCounter_467;
 extern Matrix *pAnimMats;
 extern Texture *pOldRenderTarget_475;
-#if 0 // DRAFT: identifier 'MKMaterial_GeometryColor' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_GeometryColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 static M2C_UNK MKMaterial_GeometryColor;            /* unable to generate initializer: unknown type */
 static M2C_UNK MKPrimitive_CurrentVertex;           /* unable to generate initializer: unknown type */
 static s32 MKMaterial_fogColor = 0xFFFFFFFF;
@@ -59,7 +59,7 @@ static u32 currentPrim = 4;
 static M2C_UNK MKPrimitive_BaseColor;               /* unable to generate initializer: unknown type */
 static s32 TransformInfo = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 u8 MKMaterial_EnableFog(bool arg0) {
     f32 sp14;
     f32 sp10;
@@ -71,17 +71,17 @@ u8 MKMaterial_EnableFog(bool arg0) {
     MKMaterial_bFogEnabled = arg0;
     if (arg0 != 0) {
         MKView_GetProjection(NULL, &sp14, &sp10);
-        spC = MKMaterial_fogColor;
+        spC = (long) (MKMaterial_fogColor);
         GXSetFog(GX_FOG_LIN, MKMaterial_fogNear, MKMaterial_fogFar, sp14, sp10, (GXColor) &spC);
     } else {
-        sp8 = MKMaterial_fogColor;
+        sp8 = (long) (MKMaterial_fogColor);
         GXSetFog(GX_FOG_NONE, MKMaterial_fogNear, MKMaterial_fogFar, 0.0f, 0.0f, (GXColor) &sp8);
     }
     return temp_r31_19;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void MKMaterial_SetFogColor(const MKVector4 &arg0) {
     s32 sp8;
 
@@ -93,7 +93,7 @@ void MKMaterial_SetFogColor(const MKVector4 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void MKMaterial_SetFogPlanes(float arg0, float arg1) {
     f32 sp10;
     f32 spC;
@@ -103,7 +103,7 @@ void MKMaterial_SetFogPlanes(float arg0, float arg1) {
     MKMaterial_fogFar = arg1;
     if ((u8) MKMaterial_bFogEnabled != 0) {
         MKView_GetProjection(NULL, &sp10, &spC);
-        sp8 = MKMaterial_fogColor;
+        sp8 = (long) (MKMaterial_fogColor);
         GXSetFog(GX_FOG_LIN, MKMaterial_fogNear, MKMaterial_fogFar, sp10, spC, (GXColor) &sp8);
     }
 }
@@ -175,7 +175,6 @@ void MKMaterial_UseLocality(int arg0) {
     MKMaterial_CurrentLocalityIndex = arg0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const BoundingVolume *' to
 void MKMaterial_SetLocalities(const Matrix *arg0, const BoundingVolume *arg1, int arg2, int arg3) {
     s32 temp_r5_285;
     s32 var_ctr_279;
@@ -194,7 +193,7 @@ void MKMaterial_SetLocalities(const Matrix *arg0, const BoundingVolume *arg1, in
             temp_r5_285 = (arg3 + var_r11_275) * 8;
             var_r11_275 += 1;
             temp_r5_287 = &MKMaterial_LocalityArray + temp_r5_285;
-            temp_r0_288 = arg1 + var_r7_277;
+            temp_r0_288 = (void *) (arg1 + var_r7_277);
             M2C_FIELD(temp_r5_287, void **, 0) = (void *) (arg0 + var_r8_278);
             var_r7_277 += 0x20;
             var_r8_278 += 0x40;
@@ -203,9 +202,8 @@ void MKMaterial_SetLocalities(const Matrix *arg0, const BoundingVolume *arg1, in
         } while (var_ctr_279 != 0);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)[16]' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     f64 sp28;
     f64 sp20;
@@ -225,7 +223,7 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
 
     var_r4_305 = &MKVector4::one;
     if ((MKMaterial *) gpCurrentMaterial != NULL) {
-        var_r4_305 = &MKMaterial_GeometryColor + 0x50;
+        var_r4_305 = (MKVector4 *) (&MKMaterial_GeometryColor + 0x50);
     }
     sp10 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0) * M2C_FIELD(var_r4_305, f64 *, 0);
     sp18 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 8) * M2C_FIELD(var_r4_305, f64 *, 8);
@@ -249,7 +247,7 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     temp_r29_387 = arg0 + (arg0->unk10 + 0x20);
     GXSetArray(GX_VA_CLR0, temp_r29_387, 4U);
     var_r5_393 = 0;
-    temp_r29_395 = ((u8 *) temp_r29_387) + arg0->unk14;
+    temp_r29_395 = (float *) (((u8 *) temp_r29_387) + arg0->unk14);
     if (((s32) TransformInfo == 1) && ((u8) MKMaterialGC_bForceSkinnedVertexFormat == 0)) {
         var_r5_393 = 1;
     }
@@ -318,7 +316,7 @@ void MKMaterial_RenderImmediateEnd() {
     GXSetCullMode(GX_CULL_NONE);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)[16]' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
     f64 sp48;
     f64 sp40;
@@ -344,7 +342,7 @@ void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
 
     var_r5_966 = &MKVector4::one;
     if ((MKMaterial *) gpCurrentMaterial != NULL) {
-        var_r5_966 = &MKMaterial_GeometryColor + 0x50;
+        var_r5_966 = (MKVector4 *) (&MKMaterial_GeometryColor + 0x50);
     }
     sp20 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0) * M2C_FIELD(var_r5_966, f64 *, 0);
     sp28 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 8) * M2C_FIELD(var_r5_966, f64 *, 8);
@@ -563,11 +561,9 @@ void MKMaterial_SetGeometryTransformInfo(GeometryTransformationInfo *arg0) {
     M2C_FIELD(&TransformInfo, s32 *, 4) = (s32) arg0->unk4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKMaterial_SetAnimationMatrices(const Matrix *arg0, int arg1) {
-    pAnimMats = arg0;
+    pAnimMats = (Matrix *) (arg0);
 }
-#endif
 
 void MKMaterial_SetLocalToWorld(const Matrix *arg0, float arg1) {
     Matrix sp60;

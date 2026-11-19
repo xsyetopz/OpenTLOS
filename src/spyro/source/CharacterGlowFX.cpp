@@ -358,7 +358,7 @@ loop_49:
                 sp178 = sp78;
                 sp338 = (f64) sp80;
                 sp180 = (f64) sp80;
-                temp_r4_551 = this->unk4 + (var_r22_168 + 8);
+                temp_r4_551 = (void *) (this->unk4 + (var_r22_168 + 8));
                 temp_f0_554 = M2C_FIELD(temp_r4_551, f64 *, 0) - sp2A8;
                 sp68 = temp_f0_554;
                 sp128 = temp_f0_554;
@@ -374,7 +374,7 @@ loop_49:
                 sp268 = (f64) spD8;
                 sp270 = (f64) spE0;
                 sp108.operator*(25.0f);
-                temp_r4_590 = this->unk4 + (var_r22_168 + 8);
+                temp_r4_590 = (void *) (this->unk4 + (var_r22_168 + 8));
                 temp_f0_593 = M2C_FIELD(temp_r4_590, f64 *, 0) + M2C_BITWISE(f64, sp108);
                 sp58 = temp_f0_593;
                 (*(f32 *) ((u8 *) &sp378 + 0x4)) = 1.0f;
@@ -455,13 +455,11 @@ void CharacterGlowFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNod
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CharacterGlowFX::Init() {
     CharacterBodyFX::Init();
     this->unk14 = 0;
-    this->unk18 = MKMaterial_Create("fx_031");
+    this->unk18 = (MKMaterial *) (MKMaterial_Create("fx_031"));
     this->unk20 = 0.0f;
     this->unk1C = 0.0f;
     this->unk38 = 0.0f;
 }
-#endif

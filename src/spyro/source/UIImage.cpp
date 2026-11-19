@@ -19,7 +19,7 @@
 
 extern MKMaterial *gpMKWhiteMaterial;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void UIImage::Draw(const RenderContext &arg0) {
     RenderContext sp90;
     f32 sp88;
@@ -118,7 +118,7 @@ void UIImage::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIImage::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_177;
@@ -154,7 +154,7 @@ void UIImage::FreeResources() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void UIImage::LoadResources() {
     s8 *temp_r3_259;
 
@@ -175,7 +175,7 @@ void UIImage::SetUVs(float arg0, float arg1, float arg2, float arg3) {
     this->unk74 = arg3;
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIImage::Deinit() {
     s8 *temp_r3_293;
 

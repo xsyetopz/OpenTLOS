@@ -120,7 +120,7 @@ void UIText::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIText::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_276;
@@ -175,7 +175,7 @@ void UIText::LoadResources() {
     }
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIText::Deinit() {
     s8 *temp_r3_390;
     s8 *temp_r3_398;

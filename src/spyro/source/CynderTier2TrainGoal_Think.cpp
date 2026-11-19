@@ -360,7 +360,7 @@ u8 EnemyGoal_TrainAttackMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, long)' does not match 'Enemy::GetCollisionRadius()'
 void EnemyGoal_TrainAttackMode::Activate() {
     f64 sp50;
     f64 sp48;
@@ -403,7 +403,7 @@ void EnemyGoal_TrainAttackMode::Activate() {
             goto block_5;
         }
         temp_r3_725 = this->unkC;
-        temp_r28_731 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r28_731 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_733 = temp_r3_725->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_734 = this->unkC;
         sp18 = M2C_FIELD(temp_r3_734, f64 *, 0xD0) * temp_f1_733;

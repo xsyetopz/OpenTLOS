@@ -244,7 +244,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to 'double'
 void FuryFXConvexity::UpdateDragonChasers() {
     BreathHitMessage sp5B0;
     Matrix sp570;
@@ -1463,7 +1463,7 @@ void FuryFXConvexity::SetDefaults() {
     this->unk164 = 0.0f;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'KDSoundFader *' and 'KDSoundFader **'
 void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r31_2359;
     KDSoundFader **var_r3_2360;
@@ -1539,7 +1539,7 @@ loop_2:
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *FuryFXConvexity::Update() {
     f64 sp8B8;
     Matrix sp870;
@@ -2490,7 +2490,6 @@ block_159:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXConvexity::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2537,7 +2536,7 @@ f32 FuryFXConvexity::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unkF8 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781);
+    this->unkF8 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781));
     temp_r4_4235 = this->unkF8;
     if (temp_r4_4235 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_4235, 0U);
@@ -2567,9 +2566,7 @@ f32 FuryFXConvexity::Resolve() {
     }
     Disable();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void FuryFXConvexity::Init() {
     f64 sp40;
     f64 sp38;
@@ -2593,10 +2590,10 @@ void FuryFXConvexity::Init() {
     M2C_FIELD(this, f32 *, 0xD0) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD4) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD8) = 0.0f;
-    this->unk15C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSAdd"));
-    this->unk160 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub"));
+    this->unk15C = (MKHeap *) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSAdd")));
+    this->unk160 = (MKHeap *) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub")));
     if (MKHeap::Current() != NULL) {
-        var_r3_4324 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x670, NULL, 0);
+        var_r3_4324 = (KDSoundFader **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x670, NULL, 0));
     } else {
         var_r3_4324 = malloc(0x670);
     }
@@ -2641,7 +2638,6 @@ void FuryFXConvexity::Init() {
     this->unk1E0 = MKModel_Create("FX0035_Head", NULL, 2, NULL);
     this->unk150 = -1.0f;
 }
-#endif
 
 void FuryFXConvexity_cpp::__sinit() {
     f32 temp_f0_4459;

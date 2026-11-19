@@ -40,15 +40,13 @@ inline s32 AnimProperty::GetInstanceDataSize() const {
     return 8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void AnimProperty::InitInstance() {
     void *temp_r3_22;
 
-    temp_r3_22 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_22 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_22, s8 *, 0) = 1;
     M2C_FIELD(temp_r3_22, s32 *, 4) = 0;
 }
-#endif
 
 inline s32 AnimProperty::Query(int arg0) {
     return arg0 == 1;

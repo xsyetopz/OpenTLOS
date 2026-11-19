@@ -667,7 +667,7 @@ inline s32 MKWidget::IsContainer() {
     return 0U;
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidget::MKWidget_FactoryFunc() {
     MKWidget *var_r0_19731;
 
@@ -691,7 +691,7 @@ inline MKWidgetButton::~MKWidgetButton() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetButton::MKWidgetButton_FactoryFunc() {
     MKWidgetButton *var_r0_19467;
 
@@ -715,7 +715,7 @@ inline MKWidgetCheckBox::~MKWidgetCheckBox() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc() {
     MKWidgetCheckBox *var_r0_19419;
 
@@ -731,7 +731,7 @@ inline MKWidgetEditable *MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc() {
 inline MKWidgetCheckMark::~MKWidgetCheckMark() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc() {
     MKWidgetCheckMark *var_r0_19443;
 
@@ -747,7 +747,7 @@ inline MKWidgetEditable *MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc() {
 inline MKWidgetColor::~MKWidgetColor() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetColor::MKWidgetColor_FactoryFunc() {
     MKWidgetColor *var_r0_19251;
 
@@ -783,7 +783,7 @@ inline MKWidgetComboBox::~MKWidgetComboBox() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetComboBox::MKWidgetComboBox_FactoryFunc() {
     MKWidgetComboBox *var_r0_19227;
 
@@ -803,7 +803,7 @@ inline s32 MKWidgetContainer::IsContainer() {
     return 1;
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetContainer::MKWidgetContainer_FactoryFunc() {
     MKWidgetContainer *var_r0_19707;
 
@@ -826,7 +826,7 @@ inline MKWidgetEditable::~MKWidgetEditable() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetEditable::MKWidgetEditable_FactoryFunc() {
     MKWidgetEditable *var_r0_19155;
 
@@ -842,7 +842,7 @@ inline MKWidgetEditable *MKWidgetEditable::MKWidgetEditable_FactoryFunc() {
 inline MKWidgetEnvelope::~MKWidgetEnvelope() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetEnvelope::MKWidgetEnvelope_FactoryFunc() {
     MKWidgetEnvelope *var_r0_19323;
 
@@ -887,7 +887,7 @@ inline MKWidgetFoldupFrame::~MKWidgetFoldupFrame() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetFoldupFrame::MKWidgetFoldupFrame_FactoryFunc() {
     MKWidgetFoldupFrame *var_r0_19539;
 
@@ -910,7 +910,7 @@ inline MKWidgetFrame::~MKWidgetFrame() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetFrame::MKWidgetFrame_FactoryFunc() {
     MKWidgetFrame *var_r0_19659;
 
@@ -926,7 +926,7 @@ inline MKWidgetEditable *MKWidgetFrame::MKWidgetFrame_FactoryFunc() {
 inline MKWidgetImage::~MKWidgetImage() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetImage::MKWidgetImage_FactoryFunc() {
     MKWidgetImage *var_r0_19491;
 
@@ -942,7 +942,7 @@ inline MKWidgetEditable *MKWidgetImage::MKWidgetImage_FactoryFunc() {
 inline MKWidgetListBox::~MKWidgetListBox() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetListBox::MKWidgetListBox_FactoryFunc() {
     MKWidgetListBox *var_r0_19611;
 
@@ -963,7 +963,7 @@ inline MKWidgetListItem::~MKWidgetListItem() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetListItem::MKWidgetListItem_FactoryFunc() {
     MKWidgetListItem *var_r0_19299;
 
@@ -1017,7 +1017,7 @@ inline MKWidgetScrollBar::~MKWidgetScrollBar() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetScrollBar::MKWidgetScrollBar_FactoryFunc() {
     MKWidgetScrollBar *var_r0_19395;
 
@@ -1134,7 +1134,7 @@ inline MKWidgetScrollableFrame::~MKWidgetScrollableFrame() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetScrollableFrame::MKWidgetScrollableFrame_FactoryFunc() {
     MKWidgetScrollableFrame *var_r0_19635;
 
@@ -1192,7 +1192,7 @@ inline MKWidgetSlider::~MKWidgetSlider() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetSlider::MKWidgetSlider_FactoryFunc() {
     MKWidgetSlider *var_r0_19275;
 
@@ -1208,7 +1208,7 @@ inline MKWidgetEditable *MKWidgetSlider::MKWidgetSlider_FactoryFunc() {
 inline MKWidgetString::~MKWidgetString() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetString::MKWidgetString_FactoryFunc() {
     MKWidgetString *var_r0_19515;
 
@@ -1231,7 +1231,7 @@ inline MKWidgetSystem::~MKWidgetSystem() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)' Too many errors printed, aborting program
 inline MKWidgetEditable *MKWidgetSystem::MKWidgetSystem_FactoryFunc() {
     MKWidgetSystem *var_r0_19683;
 
@@ -1254,7 +1254,7 @@ inline MKWidgetTabStrip::~MKWidgetTabStrip() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc() {
     MKWidgetTabStrip *var_r0_19563;
 
@@ -1267,7 +1267,7 @@ inline MKWidgetEditable *MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetTextBox::MKWidgetTextBox_FactoryFunc() {
     MKWidgetTextBox *var_r0_19371;
 
@@ -1283,7 +1283,7 @@ inline MKWidgetEditable *MKWidgetTextBox::MKWidgetTextBox_FactoryFunc() {
 inline MKWidgetThumb::~MKWidgetThumb() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetThumb::MKWidgetThumb_FactoryFunc() {
     MKWidgetThumb *var_r0_19203;
 
@@ -1299,7 +1299,7 @@ inline MKWidgetEditable *MKWidgetThumb::MKWidgetThumb_FactoryFunc() {
 inline MKWidgetVector::~MKWidgetVector() {
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetVector::MKWidgetVector_FactoryFunc() {
     MKWidgetVector *var_r0_19347;
 
@@ -1353,7 +1353,7 @@ inline MKWidgetWindow::~MKWidgetWindow() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetWindow::MKWidgetWindow_FactoryFunc() {
     MKWidgetWindow *var_r0_19587;
 
@@ -1392,7 +1392,7 @@ inline MKWidgetWindowTitleBar::~MKWidgetWindowTitleBar() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match 'operator new(unsigned long)'
 inline MKWidgetEditable *MKWidgetWindowTitleBar::MKWidgetWindowTitleBar_FactoryFunc() {
     MKWidgetWindowTitleBar *var_r0_19179;
 

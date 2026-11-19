@@ -28,7 +28,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'const MKVector3 &'
 void CharacterFireFX::EmitFire() {
     f64 sp48;
     f64 sp40;
@@ -52,7 +52,7 @@ void CharacterFireFX::EmitFire() {
         this->unk14 = 0.0f;
         var_r29_36 = 0;
         do {
-            temp_r3_40 = GetRandomNode(NULL);
+            temp_r3_40 = (void **) (GetRandomNode(NULL));
             if (temp_r3_40 != NULL) {
                 sp8 = 3.0f * M2C_FIELD(*temp_r3_40, f32 *, 0x10);
                 temp_f1_56 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
@@ -77,7 +77,7 @@ void CharacterFireFX::EmitFire() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'const MKVector3 &'
 void CharacterFireFX::EmitSmoke() {
     f64 sp28;
     f64 sp20;
@@ -91,7 +91,7 @@ void CharacterFireFX::EmitSmoke() {
     this->unk18 -= gUpdateTimeDelta;
     if (this->unk18 <= 0.0f) {
         this->unk18 = 0.1f;
-        temp_r3_129 = GetRandomNode(NULL);
+        temp_r3_129 = (void **) (GetRandomNode(NULL));
         if (temp_r3_129 != NULL) {
             sp8 = 0.5f * M2C_FIELD(*temp_r3_129, f32 *, 0x10);
             temp_f2_144 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);

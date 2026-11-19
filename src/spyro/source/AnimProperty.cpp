@@ -90,7 +90,7 @@ void AnimProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match 'stricmp(signed char *, long *)'
 s32 AnimProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_174;
 
@@ -99,7 +99,7 @@ s32 AnimProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match
+#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match 'property_cast<...>(T1)'
 void AnimProperty::Resolve(KDPropertySet *arg0) {
     s32 var_r30_199;
     s32 var_r31_200;
@@ -190,13 +190,11 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
 void AnimProperty::Init(char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
     this->unk10 = NULL;
     this->unk14 = NULL;
     this->unk18 = 0;
     this->unk20 = 0.0f;
     this->unk1C = 0;
 }
-#endif

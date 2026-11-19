@@ -94,7 +94,7 @@ loop_4:
                 sp10 = M2C_FIELD(temp_r30_100, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r30_100, f64 *, 0x38);
                 KDSound_Stop(temp_r30_100 + 0x48);
-                temp_r6_75 = gb.unk0->GetProp();
+                temp_r6_75 = (MKProp *) (gb.unk0->GetProp());
                 sp8 = 1;
                 this->unk154->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 M2C_FIELD(temp_r30_100, s32 *, 0x44) = 2;
@@ -300,7 +300,7 @@ loop_9:
                 if ((*(f32 *) ((u8 *) &sp10 + 0x4)) <= temp_f1_391) {
                     (*(f32 *) ((u8 *) &sp10 + 0x4)) = temp_f1_391;
                     KDSound_Stop(temp_r31_433 + 0x48);
-                    temp_r6_406 = gb.unk0->GetProp();
+                    temp_r6_406 = (MKProp *) (gb.unk0->GetProp());
                     sp8 = 1;
                     this->unk154->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                     M2C_FIELD(temp_r31_433, s32 *, 0x44) = 2;
@@ -369,7 +369,7 @@ void FuryFXFire2::SetDefaults() {
     this->unk14C = 0.0f;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'FuryFXFire2::Meteor *' and 'FuryFXFire2::Meteor **'
 void FuryFXFire2::Deinit() {
     FuryFXFire2::Meteor **var_r31_568;
     FuryFXFire2::Meteor **var_r3_569;
@@ -430,7 +430,7 @@ void FuryFXFire2::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, double, float)' does not match
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, double, float)' does not match 'HeroInterface::GetProp()'
 void *FuryFXFire2::Update() {
     MKCollisionResult sp760;
     Matrix sp720;
@@ -1070,7 +1070,6 @@ void *FuryFXFire2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXFire2::Init() {
     FuryFXFire2::Meteor **temp_r3_1675;
     FuryFXFire2::Meteor **temp_r4_1681;
@@ -1081,7 +1080,7 @@ void FuryFXFire2::Init() {
     FuryFX::Init();
     SetDefaults();
     if (MKHeap::Current() != NULL) {
-        var_r3_1660 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
+        var_r3_1660 = (FuryFXFire2::Meteor **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0));
     } else {
         var_r3_1660 = malloc(0x698);
     }
@@ -1106,7 +1105,6 @@ void FuryFXFire2::Init() {
     this->unk164.Init(0xA);
     this->unk158 = -1;
 }
-#endif
 
 void FuryFXFire2_cpp::__sinit() {
     f32 temp_f0_1752;

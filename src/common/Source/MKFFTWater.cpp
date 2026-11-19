@@ -28,12 +28,12 @@ s32 strlwr(s8 *);                                   /* extern */
 u32 strstr(s8 *, s32);                              /* extern */
 f64 tanh(s32, s32, s32, f32);                       /* extern */
 extern s8 bWaterColorChanged;
-#if 0 // DRAFT: identifier 'bWaveDataChanged' redeclared
+#if 0 // DRAFT: identifier 'bWaveDataChanged' redeclared was declared as: 'unsigned char' now declared as: 'signed char'
 extern s8 bWaveDataChanged;
 #endif
 extern f32 gUpdateTimeDelta;
 extern s8 *pSkyMapName;
-#if 0 // DRAFT: identifier 'pWaterTypes' redeclared
+#if 0 // DRAFT: identifier 'pWaterTypes' redeclared was declared as: 'unsigned char[40]' now declared as: 'MKFFTWaterType *[10]'
 static MKFFTWaterType *pWaterTypes[0xA] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 #endif
 u8 typesVisible__10MKFFTWater[0x28] = {
@@ -78,7 +78,7 @@ u8 typesVisible__10MKFFTWater[0x28] = {
     0,
     0,
 };
-#if 0 // DRAFT: identifier 'gRandomSeed' redeclared
+#if 0 // DRAFT: identifier 'gRandomSeed' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 gRandomSeed = 0xBABECAFE;
 #endif
 
@@ -492,7 +492,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'exp(float, float)' does not match
+#if 0 // DRAFT: function call 'exp(float, float)' does not match 'exp(float, float, float, float, float)'
 f32 MKFFTNormalMap::GetPower(float arg0) {
     f32 temp_f0_685;
     f32 temp_f0_695;
@@ -854,7 +854,6 @@ u8 MKFFTNormalMap::LoadLine(MKIniLine *arg0) {
     return var_r31_1310;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void MKFFTNormalMap::Init() {
     this->unk5000 = 9.8f;
     this->unk5008 = 4.0f;
@@ -865,10 +864,9 @@ void MKFFTNormalMap::Init() {
     this->unk500C = 0.02f;
     this->unk501C = 1.0f;
     this->unk5024 = 1.0f;
-    this->unk5020 = gRandomSeed;
+    this->unk5020 = (long) (gRandomSeed);
     this->unk5028 = 0.0f;
 }
-#endif
 
 void MKFFTWaterType::Deinit() {
     Texture *temp_r3_1445;
@@ -922,7 +920,7 @@ void MKFFTBaseType::Deinit() {
     free(temp_r31_1512);
 }
 
-#if 0 // DRAFT: function call 'strcmp(signed char *, unsigned long)' does not match
+#if 0 // DRAFT: function call 'strcmp(signed char *, unsigned long)' does not match 'strcmp(const char *, const char *)'
 void MKFFTWaterType::RemoveFromLinkedList() {
     MKFFTWaterType *temp_r0_1563;
     MKFFTWaterType *temp_r0_1575;
@@ -942,9 +940,9 @@ loop_1:
             goto loop_1;
         }
     }
-    temp_r0_1563 = pWaterTypes[var_r29_1543];
+    temp_r0_1563 = (MKFFTWaterType *) (pWaterTypes[var_r29_1543]);
     if (temp_r0_1563 == this) {
-        pWaterTypes[var_r29_1543] = this->unk5160;
+        pWaterTypes[var_r29_1543] = (unsigned char) (this->unk5160);
         return;
     }
     var_r3_1570 = temp_r0_1563;
@@ -958,7 +956,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmp(signed char *, unsigned long)' does not match
+#if 0 // DRAFT: function call 'strcmp(signed char *, unsigned long)' does not match 'strcmp(const char *, const char *)'
 void MKFFTWaterType::FixUpLinkedList() {
     MKFFTWaterType *temp_r0_1625;
     MKFFTWaterType *var_r29_1598;
@@ -975,7 +973,7 @@ void MKFFTWaterType::FixUpLinkedList() {
 loop_1:
     temp_r4_1602 = *(pWaterTypes + var_r31_1600);
     if ((temp_r4_1602 != 0U) && (strcmp(&this->unk509A, temp_r4_1602 + 0x509A) == 0)) {
-        var_r29_1598 = *(pWaterTypes + var_r31_1600);
+        var_r29_1598 = (MKFFTWaterType *) (*(pWaterTypes + var_r31_1600));
     } else {
         var_r28_1599 += 1;
         var_r31_1600 += 4;
@@ -1001,7 +999,7 @@ loop_12:
             var_r3_1634 += 4;
             goto loop_12;
         }
-        pWaterTypes[var_r5_1632] = this;
+        pWaterTypes[var_r5_1632] = (unsigned char) (this);
     }
     this->unk5160 = NULL;
 }
@@ -1015,7 +1013,7 @@ void MKFFTBaseType::Update() {
     this->unk10.Update();
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void MKFFTBaseType::LoadDone() {
     if ((s8 *) pSkyMapName != NULL) {
         this->unk5048 = MKMaterial_Create(pSkyMapName);
@@ -1024,7 +1022,7 @@ void MKFFTBaseType::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 MKFFTWaterType::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1720;
 
@@ -1036,7 +1034,7 @@ s32 MKFFTWaterType::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 MKFFTBaseType::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1824;
 
@@ -1048,18 +1046,18 @@ u8 MKFFTBaseType::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKFFTWaterType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     Texture *temp_r3_1954;
 
     ((MKFFTBaseType *) this)->Init(arg0, arg1, arg2);
     FixUpLinkedList();
     this->unk50D4.Init(Str_Printf("FFT_%s_Ref", arg1));
-    temp_r3_1954 = Str_Printf("FFT_%s_Spec", arg1);
-    this->unk5128 = temp_r3_1954->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
+    temp_r3_1954 = (Texture *) (Str_Printf("FFT_%s_Spec", arg1));
+    this->unk5128 = (Texture *) (temp_r3_1954->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */)));
     this->unk5124 = MKMaterial_Create(&temp_r3_1954->unk0);
     MKMaterial_SetParameter(this->unk5124, (MKMaterialParameter) 5, 0);
-    this->unk50D0 = ((Texture *) (Str_Printf("FFT_%s_Ind", arg1)))->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
+    this->unk50D0 = (Texture *) (((Texture *) (Str_Printf("FFT_%s_Ind", arg1)))->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */)));
     M2C_FIELD(this, s8 *, 0x515C) = 1;
     this->unk5140.unk0 = 0.0f;
     this->unk5140.unk4 = 0.0f;
@@ -1071,7 +1069,7 @@ void MKFFTWaterType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(MKFFTBaseType *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(MKFFTBaseType *, const char *)' does not match 'strcpy(char *, const char *)'
 void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     s8 sp8;
     MKHeap *temp_r29_2056;
@@ -1087,16 +1085,16 @@ void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     this->unk0 = arg0;
     temp_r29_2034 = (MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0) + 2) * 2;
     if (MKHeap::Current() != NULL) {
-        var_r3_2042 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_2034, NULL, 0);
+        var_r3_2042 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_2034, NULL, 0));
     } else {
         var_r3_2042 = malloc(temp_r29_2034);
     }
     this->unk50C4 = var_r3_2042;
     *this->unk50C4 = 0;
-    this->unk4 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
+    this->unk4 = (MKHeap *) (MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0));
     temp_r29_2056 = this->unk4;
     if (MKHeap::Current() != NULL) {
-        var_r3_2064 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_2056, NULL, 0);
+        var_r3_2064 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_2056, NULL, 0));
     } else {
         var_r3_2064 = malloc((s32) temp_r29_2056);
     }
@@ -1114,8 +1112,8 @@ loop_10:
         goto loop_10;
     }
     this->unk10.Init();
-    temp_r3_2108 = Str_Printf("FFT_%s_Fres", arg1);
-    this->unk5050 = temp_r3_2108->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
+    temp_r3_2108 = (Texture *) (Str_Printf("FFT_%s_Fres", arg1));
+    this->unk5050 = (Texture *) (temp_r3_2108->CreateFromRawData(NULL, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */)));
     this->unk5044 = MKMaterial_Create(&temp_r3_2108->unk0);
     MKMaterial_SetParameter(this->unk5044, (MKMaterialParameter) 5, 0);
     MKMaterial_SetParameter(this->unk5044, (MKMaterialParameter) 0, 0);
@@ -1263,7 +1261,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKFFTWater::ManagedDraw() {
     MKFFTWaterType *temp_r3_2374;
     MKFFTWaterType *var_r4_2377;
@@ -1278,9 +1275,9 @@ loop_5:
     if (var_r26_2364 < (s32) *MKFFTWater::numTypesVisible) {
         temp_r0_2370 = MKFFTWater::typesVisible[var_r31_2361];
         ((MKFFTBaseType *) pWaterTypes[temp_r0_2370])->Update();
-        temp_r3_2374 = pWaterTypes[temp_r0_2370];
+        temp_r3_2374 = (MKFFTWaterType *) (pWaterTypes[temp_r0_2370]);
         temp_r3_2374->Draw(temp_r3_2374->unk50C4);
-        var_r4_2377 = pWaterTypes[temp_r0_2370];
+        var_r4_2377 = (MKFFTWaterType *) (pWaterTypes[temp_r0_2370]);
 loop_3:
         if (var_r4_2377 != NULL) {
             *var_r4_2377->unk50C4 = 0;
@@ -1292,9 +1289,7 @@ loop_3:
         goto loop_5;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKFFTWater::BuildVisibleTypesList() {
     s32 temp_r0_2431;
     s32 var_ctr_2408;
@@ -1308,7 +1303,7 @@ void MKFFTWater::BuildVisibleTypesList() {
     var_r8_2407 = 0;
     var_ctr_2408 = 0xA;
     do {
-        temp_r0_2410 = *(pWaterTypes + var_r7_2402);
+        temp_r0_2410 = (void *) (*(pWaterTypes + var_r7_2402));
         if (temp_r0_2410 != NULL) {
             var_r4_2413 = temp_r0_2410;
 loop_4:
@@ -1327,9 +1322,8 @@ loop_4:
         var_ctr_2408 -= 1;
     } while (var_ctr_2408 != 0);
 }
-#endif
 
-#if 0 // DRAFT: function call 'Str_Lower(signed char *)' does not match
+#if 0 // DRAFT: function call 'Str_Lower(signed char *)' does not match 'Str_Lower(const char *)'
 u8 MKFFTWater::WaterTypeExistsInMesh(const char *arg0) {
     s16 temp_r30_2457;
     s32 var_r29_2458;
@@ -1353,7 +1347,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKFFTWater::Init(const char *arg0) {
     MKIni sp8;
     MKIniLine *var_r28_2519;
@@ -1392,7 +1386,7 @@ loop_6:
     if (temp_r0_2554 != 0) {
         temp_r28_2557 = temp_r0_2554 * 0x5168;
         if (MKHeap::Current() != NULL) {
-            var_r3_2565 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2557, NULL, 0);
+            var_r3_2565 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2557, NULL, 0));
         } else {
             var_r3_2565 = malloc(temp_r28_2557);
         }
@@ -1400,7 +1394,7 @@ loop_6:
     }
     if (var_r29_2521 != 0) {
         if (MKHeap::Current() != NULL) {
-            var_r3_2582 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7740, NULL, 0);
+            var_r3_2582 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x7740, NULL, 0));
         } else {
             var_r3_2582 = malloc(0x7740);
         }

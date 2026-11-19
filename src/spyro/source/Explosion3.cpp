@@ -324,7 +324,6 @@ s32 Explosion3::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 Explosion3::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -361,13 +360,12 @@ f32 Explosion3::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk58 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_556, lit_557);
+    this->unk58 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_556, lit_557));
     temp_r4_569 = this->unk58;
     if (temp_r4_569 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_569, 0U);
     }
 }
-#endif
 
 void Explosion3::Init() {
     MKProp::Init();

@@ -67,7 +67,7 @@ extern UISystem *pSystem;
 extern UIStringTable strings;
 static u8 bAllowStartToQuit = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to 'bool (*)()'
 void PauseMenu_AutosaveScreen(const char *arg0) {
     void *temp_r3_41;
 
@@ -165,7 +165,7 @@ void PauseMenu_Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to 'bool (*)()'
 s32 PauseMenu_Update() {
     KDSynkerPlayer3 *temp_r3_279;
     u8 var_r29_275;
@@ -270,7 +270,7 @@ void PauseMenu_Deinit() {
     strings.Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'Init(UIObject *, unsigned char[20])' does not match 'UIObject::Init()'
 void PauseMenu_Init() {
     MCLoadCheckScreen *temp_r3_554;
     MCLoadCheckScreen *temp_r3_572;
@@ -292,7 +292,7 @@ void PauseMenu_Init() {
     temp_r31_510 = UIStringTable_SetCurrent(&strings);
     temp_r30_512 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
     if (MKHeap::Current() != NULL) {
-        var_r30_521 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_512, NULL, 0);
+        var_r30_521 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_512, NULL, 0));
     } else {
         var_r30_521 = malloc(temp_r30_512);
     }

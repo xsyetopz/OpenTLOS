@@ -12,12 +12,11 @@ Decompilation failure in function Str_CompareIgnoreCase__FPCcPCc:
 Cannot find branch target Str_CompareIgnoreCase__FPCcPCc
 */
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 u8 *Str_FindChar(const char *arg0, int arg1) {
     s8 *var_r3_0;
     u8 temp_r5_49;
 
-    var_r3_0 = arg0;
+    var_r3_0 = (signed char *) (arg0);
 loop_3:
     temp_r5_49 = (u8) *var_r3_0;
     if ((s8) temp_r5_49 == 0) {
@@ -29,9 +28,8 @@ loop_3:
     }
     return (u8 *) var_r3_0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: type mismatch 'signed char *' and 'const char *'
 s8 *Str_GetFilenameFromPath(const char *arg0) {
     s32 temp_r3_103;
     s8 *temp_r31_95;
@@ -39,7 +37,7 @@ s8 *Str_GetFilenameFromPath(const char *arg0) {
     u8 temp_r0_72;
     u8 temp_r0_81;
 
-    var_r4_65 = &arg0[strlen(arg0)];
+    var_r4_65 = (signed char *) (&arg0[strlen(arg0)]);
 loop_2:
     if (var_r4_65 != arg0) {
         temp_r0_72 = (u8) *var_r4_65;
@@ -52,7 +50,7 @@ loop_2:
     if (((s8) temp_r0_81 == 0x3A) || ((s8) temp_r0_81 == 0x2F) || ((s8) temp_r0_81 == 0x5C)) {
         var_r4_65 += 1;
     }
-    temp_r31_95 = &buffer + bufferIndex;
+    temp_r31_95 = (signed char *) (&buffer + bufferIndex);
     strcpy(temp_r31_95, var_r4_65);
     temp_r3_103 = bufferIndex + ((strlen(temp_r31_95) + 0x10) & 0xFFFFFFF0);
     bufferIndex = temp_r3_103;
@@ -73,14 +71,14 @@ void Str_Upper(const char *arg0) {
     strupr();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 s8 *Str_Dup(const char *arg0) {
     s32 temp_r3_167;
     s8 *temp_r30_160;
     u32 temp_r31_159;
 
     temp_r31_159 = strlen(arg0);
-    temp_r30_160 = &buffer + bufferIndex;
+    temp_r30_160 = (signed char *) (&buffer + bufferIndex);
     strcpy(temp_r30_160, arg0);
     temp_r3_167 = bufferIndex + ((temp_r31_159 + 0x10) & 0xFFFFFFF0);
     bufferIndex = temp_r3_167;
@@ -91,7 +89,6 @@ s8 *Str_Dup(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 u8 *Str_CopyString(const char *arg0, int arg1) {
     s32 temp_r3_209;
     s32 var_r8_189;
@@ -100,9 +97,9 @@ u8 *Str_CopyString(const char *arg0, int arg1) {
     u8 *var_r5_191;
     u8 temp_r6_201;
 
-    var_r3_0 = arg0;
+    var_r3_0 = (signed char *) (arg0);
     var_r8_189 = 0;
-    temp_r7_190 = &buffer + bufferIndex;
+    temp_r7_190 = (unsigned char *) (&buffer + bufferIndex);
     var_r5_191 = temp_r7_190;
 loop_2:
     if (var_r8_189 < arg1) {
@@ -123,7 +120,6 @@ loop_2:
     }
     return temp_r7_190;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 s32 Str_snPrintf(char *arg0, int arg1, const char *arg2, ... arg3) {

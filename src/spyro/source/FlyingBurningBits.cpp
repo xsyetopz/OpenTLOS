@@ -117,7 +117,7 @@ void FlyingBurningBits::Emit(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKVector3 *' and 'MKVector3 **'
 void FlyingBurningBits::Deinit() {
     MKVector3 **var_r31_111;
     MKVector3 **var_r3_112;
@@ -526,7 +526,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void FlyingBurningBits::Update() {
     f64 spB8;
     f64 spB0;
@@ -616,7 +616,6 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FlyingBurningBits::Init() {
     MKVector3 **temp_r3_884;
     MKVector3 **temp_r4_890;
@@ -625,7 +624,7 @@ void FlyingBurningBits::Init() {
     s32 var_ctr_882;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_869 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x378, NULL, 0);
+        var_r3_869 = (MKVector3 **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x378, NULL, 0));
     } else {
         var_r3_869 = malloc(0x378);
     }
@@ -644,6 +643,5 @@ void FlyingBurningBits::Init() {
     temp_r4_890 = this->unk0;
     this->unk0 = temp_r4_890 + 4;
     M2C_FIELD(temp_r4_890, MKVector3 ***, 4) = NULL;
-    this->unk4 = MKMaterial_Create("fx_353");
+    this->unk4 = (MKMaterial *) (MKMaterial_Create("fx_353"));
 }
-#endif

@@ -106,7 +106,6 @@ s32 EarthBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x32C);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EarthBoss::InterceptDamage() {
     s32 temp_r0_101;
     s32 temp_r4_68;
@@ -129,7 +128,7 @@ loop_13:
             if (var_r0_69 >= temp_r4_68) {
                 var_r0_69 -= temp_r4_68;
             }
-            var_r6_64 = this->unk9DC + (var_r0_69 * 0x38);
+            var_r6_64 = (void *) (this->unk9DC + (var_r0_69 * 0x38));
         }
         var_r5_78 = 0;
         M2C_FIELD(var_r6_64, u8 *, 0x34) = (u8) (M2C_FIELD(var_r6_64, u8 *, 0x34) & ~0x80);
@@ -146,7 +145,6 @@ loop_13:
         goto loop_13;
     }
 }
-#endif
 
 s32 EarthBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp10;
@@ -603,7 +601,7 @@ loop_3:
     if ((temp_f30_775 != 0.0f) && (*(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4)) != 0.0f) && (this->unkCEC > *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4))) && (temp_f30_775 <= *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4)))) {
         temp_f31_812 = 2.0f * M2C_FIELD(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x2FC);
         this->unkCF0 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x2FC), temp_f31_812);
-        this->unkCE8 = checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2B4);
+        this->unkCE8 = (signed char *) (checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2B4));
     } else {
         var_r29_781 += 1;
         var_r30_782 += 0x24;
@@ -624,7 +622,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void EarthBoss::UpdateCollisionItems() {
     f64 sp180;
     M2C_UNK sp150;
@@ -738,7 +736,7 @@ void EarthBoss::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'EarthBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'EarthBoss' to 'signed char *'
 void EarthBoss::TempDisableCollision(bool arg0) {
     s32 temp_r0_1109;
     s32 var_ctr_1107;
@@ -915,7 +913,7 @@ void EarthBoss::Draw() {
     Enemy::Draw();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 void EarthBoss::CheckAnimEvents() {
     s8 sp90;
     f64 sp88;
@@ -942,7 +940,7 @@ void EarthBoss::CheckAnimEvents() {
     void *temp_r3_1509;
 
     if (((MKAnimScript *) this->unk630)->CheckEvent(4) != 0) {
-        temp_f31_1466 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.025f, 0.2f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U);
+        temp_f31_1466 = (MKVector3 *) (((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.025f, 0.2f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U));
         sp7C = 0;
         MKVector(0.025f, 0.4f, 0.025f);
         sp48.operator*(500.0f);
@@ -1003,7 +1001,7 @@ void EarthBoss::SetDefaults() {
     RestartStage();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'EarthBoss *' to 'MKVector3 *'
 void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg2, float arg3, const MKVector3 &arg4) {
     f64 sp20;
     f64 sp18;
@@ -1028,7 +1026,7 @@ void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg
     M2C_FIELD(temp_r3_1646, f64 *, 0xB28) = (f64) M2C_FIELD(&arg4, f64 *, 0);
     M2C_FIELD(temp_r3_1646, f64 *, 0xB30) = (f64) M2C_FIELD(&arg4, f64 *, 8);
     if (MKHeap::Current() != NULL) {
-        var_r3_1663 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
+        var_r3_1663 = (MKCollisionInfo *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0));
     } else {
         var_r3_1663 = malloc(0x10);
     }
@@ -1147,7 +1145,7 @@ s32 EarthBoss::LoadLine(MKIniLine *arg0) {
     return var_r31_1913;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EarthBoss' to
+#if 0 // DRAFT: illegal implicit conversion from 'EarthBoss' to 'MKAnimScript *'
 void EarthBoss::Deinit() {
     MKAnimScript *temp_r30_1949;
     s32 var_r29_1945;
@@ -1250,7 +1248,7 @@ void EarthBossDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s32 EarthBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp36;
     s8 sp2C;
@@ -1296,7 +1294,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match 'strcpy(char *, const char *)'
 void EarthBossDescriptor::Init() {
     s32 var_r28_2276;
     s32 var_r30_2270;
@@ -1347,7 +1345,7 @@ s32 EarthBossArm::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'Message(Enemy *)' does not match
+#if 0 // DRAFT: function call 'Message(Enemy *)' does not match 'Enemy::Message(MKMessage *)'
 void EarthBossArm::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -1439,7 +1437,7 @@ void EarthBossArm::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
     u8 sp180;
     s32 sp17C;
@@ -1794,7 +1792,7 @@ void EarthBossArm::Extend() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void EarthBossArm::Aim(const MKVector3 &arg0) {
     Matrix spE0;
     Matrix spA0;
@@ -1849,7 +1847,7 @@ void EarthBossArm::Aim(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Animation' to
+#if 0 // DRAFT: illegal explicit conversion from 'Animation' to 'double'
 void EarthBossArm::Retract() {
     Animation sp28;
     f64 sp20;
@@ -1890,7 +1888,7 @@ void EarthBossArm::Retract() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void EarthBossArm::SetRetracted() {
     Matrix spD0;
     M2C_UNK spCC;
@@ -1972,7 +1970,7 @@ void EarthBossArm::SetRetracted() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKModel *'
 void EarthBossArm::UpdateExtensionBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -1998,7 +1996,7 @@ void EarthBossArm::UpdateExtensionBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKModel *'
 void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp250;
     Matrix sp210;
@@ -2281,7 +2279,7 @@ void EarthBossArm::UpdateExtension() {
             if ((M2C_FIELD(temp_r3_3926, f32 *, 0xD4) >= 1.0f) || ((f32) fabs(M2C_FIELD(temp_r3_3926, f32 *, 0xCC) - M2C_FIELD(temp_r3_3926, f32 *, 0xC8)) < 0.01f)) {
                 M2C_FIELD(temp_r3_3926, u8 *, 0xD8) = 1U;
                 if (((s32) this->unk38C == 4) && ((u8) this->unk390 != 0)) {
-                    temp_f31_3987 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U);
+                    temp_f31_3987 = (MKVector3 *) (((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U));
                     sp74 = 0;
                     MKVector(0.05f, 0.8f, 0.05f);
                     sp50.operator*(500.0f);
@@ -2313,7 +2311,7 @@ void EarthBossArm::UpdateExtension() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 void EarthBossArm::UpdateTarget() {
     u8 sp290;
     s32 sp28C;
@@ -3141,7 +3139,7 @@ void EarthBossArm::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void EarthBossArm::InitBoneData(int arg0, const char *arg1) {
     f64 sp8;
     s32 temp_r31_5421;
@@ -3188,7 +3186,7 @@ void EarthBossArm::Init2(EarthBoss *arg0) {
     SetRetracted();
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 EarthBossArm::LoadDone() {
     MKCollisionInfo *var_r3_5565;
     MKHeap *temp_r31_5547;
@@ -3196,9 +3194,9 @@ s32 EarthBossArm::LoadDone() {
     MKProp::LoadDone();
     temp_r31_5547 = ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName();
     this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), (s8 *) temp_r31_5547, 2, NULL);
-    this->unk8 = MKModel_GetWorldMatrix(this->unk4);
+    this->unk8 = (void *) (MKModel_GetWorldMatrix(this->unk4));
     if (MKHeap::Current() != NULL) {
-        var_r3_5565 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
+        var_r3_5565 = (MKCollisionInfo *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0));
     } else {
         var_r3_5565 = malloc(0x58);
     }
@@ -3210,7 +3208,6 @@ s32 EarthBossArm::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EarthBossArm::Init() {
     MKCollisionInfo *var_r3_5620;
 
@@ -3222,18 +3219,17 @@ void EarthBossArm::Init() {
     M2C_FIELD(this, f32 *, 0x37C) = 0.0f;
     M2C_FIELD(this, f32 *, 0x380) = 0.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_5620 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x140, NULL, 0);
+        var_r3_5620 = (MKCollisionInfo *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x140, NULL, 0));
     } else {
         var_r3_5620 = malloc(0x140);
     }
     this->unk36C = (MKAnimScript *) var_r3_5620;
     this->unk360 = 0x14;
-    this->unk468 = MKMaterial_Create("fx_HDRGLowOverlay");
+    this->unk468 = (MKMaterial *) (MKMaterial_Create("fx_HDRGLowOverlay"));
     this->unk450 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void (EarthBossArm::*)(MKDynamicBone *,
+#if 0 // DRAFT: illegal explicit conversion from 'void (EarthBossArm::*)(MKDynamicBone *, void *)const ' to 'void (*)(MKDynamicBone *, void *)'
 void EarthBossArmDescriptor::LoadDone() {
     s32 var_r29_5657;
     s8 temp_r30_5655;

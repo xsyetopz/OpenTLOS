@@ -228,7 +228,7 @@ block_26:
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'int *'
 u8 EnemyGoal_GroundAttackMode::AddGoal_StrafeIfObscuringCamera() {
     s32 sp8;
     Enemy *temp_r3_292;
@@ -353,7 +353,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_OnlyRangeAttack(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match 'Enemy::GetCollisionRadius()'
 u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -578,7 +578,7 @@ u8 EnemyGoal_GroundAttackMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, long)' does not match 'Enemy::GetCollisionRadius()'
 void EnemyGoal_GroundAttackMode::Activate() {
     f64 sp50;
     f64 sp48;
@@ -627,7 +627,7 @@ void EnemyGoal_GroundAttackMode::Activate() {
             goto block_5;
         }
         temp_r3_998 = this->unkC;
-        temp_r31_1004 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r31_1004 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_1006 = temp_r3_998->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_1007 = this->unkC;
         sp18 = M2C_FIELD(temp_r3_1007, f64 *, 0xD0) * temp_f1_1006;

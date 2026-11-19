@@ -29,7 +29,7 @@ void WaterTrickleEmitter::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to 'float'
 void *WaterTrickleEmitter::Update() {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;                                       /* compiler-managed */
@@ -66,7 +66,7 @@ void *WaterTrickleEmitter::Update() {
         sp68 = (f64) sp38;
         sp60 = (f64) sp30;
         if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-            var_r30_89 = &this->unk4C;
+            var_r30_89 = (long *) (&this->unk4C);
         }
         var_r29_104 = 0;
 loop_10:
@@ -109,7 +109,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
+#if 0 // DRAFT: illegal operand
 s32 WaterTrickleEmitter::LoadDone() {
     M2C_UNK *temp_r3_239;
     M2C_UNK *temp_r3_245;
@@ -120,9 +120,9 @@ s32 WaterTrickleEmitter::LoadDone() {
         this->unk4C.unk34 = 1e-45f;
     }
     ((Matrix *) &this->unkA0)->SetIdentity();
-    temp_r3_239 = &this->unkA0;
+    temp_r3_239 = (long *) (&this->unkA0);
     ((Matrix *) temp_r3_239)->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
-    temp_r3_245 = &this->unkA0;
+    temp_r3_245 = (long *) (&this->unkA0);
     ((Matrix *) temp_r3_245)->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
     this->unkA0.unk2C = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
     this->unkA0.unk30 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
@@ -132,7 +132,7 @@ s32 WaterTrickleEmitter::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
     if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinEmitRate", (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat("MaxEmitRate", (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt("NumPerEmit", (int *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat("MinEmitVel", &this->unk88, 0) != 0) || (arg0->LoadFloat("MaxEmitVel", &this->unk8C, 0) != 0) || (arg0->LoadFloat("Angle", &this->unkA0.unk3C, 0) != 0)) {
         return 1;
@@ -153,13 +153,13 @@ s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Matrix *'
 void WaterTrickleEmitter::Init() {
     M2C_UNK *temp_r3_391;
 
     MKProp::Init();
     M2C_FIELD(this, s8 *, 0x94) = 0;
-    temp_r3_391 = &this->unkA0;
+    temp_r3_391 = (long *) (&this->unkA0);
     this->unk4C.unk2C = 0.0f;
     this->unk4C.unk30 = 0.0f;
     this->unk84 = 0.0f;

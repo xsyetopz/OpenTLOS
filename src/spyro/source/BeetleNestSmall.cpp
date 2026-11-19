@@ -193,7 +193,7 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match 'checked_cast<...>(T1 *)'
 s32 BeetleNestSmall::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -246,19 +246,15 @@ void BeetleNestSmall::Init() {
     ShatterWaypointSpawn::Init();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void BeetleNestSmallDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk170 = ((MKAnimScript *) this->unk34)->GetAnim("idle");
-    this->unk174 = ((MKAnimScript *) this->unk34)->GetAnim("spawn");
+    this->unk170 = (long) (((MKAnimScript *) this->unk34)->GetAnim("idle"));
+    this->unk174 = (long) (((MKAnimScript *) this->unk34)->GetAnim("spawn"));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void BeetleNestSmallDescriptor::Init() {
     ShatterWaypointSpawnDescriptor::Init();
     this->unk174 = 0;
     this->unk170 = 0;
-    this->unk178 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
+    this->unk178 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX")));
 }
-#endif

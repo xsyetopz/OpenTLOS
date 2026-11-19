@@ -357,7 +357,7 @@ void Ball::SetParentTree(SnowballTree *arg0, int arg1, MKVector3 &arg2, float ar
     this->unk2A0 = arg3;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal type
 void Ball::SetGroup(int arg0) {
     s32 temp_r0_547;
     s32 temp_r5_546;
@@ -383,7 +383,7 @@ void Ball::SetGroup(int arg0) {
         var_ctr_558 = var_r7_545 - temp_r8_549;
         if (temp_r8_549 < var_r7_545) {
 loop_4:
-            temp_r5_564 = &groups[this->unk2A8];
+            temp_r5_564 = (_struct_groups_0x28 *) (&groups[this->unk2A8]);
             if ((u32) *(temp_r5_564 + var_r4_557) == 0U) {
                 *(temp_r5_564 + var_r4_557) = this;
                 return;
@@ -400,7 +400,7 @@ loop_4:
     var_r4_578 = 0;
     var_ctr_579 = 0xA;
 loop_9:
-    temp_r5_583 = &groups[this->unk2A8];
+    temp_r5_583 = (_struct_groups_0x28 *) (&groups[this->unk2A8]);
     if ((u32) *(temp_r5_583 + var_r4_578) == this) {
         *(temp_r5_583 + var_r4_578) = 0;
         return;
@@ -414,7 +414,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
+#if 0 // DRAFT: undefined identifier 'groups'
 void Ball::FindClosestGroup() {
     f64 sp30;
     f64 sp28;
@@ -442,7 +442,7 @@ void Ball::FindClosestGroup() {
         var_r6_611 = 0;
         var_ctr_612 = 0xA;
 loop_2:
-        temp_r7_614 = *(groups + var_r5_607 + var_r6_611);
+        temp_r7_614 = (void *) (*(groups + var_r5_607 + var_r6_611));
         if ((temp_r7_614 != NULL) && (temp_r7_614 != this)) {
             temp_r7_619 = M2C_FIELD(temp_r7_614, void **, 8);
             temp_f1_620 = M2C_FIELD(temp_r7_619, f64 *, 0x30);
@@ -498,14 +498,14 @@ u8 Ball::MeleeHit(MKProp *arg0, float arg1, bool &arg2) {
             temp_r31_709 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x104), temp_r31_709, 0U, -1, 0.0f, 0U);
         }
-        &arg2 = sp1C;
+        &arg2 = (bool *) (sp1C);
         return sp1D;
     }
     return 0U;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void Ball::SmashHit(MKProp *arg0) {
     s8 sp56;
     s8 sp55;
@@ -680,7 +680,7 @@ void Ball::SetState(Ball::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Ball::State'
 void Ball::Fire(MKVector3 &arg0) {
     this->unkF0 = M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
@@ -1145,7 +1145,7 @@ void Ball::CheckForHero() {
                     } else {
                         var_f29_1787 = 1.0f;
                     }
-                    temp_r4_1802 = M2C_FIELD(gb.unk0->GetProp(), s32 *, 8) + 0x20;
+                    temp_r4_1802 = (void *) (M2C_FIELD(gb.unk0->GetProp(), s32 *, 8) + 0x20);
                     temp_f0_1804 = M2C_FIELD(temp_r4_1802, f64 *, 0) * (f64) temp_f28_1512;
                     sp68 = temp_f0_1804;
                     temp_f1_1810 = M2C_FIELD(temp_r4_1802, f32 *, 8) * temp_f28_1512;
@@ -1500,7 +1500,7 @@ void Ball::UpdateOrientation() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *' Too many errors printed, aborting program
 void Ball::UpdateMeltingGrowing() {
     f64 sp140;
     f64 sp138;
@@ -1671,7 +1671,7 @@ void Ball::UpdateMeltingGrowing() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float,
+#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float, unsigned char *, float)' does not match 'Tools_PushOut(MKCollisionResult *, MKVector3 
 void Ball::PushOutOfThings() {
     MKCollisionResult sp30;
     u8 sp10;
@@ -1740,7 +1740,7 @@ void Ball::PushOutOfThings() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void Ball::UpdatePhysics() {
     u8 sp540;
     s32 sp53C;
@@ -3067,7 +3067,7 @@ void *Ball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Ball::State'
 void Ball::Reset() {
     f64 sp10;
     f64 sp8;
@@ -3149,7 +3149,7 @@ void Ball::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector3 &'
 void Ball::SetWorldMatrix(const Matrix *arg0) {
     f64 temp_f1_5315;
 
@@ -3163,7 +3163,7 @@ void Ball::SetWorldMatrix(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Ball::State'
 void Ball::DropFromTree() {
     this->unk2AC |= 0x80;
     SetState((Ball::State) 0);
@@ -3315,12 +3315,10 @@ void Ball::Init() {
     this->unk2A0 = 200.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CrashMistPS *' to
 void BallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unk120 = checked_cast<CrashMistPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CrashMistPS"));
+    this->unk120 = (long) (checked_cast<CrashMistPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CrashMistPS")));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkE4'
 s32 BallDescriptor::LoadLine(MKIniLine *arg0) {

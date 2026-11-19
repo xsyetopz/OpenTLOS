@@ -68,7 +68,7 @@ extern s8 gAssertBool;
 extern M2C_UNK gEmptyPtrListDL;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'cameraCollPushOut' redeclared
+#if 0 // DRAFT: identifier 'cameraCollPushOut' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 cameraCollPushOut = 2;
 #endif
 
@@ -223,7 +223,7 @@ void KDCamera::GetIdealSource(const MKVector3 &arg0, const MKVector3 &arg1, MKVe
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to 'float'
 f32 KDCamera::GetUpdatedSourceY(const MKVector3 &arg0, const MKVector3 &arg1, int arg2) {
     return M2C_BITWISE(f32, this->unk4);
 }
@@ -312,7 +312,7 @@ void KDCamera::GetUpdatedSource(const MKVector3 &arg0, const MKVector3 &arg1, co
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDCamera::GetUpdatedTarget() {
     f64 spC0;
     f64 spB8;
@@ -458,7 +458,7 @@ loop_13:
             }
         }
         if (var_r5_616 == 0) {
-            temp_r6_639 = ((u8 *) this->unk210) - 4;
+            temp_r6_639 = (void **) (((u8 *) this->unk210) - 4);
             this->unk210 = temp_r6_639;
             temp_r6_641 = *temp_r6_639;
             M2C_FIELD(temp_r6_641, u32 *, 0) = (u32) M2C_FIELD(temp_r3_614, u32 *, 8);
@@ -553,7 +553,7 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void KDCamera::SetCameraCollisionInfoItems(bool arg0) {
     u8 temp_r5_972;
     void *temp_r6_1009;
@@ -915,7 +915,7 @@ void KDCamera::UpdateStoredCollisionData(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void KDCamera::CollisionObjectUpdate(const MKVector3 &arg0) {
     f64 sp58;
     f64 sp50;
@@ -1030,7 +1030,7 @@ void KDCamera::CollisionObjectUpdate() {
     CollisionObjectUpdate(*((MKVector3 *) &sp8));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector3 &'
 void KDCamera::CollisionUpdate() {
     f64 sp30;
     f64 sp28;
@@ -1207,7 +1207,7 @@ u8 KDCamera::ProcessCameraStateRequest(int arg0) {
     this->unk15C->HandleStateMessage(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDCameraStateChangeRequest' to
+#if 0 // DRAFT: illegal implicit conversion from 'KDCameraStateChangeRequest' to 'int'
 void KDCamera::UpdateCameraStateRequests() {
     KDCameraStateChangeRequest *temp_r5_2344;
     s32 var_ctr_2353;
@@ -1289,7 +1289,7 @@ u8 KDCamera::TestUserStateFlag(unsigned int arg0) {
     return (arg0 & (this->unk158 | M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC))) != 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u32 KDCamera::CameraEffectsUpdate() {
     f64 sp60;
     f64 sp58;
@@ -1364,7 +1364,7 @@ u32 KDCamera::CameraEffectsUpdate() {
 
     var_r3_2512 = TestUserStateFlag(0x100U);
     if (var_r3_2512 == 0) {
-        var_r3_2512 = EventCamera_GetCurrent();
+        var_r3_2512 = (unsigned char) (EventCamera_GetCurrent());
         if (var_r3_2512 == 0) {
             M2C_FIELD(this, f64 *, 0x1C8) = (f64) (M2C_FIELD(this, f64 *, 0x1C8) * 1.583207797e-314);
             this->unk1D0 *= -0.5f;
@@ -2450,7 +2450,7 @@ void KDCamera::UpdateLTW() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDCamera::SetLTW(const Matrix &arg0) {
     f64 sp40;
     f64 sp38;
@@ -2866,7 +2866,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: undefined identifier 'unk4' Too many errors printed, aborting program
 void KDCamera::Init() {
     f64 sp70;
     f64 sp68;
@@ -3051,7 +3051,7 @@ void KDCameraDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[20], long *)'
+#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[20], long *)' does not match 'KDProp_LoadMaterialID(MKIniLine *, const char *, int *)'
 s32 KDCameraDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5742;
 

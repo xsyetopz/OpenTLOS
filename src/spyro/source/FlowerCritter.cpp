@@ -97,7 +97,7 @@ loop_6:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'FlowerCritterDescriptor' to 'void *'
 void *FlowerCritter::Update() {
     s8 sp278;
     s32 sp274;
@@ -209,7 +209,7 @@ void *FlowerCritter::Update() {
     var_r28_192 = 0;
 loop_26:
     if (var_r31_191 < (s32) this->unk90) {
-        temp_r30_197 = ((u8 *) this->unk170) + var_r28_192;
+        temp_r30_197 = (Matrix *) (((u8 *) this->unk170) + var_r28_192);
         M2C_FIELD(temp_r30_197, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_197, f32 *, 0x64) - gUpdateTimeDelta);
         temp_r0_201 = M2C_FIELD(temp_r30_197, s32 *, 0x60);
         if (temp_r0_201 < 3) {
@@ -380,7 +380,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'FlowerCritterDescriptor' to 'void *'
 s32 FlowerCritter::LoadDone() {
     s8 sp1C8;
     s32 sp1C4;
@@ -446,7 +446,7 @@ s32 FlowerCritter::LoadDone() {
     var_r29_647 = 0;
 loop_13:
     if (var_r31_645 < (s32) this->unk90) {
-        temp_r26_657 = ((u8 *) this->unk170) + var_r29_647;
+        temp_r26_657 = (Matrix *) (((u8 *) this->unk170) + var_r29_647);
         if ((u8) this->unk174 != 0) {
             M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 2);
             M2C_FIELD(temp_r26_657, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
@@ -553,7 +553,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 FlowerCritter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_895;
 

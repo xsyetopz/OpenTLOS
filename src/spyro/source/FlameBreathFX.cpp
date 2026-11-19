@@ -93,7 +93,7 @@ void FlameBreathFX::ResetFury() {
     this->unk264->ResetFury();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 void FlameBreathFX::GetAttack1UpgradeVariables(int arg0, float &arg1, float &arg2, float &arg3) {
     switch (arg0) {                                 /* irregular */
     case 0:
@@ -597,7 +597,7 @@ loop_57:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
+#if 0 // DRAFT: illegal type
 s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, const int &arg5, bool arg6, bool arg7) {
     f64 sp9E8;
     f64 sp9E0;
@@ -1071,7 +1071,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     void *temp_r4_942;
     void *var_r3_2078;
 
-    this->unkB8 = &arg5;
+    this->unkB8 = (long) (&arg5);
     temp_r0_919 = this->unkB8;
     switch (temp_r0_919) {                          /* switch 1; irregular */
     case 0:                                         /* switch 1 */
@@ -1858,7 +1858,7 @@ void FlameBreathFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void *FlameBreathFX::Update() {
     f64 sp300;
     f64 sp2F8;
@@ -2311,7 +2311,7 @@ void *FlameBreathFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to 'signed char *'
 f32 FlameBreathFX::Resolve() {
     f64 spA0;
     f64 sp98;
@@ -2359,7 +2359,7 @@ f32 FlameBreathFX::Resolve() {
     sp90 = (f64) sp40;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    this->unkA8 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 300.0f, lit_734, lit_735);
+    this->unkA8 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 300.0f, lit_734, lit_735));
     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkA8, 0U);
     sp20 = 0.0f;
     sp8 = 1.0f;
@@ -2372,16 +2372,16 @@ f32 FlameBreathFX::Resolve() {
     sp60 = (f64) sp10;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
-    this->unkDC = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 4.0f, lit_737, lit_738);
+    this->unkDC = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 4.0f, lit_737, lit_738));
     temp_r4_3583 = this->unkDC;
     if (temp_r4_3583 != NULL) {
         temp_r4_3583->unk31 &= ~0x40;
     }
-    this->unk26C = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "FireBombFX"));
+    this->unk26C = (signed char *) (checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "FireBombFX")));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FlameBreathFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -2411,7 +2411,7 @@ void FlameBreathFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk138 = 2.0f;
-    this->unkE0 = MKMaterial_Create("fx_303");
+    this->unkE0 = (MKMaterial *) (MKMaterial_Create("fx_303"));
     this->unk144 = 0.0f;
     this->unk148.Init("fx_357", "fx_357Glow", "fx_358", "fx_358Glow");
     this->unk260 = checked_cast<FuryFXFire *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire"));

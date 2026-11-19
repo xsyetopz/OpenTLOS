@@ -31,7 +31,7 @@ extern s8 MKMat_MK2_Standard_CaptureTextureData;
 extern s8 *Texture_pTextures;
 extern u8 attemptToLockTextureInCache;
 extern M2C_UNK gDisplay;
-#if 0 // DRAFT: identifier 'Texture_filterType' redeclared
+#if 0 // DRAFT: identifier 'Texture_filterType' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 Texture_filterType = 2;
 #endif
 #if 0 // DRAFT: undefined identifier 'saved_reg_r31'
@@ -63,7 +63,7 @@ void Texture::ReloadGuts(float arg0) {
             this->unk34 = spC - 0x20;
             if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
                 temp_r29_55 = (this->unk34 + 0x1F) & 0xFFFFFFE0;
-                temp_r3_57 = RequestPreloadedTextureRegion(temp_r29_55, (unsigned int *) &sp8);
+                temp_r3_57 = (_GXTexRegion *) (RequestPreloadedTextureRegion(temp_r29_55, (unsigned int *) &sp8));
                 if (temp_r3_57 != NULL) {
                     this->unk48 = temp_r3_57;
                     this->unk38 = 0;
@@ -154,7 +154,7 @@ block_35:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
 s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) {
     MKHeap *var_r31_280;
     s8 *temp_r4_300;
@@ -165,7 +165,7 @@ s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) 
         var_r31_280->unk2C += 1;
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_294 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
+            var_r3_294 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0));
         } else {
             var_r3_294 = malloc(0xA0);
         }
@@ -299,14 +299,14 @@ void Texture::CaptureDrawBuffer(float arg0, float arg1, float arg2, float arg3) 
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void Texture::CreateRenderTarget(const char *arg0, int arg1, int arg2, int arg3) {
     s32 var_r30_749;
     s8 *var_r3_768;
 
     var_r30_749 = arg1;
     if (stricmp(&lit_stringBase0, this, &lit_stringBase0) == 0) {
-        var_r3_768 = CreateFromRawData(&MKMat_MK2_Standard_CaptureTextureData, (void *) arg2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x10) / 2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x14) / 2, 0, M2C_ERROR(/* Read from unset register $r9 */));
+        var_r3_768 = (const char *) (CreateFromRawData(&MKMat_MK2_Standard_CaptureTextureData, (void *) arg2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x10) / 2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x14) / 2, 0, M2C_ERROR(/* Read from unset register $r9 */)));
     } else {
         if (var_r30_749 > 0x80) {
             var_r30_749 = 0x80;
@@ -317,7 +317,7 @@ void Texture::CreateRenderTarget(const char *arg0, int arg1, int arg2, int arg3)
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
 s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3, int arg4, int arg5) {
     MKHeap *temp_r6_890;
     MKHeap *var_r31_805;
@@ -333,13 +333,13 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
     s8 *var_r3_963;
     s8 *var_r3_998;
 
-    var_r30_800 = arg0;
+    var_r30_800 = (signed char *) (arg0);
     var_r31_805 = Find(arg0);
     if (var_r31_805 != NULL) {
         var_r31_805->unk2C += 1;
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_819 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
+            var_r3_819 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0));
         } else {
             var_r3_819 = malloc(0xA0);
         }
@@ -363,7 +363,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         case 0x0:
             if (var_r30_800 == NULL) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_877 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 4, NULL, 0);
+                    var_r3_877 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 4, NULL, 0));
                 } else {
                     var_r3_877 = malloc(arg2 * arg3 * 4);
                 }
@@ -387,7 +387,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         case 0x4A:
             if (var_r30_800 == NULL) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_927 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                    var_r3_927 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0));
                 } else {
                     var_r3_927 = malloc(arg2 * arg3 * 2);
                 }
@@ -399,7 +399,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         case 0x4B:
             if (var_r30_800 == NULL) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_963 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                    var_r3_963 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0));
                 } else {
                     var_r3_963 = malloc(arg2 * arg3 * 2);
                 }
@@ -411,7 +411,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         case 0x40:
             if (var_r30_800 == NULL) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_998 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3, NULL, 0);
+                    var_r3_998 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3, NULL, 0));
                 } else {
                     var_r3_998 = malloc(arg2 * arg3);
                 }
@@ -423,7 +423,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         case 0x4C:
             if (var_r30_800 == NULL) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_1033 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                    var_r3_1033 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0));
                 } else {
                     var_r3_1033 = malloc(arg2 * arg3 * 2);
                 }
@@ -453,7 +453,7 @@ void Texture::Use() {
     GXLoadTexObj(&this->unk60, GX_TEXMAP0);
 }
 
-#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
 MKHeap *Texture::Find(const char *arg0) {
     s8 *var_r30_1114;
     u8 *temp_r31_1115;
@@ -472,7 +472,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Texture *' and 'signed char *'
 void Texture::Destroy() {
     GXTexRegion *temp_r3_1155;
     s32 temp_r0_1152;
@@ -507,7 +507,7 @@ void Texture::Destroy() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 s8 *Texture::Create(const char *arg0, float arg1) {
     MKHeap *var_r31_1215;
     s8 *temp_r3_1241;
@@ -517,9 +517,9 @@ s8 *Texture::Create(const char *arg0, float arg1) {
         var_r31_1215->unk2C += 1;
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r31_1215 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
+            var_r31_1215 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0));
         } else {
-            var_r31_1215 = malloc(0xA0);
+            var_r31_1215 = (MKHeap *) (malloc(0xA0));
         }
         memset(var_r31_1215, 0, 0xA0U);
         temp_r3_1241 = Texture_pTextures;

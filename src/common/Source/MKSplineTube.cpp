@@ -4,10 +4,10 @@
 f64 log(f64);                                       /* extern */
 f64 pow(f32, f32);                                  /* extern */
 extern f32 distScale;
-#if 0 // DRAFT: identifier 'spacing' redeclared
+#if 0 // DRAFT: identifier 'spacing' redeclared was declared as: 'unsigned char[512]' now declared as: 'long'
 extern M2C_UNK spacing;
 #endif
-#if 0 // DRAFT: identifier 'posMixer' redeclared
+#if 0 // DRAFT: identifier 'posMixer' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 static M2C_UNK posMixer;                            /* unable to generate initializer: unknown type */
 static M2C_UNK velMixer;                            /* unable to generate initializer: unknown type */
 

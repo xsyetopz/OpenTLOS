@@ -98,7 +98,7 @@ static f32 CYNDER_HEAD_COLLISION_RADIUS = 150.0f;
 static f32 CYNDER_MAX_Z_TIME = 1.2f;
 static f32 CYNDER_MAX_BITE_SIDE_OFFSET = 1000.0f;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'const MKVector3 *'
 void SpeedwayCynder::UpdateSound() {
     s32 sp8;
     f32 temp_f1_90;
@@ -594,7 +594,7 @@ void SpeedwayCynder::SetAnim(int arg0, float arg1, unsigned int arg2) {
     SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x260), arg1, arg2);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'SpeedwayCynder::State'
 void SpeedwayCynder::PostLTWUpdate() {
     f32 temp_f0_1064;
     f32 var_f1_1054;
@@ -1186,7 +1186,7 @@ void SpeedwayCynder::GlideUpdate() {
     GlideTransition();
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void SpeedwayCynder::GlideExit() {
     this->unk384->End();
     this->unk3F8 = 0;
@@ -1292,7 +1292,7 @@ void SpeedwayCynder::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector
 void *SpeedwayCynder::Update() {
     KDProp::Update();
     UpdateLookAtNodes();
@@ -1302,16 +1302,16 @@ void *SpeedwayCynder::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[15]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[15]' to 'void *'
 f32 SpeedwayCynder::Resolve() {
     MKProp::Resolve();
-    this->unk380 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "CynderFireBomb"));
-    this->unk378 = checked_cast<SpeedWay *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, void *), 0x60)(gMK, "SpeedWay"));
-    this->unk37C = checked_cast<SpeedWaySpyro *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, void *), 0x60)(gMK, "SpeedWaySpyro"));
+    this->unk380 = (void *) (checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "CynderFireBomb")));
+    this->unk378 = (void *) (checked_cast<SpeedWay *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, void *), 0x60)(gMK, "SpeedWay")));
+    this->unk37C = (void *) (checked_cast<SpeedWaySpyro *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, void *), 0x60)(gMK, "SpeedWaySpyro")));
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'SpeedwayCynder::State'
 void SpeedwayCynder::Reset() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -1346,7 +1346,7 @@ void SpeedwayCynder::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 s32 SpeedwayCynder::LoadDone() {
     s32 temp_r0_2710;
     s32 temp_r0_2715;
@@ -1457,7 +1457,7 @@ void SpeedwayCynder::Init() {
     } while (var_r29_2784 < 8);
     ((Matrix *) &this->unk2E0)->SetIdentity();
     if (MKHeap::Current() != NULL) {
-        var_r3_2810 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0);
+        var_r3_2810 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0));
     } else {
         var_r3_2810 = malloc(0x30);
     }

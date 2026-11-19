@@ -157,7 +157,7 @@ void SpyroJumpState::DoubleJumpEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Spyro *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Spyro *' to 'double'
 void SpyroJumpState::JumpCommonUpdate() {
     SpyroJumpState sp10;
     f32 sp8;
@@ -369,7 +369,7 @@ void SpyroJumpState::JumpCycleExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroJumpState::JumpCycleEnter() {
     this->unk10->SetAnim(M2C_FIELD(this->unk60, u32 *, 4), 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
@@ -442,7 +442,7 @@ void SpyroJumpState::JumpStartExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroJumpState::JumpStartEnter() {
     M2C_FIELD(this, s8 *, 0x2C) = 0;
     M2C_FIELD(this, s8 *, 0x2D) = 0;

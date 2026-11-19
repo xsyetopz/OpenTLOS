@@ -139,7 +139,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
@@ -311,7 +311,7 @@ void Cynder::UpdateFuryPowerUp() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
     Corona *temp_r3_490;
     Corona *temp_r3_500;
@@ -351,7 +351,7 @@ void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'fmod(float, double)' does not match
+#if 0 // DRAFT: function call 'fmod(float, double)' does not match 'fmod(float, double, double, float)'
 void Cynder::CalcLandingFlightPathData() {
     MKCollisionResult sp270;
     Matrix sp230;
@@ -574,7 +574,7 @@ void Cynder::CalcLandingFlightPathData() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'fmod(float, double)' does not match
+#if 0 // DRAFT: function call 'fmod(float, double)' does not match 'fmod(float, double, double, float)'
 void Cynder::CalcFlightPathData2() {
     f64 sp2A0;
     f64 sp298;
@@ -1497,7 +1497,7 @@ void Cynder::Despawn(bool arg0) {
     UpdateEnemyHud();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDSplinePathSegmentProp *' to
+#if 0 // DRAFT: function call 'SetupRegion(long)' does not match 'EnemyRegion::SetupRegion(KDLocalPathSegment *)' 'EnemyRegion::SetupRegion(const MKVector3 &, float)'
 s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f64 sp40;
     f64 sp38;
@@ -1525,9 +1525,9 @@ s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     this->unkF7C = NULL;
     temp_r3_2602 = this->unkF78;
     if (temp_r3_2602 != NULL) {
-        temp_r3_2606 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_2602->PropResolver_Resolve((s32) arg0));
+        temp_r3_2606 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_2602->PropResolver_Resolve((s32) arg0)));
         if (temp_r3_2606 != 0U) {
-            this->unkF7C = temp_r3_2606 + 0x4C;
+            this->unkF7C = (void *) (temp_r3_2606 + 0x4C);
         }
         var_r29_2613 = 0;
         this->unkCC8 = 0.0f;
@@ -1539,7 +1539,7 @@ loop_6:
                 sp18 = 0.0f;
                 sp1C = 800.0f;
                 sp20 = 0.0f;
-                temp_r4_2629 = M2C_FIELD(this->unkF7C, s32 *, 0x3C) + var_r29_2613;
+                temp_r4_2629 = (void *) (M2C_FIELD(this->unkF7C, s32 *, 0x3C) + var_r29_2613);
                 sp28 = (f64) sp18;
                 sp30 = (f64) sp20;
                 temp_f0_2635 = M2C_FIELD(temp_r4_2629, f64 *, 0) + sp28;
@@ -1558,7 +1558,7 @@ loop_6:
         M2C_FIELD(&gb, Cynder **, 0x360) = this;
         UpdateEnemyHud();
         if ((u8) this->unkD01 == 0) {
-            temp_r3_2672 = checked_cast<KDLocalPathSegmentProp *, MKProp>(this->unkDA0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+            temp_r3_2672 = (long) (checked_cast<KDLocalPathSegmentProp *, MKProp>(this->unkDA0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
             if (temp_r3_2672 != 0) {
                 this->unk838.SetupRegion(temp_r3_2672 + 0x4C);
             }
@@ -1591,7 +1591,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float *' to
+#if 0 // DRAFT: illegal implicit conversion from 'float *' to 'const Matrix *'
 void Cynder::Message(MKMessage *arg0) {
     f32 spFC;
     f32 spF8;
@@ -2184,7 +2184,7 @@ void Cynder::CalculateDiveTrajectory() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Cynder::CheckAnimEvents() {
     MKCollisionResult sp108;
     MKVector3 spF8;
@@ -2308,7 +2308,7 @@ void Cynder::UpdatePhrasesAndSounds() {
 loop_3:
     if ((temp_f31_3866 != 0.0f) && (*(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4)) != 0.0f) && (this->unkD64 > *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4))) && (temp_f31_3866 <= *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4)))) {
         this->unkD68 = M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3B4);
-        this->unkD60 = checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2B4);
+        this->unkD60 = (signed char *) (checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2B4));
     } else {
         var_r29_3872 += 1;
         var_r30_3873 += 0x24;
@@ -2333,7 +2333,7 @@ loop_3:
             if (M2C_FIELD(*temp_r3_3992, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3992, 0xAC) == 0) {
                 temp_r3_4000 = this->unkA40;
                 if (M2C_FIELD(*temp_r3_4000, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_4000, 0xC2) == 0) {
-                    temp_r30_4010 = ((u8 *) this->unk8) + 0x30;
+                    temp_r30_4010 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
                     this->unkD5C = KDSound_Play3d(M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x3B0), temp_r30_4010, 0U, -1, 0.0f, 0U);
                 }
             }
@@ -2901,7 +2901,7 @@ void Cynder::SetDefaults() {
     this->unkF14 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Cynder::UpdateCollisionItems() {
     f64 sp60;
     f64 sp58;
@@ -2937,7 +2937,7 @@ void Cynder::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does not match 'Enemy::GetCollisionRadius()'
 void Cynder::SetupCollision() {
     f64 sp40;
     f64 sp38;
@@ -2973,7 +2973,7 @@ void Cynder::SetupCollision() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 f32 Cynder::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -3002,7 +3002,7 @@ f32 Cynder::Resolve() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unkF2C = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 1.0f, lit_897, lit_898);
+    this->unkF2C = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 1.0f, lit_897, lit_898));
     temp_r4_5341 = this->unkF2C;
     if (temp_r4_5341 != NULL) {
         temp_r4_5341->unk31 &= ~0x40;
@@ -3015,7 +3015,7 @@ f32 Cynder::Resolve() {
         }
         var_r30_5350 += 1;
     } while (var_r30_5350 < 8);
-    this->unkCF0 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "CynderFireBomb"));
+    this->unkCF0 = (signed char *) (checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "CynderFireBomb")));
 }
 #endif
 
@@ -3084,7 +3084,7 @@ s32 Cynder::LoadDone() {
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
-    this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthShockwave"));
+    this->unkCE8 = (long) (checked_cast<EarthShockwave *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthShockwave")));
     this->unkCEC = checked_cast<CynderBreathFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CynderBreathFX"));
     this->unkCEC->SetHitList((MKPtrList<MKProp> *) &this->unkA1C);
     this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
@@ -3149,7 +3149,7 @@ s32 Cynder::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Cynder::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5865;
     s32 temp_ret_5865;
@@ -3163,7 +3163,7 @@ s32 Cynder::LoadLine(MKIniLine *arg0) {
     var_r27_5873 = 0;
     var_r29_5875 = 0;
 loop_27:
-    temp_ret_5886 = arg0->LoadInt(Str_Printf("iRegionID_0%d", var_r27_5873 + 1, var_f1_5865), this + (var_r29_5875 + 0xDA4), 0);
+    temp_ret_5886 = (const char *) (arg0->LoadInt(Str_Printf("iRegionID_0%d", var_r27_5873 + 1, var_f1_5865), this + (var_r29_5875 + 0xDA4), 0));
     var_f1_5865 = M2C_BITWISE(f32, temp_ret_5886);
     if (temp_ret_5886 != 0) {
         return 1;
@@ -3315,7 +3315,7 @@ void CynderDescriptor::LoadDone() {
         var_ctr_6170 -= 1;
     } while (var_ctr_6170 != 0);
     if (MKHeap::Current() != NULL) {
-        var_r3_6185 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
+        var_r3_6185 = (unsigned short *) (((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0));
     } else {
         var_r3_6185 = malloc(4);
     }
@@ -3379,7 +3379,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match 'strcpy(char *, const char *)'
 void CynderDescriptor::Init() {
     s32 var_r28_6409;
     s32 var_r30_6403;

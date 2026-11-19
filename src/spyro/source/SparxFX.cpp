@@ -52,7 +52,7 @@ void SparxFX::SetColor(const MKVector4 &arg0) {
     this->unk80 = this->unkE0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3, Matrix *arg4, bool arg5) {
     Matrix sp2E0;
     Matrix sp2A0;
@@ -400,7 +400,7 @@ void SparxFX::Enable() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
     f32 temp_f31_755;
 
@@ -410,7 +410,7 @@ void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void SparxFX::Draw() {
     Matrix sp70;
     M2C_UNK sp6C;
@@ -747,14 +747,14 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does
+#if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;
 
     MKProp::LoadDone();
     this->unk4 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
     if (MKHeap::Current() != NULL) {
-        var_r3_1491 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
+        var_r3_1491 = (MKAnimScript *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0));
     } else {
         var_r3_1491 = malloc(0x58);
     }
@@ -765,7 +765,6 @@ s32 SparxFX::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 SparxFX::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -790,15 +789,13 @@ f32 SparxFX::Resolve() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unkD0 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), *((MKVector4 *) &this->unk68), 700.0f, lit_537, lit_538);
+    this->unkD0 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), *((MKVector4 *) &this->unk68), 700.0f, lit_537, lit_538));
     temp_r4_1560 = this->unkD0;
     if (temp_r4_1560 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1560, 1U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void SparxFX::Init() {
     f64 sp40;
     f64 sp38;
@@ -819,8 +816,8 @@ void SparxFX::Init() {
     this->unk58 = 0.0f;
     this->unk88 = 0.0f;
     this->unk8C |= 0x80;
-    this->unk90 = MKMaterial_Create("fx_317");
-    this->unk94 = MKMaterial_Create("fx_386");
+    this->unk90 = (MKMaterial *) (MKMaterial_Create("fx_317"));
+    this->unk94 = (MKMaterial *) (MKMaterial_Create("fx_386"));
     this->unkA8 = 0.0f;
     this->unkAC = 0.0f;
     this->unkB0 = 0.7853982f;
@@ -852,4 +849,3 @@ void SparxFX::Init() {
     this->unkC8 = 1.0f;
     this->unkCC = 1.0f;
 }
-#endif

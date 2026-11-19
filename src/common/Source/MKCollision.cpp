@@ -19,17 +19,17 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'defaultCollisionMax' redeclared
+#if 0 // DRAFT: identifier 'defaultCollisionMax' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 M2C_UNK free(MKCollisionManager **);                /* extern */
 MKCollisionManager **malloc(M2C_UNK);               /* extern */
 extern M2C_UNK defaultCollisionMax;
 #endif
-#if 0 // DRAFT: identifier 'defaultCollisionMin' redeclared
+#if 0 // DRAFT: identifier 'defaultCollisionMin' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK defaultCollisionMin;
 #endif
 extern M2C_UNK gEmptyPtrList;
 extern MKCollisionManager **managers;
-#if 0 // DRAFT: illegal implicit conversion from 'const char[2]' to
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 static M2C_UNK lit_834;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_840;                                /* unable to generate initializer: unknown type; const */
 
@@ -41,16 +41,16 @@ void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
     s8 *var_r4_37;
     s8 *var_r5_24;
 
-    var_r5_24 = "s";
+    var_r5_24 = (signed char *) ("s");
     if (arg2 != 0) {
-        var_r5_24 = "b";
+        var_r5_24 = (signed char *) ("b");
     }
     temp_ret_29 = Str_Printf("_%02d%s", var_r5_24);
     var_r30_31 = temp_ret_29;
     if (arg1 < 0) {
-        var_r4_37 = "s";
+        var_r4_37 = (signed char *) ("s");
         if (arg2 != 0) {
-            var_r4_37 = "b";
+            var_r4_37 = (signed char *) ("b");
         }
         var_r30_31 = Str_Printf("_all%s", var_r4_37, "_%02d%s", M2C_BITWISE(f32, temp_ret_29));
     }
@@ -59,7 +59,7 @@ void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 void MKCollision_MangleName(const char *arg0, int arg1) {
     s8 sp8;
     M2C_UNK sp4;
@@ -611,7 +611,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 MKCollision_RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4) {
     u8 spF0;
     s32 spEC;
@@ -799,7 +799,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKCollisionManager **' and 'long *'
 void MKCollision_Deinit() {
     MKCollisionManager **temp_r31_1184;
     MKCollisionManager **temp_r3_1183;
@@ -820,13 +820,13 @@ void MKCollision_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'malloc'
 void MKCollision_Init() {
     MKCollisionManager **var_r3_1227;
     s32 var_ctr_1239;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_1227 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x48, NULL, 0);
+        var_r3_1227 = (MKCollisionManager **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x48, NULL, 0));
     } else {
         var_r3_1227 = malloc(0x48);
     }

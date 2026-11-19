@@ -245,7 +245,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpyroStateMessages' to
+#if 0 // DRAFT: illegal explicit conversion from 'SpyroStateMessages' to 'long'
 s32 SpyroStateMessages::IsMessageOnList(int arg0) {
     u32 temp_r7_362;
     u32 var_r0_368;
@@ -274,7 +274,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpyroStateMessages::GetMessage(int)' redeclared
+#if 0 // DRAFT: identifier 'SpyroStateMessages::GetMessage(int)' redeclared was declared as: 'MKMessage * (int)' now declared as: 'long (int)'
 s32 SpyroStateMessages::GetMessage(int arg0) {
     u32 temp_r7_401;
     u32 var_r0_407;

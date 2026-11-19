@@ -125,9 +125,9 @@ s32 GameVideo_Create(const char *arg0, int arg1, int arg2) {
         var_r3_237 = 0;
     }
     if (M2C_FIELD(&gDisplay, f32 *, 8) > 55.0f) {
-        var_r5_253 = "_60";
+        var_r5_253 = (signed char *) ("_60");
     } else {
-        var_r5_253 = "_50";
+        var_r5_253 = (signed char *) ("_50");
     }
     temp_r3_264 = Video_CreateStreaming(Str_Printf("%s%s", arg0, var_r5_253, M2C_FIELD(&gDisplay, f32 *, 8)), 1U, var_r3_237, NULL, 0);
     M2C_FIELD(&video, MKHeap **, 0) = temp_r3_264;

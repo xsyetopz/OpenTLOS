@@ -6,7 +6,7 @@
 #include "spyro/source/UIMessage.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 stricmp(s8 *, s8 *);                            /* extern */
 
 s32 Attributes::LoadLine(UIDataLine *arg0) {

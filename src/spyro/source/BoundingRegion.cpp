@@ -9,7 +9,6 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void BoundingRegion::GetPos(int arg0) {
     f32 sp10;
     f32 spC;
@@ -28,7 +27,7 @@ void BoundingRegion::GetPos(int arg0) {
     if (temp_r6_12 != NULL) {
         temp_r7_15 = M2C_FIELD(temp_r6_12, void **, 0x30);
         if (temp_r7_15 != NULL) {
-            temp_r4_26 = M2C_FIELD(temp_r6_12, s32 *, 0x24) + (M2C_ERROR(/* Read from unset register $r5 */) * M2C_FIELD(temp_r6_12, s32 *, 0x1C));
+            temp_r4_26 = (void *) (M2C_FIELD(temp_r6_12, s32 *, 0x24) + (M2C_ERROR(/* Read from unset register $r5 */) * M2C_FIELD(temp_r6_12, s32 *, 0x1C)));
             temp_f5_28 = M2C_FIELD(temp_r4_26, f32 *, 4);
             temp_f9_29 = M2C_FIELD(temp_r4_26, f32 *, 0);
             temp_f10_31 = M2C_FIELD(temp_r4_26, f32 *, 8);
@@ -39,14 +38,14 @@ void BoundingRegion::GetPos(int arg0) {
             this->unk8 = (f64) sp10;
             return;
         }
-        temp_r4_61 = M2C_FIELD(temp_r6_12, s32 *, 0x24) + (M2C_ERROR(/* Read from unset register $r5 */) * M2C_FIELD(temp_r6_12, s32 *, 0x1C));
+        temp_r4_61 = (void *) (M2C_FIELD(temp_r6_12, s32 *, 0x24) + (M2C_ERROR(/* Read from unset register $r5 */) * M2C_FIELD(temp_r6_12, s32 *, 0x1C)));
         this->unk0 = M2C_FIELD(temp_r4_61, f64 *, 0);
         this->unk8 = M2C_FIELD(temp_r4_61, f64 *, 8);
         return;
     }
     temp_r4_68 = M2C_FIELD(arg0, u32 *, 4);
     if (temp_r4_68 != 0U) {
-        temp_r4_72 = temp_r4_68 + (M2C_ERROR(/* Read from unset register $r5 */) * 0x10);
+        temp_r4_72 = (void *) (temp_r4_68 + (M2C_ERROR(/* Read from unset register $r5 */) * 0x10));
         this->unk0 = M2C_FIELD(temp_r4_72, f64 *, 0);
         this->unk8 = M2C_FIELD(temp_r4_72, f64 *, 8);
         return;
@@ -54,9 +53,8 @@ void BoundingRegion::GetPos(int arg0) {
     this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to
+#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to 'double'
 u32 BoundingRegion::GetIntersectCount(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp70;
     f64 sp68;
@@ -100,7 +98,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 u8 BoundingRegion::IsPointInBoundaryRect(const MKVector3 &arg0) {
     Matrix sp40;
     f64 sp38;

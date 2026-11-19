@@ -1809,7 +1809,7 @@ u8 EarthBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Spawn(float *, int, MKVector3 *, float, float, float,
+#if 0 // DRAFT: function call 'Spawn(float *, int, MKVector3 *, float, float, float, float, float, float, float, float)' does not match 'Enemy::Spawn(const Matrix *, SpawnPoint
 void EarthBossGoal_Think::Arbitrate() {
     f32 spEC;
     f32 spE8;

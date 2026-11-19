@@ -40,7 +40,7 @@ extern f32 *KDSpline_PositionMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MineCartTrack' to
+#if 0 // DRAFT: illegal implicit conversion from 'MineCartTrack' to 'void *'
 void MineCartTrack::Message(MKMessage *arg0) {
     s32 temp_r0_54;
     s32 var_r29_52;
@@ -73,7 +73,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void *MineCartTrack::Update() {
     f32 sp33C;
     f32 sp338;
@@ -582,7 +582,7 @@ void *MineCartTrack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 f32 MineCartTrack::Resolve() {
     MKSceneManager *temp_r3_901;
     MKSceneManager *temp_r3_907;
@@ -638,7 +638,7 @@ s32 MineCartTrack::LoadDone() {
     } while (var_r29_936 < 4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
 s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;

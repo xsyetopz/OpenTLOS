@@ -136,7 +136,7 @@ loop_16:
                     }
                 }
                 this->unkD0 = 4;
-                *MemoryCardScreen::selectedCard = var_r29_101->GetCard((s32) var_r4_125);
+                *MemoryCardScreen::selectedCard = (unsigned char) (var_r29_101->GetCard((s32) var_r4_125));
                 return;
             }
 block_25:
@@ -162,8 +162,8 @@ block_25:
                     sp8 = 2;
                     spC = 0;
                     M2C_FIELD(*temp_r3_196, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_196, &sp8, 2);
-                    temp_r3_206 = KDMemoryCard::GetFirstAvailable();
-                    *MemoryCardScreen::selectedCard = temp_r3_206;
+                    temp_r3_206 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
+                    *MemoryCardScreen::selectedCard = (unsigned char) (temp_r3_206);
                     temp_r3_206->SetState((KDMCState) 3);
                     return;
                 }
@@ -226,14 +226,12 @@ void MCLoadCheckScreen::OnEnter() {
     M2C_FIELD(*temp_r3_289, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_289, &sp8, 3);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIText *' to
 void MCLoadCheckScreen::Resolve() {
     MemoryCardScreen::Resolve();
-    this->unkD4 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
-    this->unkD8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
-    this->unkDC = FindPrompt((UIContainer *) this);
+    this->unkD4 = (void **) (ui_cast<UIText *, UIObject *>(FindChild("Message")));
+    this->unkD8 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons")));
+    this->unkDC = (void **) (FindPrompt((UIContainer *) this));
 }
-#endif
 
 void MCLoadCheckScreen::Init() {
     MemoryCardScreen::Init();

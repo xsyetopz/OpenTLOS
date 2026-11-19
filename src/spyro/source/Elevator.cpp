@@ -331,7 +331,6 @@ void Elevator::Reset() {
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 Elevator::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -345,7 +344,7 @@ s32 Elevator::LoadDone() {
     GameProp::LoadDone();
     temp_r3_597 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "m_Post");
     MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, temp_r3_597, &this->unkE0);
-    temp_r3_608 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, temp_r3_597);
+    temp_r3_608 = (void *) (MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, temp_r3_597));
     this->unkC8 = M2C_FIELD(temp_r3_608, f64 *, 0);
     this->unkD0 = M2C_FIELD(temp_r3_608, f64 *, 8);
     MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "c_collide01"), &this->unkE0);
@@ -376,7 +375,6 @@ s32 Elevator::LoadDone() {
     (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f2_658;
     this->unk150 = 0;
 }
-#endif
 
 s32 Elevator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_684;

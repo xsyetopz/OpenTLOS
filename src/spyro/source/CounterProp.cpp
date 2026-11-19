@@ -61,7 +61,7 @@ void CounterProp::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 CounterProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_131;
 

@@ -91,7 +91,7 @@ void MKCollisionCapsuleItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKVector3 *'
 s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp1C8;
     f64 sp1C0;
@@ -1717,7 +1717,7 @@ s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *a
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionInfo *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionInfo *' to 'MKVector3 *'
 void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const MKVector4 &arg3, MKCollisionMode arg4, MKCollisionInfo *arg5, int arg6, unsigned int arg7, MKCollisionManager *arg8) {
     f64 sp90;
     f64 sp88;
@@ -1910,7 +1910,6 @@ void MKCollisionModelItem::ToWorldResult(const MKCollisionResult &arg0, MKCollis
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKCollisionModelItem::GetRadius() {
     f64 sp30;
     f64 sp28;
@@ -1925,8 +1924,8 @@ void MKCollisionModelItem::GetRadius() {
     void *temp_r5_3367;
 
     temp_r4_3366 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x120);
-    temp_r5_3367 = temp_r4_3366 + 8;
-    temp_r4_3368 = temp_r4_3366 + 0x18;
+    temp_r5_3367 = (void *) (temp_r4_3366 + 8);
+    temp_r4_3368 = (void *) (temp_r4_3366 + 0x18);
     temp_f0_3371 = M2C_FIELD(temp_r4_3368, f64 *, 0) - M2C_FIELD(temp_r5_3367, f64 *, 0);
     sp8 = temp_f0_3371;
     sp28 = temp_f0_3371;
@@ -1938,7 +1937,6 @@ void MKCollisionModelItem::GetRadius() {
     sp20 = (f32) sp30 * 0.5f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
-#endif
 
 s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     s32 temp_r3_3414;
@@ -1968,7 +1966,7 @@ void MKCollisionModelItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to 'MKCollisionAABB'
 void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
     M2C_UNK spB0;
     Matrix sp70;
@@ -2021,7 +2019,7 @@ loop_3:
         if (arg1 > 0) {
             do {
                 temp_r6_3567 = arg0 + var_r3_3560;
-                temp_r5_3568 = &spB0 + var_r4_3561;
+                temp_r5_3568 = (double *) (&spB0 + var_r4_3561);
                 var_r3_3560 += 0xB0;
                 temp_f1_3570 = M2C_FIELD(temp_r5_3568, f64 *, 0);
                 var_r4_3561 += 0x20;
@@ -2071,7 +2069,7 @@ void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKVector3 *'
 s32 MKCollisionModelItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionBox sp50;
     Matrix sp10;
@@ -2215,7 +2213,6 @@ s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionRe
     return var_r29_3897;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
 s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2272,7 +2269,7 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
     spB4 = -1;
     spB8 = 0;
     this->unk120->unk28 = &this->unk60;
-    this->unk120->unk2C = &arg0;
+    this->unk120->unk2C = (MKCollisionRay *) (&arg0);
     if (this->unk120->GetGroundPoint(spC0, (MKCollisionResult *) &sp68, arg2) != 0) {
         ToWorldResult(*((MKCollisionResult *) &sp68), arg1);
         var_r29_3996 = 1;
@@ -2284,7 +2281,6 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
     this->unk120->unk2C = NULL;
     return var_r29_3996;
 }
-#endif
 
 s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
@@ -2575,7 +2571,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, MKCollisionManager *arg3) {
     MKCollisionInfo *temp_r3_4508;
     MKHeap *temp_r3_4543;
@@ -2594,10 +2589,10 @@ void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, M
         temp_r3_4508->unkC = (s32) this;
     }
     if (arg1 == 0) {
-        this->unk58 = &gEmptyPtrListDL + 4;
+        this->unk58 = (MKHeap *) (&gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_4530 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 + 2) * 4) + (arg1 * 0xC), NULL, 0);
+            var_r3_4530 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 + 2) * 4) + (arg1 * 0xC), NULL, 0));
         } else {
             var_r3_4530 = malloc(((arg1 + 2) * 4) + (arg1 * 0xC));
         }
@@ -2628,4 +2623,3 @@ void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, M
     this->unk44 = 0.0f;
     this->unk48 = 0.0f;
 }
-#endif

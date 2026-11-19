@@ -17,7 +17,7 @@
 #include "common/Source/MKWind.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDClothProperty::Resolve(KDPropertySet *arg0) {
     MKModel *temp_r4_81;
     s8 *temp_r0_69;
@@ -25,7 +25,7 @@ void KDClothProperty::Resolve(KDPropertySet *arg0) {
 
     temp_r0_69 = this->unk10;
     if (temp_r0_69 != NULL) {
-        this->unk10 = property_cast<KDModelProperty *, KDProperty *>(arg0->Find(temp_r0_69));
+        this->unk10 = (const char *) (property_cast<KDModelProperty *, KDProperty *>(arg0->Find(temp_r0_69)));
     }
     temp_r3_78 = this->unk10;
     if (temp_r3_78 != NULL) {
@@ -37,7 +37,7 @@ void KDClothProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDClothProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_103;
 
@@ -123,7 +123,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed char *)' does not match 'MKModel_GetSubObjectIndex(const MKModel *, SubObjectType, con
 void KDClothDescriptor::Resolve(MKModel *arg0) {
     s8 *temp_r5_278;
 
@@ -134,7 +134,7 @@ void KDClothDescriptor::Resolve(MKModel *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 KDClothDescriptor::LoadLine(MKIniLine *arg0) {
     u8 var_r31_305;
 

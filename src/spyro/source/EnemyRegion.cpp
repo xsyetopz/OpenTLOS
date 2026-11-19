@@ -20,7 +20,7 @@ u32 EnemyRegion::GetPathSegment() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to
+#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to 'double'
 void EnemyRegion::GetNearestPointOnBoundingRegion(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     f64 sp198;
     f64 sp190;
@@ -277,7 +277,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to
+#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to 'double'
 s32 EnemyRegion::GetFirstIntersectionPlane(const MKVector3 &arg0, const MKVector3 &arg1, MKVector3 *arg2, MKVector3 *arg3) {
     f64 sp158;
     f64 sp150;
@@ -497,7 +497,7 @@ u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     return var_r0_807;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'KDLocalPathSegment *'
 s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
     f32 sp8C;
     f32 sp88;
@@ -587,7 +587,7 @@ void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'long'
 void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
     KDPathIterator sp68;
     KDPathManager sp38;

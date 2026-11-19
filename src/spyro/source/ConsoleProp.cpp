@@ -14,7 +14,7 @@
 #include "spyro/source/GameConsole.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: function call 'Console_AddMacro(signed char *, signed char *)' does not match 'Console_AddMacro(const char *, const char *)'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 
@@ -29,7 +29,7 @@ s32 ConsoleProp::LoadDone() {
     var_r29_48 = 0;
 loop_2:
     if (var_r29_48 < (s32) this->unk50) {
-        temp_r3_53 = ((u8 *) this->unk4C) + var_r31_47;
+        temp_r3_53 = (signed char *) (((u8 *) this->unk4C) + var_r31_47);
         Console_AddMacro(temp_r3_53, M2C_FIELD(temp_r3_53, s8 **, 0x20));
         temp_r0_57 = var_r31_47 + 0x20;
         var_r29_48 += 1;
@@ -40,7 +40,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, long)' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, long)' does not match 'strcpy(char *, const char *)'
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
     MKIniLine *temp_r27_137;
     MKIniLine *var_r26_123;
@@ -91,7 +91,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_RemoveMacro(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'Console_RemoveMacro(unsigned char *)' does not match 'Console_RemoveMacro(const char *)'
 void ConsoleProp::Deinit() {
     s32 var_r30_204;
     s32 var_r31_205;

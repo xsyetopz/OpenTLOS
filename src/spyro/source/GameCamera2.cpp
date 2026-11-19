@@ -296,7 +296,7 @@ void GameCamera2::MiscMessage(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void GameCamera2::HeroStateHelperMessage(MKMessage *arg0) {
     f32 sp90;
     f64 sp88;
@@ -427,7 +427,7 @@ void GameCamera2::UpdateSnaps() {
     this->unk2AC = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void GameCamera2::TrackedShakePropUpdate() {
     f64 sp40;
     f64 sp38;
@@ -526,7 +526,7 @@ u32 GameCamera2::CameraEffectsUpdate() {
     KDCamera::CameraEffectsUpdate();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'unsigned long *'
 void GameCamera2::CameraEffectsMessage(MKMessage *arg0) {
     f32 temp_f0_924;
     s32 temp_r0_881;
@@ -564,7 +564,7 @@ loop_10:
             }
         }
         if (var_r6_896 == NULL) {
-            temp_r4_917 = ((u8 *) this->unk2A8) - 4;
+            temp_r4_917 = (unsigned long **) (((u8 *) this->unk2A8) - 4);
             this->unk2A8 = temp_r4_917;
             var_r6_896 = *temp_r4_917;
         }
@@ -712,7 +712,7 @@ block_12:
     return 0U;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'KDCamera *'
 void GameCamera2::AdjustPitchWithFloorUpdate() {
     f64 sp130;
     f64 sp128;
@@ -1089,7 +1089,7 @@ void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
             var_r31_1578 = var_r5_1690;
             temp_r3_1703 = temp_r4_1689->unkC0;
             if (temp_r3_1703 != 0) {
-                var_r0_1709 = &temp_r4_1689->unkC0 + (((temp_r3_1703 - 1) * 0x58) + 8);
+                var_r0_1709 = (float *) (&temp_r4_1689->unkC0 + (((temp_r3_1703 - 1) * 0x58) + 8));
             } else {
                 var_r0_1709 = NULL;
             }
@@ -1369,7 +1369,7 @@ void GameCamera2::SlowMoAirCombatUpdate() {
     this->unk124 += M2C_ERROR(/* Read from unset register $f1 */);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *' Too many errors printed, aborting program
 void GameCamera2::SlowMoAirCombatExit() {
     s32 spC;
     s32 sp8;
@@ -1944,7 +1944,7 @@ void GameCamera2::PreCameraUpdate() {
     AdjustPitchWithFloorUpdate();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameCamera2' to
+#if 0 // DRAFT: illegal implicit conversion from 'GameCamera2' to 'long'
 void GameCamera2::DeltaStagesMessage(MKMessage *arg0) {
     s32 temp_r0_3795;
     s32 temp_r0_3802;
@@ -2077,7 +2077,7 @@ void GameCamera2::DeltaUpdate() {
     this->unk140->unk10 = 300.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
 void GameCamera2::CenterBehindHeroUpdate() {
     f64 sp10;
     f64 sp8;
@@ -2481,7 +2481,7 @@ f32 GameCamera2::Resolve() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'MKProp *'
 s32 GameCamera2::LoadDone() {
     this->unk14 = 2;
     ((MKSceneManager *) this)->PropResolver_Add(*this->unk0, M2C_ERROR(/* Read from unset register $r5 */));
@@ -2542,7 +2542,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to 'GameCameraEmuStateDescriptor *'
 void GameCamera2::Init() {
     s32 *temp_r3_5055;
     s32 temp_r30_5024;
@@ -2577,7 +2577,7 @@ void GameCamera2::Init() {
     }
     this->unk2A8 = var_r3_5042;
     var_r5_5054 = this->unk2A8;
-    temp_r3_5055 = ((u8 *) var_r5_5054) + (temp_r30_5024 * 0x14);
+    temp_r3_5055 = (long *) (((u8 *) var_r5_5054) + (temp_r30_5024 * 0x14));
     this->unk2A8 = temp_r3_5055;
     *temp_r3_5055 = 0;
     var_ctr_5058 = temp_r30_5024;
@@ -2596,7 +2596,7 @@ void GameCamera2::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp **' to
+#if 0 // DRAFT: undefined identifier '__ptmf_null'
 void GameCamera2::InitModule() {
     s32 sp1C;
     s32 sp18;
@@ -2607,7 +2607,7 @@ void GameCamera2::InitModule() {
     void *temp_r3_5098;
 
     deltaStageInfo.InitModule();
-    *GameCamera2::pPossibleStateChanges = &deltaStageInfo.unk30;
+    *GameCamera2::pPossibleStateChanges = (unsigned char) (&deltaStageInfo.unk30);
     if ((s8) init_762 == 0) {
         temp_r3_5098 = &deltaStageInfo + 0xDC;
         M2C_FIELD(temp_r3_5098, f32 *, 0x14) = (f32) deltaStageInfo.unk60.unk10;
@@ -2744,7 +2744,7 @@ void GameCamera2::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameCamera2Descriptor' to
+#if 0 // DRAFT: illegal explicit conversion from 'GameCamera2Descriptor' to 'KDCameraDeltaStages *'
 u8 GameCamera2Descriptor::LoadDeltaStages(MKIniLine *arg0) {
     s32 var_r28_5335;
     s32 var_r30_5338;
@@ -2787,7 +2787,7 @@ s32 GameCamera2Descriptor::LoadLine(MKIniLine *arg0) {
     return var_r31_5402;
 }
 
-#if 0 // DRAFT: function call 'operator delete(GameCamera2Descriptor)' does not match
+#if 0 // DRAFT: function call 'operator delete(GameCamera2Descriptor)' does not match 'operator delete(void *)'
 void GameCamera2Descriptor::Deinit() {
     s32 temp_r29_5443;
     s32 var_r28_5440;

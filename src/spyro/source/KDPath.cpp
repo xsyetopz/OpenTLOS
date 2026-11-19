@@ -170,7 +170,7 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal type
 void KDPathManager::AddPath(KDPathSegment *arg0) {
     f64 spC0;
     f64 spB8;
@@ -209,7 +209,7 @@ void KDPathManager::AddPath(KDPathSegment *arg0) {
     void *temp_r5_421;
 
     var_r4_379 = NULL;
-    var_r3_382 = *KDPathManager::pPathLists + (this->unk18 * 4);
+    var_r3_382 = (KDPathNode **) (*KDPathManager::pPathLists + (this->unk18 * 4));
     var_r31_383 = *var_r3_382;
 loop_10:
     if (var_r31_383 != NULL) {
@@ -267,11 +267,10 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPathManager::Deinit() {
     void *temp_r31_550;
 
-    temp_r31_550 = *KDPathManager::pPathLists;
+    temp_r31_550 = (void *) (*KDPathManager::pPathLists);
     if (temp_r31_550 != NULL) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_550, NULL, 0);
@@ -282,9 +281,8 @@ void KDPathManager::Deinit() {
     *KDPathManager::pPathLists = NULL;
     *KDPathManager::numTypes = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDPathManager *' to
+#if 0 // DRAFT: type mismatch 'void *' and 'int'
 void KDPathManager::Init(int arg0) {
     s32 temp_r31_583;
     s32 var_r3_603;
@@ -293,14 +291,14 @@ void KDPathManager::Init(int arg0) {
     void *var_r3_592;
 
     temp_r31_583 = (s32) this * 4;
-    *KDPathManager::numTypes = this;
+    *KDPathManager::numTypes = (unsigned char) (this);
     if (MKHeap::Current() != NULL) {
         var_r3_592 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_583, NULL, 0);
     } else {
         var_r3_592 = malloc(temp_r31_583);
     }
-    *KDPathManager::pPathLists = var_r3_592;
-    temp_r4_601 = *KDPathManager::numTypes - 1;
+    *KDPathManager::pPathLists = (unsigned char) (var_r3_592);
+    temp_r4_601 = (void *) (*KDPathManager::numTypes - 1);
     var_r3_603 = (s32) temp_r4_601 * 4;
     var_ctr_604 = ((u8 *) temp_r4_601) + 1;
     if (temp_r4_601 >= 0) {
@@ -410,7 +408,7 @@ loop_1:
     M2C_FIELD(&arg1, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDSplinePathSegment::LoadDone() {
     f64 sp58;
     f64 sp50;
@@ -469,7 +467,7 @@ loop_8:
             this->unk24 = (MKVector3 *) this->unk30.unkC;
         }
         temp_r4_836 = this->unk30.unkC;
-        temp_r5_839 = temp_r4_836 + ((this->unk30.unk0 - 1) << 5);
+        temp_r5_839 = (void *) (temp_r4_836 + ((this->unk30.unk0 - 1) << 5));
         sp10 = M2C_FIELD(temp_r4_836, f64 *, 0) - M2C_FIELD(temp_r5_839, f64 *, 0);
         sp30 = sp10;
         sp18 = M2C_FIELD(temp_r4_836, f32 *, 8) - M2C_FIELD(temp_r5_839, f32 *, 8);
@@ -594,7 +592,7 @@ u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0, const char *arg1) {
     return LoadWaypoints(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1156;
 
@@ -621,7 +619,7 @@ void KDSplinePathSegment::Init() {
     this->unk1A = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKSceneManager *'
 f32 KDLocalPathSegmentProp::Resolve() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -655,7 +653,7 @@ f32 KDLocalPathSegmentProp::Resolve() {
             var_ctr_1266 = temp_r0_1264;
             if (temp_r0_1264 > 0) {
                 do {
-                    temp_r3_1278 = this->unk4C.unk20 + (var_r5_1265 * M2C_FIELD(this, s32 *, 0x68));
+                    temp_r3_1278 = (void *) (this->unk4C.unk20 + (var_r5_1265 * M2C_FIELD(this, s32 *, 0x68)));
                     temp_f5_1280 = M2C_FIELD(temp_r3_1278, f32 *, 4);
                     temp_f8_1281 = M2C_FIELD(temp_r3_1278, f32 *, 0);
                     temp_f10_1283 = M2C_FIELD(temp_r3_1278, f32 *, 8);
@@ -901,7 +899,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r29_1815;
     s32 temp_r30_1795;
@@ -1095,7 +1093,7 @@ loop_18:
     this->unk6 = 0;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'unsigned char *' and 'KDPathNode *'
 void KDPathNode::Link(KDPathNode *arg0) {
     KDPathNode *temp_r4_2177;
     KDPathNode *var_r0_2152;

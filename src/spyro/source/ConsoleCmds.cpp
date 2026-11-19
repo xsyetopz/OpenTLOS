@@ -60,7 +60,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'ConsoleCmds_pSenderProp' redeclared
+#if 0 // DRAFT: identifier 'ConsoleCmds_pSenderProp' redeclared was declared as: 'MKProp *' now declared as: 'long'
 f64 atof(u8 *, f32);                                /* extern */
 MKSceneManager *atoi(u8 *);                         /* extern */
 s32 sscanf(s8 *, f32 *, f32 *);                     /* extern */
@@ -68,7 +68,7 @@ s32 stricmp(s8 *, u8 *);                            /* extern */
 extern s32 ConsoleCmds_pSenderProp;
 #endif
 extern GameStateMachine gGMState;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 extern MessageMap globalMessageMap;
@@ -89,7 +89,7 @@ void ConsoleCmds_Register() {
     Console_Register(cmds, 0x30);
 }
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdMenuVideo(int arg0, char **arg1) {
     if (arg0 < 2) {
         Console_Print((s8 *) (lit_stringBase0 + 0x212), M2C_FIELD(arg1, s8 **, 0));
@@ -104,7 +104,7 @@ f32 CmdMenuVideo(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdAutosave(int arg0, char **arg1) {
     if (arg0 < 2) {
         Console_Print((s8 *) (lit_stringBase0 + 0x228), M2C_FIELD(arg1, s8 **, 0));
@@ -116,7 +116,7 @@ f32 CmdAutosave(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdCamShake(int arg0, char **arg1) {
     s8 sp40;
     f64 sp38;
@@ -154,14 +154,14 @@ f32 CmdCamShake(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, int)' does not
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, int)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdLangGetStr(char *arg0, int arg1) {
     GameLanguage_GetName(-1);
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x25C), M2C_ERROR(/* Read from unset register $r3 */));
 }
 #endif
 
-#if 0 // DRAFT: function call 'GameLanguage_LanguageByCode(signed char *)' does not match
+#if 0 // DRAFT: function call 'GameLanguage_LanguageByCode(signed char *)' does not match 'GameLanguage_LanguageByCode(const char *)'
 f32 CmdLang(int arg0, char **arg1) {
     s32 temp_r3_276;
     s32 var_r30_240;
@@ -216,7 +216,7 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdFade(int arg0, char **arg1) {
     if (arg0 < 2) {
         Console_Print((s8 *) (lit_stringBase0 + 0x2A3), M2C_FIELD(arg1, s8 **, 0));
@@ -235,7 +235,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdHoldBlank(int arg0, char **arg1) {
     if (arg0 > 1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x2C0), *arg1);
@@ -246,7 +246,7 @@ f32 CmdHoldBlank(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdPlayThrough(int arg0, char **arg1) {
     MKSceneManager *temp_r3_433;
 
@@ -261,7 +261,7 @@ f32 CmdPlayThrough(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdGameState(int arg0, char **arg1) {
     if (arg0 < 2) {
         Console_Print((s8 *) (lit_stringBase0 + 0x2A3), M2C_FIELD(arg1, s8 **, 0));
@@ -276,13 +276,13 @@ f32 CmdGameState(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSlowMoKillBlowSpeedGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(&gb, f32 *, 0x388));
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSlowMoKillBlowSpeed(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -329,13 +329,13 @@ f32 CmdSlowMoKillBlowSpeed(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSlowMoSpeedGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(&gb, f32 *, 0x384));
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSlowMoSpeed(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -382,13 +382,13 @@ f32 CmdSlowMoSpeed(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSlowMoChanceGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(GameData::gameData, f32 *, 0x40));
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSlowMoChance(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -445,7 +445,7 @@ f32 CmdDojoLesson(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdTeleport(int arg0, char **arg1) {
     s8 sp4A;
     s8 sp49;
@@ -504,7 +504,7 @@ f32 CmdTeleport(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdHeroActive(int arg0, char **arg1) {
     if (arg0 > 1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x332), *arg1);
@@ -517,7 +517,7 @@ f32 CmdHeroActive(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdHeroAlive(int arg0, char **arg1) {
     if (arg0 > 1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x332), *arg1);
@@ -530,7 +530,7 @@ f32 CmdHeroAlive(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char **' to
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdChunkLoad(int arg0, char **arg1) {
     ChunkInfo *sp8;
     Level *temp_r29_1072;
@@ -545,7 +545,7 @@ f32 CmdChunkLoad(int arg0, char **arg1) {
     void *temp_r4_1090;
     void *temp_ret_1047;
 
-    var_r4_0 = arg1;
+    var_r4_0 = (signed char **) (arg1);
     temp_r27_1025 = var_r4_0;
     if ((arg0 < 2) || (arg0 > 4)) {
         Console_Print((s8 *) (lit_stringBase0 + 0x33E), *temp_r27_1025);
@@ -573,11 +573,11 @@ loop_7:
         }
         return 1.0f;
     }
-    temp_ret_1047 = ((Level *) (*(temp_r27_1025 + (var_r31_1042 + 4))))->GetChunkByName((s8 *) var_r4_0);
+    temp_ret_1047 = (const char *) (((Level *) (*(temp_r27_1025 + (var_r31_1042 + 4))))->GetChunkByName((s8 *) var_r4_0));
     temp_f1_1047 = M2C_BITWISE(f32, temp_ret_1047);
     temp_r3_1047 = temp_ret_1047;
     var_r4_0 = (s8 **) (u32) (u64) temp_ret_1047;
-    *(&sp8 + var_r31_1042) = temp_r3_1047;
+    *(&sp8 + var_r31_1042) = (ChunkInfo *) (temp_r3_1047);
     if ((u32) *(&sp8 + var_r31_1042) == 0U) {
         Console_Print((s8 *) (lit_stringBase0 + 0x367), *temp_r27_1025, M2C_FIELD((temp_r27_1025 + var_r31_1042), s32 *, 4), lit_stringBase0, temp_f1_1047);
         return 0.0f;
@@ -588,7 +588,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdStatFuryGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(GameData::gameData, f32 *, 0xB8));
 }
@@ -600,7 +600,7 @@ void CmdStatFury(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdStatMagicGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(GameData::gameData, f32 *, 0xA0));
 }
@@ -612,7 +612,7 @@ void CmdStatMagic(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdStatSpiritGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(GameData::gameData, f32 *, 0x88));
 }
@@ -624,7 +624,7 @@ void CmdStatSpirit(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5],
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char[5], float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdStatHealthGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), lit_stringBase0, M2C_FIELD(GameData::gameData, f32 *, 0x70));
 }
@@ -636,7 +636,7 @@ void CmdStatHealth(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 StatAccessor(int arg0, char **arg1, Stat *arg2) {
     f32 spC;
     f32 sp8;
@@ -657,7 +657,7 @@ f32 StatAccessor(int arg0, char **arg1, Stat *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)' Too many errors printed, aborting program
 f32 CmdTask(int arg0, char **arg1) {
     MKSceneManager *temp_r31_1346;
     MKSceneManager *temp_r3_1361;
@@ -794,7 +794,7 @@ f32 CmdMusicPause(int arg0, char **arg1) {
     return 1.0f;
 }
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdMusicStop(int arg0, char **arg1) {
     if (arg0 != 1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x332), *arg1);
@@ -805,7 +805,7 @@ f32 CmdMusicStop(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdMusicPlay(int arg0, char **arg1) {
     f32 var_f1_1802;
     s32 temp_ret_1802;
@@ -835,7 +835,7 @@ f32 CmdMusicPlay(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdPhrasePlay(int arg0, char **arg1) {
     s32 temp_r3_1854;
     s32 temp_ret_1854;
@@ -871,7 +871,7 @@ f32 CmdSoundPauseAll(int arg0, char **arg1) {
     return 1.0f;
 }
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdSoundPlay(int arg0, char **arg1) {
     f32 sp30;                                       /* compiler-managed */
     f32 sp2C;
@@ -956,7 +956,7 @@ f32 CmdSoundPlay(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdSparx(int arg0, char **arg1) {
     s32 temp_ret_2139;
     s8 var_r0_2112;
@@ -989,7 +989,7 @@ block_11:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdEnableDisable(int arg0, char **arg1) {
     MKSceneManager *temp_r3_2201;
     MKSceneManager *temp_ret_2201;
@@ -1034,7 +1034,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdSendArg(int arg0, char **arg1) {
     s32 sp10;
     s32 spC;
@@ -1054,17 +1054,17 @@ f32 CmdSendArg(int arg0, char **arg1) {
         return 0.0f;
     }
     var_f31_2269 = 1.0f;
-    temp_r3_2272 = globalMessageMap.GetIdFromString(M2C_FIELD(arg1, s8 **, 4));
+    temp_r3_2272 = (const char *) (globalMessageMap.GetIdFromString(M2C_FIELD(arg1, s8 **, 4)));
     temp_r0_2274 = arg0 - 3;
     spC = 0;
     sp8 = temp_r3_2272;
     var_r3_2279 = 0xC;
-    spC = ConsoleCmds_pSenderProp;
+    spC = (long) (ConsoleCmds_pSenderProp);
     sp10 = temp_r0_2274;
     var_ctr_2282 = temp_r0_2274;
     if (arg0 > 3) {
         do {
-            *(&sp8 + var_r3_2279) = *(arg1 + var_r3_2279);
+            *(&sp8 + var_r3_2279) = (long) (*(arg1 + var_r3_2279));
             var_r3_2279 += 4;
             var_ctr_2282 -= 1;
         } while (var_ctr_2282 != 0);
@@ -1087,7 +1087,7 @@ f32 CmdSendArg(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdSend(int arg0, char **arg1) {
     s32 spC;
     s32 sp8;
@@ -1105,12 +1105,12 @@ f32 CmdSend(int arg0, char **arg1) {
         return 0.0f;
     }
     var_f31_2352 = 1.0f;
-    temp_r3_2355 = globalMessageMap.GetIdFromString(M2C_FIELD(arg1, s8 **, 4));
+    temp_r3_2355 = (const char *) (globalMessageMap.GetIdFromString(M2C_FIELD(arg1, s8 **, 4)));
     spC = 0;
     var_r30_2359 = 2;
     var_r31_2360 = 8;
     sp8 = temp_r3_2355;
-    spC = ConsoleCmds_pSenderProp;
+    spC = (long) (ConsoleCmds_pSenderProp);
 loop_9:
     if (var_r30_2359 < arg0) {
         temp_ret_2366 = atoi(*(arg1 + var_r31_2360));
@@ -1135,7 +1135,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdCutsceneSubtitlesGetStr(char *arg0, int arg1) {
     u8 *var_r6_2424;
 
@@ -1177,7 +1177,7 @@ f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *,
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdScrWideGetStr(char *arg0, int arg1) {
     u8 *var_r6_2545;
     u8 temp_ret_2541;
@@ -1220,7 +1220,7 @@ f32 CmdScrWide(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdCamInvertXGetStr(char *arg0, int arg1) {
     u8 *var_r6_2669;
 
@@ -1262,7 +1262,7 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
     u8 *var_r6_2793;
 
@@ -1304,7 +1304,7 @@ f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdInputVibrate(int arg0, char **arg1) {
     f32 temp_f30_2926;
     f32 temp_f31_2929;
@@ -1320,7 +1320,7 @@ f32 CmdInputVibrate(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdInputVibrationGetStr(char *arg0, int arg1) {
     u8 *var_r6_2971;
 
@@ -1363,7 +1363,7 @@ f32 CmdInputVibration(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSndModeGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), (f32) Sound_GetSystemAudioMode());
 }
@@ -1438,7 +1438,7 @@ block_25:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSndSoundVolGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), KDSound_GetMasterSoundVolume());
 }
@@ -1495,7 +1495,7 @@ f32 CmdSndSoundVol(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not
+#if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSndMusicVolGetStr(char *arg0, int arg1) {
     Str_snPrintf(arg0, arg1, (s8 *) (lit_stringBase0 + 0x2D4), KDSound_GetMasterMusicVolume());
 }

@@ -21,20 +21,20 @@ void UIReference::Draw(const RenderContext &arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to 'const char *'
 void UIReference::Resolve() {
     void **temp_r31_68;
 
     UIObject::Resolve();
     temp_r31_68 = this->unk60;
     if (temp_r31_68 != NULL) {
-        this->unk60 = Find(temp_r31_68);
+        this->unk60 = (const char *) (Find(temp_r31_68));
         UIStringTable_Remove((s8 *) temp_r31_68);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIReference::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 

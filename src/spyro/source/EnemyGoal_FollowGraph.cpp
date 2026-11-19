@@ -79,7 +79,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void EnemyGoal_GraphBarricade::AddGoal_Summon() {
     Goal<Enemy> *temp_r5_36;
     MKSceneManager *temp_r3_30;
@@ -127,7 +127,7 @@ void EnemyGoal_GraphBarricade::AddGoal_Attack() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'Goal<Enemy> *'
 void EnemyGoal_GraphBarricade::AddGoal_Kick() {
     if (IsPresent(0x34) == 0) {
         AddSubgoal(M2C_BITWISE(Goal<Enemy> *, this->unk20.unkC));
@@ -509,7 +509,6 @@ void EnemyGoal_BarricadeKick::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
 u8 EnemyGoal_BarricadeKick::Update() {
     s32 spC;
     s32 sp8;
@@ -526,12 +525,12 @@ u8 EnemyGoal_BarricadeKick::Update() {
     if (temp_ret_943 != 0) {
         spC = 0;
         sp8 = 0x15E;
-        temp_ret_954 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_943));
+        temp_ret_954 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_943)));
         temp_r4_954 = (u32) temp_ret_954;
         if (temp_ret_954 != 0) {
-            var_r3_961 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) temp_r4_954));
+            var_r3_961 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) temp_r4_954)));
         } else {
-            var_r3_961 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) temp_r4_954));
+            var_r3_961 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) temp_r4_954)));
         }
         M2C_FIELD(M2C_FIELD(var_r3_961, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
@@ -548,7 +547,6 @@ u8 EnemyGoal_BarricadeKick::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void EnemyGoal_BarricadeKick::Activate() {
     SB2 *temp_r3_1025;
@@ -3577,7 +3575,7 @@ void EnemyGoal_GraphJump::Reset() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'float'
 void EnemyGoal_GraphJump::Terminate() {
     f32 spEC;
     f32 spE8;

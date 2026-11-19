@@ -352,7 +352,7 @@ loop_20:
                     }
                 }
                 if (var_r21_468 != 0) {
-                    *(arg0 + var_r22_419) = temp_r31_639;
+                    *(arg0 + var_r22_419) = (Targetable *) (temp_r31_639);
                     var_r30_418 += 1;
                     var_r22_419 += 4;
                 }
@@ -369,7 +369,7 @@ TargetManager ***TargetManager::Begin() {
     return this->unk0;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Remove(Targetable *arg0) {
     TargetManager ***temp_r3_700;
     TargetManager ***var_r4_684;
@@ -397,7 +397,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'TargetManager **' and 'Targetable *'
 void TargetManager::Add(Targetable *arg0) {
     TargetManager ***temp_r4_740;
     TargetManager ***var_r3_722;
@@ -431,7 +431,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Clear() {
 loop_2:
     if ((TargetManager **) *this->unk0 != NULL) {
@@ -447,7 +447,7 @@ void TargetManager::GetNewTargetID() {
     this->unk4 += 1;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'TargetManager ***' and 'long *'
 void TargetManager::Deinit() {
     TargetManager ***temp_r31_824;
     TargetManager ***temp_r3_819;
@@ -471,7 +471,7 @@ void TargetManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Init() {
     TargetManager ***temp_r3_885;
     TargetManager ***temp_r5_890;
@@ -479,7 +479,7 @@ void TargetManager::Init() {
     s32 var_ctr_883;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_870 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0);
+        var_r3_870 = (TargetManager ***) (((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0));
     } else {
         var_r3_870 = malloc(0x788);
     }
@@ -495,7 +495,7 @@ void TargetManager::Init() {
     temp_r5_890 = this->unk0;
     this->unk0 = temp_r5_890 + 4;
     M2C_FIELD(temp_r5_890, s32 *, 4) = 0;
-    *Targetable::pTargetManager = this;
+    *Targetable::pTargetManager = (unsigned char) (this);
     this->unk4 = 0;
     this->unk8.Set(NULL);
 }
@@ -610,7 +610,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'TargetContext *' and 'TargetContext **'
 void AttackerManager::Deinit() {
     TargetContext **var_r31_1123;
     TargetContext **var_r3_1124;
@@ -652,7 +652,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void AttackerManager::Init(int arg0) {
     TargetContext **temp_r3_1209;
     TargetContext **temp_r3_1216;
@@ -662,11 +661,11 @@ void AttackerManager::Init(int arg0) {
     s32 var_ctr_1212;
 
     if (arg0 == 0) {
-        this->unk0 = &gEmptyPtrListDL + 4;
+        this->unk0 = (TargetContext **) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_1196 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x10), NULL, 0);
+        var_r3_1196 = (TargetManager ***) (((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x10), NULL, 0));
     } else {
         var_r3_1196 = malloc(((arg0 + 2) * 4) + (arg0 * 0x10));
     }
@@ -689,9 +688,8 @@ void AttackerManager::Init(int arg0) {
     this->unk0 = temp_r3_1223 + 4;
     M2C_FIELD(temp_r3_1223, TargetContext ***, 4) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TargetContext::Set(MKProp *arg0) {
     Targetable *sp10;
     s32 spC;

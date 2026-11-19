@@ -236,7 +236,6 @@ void *Torch::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 Torch::LoadDone() {
     f64 spA0;
     f64 sp98;
@@ -276,7 +275,7 @@ s32 Torch::LoadDone() {
     sp54 = 0.85f;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    this->unk108 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(this->unkF8, *((MKVector4 *) &sp98), 2.25f, lit_534, lit_535);
+    this->unk108 = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(this->unkF8, *((MKVector4 *) &sp98), 2.25f, lit_534, lit_535));
     this->unkC = (BoundingVolume *) &this->unkD0;
     temp_r3_412 = MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1);
     M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_412, f64 *, 0);
@@ -308,10 +307,9 @@ s32 Torch::LoadDone() {
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
     sp70 = (f64) sp40;
-    this->unk11C = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(this->unkF8, *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 600.0f, lit_537, lit_538);
+    this->unk11C = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(this->unkF8, *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 600.0f, lit_537, lit_538));
     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unk11C, 1U);
 }
-#endif
 
 void Torch::Disable() {
     ManagedLight *temp_r4_493;

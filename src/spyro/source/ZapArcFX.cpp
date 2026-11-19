@@ -31,7 +31,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const bool *' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const bool &arg3, MKVector4 arg4) {
     f64 sp1A0;                                      /* compiler-managed */
     f64 sp198;                                      /* compiler-managed */
@@ -140,7 +140,7 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
     void *temp_r4_535;
     void *temp_r4_576;
 
-    temp_r0_57 = &arg3;
+    temp_r0_57 = (unsigned char) (&arg3);
     if ((temp_r0_57 != 0) || !(this->unkCC < 0.02f)) {
         if (temp_r0_57 == 0) {
             this->unkCC = 0.0f;
@@ -201,7 +201,7 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
         sp190 = M2C_FIELD(&arg1, f64 *, 8);
 loop_25:
         if (var_r31_177 >= 0) {
-            temp_r3_196 = ((u8 *) this->unkC8) + var_r27_187;
+            temp_r3_196 = (Matrix *) (((u8 *) this->unkC8) + var_r27_187);
             if ((u8) M2C_FIELD(temp_r3_196, u8 *, 0x48) == 0) {
                 if (var_r31_177 < 2) {
                     temp_f26_206 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -346,7 +346,7 @@ loop_25:
                     sp2C = temp_f1_519;
                     spF0 = (f64) sp30;
                     spE8 = (f64) sp28;
-                    temp_r3_528 = ((u8 *) this->unkC8) + var_r27_187;
+                    temp_r3_528 = (Matrix *) (((u8 *) this->unkC8) + var_r27_187);
                     temp_r3_528->Scale3x3(temp_r3_528, *((MKVector3 *) &spE8));
                     temp_r4_535 = ((u8 *) this->unkC8) + var_r27_187;
                     M2C_FIELD(temp_r4_535, f32 *, 0x30) = (f32) sp158;
@@ -366,7 +366,7 @@ loop_25:
                     sp1C = temp_f1_559;
                     spE0 = (f64) sp20;
                     spD8 = (f64) sp18;
-                    temp_r3_569 = ((u8 *) this->unkC8) + var_r27_187;
+                    temp_r3_569 = (Matrix *) (((u8 *) this->unkC8) + var_r27_187);
                     temp_r3_569->Scale3x3(temp_r3_569, *((MKVector3 *) &spD8));
                     temp_r4_576 = ((u8 *) this->unkC8) + var_r27_187;
                     M2C_FIELD(temp_r4_576, f32 *, 0x30) = (f32) arg0.unk0;
@@ -481,7 +481,7 @@ void *ZapArcFX::Update() {
             M2C_FIELD(temp_r3_768, f32 *, 0x40) = (f32) ((0.35f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_768, f32 *, 0x40));
             temp_r3_782 = this->unkC8;
             temp_f1_783 = *(temp_r3_782 + (var_r31_761 + 0x40));
-            temp_r3_784 = ((u8 *) temp_r3_782) + var_r31_761;
+            temp_r3_784 = (Matrix *) (((u8 *) temp_r3_782) + var_r31_761);
             sp8 = temp_f1_783;
             spC = temp_f1_783;
             sp20 = (f64) sp10;

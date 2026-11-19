@@ -68,7 +68,7 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern M2C_UNK gb;
 #endif
 #if 0 // DRAFT: undefined identifier 'unk0'
@@ -276,7 +276,7 @@ void SpyroDeathState::AirExit() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroDeathState::AirEnter() {
     f64 sp28;
     f64 sp20;
@@ -337,7 +337,7 @@ void SpyroDeathState::AirEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroDeathState::StrafeUpdate() {
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) M2C_FIELD(&gb, s32 *, 0x50) < 2)) {
@@ -353,7 +353,7 @@ void SpyroDeathState::StrafeExit() {
     this->unk10->BroadcastMessage(0x15);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroDeathState::StrafeEnter() {
     this->unk10->SetMedium((Spyro::Medium) 1);
     this->unk10->SetAnim(0x13U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -363,7 +363,7 @@ void SpyroDeathState::StrafeEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroDeathState::LandTransition() {
     u8 var_r31_732;
     u8 var_r3_746;
@@ -399,7 +399,7 @@ u8 SpyroDeathState::LandTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroDeathState::LandUpdate() {
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) M2C_FIELD(&gb, s32 *, 0x50) < 2)) {
@@ -414,7 +414,7 @@ void SpyroDeathState::LandExit() {
     this->unk10->BroadcastMessage(0x15);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroDeathState::LandEnter() {
     this->unk10->SetMedium((Spyro::Medium) 1);
     this->unk10->SetAnim(0x56U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);

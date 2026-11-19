@@ -52,8 +52,8 @@ extern f32 *KDSpline_VelocityMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static s8 *pLeviathanAnimEvents[3] = { "SmallSplashes", "HugeSplashes", NULL };
+#if 0 // DRAFT: expression syntax error
+static s8 *pLeviathanAnimEvents[3] = (signed char *) ({ "SmallSplashes", "HugeSplashes", NULL });
 #endif
 
 void Leviathan::SetDefaults() {
@@ -614,7 +614,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void Leviathan::UpdateMove() {
     Matrix spF0;
     f64 spE8;
@@ -884,7 +884,7 @@ void Leviathan::UpdateMove() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void *Leviathan::Update() {
     f64 spE8;
     f64 spE0;
@@ -1067,7 +1067,7 @@ void Leviathan::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1A8), 1.0f, 0.5f, 0, -1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to 'const char **'
 s32 Leviathan::LoadDone() {
     Platform::LoadDone();
     if ((u32) this->unk18C != 0U) {

@@ -26,7 +26,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'MKGrass_cameraPos' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_cameraPos' redeclared was declared as: 'float' now declared as: 'long'
 s32 atoi(s8 *);                                     /* extern */
 M2C_UNK free(u8 *);                                 /* extern */
 u8 *malloc(s32);                                    /* extern */
@@ -34,26 +34,26 @@ s32 strcmpi(s8 *, s8 *);                            /* extern */
 s32 stricmp(s8 *, void *);                          /* extern */
 extern M2C_UNK MKGrass_cameraPos;
 #endif
-#if 0 // DRAFT: identifier 'MKGrass_pushAwaySpheres' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_pushAwaySpheres' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 extern M2C_UNK MKGrass_pushAwaySpheres;
 #endif
-#if 0 // DRAFT: identifier 'MKGrass_windDirection' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_windDirection' redeclared was declared as: 'MKHeap' now declared as: 'long'
 extern M2C_UNK MKGrass_windDirection;
 #endif
 extern MKModel ***drawQueue;
 extern M2C_UNK gEmptyPtrList;
 extern M2C_UNK gMKDefaults;
-#if 0 // DRAFT: identifier 'gShockWaveData' redeclared
+#if 0 // DRAFT: identifier 'gShockWaveData' redeclared was declared as: 'unsigned char[112]' now declared as: 'long'
 extern M2C_UNK gShockWaveData;
 #endif
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern s32 gnGrassTypes;
-#if 0 // DRAFT: identifier 'gpGrassTypes' redeclared
+#if 0 // DRAFT: identifier 'gpGrassTypes' redeclared was declared as: 'long' now declared as: 'signed char *'
 extern s8 *gpGrassTypes;
 #endif
 extern void ***grassModelsList;
-#if 0 // DRAFT: identifier 'MKGrass_bEnable' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_bEnable' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static u8 MKGrass_bEnable = 1;
 #endif
 
@@ -211,7 +211,7 @@ loop_45:
                             var_r18_212 = 0;
 loop_42:
                             if (var_r22_211 < (s32) M2C_FIELD(temp_r31_199, u16 *, 0xA)) {
-                                temp_r21_218 = M2C_FIELD(temp_r31_199, s32 *, 0xC) + var_r18_212;
+                                temp_r21_218 = (GrassSubObject *) (M2C_FIELD(temp_r31_199, s32 *, 0xC) + var_r18_212);
                                 if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))))) > (temp_f1_269 * temp_f1_269)) == 0)) && (((Frustum *) &spA0)->IsVisible(temp_r4_235) != 0)))) {
                                     temp_r3_290 = MKModel_GetBoundingVolume(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0);
                                     var_r17_292 = 0;
@@ -262,7 +262,7 @@ loop_53:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKModel *' to
+#if 0 // DRAFT: illegal type
 void MKGrass_QueueDraw(const MKModel *arg0, const unsigned short *arg1) {
     f64 sp20;
     f64 sp18;
@@ -282,8 +282,8 @@ void MKGrass_QueueDraw(const MKModel *arg0, const unsigned short *arg1) {
         temp_r6_409 = drawQueue - 4;
         drawQueue = temp_r6_409;
         temp_r31_411 = *temp_r6_409;
-        M2C_FIELD(temp_r31_411, MKModel **, 0) = arg0;
-        M2C_FIELD(temp_r31_411, u16 **, 4) = arg1;
+        M2C_FIELD(temp_r31_411, MKModel **, 0) = (MKModel *) (arg0);
+        M2C_FIELD(temp_r31_411, u16 **, 4) = (unsigned short *) (arg1);
         temp_r3_415 = MKModel_GetBoundingVolume(arg0, (SubObjectType) 0, -1);
         sp8 = (0.5f * M2C_FIELD(temp_r3_415, f32 *, 0x10)) + M2C_FIELD(temp_r3_415, f32 *, 0);
         spC = (0.5f * M2C_FIELD(temp_r3_415, f32 *, 0x14)) + M2C_FIELD(temp_r3_415, f32 *, 4);
@@ -318,7 +318,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'MKMaterial_GetEffectType(MKMaterial *, signed char **)' does not match 'MKMaterial_GetEffectType(MKMaterial *, const char **)'
 void MKGrass_ProcessGrassStripData(MKModel *arg0) {
     s8 *sp8;
     MKHeap *temp_r3_550;
@@ -340,13 +340,13 @@ void MKGrass_ProcessGrassStripData(MKModel *arg0) {
     temp_r24_492 = gnGrassTypes;
     temp_r26_493 = MKModel_GetNmbrOfMaterials(arg0);
     if (MKHeap::Current() != NULL) {
-        var_r3_502 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r24_492, NULL, 0, 0U);
+        var_r3_502 = (unsigned char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r24_492, NULL, 0, 0U));
     } else {
         var_r3_502 = malloc(temp_r24_492);
     }
     temp_r24_512 = MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0);
     if (MKHeap::Current() != NULL) {
-        var_r3_521 = ((MKHeap *) (MKHeap::Main()))->TAlloc((s32) temp_r24_512, NULL, 0, 0U);
+        var_r3_521 = (unsigned char *) (((MKHeap *) (MKHeap::Main()))->TAlloc((s32) temp_r24_512, NULL, 0, 0U));
     } else {
         var_r3_521 = malloc((s32) temp_r24_512);
     }
@@ -370,7 +370,7 @@ loop_13:
     }
     if (var_r28_530 != 0) {
         if (MKHeap::Current() != NULL) {
-            var_r24_576 = ((MKHeap *) (MKHeap::Current()))->Alloc(((var_r28_530 - 1) * 8) + 0x10, NULL, 0);
+            var_r24_576 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(((var_r28_530 - 1) * 8) + 0x10, NULL, 0));
         } else {
             var_r24_576 = malloc(((var_r28_530 - 1) * 8) + 0x10);
         }
@@ -416,7 +416,7 @@ void MKGrass_DrawStats() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal type
 void MKGrass_Update() {
     f32 temp_f0_726;
     f32 temp_f1_728;
@@ -430,7 +430,7 @@ void MKGrass_Update() {
     void *temp_r3_681;
     void *temp_r3_695;
 
-    var_r27_678 = gpGrassTypes;
+    var_r27_678 = (signed char *) (gpGrassTypes);
 loop_9:
     if (var_r27_678 < (void *) (gpGrassTypes + (gnGrassTypes * 0x30))) {
         temp_r3_681 = M2C_FIELD(var_r27_678, void **, 0x2C);
@@ -462,7 +462,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'MKHeap *'
 void MKGrass_DestroyGrassData(MKModel *arg0) {
     MKHeap *temp_r30_767;
     s32 var_r29_763;
@@ -483,7 +483,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void **' and 'MKModel *'
 void MKGrass_RemoveModel(MKModel *arg0) {
     MKModel ***temp_r4_833;
     MKModel ***var_r6_827;
@@ -563,7 +563,7 @@ loop_25:
                         temp_r0_893 = M2C_FIELD(var_r28_890, u8 **, 0x2C);
                         if (temp_r0_893 == NULL) {
                             if (MKHeap::Current() != NULL) {
-                                var_r3_903 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x810, NULL, 0);
+                                var_r3_903 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x810, NULL, 0));
                             } else {
                                 var_r3_903 = malloc(0x810);
                             }
@@ -579,7 +579,7 @@ loop_21:
                                     temp_r0_923 = M2C_FIELD(var_r27_910, u8 **, 0x80C);
                                     if (temp_r0_923 == NULL) {
                                         if (MKHeap::Current() != NULL) {
-                                            var_r3_933 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x810, NULL, 0);
+                                            var_r3_933 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x810, NULL, 0));
                                         } else {
                                             var_r3_933 = malloc(0x810);
                                         }
@@ -610,7 +610,7 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void MKGrass_SetWindDirection(const MKVector3 &arg0, float arg1) {
     MKVector3 sp8;
 
@@ -647,11 +647,11 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'strcmpi(signed char *, const char *)' does not match 'strcmpi(signed char *, signed char *)'
 MKHeap *MKGrass_GetGrassTypeId(const char *arg0) {
     s8 *var_r31_1052;
 
-    var_r31_1052 = gpGrassTypes;
+    var_r31_1052 = (signed char *) (gpGrassTypes);
 loop_4:
     if (var_r31_1052 >= (void *) (gpGrassTypes + (gnGrassTypes * 0x30))) {
         return (MKHeap *)-1;
@@ -664,7 +664,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKGrass_ProcessTypes(void *arg0) {
     M2C_UNK sp30;
     f64 sp28;                                       /* compiler-managed */
@@ -733,7 +733,7 @@ void MKGrass_ProcessTypes(void *arg0) {
     void *temp_r5_1366;
     void *temp_r7_1375;
 
-    var_r28_1098 = gpGrassTypes;
+    var_r28_1098 = (signed char *) (gpGrassTypes);
 loop_67:
     if (var_r28_1098 < (void *) (gpGrassTypes + (gnGrassTypes * 0x30))) {
         temp_r3_1101 = M2C_FIELD(var_r28_1098, void **, 0x2C);
@@ -1066,7 +1066,7 @@ void MKGrass_LevelInit() {
     MKHeap::ActivateTempMemOverride();
     sp60.Init("grass_types.ini", 0, NULL);
     MKHeap::DeactivateTempMemOverride();
-    var_r30_1709 = gpGrassTypes;
+    var_r30_1709 = (signed char *) (gpGrassTypes);
 loop_151:
     if (var_r30_1709 < (void *) (gpGrassTypes + (gnGrassTypes * 0x30))) {
         temp_r4_1712 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
@@ -1380,11 +1380,11 @@ loop_102:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[1]' to
+#if 0 // DRAFT: illegal operand
 u8 MKGrass_Enable(bool arg0) {
     u8 temp_r0_2621;
 
-    temp_r0_2621 = MKGrass_bEnable;
+    temp_r0_2621 = (unsigned char) (MKGrass_bEnable);
     MKGrass_bEnable = arg0;
     return temp_r0_2621;
 }
@@ -1424,7 +1424,7 @@ void CopyTypeData(MKGrassType::Data *arg0, const MKGrassType::Data *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void ***' and 'long *'
 void MKGrass_DeinitModule() {
     s8 *temp_r31_2744;
     void ***temp_r31_2722;
@@ -1442,7 +1442,7 @@ void MKGrass_DeinitModule() {
             free((u8 *) temp_r31_2722);
         }
     }
-    temp_r31_2744 = gpGrassTypes;
+    temp_r31_2744 = (signed char *) (gpGrassTypes);
     grassModelsList = NULL;
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2744, NULL, 0);
@@ -1499,11 +1499,11 @@ loop_6:
         if ((s32) gnGrassTypes != 0) {
             temp_r28_2828 = gnGrassTypes * 0x30;
             if (MKHeap::Current() != NULL) {
-                var_r3_2836 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2828, NULL, 0);
+                var_r3_2836 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2828, NULL, 0));
             } else {
                 var_r3_2836 = malloc(temp_r28_2828);
             }
-            gpGrassTypes = (s8 *) var_r3_2836;
+            gpGrassTypes = (long) ((s8 *) var_r3_2836);
             memset(var_r3_2836, 0, gnGrassTypes * 0x30);
             gnGrassTypes = 0;
             var_r28_2853 = sp8.GotoLine(NULL, NULL);
@@ -1552,10 +1552,10 @@ loop_22:
     }
     temp_r28_2947 = M2C_FIELD(&gMKDefaults, s32 *, 0x8C);
     if (temp_r28_2947 == 0) {
-        grassModelsList = &gEmptyPtrList + 4;
+        grassModelsList = (void ***) (&gEmptyPtrList + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_2963 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r28_2947 + 2) * 4, NULL, 0);
+            var_r3_2963 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc((temp_r28_2947 + 2) * 4, NULL, 0));
         } else {
             var_r3_2963 = malloc((temp_r28_2947 + 2) * 4);
         }
@@ -1573,7 +1573,7 @@ loop_22:
         M2C_FIELD(grassModelsList, s32 *, 4) = 0;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_2998 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x148, NULL, 0);
+        var_r3_2998 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x148, NULL, 0));
     } else {
         var_r3_2998 = malloc(0x148);
     }

@@ -112,7 +112,7 @@ void UIProp::Reset() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'Init(UIObject *, unsigned char[20])' does not match 'UIObject::Init()'
 s32 UIProp::LoadDone() {
     UIObject *var_r31_207;
     UIStringTable *temp_r30_196;
@@ -126,14 +126,14 @@ s32 UIProp::LoadDone() {
     temp_r30_196 = UIStringTable_SetCurrent(&this->unk58);
     temp_r31_198 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
     if (MKHeap::Current() != NULL) {
-        var_r31_207 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_198, NULL, 0);
+        var_r31_207 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_198, NULL, 0));
     } else {
         var_r31_207 = malloc(temp_r31_198);
     }
     M2C_FIELD(UISystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r31_207, UISystem::descriptor);
     var_r31_207->unk8 = UISystem::descriptor;
     var_r31_207->Init(UISystem::descriptor);
-    this->unk54 = checked_cast<UISystem *, UIObject>(var_r31_207);
+    this->unk54 = (void **) (checked_cast<UISystem *, UIObject>(var_r31_207));
     if (((UIObject *) this->unk54)->Load(this->unk50, NULL) != 0) {
         temp_r3_237 = this->unk54;
         M2C_FIELD(*temp_r3_237, M2C_UNK (**)(void **), 0x14)(temp_r3_237);
@@ -146,7 +146,7 @@ s32 UIProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_271;
 

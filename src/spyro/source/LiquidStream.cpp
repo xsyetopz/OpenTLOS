@@ -21,7 +21,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void LiquidStream::Draw() {
     M2C_UNK sp1B0;
     Matrix sp170;
@@ -217,7 +217,7 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'unsigned long'
 void *LiquidStream::Update() {
     f64 sp108;
     f64 sp100;
@@ -307,7 +307,7 @@ void *LiquidStream::Update() {
                     if ((u32) M2C_FIELD(this->unk54, u32 *, -4) != 0U) {
                         this->unk60 = 0;
                         this->unk5C = this->unk58;
-                        temp_r3_394 = ((u8 *) this->unk54) - 4;
+                        temp_r3_394 = (void **) (((u8 *) this->unk54) - 4);
                         this->unk54 = temp_r3_394;
                         temp_r4_396 = *temp_r3_394;
                         M2C_FIELD(temp_r4_396, f64 *, 0) = (f64) this->unk68;

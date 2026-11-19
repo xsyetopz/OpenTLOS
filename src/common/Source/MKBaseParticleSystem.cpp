@@ -124,7 +124,7 @@ MKParticleChunk *MKParticleSystem_AllocChunk(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKParticleChunk *' and 'MKParticleChunk **'
 void MKParticleSystem_DeinitModule() {
     MKParticleChunk **var_r31_136;
     MKParticleChunk **var_r3_137;
@@ -166,7 +166,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKParticleSystem_InitModule(int arg0) {
     MKParticleChunk **temp_r4_223;
     MKParticleChunk **var_r3_211;
@@ -176,11 +175,11 @@ void MKParticleSystem_InitModule(int arg0) {
     temp_r31_193 = (s32) (arg0 + 0x17) / 24;
     gTotalNumChunks = temp_r31_193;
     if (temp_r31_193 == 0) {
-        gParticleChunks = &gEmptyPtrListDL + 4;
+        gParticleChunks = (MKParticleChunk **) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_211 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90), NULL, 0);
+        var_r3_211 = (MKParticleChunk **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90), NULL, 0));
     } else {
         var_r3_211 = malloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90));
     }
@@ -200,7 +199,6 @@ void MKParticleSystem_InitModule(int arg0) {
     gParticleChunks += 4;
     M2C_FIELD(gParticleChunks, MKParticleChunk ***, 4) = NULL;
 }
-#endif
 
 void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleChunk *arg2) {
     f64 sp48;
@@ -529,7 +527,7 @@ loop_15:
     return temp_r3_812;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKParticleChunk *'
 void *MKBaseParticleSystem::CreateParticle() {
     MKParticleChunk *temp_r0_909;
     MKParticleChunk *temp_r0_918;
@@ -720,7 +718,6 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKBaseParticleSystem::Draw() {
     f64 sp10;
     f64 sp8;
@@ -736,7 +733,7 @@ void MKBaseParticleSystem::Draw() {
     (*(f32 *) ((u8 *) &sp10 + 0x4)) *= this->unk20;
     temp_r3_1176 = this->unk0;
     if ((u32) M2C_FIELD(temp_r3_1176, u32 *, 0x2C) == 0U) {
-        temp_r3_1182 = M2C_FIELD(M2C_FIELD(temp_r3_1176, void **, 0x38), s32 *, 0x24) + 0x30;
+        temp_r3_1182 = (void *) (M2C_FIELD(M2C_FIELD(temp_r3_1176, void **, 0x38), s32 *, 0x24) + 0x30);
         sp8 *= M2C_FIELD(temp_r3_1182, f64 *, 0);
         sp10 *= M2C_FIELD(temp_r3_1182, f64 *, 8);
     }
@@ -754,7 +751,6 @@ void MKBaseParticleSystem::Draw() {
     }
     this->unkC4 = var_r3_1210;
 }
-#endif
 
 void MKBaseParticleSystem::EmitParticles() {
 

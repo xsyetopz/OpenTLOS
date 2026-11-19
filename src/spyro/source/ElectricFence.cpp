@@ -56,7 +56,7 @@ extern s32 GS_SpyroZapBurn;
 extern void **gMK;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 void ElectricFence::AllocBeams() {
     f64 sp10;
     f64 sp8;
@@ -123,7 +123,7 @@ void ElectricFence::AllocBeams() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to
+#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to 'EnergyBeam::Beam *'
 void ElectricFence::FreeBeams() {
     s32 temp_r28_158;
     s32 var_r27_156;
@@ -341,7 +341,7 @@ void *ElectricFence::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to
+#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to 'void *'
 f32 ElectricFence::Resolve() {
     s32 var_ctr_514;
     s32 var_r3_511;
@@ -737,7 +737,7 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r27_1234;
@@ -812,12 +812,10 @@ void ElectricFence::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void ElectricFenceDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk80 = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
+    this->unk80 = (long) (checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam")));
 }
-#endif
 
 s32 ElectricFenceDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1373;

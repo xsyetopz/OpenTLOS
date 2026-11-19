@@ -234,7 +234,7 @@ s32 ConvexTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ConvexTier2::UpdateCollisionItems() {
     f64 sp60;
     f64 sp58;
@@ -264,7 +264,7 @@ void ConvexTier2::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does not match 'Enemy::GetCollisionRadius()'
 void ConvexTier2::SetupCollision() {
     f64 sp40;
     f64 sp38;

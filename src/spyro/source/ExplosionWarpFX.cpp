@@ -498,7 +498,6 @@ void ExplosionWarpFX::Update() {
     UpdateWarp();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ExplosionWarpFX::Init() {
     s32 temp_r30_857;
     s32 temp_r30_875;
@@ -530,9 +529,8 @@ void ExplosionWarpFX::Init() {
         var_r3_901 = malloc(temp_r30_893);
     }
     this->unk8 = var_r3_901;
-    this->unk60 = MKMaterial_Create("fx_wobblemat");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("fx_wobblemat"));
     BuildLocalVertexList();
     this->unk64 = 0.0f;
     this->unk68 = 0;
 }
-#endif

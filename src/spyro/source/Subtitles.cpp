@@ -265,7 +265,7 @@ void Subtitles_Deinit() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 void Subtitles_Init(const char *arg0) {
     s32 sp8;
     MKIni *temp_r27_562;
@@ -292,7 +292,7 @@ void Subtitles_Init(const char *arg0) {
     Subtitles_Deinit();
     if (MKArchive_Exists(Str_Printf("%s.ini.bni", arg0), NULL) != 0) {
         MKHeap::ActivateTempMemOverride();
-        temp_r27_562 = &sub + 0x14;
+        temp_r27_562 = (MKIni *) (&sub + 0x14);
         temp_r27_562->Init(Str_Printf("%s.ini", arg0), 0, NULL);
         temp_r3_567 = temp_r27_562->GetFirstLine();
         M2C_FIELD(&sub, MKIniLine **, 0x64) = temp_r3_567;

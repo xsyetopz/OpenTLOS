@@ -162,7 +162,6 @@ void *CynderElecAttack::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 CynderElecAttack::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -199,13 +198,12 @@ f32 CynderElecAttack::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk15C = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_611, lit_612);
+    this->unk15C = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_611, lit_612));
     temp_r4_330 = this->unk15C;
     if (temp_r4_330 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_330, 0U);
     }
 }
-#endif
 
 s32 CynderElecAttack::LoadDone() {
     Projectile::LoadDone();
@@ -240,13 +238,11 @@ void *CynderElecAttack::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void CynderElecAttackDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pCynderElecAttackDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    this->unkF0 = (long) (checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam")));
 }
-#endif
 
 void CynderElecAttackDescriptor::Deinit() {
     pCynderElecAttackDescriptor = NULL;

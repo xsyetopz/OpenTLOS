@@ -15,7 +15,7 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void NodeLookAtIK::Update(MKVector3 *arg0) {
     Matrix sp220;
     Matrix sp1E0;
@@ -254,7 +254,7 @@ void NodeLookAt::Reset() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void NodeLookAt::Update(MKVector3 *arg0) {
     Matrix sp150;
     Matrix sp110;

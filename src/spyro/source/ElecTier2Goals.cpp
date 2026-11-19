@@ -557,7 +557,7 @@ block_11:
         AddSubgoal((Goal<Enemy> *) this->unk30);
         temp_r5_1031 = M2C_FIELD(this->unkC->unkA44, void **, 0x18);
         temp_r4_1032 = this->unk30;
-        temp_r3_1036 = M2C_FIELD(temp_r5_1031, s32 *, 0x24) + (this->unk20->unkB14 * M2C_FIELD(temp_r5_1031, s32 *, 0x1C));
+        temp_r3_1036 = (void *) (M2C_FIELD(temp_r5_1031, s32 *, 0x24) + (this->unk20->unkB14 * M2C_FIELD(temp_r5_1031, s32 *, 0x1C)));
         M2C_FIELD(temp_r4_1032, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_1036, f64 *, 0);
         M2C_FIELD(temp_r4_1032, f64 *, 0x20) = (f64) M2C_FIELD(temp_r3_1036, f64 *, 8);
         return;
@@ -725,7 +725,7 @@ u8 ElecTier2Goal_GroundMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ElecTier2Goal_GroundMode::Activate() {
     MKVector3 sp8;
     ElecTier2 *temp_r3_1373;

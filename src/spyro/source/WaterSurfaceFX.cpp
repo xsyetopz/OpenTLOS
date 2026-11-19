@@ -181,7 +181,7 @@ void WaterSurfaceFX::SpawnRipple(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &arg2, const MKVector3 &arg3, float farg0) {
     f64 sp78;
     f64 sp70;
@@ -225,7 +225,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
         if (temp_r4_249 < 0) {
             var_r0_258 = 0x31;
         }
-        temp_r3_264 = M2C_FIELD(arg1, s32 *, 0) + (var_r0_258 * 0x28);
+        temp_r3_264 = (void *) (M2C_FIELD(arg1, s32 *, 0) + (var_r0_258 * 0x28));
         sp20 = M2C_FIELD(temp_r3_264, f64 *, 0) - M2C_FIELD(&arg2, f64 *, 0);
         sp60 = sp20;
         sp28 = M2C_FIELD(temp_r3_264, f32 *, 8) - arg2.unk8;
@@ -274,7 +274,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
         }
     } else {
 block_25:
-        temp_r4_370 = M2C_FIELD(arg1, s32 *, 0) + (M2C_FIELD(arg1, s32 *, 8) * 0x28);
+        temp_r4_370 = (void *) (M2C_FIELD(arg1, s32 *, 0) + (M2C_FIELD(arg1, s32 *, 8) * 0x28));
         M2C_FIELD(temp_r4_370, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
         M2C_FIELD(temp_r4_370, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
         sp70 = M2C_FIELD(&arg3, f64 *, 0);
@@ -283,7 +283,7 @@ block_25:
         MKVector(0.0f, 1.0f, 0.0f);
         sp14 = (sp48 * (f32) sp70) - (sp40 * (f32) sp78);
         sp10 = (sp44 * (f32) sp78) - (sp48 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
-        temp_r3_403 = M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10);
+        temp_r3_403 = (void *) (M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10));
         sp18 = (sp40 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - (sp44 * (f32) sp70);
         M2C_FIELD(temp_r3_403, f64 *, 0) = (f64) sp10;
         M2C_FIELD(temp_r3_403, f64 *, 8) = (f64) sp18;
@@ -291,7 +291,7 @@ block_25:
         sp58 = (f64) sp18;
         if ((s32) M2C_FIELD(arg1, s32 *, 8) != (s32) M2C_FIELD(arg1, s32 *, 4)) {
             KDMath_Smooth<MKVector3>(sp30, *(M2C_FIELD(arg1, s32 *, 0) + ((var_r31_250 * 0x28) + 0x10)), 0.125f, 1.0f);
-            temp_r3_432 = M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10);
+            temp_r3_432 = (void *) (M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10));
             M2C_FIELD(temp_r3_432, f64 *, 0) = M2C_BITWISE(f64, sp30);
             M2C_FIELD(temp_r3_432, f64 *, 8) = (f64) sp30.unk8;
         }
@@ -432,7 +432,7 @@ loop_16:
                 sp140 = (f64) spA0;
                 MKSetColorV(*((MKVector4 *) &sp138));
                 MKSetTexCoord1F(1.0f, var_f21_638 + this->unk54);
-                temp_r4_671 = M2C_FIELD(arg1, s32 *, 0) + temp_r28_644;
+                temp_r4_671 = (void *) (M2C_FIELD(arg1, s32 *, 0) + temp_r28_644);
                 temp_f27_673 = M2C_FIELD(temp_r4_671, f32 *, 0x20);
                 temp_f0_675 = *(temp_r4_671 + 0x10) * (f64) temp_f23_652;
                 sp88 = temp_f0_675;
@@ -463,7 +463,7 @@ loop_16:
                 spF0 = (f64) sp50;
                 MKSetColorV(*((MKVector4 *) &spE8));
                 MKSetTexCoord1F(0.0f, var_f21_638 + this->unk54);
-                temp_r4_733 = M2C_FIELD(arg1, s32 *, 0) + temp_r28_644;
+                temp_r4_733 = (void *) (M2C_FIELD(arg1, s32 *, 0) + temp_r28_644);
                 temp_f26_735 = M2C_FIELD(temp_r4_733, f32 *, 0x20);
                 temp_f0_737 = *(temp_r4_733 + 0x10) * (f64) temp_f23_652;
                 sp38 = temp_f0_737;
@@ -617,7 +617,7 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'WaterSurfaceFX::Wake' to
+#if 0 // DRAFT: illegal implicit conversion from 'WaterSurfaceFX::Wake' to 'WaterSurfaceFX::Wake **'
 void WaterSurfaceFX::Deinit() {
     WaterSurfaceFX::Wake **temp_r30_1050;
     WaterSurfaceFX::Wake **temp_r3_1047;
@@ -813,7 +813,6 @@ loop_6:
     UpdateRipples();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void WaterSurfaceFX::Init() {
     WaterSurfaceFX::Wake **temp_r3_1344;
     WaterSurfaceFX::Wake **temp_r3_1350;
@@ -831,7 +830,7 @@ void WaterSurfaceFX::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1329 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0);
+        var_r3_1329 = (WaterSurfaceFX::Wake **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0));
     } else {
         var_r3_1329 = malloc(0x38);
     }
@@ -856,7 +855,7 @@ loop_10:
         this->unk4C = temp_r3_1358;
         temp_r30_1360 = *temp_r3_1358;
         if (MKHeap::Current() != NULL) {
-            var_r3_1368 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0);
+            var_r3_1368 = (WaterSurfaceFX::Wake **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0));
         } else {
             var_r3_1368 = malloc(0x7D0);
         }
@@ -873,7 +872,7 @@ loop_13:
     this->unk50 = NULL;
     this->unk54 = 0.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_1404 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x94, NULL, 0);
+        var_r3_1404 = (WaterSurfaceFX::Wake **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x94, NULL, 0));
     } else {
         var_r3_1404 = malloc(0x94);
     }
@@ -894,7 +893,6 @@ loop_13:
     M2C_FIELD(temp_r3_1425, WaterSurfaceFX::Wake ***, 4) = NULL;
     this->unk58 = 1.0f;
 }
-#endif
 
 void WaterSurfaceFXDescriptor::Deinit() {
     MKMaterial_Destroy(this->unk60);
@@ -904,12 +902,10 @@ void WaterSurfaceFXDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void WaterSurfaceFXDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create("fx_wakeAdd");
-    this->unk64 = MKMaterial_Create("fx_wakeSub");
-    this->unk68 = MKMaterial_Create("fx_RippleAdd");
-    this->unk6C = MKMaterial_Create("fx_RippleSub");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("fx_wakeAdd"));
+    this->unk64 = (MKMaterial *) (MKMaterial_Create("fx_wakeSub"));
+    this->unk68 = (MKMaterial *) (MKMaterial_Create("fx_RippleAdd"));
+    this->unk6C = (MKMaterial *) (MKMaterial_Create("fx_RippleSub"));
 }
-#endif

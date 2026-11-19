@@ -609,7 +609,7 @@ void SpyroFallState::LongFallExit() {
     temp_r3_730->unk428 = temp_r3_730->unk428 | 0x40000 | 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFallState::LongFallEnter() {
     Spyro *temp_r3_747;
     Spyro *temp_r7_775;
@@ -751,7 +751,7 @@ void SpyroFallState::FallTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFallState::FallUpdate() {
     f64 sp20;
     f64 sp18;
@@ -793,7 +793,7 @@ void SpyroFallState::FallExit() {
     temp_r3_1063->unk428 &= 0xFFFF7FFF;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFallState::FallEnter() {
     f64 sp10;
     f64 sp8;

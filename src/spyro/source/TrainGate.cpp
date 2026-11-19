@@ -111,7 +111,7 @@ void TrainGate::Init() {
 void TrainGateDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("closed");
-    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("opening");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("open");
+    this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("opening"));
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("open"));
 }
 #endif

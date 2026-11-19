@@ -61,7 +61,7 @@ void MKHeap::DumpTBlocks() {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'const void *' and 'unsigned long'
 u8 MKHeap::ExistsInHeap(const void *arg0) {
     u8 var_r5_87;
 
@@ -73,7 +73,7 @@ u8 MKHeap::ExistsInHeap(const void *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
     MKHeap *temp_r3_115;
     s32 var_r29_111;
@@ -83,7 +83,7 @@ void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
         var_r29_111 = 9;
         var_r31_113 = 0x24;
 loop_2:
-        temp_r3_115 = MKHeap::heapList[var_r31_113];
+        temp_r3_115 = (MKHeap *) (MKHeap::heapList[var_r31_113]);
         if ((temp_r3_115 != NULL) && (temp_r3_115->ExistsInHeap(this) != 0)) {
             ((MKHeap *) (MKHeap::heapList[var_r31_113]))->Free(this, (s8 *) arg0, (s32) arg1);
             return;
@@ -99,7 +99,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void MKHeap::TFree(const void *arg0, const char *arg1, int arg2) {
     f32 temp_r6_147;
     f32 var_r5_174;
@@ -151,7 +151,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void *MKHeap::TReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     f32 temp_r3_225;
     f32 var_r31_228;
@@ -193,7 +193,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void *MKHeap::TAlloc(int arg0, const char *arg1, int arg2, bool arg3) {
     s32 spC;
     s32 sp8;
@@ -219,13 +219,13 @@ void *MKHeap::TAlloc(int arg0, const char *arg1, int arg2, bool arg3) {
     if (M2C_BITWISE(u32, temp_r8_292) < temp_r10_294) {
 loop_1:
         if ((s32) M2C_FIELD(var_r31_295, s32 *, 4) == -1) {
-            var_r4_306 = M2C_BITWISE(s32, var_r31_295) + 0x10;
+            var_r4_306 = (void *) (M2C_BITWISE(s32, var_r31_295) + 0x10);
 loop_4:
             if ((var_r4_306 < temp_r10_294) && ((s32) M2C_FIELD(var_r4_306, s32 *, 4) == -1)) {
                 var_r4_306 += 0x10;
                 goto loop_4;
             }
-            var_r11_317 = M2C_BITWISE(s32, var_r31_295) - 0x10;
+            var_r11_317 = (void *) (M2C_BITWISE(s32, var_r31_295) - 0x10);
 loop_8:
             if ((var_r11_317 > M2C_BITWISE(u32, temp_r8_292)) && ((s32) M2C_FIELD(var_r11_317, s32 *, 4) == -1)) {
                 var_r11_317 -= 0x10;
@@ -311,7 +311,7 @@ void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     s32 spC;
     s32 sp8;
@@ -342,7 +342,7 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void *' and 'long'
 void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 spC;
     s32 sp8;
@@ -386,14 +386,12 @@ u32 MKHeap::Main() {
     return *MKHeap::heapList;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 MKHeap *MKHeap::Current() {
     if ((s32) *MKHeap::currentHeap == -1) {
         return NULL;
     }
-    return *(MKHeap::heapObjects + (*MKHeap::currentHeap * 4));
+    return (MKHeap *) (*(MKHeap::heapObjects + (*MKHeap::currentHeap * 4)));
 }
-#endif
 
 s32 MKHeap::Pop() {
     s32 temp_r0_667;
@@ -403,21 +401,18 @@ s32 MKHeap::Pop() {
     return MKHeap::heapObjects[temp_r0_667];
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void MKHeap::Push() {
     s32 temp_r5_679;
 
     temp_r5_679 = *MKHeap::currentHeap + 1;
     *MKHeap::currentHeap = temp_r5_679;
-    *(MKHeap::heapObjects + (temp_r5_679 * 4)) = this;
+    *(MKHeap::heapObjects + (temp_r5_679 * 4)) = (unsigned char) (this);
 }
-#endif
 
 u32 MKHeap::GetPeak() {
     return *MKHeap::peak;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKHeap::UpdatePeak() {
     MKHeap *temp_r3_708;
     s32 temp_r0_717;
@@ -440,9 +435,9 @@ void MKHeap::UpdatePeak() {
     var_r26_705 = 0;
     var_r28_706 = 0;
     do {
-        temp_r3_708 = MKHeap::heapList[var_r28_706];
+        temp_r3_708 = (MKHeap *) (MKHeap::heapList[var_r28_706]);
         if ((temp_r3_708 != NULL) && (temp_r3_708->IsWithinAHeap() == 0)) {
-            temp_r3_714 = MKHeap::heapList[var_r28_706];
+            temp_r3_714 = (void *) (MKHeap::heapList[var_r28_706]);
             temp_r4_715 = M2C_FIELD(temp_r3_714, s32 *, 0xC);
             temp_r6_716 = M2C_FIELD(temp_r3_714, s32 *, 0x44);
             temp_r0_717 = M2C_FIELD(temp_r3_714, s32 *, 0);
@@ -470,9 +465,7 @@ void MKHeap::UpdatePeak() {
     }
     *MKHeap::tempHeapPeak = var_r0_746;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     s32 sp10;
     s32 spC;
@@ -499,7 +492,7 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
     var_r30_796 = 0;
     var_r25_798 = 0;
     do {
-        temp_r3_800 = MKHeap::heapList[var_r25_798];
+        temp_r3_800 = (MKHeap *) (MKHeap::heapList[var_r25_798]);
         if ((temp_r3_800 != NULL) && (temp_r3_800->IsWithinAHeap() == 0)) {
             if (this != NULL) {
                 this->unk0 += 1;
@@ -519,9 +512,8 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
         var_r25_798 += 4;
     } while (var_r30_796 < 0xA);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: type mismatch 'unsigned long' and 'MKHeap *'
 u8 MKHeap::IsWithinAHeap() {
     s32 var_ctr_860;
     s32 var_r4_859;
@@ -530,7 +522,7 @@ u8 MKHeap::IsWithinAHeap() {
     var_r4_859 = 0;
     var_ctr_860 = 0xA;
 loop_1:
-    temp_r7_862 = MKHeap::heapList[var_r4_859];
+    temp_r7_862 = (void *) (MKHeap::heapList[var_r4_859]);
     if ((temp_r7_862 != NULL) && (temp_r7_862 != this) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 0) <= (MKHeap *) this->unk0) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 4) >= (u32) this->unk4)) {
         return 1U;
     }
@@ -564,7 +556,6 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void MKHeap::AddHeapToGlobalList() {
     s32 var_ctr_912;
     s32 var_r4_911;
@@ -573,7 +564,7 @@ void MKHeap::AddHeapToGlobalList() {
     var_ctr_912 = 0xA;
 loop_1:
     if ((u32) MKHeap::heapList[var_r4_911] == 0U) {
-        MKHeap::heapList[var_r4_911] = this;
+        MKHeap::heapList[var_r4_911] = (unsigned char) (this);
         return;
     }
     var_r4_911 += 4;
@@ -583,7 +574,6 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
 void MKHeap::DeInit() {
     if ((u8) M2C_FIELD(this, u8 *, 0x34) == 0) {
@@ -592,7 +582,7 @@ void MKHeap::DeInit() {
     RemoveHeapFromGlobalList();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void MKHeap::Init(int arg0, int arg1, const char *arg2, void *arg3) {
     s32 spC;
     s32 sp8;
@@ -601,10 +591,10 @@ void MKHeap::Init(int arg0, int arg1, const char *arg2, void *arg3) {
 
     if (arg3 != NULL) {
         this->unk0 = (MKHeap *) arg3;
-        this->unk4 = (this->unk0 + arg0) - (arg1 * 0x10);
+        this->unk4 = (long) ((this->unk0 + arg0) - (arg1 * 0x10));
         M2C_FIELD(this, s8 *, 0x34) = 1;
     } else {
-        this->unk0 = OSAllocFromHeap(__OSCurrHeap, arg0 + (arg1 * 0x10));
+        this->unk0 = (MKHeap *) (OSAllocFromHeap(__OSCurrHeap, arg0 + (arg1 * 0x10)));
         this->unk4 = (s32) (this->unk0 + arg0);
         M2C_FIELD(this, s8 *, 0x34) = 0;
         memset(this->unk0, 0xCD, (u32) arg0);

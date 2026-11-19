@@ -21,7 +21,7 @@ extern s32 zoneDisableMask;
 PropGroupVolume overlay__15PropGroupVolume;
 static s32 zoneEnableMask = 1;
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[8], int)' does not match
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[8], int)' does not match 'strnicmp(const char *, const char *, int)'
 u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
     s8 *sp8;
     s32 temp_r28_128;
@@ -80,7 +80,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to 'float'
 void PropGroupVolume::CullGroups(const MKVector3 &arg0) {
     f32 temp_f0_286;
     f32 temp_f1_241;
@@ -120,7 +120,7 @@ void PropGroupVolume::CullGroups(const MKVector3 &arg0) {
                 var_ctr_208 -= 1;
             } while (var_ctr_208 != 0);
         }
-        var_r4_217 = *PropGroupVolumeDescriptor::pFirstDesc;
+        var_r4_217 = (void *) (*PropGroupVolumeDescriptor::pFirstDesc);
         var_r30_218 = 0;
 loop_5:
         if ((var_r4_217 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_217, void **, 0x60), s32 *, 0x138) & 2)) {
@@ -211,7 +211,7 @@ s32 PropGroupVolume::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_445;
 
@@ -223,7 +223,7 @@ s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'PropGroupVolume' to
+#if 0 // DRAFT: illegal implicit conversion from 'PropGroupVolume' to 'long'
 void PropGroupVolume::Deinit() {
     s32 temp_r0_527;
     s32 var_r3_522;
@@ -256,13 +256,12 @@ void PropGroupVolume::Init() {
     this->unkA0 = -1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'PropGroupVolumeDescriptor *' to
 void PropGroupVolumeDescriptor::Deinit() {
     PropGroupVolumeDescriptor *temp_r4_586;
     PropGroupVolumeDescriptor *temp_r4_592;
 
     if ((PropGroupVolumeDescriptor *) *PropGroupVolumeDescriptor::pFirstDesc == this) {
-        *PropGroupVolumeDescriptor::pFirstDesc = this->unk68;
+        *PropGroupVolumeDescriptor::pFirstDesc = (unsigned char) (this->unk68);
     }
     temp_r4_586 = this->unk64;
     if (temp_r4_586 != NULL) {
@@ -277,17 +276,16 @@ void PropGroupVolumeDescriptor::Deinit() {
     this->unk60 = NULL;
     MKPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: pointer/array required
 void PropGroupVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = *PropGroupVolumeDescriptor::pFirstDesc;
+    this->unk68 = (PropGroupVolumeDescriptor *) (*PropGroupVolumeDescriptor::pFirstDesc);
     this->unk64 = NULL;
     if ((PropGroupVolumeDescriptor *) *PropGroupVolumeDescriptor::pFirstDesc != NULL) {
         (*PropGroupVolumeDescriptor::pFirstDesc)->unk64 = this;
     }
-    *PropGroupVolumeDescriptor::pFirstDesc = this;
+    *PropGroupVolumeDescriptor::pFirstDesc = (unsigned char) (this);
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

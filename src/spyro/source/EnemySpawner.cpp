@@ -287,7 +287,6 @@ void SpawnPoint::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDSplinePathSegmentProp *' to
 void EnemySpawnPointData::Resolve() {
     MKSceneManager *temp_r3_679;
     MKSceneManager *temp_r3_693;
@@ -296,24 +295,23 @@ void EnemySpawnPointData::Resolve() {
 
     temp_r3_679 = this->unk20;
     if (temp_r3_679 != NULL) {
-        temp_r3_683 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_679->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_683 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_679->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
         if (temp_r3_683 != 0U) {
-            this->unk20 = temp_r3_683 + 0x4C;
+            this->unk20 = (MKSceneManager *) (temp_r3_683 + 0x4C);
         } else {
             this->unk20 = NULL;
         }
     }
     temp_r3_693 = this->unk24;
     if (temp_r3_693 != NULL) {
-        temp_r3_697 = checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_693->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_697 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_693->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
         if (temp_r3_697 != 0U) {
-            this->unk24 = temp_r3_697 + 0x50;
+            this->unk24 = (MKSceneManager *) (temp_r3_697 + 0x50);
             return;
         }
         this->unk24 = NULL;
     }
 }
-#endif
 
 void EnemySpawnPointData::LoadDone() {
     KDPathSegment *temp_r3_722;

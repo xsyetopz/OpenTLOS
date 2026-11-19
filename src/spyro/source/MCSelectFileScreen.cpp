@@ -64,7 +64,7 @@ block_11:
         KDSound_Play(GS_MenuSelect, 0U, -1);
         temp_r0_107 = M2C_FIELD(this->unkDC, s32 *, 0x68);
         *MemoryCardScreen::selectedFile = temp_r0_107;
-        temp_r3_111 = *MemoryCardScreen::selectedCard + ((temp_r0_107 * 0xC0) + 0x40);
+        temp_r3_111 = (void *) (*MemoryCardScreen::selectedCard + ((temp_r0_107 * 0xC0) + 0x40));
         if ((s8) M2C_FIELD(temp_r3_111, u8 *, 0xA5) != 0) {
             *MCActionScreen::action = 5;
             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCAction");
@@ -376,21 +376,19 @@ loop_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIObject *' to
 void MCSelectFileScreen::Resolve() {
     MemoryCardScreen::Resolve();
     this->unkDC = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
-    this->unkE4 = FindChild("SelectText");
-    this->unkE8 = FindChild("NoFiles");
-    this->unkD0 = FindPrompt((UIContainer *) this);
-    this->unkD4 = ((UIContainer *) this->unkD0)->FindChild("UpDown");
+    this->unkE4 = (void **) (FindChild("SelectText"));
+    this->unkE8 = (void **) (FindChild("NoFiles"));
+    this->unkD0 = (void **) (FindPrompt((UIContainer *) this));
+    this->unkD4 = (void **) (((UIContainer *) this->unkD0)->FindChild("UpDown"));
     if ((void **) this->unkD4 == NULL) {
-        this->unkD4 = ((UIContainer *) this->unkD0)->FindChild("LeftRight");
+        this->unkD4 = (void **) (((UIContainer *) this->unkD0)->FindChild("LeftRight"));
     }
-    this->unkD8 = ((UIContainer *) this->unkD0)->FindChild("Forward");
-    this->unkE0 = FindChild("FileInfo");
+    this->unkD8 = (void **) (((UIContainer *) this->unkD0)->FindChild("Forward"));
+    this->unkE0 = (void **) (FindChild("FileInfo"));
 }
-#endif
 
 void MCSelectFileScreen::Init() {
     MemoryCardScreen::Init();

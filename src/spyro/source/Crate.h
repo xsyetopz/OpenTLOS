@@ -177,7 +177,7 @@ public:
 extern u8 crateDescFlags[0x50];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Attachment *' and 'Attachment **'
 inline Crate::~Crate() {
     Attachment **temp_r4_26;
     Attachment *temp_r0_23;

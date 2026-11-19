@@ -49,7 +49,7 @@ void OptionsScreen::OnExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIButton *' to
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void OptionsScreen::Update() {
     s32 sp1C;
     s32 sp18;
@@ -71,11 +71,11 @@ void OptionsScreen::Update() {
     void *temp_r29_145;
 
     UIScreen::Update();
-    temp_r3_91 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("SoundVolume"));
+    temp_r3_91 = (void **) (ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("SoundVolume")));
     if ((temp_r3_91 != NULL) && ((u8) M2C_FIELD(temp_r3_91, u8 *, 0x16) != 0) && ((UIControls_DirectionPressed((FrontEndControls) 7, -1) != 0) || (UIControls_DirectionPressed((FrontEndControls) 5, -1) != 0))) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
     }
-    temp_r3_118 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("MusicVolume"));
+    temp_r3_118 = (void **) (ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("MusicVolume")));
     if (temp_r3_118 != NULL) {
         if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) != 0) && (KDSound_IsMusicPaused() != 0)) {
             KDSound_PauseMusic(0U, 0U);
@@ -125,7 +125,7 @@ void OptionsScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void OptionsScreen::OnEnter() {
     s32 sp4C;
     s32 sp48;
@@ -165,7 +165,7 @@ void OptionsScreen::OnEnter() {
     Message(&sp48);
     temp_r3_263 = this->unkD0;
     if (temp_r3_263 != NULL) {
-        temp_r3_270 = ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound"));
+        temp_r3_270 = (void **) (ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound")));
         if (temp_r3_270 != NULL) {
             if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
                 var_r30_279 = 0;
@@ -222,7 +222,7 @@ block_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIButton *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void OptionsScreen::Resolve() {
     s32 sp14;
     s32 sp10;
@@ -237,13 +237,13 @@ void OptionsScreen::Resolve() {
     this->unkD0 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("OptionsButtons"));
     temp_r3_418 = this->unkD0;
     if (temp_r3_418 != NULL) {
-        this->unkD4 = ui_cast<UIButton *, UIObject *>(temp_r3_418->FindChild("Position"));
+        this->unkD4 = (void **) (ui_cast<UIButton *, UIObject *>(temp_r3_418->FindChild("Position")));
     }
-    this->unkD8 = ui_cast<UIContainer *, UIObject *>(FindChild("PromptGroup"));
+    this->unkD8 = (void **) (ui_cast<UIContainer *, UIObject *>(FindChild("PromptGroup")));
     temp_r3_435 = this->unkD8;
     if (temp_r3_435 != NULL) {
-        this->unkDC = ((UIContainer *) temp_r3_435)->FindChild("LeftRight");
-        this->unkE0 = ((UIContainer *) this->unkD8)->FindChild("Forward");
+        this->unkDC = (void **) (((UIContainer *) temp_r3_435)->FindChild("LeftRight"));
+        this->unkE0 = (void **) (((UIContainer *) this->unkD8)->FindChild("Forward"));
     }
     if (Sound_GetSystemAudioMode() == 0) {
         temp_r3_457 = this->unkD0->FindChild("Output");

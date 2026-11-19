@@ -158,7 +158,7 @@ loop_10:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBreathFX::SpawnWallIceShard(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     u8 sp108;
     s32 sp104;
@@ -1163,7 +1163,7 @@ loop_71:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
+#if 0 // DRAFT: illegal type
 u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, const int &arg5) {
     Matrix sp750;
     Matrix sp710;
@@ -1484,7 +1484,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     void *temp_r5_3537;
     void *temp_r7_1867;
 
-    this->unkB0 = &arg5;
+    this->unkB0 = (long) (&arg5);
     temp_r0_1839 = this->unkB0;
     switch (temp_r0_1839) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
@@ -2162,7 +2162,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void IceBreathFX::Deinit() {
     ManagedLight *temp_r4_3672;
     Matrix **temp_r31_3656;
@@ -2342,7 +2342,7 @@ void IceBreathFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Matrix *'
 void *IceBreathFX::Update() {
     u8 sp300;
     s32 sp2FC;
@@ -2663,8 +2663,8 @@ void *IceBreathFX::Update() {
                 } while (var_r25_4235 < 5);
                 temp_r5_4312 = this->unkA8;
                 temp_r4_4313 = var_r26_3966 + 0x28;
-                temp_r3_4314 = *(temp_r5_4312 + temp_r4_4313);
-                *(temp_r5_4312 + temp_r4_4313) = temp_r3_4314 - 1;
+                temp_r3_4314 = (long) (*(temp_r5_4312 + temp_r4_4313));
+                *(temp_r5_4312 + temp_r4_4313) = (Matrix *) (temp_r3_4314 - 1);
                 if (temp_r3_4314 <= 0) {
                     var_r29_4000 = 1;
                     *(this->unkA8 + (var_r26_3966 + 0x20)) = 0;
@@ -2888,7 +2888,6 @@ void *IceBreathFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 IceBreathFX::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -2925,15 +2924,14 @@ f32 IceBreathFX::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk168 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_732, lit_733);
+    this->unk168 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_732, lit_733));
     temp_r4_4901 = this->unk168;
     if (temp_r4_4901 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_4901, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void IceBreathFX::Init() {
     Matrix **temp_r3_5003;
     Matrix **temp_r4_5009;
@@ -2951,7 +2949,7 @@ void IceBreathFX::Init() {
     this->unk170 = checked_cast<FuryFXIce *, MKProp>(gMK->CreateProp("FuryFXIce"));
     this->unk174 = checked_cast<FuryFXIce2 *, MKProp>(gMK->CreateProp("FuryFXIce2"));
     if (MKHeap::Current() != NULL) {
-        var_r3_4944 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4B0, NULL, 0);
+        var_r3_4944 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x4B0, NULL, 0));
     } else {
         var_r3_4944 = malloc(0x4B0);
     }
@@ -2970,7 +2968,7 @@ void IceBreathFX::Init() {
     this->unk168 = NULL;
     this->unk16C = 0.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_4988 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
+        var_r3_4988 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0));
     } else {
         var_r3_4988 = malloc(0x698);
     }

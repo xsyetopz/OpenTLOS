@@ -852,7 +852,6 @@ void *FootStepFX::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FootStepFX::Init() {
     void *var_r3_1295;
 
@@ -865,20 +864,17 @@ void FootStepFX::Init() {
     this->unk4C = var_r3_1295;
     this->unk50 = 0;
     this->unk54 = 0;
-    this->unk58 = MKMaterial_Create("spyro_footprintAdd");
-    this->unk5C = MKMaterial_Create("spyro_footprintSub");
+    this->unk58 = (MKMaterial *) (MKMaterial_Create("spyro_footprintAdd"));
+    this->unk5C = (MKMaterial *) (MKMaterial_Create("spyro_footprintSub"));
     this->unk60 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void FootStepFXDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepWoodDustPS"));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepMudPS"));
-    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepSnowPS"));
+    this->unk60 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepWoodDustPS")));
+    this->unk64 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepMudPS")));
+    this->unk68 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepSnowPS")));
 }
-#endif
 
 void FootStepFXDescriptor::Init() {
     MKPropDescriptor::Init();

@@ -19,19 +19,17 @@
 #include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 stricmp(u8 *, s8 *);                            /* extern */
 
 s32 *KDSP_EnvelopeList::GetEnvelope(int arg0) {
     s32 *temp_r3_13;
 
-    temp_r3_13 = this->unk4 + (arg0 * 0x5C);
+    temp_r3_13 = (long *) (this->unk4 + (arg0 * 0x5C));
     if ((s32) *temp_r3_13 <= 0) {
         return NULL;
     }
     return temp_r3_13;
 }
-#endif
 
 void KDSP_EnvelopeList::LoadEnvelope(MKIniLine *arg0, KDBasicEnvelope *arg1) {
     f32 temp_f31_57;
@@ -62,7 +60,6 @@ void KDSP_EnvelopeList::Deinit() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_EnvelopeList::Parse(KDSynkerHeap *arg0, MKIni *arg1) {
     KDBasicEnvelope *temp_r5_120;
     MKIniLine *temp_r6_95;
@@ -84,7 +81,7 @@ void KDSP_EnvelopeList::Parse(KDSynkerHeap *arg0, MKIni *arg1) {
             var_r30_114 = temp_r6_95->unkC->GetSubLine(temp_r6_95);
 loop_4:
             if (var_r30_114 != NULL) {
-                temp_r5_120 = this->unk4 + var_r31_104;
+                temp_r5_120 = (KDBasicEnvelope *) (this->unk4 + var_r31_104);
                 var_r31_104 += 0x5C;
                 LoadEnvelope(var_r30_114, temp_r5_120);
                 var_r30_114 = var_r30_114->unkC->GetNextLine(var_r30_114);
@@ -93,7 +90,6 @@ loop_4:
         }
     }
 }
-#endif
 
 void KDSP_EnvelopeList::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
     MKIniLine *temp_r3_154;
@@ -148,7 +144,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnvelope *arg2, float arg3, int &arg4, float &arg5) {
     f32 temp_f1_329;
     f32 temp_f2_316;
@@ -192,7 +188,7 @@ s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnv
     temp_f2_316 = &arg5 * arg1->unk8;
     &arg4 = 0;
 loop_19:
-    temp_r5_325 = &arg4;
+    temp_r5_325 = (long) (&arg4);
     temp_f1_329 = *(arg1->unkC + ((temp_r5_325 << 5) + 0x1C));
     if (((var_f3_313 + temp_f1_329) < temp_f2_316) && (temp_r5_325 < (s32) (arg1->unk4 - 1))) {
         var_f3_313 += temp_f1_329;

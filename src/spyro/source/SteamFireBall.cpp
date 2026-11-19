@@ -358,13 +358,11 @@ void *SteamFireBall::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void SteamFireBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unkF0 = (long) (checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4")));
     pSteamFireBallDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void SteamFireBallDescriptor::Deinit() {
     pSteamFireBallDescriptor = NULL;

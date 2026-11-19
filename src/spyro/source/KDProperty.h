@@ -114,11 +114,9 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 inline void KDProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
 }
-#endif
 
 inline void KDProperty::Deinit() {
 
@@ -180,11 +178,9 @@ inline void KDProperty::InitInstance() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDProperty *' to
 inline void KDProperty::SetOwnerProp(MKProp *arg0) {
-    *KDProperty::pInstanceMem = this;
+    *KDProperty::pInstanceMem = (unsigned char) (this);
 }
-#endif
 
 inline u64 KDProperty::GetOwnerProp() {
     return (u64) *KDProperty::pInstanceMem;

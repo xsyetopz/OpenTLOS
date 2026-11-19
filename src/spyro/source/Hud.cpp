@@ -12,7 +12,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'Hud_bDisableDraw' redeclared
+#if 0 // DRAFT: identifier 'Hud_bDisableDraw' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 Hud_bDisableDraw;
 #endif
 extern HudItem *pHudItems;
@@ -363,11 +363,9 @@ void Hud_DeinitModule() {
     pMatIcons = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void Hud_InitModule() {
-    pMatIcons = MKMaterial_Create("ui_breath_icons");
-    pMatPool = MKMaterial_Create("ui_levelup_pool");
-    pMatHudBits = MKMaterial_Create("ui_hud_bits");
-    pMatAether = MKMaterial_Create("ui_aether");
+    pMatIcons = (MKMaterial *) (MKMaterial_Create("ui_breath_icons"));
+    pMatPool = (MKMaterial *) (MKMaterial_Create("ui_levelup_pool"));
+    pMatHudBits = (MKMaterial *) (MKMaterial_Create("ui_hud_bits"));
+    pMatAether = (MKMaterial *) (MKMaterial_Create("ui_aether"));
 }
-#endif

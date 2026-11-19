@@ -81,7 +81,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void CharacterZapFX::Deinit() {
     MKHeap *temp_r0_113;
     MKHeap *temp_r0_132;
@@ -190,7 +190,7 @@ loop_23:
             sp80 = (f64) sp30;
             temp_r4_252 = temp_r3_224->unk0;
             sp48 = (f64) sp28;
-            temp_r3_256 = temp_r3_224->unk4 + 8;
+            temp_r3_256 = (void *) (temp_r3_224->unk4 + 8);
             sp50 = (f64) sp30;
             sp18 = M2C_FIELD(temp_r3_256, f64 *, 0) - M2C_FIELD(temp_r4_252, f64 *, 8);
             sp68 = sp18;
@@ -262,7 +262,7 @@ loop_23:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void CharacterZapFX::SpawnZap() {
     MKVector3 spF0;
     f64 spE8;
@@ -333,8 +333,8 @@ void CharacterZapFX::SpawnZap() {
             Normalise(spF0);
             M2C_FIELD(temp_r30_470, f64 *, 8) = M2C_BITWISE(f64, spF0);
             M2C_FIELD(temp_r30_470, f64 *, 0x10) = (f64) spF0.unk8;
-            temp_r30_470->unk0 = GetRandomNode(NULL);
-            temp_r30_470->unk4 = GetRandomNode((CBFXNode *) temp_r30_470->unk0);
+            temp_r30_470->unk0 = (MKHeap *) (GetRandomNode(NULL));
+            temp_r30_470->unk4 = (long) (GetRandomNode((CBFXNode *) temp_r30_470->unk0));
             temp_f30_515 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f29_520 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             sp70 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -619,7 +619,6 @@ void CharacterZapFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterZapFX::Init() {
     MKHeap *temp_r3_1153;
     MKHeap *temp_r4_1159;
@@ -629,7 +628,7 @@ void CharacterZapFX::Init() {
 
     CharacterBodyFX::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1138 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2D8, NULL, 0);
+        var_r3_1138 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2D8, NULL, 0));
     } else {
         var_r3_1138 = malloc(0x2D8);
     }
@@ -663,7 +662,6 @@ void CharacterZapFX::Init() {
     this->unk4C = MKModel_Create("Fx0024_ArchAnim", NULL, 2, NULL);
     this->unk50 = MKModel_GetNmbrOfSubObjects(this->unk4C, (SubObjectType) 0);
 }
-#endif
 
 void CharacterZapFX_cpp::__sinit() {
     f32 temp_f0_1231;

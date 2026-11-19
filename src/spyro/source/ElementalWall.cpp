@@ -84,7 +84,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalWall>::State'
 static M2C_UNK lit_684;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<ElementalWall>::State ElementalWallStates; /* unable to generate initializer: confusing struct layout */
 static s32 lit_775 = 1;
@@ -2316,7 +2316,7 @@ void ElementalWall::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 ElementalWall::Resolve() {
     s32 temp_r0_4423;
 
@@ -2347,7 +2347,7 @@ f32 ElementalWall::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -2412,12 +2412,10 @@ void ElementalWall::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void ElementalWallDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    this->unk60 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_684'
 void ElementalWall_cpp::__sinit() {

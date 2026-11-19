@@ -33,7 +33,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 void AnimEventManager::Update(MKAnimScript *arg0) {
     AnimEventDesc *temp_r3_57;
     AnimEventDesc *temp_r6_84;
@@ -80,7 +80,7 @@ void AnimEventManager::Init(AnimEventDesc *arg0) {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 void AnimEventDesc::Init(AnimEventEntry *arg0, int arg1, MKAnimScript *arg2) {
     s32 temp_r0_135;
     s32 var_r30_123;

@@ -91,7 +91,7 @@ void SpyroStrafeState::InputOverride::Set(KDInput *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to
+#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::SetDesiredVelocity() {
     f32 spDC;
     f32 spD8;
@@ -366,7 +366,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::SelectAnim() {
     f64 sp70;
     f64 sp68;
@@ -497,7 +497,7 @@ u8 SpyroStrafeState::AnyToDodgeTranstion() {
     return var_r3_742;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroStrafeState::DodgeForwardBackTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -548,7 +548,7 @@ u8 SpyroStrafeState::DodgeForwardBackTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::DodgeForwardBackUpdate() {
     if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f) {
         this->unk38 = 0;
@@ -568,7 +568,7 @@ void SpyroStrafeState::DodgeForwardBackExit() {
     this->unk3C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to
+#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::DodgeForwardBackEnter() {
     u32 var_r4_958;
 
@@ -582,7 +582,7 @@ void SpyroStrafeState::DodgeForwardBackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroStrafeState::DodgeLeftRightTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -633,7 +633,7 @@ u8 SpyroStrafeState::DodgeLeftRightTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::DodgeLeftRightUpdate() {
     if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f) {
         this->unk38 = 0;
@@ -653,7 +653,7 @@ void SpyroStrafeState::DodgeLeftRightExit() {
     this->unk3C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to
+#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::DodgeLeftRightEnter() {
     u32 var_r4_1135;
 
@@ -667,7 +667,7 @@ void SpyroStrafeState::DodgeLeftRightEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::CircleTargetTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -821,7 +821,7 @@ void SpyroStrafeState::NoTargetTransition() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void SpyroStrafeState::NoTargetUpdate() {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -916,7 +916,7 @@ void SpyroStrafeState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     MKVector3 sp80;
     f64 sp78;

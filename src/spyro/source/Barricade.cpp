@@ -61,7 +61,7 @@ s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     MKProp sp38;
     MKVector3 sp28;
@@ -82,7 +82,7 @@ s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKAnim *'
 void BarricadeProp::Message(MKMessage *arg0) {
     f64 spA8;
     f64 spA0;

@@ -42,7 +42,7 @@ extern void **gb;
 static s32 lit_549 = 0;
 static u8 lit_550 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void LightningStrikeFX::Strike() {
     f64 sp190;
     f64 sp188;
@@ -346,7 +346,7 @@ void *LightningStrikeFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 LightningStrikeFX::LoadDone() {
     Matrix sp100;
     f64 spF8;
@@ -459,7 +459,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_809;
     MKVector3 *temp_r5_815;
@@ -474,7 +473,7 @@ s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
         this->unk50 = arg0->GetNmbrOfSubLines();
         temp_r31_790 = this->unk50 * 0x10;
         if (MKHeap::Current() != NULL) {
-            var_r3_798 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_790, NULL, 0);
+            var_r3_798 = (MKVector3 *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_790, NULL, 0));
         } else {
             var_r3_798 = malloc(temp_r31_790);
         }
@@ -493,7 +492,6 @@ loop_8:
     }
     return 0;
 }
-#endif
 
 void LightningStrikeFX::Init() {
     MKProp::Init();
@@ -551,7 +549,7 @@ void LightningStrikeFXDescriptor::FlashLightningLight(const MKVector3 &arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     MKVector3 sp180;
     MKVector3 sp170;
@@ -1232,7 +1230,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'LightningStrikeFXDescriptor::StrikeArc *' and 'LightningStrikeFXDescriptor::StrikeArc **'
 void LightningStrikeFXDescriptor::Deinit() {
     LightningStrikeFXDescriptor::StrikeArc **var_r31_2039;
     LightningStrikeFXDescriptor::StrikeArc **var_r3_2040;
@@ -1388,7 +1386,6 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LightningStrikeFXDescriptor::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1425,15 +1422,13 @@ void LightningStrikeFXDescriptor::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk60 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_549, lit_550);
+    this->unk60 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_549, lit_550));
     temp_r4_2318 = this->unk60;
     if (temp_r4_2318 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2318, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LightningStrikeFXDescriptor::Init() {
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2383;
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2389;
@@ -1450,9 +1445,9 @@ void LightningStrikeFXDescriptor::Init() {
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unk90 = 0.0f;
     this->unkA4 = 0;
-    this->unk94 = MKMaterial_Create("fx_351");
+    this->unk94 = (MKMaterial *) (MKMaterial_Create("fx_351"));
     if (MKHeap::Current() != NULL) {
-        var_r3_2368 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
+        var_r3_2368 = (MKVector3 *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0));
     } else {
         var_r3_2368 = malloc(0x698);
     }
@@ -1474,4 +1469,3 @@ void LightningStrikeFXDescriptor::Init() {
     this->unk9C = 0;
     this->unkA0 = 0.0f;
 }
-#endif

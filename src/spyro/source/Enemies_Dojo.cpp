@@ -397,12 +397,12 @@ loop_49:
                     }
                     var_r21_315 += 1;
                 } while (var_r21_315 < 5);
-                temp_r20_413 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube"));
+                temp_r20_413 = (void *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube")));
                 var_r19_414 = 0;
                 var_r23_415 = 0;
                 do {
-                    *(&sp3E8 + var_r23_415) = checked_cast<PooledShatterProp *, MKProp>(temp_r20_413->CreateInstance());
-                    temp_r22_421 = *(&sp3E8 + var_r23_415);
+                    *(&sp3E8 + var_r23_415) = (long) (checked_cast<PooledShatterProp *, MKProp>(temp_r20_413->CreateInstance()));
+                    temp_r22_421 = (void *) (*(&sp3E8 + var_r23_415));
                     if (temp_r22_421 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r22_421, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r22_421);
@@ -886,12 +886,12 @@ loop_50:
                     }
                     var_r22_1283 += 1;
                 } while (var_r22_1283 < 5);
-                temp_r21_1381 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube"));
+                temp_r21_1381 = (void *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube")));
                 var_r20_1382 = 0;
                 var_r24_1383 = 0;
                 do {
-                    *(&sp3E8 + var_r24_1383) = checked_cast<PooledShatterProp *, MKProp>(temp_r21_1381->CreateInstance());
-                    temp_r23_1389 = *(&sp3E8 + var_r24_1383);
+                    *(&sp3E8 + var_r24_1383) = (long) (checked_cast<PooledShatterProp *, MKProp>(temp_r21_1381->CreateInstance()));
+                    temp_r23_1389 = (void *) (*(&sp3E8 + var_r24_1383));
                     if (temp_r23_1389 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r23_1389, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r23_1389);
@@ -1095,7 +1095,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1496,12 +1496,12 @@ loop_49:
                     }
                     var_r21_2463 += 1;
                 } while (var_r21_2463 < 5);
-                temp_r20_2561 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube"));
+                temp_r20_2561 = (void *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube")));
                 var_r19_2562 = 0;
                 var_r23_2563 = 0;
                 do {
-                    *(&sp3E8 + var_r23_2563) = checked_cast<PooledShatterProp *, MKProp>(temp_r20_2561->CreateInstance());
-                    temp_r22_2569 = *(&sp3E8 + var_r23_2563);
+                    *(&sp3E8 + var_r23_2563) = (long) (checked_cast<PooledShatterProp *, MKProp>(temp_r20_2561->CreateInstance()));
+                    temp_r22_2569 = (void *) (*(&sp3E8 + var_r23_2563));
                     if (temp_r22_2569 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r22_2569, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r22_2569);
@@ -1988,12 +1988,12 @@ loop_50:
                         }
                         var_r22_3430 += 1;
                     } while (var_r22_3430 < 5);
-                    temp_r21_3528 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube"));
+                    temp_r21_3528 = (void *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "IceCube")));
                     var_r20_3529 = 0;
                     var_r24_3530 = 0;
                     do {
-                        *(&sp3E8 + var_r24_3530) = checked_cast<PooledShatterProp *, MKProp>(temp_r21_3528->CreateInstance());
-                        temp_r23_3536 = *(&sp3E8 + var_r24_3530);
+                        *(&sp3E8 + var_r24_3530) = (long) (checked_cast<PooledShatterProp *, MKProp>(temp_r21_3528->CreateInstance()));
+                        temp_r23_3536 = (void *) (*(&sp3E8 + var_r24_3530));
                         if (temp_r23_3536 != NULL) {
                             M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r23_3536, &this->unk588);
                             M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r23_3536);
@@ -2198,7 +2198,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -2393,7 +2393,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void DojoEnemy::Despawn(bool arg0) {
     f64 sp20;
     f64 sp18;
@@ -2441,17 +2441,15 @@ void DojoEnemy::Recycle() {
     Enemy::Recycle();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'IceBitsPS *' to
 void DojoEnemyDescriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
-    this->unk2B4 = checked_cast<IceBitsPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBitsPS"));
-    this->unk2B8 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
-    this->unk2BC = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
-    this->unk2C0 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DojoStuffing"));
+    this->unk2B4 = (long) (checked_cast<IceBitsPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBitsPS")));
+    this->unk2B8 = (long) (checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS")));
+    this->unk2BC = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
+    this->unk2C0 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DojoStuffing")));
     this->unk204 = &dojoMovementAnims;
     this->unk208 = 0xC;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'dojoTier1BodyFXInit'
 void Enemies_Dojo_cpp::__sinit() {

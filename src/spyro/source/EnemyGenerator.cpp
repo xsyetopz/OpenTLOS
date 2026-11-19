@@ -66,7 +66,7 @@ void EnemyGeneratorDescriptor::LoadDone() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
     MKIniLine *var_r24_38;
@@ -212,7 +212,7 @@ void EnemyGeneratorDoor::GetSpawnPos() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to
+#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to 'double'
 void EnemyGeneratorDoor::GetDoorDir() {
     Matrix sp80;
     EnemyGeneratorDoor sp48;
@@ -302,7 +302,7 @@ void EnemyGeneratorDoor::GetDoorDir() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void EnemyGeneratorDoor::GetDoorPos() {
     MKVector3 sp8;
 
@@ -361,7 +361,7 @@ void EnemyGeneratorDoor::Deinit() {
     }
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 void EnemyGeneratorDoor::Init(EnemyGenerator *arg0, EnemyGeneratorDoorData *arg1, MKProp *arg2, SpawnPointObject *arg3) {
     MKProp *temp_r3_837;
     MKProp *temp_r3_913;
@@ -419,22 +419,22 @@ void EnemyGeneratorDoor::Init(EnemyGenerator *arg0, EnemyGeneratorDoorData *arg1
     if ((u8) M2C_FIELD(this, EnemyGeneratorDoorData **, 4)->unk20 != 0) {
         temp_r3_913 = M2C_FIELD(this, MKProp **, 8);
         if (temp_r3_913 != NULL) {
-            temp_r30_919 = checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r3_913->unk0);
+            temp_r30_919 = (long) (checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r3_913->unk0));
             temp_r4_920 = M2C_FIELD(this, EnemyGeneratorDoorData **, 4)->unk10;
             if (temp_r4_920 != NULL) {
-                this->unk1C = checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_920));
+                this->unk1C = (const char *) (checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_920)));
             }
             temp_r4_929 = M2C_FIELD(this, EnemyGeneratorDoorData **, 4)->unk14;
             if (temp_r4_929 != NULL) {
-                this->unk20 = checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_929));
+                this->unk20 = (const char *) (checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_929)));
             }
             temp_r4_938 = M2C_FIELD(this, EnemyGeneratorDoorData **, 4)->unk18;
             if (temp_r4_938 != NULL) {
-                this->unk24 = checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_938));
+                this->unk24 = (const char *) (checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_938)));
             }
             temp_r4_947 = M2C_FIELD(this, EnemyGeneratorDoorData **, 4)->unk1C;
             if (temp_r4_947 != NULL) {
-                this->unk28 = checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_947));
+                this->unk28 = (const char *) (checked_cast<KDScriptProperty *, KDProperty>(((KDPropertySet *) (temp_r30_919 + 0x74))->Find(temp_r4_947)));
             }
         }
     }
@@ -477,7 +477,7 @@ void EnemyGenerator::StartEnemyWave() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'SpawnPointObject *'
 void EnemyGenerator::UpdateUsedSpawnPointMask() {
     EnemyGeneratorDoor sp8;
     s32 temp_r30_1066;
@@ -853,7 +853,7 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: function call 'LoadDone(EnemyGenerator *, int, int, unsigned int, unsigned
+#if 0 // DRAFT: function call 'LoadDone(EnemyGenerator *, int, int, unsigned int, unsigned long)' does not match 'EnemyGenerator::LoadDone()'
 void EnemyGenerator::LoadDone() {
     MKProp *temp_r4_1696;
     s32 var_r7_1699;
@@ -868,7 +868,7 @@ void EnemyGenerator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 EnemyGenerator::LoadLine(MKIniLine *arg0) {
     s32 var_r27_1724;
     s32 var_r27_1752;

@@ -104,7 +104,7 @@
 #include "spyro/source/UITools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'DialogBox_bAllowOverCutscene' redeclared
+#if 0 // DRAFT: identifier 'DialogBox_bAllowOverCutscene' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 M2C_UNK free(TargetManager *);                      /* extern */
 TargetManager *malloc(s32);                         /* extern */
 extern u8 DialogBox_bAllowOverCutscene;
@@ -120,14 +120,14 @@ extern M2C_UNK gMKDefaults;
 extern s8 gShowCursor;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gbGoldMaster' redeclared
+#if 0 // DRAFT: identifier 'gbGoldMaster' redeclared was declared as: 'unsigned char' now declared as: 'signed char'
 extern s8 gbGoldMaster;
 #endif
 extern s8 *gpBuildVersion;
 extern M2C_UNK input;
 extern Level *pStartChunkName;
 extern Level *pStartLevelName;
-#if 0 // DRAFT: identifier 'gClearColor' redeclared
+#if 0 // DRAFT: identifier 'gClearColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 static M2C_UNK gClearColor;                         /* unable to generate initializer: unknown type */
 static GameStateMachineState gameStates[0x48] = {
     { 0 },
@@ -205,20 +205,18 @@ static GameStateMachineState gameStates[0x48] = {
 };
 #endif
 static GameStateMachineInit gameStateInit = { 0, 0.5f, 0.5f, 0x80000000 };
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long *[240]'
 static M2C_UNK *gb[0xF0];
 #endif
-#if 0 // DRAFT: identifier 'cutsceneSys' redeclared
+#if 0 // DRAFT: identifier 'cutsceneSys' redeclared was declared as: 'CutsceneSystem' now declared as: 'long'
 static M2C_UNK cutsceneSys;
 #endif
-#if 0 // DRAFT: identifier 'homeDir' redeclared
+#if 0 // DRAFT: identifier 'homeDir' redeclared was declared as: 'signed char' now declared as: 'signed char[32]'
 static s8 homeDir[0x20];
 #endif
-#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
 static GameStateMachine gGMState;                   /* extra bytes: 0x11 */
-static s8 *buildNumber = "053b3(ret)";
-#endif
-#if 0 // DRAFT: identifier 'platformCode' redeclared
+static s8 *buildNumber = (signed char *) ("053b3(ret)");
+#if 0 // DRAFT: identifier 'platformCode' redeclared was declared as: 'signed char *' now declared as: 'long *'
 static M2C_UNK *platformCode = &.L_803580AB;
 #endif
 
@@ -256,7 +254,7 @@ f32 GameGlobals::KillRate::GetRate() {
     return (f32) M2C_FIELD(this, s32 *, 4) / M2C_FIELD(this, f32 *, 0x10);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void GameGlobals::KillRate::Update() {
     f32 *var_r4_87;
     s32 temp_r0_69;
@@ -267,7 +265,7 @@ loop_5:
     temp_r6_80 = M2C_FIELD(this, s32 *, 4);
     if (temp_r6_80 != 0) {
         if (temp_r6_80 > 0) {
-            var_r4_87 = M2C_FIELD(this, s32 *, 0xC) + (M2C_FIELD(this, s32 *, 8) * 4);
+            var_r4_87 = (float *) (M2C_FIELD(this, s32 *, 0xC) + (M2C_FIELD(this, s32 *, 8) * 4));
         } else {
             var_r4_87 = NULL;
         }
@@ -335,12 +333,12 @@ void GameGlobals::KillRate::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'malloc'
 void GameGlobals::KillRate::Init(int arg1, float farg0) {
     TargetManager *var_r3_200;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_200 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg1 * 4, NULL, 0);
+        var_r3_200 = (TargetManager *) (((MKHeap *) (MKHeap::Current()))->Alloc(arg1 * 4, NULL, 0));
     } else {
         var_r3_200 = malloc(arg1 * 4);
     }
@@ -350,11 +348,10 @@ void GameGlobals::KillRate::Init(int arg1, float farg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector4 *' to
 void GameGlobals::Fade::FadeOut(const MKVector4 *arg1) {
     MKVector4 *var_r4_0;
 
-    var_r4_0 = arg1;
+    var_r4_0 = (MKVector4 *) (arg1);
     if ((s32) M2C_FIELD(this, s32 *, 0x20) < 2) {
         if (var_r4_0 != NULL) {
 
@@ -367,7 +364,6 @@ void GameGlobals::Fade::FadeOut(const MKVector4 *arg1) {
         M2C_FIELD(this, s32 *, 0x20) = 2;
     }
 }
-#endif
 
 void GameGlobals::Fade::FadeIn(const MKVector4 *arg1) {
     if ((s32) M2C_FIELD(this, s32 *, 0x20) != 1) {
@@ -404,7 +400,7 @@ void GameGlobals::Fade::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'long (const char *)' to 'long'
 void GameGlobals::Fade::Update() {
     s32 temp_r0_338;
 
@@ -512,7 +508,7 @@ void GameGlobals::Capture::Deinit() {
     ((Texture *) (M2C_FIELD(this, Texture **, 4)))->Destroy();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void GameGlobals::Capture::Init(char *arg1, int arg2) {
     ((Texture *) arg1)->CreateRenderTarget((s8 *) arg2, arg2, 0, M2C_ERROR(/* Read from unset register $r7 */));
     M2C_FIELD(this, s32 *, 4) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
@@ -520,7 +516,7 @@ void GameGlobals::Capture::Init(char *arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitFairyDandruf(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const MKVector4 &arg3) {
     void *temp_r3_575;
     void *temp_r3_579;
@@ -544,7 +540,7 @@ void GameGlobals::EmitFairyDandruf(const MKVector3 &arg0, const MKVector3 &arg1,
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitSnowCrud(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r31_629;
     void *temp_r3_622;
@@ -567,7 +563,7 @@ void GameGlobals::EmitSnowCrud(const MKVector3 &arg0, const MKVector3 &arg1, con
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, float arg3) {
     void *temp_r31_680;
     void *temp_r3_670;
@@ -590,7 +586,7 @@ void GameGlobals::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1, const f
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitSmallRocks(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r31_731;
     void *temp_r3_724;
@@ -613,7 +609,7 @@ void GameGlobals::EmitSmallRocks(const MKVector3 &arg0, const MKVector3 &arg1, c
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitCrud(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r31_779;
     void *temp_r3_772;
@@ -837,7 +833,7 @@ void GameGlobals::Init() {
     this->unk35E = 1;
     this->unk318 = ((MKFont *) "")->Create(NULL);
     this->unk31C = ((MKFont *) "")->Create("053b3(ret)");
-    this->unk324 = DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f);
+    this->unk324 = (DialogBoxTheme *) (DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f));
     this->unk398 = 0;
     this->unk39C = 0;
     M2C_FIELD(this, s32 *, 0x3AC) = 0;
@@ -846,7 +842,7 @@ void GameGlobals::Init() {
     M2C_FIELD(this, s32 *, 0x3A8) = 0;
     this->unk382 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_1233 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
+        var_r3_1233 = (TargetManager *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0));
     } else {
         var_r3_1233 = malloc(0x10);
     }
@@ -916,7 +912,7 @@ void Game_CheckCommandLineParameters() {
     System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         System_GetCommandLineParameter("", 0U);
-        var_r0_1418 = (M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1;
+        var_r0_1418 = (long *) ((M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1);
     } else {
         var_r0_1418 = NULL;
     }
@@ -954,7 +950,7 @@ void Game_CheckCommandLineParameters() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char, signed char *)' does not match 'strcpy(char *, const char *)'
 void Game_InitSystem() {
     M2C_FIELD(&gMKDefaults, s32 *, 8) = 0x100000;
     M2C_FIELD(&gMKDefaults, s32 *, 0x48) = 0x10000;
@@ -974,7 +970,7 @@ void Game_InitSystem() {
     M2C_FIELD(&gMKDefaults, f32 *, 0x14) = 0.01f;
     M2C_FIELD(&gMKDefaults, s8 **, 0x28) = (s8 *) "";
     strcpy(homeDir, Str_Printf("", platformCode, 0x23A, 0x50, 0x12C, 4, 0x30, 1));
-    M2C_FIELD(&gMKDefaults, s8 **, 0x2C) = homeDir;
+    M2C_FIELD(&gMKDefaults, s8 **, 0x2C) = (signed char *) (homeDir);
     M2C_FIELD(&gMKDefaults, s32 *, 0x64) = 0x300;
     M2C_FIELD(&gMKDefaults, s32 *, 0x84) = 0x400;
     M2C_FIELD(&gMKDefaults, s32 *, 0x24) = 1;
@@ -1125,7 +1121,7 @@ void Game_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to
+#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to 'GameGlobals *'
 void Game_Init() {
     KDPropModuleInfo sp8;
     M2C_UNK sp4;
@@ -1171,7 +1167,7 @@ void Game_Init() {
             var_r3_1950 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Level **, 0x11C);
 loop_5:
             if (var_r3_1950 != NULL) {
-                temp_r4_1957 = var_r3_1950->unk4;
+                temp_r4_1957 = (ChunkInfo *) (var_r3_1950->unk4);
                 if ((u8) M2C_FIELD(temp_r4_1957, u8 *, 0x1A) != 0) {
                     var_r3_1950 = var_r3_1950->GetNextChunk(temp_r4_1957);
                     goto loop_5;

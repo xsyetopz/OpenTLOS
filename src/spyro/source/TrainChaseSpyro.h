@@ -256,21 +256,19 @@ inline void TrainChaseSpyro::GetCollisionInfo() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void TrainChaseSpyro::GetVel() {
     f32 sp10;
     f64 sp8;
     f64 temp_f0_6055;
     void *temp_r5_6051;
 
-    temp_r5_6051 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30;
+    temp_r5_6051 = (void *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30);
     temp_f0_6055 = M2C_FIELD(temp_r5_6051, f64 *, 0) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x1E8);
     sp8 = temp_f0_6055;
     M2C_FIELD(this, f64 *, 0) = temp_f0_6055;
     sp10 = M2C_FIELD(temp_r5_6051, f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {

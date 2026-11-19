@@ -75,7 +75,7 @@ void LevelUpScreen::SetBreathText() {
     if ((temp_r4_17 == NULL) || (temp_r30_18 != (s8 *) temp_r4_17->unk30)) {
         DialogBox_ReleaseContext(temp_r4_17);
         if (temp_r30_18 != 0) {
-            this->unk140 = DialogBox_InitContext();
+            this->unk140 = (DialogBoxContext *) (DialogBox_InitContext());
             this->unk140->unk0 = M2C_FIELD(&gb, s32 *, 0x324);
             this->unk140->unk10 = 200.0f;
             this->unk140->unk14 = 38.399994f;
@@ -91,7 +91,7 @@ void LevelUpScreen::SetBreathText() {
     if ((temp_r4_57 == NULL) || (temp_r30_58 != (s8 *) temp_r4_57->unk30)) {
         DialogBox_ReleaseContext(temp_r4_57);
         if (temp_r30_58 != 0) {
-            this->unk144 = DialogBox_InitContext();
+            this->unk144 = (DialogBoxContext *) (DialogBox_InitContext());
             this->unk144->unk0 = M2C_FIELD(&gb, s32 *, 0x324);
             this->unk144->unk10 = 376.0f;
             this->unk144->unk14 = 124.0f;
@@ -655,7 +655,7 @@ void LevelUpScreen::Update() {
                                 this->unk140 = NULL;
                                 DialogBox_ReleaseContext(this->unk144);
                                 this->unk144 = NULL;
-                                temp_r3_1243 = DialogBox_InitContext();
+                                temp_r3_1243 = (long *) (DialogBox_InitContext());
                                 pContextFury = temp_r3_1243;
                                 *temp_r3_1243 = M2C_FIELD(&gb, s32 *, 0x324);
                                 M2C_FIELD(pContextFury, LevelUpScreen **, 8) = this;
@@ -726,7 +726,7 @@ block_60:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'long *' and 'DialogBoxContext *'
 void DialogCallback(DialogBoxContext *arg0, int arg1) {
     if ((arg1 == 0) && ((s32 *) pContextFury == arg0)) {
         arg0->unk8->SetBreathText();

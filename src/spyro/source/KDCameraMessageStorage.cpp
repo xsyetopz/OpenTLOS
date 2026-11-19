@@ -32,7 +32,7 @@
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'long *'
 M2C_UNK free(MKHeap *);                             /* extern */
 MKHeap *malloc(s32);                                /* extern */
 
@@ -125,7 +125,7 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: function call 'memcpy(MKHeap, MKMessage *, unsigned long)' does not match
+#if 0 // DRAFT: function call 'memcpy(MKHeap, MKMessage *, unsigned long)' does not match 'memcpy(void *, const void *, unsigned int)'
 void KDMessageStorage::StoreMessage(MKMessage *arg0) {
     void *temp_r31_156;
 
@@ -139,7 +139,7 @@ void KDMessageStorage::StoreMessage(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'MKHeap *'
 void KDMessageStorage::Deinit() {
     MKHeap *temp_r30_198;
     MKHeap *temp_r30_218;
@@ -197,7 +197,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     this->unk8 = arg1;
     temp_r30_265 = this->unk8 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_273 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_265, NULL, 0);
+        var_r3_273 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_265, NULL, 0));
     } else {
         var_r3_273 = malloc(temp_r30_265);
     }
@@ -223,7 +223,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
 loop_16:
     if (var_r28_299 < (s32) this->unk8) {
         if (MKHeap::Current() != NULL) {
-            var_r3_310 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_280, NULL, 0);
+            var_r3_310 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_280, NULL, 0));
         } else {
             var_r3_310 = malloc(var_r29_280);
         }

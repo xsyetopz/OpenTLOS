@@ -227,7 +227,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void *SpawnerObject::Spawn(MKProp *arg0) {
     u8 sp14;
     void *sp10;
@@ -399,7 +399,7 @@ void SpawnerObject::ItemWasRecycled(MKProp *arg0) {
     RemoveItem(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::KillAll() {
     s32 spC;
     s32 sp8;
@@ -424,7 +424,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnAll() {
     s32 spC;
     s32 sp8;
@@ -458,7 +458,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnItem(SpawnItemObject *arg0, bool arg1) {
     s32 spC;
     s32 sp8;
@@ -511,7 +511,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnItem(MKProp *arg0, bool arg1) {
     s32 spC;
     s32 sp8;
@@ -671,7 +671,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::RemoveItem(MKProp *arg0) {
     s32 spC;
     s32 sp8;
@@ -815,7 +815,6 @@ void SpawnerObject::AddSpawnPoint(SpawnPointObject *arg0) {
     arg0->unk52 = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::AddSpawnPointBegin(int arg0) {
     s32 temp_r30_1227;
     s32 var_ctr_1256;
@@ -827,10 +826,10 @@ void SpawnerObject::AddSpawnPointBegin(int arg0) {
         this->unk2C = arg0;
         temp_r30_1227 = this->unk2C;
         if (temp_r30_1227 == 0) {
-            this->unk44 = &gEmptyPtrList + 4;
+            this->unk44 = (unsigned long *) (&gEmptyPtrList + 4);
         } else {
             if (MKHeap::Current() != NULL) {
-                var_r3_1243 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_1227 + 2) * 4, NULL, 0);
+                var_r3_1243 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_1227 + 2) * 4, NULL, 0));
             } else {
                 var_r3_1243 = malloc((temp_r30_1227 + 2) * 4);
             }
@@ -852,7 +851,6 @@ void SpawnerObject::AddSpawnPointBegin(int arg0) {
         this->unk4C |= 0x80;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void SpawnerObject::Deinit() {
@@ -965,7 +963,6 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::LoadDone(unsigned int arg0) {
     MKProp ***temp_r3_1484;
     MKProp ***temp_r3_1491;
@@ -979,11 +976,11 @@ void SpawnerObject::LoadDone(unsigned int arg0) {
     this->unk4C |= 0x40;
     temp_r30_1453 = this->unk28;
     if (temp_r30_1453 == 0) {
-        this->unk48 = &gEmptyPtrListDL + 4;
+        this->unk48 = (MKProp ***) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_1471 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC), NULL, 0);
+        var_r3_1471 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC), NULL, 0));
     } else {
         var_r3_1471 = malloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC));
     }
@@ -1006,9 +1003,7 @@ void SpawnerObject::LoadDone(unsigned int arg0) {
     this->unk48 = temp_r3_1498 + 4;
     M2C_FIELD(temp_r3_1498, MKProp ****, 4) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
     MKProp ***temp_r3_1560;
     MKProp ***temp_r3_1567;
@@ -1025,11 +1020,11 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
     this->unk18 = (s32) arg3;
     temp_r30_1529 = this->unk28;
     if (temp_r30_1529 == 0) {
-        this->unk48 = &gEmptyPtrListDL + 4;
+        this->unk48 = (MKProp ***) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_1547 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC), NULL, 0);
+        var_r3_1547 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC), NULL, 0));
     } else {
         var_r3_1547 = malloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC));
     }
@@ -1052,9 +1047,8 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
     this->unk48 = temp_r3_1574 + 4;
     M2C_FIELD(temp_r3_1574, MKProp ****, 4) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
     s32 spC;
     u8 sp8;
@@ -1106,7 +1100,7 @@ void SpawnerObject::Init(void (*arg1)(SpawnAction, int, MKProp **, SpawnerObject
     this->unk40.Init();
     this->unk4 = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_1754 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0);
+        var_r3_1754 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0));
     } else {
         var_r3_1754 = malloc(0x38);
     }

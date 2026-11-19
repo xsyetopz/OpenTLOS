@@ -250,7 +250,7 @@ void UIVideoScreen::OnExit() {
     DoExit();
 }
 
-#if 0 // DRAFT: function call 'GameVideo_Create(signed char *, long, long)' does not match
+#if 0 // DRAFT: function call 'GameVideo_Create(signed char *, long, long)' does not match 'GameVideo_Create(const char *, int, int)'
 void UIVideoScreen::OnEnter() {
     f32 var_f0_480;
     s32 temp_r0_461;
@@ -288,7 +288,7 @@ void UIVideoScreen::Resolve() {
     ((UIEvent *) &this->unkD4)->Resolve((UIObject *) this);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIVideoScreen::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r31_570;
@@ -312,7 +312,7 @@ s32 UIVideoScreen::LoadLine(UIDataLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIVideoScreen::Deinit() {
     s8 *temp_r3_656;
 

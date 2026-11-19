@@ -113,10 +113,10 @@ void ExitConfirmScreen::OnEnter() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIButtonGroup *' to
+#if 0 // DRAFT: function call 'stricmp(unsigned long, const char[9])' does not match 'stricmp(unsigned long, void *)'
 void ExitConfirmScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkC8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
+    this->unkC8 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons")));
     if (stricmp(this->unk4, "QuitGame") == 0) {
         this->unkCC = 0;
         return;
@@ -130,7 +130,7 @@ void ExitConfirmScreen::Init() {
     this->unkC8 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void PauseMainScreen::Update() {
     f32 sp34;
     void *sp30;
@@ -189,7 +189,7 @@ void PauseMainScreen::Update() {
                         M2C_FIELD(temp_r3_269, s32 *, 0x6C) = 0x14;
                         sp2C = 0;
                         sp28 = 0x7C;
-                        sp30 = "Cheats enabled";
+                        sp30 = (void *) ("Cheats enabled");
                         sp34 = 3.0f;
                         InGame_SystemMessage((MKMessage *) &sp28);
                     } else {
@@ -204,7 +204,7 @@ void PauseMainScreen::Update() {
                         M2C_FIELD(temp_r3_269, s32 *, 0x6C) = 0x13;
                         sp1C = 0;
                         sp18 = 0x7C;
-                        sp20 = "Cheats disabled";
+                        sp20 = (void *) ("Cheats disabled");
                         sp24 = 3.0f;
                         InGame_SystemMessage((MKMessage *) &sp18);
                     }
@@ -226,7 +226,7 @@ void PauseMainScreen::OnExit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
+#if 0 // DRAFT: illegal type
 void PauseMainScreen::OnEnter() {
     s32 sp1C;
     s32 sp18;
@@ -243,7 +243,7 @@ void PauseMainScreen::OnEnter() {
     void **temp_r3_446;
 
     UIScreen::OnEnter();
-    temp_r3_397 = ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("SaveGame"));
+    temp_r3_397 = (void **) (ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("SaveGame")));
     if (temp_r3_397 != NULL) {
         var_r28_401 = 0;
         var_r30_404 = 0;
@@ -261,7 +261,7 @@ void PauseMainScreen::OnEnter() {
         sp1C = 0;
         M2C_FIELD(*temp_r3_397, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_397, &sp18);
     }
-    temp_r3_446 = ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("LevelUp"));
+    temp_r3_446 = (void **) (ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("LevelUp")));
     if (temp_r3_446 != NULL) {
         var_r4_450 = 5;
         if (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) {
@@ -286,7 +286,7 @@ void PauseMainScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'PromptGroup *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void PauseMainScreen::Resolve() {
     s32 sp14;
     s32 sp10;
@@ -297,7 +297,7 @@ void PauseMainScreen::Resolve() {
 
     UIScreen::Resolve();
     this->unkD1 = 1;
-    this->unkCC = ui_cast<PromptGroup *, UIObject *>(FindChild("PromptGroup"));
+    this->unkCC = (long) (ui_cast<PromptGroup *, UIObject *>(FindChild("PromptGroup")));
     this->unkC8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
     temp_r3_529 = this->unkC8->FindChild("Cheat");
     if (temp_r3_529 != NULL) {

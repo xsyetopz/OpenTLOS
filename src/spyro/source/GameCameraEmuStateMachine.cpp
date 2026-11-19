@@ -192,7 +192,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameCameraEmuStateDescriptor' to
+#if 0 // DRAFT: illegal explicit conversion from 'GameCameraEmuStateDescriptor' to 'unsigned long'
 void GameCameraEmuStateMachine::Init(GameCamera2 *arg0, GameCameraEmuStateDescriptor *arg1) {
     s32 temp_r5_324;
 

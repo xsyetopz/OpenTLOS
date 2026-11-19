@@ -139,7 +139,7 @@ block_8:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDShatterPool *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDShatter2::Update() {
     Matrix sp1A0;
     f64 sp198;
@@ -257,7 +257,7 @@ void KDShatter2::Update() {
 loop_27:
         temp_r3_642 = this->unk50;
         if (var_r31_307 < (s32) temp_r3_642->unk1640) {
-            temp_r30_311 = temp_r3_642 + var_r28_308;
+            temp_r30_311 = (Matrix *) (temp_r3_642 + var_r28_308);
             if ((u8) M2C_FIELD(temp_r30_311, u8 *, 0xA4) != 0) {
                 sp190 = M2C_FIELD(temp_r30_311, f64 *, 0x40);
                 sp198 = M2C_FIELD(temp_r30_311, f64 *, 0x48);
@@ -422,7 +422,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectBoneIndex(MKModel *, SubObjectType,
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectBoneIndex(MKModel *, SubObjectType, KDShatterPool)' does not match 'MKModel_GetSubObjectBoneIndex(const MKModel *, SubObjectT
 void KDShatter2::ResetSubObjectMatrices() {
     KDShatterPool *temp_r4_759;
     KDShatterPool *temp_r4_778;
@@ -469,7 +469,7 @@ void KDShatter2::Reset() {
     ResetSubObjectMatrices();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void KDShatter2::SetHitPlane(int arg0) {
     MKCollisionResult spA8;
     f64 spA0;                                       /* compiler-managed */
@@ -549,7 +549,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDShatter2::SetInitialGroundPlane() {
     MKCollisionResult spC8;
     MKVector3 spB8;
@@ -716,7 +716,7 @@ loop_9:
     }
     EnableSubObjectMatrices(1U);
     if (arg0 != 0) {
-        var_r4_1201 = MKModel_GetWorldMatrix(this->unk4C) + 0x30;
+        var_r4_1201 = (MKVector3 *) (MKModel_GetWorldMatrix(this->unk4C) + 0x30);
         if (arg1 != NULL) {
             var_r4_1201 = arg1;
         }
@@ -728,7 +728,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDShatterPool *' to
 void KDShatter2::EnableSubObjectMatrices(bool arg0) {
     KDShatterPool *temp_r3_1262;
     Matrix *var_r6_1244;
@@ -742,7 +741,7 @@ void KDShatter2::EnableSubObjectMatrices(bool arg0) {
 loop_8:
         temp_r3_1262 = this->unk50;
         if (var_r29_1240 < (s32) temp_r3_1262->unk1640) {
-            var_r6_1244 = temp_r3_1262 + var_r31_1241;
+            var_r6_1244 = (Matrix *) (temp_r3_1262 + var_r31_1241);
             if ((u8) M2C_FIELD(var_r6_1244, u8 *, 0xA4) != 0) {
                 temp_r5_1250 = M2C_FIELD(var_r6_1244, s32 *, 0xA0);
                 if (arg0 != 0) {
@@ -758,13 +757,11 @@ loop_8:
         }
     }
 }
-#endif
 
 void KDShatter2::SetVisibleUnshattered() {
     SetVisible(this->unk54);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
     s16 temp_r29_1337;
     s32 temp_r29_1301;
@@ -783,7 +780,7 @@ void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
     if (arg1 != NULL) {
         temp_r29_1301 = (*arg1 + 2) * 2;
         if (MKHeap::Current() != NULL) {
-            var_r3_1309 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1301, NULL, 0);
+            var_r3_1309 = (unsigned short *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1301, NULL, 0));
         } else {
             var_r3_1309 = malloc(temp_r29_1301);
         }
@@ -812,7 +809,7 @@ loop_12:
             goto loop_12;
         }
         if (MKHeap::Current() != NULL) {
-            var_r3_1362 = ((MKHeap *) (MKHeap::Current()))->Alloc((var_r27_1334 + 2) * 2, NULL, 0);
+            var_r3_1362 = (unsigned short *) (((MKHeap *) (MKHeap::Current()))->Alloc((var_r27_1334 + 2) * 2, NULL, 0));
         } else {
             var_r3_1362 = malloc((var_r27_1334 + 2) * 2);
         }
@@ -837,7 +834,6 @@ loop_20:
         ((Animation *) (MKModel_GetAnimation(this->unk4C)))->EnableCustomMatrices(1U);
     }
 }
-#endif
 
 void KDShatter2::Deinit() {
     KDShatterPool **temp_r3_1433;
@@ -899,7 +895,7 @@ void KDShatter2::Init() {
     this->unk54 = NULL;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'KDShatterPool *' and 'KDShatterPool **'
 void KDShatter2::DeinitModule() {
     KDShatterPool **var_r31_1519;
     KDShatterPool **var_r3_1520;
@@ -941,13 +937,12 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDShatter2::InitModule() {
     s32 var_ctr_1595;
     u16 *var_r3_1581;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_1581 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30D84, NULL, 0);
+        var_r3_1581 = (unsigned short *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x30D84, NULL, 0));
     } else {
         var_r3_1581 = malloc(0x30D84);
     }
@@ -964,7 +959,6 @@ void KDShatter2::InitModule() {
     shatterPool += 4;
     M2C_FIELD(shatterPool, u16 **, 4) = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void KDShatterPool::Init(KDShatter2 *arg0, MKModel *arg1, unsigned short *arg2) {
@@ -1074,11 +1068,11 @@ loop_9:
             M2C_FIELD(temp_r6_1678, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             temp_r3_1681 = MKModel_GetSubObjectBoneIndex(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
             if (temp_r3_1681 > -1) {
-                temp_r24_1688 = this + (this->unk1640 * 0xB0);
+                temp_r24_1688 = (Matrix *) (this + (this->unk1640 * 0xB0));
                 temp_r3_1689 = MKModel_GetAnimation(arg1);
                 sp8 = temp_r3_1681;
                 temp_r3_1689->CalculateMatrices(temp_r24_1688, 1, &sp8, NULL);
-                temp_r3_1699 = MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
+                temp_r3_1699 = (void *) (MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635));
                 temp_r4_1701 = this->unk1640 * 0xB0;
                 temp_r5_1703 = this + (temp_r4_1701 + 0x30);
                 sp80 = M2C_FIELD(temp_r5_1703, f64 *, 0) + M2C_FIELD(temp_r3_1699, f64 *, 0);
@@ -1088,7 +1082,7 @@ loop_9:
                 sp100 = sp80;
                 sp108 = (f64) sp88;
                 M2C_FIELD(temp_r4_1710, f64 *, 8) = (f64) sp88;
-                temp_r3_1721 = MKModel_GetWorldMatrix(arg1);
+                temp_r3_1721 = (void *) (MKModel_GetWorldMatrix(arg1));
                 temp_r4_1730 = this + ((this->unk1640 * 0xB0) + 0x90);
                 temp_f5_1732 = M2C_FIELD(temp_r4_1730, f32 *, 4);
                 temp_f8_1733 = M2C_FIELD(temp_r4_1730, f32 *, 0);
@@ -1098,7 +1092,7 @@ loop_9:
                 sp38 = (temp_f10_1735 * M2C_FIELD(temp_r3_1721, f32 *, 0x28)) + ((temp_f8_1733 * M2C_FIELD(temp_r3_1721, f32 *, 8)) + (temp_f5_1732 * M2C_FIELD(temp_r3_1721, f32 *, 0x18)));
                 spE0 = (f64) sp30;
                 spE8 = (f64) sp38;
-                temp_r3_1756 = MKModel_GetWorldMatrix(arg1) + 0x30;
+                temp_r3_1756 = (void *) (MKModel_GetWorldMatrix(arg1) + 0x30);
                 sp70 = M2C_FIELD(temp_r3_1756, f64 *, 0) + spE0;
                 spF0 = sp70;
                 temp_r3_1769 = this + ((this->unk1640 * 0xB0) + 0x40);
@@ -1110,7 +1104,7 @@ loop_9:
                 temp_r3_1780 = MKModel_GetSubObjectLocalMatrix(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
                 if (temp_r3_1780 != 0) {
                     M2C_STRUCT_COPY(this + (this->unk1640 * 0xB0), temp_r3_1780, 0x40);
-                    temp_r3_1799 = MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
+                    temp_r3_1799 = (void *) (MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635));
                     temp_r4_1801 = this->unk1640 * 0xB0;
                     temp_r5_1803 = this + (temp_r4_1801 + 0x30);
                     sp60 = M2C_FIELD(temp_r5_1803, f64 *, 0) + M2C_FIELD(temp_r3_1799, f64 *, 0);
@@ -1120,7 +1114,7 @@ loop_9:
                     spD0 = sp60;
                     spD8 = (f64) sp68;
                     M2C_FIELD(temp_r4_1810, f64 *, 8) = (f64) sp68;
-                    temp_r3_1821 = MKModel_GetWorldMatrix(arg1);
+                    temp_r3_1821 = (void *) (MKModel_GetWorldMatrix(arg1));
                     temp_r4_1830 = this + ((this->unk1640 * 0xB0) + 0x90);
                     temp_f5_1832 = M2C_FIELD(temp_r4_1830, f32 *, 4);
                     temp_f8_1833 = M2C_FIELD(temp_r4_1830, f32 *, 0);
@@ -1130,7 +1124,7 @@ loop_9:
                     sp28 = (temp_f10_1835 * M2C_FIELD(temp_r3_1821, f32 *, 0x28)) + ((temp_f8_1833 * M2C_FIELD(temp_r3_1821, f32 *, 8)) + (temp_f5_1832 * M2C_FIELD(temp_r3_1821, f32 *, 0x18)));
                     spB0 = (f64) sp20;
                     spB8 = (f64) sp28;
-                    temp_r3_1856 = MKModel_GetWorldMatrix(arg1) + 0x30;
+                    temp_r3_1856 = (void *) (MKModel_GetWorldMatrix(arg1) + 0x30);
                     sp50 = M2C_FIELD(temp_r3_1856, f64 *, 0) + spB0;
                     spC0 = sp50;
                     temp_r3_1869 = this + ((this->unk1640 * 0xB0) + 0x40);
@@ -1139,11 +1133,11 @@ loop_9:
                     spC8 = (f64) sp58;
                     M2C_FIELD(temp_r3_1869, f64 *, 8) = (f64) sp58;
                 } else {
-                    temp_r3_1880 = MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
+                    temp_r3_1880 = (void *) (MKModel_GetSubObjectOrigin(arg1, (SubObjectType) 0, (s32) temp_r30_1635));
                     temp_r4_1887 = this + ((this->unk1640 * 0xB0) + 0x90);
                     M2C_FIELD(temp_r4_1887, f64 *, 0) = (f64) M2C_FIELD(temp_r3_1880, f64 *, 0);
                     M2C_FIELD(temp_r4_1887, f64 *, 8) = (f64) M2C_FIELD(temp_r3_1880, f64 *, 8);
-                    temp_r3_1890 = MKModel_GetWorldMatrix(arg1);
+                    temp_r3_1890 = (void *) (MKModel_GetWorldMatrix(arg1));
                     temp_r4_1899 = this + ((this->unk1640 * 0xB0) + 0x90);
                     temp_f5_1901 = M2C_FIELD(temp_r4_1899, f32 *, 4);
                     temp_f8_1902 = M2C_FIELD(temp_r4_1899, f32 *, 0);
@@ -1153,7 +1147,7 @@ loop_9:
                     sp18 = (temp_f10_1904 * M2C_FIELD(temp_r3_1890, f32 *, 0x28)) + ((temp_f8_1902 * M2C_FIELD(temp_r3_1890, f32 *, 8)) + (temp_f5_1901 * M2C_FIELD(temp_r3_1890, f32 *, 0x18)));
                     sp90 = (f64) sp10;
                     sp98 = (f64) sp18;
-                    temp_r3_1925 = MKModel_GetWorldMatrix(arg1) + 0x30;
+                    temp_r3_1925 = (void *) (MKModel_GetWorldMatrix(arg1) + 0x30);
                     sp40 = M2C_FIELD(temp_r3_1925, f64 *, 0) + sp90;
                     spA0 = sp40;
                     temp_r3_1938 = this + ((this->unk1640 * 0xB0) + 0x40);

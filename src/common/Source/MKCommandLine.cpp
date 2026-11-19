@@ -4,7 +4,7 @@
 s32 stricmp(s8 *, u8 *);                            /* extern */
 extern u8 init_221;
 extern u8 *pPositive_220;
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to 'unsigned long'
 static u8 lit_stringBase0[4] = { 0x2B, 0, 0x2D, 0 };   /* const */
 
 void MKCommandLine::ParseArgument(char *arg0) {
@@ -16,7 +16,7 @@ void MKCommandLine::ParseArgument(char *arg0) {
 
     var_r27_17 = 0U;
 loop_2:
-    temp_r31_22 = &arg0[var_r27_17];
+    temp_r31_22 = (signed char *) (&arg0[var_r27_17]);
     temp_r0_23 = (u8) *temp_r31_22;
     if (((s8) temp_r0_23 != 0x2D) && ((s8) temp_r0_23 != 0x2B) && ((s8) temp_r0_23 != 0x3D) && ((s8) temp_r0_23 != 0x20) && (var_r27_17 < strlen(arg0))) {
         var_r27_17 += 1;
@@ -27,7 +27,7 @@ loop_2:
 loop_8:
     if ((u32) *(this + (var_r28_39 + 4)) == 0U) {
         if (var_r27_17 == strlen(arg0)) {
-            M2C_FIELD((this + var_r28_39), s8 **, 8) = arg0;
+            M2C_FIELD((this + var_r28_39), s8 **, 8) = (signed char *) (arg0);
         } else if (stricmp(temp_r31_22, lit_stringBase0) == 0) {
             M2C_FIELD((this + var_r28_39), u8 **, 8) = lit_stringBase0;
         } else if (stricmp(temp_r31_22, &lit_stringBase0[2]) == 0) {
@@ -36,7 +36,7 @@ loop_8:
             M2C_FIELD((this + var_r28_39), s8 **, 8) = (s8 *) (temp_r31_22 + 1);
         }
         *temp_r31_22 = 0;
-        M2C_FIELD((this + var_r28_39), s8 **, 4) = arg0;
+        M2C_FIELD((this + var_r28_39), s8 **, 4) = (signed char *) (arg0);
         this->unk0 += 1;
         return;
     }
@@ -49,7 +49,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to 'unsigned long'
 u8 *MKCommandLine::GetParameter(const char *arg0, bool arg1) {
     s32 var_r30_125;
     s32 var_r31_126;
@@ -84,7 +84,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 void MKCommandLine::AddFromString(char *arg0) {
     s32 var_r5_187;
     s8 *temp_r3_193;
@@ -104,7 +104,7 @@ void MKCommandLine::AddFromString(char *arg0) {
     var_ctr_189 = temp_r3_186;
     if (temp_r3_186 > 0U) {
 loop_1:
-        temp_r3_193 = &arg0[var_r5_187];
+        temp_r3_193 = (signed char *) (&arg0[var_r5_187]);
         temp_r0_194 = (u8) M2C_FIELD(temp_r3_193, s8 *, 0);
         switch ((s8) temp_r0_194) {                 /* irregular */
         case 10:
@@ -132,7 +132,7 @@ block_7:
     var_r27_220 = 0;
 loop_21:
     if (var_r28_217 < temp_r29_219) {
-        temp_r4_223 = &arg0[var_r28_217];
+        temp_r4_223 = (signed char *) (&arg0[var_r28_217]);
         var_r26_224 = 0U;
         var_r3_225 = temp_r4_223;
 loop_13:

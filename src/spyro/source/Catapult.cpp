@@ -339,7 +339,7 @@ void Catapult::GetAmmoPos() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Catapult::State'
 void Catapult::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -566,7 +566,7 @@ void Catapult::FireEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void Catapult::LoadAmmoUpdate() {
     f64 sp78;
     KDUniformSpline sp60;
@@ -622,7 +622,7 @@ void Catapult::IdleEnter() {
 
     this->unk80->SetAnim(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x78), 1.0f, 0.0f, 0, -1);
     if (this->unkF8.GetLastState() == 4) {
-        temp_r31_870 = ((u8 *) this->unk8) + 0x30;
+        temp_r31_870 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
         KDSound_Play3d(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88), temp_r31_870, 0U, -1, 0.0f, 0U);
     }
 }
@@ -675,7 +675,7 @@ void Catapult::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Catapult::State'
 void Catapult::Unload() {
     if (this->unkF8.GetState() & 2) {
         this->unk12C = 0;
@@ -763,15 +763,13 @@ void Catapult::Init() {
     this->unk148 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CatapultDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk7C = ((MKAnimScript *) this->unk34)->GetAnim("fire");
-    this->unk74 = ((MKAnimScript *) this->unk34)->GetAnim("windup");
-    this->unk78 = ((MKAnimScript *) this->unk34)->GetAnim("loaded");
+    this->unk7C = (long) (((MKAnimScript *) this->unk34)->GetAnim("fire"));
+    this->unk74 = (long) (((MKAnimScript *) this->unk34)->GetAnim("windup"));
+    this->unk78 = (long) (((MKAnimScript *) this->unk34)->GetAnim("loaded"));
     this->unk70 = MKModel_GetRefPointIndex(this->unk2C, "r_ammo");
 }
-#endif
 
 s32 CatapultDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1266;

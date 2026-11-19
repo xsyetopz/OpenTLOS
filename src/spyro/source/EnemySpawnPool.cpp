@@ -62,7 +62,7 @@ extern M2C_UNK gb;
 extern s32 iSpawnPools;
 extern M2C_UNK *pSpawnPools;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void EnemySpawnPool_Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -77,7 +77,7 @@ void EnemySpawnPool_Destroy(Enemy *arg0) {
     if ((arg0 != NULL) && (var_r31_18 = 0, var_ctr_20 = iSpawnPools, (((s32) iSpawnPools > 0) != 0))) {
 loop_2:
         if ((s32) arg0->unkA38->unkF4 == (s32) *(pSpawnPools + var_r31_18)) {
-            var_r30_30 = *(pSpawnPools + (var_r31_18 + 4));
+            var_r30_30 = (unsigned long **) (*(pSpawnPools + (var_r31_18 + 4)));
 loop_7:
             if (var_r30_30 != NULL) {
                 temp_r3_66 = *var_r30_30;
@@ -90,8 +90,8 @@ loop_7:
                     arg0->Message(&sp8);
                     arg0->Disable();
                     temp_r4_52 = var_r31_18 + 4;
-                    temp_r3_53 = *(pSpawnPools + temp_r4_52);
-                    *(pSpawnPools + temp_r4_52) = temp_r3_53 + 4;
+                    temp_r3_53 = (unsigned long **) (*(pSpawnPools + temp_r4_52));
+                    *(pSpawnPools + temp_r4_52) = (long) (temp_r3_53 + 4);
                     temp_r4_56 = *temp_r3_53;
                     *temp_r3_53 = *var_r30_30;
                     *var_r30_30 = temp_r4_56;
@@ -113,7 +113,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unkA48'
 Character *EnemySpawnPool_Recycle(int arg0, SpawnerObject *arg1) {
     Character ***var_r31_100;
     Character **temp_r3_127;
@@ -127,7 +127,7 @@ Character *EnemySpawnPool_Recycle(int arg0, SpawnerObject *arg1) {
     if ((s32) iSpawnPools > 0) {
 loop_1:
         if (arg0 == (s32) *(pSpawnPools + var_r4_89)) {
-            var_r31_100 = *(pSpawnPools + (var_r4_89 + 4));
+            var_r31_100 = (Character ***) (*(pSpawnPools + (var_r4_89 + 4)));
 loop_8:
             if (var_r31_100 != NULL) {
                 temp_r3_127 = *var_r31_100;
@@ -157,7 +157,6 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 MKProp *EnemySpawnPool_Create(int arg0) {
     MKProp ***temp_r3_165;
     s32 temp_r4_157;
@@ -171,12 +170,12 @@ MKProp *EnemySpawnPool_Create(int arg0) {
 loop_1:
         if (arg0 == (s32) *(pSpawnPools + var_r4_148)) {
             temp_r4_157 = var_r4_148 + 4;
-            temp_r3_158 = *(pSpawnPools + temp_r4_157);
+            temp_r3_158 = (void *) (*(pSpawnPools + temp_r4_157));
             if ((u32) M2C_FIELD(temp_r3_158, u32 *, -4) == 0U) {
                 return NULL;
             }
-            temp_r3_165 = ((u8 *) temp_r3_158) - 4;
-            *(pSpawnPools + temp_r4_157) = temp_r3_165;
+            temp_r3_165 = (MKProp ***) (((u8 *) temp_r3_158) - 4);
+            *(pSpawnPools + temp_r4_157) = (long) (temp_r3_165);
             return **temp_r3_165;
         }
         var_r4_148 += 8;
@@ -189,9 +188,8 @@ loop_1:
     }
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Create'
+#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Recycle'
 void EnemySpawnPool_Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
     switch ((s32) arg0) {                           /* irregular */
     case 0:
@@ -207,7 +205,6 @@ void EnemySpawnPool_Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObj
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemySpawnPool_Deinit() {
     M2C_UNK *temp_r0_239;
     M2C_UNK *temp_r0_258;
@@ -228,14 +225,14 @@ loop_16:
         if (var_r27_228 < (s32) iSpawnPools) {
             temp_r30_232 = pSpawnPools;
             temp_r28_233 = var_r31_229 + 4;
-            var_r4_234 = *(temp_r30_232 + temp_r28_233);
+            var_r4_234 = (long *) (*(temp_r30_232 + temp_r28_233));
             var_r29_235 = var_r4_234;
             var_r3_236 = var_r4_234;
 loop_5:
             temp_r0_244 = M2C_FIELD(var_r3_236, u32 *, -4);
             var_r3_236 -= 4;
             if (temp_r0_244 != 0U) {
-                temp_r0_239 = *var_r3_236;
+                temp_r0_239 = (long *) (*var_r3_236);
                 if (temp_r0_239 < var_r29_235) {
                     var_r29_235 = temp_r0_239;
                 }
@@ -243,7 +240,7 @@ loop_5:
             }
             if (var_r3_236 != &gEmptyPtrListDL) {
 loop_11:
-                temp_r0_258 = *var_r4_234;
+                temp_r0_258 = (long *) (*var_r4_234);
                 if (temp_r0_258 != NULL) {
                     if (temp_r0_258 < var_r29_235) {
                         var_r29_235 = temp_r0_258;
@@ -272,9 +269,8 @@ loop_11:
     iSpawnPools = 0;
     pSpawnPools = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: pointer/array required
 void EnemySpawnPool_Init() {
     M2C_UNK *temp_r3_407;
     M2C_UNK *temp_r3_414;
@@ -312,7 +308,7 @@ void EnemySpawnPool_Init() {
     if (temp_r3_325 > 0) {
         temp_r24_331 = temp_r3_325 * 8;
         if (MKHeap::Current() != NULL) {
-            var_r3_339 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_331, NULL, 0);
+            var_r3_339 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_331, NULL, 0));
         } else {
             var_r3_339 = malloc(temp_r24_331);
         }
@@ -341,7 +337,7 @@ loop_27:
                 M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = (M2C_UNK *) (&gEmptyPtrListDL + 4);
             } else {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_395 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r26_379 * 2) + 2) * 4, NULL, 0);
+                    var_r3_395 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r26_379 * 2) + 2) * 4, NULL, 0));
                 } else {
                     var_r3_395 = malloc(((temp_r26_379 * 2) + 2) * 4);
                 }
@@ -368,9 +364,9 @@ loop_27:
             var_r27_432 = M2C_FIELD(temp_r29_357, M2C_UNK **, 4) - 4;
 loop_24:
             if ((var_r27_432 != NULL) && ((M2C_UNK *) *var_r27_432 != NULL)) {
-                temp_r4_438 = *var_r27_432;
+                temp_r4_438 = (long *) (*var_r27_432);
                 var_r27_432 -= 4;
-                *temp_r4_438 = gMK->CreateProp((s8 *) temp_r26_431);
+                *temp_r4_438 = (const char *) (gMK->CreateProp((s8 *) temp_r26_431));
                 goto loop_24;
             }
             var_r28_349 += 1;

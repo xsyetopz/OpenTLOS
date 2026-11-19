@@ -130,13 +130,13 @@ void Door::Init() {
 void DoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
-    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("Open");
-    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("Closing");
+    this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Opening"));
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("Open"));
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Closing"));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 

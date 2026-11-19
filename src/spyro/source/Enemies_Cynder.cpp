@@ -809,7 +809,7 @@ void CynderTier3Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&cynderTier3BodyFXInit, 0xE, (MKAnimScript *) this->unk34);
     this->unk280 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "Weapon01");
-    this->unk2B8 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk2B8 = (long) (checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves")));
 }
 #endif
 
@@ -828,7 +828,7 @@ void CynderTier3Descriptor::Init() {
     this->unk2B4 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void CynderTier2Train::UpdateMovementCustom() {
     Matrix sp80;
     Matrix sp40;
@@ -1001,7 +1001,7 @@ void CynderTier2Descriptor::Init() {
     this->unk2B4 = 1;
 }
 
-#if 0 // DRAFT: function call 'Message(Ball *)' does not match
+#if 0 // DRAFT: function call 'Message(Ball *)' does not match 'Ball::Message(MKMessage *)'
 void CynderTier1::Message(MKMessage *arg0) {
     Ball *temp_r0_1877;
 
@@ -1018,7 +1018,7 @@ block_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void CynderTier1::DefrostBall() {
     s8 spA6;
     s8 spA5;
@@ -1509,8 +1509,8 @@ loop_50:
                     var_r21_2656 = 0;
                     var_r25_2657 = 0;
                     do {
-                        *(&sp3F8 + var_r25_2657) = checked_cast<PooledShatterProp *, MKProp>(temp_r22_2655->CreateInstance());
-                        temp_r24_2663 = *(&sp3F8 + var_r25_2657);
+                        *(&sp3F8 + var_r25_2657) = (long) (checked_cast<PooledShatterProp *, MKProp>(temp_r22_2655->CreateInstance()));
+                        temp_r24_2663 = (void *) (*(&sp3F8 + var_r25_2657));
                         if (temp_r24_2663 != NULL) {
                             M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r24_2663, &this->unk588);
                             M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r24_2663);
@@ -1729,7 +1729,7 @@ void *CynderTier1::Update() {
     TestForSpikes();
 }
 
-#if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match
+#if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match 'checked_cast<...>(T1 *)'
 f32 CynderTier1::Resolve() {
     Enemy::Resolve();
     this->unkB18 = checked_cast<BallDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("CynderTier1Ball"));
@@ -1847,8 +1847,8 @@ void CynderTier1Descriptor::LoadDone() {
         M2C_FIELD(temp_r3_3568->__vptr, M2C_UNK (**)(), 0x34)();
         var_r29_3561 += 1;
     } while (var_r29_3561 < 3);
-    this->unk2B4 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
-    this->unk2B8 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk2B4 = (long) (checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS")));
+    this->unk2B8 = (long) (checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves")));
 }
 #endif
 

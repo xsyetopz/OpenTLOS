@@ -262,9 +262,7 @@ u8 states__13AssaultCannon[0xB4] = {
     0,
     0,
 };
-#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
-static s8 *pTurretAnimEvents = "Fire";
-#endif
+static s8 *pTurretAnimEvents = (signed char *) ("Fire");
 
 #if 0 // DRAFT: pointer/array required
 void AssaultCannon::CalcSpikeBeamPositions() {
@@ -278,7 +276,7 @@ void AssaultCannon::CalcSpikeBeamPositions() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void AssaultCannon::CalcBarrelBeamPositions() {
     MKVector3 spB8;
     MKVector3 spA8;
@@ -492,7 +490,7 @@ void AssaultCannon::EmitShootingFX() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void AssaultCannon::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -521,7 +519,7 @@ void AssaultCannon::StateDeadExit() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void AssaultCannon::StateDeadUpdate() {
     f64 spF8;
     f64 spF0;
@@ -1304,7 +1302,7 @@ void AssaultCannon::StateFireUpdate() {
                 M2C_FIELD(temp_r3_1556, AssaultCannon **, 0x130) = NULL;
                 this->unk2E0 = NULL;
             }
-            this->unk2E0 = ((Projectile *)0xE)->CreateInstance((ProjectileType) temp_r4_1545);
+            this->unk2E0 = (void *) (((Projectile *)0xE)->CreateInstance((ProjectileType) temp_r4_1545));
             temp_r3_1566 = this->unk2E0;
             if (temp_r3_1566 != NULL) {
                 M2C_FIELD(temp_r3_1566, AssaultCannon **, 0x130) = this;
@@ -1985,7 +1983,7 @@ void AssaultCannon::StateFireUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *, float)' does not match 'HeroInterface::GetProp()'
 void AssaultCannon::StateFireEnter() {
     s8 sp271;
     s8 sp270;
@@ -2164,7 +2162,7 @@ void AssaultCannon::StateFireEnter() {
     case 0:                                         /* switch 1 */
         this->unk2E4 = 2.0f;
         this->unk2F0 = 1;
-        this->unk2E0 = ((Projectile *)5)->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2E0 = (void *) (((Projectile *)5)->CreateInstance((ProjectileType) temp_r4_3081));
         temp_r3_3110 = this->unk2E0;
         if (temp_r3_3110 != NULL) {
             M2C_FIELD(temp_r3_3110, AssaultCannon **, 0x130) = this;
@@ -2312,7 +2310,7 @@ void AssaultCannon::StateFireEnter() {
     case 2:                                         /* switch 1 */
         this->unk2E4 = 0.5f;
         this->unk2F0 = 1;
-        this->unk2E0 = ((Projectile *)0x11)->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2E0 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) temp_r4_3081));
         temp_r3_3414 = this->unk2E0;
         if (temp_r3_3414 != NULL) {
             M2C_FIELD(temp_r3_3414, AssaultCannon **, 0x130) = this;
@@ -2487,7 +2485,7 @@ void AssaultCannon::StateFireEnter() {
     case 3:                                         /* switch 1 */
         this->unk2E4 = 2.0f;
         this->unk2F0 = 1;
-        this->unk2E0 = ((Projectile *)0x12)->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2E0 = (void *) (((Projectile *)0x12)->CreateInstance((ProjectileType) temp_r4_3081));
         temp_r3_3767 = this->unk2E0;
         if (temp_r3_3767 != NULL) {
             M2C_FIELD(temp_r3_3767, AssaultCannon **, 0x130) = this;
@@ -2642,7 +2640,7 @@ void AssaultCannon::StateTurnToFaceExit() {
 
 }
 
-#if 0 // DRAFT: function call 'GetTargetable(HeroInterface *, GameGlobals *, double)' does
+#if 0 // DRAFT: function call 'GetTargetable(HeroInterface *, GameGlobals *, double)' does not match 'HeroInterface::GetTargetable()'
 void AssaultCannon::StateTurnToFaceUpdate() {
     f64 sp98;
     f64 sp90;
@@ -2691,7 +2689,7 @@ void AssaultCannon::StateTurnToFaceUpdate() {
     sp98 = (f64) sp38;
     sp90 = (f64) sp30;
     if (gb.unk0->GetTargetable(&gb, (f64) sp30) != 0U) {
-        temp_r3_4122 = gb.unk0->GetTargetable();
+        temp_r3_4122 = (void **) (gb.unk0->GetTargetable());
         M2C_FIELD(*temp_r3_4122, M2C_UNK (**)(f64 *, void **), 0x30)(&sp70, temp_r3_4122);
         sp90 = sp70;
         sp98 = sp78;
@@ -2803,7 +2801,7 @@ void AssaultCannon::StateTurnToFaceUpdate() {
         break;
     }
     if ((temp_f1_4314 <= var_f0_4316) && (this->unk2D8 <= 0.0f)) {
-        temp_r30_4361 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r30_4361 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         if (temp_r30_4361->IsVisible((Matrix *) this->unk8, MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1)) != 0) {
             this->unk218.SetState(this, 3, 0U);
             return;
@@ -2821,7 +2819,7 @@ void AssaultCannon::StateIdleExit() {
 
 }
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *)' does not match
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *)' does not match 'HeroInterface::GetProp()'
 void AssaultCannon::StateIdleUpdate() {
     f64 sp30;
     f64 sp28;
@@ -2906,7 +2904,7 @@ void AssaultCannon::StateIdleEnter() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
     MKVector3 spB0;
     f64 spA8;
@@ -3119,7 +3117,7 @@ void AssaultCannon::SetAnim(int arg0, int arg1, float arg2) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x2BC), arg2, 0.0f, arg1, -1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector4 &'
 void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
     f64 sp28;
     f64 sp20;
@@ -3154,7 +3152,7 @@ void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
         var_f31_4968 = 0.0f;
     }
     if (((s32) checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk100 != 0) && (arg0 != 0.0f) && (this->unk2DC > 0.0f)) {
-        temp_r31_4996 = ((u8 *) this->unk8) + 0x30;
+        temp_r31_4996 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
         this->unk268 = KDSound_Play3d(checked_cast<P23AssaultCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk100, temp_r31_4996, 0U, -1, 0.0f, 0U);
     }
     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.6f, 0.4f, 0.1f, 0, 4.0f, 0U);
@@ -3649,7 +3647,7 @@ void *AssaultCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pTurretAnimEvents'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 AssaultCannon::LoadDone() {
     f64 sp18;
     f64 sp10;
@@ -3760,7 +3758,7 @@ void AssaultCannon::SetDefaults() {
     M2C_FIELD(this, f32 *, 0x360) = 0.0f;
 }
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: expression syntax error
 void AssaultCannon::Init() {
     ShatterableDescriptor *temp_r31_6038;
     ShatterableDescriptor *temp_r31_6047;
@@ -3793,7 +3791,7 @@ void AssaultCannonDescriptor::Deinit() {
     ShatterableDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
+#if 0 // DRAFT: illegal non-type template argument
 void AssaultCannonDescriptor::LoadDone() {
     f32 var_f1_6125;
     s32 var_r28_6134;

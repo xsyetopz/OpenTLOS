@@ -312,7 +312,7 @@ void ScorchTrail::SpawnPlasmaBubble(const MKVector3 &arg0, const MKVector3 &arg1
     }
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void ScorchTrail::DrawPlasmaBubbles() {
     f32 sp10C;
     f32 sp108;
@@ -527,7 +527,7 @@ void ScorchTrail::AddNode(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void ScorchTrail::Deinit() {
     MKHeap *temp_r0_776;
     MKHeap *temp_r0_795;
@@ -614,7 +614,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'long'
 void ScorchTrail::Draw() {
     f64 sp178;
     f64 sp170;
@@ -951,7 +951,7 @@ void *ScorchTrail::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void ScorchTrail::Init() {
     MKHeap *temp_r3_1406;
     MKHeap *temp_r3_1412;
@@ -971,7 +971,7 @@ void ScorchTrail::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1358 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x12C0, NULL, 0);
+        var_r3_1358 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x12C0, NULL, 0));
     } else {
         var_r3_1358 = malloc(0x12C0);
     }
@@ -990,7 +990,7 @@ void ScorchTrail::Init() {
     this->unk54 = 0;
     this->unk58 = 10.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_1391 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x418, NULL, 0);
+        var_r3_1391 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x418, NULL, 0));
     } else {
         var_r3_1391 = malloc(0x418);
     }
@@ -1010,7 +1010,7 @@ void ScorchTrail::Init() {
     M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) &temp_r3_1412->unk4;
     temp_r3_1412->unk4 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_1424 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10C, NULL, 0);
+        var_r3_1424 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10C, NULL, 0));
     } else {
         var_r3_1424 = malloc(0x10C);
     }
@@ -1053,12 +1053,10 @@ void ScorchTrailDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ScorchTrailDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create("fx_379");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("fx_379"));
     this->unk64 = MKModel_Create("p0002_lavacannonball", NULL, 2, NULL);
-    this->unk68 = MKMaterial_Create("ZapEnv");
-    this->unk6C = MKMaterial_Create("fx_333");
+    this->unk68 = (MKMaterial *) (MKMaterial_Create("ZapEnv"));
+    this->unk6C = (MKMaterial *) (MKMaterial_Create("fx_333"));
 }
-#endif

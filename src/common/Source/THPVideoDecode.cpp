@@ -3,7 +3,7 @@
 #include "common/Source/THPPlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'ActivePlayer' redeclared
+#if 0 // DRAFT: identifier 'ActivePlayer' redeclared was declared as: 'DVDCommandBlock' now declared as: 'long'
 THPReadBuffer *PopReadedBuffer();                   /* extern */
 THPReadBuffer *PopReadedBuffer2();                  /* extern */
 M2C_UNK PushFreeReadBuffer(THPReadBuffer *);        /* extern */
@@ -40,7 +40,7 @@ void *PopFreeTextureSet() {
     return sp8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'THPVideoDecode'
 void VideoDecode(THPReadBuffer *arg0) {
     s32 *var_r28_98;
     s32 temp_r0_144;
@@ -52,7 +52,7 @@ void VideoDecode(THPReadBuffer *arg0) {
     void *temp_r30_102;
 
     temp_r4_95 = arg0->unk0;
-    var_r28_98 = temp_r4_95 + 8;
+    var_r28_98 = (long *) (temp_r4_95 + 8);
     var_r27_99 = temp_r4_95 + ((M2C_FIELD(&ActivePlayer, u32 *, 0x6C) * 4) + 8);
     temp_r30_102 = PopFreeTextureSet();
     var_r29_103 = 0U;
@@ -89,7 +89,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 void VideoDecoderForOnMemory(void *arg0) {
     s32 spC;
     void *sp8;
@@ -189,7 +189,7 @@ void VideoDecodeThreadStart() {
     }
 }
 
-#if 0 // DRAFT: function call 'OSInitMessageQueue(OSThread *, OSThread *, int)' does not
+#if 0 // DRAFT: function call 'OSInitMessageQueue(OSThread *, OSThread *, int)' does not match 'OSInitMessageQueue(OSMessageQueue *, void *, long)'
 s32 CreateVideoDecodeThread(long arg0, unsigned char *arg1) {
     if (arg1 != NULL) {
         if (OSCreateThread(&VideoDecodeThread, (void *(*)(void *)) VideoDecoderForOnMemory, arg1, &VideoDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {

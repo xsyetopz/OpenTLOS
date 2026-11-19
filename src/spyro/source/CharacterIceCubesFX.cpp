@@ -175,7 +175,7 @@ loop_9:
                 if ((temp_r3_242 != NULL) && ((s32) M2C_FIELD(temp_r3_242, s32 *, 0x16C) == 2)) {
                     if ((u8) this->unk18 != 0) {
                         M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, (this->unk4 + (var_r28_237 + 0x20)) - 4 + 4, 0x40);
-                        temp_r3_268 = this->unk4 + (var_r28_237 + 8);
+                        temp_r3_268 = (void *) (this->unk4 + (var_r28_237 + 8));
                         sp70.unk30 = M2C_FIELD(temp_r3_268, f32 *, 0);
                         sp70.unk34 = M2C_FIELD(temp_r3_268, f32 *, 4);
                         sp70.unk38 = M2C_FIELD(temp_r3_268, f32 *, 8);
@@ -257,7 +257,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to 'long *'
 void CharacterIceCubesFX::Init() {
     CharacterBodyFX::Init();
     this->unk14 = NULL;
@@ -265,6 +265,6 @@ void CharacterIceCubesFX::Init() {
     this->unk1C = 0.0f;
     this->unk18 = 0;
     this->unk21 = 0;
-    this->unk24 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
+    this->unk24 = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
 }
 #endif

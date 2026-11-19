@@ -475,7 +475,7 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKCollision_Scissor(MKVector3 *, MKVector3 *, long, int,
+#if 0 // DRAFT: function call 'MKCollision_Scissor(MKVector3 *, MKVector3 *, long, int, const float)' does not match 'MKCollision_Scissor(MKVector3 *, MKVector3 *, int &, int, 
 u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKCollisionResult *arg2) {
     f64 sp370;
     f64 sp368;
@@ -825,7 +825,7 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
         var_ctr_1122 = 6;
         do {
             temp_f6_1124 = *(&sp280 + var_r4_1106);
-            temp_r7_1125 = &arg0 + var_r3_1096;
+            temp_r7_1125 = (void *) (&arg0 + var_r3_1096);
             temp_f27_1128 = 1.0f / (0.01f + temp_f6_1124);
             var_f1_1089 += temp_f27_1128;
             temp_f3_1131 = M2C_FIELD(temp_r7_1125, f64 *, 0xC8) * (f64) temp_f27_1128;
@@ -873,7 +873,7 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKSweptBox *' to
+#if 0 // DRAFT: illegal type
 f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKBestResult *arg2, MKBestResult *arg3, MKBestResult *arg4, unsigned int arg5, MKCollisionInfo *arg6) {
     f64 *sp760;
     f32 *sp75C;
@@ -1310,7 +1310,7 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
     sp6A8 = (f64) sp308;
     do {
         temp_f3_1404 = M2C_FIELD(arg1, f64 *, 0);
-        temp_r3_1405 = &arg0 + var_r21_1394;
+        temp_r3_1405 = (void *) (&arg0 + var_r21_1394);
         temp_f2_1406 = M2C_FIELD(temp_r3_1405, f64 *, 0);
         sp2F0 = temp_f3_1404 - temp_f2_1406;
         temp_r5_1409 = ((u8 *) temp_r3_1405) + 0x80;
@@ -1399,12 +1399,12 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
     var_r14_1604 = 0;
     var_r19_1605 = 0;
     do {
-        temp_r3_1607 = &arg0 + var_r19_1605;
+        temp_r3_1607 = (void *) (&arg0 + var_r19_1605);
         temp_r27_1608 = arg3 + var_r14_1604;
         var_r29_1610 = 0;
-        sp760 = ((u8 *) temp_r3_1607) + 0x5E0;
-        temp_r21_1613 = ((u8 *) temp_r3_1607) + 0x460;
-        sp75C = ((u8 *) temp_r3_1607) + 0x5E8;
+        sp760 = (double *) (((u8 *) temp_r3_1607) + 0x5E0);
+        temp_r21_1613 = (double *) (((u8 *) temp_r3_1607) + 0x460);
+        sp75C = (float *) (((u8 *) temp_r3_1607) + 0x5E8);
         temp_r26_1620 = ((u8 *) temp_r27_1608) + 0x10;
         var_r20_1621 = 0;
 loop_15:
@@ -1627,31 +1627,31 @@ loop_15:
     var_r31_2101 = 0;
     var_r30_2102 = 0;
     do {
-        temp_r3_2105 = &arg0 + var_r30_2102;
-        temp_r4_2106 = &arg0 + var_r31_2101;
+        temp_r3_2105 = (void *) (&arg0 + var_r30_2102);
+        temp_r4_2106 = (void *) (&arg0 + var_r31_2101);
         var_r19_2107 = 0;
         temp_r21_2108 = sp8 + var_r30_2102;
-        sp758 = ((u8 *) temp_r3_2105) + 0x280;
-        sp754 = ((u8 *) temp_r3_2105) + 0x288;
-        sp750 = ((u8 *) temp_r4_2106) + 0x404;
-        sp74C = ((u8 *) temp_r4_2106) + 0x400;
+        sp758 = (double *) (((u8 *) temp_r3_2105) + 0x280);
+        sp754 = (float *) (((u8 *) temp_r3_2105) + 0x288);
+        sp750 = (float *) (((u8 *) temp_r4_2106) + 0x404);
+        sp74C = (float *) (((u8 *) temp_r4_2106) + 0x400);
         temp_r23_2125 = ((u8 *) temp_r21_2108) + 0x10;
-        sp748 = ((u8 *) temp_r4_2106) + 0x408;
+        sp748 = (float *) (((u8 *) temp_r4_2106) + 0x408);
         var_r29_2128 = 0;
-        sp744 = ((u8 *) temp_r3_2105) + 0x100;
-        sp740 = ((u8 *) temp_r3_2105) + 0x108;
-        sp73C = ((u8 *) temp_r3_2105) + 0x290;
-        sp738 = ((u8 *) temp_r3_2105) + 0x110;
-        sp734 = ((u8 *) temp_r3_2105) + 0x298;
-        sp730 = ((u8 *) temp_r3_2105) + 0x118;
-        sp72C = ((u8 *) temp_r3_2105) + 0x2A0;
-        sp728 = ((u8 *) temp_r3_2105) + 0x120;
-        sp724 = ((u8 *) temp_r3_2105) + 0x2A8;
-        sp720 = ((u8 *) temp_r3_2105) + 0x128;
-        sp71C = ((u8 *) temp_r3_2105) + 0x2B0;
-        sp718 = ((u8 *) temp_r3_2105) + 0x130;
-        sp714 = ((u8 *) temp_r3_2105) + 0x2B8;
-        sp710 = ((u8 *) temp_r3_2105) + 0x138;
+        sp744 = (double *) (((u8 *) temp_r3_2105) + 0x100);
+        sp740 = (float *) (((u8 *) temp_r3_2105) + 0x108);
+        sp73C = (double *) (((u8 *) temp_r3_2105) + 0x290);
+        sp738 = (double *) (((u8 *) temp_r3_2105) + 0x110);
+        sp734 = (float *) (((u8 *) temp_r3_2105) + 0x298);
+        sp730 = (float *) (((u8 *) temp_r3_2105) + 0x118);
+        sp72C = (double *) (((u8 *) temp_r3_2105) + 0x2A0);
+        sp728 = (double *) (((u8 *) temp_r3_2105) + 0x120);
+        sp724 = (float *) (((u8 *) temp_r3_2105) + 0x2A8);
+        sp720 = (float *) (((u8 *) temp_r3_2105) + 0x128);
+        sp71C = (double *) (((u8 *) temp_r3_2105) + 0x2B0);
+        sp718 = (double *) (((u8 *) temp_r3_2105) + 0x130);
+        sp714 = (float *) (((u8 *) temp_r3_2105) + 0x2B8);
+        sp710 = (float *) (((u8 *) temp_r3_2105) + 0x138);
 loop_51:
         temp_r4_2157 = arg1 + var_r29_2128;
         var_f1_2160 = *sp758;
@@ -1854,7 +1854,7 @@ u8 MKCollision_Scissor(MKVector3 *arg0, MKVector3 *arg1, int &arg2, int arg3, fl
 
     temp_r6_2538 = arg3 * 4;
     temp_r5_2543 = &arg0[&arg2];
-    var_r28_2548 = arg0 + temp_r6_2538;
+    var_r28_2548 = (float *) (arg0 + temp_r6_2538);
     spC0 = M2C_FIELD(temp_r5_2543, f64 *, -0x10);
     var_r27_2550 = 0;
     var_r30_2551 = 0;
@@ -1912,12 +1912,11 @@ loop_6:
         spC8 = spB8;
         goto loop_6;
     }
-    &arg2 = var_r27_2550;
+    &arg2 = (int *) (var_r27_2550);
     return &arg2 > 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
 void MKCollisionModel::SphereTestTri(const MKCollisionRay &arg0, int arg1, MKVector3 *arg2, MKCollisionResult *arg3) {
     MKCollisionRay *var_r3_2682;
 
@@ -1925,11 +1924,10 @@ void MKCollisionModel::SphereTestTri(const MKCollisionRay &arg0, int arg1, MKVec
     if (var_r3_2682 != NULL) {
 
     } else {
-        var_r3_2682 = &arg0;
+        var_r3_2682 = (MKCollisionRay *) (&arg0);
     }
     MKCollision_SweepSphereTest(*var_r3_2682, arg2, arg3, 3, (MKCollisionDirection) 1);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'SweepTestTri'
 void MKCollisionModel::SweepSphereTest(const MKCollisionRay &arg0, MKCollisionResult *arg1) {
@@ -1937,7 +1935,7 @@ void MKCollisionModel::SweepSphereTest(const MKCollisionRay &arg0, MKCollisionRe
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'bool (*)(MKCollisionModel *, const
+#if 0 // DRAFT: illegal implicit conversion from 'bool (*)(MKCollisionModel *, const MKCollisionRay &, int, MKVector3 *, MKCollisionResult *)' to 'unsigned char (*)(MKCollision
 u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionResult *arg2, bool (*arg3)(MKCollisionModel *, const MKCollisionRay &, int, MKVector3 *, MKCollisionResult *)) {
     u32 sp354;
     u32 sp350;
@@ -3073,7 +3071,7 @@ loop_25:
                 if (var_r12_4427 != NULL) {
 
                 } else {
-                    var_r12_4427 = &arg0;
+                    var_r12_4427 = (MKCollisionRay *) (&arg0);
                 }
                 temp_f0_4434 = M2C_FIELD(var_r12_4427, f32 *, 0x20);
                 if (!(temp_f0_4434 > var_f4_4377) && !(temp_f0_4434 < var_f3_4374)) {
@@ -3182,7 +3180,7 @@ block_73:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp120;
     f64 sp118;
@@ -3262,13 +3260,13 @@ s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult 
     }
     temp_r8_4733 = this->unk30;
     temp_r7_4737 = M2C_FIELD(this->unk34, s32 *, 0xCC);
-    temp_r5_4739 = temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 0) * 0x10) & 0xFFFF0);
+    temp_r5_4739 = (void *) (temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 0) * 0x10) & 0xFFFF0));
     spF8 = M2C_FIELD(temp_r5_4739, f64 *, 0);
     sp100 = M2C_FIELD(temp_r5_4739, f64 *, 8);
-    temp_r5_4746 = temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 2) * 0x10) & 0xFFFF0);
+    temp_r5_4746 = (void *) (temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 2) * 0x10) & 0xFFFF0));
     sp108 = M2C_FIELD(temp_r5_4746, f64 *, 0);
     sp110 = M2C_FIELD(temp_r5_4746, f64 *, 8);
-    temp_r5_4753 = temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 4) * 0x10) & 0xFFFF0);
+    temp_r5_4753 = (void *) (temp_r7_4737 + ((M2C_FIELD(temp_r8_4733, u16 *, 4) * 0x10) & 0xFFFF0));
     sp118 = M2C_FIELD(temp_r5_4753, f64 *, 0);
     sp120 = M2C_FIELD(temp_r5_4753, f64 *, 8);
     temp_f2_4758 = arg0.unk20;
@@ -3344,7 +3342,7 @@ s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2, MKVector3 *arg3) {
     f64 sp178;
     f64 sp170;
@@ -3505,7 +3503,7 @@ u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 u8 MKCollision_Clip2(float arg0, float arg1, float arg2, float &arg3, float &arg4) {
     f32 temp_f2_5183;
     f32 temp_f2_5209;
@@ -3557,7 +3555,7 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to 'signed char *'
 void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
     u32 sp8BC;
     u32 sp8B8;
@@ -5133,7 +5131,7 @@ block_50:
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetVerts(MKVector3 *, unsigned char *)' does not match
+#if 0 // DRAFT: function call 'GetVerts(MKVector3 *, unsigned char *)' does not match 'MKCollisionModel::GetVerts(unsigned int, MKVector3 *)' 'MKCollisionModel::GetVerts(MKVect
 s32 MKCollisionModel::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     MKHeap *temp_r6_7778;
     void *temp_r4_7779;
@@ -5292,7 +5290,7 @@ MKCollisionModel *MKCollisionModel::Create(void *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)' Too many errors printed, aborting program
 MKCollisionModel *MKCollisionModel::Create(const char *arg0, MKModel *arg1) {
     s32 sp8;
     s32 temp_ret_8100;
@@ -5311,7 +5309,7 @@ MKCollisionModel *MKCollisionModel::Create(const char *arg0, MKModel *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVector3 *arg3, MKCollisionResult *arg4) {
     f64 spC8;
     f64 spC0;
@@ -5364,7 +5362,7 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
     if (var_r29_8145 != NULL) {
 
     } else {
-        var_r29_8145 = &arg1;
+        var_r29_8145 = (MKCollisionRay *) (&arg1);
     }
     temp_f2_8157 = M2C_FIELD(arg3, f64 *, 0x10);
     temp_f0_8158 = M2C_FIELD(arg3, f64 *, 0x20) - temp_f2_8157;
@@ -5455,7 +5453,6 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
 void SweepTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVector3 *arg3, MKCollisionResult *arg4) {
     MKCollisionRay *var_r3_8509;
 
@@ -5463,8 +5460,7 @@ void SweepTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, 
     if (var_r3_8509 != NULL) {
 
     } else {
-        var_r3_8509 = &arg1;
+        var_r3_8509 = (MKCollisionRay *) (&arg1);
     }
     MKCollision_SweepSphereTest(*var_r3_8509, arg3, arg4, 3, (MKCollisionDirection) 1);
 }
-#endif

@@ -82,7 +82,7 @@ static struct _struct_localOffset_0x10 localOffset[0xF] = {
     { 0xF, 40.0f, -60.000004f, 0.0f },
 };
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<Sparx>::State'
 static KDStateMachine<Sparx>::State sparxStates;    /* unable to generate initializer: confusing struct layout */
 
 void Sparx::StateAction_StrafeTargetUpdate() {
@@ -636,7 +636,7 @@ void Sparx::StateAction_SpyroWalkRunEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Sparx' to
+#if 0 // DRAFT: illegal implicit conversion from 'Sparx' to 'const MKVector3 &'
 void Sparx::CalculateLongIdle2Spline() {
     f64 sp128;                                      /* compiler-managed */
     f64 sp120;                                      /* compiler-managed */
@@ -971,7 +971,7 @@ void Sparx::StateAction_SpyroLongIdle1Exit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Sparx::StateAction_SpyroLongIdle1Enter() {
     f64 sp40;
     f64 sp38;
@@ -1673,7 +1673,7 @@ void Sparx::ResetHint() {
     this->unk1F0 = 0;
 }
 
-#if 0 // DRAFT: function call 'Message(HeroInterface *)' does not match
+#if 0 // DRAFT: function call 'Message(HeroInterface *)' does not match 'HeroInterface::Message(MKMessage *)'
 void Sparx::Message(MKMessage *arg0) {
     s32 temp_r0_3103;
     void *temp_r0_3154;
@@ -1732,7 +1732,7 @@ u8 Sparx::GetTaskMode() {
     return var_r4_3210;
 }
 
-#if 0 // DRAFT: function call 'IsDying(HeroInterface *, GameGlobals *)' does not match
+#if 0 // DRAFT: function call 'IsDying(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::IsDying()'
 void Sparx::Spawn() {
     f64 sp60;
     f64 sp58;

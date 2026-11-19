@@ -49,12 +49,12 @@ s32 stricmp(s8 *);                                  /* extern */
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gUpdateCameraAlpha' redeclared
+#if 0 // DRAFT: identifier 'gUpdateCameraAlpha' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static M2C_UNK modInfo;                             /* unable to generate initializer: unknown type */
 static u8 gUpdateCameraAlpha = 1;
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *)'
 u8 KDProp_LoadMaterialID(MKIniLine *arg0, const char *arg1, int *arg2) {
     s32 temp_r3_25;
     s32 temp_r3_39;
@@ -166,7 +166,7 @@ void KDProp::SetColorToGround() {
         sp34 = 10000.0f;
         spA8 = (f64) sp38;
         spA0 = (f64) sp30;
-        temp_r3_199 = MKModel_GetWorldMatrix(this->unk4);
+        temp_r3_199 = (void *) (MKModel_GetWorldMatrix(this->unk4));
         sp90 = M2C_FIELD(temp_r3_199, f64 *, 0x30);
         sp98 = M2C_FIELD(temp_r3_199, f64 *, 0x38);
         MKModel_CalculateCentre(this->unk4, &sp80);
@@ -348,7 +348,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 KDProp::LoadDone() {
     MKAnim *var_r3_627;
     MKAnim *var_r3_647;
@@ -375,17 +375,17 @@ s32 KDProp::LoadDone() {
         if ((temp_r3_586 != NULL) && ((u32) MKModel_GetAnimation(temp_r3_586->unk8)->unk18 != 0U)) {
             var_r29_594 = (s8 *)1;
         }
-        var_r3_603 = *KDProp::pCustomAnimScrName;
+        var_r3_603 = (MKResource *) (*KDProp::pCustomAnimScrName);
         if (var_r3_603 != NULL) {
 
         } else {
             var_r3_603 = ((MKAnimScript *) (M2C_FIELD(temp_r3_584, MKAnimScript **, 0x34)))->GetName();
         }
-        this->unk80 = ((MKAnimScript *) var_r3_603)->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */));
+        this->unk80 = (const char *) (((MKAnimScript *) var_r3_603)->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */)));
         this->unk4 = this->unk80->unk8;
         temp_r29_619 = this->unk80;
         if (temp_r29_619->Exists("idle01") != 0) {
-            var_r3_627 = temp_r29_619->GetAnim("idle01");
+            var_r3_627 = (MKAnim *) (temp_r29_619->GetAnim("idle01"));
         } else {
             var_r3_627 = NULL;
         }
@@ -393,7 +393,7 @@ s32 KDProp::LoadDone() {
         if (var_r3_627 == NULL) {
             temp_r29_635 = this->unk80;
             if (temp_r29_635->Exists("idle") != 0) {
-                var_r3_647 = temp_r29_635->GetAnim("idle");
+                var_r3_647 = (MKAnim *) (temp_r29_635->GetAnim("idle"));
             } else {
                 var_r3_647 = NULL;
             }
@@ -414,7 +414,7 @@ s32 KDProp::LoadDone() {
             } else {
                 var_r3_690 = NULL;
             }
-            var_r0_695 = *KDProp::pCustomModelName;
+            var_r0_695 = (MKHeap *) (*KDProp::pCustomModelName);
             if (var_r0_695 != NULL) {
 
             } else {
@@ -430,7 +430,7 @@ s32 KDProp::LoadDone() {
         MKModel_SetColor(this->unk4, MKProp::loadInfo + 0x70);
     }
     temp_f31_742 = M2C_FIELD(temp_r3_584, f32 *, 0x68);
-    temp_r0_744 = &MKProp::loadInfo + 0x60;
+    temp_r0_744 = (double *) (&MKProp::loadInfo + 0x60);
     *temp_r0_744 *= (f64) temp_f31_742;
     M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) = (f32) (M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) * temp_f31_742);
     MKProp::LoadDone();
@@ -462,7 +462,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDProp::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
@@ -503,7 +503,7 @@ void KDPropDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
@@ -534,7 +534,7 @@ s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    return (u8) (arg0->LoadBool("bUpdateCameraAlpha", &this->unk6C, 0) != 0);
+    return (bool *) ((u8) (arg0->LoadBool("bUpdateCameraAlpha", &this->unk6C, 0) != 0));
 }
 #endif
 

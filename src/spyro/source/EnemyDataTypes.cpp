@@ -97,7 +97,6 @@ void EnemyMovementManager::SetExitingAnim() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 **EnemyMovementManager::SelectAnim() {
     f64 sp20;
     f64 sp18;
@@ -154,7 +153,7 @@ s32 **EnemyMovementManager::SelectAnim() {
     var_ctr_85 = temp_r5_49;
     if (temp_r5_49 > 0) {
         do {
-            temp_r31_89 = ((u8 *) temp_r0_48) + var_r8_59;
+            temp_r31_89 = (long **) (((u8 *) temp_r0_48) + var_r8_59);
             temp_r12_91 = M2C_FIELD(temp_r31_89, s32 *, 4);
             if ((this->unk4 & temp_r12_91) && (!(temp_r12_91 & 1) || ((s32) this->unk8 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 2) || ((s32) this->unkC == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 4) || ((s32) this->unk10 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC)))) {
                 temp_r9_115 = M2C_FIELD(temp_r31_89, s32 **, 0);
@@ -172,7 +171,7 @@ s32 **EnemyMovementManager::SelectAnim() {
         var_ctr_155 = temp_r5_49;
         if (temp_r5_49 > 0) {
             do {
-                temp_r9_159 = ((u8 *) temp_r0_48) + var_r6_154;
+                temp_r9_159 = (long **) (((u8 *) temp_r0_48) + var_r6_154);
                 temp_r8_161 = M2C_FIELD(temp_r9_159, s32 *, 4);
                 if ((this->unk4 & temp_r8_161) && (!(temp_r8_161 & 1) || ((s32) this->unk8 == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC))) && (!(temp_r8_161 & 2) || ((s32) this->unkC == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC))) && ((temp_r8_178 = temp_r8_161 & 4, ((temp_r8_178 == 0) != 0)) || ((s32) this->unk10 == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC)))) {
                     if (var_r4_40 == NULL) {
@@ -193,7 +192,6 @@ s32 **EnemyMovementManager::SelectAnim() {
     }
     return var_r4_40;
 }
-#endif
 
 void EnemyMovementManager::Update() {
     AnimSequence *temp_r3_224;
@@ -345,7 +343,6 @@ void EnemySpawnGraphData::SetDefaults() {
     this->unk10 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void AttackSweepData::SetDefaults() {
     s32 var_r4_486;
     s32 var_r6_485;
@@ -357,7 +354,7 @@ void AttackSweepData::SetDefaults() {
 loop_2:
     if (var_r6_485 < (s32) this->unk4) {
         var_r6_485 += 1;
-        temp_r5_491 = this->unk0 + var_r4_486;
+        temp_r5_491 = (void *) (this->unk0 + var_r4_486);
         var_r4_486 += 0x10;
         M2C_FIELD(temp_r5_491, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r5_491, f32 *, 4) = 0.0f;
@@ -365,7 +362,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 void EnemyDamageFeedback::Init(float arg0, bool arg1, const MKVector3 &arg2, int arg3, int arg4, bool arg5, bool arg6, MKCollisionInfo *arg7, float arg8, float arg9) {
     this->unk24 = arg0;
@@ -421,7 +417,7 @@ void EnemyAttack::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, long)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, long)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
     s8 *sp8;
     f32 var_f0_805;
@@ -443,7 +439,7 @@ s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
         temp_r28_633 = DataMap_GetValue(&dataMapAnimSequence, arg0->GetString(0));
         temp_r5_637 = arg0->GetInt(1);
         if (temp_r28_633 != 0) {
-            this->unk0 = arg1->GetAnimSequence(temp_r28_633, temp_r5_637, this->unk3C, NULL);
+            this->unk0 = (AnimSequence *) (arg1->GetAnimSequence(temp_r28_633, temp_r5_637, this->unk3C, NULL));
         }
         return 1;
     }
@@ -451,7 +447,7 @@ s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
         this->unk78 = (s32) arg0->unk0;
         temp_r28_659 = this->unk78 * 4;
         if (MKHeap::Current() != NULL) {
-            var_r3_667 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_659, NULL, 0);
+            var_r3_667 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_659, NULL, 0));
         } else {
             var_r3_667 = malloc(temp_r28_659);
         }

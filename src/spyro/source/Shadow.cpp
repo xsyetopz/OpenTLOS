@@ -41,7 +41,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Shadow::Draw() {
     MKVector3 sp48;
     f64 sp40;
@@ -74,7 +74,7 @@ void Shadow::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Shadow::GetLightPos(MKVector3 *arg0) {
     MKVector3 sp38;
     f64 sp30;
@@ -249,7 +249,7 @@ void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, floa
 }
 #endif
 
-#if 0 // DRAFT: function call 'IsVisible(long, BoundingVolume *)' does not match
+#if 0 // DRAFT: function call 'IsVisible(long, BoundingVolume *)' does not match 'Frustum::IsVisible(const Matrix *, const BoundingVolume *)const ' 'Frustum::IsVisible(const Bo
 void Shadow_Draw() {
     Frustum sp8;
     M2C_UNK sp4;

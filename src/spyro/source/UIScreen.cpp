@@ -33,7 +33,7 @@ void UIScreen::OnUp() {
     this->unk80.Send();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UIScreen::OnExit() {
     s32 sp8;
     UIContainer *temp_r3_103;

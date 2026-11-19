@@ -35,7 +35,7 @@ extern M2C_UNK gb;
 static s32 lit_548 = 0;
 static u8 lit_549 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'Corona *'
 void FireWall::Deinit() {
     MKHeap *temp_r29_68;
     s32 temp_r0_60;
@@ -528,7 +528,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 s32 FireWall::LoadLine(MKIniLine *arg0) {
     s32 sp1CC;
     f32 sp1C8;
@@ -759,7 +759,7 @@ loop_32:
             this->unk4C = (s32) (1.5f * (var_f20_1014 / 100.0f));
             temp_r28_1163 = this->unk4C * 0x30;
             if (MKHeap::Current() != NULL) {
-                var_r3_1171 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1163, NULL, 0);
+                var_r3_1171 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1163, NULL, 0));
             } else {
                 var_r3_1171 = malloc(temp_r28_1163);
             }
@@ -1071,9 +1071,7 @@ void FireWallDescriptor::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FireWallDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create("fx_004");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("fx_004"));
 }
-#endif

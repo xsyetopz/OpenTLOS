@@ -269,13 +269,13 @@ void ImageCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void ImageCE::LoadDone() {
     this->unk3C = MKMaterial_Create(&this->unk1C);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 s32 ImageCE::LoadLine() {
     s32 var_r31_434;
 
@@ -291,7 +291,7 @@ void ImageCE::Deinit() {
     MKMaterial_Destroy(this->unk3C);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpawnGemsCE' to
+#if 0 // DRAFT: illegal implicit conversion from 'SpawnGemsCE' to 'long'
 void SpawnGemsCE::Enter() {
     MKVector3 sp8;
     s32 temp_r5_506;
@@ -339,7 +339,7 @@ s32 DisableShadowCE::LoadLine() {
     LoadActorID("actor", (int *) &this->unk4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void BreathEffectCE::Update() {
     Matrix sp20;
     MKVector3 sp10;
@@ -402,7 +402,7 @@ void BreathEffectCE::Enter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void BreathEffectCE::LoadDone() {
     s8 sp28;
     f64 sp20;
@@ -441,7 +441,7 @@ void BreathEffectCE::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 s32 BreathEffectCE::LoadLine() {
     s8 sp8;
 
@@ -465,14 +465,14 @@ void PlaySecondaryAnimCE::Enter() {
     this->unk28.SetAnim(this->unk88, 1.0f, 0.1f, 0x10, this->unk8C);
 }
 
-#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 void PlaySecondaryAnimCE::LoadDone() {
     this->unk28.Init(this->unk80, this->unk84);
     this->unk88 = this->unk28.GetAnim(&this->unk4);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 s32 PlaySecondaryAnimCE::LoadLine() {
     s32 var_r31_1080;
 
@@ -529,13 +529,13 @@ void PlayMusicCE::Exit() {
     }
 }
 
-#if 0 // DRAFT: function call 'Music_Play(signed char *, bool)' does not match
+#if 0 // DRAFT: function call 'Music_Play(signed char *, bool)' does not match 'Music_Play(const char *, bool)'
 void PlayMusicCE::Enter() {
     Music_Play(&this->unk4, this->unk24 == 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 PlayMusicCE::LoadLine() {
     s32 var_r31_1237;
 
@@ -687,7 +687,7 @@ s32 DropShadowCE::LoadLine() {
     return var_r31_1634;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TeleportCE::Update() {
     s8 sp25;
     s8 sp24;
@@ -735,7 +735,7 @@ void TeleportCE::Init() {
     this->unk8 = NULL;
 }
 
-#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void ScriptCE::Enter() {
     s8 *temp_r3_1752;
 
@@ -836,7 +836,7 @@ s32 ExplosionCE::LoadLine() {
     return var_r31_1982;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void AttachScaleOffsetCE::Update() {
     Matrix sp20;
     MKVector3 sp10;
@@ -990,7 +990,7 @@ void AttachPropToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void AttachPropCE::Update() {
     Matrix sp70;
     Animation sp18;
@@ -1066,7 +1066,7 @@ void AttachActorToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void AttachCE::Update() {
     Matrix sp80;
     Animation sp18;

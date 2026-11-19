@@ -139,11 +139,9 @@ inline s32 SpeedWaySpyroHeroInterface::GetCollisionIgnoreMaterials() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline MKPropDescriptor **SpeedWaySpyroHeroInterface::GetCollisionInfo() {
-    return M2C_FIELD(this, s32 *, 4) + 0x70;
+    return (MKPropDescriptor **) (M2C_FIELD(this, s32 *, 4) + 0x70);
 }
-#endif
 
 inline s32 SpeedWaySpyroHeroInterface::GetLighting() {
     return 0;

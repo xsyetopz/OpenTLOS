@@ -65,7 +65,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -294,7 +294,7 @@ u8 EnemyGoal_AlertMode::AddGoal_FlyingAttackMode() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, long)' does not match 'Enemy::GetCollisionRadius()'
 u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
     f64 sp50;
     f64 sp48;
@@ -322,7 +322,7 @@ u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
     void *temp_r4_558;
 
     temp_r3_543 = this->unkC;
-    temp_r28_547 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+    temp_r28_547 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
     temp_f1_550 = temp_r3_543->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
     temp_r3_551 = this->unkC;
     sp18 = M2C_FIELD(temp_r3_551, f64 *, 0xD0) * temp_f1_550;
@@ -414,7 +414,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MeleeAttackMode() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
     f64 sp50;
     f64 sp48;
@@ -440,7 +440,7 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
     temp_r3_786 = this->unkC;
     temp_r4_787 = temp_r3_786->unkB00;
     if ((temp_r4_787 & 1) && ((temp_r4_787 >> 6U) & 1)) {
-        temp_r31_797 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r31_797 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_799 = M2C_FIELD(temp_r3_786->__vptr, f64 (**)(s32), 0x100)(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_800 = this->unkC;
         sp18 = M2C_FIELD(temp_r3_800, f64 *, 0xD0) * temp_f1_799;
@@ -470,7 +470,7 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match 'Enemy::GetCollisionRadius()'
 u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -647,7 +647,7 @@ u8 EnemyGoal_AlertMode::AddGoal_Summon() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
+#if 0 // DRAFT: illegal type
 s32 EnemyGoal_AlertMode::AddGoal_Alert() {
     IsInAlertRangeMsg sp18;
     f64 sp10;
@@ -665,7 +665,7 @@ s32 EnemyGoal_AlertMode::AddGoal_Alert() {
         sp10 = M2C_FIELD(temp_r5_1194, f64 *, 0x38);
         sp18.Init(*((MKVector3 *) &sp8), 2000.0f);
         temp_r7_1200 = this->unkC;
-        sp18.unk4 = temp_r7_1200;
+        sp18.unk4 = (unsigned long) (temp_r7_1200);
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, IsInAlertRangeMsg *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp18, 8, 0, temp_r7_1200->unk8 + 0x30, 1, 2000.0f);
         AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r5_1221 = this->unk24;
@@ -694,7 +694,7 @@ void EnemyGoal_AlertMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
 u8 EnemyGoal_AlertMode::Update() {
     AITargetData sp48;
     f64 sp38;

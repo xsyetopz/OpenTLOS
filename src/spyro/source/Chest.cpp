@@ -152,7 +152,7 @@ void Chest::Init() {
 void ChestDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
-    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("Open");
+    this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Opening"));
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("Open"));
 }
 #endif

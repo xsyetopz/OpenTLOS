@@ -93,7 +93,7 @@ void *ShatterablePlatform::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKCollisionInfo *'
 s32 ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     this->unk208 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);

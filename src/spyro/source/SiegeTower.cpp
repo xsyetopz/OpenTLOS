@@ -68,11 +68,11 @@ extern s32 GS_SiegeTowerExtra3;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_siegeTowerGroups_0x18'
 static struct _struct_siegeTowerGroups_0x18 siegeTowerGroups[8];
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal type
 void SiegeTower::ZapBall(Ball *arg0) {
     f64 sp10;
     f64 sp8;
@@ -88,7 +88,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
     if (temp_r3_95 != NULL) {
         M2C_FIELD(temp_r3_95, s32 *, 0x130) = 0;
     }
-    this->unk248 = ((Projectile *)0x11)->CreateInstance((ProjectileType) arg0);
+    this->unk248 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) arg0));
     if ((void *) this->unk248 != NULL) {
         this->unk298 = (u32) arg0;
         this->unk290 = 0.5f;
@@ -115,7 +115,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SiegeTower::Shoot(Targetable *arg0) {
     s8 sp99;
     s8 sp98;
@@ -150,7 +150,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
     void *temp_r6_198;
 
     if (((void *) this->unk248 == NULL) && (arg0 != NULL)) {
-        this->unk248 = ((Projectile *)0x11)->CreateInstance((ProjectileType) arg0);
+        this->unk248 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) arg0));
         if ((void *) this->unk248 != NULL) {
             this->unk290 = 2.0f;
             M2C_FIELD(this->unk248, SiegeTower **, 0x130) = this;
@@ -358,7 +358,7 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SiegeTower::UpdateTurning(MKVector3 arg0) {
     MKVector3 spB0;
     f64 spA8;
@@ -512,7 +512,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void SiegeTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -780,7 +780,7 @@ f32 SiegeTower::Resolve() {
     this->unk1C0.Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 s32 SiegeTower::LoadDone() {
     f64 sp8;
     s32 temp_r0_1422;

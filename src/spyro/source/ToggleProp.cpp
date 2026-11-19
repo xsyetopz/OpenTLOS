@@ -85,7 +85,7 @@ void TogglePropDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed char *)' does not match 'MKModel_GetSubObjectIndex(const MKModel *, SubObjectType, con
 void TogglePropDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
     this->unk78 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, this->unk70);
@@ -93,7 +93,7 @@ void TogglePropDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 TogglePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_217;
 

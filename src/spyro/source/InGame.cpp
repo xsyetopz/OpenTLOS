@@ -86,14 +86,14 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern s32 autoLevelCutsceneNr;
 extern u32 autoSwitchState_939;
-#if 0 // DRAFT: identifier 'bQuit' redeclared
+#if 0 // DRAFT: identifier 'bQuit' redeclared was declared as: 'unsigned char' now declared as: 'signed char'
 extern s8 bQuit;
 #endif
-#if 0 // DRAFT: identifier 'bShowLoading' redeclared
+#if 0 // DRAFT: identifier 'bShowLoading' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 bShowLoading;
 #endif
 extern s32 desiredChunkIndex_963;
-#if 0 // DRAFT: identifier 'fingerprintData' redeclared
+#if 0 // DRAFT: identifier 'fingerprintData' redeclared was declared as: 'unsigned char[524]' now declared as: 'long'
 extern M2C_UNK fingerprintData;
 #endif
 extern s32 frameDelayCount_956;
@@ -170,7 +170,7 @@ void InGame_SystemMessage(MKMessage *arg0) {
             if ((DialogBoxContext *) gb.unk320 != NULL) {
                 DialogBox_ReleaseContext(gb.unk320);
             }
-            temp_r3_237 = DialogBox_InitContext();
+            temp_r3_237 = (DialogBoxContext *) (DialogBox_InitContext());
             gb.unk320 = temp_r3_237;
             temp_r3_237->unk0 = (s32) gb.unk324;
             gb.unk320->unk10 = 54.0f;
@@ -190,7 +190,7 @@ void InGame_SystemMessage(MKMessage *arg0) {
             if ((DialogBoxContext *) gb.unk320 != NULL) {
                 DialogBox_ReleaseContext(gb.unk320);
             }
-            temp_r3_300 = DialogBox_InitContext();
+            temp_r3_300 = (DialogBoxContext *) (DialogBox_InitContext());
             gb.unk320 = temp_r3_300;
             temp_r3_300->unk0 = 0;
             gb.unk320->unk18 = 544.0f;
@@ -923,7 +923,7 @@ void InGame_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to 'bool (*)()'
 void InGame_Init() {
     s32 sp20;
     s32 sp1C;
@@ -947,7 +947,7 @@ void InGame_Init() {
     ((PropGroupVolume *) &sp8)->CullGroups(*temp_r4_1867);
     if ((s32) gb.unk340 != 0) {
         msgTime = 999.0f;
-        pMessage = "Autolevelswitch running...";
+        pMessage = (signed char *) ("Autolevelswitch running...");
     }
     Music_Update();
     SpyroHud_Init();

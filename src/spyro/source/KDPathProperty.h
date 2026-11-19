@@ -38,7 +38,7 @@ inline void KDPathProperty::DeinitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
+#if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline s32 KDPathProperty::LoadLineInstance(MKIniLine *arg0) {
     s8 *var_r5_2976;
 
@@ -46,7 +46,7 @@ inline s32 KDPathProperty::LoadLineInstance(MKIniLine *arg0) {
     if (var_r5_2976 != NULL) {
 
     } else {
-        var_r5_2976 = "";
+        var_r5_2976 = (signed char *) ("");
     }
     ((KDPathSegment *) (*KDProperty::pInstanceMem + this->unk8))->LoadWaypoints(arg0, var_r5_2976);
 }

@@ -51,7 +51,7 @@ u8 classInfo__26MessageBroadcasterProperty[0x10];
 u8 classInfo__23CollisionSphereProperty[0x10];
 u8 classInfo__20EventMessageProperty[0x10];
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to 'MKProp *'
 void EventMessageProperty::Command(int arg0) {
     if (arg0 != 1) {
         return;
@@ -60,15 +60,15 @@ void EventMessageProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[5])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[5])' does not match 'stricmp(signed char *, long *)'
 s32 EventMessageProperty::ResolveCommand(const char *arg0) const {
     return stricmp(arg0, "Send") == 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 EventMessageProperty::LoadLineInstance(MKIniLine *arg0) {
-    return (u8) (((EventMessage *) (*KDProperty::pInstanceMem + this->unk8))->LoadLine(arg0, this->unk10) != 0);
+    return (const char *) ((u8) (((EventMessage *) (*KDProperty::pInstanceMem + this->unk8))->LoadLine(arg0, this->unk10) != 0));
 }
 #endif
 
@@ -80,7 +80,6 @@ void EventMessageProperty::InitInstance() {
     ((EventMessage *) (*KDProperty::pInstanceMem + this->unk8))->Init();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 void EventMessageProperty::LoadDone() {
     s8 *var_r0_122;
 
@@ -89,25 +88,22 @@ void EventMessageProperty::LoadDone() {
         if (var_r0_122 != NULL) {
 
         } else {
-            var_r0_122 = "";
+            var_r0_122 = (signed char *) ("");
         }
         this->unk10 = var_r0_122;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 EventMessageProperty::LoadLine(MKIniLine *arg0) {
-    return (u8) (arg0->LoadString("eventName", &this->unk10, 0) != 0);
+    return (const char **) ((u8) (arg0->LoadString("eventName", &this->unk10, 0) != 0));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void EventMessageProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
     this->unk10 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void CollisionSphereProperty::Command(int arg0) {
@@ -122,7 +118,7 @@ void CollisionSphereProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 CollisionSphereProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_213;
 
@@ -134,18 +130,18 @@ s32 CollisionSphereProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void CollisionSphereProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r0_233;
 
     temp_r0_233 = this->unk10;
     if (temp_r0_233 != NULL) {
-        this->unk10 = property_cast<KDPositionProperty *, KDProperty *>(arg0->Find(temp_r0_233));
+        this->unk10 = (const char *) (property_cast<KDPositionProperty *, KDProperty *>(arg0->Find(temp_r0_233)));
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 CollisionSphereProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_261;
 
@@ -157,17 +153,15 @@ s32 CollisionSphereProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void CollisionSphereProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
     this->unk14 = 0.0f;
     this->unk18 = 0.0f;
     this->unk1C = 0;
-    this->unk10 = "localToWorld";
+    this->unk10 = (signed char *) ("localToWorld");
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal type
 void CollisionSphereProperty::ResolveInstance() {
     f64 sp20;
     f64 sp18;
@@ -182,7 +176,7 @@ void CollisionSphereProperty::ResolveInstance() {
     void *temp_r29_330;
 
     var_r28_329 = 1;
-    temp_r29_330 = *KDProperty::pInstanceMem;
+    temp_r29_330 = (void *) (*KDProperty::pInstanceMem);
     if (M2C_FIELD(temp_r29_330, s32 *, 0x10) & 1) {
         var_r28_329 = 2;
     }
@@ -238,7 +232,7 @@ void MessageBroadcasterProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 MessageBroadcasterProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_503;
 
@@ -253,13 +247,13 @@ s32 MessageBroadcasterProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
 s32 MessageBroadcasterProperty::LoadLine(MKIniLine *arg0) {
     if ((PropTypes_LoadLine(arg0, "MessageMask", (int *) &this->unk18) != 0) || (arg0->LoadFloat("Radius", &this->unk10, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("MessageID") != 0) {
-        this->unk14 = globalMessageMap.GetIdFromString(arg0->GetString(0));
+        this->unk14 = (const char *) (globalMessageMap.GetIdFromString(arg0->GetString(0)));
         return 1;
     }
     return 0;
@@ -272,16 +266,14 @@ void MessageBroadcasterProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void MessageBroadcasterProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
     this->unk10 = 0.0f;
     this->unk18 = 0;
     this->unk14 = (s8 *)-1;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to 'MKProp *'
 void CameraShakeProperty::Command(int arg0) {
     AddCameraTrackedShakePropMessage sp14;
     MKProp *sp10;
@@ -297,14 +289,14 @@ void CameraShakeProperty::Command(int arg0) {
     case 2:
         spC = 0;
         sp8 = 0x456;
-        sp10 = *KDProperty::pInstanceMem;
+        sp10 = (MKProp *) (*KDProperty::pInstanceMem);
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, 0x456);
         return;
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match 'stricmp(signed char *, long *)'
 s32 CameraShakeProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_672;
 
@@ -337,22 +329,20 @@ void TimerProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void TimerProperty::Update() {
     void *temp_r4_769;
     void *temp_r5_780;
 
-    temp_r4_769 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r4_769 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     if ((u8) M2C_FIELD(temp_r4_769, u8 *, 4) != 0) {
         M2C_FIELD(temp_r4_769, f32 *, 0) = (f32) (M2C_FIELD(temp_r4_769, f32 *, 0) + gUpdateTimeDelta);
-        temp_r5_780 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r5_780 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         if (M2C_FIELD(temp_r5_780, f32 *, 0) >= this->unk1C) {
             M2C_FIELD(temp_r5_780, s8 *, 4) = 0;
             KDScriptProperty::Command(1);
         }
     }
 }
-#endif
 
 s32 TimerProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_808;
@@ -364,7 +354,7 @@ s32 TimerProperty::LoadLine(MKIniLine *arg0) {
     return var_r31_808;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MessageHandlerProperty::Resolve(KDPropertySet *arg0) {
     s32 var_r4_841;
 
@@ -380,7 +370,7 @@ void MessageHandlerProperty::Resolve(KDPropertySet *arg0) {
             var_r4_841 = (s32) "";
         }
     }
-    this->unk1C = globalMessageMap.GetIdFromString((s8 *) var_r4_841);
+    this->unk1C = (const char *) (globalMessageMap.GetIdFromString((s8 *) var_r4_841));
 }
 #endif
 

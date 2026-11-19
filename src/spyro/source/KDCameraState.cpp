@@ -117,7 +117,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDCameraStateStack' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDCameraStateStack' to 'signed char *'
 void KDCameraStateStack::GetDescriptorAtIndex(int arg0) {
     GetDescriptor(M2C_FIELD(*(this + (arg0 * 4)), s32 *, 4));
 }

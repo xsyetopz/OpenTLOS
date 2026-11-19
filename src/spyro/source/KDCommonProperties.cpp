@@ -58,7 +58,6 @@ u8 classInfo__22KDPathFollowerProperty[0x10];
 u8 classInfo__25KDSoundAttachmentProperty[0x10];
 u8 classInfo__22KDAmbientSoundProperty[0x10];
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDAmbientSoundProperty::Update() {
     s32 sp8;
     KDSoundFader *temp_r30_44;
@@ -67,15 +66,14 @@ void KDAmbientSoundProperty::Update() {
     u32 temp_r31_47;
 
     temp_r3_40 = this->unk14;
-    temp_r30_44 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r30_44 = (KDSoundFader *) (*KDProperty::pInstanceMem + this->unk8);
     temp_r31_47 = (u32) M2C_FIELD(temp_r30_44, u32 *, 0x28) >> 0x1FU;
     temp_r8_51 = M2C_FIELD(*temp_r3_40, MKVector3 *(**)(s8 *, s32), 0x50)(temp_r3_40, *KDProperty::pInstanceMem);
     sp8 = 1;
     temp_r30_44->Update(this->unk10, 1U, (u8) temp_r31_47, NULL, temp_r8_51, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long)' does not match 'KDSound_Stop(int *)'
 void KDAmbientSoundProperty::DeinitInstance() {
     KDSound_Stop(*KDProperty::pInstanceMem + this->unk8);
 }
@@ -87,7 +85,7 @@ void KDAmbientSoundProperty::InitInstance() {
 
     *(*KDProperty::pInstanceMem + (this->unk8 + 0x28)) = 0;
     ((KDSoundFader *) (*KDProperty::pInstanceMem + this->unk8))->Init(this->unk20, this->unk24);
-    temp_r3_107 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_107 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     if ((u8) this->unk1C != 0) {
         M2C_FIELD(temp_r3_107, s32 *, 0x28) = (s32) (M2C_FIELD(temp_r3_107, s32 *, 0x28) | 0x80000000);
         return;
@@ -96,7 +94,7 @@ void KDAmbientSoundProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDAmbientSoundProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_134;
 
@@ -115,7 +113,7 @@ void KDAmbientSoundProperty::Init(const char *arg0) {
     this->unk24 = 0.25f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'KDSound_Stop(long)' does not match 'KDSound_Stop(int *)'
 void KDAmbientSoundProperty::Command(int arg0) {
     void *temp_r5_210;
 
@@ -123,7 +121,7 @@ void KDAmbientSoundProperty::Command(int arg0) {
         if (arg0 < 1) {
             return;
         }
-        temp_r5_210 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r5_210 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         if (arg0 == 1) {
             M2C_FIELD(temp_r5_210, s32 *, 0x28) = (s32) (M2C_FIELD(temp_r5_210, s32 *, 0x28) | 0x80000000);
         } else {
@@ -142,7 +140,7 @@ void KDSoundAttachmentProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char[12], const char[13])'
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char[12], const char[13])' does not match 'stricmp(signed char *, signed char *, signed char *)'
 void KDSoundAttachmentProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r4_271;
 
@@ -153,12 +151,12 @@ void KDSoundAttachmentProperty::Resolve(KDPropertySet *arg0) {
     }
     temp_r4_271 = this->unk14;
     if (temp_r4_271 != NULL) {
-        this->unk14 = property_cast<KDPositionProperty *, KDProperty *>(arg0->Find(temp_r4_271));
+        this->unk14 = (const char *) (property_cast<KDPositionProperty *, KDProperty *>(arg0->Find(temp_r4_271)));
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_298;
 
@@ -170,13 +168,11 @@ s32 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void KDSoundAttachmentProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
-    this->unk14 = "localtoworld";
-    this->unk18 = "PLACEHOLDER";
+    this->unk4 = (signed char *) (arg0);
+    this->unk14 = (signed char *) ("localtoworld");
+    this->unk18 = (signed char *) ("PLACEHOLDER");
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDSoundAttachmentProperty::Command(int arg0) {
@@ -203,7 +199,7 @@ void KDSoundAttachmentProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[5])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[5])' does not match 'stricmp(signed char *, signed char *, signed char *)'
 s32 KDSoundAttachmentProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_412;
 
@@ -215,7 +211,7 @@ s32 KDSoundAttachmentProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'Matrix *'
 void KDPathFollowerProperty::UpdateSplinePath() {
     f64 sp28;
     KDUniformSpline sp10;
@@ -226,7 +222,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
     void *temp_r3_487;
     void *temp_r4_435;
 
-    temp_r4_435 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r4_435 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     temp_f2_438 = M2C_FIELD(temp_r4_435, f32 *, 0x14) * gUpdateTimeDelta;
     if ((u8) M2C_FIELD(temp_r4_435, u8 *, 1) == 0) {
         M2C_FIELD(temp_r4_435, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_435, f32 *, 0x18) + temp_f2_438);
@@ -255,7 +251,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDPathFollowerProperty::UpdateNormalPath() {
     f64 sp88;
     f64 sp80;
@@ -305,7 +301,7 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     void *temp_r7_571;
     void *temp_r7_668;
 
-    temp_r4_513 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r4_513 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r4_513, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_513, f32 *, 0x18) + (gUpdateTimeDelta * (M2C_FIELD(temp_r4_513, f32 *, 0x14) / M2C_FIELD(temp_r4_513, f32 *, 8))));
     if (M2C_FIELD(temp_r4_513, f32 *, 0x18) >= 1.0f) {
         if ((u8) M2C_FIELD(temp_r4_513, u8 *, 1) == 0) {
@@ -336,8 +332,8 @@ void KDPathFollowerProperty::UpdateNormalPath() {
         temp_r7_571 = M2C_FIELD(temp_r4_513, void **, 4);
         temp_r6_573 = M2C_FIELD(temp_r7_571, s32 *, 0x1C);
         temp_r7_576 = M2C_FIELD(temp_r7_571, s32 *, 0x24);
-        temp_r5_578 = temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r6_573);
-        temp_r6_579 = temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r6_573);
+        temp_r5_578 = (void *) (temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r6_573));
+        temp_r6_579 = (void *) (temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r6_573));
         sp60 = M2C_FIELD(temp_r6_579, f64 *, 0) - M2C_FIELD(temp_r5_578, f64 *, 0);
         sp70 = sp60;
         sp68 = M2C_FIELD(temp_r6_579, f32 *, 8) - M2C_FIELD(temp_r5_578, f32 *, 8);
@@ -383,8 +379,8 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     temp_f5_669 = M2C_FIELD(temp_r4_513, f32 *, 0x18);
     temp_r5_671 = M2C_FIELD(temp_r7_668, s32 *, 0x1C);
     temp_r6_675 = M2C_FIELD(temp_r7_668, s32 *, 0x24);
-    temp_r4_677 = temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r5_671);
-    temp_r5_678 = temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r5_671);
+    temp_r4_677 = (void *) (temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r5_671));
+    temp_r5_678 = (void *) (temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r5_671));
     temp_f3_680 = M2C_FIELD(temp_r5_678, f64 *, 0);
     temp_f1_681 = M2C_FIELD(temp_r4_677, f64 *, 0) - temp_f3_680;
     sp30 = temp_f1_681;
@@ -424,12 +420,12 @@ void KDPathFollowerProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void KDPathFollowerProperty::ResolveInstance() {
     void *temp_r31_766;
     void *temp_r4_785;
 
-    temp_r31_766 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r31_766 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     if ((u8) this->unk10 != 0) {
         M2C_FIELD(temp_r31_766, void **, 4) = (void *) (*KDProperty::pInstanceMem + property_cast<KDSplinePathProperty *, KDPathProperty *>(this->unk14)->unk8);
         M2C_FIELD(temp_r31_766, f32 *, 0x14) = (f32) (M2C_FIELD(temp_r31_766, f32 *, 0x14) / M2C_FIELD(M2C_FIELD(temp_r31_766, void **, 4), f32 *, 0x38));
@@ -441,13 +437,13 @@ void KDPathFollowerProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'bool *'
 s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r30_835;
     void *temp_r3_824;
 
     if (arg0->LoadBool("bFunctioning", *KDProperty::pInstanceMem + (this->unk8 + 3), 0) != 0) {
-        temp_r3_824 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r3_824 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         M2C_FIELD(temp_r3_824, u8 *, 0) = (u8) M2C_FIELD(temp_r3_824, u8 *, 3);
     }
     var_r30_835 = 0;
@@ -458,11 +454,10 @@ s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDPathFollowerProperty::InitInstance() {
     void *temp_r3_872;
 
-    temp_r3_872 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_872 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_872, s8 *, 0) = 0;
     M2C_FIELD(temp_r3_872, s8 *, 1) = 0;
     M2C_FIELD(temp_r3_872, s8 *, 2) = 1;
@@ -474,24 +469,23 @@ void KDPathFollowerProperty::InitInstance() {
     M2C_FIELD(temp_r3_872, f32 *, 0x14) = 0.0f;
     M2C_FIELD(temp_r3_872, f32 *, 0x18) = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDPathFollowerProperty::Resolve(KDPropertySet *arg0) {
     KDPathProperty *temp_r4_900;
 
-    this->unk18 = property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find((s8 *) this->unk18));
+    this->unk18 = (const char *) (property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find((s8 *) this->unk18)));
     temp_r4_900 = this->unk14;
     if (temp_r4_900 != NULL) {
-        this->unk14 = property_cast<KDPathProperty *, KDProperty *>(arg0->Find((s8 *) temp_r4_900));
+        this->unk14 = (const char *) (property_cast<KDPathProperty *, KDProperty *>(arg0->Find((s8 *) temp_r4_900)));
     }
     this->unk10 = ((KDProperty *) this->unk14)->IsOfType((KDPropertyClassInfo *) &KDSplinePathProperty::classInfo);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
-    return (u8) (arg0->LoadString("path", (s8 **) &this->unk14, 0) != 0);
+    return (const char **) ((u8) (arg0->LoadString("path", (s8 **) &this->unk14, 0) != 0));
 }
 #endif
 
@@ -553,7 +547,7 @@ void KDPathFollowerProperty::Command(int arg0) {
         *(*KDProperty::pInstanceMem + this->unk8) = 0;
         return;
     case 3:                                         /* switch 1 */
-        temp_r4_976 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r4_976 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         M2C_FIELD(temp_r4_976, u8 *, 1) = (u8) (M2C_FIELD(temp_r4_976, u8 *, 1) == 0);
         M2C_FIELD(temp_r4_976, f32 *, 0x18) = (f32) (1.0f - M2C_FIELD(temp_r4_976, f32 *, 0x18));
         if ((u8) this->unk10 == 0) {
@@ -565,7 +559,7 @@ void KDPathFollowerProperty::Command(int arg0) {
         return;
     case 4:                                         /* switch 1 */
         var_r8_996 = 1;
-        temp_r4_998 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r4_998 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         M2C_FIELD(temp_r4_998, u8 *, 0) = (u8) M2C_FIELD(temp_r4_998, u8 *, 3);
         M2C_FIELD(temp_r4_998, s8 *, 1) = 0;
         M2C_FIELD(temp_r4_998, s32 *, 0xC) = 0;
@@ -578,8 +572,8 @@ void KDPathFollowerProperty::Command(int arg0) {
             temp_r7_1018 = M2C_FIELD(temp_r4_998, void **, 4);
             temp_r6_1020 = M2C_FIELD(temp_r7_1018, s32 *, 0x1C);
             temp_r7_1023 = M2C_FIELD(temp_r7_1018, s32 *, 0x24);
-            temp_r5_1025 = temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r6_1020);
-            temp_r6_1026 = temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r6_1020);
+            temp_r5_1025 = (void *) (temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r6_1020));
+            temp_r6_1026 = (void *) (temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r6_1020));
             temp_f1_1029 = M2C_FIELD(temp_r6_1026, f64 *, 0) - M2C_FIELD(temp_r5_1025, f64 *, 0);
             sp60 = temp_f1_1029;
             sp70 = temp_f1_1029;
@@ -625,8 +619,8 @@ void KDPathFollowerProperty::Command(int arg0) {
         temp_f5_1110 = M2C_FIELD(temp_r4_998, f32 *, 0x18);
         temp_r5_1112 = M2C_FIELD(temp_r7_1109, s32 *, 0x1C);
         temp_r6_1116 = M2C_FIELD(temp_r7_1109, s32 *, 0x24);
-        temp_r4_1118 = temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r5_1112);
-        temp_r5_1119 = temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r5_1112);
+        temp_r4_1118 = (void *) (temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r5_1112));
+        temp_r5_1119 = (void *) (temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r5_1112));
         temp_f3_1121 = M2C_FIELD(temp_r5_1119, f64 *, 0);
         temp_f1_1122 = M2C_FIELD(temp_r4_1118, f64 *, 0) - temp_f3_1121;
         sp30 = temp_f1_1122;
@@ -656,7 +650,7 @@ void KDPathFollowerProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match 'stricmp(signed char *, signed char *, signed char *)'
 s32 KDPathFollowerProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_1215;
 
@@ -763,7 +757,7 @@ loop_13:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDMessageHandlerProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r30_1397;
     u8 var_r31_1400;
@@ -780,13 +774,11 @@ s32 KDMessageHandlerProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void KDMessageHandlerProperty::Init(const char *arg0) {
-    this->unk4 = arg0;
+    this->unk4 = (signed char *) (arg0);
     this->unk24 = 0;
     this->unk1C = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDAnimProperty::Command(int arg0) {
@@ -803,13 +795,13 @@ void KDAnimProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[5], const char[13])' does
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[5], const char[13])' does not match 'stricmp(signed char *, signed char *, signed char *)'
 s32 KDAnimProperty::ResolveCommand(const char *arg0) const {
     return stricmp(arg0, "Play", "bOnByDefault") == 0;
 }
 #endif
 
-#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match
+#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match 'property_cast<...>(T1)'
 void KDAnimProperty::Resolve(KDPropertySet *arg0) {
     MKAnim *temp_r4_1518;
     MKAnimScript *temp_r3_1515;
@@ -828,13 +820,13 @@ void KDAnimProperty::Resolve(KDPropertySet *arg0) {
         if (var_r4_1525 != NULL) {
             var_r0_1528 = var_r4_1525;
         } else {
-            var_r0_1528 = "";
+            var_r0_1528 = (signed char *) ("");
         }
         if (var_r0_1528 != NULL) {
             if (var_r4_1525 != NULL) {
 
             } else {
-                var_r4_1525 = "";
+                var_r4_1525 = (signed char *) ("");
             }
             this->unk14 = temp_r3_1515->GetAnim(var_r4_1525);
         }
@@ -842,7 +834,7 @@ void KDAnimProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDAnimProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1567;
 
@@ -878,7 +870,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match
+#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match 'property_cast<...>(T1)'
 void KDAnimEventProperty::Resolve(KDPropertySet *arg0) {
     KDPropertyCommand **var_r30_1655;
     MKAnimScript *temp_r3_1693;
@@ -934,7 +926,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDAnimEventProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1747;
 
@@ -951,12 +943,12 @@ void KDRefPointProperty::Update() {
     Matrix *temp_r3_1796;
 
     MKModel_GetRefPointMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8)), (s32) this->unk14, *KDProperty::pInstanceMem + this->unk8, 0U);
-    temp_r3_1796 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_1796 = (Matrix *) (*KDProperty::pInstanceMem + this->unk8);
     temp_r3_1796->Multiply4x4(temp_r3_1796, MKModel_GetWorldMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8))));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
     MKModel *temp_r3_1826;
     s8 *temp_r0_1814;
@@ -967,7 +959,7 @@ void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
 
     temp_r0_1814 = this->unk10;
     if (temp_r0_1814 != NULL) {
-        this->unk10 = property_cast<KDModelProperty *, KDProperty *>(arg0->Find(temp_r0_1814));
+        this->unk10 = (const char *) (property_cast<KDModelProperty *, KDProperty *>(arg0->Find(temp_r0_1814)));
     }
     temp_r3_1823 = this->unk10;
     if ((temp_r3_1823 != NULL) && (temp_r3_1826 = M2C_FIELD(temp_r3_1823, MKModel **, 0x10), ((temp_r3_1826 == NULL) == 0))) {
@@ -980,13 +972,13 @@ void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
         if (var_r4_1836 != NULL) {
             var_r0_1839 = var_r4_1836;
         } else {
-            var_r0_1839 = "";
+            var_r0_1839 = (signed char *) ("");
         }
         if (var_r0_1839 != NULL) {
             if (var_r4_1836 != NULL) {
 
             } else {
-                var_r4_1836 = "";
+                var_r4_1836 = (signed char *) ("");
             }
             this->unk14 = MKModel_GetRefPointIndex(temp_r3_1826, var_r4_1836);
         }
@@ -994,7 +986,7 @@ void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDRefPointProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1878;
 
@@ -1056,25 +1048,25 @@ void KDCommonProperties_cpp::__sinit() {
     KDPositionProperty::classInfo.__vptr = "KDPosition";
     KDPositionProperty::classInfo.unk8 = 0;
     KDPositionProperty::classInfo.unk4 = (s8 *) &KDPropertyConstructor<KDPositionProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x10) = "KDMatrix";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x10) = (signed char *) ("KDMatrix");
     temp_r22_3059->unk8 = (s32) &KDPositionProperty::classInfo;
     temp_r22_3059->unk4 = (s8 *) &KDPropertyConstructor<KDMatrixProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x20) = "KDMatrixRef";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x20) = (signed char *) ("KDMatrixRef");
     temp_r25_3063->unk8 = (s32) temp_r22_3059;
     temp_r25_3063->unk4 = (s8 *) &KDPropertyConstructor<KDMatrixRefProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x30) = "KDRefPoint";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x30) = (signed char *) ("KDRefPoint");
     temp_r28_3065->unk8 = (s32) temp_r22_3059;
     temp_r28_3065->unk4 = (s8 *) &KDPropertyConstructor<KDRefPointProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x40) = "KDModel";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x40) = (signed char *) ("KDModel");
     temp_r12_3069->unk8 = 0;
     temp_r12_3069->unk4 = (s8 *) &KDPropertyConstructor<KDModelProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x50) = "KDAnimScript";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x50) = (signed char *) ("KDAnimScript");
     temp_r9_3073->unk8 = 0;
     temp_r9_3073->unk4 = (s8 *) &KDPropertyConstructor<KDAnimScriptProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x60) = "KDAnimEvent";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x60) = (signed char *) ("KDAnimEvent");
     temp_r6_3076->unk8 = (s32) KDScriptProperty::classInfo;
     temp_r6_3076->unk4 = (s8 *) &KDPropertyConstructor<KDAnimEventProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x70) = "KDAnim";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x70) = (signed char *) ("KDAnim");
     temp_r16_3070->unk8 = 0;
     temp_r16_3070->unk4 = (s8 *) &KDPropertyConstructor<KDAnimProperty>::Construct;
     temp_r11_3110 = &KDPositionProperty::classInfo + 0x80;
@@ -1084,25 +1076,25 @@ void KDCommonProperties_cpp::__sinit() {
     temp_r25_3122 = &KDPositionProperty::classInfo + 0xC0;
     temp_r22_3125 = &KDPositionProperty::classInfo + 0xD0;
     temp_r19_3128 = &KDPositionProperty::classInfo + 0xE0;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x80) = "KDMessageHandler";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x80) = (signed char *) ("KDMessageHandler");
     temp_r11_3110->unk8 = (s32) KDScriptProperty::classInfo;
     temp_r11_3110->unk4 = (s8 *) &KDPropertyConstructor<KDMessageHandlerProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x90) = "KDPath";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x90) = (signed char *) ("KDPath");
     temp_r8_3113->unk8 = 0;
     temp_r8_3113->unk4 = (s8 *) &KDPropertyConstructor<KDPathProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xA0) = "KDSplinePath";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xA0) = (signed char *) ("KDSplinePath");
     temp_r5_3116->unk8 = (s32) temp_r8_3113;
     temp_r5_3116->unk4 = (s8 *) &KDPropertyConstructor<KDSplinePathProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xB0) = "KDPathFollower";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xB0) = (signed char *) ("KDPathFollower");
     temp_r28_3119->unk8 = 0;
     temp_r28_3119->unk4 = (s8 *) &KDPropertyConstructor<KDPathFollowerProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xC0) = "KDCloth";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xC0) = (signed char *) ("KDCloth");
     temp_r25_3122->unk8 = 0;
     temp_r25_3122->unk4 = (s8 *) &KDPropertyConstructor<KDClothProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xD0) = "KDSoundAttachment";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xD0) = (signed char *) ("KDSoundAttachment");
     temp_r22_3125->unk8 = 0;
     temp_r22_3125->unk4 = (s8 *) &KDPropertyConstructor<KDSoundAttachmentProperty>::Construct;
-    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xE0) = "KDAmbientSound";
+    M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0xE0) = (signed char *) ("KDAmbientSound");
     temp_r19_3128->unk8 = (s32) temp_r22_3125;
     temp_r19_3128->unk4 = (s8 *) &KDPropertyConstructor<KDAmbientSoundProperty>::Construct;
 }

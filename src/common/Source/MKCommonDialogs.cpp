@@ -18,7 +18,7 @@ extern s8 *MKWIDGETTYPE_LISTBOX;
 extern s8 *MKWIDGETTYPE_LISTITEM;
 extern s8 *MKWIDGETTYPE_SLIDER;
 extern s8 *MKWIDGETTYPE_WINDOW;
-#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared
+#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared was declared as: 'MKWidgetAttributes *' now declared as: 'long'
 extern s32 MKWidgetIdentityAttributes;
 #endif
 extern ColorEditor gColorEditor;
@@ -26,11 +26,11 @@ extern MKWidgetContextMenu gContextMenu;
 extern CreateWidgetWindow gCreateWidgetWindow;
 extern MaterialEditor gMaterialEditor;
 extern MKFont *gpDebugFont;
-#if 0 // DRAFT: identifier 'pDescriptorList' redeclared
+#if 0 // DRAFT: identifier 'pDescriptorList' redeclared was declared as: 'MKWidgetDescriptor *' now declared as: 'void *'
 extern void *pDescriptorList;
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long (CreateWidgetWindow::*)(MKWidget *,
+#if 0 // DRAFT: illegal explicit conversion from 'long (CreateWidgetWindow::*)(MKWidget *, unsigned int, unsigned int, void *)const ' to 'long (*)(MKWidget *, unsigned long, un
 void CreateWidgetWindow::CreateWidgets() {
     f32 sp68;                                       /* compiler-managed */
     f32 sp64;
@@ -178,7 +178,7 @@ void MaterialEditor::Show(MKMaterial *arg0) {
     MKWidget_SetFocus(this->unk4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long (MaterialEditor::*)(MKWidget *,
+#if 0 // DRAFT: illegal explicit conversion from 'long (MaterialEditor::*)(MKWidget *, unsigned int, unsigned int, void *)const ' to 'long (*)(MKWidget *, unsigned long, unsign
 void MaterialEditor::CreateWidgets() {
     f32 sp40;
     f32 sp3C;
@@ -249,7 +249,7 @@ void ColorEditor::Show(const MKVector4 &arg0, MKWidget *arg1) {
     MKWidget_SetFocus(this->unk10);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long (ColorEditor::*)(MKWidget *,
+#if 0 // DRAFT: illegal explicit conversion from 'long (ColorEditor::*)(MKWidget *, unsigned int, unsigned int, void *)const ' to 'long (*)(MKWidget *, unsigned long, unsigned 
 void ColorEditor::CreateWidgets() {
     f32 sp5C;
     f32 sp58;
@@ -404,7 +404,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: function call 'MKWidget_Create(signed char *, const char *,
+#if 0 // DRAFT: function call 'MKWidget_Create(signed char *, const char *, MKWidgetAttributes *, MKWidget *, int, int)' does not match 'MKWidget_Create(const char *, const cha
 void MKWidgetContextMenu::AddItem(const char *arg0) {
     f32 sp40;
     f32 sp3C;
@@ -467,7 +467,7 @@ loop_13:
             }
             if ((s8 *) M2C_FIELD(M2C_FIELD(temp_r28_976, void **, 0x2C), s8 **, 0x68) != NULL) {
                 temp_f31_996 = var_r30_980->GetScale(M2C_FIELD(temp_r28_976->unk4, f32 *, 0x3C));
-                temp_f0_1001 = (temp_f31_996 * var_r30_980->CalcLength(M2C_FIELD(M2C_FIELD(temp_r28_976, void **, 0x2C), s8 **, 0x68))) + 6.0f;
+                temp_f0_1001 = (const char *) ((temp_f31_996 * var_r30_980->CalcLength(M2C_FIELD(M2C_FIELD(temp_r28_976, void **, 0x2C), s8 **, 0x68))) + 6.0f);
                 if (var_f30_967 > temp_f0_1001) {
 
                 } else {
@@ -520,7 +520,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long (MKWidgetContextMenu::*)(MKWidget
+#if 0 // DRAFT: illegal explicit conversion from 'long (MKWidgetContextMenu::*)(MKWidget *, unsigned int, unsigned int, void *)const ' to 'long (*)(MKWidget *, unsigned long, u
 void MKWidgetContextMenu::CreateWidgets() {
     f32 sp40;
     f32 sp3C;

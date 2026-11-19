@@ -9,7 +9,7 @@
 
 extern UIStringTable *pStringTable;
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'const char *' and 'MKStringCache *'
 s32 UIStringTable::Remove(const char *arg0) {
     MKStringCache *temp_r3_18;
     u8 var_r31_19;
@@ -34,15 +34,13 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKStringCache *' to
 s32 UIStringTable::Add(const char *arg0) {
     if (arg0 == NULL) {
         return 0;
     }
     this->unk0 += 1;
-    return this->unk4->Add(arg0);
+    return (long) (this->unk4->Add(arg0));
 }
-#endif
 
 void UIStringTable::Deinit() {
     this->unk4->Destroy();

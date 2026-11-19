@@ -180,7 +180,7 @@ void Enemy::TestForTraps() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void Enemy::TestForSpikes() {
     s32 spC;
     s32 sp8;
@@ -517,7 +517,7 @@ block_30:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Enemy::ThawIfFrozen() {
     f64 sp88;
     f64 sp80;
@@ -587,7 +587,7 @@ void Enemy::ThawIfFrozen() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     f64 sp40;
     f64 sp38;
@@ -926,7 +926,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Enemy::Armour_Destroy() {
     Matrix sp40;
     f64 sp38;
@@ -1021,7 +1021,7 @@ void Enemy::UpdateBodyFX() {
     this->unkAA8 -= gUpdateTimeDelta;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to 'float'
 void Enemy::FindAndZapFriends(BreathHitMessage *arg0) {
     f32 sp22C;
     f32 sp228;
@@ -1355,7 +1355,7 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     f64 spC0;
     f64 spB8;
@@ -1431,7 +1431,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Enemy::DoHitSoundFx(unsigned int arg0) {
     EnemyDescriptor *temp_r3_2695;
     s32 temp_r0_2696;
@@ -1494,7 +1494,7 @@ void Enemy::DoDeadFx() {
     ((EnemyDeathFX *) gb.unk98)->Trigger((int *) &this->unkA38->unk108, *((MKVector3 *) &sp8), temp_f1_2831, this->unkAF0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void Enemy::DoDeathFx(unsigned int arg0) {
     f64 sp88;
     f64 sp80;
@@ -1602,7 +1602,7 @@ void Enemy::DoDeathFx(unsigned int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void Enemy::DoHitFx(EnemyDamageFeedback *arg0) {
     f64 sp168;
     f64 sp160;
@@ -1785,7 +1785,7 @@ loop_34:
                                 if (var_r0_3277 >= temp_r3_3276) {
                                     var_r0_3277 -= temp_r3_3276;
                                 }
-                                var_r3_3272 = this->unk9DC + (var_r0_3277 * 0x38);
+                                var_r3_3272 = (void *) (this->unk9DC + (var_r0_3277 * 0x38));
                             }
                             if ((u32) this->unk948.unk14 == var_r3_3272) {
                                 M2C_FIELD(var_r3_3272, s32 *, 0x28) = (s32) arg0->unk28;
@@ -2059,7 +2059,7 @@ void Enemy::CheckForHazards() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to 'MKVector3 *'
 void Enemy::DisableCurrentProjectile(bool arg0, const MKVector3 &arg1) {
     M2C_UNK sp40;
     M2C_UNK spC;
@@ -2132,7 +2132,7 @@ void Enemy::SetIdleMovementSpeed(bool arg0) {
     this->unk68C = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
     EnemyHudData sp8;
     EnemyDescriptor *temp_r3_4178;
@@ -2603,7 +2603,6 @@ void Enemy::SetHealth(float arg0) {
     this->unkAC8 = arg0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Enemy::ProcessDamageQueue(EnemyDamageFeedback *arg0, bool arg1) {
     f32 temp_f1_5219;
     f32 temp_f1_5285;
@@ -2639,7 +2638,7 @@ loop_1:
             if (var_r0_5146 >= temp_r4_5145) {
                 var_r0_5146 -= temp_r4_5145;
             }
-            var_r4_5141 = this->unk9DC + (var_r0_5146 * 0x38);
+            var_r4_5141 = (void *) (this->unk9DC + (var_r0_5146 * 0x38));
         }
         if ((((u8) M2C_FIELD(var_r4_5141, u8 *, 0x34) >> 3U) & 1) && ((u32) M2C_FIELD(var_r4_5141, u32 *, 0x14) != 0U)) {
             arg0->unk0 = M2C_FIELD(var_r4_5141, f64 *, 0);
@@ -2676,7 +2675,7 @@ loop_28:
             if (var_r0_5204 >= temp_r6_5203) {
                 var_r0_5204 -= temp_r6_5203;
             }
-            var_r6_5199 = this->unk9DC + (var_r0_5204 * 0x38);
+            var_r6_5199 = (void *) (this->unk9DC + (var_r0_5204 * 0x38));
         }
         if (arg1 != 0) {
             M2C_FIELD(var_r6_5199, u8 *, 0x34) = (u8) ((M2C_FIELD(var_r6_5199, u8 *, 0x34) & ~8) | ((arg1 << 3) & 8));
@@ -2727,7 +2726,6 @@ loop_28:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Enemy::Recycle() {
@@ -2822,7 +2820,7 @@ void Enemy::Spawn(EnemyGeneratorDoor *arg0) {
     Spawn(arg0->unk18);
 }
 
-#if 0 // DRAFT: function call 'Spawn(long *, long *, SpawnerObject *)' does not match
+#if 0 // DRAFT: function call 'Spawn(long *, long *, SpawnerObject *)' does not match 'Enemy::Spawn(const Matrix *, SpawnPointRef *)' 'Enemy::Spawn(SpawnPointObject *)' 'Enemy:
 s32 Enemy::Spawn(SpawnPointObject *arg0) {
     SpawnerObject *temp_r6_5545;
     s32 *var_r5_5532;
@@ -2845,7 +2843,7 @@ s32 Enemy::Spawn(SpawnPointObject *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'Enemy *'
 s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f32 sp6C;
     f32 sp68;
@@ -3165,7 +3163,7 @@ loop_68:
                 var_r29_6091 = MKCollision_SphereCollide(sp68, temp_f1_6121, &sp88, 0xA, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF);
             } else if (MKCollision_SweepSphereCollide(*(temp_r5_6122->unk0 + var_r21_6111), sp68, temp_f1_6121, &sp88, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF) != 0) {
                 var_r29_6091 = 1;
-                temp_r3_6153 = this->unkA30->unk0 + var_r21_6111;
+                temp_r3_6153 = (void *) (this->unkA30->unk0 + var_r21_6111);
                 sp28 = M2C_BITWISE(f64, sp68) - M2C_FIELD(temp_r3_6153, f64 *, 0);
                 var_f5_6162 = 0.0f;
                 sp78 = sp28;
@@ -3315,7 +3313,7 @@ loop_40:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 s32 Enemy::MeleeDamageTarget(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int arg3) {
     u8 sp56;
     s8 sp55;
@@ -3471,7 +3469,6 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 EnemyDamageFeedback *Enemy::AddDamage(float arg0, bool arg1, const MKVector3 &arg2, int arg3, int arg4, bool arg5, bool arg6, MKCollisionInfo *arg7, float arg8, float arg9) {
     EnemyDamageFeedback *temp_r31_6714;
     s32 temp_r0_6680;
@@ -3501,7 +3498,7 @@ EnemyDamageFeedback *Enemy::AddDamage(float arg0, bool arg1, const MKVector3 &ar
             var_r0_6703 -= temp_r12_6702;
         }
         this->unk9D4 += 1;
-        temp_r31_6714 = this->unk9DC + (var_r0_6703 * 0x38);
+        temp_r31_6714 = (EnemyDamageFeedback *) (this->unk9DC + (var_r0_6703 * 0x38));
         if (var_r6_0 == 0) {
             var_r6_0 = 0x4000;
         }
@@ -3510,7 +3507,6 @@ EnemyDamageFeedback *Enemy::AddDamage(float arg0, bool arg1, const MKVector3 &ar
     }
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void Enemy::SetupExclusionRegion() {
@@ -5450,7 +5446,7 @@ block_31:
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionHeight(Enemy *, float)' does not match
+#if 0 // DRAFT: function call 'GetCollisionHeight(Enemy *, float)' does not match 'Enemy::GetCollisionHeight()'
 s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
     MKCollisionResult sp1C0;
     f64 sp1B8;
@@ -5659,7 +5655,7 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void Enemy::CheckAnimEvents() {
     MKVector3 sp2F8;
     MKVector3 sp2E8;
@@ -6041,7 +6037,7 @@ void Enemy::SetAnim(AnimSequence *arg0, AnimTransition *arg1, float arg2, unsign
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'SetAnim(unsigned long, unsigned int, AnimSequence *, AnimTransition *, float, float, float)' does not match 'Enemy::SetAnim(MKAnim *, float, floa
 void Enemy::SetAnim(AnimSequenceType arg0, int arg1, int arg2, float arg3, unsigned int arg4, bool arg5) {
     AnimSequence *temp_r4_11914;
     AnimSequence *temp_r6_11925;
@@ -6053,10 +6049,10 @@ void Enemy::SetAnim(AnimSequenceType arg0, int arg1, int arg2, float arg3, unsig
     } else {
         var_r7_11905 = NULL;
     }
-    this->unkA50 = this->unkA38->GetAnimSequence((s32) arg0, arg1, this->unkAE4, var_r7_11905);
+    this->unkA50 = (AnimSequence *) (this->unkA38->GetAnimSequence((s32) arg0, arg1, this->unkAE4, var_r7_11905));
     temp_r4_11914 = this->unkA50;
     if (temp_r4_11914 != NULL) {
-        this->unkA54 = temp_r4_11914 + (arg2 << 5);
+        this->unkA54 = (AnimTransition *) (temp_r4_11914 + (arg2 << 5));
         temp_r7_11924 = this->unkA54;
         temp_r6_11925 = this->unkA50;
         SetAnim(temp_r7_11924->unk0, arg4, temp_r6_11925, temp_r7_11924, temp_r7_11924->unk18, temp_r6_11925->unk64, arg3);
@@ -6249,7 +6245,7 @@ void Enemy::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 f32 Enemy::Resolve() {
     f32 sp6C;
     f32 sp68;
@@ -6322,7 +6318,7 @@ f32 Enemy::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 Enemy::LoadDone() {
     AttackSweepData *var_r3_12507;
     AttackSweepData *var_r3_12528;
@@ -6351,7 +6347,7 @@ s32 Enemy::LoadDone() {
     temp_r3_12489 = this->unkA38;
     if ((((s32) temp_r3_12489->unk214 > 0) || ((s32) temp_r3_12489->unk218 > 0)) && ((s32) temp_r3_12489->unk224 > 0)) {
         if (MKHeap::Current() != NULL) {
-            var_r3_12507 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
+            var_r3_12507 = (AttackSweepData *) (((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0));
         } else {
             var_r3_12507 = malloc(8);
         }
@@ -6359,7 +6355,7 @@ s32 Enemy::LoadDone() {
         this->unkA30->unk4 = (u8) this->unkA38->unk224;
         temp_r30_12520 = this->unkA30->unk4 * 0x10;
         if (MKHeap::Current() != NULL) {
-            var_r3_12528 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_12520, NULL, 0);
+            var_r3_12528 = (AttackSweepData *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_12520, NULL, 0));
         } else {
             var_r3_12528 = malloc(temp_r30_12520);
         }
@@ -6368,7 +6364,7 @@ s32 Enemy::LoadDone() {
     }
     if ((void ****) this->unkA38->unk228 != NULL) {
         if (MKHeap::Current() != NULL) {
-            var_r3_12550 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
+            var_r3_12550 = (AttackSweepData *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0));
         } else {
             var_r3_12550 = malloc(0x14);
         }
@@ -6399,19 +6395,19 @@ s32 Enemy::LoadDone() {
     }
     temp_r4_12634 = this->unkA38->unk274;
     if (temp_r4_12634 != NULL) {
-        this->unkA14 = checked_cast<MeleeTrails *, MKProp>(gMK->CreateProp(temp_r4_12634));
+        this->unkA14 = (const char *) (checked_cast<MeleeTrails *, MKProp>(gMK->CreateProp(temp_r4_12634)));
         this->unkA14->ResolveAnims((MKAnimScript *) this->unk630);
     }
     if ((CharacterBreathFXDescriptor *) this->unkA38->unk258 != NULL) {
         if (MKHeap::Current() != NULL) {
-            var_r3_12656 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
+            var_r3_12656 = (AttackSweepData *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0));
         } else {
             var_r3_12656 = malloc(0x14);
         }
         this->unkA0C = (CharacterBreathFX *) var_r3_12656;
         this->unkA0C->Init(this->unkA38->unk258, this->unk4);
     }
-    this->unkA18 = MKMaterial_Create("fx_HDRGLowOverlay");
+    this->unkA18 = (MKMaterial *) (MKMaterial_Create("fx_HDRGLowOverlay"));
 }
 #endif
 
@@ -6589,7 +6585,7 @@ void Enemy::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'SetDefaults(Enemy *, int, int)' does not match
+#if 0 // DRAFT: function call 'SetDefaults(Enemy *, int, int)' does not match 'Enemy::SetDefaults()'
 void Enemy::Init() {
     AttackSweepData *var_r3_13078;
 
@@ -6610,7 +6606,7 @@ void Enemy::Init() {
     this->unkB04 = 0;
     this->unkA58 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_13078 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
+        var_r3_13078 = (AttackSweepData *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0));
     } else {
         var_r3_13078 = malloc(0xA8);
     }

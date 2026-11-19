@@ -31,11 +31,11 @@ s32 stricmp(u32, void *);                           /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern ChunkInfo *pLoadChunkInfo;
-#if 0 // DRAFT: identifier 'selectedIndex' redeclared
+#if 0 // DRAFT: identifier 'selectedIndex' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 selectedIndex = -1;
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void MainMenuScreen::Update() {
     s32 sp1C;
     s32 sp18;
@@ -75,7 +75,7 @@ void MainMenuScreen::Update() {
         temp_r3_70 = this->unkD8;
         sp18 = 6;
         sp1C = 0;
-        var_r4_43 = (u32) temp_r3_70->Message(&sp18, 6);
+        var_r4_43 = (UIMessage *) ((u32) temp_r3_70->Message(&sp18, 6));
     }
     temp_r0_81 = this->unkC8;
     switch (temp_r0_81) {                           /* irregular */
@@ -85,7 +85,7 @@ void MainMenuScreen::Update() {
             if (this->unkD4 <= 0.0f) {
                 this->unkD4 = 0.0f;
                 this->unkCC = NULL;
-                this->unkD0 = this->unkCC->GetCard((s32) var_r4_43);
+                this->unkD0 = (KDMemoryCard *) (this->unkCC->GetCard((s32) var_r4_43));
                 if (this->unkD0->IsBusy() == 0) {
                     this->unkD0->SetState((KDMCState) 2);
                     this->unkC8 = 1;
@@ -100,11 +100,11 @@ void MainMenuScreen::Update() {
             this->unkCC += 1;
             temp_r3_130 = this->unkCC;
             if (temp_r3_130 < 2) {
-                this->unkD0 = temp_r3_130->GetCard((s32) (u32) (u64) temp_ret_124);
+                this->unkD0 = (KDMemoryCard *) (temp_r3_130->GetCard((s32) (u32) (u64) temp_ret_124));
                 this->unkD0->SetState((KDMCState) 2);
                 return;
             }
-            this->unkD0 = KDMemoryCard::GetFirstAvailable();
+            this->unkD0 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
             temp_r3_142 = this->unkD0;
             if (temp_r3_142 != NULL) {
                 temp_r3_142->SetState((KDMCState) 3);
@@ -122,7 +122,7 @@ void MainMenuScreen::Update() {
             if ((temp_r4_159 != 0) && ((u8) temp_r3_158->unk8 != 0)) {
                 temp_r3_158->SetState((KDMCState) 3);
             } else if ((temp_r4_159 == 0) || (((s32) temp_r3_158->unk1C != 0) && ((s32) temp_r3_158->unk20 == 0))) {
-                this->unkD0 = temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159);
+                this->unkD0 = (KDMemoryCard *) (temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159));
                 temp_r3_180 = this->unkD0;
                 if (temp_r3_180 != NULL) {
                     temp_r3_180->SetState((KDMCState) 3);
@@ -139,7 +139,7 @@ void MainMenuScreen::Update() {
                 M2C_FIELD(temp_r3_208->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
                 this->unkD0 = NULL;
             } else {
-                this->unkD0 = temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159);
+                this->unkD0 = (KDMemoryCard *) (temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159));
                 temp_r3_224 = this->unkD0;
                 if (temp_r3_224 != NULL) {
                     temp_r3_224->SetState((KDMCState) 3);
@@ -195,7 +195,7 @@ void MainMenuScreen::OnEnter() {
     }
     this->unkD8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("MainMenuButtons"));
     sp38 = 1;
-    sp3C = selectedIndex;
+    sp3C = (long) (selectedIndex);
     temp_r3_297 = this->unkD8;
     temp_r3_297->Message(&sp38);
     var_r29_303 = 5;

@@ -34,7 +34,7 @@ M2C_UNK strtok(s8 *, s8 *);                         /* extern */
 extern f32 gUpdateTimeDelta;
 static s8 subFileName_791[0x100];
 
-#if 0 // DRAFT: function call 'strncpy(signed char[256], const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char[256], const char *, unsigned int)' does not match 'strncpy(char *, const char *, unsigned int)'
 s8 *KDSynkerPlayer3::GetSubtitlesFileName(const char *arg0) {
     strncpy(subFileName_791, arg0, 6U);
     GameLanguage_GetCode(-1);
@@ -61,7 +61,7 @@ void KDSynkerPlayer3::GetActorModel(int arg0) {
     ((KDSP_Actor *) (this->unk100.unk4 + (arg0 * 0x138)))->GetModel();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSynkerPlayer3::ParseSK2() {
     s32 var_r29_133;
     s32 var_r30_134;
@@ -111,7 +111,7 @@ void KDSynkerPlayer3::ParseSK2() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmpi(const char[8])' does not match
+#if 0 // DRAFT: function call 'strcmpi(const char[8])' does not match 'strcmpi(signed char *)'
 void KDSynkerPlayer3::ParseHeader() {
     MKIniLine *temp_r3_230;
     MKIniLine *var_r30_236;
@@ -193,7 +193,7 @@ void KDSynkerPlayer3::Deinit() {
     this->unk4C = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'KDSynkerPlayer3::CallBackMode'
 void KDSynkerPlayer3::Unload() {
     MKIni *temp_r26_445;
     MKIni *temp_r28_472;
@@ -240,7 +240,7 @@ void KDSynkerPlayer3::Unload() {
             temp_r27_440 = this + var_r30_437;
             temp_r3_441 = M2C_FIELD(temp_r27_440, u32 *, 4);
             if (temp_r3_441 != 0U) {
-                temp_r26_445 = temp_r3_441 - M2C_FIELD(temp_r27_440, s32 *, 8);
+                temp_r26_445 = (MKIni *) (temp_r3_441 - M2C_FIELD(temp_r27_440, s32 *, 8));
                 if (MKHeap::Current() != NULL) {
                     ((MKHeap *) (MKHeap::Current()))->Free(temp_r26_445, NULL, 0);
                 } else {
@@ -267,7 +267,7 @@ void KDSynkerPlayer3::Unload() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'KDSynkerPlayer3::CallBackMode'
 void KDSynkerPlayer3::Draw() {
     KDSP_Actor *temp_r3_526;
     s32 temp_r30_520;
@@ -284,7 +284,7 @@ void KDSynkerPlayer3::Draw() {
             var_r31_522 = 0;
 loop_13:
             if (var_r29_521 < temp_r30_520) {
-                temp_r3_526 = this->unk100.unk4 + var_r31_522;
+                temp_r3_526 = (KDSP_Actor *) (this->unk100.unk4 + var_r31_522);
                 if (temp_r3_526 != NULL) {
                     var_r4_529 = 0;
                     if (((u32) temp_r3_526->unk30 == 0U) && !(temp_r3_526->unk40 & 4) && ((s32) temp_r3_526->unkCC != -1)) {
@@ -304,7 +304,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'int &'
 void KDSynkerPlayer3::Play(bool arg0) {
     if (arg0 != 0) {
         this->unk50 |= 1;
@@ -358,7 +358,7 @@ void KDSynkerPlayer3::Update_Unloading_Loading() {
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDSynkerPlayer3::CallBackMode'
 void KDSynkerPlayer3::ActorCallback(KDSynkerPlayer3::CallBackMode arg1) {
     s32 temp_r30_737;
     s32 temp_r3_751;
@@ -372,7 +372,7 @@ void KDSynkerPlayer3::ActorCallback(KDSynkerPlayer3::CallBackMode arg1) {
         var_r31_739 = 0;
 loop_12:
         if (var_r29_738 < temp_r30_737) {
-            temp_r5_743 = this->unk100.unk4 + var_r31_739;
+            temp_r5_743 = (void *) (this->unk100.unk4 + var_r31_739);
             if ((temp_r5_743 != NULL) && (((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, s32)) *KDSynkerPlayer3::pActorCallback) != NULL) && ((u32) M2C_FIELD(temp_r5_743, u32 *, 0x30) == 0U)) {
                 temp_r3_751 = M2C_FIELD(temp_r5_743, s32 *, 0x40);
                 if (!(temp_r3_751 & 4) && (((s32) M2C_FIELD(temp_r5_743, s32 *, 0xCC) != -1) || ((u32) ((s32) arg1 - 2) > 1U))) {
@@ -391,7 +391,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSynkerPlayer3::Update_Playing(bool arg0) {
     KDS_Message_SetCamera spC;
     s32 sp8;
@@ -446,7 +446,7 @@ void KDSynkerPlayer3::Update_PrimingSound() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSynkerPlayer3::Update_ParseData() {
     u32 temp_r3_992;
 
@@ -503,7 +503,7 @@ void KDSynkerPlayer3::SetPlaySpeed(float arg0) {
     this->unk48 = arg0;
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) {
     u32 temp_r3_1176;
 

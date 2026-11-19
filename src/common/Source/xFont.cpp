@@ -20,7 +20,7 @@ static struct _struct_XFcolor_0xC XFcolor[8] = {
 };
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: illegal type
 void XFONTputString(short *arg0, short *arg1, char *arg2, unsigned long *arg3) {
     u32 *spC;
     s8 *sp8;
@@ -45,9 +45,9 @@ void XFONTputString(short *arg0, short *arg1, char *arg2, unsigned long *arg3) {
     void *var_r10_78;
     void *var_r9_31;
 
-    var_r8_15 = arg2 - 1;
+    var_r8_15 = (signed char *) (arg2 - 1);
     spC = arg3;
-    sp8 = arg2;
+    sp8 = (signed char *) (arg2);
     temp_r7_30 = (cc & ~0xFFFF0000) | (cc << 0x10);
     var_r9_31 = ((u16) *arg0 << 5) + (((u16) *arg1 << 5) * XfbWidth) + m_xfb;
 loop_1:
@@ -135,14 +135,14 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: expression syntax error
 void XFONTClearScreen(unsigned long arg0) {
     s32 *var_r7_147;
     s32 temp_r6_150;
     struct _struct_XFcolor_0xC *temp_r3_149;
 
     var_r7_147 = m_xfb;
-    temp_r3_149 = &XFcolor[arg0];
+    temp_r3_149 = (_struct_XFcolor_0xC *) (&XFcolor[arg0]);
     temp_r6_150 = XFcolor[arg0].unk0;
 loop_2:
     if (var_r7_147 < (void *) (m_xfb + m_fbSize)) {
@@ -154,12 +154,12 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: expression syntax error
 void XFONTSetFgColor(unsigned long arg0) {
     s32 temp_r5_185;
     struct _struct_XFcolor_0xC *temp_r4_182;
 
-    temp_r4_182 = &XFcolor[arg0];
+    temp_r4_182 = (_struct_XFcolor_0xC *) (&XFcolor[arg0]);
     temp_r5_185 = XFcolor[arg0].unk0 << 8;
     cc = temp_r5_185 + temp_r4_182->unk4;
     cc2 = temp_r5_185 + temp_r4_182->unk8;

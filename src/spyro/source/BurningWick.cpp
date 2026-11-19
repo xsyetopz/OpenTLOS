@@ -24,9 +24,9 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const bool *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const float *' to 'float'
 void BurningWick::Burn(const bool &arg0, const float &arg1) {
-    this->unk84 = &arg0;
+    this->unk84 = (unsigned char) (&arg0);
     if ((u8) this->unk84 != 0) {
         this->unk74 = 0.0f;
         this->unk7C = &arg1;
@@ -964,7 +964,7 @@ void BurningWick::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
+#if 0 // DRAFT: undefined identifier 'spB0'
 void BurningWick::InitData(const int &arg0, MKModel *arg1, const MKVector3 &arg2) {
     f32 spCC;
     f32 spC8;
@@ -991,7 +991,7 @@ void BurningWick::InitData(const int &arg0, MKModel *arg1, const MKVector3 &arg2
     f32 temp_f8_1657;
 
     this->unk70 = arg1;
-    this->unk4C = &arg0;
+    this->unk4C = (long) (&arg0);
     this->unk80 = 20.0f;
     this->unk78 = 20.0f;
     M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&arg2, f64 *, 0);

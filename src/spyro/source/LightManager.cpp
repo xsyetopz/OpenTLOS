@@ -213,7 +213,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void *LightManager::AllocManagedLight(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const float &arg3, const int &arg4, const bool &arg5) {
     s32 var_ctr_341;
     s32 var_r10_340;
@@ -264,7 +264,7 @@ void LightManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'ManagedLight *'
 void LightManager::DisableAllLights() {
     s32 var_r30_423;
     s32 var_r31_424;

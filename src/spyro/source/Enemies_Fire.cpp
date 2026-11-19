@@ -99,7 +99,7 @@ void FireTier3::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void FireTier3::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -258,11 +258,11 @@ void FireTier3::Init() {
 void FireTier3Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&fireTier3BodyFXInit, 0xD, (MKAnimScript *) this->unk34);
-    this->unk2B4 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
+    this->unk2B4 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX")));
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void FireTier2::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -636,7 +636,7 @@ void FireTier2::Deinit() {
     Enemy::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FireTier2Goal_Think' to
+#if 0 // DRAFT: illegal implicit conversion from 'FireTier2Goal_Think' to 'FireTier2Goal_Think *'
 void FireTier2::Init() {
     FireTier2Goal_Think *var_r31_1051;
 
@@ -655,7 +655,7 @@ void FireTier2::Init() {
 void FireTier2Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&fireTier2BodyFXInit, 0xE, (MKAnimScript *) this->unk34);
-    this->unk2B4 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
+    this->unk2B4 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX")));
 }
 #endif
 
@@ -771,7 +771,7 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector3 *arg3) {
     MKCollisionResult sp200;
     Matrix sp1C0;
@@ -860,7 +860,7 @@ s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVect
     var_r26_1316 = 0;
 loop_1:
     temp_r4_1325 = M2C_FIELD(this->unkA44, void **, 0x1C);
-    temp_r3_1329 = M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unkA44, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C));
+    temp_r3_1329 = (void *) (M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unkA44, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C)));
     temp_f1_1330 = M2C_FIELD(temp_r3_1329, f64 *, 0);
     sp1B0 = temp_f1_1330;
     sp1B8 = M2C_FIELD(temp_r3_1329, f64 *, 8);
@@ -1005,7 +1005,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void FireTier1::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -1284,7 +1284,7 @@ void FireTier1::Init() {
 void FireTier1Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&fireTier1BodyFXInit, 2, (MKAnimScript *) this->unk34);
-    this->unk2B4 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
+    this->unk2B4 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX")));
 }
 #endif
 

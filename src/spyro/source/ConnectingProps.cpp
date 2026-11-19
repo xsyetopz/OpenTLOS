@@ -28,7 +28,7 @@ s32 Connector::UpdateState() {
     return ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetDesiredChunks(&this->unkA0, this->unkAC);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Connector' to
+#if 0 // DRAFT: illegal implicit conversion from 'Connector' to 'Level *'
 s32 Connector::LoadDone() {
     Level *temp_r3_79;
     s32 temp_r29_78;
@@ -54,7 +54,7 @@ s32 Connector::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
 s32 Connector::LoadLine(MKIniLine *arg0) {
     s32 var_r29_130;
     s32 var_r31_132;
@@ -88,13 +88,12 @@ void Connector::Init() {
     memset(&this->unkA0, 0, 0xCU);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ConnectorDescriptor *' to
 void ConnectorDescriptor::Deinit() {
     ConnectorDescriptor *temp_r4_211;
     ConnectorDescriptor *temp_r4_217;
 
     if ((ConnectorDescriptor *) *ConnectorDescriptor::pFirstDesc == this) {
-        *ConnectorDescriptor::pFirstDesc = this->unk68;
+        *ConnectorDescriptor::pFirstDesc = (unsigned char) (this->unk68);
     }
     temp_r4_211 = this->unk64;
     if (temp_r4_211 != NULL) {
@@ -109,22 +108,20 @@ void ConnectorDescriptor::Deinit() {
     this->unk60 = NULL;
     MKPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: pointer/array required
 void ConnectorDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = *ConnectorDescriptor::pFirstDesc;
+    this->unk68 = (ConnectorDescriptor *) (*ConnectorDescriptor::pFirstDesc);
     this->unk64 = NULL;
     if ((ConnectorDescriptor *) *ConnectorDescriptor::pFirstDesc != NULL) {
         (*ConnectorDescriptor::pFirstDesc)->unk64 = this;
     }
-    *ConnectorDescriptor::pFirstDesc = this;
+    *ConnectorDescriptor::pFirstDesc = (unsigned char) (this);
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 s32 Connector_Update(const MKVector3 &arg0) {
     Connector *var_r29_291;
     f32 temp_f1_297;
@@ -133,7 +130,7 @@ s32 Connector_Update(const MKVector3 &arg0) {
     void *var_r4_274;
     void *var_r4_326;
 
-    var_r4_274 = *ConnectorDescriptor::pFirstDesc;
+    var_r4_274 = (void *) (*ConnectorDescriptor::pFirstDesc);
 loop_2:
     if ((var_r4_274 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_274, void **, 0x60), s32 *, 0x138) & 2)) {
         var_r4_274 = M2C_FIELD(var_r4_274, void **, 0x68);
@@ -171,4 +168,3 @@ block_13:
     var_r29_291 = checked_cast<Connector *, MKProp>(var_r29_291->unk38);
     goto loop_14;
 }
-#endif

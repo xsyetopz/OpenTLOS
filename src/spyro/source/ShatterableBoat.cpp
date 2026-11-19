@@ -59,12 +59,8 @@ extern f32 *KDSpline_VelocityMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
-static s8 *pLeftOarAnimEvents = "EnterWater";
-#endif
-#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
-static s8 *pRightOarAnimEvents = "EnterWater";
-#endif
+static s8 *pLeftOarAnimEvents = (signed char *) ("EnterWater");
+static s8 *pRightOarAnimEvents = (signed char *) ("EnterWater");
 
 static s32 lit_853 = 0;
 
@@ -541,7 +537,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void ShatterableBoat::UpdateMove() {
     Matrix sp120;
     f64 sp118;                                      /* compiler-managed */
@@ -1281,7 +1277,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ShatterableBoat::InitOars() {
     MKAnim *var_r3_2218;
     MKAnim *var_r3_2236;
@@ -1302,34 +1298,34 @@ void ShatterableBoat::InitOars() {
     s32 var_r3_2312;
     u16 temp_r3_2332;
 
-    this->unk24C = ((MKAnimScript *) "p7007_ship_oar_left")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
+    this->unk24C = (const char *) (((MKAnimScript *) "p7007_ship_oar_left")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */)));
     this->unk24C->InitEvents(&pLeftOarAnimEvents);
     temp_r29_2206 = this->unk24C;
     if (temp_r29_2206->Exists("row") != 0) {
-        var_r3_2218 = temp_r29_2206->GetAnim("row");
+        var_r3_2218 = (MKAnim *) (temp_r29_2206->GetAnim("row"));
     } else {
         var_r3_2218 = NULL;
     }
     this->unk250 = var_r3_2218;
     temp_r29_2226 = this->unk24C;
     if (temp_r29_2226->Exists("idle") != 0) {
-        var_r3_2236 = temp_r29_2226->GetAnim("idle");
+        var_r3_2236 = (MKAnim *) (temp_r29_2226->GetAnim("idle"));
     } else {
         var_r3_2236 = NULL;
     }
     this->unk254 = var_r3_2236;
-    this->unk258 = ((MKAnimScript *) "p7008_ship_oar_right")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
+    this->unk258 = (const char *) (((MKAnimScript *) "p7008_ship_oar_right")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */)));
     this->unk258->InitEvents(&pRightOarAnimEvents);
     temp_r29_2251 = this->unk258;
     if (temp_r29_2251->Exists("row") != 0) {
-        var_r3_2263 = temp_r29_2251->GetAnim("row");
+        var_r3_2263 = (MKAnim *) (temp_r29_2251->GetAnim("row"));
     } else {
         var_r3_2263 = NULL;
     }
     this->unk25C = var_r3_2263;
     temp_r29_2271 = this->unk258;
     if (temp_r29_2271->Exists("idle") != 0) {
-        var_r3_2281 = temp_r29_2271->GetAnim("idle");
+        var_r3_2281 = (MKAnim *) (temp_r29_2271->GetAnim("idle"));
     } else {
         var_r3_2281 = NULL;
     }

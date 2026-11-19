@@ -63,14 +63,12 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 extern s8 *pCollisionName;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_collectableTypes_0x14'
 static struct _struct_collectableTypes_0x14 collectableTypes[4]; /* unable to generate initializer: non-zero padding */
 static M2C_UNK crateDescFlags;                      /* unable to generate initializer: unknown type */
 static s8 *unshatteredNames[0x10];
 #endif
-#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
-static s8 *CRATE_REF_TARGET = "r_target";
-#endif
+static s8 *CRATE_REF_TARGET = (signed char *) ("r_target");
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_80359889;                         /* unable to generate initializer: unknown type; const */
@@ -148,7 +146,7 @@ void ShatterObject::Reset() {
     this->unk6C = 0;
 }
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[1], int)' does not match
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[1], int)' does not match 'strnicmp(const char *, const char *, int)'
 void ShatterObject::LoadDone() {
     MKProp *temp_r3_260;
     ShatterObjectDescriptor *temp_r4_291;
@@ -206,7 +204,7 @@ void ShatterObject::Init(ShatterObjectDescriptor *arg0, KDPropEx *arg1) {
     ((KDShatter2 *) this)->Init();
 }
 
-#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed
+#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed char *, int *)' does not match 'MKModel_SubObjectExists(const MKModel *, SubObjectType, 
 void ShatterObjectDescriptor::LoadDone(MKModel *arg0, const char *arg1) {
     s32 sp10;
     s32 spC;
@@ -281,7 +279,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 ShatterObjectDescriptor::LoadLine(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r31_569;
     MKIniLine *var_r31_601;
@@ -346,7 +344,7 @@ void ShatterObjectDescriptor::Init(KDPropExDescriptor *arg0) {
     this->unk8C = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Crate::UpdateShadow(bool arg0) {
     MKVector3 sp78;
     f64 sp70;
@@ -410,7 +408,7 @@ void Crate::UpdateShadow(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void Crate::Shatter(bool arg0) {
     s32 sp78;
     f32 sp74;
@@ -682,7 +680,7 @@ block_38:
         goto block_38;
     case 0x5C:
         temp_r3_1257 = arg0->unk4;
-        temp_r4_1259 = temp_r3_1257 + 0x128;
+        temp_r4_1259 = (Attachment *) (temp_r3_1257 + 0x128);
         M2C_FIELD(temp_r3_1257, Attachment ***, 0x12C) = &this->unk1DC.unk4;
         M2C_FIELD(temp_r3_1257, Attachment **, 0x130) = (Attachment *) this->unk1E4;
         this->unk1E4 = temp_r4_1259;
@@ -690,7 +688,7 @@ block_38:
         goto block_38;
     case 0x5D:
         temp_r3_1268 = arg0->unk4;
-        temp_r4_1269 = temp_r3_1268 + 0x128;
+        temp_r4_1269 = (void *) (temp_r3_1268 + 0x128);
         M2C_FIELD(temp_r3_1268, Attachment **, 0x130)->unk4 = (Attachment *) M2C_FIELD(temp_r3_1268, Attachment ***, 0x12C);
         M2C_FIELD(M2C_FIELD(temp_r4_1269, void **, 4), void **, 8) = (void *) M2C_FIELD(temp_r4_1269, void **, 8);
         M2C_FIELD(temp_r4_1269, void **, 8) = temp_r4_1269;
@@ -954,7 +952,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 Crate::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1907;
 
@@ -966,7 +964,7 @@ s32 Crate::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Attachment *' and 'Attachment **'
 void Crate::Deinit() {
     Attachment *temp_r30_1966;
     Attachment *var_r3_1963;
@@ -1020,7 +1018,7 @@ void Crate::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CRATE_REF_TARGET'
+#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, signed char *, int *)' does not match 'MKModel_RefPointExists(const MKModel *, const char *, int *)'
 void CrateDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     MKModel_RefPointExists(this->unk2C, CRATE_REF_TARGET, (int *) &this->unk108);
@@ -1049,7 +1047,7 @@ s32 CrateDescriptor::LoadLine(MKIniLine *arg0) {
         }
         var_r29_2355 = 0;
 loop_28:
-        temp_r4_2390 = *(&crateDescFlags + var_r29_2355);
+        temp_r4_2390 = (signed char *) (*(&crateDescFlags + var_r29_2355));
         if (temp_r4_2390 == NULL) {
             return 0;
         }

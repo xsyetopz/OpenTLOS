@@ -30,7 +30,7 @@ extern M2C_UNK gb;
 static s32 lit_509 = 0;
 static u8 lit_510 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'Corona *'
 void HitFX::Deinit() {
     Corona *temp_r4_53;
     ManagedLight *temp_r4_63;
@@ -268,7 +268,7 @@ void HitFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'void *'
 void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, int arg3) {
     f64 sp48;
     f64 sp40;
@@ -386,7 +386,7 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'void *'
 void *HitFX::Update() {
     f64 spE0;
     f64 spD8;
@@ -592,7 +592,6 @@ void *HitFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 HitFX::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -628,14 +627,13 @@ f32 HitFX::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk84 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_509, lit_510);
+    this->unk84 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_509, lit_510));
     temp_r4_891 = this->unk84;
     if (temp_r4_891 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_891, 0U);
     }
-    this->unk8C = MKMaterial_Create("FX_346");
+    this->unk8C = (MKMaterial *) (MKMaterial_Create("FX_346"));
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void HitFX::Init() {

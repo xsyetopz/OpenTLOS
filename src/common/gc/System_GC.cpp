@@ -66,11 +66,11 @@ extern MKDynamicBoneSystem gDynamicBones;
 extern s32 gFrameCounter;
 extern s32 gFramesPerSecond;
 extern s32 gGPUFramesPerSecond;
-#if 0 // DRAFT: identifier 'gMKLastIdleTime' redeclared
+#if 0 // DRAFT: identifier 'gMKLastIdleTime' redeclared was declared as: 'long' now declared as: 'unsigned long'
 extern u32 gMKLastIdleTime;
 #endif
 extern MKHeap gMainHeap;
-#if 0 // DRAFT: identifier 'gRenderState' redeclared
+#if 0 // DRAFT: identifier 'gRenderState' redeclared was declared as: 'MKMaterial *' now declared as: 'long'
 extern M2C_UNK gRenderState;
 #endif
 extern u8 gbGoldMaster;
@@ -99,7 +99,7 @@ extern s32 statusBar_735;
 extern u8 stencilVal_990;
 extern s32 usedNormalMem_752;
 extern s32 usedTempMem_753;
-#if 0 // DRAFT: identifier 'gMKDefaults' redeclared
+#if 0 // DRAFT: identifier 'gMKDefaults' redeclared was declared as: 'MKHeap' now declared as: 'long'
 static M2C_UNK gMKDefaults;                         /* unable to generate initializer: unknown type */
 static M2C_UNK gDisplay;                            /* unable to generate initializer: unknown type */
 static s8 cmdLine_795[0x100] = {
@@ -363,14 +363,14 @@ static s8 cmdLine_795[0x100] = {
 #endif
 static M2C_UNK IdleThreadStack;
 static DVDFileInfo seekHack;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_TMEMCacheSegments_0x18'
 static struct _struct_TMEMCacheSegments_0x18 TMEMCacheSegments[8];
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_TMEMPreloadedSegments_0x1C'
 static struct _struct_TMEMPreloadedSegments_0x1C TMEMPreloadedSegments[0x10];
 #endif
 static f32 gUpdateTimeDelta = 0.016666668f;
-#if 0 // DRAFT: identifier 'gpBuildVersion' redeclared
+#if 0 // DRAFT: identifier 'gpBuildVersion' redeclared was declared as: 'signed char *' now declared as: 'long *'
 static M2C_UNK *gpBuildVersion = &.L_8036E6A3;
 #endif
 static s32 lit_1000 = 0;
@@ -386,7 +386,7 @@ s32 System_GetWideScreenPreference() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKZRequest_CheckRequest(MKZRequest *arg0) {
     MKVector3 sp8;
     GXRenderModeObj *temp_r31_88;
@@ -632,7 +632,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_TMEMPreloadedSegments_0x1C'
 void *RequestPreloadedTextureRegion(int arg0, unsigned int *arg1) {
     s32 temp_r0_547;
     s32 temp_r0_559;
@@ -686,7 +686,7 @@ loop_9:
 loop_30:
     if (var_r6_514 < 0x10) {
         if (var_r3_483 == NULL) {
-            temp_r12_521 = &TMEMPreloadedSegments[var_r6_514];
+            temp_r12_521 = (_struct_TMEMPreloadedSegments_0x1C *) (&TMEMPreloadedSegments[var_r6_514]);
             if ((u8) temp_r12_521->unk10 == 0) {
                 var_r31_526 = 1;
                 if ((var_r6_514 < 8) && (temp_r5_475 > (s32) (8 - var_r6_514))) {
@@ -743,7 +743,7 @@ void *TexRegionCallback(const _GXTexObj *arg0, _GXTexMapID arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_TMEMPreloadedSegments_0x1C'
 void Init_TexCache() {
     GXTexRegion *temp_r27_623;
     s32 temp_r0_647;
@@ -762,7 +762,7 @@ void Init_TexCache() {
     var_r31_620 = 0;
     noOfAllocatedTMemPreloadedRegions = 0;
     do {
-        temp_r27_623 = TMEMCacheSegments + var_r31_620;
+        temp_r27_623 = (_GXTexRegion *) (TMEMCacheSegments + var_r31_620);
         GXInitTexCacheRegion(temp_r27_623, 0U, var_r30_617, GX_TEXCACHE_32K, var_r30_617 + 0x80000, GX_TEXCACHE_32K);
         M2C_FIELD(temp_r27_623, s32 *, 0x14) = 0;
         var_r26_619 += 1;
@@ -781,7 +781,7 @@ void Init_TexCache() {
         M2C_FIELD(temp_r7_648, s32 *, 0x14) = temp_r4_649;
         M2C_FIELD(temp_r7_648, s8 *, 0x10) = 0;
         var_r3_643 += 0x1C;
-        temp_r8_656 = &TMEMPreloadedSegments[temp_r0_647];
+        temp_r8_656 = (_struct_TMEMPreloadedSegments_0x1C *) (&TMEMPreloadedSegments[temp_r0_647]);
         M2C_FIELD(temp_r7_648, s32 *, 0x18) = 0;
         temp_r8_656->unk14 = temp_r4_649 + 0x80000;
         temp_r8_656->unk10 = 0;
@@ -1059,7 +1059,7 @@ void System_SetDisplayMode(int arg0, int arg1, int arg2, int arg3, int arg4) {
     M2C_FIELD(&gDisplay, f32 *, 0xC) = (f32) (1.0f / M2C_FIELD(&gDisplay, f32 *, 8));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *' Too many errors printed, aborting program
 void System_GameDraw() {
     Matrix sp10;
     f32 temp_f30_1418;

@@ -316,7 +316,7 @@ void EnemyTest_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 u8 EnemyTest_Think::Update() {
     s32 temp_r3_704;
     s32 temp_r3_719;
@@ -338,7 +338,7 @@ u8 EnemyTest_Think::Update() {
         ((Enemy *) temp_r3_719)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) && ((IsActive(8) != 0) || (IsActive(0xA) != 0) || (IsActive(0xF) != 0) || (IsActive(0x10) != 0))) {
             temp_r4_759 = this->unkC;
-            temp_r3_764 = ((EAPManager *) (M2C_FIELD(temp_r4_759, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_759, temp_r4_759 + 0x870, NULL, 0);
+            temp_r3_764 = (AITargetData *) (((EAPManager *) (M2C_FIELD(temp_r4_759, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_759, temp_r4_759 + 0x870, NULL, 0));
             if ((temp_r3_764 != 0) && (M2C_FIELD(*temp_r3_764, s32 *, 0x38) & 0x30000)) {
                 RemoveAllSubgoals();
                 AddSubgoal((Goal<Enemy> *) this->unk34);
@@ -357,7 +357,7 @@ u8 EnemyTest_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void EnemyTest_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Goal<Enemy> *temp_r4_971;

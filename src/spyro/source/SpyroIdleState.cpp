@@ -108,7 +108,7 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroIdleState::Breathing2Transition() {
     Spyro *temp_r3_126;
     u8 var_r0_127;
@@ -154,7 +154,7 @@ void SpyroIdleState::Breathing2Exit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::Breathing2Enter() {
     this->unk10->SetAnim(3U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
@@ -184,13 +184,13 @@ void SpyroIdleState::BreathingExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::BreathingEnter() {
     this->unk10->SetAnim(2U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroIdleState::OneOffIdleTransition() {
     if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk14.unk0 != 0)) {
         this->unk14.SetState(this, 0, 0U);
@@ -220,7 +220,7 @@ void SpyroIdleState::OneOffIdleExit() {
     this->unk10->SetMeleeButtonStateTimeout(0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::OneOffIdleEnter() {
     Spyro *temp_r3_387;
     Spyro *temp_r3_395;
@@ -242,7 +242,7 @@ void SpyroIdleState::OneOffIdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::SelectAnimation() {
     Spyro *temp_r4_476;
     s32 temp_r3_479;
@@ -329,7 +329,7 @@ void SpyroIdleState::SlideExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::SlideEnter() {
     this->unk10->SetAnim(0xAU, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
@@ -348,7 +348,7 @@ void SpyroIdleState::NormalExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::NormalEnter() {
     this->unk10->SetAnim(0U, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk28 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
@@ -356,7 +356,7 @@ void SpyroIdleState::NormalEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroIdleState::Transition() {
     M2C_UNK var_r28_760;
     s32 var_r29_726;

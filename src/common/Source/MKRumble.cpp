@@ -11,7 +11,7 @@ extern u8 vibrationPaused;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_ves_0xC'
 static struct _struct_ves_0xC ves[4] = { { 0.0f }, { 0.0f }, { 0.0f }, { 0.0f } };
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vibrationEffect_0x1C'
 static struct _struct_vibrationEffect_0x1C vibrationEffect[8];
 #endif
 static M2C_UNK stack;
@@ -45,7 +45,7 @@ void MKRumble_Push() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vibrationEffect_0x1C'
 void MKRumble_Stop(MKInputDevices arg0) {
     s32 temp_r0_99;
     s32 var_r9_89;
@@ -56,11 +56,11 @@ void MKRumble_Stop(MKInputDevices arg0) {
         var_r9_89 = 0;
 loop_7:
         if ((s32) effectsPlaying > var_r9_89) {
-            temp_r7_94 = &vibrationEffect[var_r9_89];
+            temp_r7_94 = (_struct_vibrationEffect_0x1C *) (&vibrationEffect[var_r9_89]);
             if ((s32) arg0 == (s32) M2C_FIELD(temp_r7_94, s32 *, 0x14)) {
                 temp_r0_99 = effectsPlaying - 1;
                 if (var_r9_89 < temp_r0_99) {
-                    temp_r4_105 = &vibrationEffect[temp_r0_99];
+                    temp_r4_105 = (_struct_vibrationEffect_0x1C *) (&vibrationEffect[temp_r0_99]);
                     temp_r7_94->unk0 = temp_r4_105->unk0;
                     temp_r7_94->unk4 = temp_r4_105->unk4;
                     temp_r7_94->unk8 = temp_r4_105->unk8;
@@ -79,12 +79,12 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vibrationEffect_0x1C'
 void MKRumble_Play(MKInputDevices arg0, float arg1, float arg2, float arg3, char arg4, float arg5) {
     struct _struct_vibrationEffect_0x1C *temp_r6_154;
 
     if (((u8) MKRumble_bEnabled != 0) && ((s32) effectsPlaying < 8)) {
-        temp_r6_154 = &vibrationEffect[effectsPlaying];
+        temp_r6_154 = (_struct_vibrationEffect_0x1C *) (&vibrationEffect[effectsPlaying]);
         M2C_FIELD(temp_r6_154, s32 *, 0x14) = (s32) arg0;
         temp_r6_154->unk4 = arg2;
         temp_r6_154->unk8 = arg1;
@@ -98,7 +98,7 @@ void MKRumble_Play(MKInputDevices arg0, float arg1, float arg2, float arg3, char
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vibrationEffect_0x1C'
 void MKRumble_Update() {
     M2C_UNK sp2C;
     M2C_UNK spC;
@@ -126,7 +126,7 @@ void MKRumble_Update() {
         var_r29_216 = 0;
 loop_27:
         if (var_r29_216 < (s32) effectsPlaying) {
-            temp_r30_220 = &vibrationEffect[var_r29_216];
+            temp_r30_220 = (_struct_vibrationEffect_0x1C *) (&vibrationEffect[var_r29_216]);
             temp_r3_221 = temp_r30_220->unk10;
             if ((s8) temp_r3_221 & 1) {
                 var_f31_227 = 1.0f - temp_r30_220->unk18;
@@ -162,7 +162,7 @@ loop_27:
             if (temp_r30_220->unk18 == 1.0f) {
                 temp_r0_308 = effectsPlaying - 1;
                 if (var_r29_216 < temp_r0_308) {
-                    temp_r3_314 = &vibrationEffect[temp_r0_308];
+                    temp_r3_314 = (_struct_vibrationEffect_0x1C *) (&vibrationEffect[temp_r0_308]);
                     temp_r30_220->unk0 = temp_r3_314->unk0;
                     temp_r30_220->unk4 = temp_r3_314->unk4;
                     temp_r30_220->unk8 = temp_r3_314->unk8;

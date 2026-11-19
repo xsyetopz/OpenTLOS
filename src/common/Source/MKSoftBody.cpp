@@ -28,7 +28,7 @@ extern s32 gFrameCounter;
 extern M2C_UNK gMKDefaults;
 extern M2C_UNK gRenderState;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'MKSoftBody_enableCloth' redeclared
+#if 0 // DRAFT: identifier 'MKSoftBody_enableCloth' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 MKSoftBody_enableCloth = 1;
 #endif
 static f32 clothFaceEffect = 0.5f;
@@ -410,7 +410,7 @@ void MKCloth::DisableClothCreate(bool arg0) {
     *MKCloth::clothCreateDisabled = (u8) this;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::LightCloth() {
     f64 sp88;
     f64 sp80;
@@ -459,11 +459,11 @@ void MKCloth::LightCloth() {
     var_r4_631 = 0;
 loop_2:
     if (var_r9_630 < (u32) M2C_FIELD(M2C_FIELD(this, void **, 4), u32 *, 0x28)) {
-        temp_r7_636 = M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0x2C) + var_r4_631;
+        temp_r7_636 = (void *) (M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0x2C) + var_r4_631);
         temp_r8_637 = M2C_FIELD(this, s32 *, 0);
-        temp_r6_643 = temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 0) * 0x38);
-        temp_r5_645 = temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 4) * 0x38);
-        temp_r7_646 = temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 8) * 0x38);
+        temp_r6_643 = (void *) (temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 0) * 0x38));
+        temp_r5_645 = (void *) (temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 4) * 0x38));
+        temp_r7_646 = (void *) (temp_r8_637 + (M2C_FIELD(temp_r7_636, s32 *, 8) * 0x38));
         temp_f4_648 = M2C_FIELD(temp_r6_643, f64 *, 0);
         temp_f1_649 = M2C_FIELD(temp_r5_645, f64 *, 0) - temp_f4_648;
         sp20 = temp_f1_649;
@@ -498,7 +498,7 @@ loop_2:
     var_r4_722 = 0;
 loop_24:
     if (var_r7_721 < (u32) M2C_FIELD(M2C_FIELD(this, void **, 4), u32 *, 0)) {
-        temp_r5_727 = M2C_FIELD(this, s32 *, 0) + (var_r4_722 + 0x20);
+        temp_r5_727 = (void *) (M2C_FIELD(this, s32 *, 0) + (var_r4_722 + 0x20));
         temp_f2_728 = M2C_FIELD(temp_r5_727, f32 *, 0);
         temp_f1_729 = M2C_FIELD(temp_r5_727, f32 *, 4);
         temp_f3_731 = M2C_FIELD(temp_r5_727, f32 *, 8);
@@ -538,7 +538,7 @@ loop_24:
                 }
             }
             temp_f2_804 = 1.0f / var_f6_735;
-            temp_r5_805 = M2C_FIELD(this, s32 *, 0) + (var_r4_722 + 0x20);
+            temp_r5_805 = (void *) (M2C_FIELD(this, s32 *, 0) + (var_r4_722 + 0x20));
             M2C_FIELD(temp_r5_805, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_805, f64 *, 0) * (f64) temp_f2_804);
             M2C_FIELD(temp_r5_805, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_805, f32 *, 8) * temp_f2_804);
         }
@@ -549,7 +549,6 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKCloth::SatisfyConstraints() {
     f32 temp_f0_869;
     f32 temp_f1_865;
@@ -576,8 +575,8 @@ loop_4:
     if (var_r7_828 < (u32) M2C_FIELD(M2C_FIELD(this, void **, 4), u32 *, 0x10)) {
         temp_r6_833 = M2C_FIELD(this, s32 *, 0);
         temp_r8_834 = &this->unk30[var_r4_829];
-        temp_r9_839 = temp_r6_833 + (M2C_FIELD(temp_r8_834, s32 *, 0) * 0x38);
-        temp_r6_841 = temp_r6_833 + (M2C_FIELD(temp_r8_834, s32 *, 4) * 0x38);
+        temp_r9_839 = (void *) (temp_r6_833 + (M2C_FIELD(temp_r8_834, s32 *, 0) * 0x38));
+        temp_r6_841 = (void *) (temp_r6_833 + (M2C_FIELD(temp_r8_834, s32 *, 4) * 0x38));
         if ((M2C_FIELD(temp_r9_839, s32 *, 0x30) | M2C_FIELD(temp_r6_841, s32 *, 0x30)) != 0) {
             temp_f8_848 = M2C_FIELD(temp_r6_841, f32 *, 4) - M2C_FIELD(temp_r9_839, f32 *, 4);
             temp_f3_849 = M2C_FIELD(temp_r9_839, f32 *, 0);
@@ -603,7 +602,6 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void MKCloth::ApplyCollision() {
@@ -930,13 +928,13 @@ block_55:
         var_r30_1305 = 0;
 loop_69:
         if (var_r27_1303 < (s32) *MKCloth::includedSweepCount) {
-            temp_r26_1308 = &MKCloth::sweepSpheres + var_r30_1305;
+            temp_r26_1308 = (SoftSweepSphere *) (&MKCloth::sweepSpheres + var_r30_1305);
             if (((u8) temp_r26_1308->unk38 >> 5U) & 1) {
                 var_r25_1313 = 0U;
                 var_r29_1314 = 0;
 loop_67:
                 if (var_r25_1313 < (ClothNode *) *M2C_FIELD(this, ClothNode ***, 4)) {
-                    temp_r4_1318 = M2C_FIELD(this, MKCloth **, 0) + var_r29_1314;
+                    temp_r4_1318 = (MKVector3 *) (M2C_FIELD(this, MKCloth **, 0) + var_r29_1314);
                     if (M2C_FIELD(temp_r4_1318, f32 *, 0x30) != 0.0f) {
                         temp_r26_1308->TestPoint(*temp_r4_1318, temp_r4_1318);
                     }
@@ -1017,7 +1015,7 @@ loop_88:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::CollideHull(ClothNode *arg0, int arg1, ClothCollisionHull &arg2, const Matrix *arg3) {
     M2C_UNK sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -1075,7 +1073,7 @@ void MKCloth::CollideHull(ClothNode *arg0, int arg1, ClothCollisionHull &arg2, c
 loop_22:
     if (var_r11_1507 < (s32) M2C_FIELD(arg1, s32 *, 0x20)) {
         temp_r9_1523 = &sp70 + var_r7_1509;
-        temp_r8_1524 = M2C_FIELD(arg1, s32 *, 0x24) + var_r7_1509;
+        temp_r8_1524 = (void *) (M2C_FIELD(arg1, s32 *, 0x24) + var_r7_1509);
         M2C_FIELD(temp_r9_1523, f64 *, 0) = (f64) M2C_FIELD(temp_r8_1524, f64 *, 0);
         M2C_FIELD(temp_r9_1523, f64 *, 8) = (f64) M2C_FIELD(temp_r8_1524, f64 *, 8);
         temp_f24_1529 = M2C_FIELD(temp_r9_1523, f32 *, 0xC);
@@ -1195,7 +1193,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCloth::UpdatePosition() {
     f32 sp40;
     f32 sp3C;
@@ -1281,7 +1279,7 @@ loop_12:
     temp_f30_1891 = __fres(temp_f31_1888);
 loop_17:
     if (var_r29_1889 < (u32) *M2C_FIELD(this, u32 **, 4)) {
-        temp_r28_1895 = M2C_FIELD(this, s32 *, 0) + var_r30_1890;
+        temp_r28_1895 = (MKVector3 *) (M2C_FIELD(this, s32 *, 0) + var_r30_1890);
         if ((u32) M2C_FIELD(temp_r28_1895, u32 *, 0x30) != 0U) {
             temp_f6_1899 = temp_r28_1895->unk0;
             temp_f0_1908 = temp_f30_1891 * (temp_f6_1899 - M2C_FIELD(temp_r28_1895, f32 *, 0x10));
@@ -1316,7 +1314,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKCloth *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to 'float'
 void MKCloth::IncludeCollision() {
     MKCollisionAABB sp228;
     f64 sp220;
@@ -1444,7 +1442,7 @@ void MKCloth::IncludeCollision() {
         var_r25_2016 = 0;
         var_r27_2018 = 0;
         do {
-            temp_r3_2020 = &MKCloth::sweepSpheres + var_r27_2018;
+            temp_r3_2020 = (SoftSweepSphere *) (&MKCloth::sweepSpheres + var_r27_2018);
             temp_r3_2020->unk38 &= ~0x20;
             if (((u8) temp_r3_2020->unk38 >> 6U) & 1) {
                 temp_r3_2020->GetBoundingBox(&sp228);
@@ -1520,7 +1518,7 @@ void MKCloth::IncludeCollision() {
         var_r29_2201 = 0;
         var_r27_2203 = 0;
         do {
-            temp_r26_2205 = &MKCloth::capsules + var_r27_2203;
+            temp_r26_2205 = (MKVector3 *) (&MKCloth::capsules + var_r27_2203);
             M2C_FIELD(temp_r26_2205, u8 *, 0x4C) = (u8) (M2C_FIELD(temp_r26_2205, u8 *, 0x4C) & ~0x20);
             if (((u8) M2C_FIELD(temp_r26_2205, u8 *, 0x4C) >> 6U) & 1) {
                 temp_f1_2214 = M2C_FIELD(temp_r26_2205, f32 *, 0x40);
@@ -1767,10 +1765,10 @@ loop_11:
         if (var_r29_2660 < (u32) M2C_FIELD(M2C_FIELD(this, void **, 4), u32 *, 0)) {
             MKSetPositionV(*(M2C_FIELD(this, s32 *, 0) + var_r31_2661));
             temp_r0_2667 = M2C_FIELD(this, s32 *, 0);
-            temp_r3_2670 = temp_r0_2667 + (var_r31_2661 + 0x20);
+            temp_r3_2670 = (void *) (temp_r0_2667 + (var_r31_2661 + 0x20));
             temp_f0_2672 = M2C_FIELD(temp_r3_2670, f64 *, 0) * 5.398241246e-315;
             sp68 = temp_f0_2672;
-            temp_r4_2674 = temp_r0_2667 + var_r31_2661;
+            temp_r4_2674 = (void *) (temp_r0_2667 + var_r31_2661);
             spD8 = temp_f0_2672;
             sp70 = M2C_FIELD(temp_r3_2670, f32 *, 8) * 10.0f;
             spE0 = (f64) sp70;
@@ -1820,7 +1818,7 @@ loop_25:
         if (var_r28_2764 < (s32) this->unkC8) {
             temp_r3_2768 = this->unkC0;
             if (((u8) *(temp_r3_2768 + (var_r31_2765 + 0x4C)) >> 5U) & 1) {
-                temp_r3_2776 = temp_r3_2768 + var_r31_2765;
+                temp_r3_2776 = (MKVector3 *) (temp_r3_2768 + var_r31_2765);
                 sp28 = 0.4f;
                 sp2C = 0.0f;
                 sp30 = 0.8f;
@@ -1829,7 +1827,7 @@ loop_25:
                 spB0 = (f64) sp30;
                 MKShape_DrawCapsule(*temp_r3_2776, *(temp_r3_2776 + 0x10), M2C_FIELD(temp_r3_2776, f32 *, 0x40), 8, 5, *((MKVector4 *) &spA8), Matrix::identity, 1U);
             } else {
-                temp_r3_2800 = temp_r3_2768 + var_r31_2765;
+                temp_r3_2800 = (MKVector3 *) (temp_r3_2768 + var_r31_2765);
                 sp18 = 0.8f;
                 sp1C = 0.0f;
                 sp20 = 0.2f;
@@ -1852,7 +1850,7 @@ loop_28:
             sp14 = 1.0f;
             sp88 = (f64) sp8;
             sp90 = (f64) sp10;
-            temp_r4_2847 = this->unkA8 + var_r31_2832;
+            temp_r4_2847 = (MKVector3 *) (this->unkA8 + var_r31_2832);
             MKShape_DrawPlane(*(temp_r4_2847 + 0x10), *temp_r4_2847, M2C_FIELD(temp_r4_2847, f32 *, 0x20), *((MKVector4 *) &sp88), Matrix::identity, 1U);
             var_r28_2831 += 1;
             var_r31_2832 += 0x28;
@@ -1862,7 +1860,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void MKCloth::UpdateGlobalCollisionPrims() {
     f64 sp90;
     MKVector3 sp70;
@@ -1902,7 +1900,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
             temp_r25_2898 = MKModel_GetRefPointType(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4));
             MKModel_GetRefPointMatrix(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4), (Matrix *) &sp60, 1U);
             if ((s32) temp_r25_2898 == 3) {
-                temp_r3_2908 = MKModel_GetRefPointData(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4));
+                temp_r3_2908 = (MKVector3 *) (MKModel_GetRefPointData(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4)));
                 temp_f31_2910 = M2C_FIELD(temp_r3_2908, f32 *, 0x60);
                 temp_f0_2912 = sp70 * (f64) temp_f31_2910;
                 sp28 = temp_f0_2912;
@@ -1916,7 +1914,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
                 sp50 = (f64) sp20;
                 ((MKCloth *) (M2C_FIELD(temp_r28_2890, MKCloth **, 8)))->SetCollisionCapsule((s32) &sp90, *((MKVector3 *) &sp48), *temp_r3_2908, M2C_FIELD(temp_r3_2908, f32 *, 0x64));
             } else if ((s32) temp_r25_2898 == 4) {
-                temp_r3_2944 = MKModel_GetRefPointData(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4));
+                temp_r3_2944 = (void *) (MKModel_GetRefPointData(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4)));
                 temp_f0_2945 = M2C_FIELD(temp_r3_2944, f32 *, 0x60);
                 temp_f1_2946 = M2C_FIELD(temp_r3_2944, f32 *, 0x64);
                 var_f1_2950 = (temp_f0_2945 * temp_f0_2945) + (temp_f1_2946 * temp_f1_2946);
@@ -1964,7 +1962,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'ClothNode **' Too many errors printed, aborting program
 ClothNode **MKCloth::GetName() {
     return M2C_FIELD(this, s32 *, 4) + 0x30;
 }
@@ -2210,7 +2208,7 @@ loop_1:
     goto loop_1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCloth::SetInternalCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3, float arg4) {
     f64 sp50;
     f64 sp48;
@@ -2255,7 +2253,7 @@ void MKCloth::SetInternalCollisionCapsule(int arg0, const MKVector3 &arg1, const
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void MKCloth::CreateInternalCollisionCapsules(int arg0) {
     MKModel **temp_r5_3535;
     MKModel **var_r3_3522;
@@ -2264,7 +2262,7 @@ void MKCloth::CreateInternalCollisionCapsules(int arg0) {
     s32 var_r4_3528;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3522 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x50, NULL, 0);
+        var_r3_3522 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x50, NULL, 0));
     } else {
         var_r3_3522 = malloc(arg0 * 0x50);
     }
@@ -2292,7 +2290,7 @@ void MKCloth::SetInternalCollisionSphere(int arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r3_3558, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     MKModel **temp_r5_3593;
     MKModel **var_r3_3580;
@@ -2301,7 +2299,7 @@ void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     s32 var_r4_3586;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3580 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0);
+        var_r3_3580 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0));
     } else {
         var_r3_3580 = malloc(arg0 * 0x18);
     }
@@ -2337,7 +2335,7 @@ void MKCloth::SetInternalCollisionPlane(int arg0, const MKVector3 &arg1, const M
     M2C_FIELD((this->unkA8 + temp_r7_3613), f32 *, 0x20) = arg3;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void MKCloth::CreateInternalCollisionPlanes(int arg0) {
     MKModel **temp_r5_3674;
     MKModel **var_r3_3661;
@@ -2346,7 +2344,7 @@ void MKCloth::CreateInternalCollisionPlanes(int arg0) {
     s32 var_r4_3667;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3661 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x28, NULL, 0);
+        var_r3_3661 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x28, NULL, 0));
     } else {
         var_r3_3661 = malloc(arg0 * 0x28);
     }
@@ -2432,7 +2430,7 @@ void MKCloth::SetNode(int arg0, const MKVector3 &arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::ApplyScale(const MKVector3 &arg0) {
     f64 sp28;                                       /* compiler-managed */
     f64 sp20;
@@ -2463,8 +2461,8 @@ loop_19:
     if (var_r9_3769 < (u32) M2C_FIELD(temp_r6_3878, u32 *, 0x10)) {
         temp_r8_3776 = M2C_FIELD(temp_r6_3878, s32 *, 4);
         temp_r7_3777 = &this->unk30[var_r5_3771];
-        temp_r7_3782 = temp_r8_3776 + (M2C_FIELD(temp_r7_3777, s32 *, 0) << 5);
-        temp_r6_3783 = temp_r8_3776 + (M2C_FIELD(temp_r7_3777, s32 *, 4) << 5);
+        temp_r7_3782 = (void *) (temp_r8_3776 + (M2C_FIELD(temp_r7_3777, s32 *, 0) << 5));
+        temp_r6_3783 = (void *) (temp_r8_3776 + (M2C_FIELD(temp_r7_3777, s32 *, 4) << 5));
         temp_f0_3786 = M2C_FIELD(temp_r6_3783, f64 *, 0) - M2C_FIELD(temp_r7_3782, f64 *, 0);
         sp10 = temp_f0_3786;
         sp20 = temp_f0_3786;
@@ -2518,7 +2516,6 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKCloth::Teleport(const Matrix &arg0) {
     f64 sp20;
     f64 sp18;
@@ -2540,7 +2537,7 @@ loop_2:
     if (var_r7_3901 < (u32) *M2C_FIELD(this, u32 **, 4)) {
         temp_r0_3917 = var_r5_3903 + 0x10;
         var_r7_3901 += 1;
-        temp_r6_3919 = M2C_FIELD(this, s32 *, 0) + var_r5_3903;
+        temp_r6_3919 = (void *) (M2C_FIELD(this, s32 *, 0) + var_r5_3903);
         var_r5_3903 += 0x38;
         temp_f0_3921 = M2C_FIELD(temp_r6_3919, f32 *, 4);
         temp_f3_3922 = M2C_FIELD(temp_r6_3919, f32 *, 0);
@@ -2550,7 +2547,7 @@ loop_2:
         sp10 = arg0.unk38 + ((temp_f30_3924 * arg0.unk28) + ((temp_f3_3922 * arg0.unk8) + (temp_f0_3921 * arg0.unk18)));
         M2C_FIELD(temp_r6_3919, f32 *, 0) = (f64) sp8;
         M2C_FIELD(temp_r6_3919, f32 *, 8) = (f64) sp10;
-        temp_r4_3946 = M2C_FIELD(this, s32 *, 0) + temp_r0_3917;
+        temp_r4_3946 = (void *) (M2C_FIELD(this, s32 *, 0) + temp_r0_3917);
         sp18 = (f64) sp8;
         M2C_FIELD(temp_r4_3946, f64 *, 0) = (f64) M2C_FIELD(temp_r6_3919, f32 *, 0);
         sp20 = (f64) sp10;
@@ -2558,7 +2555,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void MKCloth::Settle(int arg0, Matrix *arg1) {
@@ -2620,7 +2616,7 @@ loop_15:
             temp_r5_4050 = *(M2C_FIELD(temp_r4_4100, s32 *, 0xC) + (var_r26_4044 + 0x20));
             temp_f1_4053 = *(M2C_FIELD(temp_r4_4100, s32 *, 4) + ((temp_r5_4050 << 5) + 0x14));
             if ((temp_f1_4053 != 0.0f) && (temp_f1_4053 < 1.0f)) {
-                temp_r25_4065 = M2C_FIELD(this, s32 *, 0) + (temp_r5_4050 * 0x38);
+                temp_r25_4065 = (void *) (M2C_FIELD(this, s32 *, 0) + (temp_r5_4050 * 0x38));
                 GetWorldPos(sp18, var_r31_4043, var_r29_3975);
                 sp18 = M2C_BITWISE(f64, sp18) - M2C_FIELD(temp_r25_4065, f64 *, 0);
                 sp18.unk8 -= M2C_FIELD(temp_r25_4065, f32 *, 8);
@@ -2672,7 +2668,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKCloth::GetWorldBindPos(int arg0) {
     f32 sp10;
     f32 spC;
@@ -2683,8 +2678,8 @@ void MKCloth::GetWorldBindPos(int arg0) {
     void *temp_r3_4192;
     void *temp_r4_4198;
 
-    temp_r3_4192 = MKModel_GetWorldMatrix(M2C_FIELD(arg0, MKModel **, 0xC));
-    temp_r4_4198 = M2C_FIELD(M2C_FIELD(arg0, void **, 4), s32 *, 4) + (M2C_ERROR(/* Read from unset register $r5 */) << 5);
+    temp_r3_4192 = (void *) (MKModel_GetWorldMatrix(M2C_FIELD(arg0, MKModel **, 0xC)));
+    temp_r4_4198 = (void *) (M2C_FIELD(M2C_FIELD(arg0, void **, 4), s32 *, 4) + (M2C_ERROR(/* Read from unset register $r5 */) << 5));
     temp_f6_4200 = M2C_FIELD(temp_r4_4198, f32 *, 4);
     temp_f7_4201 = M2C_FIELD(temp_r4_4198, f32 *, 0);
     temp_f6_4209 = M2C_FIELD(temp_r4_4198, f32 *, 8);
@@ -2694,9 +2689,8 @@ void MKCloth::GetWorldBindPos(int arg0) {
     this->unk0 = (f64) sp8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
     f32 sp50;
     f64 sp48;
@@ -2725,12 +2719,12 @@ f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
     if ((temp_r3_4266 != NULL) && (temp_r0_4273 = M2C_FIELD((M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0xC) + (arg1 << 6)), s32 *, 0x30), ((temp_r0_4273 > -1) != 0))) {
         var_r3_4277 = &arg2[temp_r0_4273];
     } else {
-        var_r3_4277 = MKModel_GetWorldMatrix(this->unkC);
+        var_r3_4277 = (Matrix *) (MKModel_GetWorldMatrix(this->unkC));
     }
     temp_r4_4283 = M2C_FIELD(this, void **, 4);
     temp_r5_4284 = arg1 << 6;
-    temp_r28_4289 = M2C_FIELD(temp_r4_4283, s32 *, 0xC) + temp_r5_4284;
-    temp_r6_4295 = M2C_FIELD(temp_r4_4283, s32 *, 4) + (M2C_FIELD(temp_r28_4289, s32 *, 0x20) << 5);
+    temp_r28_4289 = (void *) (M2C_FIELD(temp_r4_4283, s32 *, 0xC) + temp_r5_4284);
+    temp_r6_4295 = (void *) (M2C_FIELD(temp_r4_4283, s32 *, 4) + (M2C_FIELD(temp_r28_4289, s32 *, 0x20) << 5));
     temp_f28_4297 = M2C_FIELD(temp_r6_4295, f32 *, 8);
     temp_f3_4298 = M2C_FIELD(temp_r6_4295, f64 *, 0);
     var_f1_4303 = M2C_FIELD(var_r3_4277, f64 *, 0);
@@ -2759,7 +2753,7 @@ f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::UpdateInternal(Matrix *arg0) {
     f32 sp70;
     f32 sp6C;
@@ -2817,7 +2811,7 @@ void MKCloth::UpdateInternal(Matrix *arg0) {
     void *temp_r4_4750;
     void *temp_r5_4707;
 
-    temp_r3_4396 = MKModel_GetWorldMatrix(this->unkC);
+    temp_r3_4396 = (void *) (MKModel_GetWorldMatrix(this->unkC));
     temp_f1_4397 = M2C_FIELD(temp_r3_4396, f32 *, 0);
     temp_f0_4398 = M2C_FIELD(temp_r3_4396, f32 *, 4);
     temp_f3_4400 = M2C_FIELD(temp_r3_4396, f32 *, 8);
@@ -2973,7 +2967,7 @@ loop_66:
             GetWorldPos(sp58, var_r31_4686, arg0);
             temp_r5_4707 = M2C_FIELD(this, void **, 4);
             temp_r3_4711 = *(M2C_FIELD(temp_r5_4707, s32 *, 0xC) + (var_r28_4687 + 0x20));
-            temp_r4_4713 = M2C_FIELD(this, s32 *, 0) + (temp_r3_4711 * 0x38);
+            temp_r4_4713 = (void *) (M2C_FIELD(this, s32 *, 0) + (temp_r3_4711 * 0x38));
             sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_4713, f64 *, 0);
             sp58.unk8 -= M2C_FIELD(temp_r4_4713, f32 *, 8);
             __ml(1.0f - *(M2C_FIELD(temp_r5_4707, s32 *, 4) + ((temp_r3_4711 << 5) + 0x14)), sp48);
@@ -2989,7 +2983,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::UpdateCollisionPrims() {
     MKVector3 spB0;
     M2C_UNK spA0;
@@ -3055,7 +3049,7 @@ loop_7:
     var_r28_4843 = 0;
 loop_29:
     if (var_r30_4841 < (s32) this->unkB0) {
-        temp_r3_4849 = MKModel_GetRefPointData(this->unkC, this->unkAC[var_r28_4843]);
+        temp_r3_4849 = (void *) (MKModel_GetRefPointData(this->unkC, this->unkAC[var_r28_4843]));
         temp_f1_4850 = M2C_FIELD(temp_r3_4849, f32 *, 0x60);
         temp_f0_4851 = M2C_FIELD(temp_r3_4849, f32 *, 0x64);
         var_f4_4854 = (temp_f1_4850 * temp_f1_4850) + (temp_f0_4851 * temp_f0_4851);
@@ -3165,7 +3159,7 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to
+#if 0 // DRAFT: pointer/array required
 void MKCloth::Draw() {
     f64 sp58;
     f64 sp50;
@@ -3224,7 +3218,7 @@ loop_10:
                     temp_r3_5266 = M2C_FIELD(this, void **, 4);
                     if (var_r27_5180 < (u32) M2C_FIELD(temp_r3_5266, u32 *, 0x18)) {
                         MKMaterial_RenderVerticesBegin((s32) *(M2C_FIELD(temp_r3_5266, MKMaterial ***, 0x1C) + (var_r24_5181 + 8)));
-                        var_r26_5191 = *(M2C_FIELD(M2C_FIELD(this, void **, 4), MKMaterial ***, 0x1C) + (var_r24_5181 + 0xC));
+                        var_r26_5191 = (unsigned long) (*(M2C_FIELD(M2C_FIELD(this, void **, 4), MKMaterial ***, 0x1C) + (var_r24_5181 + 0xC)));
                         var_r23_5192 = var_r26_5191 * 4;
 loop_8:
                         temp_r5_5254 = M2C_FIELD(this, void **, 4);
@@ -3364,7 +3358,7 @@ loop_2:
         temp_r0_5473 = var_r31_5456 + 0x20;
         var_r28_5454 += 1;
         var_r31_5456 += 0x38;
-        temp_r3_5476 = M2C_FIELD(this, s32 *, 0) + temp_r0_5473;
+        temp_r3_5476 = (void *) (M2C_FIELD(this, s32 *, 0) + temp_r0_5473);
         var_r30_5458 += 0x20;
         M2C_FIELD(temp_r3_5476, f64 *, 0) = temp_f30_5455;
         M2C_FIELD(temp_r3_5476, f64 *, 8) = temp_f31_5457;
@@ -3434,7 +3428,6 @@ void MKCloth::Init() {
     SetIterations(3);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ModelCloth::Draw() {
     MKCloth *temp_r3_5615;
     s32 var_r30_5610;
@@ -3447,7 +3440,7 @@ void ModelCloth::Draw() {
         var_r31_5611 = 0;
 loop_5:
         if (var_r30_5610 < (s32) this->unk4) {
-            temp_r3_5615 = ((u8 *) this->unk8) + var_r31_5611;
+            temp_r3_5615 = (MKCloth *) (((u8 *) this->unk8) + var_r31_5611);
             if ((u8) temp_r3_5615->unk8 == 0) {
                 temp_r3_5615->Create();
             }
@@ -3470,9 +3463,8 @@ loop_11:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: pointer/array required
 void ModelCloth::Update() {
     Matrix sp160;
     f64 sp150;
@@ -3554,7 +3546,7 @@ void ModelCloth::Update() {
         var_r29_5689 = 0;
 loop_6:
         if (var_r28_5688 < (s32) this->unk4) {
-            temp_r3_5693 = ((u8 *) this->unk8) + var_r29_5689;
+            temp_r3_5693 = (MKCloth *) (((u8 *) this->unk8) + var_r29_5689);
             if ((u8) temp_r3_5693->unk8 == 0) {
                 temp_r3_5693->Create();
             }
@@ -3741,7 +3733,7 @@ void MKClothManager::AddModel(MKModel *arg0) {
     *temp_r5_6069 = arg0;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKModel **' and 'long *'
 void MKClothManager::Deinit() {
     MKModel **temp_r31_6090;
     MKModel **temp_r3_6085;
@@ -3762,7 +3754,6 @@ void MKClothManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKClothManager::Init() {
     MKModel **temp_r3_6159;
     MKModel **temp_r3_6165;
@@ -3772,11 +3763,11 @@ void MKClothManager::Init() {
 
     temp_r30_6126 = M2C_FIELD(&gMKDefaults, s32 *, 0xA4);
     if (temp_r30_6126 == 0) {
-        this->unk0 = &gEmptyPtrList + 4;
+        this->unk0 = (MKModel **) (&gEmptyPtrList + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_6142 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_6126 + 2) * 4, NULL, 0);
+        var_r3_6142 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_6126 + 2) * 4, NULL, 0));
     } else {
         var_r3_6142 = malloc((temp_r30_6126 + 2) * 4);
     }
@@ -3795,7 +3786,6 @@ void MKClothManager::Init() {
     this->unk0 = temp_r3_6165 + 4;
     M2C_FIELD(temp_r3_6165, s32 *, 4) = 0;
 }
-#endif
 
 void SoftBody_Deinit() {
 

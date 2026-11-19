@@ -171,7 +171,7 @@ void *Gondola::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void Gondola::UpdateMove() {
     f32 sp44C;
     f32 sp448;
@@ -923,7 +923,7 @@ s32 Gondola::LoadDone() {
     this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp("SkyClouds"));
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 s32 Gondola::LoadLine(MKIniLine *arg0) {
     MKVector3 sp18;
     MKVector3 sp8;

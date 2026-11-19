@@ -79,7 +79,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalSpline>::State'
 static M2C_UNK lit_685;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<ElementalSpline>::State ElementalSplineStates; /* unable to generate initializer: confusing struct layout */
 static s32 lit_812 = 1;
@@ -2478,7 +2478,7 @@ void ElementalSpline::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 ElementalSpline::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2584,7 +2584,7 @@ f32 ElementalSpline::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
     if (((SplineProp *) this)->SplineProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -2666,12 +2666,10 @@ void ElementalSpline::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void ElementalSplineDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    this->unk60 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_685'
 void ElementalSpline_cpp::__sinit() {

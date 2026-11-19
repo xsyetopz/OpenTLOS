@@ -78,7 +78,7 @@ s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     return var_r31_84;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 void TriggerPolyObject::LoadDone() {
     f32 temp_f1_126;
     f32 temp_f1_134;
@@ -105,7 +105,6 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
     MKIniLine *var_r28_192;
     MKVector3 *var_r3_181;
@@ -117,7 +116,7 @@ s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
         this->unk80 = arg1->GetNmbrOfSubLines();
         temp_r29_173 = this->unk80 * 0x10;
         if (MKHeap::Current() != NULL) {
-            var_r3_181 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_173, NULL, 0);
+            var_r3_181 = (MKVector3 *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_173, NULL, 0));
         } else {
             var_r3_181 = malloc(temp_r29_173);
         }
@@ -136,7 +135,6 @@ loop_8:
     }
     return 0;
 }
-#endif
 
 void TriggerPolyObject::Deinit() {
     MKVector3 *temp_r31_233;
@@ -252,7 +250,6 @@ loop_17:
     return this->unk84;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void TriggerPlaneGroupObject::LoadDone() {
     MKVector3 *var_r3_574;
     TriggerPlaneObject ***temp_r3_589;
@@ -262,7 +259,7 @@ void TriggerPlaneGroupObject::LoadDone() {
 
     this->unk84 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_574 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x108, NULL, 0);
+        var_r3_574 = (MKVector3 *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x108, NULL, 0));
     } else {
         var_r3_574 = malloc(0x108);
     }
@@ -282,9 +279,8 @@ void TriggerPlaneGroupObject::LoadDone() {
     this->unk80 = temp_r3_595 + 4;
     M2C_FIELD(temp_r3_595, TriggerPlaneObject ****, 4) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'TriggerPlaneObject **' and 'TriggerPlaneObject ***'
 void TriggerPlaneGroupObject::Deinit() {
     TriggerPlaneObject ***var_r31_616;
     TriggerPlaneObject ***var_r3_617;
@@ -356,7 +352,7 @@ void TriggerBoxObject::LoadDone() {
     this->unk68 = this->unk78 / -2.0f;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match 'stricmp(signed char *)'
 s32 TriggerBoxObject::LoadLine(char *arg0, MKIniLine *arg1) {
     f64 sp18;
     f64 sp10;
@@ -412,7 +408,7 @@ void TriggerSphereObject::LoadDone() {
     this->unk80 = temp_f0_890 * temp_f0_890;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {
     f64 sp18;
     f64 sp10;
@@ -534,7 +530,7 @@ void TriggerObject::Reset() {
     this->unk50 &= 0xFFFFFFF1;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match 'stricmp(signed char *)'
 u8 TriggerObject::LoadLine(MKIniLine *arg0) {
     f64 sp10;
     f64 sp8;

@@ -117,7 +117,7 @@ void EnemyGoal_AttackProjectile::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 u8 EnemyGoal_AttackProjectile::Update() {
     AITargetData sp228;
     f64 sp218;
@@ -656,7 +656,7 @@ u8 EnemyGoal_RangeAttackMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void EnemyGoal_RangeAttackMode::Activate() {
     f64 sp50;
     f64 sp48;
@@ -700,7 +700,7 @@ void EnemyGoal_RangeAttackMode::Activate() {
             goto block_5;
         }
         temp_r3_1079 = this->unkC;
-        temp_r28_1085 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r28_1085 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_1087 = M2C_FIELD(M2C_FIELD(temp_r3_1079, void **, 0x44), f64 (**)(Targetable *, s32), 0x100)(temp_r3_1079, M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_1088 = this->unkC;
         sp18 = *(temp_r3_1088 + 0xD0) * temp_f1_1087;

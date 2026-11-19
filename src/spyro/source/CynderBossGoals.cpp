@@ -1981,7 +1981,7 @@ void CynderBossGoal_RunningTakeOff::Activate() {
     M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -2157,7 +2157,7 @@ void CynderBossGoal_MoveToTarget::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp120'
+#if 0 // DRAFT: undefined identifier 'sp120' Too many errors printed, aborting program
 u8 CynderBossGoal_MoveToTarget::Update() {
     f64 sp140;
     f64 sp138;
@@ -3200,7 +3200,7 @@ void CynderBossGoal_BreathAttack::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 u8 CynderBossGoal_BreathAttack::Update() {
     f64 sp248;
     f64 sp240;
@@ -3622,7 +3622,7 @@ void CynderBossGoal_MeleeAttack::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 u8 CynderBossGoal_MeleeAttack::Update() {
     MKCollisionResult spD0;
     f64 spC8;
@@ -4119,7 +4119,7 @@ u8 CynderBossGoal_AttackPhase3::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float *' to
+#if 0 // DRAFT: illegal implicit conversion from 'float *' to 'const Matrix *'
 void CynderBossGoal_AttackPhase3::Activate() {
     f32 sp6C;
     f32 sp68;
@@ -4578,7 +4578,7 @@ u8 CynderBossGoal_AttackPhase1::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to 'AITargetData *'
 void CynderBossGoal_AttackPhase1::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
@@ -5399,7 +5399,7 @@ void CynderBossGoal_Dive::Activate() {
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0xE0, 0, 0.15f, 0U, 0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 u8 CynderBossGoal_FlyToDive::Update() {
     AITargetData sp60;
     M2C_UNK sp50;
@@ -5627,7 +5627,7 @@ void CynderBossGoal_FlyAlongSpline::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 u8 CynderBossGoal_FlyAlongSpline::Update() {
     Matrix sp210;
     f64 sp200;
@@ -5920,7 +5920,7 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void CynderBossGoal_FlyAlongSpline::Activate() {
     f64 spC0;
     f64 spB8;
@@ -6190,7 +6190,7 @@ u8 CynderBossGoal_Fly::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Character *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Character *' to 'Matrix *'
 void CynderBossGoal_Fly::Activate() {
     f64 sp128;
     f64 sp120;
@@ -6436,7 +6436,7 @@ void CynderBossGoal_Land::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 u8 CynderBossGoal_Land::Update() {
     Matrix sp30;
     f64 sp28;
@@ -7235,7 +7235,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Spawn(float *, int, MKVector3 *, float, float, float,
+#if 0 // DRAFT: function call 'Spawn(float *, int, MKVector3 *, float, float, float, float, float, float, float, float)' does not match 'Enemy::Spawn(const Matrix *, SpawnPoint
 void CynderBossGoal_Think::Arbitrate() {
     f32 spAC;
     f32 spA8;

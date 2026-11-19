@@ -52,7 +52,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, const MKVector4 &arg5, int arg6, MKProp *arg7) {
     Matrix spB0;
     MKVector3 sp98;
@@ -251,7 +251,7 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void FlyingChunkPS::Deinit() {
     Matrix **var_r31_377;
     Matrix **var_r3_378;
@@ -294,7 +294,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_SetColor(MKModel *, Matrix)' does not match
+#if 0 // DRAFT: function call 'MKModel_SetColor(MKModel *, Matrix)' does not match 'MKModel_SetColor(MKModel *, const MKVector4 &)'
 void FlyingChunkPS::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -1335,11 +1335,11 @@ void FlyingChunkPS::Init() {
     ((GamePropColored *) this)->GamePropColored::Init();
     temp_r30_2049 = M2C_FIELD(checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8);
     if (temp_r30_2049 == 0) {
-        this->unkD8 = &gEmptyPtrListDL + 4;
+        this->unkD8 = (Matrix **) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_2067 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0), NULL, 0);
+        var_r3_2067 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0), NULL, 0));
     } else {
         var_r3_2067 = malloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0));
     }
@@ -1369,7 +1369,7 @@ void FlyingChunkPSDescriptor::LoadDone() {
     this->unkEC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 FlyingChunkPSDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2136;
 

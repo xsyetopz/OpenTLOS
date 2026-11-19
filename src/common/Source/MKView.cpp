@@ -38,13 +38,11 @@ void MKView_SetAspectRatio(float arg0) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
 f32 *MKView_GetOrthoRect() {
-    return pStack + 0x64;
+    return (float *) (pStack + 0x64);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Texture *'
 Texture *MKView_GetRenderTarget(Texture **arg0) {
     if (arg0 != NULL) {
         *arg0 = pStack[1].unk3C;
@@ -348,7 +346,7 @@ s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'tan(Matrix *, float)' does not match
+#if 0 // DRAFT: function call 'tan(Matrix *, float)' does not match 'tan(Matrix *, float, float)'
 void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *arg3) {
     f64 sp70;
     f64 sp68;
@@ -528,7 +526,7 @@ void MKView_SetProjection(float arg0, float arg1, float arg2) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'Matrix *'
 Matrix *MKView_GetProjectionMatrix() {
     f32 temp_f2_1245;
     f32 temp_f2_1275;
@@ -820,7 +818,7 @@ void MKView_Push() {
     pStack += 0x80;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Texture *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Texture *' to 'float'
 void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {
     pStack[1].unk38 = arg0;
     pStack[1].unk3C = arg1;

@@ -51,7 +51,7 @@ void *ExplosiveBarrelSpawner::Update() {
     }
 }
 
-#if 0 // DRAFT: identifier 'ExplosiveBarrelSpawner::LoadDone()' redeclared
+#if 0 // DRAFT: identifier 'ExplosiveBarrelSpawner::LoadDone()' redeclared was declared as: 'long ()' now declared as: 'void ()'
 void ExplosiveBarrelSpawner::LoadDone() {
     MKProp *temp_r3_87;
     s32 var_r30_81;

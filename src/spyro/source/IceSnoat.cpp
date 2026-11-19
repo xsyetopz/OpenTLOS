@@ -398,7 +398,6 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void *IceSnoatCritter::Update() {
     f64 spD0;
     f64 spC8;
@@ -446,7 +445,7 @@ void *IceSnoatCritter::Update() {
     var_r31_636 = 0;
 loop_24:
     if (var_r29_635 < (s32) this->unk90) {
-        temp_r28_641 = ((u8 *) this->unk170) + var_r31_636;
+        temp_r28_641 = (IceSnoat *) (((u8 *) this->unk170) + var_r31_636);
         temp_r28_641->unk64 -= gUpdateTimeDelta;
         temp_r28_641->unk54 += temp_r28_641->unk58 * gUpdateTimeDelta;
         temp_r0_650 = temp_r28_641->unk60;
@@ -535,7 +534,6 @@ loop_24:
         goto loop_24;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void IceSnoatCritter::SetAlertState(IceSnoat *arg0) {
@@ -869,7 +867,7 @@ void IceSnoatCritter::SetBounceState(IceSnoat *arg0) {
     FindNewBounceParameters(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
 f32 IceSnoatCritter::Resolve() {
     Volume sp88;
     f64 sp80;
@@ -900,7 +898,7 @@ f32 IceSnoatCritter::Resolve() {
     var_r31_1391 = 0;
 loop_4:
     if (var_r29_1389 < (s32) this->unk90) {
-        temp_r28_1398 = ((u8 *) this->unk170) + var_r31_1391;
+        temp_r28_1398 = (IceSnoat *) (((u8 *) this->unk170) + var_r31_1391);
         sp88.GetRandPos();
         sp20 = 0.0f;
         sp88.unk10 = M2C_BITWISE(f64, sp88);

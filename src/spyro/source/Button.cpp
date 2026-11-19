@@ -122,8 +122,8 @@ void Button::Init() {
 void ButtonDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("inactive");
-    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("activating");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("active");
-    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("deactivating");
+    this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("activating"));
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("active"));
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("deactivating"));
 }
 #endif

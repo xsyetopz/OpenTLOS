@@ -7,7 +7,7 @@
 #include "spyro/source/UIStringTable.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'UIMessageStrings' redeclared
+#if 0 // DRAFT: identifier 'UIMessageStrings' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 s32 stricmp(s8 *);                                  /* extern */
 static M2C_UNK UIMessageStrings;                    /* unable to generate initializer: unknown type */
 static s32 UIMessageArgType[0x10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 0 };
@@ -30,7 +30,7 @@ s32 UIEvent::Send() {
     return M2C_FIELD(*temp_r0_14, s32 (**)(void **, s32 *, s8 *), 0x2C)(temp_r0_14, &sp8, temp_r5_24);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to 'const char *'
 void UIEvent::Resolve(UIObject *arg0) {
     s8 *temp_r31_69;
     void **temp_r0_48;
@@ -38,7 +38,7 @@ void UIEvent::Resolve(UIObject *arg0) {
 
     temp_r0_48 = this->unk0;
     if (temp_r0_48 != NULL) {
-        this->unk0 = arg0->Find(temp_r0_48);
+        this->unk0 = (const char *) (arg0->Find(temp_r0_48));
         UIStringTable_Remove((s8 *) temp_r0_48);
     }
     if (((void **) this->unk0 != NULL) && (GetScriptArgType(this->unk4) == 1)) {
@@ -52,7 +52,7 @@ void UIEvent::Resolve(UIObject *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIEvent::LoadLine(const char *arg0, UIDataLine *arg1) {
     s8 *sp8;
     MKIniLine *var_r29_106;
@@ -78,7 +78,7 @@ loop_18:
                     this->unk8 = M2C_ERROR(/* Read from unset register $r3 */);
                     break;
                 case 2:
-                    this->unk8 = var_r29_106->GetInt(0);
+                    this->unk8 = (signed char *) (var_r29_106->GetInt(0));
                     break;
                 case 3:
                     this->unk8 = var_r29_106->GetFloat(0);

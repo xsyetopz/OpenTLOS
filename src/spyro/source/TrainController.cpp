@@ -54,7 +54,6 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainControllerDescriptor *' to
 void TrainController::SetStage(int arg0) {
     SteamTrain *temp_r3_74;
     u32 var_r4_61;
@@ -67,7 +66,7 @@ void TrainController::SetStage(int arg0) {
     temp_r3_61 = temp_ret_61;
     var_r4_61 = (u32) (u64) temp_ret_61;
     if (temp_r3_61 != NULL) {
-        temp_ret_65 = checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_ret_65 = (unsigned long long) (checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
         var_r4_61 = (u32) temp_ret_65;
         M2C_FIELD(temp_r3_61, f32 *, 0xDC) = (f32) M2C_FIELD((temp_ret_65 + (this->unk5C * 0xC)), f32 *, 0x60);
     }
@@ -77,9 +76,8 @@ void TrainController::SetStage(int arg0) {
     }
     this->unk60 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void TrainController::Message(MKMessage *arg0) {
     s32 sp54;
     s32 sp50;
@@ -301,14 +299,13 @@ void TrainController::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainControllerDescriptor *' to
 void *TrainController::Update() {
     SteamTrainCaboose *temp_r3_482;
     u64 temp_ret_471;
 
     MKProp::Update();
     if (M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68) >= 0.0f) {
-        temp_ret_471 = checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_ret_471 = (unsigned long long) (checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
         if (this->unk60 >= M2C_FIELD((temp_ret_471 + (this->unk5C * 0xC)), f32 *, 0x68)) {
             temp_r3_482 = checked_cast<SteamTrainCaboose *, MKProp>(this->unk54->PropResolver_Resolve((s32) (u32) temp_ret_471));
             if ((temp_r3_482 != NULL) && (temp_r3_482->IsBlownUp() == 0)) {
@@ -318,7 +315,6 @@ void *TrainController::Update() {
     }
     this->unk60 += gUpdateTimeDelta;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void TrainController::Reset() {
@@ -352,7 +348,7 @@ void TrainController::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Disable(MKProp *, void *)' does not match
+#if 0 // DRAFT: function call 'Disable(MKProp *, void *)' does not match 'MKProp::Disable()'
 s32 TrainController::LoadDone() {
     void *temp_r4_577;
 
@@ -384,7 +380,7 @@ void TrainController::Init() {
     this->unk6C = 0;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[14])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[14])' does not match 'stricmp(signed char *, signed char *)'
 s32 TrainControllerDescriptor::LoadLine(MKIniLine *arg0) {
     MKIniLine *temp_ret_789;
     MKIniLine *var_r22_726;

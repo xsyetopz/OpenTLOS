@@ -23,7 +23,7 @@ s32 stricmp(s8 *, s8 *, void *, s32);               /* extern */
 s32 strnicmp(s8 *, s32);                            /* extern */
 extern MKIniLine *pIni_CurrentLineArray;
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 s32 MKIni::Exists(const char *arg0) {
     s8 *temp_r31_28;
 
@@ -38,7 +38,7 @@ s32 MKIni::Exists(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[3], int)' does not match
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[3], int)' does not match 'strnicmp(const char *, const char *, int)' 'strnicmp(signed char *, long)'
 u8 MKIni::IsMaskedOut(MKIniLine *arg0) {
     s32 var_r25_79;
     s32 var_r27_75;
@@ -105,7 +105,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal operand
 void MKIni::ReadBinary(const char *arg0) {
     MKIniLine *temp_r5_215;
     s32 temp_r0_241;
@@ -114,7 +114,7 @@ void MKIni::ReadBinary(const char *arg0) {
     s8 *temp_r3_214;
 
     temp_r3_214 = MKArchive_Load(arg0, (int *) &this->unk40, NULL, -1);
-    temp_r5_215 = temp_r3_214 + 0x44;
+    temp_r5_215 = (MKIniLine *) (temp_r3_214 + 0x44);
     var_r6_216 = 0;
     this->unk10 = temp_r5_215;
     var_r4_218 = 0;
@@ -645,7 +645,7 @@ void MKIni::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[8])' does not match 'strcpy(char *, const char *)'
 s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {
     s32 sp8;
     s8 *temp_r31_1483;
@@ -653,7 +653,7 @@ s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {
     this->unk8 = NULL;
     this->unk10 = NULL;
     this->unk3C = 0;
-    this->unk44 = arg2;
+    this->unk44 = (signed char *) (arg2);
     this->unk14 = NULL;
     this->unk18 = arg1;
     if (arg0 == NULL) {
@@ -676,7 +676,7 @@ void iniSectionCompare(const void *arg0, const void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'signed char *' Too many errors printed, aborting program
 s32 StringHash(const char *arg0, int arg1) {
     s8 *var_r4_1543;
     u32 temp_r3_1542;

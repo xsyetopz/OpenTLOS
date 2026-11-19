@@ -381,7 +381,7 @@ void Matrix::Multiply3x3(const Matrix *arg0, const Matrix *arg1) {
     this->unk2C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to 'float'
 f32 Matrix::Multiply(const Matrix *arg0, const Matrix *arg1) {
     f32 temp_f12_872;
     f32 temp_f1_856;
@@ -505,7 +505,7 @@ void Matrix::Transpose(const Matrix *arg0) {
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 spB0;                                       /* compiler-managed */
     f32 spAC;
@@ -584,7 +584,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
 void Matrix::GetRotationRPY() const {
     Matrix sp20;
     M2C_UNK sp1C;

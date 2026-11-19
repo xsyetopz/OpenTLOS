@@ -566,7 +566,7 @@ void DragonBust::ActivatingBEnter() {
     this->unkE4 = 0.5f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'DragonBust::State'
 void DragonBust::ActivatingAUpdate() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -645,7 +645,7 @@ void DragonBust::ActivatingAUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void DragonBust::ActivatingAEnter() {
     Matrix sp60;
     M2C_UNK sp5C;
@@ -832,7 +832,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::GetProp()'
 void DragonBust::SlideUpdate() {
     f64 sp188;                                      /* compiler-managed */
     f64 sp180;                                      /* compiler-managed */
@@ -1039,7 +1039,7 @@ void DragonBust::SlideUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'DragonBust::State'
 void DragonBust::IdleUpdate() {
     if ((u8) this->unk12C != 0) {
         SetState((DragonBust::State) 5);
@@ -1047,7 +1047,7 @@ void DragonBust::IdleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void DragonBust::IdleEnter() {
     f64 sp80;
     f64 sp78;
@@ -1121,7 +1121,7 @@ void *DragonBust::Update() {
     GameProp::Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'DragonBust::State'
 void DragonBust::Reset() {
     this->unk12C = 0;
     SetState((DragonBust::State) 0);
@@ -1130,7 +1130,6 @@ void DragonBust::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 s32 DragonBust::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -1151,7 +1150,7 @@ s32 DragonBust::LoadDone() {
     ManagedLight *temp_r4_1604;
 
     GameProp::LoadDone();
-    this->unk124 = MKMaterial_Create("p_SkullWhite");
+    this->unk124 = (MKMaterial *) (MKMaterial_Create("p_SkullWhite"));
     sp20 = 0.0f;
     M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
@@ -1170,13 +1169,12 @@ s32 DragonBust::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk118 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_709, lit_710);
+    this->unk118 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_709, lit_710));
     temp_r4_1604 = this->unk118;
     if (temp_r4_1604 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1604, 0U);
     }
 }
-#endif
 
 s32 DragonBust::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1627;
@@ -1188,7 +1186,6 @@ s32 DragonBust::LoadLine(MKIniLine *arg0) {
     return var_r31_1627;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void DragonBust::Init() {
     ((KDStateMachine<DragonBust> *) &this->unkC8)->Init((KDStateMachine<DragonBust>::State *) DragonBust::states, NULL);
     this->unkDC = 0;
@@ -1202,7 +1199,7 @@ void DragonBust::Init() {
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
     this->unk118 = NULL;
     this->unk11C = MKModel_Create("Fx0020_earthshock", NULL, 2, NULL);
-    this->unk120 = MKMaterial_Create("FX_IceFuryMat");
+    this->unk120 = (MKMaterial *) (MKMaterial_Create("FX_IceFuryMat"));
     this->unk124 = NULL;
     this->unk128 = NULL;
     this->unk12C = 0;
@@ -1210,7 +1207,6 @@ void DragonBust::Init() {
     this->unk158 = 0;
     GameProp::Init();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void DragonBust_cpp::__sinit() {

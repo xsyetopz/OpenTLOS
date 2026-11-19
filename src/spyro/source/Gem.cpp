@@ -67,7 +67,7 @@ extern M2C_UNK fingerprintData;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void Gem::Draw() {
     f64 sp10;
     f64 sp8;
@@ -91,7 +91,7 @@ void Gem::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void Gem::CollectingStateInit() {
     f32 temp_f31_152;
 
@@ -101,7 +101,7 @@ void Gem::CollectingStateInit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void Gem::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2) {
     f64 sp20;
     f64 sp18;
@@ -135,7 +135,7 @@ void Gem::Init() {
     this->unk148 = -1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: function call 'GetDescriptor(Gem *, float)' does not match 'Gem::GetDescriptor()'
 void Gem::CollectEffects() {
     f64 sp1D8;
     f64 sp1D0;
@@ -256,7 +256,7 @@ void Gem::CollectEffects() {
         sp1D0 = temp_f0_305;
         spE8 = (f32) sp1C8 * 600.0f;
         sp1D8 = (f64) spE8;
-        temp_r30_318 = ((u8 *) this->unk8) + 0x30;
+        temp_r30_318 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
         temp_f27_320 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f26_325 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spD0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -285,7 +285,7 @@ void Gem::CollectEffects() {
         ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0x9C)))->Emit(*temp_r30_318, *((MKVector3 *) &sp1D0), *((MKVector3 *) &sp1B0), *((MKVector3 *) &sp190), 1.0f, *(GetDescriptor(temp_f1_376) + 0xA8), 0, NULL);
         var_r29_280 += 1;
     } while (var_r29_280 < 4);
-    temp_r30_408 = checked_cast<Spyro *, MKProp>(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) + 0x238;
+    temp_r30_408 = (MKVector3 *) (checked_cast<Spyro *, MKProp>(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) + 0x238);
     sp98 = -1.0f;
     temp_r4_413 = this->unk8;
     sp88 = 1.0f;
@@ -444,7 +444,6 @@ void GemDescriptor::Deinit() {
     CollectableDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void GemDescriptor::LoadDone() {
     s32 var_r6_740;
     u32 var_r5_737;
@@ -452,7 +451,7 @@ void GemDescriptor::LoadDone() {
 
     CollectableDescriptor::LoadDone();
     this->unkCC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
-    this->unkD4 = MKMaterial_Create("p_gem_white");
+    this->unkD4 = (MKMaterial *) (MKMaterial_Create("p_gem_white"));
     var_r5_737 = 0U;
     M2C_FIELD(this, s8 *, 0x66) = 0;
     var_r6_740 = 0;
@@ -467,9 +466,8 @@ loop_2:
         this->unkD0 = 0.0f;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GemDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 

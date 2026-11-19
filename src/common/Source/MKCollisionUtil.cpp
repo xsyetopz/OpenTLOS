@@ -10,7 +10,6 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
 static M2C_UNK lit_736;                                /* unable to generate initializer: unknown type; const */
 
 void MKCollision_GetVertexColorFromPoly(const MKVector3 *arg0, MKVector4 *arg1) {
@@ -24,7 +23,7 @@ void MKCollision_GetVertexColorFromPoly(const MKVector3 *arg0, MKVector4 *arg1) 
     var_ctr_17 = 3;
     do {
         temp_r8_20 = arg1 + var_r5_14;
-        temp_r9_21 = arg0 + (var_r5_14 + 0xC);
+        temp_r9_21 = (unsigned char *) (arg0 + (var_r5_14 + 0xC));
         temp_r0_23 = M2C_FIELD(temp_r9_21, u8 *, 0);
         var_r5_14 += 0x10;
         M2C_FIELD(temp_r8_20, f32 *, 0) = (f32) (0.003921569f * (f32) temp_r0_23);
@@ -34,7 +33,6 @@ void MKCollision_GetVertexColorFromPoly(const MKVector3 *arg0, MKVector4 *arg1) 
         var_ctr_17 -= 1;
     } while (var_ctr_17 != 0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &arg1, const MKVector3 &arg2, MKCollisionResult *arg3, float *arg4) {
@@ -1057,7 +1055,7 @@ loop_50:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 MKCollision_Clip3D(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float &arg3, float &arg4) {
     s32 var_r31_1590;
 
@@ -1254,7 +1252,7 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollisionEllipsoid::GetTotalAABB(MKCollisionEllipsoid *arg0, int arg1) {
     f64 sp40;
     f64 sp38;
@@ -1284,7 +1282,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
     Matrix sp150;
     M2C_UNK sp14C;
@@ -1373,7 +1371,7 @@ void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     f64 sp1C0;
     f64 sp1B8;
@@ -1509,7 +1507,7 @@ void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &a
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned int arg2) {
     f64 sp240;
     f64 sp238;
@@ -1749,7 +1747,7 @@ void VectorAbs(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
 void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, unsigned int arg3) {
     f64 spA0;
     f64 sp98;
@@ -1810,7 +1808,7 @@ void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollisionAABB *arg2) {
     f64 spC0;                                       /* compiler-managed */
     f64 spB8;

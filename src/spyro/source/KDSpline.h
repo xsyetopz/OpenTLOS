@@ -76,7 +76,7 @@ inline KDUniformSpline::KDUniformSpline() {
     this->unkC = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 inline void KDUniformSpline::GetAcceleration(float arg0) const {
     f64 sp38;
     KDUniformSpline sp20;
@@ -99,7 +99,7 @@ inline void KDUniformSpline::GetAcceleration(float arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 inline void KDUniformSpline::GetVelocity(float arg0) const {
     f64 sp38;
     KDUniformSpline sp20;

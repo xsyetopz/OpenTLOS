@@ -44,7 +44,7 @@ void Music_Clear() {
     Music_ClearDelayedPlayBuffer();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match 'strcpy(char *, const char *)'
 void Music_ClearDelayedPlayBuffer() {
     pDelayedTrackBuffer[0x20] = 0;
     strcpy(pDelayedTrackBuffer, "");
@@ -52,7 +52,7 @@ void Music_ClearDelayedPlayBuffer() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char[34], const char *)' does not match 'strcpy(char *, const char *)'
 void Music_SetDelayedPlay(const char *arg0, bool arg1) {
     pDelayedTrackBuffer[0x20] = (s8) arg1;
     strcpy(pDelayedTrackBuffer, arg0);
@@ -299,7 +299,7 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 s32 Music_Play(const char *arg0, bool arg1) {
     MusicTrack *temp_r3_751;
     f32 var_f31_665;
@@ -420,7 +420,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void Music_Update() {
     f32 temp_f1_844;
     s8 **var_r31_832;
@@ -547,7 +547,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match 'strcpy(char *, const char *)'
 void Music_Init() {
     MKIni sp30;
     s8 sp2C;
@@ -617,7 +617,7 @@ loop_33:
             var_r28_1188 = pTracks + var_r26_1175;
             var_r26_1175 += 0x28;
             memcpy(var_r28_1188, &sp8, 0x28U);
-            M2C_FIELD(var_r28_1188, s32 *, 0) = stringTable.Add(var_r29_1178->GetFieldName());
+            M2C_FIELD(var_r28_1188, s32 *, 0) = (const char *) (stringTable.Add(var_r29_1178->GetFieldName()));
             M2C_FIELD(var_r28_1188, s32 *, 0x20) = 0;
             M2C_FIELD(var_r28_1188, s8 *, 0x24) = 0;
         }

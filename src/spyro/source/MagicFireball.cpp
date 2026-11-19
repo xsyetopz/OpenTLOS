@@ -625,7 +625,6 @@ void MagicFireball::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *a
     Projectile::Fire(arg0, arg1, arg2, arg3, arg4);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 MagicFireball::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -662,13 +661,12 @@ s32 MagicFireball::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk160 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_555, lit_556);
+    this->unk160 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_555, lit_556));
     temp_r4_1044 = this->unk160;
     if (temp_r4_1044 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1044, 0U);
     }
 }
-#endif
 
 void *MagicFireball::CreateInstance() {
     void *temp_r3_1068;
@@ -711,13 +709,11 @@ void MagicFireball::Init() {
     this->unk18C = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void MagicFireballDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pMagicFireballDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("MagicFlamePS"));
+    this->unkF0 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("MagicFlamePS")));
 }
-#endif
 
 void MagicFireballDescriptor::Deinit() {
     pMagicFireballDescriptor = NULL;

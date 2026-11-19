@@ -26,13 +26,13 @@ extern s8 MKMaterialGC_bForceSkinnedVertexFormat;
 extern s32 MKModel_BlendShapeTargets;
 extern void *MKModel_pBlendShapeWeights;
 extern MKMaterial *gRenderState;
-#if 0 // DRAFT: identifier 'gShockWaveData' redeclared
+#if 0 // DRAFT: identifier 'gShockWaveData' redeclared was declared as: 'unsigned char[112]' now declared as: 'long'
 extern M2C_UNK gShockWaveData;
 #endif
 extern s32 gpMKcurrentMaterialEffectorMask;
 static M2C_UNK explorer_784;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKModel_Blob *' to
+#if 0 // DRAFT: pointer/array required
 static M2C_UNK lit_806;                                /* unable to generate initializer: unknown type; const */
 
 void MKModel_BlobDraw(const MKModel *arg0, int arg1, const MKModel_Blob *arg2) {
@@ -46,7 +46,7 @@ void MKModel_BlobDraw(const MKModel *arg0, int arg1, const MKModel_Blob *arg2) {
     void *temp_r4_34;
 
     var_r29_16 = arg1;
-    var_r30_17 = arg2;
+    var_r30_17 = (MKModel_Blob *) (arg2);
     sp8 = M2C_FIELD(&lit_806, s32 *, 0);
     spC = M2C_FIELD(&lit_806, s32 *, 4);
     MKMaterial_SetGeometryTransformInfo((GeometryTransformationInfo *) &sp8);
@@ -62,7 +62,7 @@ loop_9:
                 temp_r4_34 = M2C_FIELD(temp_r31_24, void **, 0x30);
                 temp_r3_38 = *(M2C_FIELD(temp_r4_34, s32 *, 0x68) + (var_r30_17->unk50 * 4));
                 if (temp_r3_38 != 0U) {
-                    var_r3_42 = M2C_FIELD(temp_r4_34, s32 *, 0x6C) + temp_r3_38;
+                    var_r3_42 = (MeshChunk *) (M2C_FIELD(temp_r4_34, s32 *, 0x6C) + temp_r3_38);
                 } else {
                     var_r3_42 = NULL;
                 }
@@ -156,14 +156,12 @@ void MKModel_ExploreMeshChunk(MeshChunkExplorer *arg0, int arg1, int arg2, int a
     ((MeshChunkExplorer_GC *) arg0)->SetMeshChunk(arg1, arg2, arg3);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKModel *' to
 void MKModel_ExploreBegin(const MKModel *arg0) {
     memset(&explorer_784, 0, 0xA0U);
-    M2C_FIELD(&explorer_784, MKModel **, 0x40) = arg0;
+    M2C_FIELD(&explorer_784, MKModel **, 0x40) = (MKModel *) (arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: function call 'MKMaterial_SetLocalities(int, long, int, long)' does not match 'MKMaterial_SetLocalities(const Matrix *, const BoundingVolume *, int, int)'
 void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     M2C_UNK *spDC;
     f64 *spD8;                                      /* compiler-managed */
@@ -228,15 +226,15 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     sp10 = M2C_FIELD(&lit_676, s32 *, 0);
     sp14 = M2C_FIELD(&lit_676, s32 *, 4);
     if (temp_r4_510 >= 1U) {
-        var_r14_519 = &arg0->unk10;
+        var_r14_519 = (Matrix *) (&arg0->unk10);
     } else {
         var_r14_519 = &Matrix::identity;
     }
     var_r27_526 = var_r14_519;
     if (temp_r4_510 >= 1U) {
-        spD8 = &arg0->unk50;
+        spD8 = (double *) (&arg0->unk50);
     } else {
-        spD8 = &MKVector4::one;
+        spD8 = (double *) (&MKVector4::one);
     }
     if (temp_r4_510 >= 1U) {
         var_r26_538 = arg0->unk70;
@@ -259,7 +257,7 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
         spC4 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        spD4 = arg0 + 0x90;
+        spD4 = (MKModel *) (arg0 + 0x90);
     } else {
         spD4 = NULL;
     }
@@ -339,7 +337,7 @@ loop_65:
     }
     var_r20_782 = 0;
     var_r14_784 = 0;
-    spDC = &gShockWaveData;
+    spDC = (long *) (&gShockWaveData);
 loop_137:
     if (var_r20_782 < (s16) M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 6)) {
         var_r19_790 = *(spC8 + var_r14_784);
@@ -368,14 +366,14 @@ loop_131:
                     temp_r4_822 = M2C_FIELD(arg0->unk0, void **, 0x30);
                     temp_r3_828 = *(M2C_FIELD(temp_r4_822, s32 *, 0x68) + ((var_r29_816 + (var_r20_782 * M2C_FIELD(temp_r4_822, s16 *, 4))) * 4));
                     if (temp_r3_828 != 0U) {
-                        var_r28_832 = M2C_FIELD(temp_r4_822, s32 *, 0x6C) + temp_r3_828;
+                        var_r28_832 = (MeshChunkGC *) (M2C_FIELD(temp_r4_822, s32 *, 0x6C) + temp_r3_828);
                     } else {
                         var_r28_832 = NULL;
                     }
                     if ((var_r28_832 != NULL) && ((var_r25_556 == NULL) || !(*(var_r25_556 + var_r29_816) & 0x4F))) {
                         temp_r0_846 = var_r29_816 << 6;
                         spD0 = temp_r0_846;
-                        temp_r17_848 = M2C_FIELD(temp_r4_822, s32 *, 0x50) + temp_r0_846;
+                        temp_r17_848 = (void *) (M2C_FIELD(temp_r4_822, s32 *, 0x50) + temp_r0_846);
                         temp_r3_849 = M2C_FIELD(temp_r17_848, u8 *, 0x38);
                         if ((temp_r3_849 == 5) || (temp_r3_849 == 4)) {
                             temp_r0_856 = *(spC4 + var_r29_816);
@@ -664,7 +662,7 @@ loop_7:
                     var_ctr_1335 -= 1;
                 } while (var_ctr_1335 != 0);
             }
-            temp_r24_1355 = &arg3[M2C_FIELD(temp_r25_1326, u8 *, 0xC)];
+            temp_r24_1355 = (Matrix *) (&arg3[M2C_FIELD(temp_r25_1326, u8 *, 0xC)]);
             temp_f5_1358 = (f32) M2C_FIELD(temp_r25_1326, u8 *, 0xE) * 0.003921569f;
             var_f9_1362 = M2C_FIELD(temp_r24_1355, f64 *, 0) * (f64) temp_f5_1358;
             var_f10_1366 = M2C_FIELD(temp_r24_1355, f64 *, 8) * (f64) temp_f5_1358;
@@ -676,7 +674,7 @@ loop_7:
             temp_f4_1389 = 1.0f - temp_f5_1358;
             var_f29_1390 = M2C_FIELD(temp_r24_1355, f64 *, 0x38) * (f64) temp_f5_1358;
             if (temp_f4_1389 != 0.0f) {
-                temp_r25_1395 = &arg3[M2C_FIELD(temp_r25_1326, u8 *, 0xD)];
+                temp_r25_1395 = (Matrix *) (&arg3[M2C_FIELD(temp_r25_1326, u8 *, 0xD)]);
                 var_f9_1362 += M2C_FIELD(temp_r25_1395, f64 *, 0) * (f64) temp_f4_1389;
                 var_f10_1366 += M2C_FIELD(temp_r25_1395, f64 *, 8) * (f64) temp_f4_1389;
                 var_f11_1370 += M2C_FIELD(temp_r25_1395, f64 *, 0x10) * (f64) temp_f4_1389;

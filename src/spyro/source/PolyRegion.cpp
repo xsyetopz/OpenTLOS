@@ -14,7 +14,7 @@
 #include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 M2C_UNK free(MKVector3 *);                          /* extern */
 MKVector3 *malloc(s32);                             /* extern */
 
@@ -29,7 +29,7 @@ s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
     if (arg1->IsField(arg0) != 0) {
         temp_r28_23 = arg1->GetNmbrOfSubLines() * 0x10;
         if (MKHeap::Current() != NULL) {
-            var_r3_31 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_23, NULL, 0);
+            var_r3_31 = (MKVector3 *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_23, NULL, 0));
         } else {
             var_r3_31 = malloc(temp_r28_23);
         }

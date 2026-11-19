@@ -2,7 +2,7 @@
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char *)' does not match 'strnicmp(const char *, const char *, int)' 'strnicmp(signed char *, signed char *, long)'
 s32 strnicmp(s8 *, s8 *, s32);                      /* extern */
 
 s32 Util_WildcardPatternMatch(const char *arg0, const char *arg1) {
@@ -21,10 +21,10 @@ s32 Util_WildcardPatternMatch(const char *arg0, const char *arg1) {
     u8 var_r26_69;
     u8 var_r26_86;
 
-    var_r28_15 = arg1;
+    var_r28_15 = (signed char *) (arg1);
     if ((var_r28_15 != NULL) && ((s8) (u8) *var_r28_15 != 0)) {
         temp_r31_22 = strlen(arg0);
-        temp_r30_23 = &arg0[temp_r31_22];
+        temp_r30_23 = (signed char *) (&arg0[temp_r31_22]);
 loop_33:
         if ((s8) (u8) *var_r28_15 == 0) {
             goto block_34;

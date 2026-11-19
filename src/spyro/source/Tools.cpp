@@ -55,7 +55,7 @@ extern s8 *Tools_PropCreator_Name;
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 extern s32 pauseSndCount;
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *)'
 static M2C_UNK Tools_ClosestPropsPos;               /* unable to generate initializer: unknown type */
 static M2C_UNK lit_1474;                               /* unable to generate initializer: unknown type; const */
 
@@ -359,7 +359,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'bool *' to
+#if 0 // DRAFT: undefined identifier 'DoPush'
 void Tools_PushOut(MKCollisionResult *arg0, MKVector3 &arg1, int arg2, float arg3, bool *arg4, float arg5) {
     PushOutResult spA0;
     f64 sp98;
@@ -395,7 +395,7 @@ void Tools_PushOut(MKCollisionResult *arg0, MKVector3 &arg1, int arg2, float arg
     void *temp_r8_598;
     void *temp_r9_561;
 
-    var_r6_0 = arg4;
+    var_r6_0 = (unsigned char *) (arg4);
     sp8 = arg3;
     var_r11_552 = 0;
     var_r4_553 = 0;
@@ -661,7 +661,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int *' to
+#if 0 // DRAFT: illegal operand
 u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &arg3, float &arg4, float arg5, PushOutResult &arg6) {
     f64 sp40;
     f64 sp38;
@@ -692,7 +692,7 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
     var_r11_1156 = -1;
     var_r12_1157 = 0;
     var_r9_1160 = 0;
-    temp_r0_1161 = &arg1;
+    temp_r0_1161 = (long) (&arg1);
     var_f0_1162 = arg5 - &arg4;
     var_ctr_1167 = temp_r0_1161;
     if (temp_r0_1161 > 0) {
@@ -736,8 +736,8 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
     arg6.unk8 = temp_r6_1239->unk8;
     arg6.unk10 = temp_r6_1239->unk10;
     arg6.unk18 = temp_r6_1239->unk18;
-    temp_r5_1249 = &arg1 - 1;
-    &arg1 = temp_r5_1249;
+    temp_r5_1249 = (long) (&arg1 - 1);
+    &arg1 = (int *) (temp_r5_1249);
     temp_r4_1252 = &arg0[temp_r5_1249];
     temp_r6_1239->unk0 = temp_r4_1252->unk0;
     temp_r6_1239->unk8 = temp_r4_1252->unk8;
@@ -751,7 +751,7 @@ f32 Tools_PropCreator::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char[1])' does not match 'stricmp(signed char *, signed char *)'
 s32 Tools_PropCreator::LoadDone() {
     MKProp::LoadDone();
     if (stricmp(Tools_PropCreator_Name, "") == 0) {
@@ -761,7 +761,7 @@ s32 Tools_PropCreator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 Tools_PropCreator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1318;
 
@@ -799,7 +799,7 @@ void Tools_PropCreatorObject::Deinit() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKProp **'
 void Tools_PropCreatorObject::Init(const char *arg0, int arg1) {
     s32 temp_r0_1435;
     s32 temp_r31_1438;
@@ -859,7 +859,7 @@ loop_7:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKProp **'
 void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg1, int arg2) {
     M2C_UNK sp18;
     f64 sp10;
@@ -875,7 +875,7 @@ void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg
 
     ClearData();
     var_r26_1575 = 0;
-    temp_r31_1576 = gMK->GetPropsInRange(&sp18, 0xFF, arg0, arg2, 0, arg1);
+    temp_r31_1576 = (MKProp **) (gMK->GetPropsInRange(&sp18, 0xFF, arg0, arg2, 0, arg1));
     this->unk7F8 = 0;
     var_r29_1579 = 0;
 loop_4:
@@ -903,7 +903,7 @@ void Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, 
     Tools_GetClosestSplineTimeXZ(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp40;
     M2C_UNK sp3C;
@@ -956,7 +956,7 @@ void Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, in
     Tools_GetClosestSplineTime(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp60;
     M2C_UNK sp5C;
@@ -1018,7 +1018,7 @@ void Tools_EnableWideScreen(bool arg0) {
     MKView_SetAspectRatio(var_f1_1941);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 Tools_Line2DToCircleIntersect(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3, float &arg4) {
     f64 sp28;
     f64 sp20;
@@ -1215,7 +1215,7 @@ s32 Tools_Line2DToLine2DIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
     return 1;
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()' Too many errors printed, aborting program
 void Tools_UpdateSphereCollideResults(MKCollisionResult *arg0, int arg1, const MKVector3 &arg2) {
     f64 sp40;
     f64 sp38;
@@ -1317,7 +1317,7 @@ void Tools_SetMatrixScale(Matrix *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     u8 sp60;
     s32 sp5C;
@@ -1631,7 +1631,7 @@ void Tools_GetDateString(TimerInfo *arg0) {
     Str_Printf("%04d-%02d-%02d %02d:%02d", arg0->unk18, arg0->unk14, arg0->unk10, arg0->unk0, arg0->unk4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'TimerInfo' to
+#if 0 // DRAFT: illegal explicit conversion from 'TimerInfo' to 'long'
 s32 Tools_GetTimeInSeconds() {
     TimerInfo sp8;
 
@@ -1640,7 +1640,7 @@ s32 Tools_GetTimeInSeconds() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 u16 Tools_GetMatchingSubObjectIndex(SubObjectType arg0, MKModel *arg1, const char *arg2) {
     s16 temp_r31_3030;
     s8 *var_r29_3037;
@@ -1668,7 +1668,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 u16 Tools_GetMatchingRefPointIndex(MKModel *arg0, const char *arg1) {
     s16 temp_r31_3081;
     s8 *var_r29_3087;

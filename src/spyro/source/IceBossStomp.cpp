@@ -77,7 +77,7 @@ static s32 lit_642 = 0;
 static u8 lit_643 = 1;
 
 static u8 lit_845 = 1;
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 static M2C_UNK lit_715;                                /* unable to generate initializer: unknown type; const */
 
 void IceBossStomp::Deinit() {
@@ -226,7 +226,7 @@ void IceBossStomp::Draw() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
 void IceBossStomp::UpdateIceCrystals() {
     Matrix sp3C0;
     M2C_UNK sp3BC;
@@ -713,7 +713,7 @@ void IceBossStomp::EmitSnowRing() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
 void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
     f64 spE8;
     f64 spE0;
@@ -1633,7 +1633,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 IceBossStomp::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -1675,13 +1674,13 @@ s32 IceBossStomp::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk160 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 800.0f, lit_642, lit_643);
+    this->unk160 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 800.0f, lit_642, lit_643));
     temp_r4_2501 = this->unk160;
     if (temp_r4_2501 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2501, 0U);
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_2515 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA30, NULL, 0);
+        var_r3_2515 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA30, NULL, 0));
     } else {
         var_r3_2515 = malloc(0xA30);
     }
@@ -1702,7 +1701,6 @@ s32 IceBossStomp::LoadDone() {
     temp_r5_2536->unk4 = 0;
     this->unk170 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SnowPuffPS"));
 }
-#endif
 
 #if 0 // DRAFT: illegal operand 'IceBossStomp *'
 MKProp *IceBossStomp::CreateInstance(int arg0) {
@@ -1730,14 +1728,14 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void IceBossStompDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkF0 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(gMK->FindDescriptor(this->unkF8));
+    this->unkF0 = (const char *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(gMK->FindDescriptor(this->unkF8)));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'IceBitsPS *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void IceBossStompDescriptor::LoadDone() {
     s32 temp_r0_2656;
     s32 var_r31_2640;
@@ -1745,10 +1743,10 @@ void IceBossStompDescriptor::LoadDone() {
 
     GamePropDescriptor::LoadDone();
     pIceBossStompDescriptor = (MKPropDescriptor *) this;
-    this->unkF4 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
+    this->unkF4 = (long) (checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS")));
     var_r31_2640 = 0;
     do {
-        temp_r3_2645 = checked_cast<PooledShatterProp *, MKProp>(gMK->CreateProp(this->unkF8));
+        temp_r3_2645 = (const char *) (checked_cast<PooledShatterProp *, MKProp>(gMK->CreateProp(this->unkF8)));
         if (temp_r3_2645 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_2645, void **, 0x44), M2C_UNK (**)(), 0x34)();
         }
@@ -1766,7 +1764,7 @@ void IceBossStompDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2685;
 
@@ -1783,9 +1781,7 @@ void IceBossStompDescriptor::Deinit() {
     KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to
 void IceBossStompDescriptor::Init() {
     ProjectileDescriptor::Init();
-    this->unkF8 = "p3018_bossicecharge";
+    this->unkF8 = (signed char *) ("p3018_bossicecharge");
 }
-#endif

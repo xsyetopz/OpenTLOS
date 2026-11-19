@@ -94,7 +94,7 @@ void MobilePlatform::UpdateSag() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKVector3 *'
 void MobilePlatform::SetYaw(float arg0, float arg1) {
     KDSplinePathSegment spB8;
     f64 spB0;
@@ -208,7 +208,7 @@ void MobilePlatform::UpdateScale() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MobilePlatform *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MobilePlatform *' to 'Matrix *'
 void MobilePlatform::UpdateMove() {
     f64 spD0;
     f64 spC8;
@@ -278,7 +278,7 @@ void MobilePlatform::UpdateMove() {
             temp_r3_510 = this->unk184;
             if (temp_r3_510 != (s32) this->unk188) {
                 this->unk188 = temp_r3_510;
-                temp_r30_517 = ((u8 *) this->unk8) + 0x30;
+                temp_r30_517 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r30_517, 0U, -1, 0.0f, 0U);
             }
         }
@@ -592,7 +592,7 @@ s32 MobilePlatform::LoadDone() {
             M2C_FIELD(temp_r4_1305, f32 *, 0x10) = (f32) MKVector3::zero.unk0;
             M2C_FIELD(temp_r4_1305, f32 *, 0x14) = (f32) MKVector3::zero.unk4;
             M2C_FIELD(temp_r4_1305, f32 *, 0x18) = (f32) MKVector3::zero.unk8;
-            temp_r3_1315 = M2C_BITWISE(s32, this->unk19C.unk30.unk8) + ((M2C_FIELD(this, s32 *, 0x1CC) - 1) << 5);
+            temp_r3_1315 = (void *) (M2C_BITWISE(s32, this->unk19C.unk30.unk8) + ((M2C_FIELD(this, s32 *, 0x1CC) - 1) << 5));
             M2C_FIELD(temp_r3_1315, f32 *, 0x10) = (f32) MKVector3::zero.unk0;
             M2C_FIELD(temp_r3_1315, f32 *, 0x14) = (f32) MKVector3::zero.unk4;
             M2C_FIELD(temp_r3_1315, f32 *, 0x18) = (f32) MKVector3::zero.unk8;
@@ -637,7 +637,7 @@ s32 MobilePlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
@@ -693,13 +693,12 @@ void MobilePlatform::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 s32 MobilePlatformDescriptor::IsDescriptor(MKPropDescriptor *arg0) {
     void *var_r4_1682;
     void *var_r5_1670;
     void *var_r5_1690;
 
-    var_r5_1670 = *MobilePlatformDescriptor::pFirstDesc;
+    var_r5_1670 = (void *) (*MobilePlatformDescriptor::pFirstDesc);
 loop_2:
     if ((var_r5_1670 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r5_1670, void **, 0x144), s32 *, 0x138) & 2)) {
         var_r5_1670 = M2C_FIELD(var_r5_1670, void **, 0x14C);
@@ -722,7 +721,6 @@ loop_9:
     var_r4_1682 = var_r5_1690;
     goto loop_12;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk124'
 s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
@@ -736,13 +734,12 @@ s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MobilePlatformDescriptor *' to
 void MobilePlatformDescriptor::Deinit() {
     MobilePlatformDescriptor *temp_r4_1813;
     MobilePlatformDescriptor *temp_r4_1819;
 
     if ((MobilePlatformDescriptor *) *MobilePlatformDescriptor::pFirstDesc == this) {
-        *MobilePlatformDescriptor::pFirstDesc = this->unk14C;
+        *MobilePlatformDescriptor::pFirstDesc = (unsigned char) (this->unk14C);
     }
     temp_r4_1813 = this->unk148;
     if (temp_r4_1813 != NULL) {
@@ -757,7 +754,6 @@ void MobilePlatformDescriptor::Deinit() {
     this->unk144 = NULL;
     KDPropExDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk124'
 void MobilePlatformDescriptor::Init() {
@@ -776,12 +772,12 @@ void MobilePlatformDescriptor::Init() {
     this->unk138 = GS_PLACEHOLDER;
     this->unk13C = GS_PLACEHOLDER;
     this->unk140 = 0.0f;
-    this->unk14C = *MobilePlatformDescriptor::pFirstDesc;
+    this->unk14C = (MobilePlatformDescriptor *) (*MobilePlatformDescriptor::pFirstDesc);
     this->unk148 = NULL;
     if ((MobilePlatformDescriptor *) *MobilePlatformDescriptor::pFirstDesc != NULL) {
         (*MobilePlatformDescriptor::pFirstDesc)->unk148 = this;
     }
-    *MobilePlatformDescriptor::pFirstDesc = this;
+    *MobilePlatformDescriptor::pFirstDesc = (unsigned char) (this);
     this->unk144 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

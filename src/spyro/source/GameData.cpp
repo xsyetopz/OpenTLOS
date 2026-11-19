@@ -158,14 +158,14 @@ GameData::GameData() {
     ClearData();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void GameData::SetSaveChunk(ChunkInfo *arg0) {
     strcpy((s8 *) &this->unk190, arg0->unk0);
     strcpy(&this->unk20, (s8 *) &this->unk190);
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void GameData::SaveState::ClearData() {
     memset(this, 0, 0x40U);
     ((GameStats *) (this + 0x70))->Clear();
@@ -206,14 +206,14 @@ void GameStats::SetAttacksAvailable(unsigned int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'breathDamage'
 f32 GameStats::GetBreathAttackDamage(int arg0, int arg1, int arg2) {
     f32 *temp_r3_414;
 
     if (arg2 == 0) {
         return *(&breathDamage[arg0] + (arg1 * 0x10) + (arg2 * 4));
     }
-    temp_r3_414 = &breathDamage[arg0] + (arg1 * 0x10);
+    temp_r3_414 = (float *) (&breathDamage[arg0] + (arg1 * 0x10));
     return *temp_r3_414 * *(temp_r3_414 + (arg2 * 4));
 }
 #endif
@@ -435,7 +435,7 @@ loop_18:
                         do {
                             if (var_r18_770->IsField(*(sp64 + var_r26_778)) != 0) {
                                 temp_r3_788 = var_r18_770->unkC->GetSubLine(var_r18_770);
-                                temp_r14_790 = &coverEffects + 0x1B0 + var_r31_753 + var_r28_776;
+                                temp_r14_790 = (float *) (&coverEffects + 0x1B0 + var_r31_753 + var_r28_776);
                                 sp5C = &coverEffects + 0x1F0 + var_r30_754 + var_r27_777;
                                 var_r16_794 = temp_r3_788;
                                 sp58 = temp_r14_790 + 4;
@@ -444,7 +444,7 @@ loop_15:
                                     if (var_r16_794->IsField("Upgrades") != 0) {
                                         var_r15_808 = var_r16_794->unkC->GetSubLine(var_r16_794);
                                         var_r25_810 = 0;
-                                        sp68 = "Attack1";
+                                        sp68 = (long *) ("Attack1");
 loop_13:
                                         if (var_r15_808 != NULL) {
                                             if (var_r15_808->LoadFloat(sp68 + 0x5B, ((u8 *) sp5C) + var_r25_810, 0) != 0) {

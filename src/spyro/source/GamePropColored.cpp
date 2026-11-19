@@ -79,7 +79,7 @@ void GamePropColoredDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GamePropColoredDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 

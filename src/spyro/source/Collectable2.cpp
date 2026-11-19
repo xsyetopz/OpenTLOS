@@ -60,7 +60,7 @@ void Collectable2Descriptor::Init() {
     this->unkC = 2;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector4 &'
 void Collectable2::Collect() {
     f64 spC0;
     f64 spB8;
@@ -124,7 +124,7 @@ void Collectable2::Collect() {
         spB8 = temp_f0_91;
         sp50 = (f32) spB0 * 600.0f;
         spC0 = (f64) sp50;
-        temp_r30_104 = ((u8 *) this->unk8) + 0x30;
+        temp_r30_104 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
         temp_f28_106 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f27_111 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp38 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -156,7 +156,6 @@ void Collectable2::Collect() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
 void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKVector3 *arg2, float arg3, float arg4, float arg5) {
     Matrix sp90;
     Matrix sp50;
@@ -178,8 +177,8 @@ void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKV
     sp50.SetRotateAroundAxis(*((MKVector3 *) &arg0), arg5);
     sp90.Multiply3x3(&sp90, &sp50);
     MKModel_SetWorldMatrix(this->unk4, sp90);
-    this->unk64 = arg1;
-    this->unk68 = arg2;
+    this->unk64 = (MKVector3 *) (arg1);
+    this->unk68 = (MKVector3 *) (arg2);
     this->unk6C = arg3;
     this->unk70 = arg4;
     this->unk60 = 0.0f;
@@ -195,7 +194,7 @@ void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKV
         sp38 = (f64) sp18;
         sp40 = (f64) sp20;
         sp48 = (f64) sp28;
-        this->unk74 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp40), *((MKVector4 *) &sp30), 0.5f, lit_778, lit_779);
+        this->unk74 = (Corona *) (((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp40), *((MKVector4 *) &sp30), 0.5f, lit_778, lit_779));
         temp_r4_286 = this->unk74;
         if (temp_r4_286 != NULL) {
             temp_r4_286->unk31 |= 0x40;
@@ -203,7 +202,6 @@ void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKV
         this->unk78 = 0.0f;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'CollectRequestMsg'
 void Collectable2::Message(MKMessage *arg0) {
@@ -261,7 +259,7 @@ void Collectable2::Draw() {
     MKModel_Draw(this->unk4, NULL);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void *Collectable2::Update() {
     Matrix sp250;
     Matrix sp210;
@@ -494,11 +492,11 @@ f32 Collectable2::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 Collectable2::LoadDone() {
     MKProp::LoadDone();
     this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
-    this->unk8 = MKModel_GetWorldMatrix(this->unk4);
+    this->unk8 = (void *) (MKModel_GetWorldMatrix(this->unk4));
 }
 #endif
 

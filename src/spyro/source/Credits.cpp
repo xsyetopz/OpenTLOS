@@ -63,19 +63,17 @@ void CreditsScreen::Draw(const RenderContext &arg0) {
     UIContainer::Draw(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UISystem *' to
 void CreditsScreen::Update() {
     s32 sp8;
     void **temp_r3_46;
 
     UIScreen::Update();
     if (((MKIni *) pCredits == NULL) || ((u8) M2C_FIELD(pCredits, u8 *, 0xF0) == 0)) {
-        temp_r3_46 = ui_cast<UISystem *, UIContainer *>(GetRoot());
+        temp_r3_46 = (void **) (ui_cast<UISystem *, UIContainer *>(GetRoot()));
         sp8 = 0xF;
         M2C_FIELD(*temp_r3_46, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
 }
-#endif
 
 void CreditsScreen::OnExit() {
     Credits_Deinit();
@@ -289,7 +287,7 @@ void DummyRenderText(TextCharStrip **arg0, int arg1, const Matrix &arg2) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to 'DialogBoxContext *'
 s32 Credits_Update() {
     s32 spC;
     s32 sp8;
@@ -505,7 +503,6 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void Credits_AddPageLine(const char *arg0, float arg1, float arg2) {
     f32 temp_f31_1072;
     void *temp_r3_1073;
@@ -517,15 +514,14 @@ void Credits_AddPageLine(const char *arg0, float arg1, float arg2) {
     M2C_FIELD(temp_r3_1073, f32 *, 0x14) = arg1;
     M2C_FIELD(temp_r3_1073, f32 *, 0x18) = 544.0f;
     M2C_FIELD(temp_r3_1073, f32 *, 0x1C) = temp_f31_1072;
-    M2C_FIELD(temp_r3_1073, s8 **, 0x30) = arg0;
+    M2C_FIELD(temp_r3_1073, s8 **, 0x30) = (signed char *) (arg0);
     M2C_FIELD(temp_r3_1073, f32 *, 0x34) = arg2;
     M2C_FIELD(temp_r3_1073, s32 *, 0xC) = 0xC;
     M2C_FIELD(temp_r3_1073, s32 *, 0x6C) = 0;
     M2C_FIELD(temp_r3_1073, s32 *, 4) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to 'DialogBoxContext *'
 void Credits_Deinit() {
     DialogBoxContext *temp_r3_1128;
     MKIni *temp_r30_1134;
@@ -561,7 +557,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void Credits_Init(MKProp *arg0) {
     MKIni *var_r3_1176;
 
@@ -569,7 +565,7 @@ void Credits_Init(MKProp *arg0) {
         MKHeap::ActivateTempMemOverride();
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_1176 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF4, NULL, 0);
+        var_r3_1176 = (MKIni *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xF4, NULL, 0));
     } else {
         var_r3_1176 = malloc(0xF4);
     }

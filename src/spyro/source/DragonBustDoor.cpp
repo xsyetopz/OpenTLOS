@@ -92,7 +92,7 @@ void *DragonBustDoor::Update() {
     Door::Update();
 }
 
-#if 0 // DRAFT: identifier 'DragonBustDoor::LoadDone()' redeclared
+#if 0 // DRAFT: identifier 'DragonBustDoor::LoadDone()' redeclared was declared as: 'long ()' now declared as: 'void ()'
 void DragonBustDoor::LoadDone() {
     s32 var_r30_184;
     s32 var_r31_186;

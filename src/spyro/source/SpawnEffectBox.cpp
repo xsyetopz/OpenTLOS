@@ -119,7 +119,7 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[1])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[1])' does not match 'stricmp(long *)'
 s32 SpawnEffectBox::LoadDone() {
     s32 temp_r30_470;
     s32 var_r29_485;
@@ -153,7 +153,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 SpawnEffectBox::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r26_592;
     u8 var_r30_604;

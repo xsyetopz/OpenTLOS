@@ -62,7 +62,7 @@ void GroundFire::Emit(const MKVector3 &arg0, float arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void GroundFire::Deinit() {
     MKHeap *temp_r0_66;
     MKHeap *temp_r0_85;
@@ -104,7 +104,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void GroundFire::Update() {
     BreathHitMessage spC8;
     f64 spC0;
@@ -212,7 +212,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void GroundFire::Init(int arg0) {
     MKHeap *temp_r3_371;
     MKHeap *temp_r3_378;
@@ -222,11 +221,11 @@ void GroundFire::Init(int arg0) {
     s32 var_ctr_374;
 
     if (arg0 == 0) {
-        this->unk0 = &gEmptyPtrListDL + 4;
+        this->unk0 = (MKHeap *) (&gEmptyPtrListDL + 4);
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_358 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x50), NULL, 0);
+        var_r3_358 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x50), NULL, 0));
     } else {
         var_r3_358 = malloc(((arg0 + 2) * 4) + (arg0 * 0x50));
     }
@@ -249,4 +248,3 @@ void GroundFire::Init(int arg0) {
     this->unk0 = (MKHeap *) &temp_r3_385->unk4;
     temp_r3_385->unk4 = 0;
 }
-#endif

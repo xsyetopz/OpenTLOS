@@ -252,7 +252,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal operand
 void *SwampFlutterCritter::Update() {
     f64 sp60;
     f64 sp58;
@@ -278,7 +278,7 @@ void *SwampFlutterCritter::Update() {
     var_r31_434 = 0;
 loop_8:
     if (var_r30_433 < (s32) this->unk90) {
-        temp_r4_439 = ((u8 *) this->unk170) + var_r31_434;
+        temp_r4_439 = (SwampFlutter *) (((u8 *) this->unk170) + var_r31_434);
         temp_r4_439->unk64 -= gUpdateTimeDelta;
         temp_r4_439->unk54 += temp_r4_439->unk58 * gUpdateTimeDelta;
         if ((s32) temp_r4_439->unk60 != 0) {
@@ -318,7 +318,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
 f32 SwampFlutterCritter::Resolve() {
     Volume sp8;
     SwampFlutter *temp_r30_560;
@@ -331,7 +331,7 @@ f32 SwampFlutterCritter::Resolve() {
     var_r28_553 = 0;
 loop_2:
     if (var_r31_551 < (s32) this->unk90) {
-        temp_r30_560 = ((u8 *) this->unk170) + var_r28_553;
+        temp_r30_560 = (SwampFlutter *) (((u8 *) this->unk170) + var_r28_553);
         sp8.GetRandPos();
         sp8.unk10 = M2C_BITWISE(f64, sp8);
         sp8.unk18 = sp8.unk8;

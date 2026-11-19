@@ -24,15 +24,15 @@ extern s32 lit_572;
 extern s32 lit_643;
 extern u8 MKLight_LightMask;
 extern s32 MKMaterial_CurrentLocalityIndex;
-#if 0 // DRAFT: identifier 'MKMaterial_GeometryColor' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_GeometryColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK MKMaterial_GeometryColor;
 #endif
-#if 0 // DRAFT: identifier 'MKMaterial_LocalityArray' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_LocalityArray' redeclared was declared as: 'unsigned char[1024]' now declared as: 'long'
 extern M2C_UNK MKMaterial_LocalityArray;
 #endif
 extern u8 MKMaterial_NumTevStages;
 extern u8 MKMaterial_bFogEnabled;
-#if 0 // DRAFT: identifier 'MKMaterial_fogColor' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_fogColor' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 extern M2C_UNK MKMaterial_fogColor;
 #endif
 extern f32 MKMaterial_fogFar;
@@ -43,10 +43,10 @@ extern u8 bLightsAreEnabled_471;
 extern s32 currentInternalPass;
 extern s32 currentPass;
 extern u8 fogSetToBlack_568;
-#if 0 // DRAFT: identifier 'gCurrentMaterialColorGC' redeclared
+#if 0 // DRAFT: identifier 'gCurrentMaterialColorGC' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK gCurrentMaterialColorGC;
 #endif
-#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared
+#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared was declared as: 'MKMaterial *' now declared as: 'MKMat_MK2_Standard *'
 extern MKMat_MK2_Standard *gpCurrentMaterial;
 #endif
 extern s32 gpMKcurrentMaterialEffectorMask;
@@ -62,14 +62,14 @@ extern MKMaterial *pOverlay_536;
 extern s32 viewCounter_539;
 extern f32 weight128;
 extern f32 weight64;
-#if 0 // DRAFT: identifier 'MKMat_MK2_Standard_CaptureTextureData' redeclared
+#if 0 // DRAFT: identifier 'MKMat_MK2_Standard_CaptureTextureData' redeclared was declared as: 'signed char' now declared as: 'long'
 static M2C_UNK filterTextureSizes;                  /* unable to generate initializer: unknown type */
 static M2C_UNK oldColor;                            /* unable to generate initializer: unknown type */
 static M2C_UNK MKMat_MK2_Standard_CaptureTextureData; /* unable to generate initializer: unknown type */
 static f32 omniFalloff = 17.0f;
 #endif
 static u8 bGlowEnabled = 1;
-#if 0 // DRAFT: identifier 'MKMaterial_NumTexGens' redeclared
+#if 0 // DRAFT: identifier 'MKMaterial_NumTexGens' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static u8 MKMaterial_NumTexGens = 1;
 #endif
 
@@ -990,7 +990,7 @@ void MKMat_MK2_Standard::UsePass() {
     }
     temp_r4_1782 = M2C_FIELD(this, void **, 0x24);
     temp_r31_1783 = M2C_FIELD(this, Texture **, 0x38);
-    temp_r30_1786 = temp_r31_1783 + 0x60;
+    temp_r30_1786 = (_GXTexObj *) (temp_r31_1783 + 0x60);
     GXInitTexObjWrapMode(temp_r30_1786, (s8) M2C_FIELD(temp_r4_1782, u8 *, 0xE2) == 0, (s8) M2C_FIELD(temp_r4_1782, u8 *, 0xE3) == 0);
     GXInitTexObjFilter(temp_r30_1786, GX_LIN_MIP_LIN, GX_LINEAR);
     if ((u8) temp_r31_1783->unk30 != 0) {
@@ -1126,11 +1126,11 @@ void MKMat_MK2_Standard::UsePass() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to
+#if 0 // DRAFT: undefined identifier 'HandleOmniLights'
 s32 MKMat_MK2_Standard_BEGIN_INTERNAL() {
     MKMat_MK2_Standard *temp_r31_2199;
 
-    temp_r31_2199 = gpCurrentMaterial;
+    temp_r31_2199 = (MKMat_MK2_Standard *) (gpCurrentMaterial);
     if ((s8) init_537 == 0) {
         pOverlay_536 = NULL;
         init_537 = 1;
@@ -1145,7 +1145,7 @@ s32 MKMat_MK2_Standard_BEGIN_INTERNAL() {
     if ((s32) currentInternalPass == 0) {
         currentInternalPass += 1;
         if (((MKMat_MK2_Standard *) gpPreviousMaterial != (MKMat_MK2_Standard *) gpCurrentMaterial) || ((s32) viewCounter_539 != (s32) MKView_SettingsCounter)) {
-            gpPreviousMaterial = gpCurrentMaterial;
+            gpPreviousMaterial = (MKMat_MK2_Standard *) (gpCurrentMaterial);
             viewCounter_539 = MKView_SettingsCounter;
             temp_r31_2199->UsePass();
             pOverlay_536 = M2C_FIELD(temp_r31_2199, MKMaterial **, 0x3C);
@@ -1259,7 +1259,7 @@ void MPGStateChanges(Texture *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'OmniLight *' to
+#if 0 // DRAFT: undefined identifier 'SetLight'
 void HandleOmniLights() {
     OmniLight *sp48;
     f64 sp40;
@@ -1309,7 +1309,7 @@ loop_5:
             var_r0_2749 = temp_r29_2735;
         }
         if (var_r28_2738 < var_r0_2749) {
-            temp_r4_2741 = *(&sp48 + var_r30_2734);
+            temp_r4_2741 = (MKVector4 *) (*(&sp48 + var_r30_2734));
             SetLight(*(temp_r4_2741 + 0x10), *temp_r4_2741, M2C_FIELD(temp_r4_2741, f32 *, 0x20), var_r28_2738);
             var_r28_2738 += 1;
             var_r30_2734 += 4;

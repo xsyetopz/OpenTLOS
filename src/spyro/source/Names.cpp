@@ -29,7 +29,6 @@ static struct _struct_firstNames_0x8 firstNames[6];
 static struct _struct_lastNames_0x8 lastNames[6];
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 u8 *Name::GetName() {
     u8 *temp_r4_14;
     u8 *temp_r5_17;
@@ -38,13 +37,12 @@ u8 *Name::GetName() {
     if (temp_r4_14 != NULL) {
         temp_r5_17 = this->unk4;
         if (temp_r5_17 != NULL) {
-            return Str_Printf("%s %s", temp_r4_14, temp_r5_17);
+            return (unsigned char *) (Str_Printf("%s %s", temp_r4_14, temp_r5_17));
         }
         return temp_r4_14;
     }
     return &gNullStr;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'firstNames'
 void Name::Create(int arg0) {
@@ -113,13 +111,11 @@ void Names::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Names::Init(const char *arg0) {
     if (MKArchive_Exists(arg0, NULL) != 0) {
-        this->unk0 = MKArchive_Load(arg0, (int *) &this->unk4, NULL, 0);
+        this->unk0 = (unsigned char *) (MKArchive_Load(arg0, (int *) &this->unk4, NULL, 0));
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lastNames'
 void Names_DeinitModule() {
@@ -137,7 +133,7 @@ void Names_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'Str_Printf(signed char *, long)' does not match 'Str_Printf(const char *, ...)'
 void Names_InitModule() {
     M2C_UNK temp_r27_258;
     s32 var_r26_257;
@@ -152,11 +148,11 @@ void Names_InitModule() {
     var_r31_261 = 0;
     var_r30_262 = 0;
     do {
-        temp_r3_264 = *(&pFirstNames + var_r30_262);
+        temp_r3_264 = (signed char *) (*(&pFirstNames + var_r30_262));
         if (temp_r3_264 != NULL) {
             ((Names *) (firstNames + var_r31_261))->Init(Str_Printf(temp_r3_264, temp_r27_258));
         }
-        temp_r3_276 = *(&pLastNames + var_r30_262);
+        temp_r3_276 = (signed char *) (*(&pLastNames + var_r30_262));
         if (temp_r3_276 != NULL) {
             ((Names *) (lastNames + var_r31_261))->Init(Str_Printf(temp_r3_276, temp_r27_258));
         }

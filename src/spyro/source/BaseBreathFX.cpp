@@ -27,7 +27,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: identifier 'BaseBreathFX::SplineCollide(KDSplinePathSegment *, float)'
+#if 0 // DRAFT: identifier 'BaseBreathFX::SplineCollide(KDSplinePathSegment *, float)' redeclared was declared as: 'float (KDSplinePathSegment *, float)' now declared as: 'void
 void BaseBreathFX::SplineCollide(KDSplinePathSegment *arg0, float arg1) {
     f64 sp28;
     KDUniformSpline sp10;
@@ -45,14 +45,14 @@ void BaseBreathFX::SplineCollide(KDSplinePathSegment *arg0, float arg1) {
     var_r30_20 = 0;
     var_r31_21 = 0;
 loop_1:
-    temp_r4_24 = ((u8 *) this->unk90) + var_r31_21;
+    temp_r4_24 = (MKVector3 *) (((u8 *) this->unk90) + var_r31_21);
     if ((u8) M2C_FIELD(temp_r4_24, u8 *, 0x6C) != 0) {
         temp_r29_34 = (s32) (arg0->unk30.unk8 / M2C_FIELD(temp_r4_24, f32 *, 0x34));
         Tools_GetClosestSplineTime(&arg0->unk30, *temp_r4_24, temp_r29_34);
         sp8 = 0.0f;
         sp10.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &arg0->unk30, KDSpline_PositionMixer);
         sp10.unk10 = M2C_BITWISE(f64, sp10);
-        temp_r4_47 = ((u8 *) this->unk90) + var_r31_21;
+        temp_r4_47 = (MKVector3 *) (((u8 *) this->unk90) + var_r31_21);
         sp28 = (f64) sp10.unk8;
         temp_f4_52 = sp24 - temp_r4_47->unk4;
         temp_f5_56 = M2C_BITWISE(f32, sp10.unk10) - temp_r4_47->unk0;
@@ -136,7 +136,7 @@ void BaseBreathFX::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal type
 void *BaseBreathFX::Update() {
     u8 spA8;
     s32 spA4;
@@ -231,7 +231,7 @@ void *BaseBreathFX::Update() {
             spA0 = NULL;
             spA4 = -1;
             spA8 = 0;
-            temp_r4_278 = ((u8 *) this->unk90) + var_r29_212;
+            temp_r4_278 = (MKVector3 *) (((u8 *) this->unk90) + var_r29_212);
             if (MKCollision_SweepSphereCollide(*(temp_r4_278 + 0x10), *temp_r4_278, M2C_FIELD(temp_r4_278, f32 *, 0x34), (MKCollisionResult *) &sp58, (MKCollisionMode) 7, M2C_FIELD(temp_r4_278, s32 *, 0x68)) != 0) {
                 if ((spA8 != 0) && (spA0 != NULL) && (var_r3_291 = M2C_FIELD(spA0, u32 *, 8), ((var_r3_291 == 0U) == 0))) {
 

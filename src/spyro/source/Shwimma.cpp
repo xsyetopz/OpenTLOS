@@ -68,7 +68,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal operand
 void *ShwimmaCritter::Update() {
     s8 sp1B8;
     s32 sp1B4;
@@ -136,7 +136,7 @@ void *ShwimmaCritter::Update() {
     var_r28_160 = 0;
 loop_38:
     if (var_r31_159 < (s32) this->unk90) {
-        temp_r30_165 = ((u8 *) this->unk170) + var_r28_160;
+        temp_r30_165 = (Shwimma *) (((u8 *) this->unk170) + var_r28_160);
         temp_r30_165->unk30.unk34 -= gUpdateTimeDelta;
         temp_r30_165->unk30.unk24 += temp_r30_165->unk30.unk28 * gUpdateTimeDelta;
         temp_r0_174 = temp_r30_165->unk30.unk30;
@@ -275,7 +275,7 @@ loop_38:
             } else if (temp_r0_174 < 0xB) {
                 if (temp_r30_165->unk30.unk24 >= 1.0f) {
                     if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) < 0.0f) {
-                        temp_r30_165->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 3) + 1;
+                        temp_r30_165->unk30.unk30 = (MKProp *) (MKRand_Int((int *) &gViewSeed, 0, 3) + 1);
                         temp_r0_316 = temp_r30_165->unk30.unk30;
                         switch (temp_r0_316) {      /* irregular */
                         case 1:
@@ -290,7 +290,7 @@ loop_38:
                             break;
                         }
                     } else {
-                        temp_r30_165->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 5) + 6;
+                        temp_r30_165->unk30.unk30 = (MKProp *) (MKRand_Int((int *) &gViewSeed, 0, 5) + 6);
                         temp_r27_352 = temp_r30_165->unk30.unk30;
                         temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_352 * 4) + 0x70));
                         temp_r30_165->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_165->unk30.unk20, s16 *, 4) / 30.0f));
@@ -308,12 +308,12 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void ShwimmaCritter::SetAlertState(Shwimma *arg0) {
     MKProp *temp_r31_606;
 
     arg0->unk30.unk34 = 4.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
-    arg0->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 5) + 6;
+    arg0->unk30.unk30 = (MKProp *) (MKRand_Int((int *) &gViewSeed, 0, 5) + 6);
     temp_r31_606 = arg0->unk30.unk30;
     arg0->unk30.unk20 = M2C_FIELD((checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((s32) temp_r31_606 * 4)), f32 *, 0x70);
     arg0->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk30.unk20, s16 *, 4) / 30.0f));
@@ -321,7 +321,7 @@ void ShwimmaCritter::SetAlertState(Shwimma *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     s8 sp230;
     s32 sp22C;

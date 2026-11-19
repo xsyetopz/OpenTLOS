@@ -21,7 +21,7 @@ static f32 gFontTabWidth = 100.0f;
 static GeometryTransformationInfo transformInfo_299 = { 1, 0 };
 static u32 lit_376 = 1U;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'MKFont_GetNextWrapPoint(MKFont *, signed char *, float, float, int *)' does not match 'MKFont_GetNextWrapPoint(MKFont *, const char *, float, flo
 f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &arg2, float arg3, float arg4, FontJustify arg5, float arg6, const MKVector4 &arg7, int arg8, const Matrix &arg9) {
     f64 sp38;
     f64 sp30;                                       /* compiler-managed */
@@ -41,7 +41,7 @@ f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &
 
     sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    var_r30_40 = arg1;
+    var_r30_40 = (signed char *) (arg1);
     temp_f31_43 = MKFontInternal_CalcHeightAndScale(arg0, arg6, &spC);
     if ((s32) arg5 > 3) {
         var_f27_46 = 0.0f;
@@ -57,7 +57,7 @@ loop_3:
         } else {
             (*(f32 *) ((u8 *) &sp28 + 0xc)) = (0.5f * arg4) - (0.5f * var_f27_46);
         }
-        var_r30_40 = arg1;
+        var_r30_40 = (signed char *) (arg1);
     }
     temp_f28_79 = arg2.unk8;
 loop_20:
@@ -151,7 +151,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: pointer/array required
 void MKFont_GetNextWrapPoint(MKFont *arg0, const char *arg1, float arg2, float arg3, int *arg4) {
     f32 sp8;
     f32 temp_f29_349;
@@ -172,7 +172,7 @@ void MKFont_GetNextWrapPoint(MKFont *arg0, const char *arg1, float arg2, float a
     u8 var_r4_469;
 
     var_f30_338 = 0.0f;
-    var_r31_341 = arg1;
+    var_r31_341 = (signed char *) (arg1);
     MKFontInternal_CalcHeightAndScale(arg0, arg3, &sp8);
     temp_f29_349 = M2C_FIELD(**arg0, f32 *, 8) * sp8;
 loop_31:
@@ -219,7 +219,7 @@ loop_20:
                 var_r3_441 = temp_r0_442;
             }
             if (var_r4_418 == arg1) {
-                var_r31_341 = &arg1[var_r3_441];
+                var_r31_341 = (signed char *) (&arg1[var_r3_441]);
             }
         } else {
             var_r31_341 += 1;
@@ -273,7 +273,6 @@ void MKFont_DrawDebugStringF(const char *arg0, float arg1, float arg2, float arg
     MKFont_DrawString(var_r6_0, arg0, *((MKVector3 *) &sp18), arg3, arg4, arg5, Matrix::identity);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 f32 MKFont_DrawString(MKFont *arg0, const char *arg1, const MKVector3 &arg2, float arg3, const MKVector4 &arg4, int arg5, const Matrix &arg6) {
     f64 sp18;
     f64 sp10;                                       /* compiler-managed */
@@ -306,7 +305,7 @@ f32 MKFont_DrawString(MKFont *arg0, const char *arg1, const MKVector3 &arg2, flo
     void *temp_r6_591;
 
     sp10 = M2C_FIELD(&arg2, f64 *, 0);
-    var_r27_575 = arg1;
+    var_r27_575 = (signed char *) (arg1);
     sp18 = M2C_FIELD(&arg2, f64 *, 8);
     temp_f31_580 = MKFontInternal_CalcHeightAndScale(arg0, arg3, &sp8);
     temp_r3_582 = MKMat_MK2_GetBaseTexture(*M2C_FIELD(arg0, MKMaterial ***, 4));
@@ -352,7 +351,7 @@ loop_8:
                         goto loop_8;
                     }
                 default:
-                    temp_r4_715 = M2C_FIELD(*M2C_FIELD(arg0, void ***, 0), s32 *, 0x28) + ((s8) temp_r4_797 << 5);
+                    temp_r4_715 = (void *) (M2C_FIELD(*M2C_FIELD(arg0, void ***, 0), s32 *, 0x28) + ((s8) temp_r4_797 << 5));
                     temp_f24_718 = M2C_FIELD(temp_r4_715, f32 *, 8);
                     temp_f23_719 = sp8 * M2C_FIELD(temp_r4_715, f32 *, 0x18);
                     temp_f26_720 = M2C_FIELD(temp_r4_715, f32 *, 0xC);
@@ -397,9 +396,8 @@ loop_8:
     }
     return temp_f31_580 + ((*(f32 *) ((u8 *) &sp8 + 0xc)) - arg2.unk4);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: type mismatch 'signed char *' and 'const char *'
 s32 MKFont_GetNumRenderableChars(const char *arg0, int arg1) {
     s32 var_r7_850;
     s8 *var_r6_851;
@@ -407,7 +405,7 @@ s32 MKFont_GetNumRenderableChars(const char *arg0, int arg1) {
     u8 var_r0_861;
 
     var_r7_850 = 0;
-    var_r6_851 = arg0;
+    var_r6_851 = (signed char *) (arg0);
 loop_10:
     temp_r5_876 = (u8) *var_r6_851;
     if (((s8) temp_r5_876 != 0) && ((u32) (var_r6_851 - arg0) < (u32) arg1)) {
@@ -456,7 +454,7 @@ loop_18:
     if (((s8) temp_r5_993 != 0) && ((u32) (var_r31_909 - arg2) < (u32) M2C_ERROR(/* Read from unset register $r6 */))) {
         switch ((s8) temp_r5_993) {                 /* irregular */
         case 0x3C:
-            var_r4_927 = var_r31_909 + 1;
+            var_r4_927 = (unsigned char *) (var_r31_909 + 1);
 loop_4:
             temp_r0_932 = *var_r4_927;
             var_r3_933 = 0;
@@ -489,7 +487,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: pointer/array required
 f32 MKFont_CalculateWidth(MKFont *arg0, const char *arg1, float arg2, float arg3, int arg4, float *arg5) {
     f64 sp18;
     f64 sp10;                                       /* compiler-managed */
@@ -515,8 +513,8 @@ f32 MKFont_CalculateWidth(MKFont *arg0, const char *arg1, float arg2, float arg3
 
     var_f30_1040 = 0.0f;
     sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    var_r31_1045 = arg1;
-    var_r30_1046 = arg1;
+    var_r31_1045 = (signed char *) (arg1);
+    var_r30_1046 = (signed char *) (arg1);
     sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f31_1051 = MKFontInternal_CalcHeightAndScale(arg0, arg2, &sp8);
     var_r29_1053 = 0;

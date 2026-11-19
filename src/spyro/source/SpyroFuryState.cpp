@@ -104,7 +104,7 @@ void SpyroFuryState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroFuryState::Transition() {
     s32 var_r31_70;
 
@@ -123,7 +123,7 @@ s32 SpyroFuryState::Transition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFuryState::Update() {
     f64 sp50;
     f64 sp48;
@@ -160,7 +160,7 @@ void SpyroFuryState::Exit() {
     this->unk14.Exit(this);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFuryState::Enter(SpyroStateMessages &arg0) {
     s32 sp30;
     s32 sp2C;

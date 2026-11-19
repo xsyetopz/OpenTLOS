@@ -72,29 +72,29 @@ void MKView_SetAmbientColor(const MKVector4 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_lightColors_0x10'
 void MKView_SetLightColor(int arg0, const MKVector4 &arg1) {
     struct _struct_lightColors_0x10 *temp_r3_157;
 
-    temp_r3_157 = &lightColors[arg0];
+    temp_r3_157 = (_struct_lightColors_0x10 *) (&lightColors[arg0]);
     temp_r3_157->unk0 = M2C_FIELD(&arg1, f64 *, 0);
     temp_r3_157->unk8 = M2C_FIELD(&arg1, f64 *, 8);
     UpdateLighting();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_lightDirs_0x10'
 void MKView_SetLightDirection(int arg0, const MKVector3 &arg1) {
     struct _struct_lightDirs_0x10 *temp_r3_178;
 
-    temp_r3_178 = &lightDirs[arg0];
+    temp_r3_178 = (_struct_lightDirs_0x10 *) (&lightDirs[arg0]);
     temp_r3_178->unk0 = M2C_FIELD(&arg1, f64 *, 0);
     temp_r3_178->unk8 = M2C_FIELD(&arg1, f64 *, 8);
     UpdateLighting();
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void UpdateLighting() {
     Matrix sp90;
     M2C_UNK sp8C;
@@ -239,7 +239,7 @@ void UpdateLighting() {
         var_r30_212 += 1;
         var_r29_213 += 0x10;
     } while (var_r30_212 < 3);
-    temp_r5_457 = lightColors + 0x30;
+    temp_r5_457 = (_struct_lightColors_0x10 *) (lightColors + 0x30);
     sp2C = lit_435;
     sp2C = (s8) (255.0f * M2C_FIELD(lightColors, f32 *, 0x30));
     (*(u8 *) ((u8 *) &sp28 + 0x5)) = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 4));

@@ -286,7 +286,7 @@ s32 SparxHint::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SparxHint::LoadLine(MKIniLine *arg0) {
     s32 var_r31_394;
 

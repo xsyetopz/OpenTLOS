@@ -66,7 +66,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector3 &arg1, Upgrade arg2, bool arg3, float arg4) {
     f64 sp98;
     f64 sp90;
@@ -171,7 +171,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
             sp88 = (f64) sp18;
             M2C_STRUCT_COPY(temp_r31_58 + 0x9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd(temp_r31_58 + 0xA0, *((MKVector3 *) &sp80), (MKVector3 *) &sp90);
-            temp_r3_198 = temp_r31_58 + 0xA0;
+            temp_r3_198 = (Matrix *) (temp_r31_58 + 0xA0);
             temp_r3_198->Scale3x3(temp_r3_198, arg1);
             M2C_FIELD(temp_r31_58, f32 *, 0xD0) = (f32) arg0.unk0;
             M2C_FIELD(temp_r31_58, f32 *, 0xD4) = (f32) arg0.unk4;
@@ -199,7 +199,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void EarthBreathWhirlWinds::Deinit() {
     MKHeap *temp_r0_291;
     MKHeap *temp_r0_310;
@@ -255,7 +255,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Draw(MKProp *, MKModel **, unsigned char *, double)' does
+#if 0 // DRAFT: function call 'Draw(MKProp *, MKModel **, unsigned char *, double)' does not match 'MKProp::Draw()'
 void EarthBreathWhirlWinds::Draw() {
     f64 sp40;
     f64 sp38;
@@ -732,7 +732,7 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKHeap *'
 void EarthBreathWhirlWinds::Init() {
     f64 sp40;
     f64 sp38;
@@ -755,7 +755,7 @@ void EarthBreathWhirlWinds::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1118 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xCF8, NULL, 0);
+        var_r3_1118 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xCF8, NULL, 0));
     } else {
         var_r3_1118 = malloc(0xCF8);
     }
@@ -811,9 +811,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void EarthBreathWhirlWindsDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk60 = (long) (checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves")));
 }
-#endif

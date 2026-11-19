@@ -65,11 +65,11 @@
 M2C_UNK __construct_array(M2C_UNK *, HudData *(*)(HudData *), M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vEnemyHealthBarColour_0x10'
 static M2C_UNK HUD_BAR_BACKGROUND;                  /* unable to generate initializer: unknown type */
 static struct _struct_vEnemyHealthBarColour_0x10 vEnemyHealthBarColour[5] = { { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 } };
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vEnemyHealthBarSize_0x8'
 static struct _struct_vEnemyHealthBarSize_0x8 vEnemyHealthBarSize[4] = { {  }, {  }, {  }, {  } };
 #endif
 static M2C_UNK hudItem;
@@ -168,7 +168,7 @@ void SpyroHud_ResetAfterCutScene() {
     M2C_FIELD(&hudItem, s32 *, 0x20) = 0;
 }
 
-#if 0 // DRAFT: function call 'Hud_Remove(long *)' does not match
+#if 0 // DRAFT: function call 'Hud_Remove(long *)' does not match 'Hud_Remove(HudItem *)'
 void SpyroHud_Deinit() {
     s32 var_r29_234;
     s32 var_r31_236;
@@ -183,7 +183,7 @@ void SpyroHud_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'unk4'
 void SpyroHud_Init() {
     HudItem *temp_r3_283;
     s32 var_r24_276;
@@ -202,8 +202,8 @@ void SpyroHud_Init() {
     do {
         temp_r5_281 = &hudDesc + var_r29_279;
         temp_r25_282 = &hudData + var_r30_278;
-        temp_r3_283 = &hudItem + var_r31_277;
-        temp_r3_283->unk14 = temp_r25_282;
+        temp_r3_283 = (HudItem *) (&hudItem + var_r31_277);
+        temp_r3_283->unk14 = (long) (temp_r25_282);
         temp_r3_283->unk4 = M2C_FIELD(temp_r5_281, s32 *, 4);
         temp_r3_283->unk8 = M2C_FIELD(temp_r5_281, s32 *, 8);
         temp_r3_283->unkC = M2C_FIELD(temp_r5_281, s32 *, 0xC);
@@ -719,7 +719,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 sp484 = sp244;
                 sp678 = (f64) sp488;
                 sp670 = (f64) sp480;
-                temp_f25_551 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp688);
+                temp_f25_551 = (const char *) (((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp688));
                 temp_f26_554 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
                 temp_f0_560 = -((0.5f * temp_f26_554) - (*(f32 *) ((u8 *) &sp668 + 0xc)));
                 sp670 = -((0.5f * temp_f25_551) - (f32) sp670);
@@ -731,7 +731,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
         }
         temp_r7_586 = M2C_FIELD(arg0, void **, 0);
         if ((M2C_FIELD(temp_r7_586, s32 *, 0) & 0x10) && ((void *) M2C_FIELD(arg0, void **, 0x24) != NULL) && ((u8) M2C_FIELD(arg0, u8 *, 0x35) != 0)) {
-            temp_r5_602 = &vEnemyHealthBarSize[M2C_FIELD(arg0, s32 *, 0x18)];
+            temp_r5_602 = (_struct_vEnemyHealthBarSize_0x8 *) (&vEnemyHealthBarSize[M2C_FIELD(arg0, s32 *, 0x18)]);
             var_r6_605 = iEnemyHealthBarColours - 1;
             sp2F0 = M2C_FIELD(temp_r5_602, f32 *, -8);
             sp2F4 = M2C_FIELD(temp_r5_602, f32 *, -4);
@@ -756,7 +756,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
             if (temp_r0_657 < var_r6_605) {
                 var_r6_605 = temp_r0_657;
             }
-            temp_r3_669 = &vEnemyHealthBarColour[var_r6_605];
+            temp_r3_669 = (_struct_vEnemyHealthBarColour_0x10 *) (&vEnemyHealthBarColour[var_r6_605]);
             sp460 = 0.3f;
             sp464 = 0.3f;
             sp468 = 0.3f;
@@ -790,7 +790,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 sp454 = sp234;
                 sp648 = (f64) sp458;
                 sp640 = (f64) sp450;
-                temp_f25_746 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp658);
+                temp_f25_746 = (const char *) (((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp658));
                 temp_f26_749 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
                 temp_f0_755 = -((0.5f * temp_f26_749) - (*(f32 *) ((u8 *) &sp638 + 0xc)));
                 sp640 = -((0.5f * temp_f25_746) - (f32) sp640);

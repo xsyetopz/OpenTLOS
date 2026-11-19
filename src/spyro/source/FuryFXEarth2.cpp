@@ -70,7 +70,7 @@ extern M2C_UNK gb;
 static s32 lit_790 = 0;
 static u8 lit_791 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void FuryFXEarth2::ResetFury() {
     ManagedLight *temp_r4_73;
     u32 temp_r4_61;
@@ -138,7 +138,7 @@ void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoin
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void FuryFXEarth2::EmitTimedSparks() {
     f64 spF8;
     f64 spF0;
@@ -238,7 +238,7 @@ void FuryFXEarth2::EmitTimedSparks() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXEarth2::ExplodeVortex() {
     f64 sp100;                                      /* compiler-managed */
     f64 spF8;
@@ -344,7 +344,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXEarth2::SpawnVortexElement() {
     Matrix spF0;
     M2C_UNK spEC;
@@ -380,7 +380,7 @@ void FuryFXEarth2::SpawnVortexElement() {
         this->unkC8 = 0.01f;
         temp_r3_515 = this->unkC0;
         if ((u32) M2C_FIELD(temp_r3_515, u32 *, -4) != 0U) {
-            temp_r3_519 = ((u8 *) temp_r3_515) - 4;
+            temp_r3_519 = (void **) (((u8 *) temp_r3_515) - 4);
             this->unkC0 = temp_r3_519;
             temp_r31_521 = *temp_r3_519;
             if (temp_r31_521 != NULL) {
@@ -427,7 +427,7 @@ void FuryFXEarth2::SpawnVortexElement() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXEarth2::DrawVortex() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -453,7 +453,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXEarth2::UpdateVortex() {
     Matrix sp90;
     M2C_UNK sp8C;
@@ -628,7 +628,7 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, unsigned in
 s32 FuryFXEarth2::Trigger(const MKVector3 &arg0) {
     ManagedLight *temp_r3_1085;
     ManagedLight *temp_r4_1073;
@@ -782,7 +782,7 @@ void FuryFXEarth2::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void *FuryFXEarth2::Update() {
     MKCollisionResult sp290;
     s8 sp288;
@@ -1210,7 +1210,6 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXEarth2::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1247,15 +1246,14 @@ f32 FuryFXEarth2::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkCC = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_790, lit_791);
+    this->unkCC = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_790, lit_791));
     temp_r4_2060 = this->unkCC;
     if (temp_r4_2060 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2060, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal type
 s32 FuryFXEarth2::LoadDone() {
     void **temp_r6_2089;
     void *temp_r31_2091;
@@ -1263,7 +1261,7 @@ s32 FuryFXEarth2::LoadDone() {
     KDProp::LoadDone();
 loop_2:
     if ((u32) M2C_FIELD(this->unkC0, u32 *, -4) != 0U) {
-        temp_r6_2089 = ((u8 *) this->unkC0) - 4;
+        temp_r6_2089 = (void **) (((u8 *) this->unkC0) - 4);
         this->unkC0 = temp_r6_2089;
         temp_r31_2091 = *temp_r6_2089;
         M2C_FIELD(temp_r31_2091, s32 *, 0x40) = MKRand_Int((int *) &gViewSeed, 0, 4);
@@ -1277,7 +1275,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
+#if 0 // DRAFT: illegal type
 void FuryFXEarth2::Init() {
     s32 var_ctr_2185;
     void *temp_r3_2187;
@@ -1286,7 +1284,7 @@ void FuryFXEarth2::Init() {
     void *var_r5_2181;
 
     FuryFX::Init();
-    this->unk90 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    this->unk90 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
     SetDefaults();
     this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
     this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);

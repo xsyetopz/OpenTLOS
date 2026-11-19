@@ -73,8 +73,8 @@ extern void **pLoadingScreenSystem;
 extern void **pResidentLSSystem;
 extern void *pText;
 extern UIStringTable residentLSStrings;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static M2C_UNK *pDots[4] = { "<p0><colour=0,0,0,1>...</colour>", &.L_8035BDC1, &.L_8035BDE2, &.L_8035BE03 };
+#if 0 // DRAFT: expression syntax error
+static M2C_UNK *pDots[4] = (long *) ({ "<p0><colour=0,0,0,1>...</colour>", &.L_8035BDC1, &.L_8035BDE2, &.L_8035BE03 });
 #endif
 u8 descriptor__13LoadingScreen[0x14];               /* unable to generate initializer: cannot parse .L_8035BE0B as integer */
 static s32 hPackage = -1;
@@ -154,7 +154,7 @@ void LoadLevel_UpdateLoading() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKPackage_QLoad(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKPackage_QLoad(signed char *, int)' does not match 'MKPackage_QLoad(const char *, int)'
 void LoadFrontEnd_UpdateLoading() {
     switch ((s32) loadState) {                      /* irregular */
     case 0:
@@ -175,7 +175,7 @@ void LoadFrontEnd_UpdateLoading() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void LoadLevel_Update() {
     if ((s32) *gGMState.GetCurrState() == 4) {
         LoadFrontEnd_UpdateLoading();
@@ -223,7 +223,7 @@ void LoadLevel_Deactivate(bool arg0) {
     gb.unk396 = 0;
 }
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::GetProp()'
 void LoadLevel_Activate(ChunkInfo *arg0) {
     s32 sp1C;
     s32 sp18;
@@ -294,7 +294,7 @@ void LoadLevel_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void LoadLevel_Init() {
     s32 spC;
     s32 sp8;
@@ -334,7 +334,7 @@ void LoadLevel_FreeResources() {
     residentLSStrings.Deinit();
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MCLoadCheckScreen *' and 'unsigned char *'
 void LoadLevel_LoadResources() {
     s32 spC;
     s32 sp8;
@@ -359,14 +359,14 @@ loop_3:
     temp_r30_642 = UIStringTable_SetCurrent(&residentLSStrings);
     temp_r31_644 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
     if (MKHeap::Current() != NULL) {
-        var_r31_653 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_644, NULL, 0);
+        var_r31_653 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_644, NULL, 0));
     } else {
         var_r31_653 = malloc(temp_r31_644);
     }
     M2C_FIELD(UISystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r31_653, UISystem::descriptor);
     var_r31_653->unk8 = UISystem::descriptor;
     var_r31_653->Init(UISystem::descriptor);
-    temp_r3_675 = ui_cast<UISystem *, UIObject *>(var_r31_653);
+    temp_r3_675 = (void **) (ui_cast<UISystem *, UIObject *>(var_r31_653));
     pResidentLSSystem = temp_r3_675;
     if (((UIObject *) temp_r3_675)->Load("LoadLevel.ui", NULL) != 0) {
         M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **), 0x28)(pResidentLSSystem);

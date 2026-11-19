@@ -437,7 +437,7 @@ void DragonStatue::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *DragonStatue::Update() {
     Matrix sp330;
     Matrix sp2F0;

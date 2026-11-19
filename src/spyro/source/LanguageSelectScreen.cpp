@@ -48,7 +48,7 @@ extern void *gpTranslation_StringArray;
 extern s32 numLanguages;
 extern void **pSystem;
 extern UIStringTable strings;
-#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match
+#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match 'ErrorMessage_Draw(const char *)'
 u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse "LanguageSelectScreen" as integer */
 
 void NoController_Draw() {
@@ -123,7 +123,7 @@ void Language_Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'Init(UIObject *, unsigned char[20])' does not match 'UIObject::Init()'
 void Language_Init() {
     s32 spC;
     s32 sp8;
@@ -141,14 +141,14 @@ void Language_Init() {
         temp_r31_247 = UIStringTable_SetCurrent(&strings);
         temp_r30_249 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
         if (MKHeap::Current() != NULL) {
-            var_r30_258 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_249, NULL, 0);
+            var_r30_258 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_249, NULL, 0));
         } else {
             var_r30_258 = malloc(temp_r30_249);
         }
         M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r30_258, NoisySystem::descriptor);
         var_r30_258->unk8 = NoisySystem::descriptor;
         var_r30_258->Init(NoisySystem::descriptor);
-        pSystem = checked_cast<NoisySystem *, UIObject>(var_r30_258);
+        pSystem = (void **) (checked_cast<NoisySystem *, UIObject>(var_r30_258));
         var_r4_284 = &UIObjectDescriptor::list;
 loop_7:
         temp_r3_291 = var_r4_284->unk0;
@@ -229,7 +229,7 @@ void LanguageSelectScreen::OnEnter() {
     M2C_FIELD(*temp_r3_461, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_461, &sp8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'Init(UIObject *, unsigned char[20])' does not match 'UIObject::Init()'
 void LanguageSelectScreen::LoadDone() {
     s32 sp8;
     UIObject *temp_r3_600;
@@ -247,14 +247,14 @@ void LanguageSelectScreen::LoadDone() {
 
     temp_r24_491 = M2C_FIELD(MarkerButtonGroup::descriptor, s32 *, 8);
     if (MKHeap::Current() != NULL) {
-        var_r24_500 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_491, NULL, 0);
+        var_r24_500 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_491, NULL, 0));
     } else {
         var_r24_500 = malloc(temp_r24_491);
     }
     M2C_FIELD(MarkerButtonGroup::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r24_500, MarkerButtonGroup::descriptor);
     var_r24_500->unk8 = MarkerButtonGroup::descriptor;
     var_r24_500->Init(MarkerButtonGroup::descriptor);
-    this->unkC8 = ui_cast<UIButtonGroup *, UIObject *>(var_r24_500);
+    this->unkC8 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(var_r24_500));
     M2C_FIELD(this->unkC8, s16 *, 0x58) = 2;
     temp_r5_532 = this->unkC8;
     M2C_FIELD(temp_r5_532, f32 *, 0x28) = 320.0f;
@@ -267,7 +267,7 @@ void LanguageSelectScreen::LoadDone() {
         do {
             temp_r24_573 = M2C_FIELD(ThrobButton::descriptor, s32 *, 8);
             if (MKHeap::Current() != NULL) {
-                var_r24_582 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_573, NULL, 0);
+                var_r24_582 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_573, NULL, 0));
             } else {
                 var_r24_582 = malloc(temp_r24_573);
             }
@@ -284,7 +284,7 @@ void LanguageSelectScreen::LoadDone() {
             ((UIContainer *) this->unkC8)->Add(temp_r3_600);
             temp_r24_628 = M2C_FIELD(DSText::descriptor, s32 *, 8);
             if (MKHeap::Current() != NULL) {
-                var_r24_637 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_628, NULL, 0);
+                var_r24_637 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_628, NULL, 0));
             } else {
                 var_r24_637 = malloc(temp_r24_628);
             }

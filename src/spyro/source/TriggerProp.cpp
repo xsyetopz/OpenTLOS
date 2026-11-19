@@ -43,7 +43,7 @@
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to 'long *'
 s32 TriggerPolyProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_68;
 
@@ -127,7 +127,7 @@ void TriggerPlaneProp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to 'void *'
 s32 TriggerSphereProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_301;
 
@@ -139,13 +139,11 @@ s32 TriggerSphereProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'TriggerSphereProp *' to
 void TriggerSphereProp::Init() {
     TriggerProp::Init();
     M2C_FIELD(M2C_FIELD(this, void **, 0xD0), M2C_UNK (**)(void *, f32), 0x38)(this + 0xD0, 0.0f);
-    this->unkA8 = this + 0xD0;
+    this->unkA8 = (TriggerObject *) (this + 0xD0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkD0'
 s32 TriggerBoxProp::LoadLine(MKIniLine *arg0) {
@@ -167,12 +165,11 @@ void TriggerBoxProp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void TriggerProp::UpdateActiveList() {
     void *temp_r29_423;
     void *var_r30_418;
 
-    var_r30_418 = *TriggerProp::pFirstActiveTrigger;
+    var_r30_418 = (void *) (*TriggerProp::pFirstActiveTrigger);
 loop_5:
     if (var_r30_418 != NULL) {
         temp_r29_423 = M2C_FIELD(var_r30_418, void **, 0x90);
@@ -185,15 +182,14 @@ loop_5:
         goto loop_5;
     }
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKPropDescriptor *' and 'TriggerProp *'
 void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     MKPropDescriptor *temp_r4_467;
     TriggerProp *temp_r4_473;
 
     if ((MKPropDescriptor *) *TriggerProp::pFirstActiveTrigger == this) {
-        *TriggerProp::pFirstActiveTrigger = this->unk90;
+        *TriggerProp::pFirstActiveTrigger = (unsigned char) (this->unk90);
     }
     temp_r4_467 = this->unk90;
     if (temp_r4_467 != NULL) {
@@ -213,9 +209,9 @@ void TriggerProp::AddToActiveList(TriggerProp *arg0) {
     if ((u8) M2C_FIELD(checked_cast<TriggerPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x80) != 0) {
         if ((MKPropDescriptor *) *TriggerProp::pFirstActiveTrigger != NULL) {
             M2C_FIELD(*TriggerProp::pFirstActiveTrigger, TriggerProp **, 0x94) = this;
-            this->unk90 = *TriggerProp::pFirstActiveTrigger;
+            this->unk90 = (MKPropDescriptor *) (*TriggerProp::pFirstActiveTrigger);
             this->unk94 = NULL;
-            *TriggerProp::pFirstActiveTrigger = (MKPropDescriptor *) this;
+            *TriggerProp::pFirstActiveTrigger = (unsigned char) ((MKPropDescriptor *) this);
             return;
         }
         *TriggerProp::pFirstActiveTrigger = (MKPropDescriptor *) this;
@@ -435,7 +431,7 @@ void *TriggerProp::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void TriggerProp::Reset() {
     TriggerObject *temp_r3_1072;
 
@@ -463,7 +459,7 @@ s32 TriggerProp::LoadDone() {
     this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     TriggerObject *temp_r3_1155;
     s32 temp_r3_1188;
@@ -513,14 +509,14 @@ s32 TriggerProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKPropDescriptor *' and 'TriggerProp *'
 void TriggerProp::Deinit() {
     MKPropDescriptor *temp_r3_1349;
     TriggerObject *temp_r3_1366;
     TriggerProp *temp_r3_1355;
 
     if ((MKPropDescriptor *) *TriggerProp::pFirstTrigger == this) {
-        *TriggerProp::pFirstTrigger = this->unk98;
+        *TriggerProp::pFirstTrigger = (unsigned char) (this->unk98);
     }
     temp_r3_1349 = this->unk98;
     if (temp_r3_1349 != NULL) {
@@ -539,7 +535,6 @@ void TriggerProp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void TriggerProp::Init() {
     MKProp::Init();
     PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
@@ -553,16 +548,15 @@ void TriggerProp::Init() {
     this->unkA4 = 0.0f;
     if ((MKPropDescriptor *) *TriggerProp::pFirstTrigger != NULL) {
         M2C_FIELD(*TriggerProp::pFirstTrigger, TriggerProp **, 0x9C) = this;
-        this->unk98 = *TriggerProp::pFirstTrigger;
+        this->unk98 = (MKPropDescriptor *) (*TriggerProp::pFirstTrigger);
         this->unk9C = NULL;
-        *TriggerProp::pFirstTrigger = (MKPropDescriptor *) this;
+        *TriggerProp::pFirstTrigger = (unsigned char) ((MKPropDescriptor *) this);
         return;
     }
-    *TriggerProp::pFirstTrigger = (MKPropDescriptor *) this;
+    *TriggerProp::pFirstTrigger = (unsigned char) ((MKPropDescriptor *) this);
     this->unk98 = NULL;
     this->unk9C = NULL;
 }
-#endif
 
 void TriggerPropDescriptor::Deinit() {
     MKPropDescriptor::Deinit();

@@ -113,7 +113,6 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MeleeTrails::Deinit() {
     M2C_UNK *temp_r0_210;
     M2C_UNK *temp_r0_229;
@@ -135,7 +134,7 @@ loop_3:
     temp_r0_215 = M2C_FIELD(var_r3_207, u32 *, -4);
     var_r3_207 -= 4;
     if (temp_r0_215 != 0U) {
-        temp_r0_210 = *var_r3_207;
+        temp_r0_210 = (long *) (*var_r3_207);
         if (temp_r0_210 < var_r30_206) {
             var_r30_206 = temp_r0_210;
         }
@@ -143,7 +142,7 @@ loop_3:
     }
     if (var_r3_207 != &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_229 = *var_r4_205;
+        temp_r0_229 = (long *) (*var_r4_205);
         if (temp_r0_229 != NULL) {
             if (temp_r0_229 < var_r30_206) {
                 var_r30_206 = temp_r0_229;
@@ -165,7 +164,7 @@ loop_16:
     temp_r0_257 = M2C_FIELD(var_r3_249, u32 *, -4);
     var_r3_249 -= 4;
     if (temp_r0_257 != 0U) {
-        temp_r0_252 = *var_r3_249;
+        temp_r0_252 = (long *) (*var_r3_249);
         if (temp_r0_252 < var_r30_248) {
             var_r30_248 = temp_r0_252;
         }
@@ -173,7 +172,7 @@ loop_16:
     }
     if (var_r3_249 != &gEmptyPtrListDL) {
 loop_22:
-        temp_r0_271 = *var_r4_247;
+        temp_r0_271 = (long *) (*var_r4_247);
         if (temp_r0_271 != NULL) {
             if (temp_r0_271 < var_r30_248) {
                 var_r30_248 = temp_r0_271;
@@ -190,7 +189,6 @@ loop_22:
     M2C_FIELD(this, M2C_UNK **, 0xD4) = NULL;
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp4C'
 void MeleeTrails::Draw() {
@@ -290,7 +288,6 @@ s32 MeleeTrails::LoadDone() {
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MeleeTrails::Init() {
     MKHeap *temp_r3_563;
     MKHeap *temp_r3_569;
@@ -305,7 +302,7 @@ void MeleeTrails::Init() {
 
     GameProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_548 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1FC, NULL, 0);
+        var_r3_548 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x1FC, NULL, 0));
     } else {
         var_r3_548 = malloc(0x1FC);
     }
@@ -325,7 +322,7 @@ void MeleeTrails::Init() {
     M2C_FIELD(this, MKHeap **, 0xD0) = (MKHeap *) &temp_r3_569->unk4;
     temp_r3_569->unk4 = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_581 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x9CC, NULL, 0);
+        var_r3_581 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x9CC, NULL, 0));
     } else {
         var_r3_581 = malloc(0x9CC);
     }
@@ -346,7 +343,6 @@ void MeleeTrails::Init() {
     temp_r3_602->unk4 = 0;
     this->unkC8 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkE4'
 void MeleeTrailsDescriptor::Deinit() {
@@ -391,14 +387,14 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 void MeleeTrailsDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     InitMeleeTrailData(&this->unkE8);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MeleeTrailsDescriptor::InitMeleeTrailData(char *arg0) {
     MKIni spC;
     s8 *sp8;
@@ -445,7 +441,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
@@ -457,7 +453,7 @@ s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void MeleeTrailsDescriptor::Init() {
     MKHeap *temp_r3_883;
     MKHeap *temp_r3_889;
@@ -467,7 +463,7 @@ void MeleeTrailsDescriptor::Init() {
 
     GamePropDescriptor::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_868 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38C, NULL, 0);
+        var_r3_868 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x38C, NULL, 0));
     } else {
         var_r3_868 = malloc(0x38C);
     }

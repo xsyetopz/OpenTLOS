@@ -5,7 +5,7 @@
 
 static M2C_UNK lit_490;                                /* unable to generate initializer: unknown type */
 KDMemoryCard stateData__12KDMemoryCard = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-#if 0 // DRAFT: identifier 'tmpfileInfo' redeclared
+#if 0 // DRAFT: identifier 'tmpfileInfo' redeclared was declared as: 'MKMemoryCardFileInfo' now declared as: 'MKMemoryCardFileInfo[16]'
 static MKMemoryCardFileInfo tmpfileInfo[0x10];
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_card_0x280'
@@ -55,7 +55,7 @@ void KDMemoryCard::SaveData_Init() {
 
 }
 
-#if 0 // DRAFT: function call 'MKMemoryCard_Save(long, long, void *, int, const char *,
+#if 0 // DRAFT: function call 'MKMemoryCard_Save(long, long, void *, int, const char *, KDMemoryCard *)' does not match 'MKMemoryCard_Save(int, int, void *, int, const char *, 
 void KDMemoryCard::SaveData(int arg0, void *arg1, int arg2, const char *arg3) {
     s32 temp_r4_138;
 
@@ -133,7 +133,7 @@ void KDMemoryCard::Format_Init() {
     MKMemoryCard_Format(this->unk0);
 }
 
-#if 0 // DRAFT: function call 'memcpy(KDMemoryCard *, MKMemoryCardFileInfo, unsigned int)'
+#if 0 // DRAFT: function call 'memcpy(KDMemoryCard *, MKMemoryCardFileInfo, unsigned int)' does not match 'memcpy(void *, const void *, unsigned int)'
 void KDMemoryCard::CheckFilesExist_Update(int arg0) {
     s32 var_ctr_349;
     s32 var_r4_346;
@@ -159,7 +159,7 @@ void KDMemoryCard::CheckFilesExist_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMemoryCard_GetDirInfo(long, MKMemoryCardFileInfo)' does
+#if 0 // DRAFT: function call 'MKMemoryCard_GetDirInfo(long, MKMemoryCardFileInfo)' does not match 'MKMemoryCard_GetDirInfo(int, MKMemoryCardFileInfo *)'
 void KDMemoryCard::CheckFilesExist_Init() {
     MKMemoryCard_GetDirInfo(this->unk0, tmpfileInfo);
 }
@@ -288,13 +288,13 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
+#if 0 // DRAFT: undefined identifier '__ptmf_test'
 void KDMemoryCard::SetState(KDMCState arg0) {
     s32 temp_r5_679;
 
     temp_r5_679 = (s32) arg0 * 0x18;
     *KDMemoryCard::state = (s32) arg0;
-    *KDMemoryCard::currentCard = this;
+    *KDMemoryCard::currentCard = (unsigned char) (this);
     if (__ptmf_test(&KDMemoryCard::stateData + temp_r5_679, temp_r5_679) != 0) {
         __ptmf_scall(this, *KDMemoryCard::state * 0x18);
     }
@@ -369,7 +369,7 @@ void KDMemoryCard::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'unsigned long' and 'signed char *'
 s32 KDMemoryCard::GetNextCard() {
     if ((u32) *KDMemoryCard::currentCard >= &card[1]) {
         return 0;

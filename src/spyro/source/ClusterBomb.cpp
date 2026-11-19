@@ -68,7 +68,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ClusterBomb::UpdateClusterBombs() {
     s8 sp240;
     s32 sp23C;
@@ -419,7 +419,7 @@ void ClusterBomb::SpawnClusterBomb(const MKVector3 &arg0, const MKVector3 &arg1)
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKVector3 *' and 'MKVector3 **'
 void ClusterBomb::Deinit() {
     MKVector3 **var_r31_666;
     MKVector3 **var_r3_667;
@@ -471,7 +471,6 @@ void *ClusterBomb::Update() {
     UpdateClusterBombs();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ClusterBomb::Init() {
     MKVector3 **temp_r3_773;
     MKVector3 **temp_r4_779;
@@ -481,7 +480,7 @@ void ClusterBomb::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_758 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0);
+        var_r3_758 = (MKVector3 **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0));
     } else {
         var_r3_758 = malloc(0x210);
     }
@@ -502,7 +501,6 @@ void ClusterBomb::Init() {
     M2C_FIELD(temp_r4_779, MKVector3 ***, 4) = NULL;
     this->unk50 = MKModel_Create("P0002_LavaCannonBall", NULL, 2, NULL);
 }
-#endif
 
 void ClusterBombDescriptor::Init() {
     MKPropDescriptor::Init();

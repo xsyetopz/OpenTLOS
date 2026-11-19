@@ -95,19 +95,19 @@ extern f32 SPYRO_COMBAT_SCALE_MAG;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern M2C_UNK gb;
 #endif
-#if 0 // DRAFT: identifier 'bAirCombatSlowMo' redeclared
+#if 0 // DRAFT: identifier 'bAirCombatSlowMo' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
 SpyroAirCombatState states__19SpyroAirCombatState;  /* unable to generate initializer: confusing struct layout */
 
 static u8 bAirCombatSlowMo = 1;
 #endif
-#if 0 // DRAFT: identifier 'HornDiveZSpeed' redeclared
+#if 0 // DRAFT: identifier 'HornDiveZSpeed' redeclared was declared as: 'unsigned char[4]' now declared as: 'float'
 static f32 HornDiveZSpeed = 2400.0f;
 #endif
-#if 0 // DRAFT: identifier 'HornDiveYSpeed' redeclared
+#if 0 // DRAFT: identifier 'HornDiveYSpeed' redeclared was declared as: 'unsigned char[4]' now declared as: 'float'
 static f32 HornDiveYSpeed = -1600.0f;
 #endif
 
@@ -179,7 +179,7 @@ void SpyroAirCombatState::EnableSlowMoCamera(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::EnableProtoSlowMotion() {
     f32 var_f4_189;
 
@@ -495,7 +495,7 @@ Targetable *SpyroAirCombatState::SelectNewTarget() {
         sp58 = temp_f0_723;
         sp10 = (f32) sp40 + (f32) sp30;
         sp60 = (f64) sp10;
-        return ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetNearestEnemy(*((MKVector3 *) &sp58), SPYRO_COMBAT_SCALE_MAG, 1U, 0U);
+        return (Targetable *) (((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetNearestEnemy(*((MKVector3 *) &sp58), SPYRO_COMBAT_SCALE_MAG, 1U, 0U));
     }
     return NULL;
 }
@@ -664,7 +664,7 @@ void SpyroAirCombatState::UpdateAirStrafe() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroAirCombatState::HornDiveHitTransition() {
     s32 var_r30_1010;
     u8 var_r31_1011;
@@ -691,7 +691,7 @@ void SpyroAirCombatState::HornDiveHitExit() {
     this->unk10->unk460.SetTailStrikeEnabled(1U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::HornDiveHitEnter() {
     this->unk10->SetAnim(0x2EU, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
@@ -982,7 +982,7 @@ void SpyroAirCombatState::HornDiveAttackExit() {
     this->unk10->unk38C = 1900.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::HornDiveAttackEnter() {
     MKVector3 sp70;
     f64 sp68;
@@ -1078,7 +1078,7 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroAirCombatState::HornDiveChargeUpTransition() {
     s8 var_r3_1738;
 
@@ -1117,7 +1117,7 @@ void SpyroAirCombatState::HornDiveChargeUpExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::HornDiveChargeUpEnter() {
     s32 spC;
     s32 sp8;
@@ -1133,7 +1133,7 @@ void SpyroAirCombatState::HornDiveChargeUpEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroAirCombatState::KnockdownTransition() {
     s32 spC;
     s32 sp8;
@@ -1391,7 +1391,7 @@ void SpyroAirCombatState::KnockdownExit() {
     this->unk10->unk460.SetHornDiveEnabled(1U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::KnockdownEnter() {
     this->unk2C = 2;
     this->unk10->unk460.SetHitType(0xA);
@@ -1519,7 +1519,7 @@ void SpyroAirCombatState::JuggleExit() {
     this->unk10->unk460.SetHornDiveEnabled(1U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::JuggleEnter() {
     s32 var_r4_2592;
 
@@ -1593,7 +1593,7 @@ void SpyroAirCombatState::LaunchUpdate() {
     LaunchTransition();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: pointer/array required Too many errors printed, aborting program
 void SpyroAirCombatState::LaunchExit() {
     s32 spC;
     s32 sp8;
@@ -1611,7 +1611,7 @@ void SpyroAirCombatState::LaunchExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroAirCombatState::LaunchEnter() {
     s32 spC;
     s32 sp8;
@@ -1646,7 +1646,7 @@ void SpyroAirCombatState::LaunchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::TailSweepComboTransition() {
     Enemy *temp_r3_2916;
     InputModifier *temp_r3_3012;
@@ -2077,7 +2077,7 @@ void SpyroAirCombatState::TailSweepExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroAirCombatState::TailSweepEnter() {
     MKVector3 spA8;
     f64 spA0;
@@ -2254,7 +2254,7 @@ s32 SpyroAirCombatState::Transition() {
     return var_r31_3966;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroAirCombatState::Update() {
     f64 sp78;
     f64 sp70;
@@ -2455,7 +2455,7 @@ void SpyroAirCombatState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'CombatStateData::SetLastCombatEnemy(MKProp *)' 'CombatStateData::SetLastCombatEnemy(Targetable *)'
 void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     s32 sp10;
     s32 spC;

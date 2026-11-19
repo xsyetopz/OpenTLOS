@@ -20,7 +20,7 @@ void CharacterDescriptor::LoadDone() {
     this->unk64 = this->unk68 + this->unk60;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 CharacterDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_46;
 

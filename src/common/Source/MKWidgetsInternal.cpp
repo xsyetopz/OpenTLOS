@@ -51,15 +51,15 @@ extern void *pHookEntryRoot;
 extern MKWidgetScissorRect *pScissorRectStack;
 extern MKMaterial *pWidgetBlank;
 extern f32 timestamp;
-#if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared
+#if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared was declared as: 'unsigned char[736]' now declared as: 'long'
 static M2C_UNK gMKWidgetMetrics;                    /* unable to generate initializer: unknown type */
 static MKVector3 clickPos = { 0.0f, 0.0f, 0.0f, 0.0f };
 #endif
 static MKVector3 startPos;
-#if 0 // DRAFT: identifier 'gShowCursor' redeclared
+#if 0 // DRAFT: identifier 'gShowCursor' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 static u8 gShowCursor = 1;
 #endif
-#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared
+#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared was declared as: 'MKWidgetAttributes *' now declared as: 'long *'
 static M2C_UNK *MKWidgetIdentityAttributes = &gIdentityAttributes;
 #endif
 
@@ -71,7 +71,7 @@ static s32 lit_2883 = 0;
 
 static s32 lit_3214 = 0x10;
 static s32 lit_3216 = 2;
-#if 0 // DRAFT: identifier 'MKWIDGETTYPE_TEXTBOX' redeclared
+#if 0 // DRAFT: identifier 'MKWIDGETTYPE_TEXTBOX' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static M2C_UNK gIdentityAttributes;                 /* unable to generate initializer: unknown type; const */
 
 static s8 *MKWIDGETTYPE_TEXTBOX = "MKWidgetTextBox";      /* const */
@@ -185,7 +185,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKWidgetBoundingVolume *' and 'long'
 s32 MKWidgetEnvelope::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetBoundingVolume sp110;
     MKWidgetBoundingVolume spF0;
@@ -612,7 +612,6 @@ void MKWidgetEnvelope_GetEnvelopeValuesFromPoint(MKWidgetBoundingVolume *arg0, M
     *arg3 = var_f0_926;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKWidgetEnvelope_GetEnvelopePos(MKWidgetEnvelope *arg0, int arg1, MKWidgetBoundingVolume *arg2) {
     f32 sp10;
     f32 spC;
@@ -621,14 +620,13 @@ void MKWidgetEnvelope_GetEnvelopePos(MKWidgetEnvelope *arg0, int arg1, MKWidgetB
     void *temp_r4_962;
 
     sp10 = 0.0f;
-    temp_r4_962 = M2C_FIELD(arg1, s32 *, 4) + (((s32) arg2 * 8) + 0x68);
+    temp_r4_962 = (void *) (M2C_FIELD(arg1, s32 *, 4) + (((s32) arg2 * 8) + 0x68));
     temp_f4_965 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 0x14);
     sp8 = M2C_FIELD(temp_r4_962, f32 *, 4) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 0x10);
     spC = -((M2C_FIELD(temp_r4_962, f32 *, 0) * temp_f4_965) - temp_f4_965);
     M2C_FIELD(arg0, f64 *, 0) = (f64) sp8;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: cannot construct MKWidgetEnvelope's base class 'MKWidget'
 MKWidgetEnvelope::MKWidgetEnvelope(MKWidgetDescriptor *arg0) {
@@ -653,7 +651,7 @@ void MKWidgetVector::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetVector::TestPoint(MKVector3 *arg0) {
     f64 sp40;
     f64 sp38;
@@ -708,7 +706,7 @@ MKWidget *MKWidgetVector::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetVector::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -731,7 +729,7 @@ s32 MKWidgetVector::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKWidget_SendMessage(MKWidget *, unsigned int, signed char
+#if 0 // DRAFT: function call 'MKWidget_SendMessage(MKWidget *, unsigned int, signed char *)' does not match 'MKWidget_SendMessage(MKWidget *, unsigned int, unsigned int)'
 s32 MKWidgetVector::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp60;
     f64 sp58;
@@ -818,7 +816,7 @@ block_66:
             sp38 = this;
             sp3C = 1;
             sp3E = 0;
-            sp40 = ((u8 *) this->unk4) + 0x68;
+            sp40 = (signed char **) (((u8 *) this->unk4) + 0x68);
             sp44 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp38);
         }
@@ -910,7 +908,7 @@ block_66:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKWidget_SendMessage(MKWidget *, unsigned int, signed char
+#if 0 // DRAFT: function call 'MKWidget_SendMessage(MKWidget *, unsigned int, signed char *)' does not match 'MKWidget_SendMessage(MKWidget *, unsigned int, unsigned int)'
 MKWidgetVector::MKWidgetVector(MKWidgetDescriptor *arg0) {
     s8 **temp_r5_1645;
 
@@ -954,7 +952,7 @@ void MKWidgetFoldupFrame::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -987,7 +985,7 @@ MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK spA0;
     M2C_UNK sp9C;
@@ -1154,7 +1152,7 @@ void MKWidgetComboBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetComboBox::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -1187,7 +1185,7 @@ MKWidget *MKWidgetComboBox::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetComboBox::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
@@ -1221,7 +1219,7 @@ s32 MKWidgetComboBox::ListBoxHook(MKWidget *arg0, unsigned int arg1, unsigned in
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKWidget_Create(const char[1], signed char *,
+#if 0 // DRAFT: function call 'MKWidget_Create(const char[1], signed char *, MKWidgetAttributes *, MKWidget *, int, int)' does not match 'MKWidget_Create(const char *, const ch
 s32 MKWidgetComboBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetAttributes sp130;
     M2C_UNK sp12C;
@@ -1465,7 +1463,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long (MKWidgetComboBox::*)(MKWidget *,
+#if 0 // DRAFT: illegal explicit conversion from 'long (MKWidgetComboBox::*)(MKWidget *, unsigned int, unsigned int, void *)const ' to 'long (*)(MKWidget *, unsigned long, unsi
 MKWidgetComboBox::MKWidgetComboBox(MKWidgetDescriptor *arg0) {
     f64 sp60;
     f64 sp58;
@@ -1580,7 +1578,7 @@ u32 MKWidgetEditable::EditableMessageHook(MKWidget *arg0, unsigned int arg1, uns
     default:                                        /* switch 1 */
     case 0x34:                                      /* switch 1 */
 block_20:
-        temp_r31_3130 = MessageHandler(arg0, arg1);
+        temp_r31_3130 = (unsigned int) (MessageHandler(arg0, arg1));
         switch (arg0) {                             /* switch 2; irregular */
         case 48:                                    /* switch 2 */
             if (arg1 == 1) {
@@ -1615,7 +1613,7 @@ block_20:
                     spA8 = M2C_BITWISE(f32, spA8) - temp_f3_3219;
                     spA8.unk4 -= (f32) fmod(spA8.unk4, 10.0, temp_f3_3219);
                 }
-                temp_r4_3232 = M2C_FIELD(arg2, s32 *, 4) + 8;
+                temp_r4_3232 = (void *) (M2C_FIELD(arg2, s32 *, 4) + 8);
                 temp_f0_3235 = M2C_FIELD(temp_r4_3232, f64 *, 0) + (f64) spA8;
                 sp18 = temp_f0_3235;
                 sp68 = temp_f0_3235;
@@ -1634,7 +1632,7 @@ block_20:
             temp_f0_3065 = M2C_FIELD(arg1, f64 *, 0) - spD8;
             sp58 = temp_f0_3065;
             spC8 = temp_f0_3065;
-            temp_r4_3073 = M2C_FIELD(arg2, s32 *, 4) + 8;
+            temp_r4_3073 = (void *) (M2C_FIELD(arg2, s32 *, 4) + 8);
             sp60 = M2C_FIELD(arg1, f32 *, 8) - (f32) spE0;
             spD0 = (f64) sp60;
             temp_f0_3079 = M2C_FIELD(temp_r4_3073, f64 *, 0) + temp_f0_3065;
@@ -1664,7 +1662,6 @@ block_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f64 sp240;
     f64 sp238;
@@ -1781,7 +1778,7 @@ s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp208 = (f64) spE8;
     sp210 = (f64) spF0;
     sp218 = (f64) sp108;
-    temp_r6_3295 = ((u8 *) this->unk4) + 0x38;
+    temp_r6_3295 = (signed char **) (((u8 *) this->unk4) + 0x38);
     sp220 = (f64) sp110;
     spF8 = M2C_FIELD(temp_r6_3295, f64 *, 0) + sp218;
     sp120 = 0.0f;
@@ -1820,7 +1817,7 @@ s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp188 = (f64) sp68;
     sp190 = (f64) sp70;
     sp198 = (f64) sp88;
-    temp_r3_3369 = ((u8 *) this->unk4) + 0x38;
+    temp_r3_3369 = (signed char **) (((u8 *) this->unk4) + 0x38);
     sp1A0 = (f64) sp90;
     temp_f5_3371 = M2C_FIELD(temp_r3_3369, f64 *, 0);
     sp78 = temp_f5_3371 - sp198;
@@ -1877,7 +1874,6 @@ s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     WidgetDrawBox(*((MKVector3 *) &sp148), *((MKVector3 *) &sp138), *((MKVector4 *) &sp128));
     MKEndPrimitive();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
@@ -2095,7 +2091,7 @@ void MKWidgetColor::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetColor::Render(MKWidgetRenderContext *arg0) {
     f64 spC0;
     f64 spB8;
@@ -2163,7 +2159,7 @@ s32 MKWidgetColor::Render(MKWidgetRenderContext *arg0) {
     spB0 = (f64) sp50;
     spB8 = (f64) sp58;
     spC0 = (f64) sp60;
-    temp_r29_3963 = MKWidget_GetMetric(1);
+    temp_r29_3963 = (MKVector4 *) (MKWidget_GetMetric(1));
     WidgetDrawBevel(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), 1.0f, *(MKWidget_GetMetric(0)), *temp_r29_3963, 1U, 0U);
     temp_r4_3974 = this->unk4;
     if (M2C_FIELD(temp_r4_3974, f32 *, 0x74) < 1.0f) {
@@ -2227,7 +2223,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'signed char **' Too many errors printed, aborting program
 s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp14;
     s8 **sp10;
@@ -2498,7 +2494,7 @@ loop_22:
             spCC = 26.0f;
             spD0 = 0.0f;
             MKVector(0.0f, 26.0f, 0.0f);
-            temp_r3_4575 = ((u8 *) this->unk4) + 0x38;
+            temp_r3_4575 = (signed char **) (((u8 *) this->unk4) + 0x38);
             sp8 = M2C_FIELD(temp_r3_4575, f64 *, 0) - sp98;
             spA8 = sp8;
             sp10 = M2C_FIELD(temp_r3_4575, f32 *, 8) - spA0;
@@ -2532,7 +2528,7 @@ loop_26:
         if (var_r24_4661 < temp_r26_4664) {
             sp48 = 0.0f;
             sp4C = 26.0f;
-            temp_r4_4677 = ((u8 *) this->unk4) + 0x38;
+            temp_r4_4677 = (signed char **) (((u8 *) this->unk4) + 0x38);
             sp50 = 0.0f;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
@@ -2650,7 +2646,7 @@ void MKWidgetTextBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: function call 'MKFont_GetCharPosJustified(MKFont *, signed char *, long,
+#if 0 // DRAFT: function call 'MKFont_GetCharPosJustified(MKFont *, signed char *, long, float, float, FontJustify, float)' does not match 'MKFont_GetCharPosJustified(MKFont *,
 void MKWidgetTextBox::FindCaretPos() {
     f64 sp30;
     f64 sp28;                                       /* compiler-managed */
@@ -2753,7 +2749,7 @@ void MKWidgetTextBox::FindCaretPos() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKFont_GetNextWrapPoint(MKFont *, signed char *, float,
+#if 0 // DRAFT: function call 'MKFont_GetNextWrapPoint(MKFont *, signed char *, float, float, int)' does not match 'MKFont_GetNextWrapPoint(MKFont *, const char *, float, float
 s32 MKWidgetTextBox::GetCharIndexFromPoint(const MKVector3 &arg0) {
     f32 temp_f1_5279;
     f32 temp_f28_5237;
@@ -2847,7 +2843,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, long, bool)' does not match 'WidgetDrawBevel(const MKVector3 &, const MKVector3 &, 
 s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f64 sp260;
     f64 sp258;
@@ -2993,7 +2989,7 @@ s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
             spFC = 0.0f;
             sp200 = (f64) sp100;
             sp1F8 = (f64) spF8;
-            temp_r31_5380 = MKWidget_GetMetric(1);
+            temp_r31_5380 = (MKVector4 *) (MKWidget_GetMetric(1));
             WidgetDrawBevel(*((MKVector3 *) &sp1F8), *(MKVector3 *) (temp_r28_5365 + 0x38), M2C_FIELD(temp_r28_5365, f32 *, 0x80), *(MKWidget_GetMetric(0)), *temp_r31_5380, temp_r27_5370 & 1, (temp_r27_5370 >> 1) != 0);
         }
         if (IsFlagSet(0x4000U) != 0) {
@@ -3182,7 +3178,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: pointer/array required
 s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 spD4;
     s8 *spD0;
@@ -3392,7 +3388,7 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
         if (var_r30_5855 != 0) {
             temp_r26_6013 = this->unk4;
             if (MKHeap::Current() != NULL) {
-                var_r3_6021 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) var_r30_5855, NULL, 0);
+                var_r3_6021 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) var_r30_5855, NULL, 0));
             } else {
                 var_r3_6021 = malloc(var_r30_5855);
             }
@@ -3646,7 +3642,7 @@ loop_147:
                                     }
                                     var_f1_5927 = M2C_BITWISE(f32, strcpy(&M2C_FIELD(temp_r27_6330, s8 **, 0x68)[var_r26_6460], Str_Printf(&temp_r3_6331[var_r25_6457], &gClipboardBuffer, var_r5_6447, var_f1_5927)));
                                     temp_r3_6475 = this->unk4;
-                                    var_r4_6446 = var_r25_6457 - var_r26_6460;
+                                    var_r4_6446 = (unsigned char *) (var_r25_6457 - var_r26_6460);
                                     M2C_FIELD(temp_r3_6475, u32 *, 0x74) = (u32) (M2C_FIELD(temp_r3_6475, u32 *, 0x74) - var_r4_6446);
                                     this->unk44 = var_r26_6460;
                                 }
@@ -3991,7 +3987,7 @@ MKWidgetTextBox::~MKWidgetTextBox() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
     s8 **temp_r30_7220;
     s8 *temp_r28_7224;
@@ -4013,7 +4009,7 @@ MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
         if (temp_r29_7221 != 0) {
             temp_r28_7224 = M2C_FIELD(temp_r30_7220, s8 **, 0x68);
             if (MKHeap::Current() != NULL) {
-                var_r3_7232 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_7221, NULL, 0);
+                var_r3_7232 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_7221, NULL, 0));
             } else {
                 var_r3_7232 = malloc(temp_r29_7221);
             }
@@ -4038,7 +4034,7 @@ void MKWidgetListItem::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetListItem::TestPoint(MKVector3 *arg0) {
     f64 sp10;
     f64 sp8;
@@ -4060,7 +4056,7 @@ MKWidget *MKWidgetListItem::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetListItem::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp10;
     M2C_UNK spC;
@@ -4189,7 +4185,7 @@ void MKWidgetListBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *'
 void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -4253,9 +4249,9 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
                 MKSetBaseColorV(*((s32) arg0 + 0x40));
                 MKSetMatrix(*((Matrix *) arg0));
                 if (IsFlagSet(8U) != 0) {
-                    var_r3_7654 = MKWidget_GetMetric(4);
+                    var_r3_7654 = (MKVector4 *) (MKWidget_GetMetric(4));
                 } else {
-                    var_r3_7654 = MKWidget_GetMetric(5);
+                    var_r3_7654 = (MKVector4 *) (MKWidget_GetMetric(5));
                 }
                 temp_f0_7662 = M2C_BITWISE(f64, sp90) + (f64) sp90.unk10;
                 sp30 = temp_f0_7662;
@@ -4289,7 +4285,7 @@ void MKWidgetListBox::SortChildren() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 MKWidgetListBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetBoundingVolume spA8;
     MKWidgetBoundingVolume sp88;
@@ -4652,7 +4648,7 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     MKWidget_Resize(&this->unk208, *((MKVector3 *) &sp30));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKWidgetScrollableFrame::GetChildrenRange(MKVector3 *arg0, MKVector3 *arg1) {
     MKVector3 sp38;
     MKVector3 sp28;
@@ -4704,7 +4700,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetScrollableFrame::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -4737,7 +4733,7 @@ MKWidget *MKWidgetScrollableFrame::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKWidgetScrollableFrame::UpdateState() {
     MKVector3 sp98;
     MKVector3 sp88;
@@ -4797,7 +4793,7 @@ void MKWidgetScrollableFrame::UpdateState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetScrollableFrame::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
@@ -5082,7 +5078,7 @@ void MKWidgetScrollBar::GetValueFromThumb() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetScrollBar::TestPoint(MKVector3 *arg0) {
     f64 sp30;
     f64 sp28;
@@ -5126,7 +5122,7 @@ MKWidget *MKWidgetScrollBar::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp150;
     M2C_UNK sp14C;
@@ -5194,7 +5190,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp50 = (0.5f * temp_f2_9649) - 2.0f;
             sp54 = (0.25f * temp_f2_9649) - 2.0f;
             spA0 = (f64) sp50;
-            temp_r29_9658 = MKWidget_GetMetric(1);
+            temp_r29_9658 = (MKVector4 *) (MKWidget_GetMetric(1));
             WidgetDrawBevel(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9658, 1U, 0U);
         } else {
             sp28 = 0.0f;
@@ -5208,7 +5204,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp30 = (0.25f * temp_f2_9689) - 2.0f;
             sp34 = (0.5f * temp_f2_9689) - 2.0f;
             sp80 = (f64) sp30;
-            temp_r29_9698 = MKWidget_GetMetric(1);
+            temp_r29_9698 = (MKVector4 *) (MKWidget_GetMetric(1));
             WidgetDrawBevel(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9698, 1U, 0U);
         }
     } else {
@@ -5230,7 +5226,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'unsigned int'
 s32 MKWidgetScrollBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp180;
     f64 sp178;
@@ -5548,7 +5544,7 @@ block_139:
             sp168 = this;
             sp16C = 1;
             sp16E = 0;
-            sp170 = ((u8 *) this->unk4) + 0x68;
+            sp170 = (signed char **) (((u8 *) this->unk4) + 0x68);
             sp174 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp168);
         }
@@ -5764,7 +5760,7 @@ void MKWidgetThumb::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKVector4 *temp_r31_10768;
     s8 **temp_r30_10765;
@@ -5776,13 +5772,13 @@ s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKSetMatrix(*((Matrix *) arg0));
     WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), 0x1A);
     temp_r30_10765 = this->unk4;
-    temp_r31_10768 = MKWidget_GetMetric(1);
+    temp_r31_10768 = (MKVector4 *) (MKWidget_GetMetric(1));
     WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (temp_r30_10765 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r31_10768, 0U, 0U);
     MKEndPrimitive();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp1F0;                                      /* compiler-managed */
     f64 sp1E8;
@@ -5870,7 +5866,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk30 = M2C_FIELD(arg1, f64 *, 8);
         sp168.operator*(0.5f);
-        temp_r4_10829 = ((u8 *) this->unk4) + 8;
+        temp_r4_10829 = (signed char **) (((u8 *) this->unk4) + 8);
         sp78 = M2C_FIELD(temp_r4_10829, f64 *, 0) + M2C_BITWISE(f64, sp168);
         sp178 = sp78;
         sp80 = M2C_FIELD(temp_r4_10829, f32 *, 8) + sp168.unk8;
@@ -6022,7 +6018,7 @@ void MKWidgetCheckBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetCheckBox::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -6055,7 +6051,7 @@ MKWidget *MKWidgetCheckBox::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetCheckBox::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
@@ -6193,7 +6189,7 @@ void MKWidgetCheckMark::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
 s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     f64 sp70;
     f64 sp68;
@@ -6267,7 +6263,7 @@ s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 MKWidgetCheckMark::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp28;
     s32 sp24;
@@ -6361,7 +6357,7 @@ void MKWidgetButton::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetButton::TestPoint(MKVector3 *arg0) {
     f64 sp10;
     f64 sp8;
@@ -6383,7 +6379,7 @@ MKWidget *MKWidgetButton::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
 s32 MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp130;
     M2C_UNK sp12C;
@@ -6469,7 +6465,7 @@ s32 MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'signed char **'
 s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp1C4;
     u32 sp1C0;
@@ -6795,7 +6791,7 @@ void MKWidgetString::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: function call 'MKFont_DrawStringJustified(MKFont *, signed char *,
+#if 0 // DRAFT: function call 'MKFont_DrawStringJustified(MKFont *, signed char *, MKVector3, float, float, FontJustify, float, MKVector4, int, Matrix)' does not match 'MKFont_
 s32 MKWidgetString::Render(MKWidgetRenderContext *arg0) {
     MKFont *var_r31_12576;
     f32 temp_f1_12597;
@@ -6901,7 +6897,7 @@ void MKWidgetWindowTitleBar::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetWindowTitleBar::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -6934,7 +6930,7 @@ MKWidget *MKWidgetWindowTitleBar::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
@@ -6962,7 +6958,7 @@ s32 MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp98;
     f64 sp90;
@@ -7100,7 +7096,7 @@ void MKWidgetWindow::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetWindow::TestPoint(MKVector3 *arg0) {
     f64 sp10;
     f64 sp8;
@@ -7120,7 +7116,7 @@ MKWidget *MKWidgetWindow::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKWidgetRenderContext'
 s32 MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp70;
     M2C_UNK sp6C;
@@ -7175,7 +7171,7 @@ s32 MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetWindow *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetWindow *' to 'float'
 s32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 spD8;
     f64 spD0;
@@ -7883,7 +7879,7 @@ MKWidgetFrame::MKWidgetFrame(MKWidgetDescriptor *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKInputReceiver_Create(unsigned char (*)(MKInputEvent *,
+#if 0 // DRAFT: function call 'MKInputReceiver_Create(unsigned char (*)(MKInputEvent *, void *), int, int, MKWidgetSystem *)' does not match 'MKInputReceiver_Create(bool (*)(MK
 void MKWidgetSystem::CreateInputReceiver(bool arg0) {
     if (arg0 != 0) {
         this->unk78 = MKInputReceiver_Create((u8 (*)(MKInputEvent *, void *)) SystemReceiverCallback, -1, 4, this);
@@ -7893,7 +7889,7 @@ void MKWidgetSystem::CreateInputReceiver(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 SystemReceiverCallback(MKInputEvent *arg0, void *arg1) {
     MKWidgetBoundingVolume sp78;
     MKVector3 sp68;
@@ -8083,7 +8079,7 @@ MKWidget *MKWidgetSystem::ChangeFocus(MKWidget *arg0) {
     return temp_r0_15111;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKWidgetSystem::UpdateState() {
     MKVector3 sp18;
     f64 sp10;
@@ -8114,7 +8110,7 @@ void MKWidgetSystem::UpdateState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetRenderContext' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetRenderContext' to 'long'
 void MKWidgetSystem::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -8359,7 +8355,7 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'MKVector3 *'
 MKWidget *MKWidgetContainer::GetWidgetUnderPoint(MKVector3 arg0) {
     MKWidgetBoundingVolume sp18;
     f64 sp10;
@@ -8415,7 +8411,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *'
 void MKWidgetContainer::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK spC0;
     M2C_UNK spBC;
@@ -8721,7 +8717,7 @@ void MKWidget::GetLocalToWorldMatrix(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'MKVector3 *'
 MKWidget *MKWidget::GetWidgetUnderPoint(MKVector3 arg0) {
     if (IsFlagSet(2U) != 0) {
         return TestPoint(arg0);
@@ -8730,7 +8726,7 @@ MKWidget *MKWidget::GetWidgetUnderPoint(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 MKWidget *MKWidget::TestPoint(MKVector3 *arg0) {
     Matrix sp30;
     MKWidgetBoundingVolume sp10;
@@ -8779,7 +8775,7 @@ void MKWidget::UpdateState() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *'
 void MKWidget::Draw(MKWidgetRenderContext arg0) {
     if (IsFlagSet(2U) != 0) {
         Render(arg0);
@@ -8814,7 +8810,7 @@ void MKWidget::GetWidgetMatrix(Matrix *arg0) {
     arg0->Translate(arg0, *(MKVector3 *) (this->unk4 + 8));
 }
 
-#if 0 // DRAFT: function call 'MKWidget(int)' does not match
+#if 0 // DRAFT: function call 'MKWidget(int)' does not match 'MKWidget::MKWidget(MKWidgetDescriptor *)' 'MKWidget::MKWidget(const MKWidget &)'
 s32 MKWidget::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget *temp_r3_16558;
     MKWidget *temp_r3_16774;
@@ -9141,7 +9137,7 @@ MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKSetColorV(void)' does not match
+#if 0 // DRAFT: function call 'MKSetColorV(void)' does not match 'MKSetColorV(const MKVector4 &)'
 void WidgetDrawBox(const MKVector3 &arg0, const MKVector3 &arg1, int arg2) {
     MKBegin(4);
     MKSetColorV(*(MKWidget_GetMetric(arg2)));
@@ -9182,7 +9178,7 @@ void WidgetDrawSquare(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     MKEnd();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector4 *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const MKVector4 *' to 'MKVector4 *'
 void WidgetDrawBevel(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, bool arg5, bool arg6) {
     f64 sp80;
     f64 sp78;
@@ -9266,7 +9262,7 @@ void PopScissorRect() {
     ApplyScissorRect();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     f64 sp40;
     f64 sp38;
@@ -9389,7 +9385,7 @@ void MKWidgetSerialise::SerialiseVersion() {
 
 }
 
-#if 0 // DRAFT: function call 'MKMetadata_Resolve(unsigned char, unsigned char, int)' does
+#if 0 // DRAFT: function call 'MKMetadata_Resolve(unsigned char, unsigned char, int)' does not match 'MKMetadata_Resolve(MKMetadata *, int, const char **)'
 u8 MKWidgetSerialise::GetMetaData(MKWidgetMetaData *&arg0, unsigned int arg1) {
     s8 *var_r3_17758;
 
@@ -9424,7 +9420,7 @@ void MKWidget_AddToDescriptorList(MKWidgetDescriptor *arg0) {
     pDescriptorList = arg0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetEditable * (MKWidget::*)()const
+#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetEditable * (MKWidget::*)()const ' to 'MKWidget * (*)()' Too many errors printed, aborting program
 void MKWidgetsInternal_cpp::__sinit() {
     f32 sp2F4;
     f32 sp2F0;

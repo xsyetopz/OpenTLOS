@@ -255,10 +255,8 @@ void LockOnTargetDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LockOnTargetDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = MKMaterial_Create("crosshair");
-    this->unk64 = MKMaterial_Create("Fx_159");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("crosshair"));
+    this->unk64 = (MKMaterial *) (MKMaterial_Create("Fx_159"));
 }
-#endif

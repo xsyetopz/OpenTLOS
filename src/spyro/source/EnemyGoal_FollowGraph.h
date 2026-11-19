@@ -401,7 +401,7 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP2(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
     f64 sp28;
     f64 sp20;
@@ -465,7 +465,7 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP2(MKVector3 arg0, MKVect
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP1(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
     f64 sp28;
     f64 sp20;
@@ -529,7 +529,7 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP1(MKVector3 arg0, MKVect
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 inline f32 EnemyGoal_GraphJump::GetTotalTime(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
     f64 sp40;
     f64 sp38;

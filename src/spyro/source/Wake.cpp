@@ -126,7 +126,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void *Wake::Update() {
     f64 spD8;
     f64 spD0;
@@ -200,7 +200,7 @@ loop_41:
                     this->unk54 -= 1;
                 }
                 if ((s32) this->unk54 > 0) {
-                    var_r3_264 = ((u8 *) this->unk5C) + (this->unk58 * 0x88);
+                    var_r3_264 = (signed char *) (((u8 *) this->unk5C) + (this->unk58 * 0x88));
                 } else {
                     var_r3_264 = NULL;
                 }
@@ -344,7 +344,6 @@ void Wake::Deinit() {
     this->unk4C = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void Wake::Init() {
     void *var_r3_594;
 
@@ -359,6 +358,5 @@ void Wake::Init() {
     M2C_FIELD(this->unk0, f32 **, 0x1C) = &this->unkA0;
     this->unk60.SetIdentity();
     this->unk8 = &this->unk60;
-    this->unk4C = MKMaterial_Create("fx_077");
+    this->unk4C = (MKMaterial *) (MKMaterial_Create("fx_077"));
 }
-#endif

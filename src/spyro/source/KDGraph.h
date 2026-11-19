@@ -62,14 +62,14 @@ inline void KDGraphNode::GetPos() const {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 inline void KDGraphNode::SetPos(MKVector3 arg0) {
     this->unk8 = M2C_FIELD(arg0, f64 *, 0);
     this->unk10 = M2C_FIELD(arg0, f64 *, 8);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to 'unsigned long'
 inline s32 KDGraphNode::FreeLinkAvaliable() {
     s32 var_ctr_418;
     s32 var_r4_417;

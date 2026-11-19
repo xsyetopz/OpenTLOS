@@ -46,8 +46,8 @@
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static s8 *pMoltenMetalBucketEvents[3] = { "emitStart", "emitStop", NULL };
+#if 0 // DRAFT: expression syntax error
+static s8 *pMoltenMetalBucketEvents[3] = (signed char *) ({ "emitStart", "emitStop", NULL });
 #endif
 static s32 lit_655 = 1;
 
@@ -362,7 +362,7 @@ f32 MoltenMetalBucket::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to 'const char **'
 s32 MoltenMetalBucket::LoadDone() {
     GameProp::LoadDone();
     this->unk80->InitEvents(pMoltenMetalBucketEvents);
@@ -401,11 +401,11 @@ void MoltenMetalBucketDescriptor::Resolve() {
     this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "");
     this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "");
     this->unkEC = MKMaterial_Create"";
-    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("");
-    this->unkF4 = ((MKAnimScript *) this->unk34)->GetAnim("");
-    this->unkF8 = ((MKAnimScript *) this->unk34)->GetAnim("");
-    this->unkFC = ((MKAnimScript *) this->unk34)->GetAnim("");
-    this->unk100 = ((MKAnimScript *) this->unk34)->GetAnim("");
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
+    this->unkF4 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
+    this->unkF8 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
+    this->unkFC = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
+    this->unk100 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
 }
 #endif
 

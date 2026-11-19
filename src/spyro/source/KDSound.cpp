@@ -58,11 +58,11 @@ extern M2C_UNK gb;
 extern SoundEventInstance **instanceCache;
 extern s32 instanceCacheCount;
 static M2C_UNK soundDuckData;
-#if 0 // DRAFT: identifier 'gsData' redeclared
+#if 0 // DRAFT: identifier 'gsData' redeclared was declared as: 'unsigned long' now declared as: 'unsigned long[11]'
 static u32 gsData[0xB];
 #endif
 static KDSoundData kdsData;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_soundPlayFollowArray_0x8'
 static struct _struct_soundPlayFollowArray_0x8 soundPlayFollowArray[0xF];
 #endif
 static s32 noSoundID = -0x63;
@@ -253,7 +253,7 @@ void KDSound_SoundDucking_Init(float arg0, float arg1, float arg2, bool arg3) {
     M2C_FIELD(&soundDuckData, f32 *, 0x10) = (f32) (1.0f / (f32) var_f3_0);
 }
 
-#if 0 // DRAFT: function call 'Sound_GetID(signed char *)' does not match
+#if 0 // DRAFT: function call 'Sound_GetID(signed char *)' does not match 'Sound_GetID(const char *)'
 s32 SoundMaterial::Play(const MKVector3 *arg0, SoundEvent *arg1, int arg2, float *arg3) {
     f32 temp_f1_515;
     f32 temp_f1_524;
@@ -491,7 +491,6 @@ block_43:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void SoundEvent::Reset() {
     s32 var_r4_863;
     s32 var_r5_868;
@@ -509,7 +508,7 @@ loop_7:
 loop_5:
         temp_r7_882 = var_r4_863 + this->unk10;
         if (var_r9_867 < (s32) M2C_FIELD(temp_r7_882, u8 *, 0xD)) {
-            temp_r7_872 = M2C_FIELD(temp_r7_882, s32 *, 0x10) + var_r5_868;
+            temp_r7_872 = (void *) (M2C_FIELD(temp_r7_882, s32 *, 0x10) + var_r5_868);
             if ((u32) M2C_FIELD(temp_r7_872, u32 *, 0) != 0U) {
                 M2C_FIELD(temp_r7_872, s32 *, 8) = 0;
             }
@@ -522,7 +521,6 @@ loop_5:
         goto loop_7;
     }
 }
-#endif
 
 void *GlobalSoundData::GetSoundDataBlock(int arg0) {
     s32 temp_r0_898;
@@ -532,17 +530,15 @@ void *GlobalSoundData::GetSoundDataBlock(int arg0) {
     return ((u8 *) this->unk10) + (temp_r0_898 * 0xC);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 SoundMaterial *GlobalSoundData::GetSoundMatBlock(int arg0) {
     s32 temp_r0_910;
 
     temp_r0_910 = this->unk18;
     this->unk18 = temp_r0_910 + arg0;
-    return this->unkC + (temp_r0_910 * 0x14);
+    return (SoundMaterial *) (this->unkC + (temp_r0_910 * 0x14));
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *)' does not match 'stricmp(signed char *, signed char *, long *)'
 u8 GlobalSoundData::CountMaterials(MKIniLine *arg0) {
     MKIniLine *var_r30_927;
     u8 var_r29_928;
@@ -561,7 +557,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[6], signed char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[6], signed char *)' does not match 'stricmp(signed char *, signed char *, long *)'
 MKIniLine *GlobalSoundData::ParseSound(SoundMaterial *arg0, MKIniLine *arg1) {
     s8 *sp8;
     MKIniLine *temp_r3_1017;
@@ -578,7 +574,7 @@ loop_12:
                 arg0->unk10 = temp_r31_1002;
             }
             M2C_FIELD(temp_r31_1002, s32 *, 8) = 0;
-            M2C_FIELD(temp_r31_1002, MKStringCache **, 0) = this->unk20->Add(sp8);
+            M2C_FIELD(temp_r31_1002, MKStringCache **, 0) = (const char *) (this->unk20->Add(sp8));
             M2C_FIELD(temp_r31_1002, f32 *, 4) = 1.0f;
             temp_r3_1017 = var_r30_978->unkC->GetNextLine(var_r30_978);
             var_r30_978 = temp_r3_1017;
@@ -596,7 +592,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does
+#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does not match 'stricmp(signed char *, signed char *, long *)'
 MKIniLine *GlobalSoundData::ParseSoundMaterial(SoundMaterial *arg0, MKIniLine *arg1, unsigned char arg2, float arg3, float arg4) {
     s32 sp14;
     f32 sp10;
@@ -657,7 +653,7 @@ block_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
 MKIniLine *GlobalSoundData::ParseSoundEvent(SoundEvent *arg0, MKIniLine *arg1) {
     f32 sp18;
     f32 sp14;
@@ -675,7 +671,7 @@ MKIniLine *GlobalSoundData::ParseSoundEvent(SoundEvent *arg0, MKIniLine *arg1) {
     var_r25_1233 = 0xFF;
     sp18 = 1.0f;
     sp14 = 1.0f;
-    temp_r3_1240 = this->unk20->Add(arg1->GetString(0));
+    temp_r3_1240 = (const char *) (this->unk20->Add(arg1->GetString(0)));
     sp10 = 0x3E8;
     temp_r0_1244 = &arg0->unk14;
     spC = 0;
@@ -740,7 +736,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[6], signed char *, const char[8])' does
+#if 0 // DRAFT: function call 'stricmp(const char[6], signed char *, const char[8])' does not match 'stricmp(signed char *, signed char *, long *)'
 MKIniLine *GlobalSoundData::SkipSetupSection(MKIni *arg0) {
     MKIniLine *temp_r3_1485;
     MKIniLine *var_r31_1486;
@@ -761,7 +757,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does
+#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does not match 'stricmp(signed char *, signed char *, long *)'
 void GlobalSoundData::ParseInSoundEvents(MKIni *arg0) {
     MKIniLine *var_r31_1531;
 
@@ -776,7 +772,7 @@ loop_13:
             this->unk4 = var_r31_1531->GetInt(0);
         }
         if ((var_r31_1531->GetFieldName() != NULL) && (stricmp("SoundEvent", var_r31_1531->GetFieldName(), "Default") == 0)) {
-            var_r31_1531 = ParseSoundEvent(this->unk8 + (this->unk14 * 0x30), var_r31_1531);
+            var_r31_1531 = (SoundEvent *) (ParseSoundEvent(this->unk8 + (this->unk14 * 0x30), var_r31_1531));
             *(this->unk0 + (this->unk4 * 4)) = this->unk8 + (this->unk14 * 0x30);
             this->unk14 += 1;
             this->unk4 += 1;
@@ -789,7 +785,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does
+#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does not match 'stricmp(signed char *, signed char *, long *)'
 void GlobalSoundData::ParseAndBuildHeaps(MKIni *arg0) {
     s8 *sp8;
     MKHeap *var_r3_1763;
@@ -835,28 +831,28 @@ loop_19:
     this->unk20 = M2C_ERROR(/* Read from unset register $r3 */);
     temp_r29_1755 = this->unk4 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_1763 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1755, NULL, 0);
+        var_r3_1763 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1755, NULL, 0));
     } else {
         var_r3_1763 = malloc(temp_r29_1755);
     }
     this->unk0 = var_r3_1763;
     temp_r29_1771 = this->unk14 * 0x30;
     if (MKHeap::Current() != NULL) {
-        var_r3_1779 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1771, NULL, 0);
+        var_r3_1779 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1771, NULL, 0));
     } else {
         var_r3_1779 = malloc(temp_r29_1771);
     }
     this->unk8 = var_r3_1779;
     temp_r29_1787 = this->unk18 * 0x14;
     if (MKHeap::Current() != NULL) {
-        var_r3_1795 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1787, NULL, 0);
+        var_r3_1795 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1787, NULL, 0));
     } else {
         var_r3_1795 = malloc(temp_r29_1787);
     }
     this->unkC = var_r3_1795;
     temp_r29_1803 = this->unk1C * 0xC;
     if (MKHeap::Current() != NULL) {
-        var_r3_1811 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1803, NULL, 0);
+        var_r3_1811 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1803, NULL, 0));
     } else {
         var_r3_1811 = malloc(temp_r29_1803);
     }
@@ -868,7 +864,6 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void GlobalSoundData::Update() {
     SoundEvent *temp_r3_1869;
     s32 var_r28_1863;
@@ -883,7 +878,7 @@ void GlobalSoundData::Update() {
         var_r31_1865 = var_r28_1863 * 0x30;
 loop_2:
         var_r28_1863 += 1;
-        temp_r3_1869 = this->unk8 + var_r31_1865;
+        temp_r3_1869 = (SoundEvent *) (this->unk8 + var_r31_1865);
         var_r31_1865 += 0x30;
         temp_r3_1869->Reset();
         if ((u32) (OSGetTick() - temp_r29_1859) < temp_r30_1864) {
@@ -898,7 +893,6 @@ loop_2:
         this->unk28 = 0.0f;
     }
 }
-#endif
 
 void GlobalSoundData::InvalidateSoundIDRange(int arg0, int arg1) {
     *GlobalSoundData::firstInvalidSoundID = arg0;
@@ -1023,7 +1017,7 @@ void KDSoundData::Deinit() {
     this->unk38 = 0;
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[1])' does not match 'strcpy(char *, const char *)'
 void KDSoundData::Init(bool arg0) {
     this->unk0 = 0;
     strcpy(&this->unk8, "");
@@ -1073,7 +1067,7 @@ void KDSoundData::Init(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'KDFaderObject::FadeMode'
 void KDSoundFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const MKVector3 *arg4, unsigned int arg5, int arg6, bool arg7) {
     s32 sp8;
     f32 temp_f2_2276;
@@ -1136,7 +1130,7 @@ void KDSoundFader::Init(float arg0, float arg1) {
     this->unk8 = arg1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
+#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void KDSoundPlayer::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const MKVector3 *arg4, unsigned int arg5, int arg6, bool arg7) {
     f64 sp20;
     f64 sp18;
@@ -1154,7 +1148,7 @@ void KDSoundPlayer::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const M
 
     var_r26_2448 = arg1;
     var_r27_2450 = arg3;
-    var_r28_2451 = arg4;
+    var_r28_2451 = (MKVector3 *) (arg4);
     if ((u8) bSplitScreen != 0) {
         var_r26_2448 = 0;
         var_r27_2450 = NULL;
@@ -1237,7 +1231,7 @@ void KDSoundPlayer::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void KDS_FollowSndPosArrayShuffleDown(int arg0) {
     s32 temp_r0_2644;
     s32 var_ctr_2639;
@@ -1255,7 +1249,7 @@ void KDS_FollowSndPosArrayShuffleDown(int arg0) {
         var_ctr_2639 = 0xF - var_r6_2634;
         if (var_r6_2634 < 0xF) {
 loop_4:
-            temp_r5_2643 = soundPlayFollowArray + var_r3_2638;
+            temp_r5_2643 = (void *) (soundPlayFollowArray + var_r3_2638);
             temp_r0_2644 = M2C_FIELD(temp_r5_2643, s32 *, 0);
             if (temp_r0_2644 != -1) {
                 M2C_FIELD(temp_r5_2643, s32 *, -8) = temp_r0_2644;
@@ -1286,7 +1280,7 @@ u8 KDS_FollowSndPosArraySndEventIsIn(int arg0, int &arg1) {
     var_ctr_2673 = 0xF;
 loop_1:
     if (arg0 == (s32) *(soundPlayFollowArray + var_r5_2672)) {
-        &arg1 = var_r7_2671;
+        &arg1 = (int *) (var_r7_2671);
         return 1U;
     }
     var_r7_2671 += 1;
@@ -1322,7 +1316,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDS_FollowSndPosArraySndEventIsIn(int, long)' does not
+#if 0 // DRAFT: function call 'KDS_FollowSndPosArraySndEventIsIn(int, long)' does not match 'KDS_FollowSndPosArraySndEventIsIn(int, int &)'
 void KDS_FollowSndPosArrayRemove(int arg0) {
     s32 sp8;
 
@@ -1344,7 +1338,6 @@ void KDS_FollowSndPosArrayAdd(int arg0, const MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDS_FollowSndPosArrayInit() {
     s32 var_ctr_2766;
     s32 var_r3_2760;
@@ -1353,16 +1346,15 @@ void KDS_FollowSndPosArrayInit() {
     var_r3_2760 = 0;
     var_ctr_2766 = 0xF;
     do {
-        temp_r7_2768 = soundPlayFollowArray + var_r3_2760;
+        temp_r7_2768 = (void *) (soundPlayFollowArray + var_r3_2760);
         var_r3_2760 += 8;
         M2C_FIELD(temp_r7_2768, s32 *, 0) = -1;
         M2C_FIELD(temp_r7_2768, s32 *, 4) = 0;
         var_ctr_2766 -= 1;
     } while (var_ctr_2766 != 0);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
+#if 0 // DRAFT: illegal type
 u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
     f64 sp50;
     f64 sp48;
@@ -1380,7 +1372,7 @@ u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
     f64 temp_f1_2815;
     void *temp_r4_2812;
 
-    var_r5_0 = arg2;
+    var_r5_0 = (MKVector3 *) (arg2);
     if (arg1 != NULL) {
         var_r5_0 = arg1->unk8 + 0x30;
     }
@@ -1520,7 +1512,7 @@ void KDSound_SetMasterVolume(float arg0, float arg1) {
     Sound_SetMasterVolume(kdsData.unk3C, kdsData.unk40);
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *, long *)'
 s32 KDSound_LoadLine(MKIniLine *arg0, const char *arg1, int *arg2) {
     s8 *sp8;
 
@@ -1614,7 +1606,7 @@ void KDSound_IsMusicPlaying() {
     Sound_MusicIsPlaying();
 }
 
-#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not
+#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not match 'Sound_MusicPlay(const char *, bool, int)'
 void KDSound_UnDuckMusic(float arg0) {
     if ((kdsData.unk4C < 1.0f) && ((s32) kdsData.unk54 <= 0)) {
         if ((s32) kdsData.unk58 == 3) {
@@ -1632,7 +1624,7 @@ void KDSound_UnDuckMusic(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not
+#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not match 'Sound_MusicPlay(const char *, bool, int)'
 void KDSound_DuckMusic(float arg0, float arg1) {
     u8 var_r5_3410;
 
@@ -1712,7 +1704,7 @@ void KDSound_ResetMusic() {
     bMusicDucked = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'KDFaderObject::FadeMode'
 void KDSound_StopMusic(float arg0) {
     if ((u8) kdsData.unkBC == 0) {
         kdsData.unkD0 = 0;
@@ -1729,7 +1721,7 @@ void KDSound_StopMusic(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does not match 'strncpy(char *, const char *, unsigned int)'
 void KDSound_PlayMusic(const char *arg0, float arg1, float arg2, int arg3) {
     strncpy(&kdsData.unk9C, arg0, 0x20U);
     if ((stricmp(arg0, KDSound_GetCurrentMusicTrackName()) != 0) || (KDSound_IsMusicPlaying(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
@@ -1903,7 +1895,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 s32 KDSound_Play3d(MKAnimScript *arg0, const MKVector3 *arg1, unsigned int arg2, float arg3, bool arg4) {
     s32 temp_r4_4124;
     s32 var_r30_4100;
@@ -1974,7 +1966,7 @@ block_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType' Too many errors printed, aborting program
 s32 KDSound_Play(MKAnimScript *arg0, unsigned int arg1) {
     s32 temp_r3_4254;
     s32 temp_r4_4267;
@@ -2036,7 +2028,7 @@ u8 KDSound_GetSoundEventVol(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Sound_SetListener(const Matrix *)' does not match
+#if 0 // DRAFT: function call 'Sound_SetListener(const Matrix *)' does not match 'Sound_SetListener(Matrix *)'
 void KDSound_SetListener(const Matrix *arg0) {
     if (arg0 != NULL) {
         Sound_SetListener(arg0);
@@ -2073,7 +2065,7 @@ void KDSound_Deinit() {
     kdsData.unk78 = 0;
 }
 
-#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does not match 'strncpy(char *, const char *, unsigned int)'
 void KDSound_SetLevelID(const char *arg0) {
     if (arg0 != NULL) {
         strncpy(&kdsData.unk8, arg0, 0xAU);
@@ -2187,7 +2179,7 @@ void KDSound_ResolveSoundIDs(float arg0) {
     ((GlobalSoundData *) gsData)->ResolveSoundIDs(arg0);
 }
 
-#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does not match 'strncpy(char *, const char *, unsigned int)'
 void KDSound_Init(const char *arg0) {
     s32 temp_ret_4781;
     s32 temp_ret_4806;
@@ -2213,7 +2205,7 @@ void KDSound_Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'SoundEventInstance *' and 'SoundEventInstance **'
 void KDSound_DeinitModule() {
     SoundEventInstance **var_r31_4853;
     SoundEventInstance **var_r3_4854;
@@ -2258,7 +2250,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDSound_InitModule(bool arg0, int arg1) {
     MKHeap *var_r3_4938;
     s32 var_ctr_4950;
@@ -2268,12 +2259,12 @@ void KDSound_InitModule(bool arg0, int arg1) {
     ((GlobalSoundData *) gsData)->ResolveSoundIDs();
     KDS_FollowSndPosArrayInit();
     if (MKHeap::Current() != NULL) {
-        var_r3_4938 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x608, NULL, 0);
+        var_r3_4938 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x608, NULL, 0));
     } else {
         var_r3_4938 = malloc(0x608);
     }
     instanceCache = (SoundEventInstance **) var_r3_4938;
-    instanceCache = var_r3_4938 + 0x500;
+    instanceCache = (SoundEventInstance **) (var_r3_4938 + 0x500);
     M2C_FIELD(var_r3_4938, s32 *, 0x500) = 0;
     var_ctr_4950 = 0x40;
     do {
@@ -2285,4 +2276,3 @@ void KDSound_InitModule(bool arg0, int arg1) {
     instanceCache += 4;
     M2C_FIELD(instanceCache, MKHeap **, 4) = NULL;
 }
-#endif

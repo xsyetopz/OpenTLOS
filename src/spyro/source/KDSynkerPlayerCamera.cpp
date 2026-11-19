@@ -33,7 +33,7 @@ s32 strcmpi(s8 *, s8 *);                            /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern f32 *KDSpline_PositionMixer;
 
-#if 0 // DRAFT: function call 'stricmp(long, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(long, const char *)' does not match 'stricmp(long, signed char *)'
 void *KDSP_Camera::FindCameraPath(const char *arg0) {
     s32 var_r30_17;
     s32 var_r31_18;
@@ -53,7 +53,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmpi(long, const char *)' does not match
+#if 0 // DRAFT: function call 'strcmpi(long, const char *)' does not match 'strcmpi(signed char *, signed char *)'
 void *KDSP_Camera::FindCAD(const char *arg0) {
     s32 var_r30_55;
     s32 var_r31_56;
@@ -73,11 +73,11 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'Endian(unsigned long)' does not match 'Endian<...>(T0 &)'
 void KDSP_Camera::ParseMCDFile(const char *arg0) {
     u32 *var_r31_101;
 
-    this->unk94 = MKArchive_Load(arg0, (int *) &this->unk90, NULL, -1);
+    this->unk94 = (unsigned long *) (MKArchive_Load(arg0, (int *) &this->unk90, NULL, -1));
     this->unk98 = NULL;
     var_r31_101 = this->unk94;
 loop_5:
@@ -93,7 +93,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmpi(const char[6])' does not match
+#if 0 // DRAFT: function call 'strcmpi(const char[6])' does not match 'strcmpi(signed char *, signed char *)'
 void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
     MKIniLine *temp_r3_159;
     MKIniLine *var_r28_175;
@@ -134,7 +134,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
     s8 sp8;
     s32 temp_r3_292;
@@ -161,7 +161,7 @@ void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal type
 void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &arg3) {
     MKIniLine sp18;
     MKIniLine sp8;
@@ -226,7 +226,7 @@ loop_9:
                 } else {
                     M2C_FIELD(var_r30_345, void **, 0x14) = NULL;
                 }
-                M2C_FIELD(var_r30_345, s32 *, 0) = var_r25_351->GetFieldName();
+                M2C_FIELD(var_r30_345, s32 *, 0) = (long) (var_r25_351->GetFieldName());
                 if (var_r23_358 > 0) {
                     temp_r4_410 = arg0->unkC;
                     temp_r6_412 = arg0->unk14 - 1;
@@ -290,11 +290,11 @@ loop_53:
 loop_49:
                 if (var_r26_594 != NULL) {
                     if (var_r26_594->IsField("BarName") != 0) {
-                        temp_r3_604 = var_r26_594->GetString(0);
+                        temp_r3_604 = (signed char *) (var_r26_594->GetString(0));
                         if (strnicmp(temp_r3_604, "MAX:", 4) == 0) {
-                            M2C_FIELD(var_r22_579, void **, 0xC) = FindCAD(temp_r3_604 + 4);
+                            M2C_FIELD(var_r22_579, void **, 0xC) = (const char *) (FindCAD(temp_r3_604 + 4));
                         } else {
-                            M2C_FIELD(var_r22_579, void **, 8) = FindCameraPath(temp_r3_604);
+                            M2C_FIELD(var_r22_579, void **, 8) = (const char *) (FindCameraPath(temp_r3_604));
                         }
                     } else {
                         var_r27_630 = 0;
@@ -308,12 +308,12 @@ loop_49:
                     var_r26_594 = var_r26_594->unkC->GetNextLine(var_r26_594);
                     goto loop_49;
                 }
-                temp_r4_675 = &arg3;
+                temp_r4_675 = (long) (&arg3);
                 var_r0_676 = M2C_FIELD(var_r22_579, s32 *, 0) + M2C_FIELD(var_r22_579, s32 *, 4);
                 if (temp_r4_675 > var_r0_676) {
                     var_r0_676 = temp_r4_675;
                 }
-                &arg3 = var_r0_676;
+                &arg3 = (int *) (var_r0_676);
                 var_r22_579 += 0x18;
                 var_r23_584 = var_r23_584->unkC->GetNextLine(var_r23_584);
                 goto loop_53;
@@ -392,7 +392,7 @@ loop_10:
     HeapAddSizeCAD(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'unk4'
 void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) {
     s32 sp2AC;
     s32 sp2A8;
@@ -549,7 +549,7 @@ loop_5:
             }
         }
     }
-    temp_r28_927 = this->unk8C + (this->unk70 * 0x18);
+    temp_r28_927 = (KDSP_Bar *) (this->unk8C + (this->unk70 * 0x18));
     var_f3_940 = (arg1 - (f32) temp_r28_927->unk0) / (f32) temp_r28_927->unk4;
     if (var_f3_940 < 1.0f) {
 

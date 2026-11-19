@@ -44,7 +44,7 @@ void RotateProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 RotateProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_105;
 
@@ -56,7 +56,7 @@ s32 RotateProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void RotateProperty::Update() {
     Matrix sp70;
     f64 sp68;
@@ -90,7 +90,7 @@ void RotateProperty::Update() {
     void *temp_r5_213;
     void *temp_r6_264;
 
-    temp_r3_130 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_130 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     if ((u8) M2C_FIELD(temp_r3_130, u8 *, 0x84) != 0) {
         sp20 = M2C_FIELD(this, f64 *, 0x20) * (f64) gUpdateTimeDelta;
         temp_r3_140 = ((u8 *) temp_r3_130) + 0x40;
@@ -122,8 +122,8 @@ void RotateProperty::Update() {
         }
         if ((s32) this->unk30 < 0) {
             temp_r3_212 = *KDProperty::pInstanceMem + this->unk8;
-            temp_r5_213 = temp_r3_212 + 0x40;
-            temp_r3_214 = temp_r3_212 + 0x50;
+            temp_r5_213 = (void *) (temp_r3_212 + 0x40);
+            temp_r3_214 = (void *) (temp_r3_212 + 0x50);
             temp_f0_217 = M2C_FIELD(temp_r3_214, f64 *, 0) + M2C_FIELD(temp_r5_213, f64 *, 0);
             sp30 = temp_f0_217;
             sp50 = temp_f0_217;
@@ -137,17 +137,17 @@ void RotateProperty::Update() {
         }
         ((Matrix *) (*KDProperty::pInstanceMem + this->unk8))->SetIdentity();
         temp_r3_260 = this->unk8;
-        temp_r6_264 = *KDProperty::pInstanceMem + (temp_r3_260 + 0x70);
-        temp_r3_265 = *KDProperty::pInstanceMem + temp_r3_260;
+        temp_r6_264 = (void *) (*KDProperty::pInstanceMem + (temp_r3_260 + 0x70));
+        temp_r3_265 = (Matrix *) (*KDProperty::pInstanceMem + temp_r3_260);
         sp10 = -M2C_FIELD(temp_r6_264, f32 *, 0);
         sp14 = -M2C_FIELD(temp_r6_264, f32 *, 4);
         sp18 = -M2C_FIELD(temp_r6_264, f32 *, 8);
         sp40 = (f64) sp10;
         sp48 = (f64) sp18;
         temp_r3_265->Translate(temp_r3_265, *((MKVector3 *) &sp40));
-        temp_r3_283 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r3_283 = (Matrix *) (*KDProperty::pInstanceMem + this->unk8);
         temp_r3_283->RotatePYR(temp_r3_283, *(temp_r3_283 + 0x40));
-        temp_r3_289 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r3_289 = (Matrix *) (*KDProperty::pInstanceMem + this->unk8);
         temp_r3_289->Translate(temp_r3_289, *(temp_r3_289 + 0x70));
     }
 }
@@ -181,7 +181,7 @@ void RotateProperty::ResolveInstance() {
         temp_f31_337 = M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)), f32 *, 0x14);
         sp18 = *MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
         sp1C = temp_f31_337;
-        temp_r3_346 = *KDProperty::pInstanceMem + (this->unk8 + 0x60);
+        temp_r3_346 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x60));
         sp20 = temp_f30_333;
         M2C_FIELD(temp_r3_346, f64 *, 0) = (f64) sp18;
         M2C_FIELD(temp_r3_346, f64 *, 8) = (f64) sp20;
@@ -189,7 +189,7 @@ void RotateProperty::ResolveInstance() {
         sp50 = (f64) sp20;
         MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
         ((Matrix *) &sp38)->GetRotationPYR();
-        temp_r3_365 = *KDProperty::pInstanceMem + (this->unk8 + 0x50);
+        temp_r3_365 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x50));
         M2C_FIELD(temp_r3_365, f64 *, 0) = sp38;
         M2C_FIELD(temp_r3_365, f64 *, 8) = sp40;
         return;
@@ -214,18 +214,17 @@ void RotateProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'bool *'
 s32 RotateProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadBool("Enabled", *KDProperty::pInstanceMem + (this->unk8 + 0x84), 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void RotateProperty::InitInstance() {
     MKIniLine *var_r31_491;
     void *temp_r3_476;
 
-    temp_r3_476 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_476 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_476, s8 *, 0x84) = 0;
     M2C_FIELD(temp_r3_476, f32 *, 0x40) = 0.0f;
     M2C_FIELD(temp_r3_476, f32 *, 0x44) = 0.0f;
@@ -248,7 +247,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void RotateProperty::Resolve(KDPropertySet *arg0) {
@@ -258,7 +256,7 @@ void RotateProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 RotateProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_567;
 
@@ -273,13 +271,13 @@ s32 RotateProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
 RotateProperty::RotateProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;
-    this->unk10 = "localToWorld";
+    this->unk10 = (signed char *) ("localToWorld");
     this->unk14 = 0;
     this->unk20 = 0.0f;
     this->unk24 = 0.0f;

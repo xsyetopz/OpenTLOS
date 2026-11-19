@@ -77,10 +77,8 @@ inline void SpyroState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 inline void *SpyroState::GetStateInfo() {
-    return "";
+    return (void *) ("");
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROSTATE_H

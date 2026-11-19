@@ -15,7 +15,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void SpawnPointObject::Resolve() {
     SpawnerObject *sp10;
     s32 spC;
@@ -55,7 +55,7 @@ void SpawnPointObject::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void SpawnPointObject::LoadDone() {
     void *temp_r3_85;
 
@@ -66,7 +66,7 @@ void SpawnPointObject::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 s32 SpawnPointObject::LoadLine(MKIniLine *arg0) {
     s32 sp8;
     void *temp_r3_108;
@@ -89,7 +89,7 @@ s32 SpawnPointObject::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void SpawnPointObject::Deinit() {
     SpawnerObject *temp_r3_197;
     void *temp_r3_181;
@@ -110,7 +110,7 @@ void SpawnPointObject::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void SpawnPointObject::Init(SpawnPointData *arg0) {
     void *temp_r3_227;
 

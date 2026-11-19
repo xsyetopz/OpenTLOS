@@ -174,15 +174,13 @@ inline s32 TimerProperty::GetInstanceDataAlignment() const {
     return 4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void TimerProperty::InitInstance() {
     void *temp_r3_1014;
 
-    temp_r3_1014 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_1014 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_1014, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_1014, s8 *, 4) = 0;
 }
-#endif
 
 inline s32 TimerProperty::Query(int arg0) {
     return arg0 == 1;

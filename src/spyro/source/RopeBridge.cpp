@@ -144,7 +144,6 @@ void RopeBridge::Detach(RopeBridgeAttachment *arg0) {
     arg0->unk10 = M2C_FIELD(&gb, f32 *, 0x30C);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 RopeBridge::Attach(RopeBridgeAttachment *arg0, MKCollisionInfo *arg1) {
     f64 sp10;
     f64 sp8;
@@ -179,7 +178,7 @@ loop_5:
             arg0->unk20->unk24 = arg0->unk24;
             arg0->unk24 = arg0;
             arg0->unk20 = arg0;
-            temp_r5_246 = ((u8 *) this->unk184) + (var_r3_225 + 0x20);
+            temp_r5_246 = (RopeBridgeAttachment *) (((u8 *) this->unk184) + (var_r3_225 + 0x20));
             arg0->unk20 = temp_r5_246;
             arg0->unk24 = temp_r5_246->unk24;
             temp_r5_246->unk24 = arg0;
@@ -197,7 +196,6 @@ loop_5:
 block_8:
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'ApplyForceMsg'
 void RopeBridge::Message(MKMessage *arg0) {
@@ -254,7 +252,7 @@ void RopeBridge::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void RopeBridge::Draw() {
     f64 sp68;
     f64 sp60;
@@ -1248,7 +1246,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal type
 void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
@@ -1341,7 +1339,7 @@ loop_2:
             sp70 = temp_f2_2113;
             temp_f1_2117 = (f64) sp68 * (f64) temp_f4_2112;
             sp18 = temp_f1_2117;
-            temp_r4_2120 = ((u8 *) temp_r5_2097) + 0x20;
+            temp_r4_2120 = (double *) (((u8 *) temp_r5_2097) + 0x20);
             sp20 = temp_f2_2113 * temp_f4_2112;
             sp58 = temp_f1_2117;
             sp60 = (f64) sp20;
@@ -1951,7 +1949,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to 'float'
 void RopeBridge::SetUpCullingLocalToWorld() {
     f32 sp70;
     f32 sp6C;
@@ -2215,7 +2213,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 u8 RopeBridge::LoadStartAndEnd(MKIniLine *arg0) {
     MKIniLine *temp_r3_3651;
     MKIniLine *temp_r3_3667;
@@ -2238,7 +2236,7 @@ u8 RopeBridge::LoadStartAndEnd(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 RopeBridge::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3702;
 
@@ -2328,13 +2326,12 @@ s32 RopeBridgeDescriptor::LoadLine(MKIniLine *arg0) {
     return var_r31_3874;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'RopeBridgeDescriptor *' to
 void RopeBridgeDescriptor::Deinit() {
     RopeBridgeDescriptor *temp_r4_3909;
     RopeBridgeDescriptor *temp_r4_3915;
 
     if ((RopeBridgeDescriptor *) *RopeBridgeDescriptor::pFirstDesc == this) {
-        *RopeBridgeDescriptor::pFirstDesc = this->unk6C;
+        *RopeBridgeDescriptor::pFirstDesc = (unsigned char) (this->unk6C);
     }
     temp_r4_3909 = this->unk68;
     if (temp_r4_3909 != NULL) {
@@ -2349,19 +2346,18 @@ void RopeBridgeDescriptor::Deinit() {
     this->unk64 = 0;
     MKPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: pointer/array required
 void RopeBridgeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
     this->unkC |= 0x20000;
-    this->unk6C = *RopeBridgeDescriptor::pFirstDesc;
+    this->unk6C = (RopeBridgeDescriptor *) (*RopeBridgeDescriptor::pFirstDesc);
     this->unk68 = NULL;
     if ((RopeBridgeDescriptor *) *RopeBridgeDescriptor::pFirstDesc != NULL) {
         (*RopeBridgeDescriptor::pFirstDesc)->unk68 = this;
     }
-    *RopeBridgeDescriptor::pFirstDesc = this;
+    *RopeBridgeDescriptor::pFirstDesc = (unsigned char) (this);
     this->unk64 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
 }
 #endif

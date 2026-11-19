@@ -421,13 +421,13 @@ void SpyroCynderStrafeState::JumpCycleExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCynderStrafeState::JumpCycleEnter() {
     this->unk10->SetAnim(M2C_FIELD(this->unk74, u32 *, 4), 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroCynderStrafeState::JumpStartTransition() {
     u8 var_r0_261;
     u8 var_r3_276;
@@ -463,7 +463,7 @@ void SpyroCynderStrafeState::JumpStartExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCynderStrafeState::JumpStartEnter() {
     this->unk64 = 0;
     this->unk65 = 0;
@@ -579,7 +579,7 @@ void SpyroCynderStrafeState::FallExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroCynderStrafeState::FallEnter() {
     s32 sp40;
     s32 sp3C;
@@ -703,7 +703,7 @@ u8 SpyroCynderStrafeState::JumpTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpyroCynderStrafeState' to
+#if 0 // DRAFT: illegal explicit conversion from 'SpyroCynderStrafeState' to 'double'
 void SpyroCynderStrafeState::JumpUpdate() {
     f64 sp58;
     f64 sp50;
@@ -822,7 +822,7 @@ void SpyroCynderStrafeState::JumpExit() {
     temp_r3_942->unk428 &= 0xFFFF7FFF;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroCynderStrafeState::JumpEnter() {
     f64 sp48;
     f64 sp40;
@@ -926,7 +926,7 @@ void SpyroCynderStrafeState::DodgeLeftRightSetLVEScale() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroCynderStrafeState::DodgeLeftRightTransition() {
     InputModifier *temp_r3_1186;
     s32 var_r3_1194;
@@ -984,7 +984,7 @@ void SpyroCynderStrafeState::DodgeLeftRightExit() {
     this->unk10->SetLVEScale(MKVector3::one);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCynderStrafeState::DodgeLeftRightEnter() {
     Spyro *temp_r4_1303;
     u32 var_r4_1315;
@@ -1053,7 +1053,7 @@ void SpyroCynderStrafeState::NoTargetExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::Medium'
 void SpyroCynderStrafeState::NoTargetEnter() {
     s32 sp10;
     s32 spC;
@@ -1077,7 +1077,7 @@ void SpyroCynderStrafeState::NoTargetEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCynderStrafeState::SelectAnim() {
     f64 sp70;
     f64 sp68;
@@ -1470,7 +1470,7 @@ void SpyroCynderStrafeState::Exit() {
     this->unk18.Exit(this);
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'KDMath_GetDirection(const Matrix *)' 'KDMath_GetDirection(float)'
 void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     f64 sp28;
     f64 sp20;

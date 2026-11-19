@@ -93,7 +93,7 @@ loop_3:
     this->unk2D48 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKDistanceLevelChunk' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKDistanceLevelChunk' to 'void *'
 void MKDistanceLevelChunk::DL_Draw_AboveWaterLayer() {
     f32 var_r30_165;
     s32 temp_cr0_eq_176;
@@ -114,7 +114,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKDistanceLevelChunk' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKDistanceLevelChunk' to 'void *'
 void MKDistanceLevelChunk::DL_Draw_BelowWaterLayer() {
     s32 temp_cr0_eq_206;
     s32 var_r30_195;
@@ -311,7 +311,7 @@ loop_5:
     return var_f30_430;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *)'
 void MKDistanceLevelChunk::SetTerrainUserData(const char *arg0, void *arg1) {
     s32 var_r29_515;
     s32 var_r31_516;
@@ -342,13 +342,13 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void (*)(MKModel *, unsigned short *,
+#if 0 // DRAFT: illegal explicit conversion from 'void (*)(MKModel *, unsigned short *, void *)' to 'float'
 void MKDistanceLevelChunk::SetTerrainDrawCallback(void (*arg0)(MKModel *, unsigned short *, void *)) {
     this->unk144 = M2C_BITWISE(f32, arg0);
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *)'
 void MKDistanceLevelChunk::EnableTerrainModel(const char *arg0, bool arg1) {
     s32 var_r29_565;
     s32 var_r31_566;
@@ -908,7 +908,7 @@ void MKDistanceLevelChunk::CalcStaticPropVis() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKDistanceLevelChunk *' to
+#if 0 // DRAFT: function call 'Update(MKProp *, MKProp *)' does not match 'MKProp::Update()'
 void MKDistanceLevelChunk::UpdateProp(MKProp *arg0, MKMessage *arg1) {
     MKProp *temp_r3_1423;
     MKProp *temp_r4_1444;
@@ -921,7 +921,7 @@ void MKDistanceLevelChunk::UpdateProp(MKProp *arg0, MKMessage *arg1) {
         temp_r3_1423->unk30 = arg0->unk30;
         arg0->unk30->unk34 = arg0->unk34;
     }
-    temp_r4_1444 = this + ((this->unk204 * 0x4C) + 0x16C);
+    temp_r4_1444 = (MKProp *) (this + ((this->unk204 * 0x4C) + 0x16C));
     arg0->unk34 = temp_r4_1444->unk34;
     arg0->unk30 = temp_r4_1444;
     arg0->unk34->unk30 = arg0;
@@ -1169,7 +1169,7 @@ loop_24:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SMTree::LinkUpRow(int arg0, int arg1, int arg2) {
     f64 sp90;
     f64 sp88;
@@ -1368,7 +1368,7 @@ void SMTree::Deinit() {
     Reset();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'CalcBoundingBox'
 void SMTree::Update() {
     BoundingVolume *var_r7_2320;
     MKProp *temp_r0_2328;
@@ -1399,10 +1399,10 @@ void SMTree::Update() {
             temp_r8_2324 = M2C_FIELD(temp_r6_2318->unk4->unk0, void **, 0x30);
 loop_9:
             if (var_r9_2321 < (s16) M2C_FIELD(temp_r8_2324, s16 *, 4)) {
-                temp_r0_2328 = var_r9_2321 + 1;
+                temp_r0_2328 = (MKProp *) (var_r9_2321 + 1);
                 var_r9_2321 += 1;
                 var_r7_2320->unk28 = temp_r0_2328;
-                temp_r4_2331 = M2C_FIELD(temp_r8_2324, s32 *, 0x50) + var_r3_2319;
+                temp_r4_2331 = (void *) (M2C_FIELD(temp_r8_2324, s32 *, 0x50) + var_r3_2319);
                 var_r3_2319 += 0x40;
                 M2C_FIELD(var_r7_2320, f64 *, 0) = (f64) M2C_FIELD(temp_r4_2331, f64 *, 0);
                 M2C_FIELD(var_r7_2320, f64 *, 8) = (f64) M2C_FIELD(temp_r4_2331, f64 *, 8);
@@ -1456,7 +1456,6 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SMTree::InternalInit(int arg0) {
     BoundingVolume *var_r3_2464;
     s32 temp_r31_2456;
@@ -1474,7 +1473,7 @@ void SMTree::InternalInit(int arg0) {
     this->unk10 = this->unkC + arg0;
     temp_r31_2456 = this->unk10 * 0x30;
     if (MKHeap::Current() != NULL) {
-        var_r3_2464 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2456, NULL, 0);
+        var_r3_2464 = (BoundingVolume *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2456, NULL, 0));
     } else {
         var_r3_2464 = malloc(temp_r31_2456);
     }
@@ -1482,7 +1481,6 @@ void SMTree::InternalInit(int arg0) {
     this->unk4 = &this->unk0[this->unk10 - 1];
     memset(this->unk0, 0, this->unk10 * 0x30);
 }
-#endif
 
 void SMTree::Init(int arg0, MKProp *arg1) {
     InternalInit(arg0);
@@ -1592,7 +1590,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 MKPropDescriptor *MKDistanceLevelChunk::FindDescriptor(const char *arg0) {
     s32 var_r31_2717;
 
@@ -1822,7 +1820,7 @@ void MKDistanceLevelChunk::PostDrawWater() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void MKDistanceLevelChunk::DrawWater(int arg0) {
     MKModel *temp_r28_3145;
     f32 temp_r4_3141;
@@ -2018,7 +2016,7 @@ loop_48:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
 s32 MKDistanceLevelChunk::Optimise() {
     s32 temp_r0_3469;
     s32 temp_r0_3500;
@@ -2079,7 +2077,7 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKProp *'
 s32 MKDistanceLevelChunk::ResolveAllProps() {
     MKProp *temp_r3_3576;
     MKProp *temp_r3_3658;
@@ -2182,7 +2180,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to 'float'
 s32 MKDistanceLevelChunk::DeinitChunk() {
     M2C_UNK *temp_r6_3842;
     s32 temp_r28_3805;
@@ -2232,7 +2230,7 @@ loop_10:
             }
             this->unk148 = 0;
         }
-        temp_r6_3842 = &this->unk29E0;
+        temp_r6_3842 = (long *) (&this->unk29E0);
         this->unk29E0.unk20 = M2C_BITWISE(f32, temp_r6_3842);
         temp_r4_3845 = &this->unk29E0.__vptr;
         temp_r3_3846 = &this->unk2A2C.__vptr;
@@ -2333,12 +2331,12 @@ s32 MKDistanceLevelChunk::InitChunk() {
             var_ctr_3965 -= 1;
         } while (var_ctr_3965 != 0);
         this->unk29AC = NULL;
-        temp_r0_3976 = &this->unk29E0;
+        temp_r0_3976 = (long *) (&this->unk29E0);
         temp_r8_3977 = &this->unk29E0.__vptr;
         temp_r7_3978 = &this->unk2A2C.__vptr;
         this->unk29E0.unk20 = M2C_BITWISE(f32, temp_r0_3976);
         temp_r6_3980 = this + 0x16C;
-        temp_r5_3981 = &this->unk1B8;
+        temp_r5_3981 = (long *) (&this->unk1B8);
         this->unk29E0.unk24 = M2C_BITWISE(f32, temp_r0_3976);
         this->unk29E0.unkC = NULL;
         this->unk2A2C.unk20 = M2C_BITWISE(f32, temp_r8_3977);
@@ -2391,7 +2389,7 @@ void MKDistanceLevelChunk::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void MKDistanceLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
     M2C_UNK *temp_r0_4086;
     M2C_UNK *temp_r6_4080;
@@ -2417,13 +2415,13 @@ void MKDistanceLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
         M2C_FIELD(temp_r4_4073, void **, 0x2AD0) = temp_r0_4075;
         var_ctr_4071 -= 1;
     } while (var_ctr_4071 != 0);
-    temp_r6_4080 = &this->unk29E0;
+    temp_r6_4080 = (long *) (&this->unk29E0);
     this->unk29AC = NULL;
     temp_r5_4082 = &this->unk29E0.__vptr;
     temp_r4_4083 = &this->unk2A2C.__vptr;
     temp_r3_4084 = this + 0x16C;
     this->unk29E0.unk20 = M2C_BITWISE(f32, temp_r6_4080);
-    temp_r0_4086 = &this->unk1B8;
+    temp_r0_4086 = (long *) (&this->unk1B8);
     this->unk29E0.unk24 = M2C_BITWISE(f32, temp_r6_4080);
     this->unk29E0.unkC = NULL;
     this->unk2A2C.unk20 = M2C_BITWISE(f32, temp_r5_4082);

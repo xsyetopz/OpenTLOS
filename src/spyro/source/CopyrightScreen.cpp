@@ -16,7 +16,7 @@ s32 stricmp(void *, u32);                           /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'UISystem *' to
+#if 0 // DRAFT: type mismatch 'KDMemoryCard *' and 'int'
 void CopyrightScreen::Update() {
     s32 sp8;
     KDMemoryCard *temp_r3_129;
@@ -62,7 +62,7 @@ void CopyrightScreen::Update() {
         break;
     case 2:                                         /* switch 1 */
         if (this->unkCC >= 1.0f) {
-            temp_r3_86 = ui_cast<UISystem *, UIContainer *>(GetRoot());
+            temp_r3_86 = (void **) (ui_cast<UISystem *, UIContainer *>(GetRoot()));
             sp8 = 0xF;
             M2C_FIELD(*temp_r3_86, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
@@ -85,10 +85,10 @@ void CopyrightScreen::Update() {
             this->unkD4 += 1;
             temp_r3_129 = this->unkD4;
             if (temp_r3_129 < 2) {
-                this->unkD8 = temp_r3_129->GetCard((s32) (u32) (u64) temp_ret_123);
+                this->unkD8 = (KDMemoryCard *) (temp_r3_129->GetCard((s32) (u32) (u64) temp_ret_123));
                 this->unkD8->SetState((KDMCState) 2);
             } else {
-                this->unkD8 = KDMemoryCard::GetFirstAvailable();
+                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
                 temp_r3_141 = this->unkD8;
                 if (temp_r3_141 != NULL) {
                     temp_r3_141->SetState((KDMCState) 3);
@@ -106,7 +106,7 @@ void CopyrightScreen::Update() {
             if ((temp_r4_158 != 0) && ((u8) temp_r3_157->unk8 != 0)) {
                 temp_r3_157->SetState((KDMCState) 3);
             } else if ((temp_r4_158 == 0) || (((s32) temp_r3_157->unk1C != 0) && ((s32) temp_r3_157->unk20 == 0))) {
-                this->unkD8 = temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158);
+                this->unkD8 = (KDMemoryCard *) (temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158));
                 temp_r3_179 = this->unkD8;
                 if (temp_r3_179 != NULL) {
                     temp_r3_179->SetState((KDMCState) 3);
@@ -115,7 +115,7 @@ void CopyrightScreen::Update() {
                 M2C_FIELD(&gb, s8 *, 0x382) = 1;
                 this->unkD8 = NULL;
             } else {
-                this->unkD8 = temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158);
+                this->unkD8 = (KDMemoryCard *) (temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158));
                 temp_r3_199 = this->unkD8;
                 if (temp_r3_199 != NULL) {
                     temp_r3_199->SetState((KDMCState) 3);
@@ -148,7 +148,6 @@ void CopyrightScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CopyrightScreen::OnEnter() {
     UIScreen::OnEnter();
     this->unkC8 = 0;
@@ -161,8 +160,7 @@ void CopyrightScreen::OnEnter() {
     if ((u8) *CopyrightScreen::bMemoryCardCheckDone == 0) {
         this->unkD0 = 1;
         this->unkD4 = NULL;
-        this->unkD8 = this->unkD4->GetCard(M2C_ERROR(/* Read from unset register $r4 */));
+        this->unkD8 = (KDMemoryCard *) (this->unkD4->GetCard(M2C_ERROR(/* Read from unset register $r4 */)));
         this->unkD8->SetState((KDMCState) 2);
     }
 }
-#endif

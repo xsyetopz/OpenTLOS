@@ -307,7 +307,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void SwampTier2::Draw() {
     f64 spB0;
     f64 spA8;

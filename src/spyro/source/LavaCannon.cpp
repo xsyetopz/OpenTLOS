@@ -255,7 +255,7 @@ void LavaCannon::Reset() {
     this->unk264 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void LavaCannon::Draw() {
     Matrix sp110;
     Matrix spD0;
@@ -470,7 +470,7 @@ void *LavaCannon::Update() {
                 if (temp_cr0_eq_969 == 0) {
                     M2C_FIELD(temp_r3_968, s32 *, 0x130) = 0;
                 }
-                this->unk240 = ((Projectile *)8)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
+                this->unk240 = (void *) (((Projectile *)8)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
                 temp_r3_978 = this->unk240;
                 if (temp_r3_978 != NULL) {
                     M2C_FIELD(M2C_FIELD(temp_r3_978, void **, 0x44), M2C_UNK (**)(MKVector3 *, MKVector3 *, LavaCannon *, M2C_UNK, M2C_UNK), 0x48)(&this->unk1F8, &this->unk218, this, 0, 0);
@@ -514,7 +514,7 @@ f32 LavaCannon::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp2C'
+#if 0 // DRAFT: undefined identifier 'unksp2C' Too many errors printed, aborting program
 s32 LavaCannon::LoadDone() {
     Matrix sp70;
     Matrix sp30;
@@ -540,7 +540,7 @@ s32 LavaCannon::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to 'int'
 s32 LavaCannon::LoadLine(MKIniLine *arg0) {
     MKIniLine sp28;
     MKIniLine sp18;
@@ -661,9 +661,9 @@ void LavaCannonDescriptor::LoadDone() {
     this->unk188 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_pitch");
     this->unk18C = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_barrel1");
     this->unk190 = MKModel_GetRefPointIndex(this->unk2C, "r_emitter");
-    this->unk19C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
-    this->unk1AC.unk0 = "fire";
-    this->unk1B4 = "firesound";
+    this->unk19C = (long) (checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4")));
+    this->unk1AC.unk0 = (signed char *) ("fire");
+    this->unk1B4 = (signed char *) ("firesound");
 }
 #endif
 

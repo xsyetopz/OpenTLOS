@@ -305,16 +305,14 @@ void Lever::Init() {
     this->unk100 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LeverDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "r_P0029_Stand");
-    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("BindPose");
-    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Start");
-    this->unkF4 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Loop");
-    this->unkF8 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_End");
+    this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("BindPose"));
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Start"));
+    this->unkF4 = (long) (((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Loop"));
+    this->unkF8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("LeverPull_End"));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkE4'
 s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {

@@ -32,11 +32,10 @@ void FireAndIceFX::SetCrumble(const bool &arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const int *' to
 void FireAndIceFX::SetState(const int &arg0, float arg1) {
     s32 temp_r0_42;
 
-    this->unk78 = &arg0;
+    this->unk78 = (long) (&arg0);
     this->unk80 = 0.0f;
     this->unkA4 = 0;
     this->unk84 = 0.0f;
@@ -61,7 +60,6 @@ void FireAndIceFX::SetState(const int &arg0, float arg1) {
         return;
     }
 }
-#endif
 
 void FireAndIceFX::SetDefaults() {
     this->unk78 = 0;
@@ -473,18 +471,18 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const float *' to 'float'
 void FireAndIceFX::Init(MKModel *arg0, const float &arg1, const float &arg2) {
     Matrix sp10;
     M2C_UNK spC;
     f32 temp_f1_919;
 
     this->unk60 = NULL;
-    this->unk60 = MKMaterial_Create("FX_Ice");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("FX_Ice"));
     this->unk6C = NULL;
-    this->unk6C = MKMaterial_Create("FX_337");
+    this->unk6C = (MKMaterial *) (MKMaterial_Create("FX_337"));
     this->unk70 = NULL;
-    this->unk70 = MKMaterial_Create("ZapEnv");
+    this->unk70 = (MKMaterial *) (MKMaterial_Create("ZapEnv"));
     M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp10.Scale3x3(&sp10, 2.0f);
     MKMaterial_SetTextureMatrix(this->unk60, &sp10);

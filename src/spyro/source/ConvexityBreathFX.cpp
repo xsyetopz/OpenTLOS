@@ -67,7 +67,7 @@ extern s32 GS_SpyroConvexFireballLP;
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 
@@ -461,7 +461,7 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void ConvexityBreathFX::Deinit() {
     Matrix **var_r31_809;
     Matrix **var_r3_810;
@@ -508,7 +508,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void ConvexityBreathFX::Draw() {
     Matrix sp70;
     Matrix sp30;
@@ -551,12 +550,11 @@ void ConvexityBreathFX::Draw() {
         MKModel_SetWorldMatrix(this->unk160, sp30);
         MKModel_Draw(this->unk160, NULL);
     }
-    temp_r31_958 = &gb + 0x24;
+    temp_r31_958 = (void ***) (&gb + 0x24);
     ((GameGlobals::Capture *) temp_r31_958)->Get();
     DrawRings();
     ((GameGlobals::Capture *) temp_r31_958)->Release();
 }
-#endif
 
 void ConvexityBreathFX::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk124)->Message(arg0);
@@ -820,7 +818,6 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ConvexityBreathFX::Init() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -860,7 +857,7 @@ void ConvexityBreathFX::Init() {
     sp50.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(this->unk114, &sp50);
     if (MKHeap::Current() != NULL) {
-        var_r3_1480 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4F4, NULL, 0);
+        var_r3_1480 = (Matrix **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x4F4, NULL, 0));
     } else {
         var_r3_1480 = malloc(0x4F4);
     }
@@ -897,4 +894,3 @@ void ConvexityBreathFX::Init() {
     this->unk170.SetIdentity();
     this->unk1B0 = 0.0f;
 }
-#endif

@@ -1,7 +1,7 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier '_sinTable' redeclared
+#if 0 // DRAFT: identifier '_sinTable' redeclared was declared as: 'unsigned char[4100]' now declared as: 'long'
 static M2C_UNK _sinTable;                           /* unable to generate initializer: unknown type */
 
 s32 MKLinesIntersect(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3) {
@@ -39,7 +39,7 @@ f32 NormaliseAngle(float arg0) {
     return var_f1_0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to 'float'
 void _table_sincosf(float arg0, float &arg1, float &arg2) {
     f32 temp_f1_142;
     f32 temp_f2_139;
@@ -65,7 +65,7 @@ void _table_sincosf(float arg0, float &arg1, float &arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to 'float'
 f32 _table_sinf(float arg0) {
     f32 sp8;                                        /* compiler-managed */
     f32 temp_f6_176;

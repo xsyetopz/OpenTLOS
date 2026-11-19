@@ -611,7 +611,7 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *LavaFiddlerCritter::Update() {
     s8 sp168;
     s32 sp164;
@@ -691,7 +691,7 @@ void *LavaFiddlerCritter::Update() {
     var_r28_952 = 0;
 loop_35:
     if (var_r31_951 < (s32) this->unk90) {
-        temp_r30_957 = ((u8 *) this->unk170) + var_r28_952;
+        temp_r30_957 = (LavaFiddler *) (((u8 *) this->unk170) + var_r28_952);
         temp_r30_957->unk64 -= gUpdateTimeDelta;
         temp_r30_957->unk54 += temp_r30_957->unk58 * gUpdateTimeDelta;
         temp_r0_966 = temp_r30_957->unk60;
@@ -833,7 +833,7 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
 f32 LavaFiddlerCritter::Resolve() {
     s8 sp190;
     s32 sp18C;
@@ -893,7 +893,7 @@ f32 LavaFiddlerCritter::Resolve() {
     var_r28_1313 = 0;
 loop_24:
     if (var_r31_1311 < (s32) this->unk90) {
-        temp_r30_1323 = ((u8 *) this->unk170) + var_r28_1313;
+        temp_r30_1323 = (LavaFiddler *) (((u8 *) this->unk170) + var_r28_1313);
         SetIdleState(temp_r30_1323);
         sp100.GetRandPos();
         sp88 = 0.0f;

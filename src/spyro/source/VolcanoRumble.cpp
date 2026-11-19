@@ -515,7 +515,7 @@ void VolcanoRumble::Reset() {
     M2C_FIELD(this, s8 *, 0xF0) = 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(VolcanoRumble *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(VolcanoRumble *)' does not match 'KDSound_Stop(int *)'
 void VolcanoRumble::Deinit() {
     s32 var_r30_970;
     s32 var_r31_971;

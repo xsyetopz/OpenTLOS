@@ -46,7 +46,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void ConvexityDebris::Deinit() {
     MKHeap *temp_r0_63;
     MKHeap *temp_r0_82;
@@ -141,7 +141,7 @@ loop_10:
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to 'double'
 void ConvexityDebris::Draw() {
     Matrix sp50;
     f64 sp40;
@@ -269,7 +269,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ConvexityDebrisDescriptor *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 s32 ConvexityDebris::LoadDone() {
     f64 spF0;
     f64 spE8;
@@ -302,7 +302,7 @@ s32 ConvexityDebris::LoadDone() {
     MKProp::LoadDone();
     M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
-    temp_r31_456 = checked_cast<ConvexityDebrisDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    temp_r31_456 = (long) (checked_cast<ConvexityDebrisDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
     var_f27_458 = 0.0f;
     this->unk6C /= this->unk50.unk8;
     temp_f28_463 = this->unk74 / this->unk50.unk8;
@@ -375,7 +375,6 @@ loop_9:
     return 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ConvexityDebris::Init() {
     MKHeap *temp_r3_730;
     MKHeap *temp_r3_736;
@@ -385,7 +384,7 @@ void ConvexityDebris::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_715 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2F0, NULL, 0);
+        var_r3_715 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2F0, NULL, 0));
     } else {
         var_r3_715 = malloc(0x2F0);
     }
@@ -411,9 +410,8 @@ void ConvexityDebris::Init() {
     this->unk74 = 1000.0f;
     this->unk78 = 1.0f;
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKModel_Destroy(ConvexityDebrisDescriptor)' does not match
+#if 0 // DRAFT: function call 'MKModel_Destroy(ConvexityDebrisDescriptor)' does not match 'MKModel_Destroy(MKModel *)'
 void ConvexityDebrisDescriptor::Deinit() {
     s32 var_r30_766;
     s32 var_r31_767;
@@ -429,10 +427,8 @@ void ConvexityDebrisDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
 void ConvexityDebrisDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL);
-    this->unk64 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
+    this->unk60 = (long) (MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL));
+    this->unk64 = (long) (MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL));
 }
-#endif

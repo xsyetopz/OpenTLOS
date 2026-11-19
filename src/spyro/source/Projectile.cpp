@@ -108,7 +108,7 @@ void Projectile::Disable() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned long, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned long, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *,
 void Projectile::Collided(MKCollisionResult &arg0) {
     s32 *temp_r3_136;
     s32 temp_r3_125;
@@ -133,7 +133,7 @@ void Projectile::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
 
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Projectile *' and 'unsigned int'
 s32 Projectile::CreateInstance(ProjectileType arg0) {
     if (this <= 0x15U) {
         switch ((s32) this) {
@@ -146,39 +146,39 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
         case 4:
             return ((Dynamite *)3)->CreateInstance((s32) &jumptable_847);
         case 5:
-            return MagmaSquirt::CreateInstance();
+            return (long) (MagmaSquirt::CreateInstance());
         case 6:
-            return HotSpit::CreateInstance();
+            return (long) (HotSpit::CreateInstance());
         case 7:
-            return SteamFireBall::CreateInstance();
+            return (long) (SteamFireBall::CreateInstance());
         case 8:
-            return LavaBall::CreateInstance();
+            return (long) (LavaBall::CreateInstance());
         case 9:
-            return Sludge::CreateInstance();
+            return (long) (Sludge::CreateInstance());
         case 10:
-            return MagicFireball::CreateInstance();
+            return (long) (MagicFireball::CreateInstance());
         case 11:
             return ((IceBossStomp *)2)->CreateInstance((s32) &jumptable_847);
         case 12:
             return ((IceBossStomp *)1)->CreateInstance((s32) &jumptable_847);
         case 13:
-            return SonicAttack::CreateInstance();
+            return (long) (SonicAttack::CreateInstance());
         case 14:
-            return SolidSlug::CreateInstance();
+            return (long) (SolidSlug::CreateInstance());
         case 15:
-            return IceShard::CreateInstance();
+            return (long) (IceShard::CreateInstance());
         case 16:
-            return SpeedwayAA::CreateInstance();
+            return (long) (SpeedwayAA::CreateInstance());
         case 17:
-            return CynderElecAttack::CreateInstance();
+            return (long) (CynderElecAttack::CreateInstance());
         case 18:
-            return IceSquirt::CreateInstance();
+            return (long) (IceSquirt::CreateInstance());
         case 19:
-            return PoisonBomb::CreateInstance();
+            return (long) (PoisonBomb::CreateInstance());
         case 20:
-            return MagicDrain::CreateInstance();
+            return (long) (MagicDrain::CreateInstance());
         case 21:
-            return FlyingMonkey::CreateInstance();
+            return (long) (FlyingMonkey::CreateInstance());
         }
     } else {
     case 0:
@@ -187,7 +187,7 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Projectile::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     MKVector3 sp8;
     MKVector3 *temp_r31_322;

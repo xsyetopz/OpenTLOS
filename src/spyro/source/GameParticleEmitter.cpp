@@ -283,7 +283,7 @@ void PointDirEmitter::Init() {
     this->unk40 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
     MKVector3 sp168;
     MKVector3 sp158;
@@ -1022,7 +1022,7 @@ s32 GameParticleEmitter::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_2006;
     s32 temp_r0_2019;

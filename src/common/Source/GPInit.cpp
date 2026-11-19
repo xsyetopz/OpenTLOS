@@ -128,7 +128,7 @@ void GPDoneRender() {
     GXInvalidateTexAll();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void __GPInitGX() {
     s32 sp8;
 
@@ -231,7 +231,7 @@ void __GPInitRenderMode(_GXRenderModeObj *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier '__GPInitRenderMode'
 void GPInit(_GXRenderModeObj *arg0) {
     u16 var_r28_564;
     u16 var_r29_559;
@@ -266,7 +266,7 @@ void GPInit(_GXRenderModeObj *arg0) {
     }
     var_r29_559 = 0x108;
     temp_r31_560 = gpLogoImage + 0x36;
-    var_r30_561 = gpLogoImage + 0x436;
+    var_r30_561 = (unsigned char *) (gpLogoImage + 0x436);
 loop_7:
     if (var_r29_559 > 0x88U) {
         var_r28_564 = 0x100;

@@ -17,7 +17,7 @@ MKHeap *malloc(M2C_UNK);                            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void WhirlWindFX::Deinit() {
     MKHeap *temp_r0_51;
     MKHeap *temp_r0_70;
@@ -106,7 +106,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void WhirlWindFX::Init() {
     MKHeap *temp_r3_195;
     MKHeap *temp_r3_201;
@@ -116,7 +115,7 @@ void WhirlWindFX::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_180 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0);
+        var_r3_180 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0));
     } else {
         var_r3_180 = malloc(0x350);
     }
@@ -136,4 +135,3 @@ void WhirlWindFX::Init() {
     this->unk4C = (MKHeap *) &temp_r3_201->unk4;
     temp_r3_201->unk4 = 0;
 }
-#endif

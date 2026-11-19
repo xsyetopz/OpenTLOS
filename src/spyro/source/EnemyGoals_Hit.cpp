@@ -882,7 +882,7 @@ void EnemyGoal_HitStand::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 EnemyGoal_HitStand::Update() {
     MKVector3 sp28;
     f64 sp20;
@@ -1224,7 +1224,7 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal type Too many errors printed, aborting program
 void EnemyGoal_HitAirCombo::Activate() {
     s8 spD0;
     s32 spCC;
@@ -1774,7 +1774,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match 'Console_Execute(const char *)'
 void EnemyGoal_HitKnockdown::TryTriggerEventCamera(const MKVector3 &arg0) {
     MKCollisionResult sp108;
     M2C_UNK *spCC;
@@ -1906,7 +1906,7 @@ void EnemyGoal_HitKnockdown::TryTriggerEventCamera(const MKVector3 &arg0) {
                             spC4 = 0;
                             spC0 = 0x153;
                             spC8 = 1;
-                            spCC = "0.5f";
+                            spCC = (long *) ("0.5f");
                             this->unk10 = spB0;
                             temp_r3_3297 = this->unk10;
                             spC = 0;
@@ -2573,7 +2573,7 @@ block_72:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'CLZ'
 void EnemyGoal_HitKnockdown::Activate() {
     f64 sp160;
     f64 sp158;
@@ -2643,7 +2643,7 @@ void EnemyGoal_HitKnockdown::Activate() {
     temp_r31_4475 = this->unkC;
     temp_r3_4476 = temp_r31_4475->unkA50;
     if ((temp_r3_4476 == NULL) || ((s32) temp_r3_4476->unk6C != 2) || ((s32) temp_r3_4476->unk68 != 0x2A)) {
-        temp_r31_4475->unkA50 = temp_r31_4475->unkA38->GetAnimSequence(2, 0x2A, temp_r31_4475->unkAE4, NULL);
+        temp_r31_4475->unkA50 = (AnimSequence *) (temp_r31_4475->unkA38->GetAnimSequence(2, 0x2A, temp_r31_4475->unkAE4, NULL));
     }
     temp_r3_4494 = this->unkC;
     temp_r31_4496 = temp_r3_4494->unkA50;
@@ -3138,7 +3138,7 @@ void EnemyGoal_HitBurn::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float *)' does not match
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float *)' does not match 'HeroInterface::GetHeroType()'
 u8 EnemyGoal_HitBurn::Update() {
     AnimSequence *temp_r4_5532;
     AnimSequence *temp_r4_5554;
@@ -3334,7 +3334,7 @@ void EnemyGoal_HitShock::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, Enemy *, int)' does not match
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, Enemy *, int)' does not match 'HeroInterface::GetHeroType()'
 u8 EnemyGoal_HitShock::Update() {
     AnimSequence *temp_r4_5872;
     AnimSequence *temp_r4_5897;
@@ -3513,7 +3513,7 @@ loop_5:
             temp_r3_6172 = &sp80 + var_r4_6165;
             temp_f4_6175 = M2C_FIELD(temp_r3_6172, f64 *, 0) - sp60;
             sp20 = temp_f4_6175;
-            temp_r5_6177 = ((u8 *) temp_r3_6172) + 0x10;
+            temp_r5_6177 = (double *) (((u8 *) temp_r3_6172) + 0x10);
             sp50 = temp_f4_6175;
             sp28 = M2C_FIELD(temp_r3_6172, f32 *, 8) - (f32) sp68;
             sp58 = (f64) sp28;

@@ -75,13 +75,11 @@ extern s32 state_745;
 extern s32 timeout;
 extern f32 videoFade;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void FrontEnd_PlayVideo(const char *arg0) {
     bGoToVideo = 1;
-    pVideoName = arg0;
+    pVideoName = (signed char *) (arg0);
     timeout = 0;
 }
-#endif
 
 void FrontEnd_GoToNewGame() {
     bGoToNewGame = 1;
@@ -200,7 +198,7 @@ void FrontEnd_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void FrontEnd_Update() {
     f32 temp_f1_414;
     f32 temp_f1_432;
@@ -271,11 +269,10 @@ block_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void FrontEnd_PlayBackgroundVideo(bool arg0) {
     if (arg0 != 0) {
         if ((GameVideo *) pVideo == NULL) {
-            pVideo = GameVideo_Create("menu", 7, 0);
+            pVideo = (GameVideo *) (GameVideo_Create("menu", 7, 0));
             FrontEnd_SetFade(1.0f);
         }
     } else {
@@ -284,7 +281,6 @@ void FrontEnd_PlayBackgroundVideo(bool arg0) {
         videoFade = 0.0f;
     }
 }
-#endif
 
 void FrontEnd_Deinit() {
     UIStringTable *temp_r30_521;
@@ -311,7 +307,7 @@ void FrontEnd_Deinit() {
     Hud_DeinitModule();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void FrontEnd_Init() {
     s32 spC;
     s32 sp8;
@@ -356,14 +352,14 @@ loop_4:
         Autosave_Reset();
         temp_r29_624 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
         if (MKHeap::Current() != NULL) {
-            var_r29_633 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_624, NULL, 0);
+            var_r29_633 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_624, NULL, 0));
         } else {
             var_r29_633 = malloc(temp_r29_624);
         }
         M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r29_633, NoisySystem::descriptor);
         var_r29_633->unk8 = NoisySystem::descriptor;
         var_r29_633->Init(NoisySystem::descriptor);
-        pFrontEndSystem = checked_cast<NoisySystem *, UIObject>(var_r29_633);
+        pFrontEndSystem = (void **) (checked_cast<NoisySystem *, UIObject>(var_r29_633));
         var_r4_659 = &UIObjectDescriptor::list;
 loop_11:
         temp_r3_666 = var_r4_659->unk0;

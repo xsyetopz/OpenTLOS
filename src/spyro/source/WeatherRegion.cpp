@@ -921,17 +921,15 @@ void WeatherRegionDescriptor::Update() {
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), s32 *, 8) - 4 + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'WeatherSnowPS *' to
 void WeatherRegionDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE0 = checked_cast<WeatherSnowPS *, MKProp>(gMK->CreateProp("WeatherSnowPS"));
-    this->unkE4 = checked_cast<WeatherAshPS *, MKProp>(gMK->CreateProp("WeatherAshPS"));
-    this->unkE8 = checked_cast<WeatherEmbersPS *, MKProp>(gMK->CreateProp("WeatherEmbersPS"));
-    this->unkEC = checked_cast<WeatherSporesPS *, MKProp>(gMK->CreateProp("WeatherSporesPS"));
-    this->unkF0 = checked_cast<WeatherConvexityPS *, MKProp>(gMK->CreateProp("WeatherConvexityPS"));
-    this->unkF4 = checked_cast<WeatherRainPS *, MKProp>(gMK->CreateProp("WeatherRainPS"));
+    this->unkE0 = (long) (checked_cast<WeatherSnowPS *, MKProp>(gMK->CreateProp("WeatherSnowPS")));
+    this->unkE4 = (long) (checked_cast<WeatherAshPS *, MKProp>(gMK->CreateProp("WeatherAshPS")));
+    this->unkE8 = (long) (checked_cast<WeatherEmbersPS *, MKProp>(gMK->CreateProp("WeatherEmbersPS")));
+    this->unkEC = (long) (checked_cast<WeatherSporesPS *, MKProp>(gMK->CreateProp("WeatherSporesPS")));
+    this->unkF0 = (long) (checked_cast<WeatherConvexityPS *, MKProp>(gMK->CreateProp("WeatherConvexityPS")));
+    this->unkF4 = (long) (checked_cast<WeatherRainPS *, MKProp>(gMK->CreateProp("WeatherRainPS")));
 }
-#endif
 
 void WeatherRegionDescriptor::Init() {
     MKPropDescriptor::Init();

@@ -10,7 +10,7 @@
 
 M2C_UNK __copy(u8 *, M2C_UNK *, M2C_UNK, f64);      /* extern */
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 static M2C_UNK flareIndex;                          /* unable to generate initializer: unknown type */
 
 void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
@@ -310,7 +310,6 @@ void LensFlare::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LensFlare::Init(MKVector3 *arg0) {
     MKZRequest *temp_r3_708;
 
@@ -337,12 +336,11 @@ void LensFlare::Init(MKVector3 *arg0) {
     this->unk98 = 1;
     this->unk8C = 1.0f;
     this->unk90 = 1.0f;
-    this->unk0 = MKMaterial_Create("fx_081");
-    this->unk4 = MKMaterial_Create("fx_083");
-    this->unk8 = MKZRequest_Create();
+    this->unk0 = (MKMaterial *) (MKMaterial_Create("fx_081"));
+    this->unk4 = (MKMaterial *) (MKMaterial_Create("fx_083"));
+    this->unk8 = (MKZRequest *) (MKZRequest_Create());
     temp_r3_708 = this->unk8;
     if (temp_r3_708 != NULL) {
         temp_r3_708->unk10 = 0.0f;
     }
 }
-#endif

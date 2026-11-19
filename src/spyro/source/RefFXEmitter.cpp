@@ -120,7 +120,7 @@ void RefFXEmitter::Init() {
     this->unk94 = 0;
 }
 
-#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, signed char *, int *)'
+#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, signed char *, int *)' does not match 'MKModel_RefPointExists(const MKModel *, const char *, int *)'
 void RefFXEmitterDescriptor::Resolve() {
     s32 sp8;
     s32 temp_r3_257;
@@ -135,6 +135,6 @@ loop_2:
         *(this + ((temp_r3_257 * 4) + 0x70)) = sp8;
         goto loop_2;
     }
-    this->unk9C = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
+    this->unk9C = (long) (checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam")));
 }
 #endif

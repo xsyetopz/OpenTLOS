@@ -159,7 +159,7 @@ void KDParticleEmitter::InitPointParticlePosition(KDParticleEmitter *arg0, MKPar
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void KDParticleEmitter::Emit(int arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
@@ -198,7 +198,7 @@ loop_7:
     temp_cr0_eq_455 = var_r29_339 == 0;
     var_r29_339 -= 1;
     if (temp_cr0_eq_455 == 0) {
-        temp_r3_344 = this->unk28->AllocateParticle();
+        temp_r3_344 = (KDParticleEmitter *) (this->unk28->AllocateParticle());
         if (temp_r3_344 != NULL) {
             temp_r12_347 = this->unk44;
             if (temp_r12_347 != NULL) {
@@ -252,7 +252,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void KDParticleEmitter::Burst() {
     f32 sp10;
     f32 spC;
@@ -265,7 +265,7 @@ void KDParticleEmitter::Burst() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void KDParticleEmitter::Update() {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;                                       /* compiler-managed */
@@ -321,7 +321,7 @@ void KDParticleEmitter::LoadDone() {
     this->unk3C = _table_sinf(1.5707964f + this->unk38);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDParticleEmitter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_615;
 
@@ -333,7 +333,7 @@ s32 KDParticleEmitter::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
 void KDParticleEmitter::Init() {
     this->unk28 = NULL;
     this->unk40 = 1;

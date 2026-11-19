@@ -108,7 +108,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void SuckeyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, float arg3) {
     f64 sp50;
     f64 sp48;

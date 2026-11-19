@@ -101,7 +101,7 @@ extern u8 musicVolume;
 extern s32 numReservedAreas;
 extern s32 numSoundsLoaded;
 extern SoundBankHeader *pTemporarySoundInfoStructures;
-#if 0 // DRAFT: identifier 'reservedBankIDs' redeclared
+#if 0 // DRAFT: identifier 'reservedBankIDs' redeclared was declared as: 'unsigned char[1120]' now declared as: 'long'
 extern M2C_UNK reservedBankIDs;
 #endif
 extern s32 soundBankFileSize;
@@ -383,7 +383,7 @@ static u8 sysVoicePauseList[0x40];
 static M2C_UNK listenPos;
 static M2C_UNK gStreamingMusic;
 static s32 gStreamingBuffer[0x801B];
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_soundBankReadBuffer_0x8'
 static struct _struct_soundBankReadBuffer_0x8 soundBankReadBuffer[2];
 #endif
 static M2C_UNK decibelTable;
@@ -413,7 +413,7 @@ u8 Sound_MusicGetVolume() {
     return musicVolume;
 }
 
-#if 0 // DRAFT: function call 'MIXSetFader(void *, long)' does not match
+#if 0 // DRAFT: function call 'MIXSetFader(void *, long)' does not match 'MIXSetFader(_AXVPB *, int)' 'MIXSetFader(void *, long, short *, float, float)'
 void Sound_MusicSetVolume(unsigned char arg0) {
     f32 temp_f1_57;
     s32 temp_r31_68;
@@ -458,7 +458,7 @@ s32 Sound_MusicIsPlaying() {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 void Sound_MusicPlay(const char *arg0, bool arg1, int arg2) {
     if (MKArchive_Exists(Str_Printf("%s.mus", arg0, "%s.mus"), NULL) != 0) {
         if ((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) != 5) {
@@ -510,7 +510,7 @@ void StreamingBuffer_Start(int arg0, bool arg1) {
     M2C_FIELD(gStreamingBuffer, u8 *, 0x20069) = arg1;
 }
 
-#if 0 // DRAFT: function call 'AXSetVoiceAdpcmLoop(void *, unsigned short *, unsigned
+#if 0 // DRAFT: function call 'AXSetVoiceAdpcmLoop(void *, unsigned short *, unsigned char)' does not match 'AXSetVoiceAdpcmLoop(_AXVPB *, _AXPBADPCMLOOP *)'
 void StreamingBuffer_Update() {
     s16 spC;
     s16 spA;
@@ -650,7 +650,7 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: function call 'AXSetVoiceState(void *, int)' does not match
+#if 0 // DRAFT: function call 'AXSetVoiceState(void *, int)' does not match 'AXSetVoiceState(_AXVPB *, unsigned short)' 'AXSetVoiceState(void *, long, _struct_voiceList_0xB0 *)
 void StreamingMusic_Update() {
     s16 sp36;
     s16 sp34;
@@ -844,7 +844,7 @@ void Sound_SysResumeVoices() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char' to '_struct_voiceList_0xB0'
 void Sound_SysPauseVoices() {
     s32 var_r30_957;
     s8 var_r26_956;
@@ -855,7 +855,7 @@ void Sound_SysPauseVoices() {
 
     var_r26_956 = 0;
     var_r30_957 = 0;
-    var_r31_959 = voiceList + 0x2C00;
+    var_r31_959 = (_struct_voiceList_0xB0 *) (voiceList + 0x2C00);
     do {
         temp_r4_962 = voiceList + var_r30_957;
         if (((u32) M2C_FIELD(temp_r4_962, u32 *, 4) != 0U) && ((u8) M2C_FIELD(temp_r4_962, u8 *, 0x12) == 0)) {
@@ -893,7 +893,7 @@ s32 GetVideoVolume() {
     return ((u32) var_r4_1033 >> 1U) & 0x7F;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_voiceList_0xB0'
 void Refresh3DSoundPosition(int arg0) {
     f64 sp58;
     f64 sp50;
@@ -922,7 +922,7 @@ void Refresh3DSoundPosition(int arg0) {
     struct _struct_voiceList_0xB0 *temp_r4_1189;
     struct _struct_voiceList_0xB0 *temp_r5_1062;
 
-    temp_r5_1062 = &voiceList[arg0];
+    temp_r5_1062 = (_struct_voiceList_0xB0 *) (&voiceList[arg0]);
     sp10 = temp_r5_1062->unk20 - M2C_FIELD(&listenPos, f64 *, 0);
     sp20 = sp10;
     sp18 = temp_r5_1062->unk28 - M2C_FIELD(&listenPos, f32 *, 8);
@@ -969,7 +969,7 @@ void Refresh3DSoundPosition(int arg0) {
             var_f4_1098 = __float_nan;
         }
     }
-    temp_r3_1163 = &voiceList[arg0];
+    temp_r3_1163 = (_struct_voiceList_0xB0 *) (&voiceList[arg0]);
     temp_r3_1163->unk30 = var_f4_1098;
     temp_f2_1165 = temp_r3_1163->unk1C;
     if (var_f4_1098 <= temp_f2_1165) {
@@ -982,7 +982,7 @@ void Refresh3DSoundPosition(int arg0) {
         var_f29_1179 = 3.0f;
     }
     temp_r3_1184 = OSDisableInterrupts();
-    temp_r4_1189 = &voiceList[arg0];
+    temp_r4_1189 = (_struct_voiceList_0xB0 *) (&voiceList[arg0]);
     temp_r4_1189->unk88 = temp_f31_1087;
     temp_r4_1189->unk8C = temp_f30_1097;
     temp_r4_1189->unk94 = 0.0f;
@@ -1142,7 +1142,7 @@ void Sound_SetPitch(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int *' to
+#if 0 // DRAFT: illegal implicit conversion from 'int *' to '_struct_voiceList_0xB0 *'
 void Sound_SetPitch3d(int arg0, float arg1) {
     f32 temp_f0_1599;
     f32 var_f31_1564;
@@ -1507,7 +1507,7 @@ loop_59:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Open(signed char *, int *, unsigned int)' does
+#if 0 // DRAFT: function call 'MKArchive_Open(signed char *, int *, unsigned int)' does not match 'MKArchive_Open(const char *, int *, bool)'
 s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 sp8;
     SoundBankHeader *temp_r3_2310;
@@ -1533,7 +1533,6 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[1120]' to
 s32 Sound_ReserveMemory(int arg0, int arg1) {
     s32 temp_r31_2348;
     s32 temp_r3_2373;
@@ -1547,13 +1546,12 @@ s32 Sound_ReserveMemory(int arg0, int arg1) {
     memset(((u8 *) temp_r7_2355) + 0xC, 0, 0x80U);
     numSoundsLoaded += arg0;
     soundMemoryCurrentAddress += temp_r31_2348;
-    temp_r3_2373 = *(&reservedBankIDs + (numReservedAreas * 0x8C));
+    temp_r3_2373 = (long) (*(&reservedBankIDs + (numReservedAreas * 0x8C)));
     numReservedAreas += 1;
     return temp_r3_2373;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SoundBankHeader *' to
+#if 0 // DRAFT: illegal operand
 s32 Sound_LoadBankFromMemory(SoundBankHeader *arg0, bool arg1, int arg2) {
     s32 temp_r29_2393;
     s32 temp_r30_2392;
@@ -1602,7 +1600,7 @@ loop_3:
 loop_8:
     if (var_r25_2435 < temp_r30_2392) {
         temp_r31_2441 = (var_r24_2389 + var_r25_2435) * 0x68;
-        temp_r26_2443 = arg0 + (var_r22_2436 + 0x20);
+        temp_r26_2443 = (signed char *) (arg0 + (var_r22_2436 + 0x20));
         *(soundList + (temp_r31_2441 + 8)) = M2C_FIELD(temp_r26_2443, s32 *, 0x28);
         *(soundList + (temp_r31_2441 + 4)) = M2C_FIELD(temp_r26_2443, s32 *, 0x20) + var_r27_2406;
         *(soundList + (temp_r31_2441 + 0x30)) = M2C_FIELD(temp_r26_2443, u16 *, 0x2C);
@@ -1829,7 +1827,7 @@ void Sound_SetVolume(int arg0, unsigned char arg1, unsigned char arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'voiceList'
+#if 0 // DRAFT: undefined identifier 'voiceList' Too many errors printed, aborting program
 void Sound_Stop(int arg0) {
     struct _struct_voiceList_0xB0 *temp_r29_2942;
     struct _struct_voiceList_0xB0 *temp_r30_2938;
@@ -2089,7 +2087,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 s32 Sound_GetID(const char *arg0) {
     s8 sp14;
     M2C_UNK sp8;
@@ -2141,7 +2139,7 @@ block_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[1120]' to
+#if 0 // DRAFT: undefined identifier 'voiceList'
 s32 Sound_UnloadBank(int arg0) {
     s32 temp_r3_3497;
     s32 temp_r4_3498;
@@ -2156,7 +2154,7 @@ s32 Sound_UnloadBank(int arg0) {
 
     temp_r6_3492 = numReservedAreas - 1;
     temp_r7_3494 = temp_r6_3492 * 0x8C;
-    temp_r8_3495 = *(&reservedBankIDs + temp_r7_3494);
+    temp_r8_3495 = (long) (*(&reservedBankIDs + temp_r7_3494));
     temp_r3_3497 = M2C_FIELD((&reservedBankIDs + temp_r7_3494), s32 *, 4);
     temp_r4_3498 = temp_r8_3495 * 0x68;
     var_r28_3499 = temp_r8_3495;
@@ -2282,7 +2280,7 @@ void Sound_InitModule() {
     } while (var_ctr_3673 != 0);
     temp_r27_3686 = (gMaxSounds + 1) * 0x68;
     if (MKHeap::Current() != NULL) {
-        var_r3_3694 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3686, NULL, 0);
+        var_r3_3694 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3686, NULL, 0));
     } else {
         var_r3_3694 = malloc(temp_r27_3686);
     }
@@ -2332,20 +2330,20 @@ loop_10:
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20068) = 0;
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20069) = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_3771 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
+        var_r3_3771 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0));
     } else {
         var_r3_3771 = malloc(0x10000);
     }
     soundBankReadBuffer->unk4 = var_r3_3771;
     if (MKHeap::Current() != NULL) {
-        var_r3_3787 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
+        var_r3_3787 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0));
     } else {
         var_r3_3787 = malloc(0x10000);
     }
     temp_r27_3796 = gMaxSounds * 0x68;
     soundBankReadBuffer[1].unk4 = var_r3_3787;
     if (MKHeap::Current() != NULL) {
-        var_r3_3805 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3796, NULL, 0);
+        var_r3_3805 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3796, NULL, 0));
     } else {
         var_r3_3805 = malloc(temp_r27_3796);
     }
@@ -2503,7 +2501,7 @@ loop_6:
     goto loop_6;
 }
 
-#if 0 // DRAFT: function call 'Str_CompareIgnoreCase(unsigned char *, unsigned char *)'
+#if 0 // DRAFT: function call 'Str_CompareIgnoreCase(unsigned char *, unsigned char *)' does not match 'Str_CompareIgnoreCase(const char *, const char *)'
 void EntryCompare(const void *arg0, const void *arg1) {
     Str_CompareIgnoreCase(((u8 *) arg0) + 0xC, ((u8 *) arg1) + 0xC);
 }

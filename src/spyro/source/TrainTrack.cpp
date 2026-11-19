@@ -38,7 +38,7 @@ s32 stricmp(s8 *);                                  /* extern */
 extern s8 gAssertBool;
 extern void **gMK;
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrackDescriptor' to
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrackDescriptor' to 'void *'
 void TrainTrack::Build() {
     M2C_UNK spD0;
     MKVector3 spC0;
@@ -111,7 +111,7 @@ loop_6:
             var_r3_70 = M2C_FIELD(temp_r3_67, void **, 0x28);
 loop_4:
             if (var_r3_70 != NULL) {
-                *(&spD0 + var_r28_48) = var_r3_70;
+                *(&spD0 + var_r28_48) = (long) (var_r3_70);
                 var_r28_48 += 4;
                 var_r3_70 = M2C_FIELD(var_r3_70, void **, 0x38);
                 var_r29_52 += 1;
@@ -152,7 +152,7 @@ loop_8:
         var_r27_175 = 0;
 loop_19:
         if (var_r25_174 < var_r29_52) {
-            temp_r24_178 = *(&spD0 + var_r27_175);
+            temp_r24_178 = (void *) (*(&spD0 + var_r27_175));
             gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), "r_Spyro_L0", (int *) &sp14);
             sp70.GetMeasure(1.0f, (Matrix *) &this->unk4C);
             spB0 = M2C_BITWISE(f64, sp70);
@@ -192,7 +192,7 @@ loop_15:
         var_r27_281 = 0;
 loop_30:
         if (var_r25_280 < var_r29_52) {
-            temp_r28_284 = *(&spD0 + var_r27_281);
+            temp_r28_284 = (void *) (*(&spD0 + var_r27_281));
             gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), "r_Steam_L0", (int *) &spC);
             ((KDSpline *) &sp50)->GetMeasure(1.0f, (Matrix *) &this->unk74);
             sp90 = sp50;
@@ -310,7 +310,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     TrainTrack sp40;
     f32 sp30;
@@ -476,7 +476,7 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'Matrix *'
 void TrainTrack::GetTrackPos(int arg0, float arg1, int arg2) {
     KDSpline sp78;
     f64 sp68;
@@ -634,7 +634,7 @@ void TrainTrackDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match 'stricmp(signed char *)'
 s32 TrainTrackDescriptor::LoadLine(MKIniLine *arg0) {
     s32 temp_r4_1209;
     s32 temp_r5_1208;

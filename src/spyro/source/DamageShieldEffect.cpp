@@ -27,7 +27,7 @@
 extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal explicit conversion from 'DamageShieldEffect' to
+#if 0 // DRAFT: illegal explicit conversion from 'DamageShieldEffect' to 'unsigned char'
 static Texture lit_stringBase0;                        /* type too large by 0x87; unable to generate initializer: non-zero padding; const */
 
 void DamageShieldEffect::SpawnRipple(const MKVector3 &arg0, float arg1) {
@@ -73,7 +73,7 @@ void DamageShieldEffect::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void DamageShieldEffect::DrawRipples() {
     f64 sp330;
     f64 sp328;
@@ -281,7 +281,7 @@ void DamageShieldEffect::DrawRipples() {
             sp110 = (f32) sp310 * temp_f24_349;
             sp198 = sp108;
             sp1A0 = (f64) sp110;
-            temp_r30_376 = ((u8 *) temp_r29_336) + 0xA0;
+            temp_r30_376 = (double *) (((u8 *) temp_r29_336) + 0xA0);
             temp_f0_378 = sp108 + *temp_r30_376;
             spF8 = temp_f0_378;
             sp1A8 = temp_f0_378;
@@ -437,7 +437,7 @@ void *DamageShieldEffect::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void DamageShieldEffect::Init() {
     s32 var_ctr_725;
     s32 var_r4_720;

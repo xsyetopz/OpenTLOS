@@ -167,10 +167,10 @@ extern M2C_UNK gEmptyPtrListDL;
 extern GameStateMachine gGMState;
 extern GlowingPropManager gGlowingPropManager;
 extern void **gMK;
-#if 0 // DRAFT: identifier 'gMKDefaults' redeclared
+#if 0 // DRAFT: identifier 'gMKDefaults' redeclared was declared as: 'MKHeap' now declared as: 'long'
 extern M2C_UNK gMKDefaults;
 #endif
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 extern ChunkInfo *pChunkChooser_TempChunkInfo;
@@ -184,13 +184,13 @@ static M2C_UNK defaultWind;                         /* unable to generate initia
 static M2C_UNK pSpawnerNames;                       /* unable to generate initializer: unknown type */
 static DataMap customMaterialUpdaterMap = { 0, "CameraRelativeScroll" };
 #endif
-#if 0 // DRAFT: identifier 'pGlobalLevelName' redeclared
+#if 0 // DRAFT: identifier 'pGlobalLevelName' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static s8 *pGlobalLevelName = "levels.ini";
 #endif
-#if 0 // DRAFT: identifier 'pGlobalLV3Name' redeclared
+#if 0 // DRAFT: identifier 'pGlobalLV3Name' redeclared was declared as: 'unsigned char[4]' now declared as: 'Level *'
 static Level *pGlobalLV3Name = &.L_803582C9;
 #endif
-#if 0 // DRAFT: identifier 'pGlobalModelName' redeclared
+#if 0 // DRAFT: identifier 'pGlobalModelName' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static s8 *pGlobalModelName = "global.model";
 #endif
 #if 0 // DRAFT: declaration syntax error
@@ -298,7 +298,7 @@ void *Level::GetStartLevelInfo() {
     if ((s32) *Level::levelInfoCount > 0) {
 loop_1:
         if ((u8) *(*Level::pLevelInfo + (var_r3_292 + 0x19)) != 0) {
-            return *Level::pLevelInfo + var_r3_292;
+            return (void *) (*Level::pLevelInfo + var_r3_292);
         }
         var_r3_292 += 0x128;
         var_ctr_294 -= 1;
@@ -312,7 +312,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Level' to
+#if 0 // DRAFT: illegal explicit conversion from 'Level' to 'ChunkInfo *'
 void Level::CancelQueue() {
     s32 temp_r29_326;
     s32 var_r28_321;
@@ -528,7 +528,7 @@ loop_4:
         return NULL;
     }
     if (stricmp(this, *(*Level::pLevelInfo + (var_r31_695 + 4))) == 0) {
-        return *Level::pLevelInfo + var_r31_695;
+        return (void *) (*Level::pLevelInfo + var_r31_695);
     }
     var_r30_694 += 1;
     var_r31_695 += 0x128;
@@ -536,7 +536,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'ChunkInfo *' to
+#if 0 // DRAFT: illegal explicit conversion from 'ChunkInfo *' to 'float'
 void Level::SwitchTo(ChunkInfo *arg0) {
     M2C_FIELD(this, s8 *, 0x6C) = 1;
     this->unk70 = 7e-45f;
@@ -607,7 +607,7 @@ void Level::LoadChunk(ChunkInfo *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'Level' to 'ChunkInfo *'
 s32 Level::SetDesiredChunks(ChunkInfo **arg0, int arg1) {
     ChunkInfo *temp_r3_913;
     ChunkInfo *temp_r3_958;
@@ -632,7 +632,7 @@ s32 Level::SetDesiredChunks(ChunkInfo **arg0, int arg1) {
 
     var_r29_876 = 1;
     if (MKHeap::Current() != NULL) {
-        var_r3_885 = ((MKHeap *) (MKHeap::Main()))->TAlloc(arg1 * 4, NULL, 0, 0U);
+        var_r3_885 = (MKIni *) (((MKHeap *) (MKHeap::Main()))->TAlloc(arg1 * 4, NULL, 0, 0U));
     } else {
         var_r3_885 = malloc(arg1 * 4);
     }
@@ -750,7 +750,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long'
 MKHeap *Level_ChunkInMemory(ChunkInfo *arg0) {
     MKHeap *var_r7_1080;
     s32 temp_r3_1078;
@@ -774,7 +774,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal operand
 Level *Level::GetNextChunk(ChunkInfo *arg0) {
     Level *temp_r0_1123;
     Level *var_r4_1117;
@@ -785,7 +785,7 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
 
     var_r4_1117 = NULL;
     if (this == NULL) {
-        var_r4_1117 = *Level::pChunkInfo;
+        var_r4_1117 = (Level *) (*Level::pChunkInfo);
     } else {
         temp_r0_1123 = M2C_FIELD(this, Level **, 8);
         if (temp_r0_1123 != NULL) {
@@ -795,13 +795,13 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
             if (temp_r3_1129 != NULL) {
                 var_r0_1132 = M2C_FIELD(temp_r3_1129, void **, 0x124);
             } else {
-                var_r0_1132 = *Level::pLevelInfo;
+                var_r0_1132 = (void *) (*Level::pLevelInfo);
             }
             if (var_r0_1132 != NULL) {
                 if (temp_r3_1129 != NULL) {
                     var_r3_1141 = M2C_FIELD(temp_r3_1129, void **, 0x124);
                 } else {
-                    var_r3_1141 = *Level::pLevelInfo;
+                    var_r3_1141 = (void *) (*Level::pLevelInfo);
                 }
                 var_r4_1117 = M2C_FIELD(var_r3_1141, Level **, 0x11C);
             }
@@ -829,7 +829,7 @@ loop_5:
         return NULL;
     }
     if (((u32) *(*Level::pChunkInfo + var_r31_1176) != 0U) && (stricmp(this) == 0)) {
-        return *Level::pChunkInfo + var_r31_1176;
+        return (void *) (*Level::pChunkInfo + var_r31_1176);
     }
     var_r30_1175 += 1;
     var_r31_1176 += 0x64;
@@ -837,30 +837,30 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to 'signed char *'
 void Level::ResolveGameSpecificProps() {
     s32 var_r28_1225;
     s32 var_r31_1228;
 
     var_r28_1225 = 0;
-    M2C_FIELD(&gb, s32 *, 0x60) = checked_cast<FootStepFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, ""));
+    M2C_FIELD(&gb, s32 *, 0x60) = (signed char *) (checked_cast<FootStepFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, "")));
     var_r31_1228 = 0;
     do {
         var_r28_1225 += 1;
-        M2C_FIELD((&gb + var_r31_1228), s32 *, 0x10) = checked_cast<CollectableSpawner *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s32), 0x60)(gMK, *(&pSpawnerNames + var_r31_1228)));
+        M2C_FIELD((&gb + var_r31_1228), s32 *, 0x10) = (long) (checked_cast<CollectableSpawner *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s32), 0x60)(gMK, *(&pSpawnerNames + var_r31_1228))));
         var_r31_1228 += 4;
     } while (var_r28_1225 < 4);
-    M2C_FIELD(&gb, s32 *, 0x64) = checked_cast<Coronas *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, ""));
-    M2C_FIELD(&gb, s32 *, 0x80) = checked_cast<LightManager *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x68) = checked_cast<CrashFirePS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x6C) = checked_cast<WaterDripPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x74) = checked_cast<EmbersPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x78) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x7C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x84) = checked_cast<SparksPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x88) = checked_cast<AshesPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x90) = checked_cast<LavaBubbleFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
-    M2C_FIELD(&gb, s32 *, 0x8C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x64) = (signed char *) (checked_cast<Coronas *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, "")));
+    M2C_FIELD(&gb, s32 *, 0x80) = (signed char *) (checked_cast<LightManager *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x68) = (signed char *) (checked_cast<CrashFirePS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x6C) = (signed char *) (checked_cast<WaterDripPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x74) = (signed char *) (checked_cast<EmbersPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x78) = (signed char *) (checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x7C) = (signed char *) (checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x84) = (signed char *) (checked_cast<SparksPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x88) = (signed char *) (checked_cast<AshesPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x90) = (signed char *) (checked_cast<LavaBubbleFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
+    M2C_FIELD(&gb, s32 *, 0x8C) = (signed char *) (checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
     M2C_FIELD(&gb, s32 *, 0x94) = checked_cast<ZapArcFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
     M2C_FIELD(&gb, s32 *, 0x98) = checked_cast<EnemyDeathFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
     M2C_FIELD(&gb, s32 *, 0x9C) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
@@ -884,7 +884,7 @@ void Level::ResolveGameSpecificProps() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void Level::ApplyViewParameters() {
     s32 temp_r3_1630;
     u8 var_r3_1649;
@@ -908,7 +908,7 @@ void Level::ApplyViewParameters() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
 void Level::SetProjectionToDefaults() {
     s32 temp_r4_1681;
     s32 temp_r4_1692;
@@ -950,7 +950,7 @@ void Level::LoadGlobalResources() {
     Autosave_LoadResources();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to
+#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to 'void **'
 void Level::FinaliseResources() {
     s32 spC;
     s32 sp8;
@@ -977,7 +977,7 @@ void Level::FinaliseResources() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(unsigned char[4])' does not match
+#if 0 // DRAFT: function call 'stricmp(unsigned char[4])' does not match 'stricmp(Level *, signed char *)'
 void Level::ResolveGameProps(const char *arg0) {
     if (stricmp(pGlobalLV3Name) == 0) {
         ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->ResolveGameSpecificProps();
@@ -1211,13 +1211,13 @@ loop_39:
     temp_r30_2124 = M2C_FIELD(*gMK, s32 *(**)(void **), 0x2C)(gMK);
     temp_r26_2126 = (this->unk78 + 1) * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_2135 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2126, NULL, 0, 0U);
+        var_r3_2135 = (MKIni *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2126, NULL, 0, 0U));
     } else {
         var_r3_2135 = malloc(temp_r26_2126);
     }
     temp_r26_2144 = (this->unk78 + 1) * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_2153 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2144, NULL, 0, 0U);
+        var_r3_2153 = (MKIni *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2144, NULL, 0, 0U));
     } else {
         var_r3_2153 = malloc(temp_r26_2144);
     }
@@ -1244,7 +1244,7 @@ loop_51:
     var_r27_2202 = 0;
 loop_54:
     if (var_r25_2200 < (s32) this->unk78) {
-        temp_r3_2205 = *(temp_r30_2124 + var_r27_2202);
+        temp_r3_2205 = (void *) (*(temp_r30_2124 + var_r27_2202));
         M2C_FIELD(M2C_FIELD(temp_r3_2205, void **, 8), M2C_UNK (**)(void *, void (*)(MKModel *, u16 *, void *)), 0x48)(temp_r3_2205, Level_TerrainDrawCallback);
         var_r25_2200 += 1;
         var_r27_2202 += 4;
@@ -1262,7 +1262,7 @@ loop_54:
     }
     SetProjectionToDefaults();
     if (MKHeap::Current() != NULL) {
-        var_r3_2252 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
+        var_r3_2252 = (MKIni *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0));
     } else {
         var_r3_2252 = malloc(0xA0);
     }
@@ -1710,7 +1710,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'ChunkInfo *'
 void Level::Update() {
     f64 sp30;
     f64 sp28;
@@ -1745,7 +1745,7 @@ void Level::Update() {
             FrontEnd_GotoMainMenu();
         }
     } else {
-        temp_r31_3123 = &gb + 0x2CC;
+        temp_r31_3123 = (void ***) (&gb + 0x2CC);
         ((TimeDeltaModifier *) temp_r31_3123)->Begin();
         M2C_FIELD(*gMK, M2C_UNK (**)(void **), 0x1C)(gMK);
         TriggerProp::UpdateActiveList();
@@ -1975,7 +1975,7 @@ loop_2:
         var_r31_3563 = var_r31_3563->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
         goto loop_2;
     }
-    temp_r31_3574 = *Level::pLevelInfo;
+    temp_r31_3574 = (MKIni *) (*Level::pLevelInfo);
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3574, NULL, 0);
     } else {
@@ -1985,13 +1985,13 @@ loop_2:
     *Level::levelInfoCount = 0;
     ((MKIni *) (*Level::pGlobalLevelIni))->Deinit();
     ((MKIni *) (*Level::pGlobalModelIni))->Deinit();
-    temp_r31_3595 = *Level::pGlobalLevelIni;
+    temp_r31_3595 = (MKIni *) (*Level::pGlobalLevelIni);
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3595, NULL, 0);
     } else {
         free(temp_r31_3595);
     }
-    temp_r31_3609 = *Level::pGlobalModelIni;
+    temp_r31_3609 = (MKIni *) (*Level::pGlobalModelIni);
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3609, NULL, 0);
         return;
@@ -2057,18 +2057,18 @@ loop_11:
     temp_r26_3744 = *Level::levelInfoCount * 0x128;
     temp_r29_3746 = temp_r26_3744 + (temp_r27_3737 + 0x100 + temp_r28_3740 + (*Level::materialInfoCount * 0x10));
     if (MKHeap::Current() != NULL) {
-        var_r3_3754 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_3746, NULL, 0);
+        var_r3_3754 = (MKIni *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_3746, NULL, 0));
     } else {
         var_r3_3754 = malloc(temp_r29_3746);
     }
     temp_r0_3760 = var_r3_3754 + temp_r26_3744;
-    *Level::pLevelInfo = var_r3_3754;
-    temp_r4_3762 = ((u8 *) temp_r0_3760) + temp_r27_3737;
+    *Level::pLevelInfo = (unsigned char) (var_r3_3754);
+    temp_r4_3762 = (WorldInfo *) (((u8 *) temp_r0_3760) + temp_r27_3737);
     temp_r6_3764 = temp_r4_3762 + 0x100;
-    *Level::pChunkInfo = temp_r0_3760;
-    *Level::pWorldInfo = temp_r4_3762;
-    *Level::pTerrainInfo = temp_r6_3764;
-    *Level::pMaterialInfo = ((u8 *) temp_r6_3764) + temp_r28_3740;
+    *Level::pChunkInfo = (unsigned char) (temp_r0_3760);
+    *Level::pWorldInfo = (unsigned char) (temp_r4_3762);
+    *Level::pTerrainInfo = (unsigned char) (temp_r6_3764);
+    *Level::pMaterialInfo = (unsigned char) (((u8 *) temp_r6_3764) + temp_r28_3740);
     memset(var_r3_3754, 0, (u32) temp_r29_3746);
     var_r27_3775 = ((MKIni *) (*Level::pGlobalLevelIni))->GetFirstLine();
 loop_31:
@@ -2103,48 +2103,42 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to 'const char *'
 void Level::InitModule() {
     operator new(0x50U, NULL, 0);
     *Level::pGlobalLevelIni = M2C_ERROR(/* Read from unset register $r3 */);
     operator new(0x50U, NULL, 0);
     *Level::pGlobalModelIni = M2C_ERROR(/* Read from unset register $r3 */);
-    gAssertBool = ((MKIni *) (*Level::pGlobalLevelIni))->Init(pGlobalLevelName, 0, NULL);
-    gAssertBool = ((MKIni *) (*Level::pGlobalModelIni))->Init(pGlobalModelName, 0, NULL);
+    gAssertBool = (const char *) (((MKIni *) (*Level::pGlobalLevelIni))->Init(pGlobalLevelName, 0, NULL));
+    gAssertBool = (const char *) (((MKIni *) (*Level::pGlobalModelIni))->Init(pGlobalModelName, 0, NULL));
     MKWind_Set(4.0f, 400.0f, 10.0f, 4.0f, MKVector3::zero, 0.5f);
     Level::InitLevelInfo();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 MaterialInfo *Level::AllocMaterialInfo() {
     s32 temp_r0_3907;
 
     temp_r0_3907 = *Level::materialInfoAllocCount * 0x10;
     *Level::materialInfoAllocCount += 1;
-    return *Level::pMaterialInfo + temp_r0_3907;
+    return (MaterialInfo *) (*Level::pMaterialInfo + temp_r0_3907);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 TerrainInfo *Level::AllocTerrainInfo() {
     s32 temp_r0_3918;
 
     temp_r0_3918 = *Level::terrainInfoAllocCount * 0xC;
     *Level::terrainInfoAllocCount += 1;
-    return *Level::pTerrainInfo + temp_r0_3918;
+    return (TerrainInfo *) (*Level::pTerrainInfo + temp_r0_3918);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 ChunkInfo *Level::AllocChunkInfo() {
     s32 temp_r0_3930;
 
     temp_r0_3930 = *Level::chunkInfoAllocCount * 0x64;
     *Level::chunkInfoAllocCount += 1;
-    return *Level::pChunkInfo + temp_r0_3930;
+    return (ChunkInfo *) (*Level::pChunkInfo + temp_r0_3930);
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 LevelInfo *Level::AllocLevelInfo() {
@@ -2153,7 +2147,7 @@ LevelInfo *Level::AllocLevelInfo() {
     *(*Level::pLevelInfo + (*Level::levelInfoAllocCount * 0x128)) = *Level::levelInfoAllocCount;
     temp_r0_3946 = *Level::levelInfoAllocCount * 0x128;
     *Level::levelInfoAllocCount += 1;
-    return *Level::pLevelInfo + temp_r0_3946;
+    return (LevelInfo *) (*Level::pLevelInfo + temp_r0_3946);
 }
 #endif
 
@@ -2162,7 +2156,7 @@ void MaterialInfo::Destroy() {
     this->unk4 = NULL;
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingMaterial(MKModel *, signed char *)' does
+#if 0 // DRAFT: function call 'Tools_GetMatchingMaterial(MKModel *, signed char *)' does not match 'Tools_GetMatchingMaterial(MKModel *, const char *)'
 void MaterialInfo::Create(MKModel *arg0) {
     MKMaterial *temp_r3_3987;
 
@@ -2189,7 +2183,7 @@ void MaterialInfo::Init() {
     this->unk8 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 void TerrainInfo::LoadLine(MKIniLine *arg0) {
     arg0->LoadBool("", (u8 *) &this->unk8, 0);
 }
@@ -2228,7 +2222,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not
+#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 void ChunkInfo::InitEnv() {
     f64 sp28;
     f64 sp20;
@@ -2342,7 +2336,7 @@ void ChunkInfo::Load(const char **arg0, int arg1, bool arg2, bool arg3) {
     if (temp_r7_4308 != NULL) {
         var_r4_4316 = M2C_FIELD(temp_r7_4308, s8 **, 4);
     }
-    this->unk5C = M2C_FIELD(*gMK, s32 (**)(void **, s8 *, s32 *, s8 **, s32, M2C_UNK, u8, u8), 0x34)(gMK, var_r4_4316, &sp10, arg0, arg1, 0, arg2, arg3);
+    this->unk5C = (signed char **) (M2C_FIELD(*gMK, s32 (**)(void **, s8 *, s32 *, s8 **, s32, M2C_UNK, u8, u8), 0x34)(gMK, var_r4_4316, &sp10, arg0, arg1, 0, arg2, arg3));
     this->unk24 = 2;
     Use();
 }
@@ -2378,7 +2372,7 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
     }
     if ((arg0->IsField("") != 0) && (arg0->unkC->GetSubLine(arg0) != NULL)) {
         temp_r30_4416 = Level::AllocTerrainInfo();
-        temp_r30_4416->unk0 = arg0->GetString(0);
+        temp_r30_4416->unk0 = (signed char *) (arg0->GetString(0));
         temp_r30_4416->unk4 = this->unk14;
         this->unk14 = temp_r30_4416;
         var_r29_4427 = arg0->unkC->GetSubLine(arg0);
@@ -2493,7 +2487,7 @@ loop_4:
     var_r3_4691->unk8 = arg0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void LevelInfo::LoadDone() {
     ChunkInfo *temp_r0_4718;
     s8 *temp_r4_4711;
@@ -2501,7 +2495,7 @@ void LevelInfo::LoadDone() {
 
     temp_r4_4711 = this->unk114;
     if (temp_r4_4711 != NULL) {
-        this->unk114 = GetChunkByName(temp_r4_4711);
+        this->unk114 = (const char *) (GetChunkByName(temp_r4_4711));
     } else {
         temp_r0_4718 = this->unk11C;
         if (temp_r0_4718 != NULL) {
@@ -2510,13 +2504,13 @@ void LevelInfo::LoadDone() {
     }
     temp_r4_4723 = this->unk118;
     if (temp_r4_4723 != NULL) {
-        this->unk118 = GetChunkByName(temp_r4_4723);
+        this->unk118 = (const char *) (GetChunkByName(temp_r4_4723));
         M2C_FIELD(this->unk118, s32 *, 0xC) = 2;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     ChunkInfo *temp_r3_5010;
     MKHeap *temp_r3_5047;
@@ -2572,10 +2566,10 @@ loop_33:
     temp_ret_5043 = arg0->IsField("");
     var_f1_5043 = M2C_BITWISE(f32, temp_ret_5043);
     if (temp_ret_5043 != 0) {
-        temp_r3_5047 = arg0->GetNmbrOfSubLines();
+        temp_r3_5047 = (MKHeap *) (arg0->GetNmbrOfSubLines());
         this->unk100 = temp_r3_5047;
         if (MKHeap::Current() != NULL) {
-            var_r3_5057 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0);
+            var_r3_5057 = (MKIni *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0));
         } else {
             var_r3_5057 = malloc((s32) temp_r3_5047 * 8);
         }
@@ -2597,7 +2591,7 @@ loop_41:
     var_r29_5099 = 0;
 loop_44:
     temp_r27_5105 = this + var_r29_5099;
-    temp_ret_5110 = arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), ((u8 *) temp_r27_5105) + 0x40, 0);
+    temp_ret_5110 = (const char *) (arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), ((u8 *) temp_r27_5105) + 0x40, 0));
     if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf("", var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), ((u8 *) temp_r27_5105) + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
         return 1;
     }
@@ -2674,7 +2668,7 @@ void WorldInfo::LoadDone() {
     this->unk74 = this->unk6C * this->unk78;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 WorldInfo::LoadSize(MKIniLine *arg0, const char *arg1, int *arg2, int *arg3, int arg4) {
     s8 *sp8;
     u8 temp_r3_5256;
@@ -2692,7 +2686,7 @@ u8 WorldInfo::LoadSize(MKIniLine *arg0, const char *arg1, int *arg2, int *arg3, 
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(Level *, const char[14])' does not match
+#if 0 // DRAFT: function call 'stricmp(Level *, const char[14])' does not match 'stricmp(Level *, signed char *)'
 s32 SizeToInt(const char *arg0, int arg1) {
     M2C_UNK spC;
     f32 sp8;
@@ -2717,7 +2711,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5673;
     s32 temp_ret_5673;
@@ -2741,7 +2735,7 @@ s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     var_r29_5689 = 0;
 loop_33:
     temp_r27_5695 = this + var_r29_5689;
-    temp_ret_5700 = arg0->LoadVector4(Str_Printf("", var_r26_5687, var_f1_5673), ((u8 *) temp_r27_5695) + 0x80, 0);
+    temp_ret_5700 = (const char *) (arg0->LoadVector4(Str_Printf("", var_r26_5687, var_f1_5673), ((u8 *) temp_r27_5695) + 0x80, 0));
     if ((temp_ret_5700 != 0) || (temp_ret_5711 = arg0->LoadVector3(Str_Printf("", var_r26_5687, M2C_BITWISE(f32, temp_ret_5700)), ((u8 *) temp_r27_5695) + 0xB0, 0), var_f1_5673 = M2C_BITWISE(f32, temp_ret_5711), ((temp_ret_5711 == 0) == 0))) {
         return 1;
     }

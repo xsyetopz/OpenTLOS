@@ -4,7 +4,7 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'gShockWaveData' redeclared
+#if 0 // DRAFT: identifier 'gShockWaveData' redeclared was declared as: 'unsigned char[112]' now declared as: 'long'
 extern M2C_UNK gShockWaveData;
 #endif
 

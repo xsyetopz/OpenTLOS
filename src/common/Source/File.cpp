@@ -55,12 +55,12 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_openFiles_0x58'
 s32 File_IsBusy(int arg0) {
     struct _struct_openFiles_0x58 *temp_r3_105;
 
     if ((arg0 != -1) && (arg0 < 0x14)) {
-        temp_r3_105 = &openFiles[arg0];
+        temp_r3_105 = (_struct_openFiles_0x58 *) (&openFiles[arg0]);
         if ((s32) temp_r3_105->unk3C != -1) {
             return temp_r3_105->unk44;
         }
@@ -69,7 +69,7 @@ s32 File_IsBusy(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 u32 File_Length(const char *arg0) {
     s8 sp44;
     DVDFileInfo sp8;
@@ -148,7 +148,7 @@ s32 File_Write(int arg0, const void *arg1, int arg2) {
             temp_r7_260 = &semaJobCount + 0x1A20;
             *(temp_r7_260 + (jobListHead * 0x4C)) = 3;
             M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
-            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), void **, 8) = arg1;
+            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), void **, 8) = (void *) (arg1);
             M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
             M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 0x10) = arg2;
             M2C_FIELD(temp_r31_255, s32 *, 0x48) = 0;
@@ -216,7 +216,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'OSSemaphore' to
+#if 0 // DRAFT: illegal explicit conversion from 'OSSemaphore' to 'long'
 s32 File_Close(int arg0) {
     u32 temp_r0_434;
     u32 temp_r4_431;
@@ -237,7 +237,7 @@ s32 File_Close(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'OSSemaphore' to
+#if 0 // DRAFT: illegal explicit conversion from 'OSSemaphore' to 'long'
 s32 File_Open(const char *arg0, int arg1) {
     s32 temp_r30_476;
     s32 var_ctr_461;
@@ -367,7 +367,7 @@ loop_1:
     OSWaitSemaphore(&semaJobCount);
     if ((s32) *(temp_r31_617 + (jobListTail * 0x4C)) != 5) {
         temp_r29_629 = ((u8 *) temp_r31_617) + (jobListTail * 0x4C);
-        temp_r28_634 = &semaJobCount + 0x1340 + (M2C_FIELD(temp_r29_629, s32 *, 4) * 0x58);
+        temp_r28_634 = (DVDFileInfo *) (&semaJobCount + 0x1340 + (M2C_FIELD(temp_r29_629, s32 *, 4) * 0x58));
         if (((s32) M2C_FIELD(temp_r29_629, s32 *, 0) != 0) && (((DVDFileInfo *) M2C_FIELD(temp_r28_634, DVDFileInfo **, 0x3C) == (DVDFileInfo *)-1) || ((DVDFileInfo *) M2C_FIELD(temp_r28_634, DVDFileInfo **, 0x3C) == (DVDFileInfo *)1))) {
             M2C_FIELD(temp_r28_634, s32 *, 0x48) = -1;
         } else {

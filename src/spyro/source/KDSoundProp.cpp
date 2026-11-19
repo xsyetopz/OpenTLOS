@@ -98,7 +98,7 @@ s32 KDSoundProp::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDSoundProp::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
     s32 var_r30_238;

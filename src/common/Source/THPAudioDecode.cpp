@@ -36,7 +36,6 @@ void *PopFreeAudioBuffer() {
     return sp8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void AudioDecode(THPReadBuffer *arg0) {
     s32 *var_r30_97;
     s32 temp_r0_131;
@@ -48,7 +47,7 @@ void AudioDecode(THPReadBuffer *arg0) {
     void *temp_r31_103;
 
     temp_r5_94 = arg0->unk0;
-    var_r30_97 = temp_r5_94 + 8;
+    var_r30_97 = (long *) (temp_r5_94 + 8);
     var_r29_98 = temp_r5_94 + ((M2C_FIELD(&ActivePlayer, u32 *, 0x6C) * 4) + 8);
     var_r5_102 = 0;
     temp_r31_103 = PopFreeAudioBuffer();
@@ -74,9 +73,8 @@ loop_1:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 void AudioDecoderForOnMemory(void *arg0) {
     s32 spC;
     void *sp8;
@@ -107,7 +105,6 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AudioDecode'
 void AudioDecoder(void *arg0) {
     THPReadBuffer *temp_r3_201;
 
@@ -117,7 +114,6 @@ loop_1:
     PushReadedBuffer2(temp_r3_201);
     goto loop_1;
 }
-#endif
 
 void AudioDecodeThreadCancel() {
     if ((s32) AudioDecodeThreadCreated != 0) {
@@ -132,7 +128,7 @@ void AudioDecodeThreadStart() {
     }
 }
 
-#if 0 // DRAFT: function call 'OSInitMessageQueue(OSThread *, OSThread *, int)' does not
+#if 0 // DRAFT: function call 'OSInitMessageQueue(OSThread *, OSThread *, int)' does not match 'OSInitMessageQueue(OSMessageQueue *, void *, long)'
 s32 CreateAudioDecodeThread(long arg0, unsigned char *arg1) {
     if (arg1 != NULL) {
         if (OSCreateThread(&AudioDecodeThread, (void *(*)(void *)) AudioDecoderForOnMemory, arg1, &AudioDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {

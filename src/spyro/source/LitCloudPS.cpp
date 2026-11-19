@@ -74,7 +74,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void LitCloudPS::StateUpdate() {
     f64 sp1C8;
     f64 sp1C0;
@@ -314,7 +314,7 @@ void LitCloudPS::SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float ar
     this->unk70 = arg2;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, bool arg3) {
     f64 sp60;
     f64 sp58;
@@ -400,7 +400,7 @@ void LitCloudPS::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f64 sp388;
     f64 sp380;
@@ -713,7 +713,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void *'
 void *LitCloudPS::Update() {
     f64 sp88;
     f64 sp80;                                       /* compiler-managed */
@@ -881,7 +881,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void LitCloudPS::Init() {
     MKHeap *var_r3_1411;
     MKHeap *var_r3_1425;
@@ -891,13 +891,13 @@ void LitCloudPS::Init() {
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1411 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2580, NULL, 0);
+        var_r3_1411 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2580, NULL, 0));
     } else {
         var_r3_1411 = malloc(0x2580);
     }
     this->unk7C = var_r3_1411;
     if (MKHeap::Current() != NULL) {
-        var_r3_1425 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
+        var_r3_1425 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0));
     } else {
         var_r3_1425 = malloc(0x190);
     }
@@ -918,13 +918,13 @@ void LitCloudPS::Init() {
         *(this->unk7C + temp_r0_1447) = 0;
         var_ctr_1444 -= 1;
     } while (var_ctr_1444 != 0);
-    this->unk84 = MKMaterial_Create("FX_381");
+    this->unk84 = (MKMaterial *) (MKMaterial_Create("FX_381"));
     this->unk78 = 0.0f;
     this->unk98 = 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to
+#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 LitParticleCompare(const void *arg0, const void *arg1) {
     return -(s32) (M2C_FIELD(*arg0, f32 *, 0x38) - M2C_FIELD(*arg1, f32 *, 0x38));
 }

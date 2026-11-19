@@ -6,7 +6,7 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     Matrix sp150;
     f64 sp148;

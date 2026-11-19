@@ -230,15 +230,13 @@ inline void *KDRefPointProperty::GetClassInfo() const {
     return (KDRefPointProperty *) KDRefPointProperty::classInfo;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 inline KDRefPointProperty::KDRefPointProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
-    this->unk10 = "defaultModel";
+    this->unk10 = (signed char *) ("defaultModel");
     this->unk14 = 0;
 }
-#endif
 
 inline s32 KDSoundAttachmentProperty::GetInstanceDataSize() const {
     return 4;

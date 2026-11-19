@@ -112,7 +112,7 @@ void MagicDrain::Draw() {
 
 }
 
-#if 0 // DRAFT: identifier 'MagicDrain::Update()' redeclared
+#if 0 // DRAFT: identifier 'MagicDrain::Update()' redeclared was declared as: 'void * ()' now declared as: 'void ()'
 void MagicDrain::Update() {
     MKVector3 sp68;
     f64 sp60;
@@ -205,7 +205,7 @@ void MagicDrain::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MagicDrain::Resolve()' redeclared
+#if 0 // DRAFT: identifier 'MagicDrain::Resolve()' redeclared was declared as: 'float ()' now declared as: 'void ()'
 void MagicDrain::Resolve() {
     f64 sp60;
     f64 sp58;

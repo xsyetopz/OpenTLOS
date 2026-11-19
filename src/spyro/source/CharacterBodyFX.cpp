@@ -137,7 +137,7 @@ CharacterBodyFX *CharacterBodyFXManager::CreateInstance(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'CharacterBodyFX **' and 'CharacterBodyFX ***'
 void CharacterBodyFXManager::Deinit() {
     CharacterBodyFX ***var_r31_239;
     CharacterBodyFX ***var_r31_267;
@@ -237,7 +237,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterBodyFXManager::Init() {
     CharacterBodyFX ***temp_r3_405;
     CharacterBodyFX ***temp_r3_411;
@@ -246,7 +245,7 @@ void CharacterBodyFXManager::Init() {
     s32 var_ctr_403;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_390 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x648, NULL, 0);
+        var_r3_390 = (CharacterBodyFX ***) (((MKHeap *) (MKHeap::Current()))->Alloc(0x648, NULL, 0));
     } else {
         var_r3_390 = malloc(0x648);
     }
@@ -266,7 +265,6 @@ void CharacterBodyFXManager::Init() {
     this->unk0 = temp_r3_411 + 4;
     M2C_FIELD(temp_r3_411, CharacterBodyFX ****, 4) = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
@@ -290,7 +288,7 @@ void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
     if (((u8) M2C_FIELD((temp_r5_444 + temp_r31_453), u8 *, 0x60) == 0) || ((u8) this->unk10 == 0)) {
         CalculateNodeData(var_r4_445);
     }
-    return this->unk4 + temp_r31_453;
+    return (void *) (this->unk4 + temp_r31_453);
 }
 #endif
 
@@ -393,7 +391,7 @@ loop_10:
                 sp90 = (f64) sp20;
                 temp_f0_673 = sp88 + M2C_BITWISE(f64, sp48);
                 sp38 = temp_f0_673;
-                temp_r3_679 = this->unk4 + (var_r26_556 + 8);
+                temp_r3_679 = (void *) (this->unk4 + (var_r26_556 + 8));
                 sp98 = temp_f0_673;
                 M2C_FIELD(temp_r3_679, f64 *, 0) = temp_f0_673;
                 sp40 = (f32) sp90 + sp48.unk8;
@@ -408,7 +406,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: pointer/array required
 void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFX ***var_r3_736;
     CharacterBodyFXData *temp_r3_771;
@@ -429,7 +427,7 @@ void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNod
         this->unk11 = 0;
         temp_r28_728 = this->unk8->unk4 * 0x70;
         if (MKHeap::Current() != NULL) {
-            var_r3_736 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_728, NULL, 0);
+            var_r3_736 = (CharacterBodyFX ***) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_728, NULL, 0));
         } else {
             var_r3_736 = malloc(temp_r28_728);
         }
@@ -446,7 +444,7 @@ loop_8:
             temp_r3_762 = var_r30_747 + 8;
             var_r27_746 += 1;
             var_r30_747 += 0x70;
-            temp_r3_765 = this->unk4 + temp_r3_762;
+            temp_r3_765 = (void *) (this->unk4 + temp_r3_762);
             var_r29_742 += 0x30;
             M2C_FIELD(temp_r3_765, f32 *, 0) = 0.0f;
             M2C_FIELD(temp_r3_765, f32 *, 4) = 0.0f;

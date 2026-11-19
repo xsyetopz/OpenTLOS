@@ -74,7 +74,7 @@ ModelCloth *MKModel_GetCloth(const MKModel *arg0) {
     return arg0->unk84;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: undefined identifier 'attachmentMatrix'
 void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObjectType arg1, int arg2, Matrix *arg3) {
     s16 sp8;
     MKAttachment *temp_r7_82;
@@ -83,7 +83,7 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
     s16 temp_r3_173;
     s32 temp_r0_86;
 
-    var_r31_81 = &arg0->unk10;
+    var_r31_81 = (Matrix *) (&arg0->unk10);
     temp_r7_82 = arg0->unk8;
     if (temp_r7_82 != NULL) {
         temp_r0_86 = ((u8) temp_r7_82->unk4 >> 4U) & 0xF;
@@ -124,7 +124,7 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: undefined identifier 'attachmentMatrix'
 void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVector3 *arg2) {
     Matrix sp70;
     f64 sp60;
@@ -147,7 +147,7 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
     u8 temp_r0_321;
     void *temp_r3_320;
 
-    var_r31_227 = &arg0->unk10;
+    var_r31_227 = (Matrix *) (&arg0->unk10);
     temp_r7_228 = arg0->unk8;
     if (temp_r7_228 != NULL) {
         temp_r0_232 = ((u8) temp_r7_228->unk4 >> 4U) & 0xF;
@@ -199,7 +199,7 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: undefined identifier 'attachmentMatrix'
 void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg2) {
     f64 sp38;
     f64 sp30;
@@ -212,7 +212,7 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
     Matrix *var_r31_432;
     s32 temp_r0_437;
 
-    var_r31_432 = &arg0->unk10;
+    var_r31_432 = (Matrix *) (&arg0->unk10);
     temp_r7_433 = arg0->unk8;
     if (temp_r7_433 != NULL) {
         temp_r0_437 = ((u8) temp_r7_433->unk4 >> 4U) & 0xF;
@@ -252,7 +252,7 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: undefined identifier 'attachmentMatrix'
 void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3 *arg2) {
     Matrix sp50;
     f64 sp40;
@@ -266,7 +266,7 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
     Matrix *var_r31_592;
     s32 temp_r0_597;
 
-    var_r31_592 = &arg0->unk10;
+    var_r31_592 = (Matrix *) (&arg0->unk10);
     temp_r7_593 = arg0->unk8;
     if (temp_r7_593 != NULL) {
         temp_r0_597 = ((u8) temp_r7_593->unk4 >> 4U) & 0xF;
@@ -395,7 +395,7 @@ s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) 
     case 1:
         return *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x44), s32 *, 4) + (arg2 * 8));
     case 2:
-        return ((MKCloth *) (MKModel_GetClothSubObject(arg0, arg2)))->GetName();
+        return (signed char *) (((MKCloth *) (MKModel_GetClothSubObject(arg0, arg2)))->GetName());
     case 0:
         return M2C_FIELD((M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6)), s8 **, 0x30);
     default:
@@ -524,7 +524,7 @@ void MKModel_EnableSubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool a
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal type Too many errors printed, aborting program
 u8 MKModel_GetSubObjectFlag(const MKModel *arg0, SubObjectType arg1, int arg2) {
     u8 var_r4_1198;
 
@@ -632,7 +632,7 @@ loop_21:
         var_ctr_1377 = temp_r0_1376;
         if (temp_r0_1376 > 0) {
 loop_24:
-            var_r28_1382 = M2C_FIELD(temp_r4_1375, s32 *, 0x60) + var_r3_1374;
+            var_r28_1382 = (unsigned short *) (M2C_FIELD(temp_r4_1375, s32 *, 0x60) + var_r3_1374);
             if ((u16) *var_r28_1382 == 2) {
 
             } else {
@@ -669,7 +669,7 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: pointer/array required
 s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool arg3) {
     Matrix sp20;
     s16 sp10;
@@ -683,7 +683,7 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
     void *temp_r30_1449;
 
     var_r29_1442 = arg3;
-    var_r31_1443 = &arg0->unk10;
+    var_r31_1443 = (Matrix *) (&arg0->unk10);
     temp_r3_1445 = arg0->unk8;
     temp_r30_1449 = *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x58) + (arg1 * 4));
     if (temp_r3_1445 != NULL) {
@@ -821,7 +821,7 @@ MKHeap **MKModel_GetBoundingVolume(const MKModel *arg0, SubObjectType arg1, int 
     if (arg2 < 0) {
         return M2C_FIELD(arg0->unk0, void **, 0x30) + 0x30;
     }
-    return M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6);
+    return (MKHeap **) (M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6));
 }
 #endif
 
@@ -906,16 +906,13 @@ f32 MKModel_GetAlpha(const MKModel *arg0) {
     return 1.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const double *' to
 f64 *MKModel_GetColor(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
-        return &arg0->unk50;
+        return (double *) (&arg0->unk50);
     }
     return (f64 *) &MKVector4::one;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_GetWorldMatrixWithAttachment(const MKModel *arg0, Matrix *arg1) {
     MKAttachment *temp_r7_1932;
     Matrix *var_r31_1939;
@@ -927,7 +924,7 @@ void MKModel_GetWorldMatrixWithAttachment(const MKModel *arg0, Matrix *arg1) {
         if ((u32) (((u8) arg0->unk4 >> 5U) & 7) < 1U) {
             var_r31_1939 = NULL;
         } else {
-            var_r31_1939 = &arg0->unk10;
+            var_r31_1939 = (Matrix *) (&arg0->unk10);
         }
         temp_r0_1945 = ((u8) temp_r7_1932->unk4 >> 4U) & 0xF;
         switch (temp_r0_1945) {                     /* irregular */
@@ -954,14 +951,13 @@ void MKModel_GetWorldMatrixWithAttachment(const MKModel *arg0, Matrix *arg1) {
         if ((u32) (((u8) arg0->unk4 >> 5U) & 7) < 1U) {
             var_r3_2024 = &Matrix::identity;
         } else {
-            var_r3_2024 = &arg0->unk10;
+            var_r3_2024 = (Matrix *) (&arg0->unk10);
         }
         M2C_STRUCT_COPY(arg1, var_r3_2024, 0x40);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix' to
+#if 0 // DRAFT: illegal implicit conversion from 'const Matrix' to 'float'
 void MKModel_SetWorldMatrix(MKModel *arg0, const Matrix &arg1) {
     f32 temp_f0_2060;
     s32 temp_r7_2061;
@@ -1002,7 +998,7 @@ MKHeap *MKModel_GetName(const MKModel *arg0) {
     return (MKHeap *) arg0->unk0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: undefined identifier 'attachmentMatrix'
 void MKModel_DrawModelParticles(const MKModel *arg0, const Matrix *arg1) {
     f32 sp1D8;
     f32 sp1D4;
@@ -1120,7 +1116,7 @@ void MKModel_DrawModelParticles(const MKModel *arg0, const Matrix *arg1) {
     void *temp_r3_2626;
 
     temp_r7_2114 = arg0->unk8;
-    var_r29_2115 = &arg0->unk10;
+    var_r29_2115 = (Matrix *) (&arg0->unk10);
     var_r26_2116 = 0;
     if (temp_r7_2114 != NULL) {
         temp_r0_2120 = ((u8) temp_r7_2114->unk4 >> 4U) & 0xF;
@@ -1255,7 +1251,7 @@ block_60:
             if (var_r3_2392 != 0) {
                 var_r3_2403 = var_r29_2115;
             } else {
-                var_r3_2403 = &arg1[(s8) temp_r4_2391];
+                var_r3_2403 = (Matrix *) (&arg1[(s8) temp_r4_2391]);
             }
             temp_f3_2409 = M2C_FIELD(temp_r23_2363, f32 *, 4);
             temp_f6_2415 = M2C_FIELD(temp_r23_2363, f32 *, 0);
@@ -1442,7 +1438,7 @@ void MKModel_Destroy(MKModel *arg0) {
     gDynamicBones.RemoveModel(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[7], int)' does not match 'strnicmp(const char *, const char *, int)'
 void MKModel_SetupCloth(MKModel *arg0) {
     M2C_UNK sp8;
     MKCloth *temp_r31_2996;
@@ -1507,7 +1503,7 @@ void MKModel_SetupCloth(MKModel *arg0) {
     var_ctr_2813 = temp_r0_2812;
     if (temp_r0_2812 > 0) {
 loop_1:
-        var_r17_2818 = M2C_FIELD(temp_r3_2811, s32 *, 0x60) + var_r4_2804;
+        var_r17_2818 = (unsigned short *) (M2C_FIELD(temp_r3_2811, s32 *, 0x60) + var_r4_2804);
         if ((u16) *var_r17_2818 == 5) {
 
         } else {
@@ -1562,7 +1558,7 @@ loop_19:
     var_ctr_2896 = temp_r0_2895;
     if (temp_r0_2895 > 0) {
 loop_21:
-        var_r5_2901 = M2C_FIELD(temp_r4_2894, s32 *, 0x60) + var_r3_2893;
+        var_r5_2901 = (unsigned short *) (M2C_FIELD(temp_r4_2894, s32 *, 0x60) + var_r3_2893);
         if ((u16) *var_r5_2901 == 2) {
 
         } else {
@@ -1632,21 +1628,21 @@ loop_43:
             temp_r5_3018 = M2C_FIELD(temp_r31_2996, void **, 4);
             if (var_r6_3001 < (s32) M2C_FIELD(temp_r5_3018, s32 *, 0x18)) {
                 var_r6_3001 += 1;
-                temp_r5_3009 = M2C_FIELD(temp_r5_3018, s32 *, 0x1C) + var_r3_3002;
+                temp_r5_3009 = (void *) (M2C_FIELD(temp_r5_3018, s32 *, 0x1C) + var_r3_3002);
                 var_r3_3002 += 0x10;
                 M2C_FIELD(temp_r5_3009, s32 *, 0) = (s32) *(M2C_FIELD(M2C_FIELD(temp_r31_2996->unkC->unk0, void **, 0x30), s32 *, 0x54) + (M2C_FIELD(temp_r5_3009, s32 *, 4) * 4));
                 goto loop_43;
             }
             temp_r15_3023 = M2C_FIELD(temp_r5_3018, s32 *, 0) * 0x38;
             if (MKHeap::Current() != NULL) {
-                var_r3_3031 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3023, NULL, 0);
+                var_r3_3031 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3023, NULL, 0));
             } else {
                 var_r3_3031 = malloc(temp_r15_3023);
             }
             M2C_FIELD(temp_r31_2996, s8 **, 0) = var_r3_3031;
             temp_r15_3040 = M2C_FIELD(M2C_FIELD(temp_r31_2996, void **, 4), s32 *, 0x10) * 0xC;
             if (MKHeap::Current() != NULL) {
-                var_r3_3048 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3040, NULL, 0);
+                var_r3_3048 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3040, NULL, 0));
             } else {
                 var_r3_3048 = malloc(temp_r15_3040);
             }
@@ -1656,7 +1652,7 @@ loop_43:
             if (var_r27_2928 != 0) {
                 if (var_r29_2931 != 0) {
                     if (MKHeap::Current() != NULL) {
-                        var_r3_3073 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_2931 * 4, NULL, 0);
+                        var_r3_3073 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_2931 * 4, NULL, 0));
                     } else {
                         var_r3_3073 = malloc(var_r29_2931 * 4);
                     }
@@ -1665,7 +1661,7 @@ loop_43:
                 }
                 if (var_r30_2932 != 0) {
                     if (MKHeap::Current() != NULL) {
-                        var_r3_3093 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r30_2932 * 4, NULL, 0);
+                        var_r3_3093 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r30_2932 * 4, NULL, 0));
                     } else {
                         var_r3_3093 = malloc(var_r30_2932 * 4);
                     }
@@ -1675,7 +1671,7 @@ loop_43:
                 temp_r15_3105 = var_r27_2928 - (var_r29_2931 + var_r30_2932);
                 if (temp_r15_3105 != 0) {
                     if (MKHeap::Current() != NULL) {
-                        var_r3_3114 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3105 * 4, NULL, 0);
+                        var_r3_3114 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3105 * 4, NULL, 0));
                     } else {
                         var_r3_3114 = malloc(temp_r15_3105 * 4);
                     }
@@ -1717,7 +1713,7 @@ loop_73:
             var_ctr_3171 = temp_r0_3170;
             if (temp_r0_3170 > 0) {
 loop_76:
-                var_r5_3176 = M2C_FIELD(temp_r4_3169, s32 *, 0x60) + var_r3_3168;
+                var_r5_3176 = (unsigned short *) (M2C_FIELD(temp_r4_3169, s32 *, 0x60) + var_r3_3168);
                 if ((u16) *var_r5_3176 == 0xA) {
 
                 } else {
@@ -1996,7 +1992,6 @@ loop_64:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to
 void UnpackCustomDataEntry_ConvexHull(MKModelTemplateData::CustomDataEntry *arg0, bool arg1, int arg2) {
     u16 var_r8_3519;
     u32 temp_r0_3513;
@@ -2014,7 +2009,7 @@ void UnpackCustomDataEntry_ConvexHull(MKModelTemplateData::CustomDataEntry *arg0
         var_r8_3519 = 0;
 loop_8:
         if ((s32) var_r8_3519 < (s32) M2C_FIELD(arg0, s32 *, 8)) {
-            temp_r6_3525 = M2C_FIELD(arg0, u32 *, 4) + (var_r8_3519 * 0x30);
+            temp_r6_3525 = (void *) (M2C_FIELD(arg0, u32 *, 4) + (var_r8_3519 * 0x30));
             temp_r0_3526 = M2C_FIELD(temp_r6_3525, u32 *, 0x24);
             if (temp_r0_3526 != 0U) {
                 M2C_FIELD(temp_r6_3525, u32 *, 0x24) = (u32) (temp_r0_3526 + arg2);
@@ -2030,9 +2025,7 @@ loop_8:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to
 void UnpackCustomDataEntry_Cloth(MKModelTemplateData::CustomDataEntry *arg0, bool arg1, int arg2) {
     u16 var_r8_3561;
     u32 temp_r0_3555;
@@ -2056,7 +2049,7 @@ void UnpackCustomDataEntry_Cloth(MKModelTemplateData::CustomDataEntry *arg0, boo
         var_r8_3561 = 0;
 loop_20:
         if ((s32) var_r8_3561 < (s32) M2C_FIELD(arg0, s32 *, 8)) {
-            temp_r6_3567 = M2C_FIELD(arg0, u32 *, 4) + (var_r8_3561 * 0x58);
+            temp_r6_3567 = (void *) (M2C_FIELD(arg0, u32 *, 4) + (var_r8_3561 * 0x58));
             temp_r0_3568 = M2C_FIELD(temp_r6_3567, u32 *, 4);
             if (temp_r0_3568 != 0U) {
                 M2C_FIELD(temp_r6_3567, u32 *, 4) = (u32) (temp_r0_3568 + arg2);
@@ -2096,9 +2089,8 @@ loop_20:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcmpi(const char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcmpi(const char *, signed char *)' does not match 'strcmpi(signed char *, signed char *)'
 MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW *arg3) {
     s8 *sp8;
     MKModelSLW *var_r24_3803;
@@ -2156,7 +2148,7 @@ loop_2:
         M2C_FIELD(var_r27_3636, s32 *, 0x24) = (s32) (M2C_FIELD(var_r27_3636, s32 *, 0x24) + 1);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r25_3668 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4C, NULL, 0);
+            var_r25_3668 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x4C, NULL, 0));
         } else {
             var_r25_3668 = malloc(0x4C);
         }
@@ -2215,7 +2207,7 @@ loop_26:
             var_r24_3803 = arg3;
         } else {
             if (MKHeap::Current() != NULL) {
-                var_r3_3813 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
+                var_r3_3813 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0));
             } else {
                 var_r3_3813 = malloc(0x10);
             }
@@ -2245,7 +2237,7 @@ loop_26:
     var_ctr_3866 = temp_r0_3861;
     if (temp_r0_3861 > 0) {
 loop_40:
-        var_r5_3871 = M2C_FIELD(temp_r4_3848, s32 *, 0x60) + var_r3_3864;
+        var_r5_3871 = (unsigned short *) (M2C_FIELD(temp_r4_3848, s32 *, 0x60) + var_r3_3864);
         if ((u16) *var_r5_3871 == 8) {
 
         } else {
@@ -2271,7 +2263,7 @@ block_43:
     var_ctr_3892 = temp_r0_3891;
     if (temp_r0_3891 > 0) {
 loop_47:
-        var_r28_3897 = M2C_FIELD(temp_r4_3889, s32 *, 0x60) + var_r3_3890;
+        var_r28_3897 = (unsigned short *) (M2C_FIELD(temp_r4_3889, s32 *, 0x60) + var_r3_3890);
         if ((u16) *var_r28_3897 == 2) {
 
         } else {
@@ -2293,7 +2285,7 @@ block_50:
         var_r26_3865 = (M2C_FIELD(var_r28_3897, s32 *, 8) << 8) + temp_r26_3913 + 0x40;
     }
     if (MKHeap::Current() != NULL) {
-        var_r30_3927 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r26_3865, NULL, 0);
+        var_r30_3927 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r26_3865, NULL, 0));
     } else {
         var_r30_3927 = malloc(var_r26_3865);
     }

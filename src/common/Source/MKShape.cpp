@@ -44,7 +44,7 @@ void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVe
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
     f32 sp11C;
     f32 sp118;

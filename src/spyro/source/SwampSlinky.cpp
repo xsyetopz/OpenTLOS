@@ -45,7 +45,6 @@ void SwampSlinky::Deinit() {
     Critters::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampSlinky::Draw() {
     Matrix *temp_r29_97;
     s32 var_r30_89;
@@ -55,7 +54,7 @@ void SwampSlinky::Draw() {
     var_r31_90 = 0;
 loop_2:
     if (var_r30_89 < (s32) this->unk90) {
-        temp_r29_97 = ((u8 *) this->unk170) + var_r31_90;
+        temp_r29_97 = (Matrix *) (((u8 *) this->unk170) + var_r31_90);
         this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
         MKModel_SetWorldMatrix(this->unk4, *temp_r29_97);
@@ -65,9 +64,8 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: ')' expected
 void *SwampSlinky::Update() {
     s8 sp208;
     s32 sp204;
@@ -163,7 +161,7 @@ void *SwampSlinky::Update() {
     var_r28_139 = 0;
 loop_20:
     if (var_r31_138 < (s32) this->unk90) {
-        temp_r30_144 = ((u8 *) this->unk170) + var_r28_139;
+        temp_r30_144 = (Matrix *) (((u8 *) this->unk170) + var_r28_139);
         M2C_FIELD(temp_r30_144, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_144, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_144, f32 *, 0x54));
         temp_f0_149 = M2C_FIELD(temp_r30_144, f32 *, 0x54);
         if (temp_f0_149 > 1.0f) {
@@ -295,7 +293,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'SwampSlinkyDescriptor' to 'void *'
 s32 SwampSlinky::LoadDone() {
     s8 sp190;
     s32 sp18C;
@@ -366,7 +364,7 @@ s32 SwampSlinky::LoadDone() {
     var_r28_508 = 0;
 loop_27:
     if (var_r31_506 < (s32) this->unk90) {
-        temp_r30_523 = ((u8 *) this->unk170) + var_r28_508;
+        temp_r30_523 = (Matrix *) (((u8 *) this->unk170) + var_r28_508);
         M2C_FIELD(temp_r30_523, s32 *, 0x60) = 0;
         temp_r26_525 = M2C_FIELD(temp_r30_523, s32 *, 0x60);
         M2C_FIELD(temp_r30_523, void **, 0x50) = (void *) *(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_525 * 4) + 0x70));

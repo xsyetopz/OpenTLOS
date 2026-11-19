@@ -18,7 +18,7 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'areaList' redeclared
+#if 0 // DRAFT: identifier 'areaList' redeclared was declared as: 'unsigned char[12]' now declared as: 'long'
 f64 acos(f32);                                      /* extern */
 f64 pow(s32, s32, f32, M2C_UNK *, s32, s32, s32, f32, f32, f64); /* extern */
 extern M2C_UNK areaList;
@@ -230,7 +230,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'unsigned long' and 'void *'
 void MKOcean::LoadDone() {
     MKHeap **temp_r3_421;
     f32 temp_f0_443;
@@ -304,7 +304,7 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 MKOcean::LoadLine(MKIniLine *arg0) {
     s32 var_r31_500;
 

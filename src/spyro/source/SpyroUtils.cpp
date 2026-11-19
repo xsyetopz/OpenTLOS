@@ -70,7 +70,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpyroSoundPlayer' to
+#if 0 // DRAFT: illegal implicit conversion from 'SpyroSoundPlayer' to 'long'
 void SpyroSoundPlayer::UpdatePitch(int arg0) {
     s32 temp_r31_15;
     s32 temp_r3_17;
@@ -84,7 +84,7 @@ void SpyroSoundPlayer::UpdatePitch(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpyroSoundPlayer *' to
+#if 0 // DRAFT: illegal implicit conversion from 'KDSoundFader *' to 'const MKVector3 *'
 void SpyroSoundPlayer::PlaySounds(int arg0, bool arg1) {
     s32 sp8;
     KDSoundFader *temp_r3_60;
@@ -106,7 +106,7 @@ void SpyroSoundPlayer::PlaySounds(int arg0, bool arg1) {
         if ((arg1 != 0) && (EventCamera_GetCurrent() == NULL)) {
             var_r31_52 = 1;
         }
-        temp_r3_60 = this + temp_r30_41;
+        temp_r3_60 = (KDSoundFader *) (this + temp_r30_41);
         sp8 = 1;
         temp_r3_60->Update(temp_r29_46, 1U, var_r31_52, NULL, temp_r3_60 + 0x48, 0U, temp_r28_48, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         return;
@@ -505,7 +505,7 @@ u8 SpyroSoundPlayer::SoundIsPlaying(int arg0) {
     return var_r31_732;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void SpyroSoundPlayer::StopAll() {
     SpyroSoundPlayer *temp_r3_764;
     s32 var_r29_760;
@@ -523,7 +523,7 @@ void SpyroSoundPlayer::StopAll() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpyroSoundPlayer *' to
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void SpyroSoundPlayer::Stop(int arg0) {
     s32 *temp_r3_792;
 
@@ -531,7 +531,7 @@ void SpyroSoundPlayer::Stop(int arg0) {
         if (arg0 >= 0xD) {
             return;
         }
-        temp_r3_792 = this + (arg0 * 0x58);
+        temp_r3_792 = (long *) (this + (arg0 * 0x58));
         M2C_FIELD(temp_r3_792, s32 *, 0x28) = 2;
         KDSound_Stop(temp_r3_792);
     }

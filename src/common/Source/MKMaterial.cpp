@@ -28,7 +28,7 @@ s32 stricmp(s8 *, s8 *);                            /* extern */
 extern s8 bMaterialDeiniting;
 extern s8 bMaterialIniting;
 extern M2C_UNK gMKDefaults;
-#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared
+#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared was declared as: 'MKMaterial *' now declared as: 'long'
 extern s32 gpCurrentMaterial;
 #endif
 extern void *gpMKMaterialTypeInfoList;
@@ -72,7 +72,6 @@ void MKMaterial_InitMaterialIDs() {
     materialIdCount = sp8 / 65;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 s32 StringHash(const char *arg0, int arg1) {
     s8 *var_r4_96;
     u32 temp_r3_95;
@@ -82,7 +81,7 @@ s32 StringHash(const char *arg0, int arg1) {
 
     var_r31_94 = 0;
     temp_r3_95 = strlen(arg0);
-    var_r4_96 = arg0;
+    var_r4_96 = (signed char *) (arg0);
     var_ctr_97 = temp_r3_95;
     if (temp_r3_95 > 0U) {
         do {
@@ -94,7 +93,6 @@ s32 StringHash(const char *arg0, int arg1) {
     }
     return var_r31_94 % arg1;
 }
-#endif
 
 void MKMaterial_SetWhite() {
     MKMaterial_SetMaterial(gpMKWhiteMaterial);
@@ -166,7 +164,7 @@ void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, 
     MKMaterialUpdater *var_r4_265;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_254 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
+        var_r3_254 = (MKMaterialUpdater *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0));
     } else {
         var_r3_254 = malloc(0x14);
     }
@@ -191,17 +189,15 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to
 s32 MKMaterialInternal_GetCurrent() {
-    return gpCurrentMaterial;
+    return (long) (gpCurrentMaterial);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 s8 *MKMaterialInternal_Find(const char *arg0) {
     s8 *var_r31_308;
 
-    var_r31_308 = *(&materialList + (StringHash(arg0, 0x200) * 4));
+    var_r31_308 = (signed char *) (*(&materialList + (StringHash(arg0, 0x200) * 4)));
 loop_5:
     if (var_r31_308 == NULL) {
         return NULL;
@@ -231,7 +227,7 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 s32 MKMaterialInternal_GetMaterialTypeIDFromName(const char *arg0) {
     void *var_r31_365;
 
@@ -346,7 +342,7 @@ s32 MKMaterial_GetMaterialID(MKMaterial *arg0) {
     return M2C_FIELD(arg0->unk24, s32 *, 0x1E4);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: function call 'MKMatInfo_Init(MatInfo *, signed char *)' does not match 'MKMatInfo_Init(MatInfo *, const char *)'
 s8 *MKMaterial::Create(const char *arg0) {
     MKMaterialUpdater *var_r31_600;
     MatInfo *temp_r3_627;
@@ -356,7 +352,7 @@ s8 *MKMaterial::Create(const char *arg0) {
     void *temp_r3_650;
 
     if (MKHeap::Current() != NULL) {
-        var_r31_600 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1EC, NULL, 0);
+        var_r31_600 = (MKMaterialUpdater *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x1EC, NULL, 0));
     } else {
         var_r31_600 = malloc(0x1EC);
     }
@@ -384,7 +380,7 @@ s8 *MKMaterial::Create(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'StringHash(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'StringHash(signed char *, int)' does not match 'StringHash(const char *, int)'
 void MKMaterial_Destroy(MKMaterial *arg0) {
     M2C_UNK (*temp_r31_717)(MKMaterial *);
     s32 temp_r5_688;
@@ -396,7 +392,7 @@ void MKMaterial_Destroy(MKMaterial *arg0) {
     if ((s32) arg0->unk28 <= 0) {
         temp_r5_688 = StringHash((s8 *) arg0, 0x200) * 4;
         var_r6_690 = NULL;
-        var_r4_691 = *(&materialList + temp_r5_688);
+        var_r4_691 = (void *) (*(&materialList + temp_r5_688));
 loop_4:
         if (var_r4_691 != NULL) {
             if (var_r4_691 != arg0) {
@@ -408,7 +404,7 @@ loop_4:
         if (var_r6_690 != NULL) {
             M2C_FIELD(var_r6_690, void **, 0x2C) = (void *) M2C_FIELD(var_r4_691, void **, 0x2C);
         } else {
-            *(&materialList + temp_r5_688) = M2C_FIELD(var_r4_691, void **, 0x2C);
+            *(&materialList + temp_r5_688) = (signed char) (M2C_FIELD(var_r4_691, void **, 0x2C));
         }
         MKMaterialInternal_RemoveUpdatersForMaterial(arg0);
         temp_r6_713 = arg0->unk34;
@@ -424,7 +420,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKResource' to 'MKResource *'
 MKResource *MKMaterial_Create(const char *arg0) {
     MKResource *temp_r3_775;
     MKResource *temp_r3_783;
@@ -437,10 +433,10 @@ MKResource *MKMaterial_Create(const char *arg0) {
 
     var_r4_753 = &materialList;
     var_r30_756 = NULL;
-    var_r31_757 = &materialList + (StringHash(arg0, 0x200) * 4);
+    var_r31_757 = (MKResource *) (&materialList + (StringHash(arg0, 0x200) * 4));
 loop_5:
     if ((MKResource *) *var_r31_757 == NULL) {
-        temp_r3_783 = ((MKMaterial *) arg0)->Create(var_r4_753);
+        temp_r3_783 = (const char *) (((MKMaterial *) arg0)->Create(var_r4_753));
         *var_r31_757 = temp_r3_783;
         temp_r3_783->unk28 = 1;
         temp_r3_783->InitialiseResource();
@@ -484,7 +480,7 @@ void MKMaterial_DeinitModule() {
     bMaterialDeiniting = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unk0'
 void MKMaterial_InitModule() {
     MKMaterial *temp_r3_889;
     MKMaterialUpdater *var_r3_866;
@@ -495,7 +491,7 @@ void MKMaterial_InitModule() {
     MKMaterial_LinkMaterial_MK2_FFTWater();
     MKMaterial_InitModule_PlatformSpecific();
     if (MKHeap::Current() != NULL) {
-        var_r3_866 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
+        var_r3_866 = (MKMaterialUpdater *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0));
     } else {
         var_r3_866 = malloc(0x400);
     }

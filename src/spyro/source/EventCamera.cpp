@@ -326,7 +326,7 @@ void EventCamera::CalculateCircleTangent(MKVector3 arg0, MKVector3 arg1, float a
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *, void *, double)'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *, void *, double)' does not match 'HeroInterface::GetProp()'
 void EventCamera::FunctionOff() {
     s8 spC9;
     u8 spC8;
@@ -816,7 +816,7 @@ void EventCamera::FunctionOn() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to 'Matrix *'
 void EventCamera::GetSourceStart() {
     f64 sp28;
     f32 sp24;
@@ -842,7 +842,7 @@ void EventCamera::GetSourceStart() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to 'Matrix *'
 void EventCamera::GetTargetStart() {
     f64 sp98;
     f64 sp90;
@@ -889,7 +889,7 @@ void EventCamera::GetTargetStart() {
         temp_r3_1348 = M2C_FIELD(temp_r30_1325, MKSceneManager **, 0xF0);
         if (temp_r3_1348 != NULL) {
             if ((u8) M2C_FIELD(temp_r30_1325, u8 *, 0x102) != 0) {
-                temp_r3_1355 = checked_cast<EnemySpawner *, MKProp>(temp_r3_1348->PropResolver_Resolve((s32) &MKVector3::zero));
+                temp_r3_1355 = (long) (checked_cast<EnemySpawner *, MKProp>(temp_r3_1348->PropResolver_Resolve((s32) &MKVector3::zero)));
                 ((SpawnerObject *) (temp_r3_1355 + 0x90))->GetNumberActive();
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     if ((u8) M2C_FIELD(temp_r30_1325, u8 *, 0x104) != 0) {
@@ -947,7 +947,7 @@ void EventCamera::GetTargetStart() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnemySpawner *' to
+#if 0 // DRAFT: pointer/array required
 void *EventCamera::Update() {
     s32 sp814;
     KDS_Message_SetCameraSimple sp810;
@@ -1237,7 +1237,7 @@ void *EventCamera::Update() {
     var_r30_1504 = 1;
     if ((u8) this->unk101 != 0) {
         if ((u8) this->unk102 != 0) {
-            temp_r3_1512 = checked_cast<EnemySpawner *, MKProp>(this->unkF0->PropResolver_Resolve((s32) var_r4_1483));
+            temp_r3_1512 = (long) (checked_cast<EnemySpawner *, MKProp>(this->unkF0->PropResolver_Resolve((s32) var_r4_1483)));
             ((SpawnerObject *) (temp_r3_1512 + 0x90))->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                 if ((u8) this->unk103 != 0) {
@@ -2007,7 +2007,7 @@ s32 EventCamera::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 EventCamera::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_3675;
 
@@ -2085,7 +2085,7 @@ void EventCameraDescriptor::Init() {
 
 #if 0 // DRAFT: declaration syntax error
 EventCamera *EventCamera_GetCurrent() {
-    return pCurrentCamera;
+    return (int) (pCurrentCamera);
 }
 #endif
 

@@ -65,7 +65,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameStateMachine gGMState;
 extern void **gMK;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal implicit conversion from 'CheckPoint *' to
+#if 0 // DRAFT: illegal operand
 static BoundingVolume unitVolume;                   /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
@@ -74,7 +74,7 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
     void *temp_r5_65;
 
     if ((CheckPoint *) *CheckPoint::pCurrentCheckPoint != this) {
-        *CheckPoint::pCurrentCheckPoint = this;
+        *CheckPoint::pCurrentCheckPoint = (unsigned char) (this);
         if (this != NULL) {
             temp_r4_63 = this->unk1B8;
             var_r3_64 = 0;
@@ -190,7 +190,7 @@ void CheckPoint::Reset() {
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x18)(&this->unk100);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[18]' to
+#if 0 // DRAFT: undefined identifier 'unk8C'
 s32 CheckPoint::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -218,7 +218,7 @@ s32 CheckPoint::LoadDone() {
         this->unk1C2 = 0;
     }
     if ((u8) this->unk1C2 != 0) {
-        *KDProp::pCustomAnimScrName = "P0037_SaveCrystal";
+        *KDProp::pCustomAnimScrName = (unsigned char) ("P0037_SaveCrystal");
     }
     KDProp::LoadDone();
     temp_r4_383 = &MKProp::loadInfo - 4;
@@ -287,7 +287,7 @@ s32 CheckPoint::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to 'void *'
 s32 CheckPoint::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_664;
 

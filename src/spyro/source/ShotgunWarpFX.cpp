@@ -659,7 +659,6 @@ void ShotgunWarpFX::Update() {
     UpdateWarp();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ShotgunWarpFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -697,7 +696,7 @@ void ShotgunWarpFX::Init() {
         var_r3_1204 = malloc(temp_r30_1196);
     }
     this->unk8 = var_r3_1204;
-    this->unk60 = MKMaterial_Create("fx_wobblemat");
+    this->unk60 = (MKMaterial *) (MKMaterial_Create("fx_wobblemat"));
     BuildLocalVertexList();
     this->unk68 = 0.0f;
     this->unk6C = 0.0f;
@@ -711,6 +710,5 @@ void ShotgunWarpFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk70 = 0;
-    this->unk64 = MKMaterial_Create("fx_359");
+    this->unk64 = (MKMaterial *) (MKMaterial_Create("fx_359"));
 }
-#endif

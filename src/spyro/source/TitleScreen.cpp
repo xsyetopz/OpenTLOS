@@ -25,12 +25,12 @@ extern s32 GS_MenuSelect;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 loopCount;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static s8 *pVideos[1] = { "AttractVideo" };
+#if 0 // DRAFT: expression syntax error
+static s8 *pVideos[1] = (signed char *) ({ "AttractVideo" });
 #endif
 static s32 videoCount = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void TitleScreen::Update() {
     s32 spC;
     s32 sp8;
@@ -143,13 +143,11 @@ void TitleScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIObject *' to
 void TitleScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkD4 = FindChild("");
+    this->unkD4 = (void **) (FindChild(""));
     this->unk18.unk40 |= 1;
 }
-#endif
 
 void TitleScreen::Init() {
     UIContainer::Init();

@@ -169,7 +169,7 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDCameraSimpleDelta::OverrideUpdate() {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;
@@ -633,7 +633,7 @@ void KDCameraDeltaStagesEx::Init(float *arg0, float *arg1) {
     this->unk0 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[15])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[15])' does not match 'stricmp(signed char *, signed char *)'
 s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
     s8 *sp8;
 

@@ -66,7 +66,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to 'double'
 void TeslaTower::UpdateTurretTurning() {
     Matrix spD0;
     f64 spC0;
@@ -774,7 +774,7 @@ void *TeslaTower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -799,7 +799,7 @@ void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 TeslaTower::LoadDone() {
     Matrix sp1A0;
     f64 sp198;
@@ -909,7 +909,7 @@ s32 TeslaTower::LoadDone() {
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp150.unk8;
 loop_2:
     if (var_r28_1502 < M2C_BITWISE(s32, this->unk90.unk4)) {
-        temp_r29_1519 = M2C_BITWISE(s32, this->unk90.unkC) + var_r30_1504;
+        temp_r29_1519 = (void *) (M2C_BITWISE(s32, this->unk90.unkC) + var_r30_1504);
         Min(sp140, *((MKVector3 *) &this->unkD0));
         this->unkD0 = M2C_BITWISE(f64, sp140);
         this->unkD8 = (f64) sp140.unk8;
@@ -1034,23 +1034,17 @@ void TeslaTowerDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ZapPS *' to
 void TeslaTowerDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unk78 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
+    this->unk78 = (long) (checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS")));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void TeslaTowerDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk70 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    this->unk70 = (long) (checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam")));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void TeslaTowerDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk74 = MKMaterial_Create("teslaLight");
+    this->unk74 = (MKMaterial *) (MKMaterial_Create("teslaLight"));
 }
-#endif

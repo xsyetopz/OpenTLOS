@@ -161,7 +161,7 @@ loop_3:
     return var_r3_237;
 }
 
-#if 0 // DRAFT: function call 'strcmpi(const char *)' does not match
+#if 0 // DRAFT: function call 'strcmpi(const char *)' does not match 'strcmpi(signed char *)'
 UIObject *UIContainer::FindChild(const char *arg0) {
     UIObject *var_r31_259;
 
@@ -191,7 +191,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
 s32 UIContainer::LoadLine(UIDataLine *arg0) {
     MCLoadCheckScreen *var_r29_339;
     MKIniLine *var_r29_377;
@@ -210,7 +210,7 @@ loop_12:
     if (((MKIniLine *) arg0)->IsField((s8 *) var_r29_339->__vptr) != 0) {
         temp_r30_347 = var_r29_339->unk8;
         if (MKHeap::Current() != NULL) {
-            var_r31_356 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r30_347, NULL, 0);
+            var_r31_356 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r30_347, NULL, 0));
         } else {
             var_r31_356 = malloc((s32) temp_r30_347);
         }

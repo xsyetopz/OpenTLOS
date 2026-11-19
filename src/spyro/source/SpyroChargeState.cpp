@@ -85,13 +85,13 @@ void SpyroChargeState::ChargeExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroChargeState::ChargeEnter() {
     this->unk10->SetAnim(9U, 0.15f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroChargeState::PostHornDiveTransition() {
     if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk14.unk0 != 2)) {
         this->unk14.SetState(this, 2, 0U);
@@ -109,13 +109,13 @@ void SpyroChargeState::PostHornDiveExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroChargeState::PostHornDiveEnter() {
     this->unk10->SetAnim(0x2FU, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroChargeState::InitialChargeTransition() {
     InputModifier *temp_r3_199;
     InputModifier *temp_r3_240;
@@ -170,7 +170,7 @@ void SpyroChargeState::InitialChargeExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroChargeState::InitialChargeEnter() {
     this->unk10->SetAnim(9U, 0.15f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }

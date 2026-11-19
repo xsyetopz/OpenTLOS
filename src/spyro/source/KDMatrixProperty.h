@@ -48,15 +48,13 @@ inline void KDMatrixProperty::GetMatrix(Matrix *arg0) const {
     M2C_STRUCT_COPY(arg0, *KDProperty::pInstanceMem + this->unk8, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void KDMatrixProperty::GetPos() const {
     void *temp_r4_24275;
 
-    temp_r4_24275 = *KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30);
+    temp_r4_24275 = (void *) (*KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30));
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 8);
 }
-#endif
 
 inline s32 KDMatrixProperty::GetPosRef() const {
     return *KDProperty::pInstanceMem + (this->unk8 + 0x30);

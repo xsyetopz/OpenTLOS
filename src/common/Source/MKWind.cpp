@@ -3,7 +3,7 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier '_sinTable' redeclared
+#if 0 // DRAFT: identifier '_sinTable' redeclared was declared as: 'unsigned char[4100]' now declared as: 'long'
 f64 pow(f32, f64);                                  /* extern */
 extern M2C_UNK _sinTable;
 #endif

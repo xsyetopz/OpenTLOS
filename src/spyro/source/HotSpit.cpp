@@ -651,13 +651,11 @@ void *HotSpit::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void HotSpitDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pHotSpitDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("HotSpitSplatter"));
+    this->unkF0 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("HotSpitSplatter")));
 }
-#endif
 
 void HotSpitDescriptor::Deinit() {
     pHotSpitDescriptor = NULL;

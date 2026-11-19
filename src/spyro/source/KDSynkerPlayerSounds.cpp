@@ -38,7 +38,7 @@ void KDSP_Sounds::GetDynamicBankName(int arg0) {
     Str_Printf("%s%s.gsb", M2C_FIELD((((u8 *) this->unkC) + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), "%s%s");
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal type
 void KDSP_Sounds::ResolveActors(KDSP_ActorList *arg0) {
     s32 var_r23_82;
     s32 var_r25_83;
@@ -56,7 +56,7 @@ loop_11:
     if (var_r31_72 < (s32) arg0->unk0) {
         var_r30_77 = 0;
         var_r26_78 = 0;
-        temp_r24_79 = arg0->unk4 + var_r27_73;
+        temp_r24_79 = (void *) (arg0->unk4 + var_r27_73);
 loop_9:
         if (var_r30_77 < (s32) M2C_FIELD(temp_r24_79, s32 *, 0x54)) {
             var_r23_82 = 0;
@@ -64,7 +64,7 @@ loop_9:
 loop_7:
             if (var_r23_82 < (s32) this->unk8) {
                 temp_r5_88 = ((u8 *) this->unkC) + var_r25_83;
-                temp_r4_89 = var_r26_78 + M2C_FIELD(temp_r24_79, s32 *, 0x58);
+                temp_r4_89 = (void *) (var_r26_78 + M2C_FIELD(temp_r24_79, s32 *, 0x58));
                 if (((s32) M2C_FIELD(temp_r5_88, s32 *, 0) == (s32) M2C_FIELD(temp_r4_89, s32 *, 0)) && (stricmp(M2C_FIELD(temp_r5_88, s32 *, 8), M2C_FIELD(temp_r4_89, s32 *, 0xC)) == 0)) {
                     *(this->unkC + (var_r25_83 + 0x14)) = temp_r24_79;
                 }
@@ -177,7 +177,7 @@ s32 KDSP_Sounds::WaitingForSoundPackage(int *arg0) {
     return var_r31_281;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'Sound_Play3d(long, unsigned int, long, float, float)' does not match 'Sound_Play3d(int, unsigned char, MKVector3 *, float, float)'
 s32 KDSP_Sounds::Update(int arg0, float arg1, int arg2, int *arg3, int *arg4) {
     KDSP_Actor *temp_r3_432;
     SoundBankHeader *temp_r3_390;
@@ -242,7 +242,7 @@ loop_1:
                 GetDynamicBankName(this->unk14);
                 if (MKArchive_Exists(M2C_ERROR(/* Read from unset register $r3 */), NULL) != 0) {
                     GetDynamicBankName(this->unk14);
-                    temp_r3_390 = MKArchive_Load(M2C_ERROR(/* Read from unset register $r3 */), NULL, NULL, -1);
+                    temp_r3_390 = (SoundBankHeader *) (MKArchive_Load(M2C_ERROR(/* Read from unset register $r3 */), NULL, NULL, -1));
                     this->unk1C = Sound_LoadBankFromMemory(temp_r3_390, 0U, -1);
                     if (MKHeap::Current() != NULL) {
                         ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_390, NULL, 0);
@@ -258,7 +258,7 @@ loop_1:
                     if (temp_r3_422 != 0) {
                         if (((u8) this->unk2 != 0) && (temp_r3_432 = M2C_FIELD((((u8 *) this->unkC) + (this->unk14 * 0x18)), KDSP_Actor **, 0x14), ((temp_r3_432 == NULL) == 0))) {
                             if (temp_r3_432->unk40 & 4) {
-                                var_r4_438 = temp_r3_432->unk34;
+                                var_r4_438 = (long) (temp_r3_432->unk34);
                             } else {
                                 var_r4_438 = MKModel_GetWorldMatrix(temp_r3_432->GetModel());
                             }
@@ -324,7 +324,7 @@ s32 KDSP_Sounds::LoadDynamicSoundBank(int *arg0, bool arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
     SoundBankHeader *temp_r3_618;
     s8 *temp_r3_608;

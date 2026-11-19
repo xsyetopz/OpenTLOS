@@ -72,7 +72,7 @@ void PoisonBomb::EmitPoison() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void PoisonBomb::EmitPoisonTrail() {
     f64 sp70;
     f64 sp68;
@@ -94,7 +94,7 @@ void PoisonBomb::EmitPoisonTrail() {
 
     sp30 = -1.0f;
     sp20 = 1.0f;
-    temp_r31_91 = ((u8 *) this->unk8) + 0x30;
+    temp_r31_91 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
     sp28 = -1.0f;
     sp2C = 0.0f;
     sp18 = 1.0f;
@@ -452,7 +452,7 @@ void *PoisonBomb::Update() {
             M2C_FIELD(temp_r3_818, s8 *, 0x70) = 0;
             sp68 = (f64) sp28;
             sp60 = (f64) sp20;
-            temp_r30_829 = ((u8 *) this->unk8) + 0x30;
+            temp_r30_829 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
             ((Explosion3 *) (M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), Explosion3 **, 0xF0)))->Trigger(*temp_r30_829, 0.25f, 0U, 0U, *((MKVector3 *) &sp60), this->unk130);
             this->unk1C0 = 0;
             KDSound_Stop((int *) &this->unk190);
@@ -826,14 +826,12 @@ void PoisonBomb::Init() {
     this->unk1CC = Tools_GetMatchingMaterial(this->unk1C4, "fx_gasblur");
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Explosion3 *' to
 void PoisonBombDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
+    this->unkF0 = (long) (checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3")));
     pPoisonBombDescriptor = (MKPropDescriptor *) this;
     this->unkF4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
-#endif
 
 void PoisonBombDescriptor::Deinit() {
     pPoisonBombDescriptor = NULL;

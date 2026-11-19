@@ -208,7 +208,7 @@ void FireBossGraphNode::Init(const MKVector3 &arg0, int arg1) {
     this->unk0 = (s8) this->unk4 + 0x41;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal operand
 FireBossGraphEdge *FireBossDirectedGraph::GetEdge(KDUniformSpline *arg0, float arg1, int arg2) {
     FireBossGraphEdge *temp_r7_255;
     f32 temp_f3_263;
@@ -223,7 +223,7 @@ FireBossGraphEdge *FireBossDirectedGraph::GetEdge(KDUniformSpline *arg0, float a
     var_ctr_250 = temp_r0_248;
     if (temp_r0_248 > 0) {
 loop_1:
-        temp_r7_255 = this->unk4 + var_r6_249;
+        temp_r7_255 = (FireBossGraphEdge *) (this->unk4 + var_r6_249);
         if (((u32) temp_r7_255->unk0 == arg0) && (temp_r7_255->unk18 & arg2)) {
             var_f2_262 = temp_r7_255->unkC;
             temp_f3_263 = temp_r7_255->unk10;
@@ -261,7 +261,6 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FireBossDirectedGraph::GetEdges(FireBossGraphNode *arg0, int arg1, FireBossGraphEdge **arg2, int arg3) {
     s32 var_r4_311;
     void *var_r7_309;
@@ -271,16 +270,14 @@ void FireBossDirectedGraph::GetEdges(FireBossGraphNode *arg0, int arg1, FireBoss
 loop_4:
     if (var_r7_309 != NULL) {
         if (M2C_FIELD(var_r7_309, s32 *, 0x18) & arg1) {
-            *(arg2 + var_r4_311) = var_r7_309;
+            *(arg2 + var_r4_311) = (FireBossGraphEdge *) (var_r7_309);
             var_r4_311 += 4;
         }
         var_r7_309 = M2C_FIELD(var_r7_309, void **, 8);
         goto loop_4;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 u8 *FireBossDirectedGraph::GetNode(char arg0) {
     s32 temp_r0_331;
     s32 var_ctr_334;
@@ -292,7 +289,7 @@ u8 *FireBossDirectedGraph::GetNode(char arg0) {
     var_ctr_334 = temp_r0_331;
     if (temp_r0_331 > 0) {
 loop_1:
-        temp_r6_339 = this->unk0 + var_r4_333;
+        temp_r6_339 = (unsigned char *) (this->unk0 + var_r4_333);
         if (arg0 == (s8) *temp_r6_339) {
             return temp_r6_339;
         }
@@ -306,7 +303,6 @@ loop_1:
     }
     return NULL;
 }
-#endif
 
 void *FireBossDirectedGraph::AddEdge() {
     s32 temp_r5_357;
@@ -316,7 +312,6 @@ void *FireBossDirectedGraph::AddEdge() {
     return this->unk4 + (temp_r5_357 << 5);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 FireBossGraphNode *FireBossDirectedGraph::AddNode(const MKVector3 &arg0) {
     s32 temp_r31_377;
     s32 temp_r5_374;
@@ -325,9 +320,8 @@ FireBossGraphNode *FireBossDirectedGraph::AddNode(const MKVector3 &arg0) {
     this->unk10 = temp_r5_374 + 1;
     temp_r31_377 = temp_r5_374 * 0x28;
     ((FireBossGraphNode *) (this->unk0 + temp_r31_377))->Init(arg0, temp_r5_374);
-    return this->unk0 + temp_r31_377;
+    return (FireBossGraphNode *) (this->unk0 + temp_r31_377);
 }
-#endif
 
 void FireBossDirectedGraph::Deinit() {
     MKHeap *temp_r31_398;
@@ -347,25 +341,24 @@ void FireBossDirectedGraph::Deinit() {
     free(temp_r31_412);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FireBossDirectedGraph::Init() {
     MKHeap *var_r3_448;
     MKHeap *var_r3_462;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_448 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2D0, NULL, 0);
+        var_r3_448 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2D0, NULL, 0));
     } else {
         var_r3_448 = malloc(0x2D0);
     }
     this->unk0 = var_r3_448;
     if (MKHeap::Current() != NULL) {
-        var_r3_462 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x580, NULL, 0);
+        var_r3_462 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x580, NULL, 0));
     } else {
         var_r3_462 = malloc(0x580);
     }
     this->unk4 = var_r3_462;
-    this->unk8 = this->unk0 + 0x280;
-    this->unkC = this->unk0 + 0x2A8;
+    this->unk8 = (FireBossGraphNode *) (this->unk0 + 0x280);
+    this->unkC = (FireBossGraphNode *) (this->unk0 + 0x2A8);
     this->unk8->Init(MKVector3::zero, 0);
     this->unkC->Init(MKVector3::zero, 0);
     this->unk8->unk0 = 0x58;
@@ -373,9 +366,8 @@ void FireBossDirectedGraph::Init() {
     this->unk10 = 0;
     this->unk14 = 0;
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void FireBoss::InsideEdgeChange() {
     FireBossGraphEdge *temp_r3_541;
     FireBossGraphEdge *var_r30_538;
@@ -410,7 +402,7 @@ void FireBoss::InsideEdgeChange() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 FireBossGraphEdge *FireBoss::GetCrashEdgeFromNextBranch() {
     s32 temp_r0_589;
     s32 var_ctr_591;
@@ -436,7 +428,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to 'signed char *'
 void FireBoss::RemoveCrashEdgeFromNextBranch() {
     s32 temp_r4_638;
     s32 temp_r6_614;
@@ -541,7 +533,7 @@ void FireBoss::TriggerFireball() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
 void FireBoss::SquashHero() {
     s8 spD9;
     u8 spD8;
@@ -699,7 +691,7 @@ void FireBoss::SquashHero() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
 void FireBoss::HurtHero() {
     s8 spC1;
     u8 spC0;
@@ -1080,7 +1072,7 @@ s32 FireBoss::HasRunOverSpyro() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::GetProp()'
 u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     f64 sp30;
     f64 sp28;
@@ -1202,7 +1194,7 @@ f32 FireBoss::CalcEdgeSplineStartTime(FireBossGraphEdge *arg0) {
     return arg0->unkC;
 }
 
-#if 0 // DRAFT: function call 'IsFuryActive(HeroInterface *, GameGlobals *)' does not
+#if 0 // DRAFT: function call 'IsFuryActive(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::IsFuryActive()'
 void FireBoss::MoveAlongCurrentSpline(float arg0) {
     f32 temp_f0_2126;
     f32 temp_f1_2094;
@@ -1345,7 +1337,7 @@ void FireBoss::FinaliseGraph() {
     ((FireBossGraphNode *) temp_r22_2335)->AddEdges((FireBossGraphNode *) temp_r28_2305, &this->unkB38, M2C_FIELD(((FireBossGraphNode *) temp_r22_2335)->GetEdge((FireBossGraphNode *) temp_r23_2330, 3), f32 *, 0xC), M2C_FIELD(temp_r30_2396, f32 *, 0xC), 1, 1U, 0U, 0U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FireBoss *' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void FireBoss::CreateTurnSplines(int arg0, int arg1, int arg2, float arg3, float arg4) {
     f64 sp158;
     f64 sp150;
@@ -1392,13 +1384,13 @@ void FireBoss::CreateTurnSplines(int arg0, int arg1, int arg2, float arg3, float
     f64 temp_f1_2598;
     u8 var_r8_2722;
 
-    temp_r27_2450 = this + ((arg0 * 0x14) + 0xB74);
+    temp_r27_2450 = (KDUniformSpline *) (this + ((arg0 * 0x14) + 0xB74));
     temp_f28_2459 = 1.0f / (f32) (this->unkB38.unk4 - 1);
     temp_r27_2450->Init(5, 0U);
-    temp_r26_2465 = this + ((arg1 * 0x14) + 0xB74);
+    temp_r26_2465 = (KDUniformSpline *) (this + ((arg1 * 0x14) + 0xB74));
     temp_r26_2465->Init(5, 0U);
     temp_f31_2472 = 3.0f * temp_f28_2459;
-    temp_r31_2475 = this + ((arg2 * 0x14) + 0xB4C);
+    temp_r31_2475 = (Matrix *) (this + ((arg2 * 0x14) + 0xB4C));
     sp24 = 0.0f;
     temp_f30_2477 = arg3 + temp_f31_2472;
     sp120.GetMeasure(arg4, temp_r31_2475, KDSpline_PositionMixer);
@@ -1508,7 +1500,7 @@ void FireBoss::CreateTurnSplines(int arg0, int arg1, int arg2, float arg3, float
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'sp210'
 void FireBoss::CreateInsideSplines() {
     f64 sp2A0;
     f64 sp298;
@@ -1637,7 +1629,7 @@ void FireBoss::CreateInsideSplines() {
     temp_r6_2851 = this->unkB38.unkC;
     temp_r25_2857 = (s32) (this->unkB38.unk4 - 1) / 2;
     sp298 = M2C_FIELD(temp_r6_2851, f64 *, 0);
-    temp_r6_2860 = temp_r6_2851 + (temp_r25_2857 << 5);
+    temp_r6_2860 = (void *) (temp_r6_2851 + (temp_r25_2857 << 5));
     sp2A0 = M2C_FIELD(temp_r6_2851, f64 *, 8);
     sp288 = M2C_FIELD(temp_r6_2860, f64 *, 0);
     sp290 = M2C_FIELD(temp_r6_2860, f64 *, 8);
@@ -1679,8 +1671,8 @@ void FireBoss::CreateInsideSplines() {
     this->unkB4C.AddNode(*((MKVector3 *) &sp288));
     temp_r6_2951 = this->unkB38.unkC;
     temp_r7_2955 = (s32) (this->unkB38.unk4 - 1) / 4;
-    temp_r5_2957 = temp_r6_2951 + (temp_r7_2955 << 5);
-    temp_r5_2962 = temp_r6_2951 + ((temp_r7_2955 + temp_r25_2857) << 5);
+    temp_r5_2957 = (void *) (temp_r6_2951 + (temp_r7_2955 << 5));
+    temp_r5_2962 = (void *) (temp_r6_2951 + ((temp_r7_2955 + temp_r25_2857) << 5));
     sp298 = M2C_FIELD(temp_r5_2957, f64 *, 0);
     sp2A0 = M2C_FIELD(temp_r5_2957, f64 *, 8);
     sp288 = M2C_FIELD(temp_r5_2962, f64 *, 0);
@@ -1737,7 +1729,7 @@ void FireBoss::CreateInsideSplines() {
     temp_f27_3083 = MKVector3::up.unk0;
     do {
         sp1C = 0.0f;
-        temp_r27_3093 = this + (var_r28_3078 + 0xB4C);
+        temp_r27_3093 = (Matrix *) (this + (var_r28_3078 + 0xB4C));
         sp1D8.GetMeasure(0.2f, temp_r27_3093, KDSpline_PositionMixer);
         sp20 = 0.0f;
         ((KDUniformSpline *) &sp1D8.unk10)->GetMeasure(0.8f, temp_r27_3093, KDSpline_PositionMixer);
@@ -1788,7 +1780,7 @@ void FireBoss::CreateInsideSplines() {
             var_f21_3125 = 0.0f;
         }
         temp_r26_3198 = this + var_r29_3076;
-        temp_r25_3200 = ((u8 *) temp_r26_3198) + 0xC70;
+        temp_r25_3200 = (Matrix *) (((u8 *) temp_r26_3198) + 0xC70);
         temp_f5_3201 = (f32) sp268 * var_f2_3191;
         temp_f4_3203 = (*(f32 *) ((u8 *) &sp260 + 0xc)) * var_f2_3191;
         temp_f3_3205 = (f32) sp270 * var_f2_3191;
@@ -1846,7 +1838,7 @@ void FireBoss::CreateInsideSplines() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FireBoss::CreateOutsideSpline() {
     f64 sp130;
     f64 sp128;
@@ -1993,7 +1985,7 @@ s32 FireBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x324);
 }
 
-#if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double,
+#if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double, double)' does not match 'Enemy::UpdateModel()'
 void FireBoss::UpdateMovementCustom() {
     FireBossDriver *temp_r3_3662;
     FireBossDriver *temp_r3_3672;
@@ -2028,7 +2020,7 @@ void FireBoss::UpdateMovementCustom() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void **' and 'FireBoss *'
 void FireBoss::Message(MKMessage *arg0) {
     EnemyHudData sp18;
     f64 sp10;
@@ -2194,7 +2186,7 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void FireBoss::Draw() {
     s32 var_r29_4006;
     s32 var_r31_4007;
@@ -2206,7 +2198,7 @@ void FireBoss::Draw() {
     var_r29_4006 = 1;
     var_r31_4007 = 4;
 loop_2:
-    temp_r3_4023 = M2C_FIELD(temp_r3_3993, s32 *, 0x3DC) + (this->unk108C * 0xC);
+    temp_r3_4023 = (void *) (M2C_FIELD(temp_r3_3993, s32 *, 0x3DC) + (this->unk108C * 0xC));
     if (var_r29_4006 < (s32) M2C_FIELD(temp_r3_4023, s32 *, 0)) {
         MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, *(M2C_FIELD(temp_r3_4023, s32 *, 4) + var_r31_4007), 0U, 1U);
         var_r29_4006 += 1;
@@ -2244,7 +2236,7 @@ loop_3:
     if ((temp_f30_4086 != 0.0f) && (*(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4)) != 0.0f) && (this->unk107C > *(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4))) && (temp_f30_4086 <= *(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4)))) {
         temp_f31_4123 = 2.0f * M2C_FIELD(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3D4);
         this->unk1080 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3D4), temp_f31_4123);
-        this->unk1078 = checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2B4);
+        this->unk1078 = (signed char *) (checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2B4));
     } else {
         var_r29_4092 += 1;
         var_r30_4093 += 0x24;
@@ -2400,7 +2392,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Init(MKHeap *, MKModel *)' does not match
+#if 0 // DRAFT: function call 'Init(MKHeap *, MKModel *)' does not match 'MKAnimScript::Init(const char *, MKModel *)' 'MKAnimScript::Init(MKAnimScript *, MKModel *)'
 s32 FireBoss::LoadDone() {
     FireBossDriver *temp_r3_4511;
     MKModel *temp_r31_4496;
@@ -2442,7 +2434,7 @@ s32 FireBoss::LoadLine(MKIniLine *arg0) {
     return var_r31_4546;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void **' and 'long *'
 void FireBoss::Deinit() {
     FireBossDirectedGraph *temp_r31_4633;
     s32 var_r30_4585;
@@ -2532,15 +2524,15 @@ void FireBoss::Init() {
     temp_r30_4685->Init(this);
     this->unkA3C = &temp_r30_4685->__vptr;
     if (MKHeap::Current() != NULL) {
-        var_r3_4718 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0);
+        var_r3_4718 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0));
     } else {
         var_r3_4718 = malloc(0x18);
     }
     this->unkC18 = (FireBossDirectedGraph *) var_r3_4718;
     this->unkC18->Init();
-    *FireBossGraphNode::pGraph = this->unkC18;
+    *FireBossGraphNode::pGraph = (unsigned char) (this->unkC18);
     if (MKHeap::Current() != NULL) {
-        var_r3_4736 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
+        var_r3_4736 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0));
     } else {
         var_r3_4736 = malloc(0x58);
     }
@@ -2577,7 +2569,7 @@ void FireBoss::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'MKHeap *'
 void FireBossDescriptor::Deinit() {
     MKHeap *temp_r30_4816;
     MKHeap *temp_r30_4832;
@@ -2713,7 +2705,7 @@ loop_11:
         this->unk3D8 = arg0->GetNmbrOfSubLines();
         temp_r25_5083 = this->unk3D8 * 0xC;
         if (MKHeap::Current() != NULL) {
-            var_r3_5091 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0);
+            var_r3_5091 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0));
         } else {
             var_r3_5091 = malloc(temp_r25_5083);
         }
@@ -2726,14 +2718,14 @@ loop_31:
                 *(this->unk3DC + var_r27_5104) = var_r28_5102->GetNmbrOfSubLines();
                 temp_r25_5118 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5126 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0);
+                    var_r3_5126 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0));
                 } else {
                     var_r3_5126 = malloc(temp_r25_5118);
                 }
                 *(this->unk3DC + (var_r27_5104 + 4)) = var_r3_5126;
                 temp_r25_5137 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5145 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0);
+                    var_r3_5145 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0));
                 } else {
                     var_r3_5145 = malloc(temp_r25_5137);
                 }
@@ -2759,7 +2751,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match 'strcpy(char *, const char *)'
 void FireBossDescriptor::Init() {
     s32 var_r28_5224;
     s32 var_r30_5219;

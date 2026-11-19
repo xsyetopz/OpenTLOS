@@ -38,7 +38,7 @@ inline void KDSplinePathProperty::DeinitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
+#if 0 // DRAFT: undefined identifier 'KDSplinePathSegment'
 inline s32 KDSplinePathProperty::LoadLineInstance(MKIniLine *arg0) {
     s8 *var_r5_2872;
 
@@ -46,7 +46,7 @@ inline s32 KDSplinePathProperty::LoadLineInstance(MKIniLine *arg0) {
     if (var_r5_2872 != NULL) {
 
     } else {
-        var_r5_2872 = "";
+        var_r5_2872 = (signed char *) ("");
     }
     ((KDSplinePathSegment *) (*KDProperty::pInstanceMem + this->unk8))->LoadWaypoints(arg0, var_r5_2872);
 }

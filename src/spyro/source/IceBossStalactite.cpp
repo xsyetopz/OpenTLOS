@@ -217,7 +217,7 @@ void IceBossStalactiteSpawner::SpawnSingleAtPos(const MKVector3 &arg0) {
     ((IceBossStalactite *) (**temp_r3_292))->Spawn(arg0, 1U, 0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'IceBossStalactiteSpawner' to
+#if 0 // DRAFT: illegal explicit conversion from 'IceBossStalactiteSpawner' to 'double'
 void IceBossStalactiteSpawner::Spawn(const MKVector3 &arg0) {
     IceBossStalactiteSpawner sp8;
     IceBossStalactite ***temp_r5_331;
@@ -319,7 +319,7 @@ loop_8:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'IceBossStalactite **' and 'IceBossStalactite ***'
 void IceBossStalactiteSpawner::Deinit() {
     IceBossStalactite ***var_r31_502;
     IceBossStalactite ***var_r3_503;
@@ -361,7 +361,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void IceBossStalactiteSpawner::Init(MKProp *arg0, int arg1, int arg2) {
     IceBossStalactite ***temp_r3_588;
     IceBossStalactite ***temp_r3_595;
@@ -371,10 +370,10 @@ void IceBossStalactiteSpawner::Init(MKProp *arg0, int arg1, int arg2) {
     s32 var_ctr_591;
 
     if (arg1 == 0) {
-        this->unk10 = &gEmptyPtrListDL + 4;
+        this->unk10 = (IceBossStalactite ***) (&gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_576 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 * 2) + 2) * 4, NULL, 0);
+            var_r3_576 = (IceBossStalactite ***) (((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 * 2) + 2) * 4, NULL, 0));
         } else {
             var_r3_576 = malloc(((arg1 * 2) + 2) * 4);
         }
@@ -400,9 +399,8 @@ void IceBossStalactiteSpawner::Init(MKProp *arg0, int arg1, int arg2) {
     this->unk14 = arg0;
     this->unk20 = arg2;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBossStalactite::Collided(MKCollisionResult *arg0) {
     s8 sp1C9;
     s8 sp1C8;
@@ -621,7 +619,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     MKVector3 sp58;
     f64 sp50;
@@ -856,7 +854,7 @@ void IceBossStalactite::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void IceBossStalactite::MeltFX() {
     Matrix sp140;
     M2C_UNK sp13C;

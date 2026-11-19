@@ -67,7 +67,7 @@ loop_5:
         if (var_r6_97 < (s32) this->unk54) {
             temp_r0_103 = var_r6_97 * this->unk68;
             var_r6_97 += 1;
-            *(this->unk58 + var_r4_98) = temp_r3_94 + (temp_r0_103 << 5);
+            *(this->unk58 + var_r4_98) = (BoneBlurFX::BlurNode *) (temp_r3_94 + (temp_r0_103 << 5));
             var_r4_98 += 4;
             goto loop_5;
         }
@@ -179,7 +179,7 @@ void BoneBlurFX::EnableBlur(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'int **' to
+#if 0 // DRAFT: illegal type
 void BoneBlurFX::InitData(MKModel *arg0, BoneBlurFXNodeDef *arg1, int arg2, int **arg3, int arg4, int arg5, bool arg6) {
     BoneBlurFX::BlurNode **var_r3_389;
     s32 temp_r0_348;
@@ -195,7 +195,7 @@ void BoneBlurFX::InitData(MKModel *arg0, BoneBlurFXNodeDef *arg1, int arg2, int 
     this->unk74 = arg0;
     this->unk64 = arg1;
     this->unk68 = arg2;
-    this->unk5C = arg3;
+    this->unk5C = (long **) (arg3);
     this->unk60 = arg4;
     this->unk7C = arg6;
 loop_6:
@@ -216,7 +216,7 @@ loop_6:
     this->unk50 = 0;
     temp_r30_381 = this->unk54 << 5;
     if (MKHeap::Current() != NULL) {
-        var_r3_389 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_381, NULL, 0);
+        var_r3_389 = (BoneBlurFX::BlurNode **) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_381, NULL, 0));
     } else {
         var_r3_389 = malloc(temp_r30_381);
     }
@@ -394,7 +394,6 @@ void *BoneBlurFX::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void BoneBlurFX::Init() {
     MKProp::Init();
     this->unk58 = NULL;
@@ -407,18 +406,16 @@ void BoneBlurFX::Init() {
     this->unk68 = 0;
     this->unk6C = 0;
     this->unk78 = NULL;
-    this->unk70 = MKMaterial_Create("fx_boneblurmat");
+    this->unk70 = (MKMaterial *) (MKMaterial_Create("fx_boneblurmat"));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void BoneBlurFXDescriptor::DrawInstances() {
     void *var_r30_773;
     void *var_r31_768;
     void *var_r4_756;
     void *var_r4_787;
 
-    var_r4_756 = *BoneBlurFXDescriptor::pFirstDesc;
+    var_r4_756 = (void *) (*BoneBlurFXDescriptor::pFirstDesc);
 loop_2:
     if ((var_r4_756 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_756, void **, 0x60), s32 *, 0x138) & 2)) {
         var_r4_756 = M2C_FIELD(var_r4_756, void **, 0x68);
@@ -444,15 +441,13 @@ loop_10:
         goto loop_13;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'BoneBlurFXDescriptor *' to
 void BoneBlurFXDescriptor::Deinit() {
     BoneBlurFXDescriptor *temp_r4_822;
     BoneBlurFXDescriptor *temp_r4_828;
 
     if ((BoneBlurFXDescriptor *) *BoneBlurFXDescriptor::pFirstDesc == this) {
-        *BoneBlurFXDescriptor::pFirstDesc = this->unk68;
+        *BoneBlurFXDescriptor::pFirstDesc = (unsigned char) (this->unk68);
     }
     temp_r4_822 = this->unk64;
     if (temp_r4_822 != NULL) {
@@ -467,17 +462,16 @@ void BoneBlurFXDescriptor::Deinit() {
     this->unk60 = NULL;
     MKPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: pointer/array required
 void BoneBlurFXDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = *BoneBlurFXDescriptor::pFirstDesc;
+    this->unk68 = (BoneBlurFXDescriptor *) (*BoneBlurFXDescriptor::pFirstDesc);
     this->unk64 = NULL;
     if ((BoneBlurFXDescriptor *) *BoneBlurFXDescriptor::pFirstDesc != NULL) {
         (*BoneBlurFXDescriptor::pFirstDesc)->unk64 = this;
     }
-    *BoneBlurFXDescriptor::pFirstDesc = this;
+    *BoneBlurFXDescriptor::pFirstDesc = (unsigned char) (this);
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

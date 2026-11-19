@@ -47,7 +47,7 @@ void CynderBreathFX::End() {
     ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 1.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void CynderBreathFX::UpdateBeamSpeedWay(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     f64 sp70;
     f64 sp68;
@@ -87,7 +87,7 @@ void CynderBreathFX::UpdateBeamSpeedWay(const MKVector3 &arg0, const MKVector3 &
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void CynderBreathFX::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     f64 sp70;
     f64 sp68;
@@ -127,7 +127,7 @@ void CynderBreathFX::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 s32 CynderBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, int arg5, float arg6) {
     f64 spB8;
     f64 spB0;
@@ -462,13 +462,11 @@ void CynderBreathFX::Init() {
     pHitList = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void CynderBreathFXDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlamePS"));
-    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlameSubPS"));
+    this->unk70 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlamePS")));
+    this->unk74 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlameSubPS")));
 }
-#endif
 
 void CynderBreathFX_cpp::__sinit() {
     streamHitMsg.unk4 = 0;

@@ -42,7 +42,7 @@ extern M2C_UNK gb;
 static s32 lit_550 = 0;
 static u8 lit_551 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'Corona *'
 void LavaBubbleFX::Deinit() {
     MKHeap *temp_r29_62;
     s32 temp_r0_57;
@@ -69,7 +69,7 @@ void LavaBubbleFX::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void LavaBubbleFX::CreateBubble(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
@@ -170,7 +170,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void LavaBubbleFX::DrawBubbleRings() {
     f64 sp278;
     f64 sp270;
@@ -355,7 +355,7 @@ void LavaBubbleFX::DrawBubbleRings() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Scale3x3(Matrix *, MKHeap)' does not match
+#if 0 // DRAFT: function call 'Scale3x3(Matrix *, MKHeap)' does not match 'Matrix::Scale3x3(const Matrix *, const MKVector3 &)' 'Matrix::Scale3x3(const Matrix *, float)'
 void LavaBubbleFX::Draw() {
     Matrix sp40;
     M2C_UNK sp3C;
@@ -397,7 +397,7 @@ void LavaBubbleFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *LavaBubbleFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
@@ -925,15 +925,13 @@ f32 LavaBubbleFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 s32 LavaBubbleFX::LoadDone() {
     GameProp::LoadDone();
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);
-    this->unkD0 = MKMaterial_Create("FX_007");
+    this->unkD0 = (MKMaterial *) (MKMaterial_Create("FX_007"));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void LavaBubbleFX::Init() {
     MKHeap *var_r3_1501;
     s32 temp_r0_1526;
@@ -949,7 +947,7 @@ void LavaBubbleFX::Init() {
 
     GameProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1501 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x960, NULL, 0);
+        var_r3_1501 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x960, NULL, 0));
     } else {
         var_r3_1501 = malloc(0x960);
     }

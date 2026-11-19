@@ -111,7 +111,7 @@ void IceSquirt::Draw() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *IceSquirt::Update() {
     f64 sp48;
     f64 sp40;
@@ -179,7 +179,7 @@ void *IceSquirt::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'IceSquirt::Resolve()' redeclared
+#if 0 // DRAFT: identifier 'IceSquirt::Resolve()' redeclared was declared as: 'float ()' now declared as: 'void ()'
 void IceSquirt::Resolve() {
     f64 sp60;
     f64 sp58;

@@ -42,7 +42,7 @@ s32 UIObject::Message(UIMessage *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[7], const char[5])' does
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[7], const char[5])' does not match 'stricmp(signed char *, long *, long *)'
 UIContainer *UIObject::Find(const char *arg0) {
     UIContainer *temp_r3_83;
     UIObject *var_r31_55;
@@ -92,7 +92,7 @@ loop_5:
     return var_r3_151;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIObject::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r31_204;
@@ -116,7 +116,7 @@ s32 UIObject::LoadLine(UIDataLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to 'UIDataLine *'
 s32 UIObject::Load(const char *arg0, const char *arg1) {
     MKIni sp8;
     MKIniLine *temp_r3_260;
@@ -145,7 +145,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIObject::Deinit() {
     u32 temp_r3_308;
 

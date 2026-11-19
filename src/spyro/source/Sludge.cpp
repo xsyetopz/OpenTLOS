@@ -588,13 +588,11 @@ void *Sludge::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void SludgeDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSludgeDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("SludgeSplatter"));
+    this->unkF0 = (long) (checked_cast<GoopFX *, MKProp>(gMK->CreateProp("SludgeSplatter")));
 }
-#endif
 
 void SludgeDescriptor::Deinit() {
     pSludgeDescriptor = NULL;

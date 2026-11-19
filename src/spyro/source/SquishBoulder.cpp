@@ -468,7 +468,7 @@ void SquishBoulder::Message(MKMessage *arg0) {
     Shatterable::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void *SquishBoulder::Update() {
     f64 sp70;
     f64 sp68;

@@ -28,7 +28,7 @@ M2C_UNK qsort(MKHeap *, M2C_UNK, s32 (*)(void *, void *)); /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *arg2) {
     f64 sp2C8;
     f64 sp2C0;
@@ -267,7 +267,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void HeatDistortPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     MKVector3 sp48;
     f64 sp40;
@@ -351,7 +351,7 @@ void HeatDistortPS::Deinit() {
     free(temp_r31_450);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'signed char *'
 void HeatDistortPS::Draw() {
     Matrix spE0;
     Matrix spA0;
@@ -446,7 +446,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void *'
 void HeatDistortPS::Update() {
     f64 sp60;
     f64 sp58;
@@ -531,7 +531,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void HeatDistortPS::Init() {
     f64 sp1C0;
     f64 sp1B8;
@@ -664,13 +664,13 @@ void HeatDistortPS::Init() {
     spE0 = (f64) sp50;
     this->unk58 = 0.0f;
     if (MKHeap::Current() != NULL) {
-        var_r3_1017 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2BC0, NULL, 0);
+        var_r3_1017 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2BC0, NULL, 0));
     } else {
         var_r3_1017 = malloc(0x2BC0);
     }
     this->unk4 = var_r3_1017;
     if (MKHeap::Current() != NULL) {
-        var_r3_1031 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
+        var_r3_1031 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0));
     } else {
         var_r3_1031 = malloc(0x190);
     }
@@ -687,7 +687,7 @@ void HeatDistortPS::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to
+#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 DistortParticleCompare(const void *arg0, const void *arg1) {
     return -(s32) (M2C_FIELD(*arg0, f32 *, 0x5C) - M2C_FIELD(*arg1, f32 *, 0x5C));
 }

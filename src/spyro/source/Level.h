@@ -331,11 +331,9 @@ inline ChunkProp::~ChunkProp() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void *Level::GetLevelInfo(int arg0) {
-    return *Level::pLevelInfo + ((s32) this * 0x128);
+    return (void *) (*Level::pLevelInfo + ((s32) this * 0x128));
 }
-#endif
 
 inline s32 Level::GetLevelCount() {
     return *Level::levelInfoCount;

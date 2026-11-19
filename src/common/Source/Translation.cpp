@@ -24,12 +24,12 @@ extern s32 gDisplay;
 extern s32 gLanguageDebugOption;
 extern M2C_UNK gMKDefaults;
 extern s32 gNmbrOfStrings;
-#if 0 // DRAFT: identifier 'gNullStr' redeclared
+#if 0 // DRAFT: identifier 'gNullStr' redeclared was declared as: 'unsigned char' now declared as: 'long'
 extern M2C_UNK gNullStr;
 #endif
 extern u8 *gpEnumTagArray;
 extern u8 *gpTranslationBuffer;
-#if 0 // DRAFT: identifier 'gpTranslation_StringArray' redeclared
+#if 0 // DRAFT: identifier 'gpTranslation_StringArray' redeclared was declared as: 'void *' now declared as: 'unsigned char *'
 extern u8 *gpTranslation_StringArray;
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_gLanguageInfo_0x14'
@@ -319,7 +319,6 @@ s32 Translation_GetLanguage() {
     return gCurrentLanguage;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Translation_DeinitModule() {
     u8 *temp_r31_443;
     u8 *temp_r31_460;
@@ -339,7 +338,7 @@ void Translation_DeinitModule() {
     } else {
         free(temp_r31_460);
     }
-    temp_r31_476 = gpTranslation_StringArray;
+    temp_r31_476 = (unsigned char *) (gpTranslation_StringArray);
     gpEnumTagArray = NULL;
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_476, NULL, 0);
@@ -348,9 +347,8 @@ void Translation_DeinitModule() {
     }
     gpTranslation_StringArray = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'gLanguageInfo'
 void Translation_InitModule() {
     s32 temp_r29_511;
     s32 temp_r29_533;
@@ -367,7 +365,7 @@ void Translation_InitModule() {
 
     temp_r29_511 = (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_519 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_511, NULL, 0);
+        var_r3_519 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_511, NULL, 0));
     } else {
         var_r3_519 = malloc(temp_r29_511);
     }
@@ -375,7 +373,7 @@ void Translation_InitModule() {
     memset(var_r3_519, 0, (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4);
     temp_r29_533 = (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_541 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_533, NULL, 0);
+        var_r3_541 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_533, NULL, 0));
     } else {
         var_r3_541 = malloc(temp_r29_533);
     }
@@ -405,7 +403,7 @@ void Translation_InitModule() {
     } while (var_r26_558 < 0xD);
     gpLanguageOptionStrings[var_r25_556] = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_601 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r31_554 + 1, NULL, 0);
+        var_r3_601 = (unsigned char *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r31_554 + 1, NULL, 0));
     } else {
         var_r3_601 = malloc(var_r31_554 + 1);
     }

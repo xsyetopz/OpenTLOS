@@ -129,7 +129,7 @@ void ElectricBeam::Update() {
     this->unk1E4 = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     Matrix spC0;
     M2C_UNK spBC;
@@ -253,7 +253,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     Matrix spD0;
     M2C_UNK spCC;
@@ -379,7 +379,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void ElectricBeam::UpdateWiggleBones() {
     Matrix sp250;
     Matrix sp210;
@@ -649,7 +649,7 @@ void ElectricBeam::Init() {
         MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, ((u8 *) temp_r26_1339) + 0x60);
         temp_r5_1350 = ((u8 *) temp_r26_1339) + 0x6C;
         M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_1350) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        var_r5_1315 = ((u8 *) temp_r5_1350) + 0x40;
+        var_r5_1315 = (MKAnimScript *) (((u8 *) temp_r5_1350) + 0x40);
         var_r25_1318 += 1;
         var_r30_1322 += 0x50;
     } while (var_r25_1318 < 4);

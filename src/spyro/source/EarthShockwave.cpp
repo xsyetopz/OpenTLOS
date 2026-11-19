@@ -30,7 +30,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'signed char *'
 void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVector4 arg3) {
     s8 sp220;
     s32 sp21C;

@@ -73,7 +73,7 @@ void SteamValve::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void *SteamValve::Update() {
     u8 sp280;
     s32 sp27C;
@@ -363,7 +363,7 @@ s32 SteamValve::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SteamValve::LoadLine(MKIniLine *arg0) {
     s32 var_r31_500;
 

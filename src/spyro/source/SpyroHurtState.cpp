@@ -84,7 +84,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 static M2C_UNK lit_727;                                /* unable to generate initializer: unknown type */
 SpyroHurtState states__14SpyroHurtState;            /* unable to generate initializer: confusing struct layout */
 
@@ -126,7 +126,7 @@ void SpyroHurtState::CynderFuryDazedExit() {
     ((Stat *) &GameData::gameData[0x70])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::CynderFuryDazedEnter() {
     Spyro *temp_r4_156;
 
@@ -138,7 +138,7 @@ void SpyroHurtState::CynderFuryDazedEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroHurtState::TransitionToIdle() {
     f64 sp20;
     f64 sp18;
@@ -476,7 +476,7 @@ void SpyroHurtState::FrozenExit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to 'long *'
 void SpyroHurtState::FrozenEnter() {
     Spyro *temp_r3_876;
     Spyro *temp_r6_859;
@@ -516,7 +516,7 @@ void SpyroHurtState::FrozenEnter() {
     temp_r3_897 = M2C_FIELD(temp_r30_896, void **, 0xC4);
     if (temp_r3_897 != NULL) {
         if ((u32) M2C_FIELD(temp_r3_897, u32 *, 0x24) == 0U) {
-            M2C_FIELD(M2C_FIELD(temp_r30_896, void **, 0xC4), u32 *, 0x24) = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
+            M2C_FIELD(M2C_FIELD(temp_r30_896, void **, 0xC4), u32 *, 0x24) = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
         }
         ((CharacterIceCubesFX *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), CharacterIceCubesFX **, 0xC4)))->Reset();
         ((CharacterIceCubesFX *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), CharacterIceCubesFX **, 0xC4)))->Trigger();
@@ -524,7 +524,7 @@ void SpyroHurtState::FrozenEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroHurtState::DazedTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -587,7 +587,7 @@ void SpyroHurtState::DazedEnter() {
     temp_r3_1076->unk428 |= 0x20;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroHurtState::SquashTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -631,7 +631,7 @@ void SpyroHurtState::SquashExit() {
     this->unk10->unk178.unk38 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::SquashEnter() {
     Spyro *temp_r4_1210;
     Spyro *temp_r5_1206;
@@ -647,7 +647,7 @@ void SpyroHurtState::SquashEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroHurtState::TumbleTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -713,7 +713,7 @@ void SpyroHurtState::TumbleExit() {
     temp_r3_1332->unk428 |= 0x40000;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::TumbleEnter() {
     f64 sp20;
     f64 sp18;
@@ -738,7 +738,7 @@ void SpyroHurtState::TumbleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::StrafeFlinchTransition() {
     M2C_UNK var_r29_1402;
     s32 var_r31_1401;
@@ -902,7 +902,7 @@ void SpyroHurtState::StrafeFlinchExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::StrafeFlinchEnter() {
     s32 spC;
     s32 sp8;
@@ -920,7 +920,7 @@ void SpyroHurtState::StrafeFlinchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::FlinchTransition() {
     u32 var_r31_1714;
 
@@ -940,7 +940,7 @@ void SpyroHurtState::FlinchExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::FlinchEnter() {
     MKProp sp48;
     f64 sp38;

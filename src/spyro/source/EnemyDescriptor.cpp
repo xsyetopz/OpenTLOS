@@ -93,7 +93,7 @@ static DataMap dataMapRaces[7] = {
     { 0, NULL },
 };
 #endif
-#if 0 // DRAFT: identifier 'emAnims' redeclared
+#if 0 // DRAFT: identifier 'emAnims' redeclared was declared as: 'unsigned char[280]' now declared as: 'long'
 static M2C_UNK emAnims;                             /* unable to generate initializer: unknown type */
 
 void AnimSequence::Init(int arg0) {
@@ -120,7 +120,7 @@ void AnimSequence::Init(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *,
+#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, signed char *)' does not match 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel 
 void EnemyDescriptor::InitArmour() {
     M2C_UNK sp28;
     s8 sp8;
@@ -168,14 +168,14 @@ loop_6:
             if (MKHeap::Current() != NULL) {
                 var_r3_100 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_92, NULL, 0);
             } else {
-                var_r3_100 = malloc(temp_r27_92);
+                var_r3_100 = (void *) (malloc(temp_r27_92));
             }
             this->unk238 = (s32) var_r3_100;
             temp_r27_108 = this->unk234 * 4;
             if (MKHeap::Current() != NULL) {
-                var_r3_116 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_108, NULL, 0);
+                var_r3_116 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_108, NULL, 0));
             } else {
-                var_r3_116 = malloc(temp_r27_108);
+                var_r3_116 = (MKHeap *) (malloc(temp_r27_108));
             }
             this->unk23C = var_r3_116;
             temp_r27_124 = this->unk234 * 4;
@@ -186,7 +186,7 @@ loop_6:
             } else {
                 temp_ret_136 = malloc(temp_r27_124);
                 var_f1_132 = M2C_BITWISE(f32, temp_ret_136);
-                var_r3_132 = temp_ret_136;
+                var_r3_132 = (void *) (temp_ret_136);
             }
             this->unk240 = (s32) var_r3_132;
             var_r30_141 = 0;
@@ -199,7 +199,7 @@ loop_27:
                 if (MKHeap::Current() != NULL) {
                     var_r3_167 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_159, NULL, 0);
                 } else {
-                    var_r3_167 = malloc(temp_r26_159);
+                    var_r3_167 = (void *) (malloc(temp_r26_159));
                 }
                 *(this->unk23C + var_r28_143) = var_r3_167;
                 strcpy(*(this->unk23C + var_r28_143), &sp8);
@@ -371,7 +371,6 @@ loop_6:
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void *EnemyDescriptor::GetAnimSequence(int arg0, int arg1, int arg2, AnimSequence *arg3) const {
     f32 temp_f1_495;
     f32 temp_f1_510;
@@ -402,7 +401,7 @@ void *EnemyDescriptor::GetAnimSequence(int arg0, int arg1, int arg2, AnimSequenc
     var_ctr_486 = temp_r0_485;
     if (temp_r0_485 > 0) {
         do {
-            temp_r4_491 = M2C_FIELD(temp_r28_483, s32 *, 0) + var_r3_484;
+            temp_r4_491 = (void *) (M2C_FIELD(temp_r28_483, s32 *, 0) + var_r3_484);
             if (arg1 == (s32) M2C_FIELD(temp_r4_491, s32 *, 0x68)) {
                 temp_f1_495 = M2C_FIELD(temp_r4_491, f32 *, 0x60);
                 if (temp_f1_495 > 0.0f) {
@@ -426,7 +425,7 @@ loop_22:
             goto block_24;
         }
         temp_r5_520 = M2C_FIELD(temp_r28_483, s32 *, 0);
-        var_r3_521 = temp_r5_520 + var_r4_517;
+        var_r3_521 = (void *) (temp_r5_520 + var_r4_517);
         if (arg1 == (s32) M2C_FIELD(var_r3_521, s32 *, 0x68)) {
             temp_f3_525 = M2C_FIELD(var_r3_521, f32 *, 0x60);
             if (temp_f3_525 > 0.0f) {
@@ -436,7 +435,7 @@ loop_22:
                     goto block_18;
                 }
                 if ((arg3 == var_r3_521) && ((s32) (var_r8_514 + 1) == var_r29_473)) {
-                    var_r3_521 = temp_r5_520 + (var_r7_512 * 0x70);
+                    var_r3_521 = (void *) (temp_r5_520 + (var_r7_512 * 0x70));
 block_18:
                     if (var_f30_506 > temp_f1_510) {
                         return var_r3_521;
@@ -456,9 +455,8 @@ block_21:
 block_24:
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void ***' and 'long *'
 void EnemyDescriptor::Deinit_Attacks() {
     void ****temp_r31_603;
     void ****temp_r31_630;
@@ -506,7 +504,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
+#if 0 // DRAFT: illegal type
 void EnemyDescriptor::Deinit_Animation() {
     s32 var_r26_662;
     s32 var_r27_667;
@@ -523,7 +521,7 @@ loop_8:
         var_r30_666 = 0;
         var_r27_667 = 0;
         do {
-            temp_r28_672 = *(var_r31_663 + (this->unk1FC + var_r30_666));
+            temp_r28_672 = (void ***) (*(var_r31_663 + (this->unk1FC + var_r30_666)));
             if (temp_r28_672 != NULL) {
                 if (MKHeap::Current() != NULL) {
                     ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_672, NULL, 0);
@@ -551,7 +549,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
     MKHeap *var_r3_747;
     MKIniLine *var_r26_789;
@@ -569,9 +567,9 @@ s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
     if (temp_r0_736 > 0) {
         temp_r27_739 = temp_r0_736 * 0xC;
         if (MKHeap::Current() != NULL) {
-            var_r3_747 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_739, NULL, 0);
+            var_r3_747 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_739, NULL, 0));
         } else {
-            var_r3_747 = malloc(temp_r27_739);
+            var_r3_747 = (MKHeap *) (malloc(temp_r27_739));
         }
         var_r4_753 = 0;
         this->unk2AC = var_r3_747;
@@ -612,7 +610,6 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 EnemyDescriptor::LoadLine_Attacks(MKIniLine *arg0) {
     MKIniLine *var_r28_921;
     MKIniLine *var_r30_938;
@@ -631,20 +628,20 @@ s32 EnemyDescriptor::LoadLine_Attacks(MKIniLine *arg0) {
     void **temp_r3_1007;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_864 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
+        var_r3_864 = (void ****) (((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0));
     } else {
-        var_r3_864 = malloc(4);
+        var_r3_864 = (void ****) (malloc(4));
     }
     this->unk228 = var_r3_864;
     temp_r3_872 = arg0->GetNmbrOfSubLines();
     temp_r31_874 = this->unk228;
     if (temp_r3_872 == 0) {
-        *temp_r31_874 = &gEmptyPtrList + 4;
+        *temp_r31_874 = (void ***) (&gEmptyPtrList + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_889 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r3_872 + 2) * 4, NULL, 0);
+            var_r3_889 = (void ***) (((MKHeap *) (MKHeap::Current()))->Alloc((temp_r3_872 + 2) * 4, NULL, 0));
         } else {
-            var_r3_889 = malloc((temp_r3_872 + 2) * 4);
+            var_r3_889 = (void ***) (malloc((temp_r3_872 + 2) * 4));
         }
         *temp_r31_874 = var_r3_889;
         M2C_FIELD(*temp_r31_874, void ***, 0) = NULL;
@@ -705,9 +702,8 @@ loop_27:
     }
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void EnemyDescriptor::LoadLine_AnimSequence(MKIniLine *arg0, AnimSequence *arg1) {
     MKIniLine *var_r29_1030;
     s8 *temp_r26_1097;
@@ -726,7 +722,7 @@ loop_20:
     if (var_r29_1030 != NULL) {
         if ((var_r29_1030->LoadInt("iVariation", (int *) &arg1->unk68, 0) == 0) && (var_r29_1030->LoadFloat("fWeighting", &arg1->unk60, 0) == 0) && (var_r29_1030->LoadFloat("fAnimSpeed", &arg1->unk64, 0) == 0)) {
             if (var_r29_1030->IsField("pEnter") != 0) {
-                temp_r3_1069 = var_r29_1030->GetString(0);
+                temp_r3_1069 = (signed char *) (var_r29_1030->GetString(0));
                 temp_r27_1070 = this->unk34;
                 if (((MKAnimScript *) temp_r27_1070)->Exists(temp_r3_1069) != 0) {
                     var_r3_1079 = ((MKAnimScript *) temp_r27_1070)->GetAnim(temp_r3_1069);
@@ -735,7 +731,7 @@ loop_20:
                 }
                 arg1->unk0 = (u32) var_r3_1079;
             } else if (var_r29_1030->IsField("pLoop") != 0) {
-                temp_r3_1096 = var_r29_1030->GetString(0);
+                temp_r3_1096 = (signed char *) (var_r29_1030->GetString(0));
                 temp_r26_1097 = this->unk34;
                 if (((MKAnimScript *) temp_r26_1097)->Exists(temp_r3_1096) != 0) {
                     var_r3_1106 = ((MKAnimScript *) temp_r26_1097)->GetAnim(temp_r3_1096);
@@ -744,7 +740,7 @@ loop_20:
                 }
                 arg1->unk20 = (u32) var_r3_1106;
             } else if (var_r29_1030->IsField("pExit") != 0) {
-                temp_r3_1123 = var_r29_1030->GetString(0);
+                temp_r3_1123 = (signed char *) (var_r29_1030->GetString(0));
                 temp_r26_1124 = this->unk34;
                 if (((MKAnimScript *) temp_r26_1124)->Exists(temp_r3_1123) != 0) {
                     var_r3_1133 = ((MKAnimScript *) temp_r26_1124)->GetAnim(temp_r3_1123);
@@ -760,7 +756,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
     MKIniLine *var_r27_1209;
     s32 temp_r29_1185;
@@ -779,7 +775,7 @@ s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
             if (MKHeap::Current() != NULL) {
                 var_r3_1193 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1185, NULL, 0);
             } else {
-                var_r3_1193 = malloc(temp_r29_1185);
+                var_r3_1193 = (void *) (malloc(temp_r29_1185));
             }
             M2C_FIELD(temp_r28_1181, void **, 0) = var_r3_1193;
             memset(M2C_FIELD(temp_r28_1181, void **, 0), 0, (u32) temp_r29_1185);
@@ -802,7 +798,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
     u8 sp8;
     MKHeap *var_r3_1295;
@@ -820,9 +816,9 @@ s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
     if (arg0->IsField("LeafEffectNodes") != 0) {
         temp_r28_1287 = arg0->unk0 + 1;
         if (MKHeap::Current() != NULL) {
-            var_r3_1295 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1287 * 4, NULL, 0);
+            var_r3_1295 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1287 * 4, NULL, 0));
         } else {
-            var_r3_1295 = malloc(temp_r28_1287 * 4);
+            var_r3_1295 = (MKHeap *) (malloc(temp_r28_1287 * 4));
         }
         this->unk27C = var_r3_1295;
         var_r27_1307 = 0;
@@ -845,7 +841,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void EnemyDescriptor::LoadDescriptorData() {
     MKIni sp28;
     s8 sp8;
@@ -881,9 +877,9 @@ loop_5:
         if (temp_r0_1879 != 0) {
             temp_r28_1882 = temp_r0_1879 * 0x98;
             if (MKHeap::Current() != NULL) {
-                var_r3_1890 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1882, NULL, 0);
+                var_r3_1890 = (void ***) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1882, NULL, 0));
             } else {
-                var_r3_1890 = malloc(temp_r28_1882);
+                var_r3_1890 = (void ***) (malloc(temp_r28_1882));
             }
             this->unk1FC = var_r3_1890;
             var_r29_1897 = 0;
@@ -943,7 +939,7 @@ void EnemyDescriptor::Resolve() {
     this->unk254 = gMK->FindDescriptor("EnemyStonedShatter");
 }
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 void EnemyDescriptor::LoadDone() {
     f64 sp10;
     f32 sp8;
@@ -991,7 +987,7 @@ loop_27:
             if (var_r27_2109 < (s32) M2C_FIELD(temp_r3_2223, s32 *, 4)) {
                 var_r25_2114 = 0;
                 var_r20_2115 = 0;
-                temp_r26_2116 = M2C_FIELD(temp_r3_2223, s32 *, 0) + var_r21_2110;
+                temp_r26_2116 = (void *) (M2C_FIELD(temp_r3_2223, s32 *, 0) + var_r21_2110);
                 do {
                     temp_r30_2118 = ((u8 *) temp_r26_2116) + var_r20_2115;
                     if ((void *) M2C_FIELD(temp_r30_2118, void **, 0) != NULL) {
@@ -1079,9 +1075,9 @@ loop_27:
     this->unk284 = (MKHeap *) Tools_GetMatchingRefPointIndex(this->unk2C, "breath");
     if (((u8) this->unk264 != 0) && ((MKHeap *) this->unk284 != (MKHeap *)-1U)) {
         if (MKHeap::Current() != NULL) {
-            var_r3_2371 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0);
+            var_r3_2371 = (CharacterBreathFXDescriptor *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0));
         } else {
-            var_r3_2371 = malloc(0x20);
+            var_r3_2371 = (CharacterBreathFXDescriptor *) (malloc(0x20));
         }
         this->unk258 = var_r3_2371;
         this->unk258->Init();
@@ -1089,12 +1085,12 @@ loop_27:
     }
     this->unk260 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
     if (HasAttack(0x2000U, 0) != 0) {
-        this->unk25C = checked_cast<ElementalRing *, MKProp>(gMK->CreateProp("ElementalRing"));
+        this->unk25C = (long) (checked_cast<ElementalRing *, MKProp>(gMK->CreateProp("ElementalRing")));
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 EnemyDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2421;
 
@@ -1106,7 +1102,7 @@ s32 EnemyDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void ***'
 void EnemyDescriptor::Deinit() {
     CharacterBreathFXDescriptor *temp_r29_2578;
     EAPManagerDescriptor *temp_r3_2555;
@@ -1318,7 +1314,7 @@ void EnemyDescriptor::Init() {
     this->unk22C = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {
     f32 sp20;
     f32 sp1C;

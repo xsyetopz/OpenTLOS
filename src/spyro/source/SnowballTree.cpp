@@ -47,7 +47,7 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'SnowballTree' to
+#if 0 // DRAFT: illegal explicit conversion from 'SnowballTree' to 'signed char *'
 void SnowballTree::DropABall() {
     s32 var_ctr_50;
     s32 var_r4_47;
@@ -68,7 +68,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void SnowballTree::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 4) {
 

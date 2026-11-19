@@ -61,7 +61,7 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<StalactiteCharge>::State'
 static M2C_UNK lit_672;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<StalactiteCharge>::State StalactiteChargeStates; /* unable to generate initializer: confusing struct layout */
 
@@ -74,7 +74,7 @@ void StalactiteCharge::StateSCResetUpdate() {
     this->unk50.SetState(this, 0, 0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDSplinePathSegment' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDSplinePathSegment' to 'double'
 void StalactiteCharge::StateSCResetEnter() {
     f64 sp118;                                      /* compiler-managed */
     KDSplinePathSegment spD0;
@@ -783,7 +783,7 @@ void StalactiteCharge::StateSCDropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void StalactiteCharge::StateSCDropEnter() {
     s8 sp9D;
     s8 sp9C;
@@ -902,7 +902,7 @@ void StalactiteCharge::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 f32 StalactiteCharge::Resolve() {
     MKSceneManager *temp_r3_1606;
     u32 temp_r4_1605;
@@ -916,7 +916,7 @@ f32 StalactiteCharge::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'float'
 s32 StalactiteCharge::LoadDone() {
     KDUniformSpline sp38;
     KDUniformSpline sp18;
@@ -1016,7 +1016,7 @@ void StalactiteCharge::Init() {
 
     this->unk50.Init(&StalactiteChargeStates, NULL);
     if (MKHeap::Current() != NULL) {
-        var_r3_1899 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
+        var_r3_1899 = (IceBossStalactiteSpawner *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0));
     } else {
         var_r3_1899 = malloc(0x28);
     }

@@ -111,7 +111,7 @@ void Autosave_ConfirmCard() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void Autosave_Update() {
     f32 temp_f1_236;
     f32 temp_f1_307;
@@ -192,18 +192,18 @@ void Autosave_Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
+#if 0 // DRAFT: undefined identifier 'PauseMenu_AutosaveScreen'
 void Autosave_Abort() {
-    *MemoryCardScreen::selectedCard = autosaveCard;
+    *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
     Autosave_Reset();
     autosave_state = 0;
     PauseMenu_AutosaveScreen"AutosaveCardRemoved";
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
+#if 0 // DRAFT: undefined identifier 'PauseMenu_AutosaveScreen'
 void Autosave_Error() {
-    *MemoryCardScreen::selectedCard = autosaveCard;
+    *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
     Autosave_Reset();
     autosave_state = 0;
     PauseMenu_AutosaveScreen"AutosaveError";
@@ -230,7 +230,7 @@ void Autosave_FreeResources() {
     autosaveIcon.UIImage::Deinit();
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void Autosave_LoadResources() {
     autosaveIcon.UIImage::Init();
     autosaveIcon.unk18.unk40 = 0x3A;

@@ -332,7 +332,7 @@ void FuryFXElectricity::DrawElectricityRing() {
         temp_f25_462 = 4.0f * ((f32) var_r29_447 / 15.0f);
         MKSetColorV(*((MKVector4 *) &spB0));
         MKSetTexCoord1F(temp_f25_462, 0.95f);
-        temp_r28_468 = &sp100 + var_r31_449;
+        temp_r28_468 = (MKVector3 *) (&sp100 + var_r31_449);
         MKSetPositionV(*temp_r28_468);
         sp40 = 0.0f;
         sp44 = 0.0f;
@@ -541,7 +541,7 @@ void FuryFXElectricity::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FuryFXElectricity *' to
+#if 0 // DRAFT: illegal implicit conversion from 'FuryFXElectricity *' to 'FuryFXElectricity::WindyRing *'
 void FuryFXElectricity::Draw() {
     s32 temp_r0_826;
     s32 var_r30_839;
@@ -563,7 +563,7 @@ void FuryFXElectricity::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *FuryFXElectricity::Update() {
     s8 sp8F0;
     f64 sp8E8;
@@ -1618,7 +1618,6 @@ loop_151:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXElectricity::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1655,23 +1654,21 @@ f32 FuryFXElectricity::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkC4 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_739, lit_740);
+    this->unkC4 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_739, lit_740));
     temp_r4_2790 = this->unkC4;
     if (temp_r4_2790 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2790, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FuryFXElectricity::Init() {
     FuryFX::Init();
     this->unk90 = 0;
     this->unk180 = -1.0f;
     this->unk184 = 0.0f;
-    this->unkA8 = MKMaterial_Create("fx_370");
-    this->unkC8 = MKMaterial_Create("windymat");
-    this->unkCC = MKMaterial_Create("windymat2");
+    this->unkA8 = (MKMaterial *) (MKMaterial_Create("fx_370"));
+    this->unkC8 = (MKMaterial *) (MKMaterial_Create("windymat"));
+    this->unkCC = (MKMaterial *) (MKMaterial_Create("windymat2"));
     this->unkAC = 0.0f;
     this->unkC0 = checked_cast<LitCloudPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("LitCloudPS"));
     this->unkC4 = NULL;
@@ -1689,7 +1686,6 @@ void FuryFXElectricity::Init() {
     this->unk18C = 0;
     this->unk194 = 0.0f;
 }
-#endif
 
 void FuryFXElectricity_cpp::__sinit() {
     f32 temp_f0_2920;

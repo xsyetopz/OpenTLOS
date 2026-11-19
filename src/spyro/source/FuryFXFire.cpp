@@ -305,7 +305,7 @@ void FuryFXFire::SetDefaults() {
     this->unk2EC = 1;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void FuryFXFire::Deinit() {
     Corona *temp_r4_396;
     MKMaterial *temp_r3_417;
@@ -393,7 +393,6 @@ void FuryFXFire::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void FuryFXFire::UpdateDragons() {
     Matrix spA0;
     M2C_UNK sp9C;
@@ -474,14 +473,14 @@ void FuryFXFire::UpdateDragons() {
         spA0.unk38 = (f32) sp78;
         MKModel_SetWorldMatrix(this->unkEC, spA0);
         ((ShapedTrailFX *) (M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)))->UpdateTrail();
-        temp_r3_648 = MKModel_GetWorldMatrix(M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unk78);
+        temp_r3_648 = (void *) (MKModel_GetWorldMatrix(M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unk78));
         M2C_FIELD(temp_r30_570, f64 *, 0x120) = (f64) M2C_FIELD(temp_r3_648, f64 *, 0x30);
         M2C_FIELD(temp_r30_570, f64 *, 0x128) = (f64) M2C_FIELD(temp_r3_648, f64 *, 0x38);
         var_r4_654 = GS_SpyroFuryAttack1;
         if ((u8) this->unk2F1 != 0) {
             var_r4_654 = GS_CynderFuryLP;
         }
-        temp_r25_660 = ((u8 *) temp_r30_570) + 0x120;
+        temp_r25_660 = (MKVector3 *) (((u8 *) temp_r30_570) + 0x120);
         sp8 = 1;
         ((KDSoundFader *) (((u8 *) temp_r30_570) + 0x134))->Update(var_r4_654, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
@@ -532,7 +531,6 @@ void FuryFXFire::UpdateDragons() {
         }
     }
 }
-#endif
 
 void FuryFXFire::Message(MKMessage *arg0) {
     s32 var_r29_795;
@@ -551,7 +549,7 @@ void FuryFXFire::Message(MKMessage *arg0) {
     } while (var_r29_795 < 3);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *FuryFXFire::Update() {
     s8 sp991;
     s8 sp990;
@@ -1690,7 +1688,6 @@ loop_156:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXFire::Resolve() {
     f64 spC0;
     f64 spB8;
@@ -1748,7 +1745,7 @@ f32 FuryFXFire::Resolve() {
     spB0 = (f64) sp50;
     spB8 = (f64) sp58;
     spC0 = (f64) sp60;
-    this->unkE8 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762);
+    this->unkE8 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762));
     temp_r4_2975 = this->unkE8;
     if (temp_r4_2975 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2975, 0U);
@@ -1764,7 +1761,7 @@ f32 FuryFXFire::Resolve() {
     sp80 = (f64) sp20;
     sp88 = (f64) sp28;
     sp90 = (f64) sp30;
-    this->unkF4 = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767);
+    this->unkF4 = (Corona *) (((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767));
     temp_r4_3009 = this->unkF4;
     if (temp_r4_3009 != NULL) {
         temp_r4_3009->unk31 &= ~0x40;
@@ -1790,16 +1787,15 @@ f32 FuryFXFire::Resolve() {
         var_r31_3021 += 0x80;
     } while (var_r28_3020 < 3);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
+#if 0 // DRAFT: illegal implicit conversion from 'FuryFXFire *' to 'MKProp **'
 void FuryFXFire::Init() {
     s32 var_r29_3123;
     s32 var_r31_3124;
 
     ((FuryFX *) this)->FuryFX::Init();
     SetDefaults();
-    this->unkE0 = MKMaterial_Create("FX_FlameWall");
+    this->unkE0 = (MKMaterial *) (MKMaterial_Create("FX_FlameWall"));
     this->unkE8 = NULL;
     this->unkF0 = MKModel_Create("Fx0019_FireFuryBlast", NULL, 2, NULL);
     this->unkF8 = -1.0f;
@@ -1813,7 +1809,7 @@ void FuryFXFire::Init() {
         var_r31_3124 += 0x80;
     } while (var_r29_3123 < 3);
     this->unk2E8 = -1;
-    this->unkE4 = MKMaterial_Create("fx_cynderFuryFlame");
+    this->unkE4 = (MKMaterial *) (MKMaterial_Create("fx_cynderFuryFlame"));
 }
 #endif
 

@@ -121,23 +121,19 @@ inline s32 KDParticleEmitterProperty::GetInstanceDataAlignment() const {
     return 0x10;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline s32 KDParticleEmitterProperty::LoadLineInstance(MKIniLine *arg0) {
     void **temp_r3_52;
 
-    temp_r3_52 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_52 = (void **) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(*temp_r3_52, M2C_UNK (**)(void **, s32), 0xC)(temp_r3_52, *KDProperty::pInstanceMem);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void KDParticleEmitterProperty::LoadDoneInstance() {
     void **temp_r3_71;
 
-    temp_r3_71 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_71 = (void **) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(*temp_r3_71, M2C_UNK (**)(void **, s32), 0x10)(temp_r3_71, *KDProperty::pInstanceMem);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector4'
 inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
@@ -149,7 +145,7 @@ inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
 
     temp_f1_86 = M2C_FIELD(arg0, f64 *, 0);
     temp_f0_90 = M2C_FIELD(arg0, f64 *, 8);
-    temp_r3_91 = *KDProperty::pInstanceMem + (this->unk8 + 8);
+    temp_r3_91 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 8));
     sp8 = temp_f1_86;
     M2C_FIELD(temp_r3_91, f64 *, 0) = temp_f1_86;
     sp10 = temp_f0_90;
@@ -157,15 +153,13 @@ inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void KDParticleEmitterProperty::GetColor() {
     void *temp_r4_106;
 
-    temp_r4_106 = *KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8);
+    temp_r4_106 = (void *) (*KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8));
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_106, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_106, f64 *, 8);
 }
-#endif
 
 inline s32 KDParticleEmitterProperty::GetInstanceDataSize() const {
     return 0x78;

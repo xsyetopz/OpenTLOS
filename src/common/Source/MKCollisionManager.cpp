@@ -28,7 +28,7 @@ static s8 name_982[0x20];
 
 static u32 testID = 1U;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to 'double'
 s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *arg1, MKCollisionMode arg2) {
     MKCollisionAABB sp30;
     f64 sp28;
@@ -254,7 +254,7 @@ block_35:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, int)' does not match 'strcpy(char *, const char *)'
 MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
     s8 sp8;
     MKCollisionModel *var_r30_356;
@@ -265,7 +265,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
 
     MKCollision_MangleName(arg0, arg1);
     strcpy(&sp8, M2C_ERROR(/* Read from unset register $r3 */));
-    temp_r3_344 = FindTemplate(&sp8);
+    temp_r3_344 = (const char *) (FindTemplate(&sp8));
     if (temp_r3_344 != NULL) {
         temp_r3_344->unk24 += 1;
         return (MKHeap *) temp_r3_344->unk20;
@@ -274,7 +274,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
     if (var_r30_356 == NULL) {
         MKCollision_MangleName(arg0, arg1, 1U);
         strcpy(&sp8, M2C_ERROR(/* Read from unset register $r3 */));
-        temp_r3_367 = FindTemplate(&sp8);
+        temp_r3_367 = (const char *) (FindTemplate(&sp8));
         if (temp_r3_367 != NULL) {
             temp_r3_367->unk24 += 1;
             return (MKHeap *) temp_r3_367->unk20;
@@ -285,7 +285,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
 block_6:
     temp_r29_381 = this->unk24;
     if (MKHeap::Current() != NULL) {
-        var_r3_389 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0);
+        var_r3_389 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0));
     } else {
         var_r3_389 = malloc(0x2C);
     }
@@ -298,7 +298,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
     MKHeap *temp_r3_430;
     s8 *temp_r30_439;
@@ -306,14 +306,14 @@ MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
     s8 *var_r3_447;
 
     temp_r3_425 = GetFileName(arg0, arg1);
-    temp_r3_430 = FindTemplate(temp_r3_425);
+    temp_r3_430 = (const char *) (FindTemplate(temp_r3_425));
     if (temp_r3_430 != NULL) {
         temp_r3_430->unk24 += 1;
         return (MKHeap *) temp_r3_430->unk20;
     }
     temp_r30_439 = this->unk24;
     if (MKHeap::Current() != NULL) {
-        var_r3_447 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0);
+        var_r3_447 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0));
     } else {
         var_r3_447 = malloc(0x2C);
     }
@@ -326,7 +326,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, MKHeap *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, MKHeap *)' does not match 'stricmp(signed char *, MKHeap *)'
 MKHeap *MKCollisionManager::FindTemplate(const char *arg0) {
     s8 *var_r31_485;
 
@@ -343,7 +343,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKCollision_MangleName(MKHeap *, int)' does not match
+#if 0 // DRAFT: function call 'MKCollision_MangleName(MKHeap *, int)' does not match 'MKCollision_MangleName(const char *, int, bool)' 'MKCollision_MangleName(const char *, int
 s8 *MKCollisionManager::GetFileName(MKModel *arg0, int arg1) {
     MKCollision_MangleName(MKModel_GetName(arg0), arg1);
     strcpy(name_982, M2C_ERROR(/* Read from unset register $r3 */));
@@ -409,7 +409,7 @@ loop_15:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to 'float'
 s32 MKCollisionManager::SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     MKCollisionRay sp18;
     s32 sp14;
@@ -636,7 +636,7 @@ block_89:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to 'float'
 u8 MKCollisionManager::SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
     u8 sp178;
     s32 sp174;
@@ -1370,7 +1370,7 @@ loop_82:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to 'float'
 u8 MKCollisionManager::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4) {
     u8 sp178;
     s32 sp174;
@@ -1885,7 +1885,7 @@ u8 MKCollisionManager::Enable(bool arg0) {
     return temp_r0_2998;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void *'
 void MKCollisionManager::Deinit() {
     MKHeap *temp_r30_3060;
     MKHeap *temp_r3_3030;
@@ -1984,7 +1984,7 @@ void MKCollisionManager::Init(const char **arg0, int arg1, MKSceneManager *arg2,
 loop_2:
     if (var_r29_3114 < arg3) {
         temp_r28_3121 = this->unk28;
-        this->unk28 = CreateCollisionModel(*(arg0 + var_r30_3109), arg1);
+        this->unk28 = (MKCollisionModel *) (CreateCollisionModel(*(arg0 + var_r30_3109), arg1));
         var_r29_3114 += 1;
         var_r30_3109 += 4;
         M2C_FIELD(this->unk28, MKCollisionModel **, 0x48) = temp_r28_3121;
@@ -2118,7 +2118,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionModel *' to
+#if 0 // DRAFT: undefined identifier 'StoreItemInfo'
 u8 UpdateBestResult(MKCollisionModel *arg0, bool arg1, const MKCollisionResult &arg2, MKCollisionResult *arg3, MKCollisionModel *&arg4, int arg5, MKCollisionMode arg6, int arg7) {
     f32 temp_f2_3358;
 
@@ -2140,7 +2140,7 @@ u8 UpdateBestResult(MKCollisionModel *arg0, bool arg1, const MKCollisionResult &
             arg3->unk48 = arg2.unk48;
             arg3->unk4C = arg2.unk4C;
             arg3->unk50 = arg2.unk50;
-            &arg4 = arg0;
+            &arg4 = (MKCollisionModel **) (arg0);
             StoreItemInfo(arg3, arg5, arg6, arg7);
         }
     }

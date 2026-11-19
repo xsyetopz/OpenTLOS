@@ -38,7 +38,7 @@ void PuddleSplash::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void PuddleSplash::Draw() {
     f64 sp278;
     f64 sp270;
@@ -332,7 +332,7 @@ void PuddleSplash::Init() {
     this->unk4C = NULL;
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Destroy(PuddleSplashDescriptor)' does not match
+#if 0 // DRAFT: function call 'MKMaterial_Destroy(PuddleSplashDescriptor)' does not match 'MKMaterial_Destroy(MKMaterial *)'
 void PuddleSplashDescriptor::Deinit() {
     s32 var_r30_552;
     s32 var_r31_553;
@@ -348,12 +348,10 @@ void PuddleSplashDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void PuddleSplashDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create("fx_006");
-    this->unk64 = MKMaterial_Create("fx_007");
-    this->unk68 = MKMaterial_Create("fx_008");
-    this->unk6C = MKMaterial_Create("fx_365");
+    this->unk60 = (long) (MKMaterial_Create("fx_006"));
+    this->unk64 = (long) (MKMaterial_Create("fx_007"));
+    this->unk68 = (long) (MKMaterial_Create("fx_008"));
+    this->unk6C = (long) (MKMaterial_Create("fx_365"));
 }
-#endif

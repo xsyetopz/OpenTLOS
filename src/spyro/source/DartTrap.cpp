@@ -49,9 +49,7 @@
 extern s32 GS_DartTrapFire;
 extern f32 gUpdateTimeDelta;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
-static s8 *pDartTrapAnimEvents = "Fire";
-#endif
+static s8 *pDartTrapAnimEvents = (signed char *) ("Fire");
 
 void DartTrap::SetState(int arg0) {
     if ((s32) this->unk94 != arg0) {
@@ -63,7 +61,7 @@ void DartTrap::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((checked_cast<DartTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0 * 4)), MKAnim **, 0x70), this->unkA0, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DartTrap::Shoot() {
     MKCollisionResult spC0;
     MKVector3 spB0;
@@ -108,7 +106,7 @@ void DartTrap::Shoot() {
     if (temp_r3_91 != NULL) {
         M2C_FIELD(temp_r3_91, s32 *, 0x130) = 0;
     }
-    this->unk90 = ((Projectile *)0xE)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
+    this->unk90 = (void *) (((Projectile *)0xE)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
     temp_r3_100 = this->unk90;
     if (temp_r3_100 != NULL) {
         M2C_FIELD(M2C_FIELD(temp_r3_100, void **, 0x44), M2C_UNK (**)(), 0x20)();
@@ -227,7 +225,7 @@ void DartTrap::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector
 void *DartTrap::Update() {
     s32 temp_r0_401;
 
@@ -277,7 +275,7 @@ void *DartTrap::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 DartTrap::LoadDone() {
     KDProp::LoadDone();
     this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ref");
@@ -285,7 +283,7 @@ s32 DartTrap::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 DartTrap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_552;
 

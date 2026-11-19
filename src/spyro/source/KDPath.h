@@ -214,7 +214,7 @@ inline f32 KDPathSegmentProp::Resolve() {
     ((KDPathSegment *) &this->unk4C)->Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'Matrix *'
 inline void KDSplinePathSegment::GetVelocity(float arg0) {
     KDUniformSpline sp30;
     f64 sp28;
@@ -236,7 +236,7 @@ inline void KDSplinePathSegment::GetVelocity(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'Matrix *'
 inline void KDSplinePathSegment::GetPosition(float arg0) {
     f32 sp8;
 

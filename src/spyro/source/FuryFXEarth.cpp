@@ -353,7 +353,7 @@ void FuryFXEarth::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'FuryFXEarth::Trigger(const MKVector3 &, bool)' redeclared
+#if 0 // DRAFT: identifier 'FuryFXEarth::Trigger(const MKVector3 &, bool)' redeclared was declared as: 'long (const MKVector3 &, bool)' now declared as: 'long'
 s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp30;
     f64 sp28;
@@ -958,7 +958,6 @@ loop_59:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXEarth::Resolve() {
     f64 spA0;
     f64 sp98;
@@ -1002,7 +1001,7 @@ f32 FuryFXEarth::Resolve() {
     sp90 = (f64) sp40;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    this->unk164 = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp98), *((MKVector4 *) &sp88), 1.0f, lit_778, lit_779);
+    this->unk164 = (Corona *) (((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp98), *((MKVector4 *) &sp88), 1.0f, lit_778, lit_779));
     temp_r4_1613 = this->unk164;
     if (temp_r4_1613 != NULL) {
         temp_r4_1613->unk31 &= ~0x40;
@@ -1023,15 +1022,14 @@ f32 FuryFXEarth::Resolve() {
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
     sp80 = (f64) sp30;
-    this->unk1CC = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784);
+    this->unk1CC = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784));
     temp_r4_1656 = this->unk1CC;
     if (temp_r4_1656 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1656, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match
+#if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match 'checked_cast<...>(T1 *)'
 void FuryFXEarth::Init() {
     f64 sp40;
     f64 sp38;

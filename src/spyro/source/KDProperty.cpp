@@ -50,13 +50,12 @@ loop_11:
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[8], const char[7])' does
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[8], const char[7])' does not match 'stricmp(signed char *, signed char *, signed char *)'
 s32 KDScriptProperty::ResolveCommand(const char *arg0) const {
     return stricmp(arg0, "Trigger", "script") == 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
     KDPropertyCommand **var_r0_203;
     KDPropertyCommand **var_r0_236;
@@ -74,7 +73,7 @@ u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
         if (temp_r0_178 > 1) {
             temp_r30_181 = temp_r0_178 * 8;
             if (MKHeap::Current() != NULL) {
-                var_r3_189 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_181, NULL, 0);
+                var_r3_189 = (KDPropertyCommand *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_181, NULL, 0));
             } else {
                 var_r3_189 = malloc(temp_r30_181);
             }
@@ -119,7 +118,6 @@ loop_16:
     }
     return 0U;
 }
-#endif
 
 void KDPropertyCommandList::Deinit() {
     KDPropertyCommand *temp_r31_290;
@@ -136,14 +134,14 @@ void KDPropertyCommandList::Deinit() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDPropertyCommand::Resolve(KDPropertySet *arg0) {
     KDPropertyCommand *temp_r0_327;
     KDPropertyCommand *temp_r3_335;
 
     temp_r0_327 = this->unk0;
     if (temp_r0_327 != NULL) {
-        this->unk0 = arg0->Find((s8 *) temp_r0_327);
+        this->unk0 = (const char *) (arg0->Find((s8 *) temp_r0_327));
     }
     temp_r3_335 = this->unk0;
     if ((temp_r3_335 != NULL) && ((u32) this->unk4 != 0U)) {
@@ -152,23 +150,21 @@ void KDPropertyCommand::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 KDPropertyCommand::LoadLine(MKIniLine *arg0, const char *arg1) {
     if (arg1 != NULL) {
         if (arg0->IsField(arg1) == 0) {
             return 0;
         }
-        this->unk0 = arg0->GetString(0);
+        this->unk0 = (KDPropertyCommand *) (arg0->GetString(0));
         goto block_5;
     }
-    this->unk0 = arg0->GetFieldName();
+    this->unk0 = (KDPropertyCommand *) (arg0->GetFieldName());
 block_5:
     this->unk4 = arg0->GetString(arg1 != NULL);
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *, signed char *)'
 KDPropertyClassInfo *KDPropertyClassRegistry::Find(const char *arg0) {
     KDPropertyClassInfo *var_r31_409;
 
@@ -205,7 +201,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *, signed char *)'
 KDPropertyCommand *KDPropertySet::Find(const char *arg0) {
     KDProperty *var_r30_460;
     KDPropertyCommand *var_r30_482;
@@ -236,7 +232,7 @@ loop_15:
     if (var_r3_463 != NULL) {
 
     } else {
-        var_r3_463 = "";
+        var_r3_463 = (signed char *) ("");
     }
     if (stricmp(var_r3_463, arg0) == 0) {
         return (KDPropertyCommand *) var_r30_460;
@@ -279,7 +275,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 KDPropertySet::LoadLine(MKIniLine *arg0, KDPropertyClassRegistry *arg1) {
     KDProperty *temp_r31_610;
     KDPropertyClassInfo *temp_r3_604;
@@ -290,7 +286,7 @@ s32 KDPropertySet::LoadLine(MKIniLine *arg0, KDPropertyClassRegistry *arg1) {
     if ((s32) *temp_r3_594 != 0x2A) {
         return 0;
     }
-    temp_r3_604 = arg1->Find(&temp_r3_594[1]);
+    temp_r3_604 = (const char *) (arg1->Find(&temp_r3_594[1]));
     if (temp_r3_604 != NULL) {
         temp_r31_610 = temp_r3_604->unk4();
         temp_r31_610->Init(arg0->GetString(0));
@@ -309,7 +305,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'KDPropertyCommand *' and 'KDProperty *'
 void KDPropertySet::Remove(KDProperty *arg0) {
     KDProperty *temp_r5_679;
     KDPropertySet *var_r3_0;
@@ -338,7 +334,7 @@ void KDPropertySet::AddPublished(KDProperty *arg0) {
     this->unk8 = (KDPropertyCommand *) arg0;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'KDProperty *' and 'KDPropertyCommand *'
 void KDPropertySet::Add(KDProperty *arg0) {
     KDProperty *temp_r3_717;
     KDPropertySet *var_r4_712;
@@ -390,9 +386,9 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
+#if 0 // DRAFT: expression syntax error
 void KDProperty_cpp::__sinit() {
-    M2C_FIELD(KDScriptProperty::classInfo, s8 **, 0) = "KDScript";
+    M2C_FIELD(KDScriptProperty::classInfo, s8 **, 0) = (signed char *) ("KDScript");
     M2C_FIELD(KDScriptProperty::classInfo, s32 *, 8) = 0;
     M2C_FIELD(KDScriptProperty::classInfo, void (**)(KDPropertyConstructor<KDScriptProperty> *), 4) = &KDPropertyConstructor<KDScriptProperty>::Construct;
 }

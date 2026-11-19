@@ -17,7 +17,7 @@
 #include "common/Source/FileSys.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 s32 atoi(u8 *);                                     /* extern */
 s32 strcmpi(s32, s8 *);                             /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
@@ -48,10 +48,10 @@ void KDSP_Subtitles::Update(KDSP_ActorList *arg0, int arg1) {
         do {
             var_r7_20 = 0;
             var_r10_21 = 0;
-            temp_r6_22 = arg0->unk4 + var_r9_12;
+            temp_r6_22 = (void *) (arg0->unk4 + var_r9_12);
 loop_14:
             if (var_r7_20 < (s32) M2C_FIELD(temp_r6_22, s32 *, 0x54)) {
-                temp_r8_26 = M2C_FIELD(temp_r6_22, s32 *, 0x58) + var_r10_21;
+                temp_r8_26 = (void *) (M2C_FIELD(temp_r6_22, s32 *, 0x58) + var_r10_21);
                 temp_r31_27 = M2C_FIELD(temp_r8_26, s32 *, 0x1C);
                 if (temp_r31_27 == -1) {
                     temp_r12_30 = M2C_FIELD(temp_r8_26, s32 *, 0);
@@ -104,7 +104,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal operand
 void KDSP_Subtitles::Parse(KDSynkerHeap *arg0, const char *arg1) {
     s8 spA;
     u8 sp9;
@@ -123,7 +123,7 @@ void KDSP_Subtitles::Parse(KDSynkerHeap *arg0, const char *arg1) {
         temp_r5_146 = arg0->unk0;
         temp_r6_147 = arg0->unk8 - 1;
         arg0->unk0 = temp_r5_146 + ((temp_r0_141 + temp_r6_147) & ~temp_r6_147);
-        this->unk98 = MKArchive_Load(arg1, NULL, (void *) temp_r5_146, this->unkA0);
+        this->unk98 = (unsigned char *) (MKArchive_Load(arg1, NULL, (void *) temp_r5_146, this->unkA0));
         var_r29_157 = 0;
         var_r5_158 = 0;
         var_r30_159 = this->unk98;
@@ -249,7 +249,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void KDSP_ActorList::ResolveLookAt() {
     s8 sp28;
     s8 sp8;
@@ -268,17 +268,17 @@ void KDSP_ActorList::ResolveLookAt() {
     var_r28_399 = 0;
 loop_10:
     if (var_r31_398 < (s32) this->unk0) {
-        temp_r30_403 = this->unk4 + var_r28_399;
+        temp_r30_403 = (void *) (this->unk4 + var_r28_399);
         temp_r3_404 = M2C_FIELD(temp_r30_403, s32 *, 0x40);
         if (!(temp_r3_404 & 4) && !(temp_r3_404 & 8)) {
             var_r25_410 = 0;
             var_r27_412 = 0;
 loop_5:
             if (var_r25_410 < (s32) M2C_FIELD(temp_r30_403, s32 *, 0x44)) {
-                temp_r24_417 = M2C_FIELD(temp_r30_403, s32 *, 0x48) + var_r27_412;
+                temp_r24_417 = (void *) (M2C_FIELD(temp_r30_403, s32 *, 0x48) + var_r27_412);
                 strcpy(&sp28, M2C_FIELD(temp_r24_417, s8 **, 8));
                 strtok(&sp28, ":");
-                M2C_FIELD(temp_r24_417, KDSP_Actor **, 0xC) = FindActor(&sp28);
+                M2C_FIELD(temp_r24_417, KDSP_Actor **, 0xC) = (const char *) (FindActor(&sp28));
                 var_r27_412 += 0x14;
                 M2C_FIELD(temp_r24_417, s32 *, 0x10) = (s32) ((KDSP_Actor *) (M2C_FIELD(temp_r24_417, KDSP_Actor **, 0xC)))->GetMatchingNodeIndex(strtok(NULL, "\n"));
                 var_r25_410 += 1;
@@ -288,10 +288,10 @@ loop_5:
             var_r27_445 = 0;
 loop_8:
             if (var_r24_443 < (s32) M2C_FIELD(temp_r30_403, s32 *, 0x4C)) {
-                temp_r25_450 = M2C_FIELD(temp_r30_403, s32 *, 0x50) + var_r27_445;
+                temp_r25_450 = (void *) (M2C_FIELD(temp_r30_403, s32 *, 0x50) + var_r27_445);
                 strcpy(&sp8, M2C_FIELD(temp_r25_450, s8 **, 8));
                 strtok(&sp8, ":");
-                M2C_FIELD(temp_r25_450, KDSP_Actor **, 0xC) = FindActor(&sp8);
+                M2C_FIELD(temp_r25_450, KDSP_Actor **, 0xC) = (const char *) (FindActor(&sp8));
                 var_r27_445 += 0x14;
                 M2C_FIELD(temp_r25_450, s32 *, 0x10) = (s32) ((KDSP_Actor *) (M2C_FIELD(temp_r25_450, KDSP_Actor **, 0xC)))->GetMatchingNodeIndex(strtok(NULL, "\n"));
                 var_r24_443 += 1;
@@ -305,7 +305,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_ActorList::SendMessageToActorProp(bool arg0) {
     KDS_Message_PropEnd sp10;
     s32 spC;
@@ -320,7 +319,7 @@ void KDSP_ActorList::SendMessageToActorProp(bool arg0) {
     var_r31_499 = 0;
 loop_6:
     if (var_r30_498 < (s32) this->unk0) {
-        temp_r29_503 = this->unk4 + var_r31_499;
+        temp_r29_503 = (void *) (this->unk4 + var_r31_499);
         temp_r3_504 = M2C_FIELD(temp_r29_503, void **, 0x30);
         if (temp_r3_504 != NULL) {
             if (arg0 != 0) {
@@ -339,7 +338,6 @@ loop_6:
         goto loop_6;
     }
 }
-#endif
 
 void KDSP_ActorList::Deinit(bool arg0) {
     s32 var_r30_557;
@@ -370,7 +368,7 @@ loop_4:
         return NULL;
     }
     if (stricmp(*(this->unk4 + (var_r31_591 + 0x5C)), arg0) == 0) {
-        return this->unk4 + var_r31_591;
+        return (KDSP_Actor *) (this->unk4 + var_r31_591);
     }
     var_r30_590 += 1;
     var_r31_591 += 0x138;
@@ -420,7 +418,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *arg3) {
     MKIniLine *temp_r28_706;
     MKIniLine *temp_r3_729;

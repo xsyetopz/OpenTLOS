@@ -27,7 +27,7 @@ s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern void **gMK;
 static s32 key_366;
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char[7])' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char[7])' does not match 'stricmp(signed char *, long *)'
 s32 MKSceneManager::LoadChunk() {
     MKIniLine *temp_r3_220;
     MKIniLine *temp_r3_257;
@@ -77,7 +77,7 @@ loop_1:
         }
         if ((var_r28_49 != NULL) && (stricmp(var_r28_49, "HEADER") != 0) && (stricmp(var_r28_49, "BOUNDING_REGION") != 0) && (stricmp(var_r28_49, "SWAP_GROUP_INFO") != 0)) {
             this->unkC0->LoadInt("pool", (int *) &this->unkBC, 0);
-            this->unkCC = CreateDescriptor(var_r28_49, &this->unkC8);
+            this->unkCC = (const char *) (CreateDescriptor(var_r28_49, &this->unkC8));
         }
         if (((u32) (OSGetTick() - temp_r30_30) <= temp_r31_34) || ((u8) *MKChunkSceneManager::bChunksUseHeaps == 0)) {
         case 1:
@@ -85,7 +85,7 @@ loop_1:
 loop_18:
                 temp_r4_114 = *(this->unkC + ((this->unk14 * 8) + 4));
                 if (temp_r4_114 != NULL) {
-                    **(this->unkC + (this->unk14 * 8)) = CreateProp(temp_r4_114);
+                    **(this->unkC + (this->unk14 * 8)) = (const char *) (CreateProp(temp_r4_114));
                     *(this->unkC + (this->unk14 * 8)) = 0;
                     *(this->unkC + ((this->unk14 * 8) + 4)) = 0;
                     temp_r3_135 = this->unk14 + 1;
@@ -159,7 +159,7 @@ loop_37:
 loop_44:
                         temp_r4_300 = *(this->unkC + ((this->unk14 * 8) + 4));
                         if (temp_r4_300 != NULL) {
-                            **(this->unkC + (this->unk14 * 8)) = CreateProp(temp_r4_300);
+                            **(this->unkC + (this->unk14 * 8)) = (const char *) (CreateProp(temp_r4_300));
                             *(this->unkC + (this->unk14 * 8)) = 0;
                             *(this->unkC + ((this->unk14 * 8) + 4)) = 0;
                             temp_r3_321 = this->unk14 + 1;
@@ -208,23 +208,21 @@ void MKSceneManager::BeginChunkLoad(MKIni *arg0) {
     this->unkD0 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void MKSceneManager::CreatePropDeferred(const char *arg0, MKProp **arg1) {
     u32 temp_r0_430;
     u32 temp_r4_427;
     u32 temp_r4_429;
 
     *arg1 = NULL;
-    M2C_FIELD((this->unkC + (this->unk10 * 8)), s8 **, 4) = arg0;
-    *(this->unkC + (this->unk10 * 8)) = arg1;
+    M2C_FIELD((this->unkC + (this->unk10 * 8)), s8 **, 4) = (signed char *) (arg0);
+    *(this->unkC + (this->unk10 * 8)) = (signed char *) (arg1);
     temp_r4_427 = this->unk10 + 1;
     temp_r4_429 = temp_r4_427 >> 0x1FU;
     temp_r0_430 = (temp_r4_427 << 0x19) - temp_r4_429;
     this->unk10 = ((temp_r0_430 << 7) | (temp_r0_430 >> 0x19U)) + temp_r4_429;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'MKSceneManager::CreateProp(const char *)' redeclared
+#if 0 // DRAFT: identifier 'MKSceneManager::CreateProp(const char *)' redeclared was declared as: 'MKProp * (const char *)' now declared as: 'void * (const char *)'
 void *MKSceneManager::CreateProp(const char *arg0) {
     MKPropCreationTable *sp8;
     MKPropCreationTable *temp_r31_450;
@@ -237,11 +235,11 @@ void *MKSceneManager::CreateProp(const char *arg0) {
     M2C_FIELD(M2C_FIELD(temp_r3_453, void **, 0x44), M2C_UNK (**)(), 0xC)();
     M2C_FIELD(M2C_FIELD(temp_r3_453, void **, 0x44), M2C_UNK (**)(void *), 0x14)(temp_r3_453);
     AddProp(temp_r3_453);
-    return temp_r3_453;
+    return (MKProp *) (temp_r3_453);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 MKPropCreationTable *MKSceneManager::CreateDescriptor(const char *arg0, MKPropCreationTable **arg1) {
     MKIniLine *sp4C;
     s8 *spC;
@@ -276,14 +274,14 @@ MKPropCreationTable *MKSceneManager::CreateDescriptor(const char *arg0, MKPropCr
     sp4C = var_r22_494;
     var_r26_514 = 1;
     var_r24_515 = 4;
-    spC = arg0;
+    spC = (signed char *) (arg0);
     sp8 = var_r22_494->GetSectionName();
 loop_6:
-    temp_r3_541 = temp_r30_491->GotoLine(sp8, "alias");
+    temp_r3_541 = (const char *) (temp_r30_491->GotoLine(sp8, "alias"));
     if (temp_r3_541 != NULL) {
         temp_r3_541->AsString(0, &sp8);
         var_r26_514 += 1;
-        *(&sp4C + var_r24_515) = temp_r30_491->GotoLine(sp8, NULL);
+        *(&sp4C + var_r24_515) = (const char *) (temp_r30_491->GotoLine(sp8, NULL));
         *(&spC + var_r24_515) = sp8;
         var_r24_515 += 4;
         goto loop_6;
@@ -292,7 +290,7 @@ loop_6:
     var_r24_550 = 0;
 loop_9:
     if ((var_r20_549 < var_r26_514) && (var_r29_489 == NULL)) {
-        key_366 = *(&spC + var_r24_550);
+        key_366 = (long) (*(&spC + var_r24_550));
         var_r29_489 = Util_BinarySearch(&key_366, this->unk1C, this->unk20, 0xC, (s32 (*)(void *, void *)) ComparePropCreatorFunc);
         var_r24_550 += 4;
         var_r20_549 += 1;
@@ -321,7 +319,7 @@ loop_9:
             var_r21_586->unk0 = var_r28_495;
         } else {
             if (MKHeap::Current() != NULL) {
-                var_r24_627 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0);
+                var_r24_627 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0));
             } else {
                 var_r24_627 = malloc(0x20);
             }
@@ -350,11 +348,10 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKSceneManager::PropResolver_Deinit() {
     s8 **temp_r31_690;
 
-    temp_r31_690 = *MKSceneManager::pPropMapping;
+    temp_r31_690 = (signed char **) (*MKSceneManager::pPropMapping);
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_690, NULL, 0);
     } else {
@@ -363,9 +360,8 @@ void MKSceneManager::PropResolver_Deinit() {
     *MKSceneManager::pPropMapping = NULL;
     *MKSceneManager::nmbrOfMappings = 0;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'MKSceneManager::PropResolver_Resolve(int)' redeclared
+#if 0 // DRAFT: identifier 'MKSceneManager::PropResolver_Resolve(int)' redeclared was declared as: 'MKProp * (int)' now declared as: 'void * (int)'
 void *MKSceneManager::PropResolver_Resolve(int arg0) {
     s32 temp_cr0_gt_736;
     s32 temp_r0_765;
@@ -400,7 +396,7 @@ loop_5:
                 return NULL;
             }
         }
-        return temp_r4_759;
+        return (MKProp *) (temp_r4_759);
     }
     temp_r4_735 = var_r4_732 + 1;
     temp_cr0_gt_736 = var_r6_731 > 0x400;
@@ -492,19 +488,19 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: pointer/array required
 void MKSceneManager::PropResolver_Init() {
     s32 var_ctr_914;
     s32 var_r4_910;
     s8 *var_r3_901;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_901 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA000, NULL, 0);
+        var_r3_901 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA000, NULL, 0));
     } else {
         var_r3_901 = malloc(0xA000);
     }
     var_r4_910 = 0;
-    *MKSceneManager::pPropMapping = var_r3_901;
+    *MKSceneManager::pPropMapping = (unsigned char) (var_r3_901);
     *MKSceneManager::nmbrOfMappings = 0;
     var_ctr_914 = 0x400;
     do {
@@ -549,7 +545,7 @@ loop_2:
     }
     qsort(0xC, ComparePropCreatorFunc);
     if (MKHeap::Current() != NULL) {
-        var_r3_1008 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
+        var_r3_1008 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0));
     } else {
         var_r3_1008 = malloc(0x400);
     }
@@ -560,7 +556,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const void, const void)' does not match
+#if 0 // DRAFT: function call 'stricmp(const void, const void)' does not match 'stricmp(signed char *, long *)'
 void ComparePropCreatorFunc(const void *arg0, const void *arg1) {
     stricmp(*arg0, *arg1);
 }

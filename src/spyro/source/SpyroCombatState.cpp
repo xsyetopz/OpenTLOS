@@ -168,7 +168,7 @@ void SpyroCombatState::CometDashExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::CometDashEnter() {
     f64 spA0;
     f64 sp98;
@@ -292,7 +292,7 @@ void SpyroCombatState::CometDashEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroCombatState::ChargeKnockdownTransition() {
     s8 sp2D;
     s8 sp2C;
@@ -391,7 +391,7 @@ void SpyroCombatState::ChargeKnockdownExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::ChargeKnockdownEnter() {
     MeleeAttackHitMsg sp188;
     u8 sp180;
@@ -546,7 +546,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroCombatState::KnockupTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -637,7 +637,7 @@ void SpyroCombatState::KnockupExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::KnockupEnter() {
     f64 sp20;
     f64 sp18;
@@ -780,7 +780,7 @@ void SpyroCombatState::CombatUpdate() {
     CombatTransition();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::CombatExit() {
     Spyro *temp_r4_1269;
 
@@ -932,7 +932,7 @@ s32 SpyroCombatState::Transition() {
     return var_r31_1578;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::Update() {
     f64 sp78;
     f64 sp70;
@@ -1089,7 +1089,7 @@ void SpyroCombatState::Exit() {
     this->unk14.Exit(this);
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'CombatStateData::SetLastCombatEnemy(MKProp *)' 'CombatStateData::SetLastCombatEnemy(Targetable *)'
 void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
     s32 sp10;
     s32 spC;
@@ -1323,7 +1323,7 @@ void CombatStateData::SetLastCombatEnemy(Targetable *arg0) {
     this->unk20.Set(arg0);
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)' Too many errors printed, aborting program
 void CombatStateData::SetLastCombatEnemy(MKProp *arg0) {
     if ((arg0 == NULL) || !(M2C_FIELD(arg0->unk0, s32 *, 0xC) & 0x208)) {
         this->unk20.Set(NULL);
@@ -1349,7 +1349,7 @@ void CombatStateData::SetDefaults() {
     this->unk44 = 2;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void CombatStateData::Init() {
     SetDefaults();
     this->unk51 = 1;

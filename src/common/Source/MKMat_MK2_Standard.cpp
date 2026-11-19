@@ -22,7 +22,7 @@
 f64 fmod(void *, f32, f64, f64, f32, f32, f32, f64, f64, f32); /* extern */
 MKMaterial *malloc(M2C_UNK);                        /* extern */
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'gbInitialiseMK2StandardGlow' redeclared
+#if 0 // DRAFT: identifier 'gbInitialiseMK2StandardGlow' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 gbInitialiseMK2StandardGlow;
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialTypeInfo'
@@ -274,7 +274,7 @@ void Updater_SinScroll(MKMaterial *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
 void Updater_Scroll(MKMaterial *arg0, void *arg1) {
     f32 temp_f0_485;
     f32 temp_f1_474;
@@ -330,7 +330,7 @@ void MKMat_MK2_Standard_DESTROY(MKMaterial *arg0) {
     ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     MKHeap *temp_r3_608;
     MKHeap *temp_ret_608;
@@ -349,7 +349,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     void *temp_r3_849;
 
     if (MKHeap::Current() != NULL) {
-        var_r30_590 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x40, NULL, 0);
+        var_r30_590 = (MKMaterial *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x40, NULL, 0));
     } else {
         var_r30_590 = malloc(0x40);
     }
@@ -357,16 +357,16 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     var_r30_590->unk24 = arg0;
     temp_r29_602 = &arg0->unkE8;
     if (((s8) (u8) arg0->unkE8.unk0 != 0) && ((temp_ret_608 = temp_r29_602->Find((s8 *) var_r4_600), temp_f1_608 = M2C_BITWISE(f32, temp_ret_608), temp_r3_608 = temp_ret_608, var_r4_600 = (u32) (u64) temp_ret_608, ((temp_r3_608 == NULL) == 0)) || (temp_ret_619 = MKArchive_Exists(Str_Printf("%s%s", temp_r29_602, ".tex", temp_f1_608), NULL), var_r4_600 = (u32) (u64) temp_ret_619, ((temp_ret_619 == 0) == 0)))) {
-        var_r30_590->unk38 = temp_r29_602->Create((s8 *) var_r4_600, 0.0f);
+        var_r30_590->unk38 = (const char *) (temp_r29_602->Create((s8 *) var_r4_600, 0.0f));
     } else {
-        var_r30_590->unk38 = ((Texture *) ("MKWhite"))->Create((s8 *) var_r4_600, 0.0f);
+        var_r30_590->unk38 = (const char *) (((Texture *) ("MKWhite"))->Create((s8 *) var_r4_600, 0.0f));
     }
     if ((s8) (u8) arg0->unkE8.unk20 != 0) {
         var_r30_590->unk3C = MKMaterial_Create(&arg0->unkE8.unk20);
     }
     if ((arg0->unkE8.unk58 != 0.0f) || (arg0->unkE8.unk5C != 0.0f)) {
         if (MKHeap::Current() != NULL) {
-            var_r5_659 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
+            var_r5_659 = (MKMaterial *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0));
         } else {
             var_r5_659 = malloc(0xC);
         }

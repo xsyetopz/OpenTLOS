@@ -172,7 +172,7 @@ loop_8:
                 var_r3_252 += 0x14;
                 goto loop_8;
             }
-            temp_r5_266 = temp_r29_114 + ((var_r4_251 - 1) * 0x14);
+            temp_r5_266 = (void *) (temp_r29_114 + ((var_r4_251 - 1) * 0x14));
             temp_f4_267 = M2C_FIELD(temp_r5_266, f32 *, 0);
             temp_f3_272 = (temp_f0_253 - temp_f4_267) / (temp_f2_259 - temp_f4_267);
             var_r28_139->unk1C = (temp_f3_272 * M2C_FIELD(temp_r5_266, f32 *, 0xC)) + M2C_FIELD(temp_r5_266, f32 *, 4);

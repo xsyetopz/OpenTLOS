@@ -82,7 +82,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void FuryFXElectricity2::DestroyAllLightningCages() {
     f64 sp98;
     f64 sp90;
@@ -279,7 +279,7 @@ void FuryFXElectricity2::SpawnLightningCage(Targetable *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXElectricity2::UpdateLightningCages() {
     BreathHitMessage sp188;
     f64 sp180;
@@ -626,7 +626,7 @@ void FuryFXElectricity2::SetDefaults() {
     this->unk94 = 0.0f;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'void ****' and 'long *'
 void FuryFXElectricity2::Deinit() {
     ManagedLight *temp_r4_1025;
     u32 temp_r0_993;
@@ -1093,7 +1093,6 @@ void *FuryFXElectricity2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXElectricity2::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1130,15 +1129,13 @@ f32 FuryFXElectricity2::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkA8 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_781, lit_782);
+    this->unkA8 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_781, lit_782));
     temp_r4_1760 = this->unkA8;
     if (temp_r4_1760 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1760, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXElectricity2::Init() {
     s32 var_ctr_1816;
     void ****temp_r3_1818;
@@ -1153,7 +1150,7 @@ void FuryFXElectricity2::Init() {
     this->unkA8 = NULL;
     this->unkAC = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
     if (MKHeap::Current() != NULL) {
-        var_r3_1803 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF8, NULL, 0);
+        var_r3_1803 = (void ****) (((MKHeap *) (MKHeap::Current()))->Alloc(0xF8, NULL, 0));
     } else {
         var_r3_1803 = malloc(0xF8);
     }
@@ -1174,7 +1171,6 @@ void FuryFXElectricity2::Init() {
     M2C_FIELD(temp_r3_1824, void *****, 4) = NULL;
     this->unk128 = -1;
 }
-#endif
 
 void FuryFXElectricity2_cpp::__sinit() {
     f32 temp_f0_1873;

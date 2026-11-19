@@ -289,7 +289,7 @@ u8 EnemyGoal_FlyingAttackMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void EnemyGoal_FlyingAttackMode::Activate() {
     f64 sp50;
     f64 sp48;
@@ -336,7 +336,7 @@ void EnemyGoal_FlyingAttackMode::Activate() {
             goto block_5;
         }
         temp_r3_460 = this->unkC;
-        temp_r29_466 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_r29_466 = (Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0);
         temp_f1_468 = M2C_FIELD(M2C_FIELD(temp_r3_460, void **, 0x44), f64 (**)(Targetable *, s32), 0x100)(temp_r3_460, M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_469 = this->unkC;
         sp18 = *(temp_r3_469 + 0xD0) * temp_f1_468;

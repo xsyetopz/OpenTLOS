@@ -70,7 +70,7 @@ void WaterDripPS::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to 'double'
 void WaterDripPS::Draw() {
     f64 sp288;                                      /* compiler-managed */
     f64 sp280;
@@ -545,7 +545,7 @@ loop_48:
                     var_f0_736 = 0.0f;
                 }
                 M2C_FIELD(temp_r4_638, f32 *, 0x40) = var_f0_736;
-                temp_r4_755 = ((u8 *) this->unk4C) + (spC * 0x58);
+                temp_r4_755 = (MKVector3 *) (((u8 *) this->unk4C) + (spC * 0x58));
                 temp_f1_756 = M2C_FIELD(temp_r4_755, f32 *, 0x40);
                 if (temp_f1_756 == 1.0f) {
                     ((KDPathSegment *) (M2C_FIELD(temp_r4_755, KDPathSegment **, 0x38)))->GetPositionAlongPath(temp_f1_756, *temp_r4_755);
@@ -857,7 +857,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
         spD0 = temp_f0_1058 + (f32) sp1B0;
         sp1B8 = temp_f1_1138;
         sp1C0 = (f64) spD0;
-        var_r3_1052 = MKCollision_RayCollide(*((MKVector3 *) &sp1D8), *((MKVector3 *) &sp1B8), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0);
+        var_r3_1052 = (void *) (MKCollision_RayCollide(*((MKVector3 *) &sp1D8), *((MKVector3 *) &sp1B8), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0));
         if ((u8) var_r3_1052 != 0) {
             if ((sp278 != 0) && (sp270 != NULL) && (var_r0_1161 = M2C_FIELD(sp270, u32 *, 8), ((var_r0_1161 == 0U) == 0))) {
 
@@ -1105,7 +1105,7 @@ loop_1:
         M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), f32 *, 0x4C) = 0.0f;
         M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), u8 *, 0x50) = arg4;
         if (arg5 != NULL) {
-            temp_r4_1703 = ((u8 *) this->unk4C) + var_r3_1644;
+            temp_r4_1703 = (MKVector3 *) (((u8 *) this->unk4C) + var_r3_1644);
             ((KDPathSegment *) (M2C_FIELD(temp_r4_1703, KDPathSegment **, 0x38)))->GetPositionAlongPath(M2C_FIELD(temp_r4_1703, f32 *, 0x40), *temp_r4_1703);
             arg5->unk10 = (MKHeap *) this;
             arg5->unk14 = var_r31_1643;

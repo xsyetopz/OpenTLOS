@@ -47,8 +47,8 @@
 extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static s8 *pLoopingSoundEvents[4] = { "soundLoop01", "soundLoop02", "soundLoop03", NULL };
+#if 0 // DRAFT: expression syntax error
+static s8 *pLoopingSoundEvents[4] = (signed char *) ({ "soundLoop01", "soundLoop02", "soundLoop03", NULL });
 #endif
 
 #if 0 // DRAFT: ')' expected
@@ -82,7 +82,7 @@ void GameProp::Message(MKMessage *arg0) {
             if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC8) != 0U) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC8), 1.0f, 0.0f, 0, -1);
             } else {
-                temp_r3_124 = this->unk80->GetAnim("");
+                temp_r3_124 = (MKAnim *) (this->unk80->GetAnim(""));
                 if (temp_r3_124 != NULL) {
                     this->unk80->SetAnim(temp_r3_124, 1.0f, 0.0f, 0, -1);
                 }
@@ -357,7 +357,7 @@ void GameProp::Init() {
     this->unkC0 = NULL;
 }
 
-#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 void GamePropDescriptor::LoadDone() {
     s8 *temp_r3_752;
     s8 *temp_r4_755;
@@ -384,7 +384,7 @@ void GamePropDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GamePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_794;
 

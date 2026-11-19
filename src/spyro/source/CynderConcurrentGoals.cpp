@@ -149,7 +149,7 @@ u8 CynderConcurrentGoal_Think::Update() {
     return (u8) this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void CynderConcurrentGoal_Think::Arbitrate() {
     Matrix sp50;
     EnemyDamageFeedback sp10;

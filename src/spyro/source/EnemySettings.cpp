@@ -156,7 +156,7 @@ loop_5:
     goto loop_5;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'Level *' and 'long'
 void EnemySettings_ParseIniFile(const char *arg0) {
     MKIni sp8;
     Level *var_r30_324;
@@ -201,7 +201,7 @@ void EnemySettings_DeinitModule() {
     pLevelSettings = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void EnemySettings_InitModule() {
     s8 sp8;
     M2C_UNK sp4;
@@ -254,7 +254,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'DataMap_GetName(signed char[10], unsigned long)' does not
+#if 0 // DRAFT: function call 'DataMap_GetName(signed char[10], unsigned long)' does not match 'DataMap_GetName(const DataMap *, unsigned int)'
 void EnemySettings::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_508;
     s32 var_r31_513;

@@ -36,9 +36,7 @@ static struct _struct_rkv_0x74 rkv[8];
 #endif
 static M2C_UNK asyncReg;
 static s8 *key_536[6];
-#if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to
-static s8 *gpTempMemFilePatterns = "*.gsb;*.qsm";
-#endif
+static s8 *gpTempMemFilePatterns = (signed char *) ("*.gsb;*.qsm");
 
 #if 0 // DRAFT: undefined identifier 'FindBestEntry'
 u32 MKArchive_GetOffset(const char *arg0) {
@@ -113,7 +111,7 @@ s32 MKArchive_Open(const char *arg0, int *arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'FileOrderSortCompare'
 void MKArchive_OutputFileOrder() {
     f32 var_f1_239;
     s16 temp_r5_252;
@@ -139,7 +137,7 @@ void MKArchive_OutputFileOrder() {
 
     temp_r26_140 = pMainRkv->unk64 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_149 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_140, NULL, 0, 0U);
+        var_r3_149 = (signed char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_140, NULL, 0, 0U));
     } else {
         var_r3_149 = malloc(temp_r26_140);
     }
@@ -151,7 +149,7 @@ loop_5:
         var_r7_156 += 1;
         temp_r0_163 = &pMainRkv->unk68[var_r5_158];
         var_r5_158 += 0x18;
-        var_r3_149[var_r3_157] = temp_r0_163;
+        var_r3_149[var_r3_157] = (signed char) (temp_r0_163);
         var_r3_157 += 4;
         goto loop_5;
     }
@@ -163,7 +161,7 @@ loop_16:
         if ((u8) M2C_FIELD(*(var_r3_149 + (var_r26_177 * 4)), u8 *, 0x12) != 0) {
             var_r27_186 = (s8 *)1U;
 loop_10:
-            temp_r0_191 = var_r26_177 + var_r27_186;
+            temp_r0_191 = (unsigned long) (var_r26_177 + var_r27_186);
             if ((temp_r0_191 < (u32) temp_r5_214) && ((u8) M2C_FIELD(*(var_r3_149 + (temp_r0_191 * 4)), u8 *, 0x12) != 0)) {
                 var_r27_186 += 1;
                 goto loop_10;
@@ -178,7 +176,7 @@ loop_10:
         goto loop_16;
     }
     if (MKHeap::Current() != NULL) {
-        var_r26_226 = ((MKHeap *) (MKHeap::Main()))->TAlloc(0x400, NULL, 0, 0U);
+        var_r26_226 = (signed char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(0x400, NULL, 0, 0U));
     } else {
         var_r26_226 = malloc(0x400);
     }
@@ -193,7 +191,7 @@ loop_10:
         var_r26_245 = 0;
 loop_29:
         if (var_r31_242 < (u32) pMainRkv->unk64) {
-            temp_r4_248 = var_r3_149[var_r26_245];
+            temp_r4_248 = (void *) (var_r3_149[var_r26_245]);
             if ((s32) M2C_FIELD(temp_r4_248, s32 *, 8) != -1) {
                 temp_r5_252 = M2C_FIELD(temp_r4_248, s16 *, 0x10);
                 if (temp_r5_252 != 0) {
@@ -229,7 +227,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const void' to
+#if 0 // DRAFT: illegal implicit conversion from 'const void' to 'void *'
 s32 LanguageSortCompare(const void *arg0, const void *arg1) {
     s32 temp_r3_336;
     void *temp_r4_333;
@@ -245,7 +243,7 @@ s32 LanguageSortCompare(const void *arg0, const void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to
+#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 FileOrderSortCompare(const void *arg0, const void *arg1) {
     return M2C_FIELD(*arg0, s16 *, 0x10) - M2C_FIELD(*arg1, s16 *, 0x10);
 }
@@ -283,7 +281,7 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
     }
     if (((s8 *(*)(s8 *, s32 *, void *, s32 *)) pLoadInterceptHandler) != NULL) {
         sp8 = 0;
-        temp_r3_420 = pLoadInterceptHandler(arg0, arg1, var_r28_396, &sp8);
+        temp_r3_420 = (signed char *) (pLoadInterceptHandler(arg0, arg1, var_r28_396, &sp8));
         if (temp_r3_420 != NULL) {
             return temp_r3_420;
         }
@@ -296,12 +294,12 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
             var_r29_397 = (temp_r3_400->unk4 + 0x20) & 0xFFFFFFE0;
             if (Util_WildcardPatternMatch(temp_r3_400->unk0, gpTempMemFilePatterns) != 0) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_450 = ((MKHeap *) (MKHeap::Main()))->TAlloc(var_r29_397, NULL, 0, 0U);
+                    var_r3_450 = (signed char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(var_r29_397, NULL, 0, 0U));
                 } else {
                     var_r3_450 = malloc(var_r29_397);
                 }
             } else if (MKHeap::Current() != NULL) {
-                var_r3_450 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_397, NULL, 0);
+                var_r3_450 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_397, NULL, 0));
             } else {
                 var_r3_450 = malloc(var_r29_397);
             }
@@ -321,7 +319,7 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Upper(signed char *)' does not match
+#if 0 // DRAFT: function call 'Str_Upper(signed char *)' does not match 'Str_Upper(const char *)'
 void MKArchive_SetOrder(RkvFileEntry *arg0) {
     RkvFileEntry *temp_r3_564;
     RkvFileEntry *temp_r3_612;
@@ -348,7 +346,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r27_552 = 2;
                 do {
                     Translation_GetLanguageName((TranslationLanguage) var_r27_552);
-                    temp_r3_564 = pMainRkv->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
+                    temp_r3_564 = (const char *) (pMainRkv->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */))));
                     if ((temp_r3_564 != NULL) && ((s16) temp_r3_564->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_572 = fileOrderId;
@@ -365,7 +363,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r28_598 = 2;
                 do {
                     Translation_GetLanguageCode((TranslationLanguage) var_r28_598);
-                    temp_r3_612 = pMainRkv->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
+                    temp_r3_612 = (const char *) (pMainRkv->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3)));
                     if ((temp_r3_612 != NULL) && ((s16) temp_r3_612->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_620 = fileOrderId;
@@ -409,7 +407,7 @@ s8 *(*MKArchive_SetLoadInterceptHandler(void *(*arg0)(const char *, int *, void 
 }
 #endif
 
-#if 0 // DRAFT: function call 'File_Open(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'File_Open(signed char *, int)' does not match 'File_Open(const char *, int)'
 s32 RkvTOC::GetAsyncHandle() {
     if ((u8) this->unk70 == 0) {
         this->unk6C = File_Open(&this->unk0, 1);
@@ -419,7 +417,7 @@ s32 RkvTOC::GetAsyncHandle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: undefined identifier 'EntryCompare'
 RkvFileEntry *RkvTOC::GetEntry(const char *arg0) {
     RkvFileEntry *var_r3_725;
     s8 *temp_r0_727;
@@ -427,7 +425,7 @@ RkvFileEntry *RkvTOC::GetEntry(const char *arg0) {
     var_r3_725 = NULL;
     temp_r0_727 = this->unk68;
     if (temp_r0_727 != NULL) {
-        *key_536 = arg0;
+        *key_536 = (signed char *) (arg0);
         var_r3_725 = Util_BinarySearch(key_536, temp_r0_727, this->unk64, 0x18, (s32 (*)(void *, void *)) EntryCompare);
         if ((var_r3_725 != NULL) && ((s32) var_r3_725->unk8 < 0)) {
             var_r3_725 = NULL;
@@ -480,7 +478,7 @@ s32 MKArchive_GetAsyncRegistrationStatus() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: function call 'FlipEndian(unsigned long *)' does not match 'FlipEndian(float *)' 'FlipEndian(unsigned int *)' 'FlipEndian(int *)' 'FlipEndian(unsigned short *)'
 void RkvTOC::AsyncRegUpdate() {
     u32 *sp8;
     s32 temp_r0_1093;
@@ -500,7 +498,7 @@ void RkvTOC::AsyncRegUpdate() {
     s8 *var_r3_1030;
     s8 *var_r3_993;
 
-    sp8 = &asyncReg + 0xC;
+    sp8 = (unsigned long *) (&asyncReg + 0xC);
 loop_1:
     switch (M2C_FIELD(&asyncReg, u32 *, 0x80)) {
         return;
@@ -553,7 +551,7 @@ block_34:
         if (File_IsBusy(this->unk60) == 0) {
             temp_r16_984 = M2C_FIELD(&asyncReg, s32 *, 0x18);
             if (MKHeap::Current() != NULL) {
-                var_r3_993 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_984, NULL, 0, 0U);
+                var_r3_993 = (signed char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_984, NULL, 0, 0U));
             } else {
                 var_r3_993 = malloc(temp_r16_984);
             }
@@ -569,12 +567,12 @@ block_34:
             temp_r16_1020 = M2C_FIELD(&asyncReg, u32 *, 8) + (this->unk64 * 0x18);
             if ((u8) M2C_FIELD(&asyncReg, u8 *, 0x90) != 0) {
                 if (MKHeap::Current() != NULL) {
-                    var_r3_1030 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_1020, NULL, 0, 0U);
+                    var_r3_1030 = (signed char *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_1020, NULL, 0, 0U));
                 } else {
                     var_r3_1030 = malloc(temp_r16_1020);
                 }
             } else if (MKHeap::Current() != NULL) {
-                var_r3_1030 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r16_1020, NULL, 0);
+                var_r3_1030 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r16_1020, NULL, 0));
             } else {
                 var_r3_1030 = malloc(temp_r16_1020);
             }
@@ -595,7 +593,7 @@ loop_27:
                 temp_r4_1092 = var_r30_1067 + 0xC;
                 temp_r0_1093 = var_r30_1067 + 0x10;
                 temp_r11_1096 = var_r31_1066 + 0x14;
-                temp_r6_1090[var_r31_1066] = &temp_r6_1090[(this->unk64 * 0x18) + M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067]];
+                temp_r6_1090[var_r31_1066] = (signed char) (&temp_r6_1090[(this->unk64 * 0x18) + M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067]]);
                 temp_r3_1098 = var_r31_1066 + 8;
                 temp_r9_1099 = var_r31_1066 + 0xC;
                 var_r16_1065 += 1;
@@ -626,7 +624,7 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 s32 RkvTOC::Init(const char *arg0, bool arg1, unsigned int arg2, int arg3, const char *arg4) {
     s32 var_r30_1177;
     s8 *var_r3_1182;
@@ -634,7 +632,7 @@ s32 RkvTOC::Init(const char *arg0, bool arg1, unsigned int arg2, int arg3, const
     var_r30_1177 = arg3;
     strcpy(&this->unk0, arg0);
     if (arg4 != NULL) {
-        var_r3_1182 = arg4;
+        var_r3_1182 = (signed char *) (arg4);
     } else {
         var_r3_1182 = Str_GetFilenameFromPath(arg0);
     }
@@ -660,7 +658,7 @@ s32 RkvTOC::Init(const char *arg0, bool arg1, unsigned int arg2, int arg3, const
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_CompareIgnoreCase(const void, const void)' does not
+#if 0 // DRAFT: function call 'Str_CompareIgnoreCase(const void, const void)' does not match 'Str_CompareIgnoreCase(const char *, const char *)'
 void EntryCompare(const void *arg0, const void *arg1) {
     Str_CompareIgnoreCase(*arg0, *arg1);
 }
@@ -670,7 +668,7 @@ void MKArchive_Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'rkv'
+#if 0 // DRAFT: function call 'strcmpi(RkvTOC *, const char *)' does not match 'strcmpi(void *, signed char *)'
 s32 MKArchive_DeregisterArchive(const char *arg0) {
     RkvTOC *temp_r29_1272;
     s32 temp_r5_1290;
@@ -683,7 +681,7 @@ loop_8:
     if (var_r28_1268 >= (s32) nmbrRkvs) {
         return 0;
     }
-    temp_r29_1272 = rkv + var_r31_1269;
+    temp_r29_1272 = (RkvTOC *) (rkv + var_r31_1269);
     if (strcmpi(temp_r29_1272 + 0x40, arg0) == 0) {
         if (temp_r29_1272 == (RkvTOC *) pMainRkv) {
             pMainRkv = NULL;
@@ -725,7 +723,7 @@ s32 MKArchive_RegisterArchive(const char *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'rkv'
+#if 0 // DRAFT: function call 'strcmpi(signed char *)' does not match 'strcmpi(void *, signed char *)'
 RkvFileEntry *FindBestEntry(const char *arg0, int *arg1) {
     RkvFileEntry *temp_r3_1410;
     RkvFileEntry *var_r30_1391;

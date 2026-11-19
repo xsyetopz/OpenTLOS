@@ -177,7 +177,7 @@ void ****SpyroTargetList::UpdateTargetList() {
     temp_r6_115 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp130 = M2C_FIELD(temp_r6_115, f64 *, 0x20);
     sp138 = M2C_FIELD(temp_r6_115, f64 *, 0x28);
-    temp_r29_126 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetTargets(&sp140, 0x10, this->unk10, ((u8 *) temp_r6_115) + 0x30, this->unkC, 1U, (MKVector3 *) &sp130, 3.1415927f);
+    temp_r29_126 = (MKVector3 *) (((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetTargets(&sp140, 0x10, this->unk10, ((u8 *) temp_r6_115) + 0x30, this->unkC, 1U, (MKVector3 *) &sp130, 3.1415927f));
     var_r27_127 = NULL;
 loop_2:
     if ((void ***) *this->unk8 != NULL) {
@@ -190,7 +190,7 @@ loop_2:
 loop_55:
     if (var_r25_142 < temp_r29_126) {
         var_r3_147 = 1;
-        temp_r24_148 = *(&sp140 + var_r22_143);
+        temp_r24_148 = (void **) (*(&sp140 + var_r22_143));
         if ((u8) this->unk14 != 0) {
             temp_r21_154 = M2C_FIELD(&gb, void **, 0x3B8) + 0xB0;
             temp_f1_157 = M2C_FIELD(*temp_r24_148, f64 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_FIELD(&gb, void **, 0x3B8));
@@ -371,7 +371,7 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void SpyroTargetList::ClearCurrentTarget() {
     ((TargetContext *) this)->Set(NULL);
 }
@@ -399,7 +399,7 @@ s32 SpyroTargetList::SelectTarget(bool arg0) {
     return ((TargetContext *) this)->Get() != NULL;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void SpyroTargetList::SetDefaults() {
     ((TargetContext *) this)->Set(NULL);
 loop_2:
@@ -410,7 +410,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void SpyroTargetList::Deinit() {
     u32 temp_r0_838;
     void ****var_r31_829;
@@ -453,7 +453,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
     s32 var_ctr_908;
     void ****temp_r3_910;
@@ -465,7 +464,7 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
     this->unk10 = arg1;
     this->unk14 = arg2;
     if (MKHeap::Current() != NULL) {
-        var_r3_895 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x88, NULL, 0);
+        var_r3_895 = (void ****) (((MKHeap *) (MKHeap::Current()))->Alloc(0x88, NULL, 0));
     } else {
         var_r3_895 = malloc(0x88);
     }
@@ -486,7 +485,6 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
     M2C_FIELD(temp_r4_916, void *****, 4) = NULL;
     SetDefaults();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroStuck::Update() {
@@ -623,7 +621,7 @@ void SpyroStuck::Init(MKProp *arg0) {
     this->unk14 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double *'
 void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
     f64 sp40;
     f64 sp38;
@@ -663,7 +661,7 @@ void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double *'
 void SpyroLighting::SetLight(MKVector3 arg0, float arg1) {
     f64 sp20;
     f64 sp18;
@@ -698,7 +696,7 @@ void SpyroLighting::Reset() {
     this->unk24 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
     f64 spD8;
     f64 spD0;

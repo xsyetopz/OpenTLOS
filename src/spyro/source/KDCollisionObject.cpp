@@ -18,7 +18,7 @@
 
 extern s8 gAssertBool;
 
-#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float,
+#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float, unsigned char *, float)' does not match 'Tools_PushOut(MKCollisionResult *, MKVector3 
 void KDCollisionObject::PushOutOfThings(MKVector3 arg0) {
     MKCollisionResult spB8;
     u8 sp98;
@@ -170,7 +170,7 @@ u8 KDCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
+#if 0 // DRAFT: undefined identifier 'NProjection'
 void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, KDContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
     f64 sp1F8;
     f64 sp1F0;
@@ -270,7 +270,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
     void *temp_r31_272;
 
     temp_r0_263 = M2C_FIELD(arg1, s32 *, 0xB8);
-    temp_r31_272 = arg1 + (((M2C_BITWISE(s32, arg1->unk0) - 1) * 0x58) + 8);
+    temp_r31_272 = (void *) (arg1 + (((M2C_BITWISE(s32, arg1->unk0) - 1) * 0x58) + 8));
     switch (temp_r0_263) {                          /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         temp_f0_286 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;

@@ -85,7 +85,7 @@ s32 Trap::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     return 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to 'double'
 s32 Trap::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp80;
     f64 sp78;
@@ -191,7 +191,6 @@ void Trap::Reset() {
     this->unkD8 = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrapSystem *' to
 f32 Trap::Resolve() {
     MKSceneManager *temp_r3_291;
     MKSceneManager *temp_r3_297;
@@ -199,7 +198,7 @@ f32 Trap::Resolve() {
     KDPropEx::Resolve();
     temp_r3_291 = this->unkD4;
     if (temp_r3_291 != NULL) {
-        this->unkD4 = checked_cast<TrapSystem *, MKProp>(temp_r3_291->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkD4 = (MKSceneManager *) (checked_cast<TrapSystem *, MKProp>(temp_r3_291->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
         temp_r3_297 = this->unkD4;
         if (temp_r3_297 != NULL) {
             ((TrapSystem *) temp_r3_297)->Add((MKProp *) this);
@@ -207,7 +206,6 @@ f32 Trap::Resolve() {
         }
     }
 }
-#endif
 
 s32 Trap::LoadDone() {
     GameProp::LoadDone();
@@ -216,7 +214,7 @@ s32 Trap::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Trap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_345;
 

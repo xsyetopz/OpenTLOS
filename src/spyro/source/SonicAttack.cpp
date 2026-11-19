@@ -45,12 +45,12 @@ M2C_UNK free(MKHeap *);                             /* extern */
 MKHeap *malloc(M2C_UNK);                            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern M2C_UNK gb;
 #endif
 extern MKPropDescriptor *pSonicAttackDescriptor;
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void SonicAttack::Deinit() {
     MKHeap *temp_r0_56;
     MKHeap *temp_r0_75;
@@ -111,7 +111,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 void SonicAttack::UpdateSonicRings() {
     u8 sp140;
     s32 sp13C;
@@ -367,16 +367,14 @@ void SonicAttack::Collided(MKCollisionResult &arg0) {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void SonicAttack::Draw() {
     GameGlobals::Capture *temp_r31_550;
 
-    temp_r31_550 = &gb + 0x24;
+    temp_r31_550 = (GameGlobals::Capture *) (&gb + 0x24);
     temp_r31_550->Get();
     DrawSonicRings();
     temp_r31_550->Release();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void *SonicAttack::Update() {
@@ -486,7 +484,6 @@ s32 SonicAttack::LoadDone() {
     MKMaterial_SetTextureMatrix(this->unk160, &sp30);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SonicAttack::Init() {
     MKHeap *temp_r3_805;
     MKHeap *temp_r3_811;
@@ -497,7 +494,7 @@ void SonicAttack::Init() {
     Projectile::Init();
     SetDefaults();
     if (MKHeap::Current() != NULL) {
-        var_r3_790 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1070, NULL, 0);
+        var_r3_790 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x1070, NULL, 0));
     } else {
         var_r3_790 = malloc(0x1070);
     }
@@ -517,7 +514,6 @@ void SonicAttack::Init() {
     this->unk15C = (MKHeap *) &temp_r3_811->unk4;
     temp_r3_811->unk4 = 0;
 }
-#endif
 
 void SonicAttack::Reset() {
     Projectile::Reset();

@@ -85,7 +85,7 @@ static DataMap dataMapEAPCondition[0x10] = {
 };
 #endif
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 void EAPCondition::LoadLine(MKIniLine *arg0) {
     s32 temp_r0_27;
 
@@ -97,7 +97,7 @@ void EAPCondition::LoadLine(MKIniLine *arg0) {
         return;
     }
     this->unkC = arg0->GetFloat(2);
-    this->unk0 = pCurrEnemyDescriptor->GetAttack(arg0->GetInt(1));
+    this->unk0 = (EnemyAttack *) (pCurrEnemyDescriptor->GetAttack(arg0->GetInt(1)));
 }
 #endif
 
@@ -108,7 +108,6 @@ void EAPCondition::Init() {
     this->unkC = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void EAPItem::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_83;
     s32 temp_r0_86;
@@ -129,7 +128,7 @@ void EAPItem::LoadLine(MKIniLine *arg0) {
         }
         this->unk4 = var_r3_97;
     }
-    this->unk0 = pCurrEnemyDescriptor->GetAttack(arg0->GetInt(0));
+    this->unk0 = (EnemyAttack *) (pCurrEnemyDescriptor->GetAttack(arg0->GetInt(0)));
     var_r29_112 = 0;
     var_r31_113 = 0;
 loop_7:
@@ -142,7 +141,6 @@ loop_7:
         goto loop_7;
     }
 }
-#endif
 
 void EAPItem::Deinit() {
     void *temp_r31_148;
@@ -414,7 +412,7 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'EAPItem *'
 s32 EAPManager::ReEvaluate(Enemy *arg0, AITargetData *arg1) {
     M2C_UNK sp8;
     EAPCondition *temp_r28_682;
@@ -437,7 +435,7 @@ loop_7:
             fCachedTargetAngle = 0.0f;
             return 1;
         }
-        temp_r28_682 = M2C_FIELD(temp_r3_707, s32 *, 4) + var_r30_678;
+        temp_r28_682 = (EAPCondition *) (M2C_FIELD(temp_r3_707, s32 *, 4) + var_r30_678);
         if ((temp_r28_682->unkC < 0.0f) && (EvaluateCondition(*this->unk4 + var_r31_677, temp_r28_682, arg0, arg1) != 0) && (temp_r28_682->unkC < 0.0f)) {
             return 0;
         }
@@ -450,7 +448,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'EAPItem *'
 s32 EAPManager::Evaluate(Enemy *arg0, AITargetData *arg1, int *arg2, int arg3) {
     AITargetData sp8;
     EAPCondition *temp_r25_797;
@@ -499,10 +497,10 @@ loop_23:
             var_r17_792 = 0;
 loop_17:
             temp_r4_849 = M2C_FIELD(this->unk4, s32 *, 0);
-            temp_r3_850 = var_r18_787 + temp_r4_849;
+            temp_r3_850 = (void *) (var_r18_787 + temp_r4_849);
             if (var_r26_791 < (s32) M2C_FIELD(temp_r3_850, s32 *, 8)) {
                 var_f30_796 = 0.0f;
-                temp_r25_797 = M2C_FIELD(temp_r3_850, s32 *, 4) + var_r17_792;
+                temp_r25_797 = (EAPCondition *) (M2C_FIELD(temp_r3_850, s32 *, 4) + var_r17_792);
                 if (((s32) temp_r25_797->unk8 != 1) && (!(M2C_FIELD(M2C_FIELD(temp_r3_850, void **, 0), s32 *, 0x38) & 0x1000) || !(M2C_FIELD(GameData::gameData, f32 *, 0xA0) <= 0.0f))) {
                     if (EvaluateCondition(temp_r4_849 + var_r18_787, temp_r25_797, arg0, arg1) != 0) {
                         var_f30_796 = temp_r25_797->unkC;

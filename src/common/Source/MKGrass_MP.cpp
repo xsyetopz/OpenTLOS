@@ -25,10 +25,10 @@ void *malloc(s32);                                  /* extern */
 void *realloc(void *, s32);                         /* extern */
 s32 strcmpi(s8 *, s32);                             /* extern */
 extern f32 MKGrass_cameraPos;
-#if 0 // DRAFT: identifier 'MKGrass_pushAwaySpheres' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_pushAwaySpheres' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 extern M2C_UNK MKGrass_pushAwaySpheres;
 #endif
-#if 0 // DRAFT: identifier 'MKGrass_windDirection' redeclared
+#if 0 // DRAFT: identifier 'MKGrass_windDirection' redeclared was declared as: 'MKHeap' now declared as: 'long'
 extern M2C_UNK MKGrass_windDirection;
 #endif
 extern s32 blobCount;
@@ -44,7 +44,7 @@ void MKGrass_FlushSubObject(MKGrassType *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Frustum *' to
+#if 0 // DRAFT: illegal operand
 void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAttachment *arg2, MKGrassType *arg3, GrassSubObject *arg4, bool arg5, int arg6, OmniLight **arg7) {
     f32 *sp238;
     MKVector3 *sp234;
@@ -219,7 +219,7 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
     void *temp_r5_628;
 
     temp_r27_82 = arg3->unk2C;
-    sp10 = &arg0;
+    sp10 = (Frustum *) (&arg0);
     if ((u8) M2C_FIELD(temp_r27_82, u8 *, 0x25) == 0) {
         var_r3_99 = 0;
         var_r4_101 = 0;
@@ -673,7 +673,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_GetEffectType(MKMaterial *, signed char **)'
+#if 0 // DRAFT: function call 'MKMaterial_GetEffectType(MKMaterial *, signed char **)' does not match 'MKMaterial_GetEffectType(MKMaterial *, const char **)'
 void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType *arg2) {
     f64 spC0;
     f64 spB8;

@@ -741,7 +741,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'GoopFXDescriptor::Goop *' and 'GoopFXDescriptor::Goop **'
 void GoopFXDescriptor::Deinit() {
     GoopFXDescriptor::Goop **var_r31_1207;
     GoopFXDescriptor::Goop **var_r3_1208;
@@ -789,7 +789,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
@@ -805,7 +805,6 @@ s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void GoopFXDescriptor::Init() {
     GoopFXDescriptor::Goop **temp_r3_1333;
     GoopFXDescriptor::Goop **temp_r4_1339;
@@ -816,7 +815,7 @@ void GoopFXDescriptor::Init() {
     ((FXBaseDescriptor *) this)->FXBaseDescriptor::Init();
     this->unkE0 = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_1318 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x5C38, NULL, 0);
+        var_r3_1318 = (GoopFXDescriptor::Goop **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x5C38, NULL, 0));
     } else {
         var_r3_1318 = malloc(0x5C38);
     }
@@ -839,4 +838,3 @@ void GoopFXDescriptor::Init() {
     this->unkE5 = 0;
     this->unkF0.SetIdentity();
 }
-#endif

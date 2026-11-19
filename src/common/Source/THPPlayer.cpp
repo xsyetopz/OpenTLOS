@@ -204,7 +204,7 @@ s32 THPPlayerSetVolume(s32 arg0, s32 arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal type
 void MixAudio(short *arg0, short *arg1, unsigned long arg2) {
     s16 *var_r28_115;
     s16 *var_r29_238;
@@ -233,7 +233,7 @@ void MixAudio(short *arg0, short *arg1, unsigned long arg2) {
             var_r28_115 = arg1;
 loop_5:
             if ((void *) M2C_FIELD(&ActivePlayer, void **, 0xFC) == NULL) {
-                temp_r3_121 = PopDecodedAudioBuffer(0);
+                temp_r3_121 = (void *) (PopDecodedAudioBuffer(0));
                 M2C_FIELD(&ActivePlayer, void **, 0xFC) = temp_r3_121;
                 if (temp_r3_121 == NULL) {
                     memcpy(var_r30_114, var_r28_115, var_r29_113 * 4);
@@ -302,7 +302,7 @@ block_9:
         var_r29_238 = arg0;
 loop_34:
         if ((void *) M2C_FIELD(&ActivePlayer, void **, 0xFC) == NULL) {
-            temp_r3_244 = PopDecodedAudioBuffer(0);
+            temp_r3_244 = (void *) (PopDecodedAudioBuffer(0));
             M2C_FIELD(&ActivePlayer, void **, 0xFC) = temp_r3_244;
             if (temp_r3_244 == NULL) {
                 memset(var_r29_238, 0, var_r30_237 * 4);
@@ -390,10 +390,10 @@ void THPAudioMixCallback() {
             CurAudioBuffer = LastAudioBuffer;
         }
         OldAIDCallback();
-        LastAudioBuffer = AIGetDMAStartAddr() + 0x80000000;
+        LastAudioBuffer = (short *) (AIGetDMAStartAddr() + 0x80000000);
     } else {
         OldAIDCallback();
-        CurAudioBuffer = AIGetDMAStartAddr() + 0x80000000;
+        CurAudioBuffer = (short *) (AIGetDMAStartAddr() + 0x80000000);
     }
     temp_r5_417 = SoundBufferIndex ^ 1;
     SoundBufferIndex = temp_r5_417;
@@ -874,7 +874,7 @@ s32 THPPlayerClose(void) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'DVDOpen(signed char *, DVDFileInfo *)' does not match
+#if 0 // DRAFT: function call 'DVDOpen(signed char *, DVDFileInfo *)' does not match 'DVDOpen(const char *, DVDFileInfo *)'
 s32 THPPlayerOpen(s8 *arg0, s32 arg1) {
     s32 temp_r24_1568;
     s32 var_r25_1592;
@@ -901,7 +901,7 @@ s32 THPPlayerOpen(s8 *arg0, s32 arg1) {
         DVDClose((DVDFileInfo *) &ActivePlayer);
         return 0;
     }
-    temp_r24_1542 = &ActivePlayer + 0x3C;
+    temp_r24_1542 = (signed char *) (&ActivePlayer + 0x3C);
     memcpy(temp_r24_1542, &WorkBuffer, 0x30U);
     if (strcmp(temp_r24_1542, "THP") != 0) {
         DVDClose((DVDFileInfo *) &ActivePlayer);

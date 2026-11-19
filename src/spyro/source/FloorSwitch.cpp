@@ -536,20 +536,18 @@ void FloorSwitch::Init() {
     this->unk128 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FloorSwitchDescriptor::LoadDone() {
     s8 *temp_r3_989;
 
     ((GamePropDescriptor *) this)->GamePropDescriptor::LoadDone();
     temp_r3_989 = this->unk34;
     if (temp_r3_989 != NULL) {
-        this->unkF8 = ((MKAnimScript *) temp_r3_989)->GetAnim("idle");
-        this->unkFC = ((MKAnimScript *) this->unk34)->GetAnim("activate");
-        this->unk100 = ((MKAnimScript *) this->unk34)->GetAnim("activated");
-        this->unk104 = ((MKAnimScript *) this->unk34)->GetAnim("deactivate");
+        this->unkF8 = (long) (((MKAnimScript *) temp_r3_989)->GetAnim("idle"));
+        this->unkFC = (long) (((MKAnimScript *) this->unk34)->GetAnim("activate"));
+        this->unk100 = (long) (((MKAnimScript *) this->unk34)->GetAnim("activated"));
+        this->unk104 = (long) (((MKAnimScript *) this->unk34)->GetAnim("deactivate"));
     }
 }
-#endif
 
 s32 FloorSwitchDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1032;

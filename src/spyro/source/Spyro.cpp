@@ -162,7 +162,7 @@
 #include "spyro/source/SpyroHud.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'EventCamera_bRemainTargetable' redeclared
+#if 0 // DRAFT: identifier 'EventCamera_bRemainTargetable' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
 f64 atan2(f32, f32);                                /* extern */
 M2C_UNK free(MKProp **);                            /* extern */
@@ -179,7 +179,7 @@ extern s32 GS_SpyroTailHit;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 deltaMove;
-#if 0 // DRAFT: identifier 'gAssertBool' redeclared
+#if 0 // DRAFT: identifier 'gAssertBool' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 gAssertBool;
 #endif
 extern M2C_UNK gEmptyPtrList;
@@ -671,7 +671,7 @@ void Spyro::SetRage(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 f32 Spyro::SetFuryAnimSpeed(float arg0) {
     f32 temp_f31_1127;
 
@@ -1022,7 +1022,7 @@ void Spyro::ResetCrowdTest() {
     this->unkBB0 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void Spyro::ResetLighting() {
     f64 sp20;
     f64 sp18;
@@ -1048,7 +1048,7 @@ void Spyro::ResetLighting() {
         } else {
             var_r3_1788 = M2C_FIELD(gb.unk32C->unk24, s32 *, 4);
         }
-        temp_r3_1796 = var_r3_1788 + (var_r31_1782 + 0x40);
+        temp_r3_1796 = (void *) (var_r3_1788 + (var_r31_1782 + 0x40));
         sp18 = M2C_FIELD(temp_r3_1796, f64 *, 0);
         sp20 = M2C_FIELD(temp_r3_1796, f64 *, 8);
         temp_r3_1801 = gb.unk32C->unk18;
@@ -1057,7 +1057,7 @@ void Spyro::ResetLighting() {
         } else {
             var_r4_1804 = M2C_FIELD(gb.unk32C->unk24, s32 *, 4);
         }
-        temp_r5_1812 = var_r4_1804 + (var_r31_1782 + 0x70);
+        temp_r5_1812 = (void *) (var_r4_1804 + (var_r31_1782 + 0x70));
         sp8 = M2C_FIELD(temp_r5_1812, f64 *, 0);
         sp10 = M2C_FIELD(temp_r5_1812, f64 *, 8);
         MKView_SetLightColor(var_r29_1780, *((MKVector4 *) &sp18));
@@ -1075,7 +1075,7 @@ void Spyro::ResetLighting() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Spyro::SetLighting() {
     f64 sp158;
     f64 sp150;
@@ -1741,7 +1741,7 @@ loop_21:
     if (var_r27_2969 >= temp_r29_2967) {
         return 0;
     }
-    temp_r4_2974 = &spA8 + var_r30_2970;
+    temp_r4_2974 = (MKVector3 *) (&spA8 + var_r30_2970);
     if (((u8) M2C_FIELD(temp_r4_2974, u8 *, 0x50) != 0) && (temp_r3_2978 = M2C_FIELD(temp_r4_2974, void **, 0x48), ((temp_r3_2978 == NULL) == 0)) && (var_r28_2981 = M2C_FIELD(temp_r3_2978, u32 *, 8), ((var_r28_2981 == 0) == 0))) {
 
     } else {
@@ -1886,7 +1886,7 @@ void Spyro::SetupMeleeAttackHitMsg(int arg0, MeleeAttackHitMsg *arg1) {
     arg1->unk2C = var_r0_3235;
 }
 
-#if 0 // DRAFT: function call 'MKCollision_SphereCollide(Spyro, float, MKCollisionResult
+#if 0 // DRAFT: function call 'MKCollision_SphereCollide(Spyro, float, MKCollisionResult *, int, MKCollisionMode, int)' does not match 'MKCollision_SphereCollide(const MKVector
 void Spyro::CombatArcCollisionTest(int arg0) {
     MKCollisionResult sp2C8;
     s8 sp2C1;
@@ -2051,7 +2051,7 @@ void Spyro::CombatArcCollisionTest(int arg0) {
     var_r29_3322 = 0;
 loop_71:
     if (var_r31_3321 < temp_r22_3318) {
-        temp_r27_3326 = &sp2C8 + var_r29_3322;
+        temp_r27_3326 = (MKVector3 *) (&sp2C8 + var_r29_3322);
         if (((u8) M2C_FIELD(temp_r27_3326, u8 *, 0x50) != 0) && (temp_r3_3330 = M2C_FIELD(temp_r27_3326, void **, 0x48), ((temp_r3_3330 == NULL) == 0)) && (var_r0_3333 = M2C_FIELD(temp_r3_3330, MKProp **, 8), ((var_r0_3333 == NULL) == 0))) {
 
         } else {
@@ -2325,7 +2325,7 @@ void Spyro::UpdateCombatArcs() {
             var_f0_3910 = 0.0f;
         }
         if (var_f0_3910 != 0.0f) {
-            temp_r28_3919 = ((u8 *) temp_r29_3906) + 0x4D8;
+            temp_r28_3919 = (double *) (((u8 *) temp_r29_3906) + 0x4D8);
             temp_f0_3920 = M2C_FIELD(temp_r29_3906, f32 *, 0x4DC);
             temp_f1_3921 = M2C_FIELD(temp_r29_3906, f32 *, 0x4D8);
             temp_f2_3922 = M2C_FIELD(temp_r29_3906, f32 *, 0x4E0);
@@ -2819,7 +2819,7 @@ void Spyro::AirMediumEnter() {
 
 }
 
-#if 0 // DRAFT: function call 'KDMath_GetYaw(Spyro)' does not match
+#if 0 // DRAFT: function call 'KDMath_GetYaw(Spyro)' does not match 'KDMath_GetYaw(const MKVector3 &)' 'KDMath_GetYaw(const Matrix *)'
 void Spyro::CalcVelTurnDir(float arg0) {
     Matrix sp10;
     Spyro *temp_r31_4905;
@@ -2911,7 +2911,7 @@ InputModifier *Spyro::GetInput() {
     return &this->unk214;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Spyro::SetForce(const MKVector3 &arg0, float arg1) {
     f64 spB0;
     f64 spA8;
@@ -3319,7 +3319,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void Spyro::Teleport(const MKVector3 &arg0, float arg1, int arg2, bool arg3, bool arg4) {
     Matrix spA0;
     M2C_UNK sp9C;
@@ -3420,7 +3420,7 @@ MKAnimScript *Spyro::GetAnimScript(Spyro::AnimScriptNode arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'long' to 'Spyro::AnimEvents'
 void Spyro::PostSetAnim() {
     s32 sp8;
     s32 var_r29_6128;
@@ -3444,7 +3444,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal explicit conversion from 'unsigned char' to 'Spyro::AnimEvents'
 void Spyro::PreSetAnim() {
     s32 var_r29_6171;
     s32 var_r31_6172;
@@ -3503,7 +3503,7 @@ void Spyro::GetNodeMatrix(Spyro::Nodes arg1, Matrix *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Spyro::GetNodePos(int arg0) {
     MKVector3 sp8;
 
@@ -3513,7 +3513,7 @@ void Spyro::GetNodePos(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 Spyro::SlipTest() {
     f64 sp30;
     f64 sp28;
@@ -3998,7 +3998,7 @@ s32 Spyro::AirToStrafeDodgeTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 Spyro::AirToLedgeGrabTransition() {
     MKProp *sp118;
     f64 sp110;
@@ -4355,7 +4355,7 @@ u8 Spyro::TryChangeState(bool arg0, unsigned int arg1, MKMessage *arg2, bool arg
     return 0U;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'long' to 'Spyro::Medium'
 void Spyro::OnStateChange(int arg0, int arg1) {
     OnStateChange();
     if (this->unk54.GetMedium(arg1) != 0U) {
@@ -4558,7 +4558,7 @@ void Spyro::CheckForKnockBack(ContextInfo &arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
+#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void Spyro::UpdateBreathEffects(const Matrix *arg0, const MKVector3 &arg1) {
     s8 sp4F;
     s8 sp4D;
@@ -4574,7 +4574,7 @@ void Spyro::UpdateBreathEffects(const Matrix *arg0, const MKVector3 &arg1) {
     s32 temp_r5_8076;
 
     sp8 = 0;
-    sp30 = arg0;
+    sp30 = (Matrix *) (arg0);
     sp10 = M2C_FIELD(&arg1, f64 *, 0);
     sp18 = M2C_FIELD(&arg1, f64 *, 8);
     sp3C = this->unk78;
@@ -4595,7 +4595,7 @@ void Spyro::SetAutoHealthRegen(bool arg0) {
     this->unk3E4 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to 'float'
 void Spyro::SetForceLookAtTarget(MKProp *arg0) {
     if (arg0 != NULL) {
         this->unk1B4.unkC = M2C_BITWISE(f32, arg0);
@@ -4607,7 +4607,7 @@ void Spyro::SetForceLookAtTarget(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to 'void *'
 void Spyro::UseCynderStrafeState(bool arg0, bool arg1) {
     s32 sp24;
     s32 sp20;
@@ -4626,7 +4626,7 @@ void Spyro::UseCynderStrafeState(bool arg0, bool arg1) {
 
     if ((u8) this->unk3D6 != arg0) {
         if (arg0 != 0) {
-            this->unk3D8 = M2C_FIELD(*gMK, u32 (**)(void **, void *), 0x60)(gMK, "CynderConvex");
+            this->unk3D8 = (void *) (M2C_FIELD(*gMK, u32 (**)(void **, void *), 0x60)(gMK, "CynderConvex"));
             temp_r3_8163 = GetCamera();
             sp24 = 0;
             sp20 = 0x159;
@@ -4667,7 +4667,7 @@ void Spyro::SelectStrafeTarget(bool arg0) {
     this->unkB90.SelectTarget(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 Spyro::IsPlayingStrafeAnim() {
     s32 var_r30_8263;
     s32 var_r31_8264;
@@ -4701,7 +4701,7 @@ void Spyro::UpdateInvincibility() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void Spyro::UpdateSlidingSounds() {
     f64 sp48;
     f64 sp40;
@@ -4825,7 +4825,7 @@ block_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'int *'
 void Spyro::UpdateWaterSurfaceFX(bool arg0) {
     f64 sp80;
     f64 sp78;                                       /* compiler-managed */
@@ -5820,7 +5820,7 @@ void Spyro::ProcessAnimationEvent(Spyro::AnimEvents arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Spyro *' to
+#if 0 // DRAFT: illegal explicit conversion from 'long' to 'Spyro::AnimEvents'
 void Spyro::UpdateEvents() {
     s32 sp8;
     MKAnimScript *temp_r30_10118;
@@ -5839,7 +5839,7 @@ void Spyro::UpdateEvents() {
         var_r27_10113 = 0;
         do {
             sp8 = 0;
-            temp_r30_10118 = this + (var_r27_10113 + 0xC0);
+            temp_r30_10118 = (MKAnimScript *) (this + (var_r27_10113 + 0xC0));
 loop_6:
             if (sp8 < 0x18) {
                 if (temp_r30_10118->CheckEvent(sp8) != 0) {
@@ -5883,7 +5883,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Spyro' to
+#if 0 // DRAFT: illegal implicit conversion from 'Spyro' to 'int'
 void Spyro::UpdateAnimation() {
     MKVector3 sp48;
     f64 sp40;
@@ -5910,7 +5910,7 @@ void Spyro::UpdateAnimation() {
         do {
             if (var_r28_10209 == 0) {
                 ((MKAnimScript *) (this + (var_r30_10211 + 0xC0)))->Animate(MKModel_GetAnimation(this->unk4), *(this + (var_r31_10210 + 0x170)), &sp48);
-                temp_r3_10225 = MKModel_GetWorldMatrix(this->unk4);
+                temp_r3_10225 = (void *) (MKModel_GetWorldMatrix(this->unk4));
                 temp_f7_10233 = M2C_BITWISE(f32, sp48);
                 sp18 = (sp48.unk8 * M2C_FIELD(temp_r3_10225, f32 *, 0x20)) + ((temp_f7_10233 * M2C_FIELD(temp_r3_10225, f32 *, 0)) + (sp48.unk4 * M2C_FIELD(temp_r3_10225, f32 *, 0x10)));
                 sp1C = (sp48.unk8 * M2C_FIELD(temp_r3_10225, f32 *, 0x24)) + ((temp_f7_10233 * M2C_FIELD(temp_r3_10225, f32 *, 4)) + (sp48.unk4 * M2C_FIELD(temp_r3_10225, f32 *, 0x14)));
@@ -5937,7 +5937,7 @@ void Spyro::UpdateAnimation() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void Spyro::DeathReset() {
     Animation *temp_r31_10314;
 
@@ -5960,7 +5960,7 @@ void Spyro::DeathReset() {
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void Spyro::ClearData() {
     f64 temp_f30_10445;
     f64 temp_f31_10449;
@@ -6927,7 +6927,7 @@ s8 Spyro::Hurt(HurtMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 u8 Spyro::DealDamage(float arg0, bool arg1, bool arg2, HurtMessage *arg3) {
     HitHeroSndMsg sp10;
     s32 spC;
@@ -7389,7 +7389,6 @@ void Spyro::UpdateShockwavePosition() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Spyro::ModelOffsetPostUpdate() {
     f64 sp20;
     f64 sp18;
@@ -7398,7 +7397,7 @@ void Spyro::ModelOffsetPostUpdate() {
     f64 temp_f0_13083;
     void *temp_r3_13079;
 
-    temp_r3_13079 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+    temp_r3_13079 = (void *) (MKModel_GetWorldMatrix(this->unk4) + 0x30);
     temp_f0_13083 = M2C_FIELD(temp_r3_13079, f64 *, 0) + this->unk368;
     sp8 = temp_f0_13083;
     sp18 = temp_f0_13083;
@@ -7407,9 +7406,8 @@ void Spyro::ModelOffsetPostUpdate() {
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp18));
     MKModel_GetAnimation(this->unk4);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Spyro::ModelOffsetPreUpdate() {
     MKVector3 sp58;
     f64 sp50;
@@ -7445,7 +7443,7 @@ void Spyro::ModelOffsetPreUpdate() {
             this->unk370 = this->unk380;
         }
     }
-    temp_r3_13173 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+    temp_r3_13173 = (void *) (MKModel_GetWorldMatrix(this->unk4) + 0x30);
     temp_f0_13177 = M2C_FIELD(temp_r3_13173, f64 *, 0) - this->unk368;
     sp18 = temp_f0_13177;
     sp48 = temp_f0_13177;
@@ -7464,7 +7462,7 @@ void Spyro::SetModelVisualOffset(const MKVector3 &arg0, bool arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void Spyro::ApplyEdgePhysics(MKVector3 arg0) {
     f64 sp50;
     f64 sp48;
@@ -7529,7 +7527,7 @@ void Spyro::ApplyIcePhysics(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Spyro::ApplySlipperyPhysics(MKVector3 arg0) {
     f64 spA0;
     f64 sp98;
@@ -7618,7 +7616,7 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void Spyro::ApplyPhysics(MKVector3 arg0) {
     MKVector3 sp98;
     MKVector3 sp88;
@@ -7866,7 +7864,7 @@ void Spyro::CheckForEdge() {
     this->unk394 = CheckForEdge(M2C_ERROR(/* Read from unset register $f1 */), *((MKVector3 *) temp_r4_13975), 1U, (MKVector3 *) temp_r4_13975);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 u8 Spyro::CheckForEdge(float arg0, const MKVector3 &arg1, bool arg2, MKVector3 *arg3) {
     MKCollisionResult sp108;
     f64 sp100;                                      /* compiler-managed */
@@ -7957,7 +7955,7 @@ u8 Spyro::CheckForEdge(float arg0, const MKVector3 &arg1, bool arg2, MKVector3 *
                 sp88 = (f64) sp18;
                 sp90 = (f64) sp20;
                 if (((sp108.unk18 * (f32) sp90) + ((sp108.unk10 * (f32) sp88) + (sp108.unk14 * (*(f32 *) ((u8 *) &sp88 + 0x4))))) > 0.0f) {
-                    temp_r3_14137 = MKModel_GetWorldMatrix(this->unk4);
+                    temp_r3_14137 = (void *) (MKModel_GetWorldMatrix(this->unk4));
                     if (((sp108.unk18 * M2C_FIELD(temp_r3_14137, f32 *, 0x28)) + ((sp108.unk10 * M2C_FIELD(temp_r3_14137, f32 *, 0x20)) + (sp108.unk14 * M2C_FIELD(temp_r3_14137, f32 *, 0x24)))) < 0.0f) {
                         var_r27_14023 = 1;
                     }
@@ -8812,7 +8810,7 @@ block_28:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void Spyro::UpdateHeadTurning() {
     f64 sp70;
     f64 sp68;
@@ -8940,7 +8938,7 @@ void Spyro::CheckCameraButtons() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to 'double'
 void Spyro::UpdateCameraInfo(const MKVector3 &arg0) {
     HeroDataMessage sp100;
     Matrix spC0;
@@ -9072,7 +9070,7 @@ void Spyro::DrawSpyro() {
     DrawDebug();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'signed char *'
 void Spyro::Reset() {
     SpyroStateMessages sp10;
     s32 spC;
@@ -9124,7 +9122,7 @@ void Spyro::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 Spyro::LoadDone() {
     Matrix sp90;
     M2C_UNK sp8C;
@@ -9319,7 +9317,7 @@ s32 Spyro::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Spyro::LoadLine(MKIniLine *arg0) {
     f64 sp10;
     f64 sp8;
@@ -9522,7 +9520,7 @@ void Spyro::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void SpyroDescriptor::LoadDone() {
     s32 var_r28_16944;
     s32 var_r31_16945;
@@ -9552,7 +9550,7 @@ void SpyroDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 SpyroDescriptor::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_16996;
     MKIniLine *var_r31_17008;
@@ -9635,7 +9633,7 @@ void SpyroDescriptor::Init() {
     } while (var_r30_17200 < 0x11);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 SpyroCombatArcDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_17250;
 

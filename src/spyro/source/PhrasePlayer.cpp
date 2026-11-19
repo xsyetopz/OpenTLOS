@@ -38,11 +38,11 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern UIStringTable globalstringTable;
 extern UIStringTable levelstringTable;
-#if 0 // DRAFT: identifier 'phraseData' redeclared
+#if 0 // DRAFT: identifier 'phraseData' redeclared was declared as: 'signed char' now declared as: 'signed char[80]'
 static s8 phraseData[0x50];
 #endif
 static s32 lit_771 = 0;
-#if 0 // DRAFT: function call 'strcmp(signed char, const char[1])' does not match
+#if 0 // DRAFT: function call 'strcmp(signed char, const char[1])' does not match 'strcmp(const char *, const char *)'
 static M2C_UNK lit_740;                                /* unable to generate initializer: unknown type; const */
 
 s8 *PhrasePlayer_GetCurrentActor() {
@@ -50,7 +50,7 @@ s8 *PhrasePlayer_GetCurrentActor() {
     s32 var_r4_28;
 
     if (strcmp(phraseData, "") == 0) {
-        return phraseData;
+        return (signed char *) (phraseData);
     }
     var_r4_28 = lit_771;
     temp_r0_29 = strlen(phraseData) - 2;
@@ -77,7 +77,7 @@ void PhrasePlayer_LoadLevelIni(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 u8 PhrasePlayer_LoadNextPhrase() {
     s8 sp8;
     M2C_UNK sp4;
@@ -215,7 +215,7 @@ block_7:
 loop_11:
     if (var_r27_352 < (s32) M2C_FIELD(phraseData, s32 *, 0x48)) {
         if (stricmp(*(M2C_FIELD(phraseData, s32 *, 0x3C) + var_r29_353), arg0) == 0) {
-            var_r31_350 = M2C_FIELD(phraseData, s32 *, 0x3C) + var_r29_353;
+            var_r31_350 = (void *) (M2C_FIELD(phraseData, s32 *, 0x3C) + var_r29_353);
         } else {
             var_r27_352 += 1;
             var_r29_353 += 0x18;
@@ -228,7 +228,7 @@ loop_11:
 loop_18:
         if (var_r27_380 < (s32) M2C_FIELD(phraseData, s32 *, 0x4C)) {
             if (stricmp(*(M2C_FIELD(phraseData, u32 *, 0x40) + var_r29_381), arg0) == 0) {
-                var_r31_350 = M2C_FIELD(phraseData, u32 *, 0x40) + var_r29_381;
+                var_r31_350 = (void *) (M2C_FIELD(phraseData, u32 *, 0x40) + var_r29_381);
             } else {
                 var_r27_380 += 1;
                 var_r29_381 += 0x18;
@@ -283,7 +283,7 @@ void PhrasePlayer_Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'PhraseEvent' to
+#if 0 // DRAFT: illegal implicit conversion from 'PhraseEvent' to 'const char *'
 void PhrasePlayer_UnloadIniData(PhraseEvent **arg0, int *arg1, UIStringTable *arg2) {
     PhraseEvent *temp_r31_547;
     s32 var_r30_528;
@@ -320,7 +320,7 @@ void PhrasePlayer_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 void PhrasePlayer_LoadIni(const char *arg0, PhraseEvent **arg1, int *arg2, UIStringTable *arg3) {
     MKIni sp20;
     s8 sp1C;
@@ -373,7 +373,7 @@ loop_7:
     arg3->Init(var_r28_616);
     temp_r25_680 = *arg2 * 0x18;
     if (MKHeap::Current() != NULL) {
-        var_r3_688 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_680, NULL, 0);
+        var_r3_688 = (PhraseEvent *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_680, NULL, 0));
     } else {
         var_r3_688 = malloc(temp_r25_680);
     }
@@ -390,16 +390,16 @@ loop_42:
             sp18 = 0;
             sp1C = 0;
         } else {
-            var_r27_716 = *arg1 + var_r25_701;
+            var_r27_716 = (long *) (*arg1 + var_r25_701);
             var_r25_701 += 0x18;
             memcpy(var_r27_716, &sp8, 0x18U);
-            *var_r27_716 = arg3->Add(var_r28_704->GetFieldName());
+            *var_r27_716 = (const char *) (arg3->Add(var_r28_704->GetFieldName()));
         }
         var_r26_739 = var_r28_704->unkC->GetSubLine(var_r28_704);
 loop_38:
         if (var_r26_739 != NULL) {
             if ((var_r26_739->IsField("Phrase") != 0) && (var_r28_704->IsField("defaults") == 0)) {
-                M2C_FIELD(var_r27_716, s32 *, 4) = arg3->Add(var_r26_739->GetString(0));
+                M2C_FIELD(var_r27_716, s32 *, 4) = (const char *) (arg3->Add(var_r26_739->GetString(0)));
                 temp_r3_762 = strlen((s8 *) M2C_FIELD(var_r27_716, s32 *, 4));
                 if (temp_r3_762 != 0) {
                     var_r4_766 = 0;
@@ -446,7 +446,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memset(signed char, int, unsigned int)' does not match
+#if 0 // DRAFT: function call 'memset(signed char, int, unsigned int)' does not match 'memset(void *, int, unsigned int)'
 void PhrasePlayer_Init() {
     memset(phraseData, 0, 0x50U);
     M2C_FIELD(phraseData, s32 *, 0x28) = -1;
@@ -493,7 +493,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Load(signed char *, int, int, int)' does not
+#if 0 // DRAFT: function call 'MKArchive_Load(signed char *, int, int, int)' does not match 'MKArchive_Load(const char *, int *, void *, int)'
 void Phrase_LoadSound() {
     s32 sp8;
     M2C_UNK temp_r30_1006;
@@ -526,7 +526,7 @@ void Phrase_LoadSound() {
         MKHeap::ActivateTempMemOverride();
         temp_r30_1064 = sp8 + 1;
         if (MKHeap::Current() != NULL) {
-            var_r3_1072 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1064, NULL, 0);
+            var_r3_1072 = (PhraseEvent *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1064, NULL, 0));
         } else {
             var_r3_1072 = malloc(temp_r30_1064);
         }
@@ -554,7 +554,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void Phrase_LoadPackage() {
     s8 sp8;
     M2C_UNK temp_r31_1144;
@@ -574,7 +574,7 @@ void Phrase_LoadPackage() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char, const char *)' does not match 'strcpy(char *, const char *)'
 s32 Phrase_Play(const char *arg0) {
     s32 temp_r3_1224;
 

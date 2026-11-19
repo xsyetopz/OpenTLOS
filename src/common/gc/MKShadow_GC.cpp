@@ -206,7 +206,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             if (temp_r23_353 > 0) {
                 var_r30_334 = 1;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_365 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r23_353 << 6, NULL, 0, 0U);
+                    var_r3_365 = (Matrix *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r23_353 << 6, NULL, 0, 0U));
                 } else {
                     var_r3_365 = malloc(temp_r23_353 << 6);
                 }
@@ -251,7 +251,7 @@ loop_27:
             if (((u32) (((u8) arg0->unk4 >> 5U) & 7) < 2U) || !(*(temp_r27_478 + (arg0->unk88 + var_r26_475)) & 0xF)) {
                 temp_r5_499 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x6C);
                 temp_r22_502 = temp_r5_499 + *(temp_r28_419 + (var_r24_476 + 4));
-                temp_r21_505 = temp_r5_499 + M2C_FIELD(temp_r22_502, s32 *, 8);
+                temp_r21_505 = (MKVector3 *) (temp_r5_499 + M2C_FIELD(temp_r22_502, s32 *, 8));
                 sp8 = (f64 *)-1;
                 temp_r20_507 = temp_r5_499 + M2C_FIELD(temp_r22_502, s32 *, 0xC);
                 DetectEdges(temp_r21_505, temp_r20_507, M2C_FIELD(temp_r22_502, s32 *, 0), M2C_FIELD(temp_r22_502, s32 *, 4), var_r29_347, *((MKVector3 *) &spE8), *((MKVector3 *) &spF8), *((MKVector3 *) &spC8), arg2, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -617,7 +617,7 @@ void MKShadow_VolumeRenderStage1() {
     GXFlush();
 }
 
-#if 0 // DRAFT: function call 'GXSetCopyFilter(unsigned int, _GXRenderModeObj *, unsigned
+#if 0 // DRAFT: function call 'GXSetCopyFilter(unsigned int, _GXRenderModeObj *, unsigned int, _GXRenderModeObj *)' does not match 'GXSetCopyFilter(unsigned char, const unsigne
 void MKShadow_BeginScene() {
     GXRenderModeObj *temp_r3_1121;
 
@@ -642,7 +642,7 @@ void MKShadow_InitModule() {
     temp_r31_1169 = RoundUp(M2C_FIELD(&gMKDefaults, s32 *, 0x54) * 8, 0x20);
     pShadowVertexBuffer = (void *)0xE0000000;
     if (MKHeap::Current() != NULL) {
-        var_r3_1178 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r31_1169, NULL, 0);
+        var_r3_1178 = (Matrix *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r31_1169, NULL, 0));
     } else {
         var_r3_1178 = malloc(temp_r31_1169);
     }

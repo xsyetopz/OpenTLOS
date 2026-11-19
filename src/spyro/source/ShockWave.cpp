@@ -28,7 +28,7 @@
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ShockWave::UpdateShockWave(int arg0) {
     MKCollisionResult spD0;
     Matrix sp90;
@@ -181,7 +181,7 @@ void ShockWave::UpdateShockWave(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'ShockWave' to
+#if 0 // DRAFT: illegal explicit conversion from 'ShockWave' to 'unsigned char'
 s32 ShockWave::Start(MKVector3 arg0, float arg1, float arg2, bool arg3, bool arg4, bool arg5) {
     Matrix sp30;
     f64 sp28;
@@ -374,7 +374,7 @@ void *ShockWave::Update() {
         temp_r31_628 = this + var_r28_626;
         if ((u8) M2C_FIELD(temp_r31_628, u8 *, 0x90) != 0) {
             M2C_FIELD(temp_r31_628, f32 *, 0x9C) = (f32) ((1200.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r31_628, f32 *, 0x9C));
-            temp_r27_640 = MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_628, MKModel **, 0xA0)) + 0x30;
+            temp_r27_640 = (void *) (MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_628, MKModel **, 0xA0)) + 0x30);
             sp40.GetPos();
             sp10 = sp40 - M2C_FIELD(temp_r27_640, f64 *, 0);
             sp18 = sp48 - M2C_FIELD(temp_r27_640, f32 *, 8);

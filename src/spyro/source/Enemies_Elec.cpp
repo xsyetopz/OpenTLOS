@@ -472,7 +472,7 @@ void ElecTier3Descriptor::Deinit() {
     EnemyDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 void ElecTier3Descriptor::LoadDone() {
     u16 *var_r3_829;
 
@@ -482,7 +482,7 @@ void ElecTier3Descriptor::LoadDone() {
     this->unk2BC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "body");
     this->unk2C0 = MKMaterial_Create"teslaLight";
     if (MKHeap::Current() != NULL) {
-        var_r3_829 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
+        var_r3_829 = (unsigned short *) (((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0));
     } else {
         var_r3_829 = malloc(4);
     }
@@ -763,7 +763,7 @@ s32 ElecTier2::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElecTier2::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
@@ -828,7 +828,7 @@ void ElecTier2Descriptor::LoadDone() {
     this->unk2D4 = 0.1f * this->unk2D0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElecTier2Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1623;
 
@@ -1041,7 +1041,7 @@ void ElecTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 void ElecTier1Descriptor::Init() {
     EnemyDescriptor::Init();
     this->unk2B4 = MKMaterial_Create"fx_slimetrail";

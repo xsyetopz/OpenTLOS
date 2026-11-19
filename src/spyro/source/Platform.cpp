@@ -47,7 +47,7 @@ extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void PlatformRider::ToWorldDir(const MKVector3 &arg0) {
     f32 sp10;
     f32 spC;
@@ -76,7 +76,7 @@ void PlatformRider::ToWorldDir(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void PlatformRider::ToWorld(const MKVector3 &arg0) {
     f32 sp10;
     f32 spC;
@@ -125,7 +125,7 @@ void PlatformRider::Attach(PlatformAttachment *arg0) {
     }
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 void PlatformRider::Resolve() {
     MKSceneManager *temp_r3_170;
 
@@ -136,7 +136,7 @@ void PlatformRider::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'PlatformRider *' to
+#if 0 // DRAFT: illegal implicit conversion from 'PlatformRider *' to 'int *'
 void PlatformRider::LoadLine(MKIniLine *arg0) {
     arg0->LoadInt("platformID", this + 4, 0);
 }
@@ -148,7 +148,7 @@ void PlatformRider::Init() {
     M2C_FIELD(this, s8 *, 8) = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector3 &'
 void Platform::UpdateBob() {
     f64 sp10;
     f64 sp8;
@@ -279,7 +279,7 @@ void Platform::UpdateShadow() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Platform *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Platform *' to 'PlatformAttachment *'
 f32 Platform::Resolve() {
     KDPropEx::Resolve();
     this->unk150.Resolve();
@@ -345,7 +345,7 @@ void Platform::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to 'MKVector3 *'
 s32 Platform::LoadDone() {
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 0);
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x68) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 8);
@@ -358,7 +358,7 @@ s32 Platform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Platform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_688;
 

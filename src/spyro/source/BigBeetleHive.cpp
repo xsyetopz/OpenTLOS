@@ -321,7 +321,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void BigBeetleHive::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     KDSound_Play3d(GS_OBBigHiveSmash1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     KDSound_Play3d(GS_OBBigHiveSmash2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
@@ -358,7 +358,7 @@ void *BigBeetleHive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 f32 BigBeetleHive::Resolve() {
     s32 var_r28_585;
     s32 var_r31_587;
@@ -373,7 +373,7 @@ f32 BigBeetleHive::Resolve() {
         if ((MKSceneManager *) M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0) != (MKSceneManager *)-1) {
             temp_ret_599 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_attach%d", var_r28_585));
             M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) temp_ret_599;
-            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = checked_cast<BeetleNestSmall *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_599));
+            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = (long) (checked_cast<BeetleNestSmall *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_599)));
         }
         var_r28_585 += 1;
         var_r31_587 += 0xC;
@@ -386,7 +386,7 @@ s32 BigBeetleHive::LoadDone() {
     this->unk1A8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1"));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
     f32 var_f1_654;
     s32 temp_ret_654;
@@ -402,7 +402,7 @@ s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
     var_r29_661 = 0;
     var_r31_663 = 0;
 loop_3:
-    temp_ret_674 = arg0->LoadInt(Str_Printf("NestID%d", var_r29_661, var_f1_654), this + (var_r31_663 + 0x1B0), 0);
+    temp_ret_674 = (const char *) (arg0->LoadInt(Str_Printf("NestID%d", var_r29_661, var_f1_654), this + (var_r31_663 + 0x1B0), 0));
     var_f1_654 = M2C_BITWISE(f32, temp_ret_674);
     if (temp_ret_674 != 0) {
         return 1;
@@ -436,7 +436,7 @@ void BigBeetleHive::Init() {
     this->unk1E8 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 void BigBeetleHiveDescriptor::LoadDone() {
     s32 temp_r0_746;
     s32 var_r29_734;

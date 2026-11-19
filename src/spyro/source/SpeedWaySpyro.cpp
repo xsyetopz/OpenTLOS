@@ -100,7 +100,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern f32 g_invPathMaxDistance;
 extern f32 g_pathMaxDistance;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 static M2C_UNK lit_818;                                /* unable to generate initializer: unknown type */
@@ -649,9 +649,9 @@ block_44:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to 'void *'
 void SpeedwayFX::Resolve() {
-    this->unk0 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "SpeedwayFirebomb"));
+    this->unk0 = (void *) (checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "SpeedwayFirebomb")));
 }
 #endif
 
@@ -680,7 +680,7 @@ s32 SpeedWaySpyro::IsDead() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector
 void SpeedWaySpyro::UpdateSound() {
     s32 sp8;
     f32 *temp_r31_755;
@@ -716,7 +716,7 @@ void SpeedWaySpyro::UpdateSound() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
+#if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::UpdateEffects() {
     Matrix sp20;
     MKVector3 sp10;
@@ -727,7 +727,7 @@ void SpeedWaySpyro::UpdateEffects() {
     u8 var_r30_926;
     void ***temp_r30_844;
 
-    temp_r30_844 = &gb + 0xB8;
+    temp_r30_844 = (void ***) (&gb + 0xB8);
     ((ScreenWobbleFX *) temp_r30_844)->SetSpeedEffectCenter(*((MKVector3 *) &this->unk1A0.unk30));
     if ((this->unk98 & 0x10) && ((s32) this->unkA0 == 2)) {
         ((ScreenWobbleFX *) temp_r30_844)->EnableSpeedEffect(1U, 0.0f, 0.5f);
@@ -1621,7 +1621,7 @@ void SpeedWaySpyro::SetTargetMovementOffset(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpeedWaySpyro::UpdateMovementOffset() {
     MKVector3 sp8;
 
@@ -2136,7 +2136,7 @@ s32 SpeedWaySpyro::DeathTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpeedWaySpyro::DeathUpdate() {
     f64 sp60;
     f64 sp58;
@@ -2176,7 +2176,7 @@ void SpeedWaySpyro::DeathUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long (const char *)' to
+#if 0 // DRAFT: illegal implicit conversion from 'long (const char *)' to 'long'
 void SpeedWaySpyro::DeathExit() {
     if (!(this->unk18 & 0x80000000)) {
         this->unk2D8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -2854,7 +2854,7 @@ void SpeedWaySpyro::Draw() {
     MKModel_SetWorldMatrix(this->unk4, sp50);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
+#if 0 // DRAFT: undefined identifier 'P11HurtMessage'
 void SpeedWaySpyro::Message(MKMessage *arg0) {
     s8 sp161;
     u8 sp160;
@@ -2922,7 +2922,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
                 this->unk2E9 = 0;
             }
             Disable();
-            temp_r29_5779 = &gb + 0xB8;
+            temp_r29_5779 = (void ***) (&gb + 0xB8);
             ((ScreenWobbleFX *) temp_r29_5779)->EnableSpeedEffect(0U, 0.0f, 1.0f);
             ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
             ((ScreenWobbleFX *) temp_r29_5779)->EnableSpeedEffect(0U, 0.0f, 1.0f);
@@ -3018,7 +3018,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpeedWay *' to
+#if 0 // DRAFT: undefined identifier 'unk84'
 f32 SpeedWaySpyro::Resolve() {
     M2C_UNK sp80;
     M2C_UNK sp4C;
@@ -3032,13 +3032,13 @@ f32 SpeedWaySpyro::Resolve() {
     void *temp_r3_6045;
 
     MKProp::Resolve();
-    this->unk2F0 = checked_cast<SpeedWay *, MKProp>(this->unk2F0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    this->unk2F0 = (MKSceneManager *) (checked_cast<SpeedWay *, MKProp>(this->unk2F0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     temp_r5_6010 = this->unk2F0;
     temp_f2_6013 = temp_r5_6010->unk84;
     temp_f1_6017 = 0.5f * (temp_f2_6013 + M2C_BITWISE(f32, temp_r5_6010->unkCC));
     g_pathMaxDistance = temp_f1_6017;
     g_invPathMaxDistance = 1.0f / temp_f1_6017;
-    temp_r3_6024 = M2C_FIELD(*gMK, MKProp *(**)(void **, void *, MKSceneManager *, f32, f32, f32), 0x60)(gMK, "SpeedwayCynder", temp_r5_6010, temp_f1_6017, temp_f2_6013, 0.5f);
+    temp_r3_6024 = (void *) (M2C_FIELD(*gMK, MKProp *(**)(void **, void *, MKSceneManager *, f32, f32, f32), 0x60)(gMK, "SpeedwayCynder", temp_r5_6010, temp_f1_6017, temp_f2_6013, 0.5f));
     if (temp_r3_6024 != NULL) {
         this->unk390 = checked_cast<SpeedwayCynder *, MKProp>(temp_r3_6024);
     }
@@ -3055,7 +3055,7 @@ f32 SpeedWaySpyro::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 s32 SpeedWaySpyro::LoadDone() {
     s32 sp10;
     s32 spC;
@@ -3082,7 +3082,7 @@ s32 SpeedWaySpyro::LoadDone() {
     void *temp_ret_6200;
 
     KDProp::LoadDone();
-    temp_r29_6110 = "SpeedWay_";
+    temp_r29_6110 = (void *) ("SpeedWay_");
     var_r28_6112 = 0;
     sp8 = M2C_FIELD(&lit_869, s32 *, 0);
     var_r27_6114 = 0;
@@ -3151,7 +3151,7 @@ s32 SpeedWaySpyro::LoadLine(MKIniLine *arg0) {
     return var_r31_6315;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpeedWaySpyro::Deinit() {
     s32 spC;
     s32 sp8;

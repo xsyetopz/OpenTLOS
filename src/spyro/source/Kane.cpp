@@ -54,7 +54,7 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Kane::LoadLine(MKIniLine *arg0) {
     if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", (u8 *) &this->unkB14, 0) != 0) || (arg0->LoadInt("StartNode", (int *) &this->unkB10, 0) != 0)) {
         return 1;
@@ -63,14 +63,14 @@ s32 Kane::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 f32 Kane::Resolve() {
     s32 spC;
     s32 sp8;
     u32 temp_r3_91;
 
     Enemy::Resolve();
-    temp_r3_91 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unkB10)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_91 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unkB10)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
     if (temp_r3_91 != 0U) {
         this->unkA80 = temp_r3_91 + 0x50;
     }

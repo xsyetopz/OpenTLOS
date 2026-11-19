@@ -130,7 +130,6 @@ f32 CynderEnergyCrystal::Resolve() {
     KDPropEx::Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 CynderEnergyCrystal::LoadDone() {
     f64 sp68;
     f64 sp60;
@@ -155,8 +154,8 @@ s32 CynderEnergyCrystal::LoadDone() {
 
     GameProp::LoadDone();
     this->unk150 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "handle");
-    this->unk5E0 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobble"));
-    temp_r3_256 = checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk5E0 = (MKDynamicBone *) (MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobble")));
+    temp_r3_256 = (long) (checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
     sp8 = this;
     spC = 0;
     M2C_FIELD(this->unk168, M2C_UNK (**)(void **, s32, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk168, temp_r3_256 + 0xE4, &MKVector3::zero, 1, &this->unk70, 0, 0, 0);
@@ -176,13 +175,12 @@ s32 CynderEnergyCrystal::LoadDone() {
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
-    this->unk5E4 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp60), *((MKVector3 *) &sp50), *((MKVector4 *) &sp40), 700.0f, lit_598, lit_599);
+    this->unk5E4 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp60), *((MKVector3 *) &sp50), *((MKVector4 *) &sp40), 700.0f, lit_598, lit_599));
     temp_r4_311 = this->unk5E4;
     if (temp_r4_311 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_311, 1U);
     }
 }
-#endif
 
 s32 CynderEnergyCrystal::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);

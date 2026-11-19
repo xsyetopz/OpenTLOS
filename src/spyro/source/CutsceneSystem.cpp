@@ -65,7 +65,7 @@ s8 *malloc(s32);                                    /* extern */
 M2C_UNK strcat(s8 *, M2C_UNK *);                    /* extern */
 extern s8 bIgnoreEvent;
 extern s8 bShowLoading;
-#if 0 // DRAFT: identifier 'gClearColor' redeclared
+#if 0 // DRAFT: identifier 'gClearColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK gClearColor;
 #endif
 extern M2C_UNK gEventCreationTable;
@@ -73,14 +73,14 @@ extern GameStateMachine gGMState;
 extern void **gMK;
 extern M2C_UNK gMKDefaults;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'gb' redeclared
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'void **'
 extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: identifier 'pLoadChunkInfo' redeclared
+#if 0 // DRAFT: identifier 'pLoadChunkInfo' redeclared was declared as: 'ChunkInfo *' now declared as: 'void *'
 extern void *pLoadChunkInfo;
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<CutsceneSystem>::State'
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<CutsceneSystem>::State cutsceneStates; /* unable to generate initializer: confusing struct layout */
 
@@ -93,7 +93,7 @@ void CutsceneSystem::SetCustomSubtitle(const char *arg0, int arg1, bool arg2) {
     }
     this->unk9D = 0;
     this->unk9C = arg2;
-    this->unk80 = arg0;
+    this->unk80 = (signed char *) (arg0);
     if (arg2 != 0) {
         var_f0_24 = 0.0f;
     } else {
@@ -275,7 +275,7 @@ void CutsceneSystem::Deactivate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 s32 CutsceneSystem::Activate(const char *arg0, bool arg1) {
     s8 sp8;
     CutsceneObject *temp_r3_458;
@@ -366,7 +366,7 @@ void CutsceneSystem::PlayIntro(CutsceneObject &arg0, float arg1) {
             temp_r5_613 = 0 - temp_r3_609->unk63;
             temp_r30_615 = 2 & ((temp_r5_613 - temp_r5_613) - !M2C_CARRY);
             temp_r3_609->GetFileName(NULL);
-            this->unk84 = GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r30_615 | 1, -1);
+            this->unk84 = (GameVideo *) (GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r30_615 | 1, -1));
             if ((GameVideo *) this->unk84 != NULL) {
                 this->unk88 = this->unk68->Skippable();
                 this->unk74 = 2;
@@ -382,7 +382,7 @@ void CutsceneSystem::PlayIntro(CutsceneObject &arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
+#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to 'void ***'
 s32 CutsceneSystem::Play(CutsceneObject &arg0, float arg1) {
     CutsceneObject *temp_r3_788;
     MKVector3 *temp_r3_726;
@@ -425,7 +425,7 @@ s32 CutsceneSystem::Play(CutsceneObject &arg0, float arg1) {
         temp_r5_792 = 0 - temp_r3_788->unk63;
         temp_r29_794 = 2 & ((temp_r5_792 - temp_r5_792) - !M2C_CARRY);
         temp_r3_788->GetFileName(NULL);
-        this->unk84 = GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r29_794 | 1, -1);
+        this->unk84 = (GameVideo *) (GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r29_794 | 1, -1));
         if ((GameVideo *) this->unk84 != NULL) {
             this->unk88 = this->unk68->Skippable();
             this->unk74 = 2;
@@ -445,9 +445,9 @@ s32 CutsceneSystem::Play(const char *arg0, float arg1, void (*arg3)(const char *
     u8 temp_r29_867;
     u8 temp_r3_873;
 
-    temp_r28_859 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x4C)(M2C_FIELD(&gb, void ***, 0), &gb);
-    temp_r29_867 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x54)(M2C_FIELD(&gb, void ***, 0), &gb);
-    temp_r3_873 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x60)(M2C_FIELD(&gb, void ***, 0), &gb);
+    temp_r28_859 = (void ***) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x4C)(M2C_FIELD(&gb, void ***, 0), &gb));
+    temp_r29_867 = (void ***) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x54)(M2C_FIELD(&gb, void ***, 0), &gb));
+    temp_r3_873 = (void ***) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **, void ***), 0x60)(M2C_FIELD(&gb, void ***, 0), &gb));
     if (((s32) M2C_FIELD(&gb, s32 *, 0x340) == 0) && (temp_r28_859 != 0) && ((temp_r29_867 != 0) || (temp_r3_873 != 0))) {
         return 0;
     }
@@ -461,7 +461,7 @@ s32 CutsceneSystem::Play(const char *arg0, float arg1, void (*arg3)(const char *
         if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
             ((SpyroEffects *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), SpyroEffects *(**)(), 0x3C)()))->ResetFury();
         }
-        this->unk84 = GameVideo_Create(arg0, 1, -1);
+        this->unk84 = (GameVideo *) (GameVideo_Create(arg0, 1, -1));
         if ((GameVideo *) this->unk84 != NULL) {
             this->unk88 = 1;
             this->unk74 = 2;
@@ -675,7 +675,7 @@ void CutsceneSystem::Location::Init(CutsceneSystem *arg1) {
     M2C_FIELD(this, CutsceneSystem **, 0x18) = arg1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void CutsceneSystem::UnloadingDeinit() {
     MKVector3 *temp_r3_1401;
     MKVector3 *temp_r3_1407;
@@ -691,7 +691,7 @@ void CutsceneSystem::UnloadingDeinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to
+#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to 'void **'
 void CutsceneSystem::UnloadingUpdate() {
     CutsceneObject *temp_r0_1462;
     CutsceneObject *temp_r3_1482;
@@ -716,7 +716,7 @@ void CutsceneSystem::UnloadingUpdate() {
                 temp_r5_1486 = 0 - temp_r3_1482->unk63;
                 temp_r30_1488 = 2 & ((temp_r5_1486 - temp_r5_1486) - !M2C_CARRY);
                 temp_r3_1482->GetFileName(NULL);
-                this->unk84 = GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r30_1488 | 1, -1);
+                this->unk84 = (GameVideo *) (GameVideo_Create(M2C_ERROR(/* Read from unset register $r3 */), temp_r30_1488 | 1, -1));
                 if ((GameVideo *) this->unk84 != NULL) {
                     this->unk88 = this->unk68->Skippable();
                     this->unk74 = 2;
@@ -1022,7 +1022,7 @@ void CutsceneSystem::LoadingUpdate() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void CutsceneSystem::LoadingInit() {
     MKVector3 *temp_r3_2115;
     s32 var_r0_2136;
@@ -1061,7 +1061,7 @@ void CutsceneSystem::Update() {
     ((CutsceneSystem::Location *) this)->Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void CutsceneSystem::Deinit() {
     MKVector3 *temp_r31_2234;
     MKVector3 *temp_r3_2226;
@@ -1112,7 +1112,7 @@ void CutsceneSystem::Init() {
         ((UIStringTable *) (temp_r31_2281 + 0x260))->UIStringTable();
     }
     this->unk78 = temp_r31_2281;
-    *KDSynkerPlayer3::pEventCreationTable = &gEventCreationTable;
+    *KDSynkerPlayer3::pEventCreationTable = (unsigned char) (&gEventCreationTable);
     this->unk68 = NULL;
     this->unk6C = NULL;
     this->unk70 = 0;
@@ -1159,7 +1159,7 @@ void CutsceneSystem::DeinitModule() {
     sp20 = (f64) sp10;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unkA0'
 void CutsceneSystem::InitModule() {
     s32 temp_r31_2389;
     s8 *var_r3_2397;
@@ -1173,7 +1173,7 @@ void CutsceneSystem::InitModule() {
     this->unk9F = 0;
     temp_r31_2389 = M2C_FIELD(&gMKDefaults, s32 *, 0xAC);
     if (MKHeap::Current() != NULL) {
-        var_r3_2397 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2389, NULL, 0);
+        var_r3_2397 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2389, NULL, 0));
     } else {
         var_r3_2397 = malloc(temp_r31_2389);
     }

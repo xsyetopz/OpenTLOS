@@ -100,7 +100,7 @@ void PropFlagsSet(unsigned int *arg0, unsigned int arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 PropFlagsLoadLine(unsigned int *arg0, MKIniLine *arg1) {
     u8 sp8;
     s32 var_r27_130;

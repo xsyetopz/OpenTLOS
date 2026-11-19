@@ -255,7 +255,7 @@ void KDSP_Actor::UpdateLookat() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
     f32 sp13C;
     f32 sp138;
@@ -473,7 +473,7 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             if (temp_r4_541 != -1U) {
                 MKModel_CalculateNodeWorldPosition(temp_r3_538, (s32) temp_r4_541, &arg6);
             } else {
-                temp_r3_549 = MKModel_GetWorldMatrix(temp_r3_538);
+                temp_r3_549 = (void *) (MKModel_GetWorldMatrix(temp_r3_538));
                 M2C_FIELD(&arg6, f64 *, 0) = (f64) M2C_FIELD(temp_r3_549, f64 *, 0x30);
                 M2C_FIELD(&arg6, f64 *, 8) = (f64) M2C_FIELD(temp_r3_549, f64 *, 0x38);
             }
@@ -789,7 +789,6 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_Actor::UpdateSoundAnimEvents(const MKVector3 &arg0, int arg1) {
     f64 sp30;
     f64 sp28;
@@ -812,7 +811,7 @@ void KDSP_Actor::UpdateSoundAnimEvents(const MKVector3 &arg0, int arg1) {
         this->unk130 = this->unk38->unk20;
         this->unk134 = this->unk38->GetCurrentFrame();
         if (var_r31_1333 == 0) {
-            temp_r3_1353 = MKModel_GetWorldMatrix(this->unk38->unk8);
+            temp_r3_1353 = (void *) (MKModel_GetWorldMatrix(this->unk38->unk8));
             temp_f1_1354 = M2C_FIELD(temp_r3_1353, f64 *, 0x30);
             sp28 = temp_f1_1354;
             sp30 = M2C_FIELD(temp_r3_1353, f64 *, 0x38);
@@ -825,7 +824,6 @@ void KDSP_Actor::UpdateSoundAnimEvents(const MKVector3 &arg0, int arg1) {
         }
     }
 }
-#endif
 
 void KDSP_Actor::UpdateHeadAnim(float arg0) {
     s32 sp24;
@@ -966,7 +964,7 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'Matrix *'
 void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     s8 sp280;
     s32 sp27C;
@@ -1046,7 +1044,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     *arg1 = 0;
     temp_r0_1753 = this->unkCC;
     if (temp_r0_1753 != -1) {
-        temp_r27_1758 = ((u8 *) this->unkB4) + (temp_r0_1753 * 0x10);
+        temp_r27_1758 = (KDSP_Bar *) (((u8 *) this->unkB4) + (temp_r0_1753 * 0x10));
         temp_r31_1759 = temp_r27_1758->unk8;
         temp_r27_1758->unkC->GetEnvelope((s32) arg1);
         temp_r26_1765 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -1123,7 +1121,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         if (this->unk40 & 4) {
             var_r3_1921 = this->unk34;
         } else {
-            var_r3_1921 = MKModel_GetWorldMatrix(temp_r3_1916);
+            var_r3_1921 = (Matrix *) (MKModel_GetWorldMatrix(temp_r3_1916));
         }
         if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
             var_f1_1932 = 0.1f + var_f31_1802;
@@ -1599,17 +1597,13 @@ void KDSP_Actor::GetEnvelope(int arg0) {
     ((KDSP_EnvelopeList *) (*KDSP_Actor::pEnvelopeData))->GetEnvelope((s32) this);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDSP_Actor *' to
 void KDSP_Actor::SetInput(KDInput *arg0) {
-    *KDSP_Actor::pInput = this;
+    *KDSP_Actor::pInput = (unsigned char) (this);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDSP_Actor *' to
 void KDSP_Actor::SetEnvelopeList(KDSP_EnvelopeList *arg0) {
-    *KDSP_Actor::pEnvelopeData = this;
+    *KDSP_Actor::pEnvelopeData = (unsigned char) (this);
 }
-#endif
 
 MKModel *KDSP_Actor::GetModel() {
     s32 temp_r4_2694;
@@ -1750,19 +1744,19 @@ void KDSP_Actor::ResolvePosBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int ar
         temp_r31_2909 = arg2 * 0x10;
         *(temp_r4_2905 + temp_r31_2909) = arg1->unkC;
         M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), s32 *, 4) = (s32) arg1->unk10;
-        M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), void **, 8) = FindActorPath(arg1->unk0);
+        M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), void **, 8) = (const char *) (FindActorPath(arg1->unk0));
         M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), s32 *, 0xC) = (s32) arg1->unk14;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'KDSP_AnimBar *'
 void KDSP_Actor::ResolveBodyBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     ResolveAnim(((u8 *) this->unkAC) + (arg2 * 0x18), arg1->unk0);
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal type Too many errors printed, aborting program
 void KDSP_Actor::ResolveBodyBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     f32 var_f0_2982;
     s32 temp_r4_2988;
@@ -1801,7 +1795,7 @@ void KDSP_Actor::ResolveBodyBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'KDSP_AnimBar *'
 void KDSP_Actor::ResolveHeadBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     ResolveAnim(((u8 *) this->unkA4) + (arg2 * 0x18), arg1->unk0);
 }
@@ -1846,13 +1840,12 @@ void KDSP_Actor::ResolveHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'KDSP_AnimBar *'
 void KDSP_Actor::ResolveLipsBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     ResolveAnim(((u8 *) this->unk9C) + (arg2 * 0x18), arg1->unk0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDSP_Actor::ResolveAnim(KDSP_AnimBar *arg0, const char *arg1) {
     MKAnimScript *temp_r31_3108;
     MKAnimScript *temp_r3_3133;
@@ -1874,11 +1867,10 @@ void KDSP_Actor::ResolveAnim(KDSP_AnimBar *arg0, const char *arg1) {
     }
     temp_r3_3133 = this->unk74;
     if (temp_r3_3133 != NULL) {
-        arg0->unk8 = temp_r3_3133->GetAnim(arg1);
+        arg0->unk8 = (unsigned long) (temp_r3_3133->GetAnim(arg1));
         arg0->unk10 &= ~0x40;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void KDSP_Actor::ResolveLipsBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
@@ -2205,7 +2197,7 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
 
     if (this->unk40 & 4) {
         if (MKHeap::Current() != NULL) {
-            var_r3_3857 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x40, NULL, 0);
+            var_r3_3857 = (Matrix *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x40, NULL, 0));
         } else {
             var_r3_3857 = malloc(0x40);
         }
@@ -2321,7 +2313,7 @@ void KDSP_Actor::HideSpecialSubObjects() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[5], int)' does not match
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[5], int)' does not match 'strnicmp(const char *, const char *, int)' Too many errors printed, aborting program
 void HideSpecialSubObjectsInternal(MKModel *arg0) {
     s16 temp_r30_4138;
     u16 var_r28_4140;
@@ -2341,7 +2333,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed
+#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed char *, int *)' does not match 'MKModel_SubObjectExists(const MKModel *, SubObjectType, 
 void ModelSubObjectHide(MKIniLine *arg0, MKModel *arg1) {
     s32 sp8;
     MKIniLine *var_r30_4198;
@@ -2449,7 +2441,7 @@ u8 LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSy
 }
 #endif
 
-#if 0 // DRAFT: function call
+#if 0 // DRAFT: function call 'LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12K DSynkerHeapP15KDSP_GenericBarii_vRi(KDSP_Actor *, KDSynkerHeap *, MKIn
 void KDSP_Actor::LoadActorSection(KDSynkerHeap *arg0, MKIniLine *arg1, int &arg2) {
     s32 sp64;
     s32 sp60;
@@ -2725,7 +2717,7 @@ loop_4:
     return 0;
 }
 
-#if 0 // DRAFT: function call 'strstr(const char *)' does not match
+#if 0 // DRAFT: function call 'strstr(const char *)' does not match 'strstr(signed char *)'
 u8 KDSP_Actor::HeapAddSizeBar(KDSynkerHeap *arg0, MKIniLine *arg1, const char *arg2, int arg3) {
     MKIniLine *var_r29_5057;
     s32 temp_r3_5075;
@@ -2766,17 +2758,17 @@ u8 KDSP_Actor::LoadADSBadRef(MKIniLine *arg0) {
     return (u8) (arg0->IsField("BADRef") != 0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 u8 KDSP_Actor::LoadADSPropID(MKIniLine *arg0) {
     MKSceneManager *temp_r3_5181;
     s32 temp_ret_5179;
 
     if (arg0->IsField("PropID") != 0) {
         temp_ret_5179 = arg0->GetInt(0);
-        this->unk64 = temp_ret_5179;
+        this->unk64 = (MKSceneManager *) (temp_ret_5179);
         temp_r3_5181 = this->unk64;
         if (temp_r3_5181 > 0) {
-            this->unk30 = temp_r3_5181->PropResolver_Resolve((s32) (u32) (u64) temp_ret_5179);
+            this->unk30 = (unsigned long) (temp_r3_5181->PropResolver_Resolve((s32) (u32) (u64) temp_ret_5179));
         }
         return 1U;
     }
@@ -2784,13 +2776,12 @@ u8 KDSP_Actor::LoadADSPropID(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_Actor::LoadActorDataSection(KDSynkerHeap *arg0, MKIniLine *arg1) {
     MKIniLine *var_r31_5220;
     u8 var_r28_5225;
 
-    this->unk5C = arg1->GetString(0);
-    this->unk60 = arg1->GetString(1);
+    this->unk5C = (signed char *) (arg1->GetString(0));
+    this->unk60 = (signed char *) (arg1->GetString(1));
     var_r31_5220 = arg1->unkC->GetSubLine(arg1);
 loop_11:
     if (var_r31_5220 != NULL) {
@@ -2805,7 +2796,6 @@ loop_11:
         goto loop_11;
     }
 }
-#endif
 
 void KDSP_Actor::Init() {
     this->unkC4 = -1;

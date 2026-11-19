@@ -107,10 +107,8 @@ inline KDParticleSystem::~KDParticleSystem() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to
 inline void *KDParticleSystem::GetName() {
-    return "KDParticles";
+    return (void *) ("KDParticles");
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDPARTICLESYSTEM_H

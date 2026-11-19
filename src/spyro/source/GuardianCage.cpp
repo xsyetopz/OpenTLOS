@@ -208,7 +208,7 @@ void GuardianCage::StateDeadUpdate() {
 
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void GuardianCage::StateDeadEnter() {
     f64 sp140;
     f64 sp138;
@@ -569,7 +569,7 @@ void GuardianCage::StateDyingEnter() {
     spE4 = -1;
     spE8 = 0;
     sp58 = (f64) sp38;
-    temp_r3_616 = ((u8 *) this->unk8) + 0x30;
+    temp_r3_616 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
     sp88 = sp18;
     sp90 = (f64) sp20;
     sp60 = (f64) sp40;
@@ -691,7 +691,7 @@ void GuardianCage::StateFloatingEnter() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GuardianCage::GetBeamPosition(int arg0) {
     MKVector3 sp8;
 
@@ -729,7 +729,7 @@ void GuardianCage::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void *GuardianCage::Update() {
     Matrix sp20;
     MKVector3 sp10;
@@ -748,10 +748,10 @@ void *GuardianCage::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to 'long *'
 f32 GuardianCage::Resolve() {
     KDPropEx::Resolve();
-    this->unk144 = checked_cast<Guardian *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "EarthGuardian"));
+    this->unk144 = (long *) (checked_cast<Guardian *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "EarthGuardian")));
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->Init((KDStateMachine<GuardianCage>::State *) GuardianCage::states, NULL);
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 1, 0U);
 }

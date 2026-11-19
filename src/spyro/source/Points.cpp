@@ -20,7 +20,7 @@ M2C_UNK free(M2C_UNK *);                            /* extern */
 M2C_UNK *malloc(s32);                               /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 static Points<FogPointInfo> fog;
-#if 0 // DRAFT: identifier 'wind' redeclared
+#if 0 // DRAFT: identifier 'wind' redeclared was declared as: 'MKWind' now declared as: 'Points<WindPointInfo>'
 static Points<WindPointInfo> wind;
 #endif
 
@@ -100,7 +100,7 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
+#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void WindPoints_Blend(const WindPointInfo &arg0, const WindPointInfo &arg1, float arg2) {
     f32 sp68;
     f64 sp60;
@@ -145,7 +145,7 @@ loop_4:
         temp_r0_727 = M2C_FIELD(var_r3_719, u32 *, -4);
         var_r3_719 -= 4;
         if (temp_r0_727 != 0U) {
-            temp_r0_722 = *var_r3_719;
+            temp_r0_722 = (long *) (*var_r3_719);
             if (temp_r0_722 < var_r30_718) {
                 var_r30_718 = temp_r0_722;
             }
@@ -153,7 +153,7 @@ loop_4:
         }
         if (var_r3_719 != &gEmptyPtrListDL) {
 loop_10:
-            temp_r0_741 = *var_r4_717;
+            temp_r0_741 = (long *) (*var_r4_717);
             if (temp_r0_741 != NULL) {
                 if (temp_r0_741 < var_r30_718) {
                     var_r30_718 = temp_r0_741;
@@ -174,17 +174,16 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'float'
 void WindPoints_Init(const char *arg0) {
     wind.Init(arg0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
 void WindPoints_DeinitModule() {
     M2C_UNK *temp_r31_1042;
 
-    temp_r31_1042 = wind.unk0;
+    temp_r31_1042 = (long *) (wind.unk0);
     if (temp_r31_1042 != NULL) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1042, NULL, 0);
@@ -194,7 +193,6 @@ void WindPoints_DeinitModule() {
     }
     wind.unk0 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk4'
 void WindPoints_InitModule() {
@@ -203,11 +201,11 @@ void WindPoints_InitModule() {
     wind.unk4 = 0x14;
     wind.unk8 = 0x2710;
     if (MKHeap::Current() != NULL) {
-        var_r3_1088 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0);
+        var_r3_1088 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0));
     } else {
         var_r3_1088 = malloc(0x640);
     }
-    wind.unk0 = var_r3_1088;
+    wind.unk0 = (signed char) (var_r3_1088);
     memset(var_r3_1088, 0, wind.unk4 * (wind.unk4 * 4));
     wind.unk10 = 0;
     MKWind_Set(400.0f, 40000.0f, 1000.0f, 400.0f, MKVector3::zero, 1.0f);
@@ -234,7 +232,7 @@ void FogPoints_Update(const MKVector3 &arg0, FogInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector4)' does not match
+#if 0 // DRAFT: function call 'operator*(float, MKVector4)' does not match 'MKVector4::operator*(float)const '
 FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1, float arg2) {
     f32 sp6C;
     f32 sp68;
@@ -284,7 +282,7 @@ loop_4:
         temp_r0_1783 = M2C_FIELD(var_r3_1775, u32 *, -4);
         var_r3_1775 -= 4;
         if (temp_r0_1783 != 0U) {
-            temp_r0_1778 = *var_r3_1775;
+            temp_r0_1778 = (long *) (*var_r3_1775);
             if (temp_r0_1778 < var_r30_1774) {
                 var_r30_1774 = temp_r0_1778;
             }
@@ -292,7 +290,7 @@ loop_4:
         }
         if (var_r3_1775 != &gEmptyPtrListDL) {
 loop_10:
-            temp_r0_1797 = *var_r4_1773;
+            temp_r0_1797 = (long *) (*var_r4_1773);
             if (temp_r0_1797 != NULL) {
                 if (temp_r0_1797 < var_r30_1774) {
                     var_r30_1774 = temp_r0_1797;
@@ -340,7 +338,7 @@ void FogPoints_InitModule() {
     fog.unk4 = 0x14;
     fog.unk8 = 0x2710;
     if (MKHeap::Current() != NULL) {
-        var_r3_2153 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0);
+        var_r3_2153 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0));
     } else {
         var_r3_2153 = malloc(0x640);
     }

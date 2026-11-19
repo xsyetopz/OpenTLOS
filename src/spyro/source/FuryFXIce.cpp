@@ -96,7 +96,7 @@ extern GameGlobals gb;
 static s32 lit_744 = 0;
 static u8 lit_745 = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXIce::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -138,7 +138,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXIce::DrawIcePatches() {
     f64 sp2C8;
     f64 sp2C0;
@@ -330,7 +330,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXIce::UpdateIcePatches() {
     f32 temp_f3_486;
     f32 temp_f4_487;
@@ -503,7 +503,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
         var_r28_646 = *(temp_r5_632 + (temp_r29_630 * 4));
     }
     temp_r27_653 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    temp_r4_661 = gb.unk0->GetProp();
+    temp_r4_661 = (MKProp *) (gb.unk0->GetProp());
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk198 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
@@ -608,7 +608,7 @@ void FuryFXIce::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *FuryFXIce::Update() {
     s8 sp540;
     s32 sp53C;
@@ -1212,7 +1212,7 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to 'long *'
 f32 FuryFXIce::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1249,12 +1249,12 @@ f32 FuryFXIce::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk98 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_744, lit_745);
+    this->unk98 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_744, lit_745));
     temp_r4_2089 = this->unk98;
     if (temp_r4_2089 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2089, 0U);
     }
-    this->unk19C = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
+    this->unk19C = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
 }
 #endif
 

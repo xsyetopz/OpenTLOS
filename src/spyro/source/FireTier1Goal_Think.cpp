@@ -1128,7 +1128,7 @@ void EnemyGoal_FlyIdle::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 u8 EnemyGoal_FlyLand::Update() {
     Matrix sp30;
     f64 sp28;

@@ -31,7 +31,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void EnergyBeam::Deinit() {
     MKHeap *temp_r0_55;
     MKHeap *temp_r0_74;
@@ -513,7 +513,7 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
         sp40 = (f64) sp20;
         temp_f0_820 = 100.0f * M2C_FIELD(arg1, f32 *, 0xC);
         if (((temp_f3_814 * temp_f3_814) + ((temp_f1_812 * temp_f1_812) + (temp_f0_813 * temp_f0_813))) >= (temp_f0_820 * temp_f0_820)) {
-            temp_r0_827 = ((u8 *) temp_r3_785) + 0x30;
+            temp_r0_827 = (double *) (((u8 *) temp_r3_785) + 0x30);
             *temp_r0_827 *= (f64) temp_f31_776;
             M2C_FIELD(temp_r3_785, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r3_785, f32 *, 0x38) * temp_f31_776);
         }
@@ -523,7 +523,7 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'EnergyBeam::Beam *' and 'MKHeap *'
 void EnergyBeam::FreeEnergyBeam(EnergyBeam::Beam *arg1) {
     MKHeap *temp_r0_873;
     MKHeap *temp_r3_863;
@@ -624,7 +624,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void *EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
@@ -687,7 +687,7 @@ loop_11:
                         temp_r29_1086 = temp_r30_1204 + var_r31_1061;
                         temp_f0_1090 = M2C_FIELD(temp_r29_1086, f64 *, 0x50) * (f64) gUpdateTimeDelta;
                         sp38 = temp_f0_1090;
-                        temp_r28_1092 = ((u8 *) temp_r29_1086) + 0x30;
+                        temp_r28_1092 = (double *) (((u8 *) temp_r29_1086) + 0x30);
                         sp88 = temp_f0_1090;
                         sp40 = M2C_FIELD(temp_r29_1086, f32 *, 0x58) * gUpdateTimeDelta;
                         sp90 = (f64) sp40;
@@ -695,7 +695,7 @@ loop_11:
                         M2C_FIELD(temp_r29_1086, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x38) + (f32) sp90);
                         temp_f0_1111 = *temp_r28_1092 * (f64) gUpdateTimeDelta;
                         sp28 = temp_f0_1111;
-                        temp_r0_1113 = ((u8 *) temp_r29_1086) + 0x20;
+                        temp_r0_1113 = (double *) (((u8 *) temp_r29_1086) + 0x20);
                         sp78 = temp_f0_1111;
                         sp30 = M2C_FIELD(temp_r29_1086, f32 *, 0x38) * gUpdateTimeDelta;
                         sp80 = (f64) sp30;
@@ -733,7 +733,6 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnergyBeam::Init() {
     MKHeap *temp_r3_1258;
     MKHeap *temp_r4_1264;
@@ -743,7 +742,7 @@ void EnergyBeam::Init() {
 
     KDProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1243 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x34D8, NULL, 0);
+        var_r3_1243 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x34D8, NULL, 0));
     } else {
         var_r3_1243 = malloc(0x34D8);
     }
@@ -762,7 +761,6 @@ void EnergyBeam::Init() {
     temp_r4_1264 = this->unk90;
     this->unk90 = (MKHeap *) &temp_r4_1264->unk4;
     temp_r4_1264->unk4 = 0;
-    this->unkA8 = MKMaterial_Create("fx_351");
+    this->unkA8 = (MKMaterial *) (MKMaterial_Create("fx_351"));
     this->unk94.Init(8, 0U);
 }
-#endif

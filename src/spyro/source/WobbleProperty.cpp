@@ -28,7 +28,7 @@ void WobbleProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[8])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[8])' does not match 'stricmp(signed char *, long *)'
 s32 WobbleProperty::ResolveCommand(const char *arg0) const {
     return stricmp(arg0, "Disable") == 0;
 }
@@ -128,10 +128,10 @@ void WobbleProperty::Update() {
         }
         M2C_FIELD(*gb, M2C_UNK (**)(f64 *, void **), 0x2C)(&sp160, gb);
         sp1A0 = sp160;
-        temp_r30_116 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r30_116 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         sp1A8 = sp168;
         temp_r3_123 = *(*KDProperty::pInstanceMem + this->unk8);
-        temp_f30_124 = M2C_FIELD(*gb, f32 (**)(void **, void *, f64), 0x28)(gb, *KDProperty::pInstanceMem, sp160) + M2C_FIELD(temp_r30_116, f32 *, 4);
+        temp_f30_124 = (void *) (M2C_FIELD(*gb, f32 (**)(void **, void *, f64), 0x28)(gb, *KDProperty::pInstanceMem, sp160) + M2C_FIELD(temp_r30_116, f32 *, 4));
         sp100 = M2C_FIELD(temp_r3_123, f64 *, 0) - sp1A0;
         sp190 = sp100;
         sp108 = M2C_FIELD(temp_r3_123, f32 *, 8) - (f32) sp1A8;
@@ -230,7 +230,7 @@ void WobbleProperty::Update() {
             sp150 = temp_f0_317;
             M2C_FIELD(temp_r3_256, f32 *, 8) = (f64) sp28;
             sp158 = (f64) sp28;
-            temp_r4_334 = *KDProperty::pInstanceMem + this->unk8;
+            temp_r4_334 = (void *) (*KDProperty::pInstanceMem + this->unk8);
             temp_r3_335 = M2C_FIELD(temp_r4_334, void **, 0);
             sp180 = M2C_FIELD(temp_r3_256, f64 *, 0);
             sp188 = (f64) M2C_FIELD(temp_r3_256, f32 *, 8);
@@ -281,7 +281,7 @@ void WobbleProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: illegal type
 void WobbleProperty::LoadDoneInstance() {
     M2C_UNK sp1C;
     f32 sp10;
@@ -297,7 +297,7 @@ void WobbleProperty::LoadDoneInstance() {
     void *temp_r3_586;
 
     temp_r28_479 = M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4);
-    temp_r29_484 = *KDProperty::pInstanceMem;
+    temp_r29_484 = (void *) (*KDProperty::pInstanceMem);
     temp_r30_486 = this->unk8;
     *(temp_r29_484 + temp_r30_486) = MKDynamicBone_GetDynamicBone(temp_r28_479, ((Animation *) (MKModel_GetAnimation(temp_r28_479)))->GetNodeIndex(M2C_BITWISE(s8 *, this->unk14)));
     M2C_STRUCT_COPY((s32) &sp1C + 4, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) - 4 + 4, 0x40);
@@ -336,23 +336,23 @@ void WobbleProperty::LoadDoneInstance() {
         }
     }
     *(*KDProperty::pInstanceMem + (this->unk8 + 4)) = this->unk18 * (f32) fabs((f32) fabs(var_f4_510));
-    temp_r3_586 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_586 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_586, f32 *, 8) = (f32) (this->unk20 * M2C_FIELD(temp_r3_586, f32 *, 4));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 WobbleProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadString("bonename", (s8 **) &this->unk14, 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKIniLine *'
 void WobbleProperty::InitInstance() {
     f32 var_r31_632;
     void *temp_r4_629;
 
-    temp_r4_629 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r4_629 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r4_629, s8 *, 0xC) = 1;
     M2C_FIELD(temp_r4_629, s32 *, 0) = 0;
     var_r31_632 = this->unk10;
@@ -376,7 +376,7 @@ void WobbleProperty::Resolve(KDPropertySet *arg0) {
     this->unk2C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine *' to 'float'
 s32 WobbleProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_708;
 

@@ -218,7 +218,7 @@ void EarthBombFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to
+#if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to 'MKMessage *'
 void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionInfo *arg2) {
     s8 sp430;
     s32 sp42C;
@@ -472,7 +472,7 @@ void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
     var_r26_539 = 0;
 loop_18:
     if ((f32) var_r26_539 < (30.0f * var_f25_372)) {
-        temp_r27_547 = ((u8 *) this->unk8) + 0x30;
+        temp_r27_547 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
         temp_f19_549 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f20_554 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         sp170 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -719,7 +719,7 @@ void EarthBombFX::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *EarthBombFX::Update() {
     u8 sp388;
     s32 sp384;
@@ -1174,7 +1174,6 @@ void *EarthBombFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 EarthBombFX::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1211,13 +1210,12 @@ f32 EarthBombFX::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk100 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_728, lit_729);
+    this->unk100 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_728, lit_729));
     temp_r4_1894 = this->unk100;
     if (temp_r4_1894 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1894, 0U);
     }
 }
-#endif
 
 void EarthBombFX::Init() {
     GameProp::Init();
@@ -1244,7 +1242,7 @@ void EarthBombFXDescriptor::Deinit() {
 void EarthBombFXDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
-    this->unkE8 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBeamBlastPS"));
-    this->unkEC = MKMaterial_Create("fx_EarthBomb");
+    this->unkE8 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBeamBlastPS")));
+    this->unkEC = (MKMaterial *) (MKMaterial_Create("fx_EarthBomb"));
 }
 #endif

@@ -90,7 +90,7 @@ void FallingDustProp::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'GetInput(HeroInterface *, GameGlobals *)' does not match
+#if 0 // DRAFT: function call 'GetInput(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::GetInput()'
 void *FallingDustProp::Update() {
     s8 sp3A0;
     s32 sp39C;

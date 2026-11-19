@@ -39,7 +39,7 @@ void LightProp::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void LightProp::SetOrientation(Matrix *arg0) {
     MKVector3 sp28;
     f64 sp20;
@@ -82,7 +82,7 @@ void LightProp::SetOrientation(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void *LightProp::Update() {
     f64 sp20;
     f64 sp18;
@@ -112,7 +112,6 @@ void *LightProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 LightProp::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -148,11 +147,10 @@ s32 LightProp::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkC8 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1500.0f, lit_589, lit_590);
+    this->unkC8 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1500.0f, lit_589, lit_590));
     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkC8, 1U);
     this->unkE0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }
-#endif
 
 void LightProp::Init() {
     GameProp::Init();

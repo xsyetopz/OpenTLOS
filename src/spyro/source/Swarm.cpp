@@ -48,7 +48,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 static M2C_UNK lit_620;                                /* unable to generate initializer: unknown type; const */
 
 void SwarmPropDescriptor::Init() {
@@ -79,15 +78,13 @@ void SwarmPropDescriptor::Init() {
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     this->unk1C = (BoundingVolume *) &this->unk70;
-    this->unk90 = MKMaterial_Create("fx_013");
+    this->unk90 = (long) (MKMaterial_Create("fx_013"));
 }
-#endif
 
 void SwarmProp::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_620'
 void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector4 &arg2, float arg3) {
     f64 sp2C8;
     f64 sp2C0;
@@ -300,7 +297,6 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
     MKSetPositionV(*((MKVector3 *) &sp2C0));
     MKEnd();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8C'
 void SwarmProp::Draw() {
@@ -599,10 +595,10 @@ s32 SwarmProp::LoadDone() {
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
     if (temp_r31_890 == 0) {
-        this->unkF4 = &gEmptyPtrListDL + 4;
+        this->unkF4 = (SwarmEntity **) (&gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_912 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6), NULL, 0);
+            var_r3_912 = (SwarmEntity **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6), NULL, 0));
         } else {
             var_r3_912 = malloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6));
         }
@@ -676,7 +672,7 @@ s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     return arg0->LoadInt("EntityCount", (int *) &this->unkF0, 0);
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'SwarmEntity *' and 'SwarmEntity **'
 void SwarmProp::Deinit() {
     SwarmEntity **var_r31_1058;
     SwarmEntity **var_r3_1059;

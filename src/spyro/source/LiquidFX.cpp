@@ -252,7 +252,7 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, float arg5, bool arg6, BreathHitMessage *arg7, int arg8, int arg9) {
     s8 spE8;
     s32 spE4;
@@ -408,7 +408,7 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
     if ((s32) this->unk3F5C >= 0x64) {
         this->unk3F5C = 0;
     }
-    this->unk3F78 = &arg0;
+    this->unk3F78 = (long) (&arg0);
     this->unk3F80 = arg7;
     return 1;
 }
@@ -433,7 +433,7 @@ void LiquidFX::Deinit() {
     ((KDSpline *) &this->unk3F48)->Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void LiquidFX::Draw() {
     f64 sp3F50;
     f64 sp3F48;
@@ -1145,7 +1145,7 @@ loop_2:
                     spBA0.unk38 = (f32) spAB8;
                     spBA0.unk3C = 1.0f;
 loop_39:
-                    temp_r19_1274 = &spCA0 + var_r30_1265;
+                    temp_r19_1274 = (Matrix *) (&spCA0 + var_r30_1265);
                     ApplyMatrix(sp840, temp_r19_1274);
                     temp_r6_1280 = &spC60 + var_r30_1265;
                     M2C_FIELD(temp_r6_1280, f64 *, 0) = M2C_BITWISE(f64, sp840);
@@ -1419,7 +1419,7 @@ loop_62:
                 sp708 = (f64) sp148;
                 sp718 = (f64) sp3D8;
                 sp130 = (f64) sp3D0 * (f64) (f32) spA10;
-                temp_r17_1881 = ((u8 *) temp_r14_1650) + 0xC8;
+                temp_r17_1881 = (double *) (((u8 *) temp_r14_1650) + 0xC8);
                 sp720 = sp130;
                 sp138 = (f32) sp718 * (f32) spA10;
                 sp728 = (f64) sp138;
@@ -1907,7 +1907,7 @@ void *LiquidFX::Update() {
                     MKVector(0.0f, -3000.0f * M2C_FIELD(temp_r27_2717, f32 *, 0xFC), 0.0f);
                     temp_f0_2734 = sp288 * (f64) temp_f29_2729;
                     spE8 = temp_f0_2734;
-                    temp_r26_2736 = ((u8 *) temp_r27_2717) + 0xD8;
+                    temp_r26_2736 = (double *) (((u8 *) temp_r27_2717) + 0xD8);
                     sp298 = temp_f0_2734;
                     spF0 = sp290 * temp_f29_2729;
                     sp2A0 = (f64) spF0;
@@ -1925,7 +1925,7 @@ void *LiquidFX::Update() {
                     M2C_FIELD(temp_r27_2717, f64 *, 0xD0) = (f32) ((f32) M2C_FIELD(temp_r27_2717, f64 *, 0xD0) + (f32) sp280);
                     temp_f0_2781 = M2C_FIELD(temp_r27_2717, f64 *, 0x118) * (f64) gUpdateTimeDelta;
                     spC8 = temp_f0_2781;
-                    temp_r0_2783 = ((u8 *) temp_r27_2717) + 0x108;
+                    temp_r0_2783 = (double *) (((u8 *) temp_r27_2717) + 0x108);
                     sp268 = temp_f0_2781;
                     spD0 = M2C_FIELD(temp_r27_2717, f32 *, 0x120) * gUpdateTimeDelta;
                     sp270 = (f64) spD0;
@@ -2043,7 +2043,7 @@ void *LiquidFX::Update() {
                         var_f6_2986 = 1.0f;
                     }
                     temp_f4_2993 = M2C_FIELD(temp_r27_2717, f32 *, 0xF0);
-                    temp_r24_2994 = ((u8 *) temp_r27_2717) + 0xC8;
+                    temp_r24_2994 = (MKVector3 *) (((u8 *) temp_r27_2717) + 0xC8);
                     temp_f4_3003 = (var_f6_2986 * (var_f5_2966 - temp_f4_2993)) + temp_f4_2993;
                     M2C_FIELD(temp_r27_2717, f32 *, 0xF0) = (f32) ((var_f6_2986 * (var_f5_2966 - temp_f4_3003)) + temp_f4_3003);
                     sp310 = 0.0f;
@@ -2290,7 +2290,7 @@ void *LiquidFX::Update() {
                 if ((u8) M2C_FIELD(temp_r27_2717, u8 *, 0x159) != 0) {
                     temp_f0_3480 = (f64) M2C_FIELD(temp_r27_2717, f32 *, 0x138) * (f64) gUpdateTimeDelta;
                     sp38 = temp_f0_3480;
-                    temp_r0_3482 = ((u8 *) temp_r27_2717) + 0xC8;
+                    temp_r0_3482 = (double *) (((u8 *) temp_r27_2717) + 0xC8);
                     sp1A8 = temp_f0_3480;
                     sp40 = M2C_FIELD(temp_r27_2717, f32 *, 0x140) * gUpdateTimeDelta;
                     sp1B0 = (f64) sp40;
@@ -2397,7 +2397,7 @@ void *LiquidFX::Update() {
                         if (M2C_FIELD(temp_r27_2717, f32 *, 0x160) >= MKRand_Float((int *) &gViewSeed, 0.01f, 0.135f)) {
                             M2C_FIELD(temp_r27_2717, f32 *, 0x160) = 0.0f;
                         }
-                        temp_r24_3701 = ((u8 *) temp_r27_2717) + 0xC8;
+                        temp_r24_3701 = (KDWaterVolume *) (((u8 *) temp_r27_2717) + 0xC8);
                         if ((temp_r24_3701->IsWithin(sp24, &sp20, M2C_ERROR(/* Read from unset register $r6 */)) != 0) && (M2C_BITWISE(s32, sp20) == 0)) {
                             temp_f24_3715 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                             temp_f25_3720 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
@@ -2488,7 +2488,7 @@ f32 LiquidFX::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk3F84 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), IMPACT_LIGHT_RADIUS, lit_688, lit_689);
+    this->unk3F84 = (ManagedLight *) (((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), IMPACT_LIGHT_RADIUS, lit_688, lit_689));
     temp_r4_3898 = this->unk3F84;
     if (temp_r4_3898 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_3898, 0U);
@@ -2496,15 +2496,13 @@ f32 LiquidFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 s32 LiquidFX::LoadDone() {
     GameProp::LoadDone();
-    this->unk3F64 = MKMaterial_Create("p_debris_lava");
-    this->unk3F6C = MKMaterial_Create("liquidice");
-    this->unk3F70 = MKMaterial_Create("liquidiceblob");
-    this->unk3F74 = MKMaterial_Create("fx_380");
+    this->unk3F64 = (MKMaterial *) (MKMaterial_Create("p_debris_lava"));
+    this->unk3F6C = (MKMaterial *) (MKMaterial_Create("liquidice"));
+    this->unk3F70 = (MKMaterial *) (MKMaterial_Create("liquidiceblob"));
+    this->unk3F74 = (MKMaterial *) (MKMaterial_Create("fx_380"));
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void LiquidFX::Init() {
@@ -2543,14 +2541,13 @@ void LiquidFXDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'LiquidFXDescriptor *' to
 void LiquidFXDescriptor::Deinit() {
     LiquidFXDescriptor *temp_r3_4028;
     LiquidFXDescriptor *temp_r3_4034;
 
     KDPropExDescriptor::Deinit();
     if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc == this) {
-        *LiquidFXDescriptor::pFirstDesc = this->unkF0;
+        *LiquidFXDescriptor::pFirstDesc = (unsigned char) (this->unkF0);
     }
     temp_r3_4028 = this->unkEC;
     if (temp_r3_4028 != NULL) {
@@ -2564,12 +2561,11 @@ void LiquidFXDescriptor::Deinit() {
     this->unkF0 = NULL;
     this->unkE8 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
+#if 0 // DRAFT: pointer/array required
 void LiquidFXDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkF0 = *LiquidFXDescriptor::pFirstDesc;
+    this->unkF0 = (LiquidFXDescriptor *) (*LiquidFXDescriptor::pFirstDesc);
     this->unkEC = NULL;
     if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc != NULL) {
         (*LiquidFXDescriptor::pFirstDesc)->unkEC = this;

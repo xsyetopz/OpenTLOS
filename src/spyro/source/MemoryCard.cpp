@@ -41,9 +41,7 @@ u8 descriptor__12MCSaveScreen[0x14];                /* unable to generate initia
 u8 descriptor__6MCText[0x14];                       /* unable to generate initializer: cannot parse .L_8035CDFD as integer */
 static s32 memCardSlotSizes;
 static s8 gameNameBuffer[0x20];
-#if 0 // DRAFT: illegal implicit conversion from 'const char[16]' to
-static s8 *pDirectoryName = "BASLUS-21372s06";
-#endif
+static s8 *pDirectoryName = (signed char *) ("BASLUS-21372s06");
 u8 operation__16MemoryCardScreen[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
 #if 0 // DRAFT: illegal type
@@ -191,7 +189,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void MemoryCardScreen::OnExit() {
     s32 temp_r0_391;
 
@@ -207,7 +205,7 @@ void MemoryCardScreen::OnExit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MemoryCardScreen::OnEnter() {
     UIContainer *temp_r3_426;
     UIObject *var_r30_429;
@@ -313,7 +311,7 @@ void MCSaveScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void MCSaveScreen::OnEnter() {
     MemoryCardScreen::OnEnter();
     Autosave_EnableRemovalCheck(0U);
@@ -443,7 +441,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'char *' to
+#if 0 // DRAFT: illegal type
 s8 *MemoryCard_String(char *arg0, int arg1) {
     s32 temp_ret_1001;
     s32 var_r29_875;
@@ -459,7 +457,7 @@ s8 *MemoryCard_String(char *arg0, int arg1) {
     void *var_r31_878;
 
     var_r29_875 = 0;
-    var_r30_876 = arg0;
+    var_r30_876 = (signed char *) (arg0);
     var_r31_878 = *(gpTranslation_StringArray + (arg1 * 4));
 loop_42:
     temp_r4_1036 = M2C_FIELD(var_r31_878, u8 *, 0);
@@ -549,6 +547,6 @@ loop_25:
         goto loop_42;
     }
     *var_r30_876 = 0;
-    return arg0;
+    return (signed char *) (arg0);
 }
 #endif

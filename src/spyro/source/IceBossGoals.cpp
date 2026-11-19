@@ -296,7 +296,7 @@ void IceBossGoal_IceBreath::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 u8 IceBossGoal_IceBreath::Update() {
     MKCollisionResult sp300;
     Matrix sp2C0;
@@ -441,7 +441,7 @@ u8 IceBossGoal_IceBreath::Update() {
         }
         this->unk14 += 1;
         temp_r5_589 = this->unkC;
-        temp_r29_592 = ((u8 *) this->unk1C) + (var_r0_579 << 6);
+        temp_r29_592 = (Matrix *) (((u8 *) this->unk1C) + (var_r0_579 << 6));
         MKModel_GetRefPointMatrix(temp_r5_589->unk4, (s32) temp_r5_589->unkA38->unk284, temp_r29_592, 1U);
         if (((IceBoss *) this->unkC)->IsIceKing() != 0) {
             this->unkC->unkA0C->EmitConeBreathFx(3, 4000.0f, 0.5f, 1.5f, 0.0f, 0.5235987f);
@@ -945,7 +945,7 @@ u8 IceBossGoal_Stalactite::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
+#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to 'MKVector3 *'
 void IceBossGoal_Stalactite::Activate() {
     AnimSequence *temp_r4_1740;
     Enemy *temp_r3_1736;
@@ -1665,7 +1665,7 @@ u8 IceBossGoal_AttackPhase3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'IceBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'IceBoss' to 'unsigned char'
 void IceBossGoal_AttackPhase3::Activate() {
     f32 sp8;
     IceBoss *temp_r3_3121;
@@ -1899,7 +1899,7 @@ u8 IceBossGoal_AttackPhase2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'IceBoss' to
+#if 0 // DRAFT: illegal explicit conversion from 'IceBoss' to 'unsigned char'
 void IceBossGoal_AttackPhase2::Activate() {
     IceBoss *temp_r3_3656;
     IceBoss *temp_r3_3688;
@@ -2059,7 +2059,7 @@ void IceBossGoal_AttackPhase1::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
 u8 IceBossGoal_AttackPhase1::Update() {
     f32 sp8;
     Enemy *temp_r3_4038;
@@ -2143,7 +2143,7 @@ u8 IceBossGoal_AttackPhase1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Enemy' to
+#if 0 // DRAFT: illegal explicit conversion from 'Enemy' to 'unsigned char'
 void IceBossGoal_AttackPhase1::Activate() {
     Enemy *temp_r3_4223;
     Enemy *temp_r3_4255;
@@ -3014,7 +3014,7 @@ block_18:
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void IceBossGoal_Cutscene1::Activate() {
     f64 sp38;
     f64 sp30;
@@ -3402,7 +3402,7 @@ u8 IceBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 void IceBossGoal_Think::Arbitrate() {
     f32 spAC;
     f32 spA8;

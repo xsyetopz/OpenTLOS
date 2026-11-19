@@ -45,7 +45,7 @@ void BobProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
 s32 BobProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_105;
 
@@ -57,7 +57,6 @@ s32 BobProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void BobProperty::Update() {
     f64 sp40;
     f64 sp38;
@@ -76,7 +75,7 @@ void BobProperty::Update() {
     void *temp_r3_129;
     void *temp_r3_193;
 
-    temp_r3_129 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_129 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     if ((u8) M2C_FIELD(temp_r3_129, u8 *, 0x14) != 0) {
         temp_f1_137 = (gUpdateTimeDelta * this->unk30) + M2C_FIELD(temp_r3_129, f32 *, 0x10);
         if (temp_f1_137 > 6.2831855f) {
@@ -85,7 +84,7 @@ void BobProperty::Update() {
             var_f0_140 = temp_f1_137;
         }
         M2C_FIELD(temp_r3_129, f32 *, 0x10) = var_f0_140;
-        temp_r31_148 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r31_148 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         temp_f1_150 = _table_sinf(M2C_FIELD(temp_r31_148, f32 *, 0x10));
         temp_f0_154 = M2C_FIELD(this, f64 *, 0x20) * temp_f1_150;
         sp18 = temp_f0_154;
@@ -102,14 +101,13 @@ void BobProperty::Update() {
             return;
         }
         ((Matrix *) (*KDProperty::pInstanceMem + (this->unk8 + 0x20)))->SetIdentity();
-        temp_r3_193 = *KDProperty::pInstanceMem + (this->unk8 + 0x20);
+        temp_r3_193 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x20));
         M2C_FIELD(temp_r3_193, f32 *, 0x30) = (f32) sp38;
         M2C_FIELD(temp_r3_193, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp38 + 0x4));
         M2C_FIELD(temp_r3_193, f32 *, 0x38) = (f32) sp40;
         M2C_FIELD(temp_r3_193, f32 *, 0x3C) = 1.0f;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void BobProperty::ResolveInstance() {
@@ -122,7 +120,7 @@ void BobProperty::ResolveInstance() {
 
     if (((s8 *) this->unk10 != NULL) && (stricmp"localToWorld" == 0)) {
         MKModel_GetPosition(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-        temp_r3_235 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r3_235 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         M2C_FIELD(temp_r3_235, f64 *, 0) = (f64) *M2C_ERROR(/* Read from unset register $r3 */);
         M2C_FIELD(temp_r3_235, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
         return;
@@ -140,18 +138,17 @@ void BobProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'bool *'
 s32 BobProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadBool("Enabled", *KDProperty::pInstanceMem + (this->unk8 + 0x14), 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void BobProperty::InitInstance() {
     MKIniLine *var_r31_329;
     void *temp_r3_322;
 
-    temp_r3_322 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_322 = (void *) (*KDProperty::pInstanceMem + this->unk8);
     M2C_FIELD(temp_r3_322, s8 *, 0x14) = 0;
     M2C_FIELD(temp_r3_322, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_322, f32 *, 4) = 0.0f;
@@ -166,7 +163,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void BobProperty::Resolve(KDPropertySet *arg0) {
@@ -177,7 +173,7 @@ void BobProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 BobProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_409;
 
@@ -192,7 +188,6 @@ s32 BobProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 BobProperty::BobProperty() {
     f64 sp20;
     f64 sp18;
@@ -204,7 +199,7 @@ BobProperty::BobProperty() {
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;
-    this->unk10 = "localToWorld";
+    this->unk10 = (signed char *) ("localToWorld");
     sp10 = 100.0f;
     sp8 = 100.0f;
     spC = 100.0f;
@@ -216,4 +211,3 @@ BobProperty::BobProperty() {
     sp20 = (f64) sp10;
     this->unk34 = -1;
 }
-#endif

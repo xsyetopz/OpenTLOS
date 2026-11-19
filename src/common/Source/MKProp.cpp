@@ -44,7 +44,7 @@ M2C_UNK free(s8 *);                                 /* extern */
 s32 stricmp(M2C_UNK *, Texture *);                  /* extern */
 extern void *gMK;
 
-#if 0 // DRAFT: identifier 'MKPropDescriptor::CreateInstance()' redeclared
+#if 0 // DRAFT: identifier 'MKPropDescriptor::CreateInstance()' redeclared was declared as: 'MKProp * ()' now declared as: 'void * ()'
 void *MKPropDescriptor::CreateInstance() {
     void *var_r31_18;
 
@@ -55,14 +55,14 @@ loop_4:
     }
     if (M2C_FIELD(var_r31_18, s32 *, 0x18) & 0x80000000) {
         M2C_FIELD(M2C_FIELD(var_r31_18, void **, 0x44), M2C_UNK (**)(void *), 0x30)(var_r31_18);
-        return var_r31_18;
+        return (MKProp *) (var_r31_18);
     }
     var_r31_18 = M2C_FIELD(var_r31_18, void **, 0x38);
     goto loop_4;
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match
+#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match 'stricmp(long *, Texture *)'
 void MKPropDescriptor::ParseGMSection(MKIni *arg0, MKIniLine *arg1) {
     MKIniLine *temp_r3_58;
     MKIniLine *var_r31_54;
@@ -83,7 +83,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[6]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKPropDescriptor::LoadDone() {
     f32 sp8;
     BoundingVolume *temp_r3_358;
@@ -126,7 +126,7 @@ void MKPropDescriptor::LoadDone() {
     } else {
         var_r3_103 = NULL;
     }
-    var_r4_110 = "alias";
+    var_r4_110 = (long *) ("alias");
     if ((var_r3_103 != NULL) && (temp_ret_114 = var_r3_103->GotoLine(this->unk0, "cacheWorldspace"), var_r4_110 = (M2C_UNK *) (u32) (u64) temp_ret_114, ((temp_ret_114 == NULL) == 0))) {
         var_r31_117 = (s8 *)1;
     } else {
@@ -137,16 +137,16 @@ void MKPropDescriptor::LoadDone() {
     if (temp_r3_124 != NULL) {
         temp_ret_129 = Str_Printf(temp_r3_124, this->unk0);
         temp_ret_136 = Str_Printf("%s%s", temp_ret_129, ".bad", M2C_BITWISE(f32, temp_ret_129));
-        temp_r3_136 = temp_ret_136;
+        temp_r3_136 = (MKIni *) (temp_ret_136);
         temp_ret_142 = Str_Printf(this->unk34, this->unk0, M2C_BITWISE(f32, temp_ret_136));
         temp_ret_149 = Str_Printf("%s%s", temp_ret_142, ".bbi", M2C_BITWISE(f32, temp_ret_142));
-        temp_ret_153 = temp_r3_136->Exists((s8 *) (u32) (u64) temp_ret_149);
+        temp_ret_153 = (const char *) (temp_r3_136->Exists((s8 *) (u32) (u64) temp_ret_149));
         var_f1_153 = M2C_BITWISE(f32, temp_ret_153);
         if ((temp_ret_153 != 0) || (temp_ret_158 = MKArchive_Exists(&temp_r3_136->unk0, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_158), ((temp_ret_158 == 0) == 0)) || (temp_ret_163 = MKArchive_Exists(temp_ret_149, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_163), ((temp_ret_163 == 0) == 0))) {
             this->unk34 = ((MKAnimScript *) (Str_Printf(this->unk34, this->unk0, var_f1_153)))->Create(var_r31_117, M2C_ERROR(/* Read from unset register $r5 */));
             this->unk2C = M2C_FIELD(this->unk34, MKModel **, 8);
-            this->unk30 = MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8));
-            this->unk1C = MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1);
+            this->unk30 = (signed char *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8)));
+            this->unk1C = (BoundingVolume *) (MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1));
         } else {
             this->unk34 = NULL;
             this->unk2C = NULL;
@@ -164,12 +164,12 @@ void MKPropDescriptor::LoadDone() {
                     RemStaticPrefix(Str_Printf(temp_r3_212, this->unk0, temp_f1_209));
                     RemStaticPrefix(Str_Printf((s8 *) this->unk2C, this->unk0));
                     this->unk2C = MKModel_Create(M2C_ERROR(/* Read from unset register $r3 */), M2C_ERROR(/* Read from unset register $r3 */), 2, NULL);
-                    this->unk30 = MKModel_GetAnimation(this->unk2C);
+                    this->unk30 = (signed char *) (MKModel_GetAnimation(this->unk2C));
                 } else {
                     RemStaticPrefix(Str_Printf((s8 *) this->unk2C, this->unk0, temp_f1_209));
                     this->unk2C = MKModel_Create(M2C_ERROR(/* Read from unset register $r3 */), NULL, 2, NULL);
                 }
-                this->unk1C = MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1);
+                this->unk1C = (BoundingVolume *) (MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1));
             } else {
                 this->unk2C = NULL;
                 this->unk30 = NULL;
@@ -183,7 +183,7 @@ void MKPropDescriptor::LoadDone() {
                 temp_ret_279 = MKArchive_Exists(Str_Printf("%s%s", M2C_ERROR(/* Read from unset register $r3 */), ".anm"), NULL);
                 if (temp_ret_279 != 0) {
                     RemStaticPrefix(Str_Printf(this->unk30, this->unk0, M2C_BITWISE(f32, temp_ret_279)));
-                    this->unk30 = ((Animation *) (M2C_ERROR(/* Read from unset register $r3 */)))->Create(var_r31_117, M2C_ERROR(/* Read from unset register $r5 */));
+                    this->unk30 = (const char *) (((Animation *) (M2C_ERROR(/* Read from unset register $r3 */)))->Create(var_r31_117, M2C_ERROR(/* Read from unset register $r5 */)));
                 } else {
                     this->unk30 = NULL;
                     this->unk14 &= 0xFFFFFFFC;
@@ -195,7 +195,7 @@ void MKPropDescriptor::LoadDone() {
     temp_r3_301 = this->unk38;
     if (temp_r3_301 != NULL) {
         RemStaticPrefix(Str_Printf(temp_r3_301, this->unk0));
-        this->unk38 = MKMaterial_Create(M2C_ERROR(/* Read from unset register $r3 */));
+        this->unk38 = (signed char *) (MKMaterial_Create(M2C_ERROR(/* Read from unset register $r3 */)));
     }
     NULL->DisableClothCreate(M2C_ERROR(/* Read from unset register $r4 */));
     if ((MKModel *) this->unk2C != NULL) {
@@ -515,7 +515,6 @@ f32 MKProp::Resolve() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 MKProp::LoadDone() {
     MKModel *temp_r3_1331;
 
@@ -523,15 +522,14 @@ s32 MKProp::LoadDone() {
     temp_r3_1331 = this->unk4;
     if (temp_r3_1331 != NULL) {
         MKModel_SetWorldMatrix(temp_r3_1331, *((Matrix *) &MKProp::loadInfo));
-        this->unk8 = MKModel_GetWorldMatrix(this->unk4);
+        this->unk8 = (void *) (MKModel_GetWorldMatrix(this->unk4));
         if (MKModel_GetCloth(this->unk4) != NULL) {
-            this->unkC = MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1);
+            this->unkC = (BoundingVolume *) (MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1));
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 s32 MKProp::LoadLine(MKIniLine *arg0) {
     s32 var_r4_1383;
 

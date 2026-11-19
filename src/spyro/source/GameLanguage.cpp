@@ -103,7 +103,7 @@ void GameLanguage_GetCode(int arg0) {
     Translation_GetLanguageCode((TranslationLanguage) var_r3_0);
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, int)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, int)' does not match 'stricmp(signed char *, long)'
 s32 GameLanguage_LanguageByCode(const char *arg0) {
     s32 var_r31_245;
 

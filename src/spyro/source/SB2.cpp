@@ -60,7 +60,7 @@ static f32 fSBInverseWeight[0x12] = {
     3.0f,
     0.0f,
 };
-#if 0 // DRAFT: identifier 'fGameTimeLastUpdate' redeclared
+#if 0 // DRAFT: identifier 'fGameTimeLastUpdate' redeclared was declared as: 'unsigned char[4]' now declared as: 'float'
 static M2C_UNK vBaseHeading;                        /* unable to generate initializer: unknown type */
 static f32 fGameTimeLastUpdate = -1.0f;
 #endif
@@ -99,7 +99,7 @@ void SteerDirection::Init() {
     this->unk88 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'SB2' to
+#if 0 // DRAFT: illegal implicit conversion from 'SB2' to 'float'
 void SB2::Arbitrate() {
     f64 spA0;                                       /* compiler-managed */
     f64 sp98;
@@ -283,7 +283,7 @@ void SB2::Calculate(unsigned int arg0) {
             var_r30_327 = 1;
         }
         if (var_r30_327 != 0) {
-            temp_r3_341 = M2C_FIELD(arg0, Character **, 0)->unk8;
+            temp_r3_341 = (Matrix *) (M2C_FIELD(arg0, Character **, 0)->unk8);
             sp90.unk10 = M2C_FIELD(temp_r3_341, f64 *, 0x30);
             sp90.unk18 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
             ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &sp90.unk10));
@@ -316,7 +316,7 @@ void SB2::Calculate(unsigned int arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x4000) {
         ((SB2 *) arg0)->GraphFollowingSetGoal();
     }
-    temp_r5_419 = M2C_FIELD(arg0, Character **, 0)->unk8;
+    temp_r5_419 = (Matrix *) (M2C_FIELD(arg0, Character **, 0)->unk8);
     sp70 = M2C_FIELD(temp_r5_419, f64 *, 0x30);
     sp78 = M2C_FIELD(temp_r5_419, f64 *, 0x38);
     ((AITargetData *) (arg0 + 0x18))->Update(*((MKVector3 *) &sp70));
@@ -329,7 +329,7 @@ void SB2::Calculate(unsigned int arg0) {
 loop_32:
     ((SteerDirection *) (arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100)))->Init();
     KDMath_RotateVectorByYaw(sp40, STEER_DIR_ANGLES[M2C_FIELD(arg0, s32 *, 0x3F8)]);
-    temp_r3_486 = arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100);
+    temp_r3_486 = (void *) (arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100));
     M2C_FIELD(temp_r3_486, f64 *, 0) = M2C_BITWISE(f64, sp40);
     M2C_FIELD(temp_r3_486, f64 *, 8) = (f64) sp40.unk8;
     if (M2C_FIELD(arg0, s32 *, 0x460) & 1) {
@@ -376,7 +376,7 @@ loop_32:
     }
     if ((s32) M2C_FIELD(arg0, s32 *, 0x3F8) >= 5) {
         ((SB2 *) arg0)->Arbitrate();
-        temp_r3_590 = M2C_FIELD(arg0, Character **, 0)->unk8;
+        temp_r3_590 = (Matrix *) (M2C_FIELD(arg0, Character **, 0)->unk8);
         sp20 = -temp_r3_590->unk20;
         sp24 = -temp_r3_590->unk24;
         sp28 = -temp_r3_590->unk28;
@@ -769,7 +769,7 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 void SB2::GraphFollowing_EvadeMidNodeTraversal() {
     f64 sp110;
     f64 sp108;
@@ -1012,7 +1012,7 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SB2::GraphFollowing_EvadeNoMoreNodes() {
     CharacterGraphNode *sp2C;
     CharacterGraphNode *sp28;
@@ -1432,7 +1432,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
 void SB2::GraphFollowing_PursuitMidNodeTraversal() {
     f64 sp108;
     f64 sp100;
@@ -1617,7 +1617,7 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SB2::GraphFollowing_PursuitNoMoreNodes() {
     CharacterGraphNode *sp2C;
     CharacterGraphNode *sp28;
@@ -2034,7 +2034,7 @@ void SB2::GraphFollowing_RandomMidNodeTraversal() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SB2::GraphFollowing_RandomNoMoreNodes() {
     CharacterGraphNode *sp2C;
     CharacterGraphNode *sp28;
@@ -2367,7 +2367,7 @@ void SB2::HazardAvoidanceOn() {
     this->unk460 |= 0x10000;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SB2::Containment() {
     f64 spB8;
     f64 spB0;
@@ -2961,7 +2961,7 @@ void SB2::PathFollowing() {
     Seek();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void SB2::PathFollowingSetGoal() {
     f64 sp140;
     f64 sp138;
@@ -3249,7 +3249,7 @@ void SB2::PathFollowingOff() {
     this->unk434 &= ~8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'KDPathPoint *'
 void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool arg3, bool arg4, float arg5) {
     f64 sp60;
     f64 sp58;
@@ -3300,7 +3300,7 @@ void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool 
     this->unk434 = (this->unk434 & ~0x10) | ((arg2 << 4) & 0x10);
     this->unk434 &= ~8;
     if (((u8) this->unk434 >> 4U) & 1) {
-        this->unk430 = ((KDPathSegment *) arg0)->GetIndexOf(((KDPathSegment *) arg0)->GetNearestPointXZ(*((MKVector3 *) &sp58)));
+        this->unk430 = (KDPathPoint *) (((KDPathSegment *) arg0)->GetIndexOf(((KDPathSegment *) arg0)->GetNearestPointXZ(*((MKVector3 *) &sp58))));
         temp_r7_5420 = this->unk420;
         temp_r6_5421 = this->unk430;
         temp_r3_5422 = temp_r7_5420->unk1C;
@@ -3858,7 +3858,7 @@ void SB2::Pursuit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
 u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     AITargetData spB0;
     f32 sp90;

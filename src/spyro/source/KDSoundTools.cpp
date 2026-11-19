@@ -138,7 +138,7 @@ void KDSound_SoundWall::Deinit() {
     KDSound_Stop((int *) &this->unk0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void KDSound_SoundWall::Init(KDUniformSpline *arg0, float arg1, int arg2, int arg3, int arg4, float arg5, float arg6, float arg7, float arg8) {
     KDUniformSpline sp10;
     f32 sp8;
@@ -383,7 +383,7 @@ void KDSound_AfterRumble::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float arg3) {
     f64 spC0;
     f64 spB8;

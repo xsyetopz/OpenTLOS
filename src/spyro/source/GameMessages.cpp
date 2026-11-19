@@ -57,7 +57,7 @@
 
 extern s32 GS_PLACEHOLDER;
 
-#if 0 // DRAFT: illegal explicit conversion from 'EventCamera' to
+#if 0 // DRAFT: illegal explicit conversion from 'EventCamera' to 'double'
 u8 FuryEventCameraMsg::IsSenderBehindWall(EventCamera *arg0) {
     EventCamera sp90;
     f64 sp88;

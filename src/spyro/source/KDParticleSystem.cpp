@@ -20,7 +20,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 f64 pow(f32, f32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 static M2C_UNK gDefaultEnvelope;                    /* unable to generate initializer: unknown type */
 
 void KDEnvParticleSystem::KDEnvConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {
@@ -116,7 +116,7 @@ loop_5:
                 var_r3_142 += 0x14;
                 goto loop_5;
             }
-            temp_r3_163 = temp_r29_60 + ((var_r5_141 - 1) * 0x14);
+            temp_r3_163 = (void *) (temp_r29_60 + ((var_r5_141 - 1) * 0x14));
             temp_f4_164 = M2C_FIELD(temp_r3_163, f32 *, 0);
             temp_f3_169 = (temp_f0_152 - temp_f4_164) / (temp_f2_158 - temp_f4_164);
             var_r28_86->unk1C = (temp_f3_169 * M2C_FIELD(temp_r3_163, f32 *, 0xC)) + M2C_FIELD(temp_r3_163, f32 *, 4);
@@ -168,7 +168,7 @@ void KDEnvParticleSystemDescriptor::LoadDone() {
     CalculateEnvelope();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'float *'
 s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_334;
     s32 temp_r27_313;
@@ -260,7 +260,7 @@ void KDEnvParticleSystemDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void KDParticleSystem::KDConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {
     arg0->unk28 = 1.0f;
     arg0->unk20 = 0.0f;

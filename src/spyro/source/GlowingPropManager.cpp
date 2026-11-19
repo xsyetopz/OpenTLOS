@@ -34,7 +34,7 @@ u8 GlowingPropManager::AddProp(MKProp *arg0) {
     return 1U;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: type mismatch 'MKProp **' and 'MKProp ***'
 void GlowingPropManager::Deinit() {
     MKProp ***var_r31_35;
     MKProp ***var_r3_36;
@@ -105,7 +105,6 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void GlowingPropManager::Init() {
     MKProp ***temp_r3_155;
     MKProp ***temp_r3_161;
@@ -114,7 +113,7 @@ void GlowingPropManager::Init() {
     s32 var_ctr_153;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_140 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
+        var_r3_140 = (MKProp ***) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0));
     } else {
         var_r3_140 = malloc(0xA8);
     }
@@ -134,7 +133,6 @@ void GlowingPropManager::Init() {
     this->unk0 = temp_r3_161 + 4;
     M2C_FIELD(temp_r3_161, MKProp ****, 4) = NULL;
 }
-#endif
 
 void GlowingProp::EndGlowingPropDraw() {
     if ((u8) this->unk14 != 0) {
@@ -242,9 +240,7 @@ void GlowingProp::Deinit() {
     MKMaterial_Destroy(this->unk10);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void GlowingProp::Init() {
     this->unk14 = 1;
-    this->unk10 = MKMaterial_Create("fx_PropGlow");
+    this->unk10 = (MKMaterial *) (MKMaterial_Create("fx_PropGlow"));
 }
-#endif
