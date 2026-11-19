@@ -53,10 +53,13 @@ def qualified(name: str):
     try:
         sym = parse(name)
     except Exception:  # noqa: BLE001 - the demangler raises bare ValueError/AssertionError on C names
-        return None
-    parts = [str(q) for q in sym.name.qualified_name or []]
+        sym = None
+    parts = [str(q) for q in sym.name.qualified_name or []] if sym else []
     if len(parts) < 2:
-        return None
+        # Static data members mangle as `member__<class>` with no type, which the demangler misreads.
+        m = re.match(r"^([A-Za-z_]\w*?)__((?:\d+|Q\d)\w+)$", name)
+        cls = m and class_name(m.group(2))
+        return (cls, m.group(1), "") if cls and not m.group(1).startswith("__") else None
     return "::".join(parts[:-1]), parts[-1], str(sym.type)
 
 

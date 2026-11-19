@@ -104,6 +104,9 @@ def class_body(model: Model, name: str, refs: Refs, nested: set) -> list[str]:
             add(method_decl(model, name, m, refs))
     for s in c["statics"]:
         typ = model.globs.get(s["mangled"])
+        # m2c types a static it cannot place as its owning class by value; keep a class type only if it fits.
+        if typ in model.classes and (not model.embeddable(typ) or model.end(typ) > s["size"]):
+            typ = None
         if typ:
             refs.ctype(typ)
         add(f"static {typ} {s['name']};" if typ else f"static u8 {s['name']}[{s['size']:#x}];")

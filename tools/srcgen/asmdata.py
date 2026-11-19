@@ -5,7 +5,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-FN = re.compile(r'^\.fn "?([^",]+)"?, (\w+)$', re.M)
+# Quoted names may hold commas (`checked_cast<A,B>__F...`); bare names cannot.
+FN = re.compile(r'^\.fn (?:"([^"]+)"|([^\s",]+)), (\w+)$', re.M)
 OBJ = re.compile(r'^\.obj "?([^",]+)"?, \w+$')
 WIDTH = {".byte": 1, ".2byte": 2, ".4byte": 4}
 
@@ -38,4 +39,4 @@ def objects(asm: Path, prefix: str = "@stringBase") -> dict[str, bytes]:
 
 def bindings(asm: Path) -> dict[str, str]:
     """{function name: `global`/`local`/`weak`} from dtk's `.fn` lines."""
-    return dict(FN.findall(asm.read_text()))
+    return {q or bare: bind for q, bare, bind in FN.findall(asm.read_text())}
