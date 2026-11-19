@@ -26,56 +26,48 @@ extern MKDynamicBoneSystem gDynamicBones;
 extern MKAttachment *pDeathRow;
 extern s8 *pTemplatesList;
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_EnableClothUpdate(MKModel *arg0, bool arg1) {
-    f32 temp_r3_14;
+    ModelCloth *temp_r3_14;
 
-    temp_r3_14 = arg0->unk10.unk74;
-    if (M2C_BITWISE(u32, temp_r3_14) != 0U) {
-        M2C_FIELD(temp_r3_14, u8 *, 0x31) = arg1;
+    temp_r3_14 = arg0->unk84;
+    if (temp_r3_14 != NULL) {
+        temp_r3_14->unk31 = (s8) arg1;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_UpdateCloth(MKModel *arg0) {
-    f32 temp_r3_27;
+    ModelCloth *temp_r3_27;
 
-    temp_r3_27 = arg0->unk10.unk74;
-    if (M2C_BITWISE(u32, temp_r3_27) != 0U) {
-        ((ModelCloth *) (M2C_BITWISE(ModelCloth *, temp_r3_27)))->Update();
+    temp_r3_27 = arg0->unk84;
+    if (temp_r3_27 != NULL) {
+        temp_r3_27->Update();
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_SetClothManualUpdate(MKModel *arg0, bool arg1) {
-    f32 temp_r3_41;
+    ModelCloth *temp_r3_41;
 
-    temp_r3_41 = arg0->unk10.unk74;
-    if (M2C_BITWISE(u32, temp_r3_41) != 0U) {
-        M2C_FIELD(temp_r3_41, u8 *, 0x30) = arg1;
+    temp_r3_41 = arg0->unk84;
+    if (temp_r3_41 != NULL) {
+        temp_r3_41->unk30 = (s8) arg1;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
+#if 0 // DRAFT: illegal type
 MKCloth *MKModel_GetClothSubObject(const MKModel *arg0, int arg1) {
-    f32 temp_r3_51;
+    ModelCloth *temp_r3_51;
 
-    temp_r3_51 = arg0->unk10.unk74;
-    if (M2C_BITWISE(u32, temp_r3_51) != 0U) {
-        return M2C_FIELD(temp_r3_51, s32 *, 8) + (arg1 * 0xF8);
+    temp_r3_51 = arg0->unk84;
+    if (temp_r3_51 != NULL) {
+        return temp_r3_51->unk8 + (arg1 * 0xF8);
     }
     return NULL;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 ModelCloth *MKModel_GetCloth(const MKModel *arg0) {
-    return M2C_BITWISE(ModelCloth *, arg0->unk10.unk74);
+    return arg0->unk84;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObjectType arg1, int arg2, Matrix *arg3) {
@@ -115,7 +107,7 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
     temp_r3_173 = MKModel_GetSubObjectBoneIndex(arg0, arg1, arg2);
     if (temp_r3_173 > -1) {
         sp8 = temp_r3_173;
-        arg0->unk10.unk60->CalculateMatrices(arg3, 1, &sp8, var_r31_81);
+        arg0->unk70->CalculateMatrices(arg3, 1, &sp8, var_r31_81);
         return;
     }
     temp_r4_188 = M2C_FIELD((arg0 + (arg2 * 4)), Matrix **, 0x90);
@@ -129,10 +121,10 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
 
 #if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVector3 *arg2) {
+    Animation *temp_r3_329;
     MKAttachment *temp_r7_228;
     Matrix *var_r31_227;
     s32 temp_r0_232;
-    s32 temp_r3_329;
     u8 temp_r0_321;
     void *temp_r3_320;
     var_r31_227 = &arg0->unk10;
@@ -165,7 +157,7 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
     temp_r0_321 = M2C_FIELD(temp_r3_320, u8 *, 0x14);
     arg_sp58 = M2C_FIELD(temp_r3_320, f64 *, 0);
     arg_sp60 = M2C_FIELD(temp_r3_320, f64 *, 8);
-    if (((s8) temp_r0_321 == -1) || (temp_r3_329 = arg0->unk10.unk60, (((u32) temp_r3_329 == 0U) != 0))) {
+    if (((s8) temp_r0_321 == -1) || (temp_r3_329 = arg0->unk70, ((temp_r3_329 == NULL) != 0))) {
         arg_sp28 = var_r31_227->unk30 + (((f32) arg_sp60 * var_r31_227->unk20) + (((f32) arg_sp58 * var_r31_227->unk0) + (arg_sp5C * var_r31_227->unk10)));
         arg_sp2C = var_r31_227->unk34 + (((f32) arg_sp60 * var_r31_227->unk24) + (((f32) arg_sp58 * var_r31_227->unk4) + (arg_sp5C * var_r31_227->unk14)));
         arg_sp30 = var_r31_227->unk38 + (((f32) arg_sp60 * var_r31_227->unk28) + (((f32) arg_sp58 * var_r31_227->unk8) + (arg_sp5C * var_r31_227->unk18)));
@@ -227,8 +219,8 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
         var_r31_432 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
     sp8 = (s16) arg1;
-    arg0->unk10.unk60->CalculateMatrices(arg2, 1, &sp8, var_r31_432);
-    sp20.GetNodeOrigin(arg0->unk10.unk60);
+    arg0->unk70->CalculateMatrices(arg2, 1, &sp8, var_r31_432);
+    sp20.GetNodeOrigin((s32) arg0->unk70);
     sp10 = (sp28 * arg2->unk20) + ((sp20 * arg2->unk0) + (sp24 * arg2->unk10));
     sp14 = (sp28 * arg2->unk24) + ((sp20 * arg2->unk4) + (sp24 * arg2->unk14));
     sp30 = (f64) sp10;
@@ -272,8 +264,8 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
         var_r31_592 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
     arg_sp10 = (s16) arg1;
-    arg0->unk10.unk60->CalculateMatrices((Matrix *) &arg_sp50, 1, &arg_sp10, var_r31_592);
-    arg_sp28.GetNodeOrigin(arg0->unk10.unk60);
+    arg0->unk70->CalculateMatrices((Matrix *) &arg_sp50, 1, &arg_sp10, var_r31_592);
+    arg_sp28.GetNodeOrigin((s32) arg0->unk70);
     arg_sp18 = arg_sp80 + ((arg_sp30 * arg_sp70) + ((arg_sp28 * arg_sp50) + (arg_sp2C * arg_sp60)));
     arg_sp1C = arg_sp84 + ((arg_sp30 * arg_sp74) + ((arg_sp28 * arg_sp54) + (arg_sp2C * arg_sp64)));
     arg_sp20 = arg_sp88 + ((arg_sp30 * arg_sp78) + ((arg_sp28 * arg_sp58) + (arg_sp2C * arg_sp68)));
@@ -309,7 +301,7 @@ void MKModel_CalculateCentre(const MKModel *arg0, MKVector3 *arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: illegal type
 s32 MKModel_GetMaterial(const MKModel *arg0, int arg1, bool arg2) {
     u8 var_r5_783;
 
@@ -318,7 +310,7 @@ s32 MKModel_GetMaterial(const MKModel *arg0, int arg1, bool arg2) {
         var_r5_783 = 1;
     }
     if (var_r5_783 != 0) {
-        return *(M2C_BITWISE(s32, arg0->unk10.unk70) + (arg1 * 4));
+        return *(arg0->unk80 + (arg1 * 4));
     }
     return *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x54) + (arg1 * 4));
 }
@@ -394,7 +386,7 @@ s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) 
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 s16 MKModel_GetNmbrOfSubObjects(const MKModel *arg0, SubObjectType arg1) {
-    f32 temp_r3_984;
+    ModelCloth *temp_r3_984;
     void *temp_r3_975;
 
     switch ((s32) arg1) {                           /* irregular */
@@ -407,9 +399,9 @@ s16 MKModel_GetNmbrOfSubObjects(const MKModel *arg0, SubObjectType arg1) {
         }
         return 0;
     case 2:
-        temp_r3_984 = arg0->unk10.unk74;
-        if (M2C_BITWISE(u32, temp_r3_984) != 0U) {
-            return (s16) M2C_FIELD(temp_r3_984, s32 *, 4);
+        temp_r3_984 = arg0->unk84;
+        if (temp_r3_984 != NULL) {
+            return (s16) temp_r3_984->unk4;
         }
         return 0;
     default:
@@ -421,28 +413,28 @@ s16 MKModel_GetNmbrOfSubObjects(const MKModel *arg0, SubObjectType arg1) {
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void MKModel_EnableOnlySubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool arg3, unsigned char arg4) {
     MKCloth *temp_r3_1097;
-    f32 temp_r3_1035;
-    f32 temp_r4_1059;
-    f32 temp_r4_1069;
-    f32 temp_r6_1026;
     s16 temp_r28_1089;
     s32 temp_r3_1063;
     s32 temp_r3_1072;
     s32 var_r25_1092;
     s32 var_r7_1022;
     s32 var_r7_1052;
+    void *temp_r3_1035;
+    void *temp_r4_1059;
+    void *temp_r4_1069;
     void *temp_r4_1079;
+    void *temp_r6_1026;
 
     switch ((s32) arg1) {                           /* irregular */
     case 0:
         var_r7_1022 = 0;
 loop_10:
         if (var_r7_1022 < (s16) M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4)) {
-            temp_r6_1026 = arg0->unk10.unk78;
-            *(M2C_BITWISE(s32, temp_r6_1026) + var_r7_1022) = *(M2C_BITWISE(s32, temp_r6_1026) + var_r7_1022) & (u8) ~(arg4 | arg4);
+            temp_r6_1026 = arg0->unk88;
+            *(temp_r6_1026 + var_r7_1022) = *(temp_r6_1026 + var_r7_1022) & (u8) ~(arg4 | arg4);
             if (arg3 != (u8) (var_r7_1022 == arg2)) {
-                temp_r3_1035 = arg0->unk10.unk78;
-                *(M2C_BITWISE(s32, temp_r3_1035) + var_r7_1022) = *(M2C_BITWISE(s32, temp_r3_1035) + var_r7_1022) | arg4;
+                temp_r3_1035 = arg0->unk88;
+                *(temp_r3_1035 + var_r7_1022) = *(temp_r3_1035 + var_r7_1022) | arg4;
             }
             var_r7_1022 += 1;
             goto loop_10;
@@ -453,13 +445,13 @@ loop_10:
 loop_16:
         temp_r4_1079 = arg0->unk0;
         if (var_r7_1052 < (s32) M2C_FIELD(M2C_FIELD(temp_r4_1079, void **, 0x44), s32 *, 8)) {
-            temp_r4_1059 = arg0->unk10.unk78;
+            temp_r4_1059 = arg0->unk88;
             temp_r3_1063 = M2C_FIELD(M2C_FIELD(temp_r4_1079, void **, 0x30), s16 *, 4) + var_r7_1052;
-            *(M2C_BITWISE(s32, temp_r4_1059) + temp_r3_1063) = *(M2C_BITWISE(s32, temp_r4_1059) + temp_r3_1063) & (u8) ~(arg4 | arg4);
+            *(temp_r4_1059 + temp_r3_1063) = *(temp_r4_1059 + temp_r3_1063) & (u8) ~(arg4 | arg4);
             if (arg3 != (u8) (var_r7_1052 == arg2)) {
-                temp_r4_1069 = arg0->unk10.unk78;
+                temp_r4_1069 = arg0->unk88;
                 temp_r3_1072 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4) + var_r7_1052;
-                *(M2C_BITWISE(s32, temp_r4_1069) + temp_r3_1072) = *(M2C_BITWISE(s32, temp_r4_1069) + temp_r3_1072) | arg4;
+                *(temp_r4_1069 + temp_r3_1072) = *(temp_r4_1069 + temp_r3_1072) | arg4;
             }
             var_r7_1052 += 1;
             goto loop_16;
@@ -485,25 +477,25 @@ loop_22:
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void MKModel_EnableSubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool arg3, unsigned char arg4) {
-    f32 temp_r3_1144;
-    f32 temp_r4_1159;
     s32 temp_r0_1158;
     s32 temp_r3_1176;
     s32 temp_r5_1146;
     s32 temp_r5_1165;
     u8 temp_r29_1175;
+    void *temp_r3_1144;
+    void *temp_r4_1159;
 
     switch ((s32) arg1) {                           /* irregular */
     case 0:
-        temp_r3_1144 = arg0->unk10.unk78;
+        temp_r3_1144 = arg0->unk88;
         temp_r5_1146 = 0 - arg3;
-        *(M2C_BITWISE(s32, temp_r3_1144) + arg2) = (*(M2C_BITWISE(s32, temp_r3_1144) + arg2) & ~arg4) | (arg4 & ~((temp_r5_1146 - temp_r5_1146) - !M2C_CARRY));
+        *(temp_r3_1144 + arg2) = (*(temp_r3_1144 + arg2) & ~arg4) | (arg4 & ~((temp_r5_1146 - temp_r5_1146) - !M2C_CARRY));
         return;
     case 1:
         temp_r0_1158 = 0 - arg3;
-        temp_r4_1159 = arg0->unk10.unk78;
+        temp_r4_1159 = arg0->unk88;
         temp_r5_1165 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4) + arg2;
-        *(M2C_BITWISE(s32, temp_r4_1159) + temp_r5_1165) = (*(M2C_BITWISE(s32, temp_r4_1159) + temp_r5_1165) & ~arg4) | (arg4 & ~((temp_r0_1158 - temp_r0_1158) - !M2C_CARRY));
+        *(temp_r4_1159 + temp_r5_1165) = (*(temp_r4_1159 + temp_r5_1165) & ~arg4) | (arg4 & ~((temp_r0_1158 - temp_r0_1158) - !M2C_CARRY));
         return;
     case 2:
         temp_r29_1175 = MKModel_GetClothSubObject(arg0, arg2)->unkF0;
@@ -519,11 +511,11 @@ u8 MKModel_GetSubObjectFlag(const MKModel *arg0, SubObjectType arg1, int arg2) {
     u8 var_r4_1198;
 
     var_r4_1198 = 0;
-    if (((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 2U) && (M2C_BITWISE(u32, arg0->unk10.unk78) != 0U)) {
+    if (((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 2U) && ((void *) arg0->unk88 != NULL)) {
         var_r4_1198 = 1;
     }
     if (var_r4_1198 != 0) {
-        return *(M2C_BITWISE(s32, arg0->unk10.unk78) + arg2);
+        return *(arg0->unk88 + arg2);
     }
     return 0U;
 }
@@ -539,11 +531,11 @@ s32 MKModel_GetSubObjectOrigin(const MKModel *arg0, SubObjectType arg1, int arg2
 s32 MKModel_IsSubObjectEnabled(const MKModel *arg0, SubObjectType arg1, int arg2) {
     switch ((s32) arg1) {                           /* irregular */
     case 1:
-        return (*(M2C_BITWISE(s32, arg0->unk10.unk78) + (M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4) + arg2)) & 0xF) == 0;
+        return (*(arg0->unk88 + (M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4) + arg2)) & 0xF) == 0;
     case 2:
         return (MKModel_GetClothSubObject(arg0, arg2)->unkF0 & 0xF) == 0;
     case 0:
-        return (*(M2C_BITWISE(s32, arg0->unk10.unk78) + arg2) & 0xF) == 0;
+        return (*(arg0->unk88 + arg2) & 0xF) == 0;
     default:
         return 0;
     }
@@ -665,11 +657,11 @@ loop_35:
 
 #if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool arg3) {
+    Animation *temp_r3_1571;
     MKAttachment *temp_r3_1445;
     Matrix *var_r31_1443;
     Matrix *var_r7_1588;
     s32 temp_r0_1452;
-    s32 temp_r3_1571;
     u8 temp_r0_1578;
     u8 var_r29_1442;
     void *temp_r30_1449;
@@ -719,8 +711,8 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
         arg2->unk3C = M2C_FIELD(temp_r30_1449, f32 *, 0xC);
         arg2->unk3C = 1.0f;
     }
-    temp_r3_1571 = arg0->unk10.unk60;
-    if (((u32) temp_r3_1571 != 0U) && ((s8) M2C_FIELD(temp_r30_1449, u8 *, 0x15) <= -1)) {
+    temp_r3_1571 = arg0->unk70;
+    if ((temp_r3_1571 != NULL) && ((s8) M2C_FIELD(temp_r30_1449, u8 *, 0x15) <= -1)) {
         temp_r0_1578 = M2C_FIELD(temp_r30_1449, u8 *, 0x14);
         if ((s8) temp_r0_1578 > -1) {
             arg_sp10 = (s16) (s8) temp_r0_1578;
@@ -826,14 +818,12 @@ void MKModel_EnableScissoring(MKModel *arg0, bool arg1) {
     arg0->unk4 = (arg0->unk4 & ~2) | ((arg1 << 1) & 2);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 Animation *MKModel_GetAnimation(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) < 1U) {
         return NULL;
     }
-    return (Animation *) arg0->unk10.unk60;
+    return arg0->unk70;
 }
-#endif
 
 void MKModel_SetPosition(MKModel *arg0, const MKVector3 &arg1) {
     arg0->unk10.unk30 = arg1.unk0;
@@ -883,30 +873,26 @@ MKModel *MKModel_GetAttachment(const MKModel *arg0) {
     return (MKModel *) arg0->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
 void MKModel_SetAlpha(MKModel *arg0, float arg1) {
-    arg0->unk10.unk4C = arg1;
+    arg0->unk5C = arg1;
 }
-#endif
 
 void MKModel_SetColor(MKModel *arg0, const MKVector4 &arg1) {
-    M2C_FIELD(arg0, f64 *, 0x50) = (f64) M2C_FIELD(&arg1, f64 *, 0);
+    arg0->unk50 = M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(arg0, f64 *, 0x58) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
 f32 MKModel_GetAlpha(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
-        return arg0->unk10.unk4C;
+        return arg0->unk5C;
     }
     return 1.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal implicit conversion from 'const double *' to
 f64 *MKModel_GetColor(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
-        return (f64 *) &arg0->unk10.unk40;
+        return &arg0->unk50;
     }
     return (f64 *) &one;
 }
@@ -1226,7 +1212,7 @@ block_60:
             if (var_r3_2392 != 0) {
                 var_r3_2403 = var_r29_2115;
             } else {
-                var_r3_2403 = arg1 + ((s8) temp_r4_2391 << 6);
+                var_r3_2403 = &arg1[(s8) temp_r4_2391];
             }
             temp_f3_2409 = M2C_FIELD(temp_r23_2363, f32 *, 4);
             temp_f6_2415 = M2C_FIELD(temp_r23_2363, f32 *, 0);
@@ -1262,7 +1248,7 @@ block_60:
             spB8 = (f32) sp188 * 0.5f;
             sp1B8 = (f64) spB8;
             MKBegin(4);
-            MKSetColorV(*((MKVector4 *) &arg0->unk10.unk40));
+            MKSetColorV(*((MKVector4 *) &arg0->unk50));
             MKSetTexCoord1F(0.0f, 0.0f);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp150 = spA0;
@@ -1385,13 +1371,12 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void MKModel_Destroy(MKModel *arg0) {
     arg0->unk4 |= 0x18;
     arg0->unk8 = pDeathRow;
     pDeathRow = (MKAttachment *) arg0;
     if (((u8) arg0->unk4 >> 2U) & 1) {
-        arg0->unk10.unk60->Destroy();
+        arg0->unk70->Destroy();
         arg0->unk4 &= ~4;
     }
     if ((u8) M2C_FIELD(arg0->unk0, u8 *, 0x48) != 0) {
@@ -1401,7 +1386,6 @@ void MKModel_Destroy(MKModel *arg0) {
     MKModel_DestroyCloth(arg0);
     gDynamicBones.RemoveModel(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKModel_SetupCloth(MKModel *arg0) {
@@ -1416,7 +1400,7 @@ void MKModel_SetupCloth(MKModel *arg0) {
     MKHeap *temp_r3_3107;
     MKHeap *temp_r5_3018;
     MKHeap *var_r3_3002;
-    f32 temp_r3_2937;
+    ModelCloth *temp_r3_2937;
     s16 temp_r0_2812;
     s16 temp_r0_2895;
     s16 temp_r0_3170;
@@ -1549,19 +1533,19 @@ block_24:
         var_r23_2809 = M2C_FIELD(var_r5_2901, s32 *, 8);
     }
     if ((var_r23_2809 > 0) && ((u8) clothCreateDisabled.unk0 == 0)) {
-        M2C_FIELD(arg0->unk10.unk74, s8 *, 0x31) = 1;
+        arg0->unk84->unk31 = 1;
         var_r27_2928 = 0;
         var_r15_2929 = 0;
         var_r29_2931 = 0;
         var_r30_2932 = 0;
-        M2C_FIELD(arg0->unk10.unk74, s8 *, 0x30) = 0;
-        M2C_FIELD(arg0->unk10.unk74, s32 *, 0) = 0;
-        temp_r3_2937 = arg0->unk10.unk74;
+        arg0->unk84->unk30 = 0;
+        arg0->unk84->unk0 = 0;
+        temp_r3_2937 = arg0->unk84;
         temp_r4_2938 = M2C_FIELD(arg0->unk0, void **, 0x30);
-        M2C_FIELD(temp_r3_2937, f64 *, 0x10) = (f64) M2C_FIELD(temp_r4_2938, f64 *, 0x30);
-        M2C_FIELD(temp_r3_2937, f64 *, 0x18) = (f64) M2C_FIELD(temp_r4_2938, f64 *, 0x38);
-        M2C_FIELD(temp_r3_2937, f64 *, 0x20) = (f64) M2C_FIELD(temp_r4_2938, f64 *, 0x40);
-        M2C_FIELD(temp_r3_2937, f64 *, 0x28) = (f64) M2C_FIELD(temp_r4_2938, f64 *, 0x48);
+        temp_r3_2937->unk10 = M2C_FIELD(temp_r4_2938, f64 *, 0x30);
+        temp_r3_2937->unk18 = M2C_FIELD(temp_r4_2938, f64 *, 0x38);
+        temp_r3_2937->unk20 = M2C_FIELD(temp_r4_2938, f64 *, 0x40);
+        temp_r3_2937->unk28 = M2C_FIELD(temp_r4_2938, f64 *, 0x48);
         if (var_r17_2818 != NULL) {
             var_r18_2949 = M2C_FIELD(var_r17_2818, s32 *, 0xC);
 loop_39:
@@ -1589,7 +1573,7 @@ loop_39:
         var_r25_2990 = 0;
 loop_83:
         if (var_r26_2988 < var_r23_2809) {
-            temp_r31_2996 = M2C_FIELD(arg0->unk10.unk74, s32 *, 8) + var_r25_2990;
+            temp_r31_2996 = arg0->unk84->unk8 + var_r25_2990;
             temp_r31_2996->unkC = arg0;
             temp_r31_2996->unk4 = var_r22_2808 + var_r24_2989;
             temp_r31_2996->Init();
@@ -2369,7 +2353,7 @@ loop_79:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKModelInternal_FixUpBlendShapes(MKModel *arg0) {
     s32 var_r25_4139;
     s32 var_r30_4161;
@@ -2383,7 +2367,7 @@ void MKModelInternal_FixUpBlendShapes(MKModel *arg0) {
     var_r25_4139 = 0;
     var_r31_4140 = 0;
     temp_r27_4144 = M2C_FIELD(arg0->unk0, void **, 0x30);
-    temp_r28_4145 = M2C_FIELD(*arg0->unk10.unk60, void **, 0x28);
+    temp_r28_4145 = M2C_FIELD(arg0->unk70->unk0, void **, 0x28);
     temp_r26_4147 = (s8) M2C_FIELD(temp_r28_4145, u8 *, 8);
 loop_8:
     if (var_r25_4139 < MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0)) {
@@ -2399,7 +2383,7 @@ loop_5:
                     goto loop_5;
                 }
             }
-            *(arg0->unk10.unk7C + var_r25_4139) = var_r23_4159;
+            *(arg0->unk8C + var_r25_4139) = var_r23_4159;
         }
         var_r25_4139 += 1;
         var_r31_4140 += 0x40;

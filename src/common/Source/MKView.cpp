@@ -17,43 +17,39 @@ extern u8 init_254;
 extern s32 lastCounter_253;
 extern s32 oldCounter_235;
 extern s32 oldCounter_244;
-static Matrix ViewStack[0xE];                       /* extra bytes: 0x49 */
-static Matrix worldToView_234;                      /* type too large by 0x4C */
-static Matrix worldToScreen_243;                    /* type too large by 0x4C */
-static Matrix projectionMatrix_252;                 /* type too large by 0x4C */
+static Matrix ViewStack[0x20];
+static Matrix worldToView_234;
+static Matrix worldToScreen_243;
+static Matrix projectionMatrix_252;
 static Frustum viewFrustum_332;
 static Frustum worldFrustum_333;
 static Matrix *pStack = ViewStack;
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 f32 MKView_GetAspectRatio() {
-    return M2C_BITWISE(f32, pStack->unk60);
+    return pStack[1].unk20;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void MKView_SetAspectRatio(float arg0) {
-    pStack->unk60 = arg0;
+    pStack[1].unk20 = arg0;
     MKView_SettingsCounter += 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
 f32 *MKView_GetOrthoRect() {
-    return &pStack->unk64;
+    return pStack + 0x64;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 Texture *MKView_GetRenderTarget(Texture **arg0) {
     if (arg0 != NULL) {
-        *arg0 = M2C_FIELD(pStack, Texture **, 0x7C);
+        *arg0 = pStack[1].unk3C;
     }
-    return M2C_BITWISE(Texture *, pStack->unk78);
+    return pStack[1].unk38;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk58'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 Frustum *MKView_GetWorldFrustum() {
     f32 sp14;
     f32 sp10;
@@ -109,8 +105,8 @@ Frustum *MKView_GetWorldFrustum() {
         viewFrustum_332.unk60 = 0.0f;
         viewFrustum_332.unk64 = 1.0f;
     } else {
-        viewFrustum_332.unk60 = pStack->unk58;
-        viewFrustum_332.unk64 = pStack->unk5C;
+        viewFrustum_332.unk60 = pStack[1].unk18;
+        viewFrustum_332.unk64 = pStack[1].unk1C;
     }
     var_f9_82 = 0.0f;
     viewFrustum_332.unk0 = 0.0f;
@@ -340,7 +336,7 @@ s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: function call 'tan(Matrix *, float)' does not match
 void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *arg3) {
     f64 sp70;
     f64 sp68;
@@ -359,10 +355,10 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     f32 temp_f29_863;
 
     temp_r31_855 = pStack;
-    temp_f29_863 = arg2 * (f32) tan(pStack, 0.5f * pStack->unk54);
-    temp_f28_869 = temp_f29_863 * M2C_BITWISE(f32, temp_r31_855->unk60);
-    temp_f26_870 = arg0 - ((0.5f * temp_r31_855->unk6C) + temp_r31_855->unk64);
-    temp_f27_871 = arg1 - ((0.5f * temp_r31_855->unk70) + temp_r31_855->unk68);
+    temp_f29_863 = arg2 * (f32) tan(pStack, 0.5f * pStack[1].unk14);
+    temp_f28_869 = temp_f29_863 * temp_r31_855[1].unk20;
+    temp_f26_870 = arg0 - ((0.5f * temp_r31_855[1].unk2C) + temp_r31_855[1].unk24);
+    temp_f27_871 = arg1 - ((0.5f * temp_r31_855[1].unk30) + temp_r31_855[1].unk28);
     sp58.operator*(arg2);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -374,7 +370,7 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     sp48 = sp18;
-    sp20 = temp_r31_855->unk8 * (temp_f28_869 * (temp_f26_870 / (0.5f * pStack->unk6C)));
+    sp20 = temp_r31_855->unk8 * (temp_f28_869 * (temp_f26_870 / (0.5f * pStack[1].unk2C)));
     sp50 = (f64) sp20;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -383,7 +379,7 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
     sp38 = sp8;
-    sp10 = temp_r31_855->unk18 * (temp_f29_863 * (-temp_f27_871 / (0.5f * pStack->unk70)));
+    sp10 = temp_r31_855->unk18 * (temp_f29_863 * (-temp_f27_871 / (0.5f * pStack[1].unk30)));
     sp40 = (f64) sp10;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -442,62 +438,57 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
         sp40 = (f64) sp10;
         M2C_FIELD(arg0, f64 *, 8) = (f64) sp10;
     }
-    temp_f4_1051 = pStack->unk6C;
-    arg0->unk0 = pStack->unk64 + ((0.5f * temp_f4_1051) + (0.5f * (arg0->unk0 * temp_f4_1051)));
-    temp_f4_1062 = pStack->unk70;
-    arg0->unk4 = pStack->unk68 + ((0.5f * temp_f4_1062) + (0.5f * (-arg0->unk4 * temp_f4_1062)));
+    temp_f4_1051 = pStack[1].unk2C;
+    arg0->unk0 = pStack[1].unk24 + ((0.5f * temp_f4_1051) + (0.5f * (arg0->unk0 * temp_f4_1051)));
+    temp_f4_1062 = pStack[1].unk30;
+    arg0->unk4 = pStack[1].unk28 + ((0.5f * temp_f4_1062) + (0.5f * (-arg0->unk4 * temp_f4_1062)));
     return var_f31_967;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 s32 MKView_GetFlags() {
-    return M2C_BITWISE(s32, pStack->unk74);
+    return pStack[1].unk34;
 }
-#endif
 
 u8 MKView_IsOrtho() {
     return M2C_FIELD(pStack, u8 *, 0x50);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk64'
 void MKView_SetOrthoRect(const MKRect *arg0) {
     if (arg0 != NULL) {
-        pStack->unk64 = arg0->unk0;
-        pStack->unk68 = arg0->unk4;
-        pStack->unk6C = arg0->unk8;
-        pStack->unk70 = arg0->unkC;
+        pStack[1].unk24 = arg0->unk0;
+        pStack[1].unk28 = arg0->unk4;
+        pStack[1].unk2C = arg0->unk8;
+        pStack[1].unk30 = arg0->unkC;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'identity'
 void MKView_SetOrtho(const MKRect *arg0) {
     MKView_SetCameraMatrix(identity);
     M2C_FIELD(pStack, s8 *, 0x50) = 1;
     if (arg0 != NULL) {
-        pStack->unk64 = arg0->unk0;
-        pStack->unk68 = arg0->unk4;
-        pStack->unk6C = arg0->unk8;
-        pStack->unk70 = arg0->unkC;
+        pStack[1].unk24 = arg0->unk0;
+        pStack[1].unk28 = arg0->unk4;
+        pStack[1].unk2C = arg0->unk8;
+        pStack[1].unk30 = arg0->unkC;
     }
     MKView_SettingsCounter += 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
 void MKView_GetProjection(float *arg0, float *arg1, float *arg2) {
     f32 var_f0_1162;
     f32 var_f0_1175;
 
     if (arg0 != NULL) {
-        *arg0 = pStack->unk54;
+        *arg0 = pStack[1].unk14;
     }
     if (arg1 != NULL) {
         if ((u8) M2C_FIELD(pStack, u8 *, 0x50) != 0) {
             var_f0_1162 = 0.0f;
         } else {
-            var_f0_1162 = pStack->unk58;
+            var_f0_1162 = pStack[1].unk18;
         }
         *arg1 = var_f0_1162;
     }
@@ -505,30 +496,27 @@ void MKView_GetProjection(float *arg0, float *arg1, float *arg2) {
         if ((u8) M2C_FIELD(pStack, u8 *, 0x50) != 0) {
             var_f0_1175 = 1.0f;
         } else {
-            var_f0_1175 = pStack->unk5C;
+            var_f0_1175 = pStack[1].unk1C;
         }
         *arg2 = var_f0_1175;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
 void MKView_SetProjection(float arg0, float arg1, float arg2) {
     M2C_FIELD(pStack, s8 *, 0x50) = 0;
     if (arg0 != 0.0f) {
-        pStack->unk54 = arg0;
+        pStack[1].unk14 = arg0;
     }
     if (arg1 != 0.0f) {
-        pStack->unk58 = arg1;
+        pStack[1].unk18 = arg1;
     }
     if (arg2 != 0.0f) {
-        pStack->unk5C = arg2;
+        pStack[1].unk1C = arg2;
     }
     MKView_SettingsCounter += 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 Matrix *MKView_GetProjectionMatrix() {
     f32 temp_f2_1245;
     f32 temp_f2_1275;
@@ -545,24 +533,24 @@ Matrix *MKView_GetProjectionMatrix() {
         lastCounter_253 = MKView_SettingsCounter;
         projectionMatrix_252.SetZero();
         if ((u8) M2C_FIELD(pStack, u8 *, 0x50) == 0) {
-            temp_f3_1242 = pStack->unk5C;
-            temp_f2_1245 = temp_f3_1242 - pStack->unk58;
+            temp_f3_1242 = pStack[1].unk1C;
+            temp_f2_1245 = temp_f3_1242 - pStack[1].unk18;
             temp_f31_1248 = temp_f3_1242 / temp_f2_1245;
-            temp_f3_1256 = 1.0f / (f32) tan(M2C_BITWISE(Matrix *, (pStack->unk54 * 0.5f)), temp_f2_1245, temp_f3_1242);
+            temp_f3_1256 = 1.0f / (f32) tan(M2C_BITWISE(Matrix *, (pStack[1].unk14 * 0.5f)), temp_f2_1245, temp_f3_1242);
             projectionMatrix_252.unk28 = temp_f31_1248;
             projectionMatrix_252.unk14 = temp_f3_1256;
-            projectionMatrix_252.unk0 = temp_f3_1256 / M2C_BITWISE(f32, pStack->unk60);
+            projectionMatrix_252.unk0 = temp_f3_1256 / pStack[1].unk20;
             projectionMatrix_252.unk2C = 1.0f;
-            projectionMatrix_252.unk38 = -temp_f31_1248 * pStack->unk58;
+            projectionMatrix_252.unk38 = -temp_f31_1248 * pStack[1].unk18;
         } else {
-            temp_f3_1270 = pStack->unk6C;
+            temp_f3_1270 = pStack[1].unk2C;
             projectionMatrix_252.unk0 = 2.0f / temp_f3_1270;
-            temp_f2_1275 = pStack->unk70;
+            temp_f2_1275 = pStack[1].unk30;
             projectionMatrix_252.unk14 = -2.0f / temp_f2_1275;
-            projectionMatrix_252.unk30 = -(1.0f + ((2.0f * pStack->unk64) / temp_f3_1270));
+            projectionMatrix_252.unk30 = -(1.0f + ((2.0f * pStack[1].unk24) / temp_f3_1270));
             projectionMatrix_252.unk28 = 1.0f;
             projectionMatrix_252.unk3C = 1.0f;
-            projectionMatrix_252.unk34 = 1.0f + ((2.0f * pStack->unk68) / temp_f2_1275);
+            projectionMatrix_252.unk34 = 1.0f + ((2.0f * pStack[1].unk28) / temp_f2_1275);
         }
     }
     return &projectionMatrix_252;
@@ -776,38 +764,37 @@ void MKView_Pop() {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKView_Push() {
-    M2C_STRUCT_COPY((s32) &pStack->unk7C + 4, (s32) (pStack - 4) + 4, 0x40);
-    pStack[1].unk34 = pStack->unk40;
-    pStack[1].unk38 = pStack->unk44;
-    pStack[1].unk3C = pStack->unk48;
-    pStack[1].unk40 = pStack->unk4C;
+    M2C_STRUCT_COPY((s32) (pStack + 0x7C) + 4, (s32) (pStack - 4) + 4, 0x40);
+    pStack[3].unk0 = pStack[1].unk0;
+    pStack[3].unk4 = pStack[1].unk4;
+    pStack[3].unk8 = pStack[1].unk8;
+    pStack[3].unkC = pStack[1].unkC;
     M2C_FIELD(pStack, u8 *, 0xD0) = (u8) M2C_FIELD(pStack, u8 *, 0x50);
-    pStack[1].unk48 = pStack->unk54;
-    pStack[1].unk4C = pStack->unk58;
-    pStack[1].unk50 = pStack->unk5C;
-    pStack[1].unk54 = M2C_BITWISE(f32, pStack->unk60);
-    pStack[1].unk58 = pStack->unk64;
-    pStack[1].unk5C = pStack->unk68;
-    pStack[1].unk60 = pStack->unk6C;
-    pStack[1].unk64 = pStack->unk70;
-    pStack[1].unk68 = pStack->unk74;
-    pStack[1].unk6C = pStack->unk78;
-    pStack[1].unk70 = M2C_FIELD(pStack, f32 *, 0x7C);
-    pStack = (Matrix *) &pStack->unk80;
+    pStack[3].unk14 = pStack[1].unk14;
+    pStack[3].unk18 = pStack[1].unk18;
+    pStack[3].unk1C = pStack[1].unk1C;
+    pStack[3].unk20 = pStack[1].unk20;
+    pStack[3].unk24 = pStack[1].unk24;
+    pStack[3].unk28 = pStack[1].unk28;
+    pStack[3].unk2C = pStack[1].unk2C;
+    pStack[3].unk30 = pStack[1].unk30;
+    pStack[3].unk34 = pStack[1].unk34;
+    pStack[3].unk38 = pStack[1].unk38;
+    pStack[3].unk3C = pStack[1].unk3C;
+    pStack += 0x80;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
+#if 0 // DRAFT: illegal implicit conversion from 'Texture *' to
 void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {
-    pStack->unk78 = M2C_BITWISE(f32, arg0);
-    M2C_FIELD(pStack, Texture **, 0x7C) = arg1;
+    pStack[1].unk38 = arg0;
+    pStack[1].unk3C = arg1;
     MKView_SettingsCounter += 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void MKView_InitModule() {
     f64 spE0;
     f64 spD8;
@@ -850,19 +837,19 @@ void MKView_InitModule() {
     f32 sp8;
 
     memset(pStack, 0, 0x80U);
-    pStack->unk48 = (f32) M2C_FIELD(&gDisplay, s32 *, 0x10);
-    pStack->unk4C = (f32) M2C_FIELD(&gDisplay, s32 *, 0x14);
-    pStack->unk6C = 640.0f;
-    pStack->unk70 = 512.0f;
+    pStack[1].unk8 = (f32) M2C_FIELD(&gDisplay, s32 *, 0x10);
+    pStack[1].unkC = (f32) M2C_FIELD(&gDisplay, s32 *, 0x14);
+    pStack[1].unk2C = 640.0f;
+    pStack[1].unk30 = 512.0f;
     pStack->SetIdentity();
-    pStack->unk54 = 1.0471976f;
-    pStack->unk58 = 1.0f;
+    pStack[1].unk14 = 1.0471976f;
+    pStack[1].unk18 = 1.0f;
     sp68 = 0.2f;
-    pStack->unk5C = 100000.0f;
+    pStack[1].unk1C = 100000.0f;
     sp6C = 0.2f;
     M2C_FIELD(pStack, s8 *, 0x50) = 0;
     sp70 = 0.2f;
-    pStack->unk60 = 1.3333334f;
+    pStack[1].unk20 = 1.3333334f;
     sp74 = 1.0f;
     MKView_SettingsCounter = 0;
     spD8 = (f64) sp68;
@@ -910,4 +897,3 @@ void MKView_InitModule() {
     MKView_Push();
     MKMaterial_SetLocalToWorld(NULL, 1.0f);
 }
-#endif

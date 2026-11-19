@@ -1,4 +1,5 @@
 #include "common/gc/MKShadow_GC.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
@@ -128,6 +129,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
     s32 sp10;
     s32 spC;
     f64 *sp8;
+    Animation *temp_r3_337;
     MKHeap *temp_r3_352;
     MKHeap *temp_r3_357;
     MKHeap *temp_r3_549;
@@ -140,7 +142,6 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
     s16 temp_r23_353;
     s16 temp_r27_478;
     s32 temp_r28_419;
-    s32 temp_r3_337;
     s32 temp_r3_373;
     s32 var_r19_513;
     s32 var_r24_476;
@@ -187,10 +188,10 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
         }
         var_r30_334 = 0;
         shadowsRendered += 1;
-        temp_r3_337 = arg0->unk10.unk60;
-        if ((u32) temp_r3_337 != 0U) {
+        temp_r3_337 = arg0->unk70;
+        if (temp_r3_337 != NULL) {
             var_r29_347 = temp_r3_337->CalculateMatrices(NULL, -1, NULL, &arg0->unk10);
-            arg0->unk10.unk60->GetNmbrOfNodes();
+            arg0->unk70->GetNmbrOfNodes();
         } else {
             temp_r3_352 = M2C_FIELD(arg0->unk0, MKHeap **, 0x30);
             temp_r23_353 = M2C_FIELD(temp_r3_352, s16 *, 8);
@@ -214,7 +215,7 @@ loop_15:
                     goto loop_15;
                 }
             } else {
-                var_r29_347 = (Matrix *) &arg0->unk10.unk40;
+                var_r29_347 = (Matrix *) &arg0->unk50;
             }
         }
         unkspD4 = -1;
@@ -241,7 +242,7 @@ loop_15:
 loop_27:
         temp_r3_549 = M2C_FIELD(arg0->unk0, MKHeap **, 0x44);
         if (var_r26_475 < (s32) temp_r3_549->unk8) {
-            if (((u32) (((u8) arg0->unk4 >> 5U) & 7) < 2U) || !(*(temp_r27_478 + (M2C_BITWISE(s32, arg0->unk10.unk78) + var_r26_475)) & 0xF)) {
+            if (((u32) (((u8) arg0->unk4 >> 5U) & 7) < 2U) || !(*(temp_r27_478 + (arg0->unk88 + var_r26_475)) & 0xF)) {
                 temp_r5_499 = M2C_FIELD(arg0->unk0, MKHeap **, 0x30)->unk6C;
                 temp_r22_502 = M2C_BITWISE(s32, temp_r5_499) + *(temp_r28_419 + (var_r24_476 + 4));
                 temp_r21_505 = M2C_BITWISE(s32, temp_r5_499) + M2C_FIELD(temp_r22_502, s32 *, 8);
@@ -405,6 +406,7 @@ block_7:
 #if 0 // DRAFT: undefined identifier 'MKShadowSubObjectMP'
 void DetectEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int arg3, Matrix *arg4, const MKVector3 &arg5, const MKVector3 &arg6, const MKVector3 &arg7, float farg0, unsigned int arg_sp0) {
     MKShadowSubObjectMP::Edge *var_r8_837;
+    Matrix *temp_r5_805;
     Matrix *var_r9_838;
     f32 temp_f10_873;
     f32 temp_f11_839;
@@ -444,7 +446,6 @@ void DetectEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int
     s32 var_r3_789;
     void *temp_r3_858;
     void *temp_r4_857;
-    void *temp_r5_805;
     void *temp_r5_856;
     void *temp_r6_797;
     void *temp_r7_859;
@@ -463,10 +464,10 @@ void DetectEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int
             temp_f5_800 = M2C_FIELD(temp_r6_797, f32 *, 4);
             temp_f7_802 = M2C_FIELD(temp_r6_797, f32 *, 0);
             temp_f8_804 = M2C_FIELD(temp_r6_797, f32 *, 8);
-            temp_r5_805 = arg4 + ((s8) M2C_FIELD(temp_r6_797, u8 *, 0xF) << 6);
-            M2C_FIELD(temp_r6_797, f32 *, 0) = (f32) (M2C_FIELD(temp_r5_805, f32 *, 0x30) + ((temp_f8_804 * M2C_FIELD(temp_r5_805, f32 *, 0x20)) + ((temp_f7_802 * M2C_FIELD(temp_r5_805, f32 *, 0)) + (temp_f5_800 * M2C_FIELD(temp_r5_805, f32 *, 0x10)))));
-            *(pShadowVertexBuffer + temp_r4_795) = M2C_FIELD(temp_r5_805, f32 *, 0x34) + ((temp_f8_804 * M2C_FIELD(temp_r5_805, f32 *, 0x24)) + ((temp_f7_802 * M2C_FIELD(temp_r5_805, f32 *, 4)) + (temp_f5_800 * M2C_FIELD(temp_r5_805, f32 *, 0x14))));
-            *(pShadowVertexBuffer + temp_r0_796) = M2C_FIELD(temp_r5_805, f32 *, 0x38) + ((temp_f8_804 * M2C_FIELD(temp_r5_805, f32 *, 0x28)) + ((temp_f7_802 * M2C_FIELD(temp_r5_805, f32 *, 8)) + (temp_f5_800 * M2C_FIELD(temp_r5_805, f32 *, 0x18))));
+            temp_r5_805 = &arg4[(s8) M2C_FIELD(temp_r6_797, u8 *, 0xF)];
+            M2C_FIELD(temp_r6_797, f32 *, 0) = (f32) (temp_r5_805->unk30 + ((temp_f8_804 * temp_r5_805->unk20) + ((temp_f7_802 * temp_r5_805->unk0) + (temp_f5_800 * temp_r5_805->unk10))));
+            *(pShadowVertexBuffer + temp_r4_795) = temp_r5_805->unk34 + ((temp_f8_804 * temp_r5_805->unk24) + ((temp_f7_802 * temp_r5_805->unk4) + (temp_f5_800 * temp_r5_805->unk14)));
+            *(pShadowVertexBuffer + temp_r0_796) = temp_r5_805->unk38 + ((temp_f8_804 * temp_r5_805->unk28) + ((temp_f7_802 * temp_r5_805->unk8) + (temp_f5_800 * temp_r5_805->unk18)));
             var_ctr_790 -= 1;
         } while (var_ctr_790 != 0);
     }

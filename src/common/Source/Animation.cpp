@@ -15,7 +15,7 @@ s32 stricmp(s8 *, s8 *);                            /* extern */
 M2C_UNK strtok(s8 *, s8 *);                         /* extern */
 extern s8 *Animation_pTemplates;
 static M2C_UNK fixedPointScaleVec;                  /* unable to generate initializer: unknown type */
-static Matrix pMats_827[0x3A];                      /* extra bytes: 0x39 */
+static Matrix pMats_827[0x80];
 static s16 pMatFlags_847[0x80];
 static BlendShapeState _defaultStateArea_913[6];
 
@@ -437,7 +437,7 @@ loop_66:
             temp_r0_638 = *(M2C_FIELD(temp_r21_435, void **, 0x28) + (var_r23_610 + 0x36));
             if ((s8) temp_r0_638 != -1) {
                 temp_r16_645 = pMats_827 + var_r25_608;
-                temp_r16_645->Multiply(temp_r16_645, pMats_827 + ((s8) temp_r0_638 << 6));
+                temp_r16_645->Multiply(temp_r16_645, &pMats_827[(s8) temp_r0_638]);
                 if ((s32) M2C_FIELD(temp_r18_619, s32 *, 0x40) == 3) {
                     if (((u8) M2C_FIELD(temp_r18_619, u8 *, 0x36) >> 6U) & 1) {
                         temp_r6_656 = M2C_FIELD(temp_r18_619, void **, 0x30);
@@ -642,7 +642,7 @@ void Animation::ConvertFrameToMatrix(Matrix *arg0, int arg1) {
     void *temp_r29_951;
 
     temp_r30_944 = arg1 << 6;
-    temp_r31_948 = arg0 + temp_r30_944;
+    temp_r31_948 = &arg0[arg1];
     temp_r29_951 = this + ((arg1 * 0x48) + 0x30);
     temp_f30_954 = 1.4142135f * M2C_FIELD(temp_r29_951, f32 *, 0x14);
     temp_r3_955 = M2C_FIELD(temp_r29_951, MKVector4 **, 0x30);

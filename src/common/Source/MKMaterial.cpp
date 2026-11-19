@@ -521,7 +521,7 @@ void MKMaterial_InitModule() {
 #if 0 // DRAFT: undefined identifier 'unk1E0'
 void MKMatInfo_Merge(MatInfo *arg0, MatInfo *arg1) {
     if (arg1->unk1E0 & 1) {
-        strcpy((s8 *) &arg0->unk40.unk40, (s8 *) &arg1->unk40.unk40);
+        strcpy(&arg0->unk80, &arg1->unk80);
         arg0->unk1E4 = arg1->unk1E4;
     }
     if (arg1->unk1E0 & 2) {
@@ -538,10 +538,10 @@ void MKMatInfo_Merge(MatInfo *arg0, MatInfo *arg1) {
         M2C_STRUCT_COPY((s32) (arg0 + 0x3C) + 4, (s32) (arg1 + 0x3C) + 4, 0x40);
     }
     if (arg1->unk1E0 & 0x20) {
-        strcpy((s8 *) &arg0->unk40.unk60, (s8 *) &arg1->unk40.unk60);
+        strcpy(&arg0->unkA0, &arg1->unkA0);
     }
     if (arg1->unk1E0 & 0x40) {
-        strcpy(&arg0->unk40.unk80, &arg1->unk40.unk80);
+        strcpy(&arg0->unkC0, &arg1->unkC0);
     }
     if (arg1->unk1E0 & 0x80) {
         arg0->unk2C = arg1->unk2C;
@@ -679,10 +679,10 @@ void MKMatInfo_Init(MatInfo *arg0, const char *arg1) {
     arg0->unk30 = M2C_FIELD(&one, f64 *, 0);
     arg0->unk38 = M2C_FIELD(&one, f64 *, 8);
     arg0->unk40.SetIdentity();
-    M2C_FIELD(arg0, s8 *, 0x80) = 0;
+    arg0->unk80 = 0;
     arg0->unk1E4 = 0;
-    M2C_FIELD(arg0, s8 *, 0xA0) = 0;
-    arg0->unk40.unk80 = 0;
+    arg0->unkA0 = 0;
+    arg0->unkC0 = 0;
     arg0->unkE0 = (u8) M2C_FIELD(&gMKDefaults, s32 *, 0x90);
     arg0->unkE1 = 0;
     arg0->unkE3 = 0;

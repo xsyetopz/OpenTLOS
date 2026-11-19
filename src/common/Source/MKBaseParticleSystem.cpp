@@ -22,7 +22,7 @@ extern f32 gUpdateTimeDelta;
 void MKBaseParticleSystem::LoadDone() {
     MKProp::LoadDone();
     if (this->unk10 & 2) {
-        M2C_FIELD(this, s8 *, 0xB4) = 1;
+        this->unkB4 = 1;
     }
 }
 
@@ -183,7 +183,7 @@ void MKParticleSystem_InitModule(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: undefined identifier 'sp20'
 void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleChunk *arg2) {
     f64 sp48;
     f64 sp40;
@@ -241,7 +241,7 @@ void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleCh
 loop_5:
     if (var_r24_294 < (s32) arg2->unkA84) {
         temp_r23_301 = arg2 + var_r18_296;
-        temp_f28_316 = (f32) (temp_r25_297 & (s32) (this->unk60.unk50 + M2C_FIELD(temp_r23_301, f32 *, 0x20)));
+        temp_f28_316 = (f32) (temp_r25_297 & (s32) (this->unkB0 + M2C_FIELD(temp_r23_301, f32 *, 0x20)));
         _table_sincosf(M2C_FIELD(temp_r23_301, f32 *, 0x24), spC, sp8);
         temp_f0_319 = temp_r29_282->unk0;
         temp_f1_321 = temp_r29_282->unk4;
@@ -249,8 +249,8 @@ loop_5:
         temp_f11_325 = temp_r30_285->unk10;
         temp_f12_327 = temp_r30_285->unk14;
         temp_f22_329 = temp_r30_285->unk18;
-        temp_f10_331 = this->unk60.unk4C;
-        temp_f13_333 = this->unk60.unk48;
+        temp_f10_331 = this->unkAC;
+        temp_f13_333 = this->unkA8;
         temp_f0_335 = M2C_FIELD(temp_r23_301, f32 *, 0x28);
         temp_f1_341 = temp_f10_331 * ((temp_f11_325 * sp8) - (temp_f0_319 * spC));
         temp_f3_342 = temp_f13_333 * ((temp_f11_325 * spC) + (temp_f0_319 * sp8));
@@ -337,44 +337,39 @@ MKParticleChunk *MKBaseParticleSystem::GetNextParticle(MKBaseParticleSystem::Par
     return M2C_FIELD(arg1, MKParticleChunk **, 4);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 MKParticleChunk *MKBaseParticleSystem::GetFirstParticle(MKBaseParticleSystem::ParticleRec *arg1) {
-    if (M2C_BITWISE(s32, this->unk60.unk78) == 0) {
-        M2C_FIELD(arg1, f32 *, 0) = 0.0f;
-        M2C_FIELD(arg1, f32 *, 4) = 0.0f;
+    if ((s32) this->unkD8 == 0) {
+        M2C_FIELD(arg1, MKParticleChunk **, 0) = NULL;
+        M2C_FIELD(arg1, MKParticleChunk **, 4) = NULL;
         return NULL;
     }
-    M2C_FIELD(arg1, f32 *, 0) = (f32) this->unk60.unk70;
-    M2C_FIELD(arg1, f32 *, 4) = (f32) this->unk60.unk70;
-    return M2C_BITWISE(MKParticleChunk *, M2C_FIELD(arg1, f32 *, 4));
+    M2C_FIELD(arg1, MKParticleChunk **, 0) = (MKParticleChunk *) this->unkD0;
+    M2C_FIELD(arg1, MKParticleChunk **, 4) = (MKParticleChunk *) this->unkD0;
+    return M2C_FIELD(arg1, MKParticleChunk **, 4);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void MKBaseParticleSystem::DestroyAllParticles() {
-    f32 var_r31_583;
+    MKParticleChunk *var_r31_583;
 
-    var_r31_583 = this->unk60.unk70;
+    var_r31_583 = this->unkD0;
 loop_2:
-    if (M2C_BITWISE(u32, var_r31_583) != 0U) {
-        MKParticleSystem_FreeChunk(M2C_BITWISE(MKParticleChunk *, var_r31_583));
-        var_r31_583 = M2C_FIELD(var_r31_583, f32 *, 0xA8C);
+    if (var_r31_583 != NULL) {
+        MKParticleSystem_FreeChunk(var_r31_583);
+        var_r31_583 = var_r31_583->unkA8C;
         goto loop_2;
     }
-    this->unk60.unk70 = 0.0f;
-    this->unk60.unk74 = 0.0f;
-    this->unk60.unk78 = 0.0f;
+    this->unkD0 = NULL;
+    this->unkD4 = 0;
+    this->unkD8 = 0;
 }
-#endif
 
-#if 0 // DRAFT: declaration syntax error
 MKParticleChunk *MKBaseParticleSystem::DestroyParticle(MKBaseParticleSystem::ParticleRec *arg1) {
     MKParticleChunk *temp_r3_630;
     MKParticleChunk *temp_r3_636;
+    MKParticleChunk *temp_r3_642;
     MKParticleChunk *temp_r4_613;
     MKParticleChunk *temp_r4_691;
     MKParticleChunk *var_r31_616;
-    f32 temp_r3_642;
     s32 temp_r0_618;
     s32 temp_r3_619;
     s32 temp_r5_615;
@@ -404,16 +399,16 @@ MKParticleChunk *MKBaseParticleSystem::DestroyParticle(MKBaseParticleSystem::Par
         if (temp_r3_636 != NULL) {
             temp_r3_636->unkA88 = temp_r4_613->unkA88;
         }
-        temp_r3_642 = this->unk60.unk70;
-        if (M2C_BITWISE(u32, temp_r3_642) == (MKParticleChunk *) M2C_FIELD(arg1, MKParticleChunk **, 0)) {
-            this->unk60.unk70 = M2C_FIELD(temp_r3_642, f32 *, 0xA8C);
+        temp_r3_642 = this->unkD0;
+        if (temp_r3_642 == (MKParticleChunk *) M2C_FIELD(arg1, MKParticleChunk **, 0)) {
+            this->unkD0 = temp_r3_642->unkA8C;
         }
         M2C_FIELD(arg1, MKParticleChunk **, 0)->unkA84 = 0;
         M2C_FIELD(arg1, MKParticleChunk **, 0)->unkA8C = NULL;
         M2C_FIELD(arg1, MKParticleChunk **, 0)->unkA88 = NULL;
         MKParticleSystem_FreeChunk(M2C_FIELD(arg1, MKParticleChunk **, 0));
         M2C_FIELD(arg1, MKParticleChunk **, 0) = NULL;
-        this->unk60.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk74) - 1));
+        this->unkD4 -= 1;
     } else if (temp_r0_618 != temp_r3_619) {
         temp_r5_668 = temp_r3_619 * 0x30;
         temp_r3_669 = temp_r4_613 + (temp_r0_618 * 0x30);
@@ -433,7 +428,7 @@ MKParticleChunk *MKBaseParticleSystem::DestroyParticle(MKBaseParticleSystem::Par
     } else {
         temp_r4_613->unkA84 -= 1;
     }
-    this->unk60.unk78 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk78) - 1));
+    this->unkD8 -= 1;
     M2C_FIELD(arg1, MKParticleChunk **, 0) = var_r31_616;
     if (var_r31_616 == NULL) {
         M2C_FIELD(arg1, MKParticleChunk **, 4) = NULL;
@@ -442,7 +437,6 @@ MKParticleChunk *MKBaseParticleSystem::DestroyParticle(MKBaseParticleSystem::Par
     M2C_FIELD(arg1, MKParticleChunk **, 4) = (MKParticleChunk *) (M2C_FIELD(arg1, MKParticleChunk **, 0) + (var_r30_623 * 0x30));
     return M2C_FIELD(arg1, MKParticleChunk **, 4);
 }
-#endif
 
 void MKBaseParticleSystem::Message(MKMessage *arg0) {
     s32 temp_r0_734;
@@ -450,145 +444,142 @@ void MKBaseParticleSystem::Message(MKMessage *arg0) {
     temp_r0_734 = arg0->unk0;
     switch (temp_r0_734) {                          /* irregular */
     case -3:
-        M2C_FIELD(this, s8 *, 0xB4) = 1;
+        this->unkB4 = 1;
         break;
     case -4:
-        M2C_FIELD(this, s8 *, 0xB4) = 0;
+        this->unkB4 = 0;
         DestroyAllParticles();
         break;
     }
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk68'
 void *MKBaseParticleSystem::AllocateParticle() {
+    MKParticleChunk *temp_r0_816;
+    MKParticleChunk *temp_r0_825;
+    MKParticleChunk *temp_r3_780;
     MKParticleChunk *temp_r3_788;
-    f32 temp_r3_780;
-    f32 temp_r4_799;
-    f32 temp_r4_806;
-    f32 temp_r4_838;
-    f32 temp_r5_811;
-    f32 var_r4_820;
+    MKParticleChunk *temp_r4_799;
+    MKParticleChunk *temp_r4_806;
+    MKParticleChunk *temp_r5_811;
+    MKParticleChunk *var_r4_820;
     s32 temp_r3_807;
-    u32 temp_r0_816;
-    u32 temp_r0_825;
     void *temp_r3_812;
+    void *temp_r4_838;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0xB4) == 0) {
+    if ((u8) this->unkB4 == 0) {
         return NULL;
     }
-    if (M2C_BITWISE(u32, this->unk60.unk68) != 0U) {
+    if ((MKBaseParticleSystem *) this->unkC8 != NULL) {
         return NULL;
     }
-    temp_r3_780 = this->unk60.unk70;
-    if ((M2C_BITWISE(u32, temp_r3_780) == 0U) || ((s32) M2C_FIELD(temp_r3_780, s32 *, 0xA84) >= 0x18)) {
-        temp_r3_788 = MKParticleSystem_AllocChunk(M2C_BITWISE(s32, this->unk60.unk6C));
+    temp_r3_780 = this->unkD0;
+    if ((temp_r3_780 == NULL) || ((s32) temp_r3_780->unkA84 >= 0x18)) {
+        temp_r3_788 = MKParticleSystem_AllocChunk(this->unkCC);
         if (temp_r3_788 == NULL) {
             return NULL;
         }
-        this->unk60.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk74) + 1));
-        temp_r3_788->unkA8C = M2C_BITWISE(MKParticleChunk *, this->unk60.unk70);
-        temp_r4_799 = this->unk60.unk70;
-        if (M2C_BITWISE(u32, temp_r4_799) != 0U) {
-            M2C_FIELD(temp_r4_799, MKParticleChunk **, 0xA88) = temp_r3_788;
+        this->unkD4 += 1;
+        temp_r3_788->unkA8C = this->unkD0;
+        temp_r4_799 = this->unkD0;
+        if (temp_r4_799 != NULL) {
+            temp_r4_799->unkA88 = temp_r3_788;
         }
-        this->unk60.unk70 = M2C_BITWISE(f32, temp_r3_788);
+        this->unkD0 = temp_r3_788;
         goto block_11;
     }
 block_11:
-    temp_r4_806 = this->unk60.unk70;
-    temp_r3_807 = M2C_FIELD(temp_r4_806, s32 *, 0xA84);
-    M2C_FIELD(temp_r4_806, s32 *, 0xA84) = (s32) (temp_r3_807 + 1);
-    temp_r5_811 = this->unk60.unk70;
-    temp_r3_812 = M2C_BITWISE(s32, temp_r4_806) + (temp_r3_807 * 0x30);
-    if ((s32) M2C_FIELD(temp_r5_811, s32 *, 0xA84) >= 0x18) {
-        temp_r0_816 = M2C_FIELD(temp_r5_811, u32 *, 0xA8C);
-        if (temp_r0_816 != 0U) {
-            this->unk60.unk70 = M2C_BITWISE(f32, temp_r0_816);
-            var_r4_820 = this->unk60.unk70;
+    temp_r4_806 = this->unkD0;
+    temp_r3_807 = temp_r4_806->unkA84;
+    temp_r4_806->unkA84 = temp_r3_807 + 1;
+    temp_r5_811 = this->unkD0;
+    temp_r3_812 = temp_r4_806 + (temp_r3_807 * 0x30);
+    if ((s32) temp_r5_811->unkA84 >= 0x18) {
+        temp_r0_816 = temp_r5_811->unkA8C;
+        if (temp_r0_816 != NULL) {
+            this->unkD0 = temp_r0_816;
+            var_r4_820 = this->unkD0;
 loop_15:
-            temp_r0_825 = M2C_FIELD(var_r4_820, u32 *, 0xA8C);
-            if (temp_r0_825 != 0U) {
-                var_r4_820 = M2C_BITWISE(f32, temp_r0_825);
+            temp_r0_825 = var_r4_820->unkA8C;
+            if (temp_r0_825 != NULL) {
+                var_r4_820 = temp_r0_825;
                 goto loop_15;
             }
-            M2C_FIELD(var_r4_820, u32 *, 0xA8C) = M2C_BITWISE(u32, temp_r5_811);
-            M2C_FIELD(temp_r5_811, MKParticleChunk **, 0xA88) = M2C_BITWISE(MKParticleChunk *, var_r4_820);
-            M2C_FIELD(temp_r5_811, u32 *, 0xA8C) = 0U;
-            M2C_FIELD(this->unk60.unk70, MKParticleChunk **, 0xA88) = NULL;
+            var_r4_820->unkA8C = temp_r5_811;
+            temp_r5_811->unkA88 = var_r4_820;
+            temp_r5_811->unkA8C = NULL;
+            this->unkD0->unkA88 = NULL;
         }
     }
-    this->unk60.unk78 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk78) + 1));
-    temp_r4_838 = this->unk60.unk40;
-    if (M2C_BITWISE(u32, temp_r4_838) != 0U) {
+    this->unkD8 += 1;
+    temp_r4_838 = this->unkA0;
+    if (temp_r4_838 != NULL) {
         M2C_FIELD(temp_r3_812, f64 *, 0) = (f64) M2C_FIELD(temp_r4_838, f64 *, 0);
         M2C_FIELD(temp_r3_812, f64 *, 8) = (f64) M2C_FIELD(temp_r4_838, f64 *, 8);
     }
     return temp_r3_812;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_881'
 void *MKBaseParticleSystem::CreateParticle() {
+    MKParticleChunk *temp_r0_909;
+    MKParticleChunk *temp_r0_918;
+    MKParticleChunk *temp_r3_873;
     MKParticleChunk *temp_r3_881;
-    f32 temp_r3_873;
-    f32 temp_r4_892;
-    f32 temp_r4_899;
-    f32 temp_r4_931;
-    f32 temp_r5_904;
-    f32 var_r4_913;
+    MKParticleChunk *temp_r4_892;
+    MKParticleChunk *temp_r4_899;
+    MKParticleChunk *temp_r5_904;
+    MKParticleChunk *var_r4_913;
     s32 temp_r3_900;
-    u32 temp_r0_909;
-    u32 temp_r0_918;
     void *temp_r3_905;
+    void *temp_r4_931;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0xB4) == 0) {
+    if ((u8) this->unkB4 == 0) {
         return NULL;
     }
-    if (M2C_BITWISE(u32, this->unk60.unk68) != 0U) {
+    if ((MKBaseParticleSystem *) this->unkC8 != NULL) {
         return NULL;
     }
-    temp_r3_873 = this->unk60.unk70;
-    if ((M2C_BITWISE(u32, temp_r3_873) == 0U) || ((s32) M2C_FIELD(temp_r3_873, s32 *, 0xA84) >= 0x18)) {
-        temp_r3_881 = MKParticleSystem_AllocChunk(M2C_BITWISE(s32, this->unk60.unk6C));
+    temp_r3_873 = this->unkD0;
+    if ((temp_r3_873 == NULL) || ((s32) temp_r3_873->unkA84 >= 0x18)) {
+        temp_r3_881 = MKParticleSystem_AllocChunk(this->unkCC);
         if (temp_r3_881 == NULL) {
             return NULL;
         }
-        this->unk60.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk74) + 1));
-        temp_r3_881->unkA8C = M2C_BITWISE(MKParticleChunk *, this->unk60.unk70);
-        temp_r4_892 = this->unk60.unk70;
-        if (M2C_BITWISE(u32, temp_r4_892) != 0U) {
-            M2C_FIELD(temp_r4_892, MKParticleChunk **, 0xA88) = temp_r3_881;
+        this->unkD4 += 1;
+        temp_r3_881->unkA8C = this->unkD0;
+        temp_r4_892 = this->unkD0;
+        if (temp_r4_892 != NULL) {
+            temp_r4_892->unkA88 = temp_r3_881;
         }
-        this->unk60.unk70 = M2C_BITWISE(f32, temp_r3_881);
+        this->unkD0 = temp_r3_881;
         goto block_11;
     }
 block_11:
-    temp_r4_899 = this->unk60.unk70;
-    temp_r3_900 = M2C_FIELD(temp_r4_899, s32 *, 0xA84);
-    M2C_FIELD(temp_r4_899, s32 *, 0xA84) = (s32) (temp_r3_900 + 1);
-    temp_r5_904 = this->unk60.unk70;
-    temp_r3_905 = M2C_BITWISE(s32, temp_r4_899) + (temp_r3_900 * 0x30);
-    if ((s32) M2C_FIELD(temp_r5_904, s32 *, 0xA84) >= 0x18) {
-        temp_r0_909 = M2C_FIELD(temp_r5_904, u32 *, 0xA8C);
-        if (temp_r0_909 != 0U) {
-            this->unk60.unk70 = M2C_BITWISE(f32, temp_r0_909);
-            var_r4_913 = this->unk60.unk70;
+    temp_r4_899 = this->unkD0;
+    temp_r3_900 = temp_r4_899->unkA84;
+    temp_r4_899->unkA84 = temp_r3_900 + 1;
+    temp_r5_904 = this->unkD0;
+    temp_r3_905 = temp_r4_899 + (temp_r3_900 * 0x30);
+    if ((s32) temp_r5_904->unkA84 >= 0x18) {
+        temp_r0_909 = temp_r5_904->unkA8C;
+        if (temp_r0_909 != NULL) {
+            this->unkD0 = temp_r0_909;
+            var_r4_913 = this->unkD0;
 loop_15:
-            temp_r0_918 = M2C_FIELD(var_r4_913, u32 *, 0xA8C);
-            if (temp_r0_918 != 0U) {
-                var_r4_913 = M2C_BITWISE(f32, temp_r0_918);
+            temp_r0_918 = var_r4_913->unkA8C;
+            if (temp_r0_918 != NULL) {
+                var_r4_913 = temp_r0_918;
                 goto loop_15;
             }
-            M2C_FIELD(var_r4_913, u32 *, 0xA8C) = M2C_BITWISE(u32, temp_r5_904);
-            M2C_FIELD(temp_r5_904, MKParticleChunk **, 0xA88) = M2C_BITWISE(MKParticleChunk *, var_r4_913);
-            M2C_FIELD(temp_r5_904, u32 *, 0xA8C) = 0U;
-            M2C_FIELD(this->unk60.unk70, MKParticleChunk **, 0xA88) = NULL;
+            var_r4_913->unkA8C = temp_r5_904;
+            temp_r5_904->unkA88 = var_r4_913;
+            temp_r5_904->unkA8C = NULL;
+            this->unkD0->unkA88 = NULL;
         }
     }
-    this->unk60.unk78 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk60.unk78) + 1));
-    temp_r4_931 = this->unk60.unk40;
-    if (M2C_BITWISE(u32, temp_r4_931) != 0U) {
+    this->unkD8 += 1;
+    temp_r4_931 = this->unkA0;
+    if (temp_r4_931 != NULL) {
         M2C_FIELD(temp_r3_905, f64 *, 0) = (f64) M2C_FIELD(temp_r4_931, f64 *, 0);
         M2C_FIELD(temp_r3_905, f64 *, 8) = (f64) M2C_FIELD(temp_r4_931, f64 *, 8);
     } else {
@@ -605,15 +596,14 @@ loop_15:
     M2C_FIELD(temp_r3_905, f32 *, 0x24) = 0.0f;
     return temp_r3_905;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
+#if 0 // DRAFT: undefined identifier 'arg_sp30'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
+    MKParticleChunk *var_r30_987;
     f32 temp_f3_1004;
     f32 temp_f3_1094;
     f32 temp_f6_1008;
     f32 temp_f7_1017;
-    f32 var_r30_987;
     s32 var_r10_1065;
     s32 var_r11_1068;
     s32 var_r3_1069;
@@ -625,19 +615,19 @@ void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
     void *temp_r6_1002;
     void *temp_r8_1074;
     void *temp_r9_1079;
-    if (((u8) M2C_FIELD(this, u8 *, 0xB4) != 0) && (M2C_BITWISE(s32, this->unk60.unk78) > 0)) {
+    if (((u8) this->unkB4 != 0) && ((s32) this->unkD8 > 0)) {
         temp_r31_982 = MKView_GetCameraMatrix() + 0x30;
         InitDraw(arg0, arg1);
-        var_r30_987 = this->unk60.unk70;
+        var_r30_987 = this->unkD0;
 loop_15:
-        if (M2C_BITWISE(u32, var_r30_987) != 0U) {
+        if (var_r30_987 != NULL) {
             if ((s32) M2C_FIELD(M2C_FIELD(M2C_FIELD(this->unk0, void **, 0x38), void **, 0x24), s32 *, 0x24) == 3) {
                 var_r7_997 = 0;
                 var_r3_998 = 0;
                 var_r4_999 = 0;
 loop_6:
-                if (var_r7_997 < (s32) M2C_FIELD(var_r30_987, s32 *, 0xA84)) {
-                    temp_r6_1002 = M2C_BITWISE(s32, var_r30_987) + var_r4_999;
+                if (var_r7_997 < (s32) var_r30_987->unkA84) {
+                    temp_r6_1002 = var_r30_987 + var_r4_999;
                     temp_f3_1004 = M2C_FIELD(temp_r6_1002, f32 *, 4);
                     temp_f6_1008 = M2C_FIELD(temp_r6_1002, f32 *, 0);
                     temp_f7_1017 = M2C_FIELD(temp_r6_1002, f32 *, 8);
@@ -659,7 +649,7 @@ loop_6:
                 }
                 var_r10_1065 = 1;
 loop_13:
-                if (var_r10_1065 < (s32) M2C_FIELD(var_r30_987, s32 *, 0xA84)) {
+                if (var_r10_1065 < (s32) var_r30_987->unkA84) {
                     var_r11_1068 = var_r10_1065 - 1;
                     var_r3_1069 = var_r11_1068 * 0x30;
                     var_r4_1070 = var_r11_1068 * 4;
@@ -667,8 +657,8 @@ loop_11:
                     if (var_r11_1068 >= 0) {
                         temp_r8_1074 = &arg_spA0 + var_r4_1070;
                         if (M2C_FIELD(temp_r8_1074, f32 *, 0) < M2C_FIELD(temp_r8_1074, f32 *, 4)) {
-                            temp_r9_1079 = M2C_BITWISE(s32, var_r30_987) + var_r3_1069;
-                            M2C_STRUCT_COPY((s32) &arg_sp5C + 4, temp_r9_1079 - 4 + 4, 0x30);
+                            temp_r9_1079 = var_r30_987 + var_r3_1069;
+                            M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (temp_r9_1079 - 4) + 4, 0x30);
                             var_r11_1068 -= 1;
                             var_r3_1069 -= 0x30;
                             temp_f3_1094 = M2C_FIELD(temp_r8_1074, f32 *, 0);
@@ -698,8 +688,8 @@ loop_11:
                     goto loop_13;
                 }
             }
-            DrawChunk(arg0, arg1, M2C_BITWISE(MKParticleChunk *, var_r30_987));
-            var_r30_987 = M2C_FIELD(var_r30_987, f32 *, 0xA8C);
+            DrawChunk(arg0, arg1, var_r30_987);
+            var_r30_987 = var_r30_987->unkA8C;
             goto loop_15;
         }
         MKEndPrimitive();
@@ -707,15 +697,15 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unksp14'
 void MKBaseParticleSystem::Draw() {
     f64 sp10;
     f64 sp8;
-    f32 temp_r0_1211;
-    f32 temp_r3_1194;
+    MKBaseParticleSystem *temp_r3_1194;
+    u32 temp_r0_1211;
     u32 var_r3_1210;
 
-    this->unk60.unk5C = OSGetTick();
+    this->unkBC = OSGetTick();
     sp10 = this->unk58;
     sp8 = this->unk50;
     unksp14 *= this->unk20;
@@ -727,19 +717,19 @@ void MKBaseParticleSystem::Draw() {
         M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
     }
-    temp_r3_1194 = this->unk60.unk68;
-    if (M2C_BITWISE(u32, temp_r3_1194) != 0U) {
-        ((MKBaseParticleSystem *) (M2C_BITWISE(MKBaseParticleSystem *, temp_r3_1194)))->Draw(&this->unk60, (MKVector4 *) &sp8);
+    temp_r3_1194 = this->unkC8;
+    if (temp_r3_1194 != NULL) {
+        temp_r3_1194->Draw(&this->unk60, (MKVector4 *) &sp8);
         return;
     }
     Draw(&this->unk60, (MKVector4 *) &sp8);
-    this->unk60.unk5C = OSGetTick() - this->unk60.unk5C;
-    var_r3_1210 = this->unk60.unk5C;
-    temp_r0_1211 = this->unk60.unk64;
-    if (M2C_BITWISE(u32, temp_r0_1211) > var_r3_1210) {
-        var_r3_1210 = M2C_BITWISE(u32, temp_r0_1211);
+    this->unkBC = OSGetTick() - this->unkBC;
+    var_r3_1210 = this->unkBC;
+    temp_r0_1211 = this->unkC4;
+    if (temp_r0_1211 > var_r3_1210) {
+        var_r3_1210 = temp_r0_1211;
     }
-    this->unk60.unk64 = M2C_BITWISE(f32, var_r3_1210);
+    this->unkC4 = var_r3_1210;
 }
 #endif
 
@@ -747,79 +737,75 @@ void MKBaseParticleSystem::EmitParticles() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void MKBaseParticleSystem::PostUpdate() {
-    f32 var_r7_1234;
+    MKParticleChunk *temp_r4_1239;
+    MKParticleChunk *temp_r4_1253;
+    MKParticleChunk *temp_r5_1248;
+    MKParticleChunk *var_r7_1234;
     u8 var_r6_1235;
-    void *temp_r4_1239;
-    void *temp_r4_1253;
-    void *temp_r5_1248;
 
-    var_r7_1234 = this->unk60.unk70;
+    var_r7_1234 = this->unkD0;
     var_r6_1235 = 0;
 loop_10:
-    if (M2C_BITWISE(u32, var_r7_1234) != 0U) {
-        temp_r4_1239 = M2C_FIELD(var_r7_1234, void **, 0xA8C);
-        if ((s32) M2C_FIELD(var_r7_1234, s32 *, 0xA84) >= 0x18) {
+    if (var_r7_1234 != NULL) {
+        temp_r4_1239 = var_r7_1234->unkA8C;
+        if ((s32) var_r7_1234->unkA84 >= 0x18) {
             var_r6_1235 = 1;
         } else if (var_r6_1235 != 0) {
-            temp_r5_1248 = M2C_FIELD(var_r7_1234, void **, 0xA88);
+            temp_r5_1248 = var_r7_1234->unkA88;
             if (temp_r5_1248 != NULL) {
-                M2C_FIELD(temp_r5_1248, void **, 0xA8C) = temp_r4_1239;
+                temp_r5_1248->unkA8C = temp_r4_1239;
             }
-            temp_r4_1253 = M2C_FIELD(var_r7_1234, void **, 0xA8C);
+            temp_r4_1253 = var_r7_1234->unkA8C;
             if (temp_r4_1253 != NULL) {
-                M2C_FIELD(temp_r4_1253, void **, 0xA88) = (void *) M2C_FIELD(var_r7_1234, void **, 0xA88);
+                temp_r4_1253->unkA88 = var_r7_1234->unkA88;
             }
-            M2C_FIELD(var_r7_1234, void **, 0xA8C) = M2C_BITWISE(void *, this->unk60.unk70);
-            M2C_FIELD(var_r7_1234, void **, 0xA88) = NULL;
-            M2C_FIELD(this->unk60.unk70, f32 *, 0xA88) = var_r7_1234;
-            this->unk60.unk70 = var_r7_1234;
+            var_r7_1234->unkA8C = this->unkD0;
+            var_r7_1234->unkA88 = NULL;
+            this->unkD0->unkA88 = var_r7_1234;
+            this->unkD0 = var_r7_1234;
         }
-        var_r7_1234 = M2C_BITWISE(f32, temp_r4_1239);
+        var_r7_1234 = temp_r4_1239;
         goto loop_10;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
 void MKBaseParticleSystem::Update() {
     f32 temp_f1_1288;
-    f32 var_r3_1329;
-    s32 temp_r0_1330;
+    u32 temp_r0_1330;
+    u32 var_r3_1329;
 
-    if (M2C_BITWISE(u32, this->unk60.unk68) == 0U) {
-        if ((u8) this->unk60.unk7C != 0) {
-            temp_f1_1288 = this->unk60.unk80;
+    if ((MKBaseParticleSystem *) this->unkC8 == NULL) {
+        if ((u8) this->unkDC != 0) {
+            temp_f1_1288 = this->unkE0;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (temp_f1_1288 == 0.0f) {
-                this->unk60.unk7C = 0;
-                this->unk60.unk80 = 0.0f;
+                this->unkDC = 0;
+                this->unkE0 = 0.0f;
                 if (OnTimeOut() == 0) {
                     return;
                 }
                 goto block_6;
             }
-            this->unk60.unk80 = temp_f1_1288 - gUpdateTimeDelta;
+            this->unkE0 = temp_f1_1288 - gUpdateTimeDelta;
             goto block_6;
         }
 block_6:
-        if ((u8) M2C_FIELD(this, u8 *, 0xB4) != 0) {
-            this->unk60.unk58 = M2C_BITWISE(f32, OSGetTick());
+        if ((u8) this->unkB4 != 0) {
+            this->unkB8 = OSGetTick();
             EmitParticles();
             UpdateParticles();
             PostUpdate();
-            this->unk60.unk58 = M2C_BITWISE(f32, (OSGetTick() - M2C_BITWISE(s32, this->unk60.unk58)));
-            var_r3_1329 = this->unk60.unk58;
-            temp_r0_1330 = this->unk60.unk60;
-            if ((u32) temp_r0_1330 > M2C_BITWISE(u32, var_r3_1329)) {
-                var_r3_1329 = M2C_BITWISE(f32, temp_r0_1330);
+            this->unkB8 = OSGetTick() - this->unkB8;
+            var_r3_1329 = this->unkB8;
+            temp_r0_1330 = this->unkC0;
+            if (temp_r0_1330 > var_r3_1329) {
+                var_r3_1329 = temp_r0_1330;
             }
-            this->unk60.unk60 = M2C_BITWISE(s32, var_r3_1329);
+            this->unkC0 = var_r3_1329;
         }
     }
 }
-#endif
 
 s32 MKBaseParticleSystem::OnTimeOut() {
     Disable();
@@ -831,7 +817,6 @@ void MKBaseParticleSystem::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void MKBaseParticleSystem::Init() {
     MKProp::Init();
     M2C_FIELD(this, f32 *, 0x50) = 1.0f;
@@ -839,20 +824,19 @@ void MKBaseParticleSystem::Init() {
     M2C_FIELD(this, f32 *, 0x58) = 1.0f;
     M2C_FIELD(this, f32 *, 0x5C) = 1.0f;
     this->unk60.SetIdentity();
-    this->unk60.unk40 = 0.0f;
-    M2C_FIELD(this, s8 *, 0xA4) = 1;
-    this->unk60.unk68 = 0.0f;
-    this->unk60.unk6C = nanf;
-    this->unk60.unk70 = 0.0f;
-    this->unk60.unk74 = 0.0f;
-    this->unk60.unk78 = 0.0f;
-    M2C_FIELD(this, s8 *, 0xB4) = 0;
-    this->unk60.unk7C = 0;
-    this->unk60.unk80 = 0.0f;
-    this->unk60.unk48 = 500.0f;
-    this->unk60.unk4C = 500.0f;
-    this->unk60.unk50 = 0.0f;
+    this->unkA0 = NULL;
+    this->unkA4 = 1;
+    this->unkC8 = NULL;
+    this->unkCC = -1;
+    this->unkD0 = NULL;
+    this->unkD4 = 0;
+    this->unkD8 = 0;
+    this->unkB4 = 0;
+    this->unkDC = 0;
+    this->unkE0 = 0.0f;
+    this->unkA8 = 500.0f;
+    this->unkAC = 500.0f;
+    this->unkB0 = 0.0f;
     this->unk4 = NULL;
     this->unk8 = &this->unk60;
 }
-#endif

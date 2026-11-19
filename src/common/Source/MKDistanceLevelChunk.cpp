@@ -137,7 +137,7 @@ void MKDistanceLevelChunk::DL_Begin() {
     this->unk2D4C = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: undefined identifier 'unk44'
 void MKDistanceLevelChunk::DL_Init(MKPropDescriptor *arg0) {
     arg0->unk44 = NULL;
     arg0->unk50 = NULL;
@@ -722,7 +722,7 @@ loop_32:
             } else if (!(temp_r3_1042 & 0x480)) {
                 temp_r3_1168 = M2C_FIELD(var_r31_1023, MKPropDescriptor **, 0);
                 if ((void *) temp_r3_1168->unk50 == NULL) {
-                    temp_r3_1168->unk44 = (MKPropDescriptor *) this->unk2D44;
+                    temp_r3_1168->unk44 = this->unk2D44;
                     this->unk2D44 = M2C_FIELD(var_r31_1023, MKPropDescriptor **, 0);
                 }
                 M2C_FIELD(var_r31_1023, void **, 0x3C) = (void *) M2C_FIELD(var_r31_1023, MKPropDescriptor **, 0)->unk50;

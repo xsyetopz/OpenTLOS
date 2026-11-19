@@ -25,7 +25,7 @@ void MKDynamicBone::DefaultUpdater(MKDynamicBone *arg0, void *arg1) {
     Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk74'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKDynamicBone::Reset() {
     Animation *temp_r3_49;
     Matrix *temp_r30_34;
@@ -36,7 +36,7 @@ void MKDynamicBone::Reset() {
     u32 temp_r0_62;
     temp_r30_34 = this->unk20;
     temp_r29_36 = M2C_FIELD(temp_r30_34, s16 *, 0x70);
-    temp_f31_37 = temp_r30_34->unk74;
+    temp_f31_37 = M2C_FIELD(temp_r30_34, f32 *, 0x74);
     temp_r28_38 = M2C_FIELD(temp_r30_34, u16 *, 0x72);
     ((Animation *) (MKModel_GetAnimation(this->unk24)))->SetCustomMatrix((s32) temp_r29_36, NULL, (AnimationMatrixPosition) 2, 0U);
     temp_r31_47 = MKModel_GetWorldMatrix(this->unk24);
@@ -106,12 +106,12 @@ void MKDynamicBone::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void MKDynamicBone::Update() {
     Animation *temp_r3_236;
     Animation *temp_r3_254;
+    Matrix *temp_r28_220;
     Matrix *temp_r31_217;
-    f32 *temp_r28_220;
     f32 temp_f0_1035;
     f32 temp_f0_507;
     f32 temp_f0_526;
@@ -149,11 +149,11 @@ void MKDynamicBone::Update() {
     u32 temp_r26_277;
     temp_r31_217 = this->unk20;
     temp_r29_219 = M2C_FIELD(temp_r31_217, s16 *, 0x70);
-    temp_r28_220 = &temp_r31_217->unk40;
+    temp_r28_220 = temp_r31_217 + 0x40;
     temp_r30_221 = M2C_FIELD(temp_r31_217, u16 *, 0x72);
-    temp_f25_222 = temp_r31_217->unk74;
-    temp_f24_223 = temp_r31_217->unk7C;
-    temp_f23_224 = temp_r31_217->unk78;
+    temp_f25_222 = M2C_FIELD(temp_r31_217, f32 *, 0x74);
+    temp_f24_223 = M2C_FIELD(temp_r31_217, f32 *, 0x7C);
+    temp_f23_224 = M2C_FIELD(temp_r31_217, f32 *, 0x78);
     temp_r25_232 = (s8) M2C_FIELD((M2C_FIELD(MKModel_GetAnimation(this->unk24)->unk0, s32 *, 0x28) + (temp_r29_219 << 5)), u8 *, 0x36);
     temp_r26_234 = MKModel_GetWorldMatrix(this->unk24);
     temp_r3_236 = MKModel_GetAnimation(this->unk24);
@@ -281,7 +281,7 @@ void MKDynamicBone::Update() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f0, $f27 */);
-        temp_f0_507 = temp_f1_500 + M2C_FIELD(temp_r28_220, f32 *, 8);
+        temp_f0_507 = temp_f1_500 + temp_r28_220->unk8;
         arg_sp5C0 = temp_f0_507;
         arg_sp150 = temp_f0_507 * gUpdateTimeDelta;
         arg_sp438 = arg_sp148;
@@ -402,7 +402,7 @@ void MKDynamicBone::Update() {
             arg_sp520 = arg_sp370;
             arg_spC8 = (f32) arg_sp518;
             arg_spCC = arg_sp51C;
-            temp_f8_818 = M2C_BITWISE(f32, temp_r31_217->unk60);
+            temp_f8_818 = M2C_FIELD(temp_r31_217, f32 *, 0x60);
             arg_sp208 = this->unk0;
             arg_sp528 = (f64) arg_spC8;
             arg_sp20C = this->unk4;
@@ -426,7 +426,7 @@ void MKDynamicBone::Update() {
                 arg_sp340 = (f64) arg_spC0;
                 M2C_FIELD(this, f32 *, 8) = (f64) arg_spC0;
             } else {
-                temp_f1_870 = temp_r31_217->unk50;
+                temp_f1_870 = M2C_FIELD(temp_r31_217, f32 *, 0x50);
                 if (temp_f0_847 < temp_f1_870) {
                     arg_sp308.operator*(temp_f1_870 - temp_f0_847);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
@@ -442,7 +442,7 @@ void MKDynamicBone::Update() {
             arg_sp518 = arg_sp2F8;
             arg_sp520 = arg_sp300;
             arg_sp98 = (f32) arg_sp518;
-            temp_f8_911 = temp_r31_217->unk64;
+            temp_f8_911 = M2C_FIELD(temp_r31_217, f32 *, 0x64);
             arg_sp9C = arg_sp51C;
             arg_sp1F8 = this->unk0;
             arg_sp528 = (f64) arg_sp98;
@@ -467,7 +467,7 @@ void MKDynamicBone::Update() {
                 arg_sp2D0 = (f64) arg_sp90;
                 M2C_FIELD(this, f32 *, 8) = (f64) arg_sp90;
             } else {
-                temp_f1_964 = temp_r31_217->unk54;
+                temp_f1_964 = M2C_FIELD(temp_r31_217, f32 *, 0x54);
                 if (temp_f0_941 < temp_f1_964) {
                     arg_sp298.operator*(temp_f1_964 - temp_f0_941);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
@@ -483,7 +483,7 @@ void MKDynamicBone::Update() {
             arg_sp518 = arg_sp288;
             arg_sp520 = arg_sp290;
             arg_sp68 = (f32) arg_sp518;
-            temp_f8_1005 = temp_r31_217->unk68;
+            temp_f8_1005 = M2C_FIELD(temp_r31_217, f32 *, 0x68);
             arg_sp6C = arg_sp51C;
             arg_sp1E8 = this->unk0;
             arg_sp528 = (f64) arg_sp68;
@@ -508,7 +508,7 @@ void MKDynamicBone::Update() {
                 arg_sp260 = (f64) arg_sp60;
                 M2C_FIELD(this, f32 *, 8) = (f64) arg_sp60;
             } else {
-                temp_f1_1058 = temp_r31_217->unk58;
+                temp_f1_1058 = M2C_FIELD(temp_r31_217, f32 *, 0x58);
                 if (temp_f0_1035 < temp_f1_1058) {
                     arg_sp228.operator*(temp_f1_1058 - temp_f0_1035);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
@@ -643,11 +643,11 @@ void MKDynamicBoneSystem::AddModel(MKModel *arg0) {
     Animation *temp_r3_1311;
     MKDynamicBone **temp_r5_1330;
     MKDynamicBone *temp_r30_1332;
-    f32 *temp_r22_1361;
+    Matrix *temp_r22_1361;
     f32 *temp_r22_1402;
+    f32 *temp_r22_1412;
     s16 temp_r0_1293;
     s16 var_ctr_1294;
-    s32 *temp_r22_1412;
     s32 temp_r28_1319;
     s32 var_r20_1345;
     s32 var_r21_1342;
@@ -712,11 +712,11 @@ loop_11:
                     var_r21_1342 += 1;
                     var_r23_1343 += 0x10;
                 } while (var_r21_1342 < 4);
-                temp_r22_1361 = &temp_r30_1332->unk20->unk40;
-                FlipEndian(temp_r22_1361);
-                FlipEndian(temp_r22_1361 + 4);
-                FlipEndian(temp_r22_1361 + 8);
-                FlipEndian(temp_r22_1361 + 0xC);
+                temp_r22_1361 = temp_r30_1332->unk20 + 0x40;
+                FlipEndian(&temp_r22_1361->unk0);
+                FlipEndian(&temp_r22_1361->unk4);
+                FlipEndian(&temp_r22_1361->unk8);
+                FlipEndian(&temp_r22_1361->unkC);
                 FlipEndian(&temp_r30_1332->unk0);
                 FlipEndian(&temp_r30_1332->unk4);
                 FlipEndian(&temp_r30_1332->unk8);
@@ -725,21 +725,21 @@ loop_11:
                 FlipEndian(&temp_r30_1332->unk14);
                 FlipEndian(&temp_r30_1332->unk18);
                 FlipEndian(&temp_r30_1332->unk1C);
-                FlipEndian((s16 *) &temp_r30_1332->unk20->unk70);
-                FlipEndian(&temp_r30_1332->unk20->unk74);
-                FlipEndian(&temp_r30_1332->unk20->unk78);
-                FlipEndian(&temp_r30_1332->unk20->unk7C);
+                FlipEndian(temp_r30_1332->unk20 + 0x70);
+                FlipEndian(temp_r30_1332->unk20 + 0x74);
+                FlipEndian(temp_r30_1332->unk20 + 0x78);
+                FlipEndian(temp_r30_1332->unk20 + 0x7C);
                 FlipEndian(temp_r30_1332->unk20 + 0x72);
-                temp_r22_1402 = &temp_r30_1332->unk20->unk50;
+                temp_r22_1402 = temp_r30_1332->unk20 + 0x50;
                 FlipEndian(temp_r22_1402);
                 FlipEndian(temp_r22_1402 + 4);
                 FlipEndian(temp_r22_1402 + 8);
                 FlipEndian(temp_r22_1402 + 0xC);
-                temp_r22_1412 = &temp_r30_1332->unk20->unk60;
-                FlipEndian((f32 *) temp_r22_1412);
-                FlipEndian((f32 *) (temp_r22_1412 + 4));
-                FlipEndian((f32 *) (temp_r22_1412 + 8));
-                FlipEndian((f32 *) (temp_r22_1412 + 0xC));
+                temp_r22_1412 = temp_r30_1332->unk20 + 0x60;
+                FlipEndian(temp_r22_1412);
+                FlipEndian(temp_r22_1412 + 4);
+                FlipEndian(temp_r22_1412 + 8);
+                FlipEndian(temp_r22_1412 + 0xC);
             }
             temp_r30_1332->Reset();
             var_r27_1322 += 1;

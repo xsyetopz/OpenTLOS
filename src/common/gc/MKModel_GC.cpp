@@ -1,4 +1,5 @@
 #include "common/gc/MKModel_GC.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAttachment.h"
 #include "common/Source/MKGrass_MP.h"
 #include "common/Source/MKMaterial.h"
@@ -162,6 +163,7 @@ void MKModel_ExploreBegin(const MKModel *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'arg_spCC'
 void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
+    Animation *var_r26_538;
     MKAttachment *temp_r7_586;
     MKMaterial *temp_r23_588;
     MKMaterial *var_r19_790;
@@ -172,8 +174,7 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     Matrix *var_r27_526;
     Matrix *var_r30_675;
     MeshChunkGC *var_r28_832;
-    f32 var_r24_581;
-    f32 var_r25_556;
+    ModelCloth *var_r24_581;
     s16 temp_r0_972;
     s32 temp_r0_592;
     s32 temp_r0_846;
@@ -182,7 +183,6 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     s32 var_r17_735;
     s32 var_r18_808;
     s32 var_r20_782;
-    s32 var_r26_538;
     s32 var_r29_816;
     s32 var_r31_809;
     s32 var_r3_880;
@@ -191,7 +191,6 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     u16 var_r0_760;
     u32 temp_r3_828;
     u32 temp_r4_510;
-    u32 temp_r4_859;
     u8 temp_r0_856;
     u8 temp_r0_949;
     u8 temp_r3_849;
@@ -201,6 +200,8 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     void *temp_r17_848;
     void *temp_r3_865;
     void *temp_r4_822;
+    void *temp_r4_859;
+    void *var_r25_556;
     temp_r4_510 = ((u8) arg0->unk4 >> 5U) & 7;
     gpMKcurrentMaterialEffectorMask = 3;
     arg_spCC = 0U;
@@ -213,39 +214,39 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     }
     var_r27_526 = var_r14_519;
     if (temp_r4_510 >= 1U) {
-        arg_spD8 = &arg0->unk10.unk40;
+        arg_spD8 = &arg0->unk50;
     } else {
-        arg_spD8 = &one.unk0;
+        arg_spD8 = (f64 *) &one;
     }
     if (temp_r4_510 >= 1U) {
-        var_r26_538 = arg0->unk10.unk60;
+        var_r26_538 = arg0->unk70;
     } else {
-        var_r26_538 = 0;
+        var_r26_538 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spC8 = arg0->unk10.unk70;
+        arg_spC8 = arg0->unk80;
     } else {
-        arg_spC8 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), f32 *, 0x54);
+        arg_spC8 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), void **, 0x54);
     }
     if (temp_r4_510 >= 2U) {
-        var_r25_556 = arg0->unk10.unk78;
+        var_r25_556 = arg0->unk88;
     } else {
-        var_r25_556 = 0.0f;
+        var_r25_556 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spC4 = arg0->unk10.unk7C;
+        arg_spC4 = arg0->unk8C;
     } else {
-        arg_spC4 = 0;
+        arg_spC4 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spD4 = &arg0->unk10.unk80;
+        arg_spD4 = arg0 + 0x90;
     } else {
         arg_spD4 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        var_r24_581 = arg0->unk10.unk74;
+        var_r24_581 = arg0->unk84;
     } else {
-        var_r24_581 = 0.0f;
+        var_r24_581 = NULL;
     }
     temp_r7_586 = arg0->unk8;
     temp_r23_588 = gRenderState;
@@ -273,17 +274,17 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
         }
         var_r27_526 = (Matrix *) &arg_sp80;
     }
-    if ((u32) var_r26_538 != 0U) {
+    if (var_r26_538 != NULL) {
         var_r30_675 = var_r26_538->CalculateMatrices(NULL, -1, NULL, var_r27_526);
     } else {
         var_r30_675 = NULL;
     }
-    if ((u32) var_r26_538 != 0U) {
+    if (var_r26_538 != NULL) {
         MKMaterial_SetAnimationMatrices(var_r30_675, var_r26_538->GetNmbrOfNodes());
     }
     var_r22_689 = (Matrix *)-1U;
     var_r21_690 = 0;
-    if ((u32) var_r26_538 == 0U) {
+    if (var_r26_538 == NULL) {
         var_r0_695 = 0;
         if (((f32) M2C_FIELD(var_r27_526, f64 *, 0) == (f32) M2C_FIELD(&identity, f64 *, 0)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 8) == (f32) M2C_FIELD(&identity, f64 *, 8)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x10) == (f32) M2C_FIELD(&identity, f64 *, 0x10)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x18) == (f32) M2C_FIELD(&identity, f64 *, 0x18)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x20) == (f32) M2C_FIELD(&identity, f64 *, 0x20)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x28) == (f32) M2C_FIELD(&identity, f64 *, 0x28)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x30) == (f32) M2C_FIELD(&identity, f64 *, 0x30)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x38) == (f32) M2C_FIELD(&identity, f64 *, 0x38))) {
             var_r0_695 = 1;
@@ -321,7 +322,7 @@ loop_65:
     arg_spDC = &gShockWaveData;
 loop_137:
     if (var_r20_782 < (s16) M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 6)) {
-        var_r19_790 = *(M2C_BITWISE(s32, arg_spC8) + var_r14_784);
+        var_r19_790 = *(arg_spC8 + var_r14_784);
         if ((temp_r23_588 != NULL) && ((s32) var_r19_790->unk30 == (s32) temp_r23_588->unk30)) {
             var_r19_790 = temp_r23_588;
         }
@@ -351,7 +352,7 @@ loop_131:
                     } else {
                         var_r28_832 = NULL;
                     }
-                    if ((var_r28_832 != NULL) && ((M2C_BITWISE(u32, var_r25_556) == 0U) || !(*(M2C_BITWISE(s32, var_r25_556) + var_r29_816) & 0x4F))) {
+                    if ((var_r28_832 != NULL) && ((var_r25_556 == NULL) || !(*(var_r25_556 + var_r29_816) & 0x4F))) {
                         temp_r0_846 = var_r29_816 << 6;
                         arg_spD0 = temp_r0_846;
                         temp_r17_848 = M2C_FIELD(temp_r4_822, s32 *, 0x50) + temp_r0_846;
@@ -359,8 +360,8 @@ loop_131:
                         if ((temp_r3_849 == 5) || (temp_r3_849 == 4)) {
                             temp_r0_856 = *(arg_spC4 + var_r29_816);
                             if (temp_r0_856 != 0xFF) {
-                                temp_r4_859 = M2C_FIELD(var_r26_538, u32 *, 0x1C);
-                                if (temp_r4_859 != 0U) {
+                                temp_r4_859 = var_r26_538->unk1C;
+                                if (temp_r4_859 != NULL) {
                                     arg_spC0 = 3;
                                     temp_r3_865 = temp_r4_859 + (temp_r0_856 * 0x48);
                                     MKModel_pBlendShapeWeights = temp_r3_865 + 8;
@@ -369,7 +370,7 @@ loop_131:
                             }
                         } else {
                             var_r0_873 = 0;
-                            if (((u32) var_r26_538 != 0U) && (temp_r3_849 != 0)) {
+                            if ((var_r26_538 != NULL) && (temp_r3_849 != 0)) {
                                 var_r0_873 = 1;
                             }
                             var_r3_880 = 1;
@@ -402,13 +403,13 @@ loop_131:
                             }
                         }
                         temp_r0_949 = M2C_FIELD(temp_r17_848, u8 *, 0x38);
-                        if ((temp_r0_949 == 5) || (((u32) var_r26_538 != 0U) && (temp_r0_949 != 0))) {
+                        if ((temp_r0_949 == 5) || ((var_r26_538 != NULL) && (temp_r0_949 != 0))) {
                             if (var_r22_689 != NULL) {
                                 var_r22_689 = NULL;
                                 MKMaterial_SetLocalToWorld(NULL, 1.0f);
                             }
                         } else if ((var_r30_675 != NULL) && (temp_r0_972 = *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg_spD0 + 0x3A)), ((temp_r0_972 == -1) == 0))) {
-                            temp_r3_976 = var_r30_675 + (temp_r0_972 << 6);
+                            temp_r3_976 = &var_r30_675[temp_r0_972];
                             if (temp_r3_976 != var_r22_689) {
                                 var_r22_689 = temp_r3_976;
                                 MKMaterial_SetLocalToWorld(temp_r3_976, 1.0f);
@@ -446,8 +447,8 @@ loop_129:
         goto loop_137;
     }
     MKMaterialGC_bForceSkinnedVertexFormat = 0;
-    if (M2C_BITWISE(u32, var_r24_581) != 0U) {
-        ((ModelCloth *) (M2C_BITWISE(ModelCloth *, var_r24_581)))->Draw();
+    if (var_r24_581 != NULL) {
+        var_r24_581->Draw();
     }
     MKMaterial_SetGeometryColor(one);
     gpMKcurrentMaterialEffectorMask = 0;
