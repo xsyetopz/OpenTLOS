@@ -8,7 +8,10 @@ One TU sees only part of a class, so every TU's guess is a vote:
   {class: {"fields": {offset: {"type": [type, votes], "alt": {other type: votes}, "tus": [voting TUs]}},
            "tu_votes": {asm TU path: fields inferred there}}}
 A field's type is the most voted; disagreements stay in "alt" as evidence for
-the per-TU fixers. M2C_UNK guesses carry no type and are dropped.
+the per-TU fixers. M2C_UNK guesses carry no type and are dropped, except in
+`--base` gap filling: there an offset whose only votes are untyped still
+exists in the class, so `M2C_UNK *` becomes `void *` and a bare `M2C_UNK`
+becomes `u8` (the narrowest field, so it cannot overlap a neighbour).
 
 MWCC addresses neighbouring globals from one base register, and m2c then
 reads them as fields of the first global's type (the statics after
@@ -33,6 +36,7 @@ from pathlib import Path
 
 HEAD = re.compile(r"^typedef struct (\w+) \{$")
 GLOBAL = re.compile(r"^(?:extern |static )?(?:const )?(\w+) (\w+)(?: = .*)?;", re.M)
+UNTYPED = {"M2C_UNK *": "void *", "M2C_UNK": "u8"}
 FIELD = re.compile(r"^\s+/\* 0x([0-9A-F]+) \*/ (.+?) ?(\**)unk[0-9A-F]+((?:\[\w+\])*);\s+/\* inferred \*/")
 
 
@@ -41,9 +45,11 @@ def global_only(text: str, objs, off: int) -> bool:
     return bool(objs) and any(base in objs for base in re.findall(rf"(\w+)\.unk{off:X}\b", text))
 
 
-def collect(root: Path) -> dict:
-    """Per-class field votes of one m2c output tree."""
+def collect(root: Path, untyped: bool = False) -> dict:
+    """Per-class field votes of one m2c output tree; `untyped` keeps M2C_UNK fields as fallbacks."""
     votes: dict = defaultdict(lambda: defaultdict(Counter))
+    weak: dict = defaultdict(lambda: defaultdict(Counter))
+    weak_tus: dict = defaultdict(lambda: defaultdict(set))
     tus: dict = defaultdict(lambda: defaultdict(set))
     for f in sorted(root.rglob("*.c")):
         cls = None
@@ -60,11 +66,21 @@ def collect(root: Path) -> dict:
                 cls = None
                 continue
             m = FIELD.match(line) if cls else None
-            if m and "M2C_UNK" not in m.group(2) and not global_only(text, objs.get(cls), int(m.group(1), 16)):
-                typ = (m.group(2) + " " + m.group(3)).strip() + m.group(4)
-                off = int(m.group(1), 16)
-                votes[cls][off][typ] += 1
-                tus[cls][off].add(f.relative_to(root).with_suffix("").as_posix())
+            if not m or global_only(text, objs.get(cls), int(m.group(1), 16)):
+                continue
+            typ = (m.group(2) + " " + m.group(3)).strip() + m.group(4)
+            off = int(m.group(1), 16)
+            if "M2C_UNK" in typ:
+                if untyped and typ in UNTYPED:
+                    weak[cls][off][UNTYPED[typ]] += 1
+                    weak_tus[cls][off].add(f.relative_to(root).with_suffix("").as_posix())
+                continue
+            votes[cls][off][typ] += 1
+            tus[cls][off].add(f.relative_to(root).with_suffix("").as_posix())
+    for cls, offs in weak.items():
+        for off, c in offs.items():
+            if off not in votes[cls]:
+                votes[cls][off], tus[cls][off] = c, weak_tus[cls][off]
     result = {}
     for cls, offs in sorted(votes.items()):
         fields, tu_votes = {}, Counter()
@@ -111,7 +127,7 @@ def fill_gaps(base: dict, extra: dict, names: dict) -> int:
 def main() -> int:
     root, out = Path(sys.argv[1]), Path(sys.argv[2])
     opts = dict(zip(sys.argv[3::2], sys.argv[4::2]))
-    result = collect(root)
+    result = collect(root, untyped="--base" in opts)
     if "--base" in opts:
         base = json.loads(Path(opts["--base"]).read_text())
         names = json.loads(Path(opts["--names"]).read_text())
