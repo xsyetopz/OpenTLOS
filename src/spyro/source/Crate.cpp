@@ -515,7 +515,7 @@ void Crate::Respawn() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: ')' expected
 void Crate::Shattering() {
     s32 var_ctr_1005;
     s32 var_r0_1000;

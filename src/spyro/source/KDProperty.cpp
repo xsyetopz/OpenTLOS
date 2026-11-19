@@ -255,7 +255,6 @@ s32 KDPropertySet::AllocInstanceMem(int arg0, int arg1) {
     return temp_r5_523;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void KDPropertySet::LoadDone() {
     KDProperty *var_r31_538;
     KDProperty *var_r31_563;
@@ -277,7 +276,6 @@ loop_5:
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 KDPropertySet::LoadLine(MKIniLine *arg0, KDPropertyClassRegistry *arg1) {

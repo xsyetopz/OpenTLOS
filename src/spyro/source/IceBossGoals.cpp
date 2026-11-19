@@ -1470,7 +1470,7 @@ void IceBossGoal_AttackPhase3::AddGoal_AttackIdle() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_2911 = this->unk20;
-    M2C_FIELD(temp_r6_2911, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2911, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2911, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2911, s32 *, 0x18) = 0xA0;
     M2C_FIELD(temp_r6_2911, s32 *, 0x1C) = 0;
@@ -1484,7 +1484,7 @@ void IceBossGoal_AttackPhase3::AddGoal_Taunt() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_2941 = this->unk20;
-    M2C_FIELD(temp_r6_2941, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2941, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2941, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2941, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_2941, s32 *, 0x1C) = 0;
@@ -1720,7 +1720,7 @@ void IceBossGoal_AttackPhase2::AddGoal_AttackIdle() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_3455 = this->unk20;
-    M2C_FIELD(temp_r6_3455, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_3455, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_3455, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_3455, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_3455, s32 *, 0x1C) = 0;
@@ -1734,7 +1734,7 @@ void IceBossGoal_AttackPhase2::AddGoal_Taunt() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_3485 = this->unk20;
-    M2C_FIELD(temp_r6_3485, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_3485, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_3485, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_3485, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_3485, s32 *, 0x1C) = 0;
@@ -1946,7 +1946,7 @@ void IceBossGoal_AttackPhase1::AddGoal_AttackIdle() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_3938 = this->unk20;
-    M2C_FIELD(temp_r6_3938, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_3938, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_3938, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_3938, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_3938, s32 *, 0x1C) = 0;
@@ -1960,7 +1960,7 @@ void IceBossGoal_AttackPhase1::AddGoal_Taunt() {
 
     AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk20);
     temp_r6_3968 = this->unk20;
-    M2C_FIELD(temp_r6_3968, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_3968, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_3968, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_3968, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_3968, s32 *, 0x1C) = 0;
@@ -2010,7 +2010,7 @@ u8 IceBossGoal_AttackPhase1::Update() {
                             RemoveAllSubgoals();
                             AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk38);
                             temp_r5_4085 = this->unk38;
-                            M2C_FIELD(temp_r5_4085, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+                            M2C_FIELD(temp_r5_4085, f32 **, 0x10) = &this->unkC->unk838.unk28;
                             M2C_FIELD(temp_r5_4085, s8 *, 0x1C) = 1;
                             M2C_FIELD(temp_r5_4085, s8 *, 0x1D) = 0;
                             M2C_FIELD(temp_r5_4085, f32 *, 0x18) = 1.0f;

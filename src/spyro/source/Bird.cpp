@@ -86,7 +86,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk30'
+#if 0 // DRAFT: illegal explicit conversion from 'Volume' to
 void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     f64 sp200;
     Volume sp178;

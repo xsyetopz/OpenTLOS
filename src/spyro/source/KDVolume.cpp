@@ -149,7 +149,7 @@ void KDVolume::GetCenterPos() {
     sp40 = (f64) sp20;
     sp8 = (f64) sp18;
     sp10 = (f64) sp20;
-    this->unk8 = (f64) sp20;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
 #endif
 
@@ -170,7 +170,7 @@ s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
     sp8 = this->unk30 + ((temp_f8_223 * this->unk20) + ((temp_f7_217 * M2C_FIELD(this, f32 *, 0)) + (temp_f6_213 * this->unk10)));
     spC = this->unk34 + ((temp_f8_223 * this->unk24) + ((temp_f7_217 * M2C_FIELD(this, f32 *, 4)) + (temp_f6_213 * this->unk14)));
     sp18 = (f64) sp8;
-    sp10 = this->unk38 + ((temp_f8_223 * this->unk28) + ((temp_f7_217 * M2C_FIELD(this, f32 *, 8)) + (temp_f6_213 * this->unk18)));
+    sp10 = this->unk38 + ((temp_f8_223 * this->unk28) + ((temp_f7_217 * this->unk8) + (temp_f6_213 * this->unk18)));
     sp20 = (f64) sp10;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if ((f32) sp18 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) {
@@ -213,7 +213,7 @@ s32 KDVolume::IsWithin(const MKVector3 &arg0, float *arg1) {
         temp_f8_304 = arg0.unk8;
         sp8 = this->unk30 + ((temp_f8_304 * this->unk20) + ((temp_f7_299 * M2C_FIELD(this, f32 *, 0)) + (temp_f3_285 * this->unk10)));
         spC = this->unk34 + ((temp_f8_304 * this->unk24) + ((temp_f7_299 * M2C_FIELD(this, f32 *, 4)) + (temp_f3_285 * this->unk14)));
-        sp10 = this->unk38 + ((temp_f8_304 * this->unk28) + ((temp_f7_299 * M2C_FIELD(this, f32 *, 8)) + (temp_f3_285 * this->unk18)));
+        sp10 = this->unk38 + ((temp_f8_304 * this->unk28) + ((temp_f7_299 * this->unk8) + (temp_f3_285 * this->unk18)));
         sp18 = (f64) sp8;
         sp20 = (f64) sp10;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);

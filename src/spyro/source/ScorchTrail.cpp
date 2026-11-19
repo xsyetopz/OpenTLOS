@@ -359,7 +359,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
 void ScorchTrail::EndTrail() {
     s32 temp_r0_680;
 
@@ -373,9 +372,7 @@ void ScorchTrail::EndTrail() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
 void ScorchTrail::AddNode(const MKVector3 &arg0, const MKVector3 &arg1) {
     s32 *temp_r6_694;
     s32 temp_r0_738;
@@ -409,9 +406,8 @@ void ScorchTrail::AddNode(const MKVector3 &arg0, const MKVector3 &arg1) {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal use of non-static member
 void ScorchTrail::Deinit() {
     MKHeap *temp_r0_776;
     MKHeap *temp_r0_795;
@@ -504,7 +500,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
 void ScorchTrail::Draw() {
     f64 sp178;
     f64 sp170;
@@ -783,7 +779,7 @@ block_51:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal operand
 void ScorchTrail::Update() {
     MKHeap *temp_r4_1309;
     s32 temp_r0_1311;
@@ -891,7 +887,7 @@ void ScorchTrail::Init() {
     M2C_FIELD(this, MKHeap **, 0x60) = var_r3_1424;
     var_r5_1433 = M2C_FIELD(this, MKHeap **, 0x60);
     M2C_FIELD(this, MKHeap **, 0x60) = (MKHeap *) &var_r5_1433->unkF0;
-    var_r5_1433->unkF0 = 0;
+    var_r5_1433->unkF0 = 0.0f;
     var_ctr_1437 = 5;
     do {
         temp_r3_1439 = M2C_FIELD(this, MKHeap **, 0x60);

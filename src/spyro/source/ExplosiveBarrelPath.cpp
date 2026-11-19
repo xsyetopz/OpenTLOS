@@ -98,7 +98,7 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: undefined identifier 'arg_sp28'
 void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg1) {
     f32 temp_f29_225;
     f32 var_f28_228;

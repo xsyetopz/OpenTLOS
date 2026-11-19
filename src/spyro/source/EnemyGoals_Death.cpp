@@ -1095,7 +1095,6 @@ void EnemyGoal_DyingFrozen::Terminate() {
     this->unkC->ThawIfFrozen();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk68'
 u8 EnemyGoal_DyingFrozen::Update() {
     Enemy *temp_r4_2107;
     u8 var_r3_2108;
@@ -1111,7 +1110,6 @@ u8 EnemyGoal_DyingFrozen::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void EnemyGoal_DyingFrozen::Activate() {

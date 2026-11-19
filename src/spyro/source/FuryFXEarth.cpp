@@ -943,7 +943,7 @@ void FuryFXEarth::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FuryFXEarth::Init() {
     f64 sp40;
     f64 sp38;

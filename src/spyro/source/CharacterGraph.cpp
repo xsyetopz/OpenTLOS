@@ -184,7 +184,6 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk88'
 void CharacterGraphNodeProp::Init() {
     s32 var_ctr_569;
     s32 var_r3_567;
@@ -205,7 +204,6 @@ void CharacterGraphNodeProp::Init() {
     } while (var_ctr_569 != 0);
     this->unk50.unkBC = 0;
 }
-#endif
 
 void CharacterGraphNode::SendArriveMessage() {
     this->unk38.Send(this->unk40);

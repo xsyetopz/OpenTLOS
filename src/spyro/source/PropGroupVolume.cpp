@@ -192,7 +192,7 @@ loop_34:
 
 void PropGroupVolume::Reset() {
     MKProp::Reset();
-    if ((u8) this->unk2AD != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x2AD) != 0) {
         Enable();
         return;
     }
@@ -201,7 +201,7 @@ void PropGroupVolume::Reset() {
 
 void PropGroupVolume::LoadDone() {
     MKProp::LoadDone();
-    if ((u8) this->unk2AD != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x2AD) != 0) {
         Enable();
         return;
     }
@@ -213,7 +213,7 @@ s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_445;
 
     var_r31_445 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", (s32 *) &this->unk50.unk48, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", &this->unkA0, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", (f32 *) &this->unk2A4, 0) != 0) || (arg0->LoadBool("bShowEnvDome", (u8 *) &this->unk2A8, 0) != 0) || (arg0->LoadBool("bEnabled", this + 0x2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
         var_r31_445 = 1;
     }
     return var_r31_445;
@@ -243,17 +243,15 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'nanf'
 void PropGroupVolume::Init() {
     MKProp::Init();
     this->unk50.Init();
     this->unk2A4 = 0;
-    this->unk2A8 = 1.0f;
-    this->unk2AC = 1;
-    this->unk2AD = 1;
-    this->unk50.unk48 = nanf;
+    this->unk2A4 = 1.0f;
+    M2C_FIELD(this, s8 *, 0x2AC) = 1;
+    M2C_FIELD(this, s8 *, 0x2AD) = 1;
+    this->unkA0 = -1;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'PropGroupVolumeDescriptor *' to
 void PropGroupVolumeDescriptor::Deinit() {

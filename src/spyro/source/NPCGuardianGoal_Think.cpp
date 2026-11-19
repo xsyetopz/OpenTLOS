@@ -118,7 +118,7 @@ void NPCGuardianGoal_Think::Activate() {
     Arbitrate();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk28'
+#if 0 // DRAFT: undefined identifier 'free'
 void NPCGuardianGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_289;
     Goal<Enemy> *temp_r3_299;

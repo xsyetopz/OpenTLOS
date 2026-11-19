@@ -973,7 +973,7 @@ void EarthBossGoal_AttackPhase3::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_1871 = this->unk20;
-    M2C_FIELD(temp_r6_1871, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_1871, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_1871, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_1871, s32 *, 0x18) = 0xA0;
     M2C_FIELD(temp_r6_1871, s32 *, 0x1C) = 0;
@@ -987,7 +987,7 @@ void EarthBossGoal_AttackPhase3::AddGoal_Taunt() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_1901 = this->unk20;
-    M2C_FIELD(temp_r6_1901, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_1901, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_1901, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_1901, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_1901, s32 *, 0x1C) = 0;
@@ -1122,7 +1122,7 @@ void EarthBossGoal_AttackPhase2::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2181 = this->unk20;
-    M2C_FIELD(temp_r6_2181, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2181, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2181, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2181, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_2181, s32 *, 0x1C) = 0;
@@ -1136,7 +1136,7 @@ void EarthBossGoal_AttackPhase2::AddGoal_Taunt() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2211 = this->unk20;
-    M2C_FIELD(temp_r6_2211, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2211, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2211, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2211, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_2211, s32 *, 0x1C) = 0;
@@ -1274,7 +1274,7 @@ u8 EarthBossGoal_AttackPhase1::AddGoal_ScrapeFootClean() {
     if ((temp_r4_2488 != NULL) && ((s32) M2C_FIELD(temp_r4_2488->unk0, s32 *, 0x68) == 0x3E)) {
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
         temp_r6_2499 = this->unk20;
-        M2C_FIELD(temp_r6_2499, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r6_2499, f32 **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r6_2499, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_2499, s32 *, 0x18) = 0xA2;
         M2C_FIELD(temp_r6_2499, s32 *, 0x1C) = 0;
@@ -1292,7 +1292,7 @@ void EarthBossGoal_AttackPhase1::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2537 = this->unk20;
-    M2C_FIELD(temp_r6_2537, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2537, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2537, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2537, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_2537, s32 *, 0x1C) = 0;
@@ -1306,7 +1306,7 @@ void EarthBossGoal_AttackPhase1::AddGoal_TauntOnKill() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2567 = this->unk20;
-    M2C_FIELD(temp_r6_2567, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+    M2C_FIELD(temp_r6_2567, f32 **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2567, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2567, s32 *, 0x18) = 4;
     M2C_FIELD(temp_r6_2567, s32 *, 0x1C) = 0;
@@ -1726,7 +1726,7 @@ void EarthBossGoal_Think::AddGoal_Idle() {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
         temp_r5_3356 = this->unk24;
-        M2C_FIELD(temp_r5_3356, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r5_3356, f32 **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r5_3356, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r5_3356, s32 *, 0x18) = 1;
         M2C_FIELD(temp_r5_3356, s32 *, 0x1C) = 0;

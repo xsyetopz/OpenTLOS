@@ -125,7 +125,7 @@ void NPCGoal_Think::Reset() {
     this->unk39 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk28'
+#if 0 // DRAFT: undefined identifier 'free'
 void NPCGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_306;
     Goal<Enemy> *temp_r3_311;

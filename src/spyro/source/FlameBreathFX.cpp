@@ -1926,8 +1926,6 @@ void FlameBreathFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void FlameBreathFX_cpp::__sinit() {
     streamHitMsg.unk4 = 0;
 }
-#endif

@@ -254,7 +254,7 @@ SwayProperty::SwayProperty() {
     f32 spC;
     f32 sp8;
 
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;

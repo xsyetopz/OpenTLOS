@@ -2778,7 +2778,6 @@ void ZapBreathFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void Zap::Deinit() {
     this->unk0.Deinit();
     ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(this->unk1BC);
@@ -2786,7 +2785,6 @@ void Zap::Deinit() {
     this->unk1BC = NULL;
     this->unk1C0 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Zap::Resolve() {
@@ -2850,7 +2848,7 @@ void Zap::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Zap::Init() {
     f32 var_f0_6153;
     s32 var_r28_6139;

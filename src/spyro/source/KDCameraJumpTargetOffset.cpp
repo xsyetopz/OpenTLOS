@@ -51,9 +51,9 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                 var_r0_36 = 0;
             } else {
                 sp68 = arg0.unkC8;
-                sp58 = arg0.unk40;
+                sp58 = M2C_FIELD(&arg0, f64 *, 0x40);
                 sp70 = M2C_FIELD(&arg0, f64 *, 0xD0);
-                sp60 = arg0.unk48;
+                sp60 = M2C_FIELD(&arg0, f64 *, 0x48);
                 var_r0_36 = unksp5C > unksp6C;
             }
             if (var_r0_36 != 0) {
@@ -61,8 +61,8 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
             }
         }
         if (((u8) this->unk0 >> 6U) & 1) {
-            temp_f4_62 = arg0.unk40;
-            temp_f3_63 = arg0.unk48;
+            temp_f4_62 = M2C_FIELD(&arg0, f64 *, 0x40);
+            temp_f3_63 = M2C_FIELD(&arg0, f64 *, 0x48);
             sp78 = temp_f4_62;
             var_f5_70 = 0.0f;
             sp8 = temp_f4_62;

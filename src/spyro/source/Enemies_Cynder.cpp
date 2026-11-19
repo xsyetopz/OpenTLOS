@@ -1075,8 +1075,8 @@ void CynderTier1::UpdateFrozenBallMovement() {
         temp_f1_2146 = M2C_FIELD(temp_r5_2137, f64 *, 0x170);
         this->unk110.unk28 = temp_f1_2146;
         this->unk110.unk30 = M2C_FIELD(temp_r5_2137, f64 *, 0x178);
-        this->unk110.unk38 = M2C_FIELD(temp_r5_2137, s32 *, 0x180);
-        this->unk110.unk3C = M2C_FIELD(temp_r5_2137, s32 *, 0x184);
+        this->unk110.unk38 = M2C_FIELD(temp_r5_2137, f32 *, 0x180);
+        this->unk110.unk3C = M2C_FIELD(temp_r5_2137, f32 *, 0x184);
         this->unk110.unk40 = M2C_FIELD(temp_r5_2137, s32 *, 0x188);
         this->unk110.unk44 = M2C_FIELD(temp_r5_2137, s32 *, 0x18C);
         this->unk110.unk48 = M2C_FIELD(temp_r5_2137, f32 *, 0x190);

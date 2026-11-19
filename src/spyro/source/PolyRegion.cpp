@@ -48,16 +48,16 @@ loop_12:
         }
         this->unk4.Init(this->unk0, arg1->GetNmbrOfSubLines());
         this->unk30 = M2C_FIELD(this, f32 *, 0x10);
-        this->unk30 = this->unk4.unk10;
-        this->unk38 = M2C_FIELD(this, f32 *, 0x14);
-        this->unk40 = this->unk4.unk14;
-        this->unk34 = this->unk4.unk18;
-        this->unk44 = this->unk4.unk1C;
+        this->unk34 = this->unk4.unk10;
+        this->unk40 = M2C_FIELD(this, f32 *, 0x14);
+        this->unk44 = this->unk4.unk14;
+        this->unk30 = this->unk4.unk18;
+        this->unk40 = this->unk4.unk1C;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r3, 0x0, qr0 */);
-        this->unk40 -= this->unk30;
+        this->unk44 -= this->unk34;
         return 1;
     }
     return 0;

@@ -1,6 +1,6 @@
 #include "spyro/source/StickyPS.h"
-#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
@@ -97,11 +97,11 @@ loop_10:
         } else {
             if ((u8) M2C_FIELD(temp_r27_143, u8 *, 0x1C) == 0) {
                 sp50 = M2C_FIELD(var_r28_139, f64 *, 0);
-                sp58 = var_r28_139->unk8;
+                sp58 = M2C_FIELD(var_r28_139, f64 *, 8);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
-                M2C_FIELD(var_r28_139, f64 *, 8) = (f32) ((f32) M2C_FIELD(var_r28_139, f64 *, 8) + (f32) sp78);
+                var_r28_139->unk8 += (f32) sp78;
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
                 sp40 = sp10;
@@ -110,7 +110,7 @@ loop_10:
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
-                M2C_FIELD(var_r28_139, f64 *, 8) = (f32) ((f32) M2C_FIELD(var_r28_139, f64 *, 8) + (f32) sp48);
+                var_r28_139->unk8 += (f32) sp48;
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
@@ -144,7 +144,7 @@ loop_10:
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp50), *((MKVector3 *) var_r28_139), (MKCollisionResult *) &sp80, (MKCollisionMode) 7, 0x0C000000) != 0) {
                     M2C_FIELD(temp_r27_143, u8 *, 0x1C) = 1U;
                     M2C_FIELD(var_r28_139, f64 *, 0) = (f64) sp80;
-                    var_r28_139->unk8 = (f64) sp88;
+                    M2C_FIELD(var_r28_139, f64 *, 8) = (f64) sp88;
                 }
             }
             var_r4_251 = 1;

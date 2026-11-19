@@ -139,7 +139,7 @@ loop_12:
             sp70 = (f64) sp10;
             sp78 = (f64) sp18;
             Clamp<MKVector4>(spC0, *((MKVector4 *) &spB0), *((MKVector4 *) &spA0));
-            var_r27_67->unk10 = M2C_BITWISE(f64, spC0);
+            M2C_FIELD(var_r27_67, f64 *, 0x10) = M2C_BITWISE(f64, spC0);
             M2C_FIELD(var_r27_67, f64 *, 0x18) = (f64) spC0.unk8;
             var_r27_67 = GetNextParticle(&unksp8);
         }

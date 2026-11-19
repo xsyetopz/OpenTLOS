@@ -35,7 +35,7 @@ s32 TriggerPolyObject::CheckTarget() {
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (unkspC == this->unk88.unk1C) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((unkspC == this->unkA4) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
+        if ((unkspC == this->unkA8) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
             var_r31_47 = 1;
         }
     }
@@ -43,7 +43,6 @@ s32 TriggerPolyObject::CheckTarget() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
 s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     f32 temp_f1_81;
     s32 var_r31_84;
@@ -53,13 +52,12 @@ s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f1_81 == this->unk88.unk1C) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_81 == this->unkA4) && (this->unk88.IsPointWithin(arg0) != 0)) {
+        if ((temp_f1_81 == this->unkA8) && (this->unk88.IsPointWithin(arg0) != 0)) {
             var_r31_84 = 1;
         }
     }
     return var_r31_84;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to
 void TriggerPolyObject::LoadDone() {
@@ -78,8 +76,8 @@ loop_6:
             this->unk88.unk1C = temp_f1_126;
         }
         temp_f1_134 = *(this->unk84 + (var_r3_120 + 4));
-        if (temp_f1_134 > this->unkA4) {
-            this->unkA4 = temp_f1_134;
+        if (temp_f1_134 > this->unkA8) {
+            this->unkA8 = temp_f1_134;
         }
         var_r5_119 += 1;
         var_r3_120 += 0x10;
@@ -140,15 +138,13 @@ void TriggerPolyObject::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
 void TriggerPolyObject::Init() {
     TriggerObject::Init();
     this->unk80 = 0;
     this->unk84 = NULL;
     this->unk88.unk1C = 9.99999e7f;
-    this->unkA4 = -9.99999e7f;
+    this->unkA8 = -9.99999e7f;
 }
-#endif
 
 s32 TriggerPlaneGroupObject::AddPlane(TriggerPlaneObject *arg0) {
     TriggerPlaneObject ***temp_r5_295;

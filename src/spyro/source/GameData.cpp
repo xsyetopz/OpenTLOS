@@ -97,14 +97,12 @@ s32 GameData::GetGameDataSize() {
     return 0x1B0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void GameData::UpdateDataHeader(void *arg0) {
     Timer_GetSystemTime(&this->unk0);
     if (arg0 != NULL) {
         memcpy(arg0, this, 0x1CU);
     }
 }
-#endif
 
 void GameData::GetSaveGameDescription() {
     TimerInfo sp8;
@@ -166,7 +164,7 @@ void GameData::SetSaveChunk(ChunkInfo *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void GameData::SaveState::ClearData() {
     memset(this, 0, 0x40U);
     ((GameStats *) ((GameStats *) (this + 0x70)))->Clear();

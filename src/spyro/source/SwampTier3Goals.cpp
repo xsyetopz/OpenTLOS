@@ -839,7 +839,7 @@ u8 SwampTier3Goal_Summon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk28'
+#if 0 // DRAFT: expression syntax error
 void SwampTier3Goal_Summon::Activate() {
     f64 sp10;
     f64 sp8;
@@ -871,7 +871,7 @@ void SwampTier3Goal_Summon::Activate() {
             PositionSpawnPoints();
             AddSubgoal__27CompositeGoal<10SwampTier3>FP18Goal<10SwampTier3>((CompositeGoal<SwampTier3> *) this, (Goal<SwampTier3> *) this->unk20);
             temp_r6_1483 = this->unk20;
-            M2C_FIELD(temp_r6_1483, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+            M2C_FIELD(temp_r6_1483, f32 **, 0x10) = &this->unkC->unk838.unk28;
             M2C_FIELD(temp_r6_1483, s32 *, 0x14) = 1;
             M2C_FIELD(temp_r6_1483, s32 *, 0x18) = 0xB;
             M2C_FIELD(temp_r6_1483, s32 *, 0x1C) = 0;

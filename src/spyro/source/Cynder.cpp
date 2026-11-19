@@ -1342,8 +1342,8 @@ loop_6:
             M2C_STRUCT_COPY((s32) temp_r5_2702 + 4, (s32) temp_r4_2703 + 4, 0x18);
             M2C_FIELD((temp_r5_2702 + 0x18), s32 *, 4) = (s32) M2C_FIELD((temp_r4_2703 + 0x18), s32 *, 4);
             this->unk800.unk1C = this->unkDE4;
-            this->unk800.unk20 = this->unkDE8;
-            this->unk800.unk21 = this->unkDE9;
+            M2C_FIELD(this, u8 *, 0x830) = (u8) this->unkDE8;
+            M2C_FIELD(this, u8 *, 0x831) = (u8) this->unkDE9;
             SetupExclusionRegion();
         }
         return 1;

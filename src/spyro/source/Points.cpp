@@ -172,7 +172,7 @@ void WindPoints_Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
 void WindPoints_DeinitModule() {
     MKHeap *temp_r31_1042;
     MKHeap *temp_r3_1045;

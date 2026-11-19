@@ -1269,7 +1269,6 @@ void CombatStateData::SetLastCombatEnemy(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void CombatStateData::SetDefaults() {
     this->unk4C = 0;
     this->unk4D = 0;
@@ -1285,7 +1284,6 @@ void CombatStateData::SetDefaults() {
     this->unk40 = 0;
     this->unk44 = 2;
 }
-#endif
 
 #if 0 // DRAFT: ambiguous access to overloaded function
 void CombatStateData::Init() {

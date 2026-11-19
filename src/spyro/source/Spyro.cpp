@@ -1343,7 +1343,7 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
         var_r31_2662 = MKInput_Released(0xD, (MKInputDevices) temp_r3_2649->unk0);
     }
     var_r29_2671 = 1;
-    if ((u8) this->unk4CE == 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x4CE) == 0) {
         temp_r3_2675 = GetInput();
         var_r4_2677 = 0;
         if (((u8) temp_r3_2675->unk5 != 0) || ((u8) temp_r3_2675->unk4 != 0)) {
@@ -1358,26 +1358,26 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
             var_r29_2671 = 0;
         }
     }
-    this->unk4CE = var_r29_2671;
-    if ((u8) this->unk4CF != 0) {
+    M2C_FIELD(this, u8 *, 0x4CE) = var_r29_2671;
+    if ((u8) M2C_FIELD(this, u8 *, 0x4CF) != 0) {
         this->unk4C8 -= gUpdateTimeDelta;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk4C8 == 0.0f) {
-            temp_r4_2712 = this->unk4CC;
-            if ((temp_r4_2712 != 0) || ((u8) this->unk4CD != 0)) {
+            temp_r4_2712 = M2C_FIELD(this, u8 *, 0x4CC);
+            if ((temp_r4_2712 != 0) || ((u8) M2C_FIELD(this, u8 *, 0x4CD) != 0)) {
                 var_r3_2720 = 0;
-                if (((u8) this->unk4CD != 0) || (temp_r4_2712 != 0)) {
+                if (((u8) M2C_FIELD(this, u8 *, 0x4CD) != 0) || (temp_r4_2712 != 0)) {
                     var_r3_2720 = 1;
                 }
-                this->unk4CE = var_r3_2720;
-                this->unk4CD = 0;
-                this->unk4CC = 0;
+                M2C_FIELD(this, u8 *, 0x4CE) = var_r3_2720;
+                M2C_FIELD(this, u8 *, 0x4CD) = 0U;
+                M2C_FIELD(this, u8 *, 0x4CC) = 0U;
                 this->unk4C4 = 0.0f;
             }
             this->unk4C8 = fMeleeButtonTimeout;
         }
     }
-    if (((u8) this->unk4CD == 0) && ((u8) this->unk4CC == 0)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x4CD) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x4CC) == 0)) {
         temp_r3_2745 = GetInput();
         var_r4_2747 = 0;
         if (((u8) temp_r3_2745->unk5 != 0) || ((u8) temp_r3_2745->unk4 != 0)) {
@@ -1391,15 +1391,15 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
         if (var_f1_2758 != 0.0f) {
             this->unk4C4 += gUpdateTimeDelta;
         }
-        temp_r0_2775 = this->unk4CE;
+        temp_r0_2775 = M2C_FIELD(this, u8 *, 0x4CE);
         if ((temp_r0_2775 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((this->unk4C4 == fMaxKnockupHoldButtonTime) != 0))) {
-            this->unk4CC = 1;
+            M2C_FIELD(this, u8 *, 0x4CC) = 1U;
             this->unk4C4 = 0.0f;
-            this->unk4CE = 0;
+            M2C_FIELD(this, u8 *, 0x4CE) = 0U;
         } else if ((temp_r0_2775 != 0) && ((u8) var_r31_2662 != 0)) {
-            this->unk4CD = 1;
+            M2C_FIELD(this, u8 *, 0x4CD) = 1U;
             this->unk4C4 = 0.0f;
-            this->unk4CE = 0;
+            M2C_FIELD(this, u8 *, 0x4CE) = 0U;
         }
     }
     if ((u8) var_r31_2662 != 0) {
@@ -1412,33 +1412,29 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
 s32 Spyro::GetMeleeButtonState() {
     s32 temp_r3_2827;
 
-    if ((u8) this->unk4CD != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x4CD) != 0) {
         return 1;
     }
-    temp_r3_2827 = 0 - this->unk4CC;
+    temp_r3_2827 = 0 - M2C_FIELD(this, u8 *, 0x4CC);
     return 2 & ((temp_r3_2827 - temp_r3_2827) - !M2C_CARRY);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C8'
 void Spyro::SetMeleeButtonStateTimeout(bool arg0) {
-    this->unk4CF = arg0;
+    M2C_FIELD(this, u8 *, 0x4CF) = arg0;
     this->unk4C8 = 0.0f;
-    if ((u8) this->unk4CF != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x4CF) != 0) {
         this->unk4C8 = fMeleeButtonTimeout;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C4'
 void Spyro::ClearMeleeButtonState() {
-    this->unk4CC = 0;
-    this->unk4CD = 0;
-    this->unk4CE = 0;
+    M2C_FIELD(this, s8 *, 0x4CC) = 0;
+    M2C_FIELD(this, s8 *, 0x4CD) = 0;
+    M2C_FIELD(this, s8 *, 0x4CE) = 0;
     this->unk4C4 = 0.0f;
-    this->unk4CF = 0;
+    M2C_FIELD(this, s8 *, 0x4CF) = 0;
     this->unk4C8 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void Spyro::GetCombatHitType(int arg0) {
@@ -2489,11 +2485,9 @@ void Spyro::LandMediumUpdate() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C0'
 void Spyro::LandMediumEnter() {
     this->unk4C0 = 0;
 }
-#endif
 
 void Spyro::AirMediumExit() {
 
@@ -6043,7 +6037,7 @@ void Spyro::Message(MKMessage *arg0) {
             goto block_216;
         case 0x48:
             this->unk324 = M2C_FIELD(checked_cast<SetAlphaMessage *, MKMessage>(arg0), f32 *, 8);
-            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unkA4, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = M2C_FIELD(temp_r3_11349, f64 *, 0), sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50.unk10 = sp20, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
+            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unkA4, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = temp_r3_11349->unk0, sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50.unk10 = sp20, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
                 sp14 = 0;
                 sp10 = 0x4A;
                 Message(&sp10);

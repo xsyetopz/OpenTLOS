@@ -202,7 +202,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_StrafeIfObscuringCamera() {
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r5_306 = this->unk2C;
         M2C_FIELD(temp_r5_306, s8 *, 0x14) = (s8) (sp8 == -1);
-        M2C_FIELD(temp_r5_306, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r5_306, f32 **, 0x10) = &this->unkC->unk838.unk28;
         return 1U;
     }
     return 0U;
@@ -764,7 +764,7 @@ void EnemyGoal_GroundAttackMode::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk30'
+#if 0 // DRAFT: pointer/array required
 void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r3_1927;
     Goal<Enemy> *temp_r4_1813;

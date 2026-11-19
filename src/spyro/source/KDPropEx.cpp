@@ -233,7 +233,7 @@ loop_3:
         }
     }
     if ((MKModel *) this->unk2C == NULL) {
-        temp_r3_416 = KDMatrixProperty::classInfo.unk4(&KDMatrixProperty::classInfo);
+        temp_r3_416 = ((KDProperty *(*)(KDMatrixProperty *)) KDMatrixProperty::classInfo.unk4)(&KDMatrixProperty::classInfo);
         M2C_FIELD(temp_r3_416->__vptr, M2C_UNK (**)(void *), 8)"ltwm";
         temp_r3_416->LoadDone();
         temp_r3_416->unk8 = this->unk74.AllocInstanceMem(0x40, 0x40);

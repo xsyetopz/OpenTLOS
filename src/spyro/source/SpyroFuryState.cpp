@@ -57,7 +57,7 @@ void SpyroFuryState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 SpyroFuryState::Transition() {
     s32 var_r31_70;
 
@@ -76,7 +76,7 @@ s32 SpyroFuryState::Transition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroFuryState::Update() {
     f64 sp50;
     f64 sp48;
@@ -103,7 +103,7 @@ void SpyroFuryState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroFuryState::Exit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
     M2C_FIELD(GameData::gameData, s32 *, 0x158) = (s32) M2C_FIELD(GameData::gameData, s32 *, 0x15C);
@@ -185,7 +185,7 @@ void SpyroFuryState::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFuryState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     Init__32KDStateMachine<14SpyroFuryState>FPQ232KDStateMachine<14SpyroFuryState>5StateP32KDStateMachine<14SpyroFuryState>(&this->unk14, (KDStateMachine<SpyroFuryState>::State *) SpyroFuryState::states, NULL);

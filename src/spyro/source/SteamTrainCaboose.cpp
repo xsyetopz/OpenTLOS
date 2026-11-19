@@ -40,7 +40,7 @@ extern s32 gViewSeed;
 extern void **gb;
 extern void *gpTranslation_StringArray;
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void TrainChaseSpawnPool::Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -71,7 +71,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 Enemy *TrainChaseSpawnPool::Create() {
     Enemy ***temp_r4_107;
     Enemy ***temp_r4_111;
@@ -84,7 +83,6 @@ Enemy *TrainChaseSpawnPool::Create() {
     }
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnAction'
 void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
@@ -102,7 +100,7 @@ void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, Spaw
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: type mismatch
 void TrainChaseSpawnPool::Deinit() {
     Enemy ***var_r31_169;
     Enemy ***var_r3_170;

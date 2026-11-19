@@ -387,7 +387,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk190 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
-    this->unk120.unk18 = M2C_FIELD(&arg0, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x140) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     this->unk120.unk20 = M2C_FIELD(&arg0, f64 *, 8);
     temp_r4_684 = this->unk98;
     if (temp_r4_684 != NULL) {

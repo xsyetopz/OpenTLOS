@@ -105,12 +105,12 @@ void TrapSpawnPool::Resolve() {
     sp54 = 0.0f;
     sp58 = 0.0f;
     var_r29_158 = 0;
-    this->unk104 = 0.5f * (this->unkFC * M2C_FIELD(MKModel_GetBoundingVolume(M2C_FIELD(*this->unk9C, MKModel **, 4), (SubObjectType) 0, -1), f32 *, 0x10));
+    this->unk108 = 0.5f * (this->unk100 * M2C_FIELD(MKModel_GetBoundingVolume(M2C_FIELD(*this->unk9C, MKModel **, 4), (SubObjectType) 0, -1), f32 *, 0x10));
     var_ctr_164 = temp_r31_152;
     if (temp_r31_152 > 0) {
         do {
             temp_r3_172 = this->unkB4.unk20 + (var_r29_158 * M2C_FIELD(this, s32 *, 0xD0));
-            M2C_FIELD(temp_r3_172, f32 *, 4) = (f32) (M2C_FIELD(temp_r3_172, f32 *, 4) + this->unk104);
+            M2C_FIELD(temp_r3_172, f32 *, 4) = (f32) (M2C_FIELD(temp_r3_172, f32 *, 4) + this->unk108);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             var_r29_158 += 1;
@@ -120,7 +120,7 @@ void TrapSpawnPool::Resolve() {
     }
     temp_f1_187 = M2C_BITWISE(f32, this->unkB4.unk30);
     temp_f0_188 = this->unkB4.unk34;
-    temp_f3_190 = this->unkE8;
+    temp_f3_190 = this->unkEC;
     if (((temp_f3_190 * temp_f3_190) + ((temp_f1_187 * temp_f1_187) + (temp_f0_188 * temp_f0_188))) < 0.1f) {
         temp_r3_198 = this->unkB4.unk20;
         M2C_FIELD(this, Matrix **, 0xE8) = (f64) M2C_FIELD(temp_r3_198, f64 *, 0);
@@ -130,8 +130,8 @@ void TrapSpawnPool::Resolve() {
     sp48 = (f64) M2C_FIELD(this, f32 *, 0xF0);
     unksp44 -= 10000.0f;
     if (MKCollision_RayCollide(*((MKVector3 *) &this->unkB4.unk30), *((MKVector3 *) &sp40), &sp60, (MKCollisionMode) 7, 0x200) != 0) {
-        M2C_FIELD(this->unkB4.unk20, f32 *, 4) = (f32) (sp60.unk4 + this->unk104);
-        M2C_FIELD(this, s8 *, 0x110) = (s8) ((this->unkB4.unk34 - M2C_FIELD(this->unkB4.unk20, f32 *, 4)) > (2.0f * this->unk104));
+        M2C_FIELD(this->unkB4.unk20, f32 *, 4) = (f32) (sp60.unk4 + this->unk108);
+        M2C_FIELD(this, s8 *, 0x110) = (s8) ((this->unkB4.unk34 - M2C_FIELD(this->unkB4.unk20, f32 *, 4)) > (2.0f * this->unk108));
     }
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     temp_f2_254 = sp58 * (1.0f / (f32) var_r29_158);
@@ -184,7 +184,7 @@ void TrapSpawnPool::Resolve() {
             var_f4_288 = __float_nan;
         }
     }
-    this->unk100 = 0.5f * var_f4_288;
+    this->unk104 = 0.5f * var_f4_288;
     this->unkA0.Init(temp_r31_152, 0U);
     var_r29_358 = 0;
 loop_25:
@@ -242,7 +242,7 @@ s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
 
     var_r31_462 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (s32 *) &this->unk10C, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk110, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF0, 0) != 0) || (arg0->LoadFloat("bounceDropOff", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("scale", &this->unkFC, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unkB4.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (s32 *) &this->unk110, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk118, 0) != 0) || (arg0->LoadFloat("scale", &this->unk100, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unkB4.LoadLine(arg0) != 0)) {
         var_r31_462 = 1;
     }
     return var_r31_462;
@@ -273,21 +273,21 @@ void TrapSpawnPool::Init() {
     this->unk98 = 0.0f;
     this->unkB4.Init();
     this->unk50.SetIdentity();
+    this->unkF8 = 0.0f;
     this->unkFC = 0.0f;
     this->unkF8 = 0.0f;
-    this->unkF0 = 0.0f;
-    this->unkFC = 1.0f;
+    this->unk100 = 1.0f;
+    this->unk108 = 0.0f;
     this->unk104 = 0.0f;
-    this->unk100 = 0.0f;
     M2C_FIELD(this, s8 *, 0x110) = 0;
     this->unkB4.unk30 = 0.0f;
     this->unkB4.unk34 = 0.0f;
-    this->unkE8 = 0.0f;
+    this->unkEC = 0.0f;
     PropFlagsInit((u32 *) &this->unk10, 0x160000U);
     this->unk8 = &this->unk50;
-    this->unk10C = 1.4e-44f;
-    M2C_FIELD(this, f32 *, 0x118) = 600.0f;
-    this->unk114 = 0.0f;
+    M2C_FIELD(this, s32 *, 0x114) = 0xA;
+    this->unk114 = 600.0f;
+    this->unk118 = 0.0f;
 }
 #endif
 

@@ -11,7 +11,7 @@
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
@@ -26,7 +26,7 @@ void DojoGoal_Think::AddGoal_SpawnIdle() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_Spawn() {
     void **temp_r3_60;
 
@@ -511,7 +511,7 @@ void DojoGoal_Think::Reset() {
     this->unk54 &= ~0x20;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::Arbitrate() {
     EnemyDamageFeedback sp40;
     EnemyDamageFeedback sp8;
@@ -729,7 +729,7 @@ void DojoGoal_Think::Activate() {
     Arbitrate();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DojoGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_1636;
     Goal<Enemy> *temp_r3_1641;

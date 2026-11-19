@@ -73,7 +73,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 s8 PlatformObject::Detach(PlatformAttachment *arg0) {
     arg0->unkC->unk8 = arg0->unk8;
     arg0->unk8->unkC = arg0->unkC;
@@ -83,9 +82,7 @@ s8 PlatformObject::Detach(PlatformAttachment *arg0) {
     this->unk38 -= 1;
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 s8 PlatformObject::Attach(PlatformAttachment *arg0) {
     arg0->unk8 = &this->unk28;
     arg0->unkC = this->unk28.unkC;
@@ -95,7 +92,6 @@ s8 PlatformObject::Attach(PlatformAttachment *arg0) {
     this->unk38 += 1;
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 void PlatformObject::UpdateAttached() {

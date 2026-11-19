@@ -47,7 +47,6 @@ u8 states__15SpyroSlideState[0x24] = {
     0,
 };
 
-#if 0 // DRAFT: undefined identifier 'unk10'
 s32 SpyroSlideState::Transition() {
     MKProp *temp_r4_32;
     Spyro *temp_r3_121;
@@ -123,9 +122,8 @@ block_19:
     }
     return var_r31_85;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: undefined identifier 'sp38'
 void SpyroSlideState::Update() {
     f64 sp80;
     f64 sp78;
@@ -179,7 +177,7 @@ void SpyroSlideState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroSlideState::Enter(SpyroStateMessages &arg0) {
     Spyro *temp_r3_275;
 
@@ -197,12 +195,10 @@ void SpyroSlideState::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
 void SpyroSlideState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     this->unk28.Init((MKProp *) arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpyroSlideState_cpp::__sinit() {

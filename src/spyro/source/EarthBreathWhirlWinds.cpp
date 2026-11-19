@@ -220,7 +220,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA0'
+#if 0 // DRAFT: undefined identifier 'unkF8'
 void EarthBreathWhirlWinds::Draw() {
     f64 sp40;
     f64 sp38;
@@ -246,7 +246,7 @@ loop_2:
     if (var_r30_348 != NULL) {
         temp_r31_401 = var_r30_348->unk0;
         if (temp_r31_401 != NULL) {
-            MKModel_SetWorldMatrix(this->unk50, temp_r31_401->unkA0);
+            MKModel_SetWorldMatrix(this->unk50, *((Matrix *) &temp_r31_401->unkA0));
             sp18 = 1.0f;
             sp1C = 1.0f;
             sp20 = 1.0f;
@@ -399,18 +399,18 @@ void EarthBreathWhirlWinds::Update() {
     MKProp *temp_r3_968;
     TargetManager ***var_r23_865;
     TargetManager **temp_r24_954;
-    f32 *temp_r28_496;
     f32 temp_f21_1013;
+    f32 temp_r0_508;
+    f32 temp_r0_522;
     f32 var_f0_536;
     f32 var_f0_751;
     f32 var_f28_838;
     f64 temp_f1_939;
     s32 temp_cr0_eq_889;
-    s32 temp_r0_508;
-    s32 temp_r0_522;
     s32 temp_r0_837;
     s32 temp_r5_937;
     s32 var_r24_666;
+    s8 *temp_r28_496;
     u8 var_r27_490;
     u8 var_r6_501;
     void *temp_r22_983;
@@ -471,19 +471,19 @@ loop_59:
             this->unk58 = 0.1f;
         }
     } else {
-        temp_r28_496 = &temp_r29_962->unkA0.unk30;
+        temp_r28_496 = &temp_r29_962->unkD0;
         var_r27_490 = 1;
         var_r6_501 = 0;
         temp_r29_962->unkF4 = M2C_BITWISE(f32, temp_r29_962->unkF4) - gUpdateTimeDelta;
         temp_r29_962->unkFC -= gUpdateTimeDelta;
         sp8 = 1;
         temp_r0_508 = temp_r29_962->unk100;
-        if ((temp_r0_508 == 1) || (temp_r0_508 == 2)) {
+        if ((M2C_BITWISE(s32, temp_r0_508) == 1) || (M2C_BITWISE(s32, temp_r0_508) == 2)) {
             var_r6_501 = 1;
         }
         temp_r29_962->Update(GS_SpyroFuryEarthTornadoLP, 1U, var_r6_501, NULL, (MKVector3 *) temp_r28_496, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         temp_r0_522 = temp_r29_962->unk100;
-        switch (temp_r0_522) {                      /* switch 1; irregular */
+        switch (M2C_BITWISE(s32, temp_r0_522)) {    /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             break;
         case 1:                                     /* switch 1 */
@@ -502,7 +502,7 @@ loop_59:
             temp_r29_962->unkF8 = 1.0f - (M2C_BITWISE(f32, temp_r29_962->unkF4) / 1.5f);
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (M2C_BITWISE(f32, temp_r29_962->unkF4) == 0.0f) {
-                temp_r29_962->unk100 = 2;
+                temp_r29_962->unk100 = 3e-45f;
                 temp_r29_962->unkF4 = temp_r29_962->unkF0;
             }
         default:                                    /* switch 1 */
@@ -510,7 +510,7 @@ block_34:
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
             sp1B0 = spC0;
-            spC8 = temp_r29_962->unkE8 * 50.0f;
+            spC8 = M2C_BITWISE(f32, temp_r29_962->unkE8) * 50.0f;
             sp1B8 = (f64) spC8;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
             sp1C0 = spB0;
@@ -519,12 +519,12 @@ block_34:
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp2C0 = spA0;
-            spA8 = temp_r29_962->unkA0.unk38 + (f32) sp1C8;
-            temp_r29_962->unkA0.unk30 = (f32) sp2C0;
+            spA8 = temp_r29_962->unkD8 + (f32) sp1C8;
+            M2C_FIELD(temp_r29_962, f32 *, 0xD0) = (f32) sp2C0;
             sp2C8 = (f64) spA8;
-            temp_r29_962->unkA0.unk34 = unksp2C4;
-            temp_r29_962->unkA0.unk38 = (f32) sp2C8;
-            temp_r29_962->unkA0.unk3C = 1.0f;
+            temp_r29_962->unkD4 = unksp2C4;
+            temp_r29_962->unkD8 = (f32) sp2C8;
+            temp_r29_962->unkDC = 1.0f;
             M2C_FIELD(temp_r29_962, f64 *, 0x50) = spA0;
             M2C_FIELD(temp_r29_962, f64 *, 0x58) = (f64) spA8;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
@@ -558,7 +558,7 @@ loop_56:
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                             sp2B0 = sp90;
-                            sp98 = (f32) sp1A8 - temp_r29_962->unkA0.unk38;
+                            sp98 = (f32) sp1A8 - temp_r29_962->unkD8;
                             sp2B8 = (f64) sp98;
                             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                             if (((((f32) sp2B8 * (f32) sp2B8) + (((f32) sp2B0 * (f32) sp2B0) + (unksp2B4 * unksp2B4))) == (var_f28_838 * var_f28_838)) && (temp_r22_876 != NULL)) {
@@ -618,7 +618,7 @@ loop_56:
             sp14 = MKRand_Float(&gViewSeed, 0.2f, 0.4f);
             gb.EmitSmallRocks(*((MKVector3 *) temp_r28_496), *((MKVector3 *) &sp260), sp14);
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((this->unk58 == 0.0f) && ((u8) temp_r29_962->unk108 != 0)) {
+            if ((this->unk58 == 0.0f) && ((u8) M2C_FIELD(temp_r29_962, u8 *, 0x108) != 0)) {
                 var_r24_666 = 0;
                 do {
                     MKVector(0.0f, 25.0f, 0.0f);
@@ -626,7 +626,7 @@ loop_56:
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     sp68 = 1.0f;
                     sp78 = -1.0f;
-                    sp88 = temp_r29_962->unkA0.unk38 + sp218;
+                    sp88 = temp_r29_962->unkD8 + sp218;
                     sp60 = 1.0f;
                     sp64 = 1.0f;
                     sp70 = -1.0f;
@@ -654,7 +654,7 @@ loop_56:
             ((FallingLeaves *) (M2C_FIELD(temp_r30_487, FallingLeaves **, 0x60)))->ApplyWind((WindFX *) &temp_r29_962->unk30);
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (M2C_BITWISE(f32, temp_r29_962->unkF4) == 0.0f) {
-                temp_r29_962->unk100 = 3;
+                temp_r29_962->unk100 = 4e-45f;
                 temp_r29_962->unkF4 = 1.5f;
             }
             goto block_34;
@@ -674,7 +674,7 @@ loop_56:
             temp_r29_962->unkF8 = M2C_BITWISE(f32, temp_r29_962->unkF4) / 1.5f;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (M2C_BITWISE(f32, temp_r29_962->unkF4) == 0.0f) {
-                temp_r29_962->unk100 = 0;
+                temp_r29_962->unk100 = 0.0f;
                 temp_r29_962->unkF4 = 0.0f;
                 KDSound_Stop((s32 *) temp_r29_962);
                 temp_r3_781 = this->unk4C;

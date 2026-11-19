@@ -97,7 +97,7 @@ s32 ControllerRumbleProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 ControllerRumbleProperty::ControllerRumbleProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;

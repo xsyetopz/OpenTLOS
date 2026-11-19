@@ -1159,7 +1159,6 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 ContextInfo *CollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *arg1) {
     ContextInfo *var_r6_2171;
     f32 *temp_r8_2167;
@@ -1243,7 +1242,6 @@ block_17:
     }
     return var_r6_2171;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 CollisionObject::Teleport(const MKVector3 &arg0, float arg1, int arg2) {

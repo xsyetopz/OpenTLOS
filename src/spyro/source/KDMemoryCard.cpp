@@ -84,7 +84,7 @@ void KDMemoryCard::DeleteCorrupted_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::DeleteCorrupted_Init() {
     s32 temp_r4_197;
     void *temp_r5_201;
@@ -118,11 +118,9 @@ void KDMemoryCard::Prepare_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::Prepare_Init() {
     MKMemoryCard_Prepare(this->unk0);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::Format_Update(int arg0) {
@@ -144,11 +142,9 @@ void KDMemoryCard::Format_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::Format_Init() {
     MKMemoryCard_Format(this->unk0);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::CheckFilesExist_Update(int arg0) {
@@ -176,7 +172,7 @@ void KDMemoryCard::CheckFilesExist_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'MKMemoryCard_GetDirInfo(long, MKMemoryCardFileInfo)' does
 void KDMemoryCard::CheckFilesExist_Init() {
     MKMemoryCard_GetDirInfo(this->unk0, tmpfileInfo);
 }
@@ -200,11 +196,9 @@ void KDMemoryCard::CheckIsPrepared_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::CheckIsPrepared_Init() {
     MKMemoryCard_IsPrepared(this->unk0);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::CheckCard_Update(int arg0) {
@@ -235,7 +229,7 @@ void KDMemoryCard::CheckCard_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'MKMemoryCard_GetInfo(long, long *, long *, long *, long *)'
 void KDMemoryCard::CheckCard_Init() {
     Reset(1U);
     MKMemoryCard_GetInfo(this->unk0, &this->unk18, &this->unk14, &this->unk10, &this->unk1C);
@@ -253,19 +247,15 @@ void KDMemoryCard::IsAttached_Update(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::IsAttached_Init() {
     MKMemoryCard_IsAttached(this->unk0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 s32 KDMemoryCard::IsBusy() {
     return MKMemoryCard_GetStatus(this->unk0) == 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: undefined identifier 'card'
 void *KDMemoryCard::GetNextAvailable(KDMemoryCard *arg0) {
     s32 var_ctr_640;
     s32 var_r4_639;
@@ -378,14 +368,12 @@ void KDMemoryCard::Reset(bool arg0) {
     memset(this + 0x40, 0, 0x240U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::Init(int arg0) {
     this->unk0 = arg0;
     *KDMemoryCard::state = 0;
     this->unk4 = -1;
     Reset(0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'card'
 void KDMemoryCard::InitModule() {

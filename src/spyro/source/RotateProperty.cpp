@@ -243,7 +243,7 @@ s32 RotateProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 RotateProperty::RotateProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;

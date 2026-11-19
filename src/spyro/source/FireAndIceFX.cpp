@@ -86,7 +86,6 @@ void FireAndIceFX::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void FireAndIceFX::DrawCleanup() {
     if ((this->unk94 == 1.0f) && ((s32) this->unk78 == 1)) {
         gRenderState = NULL;
@@ -96,7 +95,6 @@ void FireAndIceFX::DrawCleanup() {
         gRenderState = NULL;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(FireAndIceFX *, long, int)' does not match
 s32 FireAndIceFX::Draw(unsigned short *arg0) {

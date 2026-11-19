@@ -180,7 +180,7 @@ s32 HurtProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 HurtProperty::HurtProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk18 = NULL;

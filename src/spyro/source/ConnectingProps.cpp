@@ -13,7 +13,7 @@ s32 Connector::UpdateState() {
     if ((s32) M2C_FIELD(&gb, s32 *, 0x340) != 0) {
         return 1;
     }
-    return ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetDesiredChunks((ChunkInfo **) &this->unk50.unk48, (s32) this->unkA0);
+    return ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetDesiredChunks(&this->unkA0, this->unkAC);
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'Connector' to
@@ -25,14 +25,14 @@ void Connector::LoadDone() {
 
     MKProp::LoadDone();
     var_r28_74 = 0;
-    this->unkA0 = NULL;
+    this->unkAC = 0;
     var_r31_76 = 0;
     do {
         temp_r29_78 = var_r31_76 + 0xA0;
         temp_r3_79 = *(this + temp_r29_78);
         if ((temp_r3_79 != NULL) && ((s8) temp_r3_79->unk0 != 0)) {
             *(this + temp_r29_78) = temp_r3_79->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
-            this->unkA0 += 1;
+            this->unkAC += 1;
         } else {
             *(this + temp_r29_78) = 0;
         }
@@ -73,7 +73,7 @@ void Connector::Deinit() {
 void Connector::Init() {
     MKProp::Init();
     this->unk50.Init();
-    memset(&this->unk50.unk48, 0, 0xCU);
+    memset(&this->unkA0, 0, 0xCU);
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'ConnectorDescriptor *' to

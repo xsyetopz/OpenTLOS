@@ -397,8 +397,6 @@ void CynderBreathFXDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void CynderBreathFX_cpp::__sinit() {
     streamHitMsg.unk4 = 0;
 }
-#endif

@@ -40,7 +40,7 @@ void StalactiteCharge::StateSCResetUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: expression syntax error
 void StalactiteCharge::StateSCResetEnter() {
     f64 sp118;                                      /* compiler-managed */
     KDSplinePathSegment spD0;

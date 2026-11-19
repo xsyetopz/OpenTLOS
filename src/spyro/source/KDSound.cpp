@@ -921,7 +921,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: illegal use of non-static member
 void GlobalSoundData::Deinit() {
     MKHeap *temp_r31_1973;
     MKHeap *temp_r31_1989;
@@ -985,7 +985,7 @@ void GlobalSoundData::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: illegal use of non-static member
 void GlobalSoundData::Init(const char *arg0, int arg1) {
     MKIni sp8;
     MKHeap *temp_r3_2086;

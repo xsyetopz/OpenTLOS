@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include <m2c_macros.h>
 

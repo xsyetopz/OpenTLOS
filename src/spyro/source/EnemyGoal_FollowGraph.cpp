@@ -77,7 +77,7 @@ void EnemyGoal_GraphBarricade::AddGoal_Attack() {
     if (IsPresent(0x56) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
-        M2C_FIELD(this->unk34, M2C_UNK **, 0x20) = &this->unkC->unk838.unk28;
+        M2C_FIELD(this->unk34, f32 **, 0x20) = &this->unkC->unk838.unk28;
     }
 }
 #endif
@@ -4375,7 +4375,6 @@ void EnemyGoal_GraphJump::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void EnemyGoal_GraphJump::Init(Enemy *arg0) {
     this->unk8 = 1;
     this->unkC = (Character *) arg0;
@@ -4385,7 +4384,6 @@ void EnemyGoal_GraphJump::Init(Enemy *arg0) {
     }
     this->unk30.Init(3, 0U);
 }
-#endif
 
 void EnemyGoal_GraphGlidePath::Terminate() {
     Enemy *temp_r3_9391;

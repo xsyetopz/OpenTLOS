@@ -799,7 +799,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ExecuteDepth'
+#if 0 // DRAFT: illegal operand
 f32 Console_Execute(const char *arg0) {
     s8 *spC;
     s8 *sp8;

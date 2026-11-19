@@ -1,5 +1,4 @@
 #include "spyro/source/SuckeyPS.h"
-#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/StdMath.h"
@@ -60,7 +59,7 @@ loop_18:
             M2C_FIELD(var_r30_77, f64 *, 0) = sp10;
             sp18 = M2C_FIELD(temp_r29_80, f32 *, 0x18) + sp20.unk8;
             sp30 = sp10;
-            var_r30_77->unk8 = (f64) sp18;
+            M2C_FIELD(var_r30_77, f64 *, 8) = (f64) sp18;
             temp_r3_128 = M2C_FIELD(temp_r29_80, s32 *, 0x28);
             sp38 = (f64) sp18;
             if (temp_f30_84 > (this->unk12C * *(this->unk134 + (temp_r3_128 * 0x14)))) {

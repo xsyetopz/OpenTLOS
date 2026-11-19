@@ -568,7 +568,7 @@ s32 EnemyGoal_AlertMode::AddGoal_Alert() {
 
     temp_r5_1176 = this->unkC;
     if (!(((u8) M2C_FIELD(temp_r5_1176, u8 *, 0xB08) >> 6U) & 1) && (temp_r5_1176->unkA20->GetAnimSequence(1, 2, M2C_BITWISE(s32, temp_r5_1176->unkACC), NULL) != NULL)) {
-        sp18.unk4 = NULL;
+        sp18.unk4 = 0;
         temp_r5_1194 = this->unkC->unk8;
         sp8 = M2C_FIELD(temp_r5_1194, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r5_1194, f64 *, 0x38);

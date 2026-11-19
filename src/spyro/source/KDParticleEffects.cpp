@@ -340,9 +340,9 @@ s32 KDParticleEmitterProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
 KDParticleEmitterProperty::KDParticleEmitterProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk10 = NULL;
@@ -354,7 +354,7 @@ KDParticleEmitterProperty::KDParticleEmitterProperty() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 void KDParticleSystemProperty::Command(int arg0) {
     if (arg0 != 1) {
         return;
@@ -369,7 +369,7 @@ s32 KDParticleSystemProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: pointer/array required
 void KDParticleSystemProperty::Update() {
     void **temp_r3_957;
 
@@ -380,7 +380,7 @@ void KDParticleSystemProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 void KDParticleSystemProperty::ResolveInstance() {
     MKHeap **temp_r3_993;
     MKModel *temp_r3_988;
@@ -426,7 +426,7 @@ void KDParticleSystemProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 void KDParticleSystemProperty::InitInstance() {
     s32 temp_r30_1061;
     s32 temp_r31_1063;
@@ -444,7 +444,7 @@ void KDParticleSystemProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDParticleSystemProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r4_1090;
     void **temp_r4_1098;
@@ -460,7 +460,7 @@ void KDParticleSystemProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDParticleSystemProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1125;
 

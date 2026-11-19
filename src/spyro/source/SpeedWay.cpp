@@ -94,7 +94,7 @@ void SpeedWay::LoadDone() {
     this->unk4C.LoadDone();
     this->unk94.LoadDone();
     this->unkDC.Init(*((KDUniformSpline *) &this->unk4C.unk2C), 0x10, 2);
-    this->unkDC.unk8.Init(*((KDUniformSpline *) &this->unk94.unk24), 0x10, 2);
+    this->unkDC.unk4.Init(*((KDUniformSpline *) &this->unk94.unk2C), 0x10, 2);
 }
 #endif
 
@@ -113,7 +113,7 @@ s32 SpeedWay::LoadLine(MKIniLine *arg0) {
 #if 0 // DRAFT: expression syntax error
 void SpeedWay::Deinit() {
     this->unkDC.Deinit();
-    this->unkDC.unk8.Deinit();
+    this->unkDC.unk4.Deinit();
     this->unk4C.Deinit();
     this->unk94.Deinit();
     MKProp::Deinit();

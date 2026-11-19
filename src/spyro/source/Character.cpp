@@ -109,7 +109,7 @@ void Character::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF4'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     f64 sp98;
     f64 sp90;

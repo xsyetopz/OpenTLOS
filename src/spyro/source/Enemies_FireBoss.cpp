@@ -134,7 +134,6 @@ void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1,
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void FireBossGraphNode::Init(const MKVector3 &arg0, int arg1) {
     this->unk8 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk10 = M2C_FIELD(&arg0, f64 *, 8);
@@ -143,7 +142,6 @@ void FireBossGraphNode::Init(const MKVector3 &arg0, int arg1) {
     this->unk1C = 0;
     this->unk0 = (s8) this->unk4 + 0x41;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 FireBossGraphEdge *FireBossDirectedGraph::GetEdge(KDUniformSpline *arg0, float arg1, int arg2) {
@@ -824,7 +822,7 @@ u8 FireBoss::SpyroIsInFront() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
+#if 0 // DRAFT: expression syntax error
 void FireBoss::CheckFlameThrowerHit() {
     u32 var_r29_1569;
     u32 var_r30_1503;
@@ -1037,7 +1035,6 @@ u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void FireBoss::SetCurrentEdge(FireBossGraphEdge *arg0, float arg1) {
     FireBossGraphEdge *temp_r3_1879;
     FireBossGraphEdge *temp_r3_1918;
@@ -1083,7 +1080,6 @@ void FireBoss::SetCurrentEdge(FireBossGraphEdge *arg0, float arg1) {
     }
     UpdateNextBranch();
 }
-#endif
 
 s32 FireBoss::CheckForEndOfEdge(bool arg0) {
     FireBossGraphEdge *temp_r5_1980;

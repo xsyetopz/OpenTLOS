@@ -387,7 +387,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk28'
+#if 0 // DRAFT: expression syntax error
 void FireTier2Goal_JumpOutOfLava::Activate() {
     AITargetData sp60;
     M2C_UNK sp50;
@@ -565,7 +565,7 @@ block_8:
         }
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
         temp_r6_1127 = this->unk30;
-        M2C_FIELD(temp_r6_1127, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r6_1127, f32 **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r6_1127, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_1127, s32 *, 0x18) = 0xA;
         M2C_FIELD(temp_r6_1127, s32 *, 0x1C) = 0;

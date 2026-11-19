@@ -1151,10 +1151,10 @@ void CutsceneSystem::DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkAC'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CutsceneSystem::InitModule() {
     MKHeap *temp_r3_2390;
-    s32 temp_r31_2389;
+    f32 temp_r31_2389;
     s8 *var_r3_2397;
 
     this->unk68 = NULL;
@@ -1167,9 +1167,9 @@ void CutsceneSystem::InitModule() {
     temp_r31_2389 = gMKDefaults.unkAC;
     temp_r3_2390 = gMKDefaults.Current();
     if (temp_r3_2390 != NULL) {
-        var_r3_2397 = ((MKHeap *) (temp_r3_2390->Current()))->Alloc(temp_r31_2389, NULL, 0);
+        var_r3_2397 = ((MKHeap *) (temp_r3_2390->Current()))->Alloc(M2C_BITWISE(s32, temp_r31_2389), NULL, 0);
     } else {
-        var_r3_2397 = malloc(temp_r31_2389);
+        var_r3_2397 = malloc(M2C_BITWISE(s32, temp_r31_2389));
     }
     this->unk7C = var_r3_2397;
     CutsceneSystem::Location::Init(this);

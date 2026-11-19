@@ -401,7 +401,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: ambiguous access to overloaded function
 void TargetManager::Clear() {
 loop_2:
     if ((TargetManager **) *this->unk0 != NULL) {
@@ -413,11 +413,9 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void TargetManager::GetNewTargetID() {
     this->unk4 += 1;
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void TargetManager::Deinit() {

@@ -120,7 +120,7 @@ loop_16:
         if ((u8) M2C_FIELD(temp_r28_184, u8 *, 0x28) == 0) {
             arg_sp180.SetRotationPitch(0.017453292f * M2C_FIELD(temp_r28_184, f32 *, 0x24));
             arg_sp180.RotateYaw((Matrix *) &arg_sp180, 0.017453292f * var_r27_169->unk24);
-            arg_sp1B0 = M2C_BITWISE(f32, var_r27_169->unk0);
+            arg_sp1B0 = var_r27_169->unk0;
             arg_sp1B4 = var_r27_169->unk4;
             arg_sp1B8 = var_r27_169->unk8;
             arg_sp1BC = 1.0f;
@@ -138,7 +138,7 @@ loop_16:
             arg_sp120 = (f64) arg_sp60;
             M2C_FIELD(temp_r28_184, f64 *, 0x38) = (f64) arg_sp60;
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp180, *(temp_r28_184 + 0x30), (MKVector3 *) &arg_sp168);
-            arg_sp1B0 = M2C_BITWISE(f32, var_r27_169->unk0);
+            arg_sp1B0 = var_r27_169->unk0;
             arg_sp1B4 = var_r27_169->unk4;
             arg_sp1B8 = var_r27_169->unk8;
             arg_sp1BC = 1.0f;
@@ -541,7 +541,7 @@ loop_6:
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_FIELD(temp_r30_1082, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_1082, f32 *, 8) + (f32) sp70.unk18);
+            M2C_FIELD(temp_r30_1082, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_1082, f32 *, 8) + (f32) (f64) sp28);
         } else {
             temp_f31_1120 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             sp60.GetVelocity(*((MKVector3 *) arg0));

@@ -509,6 +509,8 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f32 temp_f3_900;
+    f32 temp_f6_906;
     f32 temp_f7_912;
     s32 temp_cr0_eq_857;
     void *temp_r3_891;
@@ -536,16 +538,18 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
             sp38.unk10 = sp28;
             sp38.unk18 = sp30;
             if (temp_r3_891 != NULL) {
+                temp_f3_900 = M2C_BITWISE(f32, sp38.unk14);
+                temp_f6_906 = M2C_BITWISE(f32, sp38.unk10);
                 temp_f7_912 = M2C_BITWISE(f32, sp38.unk18);
-                sp8 = M2C_FIELD(temp_r3_891, f32 *, 0x30) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x20)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_891, f32 *, 0)) + (sp38.unk14 * M2C_FIELD(temp_r3_891, f32 *, 0x10))));
-                spC = M2C_FIELD(temp_r3_891, f32 *, 0x34) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x24)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_891, f32 *, 4)) + (sp38.unk14 * M2C_FIELD(temp_r3_891, f32 *, 0x14))));
-                sp10 = M2C_FIELD(temp_r3_891, f32 *, 0x38) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x28)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_891, f32 *, 8)) + (sp38.unk14 * M2C_FIELD(temp_r3_891, f32 *, 0x18))));
+                sp8 = M2C_FIELD(temp_r3_891, f32 *, 0x30) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x20)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 0)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x10))));
+                spC = M2C_FIELD(temp_r3_891, f32 *, 0x34) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x24)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 4)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x14))));
+                sp10 = M2C_FIELD(temp_r3_891, f32 *, 0x38) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x28)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 8)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x18))));
                 sp18 = (f64) sp8;
                 sp20 = (f64) sp10;
                 sp38.unk10 = (f64) sp8;
                 sp38.unk18 = (f64) sp10;
             }
-            if ((f32) fabs(sp38.unk14 - arg0.unk4) < 500.0f) {
+            if ((f32) fabs(M2C_BITWISE(f32, sp38.unk14) - arg0.unk4) < 500.0f) {
                 SetupRegion((KDLocalPathSegment *) sp38);
                 return 1;
             }
@@ -588,6 +592,8 @@ void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f32 temp_f3_1059;
+    f32 temp_f6_1065;
     f32 temp_f7_1071;
     s32 temp_cr0_eq_1033;
     void *temp_r3_1050;
@@ -614,16 +620,18 @@ void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
             sp38.unk10 = sp28;
             sp38.unk18 = sp30;
             if (temp_r3_1050 != NULL) {
+                temp_f3_1059 = M2C_BITWISE(f32, sp38.unk14);
+                temp_f6_1065 = M2C_BITWISE(f32, sp38.unk10);
                 temp_f7_1071 = M2C_BITWISE(f32, sp38.unk18);
-                sp8 = M2C_FIELD(temp_r3_1050, f32 *, 0x30) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x20)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_1050, f32 *, 0)) + (sp38.unk14 * M2C_FIELD(temp_r3_1050, f32 *, 0x10))));
-                spC = M2C_FIELD(temp_r3_1050, f32 *, 0x34) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x24)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_1050, f32 *, 4)) + (sp38.unk14 * M2C_FIELD(temp_r3_1050, f32 *, 0x14))));
-                sp10 = M2C_FIELD(temp_r3_1050, f32 *, 0x38) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x28)) + (((f32) sp38.unk10 * M2C_FIELD(temp_r3_1050, f32 *, 8)) + (sp38.unk14 * M2C_FIELD(temp_r3_1050, f32 *, 0x18))));
+                sp8 = M2C_FIELD(temp_r3_1050, f32 *, 0x30) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x20)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 0)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x10))));
+                spC = M2C_FIELD(temp_r3_1050, f32 *, 0x34) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x24)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 4)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x14))));
+                sp10 = M2C_FIELD(temp_r3_1050, f32 *, 0x38) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x28)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 8)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x18))));
                 sp18 = (f64) sp8;
                 sp20 = (f64) sp10;
                 sp38.unk10 = (f64) sp8;
                 sp38.unk18 = (f64) sp10;
             }
-            if ((f32) fabs(sp38.unk14 - arg0.unk4) < 500.0f) {
+            if ((f32) fabs(M2C_BITWISE(f32, sp38.unk14) - arg0.unk4) < 500.0f) {
                 this->unk31 = 1;
                 this->unk0 = M2C_BITWISE(f64, sp38.unk20);
                 this->unk8 = M2C_BITWISE(f64, sp38.unk28);

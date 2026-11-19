@@ -129,7 +129,7 @@ void Enemy::TestForTraps() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Enemy::TestForSpikes() {
     s32 spC;
     s32 sp8;
@@ -467,7 +467,7 @@ block_30:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: expression syntax error
 void Enemy::ThawIfFrozen() {
     f64 sp88;
     f64 sp80;
@@ -1332,7 +1332,7 @@ void Enemy::DoDeadFx() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: pointer/array required
 void Enemy::DoDeathFx(unsigned int arg0) {
     f64 sp88;
     f64 sp80;
@@ -2905,7 +2905,7 @@ s32 Enemy::HasWaypoints() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 Enemy::CheckMeleeHit(EnemyAttack *arg0, int arg1) {
     MKCollisionResult sp88;
     f64 sp80;                                       /* compiler-managed */
@@ -2976,7 +2976,7 @@ loop_68:
             temp_f1_6121 = MKModel_GetRefPointRadius(this->unk4, *(temp_r31_6094 + var_r20_6112));
             temp_r5_6122 = this->unkA18;
             var_r26_6123 = 0;
-            if ((u8) temp_r5_6122->unk5 != 0) {
+            if ((u8) M2C_FIELD(temp_r5_6122, u8 *, 5) != 0) {
                 var_r26_6123 = 1;
                 var_r29_6091 = MKCollision_SphereCollide(sp68, temp_f1_6121, &sp88, 0xA, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF);
             } else if (MKCollision_SweepSphereCollide(*(M2C_BITWISE(s32, temp_r5_6122->unk0) + var_r21_6111), sp68, temp_f1_6121, &sp88, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF) != 0) {
@@ -3125,7 +3125,7 @@ loop_40:
             goto loop_68;
         }
     }
-    this->unkA18->unk5 = 0;
+    M2C_FIELD(this->unkA18, u8 *, 5) = 0U;
     if (sp10 != NULL) {
         M2C_FIELD(sp10, u8 *, 4) = sp14;
     }
@@ -5101,7 +5101,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: undefined identifier 'unkC'
 void Enemy::Update() {
     s32 sp8;
     KDSynkerPlayer3 *temp_r3_10793;
@@ -6046,9 +6046,9 @@ void Enemy::LoadDone() {
             var_r3_12507 = malloc(8);
         }
         this->unkA18 = var_r3_12507;
-        this->unkA18->unk4 = (u8) M2C_FIELD(this->unkA20, s32 *, 0x224);
+        M2C_FIELD(this->unkA18, u8 *, 4) = (u8) M2C_FIELD(this->unkA20, s32 *, 0x224);
         temp_r3_12518 = this->unkA18;
-        temp_r30_12520 = temp_r3_12518->unk4 * 0x10;
+        temp_r30_12520 = M2C_FIELD(temp_r3_12518, u8 *, 4) * 0x10;
         temp_r3_12521 = temp_r3_12518->Current();
         if (temp_r3_12521 != NULL) {
             var_r3_12528 = ((MKHeap *) (temp_r3_12521->Current()))->Alloc(temp_r30_12520, NULL, 0);

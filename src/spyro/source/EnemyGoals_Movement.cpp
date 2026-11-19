@@ -261,7 +261,7 @@ void EnemyGoal_Panic::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal type
 u8 EnemyGoal_Panic::Update() {
     BreathHitMessage sp10;
     s32 sp8;
@@ -347,7 +347,7 @@ void EnemyGoal_MoveAwayFromHero::Activate() {
         temp_r3_618 = this->unkC;
         temp_r4_625 = this->unk24;
         temp_f0_626 = 200.0f + temp_r3_618->GetCollisionRadius();
-        M2C_FIELD(temp_r4_625, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r4_625, f32 **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r4_625, f32 *, 0x14) = temp_f0_626;
         return;
     }
@@ -1355,7 +1355,7 @@ void EnemyGoal_BackupFromTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk28'
+#if 0 // DRAFT: expression syntax error
 u8 EnemyGoal_BackupFromTarget::Update() {
     f64 sp30;
     f64 sp28;

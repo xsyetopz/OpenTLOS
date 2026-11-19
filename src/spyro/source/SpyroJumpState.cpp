@@ -72,7 +72,7 @@ void SpyroJumpState::DoubleJumpEnter() {
     s32 var_r0_186;
     void *temp_r3_119;
 
-    this->unk2E = 0;
+    M2C_FIELD(this, s8 *, 0x2E) = 0;
     temp_r3_119 = this->unk10->unk8;
     sp20 = M2C_FIELD(temp_r3_119, f64 *, 0x30);
     temp_f7_127 = unksp24 - this->unk34;
@@ -154,14 +154,14 @@ void SpyroJumpState::JumpCommonUpdate() {
         var_f1_267 = MKInput_GetState(0xE, (MKInputDevices) temp_r3_254->unk0, NULL, NULL);
     }
     if (var_f1_267 != 0.0f) {
-        if ((u8) this->unk2C == 0) {
+        if ((u8) M2C_FIELD(this, u8 *, 0x2C) == 0) {
             temp_r4_282 = this->unk10;
             temp_r3_284 = temp_r4_282->unk8;
             sp10.unk20 = M2C_FIELD(temp_r3_284, f64 *, 0x30);
             sp10.unk28 = M2C_FIELD(temp_r3_284, f64 *, 0x38);
             temp_f31_293 = 300.0f - (unksp34 - this->unk34);
             if ((temp_f31_293 < 100.0f) || ((s32) M2C_FIELD(temp_r4_282->unk26C.unk8, s32 *, 0x43C) > 0)) {
-                if ((u8) this->unk2D == 0) {
+                if ((u8) M2C_FIELD(this, u8 *, 0x2D) == 0) {
                     sp10.unk10.GetJumpVel();
                     var_f5_313 = 1900.0f * (2.0f * temp_f31_293);
                     sp10.unk40 = M2C_BITWISE(f64, sp10.unk10);
@@ -199,9 +199,9 @@ void SpyroJumpState::JumpCommonUpdate() {
                             var_f5_313 = __float_nan;
                         }
                     }
-                    sp10.unk44 = var_f5_313;
+                    unksp54 = var_f5_313;
                     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp10.unk40), 540000.0f);
-                    this->unk2D = 1;
+                    M2C_FIELD(this, u8 *, 0x2D) = 1U;
                 }
             } else {
                 sp10.GetJumpVel();
@@ -212,7 +212,7 @@ void SpyroJumpState::JumpCommonUpdate() {
             }
         }
     } else {
-        this->unk2C = 1;
+        M2C_FIELD(this, u8 *, 0x2C) = 1U;
     }
 }
 #endif
@@ -223,7 +223,7 @@ s32 SpyroJumpState::JumpLoftTransition() {
     u8 var_r0_434;
     u8 var_r3_422;
 
-    var_r3_422 = this->unk2F;
+    var_r3_422 = M2C_FIELD(this, u8 *, 0x2F);
     if (var_r3_422 != 0) {
         var_r3_422 = GameData::gameData[0x168] & 1;
     }
@@ -287,9 +287,9 @@ u8 SpyroJumpState::JumpCycleTransition() {
     u8 var_r3_588;
     u8 var_r3_595;
 
-    var_r0_573 = this->unk2D;
+    var_r0_573 = M2C_FIELD(this, u8 *, 0x2D);
     if (var_r0_573 == 0) {
-        var_r0_573 = this->unk2C;
+        var_r0_573 = M2C_FIELD(this, u8 *, 0x2C);
     }
     if ((var_r0_573 != 0) && ((s32) this->unk18.unk0 != 2)) {
         this->unk18.SetState(this, 2, 0U);
@@ -298,7 +298,7 @@ u8 SpyroJumpState::JumpCycleTransition() {
         var_r3_588 = 0;
     }
     if (var_r3_588 == 0) {
-        var_r3_595 = this->unk2F;
+        var_r3_595 = M2C_FIELD(this, u8 *, 0x2F);
         if (var_r3_595 != 0) {
             var_r3_595 = GameData::gameData[0x168] & 1;
         }
@@ -352,9 +352,9 @@ u8 SpyroJumpState::JumpStartTransition() {
     u8 var_r3_717;
     u8 var_r3_745;
 
-    var_r0_702 = this->unk2D;
+    var_r0_702 = M2C_FIELD(this, u8 *, 0x2D);
     if (var_r0_702 == 0) {
-        var_r0_702 = this->unk2C;
+        var_r0_702 = M2C_FIELD(this, u8 *, 0x2C);
     }
     if ((var_r0_702 != 0) && ((s32) this->unk18.unk0 != 2)) {
         this->unk18.SetState(this, 2, 0U);
@@ -371,7 +371,7 @@ u8 SpyroJumpState::JumpStartTransition() {
         }
     }
     if (var_r3_717 == 0) {
-        var_r3_745 = this->unk2F;
+        var_r3_745 = M2C_FIELD(this, u8 *, 0x2F);
         if (var_r3_745 != 0) {
             var_r3_745 = GameData::gameData[0x168] & 1;
         }
@@ -413,8 +413,8 @@ void SpyroJumpState::JumpStartExit() {
 
 #if 0 // DRAFT: expression syntax error
 void SpyroJumpState::JumpStartEnter() {
-    this->unk2C = 0;
-    this->unk2D = 0;
+    M2C_FIELD(this, s8 *, 0x2C) = 0;
+    M2C_FIELD(this, s8 *, 0x2D) = 0;
     this->unk10->unk430.unk28.SetTailSweepComboCount(0);
     this->unk10->SetAnim(*this->unk60, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
@@ -432,10 +432,10 @@ s32 SpyroJumpState::Transition() {
 
     sp8.unk50 = 0;
     sp8.AddMessage(0x172);
-    if ((u8) this->unk2E != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x2E) != 0) {
         sp8.AddMessage(0x17D);
     }
-    if (((u8) this->unk2F != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (GameData::gameData[0x168] & 1) == 1)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x2F) != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (GameData::gameData[0x168] & 1) == 1)) {
         sp8.AddMessage(0x16F);
     }
     if (this->unk18.GetState() == 3) {
@@ -881,7 +881,7 @@ block_6:
                 }
             }
             temp_f2_1611 = (f32) M2C_FIELD(this, f64 *, 0x40);
-            temp_f0_1612 = this->unk44;
+            temp_f0_1612 = M2C_FIELD(this, f32 *, 0x44);
             temp_f4_1614 = (f32) M2C_FIELD(this, f64 *, 0x48);
             var_f5_1619 = (temp_f4_1614 * temp_f4_1614) + ((temp_f2_1611 * temp_f2_1611) + (temp_f0_1612 * temp_f0_1612));
             if (var_f5_1619 > 0.0f) {
@@ -931,7 +931,7 @@ block_6:
             sp1B8 = M2C_BITWISE(f64, sp128);
             sp1C0 = (f64) sp128.unk8;
             this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp1B8), 3800.0f);
-            if ((u8) this->unk2E != 0) {
+            if ((u8) M2C_FIELD(this, u8 *, 0x2E) != 0) {
                 var_f1_1718 = 3.5f;
             } else {
                 var_f1_1718 = 900.0f;
@@ -1087,17 +1087,17 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
     } else {
         this->unk60 = &this->unk50;
     }
-    this->unk2F = arg0.IsMessageOnList(0x16F);
-    this->unk2E = arg0.IsMessageOnList(0x17D);
+    M2C_FIELD(this, s8 *, 0x2F) = arg0.IsMessageOnList(0x16F);
+    M2C_FIELD(this, s8 *, 0x2E) = arg0.IsMessageOnList(0x17D);
     this->unk14 = 24.0f;
     M2C_FIELD(this, f32 *, 0x40) = 0.0f;
-    this->unk44 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x44) = 0.0f;
     M2C_FIELD(this, f32 *, 0x48) = 0.0f;
     if (arg0.IsMessageOnList(0x177) != 0) {
         temp_r3_2137 = checked_cast<SpyroProjectVelMsg *, MKMessage>(arg0.GetMessage(0x177));
         this->unk40 = M2C_FIELD(temp_r3_2137, f64 *, 8);
         this->unk48 = M2C_FIELD(temp_r3_2137, f64 *, 0x10);
-        this->unk10->SetDesiredVelocityVectical(this->unk44, 540000.0f);
+        this->unk10->SetDesiredVelocityVectical(M2C_FIELD(this, f32 *, 0x44), 540000.0f);
     } else {
         temp_r3_2148 = this->unk10;
         if (((u8) M2C_FIELD(temp_r3_2148, u8 *, 0x3D2) != 0) || ((u8) M2C_FIELD(temp_r3_2148, u8 *, 0x3D1) != 0)) {
@@ -1150,12 +1150,12 @@ void SpyroJumpState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     Init__32KDStateMachine<14SpyroJumpState>FPQ232KDStateMachine<14SpyroJumpState>5StateP32KDStateMachine<14SpyroJumpState>(&this->unk18, (KDStateMachine<SpyroJumpState>::State *) &SpyroJumpState::states, NULL);
     this->unk14 = 0.0f;
-    this->unk2E = 0;
+    M2C_FIELD(this, s8 *, 0x2E) = 0;
     this->unk34 = 0.0f;
     this->unk38 = 0.0f;
-    this->unk2C = 0;
-    this->unk2D = 0;
-    this->unk2F = 0;
+    M2C_FIELD(this, s8 *, 0x2C) = 0;
+    M2C_FIELD(this, s8 *, 0x2D) = 0;
+    M2C_FIELD(this, s8 *, 0x2F) = 0;
     this->unk30 = 0;
     this->unk50 = 0x30;
     this->unk54 = 0x31;

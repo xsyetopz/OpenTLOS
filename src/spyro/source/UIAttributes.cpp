@@ -123,7 +123,6 @@ void Attributes::Tween(Attributes *arg0, Attributes *arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void Attributes::SetIdentity() {
     this->unk0 = 1.0f;
     this->unk4 = 1.0f;
@@ -143,7 +142,6 @@ void Attributes::SetIdentity() {
     this->unk3C = 0;
     this->unk40 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal function overloading
 void RenderContext::AddState(const Attributes &arg0) {

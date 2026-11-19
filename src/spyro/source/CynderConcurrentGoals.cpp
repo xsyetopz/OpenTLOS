@@ -148,7 +148,6 @@ void CynderConcurrentGoal_Think::Reset() {
     this->unk20 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24'
 void CynderConcurrentGoal_Think::Deinit() {
     Goal<Cynder> *temp_r3_339;
     Goal<Cynder> *temp_r3_344;
@@ -183,7 +182,6 @@ void CynderConcurrentGoal_Think::Deinit() {
     this->unk9 = 0;
     M2C_FIELD(&gb, s32 *, 0x360) = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void CynderConcurrentGoal_Think::Init(Cynder *arg0) {

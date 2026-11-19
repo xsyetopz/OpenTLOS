@@ -29,7 +29,7 @@ loop_2:
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_FIELD(temp_r31_59, f32 *, 8) = (f32) (M2C_FIELD(temp_r31_59, f32 *, 8) + (f32) sp10.unk18);
+        M2C_FIELD(temp_r31_59, f32 *, 8) = (f32) (M2C_FIELD(temp_r31_59, f32 *, 8) + (f32) sp10.unk8);
         var_r3_56 = GetNextParticle(&unksp8);
         goto loop_2;
     }

@@ -79,7 +79,7 @@ void Volume::GetRandPos() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Volume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;
@@ -111,7 +111,7 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     f32 var_f0_218;
     f32 var_f12_186;
 
-    M2C_STRUCT_COPY((s32) &this->unk3C + 4, (s32) (&arg0 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x3C) + 4, (s32) (&arg0 - 4) + 4, 0x40);
     Matrix::Inverse(&this->unk40);
     temp_f0_138 = this->unk40.unk10;
     sp68 = M2C_FIELD(Volume::boundingVolume, f64 *, 0);

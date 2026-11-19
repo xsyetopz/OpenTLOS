@@ -603,13 +603,13 @@ void KDSplinePathSegment::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk34'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void KDLocalPathSegmentProp::Resolve() {
-    MKSceneManager *temp_r3_1240;
-    MKSceneManager *temp_r3_1245;
     f32 temp_f10_1283;
     f32 temp_f5_1280;
     f32 temp_f8_1281;
+    f32 temp_r3_1240;
+    f32 temp_r3_1245;
     s32 temp_r0_1264;
     s32 temp_r3_1311;
     s32 var_ctr_1266;
@@ -617,11 +617,11 @@ void KDLocalPathSegmentProp::Resolve() {
     void *temp_r3_1278;
     MKProp::Resolve();
     temp_r3_1240 = this->unk4C.unk34;
-    if (temp_r3_1240 != NULL) {
-        this->unk4C.unk34 = temp_r3_1240->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    if (M2C_BITWISE(u32, temp_r3_1240) != 0U) {
+        this->unk4C.unk34 = M2C_BITWISE(f32, ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_1240)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         temp_r3_1245 = this->unk4C.unk34;
-        if (temp_r3_1245 != NULL) {
-            this->unk4C.unk2C = M2C_BITWISE(s32, temp_r3_1245->unk8);
+        if (M2C_BITWISE(u32, temp_r3_1245) != 0U) {
+            this->unk4C.unk2C = M2C_FIELD(temp_r3_1245, s32 *, 8);
             M2C_STRUCT_COPY((s32) &arg_sp2C + 4, this->unk4C.unk2C - 4 + 4, 0x40);
             arg_sp30.Inverse((Matrix *) &arg_sp30);
             temp_r0_1264 = this->unk4C.unk1C;
@@ -659,7 +659,7 @@ void KDLocalPathSegmentProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk34'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDLocalPathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1356;
 
@@ -676,7 +676,7 @@ void KDLocalPathSegmentProp::Deinit() {
     MKProp::Deinit();
     this->unk4C.RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
     this->unk4C.Deinit();
-    this->unk4C.unk34 = NULL;
+    this->unk4C.unk34 = 0.0f;
 }
 #endif
 
@@ -684,7 +684,7 @@ void KDLocalPathSegmentProp::Deinit() {
 void KDLocalPathSegmentProp::Init() {
     MKProp::Init();
     this->unk4C.Init(this);
-    this->unk4C.unk34 = NULL;
+    this->unk4C.unk34 = 0.0f;
 }
 #endif
 

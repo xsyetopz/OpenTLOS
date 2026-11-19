@@ -176,7 +176,7 @@ loop_4:
 void IceBossStalactiteSpawner::SpawnSingleAtPos(const MKVector3 &arg0) {
     IceBossStalactite ***temp_r3_292;
 
-    this->unk1C = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
     temp_r3_292 = this->unk10 - 4;
     this->unk10 = temp_r3_292;
     ((IceBossStalactite *) (**temp_r3_292))->Spawn(arg0, 1U, 0U);
@@ -201,7 +201,7 @@ loop_2:
     }
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk8 = M2C_FIELD(&arg0, f64 *, 8);
-    this->unk1C = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
     temp_r5_331 = this->unk10;
     var_r3_332 = temp_r5_331;
     do {
@@ -257,7 +257,7 @@ loop_6:
     M2C_FIELD(this, f32 *, 0) = 0.0f;
     M2C_FIELD(this, f32 *, 4) = 0.0f;
     M2C_FIELD(this, f32 *, 8) = 0.0f;
-    this->unk1C = 0.0f;
+    M2C_FIELD(this, f32 *, 0x1C) = 0.0f;
 }
 
 #if 0 // DRAFT: function call 'checked_cast(void *)' does not match

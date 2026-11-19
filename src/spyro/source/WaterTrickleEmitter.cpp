@@ -47,14 +47,14 @@ void WaterTrickleEmitter::Update() {
     s32 var_r29_104;
     void *temp_r3_117;
 
-    this->unk80 = this->unk80 + gUpdateTimeDelta;
+    this->unk84 = M2C_BITWISE(f32, this->unk84) + gUpdateTimeDelta;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk80 == MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
+    if (M2C_BITWISE(f32, this->unk84) == MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
         var_r30_89 = NULL;
         sp38 = 0.0f;
         sp30 = 0.0f;
         sp34 = 0.0f;
-        this->unk80 = 0.0f;
+        this->unk84 = 0.0f;
         sp68 = (f64) sp38;
         sp60 = (f64) sp30;
         if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
@@ -69,11 +69,11 @@ loop_10:
                 temp_r3_117 = this->unk8;
                 sp50 = M2C_FIELD(temp_r3_117, f64 *, 0x30);
                 sp50.unk8 = M2C_FIELD(temp_r3_117, f64 *, 0x38);
-                if (this->unkA0.unk38 > 0.0f) {
+                if (this->unkA0.unk3C > 0.0f) {
                     temp_f29_130 = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
-                    MKRand_Float(&gViewSeed, this->unkA0.unk3C, 1.0f);
+                    MKRand_Float(&gViewSeed, this->unkE0, 1.0f);
                     temp_f28_136 = (f32) acos();
-                    temp_f30_141 = MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk84), this->unk88);
+                    temp_f30_141 = MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
                     _table_sincosf(temp_f28_136, sp18, sp14);
                     _table_sincosf(temp_f29_130, sp10, spC);
                     temp_f4_152 = sp18 * temp_f30_141;
@@ -84,7 +84,7 @@ loop_10:
                 } else {
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    temp_f0_177 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk84), this->unk88);
+                    temp_f0_177 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
                     sp40 = sp20;
                     sp28 = temp_f0_177;
                     sp60 = sp20;
@@ -101,7 +101,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk34'
+#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
 void WaterTrickleEmitter::LoadDone() {
     M2C_UNK *temp_r3_239;
     M2C_UNK *temp_r3_245;
@@ -116,17 +116,17 @@ void WaterTrickleEmitter::LoadDone() {
     temp_r3_239->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
     temp_r3_245 = &this->unkA0;
     temp_r3_245->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
-    this->unkA0.unk28 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
-    this->unkA0.unk2C = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
-    this->unkA0.unk30 = MKProp::loadInfo.unk48;
-    this->unkA0.unk34 = 1.0f;
-    this->unkA0.unk3C = _table_sinf(1.5707964f + this->unkA0.unk38);
+    this->unkA0.unk2C = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
+    this->unkA0.unk30 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
+    this->unkA0.unk34 = MKProp::loadInfo.unk48;
+    this->unkA0.unk38 = 1.0f;
+    this->unkE0 = _table_sinf(1.5707964f + this->unkA0.unk3C);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk34'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinEmitRate", (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat("MaxEmitRate", (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt("NumPerEmit", (s32 *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat("MinEmitVel", (f32 *) &this->unk84, 0) != 0) || (arg0->LoadFloat("MaxEmitVel", &this->unk88, 0) != 0) || (arg0->LoadFloat("Angle", &this->unkA0.unk38, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinEmitRate", (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat("MaxEmitRate", (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt("NumPerEmit", (s32 *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat("MinEmitVel", &this->unk88, 0) != 0) || (arg0->LoadFloat("MaxEmitVel", &this->unk8C, 0) != 0) || (arg0->LoadFloat("Angle", &this->unkA0.unk3C, 0) != 0)) {
         return 1;
     }
     if (arg0->GetFieldName() != NULL) {
@@ -154,13 +154,13 @@ void WaterTrickleEmitter::Init() {
     temp_r3_391 = &this->unkA0;
     this->unk4C.unk2C = 0.0f;
     this->unk4C.unk30 = 0.0f;
-    this->unk80 = 0.0f;
+    this->unk84 = 0.0f;
     this->unk4C.unk34 = 0.0f;
     this->unk8 = temp_r3_391;
     temp_r3_391->SetIdentity();
-    this->unk84 = 0.0f;
-    this->unk88 = 200.0f;
-    this->unkA0.unk38 = 0.0f;
+    this->unk88 = 0.0f;
+    this->unk8C = 200.0f;
+    this->unkA0.unk3C = 0.0f;
 }
 #endif
 

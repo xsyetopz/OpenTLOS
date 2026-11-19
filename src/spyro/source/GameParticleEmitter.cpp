@@ -262,7 +262,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             this->unk38 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             this->unk3C.GetPositionAlongPath(this->unk38, *arg0);
         } else if (temp_r3_448 & 2) {
-            if ((s32) this->unk9C == 0) {
+            if ((s32) this->unkA0 == 0) {
                 this->unk38 += gUpdateTimeDelta;
             } else {
                 this->unk38 -= gUpdateTimeDelta;
@@ -270,10 +270,10 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             temp_f2_478 = this->unk38;
             if (temp_f2_478 > 1.0f) {
                 if (this->unk9C & 4) {
-                    if ((s32) this->unk9C == 0) {
-                        this->unk9C = 1;
+                    if ((s32) this->unkA0 == 0) {
+                        this->unkA0 = 1;
                     } else {
-                        this->unk9C = 0;
+                        this->unkA0 = 0;
                     }
                     this->unk38 = 1.0f;
                 } else {
@@ -281,10 +281,10 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
                 }
             } else if (temp_f2_478 < 0.0f) {
                 if (this->unk9C & 4) {
-                    if ((s32) this->unk9C == 0) {
-                        this->unk9C = 1;
+                    if ((s32) this->unkA0 == 0) {
+                        this->unkA0 = 1;
                     } else {
-                        this->unk9C = 0;
+                        this->unkA0 = 0;
                     }
                     this->unk38 = 0.0f;
                 } else {
@@ -329,8 +329,8 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             arg0->unk8 += (f32) sp100;
         }
         if (this->unk9C & 0x20) {
-            temp_f1_629 = M2C_BITWISE(f32, this->unkA0);
-            temp_f2_630 = M2C_BITWISE(f32, this->unkA4);
+            temp_f1_629 = M2C_BITWISE(f32, this->unkA4);
+            temp_f2_630 = this->unkA8;
             if ((temp_f1_629 == temp_f2_630) || (temp_f1_629 > temp_f2_630)) {
                 var_f29_636 = 0.0f;
             } else {
@@ -357,7 +357,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         arg2->unk8 = temp_f1_686;
     }
     if (arg1 != NULL) {
-        temp_r0_693 = this->unkA0;
+        temp_r0_693 = this->unk9C;
         switch (temp_r0_693) {                      /* irregular */
         case 0:
             this->unk3C.GetPositionAlongPath(this->unk38, sp138);
@@ -426,10 +426,10 @@ s32 DirectedLineEmitter::LoadLine(MKIniLine *arg0) {
 loop_2:
     if (var_r30_865 != NULL) {
         var_r30_865->LoadInt("EmissionPosType", &this->unk9C, 0);
-        var_r30_865->LoadInt("DirectionType", &this->unkA0, 0);
-        var_r30_865->LoadInt("LinearDirectionType", &this->unk9C, 0);
-        var_r30_865->LoadFloat("MinRadialOffs", (f32 *) &this->unkA0, 0);
-        var_r30_865->LoadFloat("MaxRadialOffs", (f32 *) &this->unkA4, 0);
+        var_r30_865->LoadInt("DirectionType", &this->unk9C, 0);
+        var_r30_865->LoadInt("LinearDirectionType", &this->unkA0, 0);
+        var_r30_865->LoadFloat("MinRadialOffs", (f32 *) &this->unkA4, 0);
+        var_r30_865->LoadFloat("MaxRadialOffs", &this->unkA8, 0);
         var_r30_865->LoadFloat("MinScale", &this->unk8, 0);
         var_r30_865->LoadFloat("MaxScale", &this->unk4, 0);
         var_r30_865->LoadFloat("MinVel", &this->unk10, 0);
@@ -456,12 +456,12 @@ void DirectedLineEmitter::SetDirection(const MKVector3 &arg0) {
 #if 0 // DRAFT: expression syntax error
 void DirectedLineEmitter::Init() {
     this->unk38 = 0.0f;
-    this->unkA0 = 0.0f;
     this->unkA4 = 0.0f;
+    this->unkA8 = 0.0f;
     this->unk3C.Init();
     this->unk3C.unk2C.Init();
-    this->unk9C = 0;
     this->unkA0 = 0;
+    this->unk9C = 0;
     this->unk9C = 9;
     this->unk4 = 1.0f;
     this->unk8 = 0.5f;

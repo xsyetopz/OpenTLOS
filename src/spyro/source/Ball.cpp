@@ -119,7 +119,7 @@ void Ball::BridgeHit(float arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk248'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp2C;
     u8 sp28;
@@ -128,7 +128,7 @@ void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     s32 sp1C;
     s8 sp18;
     MKCollisionInfo *sp14;
-    M2C_UNK *sp10;
+    MKProp ***sp10;
     s32 spC;
     s32 sp8;
     s32 temp_r3_310;
@@ -153,7 +153,7 @@ void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     } else if (temp_r3_310 & 0x20000) {
         spC = 0;
         sp8 = 0x99;
-        sp10 = &this->unk248;
+        sp10 = &this->unk244;
         sp14 = arg1;
         sp18 = 0;
         arg0->Message(&sp8, 0x99, 0);
@@ -161,7 +161,7 @@ void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk248'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Ball::PlatformDetach() {
     s32 sp2C;
     s8 sp28;
@@ -169,7 +169,7 @@ void Ball::PlatformDetach() {
     s32 sp20;
     s32 sp1C;
     s8 sp18;
-    M2C_UNK *sp10;
+    MKProp ***sp10;
     s32 spC;
     s32 sp8;
     Ball *temp_r3_389;
@@ -190,7 +190,7 @@ void Ball::PlatformDetach() {
     if (temp_r3_389 != NULL) {
         spC = 0;
         sp8 = 0x9A;
-        sp10 = &this->unk248;
+        sp10 = &this->unk244;
         sp18 = 0;
         M2C_FIELD(temp_r3_389->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x9A, 0);
     }
