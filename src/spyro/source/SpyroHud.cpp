@@ -142,15 +142,14 @@ void EnemyHud_Modified(const EnemyHudData &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void EnemyHud_Modified(MKProp *arg0, float arg1, float arg2, float arg3) {
-    if ((arg0 == NULL) || ((u32) M2C_FIELD(&gb, u32 *, 0x360) == 0U) || ((u32) M2C_FIELD(&gb, u32 *, 0x360) == arg0)) {
+    if ((arg0 == NULL) || ((u32) M2C_FIELD(&gb, u32 *, 0x360) == 0U) || ((u32) M2C_FIELD(&gb, u32 *, 0x360) == (u32) arg0)) {
         M2C_FIELD(&hudData, s8 *, 0x6D) = 0;
         if (arg0 != NULL) {
-            HudItem_Modified(&hudItem + 0x20);
+            HudItem_Modified((HudItem *) ((s8 *) &hudItem + 0x20));
             M2C_FIELD(&hudData, f32 *, 0x3C) = 2.0f;
         } else if ((u8) M2C_FIELD(&hudItem, u8 *, 0x39) == 0) {
-            HudItem_SetState(&hudItem + 0x20, (HudItemState) 0, 1U);
+            HudItem_SetState((HudItem *) ((s8 *) &hudItem + 0x20), (HudItemState) 0, 1U);
             M2C_FIELD(&hudData, f32 *, 0x3C) = 0.0f;
         }
         M2C_FIELD(&hudData, f32 *, 0x64) = arg2;
@@ -161,14 +160,12 @@ void EnemyHud_Modified(MKProp *arg0, float arg1, float arg2, float arg3) {
         M2C_FIELD(&hudData, MKProp **, 0x5C) = arg0;
     }
 }
-#endif
 
 void SpyroHud_ResetAfterCutScene() {
     M2C_FIELD(&hudItem, s32 *, 0) = 0;
     M2C_FIELD(&hudItem, s32 *, 0x20) = 0;
 }
 
-#if 0 // DRAFT: function call 'Hud_Remove(long *)' does not match 'Hud_Remove(HudItem *)'
 void SpyroHud_Deinit() {
     s32 var_r29_234;
     s32 var_r31_236;
@@ -176,14 +173,12 @@ void SpyroHud_Deinit() {
     var_r29_234 = 1;
     var_r31_236 = 0x20;
     do {
-        Hud_Remove(&hudItem + var_r31_236);
+        Hud_Remove((HudItem *) ((s8 *) &hudItem + var_r31_236));
         var_r29_234 -= 1;
         var_r31_236 -= 0x20;
     } while (var_r29_234 >= 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void SpyroHud_Init() {
     HudItem *temp_r3_283;
     s32 var_r24_276;
@@ -200,13 +195,13 @@ void SpyroHud_Init() {
     var_r30_278 = 0;
     var_r29_279 = 0;
     do {
-        temp_r5_281 = &hudDesc + var_r29_279;
-        temp_r25_282 = &hudData + var_r30_278;
-        temp_r3_283 = (HudItem *) (&hudItem + var_r31_277);
+        temp_r5_281 = (s8 *) &hudDesc + var_r29_279;
+        temp_r25_282 = (s8 *) &hudData + var_r30_278;
+        temp_r3_283 = (HudItem *) ((s8 *) &hudItem + var_r31_277);
         temp_r3_283->unk14 = (long) (temp_r25_282);
-        temp_r3_283->unk4 = M2C_FIELD(temp_r5_281, s32 *, 4);
-        temp_r3_283->unk8 = M2C_FIELD(temp_r5_281, s32 *, 8);
-        temp_r3_283->unkC = M2C_FIELD(temp_r5_281, s32 *, 0xC);
+        M2C_FIELD(temp_r3_283, s32 *, 4) = M2C_FIELD(temp_r5_281, s32 *, 4);
+        M2C_FIELD(temp_r3_283, s32 *, 8) = M2C_FIELD(temp_r5_281, s32 *, 8);
+        M2C_FIELD(temp_r3_283, s32 *, 0xC) = M2C_FIELD(temp_r5_281, s32 *, 0xC);
         M2C_FIELD(temp_r25_282, void **, 0) = temp_r5_281;
         temp_r3_283->unk18 = M2C_FIELD(temp_r5_281, u8 *, 0xB0);
         Hud_Add(temp_r3_283);
@@ -217,7 +212,6 @@ void SpyroHud_Init() {
         var_r29_279 += 0xB4;
     } while (var_r24_276 < 2);
 }
-#endif
 
 void SpyroHud_StateChange(void *arg0, HudItemState arg1, HudItemState arg2) {
     if ((*M2C_FIELD(arg0, s32 **, 0) & 0x10) && ((s32) arg2 == 0)) {
@@ -1150,16 +1144,8 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVector2 &arg2, const MKVector2 &arg3, const MKVector2 &arg4, const MKVector4 &arg5, const MKVector4 &arg6, const MKVector4 &arg7, float arg8, float arg9, float arg10, bool arg11) {
-    f64 spE0;
-    f64 spD8;
-    f64 spD0;
-    f64 spC8;
-    f64 spC0;
-    f64 spB8;
-    f64 spB0;
-    f64 spA8;
+    MKVector4 spColor;
     f32 spA4;
     f32 spA0;
     f32 sp9C;
@@ -1225,8 +1211,6 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     f32 var_f4_2004;
     f32 var_f5_1960;
     f32 var_f5_2026;
-    f64 temp_f0_1823;
-    f64 temp_f0_1834;
 
     temp_f6_1728 = arg4.unk4;
     temp_f5_1730 = arg3.unk4;
@@ -1239,7 +1223,7 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     var_f26_1754 = (0.5f * var_f4_1742) + (temp_f6_1728 - temp_f5_1730);
     var_f27_1755 = arg0.unk4 + temp_f5_1730;
     temp_f28_1756 = -((0.5f * temp_f29_1734) - (arg0.unk0 + arg3.unk0));
-    if (arg_sp8 != 0) {
+    if (arg11) {
         if (temp_f6_1728 > temp_f5_1730) {
             var_f0_1760 = temp_f29_1734;
         } else {
@@ -1269,17 +1253,12 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKPrimitive(0xC, 3);
         MKBegin(4);
-        spB8 = M2C_FIELD(&arg6, f64 *, 0) + M2C_FIELD(&arg7, f64 *, 0);
-        temp_f0_1823 = M2C_FIELD(&arg6, f64 *, 8) + M2C_FIELD(&arg7, f64 *, 8);
-        spC0 = temp_f0_1823;
-        spC8 = spB8;
-        spD0 = temp_f0_1823;
-        spA8 = spC8 * 5.222099017e-315;
-        temp_f0_1834 = temp_f0_1823 * 5.222099017e-315;
-        spB0 = temp_f0_1834;
-        spD8 = spA8;
-        spE0 = temp_f0_1834;
-        MKSetColorV(*((MKVector4 *) &spD8));
+        /* ps_add of arg6 and arg7 per lane, then ps_muls0 by 0.5f (@1438) */
+        spColor.unk0 = (arg6.unk0 + arg7.unk0) * 0.5f;
+        spColor.unk4 = (arg6.unk4 + arg7.unk4) * 0.5f;
+        spColor.unk8 = (arg6.unk8 + arg7.unk8) * 0.5f;
+        spColor.unkC = (arg6.unkC + arg7.unkC) * 0.5f;
+        MKSetColorV(spColor);
         MKSetPositionF(temp_f28_1756, var_f27_1755, 0.0f);
         MKSetPositionF(temp_f29_1791, var_f27_1755, 0.0f);
         if (arg9 > arg10) {
@@ -1355,7 +1334,7 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     sp90 = sp38;
     sp94 = sp3C;
     Hud_DrawIcon(0, 3, *((MKVector2 *) &sp90), *((MKVector2 *) &sp80), arg5, 0.0f, var_f2_1943, 1.0f, var_f4_1920, 0U, 0U, Matrix::identity);
-    if (arg_sp8 != 0) {
+    if (arg11) {
         if (temp_f28_1919 > 0.0f) {
             var_f4_2004 = 0.5f;
         } else {
@@ -1396,7 +1375,6 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     sp64 = sp14;
     Hud_DrawIcon(0, 3, *((MKVector2 *) &sp60), *((MKVector2 *) &sp58), arg5, 0.0f, 0.5f, 1.0f, 0.5f, 0U, 0U, Matrix::identity);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp8'
 void Hud_DrawBarHorz(const MKVector2 &arg0, const MKVector2 &arg1, const MKVector2 &arg2, const MKVector2 &arg3, const MKVector2 &arg4, const MKVector4 &arg5, const MKVector4 &arg6, const MKVector4 &arg7, float arg8, float arg9, float arg10, bool arg11) {
