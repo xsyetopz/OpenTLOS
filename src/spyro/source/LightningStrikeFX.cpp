@@ -308,15 +308,16 @@ void LightningStrikeFX::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'P27LightningStrikeFXDescriptor'
 void LightningStrikeFX::Draw() {
-    ((LightningStrikeFXDescriptor *) (checked_cast<P27LightningStrikeFXDescriptor))->DrawStrikeArcs(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0));
-}
-#endif
+    LightningStrikeFXDescriptor *desc;
 
-#if 0 // DRAFT: undefined identifier 'P27LightningStrikeFXDescriptor'
+    desc = checked_cast<LightningStrikeFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc->DrawStrikeArcs();
+}
+
 void *LightningStrikeFX::Update() {
     MKVector3 *temp_r5_543;
+    LightningStrikeFXDescriptor *desc;
     f32 temp_f31_515;
     f32 var_f0_495;
     s32 temp_r30_536;
@@ -342,10 +343,10 @@ void *LightningStrikeFX::Update() {
         temp_r30_536 = MKRand_Int((int *) &gViewSeed, 0, this->unk50);
         temp_r31_540 = MKRand_Int((int *) &gViewSeed, 0, this->unk50);
         temp_r5_543 = this->unk4C;
-        ((LightningStrikeFXDescriptor *) (checked_cast<P27LightningStrikeFXDescriptor))->SpawnStrikeArc(*(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)), temp_r5_543[temp_r31_540], &temp_r5_543[temp_r30_536], 2.0f, 0.125f);
+        desc = checked_cast<LightningStrikeFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        desc->SpawnStrikeArc(temp_r5_543[temp_r31_540], temp_r5_543[temp_r30_536], 2.0f, 0.125f);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 LightningStrikeFX::LoadDone() {
@@ -1231,60 +1232,54 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'LightningStrikeFXDescriptor::StrikeArc *' and 'LightningStrikeFXDescriptor::StrikeArc **'
 void LightningStrikeFXDescriptor::Deinit() {
-    LightningStrikeFXDescriptor::StrikeArc **var_r31_2039;
-    LightningStrikeFXDescriptor::StrikeArc **var_r3_2040;
-    LightningStrikeFXDescriptor::StrikeArc **var_r4_2038;
-    LightningStrikeFXDescriptor::StrikeArc *temp_r0_2043;
-    LightningStrikeFXDescriptor::StrikeArc *temp_r0_2062;
-    MKMaterial *temp_r3_2021;
-    ManagedLight *temp_r4_2028;
-    u32 temp_r0_2048;
+    u32 *var_r3;
+    u32 *var_r4;
+    u32 var_r31;
+    u32 temp_r0;
+    MKMaterial *temp_r3;
+    ManagedLight *temp_r4;
 
-    temp_r3_2021 = this->unk94;
-    if (temp_r3_2021 != NULL) {
-        MKMaterial_Destroy(temp_r3_2021);
+    temp_r3 = this->unk94;
+    if (temp_r3 != NULL) {
+        MKMaterial_Destroy(temp_r3);
         this->unk94 = NULL;
     }
-    temp_r4_2028 = this->unk60;
-    if (temp_r4_2028 != NULL) {
-        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_2028);
+    temp_r4 = this->unk60;
+    if (temp_r4 != NULL) {
+        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4);
         this->unk60 = NULL;
     }
-    var_r4_2038 = this->unk98;
-    var_r31_2039 = var_r4_2038;
-    var_r3_2040 = var_r4_2038;
-loop_7:
-    temp_r0_2048 = M2C_FIELD(var_r3_2040, u32 *, -4);
-    var_r3_2040 -= 4;
-    if (temp_r0_2048 != 0U) {
-        temp_r0_2043 = *var_r3_2040;
-        if (temp_r0_2043 < var_r31_2039) {
-            var_r31_2039 = (LightningStrikeFXDescriptor::StrikeArc **) temp_r0_2043;
+    var_r4 = (u32 *) this->unk98;
+    var_r31 = (u32) var_r4;
+    var_r3 = var_r4 - 1;
+    temp_r0 = *var_r3;
+    while (temp_r0 != 0) {
+        if (temp_r0 < var_r31) {
+            var_r31 = temp_r0;
         }
-        goto loop_7;
+        var_r3 = var_r3 - 1;
+        temp_r0 = *var_r3;
     }
-    if (var_r3_2040 != &gEmptyPtrListDL) {
-loop_13:
-        temp_r0_2062 = *var_r4_2038;
-        if (temp_r0_2062 != NULL) {
-            if (temp_r0_2062 < var_r31_2039) {
-                var_r31_2039 = (LightningStrikeFXDescriptor::StrikeArc **) temp_r0_2062;
+    if (var_r3 != (u32 *) &gEmptyPtrListDL) {
+        var_r4 = (u32 *) this->unk98;
+        temp_r0 = *var_r4;
+        while (temp_r0 != 0) {
+            if (temp_r0 < var_r31) {
+                var_r31 = temp_r0;
             }
-            var_r4_2038 += 4;
-            goto loop_13;
+            var_r4 = var_r4 + 1;
+            temp_r0 = *var_r4;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_2039, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r31, NULL, 0);
         } else {
-            free((MKVector3 *) var_r31_2039);
+            free((MKVector3 *) var_r31);
         }
     }
     this->unk98 = NULL;
     MKPropDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp24'
 void LightningStrikeFXDescriptor::Update() {
