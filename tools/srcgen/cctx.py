@@ -53,6 +53,7 @@ class CContext:
         for n in sorted(type_names(typ) | set(re.findall(r"\b\w+<[^>]*>", typ)), key=len, reverse=True):
             if cname(n) != n:
                 self.names[cname(n)] = n
+                self.used.add(cname(n))
                 typ = typ.replace(n, cname(n))
         return typ
 
