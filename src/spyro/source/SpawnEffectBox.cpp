@@ -106,7 +106,7 @@ void SpawnEffectBox::LoadDone() {
     void *var_r3_478;
 
     MKProp::LoadDone();
-    this->unk50.Init(*((Matrix *) &loadInfo));
+    this->unk50.Init(*((Matrix *) &MKProp::loadInfo));
     var_r3_458 = this->unkE0;
     if (var_r3_458 != NULL) {
         var_r3_458 = stricmp("");
@@ -150,11 +150,11 @@ s32 SpawnEffectBox::LoadLine(MKIniLine *arg0) {
 loop_15:
         if (var_r26_592 != NULL) {
             var_r30_604 = 0;
-            if ((var_r26_592->LoadVector3("pos", (MKVector3 *) &loadInfo.unk40, 0) != 0) || (var_r26_592->LoadVector3("rot", &loadInfo + 0x50, 0) != 0)) {
+            if ((var_r26_592->LoadVector3("pos", (MKVector3 *) &MKProp::loadInfo.unk40, 0) != 0) || (var_r26_592->LoadVector3("rot", &MKProp::loadInfo + 0x50, 0) != 0)) {
                 var_r30_604 = 1;
             }
             if (var_r30_604 == 0) {
-                var_r26_592->LoadVector3("scale", &loadInfo + 0x60, 0);
+                var_r26_592->LoadVector3("scale", &MKProp::loadInfo + 0x60, 0);
             }
             var_r26_592 = var_r26_592->unkC->GetNextLine(var_r26_592);
             goto loop_15;

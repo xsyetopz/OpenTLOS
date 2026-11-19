@@ -88,16 +88,16 @@ void UIProp::LoadDone() {
     MKProp::LoadDone();
     this->unk58.Init(this->unk4C);
     temp_r3_194 = UIStringTable_SetCurrent(&this->unk58);
-    temp_r31_198 = descriptor.unk8;
+    temp_r31_198 = UISystem::descriptor.unk8;
     temp_r3_199 = temp_r3_194->Current();
     if (temp_r3_199 != NULL) {
         var_r31_207 = ((MKHeap *) (temp_r3_199->Current()))->Alloc((s32) temp_r31_198, NULL, 0);
     } else {
         var_r31_207 = malloc(temp_r31_198);
     }
-    ((M2C_UNK (*)(UIObject *, UISystem *)) descriptor.unkC)(var_r31_207, &descriptor);
-    var_r31_207->unk8 = &descriptor;
-    var_r31_207->Init(&descriptor);
+    ((M2C_UNK (*)(UIObject *, UISystem *)) UISystem::descriptor.unkC)(var_r31_207, &UISystem::descriptor);
+    var_r31_207->unk8 = &UISystem::descriptor;
+    var_r31_207->Init(&UISystem::descriptor);
     this->unk54 = checked_cast<UISystem *, UIObject>(var_r31_207);
     if (this->unk54->Load(this->unk50, NULL) != 0) {
         temp_r3_237 = this->unk54;

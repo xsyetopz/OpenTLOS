@@ -233,7 +233,7 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     sp190 = (f64) sp80;
     sp188 = (f64) sp78;
     this->unk1B0 = 0.25f;
-    M2C_STRUCT_COPY((s32) &this->unk16C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk16C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp70 = 0.0f;
     sp68 = 0.0f;
     sp6C = 1.0f;
@@ -763,7 +763,7 @@ void ConvexityBreathFX::Init() {
     this->unkB0 = 0.0f;
     this->unk110 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
     this->unk114 = Tools_GetMatchingMaterial(this->unk110, "fx0031_sonicring");
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = 0.01f;
     arg_sp14 = -0.01f;
     arg_sp18 = 0.0f;

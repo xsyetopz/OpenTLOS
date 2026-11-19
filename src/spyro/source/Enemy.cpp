@@ -28,6 +28,7 @@
 #include "spyro/source/EnemyRegion.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
@@ -221,7 +222,7 @@ void Enemy::SnapToDirOfHitSource() {
     unksp24 = temp_f5_421;
     sp28 = temp_f4_427;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((((temp_f4_427 * up.unk8) + ((temp_f6_423 * up.unk0) + (temp_f5_421 * up.unk4))) == 0.999f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((((temp_f4_427 * temp_f4_427) + ((temp_f6_423 * temp_f6_423) + (temp_f5_421 * temp_f5_421))) == 0.001f) != 0))) {
+    if ((((temp_f4_427 * MKVector3::up.unk8) + ((temp_f6_423 * MKVector3::up.unk0) + (temp_f5_421 * MKVector3::up.unk4))) == 0.999f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((((temp_f4_427 * temp_f4_427) + ((temp_f6_423 * temp_f6_423) + (temp_f5_421 * temp_f5_421))) == 0.001f) != 0))) {
         M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(this, f64 *, 0xC0);
         M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(this, f64 *, 0xC8);
         M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(this, f64 *, 0xE0);
@@ -560,7 +561,7 @@ s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     sp38 = sp8;
     sp10 = this->unk588.unk4 + (f32) sp30;
     sp40 = (f64) sp10;
-    if ((gameData.unk70.GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
+    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
         temp_r30_1053 = (s32) (f32) arg1;
         if ((f32) temp_r30_1053 > 0.0f) {
             ((CollectableSpawner *) (M2C_FIELD((&gb + (SpawnerType_ResolveFromStatType(arg0) * 4)), CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp38), temp_r30_1053, 200.0f, 500.0f, -1, NULL);
@@ -1220,7 +1221,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     sp34 = 1.0f;
     sp98 = (f64) sp28;
     spA0 = (f64) sp30;
-    gb.unk74->Emit(arg1, zero, 10.0f, *((MKVector4 *) &sp98), 0.0f);
+    gb.unk74->Emit(arg1, MKVector3::zero, 10.0f, *((MKVector4 *) &sp98), 0.0f);
     if (arg0 & 1) {
         KDSound_Play3d(GS_BlockSparksFIRE, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
     } else if (arg0 & 4) {
@@ -2174,7 +2175,7 @@ void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
         if ((temp_r31_4021 == 0) || (var_r26_4403 != 0)) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unkAB0 == 0.0f) {
-                this->unkAD8 = gameData.unk70.unkE0;
+                this->unkAD8 = GameData::gameData.unk70.unkE0;
                 DoDeathFx((u32) this->unk948.unk10);
             }
         }
@@ -2580,7 +2581,7 @@ void Enemy::Recycle() {
             }
             var_r3_5354->Remove((Targetable *) var_r4_5362, 0xFFFF);
         }
-        DisableCurrentProjectile(0U, zero);
+        DisableCurrentProjectile(0U, MKVector3::zero);
         RemoveCameraCollisionItem();
         this->unk6B0.UnregisterTargetable();
     }
@@ -2632,7 +2633,7 @@ void Enemy::Despawn(bool arg0) {
             }
             var_r3_5463->Remove((Targetable *) var_r4_5471, 0xFFFF);
         }
-        DisableCurrentProjectile(0U, zero);
+        DisableCurrentProjectile(0U, MKVector3::zero);
         RemoveCameraCollisionItem();
         this->unk6B0.UnregisterTargetable();
         ThawIfFrozen();
@@ -3261,8 +3262,8 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
     sp79 = 0;
     sp7A = 1;
     sp7C = -1;
-    sp50 = M2C_FIELD(&one, f64 *, 0);
-    sp58 = M2C_FIELD(&one, f64 *, 8);
+    sp50 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (this != NULL) {
         sp8.GetPos();
@@ -3444,10 +3445,10 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     arg_sp158 = (f64) arg_sp68;
     arg_sp160 = (f64) arg_sp70;
     arg_sp80 = -arg_sp2C8;
-    arg_spD8 = (up.unk4 * (f32) arg_sp160) - (up.unk8 * arg_sp15C);
+    arg_spD8 = (MKVector3::up.unk4 * (f32) arg_sp160) - (MKVector3::up.unk8 * arg_sp15C);
     arg_sp170 = (f64) arg_sp80;
-    arg_spDC = (up.unk8 * (f32) arg_sp158) - (up.unk0 * (f32) arg_sp160);
-    arg_spE0 = (up.unk0 * arg_sp15C) - (up.unk4 * (f32) arg_sp158);
+    arg_spDC = (MKVector3::up.unk8 * (f32) arg_sp158) - (MKVector3::up.unk0 * (f32) arg_sp160);
+    arg_spE0 = (MKVector3::up.unk0 * arg_sp15C) - (MKVector3::up.unk4 * (f32) arg_sp158);
     arg_sp148 = (f64) arg_spD8;
     arg_sp150 = (f64) arg_spE0;
     arg_sp78 = -arg_sp2C0;
@@ -3506,18 +3507,18 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     arg_spCC = arg_sp14C * var_f0_6973;
     arg_sp1A8 = (f64) arg_spC8;
     arg_spC0 = -(f32) arg_sp1B0;
-    arg_sp98 = (up.unk4 * (f32) arg_sp190) - (up.unk8 * arg_sp18C);
+    arg_sp98 = (MKVector3::up.unk4 * (f32) arg_sp190) - (MKVector3::up.unk8 * arg_sp18C);
     arg_sp140 = (f64) arg_spC0;
-    arg_sp9C = (up.unk8 * (f32) arg_sp188) - (up.unk0 * (f32) arg_sp190);
-    arg_spA0 = (up.unk0 * arg_sp18C) - (up.unk4 * (f32) arg_sp188);
+    arg_sp9C = (MKVector3::up.unk8 * (f32) arg_sp188) - (MKVector3::up.unk0 * (f32) arg_sp190);
+    arg_spA0 = (MKVector3::up.unk0 * arg_sp18C) - (MKVector3::up.unk4 * (f32) arg_sp188);
     arg_spB8 = -(f32) arg_sp1A8;
     arg_spBC = -arg_sp1AC;
     arg_sp130 = (f64) arg_spA0;
     arg_sp138 = (f64) arg_spB8;
     arg_sp128 = (f64) arg_sp98;
-    arg_spAC = (up.unk8 * (f32) arg_sp138) - (up.unk0 * (f32) arg_sp140);
-    arg_spB0 = (up.unk0 * arg_sp13C) - (up.unk4 * (f32) arg_sp138);
-    arg_spA8 = (up.unk4 * (f32) arg_sp140) - (up.unk8 * arg_sp13C);
+    arg_spAC = (MKVector3::up.unk8 * (f32) arg_sp138) - (MKVector3::up.unk0 * (f32) arg_sp140);
+    arg_spB0 = (MKVector3::up.unk0 * arg_sp13C) - (MKVector3::up.unk4 * (f32) arg_sp138);
+    arg_spA8 = (MKVector3::up.unk4 * (f32) arg_sp140) - (MKVector3::up.unk8 * arg_sp13C);
     arg_sp1A0 = (f64) arg_spB0;
     var_f7_7169 = ((f32) arg_sp130 * (f32) arg_sp130) + (((f32) arg_sp128 * (f32) arg_sp128) + (arg_sp12C * arg_sp12C));
     arg_sp198 = (f64) arg_spA8;
@@ -3569,9 +3570,9 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     arg_sp30 = -(f32) arg_sp180;
     arg_sp108 = (f64) arg_sp28;
     arg_sp110 = (f64) arg_sp30;
-    arg_sp58 = (up.unk4 * (f32) arg_sp110) - (up.unk8 * arg_sp10C);
-    arg_sp5C = (up.unk8 * (f32) arg_sp108) - (up.unk0 * (f32) arg_sp110);
-    arg_sp60 = (up.unk0 * arg_sp10C) - (up.unk4 * (f32) arg_sp108);
+    arg_sp58 = (MKVector3::up.unk4 * (f32) arg_sp110) - (MKVector3::up.unk8 * arg_sp10C);
+    arg_sp5C = (MKVector3::up.unk8 * (f32) arg_sp108) - (MKVector3::up.unk0 * (f32) arg_sp110);
+    arg_sp60 = (MKVector3::up.unk0 * arg_sp10C) - (MKVector3::up.unk4 * (f32) arg_sp108);
     arg_sp178 = (f64) arg_sp58;
     arg_sp180 = (f64) arg_sp60;
     arg_sp118 = (f64) arg_sp58;
@@ -3591,7 +3592,7 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     temp_f7_7325 = (f32) acos(var_f22_7301);
     temp_f6_7334 = 1.0f - (((f32) arg_sp1A0 * (f32) arg_sp180) + (((f32) arg_sp198 * (f32) arg_sp178) + (arg_sp19C * arg_sp17C)));
     var_f3_7339 = 1.0f;
-    arg_sp20 = ((f32) arg_sp190 * up.unk8) + (((f32) arg_sp188 * up.unk0) + (arg_sp18C * up.unk4));
+    arg_sp20 = ((f32) arg_sp190 * MKVector3::up.unk8) + (((f32) arg_sp188 * MKVector3::up.unk0) + (arg_sp18C * MKVector3::up.unk4));
     arg_sp18 = ((f32) arg_sp1B0 * (f32) arg_sp180) + (((f32) arg_sp1A8 * (f32) arg_sp178) + (arg_sp1AC * arg_sp17C));
     arg_sp24 = (M2C_BITWISE(s32, arg_sp20) & 0x80000000) | 0x3F800000;
     arg_sp1C = (M2C_BITWISE(s32, arg_sp18) & 0x80000000) | 0x3F800000;
@@ -3619,7 +3620,7 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     arg1->unk0 = M2C_ERROR(/* Read from unset register $f1 */);
     KDMath_SmoothToAngle(arg1->unk8, -M2C_BITWISE(f32, arg_sp1C) * var_f22_7371, arg3 * gUpdateTimeDelta);
     arg1->unk8 = M2C_ERROR(/* Read from unset register $f1 */);
-    M2C_STRUCT_COPY((s32) &arg_sp1BC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp1BC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_sp27C + 4, (s32) &arg_sp1BC + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_sp23C + 4, (s32) &arg_sp1BC + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) &arg_sp1BC + 4, 0x40);
@@ -5978,27 +5979,27 @@ void Enemy::Resolve() {
         arg_sp64 = this->unk5B8;
         arg_sp68 = this->unk5BC;
         arg_sp6C = 1.0f;
-        arg_sp40 = up.unk0;
-        arg_sp44 = up.unk4;
-        arg_sp48 = up.unk8;
+        arg_sp40 = MKVector3::up.unk0;
+        arg_sp44 = MKVector3::up.unk4;
+        arg_sp48 = MKVector3::up.unk8;
         arg_sp4C = 0.0f;
         temp_f4_12411 = this->unk5C8;
         arg_sp50 = temp_f4_12411;
         temp_f1_12414 = this->unk5C8;
         arg_sp54 = temp_f1_12414;
         temp_f3_12418 = this->unk5CC;
-        arg_sp18 = (up.unk0 * temp_f1_12414) - (up.unk4 * temp_f4_12411);
+        arg_sp18 = (MKVector3::up.unk0 * temp_f1_12414) - (MKVector3::up.unk4 * temp_f4_12411);
         arg_sp58 = temp_f3_12418;
         arg_sp28 = (f64) arg_sp18;
-        arg_sp10 = (up.unk4 * temp_f3_12418) - (up.unk8 * temp_f1_12414);
-        arg_sp14 = (up.unk8 * temp_f4_12411) - (up.unk0 * temp_f3_12418);
+        arg_sp10 = (MKVector3::up.unk4 * temp_f3_12418) - (MKVector3::up.unk8 * temp_f1_12414);
+        arg_sp14 = (MKVector3::up.unk8 * temp_f4_12411) - (MKVector3::up.unk0 * temp_f3_12418);
         arg_sp5C = 0.0f;
         arg_sp20 = (f64) arg_sp10;
         arg_sp30 = (f32) arg_sp20;
         arg_sp34 = arg_sp24;
         arg_sp38 = (f32) arg_sp28;
         arg_sp3C = 0.0f;
-        Spawn(&arg_sp30, 0, &up, arg_sp24, (f32) arg_sp20, temp_f3_12418, temp_f4_12411, 0.0f, up.unk8, up.unk4, up.unk0);
+        Spawn(&arg_sp30, 0, &MKVector3::up, arg_sp24, (f32) arg_sp20, temp_f3_12418, temp_f4_12411, 0.0f, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0);
         return;
     }
     Deactivate();
@@ -6176,7 +6177,7 @@ void Enemy::Deinit() {
         operator delete(this->unkA44);
     }
     if ((MeleeTrails *) this->unkA14 != NULL) {
-        DisableCurrentProjectile(0U, zero);
+        DisableCurrentProjectile(0U, MKVector3::zero);
     }
     this->unk9D4.Deinit();
     RemoveCameraCollisionItem();

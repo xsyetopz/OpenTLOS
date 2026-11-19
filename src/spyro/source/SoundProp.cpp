@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "spyro/source/KDSoundProp.h"
 #include "spyro/source/GameEnums.h"
 #include "spyro/source/KDSound.h"
@@ -22,7 +23,7 @@ void SoundProp::Enable() {
     this->unk4C = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void SoundProp::Message(MKMessage *arg0) {
     s32 temp_r0_89;
 
@@ -30,14 +31,14 @@ void SoundProp::Message(MKMessage *arg0) {
     switch (temp_r0_89) {                           /* irregular */
     case 0x1F:
     case 0x1C:
-        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
         case 0xB4:
         case 0xBF:
             Disable();
         }
         break;
     case 0x1D:
-        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
         case 0xBE:
         case 0xB5:
             Enable();

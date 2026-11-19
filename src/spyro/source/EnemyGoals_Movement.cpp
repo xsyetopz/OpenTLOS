@@ -708,8 +708,8 @@ void EnemyGoal_MoveToTarget::Terminate() {
     this->unkC->unk638->ContainmentOff();
     if (((u8) this->unk30 >> 4U) & 1) {
         temp_r4_1308 = this->unkC;
-        temp_r4_1308->unk720 = M2C_FIELD(&zero, f64 *, 0);
-        temp_r4_1308->unk728 = M2C_FIELD(&zero, f64 *, 8);
+        temp_r4_1308->unk720 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        temp_r4_1308->unk728 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     }
     this->unkC->unk6F8 = 0;
     this->unk8 = 1;

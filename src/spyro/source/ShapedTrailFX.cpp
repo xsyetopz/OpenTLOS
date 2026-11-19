@@ -149,7 +149,7 @@ loop_13:
             }
             MKMaterial_SetMaterial(this->unk7C);
             MKPrimitive(0xC, 0x10);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             arg_sp20 = 0.0f;
             temp_f27_267 = 1.0f / (f32) var_r30_176;
             arg_spB8.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_PositionMixer);
@@ -210,7 +210,7 @@ loop_13:
             arg_spD8 = (f32) arg_spD8 * var_f3_378;
             arg_spDC *= var_f3_378;
             arg_spE0 = (f32) arg_spE0 * var_f3_378;
-            M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp110, *((MKVector3 *) &arg_spD8), (MKVector3 *) &arg_spE8);
             arg_sp110.Scale3x3((Matrix *) &arg_sp110, this->unk98);
             var_r6_413 = 0;
@@ -313,7 +313,7 @@ loop_80:
                 arg_spD8 = (f32) arg_spD8 * var_f3_608;
                 arg_spDC *= var_f3_608;
                 arg_spE0 = (f32) arg_spE0 * var_f3_608;
-                M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp110, *((MKVector3 *) &arg_spD8), (MKVector3 *) &arg_spE8);
                 arg_sp110.Scale3x3((Matrix *) &arg_sp110, this->unk98);
                 var_r6_641 = 0;

@@ -10,6 +10,7 @@
 #include "spyro/source/HurtProperty.h"
 #include "spyro/source/KDCommonProperties.h"
 #include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDProperty.h"
 #include "spyro/source/MessageMap.h"
 #include "spyro/source/RotateProperty.h"
@@ -37,7 +38,7 @@ void EventMessageProperty::Command(int arg0) {
     if (arg0 != 1) {
         return;
     }
-    ((EventMessage *) (pInstanceMem.__vptr + this->unk8))->Send((MKProp *) pInstanceMem.__vptr);
+    ((EventMessage *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Send((MKProp *) KDProperty::pInstanceMem.__vptr);
 }
 #endif
 
@@ -49,19 +50,19 @@ s32 EventMessageProperty::ResolveCommand(const char *arg0) const {
 
 #if 0 // DRAFT: expression syntax error
 s32 EventMessageProperty::LoadLineInstance(MKIniLine *arg0) {
-    return (u8) (((EventMessage *) (pInstanceMem.__vptr + this->unk8))->LoadLine(arg0, this->unk10) != 0);
+    return (u8) (((EventMessage *) (KDProperty::pInstanceMem.__vptr + this->unk8))->LoadLine(arg0, this->unk10) != 0);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void EventMessageProperty::DeinitInstance() {
-    ((EventMessage *) (pInstanceMem.__vptr + this->unk8))->Deinit();
+    ((EventMessage *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Deinit();
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void EventMessageProperty::InitInstance() {
-    ((EventMessage *) (pInstanceMem.__vptr + this->unk8))->Init();
+    ((EventMessage *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Init();
 }
 #endif
 
@@ -98,10 +99,10 @@ void EventMessageProperty::Init(const char *arg0) {
 void CollisionSphereProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
-        M2C_FIELD(*(pInstanceMem.__vptr + this->unk8), s8 *, 4) = 1;
+        M2C_FIELD(*(KDProperty::pInstanceMem.__vptr + this->unk8), s8 *, 4) = 1;
         return;
     case 2:
-        M2C_FIELD(*(pInstanceMem.__vptr + this->unk8), s8 *, 4) = 0;
+        M2C_FIELD(*(KDProperty::pInstanceMem.__vptr + this->unk8), s8 *, 4) = 0;
         return;
     }
 }
@@ -167,7 +168,7 @@ void CollisionSphereProperty::ResolveInstance() {
     void *temp_r29_330;
 
     var_r28_329 = 1;
-    temp_r29_330 = pInstanceMem.__vptr;
+    temp_r29_330 = KDProperty::pInstanceMem.__vptr;
     if (M2C_FIELD(temp_r29_330, s32 *, 0x10) & 1) {
         var_r28_329 = 2;
     }
@@ -191,13 +192,13 @@ void MessageBroadcasterProperty::Update() {
     s32 spC;
     s8 *sp8;
 
-    if ((u8) *(pInstanceMem.__vptr + this->unk8) != 0) {
+    if ((u8) *(KDProperty::pInstanceMem.__vptr + this->unk8) != 0) {
         if (this->unk10 == 0.0f) {
             return;
         }
         spC = 0;
         sp8 = this->unk14;
-        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s8 **, s32, M2C_UNK, s32, M2C_UNK), 0x94)(gMK, &sp8, this->unk18, 0, M2C_FIELD(pInstanceMem.__vptr, s32 *, 8) + 0x30, 1);
+        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s8 **, s32, M2C_UNK, s32, M2C_UNK), 0x94)(gMK, &sp8, this->unk18, 0, M2C_FIELD(KDProperty::pInstanceMem.__vptr, s32 *, 8) + 0x30, 1);
     }
 }
 #endif
@@ -209,15 +210,15 @@ void MessageBroadcasterProperty::Command(int arg0) {
 
     switch (arg0) {                                 /* irregular */
     case 1:
-        *(pInstanceMem.__vptr + this->unk8) = 1;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
         return;
     case 2:
-        *(pInstanceMem.__vptr + this->unk8) = 0;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
         return;
     case 3:
         spC = 0;
         sp8 = this->unk14;
-        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s8 **, s32, M2C_UNK, s32, M2C_UNK, f32), 0x94)(gMK, &sp8, this->unk18, 0, M2C_FIELD(pInstanceMem.__vptr, s32 *, 8) + 0x30, 1, this->unk10);
+        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s8 **, s32, M2C_UNK, s32, M2C_UNK, f32), 0x94)(gMK, &sp8, this->unk18, 0, M2C_FIELD(KDProperty::pInstanceMem.__vptr, s32 *, 8) + 0x30, 1, this->unk10);
         return;
     }
 }
@@ -253,7 +254,7 @@ s32 MessageBroadcasterProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: expression syntax error
 void MessageBroadcasterProperty::ResolveInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = 0;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
 }
 #endif
 
@@ -276,13 +277,13 @@ void CameraShakeProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
         sp14.unk4 = 0;
-        sp14.Init((MKProp *) pInstanceMem.__vptr, this->unk10, this->unk14, 1U, this->unk18);
+        sp14.Init((MKProp *) KDProperty::pInstanceMem.__vptr, this->unk10, this->unk14, 1U, this->unk18);
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, AddCameraTrackedShakePropMessage *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp14);
         return;
     case 2:
         spC = 0;
         sp8 = 0x456;
-        sp10 = pInstanceMem.__vptr;
+        sp10 = KDProperty::pInstanceMem.__vptr;
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, 0x456);
         return;
     }
@@ -317,8 +318,8 @@ void TimerProperty::Command(int arg0) {
         KDScriptProperty::Command(arg0);
         return;
     }
-    *(pInstanceMem.__vptr + (this->unk8 + 4)) = 1;
-    *(pInstanceMem.__vptr + this->unk8) = 0.0f;
+    *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 4)) = 1;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0.0f;
 }
 #endif
 
@@ -327,10 +328,10 @@ void TimerProperty::Update() {
     void *temp_r4_769;
     void *temp_r5_780;
 
-    temp_r4_769 = pInstanceMem.__vptr + this->unk8;
+    temp_r4_769 = KDProperty::pInstanceMem.__vptr + this->unk8;
     if ((u8) M2C_FIELD(temp_r4_769, u8 *, 4) != 0) {
         M2C_FIELD(temp_r4_769, f32 *, 0) = (f32) (M2C_FIELD(temp_r4_769, f32 *, 0) + gUpdateTimeDelta);
-        temp_r5_780 = pInstanceMem.__vptr + this->unk8;
+        temp_r5_780 = KDProperty::pInstanceMem.__vptr + this->unk8;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (M2C_FIELD(temp_r5_780, f32 *, 0) == this->unk1C) {
             M2C_FIELD(temp_r5_780, s8 *, 4) = 0;
@@ -370,27 +371,27 @@ void MessageHandlerProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'propertyClassRegistry'
+#if 0 // DRAFT: expression syntax error
 void GameProperties_RegisterAll() {
-    KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) &propertyClassRegistry);
-    propertyClassRegistry.Add((KDPropertyClassInfo *) &classInfo);
-    propertyClassRegistry.Add((KDPropertyClassInfo *) &classInfo.unk10);
-    propertyClassRegistry.Add((KDPropertyClassInfo *) &classInfo.unk20);
-    propertyClassRegistry.Add(&classInfo + 0x30);
-    propertyClassRegistry.Add(&classInfo + 0x40);
-    propertyClassRegistry.Add((KDPropertyClassInfo *) (&classInfo + 0x50));
-    propertyClassRegistry.Add(&classInfo + 0x60);
-    propertyClassRegistry.Add(&classInfo + 0x70);
-    propertyClassRegistry.Add(&classInfo + 0x80);
-    propertyClassRegistry.Add(&classInfo + 0x90);
-    propertyClassRegistry.Add((KDPropertyClassInfo *) (&classInfo + 0xA0));
-    propertyClassRegistry.Add(&classInfo + 0xB0);
-    propertyClassRegistry.Add(&classInfo + 0xC0);
-    propertyClassRegistry.Add(&classInfo + 0xD0);
+    KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) &MessageHandlerProperty::classInfo);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) &MessageHandlerProperty::classInfo.unk10);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) &MessageHandlerProperty::classInfo.unk20);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x30);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x40);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (&MessageHandlerProperty::classInfo + 0x50));
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x60);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x70);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x80);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0x90);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (&MessageHandlerProperty::classInfo + 0xA0));
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0xB0);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0xC0);
+    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry))->Add(&MessageHandlerProperty::classInfo + 0xD0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'classInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)[16]' to
 void GameProperties_cpp::__sinit() {
     MessageHandlerProperty *temp_r11_1478;
     MessageHandlerProperty *temp_r15_1528;
@@ -404,57 +405,57 @@ void GameProperties_cpp::__sinit() {
     void *temp_r8_1481;
     void *temp_r8_1534;
 
-    temp_r27_1473 = &classInfo + 0x30;
-    temp_r30_1476 = &classInfo + 0x40;
-    temp_r11_1478 = &classInfo + 0x50;
-    temp_r8_1481 = &classInfo + 0x60;
-    temp_r6_1486 = &classInfo + 0x70;
-    classInfo.__vptr = "MessageHandler";
-    classInfo.unk8 = (s32) &classInfo;
-    classInfo.unk4 = (s8 *) &KDPropertyConstructor<MessageHandlerProperty>::Construct;
-    classInfo.unk10.unk0 = (s32) "Timer";
-    classInfo.unk10.unk8 = (s32) &classInfo;
-    classInfo.unk10.unk4 = (KDPropertyCommand *) &KDPropertyConstructor<TimerProperty>::Construct;
-    classInfo.unk20 = "CameraShake";
-    M2C_FIELD(&classInfo, s32 *, 0x28) = 0;
-    M2C_FIELD(&classInfo, void (**)(KDPropertyConstructor<CameraShakeProperty> *), 0x24) = &KDPropertyConstructor<CameraShakeProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x30) = (void *) "MessageBroadcaster";
+    temp_r27_1473 = &MessageHandlerProperty::classInfo + 0x30;
+    temp_r30_1476 = &MessageHandlerProperty::classInfo + 0x40;
+    temp_r11_1478 = &MessageHandlerProperty::classInfo + 0x50;
+    temp_r8_1481 = &MessageHandlerProperty::classInfo + 0x60;
+    temp_r6_1486 = &MessageHandlerProperty::classInfo + 0x70;
+    MessageHandlerProperty::classInfo.__vptr = "MessageHandler";
+    MessageHandlerProperty::classInfo.unk8 = (s32) &KDMessageHandlerProperty::classInfo;
+    MessageHandlerProperty::classInfo.unk4 = (s8 *) &KDPropertyConstructor<MessageHandlerProperty>::Construct;
+    MessageHandlerProperty::classInfo.unk10.unk0 = (s32) "Timer";
+    MessageHandlerProperty::classInfo.unk10.unk8 = (s32) &KDScriptProperty::classInfo;
+    MessageHandlerProperty::classInfo.unk10.unk4 = (KDPropertyCommand *) &KDPropertyConstructor<TimerProperty>::Construct;
+    MessageHandlerProperty::classInfo.unk20 = "CameraShake";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, s32 *, 0x28) = 0;
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void (**)(KDPropertyConstructor<CameraShakeProperty> *), 0x24) = &KDPropertyConstructor<CameraShakeProperty>::Construct;
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x30) = (void *) "MessageBroadcaster";
     M2C_FIELD(temp_r27_1473, s32 *, 8) = 0;
     M2C_FIELD(temp_r27_1473, void (**)(KDPropertyConstructor<MessageBroadcasterProperty> *), 4) = &KDPropertyConstructor<MessageBroadcasterProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x40) = (void *) "PhrasePlayer";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x40) = (void *) "PhrasePlayer";
     M2C_FIELD(temp_r30_1476, s32 *, 8) = 0;
     M2C_FIELD(temp_r30_1476, void (**)(KDPropertyConstructor<PhrasePlayerProperty> *), 4) = &KDPropertyConstructor<PhrasePlayerProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x50) = (void *) "Anim";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x50) = (void *) "Anim";
     temp_r11_1478->unk8 = 0;
     temp_r11_1478->unk4 = (s8 *) &KDPropertyConstructor<AnimProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x60) = (void *) "CollisionSphere";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x60) = (void *) "CollisionSphere";
     M2C_FIELD(temp_r8_1481, s32 *, 8) = 0;
     M2C_FIELD(temp_r8_1481, void (**)(KDPropertyConstructor<CollisionSphereProperty> *), 4) = &KDPropertyConstructor<CollisionSphereProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x70) = (void *) "Hurt";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x70) = (void *) "Hurt";
     M2C_FIELD(temp_r6_1486, s32 *, 8) = 0;
     M2C_FIELD(temp_r6_1486, HurtProperty *(**)(KDPropertyConstructor<HurtProperty> *), 4) = &KDPropertyConstructor<HurtProperty>::Construct;
-    temp_r21_1522 = &classInfo + 0x80;
-    temp_r18_1525 = &classInfo + 0x90;
-    temp_r15_1528 = &classInfo + 0xA0;
-    temp_r11_1531 = &classInfo + 0xB0;
-    temp_r8_1534 = &classInfo + 0xC0;
-    temp_r3_1537 = &classInfo + 0xD0;
-    M2C_FIELD(&classInfo, void **, 0x80) = (void *) "ControllerRumble";
+    temp_r21_1522 = &MessageHandlerProperty::classInfo + 0x80;
+    temp_r18_1525 = &MessageHandlerProperty::classInfo + 0x90;
+    temp_r15_1528 = &MessageHandlerProperty::classInfo + 0xA0;
+    temp_r11_1531 = &MessageHandlerProperty::classInfo + 0xB0;
+    temp_r8_1534 = &MessageHandlerProperty::classInfo + 0xC0;
+    temp_r3_1537 = &MessageHandlerProperty::classInfo + 0xD0;
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x80) = (void *) "ControllerRumble";
     M2C_FIELD(temp_r21_1522, s32 *, 8) = 0;
     M2C_FIELD(temp_r21_1522, ControllerRumbleProperty *(**)(KDPropertyConstructor<ControllerRumbleProperty> *), 4) = &KDPropertyConstructor<ControllerRumbleProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0x90) = (void *) "Rotate";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0x90) = (void *) "Rotate";
     M2C_FIELD(temp_r18_1525, s32 *, 8) = 0;
     M2C_FIELD(temp_r18_1525, RotateProperty *(**)(KDPropertyConstructor<RotateProperty> *), 4) = &KDPropertyConstructor<RotateProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0xA0) = (void *) "Bob";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0xA0) = (void *) "Bob";
     temp_r15_1528->unk8 = 0;
     temp_r15_1528->unk4 = (s8 *) &KDPropertyConstructor<BobProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0xB0) = (void *) "Sway";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0xB0) = (void *) "Sway";
     M2C_FIELD(temp_r11_1531, s32 *, 8) = 0;
     M2C_FIELD(temp_r11_1531, SwayProperty *(**)(KDPropertyConstructor<SwayProperty> *), 4) = &KDPropertyConstructor<SwayProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0xC0) = (void *) "Wobble";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0xC0) = (void *) "Wobble";
     M2C_FIELD(temp_r8_1534, s32 *, 8) = 0;
     M2C_FIELD(temp_r8_1534, WobbleProperty *(**)(KDPropertyConstructor<WobbleProperty> *), 4) = &KDPropertyConstructor<WobbleProperty>::Construct;
-    M2C_FIELD(&classInfo, void **, 0xD0) = (void *) "EventMessage";
+    M2C_FIELD(&MessageHandlerProperty::classInfo, void **, 0xD0) = (void *) "EventMessage";
     M2C_FIELD(temp_r3_1537, s32 *, 8) = 0;
     M2C_FIELD(temp_r3_1537, void (**)(KDPropertyConstructor<EventMessageProperty> *), 4) = &KDPropertyConstructor<EventMessageProperty>::Construct;
 }

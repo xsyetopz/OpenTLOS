@@ -241,7 +241,7 @@ void MudGutsCritter::Resolve() {
 loop_2:
     if (var_r29_464 < (s32) this->unk90) {
         temp_r28_471 = this->unk170 + var_r31_465;
-        M2C_STRUCT_COPY(temp_r28_471, &identity, 0x40);
+        M2C_STRUCT_COPY(temp_r28_471, &Matrix::identity, 0x40);
         sp8.GetRandPos();
         M2C_FIELD(temp_r28_471, f32 *, 0x30) = sp8;
         M2C_FIELD(temp_r28_471, f32 *, 0x34) = spC;

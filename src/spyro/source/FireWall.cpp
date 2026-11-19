@@ -132,7 +132,7 @@ void FireWall::Draw() {
 
     MKMaterial_SetMaterial(M2C_FIELD(checked_cast<FireWallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x60));
     MKPrimitive(0xC, 0);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r30_138 = 0;
     do {
         temp_r3_148 = this->unk50;

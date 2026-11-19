@@ -184,7 +184,7 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
                 }
             }
             M2C_FIELD(temp_r31_61, f32 *, 0x8C) = (f32) (2.5f * ((1.0f - var_f2_243) * (gUpdateTimeDelta * (var_f4_252 / (0.7853982f * M2C_FIELD(temp_r31_61, f32 *, 0x90))))));
-            M2C_STRUCT_COPY(temp_r31_61, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r31_61, &Matrix::identity, 0x40);
             temp_r31_61->Scale3x3(temp_r31_61, M2C_FIELD(temp_r31_61, f32 *, 0x88));
             arg_spB0.SetRotateAroundAxis(*(temp_r31_61 + 0x70), M2C_FIELD(temp_r31_61, f32 *, 0x8C));
             temp_r31_61->Multiply3x3(temp_r31_61, (Matrix *) &arg_spB0);

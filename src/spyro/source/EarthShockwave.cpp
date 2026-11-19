@@ -75,7 +75,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
         this->unk90 = (f64) arg_sp1D0;
         this->unk98 = (f64) arg_sp1D8;
     }
-    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp190.Scale3x3((Matrix *) &arg_sp190, 0.0f);
     arg_sp1C0 = (f32) M2C_FIELD(this, f64 *, 0x90);
     arg_sp1C4 = M2C_FIELD(this, f32 *, 0x94);
@@ -97,7 +97,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
         arg_sp108 = (f64) arg_sp48;
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp170, arg_sp40);
     }
-    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp68 = 0.0f;
     arg_sp58 = 1.0f;
     arg_sp60 = 0.0f;
@@ -188,7 +188,7 @@ void EarthShockwave::Update() {
         }
         this->unkA0 = var_f0_410;
         temp_f29_432 = this->unkA0 / 0.5f;
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f2_442 = this->unkA4;
         temp_f28_444 = 1.0f - temp_f29_432;
         temp_f1_451 = 15.0f * (temp_f28_444 * temp_f2_442);

@@ -3,6 +3,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/PooledShatterProp.h"
@@ -37,7 +38,7 @@ loop_6:
                     M2C_FIELD(M2C_FIELD(temp_r3_38, void **, 0x44), M2C_UNK (**)(), 0x20)();
                     temp_r3_46 = *(this->unk14 + var_r30_22);
                     M2C_FIELD(M2C_FIELD(temp_r3_46, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_46);
-                    MKModel_SetColor(M2C_FIELD(*(this->unk14 + var_r30_22), MKModel **, 4), one);
+                    MKModel_SetColor(M2C_FIELD(*(this->unk14 + var_r30_22), MKModel **, 4), MKVector4::one);
                 }
             }
             var_r28_21 += 1;

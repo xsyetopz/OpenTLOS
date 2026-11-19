@@ -259,8 +259,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     arg_sp2D8 = 0;
     (s16) arg_sp2D8 = 1;
     arg_sp2DC = -1;
-    arg_sp2B0 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp2B8 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp2B0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2E8 = 0;
     if (temp_r4_557 != NULL) {
         arg_sp88.GetPos();
@@ -363,8 +363,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     arg_sp2D8 = 0;
     (s16) arg_sp2D8 = 1;
     arg_sp2DC = -1;
-    arg_sp2B0 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp2B8 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp2B0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2E8 = 0;
     if (temp_r4_742 != NULL) {
         arg_sp78.GetPos();

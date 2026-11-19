@@ -199,7 +199,7 @@ loop_15:
                 MKMaterial_SetMaterial(temp_r3_360);
                 MKPrimitive(0xC, 0x10);
             }
-            M2C_STRUCT_COPY((s32) &arg_sp1AC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
@@ -555,8 +555,8 @@ loop_40:
                         sp179 = 0;
                         sp17A = 1;
                         sp17C = -1;
-                        sp150 = M2C_FIELD(&one, f64 *, 0);
-                        sp158 = M2C_FIELD(&one, f64 *, 8);
+                        sp150 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        sp158 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         sp188 = 0;
                         if (temp_r4_1010 != 0U) {
                             sp38.GetPos();

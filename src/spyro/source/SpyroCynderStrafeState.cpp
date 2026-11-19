@@ -7,6 +7,7 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/checkpoint.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"
@@ -606,32 +607,30 @@ u8 SpyroCynderStrafeState::AnyToDodgeTranstion() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
 void SpyroCynderStrafeState::DodgeLeftRightSetLVEScale() {
     s32 temp_r0_1108;
 
     temp_r0_1108 = this->unk14;
     switch (temp_r0_1108) {                         /* irregular */
     case 0:
-        this->unk10->SetLVEScale(one);
+        this->unk10->SetLVEScale(MKVector3::one);
         return;
     case 1:
         if (((InputModifier *) (this->unk10->GetInput()))->GetLeftX() > 0.0f) {
-            this->unk10->SetLVEScale(one);
+            this->unk10->SetLVEScale(MKVector3::one);
             return;
         }
-        this->unk10->SetLVEScale(zero);
+        this->unk10->SetLVEScale(MKVector3::zero);
         return;
     case 2:
         if (((InputModifier *) (this->unk10->GetInput()))->GetLeftX() < 0.0f) {
-            this->unk10->SetLVEScale(one);
+            this->unk10->SetLVEScale(MKVector3::one);
             return;
         }
-        this->unk10->SetLVEScale(zero);
+        this->unk10->SetLVEScale(MKVector3::zero);
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroCynderStrafeState::DodgeLeftRightTransition() {
@@ -686,12 +685,10 @@ void SpyroCynderStrafeState::DodgeLeftRightUpdate() {
     DodgeLeftRightTransition();
 }
 
-#if 0 // DRAFT: undefined identifier 'one'
 void SpyroCynderStrafeState::DodgeLeftRightExit() {
     M2C_FIELD(this->unk10, s8 *, 0x25C) = 0;
-    this->unk10->SetLVEScale(one);
+    this->unk10->SetLVEScale(MKVector3::one);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroCynderStrafeState::DodgeLeftRightEnter() {
@@ -707,7 +704,7 @@ void SpyroCynderStrafeState::DodgeLeftRightEnter() {
         var_r4_1315 = 0x15;
     }
     this->unk10->SetAnim(var_r4_1315, 0.1f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
-    this->unk10->SetLVEScale(one);
+    this->unk10->SetLVEScale(MKVector3::one);
     DodgeLeftRightSetLVEScale();
 }
 #endif
@@ -975,16 +972,16 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
             sp14 = 0.0f;
             sp90 = (f64) sp10;
             if ((((f32) spA8 * (f32) sp98) + (((f32) spA0 * (f32) sp90) + (unkspA4 * unksp94))) < 0.0f) {
-                spB0 = M2C_FIELD(&zero, f64 *, 0);
-                spB8 = M2C_FIELD(&zero, f64 *, 8);
+                spB0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                spB8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             }
         }
         M2C_FIELD(this, f64 *, 0) = spB0;
         this->unk8 = spB8;
         return;
     }
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif
 
@@ -1177,7 +1174,7 @@ void SpyroCynderStrafeState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pCurrentCheckPoint'
+#if 0 // DRAFT: expression syntax error
 void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     f64 sp28;
     f64 sp20;
@@ -1194,8 +1191,8 @@ void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     temp_r4_2165->unk428 |= 0x8000;
     temp_r4_2170 = this->unk10;
     temp_r4_2170->unk428 &= 0xFFFDF7FF;
-    temp_f1_2175 = M2C_FIELD(pCurrentCheckPoint.unk0, f64 *, 0xF0);
-    temp_f0_2176 = M2C_FIELD(pCurrentCheckPoint.unk0, f64 *, 0xF8);
+    temp_f1_2175 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF0);
+    temp_f0_2176 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF8);
     sp20 = temp_f1_2175;
     M2C_FIELD(this, f64 *, 0x40) = temp_f1_2175;
     M2C_FIELD(this, f64 *, 0x48) = temp_f0_2176;
@@ -1223,13 +1220,13 @@ void SpyroCynderStrafeState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__40KDStateMachine'
 void SpyroCynderStrafeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>(&this->unk18, (KDStateMachine<SpyroCynderStrafeState>::State *) &states, NULL);
-    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50, (KDStateMachine<SpyroCynderStrafeState>::State *) &jumpStates, NULL);
+    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>(&this->unk18, (KDStateMachine<SpyroCynderStrafeState>::State *) &SpyroCynderStrafeState::states, NULL);
+    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50, (KDStateMachine<SpyroCynderStrafeState>::State *) &SpyroCynderStrafeState::jumpStates, NULL);
     this->unk14 = 0;
-    M2C_FIELD(this, f64 *, 0x40) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk68 = 0.0f;
     this->unk64 = 0;
     this->unk65 = 0;

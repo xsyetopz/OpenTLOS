@@ -341,11 +341,11 @@ void KDParticleEmitter::Init() {
     this->unk60 = 0.0f;
     this->unk64 = 1.0f;
     this->unk68 = 1.0f;
-    this->unk18 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unk18 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk34 = 0.0f;
-    this->unk70 = &identity;
-    this->unk6C = (f64 *) &zero;
+    this->unk70 = &Matrix::identity;
+    this->unk6C = (f64 *) &MKVector3::zero;
     M2C_FIELD(this, f32 *, 8) = 1.0f;
     M2C_FIELD(this, f32 *, 0xC) = 1.0f;
     this->unk10 = 1.0f;

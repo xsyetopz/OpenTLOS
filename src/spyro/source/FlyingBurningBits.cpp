@@ -3,6 +3,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKMaterial.h"
@@ -170,7 +171,7 @@ void FlyingBurningBits::Draw() {
     arg_sp340 = (f64) arg_sp1A0;
     MKMaterial_SetMaterial(this->unk4);
     MKPrimitive(0xC, 0);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r31_226 = this->unk0;
 loop_28:
     if (var_r31_226 != NULL) {

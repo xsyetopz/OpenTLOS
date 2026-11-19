@@ -66,7 +66,7 @@ void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void MovementObject::Update(bool arg0) {
     MKCollisionResult spB8;
     f64 spB0;
@@ -107,8 +107,8 @@ void MovementObject::Update(bool arg0) {
     void *var_r4_185;
 
     if ((u32) M2C_FIELD(arg0, u32 *, 0x64) == 1U) {
-        this->unk0 = M2C_FIELD(&zero, f64 *, 0);
-        this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+        this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         return;
     }
     temp_f2_159 = M2C_FIELD(arg0, f64 *, 0x18);
@@ -174,8 +174,8 @@ block_22:
                 temp_f4_284 = M2C_BITWISE(f32, spB8) - M2C_FIELD(arg0, f32 *, 0);
                 temp_f3_288 = spB8.unk8 - M2C_FIELD(arg0, f32 *, 8);
                 if (((temp_f3_288 * temp_f3_288) + ((temp_f4_284 * temp_f4_284) + (temp_f5_282 * temp_f5_282))) < 20.0f) {
-                    this->unk0 = M2C_FIELD(&zero, f64 *, 0);
-                    this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+                    this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                     return;
                 }
             }

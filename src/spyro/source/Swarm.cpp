@@ -446,9 +446,9 @@ void SwarmProp::LoadDone() {
     u32 temp_r0_985;
 
     KDProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_867 = &this->unk90;
-    temp_r3_867->Translate(temp_r3_867, *((MKVector3 *) &loadInfo.unk40));
+    temp_r3_867->Translate(temp_r3_867, *((MKVector3 *) &MKProp::loadInfo.unk40));
     sp18 = -500.0f;
     sp1C = -500.0f;
     sp20 = -500.0f;
@@ -493,9 +493,9 @@ void SwarmProp::LoadDone() {
         this->unkF4 = temp_r3_939 + 4;
         M2C_FIELD(temp_r3_939, SwarmEntity ***, 4) = NULL;
     }
-    temp_f29_946 = M2C_FIELD(&zero, f64 *, 0);
+    temp_f29_946 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r31_948 = 0;
-    temp_f30_949 = M2C_FIELD(&zero, f64 *, 8);
+    temp_f30_949 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 loop_12:
     temp_r5_982 = this->unkF4;
     var_r3_983 = temp_r5_982;

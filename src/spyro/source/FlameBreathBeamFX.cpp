@@ -82,7 +82,7 @@ loop_8:
                 MKMaterial_SetMaterial(*(this + (var_r24_112 + 0x14)));
             }
             MKPrimitive(0xC, 0);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             MKBegin(0x1E);
             var_r26_143 = 0;
             temp_r29_144 = this + var_r24_112;

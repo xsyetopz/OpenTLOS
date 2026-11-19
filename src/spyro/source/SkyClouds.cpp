@@ -476,7 +476,7 @@ loop_2:
 #if 0 // DRAFT: undefined identifier 'unk7C'
 void SkyClouds::LoadDone() {
     MKProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 #endif
 

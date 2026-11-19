@@ -98,9 +98,9 @@ void CharacterGraphNodeProp::LoadDone() {
     f64 sp8;
 
     MKProp::LoadDone();
-    sp8 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-    sp10 = M2C_FIELD(&loadInfo, f64 *, 0x48);
-    this->unk50.SetPos(&sp8, &loadInfo, M2C_FIELD(&loadInfo, f64 *, 0x40));
+    sp8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    sp10 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
+    this->unk50.SetPos(&sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
 }
 #endif
 

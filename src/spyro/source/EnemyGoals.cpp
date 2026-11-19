@@ -501,9 +501,9 @@ void NPCGoal_Rescue::Activate() {
             sp18 = -M2C_FIELD(temp_r5_760, f32 *, 0x28);
             sp40 = (f64) sp10;
             sp48 = (f64) sp18;
-            sp20 = (up.unk4 * (f32) sp48) - (up.unk8 * unksp44);
-            sp24 = (up.unk8 * (f32) sp40) - (up.unk0 * (f32) sp48);
-            sp28 = (up.unk0 * unksp44) - (up.unk4 * (f32) sp40);
+            sp20 = (MKVector3::up.unk4 * (f32) sp48) - (MKVector3::up.unk8 * unksp44);
+            sp24 = (MKVector3::up.unk8 * (f32) sp40) - (MKVector3::up.unk0 * (f32) sp48);
+            sp28 = (MKVector3::up.unk0 * unksp44) - (MKVector3::up.unk4 * (f32) sp40);
             sp70 = (f64) sp20;
             sp78 = (f64) sp28;
             if ((((f32) sp78 * temp_f5_750) + (((f32) sp70 * temp_f7_746) + (unksp74 * temp_f6_743))) > 0.0f) {
@@ -654,9 +654,9 @@ loop_3:
             sp148.GetDir();
             sp1C8 = M2C_BITWISE(f64, sp148);
             sp1D0 = (f64) sp148.unk8;
-            sp90 = (up.unk0 * unksp1CC) - (up.unk4 * (f32) sp1C8);
-            sp8C = (up.unk8 * (f32) sp1C8) - (up.unk0 * (f32) sp1D0);
-            sp88 = (up.unk4 * (f32) sp1D0) - (up.unk8 * unksp1CC);
+            sp90 = (MKVector3::up.unk0 * unksp1CC) - (MKVector3::up.unk4 * (f32) sp1C8);
+            sp8C = (MKVector3::up.unk8 * (f32) sp1C8) - (MKVector3::up.unk0 * (f32) sp1D0);
+            sp88 = (MKVector3::up.unk4 * (f32) sp1D0) - (MKVector3::up.unk8 * unksp1CC);
             sp1C0 = (f64) sp90;
             sp1B8 = (f64) sp88;
             temp_f25_956 = KDMath_GetYaw(*((MKVector3 *) &sp1C8));
@@ -778,9 +778,9 @@ loop_23:
                                         temp_r3_1214->unk34 = unksp1CC;
                                         temp_r3_1214->unk38 = (f32) sp1D0;
                                         temp_r3_1214->unk3C = 0.0f;
-                                        temp_r3_1214->unk20 = up.unk0;
-                                        temp_r3_1214->unk24 = up.unk4;
-                                        temp_r3_1214->unk28 = up.unk8;
+                                        temp_r3_1214->unk20 = MKVector3::up.unk0;
+                                        temp_r3_1214->unk24 = MKVector3::up.unk4;
+                                        temp_r3_1214->unk28 = MKVector3::up.unk8;
                                         temp_r3_1214->unk2C = 0.0f;
                                         temp_r3_1214->unk10 = (f32) sp1B8;
                                         temp_r3_1214->unk14 = unksp1BC;
@@ -1675,9 +1675,9 @@ u8 EnemyGoal_Kong::Update() {
             arg_sp60.SetIdentity();
             arg_sp40.GetStandDir();
             arg_sp6C = 0.0f;
-            arg_sp14 = (up.unk8 * arg_sp40) - (up.unk0 * arg_sp48);
-            arg_sp18 = (up.unk0 * arg_sp44) - (up.unk4 * arg_sp40);
-            arg_sp10 = (up.unk4 * arg_sp48) - (up.unk8 * arg_sp44);
+            arg_sp14 = (MKVector3::up.unk8 * arg_sp40) - (MKVector3::up.unk0 * arg_sp48);
+            arg_sp18 = (MKVector3::up.unk0 * arg_sp44) - (MKVector3::up.unk4 * arg_sp40);
+            arg_sp10 = (MKVector3::up.unk4 * arg_sp48) - (MKVector3::up.unk8 * arg_sp44);
             arg_sp58 = (f64) arg_sp18;
             arg_sp50 = (f64) arg_sp10;
             arg_sp60 = (f32) arg_sp50;
@@ -2050,9 +2050,9 @@ u8 EnemyGoal_OperateLever::Update() {
             arg_sp60.SetIdentity();
             arg_sp40.GetStandDir();
             arg_sp6C = 0.0f;
-            arg_sp14 = (up.unk8 * arg_sp40) - (up.unk0 * arg_sp48);
-            arg_sp18 = (up.unk0 * arg_sp44) - (up.unk4 * arg_sp40);
-            arg_sp10 = (up.unk4 * arg_sp48) - (up.unk8 * arg_sp44);
+            arg_sp14 = (MKVector3::up.unk8 * arg_sp40) - (MKVector3::up.unk0 * arg_sp48);
+            arg_sp18 = (MKVector3::up.unk0 * arg_sp44) - (MKVector3::up.unk4 * arg_sp40);
+            arg_sp10 = (MKVector3::up.unk4 * arg_sp48) - (MKVector3::up.unk8 * arg_sp44);
             arg_sp58 = (f64) arg_sp18;
             arg_sp50 = (f64) arg_sp10;
             arg_sp60 = (f32) arg_sp50;
@@ -2438,7 +2438,7 @@ block_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void EnemyGoal_Turn::Activate() {
     f64 sp60;
     f64 sp58;
@@ -2477,9 +2477,9 @@ void EnemyGoal_Turn::Activate() {
         sp50 = (f64) sp10;
         sp38 = M2C_FIELD(temp_r5_4680, f64 *, 0x30);
         sp40 = M2C_FIELD(temp_r5_4680, f64 *, 0x38);
-        sp18 = (up.unk4 * (f32) sp50) - (up.unk8 * unksp4C);
-        sp1C = (up.unk8 * (f32) sp48) - (up.unk0 * (f32) sp50);
-        sp20 = (up.unk0 * unksp4C) - (up.unk4 * (f32) sp48);
+        sp18 = (MKVector3::up.unk4 * (f32) sp50) - (MKVector3::up.unk8 * unksp4C);
+        sp1C = (MKVector3::up.unk8 * (f32) sp48) - (MKVector3::up.unk0 * (f32) sp50);
+        sp20 = (MKVector3::up.unk0 * unksp4C) - (MKVector3::up.unk4 * (f32) sp48);
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
         this->unk10->Update(*((MKVector3 *) &sp38));
@@ -2813,9 +2813,9 @@ void EnemyGoal_AttackIdle::Activate() {
                 sp10 = -M2C_FIELD(temp_r6_5431, f32 *, 0x28);
                 sp38 = (f64) sp8;
                 sp40 = (f64) sp10;
-                sp18 = (up.unk4 * (f32) sp40) - (up.unk8 * unksp3C);
-                sp1C = (up.unk8 * (f32) sp38) - (up.unk0 * (f32) sp40);
-                sp20 = (up.unk0 * unksp3C) - (up.unk4 * (f32) sp38);
+                sp18 = (MKVector3::up.unk4 * (f32) sp40) - (MKVector3::up.unk8 * unksp3C);
+                sp1C = (MKVector3::up.unk8 * (f32) sp38) - (MKVector3::up.unk0 * (f32) sp40);
+                sp20 = (MKVector3::up.unk0 * unksp3C) - (MKVector3::up.unk4 * (f32) sp38);
                 sp68 = (f64) sp18;
                 sp70 = (f64) sp20;
                 sp28.GetDir();
@@ -3034,9 +3034,9 @@ void EnemyGoal_Idle::Activate() {
                         sp10 = -M2C_FIELD(temp_r5_5923, f32 *, 0x28);
                         sp38 = (f64) sp8;
                         sp40 = (f64) sp10;
-                        sp18 = (up.unk4 * (f32) sp40) - (up.unk8 * unksp3C);
-                        sp1C = (up.unk8 * (f32) sp38) - (up.unk0 * (f32) sp40);
-                        sp20 = (up.unk0 * unksp3C) - (up.unk4 * (f32) sp38);
+                        sp18 = (MKVector3::up.unk4 * (f32) sp40) - (MKVector3::up.unk8 * unksp3C);
+                        sp1C = (MKVector3::up.unk8 * (f32) sp38) - (MKVector3::up.unk0 * (f32) sp40);
+                        sp20 = (MKVector3::up.unk0 * unksp3C) - (MKVector3::up.unk4 * (f32) sp38);
                         sp58 = (f64) sp18;
                         sp60 = (f64) sp20;
                         sp28.GetDir();

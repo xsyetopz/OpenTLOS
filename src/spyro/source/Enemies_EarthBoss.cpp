@@ -601,7 +601,7 @@ void EarthBoss::UpdateCollisionItems() {
         temp_r30_891 = this + var_r26_889;
         if ((u8) M2C_FIELD(temp_r30_891, u8 *, 0xB55) != 0) {
             temp_r25_900 = M2C_FIELD(temp_r30_891, s32 *, 0xB50);
-            M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             MKModel_CalculateNodeWorldMatrix(this->unk4, temp_r25_900, (Matrix *) &arg_sp110);
             arg_sp110.Inverse((Matrix *) &arg_sp110);
             temp_f3_915 = M2C_FIELD(temp_r30_891, f32 *, 0xB3C);
@@ -790,16 +790,16 @@ block_28:
                 M2C_FIELD(temp_r3_1324->__vptr, M2C_UNK (**)(), 0x20)();
             }
             ShowFist(1U);
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f6_1347 = this->unk5C8;
             arg_sp50 = temp_f6_1347;
             temp_f1_1355 = this->unk5C8;
             arg_sp54 = temp_f1_1355;
             temp_f5_1361 = this->unk5CC;
             arg_sp58 = temp_f5_1361;
-            arg_sp18 = (up.unk0 * temp_f1_1355) - (up.unk4 * temp_f6_1347);
-            arg_sp10 = (up.unk4 * temp_f5_1361) - (up.unk8 * temp_f1_1355);
-            arg_sp14 = (up.unk8 * temp_f6_1347) - (up.unk0 * temp_f5_1361);
+            arg_sp18 = (MKVector3::up.unk0 * temp_f1_1355) - (MKVector3::up.unk4 * temp_f6_1347);
+            arg_sp10 = (MKVector3::up.unk4 * temp_f5_1361) - (MKVector3::up.unk8 * temp_f1_1355);
+            arg_sp14 = (MKVector3::up.unk8 * temp_f6_1347) - (MKVector3::up.unk0 * temp_f5_1361);
             arg_sp28 = (f64) arg_sp18;
             arg_sp20 = (f64) arg_sp10;
             arg_sp5C = 0.0f;
@@ -1787,7 +1787,7 @@ void EarthBossArm::UpdateExtensionBone(MKDynamicBone *arg0, void *arg1) {
     arg_sp14 = 0.0f;
     arg_sp28 = (f64) arg_sp18;
     arg_sp20 = (f64) arg_sp10;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp60 = (f32) arg_sp20;
     arg_sp64 = arg_sp24;
     arg_sp68 = (f32) arg_sp28;
@@ -1921,7 +1921,7 @@ void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     arg_sp234 = arg_sp10C;
     arg_sp238 = (f32) arg_sp110;
     arg_sp23C = 0.0f;
-    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp38 = -arg0->unk10;
     arg_sp3C = -arg0->unk14;
     arg_sp40 = -arg0->unk18;
@@ -2107,12 +2107,12 @@ loop_9:
             temp_f5_4161 = temp_r4_4155->unkC0;
             temp_f3_4163 = temp_r4_4155->unkC8;
             temp_f2_4167 = temp_r4_4155->unkC4;
-            arg_spB0 = (up.unk0 * temp_f2_4167) - (up.unk4 * temp_f5_4161);
-            arg_spAC = (up.unk8 * temp_f5_4161) - (up.unk0 * temp_f3_4163);
-            arg_spA8 = (up.unk4 * temp_f3_4163) - (up.unk8 * temp_f2_4167);
+            arg_spB0 = (MKVector3::up.unk0 * temp_f2_4167) - (MKVector3::up.unk4 * temp_f5_4161);
+            arg_spAC = (MKVector3::up.unk8 * temp_f5_4161) - (MKVector3::up.unk0 * temp_f3_4163);
+            arg_spA8 = (MKVector3::up.unk4 * temp_f3_4163) - (MKVector3::up.unk8 * temp_f2_4167);
             arg_sp1E0 = (f64) arg_spB0;
             arg_sp1D8 = (f64) arg_spA8;
-            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp200 = (f32) arg_sp1D8;
             arg_sp204 = arg_sp1DC;
             arg_sp208 = (f32) arg_sp1E0;

@@ -687,7 +687,7 @@ block_105:
                     arg_sp178 = (f32) arg_sp2D8 * var_f3_1172;
                     arg_sp480 = (f64) arg_sp170;
                     arg_sp488 = (f64) arg_sp178;
-                    M2C_STRUCT_COPY((s32) &arg_sp56C + 4, (s32) (&identity - 4) + 4, 0x40);
+                    M2C_STRUCT_COPY((s32) &arg_sp56C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     arg_sp168 = 0.0f;
                     arg_sp160 = 0.0f;
                     arg_sp164 = 1.0f;
@@ -1503,7 +1503,7 @@ void FuryFXConvexity::Update() {
                 arg_sp210 = (f32) arg_sp550 * var_f3_2933;
                 arg_sp718 = (f64) arg_sp208;
                 arg_sp720 = (f64) arg_sp210;
-                M2C_STRUCT_COPY((s32) &arg_sp86C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp86C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp200 = 0.0f;
                 arg_sp1F8 = 0.0f;
                 arg_sp1FC = 1.0f;
@@ -1883,7 +1883,7 @@ void FuryFXConvexity::Update() {
                 arg_sp140 = (f32) arg_sp250 * var_f3_3912;
                 arg_sp658 = (f64) arg_sp138;
                 arg_sp660 = (f64) arg_sp140;
-                M2C_STRUCT_COPY((s32) &arg_sp7EC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp7EC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp130 = 0.0f;
                 arg_sp128 = 0.0f;
                 arg_sp12C = 1.0f;
@@ -2140,7 +2140,7 @@ void FuryFXConvexity::Init() {
     this->unk170.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
     this->unk170.unk18 = 800.0f;
     this->unk170.unk1C = 800.0f;
-    M2C_STRUCT_COPY((s32) (this + 0x19C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x19C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_4401 = &this->unk1A0;
     temp_r3_4401->RotateYaw(temp_r3_4401, 0.3926991f);
     this->unk170.unk10 = 450.0f;

@@ -16,7 +16,6 @@ void *malloc(s32);                                  /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern s32 gDisplay;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'one'
 static MKHeap sub;                                  /* type too large by 0x98 */
 
 void Subtitles_Draw() {
@@ -45,7 +44,7 @@ void Subtitles_Draw() {
             do {
                 temp_f28_57 = ((f32) var_r27_37 * 256.0f) + 64.0f;
                 MKMaterial_SetMaterial(M2C_FIELD((&sub + var_r31_39), MKMaterial **, 0x68));
-                MKSetBaseColorV(one);
+                MKSetBaseColorV(MKVector4::one);
                 MKPrimitive(0xC, 0x101);
                 MKBegin(4);
                 MKSetColorV(*((MKVector4 *) &sp18));
@@ -65,7 +64,6 @@ void Subtitles_Draw() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to
 void Subtitles_Update() {
@@ -423,8 +421,6 @@ void Subtitles_DeinitModule() {
     Subtitles_Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'sub'
 void Subtitles_InitModule() {
     M2C_FIELD(&sub, s8 *, 0x84) = 0;
 }
-#endif

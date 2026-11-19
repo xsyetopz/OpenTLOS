@@ -47,8 +47,8 @@ void BoundingRegion::GetPos(int arg0) {
         this->unk8 = M2C_FIELD(temp_r4_72, f64 *, 8);
         return;
     }
-    this->unk0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif
 

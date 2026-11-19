@@ -262,7 +262,7 @@ void Conveyor::Update() {
         arg_sp264 = arg_sp184;
         arg_sp268 = (f32) arg_sp188;
         arg_sp26C = 0.0f;
-        M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp210.SetRotateAroundAxis(*((MKVector3 *) &arg_sp190), -0.5235988f);
         arg_sp250.Multiply3x3((Matrix *) &arg_sp250, (Matrix *) &arg_sp210);
         MKModel_SetWorldMatrix(M2C_FIELD(*(this + temp_r30_107), MKModel **, 4), *((Matrix *) &arg_sp250));

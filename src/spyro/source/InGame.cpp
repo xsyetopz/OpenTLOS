@@ -1,10 +1,12 @@
 #include "spyro/source/InGame.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/DialogBox.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
@@ -129,8 +131,8 @@ void InGame_SystemMessage(MKMessage *arg0) {
             gb.unk320->unk1C = 4.0f * gb.unk318->GetHeight();
             gb.unk320->unk14 = (473.6f - gb.unk320->unk1C) - 6.0f;
             gb.unk320->unk18 = 532.0f;
-            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&one, f64 *, 0);
-            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&one, f64 *, 8);
+            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 0);
+            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
             gb.unk320->unk30 = M2C_FIELD((gpTranslation_StringArray + (M2C_FIELD(temp_r31_230, s32 *, 8) * 4)), s8 **, 0x64C);
             gb.unk320->unkC = 0x31C;
             gb.unk320->unk6C = DojoDialogCallback;
@@ -156,8 +158,8 @@ void InGame_SystemMessage(MKMessage *arg0) {
                 var_f1_324 = temp_f31_321;
             }
             gb.unk320->unk1C = var_f1_324;
-            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&one, f64 *, 0);
-            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&one, f64 *, 8);
+            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 0);
+            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
             gb.unk320->unk30 = M2C_FIELD(temp_r30_293, s8 **, 0xC);
             gb.unk320->unkC = 0xC;
             gb.unk320->unk6C = DialogCallback;
@@ -185,8 +187,8 @@ void InGame_SystemMessage(MKMessage *arg0) {
                 gb.unk320->unk1C = 3.0f * gb.unk318->GetHeight();
                 gb.unk320->unk14 = (473.6f - gb.unk320->unk1C) - 6.0f;
                 gb.unk320->unk18 = 532.0f;
-                M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&one, f64 *, 0);
-                M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&one, f64 *, 8);
+                M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 0);
+                M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
                 gb.unk320->unk30 = M2C_FIELD((gpTranslation_StringArray + (arg0->unk0 * 4)), s8 **, -0x368);
                 gb.unk320->unkC = 0xC;
                 gb.unk320->unk6C = DialogCallback;
@@ -214,8 +216,8 @@ void InGame_SystemMessage(MKMessage *arg0) {
             }
             gb.unk320->unk14 = var_f0_159;
             gb.unk320->unk18 = 532.0f;
-            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&one, f64 *, 0);
-            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&one, f64 *, 8);
+            M2C_FIELD(gb.unk320, f64 *, 0x98) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 0);
+            M2C_FIELD(gb.unk320, f64 *, 0xA0) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
             gb.unk320->unk30 = M2C_FIELD((gpTranslation_StringArray + (arg0->unk0 * 4)), s8 **, 0x108);
             temp_r6_196 = (arg0->unk0 - 0x12F) - 1;
             gb.unk320->unkC = (0x10 & ((temp_r6_196 - temp_r6_196) - !M2C_CARRY)) | 0xC;
@@ -557,7 +559,7 @@ void InGame_DrawOverlays() {
     }
     Autosave_Draw();
     if (((s8 *) pMessage != NULL) && (msgAlpha > 0.0f) && ((u8) gb.unk32C->unk8 == 0)) {
-        M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp18 = 320.0f;
         arg_sp1C = 256.0f;
         arg_sp20 = 0.0f;
@@ -777,7 +779,7 @@ loop_3:
             goto block_27;
         }
 block_27:
-        gameData.unk1C += gUpdateTimeDelta;
+        GameData::gameData.unk1C += gUpdateTimeDelta;
         gb.unkC->Update();
         var_r29_1574 = 0;
         if ((((MKVector3 *) gb.unkC->unk78 != NULL) || ((GameVideo *) gb.unkC->unk84 != NULL)) && (gb.unkC->unk24.GetState() != 0)) {
@@ -899,7 +901,6 @@ void InGame_Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void InGame_cpp::__sinit() {
     f64 temp_f0_1925;
     f64 temp_f1_1948;
@@ -914,14 +915,13 @@ void InGame_cpp::__sinit() {
     temp_f9_1927 = __frsqrte(380000.0);
     temp_f4_1931 = temp_f0_1925 * temp_f0_1925;
     temp_f6_1935 = 0.5 * temp_f0_1925;
-    M2C_FIELD(&listenerPos, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&listenerPos, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&listenerPos, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&listenerPos, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f4_1947 = temp_f6_1935 * -((2014000.0 * temp_f4_1931) - 3.0);
     temp_f1_1948 = 0.5 * temp_f9_1927 * -((380000.0 * (temp_f9_1927 * temp_f9_1927)) - 3.0);
     temp_f4_1955 = 0.5 * temp_f4_1947 * -((2014000.0 * (temp_f4_1947 * temp_f4_1947)) - 3.0);
     temp_f1_1956 = 0.5 * temp_f1_1948 * -((380000.0 * (temp_f1_1948 * temp_f1_1948)) - 3.0);
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_1955 * -((2014000.0 * (temp_f4_1955 * temp_f4_1955)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (0.5 * temp_f1_1956 * -((380000.0 * (temp_f1_1956 * temp_f1_1956)) - 3.0)));
-    M2C_STRUCT_COPY(&sndCameraMat, &identity, 0x40);
+    M2C_STRUCT_COPY(&sndCameraMat, &Matrix::identity, 0x40);
 }
-#endif

@@ -1,5 +1,6 @@
 #include "spyro/source/UIVideoScreen.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIMessage.h"
@@ -24,7 +25,7 @@ void UIVideoScreen::Draw(const RenderContext &arg0) {
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKSetBaseColorF(1.0f, 1.0f, 1.0f, 1.0f);
         MKPrimitive(0xC, 3);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         MKBegin(4);
         MKSetColorF(0.0f, 0.0f, 0.0f, M2C_BITWISE(f32, this->unkE4));
         MKSetPositionF(-108.0f, 0.0f, 0.0f);

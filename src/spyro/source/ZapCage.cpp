@@ -3,6 +3,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
@@ -127,7 +128,7 @@ void ZapCage::Update() {
         if (this->unk5C == 0.0f) {
             this->unk5C = 0.3f;
             arg_sp1D4 = 0;
-            arg_sp1D0.Init(NULL, gameData.unk70.GetBreathAttackDamage(1, 1, 0), 1, 0, 1, 0, 0, -1);
+            arg_sp1D0.Init(NULL, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(1, 1, 0), 1, 0, 1, 0, 0, -1);
             M2C_FIELD(M2C_FIELD(temp_r29_332, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(temp_r29_332, &arg_sp1D0);
         }
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);

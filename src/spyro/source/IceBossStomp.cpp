@@ -258,7 +258,7 @@ loop_20:
             temp_r30_917->unk1C = temp_f0_348;
             temp_r30_917->unk20 = temp_f0_348;
             if ((u32) temp_r30_917->unk2C != 0U) {
-                M2C_STRUCT_COPY((s32) &arg_sp3BC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp3BC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 M2C_STRUCT_COPY((s32) &arg_sp3BC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
                 temp_r6_378 = this->unk8;
                 temp_f3_380 = M2C_BITWISE(f32, temp_r30_917->unk4);
@@ -1105,8 +1105,8 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
     arg_spC0 = 0;
     (s16) arg_spC0 = 1;
     arg_spC4 = -1;
-    arg_sp98 = M2C_FIELD(&one, f64 *, 0);
-    arg_spA0 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp98 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_spD0 = 0;
     if (temp_r4_2020 != NULL) {
         arg_sp20.GetPos();
@@ -1284,8 +1284,8 @@ loop_8:
     arg_sp40 = (f32) M2C_FIELD(this, f64 *, 0xD0) * var_f5_2350;
     arg_spF8 = (f64) arg_sp38;
     arg_sp100 = (f64) arg_sp40;
-    arg_spE8 = M2C_FIELD(&up, f64 *, 0);
-    arg_spF0 = M2C_FIELD(&up, f64 *, 8);
+    arg_spE8 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    arg_spF0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp120, *((MKVector3 *) &arg_spF8), (MKVector3 *) &arg_spE8);
     arg_sp150 = (f32) arg_sp108;
     arg_sp154 = arg_sp10C;

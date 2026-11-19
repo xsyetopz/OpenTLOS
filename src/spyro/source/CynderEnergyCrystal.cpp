@@ -129,7 +129,7 @@ void CynderEnergyCrystal::LoadDone() {
     temp_r3_256 = checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, s32, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk168, temp_r3_256 + 0xE4, &zero, 1, &this->unk70, 0, 0, 0);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, s32, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk168, temp_r3_256 + 0xE4, &MKVector3::zero, 1, &this->unk70, 0, 0, 0);
     sp28 = 0.0f;
     sp38 = 0.0f;
     sp10 = 1.0f;

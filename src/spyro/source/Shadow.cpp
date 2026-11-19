@@ -4,6 +4,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/MKView.h"
@@ -36,7 +37,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void Shadow::Draw() {
     MKVector3 sp48;
     f64 sp40;
@@ -47,7 +48,7 @@ void Shadow::Draw() {
     f32 sp10;
     f32 temp_f4_69;
 
-    if (((MKProp *) this->unk14 == NULL) || (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, sWorkingChunkID.unk0) != 0)) {
+    if (((MKProp *) this->unk14 == NULL) || (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) != 0)) {
         MKModel_CalculateCentre(this->unk10, &sp48);
         temp_f4_69 = this->unk20;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
@@ -59,7 +60,7 @@ void Shadow::Draw() {
         sp38 = sp8;
         sp10 = sp48.unk8 - (f32) sp30;
         sp40 = (f64) sp10;
-        MKShadow_Render(this->unk10, *((MKVector3 *) &sp38), 100.0f + (temp_f4_69 + (sp48.unk4 - this->unk28)), zero, NULL, 1U);
+        MKShadow_Render(this->unk10, *((MKVector3 *) &sp38), 100.0f + (temp_f4_69 + (sp48.unk4 - this->unk28)), MKVector3::zero, NULL, 1U);
     }
 }
 #endif

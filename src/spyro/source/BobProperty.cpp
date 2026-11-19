@@ -30,10 +30,10 @@ void BobProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
 void BobProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
-        *(pInstanceMem.__vptr + (this->unk8 + 0x14)) = 1;
+        *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x14)) = 1;
         return;
     case 2:
-        *(pInstanceMem.__vptr + (this->unk8 + 0x14)) = 0;
+        *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x14)) = 0;
         return;
     }
 }
@@ -66,7 +66,7 @@ void BobProperty::Update() {
     void *temp_r3_129;
     void *temp_r3_193;
 
-    temp_r3_129 = pInstanceMem.__vptr + this->unk8;
+    temp_r3_129 = KDProperty::pInstanceMem.__vptr + this->unk8;
     if ((u8) M2C_FIELD(temp_r3_129, u8 *, 0x14) != 0) {
         temp_f1_137 = (gUpdateTimeDelta * this->unk30) + M2C_FIELD(temp_r3_129, f32 *, 0x10);
         if (temp_f1_137 > 6.2831855f) {
@@ -75,7 +75,7 @@ void BobProperty::Update() {
             var_f0_140 = temp_f1_137;
         }
         M2C_FIELD(temp_r3_129, f32 *, 0x10) = var_f0_140;
-        temp_r31_148 = pInstanceMem.__vptr + this->unk8;
+        temp_r31_148 = KDProperty::pInstanceMem.__vptr + this->unk8;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
         temp_f1_158 = this->unk28 * _table_sinf(M2C_FIELD(temp_r31_148, f32 *, 0x10));
@@ -88,11 +88,11 @@ void BobProperty::Update() {
         sp10 = (f32) sp30 + M2C_FIELD(temp_r31_148, f32 *, 8);
         sp40 = (f64) sp10;
         if ((s32) this->unk34 < 0) {
-            MKModel_SetPosition(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4), *((MKVector3 *) &sp38));
+            MKModel_SetPosition(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4), *((MKVector3 *) &sp38));
             return;
         }
-        ((Matrix *) (pInstanceMem.__vptr + (this->unk8 + 0x20)))->SetIdentity();
-        temp_r3_193 = pInstanceMem.__vptr + (this->unk8 + 0x20);
+        ((Matrix *) (KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x20)))->SetIdentity();
+        temp_r3_193 = KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x20);
         M2C_FIELD(temp_r3_193, f32 *, 0x30) = (f32) sp38;
         M2C_FIELD(temp_r3_193, f32 *, 0x34) = unksp3C;
         M2C_FIELD(temp_r3_193, f32 *, 0x38) = (f32) sp40;
@@ -111,28 +111,28 @@ void BobProperty::ResolveInstance() {
     void *temp_r5_277;
 
     if (((s8 *) this->unk10 != NULL) && (stricmp"localToWorld" == 0)) {
-        MKModel_GetPosition(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4));
-        temp_r3_235 = pInstanceMem.__vptr + this->unk8;
+        MKModel_GetPosition(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4));
+        temp_r3_235 = KDProperty::pInstanceMem.__vptr + this->unk8;
         M2C_FIELD(temp_r3_235, f64 *, 0) = (f64) *M2C_ERROR(/* Read from unset register $r3 */);
         M2C_FIELD(temp_r3_235, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
         return;
     }
-    this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4), (SubObjectType) 0, this->unk10);
-    temp_r30_252 = Tools_GetMatchingNodeIndex(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4), this->unk10 + 2);
-    sp8.GetNodeOrigin(MKModel_GetAnimation(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4)));
-    temp_r3_264 = pInstanceMem.__vptr + this->unk8;
+    this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4), (SubObjectType) 0, this->unk10);
+    temp_r30_252 = Tools_GetMatchingNodeIndex(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4), this->unk10 + 2);
+    sp8.GetNodeOrigin(MKModel_GetAnimation(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4)));
+    temp_r3_264 = KDProperty::pInstanceMem.__vptr + this->unk8;
     M2C_FIELD(temp_r3_264, f64 *, 0) = sp8;
     M2C_FIELD(temp_r3_264, f64 *, 8) = sp10;
-    temp_r30_270 = pInstanceMem.__vptr + this->unk8;
-    M2C_FIELD(temp_r30_270, void **, 0x60) = MKDynamicBone_AddDynamicBone(M2C_FIELD(pInstanceMem.__vptr, MKModel **, 4), (s32) temp_r30_252);
-    temp_r5_277 = pInstanceMem.__vptr + this->unk8;
+    temp_r30_270 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(temp_r30_270, void **, 0x60) = MKDynamicBone_AddDynamicBone(M2C_FIELD(KDProperty::pInstanceMem.__vptr, MKModel **, 4), (s32) temp_r30_252);
+    temp_r5_277 = KDProperty::pInstanceMem.__vptr + this->unk8;
     MKDynamicBone_SetUpdater(M2C_FIELD(temp_r5_277, MKDynamicBone **, 0x60), (void (*)(MKDynamicBone *, void *)) &BobProperty::UpdateDynamicBone, temp_r5_277);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 s32 BobProperty::LoadLineInstance(MKIniLine *arg0) {
-    arg0->LoadBool("Enabled", pInstanceMem.__vptr + (this->unk8 + 0x14), 0);
+    arg0->LoadBool("Enabled", KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x14), 0);
 }
 #endif
 
@@ -141,7 +141,7 @@ void BobProperty::InitInstance() {
     MKIniLine *var_r31_329;
     void *temp_r3_322;
 
-    temp_r3_322 = pInstanceMem.__vptr + this->unk8;
+    temp_r3_322 = KDProperty::pInstanceMem.__vptr + this->unk8;
     M2C_FIELD(temp_r3_322, s8 *, 0x14) = 0;
     M2C_FIELD(temp_r3_322, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_322, f32 *, 4) = 0.0f;

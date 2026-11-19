@@ -461,12 +461,12 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LightningStrikeFX::Init() {
     MKProp::Init();
     this->unk4C = NULL;
     this->unk50 = 0;
-    M2C_STRUCT_COPY((s32) (this + 0x7C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x7C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk8 = &this->unk80;
     this->unkC4 = 0.0f;
     this->unkC0 = 0.0f;
@@ -1027,7 +1027,6 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void LightningStrikeFXDescriptor::DrawStrikeArcs() {
     LightningStrikeFXDescriptor::StrikeArc **var_r31_1989;
     LightningStrikeFXDescriptor::StrikeArc *temp_r4_1998;
@@ -1035,7 +1034,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArcs() {
     if ((u8) this->unk9C == 0) {
         MKMaterial_SetMaterial(this->unk94);
         MKPrimitive(0xC, 0);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         var_r31_1989 = this->unk98;
 loop_3:
         if (var_r31_1989 != NULL) {
@@ -1050,7 +1049,6 @@ loop_3:
         this->unk9C = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void LightningStrikeFXDescriptor::Deinit() {
@@ -1257,7 +1255,7 @@ void LightningStrikeFXDescriptor::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void LightningStrikeFXDescriptor::Init() {
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2383;
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2389;
@@ -1269,10 +1267,10 @@ void LightningStrikeFXDescriptor::Init() {
 
     MKPropDescriptor::Init();
     this->unk60 = NULL;
-    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk80 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk88 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk80 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk88 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unk90 = 0.0f;
     this->unkA4 = 0;

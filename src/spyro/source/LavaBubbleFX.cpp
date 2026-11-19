@@ -236,7 +236,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     arg_sp278 = (f64) arg_sp68;
     do {
         if ((u8) *(this->unkC8 + (var_r26_411 + 0x3C)) != 0) {
-            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp200.Scale3x3((Matrix *) &arg_sp200, *(this->unkC8 + (var_r26_411 + 0x70)));
             temp_r4_448 = this->unkC8 + (var_r26_411 + 0x60);
             arg_sp230 = M2C_FIELD(temp_r4_448, f32 *, 0);
@@ -286,7 +286,7 @@ void LavaBubbleFX::Draw() {
     do {
         temp_r3_536 = this->unkC8 + var_r29_533;
         if (((u8) M2C_FIELD(temp_r3_536, u8 *, 0x3C) != 0) && (M2C_FIELD(temp_r3_536, f32 *, 0x38) < 1.0f) && (M2C_FIELD(temp_r3_536, f32 *, 0x40) > -150.0f)) {
-            M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp40.Scale3x3((Matrix *) &arg_sp40, *(this->unkC8 + (var_r29_533 + 0x10)));
             MKVector(0.0f, *(this->unkC8 + (var_r29_533 + 0x40)), 0.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);

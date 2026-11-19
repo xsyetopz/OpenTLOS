@@ -1,6 +1,7 @@
 #include "spyro/source/RumbleTimer.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKWidgetsInternal.h"
+#include "spyro/source/GameData.h"
 #include "common/Source/MKRumble.h"
 #include <m2c_macros.h>
 
@@ -10,9 +11,9 @@ extern M2C_UNK gb;
 extern MKInputReceiver *pReceiver;
 static f32 timer = 15.0f;
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: undefined identifier 'StopRumbling'
 void RumbleTimer_Update() {
-    gameData.GetGameSettings();
+    ((GameData *) (&GameData::gameData))->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
         timer -= gUpdateTimeDelta;
         if (StopRumbling() != 0) {

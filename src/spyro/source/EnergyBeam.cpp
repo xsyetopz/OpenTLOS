@@ -66,14 +66,13 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void EnergyBeam::Draw() {
     MKHeap *temp_r4_134;
     MKHeap *var_r31_121;
 
     MKMaterial_SetMaterial(this->unkA8);
     MKPrimitive(0xC, 0);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r31_121 = this->unk90;
 loop_4:
     if (var_r31_121 != NULL) {
@@ -88,7 +87,6 @@ loop_4:
     }
     MKEndPrimitive();
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {

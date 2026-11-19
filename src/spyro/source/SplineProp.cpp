@@ -169,11 +169,11 @@ void SplineProp::LoadDone() {
 
     sp8 = 0.0f;
     sp10.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-    M2C_FIELD(&loadInfo, f64 *, 0x40) = M2C_BITWISE(f64, sp10);
-    M2C_FIELD(&loadInfo, f64 *, 0x48) = (f64) sp10.unk8;
+    M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40) = M2C_BITWISE(f64, sp10);
+    M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48) = (f64) sp10.unk8;
     MKProp::LoadDone();
     this->unk8 = &this->unk50;
-    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     this->unk50.SetRotationToNone();
     CalcBounds();
     this->unkC = (BoundingVolume *) &this->unk90;

@@ -274,7 +274,7 @@ void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float 
         MKSetPositionF(temp_f24_591, temp_f23_599, 0.0f);
         MKEnd();
     }
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     MKEndPrimitive();
 }
 #endif

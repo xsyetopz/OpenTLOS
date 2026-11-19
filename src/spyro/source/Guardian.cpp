@@ -1,6 +1,7 @@
 #include "spyro/source/Guardian.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
 #include "spyro/source/KDProp.h"
 #include "common/Source/MKModel.h"
 #include <m2c_macros.h>
@@ -61,7 +62,7 @@ void Guardian::LoadDone() {
         var_r3_173 = NULL;
     }
     this->unk9C = var_r3_173;
-    MKModel_SetColor(this->unk4, loadInfo + 0x70);
+    MKModel_SetColor(this->unk4, MKProp::loadInfo + 0x70);
     if ((u8) this->unkA0 != 0) {
         this->unk80->SetAnim(this->unk98, 1.0f, 0.0f, 0, -1);
         return;

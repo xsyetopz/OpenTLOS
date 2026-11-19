@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "spyro/source/SteamTrain.h"
 #include "spyro/source/SteamTrainCaboose.h"
 #include "spyro/source/TrainChaseSpyro.h"
@@ -283,7 +284,7 @@ void TrainController::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void TrainController::Reset() {
     s32 spC;
     s32 sp8;
@@ -294,7 +295,7 @@ void TrainController::Reset() {
     void *temp_ret_522;
 
     MKProp::Reset();
-    temp_ret_517 = M2C_FIELD(*gMK, u8 (**)(void **, TrainController *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0);
+    temp_ret_517 = M2C_FIELD(*gMK, u8 (**)(void **, TrainController *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0);
     if (temp_ret_517 != 0) {
         temp_ret_522 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk58->PropResolver_Resolve((s32) (u32) (u64) temp_ret_517));
         temp_r3_522 = temp_ret_522;

@@ -346,7 +346,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
     arg_sp120 = arg_sp60;
-    arg_sp68 = up.unk8 * 500.0f;
+    arg_sp68 = MKVector3::up.unk8 * 500.0f;
     arg_sp128 = (f64) arg_sp68;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     arg_sp130 = arg_sp50;
@@ -504,7 +504,7 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f4, $f31 */);
     sp130 = spA0;
-    spA8 = up.unk8 * 100.0f;
+    spA8 = MKVector3::up.unk8 * 100.0f;
     sp138 = (f64) spA8;
     M2C_ERROR(/* unknown instruction: psq_lx $f3, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
@@ -513,7 +513,7 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     sp140 = sp90;
     sp98 = temp_f2_1004 + (f32) sp138;
     sp148 = (f64) sp98;
-    sp88 = up.unk8 * 500.0f;
+    sp88 = MKVector3::up.unk8 * 500.0f;
     sp110 = sp80;
     sp118 = (f64) sp88;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
@@ -894,7 +894,7 @@ void ExplosiveBarrelPath::LoadDone() {
 
     MKProp::LoadDone();
     this->unk1B1 = 0;
-    M2C_STRUCT_COPY((s32) &this->unk1BC + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk1BC + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     this->unk200 = this->unk1F0;
     this->unk208 = this->unk1F8;
     this->unk210 = this->unk1E0;
@@ -1104,18 +1104,18 @@ void ExplosiveBarrelPath::Init() {
         var_r30_2203 += 0x44;
     } while (var_r26_2206 < 4);
     this->unk4C = NULL;
-    this->unk190 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk198 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk1A0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk1A8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk190 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk198 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk1A0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkC = (BoundingVolume *) &this->unk190;
     this->unk1B0 = 1;
-    M2C_STRUCT_COPY((s32) &this->unk1BC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk1BC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk8 = &this->unk1C0;
-    this->unk200 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk208 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk210 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk218 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk200 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk208 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk210 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk218 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk228 = 0x14;
     this->unk22C = 1.0f;
     this->unk231 = 0;
@@ -1147,13 +1147,13 @@ s32 ExplosiveBarrelPathDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void ExplosiveBarrelPathDescriptor::Init() {
     MKPropDescriptor::Init();
-    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk80 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk88 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk80 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk88 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk60 = 0;
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unkC |= 0x802;

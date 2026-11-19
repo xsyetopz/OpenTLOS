@@ -191,9 +191,9 @@ loop_5:
             sp44 = unkspC4 * var_f4_170;
             spD8 = (f64) sp48;
             spD0 = (f64) sp40;
-            sp64 = (up.unk8 * (f32) spD0) - (up.unk0 * (f32) spD8);
-            sp60 = (up.unk4 * (f32) spD8) - (up.unk8 * unkspD4);
-            sp68 = (up.unk0 * unkspD4) - (up.unk4 * (f32) spD0);
+            sp64 = (MKVector3::up.unk8 * (f32) spD0) - (MKVector3::up.unk0 * (f32) spD8);
+            sp60 = (MKVector3::up.unk4 * (f32) spD8) - (MKVector3::up.unk8 * unkspD4);
+            sp68 = (MKVector3::up.unk0 * unkspD4) - (MKVector3::up.unk4 * (f32) spD0);
             sp150 = (f64) sp60;
             sp158 = (f64) sp68;
             if ((u8) this->unk30 == 0) {
@@ -417,9 +417,9 @@ loop_6:
             sp34 = unksp84 * var_f4_587;
             sp98 = (f64) sp38;
             sp90 = (f64) sp30;
-            sp54 = (up.unk8 * (f32) sp90) - (up.unk0 * (f32) sp98);
-            sp50 = (up.unk4 * (f32) sp98) - (up.unk8 * unksp94);
-            sp58 = (up.unk0 * unksp94) - (up.unk4 * (f32) sp90);
+            sp54 = (MKVector3::up.unk8 * (f32) sp90) - (MKVector3::up.unk0 * (f32) sp98);
+            sp50 = (MKVector3::up.unk4 * (f32) sp98) - (MKVector3::up.unk8 * unksp94);
+            sp58 = (MKVector3::up.unk0 * unksp94) - (MKVector3::up.unk4 * (f32) sp90);
             sp100.unk10 = (f64) sp50;
             sp100.unk18 = (f64) sp58;
             if ((u8) this->unk30 == 0) {

@@ -26,12 +26,10 @@ f32 Lever::GetCollisionRadius() {
     return 100.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void Lever::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif
 
 s32 Lever::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     return 0;
@@ -198,7 +196,7 @@ void Lever::Resolve() {
 void Lever::LoadDone() {
     GameProp::LoadDone();
     MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), (Matrix *) &arg_sp50, 1U);
-    arg_sp10.SetRotateAroundAxis(up, 3.1415927f);
+    arg_sp10.SetRotateAroundAxis(MKVector3::up, 3.1415927f);
     arg_sp50.Multiply3x3((Matrix *) &arg_sp50, (Matrix *) &arg_sp10);
     this->unkD8 = arg_sp80;
     this->unkE0 = arg_sp88;

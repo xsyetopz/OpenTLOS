@@ -141,17 +141,17 @@ void GameData::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 void GameData::ModuleDeinit() {
-    gameData.Deinit();
-    bModuleInitialised = 0;
+    ((GameData *) (&GameData::gameData))->Deinit();
+    GameData::bModuleInitialised = 0;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 void GameData::ModuleInit() {
-    gameData.Init();
-    bModuleInitialised = 1;
+    ((GameData *) (&GameData::gameData))->Init();
+    GameData::bModuleInitialised = 1;
 }
 #endif
 
@@ -304,7 +304,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void GameStats::SetLevelUpPoints(int arg0) {
     s32 temp_r5_590;
     s32 var_r4_0;
@@ -317,7 +317,7 @@ void GameStats::SetLevelUpPoints(int arg0) {
     this->unkF4 = var_r4_0;
     if (temp_r5_590 <= (s32) this->unkF4) {
         this->unkE4 = 1;
-        gameData.unk18A |= 0x80;
+        GameData::gameData.unk18A |= 0x80;
     }
 }
 #endif
@@ -499,7 +499,7 @@ void GameStats::Init() {
     LoadIni();
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 f32 SpiritChange(Stat *arg0, float arg1) {
     f32 temp_f2_938;
     f32 var_f1_0;
@@ -507,7 +507,7 @@ f32 SpiritChange(Stat *arg0, float arg1) {
     void *var_r4_921;
 
     var_f1_0 = arg1;
-    if (!(((u8) gameData.unk18A >> 6U) & 1)) {
+    if (!(((u8) GameData::gameData.unk18A >> 6U) & 1)) {
         temp_r5_918 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
         if (temp_r5_918 != NULL) {
             var_r4_921 = M2C_FIELD(temp_r5_918, void **, 4);
@@ -675,7 +675,7 @@ void GameSettings::Init() {
     this->unk0 = M2C_FIELD(&gb, f32 *, 0x38C);
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void GameData_cpp::__sinit() {
     f32 sp44;
     f32 sp40;
@@ -710,7 +710,7 @@ void GameData_cpp::__sinit() {
     temp_f0_1223 = (f32) (380000.0 * (0.5 * temp_f1_1211 * -((380000.0 * (temp_f1_1211 * temp_f1_1211)) - 3.0)));
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_1210 * -((2014000.0 * (temp_f4_1210 * temp_f4_1210)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = temp_f0_1223;
-    gameData.GameData();
+    ((GameData *) (&GameData::gameData))->GameData();
     sp38 = 1.0f;
     sp3C = 0.5f;
     sp40 = 0.2f;

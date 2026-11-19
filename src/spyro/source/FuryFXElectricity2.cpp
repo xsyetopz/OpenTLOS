@@ -7,6 +7,7 @@
 #include "spyro/source/Character.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/FuryFX.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/LightManager.h"
@@ -466,7 +467,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     s8 sp98;
     s32 sp94;
@@ -515,9 +516,9 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     this->unk94 = 1.0f;
     this->unk118 = 0.0f;
     M2C_FIELD(this, f32 *, 0x11C) = 0.0f;
-    temp_r3_835 = gameData.unk158 << 5;
-    temp_r0_837 = *(&gameData.unk70 + (temp_r3_835 + 0x7C));
-    temp_r5_839 = &gameData.unk70 + (temp_r3_835 + 0x64);
+    temp_r3_835 = GameData::gameData.unk158 << 5;
+    temp_r0_837 = *(&GameData::gameData.unk70 + (temp_r3_835 + 0x7C));
+    temp_r5_839 = &GameData::gameData.unk70 + (temp_r3_835 + 0x64);
     if (temp_r0_837 == 3) {
         var_r3_843 = 0;
         if (((s32) M2C_FIELD(temp_r5_839, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_839, s32 *, 4) == 3)) {
@@ -527,7 +528,7 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     } else {
         var_r29_853 = *(temp_r5_839 + (temp_r0_837 * 4));
     }
-    temp_r28_860 = gameData.unk158;
+    temp_r28_860 = GameData::gameData.unk158;
     this->unkB0.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), 15.0f * M2C_FIELD(&gb, f32 *, 0x37C), 3, var_r29_853, temp_r28_860, temp_r28_860, 0, -1);
     sp18 = 0.0f;
     sp1C = -5000.0f;

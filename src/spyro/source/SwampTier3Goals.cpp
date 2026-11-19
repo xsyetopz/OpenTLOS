@@ -514,9 +514,9 @@ loop_3:
         sp2A0.GetDir();
         sp350 = M2C_BITWISE(f64, sp2A0);
         sp358 = (f64) sp2A0.unk8;
-        sp158 = (up.unk0 * unksp354) - (up.unk4 * (f32) sp350);
-        sp150 = (up.unk4 * (f32) sp358) - (up.unk8 * unksp354);
-        sp154 = (up.unk8 * (f32) sp350) - (up.unk0 * (f32) sp358);
+        sp158 = (MKVector3::up.unk0 * unksp354) - (MKVector3::up.unk4 * (f32) sp350);
+        sp150 = (MKVector3::up.unk4 * (f32) sp358) - (MKVector3::up.unk8 * unksp354);
+        sp154 = (MKVector3::up.unk8 * (f32) sp350) - (MKVector3::up.unk0 * (f32) sp358);
         sp348 = (f64) sp158;
         sp340 = (f64) sp150;
         var_f2_706 = 300.0f;
@@ -600,11 +600,11 @@ loop_15:
             var_r27_885 = 0;
             temp_f0_888 = (f32) sp338 - (f32) sp218;
             sp338 = temp_f0_888;
-            temp_f26_892 = up.unk0;
-            temp_f25_904 = up.unk4;
-            temp_f24_905 = up.unk8;
-            temp_f23_906 = up.unk4;
-            temp_f22_907 = up.unk8;
+            temp_f26_892 = MKVector3::up.unk0;
+            temp_f25_904 = MKVector3::up.unk4;
+            temp_f24_905 = MKVector3::up.unk8;
+            temp_f23_906 = MKVector3::up.unk4;
+            temp_f22_907 = MKVector3::up.unk8;
 loop_45:
             if (var_r27_885 < temp_r29_664) {
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
@@ -727,13 +727,13 @@ loop_45:
         sp1C0.GetPos();
         var_f16_1153 = 0.0f;
         var_r20_1154 = 0;
-        temp_f27_1162 = up.unk0;
+        temp_f27_1162 = MKVector3::up.unk0;
         sp2A0.unk40.unk8 = sp1C8;
         sp2A0.unk40 = sp1C0;
-        temp_f28_1172 = up.unk4;
-        temp_f29_1173 = up.unk8;
-        temp_f31_1174 = up.unk4;
-        temp_f30_1175 = up.unk8;
+        temp_f28_1172 = MKVector3::up.unk4;
+        temp_f29_1173 = MKVector3::up.unk8;
+        temp_f31_1174 = MKVector3::up.unk4;
+        temp_f30_1175 = MKVector3::up.unk8;
 loop_51:
         if (var_r20_1154 < temp_r29_664) {
             KDMath_GetDirection(var_f16_1153);

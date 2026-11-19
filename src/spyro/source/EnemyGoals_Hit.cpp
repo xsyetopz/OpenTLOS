@@ -1040,7 +1040,6 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
 void EnemyGoal_HitAirCombo::Terminate() {
     Enemy *temp_r3_1986;
     Enemy *temp_r3_1990;
@@ -1058,8 +1057,8 @@ void EnemyGoal_HitAirCombo::Terminate() {
     if ((u8) M2C_FIELD(temp_r3_1998->unkA20, u8 *, 0x123) != 0) {
         temp_r3_1998->SnapToDirOfHitSource();
         temp_r5_2005 = this->unkC;
-        M2C_FIELD(temp_r5_2005, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_2005, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_2005, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_2005, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_2005, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_2005, f64 *, 0xF0);
         M2C_FIELD(temp_r5_2005, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_2005, f64 *, 0xF8);
         temp_r5_2005->unk6B5 |= 0x40;
@@ -1067,7 +1066,6 @@ void EnemyGoal_HitAirCombo::Terminate() {
     this->unkC->EnableBlurFX(0U);
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk30C'
 u8 EnemyGoal_HitAirCombo::Update() {
@@ -1640,8 +1638,8 @@ void EnemyGoal_HitKnockdownSlide::Activate() {
     if ((u8) M2C_FIELD(temp_r3_2920->unkA38, u8 *, 0x123) != 0) {
         temp_r3_2920->SnapToDirOfHitSource();
         temp_r5_2927 = this->unkC;
-        M2C_FIELD(temp_r5_2927, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_2927, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_2927, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_2927, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_2927, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_2927, f64 *, 0xF0);
         M2C_FIELD(temp_r5_2927, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_2927, f64 *, 0xF8);
         temp_r5_2927->unk6B5 |= 0x40;
@@ -2275,7 +2273,7 @@ block_72:
                     }
                     sp1C8 = M2C_FIELD(var_r4_3835, f64 *, 0x10);
                     sp1D0 = M2C_FIELD(var_r4_3835, f64 *, 0x18);
-                    temp_f1_3855 = ((f32) sp1D0 * up.unk8) + (((f32) sp1C8 * up.unk0) + (unksp1CC * up.unk4));
+                    temp_f1_3855 = ((f32) sp1D0 * MKVector3::up.unk8) + (((f32) sp1C8 * MKVector3::up.unk0) + (unksp1CC * MKVector3::up.unk4));
                     if ((temp_f1_3855 < 0.25f) && (temp_f1_3855 > -0.25f)) {
                         var_f4_3861 = 0.0f;
                         unksp1CC = 0.0f;
@@ -2574,8 +2572,8 @@ void EnemyGoal_HitKnockdown::Activate() {
     if (((u8) M2C_FIELD(temp_r3_4494->unkA20, u8 *, 0x123) != 0) && (temp_r3_4494->unk918 > 0.0f)) {
         temp_r3_4494->SnapToDirOfHitSource();
         temp_r5_4506 = this->unkC;
-        M2C_FIELD(temp_r5_4506, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_4506, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_4506, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_4506, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_4506, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_4506, f64 *, 0xF0);
         M2C_FIELD(temp_r5_4506, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_4506, f64 *, 0xF8);
         temp_r5_4506->unk6B5 |= 0x40;
@@ -2920,8 +2918,8 @@ void EnemyGoal_HitKnockup::Activate() {
     if ((u8) M2C_FIELD(temp_r3_5193->unkA20, u8 *, 0x123) != 0) {
         temp_r3_5193->SnapToDirOfHitSource();
         temp_r5_5200 = this->unkC;
-        M2C_FIELD(temp_r5_5200, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_5200, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_5200, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_5200, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_5200, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_5200, f64 *, 0xF0);
         M2C_FIELD(temp_r5_5200, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_5200, f64 *, 0xF8);
         temp_r5_5200->unk6B5 |= 0x40;
@@ -3028,8 +3026,8 @@ void EnemyGoal_HitKnockback::Activate() {
     if ((u8) M2C_FIELD(temp_r3_5425->unkA38, u8 *, 0x123) != 0) {
         temp_r3_5425->SnapToDirOfHitSource();
         temp_r5_5432 = this->unkC;
-        M2C_FIELD(temp_r5_5432, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_5432, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_5432, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_5432, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_5432, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_5432, f64 *, 0xF0);
         M2C_FIELD(temp_r5_5432, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_5432, f64 *, 0xF8);
         temp_r5_5432->unk6B5 |= 0x40;
@@ -3163,8 +3161,8 @@ block_7:
     if ((u8) M2C_FIELD(temp_r3_5643->unkA38, u8 *, 0x123) != 0) {
         temp_r3_5643->SnapToDirOfHitSource();
         temp_r5_5650 = this->unkC;
-        M2C_FIELD(temp_r5_5650, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_5650, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_5650, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_5650, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_5650, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_5650, f64 *, 0xF0);
         M2C_FIELD(temp_r5_5650, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_5650, f64 *, 0xF8);
         temp_r5_5650->unk6B5 |= 0x40;
@@ -3317,8 +3315,8 @@ void EnemyGoal_HitShock::Activate() {
     if ((u8) M2C_FIELD(temp_r3_5973->unkA20, u8 *, 0x123) != 0) {
         temp_r3_5973->SnapToDirOfHitSource();
         temp_r5_5980 = this->unkC;
-        M2C_FIELD(temp_r5_5980, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_5980, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_5980, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_5980, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_5980, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_5980, f64 *, 0xF0);
         M2C_FIELD(temp_r5_5980, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_5980, f64 *, 0xF8);
         temp_r5_5980->unk6B5 |= 0x40;
@@ -3363,8 +3361,8 @@ void EnemyGoal_HitFlinch::Activate() {
     if ((u8) M2C_FIELD(temp_r3_6082->unkA38, u8 *, 0x123) != 0) {
         temp_r3_6082->SnapToDirOfHitSource();
         temp_r5_6089 = this->unkC;
-        M2C_FIELD(temp_r5_6089, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r5_6089, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r5_6089, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r5_6089, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         M2C_FIELD(temp_r5_6089, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r5_6089, f64 *, 0xF0);
         M2C_FIELD(temp_r5_6089, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_6089, f64 *, 0xF8);
         temp_r5_6089->unk6B5 |= 0x40;
@@ -3428,7 +3426,7 @@ loop_5:
             M2C_ERROR(/* unknown instruction: ps_muls0 $f4, $f4, $f31 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r5, 0x0, qr0 */);
             M2C_FIELD(temp_r3_6172, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r3_6172, f32 *, 0x18) * -M2C_BITWISE(f32, spC));
-            temp_f6_6212 = (M2C_FIELD(temp_r3_6172, f32 *, 0x18) * up.unk8) + ((M2C_FIELD(temp_r3_6172, f32 *, 0x10) * up.unk0) + (M2C_FIELD(temp_r3_6172, f32 *, 0x14) * up.unk4));
+            temp_f6_6212 = (M2C_FIELD(temp_r3_6172, f32 *, 0x18) * MKVector3::up.unk8) + ((M2C_FIELD(temp_r3_6172, f32 *, 0x10) * MKVector3::up.unk0) + (M2C_FIELD(temp_r3_6172, f32 *, 0x14) * MKVector3::up.unk4));
             if ((temp_f6_6212 < 0.3f) && (temp_f6_6212 > -0.3f)) {
                 temp_r5_6220 = &sp80.unk10 + var_r4_6165;
                 temp_f1_6224 = M2C_FIELD(temp_r5_6220, f64 *, 8);

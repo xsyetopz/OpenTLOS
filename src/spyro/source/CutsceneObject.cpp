@@ -216,10 +216,10 @@ CutsceneObject::~CutsceneObject() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 CutsceneObject::CutsceneObject() {
-    this->unk0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk0 = M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    this->unk8 = M2C_FIELD(&MKVector4::zero, f64 *, 8);
     this->unk30.unk0 = 0;
     this->unk30.Init();
     this->unk34.unk0 = 0;

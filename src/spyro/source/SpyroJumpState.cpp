@@ -2,6 +2,7 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
@@ -216,7 +217,7 @@ void SpyroJumpState::JumpCommonUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 s32 SpyroJumpState::JumpLoftTransition() {
     InputModifier *temp_r3_433;
     u8 var_r0_434;
@@ -224,7 +225,7 @@ s32 SpyroJumpState::JumpLoftTransition() {
 
     var_r3_422 = this->unk2F;
     if (var_r3_422 != 0) {
-        var_r3_422 = gameData.unk168 & 1;
+        var_r3_422 = GameData::gameData.unk168 & 1;
     }
     if (var_r3_422 != 0) {
         temp_r3_433 = this->unk10->GetInput();
@@ -299,7 +300,7 @@ u8 SpyroJumpState::JumpCycleTransition() {
     if (var_r3_588 == 0) {
         var_r3_595 = this->unk2F;
         if (var_r3_595 != 0) {
-            var_r3_595 = gameData.unk168 & 1;
+            var_r3_595 = GameData::gameData.unk168 & 1;
         }
         if (var_r3_595 != 0) {
             temp_r3_606 = this->unk10->GetInput();
@@ -372,7 +373,7 @@ u8 SpyroJumpState::JumpStartTransition() {
     if (var_r3_717 == 0) {
         var_r3_745 = this->unk2F;
         if (var_r3_745 != 0) {
-            var_r3_745 = gameData.unk168 & 1;
+            var_r3_745 = GameData::gameData.unk168 & 1;
         }
         if (var_r3_745 != 0) {
             temp_r3_756 = this->unk10->GetInput();
@@ -434,7 +435,7 @@ u8 SpyroJumpState::Transition() {
     if ((u8) this->unk2E != 0) {
         sp8.AddMessage(0x17D);
     }
-    if (((u8) this->unk2F != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (gameData.unk168 & 1) == 1)) {
+    if (((u8) this->unk2F != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (GameData::gameData.unk168 & 1) == 1)) {
         sp8.AddMessage(0x16F);
     }
     if (this->unk18.GetState() == 3) {
@@ -484,7 +485,7 @@ u8 SpyroJumpState::Transition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void SpyroJumpState::Update() {
     f64 sp270;
     f64 sp268;
@@ -632,7 +633,7 @@ void SpyroJumpState::Update() {
         } else {
             var_r4_1032 = NULL;
         }
-        if (((M2C_FIELD(var_r4_1032, f32 *, 0x18) * one.unk8) + ((M2C_FIELD(var_r4_1032, f32 *, 0x10) * one.unk0) + (M2C_FIELD(var_r4_1032, f32 *, 0x14) * one.unk4))) < -0.8f) {
+        if (((M2C_FIELD(var_r4_1032, f32 *, 0x18) * MKVector3::one.unk8) + ((M2C_FIELD(var_r4_1032, f32 *, 0x10) * MKVector3::one.unk0) + (M2C_FIELD(var_r4_1032, f32 *, 0x14) * MKVector3::one.unk4))) < -0.8f) {
             this->unk3C += gUpdateTimeDelta;
         } else {
             goto block_6;
@@ -825,7 +826,7 @@ block_6:
                 sp160 = (f64) sp60;
                 this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp158), 3800.0f);
             } else {
-                this->unk10->SetDesiredVelocityHoriz(zero, 3800.0f);
+                this->unk10->SetDesiredVelocityHoriz(MKVector3::zero, 3800.0f);
             }
         } else {
             if (((KDInput *) (this->unk10->GetInput()))->GetLeftMag() != 0.0f) {
@@ -1111,7 +1112,7 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
         }
     }
     var_r29_2179 = 0;
-    if (((s32) (gameData.unk168 & 1) == 1) && (arg0.IsMessageOnList(0x16E) != 0)) {
+    if (((s32) (GameData::gameData.unk168 & 1) == 1) && (arg0.IsMessageOnList(0x16E) != 0)) {
         var_r29_2179 = 1;
     }
     var_r5_2193 = 0;
@@ -1147,7 +1148,7 @@ void SpyroJumpState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroJumpState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroJumpState>FPQ232KDStateMachine<14SpyroJumpState>5StateP32KDStateMachine<14SpyroJumpState>(&this->unk18, (KDStateMachine<SpyroJumpState>::State *) &states, NULL);
+    Init__32KDStateMachine<14SpyroJumpState>FPQ232KDStateMachine<14SpyroJumpState>5StateP32KDStateMachine<14SpyroJumpState>(&this->unk18, (KDStateMachine<SpyroJumpState>::State *) &SpyroJumpState::states, NULL);
     this->unk14 = 0.0f;
     this->unk2E = 0;
     this->unk34 = 0.0f;

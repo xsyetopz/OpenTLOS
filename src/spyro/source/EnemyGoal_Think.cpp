@@ -578,7 +578,7 @@ void EnemyGoal_Think::AddGoal_Strafe() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'sp48'
 u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f64 spC0;
     f64 spB8;
@@ -628,7 +628,7 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
 
     temp_r3_1386 = this->unkC;
     var_r0_1390 = 0;
-    if ((M2C_FIELD(temp_r3_1386, f32 *, 0x720) == zero.unk0) && (M2C_FIELD(temp_r3_1386, f32 *, 0x724) == zero.unk4) && (M2C_FIELD(temp_r3_1386, f32 *, 0x728) == zero.unk8)) {
+    if ((M2C_FIELD(temp_r3_1386, f32 *, 0x720) == MKVector3::zero.unk0) && (M2C_FIELD(temp_r3_1386, f32 *, 0x724) == MKVector3::zero.unk4) && (M2C_FIELD(temp_r3_1386, f32 *, 0x728) == MKVector3::zero.unk8)) {
         var_r0_1390 = 1;
     }
     if (var_r0_1390 != 0) {

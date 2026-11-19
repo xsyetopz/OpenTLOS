@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -34,9 +35,9 @@ void KDGraphNodeProp::LoadDone() {
     f64 sp8;
 
     MKProp::LoadDone();
-    sp8 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-    sp10 = M2C_FIELD(&loadInfo, f64 *, 0x48);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(M2C_UNK *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &loadInfo, M2C_FIELD(&loadInfo, f64 *, 0x40));
+    sp8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    sp10 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(M2C_UNK *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
 }
 #endif
 
@@ -170,7 +171,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal operand
 void KDGraphNode::Init() {
     s32 temp_r0_381;
     s32 var_ctr_379;
@@ -178,8 +179,8 @@ void KDGraphNode::Init() {
 
     this->unk30 = 0;
     var_r4_376 = 0;
-    this->unk8 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk10 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_ctr_379 = 6;
     do {
         temp_r0_381 = var_r4_376 + 0x18;
@@ -190,15 +191,15 @@ void KDGraphNode::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal operand
 KDGraphNode::KDGraphNode() {
     s32 temp_r0_405;
     s32 var_ctr_403;
     s32 var_r4_400;
 
-    this->unk8 = M2C_FIELD(&zero, f64 *, 0);
+    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r4_400 = 0;
-    this->unk10 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk30 = 0;
     var_ctr_403 = 6;
     do {

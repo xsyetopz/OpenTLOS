@@ -5,6 +5,7 @@
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/GameData.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -106,8 +107,8 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     unksp84 += 50.0f;
     KDSound_Play3d(GS_GemSpawn1, (MKVector3 *) &this->unk50, 0U, -1, 0.0f, 0U);
     var_r30_186 = 0;
-    if ((gameData.unk70.GetGemAvailable((StatType) 0) != 0) && (arg0 != NULL)) {
-        temp_f3_200 = gameData.unk70.unk0 / gameData.unk70.unk4;
+    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) 0) != 0) && (arg0 != NULL)) {
+        temp_f3_200 = GameData::gameData.unk70.unk0 / GameData::gameData.unk70.unk4;
         var_f1_208 = (f32) M2C_FIELD(arg0, s32 *, 0);
         if (temp_f3_200 > 0.9f) {
             var_f1_208 = -((0.5f * var_f1_208) - var_f1_208);
@@ -121,8 +122,8 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         var_r30_186 = (s32) var_f1_208;
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp80), var_r30_186, 200.0f, 500.0f, -1, NULL);
     }
-    if ((gameData.unk70.GetGemAvailable((StatType) 2) != 0) && (arg0 != NULL)) {
-        temp_f3_258 = gameData.unk70.unk30.unk0 / gameData.unk70.unk30.unk4;
+    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) 2) != 0) && (arg0 != NULL)) {
+        temp_f3_258 = GameData::gameData.unk70.unk30.unk0 / GameData::gameData.unk70.unk30.unk4;
         var_f1_266 = (f32) M2C_FIELD(arg0, s32 *, 8);
         if (temp_f3_258 > 0.9f) {
             var_f1_266 = -((0.5f * var_f1_266) - var_f1_266);
@@ -137,11 +138,11 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x18)))->Spawn(*((MKVector3 *) &sp80), temp_r28_301, 200.0f, 500.0f, -1, NULL);
         var_r30_186 += temp_r28_301;
     }
-    if ((gameData.unk70.GetGemAvailable((StatType) 3) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) 3) != 0) && (arg0 != NULL)) {
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x1C)))->Spawn(*((MKVector3 *) &sp80), M2C_FIELD(arg0, s32 *, 0xC), 200.0f, 500.0f, -1, NULL);
         var_r30_186 += M2C_FIELD(arg0, s32 *, 0xC);
     }
-    if ((gameData.unk70.GetGemAvailable((StatType) 1) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) 1) != 0) && (arg0 != NULL)) {
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x14)))->Spawn(*((MKVector3 *) &sp80), M2C_FIELD(arg0, s32 *, 4), 200.0f, 500.0f, -1, NULL);
         var_r30_186 += M2C_FIELD(arg0, s32 *, 4);
     }

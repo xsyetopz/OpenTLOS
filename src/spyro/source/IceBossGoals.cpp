@@ -2518,9 +2518,9 @@ void IceBossGoal_Cutscene3::Activate() {
     spA0 = temp_f7_5105;
     unkspA4 = temp_f6_5100;
     spA8 = temp_f5_5102;
-    sp30 = (up.unk4 * temp_f5_5102) - (up.unk8 * temp_f6_5100);
-    sp34 = (up.unk8 * temp_f7_5105) - (up.unk0 * temp_f5_5102);
-    sp38 = (up.unk0 * temp_f6_5100) - (up.unk4 * temp_f7_5105);
+    sp30 = (MKVector3::up.unk4 * temp_f5_5102) - (MKVector3::up.unk8 * temp_f6_5100);
+    sp34 = (MKVector3::up.unk8 * temp_f7_5105) - (MKVector3::up.unk0 * temp_f5_5102);
+    sp38 = (MKVector3::up.unk0 * temp_f6_5100) - (MKVector3::up.unk4 * temp_f7_5105);
     sp90 = (f64) sp30;
     sp98 = (f64) sp38;
     var_f4_5131 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
@@ -2571,8 +2571,8 @@ void IceBossGoal_Cutscene3::Activate() {
     temp_r5_5210->unk6B5 |= 0x40;
     this->unkC->SetIdleMovementSpeed(1U);
     temp_r4_5226 = this->unkC;
-    M2C_FIELD(temp_r4_5226, f64 *, 0x598) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(temp_r4_5226, f64 *, 0x5A0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(temp_r4_5226, f64 *, 0x598) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(temp_r4_5226, f64 *, 0x5A0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_r3_5230 = this->unkC;
     if ((u32) temp_r3_5230->unkAF8 != 0U) {
         sp60 = M2C_FIELD(temp_r3_5230, f64 *, 0xC0);
@@ -2781,9 +2781,9 @@ void IceBossGoal_Cutscene2::Activate() {
     spA8 = temp_f7_5575;
     unkspAC = temp_f6_5580;
     spB0 = temp_f5_5577;
-    sp28 = (temp_f6_5580 * up.unk8) - (temp_f5_5577 * up.unk4);
-    sp2C = (temp_f5_5577 * up.unk0) - (temp_f7_5575 * up.unk8);
-    sp30 = (temp_f7_5575 * up.unk4) - (temp_f6_5580 * up.unk0);
+    sp28 = (temp_f6_5580 * MKVector3::up.unk8) - (temp_f5_5577 * MKVector3::up.unk4);
+    sp2C = (temp_f5_5577 * MKVector3::up.unk0) - (temp_f7_5575 * MKVector3::up.unk8);
+    sp30 = (temp_f7_5575 * MKVector3::up.unk4) - (temp_f6_5580 * MKVector3::up.unk0);
     sp98 = (f64) sp28;
     spA0 = (f64) sp30;
     var_f4_5606 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
@@ -2838,8 +2838,8 @@ void IceBossGoal_Cutscene2::Activate() {
     temp_r5_5698->unk6B5 |= 0x40;
     this->unkC->SetIdleMovementSpeed(1U);
     temp_r9_5708 = this->unkC;
-    M2C_FIELD(temp_r9_5708, f64 *, 0x598) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(temp_r9_5708, f64 *, 0x5A0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(temp_r9_5708, f64 *, 0x598) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(temp_r9_5708, f64 *, 0x5A0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkC->SetAnim((AnimSequenceType) 1, 0xAB, 0, 0.15f, 4U, 0U);
     temp_r3_5720 = this->unkC;
     if ((u32) temp_r3_5720->unkAF8 != 0U) {
@@ -3386,7 +3386,7 @@ void IceBossGoal_Think::Arbitrate() {
     void **temp_r3_7135;
     void **temp_r3_7144;
     void *temp_r3_7169;
-    if (((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_6886 = this->unkC, temp_f6_6890 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C8), arg_sp90 = temp_f6_6890, temp_f1_6897 = M2C_FIELD(temp_r3_6886, f32 *, 0x5CC), arg_sp94 = temp_f1_6897, temp_f5_6903 = M2C_FIELD(temp_r3_6886, f32 *, 0x5D0), arg_sp20 = (up.unk0 * temp_f1_6897) - (up.unk4 * temp_f6_6890), arg_sp98 = temp_f5_6903, arg_sp30 = (f64) arg_sp20, arg_sp18 = (up.unk4 * temp_f5_6903) - (up.unk8 * temp_f1_6897), arg_sp1C = (up.unk8 * temp_f6_6890) - (up.unk0 * temp_f5_6903), arg_sp9C = 0.0f, arg_sp28 = (f64) arg_sp18, arg_sp70 = (f32) arg_sp28, arg_sp74 = arg_sp2C, arg_sp78 = (f32) arg_sp30, arg_sp7C = 0.0f, arg_spA0 = M2C_FIELD(temp_r3_6886, f32 *, 0x5B8), arg_spA4 = M2C_FIELD(temp_r3_6886, f32 *, 0x5BC), temp_f1_6927 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C0), arg_spA8 = temp_f1_6927, arg_spAC = 1.0f, ((M2C_FIELD(M2C_FIELD(temp_r3_6886, void **, 0x44), u8 (**)(s32, f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(temp_r3_6886, &arg_sp70, 0, &up, temp_f1_6927, arg_sp2C, (f32) arg_sp28, 0.0f, temp_f5_6903, temp_f6_6890, up.unk8, up.unk4) == 0) == 0))) && (AddGoal_FollowSpawnPath() == 0)) {
+    if (((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_6886 = this->unkC, temp_f6_6890 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C8), arg_sp90 = temp_f6_6890, temp_f1_6897 = M2C_FIELD(temp_r3_6886, f32 *, 0x5CC), arg_sp94 = temp_f1_6897, temp_f5_6903 = M2C_FIELD(temp_r3_6886, f32 *, 0x5D0), arg_sp20 = (MKVector3::up.unk0 * temp_f1_6897) - (MKVector3::up.unk4 * temp_f6_6890), arg_sp98 = temp_f5_6903, arg_sp30 = (f64) arg_sp20, arg_sp18 = (MKVector3::up.unk4 * temp_f5_6903) - (MKVector3::up.unk8 * temp_f1_6897), arg_sp1C = (MKVector3::up.unk8 * temp_f6_6890) - (MKVector3::up.unk0 * temp_f5_6903), arg_sp9C = 0.0f, arg_sp28 = (f64) arg_sp18, arg_sp70 = (f32) arg_sp28, arg_sp74 = arg_sp2C, arg_sp78 = (f32) arg_sp30, arg_sp7C = 0.0f, arg_spA0 = M2C_FIELD(temp_r3_6886, f32 *, 0x5B8), arg_spA4 = M2C_FIELD(temp_r3_6886, f32 *, 0x5BC), temp_f1_6927 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C0), arg_spA8 = temp_f1_6927, arg_spAC = 1.0f, ((M2C_FIELD(M2C_FIELD(temp_r3_6886, void **, 0x44), u8 (**)(s32, f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(temp_r3_6886, &arg_sp70, 0, &MKVector3::up, temp_f1_6927, arg_sp2C, (f32) arg_sp28, 0.0f, temp_f5_6903, temp_f6_6890, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) && (AddGoal_FollowSpawnPath() == 0)) {
         if (this->unkC->WasHit() != 0) {
             arg_sp10 = 0U;
             this->unkC->InterceptDamage(&arg_sp10);

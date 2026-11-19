@@ -422,7 +422,7 @@ loop_33:
                     gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1411, (MKVector4) &sp268);
                     var_r19_634 += 1;
                 } while (var_r19_634 < 3);
-                temp_f16_687 = up.unk8;
+                temp_f16_687 = MKVector3::up.unk8;
                 var_r19_688 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -455,7 +455,7 @@ loop_33:
                 break;
             case 0x40000000:
                 KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
-                temp_f17_761 = up.unk8;
+                temp_f17_761 = MKVector3::up.unk8;
                 var_r19_764 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -907,7 +907,7 @@ loop_34:
                     gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1251, (MKVector4) &sp268);
                     var_r20_1602 += 1;
                 } while (var_r20_1602 < 3);
-                temp_f16_1655 = up.unk8;
+                temp_f16_1655 = MKVector3::up.unk8;
                 var_r20_1656 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -940,7 +940,7 @@ loop_34:
                 break;
             case 0x40000000:
                 KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
-                temp_f17_1729 = up.unk8;
+                temp_f17_1729 = MKVector3::up.unk8;
                 var_r20_1732 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -1515,7 +1515,7 @@ loop_33:
                     gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1044, (MKVector4) &sp268);
                     var_r19_2782 += 1;
                 } while (var_r19_2782 < 3);
-                temp_f16_2835 = up.unk8;
+                temp_f16_2835 = MKVector3::up.unk8;
                 var_r19_2836 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -1548,7 +1548,7 @@ loop_33:
                 break;
             case 0x40000000:
                 KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
-                temp_f17_2909 = up.unk8;
+                temp_f17_2909 = MKVector3::up.unk8;
                 var_r19_2912 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -2003,7 +2003,7 @@ loop_34:
                         gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_884, (MKVector4) &sp268);
                         var_r20_3749 += 1;
                     } while (var_r20_3749 < 3);
-                    temp_f16_3802 = up.unk8;
+                    temp_f16_3802 = MKVector3::up.unk8;
                     var_r20_3803 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -2036,7 +2036,7 @@ loop_34:
                     break;
                 case 0x40000000:
                     KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
-                    temp_f17_3876 = up.unk8;
+                    temp_f17_3876 = MKVector3::up.unk8;
                     var_r20_3879 = 0;
                     do {
                         KDRand_UnitVectorXZ();

@@ -359,7 +359,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         M2C_FIELD(this->unkAF8, s32 *, 0x34) = 0;
         temp_r3_787 = this->unkA2C;
         if ((temp_r3_787 != NULL) && (M2C_FIELD(temp_r3_787, s32 *, 4) & 0x100000)) {
-            M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r4_805 = this->unk8;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);

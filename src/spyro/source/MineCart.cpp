@@ -26,7 +26,7 @@ extern M2C_UNK gb;
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_95;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;
@@ -133,8 +133,8 @@ void MineCart::Message(MKMessage *arg0) {
                 sp119 = 0;
                 sp11A = 1;
                 sp11C = -1;
-                spF0 = M2C_FIELD(&one, f64 *, 0);
-                spF8 = M2C_FIELD(&one, f64 *, 8);
+                spF0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spF8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp128 = 0;
                 if (this != NULL) {
                     sp28.GetPos();
@@ -160,9 +160,9 @@ void MineCart::Message(MKMessage *arg0) {
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 sp78 = sp8;
                 temp_f2_274 = (f32) sp60 + (f32) sp50;
-                sp68 = M2C_FIELD(&zero, f64 *, 0);
+                sp68 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
                 sp10 = temp_f2_274;
-                sp70 = M2C_FIELD(&zero, f64 *, 8);
+                sp70 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 sp80 = (f64) sp10;
                 spB8 = 0x22;
                 spC0 = &sp78;
@@ -470,7 +470,7 @@ void MineCart::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal operand
 void MineCart::Init() {
     f64 sp20;
     f64 sp18;
@@ -484,10 +484,10 @@ void MineCart::Init() {
 
     GameProp::Init();
     var_r3_885 = 0;
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_ctr_890 = 3;
     do {
         temp_r0_892 = var_r3_885 + 0x130;

@@ -50,7 +50,7 @@ void CharacterBreathFX::EmitConeBreathFx(int arg0, float arg1, float arg2, float
     s32 var_r27_163;
     void *temp_r26_271;
     void *temp_r3_268;
-    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_sp11C + 4, (s32) &arg_sp9C + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) &arg_sp9C + 4, 0x40);
     temp_r4_150 = *this->unk0;
@@ -123,7 +123,7 @@ void CharacterBreathFX::EmitBreathFx(int arg0, float arg1, float arg2, float arg
     s32 var_r27_565;
     void *temp_r26_643;
     void *temp_r3_640;
-    M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) &arg_sp7C + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) &arg_sp7C + 4, 0x40);
     temp_r4_552 = *this->unk0;

@@ -1869,7 +1869,7 @@ void KDCamera::SnapToSafetyTryForceSnap(const MKVector3 &arg0, const MKVector3 &
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'IsUsingIdealStages'
 void KDCamera::SnapToSafetyTryIdealPos(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 spE0;
     f64 spD8;
@@ -1906,8 +1906,8 @@ void KDCamera::SnapToSafetyTryIdealPos(const MKVector3 &arg0, const MKVector3 &a
     f32 temp_f31_3531;
     void *temp_r6_3645;
 
-    spD8 = M2C_FIELD(&zero, f64 *, 0);
-    spE0 = M2C_FIELD(&zero, f64 *, 8);
+    spD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    spE0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (this->unk54->IsUsingIdealStages() == 0) {
         temp_r31_3512 = this->unk54;
         temp_f31_3513 = M2C_FIELD(temp_r31_3512, f32 *, 0x28);
@@ -1976,7 +1976,7 @@ void KDCamera::SnapToSafetyTryDesiredPos(const MKVector3 &arg0, const MKVector3 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: ')' expected
 void KDCamera::SnapToSafetyUpdate(const MKVector3 &arg0) {
     f64 sp50;
     f64 sp48;
@@ -2902,7 +2902,7 @@ void KDCamera::Init() {
     M2C_FIELD(temp_r6_5473, f32 *, 0x2C) = (f32) M2C_FIELD(temp_r7_5471, f32 *, 0x74);
     operator new(0x14U, NULL, 0);
     this->unk58 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk58->Init((KDMessageStorageDescriptor *) pMessageStorageDescriptors.unk0, M2C_FIELD(this->unk0, s32 *, 0x98));
+    this->unk58->Init((KDMessageStorageDescriptor *) KDCamera::pMessageStorageDescriptors.unk0, M2C_FIELD(this->unk0, s32 *, 0x98));
     temp_r3_5487 = &this->unk60;
     this->unk8 = temp_r3_5487;
     temp_r3_5487->SetIdentity();
@@ -2946,7 +2946,7 @@ void KDCamera::Init() {
         var_r0_5565 = ((KDCameraStateStack *) (M2C_ERROR(/* Read from unset register $r3 */)))->KDCameraStateStack();
     }
     this->unk15C = var_r0_5565;
-    this->unk15C->Init(this, (KDCameraStateDescriptor *) pStateDescriptors.unk0, M2C_FIELD(this->unk0, s32 *, 0x94));
+    this->unk15C->Init(this, (KDCameraStateDescriptor *) KDCamera::pStateDescriptors.unk0, M2C_FIELD(this->unk0, s32 *, 0x94));
     operator new(0x80U, NULL, 0);
     this->unk160 = M2C_ERROR(/* Read from unset register $r3 */);
     var_r5_5584 = 0;
@@ -2961,8 +2961,8 @@ void KDCamera::Init() {
     operator new(0x258U, NULL, 0);
     this->unk200 = M2C_ERROR(/* Read from unset register $r3 */);
     temp_r4_5599 = this->unk200;
-    temp_r4_5599->unk240 = M2C_FIELD(&zero, f64 *, 0);
-    temp_r4_5599->unk248 = M2C_FIELD(&zero, f64 *, 8);
+    temp_r4_5599->unk240 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    temp_r4_5599->unk248 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_r3_5603 = this->unk0;
     temp_r30_5604 = M2C_FIELD(temp_r3_5603, s32 *, 0x6C);
     if (temp_r30_5604 == 0) {
@@ -3014,7 +3014,7 @@ void KDCamera::Init() {
 
 #if 0 // DRAFT: illegal operand
 void KDCamera::InitModule() {
-    bModuleInitialised = 1;
+    KDCamera::bModuleInitialised = 1;
 }
 #endif
 

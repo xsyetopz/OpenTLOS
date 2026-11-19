@@ -281,7 +281,7 @@ void Catapult::FireUpdate() {
         arg_sp38 = -3950.0f * this->unk13C;
         arg_spB0 = (f64) arg_sp30;
         arg_spB8 = (f64) arg_sp38;
-        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         KDMath_GetYaw((Matrix *) this->unk8);
         arg_spD0.RotatePitch((Matrix *) &arg_spD0, -0.7f);
         arg_spD0.RotateYaw((Matrix *) &arg_spD0, M2C_ERROR(/* Read from unset register $f1 */));
@@ -459,8 +459,8 @@ loop_1:
     }
     this->unk12C = 0;
     this->unk130 = 0;
-    Init__25KDStateMachine<8Catapult>FPQ225KDStateMachine<8Catapult>5StateP25KDStateMachine<8Catapult>(&this->unkF8, (KDStateMachine<Catapult>::State *) &states, NULL);
-    this->unk80->InitEvents((s8 **) &pEvents);
+    Init__25KDStateMachine<8Catapult>FPQ225KDStateMachine<8Catapult>5StateP25KDStateMachine<8Catapult>(&this->unkF8, (KDStateMachine<Catapult>::State *) &Catapult::states, NULL);
+    this->unk80->InitEvents((s8 **) &Catapult::pEvents);
     this->unkC8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
 }
 #endif

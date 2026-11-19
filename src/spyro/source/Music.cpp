@@ -1,6 +1,7 @@
 #include "spyro/source/Music.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/UIStringTable.h"
@@ -345,7 +346,7 @@ block_12:
         }
         if (var_r0_639 != NULL) {
             lastTrackFadeTime = 0.0001f;
-            gameData.GetGameSettings();
+            ((GameData *) (&GameData::gameData))->GetGameSettings();
             Music_SetMasterVolume(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
             if ((s32) stack[3] > -1) {
                 var_r4_659 = stack[(s32) stack[3]];
@@ -488,7 +489,7 @@ block_18:
         arg0->unk20 = 0;
         lastTrackFadeTime = 0.00001f;
         arg0->unk24 = 0;
-        gameData.GetGameSettings();
+        ((GameData *) (&GameData::gameData))->GetGameSettings();
         Music_SetMasterVolume(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
         var_r30_969 = 0;
         if (((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) && (((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {

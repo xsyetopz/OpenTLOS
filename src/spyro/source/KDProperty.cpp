@@ -390,10 +390,10 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: undefined identifier 'classInfo'
+#if 0 // DRAFT: expression syntax error
 void KDProperty_cpp::__sinit() {
-    classInfo.__vptr = "KDScript";
-    classInfo.unk8 = 0;
-    classInfo.unk4 = &KDPropertyConstructor<KDScriptProperty>::Construct;
+    KDScriptProperty::classInfo.__vptr = "KDScript";
+    KDScriptProperty::classInfo.unk8 = 0;
+    KDScriptProperty::classInfo.unk4 = &KDPropertyConstructor<KDScriptProperty>::Construct;
 }
 #endif

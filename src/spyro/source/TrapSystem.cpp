@@ -69,10 +69,10 @@ loop_11:
 void TrapSystem::LoadDone() {
     MKProp::LoadDone();
     this->unk50.SetIdentity();
-    this->unk50.SetRotationPYR(loadInfo + 0x50);
-    this->unk50.unk30 = M2C_FIELD(&loadInfo, f32 *, 0x40);
-    this->unk50.unk34 = M2C_BITWISE(f32, loadInfo.__vptr);
-    this->unk50.unk38 = loadInfo.unk48;
+    this->unk50.SetRotationPYR(MKProp::loadInfo + 0x50);
+    this->unk50.unk30 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
+    this->unk50.unk34 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
+    this->unk50.unk38 = MKProp::loadInfo.unk48;
     this->unk50.unk3C = 1.0f;
     this->unk8 = &this->unk50;
 }

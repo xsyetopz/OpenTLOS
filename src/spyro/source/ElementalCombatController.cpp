@@ -125,7 +125,7 @@ void ElementalCombatController::Update() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void ElementalCombatController::Message(MKMessage *arg0) {
     s8 sp2A;
     s8 sp29;
@@ -145,7 +145,7 @@ void ElementalCombatController::Message(MKMessage *arg0) {
         M2C_FIELD(this, s8 *, 0x3E8) = 1;
         var_r0_313 = 0;
         this->unk3E0 = 0;
-        if ((this->unkB8 == zero.unk0) && (this->unkBC == zero.unk4) && (this->unkC0 == zero.unk8)) {
+        if ((this->unkB8 == MKVector3::zero.unk0) && (this->unkBC == MKVector3::zero.unk4) && (this->unkC0 == MKVector3::zero.unk8)) {
             var_r0_313 = 1;
         }
         if (var_r0_313 == 0) {
@@ -371,7 +371,7 @@ void ElementalCombatController::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal operand
 void ElementalCombatController::Init() {
     SpawnPointData *temp_r29_991;
     s32 temp_r0_975;
@@ -386,8 +386,8 @@ void ElementalCombatController::Init() {
     this->unk3EC = 0.0f;
     this->unk3E0 = 0;
     this->unk3DC.unk0 = 0;
-    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_ctr_973 = 0x10;
     do {
         temp_r0_975 = var_r3_965 + 0x360;

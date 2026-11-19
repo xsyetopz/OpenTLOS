@@ -264,8 +264,8 @@ loop_27:
                         spB1 = 0;
                         spB2 = 1;
                         spB4 = -1;
-                        sp88 = M2C_FIELD(&one, f64 *, 0);
-                        sp90 = M2C_FIELD(&one, f64 *, 8);
+                        sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spC0 = 0;
                         spA0 = 0.0f;
                         spA4 = 0.0f;
@@ -411,7 +411,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void SlimeTrailFX::Draw() {
     f64 sp1E8;
     f64 sp1E0;
@@ -482,7 +482,7 @@ void SlimeTrailFX::Draw() {
     if ((u8) this->unk28 != 0) {
         MKMaterial_SetMaterial(this->unk20);
         MKPrimitive(0xC, 0x10);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         temp_r26_657 = this->unk4;
         if ((this->unk18 - 1) >= 0) {
 

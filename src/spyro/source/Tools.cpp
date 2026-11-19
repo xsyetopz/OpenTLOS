@@ -9,6 +9,7 @@
 #include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKView.h"
 #include "common/Source/Matrix.h"
@@ -168,8 +169,8 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
         M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
         return;
     }
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif
 
@@ -443,8 +444,8 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
     f32 temp_f4_990;
     f32 temp_f6_856;
     arg_sp10 = arg2;
-    arg_sp108 = M2C_FIELD(&zero, f64 *, 0);
-    arg_sp110 = M2C_FIELD(&zero, f64 *, 8);
+    arg_sp108 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    arg_sp110 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f23_732 = &arg3 * arg4;
     &arg3 = 0.0f;
     if (GetClosest(arg0, arg_sp10, arg1, *((MKVector3 *) &arg_sp108), arg3, temp_f23_732, *((PushOutResult *) &arg_sp160)) != 0) {
@@ -800,7 +801,7 @@ void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg
     var_r29_1579 = 0;
 loop_4:
     if (var_r29_1579 < temp_r31_1576) {
-        if (gMK->IsEnabled(*(&sp18 + var_r26_1575), sWorkingChunkID.unk0) != 0) {
+        if (gMK->IsEnabled(*(&sp18 + var_r26_1575), MKResource::sWorkingChunkID.unk0) != 0) {
             *(this + (this->unk7F8 * 8)) = *(&sp18 + var_r26_1575);
             temp_r4_1599 = this->unk7F8 * 8;
             temp_r3_1602 = M2C_FIELD(*(this + temp_r4_1599), void **, 8);
@@ -834,7 +835,7 @@ f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, i
     f32 var_f24_1710;
     f32 var_f25_1708;
     f32 var_f31_1704;
-    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f31_1704 = 0.0f;
     arg_sp14 = 0.0f;
     var_f25_1708 = -1.0f;
@@ -877,7 +878,7 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
     f32 var_f27_1847;
     f32 var_f29_1853;
     f32 var_f30_1851;
-    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f27_1847 = 0.0f;
     arg_sp14 = 0.0f;
     var_f30_1851 = -1.0f;
@@ -1633,7 +1634,7 @@ loop_5:
 
 #if 0 // DRAFT: undefined identifier 'Tools_ClosestPropsPos'
 void Tools_cpp::__sinit() {
-    M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif

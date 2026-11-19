@@ -115,7 +115,7 @@ void DreadWing::UpdateDropBox() {
     s32 var_r0_387;
     void *temp_r4_315;
     if ((u32) this->unkAFC != 0U) {
-        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "R_Foot"), (MKVector3 *) &arg_spE8);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Foot"), (MKVector3 *) &arg_spD8);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -136,8 +136,8 @@ void DreadWing::UpdateDropBox() {
         arg_spB8 = arg_sp28;
         arg_sp80 = (f64) arg_sp30;
         arg_spC0 = (f64) arg_sp30;
-        arg_sp98 = M2C_FIELD(&up, f64 *, 0);
-        arg_spA0 = M2C_FIELD(&up, f64 *, 8);
+        arg_sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+        arg_spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
         arg_spAC = 0.0f;
         if (var_f7_335 > 0.000001f) {
             if (var_f7_335 > 0.0f) {

@@ -271,8 +271,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     arg_sp2B8 = 0;
     (s16) arg_sp2B8 = 1;
     arg_sp2BC = -1;
-    arg_sp290 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp298 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2C8 = 0;
     if (temp_r4_555 != NULL) {
         arg_sp88.GetPos();
@@ -397,8 +397,8 @@ block_24:
     arg_sp2B8 = 0;
     (s16) arg_sp2B8 = 1;
     arg_sp2BC = -1;
-    arg_sp290 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp298 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2C8 = 0;
     if (temp_r4_764 != NULL) {
         arg_sp78.GetPos();

@@ -10,6 +10,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -572,28 +573,28 @@ MKVector3 *Character::UpdateVelocity() {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
             sp90 = sp20;
-            sp28 = up.unk8 * this->unk5E4;
+            sp28 = MKVector3::up.unk8 * this->unk5E4;
             sp98 = (f64) sp28;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
             this->unk59C += (f32) sp98;
         }
-        var_r3_705 = (u8) &up;
+        var_r3_705 = (u8) &MKVector3::up;
         temp_f4_938 = this->unk598;
         temp_f5_940 = this->unk588.unkC;
         temp_f6_944 = this->unk59C;
-        if (((temp_f6_944 * M2C_FIELD((u8) &up, f32 *, 8)) + ((temp_f5_940 * M2C_FIELD((u8) &up, f32 *, 0)) + (temp_f4_938 * M2C_FIELD((u8) &up, f32 *, 4)))) < -1500.0f) {
+        if (((temp_f6_944 * M2C_FIELD((u8) &MKVector3::up, f32 *, 8)) + ((temp_f5_940 * M2C_FIELD((u8) &MKVector3::up, f32 *, 0)) + (temp_f4_938 * M2C_FIELD((u8) &MKVector3::up, f32 *, 4)))) < -1500.0f) {
             __ml((temp_f6_944 * this->unkD8) + ((temp_f5_940 * this->unkD0) + (temp_f4_938 * this->unkD4)), sp80);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
-            var_r3_705 = (u8) &up;
+            var_r3_705 = (u8) &MKVector3::up;
             this->unk59C -= sp80.unk8;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
             sp70 = sp10;
-            sp18 = M2C_FIELD((u8) &up, f32 *, 8) * -1500.0f;
+            sp18 = M2C_FIELD((u8) &MKVector3::up, f32 *, 8) * -1500.0f;
             sp78 = (f64) sp18;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -674,7 +675,7 @@ void Character::UpdateModel() {
     f32 temp_f7_1145;
     f32 temp_f8_1143;
     f32 temp_f9_1148;
-    M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f8_1143 = -this->unkC0;
     temp_f7_1145 = -this->unkC4;
     temp_f10_1146 = this->unkD4;
@@ -1033,8 +1034,8 @@ void Character::UpdateMovementArbitrary() {
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
             this->unk59C += (f32) sp158;
             sp300 = M2C_FIELD(this, f64 *, 0x598);
-            M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-            M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+            M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+            M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
             sp308 = M2C_FIELD(this, f64 *, 0x5A0);
             this->unk6B5 |= 0x40;
         }
@@ -1787,14 +1788,14 @@ void Character::SetupCollision() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 s32 Character::IsActive() {
     s32 temp_r3_3259;
     s32 var_r31_3258;
 
     var_r31_3258 = 0;
     temp_r3_3259 = this->unk10;
-    if ((temp_r3_3259 & 0x20000) && (temp_r3_3259 & 0x40000) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, sWorkingChunkID.unk0) != 0)) {
+    if ((temp_r3_3259 & 0x20000) && (temp_r3_3259 & 0x40000) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) != 0)) {
         var_r31_3258 = 1;
     }
     return var_r31_3258;
@@ -2452,13 +2453,13 @@ void Character::LoadDone() {
     M2C_FIELD(this, f64 *, 0xC0) = temp_f3_4620;
     M2C_FIELD(this, f64 *, 0xC8) = temp_f2_4621;
     this->unk6B5 |= 0x40;
-    M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
     temp_f1_4629 = M2C_FIELD(this, f64 *, 0xF0);
     M2C_FIELD(this, f64 *, 0xD0) = temp_f1_4629;
     M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(this, f64 *, 0xF8);
     this->unk6B5 |= 0x40;
-    UpdateModel(&up, 1, temp_f1_4629, temp_f2_4621, temp_f3_4620);
+    UpdateModel(&MKVector3::up, 1, temp_f1_4629, temp_f2_4621, temp_f3_4620);
     SetupCollision();
     this->unk600.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unk600.Show(0U);

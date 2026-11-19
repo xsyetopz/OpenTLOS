@@ -1,4 +1,5 @@
 #include "spyro/source/MainMenuScreen.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/KDMemoryCard.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/UIButton.h"
@@ -54,8 +55,8 @@ void MainMenuScreen::Update() {
         temp_r3_47 = this->unkD0;
         if (stricmp(temp_r3_47->GetChild(M2C_FIELD(temp_r3_47, s32 *, 0x68))->unk4, "NewGame") == 0) {
             pLoadChunkInfo = M2C_FIELD(&gb, ChunkInfo **, 0x330);
-            gameData.ClearData();
-            gameData.SetSaveChunk(pLoadChunkInfo);
+            ((GameData *) (&GameData::gameData))->ClearData();
+            ((GameData *) (&GameData::gameData))->SetSaveChunk(pLoadChunkInfo);
             Autosave_CopyGameData();
         }
         temp_r3_70 = this->unkD0;
@@ -217,14 +218,14 @@ void MainMenuScreen::OnEnter() {
     temp_r3_373 = this->unkD0->FindChild("Extras");
     if (temp_r3_373 != NULL) {
         var_r3_377 = 5;
-        if (((u8) gameData.unk18A >> 6U) & 1) {
+        if (((u8) GameData::gameData.unk18A >> 6U) & 1) {
             var_r3_377 = 4;
         }
         sp10 = var_r3_377;
         sp14 = 0;
         temp_r3_373->Message(&sp10);
         var_r3_394 = 3;
-        if (((u8) gameData.unk18A >> 6U) & 1) {
+        if (((u8) GameData::gameData.unk18A >> 6U) & 1) {
             var_r3_394 = 2;
         }
         sp8 = var_r3_394;

@@ -18,7 +18,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 sp20;
     f64 sp18;
@@ -36,7 +35,7 @@ void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, 
         temp_r31_56 = *temp_r6_50;
         M2C_FIELD(temp_r31_56, f32 *, 0x40) = 0.0f;
         M2C_FIELD(temp_r31_56, f32 *, 0x44) = arg2;
-        M2C_STRUCT_COPY(temp_r31_56, &identity, 0x40);
+        M2C_STRUCT_COPY(temp_r31_56, &Matrix::identity, 0x40);
         sp10 = 0.0f;
         sp8 = 0.0f;
         spC = 1.0f;
@@ -49,7 +48,6 @@ void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, 
         temp_r31_56->unk3C = 1.0f;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {

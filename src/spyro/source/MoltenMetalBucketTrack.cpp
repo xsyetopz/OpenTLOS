@@ -74,7 +74,7 @@ void MoltenMetalBucketTrack::Draw() {
 
     MKMaterial_SetMaterial(M2C_FIELD(checked_cast<MoltenMetalBucketTrackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x80));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r3_100 = lit_618;
     temp_r0_104 = (s32) (this->unk4C.unk8 / 300.0f);
     if (temp_r0_104 < var_r3_100) {
@@ -540,17 +540,17 @@ void MoltenMetalBucketTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MoltenMetalBucketTrack::Init() {
     MKProp::Init();
-    M2C_STRUCT_COPY((s32) (this + 0x9C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x9C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk8 = &this->unkA0;
     this->unk4C.unk28 = M2C_BITWISE(f32, checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp("MoltenMetalBucket")));
     this->unk4C.unk2C = 0.0f;
-    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unk90 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk98 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk90 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk98 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkC = (BoundingVolume *) &this->unk4C.unk34;
     this->unkE0 = 1;
     this->unkE4 = 0;
@@ -563,13 +563,13 @@ void MoltenMetalBucketTrackDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk60'
 void MoltenMetalBucketTrackDescriptor::Init() {
     MKPropDescriptor::Init();
-    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk68 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk70 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk68 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
     this->unk80 = MKMaterial_Create("p0017_FireSteelLedgeRail");
 }

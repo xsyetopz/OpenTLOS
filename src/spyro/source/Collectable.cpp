@@ -7,6 +7,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -451,7 +452,7 @@ void Collectable::RotateCameraFacing() {
     f64 temp_f1_905;
     void *temp_r5_891;
     void *temp_r5_902;
-    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     if ((s32) this->unk124->unk9C & 2) {
         arg_spA0.SetRotationYaw(this->unk60.unk4);
     }
@@ -1065,7 +1066,7 @@ u8 Collectable::FindGround() {
         sp34 = 20.0f;
         sp68 = (f64) sp38;
         sp60 = (f64) sp30;
-        this->unk10C = 1.0f - (((f32) M2C_FIELD(this, f64 *, 0x118) * up.unk8) + (((f32) M2C_FIELD(this, f64 *, 0x110) * up.unk0) + (M2C_FIELD(this, f32 *, 0x114) * up.unk4)));
+        this->unk10C = 1.0f - (((f32) M2C_FIELD(this, f64 *, 0x118) * MKVector3::up.unk8) + (((f32) M2C_FIELD(this, f64 *, 0x110) * MKVector3::up.unk0) + (M2C_FIELD(this, f32 *, 0x114) * MKVector3::up.unk4)));
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -1073,12 +1074,12 @@ u8 Collectable::FindGround() {
         sp48 = M2C_FIELD(this, f32 *, 0x58) - (f32) M2C_FIELD(this, f64 *, 0x98);
         sp78 = (f64) sp48;
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp10 = -up.unk0;
+        sp10 = -MKVector3::up.unk0;
         sp80 = sp20;
         sp28 = (f32) sp78 - (f32) sp68;
-        sp14 = -up.unk4;
+        sp14 = -MKVector3::up.unk4;
         sp88 = (f64) sp28;
-        sp18 = -up.unk8;
+        sp18 = -MKVector3::up.unk8;
         this->unk70 = (f64) sp10;
         var_f4_2344 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
         sp50 = (f64) sp10;
@@ -1216,11 +1217,11 @@ void Collectable::FallingState() {
     temp_f4_2549 = M2C_FIELD(this, f32 *, 0x114);
     temp_f9_2551 = M2C_FIELD(this, f32 *, 0x110);
     temp_f6_2555 = M2C_FIELD(this, f32 *, 0x118);
-    temp_f1_2559 = (temp_f6_2555 * up.unk8) + ((temp_f9_2551 * up.unk0) + (temp_f4_2549 * up.unk4));
+    temp_f1_2559 = (temp_f6_2555 * MKVector3::up.unk8) + ((temp_f9_2551 * MKVector3::up.unk0) + (temp_f4_2549 * MKVector3::up.unk4));
     if (((temp_f1_2559 < 0.9f) && (temp_f1_2559 > 0.0f)) || ((temp_f1_2559 > -0.1f) && (temp_f1_2559 < 0.0f))) {
-        sp28 = (up.unk4 * temp_f6_2555) - (up.unk8 * temp_f4_2549);
-        sp2C = (up.unk8 * temp_f9_2551) - (up.unk0 * temp_f6_2555);
-        sp30 = (up.unk0 * temp_f4_2549) - (up.unk4 * temp_f9_2551);
+        sp28 = (MKVector3::up.unk4 * temp_f6_2555) - (MKVector3::up.unk8 * temp_f4_2549);
+        sp2C = (MKVector3::up.unk8 * temp_f9_2551) - (MKVector3::up.unk0 * temp_f6_2555);
+        sp30 = (MKVector3::up.unk0 * temp_f4_2549) - (MKVector3::up.unk4 * temp_f9_2551);
         this->unk70 = (f64) sp28;
         M2C_FIELD(this, f64 *, 0x78) = (f64) sp30;
         temp_f9_2590 = (f32) M2C_FIELD(this, f64 *, 0x78);
@@ -1241,7 +1242,7 @@ void Collectable::FallingState() {
         temp_f8_2614 = (f32) M2C_FIELD(this, f64 *, 0x78);
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
-        if (((temp_f8_2614 * up.unk8) + ((temp_f6_2613 * up.unk0) + (temp_f7_2610 * up.unk4))) > 0.0f) {
+        if (((temp_f8_2614 * MKVector3::up.unk8) + ((temp_f6_2613 * MKVector3::up.unk0) + (temp_f7_2610 * MKVector3::up.unk4))) > 0.0f) {
             sp8 = -temp_f6_2613;
             spC = -temp_f7_2610;
             sp10 = -temp_f8_2614;
@@ -1663,7 +1664,7 @@ block_81:
         MKProp::Message(arg0);
         return;
     case 0x9:                                       /* switch 1 */
-        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
             if (!(this->unk10 & 0x40000)) {
                 return;
             }
@@ -1755,7 +1756,7 @@ block_81:
         }
         goto block_81;
     case 0xB9:                                      /* switch 1 */
-        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
             if (!(this->unk10 & 0x40000)) {
                 return;
             }
@@ -1843,7 +1844,7 @@ void Collectable::DrawLocator() {
     sp8 = this->unk50;
     sp10 = this->unk58;
     unkspC += 10000.0f;
-    MKShape_DrawLine(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp8), this->unk124->unk88, one, identity);
+    MKShape_DrawLine(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp8), this->unk124->unk88, MKVector4::one, Matrix::identity);
 }
 #endif
 
@@ -2051,7 +2052,7 @@ void Collectable::DrawShadow() {
     sp140 = (f64) sp90;
     MKMaterial_SetMaterial(M2C_FIELD(GetDescriptor(sp88, sp118.unk8), MKMaterial **, 0xB8));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) &sp288));
     MKSetTexCoord1F(0.0f, 0.0f);
@@ -2070,7 +2071,7 @@ void Collectable::DrawShadow() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_sp3C'
 void Collectable::Draw() {
     MKHeap *temp_r3_4160;
     MKHeap *temp_r3_4221;
@@ -2085,7 +2086,7 @@ void Collectable::Draw() {
         if ((s32) temp_r3_4171 & 4) {
             RotateCameraFacing();
         } else if ((s32) temp_r3_4171 & 0x4003) {
-            MKModel_SetWorldMatrix(this->unk4, identity);
+            MKModel_SetWorldMatrix(this->unk4, Matrix::identity);
             MKModel_SetRotation(this->unk4, this->unk60);
             M2C_STRUCT_COPY((s32) &arg_sp3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
             arg_sp40.Scale3x3((Matrix *) &arg_sp40, this->unkE0);
@@ -2108,7 +2109,7 @@ void Collectable::Draw() {
             MKModel_SetAlpha(this->unk4, this->unk20);
         }
         MKModel_Draw(this->unk4, NULL);
-        if (((s32) this->unk124->unk9C & 0x10) || ((u8) bDrawLocator != 0)) {
+        if (((s32) this->unk124->unk9C & 0x10) || ((u8) CollectableDescriptor::bDrawLocator != 0)) {
             DrawLocator();
         }
         if ((s32) this->unk124->unk9C & 8) {
@@ -2246,11 +2247,11 @@ void Collectable::ClearData() {
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
 void Collectable::LoadDone() {
-    this->unk50 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-    this->unk58 = M2C_FIELD(&loadInfo, f64 *, 0x48);
-    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x50);
-    M2C_FIELD(this, f64 *, 0x68) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x58);
-    this->unkE0 = M2C_FIELD(&loadInfo, f32 *, 0x60);
+    this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    this->unk58 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
+    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
+    M2C_FIELD(this, f64 *, 0x68) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
+    this->unkE0 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x60);
     MKProp::LoadDone();
     if (!((s32) this->unk124->unk9C & 8)) {
         this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
@@ -2258,7 +2259,7 @@ void Collectable::LoadDone() {
         this->unk8 = MKModel_GetWorldMatrix(this->unk4);
     } else {
         this->unk4 = NULL;
-        this->unk8 = &identity;
+        this->unk8 = &Matrix::identity;
     }
     ClearData();
     if ((u8) M2C_FIELD(this->unk124, u8 *, 0x67) != 0) {

@@ -38,7 +38,7 @@ void FallingDustProp::Deinit() {
 
 #if 0 // DRAFT: undefined identifier 'arg_spC'
 void FallingDustProp::Draw() {
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp40 = 0.0f;
     arg_sp44 = this->unkA0;
     arg_sp48 = 0.0f;

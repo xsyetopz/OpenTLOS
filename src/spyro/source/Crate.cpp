@@ -5,10 +5,12 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDPropEx.h"
@@ -473,7 +475,7 @@ void Crate::Shatter(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void Crate::SpawnContents() {
     f64 sp10;
     f64 sp8;
@@ -487,7 +489,7 @@ void Crate::SpawnContents() {
 loop_6:
     if (var_r30_913 < (s32) this->unk17C) {
         temp_r29_917 = M2C_FIELD(this, s32 *, 0x17C);
-        if (gameData.unk70.GetGemAvailable((StatType) temp_r29_917) != 0) {
+        if (((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) temp_r29_917) != 0) {
             temp_r0_923 = this->unk180;
             var_r6_924 = -1;
             if (temp_r0_923 > -1) {
@@ -592,7 +594,7 @@ void Crate::Burn() {
     this->unkC8 = 2;
 }
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void Crate::Message(MKMessage *arg0) {
     f64 sp40;
     f64 sp38;
@@ -619,7 +621,7 @@ void Crate::Message(MKMessage *arg0) {
     var_r28_1166 = 0;
     temp_r0_1167 = this->unkC8;
     var_r29_1169 = 0;
-    if ((temp_r0_1167 != 4) && (temp_r0_1167 != 2) && (temp_r0_1167 != 7) && (M2C_FIELD(*gMK, u8 (**)(void **, Crate *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0) != 0)) {
+    if ((temp_r0_1167 != 4) && (temp_r0_1167 != 2) && (temp_r0_1167 != 7) && (M2C_FIELD(*gMK, u8 (**)(void **, Crate *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0)) {
         var_r29_1169 = 1;
     }
     if ((var_r29_1169 != 0) && (this->unk10 & 0x160000)) {
@@ -728,7 +730,7 @@ void Crate::Update() {
                 MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_sp60));
             }
             if ((u32) this->unk184 != 0U) {
-                M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_f31_1461 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
                 temp_f1_1469 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1461;
                 arg_sp28 = 0.0f;
@@ -883,7 +885,7 @@ loop_3:
     if ((u8) M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x124) != 0) {
         this->unk184 = MKModel_Create(collectableTypes[M2C_FIELD(this, u32 *, 0x17C)].unk10, NULL, 2, NULL);
         if ((u32) this->unk184 != 0U) {
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f31_1832 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
             temp_f1_1840 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1832;
             arg_sp18 = 0.0f;

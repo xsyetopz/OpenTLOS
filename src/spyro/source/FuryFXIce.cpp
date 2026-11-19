@@ -9,6 +9,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBreathSnowFlakes.h"
@@ -319,7 +320,7 @@ void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, floa
             M2C_FIELD(temp_r31_535, s32 *, 0x50) = 1;
             M2C_FIELD(temp_r31_535, f32 *, 0x48) = 0.5f;
             M2C_FIELD(temp_r31_535, f32 *, 0x4C) = 1.0f;
-            M2C_STRUCT_COPY(temp_r31_535, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r31_535, &Matrix::identity, 0x40);
             sp10 = 1.0f;
             sp20 = -1.0f;
             sp8 = 1.0f;
@@ -341,7 +342,7 @@ void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, floa
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp38;
     f64 sp30;
@@ -370,9 +371,9 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     this->unkA0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unkA8 = M2C_FIELD(&arg0, f64 *, 8);
     this->unkB1 = (s8) arg1;
-    temp_r3_628 = gameData.unk158 << 5;
-    temp_r29_630 = *(&gameData.unk70 + (temp_r3_628 + 0x7C));
-    temp_r5_632 = &gameData.unk70 + (temp_r3_628 + 0x64);
+    temp_r3_628 = GameData::gameData.unk158 << 5;
+    temp_r29_630 = *(&GameData::gameData.unk70 + (temp_r3_628 + 0x7C));
+    temp_r5_632 = &GameData::gameData.unk70 + (temp_r3_628 + 0x64);
     if (temp_r29_630 == 3) {
         var_r3_636 = 0;
         if (((s32) M2C_FIELD(temp_r5_632, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_632, s32 *, 4) == 3)) {
@@ -382,7 +383,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     } else {
         var_r28_646 = *(temp_r5_632 + (temp_r29_630 * 4));
     }
-    temp_r27_653 = gameData.unk158;
+    temp_r27_653 = GameData::gameData.unk158;
     temp_r4_661 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -416,7 +417,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
             M2C_FIELD(temp_r3_728, f64 *, 0x18) = (f64) sp18;
         }
     }
-    M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_747 = &this->unk120.unk28;
     temp_r3_747->RotateYaw((Matrix *) temp_r3_747, 0.3926991f);
     gb.unk381 = 1;
@@ -588,7 +589,7 @@ void FuryFXIce::Update() {
                 this->unk90 = 2;
                 KDSound_Play3d(GS_SpyroFuryIce1, (MKVector3 *) &this->unkA0, 0U, -1, 0.0f, 0U);
                 ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.1f, 0.3f, 2.0f, 0, 4.0f, 0U);
-                M2C_STRUCT_COPY((s32) &arg_sp4AC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp4AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_spA0 = 0.0f;
                 arg_sp98 = 0.0f;
                 arg_sp9C = 0.0f;
@@ -699,7 +700,7 @@ loop_31:
                 var_r27_1107 += 1;
                 goto loop_31;
             }
-            M2C_STRUCT_COPY((s32) &arg_sp46C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp46C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f2_1308 = 75.0f * temp_f20_1123;
             arg_sp90 = temp_f2_1308;
             arg_sp88 = temp_f2_1308;
@@ -733,7 +734,7 @@ loop_31:
                 this->unk94 = 1.5f;
                 var_r4_1391 = 0;
                 this->unk90 = 3;
-                temp_r3_1396 = &gameData.unk70 + ((gameData.unk158 << 5) + 0x64);
+                temp_r3_1396 = &GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x64);
                 if (((s32) M2C_FIELD(temp_r3_1396, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1396, s32 *, 4) == 3)) {
                     var_r4_1391 = 1;
                 }
@@ -753,7 +754,7 @@ loop_31:
                 this->unk94 = 1.5f;
                 var_r4_1463 = 0;
                 this->unk90 = 4;
-                temp_r3_1468 = &gameData.unk70 + ((gameData.unk158 << 5) + 0x64);
+                temp_r3_1468 = &GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x64);
                 if (((s32) M2C_FIELD(temp_r3_1468, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1468, s32 *, 4) == 3)) {
                     var_r4_1463 = 1;
                 }
@@ -780,7 +781,7 @@ loop_31:
                     arg_sp280 = (f64) arg_sp70;
                     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp3A8, arg_sp68);
                 }
-                M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r3_1599 = &this->unk120.unk28;
                 temp_r3_1599->RotateYaw((Matrix *) temp_r3_1599, -0.3926991f);
                 gb.unk2CC.Disable((s32) this->unk190);
@@ -791,7 +792,7 @@ loop_31:
                     if (temp_r3_1614 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(), 0x20)();
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_1614);
-                        M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&identity - 4) + 4, 0x40);
+                        M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                         arg_sp430.Scale3x3((Matrix *) &arg_sp430, 4.0f);
                         MKVector(0.0f, 150.0f, 0.0f);
                         MKVector(1.0f, 0.0f, 1.0f);
@@ -833,7 +834,7 @@ loop_31:
                 var_f1_1724 = 0.0f;
             }
             temp_f18_1743 = var_f1_1724 / 1.5f;
-            M2C_STRUCT_COPY((s32) &arg_sp3EC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp3EC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f1_1761 = 75.0f * (1.0f - temp_f18_1743);
             arg_sp4C = 50.0f * temp_f18_1743;
             arg_sp48 = temp_f1_1761;
@@ -1048,7 +1049,7 @@ void FuryFXIce::Init() {
     this->unk120.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
     this->unk120.unk10 = 2000.0f;
     this->unk120.unk14 = 1000.0f;
-    M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_2211 = &this->unk120.unk28;
     temp_r3_2211->RotateYaw((Matrix *) temp_r3_2211, 0.3926991f);
     M2C_FIELD(this, f32 *, 0x130) = 50.0f;

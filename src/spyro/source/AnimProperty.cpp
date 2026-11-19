@@ -27,7 +27,7 @@ void AnimProperty::Update() {
     s32 var_r3_82;
     s32 var_r6_81;
 
-    if (((u8) *(pInstanceMem.__vptr + this->unk8) != 0) && ((M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) pInstanceMem.__vptr), void **, 0x80), s32 *, 0x2C) & 1) || (M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) pInstanceMem.__vptr), void **, 0x80), s32 *, 0x2C) & 2))) {
+    if (((u8) *(KDProperty::pInstanceMem.__vptr + this->unk8) != 0) && ((M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) KDProperty::pInstanceMem.__vptr), void **, 0x80), s32 *, 0x2C) & 1) || (M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) KDProperty::pInstanceMem.__vptr), void **, 0x80), s32 *, 0x2C) & 2))) {
         var_r30_71 = 0;
         var_r29_72 = 0;
         if ((s32) this->unk18 > 1) {
@@ -55,14 +55,14 @@ loop_5:
             }
             var_r29_72 += 1;
             if (var_r29_72 < temp_r5_80) {
-                temp_r3_107 = *(pInstanceMem.__vptr + (this->unk8 + 4));
+                temp_r3_107 = *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 4));
                 if ((var_r30_71 == temp_r3_107) && ((s32) this->unk1C != temp_r3_107)) {
                     goto loop_4;
                 }
             }
         }
-        *(pInstanceMem.__vptr + (this->unk8 + 4)) = var_r30_71;
-        ((MKAnimScript *) (M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) pInstanceMem.__vptr), MKAnimScript **, 0x80)))->SetAnim(*(this->unk14 + (var_r30_71 * 8)), 1.0f, 0.0f, 0, -1);
+        *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 4)) = var_r30_71;
+        ((MKAnimScript *) (M2C_FIELD(checked_cast<KDProp *, MKProp>((MKProp *) KDProperty::pInstanceMem.__vptr), MKAnimScript **, 0x80)))->SetAnim(*(this->unk14 + (var_r30_71 * 8)), 1.0f, 0.0f, 0, -1);
     }
 }
 #endif
@@ -71,10 +71,10 @@ loop_5:
 void AnimProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 3:
-        *(pInstanceMem.__vptr + this->unk8) = 1;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
         return;
     case 2:
-        *(pInstanceMem.__vptr + this->unk8) = 0;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
         return;
     }
 }

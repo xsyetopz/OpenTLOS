@@ -14,6 +14,7 @@
 #include "spyro/source/FlameBreathPS.h"
 #include "spyro/source/FuryFXFire.h"
 #include "spyro/source/FuryFXFire2.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/LightManager.h"
@@ -237,9 +238,9 @@ u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, co
         var_f26_188 = 1.0f;
         var_r25_190 = 0;
         var_r24_192 = 0;
-        temp_r3_193 = gameData.unk70.unkE8 << 5;
-        temp_r0_195 = *(&gameData.unk70 + (temp_r3_193 + 0x7C));
-        temp_r4_197 = &gameData.unk70 + (temp_r3_193 + 0x64);
+        temp_r3_193 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_195 = *(&GameData::gameData.unk70 + (temp_r3_193 + 0x7C));
+        temp_r4_197 = &GameData::gameData.unk70 + (temp_r3_193 + 0x64);
         if (temp_r0_195 == 3) {
             var_r3_201 = 0;
             if (((s32) M2C_FIELD(temp_r4_197, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_197, s32 *, 4) == 3)) {
@@ -439,9 +440,9 @@ loop_57:
         sp1B8 = (f64) spA8;
         temp_r3_141->Fire(arg0, *((MKVector3 *) &sp1B0), var_f26_188, M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **, f32, f32), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_617, (f32) sp298), var_r25_190, var_r24_192, 0, *((MKVector3 *) &sp1A0));
         var_r3_638 = 0;
-        temp_r4_639 = gameData.unk70.unkE8 << 5;
-        temp_r0_641 = *(&gameData.unk70 + (temp_r4_639 + 0x7C));
-        temp_r5_643 = &gameData.unk70 + (temp_r4_639 + 0x64);
+        temp_r4_639 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_641 = *(&GameData::gameData.unk70 + (temp_r4_639 + 0x7C));
+        temp_r5_643 = &GameData::gameData.unk70 + (temp_r4_639 + 0x64);
         if (temp_r0_641 == 3) {
             var_r4_647 = 0;
             if (((s32) M2C_FIELD(temp_r5_643, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_643, s32 *, 4) == 3)) {
@@ -637,10 +638,10 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     temp_r0_919 = this->unkB8;
     switch (temp_r0_919) {                          /* switch 1; irregular */
     case 0:                                         /* switch 1 */
-        temp_r22_936 = gameData.unk70.unkE8;
+        temp_r22_936 = GameData::gameData.unk70.unkE8;
         temp_r3_938 = temp_r22_936 << 5;
-        temp_r23_940 = *(&gameData.unk70 + (temp_r3_938 + 0x7C));
-        temp_r4_942 = &gameData.unk70 + (temp_r3_938 + 0x64);
+        temp_r23_940 = *(&GameData::gameData.unk70 + (temp_r3_938 + 0x7C));
+        temp_r4_942 = &GameData::gameData.unk70 + (temp_r3_938 + 0x64);
         if (temp_r23_940 == 3) {
             var_r3_946 = 0;
             if (((s32) M2C_FIELD(temp_r4_942, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_942, s32 *, 4) == 3)) {
@@ -659,13 +660,13 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         } else {
             var_r21_975 = *(temp_r4_942 + (temp_r23_940 * 4));
         }
-        streamHitMsg.Init(arg0, gameData.unk70.GetBreathAttackDamage(temp_r22_936, temp_r23_940, var_r6_956), temp_r23_940, var_r21_975, temp_r22_936, temp_r22_936, 0, -1);
+        streamHitMsg.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r22_936, temp_r23_940, var_r6_956), temp_r23_940, var_r21_975, temp_r22_936, temp_r22_936, 0, -1);
         if ((u8) M2C_FIELD(&gb, u8 *, 0x3B5) == 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (gameData.unk70.unk30.unk0 == 0.0f) {
-                temp_r3_1006 = gameData.unk70.unkE8 << 5;
-                temp_r6_1008 = *(&gameData.unk70 + (temp_r3_1006 + 0x7C));
-                temp_r4_1010 = &gameData.unk70 + (temp_r3_1006 + 0x64);
+            if (GameData::gameData.unk70.unk30.unk0 == 0.0f) {
+                temp_r3_1006 = GameData::gameData.unk70.unkE8 << 5;
+                temp_r6_1008 = *(&GameData::gameData.unk70 + (temp_r3_1006 + 0x7C));
+                temp_r4_1010 = &GameData::gameData.unk70 + (temp_r3_1006 + 0x64);
                 if (temp_r6_1008 == 3) {
                     var_r3_1014 = 0;
                     if (((s32) M2C_FIELD(temp_r4_1010, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1010, s32 *, 4) == 3)) {
@@ -676,7 +677,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
                     var_r7_1024 = *(temp_r4_1010 + (temp_r6_1008 * 4));
                 }
                 unksp8 = -1;
-                streamHitMsg.Init(arg0, 0, temp_r6_1008, var_r7_1024, gameData.unk70.unkE8, gameData.unk70.unkE8, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                streamHitMsg.Init(arg0, 0, temp_r6_1008, var_r7_1024, GameData::gameData.unk70.unkE8, GameData::gameData.unk70.unkE8, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 temp_f16_1042 = arg2.unk8;
                 temp_f24_1048 = arg3.unk8;
                 var_r22_1051 = 0;
@@ -782,9 +783,9 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
                 return 1;
             }
         }
-        temp_r3_1295 = gameData.unk70.unkE8 << 5;
-        temp_r0_1297 = *(&gameData.unk70 + (temp_r3_1295 + 0x7C));
-        temp_r4_1299 = &gameData.unk70 + (temp_r3_1295 + 0x64);
+        temp_r3_1295 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_1297 = *(&GameData::gameData.unk70 + (temp_r3_1295 + 0x7C));
+        temp_r4_1299 = &GameData::gameData.unk70 + (temp_r3_1295 + 0x64);
         if (temp_r0_1297 == 3) {
             var_r3_1303 = 0;
             if (((s32) M2C_FIELD(temp_r4_1299, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1299, s32 *, 4) == 3)) {
@@ -1072,9 +1073,9 @@ block_64:
                 this->unkAC->Emit(*((MKVector3 *) &unksp658), *((MKVector3 *) &unksp608), unksp20);
                 var_r22_1672 += 1;
             } while (var_r22_1672 < 5);
-            temp_r3_1922 = gameData.unk70.unkE8 << 5;
-            temp_r0_1924 = *(&gameData.unk70 + (temp_r3_1922 + 0x7C));
-            temp_r4_1926 = &gameData.unk70 + (temp_r3_1922 + 0x64);
+            temp_r3_1922 = GameData::gameData.unk70.unkE8 << 5;
+            temp_r0_1924 = *(&GameData::gameData.unk70 + (temp_r3_1922 + 0x7C));
+            temp_r4_1926 = &GameData::gameData.unk70 + (temp_r3_1922 + 0x64);
             if (temp_r0_1924 == 3) {
                 var_r3_1930 = 0;
                 if (((s32) M2C_FIELD(temp_r4_1926, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1926, s32 *, 4) == 3)) {
@@ -1318,9 +1319,9 @@ loop_144:
                 goto loop_144;
             }
         }
-        temp_r3_2486 = gameData.unk70.unkE8 << 5;
-        temp_r0_2488 = *(&gameData.unk70 + (temp_r3_2486 + 0x7C));
-        temp_r4_2490 = &gameData.unk70 + (temp_r3_2486 + 0x64);
+        temp_r3_2486 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_2488 = *(&GameData::gameData.unk70 + (temp_r3_2486 + 0x7C));
+        temp_r4_2490 = &GameData::gameData.unk70 + (temp_r3_2486 + 0x64);
         if (temp_r0_2488 == 3) {
             var_r3_2494 = 0;
             if (((s32) M2C_FIELD(temp_r4_2490, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_2490, s32 *, 4) == 3)) {
@@ -1370,7 +1371,7 @@ loop_144:
         return 0;
     case 3:                                         /* switch 1 */
         var_r3_2589 = 0;
-        temp_r4_2595 = &gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x64);
+        temp_r4_2595 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
         if (((s32) M2C_FIELD(temp_r4_2595, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_2595, s32 *, 4) == 3)) {
             var_r3_2589 = 1;
         }

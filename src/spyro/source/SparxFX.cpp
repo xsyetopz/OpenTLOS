@@ -501,8 +501,8 @@ void SparxFX::Update() {
                 M2C_FIELD(temp_r3_1033, f64 *, 0x10) = sp150;
                 M2C_FIELD(temp_r3_1033, f64 *, 0x18) = sp158;
                 M2C_FIELD(temp_r3_1033, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
-                M2C_FIELD(temp_r29_1036, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-                M2C_FIELD(temp_r29_1036, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                M2C_FIELD(temp_r29_1036, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                M2C_FIELD(temp_r29_1036, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 M2C_FIELD(temp_r29_1036, f32 *, 0x18) = (f32) (0.8f * this->unkC8);
                 M2C_FIELD(temp_r29_1036, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r29_1036, f32 *, 0x14) = (f32) M2C_FIELD(this->unkD4, f32 *, 0xF4);

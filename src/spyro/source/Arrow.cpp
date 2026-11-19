@@ -119,8 +119,8 @@ void Arrow::Update() {
             sp109 = 0;
             sp10A = 1;
             sp10C = -1;
-            spE0 = M2C_FIELD(&one, f64 *, 0);
-            spE8 = M2C_FIELD(&one, f64 *, 8);
+            spE0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            spE8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp118 = 0;
             if (this != NULL) {
                 sp18.GetPos();
@@ -138,7 +138,7 @@ void Arrow::Update() {
         temp_r5_282 = this->unk8;
         sp58 = M2C_FIELD(temp_r5_282, f64 *, 0x30);
         sp60 = M2C_FIELD(temp_r5_282, f64 *, 0x38);
-        gb.EmitDust(*((MKVector3 *) &sp58), zero, 0.5f, 0.0f);
+        gb.EmitDust(*((MKVector3 *) &sp58), MKVector3::zero, 0.5f, 0.0f);
     }
 }
 #endif

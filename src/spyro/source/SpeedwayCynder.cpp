@@ -618,7 +618,7 @@ void SpeedwayCynder::EventCameraUpdate() {
     f64 temp_f1_1530;
     s32 temp_r3_1549;
     s32 var_r0_1559;
-    M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f1_1454 = this->unk37C->unk2C0 - 0.001f;
     if (var_f1_1454 > 0.0f) {
 
@@ -913,16 +913,16 @@ void SpeedwayCynder::BiteUpdate() {
                 sp68 = 7;
                 sp90 = 1;
                 sp94 = this;
-                sp70 = M2C_FIELD(&zero, f64 *, 0);
-                sp78 = M2C_FIELD(&zero, f64 *, 8);
+                sp70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                sp78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 spA8 = 0;
                 spB4 = 2;
                 spB0 = 15.0f;
                 spA9 = 0;
                 spAA = 1;
                 spAC = -1;
-                sp80 = M2C_FIELD(&one, f64 *, 0);
-                sp88 = M2C_FIELD(&one, f64 *, 8);
+                sp80 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp88 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spB8 = 0;
                 if (this != NULL) {
                     sp18.GetPos();
@@ -1117,15 +1117,15 @@ void SpeedwayCynder::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk330'
 void SpeedwayCynder::Reset() {
     this->unk374 = 5.0f;
     this->unk36C = 10.0f;
     this->unk370 = 0;
     this->unk38C = 0.0f;
     this->unk3F8 = 0;
-    this->unk320 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk328 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk320 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk328 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     memset(&this->unk330, 0, 0x10U);
     this->unk240 = 1;
     this->unk248 = 0.0f;

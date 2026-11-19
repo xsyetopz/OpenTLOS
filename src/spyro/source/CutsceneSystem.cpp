@@ -8,6 +8,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/CutsceneObject.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/KDSynkerPlayer3.h"
@@ -467,7 +468,7 @@ void CutsceneSystem::DrawSubtitles() {
     if ((temp_r3_991 != NULL) && (temp_r3_991->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) != 0)) {
         ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xE8), 544.0f, 435.2f, (Matrix *) &arg_sp30, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
     }
-    gameData.GetGameSettings();
+    ((GameData *) (&GameData::gameData))->GetGameSettings();
     if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) == 0) || ((s32) this->unk74 == 1)) {
         if ((s8 *) this->unk80 != NULL) {
             if ((s32) this->unk8C != 5) {
@@ -1019,7 +1020,7 @@ void CutsceneSystem::LoadingInit() {
     } else {
         var_r0_2136 = NULL;
     }
-    pCameraProp.__vptr = var_r0_2136;
+    KDSynkerPlayer3::pCameraProp.__vptr = var_r0_2136;
 }
 #endif
 
@@ -1099,7 +1100,7 @@ void CutsceneSystem::Init() {
         ((UIStringTable *) (temp_r31_2281 + 0x260))->UIStringTable();
     }
     this->unk78 = temp_r31_2281;
-    pEventCreationTable.__vptr = &gEventCreationTable;
+    KDSynkerPlayer3::pEventCreationTable.__vptr = &gEventCreationTable;
     this->unk68 = NULL;
     this->unk6C = NULL;
     this->unk70 = 0;

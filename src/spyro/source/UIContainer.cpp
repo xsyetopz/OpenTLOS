@@ -1,6 +1,7 @@
 #include "spyro/source/UIContainer.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
@@ -192,7 +193,7 @@ s32 UIContainer::LoadLine(UIDataLine *arg0) {
         Load(arg0->GetString(0), NULL);
         return 1;
     }
-    var_r29_339 = list.unk0;
+    var_r29_339 = UIObjectDescriptor::list.unk0;
 loop_12:
     if (var_r29_339 == NULL) {
         return UIObject::LoadLine(arg0);

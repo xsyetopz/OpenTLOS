@@ -333,9 +333,9 @@ void TriggerPlaneObject::LoadDone() {
 
 #if 0 // DRAFT: expression syntax error
 void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
-    tempBoxRot.__vptr = 0.0f;
-    tempBoxRot.unk4 = 0.0f;
-    tempBoxRot.unk8 = 0.0f;
+    TriggerBoxObject::tempBoxRot.__vptr = 0.0f;
+    TriggerBoxObject::tempBoxRot.unk4 = 0.0f;
+    TriggerBoxObject::tempBoxRot.unk8 = 0.0f;
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg1 - 4) + 4, 0x40);
     M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x78) = (f64) M2C_FIELD(&arg0, f64 *, 8);
@@ -348,10 +348,10 @@ void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
 
 #if 0 // DRAFT: expression syntax error
 void TriggerBoxObject::LoadDone() {
-    this->unk10.SetRotationPYR(*((MKVector3 *) &tempBoxRot));
-    tempBoxRot.__vptr = 0.0f;
-    tempBoxRot.unk4 = 0.0f;
-    tempBoxRot.unk8 = 0.0f;
+    this->unk10.SetRotationPYR(*((MKVector3 *) &TriggerBoxObject::tempBoxRot));
+    TriggerBoxObject::tempBoxRot.__vptr = 0.0f;
+    TriggerBoxObject::tempBoxRot.unk4 = 0.0f;
+    TriggerBoxObject::tempBoxRot.unk8 = 0.0f;
     this->unk80.InverseSimple(&this->unk10);
     this->unk60 = this->unk70 / -2.0f;
     this->unk64 = this->unk74 / -2.0f;
@@ -379,7 +379,7 @@ loop_10:
                 this->unk10.unk34 = unksp14;
                 this->unk10.unk38 = (f32) sp18;
                 this->unk10.unk3C = 1.0f;
-            } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) &tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk70, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", &sp8, 0) != 0) && (sp8 == 0)) {
+            } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) &TriggerBoxObject::tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk70, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", &sp8, 0) != 0) && (sp8 == 0)) {
                 this->unk50 &= 0xFFFFFFFE;
             }
             var_r30_786 = var_r30_786->unkC->GetNextLine(var_r30_786);
@@ -569,9 +569,7 @@ void TriggerObject::Init() {
     this->unk78 = 2.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'tempBoxRot'
 void TriggerObject_cpp::__sinit() {
-    M2C_FIELD(&tempBoxRot, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&tempBoxRot, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&TriggerBoxObject::tempBoxRot, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&TriggerBoxObject::tempBoxRot, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif

@@ -449,7 +449,7 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     void *temp_r3_856;
 
     this->unk48 = 0;
-    Init__32KDStateMachine<14SpyroMoveState>FPQ232KDStateMachine<14SpyroMoveState>5StateP32KDStateMachine<14SpyroMoveState>(&this->unk14, (KDStateMachine<SpyroMoveState>::State *) &states, NULL);
+    Init__32KDStateMachine<14SpyroMoveState>FPQ232KDStateMachine<14SpyroMoveState>5StateP32KDStateMachine<14SpyroMoveState>(&this->unk14, (KDStateMachine<SpyroMoveState>::State *) &SpyroMoveState::states, NULL);
     SelectState(0.0f);
     this->unk50 = arg0.IsMessageOnList(0x176);
     sp18.GetJoyDir();

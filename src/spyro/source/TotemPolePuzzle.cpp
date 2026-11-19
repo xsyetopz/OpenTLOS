@@ -4,6 +4,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/AssaultCannon.h"
@@ -142,9 +143,9 @@ s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("Pieces") != 0) {
-        this->unkE0 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-        this->unkE8 = M2C_FIELD(&loadInfo, f64 *, 0x48);
-        this->unkDC = M2C_FIELD(&loadInfo, f32 *, 0x54);
+        this->unkE0 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+        this->unkE8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
+        this->unkDC = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
         this->unkCC = arg0->GetNmbrOfSubLines();
         temp_r3_227 = arg0->unkC->GetSubLine(arg0);
         var_r28_229 = temp_r3_227;
@@ -344,7 +345,7 @@ void TotemPolePiece::Update() {
     if (var_f1_599 == 0.000001f) {
         this->unkDC = temp_f2_598;
     }
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10.RotateYaw((Matrix *) &arg_sp10, this->unkDC);
     temp_r3_626 = this->unk8;
     arg_sp40 = M2C_FIELD(temp_r3_626, f32 *, 0x30);

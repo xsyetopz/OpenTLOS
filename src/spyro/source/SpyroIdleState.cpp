@@ -2,7 +2,9 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/EventCamera.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
@@ -31,7 +33,7 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
         var_r3_34 = M2C_FIELD(this->unk10->unk258, u8 *, 0x14);
     }
     if (var_r3_34 != 0) {
-        var_r3_34 = gameData.unk158 != 2;
+        var_r3_34 = GameData::gameData.unk158 != 2;
     }
     if ((var_r3_34 != 0) && ((s32) this->unk14.unk0 != 4)) {
         this->unk14.SetState(this, 4, 0U);
@@ -357,13 +359,13 @@ void SpyroIdleState::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void SpyroIdleState::Update() {
     Spyro *temp_r3_839;
 
     temp_r3_839 = this->unk10;
     if ((s32) M2C_FIELD(temp_r3_839->unk26C.unk8, s32 *, 0x16C) > 0) {
-        temp_r3_839->SetDesiredVelocity(zero, 540000.0f);
+        temp_r3_839->SetDesiredVelocity(MKVector3::zero, 540000.0f);
         if (this->unk10->unk26C.unk8->unk8.HitID(2U) != 0) {
             this->unk44 = 1;
         } else {
@@ -427,7 +429,7 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(temp_r3_937->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     this->unk44 = arg0.IsMessageOnList(0x176);
     M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
-    this->unk10->SetDesiredVelocity(zero, 540000.0f);
+    this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     if (arg0.IsMessageOnList(0x186) != 0) {
         this->unk14.SetState(this, 0, 0U);
         this->unk10->SetAnim(0U, 0.0f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
@@ -487,7 +489,7 @@ void SpyroIdleState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroIdleState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroIdleState>FPQ232KDStateMachine<14SpyroIdleState>5StateP32KDStateMachine<14SpyroIdleState>(&this->unk14, (KDStateMachine<SpyroIdleState>::State *) &states, NULL);
+    Init__32KDStateMachine<14SpyroIdleState>FPQ232KDStateMachine<14SpyroIdleState>5StateP32KDStateMachine<14SpyroIdleState>(&this->unk14, (KDStateMachine<SpyroIdleState>::State *) &SpyroIdleState::states, NULL);
     this->unk28 = 0.0f;
     this->unk2C = 0;
     this->unk30.Init(M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0), MKAnimScript **, 0x34));

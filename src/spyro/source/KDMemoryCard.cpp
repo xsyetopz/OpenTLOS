@@ -331,10 +331,10 @@ void KDMemoryCard::SetState(KDMCState arg0) {
     s32 temp_r5_679;
 
     temp_r5_679 = (s32) arg0 * 0x18;
-    state.unk0 = (s32) arg0;
-    currentCard.unk0 = (s32) this;
-    if (__ptmf_test(stateData + temp_r5_679, temp_r5_679) != 0) {
-        __ptmf_scall(this, state.unk0 * 0x18);
+    KDMemoryCard::state.unk0 = (s32) arg0;
+    KDMemoryCard::currentCard.unk0 = (s32) this;
+    if (__ptmf_test(KDMemoryCard::stateData + temp_r5_679, temp_r5_679) != 0) {
+        __ptmf_scall(this, KDMemoryCard::state.unk0 * 0x18);
     }
 }
 #endif
@@ -343,15 +343,15 @@ void KDMemoryCard::SetState(KDMCState arg0) {
 s32 KDMemoryCard::Update() {
     s32 var_r3_743;
 
-    if (((u32) currentCard.unk0 == 0U) || ((s32) state.unk0 == 0) || ((s32) state.unk0 == 1)) {
+    if (((u32) KDMemoryCard::currentCard.unk0 == 0U) || ((s32) KDMemoryCard::state.unk0 == 0) || ((s32) KDMemoryCard::state.unk0 == 1)) {
         return 0;
     }
-    if (MKMemoryCard_GetStatus(*currentCard.unk0) == 1) {
+    if (MKMemoryCard_GetStatus(*KDMemoryCard::currentCard.unk0) == 1) {
         return 1;
     }
-    __ptmf_scall((KDMemoryCard *) currentCard.unk0, (s32) (stateData + (state.unk0 * 0x18)));
+    __ptmf_scall((KDMemoryCard *) KDMemoryCard::currentCard.unk0, (s32) (KDMemoryCard::stateData + (KDMemoryCard::state.unk0 * 0x18)));
     var_r3_743 = 0;
-    if (((s32) state.unk0 != 0) && ((s32) state.unk0 != 1)) {
+    if (((s32) KDMemoryCard::state.unk0 != 0) && ((s32) KDMemoryCard::state.unk0 != 1)) {
         var_r3_743 = 1;
     }
     return var_r3_743;
@@ -360,7 +360,7 @@ s32 KDMemoryCard::Update() {
 
 #if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::WasErrorDuringLast() {
-    return state.unk0 == 1;
+    return KDMemoryCard::state.unk0 == 1;
 }
 #endif
 
@@ -369,9 +369,9 @@ void KDMemoryCard::Reset(bool arg0) {
     this->unk8 = 1;
     if ((u8) this->unk9 != arg0) {
         if (arg0 != 0) {
-            numCardsPresent.unk0 += 1;
+            KDMemoryCard::numCardsPresent.unk0 += 1;
         } else {
-            numCardsPresent.unk0 -= 1;
+            KDMemoryCard::numCardsPresent.unk0 -= 1;
         }
     }
     this->unk9 = arg0;
@@ -392,7 +392,7 @@ void KDMemoryCard::Reset(bool arg0) {
 #if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::Init(int arg0) {
     this->unk0 = arg0;
-    state.unk0 = 0;
+    KDMemoryCard::state.unk0 = 0;
     this->unk4 = -1;
     Reset(0U);
 }
@@ -415,10 +415,10 @@ void KDMemoryCard::InitModule() {
 
 #if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::GetNextCard() {
-    if ((u32) currentCard.unk0 >= &card[1]) {
+    if ((u32) KDMemoryCard::currentCard.unk0 >= &card[1]) {
         return 0;
     }
-    return currentCard.unk0 + 0x280;
+    return KDMemoryCard::currentCard.unk0 + 0x280;
 }
 #endif
 

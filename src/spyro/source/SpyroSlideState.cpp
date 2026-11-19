@@ -149,7 +149,7 @@ void SpyroSlideState::Enter(SpyroStateMessages &arg0) {
     temp_r3_275 = this->unk10;
     temp_r3_275->unk428 &= 0xFFFFFFFE;
     this->unk10->SetAnim(0U, 0.17f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
-    Init__33KDStateMachine<15SpyroSlideState>FPQ233KDStateMachine<15SpyroSlideState>5StateP33KDStateMachine<15SpyroSlideState>(&this->unk14, (KDStateMachine<SpyroSlideState>::State *) &states, NULL);
+    Init__33KDStateMachine<15SpyroSlideState>FPQ233KDStateMachine<15SpyroSlideState>5StateP33KDStateMachine<15SpyroSlideState>(&this->unk14, (KDStateMachine<SpyroSlideState>::State *) &SpyroSlideState::states, NULL);
     this->unk28.Reset();
 }
 #endif
@@ -186,19 +186,19 @@ void SpyroSlideState_cpp::__sinit() {
     temp_f1_501 = temp_f3_495 * temp_f3_495;
     temp_f0_504 = temp_f8_497 * temp_f8_497;
     sp8 = M2C_FIELD(&__ptmf_null, void **, 0);
-    states.__vptr = M2C_FIELD(&__ptmf_null, void **, 0);
+    SpyroSlideState::states.__vptr = M2C_FIELD(&__ptmf_null, void **, 0);
     spC = M2C_FIELD(&__ptmf_null, Spyro **, 4);
     sp10 = M2C_FIELD(&__ptmf_null, s32 *, 8);
-    states.unk4 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
+    SpyroSlideState::states.unk4 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
     temp_f4_515 = 0.5 * temp_f3_495 * -((2014000.0 * temp_f1_501) - 3.0);
-    states.unk8 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+    SpyroSlideState::states.unk8 = M2C_FIELD(&__ptmf_null, s32 *, 8);
     temp_f1_517 = 0.5 * temp_f8_497 * -((380000.0 * temp_f0_504) - 3.0);
-    states.unkC = M2C_FIELD(&__ptmf_null, void **, 0);
-    states.unk10 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
-    states.unk14.unk0 = M2C_FIELD(&__ptmf_null, s32 *, 8);
-    states.unk18 = M2C_FIELD(&__ptmf_null, void **, 0);
-    states.unk1C = M2C_FIELD(&__ptmf_null, Spyro **, 4);
-    states.unk20 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+    SpyroSlideState::states.unkC = M2C_FIELD(&__ptmf_null, void **, 0);
+    SpyroSlideState::states.unk10 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
+    SpyroSlideState::states.unk14.unk0 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+    SpyroSlideState::states.unk18 = M2C_FIELD(&__ptmf_null, void **, 0);
+    SpyroSlideState::states.unk1C = M2C_FIELD(&__ptmf_null, Spyro **, 4);
+    SpyroSlideState::states.unk20 = M2C_FIELD(&__ptmf_null, s32 *, 8);
     temp_f4_530 = 0.5 * temp_f4_515 * -((2014000.0 * (temp_f4_515 * temp_f4_515)) - 3.0);
     temp_f1_531 = 0.5 * temp_f1_517 * -((380000.0 * (temp_f1_517 * temp_f1_517)) - 3.0);
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_530 * -((2014000.0 * (temp_f4_530 * temp_f4_530)) - 3.0)));

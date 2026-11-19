@@ -141,7 +141,7 @@ void TriggerProp::UpdateActiveList() {
     void *temp_r29_423;
     void *var_r30_418;
 
-    var_r30_418 = pFirstActiveTrigger.unk0;
+    var_r30_418 = TriggerProp::pFirstActiveTrigger.unk0;
 loop_5:
     if (var_r30_418 != NULL) {
         temp_r29_423 = M2C_FIELD(var_r30_418, void **, 0x90);
@@ -161,8 +161,8 @@ void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     MKPropDescriptor *temp_r4_467;
     TriggerProp *temp_r4_473;
 
-    if ((void *) pFirstActiveTrigger.unk0 == this) {
-        pFirstActiveTrigger.unk0 = this->unk90;
+    if ((void *) TriggerProp::pFirstActiveTrigger.unk0 == this) {
+        TriggerProp::pFirstActiveTrigger.unk0 = this->unk90;
     }
     temp_r4_467 = this->unk90;
     if (temp_r4_467 != NULL) {
@@ -180,14 +180,14 @@ void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
 #if 0 // DRAFT: ')' expected
 void TriggerProp::AddToActiveList(TriggerProp *arg0) {
     if ((u8) M2C_FIELD(checked_cast<TriggerPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x80) != 0) {
-        if ((void *) pFirstActiveTrigger.unk0 != NULL) {
-            M2C_FIELD(pFirstActiveTrigger.unk0, TriggerProp **, 0x94) = this;
-            this->unk90 = (MKPropDescriptor *) pFirstActiveTrigger.unk0;
+        if ((void *) TriggerProp::pFirstActiveTrigger.unk0 != NULL) {
+            M2C_FIELD(TriggerProp::pFirstActiveTrigger.unk0, TriggerProp **, 0x94) = this;
+            this->unk90 = (MKPropDescriptor *) TriggerProp::pFirstActiveTrigger.unk0;
             this->unk94 = NULL;
-            pFirstActiveTrigger.unk0 = this;
+            TriggerProp::pFirstActiveTrigger.unk0 = this;
             return;
         }
-        pFirstActiveTrigger.unk0 = this;
+        TriggerProp::pFirstActiveTrigger.unk0 = this;
         this->unk90 = NULL;
         this->unk94 = NULL;
     }
@@ -428,7 +428,7 @@ void TriggerProp::LoadDone() {
         temp_r3_1108 = this->unkA8;
         temp_r3_1108->unk50 |= 0x10;
     }
-    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     this->unk8 = &this->unk50;
     this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
@@ -490,8 +490,8 @@ void TriggerProp::Deinit() {
     TriggerObject *temp_r3_1366;
     TriggerProp *temp_r3_1355;
 
-    if ((void *) pFirstTrigger.unk0 == this) {
-        pFirstTrigger.unk0 = this->unk98;
+    if ((void *) TriggerProp::pFirstTrigger.unk0 == this) {
+        TriggerProp::pFirstTrigger.unk0 = this->unk98;
     }
     temp_r3_1349 = this->unk98;
     if (temp_r3_1349 != NULL) {
@@ -522,14 +522,14 @@ void TriggerProp::Init() {
     this->unk90 = NULL;
     this->unkA0 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
     this->unkA4 = 0.0f;
-    if ((void *) pFirstTrigger.unk0 != NULL) {
-        M2C_FIELD(pFirstTrigger.unk0, TriggerProp **, 0x9C) = this;
-        this->unk98 = (MKPropDescriptor *) pFirstTrigger.unk0;
+    if ((void *) TriggerProp::pFirstTrigger.unk0 != NULL) {
+        M2C_FIELD(TriggerProp::pFirstTrigger.unk0, TriggerProp **, 0x9C) = this;
+        this->unk98 = (MKPropDescriptor *) TriggerProp::pFirstTrigger.unk0;
         this->unk9C = NULL;
-        pFirstTrigger.unk0 = this;
+        TriggerProp::pFirstTrigger.unk0 = this;
         return;
     }
-    pFirstTrigger.unk0 = this;
+    TriggerProp::pFirstTrigger.unk0 = this;
     this->unk98 = NULL;
     this->unk9C = NULL;
 }

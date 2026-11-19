@@ -78,7 +78,7 @@ void EnemyGoal_AttackProjectile::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 u8 EnemyGoal_AttackProjectile::Update() {
     AITargetData sp228;
     f64 sp218;
@@ -179,8 +179,8 @@ u8 EnemyGoal_AttackProjectile::Update() {
 
     ActivateIfInactive();
     var_r29_118 = 0;
-    sp228.unk20 = M2C_FIELD(&zero, f64 *, 0);
-    sp228.unk28 = M2C_FIELD(&zero, f64 *, 8);
+    sp228.unk20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp228.unk28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_r3_122 = this->unkC;
     temp_r31_125 = temp_r3_122->unkA08;
     M2C_FIELD(temp_r3_122, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_122, u8 *, 0xB08) & ~0x10);

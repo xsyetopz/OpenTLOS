@@ -447,8 +447,8 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
     sp48 = (f32) sp48 * var_f6_780;
     sp30 = M2C_FIELD(arg0, f64 *, 0x30);
     sp38 = M2C_FIELD(arg0, f64 *, 0x38);
-    sp20 = M2C_FIELD(&up, f64 *, 0);
-    sp28 = M2C_FIELD(&up, f64 *, 8);
+    sp20 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    sp28 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     KDMath_BuildMatrixFromFwd((Matrix *) arg0, *((MKVector3 *) &sp40), (MKVector3 *) &sp20);
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp30;
     arg0->unk34 = unksp34;
@@ -678,8 +678,8 @@ loop_63:
             temp_f11_1312 = (f32) sp100 * var_f2_1303;
             temp_f10_1314 = unksp104 * var_f2_1303;
             temp_f9_1316 = (f32) sp108 * var_f2_1303;
-            spD0.unk10 = M2C_FIELD(&up, f64 *, 0);
-            spE8 = M2C_FIELD(&up, f64 *, 8);
+            spD0.unk10 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+            spE8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
             temp_f3_1324 = M2C_BITWISE(f32, spD0.unk10);
             sp50 = -temp_f11_1312;
             sp54 = -temp_f10_1314;
@@ -791,14 +791,14 @@ loop_7:
             temp_r4_1540 = this->unk174 + (MKRand_Int(&gViewSeed, 0, temp_r5_1526) * 0x10);
             sp18 = M2C_FIELD(temp_r4_1540, f64 *, 0);
             sp20 = M2C_FIELD(temp_r4_1540, f64 *, 8);
-            M2C_STRUCT_COPY(temp_r30_1502, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
             M2C_FIELD(temp_r30_1502, f32 *, 0x30) = (f32) sp18;
             temp_r30_1502->unk34 = unksp1C;
             temp_r30_1502->unk38 = (f32) sp20;
             temp_r30_1502->unk3C = 1.0f;
             SetIdleState(temp_r30_1502);
         } else {
-            M2C_STRUCT_COPY(temp_r30_1502, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
             M2C_FIELD(temp_r30_1502, f32 *, 0x30) = (f32) sp18;
             temp_r30_1502->unk34 = unksp1C;
             temp_r30_1502->unk38 = (f32) sp20;

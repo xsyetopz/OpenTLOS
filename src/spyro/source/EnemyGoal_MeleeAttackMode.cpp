@@ -880,9 +880,9 @@ loop_26:
                             temp_f3_1518 = M2C_FIELD(temp_r6_1500, f32 *, 0xC8);
                             temp_f7_1520 = M2C_FIELD(temp_r6_1500, f32 *, 0xC4);
                             temp_f5_1527 = M2C_FIELD(temp_r6_1500, f32 *, 0xC0);
-                            sp40 = (up.unk4 * temp_f3_1518) - (up.unk8 * temp_f7_1520);
-                            sp44 = (up.unk8 * temp_f5_1527) - (up.unk0 * temp_f3_1518);
-                            sp48 = (up.unk0 * temp_f7_1520) - (up.unk4 * temp_f5_1527);
+                            sp40 = (MKVector3::up.unk4 * temp_f3_1518) - (MKVector3::up.unk8 * temp_f7_1520);
+                            sp44 = (MKVector3::up.unk8 * temp_f5_1527) - (MKVector3::up.unk0 * temp_f3_1518);
+                            sp48 = (MKVector3::up.unk0 * temp_f7_1520) - (MKVector3::up.unk4 * temp_f5_1527);
                             spF0 = (f64) sp40;
                             spF8 = (f64) sp48;
                             spA0.GetDir();
@@ -1278,7 +1278,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Attack() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -1328,16 +1328,16 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     Enemy *temp_r4_2614;
     u8 var_r29_2469;
 
-    sp8 = M2C_FIELD(&zero, f64 *, 0);
-    sp10 = M2C_FIELD(&zero, f64 *, 8);
-    sp1D8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1E0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1C8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1D0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1B8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1C0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1A8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1B0 = M2C_FIELD(&zero, f64 *, 8);
+    sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1D8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1E0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1C8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1D0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1B8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1C0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (arg0 != 0) {
         sp198.GetPos();
         this->unkC->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);

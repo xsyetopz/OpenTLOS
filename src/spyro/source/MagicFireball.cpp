@@ -310,8 +310,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     arg_sp298 = 0;
     (s16) arg_sp298 = 1;
     arg_sp29C = -1;
-    arg_sp270 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp278 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2A8 = 0;
     if (temp_r4_630 != NULL) {
         arg_sp98.GetPos();
@@ -416,8 +416,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     arg_sp298 = 0;
     (s16) arg_sp298 = 1;
     arg_sp29C = -1;
-    arg_sp270 = M2C_FIELD(&one, f64 *, 0);
-    arg_sp278 = M2C_FIELD(&one, f64 *, 8);
+    arg_sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp2A8 = 0;
     if (temp_r4_819 != NULL) {
         arg_sp88.GetPos();

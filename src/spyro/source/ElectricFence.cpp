@@ -375,7 +375,7 @@ void ElectricFence::LoadDone() {
     void *temp_r7_916;
     void *temp_r8_754;
     MKProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk6C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk8 = &this->unk70;
     var_r30_564 = 0;
     var_r27_566 = 0;

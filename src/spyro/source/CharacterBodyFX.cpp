@@ -343,7 +343,7 @@ void CharacterBodyFX::CalculateNodeData(int arg0) {
 loop_10:
         if (var_r28_557 < var_r29_550) {
             if ((u32) M2C_FIELD(*(this->unk4 + var_r26_556), u32 *, 8) != -1U) {
-                M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r4_581 = *(this->unk4 + var_r26_556);
                 if ((s32) M2C_FIELD(temp_r4_581, s32 *, 0) == 0) {
                     MKModel_CalculateNodeWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), (MKVector3 *) &arg_spA8);

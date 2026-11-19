@@ -126,14 +126,14 @@ static s8 .L_8035FFF4[0x5D] = {
 void KDSynkerPlayerEvent::Load(MKIniLine *arg0) {
     MKIniLine *temp_r3_27;
 
-    loadInfo->Init();
+    ((KDSynkerPlayerEventLoadInfo *) ((KDSynkerPlayerEventLoadInfo *) KDSynkerPlayerEvent::loadInfo))->Init();
     Init();
     temp_r3_27 = arg0->unkC->GetSubLine(arg0);
-    pLine.__vptr = temp_r3_27->unkC->GetNextLine(temp_r3_27);
+    KDSynkerPlayerEvent::pLine.__vptr = temp_r3_27->unkC->GetNextLine(temp_r3_27);
 loop_2:
-    if ((void *) pLine.__vptr != NULL) {
+    if ((void *) KDSynkerPlayerEvent::pLine.__vptr != NULL) {
         LoadLine();
-        pLine.__vptr = ((MKIni *) (M2C_FIELD(pLine.__vptr, MKIni **, 0xC)))->GetNextLine((MKIniLine *) pLine.__vptr);
+        KDSynkerPlayerEvent::pLine.__vptr = ((MKIni *) (M2C_FIELD(KDSynkerPlayerEvent::pLine.__vptr, MKIni **, 0xC)))->GetNextLine((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr);
         goto loop_2;
     }
     LoadDone();
@@ -158,8 +158,8 @@ s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
 s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
     MKIniLine sp8;
 
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        sp8.GetVector3((s32) pLine.__vptr);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        sp8.GetVector3((s32) KDSynkerPlayerEvent::pLine.__vptr);
         M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp8);
         M2C_FIELD(arg1, f64 *, 8) = M2C_BITWISE(f64, sp8.unk8);
         return 1;
@@ -170,8 +170,8 @@ s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        *arg1 = pLine.__vptr->GetFloat(0);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetFloat(0);
         return 1;
     }
     return 0;
@@ -180,8 +180,8 @@ s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        strcpy(arg1, pLine.__vptr->GetString(0));
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        strcpy(arg1, ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0));
         return 1;
     }
     return 0;
@@ -190,8 +190,8 @@ s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        *arg1 = pLine.__vptr->GetInt(0) != 0;
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetInt(0) != 0;
         return 1;
     }
     return 0;
@@ -200,8 +200,8 @@ s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadInt(const char *arg0, int *arg1) {
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        *arg1 = pLine.__vptr->GetInt(0);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetInt(0);
         return 1U;
     }
     return 0U;
@@ -210,7 +210,7 @@ u8 KDSynkerPlayerEvent::LoadInt(const char *arg0, int *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void KDSynkerPlayerEvent::LoadNode(const char *arg0, MKModel **arg1, int *arg2) {
-    NodeLoadLine1((KDSynkerPlayer3 *) pSynker.__vptr, (MKIniLine *) pLine.__vptr, arg0, arg1, NULL, NULL, arg2);
+    NodeLoadLine1((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr, (MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr, arg0, arg1, NULL, NULL, arg2);
 }
 #endif
 
@@ -219,7 +219,7 @@ s32 KDSynkerPlayerEvent::LoadActorModel(const char *arg0, MKModel **arg1) {
     s32 sp8;
 
     if (LoadActorID(arg0, &sp8) != 0) {
-        pSynker.__vptr->GetActorModel(sp8);
+        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(sp8);
         *arg1 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;
     }
@@ -232,7 +232,7 @@ s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **ar
     s32 sp8;
 
     if (LoadActorID(arg0, &sp8) != 0) {
-        *arg1 = pSynker.__vptr->GetActorAnimScript(sp8);
+        *arg1 = ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorAnimScript(sp8);
         return 1;
     }
     return 0;
@@ -241,8 +241,8 @@ s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **ar
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadActorID(const char *arg0, int *arg1) {
-    if (pLine.__vptr->IsField(arg0) != 0) {
-        *arg1 = ((KDSP_ActorList *) (pSynker.__vptr + 0x100))->GetActorId(pLine.__vptr->GetString(0));
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+        *arg1 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0));
         return 1U;
     }
     return 0U;
@@ -545,7 +545,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void KDSP_Events::Update(KDSynkerPlayer3 *arg0, float arg1, bool arg2) {
     f32 var_f0_1065;
     f32 var_f1_1030;
@@ -565,13 +565,13 @@ void KDSP_Events::Update(KDSynkerPlayer3 *arg0, float arg1, bool arg2) {
     void *temp_r27_959;
 
     var_r31_943 = 0;
-    pSynker.__vptr = arg0;
+    KDSynkerPlayerEvent::pSynker.__vptr = arg0;
     var_r28_949 = 0;
-    M2C_FIELD(&updateData, f32 *, 4) = arg1;
-    updateData.__vptr = 0.0f;
+    M2C_FIELD(&KDSynkerPlayerEvent::updateData, f32 *, 4) = arg1;
+    KDSynkerPlayerEvent::updateData.__vptr = 0.0f;
     temp_r29_953 = (s32) arg1;
-    M2C_FIELD(&updateData, s32 *, 0xC) = 0;
-    M2C_FIELD(&updateData, s32 *, 8) = 0;
+    M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 0xC) = 0;
+    M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 8) = 0;
 loop_41:
     if (var_r28_949 < (s32) this->unkC) {
         temp_r27_959 = this->unk10 + var_r31_943;
@@ -594,10 +594,10 @@ loop_41:
         if (var_r26_973 != 0) {
             M2C_FIELD(temp_r27_959, s32 *, 0xC) = (s32) (M2C_FIELD(temp_r27_959, s32 *, 0xC) | 2);
             if (temp_r25_990 != NULL) {
-                M2C_FIELD(&updateData, s32 *, 8) = (s32) M2C_FIELD(temp_r27_959, s32 *, 0);
-                M2C_FIELD(&updateData, s32 *, 0xC) = (s32) M2C_FIELD(temp_r27_959, s32 *, 4);
-                if ((s32) M2C_FIELD(pSynker.__vptr, s32 *, 0x114) > 0) {
-                    var_r3_1007 = ((KDSP_EnvelopeList *) (pSynker.__vptr + 0x114))->GetEnvelope(M2C_FIELD(temp_r27_959, s32 *, 0x10));
+                M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 8) = (s32) M2C_FIELD(temp_r27_959, s32 *, 0);
+                M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 0xC) = (s32) M2C_FIELD(temp_r27_959, s32 *, 4);
+                if ((s32) M2C_FIELD(KDSynkerPlayerEvent::pSynker.__vptr, s32 *, 0x114) > 0) {
+                    var_r3_1007 = ((KDSP_EnvelopeList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x114))->GetEnvelope(M2C_FIELD(temp_r27_959, s32 *, 0x10));
                 } else {
                     var_r3_1007 = NULL;
                 }
@@ -613,7 +613,7 @@ loop_41:
                     } else {
                         var_f1_1030 = 0.0f;
                     }
-                    updateData.__vptr = var_r3_1007->GetValue(var_f1_1030);
+                    KDSynkerPlayerEvent::updateData.__vptr = var_r3_1007->GetValue(var_f1_1030);
                 } else {
                     var_f0_1065 = (arg1 - (f32) M2C_FIELD(temp_r27_959, s32 *, 0)) / (f32) M2C_FIELD(temp_r27_959, s32 *, 4);
                     if (var_f0_1065 < 1.0f) {
@@ -626,7 +626,7 @@ loop_41:
                     } else {
                         var_f0_1065 = 0.0f;
                     }
-                    updateData.__vptr = var_f0_1065;
+                    KDSynkerPlayerEvent::updateData.__vptr = var_f0_1065;
                 }
                 temp_r3_1082 = M2C_FIELD(temp_r27_959, s32 *, 0xC);
                 if (!(temp_r3_1082 & 4)) {
@@ -678,7 +678,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void KDSP_Events::Parse(KDSynkerPlayer3 *arg0, KDSynkerHeap *arg1, const char *arg2, MKIni *arg3, bool arg4, KDSP_ActorList *arg5) {
     s32 sp18;
     s8 *sp14;
@@ -726,7 +726,7 @@ void KDSP_Events::Parse(KDSynkerPlayer3 *arg0, KDSynkerHeap *arg1, const char *a
     void *var_r29_1286;
     void *var_r31_1284;
 
-    pSynker.__vptr = arg0;
+    KDSynkerPlayerEvent::pSynker.__vptr = arg0;
     temp_r4_1194 = this->unk0;
     if (temp_r4_1194 != NULL) {
         temp_r0_1197 = this->unk4;
@@ -1016,7 +1016,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void KDSP_Events::Init(KDSynkerPlayer3 *arg0, KDSynkerPlayerEventCreationTable *arg1) {
     this->unk4 = 0;
     this->unk8 = NULL;
@@ -1028,7 +1028,7 @@ void KDSP_Events::Init(KDSynkerPlayer3 *arg0, KDSynkerPlayerEventCreationTable *
     this->unk1C = 0;
     this->unk20 = NULL;
     this->unk24 = arg1;
-    pSynker.__vptr = arg0;
+    KDSynkerPlayerEvent::pSynker.__vptr = arg0;
 }
 #endif
 

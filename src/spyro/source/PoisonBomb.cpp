@@ -384,8 +384,8 @@ void PoisonBomb::Update() {
                 spF1 = 0;
                 spF2 = 1;
                 spF4 = -1;
-                spC8 = M2C_FIELD(&one, f64 *, 0);
-                spD0 = M2C_FIELD(&one, f64 *, 8);
+                spC8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spD0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp100 = 0;
                 if (this != NULL) {
                     sp30.GetPos();
@@ -565,7 +565,7 @@ void PoisonBomb::Draw() {
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x118) != 0) {
         this->unk1C8 += 6.2831855f * gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f29_1134 = (fTexScale - 1.0f) * fScaleMul;
         temp_f31_1135 = -((this->unk1D0 * 0.5f) - 1.0f);
         arg_sp110.Scale3x3((Matrix *) &arg_sp110, fTexScale);
@@ -599,8 +599,8 @@ void PoisonBomb::Draw() {
             temp_r4_1201 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
             arg_spB8 = M2C_FIELD(temp_r4_1201, f64 *, 0x20);
             arg_spC0 = M2C_FIELD(temp_r4_1201, f64 *, 0x28);
-            arg_sp98 = M2C_FIELD(&up, f64 *, 0);
-            arg_spA0 = M2C_FIELD(&up, f64 *, 8);
+            arg_sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+            arg_spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
             arg_spBC = 0.0f;
             var_f4_1216 = ((f32) arg_spC0 * (f32) arg_spC0) + (((f32) arg_spB8 * (f32) arg_spB8) + (0.0f * 0.0f));
             if (var_f4_1216 > 0.000001f) {

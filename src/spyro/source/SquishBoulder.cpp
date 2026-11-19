@@ -7,6 +7,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
@@ -219,7 +220,7 @@ void SquishBoulder::EmitLandingEffects() {
     arg_spA8 = (f32) arg_sp1A8 * var_f4_352;
     arg_sp2A0 = (f64) arg_spA0;
     arg_sp2A8 = (f64) arg_spA8;
-    M2C_STRUCT_COPY((s32) &arg_sp30C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp30C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp98 = 0.0f;
     arg_sp90 = 0.0f;
     arg_sp94 = 1.0f;
@@ -276,15 +277,15 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
     this->unk1B8 = M2C_FIELD(&arg1, f64 *, 8);
     M2C_FIELD(this, f32 *, 0x1D0) = arg2;
     M2C_FIELD(this, s32 *, 0x1D4) = 0;
-    M2C_STRUCT_COPY((s32) &this->unk200.unk4C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk200.unk4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk260.unk1C = arg0.unk0;
     this->unk260.unk20 = arg0.unk4;
     this->unk260.unk24 = arg0.unk8;
     this->unk260.unk28 = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &this->unk200.unk50));
-    temp_r3_668 = gameData.unk158 << 5;
-    temp_r0_670 = *(&gameData.unk70 + (temp_r3_668 + 0x7C));
-    temp_r4_672 = &gameData.unk70 + (temp_r3_668 + 0x64);
+    temp_r3_668 = GameData::gameData.unk158 << 5;
+    temp_r0_670 = *(&GameData::gameData.unk70 + (temp_r3_668 + 0x7C));
+    temp_r4_672 = &GameData::gameData.unk70 + (temp_r3_668 + 0x64);
     if (temp_r0_670 == 3) {
         var_r3_676 = 0;
         if (((s32) M2C_FIELD(temp_r4_672, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_672, s32 *, 4) == 3)) {
@@ -294,7 +295,7 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_r29_686 = *(temp_r4_672 + (temp_r0_670 * 4));
     }
-    temp_r28_693 = gameData.unk158;
+    temp_r28_693 = GameData::gameData.unk158;
     this->unk200.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x218) = (f64) M2C_FIELD(&arg1, f64 *, 8);

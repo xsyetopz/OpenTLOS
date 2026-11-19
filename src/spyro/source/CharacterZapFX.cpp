@@ -196,7 +196,7 @@ loop_23:
             temp_r3_364 = var_r31_193->unk0->unk0;
             arg_sp58 = M2C_FIELD(temp_r3_364, f64 *, 8);
             arg_sp60 = M2C_FIELD(temp_r3_364, f64 *, 0x10);
-            M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp68), (MKVector3 *) &arg_sp78);
             temp_r27_397 = (s32) ((1.0f - (var_r31_193->unk0->unk18 / 0.5f)) * (f32) (this->unk50 - 1));
             arg_sp90.Scale3x3((Matrix *) &arg_sp90, var_f28_279 / 100.0f);

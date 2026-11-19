@@ -7,6 +7,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
@@ -104,7 +105,7 @@ void FuryFXElectricity::DrawWindyRing(FuryFXElectricity::WindyRing *arg1) {
     arg_sp6C = 1.0f;
     arg_spD0 = (f64) arg_sp60;
     arg_spD8 = (f64) arg_sp68;
-    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp110 = this->unkB0;
     var_r27_185 = 0;
     var_r31_187 = 0;
@@ -187,7 +188,7 @@ void FuryFXElectricity::DrawElectricityRing() {
     arg_sp5C = 1.0f;
     arg_spB0 = (f64) arg_sp50;
     arg_spB8 = (f64) arg_sp58;
-    M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_spF0 = this->unk160;
     arg_spF4 = this->unk160;
     arg_spF8 = this->unk164;
@@ -321,9 +322,9 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
     this->unk90 = 1;
     this->unkAC = 1.0f;
     this->unk180 = M2C_BITWISE(f32, gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f));
-    temp_r3_600 = gameData.unk158 << 5;
-    temp_r0_602 = *(&gameData.unk70 + (temp_r3_600 + 0x7C));
-    temp_r4_604 = &gameData.unk70 + (temp_r3_600 + 0x64);
+    temp_r3_600 = GameData::gameData.unk158 << 5;
+    temp_r0_602 = *(&GameData::gameData.unk70 + (temp_r3_600 + 0x7C));
+    temp_r4_604 = &GameData::gameData.unk70 + (temp_r3_600 + 0x64);
     if (temp_r0_602 == 3) {
         var_r3_608 = 0;
         if (((s32) M2C_FIELD(temp_r4_604, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_604, s32 *, 4) == 3)) {
@@ -333,7 +334,7 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
     } else {
         var_r28_618 = *(temp_r4_604 + (temp_r0_602 * 4));
     }
-    temp_r27_625 = gameData.unk158;
+    temp_r27_625 = GameData::gameData.unk158;
     this->unk108.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r28_618, temp_r27_625, temp_r27_625, 0, -1);
     sp38 = 0.0f;
     sp3C = -5000.0f;

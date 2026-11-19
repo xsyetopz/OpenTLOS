@@ -207,7 +207,7 @@ void SwampTier1Goal_Hit::Init(SwampTier1 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f64 spC0;
     f64 spB8;
@@ -256,7 +256,7 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
 
     temp_r3_399 = this->unkC;
     var_r0_403 = 0;
-    if ((temp_r3_399->unk710.unk0 == zero.unk0) && (temp_r3_399->unk710.unk4 == zero.unk4) && (temp_r3_399->unk710.unk8 == zero.unk8)) {
+    if ((temp_r3_399->unk710.unk0 == MKVector3::zero.unk0) && (temp_r3_399->unk710.unk4 == MKVector3::zero.unk4) && (temp_r3_399->unk710.unk8 == MKVector3::zero.unk8)) {
         var_r0_403 = 1;
     }
     if (var_r0_403 != 0) {

@@ -815,7 +815,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         temp_r3_1492 = this->unkC;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_1505 = up.unk8 * temp_r3_1492->GetCollisionHeight();
+        temp_f1_1505 = MKVector3::up.unk8 * temp_r3_1492->GetCollisionHeight();
         sp88 = sp48;
         sp50 = temp_f1_1505;
         sp90 = (f64) sp50;

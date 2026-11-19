@@ -13,6 +13,7 @@
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/FuryFXIce.h"
 #include "spyro/source/FuryFXIce2.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/IceExplosion.h"
 #include "spyro/source/KDInput.h"
@@ -129,7 +130,7 @@ loop_10:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'sp18'
 void IceBreathFX::SpawnWallIceShard(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     u8 sp108;
     s32 sp104;
@@ -185,7 +186,7 @@ void IceBreathFX::SpawnWallIceShard(const MKVector3 &arg0, const MKVector3 &arg1
         temp_r30_218 = temp_r3_216->unk0;
         if (temp_r30_218 != NULL) {
             KDSound_Play3d(GS_SpyroBreathIceRico3, &arg0, 0U, -1, 0.0f, 0U);
-            M2C_STRUCT_COPY(temp_r30_218, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r30_218, &Matrix::identity, 0x40);
             sp50 = 0.0f;
             sp48 = 0.0f;
             sp4C = 1.0f;
@@ -537,9 +538,9 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
         this->unk188 = NULL;
     }
     this->unk18C = M2C_FIELD(&gb, f32 *, 0x30C);
-    temp_r3_520 = gameData.unk70.unkE8 << 5;
-    temp_r0_522 = *(&gameData.unk70 + (temp_r3_520 + 0x7C));
-    temp_r4_524 = &gameData.unk70 + (temp_r3_520 + 0x64);
+    temp_r3_520 = GameData::gameData.unk70.unkE8 << 5;
+    temp_r0_522 = *(&GameData::gameData.unk70 + (temp_r3_520 + 0x7C));
+    temp_r4_524 = &GameData::gameData.unk70 + (temp_r3_520 + 0x64);
     if (temp_r0_522 == 3) {
         var_r3_528 = 0;
         if (((s32) M2C_FIELD(temp_r4_524, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_524, s32 *, 4) == 3)) {
@@ -1185,9 +1186,9 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         var_r25_1853 = 0;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (M2C_FIELD(this, f32 *, 0x1A4) == 0.0f) {
-            temp_r6_1863 = gameData.unk70.unkE8 << 5;
-            temp_r5_1865 = *(&gameData.unk70 + (temp_r6_1863 + 0x7C));
-            temp_r7_1867 = &gameData.unk70 + (temp_r6_1863 + 0x64);
+            temp_r6_1863 = GameData::gameData.unk70.unkE8 << 5;
+            temp_r5_1865 = *(&GameData::gameData.unk70 + (temp_r6_1863 + 0x7C));
+            temp_r7_1867 = &GameData::gameData.unk70 + (temp_r6_1863 + 0x64);
             if (temp_r5_1865 == 3) {
                 var_r6_1871 = 0;
                 if (((s32) M2C_FIELD(temp_r7_1867, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r7_1867, s32 *, 4) == 3)) {
@@ -1197,10 +1198,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             } else {
                 var_r6_1881 = *(temp_r7_1867 + (temp_r5_1865 * 4));
             }
-            var_f1_1852 = gameData.unk70.GetBreathAttackDamage(gameData.unk70.unkE8, temp_r5_1865, var_r6_1881);
-            temp_r3_1889 = gameData.unk70.unkE8 << 5;
-            temp_r0_1891 = *(&gameData.unk70 + (temp_r3_1889 + 0x7C));
-            temp_r4_1893 = &gameData.unk70 + (temp_r3_1889 + 0x64);
+            var_f1_1852 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(GameData::gameData.unk70.unkE8, temp_r5_1865, var_r6_1881);
+            temp_r3_1889 = GameData::gameData.unk70.unkE8 << 5;
+            temp_r0_1891 = *(&GameData::gameData.unk70 + (temp_r3_1889 + 0x7C));
+            temp_r4_1893 = &GameData::gameData.unk70 + (temp_r3_1889 + 0x64);
             if (temp_r0_1891 == 3) {
                 var_r3_1897 = 0;
                 if (((s32) M2C_FIELD(temp_r4_1893, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1893, s32 *, 4) == 3)) {
@@ -1225,9 +1226,9 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 break;
             }
         }
-        temp_r3_1944 = gameData.unk70.unkE8 << 5;
-        temp_r5_1946 = *(&gameData.unk70 + (temp_r3_1944 + 0x7C));
-        temp_r4_1948 = &gameData.unk70 + (temp_r3_1944 + 0x64);
+        temp_r3_1944 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r5_1946 = *(&GameData::gameData.unk70 + (temp_r3_1944 + 0x7C));
+        temp_r4_1948 = &GameData::gameData.unk70 + (temp_r3_1944 + 0x64);
         if (temp_r5_1946 == 3) {
             var_r3_1952 = 0;
             if (((s32) M2C_FIELD(temp_r4_1948, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1948, s32 *, 4) == 3)) {
@@ -1237,10 +1238,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r6_1962 = *(temp_r4_1948 + (temp_r5_1946 * 4));
         }
-        this->unk110.Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, gameData.unk70.unkE8, gameData.unk70.unkE8, 0, -1);
-        temp_r3_1976 = gameData.unk70.unkE8 << 5;
-        temp_r0_1978 = *(&gameData.unk70 + (temp_r3_1976 + 0x7C));
-        temp_r4_1980 = &gameData.unk70 + (temp_r3_1976 + 0x64);
+        this->unk110.Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, GameData::gameData.unk70.unkE8, GameData::gameData.unk70.unkE8, 0, -1);
+        temp_r3_1976 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_1978 = *(&GameData::gameData.unk70 + (temp_r3_1976 + 0x7C));
+        temp_r4_1980 = &GameData::gameData.unk70 + (temp_r3_1976 + 0x64);
         if (temp_r0_1978 == 3) {
             var_r3_1984 = 0;
             if (((s32) M2C_FIELD(temp_r4_1980, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1980, s32 *, 4) == 3)) {
@@ -1331,7 +1332,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp6A8 = (f32) arg_sp6A8 * var_f3_2174;
             arg_sp6AC *= var_f3_2174;
             arg_sp6B0 = (f32) arg_sp6B0 * var_f3_2174;
-            M2C_STRUCT_COPY((s32) &arg_sp74C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp74C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp750.SetRotationYaw(0.2617994f);
             arg_spB8 = arg_sp780 + (((f32) arg_sp6B0 * arg_sp770) + (((f32) arg_sp6A8 * arg_sp750) + (arg_sp6AC * arg_sp760)));
             arg_spBC = arg_sp784 + (((f32) arg_sp6B0 * arg_sp774) + (((f32) arg_sp6A8 * arg_sp754) + (arg_sp6AC * arg_sp764)));
@@ -1407,7 +1408,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp6A8 = (f32) arg_sp6A8 * var_f3_2378;
             arg_sp6AC *= var_f3_2378;
             arg_sp6B0 = (f32) arg_sp6B0 * var_f3_2378;
-            M2C_STRUCT_COPY((s32) &arg_sp74C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp74C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp750.SetRotationYaw(-0.2617994f);
             arg_spA8 = arg_sp780 + (((f32) arg_sp6B0 * arg_sp770) + (((f32) arg_sp6A8 * arg_sp750) + (arg_sp6AC * arg_sp760)));
             arg_spAC = arg_sp784 + (((f32) arg_sp6B0 * arg_sp774) + (((f32) arg_sp6A8 * arg_sp754) + (arg_sp6AC * arg_sp764)));
@@ -1486,7 +1487,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp698 = (f32) arg_sp698 * var_f3_2588;
             arg_sp69C *= var_f3_2588;
             arg_sp6A0 = (f32) arg_sp6A0 * var_f3_2588;
-            M2C_STRUCT_COPY((s32) &arg_sp70C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp70C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp710.SetRotationYaw(temp_f30_2493 * 0.61086524f);
             arg_sp98 = arg_sp740 + (((f32) arg_sp6A0 * arg_sp730) + (((f32) arg_sp698 * arg_sp710) + (arg_sp69C * arg_sp720)));
             arg_sp9C = arg_sp744 + (((f32) arg_sp6A0 * arg_sp734) + (((f32) arg_sp698 * arg_sp714) + (arg_sp69C * arg_sp724)));
@@ -1562,7 +1563,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp698 = (f32) arg_sp698 * var_f3_2793;
             arg_sp69C *= var_f3_2793;
             arg_sp6A0 = (f32) arg_sp6A0 * var_f3_2793;
-            M2C_STRUCT_COPY((s32) &arg_sp70C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp70C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp710.SetRotationYaw(temp_f30_2493 * -0.61086524f);
             arg_sp88 = arg_sp740 + (((f32) arg_sp6A0 * arg_sp730) + (((f32) arg_sp698 * arg_sp710) + (arg_sp69C * arg_sp720)));
             arg_sp8C = arg_sp744 + (((f32) arg_sp6A0 * arg_sp734) + (((f32) arg_sp698 * arg_sp714) + (arg_sp69C * arg_sp724)));
@@ -1641,7 +1642,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp688 = (f32) arg_sp688 * var_f3_3004;
             arg_sp68C *= var_f3_3004;
             arg_sp690 = (f32) arg_sp690 * var_f3_3004;
-            M2C_STRUCT_COPY((s32) &arg_sp6CC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp6CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp6D0.SetRotationYaw(temp_f30_2909 * 0.61086524f);
             arg_sp78 = arg_sp700 + (((f32) arg_sp690 * arg_sp6F0) + (((f32) arg_sp688 * arg_sp6D0) + (arg_sp68C * arg_sp6E0)));
             arg_sp7C = arg_sp704 + (((f32) arg_sp690 * arg_sp6F4) + (((f32) arg_sp688 * arg_sp6D4) + (arg_sp68C * arg_sp6E4)));
@@ -1717,7 +1718,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             arg_sp688 = (f32) arg_sp688 * var_f3_3209;
             arg_sp68C *= var_f3_3209;
             arg_sp690 = (f32) arg_sp690 * var_f3_3209;
-            M2C_STRUCT_COPY((s32) &arg_sp6CC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp6CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp6D0.SetRotationYaw(temp_f30_2909 * -0.61086524f);
             arg_sp68 = arg_sp700 + (((f32) arg_sp690 * arg_sp6F0) + (((f32) arg_sp688 * arg_sp6D0) + (arg_sp68C * arg_sp6E0)));
             arg_sp6C = arg_sp704 + (((f32) arg_sp690 * arg_sp6F4) + (((f32) arg_sp688 * arg_sp6D4) + (arg_sp68C * arg_sp6E4)));
@@ -1820,10 +1821,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         M2C_FIELD(this, s8 *, 0x19C) = (s8) var_r25_1853;
         return (u8) var_r25_1853;
     case 1:                                         /* switch 1 */
-        temp_r25_3532 = gameData.unk70.unkE8;
+        temp_r25_3532 = GameData::gameData.unk70.unkE8;
         temp_r4_3533 = temp_r25_3532 << 5;
-        temp_r26_3535 = *(&gameData.unk70 + (temp_r4_3533 + 0x7C));
-        temp_r5_3537 = &gameData.unk70 + (temp_r4_3533 + 0x64);
+        temp_r26_3535 = *(&GameData::gameData.unk70 + (temp_r4_3533 + 0x7C));
+        temp_r5_3537 = &GameData::gameData.unk70 + (temp_r4_3533 + 0x64);
         if (temp_r26_3535 == 3) {
             var_r4_3541 = 0;
             if (((s32) M2C_FIELD(temp_r5_3537, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_3537, s32 *, 4) == 3)) {
@@ -1842,11 +1843,11 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r24_3570 = *(temp_r5_3537 + (temp_r26_3535 * 4));
         }
-        this->unkB8.Init(arg0, gameData.unk70.GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
+        this->unkB8.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
         return ShootIceShard(arg1, arg2, arg3);
     case 3:                                         /* switch 1 */
         var_r3_3596 = 0;
-        temp_r4_3602 = &gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x64);
+        temp_r4_3602 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
         if (((s32) M2C_FIELD(temp_r4_3602, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_3602, s32 *, 4) == 3)) {
             var_r3_3596 = 1;
         }
@@ -2144,7 +2145,7 @@ void IceBreathFX::Update() {
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r6, 0x0, qr0 */);
                 M2C_FIELD(temp_r6_4060, f64 *, 8) = (f32) ((f32) M2C_FIELD(temp_r6_4060, f64 *, 8) + (f32) arg_sp218);
-                M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r3_4100 = this->unkA8 + var_r26_3966;
                 arg_sp2A0 = M2C_FIELD(temp_r3_4100, f32 *, 0);
                 arg_sp2A4 = M2C_FIELD(temp_r3_4100, f32 *, 4);
@@ -2421,9 +2422,9 @@ void IceBreathFX::Update() {
         if (M2C_BITWISE(f32, this->unk190) > 3.5f) {
             this->unk190 = -1.0f;
         }
-        temp_r3_4708 = gameData.unk70.unkE8 << 5;
-        temp_r0_4710 = *(&gameData.unk70 + (temp_r3_4708 + 0x7C));
-        temp_r4_4712 = &gameData.unk70 + (temp_r3_4708 + 0x64);
+        temp_r3_4708 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_4710 = *(&GameData::gameData.unk70 + (temp_r3_4708 + 0x7C));
+        temp_r4_4712 = &GameData::gameData.unk70 + (temp_r3_4708 + 0x64);
         if (temp_r0_4710 == 3) {
             var_r3_4716 = 0;
             if (((s32) M2C_FIELD(temp_r4_4712, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_4712, s32 *, 4) == 3)) {

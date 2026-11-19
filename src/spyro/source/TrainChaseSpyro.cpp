@@ -8,6 +8,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -467,10 +468,10 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
             sp1E8.unk88 = (f64) sp30;
         }
     }
-    sp20 = *(&gameData.unk70 + ((gameData.unk158 << 5) + 0x7C));
+    sp20 = *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x7C));
     sp8 = 0;
     temp_r31_697 = ((FlameBreathFX *) (M2C_FIELD(this->unk4, FlameBreathFX **, 0x14)))->Trigger(this->unk8, *((MKVector3 *) &sp1E8.unk60.unk10), *((MKVector3 *) &sp1E8.unk88.unk8), *((MKVector3 *) &sp1E8.unk74.unkC), 1.5f, sp20, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    if (((s32) *(&gameData.unk70 + ((gameData.unk158 << 5) + 0x7C)) == 0) && ((u8) temp_r31_697 != 0)) {
+    if (((s32) *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x7C)) == 0) && ((u8) temp_r31_697 != 0)) {
         this->unk10->FadeIn(7, -1);
     } else {
         this->unk10->FadeOut(7);
@@ -814,10 +815,10 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void TrainChaseSpyro::Hurt(float arg0) {
     if (DealDamage(-arg0) != 0) {
-        if (gameData.unk70 > 0.0f) {
+        if (GameData::gameData.unk70 > 0.0f) {
             this->unk260.SetState(this, 2, 1U);
             return;
         }
@@ -828,11 +829,11 @@ void TrainChaseSpyro::Hurt(float arg0) {
 
 #if 0 // DRAFT: expression syntax error
 u8 TrainChaseSpyro::DealDamage(float arg0) {
-    if ((this->unk260.GetState() == 3) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((gameData.unk70 == 0.0f) != 0))) {
+    if ((this->unk260.GetState() == 3) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((GameData::gameData.unk70 == 0.0f) != 0))) {
         return 0U;
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x3B4) == 0) {
-        gameData.unk70.Add(arg0, 1U);
+        ((Stat *) ((Stat *) &GameData::gameData.unk70))->Add(arg0, 1U);
     }
     this->unk728 = gb.unk30C;
     return 1U;
@@ -1018,7 +1019,7 @@ void TrainChaseSpyro::RepositionLightProp() {
             arg_sp1A8 = (f64) arg_sp18;
             arg_sp1B0 = (f64) arg_sp20;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         KDMath_BuildMatrixFromUp((Matrix *) &arg_sp200, *((MKVector3 *) &arg_sp1A8), *((MKVector3 *) &arg_sp1C8));
         arg_sp230 = (f32) arg_sp1E8;
         arg_sp234 = arg_sp1EC;
@@ -1309,7 +1310,7 @@ void TrainChaseSpyro::UpdateAnimEvents() {
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void TrainChaseSpyro::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_2814;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;
@@ -2093,7 +2094,7 @@ void TrainChaseSpyro::UpdateCartOrientation() {
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x30);
         arg_spB8 = arg_spA8;
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x38);
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp90.GetTrackPos(temp_r3_4148, this->unkE0, 0);
         arg_spF0 = arg_sp90;
         arg_spF4 = arg_sp94;
@@ -2411,13 +2412,13 @@ void TrainChaseSpyro::UpdateSpyro() {
         arg_sp20 = arg_sp138 * var_f5_4844;
         arg_sp48 = (f64) arg_sp18;
         arg_sp50 = (f64) arg_sp20;
-        arg_sp58 = M2C_FIELD(&up, f64 *, 0);
+        arg_sp58 = M2C_FIELD(&MKVector3::up, f64 *, 0);
         arg_sp28 = -(f32) arg_sp48;
         arg_sp2C = -arg_sp4C;
         arg_sp30 = -(f32) arg_sp50;
         arg_sp68 = (f64) arg_sp28;
         arg_sp70 = (f64) arg_sp30;
-        arg_sp60 = M2C_FIELD(&up, f64 *, 8);
+        arg_sp60 = M2C_FIELD(&MKVector3::up, f64 *, 8);
         KDMath_BuildMatrixFromFwd((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp68), (MKVector3 *) &arg_sp58);
         arg_sp140 = arg_sp78;
         arg_sp144 = arg_sp7C;
@@ -2514,7 +2515,7 @@ void TrainChaseSpyro::Reset() {
     M2C_FIELD(this, f32 *, 0x1E8) = 0.0f;
     M2C_FIELD(this, f32 *, 0x1EC) = 0.0f;
     M2C_FIELD(this, f32 *, 0x1F0) = 0.0f;
-    temp_ret_5079 = M2C_FIELD(*gMK, u8 (**)(void **, TrainChaseSpyro *, s32), 0x9C)(gMK, this, sWorkingChunkID.unk0);
+    temp_ret_5079 = M2C_FIELD(*gMK, u8 (**)(void **, TrainChaseSpyro *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0);
     if (temp_ret_5079 != 0) {
         temp_ret_5083 = ((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_5079);
         if ((temp_ret_5083 == NULL) || (((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1FC)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_5083) == NULL)) {
@@ -2530,8 +2531,8 @@ void TrainChaseSpyro::Reset() {
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8);
         }
         this->unk284 = 0.0f;
-        gameData.unk70.SetValue(gameData.unk74, 0U);
-        ((Stat *) ((Stat *) (&gameData.unk70 + 0x30)))->SetValue(gameData.unkA4, 0U);
+        ((Stat *) ((Stat *) &GameData::gameData.unk70))->SetValue(GameData::gameData.unk74, 0U);
+        ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x30)))->SetValue(GameData::gameData.unkA4, 0U);
         temp_r7_5134 = this->unk8;
         this->unk1E8 = M2C_FIELD(temp_r7_5134, f64 *, 0x30);
         this->unk1E8 = M2C_FIELD(temp_r7_5134, f64 *, 0x38);

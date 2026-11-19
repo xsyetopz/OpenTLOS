@@ -218,7 +218,7 @@ void GuardianCage::StateDyingUpdate() {
     f32 temp_f29_456;
     f32 temp_f2_496;
     this->unk11C += -1960.0f * gUpdateTimeDelta;
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
     arg_sp90 = arg_sp10;
@@ -388,7 +388,7 @@ void GuardianCage::StateFloatingUpdate() {
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
     this->unkF0 += (f32) arg_spA8;
-    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f28_744 = _table_sinf(this->unkF0);
     temp_f29_747 = _table_sinf(this->unkEC);
     arg_sp60 = _table_sinf(this->unkE8);
@@ -499,7 +499,7 @@ void GuardianCage::Update() {
 void GuardianCage::Resolve() {
     KDPropEx::Resolve();
     this->unk144 = checked_cast<Guardian *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "EarthGuardian"));
-    Init__30KDStateMachine<12GuardianCage>FPQ230KDStateMachine<12GuardianCage>5StateP30KDStateMachine<12GuardianCage>((KDStateMachine<GuardianCage> *) &this->unk14C, (KDStateMachine<GuardianCage>::State *) &states, NULL);
+    Init__30KDStateMachine<12GuardianCage>FPQ230KDStateMachine<12GuardianCage>5StateP30KDStateMachine<12GuardianCage>((KDStateMachine<GuardianCage> *) &this->unk14C, (KDStateMachine<GuardianCage>::State *) &GuardianCage::states, NULL);
     this->unk14C.SetState(this, 1, 0U);
 }
 #endif
@@ -515,8 +515,8 @@ void GuardianCage::LoadDone() {
 
     GameProp::LoadDone();
     sp10 = 0.0f;
-    this->unkF8 = M2C_FIELD(&loadInfo, f64 *, 0x50);
-    M2C_FIELD(this, f64 *, 0x100) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x58);
+    this->unkF8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
+    M2C_FIELD(this, f64 *, 0x100) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
     temp_r3_1078 = this->unk8;
     sp8 = 0.0f;
     spC = 0.0f;

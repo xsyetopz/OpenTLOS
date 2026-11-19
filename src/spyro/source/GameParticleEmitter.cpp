@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -79,7 +80,7 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
     if (arg1 != NULL) {
         M2C_FIELD(arg1, f64 *, 0) = (f64) this->unk18;
         M2C_FIELD(arg1, f64 *, 8) = (f64) this->unk20;
-        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp70 = -1.0f;
         temp_f31_133 = this->unk40;
         arg_sp60 = 1.0f;
@@ -903,8 +904,8 @@ void GameParticleEmitter::LoadDone() {
     void **temp_r3_1838;
 
     GameProp::LoadDone();
-    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
     temp_f0_1821 = this->unkE4;
     this->unkE4 = temp_f0_1821 * temp_f0_1821;
     temp_r3_1824 = this->unkC8;

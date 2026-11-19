@@ -268,8 +268,8 @@ void SteamValve::Update() {
                 sp219 = 0;
                 sp21A = 1;
                 sp21C = -1;
-                sp1F0 = M2C_FIELD(&one, f64 *, 0);
-                sp1F8 = M2C_FIELD(&one, f64 *, 8);
+                sp1F0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp1F8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp228 = 0;
                 if (this != NULL) {
                     sp38.GetPos();

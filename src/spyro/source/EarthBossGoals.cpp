@@ -3,6 +3,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/CharacterFireFX.h"
@@ -1861,7 +1862,7 @@ void EarthBossGoal_Think::Arbitrate() {
     u8 var_r0_3728;
     void *temp_r6_3778;
     void *temp_r7_3741;
-    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_spAC + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, arg_spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, arg_spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, arg_sp30 = (up.unk0 * temp_f1_3619) - (up.unk4 * temp_f6_3612), arg_spD8 = temp_f5_3625, arg_sp50 = (f64) arg_sp30, arg_sp28 = (up.unk4 * temp_f5_3625) - (up.unk8 * temp_f1_3619), arg_sp2C = (up.unk8 * temp_f6_3612) - (up.unk0 * temp_f5_3625), arg_spDC = 0.0f, arg_sp48 = (f64) arg_sp28, arg_spB0 = (f32) arg_sp48, arg_spB4 = arg_sp4C, arg_spB8 = (f32) arg_sp50, arg_spBC = 0.0f, arg_spE0 = temp_r3_3608->unk5B8, arg_spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, arg_spE8 = temp_f1_3649, arg_spEC = 1.0f, ((temp_r3_3608->Spawn(&arg_spB0, 0, &up, temp_f1_3649, arg_sp4C, (f32) arg_sp48, 0.0f, temp_f5_3625, temp_f6_3612, up.unk8, up.unk4) == 0) == 0))) {
+    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_spAC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, arg_spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, arg_spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, arg_sp30 = (MKVector3::up.unk0 * temp_f1_3619) - (MKVector3::up.unk4 * temp_f6_3612), arg_spD8 = temp_f5_3625, arg_sp50 = (f64) arg_sp30, arg_sp28 = (MKVector3::up.unk4 * temp_f5_3625) - (MKVector3::up.unk8 * temp_f1_3619), arg_sp2C = (MKVector3::up.unk8 * temp_f6_3612) - (MKVector3::up.unk0 * temp_f5_3625), arg_spDC = 0.0f, arg_sp48 = (f64) arg_sp28, arg_spB0 = (f32) arg_sp48, arg_spB4 = arg_sp4C, arg_spB8 = (f32) arg_sp50, arg_spBC = 0.0f, arg_spE0 = temp_r3_3608->unk5B8, arg_spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, arg_spE8 = temp_f1_3649, arg_spEC = 1.0f, ((temp_r3_3608->Spawn(&arg_spB0, 0, &MKVector3::up, temp_f1_3649, arg_sp4C, (f32) arg_sp48, 0.0f, temp_f5_3625, temp_f6_3612, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) {
         temp_r3_3659 = this->unkC;
         if ((u8) M2C_FIELD(temp_r3_3659, u8 *, 0xCDD) == 0) {
             AddGoal_Spawn();

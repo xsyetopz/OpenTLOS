@@ -770,9 +770,9 @@ void EnemyGoal_GraphTurn::Activate() {
             sp18 = -M2C_FIELD(temp_r5_1498, f32 *, 0x28);
             sp30 = (f64) sp10;
             sp38 = (f64) sp18;
-            sp20 = (up.unk4 * (f32) sp38) - (up.unk8 * unksp34);
-            sp24 = (up.unk8 * (f32) sp30) - (up.unk0 * (f32) sp38);
-            sp28 = (up.unk0 * unksp34) - (up.unk4 * (f32) sp30);
+            sp20 = (MKVector3::up.unk4 * (f32) sp38) - (MKVector3::up.unk8 * unksp34);
+            sp24 = (MKVector3::up.unk8 * (f32) sp30) - (MKVector3::up.unk0 * (f32) sp38);
+            sp28 = (MKVector3::up.unk0 * unksp34) - (MKVector3::up.unk4 * (f32) sp30);
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
             if ((((f32) sp58 * temp_f2_1492) + (((f32) sp50 * temp_f1_1490) + (unksp54 * temp_f0_1486))) > 0.0f) {
@@ -2177,8 +2177,8 @@ u8 EnemyGoal_FollowGraph::Update() {
                 arg_sp68 = (f64) arg_sp18;
                 temp_r3_4307->unk6B5 &= ~0x40;
                 temp_r3_4330 = this->unkC;
-                M2C_FIELD(temp_r3_4330, f64 *, 0x598) = (f64) M2C_FIELD(&zero, f64 *, 0);
-                M2C_FIELD(temp_r3_4330, f64 *, 0x5A0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                M2C_FIELD(temp_r3_4330, f64 *, 0x598) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                M2C_FIELD(temp_r3_4330, f64 *, 0x5A0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             }
         }
     } else {
@@ -2608,12 +2608,12 @@ block_190:
                     temp_r4_5402 = this->unkC;
                     temp_r4_5402->unkA84 = M2C_FIELD(temp_r4_5402->unk638, CharacterGraphNode **, 0x44C);
                 }
-                M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 KDMath_GetDirection(((f32) this->unkC->unkA84->unk48 / 57.295776f) - 3.1415927f);
                 arg_sp80 = arg_sp40;
                 arg_sp88 = arg_sp48;
-                arg_sp70 = M2C_FIELD(&up, f64 *, 0);
-                arg_sp78 = M2C_FIELD(&up, f64 *, 8);
+                arg_sp70 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+                arg_sp78 = M2C_FIELD(&MKVector3::up, f64 *, 8);
                 KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp100, *((MKVector3 *) &arg_sp80), (MKVector3 *) &arg_sp70);
                 temp_r4_5451 = this->unkC->unkA80;
                 M2C_FIELD(temp_r4_5451->__vptr, M2C_UNK (**)(f32 *, CharacterGraphNode *), 0x30)(&arg_sp30, temp_r4_5451);
@@ -3632,8 +3632,8 @@ void EnemyGoal_GraphJump::Terminate() {
     M2C_FIELD(temp_r3_7425, f64 *, 0xC8) = (f64) M2C_FIELD(temp_r3_7425, f64 *, 0xE8);
     temp_r3_7425->unk6B5 |= 0x40;
     temp_r3_7437 = this->unkC;
-    M2C_FIELD(temp_r3_7437, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-    M2C_FIELD(temp_r3_7437, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+    M2C_FIELD(temp_r3_7437, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+    M2C_FIELD(temp_r3_7437, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
     M2C_FIELD(temp_r3_7437, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_7437, f64 *, 0xF0);
     M2C_FIELD(temp_r3_7437, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_7437, f64 *, 0xF8);
     temp_r3_7437->unk6B5 |= 0x40;
@@ -3719,7 +3719,7 @@ u8 EnemyGoal_GraphJump::Update() {
         } else {
             temp_r3_7524 = this->unkC;
             if ((u32) M2C_FIELD(M2C_FIELD(temp_r3_7524, void **, 0x630), u32 *, 0x20) == (u32) temp_r3_7524->unkA50->unk20) {
-                M2C_STRUCT_COPY((s32) &arg_sp27C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp27C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp24 = 0.0f;
                 arg_sp210.GetMeasure(this->unk44, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                 this->unk10 = arg_sp210;
@@ -3786,8 +3786,8 @@ u8 EnemyGoal_GraphJump::Update() {
                 M2C_FIELD(temp_r3_7677, f64 *, 0xC8) = (f64) M2C_FIELD(temp_r3_7677, f64 *, 0xE8);
                 temp_r3_7677->unk6B5 |= 0x40;
                 temp_r3_7689 = this->unkC;
-                M2C_FIELD(temp_r3_7689, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-                M2C_FIELD(temp_r3_7689, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+                M2C_FIELD(temp_r3_7689, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+                M2C_FIELD(temp_r3_7689, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
                 M2C_FIELD(temp_r3_7689, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_7689, f64 *, 0xF0);
                 M2C_FIELD(temp_r3_7689, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_7689, f64 *, 0xF8);
                 temp_r3_7689->unk6B5 |= 0x40;
@@ -3814,9 +3814,9 @@ u8 EnemyGoal_GraphJump::Update() {
                 temp_f6_7759 = (f32) M2C_FIELD(this, f64 *, 0x28);
                 temp_f9_7760 = M2C_FIELD(this, f32 *, 0x24);
                 temp_f4_7761 = (f32) M2C_FIELD(this, f64 *, 0x20);
-                arg_sp104 = (up.unk8 * temp_f4_7761) - (up.unk0 * temp_f6_7759);
-                arg_sp100 = (up.unk4 * temp_f6_7759) - (up.unk8 * temp_f9_7760);
-                arg_sp108 = (up.unk0 * temp_f9_7760) - (up.unk4 * temp_f4_7761);
+                arg_sp104 = (MKVector3::up.unk8 * temp_f4_7761) - (MKVector3::up.unk0 * temp_f6_7759);
+                arg_sp100 = (MKVector3::up.unk4 * temp_f6_7759) - (MKVector3::up.unk8 * temp_f9_7760);
+                arg_sp108 = (MKVector3::up.unk0 * temp_f9_7760) - (MKVector3::up.unk4 * temp_f4_7761);
                 arg_sp1B0 = (f64) arg_sp100;
                 arg_sp1B8 = (f64) arg_sp108;
                 var_f4_7781 = ((f32) arg_sp1B8 * (f32) arg_sp1B8) + (((f32) arg_sp1B0 * (f32) arg_sp1B0) + (arg_sp1B4 * arg_sp1B4));
@@ -3866,9 +3866,9 @@ u8 EnemyGoal_GraphJump::Update() {
                 arg_sp38 = -(f32) arg_sp238;
                 arg_sp190 = (f64) arg_sp30;
                 arg_sp198 = (f64) arg_sp38;
-                arg_spA0 = (up.unk4 * (f32) arg_sp198) - (up.unk8 * arg_sp194);
-                arg_spA4 = (up.unk8 * (f32) arg_sp190) - (up.unk0 * (f32) arg_sp198);
-                arg_spA8 = (up.unk0 * arg_sp194) - (up.unk4 * (f32) arg_sp190);
+                arg_spA0 = (MKVector3::up.unk4 * (f32) arg_sp198) - (MKVector3::up.unk8 * arg_sp194);
+                arg_spA4 = (MKVector3::up.unk8 * (f32) arg_sp190) - (MKVector3::up.unk0 * (f32) arg_sp198);
+                arg_spA8 = (MKVector3::up.unk0 * arg_sp194) - (MKVector3::up.unk4 * (f32) arg_sp190);
                 arg_sp1A0 = (f64) arg_spA0;
                 arg_sp1A8 = (f64) arg_spA8;
                 arg_sp230 = (f64) arg_spA0;
@@ -4214,7 +4214,7 @@ void EnemyGoal_GraphJump::Activate() {
     arg_sp1B0.GetParabolaCentre((MKVector3) this, (MKVector3) &arg_sp1A0, temp_f31_8530, temp_f30_8520);
     Tools_GetClosestSplineTime(&this->unk30, *((MKVector3 *) &arg_sp1B0), 0x32);
     this->unk4C = M2C_ERROR(/* Read from unset register $f1 */);
-    M2C_STRUCT_COPY((s32) &arg_sp31C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp31C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp1C = 0.0f;
     arg_sp160.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     arg_sp18 = 0.0f;
@@ -4269,9 +4269,9 @@ void EnemyGoal_GraphJump::Activate() {
     arg_sp2D8 = (f32) arg_sp2D8 * var_f3_8696;
     M2C_STRUCT_COPY((s32) &arg_sp2DC + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
     var_f1_8724 = 0.0f;
-    arg_spC4 = (up.unk8 * (f32) arg_sp2D0) - (up.unk0 * (f32) arg_sp2D8);
-    arg_spC0 = (up.unk4 * (f32) arg_sp2D8) - (up.unk8 * arg_sp2D4);
-    arg_spC8 = (up.unk0 * arg_sp2D4) - (up.unk4 * (f32) arg_sp2D0);
+    arg_spC4 = (MKVector3::up.unk8 * (f32) arg_sp2D0) - (MKVector3::up.unk0 * (f32) arg_sp2D8);
+    arg_spC0 = (MKVector3::up.unk4 * (f32) arg_sp2D8) - (MKVector3::up.unk8 * arg_sp2D4);
+    arg_spC8 = (MKVector3::up.unk0 * arg_sp2D4) - (MKVector3::up.unk4 * (f32) arg_sp2D0);
     arg_sp130 = (f64) arg_spC0;
     arg_sp138 = (f64) arg_spC8;
     arg_sp88 = -arg_sp2E8;
@@ -4339,9 +4339,9 @@ void EnemyGoal_GraphJump::Activate() {
     arg_sp38 = -(f32) arg_sp2A8;
     arg_sp110 = (f64) arg_sp30;
     arg_sp118 = (f64) arg_sp38;
-    arg_sp60 = (up.unk4 * (f32) arg_sp118) - (up.unk8 * arg_sp114);
-    arg_sp64 = (up.unk8 * (f32) arg_sp110) - (up.unk0 * (f32) arg_sp118);
-    arg_sp68 = (up.unk0 * arg_sp114) - (up.unk4 * (f32) arg_sp110);
+    arg_sp60 = (MKVector3::up.unk4 * (f32) arg_sp118) - (MKVector3::up.unk8 * arg_sp114);
+    arg_sp64 = (MKVector3::up.unk8 * (f32) arg_sp110) - (MKVector3::up.unk0 * (f32) arg_sp118);
+    arg_sp68 = (MKVector3::up.unk0 * arg_sp114) - (MKVector3::up.unk4 * (f32) arg_sp110);
     arg_sp120 = (f64) arg_sp60;
     arg_sp128 = (f64) arg_sp68;
     arg_sp2A0 = (f64) arg_sp60;
@@ -4635,7 +4635,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                         var_f2_9753 = ((2.0f * M2C_FIELD(this->unkC->unkA20, f32 *, 0x164) * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
                     }
                 }
-                M2C_STRUCT_COPY((s32) &arg_sp2DC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp2DC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 var_f1_9821 = 1.0f;
                 arg_sp2C = 0.0f;
                 if (var_f2_9753 > 1.0f) {
@@ -4731,7 +4731,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     if (((s32) M2C_FIELD(temp_r3_10016, s32 *, 0x44) != 0x17) && (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, this->unkC->unkA68)))->GetLinkPath(((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r3_10016)))->GetNextNode()) == 0U)) {
         Tools_TestFloor(*((MKVector3 *) &arg_sp220), NULL, var_f30_9952, (MKCollisionMode) 4);
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-            M2C_STRUCT_COPY((s32) &arg_sp29C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp29C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f2_10046 = this->unk2C;
             if (temp_f2_10046 != 0.0f) {
                 var_f2_10055 = ((temp_f2_10046 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -4756,8 +4756,8 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             arg_sp1F0 = arg_sp2C0;
             var_f6_10112 = 0.0f;
             arg_sp1F8 = arg_sp2C8;
-            arg_sp1E8 = M2C_FIELD(&up, f64 *, 8);
-            arg_sp1E0 = M2C_FIELD(&up, f64 *, 0);
+            arg_sp1E8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
+            arg_sp1E0 = M2C_FIELD(&MKVector3::up, f64 *, 0);
             arg_sp1F4 = 0.0f;
             var_f4_10125 = ((f32) arg_sp1F8 * (f32) arg_sp1F8) + (((f32) arg_sp1F0 * (f32) arg_sp1F0) + (0.0f * 0.0f));
             if (var_f4_10125 > 0.000001f) {
@@ -4799,7 +4799,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             arg_sp1F0 = (f32) arg_sp1F0 * var_f6_10112;
             arg_sp1F4 *= var_f6_10112;
             arg_sp1F8 = (f32) arg_sp1F8 * var_f6_10112;
-            M2C_STRUCT_COPY((s32) &arg_sp29C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp29C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp2A0, *((MKVector3 *) &arg_sp1F0), (MKVector3 *) &arg_sp1E0);
             temp_r6_10218 = this->unkC;
             M2C_FIELD(temp_r6_10218, f64 *, 0xE0) = arg_sp1F0;
@@ -4808,8 +4808,8 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             M2C_FIELD(temp_r6_10218, f64 *, 0xC8) = (f64) M2C_FIELD(temp_r6_10218, f64 *, 0xE8);
             temp_r6_10218->unk6B5 &= ~0x40;
             temp_r3_10236 = this->unkC;
-            M2C_FIELD(temp_r3_10236, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-            M2C_FIELD(temp_r3_10236, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+            M2C_FIELD(temp_r3_10236, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+            M2C_FIELD(temp_r3_10236, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
             M2C_FIELD(temp_r3_10236, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_10236, f64 *, 0xF0);
             M2C_FIELD(temp_r3_10236, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_10236, f64 *, 0xF8);
             temp_r3_10236->unk6B5 &= ~0x40;
@@ -4837,7 +4837,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             return this->unk8;
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp25C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp25C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f2_10311 = this->unk2C;
     if (temp_f2_10311 != 0.0f) {
         var_f2_10320 = ((temp_f2_10311 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5139,7 +5139,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                         var_f2_10907 = ((M2C_FIELD(this->unkC->unkA20, f32 *, 0x164) * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
                     }
                 }
-                M2C_STRUCT_COPY((s32) &arg_sp2AC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp2AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 var_f1_10971 = 1.0f;
                 arg_sp2C = 0.0f;
                 if (var_f2_10907 > 1.0f) {
@@ -5235,7 +5235,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     if (((s32) M2C_FIELD(temp_r3_11166, s32 *, 0x44) != 0x17) && (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, this->unkC->unkA68)))->GetLinkPath(((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r3_11166)))->GetNextNode()) == 0U)) {
         Tools_TestFloor(*((MKVector3 *) &arg_sp220), NULL, var_f30_11102, (MKCollisionMode) 4);
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-            M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f2_11196 = this->unk2C;
             if (temp_f2_11196 != 0.0f) {
                 var_f2_11205 = ((temp_f2_11196 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5260,8 +5260,8 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             arg_sp1F0 = arg_sp290;
             var_f6_11260 = 0.0f;
             arg_sp1F8 = arg_sp298;
-            arg_sp1E8 = M2C_FIELD(&up, f64 *, 8);
-            arg_sp1E0 = M2C_FIELD(&up, f64 *, 0);
+            arg_sp1E8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
+            arg_sp1E0 = M2C_FIELD(&MKVector3::up, f64 *, 0);
             arg_sp1F4 = 0.0f;
             var_f4_11273 = ((f32) arg_sp1F8 * (f32) arg_sp1F8) + (((f32) arg_sp1F0 * (f32) arg_sp1F0) + (0.0f * 0.0f));
             if (var_f4_11273 > 0.000001f) {
@@ -5303,7 +5303,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             arg_sp1F0 = (f32) arg_sp1F0 * var_f6_11260;
             arg_sp1F4 *= var_f6_11260;
             arg_sp1F8 = (f32) arg_sp1F8 * var_f6_11260;
-            M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp270, *((MKVector3 *) &arg_sp1F0), (MKVector3 *) &arg_sp1E0);
             temp_r6_11366 = this->unkC;
             M2C_FIELD(temp_r6_11366, f64 *, 0xE0) = arg_sp1F0;
@@ -5312,8 +5312,8 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             M2C_FIELD(temp_r6_11366, f64 *, 0xC8) = (f64) M2C_FIELD(temp_r6_11366, f64 *, 0xE8);
             temp_r6_11366->unk6B5 &= ~0x40;
             temp_r3_11384 = this->unkC;
-            M2C_FIELD(temp_r3_11384, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-            M2C_FIELD(temp_r3_11384, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+            M2C_FIELD(temp_r3_11384, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+            M2C_FIELD(temp_r3_11384, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
             M2C_FIELD(temp_r3_11384, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_11384, f64 *, 0xF0);
             M2C_FIELD(temp_r3_11384, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_11384, f64 *, 0xF8);
             temp_r3_11384->unk6B5 &= ~0x40;
@@ -5341,7 +5341,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             return this->unk8;
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp22C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp22C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f2_11459 = this->unk2C;
     if (temp_f2_11459 != 0.0f) {
         var_f2_11468 = ((temp_f2_11459 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);

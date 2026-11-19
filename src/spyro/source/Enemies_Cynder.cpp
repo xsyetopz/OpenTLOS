@@ -1495,7 +1495,7 @@ loop_34:
                         gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
                         var_r21_2881 += 1;
                     } while (var_r21_2881 < 3);
-                    temp_f16_2931 = up.unk8;
+                    temp_f16_2931 = MKVector3::up.unk8;
                     var_r21_2934 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1523,7 +1523,7 @@ loop_34:
                     break;
                 case 0x40000000:
                     KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
-                    temp_f17_3003 = up.unk8;
+                    temp_f17_3003 = MKVector3::up.unk8;
                     var_r21_3006 = 0;
                     do {
                         KDRand_UnitVectorXZ();

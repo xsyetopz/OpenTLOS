@@ -268,7 +268,7 @@ void AssaultCannon::EmitShootingFX() {
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void AssaultCannon::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_625;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;
@@ -1483,9 +1483,9 @@ void AssaultCannon::StateFireUpdate() {
         sp548 = temp_f29_2633;
         sp540 = 0x62;
         sp544 = this;
-        sp550 = M2C_FIELD(&zero, f64 *, 0);
-        sp558 = M2C_FIELD(&zero, f64 *, 8);
-        M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, f64), 0x1C)(gb.unk0, &sp540, M2C_FIELD(&zero, f64 *, 0));
+        sp550 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp558 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, f64), 0x1C)(gb.unk0, &sp540, M2C_FIELD(&MKVector3::zero, f64 *, 0));
         this->unk240 = sp550;
         M2C_FIELD(this, f64 *, 0x248) = sp558;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
@@ -2135,8 +2135,8 @@ void AssaultCannon::StateFireEnter() {
             sp261 = 0;
             sp262 = 1;
             sp264 = -1;
-            sp238 = M2C_FIELD(&one, f64 *, 0);
-            sp240 = M2C_FIELD(&one, f64 *, 8);
+            sp238 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp270 = 0;
             if (this != NULL) {
                 sp90.GetPos();
@@ -3338,7 +3338,7 @@ void AssaultCannon::LoadDone() {
     }
     this->unk2D0 = var_r3_5906;
     this->unk80->InitEvents(&pTurretAnimEvents);
-    Init__31KDStateMachine<13AssaultCannon>FPQ231KDStateMachine<13AssaultCannon>5StateP31KDStateMachine<13AssaultCannon>(&this->unk218, (KDStateMachine<AssaultCannon>::State *) &states, NULL);
+    Init__31KDStateMachine<13AssaultCannon>FPQ231KDStateMachine<13AssaultCannon>5StateP31KDStateMachine<13AssaultCannon>(&this->unk218, (KDStateMachine<AssaultCannon>::State *) &AssaultCannon::states, NULL);
     this->unk218.SetState(this, 1, 0U);
     this->unk2BC = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
     temp_r4_5934 = M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0x16C);

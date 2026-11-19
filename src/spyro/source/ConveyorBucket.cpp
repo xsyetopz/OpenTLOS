@@ -155,9 +155,9 @@ void ConveyorBucket::Message(MKMessage *arg0) {
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp58 = sp8;
             temp_f2_293 = (f32) sp40 + (f32) sp30;
-            sp48 = M2C_FIELD(&zero, f64 *, 0);
+            sp48 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
             sp10 = temp_f2_293;
-            sp50 = M2C_FIELD(&zero, f64 *, 8);
+            sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             sp60 = (f64) sp10;
             sp68 = 0x22;
             sp70 = &sp58;
@@ -211,13 +211,11 @@ void ConveyorBucket::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void ConveyorBucket::Init() {
     GameProp::Init();
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkE8 = 0.0f;
 }
-#endif

@@ -129,7 +129,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     temp_f3_292 = 1.0f / (1.0f + (((temp_f8_280 * (-0.235f * temp_f8_280 * temp_f8_280)) + (0.48f * temp_f8_280 * temp_f8_280)) - temp_f8_280));
     this->unk24 = temp_f3_292 * -((temp_f9_274 * temp_f1_284) - temp_f11_278);
     this->unk1C = (temp_f3_292 * (temp_f5_279 + temp_f1_284)) + var_f0_231;
-    M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp30 = 0.0f;
     arg_sp28 = 1.0f;
     arg_sp2C = 0.0f;
@@ -138,7 +138,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     arg_sp160.SetRotateAroundAxis(*((MKVector3 *) &arg_sp78), this->unk20);
     arg_sp120.SetRotateAroundAxis(*((MKVector3 *) &arg_sp1F0), this->unk1C);
     arg_sp160.Multiply3x3((Matrix *) &arg_sp160, (Matrix *) &arg_sp120);
-    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp18 = -(f32) arg_spC8;
     arg_sp1C = -arg_spCC;
     arg_sp20 = -(f32) arg_spD0;
@@ -364,7 +364,7 @@ block_10:
         arg_sp68.GetNodeOrigin(MKModel_GetAnimation(this->unk30));
         arg_sp98 = arg_sp68;
         arg_spA0 = arg_sp70;
-        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp18 = -(f32) arg_sp98;
         arg_sp1C = -arg_sp9C;
         arg_sp20 = -(f32) arg_spA0;

@@ -277,10 +277,10 @@ loop_46:
     temp_r24_431 = this->unk10 + var_r25_427;
     temp_r3_433 = M2C_FIELD(temp_r24_431, s8 **, 0);
     var_f30_401 += M2C_FIELD(temp_r24_431, f32 *, 4);
-    if ((temp_r3_433 != NULL) && ((temp_r4_437 = M2C_FIELD(temp_r24_431, s32 *, 8), ((temp_r4_437 == 0) != 0)) || ((temp_r4_437 >= (void *) firstInvalidSoundID.unk0) && (temp_r4_437 <= (void *) lastInvalidSoundID.unk0)))) {
+    if ((temp_r3_433 != NULL) && ((temp_r4_437 = M2C_FIELD(temp_r24_431, s32 *, 8), ((temp_r4_437 == 0) != 0)) || ((temp_r4_437 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r4_437 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)))) {
         M2C_FIELD(temp_r24_431, s32 *, 8) = Sound_GetID(temp_r3_433);
         temp_r3_449 = M2C_FIELD(temp_r24_431, s32 *, 8);
-        if ((temp_r3_449 >= (void *) firstInvalidSoundID.unk0) && (temp_r3_449 <= (void *) lastInvalidSoundID.unk0)) {
+        if ((temp_r3_449 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r3_449 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)) {
             M2C_FIELD(temp_r24_431, s32 *, 8) = 0;
         }
     }
@@ -290,10 +290,10 @@ loop_46:
             if (arg0 != NULL) {
                 temp_r25_468 = this->unk10 + var_r25_427;
                 temp_r3_469 = M2C_FIELD(temp_r25_468, s8 **, 0);
-                if ((temp_r3_469 != NULL) && ((temp_r4_472 = M2C_FIELD(temp_r25_468, s32 *, 8), ((temp_r4_472 == 0) != 0)) || ((temp_r4_472 >= (void *) firstInvalidSoundID.unk0) && (temp_r4_472 <= (void *) lastInvalidSoundID.unk0)))) {
+                if ((temp_r3_469 != NULL) && ((temp_r4_472 = M2C_FIELD(temp_r25_468, s32 *, 8), ((temp_r4_472 == 0) != 0)) || ((temp_r4_472 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r4_472 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)))) {
                     M2C_FIELD(temp_r25_468, s32 *, 8) = Sound_GetID(temp_r3_469);
                     temp_r3_484 = M2C_FIELD(temp_r25_468, s32 *, 8);
-                    if ((temp_r3_484 >= (void *) firstInvalidSoundID.unk0) && (temp_r3_484 <= (void *) lastInvalidSoundID.unk0)) {
+                    if ((temp_r3_484 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r3_484 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)) {
                         M2C_FIELD(temp_r25_468, s32 *, 8) = 0;
                     }
                 }
@@ -309,10 +309,10 @@ loop_46:
             } else {
                 temp_r25_534 = this->unk10 + var_r25_427;
                 temp_r3_535 = M2C_FIELD(temp_r25_534, s8 **, 0);
-                if ((temp_r3_535 != NULL) && ((temp_r4_538 = M2C_FIELD(temp_r25_534, s32 *, 8), ((temp_r4_538 == 0) != 0)) || ((temp_r4_538 >= (void *) firstInvalidSoundID.unk0) && (temp_r4_538 <= (void *) lastInvalidSoundID.unk0)))) {
+                if ((temp_r3_535 != NULL) && ((temp_r4_538 = M2C_FIELD(temp_r25_534, s32 *, 8), ((temp_r4_538 == 0) != 0)) || ((temp_r4_538 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r4_538 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)))) {
                     M2C_FIELD(temp_r25_534, s32 *, 8) = Sound_GetID(temp_r3_535);
                     temp_r3_550 = M2C_FIELD(temp_r25_534, s32 *, 8);
-                    if ((temp_r3_550 >= (void *) firstInvalidSoundID.unk0) && (temp_r3_550 <= (void *) lastInvalidSoundID.unk0)) {
+                    if ((temp_r3_550 >= (void *) GlobalSoundData::firstInvalidSoundID.unk0) && (temp_r3_550 <= (void *) GlobalSoundData::lastInvalidSoundID.unk0)) {
                         M2C_FIELD(temp_r25_534, s32 *, 8) = 0;
                     }
                 }
@@ -893,8 +893,8 @@ loop_2:
 
 #if 0 // DRAFT: expression syntax error
 void GlobalSoundData::InvalidateSoundIDRange(int arg0, int arg1) {
-    firstInvalidSoundID.unk0 = (void *) arg0;
-    lastInvalidSoundID.unk0 = (void *) arg1;
+    GlobalSoundData::firstInvalidSoundID.unk0 = (void *) arg0;
+    GlobalSoundData::lastInvalidSoundID.unk0 = (void *) arg1;
 }
 #endif
 

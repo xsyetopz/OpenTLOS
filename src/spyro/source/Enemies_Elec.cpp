@@ -184,9 +184,9 @@ void ElecTier3::UpdateScan() {
     arg_spF8 = (f64) arg_sp38;
     arg_spE0 = (f64) arg_sp30;
     arg_spE8 = (f64) arg_sp38;
-    arg_sp20 = (up.unk4 * (f32) arg_spF8) - (up.unk8 * arg_spF4);
-    arg_sp24 = (up.unk8 * (f32) arg_spF0) - (up.unk0 * (f32) arg_spF8);
-    arg_sp28 = (up.unk0 * arg_spF4) - (up.unk4 * (f32) arg_spF0);
+    arg_sp20 = (MKVector3::up.unk4 * (f32) arg_spF8) - (MKVector3::up.unk8 * arg_spF4);
+    arg_sp24 = (MKVector3::up.unk8 * (f32) arg_spF0) - (MKVector3::up.unk0 * (f32) arg_spF8);
+    arg_sp28 = (MKVector3::up.unk0 * arg_spF4) - (MKVector3::up.unk4 * (f32) arg_spF0);
     arg_spC0 = (f64) arg_sp20;
     arg_spC8 = (f64) arg_sp28;
     Normalise(*((MKVector3 *) &arg_spD0));
@@ -510,7 +510,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     u8 var_r3_1112;
     void *temp_r4_1117;
     M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (arg0 - 4) + 4, 0x40);
-    MKModel_SetWorldMatrix(this->unk4, identity);
+    MKModel_SetWorldMatrix(this->unk4, Matrix::identity);
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), (MKVector3 *) &arg_sp120);
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2BC), (MKVector3 *) &arg_sp110);
     var_r3_1112 = 0;

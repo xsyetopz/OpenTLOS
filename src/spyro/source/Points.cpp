@@ -206,7 +206,7 @@ void WindPoints_InitModule() {
     wind.unk0 = var_r3_1088;
     memset(var_r3_1088, 0, wind.unk4 * (wind.unk4 * 4));
     wind.unk10 = 0;
-    MKWind_Set(400.0f, 40000.0f, 1000.0f, 400.0f, zero, 1.0f);
+    MKWind_Set(400.0f, 40000.0f, 1000.0f, 400.0f, MKVector3::zero, 1.0f);
 }
 #endif
 

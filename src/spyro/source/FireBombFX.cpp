@@ -11,6 +11,7 @@
 #include "spyro/source/ClusterBomb.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeroInterface.h"
@@ -170,10 +171,10 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         gb.unk80->EnableLight(temp_r4_161, 1U);
     }
     this->unk124 = 10000.0f;
-    temp_r30_175 = gameData.unk70.unkE8;
+    temp_r30_175 = GameData::gameData.unk70.unkE8;
     temp_r4_176 = temp_r30_175 << 5;
-    temp_r31_178 = *(&gameData.unk70 + (temp_r4_176 + 0x7C));
-    temp_r5_180 = &gameData.unk70 + (temp_r4_176 + 0x64);
+    temp_r31_178 = *(&GameData::gameData.unk70 + (temp_r4_176 + 0x7C));
+    temp_r5_180 = &GameData::gameData.unk70 + (temp_r4_176 + 0x64);
     if (temp_r31_178 == 3) {
         var_r4_184 = 0;
         if (((s32) M2C_FIELD(temp_r5_180, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_180, s32 *, 4) == 3)) {
@@ -192,7 +193,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     } else {
         var_r23_213 = *(temp_r5_180 + (temp_r31_178 * 4));
     }
-    this->unk130.Init(arg3, gameData.unk70.GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
+    this->unk130.Init(arg3, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
     temp_r3_231 = this->unk120;
     if ((temp_r3_231 != NULL) && (M2C_FIELD(temp_r3_231->unk0, s32 *, 0xC) & 8)) {
         this->unk130.unk34 = 5.0f;
@@ -237,7 +238,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
             var_r7_269 = 0x08000000;
         }
         if (MKCollision_SphereCollide(arg0, 50.0f, (MKCollisionResult *) &sp78, 1, (MKCollisionMode) 7, var_r7_269) != 0) {
-            Explode(up, *((MKVector3 *) &sp78), spC0);
+            Explode(MKVector3::up, *((MKVector3 *) &sp78), spC0);
         }
         if (spC != NULL) {
             M2C_FIELD(spC, u8 *, 4) = sp10;
@@ -970,7 +971,7 @@ void FireBombFX::Update() {
         if (var_r31_1713 != 0) {
             Explode(*((MKVector3 *) &arg_sp4C8), *((MKVector3 *) &arg_sp4D8), arg_sp5D8);
         } else {
-            M2C_STRUCT_COPY((s32) &arg_sp54C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp54C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             temp_f0_1941 = (f32) arg_sp4F0 - M2C_FIELD((MKModel_GetWorldMatrix(this->unk4) + 0x30), f32 *, 8);
@@ -983,7 +984,7 @@ void FireBombFX::Update() {
             arg_sp4A8 = (f64) arg_sp218;
             arg_sp4B0 = (f64) arg_sp220;
             KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp550, *((MKVector3 *) &arg_sp4B8), (MKVector3 *) &arg_sp4A8);
-            M2C_STRUCT_COPY((s32) &arg_sp50C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp50C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp510.RotateRoll((Matrix *) &arg_sp510, 2.0f * this->unk100);
             arg_sp510.Multiply3x3((Matrix *) &arg_sp510, (Matrix *) &arg_sp550);
             MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_sp4E8));

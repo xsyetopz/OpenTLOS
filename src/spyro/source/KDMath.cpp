@@ -502,7 +502,7 @@ s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: undefined identifier 'unksp64'
 s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg2) {
     f64 sp88;
     f64 sp80;
@@ -550,8 +550,8 @@ s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg
 
     var_r5_0 = arg2;
     if ((s8) init_574 == 0) {
-        M2C_FIELD(&up_573, f64 *, 0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(&up_573, f64 *, 8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(&up_573, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(&up_573, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         init_574 = 1;
     }
     if (var_r5_0 == NULL) {

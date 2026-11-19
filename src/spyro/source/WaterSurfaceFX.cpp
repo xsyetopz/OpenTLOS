@@ -4,6 +4,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/Wake.h"
 #include "unplaced_templates.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -688,7 +689,6 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void WaterSurfaceFX::Draw() {
     WaterSurfaceFX::Wake **var_r30_1179;
     WaterSurfaceFX::Wake **var_r30_1201;
@@ -703,7 +703,7 @@ void WaterSurfaceFX::Draw() {
     temp_r3_1169 = checked_cast<WaterSurfaceFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     MKMaterial_SetMaterial(M2C_FIELD(temp_r3_1169, MKMaterial **, 0x64));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r30_1179 = this->unk4C;
 loop_2:
     if (var_r30_1179 != NULL) {
@@ -717,7 +717,7 @@ loop_2:
     MKEndPrimitive();
     MKMaterial_SetMaterial(M2C_FIELD(temp_r3_1169, MKMaterial **, 0x60));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r30_1201 = this->unk4C;
 loop_6:
     if (var_r30_1201 != NULL) {
@@ -731,7 +731,7 @@ loop_6:
     MKEndPrimitive();
     MKMaterial_SetMaterial(M2C_FIELD(temp_r3_1169, MKMaterial **, 0x6C));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r30_1223 = this->unk5C;
 loop_10:
     if (var_r30_1223 != NULL) {
@@ -745,7 +745,7 @@ loop_10:
     MKEndPrimitive();
     MKMaterial_SetMaterial(M2C_FIELD(temp_r3_1169, MKMaterial **, 0x68));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     var_r30_1245 = this->unk5C;
 loop_14:
     if (var_r30_1245 != NULL) {
@@ -758,7 +758,6 @@ loop_14:
     }
     MKEndPrimitive();
 }
-#endif
 
 void WaterSurfaceFX::Update() {
     WaterSurfaceFX::Wake **temp_r3_1288;

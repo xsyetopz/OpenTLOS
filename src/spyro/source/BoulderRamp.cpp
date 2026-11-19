@@ -168,7 +168,7 @@ void BoulderRamp::ReceivingBoulderEnter() {
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f3 */);
     temp_r3_291 = this->unk8;
-    sp60 = up.unk8 * 80.0f;
+    sp60 = MKVector3::up.unk8 * 80.0f;
     sp98 = sp58;
     spA8 = M2C_FIELD(temp_r3_291, f64 *, 0x30);
     spA0 = (f64) sp60;
@@ -313,7 +313,7 @@ void BoulderRamp::Init() {
     this->unkEC = 0.0f;
     this->unkF0.Init(3, 0U);
     this->unkF4.unk10.Init();
-    Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk14, (KDStateMachine<BoulderRamp>::State *) &states, NULL);
+    Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk14, (KDStateMachine<BoulderRamp>::State *) &BoulderRamp::states, NULL);
     Trap::Init();
 }
 #endif

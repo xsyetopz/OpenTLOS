@@ -1,5 +1,6 @@
 #include "spyro/source/ElecZapCrystal.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "spyro/source/EmbersPS.h"
@@ -212,7 +213,7 @@ loop_10:
             sp5C = 1.0f;
             spB0 = (f64) sp50;
             spB8 = (f64) sp58;
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, zero, 60.0f, *((MKVector4 *) &spB0), 0.0f);
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, MKVector3::zero, 60.0f, *((MKVector4 *) &spB0), 0.0f);
             var_r28_316 = 0;
             do {
                 sp48 = -1.0f;
@@ -277,8 +278,8 @@ void ElecZapCrystal::LoadDone() {
     u16 temp_ret_499;
 
     KDProp::LoadDone();
-    M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
     temp_ret_464 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "BlueCrystal");
     var_f1_464 = M2C_BITWISE(f32, temp_ret_464);
     this->unk90 = (s32) temp_ret_464;

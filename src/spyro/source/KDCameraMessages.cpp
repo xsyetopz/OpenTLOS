@@ -1,19 +1,19 @@
 #include "spyro/source/KDCameraMessages.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void HeroDataMessage::ClearData() {
     this->unk0 = 0x40A;
     this->unk10.SetIdentity();
-    this->unk50 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk58 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk60 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk68 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk70 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk80 = M2C_FIELD(&up, f64 *, 0);
-    this->unk88 = M2C_FIELD(&up, f64 *, 8);
+    this->unk50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk60 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk68 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk80 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    this->unk88 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     this->unk90 = 0.0f;
     this->unk98 = 0.001f;
     this->unk9C = 0;
@@ -24,7 +24,6 @@ void HeroDataMessage::ClearData() {
     this->unkAC = 0.0f;
     this->unkB0 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC'
 void HeroDataMessage::Init(const Matrix *arg0) {

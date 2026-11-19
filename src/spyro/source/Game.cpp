@@ -322,7 +322,7 @@ void GameGlobals::Fade::FadeOut(const MKVector4 *arg1) {
         if (var_r4_0 != NULL) {
 
         } else {
-            var_r4_0 = &zero;
+            var_r4_0 = &MKVector4::zero;
         }
         M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(var_r4_0, f64 *, 0);
         M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(var_r4_0, f64 *, 8);
@@ -349,7 +349,7 @@ void GameGlobals::Fade::FadeIn(const MKVector4 *arg1) {
 void GameGlobals::Fade::Draw() {
     if (((s32) M2C_FIELD(this, s32 *, 0x20) > 0) || (M2C_FIELD(this, f32 *, 0x1C) > 0.0f)) {
         MKMaterial_SetMaterial((MKMaterial *) gb[0xCA]);
-        MKSetBaseColorV(one);
+        MKSetBaseColorV(MKVector4::one);
         MKPrimitive(0xC, 3);
         MKBegin(4);
         if (M2C_FIELD(this, f32 *, 0x1C) > 0.0f) {
@@ -398,15 +398,13 @@ void GameGlobals::Fade::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void GameGlobals::Fade::Reset() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
     M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(this, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(this, f64 *, 8);
     M2C_FIELD(this, s32 *, 0x20) = 0;
 }
-#endif
 
 void GameGlobals::Fade::Deinit() {
     s32 temp_r3_415;
@@ -417,16 +415,14 @@ void GameGlobals::Fade::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void GameGlobals::Fade::Init() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
     M2C_FIELD(this, s32 *, 0x20) = 0;
     M2C_FIELD(this, s8 *, 0x28) = 0;
     M2C_FIELD(this, s8 *, 0x29) = 0;
     M2C_FIELD(this, s32 *, 0x24) = 0;
 }
-#endif
 
 void GameGlobals::EnableSlowMotion(bool arg0, float arg1, float arg2) {
     f32 var_f1_0;
@@ -674,10 +670,10 @@ void GameGlobals::InfiniteMagicOff() {
     this->unkB = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void GameGlobals::InfiniteMagicOn() {
     this->unkB = 1;
-    gameData.unkA0.SetValue(30.0f, 0U);
+    ((Stat *) (&GameData::gameData.unkA0))->SetValue(30.0f, 0U);
 }
 #endif
 
@@ -870,7 +866,7 @@ void LoadGlobalResources_Deinit() {
 void LoadGlobalResources_Update() {
     MemoryCard_InitModule();
     if ((M2C_UNK *) gb[0xCF] != NULL) {
-        gameData.ClearData();
+        ((GameData *) (&GameData::gameData))->ClearData();
         ((Level *) ((Level *) gb[0xCB]))->SwitchTo((ChunkInfo *) gb[0xCC]);
         return;
     }
@@ -1182,7 +1178,7 @@ loop_5:
         }
     }
     var_r3_1978->ModuleInit();
-    gameData.GetGameSettings();
+    ((GameData *) (&GameData::gameData))->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     EnemySettings_InitModule();
     gb->ResetInGameData();

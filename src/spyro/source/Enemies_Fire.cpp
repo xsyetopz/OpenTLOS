@@ -656,8 +656,8 @@ s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVect
     s32 var_r26_1316;
     void *temp_r3_1329;
     void *temp_r4_1325;
-    arg_sp1B0 = M2C_FIELD(&zero, f64 *, 0);
-    arg_sp1B8 = M2C_FIELD(&zero, f64 *, 8);
+    arg_sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    arg_sp1B8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r26_1316 = 0;
 loop_1:
     temp_r4_1325 = M2C_FIELD(this->unkA2C, void **, 0x1C);
@@ -693,7 +693,7 @@ loop_1:
         arg_sp160 = arg_spC0;
         arg_spC8 = arg_sp208 - (f32) arg_sp1B8;
         arg_sp168 = (f64) arg_spC8;
-        arg_sp14 = (up.unk8 * (f32) arg_sp168) + ((up.unk0 * (f32) arg_sp160) + (up.unk4 * arg_sp164));
+        arg_sp14 = (MKVector3::up.unk8 * (f32) arg_sp168) + ((MKVector3::up.unk0 * (f32) arg_sp160) + (MKVector3::up.unk4 * arg_sp164));
         arg_sp18 = (M2C_BITWISE(s32, arg_sp14) & 0x80000000) | 0x3F800000;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
@@ -971,7 +971,7 @@ s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
         arg_sp30 = arg_sp20;
-        arg_sp28 = up.unk8 * 200.0f;
+        arg_sp28 = MKVector3::up.unk8 * 200.0f;
         arg_sp38 = (f64) arg_sp28;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);

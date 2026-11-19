@@ -209,7 +209,7 @@ loop_7:
             arg_sp48 = (f64) arg_sp28;
             arg_sp40 = (f64) arg_sp20;
             MKModel_SetColor(this->unk4, *((MKVector4 *) &arg_sp40));
-            M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp18 = 0.0f;
             arg_sp10 = M2C_FIELD(temp_r31_427, f32 *, 0x44);
             arg_sp14 = M2C_FIELD(temp_r31_427, f32 *, 0x48);

@@ -253,7 +253,7 @@ void BoneBlurFX::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal type
 void BoneBlurFX::Draw() {
     f64 sp80;
     f64 sp78;
@@ -313,7 +313,7 @@ loop_7:
         if ((s32) (var_r22_480 + 1) >= 2) {
             MKMaterial_SetMaterial(this->unk70);
             MKPrimitive(0xC, 0x10);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             var_r27_522 = 0;
             var_r23_523 = 0;
 loop_19:
@@ -419,7 +419,7 @@ void BoneBlurFXDescriptor::DrawInstances() {
     void *var_r4_756;
     void *var_r4_787;
 
-    var_r4_756 = pFirstDesc.__vptr;
+    var_r4_756 = BoneBlurFXDescriptor::pFirstDesc.__vptr;
 loop_2:
     if ((var_r4_756 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_756, void **, 0x60), s32 *, 0x138) & 2)) {
         var_r4_756 = M2C_FIELD(var_r4_756, void **, 0x68);
@@ -452,8 +452,8 @@ void BoneBlurFXDescriptor::Deinit() {
     BoneBlurFXDescriptor *temp_r4_822;
     BoneBlurFXDescriptor *temp_r4_828;
 
-    if ((void *) pFirstDesc.__vptr == this) {
-        pFirstDesc.__vptr = this->unk68;
+    if ((void *) BoneBlurFXDescriptor::pFirstDesc.__vptr == this) {
+        BoneBlurFXDescriptor::pFirstDesc.__vptr = this->unk68;
     }
     temp_r4_822 = this->unk64;
     if (temp_r4_822 != NULL) {
@@ -473,12 +473,12 @@ void BoneBlurFXDescriptor::Deinit() {
 #if 0 // DRAFT: expression syntax error
 void BoneBlurFXDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = (BoneBlurFXDescriptor *) pFirstDesc.__vptr;
+    this->unk68 = (BoneBlurFXDescriptor *) BoneBlurFXDescriptor::pFirstDesc.__vptr;
     this->unk64 = NULL;
-    if ((void *) pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(pFirstDesc.__vptr, BoneBlurFXDescriptor **, 0x64) = this;
+    if ((void *) BoneBlurFXDescriptor::pFirstDesc.__vptr != NULL) {
+        M2C_FIELD(BoneBlurFXDescriptor::pFirstDesc.__vptr, BoneBlurFXDescriptor **, 0x64) = this;
     }
-    pFirstDesc.__vptr = this;
+    BoneBlurFXDescriptor::pFirstDesc.__vptr = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

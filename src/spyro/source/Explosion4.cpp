@@ -840,7 +840,7 @@ loop_44:
         }
     }
     if (arg5 != 0) {
-        M2C_STRUCT_COPY((s32) &arg_spDDC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spDDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp178 = 0.0f;
         arg_sp170 = 0.0f;
         arg_sp174 = 1.0f;
@@ -944,7 +944,7 @@ void Explosion4::Draw() {
     f32 temp_f3_2351;
     this->unk5C.Draw();
     if (((s32) this->unk54 == 1) && (this->unk90 > 0.0f) && ((u8) this->unkA8 != 0)) {
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f31_2341 = this->unk90 / 0.5f;
         temp_f30_2343 = this->unk64;
         temp_f3_2351 = 1.0f - _table_sinf((6.2831855f * temp_f31_2341) + 1.5707964f);
@@ -954,7 +954,7 @@ void Explosion4::Draw() {
         arg_sp24 = 20.0f * this->unk58 * temp_f3_2351;
         arg_sp70 = (f64) arg_sp20;
         arg_spC0.Scale3x3((Matrix *) &arg_spC0, *((MKVector3 *) &arg_sp70));
-        M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp80.RotatePYR((Matrix *) &arg_sp80, *((MKVector3 *) &this->unk78));
         MKVector(0.0f, 200.0f * this->unk58, 0.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);

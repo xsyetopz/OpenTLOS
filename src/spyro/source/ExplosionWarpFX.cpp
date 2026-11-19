@@ -335,7 +335,7 @@ void ExplosionWarpFX::Deinit() {
     free(temp_r31_595);
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_sp30'
 void ExplosionWarpFX::Draw() {
     f32 temp_f1_655;
     f32 var_f0_681;
@@ -359,7 +359,7 @@ void ExplosionWarpFX::Draw() {
     if (this->unk64 != 0.0f) {
         MKMaterial_SetMaterial(this->unk60);
         MKPrimitive(0xC, 0x10);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         var_f31_642 = 1.0f;
         arg_sp30 = 1.0f;
         arg_sp34 = 1.0f;

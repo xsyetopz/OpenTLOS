@@ -516,8 +516,8 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     sp18 = (f32) sp38 * var_f4_981;
     sp40 = (f64) sp10;
     sp48 = (f64) sp18;
-    if ((((f32) sp48 * up.unk8) + (((f32) sp40 * up.unk0) + (unksp44 * up.unk4))) > 0.8f) {
-        this->unk28.Update(zero);
+    if ((((f32) sp48 * MKVector3::up.unk8) + (((f32) sp40 * MKVector3::up.unk0) + (unksp44 * MKVector3::up.unk4))) > 0.8f) {
+        this->unk28.Update(MKVector3::zero);
     } else {
         this->unk28.Update(arg0);
     }

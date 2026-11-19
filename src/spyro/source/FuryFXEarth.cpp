@@ -10,6 +10,7 @@
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/ManagedLight.h"
@@ -264,7 +265,7 @@ void FuryFXEarth::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp30;
     f64 sp28;
@@ -303,7 +304,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     M2C_FIELD(this, f64 *, 0x110) = temp_f3_485;
     M2C_FIELD(this, f64 *, 0x118) = temp_f2_489;
     KDSound_Play3d(GS_SpyroFuryEarth1, &this->unk110, 0U, -1, 0.0f, 0U);
-    M2C_STRUCT_COPY((s32) &this->unk110.unkC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk110.unkC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk150 = this->unk110.unk0;
     this->unk154 = this->unk110.unk4;
     this->unk158 = this->unk110.unk8;
@@ -326,9 +327,9 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     temp_r3_556->Reset();
     temp_r3_561 = this->unk160;
     temp_r3_561->Enable();
-    temp_r3_570 = gameData.unk158 << 5;
-    temp_r0_572 = *(&gameData.unk70 + (temp_r3_570 + 0x7C));
-    temp_r4_574 = &gameData.unk70 + (temp_r3_570 + 0x64);
+    temp_r3_570 = GameData::gameData.unk158 << 5;
+    temp_r0_572 = *(&GameData::gameData.unk70 + (temp_r3_570 + 0x7C));
+    temp_r4_574 = &GameData::gameData.unk70 + (temp_r3_570 + 0x64);
     if (temp_r0_572 == 3) {
         var_r3_578 = 0;
         if (((s32) M2C_FIELD(temp_r4_574, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_574, s32 *, 4) == 3)) {
@@ -338,7 +339,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     } else {
         var_r31_588 = *(temp_r4_574 + (temp_r0_572 * 4));
     }
-    temp_r29_595 = gameData.unk158;
+    temp_r29_595 = GameData::gameData.unk158;
     this->unk168.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
     temp_r4_616 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if ((temp_r4_616 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
@@ -972,7 +973,7 @@ void FuryFXEarth::Init() {
     this->unk90.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
     this->unk90.unk18 = 400.0f;
     this->unk90.unk1C = 800.0f;
-    M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_1716 = &this->unkC0;
     temp_r3_1716->RotateYaw(temp_r3_1716, 0.3926991f);
     this->unk100 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));

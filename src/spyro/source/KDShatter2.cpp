@@ -304,7 +304,7 @@ loop_27:
                 arg_spD0 = (f64) arg_sp20;
                 arg_spD8 = (f64) arg_sp28;
                 temp_r30_311->Translate(temp_r30_311, *((MKVector3 *) &arg_spD0));
-                M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp1A0.SetRotateAroundAxis(*(temp_r30_311 + 0x60), M2C_FIELD(temp_r30_311, f32 *, 0x6C) * gUpdateTimeDelta);
                 if ((u8) this->unk60 != 0) {
                     var_f1_591 = this->unk34;
@@ -1012,17 +1012,17 @@ loop_9:
             *(this + ((this->unk1640 * 0xB0) + 0xA0)) = (s32) temp_r30_1635;
             ((Matrix *) (this + (this->unk1640 * 0xB0)))->SetIdentity();
             temp_r6_1660 = this + ((this->unk1640 * 0xB0) + 0x80);
-            M2C_FIELD(temp_r6_1660, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            M2C_FIELD(temp_r6_1660, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(temp_r6_1660, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(temp_r6_1660, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             temp_r6_1666 = this + ((this->unk1640 * 0xB0) + 0x70);
-            M2C_FIELD(temp_r6_1666, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            M2C_FIELD(temp_r6_1666, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(temp_r6_1666, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(temp_r6_1666, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             temp_r6_1672 = this + ((this->unk1640 * 0xB0) + 0x50);
-            M2C_FIELD(temp_r6_1672, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            M2C_FIELD(temp_r6_1672, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(temp_r6_1672, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(temp_r6_1672, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             temp_r6_1678 = this + ((this->unk1640 * 0xB0) + 0x60);
-            M2C_FIELD(temp_r6_1678, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            M2C_FIELD(temp_r6_1678, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(temp_r6_1678, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(temp_r6_1678, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             temp_r3_1681 = MKModel_GetSubObjectBoneIndex(arg1, (SubObjectType) 0, (s32) temp_r30_1635);
             if (temp_r3_1681 > -1) {
                 temp_r24_1688 = this + (this->unk1640 * 0xB0);

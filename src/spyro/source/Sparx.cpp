@@ -1862,10 +1862,10 @@ void Sparx::SetDefaults() {
 void Sparx::LoadDone() {
     this->unk8 = &this->unk50;
     MKProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     SetDefaults();
-    M2C_FIELD(this, f64 *, 0x2B0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x40);
-    this->unk2B0 = M2C_FIELD(&loadInfo, f64 *, 0x48);
+    M2C_FIELD(this, f64 *, 0x2B0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    this->unk2B0 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
     this->unk50.unk30 = this->unk2AC;
     this->unk50.unk34 = this->unk2B4;
     this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);

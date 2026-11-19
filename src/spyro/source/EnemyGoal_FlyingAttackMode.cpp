@@ -98,8 +98,8 @@ u8 EnemyGoal_AttackFlying::Update() {
         M2C_FIELD(temp_r5_120, f64 *, 0xE8) = sp10;
         temp_r5_120->unk6B5 &= ~0x40;
         temp_r3_132 = this->unkC;
-        M2C_FIELD(temp_r3_132, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-        M2C_FIELD(temp_r3_132, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+        M2C_FIELD(temp_r3_132, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(temp_r3_132, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
         temp_r3_132->unk6B5 &= ~0x40;
     }
     temp_r29_139 = this->unkC;

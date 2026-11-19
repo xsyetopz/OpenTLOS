@@ -244,8 +244,8 @@ block_16:
                         spD9 = 0;
                         spDA = 1;
                         spDC = -1;
-                        spB0 = M2C_FIELD(&one, f64 *, 0);
-                        spB8 = M2C_FIELD(&one, f64 *, 8);
+                        spB0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        spB8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spE8 = 0;
                         if (temp_r4_286 != NULL) {
                             sp38.GetPos();
@@ -284,7 +284,6 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;
@@ -305,7 +304,7 @@ void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
             M2C_FIELD(temp_r31_414, f32 *, 0x40) = 1.0f;
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
-            M2C_STRUCT_COPY(temp_r31_414, &identity, 0x40);
+            M2C_STRUCT_COPY(temp_r31_414, &Matrix::identity, 0x40);
             KDMath_BuildMatrixFromFwd(temp_r31_414, arg1, (MKVector3 *) &sp18);
             temp_r31_414->unk30 = arg0.unk0;
             temp_r31_414->unk34 = arg0.unk4;
@@ -314,7 +313,6 @@ void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
         }
     }
 }
-#endif
 
 void SonicAttack::FireBurstEnd() {
     this->unk158 = 0;
@@ -442,7 +440,7 @@ void SonicAttack::LoadDone() {
     Projectile::LoadDone();
     this->unk168 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
     this->unk160 = Tools_GetMatchingMaterial(this->unk168, "fx0031_sonicring");
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = 0.01f;
     arg_sp14 = -0.01f;
     arg_sp18 = 0.0f;

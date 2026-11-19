@@ -17,7 +17,7 @@ u8 SpyroCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
 
     temp_r5_21 = this->unk460;
     temp_r6_22 = arg0->unk44;
-    if (!(temp_r6_22 & M2C_FIELD(temp_r5_21, s32 *, 0x38)) && ((((up.unk8 * arg0->unk18) + ((up.unk0 * arg0->unk10) + (up.unk4 * arg0->unk14))) > M2C_FIELD(temp_r5_21, f32 *, 0x1C)) || (temp_r6_22 & M2C_FIELD(temp_r5_21, s32 *, 0x28)))) {
+    if (!(temp_r6_22 & M2C_FIELD(temp_r5_21, s32 *, 0x38)) && ((((MKVector3::up.unk8 * arg0->unk18) + ((MKVector3::up.unk0 * arg0->unk10) + (MKVector3::up.unk4 * arg0->unk14))) > M2C_FIELD(temp_r5_21, f32 *, 0x1C)) || (temp_r6_22 & M2C_FIELD(temp_r5_21, s32 *, 0x28)))) {
         return 1U;
     }
     return 0U;
@@ -187,8 +187,8 @@ loop_46:
                         unksp169 = 0;
                         unksp16A = 1;
                         unksp16C = -1;
-                        unksp140 = M2C_FIELD(&one, f64 *, 0);
-                        unksp148 = M2C_FIELD(&one, f64 *, 8);
+                        unksp140 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        unksp148 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         unksp178 = 0;
                         if (var_r4_306 != NULL) {
                             unksp38.GetPos();

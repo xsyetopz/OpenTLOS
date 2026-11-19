@@ -132,7 +132,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
             sp18 = sp70.unk8 * var_f3_164;
             sp80 = (f64) sp10;
             sp88 = (f64) sp18;
-            M2C_STRUCT_COPY(temp_r31_58 + 0x9C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY(temp_r31_58 + 0x9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd(temp_r31_58 + 0xA0, *((MKVector3 *) &sp80), (MKVector3 *) &sp90);
             temp_r3_198 = temp_r31_58 + 0xA0;
             temp_r3_198->Scale3x3(temp_r3_198, arg1);
@@ -152,7 +152,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
             M2C_FIELD(temp_r31_58, f64 *, 0x58) = (f64) M2C_FIELD(&arg0, f32 *, 8);
             temp_r31_58->unk48 = 50.0f * arg1.unk0;
             temp_r31_58->unk4C = 50.0f * arg1.unk4;
-            M2C_STRUCT_COPY((s32) &temp_r31_58->unk5C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &temp_r31_58->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r3_248 = &temp_r31_58->unk60;
             temp_r3_248->RotateYaw((Matrix *) temp_r3_248, 0.3926991f);
             M2C_FIELD(temp_r31_58, u8 *, 0x108) = arg3;
@@ -754,7 +754,7 @@ loop_8:
             temp_r30_1162->unk30.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
             temp_r30_1162->unk48 = 400.0f;
             M2C_FIELD(temp_r30_1162, f32 *, 0x4C) = 800.0f;
-            M2C_STRUCT_COPY((s32) &temp_r30_1162->unk5C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &temp_r30_1162->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r3_1202 = &temp_r30_1162->unk60;
             temp_r3_1202->RotateYaw((Matrix *) temp_r3_1202, 1.5707964f);
             temp_r30_1162->unk40 = 50.0f;

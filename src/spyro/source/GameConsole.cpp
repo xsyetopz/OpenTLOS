@@ -799,7 +799,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'iDepth'
+#if 0 // DRAFT: undefined identifier 'ExecuteDepth'
 f32 Console_Execute(const char *arg0) {
     s8 *spC;
     s8 *sp8;
@@ -834,7 +834,7 @@ f32 Console_Execute(const char *arg0) {
     void *temp_r3_1149;
     void *temp_r3_1171;
 
-    iDepth = (s32) (iDepth + 1);
+    ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth + 1);
     fLastResult = 1.0f;
     temp_r3_904 = commandBuffer.Alloc(strlen(arg0) + 1);
     sp8 = temp_r3_904;
@@ -844,7 +844,7 @@ loop_70:
     if ((s8) (u8) *var_r3_908 == 0) {
         temp_f31_1200 = fLastResult;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return temp_f31_1200;
     }
     var_r4_912 = var_r3_908;
@@ -863,13 +863,13 @@ loop_5:
     if ((s8) temp_r5_925 == 0) {
         temp_f31_932 = fLastResult;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return temp_f31_932;
     }
     if (((s8) temp_r5_925 == 0x2F) && ((s32) M2C_FIELD(var_r4_912, u8 *, 1) == 0x2F)) {
         temp_f31_949 = fLastResult;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return temp_f31_949;
     }
     var_r9_959 = 0;
@@ -935,7 +935,7 @@ loop_36:
     if (var_r29_913 == 0) {
         temp_f31_1058 = fLastResult;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return temp_f31_1058;
     }
 loop_44:
@@ -947,7 +947,7 @@ loop_44:
     if (((s8) temp_r0_1074 >= 0x30) && ((s8) temp_r0_1074 <= 0x39) && (sscanf("%f", &fLastResult) == 1)) {
         temp_f31_1091 = fLastResult;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return temp_f31_1091;
     }
     var_r27_1102 = NULL;
@@ -970,7 +970,7 @@ loop_52:
         Console_Print("Unknown command '%s'\n", spC, var_f1_1103);
         fLastResult = 0.0f;
         commandBuffer.Free(sp8);
-        iDepth = (s32) (iDepth - 1);
+        ExecuteDepth::iDepth = (s32) (ExecuteDepth::iDepth - 1);
         return 0.0f;
     }
     temp_r3_1149 = M2C_FIELD(var_r27_1102, void **, 0);

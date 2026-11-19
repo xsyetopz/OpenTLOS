@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/Tools.h"
 #include "common/Source/MKShape.h"
 #include "common/Source/MKView.h"
@@ -204,7 +205,7 @@ void ScreenWobbleFX::Deinit() {
     SetMotionBlurCapEnable(0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal type
 void ScreenWobbleFX::Draw() {
     f32 sp2C;
     f32 sp28;
@@ -233,7 +234,7 @@ void ScreenWobbleFX::Draw() {
         sp20 = M2C_FIELD(temp_r3_347, f32 *, 0);
         MKMaterial_SetMaterial(this->unkC);
         MKPrimitive(0xC, 0x10);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         var_r30_368 = 0;
         var_r27_370 = 0;
         do {

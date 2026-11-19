@@ -2,6 +2,7 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
@@ -221,19 +222,19 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     sp68 = (f64) sp48;
     sp18 = temp_f31_360;
     sp10 = temp_f12_356;
-    sp30 = (unksp64 * up.unk8) - ((f32) sp68 * up.unk4);
-    sp34 = ((f32) sp68 * up.unk0) - ((f32) sp60 * up.unk8);
-    sp38 = ((f32) sp60 * up.unk4) - (unksp64 * up.unk0);
+    sp30 = (unksp64 * MKVector3::up.unk8) - ((f32) sp68 * MKVector3::up.unk4);
+    sp34 = ((f32) sp68 * MKVector3::up.unk0) - ((f32) sp60 * MKVector3::up.unk8);
+    sp38 = ((f32) sp60 * MKVector3::up.unk4) - (unksp64 * MKVector3::up.unk0);
     sp90 = (f64) sp30;
     sp98 = (f64) sp38;
     arg0->unk0 = (f32) sp90;
     arg0->unk4 = unksp94;
     arg0->unk8 = (f32) sp98;
     arg0->unkC = 0.0f;
-    arg0->unk10 = up.unk0;
+    arg0->unk10 = MKVector3::up.unk0;
     sp14 = temp_f13_358;
-    arg0->unk14 = up.unk4;
-    arg0->unk18 = up.unk8;
+    arg0->unk14 = MKVector3::up.unk4;
+    arg0->unk18 = MKVector3::up.unk8;
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
     arg0->unk1C = 0.0f;
@@ -323,7 +324,7 @@ loop_2:
         sp8.GetRandPos();
         sp8.unk10 = M2C_BITWISE(f64, sp8);
         sp8.unk18 = sp8.unk8;
-        M2C_STRUCT_COPY(temp_r30_560, &identity, 0x40);
+        M2C_STRUCT_COPY(temp_r30_560, &Matrix::identity, 0x40);
         M2C_FIELD(temp_r30_560, f32 *, 0x30) = (f32) sp8.unk10;
         temp_r30_560->unk34 = unksp1C;
         temp_r30_560->unk38 = (f32) sp8.unk18;

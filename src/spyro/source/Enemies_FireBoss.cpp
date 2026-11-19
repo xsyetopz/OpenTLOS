@@ -108,7 +108,7 @@ void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1,
 
     var_r28_166 = arg4;
     var_r31_169 = arg7;
-    temp_r3_171 = pGraph.unk0->AddEdge();
+    temp_r3_171 = ((FireBossDirectedGraph *) (FireBossGraphNode::pGraph.unk0))->AddEdge();
     M2C_FIELD(temp_r3_171, void **, 8) = (void *) this->unk18;
     this->unk18 = temp_r3_171;
     M2C_FIELD(temp_r3_171, FireBossGraphNode **, 4) = arg0;
@@ -319,8 +319,8 @@ void FireBossDirectedGraph::Init() {
     this->unk4 = var_r3_462;
     this->unk8 = this->unk0 + 0x280;
     this->unkC = this->unk0 + 0x2A8;
-    this->unk8->Init(zero, 0);
-    this->unkC->Init(zero, 0);
+    this->unk8->Init(MKVector3::zero, 0);
+    this->unkC->Init(MKVector3::zero, 0);
     *this->unk8 = 0x58;
     *this->unkC = 0x59;
     this->unk10 = 0;
@@ -593,8 +593,8 @@ void FireBoss::SquashHero() {
                 spC9 = 0;
                 spCA = 0;
                 spCC = -1;
-                sp58.unk40.unk8 = M2C_FIELD(&one, f64 *, 0);
-                spA8 = M2C_FIELD(&one, f64 *, 8);
+                sp58.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (this != NULL) {
                     sp28.GetPos();
@@ -610,16 +610,16 @@ void FireBoss::SquashHero() {
                 sp58.unk30 = 1e-44f;
                 spB0 = 3;
                 spB4 = this;
-                sp58.unk38 = M2C_FIELD(&zero, f64 *, 0);
-                sp58.unk40 = M2C_FIELD(&zero, f64 *, 8);
+                sp58.unk38 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                sp58.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 spC8 = 1;
                 spD4 = 2;
                 spD0 = 10.0f;
                 spC9 = 0;
                 spCA = 0;
                 spCC = -1;
-                sp58.unk40.unk8 = M2C_FIELD(&one, f64 *, 0);
-                spA8 = M2C_FIELD(&one, f64 *, 8);
+                sp58.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (this != NULL) {
                     sp18.GetPos();
@@ -762,8 +762,8 @@ void FireBoss::HurtHero() {
         spB1 = 0;
         spB2 = 0;
         spB4 = -1;
-        sp40.unk40.unk8 = M2C_FIELD(&one, f64 *, 0);
-        sp90 = M2C_FIELD(&one, f64 *, 8);
+        sp40.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+        sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
         spC0 = 0;
         if (this != NULL) {
             sp10.GetPos();
@@ -1610,10 +1610,10 @@ void FireBoss::CreateInsideSplines() {
     var_r29_3076 = 0;
     var_r28_3078 = 0;
     temp_r4_3071->unk8 = sp1F8;
-    temp_f25_3080 = up.unk4;
+    temp_f25_3080 = MKVector3::up.unk4;
     temp_r4_3071->unk10 = sp200;
-    temp_f26_3082 = up.unk8;
-    temp_f27_3083 = up.unk0;
+    temp_f26_3082 = MKVector3::up.unk8;
+    temp_f27_3083 = MKVector3::up.unk0;
     do {
         sp1C = 0.0f;
         temp_r27_3093 = this + (var_r28_3078 + 0xB4C);
@@ -1866,7 +1866,7 @@ void FireBoss::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double,
 void FireBoss::UpdateMovementCustom() {
     FireBossDriver *temp_r3_3662;
     FireBossDriver *temp_r3_3672;
@@ -1887,8 +1887,8 @@ void FireBoss::UpdateMovementCustom() {
     M2C_FIELD(temp_r5_3646, f64 *, 0xC8) = temp_f2_3656;
     temp_r5_3646->unk6B5 |= 0x40;
     temp_r3_3662 = this->unkF64;
-    M2C_FIELD(temp_r3_3662, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
-    M2C_FIELD(temp_r3_3662, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
+    M2C_FIELD(temp_r3_3662, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+    M2C_FIELD(temp_r3_3662, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
     M2C_FIELD(temp_r3_3662, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_3662, f64 *, 0xF0);
     M2C_FIELD(temp_r3_3662, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_3662, f64 *, 0xF8);
     temp_r3_3662->unk6B5 |= 0x40;
@@ -2426,7 +2426,7 @@ void FireBoss::Init() {
     }
     this->unkC18 = (FireBossDirectedGraph *) var_r3_4718;
     this->unkC18->Init();
-    pGraph.unk0 = this->unkC18;
+    FireBossGraphNode::pGraph.unk0 = this->unkC18;
     temp_r3_4729 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_4729 != NULL) {
         var_r3_4736 = ((MKHeap *) (temp_r3_4729->Current()))->Alloc(0x58, NULL, 0);

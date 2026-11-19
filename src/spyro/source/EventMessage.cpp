@@ -1,6 +1,8 @@
 #include "spyro/source/EventMessage.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "spyro/source/ChunkData.h"
+#include "spyro/source/UIStringTable.h"
 #include "spyro/source/GameConsole.h"
 #include <m2c_macros.h>
 
@@ -34,7 +36,7 @@ loop_7:
         if (var_r30_48->IsField("ScriptCommand") != 0) {
             temp_r3_59 = var_r30_48->GetString(0);
             if ((s8) *temp_r3_59 != 0) {
-                this->unk0 = pCurrentEventStrings.unk0->Add(temp_r3_59);
+                this->unk0 = ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Add(temp_r3_59);
             }
             return 1;
         }
@@ -46,13 +48,13 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pCurrentEventStrings'
+#if 0 // DRAFT: expression syntax error
 void EventMessage::Deinit() {
     s32 temp_r4_96;
 
     temp_r4_96 = this->unk0;
     if ((u32) temp_r4_96 != 0U) {
-        pCurrentEventStrings.unk0->Remove((s8 *) temp_r4_96);
+        ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Remove((s8 *) temp_r4_96);
     }
     this->unk0 = 0;
 }
@@ -62,9 +64,9 @@ void EventMessage::Init() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'pCurrentEventStrings'
+#if 0 // DRAFT: expression syntax error
 EventMessage *EventMessage::operator=(const EventMessage &arg0) {
-    this->unk0 = pCurrentEventStrings.unk0->Add((s8 *) arg0.unk0);
+    this->unk0 = ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Add((s8 *) arg0.unk0);
     return this;
 }
 #endif

@@ -245,8 +245,8 @@ loop_19:
                             sp129 = 0;
                             sp12A = 1;
                             sp12C = -1;
-                            sp100 = M2C_FIELD(&one, f64 *, 0);
-                            sp108 = M2C_FIELD(&one, f64 *, 8);
+                            sp100 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                            sp108 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             sp138 = 0;
                             if (this != NULL) {
                                 sp20.GetPos();
@@ -340,7 +340,7 @@ void TeslaTower::DrawLightCone() {
         arg_sp188 = (f64) arg_sp58;
         M2C_FIELD(temp_r3_659, f64 *, 8) = (f64) arg_sp60;
     } while (var_r28_646 < 8);
-    M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp50 = 0.0f;
     arg_sp48 = 0.0f;
     arg_sp4C = 1.0f;
@@ -632,7 +632,7 @@ void TeslaTower::Update() {
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_1379;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;

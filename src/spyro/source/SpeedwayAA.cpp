@@ -148,7 +148,7 @@ void SpeedwayAA::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: expression syntax error
 void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     s8 sp89;
     s8 sp88;
@@ -197,8 +197,8 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     sp79 = 0;
     sp7A = 1;
     sp7C = -1;
-    sp50 = M2C_FIELD(&one, f64 *, 0);
-    sp58 = M2C_FIELD(&one, f64 *, 8);
+    sp50 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (temp_r4_352 != NULL) {
         sp18.GetPos();

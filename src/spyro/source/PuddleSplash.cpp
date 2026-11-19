@@ -122,7 +122,7 @@ void PuddleSplash::Draw() {
             MKEndPrimitive();
             MKMaterial_SetMaterial(*(this->unk4C + (var_r26_251 + 0x1C)));
             MKPrimitive(0xC, 0);
-            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r5_290 = this->unk4C + var_r26_251;
             temp_f3_293 = M2C_FIELD(temp_r5_290, f32 *, 0x10);
             temp_f31_295 = 1.0f - (M2C_FIELD(temp_r5_290, f32 *, 0x14) / M2C_FIELD(temp_r5_290, f32 *, 0x18));

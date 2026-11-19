@@ -34,9 +34,9 @@ u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
         var_r29_76 = 0;
         M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = -1;
 loop_8:
-        if (var_r31_72 < (void *) overlayCount.unk0) {
-            if (((s32) M2C_FIELD((overlay + var_r29_76), s32 *, 0x24) > 0) && (stricmp(sp8) == 0)) {
-                temp_r4_93 = overlay + var_r29_76;
+        if (var_r31_72 < (void *) PropGroupVolume::overlayCount.unk0) {
+            if (((s32) M2C_FIELD((PropGroupVolume::overlay + var_r29_76), s32 *, 0x24) > 0) && (stricmp(sp8) == 0)) {
+                temp_r4_93 = PropGroupVolume::overlay + var_r29_76;
                 M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = var_r31_72;
                 M2C_FIELD(temp_r4_93, s32 *, 0x24) = (s32) (M2C_FIELD(temp_r4_93, s32 *, 0x24) + 1);
             } else {
@@ -50,7 +50,7 @@ loop_8:
             var_r3_117 = 0;
             var_ctr_118 = 0x80;
 loop_11:
-            if ((s32) M2C_FIELD((overlay + var_r3_117), s32 *, 0x24) != 0) {
+            if ((s32) M2C_FIELD((PropGroupVolume::overlay + var_r3_117), s32 *, 0x24) != 0) {
                 var_r31_116 += 1;
                 var_r3_117 += 0x28;
                 var_ctr_118 -= 1;
@@ -59,11 +59,11 @@ loop_11:
                 }
             }
             temp_r28_128 = var_r31_116 * 0x28;
-            strcpy(overlay + temp_r28_128, sp8);
-            M2C_FIELD((overlay + temp_r28_128), s32 *, 0x24) = 1;
+            strcpy(PropGroupVolume::overlay + temp_r28_128, sp8);
+            M2C_FIELD((PropGroupVolume::overlay + temp_r28_128), s32 *, 0x24) = 1;
             M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = var_r31_116;
-            if (var_r31_116 == (void *) overlayCount.unk0) {
-                overlayCount.unk0 += 1;
+            if (var_r31_116 == (void *) PropGroupVolume::overlayCount.unk0) {
+                PropGroupVolume::overlayCount.unk0 += 1;
             }
         }
         this->unk2A4 += 1;
@@ -104,16 +104,16 @@ void PropGroupVolume::CullGroups(const MKVector3 &arg0) {
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, M2C_UNK, M2C_UNK, M2C_UNK), 0xA4)(gMK, 0x7FFFFFFF, 0, -1);
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, M2C_UNK, M2C_UNK, M2C_UNK), 0xA8)(gMK, 0x7FFFFFFF, 0, -1);
         var_r3_204 = 0;
-        var_ctr_208 = overlayCount.unk0;
-        if ((void *) overlayCount.unk0 > 0) {
+        var_ctr_208 = PropGroupVolume::overlayCount.unk0;
+        if ((void *) PropGroupVolume::overlayCount.unk0 > 0) {
             do {
-                temp_r4_212 = overlay + var_r3_204;
+                temp_r4_212 = PropGroupVolume::overlay + var_r3_204;
                 var_r3_204 += 0x28;
                 M2C_FIELD(temp_r4_212, s8 *, 0x20) = 0;
                 var_ctr_208 -= 1;
             } while (var_ctr_208 != NULL);
         }
-        var_r4_217 = pFirstDesc.__vptr;
+        var_r4_217 = PropGroupVolumeDescriptor::pFirstDesc.__vptr;
         var_r30_218 = 0;
 loop_5:
         if ((var_r4_217 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_217, void **, 0x60), s32 *, 0x138) & 2)) {
@@ -147,7 +147,7 @@ loop_18:
                         var_r7_269 += 1;
                         temp_r0_275 = *(var_r28_235 + (var_r3_270 + 0xA4));
                         var_r3_270 += 4;
-                        temp_r4_278 = overlay + (temp_r0_275 * 0x28);
+                        temp_r4_278 = PropGroupVolume::overlay + (temp_r0_275 * 0x28);
                         M2C_FIELD(temp_r4_278, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_278, u8 *, 0x20) | var_r26_242);
                         goto loop_18;
                     }
@@ -175,8 +175,8 @@ loop_26:
         var_r26_322 = 0;
         var_r27_324 = 0;
 loop_34:
-        if (var_r26_322 < (void *) overlayCount.unk0) {
-            temp_r4_328 = overlay + var_r27_324;
+        if (var_r26_322 < (void *) PropGroupVolume::overlayCount.unk0) {
+            temp_r4_328 = PropGroupVolume::overlay + var_r27_324;
             M2C_FIELD(*gMK, M2C_UNK (**)(void **, void *, u8), 0x88)(gMK, temp_r4_328, M2C_FIELD(temp_r4_328, u8 *, 0x20));
             var_r26_322 += 1;
             var_r27_324 += 0x28;
@@ -235,7 +235,7 @@ loop_2:
         var_r7_520 += 1;
         temp_r0_527 = *(this + (var_r3_522 + 0xA4));
         var_r3_522 += 4;
-        temp_r5_530 = overlay + (temp_r0_527 * 0x28);
+        temp_r5_530 = PropGroupVolume::overlay + (temp_r0_527 * 0x28);
         M2C_FIELD(temp_r5_530, s32 *, 0x24) = (s32) (M2C_FIELD(temp_r5_530, s32 *, 0x24) - 1);
         goto loop_2;
     }
@@ -260,8 +260,8 @@ void PropGroupVolumeDescriptor::Deinit() {
     PropGroupVolumeDescriptor *temp_r4_586;
     PropGroupVolumeDescriptor *temp_r4_592;
 
-    if ((void *) pFirstDesc.__vptr == this) {
-        pFirstDesc.__vptr = this->unk68;
+    if ((void *) PropGroupVolumeDescriptor::pFirstDesc.__vptr == this) {
+        PropGroupVolumeDescriptor::pFirstDesc.__vptr = this->unk68;
     }
     temp_r4_586 = this->unk64;
     if (temp_r4_586 != NULL) {
@@ -281,12 +281,12 @@ void PropGroupVolumeDescriptor::Deinit() {
 #if 0 // DRAFT: expression syntax error
 void PropGroupVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = (PropGroupVolumeDescriptor *) pFirstDesc.__vptr;
+    this->unk68 = (PropGroupVolumeDescriptor *) PropGroupVolumeDescriptor::pFirstDesc.__vptr;
     this->unk64 = NULL;
-    if ((void *) pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(pFirstDesc.__vptr, PropGroupVolumeDescriptor **, 0x64) = this;
+    if ((void *) PropGroupVolumeDescriptor::pFirstDesc.__vptr != NULL) {
+        M2C_FIELD(PropGroupVolumeDescriptor::pFirstDesc.__vptr, PropGroupVolumeDescriptor **, 0x64) = this;
     }
-    pFirstDesc.__vptr = this;
+    PropGroupVolumeDescriptor::pFirstDesc.__vptr = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

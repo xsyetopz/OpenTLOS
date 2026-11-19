@@ -64,10 +64,10 @@ void ShatterablePlatform::Update() {
 #if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
-    M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x50);
-    M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x58);
+    M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
+    M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
     this->unk1A8.unk8.Init((PlatformObjectDesc *) &this->unk198, this->unk158 + (((s32) this->unk170 << 7) + 0x68));
-    this->unk1A8.unk8.LoadDone((MKProp *) this, &loadInfo + 0x60);
+    this->unk1A8.unk8.LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(this, f64 *, 0x208);
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(this, f64 *, 0x210);
 }

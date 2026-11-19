@@ -446,7 +446,7 @@ void LavaCannon::Resolve() {
 #if 0 // DRAFT: undefined identifier 'arg_sp6C'
 void LavaCannon::LoadDone() {
     Shatterable::LoadDone();
-    this->unk234 = M2C_FIELD(&loadInfo, f32 *, 0x54);
+    this->unk234 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
     M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     arg_sp18 = 0.0f;
     arg_sp10 = 0.0f;
@@ -456,7 +456,7 @@ void LavaCannon::LoadDone() {
     arg_sp70.SetRotationPYR(*((MKVector3 *) &arg_sp20));
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp70));
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp30.Scale3x3((Matrix *) &arg_sp30, loadInfo + 0x60);
+    arg_sp30.Scale3x3((Matrix *) &arg_sp30, MKProp::loadInfo + 0x60);
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
 }
 #endif

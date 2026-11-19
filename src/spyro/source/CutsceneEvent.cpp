@@ -1,6 +1,7 @@
 #include "spyro/source/CutsceneEvent.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
@@ -11,6 +12,7 @@
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
 #include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/Shadow.h"
@@ -59,7 +61,7 @@ void LavaBubbleCE::Update() {
     f32 temp_f3_56;
 
     this->unk20 += gUpdateTimeDelta;
-    temp_f3_56 = M2C_BITWISE(f32, updateData.__vptr);
+    temp_f3_56 = M2C_BITWISE(f32, KDSynkerPlayerEvent::updateData.__vptr);
     if (temp_f3_56 > 0.0f) {
         temp_f31_63 = (1.0f / this->unk1C) / temp_f3_56;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
@@ -152,14 +154,14 @@ u8 ImageCE::LoadVector2(const char *arg0, MKVector2 *arg1) {
     u8 var_r31_248;
 
     var_r31_248 = 0;
-    if ((pLine.__vptr->IsField(arg0) != 0) && (pLine.__vptr->AsFloat(0, &arg1->unk0) != 0) && (pLine.__vptr->AsFloat(1, &arg1->unk4) != 0)) {
+    if ((((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) && (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->AsFloat(0, &arg1->unk0) != 0) && (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->AsFloat(1, &arg1->unk4) != 0)) {
         var_r31_248 = 1;
     }
     return var_r31_248;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: ')' expected
 void ImageCE::Draw() {
     f32 sp1C;
     f32 sp18;
@@ -191,7 +193,7 @@ void ImageCE::Draw() {
     temp_f28_313 = temp_f30_311 + temp_f3_308;
     sp8.Tools_Ortho();
     MKMaterial_SetMaterial(this->unk3C);
-    MKSetBaseColorV(one);
+    MKSetBaseColorV(MKVector4::one);
     MKPrimitive(0xC, 1);
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) &sp10));
@@ -211,8 +213,8 @@ void ImageCE::Draw() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void ImageCE::Update() {
-    this->unk40 = M2C_BITWISE(f32, updateData.__vptr);
-    this->unk44 = (M2C_FIELD(&updateData, f32 *, 4) - (f32) M2C_FIELD(&updateData, s32 *, 8)) / (f32) M2C_FIELD(&updateData, s32 *, 0xC);
+    this->unk40 = M2C_BITWISE(f32, KDSynkerPlayerEvent::updateData.__vptr);
+    this->unk44 = (M2C_FIELD(&KDSynkerPlayerEvent::updateData, f32 *, 4) - (f32) M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 8)) / (f32) M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 0xC);
 }
 #endif
 
@@ -274,13 +276,13 @@ s32 SpawnGemsCE::LoadLine() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void DisableShadowCE::Exit() {
-    ((Shadow *) (M2C_FIELD(pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(1U);
+    ((Shadow *) (M2C_FIELD(KDSynkerPlayerEvent::pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(1U);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void DisableShadowCE::Enter() {
-    ((Shadow *) (M2C_FIELD(pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(0U);
+    ((Shadow *) (M2C_FIELD(KDSynkerPlayerEvent::pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(0U);
 }
 #endif
 
@@ -441,16 +443,14 @@ void PlaySecondaryAnimCE::Deinit() {
     this->unk28.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void FadeCE::Exit() {
-    M2C_FIELD(&gb, f64 *, 0x40) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&gb, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void FadeCE::Update() {
-    this->unk14 = M2C_BITWISE(f32, updateData.__vptr);
+    this->unk14 = M2C_BITWISE(f32, KDSynkerPlayerEvent::updateData.__vptr);
     M2C_FIELD(&gb, f64 *, 0x40) = (f64) this->unk8;
     M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(this, f64 *, 0x10);
 }
@@ -460,12 +460,10 @@ s32 FadeCE::LoadLine() {
     LoadVector3("color", (MKVector3 *) &this->unk8);
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void FadeCE::Deinit() {
-    M2C_FIELD(&gb, f64 *, 0x40) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&gb, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
-#endif
 
 void FadeCE::Init() {
     M2C_FIELD(this, f32 *, 8) = 0.0f;
@@ -696,9 +694,9 @@ s32 ScriptCE::LoadLine() {
     s32 var_r31_1774;
 
     var_r31_1774 = 0;
-    if (pLine.__vptr->IsField("ScriptCommand") != 0) {
-        temp_r31_1782 = pLine.__vptr->GetString(0);
-        this->unk4 = ((UIStringTable *) (checked_cast<P16GameSynkerPlayer))->Add(15KDSynkerPlayer3>__FP15KDSynkerPlayer3((KDSynkerPlayer3 *) pSynker.__vptr) + 0x260, (s8 *) temp_r31_1782);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("ScriptCommand") != 0) {
+        temp_r31_1782 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
+        this->unk4 = ((UIStringTable *) (checked_cast<P16GameSynkerPlayer))->Add(15KDSynkerPlayer3>__FP15KDSynkerPlayer3((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr) + 0x260, (s8 *) temp_r31_1782);
         var_r31_1774 = 1;
     }
     return var_r31_1774;
@@ -711,7 +709,7 @@ void ScriptCE::Deinit() {
 
     temp_r31_1806 = this->unk4;
     if (temp_r31_1806 != NULL) {
-        ((UIStringTable *) (checked_cast<P16GameSynkerPlayer))->Remove(15KDSynkerPlayer3>__FP15KDSynkerPlayer3((KDSynkerPlayer3 *) pSynker.__vptr) + 0x260, temp_r31_1806);
+        ((UIStringTable *) (checked_cast<P16GameSynkerPlayer))->Remove(15KDSynkerPlayer3>__FP15KDSynkerPlayer3((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr) + 0x260, temp_r31_1806);
     }
 }
 #endif
@@ -873,12 +871,12 @@ void AlphaChangeCE::Init() {
     this->unk8 = 1.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_sp50'
 void AttachPropToRefPointCE::Update() {
     MKProp *temp_r3_2335;
     temp_r3_2335 = this->unk4;
     if ((void *) temp_r3_2335->unk8 != NULL) {
-        MKModel_SetWorldMatrix(temp_r3_2335->unk4, identity);
+        MKModel_SetWorldMatrix(temp_r3_2335->unk4, Matrix::identity);
         MKModel_GetRefPointMatrix(this->unk8, this->unkC, (Matrix *) &arg_sp50, 1U);
         M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
         arg_sp10.Multiply((Matrix *) &arg_sp10, (Matrix *) &arg_sp50);
@@ -894,14 +892,14 @@ s32 AttachPropToRefPointCE::LoadLine() {
     s8 *temp_r3_2398;
     u8 temp_r29_2401;
 
-    if (pLine.__vptr->IsField("refPoint") != 0) {
-        temp_r3_2395 = pLine.__vptr->GetString(0);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("refPoint") != 0) {
+        temp_r3_2395 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
         temp_r3_2398 = strchr(temp_r3_2395, 0x3A);
         temp_r29_2401 = *temp_r3_2398;
         *temp_r3_2398 = 0;
-        temp_r3_2406 = ((KDSP_ActorList *) (pSynker.__vptr + 0x100))->GetActorId(temp_r3_2395);
+        temp_r3_2406 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(temp_r3_2395);
         *temp_r3_2398 = (s8) temp_r29_2401;
-        pSynker.__vptr->GetActorModel(temp_r3_2406);
+        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(temp_r3_2406);
         this->unk8 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unkC = MKModel_GetRefPointIndex(this->unk8, temp_r3_2398 + 1);
         return 1U;
@@ -916,13 +914,13 @@ void AttachPropToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void AttachPropCE::Update() {
     Animation *temp_r3_2474;
     s16 temp_r30_2473;
     s32 temp_r29_2471;
     if (((void *) this->unk4->unk8 != NULL) && (MKModel_GetAnimation(this->unk8) != NULL)) {
-        MKModel_SetWorldMatrix(this->unk4->unk4, identity);
+        MKModel_SetWorldMatrix(this->unk4->unk4, Matrix::identity);
         temp_r29_2471 = MKModel_GetWorldMatrix(this->unk8);
         temp_r30_2473 = (s16) this->unkC;
         temp_r3_2474 = MKModel_GetAnimation(this->unk8);
@@ -968,14 +966,14 @@ s32 AttachActorToRefPointCE::LoadLine() {
     s8 *temp_r3_2613;
     u8 temp_r29_2616;
 
-    if (pLine.__vptr->IsField("refPoint") != 0) {
-        temp_r3_2610 = pLine.__vptr->GetString(0);
+    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("refPoint") != 0) {
+        temp_r3_2610 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
         temp_r3_2613 = strchr(temp_r3_2610, 0x3A);
         temp_r29_2616 = *temp_r3_2613;
         *temp_r3_2613 = 0;
-        temp_r3_2621 = ((KDSP_ActorList *) (pSynker.__vptr + 0x100))->GetActorId(temp_r3_2610);
+        temp_r3_2621 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(temp_r3_2610);
         *temp_r3_2613 = (s8) temp_r29_2616;
-        pSynker.__vptr->GetActorModel(temp_r3_2621);
+        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(temp_r3_2621);
         this->unk8 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unkC = MKModel_GetRefPointIndex(this->unk8, temp_r3_2613 + 1);
         return 1U;
@@ -990,13 +988,13 @@ void AttachActorToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void AttachCE::Update() {
     Animation *temp_r3_2682;
     s32 temp_r30_2679;
     s32 temp_r31_2680;
     if ((s32) this->unk24 != 0) {
-        MKModel_SetWorldMatrix(this->unk18, identity);
+        MKModel_SetWorldMatrix(this->unk18, Matrix::identity);
         temp_r30_2679 = MKModel_GetWorldMatrix(this->unk1C);
         temp_r31_2680 = this->unk20;
         temp_r3_2682 = MKModel_GetAnimation(this->unk1C);

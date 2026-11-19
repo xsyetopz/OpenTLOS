@@ -79,7 +79,7 @@ void ElementalShield::Draw() {
         if ((MKVector3 *) this->unkAC == NULL) {
             return;
         }
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp10.SetRotationYaw(this->unkA0);
         arg_sp10.Scale3x3((Matrix *) &arg_sp10, this->unk9C * this->unk98);
         temp_r3_210 = this->unkAC;
@@ -212,8 +212,8 @@ block_29:
                 spB1 = 0;
                 spB2 = 1;
                 spB4 = -1;
-                sp88 = M2C_FIELD(&one, f64 *, 0);
-                sp90 = M2C_FIELD(&one, f64 *, 8);
+                sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
                     sp20.GetPos();

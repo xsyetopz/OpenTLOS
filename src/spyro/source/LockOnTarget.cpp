@@ -195,14 +195,14 @@ void LockOnTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: ')' expected
 void LockOnTarget::Init() {
     f32 temp_f2_498;
 
     MKProp::Init();
     this->unk4C = NULL;
-    this->unk50 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unk50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk60 = 0;
     temp_f2_498 = 3.0f * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
     this->unk64 = temp_f2_498;

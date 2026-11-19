@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -286,7 +287,7 @@ void CrashSparkPS::Draw() {
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
             arg_sp370 = (f32) arg_sp370 + temp_f1_637;
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             temp_f14_665 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
             MKVector(1.0f, 1.0f, 0.8f, 1.0f);
             arg_sp168.operator*(temp_f14_665);

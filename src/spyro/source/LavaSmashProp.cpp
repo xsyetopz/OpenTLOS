@@ -388,12 +388,12 @@ void LavaSmashProp::Reset() {
 #if 0 // DRAFT: undefined identifier 'unk108'
 void LavaSmashProp::LoadDone() {
     Shatterable::LoadDone();
-    this->unk1D8 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-    M2C_FIELD(this, f64 *, 0x1F0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x48);
+    this->unk1D8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    M2C_FIELD(this, f64 *, 0x1F0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
     this->unk1D8 = this->unk1D8;
     M2C_FIELD(this, f64 *, 0x1E0) = (f64) M2C_FIELD(this, f64 *, 0x1F0);
-    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
     this->unk1E8.unkC = 1.0f - this->unk108;
 }
 #endif

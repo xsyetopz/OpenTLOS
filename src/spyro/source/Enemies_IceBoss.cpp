@@ -1055,16 +1055,16 @@ block_41:
             }
         }
         ((IceBossStalactiteSpawner *) (M2C_BITWISE(IceBossStalactiteSpawner *, this->unkFC8)))->Reset();
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f6_2468 = this->unk5C8;
         arg_sp50 = temp_f6_2468;
         temp_f1_2476 = this->unk5C8;
         arg_sp54 = temp_f1_2476;
         temp_f5_2482 = this->unk5CC;
         arg_sp58 = temp_f5_2482;
-        arg_sp18 = (up.unk0 * temp_f1_2476) - (up.unk4 * temp_f6_2468);
-        arg_sp10 = (up.unk4 * temp_f5_2482) - (up.unk8 * temp_f1_2476);
-        arg_sp14 = (up.unk8 * temp_f6_2468) - (up.unk0 * temp_f5_2482);
+        arg_sp18 = (MKVector3::up.unk0 * temp_f1_2476) - (MKVector3::up.unk4 * temp_f6_2468);
+        arg_sp10 = (MKVector3::up.unk4 * temp_f5_2482) - (MKVector3::up.unk8 * temp_f1_2476);
+        arg_sp14 = (MKVector3::up.unk8 * temp_f6_2468) - (MKVector3::up.unk0 * temp_f5_2482);
         arg_sp28 = (f64) arg_sp18;
         arg_sp20 = (f64) arg_sp10;
         arg_sp5C = 0.0f;
@@ -1077,7 +1077,7 @@ block_41:
         temp_f1_2508 = this->unk5BC;
         arg_sp68 = temp_f1_2508;
         arg_sp6C = 1.0f;
-        Teleport(&arg_sp30, &up, temp_f1_2508, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_2482, temp_f6_2468, up.unk8, up.unk4);
+        Teleport(&arg_sp30, &MKVector3::up, temp_f1_2508, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_2482, temp_f6_2468, MKVector3::up.unk8, MKVector3::up.unk4);
         goto block_41;
     case 4:                                         /* switch 1 */
         temp_r29_2520 = checked_cast<MeleeAttackHitMsg *, MKMessage>(arg0);
@@ -1423,10 +1423,10 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         temp_f8_3202 = M2C_FIELD(arg2, f32 *, 4);
         temp_r4_3204 = this->unk8;
         temp_f5_3206 = M2C_FIELD(arg2, f32 *, 0);
-        sp7C = (up.unk8 * temp_f5_3206) - (up.unk0 * temp_f4_3200);
-        sp78 = (up.unk4 * temp_f4_3200) - (up.unk8 * temp_f8_3202);
+        sp7C = (MKVector3::up.unk8 * temp_f5_3206) - (MKVector3::up.unk0 * temp_f4_3200);
+        sp78 = (MKVector3::up.unk4 * temp_f4_3200) - (MKVector3::up.unk8 * temp_f8_3202);
         temp_r31_3217 = M2C_FIELD(this->unkAF8, void **, 0xB0);
-        sp80 = (up.unk0 * temp_f8_3202) - (up.unk4 * temp_f5_3206);
+        sp80 = (MKVector3::up.unk0 * temp_f8_3202) - (MKVector3::up.unk4 * temp_f5_3206);
         sp1A8 = (f64) sp78;
         sp1B0 = (f64) sp80;
         sp1C0 = M2C_FIELD(temp_r4_3204, f64 *, 0x38);
@@ -1740,7 +1740,7 @@ void IceBoss::Resolve() {
     sp14 = 1.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unkFE4.unk0 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(zero, zero, *((MKVector4 *) &sp18), 1000.0f, lit_248, lit_249);
+    this->unkFE4.unk0 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(MKVector3::zero, MKVector3::zero, *((MKVector4 *) &sp18), 1000.0f, lit_248, lit_249);
     temp_r4_3915 = this->unkFE4.unk0;
     if ((u32) temp_r4_3915 != 0U) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight((ManagedLight *) temp_r4_3915, 0U);

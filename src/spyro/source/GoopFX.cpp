@@ -5,6 +5,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/FXBase.h"
 #include "spyro/source/KDPropEx.h"
 #include "unplaced_templates.h"
@@ -649,7 +650,7 @@ void GoopFXDescriptor::DrawGoopList() {
         if (temp_r3_1111 != NULL) {
             MKMaterial_SetMaterial(temp_r3_1111);
             MKPrimitive(0xC, 0x10);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             var_r31_1121 = this->unkE8;
 loop_5:
             if (var_r31_1121 != NULL) {

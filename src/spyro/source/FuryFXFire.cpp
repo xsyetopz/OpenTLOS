@@ -8,6 +8,7 @@
 #include "spyro/source/Coronas.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
@@ -205,9 +206,9 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
         this->unkF8 = 0.0f;
         this->unkFC = 0.0f;
         this->unk104 = 1;
-        temp_r3_268 = gameData.unk158 << 5;
-        temp_r0_270 = *(&gameData.unk70 + (temp_r3_268 + 0x7C));
-        temp_r5_272 = &gameData.unk70 + (temp_r3_268 + 0x64);
+        temp_r3_268 = GameData::gameData.unk158 << 5;
+        temp_r0_270 = *(&GameData::gameData.unk70 + (temp_r3_268 + 0x7C));
+        temp_r5_272 = &GameData::gameData.unk70 + (temp_r3_268 + 0x64);
         if (temp_r0_270 == 3) {
             var_r3_276 = 0;
             if (((s32) M2C_FIELD(temp_r5_272, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_272, s32 *, 4) == 3)) {
@@ -217,7 +218,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
         } else {
             var_r30_286 = *(temp_r5_272 + (temp_r0_270 * 4));
         }
-        temp_r29_293 = gameData.unk158;
+        temp_r29_293 = GameData::gameData.unk158;
         this->unk290.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r30_286, temp_r29_293, temp_r29_293, 0, -1);
         return 1;
     }
@@ -366,7 +367,7 @@ void FuryFXFire::UpdateDragons() {
         arg_sp80 = (f64) arg_sp40;
         arg_sp90 = (f64) arg_sp40;
         arg_sp98 = (f64) arg_sp48;
-        M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         arg_spDC = 1.0f;
@@ -1000,7 +1001,7 @@ loop_87:
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
                     ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.99f, 0.66f, (MKVector3 *) &this->unk90.unk30, 50.0f, 0, 4.0f, 1U);
                 }
-                M2C_STRUCT_COPY((s32) &arg_sp8FC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp8FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp248 = 1.0f;
                 arg_sp238 = 0.0f;
                 arg_sp240 = 0.0f;
@@ -1053,8 +1054,8 @@ loop_87:
                     arg_sp980 = 0;
                     (s16) arg_sp980 = 0;
                     arg_sp984 = -1;
-                    arg_sp958 = M2C_FIELD(&one, f64 *, 0);
-                    arg_sp960 = M2C_FIELD(&one, f64 *, 8);
+                    arg_sp958 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                    arg_sp960 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                     arg_sp990 = 0;
                     arg_sp970 = 0.0f;
                     arg_sp974 = 0.0f;

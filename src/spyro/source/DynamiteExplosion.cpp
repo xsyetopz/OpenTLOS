@@ -660,7 +660,7 @@ loop_70:
             }
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp36C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp36C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp60 = 0.0f;
     arg_sp58 = 0.0f;
     arg_sp5C = 1.0f;
@@ -919,7 +919,7 @@ loop_4:
             }
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp46C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp46C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp158 = 0.0f;
     arg_sp150 = 0.0f;
     arg_sp154 = 1.0f;
@@ -1088,7 +1088,7 @@ loop_66:
             if (temp_r3_2138 != NULL) {
                 M2C_FIELD(M2C_FIELD(temp_r3_2138, void **, 0x44), M2C_UNK (**)(), 0x20)();
                 M2C_FIELD(M2C_FIELD(temp_r3_2138, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_2138);
-                M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp430.Scale3x3((Matrix *) &arg_sp430, temp_f21_2128);
                 MKVector(0.0f, 50.0f, 0.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
@@ -1273,7 +1273,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
             }
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp47C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp47C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp150 = 0.0f;
     arg_sp148 = 0.0f;
     arg_sp14C = 1.0f;
@@ -1702,7 +1702,7 @@ loop_8:
             }
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp42C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp158 = 0.0f;
     arg_sp150 = 0.0f;
     arg_sp154 = 1.0f;

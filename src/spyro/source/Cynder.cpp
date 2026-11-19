@@ -340,9 +340,9 @@ void Cynder::CalcLandingFlightPathData() {
     Normalise(*((MKVector3 *) &arg_sp170));
     arg_sp210 = arg_sp170;
     arg_sp218 = arg_sp178;
-    arg_sp30 = (up.unk4 * (f32) arg_sp218) - (up.unk8 * arg_sp214);
-    arg_sp34 = (up.unk8 * (f32) arg_sp210) - (up.unk0 * (f32) arg_sp218);
-    arg_sp38 = (up.unk0 * arg_sp214) - (up.unk4 * (f32) arg_sp210);
+    arg_sp30 = (MKVector3::up.unk4 * (f32) arg_sp218) - (MKVector3::up.unk8 * arg_sp214);
+    arg_sp34 = (MKVector3::up.unk8 * (f32) arg_sp210) - (MKVector3::up.unk0 * (f32) arg_sp218);
+    arg_sp38 = (MKVector3::up.unk0 * arg_sp214) - (MKVector3::up.unk4 * (f32) arg_sp210);
     arg_sp140 = (f64) arg_sp30;
     arg_sp148 = (f64) arg_sp38;
     arg_sp90 = -(f32) arg_sp140;
@@ -380,9 +380,9 @@ void Cynder::CalcLandingFlightPathData() {
     arg_sp228 = (f64) arg_sp78;
     arg_sp230.SetIdentity();
     arg_sp68 = -(f32) arg_sp228;
-    arg_sp24 = (up.unk8 * (f32) arg_sp220) - (up.unk0 * (f32) arg_sp228);
-    arg_sp20 = (up.unk4 * (f32) arg_sp228) - (up.unk8 * arg_sp224);
-    arg_sp28 = (up.unk0 * arg_sp224) - (up.unk4 * (f32) arg_sp220);
+    arg_sp24 = (MKVector3::up.unk8 * (f32) arg_sp220) - (MKVector3::up.unk0 * (f32) arg_sp228);
+    arg_sp20 = (MKVector3::up.unk4 * (f32) arg_sp228) - (MKVector3::up.unk8 * arg_sp224);
+    arg_sp28 = (MKVector3::up.unk0 * arg_sp224) - (MKVector3::up.unk4 * (f32) arg_sp220);
     arg_spD0 = (f64) arg_sp20;
     arg_spD8 = (f64) arg_sp28;
     arg_spF8 = (f64) arg_sp68;
@@ -398,9 +398,9 @@ void Cynder::CalcLandingFlightPathData() {
     arg_sp254 = arg_spF4;
     arg_sp258 = (f32) arg_spF8;
     arg_sp25C = 0.0f;
-    arg_sp240 = up.unk0;
-    arg_sp244 = up.unk4;
-    arg_sp248 = up.unk8;
+    arg_sp240 = MKVector3::up.unk0;
+    arg_sp244 = MKVector3::up.unk4;
+    arg_sp248 = MKVector3::up.unk8;
     arg_sp24C = 0.0f;
     arg_sp230 = (f32) arg_spE0;
     arg_sp234 = arg_spE4;
@@ -733,9 +733,9 @@ void Cynder::CalcFlightPathData2() {
     sp90 = (f32) sp150 * var_f8_1309;
     sp218 = (f64) sp88;
     sp220 = (f64) sp90;
-    sp48 = (up.unk4 * (f32) sp220) - (up.unk8 * unksp21C);
-    sp4C = (up.unk8 * (f32) sp218) - (up.unk0 * (f32) sp220);
-    sp50 = (up.unk0 * unksp21C) - (up.unk4 * (f32) sp218);
+    sp48 = (MKVector3::up.unk4 * (f32) sp220) - (MKVector3::up.unk8 * unksp21C);
+    sp4C = (MKVector3::up.unk8 * (f32) sp218) - (MKVector3::up.unk0 * (f32) sp220);
+    sp50 = (MKVector3::up.unk0 * unksp21C) - (MKVector3::up.unk4 * (f32) sp218);
     sp218 = (f64) sp48;
     sp220 = (f64) sp50;
     sp138 = (f64) sp48;
@@ -762,7 +762,7 @@ void Cynder::CalcFlightPathData2() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     f64 sp130;
     f64 sp128;
@@ -813,14 +813,14 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     void *temp_r5_1582;
     void *temp_r5_1608;
 
-    sp18 = M2C_FIELD(&zero, f64 *, 0);
-    sp20 = M2C_FIELD(&zero, f64 *, 8);
-    sp128 = M2C_FIELD(&zero, f64 *, 0);
-    sp130 = M2C_FIELD(&zero, f64 *, 8);
-    sp118 = M2C_FIELD(&zero, f64 *, 0);
-    sp120 = M2C_FIELD(&zero, f64 *, 8);
-    sp108 = M2C_FIELD(&zero, f64 *, 0);
-    sp110 = M2C_FIELD(&zero, f64 *, 8);
+    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp20 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp128 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp130 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp118 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp108 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp110 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     spD8.GetPos();
     temp_r30_1556 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &spD8));
     spC8.GetPos();
@@ -979,16 +979,16 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
     temp_r30_1866 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp138));
     sp128.GetPos();
     temp_r31_1876 = this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp128));
-    sp8 = M2C_FIELD(&zero, f64 *, 0);
-    sp10 = M2C_FIELD(&zero, f64 *, 8);
-    sp138.unk40 = M2C_FIELD(&zero, f64 *, 0);
-    sp138.unk40.unk8 = M2C_FIELD(&zero, f64 *, 8);
-    sp138.unk30 = M2C_FIELD(&zero, f64 *, 0);
-    sp138.unk38 = M2C_FIELD(&zero, f64 *, 8);
-    sp138.unk20 = M2C_FIELD(&zero, f64 *, 0);
-    sp138.unk28 = M2C_FIELD(&zero, f64 *, 8);
-    sp138.unk10 = M2C_FIELD(&zero, f64 *, 0);
-    sp138.unk18 = M2C_FIELD(&zero, f64 *, 8);
+    sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp138.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp138.unk40.unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp138.unk30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp138.unk38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp138.unk20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp138.unk28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp138.unk10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp138.unk18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (temp_r30_1866 == 0) {
         sp118.GetPos();
         this->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp118), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
@@ -1109,7 +1109,7 @@ s32 Cynder::CanLeap(bool arg0) {
     }
     temp_r3_2199 = this->unkA20->GetAnimSequence(9, var_r5_2187, M2C_BITWISE(s32, this->unkACC), NULL);
     if (temp_r3_2199 != NULL) {
-        M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp130.GetDir();
         arg_sp30 = -arg_sp130;
         arg_sp34 = -arg_sp134;
@@ -1120,9 +1120,9 @@ s32 Cynder::CanLeap(bool arg0) {
         arg_sp184 = arg_sp144;
         arg_sp188 = (f32) arg_sp148;
         arg_sp18C = 0.0f;
-        arg_sp170 = up.unk0;
-        arg_sp174 = up.unk4;
-        arg_sp178 = up.unk8;
+        arg_sp170 = MKVector3::up.unk0;
+        arg_sp174 = MKVector3::up.unk4;
+        arg_sp178 = MKVector3::up.unk8;
         arg_sp17C = 0.0f;
         arg_sp100.GetDir();
         arg_sp10 = -arg_sp100;
@@ -1131,9 +1131,9 @@ s32 Cynder::CanLeap(bool arg0) {
         arg_sp110 = (f64) arg_sp10;
         arg_sp118 = (f64) arg_sp18;
         arg_sp16C = 0.0f;
-        arg_sp20 = (up.unk4 * (f32) arg_sp118) - (up.unk8 * arg_sp114);
-        arg_sp24 = (up.unk8 * (f32) arg_sp110) - (up.unk0 * (f32) arg_sp118);
-        arg_sp28 = (up.unk0 * arg_sp114) - (up.unk4 * (f32) arg_sp110);
+        arg_sp20 = (MKVector3::up.unk4 * (f32) arg_sp118) - (MKVector3::up.unk8 * arg_sp114);
+        arg_sp24 = (MKVector3::up.unk8 * (f32) arg_sp110) - (MKVector3::up.unk0 * (f32) arg_sp118);
+        arg_sp28 = (MKVector3::up.unk0 * arg_sp114) - (MKVector3::up.unk4 * (f32) arg_sp110);
         arg_sp120 = (f64) arg_sp20;
         arg_sp128 = (f64) arg_sp28;
         arg_sp160 = (f32) arg_sp120;
@@ -1401,16 +1401,16 @@ block_34:
             }
             temp_cr0_eq_2839 = M2C_BITWISE(s32, this->unkAD0) == 3;
             if (temp_cr0_eq_2839 == 0) {
-                M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_f6_2853 = this->unk5C8;
                 arg_spE0 = temp_f6_2853;
                 temp_f1_2861 = this->unk5C8;
                 arg_spE4 = temp_f1_2861;
                 temp_f5_2867 = this->unk5CC;
                 arg_spE8 = temp_f5_2867;
-                arg_sp38 = (up.unk0 * temp_f1_2861) - (up.unk4 * temp_f6_2853);
-                arg_sp30 = (up.unk4 * temp_f5_2867) - (up.unk8 * temp_f1_2861);
-                arg_sp34 = (up.unk8 * temp_f6_2853) - (up.unk0 * temp_f5_2867);
+                arg_sp38 = (MKVector3::up.unk0 * temp_f1_2861) - (MKVector3::up.unk4 * temp_f6_2853);
+                arg_sp30 = (MKVector3::up.unk4 * temp_f5_2867) - (MKVector3::up.unk8 * temp_f1_2861);
+                arg_sp34 = (MKVector3::up.unk8 * temp_f6_2853) - (MKVector3::up.unk0 * temp_f5_2867);
                 arg_sp68 = (f64) arg_sp38;
                 arg_sp60 = (f64) arg_sp30;
                 arg_spEC = 0.0f;
@@ -1423,18 +1423,18 @@ block_34:
                 temp_f1_2893 = this->unk5BC;
                 arg_spF8 = temp_f1_2893;
                 arg_spFC = 1.0f;
-                Teleport(&arg_spC0, &up, temp_f1_2893, arg_sp64, (f32) arg_sp60, 0.0f, temp_f5_2867, temp_f6_2853, up.unk8, up.unk4);
+                Teleport(&arg_spC0, &MKVector3::up, temp_f1_2893, arg_sp64, (f32) arg_sp60, 0.0f, temp_f5_2867, temp_f6_2853, MKVector3::up.unk8, MKVector3::up.unk4);
             } else if (temp_cr0_eq_2839 != 0) {
-                M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp7C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_f5_2915 = this->unkEA8;
                 arg_spA0 = temp_f5_2915;
                 temp_f1_2922 = this->unkEAC;
                 arg_spA4 = temp_f1_2922;
                 temp_f4_2928 = this->unkE98.unk0;
                 arg_spA8 = temp_f4_2928;
-                arg_sp28 = (up.unk0 * temp_f1_2922) - (up.unk4 * temp_f5_2915);
-                arg_sp20 = (up.unk4 * temp_f4_2928) - (up.unk8 * temp_f1_2922);
-                arg_sp24 = (up.unk8 * temp_f5_2915) - (up.unk0 * temp_f4_2928);
+                arg_sp28 = (MKVector3::up.unk0 * temp_f1_2922) - (MKVector3::up.unk4 * temp_f5_2915);
+                arg_sp20 = (MKVector3::up.unk4 * temp_f4_2928) - (MKVector3::up.unk8 * temp_f1_2922);
+                arg_sp24 = (MKVector3::up.unk8 * temp_f5_2915) - (MKVector3::up.unk0 * temp_f4_2928);
                 arg_sp58 = (f64) arg_sp28;
                 arg_sp50 = (f64) arg_sp20;
                 arg_spAC = 0.0f;
@@ -1452,7 +1452,7 @@ block_34:
                 arg_spB4 = arg_sp44;
                 arg_spB8 = (f32) arg_sp48;
                 arg_spBC = 1.0f;
-                Teleport(&arg_sp80, &arg_sp7C + 0x40, (f32) arg_sp48, arg_sp44, (f32) arg_sp40, temp_f4_2928, temp_f5_2915, up.unk8, up.unk4, up.unk0);
+                Teleport(&arg_sp80, &arg_sp7C + 0x40, (f32) arg_sp48, arg_sp44, (f32) arg_sp40, temp_f4_2928, temp_f5_2915, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0);
                 ResetFury();
             }
         }
@@ -1527,7 +1527,7 @@ void Cynder::CalculateDiveTrajectory() {
     switch (M2C_BITWISE(s32, temp_r0_3068)) {       /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         temp_r3_3081 = this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL);
-        M2C_STRUCT_COPY((s32) &arg_sp31C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp31C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         var_f4_3096 = 0.0f;
         arg_sp164 = 0.0f;
         arg_sp160 = this->unk5B8 - this->unk588;
@@ -1588,13 +1588,13 @@ void Cynder::CalculateDiveTrajectory() {
         arg_sp270 = (f64) arg_sp30;
         arg_sp98 = temp_f8_3202;
         arg_sp298 = (f64) arg_sp98;
-        arg_sp88 = (up.unk0 * arg_sp274) - (up.unk4 * (f32) arg_sp270);
+        arg_sp88 = (MKVector3::up.unk0 * arg_sp274) - (MKVector3::up.unk4 * (f32) arg_sp270);
         arg_sp90 = temp_f9_3204;
         arg_sp94 = temp_f10_3206;
         arg_sp288 = (f64) arg_sp88;
         arg_sp290 = (f64) arg_sp90;
-        arg_sp80 = (up.unk4 * (f32) arg_sp278) - (up.unk8 * arg_sp274);
-        arg_sp84 = (up.unk8 * (f32) arg_sp270) - (up.unk0 * (f32) arg_sp278);
+        arg_sp80 = (MKVector3::up.unk4 * (f32) arg_sp278) - (MKVector3::up.unk8 * arg_sp274);
+        arg_sp84 = (MKVector3::up.unk8 * (f32) arg_sp270) - (MKVector3::up.unk0 * (f32) arg_sp278);
         arg_sp340 = (f32) arg_sp290;
         arg_sp280 = (f64) arg_sp80;
         arg_sp344 = arg_sp294;
@@ -1974,7 +1974,7 @@ void Cynder::UpdateMovementCustom() {
     this->unk588.unk4 += (f32) arg_sp38;
     this->unk100 = temp_f3_4129;
     this->unk108 = temp_f2_4130;
-    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     if ((u8) M2C_FIELD(this, u8 *, 0xD02) != 0) {
         UpdateFlyingRotation((Matrix *) &arg_sp40);
         arg_sp10 = -arg_sp60;
@@ -2072,10 +2072,10 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         arg_sp168 = (f64) arg_sp68;
         arg_sp170 = (f64) arg_sp70;
         arg_sp80 = -arg_sp2D8;
-        arg_spD8 = (up.unk4 * (f32) arg_sp170) - (up.unk8 * arg_sp16C);
+        arg_spD8 = (MKVector3::up.unk4 * (f32) arg_sp170) - (MKVector3::up.unk8 * arg_sp16C);
         arg_sp180 = (f64) arg_sp80;
-        arg_spDC = (up.unk8 * (f32) arg_sp168) - (up.unk0 * (f32) arg_sp170);
-        arg_spE0 = (up.unk0 * arg_sp16C) - (up.unk4 * (f32) arg_sp168);
+        arg_spDC = (MKVector3::up.unk8 * (f32) arg_sp168) - (MKVector3::up.unk0 * (f32) arg_sp170);
+        arg_spE0 = (MKVector3::up.unk0 * arg_sp16C) - (MKVector3::up.unk4 * (f32) arg_sp168);
         arg_sp158 = (f64) arg_spD8;
         arg_sp160 = (f64) arg_spE0;
         arg_sp78 = -arg_sp2D0;
@@ -2136,17 +2136,17 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         arg_spC0 = -(f32) arg_sp1C0;
         arg_sp148 = (f64) arg_spB8;
         arg_sp150 = (f64) arg_spC0;
-        arg_spA8 = (up.unk4 * (f32) arg_sp150) - (up.unk8 * arg_sp14C);
-        arg_spAC = (up.unk8 * (f32) arg_sp148) - (up.unk0 * (f32) arg_sp150);
-        arg_spB0 = (up.unk0 * arg_sp14C) - (up.unk4 * (f32) arg_sp148);
+        arg_spA8 = (MKVector3::up.unk4 * (f32) arg_sp150) - (MKVector3::up.unk8 * arg_sp14C);
+        arg_spAC = (MKVector3::up.unk8 * (f32) arg_sp148) - (MKVector3::up.unk0 * (f32) arg_sp150);
+        arg_spB0 = (MKVector3::up.unk0 * arg_sp14C) - (MKVector3::up.unk4 * (f32) arg_sp148);
         arg_sp1A8 = (f64) arg_spA8;
         arg_sp1B0 = (f64) arg_spB0;
         arg_sp138.GetDir();
         arg_sp198 = arg_sp138;
         arg_sp1A0 = arg_sp140;
-        arg_sp98 = (up.unk4 * (f32) arg_sp1A0) - (up.unk8 * arg_sp19C);
-        arg_sp9C = (up.unk8 * (f32) arg_sp198) - (up.unk0 * (f32) arg_sp1A0);
-        arg_spA0 = (up.unk0 * arg_sp19C) - (up.unk4 * (f32) arg_sp198);
+        arg_sp98 = (MKVector3::up.unk4 * (f32) arg_sp1A0) - (MKVector3::up.unk8 * arg_sp19C);
+        arg_sp9C = (MKVector3::up.unk8 * (f32) arg_sp198) - (MKVector3::up.unk0 * (f32) arg_sp1A0);
+        arg_spA0 = (MKVector3::up.unk0 * arg_sp19C) - (MKVector3::up.unk4 * (f32) arg_sp198);
         arg_sp128 = (f64) arg_sp98;
         arg_sp130 = (f64) arg_spA0;
         var_f4_4575 = ((f32) arg_sp130 * (f32) arg_sp130) + (((f32) arg_sp128 * (f32) arg_sp128) + (arg_sp12C * arg_sp12C));
@@ -2198,9 +2198,9 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         arg_sp30 = -(f32) arg_sp190;
         arg_sp108 = (f64) arg_sp28;
         arg_sp110 = (f64) arg_sp30;
-        arg_sp58 = (up.unk4 * (f32) arg_sp110) - (up.unk8 * arg_sp10C);
-        arg_sp5C = (up.unk8 * (f32) arg_sp108) - (up.unk0 * (f32) arg_sp110);
-        arg_sp60 = (up.unk0 * arg_sp10C) - (up.unk4 * (f32) arg_sp108);
+        arg_sp58 = (MKVector3::up.unk4 * (f32) arg_sp110) - (MKVector3::up.unk8 * arg_sp10C);
+        arg_sp5C = (MKVector3::up.unk8 * (f32) arg_sp108) - (MKVector3::up.unk0 * (f32) arg_sp110);
+        arg_sp60 = (MKVector3::up.unk0 * arg_sp10C) - (MKVector3::up.unk4 * (f32) arg_sp108);
         arg_sp188 = (f64) arg_sp58;
         arg_sp190 = (f64) arg_sp60;
         arg_sp118 = (f64) arg_sp58;
@@ -2220,7 +2220,7 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         temp_f7_4729 = (f32) acos(var_f25_4705);
         temp_f6_4738 = 1.0f - (((f32) arg_sp1B0 * (f32) arg_sp190) + (((f32) arg_sp1A8 * (f32) arg_sp188) + (arg_sp1AC * arg_sp18C)));
         var_f3_4743 = 1.0f;
-        arg_sp20 = ((f32) arg_sp1A0 * up.unk8) + (((f32) arg_sp198 * up.unk0) + (arg_sp19C * up.unk4));
+        arg_sp20 = ((f32) arg_sp1A0 * MKVector3::up.unk8) + (((f32) arg_sp198 * MKVector3::up.unk0) + (arg_sp19C * MKVector3::up.unk4));
         arg_sp18 = ((f32) arg_sp1C0 * (f32) arg_sp190) + (((f32) arg_sp1B8 * (f32) arg_sp188) + (arg_sp1BC * arg_sp18C));
         arg_sp24 = (M2C_BITWISE(s32, arg_sp20) & 0x80000000) | 0x3F800000;
         arg_sp1C = (M2C_BITWISE(s32, arg_sp18) & 0x80000000) | 0x3F800000;
@@ -2242,7 +2242,7 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         this->unkCF0 = M2C_ERROR(/* Read from unset register $f1 */);
         KDMath_SmoothToAngle(M2C_BITWISE(f32, this->unkCF8), -M2C_BITWISE(f32, arg_sp1C) * (1.5707964f * var_f25_4766), 2.1991148f * gUpdateTimeDelta);
         this->unkCF8 = M2C_ERROR(/* Read from unset register $f1 */);
-        M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp28C + 4, (s32) &arg_sp1CC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) &arg_sp1CC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) &arg_sp1CC + 4, 0x40);
@@ -2769,7 +2769,7 @@ void Cynder::Init() {
     this->unkEF4.Init();
     this->unkEF8.Init();
     this->unkF10.unk0 = 0;
-    M2C_STRUCT_COPY((s32) &this->unkF14 + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unkF14 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unkF74 = 0.0f;
     this->unkF70 = 0.0f;
     M2C_FIELD(this, s8 *, 0xF1F) = 0;

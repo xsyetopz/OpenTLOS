@@ -358,7 +358,7 @@ void ShotgunWarpFX::Deinit() {
     free(temp_r31_625);
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'arg_spBC'
 void ShotgunWarpFX::Draw() {
     f32 temp_f1_678;
     f32 temp_f1_833;
@@ -390,7 +390,7 @@ void ShotgunWarpFX::Draw() {
     if (this->unk68 != 0.0f) {
         MKMaterial_SetMaterial(this->unk60);
         MKPrimitive(0xC, 0x10);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         temp_f1_678 = this->unk68;
         temp_r26_680 = this->unkC * this->unk10;
         var_f30_681 = 1.0f;
@@ -481,7 +481,7 @@ loop_21:
             }
             MKMaterial_SetMaterial(this->unk64);
             MKPrimitive(0xC, 0x10);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             arg_sp3C = var_f30_681;
             arg_sp30 = this->unk78 * var_f30_681;
             arg_sp34 = this->unk7C * var_f30_681;

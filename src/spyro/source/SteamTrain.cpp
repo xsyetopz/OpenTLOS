@@ -135,8 +135,8 @@ void SteamTrain::StateRamUpdate() {
                         arg_sp1E0 = 0;
                         (s16) arg_sp1E0 = 1;
                         arg_sp1E4 = -1;
-                        arg_sp1B8 = M2C_FIELD(&one, f64 *, 0);
-                        arg_sp1C0 = M2C_FIELD(&one, f64 *, 8);
+                        arg_sp1B8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        arg_sp1C0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         arg_sp1F0 = 0;
                         if (this != NULL) {
                             arg_sp78.GetPos();
@@ -198,7 +198,7 @@ void SteamTrain::StateRamUpdate() {
                     }
                 }
                 if (this->unk10C < temp_r3_314->GetTrackLength(1)) {
-                    M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&identity - 4) + 4, 0x40);
+                    M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     arg_sp118.GetTrackPos(temp_r3_314, this->unk10C, 1);
                     arg_sp190 = arg_sp118;
                     arg_sp194 = arg_sp11C;
@@ -330,7 +330,7 @@ void SteamTrain::StateChaseUpdate() {
                     this->unk10C = var_f0_823;
                 }
                 if (this->unk10C < temp_r3_768->GetTrackLength(1)) {
-                    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&identity - 4) + 4, 0x40);
+                    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     arg_spF8.GetTrackPos(temp_r3_768, this->unk10C, 1);
                     arg_sp160 = arg_spF8;
                     arg_sp164 = arg_spFC;
@@ -446,7 +446,7 @@ void SteamTrain::StateFallBackUpdate() {
         if (temp_f2_1097 > 0.0f) {
             this->unk10C += temp_f2_1097 * gUpdateTimeDelta;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp100.GetTrackPos(temp_r3_1070, this->unk10C, 1);
         arg_sp140 = arg_sp100;
         arg_sp144 = arg_sp104;
@@ -627,7 +627,7 @@ void SteamTrain::StateFleeUpdate() {
                 }
             }
             this->unk10C += gUpdateTimeDelta * (this->unk104 * var_f31_1343);
-            M2C_STRUCT_COPY((s32) &arg_sp11C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp11C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_spF0.GetTrackPos(temp_r3_1330, this->unk10C, 1);
             arg_sp150 = arg_spF0;
             arg_sp154 = arg_spF4;
@@ -1133,7 +1133,7 @@ void SteamTrain::LoadDone() {
         var_r30_2501 += 1;
         var_r31_2502 += 4;
     } while (var_r30_2501 < 5);
-    Init__28KDStateMachine<10SteamTrain>FPQ228KDStateMachine<10SteamTrain>5StateP28KDStateMachine<10SteamTrain>(&this->unk378, (KDStateMachine<SteamTrain>::State *) &states, NULL);
+    Init__28KDStateMachine<10SteamTrain>FPQ228KDStateMachine<10SteamTrain>5StateP28KDStateMachine<10SteamTrain>(&this->unk378, (KDStateMachine<SteamTrain>::State *) &SteamTrain::states, NULL);
     this->unk378.SetState(this, 1, 0U);
     Disable();
 }
@@ -1194,7 +1194,7 @@ void SteamTrainDescriptor::LoadDone() {
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void SteamTrainEffects::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_2757;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;
@@ -1785,7 +1785,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
     arg_sp110 = (f64) arg_sp70;
     arg_sp138 = (f64) arg_sp68;
     arg_sp140 = (f64) arg_sp70;
-    M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f31_4044 = M2C_FIELD(arg1, f32 *, 0x30);
     if (temp_f31_4044 != 0.0f) {
         temp_r3_4047 = arg0->unk20;

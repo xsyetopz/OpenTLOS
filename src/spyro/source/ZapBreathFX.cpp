@@ -15,6 +15,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/FuryFXElectricity.h"
 #include "spyro/source/FuryFXElectricity2.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
@@ -925,7 +926,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                         }
                     }
                 }
-                M2C_STRUCT_COPY((s32) &arg_sp43C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp43C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r3_1620 = this->unkAC + var_r27_718;
                 arg_sp470 = M2C_FIELD(temp_r3_1620, f32 *, 0);
                 arg_sp474 = M2C_FIELD(temp_r3_1620, f32 *, 4);
@@ -1189,7 +1190,7 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     void *temp_r6_2645;
     temp_r0_2000 = &arg4;
     if (temp_r0_2000 == 3) {
-        if (gameData.unk70.GetCurrentBreathUpgrade(3) == 0) {
+        if (((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(3) == 0) {
             return this->unk9EC->Trigger(arg1, 0U);
         }
         this->unk9EC->Trigger(arg1, 1U);
@@ -1205,13 +1206,13 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if (this->unkD4 == this->unkD8) {
                 this->unkD4 = 0.0f;
-                temp_r18_2057 = gameData.unk70.unkE8;
+                temp_r18_2057 = GameData::gameData.unk70.unkE8;
                 temp_r21_2061 = temp_r18_2057;
-                temp_r22_2063 = *(&gameData.unk70 + ((temp_r18_2057 << 5) + 0x7C));
-                temp_r17_2068 = gameData.unk70.GetCurrentBreathUpgrade(temp_r22_2063);
-                this->unk160.Init(arg0, gameData.unk70.GetBreathAttackDamage(temp_r21_2061, temp_r22_2063, gameData.unk70.GetCurrentBreathUpgrade(temp_r22_2063)), temp_r22_2063, temp_r17_2068, temp_r18_2057, temp_r18_2057, 0, -1);
+                temp_r22_2063 = *(&GameData::gameData.unk70 + ((temp_r18_2057 << 5) + 0x7C));
+                temp_r17_2068 = ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(temp_r22_2063);
+                this->unk160.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r21_2061, temp_r22_2063, ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(temp_r22_2063)), temp_r22_2063, temp_r17_2068, temp_r18_2057, temp_r18_2057, 0, -1);
                 var_r16_2088 = 1;
-                temp_r3_2092 = gameData.unk70.GetCurrentBreathUpgrade(*(&gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x7C)));
+                temp_r3_2092 = ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(*(&GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x7C)));
                 switch (temp_r3_2092) {             /* switch 1; irregular */
                 case 0:                             /* switch 1 */
                     var_r16_2088 = 1;
@@ -1262,7 +1263,7 @@ loop_22:
                         var_r17_2170 += 1;
                     } while (var_r17_2170 < 6);
                     KDSound_Play3d(GS_SpyBreathEnergyball, &arg1, 0U, -1, 0.0f, 0U);
-                    temp_r3_2220 = gameData.unk70.GetCurrentBreathUpgrade(*(&gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x7C)));
+                    temp_r3_2220 = ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(*(&GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x7C)));
                     switch (temp_r3_2220) {         /* switch 2; irregular */
                     case 0:                         /* switch 2 */
                         ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.1f, 0.3f, 0.05f, 0, 4.0f, 0U);
@@ -1283,7 +1284,7 @@ loop_22:
         }
         return 0U;
     }
-    temp_r22_2312 = gameData.unk70.GetCurrentBreathUpgrade(*(&gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x7C)));
+    temp_r22_2312 = ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(*(&GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x7C)));
     temp_cr0_eq_2314 = temp_r22_2312 == 3;
     this->unk100 = 0.0f;
     temp_f1_2316 = M2C_FIELD(&arg2, f64 *, 0);
@@ -1295,12 +1296,12 @@ loop_22:
     arg_sp810 = temp_f1_2316;
     arg_sp818 = temp_f0_2317;
     if (temp_cr0_eq_2314 != 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp9D0.SetRotationYaw(-0.43633232f);
         ApplyMatrix(*((MKVector3 *) &arg_sp630), (Matrix *) &arg_sp820);
         arg_sp820 = arg_sp630;
         arg_sp828 = arg_sp638;
-        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp9D0.SetRotationYaw(0.43633232f);
         ApplyMatrix(*((MKVector3 *) &arg_sp620), (Matrix *) &arg_sp810);
         arg_sp810 = arg_sp620;
@@ -1350,12 +1351,12 @@ loop_22:
         var_r24_2433 = 2;
         break;
     }
-    temp_r19_2467 = gameData.unk70.unkE8;
+    temp_r19_2467 = GameData::gameData.unk70.unkE8;
     temp_r15_2470 = temp_r19_2467;
     temp_r21_2472 = temp_r19_2467;
-    temp_r18_2473 = *(&gameData.unk70 + ((temp_r19_2467 << 5) + 0x7C));
-    temp_r14_2478 = gameData.unk70.GetCurrentBreathUpgrade(temp_r18_2473);
-    temp_f27_2488 = gameData.unk70.GetBreathAttackDamage(temp_r21_2472, temp_r18_2473, gameData.unk70.GetCurrentBreathUpgrade(temp_r18_2473));
+    temp_r18_2473 = *(&GameData::gameData.unk70 + ((temp_r19_2467 << 5) + 0x7C));
+    temp_r14_2478 = ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(temp_r18_2473);
+    temp_f27_2488 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r21_2472, temp_r18_2473, ((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathUpgrade(temp_r18_2473));
     this->unk108.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f27_2488, temp_r18_2473, temp_r14_2478, temp_r15_2470, temp_r19_2467, var_r24_2433, -1);
     arg_sp830 = M2C_FIELD(&arg1, f64 *, 0);
     var_r15_2510 = NULL;
@@ -1769,7 +1770,7 @@ loop_182:
                 goto loop_182;
             }
         } else {
-            M2C_STRUCT_COPY((s32) &arg_sp8CC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp8CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             MKVector(0.0f, 1.0f, 0.0f);
             arg_sp700 = arg_sp1C0;
             arg_sp708 = arg_sp1C8;
@@ -1861,7 +1862,7 @@ loop_198:
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp850);
             }
         }
-        M2C_STRUCT_COPY((s32) &arg_sp88C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp88C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         MKVector(0.0f, 1.0f, 0.0f);
         arg_sp6E0 = arg_spF0;
         arg_sp6E8 = arg_spF8;
@@ -2495,9 +2496,9 @@ loop_54:
     if (((u8) this->unkC9 != 0) && (EventCamera_GetCurrent() == NULL)) {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (this->unk104 == 0.0f) {
-            temp_r3_5383 = gameData.unk70.unkE8 << 5;
-            temp_r0_5385 = *(&gameData.unk70 + (temp_r3_5383 + 0x7C));
-            temp_r4_5387 = &gameData.unk70 + (temp_r3_5383 + 0x64);
+            temp_r3_5383 = GameData::gameData.unk70.unkE8 << 5;
+            temp_r0_5385 = *(&GameData::gameData.unk70 + (temp_r3_5383 + 0x7C));
+            temp_r4_5387 = &GameData::gameData.unk70 + (temp_r3_5383 + 0x64);
             if (temp_r0_5385 == 3) {
                 var_r3_5391 = 0;
                 if (((s32) M2C_FIELD(temp_r4_5387, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_5387, s32 *, 4) == 3)) {

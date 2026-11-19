@@ -587,7 +587,7 @@ void MineCartTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MineCartTrack::Init() {
     s32 var_ctr_1332;
     s32 var_r3_1330;
@@ -596,7 +596,7 @@ void MineCartTrack::Init() {
     void *temp_r9_1334;
 
     MKProp::Init();
-    M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_r4_1322 = 0;
     this->unk8 = &this->unkC0;
     var_r3_1330 = 0;
@@ -615,10 +615,10 @@ void MineCartTrack::Init() {
         var_ctr_1332 -= 1;
     } while (var_ctr_1332 != 0);
     this->unk50.unk38 = 0.0f;
-    this->unkA0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkA8 = M2C_FIELD(&zero, f64 *, 8);
-    this->unkB0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkB8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkA0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkA8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unkB0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkB8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkC = (BoundingVolume *) &this->unkA0;
     this->unk100 = 1;
     this->unk144 = 0;
@@ -626,13 +626,13 @@ void MineCartTrack::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk60'
 void MineCartTrackDescriptor::Init() {
     MKPropDescriptor::Init();
-    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk68 = M2C_FIELD(&zero, f64 *, 8);
-    this->unk70 = M2C_FIELD(&zero, f64 *, 0);
-    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk68 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
 #endif

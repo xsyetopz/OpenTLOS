@@ -157,7 +157,7 @@ loop_5:
     if (var_r29_258 != NULL) {
         temp_r30_310 = *var_r29_258;
         if (temp_r30_310 != NULL) {
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp30.SetRotationPYR(*(temp_r30_310 + 0x10));
             arg_sp30.Scale3x3((Matrix *) &arg_sp30, M2C_FIELD(temp_r30_310, f32 *, 0x30));
             arg_sp60 = temp_r30_310->unk0;
@@ -389,10 +389,10 @@ loop_39:
 #if 0 // DRAFT: undefined identifier 'unk5C'
 void ConvexityVortex::LoadDone() {
     MKProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&identity - 4) + 4, 0x40);
-    this->unk90 = M2C_FIELD(&loadInfo, f32 *, 0x40);
-    this->unk94 = M2C_BITWISE(f32, loadInfo.__vptr);
-    this->unk98 = loadInfo.unk48;
+    M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    this->unk90 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
+    this->unk94 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
+    this->unk98 = MKProp::loadInfo.unk48;
     this->unk9C = 1.0f;
 }
 #endif

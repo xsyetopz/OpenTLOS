@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/Projectile.h"
@@ -94,7 +95,7 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void SteamFireBall::Collided(MKCollisionResult &arg0) {
     s32 sp8;
     f32 temp_f1_170;
@@ -107,7 +108,7 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
     ((Explosion4 *) (M2C_FIELD(temp_r3_148, Explosion4 **, 0xF0)))->Trigger(*((MKVector3 *) &arg0), 0.3f, 1U, this->unk130, 5, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk150.Show(0U);
     var_r5_167 = 3;
-    temp_f1_170 = gameData.unkA0 / gameData.unkA4;
+    temp_f1_170 = GameData::gameData.unkA0 / GameData::gameData.unkA4;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f1_170 == 0.9f) {
         var_r5_167 = 0;
@@ -140,7 +141,7 @@ void SteamFireBall::Update() {
     void *temp_r3_461;
     Projectile::Update();
     this->unk180 = (10.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unk180);
-    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f1_242 = M2C_FIELD(this, f32 *, 0xC8);
     temp_f0_243 = M2C_FIELD(this, f32 *, 0xCC);
     temp_f3_245 = M2C_FIELD(this, f32 *, 0xD0);
@@ -194,7 +195,7 @@ void SteamFireBall::Update() {
     arg_spE8 = (f64) arg_sp58;
     arg_spF0 = (f64) arg_sp60;
     KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp190, *((MKVector3 *) &arg_spF8), (MKVector3 *) &arg_spE8);
-    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp150.RotateRoll((Matrix *) &arg_sp150, 2.0f * M2C_BITWISE(f32, this->unk180));
     arg_sp150.Multiply3x3((Matrix *) &arg_sp150, (Matrix *) &arg_sp190);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
@@ -214,7 +215,7 @@ void SteamFireBall::Update() {
     arg_spC0 = (f64) arg_sp30;
     gb.EmitDust(*((MKVector3 *) &arg_spD8), *((MKVector3 *) &arg_spB8), 1.0f, 0.0f);
     if ((u8) this->unk150.unk2C != 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r3_428 = this->unk8;
         arg_spA8 = M2C_FIELD(temp_r3_428, f64 *, 0x30);
         arg_spB0 = M2C_FIELD(temp_r3_428, f64 *, 0x38);

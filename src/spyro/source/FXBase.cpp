@@ -37,7 +37,7 @@ loop_2:
         arg_sp120 = arg_sp40;
         arg_sp108 = (f64) arg_sp48;
         arg_sp128 = (f64) arg_sp48;
-        M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f26_89 = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
         temp_f1_93 = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
         arg_sp38 = 0.0f;

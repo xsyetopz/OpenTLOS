@@ -44,7 +44,7 @@ loop_10:
         if (var_r30_119 != NULL) {
 
         } else {
-            var_r30_119 = &identity;
+            var_r30_119 = &Matrix::identity;
         }
         var_r29_126 = 0;
 loop_8:
@@ -127,7 +127,7 @@ loop_5:
 
 #if 0 // DRAFT: expression syntax error
 KDPathSegment *KDPathManager::GetPathList(int arg0) {
-    return *(pPathLists.unk0 + ((s32) this * 4));
+    return *(KDPathManager::pPathLists.unk0 + ((s32) this * 4));
 }
 #endif
 
@@ -144,8 +144,8 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
         temp_r3_335->unk28 = this->unk28;
     } else {
         temp_r3_344 = this->unk18 * 4;
-        if ((u32) *(pPathLists.unk0 + temp_r3_344) == this) {
-            *(pPathLists.unk0 + temp_r3_344) = this->unk28;
+        if ((u32) *(KDPathManager::pPathLists.unk0 + temp_r3_344) == this) {
+            *(KDPathManager::pPathLists.unk0 + temp_r3_344) = this->unk28;
         }
     }
     temp_r3_351 = this->unk28;
@@ -184,7 +184,7 @@ void KDPathManager::AddPath(KDPathSegment *arg0) {
     KDPathNode *var_r4_379;
 
     var_r4_379 = NULL;
-    var_r3_382 = pPathLists.unk0 + (this->unk18 * 4);
+    var_r3_382 = KDPathManager::pPathLists.unk0 + (this->unk18 * 4);
     var_r31_383 = *var_r3_382;
 loop_10:
     if (var_r31_383 != NULL) {
@@ -247,7 +247,7 @@ void KDPathManager::Deinit() {
     KDPathManager *temp_r31_550;
     MKHeap *temp_r3_553;
 
-    temp_r31_550 = pPathLists.unk0;
+    temp_r31_550 = KDPathManager::pPathLists.unk0;
     if (temp_r31_550 != NULL) {
         temp_r3_553 = MKHeap::Current();
         if (temp_r3_553 != NULL) {
@@ -256,8 +256,8 @@ void KDPathManager::Deinit() {
             free(temp_r31_550);
         }
     }
-    pPathLists.unk0 = NULL;
-    numTypes.unk0 = NULL;
+    KDPathManager::pPathLists.unk0 = NULL;
+    KDPathManager::numTypes.unk0 = NULL;
 }
 #endif
 
@@ -271,20 +271,20 @@ void KDPathManager::Init(int arg0) {
     void *var_ctr_604;
 
     temp_r31_583 = (s32) this * 4;
-    numTypes.unk0 = this;
+    KDPathManager::numTypes.unk0 = this;
     temp_r3_585 = MKHeap::Current();
     if (temp_r3_585 != NULL) {
         var_r3_592 = ((MKHeap *) (temp_r3_585->Current()))->Alloc(temp_r31_583, NULL, 0);
     } else {
         var_r3_592 = malloc(temp_r31_583);
     }
-    pPathLists.unk0 = var_r3_592;
-    temp_r4_601 = numTypes.unk0 - 1;
+    KDPathManager::pPathLists.unk0 = var_r3_592;
+    temp_r4_601 = KDPathManager::numTypes.unk0 - 1;
     var_r3_603 = (s32) temp_r4_601 * 4;
     var_ctr_604 = temp_r4_601 + 1;
     if (temp_r4_601 >= 0) {
         do {
-            *(pPathLists.unk0 + var_r3_603) = 0;
+            *(KDPathManager::pPathLists.unk0 + var_r3_603) = 0;
             var_r3_603 -= 4;
             var_ctr_604 -= 1;
         } while (var_ctr_604 != NULL);

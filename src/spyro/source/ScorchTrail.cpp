@@ -98,7 +98,7 @@ loop_8:
     if (var_r27_154 != NULL) {
         temp_r28_344 = *var_r27_154;
         if (temp_r28_344 != NULL) {
-            M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp38 = 0.0f;
             temp_f7_176 = M2C_FIELD(temp_r28_344, f32 *, 0x18);
             arg_sp30 = 0.0f;
@@ -140,7 +140,7 @@ loop_8:
             arg_sp1F4 = M2C_FIELD(temp_r28_344, f32 *, 0x14);
             arg_sp1F8 = M2C_FIELD(temp_r28_344, f32 *, 0x18);
             arg_sp1FC = 0.0f;
-            M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp150.SetRotationRoll(M2C_FIELD(temp_r28_344, f32 *, 0x28));
             arg_sp1D0.Multiply((Matrix *) &arg_sp150, (Matrix *) &arg_sp1D0);
             var_f0_273 = M2C_FIELD(temp_r28_344, f32 *, 0x24);
@@ -160,7 +160,7 @@ loop_8:
             arg_sp204 = M2C_FIELD(temp_r28_344, f32 *, 4);
             arg_sp208 = M2C_FIELD(temp_r28_344, f32 *, 8);
             arg_sp20C = 1.0f;
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             MKSetMatrix(*((Matrix *) &arg_sp1D0));
             arg_sp120 = temp_f27_287;
             arg_sp124 = temp_f27_287;
@@ -256,7 +256,7 @@ loop_8:
     if (var_r28_458 != NULL) {
         temp_r29_603 = *var_r28_458;
         if (temp_r29_603 != NULL) {
-            M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp38 = 0.0f;
             temp_f7_475 = M2C_FIELD(temp_r29_603, f32 *, 0x18);
             arg_sp30 = 0.0f;
@@ -615,7 +615,7 @@ loop_6:
             var_f25_948 = 0.0f;
             MKMaterial_SetMaterial(M2C_FIELD(checked_cast<ScorchTrailDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x60));
             MKPrimitive(0xC, 0);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             MKBegin(var_r27_929 * 2);
 loop_13:
             if (var_r31_928 != var_r29_912) {

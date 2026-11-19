@@ -16,7 +16,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -66,16 +66,16 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     Enemy *temp_r4_302;
     u8 var_r30_158;
 
-    sp8 = M2C_FIELD(&zero, f64 *, 0);
-    sp10 = M2C_FIELD(&zero, f64 *, 8);
-    sp1D8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1E0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1C8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1D0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1B8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1C0 = M2C_FIELD(&zero, f64 *, 8);
-    sp1A8 = M2C_FIELD(&zero, f64 *, 0);
-    sp1B0 = M2C_FIELD(&zero, f64 *, 8);
+    sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1D8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1E0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1C8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1D0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1B8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1C0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (arg0 != 0) {
         sp198.GetPos();
         this->unkC->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
@@ -386,7 +386,7 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match
 u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -428,15 +428,15 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
 
     temp_r3_879 = this->unkC;
     if (((void *) temp_r3_879->unk638 != NULL) && (temp_r3_879->IsInsideEnemyRegion() == 0)) {
-        spC8 = M2C_FIELD(&zero, f64 *, 0);
-        spD0 = M2C_FIELD(&zero, f64 *, 8);
-        spB8 = M2C_FIELD(&zero, f64 *, 0);
-        spC0 = M2C_FIELD(&zero, f64 *, 8);
+        spC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        spB8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        spC0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r3_893 = this->unkC;
-        sp8 = M2C_FIELD(&zero, f64 *, 0);
-        sp10 = M2C_FIELD(&zero, f64 *, 8);
+        sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r4_900 = this->unkC;
-        temp_f31_901 = temp_r3_893->GetCollisionRadius(M2C_FIELD(&zero, f64 *, 0));
+        temp_f31_901 = temp_r3_893->GetCollisionRadius(M2C_FIELD(&MKVector3::zero, f64 *, 0));
         temp_r4_900->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_900->unk700), (MKVector3 *) &spC8, (MKVector3 *) &spB8);
         temp_f0_909 = 2.0f * temp_f31_901;
         if (150.0f > temp_f0_909) {

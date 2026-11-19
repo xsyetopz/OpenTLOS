@@ -198,8 +198,8 @@ void ElementalWall::StateEWOnUpdate() {
         }
         this->unk128 = var_r30_259;
     } else if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) != 0) {
-        this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
-        this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
+        this->unkC0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         this->unk128 = 1;
     }
     if (((HeroInterface *) gb.unk0 != NULL) && ((u8) this->unk128 != 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(), 0x54)() == 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) == 0)) {
@@ -252,7 +252,7 @@ void ElementalWall::StateEWOnUpdate() {
             }
         }
         var_r0_437 = 0;
-        if (((f32) M2C_FIELD(this, f64 *, 0xC0) == zero.unk0) && (M2C_FIELD(this, f32 *, 0xC4) == zero.unk4) && ((f32) M2C_FIELD(this, f64 *, 0xC8) == zero.unk8)) {
+        if (((f32) M2C_FIELD(this, f64 *, 0xC0) == MKVector3::zero.unk0) && (M2C_FIELD(this, f32 *, 0xC4) == MKVector3::zero.unk4) && ((f32) M2C_FIELD(this, f64 *, 0xC8) == MKVector3::zero.unk8)) {
             var_r0_437 = 1;
         }
         if (var_r0_437 != 0) {
@@ -276,8 +276,8 @@ void ElementalWall::StateEWOnUpdate() {
                 sp151 = 0;
                 sp152 = 0;
                 sp154 = -1;
-                sp128 = M2C_FIELD(&one, f64 *, 0);
-                sp130 = M2C_FIELD(&one, f64 *, 8);
+                sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp160 = 0;
                 if (this != NULL) {
                     sp20.GetPos();
@@ -312,8 +312,8 @@ void ElementalWall::StateEWOnUpdate() {
                 spF9 = 0;
                 spFA = 0;
                 spFC = -1;
-                spD0 = M2C_FIELD(&one, f64 *, 0);
-                spD8 = M2C_FIELD(&one, f64 *, 8);
+                spD0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spD8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp108 = 0;
                 if (this != NULL) {
                     sp10.GetPos();
@@ -348,8 +348,8 @@ block_51:
             M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, M2C_UNK, f64, f32), 0x1C)(gb.unk0, &sp90, 0, temp_f1_646, sp40.unk4);
             return;
         }
-        this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
-        this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
+        this->unkC0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     }
 }
 #endif
@@ -835,9 +835,9 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     MKPrimitive(0xC, 0x10);
     MKSetMatrix(*((Matrix *) &arg_sp230));
     MKBegin((var_r28_1748 + 1) * 2);
-    temp_f22_1783 = up.unk4;
-    temp_f23_1785 = up.unk8;
-    temp_f24_1787 = up.unk0;
+    temp_f22_1783 = MKVector3::up.unk4;
+    temp_f23_1785 = MKVector3::up.unk8;
+    temp_f24_1787 = MKVector3::up.unk0;
     var_r27_1790 = 0;
 loop_61:
     if (var_r27_1790 < (s32) (var_r28_1748 + 1)) {
@@ -1096,9 +1096,9 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
     MKPrimitive(0xC, 0x10);
     MKSetMatrix(*((Matrix *) &arg_sp230));
     MKBegin((var_r28_2340 + 1) * 2);
-    temp_f22_2375 = up.unk4;
-    temp_f23_2377 = up.unk8;
-    temp_f24_2379 = up.unk0;
+    temp_f22_2375 = MKVector3::up.unk4;
+    temp_f23_2377 = MKVector3::up.unk8;
+    temp_f24_2379 = MKVector3::up.unk0;
     var_r27_2382 = 0;
 loop_61:
     if (var_r27_2382 < (s32) (var_r28_2340 + 1)) {
@@ -1471,9 +1471,9 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     MKSetMatrix(*((Matrix *) &arg_sp3E0));
     temp_r26_3240 = (var_r27_3211 + 1) * 2;
     MKBegin(temp_r26_3240);
-    temp_f22_3247 = up.unk4;
-    temp_f23_3249 = up.unk8;
-    temp_f19_3251 = up.unk0;
+    temp_f22_3247 = MKVector3::up.unk4;
+    temp_f23_3249 = MKVector3::up.unk8;
+    temp_f19_3251 = MKVector3::up.unk0;
     var_r25_3254 = 0;
 loop_61:
     if (var_r25_3254 < (s32) (var_r27_3211 + 1)) {
@@ -1671,9 +1671,9 @@ loop_61:
     MKPrimitive(0xC, 0x10);
     MKSetMatrix(*((Matrix *) &arg_sp3E0));
     MKBegin(temp_r26_3240);
-    temp_f22_3707 = up.unk4;
-    temp_f21_3709 = up.unk8;
-    temp_f20_3711 = up.unk0;
+    temp_f22_3707 = MKVector3::up.unk4;
+    temp_f21_3709 = MKVector3::up.unk8;
+    temp_f20_3711 = MKVector3::up.unk0;
     var_r26_3712 = 0;
 loop_117:
     if (var_r26_3712 < (s32) (var_r27_3211 + 1)) {
@@ -2059,10 +2059,10 @@ void ElementalWall::Init() {
     this->unk110 = 200.0f;
     SplineProp::Init();
     this->unkFC = gb.unk30C + 0.0f;
-    this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
-    this->unkD0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkC0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unkD0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif
 

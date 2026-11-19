@@ -416,7 +416,7 @@ void FireAndIceFX::Init(MKModel *arg0, const float &arg1, const float &arg2) {
     this->unk6C = MKMaterial_Create("FX_337");
     this->unk70 = NULL;
     this->unk70 = MKMaterial_Create("ZapEnv");
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10.Scale3x3((Matrix *) &arg_sp10, 2.0f);
     MKMaterial_SetTextureMatrix(this->unk60, (Matrix *) &arg_sp10);
     arg_sp10.SetIdentity();

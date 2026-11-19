@@ -1,4 +1,5 @@
 #include "spyro/source/TitleScreen.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UISystem.h"
@@ -127,7 +128,7 @@ void TitleScreen::OnEnter() {
         var_f1_219 = 0.0f;
     }
     FrontEnd_SetFade(var_f1_219);
-    gameData.GetGameSettings();
+    ((GameData *) (&GameData::gameData))->GetGameSettings();
     KDSound_SetMasterVolume(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
     FrontEnd_PlayBackgroundVideo(1U);
     this->unkC8 = 0.0f;

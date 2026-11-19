@@ -642,7 +642,7 @@ loop_27:
                         M2C_ERROR(/* unknown instruction: ps_muls0 $f4, $f4, $f3 */);
                         sp158 = sp68;
                         temp_r7_1007 = this->unk180 + (((var_r4_897 - 1) * 0x48) + 0x10);
-                        sp70 = up.unk8 * temp_f3_961;
+                        sp70 = MKVector3::up.unk8 * temp_f3_961;
                         sp160 = (f64) sp70;
                         M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r7, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f4, $f5, $f4 */);
@@ -959,10 +959,10 @@ loop_40:
             arg_sp2E8 = (f32) arg_sp210;
             arg_sp2EC = 1.0f;
             temp_r3_1633 = this->unk180;
-            arg_sp58 = -up.unk0;
+            arg_sp58 = -MKVector3::up.unk0;
             temp_r4_1635 = temp_r3_1633 + (var_r25_1368 + 0x20);
-            arg_sp5C = -up.unk4;
-            arg_sp60 = -up.unk8;
+            arg_sp5C = -MKVector3::up.unk4;
+            arg_sp60 = -MKVector3::up.unk8;
             arg_sp50 = -M2C_FIELD(temp_r4_1635, f32 *, 8);
             arg_sp48 = -M2C_FIELD(temp_r4_1635, f32 *, 0);
             arg_sp4C = -M2C_FIELD(temp_r4_1635, f32 *, 4);
@@ -2155,8 +2155,8 @@ void RopeBridgeDescriptor::Deinit() {
     RopeBridgeDescriptor *temp_r4_3909;
     RopeBridgeDescriptor *temp_r4_3915;
 
-    if ((void *) pFirstDesc.__vptr == this) {
-        pFirstDesc.__vptr = this->unk6C;
+    if ((void *) RopeBridgeDescriptor::pFirstDesc.__vptr == this) {
+        RopeBridgeDescriptor::pFirstDesc.__vptr = this->unk6C;
     }
     temp_r4_3909 = this->unk68;
     if (temp_r4_3909 != NULL) {
@@ -2178,12 +2178,12 @@ void RopeBridgeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
     this->unkC |= 0x20000;
-    this->unk6C = (RopeBridgeDescriptor *) pFirstDesc.__vptr;
+    this->unk6C = (RopeBridgeDescriptor *) RopeBridgeDescriptor::pFirstDesc.__vptr;
     this->unk68 = NULL;
-    if ((void *) pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(pFirstDesc.__vptr, RopeBridgeDescriptor **, 0x68) = this;
+    if ((void *) RopeBridgeDescriptor::pFirstDesc.__vptr != NULL) {
+        M2C_FIELD(RopeBridgeDescriptor::pFirstDesc.__vptr, RopeBridgeDescriptor **, 0x68) = this;
     }
-    pFirstDesc.__vptr = this;
+    RopeBridgeDescriptor::pFirstDesc.__vptr = this;
     this->unk64 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
 }
 #endif

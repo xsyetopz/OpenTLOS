@@ -241,7 +241,7 @@ loop_38:
                         sp128.unk30 = M2C_BITWISE(f64, sp128.unk40);
                         sp128.unk38 = (f64) sp128.unk40.unk8;
                     }
-                    M2C_STRUCT_COPY(temp_r30_165, &identity, 0x40);
+                    M2C_STRUCT_COPY(temp_r30_165, &Matrix::identity, 0x40);
                     temp_r30_165->unk30.unk0 = (f32) sp128.unk30;
                     temp_r30_165->unk30.unk4 = unksp15C;
                     temp_r30_165->unk30.unk8 = (f32) sp128.unk38;

@@ -112,8 +112,8 @@ void SpyroLedgeGrabState::PullUpAscendUpdate() {
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroLedgeGrabState::PullUpAscendEnter() {
     this->unk10->SetAnim(0x59U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk10->SetModelVisualOffset(this->unk48, 0U);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
     this->unk10->SetDesiredVelocityVectical(PULL_UP_Y_VELOCITY, 540000.0f);
@@ -169,18 +169,18 @@ void SpyroLedgeGrabState::AttachUpdate() {
     sp50 = (f64) sp20;
     if ((s32) M2C_FIELD(temp_r3_322->unk26C.unk8, s32 *, 0x2D4) > 0) {
         var_r0_338 = 0;
-        if ((this->unk48.unk0 == zero.unk0) && (this->unk48.unk4 == zero.unk4) && (this->unk48.unk8 == zero.unk8)) {
+        if ((this->unk48.unk0 == MKVector3::zero.unk0) && (this->unk48.unk4 == MKVector3::zero.unk4) && (this->unk48.unk8 == MKVector3::zero.unk8)) {
             var_r0_338 = 1;
         }
         if (var_r0_338 != 0) {
-            temp_r3_322->SetDesiredVelocity(zero, 540000.0f);
+            temp_r3_322->SetDesiredVelocity(MKVector3::zero, 540000.0f);
             M2C_FIELD(this, f32 *, 0x48) = sp48;
             M2C_FIELD(this, f32 *, 0x50) = sp50;
             this->unk10->SetModelVisualOffset(this->unk48, 0U);
         }
     } else {
         var_r0_370 = 0;
-        if ((this->unk48.unk0 == zero.unk0) && (this->unk48.unk4 == zero.unk4) && (this->unk48.unk8 == zero.unk8)) {
+        if ((this->unk48.unk0 == MKVector3::zero.unk0) && (this->unk48.unk4 == MKVector3::zero.unk4) && (this->unk48.unk8 == MKVector3::zero.unk8)) {
             var_r0_370 = 1;
         }
         if (var_r0_370 != 0) {
@@ -195,11 +195,11 @@ void SpyroLedgeGrabState::AttachUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroLedgeGrabState::AttachEnter() {
-    this->unk10->SetDesiredVelocity(zero, 540000.0f);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
+    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk10->SetAnim(0x58U, 0.13f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
@@ -305,11 +305,11 @@ void SpyroLedgeGrabState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroLedgeGrabState::Exit() {
     Spyro *temp_r3_679;
 
-    this->unk10->SetModelVisualOffset(zero, 0U);
+    this->unk10->SetModelVisualOffset(MKVector3::zero, 0U);
     temp_r3_679 = this->unk10;
     temp_r3_679->unk428 |= 0x20000;
     this->unk10->PlatformDetach();
@@ -331,8 +331,8 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     void *temp_r29_717;
 
     temp_r29_717 = checked_cast<SpyroLedgeGrabMessage *, MKMessage>(arg0.GetMessage(0x184));
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     temp_r4_723 = this->unk10;
     temp_r4_723->unk428 &= 0xFFF9FEDE;
@@ -359,7 +359,7 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     sp10 = temp_r3_760->unk338 * 0.5f;
     sp20 = (f64) sp10;
     temp_r3_760->SetDesiredVelocity(*((MKVector3 *) &sp18), 540000.0f);
-    this->unk10->CheckForLedge(zero, (MKVector3 *) &this->unk28, NULL, &this->unk38, NULL);
+    this->unk10->CheckForLedge(MKVector3::zero, (MKVector3 *) &this->unk28, NULL, &this->unk38, NULL);
     this->unk10->SetMeleeButtonStateTimeout(1U);
 }
 #endif
@@ -370,17 +370,17 @@ void SpyroLedgeGrabState::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'Init__37KDStateMachine'
 void SpyroLedgeGrabState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(this, f64 *, 0x28);
     M2C_FIELD(this, f64 *, 0x40) = (f64) M2C_FIELD(this, f64 *, 0x30);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk58 = 0;
-    Init__37KDStateMachine<19SpyroLedgeGrabState>FPQ237KDStateMachine<19SpyroLedgeGrabState>5StateP37KDStateMachine<19SpyroLedgeGrabState>(&this->unk14, (KDStateMachine<SpyroLedgeGrabState>::State *) &states, NULL);
+    Init__37KDStateMachine<19SpyroLedgeGrabState>FPQ237KDStateMachine<19SpyroLedgeGrabState>5StateP37KDStateMachine<19SpyroLedgeGrabState>(&this->unk14, (KDStateMachine<SpyroLedgeGrabState>::State *) &SpyroLedgeGrabState::states, NULL);
 }
 #endif
 

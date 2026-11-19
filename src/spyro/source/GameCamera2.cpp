@@ -5,11 +5,13 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CameraData.h"
 #include "spyro/source/GameCameraEmuStateMachine.h"
 #include "spyro/source/GameCameraMessages.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDCameraHeroData.h"
 #include "spyro/source/KDCameraJumpTargetOffset.h"
@@ -112,7 +114,7 @@ u8 GameCamera2::CanLowerCamera(float *arg0) {
     sp10 = (f32) sp50 + (f32) sp30;
     sp40 = (f64) sp10;
     temp_r8_168 = M2C_FIELD(this->unk0, void **, 0xA4);
-    if ((RayCollide(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38), (MKCollisionResult *) &sp58, (MKCollisionMode) M2C_FIELD(temp_r8_168, s32 *, 8), M2C_FIELD(temp_r8_168, s32 *, 0x18), 1U) != 0) && (((sp70 * up.unk8) + ((sp68 * up.unk0) + (sp6C * up.unk4))) > 0.8f)) {
+    if ((RayCollide(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38), (MKCollisionResult *) &sp58, (MKCollisionMode) M2C_FIELD(temp_r8_168, s32 *, 8), M2C_FIELD(temp_r8_168, s32 *, 0x18), 1U) != 0) && (((sp70 * MKVector3::up.unk8) + ((sp68 * MKVector3::up.unk0) + (sp6C * MKVector3::up.unk4))) > 0.8f)) {
         var_f31_115 = unksp4C - sp5C;
     }
     if (arg0 != NULL) {
@@ -425,7 +427,7 @@ loop_9:
     if (var_r30_724 != NULL) {
         temp_r31_793 = *var_r30_724;
         if (temp_r31_793 != NULL) {
-            if ((M2C_FIELD(*gMK, u8 (**)(void **, M2C_UNK *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, M2C_UNK **, 0), sWorkingChunkID.unk0) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
+            if ((M2C_FIELD(*gMK, u8 (**)(void **, M2C_UNK *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, M2C_UNK **, 0), MKResource::sWorkingChunkID.unk0) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
                 M2C_FIELD(temp_r31_793, u8 *, 0xD) = 0U;
                 temp_r3_747 = this->unk8;
                 temp_r4_748 = M2C_FIELD(M2C_FIELD(temp_r31_793, M2C_UNK **, 0), void **, 8);
@@ -601,7 +603,6 @@ void GameCamera2::AdjustPitchWithFloorUpdateFall() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'up'
 u8 GameCamera2::AdjustPitchWithFloorForPos(const MKVector3 &arg0) {
     u8 sp58;
     s32 sp54;
@@ -656,7 +657,7 @@ u8 GameCamera2::AdjustPitchWithFloorForPos(const MKVector3 &arg0) {
     if (sp58 == 0) {
         return 0U;
     }
-    if (((up.unk8 * sp20) + ((up.unk0 * sp18) + (up.unk4 * sp1C))) > 0.7f) {
+    if (((MKVector3::up.unk8 * sp20) + ((MKVector3::up.unk0 * sp18) + (MKVector3::up.unk4 * sp1C))) > 0.7f) {
         if (((u8) this->unk2A0 >> 5U) & 1) {
             if (this->unk20C > 0.0f) {
                 return 1U;
@@ -674,7 +675,6 @@ u8 GameCamera2::AdjustPitchWithFloorForPos(const MKVector3 &arg0) {
 block_12:
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp9C'
 void GameCamera2::AdjustPitchWithFloorUpdate() {
@@ -1178,7 +1178,7 @@ void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void GameCamera2::LockOnTargetableUpdate() {
     u8 sp58;
     f64 sp50;
@@ -1196,7 +1196,7 @@ void GameCamera2::LockOnTargetableUpdate() {
     f32 var_f30_2201;
 
     sp8.Set(this->unk298);
-    if ((sp8.Get() != NULL) && ((sp44 = 0, sp40 = 0x441, sp48 = M2C_FIELD(&zero, f64 *, 0), sp50 = M2C_FIELD(&zero, f64 *, 8), sp58 = 0, M2C_FIELD(M2C_FIELD(M2C_FIELD(sp8.Get()->__vptr, void *(**)(), 8)(), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp40), ((sp58 == 0) == 0)) || (M2C_FIELD(sp8.Get()->__vptr, u8 (**)(MKVector3 *, f64 *), 0x28)(&zero, &sp48) != 0))) {
+    if ((sp8.Get() != NULL) && ((sp44 = 0, sp40 = 0x441, sp48 = M2C_FIELD(&MKVector3::zero, f64 *, 0), sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 8), sp58 = 0, M2C_FIELD(M2C_FIELD(M2C_FIELD(sp8.Get()->__vptr, void *(**)(), 8)(), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp40), ((sp58 == 0) == 0)) || (M2C_FIELD(sp8.Get()->__vptr, u8 (**)(MKVector3 *, f64 *), 0x28)(&MKVector3::zero, &sp48) != 0))) {
         temp_r3_2188 = this->unk50;
         sp20 = temp_r3_2188->unk40;
         sp28 = temp_r3_2188->unk48;
@@ -1602,7 +1602,7 @@ void GameCamera2::PlayerAdjustUpdate() {
     } else {
         var_f29_3129 = 0.0f;
     }
-    gameData.GetGameSettings();
+    ((GameData *) (&GameData::gameData))->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x14) != 0) {
         var_f0_3140 = -1.0f;
     } else {
@@ -1663,7 +1663,7 @@ void GameCamera2::PlayerAdjustUpdate() {
     }
     temp_f29_3235 = 3.1415927f * gUpdateTimeDelta;
     temp_f2_3239 = -temp_f29_3235;
-    var_f1_3240 = var_f28_3146 * temp_f30_3104 * ((CameraData *) (gameData.GetCameraData()))->GetPlayerRotateYawMultiplier();
+    var_f1_3240 = var_f28_3146 * temp_f30_3104 * ((CameraData *) (((GameData *) (&GameData::gameData))->GetCameraData()))->GetPlayerRotateYawMultiplier();
     if (var_f1_3240 < temp_f29_3235) {
 
     } else {
@@ -1702,7 +1702,7 @@ void GameCamera2::PlayerAdjustUpdate() {
             this->unk284 += (gUpdateTimeDelta * (((1.0f - this->unk284) * 25.0f) - (2.0f * temp_f5_3321 * 5.0f))) + temp_f5_3321;
         }
         temp_r5_3340 = this->unk8;
-        temp_r29_3341 = gameData.GetCameraData();
+        temp_r29_3341 = ((GameData *) (&GameData::gameData))->GetCameraData();
         temp_r4_3342 = this->unkA4;
         spC0 = M2C_FIELD(temp_r5_3340, f64 *, 0x30);
         temp_f28_3348 = this->unk284;
@@ -1869,20 +1869,18 @@ void GameCamera2::PostCameraUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
 void GameCamera2::PreCameraUpdate() {
     KDCameraJumpTargetOffset *temp_r4_3756;
 
     KDCamera::PreCameraUpdate();
     this->unk29C = 0;
     temp_r4_3756 = this->unk140;
-    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (gameData.GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
+    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (((GameData *) (&GameData::gameData))->GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
     UpdateSnaps();
     EmuStatesUpdate();
     CenterBehindHeroUpdate();
     AdjustPitchWithFloorUpdate();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'GameCamera2' to
 void GameCamera2::DeltaStagesMessage(MKMessage *arg0) {
@@ -2212,7 +2210,7 @@ void GameCamera2::TrainUpdate() {
         arg_sp20 = (f32) arg_sp60 * var_f3_4349;
         arg_sp68 = (f64) arg_sp18;
         arg_sp70 = (f64) arg_sp20;
-        if ((this->unk220 == zero.unk0) && (this->unk224 == zero.unk4) && (this->unk228 == zero.unk8)) {
+        if ((this->unk220 == MKVector3::zero.unk0) && (this->unk224 == MKVector3::zero.unk4) && (this->unk228 == MKVector3::zero.unk8)) {
             var_r0_4359 = 1;
         }
         if (var_r0_4359 != 0) {
@@ -2240,14 +2238,12 @@ void GameCamera2::TrainExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void GameCamera2::TrainEnter() {
-    M2C_FIELD(this, f64 *, 0x220) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x228) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x220) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x228) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(this, f64 *, 0x220);
     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(this, f64 *, 0x228);
 }
-#endif
 
 u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
     KDCamera::ProcessCameraStateRequest(arg0);
@@ -2502,7 +2498,7 @@ void GameCamera2::Init() {
     this->unk2B0 = 0;
     operator new(0x10U, NULL, 0);
     this->unk26C = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk26C->Init(this, (GameCameraEmuStateDescriptor *) pEmuStateDescriptors.unk0);
+    this->unk26C->Init(this, (GameCameraEmuStateDescriptor *) GameCamera2::pEmuStateDescriptors.unk0);
     temp_r3_5023 = checked_cast<GameCamera2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r30_5024 = temp_r3_5023->unkB4;
     if (temp_r30_5024 == 0) {
@@ -2547,7 +2543,7 @@ void GameCamera2::InitModule() {
     void *temp_r3_5098;
 
     deltaStageInfo.InitModule();
-    pPossibleStateChanges.unk0 = &deltaStageInfo.unk30;
+    GameCamera2::pPossibleStateChanges.unk0 = &deltaStageInfo.unk30;
     if ((s8) init_762 == 0) {
         temp_r3_5098 = &deltaStageInfo + 0xDC;
         M2C_FIELD(temp_r3_5098, f32 *, 0x14) = (f32) deltaStageInfo.unk60.unk10;
@@ -2591,7 +2587,7 @@ void GameCamera2::InitModule() {
         M2C_FIELD(temp_r3_5098, s32 *, 0xF4) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xD8);
         init_762 = 1;
     }
-    pStateDescriptors.unk0 = &deltaStageInfo + 0xDC;
+    KDCamera::pStateDescriptors.unk0 = &deltaStageInfo + 0xDC;
     if ((s8) init_780 == 0) {
         sp8 = M2C_FIELD(&__ptmf_null, s32 *, 0);
         spC = M2C_FIELD(&__ptmf_null, s32 *, 4);
@@ -2679,8 +2675,8 @@ void GameCamera2::InitModule() {
         M2C_FIELD(&deltaStageInfo, s32 *, 0x480) = (s32) deltaStageInfo.unk28C;
         init_780 = 1;
     }
-    pEmuStateDescriptors.unk0 = &deltaStageInfo.unk290;
-    pMessageStorageDescriptors.unk0 = &deltaStageInfo + 0x4C0;
+    GameCamera2::pEmuStateDescriptors.unk0 = &deltaStageInfo.unk290;
+    KDCamera::pMessageStorageDescriptors.unk0 = &deltaStageInfo + 0x4C0;
 }
 #endif
 

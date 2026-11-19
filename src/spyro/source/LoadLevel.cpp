@@ -3,6 +3,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/Level.h"
@@ -13,6 +14,7 @@
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
+#include "spyro/source/checkpoint.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
@@ -65,7 +67,7 @@ void LoadLevel_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void LoadLevel_UpdateLoading() {
     f64 sp10;
     f64 sp8;
@@ -79,9 +81,9 @@ void LoadLevel_UpdateLoading() {
             hPackage = MKPackage_QLoad("GlobalInit", 0);
         }
         if (MKPackage_QIsLoaded(hPackage, NULL, NULL) != 0) {
-            gameData.unk168 |= (u8) pLoadChunkInfo->unk28;
-            gameData.unk169 |= (u8) pLoadChunkInfo->unk2C;
-            gameData.unk70.SetAttacksAvailable(pLoadChunkInfo->unk30);
+            GameData::gameData.unk168 |= (u8) pLoadChunkInfo->unk28;
+            GameData::gameData.unk169 |= (u8) pLoadChunkInfo->unk2C;
+            ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->SetAttacksAvailable(pLoadChunkInfo->unk30);
             gb.ResetInGameData();
             gb.unk32C->Init(pLoadChunkInfo);
             gb.unk32C->LoadGlobalResources();
@@ -113,7 +115,7 @@ void LoadLevel_UpdateLoading() {
         loadState = 3;
         return;
     case 3:
-        if (((u32) gb.unk32C->unk1C == 0) && (((u8) bCheckedConnectors != 0) || ((void *) pCurrentCheckPoint.unk0 == NULL) || (bCheckedConnectors = 1, sp8 = M2C_FIELD(pCurrentCheckPoint.unk0, f64 *, 0xF0), sp10 = M2C_FIELD(pCurrentCheckPoint.unk0, f64 *, 0xF8), ((Connector_Update(*((MKVector3 *) &sp8)) == 0) == 0)))) {
+        if (((u32) gb.unk32C->unk1C == 0) && (((u8) bCheckedConnectors != 0) || ((void *) CheckPoint::pCurrentCheckPoint.unk0 == NULL) || (bCheckedConnectors = 1, sp8 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF0), sp10 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF8), ((Connector_Update(*((MKVector3 *) &sp8)) == 0) == 0)))) {
             gb.unk32C->FinaliseResources();
             loadState = 4;
         }
@@ -305,7 +307,7 @@ void LoadLevel_FreeResources() {
     residentLSStrings.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'list'
+#if 0 // DRAFT: expression syntax error
 void LoadLevel_LoadResources() {
     s32 spC;
     s32 sp8;
@@ -317,28 +319,28 @@ void LoadLevel_LoadResources() {
     void **temp_r3_675;
     void *temp_r31_644;
 
-    var_r4_617 = &list;
+    var_r4_617 = &UIObjectDescriptor::list;
 loop_3:
     temp_r3_627 = var_r4_617->unk0;
     if (temp_r3_627 == NULL) {
-        var_r4_617->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_627 != &descriptor) {
+        var_r4_617->unk0 = (MCLoadCheckScreen *) &LoadingScreen::descriptor;
+        LoadingScreen::descriptor.unk10 = NULL;
+    } else if (temp_r3_627 != &LoadingScreen::descriptor) {
         var_r4_617 = (UIObjectDescriptor *) &temp_r3_627->unk10;
         goto loop_3;
     }
     residentLSStrings.Init(0xC0);
     temp_r3_640 = UIStringTable_SetCurrent(&residentLSStrings);
-    temp_r31_644 = descriptor.unk8;
+    temp_r31_644 = UISystem::descriptor.unk8;
     temp_r3_645 = temp_r3_640->Current();
     if (temp_r3_645 != NULL) {
         var_r31_653 = ((MKHeap *) (temp_r3_645->Current()))->Alloc((s32) temp_r31_644, NULL, 0);
     } else {
         var_r31_653 = malloc(temp_r31_644);
     }
-    ((M2C_UNK (*)(UIObject *, UISystem *)) descriptor.unkC)(var_r31_653, &descriptor);
-    var_r31_653->unk8 = &descriptor;
-    var_r31_653->Init(&descriptor);
+    ((M2C_UNK (*)(UIObject *, UISystem *)) UISystem::descriptor.unkC)(var_r31_653, &UISystem::descriptor);
+    var_r31_653->unk8 = &UISystem::descriptor;
+    var_r31_653->Init(&UISystem::descriptor);
     temp_r3_675 = ui_cast<UISystem *, UIObject *>(var_r31_653);
     pResidentLSSystem = temp_r3_675;
     if (temp_r3_675->Load("LoadLevel.ui", NULL) != 0) {

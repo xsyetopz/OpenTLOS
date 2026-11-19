@@ -17,7 +17,7 @@ s32 KDWaterVolume::IsEnabled() {
 
 void KDWaterVolume::LoadDone() {
     MKProp::LoadDone();
-    this->unk50.Init(*((Matrix *) &loadInfo));
+    this->unk50.Init(*((Matrix *) &MKProp::loadInfo));
 }
 
 void KDWaterVolume::Deinit() {
@@ -25,7 +25,7 @@ void KDWaterVolume::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 f32 KDWaterVolume::GetWaterSurface(const MKVector3 &arg0) {
     f32 sp8;
     f32 var_f0_86;
@@ -34,7 +34,7 @@ f32 KDWaterVolume::GetWaterSurface(const MKVector3 &arg0) {
     void *var_r31_65;
 
     var_f31_63 = -1e11f;
-    var_r31_65 = pFirstDesc.__vptr;
+    var_r31_65 = KDWaterVolumeDescriptor::pFirstDesc.__vptr;
 loop_10:
     if (var_r31_65 != NULL) {
         var_r30_70 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r31_65, MKProp **, 0x28));
@@ -144,7 +144,7 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 s32 KDWaterVolume::IsWithin(const MKVector3 &arg0, float *arg1, int *arg2) {
     f32 sp8;
     f32 var_f0_262;
@@ -158,7 +158,7 @@ s32 KDWaterVolume::IsWithin(const MKVector3 &arg0, float *arg1, int *arg2) {
     if (arg1 != NULL) {
         *arg1 = 0.0f;
     }
-    var_r30_241 = pFirstDesc.__vptr;
+    var_r30_241 = KDWaterVolumeDescriptor::pFirstDesc.__vptr;
 loop_15:
     if (var_r30_241 != NULL) {
         var_r29_246 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r30_241, MKProp **, 0x28));
@@ -226,9 +226,9 @@ void KDWaterVolumeDescriptor::Deinit() {
     void *var_r4_385;
 
     MKPropDescriptor::Deinit();
-    var_r3_378 = pFirstDesc.__vptr;
+    var_r3_378 = KDWaterVolumeDescriptor::pFirstDesc.__vptr;
     if (var_r3_378 == this) {
-        pFirstDesc.__vptr = M2C_FIELD(var_r3_378, void **, 0x68);
+        KDWaterVolumeDescriptor::pFirstDesc.__vptr = M2C_FIELD(var_r3_378, void **, 0x68);
         return;
     }
     var_r4_385 = M2C_FIELD(var_r3_378, void **, 0x68);
@@ -250,7 +250,7 @@ loop_6:
 void KDWaterVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
-    this->unk68 = (KDWaterVolumeDescriptor *) pFirstDesc.__vptr;
-    pFirstDesc.__vptr = this;
+    this->unk68 = (KDWaterVolumeDescriptor *) KDWaterVolumeDescriptor::pFirstDesc.__vptr;
+    KDWaterVolumeDescriptor::pFirstDesc.__vptr = this;
 }
 #endif

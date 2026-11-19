@@ -1,6 +1,7 @@
 #include "spyro/source/FloatingPlatform.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
@@ -69,7 +70,7 @@ void FloatingPlatform::UpdateMove() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
         sp40 = sp30;
-        sp38 = up.unk8 * this->unk180;
+        sp38 = MKVector3::up.unk8 * this->unk180;
         sp48 = (f64) sp38;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
         sp70 = sp20;
@@ -181,8 +182,8 @@ void FloatingPlatform::LoadDone() {
     Platform::LoadDone();
     this->unk188 *= 100.0f;
     this->unk18C *= 100.0f;
-    M2C_FIELD(this, f64 *, 0x1B8) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x40);
-    M2C_FIELD(this, f64 *, 0x1C0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x48);
+    M2C_FIELD(this, f64 *, 0x1B8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    M2C_FIELD(this, f64 *, 0x1C0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
 }
 
 #if 0 // DRAFT: function call 'stricmp(const char[10])' does not match

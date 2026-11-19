@@ -383,7 +383,7 @@ void WaterDripPS::Draw() {
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
                 sp288 = (f32) sp288 + temp_f1_544;
-                MKSetMatrix(identity);
+                MKSetMatrix(Matrix::identity);
                 MKBegin(4);
                 MKSetColorV(*((MKVector4 *) &sp240));
                 MKSetTexCoord1F(0.0f, 0.0f);

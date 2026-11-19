@@ -1,6 +1,7 @@
 #include "spyro/source/TargetManager.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Character.h"
 #include "common/Source/StdMath.h"
@@ -264,7 +265,7 @@ loop_20:
     if ((var_r30_418 < arg1) && (var_r29_425 != NULL)) {
         temp_r31_639 = *var_r29_425;
         if (temp_r31_639 != NULL) {
-            if ((arg2 & M2C_FIELD(*(*temp_r31_639)->unk8.unk0(temp_r31_639), s32 *, 0xC)) && (M2C_FIELD(*gMK, u8 (**)(void **, void **, s32), 0x9C)(gMK, (*temp_r31_639)->unk8.unk0(temp_r31_639), sWorkingChunkID.unk0) != 0) && ((((u32 (*)(TargetManager **)) (*temp_r31_639)->unk8.unk4)(temp_r31_639) == 0U) || (((Character *) (((Character *(*)(TargetManager **)) (*temp_r31_639)->unk8.unk4)(temp_r31_639)))->IsActive() != 0))) {
+            if ((arg2 & M2C_FIELD(*(*temp_r31_639)->unk8.unk0(temp_r31_639), s32 *, 0xC)) && (M2C_FIELD(*gMK, u8 (**)(void **, void **, s32), 0x9C)(gMK, (*temp_r31_639)->unk8.unk0(temp_r31_639), MKResource::sWorkingChunkID.unk0) != 0) && ((((u32 (*)(TargetManager **)) (*temp_r31_639)->unk8.unk4)(temp_r31_639) == 0U) || (((Character *) (((Character *(*)(TargetManager **)) (*temp_r31_639)->unk8.unk4)(temp_r31_639)))->IsActive() != 0))) {
                 var_r21_468 = 1;
                 if (arg3 != NULL) {
                     temp_r3_475 = M2C_FIELD((*temp_r31_639)->unk8.unk0(temp_r31_639), void **, 8);
@@ -438,7 +439,7 @@ void TargetManager::Deinit() {
         }
     }
     this->unk0 = NULL;
-    pTargetManager.__vptr = NULL;
+    Targetable::pTargetManager.__vptr = NULL;
     this->unk4 = 0;
     this->unk8.Set(NULL);
 }
@@ -470,7 +471,7 @@ void TargetManager::Init() {
     temp_r5_890 = this->unk0;
     this->unk0 = temp_r5_890 + 4;
     M2C_FIELD(temp_r5_890, s32 *, 4) = 0;
-    pTargetManager.__vptr = this;
+    Targetable::pTargetManager.__vptr = this;
     this->unk4 = 0;
     this->unk8.Set(NULL);
 }
@@ -478,14 +479,14 @@ void TargetManager::Init() {
 
 #if 0 // DRAFT: expression syntax error
 void Targetable::UnregisterTargetable() {
-    pTargetManager.__vptr->Remove(this);
+    ((TargetManager *) ((TargetManager *) Targetable::pTargetManager.__vptr))->Remove(this);
     M2C_FIELD(this, s32 *, 4) = -1;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void Targetable::RegisterTargetable() {
-    pTargetManager.__vptr->Add(this);
+    ((TargetManager *) ((TargetManager *) Targetable::pTargetManager.__vptr))->Add(this);
 }
 #endif
 

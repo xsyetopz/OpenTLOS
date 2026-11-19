@@ -300,7 +300,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         temp_f10_468 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
         sp120 = sp60;
         sp128 = (f64) sp68;
-        M2C_FIELD(this, f32 *, 4) = (f32) (M2C_FIELD(this, f32 *, 4) + (0.05f + ((((f32) M2C_FIELD(this, f64 *, 8) * temp_f10_468) + (((f32) M2C_FIELD(this, f64 *, 0) * temp_f9_465) + (M2C_FIELD(this, f32 *, 4) * temp_f5_462))) / ((up.unk8 * temp_f10_468) + ((up.unk0 * temp_f9_465) + (up.unk4 * temp_f5_462))))));
+        M2C_FIELD(this, f32 *, 4) = (f32) (M2C_FIELD(this, f32 *, 4) + (0.05f + ((((f32) M2C_FIELD(this, f64 *, 8) * temp_f10_468) + (((f32) M2C_FIELD(this, f64 *, 0) * temp_f9_465) + (M2C_FIELD(this, f32 *, 4) * temp_f5_462))) / ((MKVector3::up.unk8 * temp_f10_468) + ((MKVector3::up.unk0 * temp_f9_465) + (MKVector3::up.unk4 * temp_f5_462))))));
         /* fallthrough */
     case 3:                                         /* switch 1 */
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
@@ -835,7 +835,6 @@ void KDCollisionObject::ResolveCollisions(MKVector3 *arg0, MKVector3 *arg1, int 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
 MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *arg1) {
     KDColObjDescriptor *temp_r7_1303;
     f32 *var_r10_1313;
@@ -847,7 +846,7 @@ MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *ar
     temp_r7_1303 = this->unk250;
     var_r9_1307 = &this->unkC0;
     var_r10_1313 = &temp_r7_1303->unk28;
-    temp_f1_1317 = (up.unk8 * arg0->unk18) + ((up.unk0 * arg0->unk10) + (up.unk4 * arg0->unk14));
+    temp_f1_1317 = (MKVector3::up.unk8 * arg0->unk18) + ((MKVector3::up.unk0 * arg0->unk10) + (MKVector3::up.unk4 * arg0->unk14));
     if (temp_f1_1317 > temp_r7_1303->unk1C) {
         var_r9_1307 = (s32 *) this;
         var_r10_1313 = &temp_r7_1303->unk1C;
@@ -878,7 +877,6 @@ MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *ar
     }
     return (MKVector3 *) var_r9_1307;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCollisionObject::CalcPushOutPos(const MKVector3 &arg1, MKVector3 *arg2, KDColObjDescriptor *arg3, float farg0, KDCollisionObject::UpdateResult *arg4) {

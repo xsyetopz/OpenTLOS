@@ -14,6 +14,7 @@
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/FuryFXEarth.h"
 #include "spyro/source/FuryFXEarth2.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/LightManager.h"
@@ -167,9 +168,9 @@ u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, c
         }
         var_f30_113 = 2000.0f;
         var_f29_115 = 1.0f;
-        temp_r3_118 = gameData.unk70.unkE8 << 5;
-        temp_r0_120 = *(&gameData.unk70 + (temp_r3_118 + 0x7C));
-        temp_r4_122 = &gameData.unk70 + (temp_r3_118 + 0x64);
+        temp_r3_118 = GameData::gameData.unk70.unkE8 << 5;
+        temp_r0_120 = *(&GameData::gameData.unk70 + (temp_r3_118 + 0x7C));
+        temp_r4_122 = &GameData::gameData.unk70 + (temp_r3_118 + 0x64);
         if (temp_r0_120 == 3) {
             var_r3_126 = 0;
             if (((s32) M2C_FIELD(temp_r4_122, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_122, s32 *, 4) == 3)) {
@@ -518,7 +519,7 @@ block_27:
         KDSound_Play3d(var_r31_766, &arg0, 0U, -1, 0.0f, 0U);
         this->unk128 = 0.25f;
     }
-    M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp110 = 0.0f;
     arg_sp108 = 0.0f;
     arg_sp10C = 1.0f;
@@ -597,7 +598,7 @@ block_27:
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &arg_sp1B8), arg_sp10, *((MKVector4 *) &arg_sp168), -800.0f);
         var_r24_987 += 1;
     } while (var_r24_987 < 0x14);
-    M2C_STRUCT_COPY((s32) &arg_sp25C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp25C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp50 = 0.0f;
     arg_sp48 = 0.0f;
     arg_sp4C = 1.0f;
@@ -670,7 +671,7 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, int arg4, bool arg5) {
     s32 temp_r30_1383;
     s32 temp_r31_1386;
@@ -689,10 +690,10 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     case 0:
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unkBC == 0.0f) {
-            temp_r30_1383 = gameData.unk70.unkE8;
+            temp_r30_1383 = GameData::gameData.unk70.unkE8;
             temp_r4_1384 = temp_r30_1383 << 5;
-            temp_r31_1386 = *(&gameData.unk70 + (temp_r4_1384 + 0x7C));
-            temp_r5_1388 = &gameData.unk70 + (temp_r4_1384 + 0x64);
+            temp_r31_1386 = *(&GameData::gameData.unk70 + (temp_r4_1384 + 0x7C));
+            temp_r5_1388 = &GameData::gameData.unk70 + (temp_r4_1384 + 0x64);
             if (temp_r31_1386 == 3) {
                 var_r4_1392 = 0;
                 if (((s32) M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
@@ -711,7 +712,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
             } else {
                 var_r24_1421 = *(temp_r5_1388 + (temp_r31_1386 * 4));
             }
-            this->unkD0.Init(arg0, gameData.unk70.GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
+            this->unkD0.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
             return ShootShotgun(arg1, arg2, arg3);
         }
         return 0;
@@ -726,7 +727,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         return 0;
     case 3:
         var_r3_1467 = 0;
-        temp_r4_1473 = &gameData.unk70 + ((gameData.unk70.unkE8 << 5) + 0x64);
+        temp_r4_1473 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
         if (((s32) M2C_FIELD(temp_r4_1473, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1473, s32 *, 4) == 3)) {
             var_r3_1467 = 1;
         }
@@ -1439,7 +1440,7 @@ void EarthBreathFX::Init() {
     this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(gMK->CreateProp("FuryFXEarth"));
     this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(gMK->CreateProp("FuryFXEarth2"));
     this->unk128 = 0.0f;
-    M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_FIELD(this, MKModel **, 0x140) = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
     var_r29_2710 = 0;
     this->unk150.unk3C = 0.0f;

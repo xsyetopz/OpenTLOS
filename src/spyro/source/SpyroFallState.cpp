@@ -67,8 +67,8 @@ void SpyroFallState::GetFallVel() {
             var_r3_95 = NULL;
         }
         if (M2C_FIELD(var_r3_95, s32 *, 0x44) & 3) {
-            M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            this->unk8 = M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             return;
         }
         goto block_6;
@@ -173,19 +173,16 @@ u8 SpyroFallState::HoverTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void SpyroFallState::HoverUpdate() {
     this->unk74.Update(this->unk10);
-    this->unk10->SetDesiredVelocityHoriz(zero, 3800.0f);
+    this->unk10->SetDesiredVelocityHoriz(MKVector3::zero, 3800.0f);
     HoverTransition();
 }
-#endif
 
 void SpyroFallState::HoverExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void SpyroFallState::HoverEnter() {
     Spyro *temp_r3_357;
     f32 temp_f0_361;
@@ -193,7 +190,7 @@ void SpyroFallState::HoverEnter() {
     f32 var_f2_360;
 
     this->unk74.Start(this->unk10, 0.2f);
-    this->unk10->SetDesiredVelocityHoriz(zero, 3800.0f);
+    this->unk10->SetDesiredVelocityHoriz(MKVector3::zero, 3800.0f);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 3240.0002f;
     temp_r3_357 = this->unk10;
     temp_r3_357->unk388 = 500.0f;
@@ -219,7 +216,6 @@ void SpyroFallState::HoverEnter() {
     this->unk51 = 1;
     this->unk4C = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 u8 SpyroFallState::GlideTransition() {
@@ -900,16 +896,16 @@ u8 SpyroFallState::Transition() {
             sp30 = 7;
             sp58 = 0;
             sp5C = 0;
-            sp38 = M2C_FIELD(&zero, f64 *, 0);
-            sp40 = M2C_FIELD(&zero, f64 *, 8);
+            sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            sp40 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             sp70 = 0;
             sp7C = 2;
             sp78 = 5.0f;
             sp71 = 0;
             sp72 = 1;
             sp74 = -1;
-            sp48 = M2C_FIELD(&one, f64 *, 0);
-            sp50 = M2C_FIELD(&one, f64 *, 8);
+            sp48 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp50 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp80 = 0;
             sp60 = 0.0f;
             sp64 = 0.0f;
@@ -1402,7 +1398,7 @@ void SpyroFallState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFallState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroFallState>FPQ232KDStateMachine<14SpyroFallState>5StateP32KDStateMachine<14SpyroFallState>(&this->unk14, (KDStateMachine<SpyroFallState>::State *) &states, NULL);
+    Init__32KDStateMachine<14SpyroFallState>FPQ232KDStateMachine<14SpyroFallState>5StateP32KDStateMachine<14SpyroFallState>(&this->unk14, (KDStateMachine<SpyroFallState>::State *) &SpyroFallState::states, NULL);
     this->unk44 = 0x3D;
     this->unk3C = 0x187;
     this->unk48 = 0.0f;

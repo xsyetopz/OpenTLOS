@@ -18,12 +18,10 @@ f32 Trap::GetCollisionRadius() {
     return 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void Trap::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif
 
 s32 Trap::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp10;

@@ -1,5 +1,6 @@
 #include "spyro/source/HurtProperty.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/KDMatrixProperty.h"
 #include "spyro/source/KDProperty.h"
 #include "spyro/source/TargetManager.h"
@@ -29,7 +30,7 @@ void HurtProperty::DoHurt() {
     arg_sp68 = (f64) arg_sp18;
     arg_spC0 = 7;
     arg_spE8 = 1;
-    arg_spEC = pInstanceMem.__vptr;
+    arg_spEC = KDProperty::pInstanceMem.__vptr;
     arg_spC8 = (f64) arg_sp10;
     arg_spD0 = (f64) arg_sp18;
     arg_sp100 = 0;
@@ -38,10 +39,10 @@ void HurtProperty::DoHurt() {
     arg_sp100 = 0;
     (s16) arg_sp100 = 1;
     arg_sp104 = -1;
-    arg_spD8 = M2C_FIELD(&one, f64 *, 0);
-    arg_spE0 = M2C_FIELD(&one, f64 *, 8);
+    arg_spD8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    arg_spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp110 = 0;
-    if ((void *) pInstanceMem.__vptr != NULL) {
+    if ((void *) KDProperty::pInstanceMem.__vptr != NULL) {
         arg_sp30.GetPos();
         arg_spF0 = arg_sp30;
         arg_spF8 = arg_sp38;
@@ -82,11 +83,11 @@ loop_8:
 void HurtProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
-        *(pInstanceMem.__vptr + this->unk8) = 1;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
         DoHurt();
         return;
     case 2:
-        *(pInstanceMem.__vptr + this->unk8) = 0;
+        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
         return;
     case 3:
         DoHurt();
@@ -112,7 +113,7 @@ s32 HurtProperty::ResolveCommand(const char *arg0) const {
 
 #if 0 // DRAFT: expression syntax error
 void HurtProperty::Update() {
-    if ((u8) *(pInstanceMem.__vptr + this->unk8) != 0) {
+    if ((u8) *(KDProperty::pInstanceMem.__vptr + this->unk8) != 0) {
         DoHurt();
     }
 }
@@ -124,7 +125,7 @@ void HurtProperty::ResolveInstance() {
 
 #if 0 // DRAFT: expression syntax error
 void HurtProperty::LoadDoneInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = this->unk20;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = this->unk20;
 }
 #endif
 
@@ -144,7 +145,7 @@ s32 HurtProperty::LoadLineInstance(MKIniLine *arg0) {
 void HurtProperty::InitInstance() {
     MKIniLine *var_r31_339;
 
-    *(pInstanceMem.__vptr + this->unk8) = 0;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
     var_r31_339 = this->unk18;
 loop_2:
     if (var_r31_339 != NULL) {

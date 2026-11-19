@@ -369,7 +369,7 @@ void BurningWick::Draw() {
     arg_sp3C8 = (f64) arg_sp68;
     MKMaterial_SetMaterial(M2C_FIELD(this->unk0, MKMaterial **, 0x38));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -420,7 +420,7 @@ void BurningWick::Draw() {
     arg_sp3F0 = (f32) arg_sp3F0 * var_f3_828;
     arg_sp3F4 *= var_f3_828;
     arg_sp3F8 = (f32) arg_sp3F8 * var_f3_828;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
     MKBegin(6);
     MKSetColorV(*((MKVector4 *) &arg_sp3D0));
@@ -500,7 +500,7 @@ void BurningWick::Draw() {
     arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1016;
     arg_sp3F4 *= var_f3_1016;
     arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1016;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
     MKSetColorV(*((MKVector4 *) &arg_sp3D0));
     MKSetTexCoord1F(0.0f, 0.5f);
@@ -606,7 +606,7 @@ void BurningWick::Draw() {
     arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1262;
     arg_sp3F4 *= var_f3_1262;
     arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1262;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
     MKSetColorV(*((MKVector4 *) &arg_sp3D0));
     MKSetTexCoord1F(0.0f, 0.0f);
@@ -682,7 +682,7 @@ void BurningWick::Draw() {
     arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1444;
     arg_sp3F4 *= var_f3_1444;
     arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1444;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
     MKSetColorV(*((MKVector4 *) &arg_sp3D0));
     MKSetTexCoord1F(0.0f, 0.5f);

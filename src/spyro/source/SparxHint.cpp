@@ -244,7 +244,7 @@ void SparxHint::Update() {
 void SparxHint::LoadDone() {
     MKProp::LoadDone();
     this->unk8 = &this->unk50;
-    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 #endif
 

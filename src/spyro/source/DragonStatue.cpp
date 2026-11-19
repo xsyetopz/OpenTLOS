@@ -571,7 +571,7 @@ void DragonStatue::Update() {
         }
         this->unkF4 += this->unkEC * gUpdateTimeDelta;
         M2C_STRUCT_COPY((s32) &arg_sp32C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp330.SetRotateAroundAxis(up, this->unkF4);
+        arg_sp330.SetRotateAroundAxis(MKVector3::up, this->unkF4);
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp330));
         temp_r4_1044 = this->unk8;
         temp_r3_1045 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
@@ -779,7 +779,7 @@ void DragonStatue::Update() {
         }
         this->unkF4 += this->unkEC * gUpdateTimeDelta;
         M2C_STRUCT_COPY((s32) &arg_sp2EC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp2F0.SetRotateAroundAxis(up, this->unkF4);
+        arg_sp2F0.SetRotateAroundAxis(MKVector3::up, this->unkF4);
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp2F0));
         temp_r4_1518 = this->unk8;
         temp_r3_1519 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
@@ -1014,7 +1014,7 @@ void DragonStatue::Update() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
         temp_r3_2010 = this->unk8;
-        arg_sp80 = up.unk8 * var_f31_1957;
+        arg_sp80 = MKVector3::up.unk8 * var_f31_1957;
         arg_sp138 = arg_sp78;
         arg_sp148 = M2C_FIELD(temp_r3_2010, f64 *, 0x30);
         arg_sp140 = (f64) arg_sp80;
@@ -1060,7 +1060,7 @@ void DragonStatue::Update() {
         }
         if (temp_r31_1928->IsVisible(*((MKVector3 *) &arg_sp158), var_f1_2044) == 0) {
             M2C_STRUCT_COPY((s32) &arg_sp2AC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-            arg_sp2B0.SetRotateAroundAxis(up, 0.0f);
+            arg_sp2B0.SetRotateAroundAxis(MKVector3::up, 0.0f);
             MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp2B0));
         }
     }
@@ -1121,15 +1121,15 @@ void DragonStatue::LoadDone() {
     M2C_FIELD(this, f64 *, 0xE0) = temp_f0_2295;
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void DragonStatue::Init() {
     KDProp::Init();
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0xA8) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xB0) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xA8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xB0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkE8 = 0.0f;
     this->unkEC = 0.0f;
     this->unkF0 = 0.0f;

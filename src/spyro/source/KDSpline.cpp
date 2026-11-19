@@ -1221,9 +1221,9 @@ s32 KDUniformSpline::AddNode(const MKVector3 &arg0) {
     temp_r6_1971 = this->unk4;
     if (temp_r6_1971 == 0) {
         temp_r5_1979 = this->unkC + (temp_r6_1971 << 5);
-        M2C_FIELD(temp_r5_1979, f32 *, 0x10) = (f32) zero.unk0;
-        M2C_FIELD(temp_r5_1979, f32 *, 0x14) = (f32) zero.unk4;
-        M2C_FIELD(temp_r5_1979, f32 *, 0x18) = (f32) zero.unk8;
+        M2C_FIELD(temp_r5_1979, f32 *, 0x10) = (f32) MKVector3::zero.unk0;
+        M2C_FIELD(temp_r5_1979, f32 *, 0x14) = (f32) MKVector3::zero.unk4;
+        M2C_FIELD(temp_r5_1979, f32 *, 0x18) = (f32) MKVector3::zero.unk8;
         *(this->unkC + ((this->unk4 << 5) + 0x1C)) = 1.0f;
         this->unk8 = 0.0f;
         this->unk4 += 1;
@@ -1634,8 +1634,8 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
     temp_r5_2702 = this->unk4;
     if (temp_r5_2702 == 0) {
         temp_r4_2710 = this->unkC + ((temp_r5_2702 << 5) + 0x10);
-        M2C_FIELD(temp_r4_2710, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-        M2C_FIELD(temp_r4_2710, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+        M2C_FIELD(temp_r4_2710, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        M2C_FIELD(temp_r4_2710, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
         *(this->unkC + ((this->unk4 << 5) + 0x1C)) = 1.0f;
         this->unk8 = 0.0f;
         this->unk4 += 1;

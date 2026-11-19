@@ -52,7 +52,7 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
             M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 + 5.0f);
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
     arg_sp14 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
     arg_sp18 = 0.0f;

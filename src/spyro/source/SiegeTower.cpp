@@ -141,8 +141,8 @@ void SiegeTower::Shoot(Targetable *arg0) {
             sp89 = 0;
             sp8A = 0;
             sp8C = -1;
-            sp60 = M2C_FIELD(&one, f64 *, 0);
-            sp68 = M2C_FIELD(&one, f64 *, 8);
+            sp60 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp68 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp98 = 0;
             if (this != NULL) {
                 sp18.GetPos();
@@ -467,7 +467,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
 #if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void SiegeTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_855;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp10 = -arg0->unk0;
     arg_sp14 = -arg0->unk4;
     arg_sp18 = -arg0->unk8;

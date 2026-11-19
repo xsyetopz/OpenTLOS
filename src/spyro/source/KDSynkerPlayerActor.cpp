@@ -430,7 +430,7 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
                 arg_sp188 *= var_f3_777;
                 arg_sp18C *= var_f3_777;
                 arg_sp190 *= var_f3_777;
-                M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp1E0.SetRotateAroundAxis(*((MKVector3 *) &arg_sp188), arg11);
                 arg_sp88 = ((f32) arg_sp1A0 * arg_sp200) + (((f32) arg_sp198 * arg_sp1E0) + (arg_sp19C * arg_sp1F0));
                 arg_sp8C = ((f32) arg_sp1A0 * arg_sp204) + (((f32) arg_sp198 * arg_sp1E4) + (arg_sp19C * arg_sp1F4));
@@ -947,9 +947,9 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         if ((this->unk40 & 4) || ((u32) this->unk30 != 0)) {
             if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
                 if ((((f32) arg_spA8 * (f32) arg_spA8) + (((f32) arg_spA0 * (f32) arg_spA0) + (arg_spA4 * arg_spA4))) > 0.000001f) {
-                    M2C_STRUCT_COPY((s32) &arg_sp1EC + 4, (s32) (&identity - 4) + 4, 0x40);
+                    M2C_STRUCT_COPY((s32) &arg_sp1EC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     arg_sp1F0.SetRotationPYR(*((MKVector3 *) &arg_spE0));
-                    M2C_STRUCT_COPY((s32) &arg_sp1AC + 4, (s32) (&identity - 4) + 4, 0x40);
+                    M2C_STRUCT_COPY((s32) &arg_sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     arg_sp1B0.SetLookAt(*((MKVector3 *) &arg_spB0), *((MKVector3 *) &arg_spF0));
                     arg_sp1F0.Multiply3x3((Matrix *) &arg_sp1F0, (Matrix *) &arg_sp1B0);
                     arg_sp50.GetRotationPYR();
@@ -982,7 +982,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
             if ((((f32) arg_spA8 * (f32) arg_spA8) + (((f32) arg_spA0 * (f32) arg_spA0) + (arg_spA4 * arg_spA4))) > 0.000001f) {
                 arg_sp140.SetRotationPYR(*((MKVector3 *) &arg_spE0));
-                M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp100.SetLookAt(*((MKVector3 *) &arg_spB0), *((MKVector3 *) &arg_spF0));
                 arg_sp140.Multiply3x3((Matrix *) &arg_sp140, (Matrix *) &arg_sp100);
             }
@@ -1400,19 +1400,19 @@ s32 KDSP_Actor::GetMatchingNodeIndex(const char *arg0) {
 
 #if 0 // DRAFT: expression syntax error
 void KDSP_Actor::GetEnvelope(int arg0) {
-    pEnvelopeData.unk0->GetEnvelope((s32) this);
+    ((KDSP_EnvelopeList *) (KDSP_Actor::pEnvelopeData.unk0))->GetEnvelope((s32) this);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void KDSP_Actor::SetInput(KDInput *arg0) {
-    pInput.unk0 = (KDSP_EnvelopeList *) this;
+    KDSP_Actor::pInput.unk0 = (KDSP_EnvelopeList *) this;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void KDSP_Actor::SetEnvelopeList(KDSP_EnvelopeList *arg0) {
-    pEnvelopeData.unk0 = (KDSP_EnvelopeList *) this;
+    KDSP_Actor::pEnvelopeData.unk0 = (KDSP_EnvelopeList *) this;
 }
 #endif
 

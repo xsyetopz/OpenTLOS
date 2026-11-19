@@ -4,6 +4,7 @@
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
@@ -16,7 +17,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK iMeleeAttackTypeMap;
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
 static SpyroTailStrikeState states__20SpyroTailStrikeState; /* extra bytes: 5; unable to generate initializer: confusing struct layout */
 
@@ -47,8 +48,8 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
 
     if (arg0 != NULL) {
         sp1C = 0;
-        temp_r28_44 = *(&iMeleeAttackTypeMap + (gameData.unk70.unkE8 * 4)) | 0x400;
-        temp_f1_45 = gameData.unk70.TailStrikeDamage();
+        temp_r28_44 = *(&iMeleeAttackTypeMap + (GameData::gameData.unk70.unkE8 * 4)) | 0x400;
+        temp_f1_45 = ((GameStats *) (&GameData::gameData.unk70))->TailStrikeDamage();
         temp_r10_46 = this->unk10;
         temp_r3_50 = temp_r10_46->unk8;
         temp_f3_54 = M2C_FIELD(temp_r3_50, f64 *, 0x30);
@@ -348,7 +349,7 @@ void SpyroTailStrikeState::StartEnter() {
     this->unk10->GetYaw();
     this->unk10->unk3A0.YawTowards(M2C_ERROR(/* Read from unset register $f1 */), 900.0f);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
-    this->unk10->SetDesiredVelocity(zero, 540000.0f);
+    this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_638 = this->unk10;
     temp_r3_638->unk428 &= 0xFFFDFFFF;
     this->unk10->SetAnim(0x41U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -425,7 +426,7 @@ void SpyroTailStrikeState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__38KDStateMachine'
 void SpyroTailStrikeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__38KDStateMachine<20SpyroTailStrikeState>FPQ238KDStateMachine<20SpyroTailStrikeState>5StateP38KDStateMachine<20SpyroTailStrikeState>(&this->unk14, (KDStateMachine<SpyroTailStrikeState>::State *) &states, NULL);
+    Init__38KDStateMachine<20SpyroTailStrikeState>FPQ238KDStateMachine<20SpyroTailStrikeState>5StateP38KDStateMachine<20SpyroTailStrikeState>(&this->unk14, (KDStateMachine<SpyroTailStrikeState>::State *) &SpyroTailStrikeState::states, NULL);
     this->unk48 = 0.0f;
     M2C_FIELD(this, s8 *, 0x50) = 1;
     this->unk48 = 0.0f;

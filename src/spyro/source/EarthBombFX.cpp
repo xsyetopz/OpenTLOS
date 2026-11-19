@@ -10,6 +10,7 @@
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeatDistortPS.h"
@@ -55,7 +56,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     u8 var_r4_139;
     void *temp_r3_186;
     void *temp_r5_116;
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp20.Scale3x3((Matrix *) &arg_sp20, 2.0f);
     arg_sp50 = arg0.unk0;
     arg_sp54 = arg0.unk4;
@@ -73,10 +74,10 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_97, 1U);
     }
     this->unk11C = 10000.0f;
-    temp_r30_111 = gameData.unk70.unkE8;
+    temp_r30_111 = GameData::gameData.unk70.unkE8;
     temp_r4_112 = temp_r30_111 << 5;
-    temp_r31_114 = *(&gameData.unk70 + (temp_r4_112 + 0x7C));
-    temp_r5_116 = &gameData.unk70 + (temp_r4_112 + 0x64);
+    temp_r31_114 = *(&GameData::gameData.unk70 + (temp_r4_112 + 0x7C));
+    temp_r5_116 = &GameData::gameData.unk70 + (temp_r4_112 + 0x64);
     if (temp_r31_114 == 3) {
         var_r4_120 = 0;
         if (((s32) M2C_FIELD(temp_r5_116, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_116, s32 *, 4) == 3)) {
@@ -95,7 +96,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     } else {
         var_r26_149 = *(temp_r5_116 + (temp_r31_114 * 4));
     }
-    temp_f31_159 = gameData.unk70.GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
+    temp_f31_159 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
     this->unk128.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f31_159, temp_r31_114, var_r26_149, temp_r30_111, temp_r30_111, 0, -1);
     temp_f1_176 = M2C_FIELD(&arg1, f64 *, 0);
     this->unkD0 = temp_f1_176;
@@ -128,7 +129,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     arg_spAC = -1;
     arg_spB0 = 0;
     if (MKCollision_SphereCollide(arg0, 50.0f, (MKCollisionResult *) &arg_sp60, 1, (MKCollisionMode) 7, 0) != 0) {
-        Explode(up, *((MKVector3 *) &arg_sp60), arg_spA8);
+        Explode(MKVector3::up, *((MKVector3 *) &arg_sp60), arg_spA8);
     }
     if (arg_sp10 != NULL) {
         M2C_FIELD(arg_sp10, u8 *, 4) = arg_sp14;
@@ -403,7 +404,7 @@ loop_18:
     arg_spF8 = (f32) arg_sp238 * var_f0_760;
     arg_sp330 = (f64) arg_spF0;
     arg_sp338 = (f64) arg_spF8;
-    M2C_STRUCT_COPY((s32) &arg_sp39C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp39C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_spE8 = 0.0f;
     arg_spE0 = 0.0f;
     arg_spE4 = 1.0f;

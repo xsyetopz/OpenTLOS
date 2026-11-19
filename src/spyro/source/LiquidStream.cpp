@@ -3,6 +3,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -129,7 +130,7 @@ loop_14:
                 goto loop_14;
             }
             MKPrimitive(0xC, 0);
-            MKSetMatrix(identity);
+            MKSetMatrix(Matrix::identity);
             var_r28_279 = 0;
             var_r31_280 = 0;
 loop_19:

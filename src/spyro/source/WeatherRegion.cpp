@@ -5,6 +5,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/WeatherAshPS.h"
 #include "spyro/source/WeatherConvexityPS.h"
 #include "spyro/source/WeatherEmbersPS.h"
@@ -918,8 +919,8 @@ loop_45:
 
 void WeatherRegion::LoadDone() {
     MKProp::LoadDone();
-    this->unk50 = M2C_FIELD(&loadInfo, f64 *, 0x40);
-    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x48);
+    this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
@@ -969,7 +970,7 @@ void WeatherRegionDescriptor::Resolve() {
 #if 0 // DRAFT: undefined identifier 'unk9C'
 void WeatherRegionDescriptor::Init() {
     MKPropDescriptor::Init();
-    M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) &this->unk9C + 4, 0x40);
 }
 #endif

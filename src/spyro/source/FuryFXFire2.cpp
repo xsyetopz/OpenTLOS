@@ -8,6 +8,7 @@
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/Spyro.h"
@@ -156,7 +157,7 @@ void FuryFXFire2::SpawnMeteor() {
             this->unk14C = M2C_BITWISE(f32, temp_r3_155);
             temp_r31_177 = *temp_r3_155;
             if (temp_r31_177 != 0) {
-                M2C_STRUCT_COPY(temp_r31_177, &identity, 0x40);
+                M2C_STRUCT_COPY(temp_r31_177, &Matrix::identity, 0x40);
                 M2C_FIELD(temp_r31_177, s32 *, 0x48) = 0;
                 MKVector(0.0f, 2000.0f, 0.0f);
                 MKVector(1.0f, 0.0f, 1.0f);
@@ -276,7 +277,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
     s32 temp_r0_472;
     s32 temp_r29_495;
@@ -292,9 +293,9 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
     if ((s32) this->unkD0 == 0) {
         this->unkD0 = 1;
         this->unkE8 = 1.0f;
-        temp_r3_470 = gameData.unk158 << 5;
-        temp_r0_472 = *(&gameData.unk70 + (temp_r3_470 + 0x7C));
-        temp_r5_474 = &gameData.unk70 + (temp_r3_470 + 0x64);
+        temp_r3_470 = GameData::gameData.unk158 << 5;
+        temp_r0_472 = *(&GameData::gameData.unk70 + (temp_r3_470 + 0x7C));
+        temp_r5_474 = &GameData::gameData.unk70 + (temp_r3_470 + 0x64);
         if (temp_r0_472 == 3) {
             var_r3_478 = 0;
             if (((s32) M2C_FIELD(temp_r5_474, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_474, s32 *, 4) == 3)) {
@@ -304,7 +305,7 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
         } else {
             var_r30_488 = *(temp_r5_474 + (temp_r0_472 * 4));
         }
-        temp_r29_495 = gameData.unk158;
+        temp_r29_495 = GameData::gameData.unk158;
         this->unkF0.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r30_488, temp_r29_495, temp_r29_495, 0, -1);
         gb.unk381 = 1;
         return 1;
@@ -602,7 +603,7 @@ void FuryFXFire2::Update() {
             if (this->unkE8 == 0.0f) {
                 this->unkE8 = 0.6f;
                 this->unkD0 += 1;
-                M2C_STRUCT_COPY((s32) &arg_sp71C + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_sp71C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp1A8 = 1.0f;
                 arg_sp198 = 0.0f;
                 arg_sp1A0 = 0.0f;

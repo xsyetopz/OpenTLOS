@@ -5,6 +5,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/EnemySpawner.h"
@@ -787,10 +788,10 @@ loop_54:
             M2C_FIELD(temp_r4_1612, f32 *, 0x34) = temp_f7_1619;
             M2C_FIELD(temp_r4_1612, f32 *, 0x38) = temp_f6_1608;
             M2C_FIELD(temp_r4_1612, f32 *, 0x3C) = 0.0f;
-            sp18 = (up.unk0 * temp_f7_1619) - (up.unk4 * temp_f8_1618);
-            sp10 = (up.unk4 * temp_f6_1608) - (up.unk8 * temp_f7_1619);
+            sp18 = (MKVector3::up.unk0 * temp_f7_1619) - (MKVector3::up.unk4 * temp_f8_1618);
+            sp10 = (MKVector3::up.unk4 * temp_f6_1608) - (MKVector3::up.unk8 * temp_f7_1619);
             temp_r4_1633 = *(this->unk54 + temp_r0_1584);
-            sp14 = (up.unk8 * temp_f8_1618) - (up.unk0 * temp_f6_1608);
+            sp14 = (MKVector3::up.unk8 * temp_f8_1618) - (MKVector3::up.unk0 * temp_f6_1608);
             sp58 = (f64) sp18;
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r4_1633, f32 *, 0x10) = (f32) sp50;
@@ -807,7 +808,7 @@ loop_54:
     AddSpawnPointEnd();
     SetDefaults();
     this->unk4C = (this->unk4C & ~0x10) | ((this->unk50->unk18 << 4) & 0x10);
-    if (((u8) this->unk84 == 0) || (((MKProp *) this->unk60 != NULL) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, sWorkingChunkID.unk0) == 0))) {
+    if (((u8) this->unk84 == 0) || (((MKProp *) this->unk60 != NULL) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) == 0))) {
         FunctionOff();
     }
 }

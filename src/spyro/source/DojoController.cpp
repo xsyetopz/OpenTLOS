@@ -12,6 +12,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SparxHint.h"
 #include "spyro/source/SpawnPointData.h"
@@ -383,9 +384,9 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
     unksp134 *= var_f3_567;
     sp138 = (f32) sp138 * var_f3_567;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
-        temp_f31_589 = up.unk4;
-        temp_f30_591 = up.unk8;
-        temp_f29_593 = up.unk0;
+        temp_f31_589 = MKVector3::up.unk4;
+        temp_f30_591 = MKVector3::up.unk8;
+        temp_f29_593 = MKVector3::up.unk0;
         var_r31_594 = 0;
         var_r28_596 = 0;
 loop_26:
@@ -431,9 +432,9 @@ loop_26:
     if ((s32) M2C_FIELD(temp_r3_693, s32 *, 0x3CC) != 0) {
         var_r30_697 = M2C_FIELD(temp_r3_693, s32 *, 0x3C8);
         var_r28_701 = var_r30_697 * 0x60;
-        temp_f29_702 = up.unk4;
-        temp_f30_703 = up.unk8;
-        temp_f31_705 = up.unk0;
+        temp_f29_702 = MKVector3::up.unk4;
+        temp_f30_703 = MKVector3::up.unk8;
+        temp_f31_705 = MKVector3::up.unk0;
 loop_31:
         temp_r4_798 = this->unk4;
         if (var_r30_697 < (s32) (M2C_FIELD(temp_r4_798, s32 *, 0x3C8) + M2C_FIELD(temp_r4_798, s32 *, 0x3CC))) {
@@ -658,7 +659,7 @@ void EarthDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void EarthDojoLesson::IncrementNumInterations() {
     f32 *sp14;
     s32 spC;
@@ -685,7 +686,7 @@ void EarthDojoLesson::IncrementNumInterations() {
             }
         } else {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (gameData.unk70.unk48.unk4 == gameData.unk70.unk48.unk0) {
+            if (GameData::gameData.unk70.unk48.unk4 == GameData::gameData.unk70.unk48.unk0) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -1118,9 +1119,9 @@ void IceDojoLesson::SetupFurySpawnPoints() {
     unksp134 *= var_f3_2061;
     sp138 = (f32) sp138 * var_f3_2061;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
-        temp_f31_2083 = up.unk4;
-        temp_f30_2085 = up.unk8;
-        temp_f29_2087 = up.unk0;
+        temp_f31_2083 = MKVector3::up.unk4;
+        temp_f30_2085 = MKVector3::up.unk8;
+        temp_f29_2087 = MKVector3::up.unk0;
         var_r31_2088 = 0;
         var_r28_2090 = 0;
 loop_26:
@@ -1166,9 +1167,9 @@ loop_26:
     if ((s32) M2C_FIELD(temp_r3_2187, s32 *, 0x3CC) != 0) {
         var_r30_2191 = M2C_FIELD(temp_r3_2187, s32 *, 0x3C8);
         var_r28_2195 = var_r30_2191 * 0x60;
-        temp_f29_2196 = up.unk4;
-        temp_f30_2197 = up.unk8;
-        temp_f31_2199 = up.unk0;
+        temp_f29_2196 = MKVector3::up.unk4;
+        temp_f30_2197 = MKVector3::up.unk8;
+        temp_f31_2199 = MKVector3::up.unk0;
 loop_31:
         temp_r4_2292 = this->unk4;
         if (var_r30_2191 < (s32) (M2C_FIELD(temp_r4_2292, s32 *, 0x3C8) + M2C_FIELD(temp_r4_2292, s32 *, 0x3CC))) {
@@ -1406,7 +1407,7 @@ void IceDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void IceDojoLesson::IncrementNumInterations() {
     f32 *sp14;
     s32 spC;
@@ -1444,7 +1445,7 @@ void IceDojoLesson::IncrementNumInterations() {
             }
         } else {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (gameData.unk70.unk48.unk4 == gameData.unk70.unk48.unk0) {
+            if (GameData::gameData.unk70.unk48.unk4 == GameData::gameData.unk70.unk48.unk0) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -1971,9 +1972,9 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
     unksp134 *= var_f3_3766;
     sp138 = (f32) sp138 * var_f3_3766;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
-        temp_f31_3788 = up.unk4;
-        temp_f30_3790 = up.unk8;
-        temp_f29_3792 = up.unk0;
+        temp_f31_3788 = MKVector3::up.unk4;
+        temp_f30_3790 = MKVector3::up.unk8;
+        temp_f29_3792 = MKVector3::up.unk0;
         var_r31_3793 = 0;
         var_r28_3795 = 0;
 loop_26:
@@ -2019,9 +2020,9 @@ loop_26:
     if ((s32) M2C_FIELD(temp_r3_3892, s32 *, 0x3CC) != 0) {
         var_r30_3896 = M2C_FIELD(temp_r3_3892, s32 *, 0x3C8);
         var_r28_3900 = var_r30_3896 * 0x60;
-        temp_f29_3901 = up.unk4;
-        temp_f30_3902 = up.unk8;
-        temp_f31_3904 = up.unk0;
+        temp_f29_3901 = MKVector3::up.unk4;
+        temp_f30_3902 = MKVector3::up.unk8;
+        temp_f31_3904 = MKVector3::up.unk0;
 loop_31:
         temp_r4_3997 = this->unk4;
         if (var_r30_3896 < (s32) (M2C_FIELD(temp_r4_3997, s32 *, 0x3C8) + M2C_FIELD(temp_r4_3997, s32 *, 0x3CC))) {
@@ -2446,7 +2447,7 @@ void ElectricDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void ElectricDojoLesson::IncrementNumInterations() {
     f32 *sp14;
     s32 spC;
@@ -2473,7 +2474,7 @@ void ElectricDojoLesson::IncrementNumInterations() {
             }
         } else {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (gameData.unk70.unk48.unk4 == gameData.unk70.unk48.unk0) {
+            if (GameData::gameData.unk70.unk48.unk4 == GameData::gameData.unk70.unk48.unk0) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -3284,9 +3285,9 @@ void FireDojoLesson::SetupFurySpawnPoints() {
     unksp134 *= var_f3_6331;
     sp138 = (f32) sp138 * var_f3_6331;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
-        temp_f31_6353 = up.unk4;
-        temp_f30_6355 = up.unk8;
-        temp_f29_6357 = up.unk0;
+        temp_f31_6353 = MKVector3::up.unk4;
+        temp_f30_6355 = MKVector3::up.unk8;
+        temp_f29_6357 = MKVector3::up.unk0;
         var_r31_6358 = 0;
         var_r28_6360 = 0;
 loop_26:
@@ -3332,9 +3333,9 @@ loop_26:
     if ((s32) M2C_FIELD(temp_r3_6457, s32 *, 0x3CC) != 0) {
         var_r30_6461 = M2C_FIELD(temp_r3_6457, s32 *, 0x3C8);
         var_r28_6465 = var_r30_6461 * 0x60;
-        temp_f29_6466 = up.unk4;
-        temp_f30_6467 = up.unk8;
-        temp_f31_6469 = up.unk0;
+        temp_f29_6466 = MKVector3::up.unk4;
+        temp_f30_6467 = MKVector3::up.unk8;
+        temp_f31_6469 = MKVector3::up.unk0;
 loop_31:
         temp_r4_6562 = this->unk4;
         if (var_r30_6461 < (s32) (M2C_FIELD(temp_r4_6562, s32 *, 0x3C8) + M2C_FIELD(temp_r4_6562, s32 *, 0x3CC))) {
@@ -4129,7 +4130,7 @@ void FireDojoLesson::TurnOffAbilities() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void FireDojoLesson::IncrementNumInterations() {
     f32 *sp14;
     s32 spC;
@@ -4175,7 +4176,7 @@ void FireDojoLesson::IncrementNumInterations() {
             }
         } else {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (gameData.unk70.unk48.unk4 == gameData.unk70.unk48.unk0) {
+            if (GameData::gameData.unk70.unk48.unk4 == GameData::gameData.unk70.unk48.unk0) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -4417,7 +4418,7 @@ void DojoController::StateDojoStatueUpExit() {
 #if 0 // DRAFT: pointer/array required
 void DojoController::StateDojoStatueUpUpdate() {
     if (this->unk3FC->IsUp() != 0) {
-        switch ((s32) gameData.unk70.unk11C) { /* switch 1; irregular */
+        switch ((s32) GameData::gameData.unk70.unk11C) { /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             this->unk4C.Send((MKProp *) this);
             break;
@@ -4431,18 +4432,18 @@ void DojoController::StateDojoStatueUpUpdate() {
             this->unk58.Send((MKProp *) this);
             break;
         }
-        switch ((s32) gameData.unk70.unk11C) { /* switch 2; irregular */
+        switch ((s32) GameData::gameData.unk70.unk11C) { /* switch 2; irregular */
         case 0:                                     /* switch 2 */
-            gameData.unk70.unk11C = 1;
+            GameData::gameData.unk70.unk11C = 1;
             break;
         case 1:                                     /* switch 2 */
-            gameData.unk70.unk11C = 2;
+            GameData::gameData.unk70.unk11C = 2;
             break;
         case 2:                                     /* switch 2 */
-            gameData.unk70.unk11C = 3;
+            GameData::gameData.unk70.unk11C = 3;
             break;
         case 3:                                     /* switch 2 */
-            gameData.unk70.unk11C = 0;
+            GameData::gameData.unk70.unk11C = 0;
             break;
         }
         this->unk310.unk4C.SetState(this, 0, 0U);
@@ -4475,7 +4476,7 @@ void DojoController::StateDojoStatueUpEnter() {
     M2C_FIELD(M2C_FIELD(temp_r3_8631, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_8631, &sp10, 0);
     temp_r3_8638 = this->unk3FC;
     M2C_FIELD(M2C_FIELD(temp_r3_8638, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_8638);
-    if ((s32) gameData.unk70.unk11C == 0) {
+    if ((s32) GameData::gameData.unk70.unk11C == 0) {
         this->unk3FC->SnapDown();
     }
     temp_r3_8651 = this->unk3FC;
@@ -4525,12 +4526,12 @@ void DojoController::StateDojoFinishUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoFinishEnter() {
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
         M2C_FIELD(this, s8 *, 0x7F0) = 1;
         M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
-        switch ((s32) gameData.unk70.unk11C) { /* irregular */
+        switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
         case 0:
             strcpy(this + 0x7F1, "FireDojoComplete");
             break;
@@ -4562,7 +4563,7 @@ void DojoController::StateDojoSuccessExit() {
     M2C_FIELD(&gb, s8 *, 8) = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoSuccessUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4630,7 +4631,7 @@ void DojoController::StateDojoSuccessUpdate() {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
             if ((u8) this->unk3BC == 0) {
-                switch ((s32) gameData.unk70.unk11C) { /* irregular */
+                switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
                 case 0:
                     if ((s32) M2C_FIELD(this->unk70, s32 *, 8) == 4) {
                         temp_r3_8909 = this->unk64;
@@ -4762,7 +4763,7 @@ void DojoController::StateDojoSuccessEnter() {
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
         M2C_FIELD(this, s8 *, 0x7F0) = 1;
         M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
-        switch ((s32) gameData.unk70.unk11C) { /* irregular */
+        switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
         case 0:
             strcpy(this + 0x7F1, "FireDojoSuccess");
             break;
@@ -4786,7 +4787,7 @@ void DojoController::StateDojoFailExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoFailUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4852,7 +4853,7 @@ void DojoController::StateDojoFailUpdate() {
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
         if ((u8) this->unk3BC == 0) {
-            switch ((s32) gameData.unk70.unk11C) { /* irregular */
+            switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
             case 0:
                 if ((s32) M2C_FIELD(this->unk70, s32 *, 8) == 4) {
                     temp_r3_9318 = this->unk64;
@@ -4955,7 +4956,7 @@ void DojoController::StateDojoFailUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoFailEnter() {
     DojoController *spC;
     s32 sp8;
@@ -4974,7 +4975,7 @@ void DojoController::StateDojoFailEnter() {
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
         M2C_FIELD(this, s8 *, 0x7F0) = 1;
         M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
-        switch ((s32) gameData.unk70.unk11C) { /* irregular */
+        switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
         case 0:
             strcpy(this + 0x7F1, "FireDojoFail");
             break;
@@ -5200,7 +5201,7 @@ void DojoController::StateDojoFightEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoInstructExit() {
     s32 sp14;
     s32 sp10;
@@ -5215,15 +5216,15 @@ void DojoController::StateDojoInstructExit() {
 
     temp_r0_10070 = M2C_FIELD(this->unk70, s32 *, 8);
     if (temp_r0_10070 == 4) {
-        gameData.unk70.unk48.SetValue(gameData.unk70.unk48.unk4 * 0.5f, 0U);
+        ((Stat *) (&GameData::gameData.unk70.unk48))->SetValue(GameData::gameData.unk70.unk48.unk4 * 0.5f, 0U);
     } else {
         temp_cr0_eq_10083 = temp_r0_10070 == 2;
         if (temp_cr0_eq_10083 != 0) {
-            gameData.unk70.unk48.SetValue(gameData.unk70.unk48.unk4 * 0.25f, 0U);
+            ((Stat *) (&GameData::gameData.unk70.unk48))->SetValue(GameData::gameData.unk70.unk48.unk4 * 0.25f, 0U);
         } else if (temp_cr0_eq_10083 != 0) {
-            gameData.unk70.unk48.SetValue(gameData.unk70.unk48.unk4 / 6.0f, 0U);
+            ((Stat *) (&GameData::gameData.unk70.unk48))->SetValue(GameData::gameData.unk70.unk48.unk4 / 6.0f, 0U);
         } else {
-            gameData.unk70.unk48.SetValue(0.0f, 0U);
+            ((Stat *) (&GameData::gameData.unk70.unk48))->SetValue(0.0f, 0U);
         }
     }
     temp_r3_10113 = this->unk70;
@@ -5446,7 +5447,7 @@ void DojoController::StateDojoInstructUpdate() {
             sp14 = 0;
             sp10 = 0xA9;
             M2C_FIELD(M2C_FIELD(temp_r3_10431, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp10);
-            switch ((s32) gameData.unk70.unk11C) { /* switch 7; irregular */
+            switch ((s32) GameData::gameData.unk70.unk11C) { /* switch 7; irregular */
             case 0:                                 /* switch 7 */
                 if ((s32) M2C_FIELD(this->unk70, s32 *, 8) == 4) {
                     sp10C = 0;
@@ -5608,13 +5609,13 @@ void DojoController::StateDojoStatueDownExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoStatueDownUpdate() {
     s32 spC;
     s32 sp8;
     s32 temp_r3_10781;
 
-    if ((s32) gameData.unk70.unk11C != 0) {
+    if ((s32) GameData::gameData.unk70.unk11C != 0) {
         if (this->unk3FC->IsUp() != 0) {
             temp_r3_10781 = this->unk3FC;
             spC = 0;
@@ -5630,20 +5631,20 @@ void DojoController::StateDojoStatueDownUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoStatueDownEnter() {
-    switch ((s32) gameData.unk70.unk11C) { /* irregular */
+    switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
     case 0:
-        gameData.unk70.SetCurrentBreath((BreathElement) 0);
+        ((GameStats *) (&GameData::gameData.unk70))->SetCurrentBreath((BreathElement) 0);
         break;
     case 1:
-        gameData.unk70.SetCurrentBreath((BreathElement) 1);
+        ((GameStats *) (&GameData::gameData.unk70))->SetCurrentBreath((BreathElement) 1);
         break;
     case 2:
-        gameData.unk70.SetCurrentBreath((BreathElement) 2);
+        ((GameStats *) (&GameData::gameData.unk70))->SetCurrentBreath((BreathElement) 2);
         break;
     case 3:
-        gameData.unk70.SetCurrentBreath((BreathElement) 3);
+        ((GameStats *) (&GameData::gameData.unk70))->SetCurrentBreath((BreathElement) 3);
         break;
     }
     gb.InfiniteMagicOn();
@@ -5798,13 +5799,13 @@ void DojoController::SetupSmashPropsVanguard(int arg0, MKVector3 arg1, MKVector3
     temp_f7_11244 = M2C_FIELD(arg2, f32 *, 0);
     temp_f6_11246 = M2C_FIELD(arg2, f32 *, 8);
     temp_f3_11250 = M2C_FIELD(arg2, f32 *, 4);
-    arg_sp28 = (up.unk0 * temp_f3_11250) - (up.unk4 * temp_f7_11244);
-    arg_sp24 = (up.unk8 * temp_f7_11244) - (up.unk0 * temp_f6_11246);
-    arg_sp20 = (up.unk4 * temp_f6_11246) - (up.unk8 * temp_f3_11250);
-    arg_spD0 = M2C_FIELD(&zero, f64 *, 0);
+    arg_sp28 = (MKVector3::up.unk0 * temp_f3_11250) - (MKVector3::up.unk4 * temp_f7_11244);
+    arg_sp24 = (MKVector3::up.unk8 * temp_f7_11244) - (MKVector3::up.unk0 * temp_f6_11246);
+    arg_sp20 = (MKVector3::up.unk4 * temp_f6_11246) - (MKVector3::up.unk8 * temp_f3_11250);
+    arg_spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r30_11274 = 0;
     var_r23_11275 = 0;
-    arg_spD8 = M2C_FIELD(&zero, f64 *, 8);
+    arg_spD8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     arg_spC0 = (f64) arg_sp20;
     arg_spC8 = (f64) arg_sp28;
     arg_spE0 = (f64) arg_sp20;
@@ -5857,7 +5858,7 @@ loop_17:
         arg_sp58 = (f64) arg_sp18;
         arg_spF8 = (f64) arg_sp18;
         arg_spF4 = this->unk37C;
-        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp30 = -M2C_FIELD(arg2, f32 *, 0);
         arg_sp34 = -M2C_FIELD(arg2, f32 *, 4);
         arg_sp38 = -M2C_FIELD(arg2, f32 *, 8);
@@ -5944,8 +5945,8 @@ void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphN
     void *temp_r16_12006;
     void *temp_r3_11608;
 
-    spD8 = M2C_FIELD(&zero, f64 *, 0);
-    spE0 = M2C_FIELD(&zero, f64 *, 8);
+    spD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    spE0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r31_11551 = 0;
     if ((s32) arg0 == 0) {
         if ((s32) M2C_FIELD(this, s32 *, 0x3C8) != 0) {
@@ -6262,11 +6263,11 @@ void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MK
     temp_f7_12095 = M2C_FIELD(arg2, f32 *, 0);
     temp_f5_12099 = M2C_FIELD(arg2, f32 *, 8);
     temp_f2_12102 = M2C_FIELD(arg2, f32 *, 4);
-    sp128 = M2C_FIELD(&zero, f64 *, 0);
-    sp30 = (up.unk0 * temp_f2_12102) - (up.unk4 * temp_f7_12095);
-    sp2C = (up.unk8 * temp_f7_12095) - (up.unk0 * temp_f5_12099);
-    sp28 = (up.unk4 * temp_f5_12099) - (up.unk8 * temp_f2_12102);
-    sp130 = M2C_FIELD(&zero, f64 *, 8);
+    sp128 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp30 = (MKVector3::up.unk0 * temp_f2_12102) - (MKVector3::up.unk4 * temp_f7_12095);
+    sp2C = (MKVector3::up.unk8 * temp_f7_12095) - (MKVector3::up.unk0 * temp_f5_12099);
+    sp28 = (MKVector3::up.unk4 * temp_f5_12099) - (MKVector3::up.unk8 * temp_f2_12102);
+    sp130 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp118 = (f64) sp28;
     sp120 = (f64) sp30;
     sp138 = (f64) sp28;
@@ -7082,8 +7083,8 @@ void DojoController::Init() {
 
     Init__32KDStateMachine<14DojoController>FPQ232KDStateMachine<14DojoController>5StateP32KDStateMachine<14DojoController>((KDStateMachine<DojoController> *) &this->unk310.unk4C, &dojoStates, NULL);
     this->unk3AC = -1.0f;
-    M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk2C0.Init(EnemySpawnPool_Action, 0);
     this->unk310.Init(EnemySpawnPool_Action, 0);
     var_r28_14586 = 0;
@@ -7188,7 +7189,7 @@ void DojoController::Init() {
     temp_r3_14764 = this->unk450;
     temp_r3_14764->~SpawnPointData(this, 0);
     this->unk70 = (void **) this->unk444;
-    switch ((s32) gameData.unk70.unk11C) { /* irregular */
+    switch ((s32) GameData::gameData.unk70.unk11C) { /* irregular */
     case 0:
         this->unk70 = (void **) this->unk444;
         temp_r3_14790 = this->unk70;
@@ -7239,8 +7240,8 @@ DojoController::DojoController() {
     this->unk364 = -1;
     this->unk368 = 0;
     this->unk364 = 0;
-    M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk3AC = -1.0f;
     M2C_FIELD(this, s8 *, 0x3BE) = 0;
     M2C_FIELD(this, s8 *, 0x3BF) = 0;

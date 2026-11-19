@@ -269,8 +269,8 @@ void ConvexityDebris::LoadDone() {
     s32 temp_r31_456;
 
     MKProp::LoadDone();
-    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
     temp_r31_456 = checked_cast<ConvexityDebrisDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     var_f27_458 = 0.0f;
     this->unk6C /= this->unk50.unk8;

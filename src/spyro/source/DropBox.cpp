@@ -161,7 +161,7 @@ void DropBox::Drop() {
         var_f0_329 = this->unk204;
     }
     this->unk1A8 = var_f0_329;
-    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_347 = this->unk8;
     arg_sp88 = M2C_FIELD(temp_r3_347, f64 *, 0x30);
     arg_sp90 = M2C_FIELD(temp_r3_347, f64 *, 0x38);
@@ -307,8 +307,8 @@ void DropBox::Message(MKMessage *arg0) {
             sp99 = 0;
             sp9A = 1;
             sp9C = -1;
-            sp70 = M2C_FIELD(&one, f64 *, 0);
-            sp78 = M2C_FIELD(&one, f64 *, 8);
+            sp70 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp78 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spA8 = 0;
             if (this != NULL) {
                 sp8.GetPos();
@@ -345,7 +345,7 @@ void DropBox::SpawnEnemies() {
     var_r29_670 = 0;
 loop_2:
     if ((var_r31_668 < 4) && (var_r31_668 < M2C_BITWISE(s32, this->unk200.unk0))) {
-        M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r27_683 = this + var_r29_670;
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r27_683, s32 *, 0x1E0), (MKVector3 *) &arg_sp10);
         arg_sp50 = arg_sp10;
@@ -524,7 +524,7 @@ void DropBox::Update() {
         arg_sp218 = (f32) arg_sp178;
         arg_sp21C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp1E0));
-        M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r3_1144 = this->unk8;
         arg_spD0 = M2C_FIELD(temp_r3_1144, f64 *, 0x30);
         arg_spD8 = M2C_FIELD(temp_r3_1144, f64 *, 0x38);
@@ -615,8 +615,8 @@ void DropBox::Update() {
                 arg_sp260 = 0;
                 (s16) arg_sp260 = 1;
                 arg_sp264 = -1;
-                arg_sp238 = M2C_FIELD(&one, f64 *, 0);
-                arg_sp240 = M2C_FIELD(&one, f64 *, 8);
+                arg_sp238 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                arg_sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 arg_sp270 = 0;
                 if (this != NULL) {
                     arg_sp50.GetPos();

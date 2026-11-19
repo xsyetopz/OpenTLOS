@@ -81,7 +81,7 @@ void DragonBust::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: undefined identifier 'unksp8C'
 void DragonBust::ActivatingBUpdate() {
     f64 sp90;                                       /* compiler-managed */
     f64 sp88;                                       /* compiler-managed */
@@ -135,9 +135,9 @@ void DragonBust::ActivatingBUpdate() {
     void *temp_r3_243;
 
     temp_f1_175 = 1.0f + _table_sinf(0.5f * (6.2831855f * (f32) fmod(this->unkE4, 2.0)));
-    sp88 = M2C_FIELD(&one, f64 *, 0);
+    sp88 = M2C_FIELD(&MKVector4::one, f64 *, 0);
     temp_f3_179 = 0.5f * temp_f1_175;
-    sp90 = M2C_FIELD(&one, f64 *, 8);
+    sp90 = M2C_FIELD(&MKVector4::one, f64 *, 8);
     temp_f1_183 = this->unk108;
     var_f0_185 = (temp_f3_179 * ((f32) sp88 - temp_f1_183)) + temp_f1_183;
     if (var_f0_185 < 1.0f) {
@@ -367,7 +367,7 @@ void DragonBust::ActivatingAUpdate() {
             M2C_FIELD(temp_r3_635, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_635, f32 *, 0x24));
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f2_663 = 5.0f * var_f5_600;
     arg_sp18 = temp_f2_663;
     arg_sp10 = temp_f2_663;
@@ -399,9 +399,9 @@ void DragonBust::ActivatingAEnter() {
     void *temp_r3_743;
     void *temp_r3_797;
     void *temp_r3_807;
-    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk158 = 0;
-    arg_sp60.Scale3x3((Matrix *) &arg_sp60, zero);
+    arg_sp60.Scale3x3((Matrix *) &arg_sp60, MKVector3::zero);
     temp_r3_743 = this->unk8;
     arg_sp50 = M2C_FIELD(temp_r3_743, f64 *, 0x30);
     arg_sp58 = M2C_FIELD(temp_r3_743, f64 *, 0x38);
@@ -721,7 +721,7 @@ void DragonBust::SlideUpdate() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
         spD0 = sp30;
-        sp38 = up.unk8 * 50.0f;
+        sp38 = MKVector3::up.unk8 * 50.0f;
         spD8 = (f64) sp38;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         spE0 = sp20;
@@ -862,8 +862,8 @@ void DragonBust::LoadDone() {
     GameProp::LoadDone();
     this->unk124 = MKMaterial_Create("p_SkullWhite");
     sp20 = 0.0f;
-    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
     sp30 = 0.0f;
     sp8 = 1.0f;
     spC = 1.0f;
@@ -901,16 +901,16 @@ s32 DragonBust::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'Init__28KDStateMachine'
 void DragonBust::Init() {
-    Init__28KDStateMachine<10DragonBust>FPQ228KDStateMachine<10DragonBust>5StateP28KDStateMachine<10DragonBust>((KDStateMachine<DragonBust> *) &this->unkC8, (KDStateMachine<DragonBust>::State *) &states, NULL);
+    Init__28KDStateMachine<10DragonBust>FPQ228KDStateMachine<10DragonBust>5StateP28KDStateMachine<10DragonBust>((KDStateMachine<DragonBust> *) &this->unkC8, (KDStateMachine<DragonBust>::State *) &DragonBust::states, NULL);
     this->unkDC = 0;
     this->unkE0 = (MKSceneManager *)-1;
     this->unkE4 = 1.0f;
-    this->unkE8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x100) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkE8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x100) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
     this->unk118 = NULL;
     this->unk11C = MKModel_Create("Fx0020_earthshock", NULL, 2, NULL);
     this->unk120 = MKMaterial_Create("FX_IceFuryMat");

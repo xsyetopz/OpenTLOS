@@ -1152,7 +1152,6 @@ void DialogBox_DrawTab(DialogBoxContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void DialogBox_DrawBorder(DialogBoxContext *arg0) {
     f32 temp_f24_1942;
     f32 temp_f25_1925;
@@ -1177,22 +1176,21 @@ void DialogBox_DrawBorder(DialogBoxContext *arg0) {
     temp_f26_1936 = temp_f31_1927 - temp_f27_1930;
     temp_f28_1938 = temp_f31_1927 + arg0->unk18;
     temp_f24_1942 = temp_f30_1931 + arg0->unk1C;
-    Hud_DrawIcon(0, 4, temp_f26_1936, temp_f29_1935, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 4, temp_f26_1936, temp_f29_1935, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f28_1946 = temp_f28_1938 + temp_f27_1930;
-    Hud_DrawIcon(0, 5, temp_f28_1946, temp_f29_1935, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 5, temp_f28_1946, temp_f29_1935, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f27_1963 = temp_f24_1942 + temp_f27_1930;
-    Hud_DrawIcon(0, 6, temp_f28_1946, temp_f27_1963, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
-    Hud_DrawIcon(0, 7, temp_f26_1936, temp_f27_1963, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 6, temp_f28_1946, temp_f27_1963, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
+    Hud_DrawIcon(0, 7, temp_f26_1936, temp_f27_1963, temp_f25_1925, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f3_2000 = arg0->unk18;
-    Hud_DrawIcon(0, 9, (0.5f * temp_f3_2000) + temp_f31_1927, temp_f29_1935, temp_f3_2000, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 9, (0.5f * temp_f3_2000) + temp_f31_1927, temp_f29_1935, temp_f3_2000, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f3_2017 = arg0->unk18;
-    Hud_DrawIcon(0, 0xA, (0.5f * temp_f3_2017) + temp_f31_1927, temp_f27_1963, temp_f3_2017, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 0xA, (0.5f * temp_f3_2017) + temp_f31_1927, temp_f27_1963, temp_f3_2017, temp_f25_1925, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f4_2034 = arg0->unk1C;
-    Hud_DrawIcon(0, 0xB, temp_f26_1936, (0.5f * temp_f4_2034) + temp_f30_1931, temp_f25_1925, temp_f4_2034, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 0xB, temp_f26_1936, (0.5f * temp_f4_2034) + temp_f30_1931, temp_f25_1925, temp_f4_2034, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f4_2051 = arg0->unk1C;
-    Hud_DrawIcon(0, 0xC, temp_f28_1946, (0.5f * temp_f4_2051) + temp_f30_1931, temp_f25_1925, temp_f4_2051, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, identity);
+    Hud_DrawIcon(0, 0xC, temp_f28_1946, (0.5f * temp_f4_2051) + temp_f30_1931, temp_f25_1925, temp_f4_2051, *((MKVector4 *) &arg0->unk98), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'DialogBox_DrawTile'
 void DialogBox_DrawBackground(DialogBoxContext *arg0) {

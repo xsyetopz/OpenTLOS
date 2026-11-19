@@ -1,10 +1,16 @@
 #include "spyro/source/UISystem.h"
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
+#include "spyro/source/UIButton.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIImage.h"
 #include "spyro/source/UIMessage.h"
+#include "spyro/source/UIModel.h"
 #include "spyro/source/UIObject.h"
+#include "spyro/source/UIReference.h"
 #include "spyro/source/UIScreen.h"
+#include "spyro/source/UIText.h"
+#include "spyro/source/UIVideoScreen.h"
 #include "unplaced_templates.h"
 #include "spyro/source/UIControls.h"
 #include <m2c_macros.h>
@@ -188,7 +194,7 @@ void UISystem::Deinit() {
     UIContainer::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'list'
+#if 0 // DRAFT: expression syntax error
 void UISystem::Init() {
     MCLoadCheckScreen *temp_r3_452;
     MCLoadCheckScreen *temp_r3_470;
@@ -214,103 +220,103 @@ void UISystem::Init() {
     s32 var_ctr_630;
     s32 var_r3_628;
 
-    var_r4_443 = &list;
+    var_r4_443 = &UIObjectDescriptor::list;
 loop_3:
     temp_r3_452 = var_r4_443->unk0;
     if (temp_r3_452 == NULL) {
-        var_r4_443->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_452 != &descriptor) {
+        var_r4_443->unk0 = (MCLoadCheckScreen *) &UIContainer::descriptor;
+        UIContainer::descriptor.unk10 = NULL;
+    } else if (temp_r3_452 != &UIContainer::descriptor) {
         var_r4_443 = (UIObjectDescriptor *) &temp_r3_452->unk10;
         goto loop_3;
     }
-    var_r4_462 = &list;
+    var_r4_462 = &UIObjectDescriptor::list;
 loop_8:
     temp_r3_470 = var_r4_462->unk0;
     if (temp_r3_470 == NULL) {
-        var_r4_462->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_470 != &descriptor) {
+        var_r4_462->unk0 = (MCLoadCheckScreen *) &UIImage::descriptor;
+        UIImage::descriptor.unk10 = NULL;
+    } else if (temp_r3_470 != &UIImage::descriptor) {
         var_r4_462 = (UIObjectDescriptor *) &temp_r3_470->unk10;
         goto loop_8;
     }
-    var_r4_480 = &list;
+    var_r4_480 = &UIObjectDescriptor::list;
 loop_13:
     temp_r3_488 = var_r4_480->unk0;
     if (temp_r3_488 == NULL) {
-        var_r4_480->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_488 != &descriptor) {
+        var_r4_480->unk0 = (MCLoadCheckScreen *) &UIText::descriptor;
+        UIText::descriptor.unk10 = NULL;
+    } else if (temp_r3_488 != &UIText::descriptor) {
         var_r4_480 = (UIObjectDescriptor *) &temp_r3_488->unk10;
         goto loop_13;
     }
-    var_r4_498 = &list;
+    var_r4_498 = &UIObjectDescriptor::list;
 loop_18:
     temp_r3_506 = var_r4_498->unk0;
     if (temp_r3_506 == NULL) {
-        var_r4_498->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_506 != &descriptor) {
+        var_r4_498->unk0 = (MCLoadCheckScreen *) &UIModel::descriptor;
+        UIModel::descriptor.unk10 = NULL;
+    } else if (temp_r3_506 != &UIModel::descriptor) {
         var_r4_498 = (UIObjectDescriptor *) &temp_r3_506->unk10;
         goto loop_18;
     }
-    var_r4_516 = &list;
+    var_r4_516 = &UIObjectDescriptor::list;
 loop_23:
     temp_r3_524 = var_r4_516->unk0;
     if (temp_r3_524 == NULL) {
-        var_r4_516->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_524 != &descriptor) {
+        var_r4_516->unk0 = (MCLoadCheckScreen *) &UIAnimatedModel::descriptor;
+        UIAnimatedModel::descriptor.unk10 = NULL;
+    } else if (temp_r3_524 != &UIAnimatedModel::descriptor) {
         var_r4_516 = (UIObjectDescriptor *) &temp_r3_524->unk10;
         goto loop_23;
     }
-    var_r4_534 = &list;
+    var_r4_534 = &UIObjectDescriptor::list;
 loop_28:
     temp_r3_542 = var_r4_534->unk0;
     if (temp_r3_542 == NULL) {
-        var_r4_534->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_542 != &descriptor) {
+        var_r4_534->unk0 = (MCLoadCheckScreen *) &UIReference::descriptor;
+        UIReference::descriptor.unk10 = NULL;
+    } else if (temp_r3_542 != &UIReference::descriptor) {
         var_r4_534 = (UIObjectDescriptor *) &temp_r3_542->unk10;
         goto loop_28;
     }
-    var_r4_552 = &list;
+    var_r4_552 = &UIObjectDescriptor::list;
 loop_33:
     temp_r3_560 = var_r4_552->unk0;
     if (temp_r3_560 == NULL) {
-        var_r4_552->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_560 != &descriptor) {
+        var_r4_552->unk0 = (MCLoadCheckScreen *) &UIScreen::descriptor;
+        UIScreen::descriptor.unk10 = NULL;
+    } else if (temp_r3_560 != &UIScreen::descriptor) {
         var_r4_552 = (UIObjectDescriptor *) &temp_r3_560->unk10;
         goto loop_33;
     }
-    var_r4_570 = &list;
+    var_r4_570 = &UIObjectDescriptor::list;
 loop_38:
     temp_r3_578 = var_r4_570->unk0;
     if (temp_r3_578 == NULL) {
-        var_r4_570->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_578 != &descriptor) {
+        var_r4_570->unk0 = (MCLoadCheckScreen *) &UIVideoScreen::descriptor;
+        UIVideoScreen::descriptor.unk10 = NULL;
+    } else if (temp_r3_578 != &UIVideoScreen::descriptor) {
         var_r4_570 = (UIObjectDescriptor *) &temp_r3_578->unk10;
         goto loop_38;
     }
-    var_r4_588 = &list;
+    var_r4_588 = &UIObjectDescriptor::list;
 loop_43:
     temp_r3_596 = var_r4_588->unk0;
     if (temp_r3_596 == NULL) {
-        var_r4_588->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_596 != &descriptor) {
+        var_r4_588->unk0 = (MCLoadCheckScreen *) &UIButton::descriptor;
+        UIButton::descriptor.unk10 = NULL;
+    } else if (temp_r3_596 != &UIButton::descriptor) {
         var_r4_588 = (UIObjectDescriptor *) &temp_r3_596->unk10;
         goto loop_43;
     }
-    var_r4_606 = &list;
+    var_r4_606 = &UIObjectDescriptor::list;
 loop_48:
     temp_r3_614 = var_r4_606->unk0;
     if (temp_r3_614 == NULL) {
-        var_r4_606->unk0 = (MCLoadCheckScreen *) &descriptor;
-        descriptor.unk10 = NULL;
-    } else if (temp_r3_614 != &descriptor) {
+        var_r4_606->unk0 = (MCLoadCheckScreen *) &UIButtonGroup::descriptor;
+        UIButtonGroup::descriptor.unk10 = NULL;
+    } else if (temp_r3_614 != &UIButtonGroup::descriptor) {
         var_r4_606 = (UIObjectDescriptor *) &temp_r3_614->unk10;
         goto loop_48;
     }

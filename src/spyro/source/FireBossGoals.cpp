@@ -597,7 +597,7 @@ u8 FireBossGoal_Turn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: illegal type
 void FireBossGoal_Turn::Activate() {
     f64 sp20;
     f64 sp18;
@@ -626,9 +626,9 @@ void FireBossGoal_Turn::Activate() {
     temp_f4_1115 = temp_r8_1111->unkC8;
     temp_f7_1121 = temp_r8_1111->unkC4;
     temp_f5_1123 = temp_r8_1111->unkC0;
-    spC = (up.unk8 * temp_f5_1123) - (up.unk0 * temp_f4_1115);
-    sp8 = (up.unk4 * temp_f4_1115) - (up.unk8 * temp_f7_1121);
-    sp10 = (up.unk0 * temp_f7_1121) - (up.unk4 * temp_f5_1123);
+    spC = (MKVector3::up.unk8 * temp_f5_1123) - (MKVector3::up.unk0 * temp_f4_1115);
+    sp8 = (MKVector3::up.unk4 * temp_f4_1115) - (MKVector3::up.unk8 * temp_f7_1121);
+    sp10 = (MKVector3::up.unk0 * temp_f7_1121) - (MKVector3::up.unk4 * temp_f5_1123);
     M2C_FIELD(temp_r8_1111, f64 *, 0xE0) = (f64) sp8;
     M2C_FIELD(temp_r8_1111, f64 *, 0xE8) = (f64) sp10;
     sp18 = (f64) sp8;

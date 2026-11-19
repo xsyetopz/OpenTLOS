@@ -503,7 +503,7 @@ void Ball::Smash() {
         }
     } else {
 block_4:
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp48 = 0.0f;
         arg_sp40 = 0.0f;
         arg_sp44 = 1.0f;
@@ -640,8 +640,8 @@ loop_14:
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
                         }
-                        this->unkF0 = M2C_FIELD(&zero, f64 *, 0);
-                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                        this->unkF0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
                     }
                 }
             }
@@ -718,8 +718,8 @@ loop_12:
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
                         }
-                        this->unkF0 = M2C_FIELD(&zero, f64 *, 0);
-                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                        this->unkF0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
                         SetState((Ball::State) 4);
                     }
                 }
@@ -798,8 +798,8 @@ loop_15:
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
                         }
-                        this->unkF0 = M2C_FIELD(&zero, f64 *, 0);
-                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                        this->unkF0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                        M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
                         SetState((Ball::State) 3);
                     }
                 }
@@ -1242,13 +1242,13 @@ void Ball::UpdateOrientation() {
         var_f31_2215 = 0.0f;
     }
     M2C_STRUCT_COPY((s32) &arg_sp12C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &arg_spEC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spEC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f3_2245 = this->unkF8;
     temp_f7_2247 = M2C_FIELD(this, f32 *, 0xF4);
     temp_f5_2252 = (f32) M2C_FIELD(this, f64 *, 0xF0);
-    arg_sp58 = (up.unk4 * temp_f3_2245) - (up.unk8 * temp_f7_2247);
-    arg_sp5C = (up.unk8 * temp_f5_2252) - (up.unk0 * temp_f3_2245);
-    arg_sp60 = (up.unk0 * temp_f7_2247) - (up.unk4 * temp_f5_2252);
+    arg_sp58 = (MKVector3::up.unk4 * temp_f3_2245) - (MKVector3::up.unk8 * temp_f7_2247);
+    arg_sp5C = (MKVector3::up.unk8 * temp_f5_2252) - (MKVector3::up.unk0 * temp_f3_2245);
+    arg_sp60 = (MKVector3::up.unk0 * temp_f7_2247) - (MKVector3::up.unk4 * temp_f5_2252);
     arg_spB8 = (f64) arg_sp58;
     arg_spC0 = (f64) arg_sp60;
     var_f4_2272 = ((f32) arg_spC0 * (f32) arg_spC0) + (((f32) arg_spB8 * (f32) arg_spB8) + (arg_spBC * arg_spBC));
@@ -1471,9 +1471,9 @@ void Ball::UpdateMeltingGrowing() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         sp60 = this->unkE8 + (f32) sp130;
-        sp50 = -up.unk8;
-        sp48 = -up.unk0;
-        sp4C = -up.unk4;
+        sp50 = -MKVector3::up.unk8;
+        sp48 = -MKVector3::up.unk0;
+        sp4C = -MKVector3::up.unk4;
         sp138 = sp58;
         sp140 = (f64) sp60;
         spC8 = (f64) sp48;
@@ -1483,7 +1483,7 @@ void Ball::UpdateMeltingGrowing() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
         spB8 = sp28;
-        sp30 = up.unk8 * 150.0f;
+        sp30 = MKVector3::up.unk8 * 150.0f;
         sp18 = 1.0f;
         spC0 = (f64) sp30;
         sp1C = 1.0f;
@@ -2647,8 +2647,8 @@ block_62:
                         *temp_r3_4705 = this;
                     }
                 }
-                sp120 = M2C_FIELD(&zero, f64 *, 0);
-                sp128 = M2C_FIELD(&zero, f64 *, 8);
+                sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                sp128 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 sp80.GetPos();
                 temp_r3_4720 = this->unk8;
                 sp90 = M2C_FIELD(temp_r3_4720, f64 *, 0x30);
@@ -2863,7 +2863,7 @@ void Ball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal implicit conversion from 'Catapult *' to
 void Ball::Reset() {
     f64 sp10;
     f64 sp8;
@@ -2875,14 +2875,14 @@ void Ball::Reset() {
     GameProp::Reset();
     this->unkE0 = this->unkD0;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) this->unkD8;
-    this->unkF0 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unk100 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkF0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk100 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this, u8 *, 0x2AC) = (u8) (M2C_FIELD(this, u8 *, 0x2AC) | 0x80);
     this->unk28C = 0.0f;
-    this->unk110 = M2C_FIELD(&up, f64 *, 0);
-    this->unk118 = M2C_FIELD(&up, f64 *, 8);
+    this->unk110 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    this->unk118 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     temp_r3_5204 = this->unk228;
     if ((u32) temp_r3_5204 != 0U) {
         temp_r3_5204->Unload();

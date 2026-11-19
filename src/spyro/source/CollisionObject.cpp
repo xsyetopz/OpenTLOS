@@ -217,7 +217,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
         temp_f9_471 = M2C_FIELD(temp_r31_275, f32 *, 0x18);
         sp130 = sp60;
         sp138 = (f64) sp68;
-        arg0->unk4 += 0.05f + (((arg0->unk8 * temp_f9_471) + ((arg0->unk0 * temp_f8_468) + (arg0->unk4 * temp_f4_465))) / ((up.unk8 * temp_f9_471) + ((up.unk0 * temp_f8_468) + (up.unk4 * temp_f4_465))));
+        arg0->unk4 += 0.05f + (((arg0->unk8 * temp_f9_471) + ((arg0->unk0 * temp_f8_468) + (arg0->unk4 * temp_f4_465))) / ((MKVector3::up.unk8 * temp_f9_471) + ((MKVector3::up.unk0 * temp_f8_468) + (MKVector3::up.unk4 * temp_f4_465))));
         return;
     case 3:                                         /* switch 1 */
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
@@ -516,8 +516,8 @@ loop_22:
                             spC1 = 0;
                             spC2 = 1;
                             spC4 = -1;
-                            sp98 = M2C_FIELD(&one, f64 *, 0);
-                            spA0 = M2C_FIELD(&one, f64 *, 8);
+                            sp98 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                            spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             spD0 = 0;
                             if (var_r4_989 != 0U) {
                                 sp18.GetPos();
@@ -1159,7 +1159,7 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: undefined identifier 'unk4'
 ContextInfo *CollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *arg1) {
     ContextInfo *var_r6_2171;
     f32 *temp_r8_2167;
@@ -1177,7 +1177,7 @@ ContextInfo *CollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *ar
     var_r6_2171 = &this->unk170;
     var_r10_2173 = temp_r8_2167 + 0x2C;
     temp_r7_2179 = arg0->unk44;
-    temp_f1_2181 = (up.unk8 * arg0->unk18) + ((up.unk0 * arg0->unk10) + (up.unk4 * arg0->unk14));
+    temp_f1_2181 = (MKVector3::up.unk8 * arg0->unk18) + ((MKVector3::up.unk0 * arg0->unk10) + (MKVector3::up.unk4 * arg0->unk14));
     if (!(temp_r7_2179 & M2C_FIELD(temp_r8_2167, s32 *, 0x38))) {
         if ((temp_f1_2181 > M2C_FIELD(temp_r8_2167, f32 *, 0x1C)) || (temp_r7_2179 & M2C_FIELD(temp_r8_2167, s32 *, 0x28))) {
             var_r10_2173 = temp_r8_2167 + 0x1C;

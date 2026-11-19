@@ -90,13 +90,13 @@ Enemy *TrainChaseSpawnPool::Create() {
 void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
     switch (this) {                                 /* irregular */
     case 0:
-        *arg1 = pInstance.unk0->Create();
+        *arg1 = ((TrainChaseSpawnPool *) ((TrainChaseSpawnPool *) TrainChaseSpawnPool::pInstance.unk0))->Create();
         return;
     case 1:
         *arg1 = NULL;
         return;
     case 2:
-        pInstance.unk0->Destroy(*arg1);
+        ((TrainChaseSpawnPool *) ((TrainChaseSpawnPool *) TrainChaseSpawnPool::pInstance.unk0))->Destroy(*arg1);
         return;
     }
 }
@@ -143,7 +143,7 @@ loop_9:
         }
     }
     this->unk0 = NULL;
-    pInstance.unk0 = NULL;
+    TrainChaseSpawnPool::pInstance.unk0 = NULL;
 }
 #endif
 
@@ -158,7 +158,7 @@ void TrainChaseSpawnPool::Init() {
     MKHeap *temp_r3_227;
     s32 var_ctr_247;
 
-    pInstance.unk0 = (Enemy ***) this;
+    TrainChaseSpawnPool::pInstance.unk0 = (Enemy ***) this;
     temp_r3_227 = MKHeap::Current();
     if (temp_r3_227 != NULL) {
         var_r3_234 = ((MKHeap *) (temp_r3_227->Current()))->Alloc(0x18, NULL, 0);
@@ -449,7 +449,7 @@ block_20:
                     arg_sp310 = arg_sp1C0;
                     arg_sp318 = arg_sp1C8;
                     if ((((f32) arg_sp318 * (f32) arg_sp318) + (((f32) arg_sp310 * (f32) arg_sp310) + (arg_sp314 * arg_sp314))) > 0.0001f) {
-                        M2C_STRUCT_COPY((s32) &arg_sp32C + 4, (s32) (&identity - 4) + 4, 0x40);
+                        M2C_STRUCT_COPY((s32) &arg_sp32C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                         arg_sp1B0.GetTrackPos((s32) temp_r3_816, this->unkD4, 1);
                         arg_sp360 = arg_sp1B0;
                         arg_sp364 = arg_sp1B4;

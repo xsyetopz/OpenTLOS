@@ -13,6 +13,7 @@
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/FXBase.h"
 #include "spyro/source/FlyingChunkPS.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDInput.h"
@@ -849,7 +850,7 @@ void Shatterable::SpawnGems(int arg0) {
 loop_9:
         if (var_r26_1532 < arg0) {
             temp_r29_1540 = MKRand_Int(&gViewSeed, 0, 4);
-            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (gameData.unk70.GetGemAvailable((StatType) temp_r29_1540) != 0)) {
+            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
                 ((CollectableSpawner *) (M2C_FIELD(&(&gb)[temp_r29_1540], CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp48), 1, 200.0f, 500.0f, -1, (MKProp *) this);
                 var_r27_1530 += 1;
             }
@@ -1146,11 +1147,11 @@ loop_32:
             }
             this->unk160.Send((MKProp *) this);
             if ((u32) M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
-                temp_r26_2301 = pInstanceMem.__vptr;
-                pInstanceMem.__vptr = this;
+                temp_r26_2301 = KDProperty::pInstanceMem.__vptr;
+                KDProperty::pInstanceMem.__vptr = this;
                 temp_r3_2307 = M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
-                pInstanceMem.__vptr = temp_r26_2301;
+                KDProperty::pInstanceMem.__vptr = temp_r26_2301;
             }
         }
         ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->ClearVisible();
@@ -1726,12 +1727,12 @@ loop_223:
                 if (((MKProp *) this->unk170 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (((s32) this->unk170 * 0x17C) + 0x2F4)) != 0)) {
                     this->unk160.Send((MKProp *) this);
                     if ((u32) *(this->unk158 + (((s32) this->unk170 << 7) + 0x78)) != 0U) {
-                        temp_r28_3455 = pInstanceMem.__vptr;
-                        pInstanceMem.__vptr = this;
+                        temp_r28_3455 = KDProperty::pInstanceMem.__vptr;
+                        KDProperty::pInstanceMem.__vptr = this;
                         temp_r4_3458 = this->unk158;
                         temp_r3_3461 = *(temp_r4_3458 + (((s32) this->unk170 << 7) + 0x78));
                         M2C_FIELD(*temp_r3_3461, M2C_UNK (**)(void **, void *), 0x4C)(temp_r3_3461, temp_r4_3458);
-                        pInstanceMem.__vptr = temp_r28_3455;
+                        KDProperty::pInstanceMem.__vptr = temp_r28_3455;
                     }
                     this->unk170 += 1;
                     goto loop_223;
@@ -2257,8 +2258,8 @@ loop_15:
     }
     ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
     *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
-    M2C_FIELD(this, f64 *, 0x130) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    this->unk138 = M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x130) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unk138 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if ((u8) M2C_FIELD(this, u8 *, 0x19F) == 0) {
         this->unk15C.unk0 = 1;
     }

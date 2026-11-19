@@ -40,7 +40,7 @@ void StalactiteCharge::StateSCResetUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: undefined identifier 'unk10'
 void StalactiteCharge::StateSCResetEnter() {
     f64 sp118;                                      /* compiler-managed */
     KDSplinePathSegment spD0;
@@ -82,9 +82,9 @@ void StalactiteCharge::StateSCResetEnter() {
     this->unk4C->Reset();
     this->unkE8 = 1;
     var_r30_103 = 0;
-    temp_f27_110 = up.unk4;
-    temp_f28_112 = up.unk8;
-    temp_f29_113 = up.unk0;
+    temp_f27_110 = MKVector3::up.unk4;
+    temp_f28_112 = MKVector3::up.unk8;
+    temp_f29_113 = MKVector3::up.unk0;
     this->unkD8 = 1.0f / ((f32) this->unkE0 - 1.0f);
 loop_25:
     temp_r3_357 = this->unkE0;
@@ -385,15 +385,15 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp218 = sp1C8.unk8;
     sp220 = sp1B8;
     sp228 = sp1C0;
-    sp230 = M2C_FIELD(&zero, f64 *, 0);
-    sp238 = M2C_FIELD(&zero, f64 *, 8);
-    sp240 = M2C_FIELD(&zero, f64 *, 0);
-    sp248 = M2C_FIELD(&zero, f64 *, 8);
+    sp230 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp238 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp240 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp248 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp250 = 0;
     sp251 = 0;
-    sp28 = M2C_FIELD(&zero, f64 *, 0);
-    sp30 = M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&zero, f64 *, 0), sp1C0, sp1B8, sp1C8.unk8, temp_f5_721);
+    sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), sp1C0, sp1B8, sp1C8.unk8, temp_f5_721);
     if (sp250 != 0) {
         this->unk110 = sp230;
         this->unk118 = sp238;
@@ -467,9 +467,9 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp1F8 = temp_f5_907;
     unksp1FC = temp_f4_902;
     sp200 = temp_f3_904;
-    sp88 = (up.unk4 * temp_f3_904) - (up.unk8 * temp_f4_902);
-    sp8C = (up.unk8 * temp_f5_907) - (up.unk0 * temp_f3_904);
-    sp90 = (up.unk0 * temp_f4_902) - (up.unk4 * temp_f5_907);
+    sp88 = (MKVector3::up.unk4 * temp_f3_904) - (MKVector3::up.unk8 * temp_f4_902);
+    sp8C = (MKVector3::up.unk8 * temp_f5_907) - (MKVector3::up.unk0 * temp_f3_904);
+    sp90 = (MKVector3::up.unk0 * temp_f4_902) - (MKVector3::up.unk4 * temp_f5_907);
     this->unk120 = (f64) sp88;
     M2C_FIELD(this, f64 *, 0x128) = (f64) sp90;
     sp148 = (f64) sp88;
@@ -832,7 +832,7 @@ void StalactiteCharge::LoadDone() {
     this->unkC4 = -1.0f;
     this->unkC0 = -1.0f;
     M2C_FIELD(this->unk0, M2C_UNK **, 0x1C) = &this->unkB0;
-    M2C_STRUCT_COPY((s32) &this->unk6C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp10 = 0.0f;
     sp18.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     spC = 0.0f;

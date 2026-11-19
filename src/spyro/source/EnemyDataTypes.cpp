@@ -2,6 +2,7 @@
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/DataMap.h"
@@ -31,7 +32,7 @@ void EnemyMovementManager::SetExitingAnim() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 s32 **EnemyMovementManager::SelectAnim() {
     f64 sp20;
     f64 sp18;
@@ -79,9 +80,9 @@ s32 **EnemyMovementManager::SelectAnim() {
     temp_f8_57 = temp_r11_44->unkC4;
     var_r8_59 = 0;
     temp_f6_64 = temp_r11_44->unkC0;
-    sp8 = (up.unk4 * temp_f3_55) - (up.unk8 * temp_f8_57);
-    spC = (up.unk8 * temp_f6_64) - (up.unk0 * temp_f3_55);
-    sp10 = (up.unk0 * temp_f8_57) - (up.unk4 * temp_f6_64);
+    sp8 = (MKVector3::up.unk4 * temp_f3_55) - (MKVector3::up.unk8 * temp_f8_57);
+    spC = (MKVector3::up.unk8 * temp_f6_64) - (MKVector3::up.unk0 * temp_f3_55);
+    sp10 = (MKVector3::up.unk0 * temp_f8_57) - (MKVector3::up.unk4 * temp_f6_64);
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     temp_f1_84 = ((f32) sp20 * temp_r11_44->unkE8) + (((f32) sp18 * temp_r11_44->unkE0) + (unksp1C * temp_r11_44->unkE4));

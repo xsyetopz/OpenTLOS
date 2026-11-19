@@ -1,8 +1,10 @@
 #include "spyro/source/Autosave.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMemoryCard.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/KDMemoryCard.h"
+#include "spyro/source/MemoryCard.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIImage.h"
 #include "common/Source/StdMath.h"
@@ -37,19 +39,17 @@ void *Autosave_GetGameDataCopy() {
     return pGameDataCopy;
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
 void Autosave_CopyGameData() {
-    gameData.UpdateDataHeader(NULL);
-    gameData.CopyFromGameData(pGameDataCopy);
+    ((GameData *) (&GameData::gameData))->UpdateDataHeader(NULL);
+    ((GameData *) (&GameData::gameData))->CopyFromGameData(pGameDataCopy);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void Autosave_Draw() {
     f32 var_f0_66;
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (autosaveIconOffset != 0.0f) {
-        gameData.GetGameSettings();
+        ((GameData *) (&GameData::gameData))->GetGameSettings();
         if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11) != 0) {
             var_f0_66 = 60.0f;
         } else {
@@ -90,7 +90,7 @@ void Autosave_ConfirmCard() {
         Autosave_Abort();
         return;
     }
-    gameData.GetSaveGameDescription();
+    ((GameData *) (&GameData::gameData))->GetSaveGameDescription();
     autosaveCard->SaveData(autosaveFile, pGameDataCopy, gameDataSize, M2C_ERROR(/* Read from unset register $r3 */));
     M2C_FIELD(&gb, s8 *, 0x382) = 1;
     autosave_state = 3;
@@ -183,18 +183,18 @@ void Autosave_Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'selectedCard'
+#if 0 // DRAFT: expression syntax error
 void Autosave_Abort() {
-    selectedCard.__vptr = autosaveCard;
+    MemoryCardScreen::selectedCard.__vptr = autosaveCard;
     Autosave_Reset();
     autosave_state = 0;
     PauseMenu_AutosaveScreen"AutosaveCardRemoved";
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'selectedCard'
+#if 0 // DRAFT: expression syntax error
 void Autosave_Error() {
-    selectedCard.__vptr = autosaveCard;
+    MemoryCardScreen::selectedCard.__vptr = autosaveCard;
     Autosave_Reset();
     autosave_state = 0;
     PauseMenu_AutosaveScreen"AutosaveError";
@@ -260,7 +260,7 @@ void Autosave_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: pointer/array required
 void Autosave_InitModule() {
     MKHeap *temp_r3_548;
     s32 temp_r3_545;
@@ -270,7 +270,7 @@ void Autosave_InitModule() {
     autosave_state = 0;
     autosaveIconThrob = 0.0f;
     autosaveIconOffset = 0.0f;
-    temp_r3_545 = gameData.GetGameDataSize();
+    temp_r3_545 = ((GameData *) (&GameData::gameData))->GetGameDataSize();
     gameDataSize = temp_r3_545;
     temp_r3_548 = temp_r3_545->Current();
     if (temp_r3_548 != NULL) {

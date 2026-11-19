@@ -712,7 +712,7 @@ loop_39:
                         MKMaterial_SetMaterial(this->unk3F6C);
                     }
                     MKPrimitive(0xC, 0);
-                    MKSetMatrix(identity);
+                    MKSetMatrix(Matrix::identity);
                     MKBegin(0xA);
                     MKSetColorV(*((MKVector4 *) &arg_spA80));
                     MKSetTexCoord1F(0.0f, var_f18_1023);
@@ -847,7 +847,7 @@ loop_39:
         var_r16_1624 = this->unk3F5C - 1;
         MKMaterial_SetMaterial(this->unk3F74);
         MKPrimitive(0xC, 0);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         arg_sp410 = 1.0f;
         arg_sp414 = 1.0f;
         arg_sp418 = 1.0f;
@@ -1844,7 +1844,7 @@ void LiquidFX::Update() {
         if (temp_f0_3784 == 5.0f) {
             this->unk3F7C = temp_f0_3784 - 5.0f;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp2CC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_sp2CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         arg_sp2D0.Scale3x3((Matrix *) &arg_sp2D0, 4.0f);
         arg_sp30 = 0.0f;
         arg_sp28 = 0.0f;
@@ -1958,8 +1958,8 @@ void LiquidFXDescriptor::Deinit() {
     LiquidFXDescriptor *temp_r3_4034;
 
     KDPropExDescriptor::Deinit();
-    if ((s8 *) pFirstDesc.unk0 == this) {
-        pFirstDesc.unk0 = (s8 *) this->unkF0;
+    if ((s8 *) LiquidFXDescriptor::pFirstDesc.unk0 == this) {
+        LiquidFXDescriptor::pFirstDesc.unk0 = (s8 *) this->unkF0;
     }
     temp_r3_4028 = this->unkEC;
     if (temp_r3_4028 != NULL) {
@@ -1978,12 +1978,12 @@ void LiquidFXDescriptor::Deinit() {
 #if 0 // DRAFT: expression syntax error
 void LiquidFXDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkF0 = (LiquidFXDescriptor *) pFirstDesc.unk0;
+    this->unkF0 = (LiquidFXDescriptor *) LiquidFXDescriptor::pFirstDesc.unk0;
     this->unkEC = NULL;
-    if ((s8 *) pFirstDesc.unk0 != NULL) {
-        M2C_FIELD(pFirstDesc.unk0, LiquidFXDescriptor **, 0xEC) = this;
+    if ((s8 *) LiquidFXDescriptor::pFirstDesc.unk0 != NULL) {
+        M2C_FIELD(LiquidFXDescriptor::pFirstDesc.unk0, LiquidFXDescriptor **, 0xEC) = this;
     }
-    pFirstDesc.unk0 = (s8 *) this;
+    LiquidFXDescriptor::pFirstDesc.unk0 = (s8 *) this;
     this->unkE8 = gMK->GetWorkingChunk();
 }
 #endif

@@ -81,8 +81,8 @@ void ConnectorDescriptor::Deinit() {
     ConnectorDescriptor *temp_r4_211;
     ConnectorDescriptor *temp_r4_217;
 
-    if ((void *) pFirstDesc.__vptr == this) {
-        pFirstDesc.__vptr = this->unk68;
+    if ((void *) ConnectorDescriptor::pFirstDesc.__vptr == this) {
+        ConnectorDescriptor::pFirstDesc.__vptr = this->unk68;
     }
     temp_r4_211 = this->unk64;
     if (temp_r4_211 != NULL) {
@@ -102,17 +102,17 @@ void ConnectorDescriptor::Deinit() {
 #if 0 // DRAFT: expression syntax error
 void ConnectorDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = (ConnectorDescriptor *) pFirstDesc.__vptr;
+    this->unk68 = (ConnectorDescriptor *) ConnectorDescriptor::pFirstDesc.__vptr;
     this->unk64 = NULL;
-    if ((void *) pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(pFirstDesc.__vptr, ConnectorDescriptor **, 0x64) = this;
+    if ((void *) ConnectorDescriptor::pFirstDesc.__vptr != NULL) {
+        M2C_FIELD(ConnectorDescriptor::pFirstDesc.__vptr, ConnectorDescriptor **, 0x64) = this;
     }
-    pFirstDesc.__vptr = this;
+    ConnectorDescriptor::pFirstDesc.__vptr = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 s32 Connector_Update(const MKVector3 &arg0) {
     Connector *var_r29_291;
     f32 temp_f1_297;
@@ -121,7 +121,7 @@ s32 Connector_Update(const MKVector3 &arg0) {
     void *var_r4_274;
     void *var_r4_326;
 
-    var_r4_274 = pFirstDesc.__vptr;
+    var_r4_274 = ConnectorDescriptor::pFirstDesc.__vptr;
 loop_2:
     if ((var_r4_274 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_274, void **, 0x60), s32 *, 0x138) & 2)) {
         var_r4_274 = M2C_FIELD(var_r4_274, void **, 0x68);

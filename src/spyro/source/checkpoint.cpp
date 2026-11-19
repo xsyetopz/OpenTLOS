@@ -7,9 +7,11 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -28,8 +30,8 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
     u8 var_r3_64;
     void *temp_r5_65;
 
-    if ((void *) pCurrentCheckPoint.unk0 != this) {
-        pCurrentCheckPoint.unk0 = this;
+    if ((void *) CheckPoint::pCurrentCheckPoint.unk0 != this) {
+        CheckPoint::pCurrentCheckPoint.unk0 = this;
         if (this != NULL) {
             temp_r4_63 = this->unk1B8;
             var_r3_64 = 0;
@@ -38,7 +40,7 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
                 var_r3_64 = 1;
             }
             if (var_r3_64 == 0) {
-                gameData.SetSaveChunk(temp_r4_63);
+                ((GameData *) (&GameData::gameData))->SetSaveChunk(temp_r4_63);
             }
         }
     }
@@ -65,11 +67,11 @@ void CheckPoint::Message(MKMessage *arg0) {
         temp_r3_134 = checked_cast<LevelStartMessage *, MKMessage>(arg0);
         if (((u8) this->unk1C0 != 0) && ((u32) M2C_FIELD(temp_r3_134, u32 *, 8) == (ChunkInfo *) this->unk1B8)) {
         case 0xB5:
-            if ((void *) pCurrentCheckPoint.unk0 != this) {
-                if ((void *) pCurrentCheckPoint.unk0 != NULL) {
+            if ((void *) CheckPoint::pCurrentCheckPoint.unk0 != this) {
+                if ((void *) CheckPoint::pCurrentCheckPoint.unk0 != NULL) {
                     spC = 0;
                     sp8 = 0xB4;
-                    M2C_FIELD(M2C_FIELD(pCurrentCheckPoint.unk0, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+                    M2C_FIELD(M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
                 }
                 if ((MKAnimScript *) this->unk80 != NULL) {
                     if ((s32) arg0->unk0 == 0x29) {
@@ -83,7 +85,7 @@ void CheckPoint::Message(MKMessage *arg0) {
         }
         break;
     case 0xB4:
-        if ((void *) pCurrentCheckPoint.unk0 == this) {
+        if ((void *) CheckPoint::pCurrentCheckPoint.unk0 == this) {
             if ((MKAnimScript *) this->unk80 != NULL) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<CheckPointDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x70), 1.0f, 0.0f, 0, -1);
             }
@@ -176,10 +178,10 @@ void CheckPoint::LoadDone() {
         this->unk1C2 = 0;
     }
     if ((u8) this->unk1C2 != 0) {
-        pCustomAnimScrName.unk0 = "P0037_SaveCrystal";
+        KDProp::pCustomAnimScrName.unk0 = "P0037_SaveCrystal";
     }
     KDProp::LoadDone();
-    temp_r4_383 = &loadInfo - 4;
+    temp_r4_383 = &MKProp::loadInfo - 4;
     M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) temp_r4_383 + 4, 0x40);
     var_r4_386 = temp_r4_383 + 0x40;
     temp_r3_391 = this->unk4;
@@ -220,10 +222,10 @@ void CheckPoint::LoadDone() {
         sp40 = (f64) sp10;
         this->unkF8 = (f64) sp10;
     }
-    if (((u8) this->unk1C0 != 0) && ((temp_ret_479 = gGMState.GetCurrState(), (((s32) *temp_ret_479 == 6) != 0)) || ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0)) && ((void *) pCurrentCheckPoint.unk0 == NULL)) {
+    if (((u8) this->unk1C0 != 0) && ((temp_ret_479 = gGMState.GetCurrState(), (((s32) *temp_ret_479 == 6) != 0)) || ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0)) && ((void *) CheckPoint::pCurrentCheckPoint.unk0 == NULL)) {
         SetCurrentCheckPoint((CheckPoint *) (u32) (u64) temp_ret_479);
         if ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0) {
-            pInstance.unk0->Spawn();
+            ((Spyro *) ((Spyro *) Spyro::pInstance.unk0))->Spawn();
         }
     }
     if ((u8) this->unk1C0 != 0) {
@@ -281,7 +283,7 @@ void CheckPoint::Deinit() {
     if ((temp_r3_722 != 0) && (KDSound_IsVoicePlaying(temp_r3_722) != 0)) {
         KDSound_Stop(&this->unk1BC);
     }
-    if ((void *) pCurrentCheckPoint.unk0 == this) {
+    if ((void *) CheckPoint::pCurrentCheckPoint.unk0 == this) {
         NULL->SetCurrentCheckPoint(M2C_ERROR(/* Read from unset register $r4 */));
     }
     KDProp::Deinit();

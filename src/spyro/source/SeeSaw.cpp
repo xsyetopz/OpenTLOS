@@ -101,12 +101,12 @@ void SeeSaw::Update() {
     M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) &this->unk8C + 4, 0x40);
     arg_sp190 = this->unkD0;
     arg_sp198 = this->unkD8;
-    arg_sp1A0 = M2C_FIELD(&zero, f64 *, 0);
-    arg_sp1A8 = M2C_FIELD(&zero, f64 *, 8);
+    arg_sp1A0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    arg_sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_r0_187 = this->unk13C;
     if (temp_r0_187 != 0) {
         temp_r27_190 = temp_r0_187 * 0x10;
-        temp_r3_191 = zero.Current();
+        temp_r3_191 = ((MKHeap *) ((MKHeap *) &MKVector3::zero))->Current();
         if (temp_r3_191 != NULL) {
             var_r3_199 = ((MKHeap *) (temp_r3_191->Main()))->TAlloc(temp_r27_190, NULL, 0, 0U);
         } else {
@@ -315,7 +315,7 @@ void SeeSaw::LoadDone() {
     }
     this->unk12C = var_f4_609;
     this->unk128 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xD4) = (f32) M2C_FIELD(&loadInfo, f32 *, 0x54);
+    M2C_FIELD(this, f32 *, 0xD4) = (f32) M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
     M2C_FIELD(this, f64 *, 0xE0) = (f64) this->unkD0;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) this->unkD8;
 }
@@ -362,18 +362,16 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void SeeSaw::Init() {
     KDProp::Init();
-    this->unkD0 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkD0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk140 = 0;
     this->unk130 = 0.7853982f;
     this->unk134 = 2.0f;
     this->unk13C = 0;
     this->unk138 = 15.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[10], long *)' does
 s32 SeeSawDescriptor::LoadLine(MKIniLine *arg0) {

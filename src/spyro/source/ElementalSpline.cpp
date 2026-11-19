@@ -186,8 +186,8 @@ void ElementalSpline::StateESTurningOffUpdate() {
                 spB1 = 0;
                 spB2 = 1;
                 spB4 = -1;
-                sp88 = M2C_FIELD(&one, f64 *, 0);
-                sp90 = M2C_FIELD(&one, f64 *, 8);
+                sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
                     sp10.GetPos();
@@ -324,8 +324,8 @@ void ElementalSpline::StateESOnUpdate() {
             spB1 = 0;
             spB2 = 1;
             spB4 = -1;
-            sp88 = M2C_FIELD(&one, f64 *, 0);
-            sp90 = M2C_FIELD(&one, f64 *, 8);
+            sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spC0 = 0;
             if (this != NULL) {
                 sp10.GetPos();
@@ -463,8 +463,8 @@ void ElementalSpline::StateESTurningOnUpdate() {
                 spB1 = 0;
                 spB2 = 1;
                 spB4 = -1;
-                sp88 = M2C_FIELD(&one, f64 *, 0);
-                sp90 = M2C_FIELD(&one, f64 *, 8);
+                sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
                     sp10.GetPos();

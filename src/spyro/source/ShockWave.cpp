@@ -419,8 +419,8 @@ void ShockWave::Update() {
                         spC1 = 0;
                         spC2 = 1;
                         spC4 = -1;
-                        sp98 = M2C_FIELD(&one, f64 *, 0);
-                        spA0 = M2C_FIELD(&one, f64 *, 8);
+                        sp98 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
                             sp30.GetPos();
@@ -444,8 +444,8 @@ void ShockWave::Update() {
                         spC1 = 0;
                         spC2 = 1;
                         spC4 = -1;
-                        sp98 = M2C_FIELD(&one, f64 *, 0);
-                        spA0 = M2C_FIELD(&one, f64 *, 8);
+                        sp98 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                        spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
                             sp20.GetPos();

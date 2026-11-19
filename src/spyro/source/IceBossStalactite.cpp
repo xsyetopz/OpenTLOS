@@ -9,6 +9,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/Shatterable.h"
@@ -465,16 +466,16 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 sp178 = 7;
                 sp1A0 = 1;
                 sp1A4 = 0;
-                sp180 = M2C_FIELD(&zero, f64 *, 0);
-                sp188 = M2C_FIELD(&zero, f64 *, 8);
+                sp180 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                sp188 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 sp1B8 = 1;
                 sp1C4 = 2;
                 sp1C0 = 10.0f;
                 sp1B9 = 0;
                 sp1BA = 0;
                 sp1BC = -1;
-                sp190 = M2C_FIELD(&one, f64 *, 0);
-                sp198 = M2C_FIELD(&one, f64 *, 8);
+                sp190 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp198 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp1C8 = 0;
                 sp1A8 = 0.0f;
                 sp1AC = 0.0f;
@@ -633,7 +634,6 @@ void IceBossStalactite::Fire(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'up'
 void IceBossStalactite::Drop(bool arg0, bool arg1) {
     f64 sp20;
     f64 sp18;
@@ -642,9 +642,9 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
     f32 sp8;
 
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) | 0x80);
-    sp8 = -up.unk0;
-    spC = -up.unk4;
-    sp10 = -up.unk8;
+    sp8 = -MKVector3::up.unk0;
+    spC = -MKVector3::up.unk4;
+    sp10 = -MKVector3::up.unk8;
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~0x10);
     M2C_FIELD(this, f64 *, 0x1A8) = (f64) sp8;
     M2C_FIELD(this, f64 *, 0x1B0) = (f64) sp10;
@@ -654,7 +654,6 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
     sp20 = (f64) sp10;
     M2C_FIELD(this, u8 *, 0x246) = (u8) ((M2C_FIELD(this, u8 *, 0x246) & ~0x80) | ((arg1 << 7) & 0x80));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
 void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
@@ -685,8 +684,8 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) | 1);
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) | 0x10);
     M2C_STRUCT_COPY((s32) &arg_sp7C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(&up, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(&up, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
     KDRand_UnitVectorXZ();
     this->unk1C8 = arg_sp60;
     this->unk1D0 = arg_sp68;
@@ -755,7 +754,7 @@ void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 
     this->unk218 = 0.0f;
     if (((u8) M2C_FIELD(this, u8 *, 0x246) >> 7U) & 1) {
         var_r5_1364 = 3;
-        temp_f1_1367 = gameData.unkA0 / gameData.unkA4;
+        temp_f1_1367 = GameData::gameData.unkA0 / GameData::gameData.unkA4;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (temp_f1_1367 == 0.9f) {
             var_r5_1364 = 0;
@@ -897,10 +896,10 @@ void IceBossStalactite::MeltFX() {
                 arg_spC8 = (f64) arg_sp78;
                 arg_spD8 = M2C_FIELD(temp_r3_1663, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp50 = -up.unk0;
-                arg_sp54 = -up.unk4;
+                arg_sp50 = -MKVector3::up.unk0;
+                arg_sp54 = -MKVector3::up.unk4;
                 arg_sp68 = (f32) arg_spD8 + (f32) arg_spC8;
-                arg_sp58 = -up.unk8;
+                arg_sp58 = -MKVector3::up.unk8;
                 arg_sp120 = arg_sp60;
                 arg_sp128 = (f64) arg_sp68;
                 arg_spA0 = (f64) arg_sp50;

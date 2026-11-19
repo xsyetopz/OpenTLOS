@@ -23,7 +23,7 @@ void Projectile::SetAttachment(MKAttachment *arg0) {
     MKAttachment *temp_r3_58;
     this->unk13C = arg0;
     if (((MKAttachment *) this->unk13C != NULL) && ((MKModel *) this->unk4 != NULL)) {
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) &arg_spC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
         temp_r3_58 = this->unk13C;
@@ -209,7 +209,7 @@ void Projectile::Message(MKMessage *arg0) {
 void Projectile::Draw() {
     MKAttachment *temp_r3_490;
     if (((MKAttachment *) this->unk13C != NULL) && ((MKModel *) this->unk4 != NULL)) {
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) &arg_spC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
         temp_r3_490 = this->unk13C;
@@ -327,12 +327,11 @@ void Projectile::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void Projectile::Reset() {
     GameProp::Reset();
-    MKModel_SetWorldMatrix(this->unk4, identity);
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkD0 = M2C_FIELD(&zero, f64 *, 8);
+    MKModel_SetWorldMatrix(this->unk4, Matrix::identity);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk14C &= ~0x80;
     this->unk14C &= ~0x40;
     this->unk140 = 10.0f;
@@ -362,7 +361,6 @@ void Projectile::Reset() {
     this->unk124 = -1;
     this->unk128 = 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Projectile::Deinit() {
@@ -398,11 +396,10 @@ void Projectile::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void Projectile::Init() {
     GameProp::Init();
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkD0 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk14C &= ~0x80;
     this->unk14C &= ~0x40;
     this->unk140 = 10.0f;
@@ -434,7 +431,6 @@ void Projectile::Init() {
     this->unk124 = -1;
     this->unk128 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {

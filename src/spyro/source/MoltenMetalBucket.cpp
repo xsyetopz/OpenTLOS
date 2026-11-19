@@ -525,20 +525,18 @@ void MoltenMetalBucket::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void MoltenMetalBucket::Init() {
     GameProp::Init();
-    this->unkC8 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unkD8 = M2C_FIELD(&zero, f64 *, 0);
-    this->unkE0 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    this->unkE0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkE8 &= ~0x80;
     this->unk178 &= ~0x80;
     M2C_FIELD(this, f32 *, 0x168) = 0.0f;
     M2C_FIELD(this, f32 *, 0x16C) = 0.0f;
     M2C_FIELD(this, f32 *, 0x170) = 0.0f;
 }
-#endif
 
 void MoltenMetalBucketDescriptor::Deinit() {
     KDPropExDescriptor::Deinit();

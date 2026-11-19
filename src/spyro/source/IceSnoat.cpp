@@ -903,7 +903,7 @@ loop_4:
             sp88.unk10 = sp88.unk20;
             sp88.unk18 = sp88.unk28;
         }
-        M2C_STRUCT_COPY(temp_r28_1398, &identity, 0x40);
+        M2C_STRUCT_COPY(temp_r28_1398, &Matrix::identity, 0x40);
         M2C_FIELD(temp_r28_1398, f32 *, 0x30) = (f32) sp88.unk10;
         M2C_FIELD(temp_r28_1398, f32 *, 0x34) = unksp9C;
         M2C_FIELD(temp_r28_1398, f32 *, 0x38) = (f32) sp88.unk18;

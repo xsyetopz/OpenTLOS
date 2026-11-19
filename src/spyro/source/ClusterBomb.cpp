@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Explosion3.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKCollision.h"
@@ -33,7 +34,7 @@ loop_4:
         temp_r6_86 = *var_r31_49;
         if (temp_r6_86 != NULL) {
             if ((s32) M2C_FIELD(temp_r6_86, s32 *, 0x24) != 2) {
-                M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp40 = temp_r6_86->unk0;
                 arg_sp44 = temp_r6_86->unk4;
                 arg_sp48 = temp_r6_86->unk8;
@@ -347,7 +348,7 @@ loop_52:
                     KDRand_Vector(spD8, *((MKVector3 *) &spC8));
                     ((Explosion3 *) (M2C_FIELD(temp_r25_515, Explosion3 **, 0x60)))->Trigger(*temp_r28_593, 2.0f, 1U, 0U, spD8, NULL);
                     sp198.unk4 = 0;
-                    temp_f27_536 = gameData.unk70.GetBreathAttackDamage(0, 1, 3);
+                    temp_f27_536 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(0, 1, 3);
                     sp198.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f27_536, 1, 3, 0, 0, 0, -1);
                     sp198.unk10 = M2C_FIELD(temp_r28_593, f64 *, 0);
                     sp198.unk18 = M2C_FIELD(temp_r28_593, f64 *, 8);

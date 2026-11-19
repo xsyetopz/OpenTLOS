@@ -2,6 +2,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "spyro/source/KDProp.h"
 #include "common/Source/MKModel.h"
@@ -62,7 +63,7 @@ void DamageShieldEffect::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'unksp2DC'
 void DamageShieldEffect::DrawRipples() {
     f64 sp330;
     f64 sp328;
@@ -162,7 +163,7 @@ void DamageShieldEffect::DrawRipples() {
 
     MKMaterial_SetMaterial(this->unk98);
     MKPrimitive(0xC, 0);
-    MKSetMatrix(identity);
+    MKSetMatrix(Matrix::identity);
     sp120 = 0.0f;
     sp118 = 1.0f;
     sp11C = 0.0f;
@@ -305,7 +306,6 @@ void DamageShieldEffect::DrawRipples() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void DamageShieldEffect::Draw() {
     f64 sp20;
     f64 sp18;
@@ -318,7 +318,7 @@ void DamageShieldEffect::Draw() {
     if ((s32) this->unk280 != 3) {
         MKView_Push();
         MKView_SetRenderTarget(this->unk90, NULL);
-        MKView_Clear(3, zero, 0.0f, 0U);
+        MKView_Clear(3, MKVector4::zero, 0.0f, 0U);
         DrawRipples();
         MKView_Pop();
         gRenderState = this->unk94;
@@ -334,7 +334,6 @@ void DamageShieldEffect::Draw() {
         gRenderState = NULL;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void DamageShieldEffect::Update() {

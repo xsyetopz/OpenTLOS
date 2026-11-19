@@ -4,6 +4,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
@@ -709,7 +710,7 @@ void FootStepFX::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal type
 void FootStepFX::Draw() {
     f64 sp28;
     f64 sp20;
@@ -736,7 +737,7 @@ void FootStepFX::Draw() {
         temp_f2_1148 = sp8 + 0.05f;
         sp8 = temp_f2_1148;
         MKView_SetProjection(0.0f, temp_f2_1148, 0.0f);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         var_f30_1155 = 1.0f;
         var_r30_1156 = 0;
         temp_r31_1157 = this->unk54;

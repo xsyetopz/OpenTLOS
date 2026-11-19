@@ -75,7 +75,7 @@ void MCSelectCardScreen::ClearDisplay() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'numCardsPresent'
+#if 0 // DRAFT: expression syntax error
 void MCSelectCardScreen::UpdateDisplay() {
     s32 spB4;
     s32 spB0;
@@ -146,7 +146,7 @@ void MCSelectCardScreen::UpdateDisplay() {
     void **temp_r3_328;
     void *var_r30_196;
 
-    if ((u32) numCardsPresent.unk0 != 0U) {
+    if ((u32) KDMemoryCard::numCardsPresent.unk0 != 0U) {
         temp_r3_104 = this->unkD0;
         spB0 = 2;
         spB4 = 0;
@@ -263,7 +263,7 @@ void MCSelectCardScreen::Update() {
     UIScreen::Update();
     if ((UIContainer *) this->unkC8 == (UIContainer *)3) {
         if (UIControls_Pressed((FrontEndControls) 0xC, -1) != 0) {
-            if ((u8) bNewGame != 0) {
+            if ((u8) MemoryCardScreen::bNewGame != 0) {
                 KDSound_Play(GS_MenuSelect, 0U, -1);
                 FrontEnd_GoToNewGame();
                 return;
@@ -275,8 +275,8 @@ void MCSelectCardScreen::Update() {
             PopScreen();
             return;
         }
-        if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && ((u32) numCardsPresent.unk0 != 0U)) {
-            selectedCard.__vptr = ((KDMemoryCard *) (M2C_FIELD(this->unkDC, KDMemoryCard **, 0x68)))->GetCard((s32) (u32) (u64) KDSound_Play(GS_MenuSelect, 0U, -1));
+        if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && ((u32) KDMemoryCard::numCardsPresent.unk0 != 0U)) {
+            MemoryCardScreen::selectedCard.__vptr = ((KDMemoryCard *) (M2C_FIELD(this->unkDC, KDMemoryCard **, 0x68)))->GetCard((s32) (u32) (u64) KDSound_Play(GS_MenuSelect, 0U, -1));
             this->unkC8 = (UIContainer *)4;
         }
         goto block_10;
@@ -289,7 +289,7 @@ block_10:
         switch (temp_r0_418) {                      /* irregular */
         case 0:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                selectedCard.__vptr = autosaveCard;
+                MemoryCardScreen::selectedCard.__vptr = autosaveCard;
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
@@ -308,14 +308,14 @@ block_54:
             this->unkC8 = (UIContainer *)2;
         case 2:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                selectedCard.__vptr = autosaveCard;
+                MemoryCardScreen::selectedCard.__vptr = autosaveCard;
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
             }
-            if (((u8) M2C_FIELD(this, u8 *, 0xF0) != 0) && ((u32) numCardsPresent.unk0 == 1U)) {
+            if (((u8) M2C_FIELD(this, u8 *, 0xF0) != 0) && ((u32) KDMemoryCard::numCardsPresent.unk0 == 1U)) {
                 temp_r3_499 = autosaveCard->GetFirstAvailable();
-                selectedCard.__vptr = temp_r3_499;
+                MemoryCardScreen::selectedCard.__vptr = temp_r3_499;
                 temp_r3_499->SetState((KDMCState) 3);
                 ClearDisplay();
                 this->unkC8 = (UIContainer *)5;
@@ -324,7 +324,7 @@ block_54:
             this->unkC8 = (UIContainer *)3;
         case 3:
             if (((KDMemoryCard *) autosaveCard != NULL) && (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0))) {
-                selectedCard.__vptr = autosaveCard;
+                MemoryCardScreen::selectedCard.__vptr = autosaveCard;
                 Autosave_Reset();
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
@@ -339,28 +339,28 @@ block_54:
             ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_535)))->SetState((KDMCState) 2);
             return;
         case 4:
-            if ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 9) == 0) {
-                if ((KDMemoryCard *) autosaveCard == (void *) selectedCard.__vptr) {
+            if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) {
+                if ((KDMemoryCard *) autosaveCard == (void *) MemoryCardScreen::selectedCard.__vptr) {
                     Autosave_Reset();
                     ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                     return;
                 }
-                selectedCard.__vptr = NULL;
+                MemoryCardScreen::selectedCard.__vptr = NULL;
                 this->unkC8 = (UIContainer *)3;
                 UpdateDisplay();
                 return;
             }
-            selectedCard.__vptr->SetState((KDMCState) 3);
+            ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 3);
             ClearDisplay();
             goto block_54;
         case 5:
-            if (((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 8) != 0)) {
-                if ((KDMemoryCard *) autosaveCard == (void *) selectedCard.__vptr) {
+            if (((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
+                if ((KDMemoryCard *) autosaveCard == (void *) MemoryCardScreen::selectedCard.__vptr) {
                     Autosave_Reset();
                     ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                     return;
                 }
-                selectedCard.__vptr = NULL;
+                MemoryCardScreen::selectedCard.__vptr = NULL;
                 this->unkC8 = (UIContainer *)3;
                 UpdateDisplay();
                 return;
@@ -375,8 +375,8 @@ block_54:
 #if 0 // DRAFT: expression syntax error
 void MCSelectCardScreen::OnEnter() {
     MemoryCardScreen::OnEnter();
-    selectedCard.__vptr = NULL;
-    selectedFile.__vptr = (void *)-1;
+    MemoryCardScreen::selectedCard.__vptr = NULL;
+    MemoryCardScreen::selectedFile.__vptr = (void *)-1;
     ClearDisplay();
     this->unkC8 = NULL;
     M2C_FIELD(this, s8 *, 0xF0) = (s8) (ui_cast<MCSaveScreen *, UIScreen *>(ui_cast<P8UISystem, P11UIContainer>__FP11UIContainer(GetRoot())->unk98) != NULL);

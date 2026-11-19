@@ -158,10 +158,10 @@ void SB2::Arbitrate() {
         sp70 = (f64) sp30;
         temp_f10_125 = (f32) M2C_FIELD(temp_r5_88, f64 *, 0x128);
         sp68 = (f64) sp28;
-        sp40 = (up.unk0 * unksp7C) - (up.unk4 * (f32) sp78);
+        sp40 = (MKVector3::up.unk0 * unksp7C) - (MKVector3::up.unk4 * (f32) sp78);
         temp_f11_133 = (f32) M2C_FIELD(temp_r5_88, f64 *, 0x130);
-        sp38 = (up.unk4 * (f32) sp80) - (up.unk8 * unksp7C);
-        sp3C = (up.unk8 * (f32) sp78) - (up.unk0 * (f32) sp80);
+        sp38 = (MKVector3::up.unk4 * (f32) sp80) - (MKVector3::up.unk8 * unksp7C);
+        sp3C = (MKVector3::up.unk8 * (f32) sp78) - (MKVector3::up.unk0 * (f32) sp80);
         sp50 = temp_f9_89;
         sp98 = (f64) sp38;
         spA0 = (f64) sp40;
@@ -2084,17 +2084,15 @@ void SB2::GraphFollowingSetGoal() {
     GraphFollowingAny();
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void SB2::GraphFollowingOff() {
     this->unk460 &= 0xFFFFBFFF;
     this->unk448 = NULL;
     this->unk44C = NULL;
     this->unk450 = NULL;
     this->unk454 = 0;
-    M2C_FIELD(this, f64 *, 0x438) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x440) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x438) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x440) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'GraphFollowBehaviours'
 void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, GraphFollowBehaviours arg2, AITargetData *arg3) {
@@ -2654,7 +2652,7 @@ void SB2::WallAvoidance() {
     sp170 = 0;
     sp174 = -1;
     sp178 = 0;
-    if ((MKCollision_SweepSphereCollide(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8), temp_f29_4217, (MKCollisionResult *) &sp128, (MKCollisionMode) 5, 0) != 0) && (((sp140 * up.unk8) + ((sp138 * up.unk0) + (sp13C * up.unk4))) < 0.6f)) {
+    if ((MKCollision_SweepSphereCollide(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8), temp_f29_4217, (MKCollisionResult *) &sp128, (MKCollisionMode) 5, 0) != 0) && (((sp140 * MKVector3::up.unk8) + ((sp138 * MKVector3::up.unk0) + (sp13C * MKVector3::up.unk4))) < 0.6f)) {
         temp_r5_4382 = this + (this->unk3F8 * 0x98);
         M2C_FIELD(temp_r5_4382, f32 *, 0x110) = (f32) (((1.0f - sp168) * fSBInverseWeight[0xA]) + M2C_FIELD(temp_r5_4382, f32 *, 0x110));
         temp_r5_4390 = (this->unk3F8 * 0x98) + 0x190;
@@ -3258,7 +3256,7 @@ void SB2::Wander() {
     Seek();
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SB2::WanderSetGoal() {
     f64 sp3C0;                                      /* compiler-managed */
     f64 sp3B8;
@@ -3406,16 +3404,16 @@ void SB2::WanderSetGoal() {
     void *temp_r4_5891;
     void *temp_r4_5973;
 
-    sp3B8 = M2C_FIELD(&zero, f64 *, 0);
-    sp3C0 = M2C_FIELD(&zero, f64 *, 8);
-    sp3A8 = M2C_FIELD(&zero, f64 *, 0);
-    sp3B0 = M2C_FIELD(&zero, f64 *, 8);
-    sp398 = M2C_FIELD(&zero, f64 *, 0);
-    sp3A0 = M2C_FIELD(&zero, f64 *, 8);
-    sp388 = M2C_FIELD(&zero, f64 *, 0);
-    sp390 = M2C_FIELD(&zero, f64 *, 8);
-    sp18 = M2C_FIELD(&zero, f64 *, 0);
-    sp20 = M2C_FIELD(&zero, f64 *, 8);
+    sp3B8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp3C0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp3A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp3B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp398 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp3A0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp388 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp390 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp20 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if ((s32) this->unk3F8 == 0) {
         if ((u8) this->unk418 != 0) {
             temp_r3_5601 = this->unk0;
@@ -3497,9 +3495,9 @@ void SB2::WanderSetGoal() {
                         sp278 = M2C_FIELD(temp_r3_5819, f64 *, 0x30);
                         sp280 = M2C_FIELD(temp_r3_5819, f64 *, 0x38);
                         this->unk4->GetFirstIntersectionPlane(*((MKVector3 *) &sp278), *((MKVector3 *) &sp3B8), (MKVector3 *) &sp398, (MKVector3 *) &sp388);
-                        spB8 = (up.unk4 * (f32) sp390) - (up.unk8 * unksp38C);
-                        spBC = (up.unk8 * (f32) sp388) - (up.unk0 * (f32) sp390);
-                        spC0 = (up.unk0 * unksp38C) - (up.unk4 * (f32) sp388);
+                        spB8 = (MKVector3::up.unk4 * (f32) sp390) - (MKVector3::up.unk8 * unksp38C);
+                        spBC = (MKVector3::up.unk8 * (f32) sp388) - (MKVector3::up.unk0 * (f32) sp390);
+                        spC0 = (MKVector3::up.unk0 * unksp38C) - (MKVector3::up.unk4 * (f32) sp388);
                         sp3A8 = (f64) spB8;
                         sp3B0 = (f64) spC0;
                         temp_r3_5852 = this->unk0->unk8;
@@ -3514,8 +3512,8 @@ void SB2::WanderSetGoal() {
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
-                        sp338.unk40 = M2C_FIELD(&zero, f64 *, 0);
-                        sp338.unk48 = M2C_FIELD(&zero, f64 *, 8);
+                        sp338.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                        sp338.unk48 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                         temp_r3_5890 = this->unk0;
                         temp_r4_5891 = temp_r3_5890->unk8;
                         temp_f1_5892 = M2C_FIELD(temp_r4_5891, f64 *, 0x30);
@@ -3557,18 +3555,18 @@ void SB2::WanderSetGoal() {
                         sp1D8 = (f64) sp88;
                         sp1E0 = (f64) sp90;
                         sp80 = temp_f7_5981;
-                        temp_f8_5999 = (up.unk4 * (f32) sp1E0) - (up.unk8 * unksp1DC);
+                        temp_f8_5999 = (MKVector3::up.unk4 * (f32) sp1E0) - (MKVector3::up.unk8 * unksp1DC);
                         sp78 = temp_f10_5977;
-                        temp_f7_6003 = (up.unk8 * (f32) sp1D8) - (up.unk0 * (f32) sp1E0);
+                        temp_f7_6003 = (MKVector3::up.unk8 * (f32) sp1D8) - (MKVector3::up.unk0 * (f32) sp1E0);
                         sp1D0 = (f64) sp80;
                         sp7C = temp_f9_5979;
-                        sp130 = (up.unk0 * unksp1DC) - (up.unk4 * (f32) sp1D8);
+                        sp130 = (MKVector3::up.unk0 * unksp1DC) - (MKVector3::up.unk4 * (f32) sp1D8);
                         sp1C8 = (f64) sp78;
                         sp128 = temp_f8_5999;
                         sp12C = temp_f7_6003;
                         sp338.unk38 = (f64) sp130;
                         sp338.unk30 = (f64) sp128;
-                        temp_f5_6023 = (f32) acos(M2C_BITWISE(f32, &up), temp_r4_5973, ((f32) sp1D0 * sp3B0) + (((f32) sp1C8 * (f32) sp3A8) + (unksp1CC * unksp3AC)), (f64) sp128, (f32) sp1C8, sp3B0, (f32) sp1D0, (f64) sp130, temp_f7_6003, temp_f8_5999, temp_f9_5979, temp_f10_5977, up.unk8, up.unk4, unksp1DC);
+                        temp_f5_6023 = (f32) acos(M2C_BITWISE(f32, &MKVector3::up), temp_r4_5973, ((f32) sp1D0 * sp3B0) + (((f32) sp1C8 * (f32) sp3A8) + (unksp1CC * unksp3AC)), (f64) sp128, (f32) sp1C8, sp3B0, (f32) sp1D0, (f64) sp130, temp_f7_6003, temp_f8_5999, temp_f9_5979, temp_f10_5977, MKVector3::up.unk8, MKVector3::up.unk4, unksp1DC);
                         sp10 = (M2C_BITWISE(f32, sp338.unk38) * sp3B0) + ((M2C_BITWISE(f32, sp338.unk30) * (f32) sp3A8) + (M2C_BITWISE(f32, sp338.unk34) * unksp3AC));
                         sp14 = (M2C_BITWISE(s32, sp10) & 0x80000000) | 0x3F800000;
                         this->unk410 = -M2C_BITWISE(f32, sp14) * temp_f5_6023;
@@ -3586,9 +3584,9 @@ void SB2::WanderSetGoal() {
                         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
                         temp_f7_6078 = (f32) sp390 * -1.0f;
                         sp390 = temp_f7_6078;
-                        sp70 = (up.unk0 * unksp38C) - (up.unk4 * (f32) sp388);
-                        sp68 = (up.unk4 * temp_f7_6078) - (up.unk8 * unksp38C);
-                        sp6C = (up.unk8 * (f32) sp388) - (up.unk0 * temp_f7_6078);
+                        sp70 = (MKVector3::up.unk0 * unksp38C) - (MKVector3::up.unk4 * (f32) sp388);
+                        sp68 = (MKVector3::up.unk4 * temp_f7_6078) - (MKVector3::up.unk8 * unksp38C);
+                        sp6C = (MKVector3::up.unk8 * (f32) sp388) - (MKVector3::up.unk0 * temp_f7_6078);
                         sp3B0 = (f64) sp70;
                         sp3A8 = (f64) sp68;
                         temp_r3_6101 = this->unk0->unk8;
@@ -3613,12 +3611,12 @@ void SB2::WanderSetGoal() {
                         sp178 = (f64) sp48;
                         sp180 = (f64) sp50;
                         sp40 = temp_f10_6143;
-                        temp_f9_6158 = (up.unk4 * (f32) sp180) - (up.unk8 * unksp17C);
-                        temp_f7_6160 = (up.unk8 * (f32) sp178) - (up.unk0 * (f32) sp180);
+                        temp_f9_6158 = (MKVector3::up.unk4 * (f32) sp180) - (MKVector3::up.unk8 * unksp17C);
+                        temp_f7_6160 = (MKVector3::up.unk8 * (f32) sp178) - (MKVector3::up.unk0 * (f32) sp180);
                         sp170 = (f64) sp40;
                         sp38 = temp_f12_6139;
                         sp3C = temp_f11_6141;
-                        sp120 = (up.unk0 * unksp17C) - (up.unk4 * (f32) sp178);
+                        sp120 = (MKVector3::up.unk0 * unksp17C) - (MKVector3::up.unk4 * (f32) sp178);
                         sp168 = (f64) sp38;
                         sp118 = temp_f9_6158;
                         sp11C = temp_f7_6160;
@@ -4098,7 +4096,7 @@ void SB2::Init() {
 
 #if 0 // DRAFT: undefined identifier 'vBaseHeading'
 void SB2_cpp::__sinit() {
-    M2C_FIELD(&vBaseHeading, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&vBaseHeading, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&vBaseHeading, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&vBaseHeading, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 #endif

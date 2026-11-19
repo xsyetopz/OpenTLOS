@@ -1,5 +1,7 @@
 #include "spyro/source/SpyroUtils.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/EventCamera.h"
@@ -515,7 +517,7 @@ void SpyroSoundPlayer::FadeOut(int arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void SpyroSoundPlayer::FadeIn(int arg0, int arg1) {
     s32 temp_r0_846;
     s32 temp_r31_832;
@@ -535,9 +537,9 @@ void SpyroSoundPlayer::FadeIn(int arg0, int arg1) {
         if (var_r5_0 != -1) {
 
         } else {
-            temp_r3_844 = gameData.unk158 << 5;
-            temp_r0_846 = *(&gameData.unk70 + (temp_r3_844 + 0x7C));
-            temp_r3_848 = &gameData.unk70 + (temp_r3_844 + 0x64);
+            temp_r3_844 = GameData::gameData.unk158 << 5;
+            temp_r0_846 = *(&GameData::gameData.unk70 + (temp_r3_844 + 0x7C));
+            temp_r3_848 = &GameData::gameData.unk70 + (temp_r3_844 + 0x64);
             if (temp_r0_846 == 3) {
                 if (((s32) M2C_FIELD(temp_r3_848, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_848, s32 *, 4) == 3)) {
                     var_r6_834 = 1;
@@ -601,7 +603,7 @@ void SpyroSoundPlayer::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: function call 'Init(SpyroSoundPlayer *, float, float)' does not match
 void SpyroSoundPlayer::Init() {
     SpyroSoundPlayer *temp_r30_1001;
     f64 temp_f30_993;
@@ -609,8 +611,8 @@ void SpyroSoundPlayer::Init() {
     s32 var_r29_997;
     s32 var_r31_998;
 
-    temp_f30_993 = M2C_FIELD(&zero, f64 *, 0);
-    temp_f31_996 = M2C_FIELD(&zero, f64 *, 8);
+    temp_f30_993 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    temp_f31_996 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r29_997 = 0;
     var_r31_998 = 0;
     do {

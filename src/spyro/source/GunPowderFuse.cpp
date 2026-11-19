@@ -11,6 +11,7 @@
 #include "spyro/source/Coronas.h"
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameData.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
@@ -517,10 +518,10 @@ void GunPowderFuse::Draw() {
             MKPrimitive(0xC, 0x10);
             MKSetMatrix(*((Matrix *) &arg_sp350));
             MKBegin((this->unk2B4 + 1) * 2);
-            temp_f22_744 = up.unk4;
+            temp_f22_744 = MKVector3::up.unk4;
             var_r29_745 = 0;
-            temp_f21_746 = up.unk8;
-            temp_f20_748 = up.unk0;
+            temp_f21_746 = MKVector3::up.unk8;
+            temp_f20_748 = MKVector3::up.unk0;
 loop_44:
             if (var_r29_745 < (s32) (this->unk2B4 + 1)) {
                 arg_sp2D8.GetPos();
@@ -676,9 +677,9 @@ loop_44:
         }
         MKMaterial_SetMaterial(this->unk2A4);
         var_r28_1093 = GetFirst();
-        temp_f24_1094 = up.unk4;
-        temp_f25_1096 = up.unk8;
-        temp_f26_1097 = up.unk0;
+        temp_f24_1094 = MKVector3::up.unk4;
+        temp_f25_1096 = MKVector3::up.unk8;
+        temp_f26_1097 = MKVector3::up.unk0;
 loop_116:
         if (var_r28_1093 != NULL) {
             if (var_r28_1093->unkC == 1.0f) {
@@ -1006,7 +1007,7 @@ void GunPowderFuse::Update() {
         temp_r3_1665 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x3C)(gb.unk0);
         if (temp_r3_1665 != NULL) {
             gb.GetSpyro();
-            if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) gameData.unk158 == 0) && ((s32) *(&gameData.unk70 + ((gameData.unk158 << 5) + 0x7C)) == 0)) {
+            if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) GameData::gameData.unk158 == 0) && ((s32) *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x7C)) == 0)) {
                 temp_r3_1692 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
                 sp170 = M2C_FIELD(temp_r3_1692, f64 *, 0x30);
                 sp178 = M2C_FIELD(temp_r3_1692, f64 *, 0x38);
@@ -1062,7 +1063,7 @@ loop_15:
                 goto loop_15;
             }
         }
-        var_r4_1844 = pFirstDesc.unk0;
+        var_r4_1844 = LiquidFXDescriptor::pFirstDesc.unk0;
 loop_18:
         if ((var_r4_1844 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_1844, void **, 0xE8), s32 *, 0x138) & 2)) {
             var_r4_1844 = M2C_FIELD(var_r4_1844, s8 **, 0xF0);

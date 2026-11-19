@@ -317,7 +317,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_OnlyRangeAttack(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match
 u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -359,15 +359,15 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
 
     temp_r3_567 = this->unkC;
     if (((void *) temp_r3_567->unk638 != NULL) && (temp_r3_567->IsInsideEnemyRegion() == 0)) {
-        spC8 = M2C_FIELD(&zero, f64 *, 0);
-        spD0 = M2C_FIELD(&zero, f64 *, 8);
-        spB8 = M2C_FIELD(&zero, f64 *, 0);
-        spC0 = M2C_FIELD(&zero, f64 *, 8);
+        spC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        spB8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        spC0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r3_581 = this->unkC;
-        sp8 = M2C_FIELD(&zero, f64 *, 0);
-        sp10 = M2C_FIELD(&zero, f64 *, 8);
+        sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r4_588 = this->unkC;
-        temp_f31_589 = temp_r3_581->GetCollisionRadius(M2C_FIELD(&zero, f64 *, 0));
+        temp_f31_589 = temp_r3_581->GetCollisionRadius(M2C_FIELD(&MKVector3::zero, f64 *, 0));
         temp_r4_588->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_588->unk700), (MKVector3 *) &spC8, (MKVector3 *) &spB8);
         temp_f0_597 = 2.0f * temp_f31_589;
         if (150.0f > temp_f0_597) {

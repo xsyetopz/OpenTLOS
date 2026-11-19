@@ -1,4 +1,5 @@
 #include "spyro/source/PhrasePlayerProperty.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
@@ -11,15 +12,15 @@ void PhrasePlayerProperty::Command(int arg0) {
 
     switch (arg0) {                                 /* irregular */
     case 1:
-        temp_r30_51 = pInstanceMem.__vptr;
+        temp_r30_51 = KDProperty::pInstanceMem.__vptr;
         temp_r31_52 = this->unk8;
         *(temp_r30_51 + temp_r31_52) = PhrasePlayer_PlayEvent(this->unk4);
         return;
     case 2:
-        PhrasePlayer_StopEvent(*(pInstanceMem.__vptr + this->unk8));
+        PhrasePlayer_StopEvent(*(KDProperty::pInstanceMem.__vptr + this->unk8));
         return;
     case 3:
-        PhrasePlayer_StopEvent(*(pInstanceMem.__vptr + this->unk8));
+        PhrasePlayer_StopEvent(*(KDProperty::pInstanceMem.__vptr + this->unk8));
         return;
     }
 }

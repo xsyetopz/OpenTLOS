@@ -199,11 +199,11 @@ block_14:
     arg_sp30 = arg_sp150 + (f32) arg_spF0;
     arg_sp100 = (f64) arg_sp30;
     arg_sp14 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
-    gb.EmitDust(*((MKVector3 *) &arg_spF8), zero, arg_sp14, 0.0f);
+    gb.EmitDust(*((MKVector3 *) &arg_spF8), MKVector3::zero, arg_sp14, 0.0f);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: expression syntax error
 void FlyingMonkey::Collided(MKCollisionResult &arg0) {
     s8 spD9;
     s8 spD8;
@@ -302,8 +302,8 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                 spC9 = 0;
                 spCA = 1;
                 spCC = -1;
-                spA0 = M2C_FIELD(&one, f64 *, 0);
-                spA8 = M2C_FIELD(&one, f64 *, 8);
+                spA0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (temp_r9_529 != NULL) {
                     sp18.GetPos();

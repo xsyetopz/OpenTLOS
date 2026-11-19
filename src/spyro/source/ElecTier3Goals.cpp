@@ -384,7 +384,7 @@ u8 ElecTier3Goal_Think::IsFollowingSpawnPath() {
     return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 4U) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f64 spC0;
     f64 spB8;
@@ -433,7 +433,7 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
 
     temp_r3_819 = this->unkC;
     var_r0_823 = 0;
-    if ((temp_r3_819->unk710.unk0 == zero.unk0) && (temp_r3_819->unk710.unk4 == zero.unk4) && (temp_r3_819->unk710.unk8 == zero.unk8)) {
+    if ((temp_r3_819->unk710.unk0 == MKVector3::zero.unk0) && (temp_r3_819->unk710.unk4 == MKVector3::zero.unk4) && (temp_r3_819->unk710.unk8 == MKVector3::zero.unk8)) {
         var_r0_823 = 1;
     }
     if (var_r0_823 != 0) {

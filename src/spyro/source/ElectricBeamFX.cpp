@@ -198,14 +198,14 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     arg_spB0 = (f64) arg_sp30;
     this->unk30.AddNode(*((MKVector3 *) &arg_spA8));
     this->unk30.AddNode(*((MKVector3 *) &this->unk20));
-    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp20 = 0.0f;
     arg_sp18 = 0.0f;
     arg_sp1C = 1.0f;
     arg_spA0 = (f64) arg_sp20;
     arg_sp98 = (f64) arg_sp18;
     KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_sp98);
-    M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_spC0.RotateRoll((Matrix *) &arg_spC0, this->unk1E8);
     temp_r3_428 = &this->unk1A0;
     temp_r3_428->Multiply(temp_r3_428, (Matrix *) &arg_spC0);
@@ -296,14 +296,14 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     arg_spC0 = (f64) arg_sp30;
     this->unk30.AddNode(*((MKVector3 *) &arg_spB8));
     this->unk30.AddNode(*((MKVector3 *) &this->unk20));
-    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_sp20 = 0.0f;
     arg_sp18 = 0.0f;
     arg_sp1C = 1.0f;
     arg_spB0 = (f64) arg_sp20;
     arg_spA8 = (f64) arg_sp18;
     KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_spA8);
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     arg_spD0.RotateRoll((Matrix *) &arg_spD0, this->unk1E8);
     temp_r3_664 = &this->unk1A0;
     temp_r3_664->Multiply(temp_r3_664, (Matrix *) &arg_spD0);
@@ -400,7 +400,7 @@ void ElectricBeam::UpdateWiggleBones() {
             arg_sp78 = (f32) arg_sp118 * var_f3_978;
             arg_sp140 = (f64) arg_sp70;
             arg_sp148 = (f64) arg_sp78;
-            M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r26_1006 = this + var_r27_861;
             arg_sp60 = -M2C_FIELD(temp_r26_1006, f32 *, 0x60);
             arg_sp64 = -M2C_FIELD(temp_r26_1006, f32 *, 0x64);
@@ -431,7 +431,7 @@ void ElectricBeam::UpdateWiggleBones() {
             arg_spB0 = (f64) arg_sp30;
             arg_sp180 = (f64) arg_sp30;
             arg_sp188 = (f64) arg_sp38;
-            M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             arg_sp190 = (f32) arg_sp170;
             arg_sp194 = arg_sp174;
             arg_sp198 = (f32) arg_sp178;
@@ -464,7 +464,7 @@ void ElectricBeam::UpdateWiggleBones() {
 #if 0 // DRAFT: undefined identifier 'arg_spC'
 void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_1256;
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &arg0->unkC + 4, 0x40);
     temp_r31_1256 = M2C_FIELD(M2C_FIELD(this, void **, 0x20), s16 *, 0x70);
     ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, (Matrix *) &arg_sp10, (AnimationMatrixPosition) 4, 0U);
@@ -509,7 +509,7 @@ void ElectricBeam::Init() {
         M2C_FIELD(temp_r26_1339, f64 *, 0x68) = sp8.unk8;
         MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, temp_r26_1339 + 0x60);
         temp_r5_1350 = temp_r26_1339 + 0x6C;
-        M2C_STRUCT_COPY((s32) temp_r5_1350 + 4, (s32) (&identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) temp_r5_1350 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         var_r5_1315 = temp_r5_1350 + 0x40;
         var_r25_1318 += 1;
         var_r30_1322 += 0x50;
@@ -534,6 +534,6 @@ void ElectricBeam::Init() {
     this->unk1E4 = 0;
     this->unk1F0 = MKMaterial_Create((s8 *) &lit_stringBase0.unk20);
     this->unk1F4 = 0;
-    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
 }
 #endif

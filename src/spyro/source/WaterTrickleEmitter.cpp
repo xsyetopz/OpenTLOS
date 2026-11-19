@@ -113,12 +113,12 @@ void WaterTrickleEmitter::LoadDone() {
     }
     this->unkA0.SetIdentity();
     temp_r3_239 = &this->unkA0;
-    temp_r3_239->RotatePYR((Matrix *) temp_r3_239, loadInfo + 0x50);
+    temp_r3_239->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
     temp_r3_245 = &this->unkA0;
-    temp_r3_245->Scale3x3((Matrix *) temp_r3_245, loadInfo + 0x60);
-    this->unkA0.unk28 = M2C_FIELD(&loadInfo, f32 *, 0x40);
-    this->unkA0.unk2C = M2C_BITWISE(f32, loadInfo.__vptr);
-    this->unkA0.unk30 = loadInfo.unk48;
+    temp_r3_245->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
+    this->unkA0.unk28 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
+    this->unkA0.unk2C = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
+    this->unkA0.unk30 = MKProp::loadInfo.unk48;
     this->unkA0.unk34 = 1.0f;
     this->unkA0.unk3C = _table_sinf(1.5707964f + this->unkA0.unk38);
 }
