@@ -189,11 +189,11 @@ block_28:
 }
 #endif
 
-#if 0 // DRAFT: declaration syntax error
+class CutsceneSystem;
 void *Lever::Update() {
-    s32 sp8;
     KDSoundPlayer *temp_r3_388;
     KDSynkerPlayer3 *temp_r3_354;
+    LeverDescriptor *desc;
     s32 temp_r0_404;
     s32 var_r4_381;
     u8 var_r27_350;
@@ -214,15 +214,15 @@ void *Lever::Update() {
     if (var_r27_350 != 0) {
         var_r4_381 = GS_LavaLeverPullStart;
     } else {
-        var_r4_381 = M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4);
+        desc = checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        var_r4_381 = M2C_FIELD(desc, s32 *, 0xE4);
     }
     temp_r3_388 = this->unk100;
     if (temp_r3_388 != NULL) {
-        sp8 = 1;
-        ((KDSoundFader *) temp_r3_388)->Update(var_r4_381, 1U, this->unkD0 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) temp_r3_388)->Update(var_r4_381, 1U, this->unkD0 == 2, (MKProp *) this, NULL, 0U, -1, 1);
     }
     temp_r0_404 = this->unkD0;
-    switch (temp_r0_404) {                          /* irregular */
+    switch (temp_r0_404) {
     case 1:
         if (this->unk80->unk2C & 1) {
             this->unkF8.Send((MKProp *) this);
@@ -239,7 +239,6 @@ void *Lever::Update() {
         break;
     }
 }
-#endif
 
 f32 Lever::Resolve() {
     KDPropEx::Resolve();
@@ -280,28 +279,22 @@ s32 Lever::LoadLine(MKIniLine *arg0) {
     return var_r31_535;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
 void Lever::Deinit() {
     KDSoundPlayer *temp_r31_579;
     KDSoundPlayer *temp_r3_575;
-    s32 temp_cr0_eq_580;
 
-    ((Targetable *) &this->unkC8)->UnregisterTargetable();
+    ((Targetable *) ((s8 *) this + 0xC8))->UnregisterTargetable();
     temp_r3_575 = this->unk100;
     if (temp_r3_575 != NULL) {
         KDSound_Stop((int *) &temp_r3_575->unk0);
         temp_r31_579 = this->unk100;
-        temp_cr0_eq_580 = temp_r31_579 == NULL;
-        if (temp_cr0_eq_580 == 0) {
-            if (temp_cr0_eq_580 == 0) {
-                KDSound_Stop((int *) &temp_r31_579->unk0);
-            }
+        if (temp_r31_579 != NULL) {
+            KDSound_Stop((int *) &temp_r31_579->unk0);
             operator delete(temp_r31_579);
         }
     }
     GameProp::Deinit();
 }
-#endif
 
 void Lever::Init() {
     GameProp::Init();
@@ -324,21 +317,17 @@ void LeverDescriptor::LoadDone() {
     this->unkF8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("LeverPull_End"));
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_679;
 
     var_r31_679 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "LoopSound", (int *) &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "LoopSound", (int *) ((s8 *) this + 0xE4)) != 0)) {
         var_r31_679 = 1;
     }
     return var_r31_679;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void LeverDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = GS_PLACEHOLDER;
+    M2C_FIELD(this, s32 *, 0xE4) = GS_PLACEHOLDER;
 }
-#endif
