@@ -28,54 +28,46 @@ s32 Connector::UpdateState() {
     return ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetDesiredChunks(&this->unkA0, this->unkAC);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Connector' to 'signed char *'
 s32 Connector::LoadDone() {
-    s32 temp_r29_78;
-    s32 var_r28_74;
-    s32 var_r31_76;
-    s8 *temp_r3_79;
+    s32 count;
+    s32 off;
+    const char *name;
 
     MKProp::LoadDone();
-    var_r28_74 = 0;
+    count = 0;
     this->unkAC = 0;
-    var_r31_76 = 0;
+    off = 0;
     do {
-        temp_r29_78 = var_r31_76 + 0xA0;
-        temp_r3_79 = *(this + temp_r29_78);
-        if ((temp_r3_79 != NULL) && ((s8) *temp_r3_79 != 0)) {
-            *(this + temp_r29_78) = (const char *) (Level::GetChunkByName(temp_r3_79));
+        name = M2C_FIELD(this, const char **, off + 0xA0);
+        if ((name != NULL) && (*name != 0)) {
+            M2C_FIELD(this, void **, off + 0xA0) = Level::GetChunkByName(name);
             this->unkAC += 1;
         } else {
-            *(this + temp_r29_78) = 0;
+            M2C_FIELD(this, void **, off + 0xA0) = NULL;
         }
-        var_r28_74 += 1;
-        var_r31_76 += 4;
-    } while (var_r28_74 < 3);
+        count += 1;
+        off += 4;
+    } while (count < 3);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
 s32 Connector::LoadLine(MKIniLine *arg0) {
-    s32 var_r29_130;
-    s32 var_r31_132;
+    s32 count;
+    s32 off;
 
     if ((MKProp::LoadLine(arg0) != 0) || (this->unk50.LoadLine("region", arg0) != 0)) {
         return 1;
     }
-    var_r29_130 = 0;
-    var_r31_132 = 0;
-loop_4:
-    if (arg0->LoadString(*(&pChunkTypeNames + var_r31_132), this + (var_r31_132 + 0xA0), 0) != 0) {
-        return 1;
-    }
-    var_r29_130 += 1;
-    var_r31_132 += 4;
-    if (var_r29_130 >= 3) {
-        return 0;
-    }
-    goto loop_4;
+    count = 0;
+    off = 0;
+    do {
+        if (arg0->LoadString(M2C_FIELD(&pChunkTypeNames, const char **, off), (const char **) ((s8 *) this + off + 0xA0), 0) != 0) {
+            return 1;
+        }
+        count += 1;
+        off += 4;
+    } while (count < 3);
+    return 0;
 }
-#endif
 
 void Connector::Deinit() {
     this->unk50.Deinit();
@@ -109,18 +101,19 @@ void ConnectorDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: pointer/array required
 void ConnectorDescriptor::Init() {
+    ConnectorDescriptor **first;
+
     MKPropDescriptor::Init();
-    this->unk68 = (ConnectorDescriptor *) (*ConnectorDescriptor::pFirstDesc);
+    first = (ConnectorDescriptor **) ConnectorDescriptor::pFirstDesc;
+    this->unk68 = *first;
     this->unk64 = NULL;
-    if ((ConnectorDescriptor *) *ConnectorDescriptor::pFirstDesc != NULL) {
-        (*ConnectorDescriptor::pFirstDesc)->unk64 = this;
+    if (*first != NULL) {
+        (*first)->unk64 = this;
     }
-    *ConnectorDescriptor::pFirstDesc = (unsigned char) (this);
+    *first = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
-#endif
 
 s32 Connector_Update(const MKVector3 &arg0) {
     Connector *var_r29_291;

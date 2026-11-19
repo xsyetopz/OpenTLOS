@@ -10,28 +10,21 @@
 #include "spyro/source/LavaCannon.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal type
 void AnimManager::Init(AnimEntry *arg0, int arg1, MKAnimScript *arg2) {
-    s32 temp_r0_28;
-    s32 var_r30_17;
-    s32 var_r31_18;
-    void *temp_r3_26;
+    s32 i;
+    s32 off;
 
-    var_r30_17 = 0;
-    var_r31_18 = 0;
+    i = 0;
+    off = 0;
     this->unk0 = arg0;
     this->unk4 = arg1;
-loop_2:
-    if (var_r30_17 < (s32) this->unk4) {
-        temp_r3_26 = arg2->GetAnim(*(this->unk0 + var_r31_18));
-        temp_r0_28 = var_r31_18 + 4;
-        var_r30_17 += 1;
-        var_r31_18 += 8;
-        *(this->unk0 + temp_r0_28) = temp_r3_26;
-        goto loop_2;
+    while (i < this->unk4) {
+        void *anim = arg2->GetAnim(M2C_FIELD(this->unk0, const char **, off));
+        M2C_FIELD(this->unk0, void **, off + 4) = anim;
+        i += 1;
+        off += 8;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 void AnimEventManager::Update(MKAnimScript *arg0) {

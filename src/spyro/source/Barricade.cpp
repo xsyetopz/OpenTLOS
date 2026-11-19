@@ -83,86 +83,54 @@ s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKAnim *'
 void BarricadeProp::Message(MKMessage *arg0) {
-    f64 spA8;
-    f64 spA0;
-    f64 sp98;
-    f64 sp90;
-    MKVector3 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 temp_f1_208;
-    f32 temp_f26_171;
-    f64 temp_f0_196;
-    s32 temp_r0_237;
-    s32 var_r29_162;
-    void *temp_r5_170;
+    MKVector3 pos;
+    MKVector3 a;
+    MKVector3 b;
+    MKVector3 dir;
+    MKVector3 vel;
+    MKVector4 color;
+    f32 rand1;
+    f32 rand2;
+    s32 i;
 
     if ((s32) arg0->unk0 == 0x15E) {
-        this->unk80->SetAnim(this->unk80->GetAnim("Explode"), 1.0f, 0.0f, 0, -1);
+        this->unk80->SetAnim((MKAnim *) this->unk80->GetAnim("Explode"), 1.0f, 0.0f, 0, -1);
         this->unk1AC = 1;
-        var_r29_162 = 0;
+        i = 0;
         do {
-            temp_r5_170 = this->unk8;
-            temp_f26_171 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
-            sp48 = -1.0f;
-            sp38 = 1.0f;
-            sp40 = -1.0f;
-            sp44 = 0.25f;
-            sp30 = 1.0f;
-            sp34 = 1.0f;
-            spA0 = M2C_FIELD(temp_r5_170, f64 *, 0x30);
-            spA8 = M2C_FIELD(temp_r5_170, f64 *, 0x38);
-            sp70 = (f64) sp40;
-            sp78 = (f64) sp48;
-            sp60 = (f64) sp30;
-            sp68 = (f64) sp38;
-            sp80 = KDRand_Vector(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60));
-            temp_f0_196 = sp80 * 5.717499035e-315;
-            sp20 = temp_f0_196;
-            sp90 = temp_f0_196;
-            sp28 = sp80.unk8 * 2000.0f;
-            sp98 = (f64) sp28;
-            temp_f1_208 = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
-            sp10 = 1.0f;
-            sp14 = temp_f26_171;
-            sp8 = temp_f1_208;
-            sp18 = 0.0f;
-            sp1C = 1.0f;
-            sp50 = (f64) sp10;
-            sp58 = (f64) sp18;
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90), sp8, *((MKVector4 *) &sp50), -2000.0f);
-            var_r29_162 += 1;
-        } while (var_r29_162 < 0xA);
+            rand1 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+            pos.unk0 = M2C_FIELD(this->unk8, f32 *, 0x30);
+            pos.unk4 = M2C_FIELD(this->unk8, f32 *, 0x34);
+            pos.unk8 = M2C_FIELD(this->unk8, f32 *, 0x38);
+            a.unk0 = -1.0f;
+            a.unk4 = 0.25f;
+            a.unk8 = -1.0f;
+            b.unk0 = 1.0f;
+            b.unk4 = 1.0f;
+            b.unk8 = 1.0f;
+            dir = KDRand_Vector(a, b);
+            vel.unk0 = dir.unk0 * 2000.0f;
+            vel.unk4 = dir.unk4 * 2000.0f;
+            vel.unk8 = dir.unk8 * 2000.0f;
+            rand2 = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
+            color.unk0 = 1.0f;
+            color.unk4 = rand1;
+            color.unk8 = 0.0f;
+            color.unkC = 1.0f;
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(pos, vel, rand2, color, -2000.0f);
+            i += 1;
+        } while (i < 0xA);
     }
     if ((u8) this->unk1AC != 0) {
         Shatterable::Message(arg0);
         return;
     }
-    temp_r0_237 = arg0->unk0;
-    if ((temp_r0_237 != 4) && (temp_r0_237 != 1) && (temp_r0_237 != 5)) {
+    i = arg0->unk0;
+    if ((i != 4) && (i != 1) && (i != 5)) {
         Shatterable::Message(arg0);
     }
 }
-#endif
 
 void *BarricadeProp::Update() {
     Shatterable::Update();
