@@ -24,7 +24,6 @@
 extern s32 GS_MenuSelect;
 extern KDMemoryCard *autosaveCard;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCSelectCardScreen::ClearDisplay() {
     s32 sp3C;
     s32 sp38;
@@ -40,44 +39,36 @@ void MCSelectCardScreen::ClearDisplay() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    UIContainer *temp_r3_36;
-    void **temp_r3_19;
-    void **temp_r3_26;
-    void **temp_r3_46;
-    void **temp_r3_56;
-    void **temp_r3_66;
-    void **temp_r3_76;
+    UIObject *obj;
 
-    temp_r3_19 = this->unkD8;
+    obj = (UIObject *) this->unkD8;
     sp38 = 3;
     sp3C = 0;
-    M2C_FIELD(*temp_r3_19, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_19, &sp38, 3);
-    temp_r3_26 = this->unkD4;
+    obj->Message((UIMessage *) &sp38);
+    obj = (UIObject *) this->unkD4;
     sp30 = 3;
     sp34 = 0;
-    M2C_FIELD(*temp_r3_26, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_26, &sp30, 3);
-    temp_r3_36 = this->unkC8;
+    obj->Message((UIMessage *) &sp30);
     sp28 = 3;
     sp2C = 0;
-    temp_r3_36->Message(&sp28, 3);
-    temp_r3_46 = this->unkEC;
+    this->unkC8->Message((UIMessage *) &sp28);
+    obj = (UIObject *) this->unkEC;
     sp20 = 3;
     sp24 = 0;
-    M2C_FIELD(*temp_r3_46, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_46, &sp20, 3);
-    temp_r3_56 = this->unkE8;
+    obj->Message((UIMessage *) &sp20);
+    obj = (UIObject *) this->unkE8;
     sp18 = 3;
     sp1C = 0;
-    M2C_FIELD(*temp_r3_56, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_56, &sp18, 3);
-    temp_r3_66 = this->unkE4;
+    obj->Message((UIMessage *) &sp18);
+    obj = (UIObject *) this->unkE4;
     sp10 = 3;
     sp14 = 0;
-    M2C_FIELD(*temp_r3_66, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_66, &sp10, 3);
-    temp_r3_76 = this->unkE4;
+    obj->Message((UIMessage *) &sp10);
+    obj = (UIObject *) this->unkE4;
     sp8 = 5;
     spC = 0;
-    M2C_FIELD(*temp_r3_76, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_76, &sp8, 5);
+    obj->Message((UIMessage *) &sp8);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCSelectCardScreen::UpdateDisplay() {
@@ -366,16 +357,14 @@ block_54:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void MCSelectCardScreen::OnEnter() {
     MemoryCardScreen::OnEnter();
-    *MemoryCardScreen::selectedCard = 0;
-    *MemoryCardScreen::selectedFile = -1;
+    *(s32 *) MemoryCardScreen::selectedCard = 0;
+    *(s32 *) MemoryCardScreen::selectedFile = -1;
     ClearDisplay();
     this->unkD0 = 0;
-    this->unkF0 = ui_cast<MCSaveScreen *, UIScreen *>(ui_cast<P8UISystem, P11UIContainer>__FP11UIContainer(GetRoot())->unk98) != NULL;
+    this->unkF0 = ui_cast<MCSaveScreen *, UIScreen *>((UIScreen *) ui_cast<UISystem *, UIContainer *>(GetRoot())->unk98) != NULL;
 }
-#endif
 
 void MCSelectCardScreen::Resolve() {
     MemoryCardScreen::Resolve();

@@ -150,14 +150,11 @@ void MainMenuScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void MainMenuScreen::OnExit() {
     UIScreen::OnExit();
-    selectedIndex = M2C_FIELD(this->unkD8, s32 *, 0x68);
+    *(s32 *) selectedIndex = M2C_FIELD(this->unkD8, s32 *, 0x68);
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void MainMenuScreen::OnEnter() {
     s32 sp3C;
     s32 sp38;
@@ -173,71 +170,65 @@ void MainMenuScreen::OnEnter() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    UIContainer *temp_r3_297;
-    UIObject *temp_r3_312;
-    UIObject *temp_r3_329;
-    UIObject *temp_r3_346;
-    UIObject *temp_r3_373;
-    s32 var_r29_303;
-    s32 var_r30_322;
-    s32 var_r3_377;
-    s32 var_r3_394;
+    UIObject *obj;
+    s32 var_r29;
+    s32 var_r30;
+    s32 var_extras_a;
+    s32 var_extras_b;
 
     UIScreen::OnEnter();
-    KDSound_SetMusicNotInterrupt(0U);
+    KDSound_SetMusicNotInterrupt(false);
     M2C_FIELD(&gb, s8 *, 9) = 1;
-    if ((s32) selectedIndex < 0) {
-        selectedIndex = M2C_FIELD(&gb, u8 *, 0x382) == 0;
+    if (*(s32 *) selectedIndex < 0) {
+        *(s32 *) selectedIndex = M2C_FIELD(&gb, u8 *, 0x382) == 0;
     }
     this->unkD8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("MainMenuButtons"));
     sp38 = 1;
-    sp3C = (long) (selectedIndex);
-    temp_r3_297 = this->unkD8;
-    temp_r3_297->Message(&sp38);
-    var_r29_303 = 5;
-    if ((u8) M2C_FIELD(&gb, u8 *, 0x382) != 0) {
-        var_r29_303 = 4;
+    sp3C = *(s32 *) selectedIndex;
+    this->unkD8->Message((UIMessage *) &sp38);
+    var_r29 = 5;
+    if (M2C_FIELD(&gb, u8 *, 0x382) != 0) {
+        var_r29 = 4;
     }
-    temp_r3_312 = this->unkD8->GetChild(0);
-    sp30 = var_r29_303;
+    obj = this->unkD8->GetChild(0);
+    sp30 = var_r29;
     sp34 = 0;
-    M2C_FIELD(temp_r3_312->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp30);
-    var_r30_322 = 3;
-    if ((u8) M2C_FIELD(&gb, u8 *, 0x382) != 0) {
-        var_r30_322 = 2;
+    obj->Message((UIMessage *) &sp30);
+    var_r30 = 3;
+    if (M2C_FIELD(&gb, u8 *, 0x382) != 0) {
+        var_r30 = 2;
     }
-    temp_r3_329 = this->unkD8->GetChild(0);
-    sp28 = var_r30_322;
+    obj = this->unkD8->GetChild(0);
+    sp28 = var_r30;
     sp2C = 0;
-    M2C_FIELD(temp_r3_329->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp28);
+    obj->Message((UIMessage *) &sp28);
     this->unkC8 = 0;
     this->unkD4 = 0.0f;
-    temp_r3_346 = this->unkD8->FindChild("LevelSelect");
-    if (temp_r3_346 != NULL) {
+    obj = this->unkD8->FindChild("LevelSelect");
+    if (obj != NULL) {
         sp20 = 5;
         sp24 = 0;
-        M2C_FIELD(temp_r3_346->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp20);
+        obj->Message((UIMessage *) &sp20);
         sp18 = 3;
         sp1C = 0;
-        temp_r3_346->Message(&sp18);
+        obj->Message((UIMessage *) &sp18);
     }
-    temp_r3_373 = this->unkD8->FindChild("Extras");
-    if (temp_r3_373 != NULL) {
-        var_r3_377 = 5;
+    obj = this->unkD8->FindChild("Extras");
+    if (obj != NULL) {
+        var_extras_a = 5;
         if (((u8) GameData::gameData[0x18A] >> 6U) & 1) {
-            var_r3_377 = 4;
+            var_extras_a = 4;
         }
-        sp10 = var_r3_377;
+        sp10 = var_extras_a;
         sp14 = 0;
-        temp_r3_373->Message(&sp10);
-        var_r3_394 = 3;
+        obj->Message((UIMessage *) &sp10);
+        var_extras_b = 3;
         if (((u8) GameData::gameData[0x18A] >> 6U) & 1) {
-            var_r3_394 = 2;
+            var_extras_b = 2;
         }
-        sp8 = var_r3_394;
+        sp8 = var_extras_b;
         spC = 0;
-        temp_r3_373->Message(&sp8);
+        obj->Message((UIMessage *) &sp8);
     }
-    FrontEnd_PlayBackgroundVideo(1U);
+    FrontEnd_PlayBackgroundVideo(true);
 }
-#endif

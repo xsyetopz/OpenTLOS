@@ -1,0 +1,45 @@
+void MCSelectCardScreen::ClearDisplay() {
+    s32 sp3C;
+    s32 sp38;
+    s32 sp34;
+    s32 sp30;
+    s32 sp2C;
+    s32 sp28;
+    s32 sp24;
+    s32 sp20;
+    s32 sp1C;
+    s32 sp18;
+    s32 sp14;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
+    UIObject *obj;
+
+    obj = (UIObject *) this->unkD8;
+    sp38 = 3;
+    sp3C = 0;
+    obj->Message((UIMessage *) &sp38);
+    obj = (UIObject *) this->unkD4;
+    sp30 = 3;
+    sp34 = 0;
+    obj->Message((UIMessage *) &sp30);
+    sp28 = 3;
+    sp2C = 0;
+    this->unkC8->Message((UIMessage *) &sp28);
+    obj = (UIObject *) this->unkEC;
+    sp20 = 3;
+    sp24 = 0;
+    obj->Message((UIMessage *) &sp20);
+    obj = (UIObject *) this->unkE8;
+    sp18 = 3;
+    sp1C = 0;
+    obj->Message((UIMessage *) &sp18);
+    obj = (UIObject *) this->unkE4;
+    sp10 = 3;
+    sp14 = 0;
+    obj->Message((UIMessage *) &sp10);
+    obj = (UIObject *) this->unkE4;
+    sp8 = 5;
+    spC = 0;
+    obj->Message((UIMessage *) &sp8);
+}
