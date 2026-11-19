@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fence off the parts of draft TUs that do not compile, and list them as work items.
 
-Usage: fence.py <src root> <report.tsv> [-i DIR ...] [--jobs N] [--rounds N] [--only REL ...]
+Usage: fence.py <src root> <report.tsv> [-i DIR ...] [--jobs N] [--rounds N] [--only REL ...] [--headers]
 
 Each `<src root>/**/*.cpp` is compiled; every top-level definition that
 holds an error is wrapped in `#if 0 // DRAFT: <first error>` ... `#endif`,
@@ -9,6 +9,10 @@ and the TU is recompiled, for at most `--rounds` rounds. What remains is a
 TU that compiles plus a list of fenced functions, each a bounded task for a
 fixer: make the fenced body compile, then remove the fence. An error inside
 a header cannot be fenced in the TU; such TUs are reported as `header`.
+
+With `--headers`, each `<src root>/**/*.h` holding inlines.py's MARK is
+compiled through a one-line stub TU, and only definitions after the mark
+are fenced: a class body cannot be fenced without hiding the class.
 
 Report rows: `rel <tab> status <tab> definitions <tab> fenced <tab> detail`,
 status one of `ok`, `fenced`, `header`, `stuck`.
@@ -24,6 +28,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from inlines import MARK  # noqa: E402
 from mwcc import ROOT, diagnostics  # noqa: E402
 
 FENCE = "#if 0 // DRAFT: "
@@ -59,15 +64,21 @@ def blocks(lines: list[str]) -> list[tuple[int, int]]:
     return out
 
 
-def fence_once(src: Path, errs: list[tuple[str, int, str]]) -> int:
-    """Fence each block holding an error in `src`; returns blocks fenced (0 if none could be)."""
+def fence_once(src: Path, errs: list[tuple[str, int, str]], after: str | None = None) -> int:
+    """Fence each block holding an error in `src`; returns blocks fenced (0 if none could be).
+
+    With `after`, only blocks that start below the line equal to it are fenced.
+    """
     lines = src.read_text().split("\n")
+    floor = lines.index(after) if after in lines else -1
     first = {}
     for f, line, msg in errs:
         if f == src.name and line:
             first.setdefault(line - 1, msg)
     hits = {}
     for s, e in blocks(lines):
+        if s <= floor:
+            continue
         msg = next((first[i] for i in range(s, e + 1) if i in first), None)
         if msg:
             hits[s] = (e, msg)
@@ -82,9 +93,13 @@ def fence_once(src: Path, errs: list[tuple[str, int, str]]) -> int:
 def process(src: Path, root: Path, incs: list[Path], tmp: Path, rounds: int) -> tuple[str, str, int, int, str]:
     rel = src.relative_to(root).as_posix()
     obj = tmp / (rel.replace("/", "_") + ".o")
+    unit, after = src, None
+    if src.suffix == ".h":
+        unit, after = tmp / (rel.replace("/", "_") + ".cpp"), MARK
+        unit.write_text(f'#include "{rel}"\n')
     status, detail = "stuck", ""
     for _ in range(rounds):
-        ok, errs = diagnostics(src, obj, incs)
+        ok, errs = diagnostics(unit, obj, incs)
         if ok:
             status, detail = ("fenced" if FENCE in src.read_text() else "ok"), ""
             break
@@ -92,11 +107,12 @@ def process(src: Path, root: Path, incs: list[Path], tmp: Path, rounds: int) -> 
         if not own:
             status, detail = "header", " | ".join(f"{f}:{n}: {m}" for f, n, m in errs[:1])
             break
-        if not fence_once(src, own):
+        if not fence_once(src, own, after):
             status, detail = "stuck", " | ".join(f"{f}:{n}: {m}" for f, n, m in own[:1])
             break
     text = src.read_text()
-    total = len(blocks(text.split("\n"))) + text.count(FENCE)
+    scope = text.split(after, 1)[-1] if after else text  # a header counts only its inline definitions
+    total = len(blocks(scope.split("\n"))) + scope.count(FENCE)
     return rel, status, total, text.count(FENCE), detail
 
 
@@ -108,10 +124,16 @@ def main() -> int:
     ap.add_argument("--jobs", type=int, default=8)
     ap.add_argument("--rounds", type=int, default=12)
     ap.add_argument("--only", nargs="*", default=[])
+    ap.add_argument("--headers", action="store_true")
     a = ap.parse_args()
     root = a.root.resolve()
     incs = [root, *(i.resolve() for i in a.incs), ROOT / "include"]
-    srcs = [root / r for r in a.only] if a.only else sorted(root.rglob("*.cpp"))
+    if a.only:
+        srcs = [root / r for r in a.only]
+    elif a.headers:
+        srcs = sorted(h for h in root.rglob("*.h") if MARK in h.read_text())
+    else:
+        srcs = sorted(root.rglob("*.cpp"))
     with tempfile.TemporaryDirectory() as t, ThreadPoolExecutor(a.jobs) as ex:
         rows = list(ex.map(lambda s: process(s, root, incs, Path(t), a.rounds), srcs))
     a.report.write_text("".join("\t".join(map(str, r)) + "\n" for r in rows))

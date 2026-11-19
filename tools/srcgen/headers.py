@@ -2,6 +2,7 @@
 """Generate first-draft class headers for ANB's game and engine TUs.
 
 Usage: headers.py <classes.json> <fields.json> <m2c out root> <ctx.c> <out root> [--write-existing]
+                  [--inline-root DIR]
 
 Each class goes into the header of its owner TU (`<out root>/<tu path>.h`, the
 usual decomp convention; ANB keeps no header names). Templates, which have no
@@ -10,7 +11,9 @@ TU, get a header named after the template. A header holds:
     declarations otherwise; <dolphin.h> when an SDK type appears;
   * classes with base, virtual methods in vtable slot order, other methods,
     static members, and m2c-voted `unkXX` fields padded to their offsets;
-  * the TU's global free functions and global variables.
+  * the TU's global free functions and global variables;
+  * with `--inline-root`, the classes' inline members from cxxconv.py's
+    weak copies (inlines.py), defined after everything else.
 See hmodel.py for how owners, sizes, and fields are inferred. Without
 `--write-existing` an existing header is left alone, so hand-refined headers
 are never overwritten.
@@ -29,6 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tlos"))
 from cxxtypes import K, class_names, parse, render  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import Refs, class_body, header_order, inlined, template_body  # noqa: E402
+from inlines import MARK, by_class  # noqa: E402
 from splits import Splits  # noqa: E402
 from symbols import load  # noqa: E402
 
@@ -88,6 +92,7 @@ def main() -> int:
     ap.add_argument("ctx", type=Path)
     ap.add_argument("out_root", type=Path)
     ap.add_argument("--write-existing", action="store_true")
+    ap.add_argument("--inline-root", type=Path)
     a = ap.parse_args()
 
     model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
@@ -95,6 +100,7 @@ def main() -> int:
     free, data = globals_by_tu(stems)
     nested = model.nested = nested_names(model, free)
 
+    inline = by_class(a.inline_root) if a.inline_root else {}
     owner_of = model.owner_map()
     by_tu = defaultdict(list)
     for n, tu in owner_of.items():
@@ -136,7 +142,10 @@ def main() -> int:
         text = [f"#ifndef {guard}", f"#define {guard}", "", "#include <dolphin.h>" if uses_sdk else "#include <dolphin/types.h>"]
         text += [f'#include "{i.rsplit(".", 1)[0]}.h"' for i in includes] + [""]
         text += [f"class {n};" for n in fwd] + ([""] if fwd else [])
-        text += body + [f"#endif  // {guard}", ""]
+        defs = [f"inline {fn}" for n in sorted(mine) for fn in inline.get(n, [])]
+        # m2c-drafted inline bodies use M2C_* macros; TUs include them only after their headers.
+        macros = ["#include <m2c_macros.h>", ""] if any("M2C_" in d for d in defs) else []
+        text += body + ([MARK, "", *macros, *(d + "\n" for d in defs)] if defs else []) + [f"#endif  // {guard}", ""]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("\n".join(text))
         written += 1
