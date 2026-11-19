@@ -11,7 +11,7 @@ void Critters::Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9C'
+#if 0 // DRAFT: illegal type
 void Critters::LoadDone() {
     KDProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (this->unk8 - 4) + 4, 0x40);

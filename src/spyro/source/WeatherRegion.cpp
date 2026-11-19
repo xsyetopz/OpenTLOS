@@ -910,7 +910,7 @@ void WeatherRegion::Init() {
     this->unk78 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void WeatherRegionDescriptor::Update() {
     MKPropDescriptor::Update();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) &this->unk5C + 4, 0x40);
@@ -930,7 +930,7 @@ void WeatherRegionDescriptor::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void WeatherRegionDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);

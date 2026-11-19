@@ -35,7 +35,8 @@ public:
     /* 0x030 */ f32 unk30;
     /* 0x034 */ f32 unk34;
     /* 0x038 */ f32 unk38;
-    /* 0x03c */ u8 pad3C[0x4];
+    /* 0x03c */ u8 unk3C;
+    /* 0x03d */ u8 pad3D[0x3];
     /* 0x040 */ Matrix unk40;
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;

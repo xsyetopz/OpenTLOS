@@ -40,11 +40,11 @@ void Dynamite::Disable() {
     Projectile::Disable();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk154'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Dynamite::PlatformDetach() {
     s32 sp18;
     s8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_93;
@@ -62,11 +62,11 @@ void Dynamite::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk154'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Dynamite::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp18;
     u8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_135;

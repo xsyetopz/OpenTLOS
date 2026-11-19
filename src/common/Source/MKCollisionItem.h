@@ -87,7 +87,8 @@ public:
     /* 0x060 */ MKVector3 unk60;
     /* 0x070 */ MKVector3 unk70;
     /* 0x080 */ MKVector4 unk80;
-    /* 0x090 */ u8 pad90[0x8];
+    /* 0x090 */ u8 unk90;
+    /* 0x091 */ u8 pad91[0x7];
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ u8 padA4[0x4];
@@ -117,7 +118,9 @@ public:
     /* 0x010 */ MKCollisionAABB unk10;
     /* 0x02c */ u8 pad2C[0x28];
     /* 0x054 */ s32 unk54;
-    /* 0x058 */ u8 pad58[0x8];
+    /* 0x058 */ u8 pad58[0x4];
+    /* 0x05c */ u8 unk5C;
+    /* 0x05d */ u8 pad5D[0x3];
     /* 0x060 */ f32 unk60;
     /* 0x064 */ f32 unk64;
     /* 0x068 */ f32 unk68;
@@ -135,7 +138,8 @@ public:
     /* 0x098 */ f32 unk98;
     /* 0x09c */ s32 unk9C;
     /* 0x0a0 */ Matrix unkA0;
-    /* 0x0e0 */ u8 padE0[0x40];
+    /* 0x0e0 */ u8 unkE0;
+    /* 0x0e1 */ u8 padE1[0x3f];
     /* 0x120 */ MKCollisionModel* unk120;
     /* 0x124 */ f32 unk124;
     /* 0x128 */ MKModel* unk128;

@@ -23,7 +23,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 static M2C_UNK lit_620;                                /* unable to generate initializer: unknown type; const */
 
 void SwarmPropDescriptor::Init() {
@@ -519,7 +519,7 @@ void SwarmProp::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SwarmProp::LoadDone() {
     f64 sp50;
     f64 sp48;

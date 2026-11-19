@@ -25,7 +25,7 @@ extern M2C_UNK gb;
 static s32 lit_598 = 0;
 static u8 lit_599 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unkCC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CynderEnergyCrystal::UpdateModel() {
     Matrix sp20;
     M2C_UNK sp1C;
@@ -57,7 +57,7 @@ void CynderEnergyCrystal::UpdateModel() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk168'
+#if 0 // DRAFT: undefined identifier 'spC'
 void CynderEnergyCrystal::UpdateMovement() {
     f32 sp8;
     f32 var_f0_118;
@@ -71,8 +71,8 @@ void CynderEnergyCrystal::UpdateMovement() {
             var_f0_118 = -1500.0f;
         }
         this->unk15C = var_f0_118;
-        M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, M2C_UNK *, M2C_UNK, f32), 0x10)(&this->unk168, &this->unk158, 0, 0.0f);
-        M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(f32 *, M2C_UNK *), 0x4C)(&sp8, &this->unk168);
+        M2C_FIELD(this->unk168, M2C_UNK (**)(void **, u8 *, M2C_UNK, f32), 0x10)(&this->unk168, &this->unk158, 0, 0.0f);
+        M2C_FIELD(this->unk168, M2C_UNK (**)(f32 *, void **), 0x4C)(&sp8, &this->unk168);
         this->unkD0.unk30 = sp8;
         this->unkD0.unk34 = spC;
         this->unkD0.unk38 = sp10;
@@ -134,7 +134,7 @@ void CynderEnergyCrystal::LoadDone() {
     temp_r3_256 = checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, s32, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk168, temp_r3_256 + 0xE4, &MKVector3::zero, 1, &this->unk70, 0, 0, 0);
+    M2C_FIELD(this->unk168, M2C_UNK (**)(void **, s32, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk168, temp_r3_256 + 0xE4, &MKVector3::zero, 1, &this->unk70, 0, 0, 0);
     sp28 = 0.0f;
     sp38 = 0.0f;
     sp10 = 1.0f;
@@ -163,12 +163,10 @@ s32 CynderEnergyCrystal::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk168'
 void CynderEnergyCrystal::Deinit() {
     GameProp::Deinit();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk168);
+    M2C_FIELD(this->unk168, M2C_UNK (**)(void **), 0xC)(&this->unk168);
 }
-#endif
 
 void CynderEnergyCrystal::Init() {
     GameProp::Init();

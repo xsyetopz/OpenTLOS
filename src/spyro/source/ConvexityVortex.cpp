@@ -394,7 +394,7 @@ loop_39:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ConvexityVortex::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -405,7 +405,7 @@ void ConvexityVortex::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
 void ConvexityVortex::Init() {
     MKHeap *temp_r3_776;
     MKHeap *temp_r3_778;

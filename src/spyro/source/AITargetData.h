@@ -28,7 +28,7 @@ public:
     void SetDefaults(void);
     /* 0x000 */ f64 unk0;
     /* 0x008 */ f32 unk8;
-    /* 0x00c */ u8 padC[0x4];
+    /* 0x00c */ f32 unkC;
     /* 0x010 */ f64 unk10;
     /* 0x018 */ f64 unk18;
     /* 0x020 */ f64 unk20;

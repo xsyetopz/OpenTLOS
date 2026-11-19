@@ -50,7 +50,8 @@ public:
     void DrawIceSpline(float, float);
     void DrawElectricitySpline(float, float);
     void DrawFireSpline(float, float);
-    /* 0x04c */ u8 pad4C[0x64];
+    /* 0x04c */ u8 unk4C;
+    /* 0x04d */ u8 pad4D[0x63];
     /* 0x0b0 */ void* unkB0;
     /* 0x0b4 */ f32 unkB4;
     /* 0x0b8 */ u8 padB8[0x8];

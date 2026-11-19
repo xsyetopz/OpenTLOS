@@ -37,7 +37,7 @@ u8 boundingVolume__8KDVolume[0x20] = {
     0,
 };
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDVolume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;

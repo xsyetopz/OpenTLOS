@@ -7,8 +7,8 @@
 #include <m2c_macros.h>
 
 f64 fmod(f32, f32);                                 /* extern */
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(s32);                               /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 f64 pow(f32, f32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
@@ -130,7 +130,7 @@ void KDEnvParticleSystem::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD4'
+#if 0 // DRAFT: illegal type
 void KDEnvParticleSystemDescriptor::CalculateEnvelope() {
     s32 temp_r5_259;
     s32 var_r4_241;
@@ -163,7 +163,6 @@ void KDEnvParticleSystemDescriptor::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
-    M2C_UNK *var_r3_321;
     MKHeap *temp_r3_314;
     MKIniLine *var_r30_334;
     s32 temp_r27_313;
@@ -174,6 +173,7 @@ s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r27_368;
     s32 var_r27_393;
     u8 temp_r3_309;
+    void *var_r3_321;
 
     temp_r3_309 = arg0->LoadInt("Envelope", &this->unkD0, 0);
     if (temp_r3_309 != 0) {
@@ -230,10 +230,9 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD4'
 void KDEnvParticleSystemDescriptor::Deinit() {
-    M2C_UNK *temp_r31_445;
     MKHeap *temp_r3_446;
+    void *temp_r31_445;
 
     MKPropDescriptor::Deinit();
     if ((u8) this->unkD8 != 0) {
@@ -249,9 +248,8 @@ void KDEnvParticleSystemDescriptor::Deinit() {
     this->unkD4 = NULL;
     this->unkD8 = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkD4'
+#if 0 // DRAFT: undefined identifier 'gDefaultEnvelope'
 void KDEnvParticleSystemDescriptor::Init() {
     KDParticleSystemDescriptor::Init();
     this->unkD0 = 2;

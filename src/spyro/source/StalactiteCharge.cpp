@@ -887,7 +887,7 @@ void StalactiteCharge::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void StalactiteCharge::LoadDone() {
     KDUniformSpline sp38;
     KDUniformSpline sp18;
@@ -902,7 +902,7 @@ void StalactiteCharge::LoadDone() {
     this->unkC8 = -1.0f;
     this->unkC4 = -1.0f;
     this->unkC0 = -1.0f;
-    M2C_FIELD(this->unk0, M2C_UNK **, 0x1C) = &this->unkB0;
+    M2C_FIELD(this->unk0, u8 **, 0x1C) = &this->unkB0;
     M2C_STRUCT_COPY((s32) &this->unk6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp10 = 0.0f;
     sp18.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);

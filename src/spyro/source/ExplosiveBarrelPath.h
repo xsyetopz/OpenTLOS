@@ -53,7 +53,11 @@ public:
     /* 0x1a8 */ f64 unk1A8;
     /* 0x1b0 */ u8 unk1B0;
     /* 0x1b1 */ s8 unk1B1;
-    /* 0x1b2 */ u8 pad1B2[0x2e];
+    /* 0x1b2 */ u8 pad1B2[0xa];
+    /* 0x1bc */ u8 unk1BC;
+    /* 0x1bd */ u8 pad1BD[0x3];
+    /* 0x1c0 */ u8 unk1C0;
+    /* 0x1c1 */ u8 pad1C1[0x1f];
     /* 0x1e0 */ f64 unk1E0;
     /* 0x1e8 */ f64 unk1E8;
     /* 0x1f0 */ f64 unk1F0;
@@ -82,7 +86,9 @@ public:
     virtual void LoadDone(void);
     /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s32 unk60;
-    /* 0x064 */ u8 pad64[0x14];
+    /* 0x064 */ u8 pad64[0xc];
+    /* 0x070 */ u8 unk70;
+    /* 0x071 */ u8 pad71[0x7];
     /* 0x078 */ f64 unk78;
     /* 0x080 */ f64 unk80;
     /* 0x088 */ f64 unk88;

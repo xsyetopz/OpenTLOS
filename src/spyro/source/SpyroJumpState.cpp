@@ -1036,9 +1036,9 @@ void SpyroJumpState::Exit() {
     sp8 = 0x43F;
     M2C_FIELD(temp_r3_1984->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     temp_r3_1994 = this->unk10;
-    temp_r3_1994->unk428 |= 0x20000;
+    temp_r3_1994->unk420 = (void *) ((s32) temp_r3_1994->unk420 | 0x20000);
     temp_r3_1998 = this->unk10;
-    temp_r3_1998->unk428 &= 0xFFFF7FFF;
+    temp_r3_1998->unk420 = (void *) ((s32) temp_r3_1998->unk420 & 0xFFFF7FFF);
 }
 #endif
 
@@ -1101,9 +1101,9 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
     this->unk30 = 0;
     this->unk3C = 0.0f;
     temp_r5_2085 = this->unk10;
-    temp_r5_2085->unk428 |= 0x8007;
+    temp_r5_2085->unk420 = (void *) ((s32) temp_r5_2085->unk420 | 0x8007);
     temp_r5_2089 = this->unk10;
-    temp_r5_2089->unk428 &= 0xFFFDFFD7;
+    temp_r5_2089->unk420 = (void *) ((s32) temp_r5_2089->unk420 & 0xFFFDFFD7);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
     if (arg0.IsMessageOnList(0x178) != 0) {

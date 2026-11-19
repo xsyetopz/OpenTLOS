@@ -23,11 +23,15 @@ public:
     public:
         ~BridgePiece(void);
         BridgePiece(void);
-        /* 0x000 */ u8 pad0[0x30];
+        /* 0x000 */ u8 pad0[0x20];
+        /* 0x020 */ u8 unk20;
+        /* 0x021 */ u8 pad21[0xf];
         /* 0x030 */ f32 unk30;
         /* 0x034 */ s32 unk34;
         /* 0x038 */ s32 unk38;
         /* 0x03c */ s32 unk3C;
+        /* 0x040 */ void* unk40;
+        /* 0x044 */ void* unk44;
     };
     virtual ~RopeBridge(void);
     virtual void Init(void);
@@ -159,10 +163,10 @@ inline RopeBridge::~RopeBridge() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk20'
+#if 0 // DRAFT: undefined identifier 'arg1'
 inline RopeBridge::BridgePiece::~BridgePiece() {
-    M2C_UNK *temp_r0_3590;
-    M2C_UNK *temp_r5_3593;
+    u8 *temp_r5_3593;
+    void *temp_r0_3590;
 
     if (this != NULL) {
         if (&this->unk20 != NULL) {
@@ -170,8 +174,8 @@ inline RopeBridge::BridgePiece::~BridgePiece() {
             if (temp_r0_3590 != NULL) {
                 temp_r5_3593 = &this->unk20;
                 if (temp_r0_3590 != temp_r5_3593) {
-                    M2C_FIELD(this->unk44, M2C_UNK **, 0x20) = temp_r0_3590;
-                    M2C_FIELD(this->unk40, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk44;
+                    M2C_FIELD(this->unk44, void **, 0x20) = temp_r0_3590;
+                    M2C_FIELD(this->unk40, void **, 0x24) = (void *) this->unk44;
                     this->unk44 = temp_r5_3593;
                     this->unk40 = temp_r5_3593;
                 }
@@ -184,9 +188,9 @@ inline RopeBridge::BridgePiece::~BridgePiece() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk20'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline RopeBridge::BridgePiece::BridgePiece() {
-    M2C_UNK *temp_r0_3621;
+    u8 *temp_r0_3621;
 
     temp_r0_3621 = &this->unk20;
     this->unk38 = 0;

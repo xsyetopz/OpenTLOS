@@ -48,7 +48,7 @@ extern GameGlobals gb;
 static s32 lit_744 = 0;
 static u8 lit_745 = 1;
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -240,7 +240,7 @@ void FuryFXIce::DrawIcePatches() {
     sp110 = sp60;
     sp2C8 = (f64) sp68;
     sp118 = (f64) sp68;
-    MKMaterial_SetMaterial(this->unk114);
+    MKMaterial_SetMaterial((MKMaterial *) this->unk110);
     MKPrimitive(0xC, 0x10);
     var_r27_307 = this->unk110;
 loop_2:
@@ -282,7 +282,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce::UpdateIcePatches() {
     M2C_UNK *temp_r4_502;
     M2C_UNK *temp_r5_505;
@@ -366,7 +366,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     MKVector3 sp48;
     f64 sp40;
@@ -502,7 +502,7 @@ void FuryFXIce::SetDefaults() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce::Deinit() {
     M2C_UNK *temp_r0_795;
     M2C_UNK *temp_r0_814;
@@ -543,7 +543,7 @@ loop_9:
         }
     }
     this->unk110 = NULL;
-    MKMaterial_Destroy(this->unk114);
+    MKMaterial_Destroy((MKMaterial *) this->unk110);
     MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, this->unk150.unk3C));
     MKModel_Destroy(M2C_BITWISE(MKModel *, this->unk150.unk38));
     gb.unk2CC.Disable((s32) this->unk190);
@@ -1262,7 +1262,7 @@ void FuryFXIce::Init() {
     this->unk110 = temp_r4_2153 + 4;
     M2C_FIELD(temp_r4_2153, M2C_UNK **, 4) = NULL;
     this->unkB0 &= ~0x80;
-    this->unk114 = MKMaterial_Create"fx_372";
+    this->unk110 = MKMaterial_Create"fx_372";
     temp_r3_2171 = checked_cast<IceBreathSnowFlakes *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBreathSnowFlakes"));
     sp10 = 0.0f;
     sp20 = 0.0f;

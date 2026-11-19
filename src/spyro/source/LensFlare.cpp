@@ -7,7 +7,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-M2C_UNK __copy(M2C_UNK *, M2C_UNK *, M2C_UNK, f64); /* extern */
+M2C_UNK __copy(u8 *, M2C_UNK *, M2C_UNK, f64);      /* extern */
 extern M2C_UNK gb;
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 static M2C_UNK flareIndex;                          /* unable to generate initializer: unknown type */
@@ -271,7 +271,7 @@ void LensFlare::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk25'
+#if 0 // DRAFT: undefined identifier 'unk15'
 void LensFlare::Update() {
     MKZRequest *temp_r31_591;
     f64 temp_f1_597;

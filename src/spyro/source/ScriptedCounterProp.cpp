@@ -6,7 +6,7 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-M2C_UNK __destroy_arr(M2C_UNK *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK __destroy_arr(u8 *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
 
 void ScriptedCounterProp::Message(MKMessage *arg0) {
     s32 temp_r3_56;

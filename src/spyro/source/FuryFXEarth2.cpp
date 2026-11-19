@@ -29,8 +29,8 @@
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(M2C_UNK);                           /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_Rumble3;
 extern s32 GS_SpyroFuryEarth3;
 extern s32 GS_SpyroFuryEarth4;
@@ -45,21 +45,21 @@ extern M2C_UNK gb;
 static s32 lit_790 = 0;
 static u8 lit_791 = 1;
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void FuryFXEarth2::ResetFury() {
-    M2C_UNK *temp_r3_58;
-    M2C_UNK *temp_r4_61;
-    M2C_UNK *var_r5_55;
     ManagedLight *temp_r4_73;
+    u32 temp_r4_61;
+    void *temp_r3_58;
+    void *var_r5_55;
 
     SetDefaults();
     var_r5_55 = this->unkC0;
 loop_2:
-    if ((var_r5_55 != NULL) && ((M2C_UNK *) *var_r5_55 != NULL)) {
+    if ((var_r5_55 != NULL) && ((u32) *var_r5_55 != 0U)) {
         temp_r3_58 = this->unkC0;
         this->unkC0 = temp_r3_58 + 4;
         temp_r4_61 = *temp_r3_58;
-        *temp_r3_58 = *var_r5_55;
+        *temp_r3_58 = (u32) *var_r5_55;
         *var_r5_55 = temp_r4_61;
         var_r5_55 += 4;
         goto loop_2;
@@ -213,7 +213,7 @@ void FuryFXEarth2::EmitTimedSparks() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void FuryFXEarth2::ExplodeVortex() {
     f64 sp100;                                      /* compiler-managed */
     f64 spF8;
@@ -250,14 +250,14 @@ void FuryFXEarth2::ExplodeVortex() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    M2C_UNK *temp_r30_469;
-    M2C_UNK *var_r29_358;
     f32 temp_f1_373;
     f32 temp_f25_371;
     f32 temp_f25_446;
     f32 temp_f29_382;
     f32 temp_f2_391;
     f64 temp_f1_387;
+    void *temp_r30_469;
+    void *var_r29_358;
 
     var_r29_358 = this->unkC0;
 loop_2:
@@ -319,7 +319,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal type
 void FuryFXEarth2::SpawnVortexElement() {
     Matrix spF0;
     M2C_UNK spEC;
@@ -346,9 +346,9 @@ void FuryFXEarth2::SpawnVortexElement() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    M2C_UNK *temp_r31_521;
-    M2C_UNK *temp_r3_515;
-    M2C_UNK *temp_r3_519;
+    void **temp_r3_519;
+    void *temp_r31_521;
+    void *temp_r3_515;
 
     this->unkC8 -= gUpdateTimeDelta;
     if (!(this->unkC8 > 0.0f)) {
@@ -402,14 +402,14 @@ void FuryFXEarth2::SpawnVortexElement() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void FuryFXEarth2::DrawVortex() {
     Matrix sp50;
     M2C_UNK sp4C;
     M2C_UNK sp10;
     M2C_UNK spC;
-    M2C_UNK *temp_r31_684;
-    M2C_UNK *var_r30_645;
+    void *temp_r31_684;
+    void *var_r30_645;
 
     var_r30_645 = this->unkC0;
 loop_2:
@@ -428,7 +428,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void FuryFXEarth2::UpdateVortex() {
     Matrix sp90;
     M2C_UNK sp8C;
@@ -441,10 +441,6 @@ void FuryFXEarth2::UpdateVortex() {
     f64 sp20;
     f32 sp18;
     f64 sp10;
-    M2C_UNK *temp_r29_892;
-    M2C_UNK *temp_r3_860;
-    M2C_UNK *temp_r4_863;
-    M2C_UNK *var_r31_711;
     f32 temp_f2_785;
     f32 temp_f2_789;
     f32 temp_f3_766;
@@ -458,6 +454,10 @@ void FuryFXEarth2::UpdateVortex() {
     f64 temp_f0_730;
     f64 temp_f0_824;
     s32 temp_r0_714;
+    void *temp_r29_892;
+    void *temp_r3_860;
+    void *temp_r4_863;
+    void *var_r31_711;
 
     var_r31_711 = this->unkC0;
 loop_24:
@@ -525,7 +525,7 @@ loop_24:
                     temp_r3_860 = this->unkC0;
                     this->unkC0 = temp_r3_860 + 4;
                     temp_r4_863 = *temp_r3_860;
-                    *temp_r3_860 = *var_r31_711;
+                    *temp_r3_860 = (void *) *var_r31_711;
                     *var_r31_711 = temp_r4_863;
                 }
                 break;
@@ -605,18 +605,18 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float,
 s32 FuryFXEarth2::Trigger(const MKVector3 &arg0) {
-    M2C_UNK *temp_r3_1056;
-    M2C_UNK *temp_r4_1059;
-    M2C_UNK *var_r5_1053;
     ManagedLight *temp_r3_1085;
     ManagedLight *temp_r4_1073;
     s32 temp_r0_1109;
     s32 temp_r29_1132;
     s32 temp_r3_1107;
     s32 var_r30_1125;
+    u32 temp_r4_1059;
     u8 var_r3_1115;
+    void *temp_r3_1056;
     void *temp_r3_1088;
     void *temp_r4_1111;
+    void *var_r5_1053;
 
     if ((s32) this->unk94 != 0) {
         return 0;
@@ -630,11 +630,11 @@ s32 FuryFXEarth2::Trigger(const MKVector3 &arg0) {
     M2C_FIELD(this, f64 *, 0xA8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
     var_r5_1053 = this->unkC0;
 loop_4:
-    if ((var_r5_1053 != NULL) && ((M2C_UNK *) *var_r5_1053 != NULL)) {
+    if ((var_r5_1053 != NULL) && ((u32) *var_r5_1053 != 0U)) {
         temp_r3_1056 = this->unkC0;
         this->unkC0 = temp_r3_1056 + 4;
         temp_r4_1059 = *temp_r3_1056;
-        *temp_r3_1056 = *var_r5_1053;
+        *temp_r3_1056 = (u32) *var_r5_1053;
         *var_r5_1053 = temp_r4_1059;
         var_r5_1053 += 4;
         goto loop_4;
@@ -698,16 +698,16 @@ void FuryFXEarth2::SetDefaults() {
     this->unkE0 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal type
 void FuryFXEarth2::Deinit() {
-    M2C_UNK *temp_r0_1224;
-    M2C_UNK *temp_r0_1243;
-    M2C_UNK *var_r31_1220;
-    M2C_UNK *var_r3_1221;
-    M2C_UNK *var_r4_1219;
+    MKHeap *temp_r0_1224;
     MKHeap *temp_r3_1246;
     ManagedLight *temp_r4_1261;
     u32 temp_r0_1229;
+    void *temp_r0_1243;
+    void *var_r31_1220;
+    void *var_r3_1221;
+    void *var_r4_1219;
 
     MKModel_Destroy(this->unkB0);
     MKModel_Destroy(this->unkB4);
@@ -720,7 +720,7 @@ loop_3:
     temp_r0_1229 = M2C_FIELD(var_r3_1221, u32 *, -4);
     var_r3_1221 -= 4;
     if (temp_r0_1229 != 0U) {
-        temp_r0_1224 = *var_r3_1221;
+        temp_r0_1224 = var_r3_1221->unk0;
         if (temp_r0_1224 < var_r31_1220) {
             var_r31_1220 = temp_r0_1224;
         }
@@ -736,7 +736,7 @@ loop_9:
             var_r4_1219 += 4;
             goto loop_9;
         }
-        temp_r3_1246 = ((MKHeap *) var_r3_1221)->Current();
+        temp_r3_1246 = var_r3_1221->Current();
         if (temp_r3_1246 != NULL) {
             ((MKHeap *) (temp_r3_1246->Current()))->Free(var_r31_1220, NULL, 0);
         } else {
@@ -1232,10 +1232,10 @@ void FuryFXEarth2::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: illegal type
 void FuryFXEarth2::LoadDone() {
-    M2C_UNK *temp_r31_2091;
-    M2C_UNK *temp_r6_2089;
+    void **temp_r6_2089;
+    void *temp_r31_2091;
 
     KDProp::LoadDone();
 loop_2:
@@ -1247,7 +1247,7 @@ loop_2:
         goto loop_2;
     }
 loop_5:
-    if ((M2C_UNK *) M2C_FIELD(this->unkC0, M2C_UNK **, 0) != NULL) {
+    if ((u32) M2C_FIELD(this->unkC0, u32 *, 0) != 0U) {
         this->unkC0 += 4;
         goto loop_5;
     }
@@ -1256,13 +1256,13 @@ loop_5:
 
 #if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void FuryFXEarth2::Init() {
-    M2C_UNK *temp_r3_2187;
-    M2C_UNK *temp_r3_2193;
-    M2C_UNK *var_r3_2172;
-    M2C_UNK *var_r5_2181;
     MKHeap *temp_r3_2165;
     MKModel *temp_r3_2163;
     s32 var_ctr_2185;
+    void *temp_r3_2187;
+    void *temp_r3_2193;
+    void *var_r3_2172;
+    void *var_r5_2181;
 
     FuryFX::Init();
     this->unk90 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
@@ -1286,13 +1286,13 @@ void FuryFXEarth2::Init() {
     do {
         temp_r3_2187 = this->unkC0;
         this->unkC0 = temp_r3_2187 + 4;
-        M2C_FIELD(temp_r3_2187, M2C_UNK **, 4) = var_r5_2181;
+        M2C_FIELD(temp_r3_2187, void **, 4) = var_r5_2181;
         var_r5_2181 += 0x50;
         var_ctr_2185 -= 1;
     } while (var_ctr_2185 != 0);
     temp_r3_2193 = this->unkC0;
     this->unkC0 = temp_r3_2193 + 4;
-    M2C_FIELD(temp_r3_2193, M2C_UNK **, 4) = NULL;
+    M2C_FIELD(temp_r3_2193, void **, 4) = NULL;
 }
 #endif
 

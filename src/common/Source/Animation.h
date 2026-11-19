@@ -56,7 +56,7 @@ public:
     void Destroy(void);
     Animation * Create(const char *, int);
     /* 0x000 */ void* unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ f32 unk4;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ s32 unk10;
     /* 0x014 */ MKHeap* unk14;

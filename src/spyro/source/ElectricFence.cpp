@@ -334,7 +334,7 @@ void ElectricFence::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElectricFence::LoadDone() {
     Matrix sp2E0;
     Matrix sp2A0;

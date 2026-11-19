@@ -22,7 +22,8 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     virtual void CalcBounds(void);
-    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x04c */ u8 unk4C;
+    /* 0x04d */ u8 pad4D[0x3];
     /* 0x050 */ Matrix unk50;
     /* 0x090 */ f64 unk90;
     /* 0x098 */ f64 unk98;

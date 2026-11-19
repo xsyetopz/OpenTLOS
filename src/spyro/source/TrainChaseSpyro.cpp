@@ -1943,11 +1943,9 @@ void *TrainChaseSpyro::GetCamera() {
     return M2C_FIELD(&gb, void **, 0x3B8);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk354'
 KDInput *TrainChaseSpyro::GetInput() {
-    return gb.unk354;
+    return (KDInput *) gb.unk354;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::UpdateCartCollisions() {

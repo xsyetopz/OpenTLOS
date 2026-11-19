@@ -20,7 +20,9 @@ public:
     void SetOrientation(Matrix *);
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ ManagedLight* unkC8;
-    /* 0x0cc */ u8 padCC[0x8];
+    /* 0x0cc */ u8 padCC[0x4];
+    /* 0x0d0 */ u8 unkD0;
+    /* 0x0d1 */ u8 padD1[0x3];
     /* 0x0d4 */ f32 unkD4;
     /* 0x0d8 */ f32 unkD8;
     /* 0x0dc */ f32 unkDC;

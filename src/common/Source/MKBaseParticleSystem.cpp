@@ -27,7 +27,6 @@ void MKBaseParticleSystem::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void MKBaseParticleSystemDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f32 *, 0x60) = -100000.0f;
@@ -41,7 +40,6 @@ void MKBaseParticleSystemDescriptor::Init() {
     this->unk84 = 1.0f / (f32) this->unk80;
     this->unk18 = -0x2710;
 }
-#endif
 
 void MKParticleSystem_FreeChunk(MKParticleChunk *arg0) {
     MKParticleChunk **temp_r3_78;
@@ -119,7 +117,7 @@ loop_3:
     if (temp_r0_145 != 0U) {
         temp_r0_140 = *var_r3_137;
         if (temp_r0_140 < var_r31_136) {
-            var_r31_136 = (MKParticleChunk **) temp_r0_140;
+            var_r31_136 = &temp_r0_140->unk0;
         }
         goto loop_3;
     }
@@ -128,7 +126,7 @@ loop_9:
         temp_r0_159 = *var_r4_135;
         if (temp_r0_159 != NULL) {
             if (temp_r0_159 < var_r31_136) {
-                var_r31_136 = (MKParticleChunk **) temp_r0_159;
+                var_r31_136 = &temp_r0_159->unk0;
             }
             var_r4_135 += 4;
             goto loop_9;
@@ -511,6 +509,7 @@ loop_15:
     return temp_r3_812;
 }
 
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void *MKBaseParticleSystem::CreateParticle() {
     MKParticleChunk *temp_r0_909;
     MKParticleChunk *temp_r0_918;
@@ -574,7 +573,7 @@ loop_15:
         M2C_FIELD(temp_r3_905, f64 *, 0) = (f64) M2C_FIELD(temp_r4_931, f64 *, 0);
         M2C_FIELD(temp_r3_905, f64 *, 8) = (f64) M2C_FIELD(temp_r4_931, f64 *, 8);
     } else {
-        M2C_FIELD(temp_r3_905, f64 *, 0) = 0.0f;
+        temp_r3_905->unk0 = 0.0f;
         temp_r3_905->unk4 = 0.0f;
         temp_r3_905->unk8 = 0.0f;
     }
@@ -587,6 +586,7 @@ loop_15:
     temp_r3_905->unk24 = 0.0f;
     return temp_r3_905;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp5C'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {

@@ -1946,7 +1946,7 @@ s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     return temp_r3_3414;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE0'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKCollisionModelItem::Update() {
     MKModel *temp_r3_3434;
 
@@ -1962,9 +1962,13 @@ void MKCollisionModelItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
-    MKCollisionEllipsoid sp30;
+    M2C_UNK spB0;
+    Matrix sp70;
+    M2C_UNK sp6C;
+    M2C_UNK sp4C;
+    M2C_UNK sp30;
     M2C_UNK sp2C;
     M2C_UNK sp10;
     M2C_UNK spC;
@@ -1982,28 +1986,28 @@ void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, 
 
     if ((MKModel *) this->unk128 != NULL) {
         this->unk120->unk28 = &this->unk60;
-        M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, (s32) &this->unk5C + 4, 0x40);
-        sp30.unk40.Inverse(&sp30.unk40);
+        M2C_STRUCT_COPY((s32) &sp6C + 4, (s32) &this->unk5C + 4, 0x40);
+        sp70.Inverse(&sp70);
         var_r25_3506 = 0;
         var_r27_3507 = 0;
         var_r26_3508 = 0;
 loop_3:
         if (var_r25_3506 < arg1) {
             temp_r3_3511 = arg0 + var_r26_3508;
-            temp_r5_3514 = &sp30.unk80 + var_r27_3507;
+            temp_r5_3514 = &spB0 + var_r27_3507;
             M2C_FIELD(temp_r5_3514, f64 *, 0) = (f64) temp_r3_3511->unk90;
             M2C_FIELD(temp_r5_3514, f64 *, 8) = (f64) M2C_FIELD(temp_r3_3511, f64 *, 0x98);
             M2C_FIELD(temp_r5_3514, f64 *, 0x10) = (f64) temp_r3_3511->unkA0;
             M2C_FIELD(temp_r5_3514, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_3511, f64 *, 0xA8);
-            temp_r3_3511->CreateAABB(&sp30.unk40);
+            temp_r3_3511->CreateAABB(&sp70);
             var_r25_3506 += 1;
             var_r27_3507 += 0x20;
             var_r26_3508 += 0xB0;
             goto loop_3;
         }
-        sp30.GetTotalAABB(arg0, arg1);
-        M2C_STRUCT_COPY((s32) &sp30.unk1C + 4, (s32) &sp2C + 4, 0x20);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) &sp30.unk1C + 4, 0x20);
+        ((MKCollisionEllipsoid *) &sp30)->GetTotalAABB(arg0, arg1);
+        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &sp2C + 4, 0x20);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) &sp4C + 4, 0x20);
         this->unk120->EllipsoidsTest(arg0, arg1, (MKCollisionAABB) &sp10, arg3);
         var_r3_3560 = 0;
         var_r4_3561 = 0;
@@ -2011,7 +2015,7 @@ loop_3:
         if (arg1 > 0) {
             do {
                 temp_r6_3567 = arg0 + var_r3_3560;
-                temp_r5_3568 = &sp30.unk80 + var_r4_3561;
+                temp_r5_3568 = &spB0 + var_r4_3561;
                 var_r3_3560 += 0xB0;
                 temp_f1_3570 = M2C_FIELD(temp_r5_3568, f64 *, 0);
                 var_r4_3561 += 0x20;

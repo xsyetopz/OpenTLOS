@@ -165,7 +165,7 @@ void WaterTrickleEmitter::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void WaterTrickleEmitterDescriptor::Init() {
     f64 sp50;
     f64 sp48;

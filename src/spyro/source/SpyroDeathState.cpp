@@ -86,9 +86,9 @@ void SpyroDeathState::SpawnExit() {
     void *temp_r3_170;
 
     temp_r4_146 = this->unk10;
-    temp_r4_146->unk428 &= 0xFFFF7FFF;
+    temp_r4_146->unk420 = (void *) ((s32) temp_r4_146->unk420 & 0xFFFF7FFF);
     temp_r4_150 = this->unk10;
-    temp_r4_150->unk428 |= 0x1000;
+    temp_r4_150->unk420 = (void *) ((s32) temp_r4_150->unk420 | 0x1000);
     M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
     M2C_FIELD(this->unk10, s8 *, 0x3CC) = 0;
     temp_r3_159 = this->unk10->GetCamera();
@@ -113,11 +113,11 @@ void SpyroDeathState::SpawnEnter() {
     this->unk28 = 1;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_207 = this->unk10;
-    temp_r3_207->unk428 |= 0x8000;
+    temp_r3_207->unk420 = (void *) ((s32) temp_r3_207->unk420 | 0x8000);
     temp_r3_211 = this->unk10;
-    temp_r3_211->unk428 |= 0x20;
+    temp_r3_211->unk420 = (void *) ((s32) temp_r3_211->unk420 | 0x20);
     temp_r3_215 = this->unk10;
-    temp_r3_215->unk428 &= 0xFFFFEFFF;
+    temp_r3_215->unk420 = (void *) ((s32) temp_r3_215->unk420 & 0xFFFFEFFF);
     this->unk10->ClearSafePos();
     if ((u32) M2C_FIELD(&gb, u32 *, 0x360) == 0U) {
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
@@ -153,7 +153,7 @@ void SpyroDeathState::RespawnEnter() {
     Spyro *temp_r4_314;
 
     temp_r4_314 = this->unk10;
-    temp_r4_314->unk428 &= 0xFFFFEFFF;
+    temp_r4_314->unk420 = (void *) ((s32) temp_r4_314->unk420 & 0xFFFFEFFF);
     M2C_FIELD(this->unk10, s8 *, 0x3CF) = 1;
     this->unk10->ClearSafePos();
     this->unk28 = 1;
@@ -424,9 +424,9 @@ void SpyroDeathState::Exit() {
         M2C_FIELD(temp_r3_986->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     }
     temp_r3_997 = this->unk10;
-    temp_r3_997->unk428 |= 0x20000;
+    temp_r3_997->unk420 = (void *) ((s32) temp_r3_997->unk420 | 0x20000);
     temp_r3_1001 = this->unk10;
-    temp_r3_1001->unk428 |= 0x800;
+    temp_r3_1001->unk420 = (void *) ((s32) temp_r3_1001->unk420 | 0x800);
     this->unk10->DeathReset();
     M2C_FIELD(this->unk10, s8 *, 0x3CD) = 0;
     M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
@@ -455,9 +455,9 @@ void SpyroDeathState::Enter(SpyroStateMessages &arg0) {
     void *temp_r3_1147;
 
     temp_r5_1050 = this->unk10;
-    temp_r5_1050->unk428 &= 0xFFF9FD7E;
+    temp_r5_1050->unk420 = (void *) ((s32) temp_r5_1050->unk420 & 0xFFF9FD7E);
     temp_r3_1054 = this->unk10;
-    temp_r3_1054->unk428 &= 0xFFFFF7FF;
+    temp_r3_1054->unk420 = (void *) ((s32) temp_r3_1054->unk420 & 0xFFFFF7FF);
     temp_r3_1059 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x42B;

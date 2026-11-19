@@ -541,7 +541,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SkyClouds::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
@@ -733,7 +733,6 @@ s32 CloudParticleCompare(const void *arg0, const void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void SkyCloudsDescriptor::Init() {
     f64 sp40;
     f64 sp38;
@@ -763,4 +762,3 @@ void SkyCloudsDescriptor::Init() {
     sp30 = (f64) sp10;
     this->unk78 = (f64) sp10;
 }
-#endif

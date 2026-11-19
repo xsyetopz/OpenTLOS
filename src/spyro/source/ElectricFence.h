@@ -29,7 +29,11 @@ public:
     /* 0x04c */ void* unk4C;
     /* 0x050 */ s32 unk50;
     /* 0x054 */ u8 unk54;
-    /* 0x055 */ u8 pad55[0x4b];
+    /* 0x055 */ u8 pad55[0x17];
+    /* 0x06c */ u8 unk6C;
+    /* 0x06d */ u8 pad6D[0x3];
+    /* 0x070 */ u8 unk70;
+    /* 0x071 */ u8 pad71[0x2f];
     /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ f32 unkA4;
     /* 0x0a8 */ f32 unkA8;
@@ -50,7 +54,9 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
-    /* 0x044 */ u8 pad44[0x24];
+    /* 0x044 */ u8 pad44[0x1c];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x7];
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f64 unk78;
@@ -75,7 +81,6 @@ inline ElectricFence::~ElectricFence() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 inline void ElectricFenceDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -88,6 +93,5 @@ inline void ElectricFenceDescriptor::Init() {
     this->unk90 = 0.25f;
     this->unk88 = 0;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ELECTRICFENCE_H

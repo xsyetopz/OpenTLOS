@@ -29,8 +29,8 @@
 #include <m2c_macros.h>
 
 MKSceneManager *atoi(s32);                          /* extern */
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(s32);                               /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
@@ -398,7 +398,7 @@ void GameCamera2::UpdateSnaps() {
     this->unk2AC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk2A8'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void GameCamera2::TrackedShakePropUpdate() {
     f64 sp40;
     f64 sp38;
@@ -408,8 +408,6 @@ void GameCamera2::TrackedShakePropUpdate() {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    M2C_UNK *temp_r31_793;
-    M2C_UNK *var_r30_724;
     f32 temp_f0_777;
     f32 temp_f2_785;
     f32 temp_f2_807;
@@ -421,8 +419,10 @@ void GameCamera2::TrackedShakePropUpdate() {
     f32 var_f31_723;
     f64 temp_f0_759;
     f64 temp_f1_749;
+    void *temp_r31_793;
     void *temp_r3_747;
     void *temp_r4_748;
+    void *var_r30_724;
 
     if ((u8) this->unk180 != 0) {
         ((KDInput *) this->unk120)->RumbleStop();
@@ -435,10 +435,10 @@ loop_9:
     if (var_r30_724 != NULL) {
         temp_r31_793 = *var_r30_724;
         if (temp_r31_793 != NULL) {
-            if ((M2C_FIELD(*gMK, u8 (**)(void **, M2C_UNK *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, M2C_UNK **, 0), *MKResource::sWorkingChunkID) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
+            if ((M2C_FIELD(*gMK, u8 (**)(void **, void *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, void **, 0), *MKResource::sWorkingChunkID) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
                 M2C_FIELD(temp_r31_793, u8 *, 0xD) = 0U;
                 temp_r3_747 = this->unk8;
-                temp_r4_748 = M2C_FIELD(M2C_FIELD(temp_r31_793, M2C_UNK **, 0), void **, 8);
+                temp_r4_748 = M2C_FIELD(M2C_FIELD(temp_r31_793, void **, 0), void **, 8);
                 temp_f1_749 = M2C_FIELD(temp_r3_747, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r4_748, f64 *, 0x30);
                 sp28 = temp_f1_749;
@@ -497,23 +497,23 @@ void GameCamera2::CameraEffectsUpdate() {
     KDCamera::CameraEffectsUpdate();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk2A8'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void GameCamera2::CameraEffectsMessage(MKMessage *arg0) {
-    M2C_UNK *temp_r3_945;
-    M2C_UNK *temp_r4_917;
-    M2C_UNK *temp_r4_948;
-    M2C_UNK *temp_r4_958;
-    M2C_UNK *temp_r5_910;
-    M2C_UNK *temp_r5_980;
-    M2C_UNK *var_r5_938;
-    M2C_UNK *var_r6_896;
-    M2C_UNK *var_r6_965;
-    M2C_UNK *var_r7_895;
     f32 temp_f0_924;
     s32 temp_r0_881;
+    u32 **temp_r4_917;
+    u32 *temp_r4_948;
+    u32 *temp_r4_958;
+    u32 *temp_r5_910;
+    u32 *var_r6_896;
     void *temp_r3_894;
     void *temp_r3_937;
+    void *temp_r3_945;
     void *temp_r3_964;
+    void *temp_r5_980;
+    void *var_r5_938;
+    void *var_r6_965;
+    void *var_r7_895;
 
     KDCamera::CameraEffectsMessage(arg0);
     temp_r0_881 = arg0->unk0;
@@ -526,7 +526,7 @@ loop_10:
         if (var_r7_895 != NULL) {
             temp_r5_910 = *var_r7_895;
             if (temp_r5_910 != NULL) {
-                if ((M2C_UNK *) *temp_r5_910 == (M2C_UNK *) M2C_FIELD(temp_r3_894, M2C_UNK **, 8)) {
+                if ((u32) *temp_r5_910 == (u32) M2C_FIELD(temp_r3_894, u32 *, 8)) {
                     var_r6_896 = temp_r5_910;
                 } else {
                     var_r7_895 += 4;
@@ -539,7 +539,7 @@ loop_10:
             this->unk2A8 = temp_r4_917;
             var_r6_896 = *temp_r4_917;
         }
-        M2C_FIELD(var_r6_896, M2C_UNK **, 0) = M2C_FIELD(temp_r3_894, M2C_UNK **, 8);
+        M2C_FIELD(var_r6_896, u32 *, 0) = M2C_FIELD(temp_r3_894, u32 *, 8);
         temp_f0_924 = M2C_FIELD(temp_r3_894, f32 *, 0xC);
         M2C_FIELD(var_r6_896, f32 *, 4) = (f32) (temp_f0_924 * temp_f0_924);
         M2C_FIELD(var_r6_896, f32 *, 8) = (f32) M2C_FIELD(temp_r3_894, f32 *, 0x10);
@@ -556,11 +556,11 @@ loop_19:
             if (temp_r4_958 == NULL) {
                 return;
             }
-            if ((M2C_UNK *) *temp_r4_958 == (u32) M2C_FIELD(temp_r3_937, u32 *, 8)) {
+            if ((u32) *temp_r4_958 == (u32) M2C_FIELD(temp_r3_937, u32 *, 8)) {
                 temp_r3_945 = this->unk2A8;
                 this->unk2A8 = temp_r3_945 + 4;
                 temp_r4_948 = *temp_r3_945;
-                *temp_r3_945 = *var_r5_938;
+                *temp_r3_945 = (u32 *) *var_r5_938;
                 *var_r5_938 = temp_r4_948;
                 return;
             }
@@ -575,7 +575,7 @@ loop_26:
         if ((var_r6_965 == NULL) || (temp_r5_980 = *var_r6_965, ((temp_r5_980 == NULL) != 0))) {
 
         } else {
-            if ((M2C_UNK *) M2C_FIELD(temp_r5_980, M2C_UNK **, 0) == (u32) M2C_FIELD(temp_r3_964, u32 *, 8)) {
+            if ((u32) M2C_FIELD(temp_r5_980, u32 *, 0) == (u32) M2C_FIELD(temp_r3_964, u32 *, 8)) {
                 M2C_FIELD(temp_r5_980, s8 *, 0xD) = 1;
                 return;
             }
@@ -2473,15 +2473,15 @@ void GameCamera2::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2A8'
+#if 0 // DRAFT: illegal type
 void GameCamera2::Deinit() {
-    M2C_UNK *temp_r0_4930;
-    M2C_UNK *temp_r0_4949;
-    M2C_UNK *var_r31_4926;
-    M2C_UNK *var_r3_4927;
-    M2C_UNK *var_r4_4925;
+    MKHeap *temp_r0_4930;
     MKHeap *temp_r3_4952;
     u32 temp_r0_4935;
+    void *temp_r0_4949;
+    void *var_r31_4926;
+    void *var_r3_4927;
+    void *var_r4_4925;
 
     var_r4_4925 = this->unk2A8;
     var_r31_4926 = var_r4_4925;
@@ -2490,9 +2490,9 @@ loop_3:
     temp_r0_4935 = M2C_FIELD(var_r3_4927, u32 *, -4);
     var_r3_4927 -= 4;
     if (temp_r0_4935 != 0U) {
-        temp_r0_4930 = *var_r3_4927;
+        temp_r0_4930 = var_r3_4927->unk0;
         if (temp_r0_4930 < var_r31_4926) {
-            var_r31_4926 = &*temp_r0_4930;
+            var_r31_4926 = temp_r0_4930;
         }
         goto loop_3;
     }
@@ -2506,7 +2506,7 @@ loop_9:
             var_r4_4925 += 4;
             goto loop_9;
         }
-        temp_r3_4952 = ((MKHeap *) var_r3_4927)->Current();
+        temp_r3_4952 = var_r3_4927->Current();
         if (temp_r3_4952 != NULL) {
             ((MKHeap *) (temp_r3_4952->Current()))->Free(var_r31_4926, NULL, 0);
         } else {
@@ -2528,16 +2528,16 @@ loop_9:
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::Init() {
     GameCamera2Descriptor *temp_r3_5023;
-    M2C_UNK *temp_r3_5055;
-    M2C_UNK *temp_r3_5062;
-    M2C_UNK *temp_r3_5069;
-    M2C_UNK *var_r3_5042;
-    M2C_UNK *var_r5_5054;
     MKHeap *temp_r3_5032;
+    s32 *temp_r3_5055;
     s32 temp_r30_5024;
     s32 temp_r3_5001;
     s32 temp_r3_5004;
     s32 var_ctr_5058;
+    void *temp_r3_5062;
+    void *temp_r3_5069;
+    void *var_r3_5042;
+    void *var_r5_5054;
 
     KDCamera::Init();
     temp_r3_5001 = this->unk268;
@@ -2566,20 +2566,20 @@ void GameCamera2::Init() {
     var_r5_5054 = this->unk2A8;
     temp_r3_5055 = var_r5_5054 + (temp_r30_5024 * 0x14);
     this->unk2A8 = temp_r3_5055;
-    *temp_r3_5055 = NULL;
+    *temp_r3_5055 = 0;
     var_ctr_5058 = temp_r30_5024;
     if (temp_r30_5024 > 0) {
         do {
             temp_r3_5062 = this->unk2A8;
             this->unk2A8 = temp_r3_5062 + 4;
-            M2C_FIELD(temp_r3_5062, M2C_UNK **, 4) = var_r5_5054;
+            M2C_FIELD(temp_r3_5062, void **, 4) = var_r5_5054;
             var_r5_5054 += 0x14;
             var_ctr_5058 -= 1;
         } while (var_ctr_5058 != 0);
     }
     temp_r3_5069 = this->unk2A8;
     this->unk2A8 = temp_r3_5069 + 4;
-    M2C_FIELD(temp_r3_5069, M2C_UNK **, 4) = NULL;
+    M2C_FIELD(temp_r3_5069, void **, 4) = NULL;
 }
 #endif
 
@@ -2668,7 +2668,7 @@ void GameCamera2::InitModule() {
         M2C_FIELD(&deltaStageInfo, s32 *, 0x320) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x324) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
         M2C_FIELD(&deltaStageInfo, f32 *, 0x328) = (f32) deltaStageInfo.unk20C;
-        M2C_FIELD(&deltaStageInfo, s32 *, 0x32C) = (s32) deltaStageInfo.unk210;
+        M2C_FIELD(&deltaStageInfo, void **, 0x32C) = (void *) deltaStageInfo.unk210;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x330) = (s32) deltaStageInfo.unk214;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x348) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x34C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);

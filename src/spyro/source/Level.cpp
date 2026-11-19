@@ -135,7 +135,7 @@ static s8 *pGlobalModelName = .L_803582CF;
 static M2C_UNK defaultClip;                         /* unable to generate initializer: unknown type */
 
 static s8 .L_803582BE[0xB] = { 0x6C, 0x65, 0x76, 0x65, 0x6C, 0x73, 0x2E, 0x69, 0x6E, 0x69, 0 }; /* const */
-static Level .L_803582C9;                           /* type too large by 0xEA; unable to generate initializer: confusing struct layout; const */
+static Level .L_803582C9;                           /* type too large by 0xEA; unable to generate initializer: non-zero padding; const */
 static s8 .L_803582CF[0xD] = { 0x67, 0x6C, 0x6F, 0x62, 0x61, 0x6C, 0x2E, 0x6D, 0x6F, 0x64, 0x65, 0x6C, 0 }; /* const */
 
 void ChunkProp::Message(MKMessage *arg0) {
@@ -327,7 +327,6 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk84'
 u8 Level::GetNextInQueue(QueueInfo *arg0, bool arg1) {
     arg0->unk0 = NULL;
     arg0->unk4 = -1;
@@ -342,7 +341,6 @@ u8 Level::GetNextInQueue(QueueInfo *arg0, bool arg1) {
     }
     return arg0->unk0 != NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 MKHeap *Level::AddChunkToQueue(ChunkInfo *arg0, int arg1) {
@@ -2600,7 +2598,7 @@ block_48:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'defaultWind'
 void LevelInfo::Init() {
     f64 sp20;
     f64 sp18;

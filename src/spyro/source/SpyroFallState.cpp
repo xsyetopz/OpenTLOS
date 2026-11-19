@@ -487,7 +487,7 @@ void SpyroFallState::GlideExit() {
 
     this->unk10->unk6F8.FadeOut(2);
     temp_r3_590 = this->unk10;
-    temp_r3_590->unk428 &= 0xFFFF7FFF;
+    temp_r3_590->unk420 = (void *) ((s32) temp_r3_590->unk420 & 0xFFFF7FFF);
     temp_r3_595 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x438;
@@ -508,7 +508,7 @@ void SpyroFallState::GlideEnter() {
 
     this->unk6C.Start(this->unk10, 0.17f);
     temp_r3_624 = this->unk10;
-    temp_r3_624->unk428 |= 0x8000;
+    temp_r3_624->unk420 = (void *) ((s32) temp_r3_624->unk420 | 0x8000);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 3240.0002f;
     temp_r3_632 = this->unk10;
     temp_r3_632->unk388 = 500.0f;
@@ -565,7 +565,7 @@ void SpyroFallState::LongFallExit() {
     Spyro *temp_r3_730;
 
     temp_r3_730 = this->unk10;
-    temp_r3_730->unk428 = temp_r3_730->unk428 | 0x40000 | 1;
+    temp_r3_730->unk420 = (void *) ((s32) temp_r3_730->unk420 | 0x40000 | 1);
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -595,7 +595,7 @@ void SpyroFallState::LongFallEnter() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
     this->unk10->SetAnim(0x3FU, 0.17f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r7_775 = this->unk10;
-    temp_r7_775->unk428 &= 0xFFFBFFFE;
+    temp_r7_775->unk420 = (void *) ((s32) temp_r7_775->unk420 & 0xFFFBFFFE);
     this->unk44 = 0x40;
     this->unk3C = 0x187;
     this->unk48 = 1.0f;
@@ -749,7 +749,7 @@ void SpyroFallState::FallExit() {
     Spyro *temp_r3_1063;
 
     temp_r3_1063 = this->unk10;
-    temp_r3_1063->unk428 &= 0xFFFF7FFF;
+    temp_r3_1063->unk420 = (void *) ((s32) temp_r3_1063->unk420 & 0xFFFF7FFF);
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -785,7 +785,7 @@ void SpyroFallState::FallEnter() {
     temp_r3_1087->unk33C = var_f2_1090;
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
     temp_r3_1108 = this->unk10;
-    temp_r3_1108->unk428 |= 0x8000;
+    temp_r3_1108->unk420 = (void *) ((s32) temp_r3_1108->unk420 | 0x8000);
     if (((u8) this->unk3A != 0) || (((u32) this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20 != 0U) && ((u32) this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20 == (u32) M2C_FIELD(this->unk10->unkB4, u32 *, 0x194)))) {
         this->unk5C.Start(this->unk10, 0.1f);
         this->unk44 = 0x3E;
@@ -1428,7 +1428,7 @@ void SpyroFallState::Exit() {
     this->unk14.Exit(this);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.0f;
     temp_r5_2159 = this->unk10;
-    temp_r5_2159->unk428 |= 0x80;
+    temp_r5_2159->unk420 = (void *) ((s32) temp_r5_2159->unk420 | 0x80);
     SetStrafeJump(0U);
     ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
     ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
@@ -1462,7 +1462,7 @@ void SpyroFallState::Enter(SpyroStateMessages &arg0) {
     void *temp_r5_2262;
 
     temp_r5_2194 = this->unk10;
-    temp_r5_2194->unk428 &= 0xFFFDFFDF;
+    temp_r5_2194->unk420 = (void *) ((s32) temp_r5_2194->unk420 & 0xFFFDFFDF);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.5f;
     temp_r3_2200 = this->unk10;
     temp_r3_2200->unk388 = 3800.0f;

@@ -89,11 +89,16 @@ public:
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f32 unk78;
-    /* 0x07c */ u8 pad7C[0x7c];
+    /* 0x07c */ u8 unk7C;
+    /* 0x07d */ u8 pad7D[0x4f];
+    /* 0x0cc */ u8 unkCC;
+    /* 0x0cd */ u8 padCD[0x2b];
     /* 0x0f8 */ u8 unkF8;
     /* 0x0f9 */ u8 padF9[0x2ff];
     /* 0x3f8 */ s32 unk3F8;
-    /* 0x3fc */ u8 pad3FC[0x8];
+    /* 0x3fc */ u8 pad3FC[0x4];
+    /* 0x400 */ u8 unk400;
+    /* 0x401 */ u8 pad401[0x3];
     /* 0x404 */ f32 unk404;
     /* 0x408 */ f32 unk408;
     /* 0x40c */ u8 pad40C[0x4];

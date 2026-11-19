@@ -48,7 +48,8 @@ public:
     /* 0x0e5 */ u8 unkE5;
     /* 0x0e6 */ u8 padE6[0x2];
     /* 0x0e8 */ GoopFXDescriptor::Goop** unkE8;
-    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0ec */ u8 unkEC;
+    /* 0x0ed */ u8 padED[0x3];
     /* 0x0f0 */ Matrix unkF0;
 };
 

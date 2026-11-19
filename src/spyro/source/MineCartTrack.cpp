@@ -759,7 +759,6 @@ void MineCartTrack::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void MineCartTrackDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -768,4 +767,3 @@ void MineCartTrackDescriptor::Init() {
     this->unk78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
-#endif

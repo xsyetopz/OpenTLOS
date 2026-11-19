@@ -3336,7 +3336,7 @@ s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2, MKVector3 *arg3) {
     f64 sp178;
     f64 sp170;

@@ -102,9 +102,12 @@ public:
     /* 0x0e4 */ u8 unkE4;
     /* 0x0e5 */ u8 padE5[0x3];
     /* 0x0e8 */ s32 unkE8;
-    /* 0x0ec */ u8 padEC[0x24];
+    /* 0x0ec */ u8 padEC[0x1c];
+    /* 0x108 */ f32 unk108;
+    /* 0x10c */ f32 unk10C;
     /* 0x110 */ s32 unk110;
-    /* 0x114 */ u8 pad114[0x24];
+    /* 0x114 */ f32 unk114;
+    /* 0x118 */ u8 pad118[0x20];
     /* 0x138 */ s32 unk138;
     /* 0x13c */ u8 pad13C[0x24];
     /* 0x160 */ s32 unk160;

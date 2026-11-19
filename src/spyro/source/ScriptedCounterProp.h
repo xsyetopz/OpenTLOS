@@ -16,13 +16,14 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(void);
     virtual void Message(MKMessage *);
-    /* 0x04c */ u8 pad4C[0x50];
+    /* 0x04c */ u8 unk4C;
+    /* 0x04d */ u8 pad4D[0x4f];
     /* 0x09c */ s32 unk9C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: undefined identifier 'EventMessage'
 inline ScriptedCounterProp::~ScriptedCounterProp() {
     __destroy_arr(&this->unk4C, &EventMessage::~EventMessage, 4, 0x14);
     if (this != NULL) {

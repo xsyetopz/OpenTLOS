@@ -128,7 +128,6 @@ void KDSoundProp::Init() {
     this->unk8 = &this->unk60;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void KDSoundPropDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk7C &= 0xFFFFFFF8;
@@ -140,4 +139,3 @@ void KDSoundPropDescriptor::Init() {
     this->unk78 = 10.0f;
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
-#endif

@@ -160,7 +160,10 @@ public:
     /* 0x00c */ u8 unkC;
     /* 0x00d */ u8 padD[0x3];
     /* 0x010 */ SoundMaterial* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ u8 unk14;
+    /* 0x015 */ u8 pad15[0xb];
+    /* 0x020 */ void* unk20;
+    /* 0x024 */ void* unk24;
     /* 0x028 */ s32 unk28;
     /* 0x02c */ u8 unk2C;
 };

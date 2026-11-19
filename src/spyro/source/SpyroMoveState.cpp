@@ -51,7 +51,7 @@ void SpyroMoveState::WalkDeinit() {
     Spyro *temp_r3_105;
 
     temp_r3_105 = this->unk10;
-    temp_r3_105->unk428 &= 0xFFFFFFF7;
+    temp_r3_105->unk420 = (void *) ((s32) temp_r3_105->unk420 & 0xFFFFFFF7);
 }
 
 void SpyroMoveState::WalkInit() {
@@ -60,7 +60,7 @@ void SpyroMoveState::WalkInit() {
     this->unk4C = 190.0f;
     this->unk38.Start(this->unk10, 0.2f);
     temp_r3_126 = this->unk10;
-    temp_r3_126->unk428 |= 8;
+    temp_r3_126->unk420 = (void *) ((s32) temp_r3_126->unk420 | 8);
 }
 
 #if 0 // DRAFT: undefined identifier 'unk14'
@@ -349,7 +349,7 @@ void SpyroMoveState::Update() {
     this->unk60 = temp_f0_577;
     temp_r5_581 = this->unk10;
     sp50 = temp_f0_577;
-    if (((u32) temp_r5_581->unk428 >> 5U) & 1) {
+    if (((u32) temp_r5_581->unk420 >> 5U) & 1) {
         temp_r3_586 = temp_r5_581->unk26C.unk8;
         temp_r3_588 = M2C_FIELD(temp_r3_586, s32 *, 0x16C);
         if (((u32) (-temp_r3_588 & ~temp_r3_588) >> 0x1FU) != 0) {
@@ -475,7 +475,7 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     this->unk48 = 1;
     temp_r3_835 = this->unk10;
     sp10 = temp_f0_830;
-    temp_r3_835->unk428 = temp_r3_835->unk428 | 0x100000 | 0x8000;
+    temp_r3_835->unk420 = (void *) ((s32) temp_r3_835->unk420 | 0x100000 | 0x8000);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
     sp2C = 0;

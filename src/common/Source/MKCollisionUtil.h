@@ -100,7 +100,9 @@ class MKCollisionEllipsoid {
 public:
     void GetTotalAABB(MKCollisionEllipsoid *, int);
     void CreateAABB(Matrix *);
-    /* 0x000 */ u8 pad0[0x80];
+    /* 0x000 */ u8 pad0[0x40];
+    /* 0x040 */ f32 unk40;
+    /* 0x044 */ u8 pad44[0x3c];
     /* 0x080 */ f32 unk80;
     /* 0x084 */ u8 pad84[0xc];
     /* 0x090 */ f64 unk90;

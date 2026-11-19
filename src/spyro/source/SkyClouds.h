@@ -33,10 +33,16 @@ public:
     /* 0x050 */ SkyClouds::CloudEmitter** unk50;
     /* 0x054 */ SkyClouds::CloudEmitter** unk54;
     /* 0x058 */ MKMaterial* unk58;
-    /* 0x05c */ u8 pad5C[0xc];
+    /* 0x05c */ u8 pad5C[0x4];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x7];
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
-    /* 0x078 */ u8 pad78[0x48];
+    /* 0x078 */ u8 pad78[0x4];
+    /* 0x07c */ u8 unk7C;
+    /* 0x07d */ u8 pad7D[0x3];
+    /* 0x080 */ u8 unk80;
+    /* 0x081 */ u8 pad81[0x3f];
     /* 0x0c0 */ SkyClouds::CloudEmitter** unkC0;
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f32 unkC8;
@@ -47,7 +53,9 @@ public:
 class SkyCloudsDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x044 */ u8 pad44[0x24];
+    /* 0x044 */ u8 pad44[0x1c];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x7];
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f64 unk78;

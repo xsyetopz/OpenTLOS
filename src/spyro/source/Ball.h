@@ -134,7 +134,8 @@ public:
     /* 0x248 */ u8 pad248[0x18];
     /* 0x260 */ Ball* unk260;
     /* 0x264 */ void* unk264;
-    /* 0x268 */ u8 pad268[0x8];
+    /* 0x268 */ u8 pad268[0x4];
+    /* 0x26c */ MKProp*** unk26C;
     /* 0x270 */ s32 unk270;
     /* 0x274 */ f32 unk274;
     /* 0x278 */ f32 unk278;

@@ -155,9 +155,9 @@ void SpyroFuryState::Enter(SpyroStateMessages &arg0) {
         this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk38 = 0.75f;
     }
     temp_r6_282 = this->unk10;
-    temp_r6_282->unk428 &= 0xFFF3BE5E;
+    temp_r6_282->unk420 = (void *) ((s32) temp_r6_282->unk420 & 0xFFF3BE5E);
     temp_r3_291 = this->unk10;
-    temp_r3_291->unk428 |= 0x4000;
+    temp_r3_291->unk420 = (void *) ((s32) temp_r3_291->unk420 | 0x4000);
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     temp_r3_301 = this->unk10->unkB70;

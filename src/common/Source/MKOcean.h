@@ -36,7 +36,9 @@ public:
     /* 0x517c */ f32 unk517C;
     /* 0x5180 */ f32 unk5180;
     /* 0x5184 */ f32 unk5184;
-    /* 0x5188 */ u8 pad5188[0x78];
+    /* 0x5188 */ u8 pad5188[0x34];
+    /* 0x51bc */ u8 unk51BC;
+    /* 0x51bd */ u8 pad51BD[0x43];
     /* 0x5200 */ f32 unk5200;
     /* 0x5204 */ f32 unk5204;
     /* 0x5208 */ MKFFTWater* unk5208;

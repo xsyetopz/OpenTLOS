@@ -16,7 +16,7 @@ public:
     virtual void Draw(void);
     /* 0x04c */ s32 unk4C;
     /* 0x050 */ void* unk50;
-    /* 0x054 */ u8 pad54[0x4];
+    /* 0x054 */ void* unk54;
     /* 0x058 */ f32 unk58;
     /* 0x05c */ f32 unk5C;
     /* 0x060 */ u8 unk60;

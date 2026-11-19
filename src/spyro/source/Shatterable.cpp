@@ -1451,7 +1451,7 @@ loop_32:
                 this->unk178 = 0.0f;
                 SetStateAnim(2);
             }
-            this->unk160.Send((MKProp *) this);
+            ((EventMessage *) &this->unk150)->Send((MKProp *) this);
             if ((u32) M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
                 temp_r26_2301 = *KDProperty::pInstanceMem;
                 *KDProperty::pInstanceMem = this;
@@ -2041,7 +2041,7 @@ block_84:
             if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0) && (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 & 1) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) != 0)) {
 loop_223:
                 if (((MKProp *) this->unk170 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (((s32) this->unk170 * 0x17C) + 0x2F4)) != 0)) {
-                    this->unk160.Send((MKProp *) this);
+                    ((EventMessage *) &this->unk150)->Send((MKProp *) this);
                     if ((u32) *(this->unk158 + (((s32) this->unk170 << 7) + 0x78)) != 0U) {
                         temp_r28_3455 = *KDProperty::pInstanceMem;
                         *KDProperty::pInstanceMem = this;
@@ -2594,14 +2594,14 @@ s32 Shatterable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4647;
 
     var_r31_4647 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", this + 0x19D, 0) != 0) || (arg0->LoadBool("bStartActive", this + 0x19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (((EventMessage *) &this->unk154)->LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", (u8 *) &this->unk190, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", this + 0x1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", &this->unk164.unk0, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", (f32 *) &this->unk17C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk188, 0) != 0) || (arg0->LoadBool("Hitable", (u8 *) &this->unk18C, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", this + 0x19D, 0) != 0) || (arg0->LoadBool("bStartActive", this + 0x19F, 0) != 0) || (((EventMessage *) &this->unk150)->LoadLine(arg0, "onShatter") != 0) || (((EventMessage *) &this->unk154)->LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", (u8 *) &this->unk190, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", this + 0x1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", &this->unk164.unk0, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", (f32 *) &this->unk17C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk188, 0) != 0) || (arg0->LoadBool("Hitable", (u8 *) &this->unk18C, 0) != 0)) {
         var_r31_4647 = 1;
     }
     return var_r31_4647;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk150'
+#if 0 // DRAFT: type mismatch
 void Shatterable::Deinit() {
     Attachment *temp_r30_4779;
     Attachment *var_r3_4776;

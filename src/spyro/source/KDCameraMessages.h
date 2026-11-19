@@ -12,7 +12,10 @@ public:
     void ClearData(void);
     void Init(const Matrix *);
     /* 0x000 */ s32 unk0;
-    /* 0x004 */ u8 pad4[0xc];
+    /* 0x004 */ s32 unk4;
+    /* 0x008 */ u8 pad8[0x4];
+    /* 0x00c */ u8 unkC;
+    /* 0x00d */ u8 padD[0x3];
     /* 0x010 */ Matrix unk10;
     /* 0x050 */ f64 unk50;
     /* 0x058 */ f64 unk58;

@@ -23,7 +23,9 @@ public:
     virtual void Draw(void);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
-    /* 0x094 */ u8 pad94[0xc];
+    /* 0x094 */ u8 pad94[0x8];
+    /* 0x09c */ u8 unk9C;
+    /* 0x09d */ u8 pad9D[0x3];
     /* 0x0a0 */ Matrix unkA0;
     /* 0x0e0 */ Volume unkE0;
 };

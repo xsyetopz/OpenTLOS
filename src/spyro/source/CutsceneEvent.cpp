@@ -312,16 +312,16 @@ void BreathEffectCE::Update() {
     temp_r0_673 = this->unk4C;
     switch (temp_r0_673) {                          /* irregular */
     case 0:
-        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(M2C_UNK *), 8)(&this->unk8);
+        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(u8 *), 8)(&this->unk8);
         return;
     case 2:
-        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk8);
+        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(u8 *), 0xC)(&this->unk8);
         return;
     case 1:
-        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(M2C_UNK *), 0x10)(&this->unk8);
+        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(u8 *), 0x10)(&this->unk8);
         return;
     case 3:
-        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(M2C_UNK *), 0x14)(&this->unk8);
+        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **), 0x3C)(gb), M2C_UNK (**)(u8 *), 0x14)(&this->unk8);
         return;
     }
 }
@@ -354,7 +354,7 @@ void BreathEffectCE::Enter() {
         temp_f1_831 = *M2C_ERROR(/* Read from unset register $r3 */);
         this->unk18 = temp_f1_831;
         this->unk20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
-        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **, void ***, f64), 0x3C)(gb, &gb, temp_f1_831), M2C_UNK (**)(M2C_UNK *), 0x18)(&this->unk8);
+        M2C_FIELD(*M2C_FIELD(*gb, void **(**)(void **, void ***, f64), 0x3C)(gb, &gb, temp_f1_831), M2C_UNK (**)(u8 *), 0x18)(&this->unk8);
     }
 }
 #endif

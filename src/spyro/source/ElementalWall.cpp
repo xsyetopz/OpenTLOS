@@ -777,7 +777,7 @@ void ElementalWall::EmitParticles(float arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     Matrix sp230;
     M2C_UNK sp22C;
@@ -1116,7 +1116,7 @@ loop_61:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalWall::DrawIceWall(float arg0, float arg1) {
     Matrix sp230;
     M2C_UNK sp22C;
@@ -1455,7 +1455,7 @@ loop_61:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalWall::DrawElectricityWall(float arg0, float arg1) {
     Matrix sp130;
     M2C_UNK sp12C;
@@ -1571,7 +1571,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalWall::DrawFireWall(float arg0, float arg1) {
     Matrix sp3E0;
     M2C_UNK sp3DC;

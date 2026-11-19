@@ -22,7 +22,8 @@ public:
     void TriggerSubObjFader(int, float);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
-    /* 0x094 */ u8 pad94[0x20];
+    /* 0x094 */ u8 pad94[0x1c];
+    /* 0x0b0 */ void* unkB0;
     /* 0x0b4 */ s32 unkB4;
     /* 0x0b8 */ s32 unkB8;
     /* 0x0bc */ f32 unkBC;

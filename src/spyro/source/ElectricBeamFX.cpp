@@ -373,7 +373,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk19C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElectricBeam::UpdateWiggleBones() {
     Matrix sp250;
     Matrix sp210;

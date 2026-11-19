@@ -83,7 +83,7 @@ public:
     void InitModule(void);
     static u8 pPossibleStateChanges[0x4];
     static u8 pEmuStateDescriptors[0x4];
-    /* 0x210 */ u8 pad210[0x10];
+    /* 0x214 */ u8 pad214[0xc];
     /* 0x220 */ f32 unk220;
     /* 0x224 */ f32 unk224;
     /* 0x228 */ f32 unk228;
@@ -111,7 +111,7 @@ public:
     /* 0x2a0 */ u8 unk2A0;
     /* 0x2a1 */ u8 pad2A1[0x3];
     /* 0x2a4 */ f32 unk2A4;
-    /* 0x2a8 */ u8 pad2A8[0x4];
+    /* 0x2a8 */ void* unk2A8;
     /* 0x2ac */ u32 unk2AC;
     /* 0x2b0 */ s8 unk2B0;
     /* 0x2b1 */ u8 pad2B1[0x3];

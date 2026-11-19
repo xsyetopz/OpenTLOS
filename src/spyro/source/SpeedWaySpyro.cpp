@@ -728,7 +728,7 @@ void SpeedWaySpyro::SetColObjEnabled(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk21C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::Teleport(float arg0, bool arg1) {
     this->unk328 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk330 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -767,7 +767,7 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
     M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (&arg0 - 4) + 4, 0x40);
     if ((u8) this->unk814 != 0) {
         if (arg1 != 0) {
-            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), u8 (**)(M2C_UNK *, f32 *, M2C_UNK, f32), 0x14)(&this->unk398, &sp50.unk30, 0xA, 1.0f) != 0) {
+            if (M2C_FIELD(this->unk398, u8 (**)(void **, f32 *, M2C_UNK, f32), 0x14)(&this->unk398, &sp50.unk30, 0xA, 1.0f) != 0) {
                 this->unk810 = 0.0f;
             }
         } else {
@@ -780,14 +780,14 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
             sp40 = temp_f0_1091;
             sp18 = temp_f2_1099;
             sp48 = (f64) sp18;
-            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), s32 (**)(M2C_UNK *, f64 *, M2C_UNK, f32, f32), 0x10)(&this->unk398, &sp40, 0, 0.0f, temp_f2_1099) == 8) {
+            if (M2C_FIELD(this->unk398, s32 (**)(void **, f64 *, M2C_UNK, f32, f32), 0x10)(&this->unk398, &sp40, 0, 0.0f, temp_f2_1099) == 8) {
                 var_f0_1111 = 0.0f;
             } else {
                 var_f0_1111 = this->unk810 + gUpdateTimeDelta;
             }
             this->unk810 = var_f0_1111;
         }
-        M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(f32 *, M2C_UNK *), 0x4C)(&sp20, &this->unk398);
+        M2C_FIELD(this->unk398, M2C_UNK (**)(f32 *, void **), 0x4C)(&sp20, &this->unk398);
         sp50.unk30 = sp20;
         sp50.unk34 = sp24;
         sp50.unk38 = sp28;
@@ -887,7 +887,7 @@ void SpeedWaySpyro::GetJoyDir() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk21C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::UpdateDrift(float arg0) {
     MKVector3 sp68;
     MKVector3 sp58;
@@ -1518,7 +1518,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp390.unk90 = (f32) sp1D0;
         sp390.unk94 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
         sp390.unk94 = (f32) sp1D8;
-        sp390.unk94.unk4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp390 + 0x9c)) = 0.0f;
         if (arg2 != 0) {
             M2C_STRUCT_COPY((s32) &sp390.unk3C + 4, (s32) &sp390.unk4C.unk2C + 4, 0x40);
             this->unk260 = M2C_BITWISE(f64, sp390.unk40);
@@ -1538,7 +1538,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
             sp390.unk4C = 0.0f;
             sp1A0.Update(*((MKVector3 *) &this->unk280), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
             sp390.unk4C = M2C_BITWISE(f32, sp1A0);
-            sp390.unk4C.unk4 = sp1A4;
+            (*(f32 *) ((u8 *) &sp390 + 0x54)) = sp1A4;
             sp390.unk4C.unk8 = sp1A8;
             (*(f32 *) ((u8 *) &sp390 + 0x5c)) = 0.0f;
             sp190.Update(*((MKVector3 *) &this->unk2A0), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
@@ -3023,7 +3023,7 @@ void SpeedWaySpyro::Resolve() {
     temp_r3_6045 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(M2C_UNK *, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
+    M2C_FIELD(this->unk398, M2C_UNK (**)(void **, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
     Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
     ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
     this->unk2FC.Resolve();
@@ -3184,7 +3184,7 @@ void SpeedWaySpyroDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: pointer/array required
 void SpeedWaySpyroDescriptor::Init() {
     void *temp_r3_6624;
 

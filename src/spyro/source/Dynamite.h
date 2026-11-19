@@ -39,7 +39,10 @@ public:
     Dynamite * CreateInstance(int);
     /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ s32 unk150;
-    /* 0x154 */ u8 pad154[0x10];
+    /* 0x154 */ u8 unk154;
+    /* 0x155 */ u8 pad155[0x7];
+    /* 0x15c */ void* unk15C;
+    /* 0x160 */ void* unk160;
     /* 0x164 */ MKProp* unk164;
     /* 0x168 */ f32 unk168;
     /* 0x16c */ f32 unk16C;
@@ -72,9 +75,9 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk154'
+#if 0 // DRAFT: undefined identifier 'unk158'
 inline Dynamite::Dynamite() {
-    M2C_UNK *temp_r0_23670;
+    u8 *temp_r0_23670;
 
     temp_r0_23670 = &this->unk154;
     this->unk150 = 0;
@@ -86,10 +89,10 @@ inline Dynamite::Dynamite() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk154'
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline Dynamite::~Dynamite() {
-    M2C_UNK *temp_r0_23;
-    M2C_UNK *temp_r4_26;
+    u8 *temp_r4_26;
+    void *temp_r0_23;
 
     if (this != NULL) {
         if (&this->unk154 != NULL) {
@@ -97,8 +100,8 @@ inline Dynamite::~Dynamite() {
             if (temp_r0_23 != NULL) {
                 temp_r4_26 = &this->unk154;
                 if (temp_r0_23 != temp_r4_26) {
-                    M2C_FIELD(this->unk160, M2C_UNK **, 8) = temp_r0_23;
-                    M2C_FIELD(this->unk15C, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk160;
+                    M2C_FIELD(this->unk160, void **, 8) = temp_r0_23;
+                    M2C_FIELD(this->unk15C, void **, 0xC) = (void *) this->unk160;
                     this->unk160 = temp_r4_26;
                     this->unk15C = temp_r4_26;
                 }

@@ -1014,7 +1014,7 @@ void ExplosiveBarrelPath::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1BC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosiveBarrelPath::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -1285,7 +1285,6 @@ s32 ExplosiveBarrelPathDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void ExplosiveBarrelPathDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -1296,4 +1295,3 @@ void ExplosiveBarrelPathDescriptor::Init() {
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unkC |= 0x802;
 }
-#endif

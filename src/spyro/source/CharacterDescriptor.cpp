@@ -25,7 +25,6 @@ s32 CharacterDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
 void CharacterDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 30.000002f;
@@ -68,4 +67,3 @@ void CharacterDescriptor::Init() {
     M2C_FIELD(this, s8 *, 0x77) = 0;
     M2C_FIELD(this, s8 *, 0x78) = 0;
 }
-#endif

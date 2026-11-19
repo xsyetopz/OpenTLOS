@@ -45,7 +45,7 @@ public:
     u8 LoadLine(MKIniLine *);
     void Deinit(void);
     void Init(void);
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ f64 unk0;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ MKHeap* unk10;
     /* 0x014 */ s32 unk14;
@@ -119,7 +119,8 @@ public:
     /* 0x005 */ u8 unk5;
     /* 0x006 */ s8 unk6;
     /* 0x007 */ s8 unk7;
-    /* 0x008 */ u8 pad8[0x14];
+    /* 0x008 */ u8 unk8;
+    /* 0x009 */ u8 pad9[0x13];
     /* 0x01c */ s32 unk1C;
     /* 0x020 */ s32 unk20;
     /* 0x024 */ void* unk24;
@@ -148,7 +149,7 @@ public:
     void Deinit(void);
     void Init(void);
     void GetPosition(float);
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ f64 unk0;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ f64 unk10;

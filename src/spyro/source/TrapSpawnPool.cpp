@@ -309,7 +309,6 @@ s32 TrapSpawnPoolDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void TrapSpawnPoolDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f32 *, 0x70) = -1.0f;
@@ -322,4 +321,3 @@ void TrapSpawnPoolDescriptor::Init() {
     this->unk60 = NULL;
     M2C_FIELD(this, s8 *, 0x64) = 0;
 }
-#endif

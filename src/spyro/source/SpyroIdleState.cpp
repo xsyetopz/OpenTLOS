@@ -166,11 +166,11 @@ void SpyroIdleState::OneOffIdleExit() {
 
     if ((u8) this->unk5D == 0) {
         temp_r4_342 = this->unk10;
-        temp_r4_342->unk428 |= 1;
+        temp_r4_342->unk420 = (void *) ((s32) temp_r4_342->unk420 | 1);
     }
     if ((u8) this->unk5C == 0) {
         temp_r4_350 = this->unk10;
-        temp_r4_350->unk428 |= 0x40000;
+        temp_r4_350->unk420 = (void *) ((s32) temp_r4_350->unk420 | 0x40000);
     }
     this->unk48 = -1;
     this->unk10->SetMeleeButtonStateTimeout(0U);
@@ -188,11 +188,11 @@ void SpyroIdleState::OneOffIdleEnter() {
     }
     if ((u8) this->unk5D == 0) {
         temp_r3_387 = this->unk10;
-        temp_r3_387->unk428 &= 0xFFFFFFFE;
+        temp_r3_387->unk420 = (void *) ((s32) temp_r3_387->unk420 & 0xFFFFFFFE);
     }
     if ((u8) this->unk5C == 0) {
         temp_r3_395 = this->unk10;
-        temp_r3_395->unk428 &= 0xFFFBFFFF;
+        temp_r3_395->unk420 = (void *) ((s32) temp_r3_395->unk420 & 0xFFFBFFFF);
     }
     this->unk10->SetMeleeButtonStateTimeout(1U);
 }
@@ -418,9 +418,9 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     void *var_r3_1020;
 
     temp_r3_913 = this->unk10;
-    temp_r3_913->unk428 = temp_r3_913->unk428 | 0xE0000 | 0x3FA7;
+    temp_r3_913->unk420 = (void *) ((s32) temp_r3_913->unk420 | 0xE0000 | 0x3FA7);
     temp_r3_918 = this->unk10;
-    temp_r3_918->unk428 = temp_r3_918->unk428 | 0x300000 | 0x8000;
+    temp_r3_918->unk420 = (void *) ((s32) temp_r3_918->unk420 | 0x300000 | 0x8000);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);

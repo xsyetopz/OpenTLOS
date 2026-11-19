@@ -333,12 +333,10 @@ loop_46:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk20'
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SoundEvent::Play(const MKVector3 *arg0, unsigned int arg1, int arg2) {
     f32 spC;
     SoundEventInstance *sp8;
-    M2C_UNK *temp_r22_630;
-    M2C_UNK *var_r23_627;
     SoundEventInstance **temp_r3_675;
     SoundEventInstance **temp_r4_749;
     SoundEventInstance **var_r29_655;
@@ -356,7 +354,9 @@ s32 SoundEvent::Play(const MKVector3 *arg0, unsigned int arg1, int arg2) {
     u8 var_ctr_711;
     u8 var_r26_814;
     u8 var_r4_757;
+    void *temp_r22_630;
     void *temp_r4_663;
+    void *var_r23_627;
 
     var_r31_623 = 0;
     var_r30_624 = 0;
@@ -364,13 +364,13 @@ s32 SoundEvent::Play(const MKVector3 *arg0, unsigned int arg1, int arg2) {
     var_r23_627 = this->unk20;
 loop_5:
     if (var_r23_627 != &this->unk14) {
-        temp_r22_630 = M2C_FIELD(var_r23_627, M2C_UNK **, 0xC);
+        temp_r22_630 = M2C_FIELD(var_r23_627, void **, 0xC);
         if (Sound_IsVoicePlaying(M2C_FIELD(var_r23_627, s32 *, 0)) != 0) {
             var_r30_624 += 1;
         } else {
-            M2C_FIELD(M2C_FIELD(var_r23_627, void **, 0x10), M2C_UNK **, 0xC) = (M2C_UNK *) M2C_FIELD(var_r23_627, M2C_UNK **, 0xC);
-            M2C_FIELD(M2C_FIELD(var_r23_627, M2C_UNK **, 0xC), void **, 0x10) = (void *) M2C_FIELD(var_r23_627, void **, 0x10);
-            M2C_FIELD(var_r23_627, M2C_UNK **, 0xC) = NULL;
+            M2C_FIELD(M2C_FIELD(var_r23_627, void **, 0x10), void **, 0xC) = (void *) M2C_FIELD(var_r23_627, void **, 0xC);
+            M2C_FIELD(M2C_FIELD(var_r23_627, void **, 0xC), void **, 0x10) = (void *) M2C_FIELD(var_r23_627, void **, 0x10);
+            M2C_FIELD(var_r23_627, void **, 0xC) = NULL;
             M2C_FIELD(var_r23_627, void **, 0x10) = NULL;
         }
         var_r23_627 = temp_r22_630;
@@ -456,10 +456,10 @@ block_43:
                     KDSound_SoundDucking_ForceDuck(&sp8);
                 }
             }
-            M2C_FIELD(sp8, M2C_UNK **, 0xC) = &this->unk14;
-            M2C_FIELD(sp8, M2C_UNK **, 0x10) = (M2C_UNK *) this->unk24;
-            M2C_FIELD(M2C_FIELD(sp8, M2C_UNK **, 0x10), SoundEventInstance **, 0xC) = sp8;
-            M2C_FIELD(M2C_FIELD(sp8, M2C_UNK **, 0xC), SoundEventInstance **, 0x10) = sp8;
+            M2C_FIELD(sp8, u8 **, 0xC) = &this->unk14;
+            M2C_FIELD(sp8, void **, 0x10) = (void *) this->unk24;
+            M2C_FIELD(M2C_FIELD(sp8, void **, 0x10), SoundEventInstance **, 0xC) = sp8;
+            M2C_FIELD(M2C_FIELD(sp8, u8 **, 0xC), SoundEventInstance **, 0x10) = sp8;
             instanceCacheCount += 1;
         }
     }
@@ -642,11 +642,11 @@ MKIniLine *GlobalSoundData::ParseSoundEvent(SoundEvent *arg0, MKIniLine *arg1) {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    M2C_UNK *temp_r0_1244;
     MKIniLine *var_r27_1259;
     MKStringCache *temp_r3_1240;
     SoundMaterial *var_r28_1248;
     s32 var_r23_1277;
+    u8 *temp_r0_1244;
     u8 var_r25_1233;
     u8 var_r30_1249;
 

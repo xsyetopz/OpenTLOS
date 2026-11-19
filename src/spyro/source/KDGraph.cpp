@@ -20,7 +20,7 @@ void KDGraphNodeProp::Resolve() {
         if (temp_r3_63 != NULL) {
             temp_r3_67 = checked_cast<KDGraphNodeProp *, MKProp>(temp_r3_63->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             if (temp_r3_67 != 0) {
-                M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(M2C_UNK *, s32, s32), 0xC)(&this->unk50, temp_r3_67 + 0x50, var_r30_59);
+                M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *, s32, s32), 0xC)(&this->unk50, temp_r3_67 + 0x50, var_r30_59);
             }
         }
         var_r30_59 += 1;
@@ -29,7 +29,6 @@ void KDGraphNodeProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 void KDGraphNodeProp::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -37,9 +36,8 @@ void KDGraphNodeProp::LoadDone() {
     MKProp::LoadDone();
     sp8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     sp10 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(M2C_UNK *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
+    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDGraphNodeProp::LoadLine(MKIniLine *arg0) {
@@ -54,14 +52,14 @@ s32 KDGraphNodeProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: illegal operand
 void KDGraphNodeProp::Init() {
     s32 temp_r0_231;
     s32 var_ctr_229;
     s32 var_r3_227;
 
     MKProp::Init();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(M2C_UNK *), 8)(&this->unk50);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *), 8)(&this->unk50);
     var_r3_227 = 0;
     this->unk8C = 0;
     var_ctr_229 = 6;

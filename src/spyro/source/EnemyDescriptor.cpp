@@ -1218,7 +1218,6 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk204'
 void EnemyDescriptor::Init() {
     CharacterDescriptor::Init();
     this->unkC |= 0x28;
@@ -1329,7 +1328,6 @@ void EnemyDescriptor::Init() {
     this->unk230 = NULL;
     this->unk22C = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {

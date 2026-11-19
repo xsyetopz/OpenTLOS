@@ -870,7 +870,7 @@ void SpyroStrafeState::Exit() {
     Spyro *temp_r4_1623;
 
     temp_r4_1623 = this->unk10;
-    temp_r4_1623->unk428 |= 0x20000;
+    temp_r4_1623->unk420 = (void *) ((s32) temp_r4_1623->unk420 | 0x20000);
     temp_r3_1628 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x43F;
@@ -908,9 +908,9 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     void *temp_r5_1675;
 
     temp_r5_1655 = this->unk10;
-    temp_r5_1655->unk428 |= 0x8000;
+    temp_r5_1655->unk420 = (void *) ((s32) temp_r5_1655->unk420 | 0x8000);
     temp_r4_1659 = this->unk10;
-    temp_r4_1659->unk428 &= 0xFFFDFFFF;
+    temp_r4_1659->unk420 = (void *) ((s32) temp_r4_1659->unk420 & 0xFFFDFFFF);
     this->unk38 = 0;
     this->unk44 = 0.0f;
     this->unk40 = 0.0f;

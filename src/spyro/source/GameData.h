@@ -45,7 +45,9 @@ public:
     /* 0x000 */ TimerInfo unk0;
     /* 0x01c */ u8 pad1C[0x4];
     /* 0x020 */ s8 unk20;
-    /* 0x021 */ u8 pad21[0x3f];
+    /* 0x021 */ u8 pad21[0x1f];
+    /* 0x040 */ u8 unk40;
+    /* 0x041 */ u8 pad41[0x1f];
     /* 0x060 */ CameraData unk60;
     /* 0x070 */ u8 pad70[0x120];
     /* 0x190 */ Level unk190;

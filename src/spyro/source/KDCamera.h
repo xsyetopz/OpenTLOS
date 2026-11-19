@@ -124,7 +124,8 @@ public:
     /* 0x050 */ KDCameraHeroData* unk50;
     /* 0x054 */ KDCameraDeltaStagesEx* unk54;
     /* 0x058 */ KDMessageStorage* unk58;
-    /* 0x05c */ u8 pad5C[0x4];
+    /* 0x05c */ u8 unk5C;
+    /* 0x05d */ u8 pad5D[0x3];
     /* 0x060 */ Matrix unk60;
     /* 0x0a0 */ KDCameraPoint* unkA0;
     /* 0x0a4 */ KDCameraPoint* unkA4;
@@ -167,7 +168,8 @@ public:
     /* 0x160 */ KDCameraStateChangeRequest* unk160;
     /* 0x164 */ s32 unk164;
     /* 0x168 */ f32 unk168;
-    /* 0x16c */ u8 pad16C[0x4];
+    /* 0x16c */ u8 unk16C;
+    /* 0x16d */ u8 pad16D[0x3];
     /* 0x170 */ f32 unk170;
     /* 0x174 */ u8 unk174;
     /* 0x175 */ u8 pad175[0x3];
@@ -212,6 +214,7 @@ public:
     /* 0x205 */ u8 pad205[0x3];
     /* 0x208 */ f32 unk208;
     /* 0x20c */ f32 unk20C;
+    /* 0x210 */ void* unk210;
 };
 
 class KDCameraDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores

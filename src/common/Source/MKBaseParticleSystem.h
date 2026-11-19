@@ -68,7 +68,9 @@ public:
 class MKBaseParticleSystemDescriptor : public MKPropDescriptor {  // base: ctor/dtor vtable stores
 public:
     virtual void Init(void);
-    /* 0x044 */ u8 pad44[0x20];
+    /* 0x044 */ u8 pad44[0x1c];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x3];
     /* 0x064 */ f32 unk64;
     /* 0x068 */ f32 unk68;
     /* 0x06c */ u8 pad6C[0x4];

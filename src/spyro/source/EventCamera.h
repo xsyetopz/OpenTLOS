@@ -79,6 +79,7 @@ public:
     /* 0x104 */ u8 unk104;
     /* 0x105 */ u8 pad105[0x3];
     /* 0x108 */ s32 unk108;
+    /* 0x10c */ f32 unk10C;
 };
 
 class EventCameraDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores

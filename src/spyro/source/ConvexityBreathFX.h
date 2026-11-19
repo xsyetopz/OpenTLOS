@@ -35,7 +35,9 @@ public:
     /* 0x0b8 */ f32 unkB8;
     /* 0x0bc */ f32 unkBC;
     /* 0x0c0 */ f32 unkC0;
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c4 */ u8 padC4[0x8];
+    /* 0x0cc */ u8 unkCC;
+    /* 0x0cd */ u8 padCD[0x3];
     /* 0x0d0 */ Matrix unkD0;
     /* 0x110 */ MKModel* unk110;
     /* 0x114 */ MKMaterial* unk114;
@@ -47,7 +49,9 @@ public:
     /* 0x150 */ f64 unk150;
     /* 0x158 */ f64 unk158;
     /* 0x160 */ MKModel* unk160;
-    /* 0x164 */ u8 pad164[0xc];
+    /* 0x164 */ u8 pad164[0x8];
+    /* 0x16c */ u8 unk16C;
+    /* 0x16d */ u8 pad16D[0x3];
     /* 0x170 */ Matrix unk170;
     /* 0x1b0 */ f32 unk1B0;
 };

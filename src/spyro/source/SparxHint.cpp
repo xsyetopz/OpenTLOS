@@ -240,7 +240,7 @@ void SparxHint::Update() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SparxHint::LoadDone() {
     MKProp::LoadDone();
     this->unk8 = &this->unk50;

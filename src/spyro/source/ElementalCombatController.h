@@ -26,7 +26,9 @@ public:
     virtual void Message(MKMessage *);
     void AttemptSpawn(void);
     void SetupSpawnPoints(void);
-    /* 0x04c */ u8 pad4C[0x48];
+    /* 0x04c */ u8 pad4C[0x44];
+    /* 0x090 */ u8 unk90;
+    /* 0x091 */ u8 pad91[0x3];
     /* 0x094 */ f32 unk94;
     /* 0x098 */ f32 unk98;
     /* 0x09c */ u8 pad9C[0x4];

@@ -82,7 +82,9 @@ public:
     /* 0x12d */ u8 pad12D[0x3];
     /* 0x130 */ f64 unk130;
     /* 0x138 */ f64 unk138;
-    /* 0x140 */ u8 pad140[0x14];
+    /* 0x140 */ u8 pad140[0x10];
+    /* 0x150 */ u8 unk150;
+    /* 0x151 */ u8 pad151[0x3];
     /* 0x154 */ Attachment* unk154;
     /* 0x158 */ void* unk158;
     /* 0x15c */ EventMessage unk15C;
@@ -180,8 +182,8 @@ inline Shatterable::~Shatterable() {
         if (&this->unk154 != NULL) {
             ((EventMessage *) &this->unk154)->Deinit();
         }
-        if (&this->unk160 != NULL) {
-            this->unk160.Deinit();
+        if (&this->unk150 != NULL) {
+            ((EventMessage *) &this->unk150)->Deinit();
         }
         if (&this->unk15C != NULL) {
             this->unk15C.Deinit();
@@ -233,8 +235,8 @@ inline Shatterable::Shatterable() {
     this->unk158 = temp_r0_19056;
     this->unk15C.unk0 = 0;
     this->unk15C.Init();
-    this->unk160.unk0 = 0;
-    this->unk160.Init();
+    M2C_FIELD(this, s32 *, 0x160) = 0;
+    ((EventMessage *) &this->unk150)->Init();
     this->unk154 = NULL;
     ((EventMessage *) &this->unk154)->Init();
     return this;

@@ -23,7 +23,8 @@ public:
     /* 0x018 */ f64 unk18;
     /* 0x020 */ f32 unk20;
     /* 0x024 */ u8 unk24;
-    /* 0x025 */ u8 pad25[0xb];
+    /* 0x025 */ u8 unk25;
+    /* 0x026 */ u8 pad26[0xa];
     /* 0x030 */ s32 unk30;
     /* 0x034 */ u8 pad34[0x4];
     /* 0x038 */ MKVector3* unk38;

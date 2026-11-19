@@ -30,7 +30,8 @@ public:
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f64 unk78;
-    /* 0x080 */ u8 pad80[0x30];
+    /* 0x080 */ u8 unk80;
+    /* 0x081 */ u8 pad81[0x2f];
     /* 0x0b0 */ f32 unkB0;
     /* 0x0b4 */ f32 unkB4;
     /* 0x0b8 */ f32 unkB8;
@@ -52,7 +53,9 @@ public:
     void DrawStrikeArcs(void);
     /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ ManagedLight* unk60;
-    /* 0x064 */ u8 pad64[0x14];
+    /* 0x064 */ u8 pad64[0xc];
+    /* 0x070 */ u8 unk70;
+    /* 0x071 */ u8 pad71[0x7];
     /* 0x078 */ f64 unk78;
     /* 0x080 */ f64 unk80;
     /* 0x088 */ f64 unk88;

@@ -107,7 +107,12 @@ public:
     /* 0x169 */ u8 pad169[0x33];
     /* 0x19c */ void* unk19C;
     /* 0x1a0 */ void* unk1A0;
-    /* 0x1a4 */ u8 pad1A4[0x60];
+    /* 0x1a4 */ u8 pad1A4[0x14];
+    /* 0x1b8 */ u8 unk1B8;
+    /* 0x1b9 */ u8 pad1B9[0x2f];
+    /* 0x1e8 */ void* unk1E8;
+    /* 0x1ec */ void* unk1EC;
+    /* 0x1f0 */ u8 pad1F0[0x14];
     /* 0x204 */ s32 unk204;
     /* 0x208 */ s32 unk208;
     /* 0x20c */ s32 unk20C;
@@ -119,7 +124,11 @@ public:
     /* 0x260 */ s32 unk260;
     /* 0x264 */ s32 unk264;
     /* 0x268 */ u16 unk268;
-    /* 0x26a */ u8 pad26A[0x273e];
+    /* 0x26a */ u8 pad26A[0x7fe];
+    /* 0xa68 */ u8 unkA68;
+    /* 0xa69 */ u8 padA69[0xf9f];
+    /* 0x1a08 */ u8 unk1A08;
+    /* 0x1a09 */ u8 pad1A09[0xf9f];
     /* 0x29a8 */ void* unk29A8;
     /* 0x29ac */ SMNode* unk29AC;
     /* 0x29b0 */ u8 pad29B0[0x8];

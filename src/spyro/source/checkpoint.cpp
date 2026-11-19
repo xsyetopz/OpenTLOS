@@ -48,12 +48,10 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk100'
 void CheckPoint::Resolve() {
     MKProp::Resolve();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *), 0x20)(&this->unk100);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x20)(&this->unk100);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'LevelStartMessage'
 void CheckPoint::Message(MKMessage *arg0) {
@@ -95,7 +93,7 @@ void CheckPoint::Message(MKMessage *arg0) {
         break;
     }
     ((KDSoundPlayer *) &this->unk190)->Message(arg0);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, MKMessage *), 0x1C)(&this->unk100, arg0);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, MKMessage *), 0x1C)(&this->unk100, arg0);
     KDProp::Message(arg0);
 }
 #endif
@@ -135,7 +133,7 @@ void CheckPoint::Update() {
         this->unk1BC = KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
     }
     if ((u8) this->unk1C0 == 0) {
-        M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *), 0x24)(&this->unk100);
+        M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x24)(&this->unk100);
         if (this->unk150 & 2) {
             sp14 = 0;
             sp10 = 0xB5;
@@ -145,12 +143,10 @@ void CheckPoint::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk100'
 void CheckPoint::Reset() {
     KDProp::Reset();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *), 0x18)(&this->unk100);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x18)(&this->unk100);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[18]' to
 void CheckPoint::LoadDone() {
@@ -207,12 +203,12 @@ void CheckPoint::LoadDone() {
     }
     temp_r4_428 = M2C_FIELD(M2C_FIELD(*gMK, void *(**)(void **, void *), 0x7C)(gMK, var_r4_386), void **, 0xC);
     this->unk1B8 = M2C_FIELD(temp_r4_428, ChunkInfo **, 4);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, void *), 0x14)(&this->unk100, temp_r4_428);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, void *), 0x14)(&this->unk100, temp_r4_428);
     temp_r5_436 = this->unk8;
     temp_f1_439 = M2C_FIELD(temp_r5_436, f64 *, 0x30);
     sp48 = temp_f1_439;
     sp50 = M2C_FIELD(temp_r5_436, f64 *, 0x38);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, f64 *, void *, f64), 0x28)(&this->unk100, &sp48, temp_r5_436, temp_f1_439);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, f64 *, void *, f64), 0x28)(&this->unk100, &sp48, temp_r5_436, temp_f1_439);
     if ((u8) this->unk1C1 == 0) {
         MKVector(300.0f, 0.0f, 0.0f);
         ((MKProp *) &sp28)->GetPos();
@@ -249,11 +245,11 @@ void CheckPoint::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk100'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to
 s32 CheckPoint::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_664;
 
-    if ((KDProp::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x100), u8 (**)(M2C_UNK *, void *, MKIniLine *), 0x3C)(&this->unk100, "sphere", arg0) != 0) || (arg0->LoadBool("bLevelSpawn", &this->unk1C0, 0) != 0) || (arg0->LoadBool("bVisible", &this->unk1C2, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x100), u8 (**)(u8 *, void *, MKIniLine *), 0x3C)(&this->unk100, "sphere", arg0) != 0) || (arg0->LoadBool("bLevelSpawn", &this->unk1C0, 0) != 0) || (arg0->LoadBool("bVisible", &this->unk1C2, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("camera") != 0) {
@@ -291,10 +287,9 @@ void CheckPoint::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk100'
 void CheckPoint::Init() {
     KDProp::Init();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, f32), 0x38)(&this->unk100, 1200.0f);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, f32), 0x38)(&this->unk100, 1200.0f);
     this->unkD0.unk0 = 0.0f;
     this->unkD0.unk4 = 0.0f;
     this->unkD0.unk8 = 0.0f;
@@ -309,7 +304,6 @@ void CheckPoint::Init() {
     this->unk1BC = 0;
     this->unk1C2 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unitVolume'
 void CheckPointDescriptor::Init() {

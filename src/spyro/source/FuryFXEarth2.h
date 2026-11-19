@@ -48,7 +48,7 @@ public:
     /* 0x0b4 */ MKModel* unkB4;
     /* 0x0b8 */ MKModel* unkB8;
     /* 0x0bc */ MKModel* unkBC;
-    /* 0x0c0 */ u8 padC0[0x4];
+    /* 0x0c0 */ void* unkC0;
     /* 0x0c4 */ f32 unkC4;
     /* 0x0c8 */ f32 unkC8;
     /* 0x0cc */ ManagedLight* unkCC;

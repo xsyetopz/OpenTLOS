@@ -93,7 +93,9 @@ public:
 
 class MKWidgetBoundingVolume {
 public:
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ u8 pad0[0x1];
+    /* 0x001 */ u8 unk1;
+    /* 0x002 */ u8 pad2[0x2];
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ f32 unk10;
@@ -442,7 +444,9 @@ public:
     /* 0x020 */ f32 unk20;
     /* 0x024 */ f32 unk24;
     /* 0x028 */ f32 unk28;
-    /* 0x02c */ u8 pad2C[0xc];
+    /* 0x02c */ u8 pad2C[0x4];
+    /* 0x030 */ u8 unk30;
+    /* 0x031 */ u8 pad31[0x7];
     /* 0x038 */ f32 unk38;
     /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ MKVector4 unk40;
@@ -626,9 +630,12 @@ public:
     MKWidgetEditable * MKWidgetThumb_FactoryFunc(void);
     static u8 sMKWidgetThumbDescriptor[0x18];
     /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0x28];
+    /* 0x008 */ u8 pad8[0x20];
+    /* 0x028 */ u8 unk28;
+    /* 0x029 */ u8 pad29[0x7];
     /* 0x030 */ f64 unk30;
-    /* 0x038 */ u8 pad38[0x8];
+    /* 0x038 */ u8 unk38;
+    /* 0x039 */ u8 pad39[0x7];
     /* 0x040 */ f64 unk40;
     /* 0x048 */ MKVector3 unk48;
     /* 0x058 */ u8 unk58;

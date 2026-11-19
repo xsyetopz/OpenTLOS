@@ -1560,7 +1560,7 @@ void SpyroAirCombatState::LaunchEnter() {
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(9);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0xB);
     temp_r3_2806 = this->unk10;
-    temp_r3_2806->unk428 &= 0xFFFFFFDF;
+    temp_r3_2806->unk420 = (void *) ((s32) temp_r3_2806->unk420 & 0xFFFFFFDF);
     this->unk10->SetMedium((Spyro::Medium) 2);
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
@@ -1781,14 +1781,14 @@ void SpyroAirCombatState::TailSweepComboExit() {
     Spyro *temp_r3_3241;
 
     temp_r3_3223 = this->unk10;
-    temp_r3_3223->unk428 &= 0xFFFEFFFF;
+    temp_r3_3223->unk420 = (void *) ((s32) temp_r3_3223->unk420 & 0xFFFEFFFF);
     temp_r3_3228 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x450;
     M2C_FIELD(temp_r3_3228->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.0f;
     temp_r3_3241 = this->unk10;
-    temp_r3_3241->unk428 |= 0x80;
+    temp_r3_3241->unk420 = (void *) ((s32) temp_r3_3241->unk420 | 0x80);
     temp_r3_3246 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x42D;
@@ -1913,14 +1913,14 @@ void SpyroAirCombatState::TailSweepComboEnter() {
         ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
     }
     temp_r4_3455 = this->unk10;
-    temp_r4_3455->unk428 &= 0xFFFDFFDF;
+    temp_r4_3455->unk420 = (void *) ((s32) temp_r4_3455->unk420 & 0xFFFDFFDF);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.5f;
     temp_r3_3465 = this->unk10->GetCamera();
     sp10 = 0;
     spC = 0x44F;
     M2C_FIELD(temp_r3_3465->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);
     temp_r3_3475 = this->unk10;
-    temp_r3_3475->unk428 |= 0x10000;
+    temp_r3_3475->unk420 = (void *) ((s32) temp_r3_3475->unk420 | 0x10000);
     temp_r3_3480 = this->unk10;
     temp_r3_3480->unk388 = 3800.0f;
     temp_f1_3482 = temp_r3_3480->unk388;
@@ -1993,14 +1993,14 @@ void SpyroAirCombatState::TailSweepExit() {
     Spyro *temp_r3_3638;
 
     temp_r3_3620 = this->unk10;
-    temp_r3_3620->unk428 &= 0xFFFEFFFF;
+    temp_r3_3620->unk420 = (void *) ((s32) temp_r3_3620->unk420 & 0xFFFEFFFF);
     temp_r3_3625 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x450;
     M2C_FIELD(temp_r3_3625->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.0f;
     temp_r3_3638 = this->unk10;
-    temp_r3_3638->unk428 |= 0x80;
+    temp_r3_3638->unk420 = (void *) ((s32) temp_r3_3638->unk420 | 0x80);
     temp_r3_3643 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x42D;
@@ -2138,14 +2138,14 @@ void SpyroAirCombatState::TailSweepEnter() {
         ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
     }
     temp_r4_3866 = this->unk10;
-    temp_r4_3866->unk428 &= 0xFFFDFFDF;
+    temp_r4_3866->unk420 = (void *) ((s32) temp_r4_3866->unk420 & 0xFFFDFFDF);
     M2C_FIELD(this->unk10, f32 *, 0x388) = 0.5f;
     temp_r3_3876 = this->unk10->GetCamera();
     sp10 = 0;
     spC = 0x44F;
     M2C_FIELD(temp_r3_3876->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);
     temp_r3_3886 = this->unk10;
-    temp_r3_3886->unk428 |= 0x10000;
+    temp_r3_3886->unk420 = (void *) ((s32) temp_r3_3886->unk420 | 0x10000);
     temp_r3_3891 = this->unk10;
     temp_r3_3891->unk388 = 3800.0f;
     temp_f1_3893 = temp_r3_3891->unk388;
@@ -2376,7 +2376,7 @@ void SpyroAirCombatState::Exit() {
 
     this->unk10->SetLVEScale(MKVector3::one);
     temp_r3_4300 = this->unk10;
-    temp_r3_4300->unk428 &= 0xFFFF7FFF;
+    temp_r3_4300->unk420 = (void *) ((s32) temp_r3_4300->unk420 & 0xFFFF7FFF);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk14.Exit(this);
@@ -2410,7 +2410,7 @@ void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     this->unk43 = 0;
     this->unk38 = 0;
     temp_r3_4359 = this->unk10;
-    temp_r3_4359->unk428 |= 0x8000;
+    temp_r3_4359->unk420 = (void *) ((s32) temp_r3_4359->unk420 | 0x8000);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);

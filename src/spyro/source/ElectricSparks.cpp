@@ -9,16 +9,16 @@
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(M2C_UNK);                           /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal type
 void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, bool arg3) {
-    M2C_UNK *temp_r3_47;
-    M2C_UNK *temp_r7_41;
-    M2C_UNK *temp_r7_45;
+    void **temp_r7_45;
+    void *temp_r3_47;
+    void *temp_r7_41;
 
     temp_r7_41 = this->unk4C;
     if ((u32) M2C_FIELD(temp_r7_41, u32 *, -4) != 0U) {
@@ -38,16 +38,16 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal type
 void ElectricSparks::Deinit() {
-    M2C_UNK *temp_r0_104;
-    M2C_UNK *temp_r0_85;
-    M2C_UNK *var_r31_81;
-    M2C_UNK *var_r3_82;
-    M2C_UNK *var_r4_80;
+    MKHeap *temp_r0_85;
     MKHeap *temp_r3_107;
     MKMaterial *temp_r3_73;
     u32 temp_r0_90;
+    void *temp_r0_104;
+    void *var_r31_81;
+    void *var_r3_82;
+    void *var_r4_80;
 
     temp_r3_73 = this->unk50;
     if (temp_r3_73 != NULL) {
@@ -61,7 +61,7 @@ loop_5:
     temp_r0_90 = M2C_FIELD(var_r3_82, u32 *, -4);
     var_r3_82 -= 4;
     if (temp_r0_90 != 0U) {
-        temp_r0_85 = *var_r3_82;
+        temp_r0_85 = var_r3_82->unk0;
         if (temp_r0_85 < var_r31_81) {
             var_r31_81 = temp_r0_85;
         }
@@ -77,7 +77,7 @@ loop_11:
             var_r4_80 += 4;
             goto loop_11;
         }
-        temp_r3_107 = ((MKHeap *) var_r3_82)->Current();
+        temp_r3_107 = var_r3_82->Current();
         if (temp_r3_107 != NULL) {
             ((MKHeap *) (temp_r3_107->Current()))->Free(var_r31_81, NULL, 0);
         } else {
@@ -91,7 +91,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void ElectricSparks::Draw() {
     Matrix sp60;
     f32 sp50;
@@ -105,10 +105,6 @@ void ElectricSparks::Draw() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
-    M2C_UNK *temp_r3_304;
-    M2C_UNK *temp_r3_334;
-    M2C_UNK *temp_r6_279;
-    M2C_UNK *var_r31_163;
     f32 temp_f24_291;
     f32 temp_f25_290;
     f32 temp_f2_285;
@@ -120,6 +116,10 @@ void ElectricSparks::Draw() {
     f64 temp_f1_198;
     s32 temp_r3_217;
     s32 var_r0_227;
+    void *temp_r3_304;
+    void *temp_r3_334;
+    void *temp_r6_279;
+    void *var_r31_163;
 
     var_r31_163 = this->unk4C;
 loop_31:
@@ -197,7 +197,7 @@ loop_31:
             sp28 = (f64) sp18;
             sp60.Scale3x3(&sp60, *((MKVector3 *) &sp28));
             temp_r3_304 = *var_r31_163;
-            sp60.unk30 = M2C_BITWISE(f32, M2C_FIELD(temp_r3_304, M2C_UNK **, 0));
+            sp60.unk30 = M2C_FIELD(temp_r3_304, f32 *, 0);
             sp60.unk34 = M2C_FIELD(temp_r3_304, f32 *, 4);
             sp60.unk38 = M2C_FIELD(temp_r3_304, f32 *, 8);
             sp60.unk3C = 1.0f;
@@ -215,7 +215,7 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void ElectricSparks::Update() {
     f64 sp40;
     f64 sp38;
@@ -225,13 +225,13 @@ void ElectricSparks::Update() {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    M2C_UNK *temp_r4_391;
-    M2C_UNK *temp_r4_439;
-    M2C_UNK *temp_r5_394;
-    M2C_UNK *var_r6_367;
     f32 var_f0_373;
     f64 temp_f0_411;
     f64 temp_f0_422;
+    void *temp_r4_391;
+    void *temp_r4_439;
+    void *temp_r5_394;
+    void *var_r6_367;
 
     var_r6_367 = this->unk4C;
 loop_11:
@@ -254,7 +254,7 @@ loop_11:
                 temp_r4_391 = this->unk4C;
                 this->unk4C = temp_r4_391 + 4;
                 temp_r5_394 = *temp_r4_391;
-                *temp_r4_391 = *var_r6_367;
+                *temp_r4_391 = (void *) *var_r6_367;
                 *var_r6_367 = temp_r5_394;
             } else {
                 M2C_FIELD(temp_r4_439, f32 *, 0x14) = (f32) ((2.0f * (-980.0f * gUpdateTimeDelta)) + M2C_FIELD(temp_r4_439, f32 *, 0x14));
@@ -278,14 +278,14 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal type
 void ElectricSparks::Init() {
-    M2C_UNK *temp_r3_478;
-    M2C_UNK *temp_r4_484;
-    M2C_UNK *var_r3_463;
-    M2C_UNK *var_r5_472;
     MKHeap *temp_r3_456;
     s32 var_ctr_476;
+    void *temp_r3_478;
+    void *temp_r4_484;
+    void *var_r3_463;
+    void *var_r5_472;
 
     MKProp::Init();
     temp_r3_456 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -302,13 +302,13 @@ void ElectricSparks::Init() {
     do {
         temp_r3_478 = this->unk4C;
         this->unk4C = temp_r3_478 + 4;
-        M2C_FIELD(temp_r3_478, M2C_UNK **, 4) = var_r5_472;
+        M2C_FIELD(temp_r3_478, void **, 4) = var_r5_472;
         var_r5_472 += 0x40;
         var_ctr_476 -= 1;
     } while (var_ctr_476 != 0);
     temp_r4_484 = this->unk4C;
     this->unk4C = temp_r4_484 + 4;
-    M2C_FIELD(temp_r4_484, M2C_UNK **, 4) = NULL;
+    M2C_FIELD(temp_r4_484, void **, 4) = NULL;
     this->unk50 = MKMaterial_Create("fx_363");
     this->unk54 = MKModel_Create("FX0017_Spark", NULL, 2, NULL);
     this->unk58 = MKModel_Create("FX0041_SparksPurple", NULL, 2, NULL);

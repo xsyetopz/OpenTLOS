@@ -37,7 +37,8 @@ public:
     void Burn(float);
     /* 0x0b8 */ u8 padB8[0x8];
     /* 0x0c0 */ EventMessage unkC0;
-    /* 0x0c4 */ u8 padC4[0x1e0];
+    /* 0x0c4 */ u8 unkC4;
+    /* 0x0c5 */ u8 padC5[0x1df];
     /* 0x2a4 */ MKMaterial* unk2A4;
     /* 0x2a8 */ f32 unk2A8;
     /* 0x2ac */ f32 unk2AC;
@@ -55,7 +56,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unkC4'
+#if 0 // DRAFT: internal compiler error: File: 'CExpr.c' Line: 1711
 inline GunPowderFuse::~GunPowderFuse() {
     s32 temp_cr0_eq_32;
 

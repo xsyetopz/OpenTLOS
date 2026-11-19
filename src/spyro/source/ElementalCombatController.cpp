@@ -193,7 +193,6 @@ void ElementalCombatController::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk90'
 void ElementalCombatController::LoadDone() {
     s32 temp_r0_440;
     s32 var_r30_430;
@@ -205,7 +204,7 @@ void ElementalCombatController::LoadDone() {
     this->unkA8 = -1.0f;
     this->unkA4 = -1.0f;
     this->unkA0 = -1.0f;
-    M2C_FIELD(this->unk0, M2C_UNK **, 0x1C) = &this->unk90;
+    M2C_FIELD(this->unk0, u8 **, 0x1C) = &this->unk90;
     this->unkC8.LoadDone(0, 6, 0U, (u32) this->unk18);
     this->unkC8.AddSpawnPointBegin(6);
     var_r30_430 = 0;
@@ -232,7 +231,6 @@ void ElementalCombatController::LoadDone() {
     }
     MKProp::LoadDone();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {

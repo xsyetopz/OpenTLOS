@@ -615,7 +615,7 @@ block_4:
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'Ball::State'
 void Ball::SetState(Ball::State arg1) {
-    this->unk270 = (s32) arg1;
+    this->unk26C = (MKProp ***) arg1;
 }
 #endif
 
@@ -653,7 +653,7 @@ void Ball::CheckForSiegeTowers() {
     void *temp_r5_1121;
 
     if (((s32) this->unk2A4 != 0xFF) && ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x124) == 0)) {
-        if ((s32) this->unk270 == 2) {
+        if ((MKProp ***) this->unk26C == (MKProp ***)2) {
             return;
         }
         temp_r31_1109 = SiegeTower_GetMaxPerGroup();
@@ -1624,7 +1624,7 @@ void Ball::PushOutOfThings() {
     void *temp_r3_2798;
     void *temp_r6_2765;
 
-    if ((s32) this->unk270 != 1) {
+    if ((MKProp ***) this->unk26C != (MKProp ***)1) {
         var_r3_2755 = &sp10;
         var_r4_2757 = 0;
         temp_f31_2758 = M2C_BITWISE(f32, this->unk270) * this->unk27C;
@@ -2232,7 +2232,7 @@ void Ball::UpdatePhysics() {
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF0) = (f64) (M2C_FIELD(temp_r24_3004, f64 *, 0xF0) * (f64) temp_f3_3518);
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF8) = (f32) ((f32) M2C_FIELD(temp_r24_3004, f64 *, 0xF8) * temp_f3_3518);
                 M2C_FIELD(temp_r24_3004, u8 *, 0x2AC) = (u8) (M2C_FIELD(temp_r24_3004, u8 *, 0x2AC) | 0x80);
-                if ((s32) this->unk270 == 2) {
+                if ((MKProp ***) this->unk26C == (MKProp ***)2) {
                     SmashHit(temp_r24_3004);
                 }
             }
@@ -2244,7 +2244,7 @@ void Ball::UpdatePhysics() {
     var_r29_3552 = 0;
     M2C_FIELD(gb.unk0->GetCollisionInfo(), s8 *, 4) = 0;
 loop_80:
-    if ((s32) this->unk270 != 1) {
+    if ((MKProp ***) this->unk26C != (MKProp ***)1) {
         sp408 = this->unkE0;
         sp410 = M2C_FIELD(this, f64 *, 0xE8);
         sp148 = this->unkE0 + sp458;
@@ -2276,7 +2276,7 @@ loop_80:
         var_r25_2981 = temp_r3_3609;
         if (temp_r3_3609 != 0) {
             sp8 = 1;
-            if ((s32) this->unk270 == 2) {
+            if ((MKProp ***) this->unk26C == (MKProp ***)2) {
                 this->unk150 = (f64) sp4F0;
                 this->unk158 = (f64) sp4F8;
                 this->unk160 = (f64) sp500;
@@ -2639,6 +2639,7 @@ void Ball::Message(MKMessage *arg0) {
     Ball **var_r3_4682;
     Ball *temp_r0_4691;
     Ball *var_r0_4883;
+    MKProp ***temp_r3_4452;
     SnowballTree *temp_r0_4559;
     f32 temp_f0_4844;
     f32 temp_f3_4523;
@@ -2657,7 +2658,6 @@ void Ball::Message(MKMessage *arg0) {
     f64 temp_f3_4895;
     s32 temp_r0_4404;
     s32 temp_r0_4570;
-    s32 temp_r3_4452;
     s32 temp_r3_4801;
     s32 temp_r4_4460;
     s32 var_r0_4811;
@@ -2683,8 +2683,8 @@ block_93:
         GameProp::Message(arg0);
         return;
     case 5:                                         /* switch 1 */
-        temp_r3_4452 = this->unk270;
-        if ((temp_r3_4452 != 1) && ((u32) (temp_r3_4452 - 3) > 1U)) {
+        temp_r3_4452 = this->unk26C;
+        if ((temp_r3_4452 != (MKProp ***)1) && ((void *) (temp_r3_4452 - 3) > 1U)) {
             temp_r3_4459 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
             temp_r4_4460 = M2C_FIELD(temp_r3_4459, s32 *, 0x38);
             if ((((temp_r4_4460 == 0) || (temp_r4_4460 == 1)) && ((s32) M2C_FIELD(temp_r3_4459, s32 *, 0x40) == 3)) || ((temp_r4_4460 == 1) && ((s32) M2C_FIELD(temp_r3_4459, s32 *, 0x40) == 2))) {
@@ -2895,7 +2895,7 @@ block_62:
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: illegal operand 'MKProp ***'
 void Ball::Update() {
     f64 sp48;
     f64 sp40;
@@ -2907,11 +2907,11 @@ void Ball::Update() {
     f64 sp10;
     s32 sp8;
     Catapult *temp_r3_4951;
+    MKProp ***temp_r0_4993;
     f32 temp_f1_4943;
     f32 temp_f3_4977;
     f64 temp_f0_4966;
     f64 temp_f1_4957;
-    s32 temp_r0_4993;
     u8 var_r30_5115;
     void *temp_r3_4955;
     void *temp_r4_4954;
@@ -2943,7 +2943,7 @@ void Ball::Update() {
             Smash();
         }
     }
-    temp_r0_4993 = this->unk270;
+    temp_r0_4993 = this->unk26C;
     switch (temp_r0_4993) {                         /* irregular */
     case 0:
         CheckForHero();
@@ -2990,7 +2990,7 @@ void Ball::Update() {
     }
     if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108) != 0) {
         var_r30_5115 = 0;
-        if ((((u8) M2C_FIELD(this, u8 *, 0x2AC) >> 6U) & 1) && ((s32) this->unk270 == 0)) {
+        if ((((u8) M2C_FIELD(this, u8 *, 0x2AC) >> 6U) & 1) && ((MKProp ***) this->unk26C == NULL)) {
             var_r30_5115 = 1;
         }
         temp_r4_5126 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -3000,7 +3000,7 @@ void Ball::Update() {
     if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF8) != 0) {
         temp_r4_5146 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) &this->unk200)->Update(M2C_FIELD(temp_r4_5146, s32 *, 0xF8), 1U, this->unk270 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk200)->Update(M2C_FIELD(temp_r4_5146, s32 *, 0xF8), 1U, this->unk26C == (MKProp ***)2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     M2C_FIELD(this, u8 *, 0x2AC) = (u8) (M2C_FIELD(this, u8 *, 0x2AC) & ~0x20);
 }

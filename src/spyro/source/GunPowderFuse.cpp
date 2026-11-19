@@ -27,7 +27,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK __destroy_arr(M2C_UNK *, BurnPoint *(*)(BurnPoint *, s16), M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK __destroy_arr(u8 *, BurnPoint *(*)(BurnPoint *, s16), M2C_UNK, M2C_UNK); /* extern */
 s32 stricmp(s32, M2C_UNK *);                        /* extern */
 extern s32 GS_GunpowderBurnLP;
 extern f32 *KDSpline_PositionMixer;
@@ -431,7 +431,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GunPowderFuse::Draw() {
     Matrix sp350;
     M2C_UNK sp34C;

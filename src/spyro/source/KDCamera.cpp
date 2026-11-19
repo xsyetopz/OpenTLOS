@@ -35,8 +35,8 @@
 
 M2C_UNK __construct_array(M2C_UNK *, void (*)(MKCollisionTempDisableHelper *), MKCollisionTempDisableHelper *(*)(MKCollisionTempDisableHelper *, s16), M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK __destroy_arr(M2C_UNK *, MKCollisionTempDisableHelper *(*)(MKCollisionTempDisableHelper *, s16), M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(s32);                               /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 extern M2C_UNK lit_585;
 extern s8 gAssertBool;
 extern M2C_UNK gEmptyPtrListDL;
@@ -378,21 +378,21 @@ void KDCamera::MiscMessage(MKMessage *arg0) {
     KDCameraDeltaStagesEx *temp_r4_715;
     KDCameraHeroData *temp_r30_585;
     KDCameraJumpTargetOffset *temp_r3_693;
-    M2C_UNK *temp_r3_665;
-    M2C_UNK *temp_r4_630;
-    M2C_UNK *temp_r4_668;
-    M2C_UNK *temp_r4_678;
-    M2C_UNK *temp_r6_639;
-    M2C_UNK *temp_r6_641;
-    M2C_UNK *var_r5_658;
-    M2C_UNK *var_r6_615;
     f32 temp_f31_694;
     s32 temp_r3_574;
+    u32 *temp_r4_630;
+    u32 *temp_r4_668;
+    u32 *temp_r4_678;
     u8 var_r5_616;
+    void **temp_r6_639;
     void *temp_r3_614;
     void *temp_r3_657;
+    void *temp_r3_665;
     void *temp_r3_745;
     void *temp_r4_735;
+    void *temp_r6_641;
+    void *var_r5_658;
+    void *var_r6_615;
 
     if (this->unk58->CanMessageBeStored(arg0->unk0) != 0) {
         this->unk58->StoreMessage(arg0);
@@ -423,7 +423,7 @@ loop_13:
         if (var_r6_615 != NULL) {
             temp_r4_630 = *var_r6_615;
             if (temp_r4_630 != NULL) {
-                if ((M2C_UNK *) *temp_r4_630 == (M2C_UNK *) M2C_FIELD(temp_r3_614, M2C_UNK **, 8)) {
+                if ((u32) *temp_r4_630 == (u32) M2C_FIELD(temp_r3_614, u32 *, 8)) {
                     var_r5_616 = 1;
                 } else {
                     var_r6_615 += 4;
@@ -435,7 +435,7 @@ loop_13:
             temp_r6_639 = this->unk210 - 4;
             this->unk210 = temp_r6_639;
             temp_r6_641 = *temp_r6_639;
-            M2C_FIELD(temp_r6_641, M2C_UNK **, 0) = M2C_FIELD(temp_r3_614, M2C_UNK **, 8);
+            M2C_FIELD(temp_r6_641, u32 *, 0) = (u32) M2C_FIELD(temp_r3_614, u32 *, 8);
             M2C_FIELD(temp_r6_641, u8 *, 4) = (u8) (M2C_FIELD(temp_r6_641, u8 *, 4) & ~0x20);
             M2C_FIELD(temp_r6_641, u8 *, 4) = (u8) (M2C_FIELD(temp_r6_641, u8 *, 4) | 0x80);
             M2C_FIELD(temp_r6_641, u8 *, 4) = (u8) ((M2C_FIELD(temp_r6_641, u8 *, 4) & ~0x40) | ((M2C_FIELD(temp_r3_614, u8 *, 0xC) << 6) & 0x40));
@@ -452,11 +452,11 @@ loop_21:
             if (temp_r4_678 == NULL) {
                 return;
             }
-            if ((M2C_UNK *) *temp_r4_678 == (u32) M2C_FIELD(temp_r3_657, u32 *, 8)) {
+            if ((u32) *temp_r4_678 == (u32) M2C_FIELD(temp_r3_657, u32 *, 8)) {
                 temp_r3_665 = this->unk210;
                 this->unk210 = temp_r3_665 + 4;
                 temp_r4_668 = *temp_r3_665;
-                *temp_r3_665 = *var_r5_658;
+                *temp_r3_665 = (u32 *) *var_r5_658;
                 *var_r5_658 = temp_r4_668;
                 return;
             }
@@ -527,11 +527,11 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk210'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void KDCamera::SetCameraCollisionInfoItems(bool arg0) {
-    M2C_UNK *temp_r6_1009;
-    M2C_UNK *var_r7_969;
     u8 temp_r5_972;
+    void *temp_r6_1009;
+    void *var_r7_969;
 
     var_r7_969 = this->unk210;
 loop_10:
@@ -543,16 +543,16 @@ loop_10:
         temp_r5_972 = M2C_FIELD(temp_r6_1009, u8 *, 4);
         if ((temp_r5_972 >> 7U) & 1) {
             if (arg0 != 0) {
-                M2C_FIELD(temp_r6_1009, u8 *, 4) = (u8) ((temp_r5_972 & ~0x20) | ((M2C_FIELD(M2C_FIELD(temp_r6_1009, M2C_UNK **, 0), u8 *, 4) << 5) & 0x20));
+                M2C_FIELD(temp_r6_1009, u8 *, 4) = (u8) ((temp_r5_972 & ~0x20) | ((M2C_FIELD(M2C_FIELD(temp_r6_1009, void **, 0), u8 *, 4) << 5) & 0x20));
                 if (((u8) M2C_FIELD(temp_r6_1009, u8 *, 4) >> 6U) & 1) {
-                    M2C_FIELD(M2C_FIELD(temp_r6_1009, M2C_UNK **, 0), u8 *, 4) = 1U;
+                    M2C_FIELD(M2C_FIELD(temp_r6_1009, void **, 0), u8 *, 4) = 1U;
                 } else {
-                    M2C_FIELD(M2C_FIELD(temp_r6_1009, M2C_UNK **, 0), u8 *, 4) = 0U;
+                    M2C_FIELD(M2C_FIELD(temp_r6_1009, void **, 0), u8 *, 4) = 0U;
                 }
             } else if ((temp_r5_972 >> 5U) & 1) {
-                M2C_FIELD(M2C_FIELD(temp_r6_1009, M2C_UNK **, 0), u8 *, 4) = 1U;
+                M2C_FIELD(M2C_FIELD(temp_r6_1009, void **, 0), u8 *, 4) = 1U;
             } else {
-                M2C_FIELD(M2C_FIELD(temp_r6_1009, M2C_UNK **, 0), u8 *, 4) = 0U;
+                M2C_FIELD(M2C_FIELD(temp_r6_1009, void **, 0), u8 *, 4) = 0U;
             }
         }
         var_r7_969 += 4;
@@ -2005,13 +2005,11 @@ void KDCamera::SnapToSafetyUpdate(const MKVector3 &arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void KDCamera::VisibleTargetDisable() {
     this->unk168 = 0.0f;
     memset(&this->unk16C, 0, 4U);
     this->unk174 = 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'nanf'
 void KDCamera::VisibleTargetUpdate() {
@@ -2428,7 +2426,7 @@ void KDCamera::UpdateLTW() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDCamera::SetLTW(const Matrix &arg0) {
     f64 sp40;
     f64 sp38;
@@ -2793,13 +2791,13 @@ void KDCamera::LoadDone() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::Deinit() {
-    M2C_UNK *temp_r0_5382;
-    M2C_UNK *temp_r0_5401;
-    M2C_UNK *var_r31_5378;
-    M2C_UNK *var_r3_5379;
-    M2C_UNK *var_r4_5377;
+    MKHeap *temp_r0_5382;
     MKHeap *temp_r3_5404;
     u32 temp_r0_5387;
+    void *temp_r0_5401;
+    void *var_r31_5378;
+    void *var_r3_5379;
+    void *var_r4_5377;
 
     this->unk4C = 0;
     KDSound_SetListener(NULL);
@@ -2823,9 +2821,9 @@ loop_3:
     temp_r0_5387 = M2C_FIELD(var_r3_5379, u32 *, -4);
     var_r3_5379 -= 4;
     if (temp_r0_5387 != 0U) {
-        temp_r0_5382 = *var_r3_5379;
+        temp_r0_5382 = var_r3_5379->unk0;
         if (temp_r0_5382 < var_r31_5378) {
-            var_r31_5378 = &*temp_r0_5382;
+            var_r31_5378 = temp_r0_5382;
         }
         goto loop_3;
     }
@@ -2839,7 +2837,7 @@ loop_9:
             var_r4_5377 += 4;
             goto loop_9;
         }
-        temp_r3_5404 = ((MKHeap *) var_r3_5379)->Current();
+        temp_r3_5404 = var_r3_5379->Current();
         if (temp_r3_5404 != NULL) {
             ((MKHeap *) (temp_r3_5404->Current()))->Free(var_r31_5378, NULL, 0);
         } else {
@@ -2879,13 +2877,9 @@ void KDCamera::Init() {
     KDCameraStateChangeRequest *temp_r4_5585;
     KDCameraStateStack *var_r0_5565;
     KDCollisionObject *temp_r4_5599;
-    M2C_UNK *temp_r3_5635;
-    M2C_UNK *temp_r3_5642;
-    M2C_UNK *temp_r3_5649;
-    M2C_UNK *var_r3_5622;
-    M2C_UNK *var_r5_5634;
     MKHeap *temp_r3_5612;
     Matrix *temp_r3_5487;
+    s32 *temp_r3_5635;
     s32 temp_r30_5604;
     s32 var_ctr_5587;
     s32 var_ctr_5638;
@@ -2893,8 +2887,12 @@ void KDCamera::Init() {
     void *temp_r29_5675;
     void *temp_r30_5665;
     void *temp_r3_5603;
+    void *temp_r3_5642;
+    void *temp_r3_5649;
     void *temp_r5_5465;
     void *temp_r7_5471;
+    void *var_r3_5622;
+    void *var_r5_5634;
 
     this->unk4C = 1;
     MKProp::Init();
@@ -2998,20 +2996,20 @@ void KDCamera::Init() {
         var_r5_5634 = this->unk210;
         temp_r3_5635 = var_r5_5634 + (temp_r30_5604 * 8);
         this->unk210 = temp_r3_5635;
-        *temp_r3_5635 = NULL;
+        *temp_r3_5635 = 0;
         var_ctr_5638 = temp_r30_5604;
         if (temp_r30_5604 > 0) {
             do {
                 temp_r3_5642 = this->unk210;
                 this->unk210 = temp_r3_5642 + 4;
-                M2C_FIELD(temp_r3_5642, M2C_UNK **, 4) = var_r5_5634;
+                M2C_FIELD(temp_r3_5642, void **, 4) = var_r5_5634;
                 var_r5_5634 += 8;
                 var_ctr_5638 -= 1;
             } while (var_ctr_5638 != 0);
         }
         temp_r3_5649 = this->unk210;
         this->unk210 = temp_r3_5649 + 4;
-        M2C_FIELD(temp_r3_5649, M2C_UNK **, 4) = NULL;
+        M2C_FIELD(temp_r3_5649, void **, 4) = NULL;
     }
     this->unk204 = 0;
     this->unk1F0 = 0;

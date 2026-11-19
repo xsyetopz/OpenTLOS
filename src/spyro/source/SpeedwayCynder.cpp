@@ -1275,7 +1275,7 @@ void SpeedwayCynder::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk330'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedwayCynder::Reset() {
     Matrix sp50;
     M2C_UNK sp4C;

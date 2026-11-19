@@ -412,9 +412,12 @@ public:
     /* 0x3f0 */ u8 pad3F0[0x18];
     /* 0x408 */ Spyro* unk408;
     /* 0x40c */ u32 unk40C;
-    /* 0x410 */ u8 pad410[0xc];
+    /* 0x410 */ u8 pad410[0x8];
+    /* 0x418 */ u8 unk418;
+    /* 0x419 */ u8 pad419[0x3];
     /* 0x41c */ s32 unk41C;
-    /* 0x420 */ u8 pad420[0x8];
+    /* 0x420 */ void* unk420;
+    /* 0x424 */ u8 pad424[0x4];
     /* 0x428 */ s32 unk428;
     /* 0x42c */ u8 pad42C[0x4];
     /* 0x430 */ SpyroLighting unk430;
@@ -509,14 +512,14 @@ inline Spyro::~Spyro() {
             __destroy_arr(&this->unk6F8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
         }
         if (&this->unk418 != NULL) {
-            temp_r0_34 = this->unk420;
+            temp_r0_34 = M2C_FIELD(this, M2C_UNK **, 0x420);
             if (temp_r0_34 != NULL) {
                 temp_r4_37 = &this->unk418;
                 if (temp_r0_34 != temp_r4_37) {
                     M2C_FIELD(this->unk41C, M2C_UNK **, 8) = temp_r0_34;
-                    M2C_FIELD(this->unk420, s32 *, 0xC) = (s32) this->unk41C;
+                    M2C_FIELD(M2C_FIELD(this, M2C_UNK **, 0x420), s32 *, 0xC) = (s32) this->unk41C;
                     this->unk41C = (s32) temp_r4_37;
-                    this->unk420 = temp_r4_37;
+                    M2C_FIELD(this, M2C_UNK **, 0x420) = temp_r4_37;
                 }
             }
         }

@@ -25,7 +25,8 @@ public:
     /* 0x004 */ u32 unk4;
     /* 0x008 */ u32 unk8;
     /* 0x00c */ u32 unkC;
-    /* 0x010 */ u8 pad10[0x18];
+    /* 0x010 */ u8 pad10[0x10];
+    /* 0x020 */ f64 unk20;
     /* 0x028 */ f32 unk28;
     /* 0x02c */ u8 pad2C[0xa0];
     /* 0x0cc */ s32 unkCC;

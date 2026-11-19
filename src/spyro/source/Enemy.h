@@ -368,14 +368,14 @@ inline Enemy::~Enemy() {
         }
         if (this != NULL) {
             if (&this->unk670 != NULL) {
-                temp_r0_5272 = this->unk678;
+                temp_r0_5272 = M2C_FIELD(this, M2C_UNK **, 0x678);
                 if (temp_r0_5272 != NULL) {
                     temp_r4_5275 = &this->unk670;
                     if (temp_r0_5272 != temp_r4_5275) {
                         M2C_FIELD(this->unk67C, M2C_UNK **, 8) = temp_r0_5272;
-                        M2C_FIELD(this->unk678, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
+                        M2C_FIELD(M2C_FIELD(this, M2C_UNK **, 0x678), M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
                         this->unk67C = temp_r4_5275;
-                        this->unk678 = temp_r4_5275;
+                        M2C_FIELD(this, M2C_UNK **, 0x678) = temp_r4_5275;
                     }
                 }
             }
@@ -414,7 +414,7 @@ inline Enemy::Enemy() {
     this->unk658 = 0.0f;
     M2C_FIELD(this, s32 *, 0x670) = 0;
     this->unk674 = 0;
-    this->unk678 = temp_r7_5347;
+    M2C_FIELD(this, M2C_UNK **, 0x678) = temp_r7_5347;
     this->unk67C = temp_r7_5347;
     this->unk6A4 = 0;
     M2C_FIELD(this, struct __vt **, 0x6B8) = &__vt;

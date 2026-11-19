@@ -48,7 +48,13 @@ public:
     /* 0x090 */ f64 unk90;
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ s32 unkA0;
-    /* 0x0a4 */ u8 padA4[0x24];
+    /* 0x0a4 */ f32 unkA4;
+    /* 0x0a8 */ f32 unkA8;
+    /* 0x0ac */ u8 padAC[0x4];
+    /* 0x0b0 */ f32 unkB0;
+    /* 0x0b4 */ f32 unkB4;
+    /* 0x0b8 */ f32 unkB8;
+    /* 0x0bc */ u8 padBC[0xc];
     /* 0x0c8 */ Shadow unkC8;
     /* 0x0f5 */ u8 padF5[0x17];
     /* 0x10c */ EventMessage unk10C;

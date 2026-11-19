@@ -76,9 +76,11 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FloorSwitch::FloorSwitch() {
-    this->unkC8 = &__vt + 0x48;
+    M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
     this->unk120.unk0 = 0;
     this->unk120.Init();
     this->unk124.unk0 = 0;
@@ -87,9 +89,9 @@ inline FloorSwitch::FloorSwitch() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FloorSwitch::~FloorSwitch() {
-    this->unkC8 = &__vt.unk48;
+    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
     if (&this->unk124 != NULL) {
         this->unk124.Deinit();
     }

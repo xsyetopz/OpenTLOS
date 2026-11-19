@@ -55,7 +55,9 @@ public:
     /* 0x130 */ f64 unk130;
     /* 0x138 */ f64 unk138;
     /* 0x140 */ MKModel* unk140;
-    /* 0x144 */ u8 pad144[0xc];
+    /* 0x144 */ u8 pad144[0x8];
+    /* 0x14c */ u8 unk14C;
+    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ Matrix unk150;
     /* 0x190 */ MKPropDescriptor* unk190;
     /* 0x194 */ f32 unk194;

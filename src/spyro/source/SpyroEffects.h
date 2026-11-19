@@ -53,7 +53,7 @@ public:
 
 class SpyroEffectsUpdateData {
 public:
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ f64 unk0;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ MKVector3 unk10;

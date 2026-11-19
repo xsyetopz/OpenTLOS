@@ -1301,7 +1301,7 @@ loop_102:
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x38);
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0xCB) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x3C);
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkD5) == NULL) {
+                        } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0xD5) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x40);
                         } else if (stricmp(temp_r3_1856, (f32 *) &lit_stringBase0.unkE4) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x48);
@@ -1365,7 +1365,7 @@ loop_102:
                             M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x54) = spC;
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0xED) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x58);
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkFB) == NULL) {
+                        } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0xFB) == NULL) {
                             var_r31_1849->AsBool(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x60);
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0.unk108) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x5C);

@@ -9,13 +9,13 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(M2C_UNK);                           /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void LiquidStream::Draw() {
     M2C_UNK sp1B0;
     Matrix sp170;
@@ -64,8 +64,6 @@ void LiquidStream::Draw() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    M2C_UNK *temp_r4_68;
-    M2C_UNK *var_r3_69;
     f32 temp_f0_249;
     f32 temp_f30_206;
     f32 var_f24_223;
@@ -82,14 +80,16 @@ void LiquidStream::Draw() {
     void *temp_r3_238;
     void *temp_r4_105;
     void *temp_r4_127;
+    void *temp_r4_68;
     void *temp_r5_102;
     void *var_r29_98;
+    void *var_r3_69;
 
     if ((void *) this->unk50 != NULL) {
         temp_r4_68 = this->unk54;
         var_r3_69 = temp_r4_68;
 loop_3:
-        if ((M2C_UNK *) *var_r3_69 != NULL) {
+        if ((u32) *var_r3_69 != 0U) {
             var_r3_69 += 4;
             goto loop_3;
         }
@@ -211,7 +211,7 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: illegal type
 void LiquidStream::Update() {
     f64 sp108;
     f64 sp100;
@@ -251,17 +251,6 @@ void LiquidStream::Update() {
     f64 sp10;
     f32 spC;
     f32 sp8;
-    M2C_UNK *temp_r0_463;
-    M2C_UNK *temp_r3_394;
-    M2C_UNK *temp_r3_410;
-    M2C_UNK *temp_r3_439;
-    M2C_UNK *temp_r3_445;
-    M2C_UNK *temp_r3_452;
-    M2C_UNK *temp_r4_396;
-    M2C_UNK *temp_r5_455;
-    M2C_UNK *var_r31_422;
-    M2C_UNK *var_r3_797;
-    M2C_UNK *var_r4_447;
     f32 temp_f25_472;
     f32 temp_f26_477;
     f32 temp_f28_643;
@@ -285,10 +274,21 @@ void LiquidStream::Update() {
     s32 temp_r3_697;
     s32 var_r0_542;
     s32 var_r0_707;
+    u32 temp_r0_463;
+    u32 temp_r5_455;
+    void **temp_r3_394;
+    void *temp_r3_410;
     void *temp_r3_433;
+    void *temp_r3_439;
+    void *temp_r3_445;
+    void *temp_r3_452;
     void *temp_r3_754;
     void *temp_r3_767;
+    void *temp_r4_396;
     void *temp_r4_773;
+    void *var_r31_422;
+    void *var_r3_797;
+    void *var_r4_447;
 
     MKProp::Update();
     if ((void *) this->unk50 != NULL) {
@@ -310,42 +310,42 @@ void LiquidStream::Update() {
                         M2C_FIELD(temp_r4_396, f64 *, 0x18) = (f64) this->unk80;
                         M2C_FIELD(temp_r4_396, f32 *, 0x20) = 1.0f;
                         M2C_FIELD(temp_r4_396, f32 *, 0x24) = 25.0f;
-                        M2C_FIELD(temp_r4_396, M2C_UNK **, 0x2C) = (M2C_UNK *) M2C_FIELD(this->unk50, M2C_UNK **, 0x2C);
-                        temp_r3_410 = M2C_FIELD(temp_r4_396, M2C_UNK **, 0x2C);
+                        M2C_FIELD(temp_r4_396, void **, 0x2C) = (void *) M2C_FIELD(this->unk50, void **, 0x2C);
+                        temp_r3_410 = M2C_FIELD(temp_r4_396, void **, 0x2C);
                         if (temp_r3_410 != NULL) {
-                            M2C_FIELD(temp_r3_410, M2C_UNK **, 0x28) = temp_r4_396;
+                            M2C_FIELD(temp_r3_410, void **, 0x28) = temp_r4_396;
                         }
                         M2C_FIELD(temp_r4_396, void **, 0x28) = (void *) this->unk50;
-                        M2C_FIELD(this->unk50, M2C_UNK **, 0x2C) = temp_r4_396;
+                        M2C_FIELD(this->unk50, void **, 0x2C) = temp_r4_396;
                     }
                 }
             }
         }
-        var_r31_422 = M2C_FIELD(this->unk50, M2C_UNK **, 0x2C);
+        var_r31_422 = M2C_FIELD(this->unk50, void **, 0x2C);
 loop_41:
         if (var_r31_422 != NULL) {
             M2C_FIELD(var_r31_422, f32 *, 0x20) = (f32) (M2C_FIELD(var_r31_422, f32 *, 0x20) - gUpdateTimeDelta);
             if (M2C_FIELD(var_r31_422, f32 *, 0x20) <= 0.0f) {
                 temp_r3_433 = M2C_FIELD(var_r31_422, void **, 0x28);
                 if (temp_r3_433 != NULL) {
-                    M2C_FIELD(temp_r3_433, M2C_UNK **, 0x2C) = (M2C_UNK *) M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
+                    M2C_FIELD(temp_r3_433, void **, 0x2C) = (void *) M2C_FIELD(var_r31_422, void **, 0x2C);
                 }
-                temp_r3_439 = M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
+                temp_r3_439 = M2C_FIELD(var_r31_422, void **, 0x2C);
                 if (temp_r3_439 != NULL) {
                     M2C_FIELD(temp_r3_439, void **, 0x28) = (void *) M2C_FIELD(var_r31_422, void **, 0x28);
                 }
                 temp_r3_445 = var_r31_422;
-                var_r31_422 = M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
+                var_r31_422 = M2C_FIELD(var_r31_422, void **, 0x2C);
                 var_r4_447 = this->unk54;
 loop_18:
                 temp_r0_463 = *var_r4_447;
-                if (temp_r0_463 == NULL) {
+                if (temp_r0_463 == 0U) {
 
                 } else if (temp_r0_463 == temp_r3_445) {
                     temp_r3_452 = this->unk54;
                     this->unk54 = temp_r3_452 + 4;
-                    temp_r5_455 = M2C_FIELD(temp_r3_452, M2C_UNK **, 0);
-                    M2C_FIELD(temp_r3_452, M2C_UNK **, 0) = *var_r4_447;
+                    temp_r5_455 = M2C_FIELD(temp_r3_452, u32 *, 0);
+                    M2C_FIELD(temp_r3_452, u32 *, 0) = (u32) *var_r4_447;
                     *var_r4_447 = temp_r5_455;
                 } else {
                     var_r4_447 += 4;
@@ -418,7 +418,7 @@ loop_18:
                 spC8 = (f64) sp38;
                 M2C_FIELD(var_r31_422, f64 *, 0) = (f64) (M2C_FIELD(var_r31_422, f64 *, 0) + temp_f0_610);
                 M2C_FIELD(var_r31_422, f32 *, 8) = (f32) (M2C_FIELD(var_r31_422, f32 *, 8) + (f32) spC8);
-                var_r31_422 = M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
+                var_r31_422 = M2C_FIELD(var_r31_422, void **, 0x2C);
             }
             goto loop_41;
         }
@@ -493,26 +493,26 @@ loop_18:
             M2C_FIELD(temp_r4_773, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_773, f64 *, 0) + temp_f0_777);
             M2C_FIELD(temp_r4_773, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_773, f32 *, 8) + (f32) sp98);
         }
-        var_r3_797 = M2C_FIELD(this->unk50, M2C_UNK **, 0x2C);
+        var_r3_797 = M2C_FIELD(this->unk50, void **, 0x2C);
 loop_66:
         if (var_r3_797 != NULL) {
             M2C_FIELD(var_r3_797, f32 *, 0x24) = (f32) ((100.0f * gUpdateTimeDelta) + M2C_FIELD(var_r3_797, f32 *, 0x24));
-            var_r3_797 = M2C_FIELD(var_r3_797, M2C_UNK **, 0x2C);
+            var_r3_797 = M2C_FIELD(var_r3_797, void **, 0x2C);
             goto loop_66;
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: illegal type
 void LiquidStream::Deinit() {
-    M2C_UNK *temp_r0_844;
-    M2C_UNK *temp_r0_863;
-    M2C_UNK *var_r31_840;
-    M2C_UNK *var_r3_841;
-    M2C_UNK *var_r4_839;
+    MKHeap *temp_r0_844;
     MKHeap *temp_r3_866;
     u32 temp_r0_849;
+    void *temp_r0_863;
+    void *var_r31_840;
+    void *var_r3_841;
+    void *var_r4_839;
 
     MKProp::Deinit();
     var_r4_839 = this->unk54;
@@ -522,7 +522,7 @@ loop_3:
     temp_r0_849 = M2C_FIELD(var_r3_841, u32 *, -4);
     var_r3_841 -= 4;
     if (temp_r0_849 != 0U) {
-        temp_r0_844 = *var_r3_841;
+        temp_r0_844 = var_r3_841->unk0;
         if (temp_r0_844 < var_r31_840) {
             var_r31_840 = temp_r0_844;
         }
@@ -538,7 +538,7 @@ loop_9:
             var_r4_839 += 4;
             goto loop_9;
         }
-        temp_r3_866 = ((MKHeap *) var_r3_841)->Current();
+        temp_r3_866 = var_r3_841->Current();
         if (temp_r3_866 != NULL) {
             ((MKHeap *) (temp_r3_866->Current()))->Free(var_r31_840, NULL, 0);
         } else {
@@ -550,19 +550,19 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal type
 void LiquidStream::Init() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
-    M2C_UNK *temp_r3_922;
-    M2C_UNK *temp_r3_928;
-    M2C_UNK *var_r3_907;
-    M2C_UNK *var_r5_916;
     MKHeap *temp_r3_900;
     s32 var_ctr_920;
+    void *temp_r3_922;
+    void *temp_r3_928;
+    void *var_r3_907;
+    void *var_r5_916;
 
     MKProp::Init();
     this->unk4C = 0;
@@ -580,13 +580,13 @@ void LiquidStream::Init() {
     do {
         temp_r3_922 = this->unk54;
         this->unk54 = temp_r3_922 + 4;
-        M2C_FIELD(temp_r3_922, M2C_UNK **, 4) = var_r5_916;
+        M2C_FIELD(temp_r3_922, void **, 4) = var_r5_916;
         var_r5_916 += 0x30;
         var_ctr_920 -= 1;
     } while (var_ctr_920 != 0);
     temp_r3_928 = this->unk54;
     this->unk54 = temp_r3_928 + 4;
-    M2C_FIELD(temp_r3_928, M2C_UNK **, 4) = NULL;
+    M2C_FIELD(temp_r3_928, void **, 4) = NULL;
     this->unk58 = 0.1f;
     sp10 = 0.0f;
     this->unk5C = this->unk58;

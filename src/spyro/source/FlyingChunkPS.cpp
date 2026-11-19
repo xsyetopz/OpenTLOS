@@ -667,7 +667,7 @@ loop_208:
                 }
             } else {
 block_24:
-                temp_f0_620 = temp_r30_526->unkF8 * (f64) gUpdateTimeDelta;
+                temp_f0_620 = M2C_FIELD(temp_r30_526, f64 *, 0xF8) * (f64) gUpdateTimeDelta;
                 spF8 = temp_f0_620;
                 sp498 = temp_f0_620;
                 sp100 = temp_r30_526->unk100 * gUpdateTimeDelta;

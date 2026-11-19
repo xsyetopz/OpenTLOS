@@ -651,7 +651,7 @@ void MoltenMetalBucketTrackDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void MoltenMetalBucketTrackDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);

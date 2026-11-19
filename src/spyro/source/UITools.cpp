@@ -775,7 +775,7 @@ void RadialButtonGroup::Init() {
     this->unkFC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk30'
+#if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to
 void UIPie::Draw(const RenderContext &arg0) {
     RenderContext sp100;
     Matrix spC0;
@@ -852,7 +852,7 @@ void UIPie::Draw(const RenderContext &arg0) {
         MKBegin(temp_r30_1615 + var_r29_1608 + 2);
         MKSetColorV(*((MKVector4 *) &sp100.unk40));
         MKSetTexCoord1F(0.5f, 0.5f);
-        MKSetPositionV(sp100.unk30);
+        MKSetPositionV(*((MKVector3 *) &sp100.unk30));
         var_r28_1639 = 0;
 loop_13:
         if (var_r28_1639 <= temp_r30_1615) {
@@ -867,9 +867,9 @@ loop_13:
             sp54 = sp18 * this->unk18.unk38;
             sp90 = (f64) sp50;
             sp98 = (f64) sp58;
-            sp40 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp98 * sp100.unk20) + (((f32) sp90 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk10)));
-            sp44 = sp100.unk30.unk4 + (((f32) sp98 * sp100.unk24) + (((f32) sp90 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk14)));
-            sp48 = sp100.unk30.unk8 + (((f32) sp98 * sp100.unk28) + (((f32) sp90 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk18)));
+            sp40 = sp100.unk30 + (((f32) sp98 * sp100.unk20) + (((f32) sp90 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk10)));
+            sp44 = sp100.unk34 + (((f32) sp98 * sp100.unk24) + (((f32) sp90 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk14)));
+            sp48 = sp100.unk38 + (((f32) sp98 * sp100.unk28) + (((f32) sp90 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk18)));
             spA0 = (f64) sp40;
             spA8 = (f64) sp48;
             MKSetPositionV(*((MKVector3 *) &spA0));
@@ -888,9 +888,9 @@ loop_13:
             sp38 = 0.0f;
             sp70 = (f64) sp30;
             sp78 = (f64) sp38;
-            sp20 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp78 * sp100.unk20) + (((f32) sp70 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk10)));
-            sp24 = sp100.unk30.unk4 + (((f32) sp78 * sp100.unk24) + (((f32) sp70 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk14)));
-            sp28 = sp100.unk30.unk8 + (((f32) sp78 * sp100.unk28) + (((f32) sp70 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk18)));
+            sp20 = sp100.unk30 + (((f32) sp78 * sp100.unk20) + (((f32) sp70 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk10)));
+            sp24 = sp100.unk34 + (((f32) sp78 * sp100.unk24) + (((f32) sp70 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk14)));
+            sp28 = sp100.unk38 + (((f32) sp78 * sp100.unk28) + (((f32) sp70 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk18)));
             sp80 = (f64) sp20;
             sp88 = (f64) sp28;
             MKSetPositionV(*((MKVector3 *) &sp80));
@@ -1004,9 +1004,9 @@ block_16:
     } else {
         var_f6_1980 = -0.5f * var_r30_1923->unk38;
     }
-    sp10 = M2C_BITWISE(f32, sp30.unk30) + ((0.0f * sp30.unk20) + ((var_f7_1964 * M2C_BITWISE(f32, sp30)) + (var_f6_1980 * sp30.unk10)));
-    sp14 = sp30.unk30.unk4 + ((0.0f * sp30.unk24) + ((var_f7_1964 * sp30.unk4) + (var_f6_1980 * sp30.unk14)));
-    sp18 = sp30.unk30.unk8 + ((0.0f * sp30.unk28) + ((var_f7_1964 * sp30.unk8) + (var_f6_1980 * sp30.unk18)));
+    sp10 = sp30.unk30 + ((0.0f * sp30.unk20) + ((var_f7_1964 * M2C_BITWISE(f32, sp30)) + (var_f6_1980 * sp30.unk10)));
+    sp14 = sp30.unk34 + ((0.0f * sp30.unk24) + ((var_f7_1964 * sp30.unk4) + (var_f6_1980 * sp30.unk14)));
+    sp18 = sp30.unk38 + ((0.0f * sp30.unk28) + ((var_f7_1964 * sp30.unk8) + (var_f6_1980 * sp30.unk18)));
     M2C_FIELD(arg0, f64 *, 0x10) = (f64) sp10;
     M2C_FIELD(arg0, f64 *, 0x18) = (f64) sp18;
     sp20 = (f64) sp10;
@@ -1016,7 +1016,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::Draw(const RenderContext &arg0) {
     RenderContext sp10;
 
@@ -1057,21 +1057,21 @@ void MarkerButtonGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::FreeResources() {
     UIContainer::FreeResources();
     M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x24)(&this->unk80);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::LoadResources() {
     UIContainer::LoadResources();
     M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x20)(&this->unk80);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::Deinit() {
     UIContainer::Deinit();
     M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk80);

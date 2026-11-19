@@ -1502,7 +1502,7 @@ void MKDistanceLevelChunk::CalculateUpdateDistances() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unkA68'
+#if 0 // DRAFT: undefined identifier 'SortPropCompare'
 void MKDistanceLevelChunk::CalculateVisibility(bool arg0) {
     Matrix *temp_r3_2577;
     Matrix *temp_r3_2597;

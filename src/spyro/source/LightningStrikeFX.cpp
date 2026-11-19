@@ -1437,7 +1437,7 @@ void LightningStrikeFXDescriptor::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LightningStrikeFXDescriptor::Init() {
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2383;
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2389;

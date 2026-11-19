@@ -62,7 +62,8 @@ public:
     s32 LoadLine(MKIniLine *, const char *);
     /* 0x000 */ KDPropertyCommand* unk0;
     /* 0x004 */ s32 unk4;
-    /* 0x008 */ u8 pad8[0x4];
+    /* 0x008 */ u8 unk8;
+    /* 0x009 */ u8 pad9[0x3];
     /* 0x00c */ KDPropertyCommand* unkC;
 };
 

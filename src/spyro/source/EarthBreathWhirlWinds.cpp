@@ -221,7 +221,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF8'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void EarthBreathWhirlWinds::Draw() {
     f64 sp40;
     f64 sp38;

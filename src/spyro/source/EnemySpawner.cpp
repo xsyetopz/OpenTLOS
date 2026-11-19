@@ -144,7 +144,6 @@ void EnemySpawnerDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void EnemySpawnerDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_FIELD(this, f32 *, 0x60) = -10.0f;
@@ -155,7 +154,6 @@ void EnemySpawnerDescriptor::Init() {
     this->unk78 = 20.0f;
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void SpawnPoint::Message(MKMessage *arg0) {

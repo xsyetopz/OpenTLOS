@@ -38,7 +38,9 @@ public:
     s32 Trigger(const MKVector3 &, bool, bool, HeroHurtReactionType);
     void SetDefaults(void);
     void UpdateDragons(void);
-    /* 0x04c */ u8 pad4C[0x44];
+    /* 0x04c */ u8 pad4C[0x40];
+    /* 0x08c */ u8 unk8C;
+    /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ f32 unkD4;

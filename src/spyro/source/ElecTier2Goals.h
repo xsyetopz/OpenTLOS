@@ -49,7 +49,8 @@ public:
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x3];
     /* 0x00c */ Character* unkC;
-    /* 0x010 */ u8 pad10[0x10];
+    /* 0x010 */ u8 pad10[0x8];
+    /* 0x018 */ f64 unk18;
     /* 0x020 */ f32 unk20;
 };
 

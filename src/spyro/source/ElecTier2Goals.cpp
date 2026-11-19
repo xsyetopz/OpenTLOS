@@ -29,7 +29,7 @@ void ElecTier2Goal_FlyToTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 ElecTier2Goal_FlyToTarget::Update() {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */

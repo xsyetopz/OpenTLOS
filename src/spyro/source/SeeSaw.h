@@ -36,7 +36,9 @@ public:
     virtual void Message(MKMessage *);
     void Detach(PlatformAttachment *);
     void Attach(PlatformAttachment *);
-    /* 0x089 */ u8 pad89[0x7];
+    /* 0x089 */ u8 pad89[0x3];
+    /* 0x08c */ u8 unk8C;
+    /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;

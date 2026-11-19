@@ -24,7 +24,8 @@ public:
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;
     /* 0x07c */ ColObjDescriptor unk7C;
-    /* 0x0c8 */ u8 padC8[0x4];
+    /* 0x0c8 */ u8 unkC8;
+    /* 0x0c9 */ u8 padC9[0x3];
     /* 0x0cc */ f32 unkCC;
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ s32 unkD4;

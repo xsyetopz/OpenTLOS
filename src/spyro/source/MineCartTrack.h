@@ -34,7 +34,8 @@ public:
     /* 0x0a8 */ f64 unkA8;
     /* 0x0b0 */ f64 unkB0;
     /* 0x0b8 */ f64 unkB8;
-    /* 0x0c0 */ u8 padC0[0x40];
+    /* 0x0c0 */ u8 unkC0;
+    /* 0x0c1 */ u8 padC1[0x3f];
     /* 0x100 */ u8 unk100;
     /* 0x101 */ u8 pad101[0x3];
     /* 0x104 */ s32 unk104;
@@ -52,7 +53,9 @@ public:
 class MineCartTrackDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x044 */ u8 pad44[0x24];
+    /* 0x044 */ u8 pad44[0x1c];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x7];
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f64 unk78;

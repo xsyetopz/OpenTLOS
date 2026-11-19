@@ -26,6 +26,8 @@ public:
     /* 0x094 */ KDPathSegment unk94;
     /* 0x0cc */ u8 padCC[0x10];
     /* 0x0dc */ SplitPath unkDC;
+    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0f0 */ f32 unkF0;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

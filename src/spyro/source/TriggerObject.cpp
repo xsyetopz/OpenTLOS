@@ -321,7 +321,7 @@ void TriggerPlaneObject::LoadDone() {
     this->unkC4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 0) = 0.0f;
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 4) = 0.0f;

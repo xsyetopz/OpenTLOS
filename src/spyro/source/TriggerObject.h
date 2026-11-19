@@ -34,7 +34,9 @@ public:
     virtual s32 CheckPos(const MKVector3 &) = 0;
     virtual s32 CheckTarget(void) = 0;
     void EnableTrigger(bool);
-    /* 0x004 */ u8 pad4[0xc];
+    /* 0x004 */ u8 pad4[0x8];
+    /* 0x00c */ u8 unkC;
+    /* 0x00d */ u8 padD[0x3];
     /* 0x010 */ Matrix unk10;
     /* 0x050 */ s32 unk50;
     /* 0x054 */ s32 unk54;
@@ -58,7 +60,9 @@ public:
     virtual s32 LoadLine(char *, MKIniLine *);
     virtual void LoadDone(const MKVector3 &, const Matrix &);
     static u8 tempBoxRot[0x10];
-    /* 0x004 */ u8 pad4[0xc];
+    /* 0x004 */ u8 pad4[0x8];
+    /* 0x00c */ u8 unkC;
+    /* 0x00d */ u8 padD[0x3];
     /* 0x010 */ Matrix unk10;
     /* 0x050 */ s32 unk50;
     /* 0x054 */ MKSceneManager* unk54;
@@ -241,7 +245,7 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 inline void TriggerBoxObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
     ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
@@ -258,7 +262,7 @@ inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 inline void TriggerObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
 }

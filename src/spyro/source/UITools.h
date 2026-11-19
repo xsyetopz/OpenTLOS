@@ -177,7 +177,9 @@ public:
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0xe];
     /* 0x068 */ s32 unk68;
-    /* 0x06c */ u8 pad6C[0x2c];
+    /* 0x06c */ u8 pad6C[0x14];
+    /* 0x080 */ void* unk80;
+    /* 0x084 */ u8 pad84[0x14];
     /* 0x098 */ Attributes unk98;
     /* 0x0da */ u8 padDA[0x6];
     /* 0x0e0 */ s8* unkE0;
@@ -489,7 +491,7 @@ inline LocalizedVideoScreen::LocalizedVideoScreen() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline MarkerButtonGroup::MarkerButtonGroup() {
     this->unk80 = &__vt;
     this->unk80 = &__vt;

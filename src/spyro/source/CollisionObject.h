@@ -100,7 +100,8 @@ public:
     /* 0x170 */ ContextInfo unk170;
     /* 0x2d8 */ ContextInfo unk2D8;
     /* 0x440 */ MKMessage* unk440;
-    /* 0x444 */ u8 pad444[0x4];
+    /* 0x444 */ u8 unk444;
+    /* 0x445 */ u8 pad445[0x3];
     /* 0x448 */ s32 unk448;
     /* 0x44c */ s32 unk44C;
     /* 0x450 */ f64 unk450;

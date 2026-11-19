@@ -65,18 +65,20 @@ s32 BoulderRamp_GetMaxPerGroup(void);
 void BoulderRamp_InitModule(void);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline BoulderRamp::~BoulderRamp() {
-    this->unkC8 = &__vt.unk48;
+    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
     if (&this->unkF4.unk14 != NULL) {
         ((EventMessage *) &this->unkF4.unk14)->Deinit();
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline BoulderRamp::BoulderRamp() {
-    this->unkC8 = &__vt + 0x48;
+    M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
     this->unkF4.unk0 = 0.0f;
     this->unkF4.unk4 = 0.0f;
     this->unkF4.unk8 = 0.0f;

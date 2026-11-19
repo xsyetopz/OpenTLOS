@@ -15,8 +15,8 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(M2C_UNK *);                            /* extern */
-M2C_UNK *malloc(M2C_UNK);                           /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_LightningCrystal1;
 extern s32 GS_LightningCrystal2;
 extern M2C_UNK gEmptyPtrListDL;
@@ -24,11 +24,11 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal type
 void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
-    M2C_UNK *temp_r3_51;
-    M2C_UNK *temp_r5_45;
-    M2C_UNK *temp_r5_49;
+    void **temp_r5_49;
+    void *temp_r3_51;
+    void *temp_r5_45;
 
     temp_r5_45 = this->unkB0;
     if ((u32) M2C_FIELD(temp_r5_45, u32 *, -4) != 0U) {
@@ -36,7 +36,7 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
         this->unkB0 = temp_r5_49;
         temp_r3_51 = *temp_r5_49;
         if (temp_r3_51 != NULL) {
-            M2C_FIELD(temp_r3_51, M2C_UNK **, 0) = (M2C_UNK *) arg0;
+            M2C_FIELD(temp_r3_51, s32 *, 0) = arg0;
             M2C_FIELD(temp_r3_51, f32 *, 8) = arg1;
             M2C_FIELD(temp_r3_51, f32 *, 4) = arg1;
         }
@@ -44,15 +44,15 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal type
 void ElecZapCrystal::Deinit() {
-    M2C_UNK *temp_r0_73;
-    M2C_UNK *temp_r0_92;
-    M2C_UNK *var_r31_69;
-    M2C_UNK *var_r3_70;
-    M2C_UNK *var_r4_68;
+    MKHeap *temp_r0_73;
     MKHeap *temp_r3_95;
     u32 temp_r0_78;
+    void *temp_r0_92;
+    void *var_r31_69;
+    void *var_r3_70;
+    void *var_r4_68;
 
     var_r4_68 = this->unkB0;
     var_r31_69 = var_r4_68;
@@ -61,7 +61,7 @@ loop_3:
     temp_r0_78 = M2C_FIELD(var_r3_70, u32 *, -4);
     var_r3_70 -= 4;
     if (temp_r0_78 != 0U) {
-        temp_r0_73 = *var_r3_70;
+        temp_r0_73 = var_r3_70->unk0;
         if (temp_r0_73 < var_r31_69) {
             var_r31_69 = temp_r0_73;
         }
@@ -77,7 +77,7 @@ loop_9:
             var_r4_68 += 4;
             goto loop_9;
         }
-        temp_r3_95 = ((MKHeap *) var_r3_70)->Current();
+        temp_r3_95 = var_r3_70->Current();
         if (temp_r3_95 != NULL) {
             ((MKHeap *) (temp_r3_95->Current()))->Free(var_r31_69, NULL, 0);
         } else {
@@ -89,7 +89,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void ElecZapCrystal::Draw() {
     f64 sp20;
     f64 sp18;
@@ -97,9 +97,9 @@ void ElecZapCrystal::Draw() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    M2C_UNK *temp_r31_172;
-    M2C_UNK *var_r30_141;
     f32 temp_f1_149;
+    void *temp_r31_172;
+    void *var_r30_141;
 
     MKModel_SetColor(this->unk4, this->unkC8);
     MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, this->unk90, 1U, 1U);
@@ -117,7 +117,7 @@ loop_2:
             sp20 = (f64) sp10;
             sp18 = (f64) sp8;
             MKModel_SetColor(this->unk4, *((MKVector4 *) &sp18));
-            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, (s32) M2C_FIELD(temp_r31_172, M2C_UNK **, 0), 1U, 1U);
+            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r31_172, s32 *, 0), 1U, 1U);
             MKModel_Draw(this->unk4, NULL);
             var_r30_141 += 4;
             goto loop_2;
@@ -126,7 +126,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void ElecZapCrystal::Update() {
     f64 spB8;
     f64 spB0;
@@ -156,10 +156,6 @@ void ElecZapCrystal::Update() {
     f32 sp14;
     f32 sp10;
     f32 sp8;
-    M2C_UNK *temp_r3_229;
-    M2C_UNK *temp_r3_241;
-    M2C_UNK *temp_r4_232;
-    M2C_UNK *var_r5_204;
     f32 temp_f27_266;
     f32 temp_f27_391;
     f32 temp_f3_209;
@@ -167,6 +163,10 @@ void ElecZapCrystal::Update() {
     f64 temp_f0_340;
     s32 temp_r0_249;
     s32 var_r28_316;
+    void *temp_r3_229;
+    void *temp_r3_241;
+    void *temp_r4_232;
+    void *var_r5_204;
 
     var_r5_204 = this->unkB0;
 loop_10:
@@ -190,7 +190,7 @@ loop_10:
                 temp_r3_229 = this->unkB0;
                 this->unkB0 = temp_r3_229 + 4;
                 temp_r4_232 = *temp_r3_229;
-                *temp_r3_229 = *var_r5_204;
+                *temp_r3_229 = (void *) *var_r5_204;
                 *var_r5_204 = temp_r4_232;
             }
             var_r5_204 += 4;
@@ -306,14 +306,14 @@ void ElecZapCrystal::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal type
 void ElecZapCrystal::Init() {
-    M2C_UNK *temp_r3_552;
-    M2C_UNK *temp_r3_558;
-    M2C_UNK *var_r3_537;
-    M2C_UNK *var_r5_546;
     MKHeap *temp_r3_530;
     s32 var_ctr_550;
+    void *temp_r3_552;
+    void *temp_r3_558;
+    void *var_r3_537;
+    void *var_r5_546;
 
     KDProp::Init();
     temp_r3_530 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -330,13 +330,13 @@ void ElecZapCrystal::Init() {
     do {
         temp_r3_552 = this->unkB0;
         this->unkB0 = temp_r3_552 + 4;
-        M2C_FIELD(temp_r3_552, M2C_UNK **, 4) = var_r5_546;
+        M2C_FIELD(temp_r3_552, void **, 4) = var_r5_546;
         var_r5_546 += 0xC;
         var_ctr_550 -= 1;
     } while (var_ctr_550 != 0);
     temp_r3_558 = this->unkB0;
     this->unkB0 = temp_r3_558 + 4;
-    M2C_FIELD(temp_r3_558, M2C_UNK **, 4) = NULL;
+    M2C_FIELD(temp_r3_558, void **, 4) = NULL;
     this->unkBC = 0.0f;
     this->unkB4 = 0;
     this->unkC0 = 0.0f;

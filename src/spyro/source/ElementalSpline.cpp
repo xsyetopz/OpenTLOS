@@ -971,7 +971,7 @@ void ElementalSpline::EmitParticles(float arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     Matrix sp200;
     M2C_UNK sp1FC;
@@ -1308,7 +1308,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     Matrix sp200;
     M2C_UNK sp1FC;
@@ -1645,7 +1645,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     Matrix sp1B0;
     M2C_UNK sp1AC;
@@ -1954,7 +1954,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     s32 sp304;
     s32 sp300;

@@ -194,7 +194,7 @@ loop_16:
         if ((u8) M2C_FIELD(temp_r28_184, u8 *, 0x28) == 0) {
             sp180.SetRotationPitch(0.017453292f * M2C_FIELD(temp_r28_184, f32 *, 0x24));
             sp180.RotateYaw(&sp180, 0.017453292f * var_r27_169->unk24);
-            sp180.unk30 = var_r27_169->unk0;
+            sp180.unk30 = M2C_BITWISE(f32, var_r27_169->unk0);
             sp180.unk34 = var_r27_169->unk4;
             sp180.unk38 = var_r27_169->unk8;
             sp180.unk3C = 1.0f;
@@ -212,7 +212,7 @@ loop_16:
             sp120 = (f64) sp60;
             M2C_FIELD(temp_r28_184, f64 *, 0x38) = (f64) sp60;
             KDMath_BuildMatrixFromFwd(&sp180, *(temp_r28_184 + 0x30), (MKVector3 *) &sp168);
-            sp180.unk30 = var_r27_169->unk0;
+            sp180.unk30 = M2C_BITWISE(f32, var_r27_169->unk0);
             sp180.unk34 = var_r27_169->unk4;
             sp180.unk38 = var_r27_169->unk8;
             sp180.unk3C = 1.0f;

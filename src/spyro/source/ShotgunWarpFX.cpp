@@ -16,7 +16,7 @@ extern f32 gUpdateTimeDelta;
 
 static s32 lit_555 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ShotgunWarpFX::UpdateWarp() {
     f32 spAC;
     f32 spA8;
@@ -157,7 +157,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ShotgunWarpFX::StartWarp(Matrix *arg0) {
     f64 sp20;
     f64 sp18;

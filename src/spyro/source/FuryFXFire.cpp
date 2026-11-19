@@ -289,7 +289,7 @@ void FuryFXFire::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FuryFXFire::Draw() {
     Matrix sp40;
     M2C_UNK sp3C;

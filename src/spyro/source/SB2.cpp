@@ -4169,7 +4169,6 @@ void SB2::SetVehicle(Targetable *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk400'
 void SB2::SetDefaults() {
     this->unk4 = NULL;
     M2C_FIELD(this, s32 *, 8) = 0;
@@ -4185,7 +4184,6 @@ void SB2::SetDefaults() {
     memset(&this->unk438, 0, 0x28U);
     ResetSteerDirections();
 }
-#endif
 
 void SB2::Deinit() {
     this->unk0 = NULL;

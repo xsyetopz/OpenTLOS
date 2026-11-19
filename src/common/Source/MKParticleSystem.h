@@ -10,7 +10,7 @@ class MKParticleSystem;
 
 class MKParticleChunk {
 public:
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ MKParticleChunk* unk0;
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x4];

@@ -197,7 +197,7 @@ void SpyroSlideState::Enter(SpyroStateMessages &arg0) {
     Spyro *temp_r3_275;
 
     temp_r3_275 = this->unk10;
-    temp_r3_275->unk428 &= 0xFFFFFFFE;
+    temp_r3_275->unk420 = (void *) ((s32) temp_r3_275->unk420 & 0xFFFFFFFE);
     this->unk10->SetAnim(0U, 0.17f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     Init__33KDStateMachine<15SpyroSlideState>FPQ233KDStateMachine<15SpyroSlideState>5StateP33KDStateMachine<15SpyroSlideState>(&this->unk14, (KDStateMachine<SpyroSlideState>::State *) SpyroSlideState::states, NULL);
     this->unk28.Reset();

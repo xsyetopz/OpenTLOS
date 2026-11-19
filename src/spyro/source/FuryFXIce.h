@@ -46,7 +46,8 @@ public:
     /* 0x0b1 */ s8 unkB1;
     /* 0x0b2 */ u8 padB2[0x6];
     /* 0x0b8 */ BreathHitMessage unkB8;
-    /* 0x109 */ u8 pad109[0xb];
+    /* 0x109 */ u8 pad109[0x7];
+    /* 0x110 */ void* unk110;
     /* 0x114 */ MKMaterial* unk114;
     /* 0x118 */ IceBreathSnowFlakes* unk118;
     /* 0x11c */ u8 pad11C[0x4];

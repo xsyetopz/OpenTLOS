@@ -20,7 +20,8 @@ public:
     void CalculateLightPosForShadow(const MKVector3 &);
     void * AllocManagedLight(const MKVector3 &, const MKVector3 &, const MKVector4 &, const float &, const int &, const bool &);
     void DisableAllLights(void);
-    /* 0x04c */ u8 pad4C[0x10];
+    /* 0x04c */ u8 unk4C;
+    /* 0x04d */ u8 pad4D[0xf];
     /* 0x05c */ void* unk5C;
 };
 

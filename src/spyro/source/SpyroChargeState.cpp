@@ -396,7 +396,7 @@ void SpyroChargeState::Update() {
     temp_r5_700 = this->unk10;
     var_r4_701 = 0;
     var_f30_702 = 1.0f;
-    if (((u32) temp_r5_700->unk428 >> 5U) & 1) {
+    if (((u32) temp_r5_700->unk420 >> 5U) & 1) {
         temp_r3_706 = temp_r5_700->unk26C.unk8;
         temp_r3_708 = M2C_FIELD(temp_r3_706, s32 *, 0x16C);
         if (((u32) (-temp_r3_708 & ~temp_r3_708) >> 0x1FU) != 0) {
@@ -501,9 +501,9 @@ void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(temp_r3_899->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     this->unk2C = 0.4f;
     temp_r3_912 = this->unk10;
-    temp_r3_912->unk428 |= 0x8000;
+    temp_r3_912->unk420 = (void *) ((s32) temp_r3_912->unk420 | 0x8000);
     temp_r3_916 = this->unk10;
-    temp_r3_916->unk428 &= 0xFFFFFFFE;
+    temp_r3_916->unk420 = (void *) ((s32) temp_r3_916->unk420 & 0xFFFFFFFE);
     this->unk28 = 0.0f;
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeTime(0.0f);
     sp1C = 0;

@@ -34,7 +34,9 @@ public:
     /* 0x03c */ u8 pad3C[0x8];
     /* 0x044 */ MKModel* unk44;
     /* 0x048 */ MKAnimScript* unk48;
-    /* 0x04c */ u8 pad4C[0x184];
+    /* 0x04c */ u8 pad4C[0x150];
+    /* 0x19c */ u8 unk19C;
+    /* 0x19d */ u8 pad19D[0x33];
     /* 0x1d0 */ f32 unk1D0;
     /* 0x1d4 */ f32 unk1D4;
     /* 0x1d8 */ f32 unk1D8;

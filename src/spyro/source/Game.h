@@ -122,7 +122,8 @@ public:
     /* 0x324 */ DialogBoxTheme* unk324;
     /* 0x328 */ u8 pad328[0x4];
     /* 0x32c */ Level* unk32C;
-    /* 0x330 */ u8 pad330[0x28];
+    /* 0x330 */ u8 pad330[0x24];
+    /* 0x354 */ void* unk354;
     /* 0x358 */ s32 unk358;
     /* 0x35c */ s8 unk35C;
     /* 0x35d */ s8 unk35D;

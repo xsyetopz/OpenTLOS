@@ -283,7 +283,7 @@ void SpyroTailStrikeState::DescentExit() {
     Spyro *temp_r3_487;
 
     temp_r3_487 = this->unk10;
-    temp_r3_487->unk428 |= 0x20000;
+    temp_r3_487->unk420 = (void *) ((s32) temp_r3_487->unk420 | 0x20000);
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -315,7 +315,7 @@ void SpyroTailStrikeState::DescentEnter() {
     temp_r3_503->unk33C = var_f2_506;
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     temp_r3_529 = this->unk10;
-    temp_r3_529->unk428 &= 0xFFFDFFFF;
+    temp_r3_529->unk420 = (void *) ((s32) temp_r3_529->unk420 & 0xFFFDFFFF);
     this->unk48 = -3400.0f;
     this->unk10->SetAnim(0x42U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_538 = this->unk10->GetCamera();
@@ -345,7 +345,7 @@ void SpyroTailStrikeState::StartExit() {
     Spyro *temp_r3_609;
 
     temp_r3_609 = this->unk10;
-    temp_r3_609->unk428 |= 0x20000;
+    temp_r3_609->unk420 = (void *) ((s32) temp_r3_609->unk420 | 0x20000);
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -360,7 +360,7 @@ void SpyroTailStrikeState::StartEnter() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_638 = this->unk10;
-    temp_r3_638->unk428 &= 0xFFFDFFFF;
+    temp_r3_638->unk420 = (void *) ((s32) temp_r3_638->unk420 & 0xFFFDFFFF);
     this->unk10->SetAnim(0x41U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_650 = this->unk10->GetCamera();
     spC = 0;
@@ -398,7 +398,7 @@ void SpyroTailStrikeState::Exit() {
     Spyro *temp_r3_732;
 
     temp_r3_732 = this->unk10;
-    temp_r3_732->unk428 |= 1;
+    temp_r3_732->unk420 = (void *) ((s32) temp_r3_732->unk420 | 1);
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
 }
@@ -411,7 +411,7 @@ void SpyroTailStrikeState::Enter(SpyroStateMessages &arg0) {
 
     this->unk14.SetState(this, 0, 0U);
     temp_r3_761 = this->unk10;
-    temp_r3_761->unk428 &= 0xFFFFFFFE;
+    temp_r3_761->unk420 = (void *) ((s32) temp_r3_761->unk420 & 0xFFFFFFFE);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);

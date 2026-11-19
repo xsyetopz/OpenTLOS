@@ -133,7 +133,7 @@ public:
     /* 0x1d9 */ u8 pad1D9[0x23];
     /* 0x1fc */ void*** unk1FC;
     /* 0x200 */ s32 unk200;
-    /* 0x204 */ u8 pad204[0x4];
+    /* 0x204 */ void* unk204;
     /* 0x208 */ s32 unk208;
     /* 0x20c */ s32 unk20C;
     /* 0x210 */ s32 unk210;

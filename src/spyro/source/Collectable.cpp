@@ -399,11 +399,11 @@ void CollectableSpawnerDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Collectable::PlatformDetach() {
     s32 sp18;
     s8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_757;
@@ -421,11 +421,11 @@ void Collectable::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Collectable::PlatformAttach(MKProp *arg0) {
     s32 sp18;
     s8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
 
@@ -509,7 +509,7 @@ void Collectable::RotateCameraFacing() {
 
 #if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Collectable::SetState(CollectableState arg0) {
-    M2C_UNK *temp_r4_1005;
+    u8 *temp_r4_1005;
 
     if ((u32) arg0 <= 0xAU) {
         switch ((s32) arg0) {
@@ -523,8 +523,8 @@ void Collectable::SetState(CollectableState arg0) {
                 this->unkF8 = (this->unk124->unk7C * MKRand_Float(&gViewSeed, 1.0f, 1.5f)) + M2C_FIELD(&gb, f32 *, 0x30C);
             }
             temp_r4_1005 = &this->unk128;
-            M2C_FIELD(this->unk130, M2C_UNK **, 4) = (M2C_UNK *) this->unk12C;
-            M2C_FIELD(this->unk12C, M2C_UNK **, 8) = (M2C_UNK *) this->unk130;
+            M2C_FIELD(this->unk130, void **, 4) = (void *) this->unk12C;
+            M2C_FIELD(this->unk12C, void **, 8) = (void *) this->unk130;
             this->unk130 = temp_r4_1005;
             this->unk12C = temp_r4_1005;
             this->unkC8 = NULL;
@@ -1647,9 +1647,6 @@ void Collectable::Message(MKMessage *arg0) {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    M2C_UNK *temp_r5_3759;
-    M2C_UNK *temp_r6_3765;
-    M2C_UNK *temp_r7_3764;
     MKHeap *temp_r3_3425;
     MKProp *temp_r3_3402;
     f32 temp_f3_3442;
@@ -1669,6 +1666,7 @@ void Collectable::Message(MKMessage *arg0) {
     s32 temp_r0_3588;
     s32 temp_r0_3699;
     s32 temp_r3_3621;
+    u8 *temp_r5_3759;
     u8 var_r0_3448;
     void *temp_r3_3400;
     void *temp_r3_3407;
@@ -1676,6 +1674,8 @@ void Collectable::Message(MKMessage *arg0) {
     void *temp_r3_3543;
     void *temp_r3_3692;
     void *temp_r3_3722;
+    void *temp_r6_3765;
+    void *temp_r7_3764;
 
     temp_r0_3294 = arg0->unk0;
     switch (temp_r0_3294) {                         /* switch 1; irregular */
@@ -1848,14 +1848,14 @@ block_81:
         return;
     case 0x5E:                                      /* switch 1 */
         temp_r5_3759 = &this->unk128;
-        M2C_FIELD(this->unk130, M2C_UNK **, 4) = (M2C_UNK *) this->unk12C;
+        M2C_FIELD(this->unk130, void **, 4) = (void *) this->unk12C;
         temp_r7_3764 = this->unk130;
         temp_r6_3765 = this->unk12C;
-        M2C_FIELD(temp_r6_3765, M2C_UNK **, 8) = temp_r7_3764;
+        M2C_FIELD(temp_r6_3765, void **, 8) = temp_r7_3764;
         this->unk130 = temp_r5_3759;
         this->unk12C = temp_r5_3759;
         this->unkC8 = NULL;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, M2C_UNK *, M2C_UNK *, M2C_UNK *), 0x5C)(0, temp_r5_3759, temp_r6_3765, temp_r7_3764);
+        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, u8 *, void *, void *), 0x5C)(0, temp_r5_3759, temp_r6_3765, temp_r7_3764);
         goto block_81;
     case 0x71:                                      /* switch 1 */
         ((FindNearestCollectableMsg *) (checked_cast<P25FindNearestCollectableMsg))->Test(9MKMessage>__FP9MKMessage(arg0), this);
@@ -2329,11 +2329,10 @@ s32 Collectable::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk128'
 void Collectable::Deinit() {
-    M2C_UNK *temp_r4_4682;
     MKHeap *temp_r3_4660;
     MKHeap *temp_r3_4665;
+    u8 *temp_r4_4682;
     void *temp_r31_4664;
 
     temp_r3_4660 = this->unk124;
@@ -2348,15 +2347,14 @@ void Collectable::Deinit() {
         this->unk8 = NULL;
     }
     temp_r4_4682 = &this->unk128;
-    M2C_FIELD(this->unk130, M2C_UNK **, 4) = (M2C_UNK *) this->unk12C;
-    M2C_FIELD(this->unk12C, M2C_UNK **, 8) = (M2C_UNK *) this->unk130;
+    M2C_FIELD(this->unk130, void **, 4) = (void *) this->unk12C;
+    M2C_FIELD(this->unk12C, void **, 8) = (void *) this->unk130;
     this->unk130 = temp_r4_4682;
     this->unk12C = temp_r4_4682;
     this->unkC8 = NULL;
     PlatformDetach();
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'CollectableDescriptor *' to
 void Collectable::Init() {

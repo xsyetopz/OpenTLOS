@@ -15,7 +15,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosionWarpFX::UpdateWarp() {
     f32 spAC;
     f32 spA8;
@@ -143,7 +143,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosionWarpFX::StartWarp(Matrix *arg0) {
     f64 sp20;
     f64 sp18;

@@ -21,9 +21,11 @@ public:
     /* 0x024 */ s32 unk24;
     /* 0x028 */ s32 unk28;
     /* 0x02c */ u16 unk2C;
-    /* 0x02e */ u8 pad2E[0x2];
+    /* 0x02e */ u8 unk2E;
+    /* 0x02f */ u8 pad2F[0x1];
     /* 0x030 */ u16 unk30;
-    /* 0x032 */ u8 pad32[0x20];
+    /* 0x032 */ u8 unk32;
+    /* 0x033 */ u8 pad33[0x1f];
     /* 0x052 */ u16 unk52;
     /* 0x054 */ u16 unk54;
     /* 0x056 */ s16 unk56;

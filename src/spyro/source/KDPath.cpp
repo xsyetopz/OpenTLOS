@@ -1020,7 +1020,6 @@ void KDPathSegment::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void KDPathNode::CountBranches() {
     KDPathNode *var_r0_2009;
     KDPathNode *var_r5_2026;
@@ -1063,9 +1062,7 @@ void KDPathNode::CountBranches() {
         var_r9_1993 = var_r5_2026;
     } while (var_r5_2026 != this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void KDPathNode::Unlink() {
     KDPathNode *var_r0_2067;
     KDPathNode *var_r0_2105;
@@ -1123,9 +1120,8 @@ loop_18:
     this->unk5 = 0;
     this->unk6 = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: type mismatch
 void KDPathNode::Link(KDPathNode *arg0) {
     KDPathNode *temp_r4_2177;
     KDPathNode *var_r0_2152;

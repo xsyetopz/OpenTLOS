@@ -22,7 +22,11 @@ public:
     void SpawnElement(const MKVector3 &);
     /* 0x04c */ MKHeap* unk4C;
     /* 0x050 */ MKHeap* unk50;
-    /* 0x054 */ u8 pad54[0x3c];
+    /* 0x054 */ u8 pad54[0x8];
+    /* 0x05c */ u8 unk5C;
+    /* 0x05d */ u8 pad5D[0x3];
+    /* 0x060 */ u8 unk60;
+    /* 0x061 */ u8 pad61[0x2f];
     /* 0x090 */ f32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ f32 unk98;

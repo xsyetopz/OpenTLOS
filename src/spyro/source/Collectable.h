@@ -70,7 +70,8 @@ public:
     /* 0x058 */ f64 unk58;
     /* 0x060 */ MKVector3 unk60;
     /* 0x070 */ f64 unk70;
-    /* 0x078 */ u8 pad78[0x4];
+    /* 0x078 */ u8 unk78;
+    /* 0x079 */ u8 pad79[0x3];
     /* 0x07c */ f32 unk7C;
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;
@@ -80,7 +81,9 @@ public:
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ f64 unkA0;
     /* 0x0a8 */ f32 unkA8;
-    /* 0x0ac */ u8 padAC[0x14];
+    /* 0x0ac */ u8 padAC[0x4];
+    /* 0x0b0 */ u8 unkB0;
+    /* 0x0b1 */ u8 padB1[0xf];
     /* 0x0c0 */ void* unkC0;
     /* 0x0c4 */ MKProp* unkC4;
     /* 0x0c8 */ void* unkC8;
@@ -107,7 +110,10 @@ public:
     /* 0x121 */ s8 unk121;
     /* 0x122 */ u8 pad122[0x2];
     /* 0x124 */ MKHeap* unk124;
-    /* 0x128 */ u8 pad128[0xc];
+    /* 0x128 */ u8 unk128;
+    /* 0x129 */ u8 pad129[0x3];
+    /* 0x12c */ void* unk12C;
+    /* 0x130 */ void* unk130;
     /* 0x134 */ f32 unk134;
     /* 0x138 */ f32 unk138;
     /* 0x13c */ u8 unk13C;
@@ -225,12 +231,12 @@ inline void Collectable::SetPlatformId(int arg0) {
     this->unk104 = (MKSceneManager *) arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk128'
+#if 0 // DRAFT: undefined identifier 'unkB8'
 inline Collectable::~Collectable() {
-    M2C_UNK *temp_r0_11026;
-    M2C_UNK *temp_r0_11042;
-    M2C_UNK *temp_r5_11029;
-    M2C_UNK *temp_r5_11045;
+    u8 *temp_r0_11042;
+    u8 *temp_r5_11029;
+    u8 *temp_r5_11045;
+    void *temp_r0_11026;
 
     if (this != NULL) {
         if (&this->unk128 != NULL) {
@@ -238,8 +244,8 @@ inline Collectable::~Collectable() {
             if (temp_r0_11026 != NULL) {
                 temp_r5_11029 = &this->unk128;
                 if (temp_r0_11026 != temp_r5_11029) {
-                    M2C_FIELD(this->unk130, M2C_UNK **, 4) = temp_r0_11026;
-                    M2C_FIELD(this->unk12C, M2C_UNK **, 8) = (M2C_UNK *) this->unk130;
+                    M2C_FIELD(this->unk130, void **, 4) = temp_r0_11026;
+                    M2C_FIELD(this->unk12C, void **, 8) = (void *) this->unk130;
                     this->unk130 = temp_r5_11029;
                     this->unk12C = temp_r5_11029;
                 }
@@ -250,8 +256,8 @@ inline Collectable::~Collectable() {
             if (temp_r0_11042 != NULL) {
                 temp_r5_11045 = &this->unkB0;
                 if (temp_r0_11042 != temp_r5_11045) {
-                    M2C_FIELD(this->unkBC, M2C_UNK **, 8) = temp_r0_11042;
-                    M2C_FIELD(this->unkB8, M2C_UNK **, 0xC) = (M2C_UNK *) this->unkBC;
+                    M2C_FIELD(this->unkBC, u8 **, 8) = temp_r0_11042;
+                    M2C_FIELD(this->unkB8, u8 **, 0xC) = (u8 *) this->unkBC;
                     this->unkBC = temp_r5_11045;
                     this->unkB8 = temp_r5_11045;
                 }

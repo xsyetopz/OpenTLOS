@@ -33,14 +33,19 @@ public:
     void UpdateMovement(void);
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ Matrix* unkC8;
-    /* 0x0cc */ u8 padCC[0x4];
+    /* 0x0cc */ u8 unkCC;
+    /* 0x0cd */ u8 padCD[0x3];
     /* 0x0d0 */ Matrix unkD0;
     /* 0x110 */ Matrix unk110;
     /* 0x150 */ s32 unk150;
-    /* 0x154 */ u8 pad154[0x8];
+    /* 0x154 */ u8 pad154[0x4];
+    /* 0x158 */ u8 unk158;
+    /* 0x159 */ u8 pad159[0x3];
     /* 0x15c */ f32 unk15C;
     /* 0x160 */ f32 unk160;
-    /* 0x164 */ u8 pad164[0x170];
+    /* 0x164 */ u8 pad164[0x4];
+    /* 0x168 */ void* unk168;
+    /* 0x16c */ u8 pad16C[0x168];
     /* 0x2d4 */ s32 unk2D4;
     /* 0x2d8 */ u8 pad2D8[0x308];
     /* 0x5e0 */ MKDynamicBone* unk5E0;
@@ -58,7 +63,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk168'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderEnergyCrystal::CynderEnergyCrystal() {
     this->unk168 = &__vt;
     return this;

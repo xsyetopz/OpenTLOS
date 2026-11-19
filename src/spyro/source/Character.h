@@ -152,7 +152,9 @@ public:
     /* 0x648 */ u8 pad648[0x18];
     /* 0x660 */ Character* unk660;
     /* 0x664 */ void* unk664;
-    /* 0x668 */ u8 pad668[0x18];
+    /* 0x668 */ u8 pad668[0x8];
+    /* 0x670 */ u8 unk670;
+    /* 0x671 */ u8 pad671[0xf];
     /* 0x680 */ u32 unk680;
     /* 0x684 */ s32 unk684;
     /* 0x688 */ s32 unk688;
@@ -178,7 +180,7 @@ inline void Character::UpdateMovementCustom() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk670'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 inline Character::~Character() {
     Character *temp_r0_5423;
     M2C_UNK *temp_r0_5407;
@@ -187,14 +189,14 @@ inline Character::~Character() {
 
     if (this != NULL) {
         if (&this->unk670 != NULL) {
-            temp_r0_5407 = this->unk678;
+            temp_r0_5407 = M2C_FIELD(this, M2C_UNK **, 0x678);
             if (temp_r0_5407 != NULL) {
                 temp_r5_5410 = &this->unk670;
                 if (temp_r0_5407 != temp_r5_5410) {
                     M2C_FIELD(this->unk67C, M2C_UNK **, 8) = temp_r0_5407;
-                    M2C_FIELD(this->unk678, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
+                    M2C_FIELD(M2C_FIELD(this, M2C_UNK **, 0x678), M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
                     this->unk67C = temp_r5_5410;
-                    this->unk678 = temp_r5_5410;
+                    M2C_FIELD(this, M2C_UNK **, 0x678) = temp_r5_5410;
                 }
             }
         }

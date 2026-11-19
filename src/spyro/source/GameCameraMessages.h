@@ -10,7 +10,7 @@ class AddCameraTrackedShakePropMessage {
 public:
     void Init(MKProp *, float, float, bool, float);
     /* 0x000 */ s32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ s32 unk4;
     /* 0x008 */ MKProp* unk8;
     /* 0x00c */ f32 unkC;
     /* 0x010 */ f32 unk10;

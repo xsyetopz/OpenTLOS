@@ -1342,7 +1342,7 @@ block_19:
     return var_r3_2174;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk670'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Character::PlatformDetach() {
     s32 sp2C;
     s8 sp28;
@@ -1378,7 +1378,7 @@ void Character::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk670'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Character::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp2C;
     u8 sp28;

@@ -321,7 +321,7 @@ void SpyroLedgeGrabState::Exit() {
 
     this->unk10->SetModelVisualOffset(MKVector3::zero, 0U);
     temp_r3_679 = this->unk10;
-    temp_r3_679->unk428 |= 0x20000;
+    temp_r3_679->unk420 = (void *) ((s32) temp_r3_679->unk420 | 0x20000);
     this->unk10->PlatformDetach();
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
@@ -347,7 +347,7 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     temp_r4_723 = this->unk10;
-    temp_r4_723->unk428 &= 0xFFF9FEDE;
+    temp_r4_723->unk420 = (void *) ((s32) temp_r4_723->unk420 & 0xFFF9FEDE);
     this->unk10->PlatformDetach();
     temp_r4_729 = M2C_FIELD(temp_r29_717, MKProp **, 0x28);
     if (temp_r4_729 != NULL) {

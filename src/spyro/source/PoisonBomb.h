@@ -40,7 +40,11 @@ public:
     void PlatformAttach(MKProp *, MKCollisionInfo *);
     void SetInitialState(void);
     PoisonBomb * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x13];
+    /* 0x14d */ u8 pad14D[0x3];
+    /* 0x150 */ u8 unk150;
+    /* 0x151 */ u8 pad151[0x7];
+    /* 0x158 */ void* unk158;
+    /* 0x15c */ void* unk15C;
     /* 0x160 */ f32 unk160;
     /* 0x164 */ f32 unk164;
     /* 0x168 */ f32 unk168;
@@ -80,9 +84,9 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk150'
+#if 0 // DRAFT: undefined identifier 'unk154'
 inline PoisonBomb::PoisonBomb() {
-    M2C_UNK *temp_r0_22553;
+    u8 *temp_r0_22553;
 
     temp_r0_22553 = &this->unk150;
     M2C_FIELD(this, s32 *, 0x150) = 0;
@@ -96,8 +100,8 @@ inline PoisonBomb::PoisonBomb() {
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline PoisonBomb::~PoisonBomb() {
-    M2C_UNK *temp_r0_30;
-    M2C_UNK *temp_r4_33;
+    u8 *temp_r4_33;
+    void *temp_r0_30;
 
     if (this != NULL) {
         if ((&this->unk190 != NULL) && (&this->unk190 != NULL)) {
@@ -108,8 +112,8 @@ inline PoisonBomb::~PoisonBomb() {
             if (temp_r0_30 != NULL) {
                 temp_r4_33 = &this->unk150;
                 if (temp_r0_30 != temp_r4_33) {
-                    M2C_FIELD(this->unk15C, M2C_UNK **, 8) = temp_r0_30;
-                    M2C_FIELD(this->unk158, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk15C;
+                    M2C_FIELD(this->unk15C, void **, 8) = temp_r0_30;
+                    M2C_FIELD(this->unk158, void **, 0xC) = (void *) this->unk15C;
                     this->unk15C = temp_r4_33;
                     this->unk158 = temp_r4_33;
                 }

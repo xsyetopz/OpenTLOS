@@ -44,7 +44,9 @@ public:
     static u8 pFirstActiveTrigger[0x4];
     static u8 pFirstTrigger[0x4];
     /* 0x04c */ s16 unk4C;
-    /* 0x04e */ u8 pad4E[0x42];
+    /* 0x04e */ u8 pad4E[0x2];
+    /* 0x050 */ u8 unk50;
+    /* 0x051 */ u8 pad51[0x3f];
     /* 0x090 */ MKPropDescriptor* unk90;
     /* 0x094 */ TriggerProp* unk94;
     /* 0x098 */ MKPropDescriptor* unk98;

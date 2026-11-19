@@ -16,7 +16,7 @@ class ManagedLight;
 
 class LFX_Blob {
 public:
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ f64 unk0;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x1c];
     /* 0x028 */ f32 unk28;

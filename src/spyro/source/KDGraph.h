@@ -39,7 +39,9 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     virtual void Resolve(void);
-    /* 0x04c */ u8 pad4C[0x40];
+    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x050 */ u8 unk50;
+    /* 0x051 */ u8 pad51[0x3b];
     /* 0x08c */ s32 unk8C;
     /* 0x090 */ s32 unk90;
     /* 0x094 */ s32 unk94;

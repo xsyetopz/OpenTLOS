@@ -22,7 +22,10 @@ public:
     virtual void LoadDone(void);
     virtual void Update(void);
     virtual void Message(MKMessage *);
-    /* 0x04c */ u8 pad4C[0x44];
+    /* 0x04c */ u8 unk4C;
+    /* 0x04d */ u8 pad4D[0x3];
+    /* 0x050 */ u8 unk50;
+    /* 0x051 */ u8 pad51[0x3f];
     /* 0x090 */ EventMessage unk90;
     /* 0x094 */ s32 unk94;
     /* 0x098 */ s32 unk98;

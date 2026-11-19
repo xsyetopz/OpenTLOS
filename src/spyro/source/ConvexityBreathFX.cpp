@@ -146,7 +146,7 @@ void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) 
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3) {
     f64 sp190;
     f64 sp188;
@@ -476,7 +476,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ConvexityBreathFX::Draw() {
     Matrix sp70;
     Matrix sp30;

@@ -172,7 +172,8 @@ public:
     /* 0x078 */ s32 unk78;
     /* 0x07c */ ChunkInfo* unk7C;
     /* 0x080 */ s32 unk80;
-    /* 0x084 */ u8 pad84[0x28];
+    /* 0x084 */ u8 unk84;
+    /* 0x085 */ u8 pad85[0x27];
     /* 0x0ac */ s32 unkAC;
     /* 0x0b0 */ f32 unkB0;
     /* 0x0b4 */ f32 unkB4;
@@ -208,7 +209,8 @@ public:
     /* 0x028 */ s32 unk28;
     /* 0x02c */ u8 pad2C[0x4];
     /* 0x030 */ MKVector4 unk30;
-    /* 0x040 */ u8 pad40[0x60];
+    /* 0x040 */ u8 unk40;
+    /* 0x041 */ u8 pad41[0x5f];
     /* 0x0a0 */ MKVector4 unkA0;
     /* 0x0b0 */ f32 unkB0;
     /* 0x0b4 */ f32 unkB4;
@@ -303,7 +305,9 @@ public:
     /* 0x074 */ f32 unk74;
     /* 0x078 */ f32 unk78;
     /* 0x07c */ s8 unk7C;
-    /* 0x07d */ u8 pad7D[0x63];
+    /* 0x07d */ u8 pad7D[0x3];
+    /* 0x080 */ u8 unk80;
+    /* 0x081 */ u8 pad81[0x5f];
     /* 0x0e0 */ MKVector4 unkE0;
     /* 0x0f0 */ f32 unkF0;
     /* 0x0f4 */ f32 unkF4;

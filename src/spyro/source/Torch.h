@@ -21,7 +21,9 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     Torch(void);
-    /* 0x0c4 */ u8 padC4[0x14];
+    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0d0 */ u8 unkD0;
+    /* 0x0d1 */ u8 padD1[0x7];
     /* 0x0d8 */ f64 unkD8;
     /* 0x0e0 */ f64 unkE0;
     /* 0x0e8 */ f64 unkE8;

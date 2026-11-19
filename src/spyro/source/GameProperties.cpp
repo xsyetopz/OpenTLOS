@@ -265,7 +265,7 @@ void MessageBroadcasterProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void CameraShakeProperty::Command(int arg0) {
     AddCameraTrackedShakePropMessage sp14;
     MKProp *sp10;

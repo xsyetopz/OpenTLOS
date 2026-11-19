@@ -389,7 +389,7 @@ void SpyroCombatState::ChargeKnockdownEnter() {
     }
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(1);
     temp_r3_564 = this->unk10;
-    temp_r3_564->unk428 |= 1;
+    temp_r3_564->unk420 = (void *) ((s32) temp_r3_564->unk420 | 1);
     this->unk10->SetAnim(0x21U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r4_575 = this->unk10;
 loop_5:
@@ -591,9 +591,9 @@ void SpyroCombatState::KnockupEnter() {
     this->unk2F = 0;
     this->unk28 = 3;
     temp_r3_989 = this->unk10;
-    temp_r3_989->unk428 |= 1;
+    temp_r3_989->unk420 = (void *) ((s32) temp_r3_989->unk420 | 1);
     temp_r3_993 = this->unk10;
-    temp_r3_993->unk428 |= 0x30;
+    temp_r3_993->unk420 = (void *) ((s32) temp_r3_993->unk420 | 0x30);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(2);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0);
     this->unk10->SetAnim(0x20U, 0.2f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
@@ -722,7 +722,7 @@ void SpyroCombatState::CombatExit() {
 
     this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk38 = 1.0f;
     temp_r4_1269 = this->unk10;
-    temp_r4_1269->unk428 &= 0xFFFFFFCF;
+    temp_r4_1269->unk420 = (void *) ((s32) temp_r4_1269->unk420 & 0xFFFFFFCF);
     this->unk2C = 0;
     this->unk2E = 0;
 }
@@ -813,7 +813,7 @@ void SpyroCombatState::CombatEnter() {
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(GetCombatHitType());
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(this->unk28 + 2);
     temp_r3_1429 = this->unk10;
-    temp_r3_1429->unk428 |= 0x30;
+    temp_r3_1429->unk420 = (void *) ((s32) temp_r3_1429->unk420 | 0x30);
     temp_r4_1436 = this->unk28 + 0x1D;
     if ((u8) this->unk2C != 0) {
         this->unk10->SetAnim(temp_r4_1436, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -1019,9 +1019,9 @@ void SpyroCombatState::Exit() {
 
     this->unk10->SetLVEScale(MKVector3::one);
     temp_r3_1863 = this->unk10;
-    temp_r3_1863->unk428 &= 0xFFFF7FFF;
+    temp_r3_1863->unk420 = (void *) ((s32) temp_r3_1863->unk420 & 0xFFFF7FFF);
     temp_r3_1867 = this->unk10;
-    temp_r3_1867->unk428 |= 1;
+    temp_r3_1867->unk420 = (void *) ((s32) temp_r3_1867->unk420 | 1);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
     this->unk34 = M2C_FIELD(&gb, f32 *, 0x30C);
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
@@ -1052,9 +1052,9 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
     temp_r30_1906 = this->unk10->GetMeleeButtonState() == 2;
     this->unk10->ClearMeleeButtonState();
     temp_r5_1908 = this->unk10;
-    temp_r5_1908->unk428 |= 0x8000;
+    temp_r5_1908->unk420 = (void *) ((s32) temp_r5_1908->unk420 | 0x8000);
     temp_r3_1915 = this->unk10;
-    temp_r3_1915->unk428 &= 0xFFFFFFFE;
+    temp_r3_1915->unk420 = (void *) ((s32) temp_r3_1915->unk420 & 0xFFFFFFFE);
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r4_1923 = this->unk10;
     M2C_FIELD(temp_r4_1923, f64 *, 0x338) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);

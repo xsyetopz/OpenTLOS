@@ -272,7 +272,7 @@ void LightManager::DisableAllLights() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: illegal type
 void LightManager::Init() {
     MKHeap *temp_r3_451;
     s32 temp_r0_486;
