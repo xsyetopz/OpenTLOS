@@ -28,7 +28,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal operand
 u8 SkyClouds::DestroyByOwner(SkyClouds::CloudEmitter *arg1) {
     SkyClouds::CloudEmitter **temp_r6_79;
     SkyClouds::CloudEmitter *temp_r3_59;
@@ -41,10 +40,9 @@ u8 SkyClouds::DestroyByOwner(SkyClouds::CloudEmitter *arg1) {
     var_r31_51 = 0;
     temp_f31_53 = (f32) pow(0.5, gUpdateTimeDelta);
     var_r30_54 = 0;
-loop_5:
-    if (var_r30_54 < (s32) this->unk4C) {
+    while (var_r30_54 < (s32) this->unk4C) {
         temp_r3_59 = this->unk54[var_r30_54];
-        if ((u32) M2C_FIELD(temp_r3_59, u32 *, 0x44) == arg1) {
+        if ((u32) M2C_FIELD(temp_r3_59, u32 *, 0x44) == (u32) arg1) {
             var_r31_51 = 1;
             M2C_FIELD(temp_r3_59, f32 *, 0x1C) = (f32) (M2C_FIELD(temp_r3_59, f32 *, 0x1C) * temp_f31_53);
             temp_r4_69 = this->unk54[var_r30_54];
@@ -58,11 +56,9 @@ loop_5:
             }
         }
         var_r30_54 += 1;
-        goto loop_5;
     }
     return var_r31_51;
 }
-#endif
 
 void SkyClouds::UpdateCameraVel() {
 
@@ -241,63 +237,56 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'SkyClouds::CloudEmitter *' and 'SkyClouds::CloudEmitter **'
+extern "C" void free(void *);
 void SkyClouds::Deinit() {
-    SkyClouds::CloudEmitter **temp_r31_443;
-    SkyClouds::CloudEmitter **temp_r31_457;
-    SkyClouds::CloudEmitter **var_r31_474;
-    SkyClouds::CloudEmitter **var_r3_475;
-    SkyClouds::CloudEmitter **var_r4_473;
-    SkyClouds::CloudEmitter *temp_r0_478;
-    SkyClouds::CloudEmitter *temp_r0_497;
-    u32 temp_r0_483;
+    u32 lowest;
+    u32 *base;
+    u32 *walk;
+    u32 word;
 
-    temp_r31_443 = this->unk50;
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_443, NULL, 0);
+        MKHeap::Current()->Free(this->unk50, NULL, 0);
     } else {
-        free(temp_r31_443);
+        free(this->unk50);
     }
-    temp_r31_457 = this->unk54;
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_457, NULL, 0);
+        MKHeap::Current()->Free(this->unk54, NULL, 0);
     } else {
-        free(temp_r31_457);
+        free(this->unk54);
     }
     MKMaterial_Destroy(this->unk58);
-    var_r4_473 = this->unkC0;
-    var_r31_474 = var_r4_473;
-    var_r3_475 = var_r4_473;
-loop_9:
-    temp_r0_483 = M2C_FIELD(var_r3_475, u32 *, -4);
-    var_r3_475 -= 4;
-    if (temp_r0_483 != 0U) {
-        temp_r0_478 = *var_r3_475;
-        if (temp_r0_478 < var_r31_474) {
-            var_r31_474 = (SkyClouds::CloudEmitter **) temp_r0_478;
+
+    base = (u32 *) this->unkC0;
+    lowest = (u32) base;
+    walk = base;
+    walk -= 1;
+    word = *walk;
+    while (word != 0) {
+        if (word < lowest) {
+            lowest = word;
         }
-        goto loop_9;
+        walk -= 1;
+        word = *walk;
     }
-    if (var_r3_475 != &gEmptyPtrListDL) {
-loop_15:
-        temp_r0_497 = *var_r4_473;
-        if (temp_r0_497 != NULL) {
-            if (temp_r0_497 < var_r31_474) {
-                var_r31_474 = (SkyClouds::CloudEmitter **) temp_r0_497;
+    if ((u32) walk != (u32) &gEmptyPtrListDL) {
+        walk = base;
+        word = *walk;
+        while (word != 0) {
+            if (word < lowest) {
+                lowest = word;
             }
-            var_r4_473 += 4;
-            goto loop_15;
+            walk += 1;
+            word = *walk;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_474, NULL, 0);
+            MKHeap::Current()->Free((void *) lowest, NULL, 0);
         } else {
-            free(var_r31_474);
+            free((void *) lowest);
         }
     }
     this->unkC0 = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
@@ -391,16 +380,16 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp1E0 = (f64) spB0;
     sp178 = (f64) sp48;
     sp180 = (f64) sp50;
-    sp188.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    sp198.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp188 = ((MKVector3 *) &sp178)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp198 = ((MKVector3 *) &sp1D8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp88 = sp198 + M2C_BITWISE(f64, sp188);
     sp2B0 = sp88;
     sp90 = sp198.unk8 + sp188.unk8;
     sp1A8 = sp88;
     sp2B8 = (f64) sp90;
     sp1B0 = (f64) sp90;
-    sp148.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    sp158.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp148 = ((MKVector3 *) &sp1C8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp158 = ((MKVector3 *) &sp1D8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp78 = sp158 + M2C_BITWISE(f64, sp148);
     sp40 = -(f32) sp1D0;
     sp80 = sp158.unk8 + sp148.unk8;
@@ -412,26 +401,26 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp100 = (f64) sp40;
     sp168 = sp78;
     sp170 = (f64) sp80;
-    sp108.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp108 = ((MKVector3 *) &spF8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp28 = -(f32) sp1D8;
     sp2C = -(*(f32 *) ((u8 *) &sp1D8 + 0x4));
     sp30 = -(f32) sp1E0;
     sp118 = (f64) sp28;
     sp120 = (f64) sp30;
-    sp128.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp128 = ((MKVector3 *) &sp118)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp68 = sp128 + M2C_BITWISE(f64, sp108);
     sp2D0 = sp68;
     sp70 = sp128.unk8 + sp108.unk8;
     sp138 = sp68;
     sp2D8 = (f64) sp70;
     sp140 = (f64) sp70;
-    spB8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    spB8 = ((MKVector3 *) &sp1C8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp18 = -(f32) sp1D8;
     sp1C = -(*(f32 *) ((u8 *) &sp1D8 + 0x4));
     sp20 = -(f32) sp1E0;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
-    spD8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    spD8 = ((MKVector3 *) &spC8)->operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp58 = spD8 + M2C_BITWISE(f64, spB8);
     spE8 = sp58;
     sp60 = spD8.unk8 + spB8.unk8;
@@ -512,29 +501,28 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CloudParticleCompare'
+s32 CloudParticleCompare(const void *, const void *);
 void SkyClouds::Draw() {
-    Matrix sp10;
-    M2C_UNK spC;
-    s32 var_r30_895;
-    s32 var_r31_896;
+    typedef struct { s32 w[16]; } Words16;
+    Matrix sp10 __attribute__((aligned(16)));
+    Matrix *camera;
+    s32 off;
+    s32 i;
 
-    qsort(this->unk54, this->unk4C, 4, CloudParticleCompare);
-    M2C_STRUCT_COPY((s32) &spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    qsort(this->unk54, this->unk4C, 4, (s32 (*)(void *, void *)) CloudParticleCompare);
+    camera = MKView_GetCameraMatrix();
+    *(Words16 *) &sp10 = *(Words16 *) camera;
     MKMaterial_SetMaterial(this->unk58);
     MKPrimitive(0xC, 0);
-    var_r30_895 = 0;
-    var_r31_896 = 0;
-loop_2:
-    if (var_r30_895 < (s32) this->unk4C) {
-        DrawCloudlet(*(this->unk54 + var_r31_896), &sp10);
-        var_r30_895 += 1;
-        var_r31_896 += 4;
-        goto loop_2;
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unk4C) {
+        DrawCloudlet(*(SkyClouds::CloudParticle **) ((u8 *) this->unk54 + off), &sp10);
+        i += 1;
+        off += 4;
     }
     MKEndPrimitive();
 }
-#endif
 
 s32 SkyClouds::LoadDone() {
     MKProp::LoadDone();
@@ -710,11 +698,9 @@ void SkyClouds::Init() {
     this->unkD0 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 CloudParticleCompare(const void *arg0, const void *arg1) {
-    return -(s32) (M2C_FIELD(*arg0, f32 *, 0x38) - M2C_FIELD(*arg1, f32 *, 0x38));
+    return -(s32) (M2C_FIELD(*(void *const *) arg0, f32 *, 0x38) - M2C_FIELD(*(void *const *) arg1, f32 *, 0x38));
 }
-#endif
 
 void SkyCloudsDescriptor::Init() {
     f64 sp40;
