@@ -66,7 +66,6 @@ void EnemyGeneratorDescriptor::LoadDone() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
     MKIniLine *var_r24_38;
@@ -125,13 +124,13 @@ loop_7:
         var_r26_117 = arg0->unkC->GetSubLine(arg0);
 loop_49:
         if (var_r26_117 != NULL) {
-            if ((var_r26_117->LoadInt("spawnPointProps", (int *) &this->unk0, 0) == 0) && (var_r26_117->LoadInt("doorProps", (int *) &this->unk4, 0) == 0) && (var_r26_117->LoadBool("bLockSpawnPoints", &this->unk18, 0) == 0) && (var_r26_117->LoadBool("bSpawnFromVisibleDoors", &this->unk19, 0) == 0)) {
+            if ((var_r26_117->LoadInt("spawnPointProps", (int *) &this->unk0, 0) == 0) && (var_r26_117->LoadInt("doorProps", (int *) &this->unk4, 0) == 0) && (var_r26_117->LoadBool("bLockSpawnPoints", (bool *) &this->unk18, 0) == 0) && (var_r26_117->LoadBool("bSpawnFromVisibleDoors", (bool *) &this->unk19, 0) == 0)) {
                 if (var_r26_117->IsField("Door") != 0) {
                     var_r25_166 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_35:
                     if (var_r25_166 != NULL) {
-                        if ((var_r25_166->LoadInt("spawnPointProp", ((u8 *) this->unk10) + var_r30_34, 0) == 0) && (var_r25_166->LoadInt("doorProp", ((u8 *) this->unk10) + (var_r30_34 + 4), 0) == 0) && (var_r25_166->LoadString("doorRefPt", ((u8 *) this->unk10) + (var_r30_34 + 8), 0) == 0) && (var_r25_166->LoadString("spawnRefPt", ((u8 *) this->unk10) + (var_r30_34 + 0xC), 0) == 0) && (var_r25_166->LoadString("openingScript", ((u8 *) this->unk10) + (var_r30_34 + 0x10), 0) == 0) && (var_r25_166->LoadString("closingScript", ((u8 *) this->unk10) + (var_r30_34 + 0x14), 0) == 0) && (var_r25_166->LoadString("openScript", ((u8 *) this->unk10) + (var_r30_34 + 0x18), 0) == 0) && (var_r25_166->LoadString("closedScript", ((u8 *) this->unk10) + (var_r30_34 + 0x1C), 0) == 0)) {
-                            var_r25_166->LoadBool("bAnimate", ((u8 *) this->unk10) + (var_r30_34 + 0x20), 0);
+                        if ((var_r25_166->LoadInt("spawnPointProp", (int *) (((u8 *) this->unk10) + var_r30_34), 0) == 0) && (var_r25_166->LoadInt("doorProp", (int *) (((u8 *) this->unk10) + (var_r30_34 + 4)), 0) == 0) && (var_r25_166->LoadString("doorRefPt", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 8)), 0) == 0) && (var_r25_166->LoadString("spawnRefPt", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 0xC)), 0) == 0) && (var_r25_166->LoadString("openingScript", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 0x10)), 0) == 0) && (var_r25_166->LoadString("closingScript", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 0x14)), 0) == 0) && (var_r25_166->LoadString("openScript", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 0x18)), 0) == 0) && (var_r25_166->LoadString("closedScript", (const char **) (((u8 *) this->unk10) + (var_r30_34 + 0x1C)), 0) == 0)) {
+                            var_r25_166->LoadBool("bAnimate", (bool *) (((u8 *) this->unk10) + (var_r30_34 + 0x20)), 0);
                         }
                         var_r25_166 = var_r25_166->unkC->GetNextLine(var_r25_166);
                         goto loop_35;
@@ -141,8 +140,8 @@ loop_35:
                     var_r25_286 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_46:
                     if (var_r25_286 != NULL) {
-                        if ((var_r25_286->LoadInt("iMaxSpawnAmount", ((u8 *) this->unk14) + var_r29_29, 0) == 0) && (var_r25_286->LoadInt("iMaxActive", ((u8 *) this->unk14) + (var_r29_29 + 4), 0) == 0) && (var_r25_286->LoadFloat("fSpawnDelay", ((u8 *) this->unk14) + (var_r29_29 + 0xC), 0) == 0) && (var_r25_286->LoadFloat("fDelayBetweenSpawns", ((u8 *) this->unk14) + (var_r29_29 + 0x10), 0) == 0) && (var_r25_286->LoadString("iEnemyType", &sp8, 0) != 0)) {
-                            *(var_r29_29 + (((u8 *) this->unk14) + 8)) = DataMap_GetValue(&enemyTypeDataMap, sp8);
+                        if ((var_r25_286->LoadInt("iMaxSpawnAmount", (int *) (((u8 *) this->unk14) + var_r29_29), 0) == 0) && (var_r25_286->LoadInt("iMaxActive", (int *) (((u8 *) this->unk14) + (var_r29_29 + 4)), 0) == 0) && (var_r25_286->LoadFloat("fSpawnDelay", (float *) (((u8 *) this->unk14) + (var_r29_29 + 0xC)), 0) == 0) && (var_r25_286->LoadFloat("fDelayBetweenSpawns", (float *) (((u8 *) this->unk14) + (var_r29_29 + 0x10)), 0) == 0) && (var_r25_286->LoadString("iEnemyType", (const char **) (&sp8), 0) != 0)) {
+                            *(s32 *) (((u8 *) this->unk14) + (var_r29_29 + 8)) = DataMap_GetValue(&enemyTypeDataMap, (const char *) sp8);
                         }
                         var_r25_286 = var_r25_286->unkC->GetNextLine(var_r25_286);
                         goto loop_46;
@@ -157,7 +156,6 @@ loop_46:
     }
     return 0;
 }
-#endif
 
 void EnemyGeneratorDescriptor::Deinit() {
     void *temp_r31_384;
@@ -194,26 +192,18 @@ void EnemyGeneratorDescriptor::Init() {
     this->unk14 = NULL;
 }
 
-#if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetSpawnPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
-void EnemyGeneratorDoor::GetSpawnPos() {
-    MKVector3 result;
-    MKVector3 *sret = &result;
-    f64 sp10;
-    f64 sp8;
+MKVector3 EnemyGeneratorDoor::GetSpawnPos() {
+    MKVector3 sp8;
     SpawnPointObject *temp_r3_455;
 
     if ((s32) M2C_FIELD(M2C_FIELD(this, void **, 0), s32 *, 0x80) > 0) {
         temp_r3_455 = this->unk18;
-        sp8 = M2C_FIELD(temp_r3_455, f64 *, 0x40);
-        sp10 = M2C_FIELD(temp_r3_455, f64 *, 0x48);
+        sp8 = *(MKVector3 *) &temp_r3_455->unk40;
     } else {
-        MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk14, (MKVector3 *) &sp8);
+        MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk14, &sp8);
     }
-    M2C_FIELD(sret, f64 *, 0) = sp8;
-    M2C_FIELD(sret, f64 *, 8) = sp10;
-    return result;
+    return sp8;
 }
-#endif
 
 #if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetDoorDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void EnemyGeneratorDoor::GetDoorDir() {
@@ -303,17 +293,12 @@ void EnemyGeneratorDoor::GetDoorDir() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetDoorPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
-void EnemyGeneratorDoor::GetDoorPos() {
-    MKVector3 result;
-    MKVector3 *sret = &result;
+MKVector3 EnemyGeneratorDoor::GetDoorPos() {
     MKVector3 sp8;
 
     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk10, &sp8);
-    M2C_FIELD(sret, MKVector3 *, 0) = sp8;
-    return result;
+    return sp8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGeneratorDoor::Close() {
@@ -469,18 +454,16 @@ u8 EnemyGenerator::HasEnemyWaveFinished() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void EnemyGenerator::StartEnemyWave() {
-    if ((s32) this->unk7C < (s32) this->unk78) {
+    if (this->unk7C < this->unk78) {
         this->unk20 = 0;
-        this->unk24 = *(this->unk50->unk14 + (this->unk7C * 0x14));
-        this->unk28 = M2C_FIELD((this->unk50->unk14 + (this->unk7C * 0x14)), s32 *, 4);
-        this->unk30 = M2C_FIELD((this->unk50->unk14 + (this->unk7C * 0x14)), f32 *, 0xC);
-        this->unk34 = M2C_FIELD((this->unk50->unk14 + (this->unk7C * 0x14)), f32 *, 0x10);
+        this->unk24 = *(s32 *) ((u8 *) this->unk50->unk14 + (this->unk7C * 0x14));
+        this->unk28 = *(s32 *) ((u8 *) this->unk50->unk14 + (this->unk7C * 0x14) + 4);
+        this->unk30 = *(f32 *) ((u8 *) this->unk50->unk14 + (this->unk7C * 0x14) + 0xC);
+        this->unk34 = *(f32 *) ((u8 *) this->unk50->unk14 + (this->unk7C * 0x14) + 0x10);
         FunctionOn();
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void EnemyGenerator::UpdateUsedSpawnPointMask() {
@@ -520,7 +503,6 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 SpawnPointObject *EnemyGenerator::GetSpawnPointObject() {
     MKVector3 sp8;
     SpawnPointObject *temp_r3_1121;
@@ -528,20 +510,18 @@ SpawnPointObject *EnemyGenerator::GetSpawnPointObject() {
     temp_r3_1121 = SpawnerObject::GetSpawnPointObject();
     if (temp_r3_1121 != NULL) {
         sp8 = ((EnemyGeneratorDoor *) (GetDoor(temp_r3_1121)))->GetSpawnPos();
-        temp_r3_1121->unk40 = M2C_BITWISE(f32, sp8);
+        temp_r3_1121->unk40 = sp8.unk0;
         temp_r3_1121->unk44 = sp8.unk4;
         temp_r3_1121->unk48 = sp8.unk8;
         temp_r3_1121->unk4C = 1.0f;
     }
     return temp_r3_1121;
 }
-#endif
 
 void EnemyGenerator::DespawnAll() {
     DespawnAll();
 }
 
-#if 0 // DRAFT: illegal operand
 void *EnemyGenerator::GetDoor(SpawnPointObject *arg0) {
     s32 temp_r7_1164;
     s32 var_ctr_1166;
@@ -554,7 +534,7 @@ void *EnemyGenerator::GetDoor(SpawnPointObject *arg0) {
     if (temp_r7_1164 > 0) {
 loop_1:
         temp_r6_1171 = ((u8 *) this->unk54) + var_r5_1165;
-        if ((u32) M2C_FIELD(temp_r6_1171, u32 *, 0x18) == arg0) {
+        if ((u32) M2C_FIELD(temp_r6_1171, u32 *, 0x18) == (u32) arg0) {
             return temp_r6_1171;
         }
         var_r5_1165 += 0x30;
@@ -570,7 +550,6 @@ block_4:
     }
     return NULL;
 }
-#endif
 
 void EnemyGenerator::Message(MKMessage *arg0) {
     s32 temp_r0_1196;
@@ -586,21 +565,21 @@ void EnemyGenerator::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: declaration syntax error
+class CutsceneSystem;
 void EnemyGenerator::Update() {
     KDSynkerPlayer3 *temp_r3_1254;
     u8 var_r30_1251;
     void *temp_r29_1253;
 
-    if (((s32) this->unk7C < (s32) this->unk78) && (HasEnemyWaveFinished() != 0)) {
+    if ((this->unk7C < this->unk78) && (HasEnemyWaveFinished() != 0)) {
         this->unk7C += 1;
         StartEnemyWave();
         this->unk68.Send(NULL);
-        if ((s32) this->unk7C == (s32) this->unk78) {
+        if (this->unk7C == this->unk78) {
             this->unk6C.Send(NULL);
         }
     }
-    if ((s32) this->unk7C < (s32) this->unk78) {
+    if (this->unk7C < this->unk78) {
         var_r30_1251 = 0;
         temp_r29_1253 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_1254 = M2C_FIELD(temp_r29_1253, KDSynkerPlayer3 **, 0x78);
@@ -608,11 +587,10 @@ void EnemyGenerator::Update() {
             var_r30_1251 = 1;
         }
         if (var_r30_1251 == 0) {
-            TrySpawnItems(M2C_FIELD((this->unk50->unk14 + (this->unk7C * 0x14)), s32 *, 8), 0U);
+            TrySpawnItems(M2C_FIELD(((u8 *) this->unk50->unk14 + (this->unk7C * 0x14)), s32 *, 8), false);
         }
     }
 }
-#endif
 
 void EnemyGenerator::SetDefaults() {
     SetDefaults();
@@ -857,7 +835,6 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: function call 'LoadDone(EnemyGenerator *, int, int, unsigned int, unsigned long)' does not match 'EnemyGenerator::LoadDone()'
 void EnemyGenerator::LoadDone() {
     MKProp *temp_r4_1696;
     s32 var_r7_1699;
@@ -868,9 +845,8 @@ void EnemyGenerator::LoadDone() {
     } else {
         var_r7_1699 = 1;
     }
-    LoadDone(0, 0xA, 0U, (u32) var_r7_1699);
+    SpawnerObject::LoadDone(0, 0xA, false, (u32) var_r7_1699);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *' Too many errors printed, aborting program
 s32 EnemyGenerator::LoadLine(MKIniLine *arg0) {
@@ -954,7 +930,7 @@ loop_3:
     Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
+void EnemySpawnPool_Action(SpawnAction, int, MKProp **, SpawnerObject *);
 void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     EnemyGeneratorDescriptor *temp_r3_1956;
     s32 temp_r0_1958;
@@ -969,7 +945,7 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     void *var_r3_2000;
     void *var_r3_2026;
 
-    Init(EnemySpawnPool_Action, 1);
+    SpawnerObject::Init(EnemySpawnPool_Action, 1);
     this->unk50 = arg0;
     this->unk54 = NULL;
     this->unk58 = NULL;
@@ -1023,4 +999,3 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
         memset(this->unk5C, 0, this->unk50->unk0 * 4);
     }
 }
-#endif
