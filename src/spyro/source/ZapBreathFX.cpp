@@ -145,15 +145,13 @@ void ZapBreathFX::ResetFury() {
     ((FuryFXElectricity2 *) this->unkA00)->ResetFury();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'ScorchTrail *'
 void ZapBreathFX::ButtonReleased() {
-    ((ScorchTrail *) (M2C_BITWISE(ScorchTrail *, this->unkA08)))->EndTrail();
-    ((ScorchTrail *) (M2C_BITWISE(ScorchTrail *, this->unkA0C)))->EndTrail();
+    this->unkA00->EndTrail();
+    this->unkA04->EndTrail();
     this->unkD4 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xA08) = 0.0f;
-    M2C_FIELD(this, f32 *, 0xA0C) = 0.0f;
+    this->unkA08 = 0.0f;
+    this->unkA0C = 0.0f;
 }
-#endif
 
 u8 ZapBreathFX::LightActiveOnMissiles() {
     s32 var_ctr_93;
@@ -2350,10 +2348,9 @@ loop_208:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void ZapBreathFX::Deinit() {
     ManagedLight *temp_r4_4528;
-    s32 temp_r4_4552;
+    Corona *temp_r4_4552;
     s32 var_r30_4504;
     s32 var_r30_4542;
     s32 var_r30_4560;
@@ -2366,7 +2363,7 @@ void ZapBreathFX::Deinit() {
     var_r30_4504 = 0;
     var_r31_4505 = 0;
     do {
-        ((Zap *) (((u8 *) this->unkA8) + var_r31_4505))->Deinit();
+        ((Zap *) ((u8 *) this->unkA8 + var_r31_4505))->Deinit();
         var_r30_4504 += 1;
         var_r31_4505 += 0x1D0;
     } while (var_r30_4504 < 3);
@@ -2385,18 +2382,18 @@ void ZapBreathFX::Deinit() {
     var_r30_4542 = 0;
     var_r31_4543 = 0;
     do {
-        ((ElectricBeam *) (this + (var_r31_4543 + 0x1C0)))->Deinit();
+        ((ElectricBeam *) ((u8 *) this + var_r31_4543 + 0x1C0))->Deinit();
         var_r30_4542 += 1;
         var_r31_4543 += 0x200;
     } while (var_r30_4542 < 4);
-    temp_r4_4552 = this->unk9EC;
-    if ((u32) temp_r4_4552 != 0U) {
-        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free((Corona *) temp_r4_4552);
+    temp_r4_4552 = this->unk9E4;
+    if (temp_r4_4552 != NULL) {
+        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(temp_r4_4552);
     }
     var_r30_4560 = 0;
     var_r31_4561 = 0;
     do {
-        KDSound_Stop(((u8 *) this->unkAC) + (var_r31_4561 + 0x64));
+        KDSound_Stop((int *) ((u8 *) this->unkAC + var_r31_4561 + 0x64));
         var_r30_4560 += 1;
         var_r31_4561 += 0x90;
     } while (var_r30_4560 < 0xA);
@@ -2409,26 +2406,21 @@ void ZapBreathFX::Deinit() {
     MKModel_Destroy(this->unkE0);
     ((BaseBreathFX *) this)->BaseBreathFX::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'long' and 'ScorchTrail *'
 void ZapBreathFX::Draw() {
-    s32 var_r30_4607;
-    s32 var_r31_4608;
+    s32 var_r30;
+    s32 var_r31;
 
     if (EventCamera_GetCurrent() == NULL) {
-        var_r30_4607 = 0;
-        var_r31_4608 = 0;
-loop_3:
-        if (var_r30_4607 < (ScorchTrail *) this->unkA04) {
-            ((ElectricBeam *) (this + (var_r31_4608 + 0x1C0)))->Draw();
-            var_r30_4607 += 1;
-            var_r31_4608 += 0x200;
-            goto loop_3;
+        var_r30 = 0;
+        var_r31 = 0;
+        while (var_r30 < this->unk9FC) {
+            ((ElectricBeam *) ((u8 *) this + var_r31 + 0x1C0))->Draw();
+            var_r30 += 1;
+            var_r31 += 0x200;
         }
     }
 }
-#endif
 
 void ZapBreathFX::Message(MKMessage *arg0) {
     s32 var_r30_4638;
