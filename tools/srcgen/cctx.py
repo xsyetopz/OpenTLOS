@@ -113,7 +113,7 @@ class CContext:
         fn = terms[-1]
         params = [render(p, "", self.qual, "*") for p in fn.function_params or []]
         params = [p for p in params if p != "void"]
-        if cls:
+        if cls and mangled not in self.model.statics:
             params.insert(0, f"{cname(cls)} *this")
         ret = self.ctype(self.model.rets.get(mangled, "void"))
         name = sym.name.qualified_name[-1] if sym.name.qualified_name else None

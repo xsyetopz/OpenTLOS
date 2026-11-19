@@ -12,6 +12,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from mstatic import static_methods
 from retvotes import arg_returns
 
 SIZES = {"s8": 1, "u8": 1, "s16": 2, "u16": 2, "s32": 4, "u32": 4, "f32": 4, "f64": 8, "s64": 8, "u64": 8}
@@ -47,9 +48,15 @@ def m2c_types(root: Path, votes: Path | None = None) -> tuple[dict, dict]:
             if m and "(" not in line and "M2C_UNK" not in m.group(1) and (m.group(1).split() or [""])[0] not in KEYWORDS:
                 globs[m.group(2)][m.group(1).strip()] += 1
     pick = {k: v.most_common(1)[0][0] for k, v in globs.items()}
+    defined = {}
     for f in votes.rglob("*.c") if votes else ():
         for line in f.read_text().splitlines():
             m = DECL.match(line)
+            # The defining TU's class type is the one its definition gets, so the
+            # header's extern must agree (kdsData: `Level` in the base run).
+            if m and line.startswith("static ") and m.group(2) in pick and "(" not in line \
+                    and type_names(m.group(1)) and "_struct_" not in m.group(1):
+                defined[m.group(2)] = m.group(1).strip()
             if m and m.group(2) in pick and not type_names(pick[m.group(2)]) and "(" not in line \
                     and "M2C_UNK" not in m.group(1) and (m.group(1).split() or [""])[0] not in KEYWORDS:
                 globs[m.group(2)][m.group(1).strip()] += 1
@@ -57,6 +64,7 @@ def m2c_types(root: Path, votes: Path | None = None) -> tuple[dict, dict]:
         cls = max(((n, t) for t, n in v.items() if type_names(t)), default=None)
         if cls and not type_names(pick[k]) and cls[0] * 3 >= sum(v.values()):
             pick[k] = cls[1]
+    pick |= defined
     clean = lambda t: "void" if "M2C_UNK" in t else ctype(t)  # noqa: E731
     out = {k: clean(v.most_common(1)[0][0]) for k, v in rets.items()}
     if votes:
@@ -141,6 +149,7 @@ class Model:
         self.stems = stems  # TU path without extension -> TU path
         self.size_cache: dict = {}
         self.sdk: set = set()  # SDK type names, set by the caller when known
+        self.statics: set = set()  # mangled static methods (mstatic), set by load_model
         self.nested: dict = {}  # outer class -> inner names, set by the caller
         for name, f in fields.items():  # structs m2c saw that have no methods
             if name not in classes and "<" not in name:
@@ -523,6 +532,11 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Pa
     rets, globs = m2c_types(m2c_root, votes)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk, model.ctx = sdk_types(ctx), ctx
+    model.statics = static_methods(model.classes, ROOT / "build" / VERSION / "asm")
+    for c in model.classes.values():
+        for m in c["methods"]:
+            if m["mangled"] in model.statics:
+                m["static"] = True
     layouts = ROOT / "config" / VERSION / "class_fields.tsv"
     if layouts.exists():
         model.apply_fields([(r[0], int(r[1], 0), r[2]) for r in

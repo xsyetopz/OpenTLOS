@@ -17,6 +17,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 |---|---|---|
 | Class model (bases, vtables, methods, secondary bases) | `classes.py` | `build/srcgen/classes.json` |
 | Field votes from m2c's per-TU inferences | `fields.py` | `build/srcgen/fields.json` |
+| Static methods: parameterless, body never reads r3, and at most 15% of callers write r3 before the `bl` | `mstatic.py` | used by `hmodel.load_model` |
 | C context of all classes for m2c | `cctx.py` | `ctx.c`, `cnames.json` |
 | m2c with context | `run_m2c.py` | `m2c/` |
 | m2c input fixes: jump-table names, realigned frames, paired-single code lowered to lane ps0 (vector source restored by hand) | `asm_prep.py` | used by `run_m2c.py` |
