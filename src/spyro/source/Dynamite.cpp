@@ -82,7 +82,6 @@ void Dynamite::Disable() {
     Projectile::Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void Dynamite::PlatformDetach() {
     s32 sp18;
     s8 sp14;
@@ -98,13 +97,11 @@ void Dynamite::PlatformDetach() {
         sp10 = &this->unk154;
         sp14 = 0;
         sp18 = 0;
-        M2C_FIELD(temp_r3_93->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x24, 0);
+        temp_r3_93->Message((MKMessage *) &sp8);
         this->unk164 = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void Dynamite::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp18;
     u8 sp14;
@@ -123,71 +120,48 @@ void Dynamite::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
             sp10 = &this->unk154;
             sp14 = 0;
             sp18 = arg1;
-            M2C_FIELD(temp_r3_135->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x23, 0);
+            temp_r3_135->Message((MKMessage *) &sp8);
             if (sp14 == 0) {
                 this->unk164 = NULL;
             }
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionResult'
 void Dynamite::Collided(MKCollisionResult &arg0) {
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    f32 temp_f28_213;
-    f32 temp_f2_244;
-    f32 temp_f4_210;
-    f64 temp_f0_229;
-    f64 temp_f0_247;
+    MKVector3 sp58;
+    f32 unk14;
+    f32 unk18;
+    f32 temp_f28;
+    f32 temp_f30;
 
-    if (((u8) this->unk185 == 0) || !((f32) fabs(arg0.unk14) <= 0.25f)) {
+    unk14 = M2C_FIELD(&arg0, f32 *, 0x14);
+    if ((this->unk185 == 0) || !((f32) __fabsf(unk14) <= 0.25f)) {
         Projectile::Collided(arg0);
         if (((u8) this->unk184 >> 7U) & 1) {
             this->unk14C &= ~0x40;
             return;
         }
-        temp_f4_210 = arg0.unk18;
-        temp_f28_213 = (M2C_FIELD(this, f32 *, 0xD0) * temp_f4_210) + ((M2C_FIELD(this, f32 *, 0xC8) * arg0.unk10) + (M2C_FIELD(this, f32 *, 0xCC) * arg0.unk14));
-        if (temp_f28_213 < 0.0f) {
-            sp28 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * 5.398241246e-315;
-            sp30 = temp_f4_210 * 10.0f;
-            sp48 = sp28;
-            sp50 = (f64) sp30;
-            temp_f0_229 = M2C_FIELD(&arg0, f64 *, 0) + sp48;
-            sp18 = temp_f0_229;
-            sp58 = temp_f0_229;
-            sp20 = arg0.unk8 + (f32) sp50;
-            sp60 = (f64) sp20;
-            MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp58));
-            temp_f2_244 = 2.0f * temp_f28_213;
-            temp_f0_247 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * (f64) temp_f2_244;
-            sp8 = temp_f0_247;
-            sp38 = temp_f0_247;
-            sp10 = arg0.unk18 * temp_f2_244;
-            sp40 = (f64) sp10;
-            this->unkC8 -= temp_f0_247;
-            M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) - (f32) sp40);
-            this->unkC8 *= 5.222099017e-315;
-            M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) * 0.5f);
+        unk18 = M2C_FIELD(&arg0, f32 *, 0x18);
+        temp_f28 = (M2C_FIELD(this, f32 *, 0xD0) * unk18) + ((M2C_FIELD(this, f32 *, 0xC8) * M2C_FIELD(&arg0, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 0xCC) * unk14));
+        if (temp_f28 < 0.0f) {
+            sp58.unk0 = M2C_FIELD(&arg0, f32 *, 0x0) + (M2C_FIELD(&arg0, f32 *, 0x10) * 10.0f);
+            sp58.unk4 = M2C_FIELD(&arg0, f32 *, 0x4) + (unk14 * 10.0f);
+            sp58.unk8 = M2C_FIELD(&arg0, f32 *, 0x8) + (unk18 * 10.0f);
+            MKModel_SetPosition(this->unk4, sp58);
+            temp_f30 = 2.0f * temp_f28;
+            M2C_FIELD(this, f32 *, 0xC8) = M2C_FIELD(this, f32 *, 0xC8) - (M2C_FIELD(&arg0, f32 *, 0x10) * temp_f30);
+            M2C_FIELD(this, f32 *, 0xCC) = M2C_FIELD(this, f32 *, 0xCC) - (unk14 * temp_f30);
+            M2C_FIELD(this, f32 *, 0xD0) = M2C_FIELD(this, f32 *, 0xD0) - (unk18 * temp_f30);
+            M2C_FIELD(this, f32 *, 0xC8) = M2C_FIELD(this, f32 *, 0xC8) * 0.5f;
+            M2C_FIELD(this, f32 *, 0xCC) = M2C_FIELD(this, f32 *, 0xCC) * 0.5f;
+            M2C_FIELD(this, f32 *, 0xD0) = M2C_FIELD(this, f32 *, 0xD0) * 0.5f;
             this->unk170 = 0.75f * -this->unk170;
             this->unk180 += 1;
-            KDSound_Play3d(GS_TNTBounce, ((u8 *) this->unk8) + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_TNTBounce, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), M2C_FIELD(&arg0, u32 *, 0x44), -1, 0.0f, false);
         }
     }
 }
-#endif
 
 void Dynamite::SetExplodeNearHero(bool arg0, float arg1) {
     this->unk184 = (this->unk184 & ~0x40) | ((arg0 << 6) & 0x40);
@@ -210,7 +184,7 @@ void Dynamite::Activate() {
     this->unk184 |= 0x20;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 void *Dynamite::Update() {
     f64 sp200;
     f64 sp1F8;
@@ -243,7 +217,7 @@ void *Dynamite::Update() {
     f64 sp118;
     f64 sp110;
     f64 sp108;
-    f64 spF8;
+    MKVector3 spF8;
     MKVector3 spE8;
     f32 spE0;
     f64 spD8;
@@ -582,10 +556,10 @@ void *Dynamite::Update() {
         ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(sp1C8, *((MKVector3 *) &sp138), sp1C);
     }
     spE8 = MKVector(0.0f, 50.0f, 0.0f);
-    ((MKProp *) &spF8)->GetPos();
+    spF8 = GetPos();
     sp38 = spF8 + M2C_BITWISE(f64, spE8);
     this->unk198 = sp38;
-    sp40 = sp100 + spE8.unk8;
+    sp40 = spF8.unk8 + spE8.unk8;
     sp108 = sp38;
     sp110 = (f64) sp40;
     this->unk1A0 = (f64) sp40;
@@ -599,17 +573,17 @@ void *Dynamite::Update() {
 void Dynamite::SetInitialState() {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     this->unk188.unk4 = 1;
     sp18 = MKVector(0.0f, 50.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     this->unk198 = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     this->unk1A0 = (f64) sp10;
     this->unk17C = 0.0f;
