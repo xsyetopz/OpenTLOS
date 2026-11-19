@@ -8,7 +8,7 @@ class CameraData;
 class CameraData {
 public:
     void ClearData(void);
-    static u8 GetJumpWithTy(void);
+    u8 GetJumpWithTy(void);
     f32 GetPlayerRotatePitchMultiplier(void);
     f32 GetPlayerRotateYawMultiplier(void);
     void Deinit(void);

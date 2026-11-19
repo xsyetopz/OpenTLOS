@@ -18,7 +18,7 @@ public:
     void AddGoal_Idle(void);
     void AddGoal_FollowSpawnGraph(void);
     void StartFollowingSpawnGraph(void);
-    static u8 IsFollowingSpawnGraph(void);
+    u8 IsFollowingSpawnGraph(void);
     void Init(Enemy *);
     /* 0x004 */ s32 unk4;
     /* 0x008 */ s8 unk8;

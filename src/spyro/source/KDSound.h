@@ -3,7 +3,6 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/KDFaderObject.h"
-#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 
 class GlobalSoundData;
@@ -11,7 +10,6 @@ class KDFaderObject;
 class KDSoundData;
 class KDSoundFader;
 class KDSoundPlayer;
-class Level;
 class MKAnimScript;
 class MKHeap;
 class MKIni;
@@ -256,7 +254,7 @@ void KDSound_Init(const char *);
 void KDSound_DeinitModule(void);
 void KDSound_InitModule(bool, int);
 extern u32 gsData;
-extern Level kdsData;
+extern KDSoundData kdsData;
 extern u8 soundPlayFollowArray;
 extern u8 bSplitScreen;
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

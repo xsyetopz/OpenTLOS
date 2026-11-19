@@ -311,7 +311,7 @@ void *TrainController::Update() {
         temp_ret_471 = checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         if (this->unk60 >= M2C_FIELD((temp_ret_471 + (this->unk5C * 0xC)), f32 *, 0x68)) {
             temp_r3_482 = checked_cast<SteamTrainCaboose *, MKProp>(this->unk54->PropResolver_Resolve((s32) (u32) temp_ret_471));
-            if ((temp_r3_482 != NULL) && (SteamTrainCaboose::IsBlownUp() == 0)) {
+            if ((temp_r3_482 != NULL) && (temp_r3_482->IsBlownUp() == 0)) {
                 temp_r3_482->BlowUp();
             }
         }

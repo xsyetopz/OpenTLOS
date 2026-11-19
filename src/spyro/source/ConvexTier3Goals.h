@@ -52,7 +52,7 @@ public:
     void StartFollowingSpawnGraph(void);
     u8 IsFollowingSpawnGraph(void);
     void StartFollowingSpawnPath(void);
-    static u8 IsFollowingSpawnPath(void);
+    u8 IsFollowingSpawnPath(void);
     void AddGoal_FollowSpawnGraph(void);
     void AddGoal_FollowSpawnPath(void);
     void AddGoal_PatrolMode(void);

@@ -2894,8 +2894,7 @@ f32 Spyro::GetJoyYaw() {
     f32 temp_f30_5163;
     f32 temp_f31_5159;
 
-    GetCamera();
-    temp_f31_5159 = KDCamera::GetMoveYaw();
+    temp_f31_5159 = ((KDCamera *) (GetCamera()))->GetMoveYaw();
     temp_f30_5163 = ((InputModifier *) (GetInput()))->GetLeftY();
     return temp_f31_5159 + (f32) atan2(-((InputModifier *) (GetInput()))->GetLeftX(), temp_f30_5163);
 }

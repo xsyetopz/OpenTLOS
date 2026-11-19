@@ -22,7 +22,7 @@ public:
     class SaveState {
     public:
         void ClearData(void);
-        static void Deinit(void);
+        void Deinit(void);
         void Init(void);
         /* 0x000 */ s8 unk0;
     };

@@ -400,7 +400,7 @@ void BoulderRamp::SetBoulder(Ball *arg0) {
 #endif
 
 s32 BoulderRamp::HasBoulder() {
-    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xF0) != 0;
+    return this->unkF0 != NULL;
 }
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoulderRamp::State'

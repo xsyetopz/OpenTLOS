@@ -794,7 +794,7 @@ void Ball::CheckForRamps() {
 loop_12:
         if (var_r30_1203 < temp_r31_1202) {
             temp_r3_1208 = BoulderRamp_GetCatapult(this->unk2A8, var_r30_1203);
-            if ((temp_r3_1208 != 0) && (BoulderRamp::HasBoulder() == 0)) {
+            if ((temp_r3_1208 != 0) && (((BoulderRamp *) temp_r3_1208)->HasBoulder() == 0)) {
                 temp_r4_1214 = this->unk8;
                 temp_r3_1215 = M2C_FIELD(temp_r3_1208, void **, 8);
                 temp_f7_1216 = M2C_FIELD(temp_r4_1214, f64 *, 0x30);
@@ -876,7 +876,7 @@ void Ball::CheckForCatapults() {
 loop_15:
         if (var_r28_1330 < temp_r30_1329) {
             temp_r3_1335 = Catapult_GetCatapult(this->unk2A8, var_r28_1330);
-            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (Catapult::CanLoadBall() != 0)) {
+            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (((Catapult *) temp_r3_1335)->CanLoadBall() != 0)) {
                 temp_r4_1344 = this->unk8;
                 temp_r3_1345 = M2C_FIELD(temp_r3_1335, void **, 8);
                 temp_f5_1346 = M2C_FIELD(temp_r4_1344, f64 *, 0x30);

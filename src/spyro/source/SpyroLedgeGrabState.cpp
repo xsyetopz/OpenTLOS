@@ -82,12 +82,12 @@ void SpyroLedgeGrabState::PullUpDescendTransition() {
     sp18 = 0.2f;
     sp1C = 1;
     sp1D = 1;
-    temp_r3_59 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Spyro **, 0x10);
+    temp_r3_59 = this->unk10;
     temp_r3_59->TryChangeState(M2C_FIELD(temp_r3_59->unk27C, s32 *, 0x16C) > 0, 4U, (MKMessage *) &sp8, 0U);
 }
 
 void SpyroLedgeGrabState::PullUpDescendUpdate() {
-    SpyroLedgeGrabState::PullUpDescendTransition();
+    PullUpDescendTransition();
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to

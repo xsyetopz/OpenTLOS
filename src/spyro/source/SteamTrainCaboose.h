@@ -37,7 +37,7 @@ public:
     SteamTrainCaboose(void);
     void GetVel(void);
     void SetState(SteamTrainCabooseState);
-    static u8 IsBlownUp(void);
+    u8 IsBlownUp(void);
     void BlowUp(void);
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ MKSceneManager* unkCC;

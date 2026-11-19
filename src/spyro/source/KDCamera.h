@@ -112,7 +112,7 @@ public:
     void GetHeroTargetPos(const MKVector3 &);
     void UpdateLTW(void);
     void SetLTW(const Matrix &);
-    static f32 GetMoveYaw(void);
+    f32 GetMoveYaw(void);
     KDCamera(void);
     void InitModule(void);
     void GetDir(bool);

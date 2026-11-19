@@ -1936,9 +1936,8 @@ void GameCamera2::PreCameraUpdate() {
 
     KDCamera::PreCameraUpdate();
     this->unk29C = 0;
-    ((GameData *) GameData::gameData)->GetCameraData();
     temp_r4_3756 = this->unk140;
-    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (CameraData::GetJumpWithTy() == 0) << 7) & 0x80);
+    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (((GameData *) GameData::gameData)->GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
     UpdateSnaps();
     EmuStatesUpdate();
     CenterBehindHeroUpdate();

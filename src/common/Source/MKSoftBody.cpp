@@ -1966,7 +1966,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 ClothNode **MKCloth::GetName() {
-    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 4) + 0x30;
+    return M2C_FIELD(this, s32 *, 4) + 0x30;
 }
 #endif
 

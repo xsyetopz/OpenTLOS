@@ -69,7 +69,7 @@ void *SparkleEffect::Update() {
     this->unk11C += gUpdateTimeDelta;
     if (this->unk11C >= this->unk118) {
         this->unk11C = 0.0f;
-        SparkleEffect::FindNewSparklePoint();
+        FindNewSparklePoint();
     }
 }
 

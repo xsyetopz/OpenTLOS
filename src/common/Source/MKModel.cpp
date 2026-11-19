@@ -395,8 +395,7 @@ s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) 
     case 1:
         return *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x44), s32 *, 4) + (arg2 * 8));
     case 2:
-        MKModel_GetClothSubObject(arg0, arg2);
-        return MKCloth::GetName();
+        return ((MKCloth *) (MKModel_GetClothSubObject(arg0, arg2)))->GetName();
     case 0:
         return M2C_FIELD((M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6)), s8 **, 0x30);
     default:

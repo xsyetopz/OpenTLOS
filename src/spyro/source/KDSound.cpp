@@ -61,9 +61,7 @@ static M2C_UNK soundDuckData;
 #if 0 // DRAFT: identifier 'gsData' redeclared
 static u32 gsData[0xB];
 #endif
-#if 0 // DRAFT: identifier 'kdsData' redeclared
 static KDSoundData kdsData;
-#endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class
 static struct _struct_soundPlayFollowArray_0x8 soundPlayFollowArray[0xF];
 #endif
@@ -1016,7 +1014,6 @@ void GlobalSoundData::Init(const char *arg0, int arg1) {
     }
 }
 
-#if 0 // DRAFT: function call 'Sound_UnloadBank(MKModel *)' does not match
 void KDSoundData::Deinit() {
     if ((s32) kdsData.unk30 > 0) {
         Sound_UnloadBank(kdsData.unk30);
@@ -1025,7 +1022,6 @@ void KDSoundData::Deinit() {
     this->unk34 = 0;
     this->unk38 = 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcpy(signed char *, const char[1])' does not match
 void KDSoundData::Init(bool arg0) {
@@ -1409,7 +1405,7 @@ u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: undefined identifier 'unk134'
 void KDS_UpdateMusicFading() {
     f32 temp_f31_2977;
     f32 var_f1_2970;
@@ -1481,7 +1477,6 @@ s32 KDSound_IsVoicePlaying(int arg0) {
     return var_r31_3014;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk44'
 void KDSound_ScaleMasterVolume(float arg0, int arg1) {
     f32 var_f0_3037;
     f32 var_f4_3049;
@@ -1500,19 +1495,15 @@ void KDSound_ScaleMasterVolume(float arg0, int arg1) {
     kdsData.unk48 = var_f4_3049;
     Sound_SetMasterVolume(kdsData.unk3C * kdsData.unk44, kdsData.unk40 * (f32) var_f4_3049);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
 void KDSound_SetMasterMusicVolume(float arg0) {
     KDSound_SetMasterVolume(kdsData.unk3C, arg0);
 }
-#endif
 
 void KDSound_SetMasterSoundVolume(float arg0) {
     KDSound_SetMasterVolume(arg0, kdsData.unk40);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
 void KDSound_SetMasterVolume(float arg0, float arg1) {
     f32 temp_f31_3121;
 
@@ -1528,7 +1519,6 @@ void KDSound_SetMasterVolume(float arg0, float arg1) {
     kdsData.unk48 = 1.0f;
     Sound_SetMasterVolume(kdsData.unk3C, kdsData.unk40);
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char *)' does not match
 s32 KDSound_LoadLine(MKIniLine *arg0, const char *arg1, int *arg2) {
@@ -1612,23 +1602,19 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkBC'
 void KDSound_SetMusicNotInterrupt(bool arg0) {
     kdsData.unkBC = (s8) arg0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkC9'
 u8 KDSound_IsMusicPaused() {
     return (u8) kdsData.unkC9;
 }
-#endif
 
 void KDSound_IsMusicPlaying() {
     Sound_MusicIsPlaying();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not
 void KDSound_UnDuckMusic(float arg0) {
     if ((kdsData.unk4C < 1.0f) && ((s32) kdsData.unk54 <= 0)) {
         if ((s32) kdsData.unk58 == 3) {
@@ -1646,7 +1632,7 @@ void KDSound_UnDuckMusic(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not
 void KDSound_DuckMusic(float arg0, float arg1) {
     u8 var_r5_3410;
 
@@ -1676,7 +1662,6 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC9'
 void KDSound_PauseMusic(bool arg0, bool arg1) {
     f32 temp_f31_3527;
 
@@ -1711,15 +1696,11 @@ void KDSound_PauseMusic(bool arg0, bool arg1) {
         kdsData.unk58 = 2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operands 'MKVector3' == 'int'
 s32 KDSound_MusicIsStopping() {
     return kdsData.unk58 == 3;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkBC'
 void KDSound_ResetMusic() {
     Sound_MusicStop();
     kdsData.unkBC = 0;
@@ -1730,9 +1711,8 @@ void KDSound_ResetMusic() {
     kdsData.unk4C = 1.0f;
     bMusicDucked = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkBC'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSound_StopMusic(float arg0) {
     if ((u8) kdsData.unkBC == 0) {
         kdsData.unkD0 = 0;
@@ -1749,7 +1729,7 @@ void KDSound_StopMusic(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9C'
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
 void KDSound_PlayMusic(const char *arg0, float arg1, float arg2, int arg3) {
     strncpy(&kdsData.unk9C, arg0, 0x20U);
     if ((stricmp(arg0, KDSound_GetCurrentMusicTrackName()) != 0) || (KDSound_IsMusicPlaying(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
@@ -1780,12 +1760,10 @@ void KDSound_PlayMusic(const char *arg0, float arg1, float arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC4'
 void KDSound_SetSFXLimit(bool arg0, int arg1) {
     kdsData.unkC8 = (s8) arg0;
     kdsData.unkC4 = arg1;
 }
-#endif
 
 void KDSound_GetAcousticProperty() {
     Sound_GetAcousticProperty();
@@ -1795,11 +1773,9 @@ void KDSound_SetAcousticProperty(Sound_AcousticProperty arg0) {
     Sound_SetAcousticProperty(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ChunkInfo **' to
 s8 *KDSound_GetCurrentMusicTrackName() {
     return &kdsData.unk7C;
 }
-#endif
 
 void KDSound_MusicGetResumePosition() {
     Sound_MusicGetResumePosition();
@@ -1809,11 +1785,9 @@ f32 KDSound_GetMasterMusicVolume() {
     return kdsData.unk40;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
 f32 KDSound_GetMasterSoundVolume() {
     return kdsData.unk3C;
 }
-#endif
 
 void KDSound_StopAll() {
     Sound_StopAll();
@@ -1897,14 +1871,12 @@ void KDSound_Stop(int *arg0) {
     *arg0 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk13C'
 void KDS_UpdateEnvironmentalAudio() {
     if ((s32) kdsData.unk13C != (s32) kdsData.unk138) {
         kdsData.unk13C = kdsData.unk138;
         Sound_SetAcousticProperty((Sound_AcousticProperty) kdsData.unk138);
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDS_UpdatePlay3dFollowSounds() {
@@ -1931,7 +1903,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk144'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 KDSound_Play3d(MKAnimScript *arg0, const MKVector3 *arg1, unsigned int arg2, float arg3, bool arg4) {
     s32 temp_r4_4124;
     s32 var_r30_4100;
@@ -2002,7 +1974,7 @@ block_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk144'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 KDSound_Play(MKAnimScript *arg0, unsigned int arg1) {
     s32 temp_r3_4254;
     s32 temp_r4_4267;
@@ -2030,7 +2002,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: pointer/array required
 s32 KDSound_Play(int arg0, unsigned int arg1, int arg2) {
     SoundEvent *temp_r3_4319;
 
@@ -2075,7 +2047,6 @@ void KDSound_SetListener(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
 void KDSound_Update() {
     if ((u8) kdsData.unkC8 != 0) {
         kdsData.unkC0 = 0;
@@ -2087,7 +2058,6 @@ void KDSound_Update() {
     KDSound_ProcessChronoSound();
     KDSound_SoundDucking_Update();
 }
-#endif
 
 void KDSound_Deinit() {
     Sound_StopAll();
@@ -2103,7 +2073,7 @@ void KDSound_Deinit() {
     kdsData.unk78 = 0;
 }
 
-#if 0 // DRAFT: function call 'strncpy(unsigned char *, const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
 void KDSound_SetLevelID(const char *arg0) {
     if (arg0 != NULL) {
         strncpy(&kdsData.unk8, arg0, 0xAU);
@@ -2217,7 +2187,7 @@ void KDSound_ResolveSoundIDs(float arg0) {
     ((GlobalSoundData *) gsData)->ResolveSoundIDs(arg0);
 }
 
-#if 0 // DRAFT: function call 'strncpy(unsigned char *, const char *, unsigned int)' does
+#if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
 void KDSound_Init(const char *arg0) {
     s32 temp_ret_4781;
     s32 temp_ret_4806;
@@ -2288,7 +2258,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'bool' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDSound_InitModule(bool arg0, int arg1) {
     MKHeap *var_r3_4938;
     s32 var_ctr_4950;

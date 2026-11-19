@@ -32,7 +32,7 @@ public:
     virtual void * Update(void);
     virtual void Message(MKMessage *);
     void SetState(Catapult::State);
-    static s32 CanLoadBall(void);
+    s32 CanLoadBall(void);
     void SetBall(Ball *);
     void GetAmmoDir(void);
     void GetAmmoPos(void);

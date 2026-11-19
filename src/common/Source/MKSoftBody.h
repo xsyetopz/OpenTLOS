@@ -45,7 +45,7 @@ public:
     void IncludeCollision(void);
     void DrawConstraints(void);
     static void UpdateGlobalCollisionPrims(void);
-    static ClothNode ** GetName(void);
+    ClothNode ** GetName(void);
     void SetIterations(int);
     void SetFriction(float);
     void SetCollisionCapsule(int, const MKVector3 &, const MKVector3 &, float);

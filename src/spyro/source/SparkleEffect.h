@@ -15,7 +15,7 @@ public:
     virtual void Deinit(void);
     virtual void * Update(void);
     virtual void Draw(void);
-    static void FindNewSparklePoint(void);
+    void FindNewSparklePoint(void);
     /* 0x04c */ u32* unk4C;
     /* 0x050 */ u8 pad50[0xc8];
     /* 0x118 */ f32 unk118;

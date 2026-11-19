@@ -95,11 +95,11 @@ void KaneGoal_Think::StartFollowingSpawnGraph() {
 }
 
 u8 KaneGoal_Think::IsFollowingSpawnGraph() {
-    return ((u8) M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xC), u8 *, 0xB09) >> 3U) & 1;
+    return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 3U) & 1;
 }
 
 void KaneGoal_Think::Arbitrate() {
-    if (KaneGoal_Think::IsFollowingSpawnGraph() != 0) {
+    if (IsFollowingSpawnGraph() != 0) {
         AddGoal_FollowSpawnGraph();
         return;
     }

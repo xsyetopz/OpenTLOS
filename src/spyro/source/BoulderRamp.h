@@ -31,7 +31,7 @@ public:
     void ReceivingBoulderUpdate(void);
     void ReceivingBoulderEnter(void);
     void SetBoulder(Ball *);
-    static s32 HasBoulder(void);
+    s32 HasBoulder(void);
     void SetState(BoulderRamp::State);
     static u8 states[0x90];
     /* 0x0e0 */ s32 unkE0;

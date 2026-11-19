@@ -135,10 +135,12 @@ void GameData::ClearData() {
 }
 #endif
 
+#if 0 // DRAFT: illegal use of non-static member
 void GameData::Deinit() {
     GameData::SaveState::Deinit();
     M2C_FIELD(this, s8 *, 0x1B0) = 0;
 }
+#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void GameData::Init() {
@@ -181,7 +183,7 @@ void GameData::SaveState::ClearData() {
 #endif
 
 void GameData::SaveState::Deinit() {
-    ((CameraData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x60))->Deinit();
+    ((CameraData *) (this + 0x60))->Deinit();
 }
 
 void GameData::SaveState::Init() {

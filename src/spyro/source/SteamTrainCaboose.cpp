@@ -310,7 +310,7 @@ void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
 }
 
 u8 SteamTrainCaboose::IsBlownUp() {
-    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0xD8);
+    return this->unkD8;
 }
 
 void SteamTrainCaboose::BlowUp() {

@@ -2484,7 +2484,7 @@ void KDCamera::SetLTW(const Matrix &arg0) {
 #endif
 
 f32 KDCamera::GetMoveYaw() {
-    return 3.1415927f + M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x138), f32 *, 4);
+    return 3.1415927f + M2C_FIELD(this->unk138, f32 *, 4);
 }
 
 KDCamera::KDCamera() {

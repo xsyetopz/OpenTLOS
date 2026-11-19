@@ -207,7 +207,7 @@ void ConvexTier3Goal_Think::StartFollowingSpawnPath() {
 }
 
 u8 ConvexTier3Goal_Think::IsFollowingSpawnPath() {
-    return ((u8) M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xC), u8 *, 0xB09) >> 4U) & 1;
+    return ((u8) this->unkC->unkB09 >> 4U) & 1;
 }
 
 void ConvexTier3Goal_Think::AddGoal_FollowSpawnGraph() {
@@ -272,7 +272,7 @@ void ConvexTier3Goal_Think::Arbitrate() {
     Enemy *temp_r3_523;
     u8 var_r31_524;
 
-    if (ConvexTier3Goal_Think::IsFollowingSpawnPath() != 0) {
+    if (IsFollowingSpawnPath() != 0) {
         AddGoal_FollowSpawnPath();
     }
     if (IsFollowingSpawnGraph() != 0) {
