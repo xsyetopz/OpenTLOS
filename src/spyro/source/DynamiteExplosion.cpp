@@ -76,7 +76,6 @@ static u8 lit_1080 = 1;
 
 static u8 lit_1149 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     f64 sp150;
     f64 sp148;
@@ -193,7 +192,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp110 = (f64) spA0;
     sp10 = temp_f30_78 * temp_f1_116;
     sp138 = KDRand_Vector(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118));
-    temp_f1_124 = M2C_BITWISE(f32, sp138);
+    temp_f1_124 = sp138.unk0;
     var_f4_132 = (sp138.unk8 * sp138.unk8) + ((temp_f1_124 * temp_f1_124) + (sp138.unk4 * sp138.unk4));
     if (var_f4_132 > 1e-12f) {
         if (var_f4_132 > 0.0f) {
@@ -233,12 +232,12 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     } else {
         var_f3_199 = 0.0f;
     }
-    sp68 = M2C_BITWISE(f32, sp138) * var_f3_199;
+    sp68 = sp138.unk0 * var_f3_199;
     sp6C = sp138.unk4 * var_f3_199;
     sp70 = sp138.unk8 * var_f3_199;
     sp148 = (f64) sp68;
     sp150 = (f64) sp70;
-    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) arg1), *((MKVector3 *) &sp148), sp10, lit_1149, (MKVector4) &sp108);
+    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) arg1), *((MKVector3 *) &sp148), sp10, lit_1149, *((MKVector4 *) &sp108));
     temp_f31_231 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
     sp60 = -1.0f;
     sp50 = 1.0f;
@@ -251,7 +250,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     spA8 = (f64) sp48;
     spB0 = (f64) sp50;
     spC8 = KDRand_Vector(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8));
-    temp_f1_252 = M2C_BITWISE(f32, spC8);
+    temp_f1_252 = spC8.unk0;
     var_f4_260 = (spC8.unk8 * spC8.unk8) + ((temp_f1_252 * temp_f1_252) + (spC8.unk4 * spC8.unk4));
     if (var_f4_260 > 1e-12f) {
         if (var_f4_260 > 0.0f) {
@@ -291,7 +290,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     } else {
         var_f3_327 = 0.0f;
     }
-    sp18 = M2C_BITWISE(f32, spC8) * var_f3_327;
+    sp18 = spC8.unk0 * var_f3_327;
     sp1C = spC8.unk4 * var_f3_327;
     sp20 = spC8.unk8 * var_f3_327;
     spD8 = (f64) sp18;
@@ -313,7 +312,6 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
 block_51:
     return 1U;
 }
-#endif
 
 u8 DynamiteExplosion::UpdateIce(DynamiteExplosion::Explosion *arg0) {
     return 1U;
@@ -2546,48 +2544,45 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'DynamiteExplosion::Explosion *' and 'DynamiteExplosion::Explosion **'
 void DynamiteExplosion::Deinit() {
-    DynamiteExplosion::Explosion **var_r31_4167;
-    DynamiteExplosion::Explosion **var_r3_4168;
-    DynamiteExplosion::Explosion **var_r4_4166;
-    DynamiteExplosion::Explosion *temp_r0_4171;
-    DynamiteExplosion::Explosion *temp_r0_4190;
-    u32 temp_r0_4176;
+    u32 *var_r3;
+    u32 *var_r4;
+    u32 var_r31;
+    u32 temp_r0;
 
-    var_r4_4166 = this->unk50;
-    var_r31_4167 = var_r4_4166;
-    var_r3_4168 = var_r4_4166;
-loop_3:
-    temp_r0_4176 = M2C_FIELD(var_r3_4168, u32 *, -4);
-    var_r3_4168 -= 4;
-    if (temp_r0_4176 != 0U) {
-        temp_r0_4171 = *var_r3_4168;
-        if (temp_r0_4171 < var_r31_4167) {
-            var_r31_4167 = (DynamiteExplosion::Explosion **) temp_r0_4171;
+    var_r4 = (u32 *) this->unk50;
+    var_r31 = (u32) var_r4;
+    var_r3 = var_r4;
+    while (1) {
+        var_r3 -= 1;
+        temp_r0 = *var_r3;
+        if (temp_r0 == 0) {
+            break;
         }
-        goto loop_3;
+        if (temp_r0 < var_r31) {
+            var_r31 = temp_r0;
+        }
     }
-    if (var_r3_4168 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_4190 = *var_r4_4166;
-        if (temp_r0_4190 != NULL) {
-            if (temp_r0_4190 < var_r31_4167) {
-                var_r31_4167 = (DynamiteExplosion::Explosion **) temp_r0_4190;
+    if (var_r3 != (u32 *) &gEmptyPtrListDL) {
+        while (1) {
+            temp_r0 = *var_r4;
+            if (temp_r0 == 0) {
+                break;
             }
-            var_r4_4166 += 4;
-            goto loop_9;
+            if (temp_r0 < var_r31) {
+                var_r31 = temp_r0;
+            }
+            var_r4 += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_4167, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((const void *) var_r31, NULL, 0);
         } else {
-            free(var_r31_4167);
+            free((DynamiteExplosion::Explosion **) var_r31);
         }
     }
     this->unk50 = NULL;
     MKProp::Deinit();
 }
-#endif
 
 void DynamiteExplosion::Draw() {
 
@@ -2656,12 +2651,10 @@ loop_17:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to 'long *'
 f32 DynamiteExplosion::Resolve() {
     MKProp::Resolve();
-    this->unk4C = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
+    this->unk4C = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) ((MKSceneManager *) gMK)->FindDescriptor("IceCube"));
 }
-#endif
 
 void DynamiteExplosion::Init() {
     DynamiteExplosion::Explosion **temp_r3_4369;
