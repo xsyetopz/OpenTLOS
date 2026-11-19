@@ -268,33 +268,32 @@ void FogPoints_Blend(const FogPointInfo &arg1, const FogPointInfo &arg2, float f
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10'
 void FogPoints_Deinit() {
-    M2C_UNK *temp_r0_1778;
-    M2C_UNK *temp_r0_1797;
-    M2C_UNK *var_r30_1774;
-    M2C_UNK *var_r3_1775;
-    M2C_UNK *var_r4_1773;
+    u32 var_r3_1775;
+    u32 var_r4_1773;
+    u32 var_r30_1774;
     u32 temp_r0_1783;
+    u32 temp_r0_1778;
+    u32 temp_r0_1797;
 
-    if ((u8) fog.unk10 != 0) {
-        var_r4_1773 = fog.unkC;
+    if (M2C_FIELD(&fog, u8 *, 0x10) != 0) {
+        var_r4_1773 = (u32) M2C_FIELD(&fog, M2C_UNK **, 0xC);
         var_r30_1774 = var_r4_1773;
         var_r3_1775 = var_r4_1773;
 loop_4:
         temp_r0_1783 = M2C_FIELD(var_r3_1775, u32 *, -4);
         var_r3_1775 -= 4;
         if (temp_r0_1783 != 0U) {
-            temp_r0_1778 = (long *) (*var_r3_1775);
+            temp_r0_1778 = M2C_FIELD(var_r3_1775, u32 *, 0);
             if (temp_r0_1778 < var_r30_1774) {
                 var_r30_1774 = temp_r0_1778;
             }
             goto loop_4;
         }
-        if (var_r3_1775 != &gEmptyPtrListDL) {
+        if (var_r3_1775 != (u32) &gEmptyPtrListDL) {
 loop_10:
-            temp_r0_1797 = (long *) (*var_r4_1773);
-            if (temp_r0_1797 != NULL) {
+            temp_r0_1797 = M2C_FIELD(var_r4_1773, u32 *, 0);
+            if (temp_r0_1797 != 0U) {
                 if (temp_r0_1797 < var_r30_1774) {
                     var_r30_1774 = temp_r0_1797;
                 }
@@ -302,27 +301,25 @@ loop_10:
                 goto loop_10;
             }
             if (MKHeap::Current() != NULL) {
-                ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1774, NULL, 0);
+                ((MKHeap *) (MKHeap::Current()))->Free((const void *) var_r30_1774, NULL, 0);
             } else {
-                free(var_r30_1774);
+                free((M2C_UNK *) var_r30_1774);
             }
         }
-        fog.unkC = NULL;
+        M2C_FIELD(&fog, M2C_UNK **, 0xC) = NULL;
     }
-    fog.unk10 = 0;
-    memset(fog.unk0, 0, fog.unk4 * (fog.unk4 * 4));
+    M2C_FIELD(&fog, u8 *, 0x10) = 0;
+    memset(M2C_FIELD(&fog, M2C_UNK **, 0), 0, M2C_FIELD(&fog, s32 *, 4) * (M2C_FIELD(&fog, s32 *, 4) * 4));
 }
-#endif
 
 void FogPoints_Init(const char *arg0) {
     fog.Init(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void FogPoints_DeinitModule() {
     M2C_UNK *temp_r31_2107;
 
-    temp_r31_2107 = fog.unk0;
+    temp_r31_2107 = M2C_FIELD(&fog, M2C_UNK **, 0);
     if (temp_r31_2107 != NULL) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2107, NULL, 0);
@@ -330,23 +327,20 @@ void FogPoints_DeinitModule() {
             free(temp_r31_2107);
         }
     }
-    fog.unk0 = NULL;
+    M2C_FIELD(&fog, M2C_UNK **, 0) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void FogPoints_InitModule() {
     M2C_UNK *var_r3_2153;
 
-    fog.unk4 = 0x14;
-    fog.unk8 = 0x2710;
+    M2C_FIELD(&fog, s32 *, 4) = 0x14;
+    M2C_FIELD(&fog, s32 *, 8) = 0x2710;
     if (MKHeap::Current() != NULL) {
         var_r3_2153 = (long *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0));
     } else {
         var_r3_2153 = malloc(0x640);
     }
-    fog.unk0 = var_r3_2153;
-    memset(var_r3_2153, 0, fog.unk4 * (fog.unk4 * 4));
-    fog.unk10 = 0;
+    M2C_FIELD(&fog, M2C_UNK **, 0) = var_r3_2153;
+    memset(var_r3_2153, 0, M2C_FIELD(&fog, s32 *, 4) * (M2C_FIELD(&fog, s32 *, 4) * 4));
+    M2C_FIELD(&fog, u8 *, 0x10) = 0;
 }
-#endif
