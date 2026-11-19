@@ -32,49 +32,47 @@ extern MKCollisionManager **managers;
 static M2C_UNK lit_834;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_840;                                /* unable to generate initializer: unknown type; const */
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
-    s8 sp8;
-    M2C_UNK sp4;
+    char buf[0x104];
+    char *sp8 = buf + 4;
     s8 *temp_ret_29;
     s8 *var_r30_31;
-    s8 *var_r4_37;
     s8 *var_r5_24;
+    s8 *var_r4_37;
 
-    var_r5_24 = (signed char *) ("s");
+    var_r5_24 = (s8 *) "s";
     if (arg2 != 0) {
-        var_r5_24 = (signed char *) ("b");
+        var_r5_24 = (s8 *) "b";
     }
-    temp_ret_29 = Str_Printf("_%02d%s", var_r5_24);
+    temp_ret_29 = Str_Printf("_%02d%s", arg1, var_r5_24);
     var_r30_31 = temp_ret_29;
     if (arg1 < 0) {
-        var_r4_37 = (signed char *) ("s");
+        var_r4_37 = (s8 *) "s";
         if (arg2 != 0) {
-            var_r4_37 = (signed char *) ("b");
+            var_r4_37 = (s8 *) "b";
         }
-        var_r30_31 = Str_Printf("_all%s", var_r4_37, "_%02d%s", M2C_BITWISE(f32, temp_ret_29));
+        var_r30_31 = Str_Printf("_all%s", var_r4_37);
     }
-    M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_840 - 4) + 4, 0x100);
-    Str_Printf("%s%s", &sp8, var_r30_31, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r30_31) + 5))));
+    M2C_STRUCT_COPY(buf, &lit_840, 0x100);
+    strncpy(sp8, arg0, 0x20 - (strlen((const char *) var_r30_31) + 5));
+    Str_Printf("%s%s", sp8, var_r30_31);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 void MKCollision_MangleName(const char *arg0, int arg1) {
-    s8 sp8;
-    M2C_UNK sp4;
+    char buf[0x104];
+    char *sp8 = buf + 4;
     s8 *temp_ret_91;
     s8 *var_r31_93;
 
-    temp_ret_91 = Str_Printf("_%02d", "_%02d%s");
+    temp_ret_91 = Str_Printf("_%02d", arg1);
     var_r31_93 = temp_ret_91;
     if (arg1 < 0) {
-        var_r31_93 = Str_Printf("_all", (u32) (u64) temp_ret_91, M2C_BITWISE(f32, temp_ret_91));
+        var_r31_93 = Str_Printf("_all");
     }
-    M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_834 - 4) + 4, 0x100);
-    Str_Printf("%s%s", &sp8, var_r31_93, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r31_93) + 5))));
+    M2C_STRUCT_COPY(buf, &lit_834, 0x100);
+    strncpy(sp8, arg0, 0x20 - (strlen((const char *) var_r31_93) + 5));
+    Str_Printf("%s%s", sp8, var_r31_93);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vt'
 u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, int arg4, MKCollisionGroundHint *arg5, MKCollisionMode arg6) {
@@ -763,11 +761,10 @@ loop_13:
     return var_r31_936;
 }
 
-#if 0 // DRAFT: undefined identifier 'MKPtrList'
+template <class T0> class MKPtrList { public: void Destroy(T0 *); };
 void MKCollision_RemoveManager(MKCollisionManager *arg0) {
     ((MKPtrList<MKCollisionManager> *) &managers)->Destroy(arg0);
 }
-#endif
 
 void MKCollision_AddManager(MKCollisionManager *arg0) {
     MKCollisionManager **temp_r4_1140;
@@ -795,7 +792,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKCollisionManager **' and 'long *'
 void MKCollision_Deinit() {
     MKCollisionManager **temp_r31_1184;
     MKCollisionManager **temp_r3_1183;
@@ -805,7 +801,7 @@ void MKCollision_Deinit() {
         temp_r31_1184 = temp_r3_1183 - 4;
         managers = temp_r31_1184;
     } while ((u32) M2C_FIELD(temp_r3_1183, u32 *, -4) != 0U);
-    if (temp_r31_1184 != &gEmptyPtrList) {
+    if (temp_r31_1184 != (MKCollisionManager **) &gEmptyPtrList) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1184, NULL, 0);
         } else {
@@ -814,7 +810,6 @@ void MKCollision_Deinit() {
     }
     managers = NULL;
 }
-#endif
 
 void MKCollision_Init() {
     MKCollisionManager **var_r3_1227;
