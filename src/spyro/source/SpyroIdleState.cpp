@@ -65,86 +65,60 @@ extern M2C_UNK gb;
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroIdleState states__14SpyroIdleState;            /* unable to generate initializer: confusing struct layout */
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroIdleState::AnyToBreathingTranistion() {
-    EventCamera *temp_r3_31;
-    EventCamera *temp_r3_71;
-    u8 var_r0_74;
-    u8 var_r3_34;
-    u8 var_r3_64;
+    EventCamera *camera;
+    u8 flag;
 
-    temp_r3_31 = EventCamera_GetCurrent();
-    var_r3_34 = temp_r3_31 == NULL;
-    if ((u8) (temp_r3_31 == NULL) != 0) {
-        var_r3_34 = this->unk10->unk3D3;
+    camera = EventCamera_GetCurrent();
+    flag = 0;
+    if (camera == NULL) {
+        flag = this->unk10->unk3D3;
     }
-    if (var_r3_34 != 0) {
-        var_r3_34 = M2C_FIELD(this->unk10->unk260, u8 *, 0x14);
+    if (flag != 0) {
+        flag = M2C_FIELD(this->unk10->unk260, u8 *, 0x14);
     }
-    if (var_r3_34 != 0) {
-        var_r3_34 = M2C_FIELD(GameData::gameData, s32 *, 0x158) != 2;
+    if (flag != 0) {
+        flag = M2C_FIELD(GameData::gameData, s32 *, 0x158) != 2;
     }
-    if ((var_r3_34 != 0) && ((s32) this->unk14.unk0 != 4)) {
+    if ((flag != 0) && (M2C_FIELD(&this->unk14, s32 *, 0) != 4)) {
         this->unk14.SetState(this, 4, 0U);
-        var_r3_64 = 1;
-    } else {
-        var_r3_64 = 0;
+        return 1;
     }
-    if (var_r3_64 == 0) {
-        temp_r3_71 = EventCamera_GetCurrent();
-        var_r0_74 = temp_r3_71 == NULL;
-        if ((u8) (temp_r3_71 == NULL) != 0) {
-            var_r0_74 = this->unk10->unk3D3;
-        }
-        if ((var_r0_74 != 0) && ((s32) this->unk14.unk0 != 3)) {
-            this->unk14.SetState(this, 3, 0U);
-            return 1U;
-        }
-        var_r3_64 = 0;
-        /* Duplicate return node #17. Try simplifying control flow for better match */
-        return var_r3_64;
+    camera = EventCamera_GetCurrent();
+    flag = 0;
+    if (camera == NULL) {
+        flag = this->unk10->unk3D3;
     }
-    return var_r3_64;
+    if ((flag != 0) && (M2C_FIELD(&this->unk14, s32 *, 0) != 3)) {
+        this->unk14.SetState(this, 3, 0U);
+        return 1;
+    }
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroIdleState::Breathing2Transition() {
-    Spyro *temp_r3_126;
-    u8 var_r0_127;
-    u8 var_r3_119;
+    Spyro *spyro;
+    u8 flag;
 
-    if ((u8) (EventCamera_GetCurrent() != NULL) != 0) {
+    if (EventCamera_GetCurrent() != NULL) {
         this->unk14.SetState(this, 0, 1U);
-        var_r3_119 = 1;
-    } else {
-        var_r3_119 = 0;
+        return 1;
     }
-    if (var_r3_119 == 0) {
-        temp_r3_126 = this->unk10;
-        var_r0_127 = temp_r3_126->unk3D3;
-        if (var_r0_127 != 0) {
-            var_r0_127 = M2C_FIELD(temp_r3_126->unk260, u8 *, 0x14) == 0;
-        }
-        if (var_r0_127 != 0) {
-            this->unk14.SetState(this, 3, 1U);
-            var_r3_119 = 1;
-        } else {
-            var_r3_119 = 0;
-        }
+    spyro = this->unk10;
+    flag = 0;
+    if (spyro->unk3D3 != 0) {
+        flag = M2C_FIELD(spyro->unk260, u8 *, 0x14) == 0;
     }
-    if (var_r3_119 == 0) {
-        if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) {
-            this->unk14.SetState(this, 0, 1U);
-            return 1U;
-        }
-        var_r3_119 = 0;
-        /* Duplicate return node #13. Try simplifying control flow for better match */
-        return var_r3_119;
+    if (flag != 0) {
+        this->unk14.SetState(this, 3, 1U);
+        return 1;
     }
-    return var_r3_119;
+    if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) {
+        this->unk14.SetState(this, 0, 1U);
+        return 1;
+    }
+    return 0;
 }
-#endif
 
 void SpyroIdleState::Breathing2Update() {
     Breathing2Transition();
@@ -154,11 +128,9 @@ void SpyroIdleState::Breathing2Exit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::Breathing2Enter() {
     this->unk10->SetAnim(3U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
 s32 SpyroIdleState::BreathingTransition() {
     u8 temp_r0_219;
@@ -184,21 +156,17 @@ void SpyroIdleState::BreathingExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::BreathingEnter() {
     this->unk10->SetAnim(2U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroIdleState::OneOffIdleTransition() {
-    if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk14.unk0 != 0)) {
+    if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 0)) {
         this->unk14.SetState(this, 0, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 void SpyroIdleState::OneOffIdleUpdate() {
     OneOffIdleTransition();
@@ -220,7 +188,6 @@ void SpyroIdleState::OneOffIdleExit() {
     this->unk10->SetMeleeButtonStateTimeout(0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::OneOffIdleEnter() {
     Spyro *temp_r3_387;
     Spyro *temp_r3_395;
@@ -240,19 +207,14 @@ void SpyroIdleState::OneOffIdleEnter() {
     }
     this->unk10->SetMeleeButtonStateTimeout(1U);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::SelectAnimation() {
-    Spyro *temp_r4_476;
-    s32 temp_r3_479;
-    s32 temp_r5_418;
-    u32 var_r6_493;
-    void *temp_r3_477;
-    void *var_r3_488;
+    Spyro *spyro;
+    void *base;
+    s32 count;
+    u32 flags;
 
-    temp_r5_418 = this->unk3C;
-    if ((temp_r5_418 == 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk28) && ((u8) M2C_FIELD(&gb, u8 *, 0x35D) == 0)) {
+    if ((this->unk3C == 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk28) && ((u8) M2C_FIELD(&gb, u8 *, 0x35D) == 0)) {
         if ((s32) this->unk2C == 5) {
             this->unk3C = 2;
             this->unk2C = 0;
@@ -261,65 +223,54 @@ void SpyroIdleState::SelectAnimation() {
             this->unk2C += 1;
         }
         this->unk28 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
-    } else if ((temp_r5_418 != 0) && ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) || ((s32) this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk44 > 1))) {
+    } else if ((this->unk3C != 0) && ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) || ((s32) this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk44 > 1))) {
         this->unk3C = 0;
         this->unk28 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
     }
-    temp_r4_476 = this->unk10;
-    temp_r3_477 = temp_r4_476->unk27C;
-    temp_r3_479 = M2C_FIELD(temp_r3_477, s32 *, 0x16C);
-    if (((u32) (-temp_r3_479 & ~temp_r3_479) >> 0x1FU) != 0) {
-        if (temp_r3_479 != 0) {
-            var_r3_488 = ((u8 *) temp_r3_477) + 8 + ((temp_r3_479 - 1) * 0x58);
-        } else {
-            var_r3_488 = NULL;
-        }
-        var_r6_493 = M2C_FIELD(var_r3_488, u32 *, 0x44);
-    } else {
-        var_r6_493 = 0;
+    spyro = this->unk10;
+    count = M2C_FIELD(spyro->unk27C, s32 *, 0x16C);
+    flags = 0;
+    if (count > 0) {
+        base = (u8 *) spyro->unk27C + 8 + ((count - 1) * 0x58);
+        flags = M2C_FIELD(base, u32 *, 0x44);
     }
-    this->unk30.Update(temp_r4_476, 1U, var_r6_493, (IdleAnimNumber) this->unk3C, 0.0f);
+    this->unk30.Update(spyro, 1U, flags, (IdleAnimNumber) this->unk3C, 0.0f);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroIdleState::SlideTransition() {
-    s32 temp_r3_524;
-    u32 var_r0_538;
-    u8 var_r3_518;
-    u8 var_r3_544;
-    void *temp_r3_522;
-    void *var_r3_533;
+    Spyro *spyro;
+    void *base;
+    s32 count;
+    u32 flags;
+    f32 sum;
+    u8 flag;
+    u8 result;
 
-    var_r3_518 = AnyToBreathingTranistion();
-    if (var_r3_518 == 0) {
-        temp_r3_522 = this->unk10->unk27C;
-        temp_r3_524 = M2C_FIELD(temp_r3_522, s32 *, 0x16C);
-        if (((u32) (-temp_r3_524 & ~temp_r3_524) >> 0x1FU) != 0) {
-            if (temp_r3_524 != 0) {
-                var_r3_533 = ((u8 *) temp_r3_522) + 8 + ((temp_r3_524 - 1) * 0x58);
-            } else {
-                var_r3_533 = NULL;
-            }
-            var_r0_538 = M2C_FIELD(var_r3_533, u32 *, 0x44);
-        } else {
-            var_r0_538 = 0;
-        }
-        var_r3_544 = ((var_r0_538 >> 3U) & 1) ^ 1;
-        if (var_r3_544 == 0) {
-            var_r3_544 = (u8) ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU);
-        }
-        if ((var_r3_544 != 0) && ((s32) this->unk14.unk0 != 0)) {
-            this->unk14.SetState(this, 0, 0U);
-            return 1U;
-        }
-        var_r3_518 = 0;
-        /* Duplicate return node #13. Try simplifying control flow for better match */
-        return var_r3_518;
+    result = AnyToBreathingTranistion();
+    if (result != 0) {
+        return result;
     }
-    return var_r3_518;
+    spyro = this->unk10;
+    count = M2C_FIELD(spyro->unk27C, s32 *, 0x16C);
+    flags = 0;
+    if (count > 0) {
+        base = (u8 *) spyro->unk27C + 8 + ((count - 1) * 0x58);
+        flags = M2C_FIELD(base, u32 *, 0x44);
+    }
+    flag = ((flags >> 3U) & 1U) ^ 1U;
+    if (flag == 0) {
+        sum = spyro->unk340 * spyro->unk340 + (spyro->unk338 * spyro->unk338 + spyro->unk33C * spyro->unk33C);
+        flag = sum < 10000.0f;
+    }
+    if (flag == 0) {
+        return 0;
+    }
+    if (M2C_FIELD(&this->unk14, s32 *, 0) == 0) {
+        return 0;
+    }
+    this->unk14.SetState(this, 0, 0U);
+    return 1;
 }
-#endif
 
 void SpyroIdleState::SlideUpdate() {
     SlideTransition();
@@ -329,11 +280,9 @@ void SpyroIdleState::SlideExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::SlideEnter() {
     this->unk10->SetAnim(0xAU, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
 void SpyroIdleState::NormalTransition() {
     AnyToBreathingTranistion();
@@ -348,13 +297,11 @@ void SpyroIdleState::NormalExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroIdleState::NormalEnter() {
     this->unk10->SetAnim(0U, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk28 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
     this->unk3C = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroIdleState::Transition() {
@@ -406,14 +353,13 @@ void SpyroIdleState::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void SpyroIdleState::Update() {
     Spyro *temp_r3_839;
 
     temp_r3_839 = this->unk10;
     if ((s32) M2C_FIELD(temp_r3_839->unk27C, s32 *, 0x16C) > 0) {
         temp_r3_839->SetDesiredVelocity(MKVector3::zero, 540000.0f);
-        if (((ContextInfo *) (this->unk10->unk27C + 8))->HitID(2U) != 0) {
+        if (((ContextInfo *) ((u8 *) this->unk10->unk27C + 8))->HitID(2U) != 0) {
             this->unk44 = 1;
         } else {
             this->unk44 = 0;
@@ -421,21 +367,17 @@ void SpyroIdleState::Update() {
     }
     this->unk14.Update(this, 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroIdleState::Exit() {
-    s32 spC;
-    s32 sp8;
+    s32 msg[2];
     KDCamera *temp_r3_882;
 
     temp_r3_882 = this->unk10->GetCamera();
-    spC = 0;
-    sp8 = 0x454;
-    M2C_FIELD(temp_r3_882->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    msg[1] = 0;
+    msg[0] = 0x454;
+    temp_r3_882->Message((MKMessage *) msg);
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
@@ -531,19 +473,20 @@ void SpyroIdleState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: ')' expected
 void SpyroIdleState::Init(Spyro *arg0) {
+    SpyroDescriptor *desc;
+
     this->unk10 = arg0;
     this->unk14.Init((KDStateMachine<SpyroIdleState>::State *) &SpyroIdleState::states, NULL);
     this->unk28 = 0.0f;
     this->unk2C = 0;
-    this->unk30.Init(M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0), MKAnimScript **, 0x34));
+    desc = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0);
+    this->unk30.Init(M2C_FIELD(desc, MKAnimScript **, 0x34));
     this->unk3C = 0;
     this->unk44 = 0;
     this->unk40 = 0;
     this->unk48 = -1;
 }
-#endif
 
 void SpyroIdleState_cpp::__sinit() {
     f64 temp_f0_1466;
