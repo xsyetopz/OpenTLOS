@@ -82,53 +82,46 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void CharacterZapFX::Deinit() {
-    MKHeap *temp_r0_113;
-    MKHeap *temp_r0_132;
-    MKHeap *var_r31_109;
-    MKHeap *var_r3_110;
-    MKHeap *var_r4_108;
-    MKModel *temp_r3_150;
-    u32 temp_r0_118;
+    u8 *cursor;
+    void *entry;
+    void *lowest;
+    void **walk;
+    MKModel *model;
 
-    var_r4_108 = this->unk48;
-    var_r31_109 = var_r4_108;
-    var_r3_110 = var_r4_108;
-loop_3:
-    temp_r0_118 = M2C_FIELD(var_r3_110, u32 *, -4);
-    var_r3_110 -= 4;
-    if (temp_r0_118 != 0U) {
-        temp_r0_113 = var_r3_110->unk0;
-        if (temp_r0_113 < var_r31_109) {
-            var_r31_109 = temp_r0_113;
+    lowest = this->unk48;
+    cursor = (u8 *) this->unk48;
+    for (;;) {
+        cursor -= 4;
+        entry = M2C_FIELD(cursor, void **, 0);
+        if (entry == NULL) {
+            break;
         }
-        goto loop_3;
+        if (entry < lowest) {
+            lowest = entry;
+        }
     }
-    if (var_r3_110 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_132 = var_r4_108->unk0;
-        if (temp_r0_132 != NULL) {
-            if (temp_r0_132 < var_r31_109) {
-                var_r31_109 = temp_r0_132;
+    if (cursor != (u8 *) &gEmptyPtrListDL) {
+        walk = (void **) this->unk48;
+        while (*walk != NULL) {
+            if (*walk < lowest) {
+                lowest = *walk;
             }
-            var_r4_108 += 4;
-            goto loop_9;
+            walk += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_109, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(lowest, NULL, 0);
         } else {
-            free(var_r31_109);
+            free((MKHeap *) lowest);
         }
     }
     this->unk48 = NULL;
-    temp_r3_150 = this->unk4C;
-    if (temp_r3_150 != NULL) {
-        MKModel_Destroy(temp_r3_150);
+    model = this->unk4C;
+    if (model != NULL) {
+        MKModel_Destroy(model);
     }
     CharacterBodyFX::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'spB0'
 void CharacterZapFX::Draw() {
