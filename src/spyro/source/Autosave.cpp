@@ -111,11 +111,13 @@ void Autosave_ConfirmCard() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
+void Autosave_Abort();
+void Autosave_Error();
+
 void Autosave_Update() {
     f32 temp_f1_236;
     f32 temp_f1_307;
-    void *temp_r7_341;
+    u8 *temp_r7_341;
 
     if ((s32) autosave_state == 4) {
         if (autosaveIconThrob <= 0.0f) {
@@ -133,13 +135,13 @@ void Autosave_Update() {
             autosaveIconThrob = 0.0f;
         }
     }
-    if (KDMemoryCard::Update() == 0) {
-        switch ((s32) autosave_state) {             /* irregular */
+    if ((u8) KDMemoryCard::Update() == 0) {
+        switch ((s32) autosave_state) {
         case 4:
         case 0:
-            if (((KDMemoryCard *) autosaveCard != NULL) && ((u8) bRemovalCheck != 0) && (GameVideo_Active() == 0)) {
+            if ((autosaveCard != NULL) && ((u8) bRemovalCheck != 0) && ((u8) GameVideo_Active() == 0)) {
                 if (((u8) autosaveCard->unk9 == 0) || ((u8) autosaveCard->unk8 != 0)) {
-                    if (((s32) *gGMState.GetCurrState() == 7) && ((u8) M2C_FIELD(&gb, u8 *, 0x396) == 0)) {
+                    if (((s32) *(s32 *) gGMState.GetCurrState() == 7) && ((u8) M2C_FIELD(&gb, u8 *, 0x396) == 0)) {
                         Autosave_Abort();
                         return;
                     }
@@ -151,7 +153,7 @@ void Autosave_Update() {
             break;
         case 1:
             Autosave_CopyGameData();
-            if ((KDMemoryCard *) autosaveCard == NULL) {
+            if (autosaveCard == NULL) {
                 autosave_state = 0;
                 return;
             }
@@ -172,11 +174,11 @@ void Autosave_Update() {
             Autosave_ConfirmCard();
             return;
         case 3:
-            if (KDMemoryCard::WasErrorDuringLast() != 0) {
+            if ((u8) KDMemoryCard::WasErrorDuringLast() != 0) {
                 Autosave_Error();
                 return;
             }
-            temp_r7_341 = autosaveCard + ((autosaveFile * 0xC0) + 0xC0);
+            temp_r7_341 = (u8 *) autosaveCard + ((autosaveFile * 0xC0) + 0xC0);
             autosaveTimeStamp.unk0 = M2C_FIELD(temp_r7_341, s32 *, 0);
             autosaveTimeStamp.unk4 = M2C_FIELD(temp_r7_341, s32 *, 4);
             autosaveTimeStamp.unk8 = M2C_FIELD(temp_r7_341, s32 *, 8);
@@ -190,25 +192,24 @@ void Autosave_Update() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'PauseMenu_AutosaveScreen'
+void PauseMenu_AutosaveScreen(const char *);
+
 void Autosave_Abort() {
-    *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
+    *(KDMemoryCard **) MemoryCardScreen::selectedCard = autosaveCard;
     Autosave_Reset();
     autosave_state = 0;
-    PauseMenu_AutosaveScreen"AutosaveCardRemoved";
+    PauseMenu_AutosaveScreen("AutosaveCardRemoved");
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'PauseMenu_AutosaveScreen'
+void PauseMenu_AutosaveScreen(const char *);
+
 void Autosave_Error() {
-    *MemoryCardScreen::selectedCard = (unsigned char) (autosaveCard);
+    *(KDMemoryCard **) MemoryCardScreen::selectedCard = autosaveCard;
     Autosave_Reset();
     autosave_state = 0;
-    PauseMenu_AutosaveScreen"AutosaveError";
+    PauseMenu_AutosaveScreen("AutosaveError");
 }
-#endif
 
 void Autosave_Reset() {
     autosaveCard = NULL;
