@@ -12,6 +12,7 @@ TU, get a header named after the template. A header holds:
   * classes with base, virtual methods in vtable slot order, other methods,
     static members, and m2c-voted `unkXX` fields padded to their offsets;
   * the TU's global free functions and global variables;
+  * `#include "unplaced_enums.h"` when it names an enum henums.py found;
   * with `--inline-root`, the classes' inline members from cxxconv.py's
     weak copies (inlines.py), defined after everything else.
 See hmodel.py for how owners, sizes, and fields are inferred. Without
@@ -30,6 +31,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tlos"))
 from cxxtypes import K, class_names, parse, render  # noqa: E402
+from henums import HEADER, header, value_enums  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import Refs, class_body, header_order, inlined, template_body  # noqa: E402
 from inlines import MARK, by_class  # noqa: E402
@@ -102,6 +104,9 @@ def main() -> int:
 
     inline = by_class(a.inline_root) if a.inline_root else {}
     owner_of = model.owner_map()
+    enums = set(value_enums(model, a.ctx))
+    (a.out_root / HEADER).parent.mkdir(parents=True, exist_ok=True)
+    (a.out_root / HEADER).write_text(header(sorted(enums)))
     by_tu = defaultdict(list)
     for n, tu in owner_of.items():
         by_tu[tu].append(n)
@@ -136,11 +141,13 @@ def main() -> int:
         includes = sorted({owner_of[header_key(d)] for d in need if owner_of.get(header_key(d), tu) != tu})
         # Own classes too: a later class in this header may be named before its definition.
         fwd = sorted(n for n in refs.named | refs.complete | mine
-                     if "::" not in n and "<" not in n and n not in model.templates and n not in sdk)
+                     if "::" not in n and "<" not in n and n not in model.templates and n not in sdk and n not in enums)
         uses_sdk = any(n in sdk for n in refs.named | refs.complete)
         guard = GUARD.sub("_", tu.rsplit(".", 1)[0]).upper() + "_H"
         text = [f"#ifndef {guard}", f"#define {guard}", "", "#include <dolphin.h>" if uses_sdk else "#include <dolphin/types.h>"]
-        text += [f'#include "{i.rsplit(".", 1)[0]}.h"' for i in includes] + [""]
+        text += [f'#include "{i.rsplit(".", 1)[0]}.h"' for i in includes]
+        text += [f'#include "{HEADER}"'] if enums & (refs.named | refs.complete) else []
+        text += [""]
         text += [f"class {n};" for n in fwd] + ([""] if fwd else [])
         defs = [f"inline {fn}" for n in sorted(mine) for fn in inline.get(n, [])]
         # m2c-drafted inline bodies use M2C_* macros; TUs include them only after their headers.
@@ -149,7 +156,7 @@ def main() -> int:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("\n".join(text))
         written += 1
-    print(f"{written} headers written, {len(owner_of)} classes and templates placed")
+    print(f"{written} headers and {HEADER} ({len(enums)} enums) written, {len(owner_of)} classes and templates placed")
     return 0
 
 

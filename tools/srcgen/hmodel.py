@@ -416,7 +416,7 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path) -> Model:
     stems = {r[1].rsplit(".", 1)[0]: r[1] for r in rows if r[2] in ("game", "engine")}
     rets, globs = m2c_types(m2c_root)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
-    model.sdk = sdk_types(ctx)
+    model.sdk, model.ctx = sdk_types(ctx), ctx
     proven = {n: c["size"] for n, c in model.classes.items() if c.get("size")}  # classes.py array probe
     sizes = ROOT / "config" / VERSION / "class_sizes.tsv"
     if sizes.exists():

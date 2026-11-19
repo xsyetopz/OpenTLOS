@@ -36,6 +36,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from asmdata import bindings, objects  # noqa: E402
 from cxxtypes import K, parse, render  # noqa: E402
+from henums import HEADER as ENUM_HEADER, mentions, value_enums  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import member_name  # noqa: E402
 from m2ccalls import CallRewriter, devirtualize, split_args, type_this_vcalls  # noqa: E402
@@ -178,6 +179,7 @@ class Converter:
     def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict, fixes: Path | None = None):
         self.model, self.cnames, self.owner_of, self.sdk, self.free = model, cnames, owner_of, sdk, free
         self.fixes = fixes
+        self.enum_ref = mentions(value_enums(model, model.ctx))
         headers = set(free.values()) | {o.rsplit(".", 1)[0] + ".h" for o in owner_of.values()}
         self.has_header = lambda stem: stem + ".h" in headers
         self.virtuals, self.statics, self.method_cls = set(), set(), {}
@@ -301,6 +303,8 @@ class Converter:
                            if header_key(n) in self.owner_of} - {stem + ".h"})
         if UNPLACED.search(code):
             includes.append("unplaced_templates.h")
+        if self.enum_ref.search(code):
+            includes.append(ENUM_HEADER)
         includes += sorted({self.sdk[n] for n in SDK_NAME.findall(code) if n in self.sdk})
         includes += sorted({self.free[n] for n in re.findall(r"\b(\w+)\s*\(", code)
                             if n in self.free and self.free[n] != stem + ".h"} - set(includes))
