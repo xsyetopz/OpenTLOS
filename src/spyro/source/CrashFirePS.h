@@ -15,7 +15,7 @@ class CrashFirePS : public MKParticleSystem {  // base: ctor/dtor vtable stores
 public:
     virtual ~CrashFirePS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     CrashFirePS(void);
@@ -43,10 +43,7 @@ inline CrashFirePS::~CrashFirePS() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CrashFirePS::CrashFirePS() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CRASHFIREPS_H

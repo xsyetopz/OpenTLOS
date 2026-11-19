@@ -89,7 +89,7 @@ void SeeSaw::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk8C'
-void SeeSaw::Update() {
+void *SeeSaw::Update() {
     void *sp1B0;
     f64 sp1A8;                                      /* compiler-managed */
     f64 sp1A0;
@@ -327,7 +327,7 @@ loop_24:
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void SeeSaw::LoadDone() {
+s32 SeeSaw::LoadDone() {
     f32 sp8;
     MKHeap **temp_r3_600;
     f32 temp_f0_602;
@@ -399,7 +399,7 @@ s32 SeeSaw::LoadLine(MKIniLine *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void SeeSaw::Resolve() {
+f32 SeeSaw::Resolve() {
     void *temp_r31_751;
 
     MKProp::Resolve();

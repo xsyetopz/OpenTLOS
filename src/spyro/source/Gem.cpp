@@ -126,7 +126,7 @@ void Gem::Deinit() {
     Collectable::Deinit();
 }
 
-void Gem::Update() {
+void *Gem::Update() {
     Collectable::Update();
 }
 

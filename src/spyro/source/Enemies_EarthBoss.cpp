@@ -99,14 +99,12 @@ extern void *gpTranslation_StringArray;
 static s32 lit_1315 = 4;
 static s32 lit_1319 = 5;
 static s32 lit_1334 = 1;
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 static M2C_UNK lit_1039;                               /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_1040;                               /* unable to generate initializer: unknown type; const */
 
-void EarthBoss::GetCharacterName() {
+s32 EarthBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x32C);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EarthBoss::InterceptDamage() {
@@ -985,7 +983,7 @@ void EarthBoss::CheckAnimEvents() {
 }
 #endif
 
-void EarthBoss::Update() {
+void *EarthBoss::Update() {
     EarthBossArm *temp_r3_1580;
 
     TempDisableCollision(1U);
@@ -1126,7 +1124,7 @@ void EarthBoss::SetupCollision() {
     SetupCollisionSphere(5, "Spine03", "Spine02", 350.0f, *((MKVector3 *) &sp68));
 }
 
-void EarthBoss::LoadDone() {
+s32 EarthBoss::LoadDone() {
     Enemy::LoadDone();
     this->unkA40 = this->unkA3C;
     this->unkCCC = (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Bicep");
@@ -1256,7 +1254,7 @@ void EarthBossDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_1039'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 s32 EarthBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp36;
     s8 sp2C;
@@ -2686,7 +2684,7 @@ loop_49:
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void EarthBossArm::Update() {
+void *EarthBossArm::Update() {
     f32 sp3BC;
     f32 sp3B8;
     f32 sp3B4;
@@ -3201,7 +3199,7 @@ void EarthBossArm::Init2(EarthBoss *arg0) {
 }
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not
-void EarthBossArm::LoadDone() {
+s32 EarthBossArm::LoadDone() {
     MKCollisionInfo *var_r3_5565;
     MKHeap *temp_r31_5547;
     MKHeap *temp_r3_5556;

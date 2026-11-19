@@ -255,7 +255,7 @@ void PoisonBomb::Activate() {
 }
 
 #if 0 // DRAFT: declaration syntax error
-void PoisonBomb::Update() {
+void *PoisonBomb::Update() {
     s8 sp101;
     u8 sp100;
     s32 spFC;

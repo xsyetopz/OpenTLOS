@@ -93,7 +93,7 @@ void EnemySpawner::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-void EnemySpawner::Update() {
+void *EnemySpawner::Update() {
     KDSynkerPlayer3 *temp_r3_165;
     u8 var_r31_162;
     void *temp_r30_164;
@@ -130,7 +130,7 @@ void EnemySpawner::Reset() {
 }
 
 #if 0 // DRAFT: illegal operand
-void EnemySpawner::LoadDone() {
+s32 EnemySpawner::LoadDone() {
     MKProp::LoadDone();
     if (!(this->unk10 & 0x160000)) {
         PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
@@ -235,12 +235,12 @@ void SpawnPoint::Message(MKMessage *arg0) {
 }
 #endif
 
-void SpawnPoint::Resolve() {
+f32 SpawnPoint::Resolve() {
     MKProp::Resolve();
     this->unk50.Resolve();
 }
 
-void SpawnPoint::LoadDone() {
+s32 SpawnPoint::LoadDone() {
     MKProp::LoadDone();
     this->unk50.LoadDone();
     if ((u8) this->unk50.unk50 == 0) {

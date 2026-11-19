@@ -33,7 +33,7 @@ public:
     virtual ~IceTier1(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Spawn(EnemyGeneratorDoor *);
     IceTier1(void);
     /* 0xb10 */ Goal<Enemy>* unkB10;
@@ -51,7 +51,7 @@ public:
     virtual ~IceTier2(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void SetupCollision(void);
     virtual void UpdateCollisionItems(void);
@@ -93,7 +93,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier1::IceTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -103,17 +102,13 @@ inline IceTier1::~IceTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceTier1Descriptor::IceTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier2::IceTier2() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB38 = 0;
-    return this;
 }
 #endif
 
@@ -133,16 +128,12 @@ inline void *IceTier2::GetCollisionInfo() {
     return this->unkB14;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceTier2Descriptor::IceTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier3::IceTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 

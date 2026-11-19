@@ -35,7 +35,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline LavaDerick::LavaDerick() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
@@ -45,10 +44,7 @@ inline LavaDerick::~LavaDerick() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaDerickDescriptor::LavaDerickDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LAVADERICK_H

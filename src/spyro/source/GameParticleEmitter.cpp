@@ -584,7 +584,7 @@ void GameParticleEmitter::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-void GameParticleEmitter::Update() {
+void *GameParticleEmitter::Update() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
@@ -974,7 +974,7 @@ loop_3:
     }
 }
 
-void GameParticleEmitter::LoadDone() {
+s32 GameParticleEmitter::LoadDone() {
     f32 temp_f0_1821;
     u32 temp_r0_1846;
     void **temp_r3_1824;

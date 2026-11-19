@@ -60,7 +60,7 @@ void SpikeTrap::Reset() {
     SetState(0);
 }
 
-void SpikeTrap::Update() {
+void *SpikeTrap::Update() {
     s32 temp_r0_132;
 
     GameProp::Update();
@@ -95,7 +95,7 @@ void SpikeTrap::Update() {
     }
 }
 
-void SpikeTrap::LoadDone() {
+s32 SpikeTrap::LoadDone() {
     Trap::LoadDone();
 }
 

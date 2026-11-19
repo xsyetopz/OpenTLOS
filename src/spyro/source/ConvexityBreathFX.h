@@ -19,7 +19,7 @@ public:
     virtual ~ConvexityBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     ConvexityBreathFX(void);
@@ -76,11 +76,8 @@ inline ConvexityBreathFX::~ConvexityBreathFX() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ConvexityBreathFX::ConvexityBreathFX() {
     this->unk124 = 0;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CONVEXITYBREATHFX_H

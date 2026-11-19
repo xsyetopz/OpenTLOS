@@ -194,7 +194,7 @@ void LockOnTarget::Draw() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void LockOnTarget::Update() {
+void *LockOnTarget::Update() {
     f32 temp_f1_451;
     s32 temp_r0_383;
     void *temp_r31_460;

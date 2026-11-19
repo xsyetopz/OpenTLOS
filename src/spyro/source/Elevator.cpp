@@ -332,7 +332,7 @@ void Elevator::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
-void Elevator::LoadDone() {
+s32 Elevator::LoadDone() {
     f64 sp10;
     f64 sp8;
     f32 temp_f0_637;

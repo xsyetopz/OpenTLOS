@@ -438,7 +438,7 @@ void DragonStatue::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void DragonStatue::Update() {
+void *DragonStatue::Update() {
     Matrix sp330;
     Matrix sp2F0;
     Matrix sp2B0;
@@ -1257,7 +1257,7 @@ s32 DragonStatue::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadFloat("AngularAcceleration", &this->unkF0, 0) != 0);
 }
 
-void DragonStatue::LoadDone() {
+s32 DragonStatue::LoadDone() {
     f64 sp10;
     f64 sp8;
     f64 temp_f0_2295;

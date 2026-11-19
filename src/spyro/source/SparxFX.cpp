@@ -466,7 +466,7 @@ void SparxFX::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void SparxFX::Update() {
+void *SparxFX::Update() {
     f64 sp158;
     f64 sp150;
     f64 sp148;
@@ -750,7 +750,7 @@ loop_24:
 #endif
 
 #if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does
-void SparxFX::LoadDone() {
+s32 SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;
     MKHeap *temp_r3_1484;
     MKModel *temp_r3_1482;
@@ -772,7 +772,7 @@ void SparxFX::LoadDone() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void SparxFX::Resolve() {
+f32 SparxFX::Resolve() {
     f64 sp40;
     f64 sp38;
     f64 sp30;

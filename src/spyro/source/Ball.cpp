@@ -98,12 +98,275 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 extern Ball *pDribblee;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
-static DataMap ballTypeMap;                         /* unable to generate initializer: confusing struct layout */
+static DataMap ballTypeMap[5] = {
+    { 0, .L_8035ED35 },
+    { 1, .L_8035ED43 },
+    { 2, .L_8035ED51 },
+    { 3, .L_8035ED5E },
+    { 4, NULL },
+};
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_groups_0x28'
 static struct _struct_groups_0x28 groups[8];
 #endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_ballProperties_0x3'
 static struct _struct_ballProperties_0x3 ballProperties[4]; /* unable to generate initializer: non-zero padding; const */
+static s8 .L_8035ED35[0xE] = {
+    0x53,
+    0x6E,
+    0x6F,
+    0x77,
+    0,
+    0x42,
+    0x41,
+    0x4C,
+    0x4C,
+    0x54,
+    0x59,
+    0x50,
+    0x45,
+    0x5F,
+}; /* const */
+static s8 .L_8035ED43[0xE] = {
+    0x52,
+    0x6F,
+    0x63,
+    0x6B,
+    0,
+    0x42,
+    0x41,
+    0x4C,
+    0x4C,
+    0x54,
+    0x59,
+    0x50,
+    0x45,
+    0x5F,
+}; /* const */
+static s8 .L_8035ED51[0xD] = { 0x49, 0x63, 0x65, 0, 0x42, 0x41, 0x4C, 0x4C, 0x54, 0x59, 0x50, 0x45, 0x5F }; /* const */
+static s8 .L_8035ED5E[0xDC] = {
+    0x53,
+    0x6E,
+    0x6F,
+    0x77,
+    0x43,
+    0x79,
+    0x6E,
+    0x64,
+    0x65,
+    0x72,
+    0,
+    0x67,
+    0x72,
+    0x6F,
+    0x75,
+    0x70,
+    0,
+    0x43,
+    0x72,
+    0x61,
+    0x73,
+    0x68,
+    0x4D,
+    0x69,
+    0x73,
+    0x74,
+    0x50,
+    0x53,
+    0,
+    0x72,
+    0x6F,
+    0x6C,
+    0x6C,
+    0x46,
+    0x61,
+    0x64,
+    0x65,
+    0x49,
+    0x6E,
+    0,
+    0x72,
+    0x6F,
+    0x6C,
+    0x6C,
+    0x46,
+    0x61,
+    0x64,
+    0x65,
+    0x4F,
+    0x75,
+    0x74,
+    0,
+    0x66,
+    0x6C,
+    0x79,
+    0x46,
+    0x61,
+    0x64,
+    0x65,
+    0x49,
+    0x6E,
+    0,
+    0x66,
+    0x6C,
+    0x79,
+    0x46,
+    0x61,
+    0x64,
+    0x65,
+    0x4F,
+    0x75,
+    0x74,
+    0,
+    0x72,
+    0x6F,
+    0x6C,
+    0x6C,
+    0x43,
+    0x75,
+    0x74,
+    0x6F,
+    0x66,
+    0x66,
+    0x53,
+    0x70,
+    0x65,
+    0x65,
+    0x64,
+    0,
+    0x68,
+    0x69,
+    0x74,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x6D,
+    0x65,
+    0x6C,
+    0x74,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x70,
+    0x6C,
+    0x61,
+    0x63,
+    0x65,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x62,
+    0x6F,
+    0x75,
+    0x6E,
+    0x63,
+    0x65,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x62,
+    0x6F,
+    0x75,
+    0x6E,
+    0x63,
+    0x65,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x32,
+    0,
+    0x66,
+    0x6C,
+    0x79,
+    0x69,
+    0x6E,
+    0x67,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x73,
+    0x6E,
+    0x64,
+    0x48,
+    0x69,
+    0x74,
+    0x42,
+    0x79,
+    0x48,
+    0x65,
+    0x72,
+    0x6F,
+    0,
+    0x73,
+    0x6E,
+    0x64,
+    0x48,
+    0x69,
+    0x74,
+    0x42,
+    0x79,
+    0x48,
+    0x65,
+    0x72,
+    0x6F,
+    0x32,
+    0,
+    0x72,
+    0x6F,
+    0x6C,
+    0x6C,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x4C,
+    0x6F,
+    0x6F,
+    0x70,
+    0,
+    0x68,
+    0x69,
+    0x74,
+    0x45,
+    0x6E,
+    0x65,
+    0x6D,
+    0x79,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x62,
+    0x61,
+    0x6C,
+    0x6C,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+}; /* const */
 
 void Ball::BridgeHit(float arg0, float arg1) {
     f64 spD8;
@@ -349,7 +612,7 @@ void Ball::SetParentTree(SnowballTree *arg0, int arg1, MKVector3 &arg2, float ar
     this->unk2A0 = arg3;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'groups'
 void Ball::SetGroup(int arg0) {
     s32 temp_r0_547;
     s32 temp_r5_546;
@@ -406,7 +669,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
+#if 0 // DRAFT: undefined identifier 'groups'
 void Ball::FindClosestGroup() {
     f64 sp30;
     f64 sp28;
@@ -1663,7 +1926,7 @@ void Ball::UpdateMeltingGrowing() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float,
 void Ball::PushOutOfThings() {
     MKCollisionResult sp30;
     u8 sp10;
@@ -2949,7 +3212,7 @@ block_62:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void Ball::Update() {
+void *Ball::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -3185,7 +3448,7 @@ void Ball::PutInTree() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void Ball::Resolve() {
+f32 Ball::Resolve() {
     void *temp_r31_5414;
     void *temp_r31_5423;
 
@@ -3201,7 +3464,7 @@ void Ball::Resolve() {
 #endif
 
 #if 0 // DRAFT: pointer/array required
-void Ball::LoadDone() {
+s32 Ball::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp14;
@@ -3319,7 +3582,7 @@ s32 BallDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5705;
 
     var_r31_5705 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("rollFadeIn", &this->unk10C, 0) != 0) || (arg0->LoadFloat("rollFadeOut", &this->unk110, 0) != 0) || (arg0->LoadFloat("flyFadeIn", &this->unk114, 0) != 0) || (arg0->LoadFloat("flyFadeOut", &this->unk118, 0) != 0) || (arg0->LoadFloat("rollCutoffSpeed", &this->unk11C, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "meltSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "placeSound", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "bounceSound", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "bounceSound2", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "flyingSound", (int *) &this->unkF8) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero2", (int *) &this->unk100) != 0) || (KDSound_LoadLine(arg0, "rollSoundLoop", (int *) &this->unk108) != 0) || (KDSound_LoadLine(arg0, "hitEnemySound", (int *) &this->unk104) != 0) || (DataMap_LoadLine(arg0, "ballType", &ballTypeMap, (unsigned int *) &this->unk124) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("rollFadeIn", &this->unk10C, 0) != 0) || (arg0->LoadFloat("rollFadeOut", &this->unk110, 0) != 0) || (arg0->LoadFloat("flyFadeIn", &this->unk114, 0) != 0) || (arg0->LoadFloat("flyFadeOut", &this->unk118, 0) != 0) || (arg0->LoadFloat("rollCutoffSpeed", &this->unk11C, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "meltSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "placeSound", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "bounceSound", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "bounceSound2", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "flyingSound", (int *) &this->unkF8) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero2", (int *) &this->unk100) != 0) || (KDSound_LoadLine(arg0, "rollSoundLoop", (int *) &this->unk108) != 0) || (KDSound_LoadLine(arg0, "hitEnemySound", (int *) &this->unk104) != 0) || (DataMap_LoadLine(arg0, "ballType", ballTypeMap, (unsigned int *) &this->unk124) != 0)) {
         var_r31_5705 = 1;
     }
     return var_r31_5705;

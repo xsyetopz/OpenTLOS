@@ -64,7 +64,7 @@ void WaterVolume::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-void WaterVolume::Resolve() {
+f32 WaterVolume::Resolve() {
     s8 sp14;
     MKCollisionInfo *sp10;
     s32 spC;
@@ -81,7 +81,7 @@ void WaterVolume::Resolve() {
 }
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
-void WaterVolume::LoadDone() {
+s32 WaterVolume::LoadDone() {
     Matrix sp10;
     M2C_UNK spC;
     s32 temp_r31_161;

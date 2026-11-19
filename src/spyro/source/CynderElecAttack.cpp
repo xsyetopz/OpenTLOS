@@ -126,7 +126,7 @@ void CynderElecAttack::Draw() {
 
 }
 
-void CynderElecAttack::Update() {
+void *CynderElecAttack::Update() {
     MKVector3 *temp_r3_239;
     ManagedLight *temp_r3_264;
     ManagedLight *temp_r4_245;
@@ -163,7 +163,7 @@ void CynderElecAttack::Update() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void CynderElecAttack::Resolve() {
+f32 CynderElecAttack::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -207,7 +207,7 @@ void CynderElecAttack::Resolve() {
 }
 #endif
 
-void CynderElecAttack::LoadDone() {
+s32 CynderElecAttack::LoadDone() {
     Projectile::LoadDone();
 }
 

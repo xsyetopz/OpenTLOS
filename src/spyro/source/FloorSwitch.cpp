@@ -160,7 +160,7 @@ void FloorSwitch::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void FloorSwitch::Update() {
+void *FloorSwitch::Update() {
     s8 sp130;
     f64 sp128;
     f64 sp120;
@@ -395,7 +395,7 @@ void FloorSwitch::Update() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void FloorSwitch::LoadDone() {
+s32 FloorSwitch::LoadDone() {
     Trap::LoadDone();
     if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0) {
         operator new(0x28U, NULL, 0);

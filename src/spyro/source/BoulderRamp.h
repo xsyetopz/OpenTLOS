@@ -20,10 +20,10 @@ public:
     virtual ~BoulderRamp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     BoulderRamp(void);
     void BoulderSinkingExit(void);
     void BoulderSinkingUpdate(void);
@@ -86,14 +86,10 @@ inline BoulderRamp::BoulderRamp() {
     this->unkF4.unk1C = nanf;
     this->unkF4.unk20 = 0.0f;
     this->unkF4.unk24 = 0.0f;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline BoulderRampDescriptor::BoulderRampDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BOULDERRAMP_H

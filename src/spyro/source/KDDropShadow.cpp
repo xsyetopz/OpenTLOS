@@ -81,7 +81,7 @@ void KDDropShadow::Deinit() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDDropShadowDescriptor *' to
-void KDDropShadow::LoadDone() {
+s32 KDDropShadow::LoadDone() {
     MKHeap *temp_r3_176;
     MKHeap *temp_r3_178;
     MKHeap *var_r3_185;

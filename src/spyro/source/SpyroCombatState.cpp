@@ -1179,10 +1179,9 @@ void SpyroCombatState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroCombatState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroCombatState>FPQ234KDStateMachine<16SpyroCombatState>5StateP34KDStateMachine<16SpyroCombatState>(&this->unk14, (KDStateMachine<SpyroCombatState>::State *) &SpyroCombatState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroCombatState>::State *) &SpyroCombatState::states, NULL);
     this->unk28 = 0;
     this->unk2C = 0;
     this->unk2D = 0;
@@ -1194,7 +1193,6 @@ void SpyroCombatState::Init(Spyro *arg0) {
     this->unk34 = 0.0f;
     this->unk10->unk460.SetChargeHitProp(NULL);
 }
-#endif
 
 void CombatStateData::GetLastTailSweepTarget() {
     ((TargetContext *) &this->unk20.unk8)->Get();

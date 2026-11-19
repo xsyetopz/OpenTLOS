@@ -25,14 +25,11 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDMatrixRefProperty::KDMatrixRefProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
-    return this;
 }
-#endif
 
 inline s32 KDMatrixRefProperty::GetInstanceDataSize() const {
     return 4;

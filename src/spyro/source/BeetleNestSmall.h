@@ -14,8 +14,8 @@ class BeetleNestSmall : public ShatterWaypointSpawn {  // base: base ctor call
 public:
     virtual ~BeetleNestSmall(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     BeetleNestSmall(void);
     /* 0x208 */ u32 unk208;
@@ -43,7 +43,6 @@ inline BeetleNestSmall::~BeetleNestSmall() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline BeetleNestSmall::BeetleNestSmall() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
@@ -51,10 +50,7 @@ inline s32 BeetleNestSmallDescriptor::GetSpawnEnemyType() {
     return 0x11;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline BeetleNestSmallDescriptor::BeetleNestSmallDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BEETLENESTSMALL_H

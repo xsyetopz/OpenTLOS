@@ -48,7 +48,7 @@ void Arrow::Fire(const Matrix &arg0, float arg1, float arg2) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
-void Arrow::Update() {
+void *Arrow::Update() {
     s8 sp119;
     s8 sp118;
     s32 sp114;

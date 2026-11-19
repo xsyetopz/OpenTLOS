@@ -190,7 +190,7 @@ block_7:
 #endif
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
-void PitCover::LoadDone() {
+s32 PitCover::LoadDone() {
     s32 temp_r0_286;
     s32 var_r29_274;
     s32 var_r31_276;

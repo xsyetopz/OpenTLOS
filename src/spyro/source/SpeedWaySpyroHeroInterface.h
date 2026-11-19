@@ -23,7 +23,7 @@ public:
     virtual f32 GetCollideRadius(void);
     virtual void GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
-    virtual void GetCollisionInfo(void);
+    virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
     virtual s32 GetEffects(void);
     virtual void GetInput(void);
@@ -139,8 +139,8 @@ inline s32 SpeedWaySpyroHeroInterface::GetCollisionIgnoreMaterials() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void SpeedWaySpyroHeroInterface::GetCollisionInfo() {
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
+inline MKPropDescriptor **SpeedWaySpyroHeroInterface::GetCollisionInfo() {
     return M2C_FIELD(this, s32 *, 4) + 0x70;
 }
 #endif

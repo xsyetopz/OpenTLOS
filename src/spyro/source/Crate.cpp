@@ -740,7 +740,7 @@ block_38:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unksp6C'
-void Crate::Update() {
+void *Crate::Update() {
     MKCollisionResult spB0;
     Matrix sp70;
     f64 sp68;
@@ -896,7 +896,7 @@ void Crate::Draw() {
     }
 }
 
-void Crate::Resolve() {
+f32 Crate::Resolve() {
     void *temp_r3_1733;
 
     KDPropEx::Resolve();
@@ -907,7 +907,7 @@ void Crate::Resolve() {
 }
 
 #if 0 // DRAFT: expression syntax error
-void Crate::LoadDone() {
+s32 Crate::LoadDone() {
     Matrix sp30;
     M2C_UNK sp2C;
     f64 sp28;

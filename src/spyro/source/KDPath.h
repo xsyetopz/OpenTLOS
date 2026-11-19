@@ -65,9 +65,9 @@ public:
     virtual ~KDLocalPathSegmentProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     /* 0x04c */ KDPathSegment unk4C;
     /* 0x084 */ MKSceneManager* unk84;
 };
@@ -133,9 +133,9 @@ public:
     virtual ~KDPathSegmentProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     /* 0x04c */ KDPathSegment unk4C;
 };
 
@@ -169,9 +169,9 @@ public:
     virtual ~KDSplinePathSegmentProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     /* 0x04c */ KDSplinePathSegment unk4C;
 };
 
@@ -209,7 +209,7 @@ inline s32 KDPathSegmentProp::LoadLine(MKIniLine *arg0) {
     return var_r31_2274;
 }
 
-inline void KDPathSegmentProp::Resolve() {
+inline f32 KDPathSegmentProp::Resolve() {
     MKProp::Resolve();
     ((KDPathSegment *) &this->unk4C)->Resolve();
 }
@@ -265,7 +265,7 @@ inline s32 KDSplinePathSegmentProp::LoadLine(MKIniLine *arg0) {
     return var_r31_47;
 }
 
-inline void KDSplinePathSegmentProp::Resolve() {
+inline f32 KDSplinePathSegmentProp::Resolve() {
     MKProp::Resolve();
     ((KDPathSegment *) &this->unk4C)->Resolve();
 }

@@ -27,7 +27,7 @@ void SparkleEffect::Draw() {
     MKMaterial_SetMaterial(M2C_FIELD(this->unk0, MKMaterial **, 0x38));
 }
 
-void SparkleEffect::Update() {
+void *SparkleEffect::Update() {
     f32 temp_f1_125;
     f32 temp_f1_128;
     f32 var_f2_104;
@@ -73,7 +73,7 @@ void SparkleEffect::Update() {
     }
 }
 
-void SparkleEffect::LoadDone() {
+s32 SparkleEffect::LoadDone() {
     MKProp::LoadDone();
 }
 

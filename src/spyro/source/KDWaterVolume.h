@@ -17,7 +17,7 @@ class MKVector3;
 class KDWaterVolume : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~KDWaterVolume(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual s32 IsEnabled(void);
     f32 GetWaterSurface(const MKVector3 &);

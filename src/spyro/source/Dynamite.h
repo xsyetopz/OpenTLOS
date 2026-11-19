@@ -19,10 +19,10 @@ class Dynamite : public Projectile {  // base: base ctor call
 public:
     virtual ~Dynamite(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Disable(void);
     virtual void Activate(void);
@@ -82,7 +82,6 @@ inline Dynamite::Dynamite() {
     this->unk158 = 0;
     this->unk15C = temp_r0_23670;
     this->unk160 = temp_r0_23670;
-    return this;
 }
 #endif
 
@@ -115,10 +114,7 @@ inline void Dynamite::SetExplodeTimer(float arg0) {
     this->unk168 = arg0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline DynamiteDescriptor::DynamiteDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_DYNAMITE_H

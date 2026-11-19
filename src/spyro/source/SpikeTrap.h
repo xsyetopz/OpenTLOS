@@ -18,10 +18,10 @@ public:
     virtual ~SpikeTrap(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     SpikeTrap(void);
     void SetState(int);
@@ -54,7 +54,6 @@ inline SpikeTrap::SpikeTrap() {
     this->unkE8.Init();
     this->unkEC.unk0 = 0;
     this->unkEC.Init();
-    return this;
 }
 #endif
 
@@ -70,10 +69,7 @@ inline SpikeTrap::~SpikeTrap() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SpikeTrapDescriptor::SpikeTrapDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPIKETRAP_H

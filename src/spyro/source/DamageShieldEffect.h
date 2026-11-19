@@ -15,7 +15,7 @@ public:
     virtual ~DamageShieldEffect(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void SpawnRipple(const MKVector3 &, float);
     void DrawRipples(void);

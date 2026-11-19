@@ -2081,15 +2081,12 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 MKCollisionManager::MKCollisionManager() {
     this->unk28 = NULL;
     this->unk2C = NULL;
     this->unk30 = NULL;
     this->unk20 = 0;
-    return this;
 }
-#endif
 
 void MKCollisionManager::FindGridOverlap(const MKCollisionAABB &arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     *arg1 = (s32) (0.001f * arg0.unk0);

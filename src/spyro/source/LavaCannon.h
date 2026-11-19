@@ -27,11 +27,11 @@ public:
     virtual ~LavaCannon(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *);
@@ -106,7 +106,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline LavaCannon::LavaCannon() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
@@ -116,10 +115,7 @@ inline LavaCannon::~LavaCannon() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaCannonDescriptor::LavaCannonDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LAVACANNON_H

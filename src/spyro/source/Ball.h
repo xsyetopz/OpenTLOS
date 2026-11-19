@@ -26,11 +26,11 @@ public:
     virtual ~Ball(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot16() = 0;  // name unknown: no descendant fills this slot
     virtual void pure_slot17() = 0;  // name unknown: no descendant fills this slot
@@ -317,15 +317,11 @@ inline Ball::Ball() {
     this->unk26C = temp_r0_20650;
     this->unk25C = 0;
     this->unk258 = 0.0f;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline BallDescriptor::BallDescriptor() {
     this->unk124 = 0;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BALL_H

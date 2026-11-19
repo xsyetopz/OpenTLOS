@@ -56,7 +56,6 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LevelUpScreen::LevelUpScreen() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -85,8 +84,6 @@ inline LevelUpScreen::LevelUpScreen() {
     this->unkC8.unk0 = 0;
     M2C_FIELD(this, s32 *, 0xF0) = 0;
     this->unkC8.unk50 = 0.0f;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LEVELUPSCREEN_H

@@ -709,14 +709,14 @@ loop_2:
     if (((EnemyAttack *) this->unkC->unkA24 != NULL) || (this->unkC->SelectDefensiveAttack(this->unk20->GetDist(), 0x1FFF0000U) != 0)) {
         temp_r3_1224 = this->unkC->unkA24->unk38;
         if (temp_r3_1224 & 0x10000) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoal((Goal<Enemy> *) this->unk24);
             temp_r3_1230 = this->unk24;
             M2C_FIELD(temp_r3_1230, AITargetData **, 0x10) = (AITargetData *) this->unk20;
             M2C_FIELD(temp_r3_1230, f32 *, 0x18) = 1.0f;
             return;
         }
         if (temp_r3_1224 & 0x20000) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+            AddSubgoal((Goal<Enemy> *) this->unk28);
             temp_r4_1242 = this->unk28;
             M2C_FIELD(temp_r4_1242, AITargetData **, 0x10) = (AITargetData *) this->unk20;
             M2C_FIELD(temp_r4_1242, s8 *, 0x1C) = 0;
@@ -725,8 +725,8 @@ loop_2:
             return;
         }
         if (temp_r3_1224 & 0x40000) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+            AddSubgoal((Goal<Enemy> *) this->unk2C);
+            AddSubgoal((Goal<Enemy> *) this->unk30);
             M2C_FIELD(this->unk2C, AITargetData **, 0x10) = (AITargetData *) this->unk20;
             temp_r6_1266 = this->unk30;
             M2C_FIELD(temp_r6_1266, AITargetData **, 0x10) = (AITargetData *) this->unk20;

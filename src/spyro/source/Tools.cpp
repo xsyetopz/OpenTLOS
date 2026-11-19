@@ -89,7 +89,7 @@ Tools_Ortho::~Tools_Ortho() {
     MKMaterial_EnableFog(this->unk0);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: undefined identifier 'lit_1474'
 Tools_Ortho::Tools_Ortho() {
     s32 sp14;
     f32 sp10;
@@ -121,7 +121,6 @@ Tools_Ortho::Tools_Ortho() {
     }
     sp10 = var_f0_139;
     MKView_SetOrtho((MKRect *) &sp8);
-    return this;
 }
 #endif
 
@@ -748,12 +747,12 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
 }
 #endif
 
-void Tools_PropCreator::Resolve() {
+f32 Tools_PropCreator::Resolve() {
     MKProp::Resolve();
 }
 
 #if 0 // DRAFT: function call 'stricmp(signed char *, const char[1])' does not match
-void Tools_PropCreator::LoadDone() {
+s32 Tools_PropCreator::LoadDone() {
     MKProp::LoadDone();
     if (stricmp(Tools_PropCreator_Name, "") == 0) {
         Tools_PropCreator_Name = NULL;

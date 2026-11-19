@@ -24,11 +24,11 @@ void FuryFX::Draw() {
 
 }
 
-void FuryFX::Update() {
+void *FuryFX::Update() {
 
 }
 
-void FuryFX::Resolve() {
+f32 FuryFX::Resolve() {
     MKProp::Resolve();
 }
 

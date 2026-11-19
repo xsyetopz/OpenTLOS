@@ -228,7 +228,7 @@ void ConveyorBucket::Message(MKMessage *arg0) {
 }
 #endif
 
-void ConveyorBucket::Update() {
+void *ConveyorBucket::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -250,11 +250,11 @@ void ConveyorBucket::Update() {
     DirtParticles();
 }
 
-void ConveyorBucket::Resolve() {
+f32 ConveyorBucket::Resolve() {
     KDPropEx::Resolve();
 }
 
-void ConveyorBucket::LoadDone() {
+s32 ConveyorBucket::LoadDone() {
     GameProp::LoadDone();
 }
 

@@ -1270,10 +1270,9 @@ void SpyroHurtState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroHurtState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroHurtState>FPQ232KDStateMachine<14SpyroHurtState>5StateP32KDStateMachine<14SpyroHurtState>(&this->unk14, (KDStateMachine<SpyroHurtState>::State *) &SpyroHurtState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroHurtState>::State *) &SpyroHurtState::states, NULL);
     this->unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk48 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk88 = 0.0f;
@@ -1299,7 +1298,6 @@ void SpyroHurtState::Init(Spyro *arg0) {
     this->unk30.unk4 = 0x51;
     Hurt_pKnockToSafePosTime = &this->unk84;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_727'
 void SpyroHurtState_cpp::__sinit() {

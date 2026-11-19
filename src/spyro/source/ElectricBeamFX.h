@@ -58,7 +58,6 @@ inline ElectricBeam::ElectricBeam() {
     this->unk34 = 0;
     this->unk38 = 0.0f;
     this->unk3C = 0;
-    return this;
 }
 #endif
 

@@ -88,16 +88,16 @@ void FireBossDriver::Draw() {
     Enemy::Draw();
 }
 
-void FireBossDriver::Update() {
+void *FireBossDriver::Update() {
     Enemy::Update();
 }
 
-void FireBossDriver::Resolve() {
+f32 FireBossDriver::Resolve() {
     this->unkB09 &= ~0x20;
     Enemy::Resolve();
 }
 
-void FireBossDriver::LoadDone() {
+s32 FireBossDriver::LoadDone() {
     Enemy::LoadDone();
 }
 

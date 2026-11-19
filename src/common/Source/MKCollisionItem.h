@@ -35,7 +35,7 @@ public:
     virtual void Deinit(void);
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *) = 0;
     virtual s32 GetGroundPoint(const MKCollisionRay &, MKCollisionResult *, MKCollisionGroundHint *);
-    virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *) = 0;
+    virtual s32 SweepSphereCollide(MKCollisionRay &, MKCollisionResult *) = 0;
     virtual s32 SphereCollide(MKCollisionRay &, MKCollisionResult *, int) = 0;
     virtual s32 BoxCollide(MKCollisionBox &, MKCollisionResult *, int) = 0;
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int) = 0;
@@ -66,7 +66,7 @@ public:
 class MKCollisionCapsuleItem : public MKCollisionItem {  // base: inlined ctor vtable stores
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
-    virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
+    virtual s32 SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
     virtual s32 SphereCollide(MKCollisionRay &, MKCollisionResult *, int);
     virtual s32 BoxCollide(MKCollisionBox &, MKCollisionResult *, int);
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int);
@@ -91,7 +91,7 @@ class MKCollisionModelItem : public MKCollisionItem {  // base: inlined ctor vta
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
     virtual s32 GetGroundPoint(const MKCollisionRay &, MKCollisionResult *, MKCollisionGroundHint *);
-    virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
+    virtual s32 SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
     virtual s32 SphereCollide(MKCollisionRay &, MKCollisionResult *, int);
     virtual s32 BoxCollide(MKCollisionBox &, MKCollisionResult *, int);
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int);
@@ -134,7 +134,7 @@ public:
 class MKCollisionSphereItem : public MKCollisionItem {  // base: inlined ctor vtable stores
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
-    virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
+    virtual s32 SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
     virtual s32 SphereCollide(MKCollisionRay &, MKCollisionResult *, int);
     virtual s32 BoxCollide(MKCollisionBox &, MKCollisionResult *, int);
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int);
@@ -157,7 +157,7 @@ public:
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-inline void MKCollisionCapsuleItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+inline s32 MKCollisionCapsuleItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0xC)();
 }
 #endif

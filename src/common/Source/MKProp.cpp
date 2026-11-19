@@ -507,7 +507,7 @@ void MKProp::Draw() {
 
 }
 
-void MKProp::Update() {
+void *MKProp::Update() {
 
 }
 
@@ -515,12 +515,12 @@ void MKProp::Reset() {
 
 }
 
-void MKProp::Resolve() {
+f32 MKProp::Resolve() {
 
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
-void MKProp::LoadDone() {
+s32 MKProp::LoadDone() {
     MKModel *temp_r3_1331;
 
     ((MKPropLoadInfo *) &MKProp::loadInfo)->LoadDone();

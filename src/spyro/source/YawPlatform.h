@@ -14,9 +14,9 @@ public:
     virtual ~YawPlatform(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     YawPlatform(void);
     /* 0x180 */ f32 unk180;
@@ -25,11 +25,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline YawPlatform::YawPlatform() {
-    return this;
 }
-#endif
 
 inline YawPlatform::~YawPlatform() {
 }

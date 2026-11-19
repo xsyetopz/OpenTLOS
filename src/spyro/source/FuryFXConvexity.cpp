@@ -1542,7 +1542,7 @@ loop_2:
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void FuryFXConvexity::Update() {
+void *FuryFXConvexity::Update() {
     f64 sp8B8;
     Matrix sp870;
     f32 sp86C;
@@ -2493,7 +2493,7 @@ block_159:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXConvexity::Resolve() {
+f32 FuryFXConvexity::Resolve() {
     f64 sp80;
     f64 sp78;
     f64 sp70;

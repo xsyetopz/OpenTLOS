@@ -61,7 +61,7 @@ void MineCartDoor::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-void MineCartDoor::Update() {
+void *MineCartDoor::Update() {
     s32 temp_r0_114;
 
     GameProp::Update();

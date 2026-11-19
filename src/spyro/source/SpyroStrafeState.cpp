@@ -1012,10 +1012,9 @@ void SpyroStrafeState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroStrafeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroStrafeState>FPQ234KDStateMachine<16SpyroStrafeState>5StateP34KDStateMachine<16SpyroStrafeState>(&this->unk14, (KDStateMachine<SpyroStrafeState>::State *) &SpyroStrafeState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroStrafeState>::State *) &SpyroStrafeState::states, NULL);
     M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk38 = 0;
@@ -1023,7 +1022,6 @@ void SpyroStrafeState::Init(Spyro *arg0) {
     this->unk40 = 0.0f;
     this->unk3C = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroStrafeState_cpp::__sinit() {

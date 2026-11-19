@@ -509,7 +509,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void DropBox::Update() {
+void *DropBox::Update() {
     s8 sp271;
     s8 sp270;
     s32 sp26C;
@@ -812,7 +812,7 @@ void DropBox::Update() {
 }
 #endif
 
-void DropBox::Resolve() {
+f32 DropBox::Resolve() {
     f64 sp10;
     f64 sp8;
     MKAnimScript *temp_r31_1439;
@@ -842,7 +842,7 @@ void DropBox::Resolve() {
     this->unkD0.Show(0U);
 }
 
-void DropBox::LoadDone() {
+s32 DropBox::LoadDone() {
     Shatterable::LoadDone();
     this->unk1C4 = MKModel_Create("P9022_DropBoxShadow", NULL, 2, NULL);
 }

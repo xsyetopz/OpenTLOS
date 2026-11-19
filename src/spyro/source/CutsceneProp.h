@@ -17,8 +17,8 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Disable(void);
     /* 0x04c */ u8 pad4C[0x4];

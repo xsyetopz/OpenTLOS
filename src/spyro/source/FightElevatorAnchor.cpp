@@ -29,7 +29,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-void FightElevatorAnchor::Update() {
+void *FightElevatorAnchor::Update() {
     FightElevatorAnchor *spC;
     s32 sp8;
     void *temp_r3_51;
@@ -56,7 +56,7 @@ void FightElevatorAnchor::GetZapAnchorPos() {
 }
 #endif
 
-void FightElevatorAnchor::LoadDone() {
+s32 FightElevatorAnchor::LoadDone() {
     Shatterable::LoadDone();
     this->unk1AC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }

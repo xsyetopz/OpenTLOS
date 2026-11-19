@@ -384,11 +384,8 @@ void FindNearestCollectableMsg::Test(Collectable *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 HitHeroSndMsg::HitHeroSndMsg() {
     this->unk4 = 0;
     this->unk8 = GS_PLACEHOLDER;
     this->unk0 = 0x16;
-    return this;
 }
-#endif

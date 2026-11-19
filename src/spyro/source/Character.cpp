@@ -1214,7 +1214,7 @@ void Character::UpdateMovementNormal() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: ')' expected
 void Character::UpdateMovement() {
     s32 temp_r0_2021;
     s32 temp_r30_2022;
@@ -2069,8 +2069,7 @@ u8 Character::IsCollisionEnabled() {
     return M2C_FIELD(this->unk634, u8 *, 4);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void Character::EnableCollision(bool arg0) {
+u8 Character::EnableCollision(bool arg0) {
     u8 temp_r3_3569;
     void *temp_r4_3568;
 
@@ -2083,7 +2082,6 @@ void Character::EnableCollision(bool arg0) {
     M2C_FIELD(temp_r4_3568, u8 *, 4) = 0U;
     return temp_r3_3569;
 }
-#endif
 
 void Character::Deactivate() {
     PropFlagsClear((unsigned int *) &this->unk10, 0x60000U);
@@ -2106,7 +2104,7 @@ void Character::Enable() {
     PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: ')' expected
 void Character::Message(MKMessage *arg0) {
     Matrix sp90;
     f32 sp7C;
@@ -2359,7 +2357,7 @@ block_9:
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-void Character::Update() {
+void *Character::Update() {
     MKVector3 sp18;
     f64 sp10;
     f64 sp8;
@@ -2503,7 +2501,7 @@ void Character::SetDefaults() {
     this->unk6A4 = 0;
 }
 
-void Character::Resolve() {
+f32 Character::Resolve() {
     MKProp *temp_r3_4440;
 
     MKProp::Resolve();
@@ -2515,7 +2513,7 @@ void Character::Resolve() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
-void Character::LoadDone() {
+s32 Character::LoadDone() {
     f64 sp20;
     f64 sp10;
     s32 spC;

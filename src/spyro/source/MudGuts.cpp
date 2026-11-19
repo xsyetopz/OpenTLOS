@@ -175,7 +175,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void MudGutsCritter::Update() {
+void *MudGutsCritter::Update() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
@@ -242,7 +242,7 @@ loop_15:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void MudGutsCritter::Resolve() {
+f32 MudGutsCritter::Resolve() {
     f32 sp8;
     MudGuts *temp_r28_471;
     s32 var_r29_464;
@@ -269,7 +269,7 @@ loop_2:
 }
 #endif
 
-void MudGutsCritter::LoadDone() {
+s32 MudGutsCritter::LoadDone() {
     MKHeap *temp_r3_521;
     s32 temp_r31_520;
     void *var_r3_528;

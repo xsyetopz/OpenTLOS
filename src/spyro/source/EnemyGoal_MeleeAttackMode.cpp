@@ -339,17 +339,15 @@ u8 EnemyGoal_LeapAttackRecover::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_LeapAttackRecover::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     if (((u8) this->unkC->unkB08 >> 1U) & 1) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         return;
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+    AddSubgoal((Goal<Enemy> *) this->unk24);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void EnemyGoal_LeapAttackRecover::Deinit() {
@@ -1278,7 +1276,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdleOrStrafe() {
                 MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
                 var_r28_2177 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
             }
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+            AddSubgoal((Goal<Enemy> *) this->unk2C);
             temp_r3_2248 = this->unk2C;
             M2C_FIELD(temp_r3_2248, u8 *, 0x14) = var_r28_2177;
             M2C_FIELD(temp_r3_2248, AITargetData **, 0x10) = (AITargetData *) this->unk20;
@@ -1288,19 +1286,16 @@ void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdleOrStrafe() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdle() {
     Goal<Enemy> *temp_r5_2272;
 
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+    AddSubgoal((Goal<Enemy> *) this->unk24);
     temp_r5_2272 = this->unk24;
     M2C_FIELD(temp_r5_2272, s32 *, 0x10) = 1;
     M2C_FIELD(temp_r5_2272, s32 *, 0x14) = 0xA;
     this->unkC->unkA20 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_MeleeAttackMode::AddGoal_Attack() {
     Enemy *temp_r5_2295;
     Goal<Enemy> *temp_r3_2333;
@@ -1310,16 +1305,16 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Attack() {
     temp_r5_2295 = this->unkC;
     temp_r4_2297 = temp_r5_2295->unkA20->unk38;
     if (temp_r4_2297 & 0x800) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
     } else if ((temp_r4_2297 & 0x2000) && !(((u8) temp_r5_2295->unkB01 >> 3U) & 1)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
+        AddSubgoal((Goal<Enemy> *) this->unk3C);
     } else {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
         if (this->unkC->unkA20->unk38 & 0x40) {
             temp_r4_2323 = this->unk30;
             M2C_FIELD(temp_r4_2323, s8 *, 0x14) = 1;
             M2C_FIELD(temp_r4_2323, AITargetData **, 0x10) = (AITargetData *) this->unk20;
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+            AddSubgoal((Goal<Enemy> *) this->unk38);
         } else {
             temp_r3_2333 = this->unk30;
             M2C_FIELD(temp_r3_2333, s8 *, 0x14) = 0;
@@ -1328,7 +1323,6 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Attack() {
     }
     this->unk40 = 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
@@ -1501,7 +1495,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemyGoal_MeleeAttackMode::AddGoal_Move() {
     f64 sp50;
     f64 sp48;
@@ -1533,7 +1527,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_Move() {
         var_r31_2641 = 0;
     }
     if (((u32) ((temp_r4_2645 >> 6U) & 1) != 0) && ((u32) ((temp_r4_2645 >> 5U) & 1) == 0)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
         temp_r3_2660 = this->unkC;
         if ((EnemyAttack *) temp_r3_2660->unkA20 != NULL) {
             var_r30_2667 = -1;
@@ -1771,7 +1765,7 @@ void EnemyGoal_MeleeAttackMode::Activate() {
         sp8 = 1;
         temp_r3_3101 = this->unkC;
         if (temp_r3_3101->IsObscuringCamera(&sp8) != 0) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+            AddSubgoal((Goal<Enemy> *) this->unk2C);
             temp_r4_3114 = this->unk2C;
             M2C_FIELD(temp_r4_3114, s8 *, 0x14) = (s8) (sp8 == -1);
             M2C_FIELD(temp_r4_3114, AITargetData **, 0x10) = &this->unkC->unk870;

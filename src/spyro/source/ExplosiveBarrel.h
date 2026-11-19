@@ -19,10 +19,10 @@ public:
     virtual ~ExplosiveBarrel(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Enable(void);
@@ -67,7 +67,6 @@ public:
 inline ExplosiveBarrel::ExplosiveBarrel() {
     this->unkC8 = &__vt + 0x48;
     this->unk1BC = 0;
-    return this;
 }
 #endif
 
@@ -84,10 +83,7 @@ inline s32 ExplosiveBarrel::IsDead() {
     return GetState() == 4;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ExplosiveBarrelDescriptor::ExplosiveBarrelDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_EXPLOSIVEBARREL_H

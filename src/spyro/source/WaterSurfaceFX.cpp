@@ -793,7 +793,7 @@ loop_14:
     MKEndPrimitive();
 }
 
-void WaterSurfaceFX::Update() {
+void *WaterSurfaceFX::Update() {
     WaterSurfaceFX::Wake **temp_r3_1288;
     WaterSurfaceFX::Wake **var_r30_1275;
     WaterSurfaceFX::Wake *temp_r4_1291;

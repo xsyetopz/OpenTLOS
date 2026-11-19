@@ -187,7 +187,7 @@ loop_3:
 #endif
 
 #if 0 // DRAFT: pointer/array required
-void ConvexityDebris::Update() {
+void *ConvexityDebris::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
@@ -272,7 +272,7 @@ loop_22:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'ConvexityDebrisDescriptor *' to
-void ConvexityDebris::LoadDone() {
+s32 ConvexityDebris::LoadDone() {
     f64 spF0;
     f64 spE8;
     MKVector3 spD8;

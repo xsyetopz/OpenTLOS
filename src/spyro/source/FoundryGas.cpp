@@ -15,9 +15,15 @@
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gFoundryGasEnv;   /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gFoundryGasEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 0.75f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 0.5f, 1.0f, 0.0f, 0.0f },
+    { 0.75f, 0.25f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void FoundryGas::UpdateParticles() {
     f64 sp28;
     f64 sp20;
@@ -25,6 +31,8 @@ void FoundryGas::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r30_64;
     MKParticleSystem::Envelope *temp_r3_138;
+    MKParticleSystem::Envelope *temp_r5_143;
+    MKParticleSystem::Envelope *temp_r5_177;
     f32 temp_f2_188;
     f32 temp_f30_71;
     f32 temp_f3_116;
@@ -34,13 +42,11 @@ void FoundryGas::UpdateParticles() {
     f32 temp_f6_152;
     f32 var_f0_156;
     f64 temp_f0_88;
+    s32 temp_r0_139;
     s32 temp_r3_112;
     s32 temp_r3_126;
     s32 temp_r4_137;
-    s32 temp_r6_141;
     void *temp_r29_67;
-    void *temp_r5_143;
-    void *temp_r5_177;
 
     this->unk128 += gUpdateTimeDelta;
     var_r30_64 = GetFirstParticle(&unksp8);
@@ -64,17 +70,17 @@ loop_12:
             temp_f3_116 = var_r30_64->unk20;
             var_r30_64->unk20 = (f32) fmod(temp_r3_112, temp_f3_116 + this->unkF0, (f32) temp_r3_112, temp_f3_116);
             temp_r3_126 = M2C_FIELD(temp_r29_67, s32 *, 0x14);
-            if (temp_f30_71 > (this->unk12C * *(this->unk134 + (temp_r3_126 * 0x14)))) {
+            if (temp_f30_71 > (this->unk12C * this->unk134[temp_r3_126].unk0)) {
                 M2C_FIELD(temp_r29_67, s32 *, 0x14) = (s32) (temp_r3_126 + 1);
             }
             temp_r4_137 = M2C_FIELD(temp_r29_67, s32 *, 0x14);
             temp_r3_138 = this->unk134;
+            temp_r0_139 = temp_r4_137 - 1;
             temp_f6_140 = this->unk12C;
-            temp_r6_141 = (temp_r4_137 - 1) * 0x14;
-            temp_r5_143 = temp_r3_138 + temp_r6_141;
-            temp_f5_145 = M2C_FIELD(temp_r5_143, f32 *, 0);
-            temp_f6_152 = -((temp_f6_140 * temp_f5_145) - temp_f30_71) / (temp_f6_140 * (*(temp_r3_138 + (temp_r4_137 * 0x14)) - temp_f5_145));
-            var_r30_64->unk1C = M2C_FIELD(temp_r29_67, f32 *, 0x20) * ((temp_f6_152 * M2C_FIELD(temp_r5_143, f32 *, 0xC)) + M2C_FIELD(temp_r5_143, f32 *, 4));
+            temp_r5_143 = &temp_r3_138[temp_r0_139];
+            temp_f5_145 = temp_r5_143->unk0;
+            temp_f6_152 = -((temp_f6_140 * temp_f5_145) - temp_f30_71) / (temp_f6_140 * (temp_r3_138[temp_r4_137].unk0 - temp_f5_145));
+            var_r30_64->unk1C = M2C_FIELD(temp_r29_67, f32 *, 0x20) * ((temp_f6_152 * temp_r5_143->unkC) + temp_r5_143->unk4);
             var_f0_156 = var_r30_64->unk1C;
             if (var_f0_156 < 1.0f) {
 
@@ -87,8 +93,8 @@ loop_12:
                 var_f0_156 = 0.0f;
             }
             var_r30_64->unk1C = var_f0_156;
-            temp_r5_177 = this->unk134 + temp_r6_141;
-            var_r30_64->unk28 = M2C_FIELD(temp_r29_67, f32 *, 0x1C) * ((temp_f6_152 * M2C_FIELD(temp_r5_177, f32 *, 0x10)) + M2C_FIELD(temp_r5_177, f32 *, 8));
+            temp_r5_177 = &this->unk134[temp_r0_139];
+            var_r30_64->unk28 = M2C_FIELD(temp_r29_67, f32 *, 0x1C) * ((temp_f6_152 * temp_r5_177->unk10) + temp_r5_177->unk8);
             temp_f4_187 = temp_f30_71 / this->unk12C;
             temp_f2_188 = (0.35f * temp_f4_187) + 0.75f;
             var_r30_64->unk10 = temp_f2_188;
@@ -126,11 +132,10 @@ void FoundryGas::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void FoundryGas::LoadDone() {
+s32 FoundryGas::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gFoundryGasEnv'
 void FoundryGas::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -138,12 +143,11 @@ void FoundryGas::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gFoundryGasEnv, 5);
+    SetEnvelope(gFoundryGasEnv, 5);
     SetMaxParticleAge(2.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif
 
 void FoundryGasDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

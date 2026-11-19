@@ -15,7 +15,7 @@ public:
     virtual ~ElectricSparks(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Emit(const MKVector3 &, const MKVector3 &, float, bool);
     /* 0x04c */ void* unk4C;

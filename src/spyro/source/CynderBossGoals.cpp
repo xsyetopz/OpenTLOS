@@ -498,7 +498,6 @@ u8 CynderBossGoal_HoverAttackMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_HoverAttackMode::Activate() {
     Cynder *temp_r3_779;
     s32 temp_r0_855;
@@ -523,47 +522,46 @@ void CynderBossGoal_HoverAttackMode::Activate() {
         temp_r3_845 = this->unk34;
         if (temp_r3_845 > 0) {
             this->unk34 = temp_r3_845 - 1;
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+            AddSubgoal((Goal<Cynder> *) this->unk24);
             return;
         }
         temp_r0_855 = this->unk38;
         if ((temp_r0_855 >= -1) && (temp_r0_855 <= 1)) {
             if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) > 0.5f) {
                 this->unk38 -= 1;
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+                AddSubgoal((Goal<Cynder> *) this->unk28);
+                AddSubgoal((Goal<Cynder> *) this->unk30);
             } else {
                 this->unk38 += 1;
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+                AddSubgoal((Goal<Cynder> *) this->unk2C);
+                AddSubgoal((Goal<Cynder> *) this->unk30);
             }
         } else if (temp_r0_855 >= -1) {
             this->unk38 -= 1;
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+            AddSubgoal((Goal<Cynder> *) this->unk28);
+            AddSubgoal((Goal<Cynder> *) this->unk30);
         } else {
             this->unk38 += 1;
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+            AddSubgoal((Goal<Cynder> *) this->unk2C);
+            AddSubgoal((Goal<Cynder> *) this->unk30);
         }
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+        AddSubgoal((Goal<Cynder> *) this->unk24);
+        AddSubgoal((Goal<Cynder> *) this->unk30);
         return;
     }
 block_8:
     temp_r0_812 = (u8) this->unkC->unkF1E;
     if ((temp_r0_812 != 0) && (temp_r3_815 = this->unk38, ((temp_r3_815 > 0) != 0))) {
         this->unk38 = temp_r3_815 - 1;
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+        AddSubgoal((Goal<Cynder> *) this->unk28);
     } else if ((temp_r0_812 != 0) && (temp_r3_827 = this->unk38, ((temp_r3_827 < 0) != 0))) {
         this->unk38 = temp_r3_827 + 1;
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
+        AddSubgoal((Goal<Cynder> *) this->unk2C);
     } else {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+        AddSubgoal((Goal<Cynder> *) this->unk24);
     }
     this->unk34 = 0;
 }
-#endif
 
 void CynderBossGoal_HoverAttackMode::Deinit() {
     Goal<Cynder> *temp_r3_934;
@@ -1006,7 +1004,7 @@ u8 CynderGoal_FlyingAttackMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void CynderGoal_FlyingAttackMode::Activate() {
     AnimSequence *temp_r3_1892;
     Cynder *temp_r5_1910;
@@ -1025,20 +1023,20 @@ void CynderGoal_FlyingAttackMode::Activate() {
         this->unkC->CalcFlightPathData2();
         temp_r3_1892 = this->unkC->unkA50;
         if ((temp_r3_1892 != NULL) && ((s32) temp_r3_1892->unk6C == 6)) {
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+            AddSubgoal((Goal<Cynder> *) this->unk24);
             return;
         }
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+        AddSubgoal((Goal<Cynder> *) this->unk28);
         return;
     case 2:
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
+        AddSubgoal((Goal<Cynder> *) this->unk2C);
         temp_r5_1910 = this->unkC;
         temp_r3_1911 = this->unk2C;
         M2C_FIELD(temp_r3_1911, f64 **, 0x10) = &temp_r5_1910->unkFA0;
         M2C_FIELD(temp_r3_1911, s32 *, 0x14) = (s32) temp_r5_1910->unkFFC;
         return;
     case 3:
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+        AddSubgoal((Goal<Cynder> *) this->unk30);
         temp_r6_1920 = this->unkC;
         temp_r5_1922 = this->unk30;
         temp_r5_1922->unk10 = (AITargetData *) temp_r6_1920->unkFF0;
@@ -1047,14 +1045,14 @@ void CynderGoal_FlyingAttackMode::Activate() {
         this->unkC->unkA7C = gb.unk30C + 1.0f;
         return;
     case 5:
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+        AddSubgoal((Goal<Cynder> *) this->unk34);
         temp_r5_1943 = this->unk34;
         M2C_FIELD(temp_r5_1943, s32 **, 0x10) = &this->unkC->unkCD4;
         M2C_FIELD(temp_r5_1943, f32 *, 0x14) = 0.0f;
         M2C_FIELD(temp_r5_1943, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_1943, u8 *, 0x24) | 0x40);
         return;
     case 6:
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
+        AddSubgoal((Goal<Cynder> *) this->unk38);
         /* fallthrough */
         return;
     }
@@ -1337,14 +1335,14 @@ void CynderGoal_TurnToAttack::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__22CompositeGoal'
+#if 0 // DRAFT: declaration syntax error
 void CynderGoal_GroundAttackMode::AddGoal_MoveToAttackRange(EnemyAttack *arg0) {
     Goal<Cynder> *temp_r4_2523;
     f32 temp_f31_2516;
 
     temp_f31_2516 = arg0->unk18;
     if (this->unk20->GetDist() > temp_f31_2516) {
-        AddSubgoalToFront__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
+        AddSubgoalToFront((Goal<Cynder> *) this->unk2C);
         temp_r4_2523 = this->unk2C;
         M2C_FIELD(temp_r4_2523, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         M2C_FIELD(temp_r4_2523, f32 *, 0x38) = temp_f31_2516;
@@ -1353,59 +1351,51 @@ void CynderGoal_GroundAttackMode::AddGoal_MoveToAttackRange(EnemyAttack *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 u8 CynderGoal_GroundAttackMode::AddGoal_Attack(EnemyAttack *arg0) {
     s32 temp_r4_2549;
 
     temp_r4_2549 = arg0->unk38;
     if (temp_r4_2549 & 2) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
+        AddSubgoal((Goal<Cynder> *) this->unk30);
+        AddSubgoal((Goal<Cynder> *) this->unk38);
         goto block_5;
     }
     if (temp_r4_2549 & 1) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+        AddSubgoal((Goal<Cynder> *) this->unk30);
+        AddSubgoal((Goal<Cynder> *) this->unk34);
 block_5:
         this->unk44 |= 0x40;
         return 1U;
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderGoal_GroundAttackMode::AddGoal_AttackIdle() {
     Goal<Cynder> *temp_r4_2594;
 
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+    AddSubgoal((Goal<Cynder> *) this->unk24);
     temp_r4_2594 = this->unk24;
     M2C_FIELD(temp_r4_2594, s32 *, 0x10) = 0;
     M2C_FIELD(temp_r4_2594, s32 *, 0x14) = 0xA;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderGoal_GroundAttackMode::AddGoal_Taunt() {
     Goal<Cynder> *temp_r4_2616;
 
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+    AddSubgoal((Goal<Cynder> *) this->unk24);
     temp_r4_2616 = this->unk24;
     M2C_FIELD(temp_r4_2616, s32 *, 0x10) = 1;
     M2C_FIELD(temp_r4_2616, s32 *, 0x14) = 3;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderGoal_GroundAttackMode::AddGoal_Cheer() {
     Goal<Cynder> *temp_r4_2638;
 
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+    AddSubgoal((Goal<Cynder> *) this->unk24);
     temp_r4_2638 = this->unk24;
     M2C_FIELD(temp_r4_2638, s32 *, 0x10) = 1;
     M2C_FIELD(temp_r4_2638, s32 *, 0x14) = 4;
 }
-#endif
 
 void CynderGoal_GroundAttackMode::SetParams(AITargetData *arg0, EAPItem *arg1, bool arg2) {
     this->unk20 = arg0;
@@ -1780,7 +1770,6 @@ u8 CynderBossGoal_FlyingInWait::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_FlyingInWait::Activate() {
     Character *temp_r5_3420;
     Character *temp_r6_3413;
@@ -1793,9 +1782,9 @@ void CynderBossGoal_FlyingInWait::Activate() {
     ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(1U, 0U);
     ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(1U, 0U);
     ((Cynder *) this->unkC)->CalcFlightPathData2();
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk20);
+    AddSubgoal((Goal<Cynder> *) this->unk24);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
     temp_r6_3413 = this->unkC;
     temp_r4_3415 = this->unk24;
     M2C_FIELD(temp_r4_3415, void **, 0x10) = (void *) (temp_r6_3413 + 0xFA0);
@@ -1806,7 +1795,6 @@ void CynderBossGoal_FlyingInWait::Activate() {
     M2C_FIELD(temp_r4_3421, f32 *, 0x14) = (f32) M2C_FIELD(temp_r5_3420, f32 *, 0xFF4);
     M2C_FIELD(temp_r4_3421, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r4_3421, u8 *, 0x24) & ~0x40);
 }
-#endif
 
 void CynderBossGoal_FlyingInWait::Deinit() {
     Goal<Cynder> *temp_r3_3444;
@@ -2342,7 +2330,7 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                         sp70 = (f64) sp20;
                         sp80 = (f64) sp20;
                         if (!((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 40000.0f)) {
-                            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+                            AddSubgoal((Goal<Cynder> *) this->unk34);
                             temp_r8_4383 = this->unk34;
                             M2C_FIELD(temp_r8_4383, void **, 0x10) = (void *) this->unkC->unkF7C;
                             M2C_FIELD(temp_r8_4383, f32 *, 0x14) = 10000.0f;
@@ -2412,7 +2400,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'spA0'
 void CynderBossGoal_MoveToTarget::Activate() {
     f64 spD0;
     f64 spC8;
@@ -2498,7 +2486,7 @@ void CynderBossGoal_MoveToTarget::Activate() {
                 sp60 = (f64) sp20;
                 sp70 = (f64) sp20;
                 if (!((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) < 40000.0f)) {
-                    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+                    AddSubgoal((Goal<Cynder> *) this->unk34);
                     temp_r7_4622 = this->unk34;
                     M2C_FIELD(temp_r7_4622, void **, 0x10) = (void *) this->unkC->unkF7C;
                     M2C_FIELD(temp_r7_4622, f32 *, 0x14) = 10000.0f;
@@ -2524,14 +2512,14 @@ void CynderBossGoal_MoveToTarget::Activate() {
                 sp40 = (f64) sp10;
                 sp50 = (f64) sp10;
                 if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < 40000.0f) {
-                    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+                    AddSubgoal((Goal<Cynder> *) this->unk24);
                     temp_r4_4685 = this->unk24;
                     M2C_FIELD(temp_r4_4685, s32 *, 0x10) = 1;
                     M2C_FIELD(temp_r4_4685, s32 *, 0x14) = 0xA;
                     return;
                 }
 block_12:
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+                AddSubgoal((Goal<Cynder> *) this->unk30);
                 this->unkC->unk8C0.SetInsideRegion(1U);
                 temp_r6_4701 = this->unk30;
                 M2C_FIELD(temp_r6_4701, AITargetData **, 0x10) = &this->unkC->unk8C0;
@@ -2551,7 +2539,7 @@ block_12:
         if (((u8) temp_r3_4566->unkD01 != 0) && ((temp_r0_4732 = M2C_FIELD(this->unk20, u8 *, 0x49), temp_r0_4734 = (temp_r0_4732 >> 5U) & 1, ((((temp_r0_4732 >> 6U) & 1) == 0) != 0)) || (temp_r0_4734 != 0))) {
             CalculateRegionEdgeMoveTarget(temp_r0_4734 == 0);
             if (this->unkC->unk8C0.GetDist() > 200.0f) {
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+                AddSubgoal((Goal<Cynder> *) this->unk30);
                 temp_r6_4754 = this->unk30;
                 M2C_FIELD(temp_r6_4754, AITargetData **, 0x10) = &this->unkC->unk8C0;
                 M2C_FIELD(temp_r6_4754, f32 *, 0x18) = 200.0f;
@@ -2582,14 +2570,14 @@ block_18:
             ((AITargetData *) &sp88)->GetDir();
             temp_r30_4828 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r3 */) >> 0x1DU) & 1;
             if (((u8) this->unk3D != 0) && (this->unkC->unk870.GetDist() > 1500.0f) && (this->unkC->unk870.GetDist() < 2200.0f) && (this->unkC->CanLeap(temp_r30_4828) != 0)) {
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-                AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+                AddSubgoal((Goal<Cynder> *) this->unk2C);
+                AddSubgoal((Goal<Cynder> *) this->unk28);
                 M2C_FIELD(this->unk2C, AITargetData **, 0x10) = &this->unkC->unk870;
                 temp_r3_4858 = this->unk28;
                 M2C_FIELD(temp_r3_4858, u8 *, 0x20) = (u8) ((M2C_FIELD(temp_r3_4858, u8 *, 0x20) & ~0x40) | ((temp_r30_4828 << 6) & 0x40));
                 return;
             }
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+            AddSubgoal((Goal<Cynder> *) this->unk30);
             temp_r6_4869 = this->unk30;
             M2C_FIELD(temp_r6_4869, AITargetData **, 0x10) = (AITargetData *) this->unk20;
             M2C_FIELD(temp_r6_4869, f32 *, 0x18) = (f32) this->unk38;
@@ -2820,9 +2808,9 @@ u8 CynderBossGoal_TestMode::Update() {
         if ((temp_r4_5292 != NULL) && ((s32) temp_r4_5292->unk6C == 6)) {
             temp_r3_5291->CalcFlightPathData2();
             RemoveAllSubgoals();
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk40);
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk44);
+            AddSubgoal((Goal<Cynder> *) this->unk34);
+            AddSubgoal((Goal<Cynder> *) this->unk40);
+            AddSubgoal((Goal<Cynder> *) this->unk44);
             temp_r6_5310 = this->unkC;
             temp_r4_5312 = this->unk40;
             M2C_FIELD(temp_r4_5312, f64 **, 0x10) = &temp_r6_5310->unkFA0;
@@ -2845,8 +2833,8 @@ u8 CynderBossGoal_TestMode::Update() {
     }
     if ((u8) var_r3_5342 != 0) {
         this->unkC->CalcLandingFlightPathData();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk48);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk4C);
+        AddSubgoal((Goal<Cynder> *) this->unk48);
+        AddSubgoal((Goal<Cynder> *) this->unk4C);
         temp_r5_5361 = this->unk44;
         M2C_FIELD(temp_r5_5361, f32 *, 0x18) = (f32) this->unkC->unkFF8;
         M2C_FIELD(temp_r5_5361, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_5361, u8 *, 0x24) | 0x80);
@@ -2860,19 +2848,19 @@ u8 CynderBossGoal_TestMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal token
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void CynderBossGoal_TestMode::Activate() {
     Goal<Cynder> *temp_r5_5413;
     void **temp_r5_5404;
 
     this->unk8 = 0;
     RemoveAllSubgoals();
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+    AddSubgoal((Goal<Cynder> *) this->unk30);
     temp_r5_5404 = this->unk30;
     M2C_FIELD(temp_r5_5404, AITargetData **, 0x20) = &this->unkC->unk870;
     M2C_FIELD(temp_r5_5404, f32 *, 0x38) = 1000.0f;
     M2C_FIELD(temp_r5_5404, s8 *, 0x3D) = 1;
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
+    AddSubgoal((Goal<Cynder> *) this->unk20);
     temp_r5_5413 = this->unk20;
     M2C_FIELD(temp_r5_5413, s32 *, 0x10) = 1;
     M2C_FIELD(temp_r5_5413, s32 *, 0x14) = 0xA;
@@ -4233,18 +4221,18 @@ void CynderBossGoal_AttackPhase3::Activate() {
         temp_r3_7885 = this->unkC;
         if ((u8) M2C_FIELD(temp_r3_7885, u8 *, 0xF1C) != 0) {
             M2C_FIELD(temp_r3_7885, u8 *, 0xF1C) = 0U;
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+            AddSubgoal((Goal<Cynder> *) this->unk24);
         }
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+        AddSubgoal((Goal<Cynder> *) this->unk34);
         return;
     }
     if ((u8) M2C_FIELD(temp_r4_7788, u8 *, 0xF1D) != 0) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+        AddSubgoal((Goal<Cynder> *) this->unk2C);
+        AddSubgoal((Goal<Cynder> *) this->unk30);
         return;
     }
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk34);
 }
 #endif
 
@@ -4487,11 +4475,11 @@ void CynderBossGoal_AttackPhase2::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     if (!(gb.unk30C >= this->unkC->unkF14)) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+        AddSubgoal((Goal<Cynder> *) this->unk24);
         ((CynderGoal_GroundAttackMode *) this->unk24)->SetParams(&this->unkC->unk870, this->unk20, 0U);
         return;
     }
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
 }
 #endif
 
@@ -4622,14 +4610,14 @@ u8 CynderBossGoal_AttackPhase1::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal token
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
 void CynderBossGoal_AttackPhase1::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     if ((u8) M2C_FIELD(this->unkC, u8 *, 0xF19) != 0) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+        AddSubgoal((Goal<Cynder> *) this->unk24);
     }
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
     ((CynderGoal_GroundAttackMode *) this->unk28)->SetParams(this->unkC + 0x870, this->unk20, 0U);
 }
 #endif
@@ -6621,31 +6609,29 @@ u8 CynderBossGoal_AttackFlight::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_AttackFlight::Activate() {
     s32 temp_r3_12377;
 
     this->unk8 = 0;
     if (!(((u8) this->unkC->unk6B5 >> 4U) & 1)) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
+        AddSubgoal((Goal<Cynder> *) this->unk20);
     }
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
+    AddSubgoal((Goal<Cynder> *) this->unk24);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk2C);
+    AddSubgoal((Goal<Cynder> *) this->unk30);
     temp_r3_12377 = MKRand_Int((int *) &gViewSeed, 0, 0xA);
     if (temp_r3_12377 < 3) {
         if (temp_r3_12377 < 0) {
             goto block_6;
         }
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
+        AddSubgoal((Goal<Cynder> *) this->unk34);
     } else {
 block_6:
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
+        AddSubgoal((Goal<Cynder> *) this->unk38);
     }
     this->unkC->unkCF4 = 0;
 }
-#endif
 
 void CynderBossGoal_AttackFlight::Deinit() {
     Goal<Cynder> *temp_r3_12411;
@@ -6877,29 +6863,27 @@ u8 CynderBossGoal_LandingFlight::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_LandingFlight::Activate() {
     Goal<Cynder> *temp_r6_12835;
 
     this->unk8 = 0;
     if (!(((u8) this->unkC->unk6B5 >> 4U) & 1)) {
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
+        AddSubgoal((Goal<Cynder> *) this->unk20);
         temp_r6_12835 = this->unk20;
         M2C_FIELD(temp_r6_12835, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r6_12835, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_12835, s32 *, 0x18) = 0xA;
         M2C_FIELD(temp_r6_12835, s32 *, 0x1C) = 0;
         M2C_FIELD(temp_r6_12835, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_12835, u8 *, 0x20) & ~0x40);
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
+        AddSubgoal((Goal<Cynder> *) this->unk24);
     }
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
-    AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+    AddSubgoal((Goal<Cynder> *) this->unk2C);
+    AddSubgoal((Goal<Cynder> *) this->unk30);
+    AddSubgoal((Goal<Cynder> *) this->unk34);
+    AddSubgoal((Goal<Cynder> *) this->unk38);
+    AddSubgoal((Goal<Cynder> *) this->unk28);
     this->unkC->unkCF4 = 1;
 }
-#endif
 
 void CynderBossGoal_LandingFlight::Deinit() {
     Goal<Cynder> *temp_r3_12883;
@@ -7103,42 +7087,35 @@ void CynderBossGoal_LandingFlight::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_Think::AddGoal_AttackPhase3() {
     if (IsPresent(0xA8) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk44);
+        AddSubgoal((Goal<Cynder> *) this->unk44);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_Think::AddGoal_AttackPhase2(EAPItem *arg0) {
     if (IsPresent(0xA7) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk40);
+        AddSubgoal((Goal<Cynder> *) this->unk40);
         M2C_FIELD(this->unk40, EAPItem **, 0x20) = arg0;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_Think::AddGoal_AttackPhase1(EAPItem *arg0) {
     if (IsPresent(0xA6) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk3C);
+        AddSubgoal((Goal<Cynder> *) this->unk3C);
         M2C_FIELD(this->unk3C, EAPItem **, 0x20) = arg0;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_Think::AddGoal_Idle() {
     Goal<Cynder> *temp_r6_13345;
 
     if (IsActive(0) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+        AddSubgoal((Goal<Cynder> *) this->unk28);
         temp_r6_13345 = this->unk28;
         M2C_FIELD(temp_r6_13345, AITargetData **, 0x10) = &this->unkC->unk870;
         M2C_FIELD(temp_r6_13345, s32 *, 0x14) = 1;
@@ -7147,9 +7124,7 @@ void CynderBossGoal_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r6_13345, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_13345, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_13428;
     s32 temp_r0_13373;
@@ -7202,10 +7177,9 @@ block_16:
         temp_r4_13428->unk944 = arg0->unk34;
         this->unkC->unk928 = 0.0f;
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
+        AddSubgoal((Goal<Cynder> *) this->unk2C);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 CynderBossGoal_Think::Update() {

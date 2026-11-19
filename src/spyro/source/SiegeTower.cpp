@@ -538,7 +538,7 @@ void SiegeTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void SiegeTower::Update() {
+void *SiegeTower::Update() {
     f64 sp70;
     f64 sp68;
     f64 sp60;                                       /* compiler-managed */
@@ -764,7 +764,7 @@ void SiegeTower::Update() {
 }
 #endif
 
-void SiegeTower::Resolve() {
+f32 SiegeTower::Resolve() {
     u32 temp_r4_1352;
     void *temp_r3_1361;
 
@@ -781,7 +781,7 @@ void SiegeTower::Resolve() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
-void SiegeTower::LoadDone() {
+s32 SiegeTower::LoadDone() {
     f64 sp8;
     s32 temp_r0_1422;
     s32 var_ctr_1431;

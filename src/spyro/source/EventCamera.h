@@ -20,11 +20,11 @@ public:
     virtual ~EventCamera(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     void CalculateCircleTangent(MKVector3, MKVector3, float);
     void FunctionOff(void);

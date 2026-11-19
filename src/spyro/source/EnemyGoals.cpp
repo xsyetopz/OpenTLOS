@@ -1857,7 +1857,7 @@ void EnemyGoal_Kong::Activate() {
         ((ExplosiveBarrelPath *) &spD8)->GetStandPos();
         ((AITargetData *) (this->unkC + 0x8C0))->Set(*((MKVector3 *) &spD8), 0U);
         ((AITargetData *) (this->unkC + 0x8C0))->SetInsideRegion(1U);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
         temp_r7_3209 = this->unk2C;
         M2C_FIELD(temp_r7_3209, void **, 0x10) = (void *) (this->unkC + 0x8C0);
         M2C_FIELD(temp_r7_3209, f32 *, 0x18) = 50.0f;
@@ -1893,7 +1893,7 @@ void EnemyGoal_Kong::Activate() {
         sp98.unk18 = (f64) sp40;
         ((AITargetData *) (this->unkC + 0x8C0))->Set(*((MKVector3 *) &sp98.unk10), 0U);
         ((AITargetData *) (this->unkC + 0x8C0))->SetInsideRegion(1U);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         M2C_FIELD(this->unk34, void **, 0x10) = (void *) (this->unkC + 0x8C0);
         return;
     }
@@ -1901,7 +1901,7 @@ void EnemyGoal_Kong::Activate() {
         this->unk20 = M2C_FIELD(&gb, f32 *, 0x30C) + 3.0f;
         this->unk24 = this->unk28->SpawnBarrel(this->unkC);
         if ((s32) this->unk24 >= 0) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+            AddSubgoal((Goal<Enemy> *) this->unk38);
             temp_r4_3337 = this->unk38;
             M2C_FIELD(temp_r4_3337, ExplosiveBarrelPath **, 0x10) = (ExplosiveBarrelPath *) this->unk28;
             M2C_FIELD(temp_r4_3337, s32 *, 0x14) = (s32) this->unk24;
@@ -1909,7 +1909,7 @@ void EnemyGoal_Kong::Activate() {
             return;
         }
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+    AddSubgoal((Goal<Enemy> *) this->unk30);
     temp_r5_3347 = this->unk30;
     M2C_FIELD(temp_r5_3347, s32 *, 0x10) = 0;
     M2C_FIELD(temp_r5_3347, s32 *, 0x14) = 1;
@@ -2232,7 +2232,7 @@ void EnemyGoal_OperateLever::Activate() {
         ((Lever *) &spC8)->GetStandPos();
         this->unkC->unk8C0.Set(*((MKVector3 *) &spC8), 0U);
         this->unkC->unk8C0.SetInsideRegion(1U);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24.unk8);
+        AddSubgoal((Goal<Enemy> *) this->unk24.unk8);
         temp_r7_3982 = this->unk24.unk8;
         M2C_FIELD(temp_r7_3982, AITargetData **, 0x10) = &this->unkC->unk8C0;
         M2C_FIELD(temp_r7_3982, f32 *, 0x18) = 50.0f;
@@ -2267,12 +2267,12 @@ void EnemyGoal_OperateLever::Activate() {
         sp88.unk18 = (f64) sp30;
         this->unkC->unk8C0.Set(*((MKVector3 *) &sp88.unk10), 0U);
         this->unkC->unk8C0.SetInsideRegion(1U);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         M2C_FIELD(this->unk34, AITargetData **, 0x10) = &this->unkC->unk8C0;
         return;
     }
     if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk20) && ((u8) this->unk3C == 0) && ((s32) var_r29_3913->unkD0 == 0)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+        AddSubgoal((Goal<Enemy> *) this->unk38);
         ((EnemyGoal_PullLever *) this->unk38)->SetParams(var_r29_3913);
         this->unk20 = M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f;
         this->unk3C = 1;
@@ -2282,7 +2282,7 @@ void EnemyGoal_OperateLever::Activate() {
         this->unk8 = 2;
         return;
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, M2C_BITWISE(Goal<Enemy> *, this->unk24.unkC));
+    AddSubgoal(M2C_BITWISE(Goal<Enemy> *, this->unk24.unkC));
     temp_r5_4123 = this->unk24.unkC;
     M2C_FIELD(temp_r5_4123, s32 *, 0x10) = 0;
     M2C_FIELD(temp_r5_4123, s32 *, 0x14) = 1;

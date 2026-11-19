@@ -118,11 +118,11 @@ public:
     virtual ~SteamTrain(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot16() = 0;  // name unknown: no descendant fills this slot
@@ -226,7 +226,6 @@ inline SteamTrain::SteamTrain() {
     this->unk384 = 0;
     this->unk394 = 0;
     this->unk3BC = 0;
-    return this;
 }
 #endif
 
@@ -375,10 +374,7 @@ inline void SteamTrain::GetProp() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamTrainDescriptor::SteamTrainDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_STEAMTRAIN_H

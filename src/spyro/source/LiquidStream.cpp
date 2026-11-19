@@ -218,7 +218,7 @@ loop_19:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void LiquidStream::Update() {
+void *LiquidStream::Update() {
     f64 sp108;
     f64 sp100;
     f64 spF8;

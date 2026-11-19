@@ -202,7 +202,7 @@ void PropGroupVolume::Reset() {
     Disable();
 }
 
-void PropGroupVolume::LoadDone() {
+s32 PropGroupVolume::LoadDone() {
     MKProp::LoadDone();
     if ((u8) this->unk2AD != 0) {
         Enable();

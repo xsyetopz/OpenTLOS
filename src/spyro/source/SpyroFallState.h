@@ -25,7 +25,7 @@ public:
     virtual void Update(void);
     virtual s32 Transition(void);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void SetStrafeJump(bool);
     void GetFallVel(void);
     void Landed(bool);
@@ -88,7 +88,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroFallState::GetStateInfo() {
+inline void *SpyroFallState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

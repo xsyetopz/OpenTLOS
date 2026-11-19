@@ -238,7 +238,7 @@ void IceTier2::DrawCustomGlow() {
 }
 #endif
 
-void IceTier2::Update() {
+void *IceTier2::Update() {
     s32 sp8;
     u8 var_r31_401;
 
@@ -356,16 +356,14 @@ void IceTier2Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void IceTier1::Spawn(EnemyGeneratorDoor *arg0) {
     M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
+    ((EnemyGoal_Think *) this->unkA3C)->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
-void IceTier1::Update() {
+void *IceTier1::Update() {
     Matrix spC0;
     MKVector3 spA8;
     f64 spA0;
@@ -504,7 +502,7 @@ void IceTier1::Init() {
         M2C_FIELD(temp_r4_942, s8 *, 9) = 1;
     }
     M2C_FIELD(temp_r4_942, s32 *, 0x10) = 0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_892, (Goal<Enemy> *) this->unkB10);
+    temp_r31_892->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
 }
 #endif
 

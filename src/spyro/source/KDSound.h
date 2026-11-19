@@ -272,11 +272,8 @@ inline KDSoundFader::~KDSoundFader() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDSoundFader::KDSoundFader() {
     this->unk0 = 0;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDSOUND_H

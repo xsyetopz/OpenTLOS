@@ -376,7 +376,6 @@ KDParticleEmitterProperty::KDParticleEmitterProperty() {
     this->unk18 = NULL;
     this->unk1C = "localToWorld";
     this->unk20 = NULL;
-    return this;
 }
 #endif
 

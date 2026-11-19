@@ -27,10 +27,10 @@ public:
     virtual ~SteamTrainCaboose(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Enable(void);
     virtual void Disable(void);
@@ -86,7 +86,6 @@ inline SteamTrainCaboose::SteamTrainCaboose() {
     this->unk110.unk3C.Init();
     this->unk110.unk40.unk0 = 0;
     this->unk110.unk40.Init();
-    return this;
 }
 #endif
 
@@ -111,10 +110,7 @@ inline SteamTrainCaboose::~SteamTrainCaboose() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamTrainCabooseDescriptor::SteamTrainCabooseDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_STEAMTRAINCABOOSE_H

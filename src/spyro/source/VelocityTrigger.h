@@ -52,7 +52,6 @@ inline VelocityTrigger::VelocityTrigger() {
     this->unkD0 = &__vt;
     this->unk190 = &__vt;
     this->unk190 = &__vt;
-    return this;
 }
 #endif
 
@@ -79,10 +78,7 @@ inline VelocityTrigger::~VelocityTrigger() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline VelocityTriggerDescriptor::VelocityTriggerDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_VELOCITYTRIGGER_H

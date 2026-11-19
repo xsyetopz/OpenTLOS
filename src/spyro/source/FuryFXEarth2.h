@@ -20,10 +20,10 @@ public:
     class VortexAttachmentPoint;
     virtual ~FuryFXEarth2(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     FuryFXEarth2(void);
     void ResetFury(void);
@@ -64,12 +64,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FuryFXEarth2::FuryFXEarth2() {
     this->unkE8.unk4 = 0;
-    return this;
 }
-#endif
 
 inline FuryFXEarth2::~FuryFXEarth2() {
     s32 temp_cr0_eq_15;

@@ -37,14 +37,10 @@ inline ArrowTrap::~ArrowTrap() {
 #if 0 // DRAFT: undefined identifier '__vt'
 inline ArrowTrap::ArrowTrap() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ArrowTrapDescriptor::ArrowTrapDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ARROWTRAP_H

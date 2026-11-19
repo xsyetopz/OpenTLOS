@@ -1062,7 +1062,7 @@ void IceBossStalactite::Draw() {
 }
 
 #if 0 // DRAFT: illegal type
-void IceBossStalactite::Update() {
+void *IceBossStalactite::Update() {
     MKCollisionResult sp460;
     f32 sp45C;
     f32 sp458;
@@ -1576,7 +1576,7 @@ block_6:
 }
 #endif
 
-void IceBossStalactite::LoadDone() {
+s32 IceBossStalactite::LoadDone() {
     Shatterable::LoadDone();
     Disable();
     this->unk21C = NULL;

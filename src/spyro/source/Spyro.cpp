@@ -8517,7 +8517,7 @@ void Spyro::UpdateMovement() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk340'
-void Spyro::Update() {
+void *Spyro::Update() {
     s8 spE9;
     s8 spE8;
     s32 spE4;
@@ -9027,7 +9027,7 @@ void Spyro::UpdateSpyroCameraInfo() {
 }
 
 #if 0 // DRAFT: illegal operand
-void Spyro::Resolve() {
+f32 Spyro::Resolve() {
     void *temp_r3_15877;
 
     if (this == (u32) M2C_FIELD(this->unk0, u32 *, 0x28)) {
@@ -9127,7 +9127,7 @@ void Spyro::Reset() {
 #endif
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not
-void Spyro::LoadDone() {
+s32 Spyro::LoadDone() {
     Matrix sp90;
     M2C_UNK sp8C;
     s32 sp74;
@@ -9236,7 +9236,7 @@ void Spyro::LoadDone() {
     sp68 = (f64) sp28;
     this->unk280->ResetCollisionSweepSphere((s32) &sp60, M2C_ERROR(/* Read from unset register $r5 */));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
-    Init__22KDStateMachine<5Spyro>FPQ222KDStateMachine<5Spyro>5StateP22KDStateMachine<5Spyro>(&this->unk7C, (KDStateMachine<Spyro>::State *) (Spyro::pNodeNames + 0x494), NULL);
+    this->unk7C.Init((KDStateMachine<Spyro>::State *) (Spyro::pNodeNames + 0x494), NULL);
     this->unk7C.SetState(this, 0, 0U);
     this->unk8 = MKModel_GetWorldMatrix(this->unk4);
     M2C_STRUCT_COPY((s32) &sp8C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);

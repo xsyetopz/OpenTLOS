@@ -24,8 +24,8 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     ElementalSpline(void);
@@ -101,7 +101,6 @@ inline ElementalSpline::ElementalSpline() {
     this->unkD8.unk0 = 0;
     this->unkD8.Init();
     this->unk120 = 0;
-    return this;
 }
 #endif
 

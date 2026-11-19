@@ -20,7 +20,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline SmashWall::SmashWall() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 

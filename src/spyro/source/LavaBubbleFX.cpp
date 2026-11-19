@@ -402,7 +402,7 @@ void LavaBubbleFX::Draw() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void LavaBubbleFX::Update() {
+void *LavaBubbleFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
     f64 sp218;
@@ -887,7 +887,7 @@ void LavaBubbleFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal operand
-void LavaBubbleFX::Resolve() {
+f32 LavaBubbleFX::Resolve() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -930,7 +930,7 @@ void LavaBubbleFX::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
-void LavaBubbleFX::LoadDone() {
+s32 LavaBubbleFX::LoadDone() {
     GameProp::LoadDone();
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);
     this->unkD0 = MKMaterial_Create("FX_007");

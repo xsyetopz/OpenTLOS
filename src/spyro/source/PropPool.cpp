@@ -12,7 +12,7 @@
 
 extern MKSceneManager *gMK;
 
-void PropPool::LoadDone() {
+s32 PropPool::LoadDone() {
     s32 var_r29_116;
     s32 var_r29_133;
     s32 var_r29_150;

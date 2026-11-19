@@ -13,7 +13,7 @@ public:
     virtual ~ConsoleProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     /* 0x04c */ void* unk4C;
     /* 0x050 */ s32 unk50;

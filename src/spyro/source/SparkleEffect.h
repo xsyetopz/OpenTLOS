@@ -11,9 +11,9 @@ class SparkleEffect : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~SparkleEffect(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void FindNewSparklePoint(void);
     /* 0x04c */ u32* unk4C;

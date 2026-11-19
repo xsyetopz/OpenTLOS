@@ -112,7 +112,7 @@ void IceSquirt::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void IceSquirt::Update() {
+void *IceSquirt::Update() {
     f64 sp48;
     f64 sp40;
     MKVector3 sp30;
@@ -179,6 +179,7 @@ void IceSquirt::Update() {
 }
 #endif
 
+#if 0 // DRAFT: identifier 'IceSquirt::Resolve()' redeclared
 void IceSquirt::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -221,8 +222,9 @@ void IceSquirt::Resolve() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_352, 0U);
     }
 }
+#endif
 
-void IceSquirt::LoadDone() {
+s32 IceSquirt::LoadDone() {
     Projectile::LoadDone();
     this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("LiquidIceFX"));
 }

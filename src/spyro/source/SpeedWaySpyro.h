@@ -40,10 +40,10 @@ public:
     virtual ~SpeedWaySpyro(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot13() = 0;  // name unknown: no descendant fills this slot
@@ -375,7 +375,6 @@ inline SpeedWaySpyro::SpeedWaySpyro() {
     this->unk818 = 0;
     this->unk840 = 0;
     this->unk888 = 0;
-    return this;
 }
 #endif
 

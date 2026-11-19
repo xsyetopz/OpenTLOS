@@ -297,6 +297,5 @@ SwayProperty::SwayProperty() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk34 = -1;
-    return this;
 }
 #endif

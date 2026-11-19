@@ -1511,11 +1511,10 @@ void SpyroCynderStrafeState::Deinit() {
     this->unk18.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__40KDStateMachine'
 void SpyroCynderStrafeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>(&this->unk18, (KDStateMachine<SpyroCynderStrafeState>::State *) SpyroCynderStrafeState::states, NULL);
-    Init__40KDStateMachine<22SpyroCynderStrafeState>FPQ240KDStateMachine<22SpyroCynderStrafeState>5StateP40KDStateMachine<22SpyroCynderStrafeState>((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50, (KDStateMachine<SpyroCynderStrafeState>::State *) SpyroCynderStrafeState::jumpStates, NULL);
+    this->unk18.Init((KDStateMachine<SpyroCynderStrafeState>::State *) SpyroCynderStrafeState::states, NULL);
+    ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Init((KDStateMachine<SpyroCynderStrafeState>::State *) SpyroCynderStrafeState::jumpStates, NULL);
     this->unk14 = 0;
     M2C_FIELD(this, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -1532,7 +1531,6 @@ void SpyroCynderStrafeState::Init(Spyro *arg0) {
     this->unk7C.unk4 = 0x1B;
     this->unk88.Init((MKProp *) this->unk10);
 }
-#endif
 
 void SpyroCynderStrafeState_cpp::__sinit() {
     s32 sp48;

@@ -72,7 +72,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampFlicker::Update() {
+void *SwampFlicker::Update() {
     s8 sp208;
     s32 sp204;
     s32 sp200;
@@ -305,7 +305,7 @@ loop_16:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampFlicker::LoadDone() {
+s32 SwampFlicker::LoadDone() {
     s8 sp190;
     s32 sp18C;
     s32 sp188;

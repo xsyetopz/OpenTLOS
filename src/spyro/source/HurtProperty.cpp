@@ -233,6 +233,5 @@ HurtProperty::HurtProperty() {
     this->unk14 = NULL;
     this->unk1C = 0.0f;
     this->unk20 = 0;
-    return this;
 }
 #endif

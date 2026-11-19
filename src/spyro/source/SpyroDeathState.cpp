@@ -537,7 +537,6 @@ void SpyroDeathState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__33KDStateMachine'
 void SpyroDeathState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     this->unk28 = 0;
@@ -545,9 +544,8 @@ void SpyroDeathState::Init(Spyro *arg0) {
     this->unk2A = 0;
     this->unk2C = 0.0f;
     this->unk30 = 0;
-    Init__33KDStateMachine<15SpyroDeathState>FPQ233KDStateMachine<15SpyroDeathState>5StateP33KDStateMachine<15SpyroDeathState>(&this->unk14, (KDStateMachine<SpyroDeathState>::State *) &SpyroDeathState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroDeathState>::State *) &SpyroDeathState::states, NULL);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_779'
 void SpyroDeathState_cpp::__sinit() {

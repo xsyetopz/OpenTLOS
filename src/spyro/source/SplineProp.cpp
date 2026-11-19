@@ -163,7 +163,7 @@ loop_20:
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
-void SplineProp::LoadDone() {
+s32 SplineProp::LoadDone() {
     KDUniformSpline sp10;
     f32 sp8;
 

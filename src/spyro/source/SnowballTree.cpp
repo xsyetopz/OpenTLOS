@@ -85,7 +85,7 @@ void SnowballTree::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void SnowballTree::Update() {
+void *SnowballTree::Update() {
     f32 temp_f2_134;
     f32 temp_f31_172;
 
@@ -109,7 +109,7 @@ void SnowballTree::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void SnowballTree::LoadDone() {
+s32 SnowballTree::LoadDone() {
     MKVector3 sp48;
     f64 sp40;
     f64 sp38;

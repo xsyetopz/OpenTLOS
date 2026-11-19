@@ -28,10 +28,10 @@ class LiquidFX : public GameProp {  // base: vtable prefix
 public:
     virtual ~LiquidFX(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     LiquidFX(void);
     void SpawnGroundCollisionFX(LFX_Blob *);
@@ -75,17 +75,13 @@ inline LiquidFX::LiquidFX() {
     this->unk3F4C = 0;
     this->unk3F50 = 0.0f;
     this->unk3F54 = 0;
-    return this;
 }
 #endif
 
 inline LiquidFX::~LiquidFX() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LiquidFXDescriptor::LiquidFXDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LIQUIDFX_H

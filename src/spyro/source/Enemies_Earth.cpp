@@ -63,7 +63,7 @@ extern f32 gUpdateTimeDelta;
 static CharacterBodyFxInit earthTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit earthTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 
-void EarthTier3::Update() {
+void *EarthTier3::Update() {
     Enemy::Update();
     TestForSpikes();
 }
@@ -120,7 +120,7 @@ void EarthTier3::Init() {
     if ((EarthTier3 *) M2C_FIELD(temp_r4_144, EarthTier3 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_144, s8 *, 9) = 1;
     }
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_96, (Goal<Enemy> *) this->unkB10);
+    temp_r31_96->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
 }
 #endif
 
@@ -138,7 +138,7 @@ void EarthTier3Descriptor::LoadDone() {
 }
 #endif
 
-void EarthTier2::Update() {
+void *EarthTier2::Update() {
     Enemy::Update();
     TestForSpikes();
 }
@@ -169,7 +169,7 @@ void EarthTier2::Init() {
 #endif
 
 #if 0 // DRAFT: pointer/array required
-void EarthTier1::Update() {
+void *EarthTier1::Update() {
     f64 sp38;                                       /* compiler-managed */
     f64 sp30;                                       /* compiler-managed */
     f64 sp28;

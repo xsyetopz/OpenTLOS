@@ -556,7 +556,7 @@ void FuryFXFire::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void FuryFXFire::Update() {
+void *FuryFXFire::Update() {
     s8 sp991;
     s8 sp990;
     s32 sp98C;
@@ -1695,7 +1695,7 @@ loop_156:
 #endif
 
 #if 0 // DRAFT: illegal use of non-static member
-void FuryFXFire::Resolve() {
+f32 FuryFXFire::Resolve() {
     f64 spC0;
     f64 spB8;
     f64 spB0;

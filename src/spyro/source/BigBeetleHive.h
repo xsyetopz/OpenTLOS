@@ -17,9 +17,9 @@ public:
     virtual ~BigBeetleHive(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *);
     BigBeetleHive(void);
@@ -48,14 +48,10 @@ inline BigBeetleHive::~BigBeetleHive() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline BigBeetleHive::BigBeetleHive() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline BigBeetleHiveDescriptor::BigBeetleHiveDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BIGBEETLEHIVE_H

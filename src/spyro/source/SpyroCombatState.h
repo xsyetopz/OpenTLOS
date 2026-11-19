@@ -88,7 +88,7 @@ public:
     virtual s32 Transition(void);
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void CometDashTransition(void);
     void CometDashUpdate(void);
     void CometDashExit(void);
@@ -132,7 +132,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroCombatState::GetStateInfo() {
+inline void *SpyroCombatState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

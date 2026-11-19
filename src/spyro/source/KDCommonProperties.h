@@ -170,7 +170,6 @@ inline void *KDAnimEventProperty::GetClassInfo() const {
     return (KDAnimEventProperty *) KDAnimEventProperty::classInfo;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDAnimEventProperty::KDAnimEventProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
@@ -181,9 +180,7 @@ inline KDAnimEventProperty::KDAnimEventProperty() {
     this->unk10.unk8 = 0;
     this->unk1C = NULL;
     this->unk20 = NULL;
-    return this;
 }
-#endif
 
 inline void *KDAnimProperty::GetClassInfo() const {
     return (KDAnimProperty *) KDAnimProperty::classInfo;
@@ -201,7 +198,6 @@ inline void *KDMessageHandlerProperty::GetClassInfo() const {
     return (KDMessageHandlerProperty *) KDMessageHandlerProperty::classInfo;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDMessageHandlerProperty::KDMessageHandlerProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
@@ -212,9 +208,7 @@ inline KDMessageHandlerProperty::KDMessageHandlerProperty() {
     this->unk10.unk8 = 0;
     this->unk1C = 0;
     this->unk20 = NULL;
-    return this;
 }
-#endif
 
 inline s32 KDPathFollowerProperty::GetInstanceDataSize() const {
     return 0x1C;
@@ -243,7 +237,6 @@ inline KDRefPointProperty::KDRefPointProperty() {
     this->unk8 = 0;
     this->unk10 = "defaultModel";
     this->unk14 = 0;
-    return this;
 }
 #endif
 

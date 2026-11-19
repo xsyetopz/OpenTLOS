@@ -151,19 +151,17 @@ static s32 iStalactiteGemsF = 1;
 
 static u8 lit_1160 = 1;
 static u8 lit_1266 = 1;
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_753;                                /* unable to generate initializer: unknown type; const */
 
 static s32 lit_959 = 0x10000;                          /* const */
 
-void IceBoss::GetCharacterName() {
+s32 IceBoss::GetCharacterName() {
     if (IsIceKing() != 0) {
         return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x328);
     }
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x368);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void IceBoss::UpdateWeaponCollisionCapsule() {
@@ -1411,7 +1409,6 @@ s32 IceBoss::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_959'
 void IceBoss::DrawSubObject(int arg0, float arg1) {
     s32 sp8;
     f32 temp_f31_2738;
@@ -1425,7 +1422,6 @@ void IceBoss::DrawSubObject(int arg0, float arg1) {
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, arg0, 0U, 1U);
     MKModel_SetAlpha(this->unk4, temp_f31_2738);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void IceBoss::Draw() {
@@ -1537,7 +1533,7 @@ void IceBoss::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void IceBoss::Update() {
+void *IceBoss::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp30;
@@ -1572,7 +1568,7 @@ void IceBoss::Update() {
 }
 #endif
 
-void IceBoss::EnableCollision(bool arg0) {
+u8 IceBoss::EnableCollision(bool arg0) {
     MKCollisionInfo *temp_r5_3083;
 
     temp_r5_3083 = this->unkF90;
@@ -1984,7 +1980,7 @@ void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubOb
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
-void IceBoss::Resolve() {
+f32 IceBoss::Resolve() {
     f64 sp20;
     f64 sp18;
     f32 sp14;
@@ -2024,7 +2020,7 @@ void IceBoss::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to
-void IceBoss::LoadDone() {
+s32 IceBoss::LoadDone() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -2307,7 +2303,7 @@ void IceBossDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_752'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 s32 IceBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp36;
     s8 sp2C;

@@ -223,7 +223,7 @@ loop_31:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
-void ElectricSparks::Update() {
+void *ElectricSparks::Update() {
     f64 sp40;
     f64 sp38;
     f64 sp30;

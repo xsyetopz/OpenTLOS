@@ -17,10 +17,10 @@ class SparxFX : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~SparxFX(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Enable(void);
     virtual void Disable(void);

@@ -45,7 +45,7 @@ void CutsceneProp::Disable() {
     PropFlagsClear((unsigned int *) &this->unk10, 0x20000U);
 }
 
-void CutsceneProp::Resolve() {
+f32 CutsceneProp::Resolve() {
     MKProp::Resolve();
     this->unk50.Resolve();
 }
@@ -96,7 +96,7 @@ block_26:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk6D'
-void CutsceneProp::Update() {
+void *CutsceneProp::Update() {
     MKProp::Update();
     this->unk50.Update();
     if ((s32) M2C_FIELD(&gb, s32 *, 0x340) == 0) {

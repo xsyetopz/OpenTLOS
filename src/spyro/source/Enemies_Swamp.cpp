@@ -82,7 +82,7 @@ static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initia
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 
-u8 SwampTier3::CanMoveAwayFromHero() {
+s32 SwampTier3::CanMoveAwayFromHero() {
     s32 var_r31_47;
     void **temp_r3_48;
 
@@ -194,7 +194,7 @@ s32 SwampTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     return 0;
 }
 
-void SwampTier3::LoadDone() {
+s32 SwampTier3::LoadDone() {
     Enemy::LoadDone();
     this->unk6C0.unk4 = -0.9519978f;
     this->unk6C0.unk8 = 0.9519978f;
@@ -426,11 +426,9 @@ void SwampTier2Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void SwampTier1::GetCharacterName() {
+s32 SwampTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x358);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp60'
 void SwampTier1::CheckAnimEvents() {

@@ -540,7 +540,7 @@ void SpeedwayCynder::UpdateBreath() {
                 memset(&this->unk330, 0, 0x10U);
                 KDSound_Play3d(GS_SWCynderFireBreathStart, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 this->unk3F8 = 1;
-                SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>(this->unk384, &this->unk3FC);
+                this->unk384->SetHitList(&this->unk3FC);
                 temp_f2_885 = this->unk320;
                 temp_f0_887 = this->unk328;
                 spA8 = temp_f2_885;
@@ -1295,7 +1295,7 @@ void SpeedwayCynder::Draw() {
 }
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
-void SpeedwayCynder::Update() {
+void *SpeedwayCynder::Update() {
     KDProp::Update();
     UpdateLookAtNodes();
     UpdateCameraZTime();
@@ -1305,7 +1305,7 @@ void SpeedwayCynder::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[15]' to
-void SpeedwayCynder::Resolve() {
+f32 SpeedwayCynder::Resolve() {
     MKProp::Resolve();
     this->unk380 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "CynderFireBomb"));
     this->unk378 = checked_cast<SpeedWay *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, void *), 0x60)(gMK, "SpeedWay"));
@@ -1349,7 +1349,7 @@ void SpeedwayCynder::Reset() {
 #endif
 
 #if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
-void SpeedwayCynder::LoadDone() {
+s32 SpeedwayCynder::LoadDone() {
     s32 temp_r0_2710;
     s32 temp_r0_2715;
     s32 temp_r0_2733;
@@ -1377,7 +1377,7 @@ void SpeedwayCynder::LoadDone() {
         var_r30_2592 += 4;
     } while (var_r26_2591 < 7);
     this->unk80->InitEvents(&lit_739 + 0x140);
-    Init__32KDStateMachine<14SpeedwayCynder>FPQ232KDStateMachine<14SpeedwayCynder>5StateP32KDStateMachine<14SpeedwayCynder>(&this->unk24C, &lit_739 + 0x90, NULL);
+    this->unk24C.Init(&lit_739 + 0x90, NULL);
     this->unk388 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "BreathDir");
     this->unk360 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
     this->unk90.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));

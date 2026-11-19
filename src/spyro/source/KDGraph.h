@@ -36,9 +36,9 @@ public:
     virtual ~KDGraphNodeProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ u8 unk50;
     /* 0x051 */ u8 pad51[0x3b];

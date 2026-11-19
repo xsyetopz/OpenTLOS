@@ -123,7 +123,7 @@ loop_2:
 }
 #endif
 
-void ElementalCombatController::Update() {
+void *ElementalCombatController::Update() {
     s32 temp_r3_240;
 
     MKProp::Update();
@@ -202,7 +202,7 @@ void ElementalCombatController::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to
-void ElementalCombatController::Resolve() {
+f32 ElementalCombatController::Resolve() {
     MKSceneManager *temp_r3_382;
     s32 temp_r30_381;
     s32 var_r29_378;
@@ -223,7 +223,7 @@ void ElementalCombatController::Resolve() {
 }
 #endif
 
-void ElementalCombatController::LoadDone() {
+s32 ElementalCombatController::LoadDone() {
     s32 temp_r0_440;
     s32 var_r30_430;
     s32 var_r31_431;

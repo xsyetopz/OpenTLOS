@@ -93,7 +93,6 @@ u8 EnemyGoal_Death::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Death::Activate() {
     Enemy *temp_r3_44;
     Enemy *temp_r5_48;
@@ -108,9 +107,8 @@ void EnemyGoal_Death::Activate() {
         temp_r5_48->unkB09 = temp_r3_49 & ~4;
     }
     RemoveAllSubgoals();
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+    AddSubgoal((Goal<Enemy> *) this->unk20);
 }
-#endif
 
 void EnemyGoal_Death::Deinit() {
     Goal<Enemy> *temp_r3_78;
@@ -309,7 +307,6 @@ u8 EnemyGoal_Dying::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Dying::Activate() {
     f64 sp28;
     f64 sp20;
@@ -354,41 +351,41 @@ void EnemyGoal_Dying::Activate() {
     }
     temp_r4_475 = this->unkC;
     if ((u32) M2C_FIELD(temp_r4_475, u32 *, 0x638) != 0U) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
     } else if ((((u8) M2C_FIELD(temp_r4_475, u8 *, 0xB02) >> 7U) & 1) || ((temp_r3_487 = M2C_FIELD(temp_r4_475, void **, 0xA00), ((temp_r3_487 == NULL) == 0)) && ((u8) M2C_FIELD(temp_r3_487, u8 *, 0x20) != 0))) {
         if ((((u8) M2C_FIELD(temp_r4_475, u8 *, 0xB08) >> 2U) & 1) || (((u8) M2C_FIELD(temp_r4_475, u8 *, 0xB01) >> 1U) & 1)) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoal((Goal<Enemy> *) this->unk24);
         } else {
             temp_r3_506 = M2C_FIELD(temp_r4_475, void **, 0xA00);
             if ((temp_r3_506 != NULL) && ((u8) M2C_FIELD(temp_r3_506, u8 *, 0x20) != 0)) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                AddSubgoal((Goal<Enemy> *) this->unk28);
             } else {
                 var_r3_518 = 0;
                 if (((s32) M2C_FIELD(temp_r4_475, s32 *, 0x7C8) == 3) && (M2C_FIELD(temp_r4_475, f32 *, 0x7E4) > 0.0f)) {
                     var_r3_518 = 1;
                 }
                 if (var_r3_518 != 0) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+                    AddSubgoal((Goal<Enemy> *) this->unk2C);
                 } else {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+                    AddSubgoal((Goal<Enemy> *) this->unk20);
                 }
             }
         }
     } else if (((u8) M2C_FIELD(temp_r4_475, u8 *, 0x6B5) >> 4U) & 1) {
         if ((s32) M2C_FIELD(M2C_FIELD(temp_r4_475, void **, 0xA38), s32 *, 0x118) == 3) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+            AddSubgoal((Goal<Enemy> *) this->unk30);
         } else {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+            AddSubgoal((Goal<Enemy> *) this->unk20);
         }
     } else {
         temp_r3_556 = M2C_FIELD(temp_r4_475, u8 *, 0xB0A);
         if ((temp_r3_556 >> 3U) & 1) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
+            AddSubgoal((Goal<Enemy> *) this->unk40);
         } else if ((temp_r3_556 >> 1U) & 1) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
+            AddSubgoal((Goal<Enemy> *) this->unk44);
+            AddSubgoal((Goal<Enemy> *) this->unk40);
         } else {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+            AddSubgoal((Goal<Enemy> *) this->unk20);
         }
     }
     temp_r4_578 = this->unkC;
@@ -397,7 +394,6 @@ void EnemyGoal_Dying::Activate() {
         ((EventMessage *) (temp_r3_579 + 8))->Send(temp_r4_578);
     }
 }
-#endif
 
 void EnemyGoal_Dying::Deinit() {
     Goal<Enemy> *temp_r3_600;

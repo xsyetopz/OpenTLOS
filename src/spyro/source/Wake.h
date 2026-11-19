@@ -16,7 +16,7 @@ public:
     virtual void Init(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     s32 GetWakeLength(int);
     /* 0x04c */ MKMaterial* unk4C;

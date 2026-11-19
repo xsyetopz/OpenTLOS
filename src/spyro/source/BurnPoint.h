@@ -24,7 +24,6 @@ inline BurnPoint::~BurnPoint() {
 #if 0 // DRAFT: undefined identifier 'unk14'
 inline BurnPoint::BurnPoint() {
     this->unk14 = 0;
-    return this;
 }
 #endif
 

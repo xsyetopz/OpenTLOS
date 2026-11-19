@@ -20,17 +20,17 @@ class GameCamera2 : public KDCamera {  // base: ctor/dtor vtable stores
 public:
     virtual ~GameCamera2(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     virtual void ResetCamera(void);
     virtual void ClearData(void);
     virtual void UpdateCamera(void);
     virtual void DrawCamera(void);
-    virtual void GetFieldOfView(void);
+    virtual f32 GetFieldOfView(void);
     virtual f32 GetIdealFieldOfView(void);
-    virtual void IsUnderwater(void);
+    virtual s32 IsUnderwater(void);
     virtual u32 PlayerRotatedCamera(void);
     virtual void DeltaUpdate(void);
     virtual f32 GetDefaultDeltaTime(void);
@@ -42,7 +42,7 @@ public:
     virtual void SnapToSafetySetNextMode(void);
     virtual void CollSlideUpdate(const MKVector3 &);
     virtual void CameraEffectsMessage(MKMessage *);
-    virtual void CameraEffectsUpdate(void);
+    virtual u32 CameraEffectsUpdate(void);
     virtual void MiscMessage(MKMessage *);
     u8 CanLowerCamera(float *);
     void HeroStateHelperMessage(MKMessage *);

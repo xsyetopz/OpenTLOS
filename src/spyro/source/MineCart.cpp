@@ -391,7 +391,7 @@ void MineCart::UpdateEffects() {
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-void MineCart::Update() {
+void *MineCart::Update() {
     f64 sp38;
     f64 sp30;
     f64 sp28;
@@ -495,7 +495,7 @@ void MineCart::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
-void MineCart::Resolve() {
+f32 MineCart::Resolve() {
     Animation sp8;
     s32 var_r27_776;
     s32 var_r31_778;
@@ -522,7 +522,7 @@ void MineCart::Resolve() {
 }
 #endif
 
-void MineCart::LoadDone() {
+s32 MineCart::LoadDone() {
     GameProp::LoadDone();
     this->unkE8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unkE8.Show(1U);

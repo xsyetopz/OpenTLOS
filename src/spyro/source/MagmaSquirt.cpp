@@ -116,7 +116,7 @@ void MagmaSquirt::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void MagmaSquirt::Update() {
+void *MagmaSquirt::Update() {
     f64 sp140;
     f64 sp138;
     MKVector3 sp128;
@@ -296,6 +296,7 @@ void MagmaSquirt::Update() {
 }
 #endif
 
+#if 0 // DRAFT: identifier 'MagmaSquirt::Resolve()' redeclared
 void MagmaSquirt::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -338,8 +339,9 @@ void MagmaSquirt::Resolve() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_511, 0U);
     }
 }
+#endif
 
-void MagmaSquirt::LoadDone() {
+s32 MagmaSquirt::LoadDone() {
     Projectile::LoadDone();
     this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("MoltenMetalFX"));
 }

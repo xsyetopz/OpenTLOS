@@ -512,7 +512,7 @@ void FightElevator::UpdateMove() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void FightElevator::Update() {
+void *FightElevator::Update() {
     u8 sp94;
     PlatformObject *sp90;
     s32 sp8C;
@@ -851,7 +851,7 @@ block_100:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to
-void FightElevator::Resolve() {
+f32 FightElevator::Resolve() {
     f32 temp_f1_1475;
 
     Platform::Resolve();

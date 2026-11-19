@@ -559,7 +559,7 @@ void FuryFXEarth::EmitLeaves() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void FuryFXEarth::Update() {
+void *FuryFXEarth::Update() {
     f64 sp2A0;
     f64 sp298;
     f32 sp290;
@@ -959,7 +959,7 @@ loop_59:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXEarth::Resolve() {
+f32 FuryFXEarth::Resolve() {
     f64 spA0;
     f64 sp98;
     f64 sp90;

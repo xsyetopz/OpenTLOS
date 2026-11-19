@@ -17,11 +17,11 @@ class LavaSmashProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~LavaSmashProp(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void PostShatter(void);
     LavaSmashProp(void);
@@ -59,7 +59,6 @@ public:
 inline LavaSmashProp::LavaSmashProp() {
     this->unkC8 = &__vt + 0x48;
     this->unk1A8 = 0;
-    return this;
 }
 #endif
 
@@ -72,10 +71,7 @@ inline LavaSmashProp::~LavaSmashProp() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaSmashPropDescriptor::LavaSmashPropDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LAVASMASHPROP_H

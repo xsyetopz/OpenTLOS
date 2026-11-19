@@ -46,7 +46,7 @@ void Conveyor::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'Conveyor' to
-void Conveyor::Update() {
+void *Conveyor::Update() {
     f32 sp28C;
     f32 sp288;
     f32 sp284;
@@ -400,7 +400,7 @@ void Conveyor::Update() {
 #endif
 
 #if 0 // DRAFT: illegal type
-void Conveyor::Resolve() {
+f32 Conveyor::Resolve() {
     MKVector3 sp8;
     s32 temp_r0_656;
     s32 var_r24_645;
@@ -435,7 +435,7 @@ loop_2:
 }
 #endif
 
-void Conveyor::LoadDone() {
+s32 Conveyor::LoadDone() {
     GameProp::LoadDone();
 }
 

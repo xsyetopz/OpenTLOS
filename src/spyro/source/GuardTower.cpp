@@ -38,7 +38,7 @@
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-void GuardTower::Update() {
+void *GuardTower::Update() {
     f32 temp_f1_62;
     f32 temp_f1_69;
     f32 temp_f31_97;

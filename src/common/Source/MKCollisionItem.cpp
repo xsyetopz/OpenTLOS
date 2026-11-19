@@ -1698,7 +1698,7 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKCollision_RayToSphere'
-void MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+s32 MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
     arg1->unk48 = this->unk8;
@@ -2145,8 +2145,7 @@ loop_5:
     return temp_r3_3818;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
     s8 spB8;
@@ -2215,7 +2214,6 @@ void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionR
     this->unk120->unk2C = NULL;
     return var_r29_3897;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
 s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {

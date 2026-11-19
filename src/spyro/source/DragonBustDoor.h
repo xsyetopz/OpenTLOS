@@ -14,9 +14,9 @@ public:
     virtual ~DragonBustDoor(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     DragonBustDoor(void);
@@ -37,7 +37,6 @@ public:
 #if 0 // DRAFT: undefined identifier '__vt'
 inline DragonBustDoor::DragonBustDoor() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 

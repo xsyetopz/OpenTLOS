@@ -192,7 +192,7 @@ void Trap::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrapSystem *' to
-void Trap::Resolve() {
+f32 Trap::Resolve() {
     MKSceneManager *temp_r3_291;
     MKSceneManager *temp_r3_297;
 
@@ -209,7 +209,7 @@ void Trap::Resolve() {
 }
 #endif
 
-void Trap::LoadDone() {
+s32 Trap::LoadDone() {
     GameProp::LoadDone();
     if ((MKSceneManager *) this->unkD4 != NULL) {
         this->unk10 |= 4;

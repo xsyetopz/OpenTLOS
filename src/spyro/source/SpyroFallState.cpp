@@ -1597,10 +1597,9 @@ void SpyroFallState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFallState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroFallState>FPQ232KDStateMachine<14SpyroFallState>5StateP32KDStateMachine<14SpyroFallState>(&this->unk14, (KDStateMachine<SpyroFallState>::State *) SpyroFallState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroFallState>::State *) SpyroFallState::states, NULL);
     this->unk44 = 0x3D;
     this->unk3C = 0x187;
     this->unk48 = 0.0f;
@@ -1628,7 +1627,6 @@ void SpyroFallState::Init(Spyro *arg0) {
     this->unk74.unk4 = 0x39;
     this->unk80.Init((MKProp *) this->unk10);
 }
-#endif
 
 void SpyroFallState_cpp::__sinit() {
     f64 temp_f0_2773;

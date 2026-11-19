@@ -466,16 +466,14 @@ void SpyroTailStrikeState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__38KDStateMachine'
 void SpyroTailStrikeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__38KDStateMachine<20SpyroTailStrikeState>FPQ238KDStateMachine<20SpyroTailStrikeState>5StateP38KDStateMachine<20SpyroTailStrikeState>(&this->unk14, (KDStateMachine<SpyroTailStrikeState>::State *) &SpyroTailStrikeState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroTailStrikeState>::State *) &SpyroTailStrikeState::states, NULL);
     this->unk48 = 0.0f;
     this->unk50 = 1;
     this->unk4C = 0;
     this->unk28.Init((MKProp *) this->unk10);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_762'
 void SpyroTailStrikeState_cpp::__sinit() {

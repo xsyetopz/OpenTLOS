@@ -18,7 +18,7 @@
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 
-void ConsoleProp::LoadDone() {
+s32 ConsoleProp::LoadDone() {
     s32 temp_r0_57;
     s32 var_r29_48;
     s32 var_r31_47;

@@ -18,9 +18,9 @@ public:
     virtual ~ShatterWaypointSpawn(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual s32 LoadWaypoints(MKIniLine *, const char *);
     ShatterWaypointSpawn(void);
     void SetSpawnPos(int, const MKVector3 &);
@@ -69,14 +69,10 @@ inline ShatterWaypointSpawn::ShatterWaypointSpawn() {
     this->unk1A8.unk3C.Init();
     this->unk1A8.unk40.unk0 = 0;
     this->unk1A8.unk40.Init();
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ShatterWaypointSpawnDescriptor::ShatterWaypointSpawnDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SHATTERWAYPOINTSPAWN_H

@@ -13,7 +13,7 @@ class MKVector3;
 class IceExplosion : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~IceExplosion(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Trigger(const MKVector3 &, float);
     /* 0x04c */ s32 unk4C;

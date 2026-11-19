@@ -19,10 +19,10 @@ class Explosion3 : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~Explosion3(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     void Trigger(const MKVector3 &, const float &, bool, bool, const MKVector3 &, MKProp *);
     /* 0x04c */ ExpSmokeAndFlamesPS* unk4C;
     /* 0x050 */ ExpShock* unk50;

@@ -14,9 +14,9 @@ class FireBossDriver : public Enemy {  // base: vtable prefix
 public:
     virtual ~FireBossDriver(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void SetDefaults(void);
     virtual void SetupCollision(void);
@@ -42,7 +42,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireBossDriver::FireBossDriver() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -56,10 +55,7 @@ inline void FireBossDriver::SetupCollision() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireBossDriverDescriptor::FireBossDriverDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_FIREBOSSDRIVER_H

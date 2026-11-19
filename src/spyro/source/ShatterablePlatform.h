@@ -15,10 +15,10 @@ class ShatterablePlatform : public Shatterable {  // base: base ctor call
 public:
     virtual ~ShatterablePlatform(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void UpdateMove(void);
     ShatterablePlatform(void);
@@ -68,7 +68,6 @@ inline ShatterablePlatform::ShatterablePlatform() {
     this->unk1C0.unk28.unk4 = NULL;
     this->unk1C0.unk28.unk8 = temp_r0_21353;
     this->unk1C0.unk28.unkC = temp_r0_21353;
-    return this;
 }
 #endif
 

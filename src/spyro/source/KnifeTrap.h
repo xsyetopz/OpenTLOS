@@ -13,7 +13,7 @@ class KnifeTrap : public Trap {  // base: base ctor call
 public:
     virtual ~KnifeTrap(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     KnifeTrap(void);
 };
 
@@ -30,7 +30,6 @@ public:
 #if 0 // DRAFT: undefined identifier '__vt'
 inline KnifeTrap::KnifeTrap() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 
@@ -40,10 +39,7 @@ inline KnifeTrap::~KnifeTrap() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KnifeTrapDescriptor::KnifeTrapDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KNIFETRAP_H

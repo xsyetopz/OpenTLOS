@@ -849,7 +849,7 @@ void StalactiteCharge::StateSCWaitEnter() {
 }
 
 #if 0 // DRAFT: ')' expected
-void StalactiteCharge::Update() {
+void *StalactiteCharge::Update() {
     KDUniformSpline sp18;
     f32 sp10;
     s32 sp8;
@@ -903,7 +903,7 @@ void StalactiteCharge::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void StalactiteCharge::Resolve() {
+f32 StalactiteCharge::Resolve() {
     MKSceneManager *temp_r3_1606;
     u32 temp_r4_1605;
 
@@ -917,7 +917,7 @@ void StalactiteCharge::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
-void StalactiteCharge::LoadDone() {
+s32 StalactiteCharge::LoadDone() {
     KDUniformSpline sp38;
     KDUniformSpline sp18;
     f32 sp10;
@@ -1012,12 +1012,12 @@ void StalactiteCharge::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'StalactiteChargeStates'
 void StalactiteCharge::Init() {
     IceBossStalactiteSpawner *var_r3_1899;
     MKHeap *temp_r3_1892;
 
-    temp_r3_1892 = ((MKHeap *) (Init__34KDStateMachine<16StalactiteCharge>FPQ234KDStateMachine<16StalactiteCharge>5StateP34KDStateMachine<16StalactiteCharge>(&this->unk50, &StalactiteChargeStates, NULL)))->Current();
+    temp_r3_1892 = ((MKHeap *) (this->unk50.Init(&StalactiteChargeStates, NULL)))->Current();
     if (temp_r3_1892 != NULL) {
         var_r3_1899 = ((MKHeap *) (temp_r3_1892->Current()))->Alloc(0x28, NULL, 0);
     } else {
@@ -1059,7 +1059,6 @@ StalactiteCharge::StalactiteCharge() {
     this->unk58 = 0;
     this->unk5C = 0;
     this->unk144 = 0;
-    return this;
 }
 #endif
 

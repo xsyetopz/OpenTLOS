@@ -139,7 +139,7 @@ void UISystem::ProvokeTransition() {
 }
 
 #if 0 // DRAFT: undefined identifier 'P8UIScreen'
-void UISystem::Message(UIMessage *arg0) {
+s32 UISystem::Message(UIMessage *arg0) {
     s32 temp_r5_269;
 
     temp_r5_269 = arg0->unk0;

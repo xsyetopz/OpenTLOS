@@ -53,7 +53,7 @@ void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
     }
 }
 
-void ShatterWaypointSpawn::Resolve() {
+f32 ShatterWaypointSpawn::Resolve() {
     f64 sp10;
     f64 sp8;
     s32 var_r31_60;
@@ -77,7 +77,7 @@ loop_4:
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void ShatterWaypointSpawn::LoadDone() {
+s32 ShatterWaypointSpawn::LoadDone() {
     f64 sp10;
     f64 sp8;
     SpawnPointData *temp_r30_115;

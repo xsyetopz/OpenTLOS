@@ -12,7 +12,7 @@ public:
     virtual ~LiquidStream(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     /* 0x04c */ s32 unk4C;
     /* 0x050 */ void* unk50;

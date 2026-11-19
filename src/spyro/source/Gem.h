@@ -20,7 +20,7 @@ public:
     virtual ~Gem(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void GetDescriptor(void);

@@ -948,7 +948,7 @@ void EventCamera::GetTargetStart() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'EnemySpawner *' to
-void EventCamera::Update() {
+void *EventCamera::Update() {
     s32 sp814;
     KDS_Message_SetCameraSimple sp810;
     Matrix sp7D0;
@@ -1911,7 +1911,7 @@ void EventCamera::Reset() {
 }
 #endif
 
-void EventCamera::Resolve() {
+f32 EventCamera::Resolve() {
     EventCamera *temp_r3_3237;
     void *temp_r3_3223;
     void *temp_r3_3230;
@@ -1935,7 +1935,7 @@ void EventCamera::Resolve() {
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void EventCamera::LoadDone() {
+s32 EventCamera::LoadDone() {
     f64 sp28;
     f64 sp20;
     f32 sp18;

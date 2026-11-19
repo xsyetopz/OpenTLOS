@@ -93,7 +93,7 @@ void MagicFireball::Deactivate() {
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void MagicFireball::Update() {
+void *MagicFireball::Update() {
     Matrix sp130;
     Matrix spF0;
     f64 spE0;                                       /* compiler-managed */
@@ -626,7 +626,7 @@ void MagicFireball::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *a
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MagicFireball::LoadDone() {
+s32 MagicFireball::LoadDone() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

@@ -64,7 +64,7 @@ s32 Kane::LoadLine(MKIniLine *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
-void Kane::Resolve() {
+f32 Kane::Resolve() {
     s32 spC;
     s32 sp8;
     u32 temp_r3_91;

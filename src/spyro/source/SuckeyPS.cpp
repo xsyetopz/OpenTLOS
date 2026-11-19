@@ -14,9 +14,15 @@
 
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gSuckeyPSEnv;     /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gSuckeyPSEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 0.5f, 0.85f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 0.75f, 0.0f, 0.0f },
+    { 0.75f, 1.0f, 0.5f, 0.0f, 0.0f },
+    { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void SuckeyPS::UpdateParticles() {
     f64 sp38;
     f64 sp30;
@@ -25,6 +31,8 @@ void SuckeyPS::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r30_77;
     MKParticleSystem::Envelope *temp_r3_141;
+    MKParticleSystem::Envelope *temp_r5_145;
+    MKParticleSystem::Envelope *temp_r5_177;
     f32 temp_f2_82;
     f32 temp_f30_84;
     f32 temp_f3_154;
@@ -32,12 +40,10 @@ void SuckeyPS::UpdateParticles() {
     f32 temp_f5_143;
     f32 var_f0_157;
     f32 var_f0_95;
+    s32 temp_r0_142;
     s32 temp_r3_128;
     s32 temp_r4_140;
-    s32 temp_r6_144;
     void *temp_r29_80;
-    void *temp_r5_145;
-    void *temp_r5_177;
 
     M2C_STRUCT_COPY((s32) (this + 0x5C) + 4, this->unk140 - 4 + 4, 0x40);
     this->unk128 += gUpdateTimeDelta;
@@ -70,17 +76,17 @@ loop_18:
             M2C_FIELD(var_r30_77, f64 *, 8) = (f64) sp18;
             temp_r3_128 = M2C_FIELD(temp_r29_80, s32 *, 0x28);
             sp38 = (f64) sp18;
-            if (temp_f30_84 > (this->unk12C * *(this->unk134 + (temp_r3_128 * 0x14)))) {
+            if (temp_f30_84 > (this->unk12C * this->unk134[temp_r3_128].unk0)) {
                 M2C_FIELD(temp_r29_80, s32 *, 0x28) = (s32) (temp_r3_128 + 1);
             }
             temp_r4_140 = M2C_FIELD(temp_r29_80, s32 *, 0x28);
             temp_r3_141 = this->unk134;
+            temp_r0_142 = temp_r4_140 - 1;
             temp_f5_143 = this->unk12C;
-            temp_r6_144 = (temp_r4_140 - 1) * 0x14;
-            temp_r5_145 = temp_r3_141 + temp_r6_144;
-            temp_f4_147 = M2C_FIELD(temp_r5_145, f32 *, 0);
-            temp_f3_154 = -((temp_f5_143 * temp_f4_147) - temp_f30_84) / (temp_f5_143 * (*(temp_r3_141 + (temp_r4_140 * 0x14)) - temp_f4_147));
-            var_r30_77->unk1C = (temp_f3_154 * M2C_FIELD(temp_r5_145, f32 *, 0xC)) + M2C_FIELD(temp_r5_145, f32 *, 4);
+            temp_r5_145 = &temp_r3_141[temp_r0_142];
+            temp_f4_147 = temp_r5_145->unk0;
+            temp_f3_154 = -((temp_f5_143 * temp_f4_147) - temp_f30_84) / (temp_f5_143 * (temp_r3_141[temp_r4_140].unk0 - temp_f4_147));
+            var_r30_77->unk1C = (temp_f3_154 * temp_r5_145->unkC) + temp_r5_145->unk4;
             var_f0_157 = var_r30_77->unk1C;
             if (var_f0_157 < 1.0f) {
 
@@ -93,8 +99,8 @@ loop_18:
                 var_f0_157 = 0.0f;
             }
             var_r30_77->unk1C = var_f0_157;
-            temp_r5_177 = this->unk134 + temp_r6_144;
-            var_r30_77->unk28 = M2C_FIELD(temp_r29_80, f32 *, 0x2C) * ((temp_f3_154 * M2C_FIELD(temp_r5_177, f32 *, 0x10)) + M2C_FIELD(temp_r5_177, f32 *, 8));
+            temp_r5_177 = &this->unk134[temp_r0_142];
+            var_r30_77->unk28 = M2C_FIELD(temp_r29_80, f32 *, 0x2C) * ((temp_f3_154 * temp_r5_177->unk10) + temp_r5_177->unk8);
             var_r30_77 = GetNextParticle(&unksp8);
         }
         goto loop_18;
@@ -151,7 +157,6 @@ void SuckeyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gSuckeyPSEnv'
 void SuckeyPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 5.0f;
@@ -159,10 +164,9 @@ void SuckeyPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gSuckeyPSEnv, 5);
+    SetEnvelope(gSuckeyPSEnv, 5);
     SetMaxParticleAge(10.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
     this->unk140 = 0;
 }
-#endif

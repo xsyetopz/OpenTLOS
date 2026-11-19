@@ -278,7 +278,7 @@ void UIVideoScreen::OnEnter() {
 }
 #endif
 
-void UIVideoScreen::Message(UIMessage *arg0) {
+s32 UIVideoScreen::Message(UIMessage *arg0) {
     UIScreen::Message(arg0);
 }
 

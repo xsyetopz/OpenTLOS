@@ -38,7 +38,7 @@ void TrapSystem::Draw() {
     MKProp::Draw();
 }
 
-void TrapSystem::Update() {
+void *TrapSystem::Update() {
     MKProp *var_r31_69;
 
     MKProp::Update();
@@ -91,7 +91,7 @@ loop_11:
 #endif
 
 #if 0 // DRAFT: illegal operand
-void TrapSystem::LoadDone() {
+s32 TrapSystem::LoadDone() {
     MKProp::LoadDone();
     this->unk50.SetIdentity();
     this->unk50.SetRotationPYR(MKProp::loadInfo + 0x50);

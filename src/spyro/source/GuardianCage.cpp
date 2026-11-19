@@ -730,7 +730,7 @@ void GuardianCage::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void GuardianCage::Update() {
+void *GuardianCage::Update() {
     Matrix sp20;
     MKVector3 sp10;
 
@@ -749,15 +749,15 @@ void GuardianCage::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to
-void GuardianCage::Resolve() {
+f32 GuardianCage::Resolve() {
     KDPropEx::Resolve();
     this->unk144 = checked_cast<Guardian *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "EarthGuardian"));
-    Init__30KDStateMachine<12GuardianCage>FPQ230KDStateMachine<12GuardianCage>5StateP30KDStateMachine<12GuardianCage>((KDStateMachine<GuardianCage> *) &this->unk14C, (KDStateMachine<GuardianCage>::State *) GuardianCage::states, NULL);
+    ((KDStateMachine<GuardianCage> *) &this->unk14C)->Init((KDStateMachine<GuardianCage>::State *) GuardianCage::states, NULL);
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 1, 0U);
 }
 #endif
 
-void GuardianCage::LoadDone() {
+s32 GuardianCage::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

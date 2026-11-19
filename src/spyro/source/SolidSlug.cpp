@@ -33,7 +33,7 @@ extern s32 GS_PLACEHOLDER;
 extern MKPropDescriptor *pSolidSlugDescriptor;
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void SolidSlug::Update() {
+void *SolidSlug::Update() {
     Matrix sp90;
     Matrix sp50;
     f64 sp40;                                       /* compiler-managed */
@@ -253,7 +253,7 @@ void SolidSlug::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-void SolidSlug::LoadDone() {
+s32 SolidSlug::LoadDone() {
     Projectile::LoadDone();
 }
 

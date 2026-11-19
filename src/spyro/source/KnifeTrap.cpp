@@ -27,7 +27,7 @@
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
 
-void KnifeTrap::Update() {
+void *KnifeTrap::Update() {
     GameProp::Update();
     if (this->unk10 & 0x20000) {
 

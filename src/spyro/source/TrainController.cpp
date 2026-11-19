@@ -302,7 +302,7 @@ void TrainController::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainControllerDescriptor *' to
-void TrainController::Update() {
+void *TrainController::Update() {
     SteamTrainCaboose *temp_r3_482;
     u64 temp_ret_471;
 
@@ -353,7 +353,7 @@ void TrainController::Reset() {
 #endif
 
 #if 0 // DRAFT: function call 'Disable(MKProp *, void *)' does not match
-void TrainController::LoadDone() {
+s32 TrainController::LoadDone() {
     void *temp_r4_577;
 
     MKProp::LoadDone();

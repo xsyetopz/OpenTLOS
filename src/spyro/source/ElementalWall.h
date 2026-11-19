@@ -19,8 +19,8 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void CalcBounds(void);
@@ -93,7 +93,6 @@ inline ElementalWall::ElementalWall() {
     this->unkE8 = 0;
     this->unkEC = 0;
     this->unk130 = 0;
-    return this;
 }
 #endif
 

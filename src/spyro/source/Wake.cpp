@@ -127,7 +127,7 @@ loop_14:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void Wake::Update() {
+void *Wake::Update() {
     f64 spD8;
     f64 spD0;
     f64 spC8;

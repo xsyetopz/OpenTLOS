@@ -362,7 +362,7 @@ void DamageShieldEffect::Draw() {
     }
 }
 
-void DamageShieldEffect::Update() {
+void *DamageShieldEffect::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

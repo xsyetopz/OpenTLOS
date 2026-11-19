@@ -1108,11 +1108,11 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'cutsceneStates'
 void CutsceneSystem::Init() {
     MKVector3 *temp_r31_2281;
 
-    Init__32KDStateMachine<14CutsceneSystem>FPQ232KDStateMachine<14CutsceneSystem>5StateP32KDStateMachine<14CutsceneSystem>(&this->unk24, &cutsceneStates, NULL);
+    this->unk24.Init(&cutsceneStates, NULL);
     this->unk24.SetState(this, 0, 0U);
     operator new(0x270U, NULL, 0);
     temp_r31_2281 = M2C_ERROR(/* Read from unset register $r3 */);

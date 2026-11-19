@@ -47,7 +47,7 @@ void CollideBox::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-void CollideBox::LoadDone() {
+s32 CollideBox::LoadDone() {
     KDProp::LoadDone();
     if ((u8) this->unk90 != 0) {
         this->unk70.unk4 = 1;

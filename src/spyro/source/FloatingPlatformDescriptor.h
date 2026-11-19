@@ -17,11 +17,8 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FloatingPlatformDescriptor::FloatingPlatformDescriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'PlatformDescriptor'
 inline void FloatingPlatformDescriptor::Init() {

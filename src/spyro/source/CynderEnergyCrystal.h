@@ -20,10 +20,10 @@ public:
     virtual ~CynderEnergyCrystal(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     CynderEnergyCrystal(void);
     void UpdateModel(void);
@@ -63,17 +63,13 @@ public:
 #if 0 // DRAFT: undefined identifier '__vt'
 inline CynderEnergyCrystal::CynderEnergyCrystal() {
     this->unk168 = &__vt;
-    return this;
 }
 #endif
 
 inline CynderEnergyCrystal::~CynderEnergyCrystal() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderEnergyCrystalDescriptor::CynderEnergyCrystalDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CYNDERENERGYCRYSTAL_H

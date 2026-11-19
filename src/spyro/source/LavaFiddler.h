@@ -34,10 +34,10 @@ class LavaFiddlerCritter : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~LavaFiddlerCritter(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     LavaFiddlerCritter(void);
     void SetIdleState(LavaFiddler *);
@@ -63,11 +63,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaFiddlerCritter::LavaFiddlerCritter() {
-    return this;
 }
-#endif
 
 inline LavaFiddlerCritter::~LavaFiddlerCritter() {
     s32 temp_cr0_eq_15;
@@ -83,10 +80,7 @@ inline LavaFiddlerCritter::~LavaFiddlerCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaFiddlerCritterDescriptor::LavaFiddlerCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LAVAFIDDLER_H

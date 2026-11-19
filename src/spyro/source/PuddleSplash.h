@@ -14,9 +14,9 @@ class PuddleSplash : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~PuddleSplash(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Emit(const MKVector3 &, const float &, bool);
     /* 0x04c */ void* unk4C;

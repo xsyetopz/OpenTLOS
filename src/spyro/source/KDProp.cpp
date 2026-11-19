@@ -267,7 +267,7 @@ void KDProp::Draw() {
 }
 #endif
 
-void KDProp::Update() {
+void *KDProp::Update() {
     MKAnimScript *temp_r3_426;
 
     MKProp::Update();
@@ -349,7 +349,7 @@ loop_3:
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
-void KDProp::LoadDone() {
+s32 KDProp::LoadDone() {
     MKAnim *var_r3_627;
     MKAnim *var_r3_647;
     MKAnim *var_r4_633;

@@ -1999,11 +1999,9 @@ s32 FireBoss::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void FireBoss::GetCharacterName() {
+s32 FireBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x324);
 }
-#endif
 
 #if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double,
 void FireBoss::UpdateMovementCustom() {
@@ -2277,7 +2275,7 @@ loop_3:
 }
 #endif
 
-void FireBoss::Update() {
+void *FireBoss::Update() {
     s32 sp8;
     f32 temp_f1_4257;
     f32 temp_f1_4268;
@@ -2381,7 +2379,7 @@ void FireBoss::SetDefaults() {
 }
 
 #if 0 // DRAFT: ')' expected
-void FireBoss::Resolve() {
+f32 FireBoss::Resolve() {
     void **var_r0_4403;
     void **var_r5_4408;
     void *temp_r3_4427;
@@ -2413,7 +2411,7 @@ loop_9:
 #endif
 
 #if 0 // DRAFT: function call 'Init(MKHeap *, MKModel *)' does not match
-void FireBoss::LoadDone() {
+s32 FireBoss::LoadDone() {
     FireBossDriver *temp_r3_4511;
     MKModel *temp_r31_4496;
 

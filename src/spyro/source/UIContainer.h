@@ -20,7 +20,7 @@ public:
     virtual void LoadResources(void);
     virtual void FreeResources(void);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual s32 IsContainer(void) const;
     void Remove(UIObject *);
     void AddBefore(UIObject *, UIObject *);

@@ -33,9 +33,9 @@ public:
     virtual ~Platform(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
     virtual void Message(MKMessage *);
     virtual void PropUpdate(void);
@@ -153,7 +153,6 @@ inline Platform::Platform() {
     this->unk164 = temp_r0_19939;
     this->unk168 = temp_r0_19939;
     this->unk178 = 0;
-    return this;
 }
 #endif
 
@@ -169,10 +168,7 @@ inline void Platform::UpdateScale() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline PlatformDescriptor::PlatformDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_PLATFORM_H

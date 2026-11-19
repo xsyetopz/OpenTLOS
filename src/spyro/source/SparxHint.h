@@ -19,8 +19,8 @@ public:
     virtual ~SparxHint(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 unk4C;
     /* 0x04d */ u8 pad4D[0x3];

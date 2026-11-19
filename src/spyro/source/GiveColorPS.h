@@ -11,7 +11,7 @@ class GiveColorPS : public MKParticleSystem {  // base: ctor/dtor vtable stores
 public:
     virtual ~GiveColorPS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     GiveColorPS(void);
@@ -35,7 +35,6 @@ inline GiveColorPS::GiveColorPS() {
     this->unk144 = 0;
     this->unk148 = 0.0f;
     this->unk14C = 0;
-    return this;
 }
 #endif
 

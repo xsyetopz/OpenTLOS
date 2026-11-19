@@ -734,7 +734,7 @@ void WeatherRegion::Draw() {
 }
 
 #if 0 // DRAFT: ')' expected
-void WeatherRegion::Update() {
+void *WeatherRegion::Update() {
     Frustum spE0;
     MKVector3 spD0;
     MKVector3 spC0;
@@ -887,7 +887,7 @@ loop_45:
 }
 #endif
 
-void WeatherRegion::LoadDone() {
+s32 WeatherRegion::LoadDone() {
     MKProp::LoadDone();
     this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);

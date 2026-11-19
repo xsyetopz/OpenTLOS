@@ -93,12 +93,12 @@ void LookAtProp::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-void LookAtProp::Resolve() {
+f32 LookAtProp::Resolve() {
     this->unk4C = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unk4C)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     MKProp::Resolve();
 }
 
-void LookAtProp::LoadDone() {
+s32 LookAtProp::LoadDone() {
     this->unk8 = &this->unk50;
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     this->unk50.SetRotationToNone();

@@ -393,7 +393,7 @@ loop_83:
 #endif
 
 #if 0 // DRAFT: illegal operand
-void FireWall::Update() {
+void *FireWall::Update() {
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -1053,7 +1053,7 @@ loop_130:
 }
 #endif
 
-void FireWall::LoadDone() {
+s32 FireWall::LoadDone() {
     MKProp::LoadDone();
 }
 

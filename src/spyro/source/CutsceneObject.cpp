@@ -222,7 +222,6 @@ CutsceneObject::~CutsceneObject() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 CutsceneObject::CutsceneObject() {
     this->unk0 = M2C_FIELD(&MKVector4::zero, f64 *, 0);
     this->unk8 = M2C_FIELD(&MKVector4::zero, f64 *, 8);
@@ -252,9 +251,7 @@ CutsceneObject::CutsceneObject() {
     this->unk61 = 0;
     this->unk62 = 0;
     this->unk63 = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 s8 *MakeCutsceneFilename(int arg0, const char *arg1, char *arg2, bool arg3) {

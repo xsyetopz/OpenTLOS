@@ -35,9 +35,9 @@ public:
     virtual ~EarthBoss(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void SetDefaults(void);
@@ -48,7 +48,7 @@ public:
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     virtual void DoHitFx(EnemyDamageFeedback *);
     EarthBoss(void);
     void InterceptDamage(void);
@@ -82,10 +82,10 @@ class EarthBossArm : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~EarthBossArm(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Enable(void);
@@ -176,7 +176,6 @@ inline EarthBoss::EarthBoss() {
     this->unk6B8 = &__vt + 0x84;
     this->unkCF4.unk0 = 0;
     this->unkCF4.Init();
-    return this;
 }
 #endif
 
@@ -264,10 +263,7 @@ inline void EarthBossArm::GetProp() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline EarthBossDescriptor::EarthBossDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_EARTHBOSS_H

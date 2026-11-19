@@ -843,7 +843,7 @@ void FireBombFX::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
-void FireBombFX::Update() {
+void *FireBombFX::Update() {
     u8 sp5E0;
     s32 sp5DC;
     MKCollisionInfo *sp5D8;
@@ -1545,7 +1545,7 @@ void FireBombFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FireBombFX::Resolve() {
+f32 FireBombFX::Resolve() {
     f64 sp80;
     f64 sp78;
     f64 sp70;

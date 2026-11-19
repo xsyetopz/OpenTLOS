@@ -257,7 +257,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampFlutterCritter::Update() {
+void *SwampFlutterCritter::Update() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -323,7 +323,7 @@ loop_8:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampFlutterCritter::Resolve() {
+f32 SwampFlutterCritter::Resolve() {
     Volume sp8;
     SwampFlutter *temp_r30_560;
     s32 temp_r25_588;
@@ -358,7 +358,7 @@ loop_2:
 }
 #endif
 
-void SwampFlutterCritter::LoadDone() {
+s32 SwampFlutterCritter::LoadDone() {
     MKHeap *temp_r3_644;
     s32 temp_r31_643;
     void *var_r3_651;

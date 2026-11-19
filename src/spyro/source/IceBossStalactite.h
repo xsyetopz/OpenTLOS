@@ -18,8 +18,8 @@ class ShatterableDescriptor;
 class IceBossStalactite : public Shatterable {  // base: base ctor call
 public:
     virtual ~IceBossStalactite(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     IceBossStalactite(void);
@@ -92,7 +92,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline IceBossStalactite::IceBossStalactite() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
@@ -102,10 +101,7 @@ inline IceBossStalactite::~IceBossStalactite() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBossStalactiteDescriptor::IceBossStalactiteDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ICEBOSSSTALACTITE_H

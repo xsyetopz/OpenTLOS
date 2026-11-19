@@ -331,7 +331,7 @@ loop_2:
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void EarthBreathWhirlWinds::Update() {
+void *EarthBreathWhirlWinds::Update() {
     f32 sp310;
     f64 sp308;
     f64 sp300;

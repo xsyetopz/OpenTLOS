@@ -51,17 +51,11 @@ void MemoryCard_InitModule(void);
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MCSaveScreen::MCSaveScreen() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MCText::MCText() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'ui_cast'
 inline void MemoryCardScreen::PopScreen() {
@@ -74,7 +68,6 @@ inline void MemoryCardScreen::PopScreen() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MemoryCardScreen::MemoryCardScreen() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -100,8 +93,6 @@ inline MemoryCardScreen::MemoryCardScreen() {
     this->unkBC.unk0 = NULL;
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MEMORYCARD_H

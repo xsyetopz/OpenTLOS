@@ -21,7 +21,7 @@ s32 KDWaterVolume::IsEnabled() {
     return 1;
 }
 
-void KDWaterVolume::LoadDone() {
+s32 KDWaterVolume::LoadDone() {
     MKProp::LoadDone();
     this->unk50.Init(*((Matrix *) &MKProp::loadInfo));
 }

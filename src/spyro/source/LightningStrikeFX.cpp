@@ -318,7 +318,7 @@ void LightningStrikeFX::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'P27LightningStrikeFXDescriptor'
-void LightningStrikeFX::Update() {
+void *LightningStrikeFX::Update() {
     MKVector3 *temp_r5_543;
     f32 temp_f31_515;
     f32 var_f0_495;
@@ -351,7 +351,7 @@ void LightningStrikeFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void LightningStrikeFX::LoadDone() {
+s32 LightningStrikeFX::LoadDone() {
     Matrix sp100;
     f64 spF8;
     f64 spF0;

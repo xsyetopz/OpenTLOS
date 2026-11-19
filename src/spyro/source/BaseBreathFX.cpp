@@ -139,7 +139,7 @@ void BaseBreathFX::Deinit() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void BaseBreathFX::Update() {
+void *BaseBreathFX::Update() {
     u8 spA8;
     s32 spA4;
     void *spA0;

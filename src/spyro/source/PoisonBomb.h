@@ -22,7 +22,7 @@ public:
     virtual void Init(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Disable(void);
@@ -93,7 +93,6 @@ inline PoisonBomb::PoisonBomb() {
     this->unk158 = temp_r0_22553;
     this->unk15C = temp_r0_22553;
     this->unk190 = 0;
-    return this;
 }
 #endif
 
@@ -126,10 +125,7 @@ inline void PoisonBomb::SetExplodeTimer(float arg0) {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline PoisonBombDescriptor::PoisonBombDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_POISONBOMB_H

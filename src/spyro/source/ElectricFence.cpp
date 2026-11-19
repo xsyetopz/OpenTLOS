@@ -294,7 +294,7 @@ block_25:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void ElectricFence::Update() {
+void *ElectricFence::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
@@ -344,7 +344,7 @@ void ElectricFence::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to
-void ElectricFence::Resolve() {
+f32 ElectricFence::Resolve() {
     s32 var_ctr_514;
     s32 var_r3_511;
     void *temp_r5_517;
@@ -365,7 +365,7 @@ void ElectricFence::Resolve() {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void ElectricFence::LoadDone() {
+s32 ElectricFence::LoadDone() {
     Matrix sp2E0;
     Matrix sp2A0;
     M2C_UNK sp29C;

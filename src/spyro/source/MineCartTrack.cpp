@@ -74,7 +74,7 @@ loop_1:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MineCartTrack::Update() {
+void *MineCartTrack::Update() {
     f32 sp33C;
     f32 sp338;
     f32 sp334;
@@ -583,7 +583,7 @@ void MineCartTrack::Update() {
 #endif
 
 #if 0 // DRAFT: type mismatch
-void MineCartTrack::Resolve() {
+f32 MineCartTrack::Resolve() {
     MKSceneManager *temp_r3_901;
     MKSceneManager *temp_r3_907;
     s32 var_r29_897;
@@ -609,7 +609,7 @@ void MineCartTrack::Resolve() {
 }
 #endif
 
-void MineCartTrack::LoadDone() {
+s32 MineCartTrack::LoadDone() {
     s32 var_r29_936;
     s32 var_r31_937;
     void *temp_r30_939;

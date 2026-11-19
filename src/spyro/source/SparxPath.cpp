@@ -73,7 +73,7 @@ void SparxPath::Message(MKMessage *arg0) {
 }
 #endif
 
-void SparxPath::Resolve() {
+f32 SparxPath::Resolve() {
     MKProp::Resolve();
     this->unkC0 *= 100.0f;
 }

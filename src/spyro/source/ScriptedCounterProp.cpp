@@ -47,7 +47,7 @@ void ScriptedCounterProp::Message(MKMessage *arg0) {
     }
 }
 
-void ScriptedCounterProp::Resolve() {
+f32 ScriptedCounterProp::Resolve() {
     MKProp::Resolve();
 }
 

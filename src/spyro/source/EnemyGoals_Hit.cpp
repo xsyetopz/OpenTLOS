@@ -270,7 +270,6 @@ u8 EnemyGoal_Hit::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Hit::Activate() {
     f64 sp20;
     f64 sp18;
@@ -352,33 +351,33 @@ block_14:
     if ((u32) var_r31_389 <= 0xCU) {
         switch (var_r31_389) {
         case 0:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+            AddSubgoal((Goal<Enemy> *) this->unk20);
             M2C_FIELD(this->unk20, s8 *, 0x10) = (s8) (this->unkC->unk638 != NULL);
             temp_r3_439 = this->unkC;
             temp_r3_439->unk6B4 |= 1;
             break;
         case 4:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoal((Goal<Enemy> *) this->unk24);
             break;
         case 5:
             temp_r6_450 = this->unkC;
             if (temp_r6_450->unkA38->GetAnimSequence(2, 0x31, temp_r6_450->unkAE4, NULL) != NULL) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                AddSubgoal((Goal<Enemy> *) this->unk28);
             } else {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+                AddSubgoal((Goal<Enemy> *) this->unk24);
             }
             break;
         case 1:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+            AddSubgoal((Goal<Enemy> *) this->unk2C);
             temp_r3_472 = this->unkC;
             temp_r3_472->unk6B4 |= 1;
             break;
         case 2:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+            AddSubgoal((Goal<Enemy> *) this->unk30);
+            AddSubgoal((Goal<Enemy> *) this->unk34);
             temp_r4_484 = this->unkC;
             if (temp_r4_484->unkAC8 > 0.0f) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoal((Goal<Enemy> *) this->unk44);
             } else {
                 temp_r4_484->unkB08 |= 8;
             }
@@ -387,10 +386,10 @@ block_14:
             break;
         case 3:
         case 10:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+            AddSubgoal((Goal<Enemy> *) this->unk34);
             temp_r4_508 = this->unkC;
             if (temp_r4_508->unkAC8 > 0.0f) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoal((Goal<Enemy> *) this->unk44);
             } else {
                 temp_r4_508->unkB08 |= 8;
             }
@@ -398,10 +397,10 @@ block_14:
             temp_r3_523->unk6B4 |= 1;
             break;
         case 8:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+            AddSubgoal((Goal<Enemy> *) this->unk38);
             temp_r4_532 = this->unkC;
             if (temp_r4_532->unkAC8 > 0.0f) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoal((Goal<Enemy> *) this->unk44);
             } else {
                 temp_r4_532->unkB08 |= 8;
             }
@@ -409,10 +408,10 @@ block_14:
             temp_r3_547->unk6B4 |= 1;
             break;
         case 6:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
+            AddSubgoal((Goal<Enemy> *) this->unk40);
             temp_r4_556 = this->unkC;
             if (temp_r4_556->unkAC8 > 0.0f) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoal((Goal<Enemy> *) this->unk44);
             } else {
                 temp_r4_556->unkB08 |= 8;
             }
@@ -420,16 +419,16 @@ block_14:
             temp_r3_571->unk6B4 |= 1;
             break;
         case 7:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48);
+            AddSubgoal((Goal<Enemy> *) this->unk48);
             break;
         case 9:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
+            AddSubgoal((Goal<Enemy> *) this->unk3C);
             if (!(((u8) this->unkC->unkB0A >> 1U) & 1)) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+                AddSubgoal((Goal<Enemy> *) this->unk34);
             }
             temp_r4_593 = this->unkC;
             if (temp_r4_593->unkAC8 > 0.0f) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoal((Goal<Enemy> *) this->unk44);
             } else {
                 temp_r4_593->unkB08 |= 8;
             }
@@ -437,10 +436,10 @@ block_14:
             temp_r3_608->unk6B4 |= 1;
             break;
         case 11:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk4C);
+            AddSubgoal((Goal<Enemy> *) this->unk4C);
             break;
         case 12:
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk50);
+            AddSubgoal((Goal<Enemy> *) this->unk50);
             break;
         }
     }
@@ -455,7 +454,6 @@ block_14:
     sp18 = (f64) sp8;
     this->unkC->DisableCurrentProjectile(1U, *((MKVector3 *) &sp18));
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void EnemyGoal_Hit::Deinit() {

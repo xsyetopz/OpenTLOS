@@ -570,7 +570,7 @@ void TrainTrack::Message(MKMessage *arg0) {
     }
 }
 
-void TrainTrack::Update() {
+void *TrainTrack::Update() {
     MKProp::Update();
 }
 
@@ -578,11 +578,11 @@ void TrainTrack::Reset() {
     MKProp::Reset();
 }
 
-void TrainTrack::Resolve() {
+f32 TrainTrack::Resolve() {
     MKProp::Resolve();
 }
 
-void TrainTrack::LoadDone() {
+s32 TrainTrack::LoadDone() {
     MKProp::LoadDone();
     Disable();
 }

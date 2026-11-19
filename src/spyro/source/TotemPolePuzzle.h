@@ -18,8 +18,8 @@ public:
     virtual ~TotemPolePiece(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot16() = 0;  // name unknown: no descendant fills this slot
@@ -55,9 +55,9 @@ public:
     virtual ~TotemPolePuzzle(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     TotemPolePuzzle(void);
     /* 0x0c8 */ void* unkC8;
     /* 0x0cc */ s32 unkCC;
@@ -79,7 +79,6 @@ inline TotemPolePiece::TotemPolePiece() {
     this->vtableC8 = &__vt;
     this->unkCC = -1;
     this->vtableC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 
@@ -161,13 +160,10 @@ inline void TotemPolePiece::GetProp() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TotemPolePuzzle::TotemPolePuzzle() {
     this->unkD4.unk0 = 0;
     this->unkD4.Init();
-    return this;
 }
-#endif
 
 inline TotemPolePuzzle::~TotemPolePuzzle() {
     if (&this->unkD4 != NULL) {

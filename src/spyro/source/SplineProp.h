@@ -19,7 +19,7 @@ public:
     virtual ~SplineProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void CalcBounds(void);
     /* 0x04c */ u8 unk4C;

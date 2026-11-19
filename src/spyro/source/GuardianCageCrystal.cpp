@@ -113,7 +113,7 @@ void GuardianCageCrystal::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier 'spE0'
-void GuardianCageCrystal::Update() {
+void *GuardianCageCrystal::Update() {
     f64 sp100;
     f64 spF8;
     f64 spF0;
@@ -258,7 +258,7 @@ void GuardianCageCrystal::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
-void GuardianCageCrystal::Resolve() {
+f32 GuardianCageCrystal::Resolve() {
     f64 sp8;
     void *temp_r31_441;
 

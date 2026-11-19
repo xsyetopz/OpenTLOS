@@ -16,7 +16,7 @@ public:
     virtual void Deinit(void);
     virtual void Update(void);
     virtual void Draw(const RenderContext &);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     void ClearStack(UIScreen *);
     void PopScreen_Internal(void);
     void PushScreen_Internal(UIScreen *);

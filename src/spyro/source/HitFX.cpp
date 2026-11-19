@@ -387,7 +387,7 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
-void HitFX::Update() {
+void *HitFX::Update() {
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -593,7 +593,7 @@ void HitFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void HitFX::Resolve() {
+f32 HitFX::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

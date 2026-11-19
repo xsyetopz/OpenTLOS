@@ -34,11 +34,11 @@ public:
     virtual ~TrainChaseSpyro(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot16() = 0;  // name unknown: no descendant fills this slot
@@ -211,7 +211,6 @@ inline TrainChaseSpyro::TrainChaseSpyro() {
     this->unk268 = 0;
     this->unk26C = 0;
     __construct_array((KDUniformSpline *) &this->unk2A8, (MKAnimScript *(*)(MKAnimScript *)) &SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD, (void *)-1);
-    return this;
 }
 #endif
 

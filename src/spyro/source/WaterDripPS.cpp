@@ -430,7 +430,7 @@ void WaterDripPS::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void WaterDripPS::Update() {
+void *WaterDripPS::Update() {
     MKVector3 spB0;
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;

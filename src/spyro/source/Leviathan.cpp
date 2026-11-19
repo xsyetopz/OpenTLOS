@@ -1005,7 +1005,7 @@ void Leviathan::UpdateMove() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
-void Leviathan::Update() {
+void *Leviathan::Update() {
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -1141,7 +1141,7 @@ void Leviathan::Update() {
 }
 #endif
 
-void Leviathan::Resolve() {
+f32 Leviathan::Resolve() {
     MKAnimScript *temp_r30_1588;
     MKAnimScript *temp_r30_1608;
     MKAnimScript *temp_r30_1626;
@@ -1188,7 +1188,7 @@ void Leviathan::SetAnim(int arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to
-void Leviathan::LoadDone() {
+s32 Leviathan::LoadDone() {
     Platform::LoadDone();
     if ((u32) this->unk18C != 0U) {
         this->unk198 /= this->unk188;

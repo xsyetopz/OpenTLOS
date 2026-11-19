@@ -18,7 +18,7 @@ public:
     virtual ~BoneBlurFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void FreePoolMem(void);
     u8 AllocPoolMem(void);

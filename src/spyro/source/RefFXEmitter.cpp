@@ -45,7 +45,7 @@ void RefFXEmitter::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void RefFXEmitter::Update() {
+void *RefFXEmitter::Update() {
     Matrix sp60;
     f64 sp50;
     f64 sp48;
@@ -102,7 +102,7 @@ void RefFXEmitter::Update() {
 }
 #endif
 
-void RefFXEmitter::LoadDone() {
+s32 RefFXEmitter::LoadDone() {
     KDProp::LoadDone();
 }
 

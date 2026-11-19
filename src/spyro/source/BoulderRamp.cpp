@@ -409,7 +409,7 @@ void BoulderRamp::SetState(BoulderRamp::State arg1) {
 }
 #endif
 
-void BoulderRamp::Update() {
+void *BoulderRamp::Update() {
     ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->Update(this, 0);
     GameProp::Update();
 }
@@ -425,7 +425,7 @@ void BoulderRamp::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
-void BoulderRamp::LoadDone() {
+s32 BoulderRamp::LoadDone() {
     s32 var_ctr_492;
     s32 var_r4_491;
     struct _struct_boulderRampGroups_0x18 *temp_r5_496;
@@ -483,7 +483,6 @@ void BoulderRamp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init__29KDStateMachine'
 void BoulderRamp::Init() {
     this->unkE0 = 0xFF;
     this->unkE4 = 0;
@@ -492,10 +491,9 @@ void BoulderRamp::Init() {
     this->unkF0 = NULL;
     ((KDUniformSpline *) &this->unkF4)->Init(3, 0U);
     ((EventMessage *) &this->unkF4.unk14)->Init();
-    Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18, (KDStateMachine<BoulderRamp>::State *) BoulderRamp::states, NULL);
+    ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->Init((KDStateMachine<BoulderRamp>::State *) BoulderRamp::states, NULL);
     Trap::Init();
 }
-#endif
 
 void BoulderRampDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();

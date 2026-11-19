@@ -561,7 +561,7 @@ void MobilePlatform::PropUpdate() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk11'
-void MobilePlatform::LoadDone() {
+s32 MobilePlatform::LoadDone() {
     Matrix sp30;
     f64 sp28;
     f64 sp20;

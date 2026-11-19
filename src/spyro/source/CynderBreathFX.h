@@ -31,8 +31,8 @@ public:
     virtual ~CynderBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     CynderBreathFX(void);
     void SetHitList(MKPtrList<MKProp> *);
@@ -63,15 +63,12 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderBreathFX::CynderBreathFX() {
     this->unkB0.unkC8.unk0 = 0;
     this->unkB0.unkC8.unk4 = 0;
     this->unkB0.unkC8.unk8 = 0.0f;
     this->unkB0.unkC8.unkC = 0;
-    return this;
 }
-#endif
 
 inline CynderBreathFX::~CynderBreathFX() {
     s32 temp_cr0_eq_15;

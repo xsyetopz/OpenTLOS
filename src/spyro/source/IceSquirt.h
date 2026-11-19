@@ -20,11 +20,11 @@ class IceSquirt : public Projectile {  // base: base ctor call
 public:
     virtual ~IceSquirt(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireBurst(MKVector3 *, MKVector3 *, int, int);
@@ -53,12 +53,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceSquirt::IceSquirt() {
     this->unk168.unk4 = 0;
-    return this;
 }
-#endif
 
 inline IceSquirt::~IceSquirt() {
 }
@@ -67,10 +64,7 @@ inline s32 IceSquirt::IsBurst() {
     return 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceSquirtDescriptor::IceSquirtDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ICESQUIRT_H

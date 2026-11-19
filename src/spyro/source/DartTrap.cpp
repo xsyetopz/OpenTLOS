@@ -228,7 +228,7 @@ void DartTrap::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
-void DartTrap::Update() {
+void *DartTrap::Update() {
     s32 temp_r0_401;
 
     KDProp::Update();
@@ -278,7 +278,7 @@ void DartTrap::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
-void DartTrap::LoadDone() {
+s32 DartTrap::LoadDone() {
     KDProp::LoadDone();
     this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ref");
     this->unk80->InitEvents(&pDartTrapAnimEvents);

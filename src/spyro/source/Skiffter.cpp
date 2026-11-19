@@ -86,7 +86,7 @@ loop_4:
 }
 
 #if 0 // DRAFT: illegal type
-void SkiffterCritter::Update() {
+void *SkiffterCritter::Update() {
     s8 sp480;
     s32 sp47C;
     s32 sp478;
@@ -1152,7 +1152,7 @@ loop_197:
 #endif
 
 #if 0 // DRAFT: illegal type
-void SkiffterCritter::Resolve() {
+f32 SkiffterCritter::Resolve() {
     MKHeap *temp_r3_1790;
     s32 temp_r0_1810;
     s32 temp_r31_1789;
@@ -1182,7 +1182,7 @@ loop_5:
 }
 #endif
 
-void SkiffterCritter::LoadDone() {
+s32 SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 

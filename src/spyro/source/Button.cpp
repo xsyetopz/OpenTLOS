@@ -66,7 +66,7 @@ void Button::Reset() {
     SetState(0);
 }
 
-void Button::Update() {
+void *Button::Update() {
     s32 temp_r0_174;
 
     GameProp::Update();

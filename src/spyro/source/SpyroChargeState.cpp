@@ -558,14 +558,12 @@ void SpyroChargeState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroChargeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroChargeState>FPQ234KDStateMachine<16SpyroChargeState>5StateP34KDStateMachine<16SpyroChargeState>(&this->unk14, (KDStateMachine<SpyroChargeState>::State *) &SpyroChargeState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroChargeState>::State *) &SpyroChargeState::states, NULL);
     this->unk28 = 0.0f;
     this->unk2C = 0.0f;
 }
-#endif
 
 void SpyroChargeState_cpp::__sinit() {
     f64 temp_f0_1248;

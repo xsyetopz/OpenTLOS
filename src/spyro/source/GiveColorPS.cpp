@@ -16,9 +16,15 @@
 extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gGiveColorPSEnv;  /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gGiveColorPSEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 0.5f, 0.75f, 0.0f, 0.0f },
+    { 0.75f, 1.0f, 0.5f, 0.0f, 0.0f },
+    { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unkspC'
 void GiveColorPS::UpdateParticles() {
     f64 spD0;
     f64 spC8;
@@ -45,6 +51,8 @@ void GiveColorPS::UpdateParticles() {
     f32 sp8;
     MKParticleChunk *var_r31_71;
     MKParticleSystem::Envelope *temp_r3_238;
+    MKParticleSystem::Envelope *temp_r3_272;
+    MKParticleSystem::Envelope *temp_r5_242;
     f32 temp_f1_184;
     f32 temp_f1_76;
     f32 temp_f27_178;
@@ -58,12 +66,10 @@ void GiveColorPS::UpdateParticles() {
     f64 temp_f0_115;
     f64 temp_f0_148;
     f64 temp_f0_202;
+    s32 temp_r0_239;
     s32 temp_r3_226;
     s32 temp_r4_237;
-    s32 temp_r6_241;
     void *temp_r30_74;
-    void *temp_r3_272;
-    void *temp_r5_242;
 
     this->unk128 += gUpdateTimeDelta;
     var_r31_71 = GetFirstParticle(&unkspC);
@@ -132,17 +138,17 @@ loop_25:
             }
             var_r31_71->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r30_74, f32 *, 0x18);
             temp_r3_226 = M2C_FIELD(temp_r30_74, s32 *, 0x14);
-            if (temp_f29_78 > (this->unk12C * *(this->unk134 + (temp_r3_226 * 0x14)))) {
+            if (temp_f29_78 > (this->unk12C * this->unk134[temp_r3_226].unk0)) {
                 M2C_FIELD(temp_r30_74, s32 *, 0x14) = (s32) (temp_r3_226 + 1);
             }
             temp_r4_237 = M2C_FIELD(temp_r30_74, s32 *, 0x14);
             temp_r3_238 = this->unk134;
+            temp_r0_239 = temp_r4_237 - 1;
             temp_f5_240 = this->unk12C;
-            temp_r6_241 = (temp_r4_237 - 1) * 0x14;
-            temp_r5_242 = temp_r3_238 + temp_r6_241;
-            temp_f4_244 = M2C_FIELD(temp_r5_242, f32 *, 0);
-            temp_f3_251 = -((temp_f5_240 * temp_f4_244) - temp_f29_78) / (temp_f5_240 * (*(temp_r3_238 + (temp_r4_237 * 0x14)) - temp_f4_244));
-            var_r31_71->unk1C = (temp_f3_251 * M2C_FIELD(temp_r5_242, f32 *, 0xC)) + M2C_FIELD(temp_r5_242, f32 *, 4);
+            temp_r5_242 = &temp_r3_238[temp_r0_239];
+            temp_f4_244 = temp_r5_242->unk0;
+            temp_f3_251 = -((temp_f5_240 * temp_f4_244) - temp_f29_78) / (temp_f5_240 * (temp_r3_238[temp_r4_237].unk0 - temp_f4_244));
+            var_r31_71->unk1C = (temp_f3_251 * temp_r5_242->unkC) + temp_r5_242->unk4;
             var_f0_254 = var_r31_71->unk1C;
             if (var_f0_254 < 1.0f) {
 
@@ -155,8 +161,8 @@ loop_25:
                 var_f0_254 = 0.0f;
             }
             var_r31_71->unk1C = var_f0_254;
-            temp_r3_272 = this->unk134 + temp_r6_241;
-            var_r31_71->unk28 = M2C_FIELD(temp_r30_74, f32 *, 0x1C) * ((temp_f3_251 * M2C_FIELD(temp_r3_272, f32 *, 0x10)) + M2C_FIELD(temp_r3_272, f32 *, 8));
+            temp_r3_272 = &this->unk134[temp_r0_239];
+            var_r31_71->unk28 = M2C_FIELD(temp_r30_74, f32 *, 0x1C) * ((temp_f3_251 * temp_r3_272->unk10) + temp_r3_272->unk8);
             if ((u8) M2C_FIELD(temp_r30_74, u8 *, 0x24) == 0) {
                 var_r31_71->unk1C = 1.0f - M2C_FIELD(temp_r30_74, f32 *, 0x20);
             }
@@ -173,11 +179,10 @@ void GiveColorPS::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void GiveColorPS::LoadDone() {
+s32 GiveColorPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gGiveColorPSEnv'
 void GiveColorPS::Init() {
     f64 sp40;
     f64 sp38;
@@ -200,7 +205,7 @@ void GiveColorPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gGiveColorPSEnv, 5);
+    SetEnvelope(gGiveColorPSEnv, 5);
     SetMaxParticleAge(10.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
@@ -225,4 +230,3 @@ void GiveColorPS::Init() {
     this->unk170 = (f64) sp10;
     ((KDUniformSpline *) &this->unk140)->Init(3, 0U);
 }
-#endif

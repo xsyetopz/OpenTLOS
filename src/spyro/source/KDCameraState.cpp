@@ -289,11 +289,8 @@ void KDCameraStateStack::Init(KDCamera *arg0, KDCameraStateDescriptor *arg1, int
     Reset();
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 KDCameraStateStack::KDCameraStateStack() {
     this->unk18 = NULL;
     this->unk1C = -1;
     this->unk10 = -1;
-    return this;
 }
-#endif

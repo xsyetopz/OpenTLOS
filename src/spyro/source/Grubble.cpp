@@ -419,7 +419,7 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void GrubbleCritter::Update() {
+void *GrubbleCritter::Update() {
     s8 sp2E8;
     s32 sp2E4;
     s32 sp2E0;
@@ -797,7 +797,7 @@ loop_50:
 #endif
 
 #if 0 // DRAFT: illegal type
-void GrubbleCritter::Resolve() {
+f32 GrubbleCritter::Resolve() {
     s32 temp_r0_1151;
     s32 var_r3_1145;
     s32 var_r6_1146;
@@ -816,7 +816,7 @@ loop_2:
 }
 #endif
 
-void GrubbleCritter::LoadDone() {
+s32 GrubbleCritter::LoadDone() {
     MKHeap *temp_r3_1177;
     s32 temp_r31_1176;
     void *var_r3_1184;

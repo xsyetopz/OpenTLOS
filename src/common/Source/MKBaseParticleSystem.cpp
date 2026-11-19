@@ -46,7 +46,7 @@ extern MKParticleChunk **gParticleChunks;
 extern s32 gTotalNumChunks;
 extern f32 gUpdateTimeDelta;
 
-void MKBaseParticleSystem::LoadDone() {
+s32 MKBaseParticleSystem::LoadDone() {
     MKProp::LoadDone();
     if (this->unk10 & 2) {
         this->unkB4 = 1;
@@ -799,7 +799,7 @@ loop_10:
     }
 }
 
-void MKBaseParticleSystem::Update() {
+void *MKBaseParticleSystem::Update() {
     f32 temp_f1_1288;
     u32 temp_r0_1330;
     u32 var_r3_1329;

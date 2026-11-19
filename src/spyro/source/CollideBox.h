@@ -14,7 +14,7 @@ public:
     virtual ~CollideBox(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Message(MKMessage *);
     /* 0x090 */ u8 unk90;
 };

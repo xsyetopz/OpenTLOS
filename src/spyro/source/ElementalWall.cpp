@@ -2259,7 +2259,7 @@ void ElementalWall::Draw() {
     }
 }
 
-void ElementalWall::Update() {
+void *ElementalWall::Update() {
     u8 var_r30_4297;
     u8 var_r31_4295;
 
@@ -2317,7 +2317,7 @@ void ElementalWall::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
-void ElementalWall::Resolve() {
+f32 ElementalWall::Resolve() {
     s32 temp_r0_4423;
 
     ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
@@ -2390,9 +2390,9 @@ void ElementalWall::Deinit() {
     SplineProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__31KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'ElementalWallStates'
 void ElementalWall::Init() {
-    Init__31KDStateMachine<13ElementalWall>FPQ231KDStateMachine<13ElementalWall>5StateP31KDStateMachine<13ElementalWall>((KDStateMachine<ElementalWall> *) &this->unkE0, &ElementalWallStates, NULL);
+    ((KDStateMachine<ElementalWall> *) &this->unkE0)->Init(&ElementalWallStates, NULL);
     this->unkF4 = NULL;
     this->unkF8 = NULL;
     this->unk104 = 1;

@@ -37,17 +37,17 @@ public:
     virtual ~FireBoss(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void SetDefaults(void);
     virtual void UpdateMovementCustom(void);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     virtual s32 TryFreeze(float, bool, bool);
     FireBoss(void);
     void TriggerExplosion(void);
@@ -212,7 +212,6 @@ inline FireBoss::FireBoss() {
     this->unk1044 = 0;
     this->unk1084.unk0 = 0;
     this->unk1084.Init();
-    return this;
 }
 #endif
 
@@ -241,10 +240,7 @@ inline s32 FireBoss::TryFreeze(float arg0, bool arg1, bool arg2) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireBossDescriptor::FireBossDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_FIREBOSS_H

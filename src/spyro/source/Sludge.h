@@ -13,8 +13,8 @@ class SludgeDescriptor;
 class Sludge : public Projectile {  // base: base ctor call
 public:
     virtual ~Sludge(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Collided(MKCollisionResult &);
     Sludge(void);
     void * CreateInstance(void);
@@ -33,19 +33,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline Sludge::Sludge() {
-    return this;
 }
-#endif
 
 inline Sludge::~Sludge() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SludgeDescriptor::SludgeDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SLUDGE_H

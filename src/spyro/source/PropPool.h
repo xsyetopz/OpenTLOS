@@ -13,7 +13,7 @@ public:
     virtual ~PropPool(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     /* 0x04c */ s32 unk4C;
     /* 0x050 */ s32 unk50;
     /* 0x054 */ s32 unk54;

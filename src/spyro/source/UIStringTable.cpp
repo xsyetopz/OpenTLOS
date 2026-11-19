@@ -54,13 +54,10 @@ void UIStringTable::Init(int arg0) {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 UIStringTable::UIStringTable() {
     this->unk4 = NULL;
     this->unk0 = 0;
-    return this;
 }
-#endif
 
 void UIStringTable_Remove(const char *arg0) {
     pStringTable->Remove(arg0);

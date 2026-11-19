@@ -466,7 +466,7 @@ void SpyroMoveState::Exit() {
     this->unk14.Exit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'sp20'
 void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     s32 sp30;
     s32 sp2C;
@@ -481,7 +481,7 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     void *temp_r3_856;
 
     this->unk48 = 0;
-    Init__32KDStateMachine<14SpyroMoveState>FPQ232KDStateMachine<14SpyroMoveState>5StateP32KDStateMachine<14SpyroMoveState>(&this->unk14, (KDStateMachine<SpyroMoveState>::State *) &SpyroMoveState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroMoveState>::State *) &SpyroMoveState::states, NULL);
     SelectState(0.0f);
     this->unk50 = arg0.IsMessageOnList(0x176);
     ((Spyro *) &sp18)->GetJoyDir();

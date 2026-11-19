@@ -305,13 +305,13 @@ void DreadWing::Despawn(bool arg0) {
     }
 }
 
-void DreadWing::Update() {
+void *DreadWing::Update() {
     Enemy::Update();
     UpdateDropBox();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
-void DreadWing::Resolve() {
+f32 DreadWing::Resolve() {
     s32 temp_r0_561;
 
     temp_r0_561 = this->unkA38->unkF4;

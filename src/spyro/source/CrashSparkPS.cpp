@@ -455,7 +455,7 @@ void CrashSparkPS::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void CrashSparkPS::Update() {
+void *CrashSparkPS::Update() {
     f64 sp58;
     f64 sp50;
     f64 sp40;

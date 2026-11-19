@@ -15,7 +15,7 @@ class FireTrap : public Trap {  // base: vtable prefix
 public:
     virtual ~FireTrap(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     FireTrap(void);
     /* 0x0e0 */ f32 unkE0;
@@ -34,7 +34,6 @@ public:
 #if 0 // DRAFT: undefined identifier '__vt'
 inline FireTrap::FireTrap() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 
@@ -44,10 +43,7 @@ inline FireTrap::~FireTrap() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireTrapDescriptor::FireTrapDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FIRETRAP_H

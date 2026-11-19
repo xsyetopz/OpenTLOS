@@ -261,7 +261,7 @@ loop_7:
 }
 #endif
 
-void MeleeTrails::Update() {
+void *MeleeTrails::Update() {
     void **temp_r3_475;
     void **var_r31_456;
     void *temp_r4_478;
@@ -289,7 +289,7 @@ loop_5:
     }
 }
 
-void MeleeTrails::LoadDone() {
+s32 MeleeTrails::LoadDone() {
     GameProp::LoadDone();
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);
 }

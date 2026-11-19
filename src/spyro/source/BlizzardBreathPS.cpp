@@ -11,9 +11,15 @@
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gBlizzardBreathPSEnv; /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gBlizzardBreathPSEnv[5] = {
+    { 0.0f, 1.0f, 0.05f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 0.3f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 0.7f, 0.0f, 0.0f },
+    { 0.75f, 0.5f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.5f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void BlizzardBreathPS::UpdateParticles() {
     f64 sp28;
     f64 sp20;
@@ -21,17 +27,17 @@ void BlizzardBreathPS::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r7_62;
     MKParticleSystem::Envelope *temp_r3_120;
+    MKParticleSystem::Envelope *temp_r5_125;
+    MKParticleSystem::Envelope *temp_r5_158;
     f32 temp_f3_134;
     f32 temp_f3_69;
     f32 temp_f5_127;
     f32 temp_f6_122;
     f32 var_f0_138;
     f64 temp_f0_86;
+    s32 temp_r0_121;
     s32 temp_r3_108;
     s32 temp_r4_119;
-    s32 temp_r6_123;
-    void *temp_r5_125;
-    void *temp_r5_158;
     void *temp_r8_65;
 
     this->unk128 += gUpdateTimeDelta;
@@ -53,17 +59,17 @@ loop_12:
             var_r7_62->unk8 += (f32) sp28;
             var_r7_62->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r8_65, f32 *, 0x18);
             temp_r3_108 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
-            if (temp_f3_69 > (this->unk12C * *(this->unk134 + (temp_r3_108 * 0x14)))) {
+            if (temp_f3_69 > (this->unk12C * this->unk134[temp_r3_108].unk0)) {
                 M2C_FIELD(temp_r8_65, s32 *, 0x14) = (s32) (temp_r3_108 + 1);
             }
             temp_r4_119 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
             temp_r3_120 = this->unk134;
+            temp_r0_121 = temp_r4_119 - 1;
             temp_f6_122 = this->unk12C;
-            temp_r6_123 = (temp_r4_119 - 1) * 0x14;
-            temp_r5_125 = temp_r3_120 + temp_r6_123;
-            temp_f5_127 = M2C_FIELD(temp_r5_125, f32 *, 0);
-            temp_f3_134 = -((temp_f6_122 * temp_f5_127) - temp_f3_69) / (temp_f6_122 * (*(temp_r3_120 + (temp_r4_119 * 0x14)) - temp_f5_127));
-            var_r7_62->unk1C = M2C_FIELD(temp_r8_65, f32 *, 0x20) * ((temp_f3_134 * M2C_FIELD(temp_r5_125, f32 *, 0xC)) + M2C_FIELD(temp_r5_125, f32 *, 4));
+            temp_r5_125 = &temp_r3_120[temp_r0_121];
+            temp_f5_127 = temp_r5_125->unk0;
+            temp_f3_134 = -((temp_f6_122 * temp_f5_127) - temp_f3_69) / (temp_f6_122 * (temp_r3_120[temp_r4_119].unk0 - temp_f5_127));
+            var_r7_62->unk1C = M2C_FIELD(temp_r8_65, f32 *, 0x20) * ((temp_f3_134 * temp_r5_125->unkC) + temp_r5_125->unk4);
             var_f0_138 = var_r7_62->unk1C;
             if (var_f0_138 < 1.0f) {
 
@@ -76,8 +82,8 @@ loop_12:
                 var_f0_138 = 0.0f;
             }
             var_r7_62->unk1C = var_f0_138;
-            temp_r5_158 = this->unk134 + temp_r6_123;
-            var_r7_62->unk28 = M2C_FIELD(temp_r8_65, f32 *, 0x1C) * ((temp_f3_134 * M2C_FIELD(temp_r5_158, f32 *, 0x10)) + M2C_FIELD(temp_r5_158, f32 *, 8));
+            temp_r5_158 = &this->unk134[temp_r0_121];
+            var_r7_62->unk28 = M2C_FIELD(temp_r8_65, f32 *, 0x1C) * ((temp_f3_134 * temp_r5_158->unk10) + temp_r5_158->unk8);
             var_r7_62 = GetNextParticle(&unksp8);
         }
         goto loop_12;
@@ -89,11 +95,10 @@ void BlizzardBreathPS::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void BlizzardBreathPS::LoadDone() {
+s32 BlizzardBreathPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gBlizzardBreathPSEnv'
 void BlizzardBreathPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -101,12 +106,11 @@ void BlizzardBreathPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gBlizzardBreathPSEnv, 5);
+    SetEnvelope(gBlizzardBreathPSEnv, 5);
     SetMaxParticleAge(1.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif
 
 void BlizzardBreathPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

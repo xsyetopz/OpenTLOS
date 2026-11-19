@@ -30,7 +30,7 @@ void WaterTrickleEmitter::Deinit() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to
-void WaterTrickleEmitter::Update() {
+void *WaterTrickleEmitter::Update() {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;                                       /* compiler-managed */
     MKVector3 sp50;
@@ -110,7 +110,7 @@ loop_10:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
-void WaterTrickleEmitter::LoadDone() {
+s32 WaterTrickleEmitter::LoadDone() {
     M2C_UNK *temp_r3_239;
     M2C_UNK *temp_r3_245;
 

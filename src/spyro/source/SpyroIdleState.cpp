@@ -531,10 +531,10 @@ void SpyroIdleState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
+#if 0 // DRAFT: ')' expected
 void SpyroIdleState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroIdleState>FPQ232KDStateMachine<14SpyroIdleState>5StateP32KDStateMachine<14SpyroIdleState>(&this->unk14, (KDStateMachine<SpyroIdleState>::State *) &SpyroIdleState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroIdleState>::State *) &SpyroIdleState::states, NULL);
     this->unk28 = 0.0f;
     this->unk2C = 0;
     this->unk30.Init(M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0), MKAnimScript **, 0x34));

@@ -23,9 +23,9 @@ class AssaultCannon : public ShatterablePlatform {  // base: base ctor call
 public:
     virtual ~AssaultCannon(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void GetProp(void);
@@ -220,14 +220,10 @@ inline AssaultCannon::AssaultCannon() {
     this->unk224 = 0;
     this->unk26C = 0;
     this->unk294 = 0;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline AssaultCannonDescriptor::AssaultCannonDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ASSAULTCANNON_H

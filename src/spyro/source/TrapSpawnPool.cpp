@@ -26,7 +26,7 @@ void **malloc(s32);                                 /* extern */
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 
-void TrapSpawnPool::Update() {
+void *TrapSpawnPool::Update() {
     u8 sp1C;
     s32 sp18;
     s32 sp14;
@@ -72,7 +72,7 @@ void TrapSpawnPool::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
-void TrapSpawnPool::Resolve() {
+f32 TrapSpawnPool::Resolve() {
     MKCollisionResult sp60;
     f32 sp58;
     f32 sp54;
@@ -220,7 +220,7 @@ loop_28:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void TrapSpawnPool::LoadDone() {
+s32 TrapSpawnPool::LoadDone() {
     MKHeap *temp_r3_412;
     s32 temp_r31_411;
     s32 var_r30_426;

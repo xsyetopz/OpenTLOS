@@ -391,7 +391,6 @@ s32 WobbleProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 WobbleProperty::WobbleProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
@@ -406,6 +405,4 @@ WobbleProperty::WobbleProperty() {
     this->unk30 = GS_PLACEHOLDER;
     this->unk20 = 0.05f;
     this->unk18 = 150.0f;
-    return this;
 }
-#endif

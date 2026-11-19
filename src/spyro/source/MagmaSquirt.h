@@ -20,11 +20,11 @@ class MagmaSquirt : public Projectile {  // base: base ctor call
 public:
     virtual ~MagmaSquirt(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireBurst(MKVector3 *, MKVector3 *, int, int);
@@ -55,12 +55,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MagmaSquirt::MagmaSquirt() {
     this->unk170.unk4 = 0;
-    return this;
 }
-#endif
 
 inline MagmaSquirt::~MagmaSquirt() {
 }
@@ -69,10 +66,7 @@ inline s32 MagmaSquirt::IsBurst() {
     return 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MagmaSquirtDescriptor::MagmaSquirtDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MAGMASQUIRT_H

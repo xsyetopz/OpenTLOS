@@ -1254,11 +1254,9 @@ void Cynder::UpdateEffects() {
     UpdateFuryPowerUp();
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void Cynder::GetCharacterName() {
+s32 Cynder::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x330);
 }
-#endif
 
 void Cynder::UpdateEnemyHud() {
     EnemyHudData sp8;
@@ -2848,7 +2846,7 @@ block_12:
 }
 #endif
 
-void Cynder::Update() {
+void *Cynder::Update() {
     s32 sp8;
 
     Enemy::Update();
@@ -2976,7 +2974,7 @@ void Cynder::SetupCollision() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void Cynder::Resolve() {
+f32 Cynder::Resolve() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -3022,7 +3020,7 @@ void Cynder::Resolve() {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void Cynder::LoadDone() {
+s32 Cynder::LoadDone() {
     f64 sp8;
     CynderBossGoal_Think *temp_r30_5434;
     CynderConcurrentGoal_Think *temp_r30_5399;
@@ -3088,7 +3086,7 @@ void Cynder::LoadDone() {
     }
     this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthShockwave"));
     this->unkCEC = checked_cast<CynderBreathFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CynderBreathFX"));
-    SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>(this->unkCEC, (MKPtrList<MKProp> *) &this->unkA1C);
+    this->unkCEC->SetHitList((MKPtrList<MKProp> *) &this->unkA1C);
     this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
     this->unkB10.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
     this->unkB58.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));

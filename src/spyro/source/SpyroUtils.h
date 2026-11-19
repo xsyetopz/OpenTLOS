@@ -60,7 +60,6 @@ inline SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds() {
 #if 0 // DRAFT: undefined identifier 'unk0'
 inline SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds() {
     this->unk0 = 0;
-    return this;
 }
 #endif
 

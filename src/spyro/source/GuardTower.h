@@ -11,7 +11,7 @@ class GuardTower : public LavaSmashProp {  // base: base ctor call
 public:
     virtual ~GuardTower(void);
     virtual void Init(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     GuardTower(void);
     /* 0x208 */ f32 unk208;
 };
@@ -21,7 +21,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline GuardTower::GuardTower() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 

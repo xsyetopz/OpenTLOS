@@ -88,7 +88,7 @@ block_10:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void BeetleNestSmall::Update() {
+void *BeetleNestSmall::Update() {
     MKVector3 sp98;
     MKVector3 sp88;
     f64 sp80;
@@ -194,7 +194,7 @@ loop_21:
 #endif
 
 #if 0 // DRAFT: function call 'checked_cast(void *)' does not match
-void BeetleNestSmall::LoadDone() {
+s32 BeetleNestSmall::LoadDone() {
     f64 sp20;
     f64 sp18;
     MKVector3 sp8;

@@ -58,20 +58,17 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
 void NPCGuardianGoal_Think::AddGoal_Idle() {
     if (IsPresent(0xCA) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         M2C_FIELD(this->unk24, s32 *, 0x10) = (s32) (this->unkC + 0x870);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGuardianGoal_Think::AddGoal_FollowSpawnGraph() {
     Goal<Enemy> *temp_r4_70;
     s32 temp_r4_60;
@@ -79,7 +76,7 @@ void NPCGuardianGoal_Think::AddGoal_FollowSpawnGraph() {
 
     if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
         temp_r4_60 = this->unkC;
         M2C_FIELD(temp_r4_60, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r4_60, u8 *, 0xB09) | 8);
         temp_r4_66 = this->unkC;
@@ -89,7 +86,6 @@ void NPCGuardianGoal_Think::AddGoal_FollowSpawnGraph() {
         M2C_FIELD(temp_r4_70, u8 *, 0x95) = (u8) (M2C_FIELD(temp_r4_70, u8 *, 0x95) & ~1);
     }
 }
-#endif
 
 void NPCGuardianGoal_Think::StartFollowingSpawnGraph() {
     s32 temp_r4_91;
@@ -169,7 +165,6 @@ void NPCGuardianGoal_Think::Activate() {
     Arbitrate();
 }
 
-#if 0 // DRAFT: undefined identifier 'free'
 void NPCGuardianGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_289;
     Goal<Enemy> *temp_r3_299;
@@ -203,7 +198,6 @@ void NPCGuardianGoal_Think::Deinit() {
     this->unkC = 0;
     this->unk9 = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void NPCGuardianGoal_Think::Init(Enemy *arg0) {

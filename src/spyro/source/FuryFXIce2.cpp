@@ -784,7 +784,7 @@ void FuryFXIce2::Draw() {
     DrawIceSpears();
 }
 
-void FuryFXIce2::Update() {
+void *FuryFXIce2::Update() {
     s8 sp158;
     s32 sp154;
     s32 sp150;
@@ -959,7 +959,7 @@ void FuryFXIce2::Update() {
     }
 }
 
-void FuryFXIce2::Resolve() {
+f32 FuryFXIce2::Resolve() {
     FuryFX::Resolve();
 }
 

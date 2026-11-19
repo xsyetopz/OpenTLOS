@@ -629,7 +629,7 @@ void Catapult::IdleEnter() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
-void Catapult::Update() {
+void *Catapult::Update() {
     f64 sp10;
     s32 sp8;
     f32 temp_f1_915;
@@ -685,7 +685,7 @@ void Catapult::Unload() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'groups'
-void Catapult::LoadDone() {
+s32 Catapult::LoadDone() {
     s32 var_ctr_1026;
     s32 var_r3_1025;
     struct _struct_groups_0x18 *temp_r4_1030;
@@ -706,7 +706,7 @@ loop_1:
     }
     this->unk130 = 0;
     this->unk134 = 0;
-    Init__25KDStateMachine<8Catapult>FPQ225KDStateMachine<8Catapult>5StateP25KDStateMachine<8Catapult>(&this->unkF8, (KDStateMachine<Catapult>::State *) Catapult::states, NULL);
+    this->unkF8.Init((KDStateMachine<Catapult>::State *) Catapult::states, NULL);
     this->unk80->InitEvents((s8 **) Catapult::pEvents);
     this->unkC8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
 }

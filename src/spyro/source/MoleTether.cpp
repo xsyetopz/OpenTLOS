@@ -157,7 +157,7 @@ void MoleTether::Deinit() {
 }
 #endif
 
-void MoleTether::Update() {
+void *MoleTether::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
@@ -181,7 +181,7 @@ void MoleTether::Update() {
     ((KDSoundFader *) &this->unk1C8)->Update(GS_MoleExtra2, 1U, this->unk1FC, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 
-void MoleTether::LoadDone() {
+s32 MoleTether::LoadDone() {
     Shatterable::LoadDone();
     this->unk1F8 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }

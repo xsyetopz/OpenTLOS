@@ -32,10 +32,10 @@ class CynderTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier1(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(SpawnPointObject *);
@@ -64,9 +64,9 @@ class CynderTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier2(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier2(void);
     /* 0xb10 */ Goal<Enemy>* unkB10;
@@ -99,9 +99,9 @@ class CynderTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier3(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier3(void);
@@ -134,7 +134,7 @@ class EnemyTest : public Enemy {  // base: base ctor call
 public:
     virtual ~EnemyTest(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     EnemyTest(void);
 };
@@ -152,7 +152,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier1::CynderTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -166,16 +165,12 @@ inline s32 CynderTier1::IsInFrozenBall() {
     return this->unkB1C != NULL;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderTier1Descriptor::CynderTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2::CynderTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -185,16 +180,12 @@ inline CynderTier2::~CynderTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderTier2Descriptor::CynderTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2Train::CynderTier2Train() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -204,17 +195,13 @@ inline CynderTier2Train::~CynderTier2Train() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderTier2TrainDescriptor::CynderTier2TrainDescriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier3::CynderTier3() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB28 = 0;
-    return this;
 }
 #endif
 
@@ -227,16 +214,12 @@ inline CynderTier3::~CynderTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderTier3Descriptor::CynderTier3Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EnemyTest::EnemyTest() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -246,10 +229,7 @@ inline EnemyTest::~EnemyTest() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline EnemyTestDescriptor::EnemyTestDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_CYNDER_H

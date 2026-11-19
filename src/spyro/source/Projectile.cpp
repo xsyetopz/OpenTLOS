@@ -278,7 +278,7 @@ void Projectile::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void Projectile::Update() {
+void *Projectile::Update() {
     MKCollisionResult sp78;
     void *sp70;
     s32 sp6C;
@@ -376,7 +376,7 @@ void Projectile::Update() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void Projectile::LoadDone() {
+s32 Projectile::LoadDone() {
     GameProp::LoadDone();
     if ((s32) M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8) != 0) {
         operator new(0x28U, NULL, 0);

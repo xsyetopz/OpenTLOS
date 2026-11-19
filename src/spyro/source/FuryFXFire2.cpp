@@ -433,7 +433,7 @@ void FuryFXFire2::Draw() {
 }
 
 #if 0 // DRAFT: function call 'GetProp(HeroInterface *, double, float)' does not match
-void FuryFXFire2::Update() {
+void *FuryFXFire2::Update() {
     MKCollisionResult sp760;
     Matrix sp720;
     f64 sp718;

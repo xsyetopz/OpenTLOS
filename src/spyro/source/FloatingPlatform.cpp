@@ -211,13 +211,13 @@ void FloatingPlatform::Reset() {
     }
 }
 
-void FloatingPlatform::Resolve() {
+f32 FloatingPlatform::Resolve() {
     Platform::Resolve();
     this->unk184 = M2C_FIELD(this->unk8, f32 *, 0x34);
     this->unk190 = MKModel_GetRefPointIndex(this->unk4, "r_flame");
 }
 
-void FloatingPlatform::LoadDone() {
+s32 FloatingPlatform::LoadDone() {
     Platform::LoadDone();
     this->unk188 *= 100.0f;
     this->unk18C *= 100.0f;

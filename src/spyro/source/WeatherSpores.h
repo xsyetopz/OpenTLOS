@@ -19,11 +19,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline WeatherSporesPS::WeatherSporesPS() {
-    return this;
 }
-#endif
 
 inline WeatherSporesPS::~WeatherSporesPS() {
     s32 temp_cr0_eq_15;

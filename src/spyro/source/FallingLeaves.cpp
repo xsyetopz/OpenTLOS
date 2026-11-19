@@ -47,8 +47,13 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gFallingLeavesEnvelope; /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gFallingLeavesEnvelope[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.75f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+};
 
 void FallingLeaves::Message(MKMessage *arg0) {
     s32 temp_r0_52;
@@ -64,7 +69,6 @@ void FallingLeaves::Message(MKMessage *arg0) {
     }
     MKBaseParticleSystem::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void FallingLeaves::Draw() {
@@ -766,7 +770,7 @@ loop_6:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'sp70'
-void FallingLeaves::Update() {
+void *FallingLeaves::Update() {
     M2C_UNK sp4C;
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;
@@ -1177,11 +1181,11 @@ void FallingLeaves::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void FallingLeaves::Resolve() {
+f32 FallingLeaves::Resolve() {
     MKProp::Resolve();
 }
 
-void FallingLeaves::LoadDone() {
+s32 FallingLeaves::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
@@ -1197,7 +1201,7 @@ void FallingLeaves::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gFallingLeavesEnvelope, 5);
+    SetEnvelope(gFallingLeavesEnvelope, 5);
     SetMaxParticleAge(10.0f);
     var_r3_2022 = 0;
     var_ctr_2025 = 4;

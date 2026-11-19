@@ -21,8 +21,7 @@
 s32 stricmp(s8 *, M2C_UNK *, M2C_UNK *);            /* extern */
 extern UIStringTable menuStrings;
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void UIObject::Message(UIMessage *arg0) {
+s32 UIObject::Message(UIMessage *arg0) {
     s32 temp_r0_11;
 
     temp_r0_11 = arg0->unk0;
@@ -42,7 +41,6 @@ void UIObject::Message(UIMessage *arg0) {
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char *, const char[7], const char[5])' does
 UIContainer *UIObject::Find(const char *arg0) {

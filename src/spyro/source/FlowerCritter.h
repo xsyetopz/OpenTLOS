@@ -16,9 +16,9 @@ public:
     virtual ~FlowerCritter(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     FlowerCritter(void);
     /* 0x168 */ u8 pad168[0x8];
@@ -42,11 +42,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FlowerCritter::FlowerCritter() {
-    return this;
 }
-#endif
 
 inline FlowerCritter::~FlowerCritter() {
     s32 temp_cr0_eq_15;
@@ -62,10 +59,7 @@ inline FlowerCritter::~FlowerCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FlowerCritterDescriptor::FlowerCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FLOWERCRITTER_H

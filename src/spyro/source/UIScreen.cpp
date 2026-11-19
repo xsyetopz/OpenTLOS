@@ -76,7 +76,7 @@ void UIScreen::Update() {
     UIContainer::Update();
 }
 
-void UIScreen::Message(UIMessage *arg0) {
+s32 UIScreen::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
 }
 

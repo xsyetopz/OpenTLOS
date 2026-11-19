@@ -521,7 +521,7 @@ loop_9:
 }
 #endif
 
-void GameCamera2::CameraEffectsUpdate() {
+u32 GameCamera2::CameraEffectsUpdate() {
     TrackedShakePropUpdate();
     KDCamera::CameraEffectsUpdate();
 }
@@ -616,7 +616,6 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
 void GameCamera2::SnapToSafetySetNextMode() {
     if (IsUnderwater() != 0) {
         this->unk178 = 0;
@@ -624,7 +623,6 @@ void GameCamera2::SnapToSafetySetNextMode() {
     }
     KDCamera::SnapToSafetySetNextMode();
 }
-#endif
 
 void GameCamera2::AdjustPitchWithFloorUpdateFall() {
     u8 temp_r4_1022;
@@ -889,7 +887,6 @@ void GameCamera2::AdjustPitchWithFloorUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
 void GameCamera2::AdjustPitchWithFloorExit() {
     if (IsUnderwater() == 0) {
         ((KDCameraSimpleDelta *) this->unk54)->DisablePitchOverride(5.0f);
@@ -897,7 +894,6 @@ void GameCamera2::AdjustPitchWithFloorExit() {
     this->unk158 |= 0x20;
     this->unk2A0 &= ~0x20;
 }
-#endif
 
 void GameCamera2::AdjustPitchWithFloorDisable() {
     this->unk2A0 &= ~0x80;
@@ -2329,7 +2325,7 @@ u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
 }
 
 #if 0 // DRAFT: pointer/array required
-void GameCamera2::IsUnderwater() {
+s32 GameCamera2::IsUnderwater() {
     f64 sp10;
     f64 sp8;
     void *temp_r6_4572;
@@ -2419,7 +2415,7 @@ f32 GameCamera2::GetIdealFieldOfView() {
 }
 #endif
 
-void GameCamera2::GetFieldOfView() {
+f32 GameCamera2::GetFieldOfView() {
     if (this->unk2B4 != 0.0f) {
         return;
     }
@@ -2478,7 +2474,7 @@ void GameCamera2::ResetCamera() {
     SetDeltaStages(0, 0U);
 }
 
-void GameCamera2::Resolve() {
+f32 GameCamera2::Resolve() {
     KDCamera::Resolve();
     if ((void *) this->unk120 == NULL) {
         this->unk120 = M2C_FIELD(&gb, void **, 0x354);
@@ -2486,7 +2482,7 @@ void GameCamera2::Resolve() {
 }
 
 #if 0 // DRAFT: illegal use of non-static member
-void GameCamera2::LoadDone() {
+s32 GameCamera2::LoadDone() {
     this->unk14 = 2;
     MKSceneManager::PropResolver_Add(*this->unk0, M2C_ERROR(/* Read from unset register $r5 */));
     KDCamera::LoadDone();

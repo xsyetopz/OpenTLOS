@@ -363,7 +363,6 @@ u8 EnemyGoal_MoveAwayFromHero::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_MoveAwayFromHero::Activate() {
     Enemy *temp_r3_608;
     Enemy *temp_r3_618;
@@ -377,7 +376,7 @@ void EnemyGoal_MoveAwayFromHero::Activate() {
     RemoveAllSubgoals();
     temp_r3_608 = this->unkC;
     if (temp_r3_608->CanMoveAwayBack() != 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r3_618 = this->unkC;
         temp_r4_625 = this->unk24;
         temp_f0_626 = 200.0f + temp_r3_618->GetCollisionRadius();
@@ -385,7 +384,7 @@ void EnemyGoal_MoveAwayFromHero::Activate() {
         M2C_FIELD(temp_r4_625, f32 *, 0x14) = temp_f0_626;
         return;
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+    AddSubgoal((Goal<Enemy> *) this->unk20);
     temp_r3_635 = this->unkC;
     if (temp_r3_635->CanMoveAwayLeft() != 0) {
         temp_r4_642 = this->unk20;
@@ -397,7 +396,6 @@ void EnemyGoal_MoveAwayFromHero::Activate() {
     M2C_FIELD(temp_r3_649, s8 *, 0x14) = 0;
     M2C_FIELD(temp_r3_649, s32 *, 0x10) = 0;
 }
-#endif
 
 void EnemyGoal_MoveAwayFromHero::Deinit() {
     Goal<Enemy> *temp_r3_669;
@@ -505,7 +503,6 @@ u8 EnemyGoal_PatrolMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_PatrolMode::Activate() {
     Enemy *temp_r3_884;
     Enemy *temp_r3_905;
@@ -525,7 +522,7 @@ void EnemyGoal_PatrolMode::Activate() {
     temp_r3_884->unkB08 &= ~0x40;
     temp_r3_890 = this->unkC->unkA44;
     if ((temp_r3_890 != NULL) && (M2C_FIELD(temp_r3_890, s32 *, 4) & 0x8000)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         temp_r3_900 = this->unkC->unkA44;
         M2C_FIELD(temp_r3_900, s32 *, 4) = (s32) (M2C_FIELD(temp_r3_900, s32 *, 4) & 0xFFFF7FFF);
     }
@@ -533,7 +530,7 @@ void EnemyGoal_PatrolMode::Activate() {
     temp_r4_906 = temp_r3_905->unkA44;
     if ((temp_r4_906 != NULL) && (M2C_FIELD(temp_r4_906, s32 *, 4) & 2)) {
         if (temp_r3_905->HasWaypoints() != 0) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+            AddSubgoal((Goal<Enemy> *) this->unk28);
             temp_f1_921 = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
             temp_r6_924 = this->unk28;
             M2C_FIELD(temp_r6_924, s32 *, 0x10) = (s32) M2C_FIELD(this->unkC->unkA44, s32 *, 0x18);
@@ -546,7 +543,7 @@ void EnemyGoal_PatrolMode::Activate() {
             M2C_FIELD(temp_r6_924, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r6_924, u8 *, 0x24) & ~8);
             M2C_FIELD(temp_r6_924, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r6_924, u8 *, 0x24) | 4);
         } else {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+            AddSubgoal((Goal<Enemy> *) this->unk2C);
             temp_r5_955 = this->unk2C;
             M2C_FIELD(temp_r5_955, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
             M2C_FIELD(temp_r5_955, s32 *, 0x14) = 1;
@@ -554,7 +551,7 @@ void EnemyGoal_PatrolMode::Activate() {
             M2C_FIELD(temp_r5_955, s32 *, 0x18) = 0;
         }
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+    AddSubgoal((Goal<Enemy> *) this->unk24);
     temp_r30_971 = this->unkC->unk688;
     temp_r3_972 = MKRand_Int((int *) &gViewSeed, 1, 3);
     temp_r5_973 = this->unk24;
@@ -564,7 +561,6 @@ void EnemyGoal_PatrolMode::Activate() {
     M2C_FIELD(temp_r5_973, s32 *, 0x1C) = temp_r30_971;
     M2C_FIELD(temp_r5_973, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r5_973, u8 *, 0x20) & ~0x40);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_PatrolMode::Deinit() {

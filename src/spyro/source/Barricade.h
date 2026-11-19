@@ -13,10 +13,10 @@ class BarricadeProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~BarricadeProp(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
@@ -36,7 +36,6 @@ inline BarricadeProp::~BarricadeProp() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline BarricadeProp::BarricadeProp() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 

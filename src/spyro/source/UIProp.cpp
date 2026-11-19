@@ -64,7 +64,7 @@ void UIProp::Draw() {
 }
 #endif
 
-void UIProp::Update() {
+void *UIProp::Update() {
     void **temp_r3_83;
 
     MKProp::Update();
@@ -113,7 +113,7 @@ void UIProp::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'UIStringTable *' to
-void UIProp::LoadDone() {
+s32 UIProp::LoadDone() {
     MKHeap *temp_r3_194;
     MKHeap *temp_r3_199;
     UIObject *var_r31_207;

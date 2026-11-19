@@ -403,7 +403,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void IceSnoatCritter::Update() {
+void *IceSnoatCritter::Update() {
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -874,7 +874,7 @@ void IceSnoatCritter::SetBounceState(IceSnoat *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void IceSnoatCritter::Resolve() {
+f32 IceSnoatCritter::Resolve() {
     Volume sp88;
     f64 sp80;
     f64 sp78;
@@ -966,7 +966,7 @@ loop_4:
 }
 #endif
 
-void IceSnoatCritter::LoadDone() {
+s32 IceSnoatCritter::LoadDone() {
     MKHeap *temp_r3_1533;
     s32 temp_r31_1532;
     void *var_r3_1540;

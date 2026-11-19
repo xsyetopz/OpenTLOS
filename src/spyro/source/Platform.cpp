@@ -280,7 +280,7 @@ void Platform::UpdateShadow() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'Platform *' to
-void Platform::Resolve() {
+f32 Platform::Resolve() {
     KDPropEx::Resolve();
     this->unk150.Resolve();
     this->unk150.Attach(this + 0x15C);
@@ -346,7 +346,7 @@ void Platform::PropUpdate() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
-void Platform::LoadDone() {
+s32 Platform::LoadDone() {
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 0);
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x68) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 8);
     GameProp::LoadDone();

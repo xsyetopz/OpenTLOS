@@ -90,7 +90,7 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
 }
 #endif
 
-void CheckPoint::Resolve() {
+f32 CheckPoint::Resolve() {
     MKProp::Resolve();
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x20)(&this->unk100);
 }
@@ -147,7 +147,7 @@ void CheckPoint::Draw() {
 }
 
 #if 0 // DRAFT: illegal operand
-void CheckPoint::Update() {
+void *CheckPoint::Update() {
     s32 sp14;
     s32 sp10;
     s32 sp8;
@@ -191,7 +191,7 @@ void CheckPoint::Reset() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[18]' to
-void CheckPoint::LoadDone() {
+s32 CheckPoint::LoadDone() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

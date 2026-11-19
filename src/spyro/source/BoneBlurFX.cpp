@@ -398,7 +398,7 @@ loop_15:
 }
 #endif
 
-void BoneBlurFX::Update() {
+void *BoneBlurFX::Update() {
     if (((u8) this->unk6C != 0) && ((u8) this->unk7C != 0)) {
         TakeFrameSnapshot();
     }

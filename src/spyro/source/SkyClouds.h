@@ -19,9 +19,9 @@ public:
     class CloudParticle;
     virtual ~SkyClouds(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     u8 DestroyByOwner(SkyClouds::CloudEmitter *);
     void UpdateCameraVel(void);

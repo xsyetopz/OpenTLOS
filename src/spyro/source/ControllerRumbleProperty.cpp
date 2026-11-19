@@ -107,6 +107,5 @@ ControllerRumbleProperty::ControllerRumbleProperty() {
     this->unk18 = NULL;
     this->unk10 = "localToWorld";
     this->unk14 = NULL;
-    return this;
 }
 #endif

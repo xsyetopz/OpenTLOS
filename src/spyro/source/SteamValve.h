@@ -17,9 +17,9 @@ public:
     virtual ~SteamValve(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     SteamValve(void);
     /* 0x0c8 */ Steam* unkC8;
@@ -40,19 +40,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamValve::SteamValve() {
-    return this;
 }
-#endif
 
 inline SteamValve::~SteamValve() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamValveDescriptor::SteamValveDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_STEAMVALVE_H

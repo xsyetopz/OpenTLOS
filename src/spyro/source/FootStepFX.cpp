@@ -852,7 +852,7 @@ loop_17:
 }
 #endif
 
-void FootStepFX::Update() {
+void *FootStepFX::Update() {
 
 }
 

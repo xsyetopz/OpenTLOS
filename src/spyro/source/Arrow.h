@@ -14,7 +14,7 @@ class Arrow : public Trap {  // base: base ctor call
 public:
     virtual ~Arrow(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     Arrow(void);
     void Fire(const Matrix &, float, float);
     /* 0x0e0 */ f32 unkE0;
@@ -41,14 +41,10 @@ inline Arrow::~Arrow() {
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Arrow::Arrow() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ArrowDescriptor::ArrowDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ARROW_H

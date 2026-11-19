@@ -35,10 +35,10 @@ public:
     virtual ~Cynder(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void SetDefaults(void);
@@ -49,7 +49,7 @@ public:
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     Cynder(void);
     void ResetFury(void);
     void TriggerFury(void);
@@ -273,7 +273,6 @@ inline Cynder::Cynder() {
     this->unk1000.unk0 = 0;
     this->unk1000.Init();
     this->unk1010 = 1;
-    return this;
 }
 #endif
 
@@ -346,10 +345,7 @@ inline Cynder::~Cynder() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderDescriptor::CynderDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CYNDER_H

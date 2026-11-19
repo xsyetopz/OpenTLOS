@@ -258,7 +258,7 @@ void Explosion3::Deinit() {
     }
 }
 
-void Explosion3::Update() {
+void *Explosion3::Update() {
     f64 sp20;
     f64 sp18;
     f64 sp10;
@@ -317,7 +317,7 @@ void Explosion3::Update() {
 }
 
 #if 0 // DRAFT: ')' expected
-void Explosion3::LoadDone() {
+s32 Explosion3::LoadDone() {
     MKProp::LoadDone();
     this->unk68 = M2C_FIELD(checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
     this->unk6C = M2C_FIELD(checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x64);
@@ -325,7 +325,7 @@ void Explosion3::LoadDone() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void Explosion3::Resolve() {
+f32 Explosion3::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

@@ -52,8 +52,8 @@ public:
     virtual ~ZapBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     ZapBreathFX(void);
@@ -132,7 +132,6 @@ inline ZapBreathFX::ZapBreathFX() {
     this->unk108.unk4 = 0;
     this->unk160.unk4 = 0;
     __construct_array((KDUniformSpline *) &this->unk1C0, (MKAnimScript *(*)(MKAnimScript *)) &ElectricBeam::ElectricBeam, NULL, 0x200, 4);
-    return this;
 }
 #endif
 

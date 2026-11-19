@@ -237,7 +237,7 @@ loop_8:
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void ConvexityVortex::Update() {
+void *ConvexityVortex::Update() {
     f64 spF0;                                       /* compiler-managed */
     f64 spE8;
     f64 spE0;                                       /* compiler-managed */
@@ -417,7 +417,7 @@ loop_39:
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void ConvexityVortex::LoadDone() {
+s32 ConvexityVortex::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk90 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);

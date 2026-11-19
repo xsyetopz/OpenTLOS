@@ -13,7 +13,7 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to
-void KDGraphNodeProp::Resolve() {
+f32 KDGraphNodeProp::Resolve() {
     MKSceneManager *temp_r3_63;
     s32 temp_r3_67;
     s32 var_r30_59;
@@ -35,7 +35,7 @@ void KDGraphNodeProp::Resolve() {
 }
 #endif
 
-void KDGraphNodeProp::LoadDone() {
+s32 KDGraphNodeProp::LoadDone() {
     f64 sp10;
     f64 sp8;
 
@@ -210,6 +210,5 @@ KDGraphNode::KDGraphNode() {
         *(this + temp_r0_405) = 0;
         var_ctr_403 -= 1;
     } while (var_ctr_403 != 0);
-    return this;
 }
 #endif

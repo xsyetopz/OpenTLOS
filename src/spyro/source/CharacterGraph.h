@@ -72,8 +72,8 @@ public:
     virtual ~CharacterGraphNodeProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
-    virtual void Resolve(void);
+    virtual s32 LoadDone(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ CharacterGraphNode unk50;

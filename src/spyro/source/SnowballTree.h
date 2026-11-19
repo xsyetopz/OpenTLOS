@@ -19,9 +19,9 @@ public:
     virtual ~SnowballTree(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     void DropABall(void);
     /* 0x090 */ u8 pad90[0x10];

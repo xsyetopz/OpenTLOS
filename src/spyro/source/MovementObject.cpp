@@ -220,9 +220,6 @@ void MovementObject::Init(MovementObjectDescriptor *arg0, CollisionObject *arg1)
     this->unk64 = 0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 MovementObject::MovementObject() {
     memset(this, 0, 0x78U);
-    return this;
 }
-#endif

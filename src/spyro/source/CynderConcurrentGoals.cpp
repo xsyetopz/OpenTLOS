@@ -71,7 +71,6 @@ M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderConcurrentGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     s32 temp_r0_17;
     s32 temp_r0_48;
@@ -124,10 +123,9 @@ block_16:
         M2C_FIELD(temp_r4_72, u8 *, 0x944) = (u8) arg0->unk34;
         M2C_FIELD(this->unkC, f32 *, 0x928) = 0.0f;
         RemoveAllSubgoals();
-        AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
+        AddSubgoal((Goal<Cynder> *) this->unk28);
     }
 }
-#endif
 
 u8 CynderConcurrentGoal_Think::Update() {
     s32 temp_r3_128;
@@ -151,7 +149,7 @@ u8 CynderConcurrentGoal_Think::Update() {
     return (u8) this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void CynderConcurrentGoal_Think::Arbitrate() {
     Matrix sp50;
     EnemyDamageFeedback sp10;
@@ -191,7 +189,7 @@ block_12:
         ((Enemy *) this->unkC)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (IsPresent(0xB9) == 0)) {
             RemoveAllSubgoals();
-            AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
+            AddSubgoal((Goal<Cynder> *) this->unk2C);
             ((CynderGoal_GroundAttackMode *) this->unk2C)->SetParams(this->unkC + 0x870, NULL, 0U);
         }
     }

@@ -120,18 +120,18 @@ void CynderEnergyCrystal::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-void CynderEnergyCrystal::Update() {
+void *CynderEnergyCrystal::Update() {
     GameProp::Update();
     UpdateMovement();
     UpdateModel();
 }
 
-void CynderEnergyCrystal::Resolve() {
+f32 CynderEnergyCrystal::Resolve() {
     KDPropEx::Resolve();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void CynderEnergyCrystal::LoadDone() {
+s32 CynderEnergyCrystal::LoadDone() {
     f64 sp68;
     f64 sp60;
     f64 sp58;

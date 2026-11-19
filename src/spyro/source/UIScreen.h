@@ -16,7 +16,7 @@ public:
     virtual s32 LoadLine(UIDataLine *);
     virtual void Update(void);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual void OnEnter(void);
     virtual void OnExit(void);
     virtual void OnUp(void);

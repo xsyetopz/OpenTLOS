@@ -19,10 +19,10 @@ class MoltenMetalBucket : public GameProp {  // base: base ctor call
 public:
     virtual ~MoltenMetalBucket(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     MoltenMetalBucket(void);
     void Stop(void);
@@ -77,15 +77,12 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MoltenMetalBucket::MoltenMetalBucket() {
     this->unkEC = 0;
     this->unk114 = 0;
     this->unk13C = 0;
     this->unk180.unk4 = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MoltenMetalBucket::~MoltenMetalBucket() {
@@ -101,10 +98,7 @@ inline MoltenMetalBucket::~MoltenMetalBucket() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MoltenMetalBucketDescriptor::MoltenMetalBucketDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MOLTENMETALBUCKET_H

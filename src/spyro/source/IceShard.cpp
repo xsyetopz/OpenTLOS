@@ -30,7 +30,7 @@
 extern MKPropDescriptor *pIceShardDescriptor;
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void IceShard::Update() {
+void *IceShard::Update() {
     Matrix sp90;
     Matrix sp50;
     f64 sp40;                                       /* compiler-managed */
@@ -190,7 +190,7 @@ void IceShard::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-void IceShard::LoadDone() {
+s32 IceShard::LoadDone() {
     Projectile::LoadDone();
 }
 

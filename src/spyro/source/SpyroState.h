@@ -21,7 +21,7 @@ public:
     virtual s32 Transition(void) = 0;
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
 };
 
 class SpyroStateMachine {
@@ -77,8 +77,8 @@ inline void SpyroState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void SpyroState::GetStateInfo() {
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
+inline void *SpyroState::GetStateInfo() {
     return "";
 }
 #endif

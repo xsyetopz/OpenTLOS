@@ -32,7 +32,7 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal type
-void PooledShatterProp::Update() {
+void *PooledShatterProp::Update() {
     s32 temp_r4_133;
     void *temp_r3_129;
 

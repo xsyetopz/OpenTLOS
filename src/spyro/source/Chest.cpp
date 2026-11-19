@@ -73,7 +73,7 @@ void Chest::Reset() {
 }
 
 #if 0 // DRAFT: illegal type
-void Chest::Update() {
+void *Chest::Update() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
     f64 sp60;

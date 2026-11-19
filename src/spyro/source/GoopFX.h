@@ -21,7 +21,7 @@ public:
     virtual ~GoopFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Emit(const MKVector3 &, const MKVector3 &, float, const MKVector4 &);
     GoopFX(void);
@@ -55,19 +55,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GoopFX::GoopFX() {
-    return this;
 }
-#endif
 
 inline GoopFX::~GoopFX() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GoopFXDescriptor::GoopFXDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_GOOPFX_H

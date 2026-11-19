@@ -41,7 +41,7 @@ s32 UIButtonGroup::SetSelection(int arg0) {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void UIButtonGroup::Message(UIMessage *arg0) {
+s32 UIButtonGroup::Message(UIMessage *arg0) {
     s32 temp_cr0_eq_128;
     s32 temp_r0_87;
     s32 temp_r30_117;
@@ -181,7 +181,7 @@ void UIButton::Update() {
     UIContainer::Update();
 }
 
-void UIButton::Message(UIMessage *arg0) {
+s32 UIButton::Message(UIMessage *arg0) {
     s32 temp_r0_407;
 
     temp_r0_407 = arg0->unk0;

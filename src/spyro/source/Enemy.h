@@ -63,15 +63,15 @@ public:
     virtual ~Enemy(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Enable(void);
     virtual void SetDefaults(void);
-    virtual void EnableCollision(bool);
+    virtual u8 EnableCollision(bool);
     virtual void Despawn(bool);
     virtual void Recycle(void);
     virtual void Activate(void);
@@ -137,13 +137,13 @@ public:
     virtual s32 CanSummonWall(void);
     virtual s32 CanCustomSpawn(void);
     virtual s32 CanOperateLever(void);
-    virtual u8 CanMoveAwayFromHero(void);
+    virtual s32 CanMoveAwayFromHero(void);
     virtual u8 CanMoveAwayBack(void);
     virtual u8 CanMoveAwayForward(void);
     virtual s32 CanMoveAwayLeft(void);
     virtual s32 CanMoveAwayRight(void);
     virtual s32 CheckForCliff(const MKVector3 &);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     virtual void DoHitFx(EnemyDamageFeedback *);
     virtual void DoDeadFx(void);
     virtual s32 TryFreeze(float, bool, bool);
@@ -438,7 +438,6 @@ inline Enemy::Enemy() {
     this->unk9D0 = 0;
     this->unk9D4 = 0;
     this->unkA48 = 0;
-    return this;
 }
 #endif
 
@@ -452,7 +451,7 @@ inline void Enemy::UpdateMovementCustom() {
 
 }
 
-inline void Enemy::GetCharacterName() {
+inline s32 Enemy::GetCharacterName() {
     this->unk9E0.GetName();
 }
 

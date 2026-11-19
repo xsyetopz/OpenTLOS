@@ -28,9 +28,6 @@ void CameraData::Init() {
     ClearData();
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 CameraData::CameraData() {
     ClearData();
-    return this;
 }
-#endif

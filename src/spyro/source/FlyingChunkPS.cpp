@@ -321,7 +321,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
-void FlyingChunkPS::Update() {
+void *FlyingChunkPS::Update() {
     u8 sp5C0;
     s32 sp5BC;
     void *sp5B8;

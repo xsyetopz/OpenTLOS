@@ -50,7 +50,7 @@ static M2C_UNK *pAnimScriptPropertyName = &.L_8035FAB2;
 static M2C_UNK .L_8035FAA5;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035FAB2;                         /* unable to generate initializer: unknown type; const */
 
-void KDPropEx::Update() {
+void *KDPropEx::Update() {
     KDPropEx *sp8;
     KDPropEx *temp_r0_16;
     void *var_r31_21;
@@ -99,7 +99,7 @@ loop_4:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
-void KDPropEx::Resolve() {
+f32 KDPropEx::Resolve() {
     KDPropEx *sp8;
     KDPropEx *temp_r0_103;
     void *var_r31_108;
@@ -123,7 +123,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
-void KDPropEx::LoadDone() {
+s32 KDPropEx::LoadDone() {
     KDPropEx *sp8;
     KDPropEx *temp_r3_143;
     s32 temp_r3_161;

@@ -12,7 +12,7 @@ public:
     virtual ~CrashSparkPS(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void UpdateCollision(const int &);
     /* 0x04c */ void* unk4C;

@@ -188,7 +188,7 @@ void SparxHint::Message(MKMessage *arg0) {
 }
 #endif
 
-void SparxHint::Update() {
+void *SparxHint::Update() {
     SparxHint *sp54;
     s32 sp50;
     s8 sp4E;
@@ -280,7 +280,7 @@ void SparxHint::Update() {
     }
 }
 
-void SparxHint::LoadDone() {
+s32 SparxHint::LoadDone() {
     MKProp::LoadDone();
     this->unk8 = &this->unk50;
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);

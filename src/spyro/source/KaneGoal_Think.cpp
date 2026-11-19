@@ -51,7 +51,6 @@
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
@@ -61,7 +60,7 @@ void KaneGoal_Think::AddGoal_Idle() {
 
     temp_r3_16 = this->unk24;
     if (temp_r3_16->IsActive() == 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r4_26 = this->unk24;
         M2C_FIELD(temp_r4_26, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r4_26, s32 *, 0x14) = 0;
@@ -70,23 +69,20 @@ void KaneGoal_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r4_26, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_26, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void KaneGoal_Think::AddGoal_FollowSpawnGraph() {
     s32 temp_r3_64;
     s32 temp_r3_69;
 
     if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         temp_r3_64 = this->unkC;
         M2C_FIELD(temp_r3_64, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_64, u8 *, 0xB09) | 8);
         temp_r3_69 = this->unkC;
         M2C_FIELD(temp_r3_69, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_69, u8 *, 0xB08) | 0x40);
     }
 }
-#endif
 
 void KaneGoal_Think::StartFollowingSpawnGraph() {
     s32 temp_r4_87;
@@ -138,7 +134,6 @@ void KaneGoal_Think::Activate() {
     Arbitrate();
 }
 
-#if 0 // DRAFT: undefined identifier 'free'
 void KaneGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_222;
     Goal<Enemy> *temp_r3_227;
@@ -168,7 +163,6 @@ void KaneGoal_Think::Deinit() {
     this->unkC = 0;
     this->unk9 = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KaneGoal_Think::Init(Enemy *arg0) {

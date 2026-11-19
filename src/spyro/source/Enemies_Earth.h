@@ -18,7 +18,7 @@ class EarthTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthTier1(void);
     virtual void Init(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     EarthTier1(void);
     /* 0xb10 */ f32 unkB10;
 };
@@ -34,7 +34,7 @@ class EarthTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthTier2(void);
     virtual void Init(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     EarthTier2(void);
 };
 
@@ -43,7 +43,7 @@ public:
     virtual ~EarthTier3(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     EarthTier3(void);
     /* 0xb10 */ void** unkB10;
 };
@@ -65,7 +65,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier1::EarthTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -75,16 +74,12 @@ inline EarthTier1::~EarthTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline EarthTier1Descriptor::EarthTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier2::EarthTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -97,7 +92,6 @@ inline EarthTier2::~EarthTier2() {
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier3::EarthTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -107,10 +101,7 @@ inline EarthTier3::~EarthTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline EarthTier3Descriptor::EarthTier3Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_EARTH_H

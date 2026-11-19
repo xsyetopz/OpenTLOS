@@ -76,7 +76,7 @@ void Door::Reset() {
 }
 
 #if 0 // DRAFT: ')' expected
-void Door::Update() {
+void *Door::Update() {
     s32 temp_r0_123;
     s32 temp_r4_136;
     s32 temp_r4_160;

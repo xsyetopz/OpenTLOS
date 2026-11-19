@@ -26,10 +26,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MCSelectFileScreen::MCSelectFileScreen() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MCSELECTFILESCREEN_H

@@ -71,7 +71,7 @@ void WaterWheel::UpdateMove() {
     M2C_FIELD(this, f64 *, 0x118) = (f64) sp10;
 }
 
-void WaterWheel::Update() {
+void *WaterWheel::Update() {
     s32 sp8;
 
     GameProp::Update();
@@ -79,7 +79,7 @@ void WaterWheel::Update() {
     ((KDSoundFader *) &this->unk184)->Update(GS_WaterwheelMoveLP, 1U, this->unk1C0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 
-void WaterWheel::LoadDone() {
+s32 WaterWheel::LoadDone() {
     Platform::LoadDone();
     this->unk180 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x50);
     M2C_FIELD(this, f64 *, 0x1B0) = (f64) M2C_FIELD(&MKProp::loadInfo, f32 *, 0x50);

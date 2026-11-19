@@ -22,7 +22,7 @@ public:
     virtual s32 Transition(void);
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void ChargeTransition(void);
     void ChargeUpdate(void);
     void ChargeExit(void);
@@ -51,7 +51,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroChargeState::GetStateInfo() {
+inline void *SpyroChargeState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

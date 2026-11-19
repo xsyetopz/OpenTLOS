@@ -34,7 +34,6 @@ void Language_Deinit(void);
 void Language_Init(void);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LanguageSelectScreen::LanguageSelectScreen() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -60,8 +59,6 @@ inline LanguageSelectScreen::LanguageSelectScreen() {
     this->unkBC.unk0 = NULL;
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LANGUAGESELECTSCREEN_H

@@ -18,9 +18,9 @@ public:
     virtual ~WaterVolume(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     virtual s32 IsEnabled(void);
     /* 0x0d8 */ u8 padD8[0x8];

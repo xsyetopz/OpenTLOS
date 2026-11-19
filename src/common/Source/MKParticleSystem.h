@@ -26,11 +26,18 @@ public:
 
 class MKParticleSystem : public MKBaseParticleSystem {  // base: ctor/dtor vtable stores
 public:
-    class Envelope;
+    class Envelope {
+    public:
+        /* 0x000 */ f32 unk0;
+        /* 0x004 */ f32 unk4;
+        /* 0x008 */ f32 unk8;
+        /* 0x00c */ f32 unkC;
+        /* 0x010 */ f32 unk10;
+    };
     virtual ~MKParticleSystem(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void GetName(void);
+    virtual void * GetName(void);
     virtual void * CreateParticle(void);
     virtual void UpdateParticles(void);
     virtual void * HitFloor(MKBaseParticleSystem::ParticleRec *, bool *);
@@ -61,7 +68,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void MKParticleSystem::GetName() {
+inline void *MKParticleSystem::GetName() {
 
 }
 

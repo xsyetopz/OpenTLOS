@@ -493,7 +493,7 @@ void VolcanoRumble::MakeCrudRainSound() {
 }
 #endif
 
-void VolcanoRumble::Update() {
+void *VolcanoRumble::Update() {
     MKProp::Update();
     EmitCrudAbovePlayer();
     MakeCrudRainSound();

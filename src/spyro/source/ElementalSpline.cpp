@@ -2446,7 +2446,7 @@ void ElementalSpline::Draw() {
     }
 }
 
-void ElementalSpline::Update() {
+void *ElementalSpline::Update() {
     u8 var_r31_4413;
 
     MKProp::Update();
@@ -2479,7 +2479,7 @@ void ElementalSpline::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
-void ElementalSpline::Resolve() {
+f32 ElementalSpline::Resolve() {
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -2650,7 +2650,7 @@ void ElementalSpline::Init() {
     f32 sp8;
 
     SplineProp::Init();
-    Init__33KDStateMachine<15ElementalSpline>FPQ233KDStateMachine<15ElementalSpline>5StateP33KDStateMachine<15ElementalSpline>((KDStateMachine<ElementalSpline> *) &this->unkC0, &ElementalSplineStates, NULL);
+    ((KDStateMachine<ElementalSpline> *) &this->unkC0)->Init(&ElementalSplineStates, NULL);
     this->unkF4 = NULL;
     this->unkF8 = NULL;
     this->unk114 = 1;

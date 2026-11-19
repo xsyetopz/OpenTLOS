@@ -16,7 +16,7 @@ class ShapedTrailFX;
 class LavaBall : public Projectile {  // base: base ctor call
 public:
     virtual ~LavaBall(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
@@ -35,19 +35,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaBall::LavaBall() {
-    return this;
 }
-#endif
 
 inline LavaBall::~LavaBall() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LavaBallDescriptor::LavaBallDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LAVABALL_H

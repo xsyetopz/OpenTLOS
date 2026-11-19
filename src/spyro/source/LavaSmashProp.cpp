@@ -385,7 +385,7 @@ void LavaSmashProp::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void LavaSmashProp::Update() {
+void *LavaSmashProp::Update() {
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -413,7 +413,7 @@ void LavaSmashProp::Update() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void LavaSmashProp::Resolve() {
+f32 LavaSmashProp::Resolve() {
     void *temp_r31_644;
 
     Shatterable::Resolve();
@@ -431,7 +431,7 @@ void LavaSmashProp::Reset() {
 }
 
 #if 0 // DRAFT: undefined identifier 'unk108'
-void LavaSmashProp::LoadDone() {
+s32 LavaSmashProp::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x1E8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     M2C_FIELD(this, f64 *, 0x1F0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);

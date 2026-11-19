@@ -1251,11 +1251,9 @@ void FireTier1::SetDefaults() {
     this->unkB18 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void FireTier1::GetCharacterName() {
+s32 FireTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x36C);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void FireTier1::Init() {

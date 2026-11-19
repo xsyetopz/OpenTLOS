@@ -14,7 +14,7 @@ class BlizzardBreathPS : public MKParticleSystem {  // base: ctor/dtor vtable st
 public:
     virtual ~BlizzardBreathPS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     BlizzardBreathPS(void);
@@ -41,10 +41,7 @@ inline BlizzardBreathPS::~BlizzardBreathPS() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline BlizzardBreathPS::BlizzardBreathPS() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BLIZZARDBREATHPS_H

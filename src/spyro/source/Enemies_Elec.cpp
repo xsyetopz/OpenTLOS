@@ -369,7 +369,7 @@ void ElecTier3::Draw() {
     }
 }
 
-void ElecTier3::Update() {
+void *ElecTier3::Update() {
     Enemy::Update();
     if ((u8) this->unkB54 != 0) {
         UpdateScan();
@@ -411,11 +411,9 @@ void ElecTier3::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void ElecTier3::GetCharacterName() {
+s32 ElecTier3::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x374);
 }
-#endif
 
 void ElecTier3::SetDefaults() {
     Enemy::SetDefaults();
@@ -560,7 +558,7 @@ void ElecTier2::UpdateMovementCustom() {
 }
 
 #if 0 // DRAFT: undefined identifier 'sp10'
-void ElecTier2::Update() {
+void *ElecTier2::Update() {
     f64 sp8;
     f32 temp_f1_1007;
     f32 temp_f1_1018;
@@ -765,7 +763,7 @@ void ElecTier2::SetupCollision() {
 }
 
 #if 0 // DRAFT: undefined identifier 'P19ElecTier2Descriptor'
-void ElecTier2::LoadDone() {
+s32 ElecTier2::LoadDone() {
     Enemy::LoadDone();
     this->unkB28.Init(checked_cast<P19ElecTier2Descriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x2CC, (MKCollisionInfo *) this->unk634);
     this->unkB28.LoadDone((MKProp *) this, NULL);
@@ -941,11 +939,9 @@ void ElecTier1::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void ElecTier1::GetCharacterName() {
+s32 ElecTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x370);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void ElecTier1::Message(MKMessage *arg0) {
@@ -972,7 +968,7 @@ void ElecTier1::Message(MKMessage *arg0) {
 }
 #endif
 
-void ElecTier1::Update() {
+void *ElecTier1::Update() {
     s32 sp8;
     void *temp_r3_1907;
 

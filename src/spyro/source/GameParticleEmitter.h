@@ -70,9 +70,9 @@ public:
     virtual ~GameParticleEmitter(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     GameParticleEmitter(void);
@@ -136,11 +136,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GameParticleEmitter::GameParticleEmitter() {
-    return this;
 }
-#endif
 
 inline GameParticleEmitter::~GameParticleEmitter() {
 }

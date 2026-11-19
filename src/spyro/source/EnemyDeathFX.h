@@ -14,8 +14,8 @@ public:
     virtual ~EnemyDeathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Trigger(int *, const MKVector3 &, float, int);
     /* 0x04c */ u8 pad4C[0x4];

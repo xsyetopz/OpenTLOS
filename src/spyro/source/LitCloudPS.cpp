@@ -720,7 +720,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
-void LitCloudPS::Update() {
+void *LitCloudPS::Update() {
     f64 sp88;
     f64 sp80;                                       /* compiler-managed */
     f64 sp78;

@@ -341,7 +341,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal operand
-void SwarmProp::Update() {
+void *SwarmProp::Update() {
     f64 sp118;                                      /* compiler-managed */
     f64 sp110;
     f64 sp108;
@@ -540,12 +540,12 @@ void SwarmProp::Reset() {
     KDProp::Reset();
 }
 
-void SwarmProp::Resolve() {
+f32 SwarmProp::Resolve() {
     MKProp::Resolve();
 }
 
 #if 0 // DRAFT: undefined identifier 'unk8C'
-void SwarmProp::LoadDone() {
+s32 SwarmProp::LoadDone() {
     f64 sp50;
     f64 sp48;
     f64 sp40;

@@ -125,7 +125,6 @@ void EnemyTestGoal_MoveToTarget::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     s32 temp_r0_286;
     s32 temp_r0_338;
@@ -172,12 +171,10 @@ loop_22:
         } else {
             RemoveAllSubgoals();
         }
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     f32 var_f31_372;
     s32 temp_r0_512;
@@ -289,19 +286,17 @@ block_42:
             M2C_FIELD(temp_r4_582, s32 *, 0x940) = (s32) arg0->unk30;
             M2C_FIELD(temp_r4_582, u8 *, 0x944) = (u8) arg0->unk34;
             RemoveAllSubgoals();
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk24);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_641;
 
     if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         temp_r4_641 = this->unk20;
         M2C_FIELD(temp_r4_641, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r4_641, s32 *, 0x14) = 0;
@@ -310,7 +305,6 @@ void EnemyTest_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r4_641, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_641, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
 void EnemyTest_Think::Reset() {
     this->unk8 = 1;
@@ -347,7 +341,7 @@ u8 EnemyTest_Think::Update() {
             temp_r3_764 = ((EAPManager *) (M2C_FIELD(temp_r4_759, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_759, temp_r4_759 + 0x870, NULL, 0);
             if ((temp_r3_764 != 0) && (M2C_FIELD(*temp_r3_764, s32 *, 0x38) & 0x30000)) {
                 RemoveAllSubgoals();
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+                AddSubgoal((Goal<Enemy> *) this->unk34);
                 ((EnemyGoal_GroundAttackMode *) this->unk34)->SetParams(this->unkC + 0x870, 1U, (EAPItem *) temp_r3_764);
             }
         }
@@ -363,7 +357,7 @@ u8 EnemyTest_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemyTest_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Goal<Enemy> *temp_r4_971;
@@ -399,13 +393,13 @@ block_12:
             if (IsPresent(0x58) == 0) {
                 RemoveAllSubgoals();
                 if (!(((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 6U) & 1)) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+                    AddSubgoal((Goal<Enemy> *) this->unk30);
                     temp_r4_971 = this->unk30;
                     M2C_FIELD(temp_r4_971, s32 *, 0x10) = (s32) (this->unkC + 0x870);
                     M2C_FIELD(temp_r4_971, s32 *, 0x14) = 0;
                     M2C_FIELD(temp_r4_971, f32 *, 0x18) = 0.0f;
                 }
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+                AddSubgoal((Goal<Enemy> *) this->unk34);
                 ((EnemyGoal_GroundAttackMode *) this->unk34)->SetParams(this->unkC + 0x870, 1U, NULL);
             }
         } else {

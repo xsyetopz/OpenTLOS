@@ -1111,7 +1111,7 @@ void DragonBust::SetState(DragonBust::State arg1) {
 }
 #endif
 
-void DragonBust::Update() {
+void *DragonBust::Update() {
     s32 sp8;
 
     ((KDStateMachine<DragonBust> *) &this->unkC8)->Update(this, 0);
@@ -1131,7 +1131,7 @@ void DragonBust::Reset() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
-void DragonBust::LoadDone() {
+s32 DragonBust::LoadDone() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -1188,9 +1188,9 @@ s32 DragonBust::LoadLine(MKIniLine *arg0) {
     return var_r31_1627;
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__28KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void DragonBust::Init() {
-    Init__28KDStateMachine<10DragonBust>FPQ228KDStateMachine<10DragonBust>5StateP28KDStateMachine<10DragonBust>((KDStateMachine<DragonBust> *) &this->unkC8, (KDStateMachine<DragonBust>::State *) DragonBust::states, NULL);
+    ((KDStateMachine<DragonBust> *) &this->unkC8)->Init((KDStateMachine<DragonBust>::State *) DragonBust::states, NULL);
     this->unkDC = 0;
     this->unkE0 = (MKSceneManager *)-1;
     this->unkE4 = 1.0f;

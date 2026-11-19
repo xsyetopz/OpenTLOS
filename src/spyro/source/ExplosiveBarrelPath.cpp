@@ -824,7 +824,7 @@ block_13:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void ExplosiveBarrelPath::Update() {
+void *ExplosiveBarrelPath::Update() {
     ExplosiveBarrelPath spC0;
     f64 spB8;
     f64 spB0;
@@ -1035,12 +1035,12 @@ loop_18:
 }
 #endif
 
-void ExplosiveBarrelPath::Resolve() {
+f32 ExplosiveBarrelPath::Resolve() {
     MKProp::Resolve();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
-void ExplosiveBarrelPath::LoadDone() {
+s32 ExplosiveBarrelPath::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

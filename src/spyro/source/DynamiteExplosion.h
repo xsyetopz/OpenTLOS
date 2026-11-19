@@ -16,8 +16,8 @@ public:
     virtual ~DynamiteExplosion(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     u8 UpdateElec(DynamiteExplosion::Explosion *);
     u8 UpdateIce(DynamiteExplosion::Explosion *);

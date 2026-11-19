@@ -23,8 +23,8 @@ public:
     virtual ~IceBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     IceBreathFX(void);
     void ResetFury(void);
@@ -63,13 +63,10 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBreathFX::IceBreathFX() {
     this->unkB8.unk4 = 0;
     this->unk110.unk4 = 0;
-    return this;
 }
-#endif
 
 inline IceBreathFX::~IceBreathFX() {
     s32 temp_cr0_eq_15;

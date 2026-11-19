@@ -18,8 +18,8 @@ class DreadWing : public Enemy {  // base: base ctor call
 public:
     virtual ~DreadWing(void);
     virtual void Init(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual void CheckAnimEvents(void);
@@ -51,7 +51,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline DreadWing::DreadWing() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -73,10 +72,7 @@ inline s32 DreadWing::CanPanic() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline DreadWingDescriptor::DreadWingDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_DREADWING_H

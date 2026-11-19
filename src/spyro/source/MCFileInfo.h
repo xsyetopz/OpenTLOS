@@ -15,7 +15,7 @@ public:
     virtual void Deinit(void);
     virtual void Draw(const RenderContext &);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     void Reset(void);
     static u8 descriptor[0x14];
     /* 0x068 */ void* unk68;

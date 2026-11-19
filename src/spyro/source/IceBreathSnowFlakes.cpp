@@ -17,9 +17,15 @@
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gIceBreathSnowFlakesEnv; /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gIceBreathSnowFlakesEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 0.75f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.75f, 0.75f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void IceBreathSnowFlakes::ApplyWind(WindFX *arg0) {
     WindFX sp10;
     MKParticleChunk *var_r3_56;
@@ -52,6 +58,8 @@ void IceBreathSnowFlakes::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r30_109;
     MKParticleSystem::Envelope *temp_r3_199;
+    MKParticleSystem::Envelope *temp_r5_204;
+    MKParticleSystem::Envelope *temp_r5_237;
     f32 temp_f29_116;
     f32 temp_f3_177;
     f32 temp_f3_213;
@@ -60,13 +68,11 @@ void IceBreathSnowFlakes::UpdateParticles() {
     f32 var_f0_217;
     f64 temp_f0_128;
     f64 temp_f0_149;
+    s32 temp_r0_200;
     s32 temp_r3_173;
     s32 temp_r3_187;
     s32 temp_r4_198;
-    s32 temp_r6_202;
     void *temp_r29_112;
-    void *temp_r5_204;
-    void *temp_r5_237;
 
     this->unk128 += gUpdateTimeDelta;
     var_r30_109 = GetFirstParticle(&unksp8);
@@ -96,17 +102,17 @@ loop_12:
             temp_f3_177 = var_r30_109->unk20;
             var_r30_109->unk20 = (f32) fmod(temp_r3_173, temp_f3_177 + this->unkF0, (f32) temp_r3_173, temp_f3_177);
             temp_r3_187 = M2C_FIELD(temp_r29_112, s32 *, 0x14);
-            if (temp_f29_116 > (this->unk12C * *(this->unk134 + (temp_r3_187 * 0x14)))) {
+            if (temp_f29_116 > (this->unk12C * this->unk134[temp_r3_187].unk0)) {
                 M2C_FIELD(temp_r29_112, s32 *, 0x14) = (s32) (temp_r3_187 + 1);
             }
             temp_r4_198 = M2C_FIELD(temp_r29_112, s32 *, 0x14);
             temp_r3_199 = this->unk134;
+            temp_r0_200 = temp_r4_198 - 1;
             temp_f6_201 = this->unk12C;
-            temp_r6_202 = (temp_r4_198 - 1) * 0x14;
-            temp_r5_204 = temp_r3_199 + temp_r6_202;
-            temp_f5_206 = M2C_FIELD(temp_r5_204, f32 *, 0);
-            temp_f3_213 = -((temp_f6_201 * temp_f5_206) - temp_f29_116) / (temp_f6_201 * (*(temp_r3_199 + (temp_r4_198 * 0x14)) - temp_f5_206));
-            var_r30_109->unk1C = M2C_FIELD(temp_r29_112, f32 *, 0x20) * ((temp_f3_213 * M2C_FIELD(temp_r5_204, f32 *, 0xC)) + M2C_FIELD(temp_r5_204, f32 *, 4));
+            temp_r5_204 = &temp_r3_199[temp_r0_200];
+            temp_f5_206 = temp_r5_204->unk0;
+            temp_f3_213 = -((temp_f6_201 * temp_f5_206) - temp_f29_116) / (temp_f6_201 * (temp_r3_199[temp_r4_198].unk0 - temp_f5_206));
+            var_r30_109->unk1C = M2C_FIELD(temp_r29_112, f32 *, 0x20) * ((temp_f3_213 * temp_r5_204->unkC) + temp_r5_204->unk4);
             var_f0_217 = var_r30_109->unk1C;
             if (var_f0_217 < 1.0f) {
 
@@ -119,8 +125,8 @@ loop_12:
                 var_f0_217 = 0.0f;
             }
             var_r30_109->unk1C = var_f0_217;
-            temp_r5_237 = this->unk134 + temp_r6_202;
-            var_r30_109->unk28 = M2C_FIELD(temp_r29_112, f32 *, 0x1C) * ((temp_f3_213 * M2C_FIELD(temp_r5_237, f32 *, 0x10)) + M2C_FIELD(temp_r5_237, f32 *, 8));
+            temp_r5_237 = &this->unk134[temp_r0_200];
+            var_r30_109->unk28 = M2C_FIELD(temp_r29_112, f32 *, 0x1C) * ((temp_f3_213 * temp_r5_237->unk10) + temp_r5_237->unk8);
             var_r30_109 = GetNextParticle(&unksp8);
         }
         goto loop_12;
@@ -152,11 +158,10 @@ void IceBreathSnowFlakes::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void IceBreathSnowFlakes::LoadDone() {
+s32 IceBreathSnowFlakes::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gIceBreathSnowFlakesEnv'
 void IceBreathSnowFlakes::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -164,9 +169,8 @@ void IceBreathSnowFlakes::Init() {
     this->unk108 = 0.0f;
     this->unk10C = -200.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gIceBreathSnowFlakesEnv, 5);
+    SetEnvelope(gIceBreathSnowFlakesEnv, 5);
     SetMaxParticleAge(5.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif

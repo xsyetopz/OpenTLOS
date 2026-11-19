@@ -21,7 +21,7 @@ public:
     virtual void Exit(void);
     virtual void Update(void);
     virtual s32 Transition(void);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     s32 CynderFuryDazedTransition(void);
     void CynderFuryDazedUpdate(void);
     void CynderFuryDazedExit(void);
@@ -93,7 +93,7 @@ public:
 extern f32 * Hurt_pKnockToSafePosTime;
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroHurtState::GetStateInfo() {
+inline void *SpyroHurtState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

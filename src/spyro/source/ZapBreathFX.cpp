@@ -2481,7 +2481,7 @@ void ZapBreathFX::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
-void ZapBreathFX::Update() {
+void *ZapBreathFX::Update() {
     f64 sp360;
     f64 sp358;
     f64 sp350;
@@ -3075,7 +3075,7 @@ loop_54:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void ZapBreathFX::Resolve() {
+f32 ZapBreathFX::Resolve() {
     f64 sp100;
     f64 spF8;
     f64 spF0;

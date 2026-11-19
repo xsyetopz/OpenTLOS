@@ -279,7 +279,7 @@ loop_1:
 }
 #endif
 
-void PuddleSplash::Update() {
+void *PuddleSplash::Update() {
     s32 var_ctr_457;
     s32 var_r4_453;
     void *temp_r6_460;
@@ -302,7 +302,7 @@ void PuddleSplash::Update() {
 }
 
 #if 0 // DRAFT: illegal type
-void PuddleSplash::LoadDone() {
+s32 PuddleSplash::LoadDone() {
     MKHeap *temp_r3_490;
     s32 temp_r0_512;
     s32 temp_r3_511;

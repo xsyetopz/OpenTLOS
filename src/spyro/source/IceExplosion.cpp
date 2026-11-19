@@ -71,7 +71,7 @@ void IceExplosion::Draw() {
 
 }
 
-void IceExplosion::Update() {
+void *IceExplosion::Update() {
 
 }
 

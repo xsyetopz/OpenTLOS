@@ -35,10 +35,10 @@ class MudGutsCritter : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~MudGutsCritter(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     MudGutsCritter(void);
     void FindNewSwimParameters(MudGuts *);
@@ -58,11 +58,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MudGutsCritter::MudGutsCritter() {
-    return this;
 }
-#endif
 
 inline MudGutsCritter::~MudGutsCritter() {
     s32 temp_cr0_eq_15;
@@ -78,10 +75,7 @@ inline MudGutsCritter::~MudGutsCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MudGutsCritterDescriptor::MudGutsCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MUDGUTS_H

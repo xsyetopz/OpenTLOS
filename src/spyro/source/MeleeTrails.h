@@ -17,9 +17,9 @@ class MeleeTrails : public GameProp {  // base: base ctor call
 public:
     virtual ~MeleeTrails(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     MeleeTrails(void);
     void ResolveAnims(MKAnimScript *);
@@ -43,19 +43,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MeleeTrails::MeleeTrails() {
-    return this;
 }
-#endif
 
 inline MeleeTrails::~MeleeTrails() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MeleeTrailsDescriptor::MeleeTrailsDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MELEETRAILS_H

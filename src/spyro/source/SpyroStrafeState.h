@@ -27,7 +27,7 @@ public:
     virtual s32 Transition(void);
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void SetDesiredVelocity(void);
     void UpdateCircleTargetMovement(void);
     void SelectAnim(void);
@@ -71,7 +71,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroStrafeState::GetStateInfo() {
+inline void *SpyroStrafeState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

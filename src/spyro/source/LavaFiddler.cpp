@@ -616,7 +616,7 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void LavaFiddlerCritter::Update() {
+void *LavaFiddlerCritter::Update() {
     s8 sp168;
     s32 sp164;
     s32 sp160;
@@ -838,7 +838,7 @@ loop_35:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void LavaFiddlerCritter::Resolve() {
+f32 LavaFiddlerCritter::Resolve() {
     s8 sp190;
     s32 sp18C;
     s32 sp188;
@@ -1022,7 +1022,7 @@ loop_24:
 }
 #endif
 
-void LavaFiddlerCritter::LoadDone() {
+s32 LavaFiddlerCritter::LoadDone() {
     MKHeap *temp_r3_1578;
     s32 temp_r31_1577;
     void *var_r3_1585;

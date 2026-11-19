@@ -12,10 +12,10 @@ class ShockWave;
 class ShockWave : public KDProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~ShockWave(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void UpdateShockWave(int);
     s32 Start(MKVector3, float, float, bool, bool, bool);

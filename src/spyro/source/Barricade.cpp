@@ -163,15 +163,15 @@ void BarricadeProp::Message(MKMessage *arg0) {
 }
 #endif
 
-void BarricadeProp::Update() {
+void *BarricadeProp::Update() {
     Shatterable::Update();
 }
 
-void BarricadeProp::Resolve() {
+f32 BarricadeProp::Resolve() {
     Shatterable::Resolve();
 }
 
-void BarricadeProp::LoadDone() {
+s32 BarricadeProp::LoadDone() {
     Shatterable::LoadDone();
     if ((s32) this->unk180 > 0) {
         this->unk1AC = 1;

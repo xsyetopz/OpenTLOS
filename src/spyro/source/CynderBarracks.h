@@ -19,10 +19,10 @@ public:
     virtual ~CynderBarracks(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     CynderBarracks(void);
     void SetState(CynderBarracksState);
@@ -59,7 +59,6 @@ inline CynderBarracks::CynderBarracks() {
     temp_r30_21742->unk68.Init();
     this->unk1B4.unk6C.unk0 = 0;
     temp_r30_21742->unk6C.Init();
-    return this;
 }
 #endif
 
@@ -98,10 +97,7 @@ inline CynderBarracks::~CynderBarracks() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderBarracksDescriptor::CynderBarracksDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CYNDERBARRACKS_H

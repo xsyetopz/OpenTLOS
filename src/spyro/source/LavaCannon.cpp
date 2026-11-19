@@ -320,7 +320,7 @@ void LavaCannon::Draw() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void LavaCannon::Update() {
+void *LavaCannon::Update() {
     Matrix sp80;
     f64 sp70;
     f64 sp68;
@@ -507,7 +507,7 @@ void LavaCannon::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'P20LavaCannonDescriptor'
-void LavaCannon::Resolve() {
+f32 LavaCannon::Resolve() {
     Shatterable::Resolve();
     this->unk208.Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->EnableCustomMatrices(1U);
@@ -515,7 +515,7 @@ void LavaCannon::Resolve() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unksp2C'
-void LavaCannon::LoadDone() {
+s32 LavaCannon::LoadDone() {
     Matrix sp70;
     Matrix sp30;
     f64 sp28;

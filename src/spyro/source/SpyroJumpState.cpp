@@ -1193,10 +1193,9 @@ void SpyroJumpState::Deinit() {
     this->unk18.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroJumpState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroJumpState>FPQ232KDStateMachine<14SpyroJumpState>5StateP32KDStateMachine<14SpyroJumpState>(&this->unk18, (KDStateMachine<SpyroJumpState>::State *) &SpyroJumpState::states, NULL);
+    this->unk18.Init((KDStateMachine<SpyroJumpState>::State *) &SpyroJumpState::states, NULL);
     this->unk14 = 0.0f;
     M2C_FIELD(this, s8 *, 0x2E) = 0;
     this->unk34 = 0.0f;
@@ -1211,7 +1210,6 @@ void SpyroJumpState::Init(Spyro *arg0) {
     this->unk5C = 0x19;
     this->unk60 = &this->unk50;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroJumpState_cpp::__sinit() {

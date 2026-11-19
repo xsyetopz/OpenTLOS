@@ -18,9 +18,9 @@ class Exhumor : public Enemy {  // base: base ctor call
 public:
     virtual ~Exhumor(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     Exhumor(void);
     /* 0xb10 */ s32 unkB10;
@@ -31,7 +31,7 @@ class MiningMole : public Enemy {  // base: base ctor call
 public:
     virtual ~MiningMole(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
@@ -44,9 +44,9 @@ class MiningMoleLeader : public Enemy {  // base: base ctor call
 public:
     virtual ~MiningMoleLeader(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     MiningMoleLeader(void);
     /* 0xb10 */ s32 unkB10;
@@ -59,7 +59,6 @@ public:
 inline Exhumor::Exhumor() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB14 = 0;
-    return this;
 }
 #endif
 
@@ -75,7 +74,6 @@ inline Exhumor::~Exhumor() {
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline MiningMole::MiningMole() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -89,7 +87,6 @@ inline MiningMole::~MiningMole() {
 inline MiningMoleLeader::MiningMoleLeader() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB14 = 0;
-    return this;
 }
 #endif
 

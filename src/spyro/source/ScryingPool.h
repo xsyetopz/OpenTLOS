@@ -16,7 +16,7 @@ public:
     virtual ~ScryingPool(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     ScryingPool(void);
     /* 0x090 */ s32 unk90;
@@ -35,12 +35,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScryingPool::ScryingPool() {
     this->unk98 = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline ScryingPool::~ScryingPool() {
@@ -61,10 +58,7 @@ inline ScryingPool::~ScryingPool() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScryingPoolDescriptor::ScryingPoolDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SCRYINGPOOL_H

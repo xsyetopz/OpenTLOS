@@ -113,7 +113,7 @@ void CollapsibleProp::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float)' does not match
-void CollapsibleProp::Update() {
+void *CollapsibleProp::Update() {
     MKAnimScript *temp_r3_269;
     f32 temp_f1_188;
     f32 var_f0_225;
@@ -183,7 +183,7 @@ void CollapsibleProp::Reset() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
-void CollapsibleProp::LoadDone() {
+s32 CollapsibleProp::LoadDone() {
     f64 sp10;
     f64 sp8;
     void *temp_r5_327;

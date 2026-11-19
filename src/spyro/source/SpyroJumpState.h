@@ -19,7 +19,7 @@ public:
     virtual void Exit(void);
     virtual void Update(void);
     virtual s32 Transition(void);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void SetStrafeJump(bool);
     s32 DoubleJumpTransition(void);
     void DoubleJumpUpdate(void);
@@ -69,7 +69,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroJumpState::GetStateInfo() {
+inline void *SpyroJumpState::GetStateInfo() {
     this->unk18.GetStateName(-1);
 }
 

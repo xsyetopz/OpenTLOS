@@ -91,7 +91,7 @@ void FallingDustProp::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: function call 'GetInput(HeroInterface *, GameGlobals *)' does not match
-void FallingDustProp::Update() {
+void *FallingDustProp::Update() {
     s8 sp3A0;
     s32 sp39C;
     s32 sp398;
@@ -418,7 +418,7 @@ void FallingDustProp::Update() {
 }
 #endif
 
-void FallingDustProp::LoadDone() {
+s32 FallingDustProp::LoadDone() {
     KDProp::LoadDone();
     this->unkA8 = Tools_GetMatchingMaterial(this->unk4, "fx_0340");
     this->unk90 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Top1");

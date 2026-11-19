@@ -45,19 +45,12 @@ public:
 extern u8 bZ3AttractHack;
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LevelButton::LevelButton() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LevelSelectButtons::LevelSelectButtons() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LevelSelectScreen::LevelSelectScreen() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -83,8 +76,6 @@ inline LevelSelectScreen::LevelSelectScreen() {
     this->unkBC.unk0 = NULL;
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LEVELSELECT_H

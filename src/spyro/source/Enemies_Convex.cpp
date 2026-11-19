@@ -82,7 +82,7 @@ void ConvexTier3::UpdateMovementCustom() {
     UpdateModel();
 }
 
-void ConvexTier3::Update() {
+void *ConvexTier3::Update() {
     Enemy::Update();
 }
 
@@ -107,7 +107,7 @@ void ConvexTier3::Deinit() {
 }
 
 #if 0 // DRAFT: illegal type
-void ConvexTier3::Resolve() {
+f32 ConvexTier3::Resolve() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -218,7 +218,7 @@ void ConvexTier2::UpdateMovementCustom() {
 }
 #endif
 
-void ConvexTier2::Update() {
+void *ConvexTier2::Update() {
     Enemy::Update();
 }
 
@@ -305,7 +305,7 @@ void ConvexTier2::Deinit() {
 }
 
 #if 0 // DRAFT: illegal type
-void ConvexTier2::Resolve() {
+f32 ConvexTier2::Resolve() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

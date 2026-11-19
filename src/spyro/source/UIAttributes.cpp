@@ -197,12 +197,9 @@ void RenderContext::AddState(const RenderContext &arg0, const Attributes &arg1) 
     AddState(arg1);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 RenderContext::RenderContext(const RenderContext &arg0, const Attributes &arg1) {
     AddState(arg0, arg1);
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 RenderContext::RenderContext() {
@@ -211,6 +208,5 @@ RenderContext::RenderContext() {
     M2C_FIELD(this, f32 *, 0x44) = 1.0f;
     M2C_FIELD(this, f32 *, 0x48) = 1.0f;
     M2C_FIELD(this, f32 *, 0x4C) = 1.0f;
-    return this;
 }
 #endif

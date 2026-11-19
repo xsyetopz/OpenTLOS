@@ -163,13 +163,13 @@ void SpeedWay::GetPathMatrix(float arg0) {
 }
 #endif
 
-void SpeedWay::Resolve() {
+f32 SpeedWay::Resolve() {
     MKProp::Resolve();
     ((KDPathSegment *) &this->unk4C)->Resolve();
     ((KDPathSegment *) &this->unk94)->Resolve();
 }
 
-void SpeedWay::LoadDone() {
+s32 SpeedWay::LoadDone() {
     MKProp::LoadDone();
     ((KDSplinePathSegment *) &this->unk4C)->LoadDone();
     ((KDSplinePathSegment *) &this->unk94)->LoadDone();

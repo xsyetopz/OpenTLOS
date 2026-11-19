@@ -60,7 +60,7 @@ void Torch::Deinit() {
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void Torch::Update() {
+void *Torch::Update() {
     f64 sp188;
     f64 sp180;
     f64 sp178;
@@ -237,7 +237,7 @@ void Torch::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void Torch::LoadDone() {
+s32 Torch::LoadDone() {
     f64 spA0;
     f64 sp98;
     f64 sp90;

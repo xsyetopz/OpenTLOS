@@ -36,11 +36,11 @@ public:
     virtual ~RopeBridge(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void DetachBridgeEnthusiasts(void);
@@ -188,7 +188,6 @@ inline RopeBridge::BridgePiece::~BridgePiece() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline RopeBridge::BridgePiece::BridgePiece() {
     u8 *temp_r0_3621;
 
@@ -199,8 +198,6 @@ inline RopeBridge::BridgePiece::BridgePiece() {
     this->unk44 = temp_r0_3621;
     this->unk34 = 0;
     this->unk30 = 0.0f;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ROPEBRIDGE_H

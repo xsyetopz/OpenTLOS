@@ -853,7 +853,7 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void IceBossStomp::Update() {
+void *IceBossStomp::Update() {
     f64 sp408;
     f64 sp400;
     f64 sp3F8;
@@ -1636,7 +1636,7 @@ loop_8:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void IceBossStomp::LoadDone() {
+s32 IceBossStomp::LoadDone() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

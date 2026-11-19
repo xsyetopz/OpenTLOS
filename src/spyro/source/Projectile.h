@@ -21,10 +21,10 @@ class Projectile : public GameProp {  // base: base ctor call
 public:
     virtual ~Projectile(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Disable(void);
@@ -86,11 +86,8 @@ public:
 inline Projectile::~Projectile() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline Projectile::Projectile() {
-    return this;
 }
-#endif
 
 inline s32 Projectile::IsBurst() {
     return 0;
@@ -124,10 +121,7 @@ inline void Projectile::SetHitList(MKPtrList<MKProp> *arg0) {
     this->unk134 = (MKPtrList<MKProp> *) arg0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ProjectileDescriptor::ProjectileDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_PROJECTILE_H

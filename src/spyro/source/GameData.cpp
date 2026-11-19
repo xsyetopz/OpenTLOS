@@ -159,13 +159,10 @@ void GameData::ModuleInit() {
     *GameData::bModuleInitialised = 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 GameData::GameData() {
     M2C_FIELD(this, s8 *, 0x1B0) = 0;
     ClearData();
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void GameData::SetSaveChunk(ChunkInfo *arg0) {

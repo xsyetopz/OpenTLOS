@@ -19,7 +19,7 @@ public:
     virtual ~EarthBreathWhirlWinds(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void SpawnWhirlWind(const MKVector3 &, const MKVector3 &, Upgrade, bool, float);

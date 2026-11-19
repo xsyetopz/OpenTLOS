@@ -547,13 +547,13 @@ loop_2:
 }
 #endif
 
-void SkyClouds::LoadDone() {
+s32 SkyClouds::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
 #if 0 // DRAFT: illegal type
-void SkyClouds::Update() {
+void *SkyClouds::Update() {
     f64 sp50;
     f64 sp48;
     f64 sp40;

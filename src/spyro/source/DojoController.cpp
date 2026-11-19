@@ -5794,7 +5794,7 @@ void DojoController::PlayButtonTone() {
 }
 
 #if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char *)' does not match
-void DojoController::Update() {
+void *DojoController::Update() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) > 0.0f) {
         this->unk360.Update(this, 0);
     }
@@ -6583,7 +6583,7 @@ void DojoController::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void DojoController::Resolve() {
+f32 DojoController::Resolve() {
     s32 sp24;
     s32 sp20;
     s32 sp1C;
@@ -6671,7 +6671,7 @@ void DojoController::Resolve() {
 }
 #endif
 
-void DojoController::LoadDone() {
+s32 DojoController::LoadDone() {
     s32 var_r30_12978;
     s32 var_r31_12979;
 
@@ -7117,7 +7117,7 @@ void DojoController::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'dojoStates'
 void DojoController::Init() {
     SpawnPointData *temp_r29_14593;
     SpawnPointData *temp_r3_14701;
@@ -7137,7 +7137,7 @@ void DojoController::Init() {
     void **temp_r3_14812;
     void **temp_r3_14823;
 
-    Init__32KDStateMachine<14DojoController>FPQ232KDStateMachine<14DojoController>5StateP32KDStateMachine<14DojoController>(&this->unk360, &dojoStates, NULL);
+    this->unk360.Init(&dojoStates, NULL);
     this->unk3B4 = -1.0f;
     M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -7305,7 +7305,6 @@ DojoController::DojoController() {
     this->unk3D8 = NULL;
     this->unk3DC = NULL;
     this->unk3E0 = NULL;
-    return this;
 }
 #endif
 

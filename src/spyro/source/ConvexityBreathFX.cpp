@@ -566,7 +566,7 @@ void ConvexityBreathFX::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: pointer/array required
-void ConvexityBreathFX::Update() {
+void *ConvexityBreathFX::Update() {
     BreathHitMessage sp258;
     MKCollisionResult sp200;
     f64 sp1F8;

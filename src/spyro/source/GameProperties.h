@@ -163,11 +163,8 @@ inline void *MessageHandlerProperty::GetClassInfo() const {
     return (MessageHandlerProperty *) MessageHandlerProperty::classInfo;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MessageHandlerProperty::MessageHandlerProperty() {
-    return this;
 }
-#endif
 
 inline s32 TimerProperty::GetInstanceDataSize() const {
     return 8;
@@ -195,7 +192,6 @@ inline void *TimerProperty::GetClassInfo() const {
     return (TimerProperty *) TimerProperty::classInfo;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TimerProperty::TimerProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
@@ -205,8 +201,6 @@ inline TimerProperty::TimerProperty() {
     this->unk10.unk4 = NULL;
     this->unk10.unk8 = 0;
     this->unk1C = 1.0f;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_GAMEPROPERTIES_H

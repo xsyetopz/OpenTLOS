@@ -195,7 +195,7 @@ void EnemyDeathFX::Draw() {
 
 }
 
-void EnemyDeathFX::Update() {
+void *EnemyDeathFX::Update() {
     Corona *temp_r3_444;
     Corona *temp_r4_452;
     f32 temp_f2_439;
@@ -221,6 +221,7 @@ void EnemyDeathFX::Update() {
     }
 }
 
+#if 0 // DRAFT: identifier 'EnemyDeathFX::Resolve()' redeclared
 void EnemyDeathFX::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -253,6 +254,7 @@ void EnemyDeathFX::Resolve() {
         temp_r4_507->unk31 &= ~0x40;
     }
 }
+#endif
 
 void EnemyDeathFX::Init() {
     MKProp::Init();

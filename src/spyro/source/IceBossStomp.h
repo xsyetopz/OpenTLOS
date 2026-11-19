@@ -18,9 +18,9 @@ class ProjectileDescriptor;
 class IceBossStomp : public Projectile {  // base: base ctor call
 public:
     virtual ~IceBossStomp(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Disable(void);
     virtual void Activate(void);
@@ -57,19 +57,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBossStomp::IceBossStomp() {
-    return this;
 }
-#endif
 
 inline IceBossStomp::~IceBossStomp() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBossStompDescriptor::IceBossStompDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ICEBOSSSTOMP_H

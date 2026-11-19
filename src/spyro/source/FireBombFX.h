@@ -29,8 +29,8 @@ public:
     virtual ~FireBombFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     FireBombFX(void);
@@ -95,7 +95,6 @@ inline FireBombFX::FireBombFX() {
     this->unk1C4 = 0;
     this->unk1C8 = 0.0f;
     this->unk1CC = 0;
-    return this;
 }
 #endif
 
@@ -107,10 +106,7 @@ inline FireBombFX::~FireBombFX() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireBombFXDescriptor::FireBombFXDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FIREBOMBFX_H

@@ -15,7 +15,7 @@ class ProjectileDescriptor;
 class FlyingMonkey : public Projectile {  // base: vtable prefix
 public:
     virtual ~FlyingMonkey(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
@@ -39,19 +39,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FlyingMonkey::FlyingMonkey() {
-    return this;
 }
-#endif
 
 inline FlyingMonkey::~FlyingMonkey() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FlyingMonkeyDescriptor::FlyingMonkeyDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FLYINGMONKEY_H

@@ -15,7 +15,7 @@ public:
     virtual ~Chest(void);
     virtual void Init(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     Chest(void);
     void SetState(int);
@@ -45,14 +45,10 @@ inline Chest::~Chest() {
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Chest::Chest() {
     M2C_FIELD(this, void **, 0xC8) = (void *) (&__vt + 0x48);
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ChestDescriptor::ChestDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CHEST_H

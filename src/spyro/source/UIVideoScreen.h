@@ -19,7 +19,7 @@ public:
     virtual void Update(void);
     virtual void Draw(const RenderContext &);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual void OnEnter(void);
     virtual void OnExit(void);
     virtual void DoExit(void);
@@ -83,7 +83,6 @@ inline UIVideoScreen::UIVideoScreen() {
     this->unkD4 = 0;
     this->unkD8 = 0;
     this->unkDC = 0;
-    return this;
 }
 #endif
 

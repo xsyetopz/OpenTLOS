@@ -19,11 +19,11 @@ public:
     virtual ~TrainGate(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     TrainGate(void);
     void SetState(TrainGateState);
@@ -43,13 +43,10 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TrainGate::TrainGate() {
     this->unkC8.unk0 = 0;
     this->unkC8.Init();
-    return this;
 }
-#endif
 
 inline TrainGate::~TrainGate() {
     if (&this->unkC8 != NULL) {
@@ -57,10 +54,7 @@ inline TrainGate::~TrainGate() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TrainGateDescriptor::TrainGateDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_TRAINGATE_H

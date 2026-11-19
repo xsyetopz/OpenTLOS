@@ -53,7 +53,7 @@ void KDSoundProp::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-void KDSoundProp::Update() {
+void *KDSoundProp::Update() {
     s32 sp8;
     s32 temp_r0_79;
     s32 temp_r3_110;
@@ -93,7 +93,7 @@ void KDSoundProp::Reset() {
     this->unk4C = 1;
 }
 
-void KDSoundProp::LoadDone() {
+s32 KDSoundProp::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }

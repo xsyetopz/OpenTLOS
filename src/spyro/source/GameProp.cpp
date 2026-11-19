@@ -297,7 +297,7 @@ void GameProp::PropUpdate() {
 }
 
 #if 0 // DRAFT: ')' expected
-void GameProp::Update() {
+void *GameProp::Update() {
     void *sp34;
     s32 sp30;
     s32 sp2C;
@@ -398,7 +398,7 @@ void GameProp::Reset() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'pLoopingSoundEvents'
-void GameProp::LoadDone() {
+s32 GameProp::LoadDone() {
     MKAnimScript *temp_r3_581;
     MKModel *temp_r0_590;
     void *temp_r30_591;

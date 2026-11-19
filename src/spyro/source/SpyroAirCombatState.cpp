@@ -2531,10 +2531,9 @@ void SpyroAirCombatState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__37KDStateMachine'
 void SpyroAirCombatState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__37KDStateMachine<19SpyroAirCombatState>FPQ237KDStateMachine<19SpyroAirCombatState>5StateP37KDStateMachine<19SpyroAirCombatState>(&this->unk14, (KDStateMachine<SpyroAirCombatState>::State *) &SpyroAirCombatState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroAirCombatState>::State *) &SpyroAirCombatState::states, NULL);
     this->unk2C = 0;
     this->unk28 = -1;
     this->unk30 = 0;
@@ -2551,7 +2550,6 @@ void SpyroAirCombatState::Init(Spyro *arg0) {
     this->unk43 = 0;
     this->unk38 = 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_764'
 void SpyroAirCombatState_cpp::__sinit() {

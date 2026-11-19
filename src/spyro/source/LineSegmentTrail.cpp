@@ -535,7 +535,7 @@ loop_28:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'LineSegmentTrail' to
-void LineSegmentTrail::Update() {
+void *LineSegmentTrail::Update() {
     LSTrail *temp_r4_893;
     s32 var_r30_889;
     s32 var_r31_890;

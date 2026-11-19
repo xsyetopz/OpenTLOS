@@ -528,7 +528,7 @@ void ExplosionFX::Draw() {
     DrawShockwaves();
 }
 
-void ExplosionFX::Update() {
+void *ExplosionFX::Update() {
     Matrix **temp_r4_862;
     Matrix **temp_r4_891;
     Matrix **var_r6_849;

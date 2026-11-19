@@ -14,7 +14,7 @@ class AshesPS : public MKParticleSystem {  // base: ctor/dtor vtable stores
 public:
     virtual ~AshesPS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     AshesPS(void);
@@ -41,10 +41,7 @@ inline AshesPS::~AshesPS() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline AshesPS::AshesPS() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ASHESPS_H

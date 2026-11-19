@@ -1057,7 +1057,7 @@ loop_114:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
-void GunPowderFuse::Update() {
+void *GunPowderFuse::Update() {
     f64 sp178;
     f64 sp170;
     f64 sp168;
@@ -1536,7 +1536,7 @@ void GunPowderFuse::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
-void GunPowderFuse::Resolve() {
+f32 GunPowderFuse::Resolve() {
     f64 sp48;
     f64 sp40;
     f64 sp38;

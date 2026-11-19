@@ -15,7 +15,7 @@ public:
     virtual ~ExplosionFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void CreateShockwave(const MKVector3 &, const MKVector3 &, float);
     void CreateTendril(const MKVector3 &, float);

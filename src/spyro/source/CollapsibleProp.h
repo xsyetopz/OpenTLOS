@@ -18,10 +18,10 @@ public:
     class State;
     virtual ~CollapsibleProp(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     void SetState(CollapsibleProp::State);
     /* 0x090 */ s32 unk90;

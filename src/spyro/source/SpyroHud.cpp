@@ -93,7 +93,6 @@ void EnemyHudData::Init(Enemy *arg0, float arg1, float arg2) {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 EnemyHudData::EnemyHudData() {
     this->unk0 = NULL;
     this->unk4 = 0.0f;
@@ -102,9 +101,7 @@ EnemyHudData::EnemyHudData() {
     this->unk10 = 0;
     this->unk14 = 1;
     this->unk18 = 0;
-    return this;
 }
-#endif
 
 s32 EnemyHud_GetEnemy() {
     return M2C_FIELD(&hudData, s32 *, 0x5C);

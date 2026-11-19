@@ -376,7 +376,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void GemMagicFX::Update() {
+void *GemMagicFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
     f64 sp218;

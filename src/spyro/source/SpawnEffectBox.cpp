@@ -45,7 +45,7 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier 'sp38'
-void SpawnEffectBox::Update() {
+void *SpawnEffectBox::Update() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
@@ -120,7 +120,7 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: function call 'stricmp(const char[1])' does not match
-void SpawnEffectBox::LoadDone() {
+s32 SpawnEffectBox::LoadDone() {
     MKHeap *temp_r3_471;
     s32 temp_r30_470;
     s32 var_r29_485;

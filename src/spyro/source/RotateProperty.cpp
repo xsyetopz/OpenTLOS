@@ -285,6 +285,5 @@ RotateProperty::RotateProperty() {
     this->unk24 = 0.0f;
     this->unk28 = 0.0f;
     this->unk30 = -1;
-    return this;
 }
 #endif

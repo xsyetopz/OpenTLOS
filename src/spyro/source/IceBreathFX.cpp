@@ -2347,7 +2347,7 @@ void IceBreathFX::Draw() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
-void IceBreathFX::Update() {
+void *IceBreathFX::Update() {
     u8 sp300;
     s32 sp2FC;
     MKCollisionInfo *sp2F8;
@@ -2893,7 +2893,7 @@ void IceBreathFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void IceBreathFX::Resolve() {
+f32 IceBreathFX::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

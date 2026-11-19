@@ -13,7 +13,7 @@ class CrashMistPS : public MKParticleSystem {  // base: ctor/dtor vtable stores
 public:
     virtual ~CrashMistPS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     CrashMistPS(void);
@@ -36,10 +36,7 @@ inline CrashMistPS::~CrashMistPS() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CrashMistPS::CrashMistPS() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CRASHMISTPS_H

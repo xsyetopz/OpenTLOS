@@ -236,7 +236,6 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 s32 EnemyGoal_AlertMode::AddGoal_MoveAwayFromHero() {
     Enemy *temp_r3_352;
     Enemy *temp_r4_330;
@@ -246,14 +245,13 @@ s32 EnemyGoal_AlertMode::AddGoal_MoveAwayFromHero() {
         if ((((u8) temp_r4_330->unkB08 >> 6U) & 1) && (((u8) temp_r4_330->unkB09 >> 6U) & 1) && (IsActive(0x4F) == 0) && (IsPresent(0x28) == 0)) {
             temp_r3_352 = this->unkC;
             if (temp_r3_352->CanMoveAwayFromHero() != 0) {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+                AddSubgoal((Goal<Enemy> *) this->unk38);
                 return 1;
             }
         }
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 EnemyGoal_AlertMode::AddGoal_DefensiveMode() {
@@ -276,7 +274,7 @@ u8 EnemyGoal_AlertMode::AddGoal_DefensiveMode() {
         }
         if ((var_r30_419 != 0) && (M2C_FIELD(this->unk20->unk40.Get()->__vptr, u8 (**)(), 0x44)() != 0) && (((((u8) this->unkC->unkB00 >> 1U) & 1) && (temp_r3_445 = this->unk20, (((((u8) M2C_FIELD(temp_r3_445, u8 *, 0x49) >> 6U) & 1) == 0) == 0)) && (this->unkC->SelectDefensiveAttack(temp_r3_445->GetDist(), 0x40000U) != 0)) || ((((u8) this->unkC->unkB00 >> 2U) & 1) && (this->unkC->SelectDefensiveAttack(this->unk20->GetDist(), 0x20000U) != 0)) || ((((u8) this->unkC->unkB00 >> 3U) & 1) && (this->unkC->SelectDefensiveAttack(this->unk20->GetDist(), 0x10000U) != 0)))) {
             RemoveAllSubgoals();
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
+            AddSubgoal((Goal<Enemy> *) this->unk3C);
             M2C_FIELD(this->unk3C, AITargetData **, 0x20) = (AITargetData *) this->unk20;
             return 1U;
         }
@@ -287,16 +285,14 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 u8 EnemyGoal_AlertMode::AddGoal_FlyingAttackMode() {
     if (((this->unk4C & 4) > 0) && (((u8) this->unkC->unkB00 >> 5U) & 1)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         M2C_FIELD(this->unk34, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         return 1U;
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
@@ -364,7 +360,7 @@ u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
         var_r30_628 = 0;
     }
     if (((this->unk4C & 2) > 0) && ((u8) temp_r28_589 != 0) && (((u8) this->unkC->unkB00 >> 6U) & 1) && (this->unk20->GetDist() > this->unkC->unkA38->unk13C) && (var_r30_628 <= 0) && (var_r29_610 <= 3)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
         M2C_FIELD(this->unk30, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         return 1U;
     }
@@ -410,7 +406,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MeleeAttackMode() {
         var_r28_725 = 1;
     }
     if ((this->unk4C & 1) && (((u8) this->unkC->unkB00 >> 7U) & 1) && (var_r28_725 != 0) && ((var_r29_706 != 0) || (this->unk20->GetDist() < this->unkC->unkA38->unk138)) && (var_r31_700 <= 5)) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
         M2C_FIELD(this->unk2C, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         return 1U;
     }
@@ -463,7 +459,7 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
         sp50 = (f64) sp10;
         temp_r3_836 = temp_r31_797->IsVisible(*((MKVector3 *) &sp48), temp_r3_800->GetCollisionRadius(temp_r4_807, temp_f1_825, (f32) sp40, sp18));
         if ((this->unk4C & 2) && ((u8) temp_r3_836 != 0)) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+            AddSubgoal((Goal<Enemy> *) this->unk30);
             M2C_FIELD(this->unk30, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         } else {
             AddGoal_Taunt();
@@ -578,7 +574,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
             }
             this->unkC->unk8C0.Set(*((MKVector3 *) &spC8), 0U);
             this->unkC->unk8C0.SetInsideRegion(1U);
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
+            AddSubgoal((Goal<Enemy> *) this->unk40);
             temp_r3_1024 = this->unkC;
             temp_f1_1028 = temp_r3_1024->GetCollisionRadius();
             temp_r6_1031 = this->unk40;
@@ -601,11 +597,10 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_AlertMode::AddGoal_Taunt() {
     Goal<Enemy> *temp_r5_1084;
 
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+    AddSubgoal((Goal<Enemy> *) this->unk28);
     temp_r5_1084 = this->unk28;
     M2C_FIELD(temp_r5_1084, AITargetData **, 0x10) = (AITargetData *) this->unk20;
     M2C_FIELD(temp_r5_1084, s32 *, 0x14) = 1;
@@ -614,9 +609,7 @@ void EnemyGoal_AlertMode::AddGoal_Taunt() {
     M2C_FIELD(temp_r5_1084, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r5_1084, u8 *, 0x20) | 0x40);
     this->unkC->TryChangeEnemyRegion();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 u8 EnemyGoal_AlertMode::AddGoal_Summon() {
     Enemy *temp_r3_1125;
     Enemy *temp_r4_1112;
@@ -637,9 +630,9 @@ u8 EnemyGoal_AlertMode::AddGoal_Summon() {
                 this->unkC->unkA4C->SetDefaults();
                 temp_r4_1133 = this->unk44;
                 if (temp_r4_1133 != NULL) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) temp_r4_1133);
+                    AddSubgoal((Goal<Enemy> *) temp_r4_1133);
                 } else {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                    AddSubgoal((Goal<Enemy> *) this->unk28);
                     temp_r6_1143 = this->unk28;
                     M2C_FIELD(temp_r6_1143, AITargetData **, 0x10) = (AITargetData *) this->unk20;
                     M2C_FIELD(temp_r6_1143, s32 *, 0x14) = 1;
@@ -653,7 +646,6 @@ u8 EnemyGoal_AlertMode::AddGoal_Summon() {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 s32 EnemyGoal_AlertMode::AddGoal_Alert() {
@@ -675,7 +667,7 @@ s32 EnemyGoal_AlertMode::AddGoal_Alert() {
         temp_r7_1200 = this->unkC;
         sp18.unk4 = temp_r7_1200;
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, IsInAlertRangeMsg *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp18, 8, 0, temp_r7_1200->unk8 + 0x30, 1, 2000.0f);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r5_1221 = this->unk24;
         M2C_FIELD(temp_r5_1221, AITargetData **, 0x10) = (AITargetData *) this->unk20;
         M2C_FIELD(temp_r5_1221, Enemy **, 0x14) = sp18.unk1C;

@@ -138,7 +138,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
-void ElecZapCrystal::Update() {
+void *ElecZapCrystal::Update() {
     f64 spB8;
     f64 spB0;
     f64 spA8;
@@ -275,7 +275,7 @@ loop_10:
 #endif
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *,
-void ElecZapCrystal::LoadDone() {
+s32 ElecZapCrystal::LoadDone() {
     f32 var_f1_464;
     s32 temp_r0_481;
     s32 temp_r0_501;

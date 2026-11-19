@@ -24,8 +24,8 @@ public:
     virtual ~FuryFXConvexity(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     FuryFXConvexity(void);
@@ -72,13 +72,10 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FuryFXConvexity::FuryFXConvexity() {
     this->unkFC = 0;
     this->unk124 = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline FuryFXConvexity::~FuryFXConvexity() {

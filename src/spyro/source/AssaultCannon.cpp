@@ -3602,7 +3602,7 @@ block_91:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void AssaultCannon::Update() {
+void *AssaultCannon::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp30;
@@ -3650,7 +3650,7 @@ void AssaultCannon::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'pTurretAnimEvents'
-void AssaultCannon::LoadDone() {
+s32 AssaultCannon::LoadDone() {
     f64 sp18;
     f64 sp10;
     f64 sp8;
@@ -3716,7 +3716,7 @@ void AssaultCannon::LoadDone() {
     }
     this->unk2D0 = (u32) var_r3_5906;
     this->unk80->InitEvents(&pTurretAnimEvents);
-    Init__31KDStateMachine<13AssaultCannon>FPQ231KDStateMachine<13AssaultCannon>5StateP31KDStateMachine<13AssaultCannon>(&this->unk218, (KDStateMachine<AssaultCannon>::State *) AssaultCannon::states, NULL);
+    this->unk218.Init((KDStateMachine<AssaultCannon>::State *) AssaultCannon::states, NULL);
     this->unk218.SetState(this, 1, 0U);
     this->unk2D4 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
     temp_r4_5934 = M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0x16C);

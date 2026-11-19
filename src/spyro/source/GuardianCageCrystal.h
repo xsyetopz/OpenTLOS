@@ -20,9 +20,9 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *, bool, bool);
@@ -55,7 +55,6 @@ public:
 inline GuardianCageCrystal::GuardianCageCrystal() {
     this->unkC8 = &__vt + 0x48;
     this->unk1D8 = 0;
-    return this;
 }
 #endif
 
@@ -68,10 +67,7 @@ inline GuardianCageCrystal::~GuardianCageCrystal() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GuardianCageCrystalDescriptor::GuardianCageCrystalDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_GUARDIANCAGECRYSTAL_H

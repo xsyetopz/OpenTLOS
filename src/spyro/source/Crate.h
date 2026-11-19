@@ -77,11 +77,11 @@ public:
     virtual ~Crate(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Shatter(bool);
@@ -236,14 +236,10 @@ inline Crate::Crate() {
     this->unk1DC.unk4 = NULL;
     this->unk1DC.unk8 = (Attachment *) temp_r0_18686;
     this->unk1E4 = temp_r0_18686;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CrateDescriptor::CrateDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CRATE_H

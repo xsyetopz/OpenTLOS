@@ -15,8 +15,8 @@ class ProjectileDescriptor;
 class HotSpit : public Projectile {  // base: base ctor call
 public:
     virtual ~HotSpit(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     HotSpit(void);
@@ -36,19 +36,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline HotSpit::HotSpit() {
-    return this;
 }
-#endif
 
 inline HotSpit::~HotSpit() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline HotSpitDescriptor::HotSpitDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_HOTSPIT_H

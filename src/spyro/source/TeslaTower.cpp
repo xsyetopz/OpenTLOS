@@ -675,7 +675,7 @@ void TeslaTower::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void TeslaTower::Update() {
+void *TeslaTower::Update() {
     MKVector3 sp58;
     f64 sp50;
     f64 sp48;
@@ -800,7 +800,7 @@ void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void TeslaTower::LoadDone() {
+s32 TeslaTower::LoadDone() {
     Matrix sp1A0;
     f64 sp198;
     f64 sp190;

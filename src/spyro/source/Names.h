@@ -34,12 +34,9 @@ void Names_DeinitModule(void);
 void Names_InitModule(void);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline Names::Names() {
     this->unk0 = NULL;
     this->unk4 = 0;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_NAMES_H

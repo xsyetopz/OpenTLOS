@@ -1446,7 +1446,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void RopeBridge::Update() {
+void *RopeBridge::Update() {
     f64 sp38;
     f64 sp30;
     f64 sp28;
@@ -1554,7 +1554,7 @@ void RopeBridge::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'sp1B0'
-void RopeBridge::Resolve() {
+f32 RopeBridge::Resolve() {
     s8 sp2B8;
     s32 sp2B4;
     s32 sp2B0;
@@ -2079,7 +2079,7 @@ void RopeBridge::CalculateTranformationMatrices() {
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void RopeBridge::LoadDone() {
+s32 RopeBridge::LoadDone() {
     f64 sp28;
     f64 sp20;
     f32 sp18;

@@ -31,7 +31,7 @@ public:
     virtual void SetDefaults(void);
     virtual void UpdateMovementCustom(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     virtual void DoDeadFx(void);
     FireTier1(void);
     s32 SelectMoveToWallPos(const MKVector3 &, const MKVector3 &, MKVector3 *);
@@ -100,7 +100,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireTier1::FireTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -110,16 +109,12 @@ inline FireTier1::~FireTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireTier1Descriptor::FireTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireTier2::FireTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -129,16 +124,12 @@ inline FireTier2::~FireTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireTier2Descriptor::FireTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireTier3::FireTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -148,10 +139,7 @@ inline FireTier3::~FireTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireTier3Descriptor::FireTier3Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_FIRE_H

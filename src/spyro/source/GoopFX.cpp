@@ -158,7 +158,7 @@ void GoopFX::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'P16GoopFXDescriptor'
-void GoopFX::Update() {
+void *GoopFX::Update() {
     ((GoopFXDescriptor *) (checked_cast<P16GoopFXDescriptor))->UpdateGoopList(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0));
 }
 #endif

@@ -154,7 +154,7 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void SteamFireBall::Update() {
+void *SteamFireBall::Update() {
     Matrix sp190;
     Matrix sp150;
     Matrix sp110;
@@ -322,13 +322,13 @@ void SteamFireBall::Update() {
 }
 #endif
 
-void SteamFireBall::Resolve() {
+f32 SteamFireBall::Resolve() {
     KDPropEx::Resolve();
     this->unk150.Init(this->unk180, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unk150.Show(0U);
 }
 
-void SteamFireBall::LoadDone() {
+s32 SteamFireBall::LoadDone() {
     Projectile::LoadDone();
     this->unk180 = MKModel_Create("P9022_DropBoxShadow", NULL, 2, NULL);
 }

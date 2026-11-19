@@ -19,7 +19,7 @@ public:
     virtual ~GemMagicFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void DrawGlow(GemMagicFX::Magic *, Matrix *, MKVector3 *);
     void Emit(const MKVector3 &, const MKVector3 &, MKVector3 *, const MKVector4 &, bool);

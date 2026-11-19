@@ -47,7 +47,7 @@ extern M2C_UNK gb;
 extern MKPropDescriptor *pSludgeDescriptor;
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void Sludge::Update() {
+void *Sludge::Update() {
     Matrix sp1B0;
     Matrix sp170;
     f64 sp160;                                      /* compiler-managed */
@@ -558,7 +558,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-void Sludge::LoadDone() {
+s32 Sludge::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

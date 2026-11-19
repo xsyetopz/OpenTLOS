@@ -21,10 +21,10 @@ public:
     virtual ~GameProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void PropUpdate(void);
@@ -72,16 +72,10 @@ inline GameProp::~GameProp() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GameProp::GameProp() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GamePropDescriptor::GamePropDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_GAMEPROP_H

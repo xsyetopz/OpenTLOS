@@ -22,18 +22,239 @@ extern M2C_UNK gb;
 extern s32 iLevels;
 extern void *pLevelSettings;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
-static DataMap estDataMap;                          /* unable to generate initializer: confusing struct layout */
-static f32 baselineSettings[9];
+static DataMap estDataMap[0xA] = {
+    { 0, .L_8036C270 },
+    { 1, .L_8036C27B },
+    { 2, .L_8036C286 },
+    { 3, .L_8036C297 },
+    { 4, .L_8036C2AE },
+    { 5, .L_8036C2C5 },
+    { 6, .L_8036C2D6 },
+    { 7, .L_8036C2E6 },
+    { 8, .L_8036C303 },
+    { 9, NULL },
+};
 #endif
+static f32 baselineSettings[9];
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_ddaSettings_0x24'
 static struct _struct_ddaSettings_0x24 ddaSettings[5];
 #endif
 static s32 iEnemyDDALevel = 2;
+#if 0 // DRAFT: declaration syntax error
 static Level lit_618;                                  /* type too large by 0xDE; unable to generate initializer: confusing struct layout; const */
+static s8 .L_8036C270[0xB] = { 0x48, 0x65, 0x61, 0x6C, 0x74, 0x68, 0, 0x45, 0x53, 0x54, 0x5F }; /* const */
+static s8 .L_8036C27B[0xB] = { 0x41, 0x72, 0x6D, 0x6F, 0x75, 0x72, 0, 0x45, 0x53, 0x54, 0x5F }; /* const */
+static s8 .L_8036C286[0x11] = {
+    0x44,
+    0x65,
+    0x66,
+    0x65,
+    0x6E,
+    0x73,
+    0x69,
+    0x76,
+    0x65,
+    0x4D,
+    0x61,
+    0x78,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C297[0x17] = {
+    0x44,
+    0x65,
+    0x66,
+    0x65,
+    0x6E,
+    0x73,
+    0x69,
+    0x76,
+    0x65,
+    0x48,
+    0x69,
+    0x74,
+    0x57,
+    0x65,
+    0x69,
+    0x67,
+    0x68,
+    0x74,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C2AE[0x17] = {
+    0x44,
+    0x65,
+    0x66,
+    0x65,
+    0x6E,
+    0x73,
+    0x69,
+    0x76,
+    0x65,
+    0x44,
+    0x65,
+    0x63,
+    0x61,
+    0x79,
+    0x52,
+    0x61,
+    0x74,
+    0x65,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C2C5[0x11] = {
+    0x41,
+    0x74,
+    0x74,
+    0x61,
+    0x63,
+    0x6B,
+    0x44,
+    0x61,
+    0x6D,
+    0x61,
+    0x67,
+    0x65,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C2D6[0x10] = {
+    0x41,
+    0x74,
+    0x74,
+    0x61,
+    0x63,
+    0x6B,
+    0x44,
+    0x65,
+    0x6C,
+    0x61,
+    0x79,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C2E6[0x1D] = {
+    0x41,
+    0x74,
+    0x74,
+    0x61,
+    0x63,
+    0x6B,
+    0x44,
+    0x65,
+    0x66,
+    0x65,
+    0x6E,
+    0x73,
+    0x69,
+    0x76,
+    0x65,
+    0x54,
+    0x68,
+    0x72,
+    0x65,
+    0x73,
+    0x68,
+    0x6F,
+    0x6C,
+    0x64,
+    0,
+    0x45,
+    0x53,
+    0x54,
+    0x5F,
+}; /* const */
+static s8 .L_8036C303[0x43] = {
+    0x41,
+    0x74,
+    0x74,
+    0x61,
+    0x63,
+    0x6B,
+    0x44,
+    0x65,
+    0x66,
+    0x65,
+    0x6E,
+    0x73,
+    0x69,
+    0x76,
+    0x65,
+    0x50,
+    0x65,
+    0x6E,
+    0x61,
+    0x6C,
+    0x74,
+    0x79,
+    0,
+    0x44,
+    0x44,
+    0x41,
+    0,
+    0x64,
+    0x69,
+    0x66,
+    0x66,
+    0x69,
+    0x63,
+    0x75,
+    0x6C,
+    0x74,
+    0x79,
+    0,
+    0x6C,
+    0x65,
+    0x76,
+    0x65,
+    0x6C,
+    0,
+    0x62,
+    0x61,
+    0x73,
+    0x65,
+    0x6C,
+    0x69,
+    0x6E,
+    0x65,
+    0,
+    0x45,
+    0x6E,
+    0x65,
+    0x6D,
+    0x79,
+    0x44,
+    0x44,
+    0x41,
+    0x4C,
+    0x65,
+    0x76,
+    0x65,
+    0x6C,
+    0,
+}; /* const */
 
 void EnemySettings_UnregisterSettings(EnemySettings *arg0) {
 
 }
+#endif
 
 void EnemySettings_RegisterSettings(const char *arg0, EnemySettings *arg1) {
 
@@ -113,7 +334,6 @@ loop_11:
     goto loop_11;
 }
 
-#if 0 // DRAFT: undefined identifier 'baselineSettings'
 void EnemySettings_ParseBaselineSettings(MKIniLine *arg0) {
     MKIniLine *var_r30_215;
 
@@ -129,7 +349,6 @@ loop_5:
     var_r30_215 = var_r30_215->unkC->GetNextLine(var_r30_215);
     goto loop_5;
 }
-#endif
 
 void EnemySettings_ParseEnemyDDALevel(MKIniLine *arg0) {
     MKIniLine *var_r30_262;
@@ -195,7 +414,7 @@ void EnemySettings_DeinitModule() {
     pLevelSettings = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'lit_618'
 void EnemySettings_InitModule() {
     s8 sp8;
     M2C_UNK sp4;
@@ -252,7 +471,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'estDataMap'
 void EnemySettings::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_508;
     s32 var_r31_513;
@@ -264,7 +483,7 @@ loop_5:
         var_r29_512 = 0;
         var_r31_513 = 0;
 loop_2:
-        if (var_r28_508->LoadFloat(DataMap_GetName(&estDataMap, var_r29_512), (f32 *) &this[var_r31_513], 0) == 0) {
+        if (var_r28_508->LoadFloat(DataMap_GetName(estDataMap, var_r29_512), (f32 *) &this[var_r31_513], 0) == 0) {
             var_r29_512 += 1;
             var_r31_513 += 4;
             if ((s32) var_r29_512 < 9) {

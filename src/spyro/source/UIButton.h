@@ -17,7 +17,7 @@ public:
     virtual s32 LoadLine(UIDataLine *);
     virtual void Update(void);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual void OnActivate(void);
     virtual void OnSelection(void);
     virtual void OnDeselection(void);
@@ -33,7 +33,7 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(UIDataLine *);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual s32 SetSelection(int);
     virtual void OnSelectionChanged(void);
     static u8 descriptor[0x14];

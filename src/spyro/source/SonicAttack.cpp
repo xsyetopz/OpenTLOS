@@ -381,7 +381,7 @@ void SonicAttack::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void SonicAttack::Update() {
+void *SonicAttack::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -463,7 +463,7 @@ void SonicAttack::Update() {
 }
 #endif
 
-void SonicAttack::LoadDone() {
+s32 SonicAttack::LoadDone() {
     Matrix sp30;
     M2C_UNK sp2C;
     f64 sp28;

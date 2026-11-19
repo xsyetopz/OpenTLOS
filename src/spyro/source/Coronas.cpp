@@ -122,7 +122,7 @@ loop_1:
 }
 #endif
 
-void Coronas::Update() {
+void *Coronas::Update() {
     MKProp::Update();
 }
 
@@ -497,12 +497,12 @@ void Coronas::Reset() {
     MKProp::Reset();
 }
 
-void Coronas::Resolve() {
+f32 Coronas::Resolve() {
 
 }
 
 #if 0 // DRAFT: illegal type
-void Coronas::LoadDone() {
+s32 Coronas::LoadDone() {
     MKHeap *temp_r3_926;
     s32 temp_r0_953;
     s32 temp_r4_950;

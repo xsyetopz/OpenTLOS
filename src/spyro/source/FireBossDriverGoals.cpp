@@ -217,23 +217,19 @@ void FireBossDriverGoal_Think::CrashExit() {
     this->unk28->Exit();
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireBossDriverGoal_Think::CrashEnter() {
     RemoveAllSubgoals();
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+    AddSubgoal((Goal<Enemy> *) this->unk28);
 }
-#endif
 
 void FireBossDriverGoal_Think::ChargeExit() {
     this->unk2C->Exit();
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireBossDriverGoal_Think::ChargeEnter() {
     RemoveAllSubgoals();
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+    AddSubgoal((Goal<Enemy> *) this->unk2C);
 }
-#endif
 
 u8 FireBossDriverGoal_Think::Update() {
     ActivateIfInactive();
@@ -244,14 +240,12 @@ u8 FireBossDriverGoal_Think::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireBossDriverGoal_Think::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+    AddSubgoal((Goal<Enemy> *) this->unk24);
 }
-#endif
 
 void FireBossDriverGoal_Think::Reset() {
     this->unk8 = 1;

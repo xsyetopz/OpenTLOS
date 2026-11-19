@@ -28,7 +28,7 @@ public:
     virtual ~SwampTier1(void);
     virtual void Init(void);
     virtual void CheckAnimEvents(void);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     SwampTier1(void);
 };
 
@@ -61,10 +61,10 @@ class SwampTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~SwampTier3(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual u8 CanMoveAwayFromHero(void);
+    virtual s32 CanMoveAwayFromHero(void);
     SwampTier3(void);
     /* 0xb10 */ s8 unkB10;
     /* 0xb11 */ u8 padB11[0x3];
@@ -84,7 +84,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier1::SwampTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -94,16 +93,12 @@ inline SwampTier1::~SwampTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SwampTier1Descriptor::SwampTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier2::SwampTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -113,16 +108,12 @@ inline SwampTier2::~SwampTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SwampTier2Descriptor::SwampTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier3::SwampTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -132,10 +123,7 @@ inline SwampTier3::~SwampTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SwampTier3Descriptor::SwampTier3Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_SWAMP_H

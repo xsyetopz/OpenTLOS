@@ -54,17 +54,17 @@ void CynderPortcullis::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-void CynderPortcullis::Update() {
+void *CynderPortcullis::Update() {
     GameProp::Update();
     this->unkC8.Update();
 }
 
-void CynderPortcullis::Resolve() {
+f32 CynderPortcullis::Resolve() {
     KDPropEx::Resolve();
     this->unkC8.Resolve();
 }
 
-void CynderPortcullis::LoadDone() {
+s32 CynderPortcullis::LoadDone() {
     GameProp::LoadDone();
     this->unkC8.LoadDone();
 }

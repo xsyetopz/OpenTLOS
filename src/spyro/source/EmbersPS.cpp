@@ -15,9 +15,15 @@
 
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gEmbersPSEnv;     /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gEmbersPSEnv[5] = {
+    { 0.0f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 0.75f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 0.5f, 0.0f, 0.0f },
+    { 0.75f, 1.0f, 0.25f, 0.0f, 0.0f },
+    { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void EmbersPS::ApplyWind(WindFX *arg0) {
     WindFX sp20;
     f32 sp18;
@@ -86,7 +92,6 @@ void EmbersPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gEmbersPSEnv'
 void EmbersPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 5.0f;
@@ -94,13 +99,12 @@ void EmbersPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gEmbersPSEnv, 5);
+    SetEnvelope(gEmbersPSEnv, 5);
     SetMaxParticleAge(0.85f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
     this->unk118 = 0.95f;
 }
-#endif
 
 void EmbersPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

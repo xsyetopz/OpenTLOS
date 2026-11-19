@@ -24,7 +24,7 @@ public:
     virtual f32 GetCollideRadius(void);
     virtual void GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
-    virtual void GetCollisionInfo(void);
+    virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
     virtual s32 GetEffects(void);
     virtual void GetInput(void);
@@ -155,7 +155,7 @@ inline s32 SpyroHeroInterface::GetCollisionIgnoreMaterials() {
     return 0x220;
 }
 
-inline void SpyroHeroInterface::GetCollisionInfo() {
+inline MKPropDescriptor **SpyroHeroInterface::GetCollisionInfo() {
     void *temp_r3_17596;
 
     temp_r3_17596 = M2C_FIELD(this, void **, 4);

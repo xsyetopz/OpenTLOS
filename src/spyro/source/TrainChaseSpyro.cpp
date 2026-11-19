@@ -2781,7 +2781,7 @@ void TrainChaseSpyro::UpdateSpyro() {
 #endif
 
 #if 0 // DRAFT: illegal operand
-void TrainChaseSpyro::Update() {
+void *TrainChaseSpyro::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
@@ -2876,14 +2876,14 @@ void TrainChaseSpyro::Reset() {
 }
 
 #if 0 // DRAFT: undefined identifier 'unk2C4'
-void TrainChaseSpyro::Resolve() {
+f32 TrainChaseSpyro::Resolve() {
     KDPropEx::Resolve();
     this->unk29C->Init(gb.unk2C4, (MKProp *) this, &this->unk2A8);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'lit_747'
-void TrainChaseSpyro::LoadDone() {
+s32 TrainChaseSpyro::LoadDone() {
     Animation sp28;
     f64 sp18;
     f64 sp8;
@@ -2951,7 +2951,7 @@ void TrainChaseSpyro::LoadDone() {
     this->unk288 = checked_cast<LightProp *, MKProp>(((MKSceneManager *) gMK)->CreateProp("TrainTrackLight"));
     this->unk1B8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unk1B8.Show(1U);
-    Init__33KDStateMachine<15TrainChaseSpyro>FPQ233KDStateMachine<15TrainChaseSpyro>5StateP33KDStateMachine<15TrainChaseSpyro>((KDStateMachine<TrainChaseSpyro> *) &this->unk260, &lit_747 + 0x48, NULL);
+    ((KDStateMachine<TrainChaseSpyro> *) &this->unk260)->Init(&lit_747 + 0x48, NULL);
     ((KDStateMachine<TrainChaseSpyro> *) &this->unk260)->SetState(this, 0, 0U);
     Disable();
 }

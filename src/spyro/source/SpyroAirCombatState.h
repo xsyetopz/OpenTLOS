@@ -23,7 +23,7 @@ public:
     virtual s32 Transition(void);
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     void EnableSmoothBehindCamera(bool);
     void EnableSlowMoCamera(bool);
     void EnableProtoSlowMotion(void);
@@ -98,7 +98,7 @@ extern u8 HornDiveZSpeed[0x4];
 extern u8 HornDiveYSpeed[0x4];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroAirCombatState::GetStateInfo() {
+inline void *SpyroAirCombatState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

@@ -66,7 +66,6 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void CynderTier2TrainGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_44;
 
@@ -85,12 +84,10 @@ void CynderTier2TrainGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
         temp_r4_44->unk940 = arg0->unk30;
         temp_r4_44->unk944 = arg0->unk34;
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void CynderTier2TrainGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r3_121;
     s32 temp_r0_99;
@@ -109,7 +106,7 @@ loop_5:
         }
         goto loop_5;
     }
-    AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+    AddSubgoalToFront((Goal<Enemy> *) this->unk28);
     temp_r3_121 = this->unkC;
     temp_r3_121->unk910 = arg0->unk0;
     M2C_FIELD(temp_r3_121, f64 *, 0x918) = (f64) arg0->unk8;
@@ -125,27 +122,22 @@ loop_5:
     temp_r3_121->unk944 = arg0->unk34;
     this->unkC->unk928 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void CynderTier2TrainGoal_Think::AddGoal_TrainAttackMode(AITargetData *arg0) {
     if (IsPresent(0x62) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         M2C_FIELD(this->unk24, AITargetData **, 0x24) = arg0;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void CynderTier2TrainGoal_Think::AddGoal_SpawnOnTrain() {
     if (IsPresent(0x61) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         this->unk30 = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier2TrainGoal_Think::Arbitrate() {
@@ -451,7 +443,7 @@ void EnemyGoal_TrainAttackMode::Activate() {
                 }
                 temp_f1_842 = M2C_FIELD(this->unk24->unk40.Get()->__vptr, f32 (**)(), 0x40)();
                 if ((var_r29_831 > 0) || ((3.0f + temp_f1_842) > M2C_FIELD(&gb, f32 *, 0x30C)) || ((u8) temp_r31_772 == 0)) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                    AddSubgoal((Goal<Enemy> *) this->unk28);
                     temp_r6_858 = this->unk28;
                     M2C_FIELD(temp_r6_858, s32 *, 0x10) = 0;
                     M2C_FIELD(temp_r6_858, s32 *, 0x14) = 1;
@@ -459,15 +451,15 @@ void EnemyGoal_TrainAttackMode::Activate() {
                     M2C_FIELD(temp_r6_858, s32 *, 0x1C) = 2;
                     M2C_FIELD(temp_r6_858, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_858, u8 *, 0x20) & ~0x40);
                 } else {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                    AddSubgoal((Goal<Enemy> *) this->unk2C);
+                    AddSubgoal((Goal<Enemy> *) this->unk28);
                     M2C_FIELD(this->unk2C, s8 *, 0x48) = 1;
                 }
             } else {
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+                AddSubgoal((Goal<Enemy> *) this->unk28);
             }
         } else {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+            AddSubgoal((Goal<Enemy> *) this->unk28);
         }
         temp_r6_895 = this->unk28;
         M2C_FIELD(temp_r6_895, s32 *, 0x10) = 0;

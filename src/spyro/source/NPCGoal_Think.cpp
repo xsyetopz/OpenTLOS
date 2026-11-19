@@ -60,7 +60,6 @@
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
@@ -68,7 +67,7 @@ void NPCGoal_Think::AddGoal_BreakRock() {
     Goal<Enemy> *temp_r5_21;
 
     if ((u8) this->unk39 == 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         temp_r5_21 = this->unk20;
         M2C_FIELD(temp_r5_21, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r5_21, s32 *, 0x14) = 1;
@@ -78,33 +77,27 @@ void NPCGoal_Think::AddGoal_BreakRock() {
         this->unk39 = 1;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Rescue() {
     if (IsPresent(0x4E) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_117;
 
     if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
+        AddSubgoal((Goal<Enemy> *) this->unk20);
         temp_r4_117 = this->unk20;
         M2C_FIELD(temp_r4_117, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r4_117, s32 *, 0x14) = 0;
@@ -113,7 +106,6 @@ void NPCGoal_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r4_117, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_117, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void NPCGoal_Think::Arbitrate() {
@@ -179,7 +171,6 @@ void NPCGoal_Think::Reset() {
     this->unk39 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'free'
 void NPCGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_306;
     Goal<Enemy> *temp_r3_311;
@@ -221,7 +212,6 @@ void NPCGoal_Think::Deinit() {
     this->unkC = 0;
     this->unk9 = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void NPCGoal_Think::Init(Enemy *arg0) {

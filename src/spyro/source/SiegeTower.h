@@ -25,10 +25,10 @@ public:
     virtual ~SiegeTower(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     SiegeTower(void);
     void ZapBall(Ball *);
@@ -108,7 +108,6 @@ inline SiegeTower::SiegeTower() {
     this->unk2A0 = 0;
     this->unk2C8 = 0;
     this->unk2F0 = 0;
-    return this;
 }
 #endif
 
@@ -156,10 +155,7 @@ inline SiegeTower::~SiegeTower() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SiegeTowerDescriptor::SiegeTowerDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SIEGETOWER_H

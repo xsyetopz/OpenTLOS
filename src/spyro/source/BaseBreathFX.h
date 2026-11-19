@@ -16,7 +16,7 @@ public:
     virtual ~BaseBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     f32 SplineCollide(KDSplinePathSegment *, float);
     void CreateCollisionTest(const MKVector3 &, const MKVector3 &, float, unsigned int, void (*)(BreathFXCollisionSphereTest *));
     /* 0x090 */ void* unk90;

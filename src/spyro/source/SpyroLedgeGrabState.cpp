@@ -422,7 +422,6 @@ void SpyroLedgeGrabState::Deinit() {
     this->unk14.Deinit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__37KDStateMachine'
 void SpyroLedgeGrabState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -432,9 +431,8 @@ void SpyroLedgeGrabState::Init(Spyro *arg0) {
     M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk58 = 0;
-    Init__37KDStateMachine<19SpyroLedgeGrabState>FPQ237KDStateMachine<19SpyroLedgeGrabState>5StateP37KDStateMachine<19SpyroLedgeGrabState>(&this->unk14, (KDStateMachine<SpyroLedgeGrabState>::State *) &SpyroLedgeGrabState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroLedgeGrabState>::State *) &SpyroLedgeGrabState::states, NULL);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpyroLedgeGrabState_cpp::__sinit() {

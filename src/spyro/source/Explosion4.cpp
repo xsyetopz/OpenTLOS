@@ -1520,7 +1520,7 @@ void Explosion4::Draw() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk0'
-void Explosion4::Update() {
+void *Explosion4::Update() {
     s8 sp406;
     s8 sp405;
     s8 sp404;
@@ -2015,7 +2015,7 @@ loop_30:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void Explosion4::Resolve() {
+f32 Explosion4::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -2060,7 +2060,7 @@ void Explosion4::Resolve() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void Explosion4::LoadDone() {
+s32 Explosion4::LoadDone() {
     MKProp::LoadDone();
     this->unk88 = M2C_FIELD(checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
     this->unk8C = M2C_FIELD(checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70);

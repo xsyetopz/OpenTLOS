@@ -44,10 +44,10 @@ class IceSnoatCritter : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~IceSnoatCritter(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     IceSnoatCritter(void);
     void FindNewBounceParameters(IceSnoat *);
@@ -72,11 +72,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceSnoatCritter::IceSnoatCritter() {
-    return this;
 }
-#endif
 
 inline IceSnoatCritter::~IceSnoatCritter() {
     s32 temp_cr0_eq_15;
@@ -92,10 +89,7 @@ inline IceSnoatCritter::~IceSnoatCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceSnoatCritterDescriptor::IceSnoatCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ICESNOAT_H

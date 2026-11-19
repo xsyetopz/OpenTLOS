@@ -23,7 +23,7 @@ public:
     virtual void Update(void);
     virtual s32 Transition(void);
     virtual void Message(MKMessage *);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     u8 AnyToBreathingTranistion(void);
     u8 Breathing2Transition(void);
     void Breathing2Update(void);
@@ -75,7 +75,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroIdleState::GetStateInfo() {
+inline void *SpyroIdleState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

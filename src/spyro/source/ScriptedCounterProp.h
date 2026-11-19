@@ -14,7 +14,7 @@ public:
     virtual ~ScriptedCounterProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 unk4C;
     /* 0x04d */ u8 pad4D[0x4f];

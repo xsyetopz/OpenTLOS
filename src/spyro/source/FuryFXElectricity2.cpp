@@ -681,7 +681,7 @@ void FuryFXElectricity2::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void FuryFXElectricity2::Update() {
+void *FuryFXElectricity2::Update() {
     f64 sp268;
     f64 sp260;
     f64 sp258;
@@ -1096,7 +1096,7 @@ void FuryFXElectricity2::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXElectricity2::Resolve() {
+f32 FuryFXElectricity2::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

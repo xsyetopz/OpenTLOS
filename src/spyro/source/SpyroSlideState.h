@@ -21,7 +21,7 @@ public:
     virtual void Exit(void);
     virtual void Update(void);
     virtual s32 Transition(void);
-    virtual void GetStateInfo(void);
+    virtual void * GetStateInfo(void);
     static u8 states[0x24];
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
@@ -37,7 +37,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-inline void SpyroSlideState::GetStateInfo() {
+inline void *SpyroSlideState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
 

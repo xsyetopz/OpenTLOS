@@ -28,8 +28,8 @@ public:
     virtual ~FlameBreathFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     FlameBreathFX(void);
     void ResetFury(void);
@@ -71,15 +71,12 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FlameBreathFX::FlameBreathFX() {
     this->unk148.unkC8.unk0 = 0;
     this->unk148.unkC8.unk4 = 0;
     this->unk148.unkC8.unk8 = 0.0f;
     this->unk148.unkC8.unkC = 0;
-    return this;
 }
-#endif
 
 inline FlameBreathFX::~FlameBreathFX() {
     s32 temp_cr0_eq_15;

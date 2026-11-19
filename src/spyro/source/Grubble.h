@@ -31,10 +31,10 @@ class GrubbleCritter : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~GrubbleCritter(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     GrubbleCritter(void);
     void FindNewWalkParameters(Grubble *);
@@ -58,11 +58,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GrubbleCritter::GrubbleCritter() {
-    return this;
 }
-#endif
 
 inline GrubbleCritter::~GrubbleCritter() {
     s32 temp_cr0_eq_15;
@@ -78,10 +75,7 @@ inline GrubbleCritter::~GrubbleCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GrubbleCritterDescriptor::GrubbleCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_GRUBBLE_H

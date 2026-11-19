@@ -14,7 +14,7 @@ class CloudPS : public MKParticleSystem {  // base: ctor/dtor vtable stores
 public:
     virtual ~CloudPS(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void UpdateParticles(void);
     CloudPS(void);
@@ -41,10 +41,7 @@ inline CloudPS::~CloudPS() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CloudPS::CloudPS() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CLOUDPS_H

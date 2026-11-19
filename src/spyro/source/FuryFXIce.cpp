@@ -611,7 +611,7 @@ void FuryFXIce::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void FuryFXIce::Update() {
+void *FuryFXIce::Update() {
     s8 sp540;
     s32 sp53C;
     s32 sp538;
@@ -1215,7 +1215,7 @@ loop_31:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXIce::Resolve() {
+f32 FuryFXIce::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

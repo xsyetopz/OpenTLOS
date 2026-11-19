@@ -24,10 +24,10 @@ public:
     virtual ~FloorSwitch(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     FloorSwitch(void);
@@ -85,7 +85,6 @@ inline FloorSwitch::FloorSwitch() {
     this->unk120.Init();
     this->unk124.unk0 = 0;
     this->unk124.Init();
-    return this;
 }
 #endif
 
@@ -101,10 +100,7 @@ inline FloorSwitch::~FloorSwitch() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FloorSwitchDescriptor::FloorSwitchDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FLOORSWITCH_H

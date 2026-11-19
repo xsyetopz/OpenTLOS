@@ -18,11 +18,11 @@ class CynderElecAttack : public Projectile {  // base: base ctor call
 public:
     virtual ~CynderElecAttack(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireBurst(MKVector3 *, MKVector3 *, int, int);
@@ -50,11 +50,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderElecAttack::CynderElecAttack() {
-    return this;
 }
-#endif
 
 inline CynderElecAttack::~CynderElecAttack() {
 }
@@ -63,10 +60,7 @@ inline s32 CynderElecAttack::IsBurst() {
     return 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderElecAttackDescriptor::CynderElecAttackDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_CYNDERELECATTACK_H

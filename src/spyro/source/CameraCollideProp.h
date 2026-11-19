@@ -10,7 +10,7 @@ class KDProp;
 class CameraCollideProp : public KDProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~CameraCollideProp(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Reset(void);
 };

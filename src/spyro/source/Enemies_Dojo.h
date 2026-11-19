@@ -21,7 +21,7 @@ class SpawnPointObject;
 class DojoEnemy : public Enemy {  // base: base ctor call
 public:
     virtual ~DojoEnemy(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
     virtual void Message(MKMessage *);
     virtual void SetDefaults(void);
@@ -48,7 +48,7 @@ public:
     virtual void Despawn(bool);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(SpawnPointObject *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     DojoTier1(void);
     /* 0xb18 */ u8 padB18[0x8];
     /* 0xb20 */ s32 unkB20;
@@ -68,7 +68,7 @@ public:
     virtual void Despawn(bool);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(SpawnPointObject *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     DojoTier2(void);
     /* 0xb18 */ u8 padB18[0x8];
     /* 0xb20 */ s32 unkB20;
@@ -100,20 +100,15 @@ inline DojoEnemy::~DojoEnemy() {
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline DojoEnemy::DojoEnemy() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline DojoEnemyDescriptor::DojoEnemyDescriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline DojoTier1::DojoTier1() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -123,16 +118,12 @@ inline DojoTier1::~DojoTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline DojoTier1Descriptor::DojoTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline DojoTier2::DojoTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -142,10 +133,7 @@ inline DojoTier2::~DojoTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline DojoTier2Descriptor::DojoTier2Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_DOJO_H

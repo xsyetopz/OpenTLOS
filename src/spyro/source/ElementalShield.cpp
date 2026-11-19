@@ -130,7 +130,7 @@ void ElementalShield::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: undefined identifier 'sp28'
-void ElementalShield::Update() {
+void *ElementalShield::Update() {
     s8 spC1;
     s8 spC0;
     s32 spBC;

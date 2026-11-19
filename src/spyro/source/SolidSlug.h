@@ -14,8 +14,8 @@ class SolidSlugDescriptor;
 class SolidSlug : public Projectile {  // base: base ctor call
 public:
     virtual ~SolidSlug(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Collided(MKCollisionResult &);
     SolidSlug(void);
     void * CreateInstance(void);
@@ -33,19 +33,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SolidSlug::SolidSlug() {
-    return this;
 }
-#endif
 
 inline SolidSlug::~SolidSlug() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SolidSlugDescriptor::SolidSlugDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SOLIDSLUG_H

@@ -112,6 +112,7 @@ void MagicDrain::Draw() {
 
 }
 
+#if 0 // DRAFT: identifier 'MagicDrain::Update()' redeclared
 void MagicDrain::Update() {
     MKVector3 sp68;
     f64 sp60;
@@ -202,7 +203,9 @@ void MagicDrain::Update() {
         }
     }
 }
+#endif
 
+#if 0 // DRAFT: identifier 'MagicDrain::Resolve()' redeclared
 void MagicDrain::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -245,8 +248,9 @@ void MagicDrain::Resolve() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_393, 0U);
     }
 }
+#endif
 
-void MagicDrain::LoadDone() {
+s32 MagicDrain::LoadDone() {
     Projectile::LoadDone();
 }
 

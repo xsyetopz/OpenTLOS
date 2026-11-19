@@ -20,10 +20,10 @@ public:
     virtual ~Lever(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void pure_slot16() = 0;  // name unknown: no descendant fills this slot
     virtual void pure_slot17() = 0;  // name unknown: no descendant fills this slot
@@ -85,7 +85,6 @@ inline Lever::Lever() {
     this->unkF8.Init();
     this->unkFC.unk0 = 0;
     this->unkFC.Init();
-    return this;
 }
 #endif
 
@@ -125,10 +124,7 @@ inline s32 Lever::GetEnemy() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LeverDescriptor::LeverDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_LEVER_H

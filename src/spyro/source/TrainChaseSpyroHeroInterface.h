@@ -23,7 +23,7 @@ public:
     virtual f32 GetCollideRadius(void);
     virtual void GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
-    virtual void GetCollisionInfo(void);
+    virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
     virtual s32 GetEffects(void);
     virtual void GetInput(void);
@@ -131,7 +131,7 @@ inline s32 TrainChaseSpyroHeroInterface::GetCollisionIgnoreMaterials() {
     return 0;
 }
 
-inline void TrainChaseSpyroHeroInterface::GetCollisionInfo() {
+inline MKPropDescriptor **TrainChaseSpyroHeroInterface::GetCollisionInfo() {
 
 }
 

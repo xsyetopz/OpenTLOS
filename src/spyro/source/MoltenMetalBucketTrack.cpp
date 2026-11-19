@@ -165,7 +165,7 @@ loop_6:
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-void MoltenMetalBucketTrack::Update() {
+void *MoltenMetalBucketTrack::Update() {
     f32 sp24C;
     f32 sp248;
     f32 sp244;
@@ -550,7 +550,7 @@ void MoltenMetalBucketTrack::Update() {
 }
 #endif
 
-void MoltenMetalBucketTrack::Resolve() {
+f32 MoltenMetalBucketTrack::Resolve() {
     MKProp::Resolve();
     Update();
 }

@@ -78,7 +78,6 @@ inline void FireTier2Goal_MoveToLavaEdge::Reset() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FireTier2Goal_Think::FireTier2Goal_Think() {
     this->unk4 = 0;
     this->unk8 = 1;
@@ -88,9 +87,7 @@ inline FireTier2Goal_Think::FireTier2Goal_Think() {
     this->unk18 = 0;
     this->unk10 = 0;
     this->unk14 = 0;
-    return this;
 }
-#endif
 
 inline void FireTier2Goal_Think::Reset() {
     EnemyGoal_Think::Reset();

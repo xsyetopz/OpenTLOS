@@ -23,10 +23,10 @@ public:
     virtual ~ShatterableBoat(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void GetProp(void);
@@ -100,7 +100,6 @@ inline ShatterableBoat::ShatterableBoat() {
     this->unk220 = 0.0f;
     this->unk224 = 0;
     this->unk338 = 0;
-    return this;
 }
 #endif
 
@@ -167,10 +166,7 @@ inline void ShatterableBoat::GetProp() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ShatterableBoatDescriptor::ShatterableBoatDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SHATTERABLEBOAT_H

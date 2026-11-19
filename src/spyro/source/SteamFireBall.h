@@ -19,10 +19,10 @@ class SteamFireBall : public Projectile {  // base: vtable prefix
 public:
     virtual ~SteamFireBall(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     SteamFireBall(void);
@@ -43,19 +43,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamFireBall::SteamFireBall() {
-    return this;
 }
-#endif
 
 inline SteamFireBall::~SteamFireBall() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SteamFireBallDescriptor::SteamFireBallDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_STEAMFIREBALL_H

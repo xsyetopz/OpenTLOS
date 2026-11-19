@@ -40,7 +40,7 @@ void YawPlatform::Deinit() {
     Platform::Deinit();
 }
 
-void YawPlatform::Update() {
+void *YawPlatform::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -80,7 +80,7 @@ void YawPlatform::Message(MKMessage *arg0) {
     this->unk180 += 1.5707964f;
 }
 
-void YawPlatform::LoadDone() {
+s32 YawPlatform::LoadDone() {
     Platform::LoadDone();
     this->unk180 = this->unk184;
 }

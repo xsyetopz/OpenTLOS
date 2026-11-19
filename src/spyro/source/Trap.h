@@ -20,8 +20,8 @@ public:
     virtual ~Trap(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
-    virtual void Resolve(void);
+    virtual s32 LoadDone(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
     virtual void Message(MKMessage *);
     virtual void PropUpdate(void);
@@ -104,14 +104,10 @@ inline Trap::Trap() {
     M2C_FIELD(this, struct __vt **, 0xC8) = (struct __vt *) (&__vt + 0x48);
     this->unkDC.unk0 = 0;
     this->unkDC.Init();
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TrapDescriptor::TrapDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_TRAP_H

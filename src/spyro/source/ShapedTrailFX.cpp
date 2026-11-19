@@ -515,7 +515,7 @@ void ShapedTrailFX::UpdateTrail() {
 }
 #endif
 
-void ShapedTrailFX::Update() {
+void *ShapedTrailFX::Update() {
     if (((u8) this->unkA0 >> 5U) & 1) {
         UpdateTrail();
     }

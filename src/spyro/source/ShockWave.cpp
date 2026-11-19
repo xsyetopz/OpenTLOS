@@ -315,7 +315,7 @@ void ShockWave::Draw() {
 }
 
 #if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
-void ShockWave::Update() {
+void *ShockWave::Update() {
     s8 spD1;
     s8 spD0;
     s32 spCC;
@@ -560,7 +560,7 @@ void ShockWave::Deinit() {
     KDProp::Deinit();
 }
 
-void ShockWave::LoadDone() {
+s32 ShockWave::LoadDone() {
     Animation *temp_r3_1075;
     MKHeap **temp_r3_1102;
     s32 var_r28_1057;

@@ -1284,7 +1284,7 @@ void Sparx::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void Sparx::Update() {
+void *Sparx::Update() {
     MKCollisionResult sp130;
     f64 sp128;
     f64 sp120;
@@ -1891,7 +1891,7 @@ void Sparx::Reset() {
 }
 #endif
 
-void Sparx::Resolve() {
+f32 Sparx::Resolve() {
     MKProp::Resolve();
     gb.GetSpyro();
     this->unk94 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -1903,7 +1903,7 @@ void Sparx::SetDefaults() {
 
 }
 
-void Sparx::LoadDone() {
+s32 Sparx::LoadDone() {
     this->unk8 = &this->unk50;
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
@@ -1929,11 +1929,11 @@ void Sparx::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__22KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'sparxStates'
 void Sparx::Init() {
     MKProp::Init();
     this->unk90 = checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    Init__22KDStateMachine<5Sparx>FPQ222KDStateMachine<5Sparx>5StateP22KDStateMachine<5Sparx>(&this->unk9C, &sparxStates, NULL);
+    this->unk9C.Init(&sparxStates, NULL);
     memset(&this->unk2B0, 0, 0x28U);
     this->unk220.unk0 = 0.0f;
     this->unk220.unk4 = 0.0f;

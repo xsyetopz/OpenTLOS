@@ -19,7 +19,7 @@ void CameraCollideProp::Reset() {
     this->unk70.unk4 = 0;
 }
 
-void CameraCollideProp::LoadDone() {
+s32 CameraCollideProp::LoadDone() {
     s8 sp14;
     MKCollisionInfo *sp10;
     s32 spC;

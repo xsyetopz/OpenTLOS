@@ -16,8 +16,8 @@ class TrapSystem : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~TrapSystem(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void Add(MKProp *);

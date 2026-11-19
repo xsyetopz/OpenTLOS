@@ -109,7 +109,7 @@ void WobbleProp::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier 'spA0'
-void WobbleProp::Update() {
+void *WobbleProp::Update() {
     f64 spC0;
     f64 spB8;
     f64 spB0;
@@ -233,7 +233,7 @@ void WobbleProp::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void WobbleProp::LoadDone() {
+s32 WobbleProp::LoadDone() {
     GameProp::LoadDone();
     this->unkC8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobbler"));
     this->unkCC = 0;

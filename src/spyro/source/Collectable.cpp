@@ -249,7 +249,7 @@ void CollectableSpawner::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
-void CollectableSpawner::Update() {
+void *CollectableSpawner::Update() {
     SpawnInfo *var_r0_434;
     SpawnInfo *var_r4_439;
     s32 temp_r0_450;
@@ -294,7 +294,7 @@ void CollectableSpawner::Reset() {
 }
 
 #if 0 // DRAFT: ')' expected
-void CollectableSpawner::Resolve() {
+f32 CollectableSpawner::Resolve() {
     MKHeap *temp_r29_525;
     MKHeap *temp_r3_523;
     MKHeap *temp_r3_545;
@@ -2230,7 +2230,7 @@ void Collectable::UpdateShadow() {
 
 }
 
-void Collectable::Update() {
+void *Collectable::Update() {
     MKHeap *temp_r3_4435;
     MKModel *temp_r3_4446;
     s32 temp_r4_4353;
@@ -2280,7 +2280,7 @@ void Collectable::Update() {
 }
 
 #if 0 // DRAFT: type mismatch
-void Collectable::Resolve() {
+f32 Collectable::Resolve() {
     M2C_UNK sp8;
     MKSceneManager *temp_r3_4468;
 
@@ -2312,7 +2312,7 @@ void Collectable::ClearData() {
 }
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
-void Collectable::LoadDone() {
+s32 Collectable::LoadDone() {
     this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     this->unk58 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
     M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);

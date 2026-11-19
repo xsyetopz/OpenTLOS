@@ -13,7 +13,7 @@ public:
     virtual ~Kane(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     Kane(void);
     /* 0xb10 */ s32 unkB10;
     /* 0xb14 */ s32 unkB14;
@@ -24,7 +24,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline Kane::Kane() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 

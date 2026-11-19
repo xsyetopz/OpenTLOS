@@ -1002,11 +1002,10 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase3::AddGoal_AttackIdle() {
     Goal<EarthBoss> *temp_r6_1871;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_1871 = this->unk20;
     M2C_FIELD(temp_r6_1871, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_1871, s32 *, 0x14) = 1;
@@ -1014,13 +1013,11 @@ void EarthBossGoal_AttackPhase3::AddGoal_AttackIdle() {
     M2C_FIELD(temp_r6_1871, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_1871, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_1871, u8 *, 0x20) & ~0x40);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase3::AddGoal_Taunt() {
     Goal<EarthBoss> *temp_r6_1901;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_1901 = this->unk20;
     M2C_FIELD(temp_r6_1901, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_1901, s32 *, 0x14) = 1;
@@ -1028,7 +1025,6 @@ void EarthBossGoal_AttackPhase3::AddGoal_Taunt() {
     M2C_FIELD(temp_r6_1901, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_1901, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_1901, u8 *, 0x20) & ~0x40);
 }
-#endif
 
 void EarthBossGoal_AttackPhase3::Terminate() {
     this->unk8 = 1;
@@ -1044,7 +1040,6 @@ u8 EarthBossGoal_AttackPhase3::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase3::Activate() {
     Enemy *temp_r3_1974;
     Enemy *temp_r3_1988;
@@ -1071,12 +1066,11 @@ void EarthBossGoal_AttackPhase3::Activate() {
             AddGoal_AttackIdle();
             return;
         }
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk28);
+        AddSubgoal((Goal<EarthBoss> *) this->unk28);
         return;
     }
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
+    AddSubgoal((Goal<EarthBoss> *) this->unk24);
 }
-#endif
 
 void EarthBossGoal_AttackPhase3::Deinit() {
     Goal<EarthBoss> *temp_r3_2047;
@@ -1148,11 +1142,10 @@ void EarthBossGoal_AttackPhase3::Init(EarthBoss *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase2::AddGoal_AttackIdle() {
     Goal<EarthBoss> *temp_r6_2181;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_2181 = this->unk20;
     M2C_FIELD(temp_r6_2181, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_2181, s32 *, 0x14) = 1;
@@ -1160,13 +1153,11 @@ void EarthBossGoal_AttackPhase2::AddGoal_AttackIdle() {
     M2C_FIELD(temp_r6_2181, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_2181, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_2181, u8 *, 0x20) & ~0x40);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase2::AddGoal_Taunt() {
     Goal<EarthBoss> *temp_r6_2211;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_2211 = this->unk20;
     M2C_FIELD(temp_r6_2211, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_2211, s32 *, 0x14) = 1;
@@ -1174,7 +1165,6 @@ void EarthBossGoal_AttackPhase2::AddGoal_Taunt() {
     M2C_FIELD(temp_r6_2211, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_2211, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_2211, u8 *, 0x20) & ~0x40);
 }
-#endif
 
 void EarthBossGoal_AttackPhase2::Terminate() {
     this->unk8 = 1;
@@ -1190,7 +1180,6 @@ u8 EarthBossGoal_AttackPhase2::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase2::Activate() {
     Enemy *temp_r3_2284;
     Enemy *temp_r3_2298;
@@ -1217,12 +1206,11 @@ void EarthBossGoal_AttackPhase2::Activate() {
             AddGoal_AttackIdle();
             return;
         }
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk28);
+        AddSubgoal((Goal<EarthBoss> *) this->unk28);
         return;
     }
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
+    AddSubgoal((Goal<EarthBoss> *) this->unk24);
 }
-#endif
 
 void EarthBossGoal_AttackPhase2::Deinit() {
     Goal<EarthBoss> *temp_r3_2357;
@@ -1294,14 +1282,13 @@ void EarthBossGoal_AttackPhase2::Init(EarthBoss *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 u8 EarthBossGoal_AttackPhase1::AddGoal_ScrapeFootClean() {
     Goal<EarthBoss> *temp_r6_2499;
     void **temp_r4_2488;
 
     temp_r4_2488 = this->unkC->unkA28;
     if ((temp_r4_2488 != NULL) && ((s32) M2C_FIELD(*temp_r4_2488, s32 *, 0x68) == 0x3E)) {
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+        AddSubgoal((Goal<EarthBoss> *) this->unk20);
         temp_r6_2499 = this->unk20;
         M2C_FIELD(temp_r6_2499, AITargetData **, 0x10) = &this->unkC->unk870;
         M2C_FIELD(temp_r6_2499, s32 *, 0x14) = 1;
@@ -1313,13 +1300,11 @@ u8 EarthBossGoal_AttackPhase1::AddGoal_ScrapeFootClean() {
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase1::AddGoal_AttackIdle() {
     Goal<EarthBoss> *temp_r6_2537;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_2537 = this->unk20;
     M2C_FIELD(temp_r6_2537, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_2537, s32 *, 0x14) = 1;
@@ -1327,13 +1312,11 @@ void EarthBossGoal_AttackPhase1::AddGoal_AttackIdle() {
     M2C_FIELD(temp_r6_2537, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_2537, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_2537, u8 *, 0x20) & ~0x40);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase1::AddGoal_TauntOnKill() {
     Goal<EarthBoss> *temp_r6_2567;
 
-    AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
+    AddSubgoal((Goal<EarthBoss> *) this->unk20);
     temp_r6_2567 = this->unk20;
     M2C_FIELD(temp_r6_2567, AITargetData **, 0x10) = &this->unkC->unk870;
     M2C_FIELD(temp_r6_2567, s32 *, 0x14) = 1;
@@ -1341,7 +1324,6 @@ void EarthBossGoal_AttackPhase1::AddGoal_TauntOnKill() {
     M2C_FIELD(temp_r6_2567, s32 *, 0x1C) = 0;
     M2C_FIELD(temp_r6_2567, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_2567, u8 *, 0x20) & ~0x40);
 }
-#endif
 
 void EarthBossGoal_AttackPhase1::Terminate() {
     this->unk8 = 1;
@@ -1395,7 +1377,6 @@ u8 EarthBossGoal_AttackPhase1::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 u8 EarthBossGoal_AttackPhase1::SelectAttack() {
     AITargetData sp8;
     Enemy *temp_r3_2709;
@@ -1503,26 +1484,24 @@ block_29:
     temp_r0_2856 = M2C_FIELD(*var_r31_2708, s32 *, 0x68);
     switch (temp_r0_2856) {                         /* irregular */
     case 0x3C:
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk28);
+        AddSubgoal((Goal<EarthBoss> *) this->unk28);
         break;
     case 0x3D:
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk2C);
+        AddSubgoal((Goal<EarthBoss> *) this->unk2C);
         break;
     case 0x3E:
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk30);
+        AddSubgoal((Goal<EarthBoss> *) this->unk30);
         break;
     case 0x3F:
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk34);
+        AddSubgoal((Goal<EarthBoss> *) this->unk34);
         break;
     case 0x40:
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk38);
+        AddSubgoal((Goal<EarthBoss> *) this->unk38);
         break;
     }
     return 1U;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_AttackPhase1::Activate() {
     Enemy *temp_r3_2926;
     u8 var_r30_2924;
@@ -1553,15 +1532,14 @@ void EarthBossGoal_AttackPhase1::Activate() {
     } else {
 block_10:
         if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C)) {
-            AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
+            AddSubgoal((Goal<EarthBoss> *) this->unk24);
             return;
         }
         if (SelectAttack() == 0) {
-            AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
+            AddSubgoal((Goal<EarthBoss> *) this->unk24);
         }
     }
 }
-#endif
 
 void EarthBossGoal_AttackPhase1::Deinit() {
     Goal<EarthBoss> *temp_r3_3004;
@@ -1721,31 +1699,26 @@ void EarthBossGoal_AttackPhase1::Init(EarthBoss *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_Think::AddGoal_AttackPhase1() {
     if (IsPresent(0x94) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk34);
+        AddSubgoal((Goal<EarthBoss> *) this->unk34);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_Think::AddGoal_Spawn() {
     if (IsActive(0x38) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk30);
+        AddSubgoal((Goal<EarthBoss> *) this->unk30);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_Think::AddGoal_Idle() {
     Goal<EarthBoss> *temp_r5_3356;
 
     if (IsActive(0) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
+        AddSubgoal((Goal<EarthBoss> *) this->unk24);
         temp_r5_3356 = this->unk24;
         M2C_FIELD(temp_r5_3356, AITargetData **, 0x10) = &this->unkC->unk870;
         M2C_FIELD(temp_r5_3356, s32 *, 0x14) = 1;
@@ -1754,18 +1727,14 @@ void EarthBossGoal_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r5_3356, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r5_3356, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk2C);
+        AddSubgoal((Goal<EarthBoss> *) this->unk2C);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 void EarthBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_3465;
     s32 temp_r0_3411;
@@ -1807,10 +1776,9 @@ block_16:
         temp_r4_3465->unk944 = arg0->unk34;
         this->unkC->unk928 = 0.0f;
         RemoveAllSubgoals();
-        AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk28);
+        AddSubgoal((Goal<EarthBoss> *) this->unk28);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 EarthBossGoal_Think::Update() {

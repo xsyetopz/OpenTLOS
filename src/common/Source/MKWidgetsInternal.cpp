@@ -393,7 +393,7 @@ MKWidget *MKWidgetEnvelope::TestPoint(MKVector3 *arg0) {
 }
 
 #if 0 // DRAFT: undefined identifier 'sp80'
-void MKWidgetEnvelope::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetEnvelope::Render(MKWidgetRenderContext *arg0) {
     MKWidgetBoundingVolume sp68;
     f64 sp60;
     f64 sp58;
@@ -911,7 +911,7 @@ void MKWidgetEnvelope_GetEnvelopePos(MKWidgetEnvelope *arg0, int arg1, MKWidgetB
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetEnvelope's base class 'MKWidget'
 MKWidgetEnvelope::MKWidgetEnvelope(MKWidgetDescriptor *arg0) {
     this->unk28 = -1;
     this->unk30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -923,7 +923,6 @@ MKWidgetEnvelope::MKWidgetEnvelope(MKWidgetDescriptor *arg0) {
         M2C_FIELD(this->unk4, s32 *, 0xE8) = 2;
         M2C_FIELD(this->unk4, s32 *, 0xEC) = 8;
     }
-    return this;
 }
 #endif
 
@@ -991,7 +990,7 @@ MKWidget *MKWidgetVector::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetVector::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetVector::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
     M2C_UNK spB0;
@@ -1225,7 +1224,6 @@ MKWidgetVector::MKWidgetVector(MKWidgetDescriptor *arg0) {
         MKWidget_EnableFlag(&this->unk118, 0x2000U);
         this->unk168 = 0;
     }
-    return this;
 }
 #endif
 
@@ -1271,7 +1269,7 @@ MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK spA0;
     M2C_UNK sp9C;
     M2C_UNK sp50;
@@ -1415,7 +1413,7 @@ block_36:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetFoldupFrame's base class 'MKWidgetFrame'
 MKWidgetFoldupFrame::MKWidgetFoldupFrame(MKWidgetDescriptor *arg0) {
     this->unkDC.unk18 = (MKWidget *) this;
     this->unk54.unk18 = (MKWidget *) this;
@@ -1426,7 +1424,6 @@ MKWidgetFoldupFrame::MKWidgetFoldupFrame(MKWidgetDescriptor *arg0) {
     MKWidget_SendMessage(&this->unk54, 0x17U, (u32) "");
     this->unk50 = 1;
     MKWidget_EnableFlag(&this->unkDC, 0x100U);
-    return this;
 }
 #endif
 
@@ -1472,7 +1469,7 @@ MKWidget *MKWidgetComboBox::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetComboBox::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetComboBox::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
     M2C_UNK sp10;
@@ -1785,7 +1782,6 @@ MKWidgetComboBox::MKWidgetComboBox(MKWidgetDescriptor *arg0) {
         MKWidget_SendMessage(&this->unk28, 0x17U, (u32) "");
         M2C_FIELD(this->unk4, s32 *, 0x68) = -1;
     }
-    return this;
 }
 #endif
 
@@ -1950,7 +1946,7 @@ block_20:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f64 sp240;
     f64 sp238;
     f64 sp230;
@@ -2366,10 +2362,9 @@ block_56:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetEditable's base class 'MKWidgetContainer'
 MKWidgetEditable::MKWidgetEditable(MKWidgetDescriptor *arg0) {
     this->unk50 = 0;
-    return this;
 }
 #endif
 
@@ -2382,7 +2377,7 @@ void MKWidgetColor::BuildMetaData(int arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetColor::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetColor::Render(MKWidgetRenderContext *arg0) {
     f64 spC0;
     f64 spB8;
     f64 spB0;
@@ -2550,7 +2545,7 @@ s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetColor's base class 'MKWidget'
 MKWidgetColor::MKWidgetColor(MKWidgetDescriptor *arg0) {
     s8 **temp_r6_4200;
 
@@ -2560,7 +2555,6 @@ MKWidgetColor::MKWidgetColor(MKWidgetDescriptor *arg0) {
         M2C_FIELD(temp_r6_4200, f64 *, 0x70) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
         MKWidget_EnableFlag((MKWidget *) this, 0x100U);
     }
-    return this;
 }
 #endif
 
@@ -2572,7 +2566,7 @@ void MKWidgetImage::BuildMetaData(int arg0) {
 
 }
 
-void MKWidgetImage::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetImage::Render(MKWidgetRenderContext *arg0) {
     MKMaterial *temp_r3_4240;
     s8 **temp_r3_4284;
 
@@ -2638,10 +2632,9 @@ block_7:
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetImage's base class 'MKWidget'
 MKWidgetImage::MKWidgetImage(MKWidgetDescriptor *arg0) {
     this->unk28 = NULL;
-    return this;
 }
 #endif
 
@@ -2924,10 +2917,9 @@ loop_48:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetTabStrip's base class 'MKWidgetContainer'
 MKWidgetTabStrip::MKWidgetTabStrip(MKWidgetDescriptor *arg0) {
     this->unk40 = 0;
-    return this;
 }
 #endif
 
@@ -3137,7 +3129,7 @@ loop_29:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f64 sp260;
     f64 sp258;
     f64 sp250;
@@ -4328,7 +4320,6 @@ MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
     this->unk2C = 0.0f;
     this->unk30 = 0.0f;
     this->unk28 = NULL;
-    return this;
 }
 #endif
 
@@ -4363,7 +4354,7 @@ MKWidget *MKWidgetListItem::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetListItem::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetListItem::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp10;
     M2C_UNK spC;
 
@@ -4473,14 +4464,13 @@ s32 MKWidgetListItem::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget::MessageHandler(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetListItem's base class 'MKWidget'
 MKWidgetListItem::MKWidgetListItem(MKWidgetDescriptor *arg0) {
     this->unk28.unk18 = (MKWidget *) this;
     if ((u8) this->unk8 == 0) {
         MKWidget_Move(&this->unk28, MKVector3::zero);
         MKWidget_EnableFlag(&this->unk28, 0x100U);
     }
-    return this;
 }
 #endif
 
@@ -4808,14 +4798,13 @@ block_87:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetListBox's base class 'MKWidgetScrollableFrame'
 MKWidgetListBox::MKWidgetListBox(MKWidgetDescriptor *arg0) {
     if ((u8) this->unk8 == 0) {
         M2C_FIELD(this->unk4, s32 *, 0x80) = 3;
         MKWidget_EnableFlag((MKWidget *) this, 0x01002000U);
     }
     this->unk3A0 = -1;
-    return this;
 }
 #endif
 
@@ -5102,7 +5091,7 @@ void MKWidgetScrollableFrame::UpdateState() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetScrollableFrame::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetScrollableFrame::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
     M2C_UNK sp10;
@@ -5190,7 +5179,7 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetScrollableFrame's base class 'MKWidgetFrame'
 MKWidgetScrollableFrame::MKWidgetScrollableFrame(MKWidgetDescriptor *arg0) {
     this->unk70.unk18 = (MKWidget *) this;
     this->unk208.unk18 = (MKWidget *) this;
@@ -5206,11 +5195,10 @@ MKWidgetScrollableFrame::MKWidgetScrollableFrame(MKWidgetDescriptor *arg0) {
         MKWidget_EnableFlag(&this->unk70, 0x200U);
         MKWidget_EnableFlag(&this->unk208, 0x200U);
     }
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetSlider's base class 'MKWidgetScrollBar'
 MKWidgetSlider::MKWidgetSlider(MKWidgetDescriptor *arg0) {
     if ((u8) this->unk8 == 0) {
         MKWidget_EnableFlag((MKWidget *) this, 0x400U);
@@ -5220,7 +5208,6 @@ MKWidgetSlider::MKWidgetSlider(MKWidgetDescriptor *arg0) {
         M2C_FIELD(this->unk4, f32 *, 0x74) = 0.1f;
         M2C_FIELD(this->unk4, f32 *, 0x78) = 0.5f;
     }
-    return this;
 }
 #endif
 
@@ -5433,7 +5420,7 @@ MKWidget *MKWidgetScrollBar::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp150;
     M2C_UNK sp14C;
     M2C_UNK sp100;
@@ -6042,7 +6029,7 @@ block_139:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetScrollBar's base class 'MKWidget'
 MKWidgetScrollBar::MKWidgetScrollBar(MKWidgetDescriptor *arg0) {
     this->unk28.unk18 = (MKWidget *) this;
     this->unkB0.unk18 = (MKWidget *) this;
@@ -6059,7 +6046,6 @@ MKWidgetScrollBar::MKWidgetScrollBar(MKWidgetDescriptor *arg0) {
         M2C_FIELD(this->unk4, f32 *, 0x74) = 0.1f;
         M2C_FIELD(this->unk4, f32 *, 0x78) = 1.0f;
     }
-    return this;
 }
 #endif
 
@@ -6072,7 +6058,7 @@ void MKWidgetThumb::BuildMetaData(int arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKVector4 *temp_r31_10768;
     s8 **temp_r30_10765;
 
@@ -6311,14 +6297,13 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetThumb's base class 'MKWidget'
 MKWidgetThumb::MKWidgetThumb(MKWidgetDescriptor *arg0) {
     M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk58 = 0;
-    return this;
 }
 #endif
 
@@ -6364,7 +6349,7 @@ MKWidget *MKWidgetCheckBox::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetCheckBox::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetCheckBox::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
     M2C_UNK sp10;
@@ -6470,7 +6455,7 @@ block_30:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetCheckBox's base class 'MKWidget'
 MKWidgetCheckBox::MKWidgetCheckBox(MKWidgetDescriptor *arg0) {
     f64 sp20;
     f64 sp18;
@@ -6490,7 +6475,6 @@ MKWidgetCheckBox::MKWidgetCheckBox(MKWidgetDescriptor *arg0) {
         MKWidget_SendMessage(&this->unk54, 0x44U, 0U);
         MKWidget_EnableFlag(&this->unk54, 0x100U);
     }
-    return this;
 }
 #endif
 
@@ -6503,7 +6487,7 @@ void MKWidgetCheckMark::BuildMetaData(int arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     f64 sp70;
     f64 sp68;
     f64 sp60;
@@ -6652,14 +6636,13 @@ block_29:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetCheckMark's base class 'MKWidget'
 MKWidgetCheckMark::MKWidgetCheckMark(MKWidgetDescriptor *arg0) {
     if ((u8) this->unk8 == 0) {
         M2C_FIELD(this->unk4, s32 *, 0x68) = 0;
     }
     this->unk28 = 0;
     this->unk29 = 0;
-    return this;
 }
 #endif
 
@@ -6694,7 +6677,7 @@ MKWidget *MKWidgetButton::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp130;
     M2C_UNK sp12C;
     M2C_UNK spE0;
@@ -7083,7 +7066,7 @@ block_71:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetButton's base class 'MKWidget'
 MKWidgetButton::MKWidgetButton(MKWidgetDescriptor *arg0) {
     this->unk84 = 0;
     this->unk85 = 0;
@@ -7094,7 +7077,6 @@ MKWidgetButton::MKWidgetButton(MKWidgetDescriptor *arg0) {
         MKWidget_SendMessage(&this->unk28, 0x44U, 1U);
         MKWidget_EnableFlag(&this->unk28, 0x100U);
     }
-    return this;
 }
 #endif
 
@@ -7107,7 +7089,7 @@ void MKWidgetString::BuildMetaData(int arg0) {
 }
 
 #if 0 // DRAFT: function call 'MKFont_DrawStringJustified(MKFont *, signed char *,
-void MKWidgetString::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetString::Render(MKWidgetRenderContext *arg0) {
     MKFont *var_r31_12576;
     f32 temp_f1_12597;
     f32 temp_f2_12601;
@@ -7191,7 +7173,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetString's base class 'MKWidget'
 MKWidgetString::MKWidgetString(MKWidgetDescriptor *arg0) {
     this->unk28 = NULL;
     if ((u8) this->unk8 == 0) {
@@ -7201,7 +7183,6 @@ MKWidgetString::MKWidgetString(MKWidgetDescriptor *arg0) {
         MKWidget_EnableFlag((MKWidget *) this, 0x200U);
         MKWidget_DisableFlag((MKWidget *) this, 4U);
     }
-    return this;
 }
 #endif
 
@@ -7247,7 +7228,7 @@ MKWidget *MKWidgetWindowTitleBar::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp60;
     M2C_UNK sp5C;
     M2C_UNK sp10;
@@ -7377,7 +7358,7 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetWindowTitleBar's base class 'MKWidget'
 MKWidgetWindowTitleBar::MKWidgetWindowTitleBar(MKWidgetDescriptor *arg0) {
     f64 sp20;
     f64 sp18;
@@ -7401,7 +7382,6 @@ MKWidgetWindowTitleBar::MKWidgetWindowTitleBar(MKWidgetDescriptor *arg0) {
         MKWidget_EnableFlag(&this->unk38, 0x100U);
         MKWidget_SendMessage(&this->unk64, 0x17U, (u32) "");
     }
-    return this;
 }
 #endif
 
@@ -7434,7 +7414,7 @@ MKWidget *MKWidgetWindow::TestPoint(MKVector3 *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp70;
     M2C_UNK sp6C;
     MKWidgetBoundingVolume sp50;
@@ -7887,7 +7867,7 @@ block_113:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetWindow's base class 'MKWidgetFrame'
 MKWidgetWindow::MKWidgetWindow(MKWidgetDescriptor *arg0) {
     s8 **temp_r31_14155;
     s8 **temp_r31_14160;
@@ -7908,7 +7888,6 @@ MKWidgetWindow::MKWidgetWindow(MKWidgetDescriptor *arg0) {
         M2C_FIELD(temp_r31_14164, f32 *, 0x80) = MKWidget_GetMetricF(0x14);
         M2C_FIELD(this->unk4, s32 *, 0x84) = 6;
     }
-    return this;
 }
 #endif
 
@@ -7942,7 +7921,7 @@ loop_4:
 }
 
 #if 0 // DRAFT: illegal operand
-void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
     f64 sp190;
     f64 sp188;
     f64 sp180;                                      /* compiler-managed */
@@ -8179,7 +8158,7 @@ s32 MKWidgetFrame::MessageHandler(unsigned int arg0, unsigned int arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetFrame's base class 'MKWidgetContainer'
 MKWidgetFrame::MKWidgetFrame(MKWidgetDescriptor *arg0) {
     s8 **temp_r31_14671;
     s8 **temp_r31_14678;
@@ -8194,7 +8173,6 @@ MKWidgetFrame::MKWidgetFrame(MKWidgetDescriptor *arg0) {
         M2C_FIELD(this->unk4, s32 *, 0x78) = 0x16;
         MKWidget_EnableFlag((MKWidget *) this, 0x100U);
     }
-    return this;
 }
 #endif
 
@@ -8617,7 +8595,6 @@ MKWidgetSystem::MKWidgetSystem(MKWidgetDescriptor *arg0) {
     this->unk48 = 0.0f;
     this->unk68 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk70 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    return this;
 }
 #endif
 
@@ -8984,14 +8961,13 @@ loop_74:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: cannot construct MKWidgetContainer's base class 'MKWidget'
 MKWidgetContainer::MKWidgetContainer(MKWidgetDescriptor *arg0) {
     this->unk28 = NULL;
     this->unk2C = 0;
     M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     MKWidget_DisableFlag((MKWidget *) this, 4U);
-    return this;
 }
 #endif
 
@@ -9104,8 +9080,7 @@ void MKWidget::Draw(MKWidgetRenderContext arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void MKWidget::Render(MKWidgetRenderContext *arg0) {
+s32 MKWidget::Render(MKWidgetRenderContext *arg0) {
     Matrix sp10;
     s8 **temp_r4_16467;
 
@@ -9116,7 +9091,6 @@ void MKWidget::Render(MKWidgetRenderContext *arg0) {
     M2C_FIELD(arg0, f64 *, 0x48) = (f64) (M2C_FIELD(arg0, f64 *, 0x48) * M2C_FIELD(temp_r4_16467, f64 *, 8));
     return 0x48;
 }
-#endif
 
 void MKWidget::GetWidgetMatrix(Matrix *arg0) {
     Matrix sp30;
@@ -9461,7 +9435,6 @@ MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
         M2C_FIELD(temp_r5_17042, s32 *, 0x58) = (s32) M2C_FIELD(MKWidgetIdentityAttributes, s32 *, 0x50);
         MKWidget_SetFlags(this, 7U);
     }
-    return this;
 }
 #endif
 
@@ -9742,7 +9715,6 @@ MKWidgetDescriptor::MKWidgetDescriptor(const char *arg0, MKWidgetDescriptor *arg
     this->unk10 = arg2;
     this->unk14 = arg3;
     MKWidget_AddToDescriptorList(this);
-    return this;
 }
 #endif
 

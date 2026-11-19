@@ -19,7 +19,7 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     Button(void);
     void SetState(int);
@@ -61,14 +61,10 @@ inline Button::Button() {
     this->unkE4.Init();
     this->unkE8.unk0 = 0;
     this->unkE8.Init();
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ButtonDescriptor::ButtonDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_BUTTON_H

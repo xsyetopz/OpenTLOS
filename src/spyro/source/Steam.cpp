@@ -16,9 +16,15 @@
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gSteamEnv;        /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gSteamEnv[5] = {
+    { 0.0f, 0.5f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 0.375f, 2.0f, 0.0f, 0.0f },
+    { 0.5f, 0.25f, 4.0f, 0.0f, 0.0f },
+    { 0.75f, 0.125f, 7.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 12.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void Steam::UpdateParticles() {
     f64 sp58;
     f64 sp50;
@@ -31,6 +37,8 @@ void Steam::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r30_66;
     MKParticleSystem::Envelope *temp_r3_164;
+    MKParticleSystem::Envelope *temp_r5_169;
+    MKParticleSystem::Envelope *temp_r5_203;
     f32 temp_f29_73;
     f32 temp_f2_214;
     f32 temp_f31_90;
@@ -42,13 +50,11 @@ void Steam::UpdateParticles() {
     f32 var_f0_182;
     f64 temp_f0_114;
     f64 temp_f0_94;
+    s32 temp_r0_165;
     s32 temp_r3_138;
     s32 temp_r3_152;
     s32 temp_r4_163;
-    s32 temp_r6_167;
     void *temp_r29_69;
-    void *temp_r5_169;
-    void *temp_r5_203;
 
     this->unk128 += gUpdateTimeDelta;
     var_r30_66 = GetFirstParticle(&unksp8);
@@ -81,17 +87,17 @@ loop_12:
             temp_f3_142 = var_r30_66->unk20;
             var_r30_66->unk20 = (f32) fmod(temp_r3_138, temp_f3_142 + this->unkF0, (f32) temp_r3_138, temp_f3_142);
             temp_r3_152 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
-            if (temp_f29_73 > (this->unk12C * *(this->unk134 + (temp_r3_152 * 0x14)))) {
+            if (temp_f29_73 > (this->unk12C * this->unk134[temp_r3_152].unk0)) {
                 M2C_FIELD(temp_r29_69, s32 *, 0x14) = (s32) (temp_r3_152 + 1);
             }
             temp_r4_163 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
             temp_r3_164 = this->unk134;
+            temp_r0_165 = temp_r4_163 - 1;
             temp_f6_166 = this->unk12C;
-            temp_r6_167 = (temp_r4_163 - 1) * 0x14;
-            temp_r5_169 = temp_r3_164 + temp_r6_167;
-            temp_f5_171 = M2C_FIELD(temp_r5_169, f32 *, 0);
-            temp_f6_178 = -((temp_f6_166 * temp_f5_171) - temp_f29_73) / (temp_f6_166 * (*(temp_r3_164 + (temp_r4_163 * 0x14)) - temp_f5_171));
-            var_r30_66->unk1C = M2C_FIELD(temp_r29_69, f32 *, 0x20) * ((temp_f6_178 * M2C_FIELD(temp_r5_169, f32 *, 0xC)) + M2C_FIELD(temp_r5_169, f32 *, 4));
+            temp_r5_169 = &temp_r3_164[temp_r0_165];
+            temp_f5_171 = temp_r5_169->unk0;
+            temp_f6_178 = -((temp_f6_166 * temp_f5_171) - temp_f29_73) / (temp_f6_166 * (temp_r3_164[temp_r4_163].unk0 - temp_f5_171));
+            var_r30_66->unk1C = M2C_FIELD(temp_r29_69, f32 *, 0x20) * ((temp_f6_178 * temp_r5_169->unkC) + temp_r5_169->unk4);
             var_f0_182 = var_r30_66->unk1C;
             if (var_f0_182 < 1.0f) {
 
@@ -104,8 +110,8 @@ loop_12:
                 var_f0_182 = 0.0f;
             }
             var_r30_66->unk1C = var_f0_182;
-            temp_r5_203 = this->unk134 + temp_r6_167;
-            var_r30_66->unk28 = M2C_FIELD(temp_r29_69, f32 *, 0x1C) * ((temp_f6_178 * M2C_FIELD(temp_r5_203, f32 *, 0x10)) + M2C_FIELD(temp_r5_203, f32 *, 8));
+            temp_r5_203 = &this->unk134[temp_r0_165];
+            var_r30_66->unk28 = M2C_FIELD(temp_r29_69, f32 *, 0x1C) * ((temp_f6_178 * temp_r5_203->unk10) + temp_r5_203->unk8);
             temp_f4_213 = temp_f29_73 / this->unk12C;
             temp_f2_214 = (0.35f * temp_f4_213) + 0.75f;
             var_r30_66->unk10 = temp_f2_214;
@@ -143,11 +149,10 @@ void Steam::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void Steam::LoadDone() {
+s32 Steam::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gSteamEnv'
 void Steam::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -155,12 +160,11 @@ void Steam::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gSteamEnv, 5);
+    SetEnvelope(gSteamEnv, 5);
     SetMaxParticleAge(1.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif
 
 void SteamDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

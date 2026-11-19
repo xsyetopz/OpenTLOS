@@ -230,13 +230,11 @@ void SpyroFuryState::Deinit() {
     this->unk14.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFuryState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroFuryState>FPQ232KDStateMachine<14SpyroFuryState>5StateP32KDStateMachine<14SpyroFuryState>(&this->unk14, (KDStateMachine<SpyroFuryState>::State *) SpyroFuryState::states, NULL);
+    this->unk14.Init((KDStateMachine<SpyroFuryState>::State *) SpyroFuryState::states, NULL);
     this->unk38 = 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpyroFuryState_cpp::__sinit() {

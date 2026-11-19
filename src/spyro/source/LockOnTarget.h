@@ -15,7 +15,7 @@ public:
     virtual ~LockOnTarget(void);
     virtual void Init(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     /* 0x04c */ void* unk4C;
     /* 0x050 */ f64 unk50;

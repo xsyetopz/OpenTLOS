@@ -16,8 +16,8 @@ public:
     virtual ~HitFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Trigger(const MKVector3 &, const MKVector3 &, const MKVector4 &, int);
     /* 0x04c */ f32 unk4C;

@@ -402,7 +402,7 @@ block_50:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void ExplosiveBarrel::Update() {
+void *ExplosiveBarrel::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp14;
@@ -485,12 +485,12 @@ void ExplosiveBarrel::SetDefaults() {
 }
 #endif
 
-void ExplosiveBarrel::Resolve() {
+f32 ExplosiveBarrel::Resolve() {
     Shatterable::Resolve();
 }
 
 #if 0 // DRAFT: undefined identifier 'P25ExplosiveBarrelDescriptor'
-void ExplosiveBarrel::LoadDone() {
+s32 ExplosiveBarrel::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

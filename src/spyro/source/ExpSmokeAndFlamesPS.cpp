@@ -16,9 +16,15 @@
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gExpSmokeAndFlamesPSEnv; /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gExpSmokeAndFlamesPSEnv[5] = {
+    { 0.0f, 1.0f, 0.1f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 2.0f, 0.0f, 0.0f },
+    { 0.75f, 0.5f, 2.1f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 2.2f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void ExpSmokeAndFlamesPS::UpdateParticles() {
     f64 spD8;
     f64 spD0;
@@ -53,6 +59,8 @@ void ExpSmokeAndFlamesPS::UpdateParticles() {
     f32 sp10;
     MKParticleChunk *var_r27_67;
     MKParticleSystem::Envelope *temp_r3_139;
+    MKParticleSystem::Envelope *temp_r3_176;
+    MKParticleSystem::Envelope *temp_r5_144;
     f32 temp_f29_77;
     f32 temp_f3_117;
     f32 temp_f4_153;
@@ -60,13 +68,11 @@ void ExpSmokeAndFlamesPS::UpdateParticles() {
     f32 temp_f6_141;
     f32 var_f0_157;
     f64 temp_f0_89;
+    s32 temp_r0_140;
     s32 temp_r3_113;
     s32 temp_r3_127;
     s32 temp_r4_138;
-    s32 temp_r6_142;
     void *temp_r26_73;
-    void *temp_r3_176;
-    void *temp_r5_144;
 
     this->unk128 += gUpdateTimeDelta;
     var_r27_67 = GetFirstParticle(&unksp8);
@@ -89,17 +95,17 @@ loop_12:
             temp_f3_117 = var_r27_67->unk20;
             var_r27_67->unk20 = (f32) fmod(temp_r3_113, temp_f3_117 + this->unkF0, (f32) temp_r3_113, temp_f3_117);
             temp_r3_127 = M2C_FIELD(temp_r26_73, s32 *, 0x14);
-            if (temp_f29_77 > (this->unk12C * *(this->unk134 + (temp_r3_127 * 0x14)))) {
+            if (temp_f29_77 > (this->unk12C * this->unk134[temp_r3_127].unk0)) {
                 M2C_FIELD(temp_r26_73, s32 *, 0x14) = (s32) (temp_r3_127 + 1);
             }
             temp_r4_138 = M2C_FIELD(temp_r26_73, s32 *, 0x14);
             temp_r3_139 = this->unk134;
+            temp_r0_140 = temp_r4_138 - 1;
             temp_f6_141 = this->unk12C;
-            temp_r6_142 = (temp_r4_138 - 1) * 0x14;
-            temp_r5_144 = temp_r3_139 + temp_r6_142;
-            temp_f5_146 = M2C_FIELD(temp_r5_144, f32 *, 0);
-            temp_f4_153 = -((temp_f6_141 * temp_f5_146) - temp_f29_77) / (temp_f6_141 * (*(temp_r3_139 + (temp_r4_138 * 0x14)) - temp_f5_146));
-            var_r27_67->unk1C = M2C_FIELD(temp_r26_73, f32 *, 0x20) * ((temp_f4_153 * M2C_FIELD(temp_r5_144, f32 *, 0xC)) + M2C_FIELD(temp_r5_144, f32 *, 4));
+            temp_r5_144 = &temp_r3_139[temp_r0_140];
+            temp_f5_146 = temp_r5_144->unk0;
+            temp_f4_153 = -((temp_f6_141 * temp_f5_146) - temp_f29_77) / (temp_f6_141 * (temp_r3_139[temp_r4_138].unk0 - temp_f5_146));
+            var_r27_67->unk1C = M2C_FIELD(temp_r26_73, f32 *, 0x20) * ((temp_f4_153 * temp_r5_144->unkC) + temp_r5_144->unk4);
             var_f0_157 = var_r27_67->unk1C;
             if (var_f0_157 < 1.0f) {
 
@@ -112,13 +118,13 @@ loop_12:
                 var_f0_157 = 0.0f;
             }
             var_r27_67->unk1C = var_f0_157;
-            temp_r3_176 = this->unk134 + temp_r6_142;
+            temp_r3_176 = &this->unk134[temp_r0_140];
             sp50 = 0.0f;
             sp54 = 0.0f;
             sp58 = 0.0f;
             sp5C = 0.0f;
             sp4C = 0.0f;
-            var_r27_67->unk28 = M2C_FIELD(temp_r26_73, f32 *, 0x1C) * ((temp_f4_153 * M2C_FIELD(temp_r3_176, f32 *, 0x10)) + M2C_FIELD(temp_r3_176, f32 *, 8));
+            var_r27_67->unk28 = M2C_FIELD(temp_r26_73, f32 *, 0x1C) * ((temp_f4_153 * temp_r3_176->unk10) + temp_r3_176->unk8);
             spB0 = (f64) sp50;
             sp48 = gUpdateTimeDelta;
             sp40 = gUpdateTimeDelta;
@@ -175,11 +181,10 @@ void ExpSmokeAndFlamesPS::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void ExpSmokeAndFlamesPS::LoadDone() {
+s32 ExpSmokeAndFlamesPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gExpSmokeAndFlamesPSEnv'
 void ExpSmokeAndFlamesPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 150.5f;
@@ -187,12 +192,11 @@ void ExpSmokeAndFlamesPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gExpSmokeAndFlamesPSEnv, 5);
+    SetEnvelope(gExpSmokeAndFlamesPSEnv, 5);
     SetMaxParticleAge(0.35f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif
 
 void ExpSmokeAndFlamesPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

@@ -74,7 +74,7 @@ block_8:
 }
 #endif
 
-void CynderBarracks::Update() {
+void *CynderBarracks::Update() {
     Shatterable::Update();
     if ((s32) this->unk1A8 != 0) {
         return;
@@ -86,12 +86,12 @@ void CynderBarracks::Update() {
     this->unk1B4.Update();
 }
 
-void CynderBarracks::Resolve() {
+f32 CynderBarracks::Resolve() {
     Shatterable::Resolve();
     this->unk1B4.Resolve();
 }
 
-void CynderBarracks::LoadDone() {
+s32 CynderBarracks::LoadDone() {
     Shatterable::LoadDone();
     this->unk1B4.LoadDone();
 }

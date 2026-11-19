@@ -145,7 +145,7 @@ u8 FireBossGoal_Think::Update() {
             } else {
                 RemoveAllSubgoals();
             }
-            AddSubgoal__24CompositeGoal<8FireBoss>FP15Goal<8FireBoss>((CompositeGoal<FireBoss> *) this, M2C_FIELD((this + (M2C_FIELD(this->unkC, s32 *, 0xB10) * 4)), Goal<FireBoss> **, 0x3C));
+            AddSubgoal(M2C_FIELD((this + (M2C_FIELD(this->unkC, s32 *, 0xB10) * 4)), Goal<FireBoss> **, 0x3C));
         }
         sp8.EnemyHudData();
         ((Enemy *) this->unkC)->GetMaxHealth();
@@ -160,7 +160,6 @@ u8 FireBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__24CompositeGoal'
 void FireBossGoal_Think::Activate() {
     Matrix sp30;
     EnemyHudData sp10;
@@ -193,13 +192,12 @@ void FireBossGoal_Think::Activate() {
     temp_r4_223 = this->unkC;
     if ((u8) M2C_FIELD(temp_r4_223, u8 *, 0xC42) != 0) {
         M2C_FIELD(temp_r4_223, u8 *, 0xC42) = 0U;
-        AddSubgoal__24CompositeGoal<8FireBoss>FP15Goal<8FireBoss>((CompositeGoal<FireBoss> *) this, (Goal<FireBoss> *) this->unk34);
-        AddSubgoal__24CompositeGoal<8FireBoss>FP15Goal<8FireBoss>((CompositeGoal<FireBoss> *) this, (Goal<FireBoss> *) this->unk38);
+        AddSubgoal((Goal<FireBoss> *) this->unk34);
+        AddSubgoal((Goal<FireBoss> *) this->unk38);
         return;
     }
-    AddSubgoal__24CompositeGoal<8FireBoss>FP15Goal<8FireBoss>((CompositeGoal<FireBoss> *) this, M2C_FIELD((this + (M2C_FIELD(temp_r4_223, s32 *, 0xB10) * 4)), Goal<FireBoss> **, 0x3C));
+    AddSubgoal(M2C_FIELD((this + (M2C_FIELD(temp_r4_223, s32 *, 0xB10) * 4)), Goal<FireBoss> **, 0x3C));
 }
-#endif
 
 void FireBossGoal_Think::Reset() {
     void *temp_r3_268;

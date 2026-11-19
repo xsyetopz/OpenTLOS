@@ -74,7 +74,7 @@ void SteamValve::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
-void SteamValve::Update() {
+void *SteamValve::Update() {
     u8 sp280;
     s32 sp27C;
     void *sp278;
@@ -355,7 +355,7 @@ void SteamValve::Update() {
 }
 #endif
 
-void SteamValve::LoadDone() {
+s32 SteamValve::LoadDone() {
     GameProp::LoadDone();
     this->unkC8 = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
     if ((u8) this->unkDC == 0) {

@@ -20,8 +20,8 @@ public:
     virtual ~ConvexTier2(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual void UpdateMovementCustom(void);
@@ -43,8 +43,8 @@ public:
     virtual ~ConvexTier3(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual void UpdateMovementCustom(void);
@@ -66,7 +66,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier2::ConvexTier2() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -76,16 +75,12 @@ inline ConvexTier2::~ConvexTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ConvexTier2Descriptor::ConvexTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier3::ConvexTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -95,10 +90,7 @@ inline ConvexTier3::~ConvexTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ConvexTier3Descriptor::ConvexTier3Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_CONVEX_H

@@ -12,9 +12,15 @@
 #include <m2c_macros.h>
 
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gCrashMistPSEnv;  /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gCrashMistPSEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 0.5f, 1.0f, 0.0f, 0.0f },
+    { 0.75f, 0.25f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void CrashMistPS::UpdateParticles() {
     MKParticleChunk *var_r3_57;
 
@@ -54,11 +60,10 @@ void CrashMistPS::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void CrashMistPS::LoadDone() {
+s32 CrashMistPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gCrashMistPSEnv'
 void CrashMistPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -66,9 +71,8 @@ void CrashMistPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gCrashMistPSEnv, 5);
+    SetEnvelope(gCrashMistPSEnv, 5);
     SetMaxParticleAge(3.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif

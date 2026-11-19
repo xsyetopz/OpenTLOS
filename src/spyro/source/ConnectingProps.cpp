@@ -29,7 +29,7 @@ s32 Connector::UpdateState() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'Connector' to
-void Connector::LoadDone() {
+s32 Connector::LoadDone() {
     Level *temp_r3_79;
     s32 temp_r29_78;
     s32 var_r28_74;

@@ -479,7 +479,7 @@ block_34:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
-void SteamTrainCaboose::Update() {
+void *SteamTrainCaboose::Update() {
     f32 sp36C;
     f32 sp368;
     f32 sp364;
@@ -857,7 +857,7 @@ void SteamTrainCaboose::Reset() {
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void SteamTrainCaboose::LoadDone() {
+s32 SteamTrainCaboose::LoadDone() {
     M2C_UNK sp8;
     SpawnPointData *temp_r26_1450;
     SpawnPointObject *temp_r25_1476;

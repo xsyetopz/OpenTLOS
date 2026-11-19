@@ -10,7 +10,7 @@ class Shatterable;
 class PooledShatterProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~PooledShatterProp(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     PooledShatterProp(void);
 };
 
@@ -19,7 +19,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline PooledShatterProp::PooledShatterProp() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 

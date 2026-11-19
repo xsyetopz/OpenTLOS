@@ -1643,12 +1643,9 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 MKAnimScript::MKAnimScript() {
     this->unk4 = NULL;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class
 s16 MKAnim::GetNumberOfEvents(MKAnimScriptedEvent::EventType arg1) {

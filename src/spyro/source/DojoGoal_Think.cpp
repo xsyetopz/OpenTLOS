@@ -59,7 +59,6 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
@@ -69,12 +68,10 @@ void DojoGoal_Think::AddGoal_SpawnIdle() {
     temp_r3_16 = this->unk40;
     if ((temp_r3_16 != NULL) && (IsPresent(M2C_FIELD(*temp_r3_16, s32 (**)(), 0x34)()) == 0) && (IsActive(0x39) == 0)) {
         RemoveAllSubgoals();
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk44);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Spawn() {
     void **temp_r3_60;
 
@@ -82,10 +79,9 @@ void DojoGoal_Think::AddGoal_Spawn() {
     if ((temp_r3_60 != NULL) && (IsPresent(M2C_FIELD(*temp_r3_60, s32 (**)(), 0x34)()) == 0)) {
         this->unk54 |= 0x80;
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
+        AddSubgoal((Goal<Enemy> *) this->unk40);
     }
 }
-#endif
 
 void DojoGoal_Think::StartFollowingSpawnGraph() {
     Enemy *temp_r4_98;
@@ -260,7 +256,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
             temp_r4_378->unk800.GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_378->unk720), &sp98, &sp88);
             this->unk20->unk8C0.Set(sp98, 0U);
         }
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk50);
+        AddSubgoal((Goal<Enemy> *) this->unk50);
         temp_r3_393 = this->unk20;
         temp_f1_397 = temp_r3_393->GetCollisionRadius();
         temp_r8_400 = this->unk50;
@@ -285,41 +281,34 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_471;
     Enemy *temp_r3_476;
 
     if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48);
+        AddSubgoal((Goal<Enemy> *) this->unk48);
         temp_r3_471 = this->unk20;
         temp_r3_471->unkB09 |= 8;
         temp_r3_476 = this->unk20;
         temp_r3_476->unkB08 |= 0x40;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_ReceiveOrders() {
     if (IsPresent(0x4D) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk4C);
+        AddSubgoal((Goal<Enemy> *) this->unk4C);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+        AddSubgoal((Goal<Enemy> *) this->unk38);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_572;
     s32 temp_r0_576;
@@ -333,7 +322,7 @@ void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     var_r29_553 = 0;
     if ((((u8) this->unk20->unkB0A >> 5U) & 1) && (IsPresent(0x5B) == 0)) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         return;
     }
     temp_r4_572 = this->unk20;
@@ -383,13 +372,11 @@ loop_29:
             } else {
                 RemoveAllSubgoals();
             }
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+            AddSubgoal((Goal<Enemy> *) this->unk34);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r3_893;
     Enemy *temp_r4_956;
@@ -506,34 +493,30 @@ block_58:
             temp_r4_956->unk93C = arg0->unk2C;
             temp_r4_956->unk940 = arg0->unk30;
             temp_r4_956->unk944 = arg0->unk34;
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk30);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_1014;
 
     if (IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
         temp_r4_1014 = this->unk2C;
         M2C_FIELD(temp_r4_1014, AITargetData **, 0x20) = arg0;
         M2C_FIELD(temp_r4_1014, s32 *, 0x4C) = 3;
         M2C_FIELD(temp_r4_1014, u8 *, 0x50) = (u8) (M2C_FIELD(temp_r4_1014, u8 *, 0x50) & ~0x80);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_1050;
 
     if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r4_1050 = this->unk24;
         M2C_FIELD(temp_r4_1050, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r4_1050, s32 *, 0x14) = 0;
@@ -542,16 +525,13 @@ void DojoGoal_Think::AddGoal_Idle() {
         M2C_FIELD(temp_r4_1050, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_1050, u8 *, 0x20) & ~0x40);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
     }
 }
-#endif
 
 void DojoGoal_Think::Reset() {
     this->unk8 = 1;
@@ -1092,7 +1072,7 @@ void DojoGoal_Think::Init(Enemy *arg0) {
         }
         M2C_FIELD(temp_r4_2171, s32 *, 0x14) = 3;
         M2C_FIELD(temp_r4_2171, s32 *, 0x10) = 0;
-        SetSummonGoal__19EnemyGoal_AlertModeFP12Goal<5Enemy>((EnemyGoal_AlertMode *) this->unk2C, (Goal<Enemy> *) this->unk3C);
+        ((EnemyGoal_AlertMode *) this->unk2C)->SetSummonGoal((Goal<Enemy> *) this->unk3C);
     }
     temp_r3_2192 = this->unk40;
     if (temp_r3_2192 != NULL) {

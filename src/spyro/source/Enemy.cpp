@@ -4722,7 +4722,7 @@ u8 Enemy::CanMoveAwayBack() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk30C'
-u8 Enemy::CanMoveAwayFromHero() {
+s32 Enemy::CanMoveAwayFromHero() {
     u8 spC;
     void *sp8;
     f32 temp_f0_8947;
@@ -5352,7 +5352,7 @@ loop_6:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unkC'
-void Enemy::Update() {
+void *Enemy::Update() {
     s32 sp8;
     CharacterBreathFX *temp_r3_10900;
     KDSynkerPlayer3 *temp_r3_10793;
@@ -6131,7 +6131,7 @@ s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-void Enemy::EnableCollision(bool arg0) {
+u8 Enemy::EnableCollision(bool arg0) {
     Character::EnableCollision(arg0);
 }
 
@@ -6250,7 +6250,7 @@ void Enemy::SetDefaults() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void Enemy::Resolve() {
+f32 Enemy::Resolve() {
     f32 sp6C;
     f32 sp68;
     f32 sp64;
@@ -6323,7 +6323,7 @@ void Enemy::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
-void Enemy::LoadDone() {
+s32 Enemy::LoadDone() {
     AttackSweepData *temp_r3_12518;
     AttackSweepData *var_r3_12507;
     AttackSweepData *var_r3_12528;

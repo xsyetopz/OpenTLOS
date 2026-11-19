@@ -86,7 +86,7 @@ void TriggerPlaneGroupPropDescriptor::Init() {
 }
 
 #if 0 // DRAFT: ')' expected
-void TriggerPlaneProp::Resolve() {
+f32 TriggerPlaneProp::Resolve() {
     MKProp *var_r3_198;
     TriggerPlaneGroupObject *temp_r31_211;
 
@@ -245,7 +245,7 @@ void TriggerProp::Enable() {
     }
 }
 
-void TriggerProp::Resolve() {
+f32 TriggerProp::Resolve() {
     TriggerObject *temp_r3_572;
 
     MKProp::Resolve();
@@ -366,7 +366,7 @@ void TriggerProp::OnEnter() {
     }
 }
 
-void TriggerProp::Update() {
+void *TriggerProp::Update() {
     TriggerObject *temp_r3_834;
     s32 temp_cr0_eq_1015;
     s32 temp_cr0_eq_933;
@@ -446,7 +446,7 @@ void TriggerProp::Reset() {
 }
 #endif
 
-void TriggerProp::LoadDone() {
+s32 TriggerProp::LoadDone() {
     TriggerObject *temp_r3_1100;
     TriggerObject *temp_r3_1108;
 

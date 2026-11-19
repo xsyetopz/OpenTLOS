@@ -18,11 +18,11 @@ void Critters::Draw() {
 
 }
 
-void Critters::Update() {
+void *Critters::Update() {
 
 }
 
-void Critters::LoadDone() {
+s32 Critters::LoadDone() {
     KDProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     this->unkE0.Init(this->unkA0);

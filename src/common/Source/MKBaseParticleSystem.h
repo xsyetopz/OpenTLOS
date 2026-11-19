@@ -20,12 +20,12 @@ public:
     class ParticleRec;
     virtual ~MKBaseParticleSystem(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
-    virtual void GetName(void) = 0;
+    virtual void * GetName(void) = 0;
     virtual void * CreateParticle(void);
     virtual void EmitParticles(void);
     virtual void UpdateParticles(void) = 0;

@@ -82,7 +82,7 @@ loop_2:
     }
 }
 
-void WhirlWindFX::Update() {
+void *WhirlWindFX::Update() {
     MKHeap *temp_r4_146;
     MKHeap *temp_r4_158;
     MKHeap *temp_r5_149;

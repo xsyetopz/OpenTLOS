@@ -29,7 +29,7 @@ public:
     virtual ~LineSegmentTrail(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     s32 TrailActive(void);
     void EndTrail(void);

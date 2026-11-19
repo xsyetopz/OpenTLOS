@@ -72,7 +72,7 @@ loop_2:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampSlinky::Update() {
+void *SwampSlinky::Update() {
     s8 sp208;
     s32 sp204;
     s32 sp200;
@@ -300,7 +300,7 @@ loop_20:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void SwampSlinky::LoadDone() {
+s32 SwampSlinky::LoadDone() {
     s8 sp190;
     s32 sp18C;
     s32 sp188;

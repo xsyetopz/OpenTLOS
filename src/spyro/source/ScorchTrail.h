@@ -18,7 +18,7 @@ public:
     virtual ~ScorchTrail(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void SpawnScorchMark(const MKVector3 &, const MKVector3 &, float);
     void DrawScorchMarks(void);

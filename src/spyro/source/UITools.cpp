@@ -604,7 +604,7 @@ void RadialButtonGroup::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void RadialButtonGroup::Message(UIMessage *arg0) {
+s32 RadialButtonGroup::Message(UIMessage *arg0) {
     s32 sp2C;
     s32 sp28;
     s32 sp24;
@@ -1045,8 +1045,7 @@ void MarkerButtonGroup::Update() {
     M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0x18)(&this->unk80);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void MarkerButtonGroup::Message(UIMessage *arg0) {
+s32 MarkerButtonGroup::Message(UIMessage *arg0) {
     Attributes sp8;
     Attributes *temp_r3_2124;
 
@@ -1059,7 +1058,6 @@ void MarkerButtonGroup::Message(UIMessage *arg0) {
     temp_r3_2124->Tween(temp_r3_2124, &sp8, 1.0f);
     return 1;
 }
-#endif
 
 void MarkerButtonGroup::FreeResources() {
     UIContainer::FreeResources();
@@ -1100,7 +1098,7 @@ void MarkerButtonGroup::Init() {
 }
 #endif
 
-void NoisySystem::Message(UIMessage *arg0) {
+s32 NoisySystem::Message(UIMessage *arg0) {
     s32 temp_r0_2259;
 
     temp_r0_2259 = arg0->unk0;
@@ -1124,7 +1122,7 @@ s32 ScriptButtonGroup::SetSelection(int arg0) {
 }
 
 #if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
-void ScriptButtonGroup::Message(UIMessage *arg0) {
+s32 ScriptButtonGroup::Message(UIMessage *arg0) {
     s32 spC;
     s32 sp8;
     s32 temp_r0_2323;
@@ -1225,8 +1223,7 @@ void NoisyButtonGroup::Update() {
     UIContainer::Update();
 }
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
-void NoisyButtonGroup::Message(UIMessage *arg0) {
+s32 NoisyButtonGroup::Message(UIMessage *arg0) {
     s32 temp_r0_2548;
 
     temp_r0_2548 = arg0->unk0;
@@ -1249,7 +1246,6 @@ void NoisyButtonGroup::Message(UIMessage *arg0) {
 block_10:
     return UIButtonGroup::Message(arg0);
 }
-#endif
 
 void NoisyButtonGroup::Init() {
     UIButtonGroup::Init();
@@ -1328,7 +1324,7 @@ void DSText::Init() {
 }
 
 #if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
-void ScriptProgressBar::Message(UIMessage *arg0) {
+s32 ScriptProgressBar::Message(UIMessage *arg0) {
     s32 temp_r0_2757;
 
     temp_r0_2757 = arg0->unk0;
@@ -1610,7 +1606,7 @@ void ScriptButton::Init() {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void OptionButton::Message(UIMessage *arg0) {
+s32 OptionButton::Message(UIMessage *arg0) {
     s32 sp14;
     s32 sp10;
     s32 spC;
@@ -1708,7 +1704,7 @@ void OptionButton::Init() {
     this->unkA0 = 1.0f;
 }
 
-void ThrobButton::Message(UIMessage *arg0) {
+s32 ThrobButton::Message(UIMessage *arg0) {
     UIObject *var_r31_3729;
     UIObject *var_r31_3748;
     s32 temp_r0_3670;
@@ -1872,8 +1868,7 @@ loop_15:
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void PromptGroup::Message(UIMessage *arg0) {
+s32 PromptGroup::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
     if ((s32) arg0->unk0 != 1) {
 
@@ -1882,10 +1877,9 @@ void PromptGroup::Message(UIMessage *arg0) {
     }
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-void PromptText::Message(UIMessage *arg0) {
+s32 PromptText::Message(UIMessage *arg0) {
     s32 temp_r4_3987;
 
     if ((s32) arg0->unk0 != 1) {

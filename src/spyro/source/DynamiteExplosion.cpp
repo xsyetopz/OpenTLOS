@@ -2594,7 +2594,7 @@ void DynamiteExplosion::Draw() {
 
 }
 
-void DynamiteExplosion::Update() {
+void *DynamiteExplosion::Update() {
     DynamiteExplosion::Explosion **temp_r3_4251;
     DynamiteExplosion::Explosion **temp_r3_4264;
     DynamiteExplosion::Explosion **temp_r3_4277;
@@ -2658,7 +2658,7 @@ loop_17:
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to
-void DynamiteExplosion::Resolve() {
+f32 DynamiteExplosion::Resolve() {
     MKProp::Resolve();
     this->unk4C = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
 }

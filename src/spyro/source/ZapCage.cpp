@@ -88,7 +88,7 @@ void ZapCage::Deinit() {
 }
 
 #if 0 // DRAFT: illegal type
-void ZapCage::Update() {
+void *ZapCage::Update() {
     BreathHitMessage sp1D0;
     f32 sp1CC;
     f32 sp1C8;

@@ -244,7 +244,7 @@ void EarthShockwave::Draw() {
     }
 }
 
-void EarthShockwave::Update() {
+void *EarthShockwave::Update() {
     Matrix spC0;
     M2C_UNK spBC;
     f32 spB0;

@@ -12,9 +12,9 @@ class WaterWheel : public Platform {  // base: base ctor call
 public:
     virtual ~WaterWheel(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void UpdateMove(void);
     WaterWheel(void);
@@ -29,12 +29,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline WaterWheel::WaterWheel() {
     this->unk184 = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline WaterWheel::~WaterWheel() {

@@ -469,7 +469,7 @@ void ClusterBomb::Draw() {
     DrawClusterBombs();
 }
 
-void ClusterBomb::Update() {
+void *ClusterBomb::Update() {
     UpdateClusterBombs();
 }
 

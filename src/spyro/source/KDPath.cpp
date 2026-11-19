@@ -331,7 +331,7 @@ void KDPathIterator::Init() {
     this->unk4 = 0;
 }
 
-void KDSplinePathSegmentProp::LoadDone() {
+s32 KDSplinePathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDSplinePathSegment *) &this->unk4C)->LoadDone();
     ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
@@ -630,7 +630,7 @@ void KDSplinePathSegment::Init() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-void KDLocalPathSegmentProp::Resolve() {
+f32 KDLocalPathSegmentProp::Resolve() {
     Matrix sp30;
     M2C_UNK sp2C;
     f64 sp28;
@@ -685,7 +685,7 @@ void KDLocalPathSegmentProp::Resolve() {
 }
 #endif
 
-void KDLocalPathSegmentProp::LoadDone() {
+s32 KDLocalPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDPathSegment *) &this->unk4C)->LoadDone();
     ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
@@ -723,7 +723,7 @@ void KDLocalPathSegment::Init(KDLocalPathSegmentProp *arg0) {
 }
 #endif
 
-void KDPathSegmentProp::LoadDone() {
+s32 KDPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDPathSegment *) &this->unk4C)->LoadDone();
     ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));

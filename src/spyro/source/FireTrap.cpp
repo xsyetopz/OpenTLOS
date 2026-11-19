@@ -69,7 +69,7 @@ void FireTrap::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *, double)' does not match
-void FireTrap::Update() {
+void *FireTrap::Update() {
     s8 sp199;
     s8 sp198;
     s32 sp194;

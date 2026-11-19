@@ -720,7 +720,7 @@ void EarthBombFX::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
-void EarthBombFX::Update() {
+void *EarthBombFX::Update() {
     u8 sp388;
     s32 sp384;
     MKCollisionInfo *sp380;
@@ -1175,7 +1175,7 @@ void EarthBombFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void EarthBombFX::Resolve() {
+f32 EarthBombFX::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

@@ -627,7 +627,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void EnergyBeam::Update() {
+void *EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
     f64 sp90;

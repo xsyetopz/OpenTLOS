@@ -83,7 +83,7 @@ void LightProp::SetOrientation(Matrix *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
-void LightProp::Update() {
+void *LightProp::Update() {
     f64 sp20;
     f64 sp18;
     MKVector4 sp8;
@@ -113,7 +113,7 @@ void LightProp::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void LightProp::LoadDone() {
+s32 LightProp::LoadDone() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

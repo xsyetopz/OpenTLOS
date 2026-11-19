@@ -73,7 +73,7 @@ loop_4:
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void ShwimmaCritter::Update() {
+void *ShwimmaCritter::Update() {
     s8 sp1B8;
     s32 sp1B4;
     s32 sp1B0;
@@ -649,7 +649,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
 #endif
 
 #if 0 // DRAFT: illegal type
-void ShwimmaCritter::Resolve() {
+f32 ShwimmaCritter::Resolve() {
     s32 temp_r0_1123;
     s32 var_r3_1117;
     s32 var_r6_1118;
@@ -668,7 +668,7 @@ loop_2:
 }
 #endif
 
-void ShwimmaCritter::LoadDone() {
+s32 ShwimmaCritter::LoadDone() {
     MKHeap *temp_r3_1149;
     s32 temp_r31_1148;
     void *var_r3_1156;

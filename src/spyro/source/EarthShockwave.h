@@ -14,7 +14,7 @@ public:
     virtual ~EarthShockwave(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Trigger(const MKVector3 &, float, bool, MKVector4);
     /* 0x090 */ f64 unk90;

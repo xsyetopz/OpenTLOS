@@ -504,7 +504,7 @@ void BirdCritter::SetIdleState(Bird *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void BirdCritter::Update() {
+void *BirdCritter::Update() {
     f64 sp108;                                      /* compiler-managed */
     f64 sp100;                                      /* compiler-managed */
     f64 spF8;
@@ -764,7 +764,7 @@ loop_63:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void BirdCritter::Resolve() {
+f32 BirdCritter::Resolve() {
     f64 sp20;
     f64 sp18;
     f64 sp8;
@@ -818,7 +818,7 @@ loop_7:
 }
 #endif
 
-void BirdCritter::LoadDone() {
+s32 BirdCritter::LoadDone() {
     MKHeap *temp_r3_1624;
     s32 temp_r31_1623;
     void *var_r3_1631;

@@ -79,7 +79,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void EnemyGoal_GraphBarricade::AddGoal_Summon() {
     Goal<Enemy> *temp_r5_36;
     MKSceneManager *temp_r3_30;
@@ -89,7 +89,7 @@ void EnemyGoal_GraphBarricade::AddGoal_Summon() {
 
     if (IsPresent(0x4A) == 0) {
         RemoveAllSubgoals();
-        temp_r4_27 = (u32) AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
+        temp_r4_27 = (u32) AddSubgoal((Goal<Enemy> *) this->unk3C);
         temp_r3_30 = M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x48);
         if (temp_r3_30 != NULL) {
             temp_r3_34 = checked_cast<SpawnPoint *, MKProp>(temp_r3_30->PropResolver_Resolve((s32) temp_r4_27));
@@ -105,13 +105,12 @@ void EnemyGoal_GraphBarricade::AddGoal_Summon() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_GraphBarricade::AddGoal_GiveOrders() {
     SB2 *temp_r3_86;
 
     if (IsPresent(0x4C) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+        AddSubgoal((Goal<Enemy> *) this->unk38);
         M2C_FIELD(this->unk38, f32 *, 0x10) = 2000.0f;
         this->unkC->unk640->GraphFollowingOff();
         temp_r3_86 = this->unkC->unk640;
@@ -119,28 +118,25 @@ void EnemyGoal_GraphBarricade::AddGoal_GiveOrders() {
         this->unkC->unk640->ObstacleAvoidanceOff();
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_GraphBarricade::AddGoal_Attack() {
     if (IsPresent(0x56) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         M2C_FIELD(this->unk34, AITargetData **, 0x20) = &this->unkC->unk870;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void EnemyGoal_GraphBarricade::AddGoal_Kick() {
     if (IsPresent(0x34) == 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, M2C_BITWISE(Goal<Enemy> *, this->unk20.unkC));
+        AddSubgoal(M2C_BITWISE(Goal<Enemy> *, this->unk20.unkC));
         this->unk40 |= 0x80;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_GraphBarricade::AddGoal_MoveTo() {
     CharacterGraphNode *temp_r0_231;
     Enemy *temp_r4_229;
@@ -151,7 +147,7 @@ void EnemyGoal_GraphBarricade::AddGoal_MoveTo() {
 
     if (IsPresent(0x21) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20.unk8);
+        AddSubgoal((Goal<Enemy> *) this->unk20.unk8);
         this->unkC->unk8C0.Set(this->unk20.Get(), 0U);
         this->unkC->unk8C0.SetInsideRegion(1U);
         temp_f0_207 = M2C_FIELD(MKModel_GetBoundingVolume(M2C_FIELD(M2C_FIELD(M2C_FIELD(this->unk20.Get()->__vptr, void *(**)(), 0x34)(), void **, 8), MKModel **, 4), (SubObjectType) 0, -1), f32 *, 0xC);
@@ -838,7 +834,7 @@ void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
     SB2 *temp_r3_1631;
 
     if (IsPresent(0x47) == 0) {
-        ((EnemyGoal_OperateLever *) this->unk70)->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk70))));
+        ((EnemyGoal_OperateLever *) this->unk70)->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk70))));
         temp_r4_1611 = this->unkC;
         temp_r0_1613 = temp_r4_1611->unk640->unk448;
         if (temp_r0_1613 != NULL) {
@@ -856,7 +852,7 @@ void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: declaration syntax error
 void EnemyGoal_FollowGraph::AddGoal_GraphHover() {
     Character *temp_r4_1679;
     Character *temp_r4_1685;
@@ -864,7 +860,7 @@ void EnemyGoal_FollowGraph::AddGoal_GraphHover() {
     SB2 *temp_r3_1698;
 
     if (IsPresent(0x8F) == 0) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk3C);
         M2C_FIELD(this->unk3C, f32 *, 0x10) = (f32) this->unkC->unkA84->unk48;
         temp_r4_1679 = this->unkC;
         temp_r0_1681 = temp_r4_1679->unk640->unk448;
@@ -903,7 +899,7 @@ void EnemyGoal_FollowGraph::AddGoal_SummonWall() {
             temp_r4_1737 = this->unkC;
             temp_r4_1737->unkA84 = temp_r4_1737->unk640->unk44C;
         }
-        var_r4_1744 = (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk6C);
+        var_r4_1744 = (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk6C);
         temp_r3_1746 = this->unkC->unkA84;
         if ((temp_r3_1746 != NULL) && (temp_ret_1751 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) temp_r3_1746->unk3C)->PropResolver_Resolve((s32) var_r4_1744)), temp_r3_1751 = temp_ret_1751, var_r4_1744 = (u32) temp_ret_1751, ((temp_r3_1751 == 0) == 0))) {
             M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) var_r4_1744)));
@@ -926,7 +922,7 @@ void EnemyGoal_FollowGraph::AddGoal_SummonWall() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA4C'
+#if 0 // DRAFT: declaration syntax error
 void EnemyGoal_FollowGraph::AddGoal_Summon() {
     Character *temp_r4_1838;
     Character *temp_r4_1844;
@@ -951,7 +947,7 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
             temp_r4_1844->unkA84 = temp_r4_1844->unk640->unk44C;
         }
         if ((s32) M2C_FIELD(this->unkC->unkA38, s32 *, 0xF4) == 0x19) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk68);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk68);
             temp_r4_1859 = this->unk64;
             temp_r5_1861 = this->unkC->unkA80->unk48;
             M2C_FIELD(temp_r4_1859, s32 *, 0x14) = temp_r5_1861;
@@ -959,7 +955,7 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
             M2C_FIELD(temp_r4_1859, void **, 0x10) = NULL;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r4_1859, void **, 0xC), void **, 0xA4C), s32 *, 0x28) = temp_r5_1861;
         } else {
-            temp_ret_1877 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk64)));
+            temp_ret_1877 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk64)));
             if (temp_ret_1877 != 0) {
                 temp_r3_1885 = checked_cast<SpawnPoint *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_1877)));
                 temp_r5_1887 = this->unk64;
@@ -990,7 +986,7 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_Drop() {
     Character *temp_r4_1964;
     Character *temp_r4_1970;
@@ -998,7 +994,7 @@ void EnemyGoal_FollowGraph::AddGoal_Drop() {
     SB2 *temp_r3_1983;
 
     if (IsPresent(0x92) == 0) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk80);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk80);
         temp_r4_1964 = this->unkC;
         temp_r0_1966 = temp_r4_1964->unk640->unk448;
         if (temp_r0_1966 != NULL) {
@@ -1016,17 +1012,17 @@ void EnemyGoal_FollowGraph::AddGoal_Drop() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA84'
 void EnemyGoal_FollowGraph::AddGoal_PickUp() {
     if (IsPresent(0x91) == 0) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk7C);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk7C);
         ((DreadWingGoal_PickUp *) this->unk7C)->SetParams(this->unkC->unkA84->unk48);
     }
     this->unkC->unkA8C = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_GiveOrders() {
     Character *temp_r4_2053;
     Character *temp_r4_2059;
@@ -1034,7 +1030,7 @@ void EnemyGoal_FollowGraph::AddGoal_GiveOrders() {
     SB2 *temp_r3_2082;
 
     if (IsPresent(0x4C) == 0) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk60);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk60);
         temp_r4_2053 = this->unkC;
         temp_r0_2055 = temp_r4_2053->unk640->unk448;
         if (temp_r0_2055 != NULL) {
@@ -1106,7 +1102,7 @@ void EnemyGoal_FollowGraph::AddGoal_RangeAttackMode() {
             } else {
                 ((Enemy *) this->unkC)->SelectAttack(5000.0f, 2U, 0U, 0U);
             }
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk58);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk58);
             M2C_FIELD(this->unk58, s8 *, 0x48) = 0;
             this->unk95 &= ~0x80;
             this->unk95 &= ~0x20;
@@ -1122,14 +1118,14 @@ void EnemyGoal_FollowGraph::AddGoal_RangeAttackMode() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_Death() {
     Character *temp_r4_2262;
     Character *temp_r4_2268;
     CharacterGraphNode *temp_r0_2264;
 
     if ((IsActive(0) == 0) && (IsPresent(0x5B) == 0)) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk54);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk54);
         temp_r4_2262 = this->unkC;
         temp_r0_2264 = temp_r4_2262->unk640->unk448;
         if (temp_r0_2264 != NULL) {
@@ -1177,7 +1173,7 @@ void EnemyGoal_FollowGraph::AddGoal_Cower() {
             var_r31_2332 = 1;
         }
         if (IsPresent(0) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             temp_r5_2348 = this->unk44;
             M2C_FIELD(temp_r5_2348, s32 *, 0x10) = 0;
             M2C_FIELD(temp_r5_2348, s32 *, 0x14) = var_r31_2332;
@@ -1238,7 +1234,7 @@ void EnemyGoal_FollowGraph::AddGoal_Taunt(bool arg0) {
             var_r31_2448 = 1;
         }
         if (IsPresent(0) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             this->unk95 &= ~0x80;
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
@@ -1270,7 +1266,7 @@ void EnemyGoal_FollowGraph::AddGoal_Taunt(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_Alert() {
     Character *temp_r3_2578;
     Character *temp_r4_2551;
@@ -1282,7 +1278,7 @@ void EnemyGoal_FollowGraph::AddGoal_Alert() {
     void *temp_r4_2581;
 
     if (IsPresent(2) == 0) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk50);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk50);
         temp_r4_2551 = this->unkC;
         temp_r0_2553 = temp_r4_2551->unk640->unk448;
         if (temp_r0_2553 != NULL) {
@@ -1308,7 +1304,7 @@ void EnemyGoal_FollowGraph::AddGoal_Alert() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_Sleep() {
     Character *temp_r4_2628;
     Character *temp_r4_2634;
@@ -1319,7 +1315,7 @@ void EnemyGoal_FollowGraph::AddGoal_Sleep() {
 
     if (IsActive(0) == 0) {
         if (IsPresent(0) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             temp_r4_2628 = this->unkC;
             temp_r0_2630 = temp_r4_2628->unk640->unk448;
             if (temp_r0_2630 != NULL) {
@@ -1381,7 +1377,7 @@ void EnemyGoal_FollowGraph::AddGoal_Cheer() {
             var_r30_2745 = 1;
         }
         if (IsPresent(0) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             this->unk95 &= ~0x80;
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
@@ -1404,14 +1400,14 @@ void EnemyGoal_FollowGraph::AddGoal_Cheer() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_SpawnUntilTrigger() {
     Character *temp_r4_2845;
     Character *temp_r4_2851;
     CharacterGraphNode *temp_r0_2847;
 
     if (((Goal<Enemy> *) this->unk88 != NULL) && (IsPresent(0x39) == 0)) {
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk88);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk88);
         this->unk95 &= ~0x80;
         this->unk95 |= 0x20;
         this->unk95 &= ~0x10;
@@ -1448,7 +1444,7 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
         temp_r0_2884 = M2C_FIELD(this->unkC->unkA38, s32 *, 0xF4);
         if (temp_r0_2884 == 0x19) {
             if (IsPresent(5) == 0) {
-                AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk4C);
+                AddSubgoalToFront((Goal<Enemy> *) this->unk4C);
                 temp_r4_2898 = this->unkC;
                 temp_r0_2900 = temp_r4_2898->unk640->unk448;
                 if (temp_r0_2900 != NULL) {
@@ -1464,8 +1460,8 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
             }
         } else if (temp_r0_2884 == 0x12) {
             if (IsPresent(0x66) == 0) {
-                AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk74);
-                AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoalToFront((Goal<Enemy> *) this->unk74);
+                AddSubgoalToFront((Goal<Enemy> *) this->unk44);
                 this->unk95 |= 2;
                 temp_r4_2946 = this->unkC;
                 temp_r0_2948 = temp_r4_2946->unk640->unk448;
@@ -1482,7 +1478,7 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
             }
         } else {
             if (IsPresent(0) == 0) {
-                AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoalToFront((Goal<Enemy> *) this->unk44);
                 temp_r4_2985 = this->unkC;
                 temp_r0_2987 = temp_r4_2985->unk640->unk448;
                 if (temp_r0_2987 != NULL) {
@@ -1530,7 +1526,7 @@ void EnemyGoal_FollowGraph::AddGoal_IdleUntilTrigger(int arg0) {
     if (IsActive(0) == 0) {
         if ((s32) M2C_FIELD(this->unkC->unkA38, s32 *, 0xF4) == 0x19) {
             if (IsPresent(5) == 0) {
-                AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+                AddSubgoalToFront((Goal<Enemy> *) this->unk44);
                 temp_r4_3075 = this->unk44;
                 M2C_FIELD(temp_r4_3075, s32 *, 0x10) = 0;
                 M2C_FIELD(temp_r4_3075, s32 *, 0x14) = 0;
@@ -1551,7 +1547,7 @@ void EnemyGoal_FollowGraph::AddGoal_IdleUntilTrigger(int arg0) {
                 this->unkC->unk640->ObstacleAvoidanceOff();
             }
         } else if (IsPresent(0) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             temp_r4_3124 = this->unk44;
             M2C_FIELD(temp_r4_3124, s32 *, 0x10) = 0;
             M2C_FIELD(temp_r4_3124, s32 *, 0x14) = 0;
@@ -1632,7 +1628,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
             temp_r4_3233 = this->unkC;
             temp_r4_3233->unkA84 = temp_r4_3233->unk640->unk44C;
         }
-        temp_ret_3245 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48)));
+        temp_ret_3245 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk48)));
         if (temp_ret_3245 != 0) {
             temp_r5_3254 = M2C_FIELD(checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_3245)), void **, 8);
             temp_r3_3255 = this->unkC->unk8;
@@ -1701,7 +1697,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_FollowGraph::AddGoal_Idle() {
     Character *temp_r4_3433;
     Character *temp_r4_3439;
@@ -1719,7 +1715,7 @@ void EnemyGoal_FollowGraph::AddGoal_Idle() {
         temp_ret_3427 = IsPresent(0);
         var_f1_3427 = temp_ret_3427;
         if (M2C_BITWISE(u8, temp_ret_3427) == 0) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk44);
             temp_r4_3433 = this->unkC;
             temp_r0_3435 = temp_r4_3433->unk640->unk448;
             if (temp_r0_3435 != NULL) {
@@ -1783,7 +1779,7 @@ void EnemyGoal_FollowGraph::AddGoal_Barricade() {
         }
         ((TargetContext *) (this->unk5C + 0x20))->Set(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) this->unkC)));
         if (((TargetContext *) (this->unk5C + 0x20))->Get() != NULL) {
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk5C);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk5C);
         }
     }
     this->unkC->unkA8C = 0;
@@ -1833,8 +1829,8 @@ void EnemyGoal_FollowGraph::AddGoal_FollowPath() {
         }
         if ((u32) var_r30_3630 != 0U) {
             RemoveAllSubgoals();
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoal((Goal<Enemy> *) this->unk40);
+            AddSubgoal((Goal<Enemy> *) this->unk24);
             temp_r5_3669 = this->unk40;
             M2C_FIELD(temp_r5_3669, s32 *, 0x10) = (s32) (var_r30_3630 + 0x4C);
             M2C_FIELD(temp_r5_3669, f32 *, 0x14) = 0.0f;
@@ -1869,7 +1865,7 @@ void EnemyGoal_FollowGraph::AddGoal_Jump() {
             temp_r4_3729 = this->unkC;
             temp_r4_3729->unkA84 = temp_r4_3729->unk640->unk44C;
         }
-        AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk2C);
         this->unkC->StopMovement(1U);
         this->unkC->unk640->GraphFollowingOff();
         temp_r3_3745 = this->unkC->unk640;
@@ -1904,15 +1900,15 @@ void EnemyGoal_FollowGraph::AddGoal_GlidePath() {
         temp_r4_3786 = this->unkC;
         temp_r30_3790 = temp_r4_3786->unkA84->GetLinkPath(temp_r4_3786->unkA80);
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
+        AddSubgoal((Goal<Enemy> *) this->unk38);
         temp_r3_3796 = this->unkC;
         if (M2C_FIELD(temp_r3_3796->__vptr, u8 (**)(Character *), 0x16C)(temp_r3_3796) != 0) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk78);
+            AddSubgoal((Goal<Enemy> *) this->unk78);
             temp_r4_3806 = this->unk78;
             M2C_FIELD(temp_r4_3806, s32 *, 0x14) = 0xA;
             M2C_FIELD(temp_r4_3806, s32 *, 0x10) = 0xDD;
         }
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r3_3816 = this->unkC->unkA84;
         temp_r0_3817 = temp_r3_3816->unk44;
         if ((temp_r0_3817 != 0x13) && (temp_r0_3817 != 0x19)) {
@@ -1955,15 +1951,15 @@ void EnemyGoal_FollowGraph::AddGoal_FlyPath() {
         temp_r4_3878 = this->unkC;
         temp_r30_3882 = temp_r4_3878->unkA84->GetLinkPath(temp_r4_3878->unkA80);
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
         temp_r3_3888 = this->unkC;
         if (M2C_FIELD(temp_r3_3888->__vptr, u8 (**)(Character *), 0x16C)(temp_r3_3888) != 0) {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk78);
+            AddSubgoal((Goal<Enemy> *) this->unk78);
             temp_r4_3898 = this->unk78;
             M2C_FIELD(temp_r4_3898, s32 *, 0x14) = 0xA;
             M2C_FIELD(temp_r4_3898, s32 *, 0x10) = 0xDD;
         }
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         temp_r3_3908 = this->unkC->unkA84;
         temp_r0_3909 = temp_r3_3908->unk44;
         if ((temp_r0_3909 != 0x13) && (temp_r0_3909 != 0x19)) {
@@ -1981,15 +1977,13 @@ void EnemyGoal_FollowGraph::AddGoal_FlyPath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_FollowGraph::AddGoal_Fly() {
     if (IsPresent(0x2D) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
         M2C_FIELD(this->unk30, s8 *, 0x10) = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_FollowGraph::AddGoal_Flee() {
@@ -2012,7 +2006,7 @@ void EnemyGoal_FollowGraph::AddGoal_Flee() {
             temp_r4_4010->unkA84 = temp_r4_4010->unk640->unk44C;
         }
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         return;
     }
     temp_r3_4022 = this->unk24;
@@ -2041,7 +2035,7 @@ void EnemyGoal_FollowGraph::AddGoal_Run() {
             temp_r4_4070->unkA84 = temp_r4_4070->unk640->unk44C;
         }
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         return;
     }
     temp_r3_4082 = this->unk24;
@@ -2066,7 +2060,7 @@ void EnemyGoal_FollowGraph::AddGoal_Walk() {
             temp_r4_4126->unkA84 = temp_r4_4126->unk640->unk44C;
         }
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
         return;
     }
     temp_r3_4138 = this->unk28;

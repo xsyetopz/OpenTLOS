@@ -2693,7 +2693,7 @@ void SpeedWaySpyro::Start() {
     }
 }
 
-void SpeedWaySpyro::Update() {
+void *SpeedWaySpyro::Update() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
@@ -3019,7 +3019,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'SpeedWay *' to
-void SpeedWaySpyro::Resolve() {
+f32 SpeedWaySpyro::Resolve() {
     M2C_UNK sp80;
     M2C_UNK sp4C;
     M2C_UNK sp10;
@@ -3048,7 +3048,7 @@ void SpeedWaySpyro::Resolve() {
     sp8 = this;
     spC = 0;
     M2C_FIELD(this->unk398, M2C_UNK (**)(void **, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, ((u8 *) temp_r3_6045) + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
-    Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
+    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->Init((KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
     ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
     this->unk2FC.Resolve();
     this->unk8B4 = (f32) KDSound_GetSoundEventVol(GS_SpyroSpeedwayGlideLP) / 255.0f;
@@ -3056,7 +3056,7 @@ void SpeedWaySpyro::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to
-void SpeedWaySpyro::LoadDone() {
+s32 SpeedWaySpyro::LoadDone() {
     s32 sp10;
     s32 spC;
     s32 sp8;

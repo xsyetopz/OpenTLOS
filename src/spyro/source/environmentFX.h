@@ -14,7 +14,7 @@ public:
     virtual void Init(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 unk4C;
     /* 0x04d */ u8 pad4D[0x3];

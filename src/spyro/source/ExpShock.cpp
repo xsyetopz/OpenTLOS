@@ -13,9 +13,15 @@
 
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gExpShockEnv;     /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gExpShockEnv[5] = {
+    { 0.0f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 0.75f, 2.0f, 0.0f, 0.0f },
+    { 0.5f, 0.5f, 3.0f, 0.0f, 0.0f },
+    { 0.75f, 0.25f, 4.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 5.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void ExpShock::UpdateParticles() {
     f64 sp28;
     f64 sp20;
@@ -23,6 +29,8 @@ void ExpShock::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r30_64;
     MKParticleSystem::Envelope *temp_r3_133;
+    MKParticleSystem::Envelope *temp_r5_138;
+    MKParticleSystem::Envelope *temp_r5_171;
     f32 temp_f30_71;
     f32 temp_f3_111;
     f32 temp_f3_147;
@@ -30,13 +38,11 @@ void ExpShock::UpdateParticles() {
     f32 temp_f6_135;
     f32 var_f0_151;
     f64 temp_f0_83;
+    s32 temp_r0_134;
     s32 temp_r3_107;
     s32 temp_r3_121;
     s32 temp_r4_132;
-    s32 temp_r6_136;
     void *temp_r29_67;
-    void *temp_r5_138;
-    void *temp_r5_171;
 
     this->unk128 += gUpdateTimeDelta;
     var_r30_64 = GetFirstParticle(&unksp8);
@@ -59,17 +65,17 @@ loop_12:
             temp_f3_111 = var_r30_64->unk20;
             var_r30_64->unk20 = (f32) fmod(temp_r3_107, temp_f3_111 + this->unkF0, (f32) temp_r3_107, temp_f3_111);
             temp_r3_121 = M2C_FIELD(temp_r29_67, s32 *, 0x14);
-            if (temp_f30_71 > (this->unk12C * *(this->unk134 + (temp_r3_121 * 0x14)))) {
+            if (temp_f30_71 > (this->unk12C * this->unk134[temp_r3_121].unk0)) {
                 M2C_FIELD(temp_r29_67, s32 *, 0x14) = (s32) (temp_r3_121 + 1);
             }
             temp_r4_132 = M2C_FIELD(temp_r29_67, s32 *, 0x14);
             temp_r3_133 = this->unk134;
+            temp_r0_134 = temp_r4_132 - 1;
             temp_f6_135 = this->unk12C;
-            temp_r6_136 = (temp_r4_132 - 1) * 0x14;
-            temp_r5_138 = temp_r3_133 + temp_r6_136;
-            temp_f5_140 = M2C_FIELD(temp_r5_138, f32 *, 0);
-            temp_f3_147 = -((temp_f6_135 * temp_f5_140) - temp_f30_71) / (temp_f6_135 * (*(temp_r3_133 + (temp_r4_132 * 0x14)) - temp_f5_140));
-            var_r30_64->unk1C = M2C_FIELD(temp_r29_67, f32 *, 0x20) * ((temp_f3_147 * M2C_FIELD(temp_r5_138, f32 *, 0xC)) + M2C_FIELD(temp_r5_138, f32 *, 4));
+            temp_r5_138 = &temp_r3_133[temp_r0_134];
+            temp_f5_140 = temp_r5_138->unk0;
+            temp_f3_147 = -((temp_f6_135 * temp_f5_140) - temp_f30_71) / (temp_f6_135 * (temp_r3_133[temp_r4_132].unk0 - temp_f5_140));
+            var_r30_64->unk1C = M2C_FIELD(temp_r29_67, f32 *, 0x20) * ((temp_f3_147 * temp_r5_138->unkC) + temp_r5_138->unk4);
             var_f0_151 = var_r30_64->unk1C;
             if (var_f0_151 < 1.0f) {
 
@@ -82,8 +88,8 @@ loop_12:
                 var_f0_151 = 0.0f;
             }
             var_r30_64->unk1C = var_f0_151;
-            temp_r5_171 = this->unk134 + temp_r6_136;
-            var_r30_64->unk28 = M2C_FIELD(temp_r29_67, f32 *, 0x1C) * ((temp_f3_147 * M2C_FIELD(temp_r5_171, f32 *, 0x10)) + M2C_FIELD(temp_r5_171, f32 *, 8));
+            temp_r5_171 = &this->unk134[temp_r0_134];
+            var_r30_64->unk28 = M2C_FIELD(temp_r29_67, f32 *, 0x1C) * ((temp_f3_147 * temp_r5_171->unk10) + temp_r5_171->unk8);
             var_r30_64 = GetNextParticle(&unksp8);
         }
         goto loop_12;
@@ -115,11 +121,10 @@ void ExpShock::Deinit() {
     MKParticleSystem::Deinit();
 }
 
-void ExpShock::LoadDone() {
+s32 ExpShock::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gExpShockEnv'
 void ExpShock::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 200.5f;
@@ -127,12 +132,11 @@ void ExpShock::Init() {
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gExpShockEnv, 5);
+    SetEnvelope(gExpShockEnv, 5);
     SetMaxParticleAge(0.25f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif
 
 void ExpShockDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

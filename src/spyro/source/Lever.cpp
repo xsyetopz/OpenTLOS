@@ -180,7 +180,7 @@ block_28:
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-void Lever::Update() {
+void *Lever::Update() {
     s32 sp8;
     KDSoundPlayer *temp_r3_388;
     KDSynkerPlayer3 *temp_r3_354;
@@ -231,12 +231,12 @@ void Lever::Update() {
 }
 #endif
 
-void Lever::Resolve() {
+f32 Lever::Resolve() {
     KDPropEx::Resolve();
 }
 
 #if 0 // DRAFT: ')' expected
-void Lever::LoadDone() {
+s32 Lever::LoadDone() {
     Matrix sp50;
     Matrix sp10;
 

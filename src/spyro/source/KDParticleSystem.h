@@ -19,7 +19,7 @@ class KDParticleSystem : public MKBaseParticleSystem {  // base: ctor/dtor vtabl
 public:
     virtual ~KDParticleSystem(void);
     virtual void Init(void);
-    virtual void GetName(void);
+    virtual void * GetName(void);
     virtual void UpdateParticles(void);
     void KDConfigureSystemData(KDParticleSystem *, MKParticle *);
     /* 0x0e8 */ u8 padE8[0xc];
@@ -31,7 +31,7 @@ class KDEnvParticleSystem : public KDParticleSystem {  // base: ctor/dtor vtable
 public:
     virtual ~KDEnvParticleSystem(void);
     virtual void Init(void);
-    virtual void GetName(void);
+    virtual void * GetName(void);
     virtual void UpdateParticles(void);
     KDEnvParticleSystem(void);
     void KDEnvConfigureSystemData(KDParticleSystem *, MKParticle *);
@@ -71,11 +71,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDEnvParticleSystem::KDEnvParticleSystem() {
-    return this;
 }
-#endif
 
 inline KDEnvParticleSystem::~KDEnvParticleSystem() {
     s32 temp_cr0_eq_9982;
@@ -91,15 +88,12 @@ inline KDEnvParticleSystem::~KDEnvParticleSystem() {
     }
 }
 
-inline void KDEnvParticleSystem::GetName() {
+inline void *KDEnvParticleSystem::GetName() {
 
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDEnvParticleSystemDescriptor::KDEnvParticleSystemDescriptor() {
-    return this;
 }
-#endif
 
 inline KDParticleSystem::~KDParticleSystem() {
     s32 temp_cr0_eq_8259;
@@ -113,8 +107,8 @@ inline KDParticleSystem::~KDParticleSystem() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void KDParticleSystem::GetName() {
+#if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to
+inline void *KDParticleSystem::GetName() {
     return "KDParticles";
 }
 #endif

@@ -20,7 +20,7 @@ public:
     virtual void Init(void);
     virtual void Deinit(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void UpdateTrail(void);
     void InitData(MKModel *, const int &, char *, const int &, const MKVector4 &, const float &, bool, float);

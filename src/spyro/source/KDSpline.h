@@ -62,25 +62,19 @@ extern f32 * KDSpline_AccelerationMixer;
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDSpline::KDSpline() {
     this->unk0 = 0;
     this->unk4 = 0;
     this->unk8 = 0.0f;
     this->unkC = 0;
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDUniformSpline::KDUniformSpline() {
     this->unk0 = 0;
     this->unk4 = 0;
     this->unk8 = 0.0f;
     this->unkC = 0;
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 inline void KDUniformSpline::GetAcceleration(float arg0) const {

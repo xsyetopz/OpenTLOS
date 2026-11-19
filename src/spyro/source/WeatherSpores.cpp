@@ -16,9 +16,15 @@
 f64 fmod(s32, f32, f32, f32);                       /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKParticleSystem::Envelope'
-static MKParticleSystem::Envelope gWeatherSporesPSEnv; /* unable to generate initializer: confusing struct layout */
+static MKParticleSystem::Envelope gWeatherSporesPSEnv[5] = {
+    { 0.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+    { 0.25f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.5f, 1.0f, 1.0f, 0.0f, 0.0f },
+    { 0.75f, 0.75f, 1.0f, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
+};
 
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void WeatherSporesPS::UpdateParticles() {
     f64 sp88;
     f64 sp80;
@@ -36,6 +42,8 @@ void WeatherSporesPS::UpdateParticles() {
     f64 sp10;
     MKParticleChunk *var_r31_74;
     MKParticleSystem::Envelope *temp_r3_211;
+    MKParticleSystem::Envelope *temp_r5_215;
+    MKParticleSystem::Envelope *temp_r5_247;
     f32 temp_f25_140;
     f32 temp_f26_143;
     f32 temp_f27_147;
@@ -49,13 +57,11 @@ void WeatherSporesPS::UpdateParticles() {
     f64 temp_f0_114;
     f64 temp_f0_161;
     f64 temp_f0_93;
+    s32 temp_r0_212;
     s32 temp_r3_185;
     s32 temp_r3_199;
     s32 temp_r4_210;
-    s32 temp_r6_214;
     void *temp_r30_77;
-    void *temp_r5_215;
-    void *temp_r5_247;
 
     this->unk128 += gUpdateTimeDelta;
     var_r31_74 = GetFirstParticle(&unksp8);
@@ -98,17 +104,17 @@ loop_12:
             temp_f3_189 = var_r31_74->unk20;
             var_r31_74->unk20 = (f32) fmod(temp_r3_185, temp_f3_189 + this->unkF0, (f32) temp_r3_185, temp_f3_189);
             temp_r3_199 = M2C_FIELD(temp_r30_77, s32 *, 0x14);
-            if (temp_f28_81 > (this->unk12C * *(this->unk134 + (temp_r3_199 * 0x14)))) {
+            if (temp_f28_81 > (this->unk12C * this->unk134[temp_r3_199].unk0)) {
                 M2C_FIELD(temp_r30_77, s32 *, 0x14) = (s32) (temp_r3_199 + 1);
             }
             temp_r4_210 = M2C_FIELD(temp_r30_77, s32 *, 0x14);
             temp_r3_211 = this->unk134;
+            temp_r0_212 = temp_r4_210 - 1;
             temp_f5_213 = this->unk12C;
-            temp_r6_214 = (temp_r4_210 - 1) * 0x14;
-            temp_r5_215 = temp_r3_211 + temp_r6_214;
-            temp_f4_217 = M2C_FIELD(temp_r5_215, f32 *, 0);
-            temp_f3_224 = -((temp_f5_213 * temp_f4_217) - temp_f28_81) / (temp_f5_213 * (*(temp_r3_211 + (temp_r4_210 * 0x14)) - temp_f4_217));
-            var_r31_74->unk1C = (temp_f3_224 * M2C_FIELD(temp_r5_215, f32 *, 0xC)) + M2C_FIELD(temp_r5_215, f32 *, 4);
+            temp_r5_215 = &temp_r3_211[temp_r0_212];
+            temp_f4_217 = temp_r5_215->unk0;
+            temp_f3_224 = -((temp_f5_213 * temp_f4_217) - temp_f28_81) / (temp_f5_213 * (temp_r3_211[temp_r4_210].unk0 - temp_f4_217));
+            var_r31_74->unk1C = (temp_f3_224 * temp_r5_215->unkC) + temp_r5_215->unk4;
             var_f0_227 = var_r31_74->unk1C;
             if (var_f0_227 < 1.0f) {
 
@@ -121,8 +127,8 @@ loop_12:
                 var_f0_227 = 0.0f;
             }
             var_r31_74->unk1C = var_f0_227;
-            temp_r5_247 = this->unk134 + temp_r6_214;
-            var_r31_74->unk28 = M2C_FIELD(temp_r30_77, f32 *, 0x18) * ((temp_f3_224 * M2C_FIELD(temp_r5_247, f32 *, 0x10)) + M2C_FIELD(temp_r5_247, f32 *, 8));
+            temp_r5_247 = &this->unk134[temp_r0_212];
+            var_r31_74->unk28 = M2C_FIELD(temp_r30_77, f32 *, 0x18) * ((temp_f3_224 * temp_r5_247->unk10) + temp_r5_247->unk8);
             var_r31_74 = GetNextParticle(&unksp8);
         }
         goto loop_12;
@@ -151,7 +157,6 @@ void WeatherSporesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const f
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gWeatherSporesPSEnv'
 void WeatherSporesPS::Init() {
     MKParticleSystem::Init();
     this->unkA8 = 10.5f;
@@ -159,9 +164,8 @@ void WeatherSporesPS::Init() {
     this->unk108 = 0.0f;
     this->unk10C = -100.0f;
     this->unk110 = 0.0f;
-    SetEnvelope(&gWeatherSporesPSEnv, 5);
+    SetEnvelope(gWeatherSporesPSEnv, 5);
     SetMaxParticleAge(5.0f);
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
-#endif

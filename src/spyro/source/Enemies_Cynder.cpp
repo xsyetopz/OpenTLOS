@@ -157,7 +157,7 @@ static s32 *cynderTier3NodeBlurChains[5] = {
 static u8 lit_895 = 1;
 static u8 lit_1140 = 1;
 
-void EnemyTest::LoadDone() {
+s32 EnemyTest::LoadDone() {
     Enemy::LoadDone();
 }
 
@@ -663,13 +663,11 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier3::Spawn(EnemyGeneratorDoor *arg0) {
     M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
+    ((EnemyGoal_Think *) this->unkA3C)->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
-#endif
 
 void CynderTier3::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
@@ -677,7 +675,7 @@ void CynderTier3::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: undefined identifier 'unkC'
-void CynderTier3::Update() {
+void *CynderTier3::Update() {
     s32 sp8;
     u8 var_r27_1104;
     u8 var_r28_1102;
@@ -725,7 +723,7 @@ void CynderTier3::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'cynderTier3NodeBlurDef'
-void CynderTier3::LoadDone() {
+s32 CynderTier3::LoadDone() {
     Enemy::LoadDone();
     this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
     this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier3NodeBlurDef, 0x14, cynderTier3NodeBlurChains, 5, 5, 1U);
@@ -791,7 +789,7 @@ void CynderTier3::Init() {
         M2C_FIELD(temp_r4_1321, s8 *, 9) = 1;
     }
     M2C_FIELD(temp_r4_1321, s32 *, 0x10) = 0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1269, (Goal<Enemy> *) this->unkB10);
+    temp_r31_1269->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     this->unkB18.unk0 = 0.0f;
     this->unkB18.unk4 = 0.0f;
     this->unkB18.unk8 = 0.0f;
@@ -903,22 +901,20 @@ void CynderTier2TrainDescriptor::Init() {
     this->unk2B4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier2::Spawn(EnemyGeneratorDoor *arg0) {
     M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
+    ((EnemyGoal_Think *) this->unkA3C)->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
-#endif
 
-void CynderTier2::Update() {
+void *CynderTier2::Update() {
     Enemy::Update();
     TestForSpikes();
     TestForTraps();
 }
 
 #if 0 // DRAFT: undefined identifier 'cynderTier2NodeBlurDef'
-void CynderTier2::LoadDone() {
+s32 CynderTier2::LoadDone() {
     Enemy::LoadDone();
     this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
     this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier2NodeBlurDef, 0x13, cynderTier2NodeBlurChains, 5, 5, 1U);
@@ -981,7 +977,7 @@ void CynderTier2::Init() {
             M2C_FIELD(temp_r4_1785, s8 *, 9) = 1;
         }
         M2C_FIELD(temp_r4_1785, s32 *, 0x10) = 0;
-        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1737, (Goal<Enemy> *) this->unkB10);
+        temp_r31_1737->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     }
 }
 #endif
@@ -1093,7 +1089,7 @@ void CynderTier1::DefrostBall() {
         SetMovementType((CharacterMoveType) 0);
         SetInvulnerableToMeleeAttacks(0U, 1U);
         SetupEnemyRegion(this->unk588, 1000.0f);
-        temp_r3_1987 = checked_cast<P15EnemyGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA40);
+        temp_r3_1987 = checked_cast<EnemyGoal_Think *, Goal<Enemy>>((Goal<Enemy> *) this->unkA40);
         temp_r3_1987->RemoveAllInactiveSubgoals(0x5B);
         if ((this->unkAC8 > 0.0f) && (temp_r3_1987->IsPresent(0x5B) == 0)) {
             sp18 = M2C_FIELD(this, f64 *, 0xC0) * 5.53552857e-315;
@@ -1715,37 +1711,33 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 s32 CynderTier1::Spawn(SpawnPointObject *arg0) {
     if (M2C_FIELD(arg0->unk4, s32 *, 4) & 0x200) {
-        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB14);
+        ((EnemyGoal_Think *) this->unkA3C)->SetSpawnGoal((Goal<Enemy> *) this->unkB14);
     }
     Enemy::Spawn(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier1::Spawn(EnemyGeneratorDoor *arg0) {
     M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
+    ((EnemyGoal_Think *) this->unkA3C)->SetSpawnGoal((Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
-#endif
 
-void CynderTier1::Update() {
+void *CynderTier1::Update() {
     Enemy::Update();
     TestForSpikes();
 }
 
 #if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match
-void CynderTier1::Resolve() {
+f32 CynderTier1::Resolve() {
     Enemy::Resolve();
     this->unkB18 = checked_cast<BallDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("CynderTier1Ball"));
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'cynderTier1NodeBlurDef'
-void CynderTier1::LoadDone() {
+s32 CynderTier1::LoadDone() {
     Enemy::LoadDone();
     this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
     this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier1NodeBlurDef, 0x13, cynderTier1NodeBlurChains, 5, 5, 1U);

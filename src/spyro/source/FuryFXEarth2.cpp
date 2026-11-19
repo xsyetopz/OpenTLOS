@@ -785,7 +785,7 @@ void FuryFXEarth2::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
-void FuryFXEarth2::Update() {
+void *FuryFXEarth2::Update() {
     MKCollisionResult sp290;
     s8 sp288;
     f64 sp280;
@@ -1213,7 +1213,7 @@ loop_49:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXEarth2::Resolve() {
+f32 FuryFXEarth2::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -1258,7 +1258,7 @@ void FuryFXEarth2::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void FuryFXEarth2::LoadDone() {
+s32 FuryFXEarth2::LoadDone() {
     void **temp_r6_2089;
     void *temp_r31_2091;
 

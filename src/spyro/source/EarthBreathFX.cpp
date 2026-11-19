@@ -1406,7 +1406,7 @@ void EarthBreathFX::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-void EarthBreathFX::Update() {
+void *EarthBreathFX::Update() {
     f64 spA0;
     f64 sp98;
     f64 sp90;
@@ -1515,7 +1515,7 @@ void EarthBreathFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void EarthBreathFX::Resolve() {
+f32 EarthBreathFX::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

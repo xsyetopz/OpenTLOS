@@ -102,7 +102,7 @@ loop_6:
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void FlowerCritter::Update() {
+void *FlowerCritter::Update() {
     s8 sp278;
     s32 sp274;
     s32 sp270;
@@ -385,7 +385,7 @@ loop_26:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void FlowerCritter::LoadDone() {
+s32 FlowerCritter::LoadDone() {
     s8 sp1C8;
     s32 sp1C4;
     s32 sp1C0;

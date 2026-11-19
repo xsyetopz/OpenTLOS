@@ -32,7 +32,7 @@
 
 extern M2C_UNK gb;
 
-void EnvironmentFX::Update() {
+void *EnvironmentFX::Update() {
     MKProp::Update();
     if ((M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), u8 (**)(void *), 0x58)(M2C_FIELD(&gb, void **, 0x3B8)) != 0) && ((u8) this->unk4C == 0)) {
         this->unk4C = 1;

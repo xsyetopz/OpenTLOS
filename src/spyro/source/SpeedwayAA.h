@@ -15,8 +15,8 @@ class SpeedwayAADescriptor;
 class SpeedwayAA : public Projectile {  // base: base ctor call
 public:
     virtual ~SpeedwayAA(void);
-    virtual void LoadDone(void);
-    virtual void Update(void);
+    virtual s32 LoadDone(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
@@ -34,19 +34,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SpeedwayAA::SpeedwayAA() {
-    return this;
 }
-#endif
 
 inline SpeedwayAA::~SpeedwayAA() {
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SpeedwayAADescriptor::SpeedwayAADescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPEEDWAYAA_H

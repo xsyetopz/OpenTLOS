@@ -34,20 +34,20 @@ public:
     virtual ~IceBoss(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void SetDefaults(void);
-    virtual void EnableCollision(bool);
+    virtual u8 EnableCollision(bool);
     virtual void Despawn(bool);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     IceBoss(void);
     void UpdateWeaponCollisionCapsule(void);
     void CalcSubObjWorldMatrix(int, Matrix *);
@@ -215,7 +215,6 @@ inline IceBoss::IceBoss() {
     this->unkFEC.Init();
     this->unk1014 = 0;
     this->unk103C = 0;
-    return this;
 }
 #endif
 
@@ -240,10 +239,7 @@ inline IceBoss::~IceBoss() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBossDescriptor::IceBossDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_ICEBOSS_H

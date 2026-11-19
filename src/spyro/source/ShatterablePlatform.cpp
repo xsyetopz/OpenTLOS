@@ -74,7 +74,7 @@ void ShatterablePlatform::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void ShatterablePlatform::Update() {
+void *ShatterablePlatform::Update() {
     void *temp_r31_124;
 
     if ((s32) this->unk180 == (s32) M2C_FIELD(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160)) {
@@ -94,7 +94,7 @@ void ShatterablePlatform::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
-void ShatterablePlatform::LoadDone() {
+s32 ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     this->unk208 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
     this->unk210 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);

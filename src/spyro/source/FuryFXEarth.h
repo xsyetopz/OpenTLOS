@@ -26,8 +26,8 @@ public:
     virtual ~FuryFXEarth(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     FuryFXEarth(void);
     void TriggerBoulders(void);
@@ -66,12 +66,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FuryFXEarth::FuryFXEarth() {
     this->unk168.unk4 = 0;
-    return this;
 }
-#endif
 
 inline FuryFXEarth::~FuryFXEarth() {
     s32 temp_cr0_eq_15;

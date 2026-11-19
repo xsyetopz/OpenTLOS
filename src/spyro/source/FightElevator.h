@@ -21,8 +21,8 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void UpdateMove(void);
@@ -86,7 +86,6 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FightElevator::FightElevator() {
     this->unk180 = 0;
     this->unk184 = 0;
@@ -96,9 +95,7 @@ inline FightElevator::FightElevator() {
     this->unk1E4 = 0;
     this->unk2B4.unk0 = 0;
     this->unk2B4.Init();
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline FightElevator::~FightElevator() {
@@ -114,10 +111,7 @@ inline FightElevator::~FightElevator() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FightElevatorDescriptor::FightElevatorDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FIGHTELEVATOR_H

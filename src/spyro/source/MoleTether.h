@@ -19,9 +19,9 @@ class MoleTether : public Shatterable {  // base: base ctor call
 public:
     virtual ~MoleTether(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *, bool);
     MoleTether(void);
@@ -49,7 +49,6 @@ public:
 inline MoleTether::MoleTether() {
     this->unkC8 = &__vt + 0x48;
     this->unk1C8 = 0;
-    return this;
 }
 #endif
 
@@ -62,10 +61,7 @@ inline MoleTether::~MoleTether() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MoleTetherDescriptor::MoleTetherDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MOLETETHER_H

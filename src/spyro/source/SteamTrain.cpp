@@ -1479,7 +1479,7 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
 }
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
-void SteamTrain::Update() {
+void *SteamTrain::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -1570,13 +1570,13 @@ void SteamTrain::Reset() {
     }
 }
 
-void SteamTrain::Resolve() {
+f32 SteamTrain::Resolve() {
     KDPropEx::Resolve();
     this->unk138.Resolve();
 }
 
 #if 0 // DRAFT: undefined identifier 'pSteamAnimEvents'
-void SteamTrain::LoadDone() {
+s32 SteamTrain::LoadDone() {
     s32 var_r30_2501;
     s32 var_r31_2502;
 
@@ -1596,7 +1596,7 @@ void SteamTrain::LoadDone() {
         var_r30_2501 += 1;
         var_r31_2502 += 4;
     } while (var_r30_2501 < 5);
-    Init__28KDStateMachine<10SteamTrain>FPQ228KDStateMachine<10SteamTrain>5StateP28KDStateMachine<10SteamTrain>((KDStateMachine<SteamTrain> *) &this->unk378, (KDStateMachine<SteamTrain>::State *) SteamTrain::states, NULL);
+    ((KDStateMachine<SteamTrain> *) &this->unk378)->Init((KDStateMachine<SteamTrain>::State *) SteamTrain::states, NULL);
     ((KDStateMachine<SteamTrain> *) &this->unk378)->SetState(this, 1, 0U);
     Disable();
 }

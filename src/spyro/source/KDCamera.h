@@ -29,9 +29,9 @@ class KDCamera : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~KDCamera(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     virtual void ResetCamera(void);
     virtual void ClearData(void);
@@ -39,9 +39,9 @@ public:
     virtual void DrawCamera(void);
     virtual void DrawText(void);
     virtual void Use(void);
-    virtual void GetFieldOfView(void);
+    virtual f32 GetFieldOfView(void);
     virtual f32 GetIdealFieldOfView(void);
-    virtual void IsUnderwater(void);
+    virtual s32 IsUnderwater(void);
     virtual u32 PlayerRotatedCamera(void);
     virtual void DeltaUpdate(void);
     virtual f32 GetDefaultDeltaTime(void);
@@ -58,7 +58,7 @@ public:
     virtual void SnapToSafetySetNextMode(void);
     virtual void CollSlideUpdate(const MKVector3 &);
     virtual void CameraEffectsMessage(MKMessage *);
-    virtual void CameraEffectsUpdate(void);
+    virtual u32 CameraEffectsUpdate(void);
     virtual void CameraWasTeleported(bool);
     virtual s32 IgnoreCollision(MKCollisionResult &);
     virtual void MiscMessage(MKMessage *);
@@ -401,11 +401,9 @@ inline void KDCamera::GetTarget() {
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void KDCamera::GetFieldOfView() {
+inline f32 KDCamera::GetFieldOfView() {
     return M2C_FIELD(this->unk0, f32 *, 0x70);
 }
-#endif
 
 inline f32 KDCamera::GetDefaultDeltaTime() {
     return 0.2f;
@@ -433,10 +431,8 @@ inline f32 *KDCamera::GetForceDirectionPtr() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void KDCamera::IsUnderwater() {
+inline s32 KDCamera::IsUnderwater() {
     return 0;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDCAMERA_H

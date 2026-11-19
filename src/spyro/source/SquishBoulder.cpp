@@ -469,7 +469,7 @@ void SquishBoulder::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
-void SquishBoulder::Update() {
+void *SquishBoulder::Update() {
     f64 sp70;
     f64 sp68;
     f64 sp60;

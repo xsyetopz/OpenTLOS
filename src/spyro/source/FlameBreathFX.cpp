@@ -1859,7 +1859,7 @@ void FlameBreathFX::Draw() {
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
-void FlameBreathFX::Update() {
+void *FlameBreathFX::Update() {
     f64 sp300;
     f64 sp2F8;
     f64 sp2F0;
@@ -2312,7 +2312,7 @@ void FlameBreathFX::Update() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FlameBreathFX::Resolve() {
+f32 FlameBreathFX::Resolve() {
     f64 spA0;
     f64 sp98;
     f64 sp90;

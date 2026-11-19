@@ -26,11 +26,11 @@ public:
     virtual ~TriggerProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Enable(void);
     virtual void Disable(void);
@@ -102,7 +102,7 @@ public:
     virtual ~TriggerPlaneProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     TriggerPlaneProp(void);
     /* 0x0c4 */ u8 padC4[0xdc];
     /* 0x1a0 */ MKProp* unk1A0;
@@ -180,7 +180,6 @@ inline TriggerPlaneProp::TriggerPlaneProp() {
     this->unkD0 = &__vt;
     this->unkD0 = &__vt;
     this->unkD0 = &__vt;
-    return this;
 }
 #endif
 

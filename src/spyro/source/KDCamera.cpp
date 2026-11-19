@@ -1290,7 +1290,7 @@ u8 KDCamera::TestUserStateFlag(unsigned int arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
-void KDCamera::CameraEffectsUpdate() {
+u32 KDCamera::CameraEffectsUpdate() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -2487,12 +2487,9 @@ f32 KDCamera::GetMoveYaw() {
     return 3.1415927f + M2C_FIELD(this->unk138, f32 *, 4);
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 KDCamera::KDCamera() {
     this->unk4C = 0;
-    return this;
 }
-#endif
 
 void KDCamera::Use() {
     Matrix sp30;
@@ -2800,11 +2797,11 @@ loop_3:
 }
 #endif
 
-void KDCamera::Resolve() {
+f32 KDCamera::Resolve() {
     MKProp::Resolve();
 }
 
-void KDCamera::LoadDone() {
+s32 KDCamera::LoadDone() {
     MKProp::LoadDone();
     ClearData();
     this->unk10 |= 0xC;

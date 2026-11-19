@@ -39,7 +39,7 @@ void SpeedwayAA::Draw() {
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-void SpeedwayAA::Update() {
+void *SpeedwayAA::Update() {
     MKCollisionResult sp130;
     Matrix spF0;
     Matrix spB0;
@@ -283,7 +283,7 @@ void SpeedwayAA::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2
     this->unk140 = 4.0f;
 }
 
-void SpeedwayAA::LoadDone() {
+s32 SpeedwayAA::LoadDone() {
     Projectile::LoadDone();
 }
 

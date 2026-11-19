@@ -11,7 +11,7 @@ class PitCover;
 class PitCover : public KDProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~PitCover(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Message(MKMessage *);
     /* 0x090 */ s32 unk90;
     /* 0x094 */ s32 unk94;

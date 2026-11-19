@@ -62,14 +62,14 @@ class MKWidget {
 public:
     virtual ~MKWidget(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void Draw(MKWidgetRenderContext);
     virtual void UpdateState(void);
     virtual void Update(void);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual MKWidget * GetWidgetUnderPoint(MKVector3);
     virtual void GetLocalToWorldMatrix(Matrix *);
-    virtual u8 IsContainer(void);
+    virtual s32 IsContainer(void);
     virtual u8 IsChildWidget(MKWidget *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -105,7 +105,7 @@ class MKWidgetButton : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetButton(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -125,7 +125,7 @@ class MKWidgetCheckBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetCheckBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -141,7 +141,7 @@ class MKWidgetCheckMark : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetCheckMark(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     MKWidgetCheckMark(MKWidgetDescriptor *);
@@ -155,7 +155,7 @@ class MKWidgetColor : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetColor(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     MKWidgetColor(MKWidgetDescriptor *);
@@ -167,7 +167,7 @@ class MKWidgetComboBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetComboBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -192,7 +192,7 @@ public:
     virtual void Draw(MKWidgetRenderContext);
     virtual void Update(void);
     virtual MKWidget * GetWidgetUnderPoint(MKVector3);
-    virtual u8 IsContainer(void);
+    virtual s32 IsContainer(void);
     virtual u8 IsChildWidget(MKWidget *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -223,7 +223,7 @@ class MKWidgetEditable : public MKWidgetContainer {  // base: ctor/dtor vtable s
 public:
     virtual ~MKWidgetEditable(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     void ContextMenuProc(int, void *);
     u32 EditableMessageHook(MKWidget *, unsigned int, unsigned int, void *);
     MKWidgetEditable(MKWidgetDescriptor *);
@@ -243,7 +243,7 @@ class MKWidgetEnvelope : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetEnvelope(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -260,7 +260,7 @@ class MKWidgetFrame : public MKWidgetContainer {  // base: ctor/dtor vtable stor
 public:
     virtual ~MKWidgetFrame(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     virtual void ArrangeChildren(void);
@@ -273,7 +273,7 @@ class MKWidgetFoldupFrame : public MKWidgetFrame {  // base: ctor/dtor vtable st
 public:
     virtual ~MKWidgetFoldupFrame(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -296,7 +296,7 @@ class MKWidgetImage : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetImage(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     MKWidgetImage(MKWidgetDescriptor *);
@@ -309,7 +309,7 @@ class MKWidgetScrollableFrame : public MKWidgetFrame {  // base: ctor/dtor vtabl
 public:
     virtual ~MKWidgetScrollableFrame(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void UpdateState(void);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
@@ -360,7 +360,7 @@ class MKWidgetListItem : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetListItem(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -404,7 +404,7 @@ class MKWidgetScrollBar : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetScrollBar(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -451,7 +451,7 @@ class MKWidgetString : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetString(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     MKWidgetString(MKWidgetDescriptor *);
@@ -507,7 +507,7 @@ class MKWidgetTextBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetTextBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     void FindCaretPos(void);
@@ -530,7 +530,7 @@ class MKWidgetThumb : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetThumb(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
     MKWidgetThumb(MKWidgetDescriptor *);
@@ -550,7 +550,7 @@ class MKWidgetVector : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetVector(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -572,7 +572,7 @@ class MKWidgetWindow : public MKWidgetFrame {  // base: vtable prefix
 public:
     virtual ~MKWidgetWindow(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -601,7 +601,7 @@ class MKWidgetWindowTitleBar : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetWindowTitleBar(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
-    virtual void Render(MKWidgetRenderContext *);
+    virtual s32 Render(MKWidgetRenderContext *);
     virtual MKWidget * TestPoint(MKVector3 *);
     virtual void BuildMetaData(int);
     virtual void BuildAggregateMetaData(void);
@@ -663,7 +663,7 @@ extern s8 * MKWIDGETTYPE_COLOR;
 
 #include <m2c_macros.h>
 
-inline u8 MKWidget::IsContainer() {
+inline s32 MKWidget::IsContainer() {
     return 0U;
 }
 
@@ -799,7 +799,7 @@ inline MKWidgetEditable *MKWidgetComboBox::MKWidgetComboBox_FactoryFunc() {
 inline MKWidgetContainer::~MKWidgetContainer() {
 }
 
-inline u8 MKWidgetContainer::IsContainer() {
+inline s32 MKWidgetContainer::IsContainer() {
     return 1;
 }
 

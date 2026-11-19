@@ -26,12 +26,12 @@ void Guardian::Draw() {
     KDProp::Draw();
 }
 
-void Guardian::Update() {
+void *Guardian::Update() {
     KDProp::Update();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void Guardian::LoadDone() {
+s32 Guardian::LoadDone() {
     MKAnim *var_r3_119;
     MKAnim *var_r3_137;
     MKAnim *var_r3_155;

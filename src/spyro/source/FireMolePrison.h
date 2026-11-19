@@ -13,7 +13,7 @@ public:
     virtual ~FireMolePrison(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     FireMolePrison(void);
     /* 0x208 */ s32 unk208;
@@ -26,7 +26,6 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline FireMolePrison::FireMolePrison() {
     this->unkC8 = &__vt + 0x48;
-    return this;
 }
 #endif
 

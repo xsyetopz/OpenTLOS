@@ -25,7 +25,7 @@ public:
     virtual void LoadResources(void) = 0;
     virtual void FreeResources(void) = 0;
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual UIContainer * Find(const char *);
     virtual s32 IsContainer(void) const;
     UIContainer * GetRoot(void) const;

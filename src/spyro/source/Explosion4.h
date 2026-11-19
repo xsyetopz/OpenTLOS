@@ -19,10 +19,10 @@ class Explosion4 : public MKProp {  // base: ctor/dtor vtable stores
 public:
     virtual ~Explosion4(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void Trigger(const MKVector3 &, float, bool, MKProp *, int, bool, bool, bool, bool);
     /* 0x04c */ ManagedLight* unk4C;

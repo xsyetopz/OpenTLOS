@@ -18,7 +18,7 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     /* 0x0b8 */ u8 padB8[0x8];
     /* 0x0c0 */ f32 unkC0;

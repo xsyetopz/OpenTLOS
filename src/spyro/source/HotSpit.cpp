@@ -46,7 +46,7 @@ extern M2C_UNK gb;
 extern MKPropDescriptor *pHotSpitDescriptor;
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void HotSpit::Update() {
+void *HotSpit::Update() {
     Matrix sp1F0;
     Matrix sp1B0;
     f64 sp1A0;                                      /* compiler-managed */
@@ -621,7 +621,7 @@ void HotSpit::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, i
     Projectile::Fire(arg0, arg1, arg2, arg3, arg4);
 }
 
-void HotSpit::LoadDone() {
+s32 HotSpit::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;

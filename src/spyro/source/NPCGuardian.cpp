@@ -71,7 +71,7 @@ void NPCGuardian::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
-void NPCGuardian::Resolve() {
+f32 NPCGuardian::Resolve() {
     MKSceneManager *temp_r3_74;
     s32 temp_r31_86;
     u32 temp_r3_78;
@@ -86,7 +86,7 @@ void NPCGuardian::Resolve() {
         }
     }
     temp_r31_86 = this->unkB1C;
-    M2C_FIELD(checked_cast<P21NPCGuardianGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA3C), s32 *, 0x20) = temp_r31_86;
+    M2C_FIELD(checked_cast<NPCGuardianGoal_Think *, Goal<Enemy>>((Goal<Enemy> *) this->unkA3C), s32 *, 0x20) = temp_r31_86;
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
@@ -94,7 +94,7 @@ void NPCGuardian::Resolve() {
 }
 #endif
 
-void NPCGuardian::LoadDone() {
+s32 NPCGuardian::LoadDone() {
     Enemy::LoadDone();
 }
 

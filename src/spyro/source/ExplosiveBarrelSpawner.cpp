@@ -37,7 +37,7 @@
 
 extern MKSceneManager *gMK;
 
-void ExplosiveBarrelSpawner::Update() {
+void *ExplosiveBarrelSpawner::Update() {
     void *temp_r3_44;
     void *temp_r3_53;
     void *temp_r3_58;
@@ -51,6 +51,7 @@ void ExplosiveBarrelSpawner::Update() {
     }
 }
 
+#if 0 // DRAFT: identifier 'ExplosiveBarrelSpawner::LoadDone()' redeclared
 void ExplosiveBarrelSpawner::LoadDone() {
     MKProp *temp_r3_87;
     s32 var_r30_81;
@@ -64,6 +65,7 @@ void ExplosiveBarrelSpawner::LoadDone() {
         var_r30_81 += 1;
     }
 }
+#endif
 
 s32 ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);

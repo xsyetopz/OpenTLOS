@@ -459,7 +459,7 @@ void ZapArcFX::Draw() {
 #endif
 
 #if 0 // DRAFT: illegal type
-void ZapArcFX::Update() {
+void *ZapArcFX::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -506,7 +506,7 @@ void ZapArcFX::Update() {
 }
 #endif
 
-void ZapArcFX::LoadDone() {
+s32 ZapArcFX::LoadDone() {
     GameProp::LoadDone();
     this->unkD0 = MKModel_GetNmbrOfSubObjects(this->unk4, (SubObjectType) 0);
 }

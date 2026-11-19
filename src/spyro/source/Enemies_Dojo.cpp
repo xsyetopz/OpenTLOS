@@ -115,11 +115,9 @@ static u8 lit_1044 = 1;
 static u8 lit_1251 = 1;
 static u8 lit_1411 = 1;
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void DojoTier2::GetCharacterName() {
+s32 DojoTier2::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x360);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier2::Despawn(bool arg0) {
@@ -1216,11 +1214,9 @@ void DojoTier2Descriptor::Init() {
     EnemyDescriptor::Init();
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-void DojoTier1::GetCharacterName() {
+s32 DojoTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x35C);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier1::Despawn(bool arg0) {
@@ -2425,7 +2421,7 @@ void DojoEnemy::Deinit() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk2A8'
-void DojoEnemy::LoadDone() {
+s32 DojoEnemy::LoadDone() {
     CharacterDojoFX *temp_r3_4533;
     s32 temp_r31_4530;
 

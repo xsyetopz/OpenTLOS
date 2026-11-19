@@ -88,10 +88,11 @@ void DragonBustDoor::Draw() {
     GameProp::Draw();
 }
 
-void DragonBustDoor::Update() {
+void *DragonBustDoor::Update() {
     Door::Update();
 }
 
+#if 0 // DRAFT: identifier 'DragonBustDoor::LoadDone()' redeclared
 void DragonBustDoor::LoadDone() {
     s32 var_r30_184;
     s32 var_r31_186;
@@ -109,6 +110,7 @@ void DragonBustDoor::LoadDone() {
         var_r31_186 += 8;
     } while (var_r30_184 < 4);
 }
+#endif
 
 s32 DragonBustDoor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_215;

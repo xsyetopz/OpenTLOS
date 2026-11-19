@@ -564,7 +564,7 @@ void FuryFXElectricity::Draw() {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
-void FuryFXElectricity::Update() {
+void *FuryFXElectricity::Update() {
     s8 sp8F0;
     f64 sp8E8;
     f64 sp8E0;
@@ -1619,7 +1619,7 @@ loop_151:
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-void FuryFXElectricity::Resolve() {
+f32 FuryFXElectricity::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

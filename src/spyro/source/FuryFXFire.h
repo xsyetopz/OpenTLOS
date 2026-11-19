@@ -29,8 +29,8 @@ public:
     virtual ~FuryFXFire(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     FuryFXFire(void);
@@ -78,7 +78,6 @@ public:
 inline FuryFXFire::FuryFXFire() {
     __construct_array(&this->unk110, (MKAnimScript *(*)(MKAnimScript *)) &FuryFXFire::DragonStruct::DragonStruct, (SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16)) &FuryFXFire::DragonStruct::~DragonStruct, 0x80, 3);
     this->unk290.unk4 = 0;
-    return this;
 }
 #endif
 
@@ -113,12 +112,9 @@ inline FuryFXFire::DragonStruct::~DragonStruct() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FuryFXFire::DragonStruct::DragonStruct() {
     M2C_FIELD(this, s32 *, 0x24) = 0;
     M2C_FIELD(this, s32 *, 0x4C) = 0;
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FURYFXFIRE_H

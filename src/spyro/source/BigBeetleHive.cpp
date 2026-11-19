@@ -349,7 +349,7 @@ void BigBeetleHive::UpdateAttachedNests() {
 }
 
 #if 0 // DRAFT: ')' expected
-void BigBeetleHive::Update() {
+void *BigBeetleHive::Update() {
     Shatterable::Update();
     UpdateAttachedNests();
     if ((s32) this->unk180 == (s32) (M2C_FIELD(checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
@@ -359,7 +359,7 @@ void BigBeetleHive::Update() {
 #endif
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
-void BigBeetleHive::Resolve() {
+f32 BigBeetleHive::Resolve() {
     s32 var_r28_585;
     s32 var_r31_587;
     u16 temp_ret_599;
@@ -381,7 +381,7 @@ void BigBeetleHive::Resolve() {
 }
 #endif
 
-void BigBeetleHive::LoadDone() {
+s32 BigBeetleHive::LoadDone() {
     Shatterable::LoadDone();
     this->unk1A8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1"));
 }

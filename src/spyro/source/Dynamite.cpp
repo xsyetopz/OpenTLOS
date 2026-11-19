@@ -210,7 +210,7 @@ void Dynamite::Activate() {
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void Dynamite::Update() {
+void *Dynamite::Update() {
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
@@ -617,7 +617,7 @@ void Dynamite::SetInitialState() {
 }
 #endif
 
-void Dynamite::LoadDone() {
+s32 Dynamite::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp14;

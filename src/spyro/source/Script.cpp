@@ -100,7 +100,7 @@ void ScriptProp::Reset() {
     this->unk55 = 0;
 }
 
-void ScriptProp::Update() {
+void *ScriptProp::Update() {
     s32 temp_r3_218;
     u8 temp_r3_240;
 

@@ -51,7 +51,7 @@ void ScryingPool::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void ScryingPool::Update() {
+void *ScryingPool::Update() {
     s32 sp8;
     s32 temp_r4_104;
     u8 var_r30_154;

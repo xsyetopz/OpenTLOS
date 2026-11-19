@@ -139,7 +139,7 @@ block_18:
     }
 }
 
-void Gondola::Update() {
+void *Gondola::Update() {
     s32 temp_r0_245;
 
     if (M2C_FIELD(*gb, u8 (**)(void **, void ***), 0x70)(gb, &gb) == 0) {
@@ -899,7 +899,7 @@ void Gondola::UpdateMove() {
 }
 #endif
 
-void Gondola::Resolve() {
+f32 Gondola::Resolve() {
     s8 sp14;
     MKCollisionInfo *sp10;
     s32 spC;
@@ -917,7 +917,7 @@ void Gondola::Resolve() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_1440, 0x40F);
 }
 
-void Gondola::LoadDone() {
+s32 Gondola::LoadDone() {
     Platform::LoadDone();
     this->unk1B0.LoadDone();
     this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp("SkyClouds"));

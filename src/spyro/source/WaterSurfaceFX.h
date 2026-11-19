@@ -18,7 +18,7 @@ public:
     virtual ~WaterSurfaceFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void UpdateRipples(void);
     void DrawRipple(WaterSurfaceFX::Ripple *);

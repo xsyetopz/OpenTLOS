@@ -379,7 +379,7 @@ void CynderBreathFX::BreathFire() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void CynderBreathFX::Update() {
+void *CynderBreathFX::Update() {
     s8 spA0;
     f64 sp98;
     f64 sp90;
@@ -445,7 +445,7 @@ void CynderBreathFX::Update() {
 }
 #endif
 
-void CynderBreathFX::Resolve() {
+f32 CynderBreathFX::Resolve() {
     MKProp::Resolve();
 }
 

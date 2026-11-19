@@ -17,8 +17,8 @@ public:
     virtual ~NPCGuardian(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
-    virtual void Resolve(void);
+    virtual s32 LoadDone(void);
+    virtual f32 Resolve(void);
     virtual void Message(MKMessage *);
     NPCGuardian(void);
     /* 0xb10 */ s8 unkB10;
@@ -35,7 +35,6 @@ inline NPCGuardian::NPCGuardian() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB14.unk0 = 0;
     this->unkB14.Init();
-    return this;
 }
 #endif
 

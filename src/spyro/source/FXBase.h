@@ -51,16 +51,10 @@ inline FXBase::~FXBase() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FXBase::FXBase() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FXBaseDescriptor::FXBaseDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_FXBASE_H

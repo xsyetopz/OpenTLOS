@@ -1649,7 +1649,7 @@ loop_62:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void LiquidFX::Update() {
+void *LiquidFX::Update() {
     u8 sp360;
     s32 sp35C;
     void *sp358;
@@ -2452,7 +2452,7 @@ void LiquidFX::Update() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'IMPACT_LIGHT_RADIUS'
-void LiquidFX::Resolve() {
+f32 LiquidFX::Resolve() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -2497,7 +2497,7 @@ void LiquidFX::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
-void LiquidFX::LoadDone() {
+s32 LiquidFX::LoadDone() {
     GameProp::LoadDone();
     this->unk3F64 = MKMaterial_Create("p_debris_lava");
     this->unk3F6C = MKMaterial_Create("liquidice");

@@ -17,7 +17,7 @@ public:
     virtual ~FootStepFX(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     void EmitFootFX(const MKVector3 &, const MKVector3 &, const MKVector3 &, MKVector4, float, float, int);
     void AddFootStep(const MKVector3 &, const MKVector3 &, const MKVector3 &, float);

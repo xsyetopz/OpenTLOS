@@ -92,7 +92,7 @@ loop_2:
     }
 }
 
-void UIContainer::Message(UIMessage *arg0) {
+s32 UIContainer::Message(UIMessage *arg0) {
     UIObject *var_r31_134;
 
     if ((s32) arg0->unk0 != 1) {

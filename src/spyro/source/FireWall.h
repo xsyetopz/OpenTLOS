@@ -17,9 +17,9 @@ public:
     virtual ~FireWall(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     /* 0x04c */ s32 unk4C;
     /* 0x050 */ MKHeap* unk50;

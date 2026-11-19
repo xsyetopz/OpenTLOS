@@ -80,7 +80,6 @@ u8 FireTier1Goal_Patrol::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier1Goal_Patrol::Activate() {
     f32 sp20;
     f32 sp1C;
@@ -113,13 +112,13 @@ void FireTier1Goal_Patrol::Activate() {
             sp10 = M2C_FIELD(temp_r3_76, f64 *, 0x50);
             if (this->unk20->SelectFlyToWallPos(*((MKVector3 *) &sp8), &this->unk48, (MKVector3 *) &sp18, &this->unk38) != 0) {
                 if (!(((u8) this->unkC->unk6B5 >> 4U) & 1)) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+                    AddSubgoal((Goal<Enemy> *) this->unk24);
                     temp_r3_96 = this->unk24;
                     M2C_FIELD(temp_r3_96, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r3_96, u8 *, 0x10) & ~0x80);
                 }
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+                AddSubgoal((Goal<Enemy> *) this->unk2C);
+                AddSubgoal((Goal<Enemy> *) this->unk28);
+                AddSubgoal((Goal<Enemy> *) this->unk30);
                 this->unkC->unk8C0.Set(this->unk38, 1U);
                 temp_r5_118 = this->unk2C;
                 M2C_FIELD(temp_r5_118, AITargetData **, 0x14) = &this->unkC->unk8C0;
@@ -136,10 +135,9 @@ void FireTier1Goal_Patrol::Activate() {
             }
         }
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+    AddSubgoal((Goal<Enemy> *) this->unk30);
     ((EnemyGoal_WanderAroundPointArb *) this->unk30)->SetParams(this->unk48, MKVector3::up, 200.0f, MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f));
 }
-#endif
 
 void FireTier1Goal_Patrol::Reset() {
     this->unk8 = 1;
@@ -290,7 +288,6 @@ u8 EnemyGoal_WanderAroundPointArb::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_WanderAroundPointArb::Activate() {
     MKVector3 sp8;
     Goal<Enemy> *temp_r8_501;
@@ -300,7 +297,7 @@ void EnemyGoal_WanderAroundPointArb::Activate() {
     }
     this->unk8 = 0;
     RemoveAllSubgoals();
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+    AddSubgoal((Goal<Enemy> *) this->unk28);
     temp_r8_501 = this->unk28;
     M2C_FIELD(temp_r8_501, s32 *, 0x10) = 0;
     M2C_FIELD(temp_r8_501, s32 *, 0x14) = 2;
@@ -309,11 +306,10 @@ void EnemyGoal_WanderAroundPointArb::Activate() {
     M2C_FIELD(temp_r8_501, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r8_501, u8 *, 0x20) & ~0x40);
     if (this->unk20->SelectMoveToWallPos(this->unk30, this->unk40, &sp8) != 0) {
         this->unkC->unk8C0.Set(sp8, 1U);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
         M2C_FIELD(this->unk24, f32 *, 0x10) = 20.0f;
     }
 }
-#endif
 
 void EnemyGoal_WanderAroundPointArb::SetParams(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&arg0, f64 *, 0);
@@ -1318,23 +1314,19 @@ void EnemyGoal_FlyTakeoff::Activate() {
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xB, 0, 0, 0.15f, 0U, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier1Goal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier1Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk910'
 void FireTier1Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
@@ -1407,35 +1399,31 @@ block_12:
             temp_r4_2583->unk93C = arg0->unk2C;
             temp_r4_2583->unk940 = arg0->unk30;
             temp_r4_2583->unk944 = arg0->unk34;
-            AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+            AddSubgoalToFront((Goal<Enemy> *) this->unk2C);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier1Goal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x64) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier1Goal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_2667;
 
     if (IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
         temp_r4_2667 = this->unk28;
         M2C_FIELD(temp_r4_2667, AITargetData **, 0x20) = arg0;
         M2C_FIELD(temp_r4_2667, s32 *, 0x4C) = 4;
         M2C_FIELD(temp_r4_2667, u8 *, 0x50) = (u8) (M2C_FIELD(temp_r4_2667, u8 *, 0x50) | 0x80);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkB09'
 void FireTier1Goal_Think::Arbitrate() {
@@ -1503,7 +1491,7 @@ void FireTier1Goal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_2833'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 FireTier1Goal_Think::Update() {
     Character *temp_r3_2833;
 

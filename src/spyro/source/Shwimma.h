@@ -15,10 +15,10 @@ class ShwimmaCritter : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~ShwimmaCritter(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
-    virtual void Update(void);
+    virtual f32 Resolve(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     ShwimmaCritter(void);
     void SetAlertState(Shwimma *);
@@ -65,11 +65,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ShwimmaCritter::ShwimmaCritter() {
-    return this;
 }
-#endif
 
 inline ShwimmaCritter::~ShwimmaCritter() {
     s32 temp_cr0_eq_15;
@@ -85,10 +82,7 @@ inline ShwimmaCritter::~ShwimmaCritter() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ShwimmaCritterDescriptor::ShwimmaCritterDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SHWIMMA_H

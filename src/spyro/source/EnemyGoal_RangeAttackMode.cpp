@@ -746,17 +746,17 @@ void EnemyGoal_RangeAttackMode::Activate() {
                 }
                 temp_f1_1202 = M2C_FIELD(this->unk20->unk40.Get()->__vptr, f32 (**)(), 0x40)();
                 if (((var_r29_1191 > 3) && !(M2C_FIELD(this->unkC, u8 *, 0xB00) & 1)) || (((3.0f + temp_f1_1202) > M2C_FIELD(&gb, f32 *, 0x30C)) && (M2C_FIELD(&gb, f32 *, 0x30C) > 3.0f)) || ((u8) temp_r31_1126 == 0)) {
-                    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+                    AddSubgoal((Goal<Enemy> *) this->unk24);
                     temp_r4_1224 = this->unk24;
                     M2C_FIELD(temp_r4_1224, s32 *, 0x10) = 1;
                     M2C_FIELD(temp_r4_1224, s32 *, 0x14) = 0xA;
                     return;
                 }
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
-                AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+                AddSubgoal((Goal<Enemy> *) this->unk28);
+                AddSubgoal((Goal<Enemy> *) this->unk24);
             }
         } else {
-            AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+            AddSubgoal((Goal<Enemy> *) this->unk24);
         }
     } else {
 block_5:

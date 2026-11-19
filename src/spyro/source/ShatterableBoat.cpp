@@ -836,7 +836,7 @@ void ShatterableBoat::UpdateMove() {
 #endif
 
 #if 0 // DRAFT: ')' expected
-void ShatterableBoat::Update() {
+void *ShatterableBoat::Update() {
     Matrix sp2F0;
     f64 sp2E8;
     f64 sp2E0;
@@ -1217,7 +1217,7 @@ loop_49:
 #endif
 
 #if 0 // DRAFT: ')' expected
-void ShatterableBoat::Resolve() {
+f32 ShatterableBoat::Resolve() {
     Shatterable::Resolve();
     InitOars();
     if ((s32) M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C) != 0) {
@@ -1226,7 +1226,7 @@ void ShatterableBoat::Resolve() {
 }
 #endif
 
-void ShatterableBoat::LoadDone() {
+s32 ShatterableBoat::LoadDone() {
     f64 sp10;
     f64 sp8;
     f64 temp_f0_2086;

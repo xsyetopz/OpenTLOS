@@ -46,7 +46,7 @@ s32 BurningWick::Burnt() {
 }
 
 #if 0 // DRAFT: undefined identifier 'sp230'
-void BurningWick::Update() {
+void *BurningWick::Update() {
     f32 sp24C;
     f32 sp248;
     f32 sp244;

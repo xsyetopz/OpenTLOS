@@ -63,7 +63,7 @@ void TrainGate::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-void TrainGate::Update() {
+void *TrainGate::Update() {
     GameProp::Update();
     if ((s32) this->unkCC != 1) {
         return;
@@ -79,11 +79,11 @@ void TrainGate::Reset() {
     this->unkD4 = 0;
 }
 
-void TrainGate::Resolve() {
+f32 TrainGate::Resolve() {
     KDPropEx::Resolve();
 }
 
-void TrainGate::LoadDone() {
+s32 TrainGate::LoadDone() {
     GameProp::LoadDone();
 }
 

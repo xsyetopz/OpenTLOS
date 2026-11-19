@@ -60,7 +60,7 @@ void TotemPolePuzzle::Deinit() {
 #endif
 
 #if 0 // DRAFT: illegal type
-void TotemPolePuzzle::Update() {
+void *TotemPolePuzzle::Update() {
     s32 temp_r0_85;
     s32 var_ctr_87;
     s32 var_r3_86;
@@ -91,7 +91,7 @@ block_4:
 #endif
 
 #if 0 // DRAFT: illegal type
-void TotemPolePuzzle::LoadDone() {
+s32 TotemPolePuzzle::LoadDone() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
     f64 sp60;
@@ -334,7 +334,7 @@ block_12:
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unkC8'
-void TotemPolePiece::Resolve() {
+f32 TotemPolePiece::Resolve() {
     this->unkC8.RegisterTargetable();
 }
 #endif
@@ -343,7 +343,7 @@ void TotemPolePiece::Draw() {
     GameProp::Draw();
 }
 
-void TotemPolePiece::Update() {
+void *TotemPolePiece::Update() {
     Matrix sp10;
     M2C_UNK spC;
     f32 temp_f2_589;

@@ -22,7 +22,7 @@ public:
     virtual ~SquishBoulder(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     virtual void Disable(void);
@@ -60,7 +60,6 @@ inline SquishBoulder::SquishBoulder() {
     this->unkC8 = &__vt + 0x48;
     this->unk1D8 = 0;
     this->unk200.unk4 = 0;
-    return this;
 }
 #endif
 
@@ -73,10 +72,7 @@ inline SquishBoulder::~SquishBoulder() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SquishBoulderDescriptor::SquishBoulderDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SQUISHBOULDER_H

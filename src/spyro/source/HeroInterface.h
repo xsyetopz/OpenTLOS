@@ -21,7 +21,7 @@ public:
     virtual f32 GetCollideRadius(void) = 0;
     virtual void GetCollisionCentre(void) = 0;
     virtual s32 GetCollisionIgnoreMaterials(void) = 0;
-    virtual void GetCollisionInfo(void) = 0;
+    virtual MKPropDescriptor ** GetCollisionInfo(void) = 0;
     virtual s32 GetLighting(void) = 0;
     virtual s32 GetEffects(void) = 0;
     virtual void GetInput(void) = 0;

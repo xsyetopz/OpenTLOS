@@ -92,7 +92,7 @@ class NoisyButtonGroup : public UIButtonGroup {  // base: ctor/dtor vtable store
 public:
     virtual void Init(void);
     virtual void Update(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     NoisyButtonGroup(void);
     static u8 descriptor[0x14];
     /* 0x078 */ f32 unk78;
@@ -104,7 +104,7 @@ public:
     virtual void Deinit(void);
     virtual s32 LoadLine(UIDataLine *);
     virtual void Update(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     virtual s32 SetSelection(int);
     ScriptButtonGroup(void);
     static u8 descriptor[0x14];
@@ -134,7 +134,7 @@ public:
     virtual void Draw(const RenderContext &);
     virtual void LoadResources(void);
     virtual void FreeResources(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     MarkerButtonGroup(void);
     u8 GetTargetAttributes(Attributes *);
     static u8 descriptor[0x14];
@@ -148,7 +148,7 @@ public:
 
 class NoisySystem : public UISystem {  // base: ctor/dtor vtable stores
 public:
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     NoisySystem(void);
     static u8 descriptor[0x14];
 };
@@ -176,7 +176,7 @@ public:
     virtual void Init(void);
     virtual void LoadDone(void);
     virtual void Update(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     OptionButton(void);
     static u8 descriptor[0x14];
     /* 0x0a0 */ f32 unkA0;
@@ -208,7 +208,7 @@ public:
 
 class PromptGroup : public UIContainer {  // base: inlined ctor vtable stores
 public:
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     void Reset(void);
     static u8 descriptor[0x14];
 };
@@ -218,7 +218,7 @@ public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     PromptText(void);
     static u8 descriptor[0x14];
 };
@@ -232,7 +232,7 @@ public:
     virtual void LoadResources(void);
     virtual void FreeResources(void);
     virtual void Resolve(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     void SetPositions(void);
     RadialButtonGroup(void);
     static u8 descriptor[0x14];
@@ -265,7 +265,7 @@ public:
     virtual void Deinit(void);
     virtual s32 LoadLine(UIDataLine *);
     virtual void Update(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     ScriptProgressBar(void);
     static u8 descriptor[0x14];
     /* 0x0d0 */ s8* unkD0;
@@ -290,7 +290,7 @@ class ThrobButton : public ScriptButton {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Update(void);
-    virtual void Message(UIMessage *);
+    virtual s32 Message(UIMessage *);
     ThrobButton(void);
     static u8 descriptor[0x14];
 };
@@ -316,13 +316,9 @@ extern u8 buttonString[0x1c];
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GameText::GameText() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline HealthSafetyScreen::HealthSafetyScreen() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -348,9 +344,7 @@ inline HealthSafetyScreen::HealthSafetyScreen() {
     this->unkBC.unk0 = NULL;
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
-    return this;
 }
-#endif
 
 inline void ImageArc::Init() {
     UIImage::Init();
@@ -360,52 +354,33 @@ inline void ImageArc::Init() {
     this->unk84 = 6.2831855f;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LanguageButtonGroup::LanguageButtonGroup() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LocalizedVideoScreen::LocalizedVideoScreen() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline MarkerButtonGroup::MarkerButtonGroup() {
     this->unk80 = &__vt;
     this->unk80 = &__vt;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline NoisyButtonGroup::NoisyButtonGroup() {
     this->unk6C.unk0 = NULL;
     this->unk6C.unk4 = 0;
     this->unk6C.unk8 = NULL;
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline NoisySystem::NoisySystem() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline OptionButton::OptionButton() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline PromptText::PromptText() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: '(' expected
 inline RadialButtonGroup::RadialButtonGroup() {
@@ -415,11 +390,9 @@ inline RadialButtonGroup::RadialButtonGroup() {
     M2C_FIELD(this, struct __vt **, 0x78) = &__vt;
     M2C_FIELD(this, struct __vt **, 0x78) = &__vt;
     M2C_FIELD(this, struct __vt **, 0x78) = (struct __vt *) &__vt;
-    return this;
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScriptButton::ScriptButton() {
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
@@ -430,32 +403,18 @@ inline ScriptButton::ScriptButton() {
     this->unk80.unk0 = NULL;
     this->unk80.unk4 = 0;
     this->unk80.unk8 = NULL;
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScriptButtonGroup::ScriptButtonGroup() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScriptProgressBar::ScriptProgressBar() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScriptVideoScreen::ScriptVideoScreen() {
-    return this;
 }
-#endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ThrobButton::ThrobButton() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_UITOOLS_H

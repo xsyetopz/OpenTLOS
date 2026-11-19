@@ -51,7 +51,6 @@ inline EnemyRegion::EnemyRegion() {
     this->unk20 = 0.0f;
     this->unk24 = 0.0f;
     this->unk28 = 0.0f;
-    return this;
 }
 #endif
 

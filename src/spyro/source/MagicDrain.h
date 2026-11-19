@@ -19,11 +19,11 @@ class MagicDrain : public Projectile {  // base: base ctor call
 public:
     virtual ~MagicDrain(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Resolve(void);
+    virtual f32 Resolve(void);
     virtual void Reset(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void FireBurst(MKVector3 *, MKVector3 *, int, int);
@@ -52,12 +52,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MagicDrain::MagicDrain() {
     this->unk160.unk4 = 0;
-    return this;
 }
-#endif
 
 inline MagicDrain::~MagicDrain() {
 }
@@ -66,10 +63,7 @@ inline s32 MagicDrain::IsBurst() {
     return 1;
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MagicDrainDescriptor::MagicDrainDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_MAGICDRAIN_H

@@ -927,7 +927,7 @@ block_51:
 #endif
 
 #if 0 // DRAFT: illegal operand
-void ScorchTrail::Update() {
+void *ScorchTrail::Update() {
     MKHeap *temp_r4_1309;
     s32 temp_r0_1311;
     s32 temp_r5_1308;

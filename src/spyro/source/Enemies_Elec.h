@@ -30,12 +30,12 @@ public:
     virtual ~ElecTier1(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual void CheckAnimEvents(void);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     ElecTier1(void);
     /* 0xb10 */ SlimeTrailFX* unkB10;
     /* 0xb14 */ u8 padB14[0x4];
@@ -58,9 +58,9 @@ public:
     virtual ~ElecTier2(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Message(MKMessage *);
     virtual void Despawn(bool);
     virtual void UpdateMovementCustom(void);
@@ -107,7 +107,7 @@ public:
     virtual ~ElecTier3(void);
     virtual void Init(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     virtual void SetDefaults(void);
     virtual void UpdateMovementCustom(void);
@@ -115,7 +115,7 @@ public:
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
-    virtual void GetCharacterName(void);
+    virtual s32 GetCharacterName(void);
     ElecTier3(void);
     void DrawScan(void);
     void UpdateScan(void);
@@ -148,7 +148,6 @@ public:
 inline ElecTier1::ElecTier1() {
     this->unk6B8 = &__vt + 0x84;
     this->unkB28 = 0;
-    return this;
 }
 #endif
 
@@ -161,11 +160,8 @@ inline ElecTier1::~ElecTier1() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ElecTier1Descriptor::ElecTier1Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier2::ElecTier2() {
@@ -177,7 +173,6 @@ inline ElecTier2::ElecTier2() {
     this->unkB28.unk28.unk4 = NULL;
     this->unkB28.unk28.unk8 = temp_r0_6579;
     this->unkB28.unk28.unkC = temp_r0_6579;
-    return this;
 }
 #endif
 
@@ -204,16 +199,12 @@ inline ElecTier2::~ElecTier2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ElecTier2Descriptor::ElecTier2Descriptor() {
-    return this;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier3::ElecTier3() {
     this->unk6B8 = &__vt + 0x84;
-    return this;
 }
 #endif
 
@@ -223,10 +214,7 @@ inline ElecTier3::~ElecTier3() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ElecTier3Descriptor::ElecTier3Descriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_ENEMIES_ELEC_H

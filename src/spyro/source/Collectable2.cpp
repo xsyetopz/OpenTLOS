@@ -262,7 +262,7 @@ void Collectable2::Draw() {
 }
 
 #if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
-void Collectable2::Update() {
+void *Collectable2::Update() {
     Matrix sp250;
     Matrix sp210;
     Matrix sp1D0;
@@ -490,12 +490,12 @@ void Collectable2::Update() {
 }
 #endif
 
-void Collectable2::Resolve() {
+f32 Collectable2::Resolve() {
     MKProp::Resolve();
 }
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
-void Collectable2::LoadDone() {
+s32 Collectable2::LoadDone() {
     MKProp::LoadDone();
     this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
     this->unk8 = MKModel_GetWorldMatrix(this->unk4);

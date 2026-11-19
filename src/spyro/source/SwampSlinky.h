@@ -14,9 +14,9 @@ class SwampSlinky : public Critters {  // base: ctor/dtor vtable stores
 public:
     virtual ~SwampSlinky(void);
     virtual void Init(void);
-    virtual void LoadDone(void);
+    virtual s32 LoadDone(void);
     virtual void Deinit(void);
-    virtual void Update(void);
+    virtual void * Update(void);
     virtual void Draw(void);
     SwampSlinky(void);
     /* 0x168 */ u8 pad168[0x8];
@@ -35,11 +35,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SwampSlinky::SwampSlinky() {
-    return this;
 }
-#endif
 
 inline SwampSlinky::~SwampSlinky() {
     s32 temp_cr0_eq_15;
@@ -55,10 +52,7 @@ inline SwampSlinky::~SwampSlinky() {
     }
 }
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline SwampSlinkyDescriptor::SwampSlinkyDescriptor() {
-    return this;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SWAMPSLINKY_H

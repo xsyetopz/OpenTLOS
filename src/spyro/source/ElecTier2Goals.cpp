@@ -507,7 +507,7 @@ u8 ElecTier2Goal_PatrolMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: undefined identifier 'sp20'
 void ElecTier2Goal_PatrolMode::Activate() {
     f32 sp18;
     M2C_UNK sp8;
@@ -526,7 +526,7 @@ void ElecTier2Goal_PatrolMode::Activate() {
     temp_r3_950 = this->unkC;
     temp_r3_950->unkB08 &= ~0x40;
     if ((u8) this->unk20->unkB11 != 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
     }
     temp_r4_963 = this->unkC;
     if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_963->unkA7C) {
@@ -543,7 +543,7 @@ void ElecTier2Goal_PatrolMode::Activate() {
                 if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
                     ((AITargetData *) &sp8)->GetPos();
                     if (this->unkC->unk588.unk4 > spC) {
-                        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
+                        AddSubgoal((Goal<Enemy> *) this->unk2C);
                     }
                 }
                 goto block_13;
@@ -553,8 +553,8 @@ void ElecTier2Goal_PatrolMode::Activate() {
     }
 block_11:
     if (this->unkC->HasWaypoints() != 0) {
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk30);
         temp_r5_1031 = M2C_FIELD(this->unkC->unkA44, void **, 0x18);
         temp_r4_1032 = this->unk30;
         temp_r3_1036 = M2C_FIELD(temp_r5_1031, s32 *, 0x24) + (this->unk20->unkB14 * M2C_FIELD(temp_r5_1031, s32 *, 0x1C));
@@ -563,7 +563,7 @@ block_11:
         return;
     }
 block_13:
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+    AddSubgoal((Goal<Enemy> *) this->unk28);
 }
 #endif
 
@@ -729,7 +729,7 @@ u8 ElecTier2Goal_GroundMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElecTier2Goal_GroundMode::Activate() {
     MKVector3 sp8;
     ElecTier2 *temp_r3_1373;
@@ -744,13 +744,13 @@ void ElecTier2Goal_GroundMode::Activate() {
     temp_r3_1373 = this->unk20;
     if ((u8) temp_r3_1373->unkB11 == 0) {
         temp_r3_1373->FindLandingPos(&sp8);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk2C);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
         temp_r3_1385 = this->unk2C;
         M2C_FIELD(temp_r3_1385, f64 *, 0x18) = M2C_BITWISE(f64, sp8);
         M2C_FIELD(temp_r3_1385, f64 *, 0x20) = (f64) sp8.unk8;
     }
-    AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+    AddSubgoal((Goal<Enemy> *) this->unk24);
     temp_r4_1394 = this->unk24;
     M2C_FIELD(temp_r4_1394, s32 *, 0x14) = 0;
     M2C_FIELD(temp_r4_1394, s32 *, 0x18) = 1;
@@ -875,38 +875,32 @@ void ElecTier2Goal_GroundMode::Init(Enemy *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
+        AddSubgoal((Goal<Enemy> *) this->unk34);
     }
 }
-#endif
 
 void ElecTier2Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
         M2C_FIELD(this->unk20, f32 *, 0xB1C) = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
+        AddSubgoal((Goal<Enemy> *) this->unk28);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_Think::AddGoal_GroundMode() {
     if (IsPresent(0xCB) == 0) {
         M2C_FIELD(this->unk20, f32 *, 0xB18) = MKRand_Float((int *) &gViewSeed, 7.0f, 10.0f);
         RemoveAllSubgoals();
-        AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
+        AddSubgoal((Goal<Enemy> *) this->unk24);
     }
 }
-#endif
 
 void ElecTier2Goal_Think::Reset() {
     Enemy *temp_r3_1729;

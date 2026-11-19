@@ -93,7 +93,7 @@ void Exhumor::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void Exhumor::Update() {
+void *Exhumor::Update() {
     MKVector3 sp88;
     f64 sp80;
     f64 sp78;
@@ -154,7 +154,7 @@ block_6:
 }
 #endif
 
-void Exhumor::LoadDone() {
+s32 Exhumor::LoadDone() {
     Enemy::LoadDone();
     this->unkB10 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
@@ -203,7 +203,7 @@ void MiningMoleLeader::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-void MiningMoleLeader::Update() {
+void *MiningMoleLeader::Update() {
     f64 spE0;
     f64 spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -341,7 +341,7 @@ block_26:
 }
 #endif
 
-void MiningMoleLeader::LoadDone() {
+s32 MiningMoleLeader::LoadDone() {
     Enemy::LoadDone();
     this->unkB10 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
@@ -545,7 +545,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-void MiningMole::LoadDone() {
+s32 MiningMole::LoadDone() {
     MoleTether *temp_r3_972;
 
     Enemy::LoadDone();

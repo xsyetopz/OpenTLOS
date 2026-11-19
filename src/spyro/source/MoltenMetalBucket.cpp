@@ -285,7 +285,7 @@ void MoltenMetalBucket::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: ')' expected
-void MoltenMetalBucket::Update() {
+void *MoltenMetalBucket::Update() {
     s8 sp1A8;
     s32 sp1A4;
     s32 sp1A0;
@@ -530,7 +530,7 @@ void MoltenMetalBucket::Update() {
 #endif
 
 #if 0 // DRAFT: expression syntax error
-void MoltenMetalBucket::Resolve() {
+f32 MoltenMetalBucket::Resolve() {
     void *temp_r31_612;
     void *temp_r31_621;
     void *temp_r31_630;
@@ -546,7 +546,7 @@ void MoltenMetalBucket::Resolve() {
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to
-void MoltenMetalBucket::LoadDone() {
+s32 MoltenMetalBucket::LoadDone() {
     GameProp::LoadDone();
     this->unk80->InitEvents(pMoltenMetalBucketEvents);
     this->unk17C = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(""));

@@ -76,7 +76,7 @@ void MCFileInfo::Draw(const RenderContext &arg0) {
     Hud_DrawIcon(0, 0xC, temp_f26_72 + 2.0f, temp_f31_174, 6.0f, temp_f27_48, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
 }
 
-void MCFileInfo::Message(UIMessage *arg0) {
+s32 MCFileInfo::Message(UIMessage *arg0) {
     if ((s32) arg0->unk0 == 1) {
         Reset();
     }

@@ -91,7 +91,7 @@ void LavaBall::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, 
     temp_r3_186->unkA0 |= 0x40;
 }
 
-void LavaBall::LoadDone() {
+s32 LavaBall::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp14;

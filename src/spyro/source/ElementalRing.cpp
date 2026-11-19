@@ -441,7 +441,7 @@ loop_2:
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
-void ElementalRing::Update() {
+void *ElementalRing::Update() {
     s8 sp189;
     s8 sp188;
     s32 sp184;
