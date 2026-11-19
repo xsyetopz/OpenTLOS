@@ -18,6 +18,10 @@ carry the headers' `unkXX` names. That second run is converted. Per TU this:
     of nested/template classes (`A__B`) back to C++.
 Unknown bits stay as m2c macros from <m2c_macros.h>, for the per-TU fixers.
 Without `--write-existing` an existing source is left alone.
+
+A function with a hand fix at `--fixes <root>/<stem>/<mangled>.cpp` takes
+that text verbatim instead, so fixes survive regeneration; fence.py still
+fences a fix that later stops compiling.
 """
 
 from __future__ import annotations
@@ -171,8 +175,9 @@ def params_of(sig: str) -> list[tuple[str, str]]:
 
 
 class Converter:
-    def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict):
+    def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict, fixes: Path | None = None):
         self.model, self.cnames, self.owner_of, self.sdk, self.free = model, cnames, owner_of, sdk, free
+        self.fixes = fixes
         headers = set(free.values()) | {o.rsplit(".", 1)[0] + ".h" for o in owner_of.values()}
         self.has_header = lambda stem: stem + ".h" in headers
         self.virtuals, self.statics, self.method_cls = set(), set(), {}
@@ -271,9 +276,13 @@ class Converter:
             while j < len(lines) and lines[j] != "}":
                 j += 1
             body = "{\n" + "\n".join(lines[i + 1:j]) + "\n}"
-            if m.group("name") in self.method_cls:
-                body = type_this_vcalls(body, self.method_cls[m.group("name")], self.model.slot_fn)
-            fn, names = self.function(m.group("ret"), m.group("name"), m.group("params"), body)
+            fix = self.fixes / tu.rsplit(".", 1)[0] / (m.group("name") + ".cpp") if self.fixes else None
+            if fix and fix.exists():
+                fn, names = fix.read_text().strip(), set()
+            else:
+                if m.group("name") in self.method_cls:
+                    body = type_this_vcalls(body, self.method_cls[m.group("name")], self.model.slot_fn)
+                fn, names = self.function(m.group("ret"), m.group("name"), m.group("params"), body)
             if out and out[-1].startswith("/* ") and out[-1].endswith(" */"):
                 out.pop()  # m2c's demangled-name comment repeats the signature
             name = m.group("name")
@@ -308,11 +317,12 @@ def main() -> int:
     ap.add_argument("--write-existing", action="store_true")
     ap.add_argument("--hdr-root", type=Path, help="generated headers, for including free functions' headers")
     ap.add_argument("--inline-root", type=Path, help="where each TU's header-inline functions go, as <stem>.inl")
+    ap.add_argument("--fixes", type=Path, help="hand-fixed functions, as <stem>/<mangled>.cpp")
     a = ap.parse_args()
     model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
     conv = Converter(model, json.loads(a.cnames.read_text()), model.owner_map(),
                      sdk_index(Path(__file__).resolve().parents[2] / "include"),
-                     free_functions(a.hdr_root) if a.hdr_root else {})
+                     free_functions(a.hdr_root) if a.hdr_root else {}, a.fixes)
     written = 0
     for stem, tu in sorted(model.stems.items()):
         if not any(stem.startswith(p + "/") for p in a.prefix):

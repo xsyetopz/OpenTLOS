@@ -1,0 +1,33 @@
+#!/bin/sh
+# Regenerate ANB's draft sources into $OUT, leaving src/ untouched.
+# Usage: tools/srcgen/pipeline.sh <out dir> [--classes]
+#   --classes  also rebuild build/srcgen/classes.json from the asm first.
+# Install with tools/srcgen/install.sh <out dir>. Every step is bounded by a timeout.
+set -eu
+OUT=$1
+ROOT=$(cd "$(dirname "$0")/../.." && pwd)
+M2C=${M2C:-$ROOT/../GodHand/tools/ext/m2c/m2c.py}
+S=$ROOT/build/srcgen
+cd "$ROOT"
+rm -rf "$OUT"; mkdir -p "$OUT"
+if [ "${2:-}" = "--classes" ]; then
+  python3 tools/srcgen/classes.py "$OUT/classes.json" | tail -1
+  cp "$OUT/classes.json" "$S/classes.json"
+fi
+MODEL="$S/classes.json $S/fields.json build/m2c $S/ctx.c"
+python3 tools/srcgen/cctx.py $MODEL "$OUT/ctx.c" "$OUT/cnames.json" | tail -1
+timeout 1500 python3 tools/srcgen/run_m2c.py "$M2C" build/G6SE7D/asm "$OUT/m2c" --context "$OUT/ctx.c" --jobs 10 | tail -1
+timeout 1200 python3 tools/srcgen/cxxconv.py $MODEL "$OUT/cnames.json" "$OUT/m2c" build/G6SE7D/asm "$OUT/stage" \
+  --inline-root "$OUT/inl" --hdr-root "$S/hdr" --fixes fixes | tail -1
+python3 tools/srcgen/headers.py $MODEL "$OUT/hdr" --inline-root "$OUT/inl" | tail -1
+cp "$S/hdr/unplaced_templates.h" "$OUT/hdr/"
+# Fencing a header can unblock or break another; repeat until stable.
+prev=""
+for p in 1 2 3 4; do
+  r=$(timeout 900 python3 tools/srcgen/fence.py "$OUT/hdr" "$OUT/hfence.tsv" --jobs 10 --rounds 60 --headers | tail -1)
+  echo "hdr pass $p: $r"
+  [ "$r" = "$prev" ] && break
+  prev=$r
+done
+cp -R "$OUT/stage" "$OUT/fenced"
+timeout 2400 python3 tools/srcgen/fence.py "$OUT/fenced" "$OUT/fence.tsv" -i "$OUT/hdr" --jobs 10 --rounds 120 | tail -1
