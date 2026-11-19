@@ -84,8 +84,8 @@ void MKCollisionCapsuleItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &,
-u8 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
+#if 0 // DRAFT: undefined identifier 'spA8'
+s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
@@ -1561,8 +1561,8 @@ void MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollision
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKCollisionSphereItem::RayCollide(MKCollisionRay &,
-void MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+#if 0 // DRAFT: illegal implicit conversion from 'double' to
+s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
     arg1->unk48 = this->unk8;
@@ -1977,8 +1977,8 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &,
-s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+#if 0 // DRAFT: undefined identifier 'unk88'
+void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
     s8 spB8;

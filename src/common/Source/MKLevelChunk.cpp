@@ -426,8 +426,8 @@ MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKLevelChunk::DeinitChunk()' redeclared
-u8 MKLevelChunk::DeinitChunk() {
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
+s32 MKLevelChunk::DeinitChunk() {
     MKHeap *temp_r3_918;
     f32 temp_r30_917;
     u32 temp_r0_893;
@@ -492,8 +492,8 @@ u8 MKLevelChunk::DeinitChunk() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKLevelChunk::InitChunk()' redeclared
-u8 MKLevelChunk::InitChunk() {
+#if 0 // DRAFT: undefined identifier '__vptr'
+s32 MKLevelChunk::InitChunk() {
     s8 *sp10;
     s8 *spC;
     s8 *sp8;

@@ -380,11 +380,9 @@ void MKWidgetEnvelope::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: identifier 'MKWidgetEnvelope::TestPoint(MKVector3 *)' redeclared
-void MKWidgetEnvelope::TestPoint(MKVector3 *arg0) {
+MKWidget *MKWidgetEnvelope::TestPoint(MKVector3 *arg0) {
     MKWidget::TestPoint(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp80'
 void MKWidgetEnvelope::Render(MKWidgetRenderContext *arg0) {
@@ -1275,8 +1273,8 @@ void MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetFoldupFrame::MessageHandler(unsigned int, unsigned
-u32 MKWidgetFoldupFrame::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal operand
+s32 MKWidgetFoldupFrame::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp90;
     f32 sp8C;
     f32 sp88;
@@ -1469,8 +1467,8 @@ s32 MKWidgetComboBox::ListBoxHook(MKWidget *arg0, unsigned int arg1, unsigned in
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetComboBox::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetComboBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+s32 MKWidgetComboBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget *temp_r29_2450;
     MKWidget *temp_r3_2666;
     MKWidget *var_r29_2663;
@@ -2066,8 +2064,8 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetEditable::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: undefined identifier 'MKVector'
+s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp118;
     f64 sp110;
     f64 sp108;
@@ -2418,8 +2416,8 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetColor::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp14;
     s8 **sp10;
     s16 spE;
@@ -2506,8 +2504,7 @@ void MKWidgetImage::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetImage::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetImage::MessageHandler(unsigned int arg0, unsigned int arg1) {
+s32 MKWidgetImage::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget *temp_r3_4332;
 
     switch (arg0) {
@@ -2545,7 +2542,6 @@ block_7:
         goto block_7;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 MKWidgetImage::MKWidgetImage(MKWidgetDescriptor *arg0) {
@@ -2614,8 +2610,8 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetTabStrip::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp134;
     s32 sp130;
     f64 sp100;                                      /* compiler-managed */
@@ -4261,8 +4257,7 @@ void MKWidgetListItem::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetListItem::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetListItem::MessageHandler(unsigned int arg0, unsigned int arg1) {
+s32 MKWidgetListItem::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp64;
     s32 sp60;
     s16 sp5E;
@@ -4361,7 +4356,6 @@ void MKWidgetListItem::MessageHandler(unsigned int arg0, unsigned int arg1) {
     }
     MKWidget::MessageHandler(arg0, arg1);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'zero'
 MKWidgetListItem::MKWidgetListItem(MKWidgetDescriptor *arg0) {
@@ -6163,8 +6157,8 @@ void MKWidgetCheckBox::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetCheckBox::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetCheckBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal operand
+s32 MKWidgetCheckBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -6359,8 +6353,8 @@ void MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetCheckMark::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetCheckMark::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+s32 MKWidgetCheckMark::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp28;
     s32 sp24;
     u32 sp20;
@@ -6886,8 +6880,8 @@ void MKWidgetString::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetString::MessageHandler(unsigned int, unsigned int)'
-void MKWidgetString::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: pointer/array required
+s32 MKWidgetString::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget *temp_r3_12668;
 
     switch (arg0) {
@@ -7016,8 +7010,8 @@ void MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetWindowTitleBar::MessageHandler(unsigned int, unsigned
-u32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: undefined identifier 'sp8'
+s32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp98;
     f64 sp90;
     f64 sp88;
@@ -7212,8 +7206,8 @@ void MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetWindow::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetWindow *' to
+s32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 spD8;
     f64 spD0;
     f64 spC8;
@@ -7834,8 +7828,8 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetFrame::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetFrame::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+s32 MKWidgetFrame::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -8459,8 +8453,8 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidgetContainer::MessageHandler(unsigned int, unsigned int)'
-u32 MKWidgetContainer::MessageHandler(unsigned int arg0, unsigned int arg1) {
+#if 0 // DRAFT: illegal operand
+s32 MKWidgetContainer::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidget *temp_r0_15927;
     MKWidget *temp_r0_15935;
     MKWidget *temp_r0_15958;
@@ -8763,8 +8757,8 @@ void MKWidget::Draw(MKWidgetRenderContext arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MKWidget::Render(MKWidgetRenderContext *)' redeclared
-s32 MKWidget::Render(MKWidgetRenderContext *arg0) {
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
+void MKWidget::Render(MKWidgetRenderContext *arg0) {
     GetWidgetMatrix((Matrix *) &arg_sp10);
     arg0->Multiply4x4((Matrix *) &arg_sp10, (Matrix *) arg0);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
