@@ -25,8 +25,10 @@ typedef s64 M2C_UNK64;
 #define M2C_SYNC() (0)
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
-#define M2C_MEMCPY_ALIGNED memcpy
-#define M2C_MEMCPY_UNALIGNED memcpy
-#define M2C_STRUCT_COPY memcpy
+/* m2c passes copy-loop addresses as s32 byte arithmetic, which C++ will not
+ * convert to a pointer implicitly. */
+#define M2C_MEMCPY_ALIGNED(d, s, n) memcpy((void*)(d), (const void*)(s), (n))
+#define M2C_MEMCPY_UNALIGNED(d, s, n) memcpy((void*)(d), (const void*)(s), (n))
+#define M2C_STRUCT_COPY(d, s, n) memcpy((void*)(d), (const void*)(s), (n))
 
 #endif  // M2C_MACROS_H
