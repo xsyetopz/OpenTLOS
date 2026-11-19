@@ -1,7 +1,9 @@
 #!/bin/sh
 # Regenerate ANB's draft sources into $OUT, leaving src/ untouched.
-# Usage: tools/srcgen/pipeline.sh <out dir> [--classes]
+# Usage: tools/srcgen/pipeline.sh <out dir> [--classes | --reuse <run dir>]
 #   --classes  also rebuild build/srcgen/classes.json from the asm first.
+#   --reuse    take ctx.c, cnames.json and m2c/ from an earlier run, for changes
+#              that start at cxxconv (m2c output depends only on asm and context).
 # Install with tools/srcgen/install.sh <out dir>. Every step is bounded by a timeout.
 set -eu
 OUT=$1
@@ -15,8 +17,12 @@ if [ "${2:-}" = "--classes" ]; then
   cp "$OUT/classes.json" "$S/classes.json"
 fi
 MODEL="$S/classes.json $S/fields.json build/m2c $S/ctx.c"
-python3 tools/srcgen/cctx.py $MODEL "$OUT/ctx.c" "$OUT/cnames.json" | tail -1
-timeout 1500 python3 tools/srcgen/run_m2c.py "$M2C" build/G6SE7D/asm "$OUT/m2c" --context "$OUT/ctx.c" --jobs 10 | tail -1
+if [ "${2:-}" = "--reuse" ]; then
+  cp -R "$3/ctx.c" "$3/cnames.json" "$3/m2c" "$OUT/"
+else
+  python3 tools/srcgen/cctx.py $MODEL "$OUT/ctx.c" "$OUT/cnames.json" | tail -1
+  timeout 1500 python3 tools/srcgen/run_m2c.py "$M2C" build/G6SE7D/asm "$OUT/m2c" --context "$OUT/ctx.c" --jobs 10 | tail -1
+fi
 timeout 1200 python3 tools/srcgen/cxxconv.py $MODEL "$OUT/cnames.json" "$OUT/m2c" build/G6SE7D/asm "$OUT/stage" \
   --inline-root "$OUT/inl" --hdr-root "$S/hdr" --fixes fixes --m2c-votes "$OUT/m2c" | tail -1
 python3 tools/srcgen/headers.py $MODEL "$OUT/hdr" --inline-root "$OUT/inl" --m2c-votes "$OUT/m2c" | tail -1

@@ -113,6 +113,11 @@ class CallRewriter:
             if not qual and sym.cls != self.cls and sym.cls not in self.ancestors:
                 qual = f"{sym.cls}::"
             return f"{qual}{sym.name}{tail}"
+        if obj != args[0]:
+            # m2c casts a receiver only when its own type for it differs, e.g. an
+            # embedded member the field model typed `s32`; keep the cast so the
+            # call still resolves.
+            return f"({args[0]})->{qual}{sym.name}{tail}"
         if obj.startswith("&") and re.fullmatch(r"&[\w.>-]+", obj):
             return f"{obj[1:]}.{qual}{sym.name}{tail}"
         if not re.fullmatch(r"[\w.>-]+", obj):
