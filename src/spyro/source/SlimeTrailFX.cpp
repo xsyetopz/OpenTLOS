@@ -30,93 +30,75 @@ extern M2C_UNK gEmptyPtrListDL;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void SlimeTrailFXManager::Deinit() {
-    MKHeap *temp_r0_43;
-    MKHeap *temp_r0_62;
-    MKHeap *temp_r3_22;
-    MKHeap *var_r31_39;
-    MKHeap *var_r3_40;
-    MKHeap *var_r4_38;
-    SlimeTrailFX **var_r31_26;
     SlimeTrailFX *temp_r3_34;
+    SlimeTrailFX **var_r31_26;
+    void **var_r4_38;
+    void **var_r3_40;
+    void *var_r31_39;
+    void *temp_r0_43;
+    void *temp_r0_62;
     u32 temp_r0_48;
 
-loop_2:
-    temp_r3_22 = this->unk0;
-    if ((MKHeap *) temp_r3_22->unk0 != NULL) {
-        this->unk0 = (MKHeap *) &this->unk0->unk4;
-        goto loop_2;
+    while (*(void **) this->unk0 != NULL) {
+        this->unk0 = (MKHeap *) ((s8 *) this->unk0 + 4);
     }
-    var_r31_26 = (SlimeTrailFX **) (temp_r3_22 - 4);
-loop_5:
-    if (var_r31_26 != NULL) {
+    var_r31_26 = (SlimeTrailFX **) ((s8 *) this->unk0 - 4);
+    while (var_r31_26 != NULL && *var_r31_26 != NULL) {
         temp_r3_34 = *var_r31_26;
-        if (temp_r3_34 != NULL) {
-            temp_r3_34->Deinit();
-            var_r31_26 -= 4;
-            goto loop_5;
-        }
+        temp_r3_34->Deinit();
+        var_r31_26 -= 1;
     }
-    var_r4_38 = this->unk0;
+    var_r4_38 = (void **) this->unk0;
     var_r31_39 = var_r4_38;
     var_r3_40 = var_r4_38;
 loop_10:
     temp_r0_48 = M2C_FIELD(var_r3_40, u32 *, -4);
-    var_r3_40 -= 4;
+    var_r3_40 -= 1;
     if (temp_r0_48 != 0U) {
-        temp_r0_43 = var_r3_40->unk0;
+        temp_r0_43 = *var_r3_40;
         if (temp_r0_43 < var_r31_39) {
             var_r31_39 = temp_r0_43;
         }
         goto loop_10;
     }
-    if (var_r3_40 != &gEmptyPtrListDL) {
-loop_16:
-        temp_r0_62 = var_r4_38->unk0;
-        if (temp_r0_62 != NULL) {
+    if ((void *) var_r3_40 != (void *) &gEmptyPtrListDL) {
+        temp_r0_62 = *var_r4_38;
+        while (temp_r0_62 != NULL) {
             if (temp_r0_62 < var_r31_39) {
                 var_r31_39 = temp_r0_62;
             }
-            var_r4_38 += 4;
-            goto loop_16;
+            var_r4_38 += 1;
+            temp_r0_62 = *var_r4_38;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r31_39, NULL, 0);
         } else {
-            free(var_r31_39);
+            free((MKHeap *) var_r31_39);
         }
     }
     this->unk0 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'SlimeTrailFX *'
 void SlimeTrailFXManager::FreeTrail(SlimeTrailFX *arg0) {
-    MKHeap *temp_r0_107;
-    MKHeap *temp_r5_95;
-    MKHeap *temp_r6_98;
-    MKHeap *var_r7_90;
+    void *temp_r0;
+    void **temp_r5;
+    void *temp_r6;
+    void **var_r7;
 
-    var_r7_90 = this->unk0;
-loop_4:
-    if (var_r7_90 != NULL) {
-        temp_r0_107 = var_r7_90->unk0;
-        if (temp_r0_107 == NULL) {
-            return;
+    var_r7 = (void **) this->unk0;
+    while (var_r7 != NULL && *var_r7 != NULL) {
+        temp_r0 = *var_r7;
+        if (temp_r0 == arg0) {
+            temp_r5 = (void **) this->unk0;
+            this->unk0 = (MKHeap *) (temp_r5 + 1);
+            temp_r6 = *temp_r5;
+            *temp_r5 = *var_r7;
+            *var_r7 = temp_r6;
         }
-        if (temp_r0_107 == arg0) {
-            temp_r5_95 = this->unk0;
-            this->unk0 = (MKHeap *) &temp_r5_95->unk4;
-            temp_r6_98 = temp_r5_95->unk0;
-            temp_r5_95->unk0 = var_r7_90->unk0;
-            var_r7_90->unk0 = temp_r6_98;
-        }
-        var_r7_90 += 4;
-        goto loop_4;
+        var_r7 += 1;
     }
 }
-#endif
 
 SlimeTrailFX *SlimeTrailFXManager::AllocTrail(MKMaterial *arg0) {
     MKHeap *temp_r5_121;

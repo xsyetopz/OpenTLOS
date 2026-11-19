@@ -308,18 +308,18 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void ShwimmaCritter::SetAlertState(Shwimma *arg0) {
-    MKProp *temp_r31_606;
+    ShwimmaCritterDescriptor *desc;
+    s32 idx;
 
-    arg0->unk30.unk34 = 4.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
-    arg0->unk30.unk30 = (MKProp *) (MKRand_Int((int *) &gViewSeed, 0, 5) + 6);
-    temp_r31_606 = arg0->unk30.unk30;
-    arg0->unk30.unk20 = M2C_FIELD((checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((s32) temp_r31_606 * 4)), f32 *, 0x70);
-    arg0->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk30.unk20, s16 *, 4) / 30.0f));
-    arg0->unk30.unk24 = 0.0f;
+    M2C_FIELD(arg0, f32 *, 0x64) = 4.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+    M2C_FIELD(arg0, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 5) + 6;
+    idx = M2C_FIELD(arg0, s32 *, 0x60);
+    desc = checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    M2C_FIELD(arg0, f32 **, 0x50) = M2C_FIELD((s8 *) desc + idx * 4, f32 **, 0x70);
+    M2C_FIELD(arg0, f32 *, 0x58) = 30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(arg0, f32 **, 0x50), s16 *, 4) / 30.0f));
+    M2C_FIELD(arg0, f32 *, 0x54) = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
@@ -644,25 +644,21 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 ShwimmaCritter::Resolve() {
-    s32 temp_r0_1123;
-    s32 var_r3_1117;
-    s32 var_r6_1118;
+    s32 i;
+    s32 off;
+    s32 slot;
 
     MKProp::Resolve();
-    var_r3_1117 = 0;
-    var_r6_1118 = 0;
-loop_2:
-    if (var_r6_1118 < (s32) this->unk90) {
-        temp_r0_1123 = var_r3_1117 + 0x60;
-        var_r6_1118 += 1;
-        var_r3_1117 += 0x90;
-        *(this->unk170 + temp_r0_1123) = 0;
-        goto loop_2;
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unk90) {
+        slot = off + 0x60;
+        i += 1;
+        off += 0x90;
+        M2C_FIELD(this->unk170, s32 *, slot) = 0;
     }
 }
-#endif
 
 s32 ShwimmaCritter::LoadDone() {
     s32 temp_r31_1148;
