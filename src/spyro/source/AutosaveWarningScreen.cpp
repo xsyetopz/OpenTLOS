@@ -17,16 +17,13 @@
 extern s32 GS_MenuSelect;
 extern GameStateMachine gGMState;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void AutosaveWarningScreen::Update() {
-    s32 spC;
-    s32 sp8;
-    UIContainer *temp_r3_45;
+    s32 msg[2];
 
     UIScreen::Update();
     if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
-        if ((s32) *gGMState.GetCurrState() == 5) {
-            if ((s32) *MemoryCardScreen::operation == 0) {
+        if (*(s32 *) gGMState.GetCurrState() == 5) {
+            if (*(s32 *) MemoryCardScreen::operation == 0) {
                 gGMState.SwitchState(6, 1, 0U);
                 return;
             }
@@ -34,21 +31,18 @@ void AutosaveWarningScreen::Update() {
             return;
         }
         PauseMenu_AllowStartToQuit(1U);
-        temp_r3_45 = GetRoot();
-        sp8 = 0xF;
-        spC = 0;
-        M2C_FIELD(temp_r3_45->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        msg[0] = 0xF;
+        msg[1] = 0;
+        GetRoot()->Message((UIMessage *) msg);
         KDSound_Play(GS_MenuSelect, 0U, -1);
     }
 }
-#endif
 
 void AutosaveWarningScreen::OnExit() {
     UIScreen::OnExit();
     FrontEnd_SetFade(0.0f);
 }
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void AutosaveWarningScreen::OnEnter() {
     s32 var_r31_100;
     s8 *temp_r3_105;
@@ -58,15 +52,14 @@ void AutosaveWarningScreen::OnEnter() {
     temp_r3_96 = ui_cast<UIText *, UIObject *>(FindChild("Success"));
     if (temp_r3_96 != NULL) {
         var_r31_100 = 0x40;
-        if ((s32) *MemoryCardScreen::operation == 0) {
+        if (*(s32 *) MemoryCardScreen::operation == 0) {
             var_r31_100 = 0x41;
         }
         temp_r3_105 = M2C_FIELD(temp_r3_96, s8 **, 0x68);
         if (temp_r3_105 != NULL) {
-            UIStringTable_Remove(temp_r3_105);
+            UIStringTable_Remove((const char *) temp_r3_105);
         }
         M2C_FIELD(temp_r3_96, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r3_96, s32 *, 0x6C) = var_r31_100;
     }
 }
-#endif

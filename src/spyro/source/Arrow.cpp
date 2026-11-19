@@ -153,12 +153,10 @@ void Arrow::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void Arrow::Reset() {
-    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
     Trap::Reset();
 }
-#endif
 
 void ArrowDescriptor::Init() {
     TrapDescriptor::Init();

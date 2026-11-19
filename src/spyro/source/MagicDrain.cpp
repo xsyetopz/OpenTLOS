@@ -87,7 +87,6 @@ void MagicDrain::Draw() {
 
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void MagicDrain::Update() {
     MKVector3 sp68;
     f64 sp60;
@@ -153,7 +152,7 @@ void MagicDrain::Update() {
                     ((Stat *) &GameData::gameData[0xA0])->SetValue(var_f1_283, 0U);
                 }
             }
-            this->unk1B8 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);
+            this->unk1B8 = MKRand_Float((int *) &gViewSeed, 0.125f, 0.25f);
         }
         temp_r4_307 = this->unk15C;
         if (temp_r4_307 != NULL) {
@@ -165,7 +164,7 @@ void MagicDrain::Update() {
                 M2C_FIELD(temp_r4_315, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_310, f64 *, 0);
                 M2C_FIELD(temp_r4_315, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_310, f64 *, 8);
             }
-            temp_f1_326 = MKRand_Float(&gViewSeed, 500.0f, 600.0f);
+            temp_f1_326 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
             temp_r3_327 = this->unk15C;
             temp_r3_327->unk38 = temp_f1_326;
             temp_r3_329 = temp_r3_327->unk3C;
@@ -178,9 +177,7 @@ void MagicDrain::Update() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MagicDrain::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -217,13 +214,12 @@ void MagicDrain::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk15C = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_652, lit_653);
+    this->unk15C = (ManagedLight *) ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_652, lit_653);
     temp_r4_393 = this->unk15C;
     if (temp_r4_393 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_393, 0U);
     }
 }
-#endif
 
 void MagicDrain::LoadDone() {
     Projectile::LoadDone();

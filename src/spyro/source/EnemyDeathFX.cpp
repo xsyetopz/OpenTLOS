@@ -210,7 +210,6 @@ void EnemyDeathFX::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnemyDeathFX::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -237,13 +236,12 @@ void EnemyDeathFX::Resolve() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unk64 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 10.0f, lit_634, lit_635);
+    this->unk64 = (Corona *) ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 10.0f, lit_634, lit_635);
     temp_r4_507 = this->unk64;
     if (temp_r4_507 != NULL) {
         temp_r4_507->unk31 &= ~0x40;
     }
 }
-#endif
 
 void EnemyDeathFX::Init() {
     MKProp::Init();

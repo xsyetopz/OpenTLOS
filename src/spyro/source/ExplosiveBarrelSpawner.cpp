@@ -23,31 +23,25 @@ void ExplosiveBarrelSpawner::Update() {
     }
 }
 
-#if 0 // DRAFT: ')' expected
 void ExplosiveBarrelSpawner::LoadDone() {
     MKProp *temp_r3_87;
     s32 var_r30_81;
 
     GameProp::LoadDone();
     var_r30_81 = 0;
-loop_2:
-    if (var_r30_81 < (s32) M2C_FIELD(checked_cast<ExplosiveBarrelSpawnerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4)) {
+    while (var_r30_81 < *(s32 *) ((s8 *) checked_cast<ExplosiveBarrelSpawnerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + 0xE4)) {
         temp_r3_87 = gMK->CreateProp("ExplosiveBarrel");
         this->unkC8 = checked_cast<ExplosiveBarrel *, MKProp>(temp_r3_87);
         temp_r3_87->Enable();
         var_r30_81 += 1;
-        goto loop_2;
     }
 }
-#endif
 
 s32 ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void ExplosiveBarrelSpawnerDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = 1;
+    M2C_FIELD(this, s32 *, 0xE4) = 1;
 }
-#endif

@@ -65,37 +65,33 @@ void DragonBustDoor::Update() {
     Door::Update();
 }
 
-#if 0 // DRAFT: function call 'MKModel_EnableSubObject(MKModel *, SubObjectType,
 void DragonBustDoor::LoadDone() {
     s32 var_r30_184;
     s32 var_r31_186;
 
     Trap::LoadDone();
-    this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightYellow");
-    this->unkF4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightRed");
-    this->unkFC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightGreen");
+    this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, (MKModel *) this->unk4, "LightYellow");
+    this->unkF4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, (MKModel *) this->unk4, "LightRed");
+    this->unkFC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, (MKModel *) this->unk4, "LightGreen");
     var_r30_184 = 0;
-    this->unk104 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightBlue");
+    this->unk104 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, (MKModel *) this->unk4, "LightBlue");
     var_r31_186 = 0;
     do {
-        MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, *(this + (var_r31_186 + 0xEC)), 0U, 1U);
+        MKModel_EnableSubObject((MKModel *) this->unk4, (SubObjectType) 0, *(s32 *) ((u8 *) this + var_r31_186 + 0xEC), 0, 1U);
         var_r30_184 += 1;
         var_r31_186 += 8;
     } while (var_r30_184 < 4);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DragonBustDoor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_215;
 
     var_r31_215 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt("YellowSwitchID", &this->unkE8, 0) != 0) || (arg0->LoadInt("RedSwitchID", &this->unkF0, 0) != 0) || (arg0->LoadInt("GreenSwitchID", &this->unkF8, 0) != 0) || (arg0->LoadInt("BlueSwitchID", &this->unk100, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt("YellowSwitchID", (int *) &this->unkE8, 0) != 0) || (arg0->LoadInt("RedSwitchID", (int *) &this->unkF0, 0) != 0) || (arg0->LoadInt("GreenSwitchID", (int *) &this->unkF8, 0) != 0) || (arg0->LoadInt("BlueSwitchID", (int *) &this->unk100, 0) != 0)) {
         var_r31_215 = 1;
     }
     return var_r31_215;
 }
-#endif
 
 void DragonBustDoor::Init() {
     s32 var_ctr_278;

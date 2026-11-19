@@ -271,7 +271,6 @@ void MagmaSquirt::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MagmaSquirt::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -308,13 +307,12 @@ void MagmaSquirt::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk160 = ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_650, lit_651);
+    this->unk160 = (ManagedLight *) ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_650, lit_651);
     temp_r4_511 = this->unk160;
     if (temp_r4_511 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_511, 0U);
     }
 }
-#endif
 
 void MagmaSquirt::LoadDone() {
     Projectile::LoadDone();

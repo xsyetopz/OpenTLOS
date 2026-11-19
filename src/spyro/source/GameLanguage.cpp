@@ -121,20 +121,18 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: function call 'GameLanguage_GetFirst(long *, unsigned int)' does not match
 s32 GameLanguage_Count() {
     s32 sp8;
     s32 var_r31_278;
 
     var_r31_278 = 0;
-    if (GameLanguage_GetFirst(&sp8, 0U) != 0) {
+    if (GameLanguage_GetFirst((int *) &sp8, 0) != 0) {
         do {
             var_r31_278 += 1;
-        } while (GameLanguage_GetNext(&sp8, 0U) != 0);
+        } while (GameLanguage_GetNext((int *) &sp8, 0) != 0);
     }
     return var_r31_278;
 }
-#endif
 
 u8 GameLanguage_Available(int arg0) {
     s32 var_r30_305;

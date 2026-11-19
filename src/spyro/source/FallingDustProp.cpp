@@ -408,9 +408,7 @@ void FallingDustProp::Init() {
     this->unkB0.unkC = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void FallingDustPropDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DustPuffPS"));
+    this->unk70 = (s32) checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DustPuffPS"));
 }
-#endif
