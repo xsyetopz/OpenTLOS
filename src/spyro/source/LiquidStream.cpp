@@ -507,49 +507,43 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void LiquidStream::Deinit() {
-    u32 temp_r0_849;
-    void *temp_r0_844;
-    void *temp_r0_863;
-    void *var_r31_840;
-    void *var_r3_841;
-    void *var_r4_839;
+    u32 *scan;
+    u32 *cursor;
+    u32 min;
+    u32 val;
 
     MKProp::Deinit();
-    var_r4_839 = this->unk54;
-    var_r31_840 = var_r4_839;
-    var_r3_841 = var_r4_839;
-loop_3:
-    temp_r0_849 = M2C_FIELD(var_r3_841, u32 *, -4);
-    var_r3_841 -= 4;
-    if (temp_r0_849 != 0U) {
-        temp_r0_844 = *var_r3_841;
-        if (temp_r0_844 < var_r31_840) {
-            var_r31_840 = temp_r0_844;
+    scan = (u32 *) this->unk54;
+    min = (u32) scan;
+    cursor = scan;
+    cursor -= 1;
+    val = *cursor;
+    while (val != 0) {
+        if (val < min) {
+            min = val;
         }
-        goto loop_3;
+        cursor -= 1;
+        val = *cursor;
     }
-    if (var_r3_841 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_863 = *var_r4_839;
-        if (temp_r0_863 != NULL) {
-            if (temp_r0_863 < var_r31_840) {
-                var_r31_840 = temp_r0_863;
+    if ((void *) cursor != (void *) &gEmptyPtrListDL) {
+        val = *scan;
+        while (val != 0) {
+            if (val < min) {
+                min = val;
             }
-            var_r4_839 += 4;
-            goto loop_9;
+            scan += 1;
+            val = *scan;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_840, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) min, NULL, 0);
         } else {
-            free(var_r31_840);
+            free((void *) min);
         }
     }
     this->unk54 = NULL;
     this->unk4C = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void LiquidStream::Init() {

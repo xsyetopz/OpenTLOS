@@ -38,85 +38,65 @@ void KDSP_Sounds::GetDynamicBankName(int arg0) {
     Str_Printf("%s%s.gsb", M2C_FIELD((((u8 *) this->unkC) + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), "%s%s");
 }
 
-#if 0 // DRAFT: illegal type
 void KDSP_Sounds::ResolveActors(KDSP_ActorList *arg0) {
-    s32 var_r23_82;
-    s32 var_r25_83;
-    s32 var_r26_78;
-    s32 var_r27_73;
-    s32 var_r30_77;
-    s32 var_r31_72;
-    void *temp_r24_79;
-    void *temp_r4_89;
-    void *temp_r5_88;
+    u8 *block;
+    u8 *rec;
+    u8 *entry;
+    s32 i;
+    s32 j;
+    s32 k;
 
-    var_r31_72 = 0;
-    var_r27_73 = 0;
-loop_11:
-    if (var_r31_72 < (s32) arg0->unk0) {
-        var_r30_77 = 0;
-        var_r26_78 = 0;
-        temp_r24_79 = (void *) (arg0->unk4 + var_r27_73);
-loop_9:
-        if (var_r30_77 < (s32) M2C_FIELD(temp_r24_79, s32 *, 0x54)) {
-            var_r23_82 = 0;
-            var_r25_83 = 0;
-loop_7:
-            if (var_r23_82 < (s32) this->unk8) {
-                temp_r5_88 = ((u8 *) this->unkC) + var_r25_83;
-                temp_r4_89 = (void *) (var_r26_78 + M2C_FIELD(temp_r24_79, s32 *, 0x58));
-                if (((s32) M2C_FIELD(temp_r5_88, s32 *, 0) == (s32) M2C_FIELD(temp_r4_89, s32 *, 0)) && (stricmp(M2C_FIELD(temp_r5_88, s32 *, 8), M2C_FIELD(temp_r4_89, s32 *, 0xC)) == 0)) {
-                    *(this->unkC + (var_r25_83 + 0x14)) = temp_r24_79;
+    i = 0;
+    while (i < arg0->unk0) {
+        block = (u8 *) arg0->unk4 + i * 0x138;
+        j = 0;
+        while (j < M2C_FIELD(block, s32 *, 0x54)) {
+            rec = M2C_FIELD(block, u8 **, 0x58) + j * 0x24;
+            k = 0;
+            while (k < (s32) this->unk8) {
+                entry = (u8 *) this->unkC + k * 0x18;
+                if ((M2C_FIELD(entry, s32 *, 0) == M2C_FIELD(rec, s32 *, 0)) &&
+                    (stricmp((s32) (entry + 8), (s32) (rec + 0xC)) == 0)) {
+                    M2C_FIELD(entry, u8 **, 0x14) = block;
                 }
-                var_r23_82 += 1;
-                var_r25_83 += 0x18;
-                goto loop_7;
+                k += 1;
             }
-            var_r30_77 += 1;
-            var_r26_78 += 0x24;
-            goto loop_9;
+            j += 1;
         }
-        var_r31_72 += 1;
-        var_r27_73 += 0x138;
-        goto loop_11;
+        i += 1;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Sounds::ParseDynamicSFX(KDSynkerHeap *arg0, MKIni *arg1) {
-    MKIniLine *temp_r7_135;
-    MKIniLine *var_r28_156;
-    s32 temp_r0_138;
-    s32 temp_r5_144;
-    void *temp_r6_143;
-    void *var_r29_151;
+    MKIniLine *line;
+    MKIniLine *cur;
+    u8 *entry;
+    u8 *start;
+    s32 align;
+    s32 count;
 
-    temp_r7_135 = this->unk4;
-    if (temp_r7_135 != NULL) {
-        temp_r0_138 = this->unk8;
-        if (temp_r0_138 != 0) {
-            temp_r6_143 = arg0->unk18;
-            temp_r5_144 = arg0->unk20 - 1;
-            arg0->unk18 = ((u8 *) temp_r6_143) + (((temp_r0_138 * 0x18) + temp_r5_144) & ~temp_r5_144);
-            this->unkC = temp_r6_143;
-            var_r29_151 = this->unkC;
-            var_r28_156 = temp_r7_135->unkC->GetSubLine(temp_r7_135);
-loop_4:
-            if (var_r28_156 != NULL) {
-                M2C_FIELD(var_r29_151, s8 **, 8) = var_r28_156->GetFieldName();
-                M2C_FIELD(var_r29_151, s32 *, 0xC) = -1;
-                M2C_FIELD(var_r29_151, s32 *, 0x14) = 0;
-                M2C_FIELD(var_r29_151, s32 *, 0) = var_r28_156->GetInt(0);
-                M2C_FIELD(var_r29_151, s32 *, 4) = var_r28_156->GetInt(1);
-                var_r29_151 += 0x18;
-                var_r28_156 = var_r28_156->unkC->GetNextLine(var_r28_156);
-                goto loop_4;
+    line = this->unk4;
+    if (line != NULL) {
+        count = this->unk8;
+        if (count != 0) {
+            start = (u8 *) arg0->unk18;
+            align = arg0->unk20 - 1;
+            arg0->unk18 = start + ((count * 0x18 + align) & ~align);
+            this->unkC = start;
+            entry = (u8 *) this->unkC;
+            cur = line->unkC->GetSubLine(line);
+            while (cur != NULL) {
+                M2C_FIELD(entry, s8 **, 8) = cur->GetFieldName();
+                M2C_FIELD(entry, s32 *, 0xC) = -1;
+                M2C_FIELD(entry, s32 *, 0x14) = 0;
+                M2C_FIELD(entry, s32 *, 0) = cur->GetInt(0);
+                M2C_FIELD(entry, s32 *, 4) = cur->GetInt(1);
+                entry += 0x18;
+                cur = cur->unkC->GetNextLine(cur);
             }
         }
     }
 }
-#endif
 
 void KDSP_Sounds::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
     MKIniLine *temp_r3_204;
@@ -324,23 +304,21 @@ s32 KDSP_Sounds::LoadDynamicSoundBank(int *arg0, bool arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
-    SoundBankHeader *temp_r3_618;
-    s8 *temp_r3_608;
+    const char *name;
+    SoundBankHeader *bank;
 
-    temp_r3_608 = Str_Printf("%s.gsb", "%s%s");
-    if (MKArchive_Exists(temp_r3_608, NULL) != 0) {
-        temp_r3_618 = MKArchive_Load(temp_r3_608, NULL, NULL, -1);
-        this->unk24 = Sound_LoadBankFromMemory(temp_r3_618, 0U, -1);
+    name = (const char *) Str_Printf("%s.gsb", arg0);
+    if ((u8) MKArchive_Exists(name, NULL) != 0) {
+        bank = (SoundBankHeader *) MKArchive_Load(name, NULL, NULL, -1);
+        this->unk24 = Sound_LoadBankFromMemory(bank, 0, -1);
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Main()))->TFree(temp_r3_618, NULL, 0);
-            return;
+            ((MKHeap *) MKHeap::Main())->TFree(bank, NULL, 0);
+        } else {
+            free(bank);
         }
-        free(temp_r3_618);
     }
 }
-#endif
 
 void KDSP_Sounds::Init() {
     this->unk10 = 0;
