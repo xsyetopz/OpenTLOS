@@ -311,11 +311,14 @@ def matching_objects(version: str) -> set:
 
 sys.path.insert(0, str(Path(__file__).parent / "config" / "libs"))
 import dolphin as dolphin_libs  # noqa: E402
+import krome as krome_libs  # noqa: E402
 
 config.libs += dolphin_libs.libs(config.version, Object, matching_objects(config.version))
+config.libs += krome_libs.libs(config.version, Object, matching_objects(config.version))
 config.reconfig_deps += [
     Path("config") / config.version / "matching.txt",
     Path("config") / "libs" / "dolphin.py",
+    Path("config") / "libs" / "krome.py",
 ]
 
 

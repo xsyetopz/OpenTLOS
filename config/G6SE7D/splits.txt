@@ -4270,7 +4270,7 @@ common/Source/FileSys.cpp:
 	.text       start:0x802E7508 end:0x802E881C
 	.rodata     start:0x8036D9D0 end:0x8036DA28
 	.data       start:0x803A08C0 end:0x803A08E0
-	.bss        start:0x8040CE80 end:0x8040D2F0
+	.bss        start:0x8040CE80 end:0x8040D2F0 align:16
 	.sdata      start:0x805883B8 end:0x805883C0
 	.sbss       start:0x8058B520 end:0x8058B538
 

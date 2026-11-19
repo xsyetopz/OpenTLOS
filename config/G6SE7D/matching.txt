@@ -101,3 +101,4 @@ dolphin/support/texPalette.c
 dolphin/thp/THPAudio.c
 dolphin/thp/THPDec.c
 dolphin/vi/vi.c
+common/Source/Crc.cpp
