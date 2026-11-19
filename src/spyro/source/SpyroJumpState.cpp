@@ -86,7 +86,6 @@ void SpyroJumpState::DoubleJumpExit() {
     this->unk10->unk38C = 1900.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroJumpState::DoubleJumpEnter() {
     f64 sp38;
     f64 sp30;
@@ -124,7 +123,7 @@ void SpyroJumpState::DoubleJumpEnter() {
     } else {
         sp8 = var_f31_144;
         temp_r3_176 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-        switch (temp_r3_176) {                      /* irregular */
+        switch (temp_r3_176) {
         case 0x7F800000:
             if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
                 var_r0_186 = 1;
@@ -155,7 +154,6 @@ void SpyroJumpState::DoubleJumpEnter() {
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp30), 540000.0f);
     this->unk10->unk460.SetTailStrikeEnabled(1U);
 }
-#endif
 
 void SpyroJumpState::JumpCommonUpdate() {
     f64 sp58;
@@ -251,7 +249,6 @@ void SpyroJumpState::JumpCommonUpdate() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroJumpState::JumpLoftTransition() {
     InputModifier *temp_r3_433;
     u8 var_r0_434;
@@ -276,13 +273,12 @@ s32 SpyroJumpState::JumpLoftTransition() {
     if (var_r3_422 != 0) {
         var_r3_422 = (u8) this->unk10->unk3D2 == 0;
     }
-    if ((var_r3_422 != 0) && ((s32) this->unk18.unk0 != 3)) {
+    if ((var_r3_422 != 0) && (M2C_FIELD(&this->unk18, s32 *, 0) != 3)) {
         this->unk18.SetState(this, 3, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 void SpyroJumpState::JumpLoftUpdate() {
     JumpCommonUpdate();
@@ -293,27 +289,20 @@ void SpyroJumpState::JumpLoftExit() {
 
 }
 
-#if 0 // DRAFT: illegal type
 void SpyroJumpState::JumpLoftEnter() {
     s16 spA;
     s16 sp8;
     MKAnim *temp_r31_518;
     MKAnim *temp_r31_547;
-    Spyro *temp_r3_512;
-    Spyro *temp_r3_539;
     f32 temp_f31_548;
 
-    temp_r3_512 = this->unk10;
-    temp_r31_518 = M2C_FIELD((temp_r3_512->unkB4 + (M2C_FIELD(this->unk60, s32 *, 4) * 8)), MKAnim **, 4);
-    ((MKAnimScript *) (temp_r3_512->GetAnimScript((Spyro::AnimScriptNode) 0)))->GetStartAndEnd(temp_r31_518, &spA, &sp8);
-    temp_r3_539 = this->unk10;
-    temp_r31_547 = M2C_FIELD((temp_r3_539->unkB4 + (M2C_FIELD(this->unk60, s32 *, 4) * 8)), MKAnim **, 4);
-    temp_f31_548 = ((f32) (sp8 - ((MKAnimScript *) (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)))->GetCurrentFrame()) / 30.0f) / 0.3f;
-    ((MKAnimScript *) (temp_r3_539->GetAnimScript((Spyro::AnimScriptNode) 0)))->SetAnim(temp_r31_547, temp_f31_548, 0.0f, 0, -1);
+    temp_r31_518 = M2C_FIELD(((u8 *) this->unk10->unkB4) + (M2C_FIELD(this->unk60, s32 *, 4) * 8), MKAnim **, 4);
+    this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->GetStartAndEnd(temp_r31_518, &spA, &sp8);
+    temp_r31_547 = M2C_FIELD(((u8 *) this->unk10->unkB4) + (M2C_FIELD(this->unk60, s32 *, 4) * 8), MKAnim **, 4);
+    temp_f31_548 = ((f32) (sp8 - this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->GetCurrentFrame()) / 30.0f) / 0.3f;
+    this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->SetAnim(temp_r31_547, temp_f31_548, 0.0f, 0, -1);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroJumpState::JumpCycleTransition() {
     InputModifier *temp_r3_606;
     u8 var_r0_573;
@@ -325,7 +314,7 @@ u8 SpyroJumpState::JumpCycleTransition() {
     if (var_r0_573 == 0) {
         var_r0_573 = M2C_FIELD(this, u8 *, 0x2C);
     }
-    if ((var_r0_573 != 0) && ((s32) this->unk18.unk0 != 2)) {
+    if ((var_r0_573 != 0) && (M2C_FIELD(&this->unk18, s32 *, 0) != 2)) {
         this->unk18.SetState(this, 2, 0U);
         var_r3_588 = 1;
     } else {
@@ -351,17 +340,15 @@ u8 SpyroJumpState::JumpCycleTransition() {
         if (var_r3_595 != 0) {
             var_r3_595 = (u8) this->unk10->unk3D2 == 0;
         }
-        if ((var_r3_595 != 0) && ((s32) this->unk18.unk0 != 3)) {
+        if ((var_r3_595 != 0) && (M2C_FIELD(&this->unk18, s32 *, 0) != 3)) {
             this->unk18.SetState(this, 3, 0U);
             return 1U;
         }
         var_r3_588 = 0;
-        /* Duplicate return node #21. Try simplifying control flow for better match */
         return var_r3_588;
     }
     return var_r3_588;
 }
-#endif
 
 void SpyroJumpState::JumpCycleUpdate() {
     JumpCommonUpdate();
@@ -372,13 +359,10 @@ void SpyroJumpState::JumpCycleExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroJumpState::JumpCycleEnter() {
     this->unk10->SetAnim(M2C_FIELD(this->unk60, u32 *, 4), 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroJumpState::JumpStartTransition() {
     InputModifier *temp_r3_756;
     u8 var_r0_702;
@@ -390,14 +374,14 @@ u8 SpyroJumpState::JumpStartTransition() {
     if (var_r0_702 == 0) {
         var_r0_702 = M2C_FIELD(this, u8 *, 0x2C);
     }
-    if ((var_r0_702 != 0) && ((s32) this->unk18.unk0 != 2)) {
+    if ((var_r0_702 != 0) && (M2C_FIELD(&this->unk18, s32 *, 0) != 2)) {
         this->unk18.SetState(this, 2, 0U);
         var_r3_717 = 1;
     } else {
         var_r3_717 = 0;
     }
     if (var_r3_717 == 0) {
-        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk18.unk0 != 1)) {
+        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && (M2C_FIELD(&this->unk18, s32 *, 0) != 1)) {
             this->unk18.SetState(this, 1, 0U);
             var_r3_717 = 1;
         } else {
@@ -424,17 +408,15 @@ u8 SpyroJumpState::JumpStartTransition() {
         if (var_r3_745 != 0) {
             var_r3_745 = (u8) this->unk10->unk3D2 == 0;
         }
-        if ((var_r3_745 != 0) && ((s32) this->unk18.unk0 != 3)) {
+        if ((var_r3_745 != 0) && (M2C_FIELD(&this->unk18, s32 *, 0) != 3)) {
             this->unk18.SetState(this, 3, 0U);
             return 1U;
         }
         var_r3_717 = 0;
-        /* Duplicate return node #26. Try simplifying control flow for better match */
         return var_r3_717;
     }
     return var_r3_717;
 }
-#endif
 
 void SpyroJumpState::JumpStartUpdate() {
     JumpCommonUpdate();
@@ -445,14 +427,12 @@ void SpyroJumpState::JumpStartExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroJumpState::JumpStartEnter() {
     M2C_FIELD(this, s8 *, 0x2C) = 0;
     M2C_FIELD(this, s8 *, 0x2D) = 0;
     this->unk10->unk460.SetTailSweepComboCount(0);
     this->unk10->SetAnim(*this->unk60, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
 s32 SpyroJumpState::Transition() {
     SpyroStateMessages sp8;
