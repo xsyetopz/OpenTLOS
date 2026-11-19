@@ -222,28 +222,27 @@ loop_82:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void MKInput_SendEvent(MKInputEvent *arg0) {
+    typedef bool (*MKInputCallback)(MKInputEvent *, void *);
+    u8 var_r3_427;
+    MKInputReceiver *var_r5_423;
     MKInputReceiver *temp_r4_428;
     MKInputReceiver *var_r31_430;
-    MKInputReceiver *var_r5_423;
     s32 temp_r0_442;
-    u8 var_r3_427;
     u8 var_r3_443;
 
     var_r5_423 = pReceiverChain;
-loop_23:
-    if (var_r5_423 != NULL) {
+    while (var_r5_423 != NULL) {
         var_r3_427 = 0;
         temp_r4_428 = var_r5_423->unk14;
         var_r31_430 = temp_r4_428;
-        if (((MKInputReceiver *) var_r5_423->unk10 != NULL) || (temp_r4_428 != NULL) || ((MKInputReceiver *) pReceiverChain == var_r5_423)) {
+        if ((var_r5_423->unk10 != NULL) || (temp_r4_428 != NULL) || (pReceiverChain == var_r5_423)) {
             var_r3_427 = 1;
         }
         if (var_r3_427 != 0) {
             temp_r0_442 = arg0->unk0;
             var_r3_443 = 0;
-            switch (temp_r0_442) {                  /* irregular */
+            switch (temp_r0_442) {
             case 0:
                 var_r3_443 = 1;
                 break;
@@ -257,54 +256,51 @@ loop_23:
                 var_r3_443 = var_r5_423->unk4 & 1;
                 break;
             default:
-                var_r3_443 = ((u32) var_r5_423->unk4 >> 1U) & 1;
+                var_r3_443 = 0;
+                if ((temp_r0_442 >= 3) && (temp_r0_442 <= 5)) {
+                    var_r3_443 = ((u32) var_r5_423->unk4 >> 1U) & 1;
+                }
                 break;
             }
-            if ((var_r3_443 != 0) && (var_r5_423->unk0(arg0, var_r5_423->unkC) == 0)) {
+            if ((var_r3_443 != 0) && !M2C_FIELD(var_r5_423, MKInputCallback *, 0x0)(arg0, var_r5_423->unkC)) {
                 var_r31_430 = NULL;
             }
         }
         var_r5_423 = var_r31_430;
-        goto loop_23;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'UnlinkReceiver'
 void MKInputReceiver_Destroy(MKInputReceiver *arg0) {
-    MKInputReceiver **temp_r3_522;
     MKInputReceiver **var_r4_517;
+    MKInputReceiver **temp_r3_522;
     MKInputReceiver *temp_r0_533;
     MKInputReceiver *temp_r5_525;
 
+    void UnlinkReceiver(MKInputReceiver *);
     UnlinkReceiver(arg0);
     var_r4_517 = receivers;
-loop_4:
-    temp_r0_533 = *var_r4_517;
-    if (temp_r0_533 == NULL) {
-        return;
+    while ((temp_r0_533 = *var_r4_517) != NULL) {
+        if (temp_r0_533 == arg0) {
+            temp_r3_522 = receivers;
+            receivers = temp_r3_522 + 1;
+            temp_r5_525 = *temp_r3_522;
+            *temp_r3_522 = *var_r4_517;
+            *var_r4_517 = temp_r5_525;
+            return;
+        }
+        var_r4_517 += 1;
     }
-    if (temp_r0_533 == arg0) {
-        temp_r3_522 = receivers;
-        receivers = temp_r3_522 + 4;
-        temp_r5_525 = *temp_r3_522;
-        *temp_r3_522 = *var_r4_517;
-        *var_r4_517 = temp_r5_525;
-        return;
-    }
-    var_r4_517 += 4;
-    goto loop_4;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'arg3' redeclared
-MKInputReceiver *MKInputReceiver_Create(bool (*arg1)(MKInputEvent *, void *), int arg2, int arg3, void *arg3) {
+MKInputReceiver *MKInputReceiver_Create(bool (*arg0)(MKInputEvent *, void *), int arg1, int arg2, void *arg3) {
+    typedef bool (*MKInputCallback)(MKInputEvent *, void *);
+    void LinkReceiver(MKInputReceiver *);
     MKInputReceiver **temp_r7_552;
     MKInputReceiver *temp_r31_554;
     s32 var_r5_0;
 
     var_r5_0 = arg2;
-    temp_r7_552 = receivers - 4;
+    temp_r7_552 = receivers - 1;
     receivers = temp_r7_552;
     temp_r31_554 = *temp_r7_552;
     if (temp_r31_554 == NULL) {
@@ -313,7 +309,7 @@ MKInputReceiver *MKInputReceiver_Create(bool (*arg1)(MKInputEvent *, void *), in
     if ((var_r5_0 < 0) || (var_r5_0 > 6)) {
         var_r5_0 = 3;
     }
-    temp_r31_554->unk0 = arg0;
+    M2C_FIELD(temp_r31_554, MKInputCallback *, 0x0) = arg0;
     temp_r31_554->unk4 = (u32) arg1;
     temp_r31_554->unk8 = var_r5_0;
     temp_r31_554->unkC = arg3;
@@ -324,7 +320,6 @@ MKInputReceiver *MKInputReceiver_Create(bool (*arg1)(MKInputEvent *, void *), in
     }
     return temp_r31_554;
 }
-#endif
 
 void UnlinkReceiver(MKInputReceiver *arg0) {
     MKInputReceiver *temp_r4_591;

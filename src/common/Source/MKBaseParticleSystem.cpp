@@ -91,7 +91,6 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal operand
 MKParticleChunk *MKParticleSystem_AllocChunk(int arg0) {
     MKParticleChunk **temp_r3_105;
     MKParticleChunk *temp_r3_111;
@@ -103,7 +102,7 @@ MKParticleChunk *MKParticleSystem_AllocChunk(int arg0) {
     if ((u32) M2C_FIELD(gParticleChunks, u32 *, -4) == 0U) {
         return NULL;
     }
-    temp_r3_105 = gParticleChunks - 4;
+    temp_r3_105 = gParticleChunks - 1;
     var_r6_106 = 0;
     gParticleChunks = temp_r3_105;
     var_r4_110 = 0;
@@ -112,59 +111,50 @@ MKParticleChunk *MKParticleSystem_AllocChunk(int arg0) {
     M2C_FIELD(temp_r3_111, s32 *, 0xA88) = 0;
     M2C_FIELD(temp_r3_111, s32 *, 0xA8C) = 0;
     M2C_FIELD(temp_r3_111, s32 *, 0x480) = -1;
-    var_ctr_116 = 0x18;
-    do {
-        temp_r5_120 = temp_r3_111 + (var_r6_106 + 0x484);
+    for (var_ctr_116 = 0; var_ctr_116 < 0x18; var_ctr_116++) {
+        temp_r5_120 = (u8 *) temp_r3_111 + var_r6_106 + 0x484;
+        M2C_FIELD(temp_r3_111, void **, var_r4_110 + 0x2C) = temp_r5_120;
         var_r6_106 += 0x40;
-        *(temp_r3_111 + (var_r4_110 + 0x2C)) = temp_r5_120;
         var_r4_110 += 0x30;
-        var_ctr_116 -= 1;
-    } while (var_ctr_116 != 0);
+    }
     return temp_r3_111;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'MKParticleChunk *' and 'MKParticleChunk **'
 void MKParticleSystem_DeinitModule() {
-    MKParticleChunk **var_r31_136;
+    MKParticleChunk *var_r31_136;
     MKParticleChunk **var_r3_137;
     MKParticleChunk **var_r4_135;
     MKParticleChunk *temp_r0_140;
     MKParticleChunk *temp_r0_159;
-    u32 temp_r0_145;
 
     var_r4_135 = gParticleChunks;
-    var_r31_136 = var_r4_135;
+    var_r31_136 = (MKParticleChunk *) var_r4_135;
     var_r3_137 = var_r4_135;
-loop_3:
-    temp_r0_145 = M2C_FIELD(var_r3_137, u32 *, -4);
-    var_r3_137 -= 4;
-    if (temp_r0_145 != 0U) {
+    do {
+        var_r3_137 -= 1;
         temp_r0_140 = *var_r3_137;
-        if (temp_r0_140 < var_r31_136) {
-            var_r31_136 = &temp_r0_140->unk0;
+        if (temp_r0_140 == NULL) {
+            break;
         }
-        goto loop_3;
-    }
-    if (var_r3_137 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_159 = *var_r4_135;
-        if (temp_r0_159 != NULL) {
+        if (temp_r0_140 < var_r31_136) {
+            var_r31_136 = temp_r0_140;
+        }
+    } while (true);
+    if (var_r3_137 != (MKParticleChunk **) &gEmptyPtrListDL) {
+        while ((temp_r0_159 = *var_r4_135) != NULL) {
             if (temp_r0_159 < var_r31_136) {
-                var_r31_136 = &temp_r0_159->unk0;
+                var_r31_136 = temp_r0_159;
             }
-            var_r4_135 += 4;
-            goto loop_9;
+            var_r4_135 += 1;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r31_136, NULL, 0);
         } else {
-            free(var_r31_136);
+            free((MKParticleChunk **) var_r31_136);
         }
     }
     gParticleChunks = NULL;
 }
-#endif
 
 void MKParticleSystem_InitModule(int arg0) {
     MKParticleChunk **temp_r4_223;
@@ -527,7 +517,6 @@ loop_15:
     return temp_r3_812;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKParticleChunk *'
 void *MKBaseParticleSystem::CreateParticle() {
     MKParticleChunk *temp_r0_909;
     MKParticleChunk *temp_r0_918;
@@ -541,10 +530,10 @@ void *MKBaseParticleSystem::CreateParticle() {
     s32 temp_r3_900;
     void *temp_r4_931;
 
-    if ((u8) this->unkB4 == 0) {
+    if (this->unkB4 == 0) {
         return NULL;
     }
-    if ((MKBaseParticleSystem *) this->unkC8 != NULL) {
+    if (this->unkC8 != NULL) {
         return NULL;
     }
     temp_r3_873 = this->unkD0;
@@ -560,9 +549,7 @@ void *MKBaseParticleSystem::CreateParticle() {
             M2C_FIELD(temp_r4_892, MKParticleChunk **, 0xA88) = temp_r3_881;
         }
         this->unkD0 = temp_r3_881;
-        goto block_11;
     }
-block_11:
     temp_r4_899 = this->unkD0;
     temp_r3_900 = M2C_FIELD(temp_r4_899, s32 *, 0xA84);
     M2C_FIELD(temp_r4_899, s32 *, 0xA84) = (s32) (temp_r3_900 + 1);
@@ -573,11 +560,12 @@ block_11:
         if (temp_r0_909 != NULL) {
             this->unkD0 = temp_r0_909;
             var_r4_913 = this->unkD0;
-loop_15:
-            temp_r0_918 = M2C_FIELD(var_r4_913, MKParticleChunk **, 0xA8C);
-            if (temp_r0_918 != NULL) {
+            for (;;) {
+                temp_r0_918 = M2C_FIELD(var_r4_913, MKParticleChunk **, 0xA8C);
+                if (temp_r0_918 == NULL) {
+                    break;
+                }
                 var_r4_913 = temp_r0_918;
-                goto loop_15;
             }
             M2C_FIELD(var_r4_913, MKParticleChunk **, 0xA8C) = temp_r5_904;
             M2C_FIELD(temp_r5_904, MKParticleChunk **, 0xA88) = var_r4_913;
@@ -591,7 +579,7 @@ loop_15:
         M2C_FIELD(temp_r3_905, f64 *, 0) = (f64) M2C_FIELD(temp_r4_931, f64 *, 0);
         M2C_FIELD(temp_r3_905, f64 *, 8) = (f64) M2C_FIELD(temp_r4_931, f64 *, 8);
     } else {
-        temp_r3_905->unk0 = 0.0f;
+        M2C_FIELD(temp_r3_905, f32 *, 0x0) = 0.0f;
         temp_r3_905->unk4 = 0.0f;
         temp_r3_905->unk8 = 0.0f;
     }
@@ -604,7 +592,6 @@ loop_15:
     temp_r3_905->unk24 = 0.0f;
     return temp_r3_905;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp5C'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
