@@ -5,12 +5,14 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/ElectricBeamFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/KDSpline.h"
 
 class BreathHitMessage;
 class Corona;
 class ElectricBeam;
 class FuryFXElectricity;
 class FuryFXElectricity2;
+class KDSpline;
 class MKMessage;
 class MKModel;
 class MKProp;
@@ -29,7 +31,8 @@ public:
     void Deinit(void);
     void Resolve(void);
     void Init(void);
-    /* 0x000 */ u8 pad0[0x1a0];
+    /* 0x000 */ KDSpline unk0;
+    /* 0x014 */ u8 pad14[0x18c];
     /* 0x1a0 */ s8 unk1A0;
     /* 0x1a1 */ u8 pad1A1[0x3];
     /* 0x1a4 */ f32 unk1A4;

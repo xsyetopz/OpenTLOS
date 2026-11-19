@@ -57,7 +57,7 @@ public:
     /* 0x030 */ f64 unk30;
     /* 0x038 */ f32 unk38;
     /* 0x03c */ KDPathSegment unk3C;
-    /* 0x070 */ u8 pad70[0x2c];
+    /* 0x074 */ u8 pad74[0x28];
     /* 0x09c */ s32 unk9C;
     /* 0x0a0 */ s32 unkA0;
     /* 0x0a4 */ s32 unkA4;

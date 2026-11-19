@@ -32,7 +32,7 @@ public:
     /* 0x01c */ s32 unk1C;
     /* 0x020 */ s32 unk20;
     /* 0x024 */ Goal<Enemy>* unk24;
-    /* 0x028 */ u8 pad28[0x4];
+    /* 0x028 */ void** unk28;
     /* 0x02c */ Goal<Enemy>* unk2C;
     /* 0x030 */ u8 unk30;
 };

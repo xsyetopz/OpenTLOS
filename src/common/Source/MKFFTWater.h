@@ -13,6 +13,7 @@ class MKHeap;
 class MKIniLine;
 class MKMaterial;
 class MKModel;
+class MKOcean;
 class MKVector3;
 class MKVector4;
 class Texture;
@@ -114,7 +115,7 @@ public:
     void Init(const char *);
     static u8 typesVisible[0x28];
     static u8 numTypesVisible[0x4];
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ MKOcean* unk0;
     /* 0x004 */ MKModel* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s16* unkC;

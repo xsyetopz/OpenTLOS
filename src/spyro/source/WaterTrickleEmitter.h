@@ -23,7 +23,6 @@ public:
     virtual void Deinit(void);
     virtual void Update(void);
     /* 0x04c */ KDPathSegment unk4C;
-    /* 0x080 */ f32 unk80;
     /* 0x084 */ s32 unk84;
     /* 0x088 */ f32 unk88;
     /* 0x08c */ f32 unk8C;

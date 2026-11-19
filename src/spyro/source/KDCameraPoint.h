@@ -9,6 +9,7 @@ class MKVector3;
 class KDCameraPoint {
 public:
     void Init(const MKVector3 &);
+    /* 0x000 */ f64 unk0;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
@@ -21,7 +22,7 @@ inline void KDCameraPoint::Init(const MKVector3 &arg0) {
 
     temp_f1_5703 = M2C_FIELD(&arg0, f64 *, 0);
     temp_f0_5704 = M2C_FIELD(&arg0, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0) = temp_f1_5703;
+    this->unk0 = temp_f1_5703;
     M2C_FIELD(this, f64 *, 8) = temp_f0_5704;
     M2C_FIELD(this, f64 *, 0x10) = temp_f1_5703;
     M2C_FIELD(this, f64 *, 0x18) = temp_f0_5704;

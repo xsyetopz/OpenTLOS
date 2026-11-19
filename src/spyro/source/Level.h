@@ -144,7 +144,8 @@ public:
     /* 0x001 */ u8 pad1[0x3];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x3];
+    /* 0x009 */ u8 unk9;
+    /* 0x00a */ u8 padA[0x2];
     /* 0x00c */ f32 unkC;
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;

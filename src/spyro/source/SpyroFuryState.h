@@ -23,7 +23,9 @@ public:
     virtual void Message(MKMessage *);
     virtual void GetStateInfo(void);
     static u8 states[0x24];
-    /* 0x004 */ u8 pad4[0x24];
+    /* 0x004 */ u8 pad4[0xc];
+    /* 0x010 */ Spyro* unk10;
+    /* 0x014 */ u8 pad14[0x14];
     /* 0x028 */ f64 unk28;
     /* 0x030 */ f32 unk30;
     /* 0x034 */ u8 pad34[0x4];

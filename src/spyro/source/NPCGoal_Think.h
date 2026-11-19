@@ -33,7 +33,8 @@ public:
     /* 0x01c */ s32 unk1C;
     /* 0x020 */ Goal<Enemy>* unk20;
     /* 0x024 */ Goal<Enemy>* unk24;
-    /* 0x028 */ u8 pad28[0x8];
+    /* 0x028 */ void** unk28;
+    /* 0x02c */ void** unk2C;
     /* 0x030 */ Goal<Enemy>* unk30;
     /* 0x034 */ MoleTether* unk34;
     /* 0x038 */ s8 unk38;

@@ -128,7 +128,10 @@ public:
     /* 0x22c */ SnowballTree* unk22C;
     /* 0x230 */ void* unk230;
     /* 0x234 */ MKProp* unk234;
-    /* 0x238 */ u8 pad238[0x28];
+    /* 0x238 */ u8 pad238[0x8];
+    /* 0x240 */ MKProp** unk240;
+    /* 0x244 */ MKProp** unk244;
+    /* 0x248 */ u8 pad248[0x18];
     /* 0x260 */ Ball* unk260;
     /* 0x264 */ void* unk264;
     /* 0x268 */ u8 pad268[0x8];
@@ -188,20 +191,20 @@ void Ball_InitModule(void);
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Ball::~Ball() {
-    M2C_UNK *temp_r4_28;
+    MKProp ***temp_r4_28;
     MKProp **temp_r0_41;
     MKProp **temp_r4_44;
     void *temp_r0_25;
 
     if (this != NULL) {
         this->unkC8 = &__vt.unk48;
-        if (&this->unk248 != NULL) {
+        if (&this->unk244 != NULL) {
             temp_r0_25 = this->unk264;
             if (temp_r0_25 != NULL) {
-                temp_r4_28 = &this->unk248;
+                temp_r4_28 = &this->unk244;
                 if (temp_r0_25 != temp_r4_28) {
                     M2C_FIELD(this->unk26C, void **, 0x20) = temp_r0_25;
-                    M2C_FIELD(this->unk264, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk26C;
+                    M2C_FIELD(this->unk264, MKProp ****, 0x24) = (MKProp ***) this->unk26C;
                     this->unk26C = temp_r4_28;
                     this->unk264 = temp_r4_28;
                 }
@@ -212,9 +215,9 @@ inline Ball::~Ball() {
             if (temp_r0_41 != NULL) {
                 temp_r4_44 = &this->unk234;
                 if (temp_r0_41 != temp_r4_44) {
-                    M2C_FIELD(this->unk244, MKProp ***, 8) = temp_r0_41;
-                    M2C_FIELD(this->unk240, MKProp ***, 0xC) = (MKProp **) this->unk244;
-                    this->unk244 = temp_r4_44;
+                    M2C_FIELD(this->unk240, MKProp ***, 8) = temp_r0_41;
+                    M2C_FIELD(this->unk240, MKProp ***, 0xC) = (MKProp **) this->unk240;
+                    this->unk240 = temp_r4_44;
                     this->unk240 = temp_r4_44;
                 }
             }
@@ -296,20 +299,20 @@ inline void Ball::GetProp() {
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Ball::Ball() {
-    M2C_UNK *temp_r0_20650;
+    MKProp ***temp_r0_20650;
     MKProp **temp_r4_20649;
 
     this->unkC8 = &__vt.unk0;
     this->unkCC = -1;
     temp_r4_20649 = &this->unk234;
-    temp_r0_20650 = &this->unk248;
+    temp_r0_20650 = &this->unk244;
     this->unkC8 = &__vt + 0x48;
     this->unk1D8 = 0;
     this->unk200 = 0;
     this->unk234 = NULL;
     this->unk23C = 0;
     this->unk240 = temp_r4_20649;
-    this->unk244 = temp_r4_20649;
+    this->unk240 = temp_r4_20649;
     this->unk260 = 0;
     this->unk260 = NULL;
     this->unk264 = temp_r0_20650;

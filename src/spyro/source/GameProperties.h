@@ -214,7 +214,7 @@ inline void *TimerProperty::GetClassInfo() const {
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline TimerProperty::TimerProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     this->unk10.unk0 = 0;

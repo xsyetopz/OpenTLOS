@@ -34,7 +34,6 @@ public:
     /* 0x09c */ void** unk9C;
     /* 0x0a0 */ KDUniformSpline unkA0;
     /* 0x0b4 */ KDPathSegment unkB4;
-    /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ f32 unkEC;
     /* 0x0f0 */ f32 unkF0;
     /* 0x0f4 */ u8 padF4[0x4];

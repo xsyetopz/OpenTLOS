@@ -85,8 +85,7 @@ public:
     /* 0x008 */ f64 unk8;
     /* 0x010 */ IceBossStalactite*** unk10;
     /* 0x014 */ MKProp* unk14;
-    /* 0x018 */ u8 pad18[0x4];
-    /* 0x01c */ f32 unk1C;
+    /* 0x018 */ f64 unk18;
     /* 0x020 */ s32 unk20;
 };
 

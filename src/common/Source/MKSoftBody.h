@@ -8,7 +8,6 @@ class ClothNode;
 class MKCloth;
 class MKClothManager;
 class MKCollisionAABB;
-class MKHeap;
 class MKModel;
 class MKVector3;
 class MKVector4;
@@ -91,8 +90,7 @@ public:
     static u8 includedPlaneCount[0x4];
     static u8 includedCapsuleCount[0x4];
     static u8 clothCreateDisabled[0x1];
-    /* 0x000 */ u8 pad0[0x4];
-    /* 0x004 */ MKHeap* unk4;
+    /* 0x000 */ f64 unk0;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x3];
     /* 0x00c */ MKModel* unkC;

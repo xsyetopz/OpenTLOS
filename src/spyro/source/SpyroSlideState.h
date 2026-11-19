@@ -22,7 +22,9 @@ public:
     virtual s32 Transition(void);
     virtual void GetStateInfo(void);
     static u8 states[0x24];
-    /* 0x004 */ u8 pad4[0x24];
+    /* 0x004 */ u8 pad4[0xc];
+    /* 0x010 */ Spyro* unk10;
+    /* 0x014 */ u8 pad14[0x14];
     /* 0x028 */ SpyroStuck unk28;
 };
 

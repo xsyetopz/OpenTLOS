@@ -56,7 +56,8 @@ public:
     /* 0x03c */ f32 unk3C;
     /* 0x040 */ u8 pad40[0x4];
     /* 0x044 */ s32 unk44;
-    /* 0x048 */ u8 pad48[0xc];
+    /* 0x048 */ u8 pad48[0x8];
+    /* 0x050 */ void* unk50;
     /* 0x054 */ ShatterObjectDescriptor* unk54;
     /* 0x058 */ u16* unk58;
     /* 0x05c */ u16* unk5C;
@@ -183,10 +184,10 @@ extern u8 crateDescFlags[0x50];
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: type mismatch
 inline Crate::~Crate() {
     EventMessage *temp_r3_56;
-    PlatformAttachment *temp_r0_41;
+    PlatformObject *temp_r0_41;
     ShockWave **temp_r4_26;
     f32 *temp_r4_39;
     void *temp_r0_23;
@@ -209,10 +210,10 @@ inline Crate::~Crate() {
             if (temp_r4_39 != NULL) {
                 temp_r0_41 = this->unk190.unk28.unk4;
                 if ((temp_r0_41 != NULL) && (temp_r0_41 != temp_r4_39)) {
-                    this->unk190.unk28.unk8->unk8 = temp_r0_41;
-                    this->unk190.unk28.unk4->unkC = this->unk190.unk28.unk8;
+                    this->unk190.unk28.unk8->unk8 = (PlatformAttachment *) temp_r0_41;
+                    this->unk190.unk28.unk4->unkC = M2C_BITWISE(f32, this->unk190.unk28.unk8);
                     this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_39;
-                    this->unk190.unk28.unk4 = (PlatformAttachment *) temp_r4_39;
+                    this->unk190.unk28.unk4 = (PlatformObject *) temp_r4_39;
                 }
             }
         }
@@ -226,7 +227,7 @@ inline Crate::~Crate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline Crate::Crate() {
     ShockWave **temp_r0_18686;
     f32 *temp_r4_18684;
@@ -237,7 +238,7 @@ inline Crate::Crate() {
     this->unk190.unk18.unkC = 0.0f;
     temp_r0_18686 = &this->unk1D8;
     this->unk190.unk28.unk0 = NULL;
-    this->unk190.unk28.unk4 = temp_r4_18684;
+    this->unk190.unk28.unk4 = (PlatformObject *) temp_r4_18684;
     this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_18684;
     this->unk1D8 = NULL;
     this->unk1DC.unk0 = temp_r0_18686;

@@ -20,6 +20,11 @@ public:
     public:
         ~BarrelData(void);
         BarrelData(void);
+        /* 0x000 */ void* unk0;
+        /* 0x004 */ f32 unk4;
+        /* 0x008 */ f32 unk8;
+        /* 0x00c */ u8 padC[0x4];
+        /* 0x010 */ f32 unk10;
     };
     virtual ~ExplosiveBarrelPath(void);
     virtual void Init(void);

@@ -92,7 +92,9 @@ public:
 
 class MKWidgetBoundingVolume {
 public:
-    /* 0x000 */ u8 pad0[0x10];
+    /* 0x000 */ u8 pad0[0x4];
+    /* 0x004 */ f32 unk4;
+    /* 0x008 */ f64 unk8;
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
 };
@@ -273,7 +275,7 @@ public:
     /* 0x008 */ f64 unk8;
     /* 0x010 */ u8 pad10[0x18];
     /* 0x028 */ s32 unk28;
-    /* 0x02c */ u8 pad2C[0x4];
+    /* 0x02c */ s32 unk2C;
     /* 0x030 */ f64 unk30;
     /* 0x038 */ f32 unk38;
 };
@@ -490,7 +492,7 @@ public:
     static u8 pMetaDataFile[0x4];
     static u8 pHierarchyFile[0x4];
     static u8 pIndexList[0x4];
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ s8* unk0;
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
 };

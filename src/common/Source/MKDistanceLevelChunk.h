@@ -27,7 +27,7 @@ public:
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ f32 unk18;
-    /* 0x01c */ u8 pad1C[0x4];
+    /* 0x01c */ s32 unk1C;
     /* 0x020 */ s32 unk20;
     /* 0x024 */ s32 unk24;
     /* 0x028 */ MKProp* unk28;
@@ -104,7 +104,10 @@ public:
     /* 0x158 */ f64 unk158;
     /* 0x160 */ f64 unk160;
     /* 0x168 */ s8 unk168;
-    /* 0x169 */ u8 pad169[0x9b];
+    /* 0x169 */ u8 pad169[0x33];
+    /* 0x19c */ void* unk19C;
+    /* 0x1a0 */ void* unk1A0;
+    /* 0x1a4 */ u8 pad1A4[0x60];
     /* 0x204 */ s32 unk204;
     /* 0x208 */ s32 unk208;
     /* 0x20c */ s32 unk20C;

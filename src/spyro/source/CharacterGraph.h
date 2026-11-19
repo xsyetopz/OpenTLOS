@@ -44,8 +44,30 @@ public:
     /* 0x040 */ MKProp* unk40;
     /* 0x044 */ s32 unk44;
     /* 0x048 */ s32 unk48;
-    /* 0x04c */ u8 pad4C[0x34];
+    /* 0x04c */ s32 unk4C;
+    /* 0x050 */ s32 unk50;
+    /* 0x054 */ s32 unk54;
+    /* 0x058 */ s32 unk58;
+    /* 0x05c */ s32 unk5C;
+    /* 0x060 */ s32 unk60;
+    /* 0x064 */ s32 unk64;
+    /* 0x068 */ u8 pad68[0x18];
     /* 0x080 */ u8 unk80;
+    /* 0x081 */ u8 pad81[0x7];
+    /* 0x088 */ s32 unk88;
+    /* 0x08c */ s32 unk8C;
+    /* 0x090 */ s32 unk90;
+    /* 0x094 */ s32 unk94;
+    /* 0x098 */ s32 unk98;
+    /* 0x09c */ s32 unk9C;
+    /* 0x0a0 */ s32 unkA0;
+    /* 0x0a4 */ s32 unkA4;
+    /* 0x0a8 */ s32 unkA8;
+    /* 0x0ac */ s32 unkAC;
+    /* 0x0b0 */ s32 unkB0;
+    /* 0x0b4 */ s32 unkB4;
+    /* 0x0b8 */ s32 unkB8;
+    /* 0x0bc */ s32 unkBC;
 };
 
 class CharacterGraphNodeProp : public MKProp {  // base: ctor/dtor vtable stores
@@ -58,21 +80,6 @@ public:
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ CharacterGraphNode unk50;
-    /* 0x0d1 */ u8 padD1[0x7];
-    /* 0x0d8 */ s32 unkD8;
-    /* 0x0dc */ s32 unkDC;
-    /* 0x0e0 */ s32 unkE0;
-    /* 0x0e4 */ s32 unkE4;
-    /* 0x0e8 */ s32 unkE8;
-    /* 0x0ec */ s32 unkEC;
-    /* 0x0f0 */ s32 unkF0;
-    /* 0x0f4 */ s32 unkF4;
-    /* 0x0f8 */ s32 unkF8;
-    /* 0x0fc */ s32 unkFC;
-    /* 0x100 */ s32 unk100;
-    /* 0x104 */ s32 unk104;
-    /* 0x108 */ s32 unk108;
-    /* 0x10c */ s32 unk10C;
 };
 
 extern DataMap CharacterGraphLinkDataMap;

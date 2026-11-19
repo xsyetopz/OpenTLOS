@@ -19,6 +19,7 @@ class HealthSafetyScreen;
 class ImageArc;
 class LanguageButtonGroup;
 class LocalizedVideoScreen;
+class MKFont;
 class MKMaterial;
 class MarkerButtonGroup;
 class NoisyButtonGroup;
@@ -301,7 +302,8 @@ public:
     PromptText(void);
     static u8 descriptor[0x14];
     /* 0x004 */ s8* unk4;
-    /* 0x008 */ u8 pad8[0x60];
+    /* 0x008 */ u8 pad8[0x5c];
+    /* 0x064 */ MKFont* unk64;
     /* 0x068 */ s8* unk68;
     /* 0x06c */ s32 unk6C;
 };

@@ -22,9 +22,9 @@ public:
     virtual void Resolve(void);
     void GetPathMatrix(float);
     /* 0x04c */ KDPathSegment unk4C;
-    /* 0x080 */ u8 pad80[0x14];
+    /* 0x084 */ u8 pad84[0x10];
     /* 0x094 */ KDPathSegment unk94;
-    /* 0x0c8 */ u8 padC8[0x14];
+    /* 0x0cc */ u8 padCC[0x10];
     /* 0x0dc */ SplitPath unkDC;
 };
 

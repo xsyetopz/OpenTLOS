@@ -43,7 +43,7 @@ public:
     /* 0x024 */ Goal<Enemy>* unk24;
     /* 0x028 */ Goal<Enemy>* unk28;
     /* 0x02c */ Goal<Enemy>* unk2C;
-    /* 0x030 */ u8 pad30[0x4];
+    /* 0x030 */ void** unk30;
     /* 0x034 */ Goal<Enemy>* unk34;
     /* 0x038 */ Goal<Enemy>* unk38;
     /* 0x03c */ Goal<Enemy>* unk3C;

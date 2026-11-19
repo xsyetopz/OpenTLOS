@@ -142,7 +142,7 @@ inline Platform::~Platform() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: undefined identifier 'unk160'
 inline Platform::Platform() {
     PlatformAttachment *temp_r4_19937;
     void *temp_r0_19939;

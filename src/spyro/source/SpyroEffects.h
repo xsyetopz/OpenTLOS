@@ -81,7 +81,7 @@ class SpyroFXData {
 public:
     void Deinit(void);
     void Init(MKProp *, MKModel *, MKAnimScript *);
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ CharacterBodyFXData unk0;
     /* 0x008 */ CharacterBodyFXData unk8;
     /* 0x010 */ s32 unk10;
     /* 0x014 */ FlameBreathFX* unk14;

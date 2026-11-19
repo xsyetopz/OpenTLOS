@@ -31,6 +31,7 @@ public:
     void Message(MKMessage *);
     void Deinit(void);
     void Init(void);
+    /* 0x000 */ s8 unk0;
 };
 
 class SpyroUtils_cpp {

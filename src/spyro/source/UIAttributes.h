@@ -15,7 +15,7 @@ public:
     void Tween(Attributes *, Attributes *, float);
     void SetIdentity(void);
     /* 0x000 */ f32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ f32 unk4;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ MKVector3 unk10;
     /* 0x020 */ MKVector3 unk20;

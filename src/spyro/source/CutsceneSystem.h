@@ -27,6 +27,7 @@ public:
         void Update(void);
         void Deinit(void);
         void Init(CutsceneSystem *);
+        /* 0x000 */ s8 unk0;
     };
     void SetCustomSubtitle(const char *, int, bool);
     void SetDuckValue(float);
@@ -59,7 +60,8 @@ public:
     void Init(void);
     void DeinitModule(void);
     void InitModule(void);
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ CutsceneSystem::Location unk0;
+    /* 0x001 */ u8 pad1[0x3];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 pad8[0x8];
     /* 0x010 */ f32 unk10;

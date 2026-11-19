@@ -21,7 +21,13 @@ public:
     void Deinit(void);
     void Init(Matrix &);
     static u8 boundingVolume[0x20];
-    /* 0x000 */ u8 pad0[0x20];
+    /* 0x000 */ f64 unk0;
+    /* 0x008 */ f32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ f32 unk10;
+    /* 0x014 */ f32 unk14;
+    /* 0x018 */ f32 unk18;
+    /* 0x01c */ u8 pad1C[0x4];
     /* 0x020 */ f32 unk20;
     /* 0x024 */ f32 unk24;
     /* 0x028 */ f32 unk28;

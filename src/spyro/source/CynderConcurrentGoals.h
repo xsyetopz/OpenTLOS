@@ -28,7 +28,8 @@ public:
     /* 0x018 */ s32 unk18;
     /* 0x01c */ s32 unk1C;
     /* 0x020 */ s8 unk20;
-    /* 0x021 */ u8 pad21[0x7];
+    /* 0x021 */ u8 pad21[0x3];
+    /* 0x024 */ void** unk24;
     /* 0x028 */ Goal<Cynder>* unk28;
     /* 0x02c */ Goal<Cynder>* unk2C;
 };

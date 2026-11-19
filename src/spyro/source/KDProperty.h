@@ -37,7 +37,8 @@ public:
     void SetOwnerProp(MKProp *);
     u64 GetOwnerProp(void);
     static u8 pInstanceMem[0x4];
-    /* 0x004 */ u8 pad4[0x8];
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
     /* 0x00c */ KDProperty* unkC;
 };
 
@@ -113,7 +114,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 inline void KDProperty::Init(const char *arg0) {
     this->unk4 = arg0;
 }

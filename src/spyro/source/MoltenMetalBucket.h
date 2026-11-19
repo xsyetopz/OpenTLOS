@@ -79,7 +79,7 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MoltenMetalBucket::MoltenMetalBucket() {
     this->unkEC = 0;
     this->unk114 = 0;

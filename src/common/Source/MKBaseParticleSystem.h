@@ -90,17 +90,6 @@ public:
     /* 0x034 */ AssaultCannon*** unk34;
 };
 
-class MKParticleChunk {
-public:
-    /* 0x000 */ MKParticleChunk* unk0;
-    /* 0x004 */ u8 pad4[0x47c];
-    /* 0x480 */ s32 unk480;
-    /* 0x484 */ u8 pad484[0x600];
-    /* 0xa84 */ s32 unkA84;
-    /* 0xa88 */ MKParticleChunk* unkA88;
-    /* 0xa8c */ MKParticleChunk* unkA8C;
-};
-
 void MKParticleSystem_FreeChunk(MKParticleChunk *);
 MKParticleChunk * MKParticleSystem_AllocChunk(int);
 void MKParticleSystem_DeinitModule(void);

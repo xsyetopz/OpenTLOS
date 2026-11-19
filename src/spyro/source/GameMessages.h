@@ -22,7 +22,7 @@ public:
     void Init(MKProp *, float, int, int, int, int, int, int);
     void Init(MKProp *, int, int, int, int, int, int, int);
     /* 0x000 */ s32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ s32 unk4;
     /* 0x008 */ u32 unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ f32 unk10;
@@ -92,7 +92,7 @@ public:
     void Test(Enemy *);
     void Init(const MKVector3 &, float);
     /* 0x000 */ s32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ u32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ f32 unkC;
     /* 0x010 */ f32 unk10;

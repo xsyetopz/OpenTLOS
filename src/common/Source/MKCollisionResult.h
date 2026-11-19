@@ -10,7 +10,7 @@ public:
     void Init(void);
     void * GetProp(void);
     /* 0x000 */ f32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ f32 unk10;
@@ -18,9 +18,9 @@ public:
     /* 0x018 */ f32 unk18;
     /* 0x01c */ u8 pad1C[0x4];
     /* 0x020 */ f32 unk20;
-    /* 0x024 */ u8 pad24[0x4];
+    /* 0x024 */ f32 unk24;
     /* 0x028 */ f32 unk28;
-    /* 0x02c */ u8 pad2C[0x4];
+    /* 0x02c */ f32 unk2C;
     /* 0x030 */ f32 unk30;
     /* 0x034 */ f32 unk34;
     /* 0x038 */ s32 unk38;
@@ -36,7 +36,6 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 inline void MKCollisionResult::Init() {
     this->unk0 = 0.0f;
     this->unk4 = 0.0f;
@@ -60,7 +59,6 @@ inline void MKCollisionResult::Init() {
     this->unk4C = -1;
     this->unk50 = 0;
 }
-#endif
 
 inline void *MKCollisionResult::GetProp() {
     void *temp_r3_4323;

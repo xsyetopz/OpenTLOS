@@ -34,7 +34,7 @@ public:
     virtual void GetColor(void);
     KDParticleEmitterProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ s32 unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s32 unkC;
     /* 0x010 */ MKIniLine* unk10;
@@ -109,7 +109,11 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x14];
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ s8* unk10;
+    /* 0x014 */ void** unk14;
     /* 0x018 */ u8 unk18;
 };
 

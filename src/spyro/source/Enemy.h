@@ -446,7 +446,7 @@ inline Enemy::Enemy() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 inline void Enemy::IsTargetBehindWall() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(Enemy *, M2C_UNK *), 0x110)(this, &this->unk838.unk28);
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(Enemy *, f32 *), 0x110)(this, &this->unk838.unk28);
 }
 #endif
 

@@ -46,7 +46,7 @@ public:
     static u8 state[0x4];
     static u8 numCardsPresent[0x4];
     static u8 currentCard[0x4];
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ s32 unk0;
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 unk9;

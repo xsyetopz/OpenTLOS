@@ -97,29 +97,29 @@ public:
 
 #if 0 // DRAFT: expression syntax error
 inline MobilePlatform::MobilePlatform() {
+    M2C_FIELD(this, s32 *, 0x1CC) = 0;
     this->unk19C.unk30.unk0 = 0;
-    this->unk19C.unk30.unk4 = 0;
+    this->unk19C.unk30.unk4 = 0.0f;
     this->unk19C.unk30.unk8 = 0.0f;
-    this->unk19C.unk30.unkC = 0;
+    this->unk1F8 = 0.0f;
+    this->unk1F8.Init();
     this->unk1FC = 0.0f;
     this->unk1FC.Init();
-    this->unk200.unk0 = 0;
-    this->unk200.Init();
-    M2C_FIELD(this, s32 *, 0x21C) = 0;
+    this->unk214 = 0.0f;
     return this;
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MobilePlatform::~MobilePlatform() {
-    if ((&this->unk218 != NULL) && (&this->unk218 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk218);
-    }
-    if (&this->unk200 != NULL) {
-        this->unk200.Deinit();
+    if ((&this->unk214 != NULL) && (&this->unk214 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk214);
     }
     if (&this->unk1FC != NULL) {
         this->unk1FC.Deinit();
+    }
+    if (&this->unk1F8 != NULL) {
+        this->unk1F8.Deinit();
     }
 }
 #endif

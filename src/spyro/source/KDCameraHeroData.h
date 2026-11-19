@@ -2,20 +2,19 @@
 #define SPYRO_SOURCE_KDCAMERAHERODATA_H
 
 #include <dolphin/types.h>
+#include "common/Source/Matrix.h"
 
 class HeroDataMessage;
 class KDCameraHeroData;
+class Matrix;
 
 class KDCameraHeroData {
 public:
     u8 IsMoving(void);
     void Copy(HeroDataMessage &);
     void GetDir(void);
-    /* 0x000 */ u8 pad0[0x30];
-    /* 0x030 */ f64 unk30;
-    /* 0x038 */ f64 unk38;
-    /* 0x040 */ f64 unk40;
-    /* 0x048 */ f64 unk48;
+    /* 0x000 */ u8 pad0[0x10];
+    /* 0x010 */ Matrix unk10;
     /* 0x050 */ f64 unk50;
     /* 0x058 */ f64 unk58;
     /* 0x060 */ u8 pad60[0x34];
@@ -46,9 +45,9 @@ inline u8 KDCameraHeroData::IsMoving() {
     f32 sp10;
 
     sp38 = this->unkC8;
-    sp48 = this->unk40;
+    sp48 = M2C_FIELD(this, f64 *, 0x40);
     sp40 = M2C_FIELD(this, f64 *, 0xD0);
-    sp50 = this->unk48;
+    sp50 = M2C_FIELD(this, f64 *, 0x48);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     sp18 = sp8;
     sp10 = (f32) sp50 - (f32) sp40;
@@ -89,8 +88,8 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
     void *temp_r5_816;
 
     temp_r5_816 = this->unkC0;
-    temp_f1_817 = this->unk40;
-    temp_f0_818 = this->unk48;
+    temp_f1_817 = M2C_FIELD(this, f64 *, 0x40);
+    temp_f0_818 = M2C_FIELD(this, f64 *, 0x48);
     sp88 = temp_f1_817;
     temp_r31_821 = this->unkA8;
     sp90 = temp_f0_818;
@@ -123,8 +122,8 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
         this->unkAC = arg0.unkAC;
         this->unkB0 = arg0.unkB0;
     }
-    temp_f1_888 = this->unk40;
-    temp_f0_890 = this->unk48;
+    temp_f1_888 = M2C_FIELD(this, f64 *, 0x40);
+    temp_f0_890 = M2C_FIELD(this, f64 *, 0x48);
     sp78 = temp_f1_888;
     sp8 = temp_f1_888;
     sp10 = temp_f0_890;
@@ -142,8 +141,8 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
         sp68 = sp8;
         sp70 = sp10;
         if ((u8) this->unk94 != 0) {
-            sp58 = this->unk40;
-            sp60 = this->unk48;
+            sp58 = M2C_FIELD(this, f64 *, 0x40);
+            sp60 = M2C_FIELD(this, f64 *, 0x48);
             M2C_FIELD(this, f32 *, 0xD8) = unksp5C;
         }
     } else {
@@ -151,8 +150,8 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
         M2C_FIELD(this, f32 *, 0xD0) = spA0;
     }
     if ((temp_r30_823 == 0) && ((u8) this->unk94 != 0)) {
-        sp48 = this->unk40;
-        sp50 = this->unk48;
+        sp48 = M2C_FIELD(this, f64 *, 0x40);
+        sp50 = M2C_FIELD(this, f64 *, 0x48);
         M2C_FIELD(this, f32 *, 0xD8) = unksp4C;
     }
 }

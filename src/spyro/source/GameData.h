@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_GAMEDATA_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKMemoryCard.h"
 #include "spyro/source/CameraData.h"
 #include "spyro/source/Level.h"
 
@@ -15,6 +16,7 @@ class GameStats;
 class Level;
 class Stat;
 class StatType;
+class TimerInfo;
 
 class GameData {
 public:
@@ -23,6 +25,7 @@ public:
         void ClearData(void);
         void Deinit(void);
         void Init(void);
+        /* 0x000 */ s8 unk0;
     };
     void CopyToGameData(void *);
     void CopyFromGameData(void *);
@@ -40,7 +43,8 @@ public:
     void SetSaveChunk(ChunkInfo *);
     static u8 gameData[0x1b4];
     static u8 bModuleInitialised[0x1];
-    /* 0x000 */ u8 pad0[0x20];
+    /* 0x000 */ TimerInfo unk0;
+    /* 0x01c */ u8 pad1C[0x4];
     /* 0x020 */ s8 unk20;
     /* 0x021 */ u8 pad21[0x3f];
     /* 0x060 */ CameraData unk60;

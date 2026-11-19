@@ -23,6 +23,7 @@ public:
     public:
         void Update(void);
         void Init(void);
+        /* 0x000 */ s8 unk0;
     };
     virtual ~Gondola(void);
     virtual void Init(void);

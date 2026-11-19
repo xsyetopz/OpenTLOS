@@ -129,11 +129,11 @@ public:
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;
     /* 0x088 */ f32 unk88;
-    /* 0x08c */ u8 pad8C[0x4];
+    /* 0x08c */ f32 unk8C;
     /* 0x090 */ f32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ f32 unk98;
-    /* 0x09c */ u8 pad9C[0x4];
+    /* 0x09c */ s32 unk9C;
     /* 0x0a0 */ Matrix unkA0;
     /* 0x0e0 */ u8 padE0[0x40];
     /* 0x120 */ MKCollisionModel* unk120;

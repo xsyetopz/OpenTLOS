@@ -16,7 +16,6 @@ public:
     void Init(void);
     /* 0x000 */ MKVector3* unk0;
     /* 0x004 */ BoundingRegion unk4;
-    /* 0x020 */ f32 unk20;
     /* 0x024 */ f32 unk24;
     /* 0x028 */ u8 pad28[0x8];
     /* 0x030 */ f32 unk30;

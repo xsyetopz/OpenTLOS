@@ -57,6 +57,7 @@ public:
     /* 0x028 */ KDPathSegment* unk28;
     /* 0x02c */ s32 unk2C;
     /* 0x030 */ Matrix* unk30;
+    /* 0x034 */ f32 unk34;
 };
 
 class KDLocalPathSegmentProp : public MKProp {  // base: ctor/dtor vtable stores
@@ -68,7 +69,6 @@ public:
     virtual void Deinit(void);
     virtual void Resolve(void);
     /* 0x04c */ KDPathSegment unk4C;
-    /* 0x080 */ u8 pad80[0x4];
     /* 0x084 */ MKSceneManager* unk84;
 };
 
@@ -92,11 +92,13 @@ public:
     void Init(int);
     static u8 pPathLists[0x4];
     static u8 numTypes[0x4];
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ s32 unk0;
     /* 0x004 */ s32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ f32 unkC;
-    /* 0x010 */ u8 pad10[0x8];
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ u8 unk14;
+    /* 0x015 */ u8 pad15[0x3];
     /* 0x018 */ s16 unk18;
     /* 0x01a */ u8 pad1A[0x2];
     /* 0x01c */ s32 unk1C;
@@ -146,13 +148,16 @@ public:
     void Deinit(void);
     void Init(void);
     void GetPosition(float);
-    /* 0x000 */ u8 pad0[0x18];
+    /* 0x000 */ u8 pad0[0x8];
+    /* 0x008 */ f32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ f64 unk10;
     /* 0x018 */ s16 unk18;
     /* 0x01a */ s16 unk1A;
     /* 0x01c */ s32 unk1C;
     /* 0x020 */ s32 unk20;
     /* 0x024 */ MKVector3* unk24;
-    /* 0x028 */ u8 pad28[0x8];
+    /* 0x028 */ f64 unk28;
     /* 0x030 */ KDUniformSpline unk30;
     /* 0x044 */ s8 unk44;
     /* 0x045 */ s8 unk45;
@@ -223,7 +228,7 @@ inline void KDSplinePathSegment::GetVelocity(float arg0) {
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     this->unk0 = sp10;
     sp18 = (f32) sp28 * sp8;
-    this->unk8 = (f64) sp18;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
 

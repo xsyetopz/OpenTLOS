@@ -53,7 +53,7 @@ public:
     void SetDefaults(void);
     void Init(void);
     /* 0x000 */ s32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ f32 unk4;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;

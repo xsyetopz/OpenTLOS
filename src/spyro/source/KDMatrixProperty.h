@@ -34,19 +34,17 @@ inline s32 KDMatrixProperty::GetInstanceDataSize() const {
     return 0x40;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Matrix'
 inline void KDMatrixProperty::InitInstance() {
     ((Matrix *) (*KDProperty::pInstanceMem + this->unk8))->SetIdentity();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 inline s32 KDMatrixProperty::GetMatrixRef() const {
     return *KDProperty::pInstanceMem + this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: function call 'memcpy(Matrix *, const long, int)' does not match
 inline void KDMatrixProperty::GetMatrix(Matrix *arg0) const {
     M2C_STRUCT_COPY(arg0, *KDProperty::pInstanceMem + this->unk8, 0x40);
 }
@@ -62,11 +60,9 @@ inline void KDMatrixProperty::GetPos() const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 inline s32 KDMatrixProperty::GetPosRef() const {
     return *KDProperty::pInstanceMem + (this->unk8 + 0x30);
 }
-#endif
 
 inline void *KDMatrixProperty::GetClassInfo() const {
     return &KDMatrixProperty::classInfo;

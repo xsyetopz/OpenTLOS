@@ -21,6 +21,7 @@ public:
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ f32 unk18;
+    /* 0x01c */ f32 unk1C;
 };
 
 #endif  // SPYRO_SOURCE_BOUNDINGREGION_H

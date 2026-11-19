@@ -11,6 +11,7 @@ class EnemySettings {
 public:
     void LoadLine(MKIniLine *);
     void InitToOne(void);
+    /* 0x000 */ s8 unk0;
 };
 
 void EnemySettings_UnregisterSettings(EnemySettings *);

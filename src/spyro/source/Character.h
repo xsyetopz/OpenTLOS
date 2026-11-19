@@ -115,7 +115,7 @@ public:
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ u8 padEC[0x4];
     /* 0x0f0 */ f32 unkF0;
-    /* 0x0f4 */ u8 padF4[0x4];
+    /* 0x0f4 */ f32 unkF4;
     /* 0x0f8 */ f32 unkF8;
     /* 0x0fc */ u8 padFC[0x4];
     /* 0x100 */ f64 unk100;

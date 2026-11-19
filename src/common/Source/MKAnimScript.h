@@ -38,7 +38,7 @@ public:
     static u8 pAliasMaterialEventKeyWord[0x4];
     static u8 pOnEnterKeyWord[0x4];
     static u8 pOnExitKeyWord[0x4];
-    /* 0x000 */ u8 pad0[0x4];
+    /* 0x000 */ MKAnim* unk0;
     /* 0x004 */ s16 unk4;
     /* 0x006 */ s16 unk6;
     /* 0x008 */ s32 unk8;

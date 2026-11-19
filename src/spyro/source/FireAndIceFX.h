@@ -2,10 +2,12 @@
 #define SPYRO_SOURCE_FIREANDICEFX_H
 
 #include <dolphin/types.h>
+#include "common/Source/Matrix.h"
 
 class FireAndIceFX;
 class MKMaterial;
 class MKModel;
+class Matrix;
 
 class FireAndIceFX {
 public:
@@ -17,7 +19,7 @@ public:
     s32 Draw(unsigned short *);
     void Update(void);
     void Init(MKModel *, const float &, const float &);
-    /* 0x000 */ u8 pad0[0x40];
+    /* 0x000 */ Matrix unk0;
     /* 0x040 */ f32 unk40;
     /* 0x044 */ f32 unk44;
     /* 0x048 */ f32 unk48;
@@ -27,7 +29,8 @@ public:
     /* 0x058 */ f32 unk58;
     /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ MKMaterial* unk60;
-    /* 0x064 */ u8 pad64[0x8];
+    /* 0x064 */ u8 pad64[0x4];
+    /* 0x068 */ s32 unk68;
     /* 0x06c */ MKMaterial* unk6C;
     /* 0x070 */ MKMaterial* unk70;
     /* 0x074 */ MKModel* unk74;

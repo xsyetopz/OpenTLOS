@@ -17,7 +17,8 @@ class MKMaterial {
 public:
     s8 * Create(const char *);
     /* 0x000 */ f32 unk0;
-    /* 0x004 */ u8 pad4[0x20];
+    /* 0x004 */ f32 unk4;
+    /* 0x008 */ u8 pad8[0x1c];
     /* 0x024 */ void* unk24;
     /* 0x028 */ s32 unk28;
     /* 0x02c */ u8 pad2C[0x8];

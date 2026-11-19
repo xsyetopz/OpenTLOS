@@ -21,7 +21,7 @@ inline s32 KDAnimScriptProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 inline void KDAnimScriptProperty::InitInstance() {
     *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }

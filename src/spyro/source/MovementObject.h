@@ -19,7 +19,15 @@ public:
     MovementObject(void);
     /* 0x000 */ f64 unk0;
     /* 0x008 */ f64 unk8;
-    /* 0x010 */ u8 pad10[0x20];
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ s32 unk14;
+    /* 0x018 */ f32 unk18;
+    /* 0x01c */ f32 unk1C;
+    /* 0x020 */ f32 unk20;
+    /* 0x024 */ u8 pad24[0x4];
+    /* 0x028 */ s8 unk28;
+    /* 0x029 */ u8 pad29[0x3];
+    /* 0x02c */ s32 unk2C;
     /* 0x030 */ MKVector3 unk30;
     /* 0x040 */ MKVector3 unk40;
     /* 0x050 */ MovementObjectDescriptor* unk50;

@@ -23,6 +23,11 @@ public:
     public:
         ~BridgePiece(void);
         BridgePiece(void);
+        /* 0x000 */ u8 pad0[0x30];
+        /* 0x030 */ f32 unk30;
+        /* 0x034 */ s32 unk34;
+        /* 0x038 */ s32 unk38;
+        /* 0x03c */ s32 unk3C;
     };
     virtual ~RopeBridge(void);
     virtual void Init(void);

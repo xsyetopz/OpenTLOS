@@ -17,7 +17,7 @@ class Matrix;
 class MKCollisionAABB {
 public:
     /* 0x000 */ f32 unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ f32 unk10;

@@ -13,6 +13,7 @@ public:
     class Object {
     public:
         void ClearData(void);
+        /* 0x000 */ s8 unk0;
     };
     void StateUpdate(void);
     void StateExit(void);

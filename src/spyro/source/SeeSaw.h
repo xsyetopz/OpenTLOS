@@ -12,13 +12,14 @@ class MKMessage;
 class Matrix;
 class Platform;
 class PlatformAttachment;
+class PlatformObject;
 class SeeSaw;
 class SeeSawDescriptor;
 
 class PlatformAttachment {
 public:
     /* 0x000 */ Platform* unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ PlatformObject* unk4;
     /* 0x008 */ PlatformAttachment* unk8;
     /* 0x00c */ PlatformAttachment* unkC;
 };

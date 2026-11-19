@@ -38,7 +38,7 @@ inline void KDPathProperty::DeinitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 inline s32 KDPathProperty::LoadLineInstance(MKIniLine *arg0) {
     s8 *var_r5_2976;
 

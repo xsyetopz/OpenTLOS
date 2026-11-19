@@ -33,7 +33,8 @@ public:
     /* 0x040 */ f32 unk40;
     /* 0x044 */ f32 unk44;
     /* 0x048 */ f32 unk48;
-    /* 0x04c */ u8 pad4C[0xc];
+    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x050 */ f64 unk50;
     /* 0x058 */ f32 unk58;
     /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ f32 unk60;
@@ -44,7 +45,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Matrix'
 inline void Frustum::ApplyMatrix(Frustum *arg0, Matrix *arg1) {
     f64 spC0;
     f64 spB8;

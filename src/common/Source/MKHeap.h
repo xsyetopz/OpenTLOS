@@ -2,10 +2,13 @@
 #define COMMON_SOURCE_MKHEAP_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector4.h"
 
 class Level;
 class MKHeap;
 class MKModel;
+class MKProp;
+class MKVector4;
 
 class MKHeap {
 public:
@@ -68,7 +71,7 @@ public:
     /* 0x050 */ s32 unk50;
     /* 0x054 */ void* unk54;
     /* 0x058 */ s32 unk58;
-    /* 0x05c */ u8 pad5C[0x4];
+    /* 0x05c */ s32 unk5C;
     /* 0x060 */ s32 unk60;
     /* 0x064 */ u32 unk64;
     /* 0x068 */ s32 unk68;
@@ -79,16 +82,32 @@ public:
     /* 0x07c */ f32 unk7C;
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;
-    /* 0x088 */ u8 pad88[0x14];
+    /* 0x088 */ MKVector4 unk88;
+    /* 0x098 */ s32 unk98;
     /* 0x09c */ MKModel* unk9C;
-    /* 0x0a0 */ u8 padA0[0x4];
+    /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ f32 unkA4;
     /* 0x0a8 */ f32 unkA8;
-    /* 0x0ac */ u8 padAC[0x1c];
+    /* 0x0ac */ f32 unkAC;
+    /* 0x0b0 */ f32 unkB0;
+    /* 0x0b4 */ u8 padB4[0x14];
     /* 0x0c8 */ void* unkC8;
-    /* 0x0cc */ u8 padCC[0x28];
+    /* 0x0cc */ void* unkCC;
+    /* 0x0d0 */ s8 unkD0;
+    /* 0x0d1 */ u8 padD1[0x13];
+    /* 0x0e4 */ u8 unkE4;
+    /* 0x0e5 */ u8 padE5[0x3];
+    /* 0x0e8 */ s32 unkE8;
+    /* 0x0ec */ s32 unkEC;
+    /* 0x0f0 */ f32 unkF0;
     /* 0x0f4 */ s32 unkF4;
-    /* 0x0f8 */ u8 padF8[0x20];
+    /* 0x0f8 */ u8 padF8[0x8];
+    /* 0x100 */ f32 unk100;
+    /* 0x104 */ u8 pad104[0x4];
+    /* 0x108 */ f32 unk108;
+    /* 0x10c */ s32 unk10C;
+    /* 0x110 */ MKProp* unk110;
+    /* 0x114 */ void* unk114;
     /* 0x118 */ s8 unk118;
     /* 0x119 */ u8 pad119[0x3];
     /* 0x11c */ Level* unk11C;

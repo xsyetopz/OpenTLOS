@@ -137,7 +137,6 @@ public:
     /* 0x080 */ s32 unk80;
     /* 0x084 */ MKVector3* unk84;
     /* 0x088 */ BoundingRegion unk88;
-    /* 0x0a4 */ f32 unkA4;
     /* 0x0a8 */ f32 unkA8;
 };
 

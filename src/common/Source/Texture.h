@@ -20,7 +20,9 @@ public:
     void InitModule(void);
     static u8 initialised[0x1];
     /* 0x000 */ s8 unk0;
-    /* 0x001 */ u8 pad1[0x23];
+    /* 0x001 */ u8 pad1[0x1f];
+    /* 0x020 */ s8 unk20;
+    /* 0x021 */ u8 pad21[0x3];
     /* 0x024 */ s32 unk24;
     /* 0x028 */ s32 unk28;
     /* 0x02c */ s32 unk2C;

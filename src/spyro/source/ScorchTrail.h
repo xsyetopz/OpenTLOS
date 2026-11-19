@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
 
+class MKHeap;
 class MKMaterial;
 class MKModel;
 class MKProp;
@@ -27,7 +28,7 @@ public:
     void UpdatePlasmaBubbles(void);
     void EndTrail(void);
     void AddNode(const MKVector3 &, const MKVector3 &);
-    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x04c */ MKHeap* unk4C;
     /* 0x050 */ s32 unk50;
     /* 0x054 */ s32 unk54;
     /* 0x058 */ f32 unk58;

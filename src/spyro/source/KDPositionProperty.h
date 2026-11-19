@@ -32,7 +32,7 @@ inline s32 KDPositionProperty::GetInstanceDataSize() const {
     return 0x10;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void KDPositionProperty::InitInstance() {
     void *temp_r3_24314;
 
@@ -43,7 +43,7 @@ inline void KDPositionProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 inline s32 KDPositionProperty::LoadLineInstance(MKIniLine *arg0) {
     s8 *var_r6_24327;
 
@@ -67,11 +67,9 @@ inline void KDPositionProperty::GetPos() const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 inline s32 KDPositionProperty::GetPosRef() const {
     return *KDProperty::pInstanceMem + this->unk8;
 }
-#endif
 
 inline void *KDPositionProperty::GetClassInfo() const {
     return &KDPositionProperty::classInfo;

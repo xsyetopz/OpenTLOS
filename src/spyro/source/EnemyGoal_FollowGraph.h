@@ -242,7 +242,7 @@ public:
     f32 GetParabolaApexTimeFromP1(MKVector3, MKVector3, float, float);
     f32 GetTotalTime(MKVector3, MKVector3, float, float);
     void Init(Enemy *);
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ s8 unk9;
     /* 0x00a */ u8 padA[0x2];

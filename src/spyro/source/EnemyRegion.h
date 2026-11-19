@@ -26,10 +26,15 @@ public:
     /* 0x010 */ s32 unk10;
     /* 0x014 */ u8 pad14[0x4];
     /* 0x018 */ s32 unk18;
-    /* 0x01c */ u8 pad1C[0x10];
+    /* 0x01c */ f32 unk1C;
+    /* 0x020 */ f32 unk20;
+    /* 0x024 */ f32 unk24;
+    /* 0x028 */ f32 unk28;
     /* 0x02c */ f32 unk2C;
     /* 0x030 */ u8 unk30;
     /* 0x031 */ u8 unk31;
+    /* 0x032 */ u8 pad32[0x2];
+    /* 0x034 */ f32 unk34;
 };
 
 u8 PolygonWindingOrderIsClockWise(KDPathSegment *);

@@ -12,7 +12,12 @@ public:
     static u8 totalEnabled[0x4];
     /* 0x000 */ f64 unk0;
     /* 0x008 */ f64 unk8;
-    /* 0x010 */ u8 pad10[0x20];
+    /* 0x010 */ f64 unk10;
+    /* 0x018 */ f64 unk18;
+    /* 0x020 */ f32 unk20;
+    /* 0x024 */ u8 pad24[0x4];
+    /* 0x028 */ f32 unk28;
+    /* 0x02c */ u8 pad2C[0x4];
     /* 0x030 */ u8 unk30;
 };
 

@@ -8,7 +8,8 @@ class TimerInfo;
 
 class MKMemoryCardFileInfo {
 public:
-    /* 0x000 */ u8 pad0[0x80];
+    /* 0x000 */ s8 unk0;
+    /* 0x001 */ u8 pad1[0x7f];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ s32 unk84;
     /* 0x088 */ s32 unk88;

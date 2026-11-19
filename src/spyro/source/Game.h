@@ -28,6 +28,7 @@ public:
         void Lock(void);
         void Deinit(void);
         void Init(char *, int);
+        /* 0x000 */ s8 unk0;
     };
     class Fade {
     public:
@@ -38,6 +39,7 @@ public:
         void Reset(void);
         void Deinit(void);
         void Init(void);
+        /* 0x000 */ s8 unk0;
     };
     class KillRate {
     public:
@@ -46,6 +48,7 @@ public:
         void AddKill(void);
         void Deinit(void);
         void Init(int, float);
+        /* 0x000 */ s8 unk0;
     };
     void EnableSlowMotion(bool, float, float);
     void EmitFairyDandruf(const MKVector3 &, const MKVector3 &, const float &, const MKVector4 &);

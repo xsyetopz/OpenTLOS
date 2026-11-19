@@ -22,7 +22,7 @@ public:
     virtual void OnExit(void);
     virtual void OnAction(void);
     VelocityTrigger(void);
-    /* 0x0c1 */ u8 padC1[0xcf];
+    /* 0x14c */ u8 pad14C[0x44];
     /* 0x190 */ void* unk190;
     /* 0x194 */ u8 pad194[0xbc];
     /* 0x250 */ MKVector3 unk250;

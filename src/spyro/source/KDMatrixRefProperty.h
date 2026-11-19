@@ -19,15 +19,17 @@ public:
     virtual void GetMatrix(Matrix *) const;
     KDMatrixRefProperty(void);
     static KDMatrixRefProperty classInfo;
+    /* 0x004 */ u8 pad4[0x4];
+    /* 0x008 */ s32 unk8;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDMatrixRefProperty::KDMatrixRefProperty() {
-    this->unk4 = 0;
+    this->unk4 = NULL;
     this->unkC = NULL;
     this->unk8 = 0;
     return this;
@@ -38,19 +40,19 @@ inline s32 KDMatrixRefProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 inline void KDMatrixRefProperty::InitInstance() {
     *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 inline s32 KDMatrixRefProperty::GetMatrixRef() const {
     return *(*KDProperty::pInstanceMem + this->unk8);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 inline void KDMatrixRefProperty::GetMatrix(Matrix *arg0) const {
     M2C_STRUCT_COPY(arg0, *(*KDProperty::pInstanceMem + this->unk8), 0x40);
 }
@@ -66,7 +68,7 @@ inline void KDMatrixRefProperty::GetPos() const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
+#if 0 // DRAFT: pointer/array required
 inline s32 KDMatrixRefProperty::GetPosRef() const {
     return *(*KDProperty::pInstanceMem + this->unk8) + 0x30;
 }

@@ -45,7 +45,7 @@ public:
     void Deinit(void);
     void Init(void);
     /* 0x000 */ TargetManager*** unk0;
-    /* 0x004 */ u8 pad4[0x4];
+    /* 0x004 */ s32 unk4;
     /* 0x008 */ TargetContext unk8;
 };
 

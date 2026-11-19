@@ -76,7 +76,8 @@ public:
     void Deinit(void);
     void Init(void);
     static u8 pInstance[0x4];
-    /* 0x000 */ u8 pad0[0x8];
+    /* 0x000 */ Enemy*** unk0;
+    /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ EventMessage unk8;
     /* 0x00c */ EventMessage unkC;
     /* 0x010 */ EventMessage unk10;

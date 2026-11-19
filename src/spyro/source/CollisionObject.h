@@ -41,7 +41,11 @@ public:
 class ContextInfo {
 public:
     s32 HitID(unsigned int);
-    /* 0x000 */ u8 pad0[0x160];
+    /* 0x000 */ u8 pad0[0x48];
+    /* 0x048 */ void* unk48;
+    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x050 */ u8 unk50;
+    /* 0x051 */ u8 pad51[0x10f];
     /* 0x160 */ s32 unk160;
     /* 0x164 */ s32 unk164;
 };
@@ -77,9 +81,19 @@ public:
     ContextInfo * StoreResult(MKCollisionResult *, MKVector3 *);
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
-    /* 0x010 */ u8 pad10[0x40];
+    /* 0x010 */ f64 unk10;
+    /* 0x018 */ f64 unk18;
+    /* 0x020 */ f64 unk20;
+    /* 0x028 */ f64 unk28;
+    /* 0x030 */ f64 unk30;
+    /* 0x038 */ f32 unk38;
+    /* 0x03c */ f32 unk3C;
+    /* 0x040 */ s32 unk40;
+    /* 0x044 */ s32 unk44;
+    /* 0x048 */ f32 unk48;
+    /* 0x04c */ s32 unk4C;
     /* 0x050 */ void* unk50;
-    /* 0x054 */ u8 pad54[0x4];
+    /* 0x054 */ s32 unk54;
     /* 0x058 */ u8 unk58;
     /* 0x059 */ u8 pad59[0x113];
     /* 0x16c */ s32 unk16C;
@@ -156,7 +170,6 @@ inline s32 CollisionObject::GetFloorMaterialID() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 inline u32 CollisionObject::GetProp() {
     u32 temp_r3_150;
     u32 var_r0_136;
@@ -182,7 +195,6 @@ inline u32 CollisionObject::GetProp() {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 inline void CollisionObject::SetRotation(MKVector3 *arg0, MKVector3 arg1) {

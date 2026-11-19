@@ -5,6 +5,7 @@
 
 class ConCmd;
 class ConVar;
+class ExecuteDepth;
 class MKInputEvent;
 
 class ConCmd {
@@ -36,6 +37,12 @@ public:
     /* 0x018 */ s8 unk18;
     /* 0x019 */ u8 pad19[0x167];
     /* 0x180 */ u8** unk180;
+};
+
+class ExecuteDepth {
+public:
+    static ExecuteDepth iDepth;
+    /* 0x000 */ s8 unk0;
 };
 
 void Console_RemoveMacro(const char *);
