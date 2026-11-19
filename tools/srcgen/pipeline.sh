@@ -6,7 +6,9 @@
 #              that start at cxxconv (m2c output depends only on asm and context).
 # Install with tools/srcgen/install.sh <out dir>. Every step is bounded by a timeout.
 set -eu
-OUT=$1
+OUT=${1:-}
+# $OUT is deleted below, so an option or empty word there must not reach rm.
+case "$OUT" in ""|-*) sed -n 3,7p "$0"; exit 2 ;; esac
 ROOT=$(cd "$(dirname "$0")/../.." && pwd)
 M2C=${M2C:-$ROOT/../GodHand/tools/ext/m2c/m2c.py}
 S=$ROOT/build/srcgen
