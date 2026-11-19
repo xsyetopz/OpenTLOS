@@ -117,48 +117,50 @@ void FlyingBurningBits::Emit(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKVector3 *' and 'MKVector3 **'
 void FlyingBurningBits::Deinit() {
-    MKVector3 **var_r31_111;
-    MKVector3 **var_r3_112;
-    MKVector3 **var_r4_110;
-    MKVector3 *temp_r0_115;
-    MKVector3 *temp_r0_134;
-    u32 temp_r0_120;
+    extern M2C_UNK gEmptyPtrListDL;
+    u32 *walk;
+    u32 *scan;
+    u32 min;
+    u32 entry;
 
     MKMaterial_Destroy(this->unk4);
-    var_r4_110 = this->unk0;
-    var_r31_111 = var_r4_110;
-    var_r3_112 = var_r4_110;
-loop_3:
-    temp_r0_120 = M2C_FIELD(var_r3_112, u32 *, -4);
-    var_r3_112 -= 4;
-    if (temp_r0_120 != 0U) {
-        temp_r0_115 = *var_r3_112;
-        if (temp_r0_115 < var_r31_111) {
-            var_r31_111 = (MKVector3 **) temp_r0_115;
+
+    /* Walk down from unk0 to the zero terminator, keeping the lowest non-null entry. */
+    walk = (u32 *) this->unk0;
+    min = (u32) walk;
+    for (;;) {
+        walk -= 1;
+        entry = *walk;
+        if (entry == 0) {
+            break;
         }
-        goto loop_3;
+        if (entry < min) {
+            min = entry;
+        }
     }
-    if (var_r3_112 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_134 = *var_r4_110;
-        if (temp_r0_134 != NULL) {
-            if (temp_r0_134 < var_r31_111) {
-                var_r31_111 = (MKVector3 **) temp_r0_134;
+
+    if ((u32) walk != (u32) &gEmptyPtrListDL) {
+        /* Walk up from unk0 to its zero terminator for the lowest entry, then free that block. */
+        scan = (u32 *) this->unk0;
+        for (;;) {
+            entry = *scan;
+            if (entry == 0) {
+                break;
             }
-            var_r4_110 += 4;
-            goto loop_9;
+            if (entry < min) {
+                min = entry;
+            }
+            scan += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_111, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) min, NULL, 0);
         } else {
-            free(var_r31_111);
+            free((MKVector3 **) min);
         }
     }
     this->unk0 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void FlyingBurningBits::Draw() {
