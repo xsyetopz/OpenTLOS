@@ -132,25 +132,21 @@ loop_5:
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
-    MKHeap *temp_r3_206;
     MKIniLine *var_r28_229;
     s32 temp_r0_199;
     s32 temp_r29_205;
-    s32 temp_r3_197;
     s32 var_r30_231;
     void *var_r3_213;
 
     if (arg0->IsField(arg1) != 0) {
-        temp_r3_197 = arg0->GetNmbrOfSubLines();
-        this->unk1FC = temp_r3_197;
+        this->unk1FC = arg0->GetNmbrOfSubLines();
         temp_r0_199 = this->unk1FC;
         if (temp_r0_199 == 0) {
             return 1;
         }
         temp_r29_205 = temp_r0_199 * 0x10;
-        temp_r3_206 = ((MKHeap *) temp_r3_197)->Current();
-        if (temp_r3_206 != NULL) {
-            var_r3_213 = ((MKHeap *) (temp_r3_206->Current()))->Alloc(temp_r29_205, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_213 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_205, NULL, 0);
         } else {
             var_r3_213 = malloc(temp_r29_205);
         }
@@ -182,16 +178,14 @@ s32 ShatterWaypointSpawn::LoadLine(MKIniLine *arg0) {
 }
 
 void ShatterWaypointSpawn::Deinit() {
-    MKHeap *temp_r3_311;
     void *temp_r31_308;
 
     this->unk1A8.RemoveAllSpawnPoints(1U);
     this->unk1A8.Deinit();
     temp_r31_308 = this->unk1F8;
     if (temp_r31_308 != NULL) {
-        temp_r3_311 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_311 != NULL) {
-            ((MKHeap *) (temp_r3_311->Current()))->Free(temp_r31_308, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_308, NULL, 0);
         } else {
             free(temp_r31_308);
         }

@@ -51,7 +51,6 @@ void ConvexityDebris::Deinit() {
     MKHeap *temp_r0_63;
     MKHeap *temp_r0_82;
     MKHeap *temp_r3_54;
-    MKHeap *temp_r3_85;
     MKHeap *var_r31_46;
     MKHeap *var_r31_59;
     MKHeap *var_r3_60;
@@ -91,9 +90,8 @@ loop_13:
             var_r4_58 += 4;
             goto loop_13;
         }
-        temp_r3_85 = var_r3_60->Current();
-        if (temp_r3_85 != NULL) {
-            ((MKHeap *) (temp_r3_85->Current()))->Free(var_r31_59, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_59, NULL, 0);
         } else {
             free(var_r31_59);
         }
@@ -379,7 +377,6 @@ loop_9:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ConvexityDebris::Init() {
-    MKHeap *temp_r3_708;
     MKHeap *temp_r3_730;
     MKHeap *temp_r3_736;
     MKHeap *var_r3_715;
@@ -387,9 +384,8 @@ void ConvexityDebris::Init() {
     s32 var_ctr_728;
 
     MKProp::Init();
-    temp_r3_708 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_708 != NULL) {
-        var_r3_715 = ((MKHeap *) (temp_r3_708->Current()))->Alloc(0x2F0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_715 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2F0, NULL, 0);
     } else {
         var_r3_715 = malloc(0x2F0);
     }

@@ -51,8 +51,8 @@
 #include <m2c_macros.h>
 
 M2C_UNK THPPlayerDrawDone();                        /* extern */
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(s32);                                /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 M2C_UNK strcat(s8 *, void *);                       /* extern */
 extern s32 lit_785;
 extern s32 MKPackage_misses;
@@ -87,7 +87,7 @@ extern u32 lastTick_719;
 extern s32 lostMem_756;
 extern s32 lowestFPS_738;
 extern s32 noOfAllocatedTMemPreloadedRegions;
-extern MKHeap *pMKZRequest_RequestList;
+extern void *pMKZRequest_RequestList;
 extern OSThread *pMainThread;
 extern s32 peakNormal_760;
 extern s32 reservedMem_755;
@@ -99,7 +99,8 @@ extern s32 statusBar_735;
 extern u8 stencilVal_990;
 extern s32 usedNormalMem_752;
 extern s32 usedTempMem_753;
-static MKHeap gMKDefaults;                          /* type too large by 0x34; unable to generate initializer: non-zero padding */
+#if 0 // DRAFT: identifier 'gMKDefaults' redeclared
+static M2C_UNK gMKDefaults;                         /* unable to generate initializer: unknown type */
 static M2C_UNK gDisplay;                            /* unable to generate initializer: unknown type */
 static s8 cmdLine_795[0x100] = {
     0,
@@ -359,6 +360,7 @@ static s8 cmdLine_795[0x100] = {
     0,
     0,
 };
+#endif
 static M2C_UNK IdleThreadStack;
 static DVDFileInfo seekHack;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class
@@ -377,8 +379,6 @@ static s32 lit_1002 = 0;
 static s32 lit_1003 = 0x180;
 
 #if 0 // DRAFT: declaration syntax error
-static MKHeap lit_stringBase0;                         /* type too large by 0x11B; unable to generate initializer: not enough data; const */
-static M2C_UNK .L_8036E69D;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E6A3;                         /* unable to generate initializer: unknown type; const */
 
 s32 System_GetWideScreenPreference() {
@@ -492,7 +492,7 @@ void MKZRequest_Destroy(MKZRequest *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal type
 void *MKZRequest_Create() {
     s32 var_ctr_244;
     s32 var_r3_242;
@@ -500,8 +500,8 @@ void *MKZRequest_Create() {
 
     var_r31_240 = NULL;
     var_r3_242 = 0;
-    var_ctr_244 = gMKDefaults.unk98;
-    if ((s32) gMKDefaults.unk98 > 0) {
+    var_ctr_244 = M2C_FIELD(&gMKDefaults, s32 *, 0x98);
+    if ((s32) M2C_FIELD(&gMKDefaults, s32 *, 0x98) > 0) {
 loop_1:
         if ((s8) *(pMKZRequest_RequestList + (var_r3_242 + 0x14)) == 0) {
             var_r31_240 = pMKZRequest_RequestList + var_r3_242;
@@ -523,24 +523,21 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal type
 void MKZRequest_DeinitModule() {
-    MKHeap *temp_r29_295;
-    MKHeap *temp_r29_315;
-    MKHeap *temp_r3_296;
-    MKHeap *temp_r3_316;
     s32 var_r28_288;
     s32 var_r31_290;
+    void *temp_r29_295;
+    void *temp_r29_315;
 
-    if ((MKHeap *) pMKZRequest_RequestList != NULL) {
+    if ((void *) pMKZRequest_RequestList != NULL) {
         var_r28_288 = 0;
         var_r31_290 = 0;
 loop_6:
-        if (var_r28_288 < (s32) gMKDefaults.unk98) {
+        if (var_r28_288 < (s32) M2C_FIELD(&gMKDefaults, s32 *, 0x98)) {
             temp_r29_295 = *(pMKZRequest_RequestList + (var_r31_290 + 0x20));
-            temp_r3_296 = pMKZRequest_RequestList->Current();
-            if (temp_r3_296 != NULL) {
-                ((MKHeap *) (temp_r3_296->Current()))->Free(temp_r29_295, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_295, NULL, 0);
             } else {
                 free(temp_r29_295);
             }
@@ -549,9 +546,8 @@ loop_6:
             goto loop_6;
         }
         temp_r29_315 = pMKZRequest_RequestList;
-        temp_r3_316 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_316 != NULL) {
-            ((MKHeap *) (temp_r3_316->Current()))->Free(temp_r29_315, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_315, NULL, 0);
         } else {
             free(temp_r29_315);
         }
@@ -560,22 +556,19 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal type
 void MKZRequest_InitModule() {
-    MKHeap *temp_r3_352;
-    MKHeap *temp_r3_383;
-    MKHeap *var_r3_359;
-    MKHeap *var_r3_390;
     s32 temp_r0_397;
     s32 temp_r30_351;
     s32 var_r29_366;
     s32 var_r30_368;
     void *temp_r5_375;
+    void *var_r3_359;
+    void *var_r3_390;
 
-    temp_r30_351 = gMKDefaults.unk98 * 0x28;
-    temp_r3_352 = gMKDefaults.Current();
-    if (temp_r3_352 != NULL) {
-        var_r3_359 = ((MKHeap *) (temp_r3_352->Current()))->Alloc(temp_r30_351, NULL, 0);
+    temp_r30_351 = M2C_FIELD(&gMKDefaults, s32 *, 0x98) * 0x28;
+    if (MKHeap::Current() != NULL) {
+        var_r3_359 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_351, NULL, 0);
     } else {
         var_r3_359 = malloc(temp_r30_351);
     }
@@ -583,16 +576,15 @@ void MKZRequest_InitModule() {
     var_r29_366 = 0;
     var_r30_368 = 0;
 loop_8:
-    if (var_r29_366 < (s32) gMKDefaults.unk98) {
+    if (var_r29_366 < (s32) M2C_FIELD(&gMKDefaults, s32 *, 0x98)) {
         temp_r5_375 = pMKZRequest_RequestList + var_r30_368;
         M2C_FIELD(temp_r5_375, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r5_375, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r5_375, f32 *, 8) = 0.0f;
         *(pMKZRequest_RequestList + (var_r30_368 + 0x10)) = 0.0f;
         *(pMKZRequest_RequestList + (var_r30_368 + 0x14)) = 0;
-        temp_r3_383 = pMKZRequest_RequestList->Current();
-        if (temp_r3_383 != NULL) {
-            var_r3_390 = ((MKHeap *) (temp_r3_383->Current()))->Alloc(0x100, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_390 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x100, NULL, 0);
         } else {
             var_r3_390 = malloc(0x100);
         }
@@ -1021,7 +1013,7 @@ loop_2:
     var_r29_1169 = 8;
 loop_7:
     if (var_r26_1167 < arg0) {
-        strcat(cmdLine_795, &lit_stringBase0 + 0x15);
+        strcat(cmdLine_795, " ");
         strcat(cmdLine_795, *(arg1 + var_r29_1169));
         var_r26_1167 += 1;
         var_r29_1169 += 4;
@@ -1029,7 +1021,7 @@ loop_7:
     }
     System_InitModule__FPvPc(NULL, cmdLine_795);
     System_SetOrthoSize__Fii(0x280, 0x200);
-    System_GetCommandLineParameter__FPCcb(&lit_stringBase0 + 0x17, 0U);
+    System_GetCommandLineParameter__FPCcb("pal", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         M2C_FIELD(&gDisplay, f32 *, 8) = 50.0f;
         M2C_FIELD(&gDisplay, s32 *, 0) = 0;
@@ -1067,7 +1059,7 @@ void System_SetDisplayMode(int arg0, int arg1, int arg2, int arg3, int arg4) {
     M2C_FIELD(&gDisplay, f32 *, 0xC) = (f32) (1.0f / M2C_FIELD(&gDisplay, f32 *, 8));
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void System_GameDraw() {
     Matrix sp10;
     f32 temp_f30_1418;
@@ -1084,7 +1076,7 @@ void System_GameDraw() {
     MKView_Pop();
     MKMaterial_SetMaterial(NULL);
     MKGrass_DrawStats();
-    if (((u8) gbGoldMaster == 0) && ((s32) gMKDefaults.unk24 != 0)) {
+    if (((u8) gbGoldMaster == 0) && ((s32) M2C_FIELD(&gMKDefaults, s32 *, 0x24) != 0)) {
         if ((s8) init_736 == 0) {
             statusBar_735 = 0;
             init_736 = 1;
@@ -1117,17 +1109,17 @@ void System_GameDraw() {
             if (!(temp_r3_1397 & 0x1F)) {
                 heapCount_754.GetHeapStatistics((int *) &reservedMem_755, (int *) &usedNormalMem_752, (int *) &usedTempMem_753, (int *) &lostMem_756, M2C_ERROR(/* Read from unset register $r8 */));
             }
-            temp_r3_1408 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetPeak();
+            temp_r3_1408 = MKHeap::GetPeak();
             if ((s32) peakNormal_760 < temp_r3_1408) {
                 peakNormal_760 = temp_r3_1408;
             }
-            temp_f30_1418 = 30.0f + gMKDefaults.unk80;
+            temp_f30_1418 = 30.0f + M2C_FIELD(&gMKDefaults, f32 *, 0x80);
             temp_ret_1419 = GXGetOverflowCount();
-            gpDebugFont->DrawString2dWrapped(Str_Printf(&lit_stringBase0 + 0x1B, (s32) (usedNormalMem_752 + 0x3FF) / 1024, (s32) (peakNormal_760 + 0x3FF) / 1024, (s32) (reservedMem_755 + 0x3FF) / 1024, (s32) (usedTempMem_753 + 0x3FF) / 1024, (s32) (lostMem_756 + 0x3FF) / 1024, temp_ret_1419, MKPackage_misses, M2C_BITWISE(f32, temp_ret_1419)), 30.0f + 320.0f, temp_f30_1418 + 256.0f, 640.0f, 512.0f, 1.0f, 0, 0x80808080U);
+            gpDebugFont->DrawString2dWrapped(Str_Printf("%dk(%dk)/%dk T:%dk L:%dk FO:%d Package Misses:%d", (s32) (usedNormalMem_752 + 0x3FF) / 1024, (s32) (peakNormal_760 + 0x3FF) / 1024, (s32) (reservedMem_755 + 0x3FF) / 1024, (s32) (usedTempMem_753 + 0x3FF) / 1024, (s32) (lostMem_756 + 0x3FF) / 1024, temp_ret_1419, MKPackage_misses, M2C_BITWISE(f32, temp_ret_1419)), 30.0f + 320.0f, temp_f30_1418 + 256.0f, 640.0f, 512.0f, 1.0f, 0, 0x80808080U);
             GXResetOverflowCount();
             MKPackage_ShowStatus(0x198);
-            temp_f31_1470 = 10.0f + gMKDefaults.unk80;
-            gpDebugFont->DrawString2dWrapped(Str_Printf(&lit_stringBase0.unk4C, gFramesPerSecond, gCPUFramesPerSecond, gGPUFramesPerSecond, &lit_stringBase0 + 0x77, &lit_stringBase0 + 0x83, 0x14A, gpBuildVersion, 10.0f), 30.0f + 320.0f, temp_f31_1470 + 256.0f, 640.0f, 512.0f, 1.0f, 0, 0x80808080U);
+            temp_f31_1470 = 10.0f + M2C_FIELD(&gMKDefaults, f32 *, 0x80);
+            gpDebugFont->DrawString2dWrapped(Str_Printf("FPS:%d, CPU:%d GPU:%d %s %s MK:%d BUILD:%s", gFramesPerSecond, gCPUFramesPerSecond, gGPUFramesPerSecond, "Aug  3 2006", "14:37:44", 0x14A, gpBuildVersion, 10.0f), 30.0f + 320.0f, temp_f31_1470 + 256.0f, 640.0f, 512.0f, 1.0f, 0, 0x80808080U);
         }
     }
     gDrawCounter += 1;
@@ -1162,7 +1154,7 @@ u8 System_Update_Normal() {
         return 1U;
     }
     MKInput_DespatchEvents();
-    ((MKCloth *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdateGlobalCollisionPrims();
+    MKCloth::UpdateGlobalCollisionPrims();
     gDynamicBones.Update();
     gClothManager.Update();
     gFrameCounter += 1;
@@ -1229,30 +1221,30 @@ void System_InitModule(void *arg0, char *arg1) {
     memset(&gRenderState, 0, 0x1CU);
     M2C_FIELD(&gRenderState, s32 *, 0x18) = -1;
     Game_InitSystem();
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    MKHeap::InitModule();
     if (arg1 != NULL) {
         System_InitCommandLineArgs(arg1);
     }
-    gMainHeap.Init((OSCheckHeap(0) - ((gMKDefaults.unk64 * 0x10) + 0x100)) - 0x860, (s32) gMKDefaults.unk64, (s8 *) &lit_stringBase0.unk88.unk4, NULL);
+    gMainHeap.Init((OSCheckHeap(0) - ((M2C_FIELD(&gMKDefaults, s32 *, 0x64) * 0x10) + 0x100)) - 0x860, M2C_FIELD(&gMKDefaults, s32 *, 0x64), "Main", NULL);
     gMainHeap.Push();
     Debug_InitModule();
     MKInput_InitModule();
     MKWidget_InitModule();
     File_InitModule();
-    File_FileServerFilename(&lit_stringBase0 + 0x91);
+    File_FileServerFilename"Data_GC.rkv";
     DVDOpen(M2C_ERROR(/* Read from unset register $r3 */), &seekHack);
     seekFinished = 1;
     MKArchive_InitModule();
-    File_FileServerFilename(&lit_stringBase0 + 0x9D);
+    File_FileServerFilename"Lang_GC.rkv";
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
-    File_FileServerFilename(&lit_stringBase0 + 0xA9);
+    File_FileServerFilename"Media_GC.rkv";
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
-    File_FileServerFilename(&lit_stringBase0 + 0x91);
+    File_FileServerFilename"Data_GC.rkv";
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
     MKPackage_InitModule();
-    ((MKFont *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    MKFont::InitModule();
     MKView_InitModule();
-    ((Texture *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    Texture::InitModule();
     MKMaterial_InitModule();
     MKMemoryCard_InitModule();
     MKModel_InitModule();
@@ -1266,7 +1258,7 @@ void System_InitModule(void *arg0, char *arg1) {
     Video_InitModule();
     gFrameCounter = 0;
     gDrawCounter = 0;
-    Debug_SetFont(lit_stringBase0.unkB6.Create(M2C_ERROR(/* Read from unset register $r4 */)));
+    Debug_SetFont(((MKFont *) ("DebugFont1"))->Create(M2C_ERROR(/* Read from unset register $r4 */)));
     MKShape_Init();
     MKShadow_InitModule();
     MKGrass_InitModule();

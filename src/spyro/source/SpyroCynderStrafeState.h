@@ -28,7 +28,7 @@ public:
     virtual void Message(MKMessage *);
     virtual void * GetStateInfo(void);
     void Landed(bool);
-    s32 JumpLoftTransition(void);
+    static s32 JumpLoftTransition(void);
     void JumpLoftUpdate(void);
     void JumpLoftExit(void);
     void JumpLoftEnter(void);

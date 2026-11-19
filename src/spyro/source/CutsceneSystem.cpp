@@ -71,7 +71,7 @@ extern M2C_UNK gClearColor;
 extern M2C_UNK gEventCreationTable;
 extern GameStateMachine gGMState;
 extern void **gMK;
-extern MKHeap gMKDefaults;
+extern M2C_UNK gMKDefaults;
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
@@ -104,7 +104,6 @@ void CutsceneSystem::SetCustomSubtitle(const char *arg0, int arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CutsceneSystem::SetDuckValue(float arg0) {
     f32 var_f1_0;
 
@@ -117,7 +116,6 @@ void CutsceneSystem::SetDuckValue(float arg0) {
     }
     this->unkA4 = var_f1_0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void CutsceneSystem::NotifyProps(bool arg0) {
@@ -315,10 +313,9 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void CutsceneSystem::Abort(bool arg0) {
-    MKHeap *temp_r3_514;
     MKVector3 *temp_r3_535;
+    s32 temp_r3_514;
 
     if (arg0 != 0) {
         this->unk6C = NULL;
@@ -347,7 +344,6 @@ void CutsceneSystem::Abort(bool arg0) {
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void CutsceneSystem::PlayIntro(CutsceneObject &arg0, float arg1) {
@@ -400,14 +396,14 @@ s32 CutsceneSystem::Play(CutsceneObject &arg0, float arg1) {
         return 0;
     }
     var_r29_704 = 0;
-    if ((((MKVector3 *) this->unk78 != NULL) || ((GameVideo *) this->unk84 != NULL)) && (this->unk24.GetState() != NULL)) {
+    if ((((MKVector3 *) this->unk78 != NULL) || ((GameVideo *) this->unk84 != NULL)) && (this->unk24.GetState() != 0)) {
         var_r29_704 = 1;
     }
     if ((var_r29_704 != 0) || ((u8) this->unk20 != 0)) {
         Abort(0U);
         temp_r3_726 = this->unk78;
         var_r29_727 = 0;
-        if (((temp_r3_726 != NULL) && (((KDSynkerPlayer3 *) temp_r3_726)->IsPlaying() != 0)) || (((s32) this->unk74 == 2) && (this->unk24.GetState() == (MKHeap *)2))) {
+        if (((temp_r3_726 != NULL) && (((KDSynkerPlayer3 *) temp_r3_726)->IsPlaying() != 0)) || (((s32) this->unk74 == 2) && (this->unk24.GetState() == 2))) {
             var_r29_727 = 1;
         }
         if (var_r29_727 != 0) {
@@ -487,9 +483,9 @@ void CutsceneSystem::DrawSubtitles() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKHeap *temp_ret_1043;
     MKVector3 *temp_r3_991;
     f32 temp_f1_1084;
+    s32 temp_ret_1043;
     s32 var_r30_1063;
     s8 *temp_r4_1081;
     s8 *temp_r4_1172;
@@ -519,7 +515,7 @@ block_11:
         *this->unk7C = 0;
         if ((MKVector3 *) this->unk78 != NULL) {
             temp_ret_1043 = this->unk24.GetState();
-            if (temp_ret_1043 == (MKHeap *)3) {
+            if (temp_ret_1043 == 3) {
                 ErrorMessage_Draw(Str_Printf("Cutscene %s not found. Press <font=font_buttons:0>!</font> to continue.", &this->unk48, M2C_BITWISE(f32, temp_ret_1043)));
             } else if ((((KDSynkerPlayer3 *) this->unk78)->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) == 0)) {
                 var_r30_1063 = 0;
@@ -582,7 +578,7 @@ void CutsceneSystem::Draw() {
     }
     temp_r3_1219 = this->unk78;
     if ((temp_r3_1219 == NULL) || (((KDSynkerPlayer3 *) temp_r3_1219)->IsPlaying() == 0)) {
-        if ((this->unk24.GetState() == (MKHeap *)4) || ((u8) this->unkA9 != 0)) {
+        if ((this->unk24.GetState() == 4) || ((u8) this->unkA9 != 0)) {
             MKView_Clear(3, this->unk38, 0.0f, 0U);
         }
     } else {
@@ -649,7 +645,7 @@ void CutsceneSystem::Location::Update() {
         if (!(M2C_FIELD(this, f32 *, 0xC) <= 0.0f)) {
             temp_r3_1338 = M2C_FIELD(this, void **, 0x18);
             var_r31_1339 = 0;
-            if ((((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r3_1338) + 0x24))->GetState() != NULL)) {
+            if ((((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r3_1338) + 0x24))->GetState() != 0)) {
                 var_r31_1339 = 1;
             }
             if (var_r31_1339 != 0) {
@@ -1033,9 +1029,10 @@ void CutsceneSystem::LoadingInit() {
 
     M2C_FIELD(&gb, s8 *, 0x396) = 1;
     OnBeginLoad();
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->ActivateTempMemOverride();
+    MKHeap::ActivateTempMemOverride();
     temp_r3_2115 = this->unk78;
-    ((MKHeap *) (M2C_FIELD(temp_r3_2115->unk0, MKHeap *(**)(MKVector3 *, s8 *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_2115, &this->unk48, 0, 0, 0)))->DeactivateTempMemOverride();
+    M2C_FIELD(temp_r3_2115->unk0, M2C_UNK (**)(MKVector3 *, s8 *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_2115, &this->unk48, 0, 0, 0);
+    MKHeap::DeactivateTempMemOverride();
     M2C_FIELD(this->unk78, void (**)(s8 *, MKModel **, MKAnimScript **), 0x108) = (void (*)(s8 *, MKModel **, MKAnimScript **)) this->unkA0;
     M2C_FIELD(this->unk78, s32 *, 0x238) = (s32) M2C_FIELD(&gb, s32 *, 0x354);
     if ((s32) this->unk74 == 0) {
@@ -1047,22 +1044,20 @@ void CutsceneSystem::LoadingInit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal use of non-static member
 void CutsceneSystem::Update() {
-    MKHeap *temp_r3_2159;
     u8 var_r31_2157;
 
     var_r31_2157 = 0;
-    temp_r3_2159 = this->unk24.GetState();
-    if (temp_r3_2159 > 0) {
+    if (this->unk24.GetState() > 0) {
         var_r31_2157 = 1;
-        temp_r3_2159->ActivateTempMemOverride();
+        MKHeap::ActivateTempMemOverride();
     }
     if ((MKVector3 *) this->unk78 != NULL) {
         this->unk24.Update(this, 0);
     }
     if (var_r31_2157 != 0) {
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
+        MKHeap::DeactivateTempMemOverride();
     }
     CutsceneSystem::Location::Update();
 }
@@ -1070,15 +1065,12 @@ void CutsceneSystem::Update() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::Deinit() {
-    MKHeap *temp_r3_2237;
     MKVector3 *temp_r31_2234;
     MKVector3 *temp_r3_2226;
-    s32 var_r3_2200;
 
     Deactivate();
     M2C_FIELD(&gb, s8 *, 0x396) = 0;
-    var_r3_2200 = ((KDSynkerPlayer3 *) this->unk78)->IsActive();
-    if ((u8) var_r3_2200 != 0) {
+    if (((KDSynkerPlayer3 *) this->unk78)->IsActive() != 0) {
         if (((KDSynkerPlayer3 *) this->unk78)->IsUnloading() == 0) {
             bIgnoreEvent = 1;
             ((KDSynkerPlayer3 *) this->unk78)->SkipToEnd(1U);
@@ -1092,14 +1084,13 @@ loop_4:
             goto loop_4;
         }
         temp_r3_2226 = this->unk78;
-        var_r3_2200 = M2C_FIELD(temp_r3_2226->unk0, s32 (**)(MKVector3 *), 0xC)(temp_r3_2226);
+        M2C_FIELD(temp_r3_2226->unk0, M2C_UNK (**)(MKVector3 *), 0xC)(temp_r3_2226);
     }
     this->unk68 = NULL;
     temp_r31_2234 = this->unk78;
     if (temp_r31_2234 != NULL) {
-        temp_r3_2237 = ((MKHeap *) var_r3_2200)->Current();
-        if (temp_r3_2237 != NULL) {
-            ((MKHeap *) (temp_r3_2237->Current()))->Free(temp_r31_2234, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2234, NULL, 0);
         } else {
             free(temp_r31_2234);
         }
@@ -1108,7 +1099,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'cutsceneStates'
+#if 0 // DRAFT: undefined identifier '__vt'
 void CutsceneSystem::Init() {
     MKVector3 *temp_r31_2281;
 
@@ -1133,7 +1124,7 @@ void CutsceneSystem::Init() {
     this->unk9F = 0;
     this->unk1C = NULL;
     this->unkA0 = NULL;
-    NULL->GetWorldInfo();
+    Level::GetWorldInfo();
     this->unkA4 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x74);
     this->unk84 = NULL;
     this->unk88 = 1;
@@ -1143,7 +1134,6 @@ void CutsceneSystem::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CutsceneSystem::DeinitModule() {
     f64 sp20;
     f64 sp18;
@@ -1151,14 +1141,12 @@ void CutsceneSystem::DeinitModule() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_2336;
     s8 *temp_r31_2335;
 
     CutsceneSystem::Location::Deinit();
     temp_r31_2335 = this->unk7C;
-    temp_r3_2336 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2336 != NULL) {
-        ((MKHeap *) (temp_r3_2336->Current()))->Free(temp_r31_2335, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2335, NULL, 0);
     } else {
         free((MKVector3 *) temp_r31_2335);
     }
@@ -1172,12 +1160,10 @@ void CutsceneSystem::DeinitModule() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CutsceneSystem::InitModule() {
-    MKHeap *temp_r3_2390;
-    f32 temp_r31_2389;
+    s32 temp_r31_2389;
     s8 *var_r3_2397;
 
     this->unk68 = NULL;
@@ -1187,18 +1173,17 @@ void CutsceneSystem::InitModule() {
     this->unk20 = 0;
     this->unk9E = 0;
     this->unk9F = 0;
-    temp_r31_2389 = gMKDefaults.unkAC;
-    temp_r3_2390 = gMKDefaults.Current();
-    if (temp_r3_2390 != NULL) {
-        var_r3_2397 = ((MKHeap *) (temp_r3_2390->Current()))->Alloc(M2C_BITWISE(s32, temp_r31_2389), NULL, 0);
+    temp_r31_2389 = M2C_FIELD(&gMKDefaults, s32 *, 0xAC);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2397 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2389, NULL, 0);
     } else {
-        var_r3_2397 = malloc(M2C_BITWISE(s32, temp_r31_2389));
+        var_r3_2397 = malloc(temp_r31_2389);
     }
     this->unk7C = var_r3_2397;
     CutsceneSystem::Location::Init(this);
     this->unk1C = NULL;
     this->unkA0 = NULL;
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+    Level::GetWorldInfo();
     this->unkA4 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x74);
     this->unk84 = NULL;
     this->unk88 = 1;

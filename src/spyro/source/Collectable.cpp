@@ -297,15 +297,14 @@ void CollectableSpawner::Reset() {
 f32 CollectableSpawner::Resolve() {
     MKHeap *temp_r29_525;
     MKHeap *temp_r3_523;
-    MKHeap *temp_r3_545;
-    MKHeap *var_r29_562;
-    MKHeap *var_r3_528;
     Matrix *var_r3_552;
     s32 temp_r30_544;
     s32 var_r30_559;
     void *temp_r3_574;
     void *temp_r3_579;
     void *temp_r3_584;
+    void *var_r29_562;
+    void *var_r3_528;
 
     MKProp::Resolve();
     temp_r3_523 = checked_cast<CollectableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s32), 0x5C)(gMK, M2C_FIELD(checked_cast<CollectableSpawnerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60)));
@@ -314,16 +313,15 @@ f32 CollectableSpawner::Resolve() {
     var_r3_528 = checked_cast<Collectable *, MKProp>((MKProp *) temp_r3_523->unk28);
 loop_4:
     if (var_r3_528 != NULL) {
-        if ((void *) var_r3_528->unkC8 == NULL) {
+        if ((u32) M2C_FIELD(var_r3_528, u32 *, 0xC8) == 0U) {
             this->unk50 += 1;
         }
-        var_r3_528 = checked_cast<Collectable *, MKProp>(M2C_BITWISE(MKProp *, var_r3_528->unk38));
+        var_r3_528 = checked_cast<Collectable *, MKProp>(M2C_FIELD(var_r3_528, MKProp **, 0x38));
         goto loop_4;
     }
     temp_r30_544 = this->unk50 * 4;
-    temp_r3_545 = var_r3_528->Current();
-    if (temp_r3_545 != NULL) {
-        var_r3_552 = ((MKHeap *) (temp_r3_545->Current()))->Alloc(temp_r30_544, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_552 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_544, NULL, 0);
     } else {
         var_r3_552 = malloc(temp_r30_544);
     }
@@ -332,7 +330,7 @@ loop_4:
     var_r29_562 = checked_cast<Collectable *, MKProp>((MKProp *) temp_r29_525->unk28);
 loop_12:
     if (var_r29_562 != NULL) {
-        if ((void *) var_r29_562->unkC8 == NULL) {
+        if ((u32) M2C_FIELD(var_r29_562, u32 *, 0xC8) == 0U) {
             *(this->unk4C + var_r30_559) = var_r29_562;
             temp_r3_574 = *(this->unk4C + var_r30_559);
             M2C_FIELD(temp_r3_574, u8 *, 0x144) = (u8) (M2C_FIELD(temp_r3_574, u8 *, 0x144) & ~0x20);
@@ -342,24 +340,20 @@ loop_12:
             M2C_FIELD(M2C_FIELD(temp_r3_584, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK), 0x5C)(temp_r3_584, 0, 1, 0);
             var_r30_559 += 4;
         }
-        var_r29_562 = checked_cast<Collectable *, MKProp>(M2C_BITWISE(MKProp *, var_r29_562->unk38));
+        var_r29_562 = checked_cast<Collectable *, MKProp>(M2C_FIELD(var_r29_562, MKProp **, 0x38));
         goto loop_12;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CollectableSpawner::Deinit() {
-    MKHeap *temp_r3_615;
-    MKHeap *temp_r3_638;
     Matrix *temp_r31_612;
     Matrix *temp_r31_635;
 
     temp_r31_612 = this->unk68;
     if (temp_r31_612 != NULL) {
-        temp_r3_615 = MKHeap::Current();
-        if (temp_r3_615 != NULL) {
-            ((MKHeap *) (temp_r3_615->Current()))->Free(temp_r31_612, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_612, NULL, 0);
         } else {
             free(temp_r31_612);
         }
@@ -370,9 +364,8 @@ void CollectableSpawner::Deinit() {
     this->unk60 = 0;
     temp_r31_635 = this->unk4C;
     if (temp_r31_635 != NULL) {
-        temp_r3_638 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_638 != NULL) {
-            ((MKHeap *) (temp_r3_638->Current()))->Free(temp_r31_635, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_635, NULL, 0);
         } else {
             free(temp_r31_635);
         }
@@ -380,19 +373,16 @@ void CollectableSpawner::Deinit() {
     this->unk4C = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CollectableSpawner::Init() {
-    MKHeap *temp_r3_674;
     Matrix *var_r3_681;
 
     MKProp::Init();
     this->unk4C = NULL;
     this->unk54 = 0;
-    temp_r3_674 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_674 != NULL) {
-        var_r3_681 = ((MKHeap *) (temp_r3_674->Current()))->Alloc(0x7D0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_681 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0);
     } else {
         var_r3_681 = malloc(0x7D0);
     }
@@ -2345,17 +2335,13 @@ s32 Collectable::LoadLine(MKIniLine *arg0) {
 }
 
 void Collectable::Deinit() {
-    MKHeap *temp_r3_4660;
-    MKHeap *temp_r3_4665;
     u8 *temp_r4_4682;
     void *temp_r31_4664;
 
-    temp_r3_4660 = this->unk124;
-    if ((s32) temp_r3_4660->unk9C & 8) {
+    if ((s32) this->unk124->unk9C & 8) {
         temp_r31_4664 = this->unk8;
-        temp_r3_4665 = temp_r3_4660->Current();
-        if (temp_r3_4665 != NULL) {
-            ((MKHeap *) (temp_r3_4665->Current()))->Free(temp_r31_4664, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4664, NULL, 0);
         } else {
             free((Matrix *) temp_r31_4664);
         }

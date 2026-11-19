@@ -315,7 +315,6 @@ void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
 void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_519;
     void *var_r30_478;
     void *var_r3_526;
 
@@ -332,9 +331,8 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
         }
         ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdatePeak();
     } else {
-        temp_r3_519 = Current();
-        if (temp_r3_519 != NULL) {
-            var_r3_526 = ((MKHeap *) (temp_r3_519->Current()))->Alloc(arg1, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_526 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg1, NULL, 0);
         } else {
             var_r3_526 = malloc(arg1);
         }
@@ -656,22 +654,16 @@ void MKHeap::InitModule() {
 }
 
 void __nwa(unsigned long arg0, const char *arg1, int arg2) {
-    MKHeap *temp_r3_1090;
-
-    temp_r3_1090 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_1090 != NULL) {
-        ((MKHeap *) (temp_r3_1090->Current()))->Alloc((s32) arg0, arg1, arg2);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Alloc((s32) arg0, arg1, arg2);
         return;
     }
     malloc((s32) arg0);
 }
 
 void __nw(unsigned long arg0, const char *arg1, int arg2) {
-    MKHeap *temp_r3_1120;
-
-    temp_r3_1120 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_1120 != NULL) {
-        ((MKHeap *) (temp_r3_1120->Current()))->Alloc((s32) arg0, arg1, arg2);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Alloc((s32) arg0, arg1, arg2);
         return;
     }
     malloc((s32) arg0);

@@ -417,7 +417,6 @@ void MKPropDescriptor::Update() {
 }
 
 void MKPropDescriptor::Deinit() {
-    MKHeap *temp_r3_1190;
     MKModel *temp_r3_1168;
     s8 *temp_r31_1184;
     s8 *temp_r3_1160;
@@ -445,9 +444,8 @@ void MKPropDescriptor::Deinit() {
     }
     temp_r31_1184 = this->unk0;
     if ((temp_r31_1184 != NULL) && (this->unk14 & 0x10000)) {
-        temp_r3_1190 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1190 != NULL) {
-            ((MKHeap *) (temp_r3_1190->Current()))->Free(temp_r31_1184, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1184, NULL, 0);
             return;
         }
         free(temp_r31_1184);

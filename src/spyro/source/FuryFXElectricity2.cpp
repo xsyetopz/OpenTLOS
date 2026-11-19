@@ -620,7 +620,7 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
 #endif
 
 void FuryFXElectricity2::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk90 = 0;
     this->unk11C = -1.0f;
     this->unk94 = 0.0f;
@@ -628,7 +628,6 @@ void FuryFXElectricity2::SetDefaults() {
 
 #if 0 // DRAFT: type mismatch
 void FuryFXElectricity2::Deinit() {
-    MKHeap *temp_r3_1010;
     ManagedLight *temp_r4_1025;
     u32 temp_r0_993;
     void ****var_r31_984;
@@ -660,9 +659,8 @@ loop_9:
             var_r4_983 += 4;
             goto loop_9;
         }
-        temp_r3_1010 = ((MKHeap *) var_r3_985)->Current();
-        if (temp_r3_1010 != NULL) {
-            ((MKHeap *) (temp_r3_1010->Current()))->Free(var_r31_984, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_984, NULL, 0);
         } else {
             free(var_r31_984);
         }
@@ -1142,8 +1140,6 @@ f32 FuryFXElectricity2::Resolve() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXElectricity2::Init() {
-    MKHeap *temp_r3_1796;
-    ZapPS *temp_r3_1794;
     s32 var_ctr_1816;
     void ****temp_r3_1818;
     void ****temp_r3_1824;
@@ -1155,11 +1151,9 @@ void FuryFXElectricity2::Init() {
     this->unk94 = 0.0f;
     this->unk11C = -1.0f;
     this->unkA8 = NULL;
-    temp_r3_1794 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
-    this->unkAC = temp_r3_1794;
-    temp_r3_1796 = ((MKHeap *) temp_r3_1794)->Current();
-    if (temp_r3_1796 != NULL) {
-        var_r3_1803 = ((MKHeap *) (temp_r3_1796->Current()))->Alloc(0xF8, NULL, 0);
+    this->unkAC = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
+    if (MKHeap::Current() != NULL) {
+        var_r3_1803 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF8, NULL, 0);
     } else {
         var_r3_1803 = malloc(0xF8);
     }

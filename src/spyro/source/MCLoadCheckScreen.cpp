@@ -36,7 +36,6 @@ void MCLoadCheckScreen::Update() {
     s32 spC;
     s32 sp8;
     KDMemoryCard *temp_r3_206;
-    KDMemoryCard *temp_r3_82;
     KDMemoryCard *var_r29_101;
     s32 temp_r0_20;
     s32 temp_r30_136;
@@ -47,7 +46,6 @@ void MCLoadCheckScreen::Update() {
     u32 var_r4_104;
     u32 var_r4_125;
     u32 var_r4_17;
-    u8 temp_r3_17;
     void **temp_r3_163;
     void **temp_r3_170;
     void **temp_r3_176;
@@ -66,10 +64,9 @@ void MCLoadCheckScreen::Update() {
     void *temp_ret_130;
 
     UIScreen::Update();
-    temp_ret_17 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update();
-    temp_r3_17 = temp_ret_17;
+    temp_ret_17 = KDMemoryCard::Update();
     var_r4_17 = (u32) (u64) temp_ret_17;
-    if (temp_r3_17 == 0) {
+    if (temp_ret_17 == 0) {
         temp_r0_20 = this->unkD0;
         switch (temp_r0_20) {                       /* irregular */
         case 0:
@@ -93,11 +90,10 @@ void MCLoadCheckScreen::Update() {
             M2C_FIELD(*temp_r3_70, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_70, &sp28, 3);
             return;
         case 1:
-            temp_ret_82 = ((KDMemoryCard *) temp_r3_17)->GetNextCard();
-            temp_r3_82 = temp_ret_82;
+            temp_ret_82 = KDMemoryCard::GetNextCard();
             var_r4_17 = (u32) (u64) temp_ret_82;
-            if (temp_r3_82 != NULL) {
-                ((KDMemoryCard *) (temp_r3_82->GetNextCard()))->SetState((KDMCState) 2);
+            if (temp_ret_82 != 0U) {
+                ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
             if ((u32) *KDMemoryCard::numCardsPresent == 0U) {
@@ -165,7 +161,8 @@ block_25:
                     temp_r3_196 = this->unkDC;
                     sp8 = 2;
                     spC = 0;
-                    temp_r3_206 = ((KDMemoryCard *) (M2C_FIELD(*temp_r3_196, KDMemoryCard *(**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_196, &sp8, 2)))->GetFirstAvailable();
+                    M2C_FIELD(*temp_r3_196, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_196, &sp8, 2);
+                    temp_r3_206 = KDMemoryCard::GetFirstAvailable();
                     *MemoryCardScreen::selectedCard = temp_r3_206;
                     temp_r3_206->SetState((KDMCState) 3);
                     return;

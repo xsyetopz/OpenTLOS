@@ -25,7 +25,7 @@ public:
     public:
         void Release(void);
         void Get(void);
-        void Lock(void);
+        static void Lock(void);
         void Deinit(void);
         void Init(char *, int);
         /* 0x000 */ s8 unk0;

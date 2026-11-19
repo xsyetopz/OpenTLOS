@@ -121,26 +121,19 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
 
 #if 0 // DRAFT: function call 'stricmp(const char[1])' does not match
 s32 SpawnEffectBox::LoadDone() {
-    MKHeap *temp_r3_471;
     s32 temp_r30_470;
     s32 var_r29_485;
     s32 var_r30_486;
-    s8 *var_r3_458;
     void *var_r3_478;
 
     MKProp::LoadDone();
     this->unk50.Init(*((Matrix *) &MKProp::loadInfo));
-    var_r3_458 = this->unkE0;
-    if (var_r3_458 != NULL) {
-        var_r3_458 = stricmp("");
-        if ((s32) var_r3_458 == 0) {
-            this->unkE0 = NULL;
-        }
+    if (((s8 *) this->unkE0 != NULL) && (stricmp("") == 0)) {
+        this->unkE0 = NULL;
     }
     temp_r30_470 = this->unkE8 * 4;
-    temp_r3_471 = ((MKHeap *) var_r3_458)->Current();
-    if (temp_r3_471 != NULL) {
-        var_r3_478 = ((MKHeap *) (temp_r3_471->Current()))->Alloc(temp_r30_470, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_478 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_470, NULL, 0);
     } else {
         var_r3_478 = malloc(temp_r30_470);
     }
@@ -188,16 +181,13 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpawnEffectBox::Deinit() {
-    MKHeap *temp_r3_661;
     void *temp_r31_658;
 
     temp_r31_658 = this->unkE4;
     if (temp_r31_658 != NULL) {
-        temp_r3_661 = MKHeap::Current();
-        if (temp_r3_661 != NULL) {
-            ((MKHeap *) (temp_r3_661->Current()))->Free(temp_r31_658, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_658, NULL, 0);
         } else {
             free(temp_r31_658);
         }
@@ -205,7 +195,6 @@ void SpawnEffectBox::Deinit() {
     this->unk50.Deinit();
     MKProp::Deinit();
 }
-#endif
 
 void SpawnEffectBox::Init() {
     MKProp::Init();

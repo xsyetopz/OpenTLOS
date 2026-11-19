@@ -26,7 +26,7 @@ extern s32 ConsoleCmds_pSenderProp;
 extern u8 bBindEnabled;
 extern s32 bCtrlPressed;
 extern s8 ***delayCmdData;
-extern MKHeap gEmptyPtrListDL;
+extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern ConCmd *pCommands;
 extern u8 **pKeyBind;
@@ -317,7 +317,6 @@ static u8 .L_8035DEAE[5] = { 0x65, 0x78, 0x65, 0x63, 0 }; /* const */
 void Console_RemoveMacro(const char *arg0) {
     ConCmd *temp_r3_16;
     ConCmd *temp_ret_16;
-    MKHeap *temp_r3_26;
     f32 temp_f1_16;
     u8 **temp_r3_22;
 
@@ -328,9 +327,8 @@ void Console_RemoveMacro(const char *arg0) {
         if ((u8 *) temp_r3_16->unkC != NULL) {
             temp_r3_22 = temp_r3_16->unk0;
             Console_Unregister((ConVar *) temp_r3_22, 1);
-            temp_r3_26 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_26 != NULL) {
-                ((MKHeap *) (temp_r3_26->Current()))->Free(temp_r3_22, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_22, NULL, 0);
                 return;
             }
             free(temp_r3_22);
@@ -343,22 +341,18 @@ void Console_RemoveMacro(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Console_AddMacro(const char *arg0, const char *arg1) {
     ConCmd *temp_r31_112;
     ConVar *var_r31_86;
-    MKHeap *temp_r3_75;
-    MKHeap *temp_r3_78;
     s32 temp_r31_77;
     s8 *temp_r30_93;
     u32 temp_r31_73;
 
     temp_r31_73 = strlen(arg1);
-    temp_r3_75 = strlen(arg0);
-    temp_r31_77 = temp_r3_75 + temp_r31_73 + 0x1A;
-    temp_r3_78 = temp_r3_75->Current();
-    if (temp_r3_78 != NULL) {
-        var_r31_86 = ((MKHeap *) (temp_r3_78->Current()))->Alloc(temp_r31_77, NULL, 0);
+    temp_r31_77 = strlen(arg0) + temp_r31_73 + 0x1A;
+    if (MKHeap::Current() != NULL) {
+        var_r31_86 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_77, NULL, 0);
     } else {
         var_r31_86 = malloc(temp_r31_77);
     }
@@ -717,15 +711,13 @@ void Console_UnbindAll() {
 }
 
 void Console_Unbind(unsigned long arg0) {
-    MKHeap *temp_r3_719;
     u8 *temp_r31_716;
 
     if (arg0 < 0x100U) {
         temp_r31_716 = pKeyBind[arg0];
         if (temp_r31_716 != NULL) {
-            temp_r3_719 = ((MKHeap *) arg0)->Current();
-            if (temp_r3_719 != NULL) {
-                ((MKHeap *) (temp_r3_719->Current()))->Free(temp_r31_716, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_716, NULL, 0);
             } else {
                 free((u8 **) temp_r31_716);
             }
@@ -734,20 +726,16 @@ void Console_Unbind(unsigned long arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Console_Bind(unsigned long arg0, const char *arg1) {
     ConVar *var_r3_765;
-    MKHeap *temp_r3_756;
-    MKHeap *temp_r3_758;
     s32 temp_r31_757;
 
     if (arg0 < 0x100U) {
         Console_Unbind(arg0);
-        temp_r3_756 = strlen(arg1);
-        temp_r31_757 = temp_r3_756 + 1;
-        temp_r3_758 = temp_r3_756->Current();
-        if (temp_r3_758 != NULL) {
-            var_r3_765 = ((MKHeap *) (temp_r3_758->Current()))->Alloc(temp_r31_757, NULL, 0);
+        temp_r31_757 = strlen(arg1) + 1;
+        if (MKHeap::Current() != NULL) {
+            var_r3_765 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_757, NULL, 0);
         } else {
             var_r3_765 = malloc(temp_r31_757);
         }
@@ -1114,9 +1102,6 @@ void Console_Print(const char *arg0, ... arg1) {
 
 #if 0 // DRAFT: undefined identifier 'commandBuffer'
 void Console_Deinit() {
-    MKHeap *temp_r3_1413;
-    MKHeap *temp_r3_1430;
-    MKHeap *temp_r3_1446;
     s8 ***var_r31_1387;
     s8 ***var_r3_1388;
     s8 ***var_r4_1386;
@@ -1156,9 +1141,8 @@ loop_12:
             var_r4_1386 += 4;
             goto loop_12;
         }
-        temp_r3_1413 = ((MKHeap *) var_r3_1388)->Current();
-        if (temp_r3_1413 != NULL) {
-            ((MKHeap *) (temp_r3_1413->Current()))->Free(var_r31_1387, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1387, NULL, 0);
         } else {
             free((u8 **) var_r31_1387);
         }
@@ -1166,17 +1150,15 @@ loop_12:
     delayCmdData = NULL;
     Console_UnbindAll();
     temp_r31_1429 = pKeyBind;
-    temp_r3_1430 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1430 != NULL) {
-        ((MKHeap *) (temp_r3_1430->Current()))->Free(temp_r31_1429, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1429, NULL, 0);
     } else {
         free(temp_r31_1429);
     }
     temp_r31_1444 = pLookup;
     pKeyBind = NULL;
-    temp_r3_1446 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1446 != NULL) {
-        ((MKHeap *) (temp_r3_1446->Current()))->Free(temp_r31_1444, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1444, NULL, 0);
     } else {
         free(temp_r31_1444);
     }
@@ -1189,29 +1171,24 @@ void Console_Init() {
     ConVar *var_r3_1481;
     ConVar *var_r3_1495;
     ConVar *var_r3_1517;
-    MKHeap *temp_r3_1474;
-    MKHeap *temp_r3_1488;
-    MKHeap *temp_r3_1510;
     s32 var_ctr_1529;
 
-    temp_r3_1474 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1474 != NULL) {
-        var_r3_1481 = ((MKHeap *) (temp_r3_1474->Current()))->Alloc(0x400, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1481 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
     } else {
         var_r3_1481 = malloc(0x400);
     }
     pKeyBind = &var_r3_1481->unk0;
-    temp_r3_1488 = ((MKHeap *) var_r3_1481)->Current();
-    if (temp_r3_1488 != NULL) {
-        var_r3_1495 = ((MKHeap *) (temp_r3_1488->Current()))->Alloc(0x100, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1495 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x100, NULL, 0);
     } else {
         var_r3_1495 = malloc(0x100);
     }
     pLookup = &var_r3_1495->unk0;
     memset(pKeyBind, 0, 0x400U);
-    temp_r3_1510 = ((MKHeap *) (memset(pLookup, 0, 0x100U)))->Current();
-    if (temp_r3_1510 != NULL) {
-        var_r3_1517 = ((MKHeap *) (temp_r3_1510->Current()))->Alloc(0x208, NULL, 0);
+    memset(pLookup, 0, 0x100U);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1517 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x208, NULL, 0);
     } else {
         var_r3_1517 = malloc(0x208);
     }
@@ -1927,8 +1904,6 @@ f32 CmdBind(int arg0, char **arg1) {
 f32 CmdExec(int arg0, char **arg1) {
     s32 sp8;
     ConVar *var_r31_3173;
-    MKHeap *temp_r3_3164;
-    MKHeap *temp_r3_3190;
     s32 temp_r31_3163;
 
     fLastResult = 1.0f;
@@ -1939,17 +1914,16 @@ f32 CmdExec(int arg0, char **arg1) {
         sp8 = 0;
         if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8) != 0) {
             temp_r31_3163 = sp8 + 1;
-            temp_r3_3164 = ((MKHeap *) sp8)->Current();
-            if (temp_r3_3164 != NULL) {
-                var_r31_3173 = ((MKHeap *) (temp_r3_3164->Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U);
+            if (MKHeap::Current() != NULL) {
+                var_r31_3173 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U);
             } else {
                 var_r31_3173 = malloc(temp_r31_3163);
             }
             MKArchive_Load(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8, var_r31_3173, -1);
             *(var_r31_3173 + sp8) = 0;
-            temp_r3_3190 = ((MKHeap *) (M2C_BITWISE(MKHeap *, Console_ExecuteBuffer((s8 *) var_r31_3173))))->Current();
-            if (temp_r3_3190 != NULL) {
-                ((MKHeap *) (temp_r3_3190->Main()))->TFree(var_r31_3173, NULL, 0);
+            Console_ExecuteBuffer((s8 *) var_r31_3173);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Main()))->TFree(var_r31_3173, NULL, 0);
             } else {
                 free(&var_r31_3173->unk0);
             }

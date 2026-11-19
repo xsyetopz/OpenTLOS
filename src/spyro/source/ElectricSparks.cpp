@@ -47,11 +47,10 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 
 #if 0 // DRAFT: illegal type
 void ElectricSparks::Deinit() {
-    MKHeap *temp_r0_85;
-    MKHeap *temp_r3_107;
     MKMaterial *temp_r3_73;
     u32 temp_r0_90;
     void *temp_r0_104;
+    void *temp_r0_85;
     void *var_r31_81;
     void *var_r3_82;
     void *var_r4_80;
@@ -68,7 +67,7 @@ loop_5:
     temp_r0_90 = M2C_FIELD(var_r3_82, u32 *, -4);
     var_r3_82 -= 4;
     if (temp_r0_90 != 0U) {
-        temp_r0_85 = var_r3_82->unk0;
+        temp_r0_85 = *var_r3_82;
         if (temp_r0_85 < var_r31_81) {
             var_r31_81 = temp_r0_85;
         }
@@ -84,9 +83,8 @@ loop_11:
             var_r4_80 += 4;
             goto loop_11;
         }
-        temp_r3_107 = var_r3_82->Current();
-        if (temp_r3_107 != NULL) {
-            ((MKHeap *) (temp_r3_107->Current()))->Free(var_r31_81, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_81, NULL, 0);
         } else {
             free(var_r31_81);
         }
@@ -287,7 +285,6 @@ loop_11:
 
 #if 0 // DRAFT: illegal type
 void ElectricSparks::Init() {
-    MKHeap *temp_r3_456;
     s32 var_ctr_476;
     void *temp_r3_478;
     void *temp_r4_484;
@@ -295,9 +292,8 @@ void ElectricSparks::Init() {
     void *var_r5_472;
 
     MKProp::Init();
-    temp_r3_456 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_456 != NULL) {
-        var_r3_463 = ((MKHeap *) (temp_r3_456->Current()))->Alloc(0x1A98, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_463 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1A98, NULL, 0);
     } else {
         var_r3_463 = malloc(0x1A98);
     }

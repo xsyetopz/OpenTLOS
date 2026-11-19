@@ -21,7 +21,7 @@ MKDynamicBone **malloc(s32);                        /* extern */
 extern void **gDynamicBones;
 #endif
 extern M2C_UNK gEmptyPtrListDL;
-extern MKHeap gMKDefaults;
+extern M2C_UNK gMKDefaults;
 extern f32 gUpdateTimeDelta;
 extern MKDynamicBone **spareTemplates;
 #if 0 // DRAFT: identifier 'gDynamicBoneEnable' redeclared
@@ -1004,8 +1004,6 @@ void MKDynamicBoneSystem::Deinit() {
     MKDynamicBone *temp_r0_1472;
     MKDynamicBone *temp_r0_1495;
     MKDynamicBone *temp_r0_1514;
-    MKHeap *temp_r3_1475;
-    MKHeap *temp_r3_1517;
     u32 temp_r0_1458;
     u32 temp_r0_1500;
 
@@ -1032,9 +1030,8 @@ loop_9:
             var_r4_1448 += 4;
             goto loop_9;
         }
-        temp_r3_1475 = ((MKHeap *) var_r3_1450)->Current();
-        if (temp_r3_1475 != NULL) {
-            ((MKHeap *) (temp_r3_1475->Current()))->Free(var_r30_1449, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1449, NULL, 0);
         } else {
             free(var_r30_1449);
         }
@@ -1063,9 +1060,8 @@ loop_22:
             var_r4_1490 += 4;
             goto loop_22;
         }
-        temp_r3_1517 = ((MKHeap *) var_r3_1492)->Current();
-        if (temp_r3_1517 != NULL) {
-            ((MKHeap *) (temp_r3_1517->Current()))->Free(var_r30_1491, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1491, NULL, 0);
         } else {
             free(var_r30_1491);
         }
@@ -1083,26 +1079,23 @@ void MKDynamicBoneSystem::Init() {
     MKDynamicBone **var_r3_1567;
     MKDynamicBone **var_r3_1620;
     MKDynamicBone **var_r5_1579;
-    MKHeap *temp_r3_1557;
-    MKHeap *temp_r3_1610;
-    MKModel *temp_r30_1549;
-    MKModel *var_ctr_1583;
-    f32 temp_r30_1602;
-    f32 var_ctr_1635;
+    s32 temp_r30_1549;
+    s32 temp_r30_1602;
+    s32 var_ctr_1583;
+    s32 var_ctr_1635;
 
-    temp_r30_1549 = gMKDefaults.unk9C;
-    if (temp_r30_1549 == NULL) {
+    temp_r30_1549 = M2C_FIELD(&gMKDefaults, s32 *, 0x9C);
+    if (temp_r30_1549 == 0) {
         this->unk0 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_1557 = gMKDefaults.Current();
-        if (temp_r3_1557 != NULL) {
-            var_r3_1567 = ((MKHeap *) (temp_r3_1557->Current()))->Alloc(((s32) (temp_r30_1549 + 2) * 4) + ((s32) temp_r30_1549 * 0x38), NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1567 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1549 + 2) * 4) + (temp_r30_1549 * 0x38), NULL, 0);
         } else {
-            var_r3_1567 = malloc(((s32) (temp_r30_1549 + 2) * 4) + ((s32) temp_r30_1549 * 0x38));
+            var_r3_1567 = malloc(((temp_r30_1549 + 2) * 4) + (temp_r30_1549 * 0x38));
         }
         this->unk0 = var_r3_1567;
         var_r5_1579 = this->unk0;
-        temp_r3_1580 = var_r5_1579 + ((s32) temp_r30_1549 * 0x38);
+        temp_r3_1580 = var_r5_1579 + (temp_r30_1549 * 0x38);
         this->unk0 = temp_r3_1580;
         *temp_r3_1580 = NULL;
         var_ctr_1583 = temp_r30_1549;
@@ -1113,34 +1106,33 @@ void MKDynamicBoneSystem::Init() {
                 M2C_FIELD(temp_r3_1587, MKDynamicBone ***, 4) = var_r5_1579;
                 var_r5_1579 += 0x38;
                 var_ctr_1583 -= 1;
-            } while (var_ctr_1583 != NULL);
+            } while (var_ctr_1583 != 0);
         }
         temp_r3_1594 = this->unk0;
         this->unk0 = temp_r3_1594 + 4;
         M2C_FIELD(temp_r3_1594, MKDynamicBone ***, 4) = NULL;
     }
-    temp_r30_1602 = gMKDefaults.unkA0;
-    if (M2C_BITWISE(s32, temp_r30_1602) == 0) {
+    temp_r30_1602 = M2C_FIELD(&gMKDefaults, s32 *, 0xA0);
+    if (temp_r30_1602 == 0) {
         spareTemplates = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_1610 = gMKDefaults.Current();
-        if (temp_r3_1610 != NULL) {
-            var_r3_1620 = ((MKHeap *) (temp_r3_1610->Current()))->Alloc(((M2C_BITWISE(s32, temp_r30_1602) + 2) * 4) + (M2C_BITWISE(s32, temp_r30_1602) << 7), NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1620 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7), NULL, 0);
         } else {
-            var_r3_1620 = malloc(((M2C_BITWISE(s32, temp_r30_1602) + 2) * 4) + (M2C_BITWISE(s32, temp_r30_1602) << 7));
+            var_r3_1620 = malloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7));
         }
         spareTemplates = var_r3_1620;
-        temp_r4_1631 = var_r3_1620 + (M2C_BITWISE(s32, temp_r30_1602) << 7);
+        temp_r4_1631 = var_r3_1620 + (temp_r30_1602 << 7);
         spareTemplates = temp_r4_1631;
         *temp_r4_1631 = NULL;
         var_ctr_1635 = temp_r30_1602;
-        if (M2C_BITWISE(s32, temp_r30_1602) > 0) {
+        if (temp_r30_1602 > 0) {
             do {
                 spareTemplates += 4;
                 M2C_FIELD(spareTemplates, MKDynamicBone ***, 4) = var_r3_1620;
                 var_r3_1620 += 0x80;
-                var_ctr_1635 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_1635) - 1));
-            } while (M2C_BITWISE(s32, var_ctr_1635) != 0);
+                var_ctr_1635 -= 1;
+            } while (var_ctr_1635 != 0);
         }
         spareTemplates += 4;
         M2C_FIELD(spareTemplates, MKDynamicBone ***, 4) = NULL;

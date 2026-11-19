@@ -117,22 +117,18 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void AnimProperty::Deinit() {
-    MKHeap *temp_r3_233;
     void *temp_r31_230;
 
     temp_r31_230 = this->unk14;
     if (temp_r31_230 != NULL) {
-        temp_r3_233 = MKHeap::Current();
-        if (temp_r3_233 != NULL) {
-            ((MKHeap *) (temp_r3_233->Current()))->Free(temp_r31_230, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_230, NULL, 0);
             return;
         }
         free(temp_r31_230);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void AnimProperty::LoadDone() {
@@ -163,22 +159,18 @@ loop_4:
 
 #if 0 // DRAFT: illegal type
 s32 AnimProperty::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_311;
     MKIniLine *var_r30_306;
     s32 temp_r0_336;
     s32 temp_r31_310;
-    s32 temp_r3_307;
     s32 var_r31_325;
     void *var_r3_318;
 
     if (arg0->IsField("AnimNames") != 0) {
         var_r30_306 = arg0->unkC->GetSubLine(arg0);
-        temp_r3_307 = arg0->GetNmbrOfSubLines();
-        this->unk18 = temp_r3_307;
+        this->unk18 = arg0->GetNmbrOfSubLines();
         temp_r31_310 = this->unk18 * 8;
-        temp_r3_311 = ((MKHeap *) temp_r3_307)->Current();
-        if (temp_r3_311 != NULL) {
-            var_r3_318 = ((MKHeap *) (temp_r3_311->Current()))->Alloc(temp_r31_310, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_318 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_310, NULL, 0);
         } else {
             var_r3_318 = malloc(temp_r31_310);
         }

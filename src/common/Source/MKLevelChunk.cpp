@@ -31,11 +31,11 @@
 #include <m2c_macros.h>
 
 M2C_UNK free(f32);                                  /* extern */
-MKHeap *malloc(s32);                                /* extern */
+s8 **malloc(s32);                                   /* extern */
 s32 stricmp(s8 *, s8 *);                            /* extern */
 u32 strstr(s32, s8 *);                              /* extern */
 extern void **gMK;
-extern MKHeap gMKDefaults;
+extern M2C_UNK gMKDefaults;
 u8 idCounter__12MKLevelChunk[4] = { 0, 0, 0, 1 };
 
 s32 MKLevelChunk::Update_AppLocked() {
@@ -226,10 +226,8 @@ s32 MKLevelChunk::Update_Loading() {
 #if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 s32 MKLevelChunk::Update_LoadSound() {
     s32 sp8;
-    s32 temp_r3_497;
     s32 var_r30_446;
     s8 *temp_r3_451;
-    u32 temp_r3_482;
 
     var_r30_446 = 0;
     sp8 = -1;
@@ -238,13 +236,11 @@ s32 MKLevelChunk::Update_LoadSound() {
         if ((s32) M2C_FIELD(this, s32 *, 0x130) == -2) {
             M2C_FIELD(this, s32 *, 0x130) = sp8;
         }
-        temp_r3_482 = this->unk138 | 0x40000;
-        this->unk138 = temp_r3_482;
+        this->unk138 |= 0x40000;
         *MKChunkSceneManager::bPackageSystemInUse = 1;
-        ((MKHeap *) temp_r3_482)->ActivateTempMemOverride();
-        temp_r3_497 = MKPackage_QLoadDynamic(Str_Printf("%s%s.bni", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 0, NULL);
-        this->unk10 = temp_r3_497;
-        ((MKHeap *) temp_r3_497)->DeactivateTempMemOverride();
+        MKHeap::ActivateTempMemOverride();
+        this->unk10 = MKPackage_QLoadDynamic(Str_Printf("%s%s.bni", &this->unk14.unkAC, M2C_FIELD(&gMKDefaults, s32 *, 0x28), "sfx_%s%s"), 0, NULL);
+        MKHeap::DeactivateTempMemOverride();
         var_r30_446 = 2;
     }
     return var_r30_446;
@@ -254,17 +250,16 @@ s32 MKLevelChunk::Update_LoadSound() {
 #if 0 // DRAFT: function call 'strlen(signed char *)' does not match
 s32 MKLevelChunk::Update_LoadingIni() {
     s32 var_r31_520;
-    u32 temp_r3_529;
 
     var_r31_520 = 0;
     if (MKPackage_QIsLoaded(this->unk10, NULL, NULL) != 0) {
         this->unk138 |= 0x10000;
-        temp_r3_529 = strlen((s8 *) &this->unk14.unkEC);
-        if ((temp_r3_529 != 0) || (this->unk138 & 0x20)) {
+        if ((strlen((s8 *) &this->unk14.unkEC) != 0) || (this->unk138 & 0x20)) {
             var_r31_520 = 0xA;
         } else {
-            ((MKHeap *) temp_r3_529)->ActivateTempMemOverride();
-            ((MKHeap *) (((MKIni *) (M2C_BITWISE(MKIni *, this->unk14.unk74)))->Init(Str_Printf("%s%s", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 4, NULL)))->DeactivateTempMemOverride();
+            MKHeap::ActivateTempMemOverride();
+            ((MKIni *) (M2C_BITWISE(MKIni *, this->unk14.unk74)))->Init(Str_Printf("%s%s", &this->unk14.unkAC, M2C_FIELD(&gMKDefaults, s32 *, 0x28), "sfx_%s%s"), 4, NULL);
+            MKHeap::DeactivateTempMemOverride();
             this->unk138 |= 0x20000;
             MKPackage_QFree(this->unk10);
             *MKChunkSceneManager::bPackageSystemInUse = 0;
@@ -408,22 +403,18 @@ void MKLevelChunk::ApplyFlags(unsigned int arg0) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
-    MKHeap *temp_r3_859;
-    MKHeap *temp_r3_862;
-    MKHeap *var_r3_869;
     MKModel *temp_r30_854;
     s32 temp_r31_861;
+    s8 **var_r3_869;
 
     operator new(0x14U, NULL, 0);
     this->unk14.unk80 = M2C_ERROR(/* Read from unset register $r3 */);
     ((MKFFTWater *) (M2C_BITWISE(MKFFTWater *, this->unk14.unk80)))->Init(arg0);
     temp_r30_854 = M2C_FIELD(this->unk14.unk80, MKModel **, 4);
     MKModel_EnableScissoring(temp_r30_854, 1U);
-    temp_r3_859 = MKModel_GetNmbrOfSubObjects(temp_r30_854, (SubObjectType) 0);
-    temp_r31_861 = (temp_r3_859 + 2) * 2;
-    temp_r3_862 = temp_r3_859->Current();
-    if (temp_r3_862 != NULL) {
-        var_r3_869 = ((MKHeap *) (temp_r3_862->Current()))->Alloc(temp_r31_861, NULL, 0);
+    temp_r31_861 = (MKModel_GetNmbrOfSubObjects(temp_r30_854, (SubObjectType) 0) + 2) * 2;
+    if (MKHeap::Current() != NULL) {
+        var_r3_869 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_861, NULL, 0);
     } else {
         var_r3_869 = malloc(temp_r31_861);
     }
@@ -434,7 +425,6 @@ MKModel *MKLevelChunk::AddWaterModel(const char *arg0) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 s32 MKLevelChunk::DeinitChunk() {
-    MKHeap *temp_r3_918;
     f32 temp_r30_917;
     u32 temp_r0_893;
     u32 temp_r3_953;
@@ -454,9 +444,8 @@ s32 MKLevelChunk::DeinitChunk() {
             ((MKFFTWater *) (M2C_BITWISE(MKFFTWater *, this->unk14.unk80)))->Deinit();
             operator delete(M2C_BITWISE(void *, this->unk14.unk80));
             temp_r30_917 = this->unk14.unk84;
-            temp_r3_918 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_918 != NULL) {
-                ((MKHeap *) (temp_r3_918->Current()))->Free(M2C_BITWISE(void *, temp_r30_917), NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(M2C_BITWISE(void *, temp_r30_917), NULL, 0);
             } else {
                 free(temp_r30_917);
             }
@@ -503,13 +492,6 @@ s32 MKLevelChunk::InitChunk() {
     s8 *sp10;
     s8 *spC;
     s8 *sp8;
-    MKHeap *temp_r3_1198;
-    MKHeap *temp_r3_1215;
-    MKHeap *temp_r3_1389;
-    MKHeap *temp_r3_1402;
-    MKHeap *var_r3_1206;
-    MKHeap *var_r3_1223;
-    MKHeap *var_r4_1378;
     MKIni *temp_r27_1196;
     MKIniLine *temp_r3_1015;
     MKIniLine *temp_r3_1234;
@@ -530,6 +512,9 @@ s32 MKLevelChunk::InitChunk() {
     s32 var_r28_1143;
     s32 var_r28_1233;
     s32 var_r29_1231;
+    s8 **var_r3_1206;
+    s8 **var_r3_1223;
+    s8 **var_r4_1378;
     s8 *temp_r23_1250;
     s8 *temp_r23_1350;
     s8 *temp_r24_1442;
@@ -599,17 +584,15 @@ loop_34:
         break;
     case 2:
         temp_r27_1196 = M2C_FIELD(gMK, MKIni **, 0x28);
-        temp_r26_1197 = gMKDefaults.unkE0 << 5;
-        temp_r3_1198 = gMKDefaults.Current();
-        if (temp_r3_1198 != NULL) {
-            var_r3_1206 = ((MKHeap *) (temp_r3_1198->Main()))->TAlloc(temp_r26_1197, NULL, 0, 0U);
+        temp_r26_1197 = M2C_FIELD(&gMKDefaults, s32 *, 0xE0) << 5;
+        if (MKHeap::Current() != NULL) {
+            var_r3_1206 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_1197, NULL, 0, 0U);
         } else {
             var_r3_1206 = malloc(temp_r26_1197);
         }
-        temp_r25_1214 = gMKDefaults.unkE0 * 4;
-        temp_r3_1215 = var_r3_1206->Current();
-        if (temp_r3_1215 != NULL) {
-            var_r3_1223 = ((MKHeap *) (temp_r3_1215->Main()))->TAlloc(temp_r25_1214, NULL, 0, 0U);
+        temp_r25_1214 = M2C_FIELD(&gMKDefaults, s32 *, 0xE0) * 4;
+        if (MKHeap::Current() != NULL) {
+            var_r3_1223 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r25_1214, NULL, 0, 0U);
         } else {
             var_r3_1223 = malloc(temp_r25_1214);
         }
@@ -666,17 +649,15 @@ loop_67:
         } else {
             var_r4_1378 = NULL;
         }
-        ((MKCollisionManager *) (M2C_BITWISE(MKCollisionManager *, this->unk14.unk7C)))->Init((s8 **) var_r4_1378, -1, (MKSceneManager *) gMK, var_r29_1231);
+        ((MKCollisionManager *) (M2C_BITWISE(MKCollisionManager *, this->unk14.unk7C)))->Init(var_r4_1378, -1, (MKSceneManager *) gMK, var_r29_1231);
         MKCollision_AddManager(M2C_BITWISE(MKCollisionManager *, this->unk14.unk7C));
-        temp_r3_1389 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1389 != NULL) {
-            ((MKHeap *) (temp_r3_1389->Main()))->TFree(var_r3_1223, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_1223, NULL, 0);
         } else {
             free(M2C_BITWISE(f32, var_r3_1223));
         }
-        temp_r3_1402 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1402 != NULL) {
-            ((MKHeap *) (temp_r3_1402->Main()))->TFree(var_r3_1206, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_1206, NULL, 0);
         } else {
             free(M2C_BITWISE(f32, var_r3_1206));
         }
@@ -866,13 +847,11 @@ void MKLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
     this->unkC = M2C_FIELD(arg1, s32 *, 4);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKLevelChunk::Deactivate() {
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
         MKHeap::Pop();
     }
 }
-#endif
 
 void MKLevelChunk::Activate() {
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
@@ -897,26 +876,25 @@ void MKLevelChunk::Destroy() {
     this->unk14.unk7C = 0.0f;
     M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *), 0x58)(this);
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-        ((MKHeap *) (((MKHeap *) (((MKHeap *) &this->unk14)->Release(this->unk14.unk58)))->Main()))->Push();
+        ((MKHeap *) &this->unk14)->Release(this->unk14.unk58);
+        ((MKHeap *) (MKHeap::Main()))->Push();
         ((MKHeap *) &this->unk14)->DeInit();
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop();
+        MKHeap::Pop();
         ((MKHeap *) this->unk14.unk58)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
     Deactivate();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKLevelChunk::Create(int arg0, int arg1, int arg2, int arg3, const char *arg4) {
     MKCollisionManager *var_r0_2045;
-    MKHeap *temp_r3_1999;
-    MKHeap *var_r3_2006;
     s32 var_r0_2029;
+    s8 **var_r3_2006;
 
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-        temp_r3_1999 = MKHeap::Current();
-        if (temp_r3_1999 != NULL) {
-            var_r3_2006 = ((MKHeap *) (temp_r3_1999->Current()))->Alloc(arg0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2006 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0, NULL, 0);
         } else {
             var_r3_2006 = malloc(arg0);
         }

@@ -1433,8 +1433,10 @@ loop_4:
     temp_ret_2600 = Str_Printf("%s.bad", arg0, M2C_BITWISE(f32, temp_ret_2587));
     temp_r3_2600 = temp_ret_2600;
     if (temp_r3_2600->Exists((s8 *) (u32) (u64) temp_ret_2600) != 0) {
-        ((MKHeap *) (strcpy(&spC, &temp_r3_2600->unk0)))->ActivateTempMemOverride();
-        ((MKHeap *) (sp2C.Init(&spC, 0, NULL)))->DeactivateTempMemOverride();
+        strcpy(&spC, &temp_r3_2600->unk0);
+        MKHeap::ActivateTempMemOverride();
+        sp2C.Init(&spC, 0, NULL);
+        MKHeap::DeactivateTempMemOverride();
         this->unk4 = ParseBadFile(&sp2C, &spC, this->unk8);
         sp2C.Deinit();
 block_12:
@@ -1535,7 +1537,6 @@ loop_6:
 
 #if 0 // DRAFT: undefined identifier 'unk24'
 void MKAnimScript::Deinit() {
-    MKHeap *temp_r3_2816;
     MKResource *temp_r31_2815;
     MKResource *temp_r4_2803;
     s32 temp_r0_2807;
@@ -1546,10 +1547,10 @@ void MKAnimScript::Deinit() {
         temp_r4_2803->unk24 = temp_r0_2807;
         if (temp_r0_2807 == 0) {
             ((MKAnimScriptTemplate *) this->unk4)->DeinitMKAnimScriptData();
+            ((MKPtrList<MKAnimScriptTemplate> *) &mkAnimScriptTemplates)->Destroy((MKAnimScriptTemplate *) this->unk4);
             temp_r31_2815 = this->unk4;
-            temp_r3_2816 = ((MKHeap *) (((MKPtrList<MKAnimScriptTemplate> *) &mkAnimScriptTemplates)->Destroy((MKAnimScriptTemplate *) this->unk4)))->Current();
-            if (temp_r3_2816 != NULL) {
-                ((MKHeap *) (temp_r3_2816->Current()))->Free(temp_r31_2815, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2815, NULL, 0);
             } else {
                 free(temp_r31_2815);
             }
@@ -1715,13 +1716,11 @@ MKResource *ParseBadFile(MKIni *arg0, const char *arg1, MKModel *arg2) {
     MKAnimScriptedEvent *var_r25_3254;
     MKAnimScriptedEvent *var_r27_3256;
     MKAnimScriptedEvent *var_r28_3258;
-    MKHeap *temp_r3_3226;
     MKIniLine *var_r25_3070;
     MKIniLine *var_r26_3268;
     MKResource *var_r23_3234;
     s16 var_r23_3616;
     s16 var_r23_3689;
-    s32 temp_r3_3221;
     s32 temp_r3_3455;
     s32 temp_r3_3824;
     s32 temp_ret_3435;
@@ -1803,11 +1802,9 @@ loop_28:
         var_r25_3070 = var_r25_3070->unkC->GetNextLine(var_r25_3070);
         goto loop_28;
     }
-    temp_r3_3221 = var_r26_3062 * 0x30;
-    temp_r25_3225 = temp_r3_3221 + (var_r31_3067 * 0x10) + var_r23_3068 + 0x10;
-    temp_r3_3226 = ((MKHeap *) temp_r3_3221)->Current();
-    if (temp_r3_3226 != NULL) {
-        var_r23_3234 = ((MKHeap *) (temp_r3_3226->Current()))->Alloc(temp_r25_3225 + 0x38, NULL, 0);
+    temp_r25_3225 = (var_r26_3062 * 0x30) + (var_r31_3067 * 0x10) + var_r23_3068 + 0x10;
+    if (MKHeap::Current() != NULL) {
+        var_r23_3234 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_3225 + 0x38, NULL, 0);
     } else {
         var_r23_3234 = malloc(temp_r25_3225 + 0x38);
     }
@@ -2038,7 +2035,6 @@ loop_5:
 
 #if 0 // DRAFT: type mismatch
 void MKAnimScript_DeinitModule() {
-    MKHeap *temp_r3_3908;
     MKResource **temp_r31_3900;
     MKResource **temp_r3_3899;
 
@@ -2048,9 +2044,8 @@ void MKAnimScript_DeinitModule() {
         mkAnimScriptTemplates = temp_r31_3900;
     } while ((u32) M2C_FIELD(temp_r3_3899, u32 *, -4) != 0U);
     if (temp_r31_3900 != &gEmptyPtrList) {
-        temp_r3_3908 = ((MKHeap *) temp_r3_3899)->Current();
-        if (temp_r3_3908 != NULL) {
-            ((MKHeap *) (temp_r3_3908->Current()))->Free(temp_r31_3900, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3900, NULL, 0);
         } else {
             free((MKResource *) temp_r31_3900);
         }
@@ -2061,13 +2056,11 @@ void MKAnimScript_DeinitModule() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKAnimScript_InitModule() {
-    MKHeap *temp_r3_3936;
     MKResource *var_r3_3943;
     s32 var_ctr_3955;
 
-    temp_r3_3936 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_3936 != NULL) {
-        var_r3_3943 = ((MKHeap *) (temp_r3_3936->Current()))->Alloc(0x408, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3943 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x408, NULL, 0);
     } else {
         var_r3_3943 = malloc(0x408);
     }

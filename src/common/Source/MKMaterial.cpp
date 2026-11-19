@@ -161,14 +161,12 @@ void MKMaterialInternal_RemoveUpdater(MKMaterialUpdater *arg0) {
 
 #if 0 // DRAFT: identifier 'arg2' redeclared
 void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, void *), void *arg2) {
-    MKHeap *temp_r3_247;
     MKMaterialUpdater *temp_r0_275;
     MKMaterialUpdater *var_r3_254;
     MKMaterialUpdater *var_r4_265;
 
-    temp_r3_247 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_247 != NULL) {
-        var_r3_254 = ((MKHeap *) (temp_r3_247->Current()))->Alloc(0x14, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_254 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
     } else {
         var_r3_254 = malloc(0x14);
     }
@@ -348,36 +346,30 @@ s32 MKMaterial_GetMaterialID(MKMaterial *arg0) {
     return M2C_FIELD(arg0->unk24, s32 *, 0x1E4);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s8 *MKMaterial::Create(const char *arg0) {
-    MKHeap *temp_r3_592;
-    MKHeap *temp_r3_634;
     MKMaterialUpdater *var_r31_600;
     MatInfo *temp_r3_627;
     s32 temp_r3_648;
     s8 *temp_r3_616;
     s8 *temp_r3_655;
-    u8 temp_r3_619;
     void *temp_r3_650;
 
-    temp_r3_592 = MKHeap::Current();
-    if (temp_r3_592 != NULL) {
-        var_r31_600 = ((MKHeap *) (temp_r3_592->Current()))->Alloc(0x1EC, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r31_600 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1EC, NULL, 0);
     } else {
         var_r31_600 = malloc(0x1EC);
     }
     MKMatInfo_Init((MatInfo *) var_r31_600, (s8 *) this);
     temp_r3_616 = Str_Printf("%s.min", this);
-    temp_r3_619 = MKArchive_Exists(temp_r3_616, NULL);
-    if (temp_r3_619 != 0) {
-        ((MKHeap *) temp_r3_619)->ActivateTempMemOverride();
+    if (MKArchive_Exists(temp_r3_616, NULL) != 0) {
+        MKHeap::ActivateTempMemOverride();
         temp_r3_627 = MKArchive_Load(temp_r3_616, NULL, NULL, -1);
         MKMatInfo_Endian(temp_r3_627);
         MKMatInfo_Merge((MatInfo *) var_r31_600, temp_r3_627);
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
-        temp_r3_634 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_634 != NULL) {
-            ((MKHeap *) (temp_r3_634->Current()))->Free(temp_r3_627, NULL, 0);
+        MKHeap::DeactivateTempMemOverride();
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_627, NULL, 0);
         } else {
             free(temp_r3_627);
         }
@@ -477,16 +469,14 @@ loop_5:
 #endif
 
 void MKMaterial_DeinitModule() {
-    MKHeap *temp_r3_819;
     MatInfo *temp_r31_818;
 
     bMaterialDeiniting = 1;
     MKMaterial_Destroy(gpMKWhiteMaterial);
     pMKWhiteTexture->Destroy();
     temp_r31_818 = pMKWhiteMaterialData;
-    temp_r3_819 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_819 != NULL) {
-        ((MKHeap *) (temp_r3_819->Current()))->Free(temp_r31_818, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_818, NULL, 0);
     } else {
         free(temp_r31_818);
     }
@@ -496,7 +486,6 @@ void MKMaterial_DeinitModule() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKMaterial_InitModule() {
-    MKHeap *temp_r3_859;
     MKMaterial *temp_r3_889;
     MKMaterialUpdater *var_r3_866;
 
@@ -505,9 +494,8 @@ void MKMaterial_InitModule() {
     MKMaterial_LinkMaterial_MK2_Standard(1U);
     MKMaterial_LinkMaterial_MK2_FFTWater();
     MKMaterial_InitModule_PlatformSpecific();
-    temp_r3_859 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_859 != NULL) {
-        var_r3_866 = ((MKHeap *) (temp_r3_859->Current()))->Alloc(0x400, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_866 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
     } else {
         var_r3_866 = malloc(0x400);
     }

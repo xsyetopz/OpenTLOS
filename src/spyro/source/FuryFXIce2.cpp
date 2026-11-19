@@ -692,14 +692,12 @@ s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
 #endif
 
 void FuryFXIce2::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk90 = 0;
 }
 
 #if 0 // DRAFT: type mismatch
 void FuryFXIce2::Deinit() {
-    MKHeap *temp_r3_1252;
-    MKHeap *temp_r3_1294;
     Matrix **var_r30_1226;
     Matrix **var_r3_1227;
     Matrix **var_r4_1225;
@@ -737,9 +735,8 @@ loop_9:
             var_r4_1225 += 4;
             goto loop_9;
         }
-        temp_r3_1252 = ((MKHeap *) var_r3_1227)->Current();
-        if (temp_r3_1252 != NULL) {
-            ((MKHeap *) (temp_r3_1252->Current()))->Free(var_r30_1226, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1226, NULL, 0);
         } else {
             free(var_r30_1226);
         }
@@ -768,9 +765,8 @@ loop_22:
             var_r4_1267 += 4;
             goto loop_22;
         }
-        temp_r3_1294 = ((MKHeap *) var_r3_1269)->Current();
-        if (temp_r3_1294 != NULL) {
-            ((MKHeap *) (temp_r3_1294->Current()))->Free(var_r30_1268, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1268, NULL, 0);
         } else {
             free((Matrix **) var_r30_1268);
         }
@@ -965,12 +961,8 @@ f32 FuryFXIce2::Resolve() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce2::Init() {
-    MKHeap *temp_r3_1592;
-    MKHeap *temp_r3_1625;
-    MKModel *temp_r3_1590;
     Matrix **temp_r3_1614;
     Matrix **temp_r3_1620;
-    Matrix **temp_r3_1622;
     Matrix **var_r3_1599;
     Matrix **var_r3_1632;
     Matrix **var_r5_1608;
@@ -982,11 +974,9 @@ void FuryFXIce2::Init() {
 
     FuryFX::Init();
     SetDefaults();
-    temp_r3_1590 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
-    this->unk104 = temp_r3_1590;
-    temp_r3_1592 = ((MKHeap *) temp_r3_1590)->Current();
-    if (temp_r3_1592 != NULL) {
-        var_r3_1599 = ((MKHeap *) (temp_r3_1592->Current()))->Alloc(0x4E28, NULL, 0);
+    this->unk104 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1599 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4E28, NULL, 0);
     } else {
         var_r3_1599 = malloc(0x4E28);
     }
@@ -1003,12 +993,10 @@ void FuryFXIce2::Init() {
         var_ctr_1612 -= 1;
     } while (var_ctr_1612 != 0);
     temp_r3_1620 = this->unk100;
-    temp_r3_1622 = temp_r3_1620 + 4;
-    this->unk100 = temp_r3_1622;
+    this->unk100 = temp_r3_1620 + 4;
     M2C_FIELD(temp_r3_1620, Matrix ***, 4) = NULL;
-    temp_r3_1625 = ((MKHeap *) temp_r3_1622)->Current();
-    if (temp_r3_1625 != NULL) {
-        var_r3_1632 = ((MKHeap *) (temp_r3_1625->Current()))->Alloc(0xA8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1632 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
     } else {
         var_r3_1632 = malloc(0xA8);
     }

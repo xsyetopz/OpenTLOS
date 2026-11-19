@@ -1345,7 +1345,6 @@ void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg
 
 #if 0 // DRAFT: type mismatch
 void EarthBreathFX::Deinit() {
-    MKHeap *temp_r3_2316;
     MKMaterial *temp_r3_2284;
     MKVector3 **var_r31_2290;
     MKVector3 **var_r3_2291;
@@ -1382,9 +1381,8 @@ loop_11:
             var_r4_2289 += 4;
             goto loop_11;
         }
-        temp_r3_2316 = ((MKHeap *) var_r3_2291)->Current();
-        if (temp_r3_2316 != NULL) {
-            ((MKHeap *) (temp_r3_2316->Current()))->Free(var_r31_2290, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_2290, NULL, 0);
         } else {
             free(var_r31_2290);
         }
@@ -1563,8 +1561,6 @@ f32 EarthBreathFX::Resolve() {
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void EarthBreathFX::Init() {
     EarthBombFX *temp_r3_2717;
-    MKHeap *temp_r3_2627;
-    MKMaterial *temp_r3_2620;
     MKVector3 **temp_r3_2649;
     MKVector3 **temp_r4_2655;
     MKVector3 **var_r3_2634;
@@ -1574,14 +1570,12 @@ void EarthBreathFX::Init() {
 
     BaseBreathFX::Init();
     this->unkB0 = 0;
-    temp_r3_2620 = MKMaterial_Create("fx_348");
-    this->unkB4 = temp_r3_2620;
+    this->unkB4 = MKMaterial_Create("fx_348");
     this->unkB8 = NULL;
     this->unkA8 = 0.0f;
     this->unkAC = 0.0f;
-    temp_r3_2627 = ((MKHeap *) temp_r3_2620)->Current();
-    if (temp_r3_2627 != NULL) {
-        var_r3_2634 = ((MKHeap *) (temp_r3_2627->Current()))->Alloc(0x28A8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2634 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28A8, NULL, 0);
     } else {
         var_r3_2634 = malloc(0x28A8);
     }

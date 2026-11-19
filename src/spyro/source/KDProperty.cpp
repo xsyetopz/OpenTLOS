@@ -62,23 +62,19 @@ u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
     KDPropertyCommand **var_r0_236;
     KDPropertyCommand **var_r29_208;
     KDPropertyCommand *var_r3_189;
-    MKHeap *temp_r3_182;
     MKIniLine *var_r30_200;
     s32 temp_r0_178;
     s32 temp_r0_221;
     s32 temp_r30_181;
-    s32 temp_r3_176;
     u8 var_r5_222;
 
     if (arg0->IsField(arg1) != 0) {
-        temp_r3_176 = arg0->GetNmbrOfSubLines();
-        this->unk0 = temp_r3_176;
+        this->unk0 = arg0->GetNmbrOfSubLines();
         temp_r0_178 = this->unk0;
         if (temp_r0_178 > 1) {
             temp_r30_181 = temp_r0_178 * 8;
-            temp_r3_182 = ((MKHeap *) temp_r3_176)->Current();
-            if (temp_r3_182 != NULL) {
-                var_r3_189 = ((MKHeap *) (temp_r3_182->Current()))->Alloc(temp_r30_181, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_189 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_181, NULL, 0);
             } else {
                 var_r3_189 = malloc(temp_r30_181);
             }
@@ -125,16 +121,13 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDPropertyCommandList::Deinit() {
     KDPropertyCommand *temp_r31_290;
-    MKHeap *temp_r3_296;
 
     temp_r31_290 = this->unk4;
     if ((temp_r31_290 != NULL) && ((s32) this->unk0 > 1)) {
-        temp_r3_296 = MKHeap::Current();
-        if (temp_r3_296 != NULL) {
-            ((MKHeap *) (temp_r3_296->Current()))->Free(temp_r31_290, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_290, NULL, 0);
         } else {
             free(temp_r31_290);
         }
@@ -142,7 +135,6 @@ void KDPropertyCommandList::Deinit() {
     this->unk4 = NULL;
     this->unk0 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDPropertyCommand::Resolve(KDPropertySet *arg0) {

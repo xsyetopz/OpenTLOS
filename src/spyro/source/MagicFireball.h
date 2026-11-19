@@ -29,7 +29,7 @@ public:
     virtual void Fire(const MKVector3 &, const MKVector3 &, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     MagicFireball(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
     /* 0x150 */ u8 pad150[0x10];
     /* 0x160 */ ManagedLight* unk160;
     /* 0x164 */ s32 unk164;

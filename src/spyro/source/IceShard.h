@@ -17,7 +17,7 @@ public:
     virtual void * Update(void);
     virtual void Collided(MKCollisionResult &);
     IceShard(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
 };
 
 class IceShardDescriptor : public ProjectileDescriptor {  // base: base ctor call

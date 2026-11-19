@@ -33,7 +33,7 @@
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
+M2C_UNK free(M2C_UNK *);                            /* extern */
 MKHeap *malloc(M2C_UNK);                            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
@@ -113,31 +113,29 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MeleeTrails::Deinit() {
-    MKHeap *temp_r0_210;
-    MKHeap *temp_r0_229;
-    MKHeap *temp_r0_252;
-    MKHeap *temp_r0_271;
-    MKHeap *temp_r3_232;
-    MKHeap *temp_r3_274;
-    MKHeap *var_r30_206;
-    MKHeap *var_r30_248;
-    MKHeap *var_r3_207;
-    MKHeap *var_r3_249;
-    MKHeap *var_r4_205;
-    MKHeap *var_r4_247;
+    M2C_UNK *temp_r0_210;
+    M2C_UNK *temp_r0_229;
+    M2C_UNK *temp_r0_252;
+    M2C_UNK *temp_r0_271;
+    M2C_UNK *var_r30_206;
+    M2C_UNK *var_r30_248;
+    M2C_UNK *var_r3_207;
+    M2C_UNK *var_r3_249;
+    M2C_UNK *var_r4_205;
+    M2C_UNK *var_r4_247;
     u32 temp_r0_215;
     u32 temp_r0_257;
 
-    var_r4_205 = M2C_FIELD(this, MKHeap **, 0xD0);
+    var_r4_205 = M2C_FIELD(this, M2C_UNK **, 0xD0);
     var_r30_206 = var_r4_205;
     var_r3_207 = var_r4_205;
 loop_3:
     temp_r0_215 = M2C_FIELD(var_r3_207, u32 *, -4);
     var_r3_207 -= 4;
     if (temp_r0_215 != 0U) {
-        temp_r0_210 = var_r3_207->unk0;
+        temp_r0_210 = *var_r3_207;
         if (temp_r0_210 < var_r30_206) {
             var_r30_206 = temp_r0_210;
         }
@@ -145,7 +143,7 @@ loop_3:
     }
     if (var_r3_207 != &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_229 = var_r4_205->unk0;
+        temp_r0_229 = *var_r4_205;
         if (temp_r0_229 != NULL) {
             if (temp_r0_229 < var_r30_206) {
                 var_r30_206 = temp_r0_229;
@@ -153,22 +151,21 @@ loop_9:
             var_r4_205 += 4;
             goto loop_9;
         }
-        temp_r3_232 = var_r3_207->Current();
-        if (temp_r3_232 != NULL) {
-            ((MKHeap *) (temp_r3_232->Current()))->Free(var_r30_206, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_206, NULL, 0);
         } else {
             free(var_r30_206);
         }
     }
-    M2C_FIELD(this, MKHeap **, 0xD0) = NULL;
-    var_r4_247 = M2C_FIELD(this, MKHeap **, 0xD4);
+    M2C_FIELD(this, M2C_UNK **, 0xD0) = NULL;
+    var_r4_247 = M2C_FIELD(this, M2C_UNK **, 0xD4);
     var_r30_248 = var_r4_247;
     var_r3_249 = var_r4_247;
 loop_16:
     temp_r0_257 = M2C_FIELD(var_r3_249, u32 *, -4);
     var_r3_249 -= 4;
     if (temp_r0_257 != 0U) {
-        temp_r0_252 = var_r3_249->unk0;
+        temp_r0_252 = *var_r3_249;
         if (temp_r0_252 < var_r30_248) {
             var_r30_248 = temp_r0_252;
         }
@@ -176,7 +173,7 @@ loop_16:
     }
     if (var_r3_249 != &gEmptyPtrListDL) {
 loop_22:
-        temp_r0_271 = var_r4_247->unk0;
+        temp_r0_271 = *var_r4_247;
         if (temp_r0_271 != NULL) {
             if (temp_r0_271 < var_r30_248) {
                 var_r30_248 = temp_r0_271;
@@ -184,14 +181,13 @@ loop_22:
             var_r4_247 += 4;
             goto loop_22;
         }
-        temp_r3_274 = var_r3_249->Current();
-        if (temp_r3_274 != NULL) {
-            ((MKHeap *) (temp_r3_274->Current()))->Free(var_r30_248, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_248, NULL, 0);
         } else {
             free(var_r30_248);
         }
     }
-    M2C_FIELD(this, MKHeap **, 0xD4) = NULL;
+    M2C_FIELD(this, M2C_UNK **, 0xD4) = NULL;
     GameProp::Deinit();
 }
 #endif
@@ -296,24 +292,20 @@ s32 MeleeTrails::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MeleeTrails::Init() {
-    MKHeap *temp_r3_541;
     MKHeap *temp_r3_563;
     MKHeap *temp_r3_569;
-    MKHeap *temp_r3_574;
     MKHeap *temp_r3_596;
     MKHeap *temp_r3_602;
     MKHeap *var_r3_548;
     MKHeap *var_r3_581;
     MKHeap *var_r5_557;
     MKHeap *var_r5_590;
-    s32 *temp_r3_571;
     s32 var_ctr_561;
     s32 var_ctr_594;
 
     GameProp::Init();
-    temp_r3_541 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_541 != NULL) {
-        var_r3_548 = ((MKHeap *) (temp_r3_541->Current()))->Alloc(0x1FC, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_548 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1FC, NULL, 0);
     } else {
         var_r3_548 = malloc(0x1FC);
     }
@@ -330,12 +322,10 @@ void MeleeTrails::Init() {
         var_ctr_561 -= 1;
     } while (var_ctr_561 != 0);
     temp_r3_569 = M2C_FIELD(this, MKHeap **, 0xD0);
-    temp_r3_571 = &temp_r3_569->unk4;
-    M2C_FIELD(this, MKHeap **, 0xD0) = (MKHeap *) temp_r3_571;
+    M2C_FIELD(this, MKHeap **, 0xD0) = (MKHeap *) &temp_r3_569->unk4;
     temp_r3_569->unk4 = 0;
-    temp_r3_574 = ((MKHeap *) temp_r3_571)->Current();
-    if (temp_r3_574 != NULL) {
-        var_r3_581 = ((MKHeap *) (temp_r3_574->Current()))->Alloc(0x9CC, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_581 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x9CC, NULL, 0);
     } else {
         var_r3_581 = malloc(0x9CC);
     }
@@ -362,7 +352,6 @@ void MeleeTrails::Init() {
 void MeleeTrailsDescriptor::Deinit() {
     MKHeap *temp_r0_628;
     MKHeap *temp_r0_647;
-    MKHeap *temp_r3_650;
     MKHeap *var_r31_624;
     MKHeap *var_r3_625;
     MKHeap *var_r4_623;
@@ -391,11 +380,10 @@ loop_9:
             var_r4_623 += 4;
             goto loop_9;
         }
-        temp_r3_650 = var_r3_625->Current();
-        if (temp_r3_650 != NULL) {
-            ((MKHeap *) (temp_r3_650->Current()))->Free(var_r31_624, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_624, NULL, 0);
         } else {
-            free(var_r31_624);
+            free((M2C_UNK *) var_r31_624);
         }
     }
     this->unkE4 = NULL;
@@ -471,7 +459,6 @@ s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MeleeTrailsDescriptor::Init() {
-    MKHeap *temp_r3_861;
     MKHeap *temp_r3_883;
     MKHeap *temp_r3_889;
     MKHeap *var_r3_868;
@@ -479,9 +466,8 @@ void MeleeTrailsDescriptor::Init() {
     s32 var_ctr_881;
 
     GamePropDescriptor::Init();
-    temp_r3_861 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_861 != NULL) {
-        var_r3_868 = ((MKHeap *) (temp_r3_861->Current()))->Alloc(0x38C, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_868 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38C, NULL, 0);
     } else {
         var_r3_868 = malloc(0x38C);
     }

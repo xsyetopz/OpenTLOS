@@ -26,7 +26,7 @@ public:
     public:
         void SetTextID(int);
         void Update(void);
-        void Deinit(void);
+        static void Deinit(void);
         void Init(CutsceneSystem *);
         /* 0x000 */ s8 unk0;
     };

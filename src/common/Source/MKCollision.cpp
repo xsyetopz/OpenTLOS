@@ -803,7 +803,6 @@ loop_2:
 void MKCollision_Deinit() {
     MKCollisionManager **temp_r31_1184;
     MKCollisionManager **temp_r3_1183;
-    MKHeap *temp_r3_1192;
 
     do {
         temp_r3_1183 = managers;
@@ -811,9 +810,8 @@ void MKCollision_Deinit() {
         managers = temp_r31_1184;
     } while ((u32) M2C_FIELD(temp_r3_1183, u32 *, -4) != 0U);
     if (temp_r31_1184 != &gEmptyPtrList) {
-        temp_r3_1192 = ((MKHeap *) temp_r3_1183)->Current();
-        if (temp_r3_1192 != NULL) {
-            ((MKHeap *) (temp_r3_1192->Current()))->Free(temp_r31_1184, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1184, NULL, 0);
         } else {
             free(temp_r31_1184);
         }
@@ -825,12 +823,10 @@ void MKCollision_Deinit() {
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKCollision_Init() {
     MKCollisionManager **var_r3_1227;
-    MKHeap *temp_r3_1220;
     s32 var_ctr_1239;
 
-    temp_r3_1220 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1220 != NULL) {
-        var_r3_1227 = ((MKHeap *) (temp_r3_1220->Current()))->Alloc(0x48, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1227 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x48, NULL, 0);
     } else {
         var_r3_1227 = malloc(0x48);
     }

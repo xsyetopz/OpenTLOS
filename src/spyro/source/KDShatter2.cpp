@@ -766,10 +766,7 @@ void KDShatter2::SetVisibleUnshattered() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
-    MKHeap *temp_r3_1302;
-    MKHeap *temp_r3_1354;
     s16 temp_r29_1337;
-    s16 var_r3_1336;
     s32 temp_r29_1301;
     s32 var_r27_1334;
     s32 var_r27_1372;
@@ -780,16 +777,13 @@ void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
     u16 *var_r3_1362;
     u16 *var_r4_1317;
     u16 temp_r0_1320;
-    u16 temp_r3_1299;
     u16 var_r28_1369;
 
     this->unk4C = arg0;
     if (arg1 != NULL) {
-        temp_r3_1299 = *arg1;
-        temp_r29_1301 = (temp_r3_1299 + 2) * 2;
-        temp_r3_1302 = ((MKHeap *) temp_r3_1299)->Current();
-        if (temp_r3_1302 != NULL) {
-            var_r3_1309 = ((MKHeap *) (temp_r3_1302->Current()))->Alloc(temp_r29_1301, NULL, 0);
+        temp_r29_1301 = (*arg1 + 2) * 2;
+        if (MKHeap::Current() != NULL) {
+            var_r3_1309 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1301, NULL, 0);
         } else {
             var_r3_1309 = malloc(temp_r29_1301);
         }
@@ -807,21 +801,18 @@ loop_6:
         *var_r4_1317 = 0xFFFF;
     } else {
         var_r27_1334 = 0;
-        var_r3_1336 = MKModel_GetNmbrOfSubObjects(this->unk4C, (SubObjectType) 0);
-        temp_r29_1337 = var_r3_1336;
+        temp_r29_1337 = MKModel_GetNmbrOfSubObjects(this->unk4C, (SubObjectType) 0);
         var_r28_1338 = 0;
 loop_12:
         if (var_r28_1338 < temp_r29_1337) {
-            var_r3_1336 = MKModel_IsSubObjectPrefixed(this->unk4C, (SubObjectType) 0, var_r28_1338, 0x66);
-            if ((u8) var_r3_1336 != 0) {
+            if (MKModel_IsSubObjectPrefixed(this->unk4C, (SubObjectType) 0, var_r28_1338, 0x66) != 0) {
                 var_r27_1334 += 1;
             }
             var_r28_1338 += 1;
             goto loop_12;
         }
-        temp_r3_1354 = ((MKHeap *) var_r3_1336)->Current();
-        if (temp_r3_1354 != NULL) {
-            var_r3_1362 = ((MKHeap *) (temp_r3_1354->Current()))->Alloc((var_r27_1334 + 2) * 2, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1362 = ((MKHeap *) (MKHeap::Current()))->Alloc((var_r27_1334 + 2) * 2, NULL, 0);
         } else {
             var_r3_1362 = malloc((var_r27_1334 + 2) * 2);
         }
@@ -848,24 +839,19 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
 void KDShatter2::Deinit() {
-    KDShatter2 *temp_r30_1423;
-    KDShatter2 *var_r3_0;
     KDShatterPool **temp_r3_1433;
     KDShatterPool **var_r5_1427;
+    KDShatterPool *temp_r3_1443;
     KDShatterPool *temp_r4_1436;
-    MKHeap *temp_r3_1450;
     u16 *temp_r31_1447;
 
-    var_r3_0 = this;
-    temp_r30_1423 = var_r3_0;
-    if ((KDShatterPool *) var_r3_0->unk50 != NULL) {
+    if ((KDShatterPool *) this->unk50 != NULL) {
         var_r5_1427 = shatterPool;
 loop_5:
-        var_r3_0 = (KDShatter2 *) *var_r5_1427;
-        if (var_r3_0 != NULL) {
-            if (var_r3_0 == (KDShatterPool *) temp_r30_1423->unk50) {
+        temp_r3_1443 = *var_r5_1427;
+        if (temp_r3_1443 != NULL) {
+            if (temp_r3_1443 == (KDShatterPool *) this->unk50) {
                 temp_r3_1433 = shatterPool;
                 shatterPool = temp_r3_1433 + 4;
                 temp_r4_1436 = *temp_r3_1433;
@@ -876,21 +862,19 @@ loop_5:
             goto loop_5;
         }
     }
-    temp_r31_1447 = temp_r30_1423->unk48;
+    temp_r31_1447 = this->unk48;
     if (temp_r31_1447 != NULL) {
-        temp_r3_1450 = ((MKHeap *) var_r3_0)->Current();
-        if (temp_r3_1450 != NULL) {
-            ((MKHeap *) (temp_r3_1450->Current()))->Free(temp_r31_1447, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1447, NULL, 0);
         } else {
             free(temp_r31_1447);
         }
     }
-    temp_r30_1423->unk48 = NULL;
-    temp_r30_1423->unk5C = NULL;
-    temp_r30_1423->unk58 = NULL;
-    temp_r30_1423->unk54 = NULL;
+    this->unk48 = NULL;
+    this->unk5C = NULL;
+    this->unk58 = NULL;
+    this->unk54 = NULL;
 }
-#endif
 
 void KDShatter2::Init() {
     this->unk50 = NULL;
@@ -922,7 +906,6 @@ void KDShatter2::DeinitModule() {
     KDShatterPool **var_r4_1518;
     KDShatterPool *temp_r0_1523;
     KDShatterPool *temp_r0_1542;
-    MKHeap *temp_r3_1545;
     u32 temp_r0_1528;
 
     var_r4_1518 = shatterPool;
@@ -948,9 +931,8 @@ loop_9:
             var_r4_1518 += 4;
             goto loop_9;
         }
-        temp_r3_1545 = ((MKHeap *) var_r3_1520)->Current();
-        if (temp_r3_1545 != NULL) {
-            ((MKHeap *) (temp_r3_1545->Current()))->Free(var_r31_1519, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1519, NULL, 0);
         } else {
             free((u16 *) var_r31_1519);
         }
@@ -959,15 +941,13 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDShatter2::InitModule() {
-    MKHeap *temp_r3_1573;
     s32 var_ctr_1595;
     u16 *var_r3_1581;
 
-    temp_r3_1573 = MKHeap::Current();
-    if (temp_r3_1573 != NULL) {
-        var_r3_1581 = ((MKHeap *) (temp_r3_1573->Current()))->Alloc(0x30D84, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1581 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30D84, NULL, 0);
     } else {
         var_r3_1581 = malloc(0x30D84);
     }

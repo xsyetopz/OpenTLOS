@@ -339,7 +339,6 @@ void OmniLight_DeinitModule() {
     M2C_UNK *var_r31_481;
     M2C_UNK *var_r3_482;
     M2C_UNK *var_r4_480;
-    MKHeap *temp_r3_507;
     u32 temp_r0_490;
 
     var_r4_480 = lightList;
@@ -365,9 +364,8 @@ loop_9:
             var_r4_480 += 4;
             goto loop_9;
         }
-        temp_r3_507 = ((MKHeap *) var_r3_482)->Current();
-        if (temp_r3_507 != NULL) {
-            ((MKHeap *) (temp_r3_507->Current()))->Free(var_r31_481, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_481, NULL, 0);
         } else {
             free(var_r31_481);
         }
@@ -379,12 +377,10 @@ loop_9:
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void OmniLight_InitModule() {
     M2C_UNK *var_r3_542;
-    MKHeap *temp_r3_535;
     s32 var_ctr_554;
 
-    temp_r3_535 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_535 != NULL) {
-        var_r3_542 = ((MKHeap *) (temp_r3_535->Current()))->Alloc(0x788, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_542 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0);
     } else {
         var_r3_542 = malloc(0x788);
     }

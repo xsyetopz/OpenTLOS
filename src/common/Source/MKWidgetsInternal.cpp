@@ -71,292 +71,11 @@ static s32 lit_2883 = 0;
 
 static s32 lit_3214 = 0x10;
 static s32 lit_3216 = 2;
-#if 0 // DRAFT: declaration syntax error
+#if 0 // DRAFT: identifier 'MKWIDGETTYPE_TEXTBOX' redeclared
 static M2C_UNK gIdentityAttributes;                 /* unable to generate initializer: unknown type; const */
 
-static s8 .L_8036F1BF[0x31] = {
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x54,
-    0x65,
-    0x78,
-    0x74,
-    0x42,
-    0x6F,
-    0x78,
-    0,
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x56,
-    0x65,
-    0x63,
-    0x74,
-    0x6F,
-    0x72,
-    0,
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x53,
-    0x63,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x42,
-    0x61,
-    0x72,
-    0,
-}; /* const */
-static s8 .L_8036F296[0xE4] = {
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x53,
-    0x79,
-    0x73,
-    0x74,
-    0x65,
-    0x6D,
-    0,
-    0x25,
-    0x67,
-    0,
-    0x2D,
-    0,
-    0x2B,
-    0,
-    0x43,
-    0x6F,
-    0x6D,
-    0x62,
-    0x6F,
-    0x4C,
-    0x69,
-    0x73,
-    0x74,
-    0,
-    0x56,
-    0,
-    0x43,
-    0x3A,
-    0x5C,
-    0x62,
-    0x6F,
-    0x62,
-    0,
-    0x62,
-    0x6F,
-    0x62,
-    0,
-    0x53,
-    0x61,
-    0x76,
-    0x65,
-    0x20,
-    0x48,
-    0x65,
-    0x69,
-    0x72,
-    0x61,
-    0x72,
-    0x63,
-    0x68,
-    0x79,
-    0,
-    0x49,
-    0x6E,
-    0x73,
-    0x65,
-    0x72,
-    0x74,
-    0x20,
-    0x48,
-    0x65,
-    0x69,
-    0x72,
-    0x61,
-    0x72,
-    0x63,
-    0x68,
-    0x79,
-    0,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x65,
-    0x72,
-    0x74,
-    0x69,
-    0x65,
-    0x73,
-    0,
-    0x46,
-    0x72,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x42,
-    0x75,
-    0x74,
-    0x74,
-    0x6F,
-    0x6E,
-    0,
-    0x25,
-    0x63,
-    0x25,
-    0x73,
-    0,
-    0x58,
-    0,
-    0x55,
-    0x6E,
-    0x6E,
-    0x61,
-    0x6D,
-    0x65,
-    0x64,
-    0,
-    0,
-    0x4E,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-    0x25,
-    0x2E,
-    0x32,
-    0x66,
-    0x2C,
-    0x20,
-    0x25,
-    0x2E,
-    0x32,
-    0x66,
-    0x2C,
-    0x20,
-    0x25,
-    0x2E,
-    0x32,
-    0x66,
-    0,
-    0x25,
-    0x2E,
-    0x32,
-    0x66,
-    0x2C,
-    0x20,
-    0x25,
-    0x2E,
-    0x32,
-    0x66,
-    0,
-    0x25,
-    0x30,
-    0x32,
-    0x58,
-    0x2C,
-    0x20,
-    0x25,
-    0x30,
-    0x32,
-    0x58,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x48,
-    0x69,
-    0x65,
-    0x72,
-    0x61,
-    0x72,
-    0x63,
-    0x68,
-    0x79,
-    0,
-    0x44,
-    0x61,
-    0x74,
-    0x61,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x64,
-    0x62,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x64,
-    0x64,
-    0,
-    0x25,
-    0x64,
-    0x2E,
-    0x6D,
-    0x64,
-    0x62,
-    0,
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0,
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x45,
-    0x64,
-    0x69,
-    0x74,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-}; /* const */
-static s8 *MKWIDGETTYPE_TEXTBOX = .L_8036F1BF;      /* const */
-static s8 *MKWidgetSystemName = .L_8036F296;        /* const */
+static s8 *MKWIDGETTYPE_TEXTBOX = "MKWidgetTextBox";      /* const */
+static s8 *MKWidgetSystemName = "MKWidgetSystem";        /* const */
 
 void *MKWidget_FindMessageHook(const char *arg0) {
     void *var_r31_113;
@@ -3508,8 +3227,6 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_5994;
-    MKHeap *temp_r3_6014;
     f32 temp_f1_6743;
     f32 temp_f1_6989;
     f32 temp_ret_5927;
@@ -3569,7 +3286,6 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s8 **temp_r27_6330;
     s8 **temp_r27_6758;
     s8 **temp_r27_7049;
-    s8 **temp_r3_5990;
     s8 **temp_r3_6475;
     s8 **temp_r3_6767;
     s8 **temp_r3_6891;
@@ -3664,12 +3380,10 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     temp_r24_5937 = var_r26_5918 | var_r0_5931;
     switch ((s32) arg0) {                           /* switch 1; irregular */
     case 0x66:                                      /* switch 1 */
-        temp_r3_5990 = this->unk4;
-        temp_r26_5991 = M2C_FIELD(temp_r3_5990, s8 **, 0x68);
+        temp_r26_5991 = M2C_FIELD(this->unk4, s8 **, 0x68);
         if (temp_r26_5991 != NULL) {
-            temp_r3_5994 = ((MKHeap *) temp_r3_5990)->Current();
-            if (temp_r3_5994 != NULL) {
-                ((MKHeap *) (temp_r3_5994->Current()))->Free(temp_r26_5991, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r26_5991, NULL, 0);
             } else {
                 free(temp_r26_5991);
             }
@@ -3677,9 +3391,8 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
         }
         if (var_r30_5855 != 0) {
             temp_r26_6013 = this->unk4;
-            temp_r3_6014 = ((MKHeap *) this->unk4)->Current();
-            if (temp_r3_6014 != NULL) {
-                var_r3_6021 = ((MKHeap *) (temp_r3_6014->Current()))->Alloc((s32) var_r30_5855, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_6021 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) var_r30_5855, NULL, 0);
             } else {
                 var_r3_6021 = malloc(var_r30_5855);
             }
@@ -4264,17 +3977,13 @@ block_283:
 #endif
 
 MKWidgetTextBox::~MKWidgetTextBox() {
-    MKHeap *temp_r3_7152;
-    s8 **temp_r3_7148;
     s8 *temp_r31_7149;
 
     if (this != NULL) {
-        temp_r3_7148 = this->unk4;
-        temp_r31_7149 = M2C_FIELD(temp_r3_7148, s8 **, 0x68);
+        temp_r31_7149 = M2C_FIELD(this->unk4, s8 **, 0x68);
         if (temp_r31_7149 != NULL) {
-            temp_r3_7152 = ((MKHeap *) temp_r3_7148)->Current();
-            if (temp_r3_7152 != NULL) {
-                ((MKHeap *) (temp_r3_7152->Current()))->Free(temp_r31_7149, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_7149, NULL, 0);
             } else {
                 free(temp_r31_7149);
             }
@@ -4282,9 +3991,8 @@ MKWidgetTextBox::~MKWidgetTextBox() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
-    MKHeap *temp_r3_7225;
     s8 **temp_r30_7220;
     s8 *temp_r28_7224;
     s8 *var_r3_7232;
@@ -4304,9 +4012,8 @@ MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
         temp_r29_7221 = M2C_FIELD(temp_r30_7220, u32 *, 0x70);
         if (temp_r29_7221 != 0) {
             temp_r28_7224 = M2C_FIELD(temp_r30_7220, s8 **, 0x68);
-            temp_r3_7225 = ((MKHeap *) &__vt)->Current();
-            if (temp_r3_7225 != NULL) {
-                var_r3_7232 = ((MKHeap *) (temp_r3_7225->Current()))->Alloc((s32) temp_r29_7221, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_7232 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_7221, NULL, 0);
             } else {
                 var_r3_7232 = malloc(temp_r29_7221);
             }
@@ -9387,17 +9094,14 @@ u8 MKWidget::IsFlagSet(unsigned int arg0) const {
     return (M2C_FIELD(this->unk4, s32 *, 0x60) & arg0) != 0;
 }
 
-#if 0 // DRAFT: undefined identifier '__vt'
 MKWidget::~MKWidget() {
-    MKHeap *temp_r3_16980;
     s8 **temp_r31_16979;
 
     if (this != NULL) {
         if ((u8) this->unk8 == 0) {
             temp_r31_16979 = this->unk4;
-            temp_r3_16980 = ((MKHeap *) &__vt)->Current();
-            if (temp_r3_16980 != NULL) {
-                ((MKHeap *) (temp_r3_16980->Current()))->Free(temp_r31_16979, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_16979, NULL, 0);
             } else {
                 free((s8 *) temp_r31_16979);
             }
@@ -9405,7 +9109,6 @@ MKWidget::~MKWidget() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vt'
 MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
@@ -9643,7 +9346,7 @@ void MKWidget_LoadHierarchy(const char *arg0, MKWidgetContainer *arg1) {
     temp_ret_17632 = Str_Printf("", temp_r3_17605);
     MKMetadata_Open(Str_Printf("", temp_r3_17605, M2C_BITWISE(f32, temp_ret_17632)), temp_ret_17632, ((u8 *) temp_r1_17584) + 8);
     *MKWidgetSerialise::pMetaDataFile = M2C_ERROR(/* Read from unset register $r3 */);
-    ((MKWidgetSerialise *) (M2C_ERROR(/* Read from unset register $r3 */)))->SerialiseVersion();
+    MKWidgetSerialise::SerialiseVersion();
     *MKWidgetSerialise::metaDataResolveIndex = 1;
     *(temp_r1_17584 + (((M2C_FIELD(temp_r1_17584, s32 *, 0xC) - 1) * -4) & 0xFFFFFFF8)) = sp0;
     var_r27_17654 = 1;
@@ -9688,7 +9391,6 @@ void MKWidgetSerialise::SerialiseVersion() {
 
 #if 0 // DRAFT: function call 'MKMetadata_Resolve(unsigned char, unsigned char, int)' does
 u8 MKWidgetSerialise::GetMetaData(MKWidgetMetaData *&arg0, unsigned int arg1) {
-    MKHeap *temp_r3_17751;
     s8 *var_r3_17758;
 
     if ((MKMetadata *) *MKWidgetSerialise::pMetaDataFile != NULL) {
@@ -9696,9 +9398,8 @@ u8 MKWidgetSerialise::GetMetaData(MKWidgetMetaData *&arg0, unsigned int arg1) {
         *MKWidgetSerialise::metaDataResolveIndex += 1;
         return 1U;
     }
-    temp_r3_17751 = MKHeap::Current();
-    if (temp_r3_17751 != NULL) {
-        var_r3_17758 = ((MKHeap *) (temp_r3_17751->Current()))->Alloc((s32) &arg0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_17758 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) &arg0, NULL, 0);
     } else {
         var_r3_17758 = malloc((u32) &arg0);
     }

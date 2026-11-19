@@ -619,9 +619,6 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
 
 #if 0 // DRAFT: illegal implicit conversion from 'WaterSurfaceFX::Wake' to
 void WaterSurfaceFX::Deinit() {
-    MKHeap *temp_r3_1051;
-    MKHeap *temp_r3_1094;
-    MKHeap *temp_r3_1136;
     WaterSurfaceFX::Wake **temp_r30_1050;
     WaterSurfaceFX::Wake **temp_r3_1047;
     WaterSurfaceFX::Wake **var_r30_1068;
@@ -634,7 +631,6 @@ void WaterSurfaceFX::Deinit() {
     WaterSurfaceFX::Wake *temp_r0_1091;
     WaterSurfaceFX::Wake *temp_r0_1114;
     WaterSurfaceFX::Wake *temp_r0_1133;
-    WaterSurfaceFX::Wake *temp_r3_1049;
     u32 temp_r0_1077;
     u32 temp_r0_1119;
 
@@ -648,11 +644,9 @@ loop_7:
     if ((u32) M2C_FIELD(var_r4_1064, u32 *, -4) != 0U) {
         temp_r3_1047 = this->unk4C - 4;
         this->unk4C = temp_r3_1047;
-        temp_r3_1049 = *temp_r3_1047;
-        temp_r30_1050 = *temp_r3_1049;
-        temp_r3_1051 = ((MKHeap *) temp_r3_1049)->Current();
-        if (temp_r3_1051 != NULL) {
-            ((MKHeap *) (temp_r3_1051->Current()))->Free(temp_r30_1050, NULL, 0);
+        temp_r30_1050 = **temp_r3_1047;
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1050, NULL, 0);
         } else {
             free(temp_r30_1050);
         }
@@ -680,9 +674,8 @@ loop_17:
             var_r4_1064 += 4;
             goto loop_17;
         }
-        temp_r3_1094 = ((MKHeap *) var_r3_1069)->Current();
-        if (temp_r3_1094 != NULL) {
-            ((MKHeap *) (temp_r3_1094->Current()))->Free(var_r30_1068, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1068, NULL, 0);
         } else {
             free(var_r30_1068);
         }
@@ -711,9 +704,8 @@ loop_30:
             var_r4_1109 += 4;
             goto loop_30;
         }
-        temp_r3_1136 = ((MKHeap *) var_r3_1111)->Current();
-        if (temp_r3_1136 != NULL) {
-            ((MKHeap *) (temp_r3_1136->Current()))->Free(var_r30_1110, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1110, NULL, 0);
         } else {
             free(var_r30_1110);
         }
@@ -823,13 +815,9 @@ loop_6:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void WaterSurfaceFX::Init() {
-    MKHeap *temp_r3_1322;
-    MKHeap *temp_r3_1361;
-    MKHeap *temp_r3_1397;
     WaterSurfaceFX::Wake **temp_r3_1344;
     WaterSurfaceFX::Wake **temp_r3_1350;
     WaterSurfaceFX::Wake **temp_r3_1358;
-    WaterSurfaceFX::Wake **temp_r3_1389;
     WaterSurfaceFX::Wake **temp_r3_1419;
     WaterSurfaceFX::Wake **temp_r3_1425;
     WaterSurfaceFX::Wake **var_r3_1329;
@@ -842,9 +830,8 @@ void WaterSurfaceFX::Init() {
     s32 var_ctr_1417;
 
     MKProp::Init();
-    temp_r3_1322 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1322 != NULL) {
-        var_r3_1329 = ((MKHeap *) (temp_r3_1322->Current()))->Alloc(0x38, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1329 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0);
     } else {
         var_r3_1329 = malloc(0x38);
     }
@@ -868,9 +855,8 @@ loop_10:
         temp_r3_1358 = this->unk4C - 4;
         this->unk4C = temp_r3_1358;
         temp_r30_1360 = *temp_r3_1358;
-        temp_r3_1361 = ((MKHeap *) temp_r3_1358)->Current();
-        if (temp_r3_1361 != NULL) {
-            var_r3_1368 = ((MKHeap *) (temp_r3_1361->Current()))->Alloc(0x7D0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1368 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7D0, NULL, 0);
         } else {
             var_r3_1368 = malloc(0x7D0);
         }
@@ -880,16 +866,14 @@ loop_10:
         goto loop_10;
     }
 loop_13:
-    temp_r3_1389 = this->unk4C;
-    if ((WaterSurfaceFX::Wake *) M2C_FIELD(temp_r3_1389, WaterSurfaceFX::Wake **, 0) != NULL) {
+    if ((WaterSurfaceFX::Wake *) M2C_FIELD(this->unk4C, WaterSurfaceFX::Wake **, 0) != NULL) {
         this->unk4C += 4;
         goto loop_13;
     }
     this->unk50 = NULL;
     this->unk54 = 0.0f;
-    temp_r3_1397 = ((MKHeap *) temp_r3_1389)->Current();
-    if (temp_r3_1397 != NULL) {
-        var_r3_1404 = ((MKHeap *) (temp_r3_1397->Current()))->Alloc(0x94, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1404 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x94, NULL, 0);
     } else {
         var_r3_1404 = malloc(0x94);
     }

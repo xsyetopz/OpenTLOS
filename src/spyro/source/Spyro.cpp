@@ -2894,7 +2894,8 @@ f32 Spyro::GetJoyYaw() {
     f32 temp_f30_5163;
     f32 temp_f31_5159;
 
-    temp_f31_5159 = ((KDCamera *) (GetCamera()))->GetMoveYaw();
+    GetCamera();
+    temp_f31_5159 = KDCamera::GetMoveYaw();
     temp_f30_5163 = ((InputModifier *) (GetInput()))->GetLeftY();
     return temp_f31_5159 + (f32) atan2(-((InputModifier *) (GetInput()))->GetLeftX(), temp_f30_5163);
 }
@@ -9150,8 +9151,6 @@ s32 Spyro::LoadDone() {
     Spyro *sp8;
     MKAnimScript *temp_r27_16307;
     MKHeap *temp_r27_16105;
-    MKHeap *temp_r3_16223;
-    MKHeap *var_r3_16202;
     MKProp **var_r3_16230;
     s32 var_r26_16300;
     s32 var_r26_16325;
@@ -9208,24 +9207,23 @@ s32 Spyro::LoadDone() {
         sp8 = this;
         spC = 0;
         temp_r3_16196 = this->unk27C;
-        var_r3_16202 = M2C_FIELD(*temp_r3_16196, MKHeap *(**)(void *, void *, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_16196, ((u8 *) temp_r3_16187) + 0x60, &this->unk2F8, 0, &this->unk26C, 1, 1, 0);
+        M2C_FIELD(*temp_r3_16196, M2C_UNK (**)(void *, void *, MKVector3 *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_16196, ((u8 *) temp_r3_16187) + 0x60, &this->unk2F8, 0, &this->unk26C, 1, 1, 0);
     } else {
         temp_r3_16206 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = this;
         spC = 0;
         temp_r3_16215 = this->unk27C;
-        var_r3_16202 = M2C_FIELD(*temp_r3_16215, MKHeap *(**)(void *, void *, MKVector3 *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_16215, ((u8 *) temp_r3_16206) + 0x60, &this->unk2F8, 0, 0, 0, 1, 0);
+        M2C_FIELD(*temp_r3_16215, M2C_UNK (**)(void *, void *, MKVector3 *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 8)(temp_r3_16215, ((u8 *) temp_r3_16206) + 0x60, &this->unk2F8, 0, 0, 0, 1, 0);
     }
-    temp_r3_16223 = var_r3_16202->Current();
-    if (temp_r3_16223 != NULL) {
-        var_r3_16230 = ((MKHeap *) (temp_r3_16223->Current()))->Alloc(0x60, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_16230 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x60, NULL, 0);
     } else {
         var_r3_16230 = malloc(0x60);
     }
     this->unk364 = var_r3_16230;
     this->unk358 = 4;
     SetLastSafePos(this->unk2F8, NULL);
-    this->unk280 = ((MKCloth *) (M2C_ERROR(/* Read from unset register $r3 */)))->AllocateSweepSphere();
+    this->unk280 = MKCloth::AllocateSweepSphere();
     temp_r4_16246 = this->unk27C;
     M2C_FIELD(*temp_r4_16246, M2C_UNK (**)(f32 *, void *), 0x4C)(&sp50, temp_r4_16246);
     sp20 = sp50;
@@ -9363,8 +9361,6 @@ void Spyro::Deinit() {
     Spyro *sp10;
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_16625;
-    MKHeap *temp_r3_16664;
     MKProp **temp_r30_16622;
     s32 var_r29_16692;
     s32 var_r30_16693;
@@ -9380,9 +9376,8 @@ void Spyro::Deinit() {
     gb.unk2C4 = NULL;
     temp_r30_16622 = this->unk364;
     if (temp_r30_16622 != NULL) {
-        temp_r3_16625 = ((MKHeap *) &gb)->Current();
-        if (temp_r3_16625 != NULL) {
-            ((MKHeap *) (temp_r3_16625->Current()))->Free(temp_r30_16622, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_16622, NULL, 0);
         } else {
             free(temp_r30_16622);
         }
@@ -9401,9 +9396,8 @@ void Spyro::Deinit() {
     } while ((u32) *temp_r3_16655 != 0);
     temp_r30_16660 = this->unk6F0;
     if (temp_r30_16660 != &gEmptyPtrList) {
-        temp_r3_16664 = ((MKHeap *) temp_r3_16655)->Current();
-        if (temp_r3_16664 != NULL) {
-            ((MKHeap *) (temp_r3_16664->Current()))->Free(temp_r30_16660, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_16660, NULL, 0);
         } else {
             free((MKProp **) temp_r30_16660);
         }
@@ -9443,7 +9437,6 @@ void Spyro::Deinit() {
 
 #if 0 // DRAFT: pointer/array required
 void Spyro::Init() {
-    MKHeap *temp_r3_16879;
     MKProp **var_r3_16886;
     s32 var_ctr_16899;
     u32 *temp_r3_16901;
@@ -9507,9 +9500,8 @@ void Spyro::Init() {
     this->unk68 = M2C_FIELD(&MKVector3::one, f64 *, 0);
     this->unk70 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     ((MKSceneManager *) gMK)->CreatePropDeferred("Sparx", (MKProp **) &this->unkB70);
-    temp_r3_16879 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_16879 != NULL) {
-        var_r3_16886 = ((MKHeap *) (temp_r3_16879->Current()))->Alloc(0x44, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_16886 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x44, NULL, 0);
     } else {
         var_r3_16886 = malloc(0x44);
     }

@@ -119,7 +119,6 @@ void FlyingBurningBits::Emit(const MKVector3 &arg0, const MKVector3 &arg1) {
 
 #if 0 // DRAFT: type mismatch
 void FlyingBurningBits::Deinit() {
-    MKHeap *temp_r3_137;
     MKVector3 **var_r31_111;
     MKVector3 **var_r3_112;
     MKVector3 **var_r4_110;
@@ -151,9 +150,8 @@ loop_9:
             var_r4_110 += 4;
             goto loop_9;
         }
-        temp_r3_137 = ((MKHeap *) var_r3_112)->Current();
-        if (temp_r3_137 != NULL) {
-            ((MKHeap *) (temp_r3_137->Current()))->Free(var_r31_111, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_111, NULL, 0);
         } else {
             free(var_r31_111);
         }
@@ -618,18 +616,16 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FlyingBurningBits::Init() {
-    MKHeap *temp_r3_862;
     MKVector3 **temp_r3_884;
     MKVector3 **temp_r4_890;
     MKVector3 **var_r3_869;
     MKVector3 **var_r5_878;
     s32 var_ctr_882;
 
-    temp_r3_862 = MKHeap::Current();
-    if (temp_r3_862 != NULL) {
-        var_r3_869 = ((MKHeap *) (temp_r3_862->Current()))->Alloc(0x378, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_869 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x378, NULL, 0);
     } else {
         var_r3_869 = malloc(0x378);
     }

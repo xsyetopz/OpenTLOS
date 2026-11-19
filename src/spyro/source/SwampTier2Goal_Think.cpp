@@ -740,7 +740,6 @@ void SwampTier2Goal_AlertMode::Deinit() {
     Goal<SwampTier2> *temp_r3_1339;
     Goal<SwampTier2> *temp_r3_1344;
     Goal<SwampTier2> *temp_r3_1349;
-    MKHeap *temp_r3_1371;
     void *temp_r31_1368;
 
     temp_r3_1319 = this->unk24;
@@ -766,9 +765,8 @@ void SwampTier2Goal_AlertMode::Deinit() {
     operator delete(this->unk3C);
     temp_r31_1368 = this->unk1C;
     if (temp_r31_1368 != NULL) {
-        temp_r3_1371 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1371 != NULL) {
-            ((MKHeap *) (temp_r3_1371->Current()))->Free(temp_r31_1368, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1368, NULL, 0);
         } else {
             free(temp_r31_1368);
         }
@@ -788,7 +786,6 @@ void SwampTier2Goal_AlertMode::Init(SwampTier2 *arg0) {
     Goal<SwampTier2> *temp_r4_1600;
     Goal<SwampTier2> *temp_r4_1620;
     Goal<SwampTier2> *temp_r4_1631;
-    MKHeap *temp_r3_1559;
     void *var_r3_1566;
 
     if ((arg0 != NULL) && ((u8) this->unk9 == 0)) {
@@ -864,9 +861,8 @@ void SwampTier2Goal_AlertMode::Init(SwampTier2 *arg0) {
         this->unk3C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1559 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1559 != NULL) {
-            var_r3_1566 = ((MKHeap *) (temp_r3_1559->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1566 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_1566 = malloc(0x14);
         }
@@ -1396,7 +1392,6 @@ void SwampTier2Goal_Think::Deinit() {
     Goal<SwampTier2> *temp_r3_2849;
     Goal<SwampTier2> *temp_r3_2854;
     Goal<SwampTier2> *temp_r3_2859;
-    MKHeap *temp_r3_2881;
     void **temp_r3_2829;
     void *temp_r31_2878;
 
@@ -1423,9 +1418,8 @@ void SwampTier2Goal_Think::Deinit() {
     operator delete(this->unk38);
     temp_r31_2878 = this->unk1C;
     if (temp_r31_2878 != NULL) {
-        temp_r3_2881 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2881 != NULL) {
-            ((MKHeap *) (temp_r3_2881->Current()))->Free(temp_r31_2878, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2878, NULL, 0);
         } else {
             free(temp_r31_2878);
         }
@@ -1442,7 +1436,6 @@ void SwampTier2Goal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void SwampTier2Goal_Think::Init(SwampTier2 *arg0) {
     Goal<SwampTier2> *temp_r4_3137;
-    MKHeap *temp_r3_3096;
     void **temp_r4_3123;
     void *var_r3_3103;
 
@@ -1539,9 +1532,8 @@ void SwampTier2Goal_Think::Init(SwampTier2 *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3096 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3096 != NULL) {
-            var_r3_3103 = ((MKHeap *) (temp_r3_3096->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3103 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_3103 = malloc(8);
         }

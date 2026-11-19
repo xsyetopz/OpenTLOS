@@ -221,7 +221,6 @@ loop_28:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 TrapSpawnPool::LoadDone() {
-    MKHeap *temp_r3_412;
     s32 temp_r31_411;
     s32 var_r30_426;
     s32 var_r31_427;
@@ -229,9 +228,8 @@ s32 TrapSpawnPool::LoadDone() {
 
     MKProp::LoadDone();
     temp_r31_411 = this->unk90 * 4;
-    temp_r3_412 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_412 != NULL) {
-        var_r3_419 = ((MKHeap *) (temp_r3_412->Current()))->Alloc(temp_r31_411, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_419 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_411, NULL, 0);
     } else {
         var_r3_419 = malloc(temp_r31_411);
     }
@@ -260,15 +258,13 @@ s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
 }
 
 void TrapSpawnPool::Deinit() {
-    MKHeap *temp_r3_589;
     void **temp_r31_588;
 
     ((KDPathSegment *) &this->unkB4)->Deinit();
     this->unkA0.Deinit();
     temp_r31_588 = this->unk9C;
-    temp_r3_589 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_589 != NULL) {
-        ((MKHeap *) (temp_r3_589->Current()))->Free(temp_r31_588, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_588, NULL, 0);
     } else {
         free(temp_r31_588);
     }

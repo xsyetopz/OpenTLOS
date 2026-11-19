@@ -420,7 +420,6 @@ void EnemyTest_Think::Deinit() {
     Goal<Enemy> *temp_r3_1035;
     Goal<Enemy> *temp_r3_1045;
     Goal<Enemy> *temp_r3_1050;
-    MKHeap *temp_r3_1070;
     s32 temp_r31_1067;
     void **temp_r3_1040;
 
@@ -444,9 +443,8 @@ void EnemyTest_Think::Deinit() {
     operator delete(this->unk34);
     temp_r31_1067 = this->unk1C;
     if ((u32) temp_r31_1067 != 0U) {
-        temp_r3_1070 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1070 != NULL) {
-            ((MKHeap *) (temp_r3_1070->Current()))->Free((void *) temp_r31_1067, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_1067, NULL, 0);
         } else {
             free(temp_r31_1067);
         }
@@ -464,7 +462,6 @@ void EnemyTest_Think::Deinit() {
 void EnemyTest_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1285;
     Goal<Enemy> *temp_r4_1313;
-    MKHeap *temp_r3_1258;
     void **temp_r4_1302;
     void *var_r3_1265;
 
@@ -546,9 +543,8 @@ void EnemyTest_Think::Init(Enemy *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1258 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1258 != NULL) {
-            var_r3_1265 = ((MKHeap *) (temp_r3_1258->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1265 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_1265 = malloc(0xC);
         }

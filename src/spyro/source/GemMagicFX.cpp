@@ -173,22 +173,19 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: type mismatch
 void GemMagicFX::Deinit() {
     MKHeap *temp_r0_259;
     MKHeap *temp_r0_278;
     MKHeap *temp_r31_240;
-    MKHeap *temp_r3_241;
-    MKHeap *temp_r3_281;
     MKHeap *var_r31_255;
     MKHeap *var_r3_256;
     MKHeap *var_r4_254;
     u32 temp_r0_264;
 
     temp_r31_240 = this->unk50;
-    temp_r3_241 = MKHeap::Current();
-    if (temp_r3_241 != NULL) {
-        ((MKHeap *) (temp_r3_241->Current()))->Free(temp_r31_240, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_240, NULL, 0);
     } else {
         free(temp_r31_240);
     }
@@ -215,9 +212,8 @@ loop_12:
             var_r4_254 += 4;
             goto loop_12;
         }
-        temp_r3_281 = var_r3_256->Current();
-        if (temp_r3_281 != NULL) {
-            ((MKHeap *) (temp_r3_281->Current()))->Free(var_r31_255, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_255, NULL, 0);
         } else {
             free(var_r31_255);
         }
@@ -726,23 +722,19 @@ void GemMagicFX::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1031;
     MKHeap *temp_r3_1053;
     MKHeap *temp_r3_1059;
-    MKHeap *temp_r3_1064;
     MKHeap *var_r3_1038;
     MKHeap *var_r3_1071;
     MKHeap *var_r5_1047;
-    s32 *temp_r3_1061;
     s32 temp_r3_1087;
     s32 var_ctr_1051;
     s32 var_r28_1081;
     s32 var_r30_1082;
 
     MKProp::Init();
-    temp_r3_1031 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1031 != NULL) {
-        var_r3_1038 = ((MKHeap *) (temp_r3_1031->Current()))->Alloc(0x558, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1038 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x558, NULL, 0);
     } else {
         var_r3_1038 = malloc(0x558);
     }
@@ -759,12 +751,10 @@ void GemMagicFX::Init() {
         var_ctr_1051 -= 1;
     } while (var_ctr_1051 != 0);
     temp_r3_1059 = this->unk4C;
-    temp_r3_1061 = &temp_r3_1059->unk4;
-    this->unk4C = (MKHeap *) temp_r3_1061;
+    this->unk4C = (MKHeap *) &temp_r3_1059->unk4;
     temp_r3_1059->unk4 = 0;
-    temp_r3_1064 = ((MKHeap *) temp_r3_1061)->Current();
-    if (temp_r3_1064 != NULL) {
-        var_r3_1071 = ((MKHeap *) (temp_r3_1064->Current()))->Alloc(0x50, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1071 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0);
     } else {
         var_r3_1071 = malloc(0x50);
     }

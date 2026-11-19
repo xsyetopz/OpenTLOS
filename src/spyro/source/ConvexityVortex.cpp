@@ -102,7 +102,6 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
 
 #if 0 // DRAFT: function call 'MKModel_Destroy(ConvexityVortex)' does not match
 void ConvexityVortex::Deinit() {
-    MKHeap *temp_r3_211;
     MKVector3 **var_r30_171;
     MKVector3 **var_r31_185;
     MKVector3 **var_r3_186;
@@ -154,9 +153,8 @@ loop_15:
             var_r4_184 += 4;
             goto loop_15;
         }
-        temp_r3_211 = ((MKHeap *) var_r3_186)->Current();
-        if (temp_r3_211 != NULL) {
-            ((MKHeap *) (temp_r3_211->Current()))->Free(var_r31_185, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_185, NULL, 0);
         } else {
             free(var_r31_185);
         }
@@ -429,8 +427,6 @@ s32 ConvexityVortex::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
 void ConvexityVortex::Init() {
-    MKHeap *temp_r3_776;
-    MKHeap *temp_r3_778;
     MKVector3 **temp_r3_800;
     MKVector3 **temp_r3_806;
     MKVector3 **var_r3_785;
@@ -440,11 +436,9 @@ void ConvexityVortex::Init() {
     MKProp::Init();
     this->unk8 = &this->unk60;
     this->unk4C = MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL);
-    temp_r3_776 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
-    this->unk50 = temp_r3_776;
-    temp_r3_778 = temp_r3_776->Current();
-    if (temp_r3_778 != NULL) {
-        var_r3_785 = ((MKHeap *) (temp_r3_778->Current()))->Alloc(0x440, NULL, 0);
+    this->unk50 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
+    if (MKHeap::Current() != NULL) {
+        var_r3_785 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x440, NULL, 0);
     } else {
         var_r3_785 = malloc(0x440);
     }

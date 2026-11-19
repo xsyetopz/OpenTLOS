@@ -33,7 +33,7 @@ public:
     virtual void Collided(MKCollisionResult &);
     IceSquirt(void);
     void SetDefaults(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
     /* 0x150 */ LiquidFX* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ MKVector3* unk158;

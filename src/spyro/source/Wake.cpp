@@ -325,15 +325,13 @@ void Wake::Reset() {
 }
 
 void Wake::Deinit() {
-    MKHeap *temp_r3_547;
     void *temp_r31_544;
 
     MKProp::Deinit();
     temp_r31_544 = this->unk5C;
     if (temp_r31_544 != NULL) {
-        temp_r3_547 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_547 != NULL) {
-            ((MKHeap *) (temp_r3_547->Current()))->Free(temp_r31_544, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_544, NULL, 0);
         } else {
             free(temp_r31_544);
         }
@@ -348,13 +346,11 @@ void Wake::Deinit() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void Wake::Init() {
-    MKHeap *temp_r3_587;
     void *var_r3_594;
 
     MKProp::Init();
-    temp_r3_587 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_587 != NULL) {
-        var_r3_594 = ((MKHeap *) (temp_r3_587->Current()))->Alloc(0xAA0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_594 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xAA0, NULL, 0);
     } else {
         var_r3_594 = malloc(0xAA0);
     }

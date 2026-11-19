@@ -258,10 +258,8 @@ block_35:
 MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
     s8 sp8;
     MKCollisionModel *var_r30_356;
-    MKCollisionModel *var_r3_355;
     MKHeap *temp_r3_344;
     MKHeap *temp_r3_367;
-    MKHeap *temp_r3_382;
     s8 *temp_r29_381;
     s8 *var_r3_389;
 
@@ -272,8 +270,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
         temp_r3_344->unk24 += 1;
         return (MKHeap *) temp_r3_344->unk20;
     }
-    var_r3_355 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
-    var_r30_356 = var_r3_355;
+    var_r30_356 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
     if (var_r30_356 == NULL) {
         MKCollision_MangleName(arg0, arg1, 1U);
         strcpy(&sp8, M2C_ERROR(/* Read from unset register $r3 */));
@@ -282,15 +279,13 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
             temp_r3_367->unk24 += 1;
             return (MKHeap *) temp_r3_367->unk20;
         }
-        var_r3_355 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
-        var_r30_356 = var_r3_355;
+        var_r30_356 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
         goto block_6;
     }
 block_6:
     temp_r29_381 = this->unk24;
-    temp_r3_382 = ((MKHeap *) var_r3_355)->Current();
-    if (temp_r3_382 != NULL) {
-        var_r3_389 = ((MKHeap *) (temp_r3_382->Current()))->Alloc(0x2C, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_389 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0);
     } else {
         var_r3_389 = malloc(0x2C);
     }
@@ -306,7 +301,6 @@ block_6:
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
     MKHeap *temp_r3_430;
-    MKHeap *temp_r3_440;
     s8 *temp_r30_439;
     s8 *temp_r3_425;
     s8 *var_r3_447;
@@ -318,9 +312,8 @@ MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
         return (MKHeap *) temp_r3_430->unk20;
     }
     temp_r30_439 = this->unk24;
-    temp_r3_440 = temp_r3_430->Current();
-    if (temp_r3_440 != NULL) {
-        var_r3_447 = ((MKHeap *) (temp_r3_440->Current()))->Alloc(0x2C, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_447 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2C, NULL, 0);
     } else {
         var_r3_447 = malloc(0x2C);
     }
@@ -1896,7 +1889,6 @@ u8 MKCollisionManager::Enable(bool arg0) {
 void MKCollisionManager::Deinit() {
     MKHeap *temp_r30_3060;
     MKHeap *temp_r3_3030;
-    MKHeap *temp_r3_3061;
     s32 var_r28_3012;
     s32 var_r31_3013;
     s8 *temp_r28_3087;
@@ -1939,9 +1931,8 @@ loop_6:
     this->unk30 = NULL;
     this->unk28 = NULL;
     temp_r30_3060 = this->unk2C;
-    temp_r3_3061 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_3061 != NULL) {
-        ((MKHeap *) (temp_r3_3061->Current()))->Free(temp_r30_3060, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_3060, NULL, 0);
     } else {
         free(temp_r30_3060);
     }

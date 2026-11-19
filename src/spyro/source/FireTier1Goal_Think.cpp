@@ -156,7 +156,6 @@ void FireTier1Goal_Patrol::Deinit() {
     Goal<Enemy> *temp_r3_210;
     Goal<Enemy> *temp_r3_215;
     Goal<Enemy> *temp_r3_220;
-    MKHeap *temp_r3_236;
     void *temp_r31_233;
 
     temp_r3_205 = this->unk24;
@@ -173,9 +172,8 @@ void FireTier1Goal_Patrol::Deinit() {
     operator delete(this->unk30);
     temp_r31_233 = this->unk1C;
     if (temp_r31_233 != NULL) {
-        temp_r3_236 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_236 != NULL) {
-            ((MKHeap *) (temp_r3_236->Current()))->Free(temp_r31_233, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_233, NULL, 0);
         } else {
             free(temp_r31_233);
         }
@@ -193,7 +191,6 @@ void FireTier1Goal_Patrol::Deinit() {
 void FireTier1Goal_Patrol::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_402;
     Goal<Enemy> *temp_r4_411;
-    MKHeap *temp_r3_370;
     void *var_r3_377;
 
     if ((u8) this->unk9 == 0) {
@@ -244,9 +241,8 @@ void FireTier1Goal_Patrol::Init(Enemy *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_370 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_370 != NULL) {
-            var_r3_377 = ((MKHeap *) (temp_r3_370->Current()))->Alloc(0x10, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_377 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
         } else {
             var_r3_377 = malloc(0x10);
         }
@@ -334,7 +330,6 @@ void EnemyGoal_WanderAroundPointArb::Reset() {
 void EnemyGoal_WanderAroundPointArb::Deinit() {
     Goal<Enemy> *temp_r3_587;
     Goal<Enemy> *temp_r3_592;
-    MKHeap *temp_r3_604;
     void *temp_r31_601;
 
     temp_r3_587 = this->unk24;
@@ -345,9 +340,8 @@ void EnemyGoal_WanderAroundPointArb::Deinit() {
     operator delete(this->unk28);
     temp_r31_601 = this->unk1C;
     if (temp_r31_601 != NULL) {
-        temp_r3_604 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_604 != NULL) {
-            ((MKHeap *) (temp_r3_604->Current()))->Free(temp_r31_601, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_601, NULL, 0);
         } else {
             free(temp_r31_601);
         }
@@ -365,7 +359,6 @@ void EnemyGoal_WanderAroundPointArb::Deinit() {
 void EnemyGoal_WanderAroundPointArb::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_723;
     Goal<Enemy> *temp_r4_732;
-    MKHeap *temp_r3_691;
     void *var_r3_698;
 
     if ((u8) this->unk9 == 0) {
@@ -391,9 +384,8 @@ void EnemyGoal_WanderAroundPointArb::Init(Enemy *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_691 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_691 != NULL) {
-            var_r3_698 = ((MKHeap *) (temp_r3_691->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_698 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_698 = malloc(8);
         }
@@ -1522,7 +1514,6 @@ void FireTier1Goal_Think::Deinit() {
     Goal<Enemy> *temp_r3_2901;
     Goal<Enemy> *temp_r3_2906;
     Goal<Enemy> *temp_r3_2911;
-    MKHeap *temp_r3_2929;
     void *temp_r31_2926;
 
     temp_r3_2891 = this->unk24;
@@ -1542,9 +1533,8 @@ void FireTier1Goal_Think::Deinit() {
     operator delete(this->unk34);
     temp_r31_2926 = this->unk1C;
     if (temp_r31_2926 != NULL) {
-        temp_r3_2929 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2929 != NULL) {
-            ((MKHeap *) (temp_r3_2929->Current()))->Free(temp_r31_2926, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2926, NULL, 0);
         } else {
             free(temp_r31_2926);
         }
@@ -1561,7 +1551,6 @@ void FireTier1Goal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void FireTier1Goal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_3146;
-    MKHeap *temp_r3_3107;
     void *var_r3_3114;
 
     this->unk20 = checked_cast<FireTier1 *, Enemy>(arg0);
@@ -1638,9 +1627,8 @@ void FireTier1Goal_Think::Init(Enemy *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3107 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3107 != NULL) {
-            var_r3_3114 = ((MKHeap *) (temp_r3_3107->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3114 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_3114 = malloc(8);
         }

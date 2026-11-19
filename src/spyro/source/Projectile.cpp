@@ -49,6 +49,7 @@
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/MagicDrain.h"
 #include "spyro/source/MagicFireball.h"
+#include "spyro/source/MagmaSquirt.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/PlatformObject.h"
 #include "spyro/source/PoisonBomb.h"
@@ -145,39 +146,39 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
         case 4:
             return ((Dynamite *)3)->CreateInstance((s32) &jumptable_847);
         case 5:
-            return jumptable_847.CreateInstance();
+            return MagmaSquirt::CreateInstance();
         case 6:
-            return ((HotSpit *) &jumptable_847)->CreateInstance();
+            return HotSpit::CreateInstance();
         case 7:
-            return ((SteamFireBall *) &jumptable_847)->CreateInstance();
+            return SteamFireBall::CreateInstance();
         case 8:
-            return ((LavaBall *) &jumptable_847)->CreateInstance();
+            return LavaBall::CreateInstance();
         case 9:
-            return ((Sludge *) &jumptable_847)->CreateInstance();
+            return Sludge::CreateInstance();
         case 10:
-            return ((MagicFireball *) &jumptable_847)->CreateInstance();
+            return MagicFireball::CreateInstance();
         case 11:
             return ((IceBossStomp *)2)->CreateInstance((s32) &jumptable_847);
         case 12:
             return ((IceBossStomp *)1)->CreateInstance((s32) &jumptable_847);
         case 13:
-            return ((SonicAttack *) &jumptable_847)->CreateInstance();
+            return SonicAttack::CreateInstance();
         case 14:
-            return ((SolidSlug *) &jumptable_847)->CreateInstance();
+            return SolidSlug::CreateInstance();
         case 15:
-            return ((IceShard *) &jumptable_847)->CreateInstance();
+            return IceShard::CreateInstance();
         case 16:
-            return ((SpeedwayAA *) &jumptable_847)->CreateInstance();
+            return SpeedwayAA::CreateInstance();
         case 17:
-            return ((CynderElecAttack *) &jumptable_847)->CreateInstance();
+            return CynderElecAttack::CreateInstance();
         case 18:
-            return ((IceSquirt *) &jumptable_847)->CreateInstance();
+            return IceSquirt::CreateInstance();
         case 19:
-            return ((PoisonBomb *) &jumptable_847)->CreateInstance();
+            return PoisonBomb::CreateInstance();
         case 20:
-            return ((MagicDrain *) &jumptable_847)->CreateInstance();
+            return MagicDrain::CreateInstance();
         case 21:
-            return ((FlyingMonkey *) &jumptable_847)->CreateInstance();
+            return FlyingMonkey::CreateInstance();
         }
     } else {
     case 0:

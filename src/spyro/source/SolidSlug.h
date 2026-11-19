@@ -18,7 +18,7 @@ public:
     virtual void * Update(void);
     virtual void Collided(MKCollisionResult &);
     SolidSlug(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
 };
 
 class SolidSlugDescriptor : public ProjectileDescriptor {  // base: base ctor call

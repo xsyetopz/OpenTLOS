@@ -506,7 +506,7 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
 #endif
 
 void FuryFXElectricity::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk180 = -1.0f;
     this->unk184 = 0.0f;
     this->unk90 = 0;

@@ -421,7 +421,6 @@ void ClusterBomb::SpawnClusterBomb(const MKVector3 &arg0, const MKVector3 &arg1)
 
 #if 0 // DRAFT: type mismatch
 void ClusterBomb::Deinit() {
-    MKHeap *temp_r3_692;
     MKVector3 **var_r31_666;
     MKVector3 **var_r3_667;
     MKVector3 **var_r4_665;
@@ -453,9 +452,8 @@ loop_9:
             var_r4_665 += 4;
             goto loop_9;
         }
-        temp_r3_692 = ((MKHeap *) var_r3_667)->Current();
-        if (temp_r3_692 != NULL) {
-            ((MKHeap *) (temp_r3_692->Current()))->Free(var_r31_666, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_666, NULL, 0);
         } else {
             free(var_r31_666);
         }
@@ -475,7 +473,6 @@ void *ClusterBomb::Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ClusterBomb::Init() {
-    MKHeap *temp_r3_751;
     MKVector3 **temp_r3_773;
     MKVector3 **temp_r4_779;
     MKVector3 **var_r3_758;
@@ -483,9 +480,8 @@ void ClusterBomb::Init() {
     s32 var_ctr_771;
 
     MKProp::Init();
-    temp_r3_751 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_751 != NULL) {
-        var_r3_758 = ((MKHeap *) (temp_r3_751->Current()))->Alloc(0x210, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_758 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0);
     } else {
         var_r3_758 = malloc(0x210);
     }

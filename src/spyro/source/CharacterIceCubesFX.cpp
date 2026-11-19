@@ -85,23 +85,19 @@ void CharacterIceCubesFX::Reset() {
     this->unk21 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterIceCubesFX::Deinit() {
-    MKHeap *temp_r3_100;
     void *temp_r31_97;
 
     temp_r31_97 = this->unk14;
     if (temp_r31_97 != NULL) {
-        temp_r3_100 = MKHeap::Current();
-        if (temp_r3_100 != NULL) {
-            ((MKHeap *) (temp_r3_100->Current()))->Free(temp_r31_97, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_97, NULL, 0);
         } else {
             free(temp_r31_97);
         }
     }
     CharacterBodyFX::Deinit();
 }
-#endif
 
 void CharacterIceCubesFX::Draw() {
 
@@ -232,8 +228,6 @@ loop_18:
 
 #if 0 // DRAFT: illegal type
 void CharacterIceCubesFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
-    CharacterBodyFXData *temp_r3_401;
-    MKHeap *temp_r3_404;
     s32 temp_r31_403;
     s32 var_r4_417;
     s32 var_r6_420;
@@ -244,11 +238,9 @@ void CharacterIceCubesFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBF
         return;
     }
     CharacterBodyFX::InitData(arg0, arg1, arg2);
-    temp_r3_401 = this->unk8;
-    temp_r31_403 = temp_r3_401->unk4 * 4;
-    temp_r3_404 = ((MKHeap *) temp_r3_401)->Current();
-    if (temp_r3_404 != NULL) {
-        var_r3_411 = ((MKHeap *) (temp_r3_404->Current()))->Alloc(temp_r31_403, NULL, 0);
+    temp_r31_403 = this->unk8->unk4 * 4;
+    if (MKHeap::Current() != NULL) {
+        var_r3_411 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_403, NULL, 0);
     } else {
         var_r3_411 = malloc(temp_r31_403);
     }

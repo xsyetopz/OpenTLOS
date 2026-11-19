@@ -1074,7 +1074,6 @@ void EarthBossGoal_AttackPhase3::Activate() {
 
 void EarthBossGoal_AttackPhase3::Deinit() {
     Goal<EarthBoss> *temp_r3_2047;
-    MKHeap *temp_r3_2057;
     void *temp_r31_2054;
 
     temp_r3_2047 = this->unk28;
@@ -1082,9 +1081,8 @@ void EarthBossGoal_AttackPhase3::Deinit() {
     operator delete(this->unk28);
     temp_r31_2054 = this->unk1C;
     if (temp_r31_2054 != NULL) {
-        temp_r3_2057 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2057 != NULL) {
-            ((MKHeap *) (temp_r3_2057->Current()))->Free(temp_r31_2054, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2054, NULL, 0);
         } else {
             free(temp_r31_2054);
         }
@@ -1101,7 +1099,6 @@ void EarthBossGoal_AttackPhase3::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void EarthBossGoal_AttackPhase3::Init(EarthBoss *arg0) {
     Goal<EarthBoss> *temp_r4_2151;
-    MKHeap *temp_r3_2124;
     void *var_r3_2131;
 
     if ((u8) this->unk9 == 0) {
@@ -1117,9 +1114,8 @@ void EarthBossGoal_AttackPhase3::Init(EarthBoss *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_2124 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2124 != NULL) {
-            var_r3_2131 = ((MKHeap *) (temp_r3_2124->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2131 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_2131 = malloc(8);
         }
@@ -1214,7 +1210,6 @@ void EarthBossGoal_AttackPhase2::Activate() {
 
 void EarthBossGoal_AttackPhase2::Deinit() {
     Goal<EarthBoss> *temp_r3_2357;
-    MKHeap *temp_r3_2367;
     void *temp_r31_2364;
 
     temp_r3_2357 = this->unk28;
@@ -1222,9 +1217,8 @@ void EarthBossGoal_AttackPhase2::Deinit() {
     operator delete(this->unk28);
     temp_r31_2364 = this->unk1C;
     if (temp_r31_2364 != NULL) {
-        temp_r3_2367 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2367 != NULL) {
-            ((MKHeap *) (temp_r3_2367->Current()))->Free(temp_r31_2364, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2364, NULL, 0);
         } else {
             free(temp_r31_2364);
         }
@@ -1241,7 +1235,6 @@ void EarthBossGoal_AttackPhase2::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void EarthBossGoal_AttackPhase2::Init(EarthBoss *arg0) {
     Goal<EarthBoss> *temp_r4_2461;
-    MKHeap *temp_r3_2434;
     void *var_r3_2441;
 
     if ((u8) this->unk9 == 0) {
@@ -1257,9 +1250,8 @@ void EarthBossGoal_AttackPhase2::Init(EarthBoss *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_2434 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2434 != NULL) {
-            var_r3_2441 = ((MKHeap *) (temp_r3_2434->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2441 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_2441 = malloc(8);
         }
@@ -1547,7 +1539,6 @@ void EarthBossGoal_AttackPhase1::Deinit() {
     Goal<EarthBoss> *temp_r3_3014;
     Goal<EarthBoss> *temp_r3_3019;
     Goal<EarthBoss> *temp_r3_3024;
-    MKHeap *temp_r3_3042;
     void *temp_r31_3039;
 
     temp_r3_3004 = this->unk28;
@@ -1567,9 +1558,8 @@ void EarthBossGoal_AttackPhase1::Deinit() {
     operator delete(this->unk38);
     temp_r31_3039 = this->unk1C;
     if (temp_r31_3039 != NULL) {
-        temp_r3_3042 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3042 != NULL) {
-            ((MKHeap *) (temp_r3_3042->Current()))->Free(temp_r31_3039, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3039, NULL, 0);
         } else {
             free(temp_r31_3039);
         }
@@ -1590,7 +1580,6 @@ void EarthBossGoal_AttackPhase1::Init(EarthBoss *arg0) {
     Goal<EarthBoss> *temp_r4_3238;
     Goal<EarthBoss> *temp_r4_3249;
     Goal<EarthBoss> *temp_r4_3260;
-    MKHeap *temp_r3_3189;
     void *var_r3_3196;
 
     if ((u8) this->unk9 == 0) {
@@ -1646,9 +1635,8 @@ void EarthBossGoal_AttackPhase1::Init(EarthBoss *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3189 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3189 != NULL) {
-            var_r3_3196 = ((MKHeap *) (temp_r3_3189->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3196 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_3196 = malloc(8);
         }
@@ -2043,7 +2031,6 @@ void EarthBossGoal_Think::Deinit() {
     Goal<EarthBoss> *temp_r3_4019;
     Goal<EarthBoss> *temp_r3_4024;
     Goal<EarthBoss> *temp_r3_4044;
-    MKHeap *temp_r3_4068;
     void **temp_r3_4029;
     void **temp_r3_4034;
     void **temp_r3_4039;
@@ -2075,9 +2062,8 @@ void EarthBossGoal_Think::Deinit() {
     operator delete(this->unk30);
     temp_r31_4065 = this->unk1C;
     if (temp_r31_4065 != NULL) {
-        temp_r3_4068 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4068 != NULL) {
-            ((MKHeap *) (temp_r3_4068->Current()))->Free(temp_r31_4065, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4065, NULL, 0);
         } else {
             free(temp_r31_4065);
         }
@@ -2096,7 +2082,6 @@ void EarthBossGoal_Think::Deinit() {
 void EarthBossGoal_Think::Init(EarthBoss *arg0) {
     Goal<EarthBoss> *temp_r4_4340;
     Goal<EarthBoss> *temp_r4_4377;
-    MKHeap *temp_r3_4313;
     void **temp_r4_4366;
     void *var_r3_4320;
 
@@ -2208,9 +2193,8 @@ void EarthBossGoal_Think::Init(EarthBoss *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_4313 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4313 != NULL) {
-            var_r3_4320 = ((MKHeap *) (temp_r3_4313->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_4320 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_4320 = malloc(8);
         }

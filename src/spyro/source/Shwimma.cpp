@@ -28,16 +28,13 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShwimmaCritter::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -45,7 +42,6 @@ void ShwimmaCritter::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void ShwimmaCritter::Draw() {
     Matrix sp10;
@@ -669,15 +665,13 @@ loop_2:
 #endif
 
 s32 ShwimmaCritter::LoadDone() {
-    MKHeap *temp_r3_1149;
     s32 temp_r31_1148;
     void *var_r3_1156;
 
     Critters::LoadDone();
     temp_r31_1148 = this->unk90 * 0x90;
-    temp_r3_1149 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1149 != NULL) {
-        var_r3_1156 = ((MKHeap *) (temp_r3_1149->Current()))->Alloc(temp_r31_1148, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1156 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1148, NULL, 0);
     } else {
         var_r3_1156 = malloc(temp_r31_1148);
     }

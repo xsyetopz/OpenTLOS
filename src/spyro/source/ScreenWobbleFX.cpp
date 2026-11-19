@@ -180,7 +180,6 @@ loop_2:
 #endif
 
 void ScreenWobbleFX::Deinit() {
-    MKHeap *temp_r3_291;
     MKMaterial *temp_r3_269;
     MKMaterial *temp_r3_276;
     MKMaterial *temp_r3_283;
@@ -202,9 +201,8 @@ void ScreenWobbleFX::Deinit() {
         this->unk1C = NULL;
     }
     temp_r31_290 = this->unk0;
-    temp_r3_291 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_291 != NULL) {
-        ((MKHeap *) (temp_r3_291->Current()))->Free(temp_r31_290, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_290, NULL, 0);
     } else {
         free(temp_r31_290);
     }
@@ -651,7 +649,7 @@ void ScreenWobbleFX::EnableScreenFlash(const MKVector4 &arg0, float arg1) {
     this->unk6C = arg1;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ScreenWobbleFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -659,12 +657,10 @@ void ScreenWobbleFX::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1050;
     void *var_r3_1057;
 
-    temp_r3_1050 = MKHeap::Current();
-    if (temp_r3_1050 != NULL) {
-        var_r3_1057 = ((MKHeap *) (temp_r3_1050->Current()))->Alloc(0x3138, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1057 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x3138, NULL, 0);
     } else {
         var_r3_1057 = malloc(0x3138);
     }

@@ -16,8 +16,8 @@
 #include "common/Source/MKWind.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(s32);                                /* extern */
+M2C_UNK free(M2C_UNK *);                            /* extern */
+M2C_UNK *malloc(s32);                               /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 static Points<FogPointInfo> fog;
 #if 0 // DRAFT: identifier 'wind' redeclared
@@ -130,12 +130,11 @@ void WindPoints_Blend(const WindPointInfo &arg0, const WindPointInfo &arg1, floa
 
 #if 0 // DRAFT: undefined identifier 'unk10'
 void WindPoints_Deinit() {
-    MKHeap *temp_r0_722;
-    MKHeap *temp_r0_741;
-    MKHeap *temp_r3_744;
-    MKHeap *var_r30_718;
-    MKHeap *var_r3_719;
-    MKHeap *var_r4_717;
+    M2C_UNK *temp_r0_722;
+    M2C_UNK *temp_r0_741;
+    M2C_UNK *var_r30_718;
+    M2C_UNK *var_r3_719;
+    M2C_UNK *var_r4_717;
     u32 temp_r0_727;
 
     if ((u8) wind.unk10 != 0) {
@@ -146,7 +145,7 @@ loop_4:
         temp_r0_727 = M2C_FIELD(var_r3_719, u32 *, -4);
         var_r3_719 -= 4;
         if (temp_r0_727 != 0U) {
-            temp_r0_722 = var_r3_719->unk0;
+            temp_r0_722 = *var_r3_719;
             if (temp_r0_722 < var_r30_718) {
                 var_r30_718 = temp_r0_722;
             }
@@ -154,7 +153,7 @@ loop_4:
         }
         if (var_r3_719 != &gEmptyPtrListDL) {
 loop_10:
-            temp_r0_741 = var_r4_717->unk0;
+            temp_r0_741 = *var_r4_717;
             if (temp_r0_741 != NULL) {
                 if (temp_r0_741 < var_r30_718) {
                     var_r30_718 = temp_r0_741;
@@ -162,9 +161,8 @@ loop_10:
                 var_r4_717 += 4;
                 goto loop_10;
             }
-            temp_r3_744 = var_r3_719->Current();
-            if (temp_r3_744 != NULL) {
-                ((MKHeap *) (temp_r3_744->Current()))->Free(var_r30_718, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(var_r30_718, NULL, 0);
             } else {
                 free(var_r30_718);
             }
@@ -184,14 +182,12 @@ void WindPoints_Init(const char *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char' to
 void WindPoints_DeinitModule() {
-    MKHeap *temp_r31_1042;
-    MKHeap *temp_r3_1045;
+    M2C_UNK *temp_r31_1042;
 
     temp_r31_1042 = wind.unk0;
     if (temp_r31_1042 != NULL) {
-        temp_r3_1045 = ((MKHeap *) &wind)->Current();
-        if (temp_r3_1045 != NULL) {
-            ((MKHeap *) (temp_r3_1045->Current()))->Free(temp_r31_1042, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1042, NULL, 0);
         } else {
             free(temp_r31_1042);
         }
@@ -202,14 +198,12 @@ void WindPoints_DeinitModule() {
 
 #if 0 // DRAFT: undefined identifier 'unk4'
 void WindPoints_InitModule() {
-    MKHeap *temp_r3_1081;
-    MKHeap *var_r3_1088;
+    M2C_UNK *var_r3_1088;
 
     wind.unk4 = 0x14;
     wind.unk8 = 0x2710;
-    temp_r3_1081 = ((MKHeap *) &wind)->Current();
-    if (temp_r3_1081 != NULL) {
-        var_r3_1088 = ((MKHeap *) (temp_r3_1081->Current()))->Alloc(0x640, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1088 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0);
     } else {
         var_r3_1088 = malloc(0x640);
     }
@@ -275,12 +269,11 @@ FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1,
 
 #if 0 // DRAFT: undefined identifier 'unk10'
 void FogPoints_Deinit() {
-    MKHeap *temp_r0_1778;
-    MKHeap *temp_r0_1797;
-    MKHeap *temp_r3_1800;
-    MKHeap *var_r30_1774;
-    MKHeap *var_r3_1775;
-    MKHeap *var_r4_1773;
+    M2C_UNK *temp_r0_1778;
+    M2C_UNK *temp_r0_1797;
+    M2C_UNK *var_r30_1774;
+    M2C_UNK *var_r3_1775;
+    M2C_UNK *var_r4_1773;
     u32 temp_r0_1783;
 
     if ((u8) fog.unk10 != 0) {
@@ -291,7 +284,7 @@ loop_4:
         temp_r0_1783 = M2C_FIELD(var_r3_1775, u32 *, -4);
         var_r3_1775 -= 4;
         if (temp_r0_1783 != 0U) {
-            temp_r0_1778 = var_r3_1775->unk0;
+            temp_r0_1778 = *var_r3_1775;
             if (temp_r0_1778 < var_r30_1774) {
                 var_r30_1774 = temp_r0_1778;
             }
@@ -299,7 +292,7 @@ loop_4:
         }
         if (var_r3_1775 != &gEmptyPtrListDL) {
 loop_10:
-            temp_r0_1797 = var_r4_1773->unk0;
+            temp_r0_1797 = *var_r4_1773;
             if (temp_r0_1797 != NULL) {
                 if (temp_r0_1797 < var_r30_1774) {
                     var_r30_1774 = temp_r0_1797;
@@ -307,9 +300,8 @@ loop_10:
                 var_r4_1773 += 4;
                 goto loop_10;
             }
-            temp_r3_1800 = var_r3_1775->Current();
-            if (temp_r3_1800 != NULL) {
-                ((MKHeap *) (temp_r3_1800->Current()))->Free(var_r30_1774, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1774, NULL, 0);
             } else {
                 free(var_r30_1774);
             }
@@ -327,14 +319,12 @@ void FogPoints_Init(const char *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'unk0'
 void FogPoints_DeinitModule() {
-    MKHeap *temp_r31_2107;
-    MKHeap *temp_r3_2110;
+    M2C_UNK *temp_r31_2107;
 
     temp_r31_2107 = fog.unk0;
     if (temp_r31_2107 != NULL) {
-        temp_r3_2110 = ((MKHeap *) &fog)->Current();
-        if (temp_r3_2110 != NULL) {
-            ((MKHeap *) (temp_r3_2110->Current()))->Free(temp_r31_2107, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2107, NULL, 0);
         } else {
             free(temp_r31_2107);
         }
@@ -345,14 +335,12 @@ void FogPoints_DeinitModule() {
 
 #if 0 // DRAFT: undefined identifier 'unk4'
 void FogPoints_InitModule() {
-    MKHeap *temp_r3_2146;
-    MKHeap *var_r3_2153;
+    M2C_UNK *var_r3_2153;
 
     fog.unk4 = 0x14;
     fog.unk8 = 0x2710;
-    temp_r3_2146 = ((MKHeap *) &fog)->Current();
-    if (temp_r3_2146 != NULL) {
-        var_r3_2153 = ((MKHeap *) (temp_r3_2146->Current()))->Alloc(0x640, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2153 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x640, NULL, 0);
     } else {
         var_r3_2153 = malloc(0x640);
     }

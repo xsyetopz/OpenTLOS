@@ -30,16 +30,13 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void SwampFlicker::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -47,7 +44,6 @@ void SwampFlicker::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlicker::Draw() {
@@ -346,7 +342,6 @@ s32 SwampFlicker::LoadDone() {
     f32 sp14;
     f32 sp10;
     f32 sp8;
-    MKHeap *temp_r3_503;
     Matrix *temp_r30_536;
     f32 temp_f1_672;
     f32 var_f3_746;
@@ -366,9 +361,8 @@ s32 SwampFlicker::LoadDone() {
 
     Critters::LoadDone();
     temp_r27_502 = this->unk90 * 0x70;
-    temp_r3_503 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_503 != NULL) {
-        var_r3_510 = ((MKHeap *) (temp_r3_503->Current()))->Alloc(temp_r27_502, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_510 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_502, NULL, 0);
     } else {
         var_r3_510 = malloc(temp_r27_502);
     }

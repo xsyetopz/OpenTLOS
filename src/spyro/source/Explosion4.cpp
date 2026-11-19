@@ -1430,7 +1430,6 @@ loop_44:
 
 #if 0 // DRAFT: type mismatch
 void Explosion4::Deinit() {
-    MKHeap *temp_r3_2275;
     ManagedLight *temp_r4_2254;
     u32 *temp_r31_2271;
     u32 *temp_r3_2266;
@@ -1446,9 +1445,8 @@ void Explosion4::Deinit() {
     } while ((u32) *temp_r3_2266 != 0);
     temp_r31_2271 = this->unk98;
     if (temp_r31_2271 != &gEmptyPtrList) {
-        temp_r3_2275 = ((MKHeap *) temp_r3_2266)->Current();
-        if (temp_r3_2275 != NULL) {
-            ((MKHeap *) (temp_r3_2275->Current()))->Free(temp_r31_2271, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2271, NULL, 0);
         } else {
             free(temp_r31_2271);
         }
@@ -2067,9 +2065,8 @@ s32 Explosion4::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Explosion4::Init() {
-    MKHeap *temp_r3_3240;
     s32 var_ctr_3260;
     u32 *temp_r3_3262;
     u32 *temp_r3_3267;
@@ -2083,9 +2080,8 @@ void Explosion4::Init() {
     this->unk8C = 0;
     this->unk94 = 1;
     this->unk9C = 1500.0f;
-    temp_r3_3240 = NULL->Current();
-    if (temp_r3_3240 != NULL) {
-        var_r3_3247 = ((MKHeap *) (temp_r3_3240->Current()))->Alloc(0x30, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3247 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0);
     } else {
         var_r3_3247 = malloc(0x30);
     }

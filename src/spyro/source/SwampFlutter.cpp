@@ -26,16 +26,13 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void SwampFlutterCritter::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -43,7 +40,6 @@ void SwampFlutterCritter::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void SwampFlutterCritter::Draw() {
     Matrix sp10;
@@ -359,15 +355,13 @@ loop_2:
 #endif
 
 s32 SwampFlutterCritter::LoadDone() {
-    MKHeap *temp_r3_644;
     s32 temp_r31_643;
     void *var_r3_651;
 
     Critters::LoadDone();
     temp_r31_643 = this->unk90 << 7;
-    temp_r3_644 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_644 != NULL) {
-        var_r3_651 = ((MKHeap *) (temp_r3_644->Current()))->Alloc(temp_r31_643, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_651 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_643, NULL, 0);
     } else {
         var_r3_651 = malloc(temp_r31_643);
     }

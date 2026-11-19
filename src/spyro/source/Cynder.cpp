@@ -3282,16 +3282,13 @@ void Cynder::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CynderDescriptor::Deinit() {
-    MKHeap *temp_r3_6130;
     u16 *temp_r31_6127;
 
     temp_r31_6127 = this->unk28C;
     if (temp_r31_6127 != NULL) {
-        temp_r3_6130 = MKHeap::Current();
-        if (temp_r3_6130 != NULL) {
-            ((MKHeap *) (temp_r3_6130->Current()))->Free(temp_r31_6127, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_6127, NULL, 0);
         } else {
             free(temp_r31_6127);
         }
@@ -3299,19 +3296,17 @@ void CynderDescriptor::Deinit() {
     }
     EnemyDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal operand
 void CynderDescriptor::LoadDone() {
-    MKHeap *temp_r3_6178;
-    MKHeap *var_r3_6169;
     s32 temp_r0_6172;
     s32 var_ctr_6170;
+    s32 var_r3_6169;
     u16 *var_r3_6185;
 
     EnemyDescriptor::LoadDone();
     this->unk270 = 0xFFFF;
-    var_r3_6169 = NULL;
+    var_r3_6169 = 0;
     var_ctr_6170 = 7;
     do {
         temp_r0_6172 = var_r3_6169 + 0x2D4;
@@ -3319,9 +3314,8 @@ void CynderDescriptor::LoadDone() {
         *(this + temp_r0_6172) = *(this + temp_r0_6172) / 100.0f;
         var_ctr_6170 -= 1;
     } while (var_ctr_6170 != 0);
-    temp_r3_6178 = var_r3_6169->Current();
-    if (temp_r3_6178 != NULL) {
-        var_r3_6185 = ((MKHeap *) (temp_r3_6178->Current()))->Alloc(4, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_6185 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
     } else {
         var_r3_6185 = malloc(4);
     }

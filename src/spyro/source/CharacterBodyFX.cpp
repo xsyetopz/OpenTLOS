@@ -147,7 +147,6 @@ void CharacterBodyFXManager::Deinit() {
     CharacterBodyFX **temp_r0_290;
     CharacterBodyFX **temp_r3_254;
     CharacterBodyFX *temp_r3_242;
-    MKHeap *temp_r3_293;
     u32 temp_r0_276;
 
     var_r31_239 = this->unk0;
@@ -192,9 +191,8 @@ loop_16:
             var_r4_263 += 4;
             goto loop_16;
         }
-        temp_r3_293 = ((MKHeap *) var_r3_268)->Current();
-        if (temp_r3_293 != NULL) {
-            ((MKHeap *) (temp_r3_293->Current()))->Free(var_r31_267, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_267, NULL, 0);
         } else {
             free(var_r31_267);
         }
@@ -239,18 +237,16 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterBodyFXManager::Init() {
     CharacterBodyFX ***temp_r3_405;
     CharacterBodyFX ***temp_r3_411;
     CharacterBodyFX ***var_r3_390;
     CharacterBodyFX ***var_r5_399;
-    MKHeap *temp_r3_383;
     s32 var_ctr_403;
 
-    temp_r3_383 = MKHeap::Current();
-    if (temp_r3_383 != NULL) {
-        var_r3_390 = ((MKHeap *) (temp_r3_383->Current()))->Alloc(0x648, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_390 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x648, NULL, 0);
     } else {
         var_r3_390 = malloc(0x648);
     }
@@ -298,23 +294,19 @@ void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterBodyFX::Deinit() {
-    MKHeap *temp_r3_489;
     s32 temp_r31_483;
 
     temp_r31_483 = this->unk4;
     if (((u32) temp_r31_483 != 0U) && ((u8) this->unk11 == 0)) {
-        temp_r3_489 = MKHeap::Current();
-        if (temp_r3_489 != NULL) {
-            ((MKHeap *) (temp_r3_489->Current()))->Free((void *) temp_r31_483, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_483, NULL, 0);
         } else {
             free((CharacterBodyFX ***) temp_r31_483);
         }
     }
     this->unk4 = 0;
 }
-#endif
 
 void CharacterBodyFX::Draw() {
 
@@ -419,9 +411,7 @@ loop_10:
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFX ***var_r3_736;
-    CharacterBodyFXData *temp_r3_726;
     CharacterBodyFXData *temp_r3_771;
-    MKHeap *temp_r3_729;
     s32 temp_r28_728;
     s32 temp_r3_762;
     s32 var_r27_746;
@@ -437,11 +427,9 @@ void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNod
     this->unk8 = arg0;
     if (arg2 == NULL) {
         this->unk11 = 0;
-        temp_r3_726 = this->unk8;
-        temp_r28_728 = temp_r3_726->unk4 * 0x70;
-        temp_r3_729 = ((MKHeap *) temp_r3_726)->Current();
-        if (temp_r3_729 != NULL) {
-            var_r3_736 = ((MKHeap *) (temp_r3_729->Current()))->Alloc(temp_r28_728, NULL, 0);
+        temp_r28_728 = this->unk8->unk4 * 0x70;
+        if (MKHeap::Current() != NULL) {
+            var_r3_736 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_728, NULL, 0);
         } else {
             var_r3_736 = malloc(temp_r28_728);
         }

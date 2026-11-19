@@ -93,18 +93,16 @@ loop_7:
 
 #if 0 // DRAFT: illegal operand
 void MKStringCache::Optimise() {
-    MKHeap *temp_r3_162;
-    MKHeap *temp_r3_164;
+    MKHeap *temp_r31_163;
     void *var_r3_172;
 
-    temp_r3_162 = GetUsedLength();
-    temp_r3_164 = temp_r3_162->Current();
-    if (temp_r3_164 != NULL) {
-        var_r3_172 = ((MKHeap *) (temp_r3_164->Current()))->ReAlloc(this, (s32) (temp_r3_162 + 2), NULL, 0);
+    temp_r31_163 = GetUsedLength();
+    if (MKHeap::Current() != NULL) {
+        var_r3_172 = ((MKHeap *) (MKHeap::Current()))->ReAlloc(this, (s32) (temp_r31_163 + 2), NULL, 0);
     } else {
-        var_r3_172 = realloc(this, temp_r3_162 + 2);
+        var_r3_172 = realloc(this, temp_r31_163 + 2);
     }
-    M2C_FIELD((((u8 *) var_r3_172) + temp_r3_162), s8 *, 1) = 0;
+    M2C_FIELD((((u8 *) var_r3_172) + temp_r31_163), s8 *, 1) = 0;
 }
 #endif
 
@@ -115,27 +113,22 @@ void MKStringCache::Init(int arg0) {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'free'
 void MKStringCache::Destroy() {
-    MKHeap *temp_r3_221;
-
-    temp_r3_221 = MKHeap::Current();
-    if (temp_r3_221 != NULL) {
-        ((MKHeap *) (temp_r3_221->Current()))->Free(this, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(this, NULL, 0);
         return;
     }
     free(this);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 MKStringCache *MKStringCache::Create(int arg0) {
-    MKHeap *temp_r3_249;
     MKStringCache *var_r31_257;
 
-    temp_r3_249 = MKHeap::Current();
-    if (temp_r3_249 != NULL) {
-        var_r31_257 = ((MKHeap *) (temp_r3_249->Current()))->Alloc((s32) this, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r31_257 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) this, NULL, 0);
     } else {
         var_r31_257 = malloc(this);
     }

@@ -36,7 +36,6 @@ u8 GlowingPropManager::AddProp(MKProp *arg0) {
 
 #if 0 // DRAFT: type mismatch
 void GlowingPropManager::Deinit() {
-    MKHeap *temp_r3_61;
     MKProp ***var_r31_35;
     MKProp ***var_r3_36;
     MKProp ***var_r4_34;
@@ -67,9 +66,8 @@ loop_9:
             var_r4_34 += 4;
             goto loop_9;
         }
-        temp_r3_61 = ((MKHeap *) var_r3_36)->Current();
-        if (temp_r3_61 != NULL) {
-            ((MKHeap *) (temp_r3_61->Current()))->Free(var_r31_35, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_35, NULL, 0);
         } else {
             free(var_r31_35);
         }
@@ -107,18 +105,16 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void GlowingPropManager::Init() {
-    MKHeap *temp_r3_133;
     MKProp ***temp_r3_155;
     MKProp ***temp_r3_161;
     MKProp ***var_r3_140;
     MKProp ***var_r5_149;
     s32 var_ctr_153;
 
-    temp_r3_133 = MKHeap::Current();
-    if (temp_r3_133 != NULL) {
-        var_r3_140 = ((MKHeap *) (temp_r3_133->Current()))->Alloc(0xA8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_140 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
     } else {
         var_r3_140 = malloc(0xA8);
     }

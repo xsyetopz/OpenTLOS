@@ -112,11 +112,10 @@ void UIProp::Reset() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIStringTable *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 UIProp::LoadDone() {
-    MKHeap *temp_r3_194;
-    MKHeap *temp_r3_199;
     UIObject *var_r31_207;
+    UIStringTable *temp_r30_196;
     s32 temp_r31_198;
     void **temp_r3_237;
     void **temp_r3_242;
@@ -124,11 +123,10 @@ s32 UIProp::LoadDone() {
 
     MKProp::LoadDone();
     this->unk58.Init(this->unk4C);
-    temp_r3_194 = UIStringTable_SetCurrent(&this->unk58);
+    temp_r30_196 = UIStringTable_SetCurrent(&this->unk58);
     temp_r31_198 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
-    temp_r3_199 = temp_r3_194->Current();
-    if (temp_r3_199 != NULL) {
-        var_r31_207 = ((MKHeap *) (temp_r3_199->Current()))->Alloc(temp_r31_198, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r31_207 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_198, NULL, 0);
     } else {
         var_r31_207 = malloc(temp_r31_198);
     }
@@ -144,7 +142,7 @@ s32 UIProp::LoadDone() {
         temp_r3_247 = this->unk54;
         M2C_FIELD(*temp_r3_247, M2C_UNK (**)(void **), 0x20)(temp_r3_247);
     }
-    UIStringTable_SetCurrent((UIStringTable *) temp_r3_194);
+    UIStringTable_SetCurrent(temp_r30_196);
 }
 #endif
 
@@ -161,7 +159,6 @@ s32 UIProp::LoadLine(MKIniLine *arg0) {
 #endif
 
 void UIProp::Deinit() {
-    MKHeap *temp_r3_328;
     UIStringTable *temp_r30_314;
     void **temp_r0_313;
     void **temp_r31_322;
@@ -171,9 +168,9 @@ void UIProp::Deinit() {
     if (temp_r0_313 != NULL) {
         M2C_FIELD(*temp_r0_313, M2C_UNK (**)(void **), 0x24)(temp_r0_313);
         temp_r31_322 = this->unk54;
-        temp_r3_328 = ((MKHeap *) (M2C_FIELD(*temp_r31_322, MKHeap *(**)(void **), 0xC)(temp_r31_322)))->Current();
-        if (temp_r3_328 != NULL) {
-            ((MKHeap *) (temp_r3_328->Current()))->Free(temp_r31_322, NULL, 0);
+        M2C_FIELD(*temp_r31_322, M2C_UNK (**)(void **), 0xC)(temp_r31_322);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_322, NULL, 0);
         } else {
             free(temp_r31_322);
         }

@@ -26,7 +26,7 @@ public:
     virtual void Message(MKMessage *);
     virtual void * GetStateInfo(void);
     virtual void GetState(void);
-    void PullUpDescendTransition(void);
+    static void PullUpDescendTransition(void);
     void PullUpDescendUpdate(void);
     void PullUpDescendEnter(void);
     s32 PullUpAscendTransition(void);

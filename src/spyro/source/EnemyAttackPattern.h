@@ -43,7 +43,7 @@ public:
     s32 Evaluate(Enemy *, AITargetData *, int *, int);
     void SetCurrentEAP(int);
     void SetDefaults(void);
-    void Deinit(void);
+    static void Deinit(void);
     void Init(EAPManagerDescriptor *);
     /* 0x000 */ EAPManagerDescriptor* unk0;
     /* 0x004 */ s32* unk4;

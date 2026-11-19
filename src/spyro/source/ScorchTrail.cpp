@@ -527,16 +527,13 @@ void ScorchTrail::AddNode(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: type mismatch
 void ScorchTrail::Deinit() {
     MKHeap *temp_r0_776;
     MKHeap *temp_r0_795;
     MKHeap *temp_r0_818;
     MKHeap *temp_r0_837;
     MKHeap *temp_r30_755;
-    MKHeap *temp_r3_756;
-    MKHeap *temp_r3_798;
-    MKHeap *temp_r3_840;
     MKHeap *var_r30_772;
     MKHeap *var_r30_814;
     MKHeap *var_r3_773;
@@ -547,9 +544,8 @@ void ScorchTrail::Deinit() {
     u32 temp_r0_823;
 
     temp_r30_755 = this->unk4C;
-    temp_r3_756 = MKHeap::Current();
-    if (temp_r3_756 != NULL) {
-        ((MKHeap *) (temp_r3_756->Current()))->Free(temp_r30_755, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_755, NULL, 0);
     } else {
         free(temp_r30_755);
     }
@@ -577,9 +573,8 @@ loop_12:
             var_r4_771 += 4;
             goto loop_12;
         }
-        temp_r3_798 = var_r3_773->Current();
-        if (temp_r3_798 != NULL) {
-            ((MKHeap *) (temp_r3_798->Current()))->Free(var_r30_772, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_772, NULL, 0);
         } else {
             free(var_r30_772);
         }
@@ -608,9 +603,8 @@ loop_25:
             var_r4_813 += 4;
             goto loop_25;
         }
-        temp_r3_840 = var_r3_815->Current();
-        if (temp_r3_840 != NULL) {
-            ((MKHeap *) (temp_r3_840->Current()))->Free(var_r30_814, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_814, NULL, 0);
         } else {
             free(var_r30_814);
         }
@@ -959,12 +953,8 @@ void *ScorchTrail::Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ScorchTrail::Init() {
-    MKHeap *temp_r3_1351;
-    MKHeap *temp_r3_1376;
-    MKHeap *temp_r3_1384;
     MKHeap *temp_r3_1406;
     MKHeap *temp_r3_1412;
-    MKHeap *temp_r3_1417;
     MKHeap *temp_r3_1439;
     MKHeap *temp_r3_1445;
     MKHeap *var_r3_1358;
@@ -972,7 +962,6 @@ void ScorchTrail::Init() {
     MKHeap *var_r3_1424;
     MKHeap *var_r5_1400;
     MKHeap *var_r5_1433;
-    s32 *temp_r3_1414;
     s32 temp_r0_1373;
     s32 temp_r3_1372;
     s32 var_ctr_1369;
@@ -981,9 +970,8 @@ void ScorchTrail::Init() {
     s32 var_r4_1364;
 
     MKProp::Init();
-    temp_r3_1351 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1351 != NULL) {
-        var_r3_1358 = ((MKHeap *) (temp_r3_1351->Current()))->Alloc(0x12C0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1358 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x12C0, NULL, 0);
     } else {
         var_r3_1358 = malloc(0x12C0);
     }
@@ -995,16 +983,14 @@ void ScorchTrail::Init() {
         temp_r0_1373 = var_r4_1364 + 0x20;
         var_r4_1364 += 0x30;
         *(this->unk4C + temp_r3_1372) = 0;
-        temp_r3_1376 = this->unk4C;
-        *(temp_r3_1376 + temp_r0_1373) = 0.0f;
+        *(this->unk4C + temp_r0_1373) = 0.0f;
         var_ctr_1369 -= 1;
     } while (var_ctr_1369 != 0);
     this->unk50 = 0;
     this->unk54 = 0;
     this->unk58 = 10.0f;
-    temp_r3_1384 = temp_r3_1376->Current();
-    if (temp_r3_1384 != NULL) {
-        var_r3_1391 = ((MKHeap *) (temp_r3_1384->Current()))->Alloc(0x418, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1391 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x418, NULL, 0);
     } else {
         var_r3_1391 = malloc(0x418);
     }
@@ -1021,12 +1007,10 @@ void ScorchTrail::Init() {
         var_ctr_1404 -= 1;
     } while (var_ctr_1404 != 0);
     temp_r3_1412 = M2C_FIELD(this, MKHeap **, 0x5C);
-    temp_r3_1414 = &temp_r3_1412->unk4;
-    M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) temp_r3_1414;
+    M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) &temp_r3_1412->unk4;
     temp_r3_1412->unk4 = 0;
-    temp_r3_1417 = ((MKHeap *) temp_r3_1414)->Current();
-    if (temp_r3_1417 != NULL) {
-        var_r3_1424 = ((MKHeap *) (temp_r3_1417->Current()))->Alloc(0x10C, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1424 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10C, NULL, 0);
     } else {
         var_r3_1424 = malloc(0x10C);
     }

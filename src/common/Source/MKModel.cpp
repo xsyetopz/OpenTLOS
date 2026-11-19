@@ -24,7 +24,7 @@
 #include <m2c_macros.h>
 
 s8 *malloc(s32);                                    /* extern */
-s8 *strcmpi(s8 *, s8 *);                            /* extern */
+s32 strcmpi(s8 *, s8 *);                            /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern MKClothManager gClothManager;
 extern MKDynamicBoneSystem gDynamicBones;
@@ -395,7 +395,8 @@ s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) 
     case 1:
         return *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x44), s32 *, 4) + (arg2 * 8));
     case 2:
-        return ((MKCloth *) (MKModel_GetClothSubObject(arg0, arg2)))->GetName();
+        MKModel_GetClothSubObject(arg0, arg2);
+        return MKCloth::GetName();
     case 0:
         return M2C_FIELD((M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6)), s8 **, 0x30);
     default:
@@ -595,7 +596,7 @@ block_36:
         default:
             return 0;
         }
-        if (strcmpi(*(M2C_FIELD(temp_r3_1337, s32 *, 0x50) + (var_r29_1317 + 0x30)), arg2) == NULL) {
+        if (strcmpi(*(M2C_FIELD(temp_r3_1337, s32 *, 0x50) + (var_r29_1317 + 0x30)), arg2) == 0) {
             if (arg3 != NULL) {
                 *arg3 = var_r27_1316;
             }
@@ -614,7 +615,7 @@ loop_21:
             if (var_r27_1347 >= (s32) M2C_FIELD(temp_r3_1367, s32 *, 8)) {
                 goto block_36;
             }
-            if (strcmpi(*(M2C_FIELD(temp_r3_1367, s32 *, 4) + var_r29_1348), arg2) == NULL) {
+            if (strcmpi(*(M2C_FIELD(temp_r3_1367, s32 *, 4) + var_r29_1348), arg2) == 0) {
                 if (arg3 != NULL) {
                     *arg3 = var_r27_1347;
                 }
@@ -800,7 +801,7 @@ loop_8:
     if (var_r29_1696 >= (s16) M2C_FIELD(temp_r3_1717, s16 *, 0xA)) {
         return 0;
     }
-    if (strcmpi(M2C_FIELD(*(M2C_FIELD(temp_r3_1717, s32 *, 0x58) + var_r31_1697), s8 **, 0x10), arg1) == NULL) {
+    if (strcmpi(M2C_FIELD(*(M2C_FIELD(temp_r3_1717, s32 *, 0x58) + var_r31_1697), s8 **, 0x10), arg1) == 0) {
         if (arg2 != NULL) {
             *arg2 = var_r29_1696;
         }
@@ -1446,15 +1447,6 @@ void MKModel_Destroy(MKModel *arg0) {
 void MKModel_SetupCloth(MKModel *arg0) {
     M2C_UNK sp8;
     MKCloth *temp_r31_2996;
-    MKCloth *temp_r3_2860;
-    MKHeap *temp_r3_3024;
-    MKHeap *temp_r3_3038;
-    MKHeap *temp_r3_3041;
-    MKHeap *temp_r3_3066;
-    MKHeap *temp_r3_3086;
-    MKHeap *temp_r3_3107;
-    MKHeap *temp_r5_3018;
-    MKHeap *var_r3_3002;
     ModelCloth *temp_r3_2937;
     s16 temp_r0_2812;
     s16 temp_r0_2895;
@@ -1466,6 +1458,7 @@ void MKModel_SetupCloth(MKModel *arg0) {
     s32 temp_r15_3040;
     s32 temp_r15_3105;
     s32 temp_r16_3135;
+    s32 temp_r3_2860;
     s32 temp_r3_2967;
     s32 temp_r3_3138;
     s32 var_r15_2832;
@@ -1487,6 +1480,7 @@ void MKModel_SetupCloth(MKModel *arg0) {
     s32 var_r29_2931;
     s32 var_r30_2932;
     s32 var_r3_2893;
+    s32 var_r3_3002;
     s32 var_r3_3168;
     s32 var_r4_2804;
     s32 var_r6_3001;
@@ -1504,6 +1498,7 @@ void MKModel_SetupCloth(MKModel *arg0) {
     void *temp_r4_2938;
     void *temp_r4_3169;
     void *temp_r5_3009;
+    void *temp_r5_3018;
 
     var_r4_2804 = 0;
     var_r22_2808 = 0;
@@ -1544,13 +1539,13 @@ loop_19:
                         temp_r3_2860 = MKModel_GetRefPointType(arg0, var_r15_2832);
                         switch (temp_r3_2860) {     /* switch 1; irregular */
                         case 3:                     /* switch 1 */
-                            M2C_FIELD(temp_r21_2849, s32 *, 8) = temp_r3_2860->AllocateCapsule();
+                            M2C_FIELD(temp_r21_2849, s32 *, 8) = MKCloth::AllocateCapsule();
                             break;
                         case 4:                     /* switch 1 */
-                            M2C_FIELD(temp_r21_2849, s32 *, 8) = temp_r3_2860->AllocatePlane();
+                            M2C_FIELD(temp_r21_2849, s32 *, 8) = MKCloth::AllocatePlane();
                             break;
                         default:                    /* switch 1 */
-                            M2C_FIELD(temp_r21_2849, s32 *, 8) = temp_r3_2860->AllocateSphere();
+                            M2C_FIELD(temp_r21_2849, s32 *, 8) = MKCloth::AllocateSphere();
                             break;
                         }
                     }
@@ -1630,43 +1625,39 @@ loop_83:
         if (var_r26_2988 < var_r23_2809) {
             temp_r31_2996 = arg0->unk84->unk8 + var_r25_2990;
             temp_r31_2996->unkC = arg0;
-            M2C_FIELD(temp_r31_2996, MKHeap **, 4) = (MKHeap *) (var_r22_2808 + var_r24_2989);
+            M2C_FIELD(temp_r31_2996, void **, 4) = (void *) (var_r22_2808 + var_r24_2989);
             temp_r31_2996->Init();
             var_r6_3001 = 0;
-            var_r3_3002 = NULL;
+            var_r3_3002 = 0;
 loop_43:
-            temp_r5_3018 = M2C_FIELD(temp_r31_2996, MKHeap **, 4);
-            if (var_r6_3001 < (s32) temp_r5_3018->unk18) {
+            temp_r5_3018 = M2C_FIELD(temp_r31_2996, void **, 4);
+            if (var_r6_3001 < (s32) M2C_FIELD(temp_r5_3018, s32 *, 0x18)) {
                 var_r6_3001 += 1;
-                temp_r5_3009 = temp_r5_3018->unk1C + var_r3_3002;
+                temp_r5_3009 = M2C_FIELD(temp_r5_3018, s32 *, 0x1C) + var_r3_3002;
                 var_r3_3002 += 0x10;
                 M2C_FIELD(temp_r5_3009, s32 *, 0) = (s32) *(M2C_FIELD(M2C_FIELD(temp_r31_2996->unkC->unk0, void **, 0x30), s32 *, 0x54) + (M2C_FIELD(temp_r5_3009, s32 *, 4) * 4));
                 goto loop_43;
             }
-            temp_r15_3023 = temp_r5_3018->unk0 * 0x38;
-            temp_r3_3024 = var_r3_3002->Current();
-            if (temp_r3_3024 != NULL) {
-                var_r3_3031 = ((MKHeap *) (temp_r3_3024->Current()))->Alloc(temp_r15_3023, NULL, 0);
+            temp_r15_3023 = M2C_FIELD(temp_r5_3018, s32 *, 0) * 0x38;
+            if (MKHeap::Current() != NULL) {
+                var_r3_3031 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3023, NULL, 0);
             } else {
                 var_r3_3031 = malloc(temp_r15_3023);
             }
             M2C_FIELD(temp_r31_2996, s8 **, 0) = var_r3_3031;
-            temp_r3_3038 = M2C_FIELD(temp_r31_2996, MKHeap **, 4);
-            temp_r15_3040 = temp_r3_3038->unk10 * 0xC;
-            temp_r3_3041 = temp_r3_3038->Current();
-            if (temp_r3_3041 != NULL) {
-                var_r3_3048 = ((MKHeap *) (temp_r3_3041->Current()))->Alloc(temp_r15_3040, NULL, 0);
+            temp_r15_3040 = M2C_FIELD(M2C_FIELD(temp_r31_2996, void **, 4), s32 *, 0x10) * 0xC;
+            if (MKHeap::Current() != NULL) {
+                var_r3_3048 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3040, NULL, 0);
             } else {
                 var_r3_3048 = malloc(temp_r15_3040);
             }
             temp_r31_2996->unk30 = var_r3_3048;
-            memcpy(temp_r31_2996->unk30, (void *) M2C_FIELD(temp_r31_2996, MKHeap **, 4)->unk14, (u32) temp_r15_3040);
+            memcpy(temp_r31_2996->unk30, M2C_FIELD(M2C_FIELD(temp_r31_2996, void **, 4), void **, 0x14), (u32) temp_r15_3040);
             temp_r31_2996->Create();
             if (var_r27_2928 != 0) {
                 if (var_r29_2931 != 0) {
-                    temp_r3_3066 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-                    if (temp_r3_3066 != NULL) {
-                        var_r3_3073 = ((MKHeap *) (temp_r3_3066->Current()))->Alloc(var_r29_2931 * 4, NULL, 0);
+                    if (MKHeap::Current() != NULL) {
+                        var_r3_3073 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_2931 * 4, NULL, 0);
                     } else {
                         var_r3_3073 = malloc(var_r29_2931 * 4);
                     }
@@ -1674,9 +1665,8 @@ loop_43:
                     temp_r31_2996->CreateInternalCollisionCapsules(var_r29_2931);
                 }
                 if (var_r30_2932 != 0) {
-                    temp_r3_3086 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-                    if (temp_r3_3086 != NULL) {
-                        var_r3_3093 = ((MKHeap *) (temp_r3_3086->Current()))->Alloc(var_r30_2932 * 4, NULL, 0);
+                    if (MKHeap::Current() != NULL) {
+                        var_r3_3093 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r30_2932 * 4, NULL, 0);
                     } else {
                         var_r3_3093 = malloc(var_r30_2932 * 4);
                     }
@@ -1685,9 +1675,8 @@ loop_43:
                 }
                 temp_r15_3105 = var_r27_2928 - (var_r29_2931 + var_r30_2932);
                 if (temp_r15_3105 != 0) {
-                    temp_r3_3107 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-                    if (temp_r3_3107 != NULL) {
-                        var_r3_3114 = ((MKHeap *) (temp_r3_3107->Current()))->Alloc(temp_r15_3105 * 4, NULL, 0);
+                    if (MKHeap::Current() != NULL) {
+                        var_r3_3114 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r15_3105 * 4, NULL, 0);
                     } else {
                         var_r3_3114 = malloc(temp_r15_3105 * 4);
                     }
@@ -2110,13 +2099,9 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+#if 0 // DRAFT: function call 'strcmpi(const char *, signed char *)' does not match
 MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW *arg3) {
     s8 *sp8;
-    MKHeap *temp_r3_3660;
-    MKHeap *temp_r3_3806;
-    MKHeap *temp_r3_3919;
-    MKHeap *var_r3_3655;
     MKModelSLW *var_r24_3803;
     s16 temp_r0_3861;
     s16 temp_r0_3891;
@@ -2135,12 +2120,12 @@ MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW
     s32 var_r26_3854;
     s32 var_r26_3865;
     s32 var_r28_3709;
+    s32 var_r3_3764;
     s32 var_r3_3864;
     s32 var_r3_3890;
     s32 var_r3_4051;
     s32 var_r5_3763;
     s32 var_r5_3946;
-    s8 *temp_r26_3632;
     s8 *temp_r3_3745;
     s8 *temp_r3_3964;
     s8 *temp_r3_4109;
@@ -2149,7 +2134,6 @@ MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW
     s8 *var_r25_3668;
     s8 *var_r27_3636;
     s8 *var_r30_3927;
-    s8 *var_r3_0;
     s8 *var_r3_3813;
     u16 *temp_r3_3883;
     u16 *temp_r3_3943;
@@ -2163,29 +2147,25 @@ MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW
     void *temp_r4_4011;
     void *temp_r5_4052;
 
-    var_r3_0 = arg0;
-    temp_r26_3632 = var_r3_0;
     var_r27_3636 = pTemplatesList;
 loop_2:
-    if ((var_r27_3636 != NULL) && ((var_r3_0 = strcmpi(temp_r26_3632, var_r27_3636), ((var_r3_0 == NULL) == 0)) || (var_r3_0 = ((MKResource *) var_r27_3636)->IsResourceAvailable(), (((u8) var_r3_0 == 0) != 0)))) {
+    if ((var_r27_3636 != NULL) && ((strcmpi(arg0, var_r27_3636) != 0) || (((MKResource *) var_r27_3636)->IsResourceAvailable() == 0))) {
         var_r27_3636 = M2C_FIELD(var_r27_3636, s8 **, 0x3C);
         goto loop_2;
     }
     if (var_r27_3636 != NULL) {
-        var_r3_3655 = M2C_FIELD(var_r27_3636, MKHeap **, 0x24);
-        M2C_FIELD(var_r27_3636, MKHeap **, 0x24) = (MKHeap *) (var_r3_3655 + 1);
+        M2C_FIELD(var_r27_3636, s32 *, 0x24) = (s32) (M2C_FIELD(var_r27_3636, s32 *, 0x24) + 1);
     } else {
-        temp_r3_3660 = ((MKHeap *) var_r3_0)->Current();
-        if (temp_r3_3660 != NULL) {
-            var_r25_3668 = ((MKHeap *) (temp_r3_3660->Current()))->Alloc(0x4C, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r25_3668 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4C, NULL, 0);
         } else {
             var_r25_3668 = malloc(0x4C);
         }
         var_r27_3636 = var_r25_3668;
-        temp_ret_3689 = MKArchive_Load(Str_Printf("%s.mdl", temp_r26_3632, M2C_BITWISE(f32, memset(var_r25_3668, 0, 0x4CU))), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
+        temp_ret_3689 = MKArchive_Load(Str_Printf("%s.mdl", arg0, M2C_BITWISE(f32, memset(var_r25_3668, 0, 0x4CU))), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
         M2C_FIELD(var_r25_3668, s8 **, 0x30) = temp_ret_3689;
-        M2C_FIELD(M2C_FIELD(var_r25_3668, s8 **, 0x30), s8 **, 0x6C) = MKArchive_Load(Str_Printf("%s.mdg", temp_r26_3632, M2C_BITWISE(f32, temp_ret_3689)), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
-        strcpy(var_r25_3668, temp_r26_3632);
+        M2C_FIELD(M2C_FIELD(var_r25_3668, s8 **, 0x30), s8 **, 0x6C) = MKArchive_Load(Str_Printf("%s.mdg", arg0, M2C_BITWISE(f32, temp_ret_3689)), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
+        strcpy(var_r25_3668, arg0);
         ((MKModelTemplateData *) M2C_FIELD(var_r25_3668, s8 **, 0x30))->UnpackTemplatePointers(0U);
         var_r28_3709 = 0;
         var_r25_3710 = 0;
@@ -2196,7 +2176,7 @@ loop_16:
             sp8 = NULL;
             if ((u8) M2C_FIELD(var_r27_3636, u8 *, 0x48) == 0) {
                 MKMaterial_GetEffectType(*(M2C_FIELD(M2C_FIELD(var_r27_3636, s8 **, 0x30), s32 *, 0x54) + var_r25_3710), &sp8);
-                if ((strcmpi() == NULL) && (MKGrass_GetGrassTypeId(sp8) >= 0)) {
+                if ((strcmpi() == 0) && (MKGrass_GetGrassTypeId(sp8) >= 0)) {
                     M2C_FIELD(var_r27_3636, u8 *, 0x48) = 1U;
                 }
             }
@@ -2213,20 +2193,20 @@ loop_16:
         }
         pTemplatesList = var_r27_3636;
         var_r5_3763 = 0;
-        var_r3_3655 = NULL;
+        var_r3_3764 = 0;
 loop_26:
         temp_r4_3794 = M2C_FIELD(var_r27_3636, s8 **, 0x30);
         if (var_r5_3763 < (s16) M2C_FIELD(temp_r4_3794, s16 *, 0xA)) {
-            temp_r4_3769 = M2C_FIELD(*(M2C_FIELD(temp_r4_3794, s32 *, 0x58) + var_r3_3655), void **, 0x10);
+            temp_r4_3769 = M2C_FIELD(*(M2C_FIELD(temp_r4_3794, s32 *, 0x58) + var_r3_3764), void **, 0x10);
             temp_r0_3770 = M2C_FIELD(temp_r4_3769, u8 *, 0);
             if ((((s8) temp_r0_3770 == 0x62) || ((s8) temp_r0_3770 == 0x42)) && ((s32) M2C_FIELD(temp_r4_3769, u8 *, 1) == 0x5F)) {
                 M2C_FIELD(var_r27_3636, s32 *, 0x34) = (s32) (M2C_FIELD(var_r27_3636, s32 *, 0x34) + 1);
                 if ((u32) M2C_FIELD(var_r27_3636, u32 *, 0x38) == 0U) {
-                    M2C_FIELD(var_r27_3636, u32 *, 0x38) = (u32) (M2C_FIELD(M2C_FIELD(var_r27_3636, s8 **, 0x30), s32 *, 0x58) + var_r3_3655);
+                    M2C_FIELD(var_r27_3636, u32 *, 0x38) = (u32) (M2C_FIELD(M2C_FIELD(var_r27_3636, s8 **, 0x30), s32 *, 0x58) + var_r3_3764);
                 }
             }
             var_r5_3763 += 1;
-            var_r3_3655 += 4;
+            var_r3_3764 += 4;
             goto loop_26;
         }
     }
@@ -2235,9 +2215,8 @@ loop_26:
         if (arg3 != NULL) {
             var_r24_3803 = arg3;
         } else {
-            temp_r3_3806 = var_r3_3655->Current();
-            if (temp_r3_3806 != NULL) {
-                var_r3_3813 = ((MKHeap *) (temp_r3_3806->Current()))->Alloc(0x10, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_3813 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
             } else {
                 var_r3_3813 = malloc(0x10);
             }
@@ -2310,14 +2289,12 @@ block_50:
     }
     var_r23_3909 = 0;
     if (var_r28_3897 != NULL) {
-        var_r3_3890 = var_r26_3865 + 0xF;
-        temp_r26_3913 = var_r3_3890 & 0xFFFFFFF0;
+        temp_r26_3913 = (var_r26_3865 + 0xF) & 0xFFFFFFF0;
         var_r23_3909 = temp_r26_3913;
         var_r26_3865 = (M2C_FIELD(var_r28_3897, s32 *, 8) << 8) + temp_r26_3913 + 0x40;
     }
-    temp_r3_3919 = ((MKHeap *) var_r3_3890)->Current();
-    if (temp_r3_3919 != NULL) {
-        var_r30_3927 = ((MKHeap *) (temp_r3_3919->Current()))->Alloc(var_r26_3865, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r30_3927 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r26_3865, NULL, 0);
     } else {
         var_r30_3927 = malloc(var_r26_3865);
     }

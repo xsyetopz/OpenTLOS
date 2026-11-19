@@ -325,7 +325,6 @@ void PlatformObject::UpdateTilt() {
 #endif
 
 void PlatformObject::EndUpdate() {
-    MKHeap *temp_r3_541;
     s32 temp_r31_525;
     void *temp_r31_538;
 
@@ -337,9 +336,8 @@ void PlatformObject::EndUpdate() {
     UpdateAttached();
     temp_r31_538 = this->unk3C;
     if (temp_r31_538 != NULL) {
-        temp_r3_541 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_541 != NULL) {
-            ((MKHeap *) (temp_r3_541->Main()))->TFree(temp_r31_538, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Main()))->TFree(temp_r31_538, NULL, 0);
         } else {
             free(temp_r31_538);
         }
@@ -359,7 +357,6 @@ void PlatformObject::BeginUpdate() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKHeap *temp_r3_581;
     Platform *temp_r3_635;
     PlatformAttachment *var_r27_626;
     f32 temp_f1_707;
@@ -369,7 +366,6 @@ void PlatformObject::BeginUpdate() {
     s32 temp_r0_576;
     s32 temp_r0_641;
     s32 temp_r29_580;
-    s32 temp_r3_579;
     s32 var_r28_616;
     s32 var_r30_618;
     void *temp_r3_613;
@@ -383,11 +379,9 @@ void PlatformObject::BeginUpdate() {
 
     temp_r0_576 = this->unk38;
     if (temp_r0_576 != 0) {
-        temp_r3_579 = temp_r0_576 * 0x10;
-        temp_r29_580 = temp_r3_579 + 0x70;
-        temp_r3_581 = ((MKHeap *) temp_r3_579)->Current();
-        if (temp_r3_581 != NULL) {
-            var_r3_589 = ((MKHeap *) (temp_r3_581->Main()))->TAlloc(temp_r29_580, NULL, 0, 0U);
+        temp_r29_580 = (temp_r0_576 * 0x10) + 0x70;
+        if (MKHeap::Current() != NULL) {
+            var_r3_589 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r29_580, NULL, 0, 0U);
         } else {
             var_r3_589 = malloc(temp_r29_580);
         }

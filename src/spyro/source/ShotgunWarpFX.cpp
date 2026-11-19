@@ -346,9 +346,6 @@ loop_23:
 #endif
 
 void ShotgunWarpFX::Deinit() {
-    MKHeap *temp_r3_598;
-    MKHeap *temp_r3_612;
-    MKHeap *temp_r3_626;
     void *temp_r31_597;
     void *temp_r31_611;
     void *temp_r31_625;
@@ -356,23 +353,20 @@ void ShotgunWarpFX::Deinit() {
     MKMaterial_Destroy(this->unk60);
     MKMaterial_Destroy(this->unk64);
     temp_r31_597 = this->unk0;
-    temp_r3_598 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_598 != NULL) {
-        ((MKHeap *) (temp_r3_598->Current()))->Free(temp_r31_597, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_597, NULL, 0);
     } else {
         free(temp_r31_597);
     }
     temp_r31_611 = this->unk4;
-    temp_r3_612 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_612 != NULL) {
-        ((MKHeap *) (temp_r3_612->Current()))->Free(temp_r31_611, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_611, NULL, 0);
     } else {
         free(temp_r31_611);
     }
     temp_r31_625 = this->unk8;
-    temp_r3_626 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_626 != NULL) {
-        ((MKHeap *) (temp_r3_626->Current()))->Free(temp_r31_625, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_625, NULL, 0);
         return;
     }
     free(temp_r31_625);
@@ -673,44 +667,32 @@ void ShotgunWarpFX::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1161;
-    MKHeap *temp_r3_1179;
-    MKHeap *temp_r3_1197;
     s32 temp_r30_1160;
     s32 temp_r30_1178;
     s32 temp_r30_1196;
-    s32 temp_r3_1157;
-    s32 temp_r3_1175;
-    s32 temp_r3_1193;
     void *var_r3_1168;
     void *var_r3_1186;
     void *var_r3_1204;
 
     this->unkC = 6;
     this->unk10 = 0x14;
-    temp_r3_1157 = this->unkC;
-    temp_r30_1160 = temp_r3_1157 * this->unk10 * 0x30;
-    temp_r3_1161 = ((MKHeap *) temp_r3_1157)->Current();
-    if (temp_r3_1161 != NULL) {
-        var_r3_1168 = ((MKHeap *) (temp_r3_1161->Current()))->Alloc(temp_r30_1160, NULL, 0);
+    temp_r30_1160 = this->unkC * this->unk10 * 0x30;
+    if (MKHeap::Current() != NULL) {
+        var_r3_1168 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1160, NULL, 0);
     } else {
         var_r3_1168 = malloc(temp_r30_1160);
     }
     this->unk0 = var_r3_1168;
-    temp_r3_1175 = this->unkC;
-    temp_r30_1178 = temp_r3_1175 * this->unk10 * 0x30;
-    temp_r3_1179 = ((MKHeap *) temp_r3_1175)->Current();
-    if (temp_r3_1179 != NULL) {
-        var_r3_1186 = ((MKHeap *) (temp_r3_1179->Current()))->Alloc(temp_r30_1178, NULL, 0);
+    temp_r30_1178 = this->unkC * this->unk10 * 0x30;
+    if (MKHeap::Current() != NULL) {
+        var_r3_1186 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1178, NULL, 0);
     } else {
         var_r3_1186 = malloc(temp_r30_1178);
     }
     this->unk4 = var_r3_1186;
-    temp_r3_1193 = this->unkC;
-    temp_r30_1196 = temp_r3_1193 * this->unk10 * 8;
-    temp_r3_1197 = ((MKHeap *) temp_r3_1193)->Current();
-    if (temp_r3_1197 != NULL) {
-        var_r3_1204 = ((MKHeap *) (temp_r3_1197->Current()))->Alloc(temp_r30_1196, NULL, 0);
+    temp_r30_1196 = this->unkC * this->unk10 * 8;
+    if (MKHeap::Current() != NULL) {
+        var_r3_1204 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1196, NULL, 0);
     } else {
         var_r3_1204 = malloc(temp_r30_1196);
     }

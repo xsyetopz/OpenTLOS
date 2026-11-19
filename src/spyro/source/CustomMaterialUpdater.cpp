@@ -82,20 +82,17 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CustomMaterialUpdateManager::Destroy(CustomMaterialUpdater *arg0) {
     CustomMaterialUpdater **temp_r31_134;
     CustomMaterialUpdater **temp_r3_158;
     CustomMaterialUpdater **var_r4_153;
     CustomMaterialUpdater *temp_r0_169;
     CustomMaterialUpdater *temp_r5_161;
-    MKHeap *temp_r3_137;
 
     temp_r31_134 = arg0->unk8;
     if (temp_r31_134 != NULL) {
-        temp_r3_137 = MKHeap::Current();
-        if (temp_r3_137 != NULL) {
-            ((MKHeap *) (temp_r3_137->Current()))->Free(temp_r31_134, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_134, NULL, 0);
         } else {
             free(temp_r31_134);
         }
@@ -118,9 +115,8 @@ loop_9:
     var_r4_153 += 4;
     goto loop_9;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int arg1) {
     f64 sp10;
     f64 sp8;
@@ -129,7 +125,6 @@ CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int
     CustomMaterialUpdater **temp_r6_194;
     CustomMaterialUpdater **var_r3_210;
     CustomMaterialUpdater *temp_r31_197;
-    MKHeap *temp_r3_203;
     f64 temp_f0_228;
     f64 temp_f1_227;
     void *temp_r3_226;
@@ -146,9 +141,8 @@ CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int
     if (arg1 != 0) {
 
     } else {
-        temp_r3_203 = MKHeap::Current();
-        if (temp_r3_203 != NULL) {
-            var_r3_210 = ((MKHeap *) (temp_r3_203->Current()))->Alloc(0x20, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_210 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0);
         } else {
             var_r3_210 = malloc(0x20);
         }
@@ -176,7 +170,6 @@ void CustomMaterialUpdateManager::Deinit() {
     CustomMaterialUpdater **var_r4_251;
     CustomMaterialUpdater *temp_r0_256;
     CustomMaterialUpdater *temp_r0_275;
-    MKHeap *temp_r3_278;
     u32 temp_r0_261;
 
     var_r4_251 = this->unk0;
@@ -202,9 +195,8 @@ loop_9:
             var_r4_251 += 4;
             goto loop_9;
         }
-        temp_r3_278 = ((MKHeap *) var_r3_253)->Current();
-        if (temp_r3_278 != NULL) {
-            ((MKHeap *) (temp_r3_278->Current()))->Free(var_r31_252, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_252, NULL, 0);
         } else {
             free(var_r31_252);
         }
@@ -233,18 +225,16 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CustomMaterialUpdateManager::Init() {
     CustomMaterialUpdater **temp_r3_364;
     CustomMaterialUpdater **temp_r3_370;
     CustomMaterialUpdater **var_r3_349;
     CustomMaterialUpdater **var_r5_358;
-    MKHeap *temp_r3_342;
     s32 var_ctr_362;
 
-    temp_r3_342 = MKHeap::Current();
-    if (temp_r3_342 != NULL) {
-        var_r3_349 = ((MKHeap *) (temp_r3_342->Current()))->Alloc(0x58, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_349 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
     } else {
         var_r3_349 = malloc(0x58);
     }

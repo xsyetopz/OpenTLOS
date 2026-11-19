@@ -941,15 +941,13 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
 #endif
 
 void CrashSparkPS::Deinit() {
-    MKHeap *temp_r3_1572;
     void *temp_r31_1569;
 
     MKProp::Deinit();
     temp_r31_1569 = this->unk4C;
     if (temp_r31_1569 != NULL) {
-        temp_r3_1572 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1572 != NULL) {
-            ((MKHeap *) (temp_r3_1572->Current()))->Free(temp_r31_1569, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1569, NULL, 0);
         } else {
             free(temp_r31_1569);
         }
@@ -959,16 +957,14 @@ void CrashSparkPS::Deinit() {
 
 #if 0 // DRAFT: illegal type
 void CrashSparkPS::Init() {
-    MKHeap *temp_r3_1604;
     s32 temp_r0_1624;
     s32 var_ctr_1621;
     s32 var_r4_1617;
     void *var_r3_1611;
 
     MKProp::Init();
-    temp_r3_1604 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1604 != NULL) {
-        var_r3_1611 = ((MKHeap *) (temp_r3_1604->Current()))->Alloc(0x3E80, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1611 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x3E80, NULL, 0);
     } else {
         var_r3_1611 = malloc(0x3E80);
     }

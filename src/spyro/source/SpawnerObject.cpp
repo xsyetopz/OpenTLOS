@@ -817,7 +817,6 @@ void SpawnerObject::AddSpawnPoint(SpawnPointObject *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::AddSpawnPointBegin(int arg0) {
-    MKHeap *temp_r3_1235;
     s32 temp_r30_1227;
     s32 var_ctr_1256;
     u32 *temp_r3_1260;
@@ -830,9 +829,8 @@ void SpawnerObject::AddSpawnPointBegin(int arg0) {
         if (temp_r30_1227 == 0) {
             this->unk44 = &gEmptyPtrList + 4;
         } else {
-            temp_r3_1235 = MKHeap::Current();
-            if (temp_r3_1235 != NULL) {
-                var_r3_1243 = ((MKHeap *) (temp_r3_1235->Current()))->Alloc((temp_r30_1227 + 2) * 4, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_1243 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_1227 + 2) * 4, NULL, 0);
             } else {
                 var_r3_1243 = malloc((temp_r30_1227 + 2) * 4);
             }
@@ -858,9 +856,6 @@ void SpawnerObject::AddSpawnPointBegin(int arg0) {
 
 #if 0 // DRAFT: pointer/array required
 void SpawnerObject::Deinit() {
-    MKHeap *temp_r3_1332;
-    MKHeap *temp_r3_1364;
-    MKHeap *temp_r3_1410;
     MKProp ***var_r30_1384;
     MKProp ***var_r3_1385;
     MKProp ***var_r4_1383;
@@ -910,9 +905,8 @@ loop_12:
             var_r4_1305 += 4;
             goto loop_12;
         }
-        temp_r3_1332 = ((MKHeap *) var_r3_1307)->Current();
-        if (temp_r3_1332 != NULL) {
-            ((MKHeap *) (temp_r3_1332->Current()))->Free((void *) var_r30_1306, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r30_1306, NULL, 0);
         } else {
             free((u32 *) var_r30_1306);
         }
@@ -926,9 +920,8 @@ loop_12:
         } while ((u32) *temp_r3_1355 != 0);
         temp_r30_1360 = this->unk44;
         if (temp_r30_1360 != &gEmptyPtrList) {
-            temp_r3_1364 = ((MKHeap *) temp_r3_1355)->Current();
-            if (temp_r3_1364 != NULL) {
-                ((MKHeap *) (temp_r3_1364->Current()))->Free(temp_r30_1360, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1360, NULL, 0);
             } else {
                 free(temp_r30_1360);
             }
@@ -959,9 +952,8 @@ loop_33:
                 var_r4_1383 += 4;
                 goto loop_33;
             }
-            temp_r3_1410 = ((MKHeap *) var_r3_1385)->Current();
-            if (temp_r3_1410 != NULL) {
-                ((MKHeap *) (temp_r3_1410->Current()))->Free(var_r30_1384, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1384, NULL, 0);
             } else {
                 free((u32 *) var_r30_1384);
             }
@@ -975,7 +967,6 @@ loop_33:
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::LoadDone(unsigned int arg0) {
-    MKHeap *temp_r3_1461;
     MKProp ***temp_r3_1484;
     MKProp ***temp_r3_1491;
     MKProp ***temp_r3_1498;
@@ -991,9 +982,8 @@ void SpawnerObject::LoadDone(unsigned int arg0) {
         this->unk48 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_1461 = ((MKHeap *)1U)->Current();
-    if (temp_r3_1461 != NULL) {
-        var_r3_1471 = ((MKHeap *) (temp_r3_1461->Current()))->Alloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1471 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC), NULL, 0);
     } else {
         var_r3_1471 = malloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC));
     }
@@ -1020,7 +1010,6 @@ void SpawnerObject::LoadDone(unsigned int arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
-    MKHeap *temp_r3_1537;
     MKProp ***temp_r3_1560;
     MKProp ***temp_r3_1567;
     MKProp ***temp_r3_1574;
@@ -1039,9 +1028,8 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
         this->unk48 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_1537 = ((MKHeap *)1U)->Current();
-    if (temp_r3_1537 != NULL) {
-        var_r3_1547 = ((MKHeap *) (temp_r3_1537->Current()))->Alloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1547 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC), NULL, 0);
     } else {
         var_r3_1547 = malloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC));
     }
@@ -1095,7 +1083,6 @@ block_14:
 
 #if 0 // DRAFT: identifier 'arg1' redeclared
 void SpawnerObject::Init(void (*arg1)(SpawnAction, int, MKProp **, SpawnerObject *), int arg1) {
-    MKHeap *temp_r3_1747;
     s32 temp_r3_1769;
     s32 temp_r4_1775;
     s32 var_ctr_1767;
@@ -1118,9 +1105,8 @@ void SpawnerObject::Init(void (*arg1)(SpawnAction, int, MKProp **, SpawnerObject
     this->unk3C.Init();
     this->unk40.Init();
     this->unk4 = NULL;
-    temp_r3_1747 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1747 != NULL) {
-        var_r3_1754 = ((MKHeap *) (temp_r3_1747->Current()))->Alloc(0x38, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1754 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x38, NULL, 0);
     } else {
         var_r3_1754 = malloc(0x38);
     }

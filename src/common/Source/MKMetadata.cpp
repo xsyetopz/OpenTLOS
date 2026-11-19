@@ -35,29 +35,23 @@ void *MKMetadata_Resolve(MKMetadata *arg0, int arg1, const char **arg2) {
 
 #if 0 // DRAFT: undefined identifier 'free'
 void MKMetadata_Close(MKMetadata *arg0) {
-    MKHeap *temp_r3_32;
-    MKHeap *temp_r3_46;
-    MKHeap *temp_r3_59;
     MKMetadata *temp_r31_31;
     MKMetadata *temp_r31_45;
 
     temp_r31_31 = arg0->unk0;
-    temp_r3_32 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_32 != NULL) {
-        ((MKHeap *) (temp_r3_32->Current()))->Free(temp_r31_31, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_31, NULL, 0);
     } else {
         free(temp_r31_31);
     }
     temp_r31_45 = arg0->unk4;
-    temp_r3_46 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_46 != NULL) {
-        ((MKHeap *) (temp_r3_46->Current()))->Free(temp_r31_45, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_45, NULL, 0);
     } else {
         free(temp_r31_45);
     }
-    temp_r3_59 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_59 != NULL) {
-        ((MKHeap *) (temp_r3_59->Current()))->Free(arg0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(arg0, NULL, 0);
         return;
     }
     free(arg0);
@@ -70,7 +64,6 @@ void MKMetadata_Open(const char *arg0, const char *arg1, int *arg2) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const void *' to
 void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
-    MKHeap *temp_r3_111;
     s32 temp_r0_134;
     s32 temp_r5_132;
     s32 var_r4_126;
@@ -88,9 +81,8 @@ void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     void *temp_r9_128;
     void *var_r3_118;
 
-    temp_r3_111 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_111 != NULL) {
-        var_r3_118 = ((MKHeap *) (temp_r3_111->Current()))->Alloc(8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_118 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
     } else {
         var_r3_118 = malloc(8);
     }

@@ -335,21 +335,17 @@ loop_2:
 void HeatDistortPS::Deinit() {
     MKHeap *temp_r31_436;
     MKHeap *temp_r31_450;
-    MKHeap *temp_r3_437;
-    MKHeap *temp_r3_451;
 
     MKMaterial_Destroy(this->unk0);
     temp_r31_436 = this->unk8;
-    temp_r3_437 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_437 != NULL) {
-        ((MKHeap *) (temp_r3_437->Current()))->Free(temp_r31_436, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_436, NULL, 0);
     } else {
         free(temp_r31_436);
     }
     temp_r31_450 = this->unk4;
-    temp_r3_451 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_451 != NULL) {
-        ((MKHeap *) (temp_r3_451->Current()))->Free(temp_r31_450, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_450, NULL, 0);
         return;
     }
     free(temp_r31_450);
@@ -591,8 +587,6 @@ void HeatDistortPS::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1010;
-    MKHeap *temp_r3_1024;
     MKHeap *var_r3_1017;
     MKHeap *var_r3_1031;
     MKResource *temp_r3_844;
@@ -669,16 +663,14 @@ void HeatDistortPS::Init() {
     this->unk54 = 0.0f;
     spE0 = (f64) sp50;
     this->unk58 = 0.0f;
-    temp_r3_1010 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1010 != NULL) {
-        var_r3_1017 = ((MKHeap *) (temp_r3_1010->Current()))->Alloc(0x2BC0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1017 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2BC0, NULL, 0);
     } else {
         var_r3_1017 = malloc(0x2BC0);
     }
     this->unk4 = var_r3_1017;
-    temp_r3_1024 = var_r3_1017->Current();
-    if (temp_r3_1024 != NULL) {
-        var_r3_1031 = ((MKHeap *) (temp_r3_1024->Current()))->Alloc(0x190, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1031 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
     } else {
         var_r3_1031 = malloc(0x190);
     }

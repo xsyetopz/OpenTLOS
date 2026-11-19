@@ -256,7 +256,6 @@ void FireBossDriverGoal_Think::Deinit() {
     FireBossDriverGoal_Charge *temp_r3_472;
     FireBossDriverGoal_Crash *temp_r3_477;
     Goal<Enemy> *temp_r3_467;
-    MKHeap *temp_r3_491;
     void *temp_r31_488;
 
     temp_r3_467 = this->unk24;
@@ -270,9 +269,8 @@ void FireBossDriverGoal_Think::Deinit() {
     operator delete(this->unk28);
     temp_r31_488 = this->unk1C;
     if (temp_r31_488 != NULL) {
-        temp_r3_491 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_491 != NULL) {
-            ((MKHeap *) (temp_r3_491->Current()))->Free(temp_r31_488, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_488, NULL, 0);
         } else {
             free(temp_r31_488);
         }
@@ -291,7 +289,6 @@ void FireBossDriverGoal_Think::Init(Enemy *arg0) {
     FireBossDriverGoal_Charge *temp_r4_640;
     FireBossDriverGoal_Crash *temp_r4_652;
     Goal<Enemy> *temp_r4_626;
-    MKHeap *temp_r3_599;
     void *var_r3_606;
 
     this->unk20 = arg0;
@@ -328,9 +325,8 @@ void FireBossDriverGoal_Think::Init(Enemy *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_599 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_599 != NULL) {
-            var_r3_606 = ((MKHeap *) (temp_r3_599->Current()))->Alloc(4, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_606 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
         } else {
             var_r3_606 = malloc(4);
         }

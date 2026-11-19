@@ -250,7 +250,7 @@ void Catapult::SetState(Catapult::State arg1) {
 #endif
 
 s32 Catapult::CanLoadBall() {
-    return this->unkF8.GetState() == 0;
+    return ((KDStateMachine<Catapult> *) (M2C_ERROR(/* Read from unset register $r3 */) + 0xF8))->GetState() == 0;
 }
 
 #if 0 // DRAFT: undefined identifier 'sp80'

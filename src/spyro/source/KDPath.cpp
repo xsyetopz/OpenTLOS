@@ -269,14 +269,12 @@ loop_10:
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPathManager::Deinit() {
-    MKHeap *temp_r3_553;
     void *temp_r31_550;
 
     temp_r31_550 = *KDPathManager::pPathLists;
     if (temp_r31_550 != NULL) {
-        temp_r3_553 = MKHeap::Current();
-        if (temp_r3_553 != NULL) {
-            ((MKHeap *) (temp_r3_553->Current()))->Free(temp_r31_550, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_550, NULL, 0);
         } else {
             free(temp_r31_550);
         }
@@ -288,7 +286,6 @@ void KDPathManager::Deinit() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDPathManager *' to
 void KDPathManager::Init(int arg0) {
-    MKHeap *temp_r3_585;
     s32 temp_r31_583;
     s32 var_r3_603;
     void *temp_r4_601;
@@ -297,9 +294,8 @@ void KDPathManager::Init(int arg0) {
 
     temp_r31_583 = (s32) this * 4;
     *KDPathManager::numTypes = this;
-    temp_r3_585 = MKHeap::Current();
-    if (temp_r3_585 != NULL) {
-        var_r3_592 = ((MKHeap *) (temp_r3_585->Current()))->Alloc(temp_r31_583, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_592 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_583, NULL, 0);
     } else {
         var_r3_592 = malloc(temp_r31_583);
     }
@@ -790,7 +786,6 @@ void KDPathSegment::LoadDone() {
     f32 sp18;
     f64 sp10;
     f32 sp8;
-    MKHeap *temp_r3_1579;
     f32 var_f5_1633;
     f64 temp_f0_1615;
     f64 temp_f1_1636;
@@ -813,9 +808,8 @@ void KDPathSegment::LoadDone() {
     if (temp_r3_1571 > 0) {
         if ((void *) this->unk24 == NULL) {
             temp_r30_1578 = temp_r3_1571 * this->unk1C;
-            temp_r3_1579 = ((MKHeap *) temp_r3_1571)->Current();
-            if (temp_r3_1579 != NULL) {
-                var_r3_1586 = ((MKHeap *) (temp_r3_1579->Current()))->Alloc(temp_r30_1578, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_1586 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1578, NULL, 0);
             } else {
                 var_r3_1586 = malloc(temp_r30_1578);
             }
@@ -882,10 +876,8 @@ loop_25:
 #endif
 
 void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
-    MKHeap *temp_r3_1731;
     s32 temp_r0_1753;
     s32 temp_r31_1730;
-    s32 temp_r3_1728;
     s32 var_r3_1746;
     s32 var_r6_1745;
     void *temp_r4_1750;
@@ -893,11 +885,9 @@ void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
     void *var_r3_1738;
 
     this->unk20 = arg1;
-    temp_r3_1728 = this->unk20;
-    temp_r31_1730 = temp_r3_1728 * this->unk1C;
-    temp_r3_1731 = ((MKHeap *) temp_r3_1728)->Current();
-    if (temp_r3_1731 != NULL) {
-        var_r3_1738 = ((MKHeap *) (temp_r3_1731->Current()))->Alloc(temp_r31_1730, NULL, 0);
+    temp_r31_1730 = this->unk20 * this->unk1C;
+    if (MKHeap::Current() != NULL) {
+        var_r3_1738 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1730, NULL, 0);
     } else {
         var_r3_1738 = malloc(temp_r31_1730);
     }
@@ -919,7 +909,6 @@ loop_5:
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
-    MKHeap *temp_r3_1796;
     MKIniLine *var_r29_1815;
     s32 temp_r30_1795;
     s32 temp_r3_1788;
@@ -933,9 +922,8 @@ u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
             return 1U;
         }
         temp_r30_1795 = temp_r3_1788 * this->unk1C;
-        temp_r3_1796 = ((MKHeap *) temp_r3_1788)->Current();
-        if (temp_r3_1796 != NULL) {
-            var_r3_1803 = ((MKHeap *) (temp_r3_1796->Current()))->Alloc(temp_r30_1795, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1803 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1795, NULL, 0);
         } else {
             var_r3_1803 = malloc(temp_r30_1795);
         }
@@ -975,24 +963,22 @@ void KDPathSegment::Deinit() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_1933;
-    MKHeap *var_r3_1915;
+    MKHeap *temp_r3_1915;
     s32 temp_r5_1922;
     void *temp_r31_1930;
 
-    var_r3_1915 = this->unk10;
-    if (var_r3_1915 != NULL) {
+    temp_r3_1915 = this->unk10;
+    if (temp_r3_1915 != NULL) {
         spC = 0;
         temp_r5_1922 = this->unk14;
         sp8 = 0xA1;
         sp10 = temp_r5_1922;
-        var_r3_1915 = M2C_FIELD(var_r3_1915->unk44, MKHeap *(**)(s32 *, s32), 0x2C)(&sp8, temp_r5_1922);
+        M2C_FIELD(temp_r3_1915->unk44, M2C_UNK (**)(s32 *, s32), 0x2C)(&sp8, temp_r5_1922);
     }
     temp_r31_1930 = this->unk24;
     if (temp_r31_1930 != NULL) {
-        temp_r3_1933 = var_r3_1915->Current();
-        if (temp_r3_1933 != NULL) {
-            ((MKHeap *) (temp_r3_1933->Current()))->Free(temp_r31_1930, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1930, NULL, 0);
         } else {
             free(temp_r31_1930);
         }

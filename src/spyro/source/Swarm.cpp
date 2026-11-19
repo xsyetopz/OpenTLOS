@@ -557,7 +557,6 @@ s32 SwarmProp::LoadDone() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_902;
     Matrix *temp_r3_867;
     SwarmEntity **temp_r3_925;
     SwarmEntity **temp_r3_932;
@@ -602,9 +601,8 @@ s32 SwarmProp::LoadDone() {
     if (temp_r31_890 == 0) {
         this->unkF4 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_902 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_902 != NULL) {
-            var_r3_912 = ((MKHeap *) (temp_r3_902->Current()))->Alloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6), NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_912 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6), NULL, 0);
         } else {
             var_r3_912 = malloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6));
         }
@@ -680,7 +678,6 @@ s32 SwarmProp::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: type mismatch
 void SwarmProp::Deinit() {
-    MKHeap *temp_r3_1084;
     SwarmEntity **var_r31_1058;
     SwarmEntity **var_r3_1059;
     SwarmEntity **var_r4_1057;
@@ -711,9 +708,8 @@ loop_9:
             var_r4_1057 += 4;
             goto loop_9;
         }
-        temp_r3_1084 = ((MKHeap *) var_r3_1059)->Current();
-        if (temp_r3_1084 != NULL) {
-            ((MKHeap *) (temp_r3_1084->Current()))->Free(var_r31_1058, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1058, NULL, 0);
         } else {
             free(var_r31_1058);
         }

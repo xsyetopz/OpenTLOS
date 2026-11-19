@@ -485,13 +485,11 @@ void MKWidget_Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKWidget_CreateMaterial() {
-    MKHeap *temp_r3_1061;
     s8 *temp_r31_1088;
     s8 *var_r3_1068;
 
-    temp_r3_1061 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1061 != NULL) {
-        var_r3_1068 = ((MKHeap *) (temp_r3_1061->Current()))->Alloc(0x1000, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1068 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1000, NULL, 0);
     } else {
         var_r3_1068 = malloc(0x1000);
     }

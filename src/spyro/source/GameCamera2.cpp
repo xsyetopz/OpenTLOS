@@ -1936,8 +1936,9 @@ void GameCamera2::PreCameraUpdate() {
 
     KDCamera::PreCameraUpdate();
     this->unk29C = 0;
+    ((GameData *) GameData::gameData)->GetCameraData();
     temp_r4_3756 = this->unk140;
-    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (((GameData *) GameData::gameData)->GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
+    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (CameraData::GetJumpWithTy() == 0) << 7) & 0x80);
     UpdateSnaps();
     EmuStatesUpdate();
     CenterBehindHeroUpdate();
@@ -2494,9 +2495,8 @@ s32 GameCamera2::LoadDone() {
 
 #if 0 // DRAFT: illegal type
 void GameCamera2::Deinit() {
-    MKHeap *temp_r0_4930;
-    MKHeap *temp_r3_4952;
     u32 temp_r0_4935;
+    void *temp_r0_4930;
     void *temp_r0_4949;
     void *var_r31_4926;
     void *var_r3_4927;
@@ -2509,7 +2509,7 @@ loop_3:
     temp_r0_4935 = M2C_FIELD(var_r3_4927, u32 *, -4);
     var_r3_4927 -= 4;
     if (temp_r0_4935 != 0U) {
-        temp_r0_4930 = var_r3_4927->unk0;
+        temp_r0_4930 = *var_r3_4927;
         if (temp_r0_4930 < var_r31_4926) {
             var_r31_4926 = temp_r0_4930;
         }
@@ -2525,9 +2525,8 @@ loop_9:
             var_r4_4925 += 4;
             goto loop_9;
         }
-        temp_r3_4952 = var_r3_4927->Current();
-        if (temp_r3_4952 != NULL) {
-            ((MKHeap *) (temp_r3_4952->Current()))->Free(var_r31_4926, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_4926, NULL, 0);
         } else {
             free(var_r31_4926);
         }
@@ -2546,8 +2545,6 @@ loop_9:
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void GameCamera2::Init() {
-    GameCamera2Descriptor *temp_r3_5023;
-    MKHeap *temp_r3_5032;
     s32 *temp_r3_5055;
     s32 temp_r30_5024;
     s32 temp_r3_5001;
@@ -2569,15 +2566,13 @@ void GameCamera2::Init() {
     operator new(0x10U, NULL, 0);
     this->unk26C = M2C_ERROR(/* Read from unset register $r3 */);
     this->unk26C->Init(this, *GameCamera2::pEmuStateDescriptors);
-    temp_r3_5023 = checked_cast<GameCamera2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r30_5024 = temp_r3_5023->unkB4;
+    temp_r30_5024 = checked_cast<GameCamera2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkB4;
     if (temp_r30_5024 == 0) {
         this->unk2A8 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_5032 = ((MKHeap *) temp_r3_5023)->Current();
-    if (temp_r3_5032 != NULL) {
-        var_r3_5042 = ((MKHeap *) (temp_r3_5032->Current()))->Alloc(((temp_r30_5024 + 2) * 4) + (temp_r30_5024 * 0x14), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_5042 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_5024 + 2) * 4) + (temp_r30_5024 * 0x14), NULL, 0);
     } else {
         var_r3_5042 = malloc(((temp_r30_5024 + 2) * 4) + (temp_r30_5024 * 0x14));
     }

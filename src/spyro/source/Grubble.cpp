@@ -29,16 +29,13 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: illegal use of non-static member
 void GrubbleCritter::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -46,7 +43,6 @@ void GrubbleCritter::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void GrubbleCritter::Draw() {
     Matrix sp10;
@@ -817,15 +813,13 @@ loop_2:
 #endif
 
 s32 GrubbleCritter::LoadDone() {
-    MKHeap *temp_r3_1177;
     s32 temp_r31_1176;
     void *var_r3_1184;
 
     Critters::LoadDone();
     temp_r31_1176 = this->unk90 * 0x70;
-    temp_r3_1177 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1177 != NULL) {
-        var_r3_1184 = ((MKHeap *) (temp_r3_1177->Current()))->Alloc(temp_r31_1176, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1184 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1176, NULL, 0);
     } else {
         var_r3_1184 = malloc(temp_r31_1176);
     }

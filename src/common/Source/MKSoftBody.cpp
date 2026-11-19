@@ -25,7 +25,7 @@ extern s32 MKSoftBody_showCollision;
 extern s32 MKSoftBody_showConstraints;
 extern M2C_UNK gEmptyPtrList;
 extern s32 gFrameCounter;
-extern MKHeap gMKDefaults;
+extern M2C_UNK gMKDefaults;
 extern M2C_UNK gRenderState;
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: identifier 'MKSoftBody_enableCloth' redeclared
@@ -1966,7 +1966,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 ClothNode **MKCloth::GetName() {
-    return M2C_FIELD(this, s32 *, 4) + 0x30;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 4) + 0x30;
 }
 #endif
 
@@ -2255,18 +2255,16 @@ void MKCloth::SetInternalCollisionCapsule(int arg0, const MKVector3 &arg1, const
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKCloth::CreateInternalCollisionCapsules(int arg0) {
-    MKHeap *temp_r3_3515;
     MKModel **temp_r5_3535;
     MKModel **var_r3_3522;
     s32 temp_r3_3536;
     s32 var_ctr_3531;
     s32 var_r4_3528;
 
-    temp_r3_3515 = MKHeap::Current();
-    if (temp_r3_3515 != NULL) {
-        var_r3_3522 = ((MKHeap *) (temp_r3_3515->Current()))->Alloc(arg0 * 0x50, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3522 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x50, NULL, 0);
     } else {
         var_r3_3522 = malloc(arg0 * 0x50);
     }
@@ -2294,18 +2292,16 @@ void MKCloth::SetInternalCollisionSphere(int arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r3_3558, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKCloth::CreateInternalCollisionSpheres(int arg0) {
-    MKHeap *temp_r3_3573;
     MKModel **temp_r5_3593;
     MKModel **var_r3_3580;
     s32 temp_r3_3594;
     s32 var_ctr_3589;
     s32 var_r4_3586;
 
-    temp_r3_3573 = MKHeap::Current();
-    if (temp_r3_3573 != NULL) {
-        var_r3_3580 = ((MKHeap *) (temp_r3_3573->Current()))->Alloc(arg0 * 0x18, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3580 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0);
     } else {
         var_r3_3580 = malloc(arg0 * 0x18);
     }
@@ -2341,18 +2337,16 @@ void MKCloth::SetInternalCollisionPlane(int arg0, const MKVector3 &arg1, const M
     M2C_FIELD((this->unkA8 + temp_r7_3613), f32 *, 0x20) = arg3;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKCloth::CreateInternalCollisionPlanes(int arg0) {
-    MKHeap *temp_r3_3654;
     MKModel **temp_r5_3674;
     MKModel **var_r3_3661;
     s32 temp_r3_3675;
     s32 var_ctr_3670;
     s32 var_r4_3667;
 
-    temp_r3_3654 = MKHeap::Current();
-    if (temp_r3_3654 != NULL) {
-        var_r3_3661 = ((MKHeap *) (temp_r3_3654->Current()))->Alloc(arg0 * 0x28, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3661 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x28, NULL, 0);
     } else {
         var_r3_3661 = malloc(arg0 * 0x28);
     }
@@ -3269,16 +3263,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKCloth::Deinit() {
-    MKHeap *temp_r3_5308;
-    MKHeap *temp_r3_5324;
-    MKHeap *temp_r3_5340;
-    MKHeap *temp_r3_5356;
-    MKHeap *temp_r3_5372;
-    MKHeap *temp_r3_5388;
-    MKHeap *temp_r3_5404;
-    MKHeap *temp_r3_5420;
     MKModel **temp_r31_5337;
     MKModel **temp_r31_5353;
     MKModel **temp_r31_5369;
@@ -3290,78 +3275,69 @@ void MKCloth::Deinit() {
 
     temp_r31_5305 = M2C_FIELD(this, s8 **, 0);
     if (temp_r31_5305 != NULL) {
-        temp_r3_5308 = MKHeap::Current();
-        if (temp_r3_5308 != NULL) {
-            ((MKHeap *) (temp_r3_5308->Current()))->Free(temp_r31_5305, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5305, NULL, 0);
         } else {
             free(temp_r31_5305);
         }
     }
     temp_r31_5321 = this->unk30;
     if (temp_r31_5321 != NULL) {
-        temp_r3_5324 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5324 != NULL) {
-            ((MKHeap *) (temp_r3_5324->Current()))->Free(temp_r31_5321, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5321, NULL, 0);
         } else {
             free(temp_r31_5321);
         }
     }
     temp_r31_5337 = this->unkA8;
     if (temp_r31_5337 != NULL) {
-        temp_r3_5340 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5340 != NULL) {
-            ((MKHeap *) (temp_r3_5340->Current()))->Free(temp_r31_5337, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5337, NULL, 0);
         } else {
             free((s8 *) temp_r31_5337);
         }
     }
     temp_r31_5353 = this->unkB4;
     if (temp_r31_5353 != NULL) {
-        temp_r3_5356 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5356 != NULL) {
-            ((MKHeap *) (temp_r3_5356->Current()))->Free(temp_r31_5353, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5353, NULL, 0);
         } else {
             free((s8 *) temp_r31_5353);
         }
     }
     temp_r31_5369 = this->unkC0;
     if (temp_r31_5369 != NULL) {
-        temp_r3_5372 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5372 != NULL) {
-            ((MKHeap *) (temp_r3_5372->Current()))->Free(temp_r31_5369, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5369, NULL, 0);
         } else {
             free((s8 *) temp_r31_5369);
         }
     }
     temp_r31_5385 = this->unkB8;
     if (temp_r31_5385 != NULL) {
-        temp_r3_5388 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5388 != NULL) {
-            ((MKHeap *) (temp_r3_5388->Current()))->Free(temp_r31_5385, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5385, NULL, 0);
         } else {
             free(temp_r31_5385);
         }
     }
     temp_r31_5401 = this->unkAC;
     if (temp_r31_5401 != NULL) {
-        temp_r3_5404 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5404 != NULL) {
-            ((MKHeap *) (temp_r3_5404->Current()))->Free(temp_r31_5401, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5401, NULL, 0);
         } else {
             free(temp_r31_5401);
         }
     }
     temp_r31_5417 = this->unkC4;
     if (temp_r31_5417 != NULL) {
-        temp_r3_5420 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5420 != NULL) {
-            ((MKHeap *) (temp_r3_5420->Current()))->Free(temp_r31_5417, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5417, NULL, 0);
             return;
         }
         free(temp_r31_5417);
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void MKCloth::Create() {
@@ -3767,7 +3743,6 @@ void MKClothManager::AddModel(MKModel *arg0) {
 
 #if 0 // DRAFT: type mismatch
 void MKClothManager::Deinit() {
-    MKHeap *temp_r3_6094;
     MKModel **temp_r31_6090;
     MKModel **temp_r3_6085;
 
@@ -3777,9 +3752,8 @@ void MKClothManager::Deinit() {
     } while ((MKModel *) *temp_r3_6085 != NULL);
     temp_r31_6090 = this->unk0;
     if (temp_r31_6090 != &gEmptyPtrList) {
-        temp_r3_6094 = ((MKHeap *) temp_r3_6085)->Current();
-        if (temp_r3_6094 != NULL) {
-            ((MKHeap *) (temp_r3_6094->Current()))->Free(temp_r31_6090, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_6090, NULL, 0);
         } else {
             free((s8 *) temp_r31_6090);
         }
@@ -3790,34 +3764,32 @@ void MKClothManager::Deinit() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKClothManager::Init() {
-    MKHeap *temp_r3_6134;
     MKModel **temp_r3_6159;
     MKModel **temp_r3_6165;
     MKModel **var_r3_6142;
-    f32 temp_r30_6126;
-    f32 var_ctr_6155;
+    s32 temp_r30_6126;
+    s32 var_ctr_6155;
 
-    temp_r30_6126 = gMKDefaults.unkA4;
-    if (M2C_BITWISE(s32, temp_r30_6126) == 0) {
+    temp_r30_6126 = M2C_FIELD(&gMKDefaults, s32 *, 0xA4);
+    if (temp_r30_6126 == 0) {
         this->unk0 = &gEmptyPtrList + 4;
         return;
     }
-    temp_r3_6134 = gMKDefaults.Current();
-    if (temp_r3_6134 != NULL) {
-        var_r3_6142 = ((MKHeap *) (temp_r3_6134->Current()))->Alloc((M2C_BITWISE(s32, temp_r30_6126) + 2) * 4, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_6142 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_6126 + 2) * 4, NULL, 0);
     } else {
-        var_r3_6142 = malloc((M2C_BITWISE(s32, temp_r30_6126) + 2) * 4);
+        var_r3_6142 = malloc((temp_r30_6126 + 2) * 4);
     }
     this->unk0 = var_r3_6142;
     M2C_FIELD(this->unk0, MKModel **, 0) = NULL;
     var_ctr_6155 = temp_r30_6126;
-    if (M2C_BITWISE(s32, temp_r30_6126) > 0) {
+    if (temp_r30_6126 > 0) {
         do {
             temp_r3_6159 = this->unk0;
             this->unk0 = temp_r3_6159 + 4;
             M2C_FIELD(temp_r3_6159, s32 *, 4) = 0xDEADBEEF;
-            var_ctr_6155 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_6155) - 1));
-        } while (M2C_BITWISE(s32, var_ctr_6155) != 0);
+            var_ctr_6155 -= 1;
+        } while (var_ctr_6155 != 0);
     }
     temp_r3_6165 = this->unk0;
     this->unk0 = temp_r3_6165 + 4;

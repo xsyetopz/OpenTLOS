@@ -84,7 +84,6 @@ void IceBossStomp::Deinit() {
     MKHeap *temp_r0_106;
     MKHeap *temp_r0_87;
     MKHeap *temp_r29_70;
-    MKHeap *temp_r3_109;
     MKHeap *var_r28_53;
     MKHeap *var_r30_83;
     MKHeap *var_r3_84;
@@ -142,9 +141,8 @@ loop_20:
             var_r4_79 += 4;
             goto loop_20;
         }
-        temp_r3_109 = var_r3_84->Current();
-        if (temp_r3_109 != NULL) {
-            ((MKHeap *) (temp_r3_109->Current()))->Free(var_r30_83, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_83, NULL, 0);
         } else {
             free(var_r30_83);
         }
@@ -1653,7 +1651,6 @@ s32 IceBossStomp::LoadDone() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_2508;
     MKHeap *temp_r3_2530;
     MKHeap *temp_r5_2536;
     MKHeap *var_r3_2515;
@@ -1683,9 +1680,8 @@ s32 IceBossStomp::LoadDone() {
     if (temp_r4_2501 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2501, 0U);
     }
-    temp_r3_2508 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2508 != NULL) {
-        var_r3_2515 = ((MKHeap *) (temp_r3_2508->Current()))->Alloc(0xA30, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2515 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA30, NULL, 0);
     } else {
         var_r3_2515 = malloc(0xA30);
     }

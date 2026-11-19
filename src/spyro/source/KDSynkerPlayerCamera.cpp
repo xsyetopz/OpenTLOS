@@ -901,7 +901,6 @@ loop_21:
 #endif
 
 void KDSP_Camera::Deinit() {
-    MKHeap *temp_r3_1990;
     MKIni *temp_r3_1978;
     u32 *temp_r31_1987;
 
@@ -918,9 +917,8 @@ void KDSP_Camera::Deinit() {
     }
     temp_r31_1987 = this->unk94;
     if ((u32) temp_r31_1987 != 0U) {
-        temp_r3_1990 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1990 != NULL) {
-            ((MKHeap *) (temp_r3_1990->Current()))->Free(temp_r31_1987, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1987, NULL, 0);
         } else {
             free(temp_r31_1987);
         }

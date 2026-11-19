@@ -784,16 +784,13 @@ void Tools_PropCreator::Init() {
     Tools_PropCreator_Name = NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void Tools_PropCreatorObject::Deinit() {
-    MKHeap *temp_r3_1397;
     void *temp_r31_1394;
 
     temp_r31_1394 = this->unk4;
     if (temp_r31_1394 != NULL) {
-        temp_r3_1397 = MKHeap::Current();
-        if (temp_r3_1397 != NULL) {
-            ((MKHeap *) (temp_r3_1397->Current()))->Free(temp_r31_1394, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1394, NULL, 0);
         } else {
             free(temp_r31_1394);
         }
@@ -801,11 +798,9 @@ void Tools_PropCreatorObject::Deinit() {
     }
     this->unk0 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Tools_PropCreatorObject::Init(const char *arg0, int arg1) {
-    MKHeap *temp_r3_1439;
     s32 temp_r0_1435;
     s32 temp_r31_1438;
     s32 var_r30_1453;
@@ -818,9 +813,8 @@ void Tools_PropCreatorObject::Init(const char *arg0, int arg1) {
     temp_r0_1435 = this->unk0;
     if (temp_r0_1435 != 0) {
         temp_r31_1438 = temp_r0_1435 * 4;
-        temp_r3_1439 = MKHeap::Current();
-        if (temp_r3_1439 != NULL) {
-            var_r3_1446 = ((MKHeap *) (temp_r3_1439->Current()))->Alloc(temp_r31_1438, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1446 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1438, NULL, 0);
         } else {
             var_r3_1446 = malloc(temp_r31_1438);
         }

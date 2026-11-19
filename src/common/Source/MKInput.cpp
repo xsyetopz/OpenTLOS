@@ -448,14 +448,12 @@ void MKInput_Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKInput_InitModule() {
-    MKHeap *temp_r3_817;
     MKInputReceiver **var_r3_824;
     s32 var_ctr_836;
 
     MKInput_InitModulePlatformSpecific();
-    temp_r3_817 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_817 != NULL) {
-        var_r3_824 = ((MKHeap *) (temp_r3_817->Current()))->Alloc(0xB0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_824 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xB0, NULL, 0);
     } else {
         var_r3_824 = malloc(0xB0);
     }

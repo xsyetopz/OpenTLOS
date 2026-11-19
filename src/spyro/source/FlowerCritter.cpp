@@ -31,16 +31,13 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void FlowerCritter::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -48,7 +45,6 @@ void FlowerCritter::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void FlowerCritter::Draw() {
     Matrix sp50;
@@ -429,7 +425,6 @@ s32 FlowerCritter::LoadDone() {
     f32 sp18;
     f32 sp10;
     f64 sp8;
-    MKHeap *temp_r3_631;
     Matrix *temp_r26_657;
     f64 temp_f0_771;
     f64 temp_f0_836;
@@ -441,9 +436,8 @@ s32 FlowerCritter::LoadDone() {
 
     Critters::LoadDone();
     temp_r28_630 = this->unk90 * 0x70;
-    temp_r3_631 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_631 != NULL) {
-        var_r3_638 = ((MKHeap *) (temp_r3_631->Current()))->Alloc(temp_r28_630, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_638 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_630, NULL, 0);
     } else {
         var_r3_638 = malloc(temp_r28_630);
     }

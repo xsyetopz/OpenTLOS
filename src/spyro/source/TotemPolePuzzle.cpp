@@ -42,22 +42,18 @@ void *malloc(s32);                                  /* extern */
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal use of non-static member
 void TotemPolePuzzle::Deinit() {
-    MKHeap *temp_r3_51;
     void *temp_r31_50;
 
     temp_r31_50 = this->unkC8;
-    temp_r3_51 = MKHeap::Current();
-    if (temp_r3_51 != NULL) {
-        ((MKHeap *) (temp_r3_51->Current()))->Free(temp_r31_50, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_50, NULL, 0);
     } else {
         free(temp_r31_50);
     }
     this->unkC8 = NULL;
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void *TotemPolePuzzle::Update() {
@@ -150,8 +146,6 @@ s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     s8 *sp10;
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_231;
-    MKIniLine *temp_r3_227;
     MKIniLine *var_r28_229;
     MKIniLine *var_r28_288;
     MKIniLine *var_r28_326;
@@ -174,12 +168,10 @@ s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
         this->unkE8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
         this->unkDC = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
         this->unkCC = arg0->GetNmbrOfSubLines();
-        temp_r3_227 = arg0->unkC->GetSubLine(arg0);
-        var_r28_229 = temp_r3_227;
+        var_r28_229 = arg0->unkC->GetSubLine(arg0);
         temp_r29_230 = this->unkCC * 4;
-        temp_r3_231 = ((MKHeap *) temp_r3_227)->Current();
-        if (temp_r3_231 != NULL) {
-            var_r3_238 = ((MKHeap *) (temp_r3_231->Current()))->Alloc(temp_r29_230, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_238 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_230, NULL, 0);
         } else {
             var_r3_238 = malloc(temp_r29_230);
         }

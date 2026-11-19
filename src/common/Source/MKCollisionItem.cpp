@@ -2526,7 +2526,6 @@ void MKCollisionModelItem::Init(MKCollisionModel *arg0, MKModel *arg1, int arg2,
 void MKCollisionItem::Deinit() {
     MKHeap *temp_r0_4449;
     MKHeap *temp_r0_4468;
-    MKHeap *temp_r3_4471;
     MKHeap *temp_r4_4441;
     MKHeap *var_r31_4445;
     MKHeap *var_r3_4446;
@@ -2566,9 +2565,8 @@ loop_12:
             var_r4_4444 += 4;
             goto loop_12;
         }
-        temp_r3_4471 = var_r3_4446->Current();
-        if (temp_r3_4471 != NULL) {
-            ((MKHeap *) (temp_r3_4471->Current()))->Free(var_r31_4445, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_4445, NULL, 0);
         } else {
             free(var_r31_4445);
         }
@@ -2580,7 +2578,6 @@ loop_12:
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, MKCollisionManager *arg3) {
     MKCollisionInfo *temp_r3_4508;
-    MKHeap *temp_r3_4520;
     MKHeap *temp_r3_4543;
     MKHeap *temp_r3_4550;
     MKHeap *temp_r3_4557;
@@ -2599,9 +2596,8 @@ void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, M
     if (arg1 == 0) {
         this->unk58 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_4520 = ((MKHeap *) temp_r3_4508)->Current();
-        if (temp_r3_4520 != NULL) {
-            var_r3_4530 = ((MKHeap *) (temp_r3_4520->Current()))->Alloc(((arg1 + 2) * 4) + (arg1 * 0xC), NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_4530 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 + 2) * 4) + (arg1 * 0xC), NULL, 0);
         } else {
             var_r3_4530 = malloc(((arg1 + 2) * 4) + (arg1 * 0xC));
         }

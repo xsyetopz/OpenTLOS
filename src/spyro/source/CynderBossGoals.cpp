@@ -568,7 +568,6 @@ void CynderBossGoal_HoverAttackMode::Deinit() {
     Goal<Cynder> *temp_r3_939;
     Goal<Cynder> *temp_r3_944;
     Goal<Cynder> *temp_r3_949;
-    MKHeap *temp_r3_965;
     void *temp_r31_962;
 
     temp_r3_934 = this->unk24;
@@ -585,9 +584,8 @@ void CynderBossGoal_HoverAttackMode::Deinit() {
     operator delete(this->unk30);
     temp_r31_962 = this->unk1C;
     if (temp_r31_962 != NULL) {
-        temp_r3_965 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_965 != NULL) {
-            ((MKHeap *) (temp_r3_965->Current()))->Free(temp_r31_962, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_962, NULL, 0);
         } else {
             free(temp_r31_962);
         }
@@ -607,7 +605,6 @@ void CynderBossGoal_HoverAttackMode::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_1130;
     Goal<Cynder> *temp_r4_1141;
     Goal<Cynder> *temp_r4_1152;
-    MKHeap *temp_r3_1092;
     void *var_r3_1099;
 
     if ((u8) this->unk9 == 0) {
@@ -653,9 +650,8 @@ void CynderBossGoal_HoverAttackMode::Init(Cynder *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1092 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1092 != NULL) {
-            var_r3_1099 = ((MKHeap *) (temp_r3_1092->Current()))->Alloc(0x18, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1099 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0);
         } else {
             var_r3_1099 = malloc(0x18);
         }
@@ -1066,7 +1062,6 @@ void CynderGoal_FlyingAttackMode::Deinit() {
     Goal<Cynder> *temp_r3_1981;
     Goal<Cynder> *temp_r3_1991;
     Goal<Cynder> *temp_r3_1996;
-    MKHeap *temp_r3_2016;
     void *temp_r31_2013;
 
     temp_r3_1971 = this->unk24;
@@ -1089,9 +1084,8 @@ void CynderGoal_FlyingAttackMode::Deinit() {
     operator delete(this->unk38);
     temp_r31_2013 = this->unk1C;
     if (temp_r31_2013 != NULL) {
-        temp_r3_2016 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2016 != NULL) {
-            ((MKHeap *) (temp_r3_2016->Current()))->Free(temp_r31_2013, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2013, NULL, 0);
         } else {
             free(temp_r31_2013);
         }
@@ -1113,7 +1107,6 @@ void CynderGoal_FlyingAttackMode::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_2232;
     Goal<Cynder> *temp_r4_2254;
     Goal<Cynder> *temp_r4_2265;
-    MKHeap *temp_r3_2183;
     void *var_r3_2190;
 
     if ((u8) this->unk9 == 0) {
@@ -1179,9 +1172,8 @@ void CynderGoal_FlyingAttackMode::Init(Cynder *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_2183 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2183 != NULL) {
-            var_r3_2190 = ((MKHeap *) (temp_r3_2183->Current()))->Alloc(0x18, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2190 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0);
         } else {
             var_r3_2190 = malloc(0x18);
         }
@@ -1510,7 +1502,6 @@ void CynderGoal_GroundAttackMode::Deinit() {
     Goal<Cynder> *temp_r3_2923;
     Goal<Cynder> *temp_r3_2928;
     Goal<Cynder> *temp_r3_2933;
-    MKHeap *temp_r3_2953;
     void **temp_r3_2913;
     void *temp_r31_2950;
 
@@ -1534,9 +1525,8 @@ void CynderGoal_GroundAttackMode::Deinit() {
     operator delete(this->unk34);
     temp_r31_2950 = this->unk1C;
     if (temp_r31_2950 != NULL) {
-        temp_r3_2953 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2953 != NULL) {
-            ((MKHeap *) (temp_r3_2953->Current()))->Free(temp_r31_2950, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2950, NULL, 0);
         } else {
             free(temp_r31_2950);
         }
@@ -1556,7 +1546,6 @@ void CynderGoal_GroundAttackMode::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_3179;
     Goal<Cynder> *temp_r4_3190;
     Goal<Cynder> *temp_r4_3201;
-    MKHeap *temp_r3_3127;
     void **temp_r4_3165;
     void *var_r3_3134;
 
@@ -1628,9 +1617,8 @@ void CynderGoal_GroundAttackMode::Init(Cynder *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3127 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3127 != NULL) {
-            var_r3_3134 = ((MKHeap *) (temp_r3_3127->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3134 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_3134 = malloc(0x14);
         }
@@ -1800,7 +1788,6 @@ void CynderBossGoal_FlyingInWait::Deinit() {
     Goal<Cynder> *temp_r3_3444;
     Goal<Cynder> *temp_r3_3449;
     Goal<Cynder> *temp_r3_3454;
-    MKHeap *temp_r3_3482;
     void **temp_r3_3459;
     void **temp_r3_3464;
     void *temp_r31_3479;
@@ -1822,9 +1809,8 @@ void CynderBossGoal_FlyingInWait::Deinit() {
     operator delete(this->unk30);
     temp_r31_3479 = this->unk1C;
     if (temp_r31_3479 != NULL) {
-        temp_r3_3482 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3482 != NULL) {
-            ((MKHeap *) (temp_r3_3482->Current()))->Free(temp_r31_3479, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3479, NULL, 0);
         } else {
             free(temp_r31_3479);
         }
@@ -1843,7 +1829,6 @@ void CynderBossGoal_FlyingInWait::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_3656;
     Goal<Cynder> *temp_r4_3667;
     Goal<Cynder> *temp_r4_3678;
-    MKHeap *temp_r3_3629;
     void **temp_r4_3689;
     void **temp_r4_3700;
     void *var_r3_3636;
@@ -1901,9 +1886,8 @@ void CynderBossGoal_FlyingInWait::Init(Cynder *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3629 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3629 != NULL) {
-            var_r3_3636 = ((MKHeap *) (temp_r3_3629->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3636 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_3636 = malloc(0x14);
         }
@@ -2603,7 +2587,6 @@ void CynderBossGoal_MoveToTarget::Deinit() {
     Goal<Cynder> *temp_r3_4920;
     Goal<Cynder> *temp_r3_4925;
     Goal<Cynder> *temp_r3_4930;
-    MKHeap *temp_r3_4948;
     void **temp_r3_4915;
     void *temp_r31_4945;
 
@@ -2624,9 +2607,8 @@ void CynderBossGoal_MoveToTarget::Deinit() {
     operator delete(this->unk34);
     temp_r31_4945 = this->unk1C;
     if (temp_r31_4945 != NULL) {
-        temp_r3_4948 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4948 != NULL) {
-            ((MKHeap *) (temp_r3_4948->Current()))->Free(temp_r31_4945, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4945, NULL, 0);
         } else {
             free(temp_r31_4945);
         }
@@ -2646,7 +2628,6 @@ void CynderBossGoal_MoveToTarget::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_5144;
     Goal<Cynder> *temp_r4_5155;
     Goal<Cynder> *temp_r4_5172;
-    MKHeap *temp_r3_5095;
     void **temp_r4_5133;
     void *var_r3_5102;
 
@@ -2703,9 +2684,8 @@ void CynderBossGoal_MoveToTarget::Init(Cynder *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_5095 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5095 != NULL) {
-            var_r3_5102 = ((MKHeap *) (temp_r3_5095->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_5102 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_5102 = malloc(0xC);
         }
@@ -2875,7 +2855,6 @@ void CynderBossGoal_TestMode::Deinit() {
     Goal<Cynder> *temp_r3_5484;
     Goal<Cynder> *temp_r3_5489;
     Goal<Cynder> *temp_r3_5494;
-    MKHeap *temp_r3_5526;
     void **temp_r3_5444;
     void **temp_r3_5449;
     void **temp_r3_5454;
@@ -2922,9 +2901,8 @@ void CynderBossGoal_TestMode::Deinit() {
     operator delete(this->unk4C);
     temp_r31_5523 = this->unk1C;
     if (temp_r31_5523 != NULL) {
-        temp_r3_5526 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5526 != NULL) {
-            ((MKHeap *) (temp_r3_5526->Current()))->Free(temp_r31_5523, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5523, NULL, 0);
         } else {
             free(temp_r31_5523);
         }
@@ -2946,7 +2924,6 @@ void CynderBossGoal_TestMode::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_5940;
     Goal<Cynder> *temp_r4_5951;
     Goal<Cynder> *temp_r4_5962;
-    MKHeap *temp_r3_5834;
     void **temp_r4_5872;
     void **temp_r4_5883;
     void **temp_r4_5900;
@@ -3090,9 +3067,8 @@ void CynderBossGoal_TestMode::Init(Cynder *arg0) {
         this->unk4C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_5834 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5834 != NULL) {
-            var_r3_5841 = ((MKHeap *) (temp_r3_5834->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_5841 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_5841 = malloc(0x14);
         }
@@ -4242,7 +4218,6 @@ void CynderBossGoal_AttackPhase3::Deinit() {
     Goal<Cynder> *temp_r3_7950;
     Goal<Cynder> *temp_r3_7955;
     Goal<Cynder> *temp_r3_7960;
-    MKHeap *temp_r3_7978;
     void **temp_r3_7933;
     void *temp_r31_7975;
 
@@ -4266,9 +4241,8 @@ void CynderBossGoal_AttackPhase3::Deinit() {
     operator delete(this->unk34);
     temp_r31_7975 = this->unk1C;
     if (temp_r31_7975 != NULL) {
-        temp_r3_7978 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_7978 != NULL) {
-            ((MKHeap *) (temp_r3_7978->Current()))->Free(temp_r31_7975, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_7975, NULL, 0);
         } else {
             free(temp_r31_7975);
         }
@@ -4288,7 +4262,6 @@ void CynderBossGoal_AttackPhase3::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_8201;
     Goal<Cynder> *temp_r4_8212;
     Goal<Cynder> *temp_r4_8223;
-    MKHeap *temp_r3_8152;
     void **temp_r4_8179;
     void *var_r3_8159;
 
@@ -4360,9 +4333,8 @@ void CynderBossGoal_AttackPhase3::Init(Cynder *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_8152 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_8152 != NULL) {
-            var_r3_8159 = ((MKHeap *) (temp_r3_8152->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_8159 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_8159 = malloc(0x14);
         }
@@ -4486,7 +4458,6 @@ void CynderBossGoal_AttackPhase2::Activate() {
 void CynderBossGoal_AttackPhase2::Deinit() {
     Goal<Cynder> *temp_r3_8418;
     Goal<Cynder> *temp_r3_8423;
-    MKHeap *temp_r3_8435;
     void *temp_r31_8432;
 
     temp_r3_8418 = this->unk24;
@@ -4497,9 +4468,8 @@ void CynderBossGoal_AttackPhase2::Deinit() {
     operator delete(this->unk28);
     temp_r31_8432 = this->unk1C;
     if (temp_r31_8432 != NULL) {
-        temp_r3_8435 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_8435 != NULL) {
-            ((MKHeap *) (temp_r3_8435->Current()))->Free(temp_r31_8432, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_8432, NULL, 0);
         } else {
             free(temp_r31_8432);
         }
@@ -4515,7 +4485,6 @@ void CynderBossGoal_AttackPhase2::Deinit() {
 
 #if 0 // DRAFT: pointer/array required
 void CynderBossGoal_AttackPhase2::Init(Cynder *arg0) {
-    MKHeap *temp_r3_8536;
     void *var_r3_8543;
 
     if ((u8) this->unk9 == 0) {
@@ -4551,9 +4520,8 @@ void CynderBossGoal_AttackPhase2::Init(Cynder *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_8536 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_8536 != NULL) {
-            var_r3_8543 = ((MKHeap *) (temp_r3_8536->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_8543 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_8543 = malloc(8);
         }
@@ -4625,7 +4593,6 @@ void CynderBossGoal_AttackPhase1::Activate() {
 void CynderBossGoal_AttackPhase1::Deinit() {
     Goal<Cynder> *temp_r3_8709;
     Goal<Cynder> *temp_r3_8716;
-    MKHeap *temp_r3_8726;
     void *temp_r31_8723;
 
     temp_r3_8709 = this->unk24;
@@ -4636,9 +4603,8 @@ void CynderBossGoal_AttackPhase1::Deinit() {
     operator delete(this->unk28);
     temp_r31_8723 = this->unk1C;
     if (temp_r31_8723 != NULL) {
-        temp_r3_8726 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_8726 != NULL) {
-            ((MKHeap *) (temp_r3_8726->Current()))->Free(temp_r31_8723, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_8723, NULL, 0);
         } else {
             free(temp_r31_8723);
         }
@@ -4654,7 +4620,6 @@ void CynderBossGoal_AttackPhase1::Deinit() {
 
 #if 0 // DRAFT: pointer/array required
 void CynderBossGoal_AttackPhase1::Init(Cynder *arg0) {
-    MKHeap *temp_r3_8827;
     void *var_r3_8834;
 
     if ((u8) this->unk9 == 0) {
@@ -4690,9 +4655,8 @@ void CynderBossGoal_AttackPhase1::Init(Cynder *arg0) {
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_8827 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_8827 != NULL) {
-            var_r3_8834 = ((MKHeap *) (temp_r3_8827->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_8834 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_8834 = malloc(8);
         }
@@ -6641,7 +6605,6 @@ void CynderBossGoal_AttackFlight::Deinit() {
     Goal<Cynder> *temp_r3_12431;
     Goal<Cynder> *temp_r3_12436;
     Goal<Cynder> *temp_r3_12441;
-    MKHeap *temp_r3_12470;
     void **temp_r3_12446;
     void *temp_r31_12467;
 
@@ -6671,9 +6634,8 @@ void CynderBossGoal_AttackFlight::Deinit() {
     operator delete(this->unk3C);
     temp_r31_12467 = this->unk1C;
     if (temp_r31_12467 != NULL) {
-        temp_r3_12470 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12470 != NULL) {
-            ((MKHeap *) (temp_r3_12470->Current()))->Free(temp_r31_12467, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_12467, NULL, 0);
         } else {
             free(temp_r31_12467);
         }
@@ -6696,7 +6658,6 @@ void CynderBossGoal_AttackFlight::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_12748;
     Goal<Cynder> *temp_r4_12759;
     Goal<Cynder> *temp_r4_12770;
-    MKHeap *temp_r3_12677;
     void **temp_r4_12781;
     void *var_r3_12684;
 
@@ -6783,9 +6744,8 @@ void CynderBossGoal_AttackFlight::Init(Cynder *arg0) {
         this->unk3C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_12677 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12677 != NULL) {
-            var_r3_12684 = ((MKHeap *) (temp_r3_12677->Current()))->Alloc(0x28, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_12684 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
         } else {
             var_r3_12684 = malloc(0x28);
         }
@@ -6893,7 +6853,6 @@ void CynderBossGoal_LandingFlight::Deinit() {
     Goal<Cynder> *temp_r3_12903;
     Goal<Cynder> *temp_r3_12908;
     Goal<Cynder> *temp_r3_12913;
-    MKHeap *temp_r3_12935;
     void *temp_r31_12932;
 
     temp_r3_12883 = this->unk20;
@@ -6919,9 +6878,8 @@ void CynderBossGoal_LandingFlight::Deinit() {
     operator delete(this->unk38);
     temp_r31_12932 = this->unk1C;
     if (temp_r31_12932 != NULL) {
-        temp_r3_12935 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12935 != NULL) {
-            ((MKHeap *) (temp_r3_12935->Current()))->Free(temp_r31_12932, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_12932, NULL, 0);
         } else {
             free(temp_r31_12932);
         }
@@ -6944,7 +6902,6 @@ void CynderBossGoal_LandingFlight::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_13193;
     Goal<Cynder> *temp_r4_13204;
     Goal<Cynder> *temp_r4_13215;
-    MKHeap *temp_r3_13122;
     void *var_r3_13129;
 
     if ((u8) this->unk9 == 0) {
@@ -7020,9 +6977,8 @@ void CynderBossGoal_LandingFlight::Init(Cynder *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_13122 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_13122 != NULL) {
-            var_r3_13129 = ((MKHeap *) (temp_r3_13122->Current()))->Alloc(0x28, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_13129 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
         } else {
             var_r3_13129 = malloc(0x28);
         }
@@ -7387,7 +7343,6 @@ void CynderBossGoal_Think::Deinit() {
     Goal<Cynder> *temp_r3_13979;
     Goal<Cynder> *temp_r3_13984;
     Goal<Cynder> *temp_r3_13989;
-    MKHeap *temp_r3_14013;
     void **temp_r3_13947;
     void **temp_r3_13964;
     void **temp_r3_13969;
@@ -7423,9 +7378,8 @@ void CynderBossGoal_Think::Deinit() {
     operator delete(this->unk44);
     temp_r31_14010 = this->unk1C;
     if (temp_r31_14010 != NULL) {
-        temp_r3_14013 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_14013 != NULL) {
-            ((MKHeap *) (temp_r3_14013->Current()))->Free(temp_r31_14010, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_14010, NULL, 0);
         } else {
             free(temp_r31_14010);
         }
@@ -7444,7 +7398,6 @@ void CynderBossGoal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void CynderBossGoal_Think::Init(Cynder *arg0) {
     Goal<Cynder> *temp_r4_14328;
-    MKHeap *temp_r3_14301;
     void *var_r3_14308;
 
     if ((u8) this->unk9 == 0) {
@@ -7581,9 +7534,8 @@ void CynderBossGoal_Think::Init(Cynder *arg0) {
     }
     this->unk24 = 0;
     if ((u8) this->unk9 == 0) {
-        temp_r3_14301 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_14301 != NULL) {
-            var_r3_14308 = ((MKHeap *) (temp_r3_14301->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_14308 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_14308 = malloc(0x14);
         }

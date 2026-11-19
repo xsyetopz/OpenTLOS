@@ -380,31 +380,25 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void LitCloudPS::Deinit() {
     MKHeap *temp_r31_622;
     MKHeap *temp_r31_636;
-    MKHeap *temp_r3_623;
-    MKHeap *temp_r3_637;
 
     temp_r31_622 = this->unk7C;
-    temp_r3_623 = MKHeap::Current();
-    if (temp_r3_623 != NULL) {
-        ((MKHeap *) (temp_r3_623->Current()))->Free(temp_r31_622, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_622, NULL, 0);
     } else {
         free(temp_r31_622);
     }
     temp_r31_636 = this->unk80;
-    temp_r3_637 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_637 != NULL) {
-        ((MKHeap *) (temp_r3_637->Current()))->Free(temp_r31_636, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_636, NULL, 0);
     } else {
         free(temp_r31_636);
     }
     MKMaterial_Destroy(this->unk84);
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
@@ -889,8 +883,6 @@ loop_38:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LitCloudPS::Init() {
-    MKHeap *temp_r3_1404;
-    MKHeap *temp_r3_1418;
     MKHeap *var_r3_1411;
     MKHeap *var_r3_1425;
     s32 temp_r0_1447;
@@ -898,16 +890,14 @@ void LitCloudPS::Init() {
     s32 var_r3_1436;
 
     MKProp::Init();
-    temp_r3_1404 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1404 != NULL) {
-        var_r3_1411 = ((MKHeap *) (temp_r3_1404->Current()))->Alloc(0x2580, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1411 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2580, NULL, 0);
     } else {
         var_r3_1411 = malloc(0x2580);
     }
     this->unk7C = var_r3_1411;
-    temp_r3_1418 = var_r3_1411->Current();
-    if (temp_r3_1418 != NULL) {
-        var_r3_1425 = ((MKHeap *) (temp_r3_1418->Current()))->Alloc(0x190, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1425 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
     } else {
         var_r3_1425 = malloc(0x190);
     }

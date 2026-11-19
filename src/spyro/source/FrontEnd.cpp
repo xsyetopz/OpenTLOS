@@ -287,7 +287,6 @@ void FrontEnd_PlayBackgroundVideo(bool arg0) {
 #endif
 
 void FrontEnd_Deinit() {
-    MKHeap *temp_r3_538;
     UIStringTable *temp_r30_521;
     void **temp_r31_534;
 
@@ -297,9 +296,9 @@ void FrontEnd_Deinit() {
     if ((void **) pFrontEndSystem != NULL) {
         M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(), 0x24)();
         temp_r31_534 = pFrontEndSystem;
-        temp_r3_538 = ((MKHeap *) (M2C_FIELD(*pFrontEndSystem, MKHeap *(**)(void **), 0xC)(pFrontEndSystem)))->Current();
-        if (temp_r3_538 != NULL) {
-            ((MKHeap *) (temp_r3_538->Current()))->Free(temp_r31_534, NULL, 0);
+        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0xC)(pFrontEndSystem);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_534, NULL, 0);
         } else {
             free(temp_r31_534);
         }
@@ -325,7 +324,6 @@ void FrontEnd_Init() {
     MCLoadCheckScreen *temp_r3_774;
     MCLoadCheckScreen *temp_r3_792;
     MCLoadCheckScreen *temp_r3_810;
-    MKHeap *temp_r3_625;
     UIObject *var_r29_633;
     UIObjectDescriptor *var_r4_659;
     UIObjectDescriptor *var_r4_676;
@@ -357,9 +355,8 @@ loop_4:
         Hud_InitModule();
         Autosave_Reset();
         temp_r29_624 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
-        temp_r3_625 = ((MKHeap *) NoisySystem::descriptor)->Current();
-        if (temp_r3_625 != NULL) {
-            var_r29_633 = ((MKHeap *) (temp_r3_625->Current()))->Alloc(temp_r29_624, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r29_633 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_624, NULL, 0);
         } else {
             var_r29_633 = malloc(temp_r29_624);
         }

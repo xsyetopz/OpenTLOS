@@ -85,7 +85,6 @@ block_10:
 void CharacterZapFX::Deinit() {
     MKHeap *temp_r0_113;
     MKHeap *temp_r0_132;
-    MKHeap *temp_r3_135;
     MKHeap *var_r31_109;
     MKHeap *var_r3_110;
     MKHeap *var_r4_108;
@@ -115,9 +114,8 @@ loop_9:
             var_r4_108 += 4;
             goto loop_9;
         }
-        temp_r3_135 = var_r3_110->Current();
-        if (temp_r3_135 != NULL) {
-            ((MKHeap *) (temp_r3_135->Current()))->Free(var_r31_109, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_109, NULL, 0);
         } else {
             free(var_r31_109);
         }
@@ -623,7 +621,6 @@ void CharacterZapFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterZapFX::Init() {
-    MKHeap *temp_r3_1131;
     MKHeap *temp_r3_1153;
     MKHeap *temp_r4_1159;
     MKHeap *var_r3_1138;
@@ -631,9 +628,8 @@ void CharacterZapFX::Init() {
     s32 var_ctr_1151;
 
     CharacterBodyFX::Init();
-    temp_r3_1131 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1131 != NULL) {
-        var_r3_1138 = ((MKHeap *) (temp_r3_1131->Current()))->Alloc(0x2D8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1138 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2D8, NULL, 0);
     } else {
         var_r3_1138 = malloc(0x2D8);
     }

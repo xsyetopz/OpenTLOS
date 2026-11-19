@@ -98,7 +98,6 @@ void SplitPath::GetPosition(float arg0) {
 
 #if 0 // DRAFT: illegal type
 void SplitPath::Deinit() {
-    MKHeap *temp_r3_146;
     s32 var_r30_129;
     s32 var_r31_130;
     void *temp_r31_145;
@@ -114,9 +113,8 @@ loop_2:
         goto loop_2;
     }
     temp_r31_145 = this->unk0;
-    temp_r3_146 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_146 != NULL) {
-        ((MKHeap *) (temp_r3_146->Current()))->Free(temp_r31_145, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_145, NULL, 0);
         return;
     }
     free(temp_r31_145);
@@ -125,7 +123,6 @@ loop_2:
 
 #if 0 // DRAFT: pointer/array required
 void SplitPath::Init(const KDUniformSpline &arg0, int arg1, int arg2) {
-    MKHeap *temp_r3_188;
     f32 temp_f1_294;
     s32 temp_r0_175;
     s32 temp_r0_217;
@@ -136,7 +133,6 @@ void SplitPath::Init(const KDUniformSpline &arg0, int arg1, int arg2) {
     s32 temp_r19_174;
     s32 temp_r24_202;
     s32 temp_r26_203;
-    s32 temp_r3_181;
     s32 temp_r3_229;
     s32 var_r0_230;
     s32 var_r19_204;
@@ -150,12 +146,10 @@ void SplitPath::Init(const KDUniformSpline &arg0, int arg1, int arg2) {
 
     temp_r19_174 = arg0.unk0;
     temp_r0_175 = arg1 - 1;
-    temp_r3_181 = arg0.unk0 % temp_r0_175;
-    this->unk4 = (temp_r19_174 / temp_r0_175) + (temp_r3_181 != 0);
+    this->unk4 = (temp_r19_174 / temp_r0_175) + ((arg0.unk0 % temp_r0_175) != 0);
     temp_r18_187 = this->unk4 * 0x14;
-    temp_r3_188 = ((MKHeap *) temp_r3_181)->Current();
-    if (temp_r3_188 != NULL) {
-        var_r3_195 = ((MKHeap *) (temp_r3_188->Current()))->Alloc(temp_r18_187, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_195 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r18_187, NULL, 0);
     } else {
         var_r3_195 = malloc(temp_r18_187);
     }

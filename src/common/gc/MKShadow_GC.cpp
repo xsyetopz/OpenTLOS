@@ -141,20 +141,16 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
     s32 spC;
     f64 *sp8;
     Animation *temp_r3_337;
-    MKHeap *temp_r3_352;
-    MKHeap *temp_r3_357;
-    MKHeap *temp_r3_549;
-    MKHeap *temp_r3_555;
     MKShadowSubObjectMP::Edge *temp_r20_507;
     MKVector3 *temp_r21_505;
     Matrix *var_r29_347;
     Matrix *var_r3_365;
-    f32 temp_r5_499;
     f64 temp_f0_269;
     s16 temp_r23_353;
     s16 temp_r27_478;
     s32 temp_r28_419;
     s32 temp_r3_373;
+    s32 temp_r5_499;
     s32 var_r19_513;
     s32 var_r24_476;
     s32 var_r26_475;
@@ -206,13 +202,11 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             var_r29_347 = temp_r3_337->CalculateMatrices(NULL, -1, NULL, &arg0->unk10);
             arg0->unk70->GetNmbrOfNodes();
         } else {
-            temp_r3_352 = M2C_FIELD(arg0->unk0, MKHeap **, 0x30);
-            temp_r23_353 = M2C_FIELD(temp_r3_352, s16 *, 8);
+            temp_r23_353 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 8);
             if (temp_r23_353 > 0) {
                 var_r30_334 = 1;
-                temp_r3_357 = temp_r3_352->Current();
-                if (temp_r3_357 != NULL) {
-                    var_r3_365 = ((MKHeap *) (temp_r3_357->Main()))->TAlloc(temp_r23_353 << 6, NULL, 0, 0U);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_365 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r23_353 << 6, NULL, 0, 0U);
                 } else {
                     var_r3_365 = malloc(temp_r23_353 << 6);
                 }
@@ -235,7 +229,7 @@ loop_15:
         (*(s32 *) ((u8 *) &spE0 + 0x4)) = -1;
         GXSetChanCtrl(GX_COLOR0A0, 0U, GX_SRC_REG, GX_SRC_VTX, 0U, GX_DF_CLAMP, GX_AF_SPOT);
         MK_SetVDMode((MK_VertexDescriptorMode) 1);
-        temp_r28_419 = M2C_FIELD(arg0->unk0, MKHeap **, 0x44)->unk4;
+        temp_r28_419 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x44), s32 *, 4);
         GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 0x3CU, 0U, 0x7DU);
         GXSetClipMode(GX_CLIP_ENABLE);
         sp20 = lit_674;
@@ -251,16 +245,15 @@ loop_15:
         GXSetAlphaCompare(GX_ALWAYS, 0U, GX_AOP_AND, GX_ALWAYS, 0xFFU);
         var_r26_475 = 0;
         var_r24_476 = 0;
-        temp_r27_478 = M2C_FIELD(M2C_FIELD(arg0->unk0, MKHeap **, 0x30), s16 *, 4);
+        temp_r27_478 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 4);
 loop_27:
-        temp_r3_549 = M2C_FIELD(arg0->unk0, MKHeap **, 0x44);
-        if (var_r26_475 < (s32) temp_r3_549->unk8) {
+        if (var_r26_475 < (s32) M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x44), s32 *, 8)) {
             if (((u32) (((u8) arg0->unk4 >> 5U) & 7) < 2U) || !(*(temp_r27_478 + (arg0->unk88 + var_r26_475)) & 0xF)) {
-                temp_r5_499 = M2C_FIELD(arg0->unk0, MKHeap **, 0x30)->unk6C;
-                temp_r22_502 = M2C_BITWISE(s32, temp_r5_499) + *(temp_r28_419 + (var_r24_476 + 4));
-                temp_r21_505 = M2C_BITWISE(s32, temp_r5_499) + M2C_FIELD(temp_r22_502, s32 *, 8);
+                temp_r5_499 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x6C);
+                temp_r22_502 = temp_r5_499 + *(temp_r28_419 + (var_r24_476 + 4));
+                temp_r21_505 = temp_r5_499 + M2C_FIELD(temp_r22_502, s32 *, 8);
                 sp8 = (f64 *)-1;
-                temp_r20_507 = M2C_BITWISE(s32, temp_r5_499) + M2C_FIELD(temp_r22_502, s32 *, 0xC);
+                temp_r20_507 = temp_r5_499 + M2C_FIELD(temp_r22_502, s32 *, 0xC);
                 DetectEdges(temp_r21_505, temp_r20_507, M2C_FIELD(temp_r22_502, s32 *, 0), M2C_FIELD(temp_r22_502, s32 *, 4), var_r29_347, *((MKVector3 *) &spE8), *((MKVector3 *) &spF8), *((MKVector3 *) &spC8), arg2, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 var_r19_513 = 0;
                 do {
@@ -284,9 +277,8 @@ loop_27:
             goto loop_27;
         }
         if (var_r30_334 != 0) {
-            temp_r3_555 = temp_r3_549->Current();
-            if (temp_r3_555 != NULL) {
-                ((MKHeap *) (temp_r3_555->Main()))->TFree(var_r29_347, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Main()))->TFree(var_r29_347, NULL, 0);
             } else {
                 free(var_r29_347);
             }
@@ -643,18 +635,14 @@ void MKShadow_BeginScene() {
 
 #if 0 // DRAFT: undefined identifier 'RoundUp'
 void MKShadow_InitModule() {
-    MKHeap *temp_r3_1171;
     Matrix *var_r3_1178;
     u32 temp_r31_1169;
-    u32 temp_r3_1167;
 
     RoundUp((M2C_FIELD(&gMKDefaults, s32 *, 0x50) + 1) * 0x10, 0x20);
-    temp_r3_1167 = RoundUp(M2C_FIELD(&gMKDefaults, s32 *, 0x54) * 8, 0x20);
-    temp_r31_1169 = temp_r3_1167;
+    temp_r31_1169 = RoundUp(M2C_FIELD(&gMKDefaults, s32 *, 0x54) * 8, 0x20);
     pShadowVertexBuffer = (void *)0xE0000000;
-    temp_r3_1171 = ((MKHeap *) temp_r3_1167)->Current();
-    if (temp_r3_1171 != NULL) {
-        var_r3_1178 = ((MKHeap *) (temp_r3_1171->Current()))->Alloc((s32) temp_r31_1169, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1178 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r31_1169, NULL, 0);
     } else {
         var_r3_1178 = malloc(temp_r31_1169);
     }

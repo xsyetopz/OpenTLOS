@@ -207,7 +207,6 @@ void CynderTier2TrainGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_394;
     Goal<Enemy> *temp_r3_399;
     Goal<Enemy> *temp_r3_404;
-    MKHeap *temp_r3_420;
     void *temp_r31_417;
 
     temp_r3_389 = this->unk20;
@@ -224,9 +223,8 @@ void CynderTier2TrainGoal_Think::Deinit() {
     operator delete(this->unk2C);
     temp_r31_417 = this->unk1C;
     if (temp_r31_417 != NULL) {
-        temp_r3_420 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_420 != NULL) {
-            ((MKHeap *) (temp_r3_420->Current()))->Free(temp_r31_417, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_417, NULL, 0);
         } else {
             free(temp_r31_417);
         }
@@ -243,7 +241,6 @@ void CynderTier2TrainGoal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void CynderTier2TrainGoal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r5_597;
-    MKHeap *temp_r3_568;
     u32 temp_r3_596;
     void *var_r3_575;
 
@@ -305,9 +302,8 @@ void CynderTier2TrainGoal_Think::Init(Enemy *arg0) {
         this->unk2C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_568 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_568 != NULL) {
-            var_r3_575 = ((MKHeap *) (temp_r3_568->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_575 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_575 = malloc(8);
         }
@@ -477,7 +473,6 @@ block_5:
 void EnemyGoal_TrainAttackMode::Deinit() {
     Goal<Enemy> *temp_r3_926;
     Goal<Enemy> *temp_r3_931;
-    MKHeap *temp_r3_943;
     void *temp_r31_940;
 
     temp_r3_926 = this->unk28;
@@ -488,9 +483,8 @@ void EnemyGoal_TrainAttackMode::Deinit() {
     operator delete(this->unk2C);
     temp_r31_940 = this->unk1C;
     if (temp_r31_940 != NULL) {
-        temp_r3_943 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_943 != NULL) {
-            ((MKHeap *) (temp_r3_943->Current()))->Free(temp_r31_940, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_940, NULL, 0);
         } else {
             free(temp_r31_940);
         }
@@ -508,7 +502,6 @@ void EnemyGoal_TrainAttackMode::Deinit() {
 void EnemyGoal_TrainAttackMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1057;
     Goal<Enemy> *temp_r4_1068;
-    MKHeap *temp_r3_1030;
     void *var_r3_1037;
 
     if ((u8) this->unk9 == 0) {
@@ -534,9 +527,8 @@ void EnemyGoal_TrainAttackMode::Init(Enemy *arg0) {
         this->unk2C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1030 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1030 != NULL) {
-            var_r3_1037 = ((MKHeap *) (temp_r3_1030->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1037 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_1037 = malloc(8);
         }

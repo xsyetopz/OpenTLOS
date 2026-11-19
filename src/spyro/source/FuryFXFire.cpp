@@ -290,7 +290,6 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FuryFXFire::SetDefaults() {
     FuryFX::SetDefaults();
     this->unk104 = 0;
@@ -305,7 +304,6 @@ void FuryFXFire::SetDefaults() {
     this->unk2F1 = 0;
     this->unk2EC = 1;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void FuryFXFire::Deinit() {

@@ -143,9 +143,6 @@ void KDMessageStorage::StoreMessage(MKMessage *arg0) {
 void KDMessageStorage::Deinit() {
     MKHeap *temp_r30_198;
     MKHeap *temp_r30_218;
-    MKHeap *temp_r3_197;
-    MKHeap *temp_r3_199;
-    MKHeap *temp_r3_219;
     s32 var_r29_193;
     s32 var_r31_194;
 
@@ -153,11 +150,9 @@ void KDMessageStorage::Deinit() {
     var_r31_194 = 0;
 loop_5:
     if (var_r29_193 < (s32) this->unk8) {
-        temp_r3_197 = this->unk0;
-        temp_r30_198 = *(temp_r3_197 + var_r31_194);
-        temp_r3_199 = temp_r3_197->Current();
-        if (temp_r3_199 != NULL) {
-            ((MKHeap *) (temp_r3_199->Current()))->Free(temp_r30_198, NULL, 0);
+        temp_r30_198 = *(this->unk0 + var_r31_194);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_198, NULL, 0);
         } else {
             free(temp_r30_198);
         }
@@ -166,9 +161,8 @@ loop_5:
         goto loop_5;
     }
     temp_r30_218 = this->unk0;
-    temp_r3_219 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_219 != NULL) {
-        ((MKHeap *) (temp_r3_219->Current()))->Free(temp_r30_218, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_218, NULL, 0);
         return;
     }
     free(temp_r30_218);
@@ -177,10 +171,7 @@ loop_5:
 
 #if 0 // DRAFT: illegal type
 void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
-    MKHeap *temp_r3_266;
-    MKHeap *temp_r3_303;
     MKHeap *var_r3_273;
-    MKHeap *var_r3_281;
     MKHeap *var_r3_310;
     s32 temp_r0_282;
     s32 temp_r0_290;
@@ -191,6 +182,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     s32 var_r28_299;
     s32 var_r29_280;
     s32 var_r30_300;
+    s32 var_r3_281;
     s32 var_r5_289;
 
     this->unkC = arg0;
@@ -204,15 +196,14 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     } while (temp_r3_255 != 0);
     this->unk8 = arg1;
     temp_r30_265 = this->unk8 * 4;
-    temp_r3_266 = ((MKHeap *) temp_r3_255)->Current();
-    if (temp_r3_266 != NULL) {
-        var_r3_273 = ((MKHeap *) (temp_r3_266->Current()))->Alloc(temp_r30_265, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_273 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_265, NULL, 0);
     } else {
         var_r3_273 = malloc(temp_r30_265);
     }
     this->unk0 = var_r3_273;
     var_r29_280 = 0;
-    var_r3_281 = NULL;
+    var_r3_281 = 0;
     temp_r0_282 = this->unk10;
     var_ctr_283 = temp_r0_282;
     if (temp_r0_282 > 0) {
@@ -231,14 +222,13 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     var_r30_300 = 0;
 loop_16:
     if (var_r28_299 < (s32) this->unk8) {
-        temp_r3_303 = var_r3_281->Current();
-        if (temp_r3_303 != NULL) {
-            var_r3_310 = ((MKHeap *) (temp_r3_303->Current()))->Alloc(var_r29_280, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_310 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_280, NULL, 0);
         } else {
             var_r3_310 = malloc(var_r29_280);
         }
         *(this->unk0 + var_r30_300) = var_r3_310;
-        var_r3_281 = memset(*(this->unk0 + var_r30_300), 0xFC, (u32) var_r29_280);
+        memset(*(this->unk0 + var_r30_300), 0xFC, (u32) var_r29_280);
         var_r28_299 += 1;
         var_r30_300 += 4;
         goto loop_16;

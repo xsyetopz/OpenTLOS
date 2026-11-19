@@ -364,16 +364,14 @@ void SparxFX::SetSparxPos(const MKVector3 &arg0) {
 
 void SparxFX::Deinit() {
     MKAnimScript *temp_r31_662;
-    MKHeap *temp_r3_663;
 
     MKMaterial_Destroy(this->unk90);
     MKMaterial_Destroy(this->unk94);
     ((LightManager *) gb.unk80)->FreeManagedLight(this->unkD0);
     this->unkE8->Deinit();
     temp_r31_662 = this->unkE8;
-    temp_r3_663 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_663 != NULL) {
-        ((MKHeap *) (temp_r3_663->Current()))->Free(temp_r31_662, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_662, NULL, 0);
     } else {
         free(temp_r31_662);
     }
@@ -752,15 +750,11 @@ loop_24:
 #if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does
 s32 SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;
-    MKHeap *temp_r3_1484;
-    MKModel *temp_r3_1482;
 
     MKProp::LoadDone();
-    temp_r3_1482 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
-    this->unk4 = temp_r3_1482;
-    temp_r3_1484 = ((MKHeap *) temp_r3_1482)->Current();
-    if (temp_r3_1484 != NULL) {
-        var_r3_1491 = ((MKHeap *) (temp_r3_1484->Current()))->Alloc(0x58, NULL, 0);
+    this->unk4 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1491 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
     } else {
         var_r3_1491 = malloc(0x58);
     }

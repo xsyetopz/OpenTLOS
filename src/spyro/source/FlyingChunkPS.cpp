@@ -52,7 +52,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, const MKVector4 &arg5, int arg6, MKProp *arg7) {
     Matrix spB0;
     MKVector3 sp98;
@@ -79,7 +79,6 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
     f32 sp14;
     f32 sp10;
     MKHeap **temp_r3_94;
-    MKHeap *temp_r5_67;
     Matrix **temp_r3_50;
     Matrix **temp_r3_59;
     Matrix *temp_r31_61;
@@ -106,6 +105,7 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
     s32 temp_r3_284;
     s32 var_r0_185;
     s32 var_r0_294;
+    void *temp_r5_67;
 
     temp_r3_50 = this->unkD8;
     if ((u32) M2C_FIELD(temp_r3_50, u32 *, -4) != 0U) {
@@ -118,9 +118,9 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             M2C_FIELD(temp_r31_61, f64 *, 0x48) = (f64) M2C_FIELD(&arg0, f64 *, 8);
             M2C_FIELD(temp_r31_61, f64 *, 0x50) = (f64) M2C_FIELD(&arg1, f64 *, 0);
             M2C_FIELD(temp_r31_61, f64 *, 0x58) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-            M2C_FIELD(temp_r31_61, f32 *, 0x84) = (f32) temp_r5_67->unkF0;
+            M2C_FIELD(temp_r31_61, f32 *, 0x84) = (f32) M2C_FIELD(temp_r5_67, f32 *, 0xF0);
             M2C_FIELD(temp_r31_61, f32 *, 0x88) = arg4;
-            M2C_FIELD(temp_r31_61, s32 *, 0x94) = MKRand_Int((int *) &gViewSeed, 0, temp_r5_67->unkEC);
+            M2C_FIELD(temp_r31_61, s32 *, 0x94) = MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(temp_r5_67, s32 *, 0xEC));
             M2C_FIELD(temp_r31_61, f64 *, 0x60) = (f64) M2C_FIELD(&arg5, f64 *, 0);
             M2C_FIELD(temp_r31_61, f64 *, 0x68) = (f64) M2C_FIELD(&arg5, f64 *, 8);
             M2C_FIELD(temp_r31_61, s8 *, 0x9D) = 0;
@@ -253,7 +253,6 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
 
 #if 0 // DRAFT: type mismatch
 void FlyingChunkPS::Deinit() {
-    MKHeap *temp_r3_403;
     Matrix **var_r31_377;
     Matrix **var_r3_378;
     Matrix **var_r4_376;
@@ -284,9 +283,8 @@ loop_9:
             var_r4_376 += 4;
             goto loop_9;
         }
-        temp_r3_403 = ((MKHeap *) var_r3_378)->Current();
-        if (temp_r3_403 != NULL) {
-            ((MKHeap *) (temp_r3_403->Current()))->Free(var_r31_377, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_377, NULL, 0);
         } else {
             free(var_r31_377);
         }
@@ -320,7 +318,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void *FlyingChunkPS::Update() {
     u8 sp5C0;
     s32 sp5BC;
@@ -518,7 +516,6 @@ void *FlyingChunkPS::Update() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKHeap *temp_r30_526;
     Matrix **temp_r3_607;
     Matrix **var_r27_524;
     Matrix *temp_r28_1998;
@@ -632,6 +629,7 @@ void *FlyingChunkPS::Update() {
     s32 var_r0_804;
     s32 var_r25_1807;
     s32 var_r4_1333;
+    void *temp_r30_526;
     void *var_r3_1287;
 
     var_r27_524 = this->unkD8;
@@ -640,7 +638,7 @@ loop_208:
     if (var_r27_524 != NULL) {
         temp_r28_1998 = *var_r27_524;
         if (temp_r28_1998 != NULL) {
-            temp_f2_533 = temp_r30_526->unkF0;
+            temp_f2_533 = M2C_FIELD(temp_r30_526, f32 *, 0xF0);
             var_f0_534 = M2C_FIELD(temp_r28_1998, f32 *, 0x84) - gUpdateTimeDelta;
             if (var_f0_534 < temp_f2_533) {
 
@@ -697,7 +695,7 @@ block_24:
                 temp_f0_620 = M2C_FIELD(temp_r30_526, f64 *, 0xF8) * (f64) gUpdateTimeDelta;
                 spF8 = temp_f0_620;
                 sp498 = temp_f0_620;
-                sp100 = temp_r30_526->unk100 * gUpdateTimeDelta;
+                sp100 = M2C_FIELD(temp_r30_526, f32 *, 0x100) * gUpdateTimeDelta;
                 sp4A0 = (f64) sp100;
                 M2C_FIELD(temp_r28_1998, f64 *, 0x50) = (f64) (M2C_FIELD(temp_r28_1998, f64 *, 0x50) + temp_f0_620);
                 M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) + (f32) sp4A0);
@@ -1326,8 +1324,6 @@ loop_205:
 
 #if 0 // DRAFT: illegal use of non-static member
 void FlyingChunkPS::Init() {
-    MKHeap *temp_r3_2048;
-    MKHeap *temp_r3_2057;
     Matrix **temp_r3_2080;
     Matrix **temp_r3_2087;
     Matrix **temp_r3_2094;
@@ -1337,15 +1333,13 @@ void FlyingChunkPS::Init() {
     s32 var_ctr_2083;
 
     GamePropColored::Init();
-    temp_r3_2048 = checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r30_2049 = temp_r3_2048->unkE8;
+    temp_r30_2049 = M2C_FIELD(checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8);
     if (temp_r30_2049 == 0) {
         this->unkD8 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_2057 = temp_r3_2048->Current();
-    if (temp_r3_2057 != NULL) {
-        var_r3_2067 = ((MKHeap *) (temp_r3_2057->Current()))->Alloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2067 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0), NULL, 0);
     } else {
         var_r3_2067 = malloc(((temp_r30_2049 + 2) * 4) + (temp_r30_2049 * 0xA0));
     }

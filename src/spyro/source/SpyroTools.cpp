@@ -416,7 +416,6 @@ loop_2:
 
 #if 0 // DRAFT: function call 'Set(int)' does not match
 void SpyroTargetList::Deinit() {
-    MKHeap *temp_r3_855;
     u32 temp_r0_838;
     void ****var_r31_829;
     void ****var_r3_830;
@@ -448,9 +447,8 @@ loop_9:
             var_r4_828 += 4;
             goto loop_9;
         }
-        temp_r3_855 = ((MKHeap *) var_r3_830)->Current();
-        if (temp_r3_855 != NULL) {
-            ((MKHeap *) (temp_r3_855->Current()))->Free(var_r31_829, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_829, NULL, 0);
         } else {
             free(var_r31_829);
         }
@@ -459,9 +457,8 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
-    MKHeap *temp_r3_888;
     s32 var_ctr_908;
     void ****temp_r3_910;
     void ****temp_r4_916;
@@ -471,9 +468,8 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
     this->unkC = arg0;
     this->unk10 = arg1;
     this->unk14 = arg2;
-    temp_r3_888 = MKHeap::Current();
-    if (temp_r3_888 != NULL) {
-        var_r3_895 = ((MKHeap *) (temp_r3_888->Current()))->Alloc(0x88, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_895 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x88, NULL, 0);
     } else {
         var_r3_895 = malloc(0x88);
     }

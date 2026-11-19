@@ -54,7 +54,6 @@ extern MKPropDescriptor *pSonicAttackDescriptor;
 void SonicAttack::Deinit() {
     MKHeap *temp_r0_56;
     MKHeap *temp_r0_75;
-    MKHeap *temp_r3_78;
     MKHeap *var_r31_52;
     MKHeap *var_r3_53;
     MKHeap *var_r4_51;
@@ -83,9 +82,8 @@ loop_9:
             var_r4_51 += 4;
             goto loop_9;
         }
-        temp_r3_78 = var_r3_53->Current();
-        if (temp_r3_78 != NULL) {
-            ((MKHeap *) (temp_r3_78->Current()))->Free(var_r31_52, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_52, NULL, 0);
         } else {
             free(var_r31_52);
         }
@@ -490,7 +488,6 @@ s32 SonicAttack::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SonicAttack::Init() {
-    MKHeap *temp_r3_783;
     MKHeap *temp_r3_805;
     MKHeap *temp_r3_811;
     MKHeap *var_r3_790;
@@ -499,9 +496,8 @@ void SonicAttack::Init() {
 
     Projectile::Init();
     SetDefaults();
-    temp_r3_783 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_783 != NULL) {
-        var_r3_790 = ((MKHeap *) (temp_r3_783->Current()))->Alloc(0x1070, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_790 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1070, NULL, 0);
     } else {
         var_r3_790 = malloc(0x1070);
     }

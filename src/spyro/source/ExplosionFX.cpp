@@ -76,8 +76,6 @@ void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {
 
 #if 0 // DRAFT: type mismatch
 void ExplosionFX::Deinit() {
-    MKHeap *temp_r3_166;
-    MKHeap *temp_r3_213;
     MKMaterial *temp_r3_181;
     MKMaterial *temp_r3_228;
     Matrix **var_r30_140;
@@ -116,9 +114,8 @@ loop_9:
             var_r4_139 += 4;
             goto loop_9;
         }
-        temp_r3_166 = ((MKHeap *) var_r3_141)->Current();
-        if (temp_r3_166 != NULL) {
-            ((MKHeap *) (temp_r3_166->Current()))->Free(var_r30_140, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_140, NULL, 0);
         } else {
             free(var_r30_140);
         }
@@ -151,9 +148,8 @@ loop_24:
             var_r4_186 += 4;
             goto loop_24;
         }
-        temp_r3_213 = ((MKHeap *) var_r3_188)->Current();
-        if (temp_r3_213 != NULL) {
-            ((MKHeap *) (temp_r3_213->Current()))->Free(var_r30_187, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_187, NULL, 0);
         } else {
             free(var_r30_187);
         }
@@ -577,9 +573,6 @@ loop_10:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ExplosionFX::Init() {
-    MKHeap *temp_r3_918;
-    MKHeap *temp_r3_955;
-    MKMaterial *temp_r3_953;
     Matrix **temp_r3_940;
     Matrix **temp_r3_977;
     Matrix **temp_r4_946;
@@ -592,9 +585,8 @@ void ExplosionFX::Init() {
     s32 var_ctr_975;
 
     MKProp::Init();
-    temp_r3_918 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_918 != NULL) {
-        var_r3_925 = ((MKHeap *) (temp_r3_918->Current()))->Alloc(0x170, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_925 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x170, NULL, 0);
     } else {
         var_r3_925 = malloc(0x170);
     }
@@ -613,11 +605,9 @@ void ExplosionFX::Init() {
     temp_r4_946 = this->unk50;
     this->unk50 = temp_r4_946 + 4;
     M2C_FIELD(temp_r4_946, Matrix ***, 4) = NULL;
-    temp_r3_953 = MKMaterial_Create("fx_338");
-    this->unk4C = temp_r3_953;
-    temp_r3_955 = ((MKHeap *) temp_r3_953)->Current();
-    if (temp_r3_955 != NULL) {
-        var_r3_962 = ((MKHeap *) (temp_r3_955->Current()))->Alloc(0x350, NULL, 0);
+    this->unk4C = MKMaterial_Create("fx_338");
+    if (MKHeap::Current() != NULL) {
+        var_r3_962 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0);
     } else {
         var_r3_962 = malloc(0x350);
     }

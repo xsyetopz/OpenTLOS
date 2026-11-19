@@ -49,9 +49,9 @@ public:
 class LineSegmentTrailPool {
 public:
     void Free(LSTrail *);
-    LineSegmentTrailPool * Alloc(void);
-    void Deinit(void);
-    void Init(void);
+    static LineSegmentTrailPool * Alloc(void);
+    static void Deinit(void);
+    static void Init(void);
     static u8 pTrailPool[0x4];
     static u8 refCount[0x4];
     /* 0x000 */ u8 pad0[0x24];

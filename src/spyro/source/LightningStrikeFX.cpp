@@ -293,23 +293,19 @@ void LightningStrikeFX::Strike() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void LightningStrikeFX::Deinit() {
-    MKHeap *temp_r3_443;
     MKVector3 *temp_r31_440;
 
     temp_r31_440 = this->unk4C;
     if (temp_r31_440 != NULL) {
-        temp_r3_443 = MKHeap::Current();
-        if (temp_r3_443 != NULL) {
-            ((MKHeap *) (temp_r3_443->Current()))->Free(temp_r31_440, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_440, NULL, 0);
         } else {
             free(temp_r31_440);
         }
     }
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'P27LightningStrikeFXDescriptor'
 void LightningStrikeFX::Draw() {
@@ -465,24 +461,20 @@ loop_2:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_791;
     MKIniLine *var_r30_809;
     MKVector3 *temp_r5_815;
     MKVector3 *var_r3_798;
     s32 temp_r31_790;
-    s32 temp_r3_787;
     s32 var_r31_808;
 
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
     if (arg0->IsField("StrikePoints") != 0) {
-        temp_r3_787 = arg0->GetNmbrOfSubLines();
-        this->unk50 = temp_r3_787;
+        this->unk50 = arg0->GetNmbrOfSubLines();
         temp_r31_790 = this->unk50 * 0x10;
-        temp_r3_791 = ((MKHeap *) temp_r3_787)->Current();
-        if (temp_r3_791 != NULL) {
-            var_r3_798 = ((MKHeap *) (temp_r3_791->Current()))->Alloc(temp_r31_790, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_798 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_790, NULL, 0);
         } else {
             var_r3_798 = malloc(temp_r31_790);
         }
@@ -1247,7 +1239,6 @@ void LightningStrikeFXDescriptor::Deinit() {
     LightningStrikeFXDescriptor::StrikeArc **var_r4_2038;
     LightningStrikeFXDescriptor::StrikeArc *temp_r0_2043;
     LightningStrikeFXDescriptor::StrikeArc *temp_r0_2062;
-    MKHeap *temp_r3_2065;
     MKMaterial *temp_r3_2021;
     ManagedLight *temp_r4_2028;
     u32 temp_r0_2048;
@@ -1285,9 +1276,8 @@ loop_13:
             var_r4_2038 += 4;
             goto loop_13;
         }
-        temp_r3_2065 = ((MKHeap *) var_r3_2040)->Current();
-        if (temp_r3_2065 != NULL) {
-            ((MKHeap *) (temp_r3_2065->Current()))->Free(var_r31_2039, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_2039, NULL, 0);
         } else {
             free((MKVector3 *) var_r31_2039);
         }
@@ -1448,8 +1438,6 @@ void LightningStrikeFXDescriptor::Init() {
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2383;
     LightningStrikeFXDescriptor::StrikeArc **temp_r3_2389;
     LightningStrikeFXDescriptor::StrikeArc **var_r5_2377;
-    MKHeap *temp_r3_2361;
-    MKMaterial *temp_r3_2359;
     MKVector3 *var_r3_2368;
     s32 var_ctr_2381;
 
@@ -1462,11 +1450,9 @@ void LightningStrikeFXDescriptor::Init() {
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unk90 = 0.0f;
     this->unkA4 = 0;
-    temp_r3_2359 = MKMaterial_Create("fx_351");
-    this->unk94 = temp_r3_2359;
-    temp_r3_2361 = ((MKHeap *) temp_r3_2359)->Current();
-    if (temp_r3_2361 != NULL) {
-        var_r3_2368 = ((MKHeap *) (temp_r3_2361->Current()))->Alloc(0x698, NULL, 0);
+    this->unk94 = MKMaterial_Create("fx_351");
+    if (MKHeap::Current() != NULL) {
+        var_r3_2368 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
     } else {
         var_r3_2368 = malloc(0x698);
     }

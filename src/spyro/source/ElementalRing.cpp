@@ -128,7 +128,6 @@ void ElementalRing::Deinit() {
     KDSoundFlangedFader *temp_r0_203;
     KDSoundFlangedFader *temp_r0_222;
     KDSoundFlangedFader *temp_r3_194;
-    MKHeap *temp_r3_225;
     u32 temp_r0_208;
 
     var_r31_186 = this->unk4C;
@@ -164,9 +163,8 @@ loop_13:
             var_r4_198 += 4;
             goto loop_13;
         }
-        temp_r3_225 = ((MKHeap *) var_r3_200)->Current();
-        if (temp_r3_225 != NULL) {
-            ((MKHeap *) (temp_r3_225->Current()))->Free(var_r31_199, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_199, NULL, 0);
         } else {
             free(var_r31_199);
         }
@@ -698,13 +696,11 @@ void ElementalRing::Init() {
     KDSoundFlangedFader **temp_r3_1130;
     KDSoundFlangedFader **var_r3_1109;
     KDSoundFlangedFader **var_r5_1118;
-    MKHeap *temp_r3_1102;
     s32 var_ctr_1122;
 
     MKProp::Init();
-    temp_r3_1102 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1102 != NULL) {
-        var_r3_1109 = ((MKHeap *) (temp_r3_1102->Current()))->Alloc(0x358, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1109 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x358, NULL, 0);
     } else {
         var_r3_1109 = malloc(0x358);
     }

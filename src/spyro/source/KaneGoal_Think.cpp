@@ -95,11 +95,11 @@ void KaneGoal_Think::StartFollowingSpawnGraph() {
 }
 
 u8 KaneGoal_Think::IsFollowingSpawnGraph() {
-    return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 3U) & 1;
+    return ((u8) M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xC), u8 *, 0xB09) >> 3U) & 1;
 }
 
 void KaneGoal_Think::Arbitrate() {
-    if (IsFollowingSpawnGraph() != 0) {
+    if (KaneGoal_Think::IsFollowingSpawnGraph() != 0) {
         AddGoal_FollowSpawnGraph();
         return;
     }
@@ -137,7 +137,6 @@ void KaneGoal_Think::Activate() {
 void KaneGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_222;
     Goal<Enemy> *temp_r3_227;
-    MKHeap *temp_r3_239;
     s32 temp_r31_236;
 
     temp_r3_222 = this->unk20;
@@ -148,9 +147,8 @@ void KaneGoal_Think::Deinit() {
     operator delete(this->unk24);
     temp_r31_236 = this->unk1C;
     if ((u32) temp_r31_236 != 0U) {
-        temp_r3_239 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_239 != NULL) {
-            ((MKHeap *) (temp_r3_239->Current()))->Free((void *) temp_r31_236, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_236, NULL, 0);
         } else {
             free(temp_r31_236);
         }
@@ -167,7 +165,6 @@ void KaneGoal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void KaneGoal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_363;
-    MKHeap *temp_r3_333;
     void *var_r3_340;
 
     if ((u8) this->unk9 == 0) {
@@ -198,9 +195,8 @@ void KaneGoal_Think::Init(Enemy *arg0) {
         this->unk24 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_333 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_333 != NULL) {
-            var_r3_340 = ((MKHeap *) (temp_r3_333->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_340 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_340 = malloc(8);
         }

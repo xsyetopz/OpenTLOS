@@ -178,7 +178,6 @@ loop_7:
 
 #if 0 // DRAFT: illegal type
 void ElectricFence::Deinit() {
-    MKHeap *temp_r3_248;
     MKModel *temp_r3_227;
     MKModel *temp_r3_234;
     s32 var_r30_221;
@@ -204,9 +203,8 @@ loop_6:
     }
     FreeBeams();
     temp_r31_247 = this->unk4C;
-    temp_r3_248 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_248 != NULL) {
-        ((MKHeap *) (temp_r3_248->Current()))->Free(temp_r31_247, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_247, NULL, 0);
     } else {
         free(temp_r31_247);
     }
@@ -742,11 +740,9 @@ loop_30:
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
-    MKHeap *temp_r3_1215;
     MKIniLine *var_r27_1234;
     s32 temp_r0_1249;
     s32 temp_r28_1214;
-    s32 temp_r3_1211;
     s32 temp_r3_1245;
     s32 var_r29_1235;
     s32 var_r29_1274;
@@ -757,12 +753,10 @@ s32 ElectricFence::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("waypoints") != 0) {
-        temp_r3_1211 = arg0->GetNmbrOfSubLines();
-        this->unk50 = temp_r3_1211;
+        this->unk50 = arg0->GetNmbrOfSubLines();
         temp_r28_1214 = this->unk50 * 0x70;
-        temp_r3_1215 = ((MKHeap *) temp_r3_1211)->Current();
-        if (temp_r3_1215 != NULL) {
-            var_r3_1222 = ((MKHeap *) (temp_r3_1215->Current()))->Alloc(temp_r28_1214, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1222 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1214, NULL, 0);
         } else {
             var_r3_1222 = malloc(temp_r28_1214);
         }

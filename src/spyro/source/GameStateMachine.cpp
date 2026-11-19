@@ -17,7 +17,6 @@
 extern M2C_UNK gDisplay;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameStateHeap::HeapMarkPopAll() {
     if (MKHeap::Current() != NULL) {
 loop_3:
@@ -27,38 +26,29 @@ loop_3:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameStateHeap::HeapMarkPop() {
-    MKHeap *temp_r3_43;
     s32 temp_r4_53;
 
-    temp_r3_43 = MKHeap::Current();
-    if (temp_r3_43 != NULL) {
-        ((MKHeap *) (temp_r3_43->Current()))->Release(M2C_FIELD(&this[this->unk0], s32 *, 4));
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Release(M2C_FIELD(&this[this->unk0], s32 *, 4));
     }
     temp_r4_53 = this->unk0;
     this->unk0 = temp_r4_53 - 1;
     M2C_FIELD(&this[temp_r4_53], s32 *, 4) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameStateHeap::HeapMarkPush() {
-    MKHeap *temp_r3_75;
     s32 temp_r3_79;
     s32 temp_r4_81;
 
-    temp_r3_75 = MKHeap::Current();
-    if (temp_r3_75 != NULL) {
-        temp_r3_79 = ((MKHeap *) (temp_r3_75->Current()))->Mark();
+    if (MKHeap::Current() != NULL) {
+        temp_r3_79 = ((MKHeap *) (MKHeap::Current()))->Mark();
         temp_r4_81 = this->unk0 + 1;
         this->unk0 = temp_r4_81;
         M2C_FIELD(&this[temp_r4_81], s32 *, 4) = temp_r3_79;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void GameStateHeap::Init() {

@@ -35,7 +35,6 @@ extern M2C_UNK gb;
 void EnergyBeam::Deinit() {
     MKHeap *temp_r0_55;
     MKHeap *temp_r0_74;
-    MKHeap *temp_r3_77;
     MKHeap *var_r31_51;
     MKHeap *var_r3_52;
     MKHeap *var_r4_50;
@@ -64,9 +63,8 @@ loop_9:
             var_r4_50 += 4;
             goto loop_9;
         }
-        temp_r3_77 = var_r3_52->Current();
-        if (temp_r3_77 != NULL) {
-            ((MKHeap *) (temp_r3_77->Current()))->Free(var_r31_51, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_51, NULL, 0);
         } else {
             free(var_r31_51);
         }
@@ -737,7 +735,6 @@ loop_11:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnergyBeam::Init() {
-    MKHeap *temp_r3_1236;
     MKHeap *temp_r3_1258;
     MKHeap *temp_r4_1264;
     MKHeap *var_r3_1243;
@@ -745,9 +742,8 @@ void EnergyBeam::Init() {
     s32 var_ctr_1256;
 
     KDProp::Init();
-    temp_r3_1236 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1236 != NULL) {
-        var_r3_1243 = ((MKHeap *) (temp_r3_1236->Current()))->Alloc(0x34D8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1243 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x34D8, NULL, 0);
     } else {
         var_r3_1243 = malloc(0x34D8);
     }

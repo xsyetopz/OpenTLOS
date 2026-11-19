@@ -306,7 +306,7 @@ public:
     s32 HasFailedFury(void);
     s32 HasFailedBreath2(void);
     s32 HasFailedBreath1(void);
-    s32 IsFuryComplete(void);
+    static s32 IsFuryComplete(void);
     void SetupFurySpawnPoints(void);
     void SetupNumFuryEnemies(void);
     s32 IsBreath2Complete(void);
@@ -336,7 +336,7 @@ public:
     s32 HasFailedFury(void);
     s32 HasFailedBreath2(void);
     s32 HasFailedBreath1(void);
-    s32 IsFuryComplete(void);
+    static s32 IsFuryComplete(void);
     void SetupFurySpawnPoints(void);
     void SetupNumFuryEnemies(void);
     s32 IsBreath2Complete(void);
@@ -370,7 +370,7 @@ public:
     s32 HasFailedBreath1(void);
     s32 HasFailedMeleeKnockBack(void);
     s32 HasFailedMeleeKnockUp(void);
-    s32 IsFuryComplete(void);
+    static s32 IsFuryComplete(void);
     void SetupFurySpawnPoints(void);
     void SetupNumFuryEnemies(void);
     s32 IsBreath2Complete(void);
@@ -406,7 +406,7 @@ public:
     s32 HasFailedFury(void);
     s32 HasFailedBreath2(void);
     s32 HasFailedBreath1(void);
-    s32 IsFuryComplete(void);
+    static s32 IsFuryComplete(void);
     void SetupFurySpawnPoints(void);
     void SetupNumFuryEnemies(void);
     s32 IsBreath2Complete(void);

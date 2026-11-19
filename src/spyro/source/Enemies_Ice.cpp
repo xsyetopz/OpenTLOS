@@ -253,16 +253,14 @@ void *IceTier2::Update() {
 
 void IceTier2::Deinit() {
     MKCollisionInfo *temp_r31_444;
-    MKHeap *temp_r3_447;
 
     this->unk634 = this->unkB10;
     Enemy::Deinit();
     KDSound_Stop((int *) &this->unkB38);
     temp_r31_444 = this->unkB14;
     if (temp_r31_444 != NULL) {
-        temp_r3_447 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_447 != NULL) {
-            ((MKHeap *) (temp_r3_447->Current()))->Free(temp_r31_444, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_444, NULL, 0);
         } else {
             free(temp_r31_444);
         }
@@ -300,7 +298,6 @@ void IceTier2::Init() {
     EnemyGoal_Think *temp_r30_544;
     MKCollisionInfo *temp_r4_594;
     MKCollisionInfo *var_r3_585;
-    MKHeap *temp_r3_578;
 
     Enemy::Init();
     operator new(0x74U, NULL, 0);
@@ -323,9 +320,8 @@ void IceTier2::Init() {
     this->unkB60 = 0;
     ((KDSoundFader *) &this->unkB38)->Init(0.25f, 0.25f);
     this->unkB14 = NULL;
-    temp_r3_578 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_578 != NULL) {
-        var_r3_585 = ((MKHeap *) (temp_r3_578->Current()))->Alloc(0x10, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_585 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_585 = malloc(0x10);
     }

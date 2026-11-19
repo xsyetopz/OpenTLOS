@@ -38,7 +38,7 @@ public:
     virtual void OnExit(void);
     virtual void OnAction(void);
     virtual s32 CheckQueue(void);
-    void UpdateActiveList(void);
+    static void UpdateActiveList(void);
     void RemoveFromActiveList(TriggerProp *);
     void AddToActiveList(TriggerProp *);
     static u8 pFirstActiveTrigger[0x4];

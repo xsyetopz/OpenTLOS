@@ -104,13 +104,13 @@ public:
 class MKFFTWater {
 public:
     void Draw(unsigned short *, int);
-    void DeinitInternal(void);
+    static void DeinitInternal(void);
     void InitInternal(void);
     void Deinit(void);
     void PostDrawOcean(unsigned short *);
     void PreDrawOcean(unsigned short *);
     void ManagedDraw(void);
-    void BuildVisibleTypesList(void);
+    static void BuildVisibleTypesList(void);
     u8 WaterTypeExistsInMesh(const char *);
     void Init(const char *);
     static u8 typesVisible[0x28];

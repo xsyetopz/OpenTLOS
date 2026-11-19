@@ -99,10 +99,10 @@ extern GameGlobals gb;
 extern Ball *pDribblee;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
 static DataMap ballTypeMap[5] = {
-    { 0, .L_8035ED35 },
-    { 1, .L_8035ED43 },
-    { 2, .L_8035ED51 },
-    { 3, .L_8035ED5E },
+    { 0, "Snow" },
+    { 1, "Rock" },
+    { 2, "Ice" },
+    { 3, "SnowCynder" },
     { 4, NULL },
 };
 #endif
@@ -112,261 +112,6 @@ static struct _struct_groups_0x28 groups[8];
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_ballProperties_0x3'
 static struct _struct_ballProperties_0x3 ballProperties[4]; /* unable to generate initializer: non-zero padding; const */
-static s8 .L_8035ED35[0xE] = {
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0,
-    0x42,
-    0x41,
-    0x4C,
-    0x4C,
-    0x54,
-    0x59,
-    0x50,
-    0x45,
-    0x5F,
-}; /* const */
-static s8 .L_8035ED43[0xE] = {
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0,
-    0x42,
-    0x41,
-    0x4C,
-    0x4C,
-    0x54,
-    0x59,
-    0x50,
-    0x45,
-    0x5F,
-}; /* const */
-static s8 .L_8035ED51[0xD] = { 0x49, 0x63, 0x65, 0, 0x42, 0x41, 0x4C, 0x4C, 0x54, 0x59, 0x50, 0x45, 0x5F }; /* const */
-static s8 .L_8035ED5E[0xDC] = {
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x70,
-    0,
-    0x43,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0x4D,
-    0x69,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x43,
-    0x75,
-    0x74,
-    0x6F,
-    0x66,
-    0x66,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x68,
-    0x69,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x6D,
-    0x65,
-    0x6C,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x32,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x69,
-    0x6E,
-    0x67,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x48,
-    0x69,
-    0x74,
-    0x42,
-    0x79,
-    0x48,
-    0x65,
-    0x72,
-    0x6F,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x48,
-    0x69,
-    0x74,
-    0x42,
-    0x79,
-    0x48,
-    0x65,
-    0x72,
-    0x6F,
-    0x32,
-    0,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x68,
-    0x69,
-    0x74,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-}; /* const */
 
 void Ball::BridgeHit(float arg0, float arg1) {
     f64 spD8;
@@ -612,7 +357,7 @@ void Ball::SetParentTree(SnowballTree *arg0, int arg1, MKVector3 &arg2, float ar
     this->unk2A0 = arg3;
 }
 
-#if 0 // DRAFT: undefined identifier 'groups'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Ball::SetGroup(int arg0) {
     s32 temp_r0_547;
     s32 temp_r5_546;
@@ -669,7 +414,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'groups'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char' to
 void Ball::FindClosestGroup() {
     f64 sp30;
     f64 sp28;
@@ -1049,7 +794,7 @@ void Ball::CheckForRamps() {
 loop_12:
         if (var_r30_1203 < temp_r31_1202) {
             temp_r3_1208 = BoulderRamp_GetCatapult(this->unk2A8, var_r30_1203);
-            if ((temp_r3_1208 != 0) && (((BoulderRamp *) temp_r3_1208)->HasBoulder() == 0)) {
+            if ((temp_r3_1208 != 0) && (BoulderRamp::HasBoulder() == 0)) {
                 temp_r4_1214 = this->unk8;
                 temp_r3_1215 = M2C_FIELD(temp_r3_1208, void **, 8);
                 temp_f7_1216 = M2C_FIELD(temp_r4_1214, f64 *, 0x30);
@@ -1131,7 +876,7 @@ void Ball::CheckForCatapults() {
 loop_15:
         if (var_r28_1330 < temp_r30_1329) {
             temp_r3_1335 = Catapult_GetCatapult(this->unk2A8, var_r28_1330);
-            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (((Catapult *) temp_r3_1335)->CanLoadBall() != 0)) {
+            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (Catapult::CanLoadBall() != 0)) {
                 temp_r4_1344 = this->unk8;
                 temp_r3_1345 = M2C_FIELD(temp_r3_1335, void **, 8);
                 temp_f5_1346 = M2C_FIELD(temp_r4_1344, f64 *, 0x30);
@@ -1359,7 +1104,7 @@ void Ball::CheckForHero() {
                 sp120 = (f64) sp80;
                 temp_f30_1711 = (sp180 * (f32) sp120) + ((sp178 * (f32) sp118) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp118 + 0x4))));
                 gb.GetSpyro();
-                var_f1_1713 = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetDeltaMove();
+                var_f1_1713 = Spyro::GetDeltaMove();
                 if (var_f1_1713 > 0.0f) {
                     temp_f2_1717 = __frsqrte(var_f1_1713);
                     temp_f2_1723 = 0.5 * temp_f2_1717 * -(((f64) var_f1_1713 * (temp_f2_1717 * temp_f2_1717)) - 3.0);

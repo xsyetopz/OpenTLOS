@@ -6324,7 +6324,6 @@ f32 Enemy::Resolve() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 Enemy::LoadDone() {
-    AttackSweepData *temp_r3_12518;
     AttackSweepData *var_r3_12507;
     AttackSweepData *var_r3_12528;
     AttackSweepData *var_r3_12550;
@@ -6332,12 +6331,6 @@ s32 Enemy::LoadDone() {
     CharacterFireFX *temp_r3_12622;
     CharacterZapFX *temp_r3_12607;
     EnemyDescriptor *temp_r3_12489;
-    EnemyDescriptor *temp_r3_12539;
-    EnemyDescriptor *temp_r3_12645;
-    MKHeap *temp_r3_12500;
-    MKHeap *temp_r3_12521;
-    MKHeap *temp_r3_12543;
-    MKHeap *temp_r3_12649;
     s32 temp_r30_12520;
     s32 var_ctr_12563;
     s8 *temp_r4_12634;
@@ -6357,30 +6350,25 @@ s32 Enemy::LoadDone() {
     this->unk6C0.unk10 = 0.3926991f;
     temp_r3_12489 = this->unkA38;
     if ((((s32) temp_r3_12489->unk214 > 0) || ((s32) temp_r3_12489->unk218 > 0)) && ((s32) temp_r3_12489->unk224 > 0)) {
-        temp_r3_12500 = ((MKHeap *) temp_r3_12489)->Current();
-        if (temp_r3_12500 != NULL) {
-            var_r3_12507 = ((MKHeap *) (temp_r3_12500->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_12507 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_12507 = malloc(8);
         }
         this->unkA30 = var_r3_12507;
         this->unkA30->unk4 = (u8) this->unkA38->unk224;
-        temp_r3_12518 = this->unkA30;
-        temp_r30_12520 = temp_r3_12518->unk4 * 0x10;
-        temp_r3_12521 = ((MKHeap *) temp_r3_12518)->Current();
-        if (temp_r3_12521 != NULL) {
-            var_r3_12528 = ((MKHeap *) (temp_r3_12521->Current()))->Alloc(temp_r30_12520, NULL, 0);
+        temp_r30_12520 = this->unkA30->unk4 * 0x10;
+        if (MKHeap::Current() != NULL) {
+            var_r3_12528 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_12520, NULL, 0);
         } else {
             var_r3_12528 = malloc(temp_r30_12520);
         }
         this->unkA30->unk0 = (s32) var_r3_12528;
         this->unkA30->SetDefaults();
     }
-    temp_r3_12539 = this->unkA38;
-    if ((void ****) temp_r3_12539->unk228 != NULL) {
-        temp_r3_12543 = ((MKHeap *) temp_r3_12539)->Current();
-        if (temp_r3_12543 != NULL) {
-            var_r3_12550 = ((MKHeap *) (temp_r3_12543->Current()))->Alloc(0x14, NULL, 0);
+    if ((void ****) this->unkA38->unk228 != NULL) {
+        if (MKHeap::Current() != NULL) {
+            var_r3_12550 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_12550 = malloc(0x14);
         }
@@ -6414,11 +6402,9 @@ s32 Enemy::LoadDone() {
         this->unkA14 = checked_cast<MeleeTrails *, MKProp>(gMK->CreateProp(temp_r4_12634));
         this->unkA14->ResolveAnims((MKAnimScript *) this->unk630);
     }
-    temp_r3_12645 = this->unkA38;
-    if ((CharacterBreathFXDescriptor *) temp_r3_12645->unk258 != NULL) {
-        temp_r3_12649 = ((MKHeap *) temp_r3_12645)->Current();
-        if (temp_r3_12649 != NULL) {
-            var_r3_12656 = ((MKHeap *) (temp_r3_12649->Current()))->Alloc(0x14, NULL, 0);
+    if ((CharacterBreathFXDescriptor *) this->unkA38->unk258 != NULL) {
+        if (MKHeap::Current() != NULL) {
+            var_r3_12656 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_12656 = malloc(0x14);
         }
@@ -6467,13 +6453,6 @@ void Enemy::Deinit() {
     AttackSweepData *temp_r30_12913;
     AttackSweepData *temp_r3_12896;
     CharacterBreathFX *temp_r30_12882;
-    CharacterBreathFX *temp_r3_12878;
-    EAPManager *temp_r3_12775;
-    MKHeap *temp_r3_12839;
-    MKHeap *temp_r3_12858;
-    MKHeap *temp_r3_12883;
-    MKHeap *temp_r3_12900;
-    MKHeap *temp_r3_12914;
     MKMaterial *temp_r3_12986;
     SpawnerObject *temp_r30_12934;
     SpawnerObject *temp_r3_12801;
@@ -6487,9 +6466,8 @@ void Enemy::Deinit() {
     void *temp_r3_12956;
     void *temp_r3_12963;
 
-    temp_r3_12775 = this->unkA5C;
-    if (temp_r3_12775 != NULL) {
-        temp_r3_12775->Deinit();
+    if ((EAPManager *) this->unkA5C != NULL) {
+        EAPManager::Deinit();
         operator delete(this->unkA5C);
     }
     if ((void *) this->unkA2C != NULL) {
@@ -6519,9 +6497,8 @@ void Enemy::Deinit() {
         } while ((u32) *temp_r3_12830 != 0);
         temp_r30_12835 = this->unkA1C;
         if (temp_r30_12835 != &gEmptyPtrList) {
-            temp_r3_12839 = ((MKHeap *) temp_r3_12830)->Current();
-            if (temp_r3_12839 != NULL) {
-                ((MKHeap *) (temp_r3_12839->Current()))->Free(temp_r30_12835, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_12835, NULL, 0);
             } else {
                 free(temp_r30_12835);
             }
@@ -6530,9 +6507,8 @@ void Enemy::Deinit() {
     }
     temp_r30_12855 = this->unk9DC;
     if ((u32) temp_r30_12855 != 0U) {
-        temp_r3_12858 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12858 != NULL) {
-            ((MKHeap *) (temp_r3_12858->Current()))->Free((void *) temp_r30_12855, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_12855, NULL, 0);
         } else {
             free((u32 *) temp_r30_12855);
         }
@@ -6541,13 +6517,11 @@ void Enemy::Deinit() {
     this->unk9D0 = 0;
     this->unk9D8 = 0;
     this->unk9D4 = 0;
-    temp_r3_12878 = this->unkA0C;
-    if (temp_r3_12878 != NULL) {
-        temp_r3_12878->Deinit();
+    if ((CharacterBreathFX *) this->unkA0C != NULL) {
+        CharacterBreathFX::Deinit();
         temp_r30_12882 = this->unkA0C;
-        temp_r3_12883 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12883 != NULL) {
-            ((MKHeap *) (temp_r3_12883->Current()))->Free(temp_r30_12882, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_12882, NULL, 0);
         } else {
             free((u32 *) temp_r30_12882);
         }
@@ -6555,16 +6529,14 @@ void Enemy::Deinit() {
     temp_r3_12896 = this->unkA30;
     if (temp_r3_12896 != NULL) {
         temp_r30_12899 = temp_r3_12896->unk0;
-        temp_r3_12900 = ((MKHeap *) temp_r3_12896)->Current();
-        if (temp_r3_12900 != NULL) {
-            ((MKHeap *) (temp_r3_12900->Current()))->Free((void *) temp_r30_12899, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_12899, NULL, 0);
         } else {
             free((u32 *) temp_r30_12899);
         }
         temp_r30_12913 = this->unkA30;
-        temp_r3_12914 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_12914 != NULL) {
-            ((MKHeap *) (temp_r3_12914->Current()))->Free(temp_r30_12913, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_12913, NULL, 0);
         } else {
             free((u32 *) temp_r30_12913);
         }
@@ -6620,8 +6592,6 @@ void Enemy::Deinit() {
 #if 0 // DRAFT: function call 'SetDefaults(Enemy *, int, int)' does not match
 void Enemy::Init() {
     AttackSweepData *var_r3_13078;
-    MKHeap *temp_r3_13064;
-    MKHeap *temp_r3_13071;
 
     Character::Init();
     this->unkA38 = checked_cast<EnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -6634,14 +6604,13 @@ void Enemy::Init() {
     this->unkA4C = NULL;
     this->unkA0C = NULL;
     this->unkA5C = NULL;
-    temp_r3_13064 = SetDefaults(1, 0);
+    SetDefaults(1, 0);
     this->unkA30 = NULL;
     this->unkA68 = 0.0f;
     this->unkB04 = 0;
     this->unkA58 = 0;
-    temp_r3_13071 = temp_r3_13064->Current();
-    if (temp_r3_13071 != NULL) {
-        var_r3_13078 = ((MKHeap *) (temp_r3_13071->Current()))->Alloc(0xA8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_13078 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA8, NULL, 0);
     } else {
         var_r3_13078 = malloc(0xA8);
     }

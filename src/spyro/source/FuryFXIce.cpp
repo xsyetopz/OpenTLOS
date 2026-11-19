@@ -544,15 +544,14 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
 #endif
 
 void FuryFXIce::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk90 = 0;
 }
 
 #if 0 // DRAFT: illegal type
 void FuryFXIce::Deinit() {
-    MKHeap *temp_r0_795;
-    MKHeap *temp_r3_817;
     u32 temp_r0_800;
+    void *temp_r0_795;
     void *temp_r0_814;
     void *var_r31_791;
     void *var_r3_792;
@@ -565,7 +564,7 @@ loop_3:
     temp_r0_800 = M2C_FIELD(var_r3_792, u32 *, -4);
     var_r3_792 -= 4;
     if (temp_r0_800 != 0U) {
-        temp_r0_795 = var_r3_792->unk0;
+        temp_r0_795 = *var_r3_792;
         if (temp_r0_795 < var_r31_791) {
             var_r31_791 = temp_r0_795;
         }
@@ -581,9 +580,8 @@ loop_9:
             var_r4_790 += 4;
             goto loop_9;
         }
-        temp_r3_817 = var_r3_792->Current();
-        if (temp_r3_817 != NULL) {
-            ((MKHeap *) (temp_r3_817->Current()))->Free(var_r31_791, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_791, NULL, 0);
         } else {
             free(var_r31_791);
         }
@@ -1273,7 +1271,6 @@ void FuryFXIce::Init() {
     f32 spC;
     f32 sp8;
     IceBreathSnowFlakes *temp_r3_2171;
-    MKHeap *temp_r3_2125;
     Matrix *temp_r3_2211;
     s32 var_ctr_2145;
     void *temp_r3_2147;
@@ -1284,9 +1281,8 @@ void FuryFXIce::Init() {
     FuryFX::Init();
     SetDefaults();
     this->unk98 = NULL;
-    temp_r3_2125 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2125 != NULL) {
-        var_r3_2132 = ((MKHeap *) (temp_r3_2125->Current()))->Alloc(0x2718, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2132 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2718, NULL, 0);
     } else {
         var_r3_2132 = malloc(0x2718);
     }

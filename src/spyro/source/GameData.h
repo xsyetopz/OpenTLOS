@@ -22,7 +22,7 @@ public:
     class SaveState {
     public:
         void ClearData(void);
-        void Deinit(void);
+        static void Deinit(void);
         void Init(void);
         /* 0x000 */ s8 unk0;
     };
@@ -36,8 +36,8 @@ public:
     void ClearData(void);
     void Deinit(void);
     void Init(void);
-    void ModuleDeinit(void);
-    void ModuleInit(void);
+    static void ModuleDeinit(void);
+    static void ModuleInit(void);
     GameData(void);
     void SetSaveChunk(ChunkInfo *);
     static u8 gameData[0x1b4];

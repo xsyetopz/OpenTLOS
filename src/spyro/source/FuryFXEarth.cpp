@@ -462,7 +462,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
 #endif
 
 void FuryFXEarth::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk104 = 0;
     this->unk108 = 0.0f;
 }

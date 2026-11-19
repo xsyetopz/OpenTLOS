@@ -39,7 +39,7 @@ public:
     void PlatformDetach(void);
     void PlatformAttach(MKProp *, MKCollisionInfo *);
     void SetInitialState(void);
-    PoisonBomb * CreateInstance(void);
+    static PoisonBomb * CreateInstance(void);
     /* 0x150 */ u8 unk150;
     /* 0x151 */ u8 pad151[0x7];
     /* 0x158 */ void* unk158;

@@ -194,10 +194,8 @@ loop_2:
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 UIContainer::LoadLine(UIDataLine *arg0) {
     MCLoadCheckScreen *var_r29_339;
-    MKHeap *temp_r3_348;
     MKIniLine *var_r29_377;
     UIObject *var_r31_356;
-    u8 temp_r3_344;
     void *temp_r30_347;
 
     if (((MKIniLine *) arg0)->IsField("include") != 0) {
@@ -209,12 +207,10 @@ loop_12:
     if (var_r29_339 == NULL) {
         return UIObject::LoadLine(arg0);
     }
-    temp_r3_344 = ((MKIniLine *) arg0)->IsField((s8 *) var_r29_339->__vptr);
-    if (temp_r3_344 != 0) {
+    if (((MKIniLine *) arg0)->IsField((s8 *) var_r29_339->__vptr) != 0) {
         temp_r30_347 = var_r29_339->unk8;
-        temp_r3_348 = ((MKHeap *) temp_r3_344)->Current();
-        if (temp_r3_348 != NULL) {
-            var_r31_356 = ((MKHeap *) (temp_r3_348->Current()))->Alloc((s32) temp_r30_347, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r31_356 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r30_347, NULL, 0);
         } else {
             var_r31_356 = malloc((s32) temp_r30_347);
         }
@@ -237,18 +233,16 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void UIContainer::Deinit() {
-    MKHeap *temp_r3_439;
     UIObject *temp_r31_430;
 
 loop_4:
     if ((s32) this->unk64 != 0) {
         temp_r31_430 = this->unk60;
         Remove(temp_r31_430);
-        temp_r3_439 = ((MKHeap *) (temp_r31_430->Deinit()))->Current();
-        if (temp_r3_439 != NULL) {
-            ((MKHeap *) (temp_r3_439->Current()))->Free(temp_r31_430, NULL, 0);
+        temp_r31_430->Deinit();
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_430, NULL, 0);
         } else {
             free(temp_r31_430);
         }
@@ -256,7 +250,6 @@ loop_4:
     }
     UIObject::Deinit();
 }
-#endif
 
 void UIContainer::Init() {
     UIObject::Init();

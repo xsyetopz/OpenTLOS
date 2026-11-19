@@ -98,16 +98,13 @@ loop_18:
     return var_r3_81;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void Names::Deinit() {
-    MKHeap *temp_r3_166;
     u8 *temp_r31_163;
 
     temp_r31_163 = this->unk0;
     if (temp_r31_163 != NULL) {
-        temp_r3_166 = MKHeap::Current();
-        if (temp_r3_166 != NULL) {
-            ((MKHeap *) (temp_r3_166->Current()))->Free(temp_r31_163, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_163, NULL, 0);
         } else {
             free(temp_r31_163);
         }
@@ -115,7 +112,6 @@ void Names::Deinit() {
         this->unk4 = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Names::Init(const char *arg0) {

@@ -329,47 +329,37 @@ FireBossGraphNode *FireBossDirectedGraph::AddNode(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FireBossDirectedGraph::Deinit() {
     MKHeap *temp_r31_398;
     MKHeap *temp_r31_412;
-    MKHeap *temp_r3_399;
-    MKHeap *temp_r3_413;
 
     temp_r31_398 = this->unk0;
-    temp_r3_399 = MKHeap::Current();
-    if (temp_r3_399 != NULL) {
-        ((MKHeap *) (temp_r3_399->Current()))->Free(temp_r31_398, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_398, NULL, 0);
     } else {
         free(temp_r31_398);
     }
     temp_r31_412 = this->unk4;
-    temp_r3_413 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_413 != NULL) {
-        ((MKHeap *) (temp_r3_413->Current()))->Free(temp_r31_412, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_412, NULL, 0);
         return;
     }
     free(temp_r31_412);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FireBossDirectedGraph::Init() {
-    MKHeap *temp_r3_441;
-    MKHeap *temp_r3_455;
     MKHeap *var_r3_448;
     MKHeap *var_r3_462;
 
-    temp_r3_441 = MKHeap::Current();
-    if (temp_r3_441 != NULL) {
-        var_r3_448 = ((MKHeap *) (temp_r3_441->Current()))->Alloc(0x2D0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_448 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x2D0, NULL, 0);
     } else {
         var_r3_448 = malloc(0x2D0);
     }
     this->unk0 = var_r3_448;
-    temp_r3_455 = var_r3_448->Current();
-    if (temp_r3_455 != NULL) {
-        var_r3_462 = ((MKHeap *) (temp_r3_455->Current()))->Alloc(0x580, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_462 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x580, NULL, 0);
     } else {
         var_r3_462 = malloc(0x580);
     }
@@ -2455,8 +2445,6 @@ s32 FireBoss::LoadLine(MKIniLine *arg0) {
 #if 0 // DRAFT: type mismatch
 void FireBoss::Deinit() {
     FireBossDirectedGraph *temp_r31_4633;
-    MKHeap *temp_r3_4616;
-    MKHeap *temp_r3_4634;
     s32 var_r30_4585;
     s32 var_r31_4586;
     void **temp_r31_4612;
@@ -2489,9 +2477,8 @@ loop_4:
     } while ((void *) *temp_r3_4607 != NULL);
     temp_r31_4612 = this->unk1088;
     if (temp_r31_4612 != &gEmptyPtrList) {
-        temp_r3_4616 = ((MKHeap *) temp_r3_4607)->Current();
-        if (temp_r3_4616 != NULL) {
-            ((MKHeap *) (temp_r3_4616->Current()))->Free(temp_r31_4612, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4612, NULL, 0);
         } else {
             free((MKHeap *) temp_r31_4612);
         }
@@ -2499,9 +2486,8 @@ loop_4:
     this->unk1088 = NULL;
     this->unkC18->Deinit();
     temp_r31_4633 = this->unkC18;
-    temp_r3_4634 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4634 != NULL) {
-        ((MKHeap *) (temp_r3_4634->Current()))->Free(temp_r31_4633, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4633, NULL, 0);
     } else {
         free((MKHeap *) temp_r31_4633);
     }
@@ -2521,8 +2507,6 @@ loop_4:
 #if 0 // DRAFT: undefined identifier '__vptr'
 void FireBoss::Init() {
     FireBossGoal_Think *temp_r30_4685;
-    MKHeap *temp_r3_4711;
-    MKHeap *temp_r3_4729;
     MKHeap *var_r3_4718;
     MKHeap *var_r3_4736;
     s32 var_ctr_4749;
@@ -2547,18 +2531,16 @@ void FireBoss::Init() {
     }
     temp_r30_4685->Init(this);
     this->unkA3C = &temp_r30_4685->__vptr;
-    temp_r3_4711 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4711 != NULL) {
-        var_r3_4718 = ((MKHeap *) (temp_r3_4711->Current()))->Alloc(0x18, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4718 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0);
     } else {
         var_r3_4718 = malloc(0x18);
     }
     this->unkC18 = (FireBossDirectedGraph *) var_r3_4718;
     this->unkC18->Init();
     *FireBossGraphNode::pGraph = this->unkC18;
-    temp_r3_4729 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4729 != NULL) {
-        var_r3_4736 = ((MKHeap *) (temp_r3_4729->Current()))->Alloc(0x58, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4736 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
     } else {
         var_r3_4736 = malloc(0x58);
     }
@@ -2600,11 +2582,6 @@ void FireBossDescriptor::Deinit() {
     MKHeap *temp_r30_4816;
     MKHeap *temp_r30_4832;
     MKHeap *temp_r30_4852;
-    MKHeap *temp_r3_4814;
-    MKHeap *temp_r3_4817;
-    MKHeap *temp_r3_4830;
-    MKHeap *temp_r3_4833;
-    MKHeap *temp_r3_4853;
     s32 var_r29_4810;
     s32 var_r31_4811;
 
@@ -2612,19 +2589,15 @@ void FireBossDescriptor::Deinit() {
     var_r31_4811 = 0;
 loop_8:
     if (var_r29_4810 < (s32) this->unk3D8) {
-        temp_r3_4814 = this->unk3DC;
-        temp_r30_4816 = *(temp_r3_4814 + (var_r31_4811 + 4));
-        temp_r3_4817 = temp_r3_4814->Current();
-        if (temp_r3_4817 != NULL) {
-            ((MKHeap *) (temp_r3_4817->Current()))->Free(temp_r30_4816, NULL, 0);
+        temp_r30_4816 = *(this->unk3DC + (var_r31_4811 + 4));
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_4816, NULL, 0);
         } else {
             free(temp_r30_4816);
         }
-        temp_r3_4830 = this->unk3DC;
-        temp_r30_4832 = *(temp_r3_4830 + (var_r31_4811 + 8));
-        temp_r3_4833 = temp_r3_4830->Current();
-        if (temp_r3_4833 != NULL) {
-            ((MKHeap *) (temp_r3_4833->Current()))->Free(temp_r30_4832, NULL, 0);
+        temp_r30_4832 = *(this->unk3DC + (var_r31_4811 + 8));
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_4832, NULL, 0);
         } else {
             free(temp_r30_4832);
         }
@@ -2633,9 +2606,8 @@ loop_8:
         goto loop_8;
     }
     temp_r30_4852 = this->unk3DC;
-    temp_r3_4853 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4853 != NULL) {
-        ((MKHeap *) (temp_r3_4853->Current()))->Free(temp_r30_4852, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_4852, NULL, 0);
     } else {
         free(temp_r30_4852);
     }
@@ -2692,11 +2664,6 @@ s32 FireBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp10;
     s8 *spC;
     s8 *sp8;
-    MKHeap *temp_r3_5084;
-    MKHeap *temp_r3_5116;
-    MKHeap *temp_r3_5119;
-    MKHeap *temp_r3_5135;
-    MKHeap *temp_r3_5138;
     MKHeap *var_r3_5091;
     MKHeap *var_r3_5126;
     MKHeap *var_r3_5145;
@@ -2706,7 +2673,6 @@ s32 FireBossDescriptor::LoadLine(MKIniLine *arg0) {
     s32 temp_r25_5083;
     s32 temp_r25_5118;
     s32 temp_r25_5137;
-    s32 temp_r3_5080;
     s32 temp_r5_5049;
     s32 temp_ret_5006;
     s32 temp_ret_5046;
@@ -2744,12 +2710,10 @@ loop_11:
         return 1;
     }
     if (arg0->IsField("DamageStates") != 0) {
-        temp_r3_5080 = arg0->GetNmbrOfSubLines();
-        this->unk3D8 = temp_r3_5080;
+        this->unk3D8 = arg0->GetNmbrOfSubLines();
         temp_r25_5083 = this->unk3D8 * 0xC;
-        temp_r3_5084 = ((MKHeap *) temp_r3_5080)->Current();
-        if (temp_r3_5084 != NULL) {
-            var_r3_5091 = ((MKHeap *) (temp_r3_5084->Current()))->Alloc(temp_r25_5083, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_5091 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0);
         } else {
             var_r3_5091 = malloc(temp_r25_5083);
         }
@@ -2760,20 +2724,16 @@ loop_31:
         if (var_r28_5102 != NULL) {
             if (var_r28_5102->IsField("state") != 0) {
                 *(this->unk3DC + var_r27_5104) = var_r28_5102->GetNmbrOfSubLines();
-                temp_r3_5116 = this->unk3DC;
-                temp_r25_5118 = *(temp_r3_5116 + var_r27_5104) * 4;
-                temp_r3_5119 = temp_r3_5116->Current();
-                if (temp_r3_5119 != NULL) {
-                    var_r3_5126 = ((MKHeap *) (temp_r3_5119->Current()))->Alloc(temp_r25_5118, NULL, 0);
+                temp_r25_5118 = *(this->unk3DC + var_r27_5104) * 4;
+                if (MKHeap::Current() != NULL) {
+                    var_r3_5126 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0);
                 } else {
                     var_r3_5126 = malloc(temp_r25_5118);
                 }
                 *(this->unk3DC + (var_r27_5104 + 4)) = var_r3_5126;
-                temp_r3_5135 = this->unk3DC;
-                temp_r25_5137 = *(temp_r3_5135 + var_r27_5104) * 4;
-                temp_r3_5138 = temp_r3_5135->Current();
-                if (temp_r3_5138 != NULL) {
-                    var_r3_5145 = ((MKHeap *) (temp_r3_5138->Current()))->Alloc(temp_r25_5137, NULL, 0);
+                temp_r25_5137 = *(this->unk3DC + var_r27_5104) * 4;
+                if (MKHeap::Current() != NULL) {
+                    var_r3_5145 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0);
                 } else {
                     var_r3_5145 = malloc(temp_r25_5137);
                 }

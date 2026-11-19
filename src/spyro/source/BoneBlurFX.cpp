@@ -181,10 +181,7 @@ void BoneBlurFX::EnableBlur(bool arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'int **' to
 void BoneBlurFX::InitData(MKModel *arg0, BoneBlurFXNodeDef *arg1, int arg2, int **arg3, int arg4, int arg5, bool arg6) {
-    BoneBlurFX *temp_r31_334;
-    BoneBlurFX *var_r3_0;
     BoneBlurFX::BlurNode **var_r3_389;
-    MKHeap *temp_r3_382;
     s32 temp_r0_348;
     s32 temp_r30_381;
     s32 var_r29_336;
@@ -193,48 +190,43 @@ void BoneBlurFX::InitData(MKModel *arg0, BoneBlurFXNodeDef *arg1, int arg2, int 
     s32 var_r6_395;
     void *temp_r4_347;
 
-    var_r3_0 = this;
-    temp_r31_334 = var_r3_0;
     var_r29_336 = 0;
     var_r30_337 = 0;
-    var_r3_0->unk74 = arg0;
-    var_r3_0->unk64 = arg1;
-    var_r3_0->unk68 = arg2;
-    var_r3_0->unk5C = arg3;
-    var_r3_0->unk60 = arg4;
-    var_r3_0->unk7C = arg6;
+    this->unk74 = arg0;
+    this->unk64 = arg1;
+    this->unk68 = arg2;
+    this->unk5C = arg3;
+    this->unk60 = arg4;
+    this->unk7C = arg6;
 loop_6:
-    if (var_r29_336 < (s32) temp_r31_334->unk68) {
-        temp_r4_347 = temp_r31_334->unk64 + var_r30_337;
+    if (var_r29_336 < (s32) this->unk68) {
+        temp_r4_347 = this->unk64 + var_r30_337;
         temp_r0_348 = M2C_FIELD(temp_r4_347, s32 *, 8);
         if (temp_r0_348 == 0) {
-            var_r3_0 = (BoneBlurFX *) Tools_GetMatchingNodeIndex(temp_r31_334->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
-            *(temp_r31_334->unk64 + (var_r30_337 + 4)) = var_r3_0;
+            *(this->unk64 + (var_r30_337 + 4)) = (s32) Tools_GetMatchingNodeIndex(this->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
         } else if (temp_r0_348 == 1) {
-            var_r3_0 = (BoneBlurFX *) Tools_GetMatchingRefPointIndex(temp_r31_334->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
-            *(temp_r31_334->unk64 + (var_r30_337 + 4)) = var_r3_0;
+            *(this->unk64 + (var_r30_337 + 4)) = (s32) Tools_GetMatchingRefPointIndex(this->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
         }
         var_r29_336 += 1;
         var_r30_337 += 0xC;
         goto loop_6;
     }
-    temp_r31_334->unk54 = arg5;
-    temp_r31_334->unk4C = 0;
-    temp_r31_334->unk50 = 0;
-    temp_r30_381 = temp_r31_334->unk54 << 5;
-    temp_r3_382 = ((MKHeap *) var_r3_0)->Current();
-    if (temp_r3_382 != NULL) {
-        var_r3_389 = ((MKHeap *) (temp_r3_382->Current()))->Alloc(temp_r30_381, NULL, 0);
+    this->unk54 = arg5;
+    this->unk4C = 0;
+    this->unk50 = 0;
+    temp_r30_381 = this->unk54 << 5;
+    if (MKHeap::Current() != NULL) {
+        var_r3_389 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_381, NULL, 0);
     } else {
         var_r3_389 = malloc(temp_r30_381);
     }
     var_r6_395 = 0;
-    temp_r31_334->unk58 = var_r3_389;
+    this->unk58 = var_r3_389;
     var_r3_398 = 0;
 loop_12:
-    if (var_r6_395 < (s32) temp_r31_334->unk54) {
+    if (var_r6_395 < (s32) this->unk54) {
         var_r6_395 += 1;
-        *(temp_r31_334->unk58 + var_r3_398) = 0;
+        *(this->unk58 + var_r3_398) = 0;
         var_r3_398 += 4;
         goto loop_12;
     }
@@ -243,7 +235,6 @@ loop_12:
 
 void BoneBlurFX::Deinit() {
     BoneBlurFX::BlurNode **temp_r31_434;
-    MKHeap *temp_r3_435;
     s32 *temp_r3_424;
 
     temp_r3_424 = this->unk78;
@@ -253,9 +244,8 @@ void BoneBlurFX::Deinit() {
     this->unk78 = NULL;
     MKMaterial_Destroy(this->unk70);
     temp_r31_434 = this->unk58;
-    temp_r3_435 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_435 != NULL) {
-        ((MKHeap *) (temp_r3_435->Current()))->Free(temp_r31_434, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_434, NULL, 0);
     } else {
         free(temp_r31_434);
     }

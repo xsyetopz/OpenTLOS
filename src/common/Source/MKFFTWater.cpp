@@ -890,18 +890,14 @@ void MKFFTWaterType::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKFFTBaseType::Deinit() {
-    MKHeap *temp_r3_1472;
-    MKHeap *temp_r3_1513;
     MKMaterial *temp_r3_1505;
     s16 *temp_r31_1471;
     s16 *temp_r31_1512;
 
     temp_r31_1471 = this->unk50C4;
-    temp_r3_1472 = MKHeap::Current();
-    if (temp_r3_1472 != NULL) {
-        ((MKHeap *) (temp_r3_1472->Current()))->Free(temp_r31_1471, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1471, NULL, 0);
     } else {
         free(temp_r31_1471);
     }
@@ -921,14 +917,12 @@ void MKFFTBaseType::Deinit() {
         this->unk5048 = NULL;
     }
     temp_r31_1512 = this->unk8;
-    temp_r3_1513 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1513 != NULL) {
-        ((MKHeap *) (temp_r3_1513->Current()))->Free(temp_r31_1512, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1512, NULL, 0);
         return;
     }
     free(temp_r31_1512);
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcmp(signed char *, unsigned long)' does not match
 void MKFFTWaterType::RemoveFromLinkedList() {
@@ -1085,10 +1079,6 @@ void MKFFTWaterType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
 void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     s8 sp8;
     MKHeap *temp_r29_2056;
-    MKHeap *temp_r3_2032;
-    MKHeap *temp_r3_2035;
-    MKHeap *temp_r3_2054;
-    MKHeap *temp_r3_2057;
     Texture *temp_r3_2108;
     s16 *var_r3_2042;
     s16 *var_r3_2064;
@@ -1099,29 +1089,25 @@ void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     strcpy(this + 0x5072, arg1);
     strcat(this + 0x5072, Str_Printf("%d", *MKResource::sWorkingChunkID, M2C_BITWISE(f32, strcpy(&this->unk509A, arg1))));
     this->unk0 = arg0;
-    temp_r3_2032 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
-    temp_r29_2034 = (temp_r3_2032 + 2) * 2;
-    temp_r3_2035 = temp_r3_2032->Current();
-    if (temp_r3_2035 != NULL) {
-        var_r3_2042 = ((MKHeap *) (temp_r3_2035->Current()))->Alloc(temp_r29_2034, NULL, 0);
+    temp_r29_2034 = (MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0) + 2) * 2;
+    if (MKHeap::Current() != NULL) {
+        var_r3_2042 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_2034, NULL, 0);
     } else {
         var_r3_2042 = malloc(temp_r29_2034);
     }
     this->unk50C4 = var_r3_2042;
     *this->unk50C4 = 0;
-    temp_r3_2054 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
-    this->unk4 = temp_r3_2054;
+    this->unk4 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
     temp_r29_2056 = this->unk4;
-    temp_r3_2057 = temp_r3_2054->Current();
-    if (temp_r3_2057 != NULL) {
-        var_r3_2064 = ((MKHeap *) (temp_r3_2057->Current()))->Alloc((s32) temp_r29_2056, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2064 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r29_2056, NULL, 0);
     } else {
         var_r3_2064 = malloc((s32) temp_r29_2056);
     }
     this->unk8 = var_r3_2064;
     var_r29_2071 = 0;
 loop_10:
-    if (var_r29_2071 < (s32) this->unk4) {
+    if (var_r29_2071 < (MKHeap *) this->unk4) {
         *(this->unk8 + var_r29_2071) = 0;
         Str_Lower(MKModel_GetSubObjectName(this->unk0, (SubObjectType) 0, var_r29_2071));
         strcpy(&sp8, M2C_ERROR(/* Read from unset register $r3 */));
@@ -1154,15 +1140,13 @@ loop_10:
 #endif
 
 void MKFFTWater::Deinit() {
-    MKHeap *temp_r3_2184;
-    MKHeap *temp_r3_2203;
     MKOcean *temp_r31_2183;
     MKOcean *temp_r3_2179;
     s16 *temp_r31_2202;
     s32 var_r30_2166;
     s32 var_r31_2167;
 
-    DeinitInternal();
+    MKFFTWater::DeinitInternal();
     var_r30_2166 = 0;
     var_r31_2167 = 0;
 loop_2:
@@ -1176,9 +1160,8 @@ loop_2:
     if (temp_r3_2179 != NULL) {
         temp_r3_2179->Deinit();
         temp_r31_2183 = this->unk0;
-        temp_r3_2184 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2184 != NULL) {
-            ((MKHeap *) (temp_r3_2184->Current()))->Free(temp_r31_2183, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2183, NULL, 0);
         } else {
             free(&temp_r31_2183->unk0);
         }
@@ -1186,9 +1169,8 @@ loop_2:
     this->unk0 = NULL;
     if ((s32) this->unk8 != 0) {
         temp_r31_2202 = this->unkC;
-        temp_r3_2203 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2203 != NULL) {
-            ((MKHeap *) (temp_r3_2203->Current()))->Free(temp_r31_2202, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2202, NULL, 0);
         } else {
             free(temp_r31_2202);
         }
@@ -1293,7 +1275,7 @@ void MKFFTWater::ManagedDraw() {
     s32 var_r26_2364;
     s32 var_r31_2361;
 
-    BuildVisibleTypesList();
+    MKFFTWater::BuildVisibleTypesList();
     var_r31_2361 = 0;
     var_r26_2364 = 0;
 loop_5:
@@ -1378,11 +1360,9 @@ loop_6:
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKFFTWater::Init(const char *arg0) {
     MKIni sp8;
-    MKHeap *temp_r3_2558;
-    MKHeap *temp_r3_2575;
     MKIniLine *var_r28_2519;
     MKIniLine *var_r29_2597;
-    MKIniLine *var_r3_2517;
+    s16 *var_r3_2565;
     s16 *var_r3_2582;
     s32 temp_r0_2554;
     s32 temp_r28_2557;
@@ -1392,11 +1372,11 @@ void MKFFTWater::Init(const char *arg0) {
 
     this->unk4 = MKModel_Create(arg0, NULL, 2, NULL);
     MKModel_EnableScissoring(this->unk4, 1U);
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->ActivateTempMemOverride();
-    ((MKHeap *) (sp8.Init("water.ini", 0, NULL)))->DeactivateTempMemOverride();
+    MKHeap::ActivateTempMemOverride();
+    sp8.Init("water.ini", 0, NULL);
+    MKHeap::DeactivateTempMemOverride();
     var_r30_2516 = -1;
-    var_r3_2517 = sp8.GetFirstLine();
-    var_r28_2519 = var_r3_2517;
+    var_r28_2519 = sp8.GetFirstLine();
     this->unk8 = 0;
     var_r29_2521 = 0;
 loop_6:
@@ -1409,25 +1389,22 @@ loop_6:
                 this->unk8 += 1;
             }
         }
-        var_r3_2517 = var_r28_2519->unkC->GetNextLine(var_r28_2519);
-        var_r28_2519 = var_r3_2517;
+        var_r28_2519 = var_r28_2519->unkC->GetNextLine(var_r28_2519);
         goto loop_6;
     }
     temp_r0_2554 = this->unk8;
     if (temp_r0_2554 != 0) {
         temp_r28_2557 = temp_r0_2554 * 0x5168;
-        temp_r3_2558 = ((MKHeap *) var_r3_2517)->Current();
-        if (temp_r3_2558 != NULL) {
-            var_r3_2517 = ((MKHeap *) (temp_r3_2558->Current()))->Alloc(temp_r28_2557, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2565 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2557, NULL, 0);
         } else {
-            var_r3_2517 = malloc(temp_r28_2557);
+            var_r3_2565 = malloc(temp_r28_2557);
         }
-        this->unkC = &var_r3_2517->unk0;
+        this->unkC = var_r3_2565;
     }
     if (var_r29_2521 != 0) {
-        temp_r3_2575 = ((MKHeap *) var_r3_2517)->Current();
-        if (temp_r3_2575 != NULL) {
-            var_r3_2582 = ((MKHeap *) (temp_r3_2575->Current()))->Alloc(0x7740, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2582 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7740, NULL, 0);
         } else {
             var_r3_2582 = malloc(0x7740);
         }
@@ -1486,9 +1463,9 @@ block_40:
     } else if (var_r30_2516 != -1) {
         ((MKFFTWaterType *) (this->unkC + (var_r30_2516 * 0x5168)))->LoadDone();
     }
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->ActivateTempMemOverride();
+    MKHeap::ActivateTempMemOverride();
     sp8.Deinit();
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
+    MKHeap::DeactivateTempMemOverride();
     InitInternal();
 }
 #endif

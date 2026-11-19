@@ -21,7 +21,6 @@ extern f32 gUpdateTimeDelta;
 void WhirlWindFX::Deinit() {
     MKHeap *temp_r0_51;
     MKHeap *temp_r0_70;
-    MKHeap *temp_r3_73;
     MKHeap *var_r31_47;
     MKHeap *var_r3_48;
     MKHeap *var_r4_46;
@@ -50,9 +49,8 @@ loop_9:
             var_r4_46 += 4;
             goto loop_9;
         }
-        temp_r3_73 = var_r3_48->Current();
-        if (temp_r3_73 != NULL) {
-            ((MKHeap *) (temp_r3_73->Current()))->Free(var_r31_47, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_47, NULL, 0);
         } else {
             free(var_r31_47);
         }
@@ -110,7 +108,6 @@ loop_4:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void WhirlWindFX::Init() {
-    MKHeap *temp_r3_173;
     MKHeap *temp_r3_195;
     MKHeap *temp_r3_201;
     MKHeap *var_r3_180;
@@ -118,9 +115,8 @@ void WhirlWindFX::Init() {
     s32 var_ctr_193;
 
     MKProp::Init();
-    temp_r3_173 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_173 != NULL) {
-        var_r3_180 = ((MKHeap *) (temp_r3_173->Current()))->Alloc(0x350, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_180 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x350, NULL, 0);
     } else {
         var_r3_180 = malloc(0x350);
     }

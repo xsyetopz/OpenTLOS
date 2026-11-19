@@ -38,9 +38,9 @@ loop_2:
 #endif
 
 void GameSounds_InitModule() {
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+    Level::GetWorldInfo();
     KDSound_InitModule(0U, M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x68));
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+    Level::GetWorldInfo();
+    Level::GetWorldInfo();
     KDSound_SetMasterVolume(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x70), M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x6C));
 }

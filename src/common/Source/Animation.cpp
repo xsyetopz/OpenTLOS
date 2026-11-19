@@ -30,8 +30,6 @@ static BlendShapeState _defaultStateArea_913[6];
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Animation::EnableCustomMatrices(bool arg0) {
     MKHeap *temp_r3_18;
-    MKHeap *temp_r3_33;
-    MKHeap *temp_r3_37;
     MKHeap *var_r3_44;
     s32 temp_r31_36;
 
@@ -41,11 +39,9 @@ void Animation::EnableCustomMatrices(bool arg0) {
             temp_r3_18->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
         }
         if (arg0 != 0) {
-            temp_r3_33 = M2C_FIELD(this->unk0, MKHeap **, 0x28);
-            temp_r31_36 = (s8) M2C_FIELD(temp_r3_33, u8 *, 4) << 6;
-            temp_r3_37 = temp_r3_33->Current();
-            if (temp_r3_37 != NULL) {
-                var_r3_44 = ((MKHeap *) (temp_r3_37->Current()))->Alloc(temp_r31_36, NULL, 0);
+            temp_r31_36 = (s8) M2C_FIELD(M2C_FIELD(this->unk0, void **, 0x28), u8 *, 4) << 6;
+            if (MKHeap::Current() != NULL) {
+                var_r3_44 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_36, NULL, 0);
             } else {
                 var_r3_44 = malloc(temp_r31_36);
             }
@@ -1428,7 +1424,6 @@ Animation *Animation::Create(const char *arg0, int arg1) {
     s32 sp8;
     MKHeap *temp_r3_2692;
     MKHeap *temp_r3_2695;
-    MKHeap *temp_r3_2714;
     MKHeap *temp_r3_2790;
     MKHeap *temp_r3_2892;
     MKHeap *temp_r4_2740;
@@ -1442,7 +1437,6 @@ Animation *Animation::Create(const char *arg0, int arg1) {
     s32 var_r28_2768;
     s32 var_r28_2845;
     s32 var_r30_2696;
-    s32 var_r3_2702;
     s32 var_r3_2806;
     s32 var_r4_2807;
     s32 var_r7_2804;
@@ -1459,17 +1453,14 @@ Animation *Animation::Create(const char *arg0, int arg1) {
     temp_r3_2695 = temp_r3_2692->unk28;
     var_r30_2696 = 0;
     temp_r4_2697 = M2C_FIELD(temp_r3_2695, u8 *, 4);
-    var_r3_2702 = ((s8) temp_r4_2697 - 1) * 0x48;
-    var_r27_2705 = var_r3_2702 + ((s8) M2C_FIELD(temp_r3_2695, u8 *, 8) * 0x48) + 0x78;
+    var_r27_2705 = (((s8) temp_r4_2697 - 1) * 0x48) + ((s8) M2C_FIELD(temp_r3_2695, u8 *, 8) * 0x48) + 0x78;
     if (arg0 != NULL) {
-        var_r3_2702 = var_r27_2705 + 0xF;
-        temp_r27_2709 = var_r3_2702 & 0xFFFFFFF0;
+        temp_r27_2709 = (var_r27_2705 + 0xF) & 0xFFFFFFF0;
         var_r30_2696 = temp_r27_2709;
         var_r27_2705 = temp_r27_2709 + (((s8) temp_r4_2697 + 1) << 6);
     }
-    temp_r3_2714 = ((MKHeap *) var_r3_2702)->Current();
-    if (temp_r3_2714 != NULL) {
-        var_r29_2722 = ((MKHeap *) (temp_r3_2714->Current()))->Alloc(var_r27_2705, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r29_2722 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r27_2705, NULL, 0);
     } else {
         var_r29_2722 = malloc(var_r27_2705);
     }
@@ -1559,7 +1550,6 @@ loop_24:
 #if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
 MKHeap *CreateTemplate(const char *arg0) {
     s32 sp8;
-    MKHeap *temp_r3_2959;
     s32 temp_r0_3009;
     s32 var_r4_3001;
     s32 var_r6_3003;
@@ -1580,9 +1570,9 @@ loop_4:
         M2C_FIELD(var_r31_2925, s32 *, 0x24) = (s32) (M2C_FIELD(var_r31_2925, s32 *, 0x24) + 1);
     } else {
         temp_r3_2955 = Str_Printf("%s.anm", arg0);
-        temp_r3_2959 = ((MKHeap *) (MKArchive_Exists(temp_r3_2955, (int *) &sp8)))->Current();
-        if (temp_r3_2959 != NULL) {
-            var_r31_2925 = ((MKHeap *) (temp_r3_2959->Current()))->Alloc(0x34, NULL, 0);
+        MKArchive_Exists(temp_r3_2955, (int *) &sp8);
+        if (MKHeap::Current() != NULL) {
+            var_r31_2925 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x34, NULL, 0);
         } else {
             var_r31_2925 = malloc(0x34);
         }
@@ -1617,7 +1607,6 @@ loop_14:
 #endif
 
 void Animation_DeinitModule() {
-    MKHeap *temp_r3_3041;
     s8 *temp_r30_3040;
     s8 *var_r31_3037;
 
@@ -1625,9 +1614,8 @@ void Animation_DeinitModule() {
 loop_5:
     if (var_r31_3037 != NULL) {
         temp_r30_3040 = M2C_FIELD(var_r31_3037, s8 **, 0x2C);
-        temp_r3_3041 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3041 != NULL) {
-            ((MKHeap *) (temp_r3_3041->Current()))->Free(var_r31_3037, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_3037, NULL, 0);
         } else {
             free(var_r31_3037);
         }

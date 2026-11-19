@@ -2385,8 +2385,6 @@ loop_208:
 #if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void ZapBreathFX::Deinit() {
     Corona *temp_r4_4552;
-    MKHeap *temp_r3_4515;
-    MKHeap *temp_r3_4572;
     ManagedLight *temp_r4_4528;
     s32 var_r30_4504;
     s32 var_r30_4542;
@@ -2405,9 +2403,8 @@ void ZapBreathFX::Deinit() {
         var_r31_4505 += 0x1D0;
     } while (var_r30_4504 < 3);
     temp_r31_4514 = this->unkA8;
-    temp_r3_4515 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4515 != NULL) {
-        ((MKHeap *) (temp_r3_4515->Current()))->Free(temp_r31_4514, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4514, NULL, 0);
     } else {
         free(temp_r31_4514);
     }
@@ -2436,9 +2433,8 @@ void ZapBreathFX::Deinit() {
         var_r31_4561 += 0x90;
     } while (var_r30_4560 < 0xA);
     temp_r31_4571 = this->unkAC;
-    temp_r3_4572 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4572 != NULL) {
-        ((MKHeap *) (temp_r3_4572->Current()))->Free(temp_r31_4571, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4571, NULL, 0);
     } else {
         free(temp_r31_4571);
     }
@@ -3210,8 +3206,6 @@ f32 ZapBreathFX::Resolve() {
 
 #if 0 // DRAFT: illegal use of non-static member
 void ZapBreathFX::Init() {
-    MKHeap *temp_r3_5802;
-    MKHeap *temp_r3_5857;
     s32 temp_r0_5824;
     s32 var_r28_5817;
     s32 var_r28_5876;
@@ -3227,9 +3221,8 @@ void ZapBreathFX::Init() {
     BaseBreathFX::Init();
     this->unkC9 = 0;
     this->unk104 = 0.5f;
-    temp_r3_5802 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_5802 != NULL) {
-        var_r3_5809 = ((MKHeap *) (temp_r3_5802->Current()))->Alloc(0x570, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_5809 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x570, NULL, 0);
     } else {
         var_r3_5809 = malloc(0x570);
     }
@@ -3254,9 +3247,8 @@ void ZapBreathFX::Init() {
     this->unk9E4 = NULL;
     this->unkB0 = NULL;
     this->unkAC = NULL;
-    temp_r3_5857 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_5857 != NULL) {
-        var_r3_5864 = ((MKHeap *) (temp_r3_5857->Current()))->Alloc(0x5A0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_5864 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x5A0, NULL, 0);
     } else {
         var_r3_5864 = malloc(0x5A0);
     }

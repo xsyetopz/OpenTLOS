@@ -15,7 +15,7 @@ public:
     virtual f32 Resolve(void);
     virtual void * Update(void);
     virtual void Draw(void);
-    void SetDefaults(void);
+    static void SetDefaults(void);
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

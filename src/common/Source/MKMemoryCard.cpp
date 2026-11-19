@@ -33,12 +33,12 @@ extern u8 init_666;
 extern u8 init_669;
 extern u8 init_784;
 extern u8 init_788;
-extern MKHeap *pBuffer_613;
-extern MKHeap *pBuffer_671;
+extern void *pBuffer_613;
+extern void *pBuffer_671;
 extern u32 roundedFileSize_668;
+static M2C_UNK staticDataBuffer;
+static M2C_UNK CardTemplate;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_slotName_0x40'
-static MKHeap staticDataBuffer[0x8E];               /* extra bytes: 0x31 */
-static MKHeap CardTemplate[0x8F];                   /* extra bytes: 0x11 */
 static struct _struct_slotName_0x40 slotName[0xE];
 #endif
 static CARDStat fileStat_608;
@@ -52,13 +52,13 @@ static M2C_UNK lit_303;                                /* unable to generate ini
 void Step_CheckFileSystem() {
     s32 temp_r3_34;
 
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
     case 0:                                         /* switch 1 */
-        CARDCheckAsync(M2C_BITWISE(s32, CardTemplate->unk38), NULL);
-        M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+        CARDCheckAsync(M2C_FIELD(&CardTemplate, s32 *, 0x38), NULL);
+        M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
         /* fallthrough */
     case 1:                                         /* switch 1 */
-        temp_r3_34 = CARDGetResultCode(M2C_BITWISE(s32, CardTemplate->unk38));
+        temp_r3_34 = CARDGetResultCode(M2C_FIELD(&CardTemplate, s32 *, 0x38));
         switch (temp_r3_34) {                       /* switch 2; irregular */
         case -128:                                  /* switch 2 */
             SetFinishedStep(-0x12);
@@ -87,18 +87,18 @@ void Step_CheckFileSystem() {
 
 #if 0 // DRAFT: undefined identifier 'SetFinished'
 void Step_MountCard() {
-    f32 temp_r28_100;
+    s32 temp_r28_100;
     s32 temp_r3_115;
     s32 temp_r3_151;
     s32 var_r27_108;
 
-    temp_r28_100 = CardTemplate->unk38;
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
+    temp_r28_100 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         var_r27_108 = 0;
         do {
-            if (var_r27_108 != M2C_BITWISE(s32, temp_r28_100)) {
-                temp_r3_115 = CARDUnmount(M2C_BITWISE(s32, CardTemplate->unk38));
+            if (var_r27_108 != temp_r28_100) {
+                temp_r3_115 = CARDUnmount(M2C_FIELD(&CardTemplate, s32 *, 0x38));
                 if (temp_r3_115 != -2) {
                     switch (temp_r3_115) {          /* switch 2; irregular */
                     case -128:                      /* switch 2 */
@@ -113,11 +113,11 @@ void Step_MountCard() {
             }
             var_r27_108 += 1;
         } while (var_r27_108 < 2);
-        CARDMountAsync(M2C_BITWISE(s32, temp_r28_100), &CardTemplate->unk100, callback_MountDetach, NULL);
-        M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+        CARDMountAsync(temp_r28_100, &CardTemplate + 0x100, callback_MountDetach, NULL);
+        M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
         /* fallthrough */
     case 1:                                         /* switch 1 */
-        temp_r3_151 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_100));
+        temp_r3_151 = CARDGetResultCode(temp_r28_100);
         switch (temp_r3_151) {                      /* switch 3; irregular */
         case -128:                                  /* switch 3 */
             SetFinishedStep(-0x12);
@@ -134,7 +134,7 @@ void Step_MountCard() {
         case 0:                                     /* switch 3 */
         case -13:                                   /* switch 3 */
             SetFinishedStep(0);
-            (&bIsMounted)[M2C_BITWISE(s32, temp_r28_100)] = 1;
+            (&bIsMounted)[temp_r28_100] = 1;
             /* fallthrough */
             return;
         }
@@ -149,7 +149,7 @@ void Step_ProbeDevice() {
     s32 sp8;
     s32 temp_r3_218;
 
-    temp_r3_218 = CARDProbeEx(M2C_BITWISE(s32, CardTemplate->unk38), &spC, &sp8);
+    temp_r3_218 = CARDProbeEx(M2C_FIELD(&CardTemplate, s32 *, 0x38), &spC, &sp8);
     switch (temp_r3_218) {                          /* irregular */
     case -128:
         SetFinishedStep(-2);
@@ -165,25 +165,25 @@ void Step_ProbeDevice() {
             SetFinishedStep(-5);
             return;
         }
-        if ((u32) CardTemplate->unkC != 0U) {
-            *CardTemplate->unkC = 1;
+        if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 0xC) != NULL) {
+            *M2C_FIELD(&CardTemplate, s32 **, 0xC) = 1;
         }
-        CardTemplate->unk0 = (MKHeap *) sp8;
+        M2C_FIELD(&CardTemplate, s32 *, 0) = sp8;
         SetFinishedStep(0);
         return;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'WriteMKFileInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Step_GetDirInfo() {
-    MKHeap *temp_r24_575;
-    f32 temp_r27_302;
+    CARDFileInfo *temp_r29_305;
     s32 temp_r0_387;
     s32 temp_r0_472;
     s32 temp_r0_531;
     s32 temp_r0_644;
-    s32 temp_r24_553;
+    s32 temp_r24_575;
+    s32 temp_r27_302;
     s32 temp_r3_347;
     s32 temp_r3_423;
     s32 temp_r3_494;
@@ -191,6 +191,7 @@ void Step_GetDirInfo() {
     s32 temp_r4_574;
     s32 var_r24_324;
     s32 var_r25_325;
+    u32 temp_r24_553;
     u8 var_r26_306;
 
     if ((s8) init_784 == 0) {
@@ -201,26 +202,27 @@ void Step_GetDirInfo() {
         fileSize_787 = 0;
         init_788 = 1;
     }
-    temp_r27_302 = CardTemplate->unk38;
+    temp_r27_302 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
+    temp_r29_305 = &CardTemplate + 0xD0;
     var_r26_306 = 0;
 loop_99:
     if (var_r26_306 == 0) {
-        switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
+        switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             var_r24_324 = 0;
             var_r25_325 = 0;
             do {
-                WriteMKFileInfo((MKMemoryCardFileInfo *) &CardTemplate->unk20[var_r25_325], NULL);
+                WriteMKFileInfo(M2C_FIELD(&CardTemplate, s32 *, 0x20) + var_r25_325, NULL);
                 var_r24_324 += 1;
                 var_r25_325 += 0xC0;
             } while (var_r24_324 < 0xE);
             fileSlot_783 = 0;
-            CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName->unk0, (CARDFileInfo *) &CardTemplate->unkD0);
-            M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+            CARDOpen(temp_r27_302, &slotName->unk0, temp_r29_305);
+            M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
             break;
         case 1:                                     /* switch 1 */
             var_r26_306 = 1;
-            temp_r3_347 = CARDGetResultCode(M2C_BITWISE(s32, temp_r27_302));
+            temp_r3_347 = CARDGetResultCode(temp_r27_302);
             switch (temp_r3_347) {                  /* switch 2; irregular */
             case -128:                              /* switch 2 */
                 SetFinishedStep(-1);
@@ -236,8 +238,8 @@ loop_99:
                 fileSlot_783 = temp_r0_387;
                 if (temp_r0_387 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_387].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
-                    M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+                    CARDOpen(temp_r27_302, &slotName[temp_r0_387].unk0, temp_r29_305);
+                    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
                 }
@@ -247,14 +249,14 @@ loop_99:
                 break;
             case 0:                                 /* switch 2 */
                 var_r26_306 = 0;
-                CARDGetStatus(M2C_BITWISE(s32, temp_r27_302), CardTemplate->unkD4, &stat_786);
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 2;
+                CARDGetStatus(temp_r27_302, M2C_FIELD(&CardTemplate, s32 *, 0xD4), &stat_786);
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 2;
                 break;
             }
             break;
         case 2:                                     /* switch 1 */
             var_r26_306 = 1;
-            temp_r3_423 = CARDGetResultCode(M2C_BITWISE(s32, temp_r27_302));
+            temp_r3_423 = CARDGetResultCode(temp_r27_302);
             switch (temp_r3_423) {                  /* switch 3; irregular */
             case -128:                              /* switch 3 */
                 SetFinishedStep(-1);
@@ -269,16 +271,16 @@ loop_99:
                 fileSize_787 = (s32) stat_786.length;
                 SetDataBuffer((s32) stat_786.length);
                 var_r26_306 = 0;
-                CARDReadAsync((CARDFileInfo *) &CardTemplate->unkD0, CardTemplate->unk48, fileSize_787, 0, NULL);
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 3;
+                CARDReadAsync(temp_r29_305, M2C_FIELD(&CardTemplate, void **, 0x48), fileSize_787, 0, NULL);
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 3;
                 break;
             case -4:                                /* switch 3 */
                 temp_r0_472 = fileSlot_783 + 1;
                 fileSlot_783 = temp_r0_472;
                 if (temp_r0_472 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_472].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
-                    M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+                    CARDOpen(temp_r27_302, &slotName[temp_r0_472].unk0, temp_r29_305);
+                    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
                 }
@@ -287,7 +289,7 @@ loop_99:
             break;
         case 3:                                     /* switch 1 */
             var_r26_306 = 1;
-            temp_r3_494 = CARDGetResultCode(M2C_BITWISE(s32, temp_r27_302));
+            temp_r3_494 = CARDGetResultCode(temp_r27_302);
             switch (temp_r3_494) {                  /* switch 4; irregular */
             case -128:                              /* switch 4 */
                 SetFinishedStep(-1);
@@ -304,38 +306,38 @@ loop_99:
                 fileSlot_783 = temp_r0_531;
                 if (temp_r0_531 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_531].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
-                    M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+                    CARDOpen(temp_r27_302, &slotName[temp_r0_531].unk0, temp_r29_305);
+                    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
                 }
                 break;
             case 0:                                 /* switch 4 */
-                temp_r24_553 = CardTemplate->unk48->unk8;
-                CardTemplate->unk48->unk8 = 0;
-                if (Crc_Calculate(CardTemplate->unk48, fileSize_787) != (u32) temp_r24_553) {
-                    *(CardTemplate->unk20 + ((fileSlot_783 * 0xC0) + 0xA4)) = 1;
-                    *(CardTemplate->unk20 + ((fileSlot_783 * 0xC0) + 0xA5)) = 1;
+                temp_r24_553 = M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), u32 *, 8);
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), u32 *, 8) = 0U;
+                if (Crc_Calculate(M2C_FIELD(&CardTemplate, void **, 0x48), fileSize_787) != temp_r24_553) {
+                    *(M2C_FIELD(&CardTemplate, s32 *, 0x20) + ((fileSlot_783 * 0xC0) + 0xA4)) = 1;
+                    *(M2C_FIELD(&CardTemplate, s32 *, 0x20) + ((fileSlot_783 * 0xC0) + 0xA5)) = 1;
                 } else {
-                    temp_r4_574 = CardTemplate->unk48->unk4;
-                    temp_r24_575 = CardTemplate->unk48->unk0;
-                    if ((temp_r4_574 < 0) || (temp_r24_575 < 0) || ((void *) (temp_r4_574 + temp_r24_575) > (s32) fileSize_787)) {
-                        *(CardTemplate->unk20 + ((fileSlot_783 * 0xC0) + 0xA4)) = 1;
-                        *(CardTemplate->unk20 + ((fileSlot_783 * 0xC0) + 0xA5)) = 1;
+                    temp_r4_574 = M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), s32 *, 4);
+                    temp_r24_575 = M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), s32 *, 0);
+                    if ((temp_r4_574 < 0) || (temp_r24_575 < 0) || ((s32) (temp_r4_574 + temp_r24_575) > (s32) fileSize_787)) {
+                        *(M2C_FIELD(&CardTemplate, s32 *, 0x20) + ((fileSlot_783 * 0xC0) + 0xA4)) = 1;
+                        *(M2C_FIELD(&CardTemplate, s32 *, 0x20) + ((fileSlot_783 * 0xC0) + 0xA5)) = 1;
                     } else {
-                        WriteMKFileInfo(CardTemplate->unk20 + (fileSlot_783 * 0xC0), &stat_786);
-                        *(CardTemplate->unk20 + ((fileSlot_783 * 0xC0) + 0x9C)) = temp_r24_575;
+                        WriteMKFileInfo(M2C_FIELD(&CardTemplate, s32 *, 0x20) + (fileSlot_783 * 0xC0), &stat_786);
+                        *(M2C_FIELD(&CardTemplate, s32 *, 0x20) + ((fileSlot_783 * 0xC0) + 0x9C)) = temp_r24_575;
                     }
                 }
                 var_r26_306 = 0;
-                CARDClose((CARDFileInfo *) &CardTemplate->unkD0);
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 4;
+                CARDClose(temp_r29_305);
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 4;
                 break;
             }
             break;
         case 4:                                     /* switch 1 */
             var_r26_306 = 1;
-            temp_r3_620 = CARDGetResultCode(M2C_BITWISE(s32, temp_r27_302));
+            temp_r3_620 = CARDGetResultCode(temp_r27_302);
             switch (temp_r3_620) {                  /* switch 5; irregular */
             case -2:                                /* switch 5 */
                 break;
@@ -350,8 +352,8 @@ loop_99:
                 fileSlot_783 = temp_r0_644;
                 if (temp_r0_644 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_644].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
-                    M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+                    CARDOpen(temp_r27_302, &slotName[temp_r0_644].unk0, temp_r29_305);
+                    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
                 }
@@ -366,17 +368,17 @@ loop_99:
 
 #if 0 // DRAFT: function call 'CARDDeleteAsync(long, signed char *, int)' does not match
 void Step_DeleteFile() {
-    f32 temp_r30_682;
+    s32 temp_r30_682;
     s32 temp_r3_698;
 
-    temp_r30_682 = CardTemplate->unk38;
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
+    temp_r30_682 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
     case 0:                                         /* switch 1 */
-        CARDDeleteAsync(M2C_BITWISE(s32, temp_r30_682), (s8 *) CardTemplate->unk44, NULL);
-        M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+        CARDDeleteAsync(temp_r30_682, M2C_FIELD(&CardTemplate, s8 **, 0x44), NULL);
+        M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
         /* fallthrough */
     case 1:                                         /* switch 1 */
-        temp_r3_698 = CARDGetResultCode(M2C_BITWISE(s32, temp_r30_682));
+        temp_r3_698 = CARDGetResultCode(temp_r30_682);
         switch (temp_r3_698) {                      /* switch 2; irregular */
         case -128:                                  /* switch 2 */
             SetFinishedStep(-1);
@@ -401,17 +403,13 @@ void Step_DeleteFile() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'RoundUp'
 void Step_WriteFile() {
     s32 sp8;
-    MKHeap *temp_r3_853;
-    f32 temp_r28_780;
-    f32 var_ctr_1075;
-    s32 *temp_r3_816;
-    s32 *temp_r3_833;
     s32 temp_r0_1089;
     s32 temp_r0_1110;
     s32 temp_r10_1082;
+    s32 temp_r28_780;
     s32 temp_r3_1134;
     s32 temp_r3_1197;
     s32 temp_r3_1279;
@@ -426,6 +424,7 @@ void Step_WriteFile() {
     s32 temp_r6_1112;
     s32 temp_r7_1087;
     s32 temp_r9_1080;
+    s32 var_ctr_1075;
     s32 var_ctr_1106;
     s32 var_r11_1069;
     s32 var_r3_1071;
@@ -434,6 +433,9 @@ void Step_WriteFile() {
     u32 temp_r3_806;
     u32 temp_r6_1323;
     u8 var_r29_785;
+    void *temp_r3_816;
+    void *temp_r3_833;
+    void *temp_r3_853;
 
     if ((s8) init_666 == 0) {
         fileSize_665 = 0;
@@ -443,48 +445,48 @@ void Step_WriteFile() {
         roundedFileSize_668 = 0;
         init_669 = 1;
     }
-    temp_r28_780 = CardTemplate->unk38;
+    temp_r28_780 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
     var_r29_785 = 0;
 loop_156:
     if (var_r29_785 == 0) {
-        switch (M2C_FIELD(CardTemplate, u32 *, 0x34)) { /* switch 1 */
+        switch (M2C_FIELD(&CardTemplate, u32 *, 0x34)) { /* switch 1 */
         case 0:                                     /* switch 1 */
             temp_r3_798 = MKMemoryCard_CalculateFileSize();
             fileSize_665 = temp_r3_798;
-            temp_r3_803 = temp_r3_798 + CardTemplate->unk40;
+            temp_r3_803 = temp_r3_798 + M2C_FIELD(&CardTemplate, u32 *, 0x40);
             fileSize_665 = temp_r3_803;
-            temp_r3_806 = RoundUp(temp_r3_803, (s32) CardTemplate->unk0);
+            temp_r3_806 = RoundUp(temp_r3_803, M2C_FIELD(&CardTemplate, s32 *, 0));
             roundedFileSize_668 = temp_r3_806;
             SetDataBuffer((s32) temp_r3_806);
-            pBuffer_671 = CardTemplate->unk48;
-            memcpy(CardTemplate->unk48, &CardTemplate->unk50, 0xCU);
-            temp_r3_816 = &pBuffer_671->unkC;
-            pBuffer_671 = (MKHeap *) temp_r3_816;
-            if ((s32) M2C_FIELD(CardTemplate, s32 *, 0x4C) > 0) {
-                memcpy(temp_r3_816, M2C_BITWISE(void *, CardTemplate->unk10), (u32) M2C_FIELD(CardTemplate, s32 *, 0x4C));
-                pBuffer_671 += M2C_FIELD(CardTemplate, s32 *, 0x4C);
+            pBuffer_671 = M2C_FIELD(&CardTemplate, void **, 0x48);
+            memcpy(M2C_FIELD(&CardTemplate, void **, 0x48), &CardTemplate + 0x50, 0xCU);
+            temp_r3_816 = pBuffer_671 + 0xC;
+            pBuffer_671 = temp_r3_816;
+            if ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x4C) > 0) {
+                memcpy(temp_r3_816, M2C_FIELD(&CardTemplate, void **, 0x10), (u32) M2C_FIELD(&CardTemplate, s32 *, 0x4C));
+                pBuffer_671 += M2C_FIELD(&CardTemplate, s32 *, 0x4C);
             }
-            memcpy(pBuffer_671, &CardTemplate->unk88.unk8, 0x40U);
-            temp_r3_833 = &pBuffer_671->unk40;
-            pBuffer_671 = (MKHeap *) temp_r3_833;
-            if (((u32) CardTemplate->unk60 != 0U) && ((s32) CardTemplate->unk5C > 0)) {
-                memcpy(temp_r3_833, (void *) CardTemplate->unk60, (u32) CardTemplate->unk5C);
-                pBuffer_671 += CardTemplate->unk5C;
+            memcpy(pBuffer_671, &CardTemplate + 0x90, 0x40U);
+            temp_r3_833 = pBuffer_671 + 0x40;
+            pBuffer_671 = temp_r3_833;
+            if (((void *) M2C_FIELD(&CardTemplate, void **, 0x60) != NULL) && ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x5C) > 0)) {
+                memcpy(temp_r3_833, M2C_FIELD(&CardTemplate, void **, 0x60), (u32) M2C_FIELD(&CardTemplate, s32 *, 0x5C));
+                pBuffer_671 += M2C_FIELD(&CardTemplate, s32 *, 0x5C);
             }
-            memcpy(pBuffer_671, (void *) CardTemplate->unk68, CardTemplate->unk64);
-            temp_r3_853 = pBuffer_671 + CardTemplate->unk64;
+            memcpy(pBuffer_671, M2C_FIELD(&CardTemplate, void **, 0x68), M2C_FIELD(&CardTemplate, u32 *, 0x64));
+            temp_r3_853 = pBuffer_671 + M2C_FIELD(&CardTemplate, u32 *, 0x64);
             pBuffer_671 = temp_r3_853;
-            memcpy(temp_r3_853, M2C_BITWISE(void *, CardTemplate->unk10), (u32) CardTemplate->unk40);
-            temp_r3_859 = Crc_Calculate(CardTemplate->unk48, (s32) roundedFileSize_668);
-            CardTemplate->unk58 = temp_r3_859;
-            CardTemplate->unk48->unk8 = temp_r3_859;
-            CARDCreateAsync(M2C_BITWISE(s32, temp_r28_780), (s8 *) CardTemplate->unk44, roundedFileSize_668, &fileInfo_664, NULL);
-            M2C_FIELD(CardTemplate, u32 *, 0x34) = 1U;
-            DCFlushRange(CardTemplate->unk48, roundedFileSize_668);
+            memcpy(temp_r3_853, M2C_FIELD(&CardTemplate, void **, 0x10), M2C_FIELD(&CardTemplate, u32 *, 0x40));
+            temp_r3_859 = Crc_Calculate(M2C_FIELD(&CardTemplate, void **, 0x48), (s32) roundedFileSize_668);
+            M2C_FIELD(&CardTemplate, s32 *, 0x58) = temp_r3_859;
+            M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), s32 *, 8) = temp_r3_859;
+            CARDCreateAsync(temp_r28_780, M2C_FIELD(&CardTemplate, s8 **, 0x44), roundedFileSize_668, &fileInfo_664, NULL);
+            M2C_FIELD(&CardTemplate, u32 *, 0x34) = 1U;
+            DCFlushRange(M2C_FIELD(&CardTemplate, void **, 0x48), roundedFileSize_668);
             break;
         case 1:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_879 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_879 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_879) {                  /* switch 2; irregular */
             case -128:                              /* switch 2 */
                 SetFinishedStep(-1);
@@ -506,14 +508,14 @@ loop_156:
                 break;
             case 0:                                 /* switch 2 */
                 var_r29_785 = 0;
-                CARDGetStatus(M2C_BITWISE(s32, temp_r28_780), fileInfo_664.fileNo, &fileStat_663);
-                M2C_FIELD(CardTemplate, u32 *, 0x34) = 2U;
+                CARDGetStatus(temp_r28_780, fileInfo_664.fileNo, &fileStat_663);
+                M2C_FIELD(&CardTemplate, u32 *, 0x34) = 2U;
                 break;
             }
             break;
         case 2:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_945 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_945 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_945) {                  /* switch 3; irregular */
             case -128:                              /* switch 3 */
                 SetFinishedStep(-1);
@@ -529,14 +531,14 @@ loop_156:
                 break;
             case 0:                                 /* switch 3 */
                 var_r29_785 = 0;
-                CARDWriteAsync(&fileInfo_664, CardTemplate->unk48, (s32) roundedFileSize_668, 0, NULL);
-                M2C_FIELD(CardTemplate, u32 *, 0x34) = 3U;
+                CARDWriteAsync(&fileInfo_664, M2C_FIELD(&CardTemplate, void **, 0x48), (s32) roundedFileSize_668, 0, NULL);
+                M2C_FIELD(&CardTemplate, u32 *, 0x34) = 3U;
                 break;
             }
             break;
         case 3:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_997 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_997 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_997) {                  /* switch 4; irregular */
             case -128:                              /* switch 4 */
                 SetFinishedStep(-1);
@@ -553,37 +555,37 @@ loop_156:
                 break;
             case 0:                                 /* switch 4 */
                 var_r29_785 = 0;
-                fileStat_663.commentAddr = M2C_FIELD(CardTemplate, s32 *, 0x4C) + 0xC;
-                if (((u32) CardTemplate->unk60 != 0U) && ((s32) CardTemplate->unk5C > 0)) {
+                fileStat_663.commentAddr = M2C_FIELD(&CardTemplate, s32 *, 0x4C) + 0xC;
+                if (((void *) M2C_FIELD(&CardTemplate, void **, 0x60) != NULL) && ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x5C) > 0)) {
                     fileStat_663.bannerFormat = (fileStat_663.bannerFormat & 0xFFFFFFFC) | 2;
                 } else {
                     fileStat_663.bannerFormat &= 0xFC;
                 }
                 var_r11_1069 = 0;
-                fileStat_663.iconAddr = M2C_FIELD(CardTemplate, s32 *, 0x4C) + 0x4C;
+                fileStat_663.iconAddr = M2C_FIELD(&CardTemplate, s32 *, 0x4C) + 0x4C;
                 var_r3_1071 = 0;
                 var_r4_1072 = 0;
                 fileStat_663.bannerFormat &= 0xFFFFFFFB;
-                var_ctr_1075 = CardTemplate->unk6C;
-                if (M2C_BITWISE(s32, CardTemplate->unk6C) > 0) {
+                var_ctr_1075 = M2C_FIELD(&CardTemplate, s32 *, 0x6C);
+                if ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x6C) > 0) {
                     do {
                         temp_r9_1080 = 3 << var_r4_1072;
                         temp_r10_1082 = ~(temp_r9_1080 | temp_r9_1080);
                         var_r11_1069 += 1;
-                        temp_r5_1086 = M2C_FIELD((CardTemplate + var_r3_1071), s32 *, 0x70) << var_r4_1072;
+                        temp_r5_1086 = M2C_FIELD((&CardTemplate + var_r3_1071), s32 *, 0x70) << var_r4_1072;
                         temp_r7_1087 = fileStat_663.iconFormat & temp_r10_1082;
                         var_r3_1071 += 4;
                         temp_r0_1089 = fileStat_663.iconSpeed & temp_r10_1082;
                         var_r4_1072 += 2;
                         fileStat_663.iconFormat = temp_r7_1087 | temp_r5_1086;
                         fileStat_663.iconSpeed = temp_r0_1089 | temp_r9_1080;
-                        var_ctr_1075 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_1075) - 1));
-                    } while (M2C_BITWISE(s32, var_ctr_1075) != 0);
+                        var_ctr_1075 -= 1;
+                    } while (var_ctr_1075 != 0);
                 }
-                var_r3_1104 = M2C_BITWISE(s32, CardTemplate->unk6C) * 2;
+                var_r3_1104 = M2C_FIELD(&CardTemplate, s32 *, 0x6C) * 2;
                 fileStat_663.iconSpeed &= ~(3 << (var_r11_1069 * 2));
-                var_ctr_1106 = 8 - M2C_BITWISE(s32, CardTemplate->unk6C);
-                if (M2C_BITWISE(s32, CardTemplate->unk6C) < 8) {
+                var_ctr_1106 = 8 - M2C_FIELD(&CardTemplate, s32 *, 0x6C);
+                if ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x6C) < 8) {
                     do {
                         temp_r0_1110 = 3 << var_r3_1104;
                         temp_r6_1112 = ~(temp_r0_1110 | temp_r0_1110);
@@ -593,14 +595,14 @@ loop_156:
                         var_ctr_1106 -= 1;
                     } while (var_ctr_1106 != 0);
                 }
-                CARDSetStatusAsync(M2C_BITWISE(s32, temp_r28_780), fileInfo_664.fileNo, &fileStat_663, NULL);
-                M2C_FIELD(CardTemplate, u32 *, 0x34) = 4U;
+                CARDSetStatusAsync(temp_r28_780, fileInfo_664.fileNo, &fileStat_663, NULL);
+                M2C_FIELD(&CardTemplate, u32 *, 0x34) = 4U;
                 break;
             }
             break;
         case 4:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_1134 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_1134 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_1134) {                 /* switch 5; irregular */
             case -128:                              /* switch 5 */
                 SetFinishedStep(-1);
@@ -620,15 +622,15 @@ loop_156:
             case 0:                                 /* switch 5 */
                 var_r29_785 = 0;
                 SetDataBuffer((s32) roundedFileSize_668);
-                pBuffer_671 = CardTemplate->unk48;
-                CARDReadAsync(&fileInfo_664, CardTemplate->unk48, (s32) roundedFileSize_668, 0, NULL);
-                M2C_FIELD(CardTemplate, u32 *, 0x34) = 5U;
+                pBuffer_671 = M2C_FIELD(&CardTemplate, void **, 0x48);
+                CARDReadAsync(&fileInfo_664, M2C_FIELD(&CardTemplate, void **, 0x48), (s32) roundedFileSize_668, 0, NULL);
+                M2C_FIELD(&CardTemplate, u32 *, 0x34) = 5U;
                 break;
             }
             break;
         case 5:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_1197 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_1197 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_1197) {                 /* switch 6; irregular */
             case -128:                              /* switch 6 */
                 SetFinishedStep(-1);
@@ -647,17 +649,17 @@ loop_156:
                 SetFinishedStep(-0x10);
                 break;
             case 0:                                 /* switch 6 */
-                CardTemplate->unk48->unk8 = 0;
-                if (Crc_Calculate(CardTemplate->unk48, (s32) roundedFileSize_668) != (u32) CardTemplate->unk58) {
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x48), s32 *, 8) = 0;
+                if (Crc_Calculate(M2C_FIELD(&CardTemplate, void **, 0x48), (s32) roundedFileSize_668) != (u32) M2C_FIELD(&CardTemplate, s32 *, 0x58)) {
                     SetFinishedStep(-0x10);
                 } else {
                     var_r29_785 = 0;
-                    if ((u32) CardTemplate->unk24 != 0U) {
-                        CARDGetStatus(M2C_BITWISE(s32, temp_r28_780), fileInfo_664.fileNo, &fileStat_663);
-                        M2C_FIELD(CardTemplate, u32 *, 0x34) = 6U;
+                    if ((void *) M2C_FIELD(&CardTemplate, void **, 0x24) != NULL) {
+                        CARDGetStatus(temp_r28_780, fileInfo_664.fileNo, &fileStat_663);
+                        M2C_FIELD(&CardTemplate, u32 *, 0x34) = 6U;
                     } else {
                         CARDClose(&fileInfo_664);
-                        M2C_FIELD(CardTemplate, u32 *, 0x34) = 7U;
+                        M2C_FIELD(&CardTemplate, u32 *, 0x34) = 7U;
                     }
                 }
                 break;
@@ -665,7 +667,7 @@ loop_156:
             break;
         case 6:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_1279 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_1279 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_1279) {                 /* switch 7; irregular */
             case -128:                              /* switch 7 */
                 SetFinishedStep(-1);
@@ -683,21 +685,21 @@ loop_156:
                 temp_r6_1323 = (u32) *(u32 *)0x800000F8 >> 2U;
                 OSTicksToCalendarTime(MULTU_HI(fileStat_663.time, temp_r6_1323) + (0 * temp_r6_1323) + (fileStat_663.time * 0), (OSCalendarTime *) (fileStat_663.time * temp_r6_1323));
                 var_r29_785 = 0;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 0) = sp10;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 4) = spC;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 8) = sp8;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 0xC) = sp28;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 0x10) = sp14;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 0x14) = sp18;
-                M2C_FIELD(CardTemplate->unk24, s32 *, 0x18) = sp1C;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 0) = sp10;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 4) = spC;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 8) = sp8;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 0xC) = sp28;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 0x10) = sp14;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 0x14) = sp18;
+                M2C_FIELD(M2C_FIELD(&CardTemplate, void **, 0x24), s32 *, 0x18) = sp1C;
                 CARDClose(&fileInfo_664);
-                M2C_FIELD(CardTemplate, u32 *, 0x34) = 7U;
+                M2C_FIELD(&CardTemplate, u32 *, 0x34) = 7U;
                 break;
             }
             break;
         case 7:                                     /* switch 1 */
             var_r29_785 = 1;
-            temp_r3_1361 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_780));
+            temp_r3_1361 = CARDGetResultCode(temp_r28_780);
             switch (temp_r3_1361) {                 /* switch 8; irregular */
             case -2:                                /* switch 8 */
                 break;
@@ -718,34 +720,34 @@ loop_156:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: function call 'CARDOpen(long, signed char *, CARDFileInfo *)' does not
 void Step_ReadFile() {
-    MKHeap *temp_r5_1632;
-    f32 temp_r28_1417;
-    s32 temp_r26_1619;
+    s32 temp_r28_1417;
     s32 temp_r3_1451;
     s32 temp_r3_1510;
     s32 temp_r3_1566;
     s32 temp_r3_1658;
+    s32 temp_r5_1632;
     s32 temp_r6_1631;
+    u32 temp_r26_1619;
     u8 var_r27_1421;
 
     if ((s8) init_611 == 0) {
         fileSize_610 = 0;
         init_611 = 1;
     }
-    temp_r28_1417 = CardTemplate->unk38;
+    temp_r28_1417 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
     var_r27_1421 = 0;
 loop_90:
     if (var_r27_1421 == 0) {
-        switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
+        switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x34)) { /* switch 1; irregular */
         case 0:                                     /* switch 1 */
-            CARDOpen(M2C_BITWISE(s32, temp_r28_1417), (s8 *) CardTemplate->unk44, &fileInfo_609);
-            M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
+            CARDOpen(temp_r28_1417, M2C_FIELD(&CardTemplate, s8 **, 0x44), &fileInfo_609);
+            M2C_FIELD(&CardTemplate, s32 *, 0x34) = 1;
             break;
         case 1:                                     /* switch 1 */
             var_r27_1421 = 1;
-            temp_r3_1451 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_1417));
+            temp_r3_1451 = CARDGetResultCode(temp_r28_1417);
             switch (temp_r3_1451) {                 /* switch 2; irregular */
             case -128:                              /* switch 2 */
                 SetFinishedStep(-1);
@@ -764,14 +766,14 @@ loop_90:
                 break;
             case 0:                                 /* switch 2 */
                 var_r27_1421 = 0;
-                CARDGetStatus(M2C_BITWISE(s32, temp_r28_1417), fileInfo_609.fileNo, &fileStat_608);
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 2;
+                CARDGetStatus(temp_r28_1417, fileInfo_609.fileNo, &fileStat_608);
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 2;
                 break;
             }
             break;
         case 2:                                     /* switch 1 */
             var_r27_1421 = 1;
-            temp_r3_1510 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_1417));
+            temp_r3_1510 = CARDGetResultCode(temp_r28_1417);
             switch (temp_r3_1510) {                 /* switch 3; irregular */
             case -128:                              /* switch 3 */
                 SetFinishedStep(-1);
@@ -788,16 +790,16 @@ loop_90:
             case 0:                                 /* switch 3 */
                 fileSize_610 = (s32) fileStat_608.length;
                 SetDataBuffer((s32) fileStat_608.length);
-                pBuffer_613 = CardTemplate->unk48;
+                pBuffer_613 = M2C_FIELD(&CardTemplate, void **, 0x48);
                 var_r27_1421 = 0;
-                CARDReadAsync(&fileInfo_609, CardTemplate->unk48, fileSize_610, 0, NULL);
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 3;
+                CARDReadAsync(&fileInfo_609, M2C_FIELD(&CardTemplate, void **, 0x48), fileSize_610, 0, NULL);
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 3;
                 break;
             }
             break;
         case 3:                                     /* switch 1 */
             var_r27_1421 = 1;
-            temp_r3_1566 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_1417));
+            temp_r3_1566 = CARDGetResultCode(temp_r28_1417);
             switch (temp_r3_1566) {                 /* switch 4; irregular */
             case -128:                              /* switch 4 */
                 SetFinishedStep(-1);
@@ -817,30 +819,30 @@ loop_90:
                 /* fallthrough */
             case 0:                                 /* switch 4 */
                 var_r27_1421 = 0;
-                M2C_FIELD(CardTemplate, s32 *, 0x34) = 4;
+                M2C_FIELD(&CardTemplate, s32 *, 0x34) = 4;
                 break;
             }
             break;
         case 4:                                     /* switch 1 */
-            temp_r26_1619 = pBuffer_613->unk8;
-            pBuffer_613->unk8 = 0;
-            if (Crc_Calculate(pBuffer_613, fileSize_610) != (u32) temp_r26_1619) {
+            temp_r26_1619 = M2C_FIELD(pBuffer_613, u32 *, 8);
+            M2C_FIELD(pBuffer_613, u32 *, 8) = 0U;
+            if (Crc_Calculate(pBuffer_613, fileSize_610) != temp_r26_1619) {
                 SetFinishedStep(-0x10);
             } else {
-                temp_r6_1631 = pBuffer_613->unk4;
-                temp_r5_1632 = pBuffer_613->unk0;
-                if ((temp_r6_1631 < 0) || (temp_r5_1632 < 0) || ((void *) (temp_r6_1631 + temp_r5_1632) > (s32) fileSize_610)) {
+                temp_r6_1631 = M2C_FIELD(pBuffer_613, s32 *, 4);
+                temp_r5_1632 = M2C_FIELD(pBuffer_613, s32 *, 0);
+                if ((temp_r6_1631 < 0) || (temp_r5_1632 < 0) || ((s32) (temp_r6_1631 + temp_r5_1632) > (s32) fileSize_610)) {
                     SetFinishedStep(-0x10);
                 } else {
-                    memcpy(M2C_BITWISE(void *, CardTemplate->unk10), pBuffer_613 + temp_r6_1631, (u32) temp_r5_1632);
+                    memcpy(M2C_FIELD(&CardTemplate, void **, 0x10), pBuffer_613 + temp_r6_1631, (u32) temp_r5_1632);
                     CARDClose(&fileInfo_609);
-                    M2C_FIELD(CardTemplate, s32 *, 0x34) = 5;
+                    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 5;
                 }
             }
             break;
         case 5:                                     /* switch 1 */
             var_r27_1421 = 1;
-            temp_r3_1658 = CARDGetResultCode(M2C_BITWISE(s32, temp_r28_1417));
+            temp_r3_1658 = CARDGetResultCode(temp_r28_1417);
             switch (temp_r3_1658) {                 /* switch 5; irregular */
             case -2:                                /* switch 5 */
                 break;
@@ -881,8 +883,8 @@ void WriteMKFileInfo(MKMemoryCardFileInfo *arg0, CARDStat *arg1) {
         arg0->unkA4 = 1;
         arg0->unkA5 = 0;
         arg0->unk9C = arg1->length;
-        arg0->unkA0 = (u32) arg1->length / (u32) CardTemplate->unk0;
-        memcpy(arg0, &CardTemplate->unk48->unkC, 0x80U);
+        arg0->unkA0 = (u32) arg1->length / (u32) M2C_FIELD(&CardTemplate, u32 *, 0);
+        memcpy(arg0, M2C_FIELD(&CardTemplate, s32 *, 0x48) + 0xC, 0x80U);
         return;
     }
     arg0->unkA0 = 0;
@@ -903,60 +905,49 @@ u32 RoundUp(int arg0, int arg1) {
     return ((s32) (arg0 + (arg1 - 1)) / arg1) * arg1;
 }
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 void SetDataBuffer(int arg0) {
-    CardTemplate->unk48 = staticDataBuffer;
-    memset(staticDataBuffer, 0, (u32) arg0);
+    M2C_FIELD(&CardTemplate, M2C_UNK **, 0x48) = &staticDataBuffer;
+    memset(&staticDataBuffer, 0, (u32) arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'SetFinished'
 void callback_MountDetach(long arg0, long arg1) {
     (&bIsMounted)[arg0] = 0;
-    if (((s32) CardTemplate->unk2C != 0) && (arg0 == M2C_BITWISE(s32, CardTemplate->unk38))) {
+    if (((s32) M2C_FIELD(&CardTemplate, s32 *, 0x2C) != 0) && (arg0 == (s32) M2C_FIELD(&CardTemplate, s32 *, 0x38))) {
         SetFinished(-3);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 void SetStarted(int arg0, int arg1) {
-    CardTemplate->unk38 = M2C_BITWISE(f32, arg0);
-    CardTemplate->unk2C = arg1;
-    CardTemplate->unk28 = (MKHeap *)1;
+    M2C_FIELD(&CardTemplate, s32 *, 0x38) = arg0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x2C) = arg1;
+    M2C_FIELD(&CardTemplate, s32 *, 0x28) = 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 void SetFinished(int arg0) {
-    CardTemplate->unk28 = (MKHeap *) arg0;
-    CardTemplate->unk2C = 0;
-    M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
-    M2C_FIELD(CardTemplate, s32 *, 0x34) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x28) = arg0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x2C) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 void SetFinishedStep(int arg0) {
     if (arg0 == 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x34) = 0;
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(CardTemplate, s32 *, 0x30) + 1);
+        M2C_FIELD(&CardTemplate, s32 *, 0x34) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x30) + 1);
         return;
     }
     SetFinished(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 s32 MKMemoryCard_CalculateFileSize() {
-    return M2C_FIELD(CardTemplate, s32 *, 0x4C) + 0x4C + CardTemplate->unk5C + CardTemplate->unk64;
+    return M2C_FIELD(&CardTemplate, s32 *, 0x4C) + 0x4C + M2C_FIELD(&CardTemplate, s32 *, 0x5C) + M2C_FIELD(&CardTemplate, s32 *, 0x64);
 }
-#endif
 
 void *LoadIconFile(const char *arg0, int *arg1, int *arg2, unsigned long *arg3) {
     M2C_UNK spC;
     void *sp8;
-    MKHeap *temp_r3_1982;
     s32 temp_r26_1981;
     s32 var_ctr_1967;
     s32 var_r23_1996;
@@ -1025,9 +1016,8 @@ loop_10:
         } while (var_ctr_1967 != 0);
     }
     temp_r26_1981 = *arg1;
-    temp_r3_1982 = ((MKHeap *) var_r3_1966)->Current();
-    if (temp_r3_1982 != NULL) {
-        var_r3_1989 = ((MKHeap *) (temp_r3_1982->Current()))->Alloc(temp_r26_1981, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1989 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_1981, NULL, 0);
     } else {
         var_r3_1989 = malloc(temp_r26_1981);
     }
@@ -1051,12 +1041,12 @@ loop_18:
     return var_r3_1989;
 }
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_GetDirInfo(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
@@ -1076,18 +1066,18 @@ void Proccess_GetDirInfo(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_CalculateBlocks(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
     case 1:
-        if (M2C_BITWISE(u32, CardTemplate->unk18) != 0U) {
-            *CardTemplate->unk18 = (s32) ((s32) (MKMemoryCard_CalculateFileSize() + CardTemplate->unk40 + (CardTemplate->unk0 - 1)) / (s32) CardTemplate->unk0);
+        if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 0x18) != NULL) {
+            *M2C_FIELD(&CardTemplate, s32 **, 0x18) = (s32) (MKMemoryCard_CalculateFileSize() + M2C_FIELD(&CardTemplate, s32 *, 0x40) + (M2C_FIELD(&CardTemplate, s32 *, 0) - 1)) / (s32) M2C_FIELD(&CardTemplate, s32 *, 0);
         }
         SetFinished(0);
         return;
@@ -1095,19 +1085,19 @@ void Proccess_CalculateBlocks(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_GetInfo(bool arg0) {
     s32 spC;
     s32 sp8;
-    f32 temp_r30_2141;
+    s32 temp_r30_2141;
     s32 temp_r3_2179;
     s32 temp_r3_2271;
 
-    temp_r30_2141 = CardTemplate->unk38;
+    temp_r30_2141 = M2C_FIELD(&CardTemplate, s32 *, 0x38);
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* switch 1; irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         Step_ProbeDevice();
         return;
@@ -1115,11 +1105,11 @@ void Proccess_GetInfo(bool arg0) {
         Step_MountCard();
         return;
     case 2:                                         /* switch 1 */
-        CARDCheckAsync(M2C_BITWISE(s32, temp_r30_2141), NULL);
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(CardTemplate, s32 *, 0x30) + 1);
+        CARDCheckAsync(temp_r30_2141, NULL);
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x30) + 1);
         return;
     case 3:                                         /* switch 1 */
-        temp_r3_2179 = CARDGetResultCode(M2C_BITWISE(s32, temp_r30_2141));
+        temp_r3_2179 = CARDGetResultCode(temp_r30_2141);
         switch (temp_r3_2179) {                     /* switch 2; irregular */
         case -128:                                  /* switch 2 */
             SetFinished(-0x12);
@@ -1134,32 +1124,32 @@ void Proccess_GetInfo(bool arg0) {
             SetFinished(-7);
             return;
         case -13:                                   /* switch 2 */
-            if ((u32) CardTemplate->unk4 != 0U) {
-                *CardTemplate->unk4 = 0;
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 4) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 4) = 0;
             }
-            if ((u32) CardTemplate->unk8 != 0U) {
-                *CardTemplate->unk8 = 0;
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 8) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 8) = 0;
             }
-            if ((void *) CardTemplate->unk1C != NULL) {
-                *CardTemplate->unk1C = 0;
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 0x1C) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 0x1C) = 0;
             }
             SetFinished(0);
             return;
         case 0:                                     /* switch 2 */
-            if ((void *) CardTemplate->unk1C != NULL) {
-                *CardTemplate->unk1C = 1;
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 0x1C) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 0x1C) = 1;
             }
-            M2C_FIELD(CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(CardTemplate, s32 *, 0x30) + 1);
+            M2C_FIELD(&CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x30) + 1);
             return;
             return;
         }
         break;
     case 4:                                         /* switch 1 */
-        CARDFreeBlocks(M2C_BITWISE(s32, temp_r30_2141), &spC, &sp8);
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(CardTemplate, s32 *, 0x30) + 1);
+        CARDFreeBlocks(temp_r30_2141, &spC, &sp8);
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x30) + 1);
         /* fallthrough */
     case 5:                                         /* switch 1 */
-        temp_r3_2271 = CARDGetResultCode(M2C_BITWISE(s32, temp_r30_2141));
+        temp_r3_2271 = CARDGetResultCode(temp_r30_2141);
         switch (temp_r3_2271) {                     /* switch 3; irregular */
         case -128:                                  /* switch 3 */
             SetFinished(-1);
@@ -1168,11 +1158,11 @@ void Proccess_GetInfo(bool arg0) {
             SetFinished(-2);
             return;
         case 0:                                     /* switch 3 */
-            if ((u32) CardTemplate->unk4 != 0U) {
-                *CardTemplate->unk4 = (s32) (spC / (s32) CardTemplate->unk0);
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 4) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 4) = spC / (s32) M2C_FIELD(&CardTemplate, s32 *, 0);
             }
-            if ((u32) CardTemplate->unk8 != 0U) {
-                *CardTemplate->unk8 = sp8;
+            if ((s32 *) M2C_FIELD(&CardTemplate, s32 **, 8) != NULL) {
+                *M2C_FIELD(&CardTemplate, s32 **, 8) = sp8;
             }
             SetFinished(0);
             return;
@@ -1185,14 +1175,14 @@ void Proccess_GetInfo(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_Format(bool arg0) {
     s32 temp_r3_2370;
 
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* switch 1; irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         Step_ProbeDevice();
         return;
@@ -1201,10 +1191,10 @@ void Proccess_Format(bool arg0) {
         return;
     case 2:                                         /* switch 1 */
         CARDFormatAsync(0);
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(CardTemplate, s32 *, 0x30) + 1);
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x30) + 1);
         return;
     case 3:                                         /* switch 1 */
-        temp_r3_2370 = CARDGetResultCode(M2C_BITWISE(s32, CardTemplate->unk38));
+        temp_r3_2370 = CARDGetResultCode(M2C_FIELD(&CardTemplate, s32 *, 0x38));
         switch (temp_r3_2370) {                     /* switch 2; irregular */
         case -128:                                  /* switch 2 */
             SetFinished(-1);
@@ -1224,12 +1214,12 @@ void Proccess_Format(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_Load(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
@@ -1249,12 +1239,12 @@ void Proccess_Load(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_Save(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
@@ -1277,12 +1267,12 @@ void Proccess_Save(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_Prepared(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
@@ -1299,14 +1289,13 @@ void Proccess_Prepared(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
 void Proccess_IsAttached(bool arg0) {
     s32 temp_r3_2577;
 
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    temp_r3_2577 = CARDProbeEx(M2C_BITWISE(s32, CardTemplate->unk38), NULL, NULL);
+    temp_r3_2577 = CARDProbeEx(M2C_FIELD(&CardTemplate, s32 *, 0x38), NULL, NULL);
     switch (temp_r3_2577) {                         /* irregular */
     case -128:
         SetFinished(-2);
@@ -1322,14 +1311,13 @@ void Proccess_IsAttached(bool arg0) {
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Step_ProbeDevice'
 void Proccess_Delete(bool arg0) {
     if (arg0 != 0) {
-        M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
+        M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
     }
-    switch ((s32) M2C_FIELD(CardTemplate, s32 *, 0x30)) { /* irregular */
+    switch ((s32) M2C_FIELD(&CardTemplate, s32 *, 0x30)) { /* irregular */
     case 0:
         Step_ProbeDevice();
         return;
@@ -1349,64 +1337,58 @@ void Proccess_Delete(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Proccess_CalculateBlocks'
 void MKMemoryCard_Update() {
-    if ((u32) CardTemplate->unk2C <= 9U) {
-        switch (CardTemplate->unk2C) {
-        case 7:
-            Proccess_CalculateBlocks(0U);
-            return;
-        case 5:
-            Proccess_GetDirInfo(0U);
-            return;
-        case 4:
-            Proccess_GetInfo(0U);
-            return;
-        case 3:
-            Proccess_Format(0U);
-            return;
-        case 1:
-            Proccess_Save(0U);
-            return;
-        case 2:
-            Proccess_Load(0U);
-            return;
-        case 6:
-            Proccess_Prepared(0U);
-            return;
-        case 8:
-            Proccess_IsAttached(0U);
-            return;
-        case 9:
-            Proccess_Delete(0U);
-            break;
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
-s32 MKMemoryCard_GetStatus(int arg0) {
-    return (s32) CardTemplate->unk28;
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
-void MKMemoryCard_DeinitModule() {
-    MKHeap *temp_r3_2741;
-    s32 temp_r31_2740;
-
-    temp_r31_2740 = CardTemplate->unk68;
-    temp_r3_2741 = CardTemplate->Current();
-    if (temp_r3_2741 != NULL) {
-        ((MKHeap *) (temp_r3_2741->Current()))->Free((void *) temp_r31_2740, NULL, 0);
+    switch (M2C_FIELD(&CardTemplate, u32 *, 0x2C)) {
+    case 7:
+        Proccess_CalculateBlocks(0U);
+        return;
+    case 5:
+        Proccess_GetDirInfo(0U);
+        return;
+    case 4:
+        Proccess_GetInfo(0U);
+        return;
+    case 3:
+        Proccess_Format(0U);
+        return;
+    case 1:
+        Proccess_Save(0U);
+        return;
+    case 2:
+        Proccess_Load(0U);
+        return;
+    case 6:
+        Proccess_Prepared(0U);
+        return;
+    case 8:
+        Proccess_IsAttached(0U);
+        return;
+    case 9:
+        Proccess_Delete(0U);
+        /* fallthrough */
+    default:
         return;
     }
-    free((void *) temp_r31_2740);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+s32 MKMemoryCard_GetStatus(int arg0) {
+    return M2C_FIELD(&CardTemplate, s32 *, 0x28);
+}
+
+void MKMemoryCard_DeinitModule() {
+    void *temp_r31_2740;
+
+    temp_r31_2740 = M2C_FIELD(&CardTemplate, void **, 0x68);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2740, NULL, 0);
+        return;
+    }
+    free(temp_r31_2740);
+}
+
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void MKMemoryCard_InitModule() {
     f32 temp_f1_2796;
     s32 var_ctr_2809;
@@ -1415,31 +1397,31 @@ void MKMemoryCard_InitModule() {
     s8 *var_r3_2816;
     void *temp_r4_2811;
 
-    CardTemplate->unk0 = NULL;
-    CardTemplate->unk4 = 0;
-    CardTemplate->unk8 = 0;
-    CardTemplate->unkC = 0;
-    M2C_FIELD(CardTemplate, s32 *, 0x30) = 0;
-    M2C_FIELD(CardTemplate, s32 *, 0x34) = 0;
-    CardTemplate->unk38 = 0.0f;
-    CardTemplate->unk28 = NULL;
-    CardTemplate->unk2C = 0;
-    memset(&CardTemplate->unk100, 0, 0xA000U);
-    CardTemplate->unk44 = 0;
-    CardTemplate->unk10 = 0.0f;
-    CardTemplate->unk40 = 0;
-    CardTemplate->unk3C = 0;
-    CardTemplate->unk48 = NULL;
-    temp_f1_2796 = M2C_BITWISE(f32, memset(&CardTemplate->unk88.unk8, 0, 0x40U));
+    M2C_FIELD(&CardTemplate, s32 *, 0) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 4) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 8) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0xC) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x30) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x34) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x38) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x28) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x2C) = 0;
+    memset(&CardTemplate + 0x100, 0, 0xA000U);
+    M2C_FIELD(&CardTemplate, s32 *, 0x44) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x10) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x40) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x3C) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x48) = 0;
+    temp_f1_2796 = M2C_BITWISE(f32, memset(&CardTemplate + 0x90, 0, 0x40U));
     var_r3_2802 = 0;
-    CardTemplate->unk5C = 0;
-    CardTemplate->unk60 = 0;
-    CardTemplate->unk64 = 0;
-    CardTemplate->unk68 = 0;
-    CardTemplate->unk6C = 0.0f;
+    M2C_FIELD(&CardTemplate, s32 *, 0x5C) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x60) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x64) = 0;
+    M2C_FIELD(&CardTemplate, void **, 0x68) = NULL;
+    M2C_FIELD(&CardTemplate, s32 *, 0x6C) = 0;
     var_ctr_2809 = 8;
     do {
-        temp_r4_2811 = CardTemplate + var_r3_2802;
+        temp_r4_2811 = &CardTemplate + var_r3_2802;
         var_r3_2802 += 4;
         M2C_FIELD(temp_r4_2811, s32 *, 0x70) = 0;
         var_ctr_2809 -= 1;
@@ -1452,37 +1434,37 @@ void MKMemoryCard_InitModule() {
         var_ctr_2818 -= 1;
     } while (var_ctr_2818 != 0);
     if (DVDConvertPathToEntrynum(Str_Printf("%s%s", "/icons/", "icon.tpl", temp_f1_2796)) != -1) {
-        CardTemplate->unk68 = LoadIconFile("icon.tpl", (int *) &CardTemplate->unk64, (int *) &CardTemplate->unk6C, &CardTemplate->unk70);
+        M2C_FIELD(&CardTemplate, void **, 0x68) = LoadIconFile("icon.tpl", (int *) &CardTemplate + 0x64, (int *) &CardTemplate + 0x6C, &CardTemplate + 0x70);
     }
     CARDInit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'Proccess_GetDirInfo'
 void MKMemoryCard_GetDirInfo(int arg0, MKMemoryCardFileInfo *arg1) {
-    CardTemplate->unk20 = &arg1->unk0;
+    M2C_FIELD(&CardTemplate, MKMemoryCardFileInfo **, 0x20) = arg1;
     SetStarted(arg0, 5);
     Proccess_GetDirInfo(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
+#if 0 // DRAFT: illegal implicit conversion from 'int *' to
 void MKMemoryCard_GetInfo(int arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     SetStarted(arg0, 4);
-    CardTemplate->unk4 = (s32) arg1;
-    CardTemplate->unk8 = (s32) arg2;
-    CardTemplate->unkC = (s32) arg3;
-    CardTemplate->unk1C = arg4;
+    M2C_FIELD(&CardTemplate, s32 **, 4) = arg1;
+    M2C_FIELD(&CardTemplate, s32 **, 8) = arg2;
+    M2C_FIELD(&CardTemplate, s32 **, 0xC) = arg3;
+    M2C_FIELD(&CardTemplate, s32 **, 0x1C) = arg4;
     Proccess_GetInfo(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
+#if 0 // DRAFT: undefined identifier 'slotName'
 void MKMemoryCard_Load(int arg0, int arg1, void *arg2, int arg3) {
     SetStarted(arg0, 2);
-    CardTemplate->unk10 = M2C_BITWISE(f32, arg2);
-    CardTemplate->unk44 = (s32) &slotName[arg1];
-    CardTemplate->unk3C = arg3;
+    M2C_FIELD(&CardTemplate, void **, 0x10) = arg2;
+    M2C_FIELD(&CardTemplate, struct _struct_slotName_0x40 **, 0x44) = &slotName[arg1];
+    M2C_FIELD(&CardTemplate, s32 *, 0x3C) = arg3;
     Proccess_Load(1U);
 }
 #endif
@@ -1491,6 +1473,7 @@ void MKMemoryCard_Load(int arg0, int arg1, void *arg2, int arg3) {
 void MKMemoryCard_Save(int arg0, int arg1, void *arg2, int arg3, const char *arg4, TimerInfo *arg5) {
     s8 sp8;
     M2C_UNK sp4;
+    s8 *temp_r27_2964;
     s8 *var_r25_2945;
 
     var_r25_2945 = arg4;
@@ -1498,49 +1481,50 @@ void MKMemoryCard_Save(int arg0, int arg1, void *arg2, int arg3, const char *arg
     if (var_r25_2945 == NULL) {
         var_r25_2945 = &sp8;
     }
-    memset(&CardTemplate->unkB0, 0, 0x20U);
-    strcpy((s8 *) &CardTemplate->unkB0, var_r25_2945);
-    CardTemplate->unk40 = arg3;
-    CardTemplate->unk44 = (s32) &slotName[arg1];
-    CardTemplate->unk10 = M2C_BITWISE(f32, arg2);
-    CardTemplate->unk24 = (s32) arg5;
+    temp_r27_2964 = &CardTemplate + 0xB0;
+    memset(temp_r27_2964, 0, 0x20U);
+    strcpy(temp_r27_2964, var_r25_2945);
+    M2C_FIELD(&CardTemplate, s32 *, 0x40) = arg3;
+    M2C_FIELD(&CardTemplate, struct _struct_slotName_0x40 **, 0x44) = &slotName[arg1];
+    M2C_FIELD(&CardTemplate, void **, 0x10) = arg2;
+    M2C_FIELD(&CardTemplate, TimerInfo **, 0x24) = arg5;
     SetStarted(arg0, 1);
-    CardTemplate->unk50 = arg3;
-    CardTemplate->unk58 = 0;
-    CardTemplate->unk54 = M2C_FIELD(CardTemplate, s32 *, 0x4C) + CardTemplate->unk64 + 0x4C;
+    M2C_FIELD(&CardTemplate, s32 *, 0x50) = arg3;
+    M2C_FIELD(&CardTemplate, s32 *, 0x58) = 0;
+    M2C_FIELD(&CardTemplate, s32 *, 0x54) = (s32) (M2C_FIELD(&CardTemplate, s32 *, 0x4C) + M2C_FIELD(&CardTemplate, s32 *, 0x64) + 0x4C);
     Proccess_Save(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
+#if 0 // DRAFT: undefined identifier 'Proccess_Format'
 void MKMemoryCard_Format(int arg0) {
     SetStarted(arg0, 3);
     Proccess_Format(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
+#if 0 // DRAFT: undefined identifier 'Proccess_Prepared'
 void MKMemoryCard_IsPrepared(int arg0) {
     SetStarted(arg0, 6);
     Proccess_Prepared(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
+#if 0 // DRAFT: undefined identifier 'Proccess_Prepared'
 void MKMemoryCard_Prepare(int arg0) {
     SetStarted(arg0, 6);
     Proccess_Prepared(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: function call 'strcpy(long *, const char *)' does not match
 void MKMemoryCard_SetAppInfo(const char *arg0, const char *arg1, int *arg2) {
     f32 var_f1_3056;
     s32 var_r28_3064;
     s32 var_r31_3066;
 
-    var_f1_3056 = M2C_BITWISE(f32, strcpy((s8 *) &CardTemplate->unk88.unk8, arg1));
-    M2C_FIELD(CardTemplate, s32 *, 0x4C) = 0x80;
+    var_f1_3056 = M2C_BITWISE(f32, strcpy(&CardTemplate + 0x90, arg1));
+    M2C_FIELD(&CardTemplate, s32 *, 0x4C) = 0x80;
     var_r28_3064 = 0;
     var_r31_3066 = 0;
     do {
@@ -1551,16 +1535,14 @@ void MKMemoryCard_SetAppInfo(const char *arg0, const char *arg1, int *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetStarted'
 void MKMemoryCard_IsAttached(int arg0) {
     SetStarted(arg0, 8);
     Proccess_IsAttached(1U);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'CardTemplate'
+#if 0 // DRAFT: undefined identifier 'slotName'
 void MKMemoryCard_Delete(int arg0, int arg1) {
-    CardTemplate->unk44 = (s32) &slotName[arg1];
+    M2C_FIELD(&CardTemplate, struct _struct_slotName_0x40 **, 0x44) = &slotName[arg1];
     SetStarted(arg0, 9);
     Proccess_Delete(1U);
 }

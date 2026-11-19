@@ -29,7 +29,7 @@ public:
     void BuildLines(const char *, float, float, TextLineData *, float, float, bool);
     void RenderChars(TextCharStrip **, int, const Matrix &);
     void DeinitModule(void);
-    void InitModule(void);
+    static void InitModule(void);
     f32 CalcLength(const char *);
     f32 GetScale(float);
     f32 GetHeight(void);

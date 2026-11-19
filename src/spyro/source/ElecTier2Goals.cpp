@@ -571,7 +571,6 @@ void ElecTier2Goal_PatrolMode::Deinit() {
     Goal<Enemy> *temp_r3_1062;
     Goal<Enemy> *temp_r3_1067;
     Goal<Enemy> *temp_r3_1072;
-    MKHeap *temp_r3_1093;
     void **temp_r3_1077;
     void *temp_r31_1090;
 
@@ -589,9 +588,8 @@ void ElecTier2Goal_PatrolMode::Deinit() {
     operator delete(this->unk30);
     temp_r31_1090 = this->unk1C;
     if (temp_r31_1090 != NULL) {
-        temp_r3_1093 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1093 != NULL) {
-            ((MKHeap *) (temp_r3_1093->Current()))->Free(temp_r31_1090, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1090, NULL, 0);
         } else {
             free(temp_r31_1090);
         }
@@ -610,7 +608,6 @@ void ElecTier2Goal_PatrolMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1248;
     Goal<Enemy> *temp_r4_1262;
     Goal<Enemy> *temp_r4_1274;
-    MKHeap *temp_r3_1221;
     void **temp_r4_1286;
     void *var_r3_1228;
 
@@ -658,9 +655,8 @@ void ElecTier2Goal_PatrolMode::Init(Enemy *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1221 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1221 != NULL) {
-            var_r3_1228 = ((MKHeap *) (temp_r3_1221->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1228 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_1228 = malloc(0xC);
         }
@@ -761,7 +757,6 @@ void ElecTier2Goal_GroundMode::Deinit() {
     Goal<Enemy> *temp_r3_1414;
     Goal<Enemy> *temp_r3_1419;
     Goal<Enemy> *temp_r3_1424;
-    MKHeap *temp_r3_1438;
     void *temp_r31_1435;
 
     temp_r3_1414 = this->unk24;
@@ -775,9 +770,8 @@ void ElecTier2Goal_GroundMode::Deinit() {
     operator delete(this->unk2C);
     temp_r31_1435 = this->unk1C;
     if (temp_r31_1435 != NULL) {
-        temp_r3_1438 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1438 != NULL) {
-            ((MKHeap *) (temp_r3_1438->Current()))->Free(temp_r31_1435, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1435, NULL, 0);
         } else {
             free(temp_r31_1435);
         }
@@ -796,7 +790,6 @@ void ElecTier2Goal_GroundMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1573;
     Goal<Enemy> *temp_r4_1587;
     Goal<Enemy> *temp_r4_1599;
-    MKHeap *temp_r3_1546;
     void *var_r3_1553;
 
     this->unk20 = (ElecTier2 *) arg0;
@@ -833,9 +826,8 @@ void ElecTier2Goal_GroundMode::Init(Enemy *arg0) {
         this->unk2C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1546 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1546 != NULL) {
-            var_r3_1553 = ((MKHeap *) (temp_r3_1546->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1553 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_1553 = malloc(0xC);
         }
@@ -982,7 +974,6 @@ void ElecTier2Goal_Think::Deinit() {
     Goal<Enemy> *temp_r3_1918;
     Goal<Enemy> *temp_r3_1923;
     Goal<Enemy> *temp_r3_1933;
-    MKHeap *temp_r3_1949;
     void **temp_r3_1928;
     void *temp_r31_1946;
 
@@ -1000,9 +991,8 @@ void ElecTier2Goal_Think::Deinit() {
     operator delete(this->unk34);
     temp_r31_1946 = this->unk1C;
     if (temp_r31_1946 != NULL) {
-        temp_r3_1949 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1949 != NULL) {
-            ((MKHeap *) (temp_r3_1949->Current()))->Free(temp_r31_1946, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1946, NULL, 0);
         } else {
             free(temp_r31_1946);
         }
@@ -1019,7 +1009,6 @@ void ElecTier2Goal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void ElecTier2Goal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_2134;
-    MKHeap *temp_r3_2098;
     void *var_r3_2105;
 
     this->unk20 = arg0;
@@ -1081,9 +1070,8 @@ void ElecTier2Goal_Think::Init(Enemy *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_2098 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2098 != NULL) {
-            var_r3_2105 = ((MKHeap *) (temp_r3_2098->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2105 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_2105 = malloc(8);
         }

@@ -30,7 +30,7 @@ s32 stricmp(s8 *);                                  /* extern */
 extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-extern MKHeap gb;
+extern M2C_UNK gb;
 
 static s32 lit_548 = 0;
 static u8 lit_549 = 0;
@@ -38,31 +38,26 @@ static u8 lit_549 = 0;
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
 void FireWall::Deinit() {
     MKHeap *temp_r29_68;
-    MKHeap *temp_r3_71;
-    MKHeap *var_r3_48;
     s32 temp_r0_60;
     s32 var_r28_50;
     s32 var_r31_47;
 
     MKProp::Deinit();
     var_r31_47 = 0;
-    var_r3_48 = &gb;
     var_r28_50 = 0;
 loop_2:
     if (var_r28_50 < (s32) this->unk4C) {
-        ((Coronas *) gb.unk64)->Free(*(this->unk50 + (var_r31_47 + 0x2C)));
-        var_r3_48 = this->unk50;
+        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(*(this->unk50 + (var_r31_47 + 0x2C)));
         temp_r0_60 = var_r31_47 + 0x2C;
         var_r28_50 += 1;
         var_r31_47 += 0x30;
-        *(var_r3_48 + temp_r0_60) = 0;
+        *(this->unk50 + temp_r0_60) = 0;
         goto loop_2;
     }
     temp_r29_68 = this->unk50;
     if (temp_r29_68 != NULL) {
-        temp_r3_71 = var_r3_48->Current();
-        if (temp_r3_71 != NULL) {
-            ((MKHeap *) (temp_r3_71->Current()))->Free(temp_r29_68, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_68, NULL, 0);
             return;
         }
         free(temp_r29_68);
@@ -525,7 +520,7 @@ loop_16:
             sp24 = temp_f1_876;
             sp58 = (f64) sp28;
             sp50 = (f64) sp20;
-            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
+            ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
             var_r28_828 += 1;
         } while (var_r28_828 < 3);
         sp40.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
@@ -597,7 +592,6 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1164;
     MKHeap *var_r3_1171;
     MKIniLine *var_r30_983;
     f32 temp_f0_1482;
@@ -764,9 +758,8 @@ loop_32:
             }
             this->unk4C = (s32) (1.5f * (var_f20_1014 / 100.0f));
             temp_r28_1163 = this->unk4C * 0x30;
-            temp_r3_1164 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_1164 != NULL) {
-                var_r3_1171 = ((MKHeap *) (temp_r3_1164->Current()))->Alloc(temp_r28_1163, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_1171 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_1163, NULL, 0);
             } else {
                 var_r3_1171 = malloc(temp_r28_1163);
             }
@@ -1030,7 +1023,7 @@ loop_130:
                     temp_r0_1738 = var_r28_1201 + 0x2C;
                     var_r30_1200 += 1;
                     var_r28_1201 += 0x30;
-                    *(this->unk50 + temp_r0_1738) = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &spD0), *((MKVector4 *) &spB0), 8.5f, lit_548, lit_549);
+                    *(this->unk50 + temp_r0_1738) = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &spD0), *((MKVector4 *) &spB0), 8.5f, lit_548, lit_549);
                     if (var_f21_1215 < 1.0f) {
 
                     } else {

@@ -393,16 +393,13 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ZapArcFX::Deinit() {
-    MKHeap *temp_r3_647;
     void *temp_r31_644;
 
     temp_r31_644 = this->unkC8;
     if (temp_r31_644 != NULL) {
-        temp_r3_647 = MKHeap::Current();
-        if (temp_r3_647 != NULL) {
-            ((MKHeap *) (temp_r3_647->Current()))->Free(temp_r31_644, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_644, NULL, 0);
         } else {
             free(temp_r31_644);
         }
@@ -410,7 +407,6 @@ void ZapArcFX::Deinit() {
     }
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ZapArcFX::Draw() {
@@ -513,16 +509,14 @@ s32 ZapArcFX::LoadDone() {
 
 #if 0 // DRAFT: illegal type
 void ZapArcFX::Init() {
-    MKHeap *temp_r3_851;
     s32 temp_r0_871;
     s32 var_ctr_868;
     s32 var_r4_864;
     void *var_r3_858;
 
     GameProp::Init();
-    temp_r3_851 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_851 != NULL) {
-        var_r3_858 = ((MKHeap *) (temp_r3_851->Current()))->Alloc(0x1E00, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_858 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1E00, NULL, 0);
     } else {
         var_r3_858 = malloc(0x1E00);
     }

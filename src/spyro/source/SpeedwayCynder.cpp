@@ -68,8 +68,8 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(M2C_UNK);                            /* extern */
+M2C_UNK free(u32 *);                                /* extern */
+u32 *malloc(M2C_UNK);                               /* extern */
 extern s32 GS_SWCynderFireBreathLP;
 extern s32 GS_SWCynderFireBreathStart;
 extern s32 GS_SWCynderFireBreathStop;
@@ -1242,20 +1242,18 @@ void SpeedwayCynder::UpdateLookAtNodes() {
 
 #if 0 // DRAFT: undefined identifier 'unk3FC'
 void SpeedwayCynder::Deinit() {
-    MKHeap *temp_r31_2300;
-    MKHeap *temp_r3_2295;
-    MKHeap *temp_r3_2304;
+    u32 *temp_r31_2300;
+    u32 *temp_r3_2295;
 
     this->unk24C.Deinit();
     do {
         temp_r3_2295 = this->unk3FC.unk0 - 4;
         this->unk3FC.unk0 = temp_r3_2295;
-    } while ((MKHeap *) temp_r3_2295->unk0 != NULL);
+    } while ((u32) *temp_r3_2295 != 0U);
     temp_r31_2300 = this->unk3FC.unk0;
     if (temp_r31_2300 != &gEmptyPtrList) {
-        temp_r3_2304 = temp_r3_2295->Current();
-        if (temp_r3_2304 != NULL) {
-            ((MKHeap *) (temp_r3_2304->Current()))->Free(temp_r31_2300, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2300, NULL, 0);
         } else {
             free(temp_r31_2300);
         }
@@ -1433,12 +1431,11 @@ s32 SpeedwayCynder::LoadDone() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpeedwayCynder::Init() {
     FireBombFX *temp_r3_2790;
-    MKHeap *temp_r3_2803;
-    MKHeap *temp_r3_2825;
-    MKHeap *temp_r3_2830;
-    MKHeap *var_r3_2810;
     s32 var_ctr_2823;
     s32 var_r29_2784;
+    u32 *temp_r3_2825;
+    u32 *temp_r3_2830;
+    u32 *var_r3_2810;
 
     KDProp::Init();
     this->unk364 = 0.0f;
@@ -1459,24 +1456,23 @@ void SpeedwayCynder::Init() {
         var_r29_2784 += 1;
     } while (var_r29_2784 < 8);
     ((Matrix *) &this->unk2E0)->SetIdentity();
-    temp_r3_2803 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2803 != NULL) {
-        var_r3_2810 = ((MKHeap *) (temp_r3_2803->Current()))->Alloc(0x30, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2810 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x30, NULL, 0);
     } else {
         var_r3_2810 = malloc(0x30);
     }
     this->unk3FC.unk0 = var_r3_2810;
-    this->unk3FC.unk0->unk0 = NULL;
+    M2C_FIELD(this->unk3FC.unk0, u32 *, 0) = 0U;
     var_ctr_2823 = 0xA;
     do {
         temp_r3_2825 = this->unk3FC.unk0;
-        this->unk3FC.unk0 = (MKHeap *) &temp_r3_2825->unk4;
-        temp_r3_2825->unk4 = -0x21524111;
+        this->unk3FC.unk0 = temp_r3_2825 + 4;
+        M2C_FIELD(temp_r3_2825, s32 *, 4) = 0xDEADBEEF;
         var_ctr_2823 -= 1;
     } while (var_ctr_2823 != 0);
     temp_r3_2830 = this->unk3FC.unk0;
-    this->unk3FC.unk0 = (MKHeap *) &temp_r3_2830->unk4;
-    temp_r3_2830->unk4 = 0;
+    this->unk3FC.unk0 = temp_r3_2830 + 4;
+    M2C_FIELD(temp_r3_2830, s32 *, 4) = 0;
 }
 #endif
 

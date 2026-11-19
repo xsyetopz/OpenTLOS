@@ -66,16 +66,13 @@ void EnemyGeneratorDescriptor::LoadDone() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
-    MKHeap *temp_r3_68;
-    MKHeap *temp_r3_93;
     MKIniLine *var_r24_38;
     MKIniLine *var_r25_166;
     MKIniLine *var_r25_286;
     MKIniLine *var_r26_117;
-    MKIniLine *var_r3_36;
     s32 temp_r26_92;
     s32 temp_r27_67;
     s32 var_r26_33;
@@ -91,8 +88,7 @@ s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
         var_r28_32 = 0;
         var_r26_33 = 0;
         var_r30_34 = 0;
-        var_r3_36 = arg0->unkC->GetSubLine(arg0);
-        var_r24_38 = var_r3_36;
+        var_r24_38 = arg0->unkC->GetSubLine(arg0);
 loop_7:
         if (var_r24_38 != NULL) {
             if (var_r24_38->IsField("Door") != 0) {
@@ -101,28 +97,25 @@ loop_7:
             if (var_r24_38->IsField("Wave") != 0) {
                 var_r26_33 += 1;
             }
-            var_r3_36 = var_r24_38->unkC->GetNextLine(var_r24_38);
-            var_r24_38 = var_r3_36;
+            var_r24_38 = var_r24_38->unkC->GetNextLine(var_r24_38);
             goto loop_7;
         }
         if (var_r28_32 > 0) {
             this->unk8 = var_r28_32;
             temp_r27_67 = this->unk8 * 0x24;
-            temp_r3_68 = ((MKHeap *) var_r3_36)->Current();
-            if (temp_r3_68 != NULL) {
-                var_r3_75 = ((MKHeap *) (temp_r3_68->Current()))->Alloc(temp_r27_67, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_75 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_67, NULL, 0);
             } else {
                 var_r3_75 = malloc(temp_r27_67);
             }
             this->unk10 = var_r3_75;
-            var_r3_36 = memset(this->unk10, 0, this->unk8 * 0x24);
+            memset(this->unk10, 0, this->unk8 * 0x24);
         }
         if (var_r26_33 > 0) {
             this->unkC = var_r26_33;
             temp_r26_92 = this->unkC * 0x14;
-            temp_r3_93 = ((MKHeap *) var_r3_36)->Current();
-            if (temp_r3_93 != NULL) {
-                var_r3_100 = ((MKHeap *) (temp_r3_93->Current()))->Alloc(temp_r26_92, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_100 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_92, NULL, 0);
             } else {
                 var_r3_100 = malloc(temp_r26_92);
             }
@@ -166,18 +159,14 @@ loop_46:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void EnemyGeneratorDescriptor::Deinit() {
-    MKHeap *temp_r3_387;
-    MKHeap *temp_r3_405;
     void *temp_r31_384;
     void *temp_r31_402;
 
     temp_r31_384 = this->unk10;
     if (temp_r31_384 != NULL) {
-        temp_r3_387 = MKHeap::Current();
-        if (temp_r3_387 != NULL) {
-            ((MKHeap *) (temp_r3_387->Current()))->Free(temp_r31_384, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_384, NULL, 0);
         } else {
             free(temp_r31_384);
         }
@@ -185,16 +174,14 @@ void EnemyGeneratorDescriptor::Deinit() {
     this->unk10 = NULL;
     temp_r31_402 = this->unk14;
     if (temp_r31_402 != NULL) {
-        temp_r3_405 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_405 != NULL) {
-            ((MKHeap *) (temp_r3_405->Current()))->Free(temp_r31_402, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_402, NULL, 0);
         } else {
             free(temp_r31_402);
         }
     }
     this->unk14 = NULL;
 }
-#endif
 
 void EnemyGeneratorDescriptor::Init() {
     this->unk18 = 1;
@@ -325,20 +312,19 @@ void EnemyGeneratorDoor::GetDoorPos() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: pointer/array required
 void EnemyGeneratorDoor::Close() {
-    KDProperty *sp10;
+    void **sp10;
     s32 spC;
     s32 sp8;
     KDProperty *temp_r3_674;
-    KDProperty *var_r3_687;
     u64 temp_ret_697;
     void **temp_r3_702;
 
     if ((void **) this->unk20 != NULL) {
         temp_r3_674 = M2C_FIELD(this, KDProperty **, 8);
-        if ((temp_r3_674 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_674, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), var_r3_687 = sp10, ((var_r3_687 == NULL) != 0)) || (var_r3_687 = M2C_FIELD(var_r3_687->__vptr, KDProperty *(**)(), 0x20)(), (((u8) var_r3_687 == 0) != 0)))) {
-            temp_ret_697 = var_r3_687->GetOwnerProp();
+        if ((temp_r3_674 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_674, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
+            temp_ret_697 = KDProperty::GetOwnerProp();
             ((KDProperty *) (M2C_FIELD(this, KDProperty **, 8)))->SetOwnerProp((MKProp *) (u32) temp_ret_697);
             temp_r3_702 = this->unk20;
             temp_ret_697->SetOwnerProp((MKProp *) (u32) M2C_FIELD(*temp_r3_702, u64 (**)(void **, M2C_UNK), 0x48)(temp_r3_702, 1));
@@ -347,20 +333,19 @@ void EnemyGeneratorDoor::Close() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: pointer/array required
 void EnemyGeneratorDoor::Open() {
-    KDProperty *sp10;
+    void **sp10;
     s32 spC;
     s32 sp8;
     KDProperty *temp_r3_743;
-    KDProperty *var_r3_756;
     u64 temp_ret_766;
     void **temp_r3_771;
 
     if ((void **) this->unk1C != NULL) {
         temp_r3_743 = M2C_FIELD(this, KDProperty **, 8);
-        if ((temp_r3_743 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_743, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), var_r3_756 = sp10, ((var_r3_756 == NULL) != 0)) || (var_r3_756 = M2C_FIELD(var_r3_756->__vptr, KDProperty *(**)(), 0x20)(), (((u8) var_r3_756 == 0) != 0)))) {
-            temp_ret_766 = var_r3_756->GetOwnerProp();
+        if ((temp_r3_743 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_743, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
+            temp_ret_766 = KDProperty::GetOwnerProp();
             ((KDProperty *) (M2C_FIELD(this, KDProperty **, 8)))->SetOwnerProp((MKProp *) (u32) temp_ret_766);
             temp_r3_771 = this->unk1C;
             temp_ret_766->SetOwnerProp((MKProp *) (u32) M2C_FIELD(*temp_r3_771, u64 (**)(void **, M2C_UNK), 0x48)(temp_r3_771, 1));
@@ -922,9 +907,6 @@ loop_9:
 #endif
 
 void EnemyGenerator::Deinit() {
-    MKHeap *temp_r3_1867;
-    MKHeap *temp_r3_1883;
-    MKHeap *temp_r3_1899;
     s32 var_r30_1853;
     s32 var_r31_1854;
     void *temp_r31_1866;
@@ -943,27 +925,24 @@ loop_3:
             goto loop_3;
         }
         temp_r31_1866 = this->unk54;
-        temp_r3_1867 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1867 != NULL) {
-            ((MKHeap *) (temp_r3_1867->Current()))->Free(temp_r31_1866, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1866, NULL, 0);
         } else {
             free(temp_r31_1866);
         }
     }
     temp_r31_1880 = this->unk58;
     if (temp_r31_1880 != NULL) {
-        temp_r3_1883 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1883 != NULL) {
-            ((MKHeap *) (temp_r3_1883->Current()))->Free(temp_r31_1880, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1880, NULL, 0);
         } else {
             free(temp_r31_1880);
         }
     }
     temp_r31_1896 = this->unk5C;
     if (temp_r31_1896 != NULL) {
-        temp_r3_1899 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1899 != NULL) {
-            ((MKHeap *) (temp_r3_1899->Current()))->Free(temp_r31_1896, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1896, NULL, 0);
         } else {
             free(temp_r31_1896);
         }
@@ -974,11 +953,6 @@ loop_3:
 #if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
 void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     EnemyGeneratorDescriptor *temp_r3_1956;
-    EnemyGeneratorDescriptor *temp_r3_1988;
-    EnemyGeneratorDescriptor *temp_r3_2014;
-    MKHeap *temp_r3_1968;
-    MKHeap *temp_r3_1993;
-    MKHeap *temp_r3_2019;
     s32 temp_r0_1958;
     s32 temp_r0_1964;
     s32 temp_r0_1989;
@@ -1014,35 +988,30 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     temp_r0_1964 = this->unk70;
     if (temp_r0_1964 > 0) {
         temp_r30_1967 = temp_r0_1964 * 0x30;
-        temp_r3_1968 = ((MKHeap *) temp_r3_1956)->Current();
-        if (temp_r3_1968 != NULL) {
-            var_r3_1975 = ((MKHeap *) (temp_r3_1968->Current()))->Alloc(temp_r30_1967, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1975 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1967, NULL, 0);
         } else {
             var_r3_1975 = malloc(temp_r30_1967);
         }
         this->unk54 = var_r3_1975;
         memset(this->unk54, 0, this->unk70 * 0x30);
     }
-    temp_r3_1988 = this->unk50;
-    temp_r0_1989 = temp_r3_1988->unk4;
+    temp_r0_1989 = this->unk50->unk4;
     if (temp_r0_1989 > 0) {
         temp_r30_1992 = temp_r0_1989 * 4;
-        temp_r3_1993 = ((MKHeap *) temp_r3_1988)->Current();
-        if (temp_r3_1993 != NULL) {
-            var_r3_2000 = ((MKHeap *) (temp_r3_1993->Current()))->Alloc(temp_r30_1992, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2000 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1992, NULL, 0);
         } else {
             var_r3_2000 = malloc(temp_r30_1992);
         }
         this->unk58 = var_r3_2000;
         memset(this->unk58, 0, this->unk50->unk4 * 4);
     }
-    temp_r3_2014 = this->unk50;
-    temp_r0_2015 = temp_r3_2014->unk0;
+    temp_r0_2015 = this->unk50->unk0;
     if (temp_r0_2015 > 0) {
         temp_r30_2018 = temp_r0_2015 * 4;
-        temp_r3_2019 = ((MKHeap *) temp_r3_2014)->Current();
-        if (temp_r3_2019 != NULL) {
-            var_r3_2026 = ((MKHeap *) (temp_r3_2019->Current()))->Alloc(temp_r30_2018, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2026 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_2018, NULL, 0);
         } else {
             var_r3_2026 = malloc(temp_r30_2018);
         }

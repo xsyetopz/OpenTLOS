@@ -31,16 +31,13 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: illegal use of non-static member
 void LavaFiddlerCritter::Deinit() {
-    MKHeap *temp_r3_57;
     void *temp_r31_54;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -48,7 +45,6 @@ void LavaFiddlerCritter::Deinit() {
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void LavaFiddlerCritter::Draw() {
     Matrix sp10;
@@ -1023,15 +1019,13 @@ loop_24:
 #endif
 
 s32 LavaFiddlerCritter::LoadDone() {
-    MKHeap *temp_r3_1578;
     s32 temp_r31_1577;
     void *var_r3_1585;
 
     Critters::LoadDone();
     temp_r31_1577 = this->unk90 * 0x70;
-    temp_r3_1578 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1578 != NULL) {
-        var_r3_1585 = ((MKHeap *) (temp_r3_1578->Current()))->Alloc(temp_r31_1577, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1585 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1577, NULL, 0);
     } else {
         var_r3_1585 = malloc(temp_r31_1577);
     }

@@ -74,7 +74,7 @@ static s8 *CRATE_REF_TARGET = "r_target";
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_80359889;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_80359893[0xA] = { 0x50, 0x30, 0x30, 0x32, 0x33, 0x5F, 0x47, 0x65, 0x6D, 0 }; /* const */
+
 static M2C_UNK .L_8035989D;                         /* unable to generate initializer: unknown type; const */
 
 u8 ShatterObject::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {

@@ -215,7 +215,6 @@ void FireBossGoal_Think::Reset() {
 void FireBossGoal_Think::Deinit() {
     Goal<FireBoss> *temp_r3_314;
     Goal<FireBoss> *temp_r3_319;
-    MKHeap *temp_r3_346;
     s32 temp_r31_343;
     void **temp_r3_294;
     void **temp_r3_299;
@@ -246,9 +245,8 @@ void FireBossGoal_Think::Deinit() {
     operator delete(this->unk30);
     temp_r31_343 = this->unk1C;
     if ((u32) temp_r31_343 != 0U) {
-        temp_r3_346 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_346 != NULL) {
-            ((MKHeap *) (temp_r3_346->Current()))->Free((void *) temp_r31_343, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_343, NULL, 0);
         } else {
             free(temp_r31_343);
         }
@@ -267,7 +265,6 @@ void FireBossGoal_Think::Deinit() {
 void FireBossGoal_Think::Init(FireBoss *arg0) {
     Goal<FireBoss> *temp_r4_607;
     Goal<FireBoss> *temp_r4_618;
-    MKHeap *temp_r3_536;
     void **temp_r4_563;
     void **temp_r4_574;
     void **temp_r4_585;
@@ -348,9 +345,8 @@ void FireBossGoal_Think::Init(FireBoss *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_536 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_536 != NULL) {
-            var_r3_543 = ((MKHeap *) (temp_r3_536->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_543 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_543 = malloc(0xC);
         }

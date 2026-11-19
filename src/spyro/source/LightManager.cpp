@@ -248,16 +248,14 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'free'
 void LightManager::Deinit() {
-    MKHeap *temp_r3_393;
     void *temp_r31_390;
 
     temp_r31_390 = this->unk5C;
     if (temp_r31_390 != NULL) {
-        temp_r3_393 = MKHeap::Current();
-        if (temp_r3_393 != NULL) {
-            ((MKHeap *) (temp_r3_393->Current()))->Free(temp_r31_390, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_390, NULL, 0);
         } else {
             free(temp_r31_390);
         }
@@ -283,7 +281,6 @@ void LightManager::DisableAllLights() {
 
 #if 0 // DRAFT: illegal type
 void LightManager::Init() {
-    MKHeap *temp_r3_451;
     s32 temp_r0_486;
     s32 temp_r4_484;
     s32 temp_r6_483;
@@ -292,9 +289,8 @@ void LightManager::Init() {
     void *var_r3_458;
 
     MKProp::Init();
-    temp_r3_451 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_451 != NULL) {
-        var_r3_458 = ((MKHeap *) (temp_r3_451->Current()))->Alloc(0x1680, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_458 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1680, NULL, 0);
     } else {
         var_r3_458 = malloc(0x1680);
     }

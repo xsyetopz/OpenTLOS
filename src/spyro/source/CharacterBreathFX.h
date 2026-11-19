@@ -13,7 +13,7 @@ public:
     void EmitConeBreathFx(int, float, float, float, float, float);
     void EmitBreathFx(int, float, float, float, float, float);
     void SetDefaults(void);
-    void Deinit(void);
+    static void Deinit(void);
     void Init(CharacterBreathFXDescriptor *, MKModel *);
     /* 0x000 */ s32* unk0;
     /* 0x004 */ MKModel* unk4;

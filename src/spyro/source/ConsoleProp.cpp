@@ -42,12 +42,10 @@ loop_2:
 
 #if 0 // DRAFT: function call 'strcpy(unsigned char *, long)' does not match
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_100;
     MKIniLine *temp_r27_137;
     MKIniLine *var_r26_123;
     s32 temp_r0_96;
     s32 temp_r28_99;
-    s32 temp_r3_94;
     s32 var_r30_125;
     void *var_r3_107;
 
@@ -55,14 +53,12 @@ s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("Macros") != 0) {
-        temp_r3_94 = arg0->GetNmbrOfSubLines();
-        this->unk50 = temp_r3_94;
+        this->unk50 = arg0->GetNmbrOfSubLines();
         temp_r0_96 = this->unk50;
         if (temp_r0_96 != 0) {
             temp_r28_99 = temp_r0_96 * 0x24;
-            temp_r3_100 = ((MKHeap *) temp_r3_94)->Current();
-            if (temp_r3_100 != NULL) {
-                var_r3_107 = ((MKHeap *) (temp_r3_100->Current()))->Alloc(temp_r28_99, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_107 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_99, NULL, 0);
             } else {
                 var_r3_107 = malloc(temp_r28_99);
             }
@@ -97,7 +93,6 @@ loop_14:
 
 #if 0 // DRAFT: function call 'Console_RemoveMacro(unsigned char *)' does not match
 void ConsoleProp::Deinit() {
-    MKHeap *temp_r3_218;
     s32 var_r30_204;
     s32 var_r31_205;
     void *temp_r31_217;
@@ -113,9 +108,8 @@ loop_3:
             goto loop_3;
         }
         temp_r31_217 = this->unk4C;
-        temp_r3_218 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_218 != NULL) {
-            ((MKHeap *) (temp_r3_218->Current()))->Free(temp_r31_217, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_217, NULL, 0);
         } else {
             free(temp_r31_217);
         }

@@ -116,7 +116,6 @@ void ConvexTier3Goal_PatrolMode::Activate() {
 
 void ConvexTier3Goal_PatrolMode::Deinit() {
     Goal<Enemy> *temp_r3_158;
-    MKHeap *temp_r3_168;
     void *temp_r31_165;
 
     temp_r3_158 = this->unk24;
@@ -124,9 +123,8 @@ void ConvexTier3Goal_PatrolMode::Deinit() {
     operator delete(this->unk24);
     temp_r31_165 = this->unk1C;
     if (temp_r31_165 != NULL) {
-        temp_r3_168 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_168 != NULL) {
-            ((MKHeap *) (temp_r3_168->Current()))->Free(temp_r31_165, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_165, NULL, 0);
         } else {
             free(temp_r31_165);
         }
@@ -143,7 +141,6 @@ void ConvexTier3Goal_PatrolMode::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void ConvexTier3Goal_PatrolMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_263;
-    MKHeap *temp_r3_236;
     void *var_r3_243;
 
     this->unk20 = arg0;
@@ -160,9 +157,8 @@ void ConvexTier3Goal_PatrolMode::Init(Enemy *arg0) {
         this->unk24 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_236 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_236 != NULL) {
-            var_r3_243 = ((MKHeap *) (temp_r3_236->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_243 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_243 = malloc(8);
         }
@@ -211,7 +207,7 @@ void ConvexTier3Goal_Think::StartFollowingSpawnPath() {
 }
 
 u8 ConvexTier3Goal_Think::IsFollowingSpawnPath() {
-    return ((u8) this->unkC->unkB09 >> 4U) & 1;
+    return ((u8) M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xC), u8 *, 0xB09) >> 4U) & 1;
 }
 
 void ConvexTier3Goal_Think::AddGoal_FollowSpawnGraph() {
@@ -276,7 +272,7 @@ void ConvexTier3Goal_Think::Arbitrate() {
     Enemy *temp_r3_523;
     u8 var_r31_524;
 
-    if (IsFollowingSpawnPath() != 0) {
+    if (ConvexTier3Goal_Think::IsFollowingSpawnPath() != 0) {
         AddGoal_FollowSpawnPath();
     }
     if (IsFollowingSpawnGraph() != 0) {
@@ -338,7 +334,6 @@ void ConvexTier3Goal_Think::Deinit() {
     Goal<Enemy> *temp_r3_652;
     Goal<Enemy> *temp_r3_657;
     Goal<Enemy> *temp_r3_662;
-    MKHeap *temp_r3_676;
     void *temp_r31_673;
 
     temp_r3_652 = this->unk24;
@@ -352,9 +347,8 @@ void ConvexTier3Goal_Think::Deinit() {
     operator delete(this->unk2C);
     temp_r31_673 = this->unk1C;
     if (temp_r31_673 != NULL) {
-        temp_r3_676 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_676 != NULL) {
-            ((MKHeap *) (temp_r3_676->Current()))->Free(temp_r31_673, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_673, NULL, 0);
         } else {
             free(temp_r31_673);
         }
@@ -371,7 +365,6 @@ void ConvexTier3Goal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void ConvexTier3Goal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_828;
-    MKHeap *temp_r3_798;
     void *var_r3_805;
 
     this->unk20 = arg0;
@@ -418,9 +411,8 @@ void ConvexTier3Goal_Think::Init(Enemy *arg0) {
         this->unk2C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_798 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_798 != NULL) {
-            var_r3_805 = ((MKHeap *) (temp_r3_798->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_805 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_805 = malloc(8);
         }

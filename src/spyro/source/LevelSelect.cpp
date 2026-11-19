@@ -39,38 +39,13 @@ extern M2C_UNK gb;
 extern s32 gpTranslation_StringArray;
 extern UIObject *pMenuCurrent;
 extern UIObject *pMenuRoot;
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to
 u8 descriptor__18LevelSelectButtons[0x14];          /* unable to generate initializer: cannot parse "LevelSelectButtons" as integer */
 u8 descriptor__11LevelButton[0x14];                 /* unable to generate initializer: cannot parse .L_8035BD7D as integer */
-static s8 *pFontName = .L_8035BD89;
+static s8 *pFontName = "font_game";
 #endif
-#if 0 // DRAFT: declaration syntax error
-static s8 .L_8035BD89[0x17] = {
-    0x66,
-    0x6F,
-    0x6E,
-    0x74,
-    0x5F,
-    0x67,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x42,
-    0x75,
-    0x74,
-    0x74,
-    0x6F,
-    0x6E,
-    0x73,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void LevelSelectScreen::Populate() {
     s32 sp2C;
     s32 sp28;
@@ -204,17 +179,15 @@ void LevelSelectScreen::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: ')' expected
 void LevelSelectScreen::Deinit() {
-    MKHeap *temp_r3_446;
     UIContainer *var_r30_468;
     UIObject *temp_r31_443;
 
     temp_r31_443 = pMenuRoot;
     if (temp_r31_443 != NULL) {
-        temp_r3_446 = MKHeap::Current();
-        if (temp_r3_446 != NULL) {
-            ((MKHeap *) (temp_r3_446->Current()))->Free(temp_r31_443, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_443, NULL, 0);
         } else {
             free(temp_r31_443);
         }
@@ -234,7 +207,6 @@ loop_7:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LevelSelectScreen::Init() {
-    MKHeap *temp_r3_504;
     UIObject *var_r3_511;
     f32 temp_r5_537;
     f32 var_r4_541;
@@ -255,9 +227,8 @@ void LevelSelectScreen::Init() {
 
     UIContainer::Init();
     temp_r27_503 = (*Level::levelInfoCount + (*Level::chunkInfoCount + 1)) << 6;
-    temp_r3_504 = ((MKHeap *) (*Level::chunkInfoCount))->Current();
-    if (temp_r3_504 != NULL) {
-        var_r3_511 = ((MKHeap *) (temp_r3_504->Current()))->Alloc(temp_r27_503, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_511 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_503, NULL, 0);
     } else {
         var_r3_511 = malloc(temp_r27_503);
     }
@@ -338,8 +309,6 @@ void LevelSelectButtons::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_665;
-    MKHeap *temp_r3_721;
     UIContainer *temp_r25_696;
     UIContainer *temp_r3_691;
     UIObject *temp_r3_747;
@@ -355,9 +324,8 @@ void LevelSelectButtons::Init() {
     var_r29_658 = 0;
     do {
         temp_r27_664 = M2C_FIELD(LevelButton::descriptor, s32 *, 8);
-        temp_r3_665 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_665 != NULL) {
-            var_r27_673 = ((MKHeap *) (temp_r3_665->Current()))->Alloc(temp_r27_664, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r27_673 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_664, NULL, 0);
         } else {
             var_r27_673 = malloc(temp_r27_664);
         }
@@ -378,9 +346,8 @@ void LevelSelectButtons::Init() {
         M2C_FIELD(temp_r3_691->__vptr, M2C_UNK (**)(M2C_UNK, f64), 0x14)(0x23, (f64) sp8);
         AddBefore(NULL, (UIObject *) temp_r25_696);
         temp_r27_720 = M2C_FIELD(DSText::descriptor, s32 *, 8);
-        temp_r3_721 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_721 != NULL) {
-            var_r27_729 = ((MKHeap *) (temp_r3_721->Current()))->Alloc(temp_r27_720, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r27_729 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_720, NULL, 0);
         } else {
             var_r27_729 = malloc(temp_r27_720);
         }

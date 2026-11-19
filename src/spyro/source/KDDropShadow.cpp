@@ -4,19 +4,21 @@
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'P22KDDropShadowDescriptor'
+#if 0 // DRAFT: ')' expected
 MKHeap *malloc(s32);                                /* extern */
 
 void KDDropShadow::Draw() {
@@ -28,7 +30,7 @@ void KDDropShadow::Draw() {
     f32 temp_f1_91;
     f32 temp_f3_98;
 
-    MKMaterial_SetMaterial(checked_cast<P22KDDropShadowDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk38);
+    MKMaterial_SetMaterial(M2C_FIELD(checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x38));
     MKPrimitive(0xC, 0x10);
     var_r3_53 = this->unk50;
     if (var_r3_53 != (Matrix *) this->unk54) {
@@ -80,20 +82,16 @@ void KDDropShadow::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDDropShadowDescriptor *' to
+#if 0 // DRAFT: ')' expected
 s32 KDDropShadow::LoadDone() {
-    MKHeap *temp_r3_176;
-    MKHeap *temp_r3_178;
     MKHeap *var_r3_185;
     Matrix *temp_r0_194;
     s32 temp_r31_177;
 
     MKProp::LoadDone();
-    temp_r3_176 = checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r31_177 = temp_r3_176->unk60;
-    temp_r3_178 = temp_r3_176->Current();
-    if (temp_r3_178 != NULL) {
-        var_r3_185 = ((MKHeap *) (temp_r3_178->Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0);
+    temp_r31_177 = M2C_FIELD(checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
+    if (MKHeap::Current() != NULL) {
+        var_r3_185 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0);
     } else {
         var_r3_185 = malloc(temp_r31_177 * 0x50);
     }

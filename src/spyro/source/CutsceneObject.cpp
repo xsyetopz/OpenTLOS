@@ -133,7 +133,6 @@ void CutsceneObject::Resolve() {
 
 #if 0 // DRAFT: function call 'strlen(long)' does not match
 s32 CutsceneObject::LoadSubLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_315;
     MKIniLine *var_r31_275;
     s32 var_r31_344;
     s8 *var_r3_322;
@@ -153,9 +152,8 @@ loop_4:
     if ((arg0->IsField("levelCode") != 0) && (arg0->GetString(0) != 0U)) {
         temp_r3_312 = strlen(arg0->GetString(0));
         if (temp_r3_312 != 0) {
-            temp_r3_315 = ((MKHeap *) temp_r3_312)->Current();
-            if (temp_r3_315 != NULL) {
-                var_r3_322 = ((MKHeap *) (temp_r3_315->Current()))->Alloc(temp_r3_312 + 1, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_322 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_312 + 1, NULL, 0);
             } else {
                 var_r3_322 = malloc(temp_r3_312 + 1);
             }
@@ -188,17 +186,14 @@ loop_3:
     return 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 CutsceneObject::~CutsceneObject() {
-    MKHeap *temp_r3_575;
     s8 *temp_r31_572;
 
     if (this != NULL) {
         temp_r31_572 = this->unk54;
         if (temp_r31_572 != NULL) {
-            temp_r3_575 = MKHeap::Current();
-            if (temp_r3_575 != NULL) {
-                ((MKHeap *) (temp_r3_575->Current()))->Free(temp_r31_572, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_572, NULL, 0);
             } else {
                 free(temp_r31_572);
             }
@@ -220,7 +215,6 @@ CutsceneObject::~CutsceneObject() {
         }
     }
 }
-#endif
 
 CutsceneObject::CutsceneObject() {
     this->unk0 = M2C_FIELD(&MKVector4::zero, f64 *, 0);

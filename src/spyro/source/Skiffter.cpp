@@ -29,18 +29,14 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void SkiffterCritter::Deinit() {
-    MKHeap *temp_r3_57;
-    MKHeap *temp_r3_76;
     void *temp_r31_54;
     void *temp_r31_73;
 
     temp_r31_54 = this->unk170;
     if (temp_r31_54 != NULL) {
-        temp_r3_57 = MKHeap::Current();
-        if (temp_r3_57 != NULL) {
-            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
         } else {
             free(temp_r31_54);
         }
@@ -48,9 +44,8 @@ void SkiffterCritter::Deinit() {
     }
     temp_r31_73 = this->unk174;
     if (temp_r31_73 != NULL) {
-        temp_r3_76 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_76 != NULL) {
-            ((MKHeap *) (temp_r3_76->Current()))->Free(temp_r31_73, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_73, NULL, 0);
         } else {
             free(temp_r31_73);
         }
@@ -58,7 +53,6 @@ void SkiffterCritter::Deinit() {
     }
     Critters::Deinit();
 }
-#endif
 
 void SkiffterCritter::Draw() {
     Matrix sp10;
@@ -1153,7 +1147,6 @@ loop_197:
 
 #if 0 // DRAFT: illegal type
 f32 SkiffterCritter::Resolve() {
-    MKHeap *temp_r3_1790;
     s32 temp_r0_1810;
     s32 temp_r31_1789;
     s32 var_r4_1803;
@@ -1162,9 +1155,8 @@ f32 SkiffterCritter::Resolve() {
 
     MKProp::Resolve();
     temp_r31_1789 = this->unk90 << 7;
-    temp_r3_1790 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1790 != NULL) {
-        var_r3_1797 = ((MKHeap *) (temp_r3_1790->Current()))->Alloc(temp_r31_1789, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1797 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1789, NULL, 0);
     } else {
         var_r3_1797 = malloc(temp_r31_1789);
     }
@@ -1188,10 +1180,8 @@ s32 SkiffterCritter::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_1864;
     MKIniLine *var_r28_1883;
     s32 temp_r29_1863;
-    s32 temp_r3_1860;
     s32 var_r30_1879;
     void *var_r3_1871;
 
@@ -1199,12 +1189,10 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("Waypoints") != 0) {
-        temp_r3_1860 = arg0->GetNmbrOfSubLines();
-        this->unk178 = temp_r3_1860;
+        this->unk178 = arg0->GetNmbrOfSubLines();
         temp_r29_1863 = this->unk178 * 0x10;
-        temp_r3_1864 = ((MKHeap *) temp_r3_1860)->Current();
-        if (temp_r3_1864 != NULL) {
-            var_r3_1871 = ((MKHeap *) (temp_r3_1864->Current()))->Alloc(temp_r29_1863, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1871 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_1863, NULL, 0);
         } else {
             var_r3_1871 = malloc(temp_r29_1863);
         }

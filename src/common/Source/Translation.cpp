@@ -34,19 +34,19 @@ extern u8 *gpTranslation_StringArray;
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_gLanguageInfo_0x14'
 static struct _struct_gLanguageInfo_0x14 gLanguageInfo[0xD] = {
-    { "English (UK)", &.L_8036DFA5, &.L_8036DFAD, .L_8036DFB0, 0 },
-    { &.L_8036DFC9, &.L_8036DFD6, &.L_8036DFAD, .L_8036DFDF, 0 },
-    { &.L_8036DFF9, &.L_8036E002, &.L_8036E009, .L_8036E00C, 0 },
-    { &.L_8036E024, &.L_8036E02C, &.L_8036E034, .L_8036E037, 0 },
-    { &.L_8036E050, &.L_8036E058, &.L_8036E05F, .L_8036E062, 0 },
-    { &.L_8036E07A, &.L_8036E083, &.L_8036E08B, .L_8036E08E, 0 },
-    { &.L_8036E0A7, &.L_8036E0B2, &.L_8036E0B8, .L_8036E0BB, 0 },
-    { &.L_8036E0D2, &.L_8036E0D2, &.L_8036E0DB, .L_8036E0DE, 0 },
-    { &.L_8036E0F8, &.L_8036E0FE, &.L_8036E105, .L_8036E108, 0 },
-    { &.L_8036E120, &.L_8036E128, &.L_8036E130, .L_8036E133, 0 },
-    { &.L_8036E14C, &.L_8036E152, &.L_8036E15C, .L_8036E15F, 0 },
-    { &.L_8036E17A, &.L_8036E180, &.L_8036E188, .L_8036E18B, 0 },
-    { &.L_8036E1A4, &.L_8036E1A4, &.L_8036E1AC, .L_8036E1AF, 0 },
+    { "English (UK)", &.L_8036DFA5, &.L_8036DFAD, "Translations.English.txt", 0 },
+    { &.L_8036DFC9, &.L_8036DFD6, &.L_8036DFAD, "Translations.American.txt", 0 },
+    { &.L_8036DFF9, &.L_8036E002, &.L_8036E009, "Translations.French.txt", 0 },
+    { &.L_8036E024, &.L_8036E02C, &.L_8036E034, "Translations.Spanish.txt", 0 },
+    { &.L_8036E050, &.L_8036E058, &.L_8036E05F, "Translations.German.txt", 0 },
+    { &.L_8036E07A, &.L_8036E083, &.L_8036E08B, "Translations.Italian.txt", 0 },
+    { &.L_8036E0A7, &.L_8036E0B2, &.L_8036E0B8, "Translations.Dutch.txt", 0 },
+    { &.L_8036E0D2, &.L_8036E0D2, &.L_8036E0DB, "Translations.Japanese.txt", 0 },
+    { &.L_8036E0F8, &.L_8036E0FE, &.L_8036E105, "Translations.Danish.txt", 0 },
+    { &.L_8036E120, &.L_8036E128, &.L_8036E130, "Translations.Swedish.txt", 0 },
+    { &.L_8036E14C, &.L_8036E152, &.L_8036E15C, "Translations.Norwegian.txt", 0 },
+    { &.L_8036E17A, &.L_8036E180, &.L_8036E188, "Translations.Finnish.txt", 0 },
+    { &.L_8036E1A4, &.L_8036E1A4, &.L_8036E1AC, "Translations.Russian.txt", 0 },
 };
 #endif
 static s32 gpLanguageOptionStrings[0xE];
@@ -55,422 +55,51 @@ static s32 gCurrentLanguage = -1;
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFA5;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036DFAD;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036DFB0[0x19] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x45,
-    0x6E,
-    0x67,
-    0x6C,
-    0x69,
-    0x73,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036DFC9;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036DFD6;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036DFDF[0x1A] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x41,
-    0x6D,
-    0x65,
-    0x72,
-    0x69,
-    0x63,
-    0x61,
-    0x6E,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036DFF9;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E002;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E009;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E00C[0x18] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x46,
-    0x72,
-    0x65,
-    0x6E,
-    0x63,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E024;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E02C;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E034;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E037[0x19] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x53,
-    0x70,
-    0x61,
-    0x6E,
-    0x69,
-    0x73,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E050;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E058;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E05F;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E062[0x18] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x47,
-    0x65,
-    0x72,
-    0x6D,
-    0x61,
-    0x6E,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E07A;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E083;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E08B;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E08E[0x19] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x49,
-    0x74,
-    0x61,
-    0x6C,
-    0x69,
-    0x61,
-    0x6E,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E0A7;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E0B2;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E0B8;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E0BB[0x17] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x44,
-    0x75,
-    0x74,
-    0x63,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E0D2;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E0DB;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E0DE[0x1A] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x4A,
-    0x61,
-    0x70,
-    0x61,
-    0x6E,
-    0x65,
-    0x73,
-    0x65,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E0F8;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E0FE;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E105;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E108[0x18] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x44,
-    0x61,
-    0x6E,
-    0x69,
-    0x73,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E120;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E128;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E130;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E133[0x19] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x53,
-    0x77,
-    0x65,
-    0x64,
-    0x69,
-    0x73,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E14C;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E152;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E15C;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E15F[0x1B] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x4E,
-    0x6F,
-    0x72,
-    0x77,
-    0x65,
-    0x67,
-    0x69,
-    0x61,
-    0x6E,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E17A;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E180;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E188;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E18B[0x19] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x46,
-    0x69,
-    0x6E,
-    0x6E,
-    0x69,
-    0x73,
-    0x68,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8036E1A4;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8036E1AC;                         /* unable to generate initializer: unknown type; const */
-static s8 .L_8036E1AF[0x3A] = {
-    0x54,
-    0x72,
-    0x61,
-    0x6E,
-    0x73,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2E,
-    0x52,
-    0x75,
-    0x73,
-    0x73,
-    0x69,
-    0x61,
-    0x6E,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-    0x5B,
-    0x5D,
-    0,
-    0x5B,
-    0x50,
-    0x53,
-    0x32,
-    0x5D,
-    0,
-    0x5B,
-    0x47,
-    0x43,
-    0x4E,
-    0x5D,
-    0,
-    0x5B,
-    0x58,
-    0x42,
-    0x4F,
-    0x58,
-    0x5D,
-    0,
-    0x5B,
-    0x50,
-    0x43,
-    0x5D,
-    0,
-    0x5B,
-    0x50,
-    0x53,
-    0x50,
-    0x5D,
-    0,
-}; /* const */
 
 void Translation_GetLanguageCode(TranslationLanguage arg0) {
 
@@ -690,36 +319,30 @@ s32 Translation_GetLanguage() {
     return gCurrentLanguage;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Translation_DeinitModule() {
-    MKHeap *temp_r3_444;
-    MKHeap *temp_r3_462;
-    MKHeap *temp_r3_478;
     u8 *temp_r31_443;
     u8 *temp_r31_460;
     u8 *temp_r31_476;
 
     temp_r31_443 = gpTranslationBuffer;
-    temp_r3_444 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_444 != NULL) {
-        ((MKHeap *) (temp_r3_444->Current()))->Free(temp_r31_443, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_443, NULL, 0);
     } else {
         free(temp_r31_443);
     }
     gpTranslationBuffer = NULL;
     temp_r31_460 = gpEnumTagArray;
     gCurrentLanguage = -1;
-    temp_r3_462 = NULL->Current();
-    if (temp_r3_462 != NULL) {
-        ((MKHeap *) (temp_r3_462->Current()))->Free(temp_r31_460, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_460, NULL, 0);
     } else {
         free(temp_r31_460);
     }
     temp_r31_476 = gpTranslation_StringArray;
     gpEnumTagArray = NULL;
-    temp_r3_478 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_478 != NULL) {
-        ((MKHeap *) (temp_r3_478->Current()))->Free(temp_r31_476, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_476, NULL, 0);
     } else {
         free(temp_r31_476);
     }
@@ -727,11 +350,8 @@ void Translation_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Translation_InitModule() {
-    MKHeap *temp_r3_512;
-    MKHeap *temp_r3_534;
-    MKHeap *temp_r3_594;
     s32 temp_r29_511;
     s32 temp_r29_533;
     s32 temp_r5_571;
@@ -745,24 +365,22 @@ void Translation_InitModule() {
     u8 *var_r3_601;
     void *temp_r27_561;
 
-    temp_r29_511 = (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20) + 1) * 4;
-    temp_r3_512 = ((MKHeap *) (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20)))->Current();
-    if (temp_r3_512 != NULL) {
-        var_r3_519 = ((MKHeap *) (temp_r3_512->Current()))->Alloc(temp_r29_511, NULL, 0);
+    temp_r29_511 = (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4;
+    if (MKHeap::Current() != NULL) {
+        var_r3_519 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_511, NULL, 0);
     } else {
         var_r3_519 = malloc(temp_r29_511);
     }
     gpTranslation_StringArray = var_r3_519;
-    memset(var_r3_519, 0, (s32) (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20) + 1) * 4);
-    temp_r29_533 = (s32) (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20) + 1) * 4;
-    temp_r3_534 = ((MKHeap *) (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20)))->Current();
-    if (temp_r3_534 != NULL) {
-        var_r3_541 = ((MKHeap *) (temp_r3_534->Current()))->Alloc(temp_r29_533, NULL, 0);
+    memset(var_r3_519, 0, (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4);
+    temp_r29_533 = (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4;
+    if (MKHeap::Current() != NULL) {
+        var_r3_541 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_533, NULL, 0);
     } else {
         var_r3_541 = malloc(temp_r29_533);
     }
     gpEnumTagArray = var_r3_541;
-    memset(var_r3_541, 0, (s32) (M2C_FIELD(&gMKDefaults, MKHeap **, 0x20) + 1) * 4);
+    memset(var_r3_541, 0, (M2C_FIELD(&gMKDefaults, s32 *, 0x20) + 1) * 4);
     var_r31_554 = 0;
     var_r25_556 = 0;
     var_r30_557 = 0;
@@ -786,9 +404,8 @@ void Translation_InitModule() {
         var_r29_559 += 0x14;
     } while (var_r26_558 < 0xD);
     gpLanguageOptionStrings[var_r25_556] = 0;
-    temp_r3_594 = ((MKHeap *) gpLanguageOptionStrings)->Current();
-    if (temp_r3_594 != NULL) {
-        var_r3_601 = ((MKHeap *) (temp_r3_594->Current()))->Alloc(var_r31_554 + 1, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_601 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r31_554 + 1, NULL, 0);
     } else {
         var_r3_601 = malloc(var_r31_554 + 1);
     }

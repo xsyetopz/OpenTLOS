@@ -49,8 +49,7 @@ extern s32 numLanguages;
 extern void **pSystem;
 extern UIStringTable strings;
 #if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match
-u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse lit_stringBase0 as integer */
-static MKHeap lit_stringBase0;                         /* type too large by 0xD5; unable to generate initializer: not enough data; const */
+u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse "LanguageSelectScreen" as integer */
 
 void NoController_Draw() {
     Tools_Ortho sp8;
@@ -102,7 +101,6 @@ void Language_Update() {
 }
 
 void Language_Deinit() {
-    MKHeap *temp_r3_202;
     UIStringTable *temp_r30_188;
     void **temp_r31_198;
 
@@ -111,9 +109,9 @@ void Language_Deinit() {
         if ((void **) pSystem != NULL) {
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x24)(pSystem);
             temp_r31_198 = pSystem;
-            temp_r3_202 = ((MKHeap *) (M2C_FIELD(*pSystem, MKHeap *(**)(void **), 0xC)(pSystem)))->Current();
-            if (temp_r3_202 != NULL) {
-                ((MKHeap *) (temp_r3_202->Current()))->Free(temp_r31_198, NULL, 0);
+            M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0xC)(pSystem);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_198, NULL, 0);
             } else {
                 free(temp_r31_198);
             }
@@ -125,15 +123,14 @@ void Language_Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIStringTable *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Language_Init() {
     s32 spC;
     s32 sp8;
     MCLoadCheckScreen *temp_r3_291;
-    MKHeap *temp_r3_245;
-    MKHeap *temp_r3_250;
     UIObject *var_r30_258;
     UIObjectDescriptor *var_r4_284;
+    UIStringTable *temp_r31_247;
     s32 temp_r30_249;
     s32 temp_r3_237;
 
@@ -141,11 +138,10 @@ void Language_Init() {
     numLanguages = temp_r3_237;
     if (temp_r3_237 > 1) {
         strings.Init(0x400);
-        temp_r3_245 = UIStringTable_SetCurrent(&strings);
+        temp_r31_247 = UIStringTable_SetCurrent(&strings);
         temp_r30_249 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
-        temp_r3_250 = temp_r3_245->Current();
-        if (temp_r3_250 != NULL) {
-            var_r30_258 = ((MKHeap *) (temp_r3_250->Current()))->Alloc(temp_r30_249, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r30_258 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_249, NULL, 0);
         } else {
             var_r30_258 = malloc(temp_r30_249);
         }
@@ -163,16 +159,16 @@ loop_7:
             var_r4_284 = (UIObjectDescriptor *) &temp_r3_291->unk10;
             goto loop_7;
         }
-        KDSound_Init(&lit_stringBase0 + 0x15);
-        if (((UIObject *) pSystem)->Load(&lit_stringBase0 + 0x1E, NULL) != 0) {
+        KDSound_Init"mainmenu";
+        if (((UIObject *) pSystem)->Load("language.ui", NULL) != 0) {
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x28)(pSystem);
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x20)(pSystem);
             sp8 = 1;
             spC = 0;
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pSystem, &sp8);
-            ((UISystem *) pSystem)->PushScreen(&lit_stringBase0 + 0x2A);
+            ((UISystem *) pSystem)->PushScreen("LanguageSelect");
         }
-        UIStringTable_SetCurrent((UIStringTable *) temp_r3_245);
+        UIStringTable_SetCurrent(temp_r31_247);
     }
     UIControls_SetDevice((MKInputDevices) *M2C_FIELD(&gb, s32 **, 0x354));
 }
@@ -236,10 +232,6 @@ void LanguageSelectScreen::OnEnter() {
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LanguageSelectScreen::LoadDone() {
     s32 sp8;
-    MKHeap *temp_r3_492;
-    MKHeap *temp_r3_574;
-    MKHeap *temp_r3_629;
-    MKHeap *var_r3_563;
     UIObject *temp_r3_600;
     UIObject *temp_r3_655;
     UIObject *var_r24_500;
@@ -254,9 +246,8 @@ void LanguageSelectScreen::LoadDone() {
     void **temp_r5_532;
 
     temp_r24_491 = M2C_FIELD(MarkerButtonGroup::descriptor, s32 *, 8);
-    temp_r3_492 = ((MKHeap *) MarkerButtonGroup::descriptor)->Current();
-    if (temp_r3_492 != NULL) {
-        var_r24_500 = ((MKHeap *) (temp_r3_492->Current()))->Alloc(temp_r24_491, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r24_500 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_491, NULL, 0);
     } else {
         var_r24_500 = malloc(temp_r24_491);
     }
@@ -273,12 +264,10 @@ void LanguageSelectScreen::LoadDone() {
     M2C_FIELD(this->unkC8, f32 *, 0x2C) = (f32) -((0.5f * (36.0f * (f32) (numLanguages - 1))) - 256.0f);
     var_r26_557 = numLanguages - 1;
     if (GameLanguage_GetLast((int *) &sp8, 0U) != 0) {
-        var_r3_563 = &lit_stringBase0;
         do {
             temp_r24_573 = M2C_FIELD(ThrobButton::descriptor, s32 *, 8);
-            temp_r3_574 = var_r3_563->Current();
-            if (temp_r3_574 != NULL) {
-                var_r24_582 = ((MKHeap *) (temp_r3_574->Current()))->Alloc(temp_r24_573, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r24_582 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_573, NULL, 0);
             } else {
                 var_r24_582 = malloc(temp_r24_573);
             }
@@ -291,12 +280,11 @@ void LanguageSelectScreen::LoadDone() {
             temp_r3_600->unk18.unk10.unk4 = 36.0f * (f32) var_r26_557;
             temp_r3_600->unk18.unk10.unk8 = 0.0f;
             GameLanguage_GetCode(sp8);
-            M2C_FIELD(temp_r3_600->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x48)(temp_r3_600, Str_Printf(&lit_stringBase0 + 0x39, M2C_ERROR(/* Read from unset register $r3 */)));
+            M2C_FIELD(temp_r3_600->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x48)(temp_r3_600, Str_Printf("lang %s", M2C_ERROR(/* Read from unset register $r3 */)));
             ((UIContainer *) this->unkC8)->Add(temp_r3_600);
             temp_r24_628 = M2C_FIELD(DSText::descriptor, s32 *, 8);
-            temp_r3_629 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_629 != NULL) {
-                var_r24_637 = ((MKHeap *) (temp_r3_629->Current()))->Alloc(temp_r24_628, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r24_637 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_628, NULL, 0);
             } else {
                 var_r24_637 = malloc(temp_r24_628);
             }
@@ -320,7 +308,7 @@ void LanguageSelectScreen::LoadDone() {
             if (temp_r3_677 != NULL) {
                 UIStringTable_Remove(temp_r3_677);
             }
-            UIStringTable_Add(&lit_stringBase0 + 0x41);
+            UIStringTable_Add"font_game";
             M2C_FIELD(temp_r3_655, s8 **, 0x60) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
             ((UIContainer *) temp_r3_600)->Add(temp_r3_655);
             GameLanguage_Get();
@@ -328,8 +316,7 @@ void LanguageSelectScreen::LoadDone() {
                 this->unkCC = var_r26_557;
             }
             var_r26_557 -= 1;
-            var_r3_563 = GameLanguage_GetPrev((int *) &sp8, 0U);
-        } while ((u8) var_r3_563 != 0);
+        } while (GameLanguage_GetPrev((int *) &sp8, 0U) != 0);
     }
 }
 #endif

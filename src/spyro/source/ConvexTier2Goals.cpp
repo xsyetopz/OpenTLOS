@@ -124,7 +124,6 @@ void ConvexTier2Goal_PatrolMode::Activate() {
 
 void ConvexTier2Goal_PatrolMode::Deinit() {
     Goal<Enemy> *temp_r3_189;
-    MKHeap *temp_r3_199;
     void *temp_r31_196;
 
     temp_r3_189 = this->unk24;
@@ -132,9 +131,8 @@ void ConvexTier2Goal_PatrolMode::Deinit() {
     operator delete(this->unk24);
     temp_r31_196 = this->unk1C;
     if (temp_r31_196 != NULL) {
-        temp_r3_199 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_199 != NULL) {
-            ((MKHeap *) (temp_r3_199->Current()))->Free(temp_r31_196, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_196, NULL, 0);
         } else {
             free(temp_r31_196);
         }
@@ -151,7 +149,6 @@ void ConvexTier2Goal_PatrolMode::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void ConvexTier2Goal_PatrolMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_294;
-    MKHeap *temp_r3_267;
     void *var_r3_274;
 
     this->unk20 = arg0;
@@ -168,9 +165,8 @@ void ConvexTier2Goal_PatrolMode::Init(Enemy *arg0) {
         this->unk24 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_267 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_267 != NULL) {
-            var_r3_274 = ((MKHeap *) (temp_r3_267->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_274 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_274 = malloc(8);
         }
@@ -416,7 +412,6 @@ void ConvexTier2Goal_Think::Deinit() {
     Goal<Enemy> *temp_r3_828;
     Goal<Enemy> *temp_r3_833;
     Goal<Enemy> *temp_r3_838;
-    MKHeap *temp_r3_854;
     void *temp_r31_851;
 
     temp_r3_823 = this->unk24;
@@ -433,9 +428,8 @@ void ConvexTier2Goal_Think::Deinit() {
     operator delete(this->unk30);
     temp_r31_851 = this->unk1C;
     if (temp_r31_851 != NULL) {
-        temp_r3_854 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_854 != NULL) {
-            ((MKHeap *) (temp_r3_854->Current()))->Free(temp_r31_851, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_851, NULL, 0);
         } else {
             free(temp_r31_851);
         }
@@ -452,7 +446,6 @@ void ConvexTier2Goal_Think::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void ConvexTier2Goal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1036;
-    MKHeap *temp_r3_1003;
     void *var_r3_1010;
 
     this->unk20 = arg0;
@@ -514,9 +507,8 @@ void ConvexTier2Goal_Think::Init(Enemy *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1003 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1003 != NULL) {
-            var_r3_1010 = ((MKHeap *) (temp_r3_1003->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1010 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_1010 = malloc(8);
         }

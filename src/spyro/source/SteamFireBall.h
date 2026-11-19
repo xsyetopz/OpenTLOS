@@ -26,7 +26,7 @@ public:
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     SteamFireBall(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
     /* 0x150 */ Shadow unk150;
     /* 0x180 */ MKModel* unk180;
     /* 0x184 */ f32 unk184;

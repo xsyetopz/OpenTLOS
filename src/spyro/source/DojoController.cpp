@@ -312,7 +312,7 @@ s32 EarthDojoLesson::HasFailedLesson() {
 }
 
 s32 EarthDojoLesson::IsFuryComplete() {
-    return this->unk10 > 0;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x10) > 0;
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -780,7 +780,7 @@ s32 EarthDojoLesson::IsSubLessonComplete() {
     case 1:
         return IsBreath2Complete();
     case 2:
-        return IsFuryComplete();
+        return EarthDojoLesson::IsFuryComplete();
     case 0:
         return IsBreath1Complete();
     default:
@@ -1041,7 +1041,7 @@ s32 IceDojoLesson::HasFailedLesson() {
 }
 
 s32 IceDojoLesson::IsFuryComplete() {
-    return this->unk10 > 0;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x10) > 0;
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -1533,7 +1533,7 @@ s32 IceDojoLesson::IsSubLessonComplete() {
     case 1:
         return IsBreath2Complete();
     case 2:
-        return IsFuryComplete();
+        return IceDojoLesson::IsFuryComplete();
     case 0:
         return IsBreath1Complete();
     default:
@@ -1884,7 +1884,7 @@ s32 ElectricDojoLesson::HasFailedLesson() {
 }
 
 s32 ElectricDojoLesson::IsFuryComplete() {
-    return this->unk10 > 0;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x10) > 0;
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -2558,7 +2558,7 @@ s32 ElectricDojoLesson::IsSubLessonComplete() {
     case 1:
         return IsBreath2Complete();
     case 2:
-        return IsFuryComplete();
+        return ElectricDojoLesson::IsFuryComplete();
     case 0:
         return IsBreath1Complete();
     default:
@@ -3186,7 +3186,7 @@ s32 FireDojoLesson::HasFailedLesson() {
 }
 
 s32 FireDojoLesson::IsFuryComplete() {
-    return this->unk10 > 0;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x10) > 0;
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -4264,7 +4264,7 @@ s32 FireDojoLesson::IsSubLessonComplete() {
     case 2:
         return IsMeleeKnockBackComplete();
     case 4:
-        return IsFuryComplete();
+        return FireDojoLesson::IsFuryComplete();
     case 3:
         return IsBreath2Complete();
     case 1:

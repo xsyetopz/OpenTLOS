@@ -80,7 +80,7 @@ public:
     void TrainUpdate(void);
     void TrainExit(void);
     void TrainEnter(void);
-    void InitModule(void);
+    static void InitModule(void);
     static u8 pPossibleStateChanges[0x4];
     static u8 pEmuStateDescriptors[0x4];
     /* 0x218 */ u8 pad218[0x8];

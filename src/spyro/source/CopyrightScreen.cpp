@@ -80,7 +80,7 @@ void CopyrightScreen::Update() {
     temp_r0_115 = this->unkD0;
     switch (temp_r0_115) {                          /* switch 2; irregular */
     case 1:                                         /* switch 2 */
-        temp_ret_123 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update();
+        temp_ret_123 = KDMemoryCard::Update();
         if (temp_ret_123 == 0) {
             this->unkD4 += 1;
             temp_r3_129 = this->unkD4;
@@ -88,7 +88,7 @@ void CopyrightScreen::Update() {
                 this->unkD8 = temp_r3_129->GetCard((s32) (u32) (u64) temp_ret_123);
                 this->unkD8->SetState((KDMCState) 2);
             } else {
-                this->unkD8 = temp_r3_129->GetFirstAvailable();
+                this->unkD8 = KDMemoryCard::GetFirstAvailable();
                 temp_r3_141 = this->unkD8;
                 if (temp_r3_141 != NULL) {
                     temp_r3_141->SetState((KDMCState) 3);
@@ -100,7 +100,7 @@ void CopyrightScreen::Update() {
         }
         break;
     case 2:                                         /* switch 2 */
-        if (((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update() == 0) {
+        if (KDMemoryCard::Update() == 0) {
             temp_r3_157 = this->unkD8;
             temp_r4_158 = temp_r3_157->unk9;
             if ((temp_r4_158 != 0) && ((u8) temp_r3_157->unk8 != 0)) {

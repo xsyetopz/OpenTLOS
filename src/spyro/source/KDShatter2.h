@@ -28,7 +28,7 @@ public:
     void LoadDone(MKModel *, unsigned short *);
     void Deinit(void);
     void Init(void);
-    void DeinitModule(void);
+    static void DeinitModule(void);
     void InitModule(void);
     /* 0x000 */ f32 unk0;
     /* 0x004 */ f32 unk4;

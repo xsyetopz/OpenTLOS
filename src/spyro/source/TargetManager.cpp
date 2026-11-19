@@ -449,7 +449,6 @@ void TargetManager::GetNewTargetID() {
 
 #if 0 // DRAFT: type mismatch
 void TargetManager::Deinit() {
-    MKHeap *temp_r3_828;
     TargetManager ***temp_r31_824;
     TargetManager ***temp_r3_819;
 
@@ -459,9 +458,8 @@ void TargetManager::Deinit() {
     } while ((TargetManager **) *temp_r3_819 != NULL);
     temp_r31_824 = this->unk0;
     if (temp_r31_824 != &gEmptyPtrList) {
-        temp_r3_828 = ((MKHeap *) temp_r3_819)->Current();
-        if (temp_r3_828 != NULL) {
-            ((MKHeap *) (temp_r3_828->Current()))->Free(temp_r31_824, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_824, NULL, 0);
         } else {
             free(temp_r31_824);
         }
@@ -473,17 +471,15 @@ void TargetManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void TargetManager::Init() {
-    MKHeap *temp_r3_863;
     TargetManager ***temp_r3_885;
     TargetManager ***temp_r5_890;
     TargetManager ***var_r3_870;
     s32 var_ctr_883;
 
-    temp_r3_863 = MKHeap::Current();
-    if (temp_r3_863 != NULL) {
-        var_r3_870 = ((MKHeap *) (temp_r3_863->Current()))->Alloc(0x788, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_870 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0);
     } else {
         var_r3_870 = malloc(0x788);
     }
@@ -616,7 +612,6 @@ loop_2:
 
 #if 0 // DRAFT: type mismatch
 void AttackerManager::Deinit() {
-    MKHeap *temp_r3_1149;
     TargetContext **var_r31_1123;
     TargetContext **var_r3_1124;
     TargetContext **var_r4_1122;
@@ -647,9 +642,8 @@ loop_9:
             var_r4_1122 += 4;
             goto loop_9;
         }
-        temp_r3_1149 = ((MKHeap *) var_r3_1124)->Current();
-        if (temp_r3_1149 != NULL) {
-            ((MKHeap *) (temp_r3_1149->Current()))->Free(var_r31_1123, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1123, NULL, 0);
         } else {
             free((TargetManager ***) var_r31_1123);
         }
@@ -660,7 +654,6 @@ loop_9:
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void AttackerManager::Init(int arg0) {
-    MKHeap *temp_r3_1186;
     TargetContext **temp_r3_1209;
     TargetContext **temp_r3_1216;
     TargetContext **temp_r3_1223;
@@ -672,9 +665,8 @@ void AttackerManager::Init(int arg0) {
         this->unk0 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_1186 = MKHeap::Current();
-    if (temp_r3_1186 != NULL) {
-        var_r3_1196 = ((MKHeap *) (temp_r3_1186->Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x10), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1196 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x10), NULL, 0);
     } else {
         var_r3_1196 = malloc(((arg0 + 2) * 4) + (arg0 * 0x10));
     }

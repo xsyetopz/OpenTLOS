@@ -168,7 +168,6 @@ void TrainChaseSpawnPool::Deinit() {
     Enemy ***var_r4_168;
     Enemy **temp_r0_173;
     Enemy **temp_r0_192;
-    MKHeap *temp_r3_195;
     u32 temp_r0_178;
 
     var_r4_168 = this->unk0;
@@ -194,9 +193,8 @@ loop_9:
             var_r4_168 += 4;
             goto loop_9;
         }
-        temp_r3_195 = ((MKHeap *) var_r3_170)->Current();
-        if (temp_r3_195 != NULL) {
-            ((MKHeap *) (temp_r3_195->Current()))->Free(var_r31_169, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_169, NULL, 0);
         } else {
             free(var_r31_169);
         }
@@ -214,13 +212,11 @@ void TrainChaseSpawnPool::Init() {
     Enemy ***var_r3_234;
     Enemy ***var_r5_243;
     Enemy **temp_r4_269;
-    MKHeap *temp_r3_227;
     s32 var_ctr_247;
 
     *TrainChaseSpawnPool::pInstance = this;
-    temp_r3_227 = MKHeap::Current();
-    if (temp_r3_227 != NULL) {
-        var_r3_234 = ((MKHeap *) (temp_r3_227->Current()))->Alloc(0x18, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_234 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x18, NULL, 0);
     } else {
         var_r3_234 = malloc(0x18);
     }
@@ -314,7 +310,7 @@ void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
 }
 
 u8 SteamTrainCaboose::IsBlownUp() {
-    return this->unkD8;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0xD8);
 }
 
 void SteamTrainCaboose::BlowUp() {

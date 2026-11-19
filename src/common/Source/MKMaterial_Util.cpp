@@ -16,14 +16,12 @@ void *malloc(M2C_UNK);                              /* extern */
 extern void *gpMKMaterialTypeInfoList;
 
 void MKMaterialInternal_AddTypeToList(MKMaterialTypeInfo *arg0) {
-    MKHeap *temp_r3_16;
     void *temp_r0_43;
     void *var_r3_23;
     void *var_r4_38;
 
-    temp_r3_16 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_16 != NULL) {
-        var_r3_23 = ((MKHeap *) (temp_r3_16->Current()))->Alloc(8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_23 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
     } else {
         var_r3_23 = malloc(8);
     }

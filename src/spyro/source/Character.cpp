@@ -2625,7 +2625,6 @@ s32 Character::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal operand
 void Character::Deinit() {
-    MKHeap *temp_r3_4800;
     MKMaterial *temp_r3_4790;
     SB2 *temp_r3_4766;
     void *temp_r31_4797;
@@ -2652,9 +2651,8 @@ void Character::Deinit() {
     this->unk644 = NULL;
     temp_r31_4797 = this->unk634;
     if (temp_r31_4797 != NULL) {
-        temp_r3_4800 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4800 != NULL) {
-            ((MKHeap *) (temp_r3_4800->Current()))->Free(temp_r31_4797, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4797, NULL, 0);
         } else {
             free(temp_r31_4797);
         }
@@ -2669,15 +2667,13 @@ void Character::Deinit() {
 
 #if 0 // DRAFT: ')' expected
 void Character::Init() {
-    MKHeap *temp_r3_4844;
     void *temp_r4_4861;
     void *var_r3_4851;
 
     MKProp::Init();
     this->unk634 = NULL;
-    temp_r3_4844 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4844 != NULL) {
-        var_r3_4851 = ((MKHeap *) (temp_r3_4844->Current()))->Alloc(0x10, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4851 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_4851 = malloc(0x10);
     }

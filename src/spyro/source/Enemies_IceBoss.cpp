@@ -1881,8 +1881,6 @@ void IceBoss::InitShield() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
 void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
-    MKHeap *temp_r3_3706;
-    MKHeap *temp_r3_3708;
     s32 temp_r30_3666;
     s32 temp_r30_3707;
     s8 *temp_r3_3704;
@@ -1910,11 +1908,9 @@ void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
         var_r4_3695 = "IceBoss";
     }
     temp_r3_3704 = Str_Printf("%sArmour_%s", var_r4_3695, arg1, M2C_BITWISE(f32, temp_ret_3691));
-    temp_r3_3706 = strlen(temp_r3_3704);
-    temp_r30_3707 = temp_r3_3706 + 1;
-    temp_r3_3708 = temp_r3_3706->Current();
-    if (temp_r3_3708 != NULL) {
-        var_r3_3715 = ((MKHeap *) (temp_r3_3708->Current()))->Alloc(temp_r30_3707, NULL, 0);
+    temp_r30_3707 = strlen(temp_r3_3704) + 1;
+    if (MKHeap::Current() != NULL) {
+        var_r3_3715 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3707, NULL, 0);
     } else {
         var_r3_3715 = malloc(temp_r30_3707);
     }
@@ -1937,8 +1933,6 @@ void IceBoss::InitBodyPart(IceBossBodyPart *arg0, int arg1, const char *arg2, in
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
 void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubObjectType arg4, bool arg5) {
-    MKHeap *temp_r3_3832;
-    MKHeap *temp_r3_3834;
     s32 temp_r30_3794;
     s32 temp_r30_3833;
     s8 *temp_r3_3830;
@@ -1964,11 +1958,9 @@ void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubOb
     }
     if ((arg2 == 0) && (arg5 != 0)) {
         temp_r3_3830 = Str_Printf("%sArmour_%s", var_r4_3817, arg1, M2C_BITWISE(f32, temp_ret_3813));
-        temp_r3_3832 = strlen(temp_r3_3830);
-        temp_r30_3833 = temp_r3_3832 + 1;
-        temp_r3_3834 = temp_r3_3832->Current();
-        if (temp_r3_3834 != NULL) {
-            var_r3_3841 = ((MKHeap *) (temp_r3_3834->Current()))->Alloc(temp_r30_3833, NULL, 0);
+        temp_r30_3833 = strlen(temp_r3_3830) + 1;
+        if (MKHeap::Current() != NULL) {
+            var_r3_3841 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_3833, NULL, 0);
         } else {
             var_r3_3841 = malloc(temp_r30_3833);
         }
@@ -2034,7 +2026,6 @@ s32 IceBoss::LoadDone() {
     f32 spC;
     f32 sp8;
     MKCollisionInfo *temp_r4_4269;
-    MKHeap *temp_r3_4253;
     MKProp *temp_r3_4244;
     MKProp *temp_r3_4335;
     MKProp *temp_r3_4342;
@@ -2085,9 +2076,8 @@ s32 IceBoss::LoadDone() {
     temp_r3_4244->Disable();
     UpdateWeaponCollisionCapsule();
     this->unkF90 = NULL;
-    temp_r3_4253 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4253 != NULL) {
-        var_r3_4260 = ((MKHeap *) (temp_r3_4253->Current()))->Alloc(0x10, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4260 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_4260 = malloc(0x10);
     }
@@ -2149,10 +2139,6 @@ void IceBoss::Deinit() {
     MKCollisionInfo *temp_r27_4542;
     MKCollisionInfo *temp_r28_4515;
     MKCollisionInfo *temp_r29_4476;
-    MKHeap *temp_r3_4479;
-    MKHeap *temp_r3_4497;
-    MKHeap *temp_r3_4518;
-    MKHeap *temp_r3_4545;
     ManagedLight *temp_r4_4564;
     s32 temp_r27_4514;
     s32 temp_r28_4541;
@@ -2168,9 +2154,8 @@ void IceBoss::Deinit() {
     PhrasePlayer_StopEvent(this->unk1000);
     temp_r29_4476 = this->unkF90;
     if (temp_r29_4476 != NULL) {
-        temp_r3_4479 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4479 != NULL) {
-            ((MKHeap *) (temp_r3_4479->Current()))->Free(temp_r29_4476, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_4476, NULL, 0);
         } else {
             free(temp_r29_4476);
         }
@@ -2178,9 +2163,8 @@ void IceBoss::Deinit() {
     this->unkF90 = NULL;
     this->unkFE0->Deinit();
     temp_r29_4496 = this->unkFE0;
-    temp_r3_4497 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4497 != NULL) {
-        ((MKHeap *) (temp_r3_4497->Current()))->Free(temp_r29_4496, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_4496, NULL, 0);
     } else {
         free((MKCollisionInfo *) temp_r29_4496);
     }
@@ -2190,9 +2174,8 @@ void IceBoss::Deinit() {
         temp_r27_4514 = var_r30_4510 + 0xB5C;
         temp_r28_4515 = *(this + temp_r27_4514);
         if (temp_r28_4515 != NULL) {
-            temp_r3_4518 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_4518 != NULL) {
-                ((MKHeap *) (temp_r3_4518->Current()))->Free(temp_r28_4515, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_4515, NULL, 0);
             } else {
                 free(temp_r28_4515);
             }
@@ -2207,9 +2190,8 @@ void IceBoss::Deinit() {
         temp_r28_4541 = var_r30_4538 + 0xE5C;
         temp_r27_4542 = *(this + temp_r28_4541);
         if (temp_r27_4542 != NULL) {
-            temp_r3_4545 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_4545 != NULL) {
-                ((MKHeap *) (temp_r3_4545->Current()))->Free(temp_r27_4542, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r27_4542, NULL, 0);
             } else {
                 free(temp_r27_4542);
             }
@@ -2230,7 +2212,6 @@ void IceBoss::Deinit() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void IceBoss::Init() {
     IceBossGoal_Think *temp_r30_4598;
-    MKHeap *temp_r3_4626;
     s8 *var_r3_4633;
 
     Enemy::Init();
@@ -2252,9 +2233,8 @@ void IceBoss::Init() {
     temp_r30_4598->Init(this);
     this->unkA3C = &temp_r30_4598->__vptr;
     this->unkFDC = NULL;
-    temp_r3_4626 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4626 != NULL) {
-        var_r3_4633 = ((MKHeap *) (temp_r3_4626->Current()))->Alloc(0x28, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4633 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
     } else {
         var_r3_4633 = malloc(0x28);
     }

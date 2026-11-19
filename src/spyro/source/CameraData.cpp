@@ -9,7 +9,7 @@ void CameraData::ClearData() {
 }
 
 u8 CameraData::GetJumpWithTy() {
-    return this->unk8;
+    return M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 8);
 }
 
 f32 CameraData::GetPlayerRotatePitchMultiplier() {

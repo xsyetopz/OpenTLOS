@@ -359,7 +359,7 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
 #endif
 
 void FuryFXFire2::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unkD0 = 0;
     this->unk90.SetIdentity();
     this->unkD8 = 1.0f;
@@ -376,7 +376,6 @@ void FuryFXFire2::Deinit() {
     FuryFXFire2::Meteor **var_r4_567;
     FuryFXFire2::Meteor *temp_r0_572;
     FuryFXFire2::Meteor *temp_r0_591;
-    MKHeap *temp_r3_594;
     u32 temp_r0_577;
 
     var_r4_567 = this->unk150;
@@ -402,9 +401,8 @@ loop_9:
             var_r4_567 += 4;
             goto loop_9;
         }
-        temp_r3_594 = ((MKHeap *) var_r3_569)->Current();
-        if (temp_r3_594 != NULL) {
-            ((MKHeap *) (temp_r3_594->Current()))->Free(var_r31_568, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_568, NULL, 0);
         } else {
             free(var_r31_568);
         }
@@ -1078,14 +1076,12 @@ void FuryFXFire2::Init() {
     FuryFXFire2::Meteor **temp_r4_1681;
     FuryFXFire2::Meteor **var_r3_1660;
     FuryFXFire2::Meteor **var_r5_1669;
-    MKHeap *temp_r3_1653;
     s32 var_ctr_1673;
 
     FuryFX::Init();
     SetDefaults();
-    temp_r3_1653 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1653 != NULL) {
-        var_r3_1660 = ((MKHeap *) (temp_r3_1653->Current()))->Alloc(0x698, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1660 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
     } else {
         var_r3_1660 = malloc(0x698);
     }

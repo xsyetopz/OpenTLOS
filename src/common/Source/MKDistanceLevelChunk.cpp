@@ -1353,16 +1353,13 @@ void SMTree::PairUp(int arg0, int arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SMTree::Deinit() {
     BoundingVolume *temp_r31_2267;
-    MKHeap *temp_r3_2270;
 
     temp_r31_2267 = this->unk0;
     if (temp_r31_2267 != NULL) {
-        temp_r3_2270 = MKHeap::Current();
-        if (temp_r3_2270 != NULL) {
-            ((MKHeap *) (temp_r3_2270->Current()))->Free(temp_r31_2267, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2267, NULL, 0);
         } else {
             free(temp_r31_2267);
         }
@@ -1370,7 +1367,6 @@ void SMTree::Deinit() {
     }
     Reset();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void SMTree::Update() {
@@ -1460,10 +1456,9 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SMTree::InternalInit(int arg0) {
     BoundingVolume *var_r3_2464;
-    MKHeap *temp_r3_2457;
     s32 temp_r31_2456;
 
     if (arg0 == 0) {
@@ -1478,9 +1473,8 @@ void SMTree::InternalInit(int arg0) {
     this->unkC = arg0 - 1;
     this->unk10 = this->unkC + arg0;
     temp_r31_2456 = this->unk10 * 0x30;
-    temp_r3_2457 = MKHeap::Current();
-    if (temp_r3_2457 != NULL) {
-        var_r3_2464 = ((MKHeap *) (temp_r3_2457->Current()))->Alloc(temp_r31_2456, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2464 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_2456, NULL, 0);
     } else {
         var_r3_2464 = malloc(temp_r31_2456);
     }

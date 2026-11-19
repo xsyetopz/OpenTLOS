@@ -256,13 +256,10 @@ void MCSelectCardScreen::UpdateDisplay() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MCSelectCardScreen::Update() {
-    KDMemoryCard *temp_r3_461;
     KDMemoryCard *temp_r3_499;
-    KDMemoryCard *temp_r3_535;
     s32 temp_r0_418;
     s32 temp_ret_415;
     s32 temp_ret_535;
-    u8 temp_r3_415;
 
     UIScreen::Update();
     if ((s32) this->unkD0 == 3) {
@@ -286,9 +283,8 @@ void MCSelectCardScreen::Update() {
         goto block_10;
     }
 block_10:
-    temp_ret_415 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update();
-    temp_r3_415 = temp_ret_415;
-    if (temp_r3_415 == 0) {
+    temp_ret_415 = KDMemoryCard::Update();
+    if (temp_ret_415 == 0) {
         temp_r0_418 = this->unkD0;
         switch (temp_r0_418) {                      /* irregular */
         case 0:
@@ -304,9 +300,8 @@ block_54:
             this->unkD0 += 1;
             break;
         case 1:
-            temp_r3_461 = ((KDMemoryCard *) temp_r3_415)->GetNextCard();
-            if (temp_r3_461 != NULL) {
-                ((KDMemoryCard *) (temp_r3_461->GetNextCard()))->SetState((KDMCState) 2);
+            if (KDMemoryCard::GetNextCard() != 0U) {
+                ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
             this->unkD0 = 2;
@@ -318,7 +313,7 @@ block_54:
                 return;
             }
             if (((u8) this->unkF0 != 0) && ((u32) *KDMemoryCard::numCardsPresent == 1U)) {
-                temp_r3_499 = autosaveCard->GetFirstAvailable();
+                temp_r3_499 = KDMemoryCard::GetFirstAvailable();
                 *MemoryCardScreen::selectedCard = temp_r3_499;
                 temp_r3_499->SetState((KDMCState) 3);
                 ClearDisplay();
@@ -334,10 +329,9 @@ block_54:
                 return;
             }
             UpdateDisplay();
-            temp_ret_535 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetNextCard();
-            temp_r3_535 = temp_ret_535;
-            if (temp_r3_535 != NULL) {
-                ((KDMemoryCard *) (temp_r3_535->GetNextCard()))->SetState((KDMCState) 2);
+            temp_ret_535 = KDMemoryCard::GetNextCard();
+            if (temp_ret_535 != 0U) {
+                ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
             ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_535)))->SetState((KDMCState) 2);

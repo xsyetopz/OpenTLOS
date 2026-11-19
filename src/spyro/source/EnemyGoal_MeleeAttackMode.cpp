@@ -351,10 +351,8 @@ void EnemyGoal_LeapAttackRecover::Activate() {
 
 #if 0 // DRAFT: ')' expected
 void EnemyGoal_LeapAttackRecover::Deinit() {
-    EnemyGoal_LeapAttackMiss *temp_r3_533;
     Goal<Enemy> *temp_r3_519;
     Goal<Enemy> *temp_r3_524;
-    MKHeap *temp_r3_537;
     void *temp_r31_534;
 
     temp_r3_519 = this->unk20;
@@ -362,12 +360,11 @@ void EnemyGoal_LeapAttackRecover::Deinit() {
     temp_r3_524 = this->unk24;
     temp_r3_524->Deinit();
     operator delete(this->unk20);
-    temp_r3_533 = ((EnemyGoal_LeapAttackMiss *) this->unk24)->~EnemyGoal_LeapAttackMiss(1);
+    ((EnemyGoal_LeapAttackMiss *) this->unk24)->~EnemyGoal_LeapAttackMiss(1);
     temp_r31_534 = this->unk1C;
     if (temp_r31_534 != NULL) {
-        temp_r3_537 = ((MKHeap *) temp_r3_533)->Current();
-        if (temp_r3_537 != NULL) {
-            ((MKHeap *) (temp_r3_537->Current()))->Free(temp_r31_534, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_534, NULL, 0);
         } else {
             free(temp_r31_534);
         }
@@ -386,7 +383,6 @@ void EnemyGoal_LeapAttackRecover::Deinit() {
 void EnemyGoal_LeapAttackRecover::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_685;
     Goal<Enemy> *temp_r4_696;
-    MKHeap *temp_r3_658;
     void *var_r3_665;
 
     if ((u8) this->unk9 == 0) {
@@ -413,9 +409,8 @@ void EnemyGoal_LeapAttackRecover::Init(Enemy *arg0) {
         this->unk24 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_658 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_658 != NULL) {
-            var_r3_665 = ((MKHeap *) (temp_r3_658->Current()))->Alloc(4, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_665 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
         } else {
             var_r3_665 = malloc(4);
         }
@@ -1835,7 +1830,6 @@ void EnemyGoal_MeleeAttackMode::Deinit() {
     Goal<Enemy> *temp_r3_3285;
     Goal<Enemy> *temp_r3_3290;
     Goal<Enemy> *temp_r3_3295;
-    MKHeap *temp_r3_3317;
     void *temp_r31_3314;
 
     temp_r3_3265 = this->unk24;
@@ -1861,9 +1855,8 @@ void EnemyGoal_MeleeAttackMode::Deinit() {
     operator delete(this->unk3C);
     temp_r31_3314 = this->unk1C;
     if (temp_r31_3314 != NULL) {
-        temp_r3_3317 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3317 != NULL) {
-            ((MKHeap *) (temp_r3_3317->Current()))->Free(temp_r31_3314, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3314, NULL, 0);
         } else {
             free(temp_r31_3314);
         }
@@ -1885,7 +1878,6 @@ void EnemyGoal_MeleeAttackMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_3574;
     Goal<Enemy> *temp_r4_3585;
     Goal<Enemy> *temp_r4_3599;
-    MKHeap *temp_r3_3511;
     void *var_r3_3518;
 
     if ((u8) this->unk9 == 0) {
@@ -1966,9 +1958,8 @@ void EnemyGoal_MeleeAttackMode::Init(Enemy *arg0) {
         this->unk3C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3511 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3511 != NULL) {
-            var_r3_3518 = ((MKHeap *) (temp_r3_3511->Current()))->Alloc(0x10, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3518 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
         } else {
             var_r3_3518 = malloc(0x10);
         }

@@ -2162,10 +2162,8 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: type mismatch
 void IceBreathFX::Deinit() {
-    MKHeap *temp_r3_3657;
-    MKHeap *temp_r3_3713;
     ManagedLight *temp_r4_3672;
     Matrix **temp_r31_3656;
     Matrix **var_r31_3687;
@@ -2176,9 +2174,8 @@ void IceBreathFX::Deinit() {
     u32 temp_r0_3696;
 
     temp_r31_3656 = this->unkA8;
-    temp_r3_3657 = MKHeap::Current();
-    if (temp_r3_3657 != NULL) {
-        ((MKHeap *) (temp_r3_3657->Current()))->Free(temp_r31_3656, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3656, NULL, 0);
     } else {
         free(temp_r31_3656);
     }
@@ -2212,9 +2209,8 @@ loop_14:
             var_r4_3686 += 4;
             goto loop_14;
         }
-        temp_r3_3713 = ((MKHeap *) var_r3_3688)->Current();
-        if (temp_r3_3713 != NULL) {
-            ((MKHeap *) (temp_r3_3713->Current()))->Free(var_r31_3687, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_3687, NULL, 0);
         } else {
             free(var_r31_3687);
         }
@@ -2939,10 +2935,6 @@ f32 IceBreathFX::Resolve() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void IceBreathFX::Init() {
-    FuryFXIce2 *temp_r3_4935;
-    IceExplosion *temp_r3_4974;
-    MKHeap *temp_r3_4937;
-    MKHeap *temp_r3_4981;
     Matrix **temp_r3_5003;
     Matrix **temp_r4_5009;
     Matrix **var_r3_4944;
@@ -2957,11 +2949,9 @@ void IceBreathFX::Init() {
 
     BaseBreathFX::Init();
     this->unk170 = checked_cast<FuryFXIce *, MKProp>(gMK->CreateProp("FuryFXIce"));
-    temp_r3_4935 = checked_cast<FuryFXIce2 *, MKProp>(gMK->CreateProp("FuryFXIce2"));
-    this->unk174 = temp_r3_4935;
-    temp_r3_4937 = ((MKHeap *) temp_r3_4935)->Current();
-    if (temp_r3_4937 != NULL) {
-        var_r3_4944 = ((MKHeap *) (temp_r3_4937->Current()))->Alloc(0x4B0, NULL, 0);
+    this->unk174 = checked_cast<FuryFXIce2 *, MKProp>(gMK->CreateProp("FuryFXIce2"));
+    if (MKHeap::Current() != NULL) {
+        var_r3_4944 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4B0, NULL, 0);
     } else {
         var_r3_4944 = malloc(0x4B0);
     }
@@ -2975,14 +2965,12 @@ void IceBreathFX::Init() {
         *(this->unkA8 + temp_r0_4965) = 0;
         var_ctr_4962 -= 1;
     } while (var_ctr_4962 != 0);
-    temp_r3_4974 = checked_cast<IceExplosion *, MKProp>(gMK->CreateProp("IceExplosion"));
-    this->unk178 = temp_r3_4974;
+    this->unk178 = checked_cast<IceExplosion *, MKProp>(gMK->CreateProp("IceExplosion"));
     this->unkAC = 0.0f;
     this->unk168 = NULL;
     this->unk16C = 0.0f;
-    temp_r3_4981 = ((MKHeap *) temp_r3_4974)->Current();
-    if (temp_r3_4981 != NULL) {
-        var_r3_4988 = ((MKHeap *) (temp_r3_4981->Current()))->Alloc(0x698, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4988 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x698, NULL, 0);
     } else {
         var_r3_4988 = malloc(0x698);
     }

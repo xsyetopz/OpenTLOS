@@ -118,7 +118,6 @@ loop_2:
 
 void BaseBreathFX::Deinit() {
     MKHeap *temp_r3_166;
-    MKHeap *temp_r3_177;
     void *temp_r31_174;
 
     temp_r3_166 = this->unk9C;
@@ -128,9 +127,8 @@ void BaseBreathFX::Deinit() {
     this->unk9C = NULL;
     temp_r31_174 = this->unk90;
     if (temp_r31_174 != NULL) {
-        temp_r3_177 = temp_r3_166->Current();
-        if (temp_r3_177 != NULL) {
-            ((MKHeap *) (temp_r3_177->Current()))->Free(temp_r31_174, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_174, NULL, 0);
         } else {
             free(temp_r31_174);
         }
@@ -297,7 +295,6 @@ block_12:
 
 #if 0 // DRAFT: illegal type
 void BaseBreathFX::Init() {
-    MKHeap *temp_r3_417;
     s32 temp_r0_446;
     s32 temp_r10_442;
     s32 temp_r4_445;
@@ -312,9 +309,8 @@ void BaseBreathFX::Init() {
     KDProp::Init();
     this->unk94 = 0.0f;
     this->unk9C = NULL;
-    temp_r3_417 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_417 != NULL) {
-        var_r3_424 = ((MKHeap *) (temp_r3_417->Current()))->Alloc(0xD20, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_424 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xD20, NULL, 0);
     } else {
         var_r3_424 = malloc(0xD20);
     }

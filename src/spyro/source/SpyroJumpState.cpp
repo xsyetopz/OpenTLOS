@@ -78,7 +78,7 @@ s32 SpyroJumpState::DoubleJumpTransition() {
 }
 
 void SpyroJumpState::DoubleJumpUpdate() {
-    DoubleJumpTransition();
+    SpyroJumpState::DoubleJumpTransition();
 }
 
 void SpyroJumpState::DoubleJumpExit() {

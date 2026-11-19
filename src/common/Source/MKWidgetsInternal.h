@@ -428,7 +428,7 @@ public:
 
 class MKWidgetSerialise {
 public:
-    void SerialiseVersion(void);
+    static void SerialiseVersion(void);
     u8 GetMetaData(MKWidgetMetaData *&, unsigned int);
     static u8 metaDataResolveIndex[0x4];
     static u8 pMetaDataFile[0x4];

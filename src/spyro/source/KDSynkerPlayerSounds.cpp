@@ -180,14 +180,12 @@ s32 KDSP_Sounds::WaitingForSoundPackage(int *arg0) {
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 KDSP_Sounds::Update(int arg0, float arg1, int arg2, int *arg3, int *arg4) {
     KDSP_Actor *temp_r3_432;
-    MKHeap *temp_r3_396;
     SoundBankHeader *temp_r3_390;
     s32 temp_r0_322;
     s32 temp_r0_354;
     s32 temp_r3_348;
     s32 temp_r3_363;
     s32 temp_r3_370;
-    s32 temp_r3_394;
     s32 temp_r3_422;
     s32 temp_r3_461;
     s32 temp_r3_473;
@@ -245,11 +243,9 @@ loop_1:
                 if (MKArchive_Exists(M2C_ERROR(/* Read from unset register $r3 */), NULL) != 0) {
                     GetDynamicBankName(this->unk14);
                     temp_r3_390 = MKArchive_Load(M2C_ERROR(/* Read from unset register $r3 */), NULL, NULL, -1);
-                    temp_r3_394 = Sound_LoadBankFromMemory(temp_r3_390, 0U, -1);
-                    this->unk1C = temp_r3_394;
-                    temp_r3_396 = ((MKHeap *) temp_r3_394)->Current();
-                    if (temp_r3_396 != NULL) {
-                        ((MKHeap *) (temp_r3_396->Current()))->Free(temp_r3_390, NULL, 0);
+                    this->unk1C = Sound_LoadBankFromMemory(temp_r3_390, 0U, -1);
+                    if (MKHeap::Current() != NULL) {
+                        ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_390, NULL, 0);
                     } else {
                         free(temp_r3_390);
                     }
@@ -330,19 +326,15 @@ s32 KDSP_Sounds::LoadDynamicSoundBank(int *arg0, bool arg1) {
 
 #if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
-    MKHeap *temp_r3_624;
     SoundBankHeader *temp_r3_618;
-    s32 temp_r3_622;
     s8 *temp_r3_608;
 
     temp_r3_608 = Str_Printf("%s.gsb", "%s%s");
     if (MKArchive_Exists(temp_r3_608, NULL) != 0) {
         temp_r3_618 = MKArchive_Load(temp_r3_608, NULL, NULL, -1);
-        temp_r3_622 = Sound_LoadBankFromMemory(temp_r3_618, 0U, -1);
-        this->unk24 = temp_r3_622;
-        temp_r3_624 = ((MKHeap *) temp_r3_622)->Current();
-        if (temp_r3_624 != NULL) {
-            ((MKHeap *) (temp_r3_624->Main()))->TFree(temp_r3_618, NULL, 0);
+        this->unk24 = Sound_LoadBankFromMemory(temp_r3_618, 0U, -1);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Main()))->TFree(temp_r3_618, NULL, 0);
             return;
         }
         free(temp_r3_618);

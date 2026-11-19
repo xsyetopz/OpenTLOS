@@ -631,23 +631,19 @@ void MKIni::Warning(const char *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKIni::Deinit() {
-    MKHeap *temp_r3_1429;
     void *temp_r31_1426;
 
     temp_r31_1426 = this->unk14;
     if (temp_r31_1426 != NULL) {
-        temp_r3_1429 = MKHeap::Current();
-        if (temp_r3_1429 != NULL) {
-            ((MKHeap *) (temp_r3_1429->Current()))->Free(temp_r31_1426, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1426, NULL, 0);
         } else {
             free(temp_r31_1426);
         }
         this->unk14 = NULL;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {

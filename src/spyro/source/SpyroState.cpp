@@ -155,7 +155,6 @@ void SpyroStateMachine::Reset(int arg0, SpyroStateMessages &arg1) {
 
 #if 0 // DRAFT: illegal type
 void SpyroStateMachine::Deinit() {
-    MKHeap *temp_r3_264;
     s32 temp_r0_223;
     s32 var_r30_234;
     s32 var_r30_250;
@@ -190,18 +189,16 @@ loop_7:
         goto loop_7;
     }
     temp_r31_263 = this->unk4;
-    temp_r3_264 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_264 != NULL) {
-        ((MKHeap *) (temp_r3_264->Current()))->Free(temp_r31_263, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_263, NULL, 0);
         return;
     }
     free(temp_r31_263);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal type
 void SpyroStateMachine::Init(Spyro *arg0, SpyroStateCreatorTableEntry *arg1, int arg2) {
-    MKHeap *temp_r3_300;
     s32 temp_r30_299;
     s32 var_r29_314;
     s32 var_r30_316;
@@ -217,9 +214,8 @@ void SpyroStateMachine::Init(Spyro *arg0, SpyroStateCreatorTableEntry *arg1, int
     this->unkC = -1;
     this->unk10 = arg2;
     temp_r30_299 = this->unk10 * 4;
-    temp_r3_300 = MKHeap::Current();
-    if (temp_r3_300 != NULL) {
-        var_r3_307 = ((MKHeap *) (temp_r3_300->Current()))->Alloc(temp_r30_299, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_307 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_299, NULL, 0);
     } else {
         var_r3_307 = malloc(temp_r30_299);
     }

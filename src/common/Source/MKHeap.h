@@ -13,8 +13,8 @@ class MKVector4;
 class MKHeap {
 public:
     void SetTempMemOverrideStatus(bool);
-    void DeactivateTempMemOverride(void);
-    void ActivateTempMemOverride(void);
+    static void DeactivateTempMemOverride(void);
+    static void ActivateTempMemOverride(void);
     void GetMemoryStatistics(int *, int *, int *);
     void DumpFragmentation(void);
     void DumpTBlocks(void);
@@ -28,11 +28,11 @@ public:
     void * Alloc(int, const char *, int);
     s32 Release(int);
     s32 Mark(void);
-    u32 Main(void);
-    MKHeap * Current(void);
-    s32 Pop(void);
+    static u32 Main(void);
+    static MKHeap * Current(void);
+    static s32 Pop(void);
     void Push(void);
-    u32 GetPeak(void);
+    static u32 GetPeak(void);
     void UpdatePeak(void);
     void GetHeapStatistics(int *, int *, int *, int *, int *);
     u8 IsWithinAHeap(void);
@@ -40,7 +40,7 @@ public:
     void AddHeapToGlobalList(void);
     void DeInit(void);
     void Init(int, int, const char *, void *);
-    void InitModule(void);
+    static void InitModule(void);
     static u8 heapObjects[0x28];
     static u8 heapList[0x28];
     static u8 peak[0x4];

@@ -701,9 +701,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void IceBossGoal_IceBreath::Deinit() {
-    MKHeap *temp_r3_1241;
     void *temp_r31_1238;
 
     this->unk8 = 1;
@@ -711,9 +709,8 @@ void IceBossGoal_IceBreath::Deinit() {
     this->unk9 = 0;
     temp_r31_1238 = this->unk1C;
     if (temp_r31_1238 != NULL) {
-        temp_r3_1241 = MKHeap::Current();
-        if (temp_r3_1241 != NULL) {
-            ((MKHeap *) (temp_r3_1241->Current()))->Free(temp_r31_1238, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1238, NULL, 0);
         } else {
             free(temp_r31_1238);
         }
@@ -723,10 +720,8 @@ void IceBossGoal_IceBreath::Deinit() {
     this->unk18 = 0;
     this->unk14 = 0;
 }
-#endif
 
 void IceBossGoal_IceBreath::Init(IceBoss *arg0) {
-    MKHeap *temp_r3_1286;
     void *var_r3_1293;
 
     this->unk8 = 1;
@@ -735,9 +730,8 @@ void IceBossGoal_IceBreath::Init(IceBoss *arg0) {
     if ((Enemy *) this->unkC != NULL) {
         this->unk9 = 1;
     }
-    temp_r3_1286 = ((MKHeap *)1U)->Current();
-    if (temp_r3_1286 != NULL) {
-        var_r3_1293 = ((MKHeap *) (temp_r3_1286->Current()))->Alloc(0x140, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1293 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x140, NULL, 0);
     } else {
         var_r3_1293 = malloc(0x140);
     }
@@ -1745,7 +1739,6 @@ void IceBossGoal_AttackPhase3::Activate() {
 void IceBossGoal_AttackPhase3::Deinit() {
     Goal<IceBoss> *temp_r3_3287;
     Goal<IceBoss> *temp_r3_3292;
-    MKHeap *temp_r3_3304;
     void *temp_r31_3301;
 
     temp_r3_3287 = this->unk34;
@@ -1756,9 +1749,8 @@ void IceBossGoal_AttackPhase3::Deinit() {
     operator delete(this->unk38);
     temp_r31_3301 = this->unk1C;
     if (temp_r31_3301 != NULL) {
-        temp_r3_3304 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3304 != NULL) {
-            ((MKHeap *) (temp_r3_3304->Current()))->Free(temp_r31_3301, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3301, NULL, 0);
         } else {
             free(temp_r31_3301);
         }
@@ -1775,7 +1767,6 @@ void IceBossGoal_AttackPhase3::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void IceBossGoal_AttackPhase3::Init(IceBoss *arg0) {
     Goal<IceBoss> *temp_r4_3422;
-    MKHeap *temp_r3_3395;
     void *var_r3_3402;
 
     if ((u8) this->unk9 == 0) {
@@ -1805,9 +1796,8 @@ void IceBossGoal_AttackPhase3::Init(IceBoss *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3395 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3395 != NULL) {
-            var_r3_3402 = ((MKHeap *) (temp_r3_3395->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3402 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_3402 = malloc(8);
         }
@@ -1976,7 +1966,6 @@ void IceBossGoal_AttackPhase2::Activate() {
 
 void IceBossGoal_AttackPhase2::Deinit() {
     Goal<IceBoss> *temp_r3_3804;
-    MKHeap *temp_r3_3814;
     void *temp_r31_3811;
 
     temp_r3_3804 = this->unk34;
@@ -1984,9 +1973,8 @@ void IceBossGoal_AttackPhase2::Deinit() {
     operator delete(this->unk34);
     temp_r31_3811 = this->unk1C;
     if (temp_r31_3811 != NULL) {
-        temp_r3_3814 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3814 != NULL) {
-            ((MKHeap *) (temp_r3_3814->Current()))->Free(temp_r31_3811, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3811, NULL, 0);
         } else {
             free(temp_r31_3811);
         }
@@ -2003,7 +1991,6 @@ void IceBossGoal_AttackPhase2::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void IceBossGoal_AttackPhase2::Init(IceBoss *arg0) {
     Goal<IceBoss> *temp_r4_3908;
-    MKHeap *temp_r3_3881;
     void *var_r3_3888;
 
     if ((u8) this->unk9 == 0) {
@@ -2019,9 +2006,8 @@ void IceBossGoal_AttackPhase2::Init(IceBoss *arg0) {
         this->unk34 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_3881 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3881 != NULL) {
-            var_r3_3888 = ((MKHeap *) (temp_r3_3881->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3888 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_3888 = malloc(8);
         }
@@ -2224,7 +2210,6 @@ void IceBossGoal_AttackPhase1::Activate() {
 
 void IceBossGoal_AttackPhase1::Deinit() {
     Goal<IceBoss> *temp_r3_4376;
-    MKHeap *temp_r3_4388;
     void **temp_r3_4371;
     void *temp_r31_4385;
 
@@ -2236,9 +2221,8 @@ void IceBossGoal_AttackPhase1::Deinit() {
     operator delete(this->unk38);
     temp_r31_4385 = this->unk1C;
     if (temp_r31_4385 != NULL) {
-        temp_r3_4388 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4388 != NULL) {
-            ((MKHeap *) (temp_r3_4388->Current()))->Free(temp_r31_4385, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4385, NULL, 0);
         } else {
             free(temp_r31_4385);
         }
@@ -2255,7 +2239,6 @@ void IceBossGoal_AttackPhase1::Deinit() {
 #if 0 // DRAFT: pointer/array required
 void IceBossGoal_AttackPhase1::Init(IceBoss *arg0) {
     Goal<IceBoss> *temp_r4_4513;
-    MKHeap *temp_r3_4475;
     void **temp_r4_4502;
     void *var_r3_4482;
 
@@ -2282,9 +2265,8 @@ void IceBossGoal_AttackPhase1::Init(IceBoss *arg0) {
         this->unk38 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_4475 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4475 != NULL) {
-            var_r3_4482 = ((MKHeap *) (temp_r3_4475->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_4482 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_4482 = malloc(8);
         }
@@ -3601,7 +3583,6 @@ void IceBossGoal_Think::Deinit() {
     Goal<IceBoss> *temp_r3_7383;
     Goal<IceBoss> *temp_r3_7388;
     Goal<IceBoss> *temp_r3_7393;
-    MKHeap *temp_r3_7435;
     s32 temp_r31_7432;
     void **temp_r3_7358;
     void **temp_r3_7363;
@@ -3661,9 +3642,8 @@ void IceBossGoal_Think::Deinit() {
     operator delete(this->unk68);
     temp_r31_7432 = this->unk1C;
     if ((u32) temp_r31_7432 != 0U) {
-        temp_r3_7435 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_7435 != NULL) {
-            ((MKHeap *) (temp_r3_7435->Current()))->Free((void *) temp_r31_7432, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_7432, NULL, 0);
         } else {
             free((void *) temp_r31_7432);
         }
@@ -3688,7 +3668,6 @@ void IceBossGoal_Think::Init(IceBoss *arg0) {
     Goal<IceBoss> *temp_r4_8001;
     Goal<IceBoss> *temp_r4_8012;
     Goal<IceBoss> *temp_r4_8023;
-    MKHeap *temp_r3_7860;
     void **temp_r4_7946;
     void **temp_r4_7957;
     void **temp_r4_7968;
@@ -3893,9 +3872,8 @@ void IceBossGoal_Think::Init(IceBoss *arg0) {
         this->unk68 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_7860 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_7860 != NULL) {
-            var_r3_7867 = ((MKHeap *) (temp_r3_7860->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_7867 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_7867 = malloc(0x14);
         }

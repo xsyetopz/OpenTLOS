@@ -2552,7 +2552,6 @@ void DynamiteExplosion::Deinit() {
     DynamiteExplosion::Explosion **var_r4_4166;
     DynamiteExplosion::Explosion *temp_r0_4171;
     DynamiteExplosion::Explosion *temp_r0_4190;
-    MKHeap *temp_r3_4193;
     u32 temp_r0_4176;
 
     var_r4_4166 = this->unk50;
@@ -2578,9 +2577,8 @@ loop_9:
             var_r4_4166 += 4;
             goto loop_9;
         }
-        temp_r3_4193 = ((MKHeap *) var_r3_4168)->Current();
-        if (temp_r3_4193 != NULL) {
-            ((MKHeap *) (temp_r3_4193->Current()))->Free(var_r31_4167, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_4167, NULL, 0);
         } else {
             free(var_r31_4167);
         }
@@ -2670,13 +2668,11 @@ void DynamiteExplosion::Init() {
     DynamiteExplosion::Explosion **temp_r3_4375;
     DynamiteExplosion::Explosion **var_r3_4354;
     DynamiteExplosion::Explosion **var_r5_4363;
-    MKHeap *temp_r3_4347;
     s32 var_ctr_4367;
 
     MKProp::Init();
-    temp_r3_4347 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_4347 != NULL) {
-        var_r3_4354 = ((MKHeap *) (temp_r3_4347->Current()))->Alloc(0xBC, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_4354 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xBC, NULL, 0);
     } else {
         var_r3_4354 = malloc(0xBC);
     }

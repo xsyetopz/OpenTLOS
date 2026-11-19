@@ -1053,16 +1053,13 @@ s32 KDUniformSpline::MergeEnds() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDUniformSpline::Deinit() {
-    MKHeap *temp_r3_1607;
     s32 temp_r31_1601;
 
     temp_r31_1601 = this->unkC;
     if (((u32) temp_r31_1601 != 0U) && !(((u8) this->unk10 >> 6U) & 1)) {
-        temp_r3_1607 = MKHeap::Current();
-        if (temp_r3_1607 != NULL) {
-            ((MKHeap *) (temp_r3_1607->Current()))->Free((void *) temp_r31_1601, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_1601, NULL, 0);
         } else {
             free(temp_r31_1601);
         }
@@ -1070,7 +1067,6 @@ void KDUniformSpline::Deinit() {
     this->unkC = 0;
     this->unk0 = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDUniformSpline::GetMeasure(float arg0, Matrix *arg1, float *arg2) const {
@@ -1600,15 +1596,13 @@ void KDUniformSpline::Init(void *arg0, int arg1, bool arg2) {
     this->unk10 |= 0x40;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDUniformSpline::Init(int arg0, bool arg1) {
-    MKHeap *temp_r3_2546;
     void *var_r3_2553;
 
     if (arg0 > 0) {
-        temp_r3_2546 = MKHeap::Current();
-        if (temp_r3_2546 != NULL) {
-            var_r3_2553 = ((MKHeap *) (temp_r3_2546->Current()))->Alloc(arg0 << 5, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2553 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 << 5, NULL, 0);
         } else {
             var_r3_2553 = malloc(arg0 << 5);
         }
@@ -1624,16 +1618,13 @@ void KDUniformSpline::Init(int arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSpline::Deinit() {
-    MKHeap *temp_r3_2594;
     s32 temp_r31_2591;
 
     temp_r31_2591 = this->unkC;
     if ((u32) temp_r31_2591 != 0U) {
-        temp_r3_2594 = MKHeap::Current();
-        if (temp_r3_2594 != NULL) {
-            ((MKHeap *) (temp_r3_2594->Current()))->Free((void *) temp_r31_2591, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_2591, NULL, 0);
         } else {
             free(temp_r31_2591);
         }
@@ -1641,7 +1632,6 @@ void KDSpline::Deinit() {
     this->unkC = 0;
     this->unk0 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSpline::GetMeasure(float arg0, Matrix *arg1) {
@@ -1994,15 +1984,13 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSpline::Init(int arg0, bool arg1) {
-    MKHeap *temp_r3_3227;
     void *var_r3_3234;
 
     if (arg0 > 0) {
-        temp_r3_3227 = MKHeap::Current();
-        if (temp_r3_3227 != NULL) {
-            var_r3_3234 = ((MKHeap *) (temp_r3_3227->Current()))->Alloc(arg0 << 5, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3234 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 << 5, NULL, 0);
         } else {
             var_r3_3234 = malloc(arg0 << 5);
         }

@@ -372,7 +372,7 @@ s32 SpyroCynderStrafeState::JumpLoftTransition() {
 }
 
 void SpyroCynderStrafeState::JumpLoftUpdate() {
-    JumpLoftTransition();
+    SpyroCynderStrafeState::JumpLoftTransition();
 }
 
 void SpyroCynderStrafeState::JumpLoftExit() {

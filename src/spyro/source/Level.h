@@ -83,9 +83,9 @@ public:
 class Level {
 public:
     void GetNextLevel(LevelInfo *);
-    void GetWorldInfo(void);
+    static void GetWorldInfo(void);
     void EnvDomeChanged(void);
-    void * GetStartLevelInfo(void);
+    static void * GetStartLevelInfo(void);
     void CancelQueue(void);
     void EnableChunksForLevel(ChunkInfo *);
     u8 GetNextInQueue(QueueInfo *, bool);
@@ -116,15 +116,15 @@ public:
     void Update(void);
     void Deinit(void);
     void Init(ChunkInfo *);
-    void DeinitModule(void);
-    void InitLevelInfo(void);
-    void InitModule(void);
-    MaterialInfo * AllocMaterialInfo(void);
-    TerrainInfo * AllocTerrainInfo(void);
+    static void DeinitModule(void);
+    static void InitLevelInfo(void);
+    static void InitModule(void);
+    static MaterialInfo * AllocMaterialInfo(void);
+    static TerrainInfo * AllocTerrainInfo(void);
     ChunkInfo * AllocChunkInfo(void);
-    LevelInfo * AllocLevelInfo(void);
+    static LevelInfo * AllocLevelInfo(void);
     void * GetLevelInfo(int);
-    s32 GetLevelCount(void);
+    static s32 GetLevelCount(void);
     static u8 pGlobalLevelIni[0x4];
     static u8 pGlobalModelIni[0x4];
     static u8 levelInfoCount[0x4];

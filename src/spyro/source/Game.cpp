@@ -223,7 +223,7 @@ static M2C_UNK *platformCode = &.L_803580AB;
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-static Level lit_877;                                  /* type too large by 0xD8; unable to generate initializer: non-zero padding; const */
+static M2C_UNK lit_877;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_934;                                /* unable to generate initializer: unknown type; const */
 
 static M2C_UNK .L_803580AB;                         /* unable to generate initializer: unknown type; const */
@@ -316,16 +316,14 @@ void GameGlobals::KillRate::AddKill() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'free'
 void GameGlobals::KillRate::Deinit() {
-    MKHeap *temp_r3_155;
     TargetManager *temp_r31_152;
 
     temp_r31_152 = M2C_FIELD(this, TargetManager **, 0xC);
     if (temp_r31_152 != NULL) {
-        temp_r3_155 = MKHeap::Current();
-        if (temp_r3_155 != NULL) {
-            ((MKHeap *) (temp_r3_155->Current()))->Free(temp_r31_152, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_152, NULL, 0);
         } else {
             free(temp_r31_152);
         }
@@ -337,14 +335,12 @@ void GameGlobals::KillRate::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void GameGlobals::KillRate::Init(int arg1, float farg0) {
-    MKHeap *temp_r3_193;
     TargetManager *var_r3_200;
 
-    temp_r3_193 = MKHeap::Current();
-    if (temp_r3_193 != NULL) {
-        var_r3_200 = ((MKHeap *) (temp_r3_193->Current()))->Alloc(arg1 * 4, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_200 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg1 * 4, NULL, 0);
     } else {
         var_r3_200 = malloc(arg1 * 4);
     }
@@ -503,7 +499,7 @@ void GameGlobals::Capture::Release() {
 }
 
 void GameGlobals::Capture::Get() {
-    Lock();
+    GameGlobals::Capture::Lock();
     ((Texture *) (M2C_FIELD(this, Texture **, 4)))->CaptureDrawBuffer(0.0f, 0.0f, 640.0f, 512.0f);
 }
 
@@ -779,7 +775,6 @@ void GameGlobals::ResetInGameData() {
 
 #if 0 // DRAFT: pointer/array required
 void GameGlobals::Deinit() {
-    MKHeap *temp_r3_1105;
     TargetManager *temp_r30_1104;
 
     RumbleTimer_Deinit();
@@ -793,9 +788,8 @@ void GameGlobals::Deinit() {
     this->unk354 = NULL;
     this->unk20->Deinit();
     temp_r30_1104 = this->unk20;
-    temp_r3_1105 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1105 != NULL) {
-        ((MKHeap *) (temp_r3_1105->Current()))->Free(temp_r30_1104, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1104, NULL, 0);
     } else {
         free(temp_r30_1104);
     }
@@ -807,15 +801,13 @@ void GameGlobals::Deinit() {
     this->unk318->Destroy();
     operator delete(gMK);
     gMK = NULL;
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeinitModule();
+    Level::DeinitModule();
     operator delete(this->unk32C);
 }
 #endif
 
 #if 0 // DRAFT: pointer/array required
 void GameGlobals::Init() {
-    DialogBoxTheme *temp_r3_1216;
-    MKHeap *temp_r3_1226;
     TargetManager *var_r3_1233;
 
     memset(this, 0, 0x3C0U);
@@ -830,7 +822,7 @@ void GameGlobals::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s8 *, 8) = 0;
     }
     this->unk32C = M2C_ERROR(/* Read from unset register $r3 */);
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    Level::InitModule();
     operator new(0xF8U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
@@ -845,8 +837,7 @@ void GameGlobals::Init() {
     this->unk35E = 1;
     this->unk318 = ((MKFont *) "")->Create(NULL);
     this->unk31C = ((MKFont *) "")->Create("053b3(ret)");
-    temp_r3_1216 = DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f);
-    this->unk324 = temp_r3_1216;
+    this->unk324 = DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f);
     this->unk398 = 0;
     this->unk39C = 0;
     M2C_FIELD(this, s32 *, 0x3AC) = 0;
@@ -854,9 +845,8 @@ void GameGlobals::Init() {
     M2C_FIELD(this, s32 *, 0x3A4) = 0;
     M2C_FIELD(this, s32 *, 0x3A8) = 0;
     this->unk382 = 0;
-    temp_r3_1226 = ((MKHeap *) temp_r3_1216)->Current();
-    if (temp_r3_1226 != NULL) {
-        var_r3_1233 = ((MKHeap *) (temp_r3_1226->Current()))->Alloc(0x10, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1233 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_1233 = malloc(0x10);
     }
@@ -1123,8 +1113,8 @@ void Game_Deinit() {
     LoadLevel_FreeResources();
     ((GameStateMachine *) (gb + 0x490))->Deinit();
     KDSound_DeinitModule();
-    ((GameData *) (M2C_ERROR(/* Read from unset register $r3 */)))->ModuleDeinit();
-    ((KDShatter2 *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeinitModule();
+    GameData::ModuleDeinit();
+    KDShatter2::DeinitModule();
     WindPoints_DeinitModule();
     FogPoints_DeinitModule();
     ConsoleCmds_Unregister();
@@ -1141,7 +1131,7 @@ void Game_Init() {
     M2C_UNK sp4;
     ChunkInfo *temp_r4_1957;
     Level *var_r3_1950;
-    M2C_UNK *var_r3_1978;
+    void *temp_r3_2007;
 
     MKMaterial_InitMaterialIDs();
     MKPackage_UseQ();
@@ -1151,7 +1141,7 @@ void Game_Init() {
     ConsoleCmds_Register();
     Game_CheckCommandLineParameters();
     M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_877 - 4) + 4, 0x18);
-    lit_877.GetWorldInfo();
+    Level::GetWorldInfo();
     sp8.unkC = M2C_ERROR(/* Read from unset register $r3 */) + 8;
     KDProp_InitModule(&sp8);
     GameProperties_RegisterAll();
@@ -1171,7 +1161,7 @@ void Game_Init() {
     SiegeTower_InitModule();
     MKSplineTube_InitModule(3000.0f, 20.0f, 1.5f);
     KDRand_SetSeed(Tools_GetTimeInSeconds());
-    ((GameCamera2 *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    GameCamera2::InitModule();
     gb[0xEE] = NULL;
     GameSounds_InitModule();
     gb[0xCC] = NULL;
@@ -1193,28 +1183,24 @@ loop_5:
         } else if ((Level *) pStartLevelName != NULL) {
             gb[0xCC] = M2C_FIELD(pStartLevelName->GetLevelByName(M2C_ERROR(/* Read from unset register $r4 */)), M2C_UNK **, 0x11C);
         }
-        var_r3_1978 = gb[0xCC];
-        if ((s32) M2C_FIELD(var_r3_1978, s32 *, 0xC) == 2) {
-            var_r3_1978 = ((Level *) var_r3_1978)->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
-            gb[0xCC] = var_r3_1978;
+        if ((s32) M2C_FIELD(gb[0xCC], s32 *, 0xC) == 2) {
+            gb[0xCC] = ((Level *) gb[0xCC])->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
         }
     } else if ((Level *) pStartChunkName != NULL) {
-        var_r3_1978 = pStartChunkName->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
-        gb[0xCC] = var_r3_1978;
+        gb[0xCC] = pStartChunkName->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
         gb[0xCF] = (M2C_UNK *)1;
         M2C_FIELD(gb, s8 *, 0x334) = 1;
     } else if ((Level *) pStartLevelName != NULL) {
-        var_r3_1978 = pStartLevelName->GetLevelByName(M2C_ERROR(/* Read from unset register $r4 */));
-        gb[0xCC] = M2C_FIELD(var_r3_1978, M2C_UNK **, 0x114);
+        gb[0xCC] = M2C_FIELD(pStartLevelName->GetLevelByName(M2C_ERROR(/* Read from unset register $r4 */)), M2C_UNK **, 0x114);
         gb[0xCF] = (M2C_UNK *)1;
         M2C_FIELD(gb, s8 *, 0x334) = 1;
     } else {
-        var_r3_1978 = pStartLevelName->GetStartLevelInfo();
-        if ((u32) var_r3_1978 != 0U) {
-            gb[0xCC] = M2C_FIELD(var_r3_1978, M2C_UNK **, 0x114);
+        temp_r3_2007 = Level::GetStartLevelInfo();
+        if (temp_r3_2007 != NULL) {
+            gb[0xCC] = M2C_FIELD(temp_r3_2007, M2C_UNK **, 0x114);
         }
     }
-    ((GameData *) var_r3_1978)->ModuleInit();
+    GameData::ModuleInit();
     ((GameData *) GameData::gameData)->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     EnemySettings_InitModule();

@@ -596,12 +596,8 @@ void MKGrass_InitDraw() {
 
 #if 0 // DRAFT: illegal type
 u32 OptimiseGrassTypeData(MKModel *arg0, GrassUsedType *arg1) {
-    MKHeap *temp_r3_1025;
-    MKHeap *temp_r3_1083;
-    MKHeap *temp_r3_1104;
     s32 temp_r31_1024;
     s32 temp_r3_1009;
-    s32 temp_r3_1022;
     s32 var_r24_1003;
     s32 var_r24_1046;
     s32 var_r25_1002;
@@ -629,11 +625,9 @@ loop_2:
         var_r27_1001 = ((temp_r3_1009 + 0xF) & 0xFFFFFFF0) + var_r27_1001 + 0x10;
         goto loop_2;
     }
-    temp_r3_1022 = arg1->unk2 * 0xC;
-    temp_r31_1024 = (temp_r3_1022 + 0xF) & 0xFFFFFFF0;
-    temp_r3_1025 = ((MKHeap *) temp_r3_1022)->Current();
-    if (temp_r3_1025 != NULL) {
-        var_r3_1032 = ((MKHeap *) (temp_r3_1025->Current()))->Alloc(temp_r31_1024 + var_r27_1001, NULL, 0);
+    temp_r31_1024 = ((arg1->unk2 * 0xC) + 0xF) & 0xFFFFFFF0;
+    if (MKHeap::Current() != NULL) {
+        var_r3_1032 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1024 + var_r27_1001, NULL, 0);
     } else {
         var_r3_1032 = malloc(temp_r31_1024 + var_r27_1001);
     }
@@ -657,10 +651,10 @@ loop_13:
             *(arg1->unk4 + (var_r25_1047 + 4)) = (M2C_FIELD(temp_r31_1051, u32 *, 4) + 0xF) & 0xFFFFFFF0;
             temp_r3_1076 = arg1->unk4 + var_r25_1047;
             var_r27_1048 += M2C_FIELD(temp_r3_1076, s32 *, 4);
+            memcpy(M2C_FIELD(temp_r3_1076, void **, 8), M2C_FIELD(temp_r31_1051, void **, 8), M2C_FIELD(temp_r31_1051, u32 *, 4));
             temp_r31_1082 = M2C_FIELD(temp_r31_1051, void **, 8);
-            temp_r3_1083 = ((MKHeap *) (memcpy(M2C_FIELD(temp_r3_1076, void **, 8), M2C_FIELD(temp_r31_1051, void **, 8), M2C_FIELD(temp_r31_1051, u32 *, 4))))->Current();
-            if (temp_r3_1083 != NULL) {
-                ((MKHeap *) (temp_r3_1083->Main()))->TFree(temp_r31_1082, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Main()))->TFree(temp_r31_1082, NULL, 0);
             } else {
                 free(temp_r31_1082);
             }
@@ -670,9 +664,8 @@ loop_13:
         var_r24_1046 += 0xC;
         goto loop_13;
     }
-    temp_r3_1104 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1104 != NULL) {
-        ((MKHeap *) (temp_r3_1104->Current()))->Free(temp_r29_1004, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_1004, NULL, 0);
     } else {
         free(temp_r29_1004);
     }
@@ -680,7 +673,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'short' to
+#if 0 // DRAFT: function call 'MKMaterial_GetEffectType(MKMaterial *, signed char **)'
 void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType *arg2) {
     f64 spC0;
     f64 spB8;
@@ -705,9 +698,6 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     s8 *sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1147;
-    MKHeap *temp_r3_1149;
-    MKHeap *temp_r3_1221;
     f32 temp_f3_1284;
     f32 var_f29_1241;
     f32 var_f4_1291;
@@ -726,6 +716,7 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     f64 temp_f1_1425;
     f64 temp_f1_1429;
     s16 temp_r25_1144;
+    s16 temp_r26_1148;
     s32 temp_r20_1219;
     s32 temp_r3_1323;
     s32 temp_r3_1448;
@@ -735,7 +726,6 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     s32 var_r23_1172;
     s32 var_r24_1175;
     s32 var_r27_1168;
-    u16 temp_r3_1214;
     void *temp_r21_1220;
     void *temp_r22_1205;
     void *temp_r3_1394;
@@ -743,20 +733,19 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     void *var_r3_1229;
 
     temp_r25_1144 = MKModel_GetNmbrOfMaterials(arg0);
-    temp_r3_1147 = MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0);
-    temp_r3_1149 = temp_r3_1147->Current();
-    if (temp_r3_1149 != NULL) {
-        var_r3_1157 = ((MKHeap *) (temp_r3_1149->Main()))->TAlloc((s32) temp_r3_1147 * 0xC, NULL, 0, 0U);
+    temp_r26_1148 = MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1157 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_1148 * 0xC, NULL, 0, 0U);
     } else {
-        var_r3_1157 = malloc((s32) temp_r3_1147 * 0xC);
+        var_r3_1157 = malloc(temp_r26_1148 * 0xC);
     }
     arg2->unk4 = var_r3_1157;
-    memset(arg2->unk4, 0, (s32) temp_r3_1147 * 0xC);
+    memset(arg2->unk4, 0, temp_r26_1148 * 0xC);
     var_r27_1168 = 0;
     arg2->unk2 = 0;
     var_r23_1172 = 0;
 loop_59:
-    if (var_r23_1172 < (s32) temp_r3_1147) {
+    if (var_r23_1172 < temp_r26_1148) {
         var_r24_1175 = 0;
 loop_57:
         if (var_r24_1175 < temp_r25_1144) {
@@ -769,13 +758,11 @@ loop_57:
                         M2C_FIELD(temp_r22_1205, s16 *, 0) = (s16) var_r23_1172;
                         arg2->unk2 += 1;
                     }
-                    temp_r3_1214 = M2C_FIELD(temp_r22_1205, u16 *, 2);
-                    M2C_FIELD(temp_r22_1205, s32 *, 4) = (s32) ((temp_r3_1214 + arg1->unk4) * 0x18);
+                    M2C_FIELD(temp_r22_1205, s32 *, 4) = (s32) ((M2C_FIELD(temp_r22_1205, u16 *, 2) + arg1->unk4) * 0x18);
                     temp_r20_1219 = M2C_FIELD(temp_r22_1205, s32 *, 4);
                     temp_r21_1220 = M2C_FIELD(temp_r22_1205, void **, 8);
-                    temp_r3_1221 = ((MKHeap *) temp_r3_1214)->Current();
-                    if (temp_r3_1221 != NULL) {
-                        var_r3_1229 = ((MKHeap *) (temp_r3_1221->Main()))->TReAlloc(temp_r21_1220, temp_r20_1219, NULL, 0);
+                    if (MKHeap::Current() != NULL) {
+                        var_r3_1229 = ((MKHeap *) (MKHeap::Main()))->TReAlloc(temp_r21_1220, temp_r20_1219, NULL, 0);
                     } else {
                         var_r3_1229 = realloc(temp_r21_1220, temp_r20_1219);
                     }

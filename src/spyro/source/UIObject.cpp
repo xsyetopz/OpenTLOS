@@ -116,20 +116,20 @@ s32 UIObject::LoadLine(UIDataLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to
 s32 UIObject::Load(const char *arg0, const char *arg1) {
     MKIni sp8;
-    MKHeap *temp_r3_254;
     MKIniLine *temp_r3_260;
     MKIniLine *var_r31_264;
+    s32 temp_r31_255;
 
     if (arg0 == NULL) {
         return 0;
     }
     MKHeap::ActivateTempMemOverride();
-    temp_r3_254 = sp8.Init(arg0, 1, arg1);
-    temp_r3_254->DeactivateTempMemOverride();
-    if ((u8) temp_r3_254 != 0) {
+    temp_r31_255 = sp8.Init(arg0, 1, arg1);
+    MKHeap::DeactivateTempMemOverride();
+    if ((u8) temp_r31_255 != 0) {
         temp_r3_260 = sp8.GetFirstLine();
         var_r31_264 = temp_r3_260->unkC->GetSubLine(temp_r3_260);
 loop_5:

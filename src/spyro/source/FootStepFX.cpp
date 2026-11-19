@@ -743,15 +743,12 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FootStepFX::Deinit() {
-    MKHeap *temp_r3_1099;
     void *temp_r31_1098;
 
     temp_r31_1098 = this->unk4C;
-    temp_r3_1099 = MKHeap::Current();
-    if (temp_r3_1099 != NULL) {
-        ((MKHeap *) (temp_r3_1099->Current()))->Free(temp_r31_1098, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1098, NULL, 0);
     } else {
         free(temp_r31_1098);
     }
@@ -759,7 +756,6 @@ void FootStepFX::Deinit() {
     MKMaterial_Destroy(this->unk5C);
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void FootStepFX::Draw() {
@@ -858,13 +854,11 @@ void *FootStepFX::Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FootStepFX::Init() {
-    MKHeap *temp_r3_1288;
     void *var_r3_1295;
 
     MKProp::Init();
-    temp_r3_1288 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1288 != NULL) {
-        var_r3_1295 = ((MKHeap *) (temp_r3_1288->Current()))->Alloc(0x780, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1295 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x780, NULL, 0);
     } else {
         var_r3_1295 = malloc(0x780);
     }

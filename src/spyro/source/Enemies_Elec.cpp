@@ -452,17 +452,14 @@ void ElecTier3::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ElecTier3Descriptor::Deinit() {
-    MKHeap *temp_r3_757;
     MKMaterial *temp_r3_770;
     u16 *temp_r31_754;
 
     temp_r31_754 = this->unk28C;
     if (temp_r31_754 != NULL) {
-        temp_r3_757 = MKHeap::Current();
-        if (temp_r3_757 != NULL) {
-            ((MKHeap *) (temp_r3_757->Current()))->Free(temp_r31_754, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_754, NULL, 0);
         } else {
             free(temp_r31_754);
         }
@@ -474,23 +471,18 @@ void ElecTier3Descriptor::Deinit() {
     }
     EnemyDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void ElecTier3Descriptor::LoadDone() {
-    MKHeap *temp_r3_822;
-    MKMaterial *temp_r3_820;
     u16 *var_r3_829;
 
     EnemyDescriptor::LoadDone();
     this->unk2B4 = (s32) Tools_GetMatchingNodeIndex(this->unk2C, "body");
     this->unk2B8 = (s32) Tools_GetMatchingNodeIndex(this->unk2C, "eye");
     this->unk2BC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "body");
-    temp_r3_820 = MKMaterial_Create"teslaLight";
-    this->unk2C0 = temp_r3_820;
-    temp_r3_822 = ((MKHeap *) temp_r3_820)->Current();
-    if (temp_r3_822 != NULL) {
-        var_r3_829 = ((MKHeap *) (temp_r3_822->Current()))->Alloc(4, NULL, 0);
+    this->unk2C0 = MKMaterial_Create"teslaLight";
+    if (MKHeap::Current() != NULL) {
+        var_r3_829 = ((MKHeap *) (MKHeap::Current()))->Alloc(4, NULL, 0);
     } else {
         var_r3_829 = malloc(4);
     }

@@ -324,32 +324,26 @@ loop_23:
 #endif
 
 void ExplosionWarpFX::Deinit() {
-    MKHeap *temp_r3_568;
-    MKHeap *temp_r3_582;
-    MKHeap *temp_r3_596;
     void *temp_r31_567;
     void *temp_r31_581;
     void *temp_r31_595;
 
     MKMaterial_Destroy(this->unk60);
     temp_r31_567 = this->unk0;
-    temp_r3_568 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_568 != NULL) {
-        ((MKHeap *) (temp_r3_568->Current()))->Free(temp_r31_567, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_567, NULL, 0);
     } else {
         free(temp_r31_567);
     }
     temp_r31_581 = this->unk4;
-    temp_r3_582 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_582 != NULL) {
-        ((MKHeap *) (temp_r3_582->Current()))->Free(temp_r31_581, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_581, NULL, 0);
     } else {
         free(temp_r31_581);
     }
     temp_r31_595 = this->unk8;
-    temp_r3_596 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_596 != NULL) {
-        ((MKHeap *) (temp_r3_596->Current()))->Free(temp_r31_595, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_595, NULL, 0);
         return;
     }
     free(temp_r31_595);
@@ -506,44 +500,32 @@ void ExplosionWarpFX::Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ExplosionWarpFX::Init() {
-    MKHeap *temp_r3_858;
-    MKHeap *temp_r3_876;
-    MKHeap *temp_r3_894;
     s32 temp_r30_857;
     s32 temp_r30_875;
     s32 temp_r30_893;
-    s32 temp_r3_854;
-    s32 temp_r3_872;
-    s32 temp_r3_890;
     void *var_r3_865;
     void *var_r3_883;
     void *var_r3_901;
 
     this->unkC = 6;
     this->unk10 = 0x14;
-    temp_r3_854 = this->unkC;
-    temp_r30_857 = temp_r3_854 * this->unk10 * 0x30;
-    temp_r3_858 = ((MKHeap *) temp_r3_854)->Current();
-    if (temp_r3_858 != NULL) {
-        var_r3_865 = ((MKHeap *) (temp_r3_858->Current()))->Alloc(temp_r30_857, NULL, 0);
+    temp_r30_857 = this->unkC * this->unk10 * 0x30;
+    if (MKHeap::Current() != NULL) {
+        var_r3_865 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_857, NULL, 0);
     } else {
         var_r3_865 = malloc(temp_r30_857);
     }
     this->unk0 = var_r3_865;
-    temp_r3_872 = this->unkC;
-    temp_r30_875 = temp_r3_872 * this->unk10 * 0x30;
-    temp_r3_876 = ((MKHeap *) temp_r3_872)->Current();
-    if (temp_r3_876 != NULL) {
-        var_r3_883 = ((MKHeap *) (temp_r3_876->Current()))->Alloc(temp_r30_875, NULL, 0);
+    temp_r30_875 = this->unkC * this->unk10 * 0x30;
+    if (MKHeap::Current() != NULL) {
+        var_r3_883 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_875, NULL, 0);
     } else {
         var_r3_883 = malloc(temp_r30_875);
     }
     this->unk4 = var_r3_883;
-    temp_r3_890 = this->unkC;
-    temp_r30_893 = temp_r3_890 * this->unk10 * 8;
-    temp_r3_894 = ((MKHeap *) temp_r3_890)->Current();
-    if (temp_r3_894 != NULL) {
-        var_r3_901 = ((MKHeap *) (temp_r3_894->Current()))->Alloc(temp_r30_893, NULL, 0);
+    temp_r30_893 = this->unkC * this->unk10 * 8;
+    if (MKHeap::Current() != NULL) {
+        var_r3_901 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_893, NULL, 0);
     } else {
         var_r3_901 = malloc(temp_r30_893);
     }

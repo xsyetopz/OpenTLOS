@@ -19,21 +19,17 @@ M2C_UNK free(MKVector3 *);                          /* extern */
 MKVector3 *malloc(s32);                             /* extern */
 
 s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
-    MKHeap *temp_r3_24;
     MKIniLine *var_r27_42;
     MKVector3 *var_r3_31;
     f32 temp_f1_58;
     f32 temp_f1_66;
     s32 temp_r28_23;
-    s32 temp_r3_22;
     s32 var_r29_44;
 
     if (arg1->IsField(arg0) != 0) {
-        temp_r3_22 = arg1->GetNmbrOfSubLines();
-        temp_r28_23 = temp_r3_22 * 0x10;
-        temp_r3_24 = ((MKHeap *) temp_r3_22)->Current();
-        if (temp_r3_24 != NULL) {
-            var_r3_31 = ((MKHeap *) (temp_r3_24->Current()))->Alloc(temp_r28_23, NULL, 0);
+        temp_r28_23 = arg1->GetNmbrOfSubLines() * 0x10;
+        if (MKHeap::Current() != NULL) {
+            var_r3_31 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_23, NULL, 0);
         } else {
             var_r3_31 = malloc(temp_r28_23);
         }
@@ -71,16 +67,14 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'free'
 void PolyRegion::Deinit() {
-    MKHeap *temp_r3_131;
     MKVector3 *temp_r31_128;
 
     temp_r31_128 = this->unk0;
     if (temp_r31_128 != NULL) {
-        temp_r3_131 = MKHeap::Current();
-        if (temp_r3_131 != NULL) {
-            ((MKHeap *) (temp_r3_131->Current()))->Free(temp_r31_128, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_128, NULL, 0);
         } else {
             free(temp_r31_128);
         }

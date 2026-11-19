@@ -3779,27 +3779,22 @@ void AssaultCannon::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void AssaultCannonDescriptor::Deinit() {
-    MKHeap *temp_r3_6076;
     void *temp_r31_6073;
 
     temp_r31_6073 = this->unk17C;
     if (temp_r31_6073 != NULL) {
-        temp_r3_6076 = MKHeap::Current();
-        if (temp_r3_6076 != NULL) {
-            ((MKHeap *) (temp_r3_6076->Current()))->Free(temp_r31_6073, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_6073, NULL, 0);
         } else {
             free(temp_r31_6073);
         }
     }
     ShatterableDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void AssaultCannonDescriptor::LoadDone() {
-    MKHeap *temp_r3_6118;
     f32 var_f1_6125;
     s32 var_r28_6134;
     s32 var_r30_6135;
@@ -3812,9 +3807,8 @@ void AssaultCannonDescriptor::LoadDone() {
     if ((s32) this->unk174 == 2) {
         this->unk178 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
     }
-    temp_r3_6118 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_6118 != NULL) {
-        temp_ret_6125 = ((MKHeap *) (temp_r3_6118->Current()))->Alloc(0x14, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        temp_ret_6125 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         var_f1_6125 = M2C_BITWISE(f32, temp_ret_6125);
         var_r3_6125 = temp_ret_6125;
     } else {

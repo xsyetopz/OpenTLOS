@@ -528,7 +528,6 @@ void Credits_AddPageLine(const char *arg0, float arg1, float arg2) {
 #if 0 // DRAFT: illegal implicit conversion from 'MKIni' to
 void Credits_Deinit() {
     DialogBoxContext *temp_r3_1128;
-    MKHeap *temp_r3_1135;
     MKIni *temp_r30_1134;
     s32 temp_r0_1119;
     s32 var_r29_1112;
@@ -552,9 +551,8 @@ loop_3:
         }
         pCredits->Deinit();
         temp_r30_1134 = pCredits;
-        temp_r3_1135 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1135 != NULL) {
-            ((MKHeap *) (temp_r3_1135->Current()))->Free(temp_r30_1134, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1134, NULL, 0);
         } else {
             free(temp_r30_1134);
         }
@@ -565,15 +563,13 @@ loop_3:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Credits_Init(MKProp *arg0) {
-    MKHeap *temp_r3_1169;
     MKIni *var_r3_1176;
 
     if (arg0 == NULL) {
-        ((MKHeap *) arg0)->ActivateTempMemOverride();
+        MKHeap::ActivateTempMemOverride();
     }
-    temp_r3_1169 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1169 != NULL) {
-        var_r3_1176 = ((MKHeap *) (temp_r3_1169->Current()))->Alloc(0xF4, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1176 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF4, NULL, 0);
     } else {
         var_r3_1176 = malloc(0xF4);
     }
@@ -589,7 +585,7 @@ void Credits_Init(MKProp *arg0) {
     }
     M2C_FIELD(pCredits, MKProp **, 0xA4) = arg0;
     if ((s32) *MKHeap::tempMemOverride > 0) {
-        ((MKHeap *) pCredits)->DeactivateTempMemOverride();
+        MKHeap::DeactivateTempMemOverride();
     }
     DialogBox_bAllowOverCutscene = 1;
 }

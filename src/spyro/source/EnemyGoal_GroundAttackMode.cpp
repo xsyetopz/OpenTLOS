@@ -717,7 +717,6 @@ void EnemyGoal_GroundAttackMode::Deinit() {
     Goal<Enemy> *temp_r3_1320;
     Goal<Enemy> *temp_r3_1330;
     Goal<Enemy> *temp_r3_1340;
-    MKHeap *temp_r3_1353;
     void **temp_r3_1230;
     void *temp_r30_1350;
 
@@ -798,9 +797,8 @@ void EnemyGoal_GroundAttackMode::Deinit() {
     }
     temp_r30_1350 = this->unk1C;
     if (temp_r30_1350 != NULL) {
-        temp_r3_1353 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1353 != NULL) {
-            ((MKHeap *) (temp_r3_1353->Current()))->Free(temp_r30_1350, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1350, NULL, 0);
         } else {
             free(temp_r30_1350);
         }
@@ -831,7 +829,6 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1959;
     Goal<Enemy> *temp_r4_1972;
     Goal<Enemy> *temp_r4_1985;
-    MKHeap *temp_r3_1783;
     void **temp_r3_1851;
     void *var_r3_1790;
 
@@ -1030,9 +1027,8 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
         }
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1783 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1783 != NULL) {
-            var_r3_1790 = ((MKHeap *) (temp_r3_1783->Current()))->Alloc(0x10, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1790 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
         } else {
             var_r3_1790 = malloc(0x10);
         }

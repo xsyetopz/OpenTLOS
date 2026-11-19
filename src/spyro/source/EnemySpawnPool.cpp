@@ -53,16 +53,16 @@
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(s32);                                /* extern */
+M2C_UNK free(M2C_UNK *);                            /* extern */
+M2C_UNK *malloc(s32);                               /* extern */
 extern DataMap enemyTypeDataMap;
 extern M2C_UNK gEmptyPtrListDL;
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 extern s32 iSpawnPools;
-extern MKHeap *pSpawnPools;
+extern M2C_UNK *pSpawnPools;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemySpawnPool_Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -113,7 +113,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 Character *EnemySpawnPool_Recycle(int arg0, SpawnerObject *arg1) {
     Character ***var_r31_100;
     Character **temp_r3_127;
@@ -157,7 +157,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 MKProp *EnemySpawnPool_Create(int arg0) {
     MKProp ***temp_r3_165;
     s32 temp_r4_157;
@@ -207,17 +207,15 @@ void EnemySpawnPool_Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObj
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemySpawnPool_Deinit() {
-    MKHeap *temp_r0_239;
-    MKHeap *temp_r0_258;
-    MKHeap *temp_r28_282;
-    MKHeap *temp_r30_232;
-    MKHeap *temp_r3_261;
-    MKHeap *temp_r3_283;
-    MKHeap *var_r29_235;
-    MKHeap *var_r3_236;
-    MKHeap *var_r4_234;
+    M2C_UNK *temp_r0_239;
+    M2C_UNK *temp_r0_258;
+    M2C_UNK *temp_r28_282;
+    M2C_UNK *temp_r30_232;
+    M2C_UNK *var_r29_235;
+    M2C_UNK *var_r3_236;
+    M2C_UNK *var_r4_234;
     s32 temp_r28_233;
     s32 var_r27_228;
     s32 var_r31_229;
@@ -237,7 +235,7 @@ loop_5:
             temp_r0_244 = M2C_FIELD(var_r3_236, u32 *, -4);
             var_r3_236 -= 4;
             if (temp_r0_244 != 0U) {
-                temp_r0_239 = var_r3_236->unk0;
+                temp_r0_239 = *var_r3_236;
                 if (temp_r0_239 < var_r29_235) {
                     var_r29_235 = temp_r0_239;
                 }
@@ -245,7 +243,7 @@ loop_5:
             }
             if (var_r3_236 != &gEmptyPtrListDL) {
 loop_11:
-                temp_r0_258 = var_r4_234->unk0;
+                temp_r0_258 = *var_r4_234;
                 if (temp_r0_258 != NULL) {
                     if (temp_r0_258 < var_r29_235) {
                         var_r29_235 = temp_r0_258;
@@ -253,9 +251,8 @@ loop_11:
                     var_r4_234 += 4;
                     goto loop_11;
                 }
-                temp_r3_261 = var_r3_236->Current();
-                if (temp_r3_261 != NULL) {
-                    ((MKHeap *) (temp_r3_261->Current()))->Free(var_r29_235, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free(var_r29_235, NULL, 0);
                 } else {
                     free(var_r29_235);
                 }
@@ -266,9 +263,8 @@ loop_11:
             goto loop_16;
         }
         temp_r28_282 = pSpawnPools;
-        temp_r3_283 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_283 != NULL) {
-            ((MKHeap *) (temp_r3_283->Current()))->Free(temp_r28_282, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_282, NULL, 0);
         } else {
             free(temp_r28_282);
         }
@@ -280,15 +276,14 @@ loop_11:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnemySpawnPool_Init() {
-    MKHeap *temp_r3_332;
-    MKHeap *temp_r3_377;
-    MKHeap *temp_r3_386;
-    MKHeap *temp_r3_407;
-    MKHeap *temp_r3_414;
-    MKHeap *temp_r3_421;
-    MKHeap *var_r3_339;
-    MKHeap *var_r3_395;
-    MKHeap *var_r5_406;
+    M2C_UNK *temp_r3_407;
+    M2C_UNK *temp_r3_414;
+    M2C_UNK *temp_r3_421;
+    M2C_UNK *temp_r4_438;
+    M2C_UNK *var_r27_432;
+    M2C_UNK *var_r3_339;
+    M2C_UNK *var_r3_395;
+    M2C_UNK *var_r5_406;
     s32 temp_r24_331;
     s32 temp_r26_379;
     s32 temp_r26_431;
@@ -297,8 +292,6 @@ void EnemySpawnPool_Init() {
     s32 var_r25_350;
     s32 var_r28_349;
     u32 temp_r27_369;
-    void ***var_r27_432;
-    void **temp_r4_438;
     void *temp_r29_357;
     void *temp_r3_356;
     void *temp_r4_316;
@@ -318,9 +311,8 @@ void EnemySpawnPool_Init() {
     pSpawnPools = NULL;
     if (temp_r3_325 > 0) {
         temp_r24_331 = temp_r3_325 * 8;
-        temp_r3_332 = ((MKHeap *) temp_r3_325)->Current();
-        if (temp_r3_332 != NULL) {
-            var_r3_339 = ((MKHeap *) (temp_r3_332->Current()))->Alloc(temp_r24_331, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_339 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r24_331, NULL, 0);
         } else {
             var_r3_339 = malloc(temp_r24_331);
         }
@@ -343,41 +335,39 @@ loop_27:
             } else {
                 var_r3_371 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x24), void **, 4);
             }
-            temp_r3_377 = M2C_FIELD(var_r3_371, MKHeap **, 0x104);
-            temp_r26_379 = *(temp_r3_377 + (var_r25_350 + 4));
+            temp_r26_379 = *(M2C_FIELD(var_r3_371, s32 *, 0x104) + (var_r25_350 + 4));
             M2C_FIELD(temp_r29_357, u32 *, 0) = temp_r27_369;
             if (temp_r26_379 == 0) {
-                M2C_FIELD(temp_r29_357, MKHeap **, 4) = (MKHeap *) (&gEmptyPtrListDL + 4);
+                M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = (M2C_UNK *) (&gEmptyPtrListDL + 4);
             } else {
-                temp_r3_386 = temp_r3_377->Current();
-                if (temp_r3_386 != NULL) {
-                    var_r3_395 = ((MKHeap *) (temp_r3_386->Current()))->Alloc(((temp_r26_379 * 2) + 2) * 4, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_395 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r26_379 * 2) + 2) * 4, NULL, 0);
                 } else {
                     var_r3_395 = malloc(((temp_r26_379 * 2) + 2) * 4);
                 }
-                M2C_FIELD(temp_r29_357, MKHeap **, 4) = var_r3_395;
-                var_r5_406 = M2C_FIELD(temp_r29_357, MKHeap **, 4);
-                temp_r3_407 = var_r5_406 + (temp_r26_379 * 4);
-                M2C_FIELD(temp_r29_357, MKHeap **, 4) = temp_r3_407;
-                temp_r3_407->unk0 = NULL;
+                M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = var_r3_395;
+                var_r5_406 = M2C_FIELD(temp_r29_357, M2C_UNK **, 4);
+                temp_r3_407 = &var_r5_406[temp_r26_379];
+                M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = temp_r3_407;
+                *temp_r3_407 = NULL;
                 var_ctr_410 = temp_r26_379;
                 if (temp_r26_379 > 0) {
                     do {
-                        temp_r3_414 = M2C_FIELD(temp_r29_357, MKHeap **, 4);
-                        M2C_FIELD(temp_r29_357, MKHeap **, 4) = (MKHeap *) &temp_r3_414->unk4;
-                        temp_r3_414->unk4 = (s32) var_r5_406;
+                        temp_r3_414 = M2C_FIELD(temp_r29_357, M2C_UNK **, 4);
+                        M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = (M2C_UNK *) (temp_r3_414 + 4);
+                        M2C_FIELD(temp_r3_414, M2C_UNK **, 4) = var_r5_406;
                         var_r5_406 += 4;
                         var_ctr_410 -= 1;
                     } while (var_ctr_410 != 0);
                 }
-                temp_r3_421 = M2C_FIELD(temp_r29_357, MKHeap **, 4);
-                M2C_FIELD(temp_r29_357, MKHeap **, 4) = (MKHeap *) &temp_r3_421->unk4;
-                temp_r3_421->unk4 = 0;
+                temp_r3_421 = M2C_FIELD(temp_r29_357, M2C_UNK **, 4);
+                M2C_FIELD(temp_r29_357, M2C_UNK **, 4) = (M2C_UNK *) (temp_r3_421 + 4);
+                M2C_FIELD(temp_r3_421, M2C_UNK **, 4) = NULL;
             }
             temp_r26_431 = DataMap_GetName(&enemyTypeDataMap, temp_r27_369);
-            var_r27_432 = M2C_FIELD(temp_r29_357, MKHeap **, 4) - 4;
+            var_r27_432 = M2C_FIELD(temp_r29_357, M2C_UNK **, 4) - 4;
 loop_24:
-            if ((var_r27_432 != NULL) && ((void **) *var_r27_432 != NULL)) {
+            if ((var_r27_432 != NULL) && ((M2C_UNK *) *var_r27_432 != NULL)) {
                 temp_r4_438 = *var_r27_432;
                 var_r27_432 -= 4;
                 *temp_r4_438 = gMK->CreateProp((s8 *) temp_r26_431);

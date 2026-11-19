@@ -21,7 +21,7 @@
 #include "common/gc/Sound_GC.h"
 #include <m2c_macros.h>
 
-MKHeap *THPPlayerCalcNeedMemory();                  /* extern */
+s32 THPPlayerCalcNeedMemory();                      /* extern */
 M2C_UNK THPPlayerClose();                           /* extern */
 M2C_UNK THPPlayerGetAudioInfo(s32 *);               /* extern */
 f32 THPPlayerGetFrameRate();                        /* extern */
@@ -31,13 +31,13 @@ M2C_UNK THPPlayerGetVideoInfo(s32 *);               /* extern */
 M2C_UNK THPPlayerInit(M2C_UNK);                     /* extern */
 s32 THPPlayerOpen(s8 *, M2C_UNK);                   /* extern */
 M2C_UNK THPPlayerPlay();                            /* extern */
-M2C_UNK THPPlayerPrepare(M2C_UNK, M2C_UNK, MKHeap *); /* extern */
+M2C_UNK THPPlayerPrepare(M2C_UNK, M2C_UNK, s32);    /* extern */
 M2C_UNK THPPlayerQuit();                            /* extern */
-M2C_UNK THPPlayerSetBuffer(s32);                    /* extern */
+M2C_UNK THPPlayerSetBuffer(void *);                 /* extern */
 M2C_UNK THPPlayerSetVolume(u8, M2C_UNK);            /* extern */
 M2C_UNK THPPlayerStop();                            /* extern */
 M2C_UNK free(void *);                               /* extern */
-s32 malloc(MKHeap *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 void *strstr(s8 *, s8 *);                           /* extern */
 extern M2C_UNK ActivePlayer;
 extern s32 Sound_CurrentState;
@@ -91,7 +91,6 @@ f32 Video_GetRemainingTime(Video *arg0) {
 }
 
 s32 Video_IsReady(Video *arg0) {
-    MKHeap *temp_r3_173;
     s32 temp_r30_167;
     s32 temp_r3_143;
 
@@ -121,9 +120,8 @@ block_9:
         temp_r30_167 = currentVideo.unk4;
         if ((u32) temp_r30_167 != 0U) {
             if ((u8) M2C_FIELD(&currentVideo, u8 *, 0x24) != 0) {
-                temp_r3_173 = currentVideo.Current();
-                if (temp_r3_173 != NULL) {
-                    ((MKHeap *) (temp_r3_173->Current()))->Free((void *) temp_r30_167, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_167, NULL, 0);
                 } else {
                     free((void *) temp_r30_167);
                 }
@@ -161,7 +159,6 @@ void Video_Draw(Video *arg0, float arg1, float arg2, float arg3, float arg4, flo
 }
 
 void Video_Destroy(Video *arg0) {
-    MKHeap *temp_r3_312;
     s32 temp_r30_306;
 
     if ((arg0 != NULL) && ((u8) M2C_FIELD(&currentVideo, u8 *, 0) != 0)) {
@@ -170,9 +167,8 @@ void Video_Destroy(Video *arg0) {
         temp_r30_306 = currentVideo.unk4;
         if ((u32) temp_r30_306 != 0U) {
             if ((u8) M2C_FIELD(&currentVideo, u8 *, 0x24) != 0) {
-                temp_r3_312 = currentVideo.Current();
-                if (temp_r3_312 != NULL) {
-                    ((MKHeap *) (temp_r3_312->Current()))->Free((void *) temp_r30_306, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_306, NULL, 0);
                 } else {
                     free((void *) temp_r30_306);
                 }
@@ -201,7 +197,6 @@ void Video_SetLooping(Video *arg0, bool arg1) {
 
 #if 0 // DRAFT: function call 'Video_GetYUVData(long, long, long)' does not match
 s32 Video_Update(Video *arg0) {
-    MKHeap *temp_r3_458;
     s32 temp_r30_452;
     s32 temp_r3_387;
 
@@ -216,7 +211,7 @@ s32 Video_Update(Video *arg0) {
         return 1;
     case 0:
         if ((u8) M2C_FIELD(&currentVideo, u8 *, 0x34) != 0) {
-            THPPlayerPrepare(0, 0, currentVideo.unk28);
+            THPPlayerPrepare(0, 0, (s32) currentVideo.unk28);
             THPPlayerPlay();
             M2C_FIELD(&currentVideo, u8 *, 0x34) = 0U;
             return 1;
@@ -235,9 +230,8 @@ s32 Video_Update(Video *arg0) {
         temp_r30_452 = currentVideo.unk4;
         if ((u32) temp_r30_452 != 0U) {
             if ((u8) M2C_FIELD(&currentVideo, u8 *, 0x24) != 0) {
-                temp_r3_458 = currentVideo.Current();
-                if (temp_r3_458 != NULL) {
-                    ((MKHeap *) (temp_r3_458->Current()))->Free((void *) temp_r30_452, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_452, NULL, 0);
                 } else {
                     free((void *) temp_r30_452);
                 }
@@ -254,10 +248,8 @@ s32 Video_Update(Video *arg0) {
 #if 0 // DRAFT: function call 'sprintf(signed char *, const char[13], const char *)' does
 MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3, int arg4) {
     s8 sp8;
-    MKHeap *temp_r29_527;
-    MKHeap *temp_r3_525;
-    MKHeap *temp_r3_536;
     MKResource *temp_r29_600;
+    s32 temp_r29_527;
     void *temp_r3_505;
     void *var_r3_544;
 
@@ -271,36 +263,34 @@ MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3,
         Video_SwitchSoundState((sound_state) 0);
         return NULL;
     }
-    temp_r3_525 = THPPlayerCalcNeedMemory();
-    temp_r29_527 = temp_r3_525;
+    temp_r29_527 = THPPlayerCalcNeedMemory();
     if (arg3 != NULL) {
         currentVideo.unk4 = (s32) arg3;
         M2C_FIELD(&currentVideo, s8 *, 0x24) = 0;
     } else {
-        temp_r3_536 = temp_r3_525->Current();
-        if (temp_r3_536 != NULL) {
-            var_r3_544 = ((MKHeap *) (temp_r3_536->Main()))->TAlloc((s32) temp_r29_527, NULL, 0, 0U);
+        if (MKHeap::Current() != NULL) {
+            var_r3_544 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r29_527, NULL, 0, 0U);
         } else {
             var_r3_544 = malloc(temp_r29_527);
         }
         currentVideo.unk4 = (s32) var_r3_544;
         M2C_FIELD(&currentVideo, s8 *, 0x24) = 1;
     }
-    THPPlayerSetBuffer(currentVideo.unk4);
+    THPPlayerSetBuffer((void *) currentVideo.unk4);
     THPPlayerGetVideoInfo(&currentVideo.unk8);
     THPPlayerGetAudioInfo(&currentVideo.unk14);
     currentVideo.unk28 = (MKHeap *) arg2;
-    THPPlayerPrepare(0, 0, (MKHeap *) arg2);
+    THPPlayerPrepare(0, 0, arg2);
     THPPlayerPlay();
     THPPlayerSetVolume(videoVolume, 0);
     M2C_FIELD(&currentVideo, s8 *, 0) = 1;
     M2C_FIELD(&currentVideo, s8 **, 0x30) = NULL;
     M2C_FIELD(&currentVideo, s8 *, 0x35) = 1;
-    currentVideo.ActivateTempMemOverride();
+    MKHeap::ActivateTempMemOverride();
     M2C_FIELD(&currentVideo, s8 **, 0x30) = ((Texture *) arg0)->CreateMpegTarget(NULL, (void *) currentVideo.unk8, currentVideo.unkC, M2C_ERROR(/* Read from unset register $r7 */));
     temp_r29_600 = MKMaterial_Create(arg0);
     ((Texture *) M2C_FIELD(&currentVideo, s8 **, 0x30))->Destroy();
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
+    MKHeap::DeactivateTempMemOverride();
     currentVideo.unk2C = (s32) temp_r29_600;
     MKMaterial_SetParameter((MKMaterial *) temp_r29_600, (MKMaterialParameter) 1, 1);
     MKMaterial_SetParameter((MKMaterial *) currentVideo.unk2C, (MKMaterialParameter) 2, 1);
@@ -317,7 +307,6 @@ loop_12:
 #endif
 
 void Video_DeinitModule() {
-    MKHeap *temp_r3_666;
     s32 temp_r30_660;
 
     THPPlayerStop();
@@ -326,9 +315,8 @@ void Video_DeinitModule() {
     temp_r30_660 = currentVideo.unk4;
     if ((u32) temp_r30_660 != 0U) {
         if ((u8) M2C_FIELD(&currentVideo, u8 *, 0x24) != 0) {
-            temp_r3_666 = currentVideo.Current();
-            if (temp_r3_666 != NULL) {
-                ((MKHeap *) (temp_r3_666->Current()))->Free((void *) temp_r30_660, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_660, NULL, 0);
             } else {
                 free((void *) temp_r30_660);
             }

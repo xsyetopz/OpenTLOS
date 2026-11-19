@@ -59,7 +59,7 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 gpTranslation_StringArray;
 #if 0 // DRAFT: identifier 'buttonLabel' redeclared
-u8 descriptor__10PromptText[0x14];                  /* unable to generate initializer: cannot parse lit_stringBase0 as integer */
+u8 descriptor__10PromptText[0x14];                  /* unable to generate initializer: cannot parse "PromptText" as integer */
 u8 descriptor__11PromptGroup[0x14];                 /* unable to generate initializer: cannot parse .L_8035BE63 as integer */
 u8 descriptor__12OptionButton[0x14];                /* unable to generate initializer: cannot parse .L_8035BE88 as integer */
 u8 descriptor__17ScriptProgressBar[0x14];           /* unable to generate initializer: cannot parse .L_8035BEB4 as integer */
@@ -90,7 +90,6 @@ static M2C_UNK RADIAL_V_DISABLED_COLOR;             /* unable to generate initia
 
 static s32 lit_1179 = 1;
 #if 0 // DRAFT: declaration syntax error
-static MKHeap lit_stringBase0;                         /* type too large by 0x115; unable to generate initializer: not enough data; const */
 static M2C_UNK .L_8035BF86;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BF8B;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BF93;                         /* unable to generate initializer: unknown type; const */
@@ -211,7 +210,7 @@ void HealthSafetyScreen::OnExit() {
     M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
 void HealthSafetyScreen::OnEnter() {
     f64 sp20;
     f64 sp18;
@@ -224,14 +223,14 @@ void HealthSafetyScreen::OnEnter() {
     this->unkD0 = 0;
     this->unkD4 = 0;
     this->unkD5 = 0;
-    this->unkC8 = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x23D));
+    this->unkC8 = ui_cast<UIImage *, UIObject *>(FindChild("Message"));
     if ((s32) gDisplay == 1) {
 
     } else {
         GameLanguage_GetCode(-1);
     }
-    this->unkC8->unk64 = MKMaterial_Create(Str_Printf(&lit_stringBase0 + 0x248, M2C_ERROR(/* Read from unset register $r3 */), &lit_stringBase0));
-    this->unkCC = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x256));
+    this->unkC8->unk64 = MKMaterial_Create(Str_Printf("ui_warning_%s", M2C_ERROR(/* Read from unset register $r3 */), "PromptText"));
+    this->unkCC = ui_cast<UIImage *, UIObject *>(FindChild("Block"));
     this->unkDC = 0.0f;
     this->unkE0 = 1;
     sp8 = 0.0f;
@@ -256,9 +255,6 @@ void HealthSafetyScreen::Init() {
 void LanguageButtonGroup::LoadDone() {
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_321;
-    MKHeap *temp_r3_370;
-    MKHeap *var_r3_312;
     UIObject *temp_r3_347;
     UIObject *temp_r3_396;
     UIObject *var_r26_329;
@@ -269,12 +265,10 @@ void LanguageButtonGroup::LoadDone() {
     s8 *temp_r3_418;
 
     if (GameLanguage_GetLast((int *) &spC, 1U) != 0) {
-        var_r3_312 = &lit_stringBase0;
         do {
             temp_r26_320 = M2C_FIELD(OptionButton::descriptor, s32 *, 8);
-            temp_r3_321 = var_r3_312->Current();
-            if (temp_r3_321 != NULL) {
-                var_r26_329 = ((MKHeap *) (temp_r3_321->Current()))->Alloc(temp_r26_320, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r26_329 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_320, NULL, 0);
             } else {
                 var_r26_329 = malloc(temp_r26_320);
             }
@@ -287,12 +281,11 @@ void LanguageButtonGroup::LoadDone() {
             temp_r3_347->unk18.unk10.unk4 = 0.0f;
             temp_r3_347->unk18.unk10.unk8 = 0.0f;
             GameLanguage_GetCode(spC);
-            M2C_FIELD(temp_r3_347->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x4C)(temp_r3_347, Str_Printf(&lit_stringBase0 + 0x25C, M2C_ERROR(/* Read from unset register $r3 */)));
+            M2C_FIELD(temp_r3_347->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x4C)(temp_r3_347, Str_Printf("lang %s", M2C_ERROR(/* Read from unset register $r3 */)));
             Add(temp_r3_347);
             temp_r26_369 = M2C_FIELD(DSText::descriptor, s32 *, 8);
-            temp_r3_370 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_370 != NULL) {
-                var_r26_378 = ((MKHeap *) (temp_r3_370->Current()))->Alloc(temp_r26_369, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r26_378 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_369, NULL, 0);
             } else {
                 var_r26_378 = malloc(temp_r26_369);
             }
@@ -316,15 +309,14 @@ void LanguageButtonGroup::LoadDone() {
             if (temp_r3_418 != NULL) {
                 UIStringTable_Remove(temp_r3_418);
             }
-            UIStringTable_Add(&lit_stringBase0 + 0x264);
+            UIStringTable_Add"font_game";
             M2C_FIELD(temp_r3_396, s8 **, 0x60) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
             ((UIContainer *) temp_r3_347)->Add(temp_r3_396);
             if (GameLanguage_Available(spC) == 0) {
                 sp8 = 5;
                 temp_r3_347->Message(&sp8);
             }
-            var_r3_312 = GameLanguage_GetPrev((int *) &spC, 1U);
-        } while ((u8) var_r3_312 != 0);
+        } while (GameLanguage_GetPrev((int *) &spC, 1U) != 0);
     }
 }
 #endif
@@ -335,11 +327,11 @@ void ScriptVideoScreen::DoExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptVideoScreen::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_494;
 
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x26E) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onExit") != 0) {
         temp_r31_494 = ((MKIniLine *) arg0)->GetString(0);
         this->unk128 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_494);
         return 1;
@@ -702,11 +694,11 @@ s32 RadialButtonGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
 void RadialButtonGroup::Resolve() {
     UIButtonGroup::Resolve();
     SetPositions();
-    this->unkF8 = ui_cast<UIContainer *, UIObject *>(this->unkC->FindChild(&lit_stringBase0 + 0x275));
+    this->unkF8 = ui_cast<UIContainer *, UIObject *>(this->unkC->FindChild("Labels"));
 }
 #endif
 
@@ -914,7 +906,7 @@ void UIPie::Init() {
     this->unk78 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void LocalizedVideoScreen::LoadDone() {
     s8 *temp_r0_1845;
     s8 *temp_r31_1836;
@@ -923,7 +915,7 @@ void LocalizedVideoScreen::LoadDone() {
     temp_r31_1836 = this->unkE0;
     GameLanguage_GetCode(-1);
     temp_r0_1845 = this->unkE0;
-    temp_r31_1846 = Str_Printf(&lit_stringBase0 + 0x27C, temp_r31_1836, M2C_ERROR(/* Read from unset register $r3 */), &lit_stringBase0);
+    temp_r31_1846 = Str_Printf("%s%s", temp_r31_1836, M2C_ERROR(/* Read from unset register $r3 */), "PromptText");
     if (temp_r0_1845 != NULL) {
         UIStringTable_Remove(temp_r0_1845);
     }
@@ -1084,7 +1076,7 @@ void MarkerButtonGroup::Init() {
     if (temp_r3_2218 != NULL) {
         UIStringTable_Remove(temp_r3_2218);
     }
-    UIStringTable_Add(&lit_stringBase0 + 0x281);
+    UIStringTable_Add"ui_selection";
     this->unkE0 = M2C_ERROR(/* Read from unset register $r3 */);
     this->unk98.unk40 = 0x3F;
     this->unk98.unk0 = 1.0f;
@@ -1182,11 +1174,11 @@ void ScriptButtonGroup::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptButtonGroup::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2454;
 
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x28E) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onReset") != 0) {
         temp_r31_2454 = ((MKIniLine *) arg0)->GetString(0);
         this->unk80 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2454);
         return 1;
@@ -1281,7 +1273,7 @@ loop_17:
         if ((s8) temp_r3_2712 == 0x25) {
             if ((s32) M2C_FIELD(var_r28_2636, u8 *, 1) == 0x25) {
                 *var_r29_2623 = 0x25;
-            } else if (strnicmp(var_r28_2636 + 1, &lit_stringBase0 + 0x296, 0xB) == 0) {
+            } else if (strnicmp(var_r28_2636 + 1, "LEVEL_NAME%", 0xB) == 0) {
                 temp_r4_2660 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
                 if (temp_r4_2660 != NULL) {
                     var_r3_2663 = M2C_FIELD(temp_r4_2660, void **, 4);
@@ -1293,10 +1285,10 @@ loop_17:
                 var_r28_2636 += 0xB;
                 var_r29_2623 = &var_r29_2623[strlen(temp_r25_2673)] - 1;
             } else {
-                temp_ret_2688 = strnicmp(var_r28_2636 + 1, &lit_stringBase0 + 0x2A2, 0xE);
+                temp_ret_2688 = strnicmp(var_r28_2636 + 1, "LEVELUPPOINTS%", 0xE);
                 if (temp_ret_2688 == 0) {
                     var_r28_2636 += 0xE;
-                    var_r29_2623 = &var_r29_2623[sprintf(var_r29_2623, &lit_stringBase0 + 0x2B1, M2C_FIELD(GameData::gameData, s32 *, 0x164), M2C_BITWISE(f32, temp_ret_2688))] - 1;
+                    var_r29_2623 = &var_r29_2623[sprintf(var_r29_2623, "%d", M2C_FIELD(GameData::gameData, s32 *, 0x164), M2C_BITWISE(f32, temp_ret_2688))] - 1;
                 } else {
                     *var_r29_2623 = (s8) (u8) M2C_FIELD(var_r28_2636, s8 *, 0);
                 }
@@ -1357,23 +1349,23 @@ void ScriptProgressBar::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2850;
     s32 temp_r31_2867;
     s32 temp_r31_2884;
 
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2B4) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onGetValue") != 0) {
         temp_r31_2850 = ((MKIniLine *) arg0)->GetString(0);
         this->unkD0 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850);
         goto block_7;
     }
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2BF) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onIncrement") != 0) {
         temp_r31_2867 = ((MKIniLine *) arg0)->GetString(0);
         this->unkD4 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2867);
         goto block_7;
     }
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2CB) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onDecrement") != 0) {
         temp_r31_2884 = ((MKIniLine *) arg0)->GetString(0);
         this->unkD8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884);
 block_7:
@@ -1462,17 +1454,17 @@ void ProgressBar::LoadDone() {
     this->unkC0 = this->unk18.unk40;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 ProgressBar::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 
     sp8 = NULL;
-    if (((MKIniLine *) arg0)->LoadString(&lit_stringBase0 + 0x2D7, &sp8, 0) != 0) {
-        if (stricmp(sp8, &lit_stringBase0 + 0x2E3) == 0) {
+    if (((MKIniLine *) arg0)->LoadString("orientation", &sp8, 0) != 0) {
+        if (stricmp(sp8, "lefttoright") == 0) {
             this->unk78 = 0;
-        } else if (stricmp(sp8, &lit_stringBase0 + 0x2EF) == 0) {
+        } else if (stricmp(sp8, "righttoleft") == 0) {
             this->unk78 = 1;
-        } else if (stricmp(sp8, &lit_stringBase0 + 0x2FB) == 0) {
+        } else if (stricmp(sp8, "vertical") == 0) {
             this->unk78 = 2;
         }
         return 1;
@@ -1550,23 +1542,23 @@ void ScriptButton::OnActivate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptButton::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_3359;
     s32 temp_r31_3376;
     s32 temp_r31_3393;
 
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x304) != 0) {
+    if (((MKIniLine *) arg0)->IsField("scriptActivate") != 0) {
         temp_r31_3359 = ((MKIniLine *) arg0)->GetString(0);
         this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359);
         goto block_7;
     }
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x313) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onSelect") != 0) {
         temp_r31_3376 = ((MKIniLine *) arg0)->GetString(0);
         this->unk94 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3376);
         goto block_7;
     }
-    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x31C) != 0) {
+    if (((MKIniLine *) arg0)->IsField("onDeselect") != 0) {
         temp_r31_3393 = ((MKIniLine *) arg0)->GetString(0);
         this->unk98 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393);
 block_7:
@@ -1878,7 +1870,7 @@ s32 PromptGroup::Message(UIMessage *arg0) {
     return 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 s32 PromptText::Message(UIMessage *arg0) {
     s32 temp_r4_3987;
 
@@ -1887,14 +1879,14 @@ s32 PromptText::Message(UIMessage *arg0) {
     } else {
         temp_r4_3987 = M2C_FIELD(this, s32 *, 0x78);
         if (temp_r4_3987 > -1) {
-            this->unk18.unk34 = 20.0f + this->unk64->CalcLength(Str_Printf(&lit_stringBase0 + 0x327, buttonString[temp_r4_3987], *(gpTranslation_StringArray + (this->unk6C * 4)), &lit_stringBase0));
+            this->unk18.unk34 = 20.0f + this->unk64->CalcLength(Str_Printf("%s %s", buttonString[temp_r4_3987], *(gpTranslation_StringArray + (this->unk6C * 4)), "PromptText"));
         }
     }
     UIObject::Message(arg0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 void PromptText::Draw(const RenderContext &arg0) {
     s32 temp_r31_4030;
     s32 temp_r6_4029;
@@ -1904,7 +1896,7 @@ void PromptText::Draw(const RenderContext &arg0) {
     temp_r31_4030 = this->unk6C;
     temp_r30_4032 = this->unk68;
     if (temp_r6_4029 >= 0) {
-        this->unk68 = Str_Printf(&lit_stringBase0 + 0x327, buttonString[temp_r6_4029], *(gpTranslation_StringArray + (temp_r31_4030 * 4)), temp_r6_4029 * 4, &lit_stringBase0);
+        this->unk68 = Str_Printf("%s %s", buttonString[temp_r6_4029], *(gpTranslation_StringArray + (temp_r31_4030 * 4)), temp_r6_4029 * 4, "PromptText");
         this->unk6C = -1;
     }
     UIText::Draw(arg0);

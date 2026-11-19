@@ -22,7 +22,7 @@ public:
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     SpeedwayAA(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
 };
 
 class SpeedwayAADescriptor : public ProjectileDescriptor {  // base: base ctor call

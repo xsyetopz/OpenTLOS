@@ -421,7 +421,6 @@ void EnemyGoal_FlyingAttackMode::Deinit() {
     Goal<Enemy> *temp_r3_667;
     Goal<Enemy> *temp_r3_672;
     Goal<Enemy> *temp_r3_677;
-    MKHeap *temp_r3_693;
     void *temp_r31_690;
 
     temp_r3_662 = this->unk24;
@@ -438,9 +437,8 @@ void EnemyGoal_FlyingAttackMode::Deinit() {
     operator delete(this->unk30);
     temp_r31_690 = this->unk1C;
     if (temp_r31_690 != NULL) {
-        temp_r3_693 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_693 != NULL) {
-            ((MKHeap *) (temp_r3_693->Current()))->Free(temp_r31_690, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_690, NULL, 0);
         } else {
             free(temp_r31_690);
         }
@@ -460,7 +458,6 @@ void EnemyGoal_FlyingAttackMode::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_858;
     Goal<Enemy> *temp_r4_873;
     Goal<Enemy> *temp_r4_882;
-    MKHeap *temp_r3_820;
     void *var_r3_827;
 
     if ((u8) this->unk9 == 0) {
@@ -506,9 +503,8 @@ void EnemyGoal_FlyingAttackMode::Init(Enemy *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_820 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_820 != NULL) {
-            var_r3_827 = ((MKHeap *) (temp_r3_820->Current()))->Alloc(0x10, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_827 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
         } else {
             var_r3_827 = malloc(0x10);
         }

@@ -512,9 +512,8 @@ loop_66:
 
 #if 0 // DRAFT: illegal type
 void LiquidStream::Deinit() {
-    MKHeap *temp_r0_844;
-    MKHeap *temp_r3_866;
     u32 temp_r0_849;
+    void *temp_r0_844;
     void *temp_r0_863;
     void *var_r31_840;
     void *var_r3_841;
@@ -528,7 +527,7 @@ loop_3:
     temp_r0_849 = M2C_FIELD(var_r3_841, u32 *, -4);
     var_r3_841 -= 4;
     if (temp_r0_849 != 0U) {
-        temp_r0_844 = var_r3_841->unk0;
+        temp_r0_844 = *var_r3_841;
         if (temp_r0_844 < var_r31_840) {
             var_r31_840 = temp_r0_844;
         }
@@ -544,9 +543,8 @@ loop_9:
             var_r4_839 += 4;
             goto loop_9;
         }
-        temp_r3_866 = var_r3_841->Current();
-        if (temp_r3_866 != NULL) {
-            ((MKHeap *) (temp_r3_866->Current()))->Free(var_r31_840, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_840, NULL, 0);
         } else {
             free(var_r31_840);
         }
@@ -563,7 +561,6 @@ void LiquidStream::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_900;
     s32 var_ctr_920;
     void *temp_r3_922;
     void *temp_r3_928;
@@ -572,9 +569,8 @@ void LiquidStream::Init() {
 
     MKProp::Init();
     this->unk4C = 0;
-    temp_r3_900 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_900 != NULL) {
-        var_r3_907 = ((MKHeap *) (temp_r3_900->Current()))->Alloc(0x620, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_907 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x620, NULL, 0);
     } else {
         var_r3_907 = malloc(0x620);
     }

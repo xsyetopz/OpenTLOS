@@ -131,7 +131,7 @@ void LoadLevel_UpdateLoading() {
         return;
     case 2:
         bCheckedConnectors = 0;
-        ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+        Level::GetWorldInfo();
         M2C_FIELD(&sp18[0], ChunkInfo **, 0) = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), ChunkInfo **, 0x18);
         var_r30_131 = 1;
         temp_r3_133 = M2C_FIELD(pLoadChunkInfo->unk4, u32 *, 0x118);
@@ -278,7 +278,7 @@ void LoadLevel_Deinit() {
     if ((s32) gb.unk340 != 0) {
         var_f0_475 = 2.0f;
     } else {
-        ((Level *) &gb)->GetWorldInfo();
+        Level::GetWorldInfo();
         var_f0_475 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x1C);
     }
     M2C_FIELD(gMK, f32 *, 0xB0) = var_f0_475;
@@ -315,7 +315,6 @@ void LoadLevel_Init() {
 #endif
 
 void LoadLevel_FreeResources() {
-    MKHeap *temp_r3_584;
     UIStringTable *temp_r30_570;
     void **temp_r31_580;
 
@@ -323,9 +322,9 @@ void LoadLevel_FreeResources() {
     if ((void **) pResidentLSSystem != NULL) {
         M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **), 0x24)(pResidentLSSystem);
         temp_r31_580 = pResidentLSSystem;
-        temp_r3_584 = ((MKHeap *) (M2C_FIELD(*pResidentLSSystem, MKHeap *(**)(void **), 0xC)(pResidentLSSystem)))->Current();
-        if (temp_r3_584 != NULL) {
-            ((MKHeap *) (temp_r3_584->Current()))->Free(temp_r31_580, NULL, 0);
+        M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **), 0xC)(pResidentLSSystem);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_580, NULL, 0);
         } else {
             free(temp_r31_580);
         }
@@ -340,10 +339,9 @@ void LoadLevel_LoadResources() {
     s32 spC;
     s32 sp8;
     MCLoadCheckScreen *temp_r3_627;
-    MKHeap *temp_r3_640;
-    MKHeap *temp_r3_645;
     UIObject *var_r31_653;
     UIObjectDescriptor *var_r4_617;
+    UIStringTable *temp_r30_642;
     s32 temp_r31_644;
     void **temp_r3_675;
 
@@ -358,11 +356,10 @@ loop_3:
         goto loop_3;
     }
     residentLSStrings.Init(0xC0);
-    temp_r3_640 = UIStringTable_SetCurrent(&residentLSStrings);
+    temp_r30_642 = UIStringTable_SetCurrent(&residentLSStrings);
     temp_r31_644 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
-    temp_r3_645 = temp_r3_640->Current();
-    if (temp_r3_645 != NULL) {
-        var_r31_653 = ((MKHeap *) (temp_r3_645->Current()))->Alloc(temp_r31_644, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r31_653 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_644, NULL, 0);
     } else {
         var_r31_653 = malloc(temp_r31_644);
     }
@@ -378,7 +375,7 @@ loop_3:
         spC = 0;
         M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pResidentLSSystem, &sp8);
     }
-    UIStringTable_SetCurrent((UIStringTable *) temp_r3_640);
+    UIStringTable_SetCurrent(temp_r30_642);
 }
 #endif
 

@@ -33,19 +33,15 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal use of non-static member
 void BirdCritter::Deinit() {
-    MKHeap *temp_r3_55;
-    MKHeap *temp_r3_85;
     s32 var_r30_68;
     s32 var_r31_69;
     void *temp_r31_54;
     void *temp_r31_82;
 
     temp_r31_54 = this->unk174;
-    temp_r3_55 = MKHeap::Current();
-    if (temp_r3_55 != NULL) {
-        ((MKHeap *) (temp_r3_55->Current()))->Free(temp_r31_54, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_54, NULL, 0);
     } else {
         free(temp_r31_54);
     }
@@ -60,9 +56,8 @@ loop_5:
     }
     temp_r31_82 = this->unk170;
     if (temp_r31_82 != NULL) {
-        temp_r3_85 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_85 != NULL) {
-            ((MKHeap *) (temp_r3_85->Current()))->Free(temp_r31_82, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_82, NULL, 0);
         } else {
             free(temp_r31_82);
         }
@@ -70,7 +65,6 @@ loop_5:
     this->unk170 = NULL;
     Critters::Deinit();
 }
-#endif
 
 void BirdCritter::Draw() {
     Matrix sp10;
@@ -819,15 +813,13 @@ loop_7:
 #endif
 
 s32 BirdCritter::LoadDone() {
-    MKHeap *temp_r3_1624;
     s32 temp_r31_1623;
     void *var_r3_1631;
 
     Critters::LoadDone();
     temp_r31_1623 = this->unk90 * 0x90;
-    temp_r3_1624 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1624 != NULL) {
-        var_r3_1631 = ((MKHeap *) (temp_r3_1624->Current()))->Alloc(temp_r31_1623, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1631 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1623, NULL, 0);
     } else {
         var_r3_1631 = malloc(temp_r31_1623);
     }
@@ -836,10 +828,8 @@ s32 BirdCritter::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_1671;
     MKIniLine *var_r30_1689;
     s32 temp_r31_1670;
-    s32 temp_r3_1667;
     s32 var_r31_1688;
     void *var_r3_1678;
 
@@ -847,12 +837,10 @@ s32 BirdCritter::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("Waypoints") != 0) {
-        temp_r3_1667 = arg0->GetNmbrOfSubLines();
-        this->unk178 = temp_r3_1667;
+        this->unk178 = arg0->GetNmbrOfSubLines();
         temp_r31_1670 = this->unk178 * 0x10;
-        temp_r3_1671 = ((MKHeap *) temp_r3_1667)->Current();
-        if (temp_r3_1671 != NULL) {
-            var_r3_1678 = ((MKHeap *) (temp_r3_1671->Current()))->Alloc(temp_r31_1670, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1678 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1670, NULL, 0);
         } else {
             var_r3_1678 = malloc(temp_r31_1670);
         }

@@ -22,7 +22,7 @@
 
 M2C_UNK free(s8 **);                                /* extern */
 s8 *malloc(M2C_UNK);                                /* extern */
-MKHeap *qsort(M2C_UNK, void (*)(void *, void *));   /* extern */
+M2C_UNK qsort(M2C_UNK, void (*)(void *, void *));   /* extern */
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern void **gMK;
 static s32 key_366;
@@ -246,8 +246,6 @@ MKPropCreationTable *MKSceneManager::CreateDescriptor(const char *arg0, MKPropCr
     MKIniLine *sp4C;
     s8 *spC;
     s8 *sp8;
-    MKHeap *temp_r3_613;
-    MKHeap *temp_r3_619;
     MKIni *temp_r30_491;
     MKIniLine *temp_r21_496;
     MKIniLine *temp_r3_541;
@@ -318,13 +316,12 @@ loop_9:
             }
             var_r21_586 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        temp_r3_613 = AddPropDescriptor(var_r21_586);
+        AddPropDescriptor(var_r21_586);
         if (var_r28_495 != NULL) {
             var_r21_586->unk0 = var_r28_495;
         } else {
-            temp_r3_619 = temp_r3_613->Current();
-            if (temp_r3_619 != NULL) {
-                var_r24_627 = ((MKHeap *) (temp_r3_619->Current()))->Alloc(0x20, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r24_627 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x20, NULL, 0);
             } else {
                 var_r24_627 = malloc(0x20);
             }
@@ -355,13 +352,11 @@ loop_31:
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKSceneManager::PropResolver_Deinit() {
-    MKHeap *temp_r3_691;
     s8 **temp_r31_690;
 
     temp_r31_690 = *MKSceneManager::pPropMapping;
-    temp_r3_691 = MKHeap::Current();
-    if (temp_r3_691 != NULL) {
-        ((MKHeap *) (temp_r3_691->Current()))->Free(temp_r31_690, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_690, NULL, 0);
     } else {
         free(temp_r31_690);
     }
@@ -497,16 +492,14 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKSceneManager::PropResolver_Init() {
-    MKHeap *temp_r3_893;
     s32 var_ctr_914;
     s32 var_r4_910;
     s8 *var_r3_901;
 
-    temp_r3_893 = MKHeap::Current();
-    if (temp_r3_893 != NULL) {
-        var_r3_901 = ((MKHeap *) (temp_r3_893->Current()))->Alloc(0xA000, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_901 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA000, NULL, 0);
     } else {
         var_r3_901 = malloc(0xA000);
     }
@@ -523,24 +516,19 @@ void MKSceneManager::PropResolver_Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKSceneManager::Deinit() {
-    MKHeap *temp_r3_937;
     s8 **temp_r31_936;
 
     temp_r31_936 = this->unkC;
-    temp_r3_937 = MKHeap::Current();
-    if (temp_r3_937 != NULL) {
-        ((MKHeap *) (temp_r3_937->Current()))->Free(temp_r31_936, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_936, NULL, 0);
         return;
     }
     free(temp_r31_936);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void MKSceneManager::Init(MKSceneManagerInit *arg0) {
-    MKHeap *temp_r3_1001;
     s8 *var_r3_1008;
 
     this->unk1C = arg0->unk30;
@@ -559,9 +547,9 @@ loop_2:
         this->unk20 += 1;
         goto loop_2;
     }
-    temp_r3_1001 = ((MKHeap *) (qsort(0xC, ComparePropCreatorFunc)))->Current();
-    if (temp_r3_1001 != NULL) {
-        var_r3_1008 = ((MKHeap *) (temp_r3_1001->Current()))->Alloc(0x400, NULL, 0);
+    qsort(0xC, ComparePropCreatorFunc);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1008 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
     } else {
         var_r3_1008 = malloc(0x400);
     }

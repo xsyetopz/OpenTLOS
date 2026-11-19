@@ -34,7 +34,6 @@ void SlimeTrailFXManager::Deinit() {
     MKHeap *temp_r0_43;
     MKHeap *temp_r0_62;
     MKHeap *temp_r3_22;
-    MKHeap *temp_r3_65;
     MKHeap *var_r31_39;
     MKHeap *var_r3_40;
     MKHeap *var_r4_38;
@@ -81,9 +80,8 @@ loop_16:
             var_r4_38 += 4;
             goto loop_16;
         }
-        temp_r3_65 = var_r3_40->Current();
-        if (temp_r3_65 != NULL) {
-            ((MKHeap *) (temp_r3_65->Current()))->Free(var_r31_39, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_39, NULL, 0);
         } else {
             free(var_r31_39);
         }
@@ -291,9 +289,8 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SlimeTrailFXManager::Init() {
-    MKHeap *temp_r3_421;
     MKHeap *temp_r3_443;
     MKHeap *temp_r3_449;
     MKHeap *temp_r3_457;
@@ -301,9 +298,8 @@ void SlimeTrailFXManager::Init() {
     MKHeap *var_r5_437;
     s32 var_ctr_441;
 
-    temp_r3_421 = MKHeap::Current();
-    if (temp_r3_421 != NULL) {
-        var_r3_428 = ((MKHeap *) (temp_r3_421->Current()))->Alloc(0x248, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_428 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x248, NULL, 0);
     } else {
         var_r3_428 = malloc(0x248);
     }
@@ -340,12 +336,10 @@ loop_10:
 #if 0 // DRAFT: illegal use of non-static member
 void SlimeTrailFX::Deinit() {
     MKHeap *temp_r31_491;
-    MKHeap *temp_r3_492;
 
     temp_r31_491 = this->unk14;
-    temp_r3_492 = MKHeap::Current();
-    if (temp_r3_492 != NULL) {
-        ((MKHeap *) (temp_r3_492->Current()))->Free(temp_r31_491, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_491, NULL, 0);
     } else {
         free(temp_r31_491);
     }
@@ -610,14 +604,12 @@ void SlimeTrailFX::Reset() {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SlimeTrailFX::Init() {
-    MKHeap *temp_r3_937;
     MKHeap *var_r3_944;
 
-    temp_r3_937 = MKHeap::Current();
-    if (temp_r3_937 != NULL) {
-        var_r3_944 = ((MKHeap *) (temp_r3_937->Current()))->Alloc(0x190, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_944 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
     } else {
         var_r3_944 = malloc(0x190);
     }

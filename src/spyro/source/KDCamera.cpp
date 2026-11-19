@@ -2484,7 +2484,7 @@ void KDCamera::SetLTW(const Matrix &arg0) {
 #endif
 
 f32 KDCamera::GetMoveYaw() {
-    return 3.1415927f + M2C_FIELD(this->unk138, f32 *, 4);
+    return 3.1415927f + M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x138), f32 *, 4);
 }
 
 KDCamera::KDCamera() {
@@ -2810,9 +2810,8 @@ s32 KDCamera::LoadDone() {
 
 #if 0 // DRAFT: illegal type
 void KDCamera::Deinit() {
-    MKHeap *temp_r0_5382;
-    MKHeap *temp_r3_5404;
     u32 temp_r0_5387;
+    void *temp_r0_5382;
     void *temp_r0_5401;
     void *var_r31_5378;
     void *var_r3_5379;
@@ -2840,7 +2839,7 @@ loop_3:
     temp_r0_5387 = M2C_FIELD(var_r3_5379, u32 *, -4);
     var_r3_5379 -= 4;
     if (temp_r0_5387 != 0U) {
-        temp_r0_5382 = var_r3_5379->unk0;
+        temp_r0_5382 = *var_r3_5379;
         if (temp_r0_5382 < var_r31_5378) {
             var_r31_5378 = temp_r0_5382;
         }
@@ -2856,9 +2855,8 @@ loop_9:
             var_r4_5377 += 4;
             goto loop_9;
         }
-        temp_r3_5404 = var_r3_5379->Current();
-        if (temp_r3_5404 != NULL) {
-            ((MKHeap *) (temp_r3_5404->Current()))->Free(var_r31_5378, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_5378, NULL, 0);
         } else {
             free(var_r31_5378);
         }
@@ -2896,7 +2894,6 @@ void KDCamera::Init() {
     KDCameraStateChangeRequest *temp_r4_5585;
     KDCameraStateStack *var_r0_5565;
     KDCollisionObject *temp_r4_5599;
-    MKHeap *temp_r3_5612;
     Matrix *temp_r3_5487;
     s32 *temp_r3_5635;
     s32 temp_r30_5604;
@@ -2905,7 +2902,6 @@ void KDCamera::Init() {
     s32 var_r5_5584;
     void *temp_r29_5675;
     void *temp_r30_5665;
-    void *temp_r3_5603;
     void *temp_r3_5642;
     void *temp_r3_5649;
     void *temp_r5_5465;
@@ -3000,14 +2996,12 @@ void KDCamera::Init() {
     temp_r4_5599 = this->unk200;
     temp_r4_5599->unk240 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     temp_r4_5599->unk248 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    temp_r3_5603 = this->unk0;
-    temp_r30_5604 = M2C_FIELD(temp_r3_5603, s32 *, 0x6C);
+    temp_r30_5604 = M2C_FIELD(this->unk0, s32 *, 0x6C);
     if (temp_r30_5604 == 0) {
         this->unk210 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_5612 = ((MKHeap *) temp_r3_5603)->Current();
-        if (temp_r3_5612 != NULL) {
-            var_r3_5622 = ((MKHeap *) (temp_r3_5612->Current()))->Alloc(((temp_r30_5604 + 2) * 4) + (temp_r30_5604 * 8), NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_5622 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r30_5604 + 2) * 4) + (temp_r30_5604 * 8), NULL, 0);
         } else {
             var_r3_5622 = malloc(((temp_r30_5604 + 2) * 4) + (temp_r30_5604 * 8));
         }

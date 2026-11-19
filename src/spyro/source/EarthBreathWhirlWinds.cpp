@@ -204,7 +204,6 @@ void EarthBreathWhirlWinds::Deinit() {
     MKHeap *temp_r0_291;
     MKHeap *temp_r0_310;
     MKHeap *temp_r3_282;
-    MKHeap *temp_r3_313;
     MKHeap *var_r31_274;
     MKHeap *var_r31_287;
     MKHeap *var_r3_288;
@@ -245,9 +244,8 @@ loop_13:
             var_r4_286 += 4;
             goto loop_13;
         }
-        temp_r3_313 = var_r3_288->Current();
-        if (temp_r3_313 != NULL) {
-            ((MKHeap *) (temp_r3_313->Current()))->Free(var_r31_287, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_287, NULL, 0);
         } else {
             free(var_r31_287);
         }
@@ -747,7 +745,6 @@ void EarthBreathWhirlWinds::Init() {
     f32 spC;
     f32 sp8;
     MKHeap *temp_r30_1162;
-    MKHeap *temp_r3_1111;
     MKHeap *temp_r3_1133;
     MKHeap *temp_r3_1160;
     MKHeap *temp_r5_1139;
@@ -757,9 +754,8 @@ void EarthBreathWhirlWinds::Init() {
     s32 var_ctr_1131;
 
     MKProp::Init();
-    temp_r3_1111 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1111 != NULL) {
-        var_r3_1118 = ((MKHeap *) (temp_r3_1111->Current()))->Alloc(0xCF8, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1118 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xCF8, NULL, 0);
     } else {
         var_r3_1118 = malloc(0xCF8);
     }

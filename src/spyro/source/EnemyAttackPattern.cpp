@@ -66,305 +66,26 @@ extern s32 gViewSeed;
 extern EnemyDescriptor *pCurrEnemyDescriptor;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
 static DataMap dataMapEAPCondition[0x10] = {
-    { 0, .L_8036C63D },
-    { 1, .L_8036C647 },
-    { 2, .L_8036C65C },
-    { 3, .L_8036C672 },
-    { 4, .L_8036C688 },
-    { 5, .L_8036C69F },
-    { 6, .L_8036C6B4 },
-    { 7, .L_8036C6CA },
-    { 8, .L_8036C6E4 },
-    { 9, .L_8036C6FF },
-    { 0xA, .L_8036C70F },
-    { 0xB, .L_8036C720 },
-    { 0xC, .L_8036C733 },
-    { 0xD, .L_8036C743 },
-    { 0xE, .L_8036C74E },
+    { 0, "None" },
+    { 1, "InsideDistRange" },
+    { 2, "OutsideDistRange" },
+    { 3, "InsideAngleRange" },
+    { 4, "OutsideAngleRange" },
+    { 5, "OnPrevAttackHit" },
+    { 6, "OnPrevAttackMiss" },
+    { 7, "InDefensiveThreshold" },
+    { 8, "OutDefensiveThreshold" },
+    { 9, "OnHitDelay" },
+    { 0xA, "OnMissDelay" },
+    { 0xB, "OutsideRegion" },
+    { 0xC, "OutsideLOS" },
+    { 0xD, "OnHit" },
+    { 0xE, "NotOnScreen" },
     { 0, NULL },
 };
 #endif
-#if 0 // DRAFT: declaration syntax error
-static s8 .L_8036C63D[0xA] = { 0x4E, 0x6F, 0x6E, 0x65, 0, 0x45, 0x41, 0x50, 0x43, 0x5F }; /* const */
-static s8 .L_8036C647[0x15] = {
-    0x49,
-    0x6E,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C65C[0x16] = {
-    0x4F,
-    0x75,
-    0x74,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C672[0x16] = {
-    0x49,
-    0x6E,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x41,
-    0x6E,
-    0x67,
-    0x6C,
-    0x65,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C688[0x17] = {
-    0x4F,
-    0x75,
-    0x74,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x41,
-    0x6E,
-    0x67,
-    0x6C,
-    0x65,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C69F[0x15] = {
-    0x4F,
-    0x6E,
-    0x50,
-    0x72,
-    0x65,
-    0x76,
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x48,
-    0x69,
-    0x74,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C6B4[0x16] = {
-    0x4F,
-    0x6E,
-    0x50,
-    0x72,
-    0x65,
-    0x76,
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C6CA[0x1A] = {
-    0x49,
-    0x6E,
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x54,
-    0x68,
-    0x72,
-    0x65,
-    0x73,
-    0x68,
-    0x6F,
-    0x6C,
-    0x64,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C6E4[0x1B] = {
-    0x4F,
-    0x75,
-    0x74,
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x54,
-    0x68,
-    0x72,
-    0x65,
-    0x73,
-    0x68,
-    0x6F,
-    0x6C,
-    0x64,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C6FF[0x10] = {
-    0x4F,
-    0x6E,
-    0x48,
-    0x69,
-    0x74,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C70F[0x11] = {
-    0x4F,
-    0x6E,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C720[0x13] = {
-    0x4F,
-    0x75,
-    0x74,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x52,
-    0x65,
-    0x67,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C733[0x10] = {
-    0x4F,
-    0x75,
-    0x74,
-    0x73,
-    0x69,
-    0x64,
-    0x65,
-    0x4C,
-    0x4F,
-    0x53,
-    0,
-    0x45,
-    0x41,
-    0x50,
-    0x43,
-    0x5F,
-}; /* const */
-static s8 .L_8036C743[0xB] = { 0x4F, 0x6E, 0x48, 0x69, 0x74, 0, 0x45, 0x41, 0x50, 0x43, 0x5F }; /* const */
-static s8 .L_8036C74E[0xC] = { 0x4E, 0x6F, 0x74, 0x4F, 0x6E, 0x53, 0x63, 0x72, 0x65, 0x65, 0x6E, 0 }; /* const */
 
+#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match
 void EAPCondition::LoadLine(MKIniLine *arg0) {
     s32 temp_r0_27;
 
@@ -389,24 +110,20 @@ void EAPCondition::Init() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void EAPItem::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_90;
     MKIniLine *var_r30_83;
     s32 temp_r0_86;
     s32 temp_r31_89;
-    s32 temp_r3_84;
     s32 var_r29_112;
     s32 var_r31_113;
     void *var_r3_97;
 
     var_r30_83 = arg0->unkC->GetSubLine(arg0);
-    temp_r3_84 = arg0->GetNmbrOfSubLines();
-    this->unk8 = temp_r3_84;
+    this->unk8 = arg0->GetNmbrOfSubLines();
     temp_r0_86 = this->unk8;
     if (temp_r0_86 != 0) {
         temp_r31_89 = temp_r0_86 * 0x10;
-        temp_r3_90 = ((MKHeap *) temp_r3_84)->Current();
-        if (temp_r3_90 != NULL) {
-            var_r3_97 = ((MKHeap *) (temp_r3_90->Current()))->Alloc(temp_r31_89, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_97 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_89, NULL, 0);
         } else {
             var_r3_97 = malloc(temp_r31_89);
         }
@@ -427,16 +144,13 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void EAPItem::Deinit() {
-    MKHeap *temp_r3_151;
     void *temp_r31_148;
 
     temp_r31_148 = this->unk4;
     if (temp_r31_148 != NULL) {
-        temp_r3_151 = MKHeap::Current();
-        if (temp_r3_151 != NULL) {
-            ((MKHeap *) (temp_r3_151->Current()))->Free(temp_r31_148, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_148, NULL, 0);
         } else {
             free(temp_r31_148);
         }
@@ -445,7 +159,6 @@ void EAPItem::Deinit() {
     this->unk4 = NULL;
     this->unk8 = 0;
 }
-#endif
 
 void EAPItem::Init() {
     this->unk0 = NULL;
@@ -454,24 +167,20 @@ void EAPItem::Init() {
 }
 
 void EnemyAttackPattern::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_205;
     MKIniLine *var_r30_198;
     s32 temp_r0_201;
     s32 temp_r31_204;
-    s32 temp_r3_199;
     s32 var_r29_220;
     s32 var_r31_221;
     void *var_r3_212;
 
     var_r30_198 = arg0->unkC->GetSubLine(arg0);
-    temp_r3_199 = arg0->GetNmbrOfSubLines();
-    this->unk4 = temp_r3_199;
+    this->unk4 = arg0->GetNmbrOfSubLines();
     temp_r0_201 = this->unk4;
     if (temp_r0_201 != 0) {
         temp_r31_204 = temp_r0_201 * 0xC;
-        temp_r3_205 = ((MKHeap *) temp_r3_199)->Current();
-        if (temp_r3_205 != NULL) {
-            var_r3_212 = ((MKHeap *) (temp_r3_205->Current()))->Alloc(temp_r31_204, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_212 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_204, NULL, 0);
         } else {
             var_r3_212 = malloc(temp_r31_204);
         }
@@ -491,7 +200,6 @@ loop_7:
 }
 
 void EnemyAttackPattern::Deinit() {
-    MKHeap *temp_r3_273;
     s32 var_r30_259;
     s32 var_r31_260;
     void *temp_r31_272;
@@ -507,9 +215,8 @@ loop_3:
             goto loop_3;
         }
         temp_r31_272 = this->unk0;
-        temp_r3_273 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_273 != NULL) {
-            ((MKHeap *) (temp_r3_273->Current()))->Free(temp_r31_272, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_272, NULL, 0);
         } else {
             free(temp_r31_272);
         }
@@ -524,12 +231,10 @@ void EnemyAttackPattern::Init() {
 }
 
 void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
-    MKHeap *temp_r3_328;
     MKIniLine *temp_r0_318;
     MKIniLine *var_r30_321;
     s32 temp_r0_324;
     s32 temp_r31_327;
-    s32 temp_r3_322;
     s32 var_r29_343;
     s32 var_r31_344;
     void *var_r3_335;
@@ -537,14 +242,12 @@ void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
     temp_r0_318 = arg1->unkC->GetSubLine(arg1);
     pCurrEnemyDescriptor = arg0;
     var_r30_321 = temp_r0_318;
-    temp_r3_322 = arg1->GetNmbrOfSubLines();
-    this->unk4 = temp_r3_322;
+    this->unk4 = arg1->GetNmbrOfSubLines();
     temp_r0_324 = this->unk4;
     if (temp_r0_324 != 0) {
         temp_r31_327 = temp_r0_324 * 8;
-        temp_r3_328 = ((MKHeap *) temp_r3_322)->Current();
-        if (temp_r3_328 != NULL) {
-            var_r3_335 = ((MKHeap *) (temp_r3_328->Current()))->Alloc(temp_r31_327, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_335 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_327, NULL, 0);
         } else {
             var_r3_335 = malloc(temp_r31_327);
         }
@@ -565,7 +268,6 @@ loop_7:
 }
 
 void EAPManagerDescriptor::Deinit() {
-    MKHeap *temp_r3_398;
     s32 var_r30_384;
     s32 var_r31_385;
     void *temp_r31_397;
@@ -581,9 +283,8 @@ loop_3:
             goto loop_3;
         }
         temp_r31_397 = this->unk0;
-        temp_r3_398 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_398 != NULL) {
-            ((MKHeap *) (temp_r3_398->Current()))->Free(temp_r31_397, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_397, NULL, 0);
         } else {
             free(temp_r31_397);
         }

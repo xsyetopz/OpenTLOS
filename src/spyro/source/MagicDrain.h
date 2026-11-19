@@ -32,7 +32,7 @@ public:
     virtual void Collided(MKCollisionResult &);
     MagicDrain(void);
     void SetDefaults(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
     /* 0x150 */ MKVector3* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ u8 unk158;

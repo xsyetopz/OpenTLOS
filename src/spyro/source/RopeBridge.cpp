@@ -46,7 +46,7 @@
 #include <m2c_macros.h>
 
 void *__construct_new_array();                      /* extern */
-MKHeap *__destroy_new_array(void *, RopeBridge::BridgePiece *(*)(RopeBridge::BridgePiece *, s16)); /* extern */
+M2C_UNK __destroy_new_array(void *, RopeBridge::BridgePiece *(*)(RopeBridge::BridgePiece *, s16)); /* extern */
 f64 atan2(void *, f32, f32);                        /* extern */
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
@@ -1473,7 +1473,7 @@ void *RopeBridge::Update() {
     temp_f2_2322 = this->unk19C;
     if (temp_f2_2322 != 1.0f) {
         var_f31_2327 = (1.5f * gUpdateTimeDelta) + temp_f2_2322;
-        ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+        Level::GetWorldInfo();
         if (var_f31_2327 < 1.0f) {
 
         } else {
@@ -2085,7 +2085,6 @@ s32 RopeBridge::LoadDone() {
     f32 sp18;
     f64 sp10;
     f32 sp8;
-    MKHeap *temp_r3_3432;
     f32 temp_f3_3406;
     f32 var_f4_3326;
     f64 temp_f1_3329;
@@ -2096,7 +2095,6 @@ s32 RopeBridge::LoadDone() {
     s32 temp_r25_3470;
     s32 temp_r27_3431;
     s32 temp_r3_3358;
-    s32 temp_r3_3429;
     s32 var_r0_3368;
     s32 var_r29_3449;
     s32 var_r31_3448;
@@ -2158,11 +2156,9 @@ s32 RopeBridge::LoadDone() {
     this->unk18C = temp_f3_3406 * (this->unk190 / (temp_f3_3406 * (f32) (this->unk188 + 1)));
     operator new[]((this->unk188 * 0x50) + 0x10, NULL, 0);
     this->unk184 = __construct_new_array();
-    temp_r3_3429 = this->unk188;
-    temp_r27_3431 = (temp_r3_3429 + 1) * 0x48;
-    temp_r3_3432 = ((MKHeap *) temp_r3_3429)->Current();
-    if (temp_r3_3432 != NULL) {
-        var_r3_3439 = ((MKHeap *) (temp_r3_3432->Current()))->Alloc(temp_r27_3431, NULL, 0);
+    temp_r27_3431 = (this->unk188 + 1) * 0x48;
+    if (MKHeap::Current() != NULL) {
+        var_r3_3439 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3431, NULL, 0);
     } else {
         var_r3_3439 = malloc(temp_r27_3431);
     }
@@ -2258,24 +2254,19 @@ s32 RopeBridge::LoadLine(MKIniLine *arg0) {
 void RopeBridge::Deinit() {
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_3805;
     MKModel *temp_r3_3782;
-    RopeBridge *temp_r31_3756;
-    RopeBridge *var_r3_0;
     s32 var_r26_3761;
     void *temp_r0_3757;
     void *temp_r28_3802;
     void *temp_r3_3770;
     void *var_r27_3760;
 
-    var_r3_0 = this;
-    temp_r31_3756 = var_r3_0;
-    temp_r0_3757 = var_r3_0->unk184;
+    temp_r0_3757 = this->unk184;
     if (temp_r0_3757 != NULL) {
         var_r27_3760 = temp_r0_3757;
         var_r26_3761 = 0;
 loop_8:
-        if (var_r26_3761 < (s32) temp_r31_3756->unk188) {
+        if (var_r26_3761 < (s32) this->unk188) {
 loop_4:
             if (M2C_FIELD(var_r27_3760, void **, 0x40) != (void *) (((u8 *) var_r27_3760) + 0x20)) {
                 temp_r3_3770 = M2C_FIELD(M2C_FIELD(var_r27_3760, void **, 0x40), void **, 0x18);
@@ -2293,20 +2284,19 @@ loop_4:
             var_r27_3760 += 0x50;
             goto loop_8;
         }
-        var_r3_0 = __destroy_new_array(temp_r31_3756->unk184, &RopeBridge::BridgePiece::~BridgePiece);
-        temp_r31_3756->unk184 = NULL;
+        __destroy_new_array(this->unk184, &RopeBridge::BridgePiece::~BridgePiece);
+        this->unk184 = NULL;
     }
-    temp_r28_3802 = temp_r31_3756->unk180;
+    temp_r28_3802 = this->unk180;
     if (temp_r28_3802 != NULL) {
-        temp_r3_3805 = ((MKHeap *) var_r3_0)->Current();
-        if (temp_r3_3805 != NULL) {
-            ((MKHeap *) (temp_r3_3805->Current()))->Free(temp_r28_3802, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_3802, NULL, 0);
         } else {
             free(temp_r28_3802);
         }
-        temp_r31_3756->unk180 = NULL;
+        this->unk180 = NULL;
     }
-    ((MKProp *) temp_r31_3756)->MKProp::Deinit();
+    MKProp::Deinit();
 }
 #endif
 

@@ -57,9 +57,8 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
 
 #if 0 // DRAFT: illegal type
 void ElecZapCrystal::Deinit() {
-    MKHeap *temp_r0_73;
-    MKHeap *temp_r3_95;
     u32 temp_r0_78;
+    void *temp_r0_73;
     void *temp_r0_92;
     void *var_r31_69;
     void *var_r3_70;
@@ -72,7 +71,7 @@ loop_3:
     temp_r0_78 = M2C_FIELD(var_r3_70, u32 *, -4);
     var_r3_70 -= 4;
     if (temp_r0_78 != 0U) {
-        temp_r0_73 = var_r3_70->unk0;
+        temp_r0_73 = *var_r3_70;
         if (temp_r0_73 < var_r31_69) {
             var_r31_69 = temp_r0_73;
         }
@@ -88,9 +87,8 @@ loop_9:
             var_r4_68 += 4;
             goto loop_9;
         }
-        temp_r3_95 = var_r3_70->Current();
-        if (temp_r3_95 != NULL) {
-            ((MKHeap *) (temp_r3_95->Current()))->Free(var_r31_69, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_69, NULL, 0);
         } else {
             free(var_r31_69);
         }
@@ -319,7 +317,6 @@ s32 ElecZapCrystal::LoadDone() {
 
 #if 0 // DRAFT: illegal type
 void ElecZapCrystal::Init() {
-    MKHeap *temp_r3_530;
     s32 var_ctr_550;
     void *temp_r3_552;
     void *temp_r3_558;
@@ -327,9 +324,8 @@ void ElecZapCrystal::Init() {
     void *var_r5_546;
 
     KDProp::Init();
-    temp_r3_530 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_530 != NULL) {
-        var_r3_537 = ((MKHeap *) (temp_r3_530->Current()))->Alloc(0x88, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_537 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x88, NULL, 0);
     } else {
         var_r3_537 = malloc(0x88);
     }

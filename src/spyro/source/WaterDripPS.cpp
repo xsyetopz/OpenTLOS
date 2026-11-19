@@ -1122,16 +1122,13 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void WaterDripPS::Deinit() {
-    MKHeap *temp_r3_1733;
     void *temp_r31_1730;
 
     temp_r31_1730 = this->unk4C;
     if (temp_r31_1730 != NULL) {
-        temp_r3_1733 = MKHeap::Current();
-        if (temp_r3_1733 != NULL) {
-            ((MKHeap *) (temp_r3_1733->Current()))->Free(temp_r31_1730, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1730, NULL, 0);
         } else {
             free(temp_r31_1730);
         }
@@ -1139,16 +1136,13 @@ void WaterDripPS::Deinit() {
     }
     MKProp::Deinit();
 }
-#endif
 
 void WaterDripPS::Init() {
-    MKHeap *temp_r3_1767;
     void *var_r3_1774;
 
     MKProp::Init();
-    temp_r3_1767 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1767 != NULL) {
-        var_r3_1774 = ((MKHeap *) (temp_r3_1767->Current()))->Alloc(0x6E0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1774 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x6E0, NULL, 0);
     } else {
         var_r3_1774 = malloc(0x6E0);
     }

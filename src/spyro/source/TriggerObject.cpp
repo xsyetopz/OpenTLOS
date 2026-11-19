@@ -107,21 +107,17 @@ loop_6:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
-    MKHeap *temp_r3_174;
     MKIniLine *var_r28_192;
     MKVector3 *var_r3_181;
     s32 temp_r29_173;
-    s32 temp_r3_170;
     s32 var_r30_194;
 
     TriggerObject::LoadLine(arg1);
     if (arg1->IsField(arg0) != 0) {
-        temp_r3_170 = arg1->GetNmbrOfSubLines();
-        this->unk80 = temp_r3_170;
+        this->unk80 = arg1->GetNmbrOfSubLines();
         temp_r29_173 = this->unk80 * 0x10;
-        temp_r3_174 = ((MKHeap *) temp_r3_170)->Current();
-        if (temp_r3_174 != NULL) {
-            var_r3_181 = ((MKHeap *) (temp_r3_174->Current()))->Alloc(temp_r29_173, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_181 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_173, NULL, 0);
         } else {
             var_r3_181 = malloc(temp_r29_173);
         }
@@ -142,20 +138,16 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void TriggerPolyObject::Deinit() {
-    MKHeap *temp_r3_234;
     MKVector3 *temp_r31_233;
 
     temp_r31_233 = this->unk84;
-    temp_r3_234 = MKHeap::Current();
-    if (temp_r3_234 != NULL) {
-        ((MKHeap *) (temp_r3_234->Current()))->Free(temp_r31_233, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_233, NULL, 0);
         return;
     }
     free(temp_r31_233);
 }
-#endif
 
 void TriggerPolyObject::Init() {
     TriggerObject::Init();
@@ -260,9 +252,8 @@ loop_17:
     return this->unk84;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void TriggerPlaneGroupObject::LoadDone() {
-    MKHeap *temp_r3_567;
     MKVector3 *var_r3_574;
     TriggerPlaneObject ***temp_r3_589;
     TriggerPlaneObject ***temp_r3_595;
@@ -270,9 +261,8 @@ void TriggerPlaneGroupObject::LoadDone() {
     s32 var_ctr_587;
 
     this->unk84 = 0;
-    temp_r3_567 = MKHeap::Current();
-    if (temp_r3_567 != NULL) {
-        var_r3_574 = ((MKHeap *) (temp_r3_567->Current()))->Alloc(0x108, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_574 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x108, NULL, 0);
     } else {
         var_r3_574 = malloc(0x108);
     }
@@ -296,7 +286,6 @@ void TriggerPlaneGroupObject::LoadDone() {
 
 #if 0 // DRAFT: type mismatch
 void TriggerPlaneGroupObject::Deinit() {
-    MKHeap *temp_r3_642;
     TriggerPlaneObject ***var_r31_616;
     TriggerPlaneObject ***var_r3_617;
     TriggerPlaneObject ***var_r4_615;
@@ -327,9 +316,8 @@ loop_9:
             var_r4_615 += 4;
             goto loop_9;
         }
-        temp_r3_642 = ((MKHeap *) var_r3_617)->Current();
-        if (temp_r3_642 != NULL) {
-            ((MKHeap *) (temp_r3_642->Current()))->Free(var_r31_616, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_616, NULL, 0);
         } else {
             free((MKVector3 *) var_r31_616);
         }

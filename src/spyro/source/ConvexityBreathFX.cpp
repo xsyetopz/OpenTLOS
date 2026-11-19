@@ -463,7 +463,6 @@ loop_32:
 
 #if 0 // DRAFT: type mismatch
 void ConvexityBreathFX::Deinit() {
-    MKHeap *temp_r3_835;
     Matrix **var_r31_809;
     Matrix **var_r3_810;
     Matrix **var_r4_808;
@@ -496,9 +495,8 @@ loop_9:
             var_r4_808 += 4;
             goto loop_9;
         }
-        temp_r3_835 = ((MKHeap *) var_r3_810)->Current();
-        if (temp_r3_835 != NULL) {
-            ((MKHeap *) (temp_r3_835->Current()))->Free(var_r31_809, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_809, NULL, 0);
         } else {
             free(var_r31_809);
         }
@@ -837,7 +835,6 @@ void ConvexityBreathFX::Init() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKHeap *temp_r3_1473;
     MKModel *temp_r3_1523;
     Matrix **temp_r3_1495;
     Matrix **temp_r4_1501;
@@ -862,9 +859,8 @@ void ConvexityBreathFX::Init() {
     sp50.unk38 = (f32) sp48;
     sp50.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(this->unk114, &sp50);
-    temp_r3_1473 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1473 != NULL) {
-        var_r3_1480 = ((MKHeap *) (temp_r3_1473->Current()))->Alloc(0x4F4, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1480 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x4F4, NULL, 0);
     } else {
         var_r3_1480 = malloc(0x4F4);
     }

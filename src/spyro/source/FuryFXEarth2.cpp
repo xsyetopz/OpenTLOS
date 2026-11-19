@@ -707,7 +707,7 @@ void FuryFXEarth2::SetDefaults() {
     f32 spC;
     f32 sp8;
 
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unk94 = 0;
     this->unk98 = 0.0f;
     this->unkC4 = 1.0f;
@@ -725,10 +725,9 @@ void FuryFXEarth2::SetDefaults() {
 
 #if 0 // DRAFT: illegal type
 void FuryFXEarth2::Deinit() {
-    MKHeap *temp_r0_1224;
-    MKHeap *temp_r3_1246;
     ManagedLight *temp_r4_1261;
     u32 temp_r0_1229;
+    void *temp_r0_1224;
     void *temp_r0_1243;
     void *var_r31_1220;
     void *var_r3_1221;
@@ -745,7 +744,7 @@ loop_3:
     temp_r0_1229 = M2C_FIELD(var_r3_1221, u32 *, -4);
     var_r3_1221 -= 4;
     if (temp_r0_1229 != 0U) {
-        temp_r0_1224 = var_r3_1221->unk0;
+        temp_r0_1224 = *var_r3_1221;
         if (temp_r0_1224 < var_r31_1220) {
             var_r31_1220 = temp_r0_1224;
         }
@@ -761,9 +760,8 @@ loop_9:
             var_r4_1219 += 4;
             goto loop_9;
         }
-        temp_r3_1246 = var_r3_1221->Current();
-        if (temp_r3_1246 != NULL) {
-            ((MKHeap *) (temp_r3_1246->Current()))->Free(var_r31_1220, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1220, NULL, 0);
         } else {
             free(var_r31_1220);
         }
@@ -1281,8 +1279,6 @@ loop_5:
 
 #if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void FuryFXEarth2::Init() {
-    MKHeap *temp_r3_2165;
-    MKModel *temp_r3_2163;
     s32 var_ctr_2185;
     void *temp_r3_2187;
     void *temp_r3_2193;
@@ -1295,11 +1291,9 @@ void FuryFXEarth2::Init() {
     this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
     this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);
     this->unkB8 = MKModel_Create("FX0014_RockChunks", NULL, 2, NULL);
-    temp_r3_2163 = MKModel_Create("P9011_FireRockLavaSmall", NULL, 2, NULL);
-    this->unkBC = temp_r3_2163;
-    temp_r3_2165 = ((MKHeap *) temp_r3_2163)->Current();
-    if (temp_r3_2165 != NULL) {
-        var_r3_2172 = ((MKHeap *) (temp_r3_2165->Current()))->Alloc(0x1070, NULL, 0);
+    this->unkBC = MKModel_Create("P9011_FireRockLavaSmall", NULL, 2, NULL);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2172 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1070, NULL, 0);
     } else {
         var_r3_2172 = malloc(0x1070);
     }

@@ -477,15 +477,13 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
 #endif
 
 void Coronas::Deinit() {
-    MKHeap *temp_r3_875;
     void *temp_r31_872;
 
     MKProp::Deinit();
     temp_r31_872 = this->unk4C;
     if (temp_r31_872 != NULL) {
-        temp_r3_875 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_875 != NULL) {
-            ((MKHeap *) (temp_r3_875->Current()))->Free(temp_r31_872, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_872, NULL, 0);
         } else {
             free(temp_r31_872);
         }
@@ -503,7 +501,6 @@ f32 Coronas::Resolve() {
 
 #if 0 // DRAFT: illegal type
 s32 Coronas::LoadDone() {
-    MKHeap *temp_r3_926;
     s32 temp_r0_953;
     s32 temp_r4_950;
     s32 temp_r5_949;
@@ -517,9 +514,8 @@ s32 Coronas::LoadDone() {
     void *var_r3_933;
 
     MKProp::LoadDone();
-    temp_r3_926 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_926 != NULL) {
-        var_r3_933 = ((MKHeap *) (temp_r3_926->Current()))->Alloc(0xF50, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_933 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF50, NULL, 0);
     } else {
         var_r3_933 = malloc(0xF50);
     }

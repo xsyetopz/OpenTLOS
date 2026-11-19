@@ -1003,7 +1003,7 @@ void EarthBoss::SetDefaults() {
     RestartStage();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EarthBoss *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg2, float arg3, const MKVector3 &arg4) {
     f64 sp20;
     f64 sp18;
@@ -1013,10 +1013,9 @@ void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg
     f32 sp8;
     MKCollisionInfo *temp_r3_1675;
     MKCollisionInfo *var_r3_1663;
-    MKHeap *temp_r3_1646;
-    MKHeap *temp_r3_1656;
     s32 temp_r30_1628;
     void *temp_r29_1669;
+    void *temp_r3_1646;
 
     temp_r30_1628 = arg0 * 0x48;
     M2C_FIELD((this + temp_r30_1628), s8 *, 0xB54) = 1;
@@ -1028,9 +1027,8 @@ void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg
     M2C_FIELD(temp_r3_1646, f32 *, 0xB20) = 0.0f;
     M2C_FIELD(temp_r3_1646, f64 *, 0xB28) = (f64) M2C_FIELD(&arg4, f64 *, 0);
     M2C_FIELD(temp_r3_1646, f64 *, 0xB30) = (f64) M2C_FIELD(&arg4, f64 *, 8);
-    temp_r3_1656 = temp_r3_1646->Current();
-    if (temp_r3_1656 != NULL) {
-        var_r3_1663 = ((MKHeap *) (temp_r3_1656->Current()))->Alloc(0x10, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1663 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_1663 = malloc(0x10);
     }
@@ -1152,7 +1150,6 @@ s32 EarthBoss::LoadLine(MKIniLine *arg0) {
 #if 0 // DRAFT: illegal implicit conversion from 'EarthBoss' to
 void EarthBoss::Deinit() {
     MKAnimScript *temp_r30_1949;
-    MKHeap *temp_r3_1950;
     s32 var_r29_1945;
     s32 var_r31_1946;
 
@@ -1161,9 +1158,8 @@ void EarthBoss::Deinit() {
     var_r31_1946 = 0;
     do {
         temp_r30_1949 = *(this + (var_r31_1946 + 0xB10));
-        temp_r3_1950 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1950 != NULL) {
-            ((MKHeap *) (temp_r3_1950->Current()))->Free(temp_r30_1949, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1949, NULL, 0);
         } else {
             free(temp_r30_1949);
         }
@@ -3109,19 +3105,15 @@ void *EarthBossArm::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void EarthBossArm::Deinit() {
     MKAnimScript *temp_r31_5346;
     MKAnimScript *temp_r31_5371;
-    MKHeap *temp_r3_5349;
-    MKHeap *temp_r3_5372;
     MKMaterial *temp_r3_5393;
 
     temp_r31_5346 = this->unk36C;
     if (temp_r31_5346 != NULL) {
-        temp_r3_5349 = MKHeap::Current();
-        if (temp_r3_5349 != NULL) {
-            ((MKHeap *) (temp_r3_5349->Current()))->Free(temp_r31_5346, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5346, NULL, 0);
         } else {
             free(temp_r31_5346);
         }
@@ -3132,9 +3124,8 @@ void EarthBossArm::Deinit() {
     this->unk364 = 0;
     this->unk374->Deinit();
     temp_r31_5371 = this->unk374;
-    temp_r3_5372 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_5372 != NULL) {
-        ((MKHeap *) (temp_r3_5372->Current()))->Free(temp_r31_5371, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_5371, NULL, 0);
     } else {
         free(temp_r31_5371);
     }
@@ -3149,7 +3140,6 @@ void EarthBossArm::Deinit() {
     }
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void EarthBossArm::InitBoneData(int arg0, const char *arg1) {
@@ -3202,17 +3192,13 @@ void EarthBossArm::Init2(EarthBoss *arg0) {
 s32 EarthBossArm::LoadDone() {
     MKCollisionInfo *var_r3_5565;
     MKHeap *temp_r31_5547;
-    MKHeap *temp_r3_5556;
-    MKHeap *temp_r3_5558;
 
     MKProp::LoadDone();
     temp_r31_5547 = ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName();
     this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), (s8 *) temp_r31_5547, 2, NULL);
-    temp_r3_5556 = MKModel_GetWorldMatrix(this->unk4);
-    this->unk8 = temp_r3_5556;
-    temp_r3_5558 = temp_r3_5556->Current();
-    if (temp_r3_5558 != NULL) {
-        var_r3_5565 = ((MKHeap *) (temp_r3_5558->Current()))->Alloc(0x58, NULL, 0);
+    this->unk8 = MKModel_GetWorldMatrix(this->unk4);
+    if (MKHeap::Current() != NULL) {
+        var_r3_5565 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0);
     } else {
         var_r3_5565 = malloc(0x58);
     }
@@ -3227,7 +3213,6 @@ s32 EarthBossArm::LoadDone() {
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EarthBossArm::Init() {
     MKCollisionInfo *var_r3_5620;
-    MKHeap *temp_r3_5613;
 
     MKProp::Init();
     this->unk370 = NULL;
@@ -3236,9 +3221,8 @@ void EarthBossArm::Init() {
     M2C_FIELD(this, f32 *, 0x378) = 0.0f;
     M2C_FIELD(this, f32 *, 0x37C) = 0.0f;
     M2C_FIELD(this, f32 *, 0x380) = 0.0f;
-    temp_r3_5613 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_5613 != NULL) {
-        var_r3_5620 = ((MKHeap *) (temp_r3_5613->Current()))->Alloc(0x140, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_5620 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x140, NULL, 0);
     } else {
         var_r3_5620 = malloc(0x140);
     }

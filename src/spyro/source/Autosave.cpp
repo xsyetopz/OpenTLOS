@@ -115,7 +115,6 @@ void Autosave_ConfirmCard() {
 void Autosave_Update() {
     f32 temp_f1_236;
     f32 temp_f1_307;
-    u8 temp_r3_243;
     void *temp_r7_341;
 
     if ((s32) autosave_state == 4) {
@@ -134,8 +133,7 @@ void Autosave_Update() {
             autosaveIconThrob = 0.0f;
         }
     }
-    temp_r3_243 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update();
-    if (temp_r3_243 == 0) {
+    if (KDMemoryCard::Update() == 0) {
         switch ((s32) autosave_state) {             /* irregular */
         case 4:
         case 0:
@@ -174,7 +172,7 @@ void Autosave_Update() {
             Autosave_ConfirmCard();
             return;
         case 3:
-            if (((KDMemoryCard *) temp_r3_243)->WasErrorDuringLast() != 0) {
+            if (KDMemoryCard::WasErrorDuringLast() != 0) {
                 Autosave_Error();
                 return;
             }
@@ -255,13 +253,11 @@ void Autosave_LoadResources() {
 #endif
 
 void Autosave_DeinitModule() {
-    MKHeap *temp_r3_507;
     void *temp_r31_506;
 
     temp_r31_506 = pGameDataCopy;
-    temp_r3_507 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_507 != NULL) {
-        ((MKHeap *) (temp_r3_507->Current()))->Free(temp_r31_506, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_506, NULL, 0);
     } else {
         free(temp_r31_506);
     }
@@ -270,7 +266,6 @@ void Autosave_DeinitModule() {
 }
 
 void Autosave_InitModule() {
-    MKHeap *temp_r3_548;
     s32 temp_r3_545;
     void *var_r3_555;
 
@@ -280,9 +275,8 @@ void Autosave_InitModule() {
     autosaveIconOffset = 0.0f;
     temp_r3_545 = ((GameData *) GameData::gameData)->GetGameDataSize();
     gameDataSize = temp_r3_545;
-    temp_r3_548 = ((MKHeap *) temp_r3_545)->Current();
-    if (temp_r3_548 != NULL) {
-        var_r3_555 = ((MKHeap *) (temp_r3_548->Current()))->Alloc(temp_r3_545, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_555 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_545, NULL, 0);
     } else {
         var_r3_555 = malloc(temp_r3_545);
     }

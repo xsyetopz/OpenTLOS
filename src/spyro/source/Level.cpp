@@ -148,8 +148,8 @@
 
 s32 *__construct_new_array();                       /* extern */
 s32 atoi(s8 *);                                     /* extern */
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(s32);                                /* extern */
+M2C_UNK free(MKIni *);                              /* extern */
+MKIni *malloc(s32);                                 /* extern */
 s32 sscanf(s8 *, s8 *, f32 *, Level *);             /* extern */
 s32 stricmp(Level *, s8 *);                         /* extern */
 extern s32 BONE_BLUR_FX_NODE_POOL_MAX_ALLOCS;
@@ -163,7 +163,7 @@ extern s8 gAssertBool;
 extern Pool<BoneBlurFX::BlurNode> gBoneBlurFXPool;
 #endif
 extern M2C_UNK gCreationTable;
-extern MKHeap gEmptyPtrListDL;
+extern M2C_UNK gEmptyPtrListDL;
 extern GameStateMachine gGMState;
 extern GlowingPropManager gGlowingPropManager;
 extern void **gMK;
@@ -182,1575 +182,21 @@ static M2C_UNK pChunkPropQueue;                     /* unable to generate initia
 static M2C_UNK defaultLights;                       /* unable to generate initializer: unknown type */
 static M2C_UNK defaultWind;                         /* unable to generate initializer: unknown type */
 static M2C_UNK pSpawnerNames;                       /* unable to generate initializer: unknown type */
-static DataMap customMaterialUpdaterMap = { 0, .L_803584B7 };
+static DataMap customMaterialUpdaterMap = { 0, "CameraRelativeScroll" };
 #endif
 #if 0 // DRAFT: identifier 'pGlobalLevelName' redeclared
-static s8 *pGlobalLevelName = .L_803582BE;
+static s8 *pGlobalLevelName = "levels.ini";
 #endif
 #if 0 // DRAFT: identifier 'pGlobalLV3Name' redeclared
 static Level *pGlobalLV3Name = &.L_803582C9;
 #endif
 #if 0 // DRAFT: identifier 'pGlobalModelName' redeclared
-static s8 *pGlobalModelName = .L_803582CF;
+static s8 *pGlobalModelName = "global.model";
 #endif
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK defaultClip;                         /* unable to generate initializer: unknown type */
 
-static s8 .L_803582BE[0xB] = { 0x6C, 0x65, 0x76, 0x65, 0x6C, 0x73, 0x2E, 0x69, 0x6E, 0x69, 0 }; /* const */
 static Level .L_803582C9;                           /* type too large by 0xEA; unable to generate initializer: non-zero padding; const */
-static s8 .L_803582CF[0xD] = { 0x67, 0x6C, 0x6F, 0x62, 0x61, 0x6C, 0x2E, 0x6D, 0x6F, 0x64, 0x65, 0x6C, 0 }; /* const */
-static s8 .L_803584B7[0x60E] = {
-    0x43,
-    0x61,
-    0x6D,
-    0x65,
-    0x72,
-    0x61,
-    0x52,
-    0x65,
-    0x6C,
-    0x61,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0x53,
-    0x63,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6C,
-    0,
-    0x6F,
-    0x6E,
-    0x4C,
-    0x6F,
-    0x61,
-    0x64,
-    0,
-    0x6F,
-    0x6E,
-    0x55,
-    0x6E,
-    0x6C,
-    0x6F,
-    0x61,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x73,
-    0x75,
-    0x6E,
-    0,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0x53,
-    0x74,
-    0x65,
-    0x70,
-    0x46,
-    0x58,
-    0,
-    0x43,
-    0x6F,
-    0x72,
-    0x6F,
-    0x6E,
-    0x61,
-    0x73,
-    0,
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x4D,
-    0x61,
-    0x6E,
-    0x61,
-    0x67,
-    0x65,
-    0x72,
-    0,
-    0x43,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x44,
-    0x72,
-    0x69,
-    0x70,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x6D,
-    0x62,
-    0x65,
-    0x72,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x43,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0x43,
-    0x72,
-    0x75,
-    0x64,
-    0x50,
-    0x53,
-    0,
-    0x43,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x41,
-    0x73,
-    0x68,
-    0x65,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x42,
-    0x75,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x46,
-    0x58,
-    0,
-    0x46,
-    0x61,
-    0x69,
-    0x72,
-    0x79,
-    0x44,
-    0x61,
-    0x6E,
-    0x64,
-    0x72,
-    0x75,
-    0x66,
-    0x50,
-    0x53,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x41,
-    0x72,
-    0x63,
-    0x46,
-    0x58,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x44,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x46,
-    0x58,
-    0,
-    0x47,
-    0x65,
-    0x6D,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x68,
-    0x72,
-    0x61,
-    0x70,
-    0x6E,
-    0x65,
-    0x6C,
-    0x50,
-    0x53,
-    0,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x6F,
-    0x6F,
-    0x64,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x57,
-    0x6F,
-    0x6F,
-    0x64,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0x72,
-    0x69,
-    0x63,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0,
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-    0x47,
-    0x65,
-    0x6D,
-    0x4D,
-    0x61,
-    0x67,
-    0x69,
-    0x63,
-    0x46,
-    0x58,
-    0,
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x6D,
-    0x61,
-    0x6C,
-    0x6C,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x44,
-    0x72,
-    0x79,
-    0x49,
-    0x63,
-    0x65,
-    0x4D,
-    0x69,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x44,
-    0x79,
-    0x6E,
-    0x61,
-    0x6D,
-    0x69,
-    0x74,
-    0x65,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x57,
-    0x68,
-    0x69,
-    0x72,
-    0x6C,
-    0x57,
-    0x69,
-    0x6E,
-    0x64,
-    0x73,
-    0,
-    0x42,
-    0x6F,
-    0x6E,
-    0x65,
-    0x42,
-    0x6C,
-    0x75,
-    0x72,
-    0x46,
-    0x58,
-    0,
-    0x50,
-    0x75,
-    0x64,
-    0x64,
-    0x6C,
-    0x65,
-    0x53,
-    0x70,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0,
-    0x6F,
-    0x76,
-    0x65,
-    0x72,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x6D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x73,
-    0,
-    0x67,
-    0x6C,
-    0x6F,
-    0x62,
-    0x61,
-    0x6C,
-    0,
-    0x62,
-    0x46,
-    0x6F,
-    0x67,
-    0,
-    0x25,
-    0x73,
-    0x5F,
-    0x66,
-    0x6F,
-    0x67,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0,
-    0x25,
-    0x73,
-    0x5F,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0,
-    0x63,
-    0x61,
-    0x6D,
-    0x4C,
-    0x6F,
-    0x63,
-    0x6B,
-    0,
-    0x65,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0,
-    0x65,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x62,
-    0x53,
-    0x68,
-    0x6F,
-    0x77,
-    0x49,
-    0x6E,
-    0x4D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0x73,
-    0x66,
-    0x78,
-    0x4C,
-    0x69,
-    0x6D,
-    0x69,
-    0x74,
-    0,
-    0x45,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0x4E,
-    0x65,
-    0x61,
-    0x72,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0,
-    0x45,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0x46,
-    0x61,
-    0x72,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0,
-    0x45,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0x46,
-    0x4F,
-    0x56,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x47,
-    0x65,
-    0x6D,
-    0x73,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x73,
-    0,
-    0x63,
-    0x6F,
-    0x64,
-    0x65,
-    0,
-    0x74,
-    0x69,
-    0x74,
-    0x6C,
-    0x65,
-    0x49,
-    0x64,
-    0,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x62,
-    0x53,
-    0x68,
-    0x6F,
-    0x77,
-    0x49,
-    0x6E,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x4D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0x62,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x62,
-    0x4C,
-    0x6F,
-    0x63,
-    0x6B,
-    0x65,
-    0x64,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x62,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x69,
-    0x65,
-    0x73,
-    0x50,
-    0x75,
-    0x6C,
-    0x6C,
-    0x43,
-    0x61,
-    0x6D,
-    0x65,
-    0x72,
-    0x61,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x62,
-    0x41,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x77,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x4D,
-    0x61,
-    0x70,
-    0,
-    0x66,
-    0x6F,
-    0x67,
-    0x43,
-    0x6F,
-    0x6C,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x44,
-    0x69,
-    0x72,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x66,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x54,
-    0x68,
-    0x72,
-    0x65,
-    0x73,
-    0x68,
-    0x6F,
-    0x6C,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x78,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x45,
-    0x78,
-    0x70,
-    0x65,
-    0x72,
-    0x69,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-    0x67,
-    0x6C,
-    0x6F,
-    0x77,
-    0x2E,
-    0x77,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x36,
-    0x34,
-    0,
-    0x67,
-    0x6C,
-    0x6F,
-    0x77,
-    0x2E,
-    0x77,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x31,
-    0x32,
-    0x38,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x44,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x6C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x73,
-    0x2E,
-    0x61,
-    0x6D,
-    0x62,
-    0x69,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0,
-    0x65,
-    0x6E,
-    0x76,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0,
-    0x70,
-    0x72,
-    0x6F,
-    0x70,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0,
-    0x63,
-    0x6C,
-    0x69,
-    0x70,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0x73,
-    0,
-    0x66,
-    0x6F,
-    0x67,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0x73,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x6F,
-    0x6C,
-    0,
-    0x6C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x73,
-    0x2E,
-    0x63,
-    0x6F,
-    0x6C,
-    0x25,
-    0x64,
-    0,
-    0x6C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x73,
-    0x2E,
-    0x64,
-    0x69,
-    0x72,
-    0x25,
-    0x64,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0,
-    0x25,
-    0x66,
-    0x25,
-    0x73,
-    0,
-    0x6D,
-    0x62,
-    0,
-    0x6B,
-    0x62,
-    0,
-    0x62,
-    0x79,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x74,
-    0x65,
-    0x72,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x4D,
-    0x61,
-    0x78,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x73,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x46,
-    0x61,
-    0x64,
-    0x69,
-    0x6E,
-    0x67,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x41,
-    0x6C,
-    0x70,
-    0x68,
-    0x61,
-    0,
-    0x62,
-    0x53,
-    0x68,
-    0x6F,
-    0x77,
-    0x50,
-    0x6F,
-    0x73,
-    0x42,
-    0x75,
-    0x74,
-    0x74,
-    0x6F,
-    0x6E,
-    0,
-    0x61,
-    0x76,
-    0x61,
-    0x69,
-    0x6C,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x46,
-    0x72,
-    0x61,
-    0x6D,
-    0x65,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x6D,
-    0x69,
-    0x70,
-    0x42,
-    0x69,
-    0x61,
-    0x73,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x63,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0x2E,
-    0x67,
-    0x6C,
-    0x6F,
-    0x62,
-    0x61,
-    0x6C,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x63,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0x2E,
-    0x65,
-    0x6E,
-    0x76,
-    0x69,
-    0x72,
-    0x6F,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x63,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0x2E,
-    0x63,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x74,
-    0x6F,
-    0x74,
-    0x61,
-    0x6C,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x67,
-    0x6C,
-    0x6F,
-    0x62,
-    0x61,
-    0x6C,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x65,
-    0x6E,
-    0x76,
-    0x69,
-    0x72,
-    0x6F,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x63,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x73,
-    0x74,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0x43,
-    0x61,
-    0x63,
-    0x68,
-    0x65,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x6D,
-    0x61,
-    0x73,
-    0x74,
-    0x65,
-    0x72,
-    0x4D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x56,
-    0x6F,
-    0x6C,
-    0x75,
-    0x6D,
-    0x65,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x6D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0x46,
-    0x6F,
-    0x72,
-    0x43,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0x2E,
-    0x6D,
-    0x61,
-    0x73,
-    0x74,
-    0x65,
-    0x72,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x46,
-    0x58,
-    0x56,
-    0x6F,
-    0x6C,
-    0x75,
-    0x6D,
-    0x65,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x67,
-    0x6C,
-    0x6F,
-    0x62,
-    0x61,
-    0x6C,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x65,
-    0x6E,
-    0x76,
-    0x69,
-    0x72,
-    0x6F,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x63,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x73,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0x43,
-    0x61,
-    0x63,
-    0x68,
-    0x65,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x65,
-    0x6E,
-    0x76,
-    0x69,
-    0x72,
-    0x6F,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x73,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0x43,
-    0x61,
-    0x63,
-    0x68,
-    0x65,
-    0x2E,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x2E,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x66,
-    0x41,
-    0x69,
-    0x72,
-    0x43,
-    0x6F,
-    0x6D,
-    0x62,
-    0x61,
-    0x74,
-    0x54,
-    0x44,
-    0x4D,
-    0,
-    0x66,
-    0x41,
-    0x69,
-    0x72,
-    0x43,
-    0x6F,
-    0x6D,
-    0x62,
-    0x61,
-    0x74,
-    0x4B,
-    0x69,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x42,
-    0x6C,
-    0x6F,
-    0x77,
-    0x54,
-    0x44,
-    0x4D,
-    0,
-    0x66,
-    0x41,
-    0x69,
-    0x72,
-    0x43,
-    0x6F,
-    0x6D,
-    0x62,
-    0x61,
-    0x74,
-    0x53,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4D,
-    0x6F,
-    0x43,
-    0x68,
-    0x61,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-}; /* const */
 
 void ChunkProp::Message(MKMessage *arg0) {
     s32 temp_r0_77;
@@ -1787,7 +233,7 @@ s32 ChunkProp::LoadLine(MKIniLine *arg0) {
     return var_r31_144;
 }
 
-#if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
+#if 0 // DRAFT: illegal operand
 void ChunkProp::Deinit() {
     s32 var_ctr_188;
     s32 var_r4_181;
@@ -2161,13 +607,11 @@ void Level::LoadChunk(ChunkInfo *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 Level::SetDesiredChunks(ChunkInfo **arg0, int arg1) {
     ChunkInfo *temp_r3_913;
     ChunkInfo *temp_r3_958;
-    MKHeap *temp_r3_1024;
-    MKHeap *temp_r3_877;
-    MKHeap *var_r3_885;
+    MKIni *var_r3_885;
     s32 temp_r25_897;
     s32 temp_r31_951;
     s32 var_r20_891;
@@ -2187,9 +631,8 @@ s32 Level::SetDesiredChunks(ChunkInfo **arg0, int arg1) {
     void *temp_r5_957;
 
     var_r29_876 = 1;
-    temp_r3_877 = MKHeap::Current();
-    if (temp_r3_877 != NULL) {
-        var_r3_885 = ((MKHeap *) (temp_r3_877->Main()))->TAlloc(arg1 * 4, NULL, 0, 0U);
+    if (MKHeap::Current() != NULL) {
+        var_r3_885 = ((MKHeap *) (MKHeap::Main()))->TAlloc(arg1 * 4, NULL, 0, 0U);
     } else {
         var_r3_885 = malloc(arg1 * 4);
     }
@@ -2274,9 +717,8 @@ loop_30:
         var_r21_929 += 4;
         goto loop_38;
     }
-    temp_r3_1024 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1024 != NULL) {
-        ((MKHeap *) (temp_r3_1024->Main()))->TFree(var_r3_885, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_885, NULL, 0);
     } else {
         free(var_r3_885);
     }
@@ -2566,16 +1008,10 @@ void Level::CreateNormalResources() {
     f64 sp20;
     f64 sp18;
     f64 sp10;
-    MKHeap *temp_r3_2122;
-    MKHeap *temp_r3_2127;
-    MKHeap *temp_r3_2145;
-    MKHeap *temp_r3_2217;
-    MKHeap *temp_r3_2230;
-    MKHeap *temp_r3_2245;
-    MKHeap *temp_r5_2159;
-    MKHeap *var_r3_2135;
-    MKHeap *var_r3_2153;
-    MKHeap *var_r3_2252;
+    MKIni *var_r3_2135;
+    MKIni *var_r3_2153;
+    MKIni *var_r3_2252;
+    s32 *temp_r30_2124;
     s32 *temp_r3_1961;
     s32 temp_r0_2027;
     s32 temp_r0_2177;
@@ -2595,6 +1031,7 @@ void Level::CreateNormalResources() {
     s32 temp_r4_2165;
     s32 temp_r5_1823;
     s32 temp_r5_2100;
+    s32 temp_r5_2159;
     s32 temp_r8_2035;
     s32 temp_r8_2054;
     s32 temp_r8_2073;
@@ -2607,7 +1044,6 @@ void Level::CreateNormalResources() {
     s32 var_r4_1965;
     s32 var_r6_2015;
     s32 var_r6_2161;
-    void (*var_r3_2199)(MKModel *, u16 *, void *);
     void *temp_r3_2205;
     void *temp_r5_2033;
     void *temp_r9_1992;
@@ -2772,30 +1208,28 @@ loop_39:
         goto loop_39;
     }
     M2C_FIELD(*gMK, M2C_UNK (**)(void **, f64 *), 8)(gMK, &sp20);
-    temp_r3_2122 = M2C_FIELD(*gMK, MKHeap *(**)(void **), 0x2C)(gMK);
+    temp_r30_2124 = M2C_FIELD(*gMK, s32 *(**)(void **), 0x2C)(gMK);
     temp_r26_2126 = (this->unk78 + 1) * 4;
-    temp_r3_2127 = temp_r3_2122->Current();
-    if (temp_r3_2127 != NULL) {
-        var_r3_2135 = ((MKHeap *) (temp_r3_2127->Main()))->TAlloc(temp_r26_2126, NULL, 0, 0U);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2135 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2126, NULL, 0, 0U);
     } else {
         var_r3_2135 = malloc(temp_r26_2126);
     }
     temp_r26_2144 = (this->unk78 + 1) * 4;
-    temp_r3_2145 = var_r3_2135->Current();
-    if (temp_r3_2145 != NULL) {
-        var_r3_2153 = ((MKHeap *) (temp_r3_2145->Main()))->TAlloc(temp_r26_2144, NULL, 0, 0U);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2153 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_2144, NULL, 0, 0U);
     } else {
         var_r3_2153 = malloc(temp_r26_2144);
     }
-    temp_r5_2159 = temp_r3_2122->unk0;
+    temp_r5_2159 = *temp_r30_2124;
     var_r6_2161 = 0;
     var_r3_2162 = 0;
 loop_51:
     if ((s32) (var_r6_2161 + 1) < (s32) this->unk78) {
         temp_r4_2165 = var_r3_2162 + 4;
         var_r6_2161 += 1;
-        *(var_r3_2135 + var_r3_2162) = *(temp_r3_2122 + temp_r4_2165);
-        *(var_r3_2153 + var_r3_2162) = *(temp_r3_2122 + temp_r4_2165);
+        *(var_r3_2135 + var_r3_2162) = *(temp_r30_2124 + temp_r4_2165);
+        *(var_r3_2153 + var_r3_2162) = *(temp_r30_2124 + temp_r4_2165);
         var_r3_2162 += 4;
         goto loop_51;
     }
@@ -2804,35 +1238,31 @@ loop_51:
     *(var_r3_2153 + temp_r0_2177) = temp_r5_2159;
     *(var_r3_2135 + (this->unk78 * 4)) = 0;
     *(var_r3_2153 + (this->unk78 * 4)) = 0;
-    M2C_FIELD(*gMK, M2C_UNK (**)(void **, MKHeap *), 0xAC)(gMK, var_r3_2153);
-    M2C_FIELD(*gMK, M2C_UNK (**)(void **, MKHeap *), 0xB0)(gMK, var_r3_2135);
-    var_r3_2199 = Level_TerrainDrawCallback;
+    M2C_FIELD(*gMK, M2C_UNK (**)(void **, MKIni *), 0xAC)(gMK, var_r3_2153);
+    M2C_FIELD(*gMK, M2C_UNK (**)(void **, MKIni *), 0xB0)(gMK, var_r3_2135);
     var_r25_2200 = 0;
     var_r27_2202 = 0;
 loop_54:
     if (var_r25_2200 < (s32) this->unk78) {
-        temp_r3_2205 = *(temp_r3_2122 + var_r27_2202);
-        var_r3_2199 = M2C_FIELD(M2C_FIELD(temp_r3_2205, void **, 8), void (*(**)(void *, void (*)(MKModel *, u16 *, void *)))(MKModel *, u16 *, void *), 0x48)(temp_r3_2205, Level_TerrainDrawCallback);
+        temp_r3_2205 = *(temp_r30_2124 + var_r27_2202);
+        M2C_FIELD(M2C_FIELD(temp_r3_2205, void **, 8), M2C_UNK (**)(void *, void (*)(MKModel *, u16 *, void *)), 0x48)(temp_r3_2205, Level_TerrainDrawCallback);
         var_r25_2200 += 1;
         var_r27_2202 += 4;
         goto loop_54;
     }
-    temp_r3_2217 = ((MKHeap *) var_r3_2199)->Current();
-    if (temp_r3_2217 != NULL) {
-        ((MKHeap *) (temp_r3_2217->Main()))->TFree(var_r3_2135, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_2135, NULL, 0);
     } else {
         free(var_r3_2135);
     }
-    temp_r3_2230 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2230 != NULL) {
-        ((MKHeap *) (temp_r3_2230->Main()))->TFree(var_r3_2153, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_2153, NULL, 0);
     } else {
         free(var_r3_2153);
     }
     SetProjectionToDefaults();
-    temp_r3_2245 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_2245 != NULL) {
-        var_r3_2252 = ((MKHeap *) (temp_r3_2245->Current()))->Alloc(0xA0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_2252 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
     } else {
         var_r3_2252 = malloc(0xA0);
     }
@@ -2945,7 +1375,7 @@ s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
         if ((s32) M2C_FIELD(&gb, s32 *, 0x340) != 0) {
             var_f1_2428 = 2.0f;
         } else {
-            ((Level *) &gb)->GetWorldInfo();
+            Level::GetWorldInfo();
             var_f1_2428 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x1C);
         }
         KDSound_ResolveSoundIDs(var_f1_2428);
@@ -3317,7 +1747,8 @@ void Level::Update() {
     } else {
         temp_r31_3123 = &gb + 0x2CC;
         ((TimeDeltaModifier *) temp_r31_3123)->Begin();
-        ((TriggerProp *) (M2C_FIELD(*gMK, TriggerProp *(**)(void **), 0x1C)(gMK)))->UpdateActiveList();
+        M2C_FIELD(*gMK, M2C_UNK (**)(void **), 0x1C)(gMK);
+        TriggerProp::UpdateActiveList();
         MKCollision_Update();
         MKGrass_Update();
         MKWind_Update();
@@ -3376,7 +1807,6 @@ void Level::Update() {
 void Level::Deinit() {
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_3382;
     s32 temp_cr0_eq_3351;
     s32 temp_r30_3381;
     s32 temp_r3_3377;
@@ -3429,16 +1859,15 @@ void Level::Deinit() {
     this->unk70 = 7e-45f;
     this->unk74 = 0.0f;
     NULL->Deinit();
-    ((CharacterGraphManager *) (M2C_ERROR(/* Read from unset register $r3 */)))->Deinit();
+    CharacterGraphManager::Deinit();
     temp_r3_3377 = this->unk68;
     if ((u32) temp_r3_3377 != 0U) {
         ((LensFlare *) temp_r3_3377)->Deinit();
         temp_r30_3381 = this->unk68;
-        temp_r3_3382 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_3382 != NULL) {
-            ((MKHeap *) (temp_r3_3382->Current()))->Free((void *) temp_r30_3381, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r30_3381, NULL, 0);
         } else {
-            free((MKHeap *) temp_r30_3381);
+            free((MKIni *) temp_r30_3381);
         }
         this->unk68 = 0;
     }
@@ -3471,7 +1900,7 @@ void Level::Init(ChunkInfo *arg0) {
     this->unk48 = 0;
     this->unk4C = 1.0f;
     ((KDPathManager *)8)->Init((s32) arg0);
-    ((CharacterGraphManager *) (M2C_ERROR(/* Read from unset register $r3 */)))->Init();
+    CharacterGraphManager::Init();
     this->unk24 = (s32) arg0;
     this->unk18 = 0;
     this->unk1C = 0;
@@ -3535,27 +1964,20 @@ void Level::Init(ChunkInfo *arg0) {
 #if 0 // DRAFT: pointer/array required
 void Level::DeinitModule() {
     Level *var_r31_3563;
-    Level *var_r3_3562;
-    MKHeap *temp_r31_3574;
-    MKHeap *temp_r3_3575;
-    MKHeap *temp_r3_3596;
-    MKHeap *temp_r3_3610;
+    MKIni *temp_r31_3574;
     MKIni *temp_r31_3595;
     MKIni *temp_r31_3609;
 
-    var_r3_3562 = NULL->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
-    var_r31_3563 = var_r3_3562;
+    var_r31_3563 = NULL->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
 loop_2:
     if (var_r31_3563 != NULL) {
         ((ChunkInfo *) var_r31_3563)->Deinit();
-        var_r3_3562 = var_r31_3563->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
-        var_r31_3563 = var_r3_3562;
+        var_r31_3563 = var_r31_3563->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
         goto loop_2;
     }
     temp_r31_3574 = *Level::pLevelInfo;
-    temp_r3_3575 = ((MKHeap *) var_r3_3562)->Current();
-    if (temp_r3_3575 != NULL) {
-        ((MKHeap *) (temp_r3_3575->Current()))->Free(temp_r31_3574, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3574, NULL, 0);
     } else {
         free(temp_r31_3574);
     }
@@ -3564,27 +1986,24 @@ loop_2:
     ((MKIni *) (*Level::pGlobalLevelIni))->Deinit();
     ((MKIni *) (*Level::pGlobalModelIni))->Deinit();
     temp_r31_3595 = *Level::pGlobalLevelIni;
-    temp_r3_3596 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_3596 != NULL) {
-        ((MKHeap *) (temp_r3_3596->Current()))->Free(temp_r31_3595, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3595, NULL, 0);
     } else {
-        free((MKHeap *) temp_r31_3595);
+        free(temp_r31_3595);
     }
     temp_r31_3609 = *Level::pGlobalModelIni;
-    temp_r3_3610 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_3610 != NULL) {
-        ((MKHeap *) (temp_r3_3610->Current()))->Free(temp_r31_3609, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3609, NULL, 0);
         return;
     }
-    free((MKHeap *) temp_r31_3609);
+    free(temp_r31_3609);
 }
 #endif
 
 #if 0 // DRAFT: pointer/array required
 void Level::InitLevelInfo() {
     LevelInfo *temp_r3_3813;
-    MKHeap *temp_r3_3747;
-    MKHeap *var_r3_3754;
+    MKIni *var_r3_3754;
     MKIniLine *var_r26_3681;
     MKIniLine *var_r26_3789;
     MKIniLine *var_r27_3775;
@@ -3596,8 +2015,6 @@ void Level::InitLevelInfo() {
     s32 temp_r27_3737;
     s32 temp_r28_3740;
     s32 temp_r29_3746;
-    s32 temp_r3_3741;
-    u8 temp_r3_3810;
     void *temp_r0_3760;
     void *temp_r6_3764;
 
@@ -3637,12 +2054,10 @@ loop_11:
     }
     temp_r27_3737 = *Level::chunkInfoCount * 0x64;
     temp_r28_3740 = *Level::terrainInfoCount * 0xC;
-    temp_r3_3741 = *Level::materialInfoCount * 0x10;
     temp_r26_3744 = *Level::levelInfoCount * 0x128;
-    temp_r29_3746 = temp_r26_3744 + (temp_r27_3737 + 0x100 + temp_r28_3740 + temp_r3_3741);
-    temp_r3_3747 = ((MKHeap *) temp_r3_3741)->Current();
-    if (temp_r3_3747 != NULL) {
-        var_r3_3754 = ((MKHeap *) (temp_r3_3747->Current()))->Alloc(temp_r29_3746, NULL, 0);
+    temp_r29_3746 = temp_r26_3744 + (temp_r27_3737 + 0x100 + temp_r28_3740 + (*Level::materialInfoCount * 0x10));
+    if (MKHeap::Current() != NULL) {
+        var_r3_3754 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_3746, NULL, 0);
     } else {
         var_r3_3754 = malloc(temp_r29_3746);
     }
@@ -3668,22 +2083,19 @@ loop_23:
                 goto loop_23;
             }
             ((WorldInfo *) (*Level::pWorldInfo))->LoadDone();
-        } else {
-            temp_r3_3810 = var_r27_3775->IsField("");
-            if (temp_r3_3810 != 0) {
-                temp_r3_3813 = ((Level *) temp_r3_3810)->AllocLevelInfo();
-                ((WorldInfo *) (*Level::pWorldInfo))->AddLevelInfo(temp_r3_3813);
-                temp_r3_3813->Init();
-                var_r27_3775->AsString(0, &temp_r3_3813->unk4);
-                var_r29_3828 = var_r27_3775->unkC->GetSubLine(var_r27_3775);
+        } else if (var_r27_3775->IsField("") != 0) {
+            temp_r3_3813 = Level::AllocLevelInfo();
+            ((WorldInfo *) (*Level::pWorldInfo))->AddLevelInfo(temp_r3_3813);
+            temp_r3_3813->Init();
+            var_r27_3775->AsString(0, &temp_r3_3813->unk4);
+            var_r29_3828 = var_r27_3775->unkC->GetSubLine(var_r27_3775);
 loop_28:
-                if (var_r29_3828 != NULL) {
-                    temp_r3_3813->LoadLine(var_r29_3828);
-                    var_r29_3828 = var_r29_3828->unkC->GetNextLine(var_r29_3828);
-                    goto loop_28;
-                }
-                temp_r3_3813->LoadDone();
+            if (var_r29_3828 != NULL) {
+                temp_r3_3813->LoadLine(var_r29_3828);
+                var_r29_3828 = var_r29_3828->unkC->GetNextLine(var_r29_3828);
+                goto loop_28;
             }
+            temp_r3_3813->LoadDone();
         }
         var_r27_3775 = var_r27_3775->unkC->GetNextLine(var_r27_3775);
         goto loop_31;
@@ -3700,7 +2112,7 @@ void Level::InitModule() {
     gAssertBool = ((MKIni *) (*Level::pGlobalLevelIni))->Init(pGlobalLevelName, 0, NULL);
     gAssertBool = ((MKIni *) (*Level::pGlobalModelIni))->Init(pGlobalModelName, 0, NULL);
     MKWind_Set(4.0f, 400.0f, 10.0f, 4.0f, MKVector3::zero, 0.5f);
-    ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitLevelInfo();
+    Level::InitLevelInfo();
 }
 #endif
 
@@ -3948,10 +2360,8 @@ void ChunkInfo::Queue() {
 
 #if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
 s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
-    MKIniLine *temp_r3_4412;
     MKIniLine *var_r29_4427;
     MKIniLine *var_r31_4453;
-    MKIniLine *var_r3_4452;
     MaterialInfo *temp_r3_4456;
     TerrainInfo *temp_r30_4416;
     f32 var_f1_4388;
@@ -3966,35 +2376,30 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
         this->unk4C = var_f1_4388;
         return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, (unsigned int *) &this->unk48);
     }
-    if (arg0->IsField("") != 0) {
-        temp_r3_4412 = arg0->unkC->GetSubLine(arg0);
-        if (temp_r3_4412 != NULL) {
-            temp_r30_4416 = ((Level *) temp_r3_4412)->AllocTerrainInfo();
-            temp_r30_4416->unk0 = arg0->GetString(0);
-            temp_r30_4416->unk4 = this->unk14;
-            this->unk14 = temp_r30_4416;
-            var_r29_4427 = arg0->unkC->GetSubLine(arg0);
+    if ((arg0->IsField("") != 0) && (arg0->unkC->GetSubLine(arg0) != NULL)) {
+        temp_r30_4416 = Level::AllocTerrainInfo();
+        temp_r30_4416->unk0 = arg0->GetString(0);
+        temp_r30_4416->unk4 = this->unk14;
+        this->unk14 = temp_r30_4416;
+        var_r29_4427 = arg0->unkC->GetSubLine(arg0);
 loop_9:
-            if (var_r29_4427 != NULL) {
-                this->unk14->LoadLine(var_r29_4427);
-                var_r29_4427 = var_r29_4427->unkC->GetNextLine(var_r29_4427);
-                goto loop_9;
-            }
-            return 1;
+        if (var_r29_4427 != NULL) {
+            this->unk14->LoadLine(var_r29_4427);
+            var_r29_4427 = var_r29_4427->unkC->GetNextLine(var_r29_4427);
+            goto loop_9;
         }
+        return 1;
     }
     if (arg0->IsField("") != 0) {
-        var_r3_4452 = arg0->unkC->GetSubLine(arg0);
-        var_r31_4453 = var_r3_4452;
+        var_r31_4453 = arg0->unkC->GetSubLine(arg0);
 loop_14:
         if (var_r31_4453 != NULL) {
-            temp_r3_4456 = ((Level *) var_r3_4452)->AllocMaterialInfo();
+            temp_r3_4456 = Level::AllocMaterialInfo();
             temp_r3_4456->unkC = this->unk18;
             this->unk18 = temp_r3_4456;
             temp_r3_4456->Init();
             temp_r3_4456->LoadLine(var_r31_4453);
-            var_r3_4452 = var_r31_4453->unkC->GetNextLine(var_r31_4453);
-            var_r31_4453 = var_r3_4452;
+            var_r31_4453 = var_r31_4453->unkC->GetNextLine(var_r31_4453);
             goto loop_14;
         }
     }
@@ -4007,7 +2412,6 @@ loop_14:
 #endif
 
 void ChunkInfo::Deinit() {
-    MKHeap *temp_r3_4587;
     void *temp_r30_4586;
     void *temp_r31_4602;
 
@@ -4015,11 +2419,10 @@ loop_5:
     temp_r31_4602 = this->unk10;
     if (temp_r31_4602 != NULL) {
         temp_r30_4586 = M2C_FIELD(temp_r31_4602, void **, 0x20);
-        temp_r3_4587 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_4587 != NULL) {
-            ((MKHeap *) (temp_r3_4587->Current()))->Free(temp_r31_4602, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_4602, NULL, 0);
         } else {
-            free((MKHeap *) temp_r31_4602);
+            free((MKIni *) temp_r31_4602);
         }
         this->unk10 = temp_r30_4586;
         goto loop_5;
@@ -4117,8 +2520,7 @@ void LevelInfo::LoadDone() {
 s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     ChunkInfo *temp_r3_5010;
     MKHeap *temp_r3_5047;
-    MKHeap *temp_r3_5050;
-    MKHeap *var_r3_5057;
+    MKIni *var_r3_5057;
     MKIniLine *var_r27_5068;
     MKIniLine *var_r28_5023;
     f32 var_f1_5043;
@@ -4172,13 +2574,12 @@ loop_33:
     if (temp_ret_5043 != 0) {
         temp_r3_5047 = arg0->GetNmbrOfSubLines();
         this->unk100 = temp_r3_5047;
-        temp_r3_5050 = temp_r3_5047->Current();
-        if (temp_r3_5050 != NULL) {
-            var_r3_5057 = ((MKHeap *) (temp_r3_5050->Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_5057 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0);
         } else {
             var_r3_5057 = malloc((s32) temp_r3_5047 * 8);
         }
-        this->unk104 = var_r3_5057;
+        this->unk104 = (MKHeap *) var_r3_5057;
         var_r27_5068 = arg0->unkC->GetSubLine(arg0);
         var_r29_5070 = 0;
 loop_41:

@@ -989,14 +989,12 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
 void StalactiteCharge::Deinit() {
     IceBossStalactiteSpawner *temp_r31_1841;
     KDSplinePathSegment *temp_r3_1855;
-    MKHeap *temp_r3_1842;
 
     this->unk50.Deinit(this);
     this->unk4C->Deinit();
     temp_r31_1841 = this->unk4C;
-    temp_r3_1842 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1842 != NULL) {
-        ((MKHeap *) (temp_r3_1842->Current()))->Free(temp_r31_1841, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1841, NULL, 0);
     } else {
         free(temp_r31_1841);
     }
@@ -1015,11 +1013,10 @@ void StalactiteCharge::Deinit() {
 #if 0 // DRAFT: undefined identifier 'StalactiteChargeStates'
 void StalactiteCharge::Init() {
     IceBossStalactiteSpawner *var_r3_1899;
-    MKHeap *temp_r3_1892;
 
-    temp_r3_1892 = ((MKHeap *) (this->unk50.Init(&StalactiteChargeStates, NULL)))->Current();
-    if (temp_r3_1892 != NULL) {
-        var_r3_1899 = ((MKHeap *) (temp_r3_1892->Current()))->Alloc(0x28, NULL, 0);
+    this->unk50.Init(&StalactiteChargeStates, NULL);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1899 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x28, NULL, 0);
     } else {
         var_r3_1899 = malloc(0x28);
     }

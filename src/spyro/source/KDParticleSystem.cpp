@@ -170,7 +170,6 @@ void KDEnvParticleSystemDescriptor::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
-    MKHeap *temp_r3_314;
     MKIniLine *var_r30_334;
     s32 temp_r27_313;
     s32 var_r26_343;
@@ -179,15 +178,12 @@ s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r27_344;
     s32 var_r27_368;
     s32 var_r27_393;
-    u8 temp_r3_309;
     void *var_r3_321;
 
-    temp_r3_309 = arg0->LoadInt("Envelope", (int *) &this->unkD0, 0);
-    if (temp_r3_309 != 0) {
+    if (arg0->LoadInt("Envelope", (int *) &this->unkD0, 0) != 0) {
         temp_r27_313 = this->unkD0 * 0x14;
-        temp_r3_314 = ((MKHeap *) temp_r3_309)->Current();
-        if (temp_r3_314 != NULL) {
-            var_r3_321 = ((MKHeap *) (temp_r3_314->Current()))->Alloc(temp_r27_313, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_321 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_313, NULL, 0);
         } else {
             var_r3_321 = malloc(temp_r27_313);
         }
@@ -238,15 +234,13 @@ loop_18:
 #endif
 
 void KDEnvParticleSystemDescriptor::Deinit() {
-    MKHeap *temp_r3_446;
     void *temp_r31_445;
 
     MKPropDescriptor::Deinit();
     if ((u8) this->unkD8 != 0) {
         temp_r31_445 = this->unkD4;
-        temp_r3_446 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_446 != NULL) {
-            ((MKHeap *) (temp_r3_446->Current()))->Free(temp_r31_445, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_445, NULL, 0);
         } else {
             free(temp_r31_445);
         }

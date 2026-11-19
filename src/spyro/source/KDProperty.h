@@ -35,7 +35,7 @@ public:
     virtual void Command(int);
     s32 IsOfType(KDPropertyClassInfo *) const;
     void SetOwnerProp(MKProp *);
-    u64 GetOwnerProp(void);
+    static u64 GetOwnerProp(void);
     static u8 pInstanceMem[0x4];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;

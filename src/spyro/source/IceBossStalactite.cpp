@@ -326,7 +326,6 @@ void IceBossStalactiteSpawner::Deinit() {
     IceBossStalactite ***var_r4_501;
     IceBossStalactite **temp_r0_506;
     IceBossStalactite **temp_r0_525;
-    MKHeap *temp_r3_528;
     u32 temp_r0_511;
 
     var_r4_501 = this->unk10;
@@ -352,9 +351,8 @@ loop_9:
             var_r4_501 += 4;
             goto loop_9;
         }
-        temp_r3_528 = ((MKHeap *) var_r3_503)->Current();
-        if (temp_r3_528 != NULL) {
-            ((MKHeap *) (temp_r3_528->Current()))->Free(var_r31_502, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_502, NULL, 0);
         } else {
             free(var_r31_502);
         }
@@ -370,15 +368,13 @@ void IceBossStalactiteSpawner::Init(MKProp *arg0, int arg1, int arg2) {
     IceBossStalactite ***temp_r3_602;
     IceBossStalactite ***var_r3_576;
     IceBossStalactite ***var_r5_587;
-    MKHeap *temp_r3_567;
     s32 var_ctr_591;
 
     if (arg1 == 0) {
         this->unk10 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_567 = MKHeap::Current();
-        if (temp_r3_567 != NULL) {
-            var_r3_576 = ((MKHeap *) (temp_r3_567->Current()))->Alloc(((arg1 * 2) + 2) * 4, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_576 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg1 * 2) + 2) * 4, NULL, 0);
         } else {
             var_r3_576 = malloc(((arg1 * 2) + 2) * 4);
         }

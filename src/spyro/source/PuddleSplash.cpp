@@ -24,15 +24,13 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 void PuddleSplash::Deinit() {
-    MKHeap *temp_r3_50;
     void *temp_r31_47;
 
     MKProp::Deinit();
     temp_r31_47 = this->unk4C;
     if (temp_r31_47 != NULL) {
-        temp_r3_50 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_50 != NULL) {
-            ((MKHeap *) (temp_r3_50->Current()))->Free(temp_r31_47, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_47, NULL, 0);
         } else {
             free(temp_r31_47);
         }
@@ -303,7 +301,6 @@ void *PuddleSplash::Update() {
 
 #if 0 // DRAFT: illegal type
 s32 PuddleSplash::LoadDone() {
-    MKHeap *temp_r3_490;
     s32 temp_r0_512;
     s32 temp_r3_511;
     s32 var_ctr_508;
@@ -311,9 +308,8 @@ s32 PuddleSplash::LoadDone() {
     void *var_r3_497;
 
     MKProp::LoadDone();
-    temp_r3_490 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_490 != NULL) {
-        var_r3_497 = ((MKHeap *) (temp_r3_490->Current()))->Alloc(0xFA0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_497 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xFA0, NULL, 0);
     } else {
         var_r3_497 = malloc(0xFA0);
     }

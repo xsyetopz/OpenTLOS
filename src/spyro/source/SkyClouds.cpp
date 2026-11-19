@@ -246,11 +246,8 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: type mismatch
 void SkyClouds::Deinit() {
-    MKHeap *temp_r3_444;
-    MKHeap *temp_r3_458;
-    MKHeap *temp_r3_500;
     SkyClouds::CloudEmitter **temp_r31_443;
     SkyClouds::CloudEmitter **temp_r31_457;
     SkyClouds::CloudEmitter **var_r31_474;
@@ -261,16 +258,14 @@ void SkyClouds::Deinit() {
     u32 temp_r0_483;
 
     temp_r31_443 = this->unk50;
-    temp_r3_444 = MKHeap::Current();
-    if (temp_r3_444 != NULL) {
-        ((MKHeap *) (temp_r3_444->Current()))->Free(temp_r31_443, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_443, NULL, 0);
     } else {
         free(temp_r31_443);
     }
     temp_r31_457 = this->unk54;
-    temp_r3_458 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_458 != NULL) {
-        ((MKHeap *) (temp_r3_458->Current()))->Free(temp_r31_457, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_457, NULL, 0);
     } else {
         free(temp_r31_457);
     }
@@ -298,9 +293,8 @@ loop_15:
             var_r4_473 += 4;
             goto loop_15;
         }
-        temp_r3_500 = ((MKHeap *) var_r3_475)->Current();
-        if (temp_r3_500 != NULL) {
-            ((MKHeap *) (temp_r3_500->Current()))->Free(var_r31_474, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_474, NULL, 0);
         } else {
             free(var_r31_474);
         }
@@ -647,10 +641,6 @@ void SkyClouds::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_1085;
-    MKHeap *temp_r3_1099;
-    MKHeap *temp_r3_1152;
-    MKMaterial *temp_r3_1126;
     SkyClouds::CloudEmitter **temp_r3_1174;
     SkyClouds::CloudEmitter **temp_r3_1180;
     SkyClouds::CloudEmitter **var_r3_1092;
@@ -663,16 +653,14 @@ void SkyClouds::Init() {
     s32 var_r3_1115;
 
     MKProp::Init();
-    temp_r3_1085 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1085 != NULL) {
-        var_r3_1092 = ((MKHeap *) (temp_r3_1085->Current()))->Alloc(0x1F40, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1092 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1F40, NULL, 0);
     } else {
         var_r3_1092 = malloc(0x1F40);
     }
     this->unk50 = var_r3_1092;
-    temp_r3_1099 = ((MKHeap *) var_r3_1092)->Current();
-    if (temp_r3_1099 != NULL) {
-        var_r3_1106 = ((MKHeap *) (temp_r3_1099->Current()))->Alloc(0x190, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1106 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0);
     } else {
         var_r3_1106 = malloc(0x190);
     }
@@ -686,8 +674,7 @@ void SkyClouds::Init() {
         *(this->unk50 + temp_r0_1120) = 0;
         var_ctr_1117 -= 1;
     } while (var_ctr_1117 != 0);
-    temp_r3_1126 = MKMaterial_Create("fx_381");
-    this->unk58 = temp_r3_1126;
+    this->unk58 = MKMaterial_Create("fx_381");
     sp20 = -0.5f;
     sp18 = -0.5f;
     sp1C = -0.5f;
@@ -704,9 +691,8 @@ void SkyClouds::Init() {
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     this->unkC = (BoundingVolume *) &this->unk60;
-    temp_r3_1152 = ((MKHeap *) temp_r3_1126)->Current();
-    if (temp_r3_1152 != NULL) {
-        var_r3_1159 = ((MKHeap *) (temp_r3_1152->Current()))->Alloc(0x210, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1159 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x210, NULL, 0);
     } else {
         var_r3_1159 = malloc(0x210);
     }

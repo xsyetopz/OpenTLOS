@@ -752,7 +752,6 @@ void GoopFXDescriptor::Deinit() {
     GoopFXDescriptor::Goop **var_r4_1206;
     GoopFXDescriptor::Goop *temp_r0_1211;
     GoopFXDescriptor::Goop *temp_r0_1230;
-    MKHeap *temp_r3_1233;
     MKMaterial *temp_r3_1201;
     u32 temp_r0_1216;
 
@@ -783,9 +782,8 @@ loop_11:
             var_r4_1206 += 4;
             goto loop_11;
         }
-        temp_r3_1233 = ((MKHeap *) var_r3_1208)->Current();
-        if (temp_r3_1233 != NULL) {
-            ((MKHeap *) (temp_r3_1233->Current()))->Free(var_r31_1207, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1207, NULL, 0);
         } else {
             free(var_r31_1207);
         }
@@ -817,14 +815,12 @@ void GoopFXDescriptor::Init() {
     GoopFXDescriptor::Goop **temp_r4_1339;
     GoopFXDescriptor::Goop **var_r3_1318;
     GoopFXDescriptor::Goop **var_r5_1327;
-    MKHeap *temp_r3_1311;
     s32 var_ctr_1331;
 
     FXBaseDescriptor::Init();
     this->unkE0 = NULL;
-    temp_r3_1311 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1311 != NULL) {
-        var_r3_1318 = ((MKHeap *) (temp_r3_1311->Current()))->Alloc(0x5C38, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1318 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x5C38, NULL, 0);
     } else {
         var_r3_1318 = malloc(0x5C38);
     }

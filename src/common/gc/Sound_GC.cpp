@@ -78,7 +78,7 @@ extern s32 currentBankId_1002;
 extern s32 currentSoundInfoStructureIndex_995;
 extern s32 dmaBufferNum_986;
 extern M2C_UNK gMKDefaults;
-extern MKHeap *gMaxSounds;
+extern s32 gMaxSounds;
 extern u8 init_1000;
 extern u8 init_1003;
 extern u8 init_1139;
@@ -1510,10 +1510,8 @@ loop_59:
 #if 0 // DRAFT: function call 'MKArchive_Open(signed char *, int *, unsigned int)' does
 s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 sp8;
-    MKHeap *temp_r3_2316;
     SoundBankHeader *temp_r3_2310;
     s32 temp_r3_2288;
-    s32 temp_r3_2314;
 
     if (arg1 != 0) {
         temp_r3_2288 = MKArchive_Open(Str_Printf("%s.gsb", arg0, "%s.mus"), (int *) &soundBankFileSize, 1U);
@@ -1525,11 +1523,9 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
         return 0;
     }
     temp_r3_2310 = MKArchive_Load(Str_Printf("%s.gsb", arg0, "%s.mus"), (int *) &sp8, NULL, -1);
-    temp_r3_2314 = Sound_LoadBankFromMemory(temp_r3_2310, arg1, arg2);
-    soundLastBankId = temp_r3_2314;
-    temp_r3_2316 = ((MKHeap *) temp_r3_2314)->Current();
-    if (temp_r3_2316 != NULL) {
-        ((MKHeap *) (temp_r3_2316->Current()))->Free(temp_r3_2310, NULL, 0);
+    soundLastBankId = Sound_LoadBankFromMemory(temp_r3_2310, arg1, arg2);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_2310, NULL, 0);
     } else {
         free(temp_r3_2310);
     }
@@ -2191,31 +2187,25 @@ loop_6:
 
 #if 0 // DRAFT: undefined identifier 'free'
 void Sound_DeinitModule() {
-    MKHeap *temp_r3_3551;
-    MKHeap *temp_r3_3567;
-    MKHeap *temp_r3_3583;
     SoundBankHeader *temp_r31_3550;
     SoundBankHeader *temp_r31_3566;
     SoundBankHeader *temp_r31_3582;
 
     temp_r31_3550 = pTemporarySoundInfoStructures;
-    temp_r3_3551 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_3551 != NULL) {
-        ((MKHeap *) (temp_r3_3551->Current()))->Free(temp_r31_3550, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3550, NULL, 0);
     } else {
         free(temp_r31_3550);
     }
     temp_r31_3566 = soundBankReadBuffer->unk4;
-    temp_r3_3567 = ((MKHeap *) soundBankReadBuffer)->Current();
-    if (temp_r3_3567 != NULL) {
-        ((MKHeap *) (temp_r3_3567->Current()))->Free(temp_r31_3566, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3566, NULL, 0);
     } else {
         free(temp_r31_3566);
     }
     temp_r31_3582 = soundBankReadBuffer[1].unk4;
-    temp_r3_3583 = ((MKHeap *) soundBankReadBuffer)->Current();
-    if (temp_r3_3583 != NULL) {
-        ((MKHeap *) (temp_r3_3583->Current()))->Free(temp_r31_3582, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3582, NULL, 0);
     } else {
         free(temp_r31_3582);
     }
@@ -2233,10 +2223,6 @@ void Sound_DeinitModule() {
 
 #if 0 // DRAFT: undefined identifier 'AXARTInit'
 void Sound_InitModule() {
-    MKHeap *temp_r3_3687;
-    MKHeap *temp_r3_3764;
-    MKHeap *temp_r3_3780;
-    MKHeap *temp_r3_3798;
     SoundBankHeader *var_r3_3694;
     SoundBankHeader *var_r3_3771;
     SoundBankHeader *var_r3_3787;
@@ -2294,10 +2280,9 @@ void Sound_InitModule() {
         M2C_FIELD(temp_r8_3677, s8 *, 0x12) = 0;
         var_ctr_3673 -= 1;
     } while (var_ctr_3673 != 0);
-    temp_r27_3686 = (s32) (gMaxSounds + 1) * 0x68;
-    temp_r3_3687 = gMaxSounds->Current();
-    if (temp_r3_3687 != NULL) {
-        var_r3_3694 = ((MKHeap *) (temp_r3_3687->Current()))->Alloc(temp_r27_3686, NULL, 0);
+    temp_r27_3686 = (gMaxSounds + 1) * 0x68;
+    if (MKHeap::Current() != NULL) {
+        var_r3_3694 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3686, NULL, 0);
     } else {
         var_r3_3694 = malloc(temp_r27_3686);
     }
@@ -2346,24 +2331,21 @@ loop_10:
     gStreamingBuffer[0x8009] = 0;
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20068) = 0;
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20069) = 0;
-    temp_r3_3764 = ((MKHeap *) (gStreamingBuffer + 0x20000))->Current();
-    if (temp_r3_3764 != NULL) {
-        var_r3_3771 = ((MKHeap *) (temp_r3_3764->Current()))->Alloc(0x10000, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3771 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
     } else {
         var_r3_3771 = malloc(0x10000);
     }
     soundBankReadBuffer->unk4 = var_r3_3771;
-    temp_r3_3780 = ((MKHeap *) var_r3_3771)->Current();
-    if (temp_r3_3780 != NULL) {
-        var_r3_3787 = ((MKHeap *) (temp_r3_3780->Current()))->Alloc(0x10000, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3787 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
     } else {
         var_r3_3787 = malloc(0x10000);
     }
-    temp_r27_3796 = (s32) gMaxSounds * 0x68;
+    temp_r27_3796 = gMaxSounds * 0x68;
     soundBankReadBuffer[1].unk4 = var_r3_3787;
-    temp_r3_3798 = ((MKHeap *) var_r3_3787)->Current();
-    if (temp_r3_3798 != NULL) {
-        var_r3_3805 = ((MKHeap *) (temp_r3_3798->Current()))->Alloc(temp_r27_3796, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_3805 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3796, NULL, 0);
     } else {
         var_r3_3805 = malloc(temp_r27_3796);
     }
@@ -2528,5 +2510,5 @@ void EntryCompare(const void *arg0, const void *arg1) {
 #endif
 
 void Sound_GC_cpp::__sinit() {
-    gMaxSounds = M2C_FIELD(&gMKDefaults, MKHeap **, 0xDC);
+    gMaxSounds = M2C_FIELD(&gMKDefaults, s32 *, 0xDC);
 }

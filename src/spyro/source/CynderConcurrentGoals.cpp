@@ -210,7 +210,6 @@ void CynderConcurrentGoal_Think::Reset() {
 void CynderConcurrentGoal_Think::Deinit() {
     Goal<Cynder> *temp_r3_339;
     Goal<Cynder> *temp_r3_344;
-    MKHeap *temp_r3_358;
     s32 temp_r31_355;
     void **temp_r3_334;
 
@@ -225,9 +224,8 @@ void CynderConcurrentGoal_Think::Deinit() {
     operator delete(this->unk2C);
     temp_r31_355 = this->unk1C;
     if ((u32) temp_r31_355 != 0U) {
-        temp_r3_358 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_358 != NULL) {
-            ((MKHeap *) (temp_r3_358->Current()))->Free((void *) temp_r31_355, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r31_355, NULL, 0);
         } else {
             free(temp_r31_355);
         }
@@ -244,7 +242,6 @@ void CynderConcurrentGoal_Think::Deinit() {
 
 #if 0 // DRAFT: pointer/array required
 void CynderConcurrentGoal_Think::Init(Cynder *arg0) {
-    MKHeap *temp_r3_482;
     void **temp_r4_509;
     void *var_r3_489;
 
@@ -291,9 +288,8 @@ void CynderConcurrentGoal_Think::Init(Cynder *arg0) {
         this->unk2C = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_482 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_482 != NULL) {
-            var_r3_489 = ((MKHeap *) (temp_r3_482->Current()))->Alloc(0x14, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_489 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_489 = malloc(0x14);
         }

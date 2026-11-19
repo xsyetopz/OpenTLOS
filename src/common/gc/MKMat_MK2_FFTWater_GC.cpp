@@ -36,12 +36,9 @@ s32 MKMat_MK2_FFTWater_BEGIN(MKMaterial *arg0) {
 }
 
 void MKMat_MK2_FFTWater_DESTROY(MKMaterial *arg0) {
-    MKHeap *temp_r3_44;
-
     arg0->unk38->Destroy();
-    temp_r3_44 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_44 != NULL) {
-        ((MKHeap *) (temp_r3_44->Current()))->Free(arg0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(arg0, NULL, 0);
         return;
     }
     free(arg0);
@@ -49,7 +46,6 @@ void MKMat_MK2_FFTWater_DESTROY(MKMaterial *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void *MKMat_MK2_FFTWater_INIT(MatInfo *arg0) {
-    MKHeap *temp_r3_72;
     MKHeap *temp_r3_96;
     MKHeap *temp_ret_96;
     Texture *temp_r30_92;
@@ -58,9 +54,8 @@ void *MKMat_MK2_FFTWater_INIT(MatInfo *arg0) {
     u32 var_r4_90;
     void *var_r31_80;
 
-    temp_r3_72 = ((MKHeap *) arg0)->Current();
-    if (temp_r3_72 != NULL) {
-        var_r31_80 = ((MKHeap *) (temp_r3_72->Current()))->Alloc(0x3C, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r31_80 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x3C, NULL, 0);
     } else {
         var_r31_80 = malloc(0x3C);
     }

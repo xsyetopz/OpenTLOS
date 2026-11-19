@@ -20,8 +20,8 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-MKHeap *malloc(M2C_UNK);                            /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 
 #if 0 // DRAFT: illegal implicit conversion from 'LineSegmentTrail' to
@@ -95,15 +95,13 @@ loop_1:
 
 #if 0 // DRAFT: pointer/array required
 void LineSegmentTrailPool::Deinit() {
-    MKHeap *temp_r30_160;
-    MKHeap *temp_r30_178;
-    MKHeap *temp_r3_161;
-    MKHeap *temp_r3_179;
     s32 temp_r0_142;
     s32 var_ctr_148;
     s32 var_r29_156;
     s32 var_r31_157;
     s32 var_r3_147;
+    void *temp_r30_160;
+    void *temp_r30_178;
 
     temp_r0_142 = *LineSegmentTrailPool::refCount - 1;
     *LineSegmentTrailPool::refCount = temp_r0_142;
@@ -119,9 +117,8 @@ loop_2:
                 var_r31_157 = 0;
                 do {
                     temp_r30_160 = *(*LineSegmentTrailPool::pTrailPool + var_r31_157);
-                    temp_r3_161 = ((MKHeap *) (*LineSegmentTrailPool::pTrailPool))->Current();
-                    if (temp_r3_161 != NULL) {
-                        ((MKHeap *) (temp_r3_161->Current()))->Free(temp_r30_160, NULL, 0);
+                    if (MKHeap::Current() != NULL) {
+                        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_160, NULL, 0);
                     } else {
                         free(temp_r30_160);
                     }
@@ -129,9 +126,8 @@ loop_2:
                     var_r31_157 += 0x30;
                 } while (var_r29_156 < 0xA);
                 temp_r30_178 = *LineSegmentTrailPool::pTrailPool;
-                temp_r3_179 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-                if (temp_r3_179 != NULL) {
-                    ((MKHeap *) (temp_r3_179->Current()))->Free(temp_r30_178, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_178, NULL, 0);
                 } else {
                     free(temp_r30_178);
                 }
@@ -152,27 +148,22 @@ void LineSegmentTrailPool::Init() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKHeap *temp_r3_216;
-    MKHeap *temp_r3_234;
-    MKHeap *var_r3_223;
-    MKHeap *var_r3_241;
     s32 temp_cr0_gt_213;
     s32 temp_r0_263;
-    s32 temp_r3_211;
     s32 temp_r3_261;
     s32 temp_r4_260;
     s32 temp_r5_259;
     s32 var_r30_232;
     s32 var_r31_230;
     void *temp_r3_274;
+    void *var_r3_223;
+    void *var_r3_241;
 
-    temp_r3_211 = *LineSegmentTrailPool::refCount;
-    temp_cr0_gt_213 = temp_r3_211 > 0;
-    *LineSegmentTrailPool::refCount = temp_r3_211 + 1;
+    temp_cr0_gt_213 = (s32) *LineSegmentTrailPool::refCount > 0;
+    *LineSegmentTrailPool::refCount += 1;
     if (temp_cr0_gt_213 == 0) {
-        temp_r3_216 = ((MKHeap *) temp_r3_211)->Current();
-        if (temp_r3_216 != NULL) {
-            var_r3_223 = ((MKHeap *) (temp_r3_216->Current()))->Alloc(0x1E0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_223 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1E0, NULL, 0);
         } else {
             var_r3_223 = malloc(0x1E0);
         }
@@ -180,9 +171,8 @@ void LineSegmentTrailPool::Init() {
         var_r31_230 = 0;
         var_r30_232 = 0;
         do {
-            temp_r3_234 = var_r3_223->Current();
-            if (temp_r3_234 != NULL) {
-                var_r3_241 = ((MKHeap *) (temp_r3_234->Current()))->Alloc(0x3C0, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_241 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x3C0, NULL, 0);
             } else {
                 var_r3_241 = malloc(0x3C0);
             }
@@ -204,10 +194,9 @@ void LineSegmentTrailPool::Init() {
             sp14 = 1.0f;
             M2C_FIELD(temp_r3_274, f64 *, 0) = (f64) sp8;
             M2C_FIELD(temp_r3_274, f64 *, 8) = (f64) sp10;
-            var_r3_223 = *LineSegmentTrailPool::pTrailPool;
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
-            *(var_r3_223 + temp_r0_263) = 0;
+            *(*LineSegmentTrailPool::pTrailPool + temp_r0_263) = 0;
         } while (var_r31_230 < 0xA);
     }
 }
@@ -235,28 +224,23 @@ void LineSegmentTrail::EndTrail() {
 #if 0 // DRAFT: illegal explicit conversion from 'LineSegmentTrail' to
 void LineSegmentTrail::BeginTrail(const MKVector4 &arg0) {
     LSTrail *temp_r4_342;
-    LineSegmentTrail *temp_r27_326;
-    LineSegmentTrail *var_r3_0;
     s32 temp_r30_331;
     s32 var_r29_328;
     s32 var_r31_329;
     void *temp_r5_340;
 
-    var_r3_0 = this;
-    temp_r27_326 = var_r3_0;
     var_r29_328 = 0;
     var_r31_329 = 0;
 loop_1:
     temp_r30_331 = var_r31_329 + 0x58;
-    if ((u32) *(temp_r27_326 + temp_r30_331) == 0U) {
-        var_r3_0 = ((LineSegmentTrailPool *) var_r3_0)->Alloc();
-        *(temp_r27_326 + temp_r30_331) = var_r3_0;
-        if ((u32) *(temp_r27_326 + temp_r30_331) != 0U) {
-            temp_r5_340 = temp_r27_326 + var_r31_329;
+    if ((u32) *(this + temp_r30_331) == 0U) {
+        *(this + temp_r30_331) = LineSegmentTrailPool::Alloc();
+        if ((u32) *(this + temp_r30_331) != 0U) {
+            temp_r5_340 = this + var_r31_329;
             temp_r4_342 = M2C_FIELD(temp_r5_340, LSTrail **, 0x58);
             temp_r4_342->unk8 = M2C_FIELD(&arg0, f64 *, 0);
             temp_r4_342->unk10 = M2C_FIELD(&arg0, f64 *, 8);
-            temp_r27_326->UpdateTrail(M2C_FIELD(temp_r5_340, LSTrail **, 0x58));
+            UpdateTrail(M2C_FIELD(temp_r5_340, LSTrail **, 0x58));
             return;
         }
     }
@@ -417,7 +401,7 @@ void LineSegmentTrail::Deinit() {
     } while (var_r28_658 < 6);
     this->unk74.Deinit();
     this->unk88.Deinit();
-    ((LineSegmentTrailPool *) (M2C_ERROR(/* Read from unset register $r3 */)))->Deinit();
+    LineSegmentTrailPool::Deinit();
     MKProp::Deinit();
 }
 #endif
@@ -562,11 +546,11 @@ void LineSegmentTrail::SetUserData(MKAnimScript *arg0, const int &arg1, const in
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'LineSegmentTrailPool *' to
+#if 0 // DRAFT: illegal operand
 void LineSegmentTrail::Init() {
-    LineSegmentTrailPool *var_r3_956;
     s32 temp_r0_961;
     s32 var_ctr_959;
+    s32 var_r3_956;
 
     MKProp::Init();
     this->unk4C = NULL;
@@ -575,7 +559,7 @@ void LineSegmentTrail::Init() {
     this->unk70 = NULL;
     this->unk74.Init(0x14, 0U);
     this->unk88.Init(0x14, 0U);
-    var_r3_956 = NULL;
+    var_r3_956 = 0;
     var_ctr_959 = 6;
     do {
         temp_r0_961 = var_r3_956 + 0x58;
@@ -583,6 +567,6 @@ void LineSegmentTrail::Init() {
         *(this + temp_r0_961) = 0;
         var_ctr_959 -= 1;
     } while (var_ctr_959 != 0);
-    var_r3_956->Init();
+    LineSegmentTrailPool::Init();
 }
 #endif

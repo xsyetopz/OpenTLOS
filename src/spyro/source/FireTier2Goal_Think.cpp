@@ -628,7 +628,6 @@ void FireTier2Goal_JumpOutOfLava::Deinit() {
     Goal<Enemy> *temp_r3_1162;
     Goal<Enemy> *temp_r3_1167;
     Goal<Enemy> *temp_r3_1172;
-    MKHeap *temp_r3_1188;
     void *temp_r31_1185;
 
     temp_r3_1157 = this->unk24;
@@ -645,9 +644,8 @@ void FireTier2Goal_JumpOutOfLava::Deinit() {
     operator delete(this->unk30);
     temp_r31_1185 = this->unk1C;
     if (temp_r31_1185 != NULL) {
-        temp_r3_1188 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1188 != NULL) {
-            ((MKHeap *) (temp_r3_1188->Current()))->Free(temp_r31_1185, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1185, NULL, 0);
         } else {
             free(temp_r31_1185);
         }
@@ -667,7 +665,6 @@ void FireTier2Goal_JumpOutOfLava::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_1361;
     Goal<Enemy> *temp_r4_1372;
     Goal<Enemy> *temp_r4_1383;
-    MKHeap *temp_r3_1320;
     void *var_r3_1327;
 
     this->unk20 = checked_cast<FireTier2 *, Enemy>(arg0);
@@ -714,9 +711,8 @@ void FireTier2Goal_JumpOutOfLava::Init(Enemy *arg0) {
         this->unk30 = M2C_ERROR(/* Read from unset register $r3 */);
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_1320 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1320 != NULL) {
-            var_r3_1327 = ((MKHeap *) (temp_r3_1320->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1327 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_1327 = malloc(0xC);
         }

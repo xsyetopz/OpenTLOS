@@ -23,9 +23,9 @@
 #include "common/gc/System_GC.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
+M2C_UNK free(s8 *);                                 /* extern */
 s8 *malloc(s32);                                    /* extern */
-MKHeap *stricmp(MKResource *, Texture *, MKResource *); /* extern */
+s32 stricmp(MKResource *, Texture *, MKResource *); /* extern */
 extern s32 lit_520;
 extern s8 MKMat_MK2_Standard_CaptureTextureData;
 extern s8 *Texture_pTextures;
@@ -41,124 +41,113 @@ static MKResource lit_stringBase0;                     /* type too large by 0x1D
 void Texture::ReloadGuts(float arg0) {
     s32 spC;
     u32 sp8;
-    MKHeap *temp_r3_109;
-    MKHeap *temp_r3_22;
-    MKHeap *temp_r3_95;
+    GXTexRegion *temp_r3_57;
     enum _GXTexFilter var_r4_242;
     s32 temp_r0_148;
     s32 temp_r0_209;
     s32 temp_r29_55;
     s32 var_ctr_217;
-    s32 var_r3_46;
     s32 var_r4_215;
     s32 var_r5_208;
     s8 *temp_r3_134;
-    s8 *temp_r3_40;
     s8 *var_r31_0;
 
     var_r31_0 = saved_reg_r31;
-    if ((GXTexRegion *) this->unk48 == NULL) {
-        temp_r3_22 = stricmp(&lit_stringBase0, this);
-        if (temp_r3_22 != NULL) {
-            M2C_FIELD(this, u8 *, 0x3C) = 0U;
-            if ((u8) attemptToLockTextureInCache != 0) {
-                temp_r3_22->ActivateTempMemOverride();
-                temp_r3_40 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
-                var_r31_0 = temp_r3_40;
-                ((MKHeap *) temp_r3_40)->DeactivateTempMemOverride();
-                DCStoreRange(var_r31_0, (u32) spC);
-                var_r3_46 = spC;
-                this->unk34 = var_r3_46 - 0x20;
-                if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
-                    temp_r29_55 = (this->unk34 + 0x1F) & 0xFFFFFFE0;
-                    var_r3_46 = RequestPreloadedTextureRegion(temp_r29_55, (unsigned int *) &sp8);
-                    if (var_r3_46 != 0) {
-                        this->unk48 = (GXTexRegion *) var_r3_46;
-                        this->unk38 = 0;
-                        M2C_FIELD(this, u8 *, 0x3C) = 1U;
-                        this->unk24 = M2C_FIELD(var_r31_0, s32 *, 4);
-                        this->unk28 = M2C_FIELD(var_r31_0, s32 *, 8);
-                        GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 0U);
-                        GXInitTexPreLoadRegion((GXTexRegion *) var_r3_46, sp8, (u32) temp_r29_55, 0U, 0U);
-                        GXPreLoadEntireTexture(&this->unk60, (GXTexRegion *) var_r3_46);
-                        GXLoadTexObjPreLoaded(&this->unk60, this->unk48, GX_TEXMAP0);
-                        attemptToLockTextureInCache = 0;
-                        temp_r3_95 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-                        if (temp_r3_95 != NULL) {
-                            ((MKHeap *) (temp_r3_95->Current()))->Free(var_r31_0, NULL, 0);
-                            return;
-                        }
-                        free((MKHeap *) var_r31_0);
+    if (((GXTexRegion *) this->unk48 == NULL) && (stricmp(&lit_stringBase0, this) != 0)) {
+        M2C_FIELD(this, u8 *, 0x3C) = 0U;
+        if ((u8) attemptToLockTextureInCache != 0) {
+            MKHeap::ActivateTempMemOverride();
+            var_r31_0 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
+            MKHeap::DeactivateTempMemOverride();
+            DCStoreRange(var_r31_0, (u32) spC);
+            this->unk34 = spC - 0x20;
+            if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
+                temp_r29_55 = (this->unk34 + 0x1F) & 0xFFFFFFE0;
+                temp_r3_57 = RequestPreloadedTextureRegion(temp_r29_55, (unsigned int *) &sp8);
+                if (temp_r3_57 != NULL) {
+                    this->unk48 = temp_r3_57;
+                    this->unk38 = 0;
+                    M2C_FIELD(this, u8 *, 0x3C) = 1U;
+                    this->unk24 = M2C_FIELD(var_r31_0, s32 *, 4);
+                    this->unk28 = M2C_FIELD(var_r31_0, s32 *, 8);
+                    GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 0U);
+                    GXInitTexPreLoadRegion(temp_r3_57, sp8, (u32) temp_r29_55, 0U, 0U);
+                    GXPreLoadEntireTexture(&this->unk60, temp_r3_57);
+                    GXLoadTexObjPreLoaded(&this->unk60, this->unk48, GX_TEXMAP0);
+                    attemptToLockTextureInCache = 0;
+                    if (MKHeap::Current() != NULL) {
+                        ((MKHeap *) (MKHeap::Current()))->Free(var_r31_0, NULL, 0);
                         return;
                     }
+                    free(var_r31_0);
+                    return;
                 }
-                temp_r3_109 = ((MKHeap *) var_r3_46)->Current();
-                if (temp_r3_109 != NULL) {
-                    ((MKHeap *) (temp_r3_109->Current()))->Free(var_r31_0, NULL, 0);
-                } else {
-                    free((MKHeap *) var_r31_0);
-                }
-                goto block_11;
             }
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(var_r31_0, NULL, 0);
+            } else {
+                free(var_r31_0);
+            }
+            goto block_11;
+        }
 block_11:
-            if ((u8) M2C_FIELD(this, u8 *, 0x3C) == 0) {
-                temp_r3_134 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
-                var_r31_0 = temp_r3_134;
-                DCStoreRange(temp_r3_134, (u32) spC);
-                this->unk48 = (GXTexRegion *) var_r31_0;
-                this->unk38 = 1;
-                this->unk34 = (u32) spC;
-                this->unk24 = M2C_FIELD(var_r31_0, s32 *, 4);
-                this->unk28 = M2C_FIELD(var_r31_0, s32 *, 8);
-            }
-            temp_r0_148 = M2C_FIELD(var_r31_0, s32 *, 0);
-            switch (temp_r0_148) {                  /* irregular */
-            case 1:
-                break;
-            case 0:
-                memset(&this->unk60, 0, 0x20U);
-                GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_RGB5A3, GX_REPEAT, GX_REPEAT, 0U);
-                break;
-            case 2:
-                memset(&this->unk60, 0, 0x20U);
-                if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
-                    GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 0U);
-                } else {
-                    GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 1U);
-                    var_r5_208 = this->unk28;
-                    temp_r0_209 = this->unk24;
-                    if (temp_r0_209 < var_r5_208) {
-                        var_r5_208 = temp_r0_209;
-                    }
-                    var_r4_215 = 0x1F;
-                    var_ctr_217 = 0x20;
+        if ((u8) M2C_FIELD(this, u8 *, 0x3C) == 0) {
+            temp_r3_134 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
+            var_r31_0 = temp_r3_134;
+            DCStoreRange(temp_r3_134, (u32) spC);
+            this->unk48 = (GXTexRegion *) var_r31_0;
+            this->unk38 = 1;
+            this->unk34 = (u32) spC;
+            this->unk24 = M2C_FIELD(var_r31_0, s32 *, 4);
+            this->unk28 = M2C_FIELD(var_r31_0, s32 *, 8);
+        }
+        temp_r0_148 = M2C_FIELD(var_r31_0, s32 *, 0);
+        switch (temp_r0_148) {                      /* irregular */
+        case 1:
+            break;
+        case 0:
+            memset(&this->unk60, 0, 0x20U);
+            GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_RGB5A3, GX_REPEAT, GX_REPEAT, 0U);
+            break;
+        case 2:
+            memset(&this->unk60, 0, 0x20U);
+            if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
+                GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 0U);
+            } else {
+                GXInitTexObj(&this->unk60, var_r31_0 + 0x20, (u16) this->unk24, (u16) this->unk28, GX_TF_CMPR, GX_REPEAT, GX_REPEAT, 1U);
+                var_r5_208 = this->unk28;
+                temp_r0_209 = this->unk24;
+                if (temp_r0_209 < var_r5_208) {
+                    var_r5_208 = temp_r0_209;
+                }
+                var_r4_215 = 0x1F;
+                var_ctr_217 = 0x20;
 loop_25:
-                    if (!(var_r5_208 & (1 << var_r4_215))) {
-                        var_r4_215 -= 1;
-                        var_ctr_217 -= 1;
-                        if (var_ctr_217 != 0) {
-                            goto loop_25;
-                        }
+                if (!(var_r5_208 & (1 << var_r4_215))) {
+                    var_r4_215 -= 1;
+                    var_ctr_217 -= 1;
+                    if (var_ctr_217 != 0) {
+                        goto loop_25;
                     }
-                    if ((s32) Texture_filterType != 2) {
-                        if ((s32) Texture_filterType < 2) {
-                            if ((s32) Texture_filterType < 0) {
-                                goto block_33;
-                            }
-                            var_r4_242 = GX_LINEAR;
-                        } else {
-block_33:
-                            var_r4_242 = GX_LIN_MIP_LIN;
+                }
+                if ((s32) Texture_filterType != 2) {
+                    if ((s32) Texture_filterType < 2) {
+                        if ((s32) Texture_filterType < 0) {
+                            goto block_33;
                         }
+                        var_r4_242 = GX_LINEAR;
                     } else {
+block_33:
                         var_r4_242 = GX_LIN_MIP_LIN;
                     }
-                    GXInitTexObjLOD(&this->unk60, var_r4_242, GX_LINEAR, 0.0f, (f32) var_r4_215 - 3.0f, 0.0f, 1U, 0U, GX_ANISO_1);
+                } else {
+                    var_r4_242 = GX_LIN_MIP_LIN;
                 }
-                break;
+                GXInitTexObjLOD(&this->unk60, var_r4_242, GX_LINEAR, 0.0f, (f32) var_r4_215 - 3.0f, 0.0f, 1U, 0U, GX_ANISO_1);
             }
-            goto block_35;
+            break;
         }
+        goto block_35;
     }
 block_35:
     attemptToLockTextureInCache = 0;
@@ -167,20 +156,16 @@ block_35:
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) {
-    MKHeap *temp_r3_279;
-    MKHeap *temp_r3_287;
     MKHeap *var_r31_280;
     s8 *temp_r4_300;
     s8 *var_r3_294;
 
-    temp_r3_279 = Find(arg0);
-    var_r31_280 = temp_r3_279;
+    var_r31_280 = Find(arg0);
     if (var_r31_280 != NULL) {
         var_r31_280->unk2C += 1;
     } else {
-        temp_r3_287 = temp_r3_279->Current();
-        if (temp_r3_287 != NULL) {
-            var_r3_294 = ((MKHeap *) (temp_r3_287->Current()))->Alloc(0xA0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_294 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
         } else {
             var_r3_294 = malloc(0xA0);
         }
@@ -320,7 +305,7 @@ void Texture::CreateRenderTarget(const char *arg0, int arg1, int arg2, int arg3)
     s8 *var_r3_768;
 
     var_r30_749 = arg1;
-    if (stricmp(&lit_stringBase0, this, &lit_stringBase0) == NULL) {
+    if (stricmp(&lit_stringBase0, this, &lit_stringBase0) == 0) {
         var_r3_768 = CreateFromRawData(&MKMat_MK2_Standard_CaptureTextureData, (void *) arg2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x10) / 2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x14) / 2, 0, M2C_ERROR(/* Read from unset register $r9 */));
     } else {
         if (var_r30_749 > 0x80) {
@@ -334,13 +319,6 @@ void Texture::CreateRenderTarget(const char *arg0, int arg1, int arg2, int arg3)
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3, int arg4, int arg5) {
-    MKHeap *temp_r3_1025;
-    MKHeap *temp_r3_804;
-    MKHeap *temp_r3_812;
-    MKHeap *temp_r3_869;
-    MKHeap *temp_r3_919;
-    MKHeap *temp_r3_955;
-    MKHeap *temp_r3_991;
     MKHeap *temp_r6_890;
     MKHeap *var_r31_805;
     enum _GXTexWrapMode var_r8_903;
@@ -354,17 +332,14 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
     s8 *var_r3_927;
     s8 *var_r3_963;
     s8 *var_r3_998;
-    s8 temp_r3_846;
 
     var_r30_800 = arg0;
-    temp_r3_804 = Find(arg0);
-    var_r31_805 = temp_r3_804;
+    var_r31_805 = Find(arg0);
     if (var_r31_805 != NULL) {
         var_r31_805->unk2C += 1;
     } else {
-        temp_r3_812 = temp_r3_804->Current();
-        if (temp_r3_812 != NULL) {
-            var_r3_819 = ((MKHeap *) (temp_r3_812->Current()))->Alloc(0xA0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_819 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
         } else {
             var_r3_819 = malloc(0xA0);
         }
@@ -379,18 +354,16 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         strcpy((s8 *) var_r31_805, Str_CopyString(&this->unk0, 0x1F));
         var_r31_805->unk24 = arg2;
         var_r31_805->unk28 = (MKHeap *) arg3;
-        temp_r3_846 = var_r30_800 == NULL;
         M2C_FIELD(var_r31_805, s32 *, 0x34) = -1;
-        M2C_FIELD(var_r31_805, s8 *, 0x38) = temp_r3_846;
+        M2C_FIELD(var_r31_805, s8 *, 0x38) = (s8) (var_r30_800 == NULL);
         M2C_FIELD(var_r31_805, s8 *, 0x32) = 0;
         M2C_FIELD(var_r31_805, s8 *, 0x30) = 0;
         M2C_FIELD(var_r31_805, s8 *, 0x3C) = 0;
         switch (arg1) {                             /* irregular */
         case 0x0:
             if (var_r30_800 == NULL) {
-                temp_r3_869 = ((MKHeap *) temp_r3_846)->Current();
-                if (temp_r3_869 != NULL) {
-                    var_r3_877 = ((MKHeap *) (temp_r3_869->Current()))->Alloc(arg2 * arg3 * 4, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_877 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 4, NULL, 0);
                 } else {
                     var_r3_877 = malloc(arg2 * arg3 * 4);
                 }
@@ -413,9 +386,8 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4A:
             if (var_r30_800 == NULL) {
-                temp_r3_919 = ((MKHeap *) temp_r3_846)->Current();
-                if (temp_r3_919 != NULL) {
-                    var_r3_927 = ((MKHeap *) (temp_r3_919->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_927 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
                     var_r3_927 = malloc(arg2 * arg3 * 2);
                 }
@@ -426,9 +398,8 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4B:
             if (var_r30_800 == NULL) {
-                temp_r3_955 = ((MKHeap *) temp_r3_846)->Current();
-                if (temp_r3_955 != NULL) {
-                    var_r3_963 = ((MKHeap *) (temp_r3_955->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_963 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
                     var_r3_963 = malloc(arg2 * arg3 * 2);
                 }
@@ -439,9 +410,8 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x40:
             if (var_r30_800 == NULL) {
-                temp_r3_991 = ((MKHeap *) temp_r3_846)->Current();
-                if (temp_r3_991 != NULL) {
-                    var_r3_998 = ((MKHeap *) (temp_r3_991->Current()))->Alloc(arg2 * arg3, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_998 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3, NULL, 0);
                 } else {
                     var_r3_998 = malloc(arg2 * arg3);
                 }
@@ -452,9 +422,8 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4C:
             if (var_r30_800 == NULL) {
-                temp_r3_1025 = ((MKHeap *) temp_r3_846)->Current();
-                if (temp_r3_1025 != NULL) {
-                    var_r3_1033 = ((MKHeap *) (temp_r3_1025->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_1033 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
                     var_r3_1033 = malloc(arg2 * arg3 * 2);
                 }
@@ -495,7 +464,7 @@ loop_5:
     if (var_r30_1114 == NULL) {
         return NULL;
     }
-    if ((stricmp((MKResource *) var_r30_1114, (Texture *) temp_r31_1115) == NULL) && (((MKResource *) var_r30_1114)->IsResourceAvailable() != 0)) {
+    if ((stricmp((MKResource *) var_r30_1114, (Texture *) temp_r31_1115) == 0) && (((MKResource *) var_r30_1114)->IsResourceAvailable() != 0)) {
         return (MKHeap *) var_r30_1114;
     }
     var_r30_1114 = M2C_FIELD(var_r30_1114, s8 **, 0x80);
@@ -540,19 +509,15 @@ void Texture::Destroy() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s8 *Texture::Create(const char *arg0, float arg1) {
-    MKHeap *temp_r3_1214;
-    MKHeap *temp_r3_1222;
     MKHeap *var_r31_1215;
     s8 *temp_r3_1241;
 
-    temp_r3_1214 = Find(arg0);
-    var_r31_1215 = temp_r3_1214;
+    var_r31_1215 = Find(arg0);
     if (var_r31_1215 != NULL) {
         var_r31_1215->unk2C += 1;
     } else {
-        temp_r3_1222 = temp_r3_1214->Current();
-        if (temp_r3_1222 != NULL) {
-            var_r31_1215 = ((MKHeap *) (temp_r3_1222->Current()))->Alloc(0xA0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r31_1215 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
         } else {
             var_r31_1215 = malloc(0xA0);
         }

@@ -768,7 +768,6 @@ void DojoGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_1676;
     Goal<Enemy> *temp_r3_1697;
     Goal<Enemy> *temp_r3_1733;
-    MKHeap *temp_r3_1741;
     void **temp_r3_1681;
     void **temp_r3_1689;
     void **temp_r3_1723;
@@ -828,9 +827,8 @@ void DojoGoal_Think::Deinit() {
     }
     temp_r31_1738 = this->unk1C;
     if (temp_r31_1738 != NULL) {
-        temp_r3_1741 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1741 != NULL) {
-            ((MKHeap *) (temp_r3_1741->Current()))->Free(temp_r31_1738, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1738, NULL, 0);
         } else {
             free(temp_r31_1738);
         }
@@ -852,7 +850,6 @@ void DojoGoal_Think::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_2145;
     Goal<Enemy> *temp_r4_2156;
     Goal<Enemy> *temp_r4_2204;
-    MKHeap *temp_r3_2081;
     void **temp_r3_2192;
     void **temp_r4_2171;
     void *var_r3_2088;
@@ -1013,9 +1010,8 @@ void DojoGoal_Think::Init(Enemy *arg0) {
         }
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_2081 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_2081 != NULL) {
-            var_r3_2088 = ((MKHeap *) (temp_r3_2081->Current()))->Alloc(0xC, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_2088 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xC, NULL, 0);
         } else {
             var_r3_2088 = malloc(0xC);
         }

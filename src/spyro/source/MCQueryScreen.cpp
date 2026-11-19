@@ -25,7 +25,7 @@
 extern s32 GS_MenuSelect;
 extern void *autosaveCard;
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void MCQueryScreen::Update() {
     s32 sp34;
     s32 sp30;
@@ -39,7 +39,6 @@ void MCQueryScreen::Update() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    KDMemoryCard *temp_r3_95;
     UIContainer *temp_r3_176;
     UIContainer *temp_r3_224;
     UIContainer *temp_r3_234;
@@ -77,10 +76,9 @@ void MCQueryScreen::Update() {
             ExamineCard();
             return;
         }
-        temp_ret_95 = ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->GetNextCard();
-        temp_r3_95 = temp_ret_95;
-        if (temp_r3_95 != NULL) {
-            ((KDMemoryCard *) (temp_r3_95->GetNextCard()))->SetState((KDMCState) 2);
+        temp_ret_95 = KDMemoryCard::GetNextCard();
+        if (temp_ret_95 != 0U) {
+            ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
         } else {
             ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_95)))->SetState((KDMCState) 2);
         }
@@ -224,7 +222,6 @@ void MCQueryScreen::OnEnter() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    KDMemoryCard *var_r3_508;
     UIContainer *temp_r3_476;
     UIContainer *temp_r3_486;
     UIContainer *temp_r3_496;
@@ -351,7 +348,6 @@ void MCQueryScreen::OnEnter() {
     sp58 = 4;
     sp5C = 0;
     temp_r3_496->Message(&sp58, 4);
-    var_r3_508 = NULL;
     spA0 = 1;
     spA4 = 0;
     switch ((s32) *MCQueryScreen::query) {        /* switch 2; irregular */
@@ -407,7 +403,7 @@ void MCQueryScreen::OnEnter() {
         M2C_FIELD(*temp_r3_605, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_605, &sp28, 4);
         spA4 = 0;
         temp_r3_618 = this->unkE4;
-        var_r3_508 = temp_r3_618->Message(&spA0);
+        temp_r3_618->Message(&spA0);
         break;
     default:                                        /* switch 2 */
         temp_r30_625 = this->unkF8;
@@ -442,10 +438,10 @@ void MCQueryScreen::OnEnter() {
         M2C_FIELD(*temp_r3_673, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_673, &sp8, 4);
         spA4 = 1;
         temp_r3_686 = this->unkE4;
-        var_r3_508 = temp_r3_686->Message(&spA0);
+        temp_r3_686->Message(&spA0);
         break;
     }
-    if (((KDMemoryCard *) *MemoryCardScreen::selectedCard != NULL) && (var_r3_508->Update() == 0)) {
+    if (((KDMemoryCard *) *MemoryCardScreen::selectedCard != NULL) && (KDMemoryCard::Update() == 0)) {
         ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 2);
     }
 }

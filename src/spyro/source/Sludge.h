@@ -17,7 +17,7 @@ public:
     virtual void * Update(void);
     virtual void Collided(MKCollisionResult &);
     Sludge(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
     /* 0x150 */ f32 unk150;
     /* 0x154 */ f32 unk154;
     /* 0x158 */ f32 unk158;

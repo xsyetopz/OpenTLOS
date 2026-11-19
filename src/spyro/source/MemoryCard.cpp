@@ -268,7 +268,7 @@ void MCSaveScreen::Update() {
     void *var_r31_527;
 
     UIScreen::Update();
-    if (((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update() == 0) {
+    if (KDMemoryCard::Update() == 0) {
         var_r31_527 = NULL;
         temp_r3_534 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) (ui_cast<P8UISystem))->FindChild(P11UIContainer>__FP11UIContainer(GetRoot()), ""));
         if (temp_r3_534 != NULL) {
@@ -358,7 +358,7 @@ void MemoryCard_InitModule() {
     M2C_FIELD(&memCardSlotSizes, s32 *, 8) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 4) = temp_r3_704;
     MKMemoryCard_SetAppInfo(pDirectoryName, gameNameBuffer, (int *) &memCardSlotSizes);
-    ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
+    KDMemoryCard::InitModule();
     Autosave_InitModule();
     var_r4_717 = &UIObjectDescriptor::list;
 loop_3:

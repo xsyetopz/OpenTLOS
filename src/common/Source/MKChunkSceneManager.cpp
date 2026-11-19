@@ -840,9 +840,6 @@ void MKChunkSceneManager::Optimise() {
 #if 0 // DRAFT: type mismatch
 void MKChunkSceneManager::Deinit() {
     MKHeap *temp_r29_1521;
-    MKHeap *temp_r3_1505;
-    MKHeap *temp_r3_1522;
-    MKHeap *temp_r3_1536;
     MKLevelChunk **var_r3_1478;
     s32 temp_r29_1504;
     s32 var_r30_1422;
@@ -898,25 +895,22 @@ loop_10:
     ((MKSceneManager *) var_r3_1478)->PropResolver_Deinit();
     this->unk19 = 0;
     temp_r29_1504 = this->unkE8;
-    temp_r3_1505 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1505 != NULL) {
-        ((MKHeap *) (temp_r3_1505->Current()))->Free((void *) temp_r29_1504, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free((void *) temp_r29_1504, NULL, 0);
     } else {
         free(temp_r29_1504);
     }
     this->unkE8 = 0;
     this->unkE4 = 0;
     temp_r29_1521 = this->unkD8;
-    temp_r3_1522 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1522 != NULL) {
-        ((MKHeap *) (temp_r3_1522->Current()))->Free(temp_r29_1521, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_1521, NULL, 0);
     } else {
         free((s32) temp_r29_1521);
     }
     temp_r29_1535 = this->unkDC;
-    temp_r3_1536 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1536 != NULL) {
-        ((MKHeap *) (temp_r3_1536->Current()))->Free(temp_r29_1535, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_1535, NULL, 0);
     } else {
         free((s32) temp_r29_1535);
     }
@@ -928,12 +922,7 @@ loop_10:
 void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     s32 spC;
     u8 sp8;
-    MKHeap *temp_r3_1601;
-    MKHeap *temp_r3_1617;
-    MKHeap *temp_r3_1633;
-    MKHeap *var_r3_1608;
     MKHeap *var_r3_1624;
-    MKLevelChunk **temp_r3_1595;
     s32 temp_r26_1600;
     s32 temp_r26_1616;
     s32 temp_r26_1632;
@@ -947,6 +936,7 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     void *temp_r3_1672;
     void *temp_r3_1689;
     void *temp_ret_1662;
+    void *var_r3_1608;
     void *var_r3_1640;
     s8 *phi_r4_18;
 
@@ -964,29 +954,25 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     }
     this->unkE0 = var_r0_1585;
     ((MKSceneManager *) (M2C_ERROR(/* Read from unset register $r3 */)))->PropResolver_Init();
-    temp_r3_1595 = arg0->unk34;
-    this->unkEC = temp_r3_1595;
+    this->unkEC = arg0->unk34;
     this->unkA8 = -1;
     temp_r26_1600 = (s32) this->unkEC * 4;
-    temp_r3_1601 = ((MKHeap *) temp_r3_1595)->Current();
-    if (temp_r3_1601 != NULL) {
-        var_r3_1608 = ((MKHeap *) (temp_r3_1601->Current()))->Alloc(temp_r26_1600, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1608 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_1600, NULL, 0);
     } else {
         var_r3_1608 = malloc(temp_r26_1600);
     }
     this->unkE8 = (s32) var_r3_1608;
     temp_r26_1616 = (s32) this->unkEC * 4;
-    temp_r3_1617 = var_r3_1608->Current();
-    if (temp_r3_1617 != NULL) {
-        var_r3_1624 = ((MKHeap *) (temp_r3_1617->Current()))->Alloc(temp_r26_1616, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1624 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_1616, NULL, 0);
     } else {
         var_r3_1624 = malloc(temp_r26_1616);
     }
     this->unkD8 = var_r3_1624;
     temp_r26_1632 = (s32) this->unkEC * 4;
-    temp_r3_1633 = var_r3_1624->Current();
-    if (temp_r3_1633 != NULL) {
-        var_r3_1640 = ((MKHeap *) (temp_r3_1633->Current()))->Alloc(temp_r26_1632, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1640 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_1632, NULL, 0);
     } else {
         var_r3_1640 = malloc(temp_r26_1632);
     }

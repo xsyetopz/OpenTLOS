@@ -246,9 +246,7 @@ void PauseMenu_Reset(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void PauseMenu_Deinit() {
-    MKHeap *temp_r3_466;
     UIStringTable *temp_r30_452;
     UISystem *temp_r31_462;
 
@@ -258,9 +256,9 @@ void PauseMenu_Deinit() {
     if ((UISystem *) pSystem != NULL) {
         pSystem->FreeResources();
         temp_r31_462 = pSystem;
-        temp_r3_466 = ((MKHeap *) (pSystem->Deinit()))->Current();
-        if (temp_r3_466 != NULL) {
-            ((MKHeap *) (temp_r3_466->Current()))->Free(temp_r31_462, NULL, 0);
+        pSystem->Deinit();
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_462, NULL, 0);
         } else {
             free(temp_r31_462);
         }
@@ -271,9 +269,8 @@ void PauseMenu_Deinit() {
     UIStringTable_SetCurrent(temp_r30_452);
     strings.Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIStringTable *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void PauseMenu_Init() {
     MCLoadCheckScreen *temp_r3_554;
     MCLoadCheckScreen *temp_r3_572;
@@ -281,8 +278,6 @@ void PauseMenu_Init() {
     MCLoadCheckScreen *temp_r3_608;
     MCLoadCheckScreen *temp_r3_626;
     MCLoadCheckScreen *temp_r3_644;
-    MKHeap *temp_r3_508;
-    MKHeap *temp_r3_513;
     UIObject *var_r30_521;
     UIObjectDescriptor *var_r4_547;
     UIObjectDescriptor *var_r4_564;
@@ -290,14 +285,14 @@ void PauseMenu_Init() {
     UIObjectDescriptor *var_r4_600;
     UIObjectDescriptor *var_r4_618;
     UIObjectDescriptor *var_r4_636;
+    UIStringTable *temp_r31_510;
     s32 temp_r30_512;
 
     strings.Init(0x1000);
-    temp_r3_508 = UIStringTable_SetCurrent(&strings);
+    temp_r31_510 = UIStringTable_SetCurrent(&strings);
     temp_r30_512 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
-    temp_r3_513 = temp_r3_508->Current();
-    if (temp_r3_513 != NULL) {
-        var_r30_521 = ((MKHeap *) (temp_r3_513->Current()))->Alloc(temp_r30_512, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r30_521 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_512, NULL, 0);
     } else {
         var_r30_521 = malloc(temp_r30_512);
     }
@@ -370,7 +365,7 @@ loop_31:
         pSystem->Resolve();
         pSystem->LoadResources();
     }
-    UIStringTable_SetCurrent((UIStringTable *) temp_r3_508);
+    UIStringTable_SetCurrent(temp_r31_510);
     M2C_FIELD(&pBackground, MKResource **, 0) = MKMaterial_Create"ui_pause_bg1";
     M2C_FIELD(&pBackground, MKResource **, 4) = MKMaterial_Create"ui_pause_bg2";
 }

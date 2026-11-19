@@ -297,7 +297,6 @@ void EnemyGoal_GraphBarricade::Deinit() {
     Goal<Enemy> *temp_r3_535;
     Goal<Enemy> *temp_r3_548;
     Goal<Enemy> *temp_r3_558;
-    MKHeap *temp_r3_571;
     f32 temp_r3_525;
     s32 temp_r3_520;
     void **temp_r3_530;
@@ -327,9 +326,8 @@ void EnemyGoal_GraphBarricade::Deinit() {
     }
     temp_r31_568 = this->unk1C;
     if (temp_r31_568 != NULL) {
-        temp_r3_571 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_571 != NULL) {
-            ((MKHeap *) (temp_r3_571->Current()))->Free(temp_r31_568, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_568, NULL, 0);
         } else {
             free(temp_r31_568);
         }
@@ -349,7 +347,6 @@ void EnemyGoal_GraphBarricade::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r3_842;
     Goal<Enemy> *temp_r4_831;
     Goal<Enemy> *temp_r4_848;
-    MKHeap *temp_r3_760;
     f32 temp_r4_811;
     s32 temp_r4_796;
     void **temp_r4_820;
@@ -429,9 +426,8 @@ void EnemyGoal_GraphBarricade::Init(Enemy *arg0) {
         }
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_760 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_760 != NULL) {
-            var_r3_767 = ((MKHeap *) (temp_r3_760->Current()))->Alloc(8, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_767 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
         } else {
             var_r3_767 = malloc(8);
         }
@@ -2788,7 +2784,6 @@ void EnemyGoal_FollowGraph::Deinit() {
     Goal<Enemy> *temp_r3_5908;
     Goal<Enemy> *temp_r3_5918;
     Goal<Enemy> *temp_r3_5928;
-    MKHeap *temp_r3_5941;
     void **temp_r3_5798;
     void *temp_r30_5938;
 
@@ -2922,9 +2917,8 @@ void EnemyGoal_FollowGraph::Deinit() {
     }
     temp_r30_5938 = this->unk1C;
     if (temp_r30_5938 != NULL) {
-        temp_r3_5941 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_5941 != NULL) {
-            ((MKHeap *) (temp_r3_5941->Current()))->Free(temp_r30_5938, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_5938, NULL, 0);
         } else {
             free(temp_r30_5938);
         }
@@ -2966,7 +2960,6 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     Goal<Enemy> *temp_r4_7098;
     Goal<Enemy> *temp_r4_7127;
     Goal<Enemy> *temp_r4_7148;
-    MKHeap *temp_r3_6806;
     void **temp_r4_6998;
     void *var_r3_6813;
 
@@ -3346,9 +3339,8 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
         }
     }
     if ((u8) this->unk9 == 0) {
-        temp_r3_6806 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_6806 != NULL) {
-            var_r3_6813 = ((MKHeap *) (temp_r3_6806->Current()))->Alloc(0x10, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_6813 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10, NULL, 0);
         } else {
             var_r3_6813 = malloc(0x10);
         }

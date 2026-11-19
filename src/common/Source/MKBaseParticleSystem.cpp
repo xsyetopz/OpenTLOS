@@ -126,7 +126,6 @@ MKParticleChunk *MKParticleSystem_AllocChunk(int arg0) {
 
 #if 0 // DRAFT: type mismatch
 void MKParticleSystem_DeinitModule() {
-    MKHeap *temp_r3_162;
     MKParticleChunk **var_r31_136;
     MKParticleChunk **var_r3_137;
     MKParticleChunk **var_r4_135;
@@ -157,9 +156,8 @@ loop_9:
             var_r4_135 += 4;
             goto loop_9;
         }
-        temp_r3_162 = ((MKHeap *) var_r3_137)->Current();
-        if (temp_r3_162 != NULL) {
-            ((MKHeap *) (temp_r3_162->Current()))->Free(var_r31_136, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_136, NULL, 0);
         } else {
             free(var_r31_136);
         }
@@ -170,23 +168,19 @@ loop_9:
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MKParticleSystem_InitModule(int arg0) {
-    MKHeap *temp_r3_201;
     MKParticleChunk **temp_r4_223;
     MKParticleChunk **var_r3_211;
     s32 temp_r31_193;
-    s32 temp_r3_189;
     s32 var_ctr_226;
 
-    temp_r3_189 = arg0 + 0x17;
-    temp_r31_193 = temp_r3_189 / 24;
+    temp_r31_193 = (s32) (arg0 + 0x17) / 24;
     gTotalNumChunks = temp_r31_193;
     if (temp_r31_193 == 0) {
         gParticleChunks = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_201 = ((MKHeap *) temp_r3_189)->Current();
-    if (temp_r3_201 != NULL) {
-        var_r3_211 = ((MKHeap *) (temp_r3_201->Current()))->Alloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_211 = ((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90), NULL, 0);
     } else {
         var_r3_211 = malloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90));
     }

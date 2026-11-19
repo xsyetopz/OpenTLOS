@@ -114,7 +114,7 @@ void Music_Duck(float arg0, float arg1) {
     if (var_f1_0 != 0.0f) {
 
     } else {
-        ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetWorldInfo();
+        Level::GetWorldInfo();
         var_f1_0 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x74);
     }
     if ((s32) stack[3] > -1) {
@@ -520,7 +520,6 @@ block_18:
 
 #if 0 // DRAFT: illegal type
 void Music_Deinit() {
-    MKHeap *temp_r3_1038;
     s32 var_r30_1018;
     s32 var_r31_1019;
     void *temp_r31_1037;
@@ -537,9 +536,8 @@ loop_3:
             goto loop_3;
         }
         temp_r31_1037 = pTracks;
-        temp_r3_1038 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_1038 != NULL) {
-            ((MKHeap *) (temp_r3_1038->Current()))->Free(temp_r31_1037, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_1037, NULL, 0);
         } else {
             free(temp_r31_1037);
         }
@@ -556,7 +554,6 @@ void Music_Init() {
     s32 sp28;
     M2C_UNK sp8;
     M2C_UNK *var_r28_1188;
-    MKHeap *temp_r3_1156;
     MKIniLine *var_r27_1101;
     MKIniLine *var_r27_1213;
     MKIniLine *var_r29_1122;
@@ -575,8 +572,10 @@ void Music_Init() {
     pHeldTrack = NULL;
     pDelayedTrackBuffer[0x20] = 0;
     pDelayedTrackBuffer[0x21] = 0;
-    ((MKHeap *) (strcpy(pDelayedTrackBuffer, "")))->ActivateTempMemOverride();
-    ((MKHeap *) (sp30.Init("music.ini", 0, NULL)))->DeactivateTempMemOverride();
+    strcpy(pDelayedTrackBuffer, "");
+    MKHeap::ActivateTempMemOverride();
+    sp30.Init("music.ini", 0, NULL);
+    MKHeap::DeactivateTempMemOverride();
     var_r28_1098 = 0;
     var_r27_1101 = sp30.GetFirstLine();
 loop_9:
@@ -599,9 +598,8 @@ loop_7:
     }
     stringTable.Init(var_r28_1098);
     temp_r26_1155 = trackCount * 0x28;
-    temp_r3_1156 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1156 != NULL) {
-        var_r3_1163 = ((MKHeap *) (temp_r3_1156->Current()))->Alloc(temp_r26_1155, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1163 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r26_1155, NULL, 0);
     } else {
         var_r3_1163 = malloc(temp_r26_1155);
     }

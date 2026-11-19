@@ -2027,7 +2027,6 @@ void KDSP_Actor::Draw() {
 void KDSP_Actor::Deinit(bool arg0) {
     KDS_Message_PropEnd sp8;
     MKAnimScript *temp_r3_3586;
-    MKHeap *temp_r3_3504;
     Matrix *temp_r31_3501;
     s32 temp_r0_3479;
     s32 temp_r29_3524;
@@ -2063,9 +2062,8 @@ loop_7:
     if (this->unk40 & 4) {
         temp_r31_3501 = this->unk34;
         if (temp_r31_3501 != NULL) {
-            temp_r3_3504 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_3504 != NULL) {
-                ((MKHeap *) (temp_r3_3504->Current()))->Free(temp_r31_3501, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_3501, NULL, 0);
             } else {
                 free(temp_r31_3501);
             }
@@ -2199,7 +2197,6 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
     s8 sp8;
     MKAnimScript *temp_r3_3940;
     MKAnimScript *temp_r4_3996;
-    MKHeap *temp_r3_3850;
     MKModel *var_r4_4009;
     Matrix *var_r3_3857;
     s8 *temp_r31_3934;
@@ -2207,9 +2204,8 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
     u32 temp_r3_3875;
 
     if (this->unk40 & 4) {
-        temp_r3_3850 = MKHeap::Current();
-        if (temp_r3_3850 != NULL) {
-            var_r3_3857 = ((MKHeap *) (temp_r3_3850->Current()))->Alloc(0x40, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_3857 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x40, NULL, 0);
         } else {
             var_r3_3857 = malloc(0x40);
         }

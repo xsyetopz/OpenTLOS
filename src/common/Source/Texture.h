@@ -17,7 +17,7 @@ public:
     MKHeap * Find(const char *);
     void Destroy(void);
     s8 * Create(const char *, float);
-    void InitModule(void);
+    static void InitModule(void);
     static u8 initialised[0x1];
     /* 0x000 */ s8 unk0;
     /* 0x001 */ u8 pad1[0x1f];

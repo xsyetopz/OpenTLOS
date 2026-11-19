@@ -31,7 +31,7 @@
 f64 atof(s8 *);                                     /* extern */
 M2C_UNK free(PhraseEvent *);                        /* extern */
 PhraseEvent *malloc(s32);                           /* extern */
-MKHeap *strcat(s8 *, s8 *);                         /* extern */
+M2C_UNK strcat(s8 *, s8 *);                         /* extern */
 s32 stricmp(s8 *, s8 *);                            /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
@@ -285,34 +285,28 @@ void PhrasePlayer_Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'PhraseEvent' to
 void PhrasePlayer_UnloadIniData(PhraseEvent **arg0, int *arg1, UIStringTable *arg2) {
-    MKHeap *temp_r3_548;
-    PhraseEvent **temp_r27_522;
-    PhraseEvent **var_r3_0;
     PhraseEvent *temp_r31_547;
     s32 var_r30_528;
     s32 var_r31_529;
 
-    var_r3_0 = arg0;
-    temp_r27_522 = var_r3_0;
-    if ((PhraseEvent *) *var_r3_0 != NULL) {
+    if ((PhraseEvent *) *arg0 != NULL) {
         var_r30_528 = 0;
         var_r31_529 = 0;
 loop_3:
         if (var_r30_528 < (s32) *arg1) {
-            arg2->Remove(*(*temp_r27_522 + var_r31_529));
-            var_r3_0 = arg2->Remove(*(*temp_r27_522 + (var_r31_529 + 4)));
+            arg2->Remove(*(*arg0 + var_r31_529));
+            arg2->Remove(*(*arg0 + (var_r31_529 + 4)));
             var_r30_528 += 1;
             var_r31_529 += 0x18;
             goto loop_3;
         }
-        temp_r31_547 = *temp_r27_522;
-        temp_r3_548 = ((MKHeap *) var_r3_0)->Current();
-        if (temp_r3_548 != NULL) {
-            ((MKHeap *) (temp_r3_548->Current()))->Free(temp_r31_547, NULL, 0);
+        temp_r31_547 = *arg0;
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_547, NULL, 0);
         } else {
             free(temp_r31_547);
         }
-        *temp_r27_522 = NULL;
+        *arg0 = NULL;
         *arg1 = 0;
     }
     arg2->Deinit();
@@ -334,7 +328,6 @@ void PhrasePlayer_LoadIni(const char *arg0, PhraseEvent **arg1, int *arg2, UIStr
     s32 sp14;
     s32 sp10;
     s32 sp8;
-    MKHeap *temp_r3_681;
     MKIniLine *var_r26_739;
     MKIniLine *var_r27_619;
     MKIniLine *var_r28_704;
@@ -349,8 +342,10 @@ void PhrasePlayer_LoadIni(const char *arg0, PhraseEvent **arg1, int *arg2, UIStr
     s32 var_r4_766;
     u8 temp_r3_771;
 
-    ((MKHeap *) (memset(&sp8, 0, 0x18U)))->ActivateTempMemOverride();
-    ((MKHeap *) (sp20.Init(arg0, 0, NULL)))->DeactivateTempMemOverride();
+    memset(&sp8, 0, 0x18U);
+    MKHeap::ActivateTempMemOverride();
+    sp20.Init(arg0, 0, NULL);
+    MKHeap::DeactivateTempMemOverride();
     var_r28_616 = 0;
     var_r27_619 = sp20.GetFirstLine();
 loop_9:
@@ -377,9 +372,8 @@ loop_7:
     }
     arg3->Init(var_r28_616);
     temp_r25_680 = *arg2 * 0x18;
-    temp_r3_681 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_681 != NULL) {
-        var_r3_688 = ((MKHeap *) (temp_r3_681->Current()))->Alloc(temp_r25_680, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_688 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_680, NULL, 0);
     } else {
         var_r3_688 = malloc(temp_r25_680);
     }
@@ -463,7 +457,6 @@ void PhrasePlayer_Init() {
 
 #if 0 // DRAFT: pointer/array required
 void Phrase_Unload() {
-    MKHeap *temp_r3_946;
     PhraseEvent *temp_r30_943;
 
     if ((s32) M2C_FIELD(phraseData, s32 *, 0x28) > -1) {
@@ -482,9 +475,8 @@ loop_3:
     }
     temp_r30_943 = M2C_FIELD(phraseData, PhraseEvent **, 0x38);
     if (temp_r30_943 != NULL) {
-        temp_r3_946 = ((MKHeap *) phraseData)->Current();
-        if (temp_r3_946 != NULL) {
-            ((MKHeap *) (temp_r3_946->Current()))->Free(temp_r30_943, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_943, NULL, 0);
         } else {
             free(temp_r30_943);
         }
@@ -501,53 +493,45 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'MKArchive_Load(signed char *, int, int, int)' does not
 void Phrase_LoadSound() {
     s32 sp8;
     M2C_UNK temp_r30_1006;
-    MKHeap *temp_r3_1012;
-    MKHeap *temp_r3_1024;
-    MKHeap *temp_r3_1034;
-    MKHeap *temp_r3_1065;
     PhraseEvent *temp_r3_1086;
     PhraseEvent *var_r3_1072;
     PhraseEvent *var_r4_1091;
     s32 temp_r30_1064;
-    s32 temp_r3_1030;
+    s8 *temp_r29_1025;
     s8 *temp_r29_1056;
+    s8 *temp_r31_1013;
     s8 *temp_r3_1054;
-    u8 temp_r3_1059;
     u8 temp_r3_1096;
 
     GameLanguage_GetAudioCode(-1);
     temp_r30_1006 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_1012 = Str_Printf("%s%s", phraseData, temp_r30_1006);
-    temp_r3_1012->ActivateTempMemOverride();
-    temp_r3_1024 = MKArchive_Load(Str_Printf("%s.gsb", temp_r3_1012), NULL, NULL, -1);
-    temp_r3_1024->DeactivateTempMemOverride();
-    temp_r3_1030 = Sound_LoadBankFromMemory((SoundBankHeader *) temp_r3_1024, 0U, -1);
-    M2C_FIELD(phraseData, s32 *, 0x2C) = temp_r3_1030;
-    temp_r3_1034 = ((MKHeap *) temp_r3_1030)->Current();
-    if (temp_r3_1034 != NULL) {
-        ((MKHeap *) (temp_r3_1034->Current()))->Free(temp_r3_1024, NULL, 0);
+    temp_r31_1013 = Str_Printf("%s%s", phraseData, temp_r30_1006);
+    MKHeap::ActivateTempMemOverride();
+    temp_r29_1025 = MKArchive_Load(Str_Printf("%s.gsb", temp_r31_1013), NULL, NULL, -1);
+    MKHeap::DeactivateTempMemOverride();
+    M2C_FIELD(phraseData, s32 *, 0x2C) = Sound_LoadBankFromMemory((SoundBankHeader *) temp_r29_1025, 0U, -1);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_1025, NULL, 0);
     } else {
-        free((PhraseEvent *) temp_r3_1024);
+        free((PhraseEvent *) temp_r29_1025);
     }
     temp_r3_1054 = Str_Printf("%s%s.sub", phraseData, temp_r30_1006, "");
     temp_r29_1056 = temp_r3_1054;
     sp8 = 0;
-    temp_r3_1059 = MKArchive_Exists(temp_r3_1054, (int *) &sp8);
-    if (temp_r3_1059 != 0) {
-        ((MKHeap *) temp_r3_1059)->ActivateTempMemOverride();
+    if (MKArchive_Exists(temp_r3_1054, (int *) &sp8) != 0) {
+        MKHeap::ActivateTempMemOverride();
         temp_r30_1064 = sp8 + 1;
-        temp_r3_1065 = ((MKHeap *) sp8)->Current();
-        if (temp_r3_1065 != NULL) {
-            var_r3_1072 = ((MKHeap *) (temp_r3_1065->Current()))->Alloc(temp_r30_1064, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_1072 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_1064, NULL, 0);
         } else {
             var_r3_1072 = malloc(temp_r30_1064);
         }
         M2C_FIELD(phraseData, PhraseEvent **, 0x38) = var_r3_1072;
-        ((MKHeap *) var_r3_1072)->DeactivateTempMemOverride();
+        MKHeap::DeactivateTempMemOverride();
         temp_r3_1086 = MKArchive_Load(temp_r29_1056, NULL, M2C_FIELD(phraseData, PhraseEvent **, 0x38), sp8);
         M2C_FIELD(phraseData, PhraseEvent **, 0x38) = temp_r3_1086;
         *(temp_r3_1086 + sp8) = 0;
@@ -562,7 +546,7 @@ loop_9:
             ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle(&var_r4_1091->unk1, 9, 0U);
         }
     }
-    Sound_Play(Sound_GetID((s8 *) temp_r3_1012));
+    Sound_Play(Sound_GetID(temp_r31_1013));
     M2C_FIELD(phraseData, s32 *, 0x20) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
     MKPackage_QFree(M2C_FIELD(phraseData, s32 *, 0x28));
     M2C_FIELD(phraseData, s32 *, 0x28) = -1;
@@ -574,22 +558,18 @@ loop_9:
 void Phrase_LoadPackage() {
     s8 sp8;
     M2C_UNK temp_r31_1144;
-    s32 temp_r3_1191;
-    s32 var_r3_1166;
     s8 *temp_r3_1163;
 
     GameLanguage_GetAudioCode(-1);
     temp_r31_1144 = M2C_ERROR(/* Read from unset register $r3 */);
     temp_r3_1163 = Str_Printf("%s%s.sub", phraseData, temp_r31_1144, "", M2C_BITWISE(f32, strcpy(&sp8, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".gsb"))));
-    var_r3_1166 = MKArchive_Exists(temp_r3_1163, NULL);
-    if ((u8) var_r3_1166 != 0) {
+    if (MKArchive_Exists(temp_r3_1163, NULL) != 0) {
         strcat(&sp8, "\n");
-        var_r3_1166 = strcat(&sp8, temp_r3_1163);
+        strcat(&sp8, temp_r3_1163);
     }
-    ((MKHeap *) var_r3_1166)->ActivateTempMemOverride();
-    temp_r3_1191 = MKPackage_QLoadDynamic(&sp8, 0, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".pkg"));
-    M2C_FIELD(phraseData, s32 *, 0x28) = temp_r3_1191;
-    ((MKHeap *) temp_r3_1191)->DeactivateTempMemOverride();
+    MKHeap::ActivateTempMemOverride();
+    M2C_FIELD(phraseData, s32 *, 0x28) = MKPackage_QLoadDynamic(&sp8, 0, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".pkg"));
+    MKHeap::DeactivateTempMemOverride();
     M2C_FIELD(phraseData, s32 *, 0x24) = 2;
 }
 #endif

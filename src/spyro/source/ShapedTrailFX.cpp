@@ -34,8 +34,6 @@ void ShapedTrailFX::Reset() {
 void ShapedTrailFX::Deinit() {
     MKHeap *temp_r31_75;
     MKHeap *temp_r31_94;
-    MKHeap *temp_r3_78;
-    MKHeap *temp_r3_97;
     MKMaterial *temp_r3_68;
 
     MKProp::Deinit();
@@ -46,9 +44,8 @@ void ShapedTrailFX::Deinit() {
     }
     temp_r31_75 = this->unk84;
     if (temp_r31_75 != NULL) {
-        temp_r3_78 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_78 != NULL) {
-            ((MKHeap *) (temp_r3_78->Current()))->Free(temp_r31_75, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_75, NULL, 0);
         } else {
             free(temp_r31_75);
         }
@@ -56,9 +53,8 @@ void ShapedTrailFX::Deinit() {
     }
     temp_r31_94 = this->unk80;
     if (temp_r31_94 != NULL) {
-        temp_r3_97 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_97 != NULL) {
-            ((MKHeap *) (temp_r3_97->Current()))->Free(temp_r31_94, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_94, NULL, 0);
         } else {
             free(temp_r31_94);
         }
@@ -537,23 +533,19 @@ void ShapedTrailFX::InitData(MKModel *arg0, const int &arg1, char *arg2, const i
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ShapedTrailFX::Init() {
-    MKHeap *temp_r3_1040;
-    MKHeap *temp_r3_1054;
     MKHeap *var_r3_1047;
     MKHeap *var_r3_1061;
 
     MKProp::Init();
     this->unk7C = NULL;
-    temp_r3_1040 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1040 != NULL) {
-        var_r3_1047 = ((MKHeap *) (temp_r3_1040->Current()))->Alloc(0x50, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1047 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x50, NULL, 0);
     } else {
         var_r3_1047 = malloc(0x50);
     }
     this->unk80 = var_r3_1047;
-    temp_r3_1054 = var_r3_1047->Current();
-    if (temp_r3_1054 != NULL) {
-        var_r3_1061 = ((MKHeap *) (temp_r3_1054->Current()))->Alloc(0xA0, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1061 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xA0, NULL, 0);
     } else {
         var_r3_1061 = malloc(0xA0);
     }

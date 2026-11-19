@@ -23,15 +23,15 @@ extern s32 iLevels;
 extern void *pLevelSettings;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
 static DataMap estDataMap[0xA] = {
-    { 0, .L_8036C270 },
-    { 1, .L_8036C27B },
-    { 2, .L_8036C286 },
-    { 3, .L_8036C297 },
-    { 4, .L_8036C2AE },
-    { 5, .L_8036C2C5 },
-    { 6, .L_8036C2D6 },
-    { 7, .L_8036C2E6 },
-    { 8, .L_8036C303 },
+    { 0, "Health" },
+    { 1, "Armour" },
+    { 2, "DefensiveMax" },
+    { 3, "DefensiveHitWeight" },
+    { 4, "DefensiveDecayRate" },
+    { 5, "AttackDamage" },
+    { 6, "AttackDelay" },
+    { 7, "AttackDefensiveThreshold" },
+    { 8, "AttackDefensivePenalty" },
     { 9, NULL },
 };
 #endif
@@ -40,221 +40,11 @@ static f32 baselineSettings[9];
 static struct _struct_ddaSettings_0x24 ddaSettings[5];
 #endif
 static s32 iEnemyDDALevel = 2;
-#if 0 // DRAFT: declaration syntax error
-static Level lit_618;                                  /* type too large by 0xDE; unable to generate initializer: confusing struct layout; const */
-static s8 .L_8036C270[0xB] = { 0x48, 0x65, 0x61, 0x6C, 0x74, 0x68, 0, 0x45, 0x53, 0x54, 0x5F }; /* const */
-static s8 .L_8036C27B[0xB] = { 0x41, 0x72, 0x6D, 0x6F, 0x75, 0x72, 0, 0x45, 0x53, 0x54, 0x5F }; /* const */
-static s8 .L_8036C286[0x11] = {
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x4D,
-    0x61,
-    0x78,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C297[0x17] = {
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x48,
-    0x69,
-    0x74,
-    0x57,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C2AE[0x17] = {
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x44,
-    0x65,
-    0x63,
-    0x61,
-    0x79,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C2C5[0x11] = {
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x44,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C2D6[0x10] = {
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C2E6[0x1D] = {
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x54,
-    0x68,
-    0x72,
-    0x65,
-    0x73,
-    0x68,
-    0x6F,
-    0x6C,
-    0x64,
-    0,
-    0x45,
-    0x53,
-    0x54,
-    0x5F,
-}; /* const */
-static s8 .L_8036C303[0x43] = {
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x6B,
-    0x44,
-    0x65,
-    0x66,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x50,
-    0x65,
-    0x6E,
-    0x61,
-    0x6C,
-    0x74,
-    0x79,
-    0,
-    0x44,
-    0x44,
-    0x41,
-    0,
-    0x64,
-    0x69,
-    0x66,
-    0x66,
-    0x69,
-    0x63,
-    0x75,
-    0x6C,
-    0x74,
-    0x79,
-    0,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x62,
-    0x61,
-    0x73,
-    0x65,
-    0x6C,
-    0x69,
-    0x6E,
-    0x65,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x44,
-    0x44,
-    0x41,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-}; /* const */
+static M2C_UNK lit_618;                                /* unable to generate initializer: unknown type; const */
 
 void EnemySettings_UnregisterSettings(EnemySettings *arg0) {
 
 }
-#endif
 
 void EnemySettings_RegisterSettings(const char *arg0, EnemySettings *arg1) {
 
@@ -372,12 +162,11 @@ void EnemySettings_ParseIniFile(const char *arg0) {
     Level *var_r30_324;
     MKIniLine *temp_r3_317;
     s32 var_r31_325;
-    u8 temp_r3_306;
 
-    temp_r3_306 = ((MKIni *) arg0)->Exists(M2C_ERROR(/* Read from unset register $r4 */));
-    if (temp_r3_306 != 0) {
-        ((MKHeap *) temp_r3_306)->ActivateTempMemOverride();
-        ((MKHeap *) (sp8.Init(arg0, 0, NULL)))->DeactivateTempMemOverride();
+    if (((MKIni *) arg0)->Exists(M2C_ERROR(/* Read from unset register $r4 */)) != 0) {
+        MKHeap::ActivateTempMemOverride();
+        sp8.Init(arg0, 0, NULL);
+        MKHeap::DeactivateTempMemOverride();
         temp_r3_317 = sp8.GetFirstLine();
         EnemySettings_ParseEnemyDDALevel(temp_r3_317);
         EnemySettings_ParseBaselineSettings(temp_r3_317);
@@ -391,22 +180,20 @@ loop_3:
             var_r31_325 += 0x24;
             goto loop_3;
         }
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->ActivateTempMemOverride();
+        MKHeap::ActivateTempMemOverride();
         sp8.Deinit();
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
+        MKHeap::DeactivateTempMemOverride();
     }
 }
 #endif
 
 void EnemySettings_DeinitModule() {
-    MKHeap *temp_r3_372;
     void *temp_r31_369;
 
     temp_r31_369 = pLevelSettings;
     if (temp_r31_369 != NULL) {
-        temp_r3_372 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_372 != NULL) {
-            ((MKHeap *) (temp_r3_372->Current()))->Free(temp_r31_369, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_369, NULL, 0);
         } else {
             free(temp_r31_369);
         }
@@ -414,37 +201,33 @@ void EnemySettings_DeinitModule() {
     pLevelSettings = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_618'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void EnemySettings_InitModule() {
     s8 sp8;
     M2C_UNK sp4;
-    MKHeap *temp_r3_440;
     s32 temp_r30_439;
     s32 var_r29_458;
     s32 var_r29_472;
     s32 var_r31_459;
     s32 var_r31_474;
     u32 temp_r4_428;
-    u8 temp_r3_433;
     void *temp_r4_405;
     void *var_r3_447;
 
     temp_r4_405 = &lit_618 - 4;
     M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) ((u8 *) temp_r4_405) + 4, 0x10);
     M2C_FIELD((&sp4 + 0x10), u16 *, 4) = (u16) M2C_FIELD((((u8 *) temp_r4_405) + 0x10), u16 *, 4);
-    iLevels = lit_618.GetLevelCount();
+    iLevels = Level::GetLevelCount();
     pLevelSettings = NULL;
     memset(baselineSettings, 0, 0x24U);
     temp_r4_428 = (u32) (u64) memset(ddaSettings, 0, 0xB4U);
     if ((s32) iLevels != 0) {
-        temp_r3_433 = ((MKIni *) &sp8)->Exists((s8 *) temp_r4_428);
-        if (temp_r3_433 == 0) {
+        if (((MKIni *) &sp8)->Exists((s8 *) temp_r4_428) == 0) {
             return;
         }
         temp_r30_439 = iLevels * 0x24;
-        temp_r3_440 = ((MKHeap *) temp_r3_433)->Current();
-        if (temp_r3_440 != NULL) {
-            var_r3_447 = ((MKHeap *) (temp_r3_440->Current()))->Alloc(temp_r30_439, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            var_r3_447 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_439, NULL, 0);
         } else {
             var_r3_447 = malloc(temp_r30_439);
         }
@@ -471,7 +254,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'estDataMap'
+#if 0 // DRAFT: function call 'DataMap_GetName(signed char[10], unsigned long)' does not
 void EnemySettings::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_508;
     s32 var_r31_513;

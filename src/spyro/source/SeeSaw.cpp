@@ -130,8 +130,6 @@ void *SeeSaw::Update() {
     s32 sp14;
     f32 sp10;
     s32 sp8;
-    MKHeap *temp_r3_191;
-    MKHeap *temp_r3_559;
     Platform *temp_r3_222;
     Platform *temp_r3_545;
     PlatformAttachment *var_r26_211;
@@ -179,9 +177,8 @@ void *SeeSaw::Update() {
     temp_r0_187 = this->unk13C;
     if (temp_r0_187 != 0) {
         temp_r27_190 = temp_r0_187 * 0x10;
-        temp_r3_191 = ((MKHeap *) &MKVector3::zero)->Current();
-        if (temp_r3_191 != NULL) {
-            var_r3_199 = ((MKHeap *) (temp_r3_191->Main()))->TAlloc(temp_r27_190, NULL, 0, 0U);
+        if (MKHeap::Current() != NULL) {
+            var_r3_199 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r27_190, NULL, 0, 0U);
         } else {
             var_r3_199 = malloc(temp_r27_190);
         }
@@ -316,9 +313,8 @@ loop_24:
         goto loop_24;
     }
     if (sp1B0 != NULL) {
-        temp_r3_559 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-        if (temp_r3_559 != NULL) {
-            ((MKHeap *) (temp_r3_559->Main()))->TFree(sp1B0, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Main()))->TFree(sp1B0, NULL, 0);
             return;
         }
         free(sp1B0);

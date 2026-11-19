@@ -30,7 +30,7 @@ extern u32 gMKArchive_ArchiveOverride;
 extern s32 nmbrRkvs;
 extern u8 (*pExistInterceptHandler)(M2C_UNK);
 extern s8 *(*pLoadInterceptHandler)(s8 *, s32 *, void *, s32 *);
-extern MKHeap *pMainRkv;
+extern RkvTOC *pMainRkv;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_rkv_0x74'
 static struct _struct_rkv_0x74 rkv[8];
 #endif
@@ -115,25 +115,21 @@ s32 MKArchive_Open(const char *arg0, int *arg1, bool arg2) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKArchive_OutputFileOrder() {
-    MKHeap *temp_r3_141;
-    MKHeap *temp_r3_217;
-    MKHeap *temp_r3_296;
-    MKHeap *temp_r3_309;
     f32 var_f1_239;
     s16 temp_r5_252;
-    s32 temp_r0_163;
     s32 temp_r26_140;
+    s32 temp_r3_239;
+    s32 temp_r5_214;
     s32 temp_ret_239;
     s32 var_r26_245;
     s32 var_r3_157;
-    s32 var_r3_239;
     s32 var_r5_158;
+    s8 *temp_r0_163;
     s8 *temp_r3_260;
     s8 *var_r26_226;
     s8 *var_r27_186;
     s8 *var_r3_149;
     u32 temp_r0_191;
-    u32 temp_r5_214;
     u32 temp_ret_267;
     u32 var_r26_177;
     u32 var_r27_243;
@@ -142,9 +138,8 @@ void MKArchive_OutputFileOrder() {
     void *temp_r4_248;
 
     temp_r26_140 = pMainRkv->unk64 * 4;
-    temp_r3_141 = pMainRkv->Current();
-    if (temp_r3_141 != NULL) {
-        var_r3_149 = ((MKHeap *) (temp_r3_141->Main()))->TAlloc(temp_r26_140, NULL, 0, 0U);
+    if (MKHeap::Current() != NULL) {
+        var_r3_149 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r26_140, NULL, 0, 0U);
     } else {
         var_r3_149 = malloc(temp_r26_140);
     }
@@ -154,7 +149,7 @@ void MKArchive_OutputFileOrder() {
 loop_5:
     if (var_r7_156 < (u32) pMainRkv->unk64) {
         var_r7_156 += 1;
-        temp_r0_163 = pMainRkv->unk68 + var_r5_158;
+        temp_r0_163 = &pMainRkv->unk68[var_r5_158];
         var_r5_158 += 0x18;
         var_r3_149[var_r3_157] = temp_r0_163;
         var_r3_157 += 4;
@@ -164,12 +159,12 @@ loop_5:
     var_r26_177 = 0;
 loop_16:
     temp_r5_214 = pMainRkv->unk64;
-    if (var_r26_177 < temp_r5_214) {
+    if (var_r26_177 < (u32) temp_r5_214) {
         if ((u8) M2C_FIELD(*(var_r3_149 + (var_r26_177 * 4)), u8 *, 0x12) != 0) {
             var_r27_186 = (s8 *)1U;
 loop_10:
             temp_r0_191 = var_r26_177 + var_r27_186;
-            if ((temp_r0_191 < temp_r5_214) && ((u8) M2C_FIELD(*(var_r3_149 + (temp_r0_191 * 4)), u8 *, 0x12) != 0)) {
+            if ((temp_r0_191 < (u32) temp_r5_214) && ((u8) M2C_FIELD(*(var_r3_149 + (temp_r0_191 * 4)), u8 *, 0x12) != 0)) {
                 var_r27_186 += 1;
                 goto loop_10;
             }
@@ -182,17 +177,16 @@ loop_10:
         }
         goto loop_16;
     }
-    temp_r3_217 = pMainRkv->Current();
-    if (temp_r3_217 != NULL) {
-        var_r26_226 = ((MKHeap *) (temp_r3_217->Main()))->TAlloc(0x400, NULL, 0, 0U);
+    if (MKHeap::Current() != NULL) {
+        var_r26_226 = ((MKHeap *) (MKHeap::Main()))->TAlloc(0x400, NULL, 0, 0U);
     } else {
         var_r26_226 = malloc(0x400);
     }
     File_FileServerOutputFilename"order.txt";
     temp_ret_239 = File_Open(M2C_ERROR(/* Read from unset register $r3 */), 2);
     var_f1_239 = M2C_BITWISE(f32, temp_ret_239);
-    var_r3_239 = temp_ret_239;
-    if (var_r3_239 >= 0) {
+    temp_r3_239 = temp_ret_239;
+    if (temp_r3_239 >= 0) {
         var_r31_242 = 0U;
         var_r27_243 = 0U;
         *var_r26_226 = 0;
@@ -212,7 +206,7 @@ loop_29:
                 }
             }
             if (((u32) (var_r31_242 + 1) == (u32) pMainRkv->unk64) || (var_r27_243 > 0x380U)) {
-                var_f1_239 = M2C_BITWISE(f32, File_Write(var_r3_239, var_r26_226, (s32) var_r27_243));
+                var_f1_239 = M2C_BITWISE(f32, File_Write(temp_r3_239, var_r26_226, (s32) var_r27_243));
                 var_r27_243 = 0U;
                 *var_r26_226 = 0;
             }
@@ -220,17 +214,15 @@ loop_29:
             var_r26_245 += 4;
             goto loop_29;
         }
-        var_r3_239 = File_Close(var_r3_239);
+        File_Close(temp_r3_239);
     }
-    temp_r3_296 = ((MKHeap *) var_r3_239)->Current();
-    if (temp_r3_296 != NULL) {
-        ((MKHeap *) (temp_r3_296->Main()))->TFree(var_r26_226, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Main()))->TFree(var_r26_226, NULL, 0);
     } else {
         free(var_r26_226);
     }
-    temp_r3_309 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_309 != NULL) {
-        ((MKHeap *) (temp_r3_309->Main()))->TFree(var_r3_149, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Main()))->TFree(var_r3_149, NULL, 0);
         return;
     }
     free(var_r3_149);
@@ -275,14 +267,11 @@ s32 MKArchive_Save(const char *arg0, bool arg1, void *arg2, int arg3) {
 s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
     s32 spC;
     s32 sp8;
-    MKHeap *temp_r3_442;
-    MKHeap *temp_r3_457;
     RkvFileEntry *temp_r3_400;
     s32 var_r29_397;
     s32 var_r31_399;
     s8 *temp_r3_420;
     s8 *var_r3_450;
-    u8 temp_r3_439;
     void *var_r28_396;
 
     var_r28_396 = arg2;
@@ -305,21 +294,16 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
         }
         if (var_r28_396 == NULL) {
             var_r29_397 = (temp_r3_400->unk4 + 0x20) & 0xFFFFFFE0;
-            temp_r3_439 = Util_WildcardPatternMatch(temp_r3_400->unk0, gpTempMemFilePatterns);
-            if (temp_r3_439 != 0) {
-                temp_r3_442 = ((MKHeap *) temp_r3_439)->Current();
-                if (temp_r3_442 != NULL) {
-                    var_r3_450 = ((MKHeap *) (temp_r3_442->Main()))->TAlloc(var_r29_397, NULL, 0, 0U);
+            if (Util_WildcardPatternMatch(temp_r3_400->unk0, gpTempMemFilePatterns) != 0) {
+                if (MKHeap::Current() != NULL) {
+                    var_r3_450 = ((MKHeap *) (MKHeap::Main()))->TAlloc(var_r29_397, NULL, 0, 0U);
                 } else {
                     var_r3_450 = malloc(var_r29_397);
                 }
+            } else if (MKHeap::Current() != NULL) {
+                var_r3_450 = ((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_397, NULL, 0);
             } else {
-                temp_r3_457 = ((MKHeap *) temp_r3_439)->Current();
-                if (temp_r3_457 != NULL) {
-                    var_r3_450 = ((MKHeap *) (temp_r3_457->Current()))->Alloc(var_r29_397, NULL, 0);
-                } else {
-                    var_r3_450 = malloc(var_r29_397);
-                }
+                var_r3_450 = malloc(var_r29_397);
             }
             var_r28_396 = var_r3_450;
             var_r3_450[temp_r3_400->unk4] = 0;
@@ -350,7 +334,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
     u32 temp_r3_546;
     u32 temp_r3_592;
 
-    if (((MKHeap *) pMainRkv != NULL) && ((s16) arg0->unk10 <= 0)) {
+    if (((RkvTOC *) pMainRkv != NULL) && ((s16) arg0->unk10 <= 0)) {
         temp_r5_521 = fileOrderId;
         fileOrderId = temp_r5_521 + 1;
         arg0->unk10 = temp_r5_521;
@@ -364,7 +348,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r27_552 = 2;
                 do {
                     Translation_GetLanguageName((TranslationLanguage) var_r27_552);
-                    temp_r3_564 = ((RkvTOC *) pMainRkv)->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
+                    temp_r3_564 = pMainRkv->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
                     if ((temp_r3_564 != NULL) && ((s16) temp_r3_564->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_572 = fileOrderId;
@@ -381,7 +365,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r28_598 = 2;
                 do {
                     Translation_GetLanguageCode((TranslationLanguage) var_r28_598);
-                    temp_r3_612 = ((RkvTOC *) pMainRkv)->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
+                    temp_r3_612 = pMainRkv->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
                     if ((temp_r3_612 != NULL) && ((s16) temp_r3_612->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_620 = fileOrderId;
@@ -454,7 +438,6 @@ RkvFileEntry *RkvTOC::GetEntry(const char *arg0) {
 #endif
 
 s32 RkvTOC::Deinit() {
-    MKHeap *temp_r3_772;
     s8 *temp_r31_771;
 
     if ((u8) this->unk70 != 0) {
@@ -462,10 +445,10 @@ s32 RkvTOC::Deinit() {
         this->unk70 = 0;
         this->unk6C = -1;
     }
+    File_Close(this->unk60);
     temp_r31_771 = this->unk68;
-    temp_r3_772 = ((MKHeap *) (File_Close(this->unk60)))->Current();
-    if (temp_r3_772 != NULL) {
-        ((MKHeap *) (temp_r3_772->Current()))->Free(temp_r31_771, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_771, NULL, 0);
     } else {
         free(temp_r31_771);
     }
@@ -487,7 +470,7 @@ s32 MKArchive_GetAsyncRegistrationStatus() {
     case 7:
         M2C_FIELD(&asyncReg, s32 *, 0x80) = 0;
         if (strnicmp(&rkv[nmbrRkvs].unk40, "Data_", 5) == 0) {
-            pMainRkv = (MKHeap *) &rkv[nmbrRkvs];
+            pMainRkv = (RkvTOC *) &rkv[nmbrRkvs];
         }
         nmbrRkvs += 1;
         return 1;
@@ -500,17 +483,11 @@ s32 MKArchive_GetAsyncRegistrationStatus() {
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void RkvTOC::AsyncRegUpdate() {
     u32 *sp8;
-    MKHeap *temp_r3_1022;
-    MKHeap *temp_r3_1037;
-    MKHeap *temp_r3_1125;
-    MKHeap *temp_r3_985;
     s32 temp_r0_1093;
     s32 temp_r11_1096;
     s32 temp_r16_1020;
     s32 temp_r16_984;
-    s32 temp_r3_1017;
     s32 temp_r3_1098;
-    s32 temp_r3_981;
     s32 temp_r4_1092;
     s32 temp_r5_1088;
     s32 temp_r7_1105;
@@ -521,7 +498,6 @@ void RkvTOC::AsyncRegUpdate() {
     s8 *temp_r16_1124;
     s8 *temp_r6_1090;
     s8 *var_r3_1030;
-    s8 *var_r3_1064;
     s8 *var_r3_993;
 
     sp8 = &asyncReg + 0xC;
@@ -574,12 +550,10 @@ block_34:
         }
         break;
     case 4:
-        temp_r3_981 = File_IsBusy(this->unk60);
-        if (temp_r3_981 == 0) {
+        if (File_IsBusy(this->unk60) == 0) {
             temp_r16_984 = M2C_FIELD(&asyncReg, s32 *, 0x18);
-            temp_r3_985 = ((MKHeap *) temp_r3_981)->Current();
-            if (temp_r3_985 != NULL) {
-                var_r3_993 = ((MKHeap *) (temp_r3_985->Main()))->TAlloc(temp_r16_984, NULL, 0, 0U);
+            if (MKHeap::Current() != NULL) {
+                var_r3_993 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_984, NULL, 0, 0U);
             } else {
                 var_r3_993 = malloc(temp_r16_984);
             }
@@ -592,26 +566,21 @@ block_34:
     case 5:
         if (File_IsBusy(this->unk60) == 0) {
             this->unk64 = M2C_FIELD(&asyncReg, s32 *, 4);
-            temp_r3_1017 = this->unk64 * 0x18;
-            temp_r16_1020 = M2C_FIELD(&asyncReg, u32 *, 8) + temp_r3_1017;
+            temp_r16_1020 = M2C_FIELD(&asyncReg, u32 *, 8) + (this->unk64 * 0x18);
             if ((u8) M2C_FIELD(&asyncReg, u8 *, 0x90) != 0) {
-                temp_r3_1022 = ((MKHeap *) temp_r3_1017)->Current();
-                if (temp_r3_1022 != NULL) {
-                    var_r3_1030 = ((MKHeap *) (temp_r3_1022->Main()))->TAlloc(temp_r16_1020, NULL, 0, 0U);
+                if (MKHeap::Current() != NULL) {
+                    var_r3_1030 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r16_1020, NULL, 0, 0U);
                 } else {
                     var_r3_1030 = malloc(temp_r16_1020);
                 }
+            } else if (MKHeap::Current() != NULL) {
+                var_r3_1030 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r16_1020, NULL, 0);
             } else {
-                temp_r3_1037 = ((MKHeap *) temp_r3_1017)->Current();
-                if (temp_r3_1037 != NULL) {
-                    var_r3_1030 = ((MKHeap *) (temp_r3_1037->Current()))->Alloc(temp_r16_1020, NULL, 0);
-                } else {
-                    var_r3_1030 = malloc(temp_r16_1020);
-                }
+                var_r3_1030 = malloc(temp_r16_1020);
             }
             this->unk68 = var_r3_1030;
             memset(this->unk68, 0, (u32) temp_r16_1020);
-            var_r3_1064 = memcpy(this->unk68 + (this->unk64 * 0x18), M2C_FIELD(&asyncReg, s8 **, 0x8C) + (M2C_FIELD(&asyncReg, s32 *, 4) * 0x14), M2C_FIELD(&asyncReg, u32 *, 8));
+            memcpy(this->unk68 + (this->unk64 * 0x18), M2C_FIELD(&asyncReg, s8 **, 0x8C) + (M2C_FIELD(&asyncReg, s32 *, 4) * 0x14), M2C_FIELD(&asyncReg, u32 *, 8));
             var_r16_1065 = 0;
             var_r31_1066 = 0;
             var_r30_1067 = 0;
@@ -636,14 +605,12 @@ loop_27:
                 this->unk68[temp_r5_1088] = temp_r7_1105;
                 this->unk68[temp_r3_1098] = (s32) (M2C_FIELD(&asyncReg, s32 *, 0x84) + M2C_FIELD(&asyncReg, s8 **, 0x8C)[temp_r4_1092]);
                 this->unk68[temp_r11_1096] = (s32) M2C_FIELD(&asyncReg, s8 **, 0x8C)[temp_r0_1093];
-                var_r3_1064 = this->unk68;
-                var_r3_1064[temp_r9_1099] = 0;
+                this->unk68[temp_r9_1099] = 0;
                 goto loop_27;
             }
             temp_r16_1124 = M2C_FIELD(&asyncReg, s8 **, 0x8C);
-            temp_r3_1125 = ((MKHeap *) var_r3_1064)->Current();
-            if (temp_r3_1125 != NULL) {
-                ((MKHeap *) (temp_r3_1125->Main()))->TFree(temp_r16_1124, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Main()))->TFree(temp_r16_1124, NULL, 0);
             } else {
                 free(temp_r16_1124);
             }
@@ -718,7 +685,7 @@ loop_8:
     }
     temp_r29_1272 = rkv + var_r31_1269;
     if (strcmpi(temp_r29_1272 + 0x40, arg0) == 0) {
-        if (temp_r29_1272 == (MKHeap *) pMainRkv) {
+        if (temp_r29_1272 == (RkvTOC *) pMainRkv) {
             pMainRkv = NULL;
         }
         temp_r29_1272->Deinit();

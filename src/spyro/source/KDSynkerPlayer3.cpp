@@ -63,7 +63,6 @@ void KDSynkerPlayer3::GetActorModel(int arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSynkerPlayer3::ParseSK2() {
-    MKHeap *temp_r3_140;
     s32 var_r29_133;
     s32 var_r30_134;
     u32 temp_r27_137;
@@ -88,9 +87,8 @@ void KDSynkerPlayer3::ParseSK2() {
         temp_r28_136 = this + var_r30_134;
         temp_r27_137 = M2C_FIELD(temp_r28_136, u32 *, 8);
         if (temp_r27_137 != 0U) {
-            temp_r3_140 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_140 != NULL) {
-                var_r3_147 = ((MKHeap *) (temp_r3_140->Current()))->Alloc((s32) temp_r27_137, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                var_r3_147 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r27_137, NULL, 0);
             } else {
                 var_r3_147 = malloc(temp_r27_137);
             }
@@ -197,9 +195,6 @@ void KDSynkerPlayer3::Deinit() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSynkerPlayer3::Unload() {
-    MKHeap *temp_r3_441;
-    MKHeap *temp_r3_446;
-    MKHeap *temp_r3_473;
     MKIni *temp_r26_445;
     MKIni *temp_r28_472;
     MKIni *temp_r3_465;
@@ -208,6 +203,7 @@ void KDSynkerPlayer3::Unload() {
     s32 var_r28_436;
     s32 var_r30_437;
     u32 temp_r3_381;
+    u32 temp_r3_441;
     u32 temp_r4_382;
     void *temp_r27_440;
 
@@ -242,16 +238,15 @@ void KDSynkerPlayer3::Unload() {
         var_r30_437 = 0;
         do {
             temp_r27_440 = this + var_r30_437;
-            temp_r3_441 = M2C_FIELD(temp_r27_440, MKHeap **, 4);
-            if (temp_r3_441 != NULL) {
+            temp_r3_441 = M2C_FIELD(temp_r27_440, u32 *, 4);
+            if (temp_r3_441 != 0U) {
                 temp_r26_445 = temp_r3_441 - M2C_FIELD(temp_r27_440, s32 *, 8);
-                temp_r3_446 = temp_r3_441->Current();
-                if (temp_r3_446 != NULL) {
-                    ((MKHeap *) (temp_r3_446->Current()))->Free(temp_r26_445, NULL, 0);
+                if (MKHeap::Current() != NULL) {
+                    ((MKHeap *) (MKHeap::Current()))->Free(temp_r26_445, NULL, 0);
                 } else {
                     free(temp_r26_445);
                 }
-                M2C_FIELD(temp_r27_440, MKHeap **, 4) = NULL;
+                M2C_FIELD(temp_r27_440, u32 *, 4) = 0U;
             }
             var_r28_436 += 1;
             var_r30_437 += 0xC;
@@ -260,9 +255,8 @@ void KDSynkerPlayer3::Unload() {
         if ((temp_r3_465 != NULL) && ((u8) this->unk58 == 0)) {
             temp_r3_465->Deinit();
             temp_r28_472 = this->unk54;
-            temp_r3_473 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-            if (temp_r3_473 != NULL) {
-                ((MKHeap *) (temp_r3_473->Current()))->Free(temp_r28_472, NULL, 0);
+            if (MKHeap::Current() != NULL) {
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_472, NULL, 0);
             } else {
                 free(temp_r28_472);
             }

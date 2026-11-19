@@ -1455,7 +1455,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
 #endif
 
 void FuryFXConvexity::SetDefaults() {
-    SetDefaults();
+    FuryFX::SetDefaults();
     this->unkF0 = 0;
     this->unk90.SetIdentity();
     this->unkF4 = 0.0f;
@@ -1470,7 +1470,6 @@ void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r4_2358;
     KDSoundFader *temp_r0_2363;
     KDSoundFader *temp_r0_2382;
-    MKHeap *temp_r3_2385;
     ManagedLight *temp_r4_2338;
     u32 temp_r0_2368;
 
@@ -1506,9 +1505,8 @@ loop_11:
             var_r4_2358 += 4;
             goto loop_11;
         }
-        temp_r3_2385 = ((MKHeap *) var_r3_2360)->Current();
-        if (temp_r3_2385 != NULL) {
-            ((MKHeap *) (temp_r3_2385->Current()))->Free(var_r31_2359, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_2359, NULL, 0);
         } else {
             free(var_r31_2359);
         }
@@ -2587,8 +2585,6 @@ void FuryFXConvexity::Init() {
     KDSoundFader **temp_r4_4345;
     KDSoundFader **var_r3_4324;
     KDSoundFader **var_r5_4333;
-    MKHeap *temp_r3_4315;
-    MKHeap *temp_r3_4317;
     Matrix *temp_r3_4401;
     s32 var_ctr_4337;
 
@@ -2598,11 +2594,9 @@ void FuryFXConvexity::Init() {
     M2C_FIELD(this, f32 *, 0xD4) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD8) = 0.0f;
     this->unk15C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSAdd"));
-    temp_r3_4315 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub"));
-    this->unk160 = temp_r3_4315;
-    temp_r3_4317 = temp_r3_4315->Current();
-    if (temp_r3_4317 != NULL) {
-        var_r3_4324 = ((MKHeap *) (temp_r3_4317->Current()))->Alloc(0x670, NULL, 0);
+    this->unk160 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub"));
+    if (MKHeap::Current() != NULL) {
+        var_r3_4324 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x670, NULL, 0);
     } else {
         var_r3_4324 = malloc(0x670);
     }

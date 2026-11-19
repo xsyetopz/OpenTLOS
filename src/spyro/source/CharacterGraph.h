@@ -20,8 +20,8 @@ class MKProp;
 
 class CharacterGraphManager {
 public:
-    void Deinit(void);
-    void Init(void);
+    static void Deinit(void);
+    static void Init(void);
 };
 
 class CharacterGraphNode : public KDGraphNode {  // base: base ctor call

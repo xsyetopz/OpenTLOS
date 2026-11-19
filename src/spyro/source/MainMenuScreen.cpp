@@ -55,8 +55,6 @@ void MainMenuScreen::Update() {
     s32 temp_r0_81;
     s32 temp_ret_124;
     s32 temp_ret_43;
-    s32 temp_ret_79;
-    s32 var_r3_43;
     u32 var_r4_43;
     u8 temp_r4_159;
 
@@ -66,7 +64,7 @@ void MainMenuScreen::Update() {
         M2C_FIELD(UIInput(-1), s8 *, 4) = 0;
         UIControls_Reset();
     }
-    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (temp_ret_43 = UIControls_Pressed((FrontEndControls) 3, -1), var_r3_43 = temp_ret_43, var_r4_43 = (u32) (u64) temp_ret_43, (((u8) var_r3_43 == 0) == 0))) {
+    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (temp_ret_43 = UIControls_Pressed((FrontEndControls) 3, -1), var_r4_43 = (u32) (u64) temp_ret_43, ((temp_ret_43 == 0) == 0))) {
         temp_r3_47 = this->unkD8;
         if (stricmp(temp_r3_47->GetChild(M2C_FIELD(temp_r3_47, s32 *, 0x68))->unk4, "NewGame") == 0) {
             pLoadChunkInfo = M2C_FIELD(&gb, ChunkInfo **, 0x330);
@@ -77,9 +75,7 @@ void MainMenuScreen::Update() {
         temp_r3_70 = this->unkD8;
         sp18 = 6;
         sp1C = 0;
-        temp_ret_79 = temp_r3_70->Message(&sp18, 6);
-        var_r3_43 = temp_ret_79;
-        var_r4_43 = (u32) (u64) temp_ret_79;
+        var_r4_43 = (u32) temp_r3_70->Message(&sp18, 6);
     }
     temp_r0_81 = this->unkC8;
     switch (temp_r0_81) {                           /* irregular */
@@ -99,7 +95,7 @@ void MainMenuScreen::Update() {
         }
         return;
     case 1:
-        temp_ret_124 = ((KDMemoryCard *) var_r3_43)->Update();
+        temp_ret_124 = KDMemoryCard::Update();
         if (temp_ret_124 == 0) {
             this->unkCC += 1;
             temp_r3_130 = this->unkCC;
@@ -108,7 +104,7 @@ void MainMenuScreen::Update() {
                 this->unkD0->SetState((KDMCState) 2);
                 return;
             }
-            this->unkD0 = temp_r3_130->GetFirstAvailable();
+            this->unkD0 = KDMemoryCard::GetFirstAvailable();
             temp_r3_142 = this->unkD0;
             if (temp_r3_142 != NULL) {
                 temp_r3_142->SetState((KDMCState) 3);
@@ -120,7 +116,7 @@ void MainMenuScreen::Update() {
         }
         break;
     case 2:
-        if (((KDMemoryCard *) var_r3_43)->Update() == 0) {
+        if (KDMemoryCard::Update() == 0) {
             temp_r3_158 = this->unkD0;
             temp_r4_159 = temp_r3_158->unk9;
             if ((temp_r4_159 != 0) && ((u8) temp_r3_158->unk8 != 0)) {

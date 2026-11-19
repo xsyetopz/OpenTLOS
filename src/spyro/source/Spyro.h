@@ -114,7 +114,7 @@ public:
     virtual s32 IsAttacking(void);
     virtual AttackerManager * GetAttackerManager(void);
     virtual MKCollisionInfo * GetCollisionInfo(void);
-    f32 GetDeltaMove(void);
+    static f32 GetDeltaMove(void);
     void AddStat(StatType, float);
     void UpdateRage(void);
     void SetRage(int, float);

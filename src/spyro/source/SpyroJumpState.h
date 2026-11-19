@@ -21,7 +21,7 @@ public:
     virtual s32 Transition(void);
     virtual void * GetStateInfo(void);
     void SetStrafeJump(bool);
-    s32 DoubleJumpTransition(void);
+    static s32 DoubleJumpTransition(void);
     void DoubleJumpUpdate(void);
     void DoubleJumpExit(void);
     void DoubleJumpEnter(void);

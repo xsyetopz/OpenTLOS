@@ -20,7 +20,7 @@ public:
     virtual void FireAtTarget(const MKVector3 &, const MKVector3 &, float, MKProp *, int, int);
     virtual void Collided(MKCollisionResult &);
     FlyingMonkey(void);
-    void * CreateInstance(void);
+    static void * CreateInstance(void);
 };
 
 class FlyingMonkeyDescriptor : public ProjectileDescriptor {  // base: vtable prefix

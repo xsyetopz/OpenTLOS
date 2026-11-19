@@ -66,7 +66,6 @@ void GroundFire::Emit(const MKVector3 &arg0, float arg1, bool arg2) {
 void GroundFire::Deinit() {
     MKHeap *temp_r0_66;
     MKHeap *temp_r0_85;
-    MKHeap *temp_r3_88;
     MKHeap *var_r31_62;
     MKHeap *var_r3_63;
     MKHeap *var_r4_61;
@@ -95,9 +94,8 @@ loop_9:
             var_r4_61 += 4;
             goto loop_9;
         }
-        temp_r3_88 = var_r3_63->Current();
-        if (temp_r3_88 != NULL) {
-            ((MKHeap *) (temp_r3_88->Current()))->Free(var_r31_62, NULL, 0);
+        if (MKHeap::Current() != NULL) {
+            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_62, NULL, 0);
         } else {
             free(var_r31_62);
         }
@@ -216,7 +214,6 @@ loop_8:
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void GroundFire::Init(int arg0) {
-    MKHeap *temp_r3_348;
     MKHeap *temp_r3_371;
     MKHeap *temp_r3_378;
     MKHeap *temp_r3_385;
@@ -228,9 +225,8 @@ void GroundFire::Init(int arg0) {
         this->unk0 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_348 = MKHeap::Current();
-    if (temp_r3_348 != NULL) {
-        var_r3_358 = ((MKHeap *) (temp_r3_348->Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x50), NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_358 = ((MKHeap *) (MKHeap::Current()))->Alloc(((arg0 + 2) * 4) + (arg0 * 0x50), NULL, 0);
     } else {
         var_r3_358 = malloc(((arg0 + 2) * 4) + (arg0 * 0x50));
     }

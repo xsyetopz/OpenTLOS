@@ -45,8 +45,6 @@ static u8 lit_551 = 0;
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
 void LavaBubbleFX::Deinit() {
     MKHeap *temp_r29_62;
-    MKHeap *temp_r3_56;
-    MKHeap *temp_r3_63;
     s32 temp_r0_57;
     s32 var_r28_46;
     s32 var_r31_44;
@@ -56,15 +54,13 @@ void LavaBubbleFX::Deinit() {
     do {
         ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(*(this->unkC8 + (var_r31_44 + 0x5C)));
         var_r28_46 += 1;
-        temp_r3_56 = this->unkC8;
         temp_r0_57 = var_r31_44 + 0x5C;
         var_r31_44 += 0x78;
-        *(temp_r3_56 + temp_r0_57) = 0;
+        *(this->unkC8 + temp_r0_57) = 0;
     } while (var_r28_46 < 0x14);
     temp_r29_62 = this->unkC8;
-    temp_r3_63 = temp_r3_56->Current();
-    if (temp_r3_63 != NULL) {
-        ((MKHeap *) (temp_r3_63->Current()))->Free(temp_r29_62, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_62, NULL, 0);
     } else {
         free(temp_r29_62);
     }
@@ -939,7 +935,6 @@ s32 LavaBubbleFX::LoadDone() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LavaBubbleFX::Init() {
-    MKHeap *temp_r3_1494;
     MKHeap *var_r3_1501;
     s32 temp_r0_1526;
     s32 temp_r11_1522;
@@ -953,9 +948,8 @@ void LavaBubbleFX::Init() {
     void *temp_r9_1551;
 
     GameProp::Init();
-    temp_r3_1494 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
-    if (temp_r3_1494 != NULL) {
-        var_r3_1501 = ((MKHeap *) (temp_r3_1494->Current()))->Alloc(0x960, NULL, 0);
+    if (MKHeap::Current() != NULL) {
+        var_r3_1501 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x960, NULL, 0);
     } else {
         var_r3_1501 = malloc(0x960);
     }
