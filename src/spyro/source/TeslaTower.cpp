@@ -632,38 +632,37 @@ void TeslaTower::DrawLightCone() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void TeslaTower::Deinit() {
+    TeslaTowerDescriptor *desc;
+
     KDSound_Stop((int *) &this->unk114);
     KDSound_Stop((int *) &this->unk13C);
     KDSound_Stop((int *) &this->unk164);
     KDSound_Stop((int *) &this->unk18C);
     ((KDSpline *) &this->unk90)->Deinit();
-    ((EnergyBeam *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x70)))->FreeEnergyBeam(this->unk110);
+    desc = checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((EnergyBeam *) desc->unk70)->FreeEnergyBeam(this->unk110);
     this->unk110 = NULL;
     KDProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: declaration syntax error
+class CutsceneSystem;
 void TeslaTower::Draw() {
-    u8 var_r31_1046;
+    void *cutscene;
+    u8 suppress;
 
-    if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
-        var_r31_1046 = 0;
-        if ((((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
-            var_r31_1046 = 1;
+    cutscene = M2C_FIELD(&gb, void **, 0xC);
+    suppress = 0;
+    if (cutscene != NULL) {
+        if ((((u32) M2C_FIELD(cutscene, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(cutscene, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) ((s8 *) cutscene + 0x24))->GetState() != 0)) {
+            suppress = 1;
         }
-        if (var_r31_1046 == 0) {
-            goto block_6;
-        }
-    } else {
-block_6:
+    }
+    if (suppress == 0) {
         KDProp::Draw();
         DrawLightCone();
     }
 }
-#endif
 
 void TeslaTower::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk114)->Message(arg0);
@@ -673,48 +672,29 @@ void TeslaTower::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: ')' expected
 void *TeslaTower::Update() {
     MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
+    MKVector3 sp48;
+    MKVector4 sp38;
+    TeslaTowerDescriptor *desc;
     f32 sp10;
-    s32 sp8;
-    f32 temp_f1_1169;
-    f32 temp_r0_1141;
-    f32 temp_r0_1177;
-    u8 temp_r3_1265;
-    u8 temp_r3_1294;
-    u8 var_r6_1140;
+    u8 found;
+    bool alarm;
+    s32 mode;
 
-    sp8 = 1;
-    ((KDSoundFader *) &this->unk18C)->Update(GS_TeslaTowerExtra1, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    sp8 = 1;
-    ((KDSoundFader *) &this->unk114)->Update(GS_TeslaTowerBeamLP, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    sp8 = 1;
-    var_r6_1140 = 0;
-    temp_r0_1141 = this->unk90.unk24;
-    if ((M2C_BITWISE(s32, temp_r0_1141) == 1) || (M2C_BITWISE(s32, temp_r0_1141) == 2)) {
-        var_r6_1140 = 1;
+    ((KDSoundFader *) &this->unk18C)->Update(GS_TeslaTowerExtra1, true, true, (MKProp *) this, NULL, 0U, -1, true);
+    ((KDSoundFader *) &this->unk114)->Update(GS_TeslaTowerBeamLP, true, *(s32 *) &this->unk90.unk24 == 0, (MKProp *) this, NULL, 0U, -1, true);
+    alarm = false;
+    mode = *(s32 *) &this->unk90.unk24;
+    if ((mode == 1) || (mode == 2)) {
+        alarm = true;
     }
-    ((KDSoundFader *) &this->unk13C)->Update(GS_TeslaTowerAlarm, 1U, var_r6_1140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    sp8 = 1;
-    ((KDSoundFader *) &this->unk164)->Update(GS_TeslaTowerZapSpyro1, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    temp_f1_1169 = this->unk90.unk2C;
-    if (temp_f1_1169 > 0.0f) {
-        this->unk90.unk2C = temp_f1_1169 - gUpdateTimeDelta;
+    ((KDSoundFader *) &this->unk13C)->Update(GS_TeslaTowerAlarm, true, alarm, (MKProp *) this, NULL, 0U, -1, true);
+    ((KDSoundFader *) &this->unk164)->Update(GS_TeslaTowerZapSpyro1, true, *(s32 *) &this->unk90.unk24 == 2, (MKProp *) this, NULL, 0U, -1, true);
+    if (this->unk90.unk2C > 0.0f) {
+        this->unk90.unk2C -= gUpdateTimeDelta;
     }
-    temp_r0_1177 = this->unk90.unk24;
-    switch (M2C_BITWISE(s32, temp_r0_1177)) {       /* irregular */
+    switch (*(s32 *) &this->unk90.unk24) {
     case 0:
         this->unk90.unk14 += this->unk90.unk18 * gUpdateTimeDelta;
         if (this->unk90.unk18 > 0.0f) {
@@ -726,52 +706,49 @@ void *TeslaTower::Update() {
             this->unk90.unk14 = 0.0f;
             this->unk90.unk18 = -this->unk90.unk18;
         }
-        if (FindZapTargets(0U) != 0) {
-            this->unk90.unk24 = 1e-45f;
+        if (FindZapTargets(false) != 0) {
+            *(s32 *) &this->unk90.unk24 = 1;
             this->unk90.unk28 = 0.0f;
         }
         break;
     case 1:
-        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), &sp58);
-        sp18 = 1.0f;
-        sp1C = 1.0f;
-        sp20 = 1.0f;
-        sp24 = 1.0f;
-        sp38 = (f64) sp18;
-        sp40 = (f64) sp20;
+        MKModel_CalculateRefPointWorldPosition(this->unk4, *(s32 *) &this->unk90.unk20, &sp58);
+        sp38.unk0 = 1.0f;
+        sp38.unk4 = 1.0f;
+        sp38.unk8 = 1.0f;
+        sp38.unkC = 1.0f;
         sp10 = MKRand_Float((int *) &gViewSeed, 16.0f, 20.0f);
-        sp30 = 0.0f;
-        sp28 = 0.0f;
-        sp2C = 0.0f;
-        sp50 = (f64) sp30;
-        sp48 = (f64) sp28;
-        ((ZapPS *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x78)))->Emit(sp58, *((MKVector3 *) &sp48), sp10, (MKVector4) &sp38);
-        temp_r3_1265 = FindZapTargets(0U);
+        sp48.unk0 = 0.0f;
+        sp48.unk4 = 0.0f;
+        sp48.unk8 = 0.0f;
+        desc = checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        M2C_FIELD(desc, ZapPS **, 0x78)->Emit(sp58, sp48, sp10, sp38);
+        found = FindZapTargets(false);
         this->unk90.unk28 -= gUpdateTimeDelta;
-        if ((this->unk90.unk28 <= 0.0f) || (temp_r3_1265 == 0)) {
-            if (temp_r3_1265 != 0) {
+        if ((this->unk90.unk28 <= 0.0f) || (found == 0)) {
+            if (found != 0) {
                 this->unk90.unk28 = 1.5f;
-                this->unk90.unk24 = 3e-45f;
+                *(s32 *) &this->unk90.unk24 = 2;
             } else {
                 this->unk90.unk28 = 0.0f;
-                this->unk90.unk24 = 0.0f;
+                *(s32 *) &this->unk90.unk24 = 0;
             }
         }
         break;
     case 2:
-        temp_r3_1294 = FindZapTargets(1U);
+        found = FindZapTargets(true);
         this->unk90.unk28 -= gUpdateTimeDelta;
-        if ((this->unk90.unk28 <= 0.0f) || (temp_r3_1294 == 0)) {
+        if ((this->unk90.unk28 <= 0.0f) || (found == 0)) {
             this->unk90.unk28 = 0.0f;
-            this->unk90.unk24 = 0.0f;
-            ((EnergyBeam *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x70)))->FreeEnergyBeam(this->unk110);
+            *(s32 *) &this->unk90.unk24 = 0;
+            desc = checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((EnergyBeam *) desc->unk70)->FreeEnergyBeam(this->unk110);
             this->unk110 = NULL;
         }
         break;
     }
     UpdateTurretTurning();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
@@ -1000,22 +977,20 @@ loop_5:
     return arg0->LoadFloat("patrolSpeed", &this->unk90.unk18, 0);
 }
 
-#if 0 // DRAFT: undefined identifier 'nanf'
 void TeslaTower::Init() {
     KDProp::Init();
     this->unk90.unk14 = 0.0f;
     this->unk90.unk18 = 0.125f;
-    this->unk90.unk24 = 0.0f;
+    *(s32 *) &this->unk90.unk24 = 0;
     this->unk90.unk30 = 1.0f;
     this->unkC = (BoundingVolume *) &this->unkD0;
-    this->unk90.unk1C = nanf;
+    *(s32 *) &this->unk90.unk1C = -1;
     this->unk90.unk2C = 0.0f;
     ((KDSoundFader *) &this->unk114)->Init(0.25f, 0.25f);
     ((KDSoundFader *) &this->unk13C)->Init(0.25f, 0.25f);
     ((KDSoundFader *) &this->unk164)->Init(0.01f, 0.25f);
     ((KDSoundFader *) &this->unk18C)->Init(0.25f, 0.25f);
 }
-#endif
 
 void TeslaTowerDescriptor::Deinit() {
     MKMaterial *temp_r3_1872;
