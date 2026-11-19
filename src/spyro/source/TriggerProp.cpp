@@ -416,7 +416,6 @@ void TriggerProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TriggerProp::LoadDone() {
     TriggerObject *temp_r3_1100;
     TriggerObject *temp_r3_1108;
@@ -433,7 +432,6 @@ void TriggerProp::LoadDone() {
     this->unk8 = &this->unk50;
     this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TriggerProp::LoadLine(MKIniLine *arg0) {

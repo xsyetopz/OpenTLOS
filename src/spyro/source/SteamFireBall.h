@@ -27,9 +27,7 @@ public:
     virtual void Collided(MKCollisionResult &);
     SteamFireBall(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ Shadow unk150;
-    /* 0x17d */ u8 pad17D[0x3];
     /* 0x180 */ MKModel* unk180;
     /* 0x184 */ f32 unk184;
     /* 0x188 */ f32 unk188;

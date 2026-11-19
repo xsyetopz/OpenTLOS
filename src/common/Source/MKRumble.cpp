@@ -98,7 +98,7 @@ void MKRumble_Play(MKInputDevices arg0, float arg1, float arg2, float arg3, char
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKRumble_Update() {
     M2C_UNK sp2C;
     M2C_UNK spC;

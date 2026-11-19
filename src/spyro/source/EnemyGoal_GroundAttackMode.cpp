@@ -4,17 +4,13 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
-#include "spyro/source/CharacterBreathFX.h"
-#include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
-#include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_MeleeAttackMode.h"
 #include "spyro/source/EnemyGoals_Movement.h"
-#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/SpawnerObject.h"
-#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
@@ -74,7 +70,7 @@ void EnemyGoal_GroundAttackMode::AddGoal_MoveToAttackRange(EnemyAttack *arg0) {
 block_13:
                 AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
                 var_r6_82 = 3;
-                if ((u8) M2C_FIELD(this->unkC->unkA20, u8 *, 0x17D) != 0) {
+                if ((u8) this->unkC->unkA38->unk17D != 0) {
                     var_r6_82 = 0;
                 }
                 temp_r7_89 = this->unk34;
@@ -93,7 +89,7 @@ block_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemyDescriptor'
 u8 EnemyGoal_GroundAttackMode::AddGoal_Attack(EnemyAttack *arg0) {
     Goal<Enemy> *temp_r3_191;
     Goal<Enemy> *temp_r3_258;
@@ -113,9 +109,9 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_Attack(EnemyAttack *arg0) {
     temp_r5_130 = arg0->unk38;
     if (temp_r5_130 & 0x20000) {
         var_f31_136 = 1.0f;
-        temp_f1_139 = ((EnemyDescriptor *) this->unkC->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0);
+        temp_f1_139 = this->unkC->unkA38->GetEnemyAttackSetting((EnemySettingType) 7, arg0);
         if (temp_f1_139 > 0.0f) {
-            temp_f0_144 = this->unkC->unkAA0;
+            temp_f0_144 = this->unkC->unkAB8;
             if (temp_f0_144 > temp_f1_139) {
                 temp_f0_147 = temp_f0_144 / temp_f1_139;
                 var_f1_148 = 3.0f;
@@ -137,9 +133,9 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_Attack(EnemyAttack *arg0) {
     }
     if (temp_r5_130 & 0x10000) {
         var_f31_174 = 1.0f;
-        temp_f1_177 = ((EnemyDescriptor *) this->unkC->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0);
+        temp_f1_177 = this->unkC->unkA38->GetEnemyAttackSetting((EnemySettingType) 7, arg0);
         if (temp_f1_177 > 0.0f) {
-            temp_f0_182 = this->unkC->unkAA0;
+            temp_f0_182 = this->unkC->unkAB8;
             if (temp_f0_182 > temp_f1_177) {
                 var_f31_174 = 1.0f + (temp_f0_182 / temp_f1_177);
             }
@@ -207,7 +203,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_StrafeIfObscuringCamera() {
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r5_306 = this->unk2C;
         M2C_FIELD(temp_r5_306, s8 *, 0x14) = (s8) (sp8 == -1);
-        M2C_FIELD(temp_r5_306, f32 **, 0x10) = &this->unkC->unk838.unk28;
+        M2C_FIELD(temp_r5_306, AITargetData **, 0x10) = &this->unkC->unk870;
         return 1U;
     }
     return 0U;
@@ -259,7 +255,7 @@ void EnemyGoal_GroundAttackMode::AddGoal_AttackIdleOrStrafe() {
             var_r27_363 = 0;
         }
     }
-    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 1U) & 1) || (var_r27_363 == 0) || (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > M2C_FIELD(this->unkC->unkA20, f32 *, 0x150))) {
+    if ((((u8) this->unkC->unkB08 >> 1U) & 1) || (var_r27_363 == 0) || (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > this->unkC->unkA38->unk150)) {
         AddGoal_AttackIdle();
     } else {
         if ((var_r31_337 != 0) && (var_r30_350 != 0)) {
@@ -271,7 +267,7 @@ void EnemyGoal_GroundAttackMode::AddGoal_AttackIdleOrStrafe() {
         M2C_FIELD(temp_r3_430, u8 *, 0x14) = var_r31_337;
         M2C_FIELD(temp_r3_430, AITargetData **, 0x10) = (AITargetData *) this->unk20;
     }
-    this->unkC->unkA08 = NULL;
+    this->unkC->unkA20 = NULL;
 }
 #endif
 
@@ -283,7 +279,7 @@ void EnemyGoal_GroundAttackMode::AddGoal_AttackIdle() {
     temp_r5_454 = this->unk28;
     M2C_FIELD(temp_r5_454, s32 *, 0x10) = 1;
     M2C_FIELD(temp_r5_454, s32 *, 0x14) = 0xA;
-    this->unkC->unkA08 = NULL;
+    this->unkC->unkA20 = NULL;
 }
 #endif
 
@@ -296,7 +292,7 @@ void EnemyGoal_GroundAttackMode::AddGoal_Taunt() {
     M2C_FIELD(temp_r5_481, AITargetData **, 0x10) = (AITargetData *) this->unk20;
     M2C_FIELD(temp_r5_481, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r5_481, s32 *, 0x18) = 3;
-    M2C_FIELD(temp_r5_481, u32 *, 0x1C) = (u32) this->unkC->unk680;
+    M2C_FIELD(temp_r5_481, s32 *, 0x1C) = (s32) this->unkC->unk688;
     M2C_FIELD(temp_r5_481, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r5_481, u8 *, 0x20) | 0x40);
     this->unkC->TryChangeEnemyRegion();
 }
@@ -304,10 +300,10 @@ void EnemyGoal_GroundAttackMode::AddGoal_Taunt() {
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 u8 EnemyGoal_GroundAttackMode::AddGoal_OnlyRangeAttack(bool arg0) {
-    if (M2C_FIELD(this->unkC, u8 *, 0xB00) & 1) {
+    if (this->unkC->unkB00 & 1) {
         if (arg0 != 0) {
             this->unkC->SelectAttack(this->unk20->GetDist(), 2U, 0U, 1U);
-            if ((CharacterFireFX *) this->unkC->unkA08 != NULL) {
+            if ((EnemyAttack *) this->unkC->unkA20 != NULL) {
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk60);
                 M2C_FIELD(this->unk60, s8 *, 0x48) = 0;
@@ -370,7 +366,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
     f64 temp_f5_617;
 
     temp_r3_567 = this->unkC;
-    if (((void *) temp_r3_567->unk638 != NULL) && (temp_r3_567->IsInsideEnemyRegion() == 0)) {
+    if (((SB2 *) temp_r3_567->unk640 != NULL) && (temp_r3_567->IsInsideEnemyRegion() == 0)) {
         spC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
         spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         spB8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -380,7 +376,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
         sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r4_588 = this->unkC;
         temp_f31_589 = temp_r3_581->GetCollisionRadius(M2C_FIELD(&MKVector3::zero, f64 *, 0));
-        ((EnemyRegion *) &temp_r4_588->unk750.unkA0)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_588->unk700), (MKVector3 *) &spC8, (MKVector3 *) &spB8);
+        temp_r4_588->unk800.GetNearestPointOnBoundingRegion(temp_r4_588->unk710, (MKVector3 *) &spC8, (MKVector3 *) &spB8);
         temp_f0_597 = 2.0f * temp_f31_589;
         if (150.0f > temp_f0_597) {
             var_f30_600 = 150.0f;
@@ -408,7 +404,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
         spA0 = (f64) sp50;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp98), 300.0f, &spD8, 0x04000000, 2, NULL, (MKCollisionMode) 7) != 0) {
             (*(f32 *) ((u8 *) &spC8 + 0x4)) = spD8.unk4;
-            if ((f32) fabs(spD8.unk4 - this->unkC->unk588.unk0) > 200.0f) {
+            if ((f32) fabs(spD8.unk4 - this->unkC->unk588.unk4) > 200.0f) {
                 return 0U;
             }
             sp3C = temp_f31_589;
@@ -424,13 +420,13 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
             if (MKCollision_SphereCollide(*((MKVector3 *) &sp78), temp_f31_589, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
                 return 0U;
             }
-            ((AITargetData *) &this->unkC->unk870.unk40)->Set(*((MKVector3 *) &spC8), 0U);
-            ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
+            this->unkC->unk8C0.Set(*((MKVector3 *) &spC8), 0U);
+            this->unkC->unk8C0.SetInsideRegion(1U);
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
             temp_r3_712 = this->unkC;
             temp_f1_716 = temp_r3_712->GetCollisionRadius();
             temp_r6_719 = this->unk34;
-            M2C_FIELD(temp_r6_719, TargetContext **, 0x10) = &this->unkC->unk870.unk40;
+            M2C_FIELD(temp_r6_719, AITargetData **, 0x10) = &this->unkC->unk8C0;
             M2C_FIELD(temp_r6_719, f32 *, 0x18) = temp_f1_716;
             M2C_FIELD(temp_r6_719, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_719, u8 *, 0x30) | 0x80);
             M2C_FIELD(temp_r6_719, s32 *, 0x20) = 0;
@@ -440,7 +436,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
             M2C_FIELD(temp_r6_719, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_719, u8 *, 0x30) | 0x20);
             M2C_FIELD(temp_r6_719, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_719, u8 *, 0x30) & ~0x10);
             temp_r4_740 = this->unkC;
-            ((AITargetData *) &temp_r4_740->unk870.unk40)->Update(*((MKVector3 *) &temp_r4_740->unk588));
+            temp_r4_740->unk8C0.Update(temp_r4_740->unk588);
             return 1U;
         }
         return 0U;
@@ -459,7 +455,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_Summon() {
     void *temp_r3_769;
 
     temp_r4_768 = this->unkC;
-    temp_r3_769 = temp_r4_768->unkA2C;
+    temp_r3_769 = temp_r4_768->unkA44;
     if ((temp_r3_769 != NULL) && (M2C_FIELD(temp_r3_769, s32 *, 4) & 0x40)) {
         temp_r3_775 = temp_r4_768->unkA4C;
         if (temp_r3_775 != NULL) {
@@ -516,12 +512,11 @@ void EnemyGoal_GroundAttackMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyGoal_GroundAttackMode::Update() {
     AITargetData *temp_r3_907;
+    EAPManager *temp_r3_924;
     Enemy *temp_r4_923;
     u8 var_r31_911;
-    void *temp_r3_924;
 
     ActivateIfInactive();
     this->unk8 = UpdateSubgoals();
@@ -533,10 +528,10 @@ u8 EnemyGoal_GroundAttackMode::Update() {
         }
         if (var_r31_911 != 0) {
             temp_r4_923 = this->unkC;
-            temp_r3_924 = temp_r4_923->unkA44;
-            if (((u32) M2C_FIELD(temp_r3_924, u32 *, 8) != 0U) && (((EAPManager *) temp_r3_924)->ReEvaluate(temp_r4_923, this->unk20) == 0)) {
+            temp_r3_924 = temp_r4_923->unkA5C;
+            if (((EnemyAttack **) temp_r3_924->unk8 != NULL) && (temp_r3_924->ReEvaluate(temp_r4_923, this->unk20) == 0)) {
                 this->unk8 = 2;
-                M2C_FIELD(this->unkC->unkA44, s32 *, 8) = 0;
+                this->unkC->unkA5C->unk8 = NULL;
             }
             if ((u8) this->unk8 == 2) {
                 this->unk8 = 1;
@@ -547,7 +542,6 @@ u8 EnemyGoal_GroundAttackMode::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemyGoal_GroundAttackMode::Activate() {
@@ -563,6 +557,12 @@ void EnemyGoal_GroundAttackMode::Activate() {
     f64 sp8;
     AITargetData *temp_r3_977;
     EAPItem *temp_r0_1076;
+    EAPManager *temp_r3_1062;
+    EAPManager *temp_r3_1072;
+    EAPManager *temp_r4_1085;
+    EAPManager *temp_r4_1090;
+    EAPManager *temp_r4_1140;
+    EAPManager *temp_r4_1163;
     Enemy *temp_r3_1007;
     Enemy *temp_r3_998;
     Enemy *temp_r4_1061;
@@ -576,13 +576,7 @@ void EnemyGoal_GroundAttackMode::Activate() {
     s32 temp_r31_1045;
     s32 temp_r3_1152;
     u8 var_r31_981;
-    void *temp_r3_1062;
-    void *temp_r3_1072;
     void *temp_r4_1014;
-    void *temp_r4_1085;
-    void *temp_r4_1090;
-    void *temp_r4_1140;
-    void *temp_r4_1163;
 
     this->unk8 = 0;
     this->unk6C &= ~0x40;
@@ -617,26 +611,26 @@ void EnemyGoal_GroundAttackMode::Activate() {
         sp50 = (f64) sp10;
         temp_r31_1045 = temp_r31_1004->IsVisible(*((MKVector3 *) &sp48), temp_r3_1007->GetCollisionRadius(temp_r4_1014, temp_f1_1032, (f32) sp40, sp18));
         temp_r5_1049 = this->unkC;
-        if (M2C_FIELD(this->unk20->unk40.Get()->__vptr, u8 (**)(M2C_UNK *, u8 *), 0x28)(&temp_r5_1049->unk588, &temp_r5_1049->unk6C0.unk38) != 0) {
-            M2C_FIELD(this->unkC, s8 *, 0x6F8) = 1;
+        if (M2C_FIELD(this->unk20->unk40.Get()->__vptr, u8 (**)(MKVector3 *, f64 *), 0x28)(&temp_r5_1049->unk588, &temp_r5_1049->unk700) != 0) {
+            this->unkC->unk6C0.unk38 = 1;
         }
         temp_r4_1061 = this->unkC;
-        temp_r3_1062 = temp_r4_1061->unkA44;
+        temp_r3_1062 = temp_r4_1061->unkA5C;
         if (temp_r3_1062 != NULL) {
-            if (((u8) M2C_FIELD(temp_r3_1062, u8 *, 0x10) >> 6U) & 1) {
+            if (((u8) temp_r3_1062->unk10 >> 6U) & 1) {
                 temp_r4_1061->unkA7C = 0.0f;
             }
-            temp_r3_1072 = this->unkC->unkA44;
-            M2C_FIELD(temp_r3_1072, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r3_1072, u8 *, 0x10) & ~0x20) | ((temp_r31_1045 << 5) & 0x20));
+            temp_r3_1072 = this->unkC->unkA5C;
+            temp_r3_1072->unk10 = (temp_r3_1072->unk10 & ~0x20) | ((temp_r31_1045 << 5) & 0x20);
             temp_r0_1076 = this->unk64;
             if (temp_r0_1076 != NULL) {
-                M2C_FIELD(this->unkC->unkA44, EAPItem **, 8) = temp_r0_1076;
-                temp_r4_1085 = this->unkC->unkA44;
-                M2C_FIELD(temp_r4_1085, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_1085, u8 *, 0x10) & ~0x80);
-                temp_r4_1090 = this->unkC->unkA44;
-                M2C_FIELD(temp_r4_1090, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_1090, u8 *, 0x10) & ~0x40);
-                this->unkC->unkA08 = (CharacterFireFX *) this->unk64->unk0;
-                this->unkC->unkA0C = (CharacterBreathFX *) this->unk64->unk0;
+                this->unkC->unkA5C->unk8 = &temp_r0_1076->unk0;
+                temp_r4_1085 = this->unkC->unkA5C;
+                temp_r4_1085->unk10 &= ~0x80;
+                temp_r4_1090 = this->unkC->unkA5C;
+                temp_r4_1090->unk10 &= ~0x40;
+                this->unkC->unkA20 = this->unk64->unk0;
+                this->unkC->unkA24 = this->unk64->unk0;
                 AddGoal_Attack(this->unk64->unk0);
                 this->unk64 = NULL;
                 return;
@@ -648,17 +642,17 @@ block_13:
             if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C) && ((u8) temp_r31_1045 != 0)) {
                 AddGoal_AttackIdleOrStrafe();
             }
-            temp_r4_1140 = this->unkC->unkA44;
+            temp_r4_1140 = this->unkC->unkA5C;
             if (temp_r4_1140 != NULL) {
-                M2C_FIELD(temp_r4_1140, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_1140, u8 *, 0x10) & ~0x40);
+                temp_r4_1140->unk10 &= ~0x40;
                 temp_r4_1149 = this->unkC;
-                temp_r3_1152 = ((EAPManager *) temp_r4_1149->unkA44)->Evaluate(temp_r4_1149, this->unk20, NULL, 0);
+                temp_r3_1152 = temp_r4_1149->unkA5C->Evaluate(temp_r4_1149, this->unk20, NULL, 0);
                 if ((temp_r3_1152 != 0) && (AddGoal_Attack(*temp_r3_1152) != 0)) {
-                    temp_r4_1163 = this->unkC->unkA44;
-                    M2C_FIELD(temp_r4_1163, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_1163, u8 *, 0x10) & ~0x80);
-                    M2C_FIELD(this->unkC->unkA44, s32 *, 8) = temp_r3_1152;
-                    this->unkC->unkA08 = (CharacterFireFX *) *temp_r3_1152;
-                    this->unkC->unkA0C = (CharacterBreathFX *) *temp_r3_1152;
+                    temp_r4_1163 = this->unkC->unkA5C;
+                    temp_r4_1163->unk10 &= ~0x80;
+                    this->unkC->unkA5C->unk8 = (EnemyAttack **) temp_r3_1152;
+                    this->unkC->unkA20 = *temp_r3_1152;
+                    this->unkC->unkA24 = *temp_r3_1152;
                     AddGoal_MoveToAttackRange(*temp_r3_1152);
                     return;
                 }
@@ -898,7 +892,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
         }
         this->unk3C = M2C_ERROR(/* Read from unset register $r3 */);
-        if ((s32) M2C_FIELD(arg0->unkA20, s32 *, 0x214) > 0) {
+        if ((s32) arg0->unkA38->unk214 > 0) {
             operator new(0x18U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -910,7 +904,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk44 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if ((s32) M2C_FIELD(arg0->unkA20, s32 *, 0x21C) > 0) {
+        if ((s32) arg0->unkA38->unk21C > 0) {
             operator new(0x50U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -922,7 +916,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x801U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x801U, 0) != 0) {
             operator new(0x14U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -934,7 +928,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk48 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x40U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x40U, 0) != 0) {
             operator new(0x28U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -951,7 +945,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk4C = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x2000U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x2000U, 0) != 0) {
             operator new(0x18U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -963,7 +957,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk50 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x10000U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x10000U, 0) != 0) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -975,7 +969,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk54 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x20000U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x20000U, 0) != 0) {
             operator new(0x20U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -987,7 +981,7 @@ void EnemyGoal_GroundAttackMode::Init(Enemy *arg0) {
             }
             this->unk58 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (((EnemyDescriptor *) arg0->unkA20)->HasAttack(0x40000U, 0) != 0) {
+        if (arg0->unkA38->HasAttack(0x40000U, 0) != 0) {
             operator new(0x18U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;

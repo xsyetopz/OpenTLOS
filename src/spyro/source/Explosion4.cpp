@@ -1414,7 +1414,7 @@ void Explosion4::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unksp7C'
 void Explosion4::Draw() {
     Matrix spC0;
     Matrix sp80;

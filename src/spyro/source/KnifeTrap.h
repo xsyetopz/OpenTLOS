@@ -2,15 +2,14 @@
 #define SPYRO_SOURCE_KNIFETRAP_H
 
 #include <dolphin/types.h>
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
 
-class KDPropExDescriptor;
 class KnifeTrap;
 class KnifeTrapDescriptor;
 class Trap;
+class TrapDescriptor;
 
-class KnifeTrap : public Trap {  // base: vtable prefix
+class KnifeTrap : public Trap {  // base: base ctor call
 public:
     virtual ~KnifeTrap(void);
     virtual void Reset(void);
@@ -18,7 +17,7 @@ public:
     KnifeTrap(void);
 };
 
-class KnifeTrapDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class KnifeTrapDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     KnifeTrapDescriptor(void);

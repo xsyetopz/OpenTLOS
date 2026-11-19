@@ -25,7 +25,7 @@ void HeroDataMessage::ClearData() {
     this->unkB0 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void HeroDataMessage::Init(const Matrix *arg0) {
     f64 sp60;
     f64 sp58;

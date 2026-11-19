@@ -79,7 +79,7 @@ void TrainGate::Init() {
     this->unkD4 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void TrainGateDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("closed");

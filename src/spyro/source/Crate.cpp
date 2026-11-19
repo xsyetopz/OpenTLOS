@@ -17,7 +17,6 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDShatter2.h"
-#include "spyro/source/PlatformObject.h"
 #include "spyro/source/ShockWave.h"
 #include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
@@ -418,7 +417,6 @@ void Crate::Shatter(bool arg0) {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    ShockWave *temp_r3_880;
     f32 temp_f1_855;
     f32 var_f1_823;
     f64 temp_f2_859;
@@ -426,6 +424,7 @@ void Crate::Shatter(bool arg0) {
     s32 temp_r0_803;
     s32 temp_r10_861;
     void *temp_r3_811;
+    void *temp_r3_880;
     void *temp_r7_883;
     void *temp_r8_853;
 
@@ -472,12 +471,12 @@ void Crate::Shatter(bool arg0) {
                 sp30 = temp_f2_859;
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, M2C_UNK, s32, f32, f64, f64), 0x94)(gMK, &sp48, 0, 1, ((u8 *) temp_r8_853) + 0x30, 1, 0, temp_r10_861, temp_f1_855, temp_f2_859, temp_f3_857);
             }
-            temp_r3_880 = this->unk1D8;
+            temp_r3_880 = this->unk1DC.unk0;
             if (temp_r3_880 != NULL) {
                 temp_r7_883 = this->unk8;
                 sp18 = M2C_FIELD(temp_r7_883, f64 *, 0x30);
                 sp20 = M2C_FIELD(temp_r7_883, f64 *, 0x38);
-                temp_r3_880->Start((MKVector3) &sp18, M2C_FIELD(temp_r3_811, f32 *, 0x1BC), M2C_FIELD(temp_r3_811, f32 *, 0x1C0), 1U, 0U, 0U);
+                ((ShockWave *) temp_r3_880)->Start((MKVector3) &sp18, M2C_FIELD(temp_r3_811, f32 *, 0x1BC), M2C_FIELD(temp_r3_811, f32 *, 0x1C0), 1U, 0U, 0U);
             }
         }
     }
@@ -488,17 +487,17 @@ void Crate::SpawnContents() {
     f64 sp10;
     f64 sp8;
     s32 temp_r0_923;
-    s32 temp_r29_917;
     s32 var_r30_913;
     s32 var_r6_924;
+    u32 temp_r29_917;
     void *temp_r5_929;
 
     var_r30_913 = 0;
 loop_6:
-    if (var_r30_913 < (s32) this->unk17C) {
-        temp_r29_917 = M2C_FIELD(this, s32 *, 0x17C);
+    if (var_r30_913 < (s32) this->unk180) {
+        temp_r29_917 = this->unk17C;
         if (((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) temp_r29_917) != 0) {
-            temp_r0_923 = this->unk180;
+            temp_r0_923 = this->unk184;
             var_r6_924 = -1;
             if (temp_r0_923 > -1) {
                 var_r6_924 = temp_r0_923 + var_r30_913;
@@ -528,10 +527,10 @@ void Crate::Shattering() {
     void *temp_r4_997;
 
     this->unkE0.Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0x178) != 0) {
+    if ((u8) this->unk178 != 0) {
 loop_7:
-        if (M2C_FIELD(&gb, f32 *, 0x30C) > this->unk170) {
-            this->unk170 += 0.041f;
+        if (M2C_FIELD(&gb, f32 *, 0x30C) > this->unk174) {
+            this->unk174 += 0.041f;
             temp_r4_997 = this->unkE0.unk50;
             if (temp_r4_997 != NULL) {
                 var_r0_1000 = M2C_FIELD(temp_r4_997, s32 *, 0x1640);
@@ -548,9 +547,9 @@ loop_7:
         }
     }
     if ((s32) this->unkE0.unk44 != 1) {
-        M2C_FIELD(this, u8 *, 0x178) = 0U;
-        this->unk16C = M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C);
-        if (this->unk16C <= 0.0f) {
+        this->unk178 = 0;
+        this->unk170 = M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C);
+        if (this->unk170 <= 0.0f) {
             Disable();
             return;
         }
@@ -569,8 +568,8 @@ void Crate::Spin() {
     f32 temp_f31_1086;
     void *temp_r4_1074;
 
-    temp_f1_1063 = this->unk168 - gUpdateTimeDelta;
-    this->unk168 = temp_f1_1063;
+    temp_f1_1063 = this->unk16C - gUpdateTimeDelta;
+    this->unk16C = temp_f1_1063;
     if (temp_f1_1063 < 0.0f) {
         Shatter(0);
         return;
@@ -578,11 +577,11 @@ void Crate::Spin() {
     temp_r4_1074 = this->unk8;
     sp10 = M2C_FIELD(temp_r4_1074, f64 *, 0x10);
     sp18 = M2C_FIELD(temp_r4_1074, f64 *, 0x18);
-    temp_f31_1086 = 0.5f * (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE4) - this->unk168);
-    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix((MKModel *) this->unk184) - 4 + 4, 0x40);
+    temp_f31_1086 = 0.5f * (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE4) - this->unk16C);
+    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix(this->unk188) - 4 + 4, 0x40);
     temp_f1_1100 = temp_f31_1086 - 0.5f;
     sp20.SetRotationYaw(KDMath_NormaliseAngle((*(f32 *) ((u8 *) &sp10 + 0x4)) + (6.2831855f * -((4.0f * (temp_f1_1100 * temp_f1_1100)) - 1.0f))));
-    MKModel_SetWorldMatrix((MKModel *) this->unk184, sp20);
+    MKModel_SetWorldMatrix(this->unk188, sp20);
 }
 #endif
 
@@ -593,7 +592,7 @@ void Crate::Fall() {
 void Crate::Burn() {
     s32 var_ctr_1148;
 
-    M2C_FIELD(this, s8 *, 0x178) = 1;
+    this->unk178 = 1;
     var_ctr_1148 = 5;
     do {
         var_ctr_1148 -= 1;
@@ -644,7 +643,7 @@ void Crate::Message(MKMessage *arg0) {
         }
     default:
 block_38:
-        ((PlatformObject *) &this->unk190)->Message(arg0);
+        this->unk190.Message(arg0);
         GameProp::Message(arg0);
         return;
     case 0xBA:
@@ -668,15 +667,15 @@ block_38:
     case 0x5C:
         temp_r3_1257 = arg0->unk4;
         temp_r4_1259 = temp_r3_1257 + 0x128;
-        M2C_FIELD(temp_r3_1257, ShockWave ***, 0x12C) = &this->unk1D8;
-        M2C_FIELD(temp_r3_1257, Attachment **, 0x130) = (Attachment *) this->unk1DC.unk4;
-        this->unk1DC.unk4 = temp_r4_1259;
+        M2C_FIELD(temp_r3_1257, Attachment ***, 0x12C) = &this->unk1DC.unk4;
+        M2C_FIELD(temp_r3_1257, Attachment **, 0x130) = (Attachment *) this->unk1E4;
+        this->unk1E4 = temp_r4_1259;
         M2C_FIELD(temp_r3_1257, Attachment **, 0x130)->unk4 = temp_r4_1259;
         goto block_38;
     case 0x5D:
         temp_r3_1268 = arg0->unk4;
         temp_r4_1269 = temp_r3_1268 + 0x128;
-        M2C_FIELD(temp_r3_1268, Attachment **, 0x130)->unk4 = (Attachment *) M2C_FIELD(temp_r3_1268, ShockWave ***, 0x12C);
+        M2C_FIELD(temp_r3_1268, Attachment **, 0x130)->unk4 = (Attachment *) M2C_FIELD(temp_r3_1268, Attachment ***, 0x12C);
         M2C_FIELD(M2C_FIELD(temp_r4_1269, void **, 4), void **, 8) = (void *) M2C_FIELD(temp_r4_1269, void **, 8);
         M2C_FIELD(temp_r4_1269, void **, 8) = temp_r4_1269;
         M2C_FIELD(temp_r4_1269, void **, 4) = temp_r4_1269;
@@ -690,7 +689,7 @@ block_38:
         this->unkC8 = 1;
         goto block_38;
     case 0xD5:
-        ((PlatformObject *) &this->unk190)->Message(arg0);
+        this->unk190.Message(arg0);
         GameProp::Message(arg0);
         if (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C) > 0.0f) {
             temp_f31_1310 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
@@ -703,7 +702,7 @@ block_38:
             sp28 = sp8;
             sp30 = (f64) sp10;
             if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < (temp_f31_1310 * temp_f31_1310)) {
-                this->unk16C += gUpdateTimeDelta;
+                this->unk170 += gUpdateTimeDelta;
                 this->unk70.unk4 = 0;
                 this->unkC8 = 7;
                 return;
@@ -754,9 +753,9 @@ void Crate::Update() {
                 (*(f32 *) ((u8 *) &sp60 + 0x4)) += M2C_FIELD(temp_r30_1401, f32 *, 0xF4) * _table_sinf(M2C_FIELD(temp_r30_1401, f32 *, 0xF8) * (f32) fmod(&gb, M2C_FIELD(&gb, f32 *, 0x30C) + (f32) sp60, 3.141590118408203, temp_f3_1416));
                 MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp60));
             }
-            if ((u32) this->unk184 != 0U) {
+            if ((MKModel *) this->unk188 != NULL) {
                 M2C_STRUCT_COPY((s32) &unksp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                temp_f31_1461 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
+                temp_f31_1461 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk188, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
                 temp_f1_1469 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1461;
                 sp28 = 0.0f;
                 sp20 = 0.0f;
@@ -765,14 +764,14 @@ void Crate::Update() {
                 sp50 = (f64) sp20;
                 sp70.Translate(&sp70, *((MKVector3 *) &sp50));
                 sp70.Multiply(&sp70, (Matrix *) this->unk8);
-                MKModel_SetWorldMatrix((MKModel *) this->unk184, sp70);
+                MKModel_SetWorldMatrix(this->unk188, sp70);
             }
         }
         GameProp::Update();
-        temp_f2_1488 = this->unk16C;
+        temp_f2_1488 = this->unk170;
         if (temp_f2_1488 > 0.0f) {
-            this->unk16C = temp_f2_1488 - gUpdateTimeDelta;
-            if (this->unk16C <= 0.0f) {
+            this->unk170 = temp_f2_1488 - gUpdateTimeDelta;
+            if (this->unk170 <= 0.0f) {
                 this->unk70.unk4 = 0;
                 temp_f31_1509 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
                 temp_r3_1510 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPosPtr();
@@ -789,7 +788,7 @@ void Crate::Update() {
                     this->unkC8 = 6;
                     this->unkCC = 0.0f;
                 } else {
-                    this->unk16C += gUpdateTimeDelta;
+                    this->unk170 += gUpdateTimeDelta;
                 }
             }
         }
@@ -816,11 +815,11 @@ void Crate::Update() {
 #endif
 
 void Crate::ClearData() {
+    this->unk16C = 0.0f;
     this->unk168 = 0.0f;
-    this->unk168 = 0.0f;
-    this->unk170 = 0.0f;
+    this->unk174 = 0.0f;
     this->unkC8 = 1;
-    M2C_FIELD(this, s8 *, 0x178) = 0;
+    this->unk178 = 0;
 }
 
 void Crate::Reset() {
@@ -832,20 +831,20 @@ void Crate::Reset() {
 void Crate::Draw() {
     f64 sp10;
     f64 sp8;
+    MKModel *temp_r3_1665;
     f32 temp_f0_1682;
     f32 var_f0_1699;
     f64 *temp_r3_1691;
     s32 temp_r0_1656;
-    s32 temp_r3_1665;
     u8 var_r4_1674;
 
     if ((this->unk10 & 0x40000) && (temp_r0_1656 = this->unkC8, ((temp_r0_1656 == 0) == 0)) && (temp_r0_1656 != 5)) {
         if (temp_r0_1656 == 7) {
             return;
         }
-        temp_r3_1665 = this->unk184;
-        if (((u32) temp_r3_1665 != 0U) && (temp_r0_1656 < 4)) {
-            MKModel_Draw((MKModel *) temp_r3_1665, NULL);
+        temp_r3_1665 = this->unk188;
+        if ((temp_r3_1665 != NULL) && (temp_r0_1656 < 4)) {
+            MKModel_Draw(temp_r3_1665, NULL);
         }
         var_r4_1674 = 0;
         if (this->unk10 & 0x8000) {
@@ -872,12 +871,12 @@ void Crate::Draw() {
 }
 
 void Crate::Resolve() {
-    ShockWave *temp_r3_1733;
+    void *temp_r3_1733;
 
     KDPropEx::Resolve();
-    temp_r3_1733 = this->unk1D8;
+    temp_r3_1733 = this->unk1DC.unk0;
     if (temp_r3_1733 != NULL) {
-        temp_r3_1733->SetMessage(this->unk14, "");
+        ((ShockWave *) temp_r3_1733)->SetMessage(this->unk14, "");
     }
 }
 
@@ -898,24 +897,24 @@ void Crate::LoadDone() {
 
     GameProp::LoadDone();
     this->unkE0.LoadDone();
-    ((PlatformObject *) &this->unk190)->LoadDone((MKProp *) this, NULL);
-    temp_r29_1769 = M2C_FIELD(this, u32 *, 0x17C);
-    M2C_FIELD(this, u32 *, 0x17C) = 0U;
+    this->unk190.LoadDone((MKProp *) this, NULL);
+    temp_r29_1769 = this->unk17C;
+    this->unk17C = 0;
 loop_3:
     if (temp_r29_1769 != 0) {
-        temp_r0_1788 = M2C_FIELD(this, u32 *, 0x17C);
+        temp_r0_1788 = this->unk17C;
         if ((s32) temp_r0_1788 < 4) {
             if (stricmp((s8 *) temp_r29_1769, collectableTypes[temp_r0_1788].unk0) != 0) {
-                M2C_FIELD(this, u32 *, 0x17C) = (u32) (M2C_FIELD(this, u32 *, 0x17C) + 1);
+                this->unk17C += 1;
                 goto loop_3;
             }
         }
     }
     if ((u8) M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x124) != 0) {
-        this->unk184 = MKModel_Create(collectableTypes[M2C_FIELD(this, u32 *, 0x17C)].unk10, NULL, 2, NULL);
-        if ((u32) this->unk184 != 0U) {
+        this->unk188 = MKModel_Create(collectableTypes[this->unk17C].unk10, NULL, 2, NULL);
+        if ((MKModel *) this->unk188 != NULL) {
             M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            temp_f31_1832 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
+            temp_f31_1832 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk188, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
             temp_f1_1840 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1832;
             sp18 = 0.0f;
             sp10 = 0.0f;
@@ -924,7 +923,7 @@ loop_3:
             sp20 = (f64) sp10;
             sp30.Translate(&sp30, *((MKVector3 *) &sp20));
             sp30.Multiply(&sp30, (Matrix *) this->unk8);
-            MKModel_SetWorldMatrix((MKModel *) this->unk184, sp30);
+            MKModel_SetWorldMatrix(this->unk188, sp30);
         }
     }
     this->unk20 = M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC);
@@ -934,7 +933,7 @@ loop_3:
     this->unkD0 = M2C_FIELD(temp_r3_1865, f64 *, 0x30);
     this->unkD8 = M2C_FIELD(temp_r3_1865, f64 *, 0x38);
     if (((u8) M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x1B8) != 0) && (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x1C0) > 0.0f)) {
-        ((MKSceneManager *) gMK)->CreatePropDeferred("", (MKProp **) &this->unk1D8);
+        ((MKSceneManager *) gMK)->CreatePropDeferred("", (MKProp **) &this->unk1DC);
     }
 }
 #endif
@@ -944,34 +943,34 @@ s32 Crate::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1907;
 
     var_r31_1907 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadString("", (s8 **) &this->unk178, 1) != 0) || (arg0->LoadInt("", (s32 *) &this->unk17C, 0) != 0) || (arg0->LoadInt("", &this->unk180, 0) != 0) || (this->unkE0.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadString("", (s8 **) &this->unk17C, 1) != 0) || (arg0->LoadInt("", &this->unk180, 0) != 0) || (arg0->LoadInt("", &this->unk184, 0) != 0) || (this->unkE0.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
         var_r31_1907 = 1;
     }
     return var_r31_1907;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Crate_ParentDestroyed'
+#if 0 // DRAFT: type mismatch
 void Crate::Deinit() {
-    s32 temp_r3_1976;
-    void *temp_r30_1966;
-    void *var_r3_1963;
+    Attachment *temp_r30_1966;
+    Attachment *var_r3_1963;
+    MKModel *temp_r3_1976;
 
-    var_r3_1963 = this->unk1DC.unk0;
+    var_r3_1963 = this->unk1DC.unk8;
 loop_3:
-    if (var_r3_1963 != &this->unk1D8) {
-        temp_r30_1966 = M2C_FIELD(var_r3_1963, void **, 4);
-        if (Crate_ParentDestroyed((Attachment *) var_r3_1963, this) != 0) {
+    if (var_r3_1963 != &this->unk1DC.unk4) {
+        temp_r30_1966 = var_r3_1963->unk4;
+        if (Crate_ParentDestroyed(var_r3_1963, this) != 0) {
             var_r3_1963 = temp_r30_1966;
             goto loop_3;
         }
     }
-    temp_r3_1976 = this->unk184;
-    if ((u32) temp_r3_1976 != 0U) {
-        MKModel_Destroy((MKModel *) temp_r3_1976);
+    temp_r3_1976 = this->unk188;
+    if (temp_r3_1976 != NULL) {
+        MKModel_Destroy(temp_r3_1976);
     }
-    this->unk184 = 0;
-    ((PlatformObject *) &this->unk190)->Deinit();
+    this->unk188 = NULL;
+    this->unk190.Deinit();
     this->unkE0.Deinit();
     GameProp::Deinit();
 }
@@ -994,18 +993,18 @@ u8 Crate_ParentDestroyed(Attachment *arg0, void *arg1) {
 void Crate::Init() {
     GameProp::Init();
     this->unk70.unk4 = 1;
-    M2C_FIELD(this, s32 *, 0x17C) = 0;
     this->unk17C = 0;
-    this->unk180 = -1;
+    this->unk180 = 0;
+    this->unk184 = -1;
     this->unkE0.Init(checked_cast<P15CrateDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x128, (KDPropEx *) this);
-    this->unk1D8 = NULL;
-    this->unk184 = 0;
-    this->unk16C = 0.0f;
-    ((PlatformObject *) &this->unk190)->Init(checked_cast<P15CrateDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x110, &this->unk70);
+    this->unk1DC.unk0 = NULL;
+    this->unk188 = NULL;
+    this->unk170 = 0.0f;
+    this->unk190.Init(checked_cast<P15CrateDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x110, &this->unk70);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'CRATE_REF_TARGET'
 void CrateDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     MKModel_RefPointExists(this->unk2C, CRATE_REF_TARGET, &this->unk108);
@@ -1018,7 +1017,7 @@ void CrateDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 CrateDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r29_2355;
     s8 *temp_r4_2390;
@@ -1054,7 +1053,7 @@ block_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void CrateDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unk100 = 0x8F;

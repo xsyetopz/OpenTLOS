@@ -260,8 +260,8 @@ void FuryFXEarth::ResetFury() {
     if (temp_r4_410 != NULL) {
         temp_r4_410->unk31 &= ~0x40;
     }
-    gb.unk2CC.Disable((s32) this->unk1C0);
-    this->unk1C0 = (MKPropDescriptor *)-1;
+    gb.unk2CC.Disable(this->unk1C4);
+    this->unk1C4 = -1;
     temp_r3_425 = this->unk100;
     temp_r3_425->Disable();
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
@@ -271,7 +271,7 @@ void FuryFXEarth::ResetFury() {
     }
     temp_r3_445 = this->unk160;
     temp_r3_445->Disable();
-    temp_r4_450 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+    temp_r4_450 = this->unk1CC;
     if (temp_r4_450 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_450, 0U);
     }
@@ -331,8 +331,8 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
         temp_r3_530->unk0 = M2C_FIELD(this, f64 *, 0x110);
         temp_r3_530->unk8 = M2C_FIELD(this, f64 *, 0x118);
     }
-    M2C_FIELD(this, u8 *, 0x1C8) = arg1;
-    this->unk1C0 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
+    this->unk1C8 = arg1;
+    this->unk1C4 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
     temp_r3_546 = this->unk100;
     temp_r3_546->Reset();
     temp_r3_551 = this->unk100;
@@ -355,12 +355,12 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     }
     temp_r29_595 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unk168.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
-    temp_r4_616 = M2C_FIELD(this, ManagedLight **, 0x1CC);
-    if ((temp_r4_616 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
+    temp_r4_616 = this->unk1CC;
+    if ((temp_r4_616 != NULL) && ((u8) this->unk1C8 == 0)) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_616, 1U);
         MKVector(0.0f, 500.0f, 0.0f);
         sp8 = M2C_FIELD(this, f64 *, 0x110) + sp18;
-        temp_r3_641 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+        temp_r3_641 = this->unk1CC;
         sp28 = sp8;
         sp10 = this->unk110.unk8 + sp20;
         temp_r3_641->unk10 = sp8;
@@ -371,7 +371,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
             M2C_FIELD(temp_r3_647, f64 *, 0x10) = sp8;
             M2C_FIELD(temp_r3_647, f64 *, 0x18) = (f64) sp10;
         }
-        temp_r3_654 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+        temp_r3_654 = this->unk1CC;
         temp_r3_654->unk38 = 1000.0f;
         temp_r3_657 = temp_r3_654->unk3C;
         if (temp_r3_657 != NULL) {
@@ -402,9 +402,9 @@ void FuryFXEarth::Deinit() {
         ((Coronas *) gb.unk64)->Free(temp_r4_711);
         this->unk164 = NULL;
     }
-    gb.unk2CC.Disable((s32) this->unk1C0);
-    this->unk1C0 = (MKPropDescriptor *)-1;
-    temp_r4_728 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+    gb.unk2CC.Disable(this->unk1C4);
+    this->unk1C4 = -1;
+    temp_r4_728 = this->unk1CC;
     if (temp_r4_728 != NULL) {
         ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_728);
     }
@@ -653,13 +653,13 @@ void FuryFXEarth::Update() {
         }
         if (this->unk108 <= 0.0f) {
             this->unk104 = 2;
-            if ((u8) M2C_FIELD(this, u8 *, 0x1C8) != 0) {
+            if ((u8) this->unk1C8 != 0) {
                 this->unk108 = 3.25f;
             } else {
                 this->unk108 = 1.8f;
             }
-            gb.unk2CC.Disable((s32) this->unk1C0);
-            this->unk1C0 = (MKPropDescriptor *)-1;
+            gb.unk2CC.Disable(this->unk1C4);
+            this->unk1C4 = -1;
             return;
         }
     case 0:                                         /* switch 1 */
@@ -833,10 +833,10 @@ loop_59:
             var_f1_1424 = 0.0f;
         }
         temp_f31_1441 = var_f1_1424 * 0.25f;
-        if (((ManagedLight *) M2C_FIELD(this, ManagedLight **, 0x1CC) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
+        if (((ManagedLight *) this->unk1CC != NULL) && ((u8) this->unk1C8 == 0)) {
             MKVector(0.0f, (500.0f * temp_f31_1441) + 500.0f, 0.0f);
             sp28 = M2C_FIELD(this, f64 *, 0x110) + spC8;
-            temp_r3_1462 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+            temp_r3_1462 = this->unk1CC;
             spD8 = sp28;
             sp30 = this->unk110.unk8 + spD0;
             temp_r3_1462->unk10 = sp28;
@@ -847,7 +847,7 @@ loop_59:
                 M2C_FIELD(temp_r3_1468, f64 *, 0x10) = sp28;
                 M2C_FIELD(temp_r3_1468, f64 *, 0x18) = (f64) sp30;
             }
-            temp_r3_1482 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+            temp_r3_1482 = this->unk1CC;
             temp_f1_1484 = (1.0f + temp_f31_1441) * (1000.0f * MKRand_Float(&gViewSeed, 0.5f, 1.2f));
             temp_r3_1482->unk38 = temp_f1_1484;
             temp_r3_1486 = temp_r3_1482->unk3C;
@@ -872,8 +872,8 @@ loop_59:
                 sp1C = 0x459;
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp1C);
             }
-            temp_r4_1549 = M2C_FIELD(this, ManagedLight **, 0x1CC);
-            if ((temp_r4_1549 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
+            temp_r4_1549 = this->unk1CC;
+            if ((temp_r4_1549 != NULL) && ((u8) this->unk1C8 == 0)) {
                 ((LightManager *) gb.unk80)->EnableLight(temp_r4_1549, 0U);
             }
             gb.unk381 = 0;
@@ -948,15 +948,15 @@ void FuryFXEarth::Resolve() {
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
     sp80 = (f64) sp30;
-    M2C_FIELD(this, ManagedLight **, 0x1CC) = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784);
-    temp_r4_1656 = M2C_FIELD(this, ManagedLight **, 0x1CC);
+    this->unk1CC = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784);
+    temp_r4_1656 = this->unk1CC;
     if (temp_r4_1656 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1656, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match
 void FuryFXEarth::Init() {
     f64 sp40;
     f64 sp38;
@@ -1000,9 +1000,9 @@ void FuryFXEarth::Init() {
         var_r29_1742 += 1;
     } while (var_r29_1742 < 0xF);
     this->unk1C0 = checked_cast<SquishBoulderDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("SquishBoulder"));
-    this->unk1C0 = (MKPropDescriptor *)-1;
-    M2C_FIELD(this, s8 *, 0x1C8) = 0;
-    M2C_FIELD(this, s32 *, 0x1CC) = 0;
+    this->unk1C4 = -1;
+    this->unk1C8 = 0;
+    this->unk1CC = NULL;
 }
 #endif
 

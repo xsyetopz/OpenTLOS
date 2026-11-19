@@ -18,6 +18,7 @@
 #include "spyro/source/ExplosiveBarrelPath.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/Lever.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
@@ -116,7 +117,7 @@ void EnemyGoal_Think::SetSpawnGoal(Goal<Enemy> *arg0) {
     this->unk48 = (Goal<Enemy> *) arg0;
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Frozen() {
     s32 temp_r3_226;
 
@@ -142,7 +143,6 @@ void EnemyGoal_Think::AddGoal_Spawn() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
 u8 EnemyGoal_Think::Try_AddGoal_Kong() {
     MKProp *sp14;
     s32 sp10;
@@ -171,9 +171,7 @@ u8 EnemyGoal_Think::Try_AddGoal_Kong() {
 block_7:
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
 u8 EnemyGoal_Think::Try_AddGoal_OperateLever() {
     MKProp *sp14;
     s32 sp10;
@@ -204,7 +202,6 @@ u8 EnemyGoal_Think::Try_AddGoal_OperateLever() {
 block_7:
     return 0U;
 }
-#endif
 
 void EnemyGoal_Think::StartFollowingSpawnGraph() {
     s32 temp_r4_418;
@@ -264,7 +261,7 @@ u8 EnemyGoal_Think::IsFollowingSpawnPath() {
     return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 4U) & 1;
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Kong(MKProp *arg0) {
     if (IsPresent(0x48) == 0) {
         RemoveAllSubgoals();
@@ -274,7 +271,7 @@ void EnemyGoal_Think::AddGoal_Kong(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_OperateLever(MKProp *arg0) {
     if (IsPresent(0x47) == 0) {
         RemoveAllSubgoals();
@@ -284,7 +281,7 @@ void EnemyGoal_Think::AddGoal_OperateLever(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_FollowSpawnGraph() {
     s32 temp_r3_616;
     s32 temp_r3_621;
@@ -300,7 +297,7 @@ void EnemyGoal_Think::AddGoal_FollowSpawnGraph() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_FollowSpawnPath() {
     Goal<Enemy> *temp_r6_658;
     s32 temp_r3_678;
@@ -328,7 +325,7 @@ void EnemyGoal_Think::AddGoal_FollowSpawnPath() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Panic() {
     if (IsPresent(0x26) == 0) {
         RemoveAllSubgoals();
@@ -337,7 +334,7 @@ void EnemyGoal_Think::AddGoal_Panic() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_ReceiveOrders() {
     if (IsPresent(0x4D) == 0) {
         RemoveAllSubgoals();
@@ -346,7 +343,7 @@ void EnemyGoal_Think::AddGoal_ReceiveOrders() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
@@ -355,7 +352,7 @@ void EnemyGoal_Think::AddGoal_Respawn() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     s32 temp_r0_796;
     s32 temp_r0_875;
@@ -430,7 +427,7 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     f32 var_f31_1013;
     s32 temp_r0_1141;
@@ -567,7 +564,7 @@ block_65:
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_Strafe() {
     Goal<Enemy> *temp_r4_1361;
 
@@ -752,7 +749,7 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_GroundAttackMode() {
     Goal<Enemy> *temp_r4_1701;
 
@@ -771,7 +768,7 @@ void EnemyGoal_Think::AddGoal_GroundAttackMode() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_1746;
 
@@ -786,7 +783,7 @@ void EnemyGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
@@ -803,7 +800,7 @@ void EnemyGoal_Think::Reset() {
     this->unk70 &= ~0x20;
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemyGoal_Think::ArbitrateOld() {
     f32 var_f31_1867;
     s32 temp_r3_1829;
@@ -865,7 +862,7 @@ void EnemyGoal_Think::ArbitrateOld() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_Think::Arbitrate() {
     EnemyDamageFeedback sp28;
     EnemyHudData sp8;
@@ -1020,7 +1017,7 @@ void EnemyGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 EnemyGoal_Think::Update() {
     s32 temp_r3_2405;
     s32 temp_r3_2427;
@@ -1403,7 +1400,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
         this->unk24 = NULL;
         this->unk60 = NULL;
         this->unk64 = NULL;
-        if ((void *) arg0->unkA44 != NULL) {
+        if ((EAPManager *) arg0->unkA5C != NULL) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -1458,7 +1455,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
             }
             this->unk5C = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if ((u32) arg0->unkA4C != 0U) {
+        if ((SpawnerObject *) arg0->unkA4C != NULL) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;

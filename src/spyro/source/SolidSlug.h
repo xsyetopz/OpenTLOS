@@ -11,7 +11,7 @@ class ProjectileDescriptor;
 class SolidSlug;
 class SolidSlugDescriptor;
 
-class SolidSlug : public Projectile {  // base: vtable prefix
+class SolidSlug : public Projectile {  // base: base ctor call
 public:
     virtual ~SolidSlug(void);
     virtual void LoadDone(void);
@@ -21,7 +21,7 @@ public:
     void * CreateInstance(void);
 };
 
-class SolidSlugDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class SolidSlugDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);

@@ -39,7 +39,7 @@ static s8 *pDirectoryName = "BASLUS-21372s06";
 #endif
 u8 operation__16MemoryCardScreen[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: illegal type
 void MCText::Draw(const RenderContext &arg0) {
     s8 spF0;
     RenderContext spA0;
@@ -56,15 +56,15 @@ void MCText::Draw(const RenderContext &arg0) {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKFont *temp_r4_123;
     f32 temp_f3_134;
     s32 temp_r3_93;
+    s32 temp_r4_123;
     s32 temp_r4_72;
 
     sp58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     (*(f32 *) ((u8 *) &sp58 + 0x4)) = 1.0f;
-    if (((MKFont *) this->unk64 >= 0) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
+    if (((s32) this->unk6C >= 0) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
         if (this->unk18.unk38 <= 0.0f) {
             return;
         }
@@ -89,14 +89,14 @@ void MCText::Draw(const RenderContext &arg0) {
         sp60.SetIdentity();
         sp60.Translate(&sp60, *((MKVector3 *) &sp50));
         ((Matrix *) &spA0)->Multiply(&sp60, (Matrix *) &spA0);
-        temp_r4_123 = this->unk64;
-        if ((temp_r4_123 >= 0) && ((u32) *(gpTranslation_StringArray + ((s32) temp_r4_123 * 4)) != 0U)) {
-            MemoryCard_String(&spF0, (s32) temp_r4_123);
-            temp_f3_134 = M2C_BITWISE(f32, this->unk68);
-            if ((temp_f3_134 != 0.0f) || (M2C_BITWISE(f32, this->unk6C) != 0.0f)) {
+        temp_r4_123 = this->unk6C;
+        if ((temp_r4_123 >= 0) && ((u32) *(gpTranslation_StringArray + (temp_r4_123 * 4)) != 0U)) {
+            MemoryCard_String(&spF0, temp_r4_123);
+            temp_f3_134 = this->unk70;
+            if ((temp_f3_134 != 0.0f) || (this->unk74 != 0.0f)) {
                 sp28 = spA0.unk38;
                 sp20 = spA0.unk30 + temp_f3_134;
-                sp24 = spA0.unk34 + M2C_BITWISE(f32, this->unk6C);
+                sp24 = spA0.unk34 + this->unk74;
                 sp48 = (f64) sp28;
                 sp40 = (f64) sp20;
                 spA0.unk30 = (f32) sp40;
@@ -105,8 +105,8 @@ void MCText::Draw(const RenderContext &arg0) {
                 spA0.unk3C = 1.0f;
                 this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, 0x80000000U, 1.0f, 1.0f, NULL, 1U);
                 sp18 = spA0.unk38;
-                sp10 = spA0.unk30 - M2C_BITWISE(f32, this->unk68);
-                sp14 = spA0.unk34 - M2C_BITWISE(f32, this->unk6C);
+                sp10 = spA0.unk30 - this->unk70;
+                sp14 = spA0.unk34 - this->unk74;
                 sp38 = (f64) sp18;
                 sp30 = (f64) sp10;
                 spA0.unk30 = (f32) sp30;
@@ -186,11 +186,11 @@ loop_15:
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
 void MemoryCardScreen::OnExit() {
-    UIObject *temp_r0_391;
+    s32 temp_r0_391;
 
     UIScreen::OnExit();
-    temp_r0_391 = ui_cast<UISystem *, UIContainer *>(GetRoot())->unk60;
-    if ((temp_r0_391 == (UIObject *)3) || (temp_r0_391 == (UIObject *)4)) {
+    temp_r0_391 = ui_cast<UISystem *, UIContainer *>(GetRoot())->unk68;
+    if ((temp_r0_391 == 3) || (temp_r0_391 == 4)) {
         Autosave_EnableRemovalCheck(1U);
         if ((s32) *gGMState.GetCurrState() == 7) {
             PauseMenu_AllowStartToQuit(1U);
@@ -202,16 +202,16 @@ void MemoryCardScreen::OnExit() {
 
 #if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void MemoryCardScreen::OnEnter() {
+    UIContainer *temp_r3_426;
     UIObject *var_r30_429;
-    s32 temp_r3_426;
     s8 *temp_r3_439;
     s8 *temp_r3_450;
     void *temp_r3_433;
 
     UIScreen::OnEnter();
-    temp_r3_426 = this->unkBC.unk4;
-    if ((u32) temp_r3_426 != 0U) {
-        var_r30_429 = M2C_FIELD(temp_r3_426, UIObject **, 0x60);
+    temp_r3_426 = this->unkC8;
+    if (temp_r3_426 != NULL) {
+        var_r30_429 = temp_r3_426->unk60;
 loop_11:
         if (var_r30_429 == NULL) {
 
@@ -242,16 +242,14 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
 void MemoryCardScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkBC.unk4 = ui_cast<UIContainer *, UIObject *>(FindChild(""));
+    this->unkC8 = ui_cast<UIContainer *, UIObject *>(FindChild(""));
 }
-#endif
 
 void MemoryCardScreen::Init() {
     UIContainer::Init();
-    this->unkBC.unk4 = 0;
+    this->unkC8 = NULL;
 }
 
 #if 0 // DRAFT: undefined identifier 'P8UISystem'

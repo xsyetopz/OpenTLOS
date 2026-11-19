@@ -35,7 +35,6 @@
 extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Projectile::SetAttachment(MKAttachment *arg0) {
     Matrix sp90;
     Matrix sp50;
@@ -54,7 +53,6 @@ void Projectile::SetAttachment(MKAttachment *arg0) {
         MKModel_SetWorldMatrix(this->unk4, sp50);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Projectile::Disable() {
@@ -225,7 +223,6 @@ void Projectile::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Projectile::Draw() {
     Matrix sp90;
     Matrix sp50;
@@ -244,7 +241,6 @@ void Projectile::Draw() {
     }
     GameProp::Draw();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Projectile::Update() {
@@ -463,7 +459,7 @@ void Projectile::Init() {
     this->unk128 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[10], long *)' does
 s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_920;
 
@@ -475,7 +471,7 @@ s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void ProjectileDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = GS_PLACEHOLDER;

@@ -217,7 +217,7 @@ void *CynderElecAttack::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void CynderElecAttackDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pCynderElecAttackDescriptor = (MKPropDescriptor *) this;

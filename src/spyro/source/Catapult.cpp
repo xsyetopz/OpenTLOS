@@ -219,11 +219,9 @@ void Catapult::SetState(Catapult::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF8'
 s32 Catapult::CanLoadBall() {
     return this->unkF8.GetState() == 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp80'
 void Catapult::SetBall(Ball *arg0) {
@@ -254,8 +252,8 @@ void Catapult::SetBall(Ball *arg0) {
     f64 temp_f0_157;
     void *temp_r5_113;
 
-    M2C_FIELD(this, Ball **, 0x12C) = arg0;
-    temp_r5_113 = M2C_FIELD(this, Ball **, 0x12C)->unk8;
+    this->unk12C = (u32) arg0;
+    temp_r5_113 = M2C_FIELD(this->unk12C, void **, 8);
     spA8 = M2C_FIELD(temp_r5_113, f64 *, 0x30);
     spB0 = M2C_FIELD(temp_r5_113, f64 *, 0x38);
     ((Catapult *) &sp78)->GetAmmoPos();
@@ -281,12 +279,12 @@ void Catapult::SetBall(Ball *arg0) {
     sp88 = temp_f0_157;
     sp10 = (f32) sp70 + (f32) sp50;
     sp90 = (f64) sp10;
-    this->unk118.unk4 = 0.0f;
-    this->unk118.unk0 = 0;
-    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &spA8));
-    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &sp88));
-    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &sp98));
-    this->unk134 = 0.0f;
+    this->unk118.unk8 = 0.0f;
+    this->unk118.unk4 = 0;
+    this->unk118.AddNode(*((MKVector3 *) &spA8));
+    this->unk118.AddNode(*((MKVector3 *) &sp88));
+    this->unk118.AddNode(*((MKVector3 *) &sp98));
+    this->unk138 = 0.0f;
     SetState((Catapult::State) 1);
 }
 #endif
@@ -311,7 +309,7 @@ void Catapult::GetAmmoPos() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF8'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Catapult::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -377,11 +375,11 @@ void Catapult::WindBackUpdate() {
     void *temp_r3_464;
     void *temp_r4_378;
 
-    temp_f31_353 = this->unk138;
+    temp_f31_353 = this->unk13C;
     MKView_Push();
     MKView_SetCameraMatrix(*(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), Matrix **, 8)));
     if (MKView_VisibilityTest(*(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), BoundingVolume **, 0x1C)), *((Matrix *) this->unk8)) == 0) {
-        this->unk138 = 1.0f;
+        this->unk13C = 1.0f;
     } else {
         temp_r4_378 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_r3_379 = this->unk8;
@@ -396,26 +394,26 @@ void Catapult::WindBackUpdate() {
         sp28 = sp8;
         sp20 = (f64) sp10;
         sp30 = (f64) sp10;
-        if ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU) == 0) || (this->unk138 > 0.67f)) {
+        if ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU) == 0) || (this->unk13C > 0.67f)) {
             var_f3_422 = 1.0f;
-            temp_f0_423 = (gUpdateTimeDelta * this->unk140) + this->unk138;
+            temp_f0_423 = (gUpdateTimeDelta * this->unk144) + this->unk13C;
             if (var_f3_422 < temp_f0_423) {
 
             } else {
                 var_f3_422 = temp_f0_423;
             }
-            this->unk138 = var_f3_422;
-            this->unk140 -= gUpdateTimeDelta;
-            if (this->unk140 < 0.3f) {
-                this->unk140 = 0.3f;
+            this->unk13C = var_f3_422;
+            this->unk144 -= gUpdateTimeDelta;
+            if (this->unk144 < 0.3f) {
+                this->unk144 = 0.3f;
             }
-            if (temp_f31_353 != this->unk138) {
-                M2C_FIELD(this, s8 *, 0x14C) = 1;
+            if (temp_f31_353 != this->unk13C) {
+                this->unk14C = 1;
             }
         }
     }
-    this->unk80->JumpToPos(this->unk138, -1);
-    if (this->unk138 == 1.0f) {
+    this->unk80->JumpToPos(this->unk13C, -1);
+    if (this->unk13C == 1.0f) {
         sp60 = 0;
         sp5C = 0;
         sp58 = 0x19;
@@ -424,7 +422,7 @@ void Catapult::WindBackUpdate() {
         temp_r3_464 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xB70);
         M2C_FIELD(M2C_FIELD(temp_r3_464, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_464, &sp58);
         SetState((Catapult::State) 0);
-        M2C_FIELD(this, s8 *, 0x14C) = 0;
+        this->unk14C = 0;
     }
     MKView_Pop();
 }
@@ -445,8 +443,8 @@ void Catapult::WindBackEnter() {
     temp_r3_503 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0xB70);
     M2C_FIELD(M2C_FIELD(temp_r3_503, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_503, &sp8);
     this->unk80->SetAnim(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x74), 1.0f, 0.0f, 0, -1);
-    this->unk138 = 0.0f;
-    this->unk140 = 1.0f;
+    this->unk13C = 0.0f;
+    this->unk144 = 1.0f;
 }
 #endif
 
@@ -474,30 +472,30 @@ void Catapult::FireUpdate() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    Ball *temp_r30_546;
-    Ball *temp_r3_576;
+    u32 temp_r30_546;
+    u32 temp_r3_576;
 
     ((Catapult *) &spA0)->GetAmmoPos();
-    temp_r30_546 = M2C_FIELD(this, Ball **, 0x12C);
+    temp_r30_546 = this->unk12C;
     spC0 = spA0;
     spC8 = spA8;
-    if (temp_r30_546 != NULL) {
+    if (temp_r30_546 != 0) {
         ((Catapult *) &sp50)->GetAmmoDir();
-        sp60.operator*(temp_r30_546->unk270);
-        sp70.operator*(temp_r30_546->unk27C);
+        sp60.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x274));
+        sp70.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x280));
         sp80.operator*(0.5f);
         sp20 = spC0 + M2C_BITWISE(f64, sp80);
-        temp_r3_576 = M2C_FIELD(this, Ball **, 0x12C);
+        temp_r3_576 = this->unk12C;
         sp90 = sp20;
         sp28 = (f32) spC8 + sp80.unk8;
-        temp_r3_576->unkE0 = sp20;
+        M2C_FIELD(temp_r3_576, f64 *, 0xE0) = sp20;
         sp98 = (f64) sp28;
         M2C_FIELD(temp_r3_576, f64 *, 0xE8) = (f64) sp28;
     }
-    if ((this->unk80->CheckEvent(0) != 0) && ((Ball *) M2C_FIELD(this, Ball **, 0x12C) != NULL)) {
+    if ((this->unk80->CheckEvent(0) != 0) && ((u32) this->unk12C != 0)) {
         sp30 = 0.0f;
         sp34 = 0.0f;
-        sp38 = -3950.0f * this->unk13C;
+        sp38 = -3950.0f * this->unk140;
         spB0 = (f64) sp30;
         spB8 = (f64) sp38;
         M2C_STRUCT_COPY((s32) &unkspCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -511,8 +509,8 @@ void Catapult::FireUpdate() {
         spB8 = (f64) sp18;
         sp40 = (f64) sp10;
         sp48 = (f64) sp18;
-        ((Ball *) (M2C_FIELD(this, Ball **, 0x12C)))->Fire(*((MKVector3 *) &spB0));
-        M2C_FIELD(this, Ball **, 0x12C) = NULL;
+        ((Ball *) this->unk12C)->Fire(*((MKVector3 *) &spB0));
+        this->unk12C = 0;
         ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.0f, 0.3f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
     }
     if (this->unk80->unk2C & 1) {
@@ -525,10 +523,10 @@ void Catapult::FireUpdate() {
 void Catapult::FireEnter() {
     MKVector3 *temp_r31_742;
 
-    this->unk12C = this->unk12C + 1;
+    this->unk130 = this->unk130 + 1;
     this->unk80->SetAnim(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x7C), 1.0f, 0.0f, 0, -1);
-    if ((s32) this->unk12C == 1) {
-        this->unk10C.Send((MKProp *) this);
+    if ((s32) this->unk130 == 1) {
+        this->unk110.Send((MKProp *) this);
     }
     this->unk10C.Send((MKProp *) this);
     if ((s32) M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80) != 0) {
@@ -551,37 +549,37 @@ void Catapult::LoadAmmoUpdate() {
     f32 sp8;
     f32 temp_f0_771;
     f32 var_f3_770;
-    void *temp_r31_779;
-    void *temp_r3_813;
+    u32 temp_r31_779;
+    u32 temp_r3_813;
 
     var_f3_770 = 1.0f;
-    temp_f0_771 = (2.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unk134);
+    temp_f0_771 = (2.0f * gUpdateTimeDelta) + this->unk138;
     if (var_f3_770 < temp_f0_771) {
 
     } else {
         var_f3_770 = temp_f0_771;
     }
-    this->unk134 = var_f3_770;
-    temp_r31_779 = M2C_FIELD(this, void **, 0x12C);
-    if (temp_r31_779 != NULL) {
+    this->unk138 = var_f3_770;
+    temp_r31_779 = this->unk12C;
+    if (temp_r31_779 != 0) {
         ((Catapult *) &sp20)->GetAmmoDir();
         sp30.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x274));
         sp40.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x280));
         sp50.operator*(0.5f);
         sp8 = 0.0f;
-        sp60.GetMeasure(M2C_BITWISE(f32, this->unk134), (Matrix *) &this->unk114, KDSpline_PositionMixer);
+        sp60.GetMeasure(this->unk138, (Matrix *) &this->unk118, KDSpline_PositionMixer);
         sp10 = M2C_BITWISE(f64, sp60) + M2C_BITWISE(f64, sp50);
-        temp_r3_813 = M2C_FIELD(this, void **, 0x12C);
+        temp_r3_813 = this->unk12C;
         sp60.unk10 = sp10;
         sp18 = sp60.unk8 + sp50.unk8;
         M2C_FIELD(temp_r3_813, f64 *, 0xE0) = sp10;
         sp78 = (f64) sp18;
         M2C_FIELD(temp_r3_813, f64 *, 0xE8) = (f64) sp18;
     }
-    if (M2C_BITWISE(f32, this->unk134) == 1.0f) {
-        this->unk130 += 1;
-        if ((s32) this->unk130 == 1) {
-            this->unk110.Send((MKProp *) this);
+    if (this->unk138 == 1.0f) {
+        this->unk134 += 1;
+        if ((s32) this->unk134 == 1) {
+            this->unk114.Send((MKProp *) this);
         }
         SetState((Catapult::State) 2);
     }
@@ -612,10 +610,10 @@ void Catapult::Update() {
     this->unk90 = sp10;
     this->unk98 = sp18;
     KDProp::Update();
-    M2C_FIELD(this, u8 *, 0x14C) = 0U;
+    this->unk14C = 0;
     this->unkF8.Update(this, 0);
     if ((s32) M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x84) != 0) {
-        temp_f1_915 = this->unk138;
+        temp_f1_915 = this->unk13C;
         if (temp_f1_915 >= 0.3f) {
             var_f1_923 = (0.714f * (temp_f1_915 - 0.3f)) + 0.7f;
         } else {
@@ -624,7 +622,7 @@ void Catapult::Update() {
         KDSound_SetPitch(this->unkA0, var_f1_923);
         temp_r4_933 = checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) &this->unkA0)->Update(M2C_FIELD(temp_r4_933, s32 *, 0x84), 1U, M2C_FIELD(this, u8 *, 0x14C), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkA0)->Update(M2C_FIELD(temp_r4_933, s32 *, 0x84), 1U, this->unk14C, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
 #endif
@@ -634,23 +632,23 @@ void Catapult::Reset() {
     f64 sp8;
 
     KDProp::Reset();
-    this->unk118.unk4 = 0.0f;
-    this->unk118.unk0 = 0;
-    this->unk134 = 0.0f;
-    this->unk138 = 1.0f;
-    M2C_FIELD(this, s32 *, 0x12C) = 0;
+    this->unk118.unk8 = 0.0f;
+    this->unk118.unk4 = 0;
+    this->unk138 = 0.0f;
+    this->unk13C = 1.0f;
+    this->unk12C = 0;
     ((Catapult *) &sp8)->GetAmmoPos();
     this->unk90 = sp8;
     this->unk98 = sp10;
     SetState((Catapult::State) 0);
-    M2C_FIELD(this, s8 *, 0x14C) = 0;
+    this->unk14C = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF8'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Catapult::Unload() {
     if (this->unkF8.GetState() & 2) {
-        M2C_FIELD(this, s32 *, 0x12C) = 0;
+        this->unk12C = 0;
         SetState((Catapult::State) 4);
     }
 }
@@ -666,7 +664,7 @@ void Catapult::LoadDone() {
     var_r3_1025 = 0;
     var_ctr_1026 = 6;
 loop_1:
-    temp_r4_1030 = &groups[M2C_FIELD(this, u8 *, 0x14D)];
+    temp_r4_1030 = &groups[this->unk14D];
     if ((u32) *(temp_r4_1030 + var_r3_1025) == 0U) {
         *(temp_r4_1030 + var_r3_1025) = this;
     } else {
@@ -676,8 +674,8 @@ loop_1:
             goto loop_1;
         }
     }
-    this->unk12C = 0;
     this->unk130 = 0;
+    this->unk134 = 0;
     Init__25KDStateMachine<8Catapult>FPQ225KDStateMachine<8Catapult>5StateP25KDStateMachine<8Catapult>(&this->unkF8, (KDStateMachine<Catapult>::State *) Catapult::states, NULL);
     this->unk80->InitEvents((s8 **) Catapult::pEvents);
     this->unkC8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
@@ -685,11 +683,11 @@ loop_1:
 #endif
 
 s32 Catapult::LoadLine(MKIniLine *arg0) {
-    if ((KDProp::LoadLine(arg0) != 0) || (this->unk10C.LoadLine(arg0, "OnFire") != 0) || (this->unk10C.LoadLine(arg0, "OnFirstFire") != 0) || (this->unk110.LoadLine(arg0, "OnFirstLoad") != 0) || (arg0->LoadFloat("fPowerMul", &this->unk13C, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (this->unk10C.LoadLine(arg0, "OnFire") != 0) || (this->unk110.LoadLine(arg0, "OnFirstFire") != 0) || (this->unk114.LoadLine(arg0, "OnFirstLoad") != 0) || (arg0->LoadFloat("fPowerMul", &this->unk140, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("group") != 0) {
-        M2C_FIELD(this, s8 *, 0x14D) = arg0->GetInt(0);
+        this->unk14D = arg0->GetInt(0);
         return 1;
     }
     return 0;
@@ -697,16 +695,16 @@ s32 Catapult::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'groups'
 void Catapult::Deinit() {
-    f32 temp_r3_1174;
+    s32 temp_r3_1174;
     s32 var_ctr_1153;
     s32 var_r3_1148;
     struct _struct_groups_0x18 *temp_r5_1157;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0x14D) < 0xFFU) {
+    if ((u8) this->unk14D < 0xFFU) {
         var_r3_1148 = 0;
         var_ctr_1153 = 6;
         do {
-            temp_r5_1157 = &groups[M2C_FIELD(this, u8 *, 0x14D)];
+            temp_r5_1157 = &groups[this->unk14D];
             if ((u32) *(temp_r5_1157 + var_r3_1148) == this) {
                 *(temp_r5_1157 + var_r3_1148) = 0;
             }
@@ -715,12 +713,12 @@ void Catapult::Deinit() {
         } while (var_ctr_1153 != 0);
     }
     this->unkF8.Deinit();
-    ((KDUniformSpline *) &this->unk114)->Deinit();
+    this->unk118.Deinit();
     this->unkC8.Deinit();
     KDSound_Stop(&this->unkA0);
-    temp_r3_1174 = this->unk144;
-    if (M2C_BITWISE(s32, temp_r3_1174) != 0) {
-        PhrasePlayer_StopEvent(M2C_BITWISE(s32, temp_r3_1174));
+    temp_r3_1174 = this->unk148;
+    if (temp_r3_1174 != 0) {
+        PhrasePlayer_StopEvent(temp_r3_1174);
     }
     KDProp::Deinit();
 }
@@ -728,11 +726,11 @@ void Catapult::Deinit() {
 
 void Catapult::Init() {
     KDProp::Init();
-    ((KDUniformSpline *) &this->unk114)->Init(3, 0U);
+    this->unk118.Init(3, 0U);
     ((KDSoundFader *) &this->unkA0)->Init(0.25f, 0.25f);
-    M2C_FIELD(this, s8 *, 0x14D) = 0xFF;
-    this->unk13C = 1.0f;
-    this->unk144 = 0.0f;
+    this->unk14D = 0xFF;
+    this->unk140 = 1.0f;
+    this->unk148 = 0;
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to

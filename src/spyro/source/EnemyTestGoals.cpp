@@ -18,23 +18,23 @@ extern M2C_UNK gb;
 
 void EnemyTestGoal_MoveToTarget::Terminate() {
     Character *temp_r3_61;
-    void *temp_r3_30;
+    SB2 *temp_r3_30;
 
-    temp_r3_30 = this->unkC->unk638;
-    M2C_FIELD(temp_r3_30, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_30, u8 *, 0x464) & ~0x80);
-    ((SB2 *) this->unkC->unk638)->SeekOff();
-    ((SB2 *) this->unkC->unk638)->PursuitOff();
-    ((SB2 *) this->unkC->unk638)->RandomPursuitOff();
-    ((SB2 *) this->unkC->unk638)->WanderOff();
-    ((SB2 *) this->unkC->unk638)->PathFollowingOff();
-    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
-    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
-    ((SB2 *) this->unkC->unk638)->ContainmentOff();
-    ((SB2 *) this->unkC->unk638)->HazardAvoidanceOff();
+    temp_r3_30 = this->unkC->unk640;
+    temp_r3_30->unk464 &= ~0x80;
+    this->unkC->unk640->SeekOff();
+    this->unkC->unk640->PursuitOff();
+    this->unkC->unk640->RandomPursuitOff();
+    this->unkC->unk640->WanderOff();
+    this->unkC->unk640->PathFollowingOff();
+    this->unkC->unk640->ObstacleAvoidanceOff();
+    this->unkC->unk640->WallAvoidanceOff();
+    this->unkC->unk640->ContainmentOff();
+    this->unkC->unk640->HazardAvoidanceOff();
     temp_r3_61 = this->unkC;
-    temp_r3_61->unk588.unkC = 0.0f;
     temp_r3_61->unk598 = 0.0f;
     temp_r3_61->unk59C = 0.0f;
+    temp_r3_61->unk5A0 = 0.0f;
     this->unk8 = 1;
 }
 
@@ -42,7 +42,7 @@ void EnemyTestGoal_MoveToTarget::Terminate() {
 u8 EnemyTestGoal_MoveToTarget::Update() {
     ActivateIfInactive();
     this->unkC->unk9E8.Update();
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (((SB2 *) this->unkC->unk638)->PathFollowingHasLooped() != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk640->PathFollowingHasLooped() != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -52,18 +52,18 @@ u8 EnemyTestGoal_MoveToTarget::Update() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyTestGoal_MoveToTarget::Activate() {
     Character *temp_r3_148;
-    void *temp_r3_128;
+    SB2 *temp_r3_128;
 
     this->unk8 = 0;
-    temp_r3_128 = this->unkC->unk638;
-    M2C_FIELD(temp_r3_128, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_128, u8 *, 0x464) | 0x80);
-    ((SB2 *) this->unkC->unk638)->WanderOn();
-    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
-    ((SB2 *) this->unkC->unk638)->WallAvoidanceOn();
-    ((SB2 *) this->unkC->unk638)->ContainmentOn();
-    ((SB2 *) this->unkC->unk638)->HazardAvoidanceOn();
+    temp_r3_128 = this->unkC->unk640;
+    temp_r3_128->unk464 |= 0x80;
+    this->unkC->unk640->WanderOn();
+    this->unkC->unk640->ObstacleAvoidanceOn(NULL);
+    this->unkC->unk640->WallAvoidanceOn();
+    this->unkC->unk640->ContainmentOn();
+    this->unkC->unk640->HazardAvoidanceOn();
     temp_r3_148 = this->unkC;
-    if (M2C_FIELD(temp_r3_148->unk638, s32 *, 0x460) & 0x40) {
+    if (temp_r3_148->unk640->unk460 & 0x40) {
         if (M2C_FIELD(temp_r3_148->__vptr, u8 (**)(), 0x190)() != 0) {
             this->unkC->unk9E8.Set(0xFU, 0xA, 0, 0x11);
         } else {
@@ -72,9 +72,9 @@ void EnemyTestGoal_MoveToTarget::Activate() {
     } else {
         temp_r3_148->unk9E8.Set(0xFU, 0xA, 0, 0);
     }
-    this->unkC->unk694 = 0.0f;
+    this->unkC->unk69C = 0.0f;
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    if (M2C_FIELD(this->unkC->unk638, s32 *, 0x460) & 0x40) {
+    if (this->unkC->unk640->unk460 & 0x40) {
         this->unk18 = M2C_FIELD(&gb, f32 *, 0x30C) + 100.0f;
         return;
     }
@@ -82,7 +82,7 @@ void EnemyTestGoal_MoveToTarget::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     s32 temp_r0_286;
     s32 temp_r0_338;
@@ -134,7 +134,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     f32 var_f31_372;
     s32 temp_r0_512;
@@ -252,7 +252,7 @@ block_42:
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyTest_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_641;
 
@@ -279,7 +279,7 @@ void EnemyTest_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 EnemyTest_Think::Update() {
     s32 temp_r3_704;
     s32 temp_r3_719;
@@ -320,7 +320,7 @@ u8 EnemyTest_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyTest_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Goal<Enemy> *temp_r4_971;

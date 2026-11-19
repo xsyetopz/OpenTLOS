@@ -30,7 +30,6 @@ public:
     void UpdateLightningCages(void);
     s32 Trigger(const MKVector3 &);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ f64 unk98;
@@ -39,7 +38,7 @@ public:
     /* 0x0a8 */ ManagedLight* unkA8;
     /* 0x0ac */ ZapPS* unkAC;
     /* 0x0b0 */ BreathHitMessage unkB0;
-    /* 0x101 */ u8 pad101[0x7];
+    /* 0x104 */ u8 pad104[0x4];
     /* 0x108 */ f64 unk108;
     /* 0x110 */ f64 unk110;
     /* 0x118 */ f32 unk118;

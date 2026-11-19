@@ -377,15 +377,13 @@ void Platform::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void PlatformDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE8 = ((MKVector3 *) (MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1)))->Magnitude();
     this->unkEC = 0.1f * this->unkE8;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 PlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_817;
 
@@ -397,7 +395,7 @@ s32 PlatformDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void PlatformDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = 0.5f;

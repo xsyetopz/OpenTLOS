@@ -224,7 +224,7 @@ void WobbleProp::Init() {
     this->unkE8 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 WobblePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_472;
 
@@ -236,7 +236,7 @@ s32 WobblePropDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void WobblePropDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkEC = NULL;

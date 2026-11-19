@@ -14,7 +14,7 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-M2C_UNK __destroy_arr(s32 *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK __destroy_arr(EventMessage *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
@@ -28,7 +28,7 @@ void ElementalCombatController::AttemptSpawn() {
     if (((u8) this->unkC8.unk4C >> 7U) & 1) {
         this->unkC8.FunctionOn();
         this->unkC8.unk38 = M2C_FIELD(&gb, f32 *, 0x30C) - 1.0f;
-        temp_r3_84 = this->unk3DC.unk0;
+        temp_r3_84 = this->unk3E0;
         switch (temp_r3_84) {                       /* irregular */
         case 0x8000000:
             this->unkC8.TrySpawnItems(7, 0U);
@@ -64,7 +64,7 @@ void ElementalCombatController::SetupSpawnPoints() {
 
     var_r31_151 = 0;
     var_r29_153 = 0;
-    temp_r24_155 = M2C_FIELD(M2C_FIELD((this + (this->unk3E0 * 4)), void **, 0x360), void **, 0x54);
+    temp_r24_155 = M2C_FIELD(M2C_FIELD((this + (this->unk3E4 * 4)), void **, 0x360), void **, 0x54);
 loop_2:
     temp_r3_200 = M2C_FIELD(temp_r24_155, void **, 0x18);
     if (var_r31_151 < (s32) M2C_FIELD(temp_r3_200, s32 *, 0x20)) {
@@ -72,7 +72,7 @@ loop_2:
         temp_r4_163 = M2C_FIELD(temp_r3_200, s32 *, 0x24) + (var_r31_151 * M2C_FIELD(temp_r3_200, s32 *, 0x1C));
         sp28 = M2C_FIELD(temp_r4_163, f64 *, 0);
         sp30 = M2C_FIELD(temp_r4_163, f64 *, 8);
-        M2C_FIELD(M2C_FIELD(temp_r26_159, void **, 0x124), s32 *, 4) = (s32) (this->unk3DC.unk0 | 0x4200);
+        M2C_FIELD(M2C_FIELD(temp_r26_159, void **, 0x124), s32 *, 4) = (s32) (this->unk3E0 | 0x4200);
         sp8.GetPos();
         sp18 = M2C_BITWISE(f64, sp8);
         sp20 = sp10;
@@ -97,32 +97,32 @@ void ElementalCombatController::Update() {
     s32 temp_r3_240;
 
     MKProp::Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0x3E8) != 0) {
+    if ((u8) this->unk3E8 != 0) {
         this->unkC8.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            this->unk3EC += gUpdateTimeDelta;
-            if (this->unk3EC >= M2C_FIELD(this, f32 *, 0x3EC)) {
-                temp_r3_240 = this->unk3E0;
+            this->unk3F0 += gUpdateTimeDelta;
+            if (this->unk3F0 >= this->unk3EC) {
+                temp_r3_240 = this->unk3E4;
                 if (temp_r3_240 > 0) {
                     ((EventMessage *) (this + (((temp_r3_240 - 1) * 4) + 0x3A0)))->Send((MKProp *) this);
                 }
-                if ((u32) M2C_FIELD((this + (this->unk3E0 * 4)), u32 *, 0x360) != 0U) {
+                if ((u32) M2C_FIELD((this + (this->unk3E4 * 4)), u32 *, 0x360) != 0U) {
                     this->unkC8.RemoveAllSpawnPoints(0U);
                     SetupSpawnPoints();
                     AttemptSpawn();
                 } else {
-                    this->unk3E0 = 0;
-                    M2C_FIELD(this, u8 *, 0x3E8) = 0U;
+                    this->unk3E4 = 0;
+                    this->unk3E8 = 0;
                     this->unkB0.Send((MKProp *) this);
                 }
-                this->unk3E0 += 1;
-                if ((s32) this->unk3E0 >= 0x10) {
-                    M2C_FIELD(this, u8 *, 0x3E8) = 0U;
-                    this->unk3E0 = 0;
+                this->unk3E4 += 1;
+                if ((s32) this->unk3E4 >= 0x10) {
+                    this->unk3E8 = 0;
+                    this->unk3E4 = 0;
                 }
             }
         } else {
-            this->unk3EC = 0.0f;
+            this->unk3F0 = 0.0f;
         }
     }
 }
@@ -143,9 +143,9 @@ void ElementalCombatController::Message(MKMessage *arg0) {
     temp_r0_302 = arg0->unk0;
     switch (temp_r0_302) {                          /* irregular */
     case 0xB5:
-        M2C_FIELD(this, s8 *, 0x3E8) = 1;
+        this->unk3E8 = 1;
         var_r0_313 = 0;
-        this->unk3E0 = 0;
+        this->unk3E4 = 0;
         if ((this->unkB8 == MKVector3::zero.unk0) && (this->unkBC == MKVector3::zero.unk4) && (this->unkC0 == MKVector3::zero.unk8)) {
             var_r0_313 = 1;
         }
@@ -165,7 +165,7 @@ void ElementalCombatController::Message(MKMessage *arg0) {
         }
         break;
     case 0xB4:
-        M2C_FIELD(this, s8 *, 0x3E8) = 0;
+        this->unk3E8 = 0;
         break;
     }
     MKProp::Message(arg0);
@@ -214,19 +214,19 @@ void ElementalCombatController::LoadDone() {
         var_r30_430 += 1;
         var_r31_431 += 0x60;
     } while (var_r30_430 < 6);
-    temp_r0_440 = this->unk3DC.unk0;
+    temp_r0_440 = this->unk3E0;
     switch (temp_r0_440) {                          /* irregular */
     case 0:
-        this->unk3DC.unk0 = 0x08000000;
+        this->unk3E0 = 0x08000000;
         break;
     case 1:
-        this->unk3DC.unk0 = 0x20000000;
+        this->unk3E0 = 0x20000000;
         break;
     case 2:
-        this->unk3DC.unk0 = 0x10000000;
+        this->unk3E0 = 0x10000000;
         break;
     case 3:
-        this->unk3DC.unk0 = 0x40000000;
+        this->unk3E0 = 0x40000000;
         break;
     }
     MKProp::LoadDone();
@@ -237,10 +237,10 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("Element", &this->unk3DC.unk0, 0) != 0) {
+    if (arg0->LoadInt("Element", &this->unk3E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("WaveSpawnDelay", (f32 *) &this->unk3E8, 0) != 0) {
+    if (arg0->LoadFloat("WaveSpawnDelay", &this->unk3EC, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadVector3("PlayerStart", (MKVector3 *) &this->unkB8, 0) != 0) {
@@ -249,100 +249,100 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("SpawnPointIDWave1", &this->unk360, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave2", &this->unk360, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave2", &this->unk364, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave3", &this->unk364, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave3", &this->unk368, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave4", &this->unk368, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave4", &this->unk36C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave5", &this->unk36C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave5", &this->unk370, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave6", &this->unk370, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave6", &this->unk374, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave7", &this->unk374, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave7", &this->unk378, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave8", &this->unk378, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave8", &this->unk37C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave9", &this->unk37C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave9", &this->unk380, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave10", &this->unk380, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave10", &this->unk384, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave11", &this->unk384, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave11", &this->unk388, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave12", &this->unk388, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave12", &this->unk38C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave13", &this->unk38C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave13", &this->unk390, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave14", &this->unk390, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave14", &this->unk394, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave15", &this->unk394, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave15", &this->unk398, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave16", &this->unk398, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave16", &this->unk39C, 0) != 0) {
         return 1U;
     }
     if (this->unkB0.LoadLine(arg0, "OnComplete") != 0) {
         return 1U;
     }
-    if (((EventMessage *) &this->unk39C)->LoadLine(arg0, "OnWave1Complete") != 0) {
+    if (this->unk3A0.LoadLine(arg0, "OnWave1Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A0.LoadLine(arg0, "OnWave2Complete") != 0) {
+    if (this->unk3A4.LoadLine(arg0, "OnWave2Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A4.LoadLine(arg0, "OnWave3Complete") != 0) {
+    if (this->unk3A8.LoadLine(arg0, "OnWave3Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A8.LoadLine(arg0, "OnWave4Complete") != 0) {
+    if (this->unk3AC.LoadLine(arg0, "OnWave4Complete") != 0) {
         return 1U;
     }
-    if (this->unk3AC.LoadLine(arg0, "OnWave5Complete") != 0) {
+    if (this->unk3B0.LoadLine(arg0, "OnWave5Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B0.LoadLine(arg0, "OnWave6Complete") != 0) {
+    if (this->unk3B4.LoadLine(arg0, "OnWave6Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B4.LoadLine(arg0, "OnWave7Complete") != 0) {
+    if (this->unk3B8.LoadLine(arg0, "OnWave7Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B8.LoadLine(arg0, "OnWave8Complete") != 0) {
+    if (this->unk3BC.LoadLine(arg0, "OnWave8Complete") != 0) {
         return 1U;
     }
-    if (this->unk3BC.LoadLine(arg0, "OnWave9Complete") != 0) {
+    if (this->unk3C0.LoadLine(arg0, "OnWave9Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C0.LoadLine(arg0, "OnWave10Complete") != 0) {
+    if (this->unk3C4.LoadLine(arg0, "OnWave10Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C4.LoadLine(arg0, "OnWave11Complete") != 0) {
+    if (this->unk3C8.LoadLine(arg0, "OnWave11Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C8.LoadLine(arg0, "OnWave12Complete") != 0) {
+    if (this->unk3CC.LoadLine(arg0, "OnWave12Complete") != 0) {
         return 1U;
     }
-    if (this->unk3CC.LoadLine(arg0, "OnWave13Complete") != 0) {
+    if (this->unk3D0.LoadLine(arg0, "OnWave13Complete") != 0) {
         return 1U;
     }
-    if (this->unk3D0.LoadLine(arg0, "OnWave14Complete") != 0) {
+    if (this->unk3D4.LoadLine(arg0, "OnWave14Complete") != 0) {
         return 1U;
     }
-    if (this->unk3D4.LoadLine(arg0, "OnWave15Complete") != 0) {
+    if (this->unk3D8.LoadLine(arg0, "OnWave15Complete") != 0) {
         return 1U;
     }
-    return (u8) (this->unk3D8.LoadLine(arg0, "OnWave16Complete") != 0);
+    return (u8) (this->unk3DC.LoadLine(arg0, "OnWave16Complete") != 0);
 }
 #endif
 
@@ -378,12 +378,12 @@ void ElementalCombatController::Init() {
     s32 var_r30_985;
     s32 var_r3_965;
 
-    M2C_FIELD(this, s8 *, 0x3E8) = 0;
-    M2C_FIELD(this, f32 *, 0x3EC) = 0.0f;
-    var_r3_965 = 0;
+    this->unk3E8 = 0;
     this->unk3EC = 0.0f;
+    var_r3_965 = 0;
+    this->unk3F0 = 0.0f;
+    this->unk3E4 = 0;
     this->unk3E0 = 0;
-    this->unk3DC.unk0 = 0;
     M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_ctr_973 = 0x10;

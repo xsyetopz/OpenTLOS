@@ -11,22 +11,22 @@
 
 extern s32 gpTranslation_StringArray;
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: pointer/array required
 void UIText::GetStringWidth() {
-    MKFont *temp_r0_14;
+    s32 temp_r0_14;
     s8 *var_r4_19;
 
-    temp_r0_14 = this->unk64;
+    temp_r0_14 = this->unk6C;
     if (temp_r0_14 >= 0) {
-        var_r4_19 = *(gpTranslation_StringArray + ((s32) temp_r0_14 * 4));
+        var_r4_19 = *(gpTranslation_StringArray + (temp_r0_14 * 4));
     } else {
-        var_r4_19 = this->unk60;
+        var_r4_19 = this->unk68;
     }
     this->unk64->CalcLength(var_r4_19);
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: pointer/array required
 void UIText::Draw(const RenderContext &arg0) {
     RenderContext spB0;
     Matrix sp70;
@@ -45,8 +45,8 @@ void UIText::Draw(const RenderContext &arg0) {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    MKFont *temp_r0_151;
     f32 temp_f3_162;
+    s32 temp_r0_151;
     s32 temp_r3_121;
     s32 temp_r4_100;
     s8 *var_r29_156;
@@ -56,7 +56,7 @@ void UIText::Draw(const RenderContext &arg0) {
     sp34 = 0.0f;
     sp68 = (f64) sp38;
     sp60 = (f64) sp30;
-    if ((((s8 *) this->unk60 != NULL) || ((MKFont *) this->unk64 >= 0)) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
+    if ((((s8 *) this->unk68 != NULL) || ((s32) this->unk6C >= 0)) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
         if (this->unk18.unk38 <= 0.0f) {
             return;
         }
@@ -81,17 +81,17 @@ void UIText::Draw(const RenderContext &arg0) {
         sp70.SetIdentity();
         sp70.Translate(&sp70, *((MKVector3 *) &sp60));
         ((Matrix *) &spB0)->Multiply(&sp70, (Matrix *) &spB0);
-        temp_r0_151 = this->unk64;
+        temp_r0_151 = this->unk6C;
         if (temp_r0_151 >= 0) {
-            var_r29_156 = *(gpTranslation_StringArray + ((s32) temp_r0_151 * 4));
+            var_r29_156 = *(gpTranslation_StringArray + (temp_r0_151 * 4));
         } else {
-            var_r29_156 = this->unk60;
+            var_r29_156 = this->unk68;
         }
-        temp_f3_162 = M2C_BITWISE(f32, this->unk68);
-        if ((temp_f3_162 != 0.0f) || (M2C_BITWISE(f32, this->unk6C) != 0.0f)) {
+        temp_f3_162 = this->unk70;
+        if ((temp_f3_162 != 0.0f) || (this->unk74 != 0.0f)) {
             sp28 = spB0.unk38;
             sp20 = spB0.unk30 + temp_f3_162;
-            sp24 = spB0.unk34 + M2C_BITWISE(f32, this->unk6C);
+            sp24 = spB0.unk34 + this->unk74;
             sp58 = (f64) sp28;
             sp50 = (f64) sp20;
             spB0.unk30 = (f32) sp50;
@@ -100,8 +100,8 @@ void UIText::Draw(const RenderContext &arg0) {
             spB0.unk3C = 1.0f;
             this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * (*(f32 *) ((u8 *) &spB0 + 0x4c))) << 0x18, 1.0f, 1.0f, NULL, 1U);
             sp18 = spB0.unk38;
-            sp10 = spB0.unk30 - M2C_BITWISE(f32, this->unk68);
-            sp14 = spB0.unk34 - M2C_BITWISE(f32, this->unk6C);
+            sp10 = spB0.unk30 - this->unk70;
+            sp14 = spB0.unk34 - this->unk74;
             sp48 = (f64) sp18;
             sp40 = (f64) sp10;
             spB0.unk30 = (f32) sp40;
@@ -135,16 +135,16 @@ s32 UIText::LoadLine(UIDataLine *arg0) {
         return 1;
     }
     if (((MKIniLine *) arg0)->LoadString("text", &sp8, 0) != 0) {
-        temp_r3_297 = this->unk60;
+        temp_r3_297 = this->unk68;
         if (temp_r3_297 != NULL) {
             UIStringTable_Remove(temp_r3_297);
         }
         UIStringTable_Add(sp8);
-        this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk64 = (MKFont *)-1;
+        this->unk68 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk6C = -1;
         return 1;
     }
-    if (((MKIniLine *) arg0)->LoadInt("stringId", (s32 *) &this->unk64, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadInt("stringId", &this->unk6C, 0) != 0) {
         return 1;
     }
     return UIObject::LoadLine(arg0);
@@ -184,25 +184,23 @@ void UIText::Deinit() {
     }
     UIStringTable_Add(NULL);
     this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_398 = this->unk60;
+    temp_r3_398 = this->unk68;
     if (temp_r3_398 != NULL) {
         UIStringTable_Remove(temp_r3_398);
     }
     UIStringTable_Add(NULL);
-    this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk64 = (MKFont *)-1;
+    this->unk68 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unk6C = -1;
     UIObject::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void UIText::Init() {
     UIObject::Init();
     this->unk60 = NULL;
-    this->unk60 = NULL;
-    this->unk64 = (MKFont *)-1;
+    this->unk68 = NULL;
+    this->unk6C = -1;
     this->unk64 = NULL;
-    this->unk68 = 0.0f;
-    this->unk6C = 0.0f;
+    this->unk70 = 0.0f;
+    this->unk74 = 0.0f;
 }
-#endif

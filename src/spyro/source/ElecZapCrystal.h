@@ -20,7 +20,6 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     void TriggerSubObjFader(int, float);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ u8 pad94[0x1c];
     /* 0x0b0 */ void* unkB0;

@@ -18,7 +18,6 @@ class MKDynamicBone;
 class MKIniLine;
 class MKMessage;
 class MKModel;
-class MKProp;
 class MKSceneManager;
 class MKVector3;
 class Shadow;
@@ -30,7 +29,7 @@ class TrainChaseSpyro;
 class TrainChaseSpyroFX;
 class TrainChaseSpyro_cpp;
 
-class TrainChaseSpyro : public GameProp {  // base: vtable prefix
+class TrainChaseSpyro : public GameProp {  // base: base ctor call
 public:
     virtual ~TrainChaseSpyro(void);
     virtual void Init(void);
@@ -93,7 +92,7 @@ public:
     void SetAnim(int, float, int);
     void UpdateSpyro(void);
     static u8 states[0x90];
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ f32 unkD4;
     /* 0x0d8 */ f32 unkD8;
@@ -127,7 +126,6 @@ public:
     /* 0x1b0 */ u8 pad1B0[0x4];
     /* 0x1b4 */ f32 unk1B4;
     /* 0x1b8 */ Shadow unk1B8;
-    /* 0x1e5 */ u8 pad1E5[0x3];
     /* 0x1e8 */ f64 unk1E8;
     /* 0x1f0 */ f64 unk1F0;
     /* 0x1f8 */ MKSceneManager* unk1F8;
@@ -187,10 +185,6 @@ public:
 class TrainChaseSpyroFX : public SpyroEffects {  // base: vtable prefix
 public:
     virtual u8 TriggerFire(SpyroEffectsUpdateData *);
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ MKProp* unk8;
-    /* 0x00c */ u8 padC[0x4];
-    /* 0x010 */ SpyroSoundPlayer* unk10;
 };
 
 class TrainChaseSpyro_cpp {
@@ -213,9 +207,9 @@ inline TrainChaseSpyro::TrainChaseSpyro() {
     this->unk138 = 0;
     this->unk260 = -1;
     this->unk264 = -1;
-    this->unk260 = 0;
+    this->unk268 = 0;
     this->unk26C = 0;
-    __construct_array(&this->unk2A8, (MKAnimScript *(*)(MKAnimScript *)) &SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD, (void *)-1);
+    __construct_array((KDUniformSpline *) &this->unk2A8, (MKAnimScript *(*)(MKAnimScript *)) &SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD, (void *)-1);
     return this;
 }
 #endif
@@ -224,7 +218,7 @@ inline TrainChaseSpyro::TrainChaseSpyro() {
 inline TrainChaseSpyro::~TrainChaseSpyro() {
     this->unkC8.__vptr = &__vt.unk48;
     if (&this->unk2A8 != NULL) {
-        __destroy_arr(&this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
+        __destroy_arr((MKModel **) &this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
     }
     if ((&this->unk138 != NULL) && (&this->unk138 != NULL)) {
         KDSound_Stop(&this->unk138);
@@ -239,7 +233,7 @@ inline TrainChaseSpyro::~TrainChaseSpyro() {
 #endif
 
 inline AttackerManager *TrainChaseSpyro::GetAttackerManager() {
-    return (AttackerManager *) &this->unk72C;
+    return &this->unk734;
 }
 
 inline u8 TrainChaseSpyro::IsAttacking() {
@@ -247,7 +241,7 @@ inline u8 TrainChaseSpyro::IsAttacking() {
 }
 
 inline f32 TrainChaseSpyro::GetTimeLastHit() {
-    return M2C_BITWISE(f32, this->unk728);
+    return this->unk730;
 }
 
 inline f32 TrainChaseSpyro::GetCollisionHeight() {

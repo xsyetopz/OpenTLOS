@@ -35,7 +35,6 @@ public:
     void FreeBeams(void);
     void AllocBeams(void);
     void SetDefaults(void);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ s32 unk180;
     /* 0x184 */ s32 unk184;
     /* 0x188 */ f32 unk188;

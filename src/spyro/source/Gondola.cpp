@@ -61,9 +61,9 @@ void Gondola::Draw() {
 }
 
 void Gondola::Message(MKMessage *arg0) {
-    f32 temp_r3_174;
     s32 temp_r0_140;
     s32 temp_r0_177;
+    s32 temp_r3_174;
     s32 var_r6_153;
     u32 var_r5_151;
     void *temp_r3_156;
@@ -80,17 +80,17 @@ loop_7:
             var_r5_151 += (s8) M2C_FIELD(temp_r3_156, u8 *, 8);
             goto loop_7;
         }
-        if ((var_r5_151 == (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) && (this->unk1B0.Message(arg0), temp_r3_174 = this->unk23C, ((M2C_BITWISE(s32, temp_r3_174) == 2) != 0))) {
-            temp_r0_177 = this->unk240;
+        if ((var_r5_151 == (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) && (this->unk1B0.Message(arg0), temp_r3_174 = this->unk240, ((temp_r3_174 == 2) != 0))) {
+            temp_r0_177 = this->unk244;
             if ((temp_r0_177 == 1) || (temp_r0_177 == 2)) {
-                this->unk240 = M2C_BITWISE(s32, temp_r3_174);
-                this->unk23C = 0.0f;
+                this->unk244 = temp_r3_174;
+                this->unk240 = 0;
                 this->unk1A8 = 0.0f;
                 return;
             }
             if ((temp_r0_177 == 0) || (temp_r0_177 == 2)) {
-                this->unk240 = M2C_BITWISE(s32, temp_r3_174);
-                this->unk23C = 1e-45f;
+                this->unk244 = temp_r3_174;
+                this->unk240 = 1;
                 this->unk1A8 = 0.0f;
                 return;
             }
@@ -121,18 +121,18 @@ void Gondola::Update() {
         temp_r0_245 = this->unk1B0.unk7C;
         switch (temp_r0_245) {                      /* irregular */
         case 0:
-            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaSoldiersCleared");
+            this->unk248 = PhrasePlayer_PlayEvent("TPGondolaSoldiersCleared");
             break;
         case 1:
-            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaLeadersCleared");
+            this->unk248 = PhrasePlayer_PlayEvent("TPGondolaLeadersCleared");
             break;
         case 2:
-            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaCommandersCleared");
+            this->unk248 = PhrasePlayer_PlayEvent("TPGondolaCommandersCleared");
             break;
         }
     }
     this->unk1B0.Update();
-    if ((this->unk1A8 < 1.0f) && (M2C_BITWISE(s32, this->unk23C) != 2)) {
+    if ((this->unk1A8 < 1.0f) && ((s32) this->unk240 != 2)) {
         if ((s32) this->unk1B0.unk7C >= 3) {
             this->unk1B0.unk7C = 0;
             this->unk1B0.StartEnemyWave();
@@ -301,8 +301,6 @@ void Gondola::UpdateMove() {
     f32 temp_f7_1169;
     f32 temp_f8_1317;
     f32 temp_f9_1314;
-    f32 temp_r0_361;
-    f32 temp_r0_623;
     f32 var_f0_345;
     f32 var_f0_757;
     f32 var_f1_384;
@@ -345,7 +343,9 @@ void Gondola::UpdateMove() {
     f64 temp_f3_915;
     f64 temp_f5_1287;
     f64 temp_f6_1277;
+    s32 temp_r0_361;
     s32 temp_r0_474;
+    s32 temp_r0_623;
     s32 temp_r3_1026;
     s32 temp_r3_1125;
     s32 temp_r3_1223;
@@ -360,7 +360,7 @@ void Gondola::UpdateMove() {
     void *temp_r4_450;
 
     if ((M2C_FIELD(*gb, u8 (**)(void **, void ***), 0x70)(gb, &gb) == 0) && ((u32) this->unk18C != 0U) && ((u32) this->unk1A0 != 0U)) {
-        if (M2C_BITWISE(s32, this->unk23C) != 2) {
+        if ((s32) this->unk240 != 2) {
             var_f0_345 = (0.005f * gUpdateTimeDelta) + this->unk1A8;
             if (var_f0_345 < 1.0f) {
 
@@ -374,8 +374,8 @@ void Gondola::UpdateMove() {
             }
             this->unk1A8 = var_f0_345;
         }
-        temp_r0_361 = this->unk23C;
-        switch (M2C_BITWISE(s32, temp_r0_361)) {    /* switch 1; irregular */
+        temp_r0_361 = this->unk240;
+        switch (temp_r0_361) {                      /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             sp34 = 0.0f;
             sp380.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
@@ -427,7 +427,7 @@ void Gondola::UpdateMove() {
             sp338 = M2C_FIELD(temp_r3_461, f64 *, 0x38);
             temp_f0_468 = temp_f1_462 - sp320;
             sp170 = temp_f0_468;
-            temp_r0_474 = this->unk240;
+            temp_r0_474 = this->unk244;
             sp340 = temp_f0_468;
             sp178 = (f32) sp338 - (f32) sp328;
             sp348 = (f64) sp178;
@@ -452,13 +452,13 @@ void Gondola::UpdateMove() {
                 sp3F8 = sp308;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
                 if ((((f32) sp348 * (f32) sp348) + (((f32) sp340 * (f32) sp340) + ((*(f32 *) ((u8 *) &sp340 + 0x4)) * (*(f32 *) ((u8 *) &sp340 + 0x4))))) == 4e8f) {
-                    this->unk240 = M2C_BITWISE(s32, this->unk23C);
-                    this->unk23C = 1e-45f;
+                    this->unk244 = this->unk240;
+                    this->unk240 = 1;
                     this->unk1A8 = 0.0f;
                 }
             } else if (temp_r0_474 == 1) {
+                this->unk244 = 2;
                 this->unk240 = 2;
-                this->unk23C = 3e-45f;
                 this->unk1A8 = 0.0f;
                 sp28 = 0.0f;
                 ((KDUniformSpline *) &sp2F0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
@@ -479,7 +479,7 @@ void Gondola::UpdateMove() {
                 sp3F0 = sp2E0;
                 sp3F8 = sp2E8;
             } else {
-                M2C_FIELD(this, u8 *, 0x24C) = 1U;
+                this->unk24C = 1;
                 sp24 = 0.0f;
                 ((KDUniformSpline *) &sp2D0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
                 var_f1_593 = this->unk1A8 - 0.001f;
@@ -502,15 +502,15 @@ void Gondola::UpdateMove() {
             break;
         }
         if (this->unk1A8 == 1.0f) {
-            temp_r0_623 = this->unk23C;
-            if (M2C_BITWISE(s32, temp_r0_623) != 2) {
-                this->unk240 = M2C_BITWISE(s32, temp_r0_623);
-                this->unk23C = 3e-45f;
+            temp_r0_623 = this->unk240;
+            if (temp_r0_623 != 2) {
+                this->unk244 = temp_r0_623;
+                this->unk240 = 2;
             }
         }
-        this->unk238 = M2C_BITWISE(f32, this->unk238) - gUpdateTimeDelta;
-        if (M2C_BITWISE(f32, this->unk238) <= 0.0f) {
-            this->unk238 = 10.0f;
+        this->unk23C -= gUpdateTimeDelta;
+        if (this->unk23C <= 0.0f) {
+            this->unk23C = 10.0f;
             sp3C = 0.0f;
             ((KDUniformSpline *) &sp2B0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
             sp3E0 = sp2B0;
@@ -816,7 +816,7 @@ void Gondola::UpdateMove() {
         sp1E8 = (f64) sp78;
         sp400 += sp1E0;
         sp408 = (f32) sp408 + (f32) sp1E8;
-        if ((u8) M2C_FIELD(this, u8 *, 0x24C) != 0) {
+        if ((u8) this->unk24C != 0) {
             temp_f9_1314 = -(*(f32 *) ((u8 *) &sp3E0 + 0x14));
             temp_f10_1315 = -sp3F8;
             temp_f8_1317 = -sp3F0;
@@ -847,7 +847,7 @@ void Gondola::UpdateMove() {
             sp414 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
             sp418 = (f32) sp1C8;
             sp41C = 0.0f;
-            M2C_FIELD(this, u8 *, 0x24C) = 0U;
+            this->unk24C = 0;
         } else {
             sp190 = temp_f6_1277;
             sp198 = temp_f5_1287;
@@ -950,41 +950,39 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void Gondola::SetDefaults() {
     this->unk1A8 = 0.0f;
-    this->unk238 = 0.0f;
+    this->unk23C = 0.0f;
+    this->unk244 = 2;
     this->unk240 = 2;
-    this->unk23C = 3e-45f;
-    PhrasePlayer_StopEvent(this->unk244);
+    PhrasePlayer_StopEvent(this->unk248);
     this->unk1B0.SetDefaults();
     this->unk1B0.DespawnAll();
     PropUpdate();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'P17GondolaDescriptor'
 void Gondola::Init() {
     Platform::Init();
     this->unk1A8 = 0.0f;
+    this->unk244 = 2;
     this->unk240 = 2;
-    this->unk23C = 3e-45f;
     this->unk1AC.Init();
-    this->unk238 = 0.0f;
-    this->unk244 = 0;
+    this->unk23C = 0.0f;
+    this->unk248 = 0;
     this->unk1B0.Init(checked_cast<P17GondolaDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x124, (MKProp *) this);
-    M2C_FIELD(this, s8 *, 0x24C) = 0;
+    this->unk24C = 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::LoadDone() {
     PlatformDescriptor::LoadDone();
     this->unk124.LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk124'
 s32 GondolaDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1711;
 
@@ -996,14 +994,14 @@ s32 GondolaDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::Deinit() {
     this->unk124.Deinit();
     KDPropExDescriptor::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::Init() {
     PlatformDescriptor::Init();
     this->unk124.Init();

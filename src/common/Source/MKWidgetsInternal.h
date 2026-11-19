@@ -6,7 +6,6 @@
 #include "common/Source/MKVector4.h"
 
 class MKFont;
-class MKHeap;
 class MKInputEvent;
 class MKInputReceiver;
 class MKMaterial;
@@ -102,7 +101,7 @@ public:
     /* 0x014 */ f32 unk14;
 };
 
-class MKWidgetButton : public MKWidget {  // base: vtable prefix
+class MKWidgetButton : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetButton(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -113,9 +112,6 @@ public:
     MKWidgetButton(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetButton_FactoryFunc(void);
     static u8 sMKWidgetButtonDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
     /* 0x050 */ u8 pad50[0x4];
     /* 0x054 */ MKWidget unk54;
@@ -125,7 +121,7 @@ public:
     /* 0x085 */ u8 unk85;
 };
 
-class MKWidgetCheckBox : public MKWidget {  // base: vtable prefix
+class MKWidgetCheckBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetCheckBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -136,15 +132,12 @@ public:
     MKWidgetCheckBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetCheckBox_FactoryFunc(void);
     static u8 sMKWidgetCheckBoxDescriptor[0x18];
-    /* 0x004 */ u32* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
     /* 0x050 */ u8 pad50[0x4];
     /* 0x054 */ MKWidget unk54;
 };
 
-class MKWidgetCheckMark : public MKWidget {  // base: vtable prefix
+class MKWidgetCheckMark : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetCheckMark(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -154,14 +147,11 @@ public:
     MKWidgetCheckMark(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetCheckMark_FactoryFunc(void);
     static u8 sMKWidgetCheckMarkDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ u8 unk28;
     /* 0x029 */ u8 unk29;
 };
 
-class MKWidgetColor : public MKWidget {  // base: vtable prefix
+class MKWidgetColor : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetColor(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -171,11 +161,9 @@ public:
     MKWidgetColor(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetColor_FactoryFunc(void);
     static u8 sMKWidgetColorDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
 };
 
-class MKWidgetComboBox : public MKWidget {  // base: vtable prefix
+class MKWidgetComboBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetComboBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -187,9 +175,6 @@ public:
     MKWidgetComboBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetComboBox_FactoryFunc(void);
     static u8 sMKWidgetComboBoxDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
     /* 0x050 */ MKWidget unk50;
     /* 0x078 */ u8 pad78[0x4];
@@ -200,7 +185,7 @@ public:
     /* 0x100 */ MKWidget* unk100;
 };
 
-class MKWidgetContainer : public MKWidget {  // base: vtable prefix
+class MKWidgetContainer : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetContainer(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -216,9 +201,6 @@ public:
     MKWidgetContainer(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetContainer_FactoryFunc(void);
     static u8 sMKWidgetContainerDescriptor[0x18];
-    /* 0x004 */ u8 pad4[0x1c];
-    /* 0x020 */ u32 unk20;
-    /* 0x024 */ u8 pad24[0x4];
     /* 0x028 */ MKWidget* unk28;
     /* 0x02c */ u32 unk2C;
     /* 0x030 */ f32 unk30;
@@ -247,13 +229,7 @@ public:
     MKWidgetEditable(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetEditable_FactoryFunc(void);
     static u8 sMKWidgetEditableDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0x10];
-    /* 0x018 */ MKWidget* unk18;
-    /* 0x01c */ u8 pad1C[0xc];
-    /* 0x028 */ MKWidget* unk28;
-    /* 0x02c */ u8 pad2C[0xc];
-    /* 0x038 */ f64 unk38;
+    /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ MKVector3 unk40;
     /* 0x050 */ s8 unk50;
     /* 0x051 */ s8 unk51;
@@ -263,7 +239,7 @@ public:
     /* 0x05c */ s32 unk5C;
 };
 
-class MKWidgetEnvelope : public MKWidget {  // base: vtable prefix
+class MKWidgetEnvelope : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetEnvelope(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -274,9 +250,6 @@ public:
     MKWidgetEnvelope(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetEnvelope_FactoryFunc(void);
     static u8 sMKWidgetEnvelopeDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ f64 unk8;
-    /* 0x010 */ u8 pad10[0x18];
     /* 0x028 */ s32 unk28;
     /* 0x02c */ s32 unk2C;
     /* 0x030 */ f64 unk30;
@@ -294,10 +267,6 @@ public:
     MKWidgetFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetFrame_FactoryFunc(void);
     static u8 sMKWidgetFrameDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
-    /* 0x028 */ MKWidget* unk28;
 };
 
 class MKWidgetFoldupFrame : public MKWidgetFrame {  // base: ctor/dtor vtable stores
@@ -311,8 +280,7 @@ public:
     MKWidgetFoldupFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetFoldupFrame_FactoryFunc(void);
     static u8 sMKWidgetFoldupFrameDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0x38];
+    /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ f32 unk40;
     /* 0x044 */ u8 pad44[0xc];
     /* 0x050 */ s32 unk50;
@@ -324,7 +292,7 @@ public:
     /* 0x0dc */ MKWidget unkDC;
 };
 
-class MKWidgetImage : public MKWidget {  // base: vtable prefix
+class MKWidgetImage : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetImage(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -334,10 +302,6 @@ public:
     MKWidgetImage(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetImage_FactoryFunc(void);
     static u8 sMKWidgetImageDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0x10];
-    /* 0x018 */ MKWidget* unk18;
-    /* 0x01c */ u8 pad1C[0xc];
     /* 0x028 */ MKMaterial* unk28;
 };
 
@@ -355,13 +319,6 @@ public:
     MKWidgetScrollableFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetScrollableFrame_FactoryFunc(void);
     static u8 sMKWidgetScrollableFrameDescriptor[0x18];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
-    /* 0x028 */ void* unk28;
-    /* 0x02c */ u8 pad2C[0x4];
-    /* 0x030 */ f64 unk30;
-    /* 0x038 */ f32 unk38;
     /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ MKVector3 unk40;
     /* 0x050 */ MKVector3 unk50;
@@ -395,25 +352,11 @@ public:
     MKWidgetListBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetListBox_FactoryFunc(void);
     static u8 sMKWidgetListBoxDescriptor[0x18];
-    /* 0x004 */ MKWidgetListBox* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
-    /* 0x028 */ MKWidget* unk28;
-    /* 0x02c */ u32 unk2C;
-    /* 0x030 */ f32 unk30;
-    /* 0x034 */ f32 unk34;
-    /* 0x038 */ f32 unk38;
-    /* 0x03c */ u8 pad3C[0x28];
-    /* 0x064 */ f32 unk64;
-    /* 0x068 */ u8 pad68[0x18];
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ u8 pad84[0x184];
-    /* 0x208 */ MKWidget unk208;
-    /* 0x230 */ u8 pad230[0x170];
+    /* 0x368 */ u8 pad368[0x38];
     /* 0x3a0 */ s32 unk3A0;
 };
 
-class MKWidgetListItem : public MKWidget {  // base: vtable prefix
+class MKWidgetListItem : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetListItem(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -424,9 +367,6 @@ public:
     MKWidgetListItem(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetListItem_FactoryFunc(void);
     static u8 sMKWidgetListItemDescriptor[0x18];
-    /* 0x004 */ u32* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
 };
 
@@ -460,7 +400,7 @@ public:
     /* 0x020 */ MKWidgetScissorRect* unk20;
 };
 
-class MKWidgetScrollBar : public MKWidget {  // base: vtable prefix
+class MKWidgetScrollBar : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetScrollBar(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -473,9 +413,6 @@ public:
     MKWidgetScrollBar(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetScrollBar_FactoryFunc(void);
     static u8 sMKWidgetScrollBarDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
     /* 0x050 */ MKWidget unk50;
     /* 0x078 */ u8 pad78[0x4];
@@ -508,23 +445,9 @@ public:
     MKWidgetSlider(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetSlider_FactoryFunc(void);
     static u8 sMKWidgetSliderDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
-    /* 0x028 */ MKWidget unk28;
-    /* 0x050 */ MKWidget unk50;
-    /* 0x078 */ u8 pad78[0x4];
-    /* 0x07c */ MKWidget unk7C;
-    /* 0x0a4 */ u8 padA4[0xc];
-    /* 0x0b0 */ MKWidget unkB0;
-    /* 0x0d8 */ MKWidget unkD8;
-    /* 0x100 */ u8 pad100[0x4];
-    /* 0x104 */ MKWidget unk104;
-    /* 0x12c */ u8 pad12C[0xc];
-    /* 0x138 */ MKWidget unk138;
 };
 
-class MKWidgetString : public MKWidget {  // base: vtable prefix
+class MKWidgetString : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetString(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -534,11 +457,6 @@ public:
     MKWidgetString(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetString_FactoryFunc(void);
     static u8 sMKWidgetStringDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0xf];
-    /* 0x018 */ MKWidget* unk18;
-    /* 0x01c */ u8 pad1C[0xc];
     /* 0x028 */ MKFont* unk28;
 };
 
@@ -554,9 +472,7 @@ public:
     MKWidgetSystem(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetSystem_FactoryFunc(void);
     static u8 sMKWidgetSystemDescriptor[0x18];
-    /* 0x004 */ u8 pad4[0x24];
-    /* 0x028 */ MKWidget* unk28;
-    /* 0x02c */ u8 pad2C[0x14];
+    /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ s32 unk40;
     /* 0x044 */ u8 pad44[0x4];
     /* 0x048 */ f32 unk48;
@@ -583,17 +499,11 @@ public:
     MKWidgetTabStrip(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetTabStrip_FactoryFunc(void);
     static u8 sMKWidgetTabStripDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0xc];
-    /* 0x014 */ void* unk14;
-    /* 0x018 */ u8 pad18[0x10];
-    /* 0x028 */ MKWidget* unk28;
-    /* 0x02c */ s32 unk2C;
-    /* 0x030 */ u8 pad30[0x10];
+    /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ s32 unk40;
 };
 
-class MKWidgetTextBox : public MKWidget {  // base: vtable prefix
+class MKWidgetTextBox : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetTextBox(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -605,9 +515,6 @@ public:
     MKWidgetTextBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetTextBox_FactoryFunc(void);
     static u8 sMKWidgetTextBoxDescriptor[0x18];
-    /* 0x004 */ MKHeap* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ s8* unk28;
     /* 0x02c */ f32 unk2C;
     /* 0x030 */ f32 unk30;
@@ -619,7 +526,7 @@ public:
     /* 0x04c */ u8 unk4C;
 };
 
-class MKWidgetThumb : public MKWidget {  // base: vtable prefix
+class MKWidgetThumb : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetThumb(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -629,8 +536,6 @@ public:
     MKWidgetThumb(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetThumb_FactoryFunc(void);
     static u8 sMKWidgetThumbDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 pad8[0x20];
     /* 0x028 */ u8 unk28;
     /* 0x029 */ u8 pad29[0x7];
     /* 0x030 */ f64 unk30;
@@ -641,7 +546,7 @@ public:
     /* 0x058 */ u8 unk58;
 };
 
-class MKWidgetVector : public MKWidget {  // base: vtable prefix
+class MKWidgetVector : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetVector(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -652,9 +557,6 @@ public:
     MKWidgetVector(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetVector_FactoryFunc(void);
     static u8 sMKWidgetVectorDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x1f];
     /* 0x028 */ MKWidget unk28;
     /* 0x050 */ u8 pad50[0x28];
     /* 0x078 */ MKWidget unk78;
@@ -677,11 +579,7 @@ public:
     MKWidgetWindow(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetWindow_FactoryFunc(void);
     static u8 sMKWidgetWindowDescriptor[0x18];
-    /* 0x004 */ void* unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x17];
-    /* 0x020 */ MKWidgetWindow* unk20;
-    /* 0x024 */ u8 pad24[0x1c];
+    /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ MKWidget unk40;
     /* 0x068 */ u8 pad68[0x10];
     /* 0x078 */ MKWidget unk78;
@@ -699,7 +597,7 @@ public:
     /* 0x158 */ s32 unk158;
 };
 
-class MKWidgetWindowTitleBar : public MKWidget {  // base: vtable prefix
+class MKWidgetWindowTitleBar : public MKWidget {  // base: base ctor call
 public:
     virtual ~MKWidgetWindowTitleBar(void);
     virtual s32 MessageHandler(unsigned int, unsigned int);
@@ -710,11 +608,6 @@ public:
     MKWidgetWindowTitleBar(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetWindowTitleBar_FactoryFunc(void);
     static u8 sMKWidgetWindowTitleBarDescriptor[0x18];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0xf];
-    /* 0x018 */ MKWidget* unk18;
-    /* 0x01c */ u8 pad1C[0xc];
     /* 0x028 */ MKVector3 unk28;
     /* 0x038 */ MKWidget unk38;
     /* 0x060 */ u8 pad60[0x4];

@@ -119,7 +119,7 @@ void Chest::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void ChestDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");

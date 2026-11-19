@@ -4,11 +4,10 @@
 #include <dolphin/types.h>
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 
 class EventMessage;
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class KDSoundPlayer;
 class Lever;
 class LeverDescriptor;
@@ -16,7 +15,7 @@ class MKIniLine;
 class MKMessage;
 class MKVector3;
 
-class Lever : public GameProp {  // base: vtable prefix
+class Lever : public GameProp {  // base: base ctor call
 public:
     virtual ~Lever(void);
     virtual void Init(void);
@@ -50,7 +49,7 @@ public:
     void Pull(void);
     void GetStandDir(void);
     void GetStandPos(void);
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ u8 padD4[0x4];
     /* 0x0d8 */ f64 unkD8;
@@ -62,14 +61,12 @@ public:
     /* 0x100 */ KDSoundPlayer* unk100;
 };
 
-class LeverDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class LeverDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     LeverDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;

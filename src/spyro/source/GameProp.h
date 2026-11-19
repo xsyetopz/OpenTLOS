@@ -33,14 +33,13 @@ public:
     GameProp(void);
     void PostDraw(void);
     void PreDraw(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ KDSound_LoopSoundEvent unk90;
     /* 0x0b8 */ f32 unkB8;
     /* 0x0bc */ s32 unkBC;
     /* 0x0c0 */ FireAndIceFX* unkC0;
 };
 
-class GamePropDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class GamePropDescriptor : public KDPropExDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

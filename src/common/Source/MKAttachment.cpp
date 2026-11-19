@@ -4,7 +4,6 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'memcpy(Matrix *, const long, int)' does not match
 void MKAttachment_CalculateMatrix(const MKAttachment *arg0, Matrix *arg1, const Matrix *arg2) {
     s32 temp_r0_17;
 
@@ -30,7 +29,6 @@ void MKAttachment_CalculateMatrix(const MKAttachment *arg0, Matrix *arg1, const 
         arg1->Multiply(arg2, arg1);
     }
 }
-#endif
 
 void MKAttachment_Init(MKAttachment *arg0, const void *arg1, MKAttachmentType arg2, int arg3) {
     arg0->unk0 = (s32) arg1;

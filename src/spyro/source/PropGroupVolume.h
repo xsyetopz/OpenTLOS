@@ -27,7 +27,6 @@ public:
     static u8 overlayCount[0x4];
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ PolyRegion unk50;
-    /* 0x09c */ u8 pad9C[0x4];
     /* 0x0a0 */ s32 unkA0;
     /* 0x0a4 */ u8 padA4[0x200];
     /* 0x2a4 */ s32 unk2A4;

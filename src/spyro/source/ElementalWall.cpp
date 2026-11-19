@@ -51,7 +51,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static M2C_UNK lit_684;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<ElementalWall>::State ElementalWallStates; /* unable to generate initializer: confusing struct layout */
 static s32 lit_775 = 1;
@@ -72,7 +72,6 @@ void ElementalWall::StateEWOffExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWOffUpdate() {
     if (this->unk124 >= this->unk120) {
         ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
@@ -84,7 +83,6 @@ void ElementalWall::StateEWOffUpdate() {
     ((KDSound_SoundWall *) &this->unk130)->SetBeginEndTimes(this->unk124 / this->unk120, 1.0f);
     this->unk124 += gUpdateTimeDelta;
 }
-#endif
 
 void ElementalWall::StateEWOffEnter() {
     this->unk124 = 0.0f;
@@ -94,7 +92,6 @@ void ElementalWall::StateEWTurningOffExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWTurningOffUpdate() {
     if (this->unk124 >= this->unk120) {
         this->unk10C = 0.0f;
@@ -108,7 +105,6 @@ void ElementalWall::StateEWTurningOffUpdate() {
     this->unk10C = this->unk110 * (1.0f - (this->unk124 / this->unk120));
     this->unk124 += gUpdateTimeDelta;
 }
-#endif
 
 void ElementalWall::StateEWTurningOffEnter() {
     this->unk124 = 0.0f;
@@ -366,7 +362,6 @@ void ElementalWall::StateEWTurningOnExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWTurningOnUpdate() {
     if (this->unk124 >= this->unk120) {
         this->unk10C = this->unk110;
@@ -380,7 +375,6 @@ void ElementalWall::StateEWTurningOnUpdate() {
     this->unk10C = this->unk110 * (this->unk124 / this->unk120);
     this->unk124 += gUpdateTimeDelta;
 }
-#endif
 
 void ElementalWall::StateEWTurningOnEnter() {
     this->unk124 = 0.0f;
@@ -753,7 +747,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::EmitParticles(float arg0, float arg1) {
     s32 temp_r0_1629;
 
@@ -775,9 +768,8 @@ void ElementalWall::EmitParticles(float arg0, float arg1) {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp1B0'
 void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     Matrix sp230;
     M2C_UNK sp22C;
@@ -1116,7 +1108,7 @@ loop_61:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp1B0'
 void ElementalWall::DrawIceWall(float arg0, float arg1) {
     Matrix sp230;
     M2C_UNK sp22C;
@@ -1455,7 +1447,7 @@ loop_61:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'spF8'
 void ElementalWall::DrawElectricityWall(float arg0, float arg1) {
     Matrix sp130;
     M2C_UNK sp12C;
@@ -1571,7 +1563,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'lit_775'
 void ElementalWall::DrawFireWall(float arg0, float arg1) {
     Matrix sp3E0;
     M2C_UNK sp3DC;
@@ -2198,7 +2190,6 @@ loop_117:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Draw() {
     f32 var_f30_4209;
     f32 var_f31_4207;
@@ -2234,9 +2225,7 @@ void ElementalWall::Draw() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Update() {
     u8 var_r30_4297;
     u8 var_r31_4295;
@@ -2252,9 +2241,7 @@ void ElementalWall::Update() {
     }
     ((KDSound_SoundWall *) &this->unk130)->Update(var_r31_4295);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Message(MKMessage *arg0) {
     s32 temp_r0_4336;
     s32 temp_r0_4372;
@@ -2295,9 +2282,8 @@ void ElementalWall::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void ElementalWall::Resolve() {
     s32 temp_r0_4423;
 
@@ -2354,7 +2340,6 @@ s32 ElementalWall::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Deinit() {
     MKMaterial *temp_r3_4657;
     MKMaterial *temp_r3_4662;
@@ -2371,7 +2356,6 @@ void ElementalWall::Deinit() {
     }
     SplineProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__31KDStateMachine'
 void ElementalWall::Init() {

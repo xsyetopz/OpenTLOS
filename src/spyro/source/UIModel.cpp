@@ -1,5 +1,4 @@
 #include "spyro/source/UIModel.h"
-#include "common/Source/MKAnimScript.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
@@ -29,8 +28,8 @@ void UIAnimatedModel::FreeResources() {
         MKModel_Destroy(temp_r3_16);
         this->unk64 = NULL;
     }
-    ((MKAnimScript *) &this->unk60)->Deinit();
-    this->unk64 = NULL;
+    this->unk68.Deinit();
+    this->unk68.unk4 = NULL;
 }
 
 #if 0 // DRAFT: function call 'Init(signed char *, int)' does not match
@@ -38,13 +37,13 @@ void UIAnimatedModel::LoadResources() {
     s8 *temp_r31_51;
 
     if ((MKModel *) this->unk64 == NULL) {
-        ((MKAnimScript *) &this->unk60)->Init(this->unk60, NULL);
-        temp_r31_51 = ((MKAnimScript *) &this->unk60)->GetAnimName();
-        this->unk64 = MKModel_Create(((MKAnimScript *) &this->unk60)->GetMeshName(), temp_r31_51, 2, NULL);
-        M2C_FIELD(this, MKModel **, 0x70) = (MKModel *) this->unk64;
-        ((MKAnimScript *) &this->unk60)->CalculateSubObjectIndices();
-        ((MKAnimScript *) &this->unk60)->SetAnimation(MKModel_GetAnimation(this->unk64));
-        ((MKAnimScript *) &this->unk60)->SetAnim(((MKAnimScript *) &this->unk60)->GetAnim(0), 1.0f, 0.0f, 0, -1);
+        this->unk68.Init(this->unk60, NULL);
+        temp_r31_51 = this->unk68.GetAnimName();
+        this->unk64 = MKModel_Create(this->unk68.GetMeshName(), temp_r31_51, 2, NULL);
+        this->unk68.unk8 = this->unk64;
+        this->unk68.CalculateSubObjectIndices();
+        this->unk68.SetAnimation(MKModel_GetAnimation(this->unk64));
+        this->unk68.SetAnim(this->unk68.GetAnim(0), 1.0f, 0.0f, 0, -1);
     }
 }
 #endif
@@ -53,13 +52,13 @@ void UIAnimatedModel::Update() {
     MKModel *temp_r3_94;
 
     temp_r3_94 = this->unk64;
-    if ((temp_r3_94 != NULL) && (M2C_BITWISE(u32, this->unk68.unk18) != 0U) && ((u8) this->unk15 != 0)) {
-        ((MKAnimScript *) &this->unk60)->Animate(MKModel_GetAnimation(temp_r3_94), -1, NULL);
-        KDSound_Play((MKAnimScript *) &this->unk60, 0U);
+    if ((temp_r3_94 != NULL) && ((u32) this->unk68.unk20 != 0) && ((u8) this->unk15 != 0)) {
+        this->unk68.Animate(MKModel_GetAnimation(temp_r3_94), -1, NULL);
+        KDSound_Play(&this->unk68, 0U);
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void UIModel::UpdateMatrix(RenderContext *arg0) {
     Matrix sp40;
     MKVector3 sp30;

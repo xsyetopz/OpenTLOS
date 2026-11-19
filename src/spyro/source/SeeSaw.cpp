@@ -59,7 +59,7 @@ void SeeSaw::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk8C'
 void SeeSaw::Update() {
     void *sp1B0;
     f64 sp1A8;                                      /* compiler-managed */

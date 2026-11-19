@@ -628,7 +628,7 @@ void MoltenMetalBucketTrack::Deinit() {
     ((KDUniformSpline *) &this->unk4C.unk14)->Deinit();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: ')' expected
 void MoltenMetalBucketTrack::Init() {
     MKProp::Init();
     M2C_STRUCT_COPY((s32) (this + 0x9C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);

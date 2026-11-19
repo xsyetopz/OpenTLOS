@@ -342,10 +342,10 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
             }
             return var_r4_576;
         case 7:
-            ((EnemyDescriptor *) arg2->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
+            arg2->unkA38->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
             return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
         case 8:
-            ((EnemyDescriptor *) arg2->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
+            arg2->unkA38->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
             return (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
         case 11:
             temp_r4_612 = M2C_FIELD(arg3, u8 *, 0x49);

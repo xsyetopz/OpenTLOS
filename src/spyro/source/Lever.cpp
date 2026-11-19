@@ -263,7 +263,7 @@ void Lever::Init() {
     this->unk100 = NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LeverDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "r_P0029_Stand");
@@ -274,7 +274,7 @@ void LeverDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_679;
 
@@ -286,7 +286,7 @@ s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void LeverDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = GS_PLACEHOLDER;

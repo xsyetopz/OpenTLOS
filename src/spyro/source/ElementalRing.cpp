@@ -152,7 +152,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void ElementalRing::Draw() {
     MKVector3 sp1F0;
     Matrix sp1B0;

@@ -47,6 +47,7 @@ void GamePropColored::Init() {
     this->unkC8.unkC = 1.0f;
 }
 
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void GamePropColoredDescriptor::Deinit() {
     MKMaterial *temp_r3_108;
 
@@ -56,6 +57,7 @@ void GamePropColoredDescriptor::Deinit() {
     }
     KDPropExDescriptor::Deinit();
 }
+#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 GamePropColoredDescriptor::LoadLine(MKIniLine *arg0) {
@@ -72,7 +74,9 @@ s32 GamePropColoredDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void GamePropColoredDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = NULL;
 }
+#endif

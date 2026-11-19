@@ -230,7 +230,7 @@ void SteamTrainCaboose::GetVel() {
     temp_r3_345 = checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKSceneManager **, 0xD0)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_345 != NULL) {
         temp_r4_348 = M2C_FIELD(temp_r31_341, void **, 8);
-        temp_f3_349 = temp_r3_345->unk104;
+        temp_f3_349 = temp_r3_345->unk108;
         sp8 = -M2C_FIELD(temp_r4_348, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r4_348, f32 *, 0x24);
         sp10 = -M2C_FIELD(temp_r4_348, f32 *, 0x28);
@@ -262,7 +262,7 @@ u8 SteamTrainCaboose::IsBlownUp() {
 
 void SteamTrainCaboose::BlowUp() {
     if ((u8) this->unkD8 == 0) {
-        ((SpawnerObject *) &this->unk110)->FunctionOff();
+        this->unk110.FunctionOff();
         SetState((SteamTrainCabooseState) 3);
     }
 }
@@ -321,7 +321,7 @@ void SteamTrainCaboose::Message(MKMessage *arg0) {
     temp_r0_475 = arg0->unk0;
     switch (temp_r0_475) {                          /* irregular */
     case 0xB5:
-        ((SpawnerObject *) &this->unk110)->FunctionOn();
+        this->unk110.FunctionOn();
         SetState((SteamTrainCabooseState) 1);
         Enable();
         Update();
@@ -330,7 +330,7 @@ block_34:
         GameProp::Message(arg0);
         return;
     case 0xB4:
-        ((SpawnerObject *) &this->unk110)->FunctionOff();
+        this->unk110.FunctionOff();
         SetState((SteamTrainCabooseState) 0);
         Disable();
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
@@ -577,7 +577,7 @@ void SteamTrainCaboose::Update() {
 
     GameProp::Update();
     if ((s32) this->unkC8 != 0) {
-        ((SpawnerObject *) &this->unk110)->TrySpawnItems(0x10, 0U);
+        this->unk110.TrySpawnItems(0x10, 0U);
         if ((u8) this->unkD8 == 0) {
             temp_ret_816 = checked_cast<TrainTrack *, MKProp>(this->unkCC->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             temp_r3_816 = temp_ret_816;
@@ -590,7 +590,7 @@ void SteamTrainCaboose::Update() {
                     }
                 default:
 block_20:
-                    this->unkD4 = temp_r3_821->unk10C - 1200.0f;
+                    this->unkD4 = temp_r3_821->unk110 - 1200.0f;
                     ((TrainTrack *) &sp1C0)->GetTrackZAxis((s32) temp_r3_816, this->unkD4);
                     sp310 = sp1C0;
                     sp318 = sp1C8;
@@ -794,8 +794,8 @@ void SteamTrainCaboose::Reset() {
     if (this->unkCC->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)) == NULL) {
         Disable();
     }
-    ((SpawnerObject *) &this->unk110)->SetDefaults();
-    ((SpawnerObject *) &this->unk110)->FunctionOff();
+    this->unk110.SetDefaults();
+    this->unk110.FunctionOff();
     this->unkDC = 50.0f;
 }
 
@@ -820,8 +820,8 @@ void SteamTrainCaboose::LoadDone() {
     } while (var_r25_1410 < 5);
     Disable();
     operator new(4U, NULL, 0);
-    M2C_FIELD(this, TrainChaseSpawnPool **, 0x160) = (TrainChaseSpawnPool *) M2C_ERROR(/* Read from unset register $r3 */);
-    ((TrainChaseSpawnPool *) (M2C_FIELD(this, TrainChaseSpawnPool **, 0x160)))->Init();
+    this->unk160 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unk160->Init();
     var_r30_1438 = 0;
     var_r28_1439 = 0;
     do {
@@ -850,19 +850,19 @@ void SteamTrainCaboose::LoadDone() {
         var_r30_1438 += 1;
         temp_r25_1476->unk50 = 1;
     } while (var_r30_1438 < 2);
-    this->unk110.unk2C = 10.0f;
-    this->unk110.unk30 = 5.0f;
-    M2C_FIELD(this, u8 *, 0x15C) = (u8) (M2C_FIELD(this, u8 *, 0x15C) | 0x10);
-    ((SpawnerObject *) &this->unk110)->LoadDone(0, 2, 0U, 1U);
-    ((SpawnerObject *) &this->unk110)->AddSpawnPointBegin(2);
+    this->unk110.unk30 = 10.0f;
+    this->unk110.unk34 = 5.0f;
+    this->unk110.unk4C |= 0x10;
+    this->unk110.LoadDone(0, 2, 0U, 1U);
+    this->unk110.AddSpawnPointBegin(2);
     var_r25_1511 = 0;
     var_r30_1512 = 0;
     do {
-        ((SpawnerObject *) &this->unk110)->AddSpawnPoint(*(&sp8 + var_r30_1512));
+        this->unk110.AddSpawnPoint(*(&sp8 + var_r30_1512));
         var_r25_1511 += 1;
         var_r30_1512 += 4;
     } while (var_r25_1511 < 2);
-    ((SpawnerObject *) &this->unk110)->AddSpawnPointEnd();
+    this->unk110.AddSpawnPointEnd();
 }
 #endif
 
@@ -884,10 +884,10 @@ void SteamTrainCaboose::Deinit() {
         M2C_FIELD(&gb, u32 *, 0x360) = 0U;
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
     }
-    ((TrainChaseSpawnPool *) (M2C_FIELD(this, TrainChaseSpawnPool **, 0x160)))->Deinit();
-    operator delete(M2C_FIELD(this, TrainChaseSpawnPool **, 0x160));
-    ((SpawnerObject *) &this->unk110)->RemoveAllSpawnPoints(1U);
-    ((SpawnerObject *) &this->unk110)->Deinit();
+    this->unk160->Deinit();
+    operator delete(this->unk160);
+    this->unk110.RemoveAllSpawnPoints(1U);
+    this->unk110.Deinit();
     this->unkE0.Deinit();
     GameProp::Deinit();
 }
@@ -901,12 +901,12 @@ void SteamTrainCaboose::Init() {
     this->unkCC = NULL;
     this->unkD0 = NULL;
     this->unkDC = 50.0f;
-    ((SpawnerObject *) &this->unk110)->Init((void (*)(SpawnAction, s32, MKProp **, SpawnerObject *)) &TrainChaseSpawnPool::Action, 0);
-    M2C_FIELD(this, s32 *, 0x160) = 0;
+    this->unk110.Init((void (*)(SpawnAction, s32, MKProp **, SpawnerObject *)) &TrainChaseSpawnPool::Action, 0);
+    this->unk160 = NULL;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void SteamTrainCabooseDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("idle");

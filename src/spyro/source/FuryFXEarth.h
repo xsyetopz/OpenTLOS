@@ -35,7 +35,6 @@ public:
     s32 Trigger(const MKVector3 &, bool);
     void SetDefaults(void);
     void EmitLeaves(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ WindFX unk90;
     /* 0x0c0 */ Matrix unkC0;
     /* 0x100 */ FallingLeaves* unk100;
@@ -52,7 +51,7 @@ public:
     /* 0x160 */ SuckeyPS* unk160;
     /* 0x164 */ Corona* unk164;
     /* 0x168 */ BreathHitMessage unk168;
-    /* 0x1b9 */ u8 pad1B9[0x7];
+    /* 0x1bc */ u8 pad1BC[0x4];
     /* 0x1c0 */ MKPropDescriptor* unk1C0;
     /* 0x1c4 */ s32 unk1C4;
     /* 0x1c8 */ u8 unk1C8;

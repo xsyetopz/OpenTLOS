@@ -96,7 +96,7 @@ void FireAndIceFX::DrawCleanup() {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(FireAndIceFX *, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 s32 FireAndIceFX::Draw(unsigned short *arg0) {
     Matrix sp2F0;
     Matrix sp2B0;

@@ -127,7 +127,7 @@ void Collectable2::Collect() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
 void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKVector3 *arg2, float arg3, float arg4, float arg5) {
     Matrix sp90;
     Matrix sp50;
@@ -232,7 +232,7 @@ void Collectable2::Draw() {
     MKModel_Draw(this->unk4, NULL);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void Collectable2::Update() {
     Matrix sp250;
     Matrix sp210;

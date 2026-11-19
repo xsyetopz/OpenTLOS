@@ -1278,7 +1278,7 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp28'
 void IceBossStomp::Collided(MKCollisionResult &arg0) {
     s8 spD1;
     s8 spD0;
@@ -1713,7 +1713,7 @@ void IceBossStompDescriptor::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'IceBitsPS *' to
 void IceBossStompDescriptor::LoadDone() {
     s32 temp_r0_2656;
     s32 var_r31_2640;
@@ -1742,7 +1742,7 @@ void IceBossStompDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2685;
 
@@ -1754,14 +1754,12 @@ s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void IceBossStompDescriptor::Deinit() {
     pIceBossStompDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to
 void IceBossStompDescriptor::Init() {
     ProjectileDescriptor::Init();
     this->unkF8 = "p3018_bossicecharge";

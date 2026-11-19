@@ -25,7 +25,7 @@ public:
     virtual void Draw(void);
     FlyingChunkPS(void);
     void Emit(const MKVector3 &, const MKVector3 &, const MKVector3 &, const MKVector3 &, float, const MKVector4 &, int, MKProp *);
-    /* 0x0c4 */ u8 padC4[0x14];
+    /* 0x0c8 */ u8 padC8[0x10];
     /* 0x0d8 */ Matrix** unkD8;
 };
 

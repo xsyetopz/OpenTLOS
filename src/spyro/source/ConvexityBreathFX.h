@@ -27,7 +27,6 @@ public:
     void UpdateRings(void);
     void SpawnRing(const MKVector3 &, const MKVector3 &);
     s32 Trigger(MKProp *, const MKVector3 &, const MKVector3 &, const float &);
-    /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ MKModel* unkA8;
     /* 0x0ac */ s32 unkAC;
     /* 0x0b0 */ f32 unkB0;

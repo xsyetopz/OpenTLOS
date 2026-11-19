@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "common/Source/MKVector3.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/NodeLookAt.h"
 
 class CynderBreathFX;
@@ -63,7 +64,6 @@ public:
     void StateEnter(void);
     void UpdateLookAtNodes(void);
     static u8 states[0x90];
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ NodeLookAtIK unk90;
     /* 0x0d8 */ NodeLookAtIK unkD8;
     /* 0x120 */ NodeLookAtIK unk120;
@@ -77,7 +77,8 @@ public:
     /* 0x240 */ s32 unk240;
     /* 0x244 */ f32 unk244;
     /* 0x248 */ f32 unk248;
-    /* 0x24c */ u8 pad24C[0x14];
+    /* 0x24c */ KDStateMachine<SpeedwayCynder> unk24C;
+    /* 0x24d */ u8 pad24D[0x13];
     /* 0x260 */ u32 unk260;
     /* 0x264 */ u32 unk264;
     /* 0x268 */ u8 pad268[0x18];

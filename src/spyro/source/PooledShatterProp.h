@@ -7,7 +7,7 @@
 class PooledShatterProp;
 class Shatterable;
 
-class PooledShatterProp : public Shatterable {  // base: vtable prefix
+class PooledShatterProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~PooledShatterProp(void);
     virtual void Update(void);

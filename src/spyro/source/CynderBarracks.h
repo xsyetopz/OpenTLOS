@@ -2,7 +2,6 @@
 #define SPYRO_SOURCE_CYNDERBARRACKS_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_enums.h"
@@ -10,13 +9,12 @@
 class CynderBarracks;
 class CynderBarracksDescriptor;
 class EnemyGenerator;
-class EnemyGeneratorDescriptor;
 class MKIniLine;
 class MKMessage;
-class MKPropDescriptor;
 class Shatterable;
+class ShatterableDescriptor;
 
-class CynderBarracks : public Shatterable {  // base: vtable prefix
+class CynderBarracks : public Shatterable {  // base: base ctor call
 public:
     virtual ~CynderBarracks(void);
     virtual void Init(void);
@@ -28,78 +26,71 @@ public:
     virtual void Message(MKMessage *);
     CynderBarracks(void);
     void SetState(CynderBarracksState);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ s32 unk1A8;
     /* 0x1ac */ s32 unk1AC;
     /* 0x1b0 */ f32 unk1B0;
     /* 0x1b4 */ EnemyGenerator unk1B4;
 };
 
-class CynderBarracksDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CynderBarracksDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     CynderBarracksDescriptor(void);
-    /* 0x044 */ u8 pad44[0x20];
-    /* 0x064 */ s32 unk64;
-    /* 0x068 */ u8 pad68[0x104];
-    /* 0x16c */ EnemyGeneratorDescriptor unk16C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: illegal implicit conversion from 'EnemyGenerator *' to
+#if 0 // DRAFT: undefined identifier 'unkC8'
 inline CynderBarracks::CynderBarracks() {
-    M2C_UNK *temp_r30_21742;
+    EnemyGenerator *temp_r30_21742;
 
     temp_r30_21742 = &this->unk1B4;
     this->unkC8 = &__vt + 0x48;
-    M2C_FIELD(this, M2C_UNK **, 0x1B4) = &__vt;
-    this->unk1B4.unk2C = 0;
-    ((EventMessage *) (temp_r30_21742 + 0x3C))->Init();
-    this->unk1B4.unk30 = 0.0f;
-    ((EventMessage *) (temp_r30_21742 + 0x40))->Init();
-    M2C_FIELD(this, M2C_UNK **, 0x1B4) = &__vt;
-    this->unk1B4.unk58 = NULL;
-    ((EventMessage *) (temp_r30_21742 + 0x68))->Init();
-    this->unk1B4.unk5C = NULL;
-    ((EventMessage *) (temp_r30_21742 + 0x6C))->Init();
+    this->unk1B4.__vptr = &__vt;
+    this->unk1B4.unk3C.unk0 = 0;
+    temp_r30_21742->unk3C.Init();
+    this->unk1B4.unk40.unk0 = 0;
+    temp_r30_21742->unk40.Init();
+    this->unk1B4.__vptr = &__vt;
+    this->unk1B4.unk68.unk0 = 0;
+    temp_r30_21742->unk68.Init();
+    this->unk1B4.unk6C.unk0 = 0;
+    temp_r30_21742->unk6C.Init();
     return this;
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline CynderBarracks::~CynderBarracks() {
-    f32 *temp_r3_39;
-    s32 *temp_r3_45;
-    void **temp_r3_26;
-    void **temp_r3_32;
+    EventMessage *temp_r3_26;
+    EventMessage *temp_r3_32;
+    EventMessage *temp_r3_39;
+    EventMessage *temp_r3_45;
 
     if (this != NULL) {
         this->unkC8 = &__vt.unk48;
         if (&this->unk1B4 != NULL) {
-            temp_r3_26 = &this->unk1B4.unk5C;
-            M2C_FIELD(this, void **, 0x1B4) = &__vt;
+            temp_r3_26 = &this->unk1B4.unk6C;
+            this->unk1B4.__vptr = &__vt;
             if (temp_r3_26 != NULL) {
-                ((EventMessage *) temp_r3_26)->Deinit();
+                temp_r3_26->Deinit();
             }
-            temp_r3_32 = &this->unk1B4.unk58;
+            temp_r3_32 = &this->unk1B4.unk68;
             if (temp_r3_32 != NULL) {
-                ((EventMessage *) temp_r3_32)->Deinit();
+                temp_r3_32->Deinit();
             }
             if (&this->unk1B4 != NULL) {
-                temp_r3_39 = &this->unk1B4.unk30;
-                M2C_FIELD(this, void **, 0x1B4) = &__vt;
+                temp_r3_39 = &this->unk1B4.unk40;
+                this->unk1B4.__vptr = &__vt;
                 if (temp_r3_39 != NULL) {
-                    ((EventMessage *) temp_r3_39)->Deinit();
+                    temp_r3_39->Deinit();
                 }
-                temp_r3_45 = &this->unk1B4.unk2C;
+                temp_r3_45 = &this->unk1B4.unk3C;
                 if (temp_r3_45 != NULL) {
-                    ((EventMessage *) temp_r3_45)->Deinit();
+                    temp_r3_45->Deinit();
                 }
             }
         }

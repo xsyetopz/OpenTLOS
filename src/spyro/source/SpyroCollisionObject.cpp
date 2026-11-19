@@ -11,7 +11,6 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 u8 SpyroCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
     f32 *temp_r5_21;
     s32 temp_r6_22;
@@ -23,7 +22,6 @@ u8 SpyroCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroCollisionObject::PushOutOfThings(MKVector3 arg0) {
@@ -288,7 +286,7 @@ loop_46:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 SpyroCollisionObject::GlueToGround() {
     f64 sp88;
     f64 sp80;

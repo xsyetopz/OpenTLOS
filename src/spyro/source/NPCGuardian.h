@@ -12,7 +12,7 @@ class MKMessage;
 class MKSceneManager;
 class NPCGuardian;
 
-class NPCGuardian : public Enemy {  // base: vtable prefix
+class NPCGuardian : public Enemy {  // base: base ctor call
 public:
     virtual ~NPCGuardian(void);
     virtual void Init(void);
@@ -21,7 +21,6 @@ public:
     virtual void Resolve(void);
     virtual void Message(MKMessage *);
     NPCGuardian(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ s8 unkB10;
     /* 0xb11 */ u8 padB11[0x3];
     /* 0xb14 */ EventMessage unkB14;
@@ -31,22 +30,20 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline NPCGuardian::NPCGuardian() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkAFC = 0;
-    ((EventMessage *) &this->unkAFC)->Init();
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB14.unk0 = 0;
+    this->unkB14.Init();
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline NPCGuardian::~NPCGuardian() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if (&this->unkAFC != NULL) {
-        ((EventMessage *) &this->unkAFC)->Deinit();
+    this->unk6B8 = &__vt.unk84;
+    if (&this->unkB14 != NULL) {
+        this->unkB14.Deinit();
     }
 }
 #endif

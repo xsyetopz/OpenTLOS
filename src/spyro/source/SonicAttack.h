@@ -15,7 +15,7 @@ class ProjectileDescriptor;
 class SonicAttack;
 class SonicAttackDescriptor;
 
-class SonicAttack : public Projectile {  // base: vtable prefix
+class SonicAttack : public Projectile {  // base: base ctor call
 public:
     virtual ~SonicAttack(void);
     virtual void Init(void);
@@ -35,7 +35,6 @@ public:
     void SpawnSonicRing(const MKVector3 &, const MKVector3 &);
     void SetDefaults(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ MKVector3* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ u8 unk158;
@@ -47,7 +46,7 @@ public:
     /* 0x16c */ u8 unk16C;
 };
 
-class SonicAttackDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class SonicAttackDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

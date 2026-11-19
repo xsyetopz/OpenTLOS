@@ -7,8 +7,6 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -178,7 +176,6 @@ s32 SpyroChargeState::Transition() {
     f32 sp14;
     f32 sp10;
     f32 sp8;
-    MKProp *temp_r3_345;
     Spyro *temp_r3_509;
     Spyro *temp_r5_344;
     f32 temp_f1_538;
@@ -203,6 +200,7 @@ s32 SpyroChargeState::Transition() {
     u8 var_r29_574;
     u8 var_r30_579;
     u8 var_r30_604;
+    void *temp_r3_345;
     void *temp_r3_361;
     void *temp_r3_373;
     void *temp_r3_384;
@@ -210,11 +208,11 @@ s32 SpyroChargeState::Transition() {
     void *var_r3_353;
 
     temp_r5_344 = this->unk10;
-    temp_r3_345 = temp_r5_344->unk26C.unk8;
+    temp_r3_345 = temp_r5_344->unk27C;
     temp_r3_347 = M2C_FIELD(temp_r3_345, s32 *, 0x2D4);
     if (temp_r3_347 > 0) {
         if (temp_r3_347 != 0) {
-            var_r3_353 = temp_r3_345 + 0x170 + ((temp_r3_347 - 1) * 0x58);
+            var_r3_353 = ((u8 *) temp_r3_345) + 0x170 + ((temp_r3_347 - 1) * 0x58);
         } else {
             var_r3_353 = NULL;
         }
@@ -309,7 +307,7 @@ s32 SpyroChargeState::Transition() {
                     spC0 = 0.2f;
                     spC4 = 1;
                     spC5 = 1;
-                    this->unk10->unk3CD = 1;
+                    this->unk10->unk3D5 = 1;
                     return this->unk10->TryChangeState(1U, 4U, (MKMessage *) &spB0, 0U);
                 }
                 goto block_33;
@@ -368,7 +366,6 @@ void SpyroChargeState::Update() {
     s32 spC;
     s32 sp8;
     KDCamera *temp_r3_687;
-    MKProp *temp_r3_706;
     Spyro *temp_r3_747;
     Spyro *temp_r5_700;
     f32 temp_f2_676;
@@ -378,6 +375,7 @@ void SpyroChargeState::Update() {
     s32 temp_r3_708;
     s32 var_r0_722;
     u8 var_r4_701;
+    void *temp_r3_706;
     void *temp_r4_749;
     void *var_r3_717;
 
@@ -396,12 +394,12 @@ void SpyroChargeState::Update() {
     temp_r5_700 = this->unk10;
     var_r4_701 = 0;
     var_f30_702 = 1.0f;
-    if (((u32) temp_r5_700->unk420 >> 5U) & 1) {
-        temp_r3_706 = temp_r5_700->unk26C.unk8;
+    if (((u32) temp_r5_700->unk428 >> 5U) & 1) {
+        temp_r3_706 = temp_r5_700->unk27C;
         temp_r3_708 = M2C_FIELD(temp_r3_706, s32 *, 0x16C);
         if (((u32) (-temp_r3_708 & ~temp_r3_708) >> 0x1FU) != 0) {
             if (temp_r3_708 != 0) {
-                var_r3_717 = &temp_r3_706->unk8 + ((temp_r3_708 - 1) * 0x58);
+                var_r3_717 = ((u8 *) temp_r3_706) + 8 + ((temp_r3_708 - 1) * 0x58);
             } else {
                 var_r3_717 = NULL;
             }
@@ -417,7 +415,7 @@ void SpyroChargeState::Update() {
         var_f30_702 = 1.0f * M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_700->unk0), f32 *, 0xD8);
     }
     ((Spyro *) &sp40)->CalcYawTurnDir(3.5f);
-    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp40), 3.5f);
+    this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp40), 3.5f);
     temp_r3_747 = this->unk10;
     temp_r4_749 = temp_r3_747->unk8;
     temp_f3_750 = 1400.0f * var_f30_702;
@@ -456,7 +454,7 @@ void SpyroChargeState::Exit() {
         var_f1_810 = temp_f0_811;
     }
     this->unk10->unk3C4 = var_f1_810;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeTime(this->unk28);
+    this->unk10->unk460.SetChargeTime(this->unk28);
     temp_r3_825 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x43A;
@@ -471,7 +469,7 @@ void SpyroChargeState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
     s32 sp20;
     s32 sp1C;
@@ -501,11 +499,11 @@ void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(temp_r3_899->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     this->unk2C = 0.4f;
     temp_r3_912 = this->unk10;
-    temp_r3_912->unk420 = (void *) ((s32) temp_r3_912->unk420 | 0x8000);
+    temp_r3_912->unk428 |= 0x8000;
     temp_r3_916 = this->unk10;
-    temp_r3_916->unk420 = (void *) ((s32) temp_r3_916->unk420 & 0xFFFFFFFE);
+    temp_r3_916->unk428 &= 0xFFFFFFFE;
     this->unk28 = 0.0f;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeTime(0.0f);
+    this->unk10->unk460.SetChargeTime(0.0f);
     sp1C = 0;
     sp18 = 0x17;
     sp20 = 4;
@@ -515,11 +513,9 @@ void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroChargeState::Deinit() {
     this->unk14.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroChargeState::Init(Spyro *arg0) {

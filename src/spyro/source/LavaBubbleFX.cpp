@@ -343,7 +343,7 @@ void LavaBubbleFX::DrawBubbleRings() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'Scale3x3(Matrix *, MKHeap)' does not match
 void LavaBubbleFX::Draw() {
     Matrix sp40;
     M2C_UNK sp3C;

@@ -701,7 +701,7 @@ void SpyroLighting::Reset() {
     this->unk24 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
     f64 spD8;
     f64 spD0;

@@ -300,7 +300,7 @@ void KDMath_LocaliseVector(const MKVector3 &arg0, MKVector3 *arg1, const MKVecto
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
     Matrix sp20;
     M2C_UNK sp1C;

@@ -24,7 +24,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -49,7 +49,7 @@ void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(MineCart *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MineCart::Message(MKMessage *arg0) {
     s8 sp129;
     s8 sp128;
@@ -106,12 +106,12 @@ void MineCart::Message(MKMessage *arg0) {
     void *temp_r4_166;
     void *temp_r4_248;
 
-    ((KDSoundPlayer *) (this + 0x17C))->Message(arg0);
+    ((KDSoundPlayer *) &this->unk17C)->Message(arg0);
     temp_r0_123 = arg0->unk0;
     switch (temp_r0_123) {                          /* irregular */
     case 191:
     case -4:
-        KDSound_Stop(this + 0x17C);
+        KDSound_Stop(&this->unk17C);
         this->unkE8.Show(0U);
         break;
     case 190:
@@ -349,7 +349,7 @@ void MineCart::UpdateEffects() {
         sp28 = spC0.unk8 * 10.0f;
         spD0 = sp20;
         spD8 = (f64) sp28;
-        this->unk168 = (f64) sp28;
+        this->unk170 = (f64) sp28;
     }
 }
 #endif
@@ -384,7 +384,7 @@ void MineCart::Update() {
     void *temp_r4_708;
 
     GameProp::Update();
-    temp_r4_594 = M2C_FIELD(this, void **, 0x178);
+    temp_r4_594 = this->unk178;
     var_r31_595 = 1;
     var_r3_596 = 0;
     if ((temp_r4_594 == NULL) || ((u8) M2C_FIELD(temp_r4_594, u8 *, 0x4C) == 0)) {
@@ -422,9 +422,9 @@ void MineCart::Update() {
         }
         temp_r4_676 = checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) (this + 0x17C))->Update(M2C_FIELD(temp_r4_676, s32 *, 0xE4), 1U, var_r31_666, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk17C)->Update(M2C_FIELD(temp_r4_676, s32 *, 0xE4), 1U, var_r31_666, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if ((void *) M2C_FIELD(this, void **, 0x178) != NULL) {
+    if ((void *) this->unk178 != NULL) {
         temp_r3_692 = ((u8 *) this->unk8) + 0x30;
         sp10 = M2C_FIELD(temp_r3_692, f64 *, 0) - this->unkC8;
         var_r3_699 = 0;
@@ -468,7 +468,7 @@ void MineCart::Resolve() {
     void *temp_r29_798;
 
     KDPropEx::Resolve();
-    if ((u32) M2C_FIELD(this, u32 *, 0x178) != 0U) {
+    if ((void *) this->unk178 != NULL) {
         var_r27_776 = 0;
         var_r31_778 = 0;
         do {
@@ -493,10 +493,10 @@ void MineCart::LoadDone() {
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(MineCart *)' does not match
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MineCart::Deinit() {
     this->unkE8.Deinit();
-    KDSound_Stop(this + 0x17C);
+    KDSound_Stop(&this->unk17C);
     GameProp::Deinit();
 }
 #endif
@@ -531,16 +531,16 @@ void MineCart::Init() {
     sp10 = 0.0f;
     this->unk118 = 0.0f;
     this->unk168 = (f64) sp8;
-    this->unk168 = (f64) sp10;
-    M2C_FIELD(this, s32 *, 0x178) = 0;
+    this->unk170 = (f64) sp10;
+    this->unk178 = NULL;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     temp_r31_911 = checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) (this + 0x17C))->Init(M2C_FIELD(checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE8), M2C_FIELD(temp_r31_911, f32 *, 0xEC));
+    ((KDSoundFader *) &this->unk17C)->Init(M2C_FIELD(checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE8), M2C_FIELD(temp_r31_911, f32 *, 0xEC));
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 MineCartDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_934;
 
@@ -552,7 +552,7 @@ s32 MineCartDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void MineCartDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = 0;

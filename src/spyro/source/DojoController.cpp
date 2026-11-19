@@ -18,7 +18,6 @@
 #include "spyro/source/SparxHint.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
-#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/TargetManager.h"
@@ -46,7 +45,7 @@ extern s32 gViewSeed;
 extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static M2C_UNK lit_761;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<DojoController>::State dojoStates; /* unable to generate initializer: confusing struct layout */
 
@@ -81,12 +80,12 @@ u8 EarthDojoLesson::HasSucceededFury() {
             var_r3_52 = MKInput_Pressed(9, (MKInputDevices) M2C_FIELD(temp_r3_39, s32 *, 0));
         }
         if ((u8) var_r3_52 != 0) {
-            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 1, 0x200);
+            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 1, 0x200);
         }
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -104,34 +103,34 @@ u8 EarthDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
     DojoController *temp_r4_111;
-    MKSceneManager **temp_r4_140;
     Targetable *temp_r3_169;
     s32 temp_r3_135;
     s32 var_r0_134;
     s32 var_r0_145;
     s32 var_r0_154;
+    u32 *temp_r4_140;
 
     UpdateCombatArcs();
     if ((s32) this->unk10 == 1) {
         temp_r4_111 = this->unk4;
-        if (((MKSceneManager *) temp_r4_111->unk408 != (MKSceneManager *)1U) && ((u32) temp_r4_111->unk40C != 1) && ((u32) temp_r4_111->unk410 != 1) && ((u32) temp_r4_111->unk414 != 1) && ((u32) temp_r4_111->unk418 != 1) && ((u32) temp_r4_111->unk41C != 1) && ((u32) temp_r4_111->unk420 != 1)) {
+        if (((u32) temp_r4_111->unk410 != 1) && ((u32) temp_r4_111->unk414 != 1) && ((u32) temp_r4_111->unk418 != 1) && ((u32) temp_r4_111->unk41C != 1) && ((u32) temp_r4_111->unk420 != 1) && ((u32) temp_r4_111->unk424 != 1) && ((u32) temp_r4_111->unk428 != 1)) {
             var_r0_134 = lit_3055;
-            temp_r3_135 = temp_r4_111->unk440 - 1;
+            temp_r3_135 = temp_r4_111->unk448 - 1;
             if (temp_r3_135 > var_r0_134) {
                 var_r0_134 = temp_r3_135;
             }
-            temp_r4_140 = &temp_r4_111->unk408;
-            if ((MKSceneManager *) temp_r4_140[var_r0_134] != (MKSceneManager *)0x2000U) {
+            temp_r4_140 = &temp_r4_111->unk410;
+            if ((u32) temp_r4_140[var_r0_134] != 0x2000) {
                 var_r0_145 = lit_3057;
                 if (temp_r3_135 > var_r0_145) {
                     var_r0_145 = temp_r3_135;
                 }
-                if ((MKSceneManager *) temp_r4_140[var_r0_145] != (MKSceneManager *)0x40U) {
+                if ((u32) temp_r4_140[var_r0_145] != 0x40) {
                     var_r0_154 = lit_3059;
                     if (temp_r3_135 > var_r0_154) {
                         var_r0_154 = temp_r3_135;
                     }
-                    if ((MKSceneManager *) temp_r4_140[var_r0_154] == (MKSceneManager *)0x1000U) {
+                    if ((u32) temp_r4_140[var_r0_154] == 0x1000) {
                         goto block_17;
                     }
                 } else {
@@ -152,7 +151,7 @@ block_17:
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -164,7 +163,7 @@ block_17:
 u8 EarthDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -194,16 +193,16 @@ s32 EarthDojoLesson::HasFailedFury() {
 
     if ((s32) this->unkC != 0) {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
-            M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
+            this->unk4->unk3BC = 1;
         }
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         temp_r4_304 = this->unk4;
-        if (((s32) temp_r4_304->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_304, u8 *, 0x3BC) == 0)) {
+        if (((s32) temp_r4_304->unk3D4 != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) temp_r4_304->unk3BC == 0)) {
             return 1;
         }
         return 0;
     }
-    M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
+    this->unk4->unk3BC = 0;
     return 0;
 }
 #endif
@@ -212,8 +211,8 @@ s32 EarthDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_332;
 
     temp_r4_332 = this->unk4;
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_332, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_332, u8 *, 0x3BF) != 0)) {
-        M2C_FIELD(temp_r4_332, u8 *, 0x3BF) = 0U;
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_332->unk398) && ((u8) temp_r4_332->unk3BF != 0)) {
+        temp_r4_332->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -223,8 +222,8 @@ s32 EarthDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_355;
 
     temp_r4_355 = this->unk4;
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_355, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_355, u8 *, 0x3BF) != 0)) {
-        M2C_FIELD(temp_r4_355, u8 *, 0x3BF) = 0U;
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_355->unk398) && ((u8) temp_r4_355->unk3BF != 0)) {
+        temp_r4_355->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -326,7 +325,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
     void *temp_r6_783;
 
     temp_r4_443 = this->unk4;
-    temp_f28_449 = temp_r4_443->unk3AC * M2C_BITWISE(f32, temp_r4_443->unk7E0);
+    temp_f28_449 = temp_r4_443->unk3B4 * temp_r4_443->unk7E8;
     if (((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get() != NULL) {
         temp_r3_460 = M2C_FIELD(M2C_FIELD(((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get()->__vptr, void *(**)(), 8)(), void **, 8);
         temp_f1_461 = M2C_FIELD(temp_r3_460, f64 *, 0x30);
@@ -337,13 +336,13 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_f0_462;
     } else {
         temp_r3_469 = this->unk4;
-        sp100 = M2C_FIELD(temp_r3_469, f64 *, 0x388);
-        sp108 = temp_r3_469->unk388;
+        sp100 = temp_r3_469->unk388;
+        sp108 = temp_r3_469->unk390;
     }
     temp_r3_475 = this->unk4;
-    sp50 = M2C_FIELD(temp_r3_475, f64 *, 0x378) - M2C_FIELD(temp_r3_475, f64 *, 0x388);
+    sp50 = M2C_FIELD(temp_r3_475, f64 *, 0x378) - temp_r3_475->unk388;
     sp130 = sp50;
-    sp58 = temp_r3_475->unk378.unk0 - (f32) M2C_FIELD(temp_r3_475, f64 *, 0x390);
+    sp58 = temp_r3_475->unk378.unk8 - (f32) M2C_FIELD(temp_r3_475, f64 *, 0x390);
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
@@ -389,7 +388,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
     sp130 = (f32) sp130 * var_f3_567;
     (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_567;
     sp138 = (f32) sp138 * var_f3_567;
-    if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
+    if ((s32) this->unk4->unk3C8 != 0) {
         temp_f31_589 = MKVector3::up.unk4;
         temp_f30_591 = MKVector3::up.unk8;
         temp_f29_593 = MKVector3::up.unk0;
@@ -397,7 +396,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
         var_r28_596 = 0;
 loop_26:
         temp_r3_686 = this->unk4;
-        if (var_r31_594 < (s32) M2C_FIELD(temp_r3_686, s32 *, 0x3C8)) {
+        if (var_r31_594 < (s32) temp_r3_686->unk3C8) {
             sp44 = (temp_f30_591 * sp130) - (temp_f29_593 * sp138);
             sp40 = (temp_f31_589 * sp138) - (temp_f30_591 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp48 = (temp_f29_593 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_589 * sp130);
@@ -409,11 +408,11 @@ loop_26:
             temp_r6_623 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_623, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
-            sp38 = temp_r6_623->unk378.unk0 + spB0.unk8;
+            sp38 = temp_r6_623->unk378.unk8 + spB0.unk8;
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_623, s32 *, 0x3C8));
+            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_623->unk3C8);
             sp130 = M2C_BITWISE(f64, spA0);
             sp138 = (f64) spA0.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_596 + 0x84)), s32 *, 4) = 0x40004200;
@@ -434,15 +433,15 @@ loop_26:
         temp_r3_686->unk2C0.AddSpawnPointEnd();
     }
     temp_r3_693 = this->unk4;
-    if ((s32) M2C_FIELD(temp_r3_693, s32 *, 0x3CC) != 0) {
-        var_r30_697 = M2C_FIELD(temp_r3_693, s32 *, 0x3C8);
+    if ((s32) temp_r3_693->unk3CC != 0) {
+        var_r30_697 = temp_r3_693->unk3C8;
         var_r28_701 = var_r30_697 * 0x60;
         temp_f29_702 = MKVector3::up.unk4;
         temp_f30_703 = MKVector3::up.unk8;
         temp_f31_705 = MKVector3::up.unk0;
 loop_31:
         temp_r4_798 = this->unk4;
-        if (var_r30_697 < (s32) (M2C_FIELD(temp_r4_798, s32 *, 0x3C8) + M2C_FIELD(temp_r4_798, s32 *, 0x3CC))) {
+        if (var_r30_697 < (s32) (temp_r4_798->unk3C8 + temp_r4_798->unk3CC)) {
             sp24 = (temp_f30_703 * (f32) sp130) - (temp_f31_705 * (f32) sp138);
             sp20 = (temp_f29_702 * (f32) sp138) - (temp_f30_703 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp28 = (temp_f31_705 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_702 * (f32) sp130);
@@ -454,16 +453,16 @@ loop_31:
             temp_r6_735 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_735, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
-            sp18 = temp_r6_735->unk378.unk0 + sp70.unk8;
+            sp18 = temp_r6_735->unk378.unk8 + sp70.unk8;
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_735, s32 *, 0x3CC));
+            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_735->unk3CC);
             sp130 = M2C_BITWISE(f64, sp60);
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_701 + 0x84)), s32 *, 4) = 0x40004200;
             temp_r5_771 = this->unk4;
-            ((SpawnerObject *) &temp_r5_771->unk310)->AddSpawnPoint(temp_r5_771 + (var_r28_701 + 0x80));
+            temp_r5_771->unk310.AddSpawnPoint(temp_r5_771 + (var_r28_701 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_701 + 0x90)))->SetIdentity();
             temp_r6_780 = var_r28_701 + 0x90;
             temp_r6_783 = this->unk4 + temp_r6_780;
@@ -476,7 +475,7 @@ loop_31:
             var_r28_701 += 0x60;
             goto loop_31;
         }
-        ((SpawnerObject *) &temp_r4_798->unk310)->AddSpawnPointEnd();
+        temp_r4_798->unk310.AddSpawnPointEnd();
     }
 }
 #endif
@@ -485,15 +484,15 @@ void EarthDojoLesson::SetupNumFuryEnemies() {
     DojoController *temp_r3_839;
     DojoController *temp_r3_844;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     if ((s32) this->unkC == 0) {
         temp_r3_839 = this->unk4;
-        M2C_FIELD(temp_r3_839, s32 *, 0x3C8) = (s32) temp_r3_839->unk7D8;
+        temp_r3_839->unk3C8 = temp_r3_839->unk7E0;
         return;
     }
     temp_r3_844 = this->unk4;
-    M2C_FIELD(temp_r3_844, s32 *, 0x3CC) = (s32) temp_r3_844->unk7DC;
+    temp_r3_844->unk3CC = temp_r3_844->unk7E4;
 }
 
 s32 EarthDojoLesson::IsBreath2Complete() {
@@ -512,15 +511,15 @@ void EarthDojoLesson::SetupBreath2SpawnPoints() {
     switch (temp_r0_871) {                          /* irregular */
     case 0:
         temp_r3_881 = this->unk4;
-        temp_r3_881->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_881->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08000A00U);
+        temp_r3_881->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_881->unk3E0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08000A00U);
         temp_r3_893 = this->unk4;
-        temp_r3_893->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_893->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08000A00U);
+        temp_r3_893->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_893->unk3E0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08000A00U);
         return;
     case 1:
         temp_r3_907 = this->unk4;
-        temp_r3_907->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_907->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_907->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_907->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         temp_r3_919 = this->unk4;
-        temp_r3_919->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_919->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_919->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_919->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         return;
     }
 }
@@ -532,21 +531,21 @@ void EarthDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r4_959;
     s32 temp_r0_945;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_945 = this->unk10;
     switch (temp_r0_945) {                          /* irregular */
     case 0:
         temp_r4_951 = this->unk4;
-        M2C_FIELD(temp_r4_951, s32 *, 0x3C8) = (s32) temp_r4_951->unk7C0;
+        temp_r4_951->unk3C8 = temp_r4_951->unk7C8;
         temp_r3_954 = this->unk4;
-        M2C_FIELD(temp_r3_954, s32 *, 0x3CC) = (s32) temp_r3_954->unk7C4;
+        temp_r3_954->unk3CC = temp_r3_954->unk7CC;
         return;
     case 1:
         temp_r4_959 = this->unk4;
-        M2C_FIELD(temp_r4_959, s32 *, 0x3C8) = (s32) temp_r4_959->unk7CC;
+        temp_r4_959->unk3C8 = temp_r4_959->unk7D4;
         temp_r3_962 = this->unk4;
-        M2C_FIELD(temp_r3_962, s32 *, 0x3CC) = (s32) temp_r3_962->unk7D0;
+        temp_r3_962->unk3CC = temp_r3_962->unk7D8;
         return;
     }
 }
@@ -567,15 +566,15 @@ void EarthDojoLesson::SetupBreath1SpawnPoints() {
     switch (temp_r0_989) {                          /* irregular */
     case 0:
         temp_r3_999 = this->unk4;
-        temp_r3_999->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_999->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
+        temp_r3_999->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_999->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
         temp_r3_1011 = this->unk4;
-        temp_r3_1011->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_1011->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
+        temp_r3_1011->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_1011->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
         return;
     case 1:
         temp_r3_1025 = this->unk4;
-        temp_r3_1025->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_1025->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_1025->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_1025->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         temp_r3_1037 = this->unk4;
-        temp_r3_1037->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_1037->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_1037->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_1037->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         return;
     }
 }
@@ -587,21 +586,21 @@ void EarthDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r4_1077;
     s32 temp_r0_1063;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, f32 *, 0x3CC) = 0.0f;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_1063 = this->unk10;
     switch (temp_r0_1063) {                         /* irregular */
     case 0:
         temp_r4_1069 = this->unk4;
-        M2C_FIELD(temp_r4_1069, s32 *, 0x3C8) = (s32) temp_r4_1069->unk7A8;
+        temp_r4_1069->unk3C8 = temp_r4_1069->unk7B0;
         temp_r3_1072 = this->unk4;
-        M2C_FIELD(temp_r3_1072, f32 *, 0x3CC) = (f32) temp_r3_1072->unk7AC;
+        temp_r3_1072->unk3CC = temp_r3_1072->unk7B4;
         return;
     case 1:
         temp_r4_1077 = this->unk4;
-        M2C_FIELD(temp_r4_1077, s32 *, 0x3C8) = (s32) temp_r4_1077->unk7B4;
+        temp_r4_1077->unk3C8 = temp_r4_1077->unk7BC;
         temp_r3_1080 = this->unk4;
-        M2C_FIELD(temp_r3_1080, f32 *, 0x3CC) = M2C_BITWISE(f32, temp_r3_1080->unk7B8);
+        temp_r3_1080->unk3CC = temp_r3_1080->unk7C0;
         return;
     }
 }
@@ -622,19 +621,19 @@ void EarthDojoLesson::MakeChildrenInvulnerable() {
             sp1C = 0;
             sp18 = 0x161;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp18);
-            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp18);
+            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp18);
             return;
         }
         sp14 = 0;
         sp10 = 0x165;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
         return;
     case 2:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
         return;
     }
 }
@@ -661,7 +660,7 @@ void EarthDojoLesson::TurnOffAbilities() {
 
 #if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 void EarthDojoLesson::IncrementNumInterations() {
-    f32 *sp14;
+    s8 *sp14;
     s32 spC;
     s32 sp8;
     s32 temp_r0_1201;
@@ -677,8 +676,8 @@ void EarthDojoLesson::IncrementNumInterations() {
         this->unk10 += 1;
         return;
     case 2:
-        this->unk4->unk3C8 = 0;
-        this->unk4->unk3CC = 0;
+        this->unk4->unk3D0 = 0;
+        this->unk4->unk3D4 = 0;
         if ((s32) this->unkC != 0) {
             if (HasSucceededFury() != 0) {
                 this->unk10 += 1;
@@ -686,10 +685,10 @@ void EarthDojoLesson::IncrementNumInterations() {
             }
         } else {
             if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
-                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
+                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 0, 0x200);
                 spC = 0;
                 spC = 0;
-                sp14 = &this->unk4->unk460;
+                sp14 = &this->unk4->unk468;
                 sp8 = 0x96;
                 InGame_SystemMessage((MKMessage *) &sp8);
                 this->unkC = 1;
@@ -742,35 +741,35 @@ void EarthDojoLesson::SetupTimer() {
     switch (temp_r0_1329) {                         /* irregular */
     case 0:
         temp_r4_1341 = this->unk10;
-        if ((temp_r4_1341 == 0) && (temp_r7_1344 = this->unk4, temp_r0_1345 = temp_r7_1344->unk7B0, ((temp_r0_1345 == 0) == 0))) {
-            M2C_FIELD(temp_r7_1344, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1345 * temp_r7_1344->unk3B0) + (f32) temp_r0_1345));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_1341 == 1) && (temp_r7_1373 = this->unk4, temp_r0_1374 = temp_r7_1373->unk7BC, ((temp_r0_1374 == 0) == 0))) {
-            M2C_FIELD(temp_r7_1373, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1374 * temp_r7_1373->unk3B0) + (f32) temp_r0_1374));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_1341 == 0) && (temp_r7_1344 = this->unk4, temp_r0_1345 = temp_r7_1344->unk7B8, ((temp_r0_1345 == 0) == 0))) {
+            temp_r7_1344->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1345 * temp_r7_1344->unk3B8) + (f32) temp_r0_1345);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_1341 == 1) && (temp_r7_1373 = this->unk4, temp_r0_1374 = temp_r7_1373->unk7C4, ((temp_r0_1374 == 0) == 0))) {
+            temp_r7_1373->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1374 * temp_r7_1373->unk3B8) + (f32) temp_r0_1374);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 1:
         temp_r4_1405 = this->unk10;
-        if ((temp_r4_1405 == 0) && (temp_r7_1408 = this->unk4, temp_r0_1409 = temp_r7_1408->unk7C8, ((temp_r0_1409 == 0) == 0))) {
-            M2C_FIELD(temp_r7_1408, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1409 * temp_r7_1408->unk3B0) + (f32) temp_r0_1409));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_1405 == 1) && (temp_r7_1437 = this->unk4, temp_r0_1438 = temp_r7_1437->unk7D4, ((temp_r0_1438 == 0) == 0))) {
-            M2C_FIELD(temp_r7_1437, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1438 * temp_r7_1437->unk3B0) + (f32) temp_r0_1438));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_1405 == 0) && (temp_r7_1408 = this->unk4, temp_r0_1409 = temp_r7_1408->unk7D0, ((temp_r0_1409 == 0) == 0))) {
+            temp_r7_1408->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1409 * temp_r7_1408->unk3B8) + (f32) temp_r0_1409);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_1405 == 1) && (temp_r7_1437 = this->unk4, temp_r0_1438 = temp_r7_1437->unk7DC, ((temp_r0_1438 == 0) == 0))) {
+            temp_r7_1437->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_1438 * temp_r7_1437->unk3B8) + (f32) temp_r0_1438);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 2:
-        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+        this->unk4->unk3BF = 0;
         break;
     }
     temp_r4_1473 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_1473, u8 *, 0x3BF) != 0) {
-        var_f0_1482 = M2C_FIELD(temp_r4_1473, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    if ((u8) temp_r4_1473->unk3BF != 0) {
+        var_f0_1482 = temp_r4_1473->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f0_1482 > 0.0f) {
 
         } else {
@@ -834,12 +833,12 @@ u8 IceDojoLesson::HasSucceededFury() {
             var_r3_1589 = MKInput_Pressed(9, (MKInputDevices) M2C_FIELD(temp_r3_1576, s32 *, 0));
         }
         if ((u8) var_r3_1589 != 0) {
-            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 1, 0x200);
+            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 1, 0x200);
         }
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -871,8 +870,8 @@ block_12:
         temp_r3_1654 = checked_cast<Enemy *, MKProp>(this->unk4->unk2C0.GetActive(var_r31_1647));
         if ((temp_r3_1654 != NULL) && (M2C_FIELD(temp_r3_1654, s32 *, 0x930) & 4)) {
             this->unk4->unk2C0.DespawnAll();
-            this->unk4->unk3C8 = 0;
-            this->unk4->unk3CC = 0;
+            this->unk4->unk3D0 = 0;
+            this->unk4->unk3D4 = 0;
             this->unk4->ClearCombatArcs();
             return 1U;
         }
@@ -881,7 +880,7 @@ block_12:
     case 1:
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+            this->unk4->unk310.GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -893,7 +892,7 @@ block_12:
 u8 IceDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -923,16 +922,16 @@ s32 IceDojoLesson::HasFailedFury() {
 
     if ((s32) this->unkC != 0) {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
-            M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
+            this->unk4->unk3BC = 1;
         }
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         temp_r4_1798 = this->unk4;
-        if (((s32) temp_r4_1798->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_1798, u8 *, 0x3BC) == 0)) {
+        if (((s32) temp_r4_1798->unk3D4 != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) temp_r4_1798->unk3BC == 0)) {
             return 1;
         }
         return 0;
     }
-    M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
+    this->unk4->unk3BC = 0;
     return 0;
 }
 #endif
@@ -941,8 +940,8 @@ s32 IceDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_1826;
 
     temp_r4_1826 = this->unk4;
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_1826, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1826, u8 *, 0x3BF) != 0)) {
-        M2C_FIELD(temp_r4_1826, u8 *, 0x3BF) = 0U;
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_1826->unk398) && ((u8) temp_r4_1826->unk3BF != 0)) {
+        temp_r4_1826->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -952,8 +951,8 @@ s32 IceDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_1849;
 
     temp_r4_1849 = this->unk4;
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_1849, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1849, u8 *, 0x3BF) != 0)) {
-        M2C_FIELD(temp_r4_1849, u8 *, 0x3BF) = 0U;
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_1849->unk398) && ((u8) temp_r4_1849->unk3BF != 0)) {
+        temp_r4_1849->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -1055,7 +1054,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
     void *temp_r6_2277;
 
     temp_r4_1937 = this->unk4;
-    temp_f28_1943 = temp_r4_1937->unk3AC * M2C_BITWISE(f32, temp_r4_1937->unk7A4);
+    temp_f28_1943 = temp_r4_1937->unk3B4 * temp_r4_1937->unk7AC;
     if (((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get() != NULL) {
         temp_r3_1954 = M2C_FIELD(M2C_FIELD(((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get()->__vptr, void *(**)(), 8)(), void **, 8);
         temp_f1_1955 = M2C_FIELD(temp_r3_1954, f64 *, 0x30);
@@ -1066,13 +1065,13 @@ void IceDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_f0_1956;
     } else {
         temp_r3_1963 = this->unk4;
-        sp100 = M2C_FIELD(temp_r3_1963, f64 *, 0x388);
-        sp108 = temp_r3_1963->unk388;
+        sp100 = temp_r3_1963->unk388;
+        sp108 = temp_r3_1963->unk390;
     }
     temp_r3_1969 = this->unk4;
-    sp50 = M2C_FIELD(temp_r3_1969, f64 *, 0x378) - M2C_FIELD(temp_r3_1969, f64 *, 0x388);
+    sp50 = M2C_FIELD(temp_r3_1969, f64 *, 0x378) - temp_r3_1969->unk388;
     sp130 = sp50;
-    sp58 = temp_r3_1969->unk378.unk0 - (f32) M2C_FIELD(temp_r3_1969, f64 *, 0x390);
+    sp58 = temp_r3_1969->unk378.unk8 - (f32) M2C_FIELD(temp_r3_1969, f64 *, 0x390);
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
@@ -1118,7 +1117,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
     sp130 = (f32) sp130 * var_f3_2061;
     (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_2061;
     sp138 = (f32) sp138 * var_f3_2061;
-    if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
+    if ((s32) this->unk4->unk3C8 != 0) {
         temp_f31_2083 = MKVector3::up.unk4;
         temp_f30_2085 = MKVector3::up.unk8;
         temp_f29_2087 = MKVector3::up.unk0;
@@ -1126,7 +1125,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
         var_r28_2090 = 0;
 loop_26:
         temp_r3_2180 = this->unk4;
-        if (var_r31_2088 < (s32) M2C_FIELD(temp_r3_2180, s32 *, 0x3C8)) {
+        if (var_r31_2088 < (s32) temp_r3_2180->unk3C8) {
             sp44 = (temp_f30_2085 * sp130) - (temp_f29_2087 * sp138);
             sp40 = (temp_f31_2083 * sp138) - (temp_f30_2085 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp48 = (temp_f29_2087 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_2083 * sp130);
@@ -1138,11 +1137,11 @@ loop_26:
             temp_r6_2117 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_2117, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
-            sp38 = temp_r6_2117->unk378.unk0 + spB0.unk8;
+            sp38 = temp_r6_2117->unk378.unk8 + spB0.unk8;
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_2117, s32 *, 0x3C8));
+            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_2117->unk3C8);
             sp130 = M2C_BITWISE(f64, spA0);
             sp138 = (f64) spA0.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_2090 + 0x84)), s32 *, 4) = 0x10004200;
@@ -1163,15 +1162,15 @@ loop_26:
         temp_r3_2180->unk2C0.AddSpawnPointEnd();
     }
     temp_r3_2187 = this->unk4;
-    if ((s32) M2C_FIELD(temp_r3_2187, s32 *, 0x3CC) != 0) {
-        var_r30_2191 = M2C_FIELD(temp_r3_2187, s32 *, 0x3C8);
+    if ((s32) temp_r3_2187->unk3CC != 0) {
+        var_r30_2191 = temp_r3_2187->unk3C8;
         var_r28_2195 = var_r30_2191 * 0x60;
         temp_f29_2196 = MKVector3::up.unk4;
         temp_f30_2197 = MKVector3::up.unk8;
         temp_f31_2199 = MKVector3::up.unk0;
 loop_31:
         temp_r4_2292 = this->unk4;
-        if (var_r30_2191 < (s32) (M2C_FIELD(temp_r4_2292, s32 *, 0x3C8) + M2C_FIELD(temp_r4_2292, s32 *, 0x3CC))) {
+        if (var_r30_2191 < (s32) (temp_r4_2292->unk3C8 + temp_r4_2292->unk3CC)) {
             sp24 = (temp_f30_2197 * (f32) sp130) - (temp_f31_2199 * (f32) sp138);
             sp20 = (temp_f29_2196 * (f32) sp138) - (temp_f30_2197 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp28 = (temp_f31_2199 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_2196 * (f32) sp130);
@@ -1183,16 +1182,16 @@ loop_31:
             temp_r6_2229 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_2229, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
-            sp18 = temp_r6_2229->unk378.unk0 + sp70.unk8;
+            sp18 = temp_r6_2229->unk378.unk8 + sp70.unk8;
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_2229, s32 *, 0x3CC));
+            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_2229->unk3CC);
             sp130 = M2C_BITWISE(f64, sp60);
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_2195 + 0x84)), s32 *, 4) = 0x10004200;
             temp_r5_2265 = this->unk4;
-            ((SpawnerObject *) &temp_r5_2265->unk310)->AddSpawnPoint(temp_r5_2265 + (var_r28_2195 + 0x80));
+            temp_r5_2265->unk310.AddSpawnPoint(temp_r5_2265 + (var_r28_2195 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_2195 + 0x90)))->SetIdentity();
             temp_r6_2274 = var_r28_2195 + 0x90;
             temp_r6_2277 = this->unk4 + temp_r6_2274;
@@ -1205,7 +1204,7 @@ loop_31:
             var_r28_2195 += 0x60;
             goto loop_31;
         }
-        ((SpawnerObject *) &temp_r4_2292->unk310)->AddSpawnPointEnd();
+        temp_r4_2292->unk310.AddSpawnPointEnd();
     }
 }
 #endif
@@ -1214,15 +1213,15 @@ void IceDojoLesson::SetupNumFuryEnemies() {
     DojoController *temp_r3_2333;
     DojoController *temp_r3_2338;
 
-    M2C_FIELD(this->unk4, f32 *, 0x3C8) = 0.0f;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     if ((s32) this->unkC == 0) {
         temp_r3_2333 = this->unk4;
-        M2C_FIELD(temp_r3_2333, f32 *, 0x3C8) = (f32) temp_r3_2333->unk79C;
+        temp_r3_2333->unk3C8 = temp_r3_2333->unk7A4;
         return;
     }
     temp_r3_2338 = this->unk4;
-    M2C_FIELD(temp_r3_2338, s32 *, 0x3CC) = (s32) temp_r3_2338->unk7A0;
+    temp_r3_2338->unk3CC = temp_r3_2338->unk7A8;
 }
 
 s32 IceDojoLesson::IsBreath2Complete() {
@@ -1258,29 +1257,29 @@ void IceDojoLesson::SetupBreath2SpawnPoints() {
         switch (temp_r3_2401) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             temp_r3_2415 = this->unk4;
-            temp_r3_2415->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_2415->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2415->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2415->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             temp_r3_2426 = this->unk4;
-            temp_r3_2426->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_2426->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2426->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2426->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             return;
         case 1:                                     /* switch 2 */
             temp_r3_2439 = this->unk4;
-            temp_r3_2439->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2439->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2439->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2439->unk3E0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             temp_r3_2450 = this->unk4;
-            temp_r3_2450->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2450->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2450->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2450->unk3E0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             return;
         case 2:                                     /* switch 2 */
             temp_r3_2463 = this->unk4;
-            temp_r3_2463->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_2463->unk3D4, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2463->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2463->unk3DC, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             temp_r3_2474 = this->unk4;
-            temp_r3_2474->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_2474->unk3D4, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
+            temp_r3_2474->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2474->unk3DC, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, var_r31_2393);
             return;
         }
         break;
     case 1:                                         /* switch 1 */
         temp_r3_2487 = this->unk4;
-        temp_r3_2487->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_2487->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
+        temp_r3_2487->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2487->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
         temp_r3_2499 = this->unk4;
-        temp_r3_2499->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_2499->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
+        temp_r3_2499->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2499->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
         break;
     }
 }
@@ -1293,21 +1292,21 @@ void IceDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r4_2541;
     s32 temp_r0_2527;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_2527 = this->unk10;
     switch (temp_r0_2527) {                         /* irregular */
     case 0:
         temp_r4_2533 = this->unk4;
-        M2C_FIELD(temp_r4_2533, s32 *, 0x3C8) = (s32) temp_r4_2533->unk77C;
+        temp_r4_2533->unk3C8 = temp_r4_2533->unk784;
         temp_r3_2536 = this->unk4;
-        M2C_FIELD(temp_r3_2536, s32 *, 0x3CC) = (s32) temp_r3_2536->unk780;
+        temp_r3_2536->unk3CC = temp_r3_2536->unk788;
         return;
     case 1:
         temp_r4_2541 = this->unk4;
-        M2C_FIELD(temp_r4_2541, s32 *, 0x3C8) = (s32) temp_r4_2541->unk788;
+        temp_r4_2541->unk3C8 = temp_r4_2541->unk790;
         temp_r3_2544 = this->unk4;
-        M2C_FIELD(temp_r3_2544, s32 *, 0x3CC) = (s32) temp_r3_2544->unk78C;
+        temp_r3_2544->unk3CC = temp_r3_2544->unk794;
         return;
     }
 }
@@ -1328,15 +1327,15 @@ void IceDojoLesson::SetupBreath1SpawnPoints() {
     switch (temp_r0_2571) {                         /* irregular */
     case 0:
         temp_r3_2581 = this->unk4;
-        temp_r3_2581->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_2581->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10004200U);
+        temp_r3_2581->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2581->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10004200U);
         temp_r3_2593 = this->unk4;
-        temp_r3_2593->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_2593->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10004200U);
+        temp_r3_2593->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2593->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10004200U);
         return;
     case 1:
         temp_r3_2607 = this->unk4;
-        temp_r3_2607->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_2607->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
+        temp_r3_2607->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_2607->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
         temp_r3_2619 = this->unk4;
-        temp_r3_2619->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_2619->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
+        temp_r3_2619->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_2619->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x10001200U);
         return;
     }
 }
@@ -1348,21 +1347,21 @@ void IceDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r4_2659;
     s32 temp_r0_2645;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, f32 *, 0x3CC) = 0.0f;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_2645 = this->unk10;
     switch (temp_r0_2645) {                         /* irregular */
     case 0:
         temp_r4_2651 = this->unk4;
-        M2C_FIELD(temp_r4_2651, s32 *, 0x3C8) = (s32) temp_r4_2651->unk764;
+        temp_r4_2651->unk3C8 = temp_r4_2651->unk76C;
         temp_r3_2654 = this->unk4;
-        M2C_FIELD(temp_r3_2654, f32 *, 0x3CC) = (f32) temp_r3_2654->unk768;
+        temp_r3_2654->unk3CC = temp_r3_2654->unk770;
         return;
     case 1:
         temp_r4_2659 = this->unk4;
-        M2C_FIELD(temp_r4_2659, s32 *, 0x3C8) = (s32) temp_r4_2659->unk770;
+        temp_r4_2659->unk3C8 = temp_r4_2659->unk778;
         temp_r3_2662 = this->unk4;
-        M2C_FIELD(temp_r3_2662, f32 *, 0x3CC) = M2C_BITWISE(f32, temp_r3_2662->unk774);
+        temp_r3_2662->unk3CC = temp_r3_2662->unk77C;
         return;
     }
 }
@@ -1380,7 +1379,7 @@ void IceDojoLesson::MakeChildrenInvulnerable() {
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
     }
 }
 
@@ -1405,7 +1404,7 @@ void IceDojoLesson::TurnOffAbilities() {
 
 #if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 void IceDojoLesson::IncrementNumInterations() {
-    f32 *sp14;
+    s8 *sp14;
     s32 spC;
     s32 sp8;
     s32 temp_r0_2746;
@@ -1420,7 +1419,7 @@ void IceDojoLesson::IncrementNumInterations() {
     case 1:
         if ((s32) this->unk10 == 0) {
             temp_r4_2769 = this->unkC;
-            if (temp_r4_2769 < (s32) (this->unk4->unk798 - 1)) {
+            if (temp_r4_2769 < (s32) (this->unk4->unk7A0 - 1)) {
                 this->unkC = temp_r4_2769 + 1;
                 return;
             }
@@ -1432,8 +1431,8 @@ void IceDojoLesson::IncrementNumInterations() {
         this->unk10 += 1;
         return;
     case 2:
-        this->unk4->unk3C8 = 0;
-        this->unk4->unk3CC = 0;
+        this->unk4->unk3D0 = 0;
+        this->unk4->unk3D4 = 0;
         if ((s32) this->unkC != 0) {
             if (HasSucceededFury() != 0) {
                 this->unk10 += 1;
@@ -1441,10 +1440,10 @@ void IceDojoLesson::IncrementNumInterations() {
             }
         } else {
             if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
-                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
+                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 0, 0x200);
                 spC = 0;
                 spC = 0;
-                sp14 = &this->unk4->unk460;
+                sp14 = &this->unk4->unk468;
                 sp8 = 0x96;
                 InGame_SystemMessage((MKMessage *) &sp8);
                 this->unkC = 1;
@@ -1497,35 +1496,35 @@ void IceDojoLesson::SetupTimer() {
     switch (temp_r0_2894) {                         /* irregular */
     case 0:
         temp_r4_2906 = this->unk10;
-        if ((temp_r4_2906 == 0) && (temp_r7_2909 = this->unk4, temp_r0_2910 = temp_r7_2909->unk76C, ((temp_r0_2910 == 0) == 0))) {
-            M2C_FIELD(temp_r7_2909, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2910 * temp_r7_2909->unk3B0) + (f32) temp_r0_2910));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_2906 == 1) && (temp_r7_2938 = this->unk4, temp_r0_2939 = temp_r7_2938->unk778, ((temp_r0_2939 == 0) == 0))) {
-            M2C_FIELD(temp_r7_2938, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2939 * temp_r7_2938->unk3B0) + (f32) temp_r0_2939));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_2906 == 0) && (temp_r7_2909 = this->unk4, temp_r0_2910 = temp_r7_2909->unk774, ((temp_r0_2910 == 0) == 0))) {
+            temp_r7_2909->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2910 * temp_r7_2909->unk3B8) + (f32) temp_r0_2910);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_2906 == 1) && (temp_r7_2938 = this->unk4, temp_r0_2939 = temp_r7_2938->unk780, ((temp_r0_2939 == 0) == 0))) {
+            temp_r7_2938->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2939 * temp_r7_2938->unk3B8) + (f32) temp_r0_2939);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 1:
         temp_r4_2970 = this->unk10;
-        if ((temp_r4_2970 == 0) && (temp_r7_2973 = this->unk4, temp_r0_2974 = temp_r7_2973->unk784, ((temp_r0_2974 == 0) == 0))) {
-            M2C_FIELD(temp_r7_2973, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2974 * temp_r7_2973->unk3B0) + (f32) temp_r0_2974));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_2970 == 1) && (temp_r7_3002 = this->unk4, temp_r4_3003 = temp_r7_3002->unk790, ((temp_r4_3003 == 0) == 0))) {
-            M2C_FIELD(temp_r7_3002, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r7_3002->unk784 * temp_r7_3002->unk3B0) + (f32) temp_r4_3003));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_2970 == 0) && (temp_r7_2973 = this->unk4, temp_r0_2974 = temp_r7_2973->unk78C, ((temp_r0_2974 == 0) == 0))) {
+            temp_r7_2973->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_2974 * temp_r7_2973->unk3B8) + (f32) temp_r0_2974);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_2970 == 1) && (temp_r7_3002 = this->unk4, temp_r4_3003 = temp_r7_3002->unk798, ((temp_r4_3003 == 0) == 0))) {
+            temp_r7_3002->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r7_3002->unk78C * temp_r7_3002->unk3B8) + (f32) temp_r4_3003);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 2:
-        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+        this->unk4->unk3BF = 0;
         break;
     }
     temp_r4_3040 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_3040, u8 *, 0x3BF) != 0) {
-        var_f0_3049 = M2C_FIELD(temp_r4_3040, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    if ((u8) temp_r4_3040->unk3BF != 0) {
+        var_f0_3049 = temp_r4_3040->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f0_3049 > 0.0f) {
 
         } else {
@@ -1589,12 +1588,12 @@ u8 ElectricDojoLesson::HasSucceededFury() {
             var_r3_3156 = MKInput_Pressed(9, (MKInputDevices) M2C_FIELD(temp_r3_3143, s32 *, 0));
         }
         if ((u8) var_r3_3156 != 0) {
-            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 1, 0x200);
+            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 1, 0x200);
         }
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -1613,8 +1612,6 @@ u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 sp8;
     DojoController *temp_r4_3215;
     DojoController *temp_r4_3289;
-    MKSceneManager **temp_r4_3244;
-    MKSceneManager **temp_r4_3318;
     Targetable *temp_r3_3347;
     s32 temp_r0_3212;
     s32 temp_r3_3239;
@@ -1625,30 +1622,32 @@ u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 var_r0_3312;
     s32 var_r0_3323;
     s32 var_r0_3332;
+    u32 *temp_r4_3244;
+    u32 *temp_r4_3318;
 
     UpdateCombatArcs();
     temp_r0_3212 = this->unk10;
     switch (temp_r0_3212) {                         /* irregular */
     case 0:
         temp_r4_3215 = this->unk4;
-        if (((MKSceneManager *) temp_r4_3215->unk408 != (MKSceneManager *)1U) && ((u32) temp_r4_3215->unk40C != 1) && ((u32) temp_r4_3215->unk410 != 1) && ((u32) temp_r4_3215->unk414 != 1) && ((u32) temp_r4_3215->unk418 != 1) && ((u32) temp_r4_3215->unk41C != 1) && ((u32) temp_r4_3215->unk420 != 1)) {
+        if (((u32) temp_r4_3215->unk410 != 1) && ((u32) temp_r4_3215->unk414 != 1) && ((u32) temp_r4_3215->unk418 != 1) && ((u32) temp_r4_3215->unk41C != 1) && ((u32) temp_r4_3215->unk420 != 1) && ((u32) temp_r4_3215->unk424 != 1) && ((u32) temp_r4_3215->unk428 != 1)) {
             var_r0_3238 = lit_2532;
-            temp_r3_3239 = temp_r4_3215->unk440 - 1;
+            temp_r3_3239 = temp_r4_3215->unk448 - 1;
             if (temp_r3_3239 > var_r0_3238) {
                 var_r0_3238 = temp_r3_3239;
             }
-            temp_r4_3244 = &temp_r4_3215->unk408;
-            if ((MKSceneManager *) temp_r4_3244[var_r0_3238] != (MKSceneManager *)0x2000U) {
+            temp_r4_3244 = &temp_r4_3215->unk410;
+            if ((u32) temp_r4_3244[var_r0_3238] != 0x2000) {
                 var_r0_3249 = lit_2534;
                 if (temp_r3_3239 > var_r0_3249) {
                     var_r0_3249 = temp_r3_3239;
                 }
-                if ((MKSceneManager *) temp_r4_3244[var_r0_3249] != (MKSceneManager *)0x40U) {
+                if ((u32) temp_r4_3244[var_r0_3249] != 0x40) {
                     var_r0_3258 = lit_2536;
                     if (temp_r3_3239 > var_r0_3258) {
                         var_r0_3258 = temp_r3_3239;
                     }
-                    if ((MKSceneManager *) temp_r4_3244[var_r0_3258] == (MKSceneManager *)0x1000U) {
+                    if ((u32) temp_r4_3244[var_r0_3258] == 0x1000) {
                         goto block_17;
                     }
                     goto block_43;
@@ -1669,24 +1668,24 @@ block_43:
         return 0U;
     case 1:
         temp_r4_3289 = this->unk4;
-        if (((MKSceneManager *) temp_r4_3289->unk408 != (MKSceneManager *)1U) && ((u32) temp_r4_3289->unk40C != 1) && ((u32) temp_r4_3289->unk410 != 1) && ((u32) temp_r4_3289->unk414 != 1) && ((u32) temp_r4_3289->unk418 != 1) && ((u32) temp_r4_3289->unk41C != 1) && ((u32) temp_r4_3289->unk420 != 1)) {
+        if (((u32) temp_r4_3289->unk410 != 1) && ((u32) temp_r4_3289->unk414 != 1) && ((u32) temp_r4_3289->unk418 != 1) && ((u32) temp_r4_3289->unk41C != 1) && ((u32) temp_r4_3289->unk420 != 1) && ((u32) temp_r4_3289->unk424 != 1) && ((u32) temp_r4_3289->unk428 != 1)) {
             var_r0_3312 = lit_2555;
-            temp_r3_3313 = temp_r4_3289->unk440 - 1;
+            temp_r3_3313 = temp_r4_3289->unk448 - 1;
             if (temp_r3_3313 > var_r0_3312) {
                 var_r0_3312 = temp_r3_3313;
             }
-            temp_r4_3318 = &temp_r4_3289->unk408;
-            if ((MKSceneManager *) temp_r4_3318[var_r0_3312] != (MKSceneManager *)0x2000U) {
+            temp_r4_3318 = &temp_r4_3289->unk410;
+            if ((u32) temp_r4_3318[var_r0_3312] != 0x2000) {
                 var_r0_3323 = lit_2557;
                 if (temp_r3_3313 > var_r0_3323) {
                     var_r0_3323 = temp_r3_3313;
                 }
-                if ((MKSceneManager *) temp_r4_3318[var_r0_3323] != (MKSceneManager *)0x40U) {
+                if ((u32) temp_r4_3318[var_r0_3323] != 0x40) {
                     var_r0_3332 = lit_2559;
                     if (temp_r3_3313 > var_r0_3332) {
                         var_r0_3332 = temp_r3_3313;
                     }
-                    if ((MKSceneManager *) temp_r4_3318[var_r0_3332] == (MKSceneManager *)0x1000U) {
+                    if ((u32) temp_r4_3318[var_r0_3332] == 0x1000) {
                         goto block_37;
                     }
                 } else {
@@ -1706,7 +1705,7 @@ block_37:
         }
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+            this->unk4->unk310.GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -1737,7 +1736,7 @@ loop_2:
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -1768,16 +1767,16 @@ s32 ElectricDojoLesson::HasFailedFury() {
 
     if ((s32) this->unkC != 0) {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
-            M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
+            this->unk4->unk3BC = 1;
         }
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         temp_r4_3503 = this->unk4;
-        if (((s32) temp_r4_3503->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_3503, u8 *, 0x3BC) == 0)) {
+        if (((s32) temp_r4_3503->unk3D4 != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) temp_r4_3503->unk3BC == 0)) {
             return 1;
         }
         return 0;
     }
-    M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
+    this->unk4->unk3BC = 0;
     return 0;
 }
 #endif
@@ -1786,8 +1785,8 @@ s32 ElectricDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_3531;
 
     temp_r4_3531 = this->unk4;
-    if (((u8) M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3531, f32 *, 0x398))) {
-        M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) = 0U;
+    if (((u8) temp_r4_3531->unk3BF != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_3531->unk398)) {
+        temp_r4_3531->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -1797,8 +1796,8 @@ s32 ElectricDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_3554;
 
     temp_r4_3554 = this->unk4;
-    if (((u8) M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3554, f32 *, 0x398))) {
-        M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) = 0U;
+    if (((u8) temp_r4_3554->unk3BF != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_3554->unk398)) {
+        temp_r4_3554->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -1900,7 +1899,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
     void *temp_r6_3982;
 
     temp_r4_3642 = this->unk4;
-    temp_f28_3648 = temp_r4_3642->unk3AC * M2C_BITWISE(f32, temp_r4_3642->unk760);
+    temp_f28_3648 = temp_r4_3642->unk3B4 * temp_r4_3642->unk768;
     if (((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get() != NULL) {
         temp_r3_3659 = M2C_FIELD(M2C_FIELD(((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get()->__vptr, void *(**)(), 8)(), void **, 8);
         temp_f1_3660 = M2C_FIELD(temp_r3_3659, f64 *, 0x30);
@@ -1911,13 +1910,13 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_f0_3661;
     } else {
         temp_r3_3668 = this->unk4;
-        sp100 = M2C_FIELD(temp_r3_3668, f64 *, 0x388);
-        sp108 = temp_r3_3668->unk388;
+        sp100 = temp_r3_3668->unk388;
+        sp108 = temp_r3_3668->unk390;
     }
     temp_r3_3674 = this->unk4;
-    sp50 = M2C_FIELD(temp_r3_3674, f64 *, 0x378) - M2C_FIELD(temp_r3_3674, f64 *, 0x388);
+    sp50 = M2C_FIELD(temp_r3_3674, f64 *, 0x378) - temp_r3_3674->unk388;
     sp130 = sp50;
-    sp58 = temp_r3_3674->unk378.unk0 - (f32) M2C_FIELD(temp_r3_3674, f64 *, 0x390);
+    sp58 = temp_r3_3674->unk378.unk8 - (f32) M2C_FIELD(temp_r3_3674, f64 *, 0x390);
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
@@ -1963,7 +1962,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
     sp130 = (f32) sp130 * var_f3_3766;
     (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_3766;
     sp138 = (f32) sp138 * var_f3_3766;
-    if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
+    if ((s32) this->unk4->unk3C8 != 0) {
         temp_f31_3788 = MKVector3::up.unk4;
         temp_f30_3790 = MKVector3::up.unk8;
         temp_f29_3792 = MKVector3::up.unk0;
@@ -1971,7 +1970,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
         var_r28_3795 = 0;
 loop_26:
         temp_r3_3885 = this->unk4;
-        if (var_r31_3793 < (s32) M2C_FIELD(temp_r3_3885, s32 *, 0x3C8)) {
+        if (var_r31_3793 < (s32) temp_r3_3885->unk3C8) {
             sp44 = (temp_f30_3790 * sp130) - (temp_f29_3792 * sp138);
             sp40 = (temp_f31_3788 * sp138) - (temp_f30_3790 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp48 = (temp_f29_3792 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_3788 * sp130);
@@ -1983,11 +1982,11 @@ loop_26:
             temp_r6_3822 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_3822, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
-            sp38 = temp_r6_3822->unk378.unk0 + spB0.unk8;
+            sp38 = temp_r6_3822->unk378.unk8 + spB0.unk8;
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_3822, s32 *, 0x3C8));
+            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_3822->unk3C8);
             sp130 = M2C_BITWISE(f64, spA0);
             sp138 = (f64) spA0.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_3795 + 0x84)), s32 *, 4) = 0x20004200;
@@ -2008,15 +2007,15 @@ loop_26:
         temp_r3_3885->unk2C0.AddSpawnPointEnd();
     }
     temp_r3_3892 = this->unk4;
-    if ((s32) M2C_FIELD(temp_r3_3892, s32 *, 0x3CC) != 0) {
-        var_r30_3896 = M2C_FIELD(temp_r3_3892, s32 *, 0x3C8);
+    if ((s32) temp_r3_3892->unk3CC != 0) {
+        var_r30_3896 = temp_r3_3892->unk3C8;
         var_r28_3900 = var_r30_3896 * 0x60;
         temp_f29_3901 = MKVector3::up.unk4;
         temp_f30_3902 = MKVector3::up.unk8;
         temp_f31_3904 = MKVector3::up.unk0;
 loop_31:
         temp_r4_3997 = this->unk4;
-        if (var_r30_3896 < (s32) (M2C_FIELD(temp_r4_3997, s32 *, 0x3C8) + M2C_FIELD(temp_r4_3997, s32 *, 0x3CC))) {
+        if (var_r30_3896 < (s32) (temp_r4_3997->unk3C8 + temp_r4_3997->unk3CC)) {
             sp24 = (temp_f30_3902 * (f32) sp130) - (temp_f31_3904 * (f32) sp138);
             sp20 = (temp_f29_3901 * (f32) sp138) - (temp_f30_3902 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp28 = (temp_f31_3904 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_3901 * (f32) sp130);
@@ -2028,16 +2027,16 @@ loop_31:
             temp_r6_3934 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_3934, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
-            sp18 = temp_r6_3934->unk378.unk0 + sp70.unk8;
+            sp18 = temp_r6_3934->unk378.unk8 + sp70.unk8;
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_3934, s32 *, 0x3CC));
+            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_3934->unk3CC);
             sp130 = M2C_BITWISE(f64, sp60);
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_3900 + 0x84)), s32 *, 4) = 0x20004200;
             temp_r5_3970 = this->unk4;
-            ((SpawnerObject *) &temp_r5_3970->unk310)->AddSpawnPoint(temp_r5_3970 + (var_r28_3900 + 0x80));
+            temp_r5_3970->unk310.AddSpawnPoint(temp_r5_3970 + (var_r28_3900 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_3900 + 0x90)))->SetIdentity();
             temp_r6_3979 = var_r28_3900 + 0x90;
             temp_r6_3982 = this->unk4 + temp_r6_3979;
@@ -2050,7 +2049,7 @@ loop_31:
             var_r28_3900 += 0x60;
             goto loop_31;
         }
-        ((SpawnerObject *) &temp_r4_3997->unk310)->AddSpawnPointEnd();
+        temp_r4_3997->unk310.AddSpawnPointEnd();
     }
 }
 #endif
@@ -2059,15 +2058,15 @@ void ElectricDojoLesson::SetupNumFuryEnemies() {
     DojoController *temp_r3_4038;
     DojoController *temp_r3_4043;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, f32 *, 0x3CC) = 0.0f;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     if ((s32) this->unkC == 0) {
         temp_r3_4038 = this->unk4;
-        M2C_FIELD(temp_r3_4038, s32 *, 0x3C8) = (s32) temp_r3_4038->unk758;
+        temp_r3_4038->unk3C8 = temp_r3_4038->unk760;
         return;
     }
     temp_r3_4043 = this->unk4;
-    M2C_FIELD(temp_r3_4043, f32 *, 0x3CC) = (f32) temp_r3_4043->unk75C;
+    temp_r3_4043->unk3CC = temp_r3_4043->unk764;
 }
 
 s32 ElectricDojoLesson::IsBreath2Complete() {
@@ -2106,11 +2105,11 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     s32 var_r0_4138;
 
     temp_r3_4070 = this->unk4;
-    temp_f0_4075 = M2C_FIELD(temp_r3_4070, f64 *, 0x388) - M2C_FIELD(temp_r3_4070, f64 *, 0x378);
+    temp_f0_4075 = temp_r3_4070->unk388 - M2C_FIELD(temp_r3_4070, f64 *, 0x378);
     sp10 = temp_f0_4075;
     var_f4_4081 = 0.0f;
     sp60 = temp_f0_4075;
-    sp18 = M2C_FIELD(temp_r3_4070, f32 *, 0x390) - temp_r3_4070->unk378.unk0;
+    sp18 = M2C_FIELD(temp_r3_4070, f32 *, 0x390) - temp_r3_4070->unk378.unk8;
     (*(f32 *) ((u8 *) &sp58 + 0xc)) = 0.0f;
     sp68 = (f64) sp18;
     var_f5_4094 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (0.0f * 0.0f));
@@ -2161,19 +2160,19 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
         temp_r3_4191 = this->unk4;
         sp50 = M2C_FIELD(temp_r3_4191, f64 *, 0x378);
         sp58 = M2C_FIELD(temp_r3_4191, f64 *, 0x380);
-        temp_r3_4191->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp50, (MKVector3) &sp40, M2C_BITWISE(f32, temp_r3_4191->unk6A8), 1U, 1U, 0.62831855f, 0x20800200U);
+        temp_r3_4191->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp50, (MKVector3) &sp40, temp_r3_4191->unk6B0, 1U, 1U, 0.62831855f, 0x20800200U);
         sp20 = (f64) sp60;
         sp28 = (f64) sp68;
         temp_r3_4210 = this->unk4;
         sp30 = M2C_FIELD(temp_r3_4210, f64 *, 0x378);
         sp38 = M2C_FIELD(temp_r3_4210, f64 *, 0x380);
-        temp_r3_4210->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp30, (MKVector3) &sp20, M2C_BITWISE(f32, temp_r3_4210->unk6A8), 1U, 1U, 0.62831855f, 0x20800200U);
+        temp_r3_4210->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp30, (MKVector3) &sp20, temp_r3_4210->unk6B0, 1U, 1U, 0.62831855f, 0x20800200U);
         return;
     case 1:                                         /* switch 2 */
         temp_r3_4221 = this->unk4;
-        temp_r3_4221->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_4221->unk3D0, 2, 0x10, &sp70, 0U, 0.0f, 0.0f, 0x20001200U);
+        temp_r3_4221->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_4221->unk3D8, 2, 0x10, &sp70, 0U, 0.0f, 0.0f, 0x20001200U);
         temp_r3_4233 = this->unk4;
-        temp_r3_4233->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_4233->unk3D0, 2, 0x10, &sp70, 0U, 0.0f, 0.0f, 0x20001200U);
+        temp_r3_4233->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_4233->unk3D8, 2, 0x10, &sp70, 0U, 0.0f, 0.0f, 0x20001200U);
         return;
     }
 }
@@ -2186,21 +2185,21 @@ void ElectricDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r4_4273;
     s32 temp_r0_4259;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_4259 = this->unk10;
     switch (temp_r0_4259) {                         /* irregular */
     case 0:
         temp_r4_4265 = this->unk4;
-        M2C_FIELD(temp_r4_4265, s32 *, 0x3C8) = (s32) temp_r4_4265->unk73C;
+        temp_r4_4265->unk3C8 = temp_r4_4265->unk744;
         temp_r3_4268 = this->unk4;
-        M2C_FIELD(temp_r3_4268, s32 *, 0x3CC) = (s32) temp_r3_4268->unk740;
+        temp_r3_4268->unk3CC = temp_r3_4268->unk748;
         return;
     case 1:
         temp_r4_4273 = this->unk4;
-        M2C_FIELD(temp_r4_4273, s32 *, 0x3C8) = (s32) temp_r4_4273->unk748;
+        temp_r4_4273->unk3C8 = temp_r4_4273->unk750;
         temp_r3_4276 = this->unk4;
-        M2C_FIELD(temp_r3_4276, s32 *, 0x3CC) = (s32) temp_r3_4276->unk74C;
+        temp_r3_4276->unk3CC = temp_r3_4276->unk754;
         return;
     }
 }
@@ -2264,11 +2263,11 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     switch (temp_r0_4309) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_r3_4317 = this->unk4;
-        temp_f0_4322 = M2C_FIELD(temp_r3_4317, f64 *, 0x388) - M2C_FIELD(temp_r3_4317, f64 *, 0x378);
+        temp_f0_4322 = temp_r3_4317->unk388 - M2C_FIELD(temp_r3_4317, f64 *, 0x378);
         sp40 = temp_f0_4322;
         var_f5_4328 = 0.0f;
         spB0 = temp_f0_4322;
-        sp48 = M2C_FIELD(temp_r3_4317, f32 *, 0x390) - temp_r3_4317->unk378.unk0;
+        sp48 = M2C_FIELD(temp_r3_4317, f32 *, 0x390) - temp_r3_4317->unk378.unk8;
         (*(f32 *) ((u8 *) &spA8 + 0xc)) = 0.0f;
         spB8 = (f64) sp48;
         var_f4_4341 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (0.0f * 0.0f));
@@ -2325,7 +2324,7 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
         spB8 = temp_f3_4417;
         spA0 = M2C_FIELD(temp_r3_4435, f64 *, 0x378);
         spA8 = (f64) M2C_FIELD(temp_r3_4435, f32 *, 0x380);
-        temp_r3_4435->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spA0, (MKVector3) &sp90, M2C_BITWISE(f32, temp_r3_4435->unk6A8), 0U, 0U, 0.7853982f, 0x20800200U);
+        temp_r3_4435->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spA0, (MKVector3) &sp90, temp_r3_4435->unk6B0, 0U, 0U, 0.7853982f, 0x20800200U);
         sp28 = temp_f29_4423;
         sp20 = temp_f31_4419;
         sp24 = temp_f30_4421;
@@ -2334,7 +2333,7 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
         temp_r3_4458 = this->unk4;
         sp80 = M2C_FIELD(temp_r3_4458, f64 *, 0x378);
         sp88 = (f64) M2C_FIELD(temp_r3_4458, f32 *, 0x380);
-        temp_r3_4458->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp80, (MKVector3) &sp70, M2C_BITWISE(f32, temp_r3_4458->unk6A8), 0U, 0U, 0.7853982f, 0x20800200U);
+        temp_r3_4458->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp80, (MKVector3) &sp70, temp_r3_4458->unk6B0, 0U, 0U, 0.7853982f, 0x20800200U);
         sp18 = temp_f29_4423;
         sp10 = temp_f31_4419;
         sp14 = temp_f30_4421;
@@ -2343,13 +2342,13 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
         temp_r3_4479 = this->unk4;
         sp60 = M2C_FIELD(temp_r3_4479, f64 *, 0x378);
         sp68 = (f64) M2C_FIELD(temp_r3_4479, f32 *, 0x380);
-        temp_r3_4479->SetupSmashPropsVanguard(4, (MKVector3) &sp60, (MKVector3) &sp50, 300.0f + M2C_BITWISE(f32, temp_r3_4479->unk6A8), 0U, 0U, 0.7853982f);
+        temp_r3_4479->SetupSmashPropsVanguard(4, (MKVector3) &sp60, (MKVector3) &sp50, 300.0f + temp_r3_4479->unk6B0, 0U, 0U, 0.7853982f);
         return;
     case 1:                                         /* switch 1 */
         temp_r3_4491 = this->unk4;
-        temp_r3_4491->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_4491->unk3D0, 2, 0x10, &spC0, 0U, 0.0f, 0.0f, 0x20001200U);
+        temp_r3_4491->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_4491->unk3D8, 2, 0x10, &spC0, 0U, 0.0f, 0.0f, 0x20001200U);
         temp_r3_4503 = this->unk4;
-        temp_r3_4503->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_4503->unk3D0, 2, 0x10, &spC0, 0U, 0.0f, 0.0f, 0x20001200U);
+        temp_r3_4503->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_4503->unk3D8, 2, 0x10, &spC0, 0U, 0.0f, 0.0f, 0x20001200U);
         return;
     }
 }
@@ -2362,21 +2361,21 @@ void ElectricDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r4_4549;
     s32 temp_r0_4535;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, f32 *, 0x3CC) = 0.0f;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_4535 = this->unk10;
     switch (temp_r0_4535) {                         /* irregular */
     case 0:
         temp_r4_4541 = this->unk4;
-        M2C_FIELD(temp_r4_4541, s32 *, 0x3C8) = (s32) temp_r4_4541->unk724;
+        temp_r4_4541->unk3C8 = temp_r4_4541->unk72C;
         temp_r3_4544 = this->unk4;
-        M2C_FIELD(temp_r3_4544, f32 *, 0x3CC) = (f32) temp_r3_4544->unk728;
+        temp_r3_4544->unk3CC = temp_r3_4544->unk730;
         return;
     case 1:
         temp_r4_4549 = this->unk4;
-        M2C_FIELD(temp_r4_4549, s32 *, 0x3C8) = (s32) temp_r4_4549->unk730;
+        temp_r4_4549->unk3C8 = temp_r4_4549->unk738;
         temp_r3_4552 = this->unk4;
-        M2C_FIELD(temp_r3_4552, f32 *, 0x3CC) = M2C_BITWISE(f32, temp_r3_4552->unk734);
+        temp_r3_4552->unk3CC = temp_r3_4552->unk73C;
         return;
     }
 }
@@ -2399,25 +2398,25 @@ void ElectricDojoLesson::MakeChildrenInvulnerable() {
             sp24 = 0;
             sp20 = 0x165;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp20);
-            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp20);
+            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp20);
             return;
         }
         sp1C = 0;
         sp18 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp18);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp18);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp18);
         return;
     case 1:
         sp14 = 0;
         sp10 = 0x165;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
         return;
     case 2:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
         return;
     }
 }
@@ -2441,7 +2440,7 @@ void ElectricDojoLesson::TurnOffAbilities() {
 
 #if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 void ElectricDojoLesson::IncrementNumInterations() {
-    f32 *sp14;
+    s8 *sp14;
     s32 spC;
     s32 sp8;
     s32 temp_r0_4679;
@@ -2457,8 +2456,8 @@ void ElectricDojoLesson::IncrementNumInterations() {
         this->unk10 += 1;
         return;
     case 2:
-        this->unk4->unk3C8 = 0;
-        this->unk4->unk3CC = 0;
+        this->unk4->unk3D0 = 0;
+        this->unk4->unk3D4 = 0;
         if ((s32) this->unkC != 0) {
             if (HasSucceededFury() != 0) {
                 this->unk10 += 1;
@@ -2466,10 +2465,10 @@ void ElectricDojoLesson::IncrementNumInterations() {
             }
         } else {
             if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
-                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
+                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 0, 0x200);
                 spC = 0;
                 spC = 0;
-                sp14 = &this->unk4->unk460;
+                sp14 = &this->unk4->unk468;
                 sp8 = 0x96;
                 InGame_SystemMessage((MKMessage *) &sp8);
                 this->unkC = 1;
@@ -2522,35 +2521,35 @@ void ElectricDojoLesson::SetupTimer() {
     switch (temp_r0_4807) {                         /* irregular */
     case 0:
         temp_r4_4819 = this->unk10;
-        if ((temp_r4_4819 == 0) && (temp_r7_4822 = this->unk4, temp_r0_4823 = temp_r7_4822->unk72C, ((temp_r0_4823 == 0) == 0))) {
-            M2C_FIELD(temp_r7_4822, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4823 * temp_r7_4822->unk3B0) + (f32) temp_r0_4823));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_4819 == 1) && (temp_r7_4851 = this->unk4, temp_r0_4852 = temp_r7_4851->unk738, ((temp_r0_4852 == 0) == 0))) {
-            M2C_FIELD(temp_r7_4851, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4852 * temp_r7_4851->unk3B0) + (f32) temp_r0_4852));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_4819 == 0) && (temp_r7_4822 = this->unk4, temp_r0_4823 = temp_r7_4822->unk734, ((temp_r0_4823 == 0) == 0))) {
+            temp_r7_4822->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4823 * temp_r7_4822->unk3B8) + (f32) temp_r0_4823);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_4819 == 1) && (temp_r7_4851 = this->unk4, temp_r0_4852 = temp_r7_4851->unk740, ((temp_r0_4852 == 0) == 0))) {
+            temp_r7_4851->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4852 * temp_r7_4851->unk3B8) + (f32) temp_r0_4852);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 1:
         temp_r4_4883 = this->unk10;
-        if ((temp_r4_4883 == 0) && (temp_r7_4886 = this->unk4, temp_r0_4887 = temp_r7_4886->unk744, ((temp_r0_4887 == 0) == 0))) {
-            M2C_FIELD(temp_r7_4886, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4887 * temp_r7_4886->unk3B0) + (f32) temp_r0_4887));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_4883 == 1) && (temp_r7_4915 = this->unk4, temp_r0_4916 = temp_r7_4915->unk750, ((temp_r0_4916 == 0) == 0))) {
-            M2C_FIELD(temp_r7_4915, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4916 * temp_r7_4915->unk3B0) + (f32) temp_r0_4916));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_4883 == 0) && (temp_r7_4886 = this->unk4, temp_r0_4887 = temp_r7_4886->unk74C, ((temp_r0_4887 == 0) == 0))) {
+            temp_r7_4886->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4887 * temp_r7_4886->unk3B8) + (f32) temp_r0_4887);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_4883 == 1) && (temp_r7_4915 = this->unk4, temp_r0_4916 = temp_r7_4915->unk758, ((temp_r0_4916 == 0) == 0))) {
+            temp_r7_4915->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_4916 * temp_r7_4915->unk3B8) + (f32) temp_r0_4916);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 2:
-        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+        this->unk4->unk3BF = 0;
         break;
     }
     temp_r4_4951 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_4951, u8 *, 0x3BF) != 0) {
-        var_f0_4960 = M2C_FIELD(temp_r4_4951, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    if ((u8) temp_r4_4951->unk3BF != 0) {
+        var_f0_4960 = temp_r4_4951->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f0_4960 > 0.0f) {
 
         } else {
@@ -2614,12 +2613,12 @@ u8 FireDojoLesson::HasSucceededFury() {
             var_r3_5067 = MKInput_Pressed(9, (MKInputDevices) M2C_FIELD(temp_r3_5054, s32 *, 0));
         }
         if ((u8) var_r3_5067 != 0) {
-            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 1, 0x200);
+            DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 1, 0x200);
         }
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -2656,7 +2655,7 @@ loop_5:
     case 1:
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+            this->unk4->unk310.GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -2670,7 +2669,7 @@ loop_5:
 u8 FireDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -2678,7 +2677,7 @@ u8 FireDojoLesson::HasSucceededBreath1() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 u8 FireDojoLesson::HasSucceededMeleeKnockBack() {
     DojoController *temp_r3_5245;
     DojoController *temp_r3_5313;
@@ -2709,22 +2708,22 @@ u8 FireDojoLesson::HasSucceededMeleeKnockBack() {
     temp_r0_5209 = this->unk10;
     switch (temp_r0_5209) {                         /* irregular */
     case 0:
-        this->unk4->unk424 = 1;
-        this->unk4->unk428 = 0x1000;
-        this->unk4->unk42C = 0x1000;
+        this->unk4->unk42C = 1;
         this->unk4->unk430 = 0x1000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 0;
+        this->unk4->unk434 = 0x1000;
+        this->unk4->unk438 = 0x1000;
+        this->unk4->unk678 = 0;
         temp_r4_5235 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5235->unk408 == (u32) temp_r4_5235->unk424) {
+        if ((u32) temp_r4_5235->unk410 == (u32) temp_r4_5235->unk42C) {
             if ((s32) temp_r4_5235->unk668 != 2) {
                 temp_r4_5235->unk668 = 1;
             }
             temp_r3_5245 = this->unk4;
-            if (((u32) temp_r3_5245->unk40C == (u32) temp_r3_5245->unk428) || ((u32) temp_r3_5245->unk410 == (u32) temp_r3_5245->unk42C) || ((u32) temp_r3_5245->unk414 == (u32) temp_r3_5245->unk430)) {
+            if (((u32) temp_r3_5245->unk414 == (u32) temp_r3_5245->unk430) || ((u32) temp_r3_5245->unk418 == (u32) temp_r3_5245->unk434) || ((u32) temp_r3_5245->unk41C == (u32) temp_r3_5245->unk438)) {
                 temp_r3_5245->ClearCombatArcs();
                 this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                 temp_r4_5268 = this->unk4;
-                temp_r4_5268->unk668 = M2C_BITWISE(s32, temp_r4_5268->unk66C);
+                temp_r4_5268->unk670 = temp_r4_5268->unk674;
                 return 1U;
             }
             goto block_65;
@@ -2733,56 +2732,56 @@ block_65:
     default:
         return 0U;
     case 1:
-        this->unk4->unk424 = 4;
-        this->unk4->unk428 = 8;
-        this->unk4->unk42C = 0x10;
-        this->unk4->unk430 = 1;
-        this->unk4->unk434 = 0x1000;
-        this->unk4->unk438 = 0x1000;
+        this->unk4->unk42C = 4;
+        this->unk4->unk430 = 8;
+        this->unk4->unk434 = 0x10;
+        this->unk4->unk438 = 1;
         this->unk4->unk43C = 0x1000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 0;
+        this->unk4->unk440 = 0x1000;
+        this->unk4->unk444 = 0x1000;
+        this->unk4->unk678 = 0;
         temp_r4_5295 = this->unk4;
-        if (((MKSceneManager *) temp_r4_5295->unk408 == (u32) temp_r4_5295->unk424) && ((u32) temp_r4_5295->unk40C == (u32) temp_r4_5295->unk428) && ((u32) temp_r4_5295->unk410 == (u32) temp_r4_5295->unk42C)) {
+        if (((u32) temp_r4_5295->unk410 == (u32) temp_r4_5295->unk42C) && ((u32) temp_r4_5295->unk414 == (u32) temp_r4_5295->unk430) && ((u32) temp_r4_5295->unk418 == (u32) temp_r4_5295->unk434)) {
             if ((s32) temp_r4_5295->unk668 != 2) {
                 temp_r4_5295->unk668 = 1;
             }
             temp_r3_5313 = this->unk4;
-            if (((u32) temp_r3_5313->unk414 == (u32) temp_r3_5313->unk430) && (((u32) temp_r3_5313->unk418 == (u32) temp_r3_5313->unk434) || ((u32) temp_r3_5313->unk41C == (u32) temp_r3_5313->unk438) || ((u32) temp_r3_5313->unk420 == (u32) temp_r3_5313->unk43C))) {
+            if (((u32) temp_r3_5313->unk41C == (u32) temp_r3_5313->unk438) && (((u32) temp_r3_5313->unk420 == (u32) temp_r3_5313->unk43C) || ((u32) temp_r3_5313->unk424 == (u32) temp_r3_5313->unk440) || ((u32) temp_r3_5313->unk428 == (u32) temp_r3_5313->unk444))) {
                 temp_r3_5313->ClearCombatArcs();
                 this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                 temp_r4_5340 = this->unk4;
-                temp_r4_5340->unk668 = M2C_BITWISE(s32, temp_r4_5340->unk66C);
+                temp_r4_5340->unk670 = temp_r4_5340->unk674;
                 return 1U;
             }
             goto block_65;
         }
         goto block_65;
     case 2:
-        this->unk4->unk424 = 1;
-        this->unk4->unk428 = 0x1000;
-        this->unk4->unk42C = 0x1000;
+        this->unk4->unk42C = 1;
         this->unk4->unk430 = 0x1000;
         this->unk4->unk434 = 0x1000;
         this->unk4->unk438 = 0x1000;
         this->unk4->unk43C = 0x1000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 0;
+        this->unk4->unk440 = 0x1000;
+        this->unk4->unk444 = 0x1000;
+        this->unk4->unk678 = 0;
         temp_r4_5364 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5364->unk408 == (u32) temp_r4_5364->unk424) {
+        if ((u32) temp_r4_5364->unk410 == (u32) temp_r4_5364->unk42C) {
             if ((s32) temp_r4_5364->unk668 != 2) {
                 temp_r4_5364->unk668 = 1;
             }
             temp_r4_5374 = this->unk4;
-            if (((u32) temp_r4_5374->unk40C == (u32) temp_r4_5374->unk428) || ((u32) temp_r4_5374->unk410 == (u32) temp_r4_5374->unk42C) || ((u32) temp_r4_5374->unk414 == (u32) temp_r4_5374->unk430) || ((u32) temp_r4_5374->unk418 == (u32) temp_r4_5374->unk434) || ((u32) temp_r4_5374->unk41C == (u32) temp_r4_5374->unk438) || ((u32) temp_r4_5374->unk420 == (u32) temp_r4_5374->unk43C)) {
-                temp_r4_5374->unk668 = M2C_BITWISE(s32, temp_r4_5374->unk66C);
+            if (((u32) temp_r4_5374->unk414 == (u32) temp_r4_5374->unk430) || ((u32) temp_r4_5374->unk418 == (u32) temp_r4_5374->unk434) || ((u32) temp_r4_5374->unk41C == (u32) temp_r4_5374->unk438) || ((u32) temp_r4_5374->unk420 == (u32) temp_r4_5374->unk43C) || ((u32) temp_r4_5374->unk424 == (u32) temp_r4_5374->unk440) || ((u32) temp_r4_5374->unk428 == (u32) temp_r4_5374->unk444)) {
+                temp_r4_5374->unk670 = temp_r4_5374->unk674;
                 temp_r4_5402 = this->unk4;
-                if ((u8) M2C_FIELD(temp_r4_5402, u8 *, 0x3C2) == 0) {
-                    M2C_FIELD(temp_r4_5402, u8 *, 0x3C2) = 1U;
-                    this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+                if ((u8) temp_r4_5402->unk3C2 == 0) {
+                    temp_r4_5402->unk3C2 = 1;
+                    this->unk4->unk3AC = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
                 }
                 var_r30_5416 = 0;
 loop_44:
                 temp_r3_5473 = this->unk4;
-                if (var_r30_5416 >= (s32) temp_r3_5473->unk3C8) {
+                if (var_r30_5416 >= (s32) temp_r3_5473->unk3D0) {
                     goto block_65;
                 }
                 temp_r3_5422 = checked_cast<Enemy *, MKProp>(temp_r3_5473->unk2C0.GetActive(var_r30_5416));
@@ -2793,16 +2792,16 @@ loop_44:
                         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                             this->unk4->unk2C0.DespawnAll();
                         }
-                        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+                        this->unk4->unk310.GetNumberActive();
                         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                            ((SpawnerObject *) &this->unk4->unk310)->DespawnAll();
+                            this->unk4->unk310.DespawnAll();
                         }
-                        this->unk4->unk3C8 = 0;
-                        this->unk4->unk3CC = 0;
+                        this->unk4->unk3D0 = 0;
+                        this->unk4->unk3D4 = 0;
                         this->unk4->ClearCombatArcs();
                         this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                         temp_r4_5466 = this->unk4;
-                        temp_r4_5466->unk668 = M2C_BITWISE(s32, temp_r4_5466->unk66C);
+                        temp_r4_5466->unk670 = temp_r4_5466->unk674;
                         return 1U;
                     }
                 }
@@ -2813,35 +2812,35 @@ loop_44:
         }
         goto block_65;
     case 3:
-        this->unk4->unk424 = 1;
-        this->unk4->unk428 = 0x1000;
-        this->unk4->unk42C = 0x1000;
+        this->unk4->unk42C = 1;
         this->unk4->unk430 = 0x1000;
         this->unk4->unk434 = 0x1000;
         this->unk4->unk438 = 0x1000;
         this->unk4->unk43C = 0x1000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 0;
+        this->unk4->unk440 = 0x1000;
+        this->unk4->unk444 = 0x1000;
+        this->unk4->unk678 = 0;
         temp_r4_5498 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5498->unk408 == (u32) temp_r4_5498->unk424) {
+        if ((u32) temp_r4_5498->unk410 == (u32) temp_r4_5498->unk42C) {
             if ((s32) temp_r4_5498->unk668 != 2) {
                 temp_r4_5498->unk668 = 1;
             }
             temp_r4_5508 = this->unk4;
-            if (((u32) temp_r4_5508->unk40C == (u32) temp_r4_5508->unk428) || ((u32) temp_r4_5508->unk410 == (u32) temp_r4_5508->unk42C) || ((u32) temp_r4_5508->unk414 == (u32) temp_r4_5508->unk430) || ((u32) temp_r4_5508->unk418 == (u32) temp_r4_5508->unk434) || ((u32) temp_r4_5508->unk41C == (u32) temp_r4_5508->unk438) || ((u32) temp_r4_5508->unk420 == (u32) temp_r4_5508->unk43C)) {
-                temp_r4_5508->unk668 = M2C_BITWISE(s32, temp_r4_5508->unk66C);
+            if (((u32) temp_r4_5508->unk414 == (u32) temp_r4_5508->unk430) || ((u32) temp_r4_5508->unk418 == (u32) temp_r4_5508->unk434) || ((u32) temp_r4_5508->unk41C == (u32) temp_r4_5508->unk438) || ((u32) temp_r4_5508->unk420 == (u32) temp_r4_5508->unk43C) || ((u32) temp_r4_5508->unk424 == (u32) temp_r4_5508->unk440) || ((u32) temp_r4_5508->unk428 == (u32) temp_r4_5508->unk444)) {
+                temp_r4_5508->unk670 = temp_r4_5508->unk674;
                 ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_5541 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
                 if ((temp_r3_5541 != NULL) && ((s32) M2C_FIELD(M2C_FIELD(temp_r3_5541, void **, 0xA38), s32 *, 0xF4) == 0x2D)) {
                     temp_r4_5548 = this->unk4;
-                    if ((u8) M2C_FIELD(temp_r4_5548, u8 *, 0x3C2) == 0) {
-                        M2C_FIELD(temp_r4_5548, u8 *, 0x3C2) = 1U;
-                        this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+                    if ((u8) temp_r4_5548->unk3C2 == 0) {
+                        temp_r4_5548->unk3C2 = 1;
+                        this->unk4->unk3AC = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
                     }
                     var_r30_5562 = 0;
 loop_64:
                     temp_r3_5596 = this->unk4;
-                    if (var_r30_5562 >= (s32) temp_r3_5596->unk3C8) {
+                    if (var_r30_5562 >= (s32) temp_r3_5596->unk3D0) {
                         goto block_65;
                     }
                     temp_r3_5568 = checked_cast<Enemy *, MKProp>(temp_r3_5596->unk2C0.GetActive(var_r30_5562));
@@ -2851,7 +2850,7 @@ loop_64:
                             this->unk4->ClearCombatArcs();
                             this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                             temp_r4_5589 = this->unk4;
-                            temp_r4_5589->unk668 = M2C_BITWISE(s32, temp_r4_5589->unk66C);
+                            temp_r4_5589->unk670 = temp_r4_5589->unk674;
                             return 1U;
                         }
                     }
@@ -2866,7 +2865,7 @@ loop_64:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: pointer/array required
 u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
     s32 spC;
     s32 sp8;
@@ -2891,17 +2890,17 @@ u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
     temp_r0_5619 = this->unk10;
     switch (temp_r0_5619) {                         /* irregular */
     case 0:
-        this->unk4->unk424 = 1;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 1;
+        this->unk4->unk42C = 1;
+        this->unk4->unk678 = 1;
         temp_r4_5637 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5637->unk408 == (u32) temp_r4_5637->unk424) {
+        if ((u32) temp_r4_5637->unk410 == (u32) temp_r4_5637->unk42C) {
             ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (((Enemy *) (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)()))->IsKnockedUp() != 0)) {
                 this->unk4->ClearCombatArcs();
                 this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                 temp_r4_5666 = this->unk4;
-                temp_r4_5666->unk668 = M2C_BITWISE(s32, temp_r4_5666->unk66C);
+                temp_r4_5666->unk670 = temp_r4_5666->unk674;
                 return 1U;
             }
         }
@@ -2909,22 +2908,22 @@ block_37:
     default:
         return 0U;
     case 1:
-        this->unk4->unk424 = 1;
-        this->unk4->unk428 = 0x2000;
-        this->unk4->unk42C = 0x4000;
-        this->unk4->unk430 = 0x8000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 1;
+        this->unk4->unk42C = 1;
+        this->unk4->unk430 = 0x2000;
+        this->unk4->unk434 = 0x4000;
+        this->unk4->unk438 = 0x8000;
+        this->unk4->unk678 = 1;
         temp_r4_5686 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5686->unk408 == (u32) temp_r4_5686->unk424) {
+        if ((u32) temp_r4_5686->unk410 == (u32) temp_r4_5686->unk42C) {
             if ((s32) temp_r4_5686->unk668 != 2) {
                 temp_r4_5686->unk668 = 1;
             }
             temp_r3_5696 = this->unk4;
-            if (((u32) temp_r3_5696->unk40C == (u32) temp_r3_5696->unk428) && ((u32) temp_r3_5696->unk410 == (u32) temp_r3_5696->unk42C) && ((u32) temp_r3_5696->unk414 == (u32) temp_r3_5696->unk430)) {
+            if (((u32) temp_r3_5696->unk414 == (u32) temp_r3_5696->unk430) && ((u32) temp_r3_5696->unk418 == (u32) temp_r3_5696->unk434) && ((u32) temp_r3_5696->unk41C == (u32) temp_r3_5696->unk438)) {
                 temp_r3_5696->ClearCombatArcs();
                 this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                 temp_r4_5718 = this->unk4;
-                temp_r4_5718->unk668 = M2C_BITWISE(s32, temp_r4_5718->unk66C);
+                temp_r4_5718->unk670 = temp_r4_5718->unk674;
                 return 1U;
             }
             goto block_37;
@@ -2932,14 +2931,14 @@ block_37:
         temp_r4_5686->unk668 = 0;
         goto block_37;
     case 2:
-        this->unk4->unk424 = 0x10000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 1;
+        this->unk4->unk42C = 0x10000;
+        this->unk4->unk678 = 1;
         temp_r3_5733 = this->unk4;
         if ((s32) temp_r3_5733->unk668 != 2) {
             temp_r3_5733->unk668 = 1;
         }
         temp_r4_5739 = this->unk4;
-        if ((MKSceneManager *) temp_r4_5739->unk408 == (u32) temp_r4_5739->unk424) {
+        if ((u32) temp_r4_5739->unk410 == (u32) temp_r4_5739->unk42C) {
             ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             temp_r3_5749 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
@@ -2953,14 +2952,14 @@ block_37:
                     M2C_FIELD(M2C_FIELD(temp_r3_5749, void **, 0x44), M2C_UNK (**)(Targetable *, s32 *, M2C_UNK, s32), 0x2C)(temp_r3_5749, &sp8, 0, temp_r6_5763);
                     this->unk4->ClearCombatArcs();
                     temp_r4_5774 = this->unk4;
-                    temp_r4_5774->unk668 = M2C_BITWISE(s32, temp_r4_5774->unk66C);
-                    this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f;
+                    temp_r4_5774->unk670 = temp_r4_5774->unk674;
+                    this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f;
                     temp_r4_5786 = this->unk4;
-                    DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((this->unk8 - 1) * 4) + this->unk10 + 0x1AF) * 4)), (s8 *) &temp_r4_5786->unk460, temp_r4_5786->unk668, 0x200);
+                    DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((this->unk8 - 1) * 4) + this->unk10 + 0x1AF) * 4)), &temp_r4_5786->unk468, temp_r4_5786->unk670, 0x200);
                     if ((s32) this->unkC >= 6) {
                         this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                         temp_r4_5807 = this->unk4;
-                        temp_r4_5807->unk668 = M2C_BITWISE(s32, temp_r4_5807->unk66C);
+                        temp_r4_5807->unk670 = temp_r4_5807->unk674;
                         return 1U;
                     }
                 }
@@ -2968,25 +2967,25 @@ block_37:
         }
         goto block_37;
     case 3:
-        this->unk4->unk424 = 4;
-        this->unk4->unk428 = 8;
-        this->unk4->unk42C = 0x10;
-        this->unk4->unk430 = 1;
-        this->unk4->unk434 = 0x2000;
-        this->unk4->unk438 = 0x4000;
-        this->unk4->unk43C = 0x8000;
-        M2C_FIELD(this->unk4, s8 *, 0x678) = 1;
+        this->unk4->unk42C = 4;
+        this->unk4->unk430 = 8;
+        this->unk4->unk434 = 0x10;
+        this->unk4->unk438 = 1;
+        this->unk4->unk43C = 0x2000;
+        this->unk4->unk440 = 0x4000;
+        this->unk4->unk444 = 0x8000;
+        this->unk4->unk678 = 1;
         temp_r4_5836 = this->unk4;
-        if (((MKSceneManager *) temp_r4_5836->unk408 == (u32) temp_r4_5836->unk424) && ((u32) temp_r4_5836->unk40C == (u32) temp_r4_5836->unk428) && ((u32) temp_r4_5836->unk410 == (u32) temp_r4_5836->unk42C)) {
+        if (((u32) temp_r4_5836->unk410 == (u32) temp_r4_5836->unk42C) && ((u32) temp_r4_5836->unk414 == (u32) temp_r4_5836->unk430) && ((u32) temp_r4_5836->unk418 == (u32) temp_r4_5836->unk434)) {
             if ((s32) temp_r4_5836->unk668 != 2) {
                 temp_r4_5836->unk668 = 1;
             }
             temp_r3_5854 = this->unk4;
-            if (((u32) temp_r3_5854->unk414 == (u32) temp_r3_5854->unk430) && ((u32) temp_r3_5854->unk418 == (u32) temp_r3_5854->unk434) && ((u32) temp_r3_5854->unk41C == (u32) temp_r3_5854->unk438) && ((u32) temp_r3_5854->unk420 == (u32) temp_r3_5854->unk43C)) {
+            if (((u32) temp_r3_5854->unk41C == (u32) temp_r3_5854->unk438) && ((u32) temp_r3_5854->unk420 == (u32) temp_r3_5854->unk43C) && ((u32) temp_r3_5854->unk424 == (u32) temp_r3_5854->unk440) && ((u32) temp_r3_5854->unk428 == (u32) temp_r3_5854->unk444)) {
                 temp_r3_5854->ClearCombatArcs();
                 this->unk4->unk66C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
                 temp_r4_5880 = this->unk4;
-                temp_r4_5880->unk668 = M2C_BITWISE(s32, temp_r4_5880->unk66C);
+                temp_r4_5880->unk670 = temp_r4_5880->unk674;
                 return 1U;
             }
             goto block_37;
@@ -3023,16 +3022,16 @@ s32 FireDojoLesson::HasFailedFury() {
 
     if ((s32) this->unkC != 0) {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
-            M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
+            this->unk4->unk3BC = 1;
         }
-        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+        this->unk4->unk310.GetNumberActive();
         temp_r4_5967 = this->unk4;
-        if (((s32) temp_r4_5967->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_5967, u8 *, 0x3BC) == 0)) {
+        if (((s32) temp_r4_5967->unk3D4 != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) temp_r4_5967->unk3BC == 0)) {
             return 1;
         }
         return 0;
     }
-    M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
+    this->unk4->unk3BC = 0;
     return 0;
 }
 #endif
@@ -3041,8 +3040,8 @@ s32 FireDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_5995;
 
     temp_r4_5995 = this->unk4;
-    if (((u8) M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_5995, f32 *, 0x398))) {
-        M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) = 0U;
+    if (((u8) temp_r4_5995->unk3BF != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_5995->unk398)) {
+        temp_r4_5995->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -3052,8 +3051,8 @@ s32 FireDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_6018;
 
     temp_r4_6018 = this->unk4;
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6018, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_6018, u8 *, 0x3BF) != 0)) {
-        M2C_FIELD(temp_r4_6018, u8 *, 0x3BF) = 0U;
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_6018->unk398) && ((u8) temp_r4_6018->unk3BF != 0)) {
+        temp_r4_6018->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -3067,14 +3066,14 @@ s32 FireDojoLesson::HasFailedMeleeKnockBack() {
     temp_r0_6041 = this->unk10;
     if ((temp_r0_6041 != 2) && (temp_r0_6041 != 3)) {
         temp_r5_6046 = this->unk4;
-        if (((u8) M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r5_6046->unk3A4)) {
-            M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) = 0U;
+        if (((u8) temp_r5_6046->unk3C2 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r5_6046->unk3AC)) {
+            temp_r5_6046->unk3C2 = 0;
             return 1;
         }
     }
     temp_r4_6062 = this->unk4;
-    if (((u8) M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6062, f32 *, 0x398))) {
-        M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) = 0U;
+    if (((u8) temp_r4_6062->unk3BF != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_6062->unk398)) {
+        temp_r4_6062->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -3085,18 +3084,18 @@ s32 FireDojoLesson::HasFailedMeleeKnockUp() {
     DojoController *temp_r4_6106;
 
     temp_r3_6090 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r3_6090, u8 *, 0x3BE) != 0) {
+    if ((u8) temp_r3_6090->unk3BE != 0) {
         temp_r3_6090->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
+            this->unk4->unk310.GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1;
             }
         }
     }
     temp_r4_6106 = this->unk4;
-    if (((u8) M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6106, f32 *, 0x398))) {
-        M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) = 0U;
+    if (((u8) temp_r4_6106->unk3BF != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_6106->unk398)) {
+        temp_r4_6106->unk3BF = 0;
         return 1;
     }
     return 0;
@@ -3202,7 +3201,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
     void *temp_r6_6547;
 
     temp_r4_6207 = this->unk4;
-    temp_f28_6213 = temp_r4_6207->unk3AC * M2C_BITWISE(f32, temp_r4_6207->unk720);
+    temp_f28_6213 = temp_r4_6207->unk3B4 * temp_r4_6207->unk728;
     if (((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get() != NULL) {
         temp_r3_6224 = M2C_FIELD(M2C_FIELD(((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get()->__vptr, void *(**)(), 8)(), void **, 8);
         temp_f1_6225 = M2C_FIELD(temp_r3_6224, f64 *, 0x30);
@@ -3213,13 +3212,13 @@ void FireDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_f0_6226;
     } else {
         temp_r3_6233 = this->unk4;
-        sp100 = M2C_FIELD(temp_r3_6233, f64 *, 0x388);
-        sp108 = temp_r3_6233->unk388;
+        sp100 = temp_r3_6233->unk388;
+        sp108 = temp_r3_6233->unk390;
     }
     temp_r3_6239 = this->unk4;
-    sp50 = M2C_FIELD(temp_r3_6239, f64 *, 0x378) - M2C_FIELD(temp_r3_6239, f64 *, 0x388);
+    sp50 = M2C_FIELD(temp_r3_6239, f64 *, 0x378) - temp_r3_6239->unk388;
     sp130 = sp50;
-    sp58 = temp_r3_6239->unk378.unk0 - (f32) M2C_FIELD(temp_r3_6239, f64 *, 0x390);
+    sp58 = temp_r3_6239->unk378.unk8 - (f32) M2C_FIELD(temp_r3_6239, f64 *, 0x390);
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
@@ -3265,7 +3264,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
     sp130 = (f32) sp130 * var_f3_6331;
     (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_6331;
     sp138 = (f32) sp138 * var_f3_6331;
-    if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
+    if ((s32) this->unk4->unk3C8 != 0) {
         temp_f31_6353 = MKVector3::up.unk4;
         temp_f30_6355 = MKVector3::up.unk8;
         temp_f29_6357 = MKVector3::up.unk0;
@@ -3273,7 +3272,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
         var_r28_6360 = 0;
 loop_26:
         temp_r3_6450 = this->unk4;
-        if (var_r31_6358 < (s32) M2C_FIELD(temp_r3_6450, s32 *, 0x3C8)) {
+        if (var_r31_6358 < (s32) temp_r3_6450->unk3C8) {
             sp44 = (temp_f30_6355 * sp130) - (temp_f29_6357 * sp138);
             sp40 = (temp_f31_6353 * sp138) - (temp_f30_6355 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp48 = (temp_f29_6357 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_6353 * sp130);
@@ -3285,11 +3284,11 @@ loop_26:
             temp_r6_6387 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_6387, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
-            sp38 = temp_r6_6387->unk378.unk0 + spB0.unk8;
+            sp38 = temp_r6_6387->unk378.unk8 + spB0.unk8;
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_6387, s32 *, 0x3C8));
+            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_6387->unk3C8);
             sp130 = M2C_BITWISE(f64, spA0);
             sp138 = (f64) spA0.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_6360 + 0x84)), s32 *, 4) = 0x08004200;
@@ -3310,15 +3309,15 @@ loop_26:
         temp_r3_6450->unk2C0.AddSpawnPointEnd();
     }
     temp_r3_6457 = this->unk4;
-    if ((s32) M2C_FIELD(temp_r3_6457, s32 *, 0x3CC) != 0) {
-        var_r30_6461 = M2C_FIELD(temp_r3_6457, s32 *, 0x3C8);
+    if ((s32) temp_r3_6457->unk3CC != 0) {
+        var_r30_6461 = temp_r3_6457->unk3C8;
         var_r28_6465 = var_r30_6461 * 0x60;
         temp_f29_6466 = MKVector3::up.unk4;
         temp_f30_6467 = MKVector3::up.unk8;
         temp_f31_6469 = MKVector3::up.unk0;
 loop_31:
         temp_r4_6562 = this->unk4;
-        if (var_r30_6461 < (s32) (M2C_FIELD(temp_r4_6562, s32 *, 0x3C8) + M2C_FIELD(temp_r4_6562, s32 *, 0x3CC))) {
+        if (var_r30_6461 < (s32) (temp_r4_6562->unk3C8 + temp_r4_6562->unk3CC)) {
             sp24 = (temp_f30_6467 * (f32) sp130) - (temp_f31_6469 * (f32) sp138);
             sp20 = (temp_f29_6466 * (f32) sp138) - (temp_f30_6467 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
             sp28 = (temp_f31_6469 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_6466 * (f32) sp130);
@@ -3330,16 +3329,16 @@ loop_31:
             temp_r6_6499 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_6499, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
-            sp18 = temp_r6_6499->unk378.unk0 + sp70.unk8;
+            sp18 = temp_r6_6499->unk378.unk8 + sp70.unk8;
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) M2C_FIELD(temp_r6_6499, s32 *, 0x3CC));
+            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_6499->unk3CC);
             sp130 = M2C_BITWISE(f64, sp60);
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_6465 + 0x84)), s32 *, 4) = 0x08004200;
             temp_r5_6535 = this->unk4;
-            ((SpawnerObject *) &temp_r5_6535->unk310)->AddSpawnPoint(temp_r5_6535 + (var_r28_6465 + 0x80));
+            temp_r5_6535->unk310.AddSpawnPoint(temp_r5_6535 + (var_r28_6465 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_6465 + 0x90)))->SetIdentity();
             temp_r6_6544 = var_r28_6465 + 0x90;
             temp_r6_6547 = this->unk4 + temp_r6_6544;
@@ -3352,7 +3351,7 @@ loop_31:
             var_r28_6465 += 0x60;
             goto loop_31;
         }
-        ((SpawnerObject *) &temp_r4_6562->unk310)->AddSpawnPointEnd();
+        temp_r4_6562->unk310.AddSpawnPointEnd();
     }
 }
 #endif
@@ -3361,15 +3360,15 @@ void FireDojoLesson::SetupNumFuryEnemies() {
     DojoController *temp_r3_6603;
     DojoController *temp_r3_6608;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, f32 *, 0x3CC) = 0.0f;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     if ((s32) this->unkC == 0) {
         temp_r3_6603 = this->unk4;
-        M2C_FIELD(temp_r3_6603, s32 *, 0x3C8) = (s32) temp_r3_6603->unk718;
+        temp_r3_6603->unk3C8 = temp_r3_6603->unk720;
         return;
     }
     temp_r3_6608 = this->unk4;
-    M2C_FIELD(temp_r3_6608, f32 *, 0x3CC) = (f32) temp_r3_6608->unk71C;
+    temp_r3_6608->unk3CC = temp_r3_6608->unk724;
 }
 
 s32 FireDojoLesson::IsBreath2Complete() {
@@ -3412,11 +3411,11 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
     switch (temp_r0_6635) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_r3_6643 = this->unk4;
-        temp_f0_6648 = M2C_FIELD(temp_r3_6643, f64 *, 0x388) - M2C_FIELD(temp_r3_6643, f64 *, 0x378);
+        temp_f0_6648 = temp_r3_6643->unk388 - M2C_FIELD(temp_r3_6643, f64 *, 0x378);
         sp20 = temp_f0_6648;
         var_f4_6654 = 0.0f;
         sp50 = temp_f0_6648;
-        sp28 = M2C_FIELD(temp_r3_6643, f32 *, 0x390) - temp_r3_6643->unk378.unk0;
+        sp28 = M2C_FIELD(temp_r3_6643, f32 *, 0x390) - temp_r3_6643->unk378.unk8;
         (*(f32 *) ((u8 *) &sp48 + 0xc)) = 0.0f;
         sp58 = (f64) sp28;
         var_f5_6667 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (0.0f * 0.0f));
@@ -3470,13 +3469,13 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
         sp58 = temp_f4_6743;
         sp40 = M2C_FIELD(temp_r3_6759, f64 *, 0x378);
         sp48 = (f64) M2C_FIELD(temp_r3_6759, f32 *, 0x380);
-        temp_r3_6759->SetupSmashPropsVanguard(4, (MKVector3) &sp40, (MKVector3) &sp30, M2C_BITWISE(f32, temp_r3_6759->unk6A8), 0U, 0U, 0.7853982f);
+        temp_r3_6759->SetupSmashPropsVanguard(4, (MKVector3) &sp40, (MKVector3) &sp30, temp_r3_6759->unk6B0, 0U, 0U, 0.7853982f);
         return;
     case 1:                                         /* switch 1 */
         temp_r3_6771 = this->unk4;
-        temp_r3_6771->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_6771->unk3D4, 2, 0x10, &sp60, 0U, 0.0f, 0.0f, 0x08004200U);
+        temp_r3_6771->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_6771->unk3DC, 2, 0x10, &sp60, 0U, 0.0f, 0.0f, 0x08004200U);
         temp_r3_6783 = this->unk4;
-        temp_r3_6783->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_6783->unk3D4, 2, 0x10, &sp60, 0U, 0.0f, 0.0f, 0x08000A00U);
+        temp_r3_6783->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_6783->unk3DC, 2, 0x10, &sp60, 0U, 0.0f, 0.0f, 0x08000A00U);
         return;
     }
 }
@@ -3489,21 +3488,21 @@ void FireDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r4_6823;
     s32 temp_r0_6809;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_6809 = this->unk10;
     switch (temp_r0_6809) {                         /* irregular */
     case 0:
         temp_r4_6815 = this->unk4;
-        M2C_FIELD(temp_r4_6815, s32 *, 0x3C8) = (s32) temp_r4_6815->unk6FC;
+        temp_r4_6815->unk3C8 = temp_r4_6815->unk704;
         temp_r3_6818 = this->unk4;
-        M2C_FIELD(temp_r3_6818, s32 *, 0x3CC) = (s32) temp_r3_6818->unk700;
+        temp_r3_6818->unk3CC = temp_r3_6818->unk708;
         return;
     case 1:
         temp_r4_6823 = this->unk4;
-        M2C_FIELD(temp_r4_6823, s32 *, 0x3C8) = (s32) temp_r4_6823->unk708;
+        temp_r4_6823->unk3C8 = temp_r4_6823->unk710;
         temp_r3_6826 = this->unk4;
-        M2C_FIELD(temp_r3_6826, s32 *, 0x3CC) = (s32) temp_r3_6826->unk70C;
+        temp_r3_6826->unk3CC = temp_r3_6826->unk714;
         return;
     }
 }
@@ -3524,15 +3523,15 @@ void FireDojoLesson::SetupBreath1SpawnPoints() {
     switch (temp_r0_6853) {                         /* irregular */
     case 0:
         temp_r3_6863 = this->unk4;
-        temp_r3_6863->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_6863->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
+        temp_r3_6863->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_6863->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
         temp_r3_6875 = this->unk4;
-        temp_r3_6875->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_6875->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
+        temp_r3_6875->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_6875->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08004200U);
         return;
     case 1:
         temp_r3_6889 = this->unk4;
-        temp_r3_6889->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_6889->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_6889->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_6889->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         temp_r3_6901 = this->unk4;
-        temp_r3_6901->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_6901->unk3D0, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
+        temp_r3_6901->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_6901->unk3D8, 2, 0x10, &sp8, 0U, 0.0f, 0.0f, 0x08001200U);
         return;
     }
 }
@@ -3544,21 +3543,21 @@ void FireDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r4_6941;
     s32 temp_r0_6927;
 
-    M2C_FIELD(this->unk4, f32 *, 0x3C8) = 0.0f;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_6927 = this->unk10;
     switch (temp_r0_6927) {                         /* irregular */
     case 0:
         temp_r4_6933 = this->unk4;
-        M2C_FIELD(temp_r4_6933, f32 *, 0x3C8) = (f32) temp_r4_6933->unk6E4;
+        temp_r4_6933->unk3C8 = temp_r4_6933->unk6EC;
         temp_r3_6936 = this->unk4;
-        M2C_FIELD(temp_r3_6936, s32 *, 0x3CC) = (s32) temp_r3_6936->unk6E8;
+        temp_r3_6936->unk3CC = temp_r3_6936->unk6F0;
         return;
     case 1:
         temp_r4_6941 = this->unk4;
-        M2C_FIELD(temp_r4_6941, f32 *, 0x3C8) = M2C_BITWISE(f32, temp_r4_6941->unk6F0);
+        temp_r4_6941->unk3C8 = temp_r4_6941->unk6F8;
         temp_r3_6944 = this->unk4;
-        M2C_FIELD(temp_r3_6944, s32 *, 0x3CC) = (s32) temp_r3_6944->unk6F4;
+        temp_r3_6944->unk3CC = temp_r3_6944->unk6FC;
         return;
     }
 }
@@ -3647,11 +3646,11 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     s32 var_r0_7039;
 
     temp_r3_6971 = this->unk4;
-    temp_f2_6976 = M2C_FIELD(temp_r3_6971, f64 *, 0x388) - M2C_FIELD(temp_r3_6971, f64 *, 0x378);
+    temp_f2_6976 = temp_r3_6971->unk388 - M2C_FIELD(temp_r3_6971, f64 *, 0x378);
     sp70 = temp_f2_6976;
     var_f6_6982 = 0.0f;
     sp180 = temp_f2_6976;
-    sp78 = M2C_FIELD(temp_r3_6971, f32 *, 0x390) - temp_r3_6971->unk378.unk0;
+    sp78 = M2C_FIELD(temp_r3_6971, f32 *, 0x390) - temp_r3_6971->unk378.unk8;
     (*(f32 *) ((u8 *) &sp178 + 0xc)) = 0.0f;
     sp188 = (f64) sp78;
     var_f7_6995 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (0.0f * 0.0f));
@@ -3702,13 +3701,13 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
         temp_r3_7097 = this->unk4;
         sp170 = M2C_FIELD(temp_r3_7097, f64 *, 0x378);
         sp178 = M2C_FIELD(temp_r3_7097, f64 *, 0x380);
-        temp_r3_7097->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp170, (MKVector3) &sp160, M2C_BITWISE(f32, temp_r3_7097->unk6DC), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7097->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp170, (MKVector3) &sp160, temp_r3_7097->unk6E4, 1U, 1U, 0.62831855f, 0x08800200U);
         sp140 = (f64) sp180;
         sp148 = (f64) sp188;
         temp_r3_7116 = this->unk4;
         sp150 = M2C_FIELD(temp_r3_7116, f64 *, 0x378);
         sp158 = M2C_FIELD(temp_r3_7116, f64 *, 0x380);
-        temp_r3_7116->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp150, (MKVector3) &sp140, M2C_BITWISE(f32, temp_r3_7116->unk6DC), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7116->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp150, (MKVector3) &sp140, temp_r3_7116->unk6E4, 1U, 1U, 0.62831855f, 0x08800200U);
         return;
     case 1:                                         /* switch 2 */
         sp120 = (f64) sp180;
@@ -3716,28 +3715,28 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
         temp_r3_7137 = this->unk4;
         sp130 = M2C_FIELD(temp_r3_7137, f64 *, 0x378);
         sp138 = M2C_FIELD(temp_r3_7137, f64 *, 0x380);
-        temp_r3_7137->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp130, (MKVector3) &sp120, M2C_BITWISE(f32, temp_r3_7137->unk6DC), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7137->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp130, (MKVector3) &sp120, temp_r3_7137->unk6E4, 1U, 1U, 0.62831855f, 0x08800200U);
         sp100 = (f64) sp180;
         sp108 = (f64) sp188;
         temp_r3_7156 = this->unk4;
         sp110 = M2C_FIELD(temp_r3_7156, f64 *, 0x378);
         sp118 = M2C_FIELD(temp_r3_7156, f64 *, 0x380);
-        temp_r3_7156->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp110, (MKVector3) &sp100, M2C_BITWISE(f32, temp_r3_7156->unk6DC), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7156->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp110, (MKVector3) &sp100, temp_r3_7156->unk6E4, 1U, 1U, 0.62831855f, 0x08800200U);
         return;
     case 2:                                         /* switch 2 */
         temp_r3_7165 = this->unk4;
-        temp_r3_7165->SetupSpawnPointsRandomGraph((DojoTiers) 0, (CharacterGraphNode *) temp_r3_7165->unk3D4, 2, 0x10, &sp190, 1U, 1500.0f, 800.0f, 0x08800200U);
+        temp_r3_7165->SetupSpawnPointsRandomGraph((DojoTiers) 0, temp_r3_7165->unk3DC, 2, 0x10, &sp190, 1U, 1500.0f, 800.0f, 0x08800200U);
         temp_r3_7177 = this->unk4;
-        temp_r3_7177->SetupSpawnPointsRandomGraph((DojoTiers) 1, (CharacterGraphNode *) temp_r3_7177->unk3D4, 2, 0x10, &sp190, 1U, 1500.0f, 800.0f, 0x08800200U);
+        temp_r3_7177->SetupSpawnPointsRandomGraph((DojoTiers) 1, temp_r3_7177->unk3DC, 2, 0x10, &sp190, 1U, 1500.0f, 800.0f, 0x08800200U);
         return;
     case 3:                                         /* switch 2 */
         temp_r3_7191 = this->unk4;
-        temp_f1_7192 = M2C_BITWISE(f32, temp_r3_7191->unk720);
+        temp_f1_7192 = temp_r3_7191->unk728;
         temp_f7_7196 = M2C_FIELD(temp_r3_7191, f64 *, 0x378);
-        temp_f6_7197 = M2C_FIELD(temp_r3_7191, f64 *, 0x388);
+        temp_f6_7197 = temp_r3_7191->unk388;
         temp_f2_7198 = temp_f7_7196 - temp_f6_7197;
         sp60 = temp_f2_7198;
-        temp_f5_7200 = temp_r3_7191->unk378.unk0;
+        temp_f5_7200 = temp_r3_7191->unk378.unk8;
         temp_f4_7203 = temp_f5_7200 - M2C_FIELD(temp_r3_7191, f32 *, 0x390);
         spE0 = temp_f2_7198;
         sp68 = temp_f4_7203;
@@ -3764,13 +3763,13 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
         spB0 = sp40;
         spB8 = (f64) sp48;
         sp18 = temp_f5_7200 - (f32) spD8;
-        temp_r3_7191->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spB0, (MKVector3) &spA0, M2C_BITWISE(f32, temp_r3_7191->unk6DC), 1U, 1U, 0.7853982f, 0x08800200U);
+        temp_r3_7191->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spB0, (MKVector3) &spA0, temp_r3_7191->unk6E4, 1U, 1U, 0.7853982f, 0x08800200U);
         sp80 = (f64) sp180;
         sp88 = (f64) sp188;
         sp90 = sp10;
         sp98 = (f64) sp18;
         temp_r3_7281 = this->unk4;
-        temp_r3_7281->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp90, (MKVector3) &sp80, M2C_BITWISE(f32, temp_r3_7281->unk6DC), 1U, 1U, 0.62831855f, 0x08004200U);
+        temp_r3_7281->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp90, (MKVector3) &sp80, temp_r3_7281->unk6E4, 1U, 1U, 0.62831855f, 0x08004200U);
         return;
     }
 }
@@ -3787,37 +3786,37 @@ void FireDojoLesson::SetupNumMeleeKnockBackEnemies() {
     DojoController *temp_r5_7350;
     s32 temp_r0_7300;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_7300 = this->unk10;
     switch (temp_r0_7300) {                         /* irregular */
     case 0:
         temp_r5_7313 = this->unk4;
-        M2C_FIELD(temp_r5_7313, s32 *, 0x3C8) = (s32) temp_r5_7313->unk6AC;
+        temp_r5_7313->unk3C8 = temp_r5_7313->unk6B4;
         temp_r5_7317 = this->unk4;
-        M2C_FIELD(temp_r5_7317, s32 *, 0x3CC) = M2C_BITWISE(s32, temp_r5_7317->unk6B0);
-        this->unk4->unk66C = 4e-45f;
+        temp_r5_7317->unk3CC = temp_r5_7317->unk6B8;
+        this->unk4->unk674 = 3;
         return;
     case 1:
         temp_r5_7324 = this->unk4;
-        M2C_FIELD(temp_r5_7324, s32 *, 0x3C8) = (s32) temp_r5_7324->unk6B8;
+        temp_r5_7324->unk3C8 = temp_r5_7324->unk6C0;
         temp_r5_7328 = this->unk4;
-        M2C_FIELD(temp_r5_7328, s32 *, 0x3CC) = (s32) temp_r5_7328->unk6BC;
-        this->unk4->unk66C = 8e-45f;
+        temp_r5_7328->unk3CC = temp_r5_7328->unk6C4;
+        this->unk4->unk674 = 6;
         return;
     case 2:
         temp_r5_7335 = this->unk4;
-        M2C_FIELD(temp_r5_7335, s32 *, 0x3C8) = (s32) temp_r5_7335->unk6C4;
+        temp_r5_7335->unk3C8 = temp_r5_7335->unk6CC;
         temp_r5_7339 = this->unk4;
-        M2C_FIELD(temp_r5_7339, s32 *, 0x3CC) = (s32) temp_r5_7339->unk6C8;
-        this->unk4->unk66C = 4e-45f;
+        temp_r5_7339->unk3CC = temp_r5_7339->unk6D0;
+        this->unk4->unk674 = 3;
         return;
     case 3:
         temp_r5_7346 = this->unk4;
-        M2C_FIELD(temp_r5_7346, s32 *, 0x3C8) = (s32) temp_r5_7346->unk6D0;
+        temp_r5_7346->unk3C8 = temp_r5_7346->unk6D8;
         temp_r5_7350 = this->unk4;
-        M2C_FIELD(temp_r5_7350, s32 *, 0x3CC) = (s32) temp_r5_7350->unk6D4;
-        this->unk4->unk66C = 4e-45f;
+        temp_r5_7350->unk3CC = temp_r5_7350->unk6DC;
+        this->unk4->unk674 = 3;
         return;
     }
 }
@@ -3897,11 +3896,11 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     s32 var_r0_7453;
 
     temp_r3_7385 = this->unk4;
-    temp_f0_7390 = M2C_FIELD(temp_r3_7385, f64 *, 0x388) - M2C_FIELD(temp_r3_7385, f64 *, 0x378);
+    temp_f0_7390 = temp_r3_7385->unk388 - M2C_FIELD(temp_r3_7385, f64 *, 0x378);
     sp30 = temp_f0_7390;
     var_f4_7396 = 0.0f;
     sp140 = temp_f0_7390;
-    sp38 = M2C_FIELD(temp_r3_7385, f32 *, 0x390) - temp_r3_7385->unk378.unk0;
+    sp38 = M2C_FIELD(temp_r3_7385, f32 *, 0x390) - temp_r3_7385->unk378.unk8;
     (*(f32 *) ((u8 *) &sp138 + 0xc)) = 0.0f;
     sp148 = (f64) sp38;
     var_f5_7409 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (0.0f * 0.0f));
@@ -3955,13 +3954,13 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         temp_r3_7511 = this->unk4;
         sp130 = M2C_FIELD(temp_r3_7511, f64 *, 0x378);
         sp138 = M2C_FIELD(temp_r3_7511, f64 *, 0x380);
-        temp_r3_7511->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp130, (MKVector3) &sp120, M2C_BITWISE(f32, temp_r3_7511->unk6A8), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7511->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp130, (MKVector3) &sp120, temp_r3_7511->unk6B0, 1U, 1U, 0.62831855f, 0x08800200U);
         sp100 = (f64) sp140;
         sp108 = (f64) sp148;
         temp_r3_7530 = this->unk4;
         sp110 = M2C_FIELD(temp_r3_7530, f64 *, 0x378);
         sp118 = M2C_FIELD(temp_r3_7530, f64 *, 0x380);
-        temp_r3_7530->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp110, (MKVector3) &sp100, M2C_BITWISE(f32, temp_r3_7530->unk6A8), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7530->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp110, (MKVector3) &sp100, temp_r3_7530->unk6B0, 1U, 1U, 0.62831855f, 0x08800200U);
         return;
     case 1:                                         /* switch 2 */
         spE0 = (f64) sp140;
@@ -3969,13 +3968,13 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         temp_r3_7551 = this->unk4;
         spF0 = M2C_FIELD(temp_r3_7551, f64 *, 0x378);
         spF8 = M2C_FIELD(temp_r3_7551, f64 *, 0x380);
-        temp_r3_7551->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spF0, (MKVector3) &spE0, M2C_BITWISE(f32, temp_r3_7551->unk6A8), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7551->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spF0, (MKVector3) &spE0, temp_r3_7551->unk6B0, 1U, 1U, 0.62831855f, 0x08800200U);
         spC0 = (f64) sp140;
         spC8 = (f64) sp148;
         temp_r3_7570 = this->unk4;
         spD0 = M2C_FIELD(temp_r3_7570, f64 *, 0x378);
         spD8 = M2C_FIELD(temp_r3_7570, f64 *, 0x380);
-        temp_r3_7570->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &spD0, (MKVector3) &spC0, M2C_BITWISE(f32, temp_r3_7570->unk6A8), 1U, 1U, 0.62831855f, 0x08800200U);
+        temp_r3_7570->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &spD0, (MKVector3) &spC0, temp_r3_7570->unk6B0, 1U, 1U, 0.62831855f, 0x08800200U);
         return;
     case 2:                                         /* switch 2 */
         temp_f31_7579 = -temp_f2_7480;
@@ -3989,7 +3988,7 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         temp_r3_7597 = this->unk4;
         spB0 = M2C_FIELD(temp_r3_7597, f64 *, 0x378);
         spB8 = M2C_FIELD(temp_r3_7597, f64 *, 0x380);
-        temp_r3_7597->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spB0, (MKVector3) &spA0, M2C_BITWISE(f32, temp_r3_7597->unk6A8), 0U, 0U, 0.62831855f, 0x08800200U);
+        temp_r3_7597->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &spB0, (MKVector3) &spA0, temp_r3_7597->unk6B0, 0U, 0U, 0.62831855f, 0x08800200U);
         sp18 = temp_f29_7583;
         sp10 = temp_f31_7579;
         sp14 = temp_f30_7581;
@@ -3998,7 +3997,7 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         temp_r3_7619 = this->unk4;
         sp90 = M2C_FIELD(temp_r3_7619, f64 *, 0x378);
         sp98 = M2C_FIELD(temp_r3_7619, f64 *, 0x380);
-        temp_r3_7619->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp90, (MKVector3) &sp80, M2C_BITWISE(f32, temp_r3_7619->unk6A8), 0U, 0U, 0.62831855f, 0x08800200U);
+        temp_r3_7619->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp90, (MKVector3) &sp80, temp_r3_7619->unk6B0, 0U, 0U, 0.62831855f, 0x08800200U);
         return;
     case 3:                                         /* switch 2 */
         sp60 = (f64) sp140;
@@ -4006,13 +4005,13 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         temp_r3_7640 = this->unk4;
         sp70 = M2C_FIELD(temp_r3_7640, f64 *, 0x378);
         sp78 = M2C_FIELD(temp_r3_7640, f64 *, 0x380);
-        temp_r3_7640->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp70, (MKVector3) &sp60, M2C_BITWISE(f32, temp_r3_7640->unk6A8), 1U, 1U, 0.62831855f, 0x08004200U);
+        temp_r3_7640->SetupSpawnPointsVanguard((DojoTiers) 0, (MKVector3) &sp70, (MKVector3) &sp60, temp_r3_7640->unk6B0, 1U, 1U, 0.62831855f, 0x08004200U);
         sp40 = (f64) sp140;
         sp48 = (f64) sp148;
         temp_r3_7659 = this->unk4;
         sp50 = M2C_FIELD(temp_r3_7659, f64 *, 0x378);
         sp58 = M2C_FIELD(temp_r3_7659, f64 *, 0x380);
-        temp_r3_7659->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp50, (MKVector3) &sp40, M2C_BITWISE(f32, temp_r3_7659->unk6A8), 1U, 1U, 0.62831855f, 0x08004200U);
+        temp_r3_7659->SetupSpawnPointsVanguard((DojoTiers) 1, (MKVector3) &sp50, (MKVector3) &sp40, temp_r3_7659->unk6B0, 1U, 1U, 0.62831855f, 0x08004200U);
         return;
     }
 }
@@ -4029,37 +4028,37 @@ void FireDojoLesson::SetupNumMeleeKnockUpEnemies() {
     DojoController *temp_r5_7738;
     s32 temp_r0_7688;
 
-    M2C_FIELD(this->unk4, s32 *, 0x3C8) = 0;
-    M2C_FIELD(this->unk4, s32 *, 0x3CC) = 0;
+    this->unk4->unk3C8 = 0;
+    this->unk4->unk3CC = 0;
     temp_r0_7688 = this->unk10;
     switch (temp_r0_7688) {                         /* irregular */
     case 0:
         temp_r5_7701 = this->unk4;
-        M2C_FIELD(temp_r5_7701, s32 *, 0x3C8) = (s32) M2C_FIELD(temp_r5_7701, s32 *, 0x680);
+        temp_r5_7701->unk3C8 = temp_r5_7701->unk680;
         temp_r5_7705 = this->unk4;
-        M2C_FIELD(temp_r5_7705, s32 *, 0x3CC) = (s32) temp_r5_7705->unk67C;
-        this->unk4->unk66C = 1e-45f;
+        temp_r5_7705->unk3CC = temp_r5_7705->unk684;
+        this->unk4->unk674 = 1;
         return;
     case 1:
         temp_r5_7712 = this->unk4;
-        M2C_FIELD(temp_r5_7712, s32 *, 0x3C8) = (s32) temp_r5_7712->unk684;
+        temp_r5_7712->unk3C8 = temp_r5_7712->unk68C;
         temp_r5_7716 = this->unk4;
-        M2C_FIELD(temp_r5_7716, s32 *, 0x3CC) = (s32) temp_r5_7716->unk688;
-        this->unk4->unk66C = 7e-45f;
+        temp_r5_7716->unk3CC = temp_r5_7716->unk690;
+        this->unk4->unk674 = 5;
         return;
     case 2:
         temp_r5_7723 = this->unk4;
-        M2C_FIELD(temp_r5_7723, s32 *, 0x3C8) = (s32) temp_r5_7723->unk690;
+        temp_r5_7723->unk3C8 = temp_r5_7723->unk698;
         temp_r5_7727 = this->unk4;
-        M2C_FIELD(temp_r5_7727, s32 *, 0x3CC) = (s32) temp_r5_7727->unk694;
-        this->unk4->unk66C = 3e-45f;
+        temp_r5_7727->unk3CC = temp_r5_7727->unk69C;
+        this->unk4->unk674 = 2;
         return;
     case 3:
         temp_r5_7734 = this->unk4;
-        M2C_FIELD(temp_r5_7734, s32 *, 0x3C8) = (s32) temp_r5_7734->unk69C;
+        temp_r5_7734->unk3C8 = temp_r5_7734->unk6A4;
         temp_r5_7738 = this->unk4;
-        M2C_FIELD(temp_r5_7738, s32 *, 0x3CC) = (s32) temp_r5_7738->unk6A0;
-        this->unk4->unk66C = 1.1e-44f;
+        temp_r5_7738->unk3CC = temp_r5_7738->unk6A8;
+        this->unk4->unk674 = 8;
         return;
     }
 }
@@ -4080,7 +4079,7 @@ void FireDojoLesson::MakeChildrenInvulnerable() {
             sp14 = 0;
             sp10 = 0x165;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
+            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
             return;
         }
         goto block_7;
@@ -4090,7 +4089,7 @@ block_7:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
+        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
     }
 }
 
@@ -4126,7 +4125,7 @@ void FireDojoLesson::TurnOffAbilities() {
 
 #if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 void FireDojoLesson::IncrementNumInterations() {
-    f32 *sp14;
+    s8 *sp14;
     s32 spC;
     s32 sp8;
     s32 temp_r0_7863;
@@ -4141,7 +4140,7 @@ void FireDojoLesson::IncrementNumInterations() {
     case 2:
         if ((s32) this->unk10 == 2) {
             temp_r4_7888 = this->unkC;
-            if (temp_r4_7888 < (s32) (this->unk4->unk6E0 - 1)) {
+            if (temp_r4_7888 < (s32) (this->unk4->unk6E8 - 1)) {
                 this->unkC = temp_r4_7888 + 1;
                 return;
             }
@@ -4161,8 +4160,8 @@ void FireDojoLesson::IncrementNumInterations() {
         this->unk10 += 1;
         return;
     case 4:
-        this->unk4->unk3C8 = 0;
-        this->unk4->unk3CC = 0;
+        this->unk4->unk3D0 = 0;
+        this->unk4->unk3D4 = 0;
         if ((s32) this->unkC != 0) {
             if (HasSucceededFury() != 0) {
                 this->unk10 += 1;
@@ -4170,10 +4169,10 @@ void FireDojoLesson::IncrementNumInterations() {
             }
         } else {
             if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
-                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
+                DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), &this->unk4->unk468, 0, 0x200);
                 spC = 0;
                 spC = 0;
-                sp14 = &this->unk4->unk460;
+                sp14 = &this->unk4->unk468;
                 sp8 = 0x96;
                 InGame_SystemMessage((MKMessage *) &sp8);
                 this->unkC = 1;
@@ -4252,29 +4251,29 @@ void FireDojoLesson::SetupTimer() {
         switch (temp_r4_8049) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             temp_r7_8052 = this->unk4;
-            temp_r0_8053 = temp_r7_8052->unk680;
+            temp_r0_8053 = temp_r7_8052->unk688;
             if (temp_r0_8053 != 0) {
-                M2C_FIELD(temp_r7_8052, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8053 * temp_r7_8052->unk3B0) + (f32) temp_r0_8053));
-                M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+                temp_r7_8052->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8053 * temp_r7_8052->unk3B8) + (f32) temp_r0_8053);
+                this->unk4->unk3BF = 1;
             } else {
                 switch (temp_r4_8049) {             /* switch 3; irregular */
                 case 1:                             /* switch 2 */
                 case 1:                             /* switch 3 */
                     temp_r7_8081 = this->unk4;
-                    temp_r0_8082 = temp_r7_8081->unk68C;
+                    temp_r0_8082 = temp_r7_8081->unk694;
                     if (temp_r0_8082 != 0) {
-                        M2C_FIELD(temp_r7_8081, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8082 * temp_r7_8081->unk3B0) + (f32) temp_r0_8082));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-                    } else if ((temp_r4_8049 == 2) && (temp_r7_8110 = this->unk4, temp_r0_8111 = temp_r7_8110->unk698, ((temp_r0_8111 == 0) == 0))) {
-                        M2C_FIELD(temp_r7_8110, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8111 * temp_r7_8110->unk3B0) + (f32) temp_r0_8111));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-                    } else if ((temp_r4_8049 == 3) && (temp_r7_8139 = this->unk4, temp_r0_8140 = temp_r7_8139->unk6A4, ((temp_r0_8140 == 0) == 0))) {
-                        M2C_FIELD(temp_r7_8139, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8140 * temp_r7_8139->unk3B0) + (f32) temp_r0_8140));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+                        temp_r7_8081->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8082 * temp_r7_8081->unk3B8) + (f32) temp_r0_8082);
+                        this->unk4->unk3BF = 1;
+                    } else if ((temp_r4_8049 == 2) && (temp_r7_8110 = this->unk4, temp_r0_8111 = temp_r7_8110->unk6A0, ((temp_r0_8111 == 0) == 0))) {
+                        temp_r7_8110->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8111 * temp_r7_8110->unk3B8) + (f32) temp_r0_8111);
+                        this->unk4->unk3BF = 1;
+                    } else if ((temp_r4_8049 == 3) && (temp_r7_8139 = this->unk4, temp_r0_8140 = temp_r7_8139->unk6AC, ((temp_r0_8140 == 0) == 0))) {
+                        temp_r7_8139->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8140 * temp_r7_8139->unk3B8) + (f32) temp_r0_8140);
+                        this->unk4->unk3BF = 1;
                     } else {
                     default:                        /* switch 2 */
                     default:                        /* switch 3 */
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+                        this->unk4->unk3BF = 0;
                     }
                     break;
                 }
@@ -4287,29 +4286,29 @@ void FireDojoLesson::SetupTimer() {
         switch (temp_r4_8171) {                     /* switch 4; irregular */
         case 0:                                     /* switch 4 */
             temp_r7_8174 = this->unk4;
-            temp_r0_8175 = temp_r7_8174->unk6B4;
+            temp_r0_8175 = temp_r7_8174->unk6BC;
             if (temp_r0_8175 != 0) {
-                M2C_FIELD(temp_r7_8174, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8175 * temp_r7_8174->unk3B0) + (f32) temp_r0_8175));
-                M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+                temp_r7_8174->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8175 * temp_r7_8174->unk3B8) + (f32) temp_r0_8175);
+                this->unk4->unk3BF = 1;
             } else {
                 switch (temp_r4_8171) {             /* switch 5; irregular */
                 case 1:                             /* switch 4 */
                 case 1:                             /* switch 5 */
                     temp_r7_8203 = this->unk4;
-                    temp_r0_8204 = temp_r7_8203->unk6C0;
+                    temp_r0_8204 = temp_r7_8203->unk6C8;
                     if (temp_r0_8204 != 0) {
-                        M2C_FIELD(temp_r7_8203, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8204 * temp_r7_8203->unk3B0) + (f32) temp_r0_8204));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-                    } else if ((temp_r4_8171 == 2) && (temp_r7_8232 = this->unk4, temp_r0_8233 = temp_r7_8232->unk6CC, ((temp_r0_8233 == 0) == 0))) {
-                        M2C_FIELD(temp_r7_8232, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8233 * temp_r7_8232->unk3B0) + (f32) temp_r0_8233));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-                    } else if ((temp_r4_8171 == 3) && (temp_r7_8261 = this->unk4, temp_r0_8262 = temp_r7_8261->unk6D8, ((temp_r0_8262 == 0) == 0))) {
-                        M2C_FIELD(temp_r7_8261, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8262 * temp_r7_8261->unk3B0) + (f32) temp_r0_8262));
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+                        temp_r7_8203->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8204 * temp_r7_8203->unk3B8) + (f32) temp_r0_8204);
+                        this->unk4->unk3BF = 1;
+                    } else if ((temp_r4_8171 == 2) && (temp_r7_8232 = this->unk4, temp_r0_8233 = temp_r7_8232->unk6D4, ((temp_r0_8233 == 0) == 0))) {
+                        temp_r7_8232->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8233 * temp_r7_8232->unk3B8) + (f32) temp_r0_8233);
+                        this->unk4->unk3BF = 1;
+                    } else if ((temp_r4_8171 == 3) && (temp_r7_8261 = this->unk4, temp_r0_8262 = temp_r7_8261->unk6E0, ((temp_r0_8262 == 0) == 0))) {
+                        temp_r7_8261->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8262 * temp_r7_8261->unk3B8) + (f32) temp_r0_8262);
+                        this->unk4->unk3BF = 1;
                     } else {
                     default:                        /* switch 4 */
                     default:                        /* switch 5 */
-                        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+                        this->unk4->unk3BF = 0;
                     }
                     break;
                 }
@@ -4319,35 +4318,35 @@ void FireDojoLesson::SetupTimer() {
         break;
     case 0:                                         /* switch 1 */
         temp_r4_8293 = this->unk10;
-        if ((temp_r4_8293 == 0) && (temp_r7_8296 = this->unk4, temp_r0_8297 = temp_r7_8296->unk6EC, ((temp_r0_8297 == 0) == 0))) {
-            M2C_FIELD(temp_r7_8296, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8297 * temp_r7_8296->unk3B0) + (f32) temp_r0_8297));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_8293 == 1) && (temp_r7_8325 = this->unk4, temp_r0_8326 = temp_r7_8325->unk6F8, ((temp_r0_8326 == 0) == 0))) {
-            M2C_FIELD(temp_r7_8325, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8326 * temp_r7_8325->unk3B0) + (f32) temp_r0_8326));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_8293 == 0) && (temp_r7_8296 = this->unk4, temp_r0_8297 = temp_r7_8296->unk6F4, ((temp_r0_8297 == 0) == 0))) {
+            temp_r7_8296->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8297 * temp_r7_8296->unk3B8) + (f32) temp_r0_8297);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_8293 == 1) && (temp_r7_8325 = this->unk4, temp_r0_8326 = temp_r7_8325->unk700, ((temp_r0_8326 == 0) == 0))) {
+            temp_r7_8325->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8326 * temp_r7_8325->unk3B8) + (f32) temp_r0_8326);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 3:                                         /* switch 1 */
         temp_r4_8357 = this->unk10;
-        if ((temp_r4_8357 == 0) && (temp_r7_8360 = this->unk4, temp_r0_8361 = temp_r7_8360->unk704, ((temp_r0_8361 == 0) == 0))) {
-            M2C_FIELD(temp_r7_8360, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8361 * temp_r7_8360->unk3B0) + (f32) temp_r0_8361));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
-        } else if ((temp_r4_8357 == 1) && (temp_r7_8389 = this->unk4, temp_r0_8390 = temp_r7_8389->unk710, ((temp_r0_8390 == 0) == 0))) {
-            M2C_FIELD(temp_r7_8389, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8390 * temp_r7_8389->unk3B0) + (f32) temp_r0_8390));
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 1U;
+        if ((temp_r4_8357 == 0) && (temp_r7_8360 = this->unk4, temp_r0_8361 = temp_r7_8360->unk70C, ((temp_r0_8361 == 0) == 0))) {
+            temp_r7_8360->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8361 * temp_r7_8360->unk3B8) + (f32) temp_r0_8361);
+            this->unk4->unk3BF = 1;
+        } else if ((temp_r4_8357 == 1) && (temp_r7_8389 = this->unk4, temp_r0_8390 = temp_r7_8389->unk718, ((temp_r0_8390 == 0) == 0))) {
+            temp_r7_8389->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + (((f32) temp_r0_8390 * temp_r7_8389->unk3B8) + (f32) temp_r0_8390);
+            this->unk4->unk3BF = 1;
         } else {
-            M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+            this->unk4->unk3BF = 0;
         }
         break;
     case 4:                                         /* switch 1 */
-        M2C_FIELD(this->unk4, u8 *, 0x3BF) = 0U;
+        this->unk4->unk3BF = 0;
         break;
     }
     temp_r4_8425 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_8425, u8 *, 0x3BF) != 0) {
-        var_f0_8434 = M2C_FIELD(temp_r4_8425, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    if ((u8) temp_r4_8425->unk3BF != 0) {
+        var_f0_8434 = temp_r4_8425->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f0_8434 > 0.0f) {
 
         } else {
@@ -4408,9 +4407,8 @@ void DojoController::StateDojoStatueUpExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoStatueUpUpdate() {
-    if (((DragonStatue *) this->unk3FC)->IsUp() != 0) {
+    if (this->unk404->IsUp() != 0) {
         switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             this->unk4C.Send((MKProp *) this);
@@ -4439,11 +4437,11 @@ void DojoController::StateDojoStatueUpUpdate() {
             M2C_FIELD(GameData::gameData, s32 *, 0x18C) = 0;
             break;
         }
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 0, 0U);
+        this->unk360.SetState(this, 0, 0U);
     }
 }
-#endif
 
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void DojoController::StateDojoStatueUpEnter() {
     s8 sp3A;
     s8 sp39;
@@ -4458,31 +4456,31 @@ void DojoController::StateDojoStatueUpEnter() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    s32 temp_r3_8631;
-    s32 temp_r3_8638;
-    s32 temp_r3_8651;
+    DragonStatue *temp_r3_8631;
+    DragonStatue *temp_r3_8638;
+    DragonStatue *temp_r3_8651;
 
-    temp_r3_8631 = this->unk3FC;
+    temp_r3_8631 = this->unk404;
     sp14 = 0;
     sp10 = 0xBE;
-    M2C_FIELD(M2C_FIELD(temp_r3_8631, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_8631, &sp10, 0);
-    temp_r3_8638 = this->unk3FC;
-    M2C_FIELD(M2C_FIELD(temp_r3_8638, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_8638);
+    temp_r3_8631->Message(&sp10, 0);
+    temp_r3_8638 = this->unk404;
+    temp_r3_8638->Enable();
     if ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C) == 0) {
-        ((DragonStatue *) this->unk3FC)->SnapDown();
+        this->unk404->SnapDown();
     }
-    temp_r3_8651 = this->unk3FC;
+    temp_r3_8651 = this->unk404;
     spC = 0;
     sp8 = 0xB5;
-    M2C_FIELD(M2C_FIELD(temp_r3_8651, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_8651, &sp8, 0);
+    temp_r3_8651->Message(&sp8, 0);
     M2C_FIELD(&gb, s8 *, 4) = 1;
     ((GameGlobals *) &gb)->InfiniteMagicOff();
     sp1C = 0;
     sp18 = 0xE;
     sp38 = 0;
     sp39 = 1;
-    sp20 = M2C_FIELD(this, f64 *, 0x388);
-    sp28 = this->unk388;
+    sp20 = this->unk388;
+    sp28 = this->unk390;
     sp30 = -1.35f;
     sp34 = 0;
     sp3A = 1;
@@ -4491,15 +4489,15 @@ void DojoController::StateDojoStatueUpEnter() {
     ((GameGlobals *) &gb)->GetSpyro();
     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
 }
+#endif
 
 void DojoController::StateDojoFinishExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoFinishUpdate() {
-    if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8) {
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 7, 0U);
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3B0) {
+        this->unk360.SetState(this, 7, 0U);
         M2C_FIELD(&gb, s8 *, 5) = 1;
         M2C_FIELD(&gb, s8 *, 6) = 1;
         M2C_FIELD(&gb, s8 *, 7) = 1;
@@ -4514,25 +4512,24 @@ void DojoController::StateDojoFinishUpdate() {
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->BroadcaseCollectRequestMessage(7500.0f);
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(DojoController *, const char[17])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[17])' does not match
 void DojoController::StateDojoFinishEnter() {
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
-        M2C_FIELD(this, s8 *, 0x7F0) = 1;
-        M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
+        this->unk7F0 = 1;
+        this->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
         case 0:
-            strcpy(this + 0x7F1, "FireDojoComplete");
+            strcpy(&this->unk7F1, "FireDojoComplete");
             break;
         case 2:
-            strcpy(this + 0x7F1, "IceDojoComplete");
+            strcpy(&this->unk7F1, "IceDojoComplete");
             break;
         case 3:
-            strcpy(this + 0x7F1, "EarthDojoComplete");
+            strcpy(&this->unk7F1, "EarthDojoComplete");
             break;
         case 1:
-            strcpy(this + 0x7F1, "ElectricityDojoComplete");
+            strcpy(&this->unk7F1, "ElectricityDojoComplete");
             break;
         }
     }
@@ -4542,7 +4539,7 @@ void DojoController::StateDojoFinishEnter() {
         ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->BroadcaseCollectRequestMessage(7500.0f);
     }
-    this->unk3A8 = M2C_FIELD(&gb, f32 *, 0x30C) + 4.0f;
+    this->unk3B0 = M2C_FIELD(&gb, f32 *, 0x30C) + 4.0f;
 }
 #endif
 
@@ -4553,7 +4550,6 @@ void DojoController::StateDojoSuccessExit() {
     M2C_FIELD(&gb, s8 *, 8) = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoSuccessUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4616,9 +4612,9 @@ void DojoController::StateDojoSuccessUpdate() {
         InGame_SystemMessage((MKMessage *) &sp88);
     }
     this->unk2C0.GetNumberActive();
-    if (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (((SpawnerObject *) &this->unk310)->GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
-            if ((u8) this->unk3BC == 0) {
+    if (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (this->unk310.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
+        if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk398) && (PhrasePlayer_IsEventPlaying(this->unk7EC) == 0) && ((s32) this->unk7EC == 0)) {
+            if ((u8) this->unk3C4 == 0) {
                 switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
                 case 0:
                     if ((s32) M2C_FIELD(this->unk70, s32 *, 8) == 4) {
@@ -4686,9 +4682,9 @@ void DojoController::StateDojoSuccessUpdate() {
                     }
                     break;
                 }
-                this->unk3BC = 1;
+                this->unk3C4 = 1;
             }
-            if ((u8) M2C_FIELD(this, u8 *, 0x3C3) != 0) {
+            if ((u8) this->unk3C3 != 0) {
                 temp_r3_9061 = this->unk60;
                 sp24 = 0;
                 sp20 = 0xBF;
@@ -4705,27 +4701,26 @@ void DojoController::StateDojoSuccessUpdate() {
                 spC = 0;
                 sp8 = 0xB4;
                 M2C_FIELD(temp_r3_9091->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9091, &sp8, 0);
-                ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
+                this->unk360.SetState(this, 2, 0U);
             }
-        } else if ((PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 != 0)) {
-            var_f0_9118 = M2C_FIELD(this, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+        } else if ((PhrasePlayer_IsEventPlaying(this->unk7EC) == 0) && ((s32) this->unk7EC != 0)) {
+            var_f0_9118 = this->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
             if (var_f0_9118 > 0.0f) {
 
             } else {
                 var_f0_9118 = 0.0f;
             }
             if (var_f0_9118 < 2.0f) {
-                this->unk7E4 = 0;
-                M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
+                this->unk7EC = 0;
+                this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
             }
         }
     } else {
-        M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + M2C_BITWISE(f32, this->unk458));
+        this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk460;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpawnPointData *' to
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[16])' does not match
 void DojoController::StateDojoSuccessEnter() {
     s32 spC;
     s32 sp8;
@@ -4741,33 +4736,33 @@ void DojoController::StateDojoSuccessEnter() {
         M2C_FIELD(temp_r4_9166, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r4_9166, s32 *, 0xC) = 0;
     }
-    this->unk3B0 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
+    this->unk3B8 = 0.0f;
+    this->unk3BE = 0;
     this->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-    ((SpawnerObject *) &this->unk310)->SendMessageToActive((MKMessage *) &sp8);
-    M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f);
-    M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + M2C_BITWISE(f32, this->unk458));
+    this->unk310.SendMessageToActive((MKMessage *) &sp8);
+    this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f;
+    this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk460;
     KDSound_Play(GS_TrainingComplete, 0U, -1);
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
-        M2C_FIELD(this, s8 *, 0x7F0) = 1;
-        M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
+        this->unk7F0 = 1;
+        this->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
         case 0:
-            strcpy(this + 0x7F1, "FireDojoSuccess");
+            strcpy(&this->unk7F1, "FireDojoSuccess");
             break;
         case 2:
-            strcpy(this + 0x7F1, "IceDojoSuccess");
+            strcpy(&this->unk7F1, "IceDojoSuccess");
             break;
         case 3:
-            strcpy(this + 0x7F1, "EarthDojoSuccess");
+            strcpy(&this->unk7F1, "EarthDojoSuccess");
             break;
         case 1:
-            strcpy(this + 0x7F1, "ElectricityDojoSuccess");
+            strcpy(&this->unk7F1, "ElectricityDojoSuccess");
             break;
         }
     }
-    M2C_FIELD(this, s8 *, 0x3C3) = 0;
-    this->unk3BC = 0;
+    this->unk3C3 = 0;
+    this->unk3C4 = 0;
 }
 #endif
 
@@ -4775,7 +4770,6 @@ void DojoController::StateDojoFailExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoFailUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4837,8 +4831,8 @@ void DojoController::StateDojoFailUpdate() {
         sp8C = this;
         InGame_SystemMessage((MKMessage *) &sp88);
     }
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
-        if ((u8) this->unk3BC == 0) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk398) && (PhrasePlayer_IsEventPlaying(this->unk7EC) == 0) && ((s32) this->unk7EC == 0)) {
+        if ((u8) this->unk3C4 == 0) {
             switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
             case 0:
                 if ((s32) M2C_FIELD(this->unk70, s32 *, 8) == 4) {
@@ -4906,9 +4900,9 @@ void DojoController::StateDojoFailUpdate() {
                 }
                 break;
             }
-            this->unk3BC = 1;
+            this->unk3C4 = 1;
         }
-        if ((u8) M2C_FIELD(this, u8 *, 0x3C3) != 0) {
+        if ((u8) this->unk3C3 != 0) {
             temp_r3_9470 = this->unk60;
             sp24 = 0;
             sp20 = 0xBF;
@@ -4925,24 +4919,23 @@ void DojoController::StateDojoFailUpdate() {
             spC = 0;
             sp8 = 0xB4;
             M2C_FIELD(temp_r3_9500->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9500, &sp8, 0);
-            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
+            this->unk360.SetState(this, 2, 0U);
         }
-    } else if ((PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 != 0)) {
-        var_f0_9527 = M2C_FIELD(this, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    } else if ((PhrasePlayer_IsEventPlaying(this->unk7EC) == 0) && ((s32) this->unk7EC != 0)) {
+        var_f0_9527 = this->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f0_9527 > 0.0f) {
 
         } else {
             var_f0_9527 = 0.0f;
         }
         if (var_f0_9527 < 2.0f) {
-            this->unk7E4 = 0;
-            M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
+            this->unk7EC = 0;
+            this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(DojoController *, const char[13])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[13])' does not match
 void DojoController::StateDojoFailEnter() {
     DojoController *spC;
     s32 sp8;
@@ -4951,33 +4944,33 @@ void DojoController::StateDojoFailEnter() {
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         this->unk2C0.DespawnAll();
     }
-    ((SpawnerObject *) &this->unk310)->GetNumberActive();
+    this->unk310.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-        ((SpawnerObject *) &this->unk310)->DespawnAll();
+        this->unk310.DespawnAll();
     }
-    M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + this->unk45C);
-    this->unk3B0 += 0.2f;
+    this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk464;
+    this->unk3B8 += 0.2f;
     KDSound_Play(GS_TrainingFail, 0U, -1);
     if (PhrasePlayer_IsAnyEventPlaying() == 0) {
-        M2C_FIELD(this, s8 *, 0x7F0) = 1;
-        M2C_FIELD(this, f32 *, 0x39C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
+        this->unk7F0 = 1;
+        this->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
         case 0:
-            strcpy(this + 0x7F1, "FireDojoFail");
+            strcpy(&this->unk7F1, "FireDojoFail");
             break;
         case 2:
-            strcpy(this + 0x7F1, "IceDojoFail");
+            strcpy(&this->unk7F1, "IceDojoFail");
             break;
         case 3:
-            strcpy(this + 0x7F1, "EarthDojoFail");
+            strcpy(&this->unk7F1, "EarthDojoFail");
             break;
         case 1:
-            strcpy(this + 0x7F1, "ElectricityDojoFail");
+            strcpy(&this->unk7F1, "ElectricityDojoFail");
             break;
         }
     }
-    M2C_FIELD(this, s8 *, 0x3C3) = 0;
-    this->unk3BC = 0;
+    this->unk3C3 = 0;
+    this->unk3C4 = 0;
     spC = NULL;
     sp8 = 0x163;
     spC = this;
@@ -4995,33 +4988,33 @@ void DojoController::StateDojoFightExit() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    CharacterGraphNode *temp_r3_9664;
-    CharacterGraphNode *temp_r3_9671;
+    MKSceneManager *temp_r3_9664;
+    MKSceneManager *temp_r3_9671;
     MKSceneManager *temp_r3_9681;
     MKSceneManager *temp_r3_9691;
 
-    temp_r3_9664 = this->unk3DC;
+    temp_r3_9664 = this->unk3E4;
     sp24 = 0;
     sp20 = 0xB4;
-    M2C_FIELD(temp_r3_9664->unk44, M2C_UNK (**)(CharacterGraphNode *, s32 *, M2C_UNK), 0x2C)(temp_r3_9664, &sp20, 0);
-    temp_r3_9671 = this->unk3E0;
+    M2C_FIELD(temp_r3_9664->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9664, &sp20, 0);
+    temp_r3_9671 = this->unk3E8;
     sp1C = 0;
     sp18 = 0xB4;
-    M2C_FIELD(temp_r3_9671->unk44, M2C_UNK (**)(CharacterGraphNode *, s32 *, M2C_UNK), 0x2C)(temp_r3_9671, &sp18, 0);
-    temp_r3_9681 = this->unk3E4;
+    M2C_FIELD(temp_r3_9671->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9671, &sp18, 0);
+    temp_r3_9681 = this->unk3EC;
     sp14 = 0;
     sp10 = 0xB4;
     M2C_FIELD(temp_r3_9681->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9681, &sp10, 0);
-    temp_r3_9691 = this->unk3E8;
+    temp_r3_9691 = this->unk3F0;
     spC = 0;
     sp8 = 0xB4;
     M2C_FIELD(temp_r3_9691->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9691, &sp8, 0);
     KDSound_Stop(&this->unk818);
-    KDSound_Stop((s32 *) &this->unk814);
+    KDSound_Stop(&this->unk81C);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal type
 void DojoController::StateDojoFightUpdate() {
     f32 temp_f1_9785;
     f32 var_f2_9752;
@@ -5041,11 +5034,11 @@ void DojoController::StateDojoFightUpdate() {
 
     temp_r3_9720 = this->unk70;
     if ((M2C_FIELD(*temp_r3_9720, u8 (**)(void **), 0x20)(temp_r3_9720) != 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0)) {
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 5, 0U);
+        this->unk360.SetState(this, 5, 0U);
         return;
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x3BF) != 0) {
-        var_f2_9752 = M2C_FIELD(this, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
+    if ((u8) this->unk3BF != 0) {
+        var_f2_9752 = this->unk398 - M2C_FIELD(&gb, f32 *, 0x30C);
         if (var_f2_9752 > 0.0f) {
 
         } else {
@@ -5055,20 +5048,20 @@ void DojoController::StateDojoFightUpdate() {
             this->unk814 = var_f2_9752;
             this->unk818 = KDSound_Play(GS_DojoTickTock, 0U, -1);
             if (this->unk814 <= 10.0f) {
-                this->unk814 = M2C_BITWISE(f32, KDSound_Play(GS_DojoWarningBeep, 0U, -1));
+                this->unk81C = KDSound_Play(GS_DojoWarningBeep, 0U, -1);
                 temp_f1_9785 = this->unk814;
                 if (temp_f1_9785 <= 10.0f) {
-                    KDSound_SetPitch(M2C_BITWISE(s32, this->unk814), (0.05f * (10.0f - temp_f1_9785)) + 1.0f);
+                    KDSound_SetPitch(this->unk81C, (0.05f * (10.0f - temp_f1_9785)) + 1.0f);
                 }
             }
         }
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x3BE) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8)) {
+    if (((u8) this->unk3BE != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8)) {
         temp_r3_9806 = this->unk70;
         if (M2C_FIELD(M2C_FIELD(temp_r3_9806, void **, 0), u8 (**)(void **), 0x24)(temp_r3_9806) != 0) {
             temp_r3_9813 = this->unk70;
             if (((s32) M2C_FIELD(temp_r3_9813, s32 *, 0x14) == 0) && ((temp_r4_9817 = M2C_FIELD(temp_r3_9813, s32 *, 8), ((temp_r4_9817 == 1) != 0)) || (temp_r4_9817 == 2))) {
-                DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_9817 - 1) * 4) + M2C_FIELD(temp_r3_9813, s32 *, 0x10) + 0x1AF) * 4)), (s8 *) &this->unk460, this->unk668, 0x200);
+                DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_9817 - 1) * 4) + M2C_FIELD(temp_r3_9813, s32 *, 0x10) + 0x1AF) * 4)), &this->unk468, this->unk670, 0x200);
             }
             temp_r3_9836 = this->unk70;
             temp_r30_9838 = M2C_FIELD(temp_r3_9836, s32 *, 0x10);
@@ -5076,20 +5069,20 @@ void DojoController::StateDojoFightUpdate() {
             temp_r3_9842 = this->unk70;
             if (temp_r30_9838 != (s32) M2C_FIELD(temp_r3_9842, s32 *, 0x10)) {
                 if (M2C_FIELD(M2C_FIELD(temp_r3_9842, void **, 0), u8 (**)(), 0x1C)() != 0) {
-                    ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 6, 0U);
+                    this->unk360.SetState(this, 6, 0U);
                     return;
                 }
-                ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 4, 0U);
+                this->unk360.SetState(this, 4, 0U);
                 return;
             }
-            M2C_FIELD(this, u8 *, 0x3BE) = 0U;
+            this->unk3BE = 0;
             goto block_24;
         }
     }
 block_24:
-    if ((((s32) M2C_FIELD(this->unk70, s32 *, 0xC) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0)) || (((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0) && (this->unk2C0.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (((SpawnerObject *) &this->unk310)->GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)))) {
+    if ((((s32) M2C_FIELD(this->unk70, s32 *, 0xC) == 0) && ((u8) this->unk3BE == 0)) || (((u8) this->unk3BE == 0) && (this->unk2C0.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (this->unk310.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)))) {
         this->unk2C0.RemoveAllSpawnPoints(0U);
-        ((SpawnerObject *) &this->unk310)->RemoveAllSpawnPoints(0U);
+        this->unk310.RemoveAllSpawnPoints(0U);
         temp_r3_9895 = this->unk70;
         temp_r4_9896 = M2C_FIELD(temp_r3_9895, s32 *, 0x14);
         switch (temp_r4_9896) {                     /* switch 1; irregular */
@@ -5105,29 +5098,29 @@ block_24:
                     default:                        /* switch 1 */
                     default:                        /* switch 2 */
                         M2C_FIELD(M2C_FIELD(temp_r3_9895, void **, 0), M2C_UNK (**)(), 0xC)();
-                        if (((s32) M2C_FIELD(this, s32 *, 0x3C8) == 0) && ((s32) M2C_FIELD(this, s32 *, 0x3CC) == 0)) {
+                        if (((s32) this->unk3C8 == 0) && ((s32) this->unk3CC == 0)) {
                             temp_r3_9944 = this->unk70;
                             M2C_FIELD(M2C_FIELD(temp_r3_9944, void **, 0), M2C_UNK (**)(void **), 0x10)(temp_r3_9944);
                         } else {
 loop_47:
-                            if ((s32) this->unk3C8 != (s32) M2C_FIELD(this, s32 *, 0x3C8)) {
+                            if ((s32) this->unk3D0 != (s32) this->unk3C8) {
 block_42:
                                 this->unk2C0.GetNumberActive();
                                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                                     this->unk2C0.DespawnAll();
                                 }
-                                ((SpawnerObject *) &this->unk310)->GetNumberActive();
+                                this->unk310.GetNumberActive();
                                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                                    ((SpawnerObject *) &this->unk310)->DespawnAll();
+                                    this->unk310.DespawnAll();
                                 }
                                 this->unk2C0.RemoveAllSpawnPoints(0U);
-                                ((SpawnerObject *) &this->unk310)->RemoveAllSpawnPoints(0U);
+                                this->unk310.RemoveAllSpawnPoints(0U);
                                 temp_r3_9972 = this->unk70;
                                 M2C_FIELD(M2C_FIELD(temp_r3_9972, void **, 0), M2C_UNK (**)(void **), 0x10)(temp_r3_9972);
                                 AttemptSpawn();
                                 goto loop_47;
                             }
-                            if ((s32) this->unk3CC != (s32) M2C_FIELD(this, s32 *, 0x3CC)) {
+                            if ((s32) this->unk3D4 != (s32) this->unk3CC) {
                                 goto block_42;
                             }
                         }
@@ -5147,31 +5140,31 @@ block_37:
         }
         temp_r3_9989 = this->unk70;
         M2C_FIELD(M2C_FIELD(temp_r3_9989, void **, 0), M2C_UNK (**)(void **), 0x30)(temp_r3_9989);
-        M2C_FIELD(this, u8 *, 0x3BE) = 1U;
+        this->unk3BE = 1;
     }
 }
 #endif
 
 #if 0 // DRAFT: illegal type
 void DojoController::StateDojoFightEnter() {
-    f32 *sp14;
+    s8 *sp14;
     s32 spC;
     s32 sp8;
     s32 temp_r0_10022;
     void **temp_r3_10018;
     void **temp_r7_10030;
 
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
+    this->unk3BE = 0;
     M2C_FIELD(this->unk70, s32 *, 0xC) = 0;
-    this->unk3C8 = 0;
-    this->unk3CC = 0;
+    this->unk3D0 = 0;
+    this->unk3D4 = 0;
     temp_r3_10018 = this->unk70;
     if (((s32) M2C_FIELD(temp_r3_10018, s32 *, 0x14) == 0) && ((temp_r0_10022 = M2C_FIELD(temp_r3_10018, s32 *, 8), ((temp_r0_10022 == 1) != 0)) || (temp_r0_10022 == 2))) {
         ClearCombatArcs();
         temp_r7_10030 = this->unk70;
-        DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((M2C_FIELD(temp_r7_10030, s32 *, 8) - 1) * 4) + M2C_FIELD(temp_r7_10030, s32 *, 0x10) + 0x1AF) * 4)), (s8 *) &this->unk460, 0, 0x200);
+        DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((M2C_FIELD(temp_r7_10030, s32 *, 8) - 1) * 4) + M2C_FIELD(temp_r7_10030, s32 *, 0x10) + 0x1AF) * 4)), &this->unk468, 0, 0x200);
         spC = 0;
-        sp14 = &this->unk460;
+        sp14 = &this->unk468;
         spC = 0;
         sp8 = 0x96;
         InGame_SystemMessage((MKMessage *) &sp8);
@@ -5184,7 +5177,7 @@ void DojoController::StateDojoInstructExit() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    CharacterGraphNode *temp_r3_10120;
+    MKSceneManager *temp_r3_10120;
     MKSceneManager *temp_r3_10141;
     s32 temp_cr0_eq_10083;
     s32 temp_r0_10070;
@@ -5206,21 +5199,21 @@ void DojoController::StateDojoInstructExit() {
     }
     temp_r3_10113 = this->unk70;
     if (((s32) M2C_FIELD(temp_r3_10113, s32 *, 0x14) == 0) && ((s32) M2C_FIELD(temp_r3_10113, s32 *, 8) == 3)) {
-        temp_r3_10120 = this->unk3DC;
+        temp_r3_10120 = this->unk3E4;
         sp14 = 0;
         sp10 = 0xB5;
-        M2C_FIELD(temp_r3_10120->unk44, M2C_UNK (**)(CharacterGraphNode *, s32 *, M2C_UNK), 0x2C)(temp_r3_10120, &sp10, 0);
+        M2C_FIELD(temp_r3_10120->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10120, &sp10, 0);
     }
     temp_r3_10131 = this->unk70;
     if (((s32) M2C_FIELD(temp_r3_10131, s32 *, 0x14) == 0x17) && ((s32) M2C_FIELD(temp_r3_10131, s32 *, 8) == 1) && ((s32) M2C_FIELD(temp_r3_10131, s32 *, 0x10) == 0)) {
-        temp_r3_10141 = this->unk3E8;
+        temp_r3_10141 = this->unk3F0;
         spC = 0;
         sp8 = 0xB5;
         M2C_FIELD(temp_r3_10141->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10141, &sp8, 0);
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(DojoController *, const char[20])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char[20])' does not match
 void DojoController::StateDojoInstructUpdate() {
     s8 sp12A;
     s8 sp129;
@@ -5291,13 +5284,13 @@ void DojoController::StateDojoInstructUpdate() {
     s32 sp8;
     MKSceneManager *temp_r3_10347;
     MKSceneManager *temp_r3_10648;
+    MKSceneManager *temp_r3_10658;
     s32 temp_r0_10186;
     s32 temp_r0_10200;
     s32 temp_r0_10241;
     s32 temp_r0_10282;
     s32 temp_r0_10304;
     s32 temp_r0_10363;
-    s32 temp_r3_10658;
     s32 temp_r4_10569;
     s32 temp_r5_10360;
     s32 var_r3_10364;
@@ -5311,7 +5304,7 @@ void DojoController::StateDojoInstructUpdate() {
     if ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u8 *, 0xA9) != 0) {
         M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u8 *, 0xA9) = 0U;
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x3C1) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
+    if (((u8) this->unk3C1 == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
         temp_r3_10182 = this->unk70;
         if ((s32) M2C_FIELD(temp_r3_10182, s32 *, 0x14) == 0) {
             temp_r0_10186 = M2C_FIELD(temp_r3_10182, s32 *, 8);
@@ -5320,16 +5313,16 @@ void DojoController::StateDojoInstructUpdate() {
                 temp_r0_10200 = M2C_FIELD(temp_r3_10182, s32 *, 0x10);
                 switch (temp_r0_10200) {            /* switch 2; irregular */
                 case 0:                             /* switch 2 */
-                    strcpy(this + 0x7F1, "FireDojoKnockUpEasy");
+                    strcpy(&this->unk7F1, "FireDojoKnockUpEasy");
                     break;
                 case 1:                             /* switch 2 */
-                    strcpy(this + 0x7F1, "FireDojoKnockUpMed");
+                    strcpy(&this->unk7F1, "FireDojoKnockUpMed");
                     break;
                 case 2:                             /* switch 2 */
-                    strcpy(this + 0x7F1, "FireDojoKnockUpHard");
+                    strcpy(&this->unk7F1, "FireDojoKnockUpHard");
                     break;
                 case 3:                             /* switch 2 */
-                    strcpy(this + 0x7F1, "FireDojoKnockUpHardest");
+                    strcpy(&this->unk7F1, "FireDojoKnockUpHardest");
                     break;
                 }
                 break;
@@ -5337,16 +5330,16 @@ void DojoController::StateDojoInstructUpdate() {
                 temp_r0_10241 = M2C_FIELD(temp_r3_10182, s32 *, 0x10);
                 switch (temp_r0_10241) {            /* switch 3; irregular */
                 case 0:                             /* switch 3 */
-                    strcpy(this + 0x7F1, "FireDojoKnockBackEasy");
+                    strcpy(&this->unk7F1, "FireDojoKnockBackEasy");
                     break;
                 case 1:                             /* switch 3 */
-                    strcpy(this + 0x7F1, "FireDojoKnockBackMed");
+                    strcpy(&this->unk7F1, "FireDojoKnockBackMed");
                     break;
                 case 2:                             /* switch 3 */
-                    strcpy(this + 0x7F1, "FireDojoKnockBackMultiple");
+                    strcpy(&this->unk7F1, "FireDojoKnockBackMultiple");
                     break;
                 case 3:                             /* switch 3 */
-                    strcpy(this + 0x7F1, "FireDojoKnockBackHard");
+                    strcpy(&this->unk7F1, "FireDojoKnockBackHard");
                     break;
                 }
                 break;
@@ -5354,10 +5347,10 @@ void DojoController::StateDojoInstructUpdate() {
                 temp_r0_10282 = M2C_FIELD(temp_r3_10182, s32 *, 0x10);
                 switch (temp_r0_10282) {            /* switch 4; irregular */
                 case 0:                             /* switch 4 */
-                    strcpy(this + 0x7F1, "FireDojoBreath1Easy");
+                    strcpy(&this->unk7F1, "FireDojoBreath1Easy");
                     break;
                 case 1:                             /* switch 4 */
-                    strcpy(this + 0x7F1, "FireDojoBreath1Med");
+                    strcpy(&this->unk7F1, "FireDojoBreath1Med");
                     break;
                 }
                 break;
@@ -5365,21 +5358,21 @@ void DojoController::StateDojoInstructUpdate() {
                 temp_r0_10304 = M2C_FIELD(temp_r3_10182, s32 *, 0x10);
                 switch (temp_r0_10304) {            /* switch 5; irregular */
                 case 0:                             /* switch 5 */
-                    strcpy(this + 0x7F1, "FireDojoBreath2Easy");
+                    strcpy(&this->unk7F1, "FireDojoBreath2Easy");
                     break;
                 case 1:                             /* switch 5 */
-                    strcpy(this + 0x7F1, "FireDojoBreath2Med");
+                    strcpy(&this->unk7F1, "FireDojoBreath2Med");
                     break;
                 case 2:                             /* switch 5 */
-                    strcpy(this + 0x7F1, "FireDojoBreath2Hard");
+                    strcpy(&this->unk7F1, "FireDojoBreath2Hard");
                     break;
                 }
                 break;
             case 4:                                 /* switch 1 */
-                strcpy(this + 0x7F1, "FireDojoFury");
+                strcpy(&this->unk7F1, "FireDojoFury");
                 break;
             }
-            this->unk7E4 = PhrasePlayer_PlayEvent(this + 0x7F1);
+            this->unk7EC = PhrasePlayer_PlayEvent(&this->unk7F1);
         }
         temp_r3_10347 = this->unk5C;
         sp2C = 0;
@@ -5417,7 +5410,7 @@ void DojoController::StateDojoInstructUpdate() {
             sp34 = this;
         }
         InGame_SystemMessage((MKMessage *) &sp30);
-        M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + M2C_BITWISE(f32, this->unk454));
+        this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk45C;
         if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
             temp_r3_10431 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(), 0xC)();
             sp14 = 0;
@@ -5444,8 +5437,8 @@ void DojoController::StateDojoInstructUpdate() {
                     spE0 = 0xE;
                     sp100 = 0;
                     sp101 = 1;
-                    spE8 = M2C_FIELD(this, f64 *, 0x388);
-                    spF0 = this->unk388;
+                    spE8 = this->unk388;
+                    spF0 = this->unk390;
                     spF8 = -1.35f;
                     spFC = 0;
                     sp102 = 1;
@@ -5475,8 +5468,8 @@ void DojoController::StateDojoInstructUpdate() {
                     sp90 = 0xE;
                     spB0 = 0;
                     spB1 = 1;
-                    sp98 = M2C_FIELD(this, f64 *, 0x388);
-                    spA0 = this->unk388;
+                    sp98 = this->unk388;
+                    spA0 = this->unk390;
                     spA8 = -1.35f;
                     spAC = 0;
                     spB2 = 1;
@@ -5508,8 +5501,8 @@ void DojoController::StateDojoInstructUpdate() {
                     sp40 = 0xE;
                     sp60 = 0;
                     sp61 = 1;
-                    sp48 = M2C_FIELD(this, f64 *, 0x388);
-                    sp50 = this->unk388;
+                    sp48 = this->unk388;
+                    sp50 = this->unk390;
                     sp58 = -1.35f;
                     sp5C = 0;
                     sp62 = 1;
@@ -5521,19 +5514,19 @@ void DojoController::StateDojoInstructUpdate() {
                 break;
             }
         }
-        M2C_FIELD(this, u8 *, 0x3C1) = 1U;
+        this->unk3C1 = 1;
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x3C1) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
+    if (((u8) this->unk3C1 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk398) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
         temp_r3_10648 = this->unk5C;
         sp24 = 0;
         sp20 = 0xB4;
         M2C_FIELD(temp_r3_10648->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10648, &sp20, 0);
-        temp_r3_10658 = this->unk400;
+        temp_r3_10658 = this->unk408;
         sp1C = 0;
         sp18 = 0xBC;
-        M2C_FIELD(M2C_FIELD(temp_r3_10658, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10658, &sp18, 0);
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 3, 0U);
-        M2C_FIELD(this, u8 *, 0x3C1) = 0U;
+        M2C_FIELD(temp_r3_10658->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10658, &sp18, 0);
+        this->unk360.SetState(this, 3, 0U);
+        this->unk3C1 = 0;
         temp_r3_10675 = this->unk70;
         M2C_FIELD(M2C_FIELD(temp_r3_10675, void **, 0), M2C_UNK (**)(void **), 0x14)(temp_r3_10675);
         if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
@@ -5559,7 +5552,7 @@ void DojoController::StateDojoInstructEnter() {
 
     var_r31_10716 = 0;
     var_r29_10719 = 0;
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
+    this->unk3BE = 0;
     M2C_FIELD(&gb, s8 *, 0xA) = 1;
     sp8 = M2C_FIELD(this, f64 *, 0x378);
     sp10 = M2C_FIELD(this, f64 *, 0x380);
@@ -5582,24 +5575,24 @@ void DojoController::StateDojoStatueDownExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void DojoController::StateDojoStatueDownUpdate() {
     s32 spC;
     s32 sp8;
-    s32 temp_r3_10781;
+    DragonStatue *temp_r3_10781;
 
     if ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C) != 0) {
-        if (((DragonStatue *) this->unk3FC)->IsUp() != 0) {
-            temp_r3_10781 = this->unk3FC;
+        if (this->unk404->IsUp() != 0) {
+            temp_r3_10781 = this->unk404;
             spC = 0;
             sp8 = 0xB5;
-            M2C_FIELD(M2C_FIELD(temp_r3_10781, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10781, &sp8, 0);
+            temp_r3_10781->Message(&sp8, 0);
         }
-        if (((DragonStatue *) this->unk3FC)->IsDown() != 0) {
-            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
+        if (this->unk404->IsDown() != 0) {
+            this->unk360.SetState(this, 2, 0U);
         }
     } else {
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
+        this->unk360.SetState(this, 2, 0U);
     }
 }
 #endif
@@ -5667,57 +5660,57 @@ void DojoLesson::UpdateCombatArcs() {
         }
         if ((u8) var_r3_10924 != 0) {
             temp_r5_10935 = this->unk4;
-            DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((this->unk8 - 1) * 4) + this->unk10 + 0x1AF) * 4)), (s8 *) &temp_r5_10935->unk460, temp_r5_10935->unk668 + 1, 0x200);
+            DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((this->unk8 - 1) * 4) + this->unk10 + 0x1AF) * 4)), &temp_r5_10935->unk468, temp_r5_10935->unk670 + 1, 0x200);
             this->unk4->unk668 = 2;
-            this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 1.5f;
+            this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 1.5f;
             this->unk4->PlayButtonTone();
         }
     }
     ((GameGlobals *) &gb)->GetSpyro();
     if (((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags() != 0U) {
         temp_r4_10968 = this->unk4;
-        if ((MKSceneManager *) temp_r4_10968->unk408 == NULL) {
-            temp_r4_10968->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+        if ((u32) temp_r4_10968->unk410 == 0) {
+            temp_r4_10968->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         }
     }
     ((GameGlobals *) &gb)->GetSpyro();
-    if ((DragonStatue *) this->unk4->unk404 != ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags()) {
+    if ((u32) this->unk4->unk40C != ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags()) {
         ((GameGlobals *) &gb)->GetSpyro();
         temp_r30_10991 = this->unk4;
-        temp_r30_10991->AddCombatArc((s32) temp_r30_10991->unk404 ^ ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags());
+        temp_r30_10991->AddCombatArc(temp_r30_10991->unk40C ^ ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags());
         if (((s32) this->unk14 == 0) && ((temp_r3_11001 = this->unk8, ((temp_r3_11001 == 1) != 0)) || (temp_r3_11001 == 2))) {
             temp_r6_11008 = this->unk4;
             temp_r3_11017 = *(gpTranslation_StringArray + ((((temp_r3_11001 - 1) * 4) + this->unk10 + 0x1AF) * 4));
             if ((s32) temp_r6_11008->unk668 == 2) {
-                DialogBox_ColorButtons(temp_r3_11017, (s8 *) &temp_r6_11008->unk460, temp_r6_11008->unk668 + 1, 0x200);
+                DialogBox_ColorButtons(temp_r3_11017, &temp_r6_11008->unk468, temp_r6_11008->unk670 + 1, 0x200);
             } else {
-                DialogBox_ColorButtons(temp_r3_11017, (s8 *) &temp_r6_11008->unk460, temp_r6_11008->unk668, 0x200);
+                DialogBox_ColorButtons(temp_r3_11017, &temp_r6_11008->unk468, temp_r6_11008->unk670, 0x200);
             }
         }
-        this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+        this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
     }
     temp_r3_11039 = this->unk4;
-    if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_11039->unk39C) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_11039->unk3A4) {
         temp_r3_11039->ClearCombatArcs();
-        this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+        this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
     }
-    if ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x50)(M2C_FIELD(&gb, void ***, 0)) != 0) && (temp_r3_11063 = this->unk4, (((u8) M2C_FIELD(temp_r3_11063, u8 *, 0x679) == 0) != 0))) {
-        M2C_FIELD(temp_r3_11063, u8 *, 0x679) = 1U;
+    if ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x50)(M2C_FIELD(&gb, void ***, 0)) != 0) && (temp_r3_11063 = this->unk4, (((u8) temp_r3_11063->unk679 == 0) != 0))) {
+        temp_r3_11063->unk679 = 1;
         this->unk4->ClearCombatArcs();
-        this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+        this->unk4->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         if (((s32) this->unk14 == 0) && ((temp_r3_11079 = this->unk8, ((temp_r3_11079 == 1) != 0)) || (temp_r3_11079 == 2))) {
             temp_r6_11086 = this->unk4;
             temp_r3_11095 = *(gpTranslation_StringArray + ((((temp_r3_11079 - 1) * 4) + this->unk10 + 0x1AF) * 4));
             if ((s32) temp_r6_11086->unk668 == 2) {
-                DialogBox_ColorButtons(temp_r3_11095, (s8 *) &temp_r6_11086->unk460, temp_r6_11086->unk668 + 1, 0x200);
+                DialogBox_ColorButtons(temp_r3_11095, &temp_r6_11086->unk468, temp_r6_11086->unk670 + 1, 0x200);
                 return;
             }
-            DialogBox_ColorButtons(temp_r3_11095, (s8 *) &temp_r6_11086->unk460, temp_r6_11086->unk668, 0x200);
+            DialogBox_ColorButtons(temp_r3_11095, &temp_r6_11086->unk468, temp_r6_11086->unk670, 0x200);
         }
     } else if (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x50)(M2C_FIELD(&gb, void ***, 0)) == 0) {
         temp_r3_11119 = this->unk4;
-        if ((u8) M2C_FIELD(temp_r3_11119, u8 *, 0x679) != 0) {
-            M2C_FIELD(temp_r3_11119, u8 *, 0x679) = 0U;
+        if ((u8) temp_r3_11119->unk679 != 0) {
+            temp_r3_11119->unk679 = 0;
         }
     }
 }
@@ -5730,22 +5723,22 @@ void DojoController::Draw() {
 void DojoController::PlayButtonTone() {
     s32 temp_r3_11150;
 
-    this->unk674 = this->unk674 + 1;
-    temp_r3_11150 = this->unk674;
-    if (temp_r3_11150 == M2C_BITWISE(s32, this->unk66C)) {
-        this->unk674 = temp_r3_11150 + 1;
+    this->unk67C = this->unk67C + 1;
+    temp_r3_11150 = this->unk67C;
+    if (temp_r3_11150 == (s32) this->unk674) {
+        this->unk67C = temp_r3_11150 + 1;
     }
-    KDSound_SetPitch(KDSound_Play(GS_ButtonPush4, 0U, -1), (0.1f * (f32) this->unk674) + 0.8f);
+    KDSound_SetPitch(KDSound_Play(GS_ButtonPush4, 0U, -1), (0.1f * (f32) this->unk67C) + 0.8f);
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char *)' does not match
 void DojoController::Update() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) > 0.0f) {
-        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->Update(this, 0);
+        this->unk360.Update(this, 0);
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x7F0) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x39C))) {
-        M2C_FIELD(this, u8 *, 0x7F0) = 0U;
-        this->unk7E4 = PhrasePlayer_PlayEvent(this + 0x7F1);
+    if (((u8) this->unk7F0 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk39C)) {
+        this->unk7F0 = 0;
+        this->unk7EC = PhrasePlayer_PlayEvent(&this->unk7F1);
     }
     MKProp::Update();
 }
@@ -5853,7 +5846,7 @@ loop_17:
         sp50 = sp10;
         sp58 = (f64) sp18;
         spF8 = (f64) sp18;
-        (*(f32 *) ((u8 *) &spF0 + 0x4)) = this->unk37C;
+        (*(f32 *) ((u8 *) &spF0 + 0x4)) = this->unk378.unk4;
         M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         sp30 = -M2C_FIELD(arg2, f32 *, 0);
         sp34 = -M2C_FIELD(arg2, f32 *, 4);
@@ -5948,12 +5941,12 @@ void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphN
     spE0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r31_11551 = 0;
     if ((s32) arg0 == 0) {
-        if ((s32) M2C_FIELD(this, s32 *, 0x3C8) != 0) {
+        if ((s32) this->unk3C8 != 0) {
             var_r30_11563 = 0;
             var_r23_11564 = 0;
             var_r22_11565 = 0;
 loop_76:
-            if (var_r30_11563 < (s32) M2C_FIELD(this, s32 *, 0x3C8)) {
+            if (var_r30_11563 < (s32) this->unk3C8) {
 loop_69:
                 if (var_r31_11551 == 0) {
                     var_r31_11551 = 1;
@@ -6137,8 +6130,8 @@ block_67:
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC8) = (f32) spE0;
                 M2C_FIELD(temp_r16_11902, f32 *, 0xCC) = 1.0f;
-                spC8 = M2C_FIELD(this, f64 *, 0x388);
-                spD0 = this->unk388;
+                spC8 = this->unk388;
+                spD0 = this->unk390;
                 (*(f32 *) ((u8 *) &spC8 + 0x4)) = (*(f32 *) ((u8 *) &spD8 + 0x4));
                 temp_r15_11925->SetLookAt(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8));
                 var_r30_11563 += 1;
@@ -6148,12 +6141,12 @@ block_67:
             }
             this->unk2C0.AddSpawnPointEnd();
         }
-    } else if ((s32) M2C_FIELD(this, s32 *, 0x3CC) != 0) {
-        var_r21_11959 = M2C_FIELD(this, s32 *, 0x3C8);
+    } else if ((s32) this->unk3CC != 0) {
+        var_r21_11959 = this->unk3C8;
         var_r22_11963 = var_r21_11959 * 0x60;
         var_r23_11966 = var_r21_11959 * 4;
 loop_92:
-        if (var_r21_11959 < (s32) (M2C_FIELD(this, s32 *, 0x3C8) + M2C_FIELD(this, s32 *, 0x3CC))) {
+        if (var_r21_11959 < (s32) (this->unk3C8 + this->unk3CC)) {
 loop_85:
             if (var_r31_11551 == 0) {
                 var_r31_11551 = 1;
@@ -6186,15 +6179,15 @@ loop_82:
             } else {
                 M2C_FIELD(M2C_FIELD(temp_r16_12006, void **, 0x84), s32 *, 0x24) = 0;
             }
-            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(((u8 *) temp_r16_12006) + 0x80);
+            this->unk310.AddSpawnPoint(((u8 *) temp_r16_12006) + 0x80);
             temp_r15_12029 = ((u8 *) temp_r16_12006) + 0x90;
             temp_r15_12029->SetIdentity();
             M2C_FIELD(temp_r16_12006, f32 *, 0xC0) = (f32) spD8;
             M2C_FIELD(temp_r16_12006, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
             M2C_FIELD(temp_r16_12006, f32 *, 0xC8) = (f32) spE0;
             M2C_FIELD(temp_r16_12006, f32 *, 0xCC) = 1.0f;
-            spC8 = M2C_FIELD(this, f64 *, 0x388);
-            spD0 = this->unk388;
+            spC8 = this->unk388;
+            spD0 = this->unk390;
             (*(f32 *) ((u8 *) &spC8 + 0x4)) = (*(f32 *) ((u8 *) &spD8 + 0x4));
             temp_r15_12029->SetLookAt(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8));
             var_r21_11959 += 1;
@@ -6202,7 +6195,7 @@ loop_82:
             var_r23_11966 += 4;
             goto loop_92;
         }
-        ((SpawnerObject *) &this->unk310)->AddSpawnPointEnd();
+        this->unk310.AddSpawnPointEnd();
     }
 }
 #endif
@@ -6277,11 +6270,11 @@ void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MK
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
     if ((s32) arg0 == 0) {
-        if ((s32) M2C_FIELD(this, s32 *, 0x3C8) != 0) {
+        if ((s32) this->unk3C8 != 0) {
             var_r29_12133 = 0;
             var_r22_12134 = 0;
 loop_19:
-            if (var_r29_12133 < (s32) M2C_FIELD(this, s32 *, 0x3C8)) {
+            if (var_r29_12133 < (s32) this->unk3C8) {
                 if ((arg4 != 0) && (var_r29_12133 == 0)) {
                     sp148 = M2C_FIELD(arg1, f64 *, 0);
                     sp150 = M2C_FIELD(arg1, f64 *, 8);
@@ -6328,7 +6321,7 @@ loop_19:
                 sp20 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f2_12289;
                 spA8 = temp_f0_12292;
                 sp150 = (f64) sp20;
-                temp_f0_12305 = this->unk37C;
+                temp_f0_12305 = this->unk378.unk4;
                 spB0 = (f64) sp20;
                 (*(f32 *) ((u8 *) &sp148 + 0x4)) = temp_f0_12305;
                 M2C_FIELD(M2C_FIELD(temp_r21_12294, void **, 0x84), u32 *, 4) = arg7;
@@ -6339,8 +6332,8 @@ loop_19:
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC4) = temp_f0_12305;
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC8) = (f32) sp150;
                 M2C_FIELD(temp_r21_12294, f32 *, 0xCC) = 1.0f;
-                sp158 = M2C_FIELD(this, f64 *, 0x388);
-                sp160 = this->unk388;
+                sp158 = this->unk388;
+                sp160 = this->unk390;
                 (*(f32 *) ((u8 *) &sp158 + 0x4)) = temp_f0_12305;
                 temp_r20_12311->SetLookAt(*((MKVector3 *) &sp148), *((MKVector3 *) &sp158));
                 var_r29_12133 += 1;
@@ -6349,12 +6342,12 @@ loop_19:
             }
             this->unk2C0.AddSpawnPointEnd();
         }
-    } else if ((s32) M2C_FIELD(this, s32 *, 0x3CC) != 0) {
-        var_r29_12344 = M2C_FIELD(this, s32 *, 0x3C8);
+    } else if ((s32) this->unk3CC != 0) {
+        var_r29_12344 = this->unk3C8;
         var_r22_12348 = var_r29_12344 * 0x60;
 loop_39:
-        temp_r3_12544 = M2C_FIELD(this, s32 *, 0x3C8);
-        if (var_r29_12344 < (s32) (temp_r3_12544 + M2C_FIELD(this, s32 *, 0x3CC))) {
+        temp_r3_12544 = this->unk3C8;
+        if (var_r29_12344 < (s32) (temp_r3_12544 + this->unk3CC)) {
             if ((arg4 != 0) && (var_r29_12344 == temp_r3_12544)) {
                 sp148 = M2C_FIELD(arg1, f64 *, 0);
                 sp150 = M2C_FIELD(arg1, f64 *, 8);
@@ -6403,44 +6396,44 @@ loop_39:
             sp150 = (f64) sp10;
             sp40 = (f64) sp10;
             M2C_FIELD(M2C_FIELD(temp_r20_12506, void **, 0x84), u32 *, 4) = arg7;
-            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(((u8 *) temp_r20_12506) + 0x80);
+            this->unk310.AddSpawnPoint(((u8 *) temp_r20_12506) + 0x80);
             temp_r21_12521 = ((u8 *) temp_r20_12506) + 0x90;
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
             M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = (*(f32 *) ((u8 *) &sp148 + 0x4));
             M2C_FIELD(temp_r20_12506, f32 *, 0xC8) = (f32) sp150;
             M2C_FIELD(temp_r20_12506, f32 *, 0xCC) = 1.0f;
-            sp158 = M2C_FIELD(this, f64 *, 0x388);
-            sp160 = this->unk388;
+            sp158 = this->unk388;
+            sp160 = this->unk390;
             (*(f32 *) ((u8 *) &sp158 + 0x4)) = (*(f32 *) ((u8 *) &sp148 + 0x4));
             temp_r21_12521->SetLookAt(*((MKVector3 *) &sp148), *((MKVector3 *) &sp158));
             var_r29_12344 += 1;
             var_r22_12348 += 0x60;
             goto loop_39;
         }
-        ((SpawnerObject *) &this->unk310)->AddSpawnPointEnd();
+        this->unk310.AddSpawnPointEnd();
     }
 }
 #endif
 
 void DojoController::AddCombatArc(unsigned int arg0) {
+    s32 temp_r0_12571;
     s32 temp_r6_12583;
-    u32 temp_r0_12571;
     void *temp_r5_12585;
 
-    temp_r0_12571 = this->unk440;
-    if ((s32) temp_r0_12571 < 7) {
+    temp_r0_12571 = this->unk448;
+    if (temp_r0_12571 < 7) {
         M2C_FIELD((this + (temp_r0_12571 * 4)), u32 *, 0x410) = arg0;
-        this->unk404 = (DragonStatue *) ((s32) this->unk404 | arg0);
-        this->unk440 += 1;
-        temp_r6_12583 = this->unk668;
+        this->unk40C |= arg0;
+        this->unk448 += 1;
+        temp_r6_12583 = this->unk670;
         temp_r5_12585 = this + (temp_r6_12583 * 4);
         if ((u32) M2C_FIELD(temp_r5_12585, u32 *, 0x410) == (u32) M2C_FIELD(temp_r5_12585, u32 *, 0x42C)) {
-            this->unk668 = temp_r6_12583 + 1;
+            this->unk670 = temp_r6_12583 + 1;
             PlayButtonTone();
             return;
         }
-        if ((u8) M2C_FIELD(this, u8 *, 0x678) != 0) {
+        if ((u8) this->unk678 != 0) {
             ClearCombatArcs();
         }
     } else {
@@ -6465,16 +6458,16 @@ void DojoController::ClearCombatArcs() {
         *(this + temp_r0_12623) = 0;
         var_ctr_12621 -= 1;
     } while (var_ctr_12621 != 0);
-    this->unk668 = 0;
-    this->unk440 = 0;
-    this->unk404 = NULL;
-    this->unk674 = 0;
+    this->unk670 = 0;
+    this->unk448 = 0;
+    this->unk40C = 0;
+    this->unk67C = 0;
     ((GameGlobals *) &gb)->GetSpyro();
     ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->ClearCombatArcHitFlags();
-    this->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f;
+    this->unk3A4 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f;
     temp_r3_12643 = this->unk70;
     if (((s32) M2C_FIELD(temp_r3_12643, s32 *, 0x14) == 0) && ((temp_r4_12647 = M2C_FIELD(temp_r3_12643, s32 *, 8), ((temp_r4_12647 == 1) != 0)) || (temp_r4_12647 == 2))) {
-        DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_12647 - 1) * 4) + M2C_FIELD(temp_r3_12643, s32 *, 0x10) + 0x1AF) * 4)), (s8 *) &this->unk460, this->unk668, 0x200);
+        DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_12647 - 1) * 4) + M2C_FIELD(temp_r3_12643, s32 *, 0x10) + 0x1AF) * 4)), &this->unk468, this->unk670, 0x200);
     }
 }
 #endif
@@ -6486,20 +6479,19 @@ void DojoController::AttemptSpawn() {
         this->unk2C0.TrySpawnItems(0x2C, 0U);
         this->unk2C0.FunctionOff();
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x35C) >> 7U) & 1) {
-        ((SpawnerObject *) &this->unk310)->FunctionOn();
-        this->unk310.unk34 = M2C_FIELD(&gb, f32 *, 0x30C) - 1.0f;
-        ((SpawnerObject *) &this->unk310)->TrySpawnItems(0x2D, 0U);
-        ((SpawnerObject *) &this->unk310)->FunctionOff();
+    if (((u8) this->unk310.unk4C >> 7U) & 1) {
+        this->unk310.FunctionOn();
+        this->unk310.unk38 = M2C_FIELD(&gb, f32 *, 0x30C) - 1.0f;
+        this->unk310.TrySpawnItems(0x2D, 0U);
+        this->unk310.FunctionOff();
     }
     this->unk2C0.GetNumberActive();
-    this->unk3C8 = M2C_ERROR(/* Read from unset register $r3 */);
-    ((SpawnerObject *) &this->unk310)->GetNumberActive();
-    this->unk3CC = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unk3D0 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unk310.GetNumberActive();
+    this->unk3D4 = M2C_ERROR(/* Read from unset register $r3 */);
     this->unk3A8 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.25f;
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::Message(MKMessage *arg0) {
     s32 temp_r0_12745;
 
@@ -6508,28 +6500,27 @@ void DojoController::Message(MKMessage *arg0) {
     case 0xB4:
         break;
     case 0xB5:
-        if (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 0) {
+        if (this->unk360.GetState() == 0) {
             M2C_FIELD(&gb, s8 *, 0xA) = 1;
             ClearCombatArcs();
-            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 1, 0U);
-        } else if ((((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 4) || (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 5)) {
-            M2C_FIELD(this, s8 *, 0x3C3) = 1;
+            this->unk360.SetState(this, 1, 0U);
+        } else if ((this->unk360.GetState() == 4) || (this->unk360.GetState() == 5)) {
+            this->unk3C3 = 1;
         }
         break;
     case 0x97:
-        if (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 2) {
-            M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f);
-            if (PhrasePlayer_IsEventPlaying(this->unk7E4) != 0) {
-                PhrasePlayer_StopEvent(this->unk7E4);
+        if (this->unk360.GetState() == 2) {
+            this->unk398 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f;
+            if (PhrasePlayer_IsEventPlaying(this->unk7EC) != 0) {
+                PhrasePlayer_StopEvent(this->unk7EC);
             }
         }
         break;
     }
     MKProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void DojoController::Resolve() {
     s32 sp24;
     s32 sp20;
@@ -6539,10 +6530,7 @@ void DojoController::Resolve() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    CharacterGraphNode *temp_ret_12904;
-    CharacterGraphNode *temp_ret_12908;
-    CharacterGraphNode *temp_ret_12912;
-    CharacterGraphNode *temp_ret_12916;
+    DragonStatue *temp_ret_12937;
     MKSceneManager *temp_r3_12850;
     MKSceneManager *temp_r3_12857;
     MKSceneManager *temp_r3_12867;
@@ -6551,8 +6539,11 @@ void DojoController::Resolve() {
     MKSceneManager *temp_ret_12833;
     MKSceneManager *temp_ret_12837;
     MKSceneManager *temp_ret_12841;
+    MKSceneManager *temp_ret_12904;
+    MKSceneManager *temp_ret_12908;
+    MKSceneManager *temp_ret_12912;
+    MKSceneManager *temp_ret_12916;
     s32 temp_r29_12921;
-    s32 temp_ret_12937;
     s32 var_r28_12918;
     s32 var_r30_12919;
     u32 var_r4_12916;
@@ -6561,8 +6552,8 @@ void DojoController::Resolve() {
     u64 temp_ret_12899;
     void *temp_r3_12926;
 
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
-    temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 0, 0U)));
+    this->unk3BE = 0;
+    temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) this->unk360.SetState(this, 0, 0U)));
     this->unk60 = temp_ret_12829;
     temp_ret_12833 = checked_cast<EventCamera *, MKProp>(this->unk5C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12829));
     this->unk5C = temp_ret_12833;
@@ -6586,21 +6577,21 @@ void DojoController::Resolve() {
     temp_r3_12877 = this->unk6C;
     spC = 0;
     sp8 = 0xB4;
-    temp_ret_12889 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D0)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0)));
-    this->unk3D0 = temp_ret_12889 + 0x50;
-    temp_ret_12894 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D4)->PropResolver_Resolve((s32) (u32) temp_ret_12889));
-    this->unk3D4 = temp_ret_12894 + 0x50;
-    temp_ret_12899 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) temp_ret_12894));
-    this->unk3D8 = temp_ret_12899 + 0x50;
-    temp_ret_12904 = checked_cast<ElementalWall *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12899));
-    this->unk3DC = temp_ret_12904;
-    temp_ret_12908 = checked_cast<ElementalWall *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904));
-    this->unk3E0 = temp_ret_12908;
-    temp_ret_12912 = checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908));
-    this->unk3E4 = temp_ret_12912;
-    temp_ret_12916 = checked_cast<ElementalWall *, MKProp>(this->unk3E8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12912));
+    temp_ret_12889 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0)));
+    this->unk3D8 = temp_ret_12889 + 0x50;
+    temp_ret_12894 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12889));
+    this->unk3DC = temp_ret_12894 + 0x50;
+    temp_ret_12899 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) temp_ret_12894));
+    this->unk3E0 = temp_ret_12899 + 0x50;
+    temp_ret_12904 = checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) temp_ret_12899));
+    this->unk3E4 = temp_ret_12904;
+    temp_ret_12908 = checked_cast<ElementalWall *, MKProp>(this->unk3E8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904));
+    this->unk3E8 = temp_ret_12908;
+    temp_ret_12912 = checked_cast<ElementalWall *, MKProp>(this->unk3EC->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908));
+    this->unk3EC = temp_ret_12912;
+    temp_ret_12916 = checked_cast<ElementalWall *, MKProp>(this->unk3F0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12912));
     var_r4_12916 = (u32) (u64) temp_ret_12916;
-    this->unk3E8 = temp_ret_12916;
+    this->unk3F0 = temp_ret_12916;
     var_r28_12918 = 0;
     var_r30_12919 = 0;
     do {
@@ -6611,9 +6602,9 @@ void DojoController::Resolve() {
         var_r28_12918 += 1;
         var_r30_12919 += 4;
     } while (var_r28_12918 < 4);
-    temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(((MKSceneManager *) this->unk3FC)->PropResolver_Resolve((s32) var_r4_12916));
-    this->unk3FC = temp_ret_12937;
-    this->unk400 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unk400)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937));
+    temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(((MKSceneManager *) this->unk404)->PropResolver_Resolve((s32) var_r4_12916));
+    this->unk404 = temp_ret_12937;
+    this->unk408 = checked_cast<MKProp *, MKProp>(this->unk408->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937));
     MKProp::Resolve();
 }
 #endif
@@ -6623,9 +6614,9 @@ void DojoController::LoadDone() {
     s32 var_r31_12979;
 
     this->unk2C0.LoadDone(0, 6, 0U, 1U);
-    ((SpawnerObject *) &this->unk310)->LoadDone(0, 6, 0U, 1U);
+    this->unk310.LoadDone(0, 6, 0U, 1U);
     this->unk2C0.AddSpawnPointBegin(6);
-    ((SpawnerObject *) &this->unk310)->AddSpawnPointBegin(6);
+    this->unk310.AddSpawnPointBegin(6);
     var_r30_12978 = 0;
     var_r31_12979 = 0;
     do {
@@ -6668,364 +6659,364 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("SparxHintEarthResetPointID", (s32 *) &this->unk6C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadVector3("DojoCentrePoint", (MKVector3 *) &this->unk378, 0) != 0) {
+    if (arg0->LoadVector3("DojoCentrePoint", &this->unk378, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("DojoRadius", &this->unk3AC, 0) != 0) {
+    if (arg0->LoadFloat("DojoRadius", &this->unk3B4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadVector3("PlayerStartPosition", (MKVector3 *) &this->unk378.unk8, 0) != 0) {
+    if (arg0->LoadVector3("PlayerStartPosition", (MKVector3 *) &this->unk388, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("RunAroundGraphID", &this->unk3D0, 0) != 0) {
+    if (arg0->LoadInt("RunAroundGraphID", (s32 *) &this->unk3D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ShootingGraphID", &this->unk3D4, 0) != 0) {
+    if (arg0->LoadInt("ShootingGraphID", (s32 *) &this->unk3DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("RoundShootingGraphID", (s32 *) &this->unk3D8, 0) != 0) {
+    if (arg0->LoadInt("RoundShootingGraphID", (s32 *) &this->unk3E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("DragonStatueID", &this->unk3FC, 0) != 0) {
+    if (arg0->LoadInt("DragonStatueID", (s32 *) &this->unk404, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("DragonStatueDoor", &this->unk400, 0) != 0) {
+    if (arg0->LoadInt("DragonStatueDoor", (s32 *) &this->unk408, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireElementalWall", (s32 *) &this->unk3DC, 0) != 0) {
+    if (arg0->LoadInt("FireElementalWall", (s32 *) &this->unk3E4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectircElementalWall", (s32 *) &this->unk3E0, 0) != 0) {
+    if (arg0->LoadInt("ElectircElementalWall", (s32 *) &this->unk3E8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceElementalWall", (s32 *) &this->unk3E4, 0) != 0) {
+    if (arg0->LoadInt("IceElementalWall", (s32 *) &this->unk3EC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthElementalWall", (s32 *) &this->unk3E8, 0) != 0) {
+    if (arg0->LoadInt("EarthElementalWall", (s32 *) &this->unk3F0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp1ID", (s32 *) &this->unk3EC, 0) != 0) {
+    if (arg0->LoadInt("SmashProp1ID", &this->unk3F4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp2ID", (s32 *) &this->unk3F0, 0) != 0) {
+    if (arg0->LoadInt("SmashProp2ID", &this->unk3F8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp3ID", &this->unk3F4, 0) != 0) {
+    if (arg0->LoadInt("SmashProp3ID", &this->unk3FC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp4ID", &this->unk3F8, 0) != 0) {
+    if (arg0->LoadInt("SmashProp4ID", &this->unk400, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("InstructToFightDelay", (f32 *) &this->unk454, 0) != 0) {
+    if (arg0->LoadFloat("InstructToFightDelay", &this->unk45C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("TaskSuccessToInstructDelay", (f32 *) &this->unk458, 0) != 0) {
+    if (arg0->LoadFloat("TaskSuccessToInstructDelay", &this->unk460, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("TaskFailToInstructDelay", &this->unk45C, 0) != 0) {
+    if (arg0->LoadFloat("TaskFailToInstructDelay", &this->unk464, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier1", (s32 *) &this->unk678, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier1", &this->unk680, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier2", &this->unk67C, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier2", &this->unk684, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1Timer", &this->unk680, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1Timer", &this->unk688, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier1", &this->unk684, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier1", &this->unk68C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier2", &this->unk688, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier2", &this->unk690, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2Timer", &this->unk68C, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2Timer", &this->unk694, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier1", &this->unk690, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier1", &this->unk698, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier2", &this->unk694, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier2", &this->unk69C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3Timer", &this->unk698, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3Timer", &this->unk6A0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier1", &this->unk69C, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier1", &this->unk6A4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier2", &this->unk6A0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier2", &this->unk6A8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4Timer", &this->unk6A4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4Timer", &this->unk6AC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("FireMeleeKnockUpVanguardDistance", (f32 *) &this->unk6A8, 0) != 0) {
-        this->unk6A8 = 100.0f * M2C_BITWISE(f32, this->unk6A8);
+    if (arg0->LoadFloat("FireMeleeKnockUpVanguardDistance", &this->unk6B0, 0) != 0) {
+        this->unk6B0 *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier1", &this->unk6AC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier1", &this->unk6B4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier2", (s32 *) &this->unk6B0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier2", &this->unk6B8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1Timer", &this->unk6B4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1Timer", &this->unk6BC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier1", &this->unk6B8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier1", &this->unk6C0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier2", &this->unk6BC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier2", &this->unk6C4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2Timer", &this->unk6C0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2Timer", &this->unk6C8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier1", &this->unk6C4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier1", &this->unk6CC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier2", &this->unk6C8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier2", &this->unk6D0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3Timer", &this->unk6CC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3Timer", &this->unk6D4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier1", &this->unk6D0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier1", &this->unk6D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier2", &this->unk6D4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier2", &this->unk6DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4Timer", &this->unk6D8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4Timer", &this->unk6E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("FireMeleeKnockBackVanguardDistance", (f32 *) &this->unk6DC, 0) != 0) {
-        this->unk6DC = 100.0f * M2C_BITWISE(f32, this->unk6DC);
+    if (arg0->LoadFloat("FireMeleeKnockBackVanguardDistance", &this->unk6E4, 0) != 0) {
+        this->unk6E4 *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3Iterations", &this->unk6E0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3Iterations", &this->unk6E8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1NumTier1", (s32 *) &this->unk6E4, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1NumTier1", &this->unk6EC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1NumTier2", &this->unk6E8, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1NumTier2", &this->unk6F0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1Timer", &this->unk6EC, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1Timer", &this->unk6F4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2NumTier1", &this->unk6F0, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2NumTier1", &this->unk6F8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2NumTier2", &this->unk6F4, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2NumTier2", &this->unk6FC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2Timer", &this->unk6F8, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2Timer", &this->unk700, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1NumTier1", &this->unk6FC, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1NumTier1", &this->unk704, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1NumTier2", &this->unk700, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1NumTier2", &this->unk708, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1Timer", &this->unk704, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1Timer", &this->unk70C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2NumTier1", &this->unk708, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2NumTier1", &this->unk710, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2NumTier2", &this->unk70C, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2NumTier2", &this->unk714, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2Timer", &this->unk710, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2Timer", &this->unk718, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("FireBreath2VanguardDistance", (f32 *) &this->unk714, 0) != 0) {
-        this->unk714 = 100.0f * M2C_BITWISE(f32, this->unk714);
+    if (arg0->LoadFloat("FireBreath2VanguardDistance", &this->unk71C, 0) != 0) {
+        this->unk71C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireFuryNumTier1", &this->unk718, 0) != 0) {
+    if (arg0->LoadInt("FireFuryNumTier1", &this->unk720, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireFuryNumTier2", (s32 *) &this->unk71C, 0) != 0) {
+    if (arg0->LoadInt("FireFuryNumTier2", &this->unk724, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("FireFuryDojoRadiusMul", (f32 *) &this->unk720, 0) != 0) {
+    if (arg0->LoadFloat("FireFuryDojoRadiusMul", &this->unk728, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1NumTier1", &this->unk724, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1NumTier1", &this->unk72C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1NumTier2", (s32 *) &this->unk728, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1NumTier2", &this->unk730, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1Timer", &this->unk72C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1Timer", &this->unk734, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2NumTier1", &this->unk730, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2NumTier1", &this->unk738, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2NumTier2", &this->unk734, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2NumTier2", &this->unk73C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2Timer", &this->unk738, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2Timer", &this->unk740, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1NumTier1", &this->unk73C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1NumTier1", &this->unk744, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1NumTier2", &this->unk740, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1NumTier2", &this->unk748, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1Timer", &this->unk744, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1Timer", &this->unk74C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2NumTier1", &this->unk748, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2NumTier1", &this->unk750, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2NumTier2", &this->unk74C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2NumTier2", &this->unk754, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2Timer", &this->unk750, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2Timer", &this->unk758, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("ElectricBreath2VanguardDistance", (f32 *) &this->unk754, 0) != 0) {
-        this->unk754 = 100.0f * M2C_BITWISE(f32, this->unk754);
+    if (arg0->LoadFloat("ElectricBreath2VanguardDistance", &this->unk75C, 0) != 0) {
+        this->unk75C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("ElectricFuryNumTier1", &this->unk758, 0) != 0) {
+    if (arg0->LoadInt("ElectricFuryNumTier1", &this->unk760, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricFuryNumTier2", (s32 *) &this->unk75C, 0) != 0) {
+    if (arg0->LoadInt("ElectricFuryNumTier2", &this->unk764, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("ElectricFuryDojoRadiusMul", (f32 *) &this->unk760, 0) != 0) {
+    if (arg0->LoadFloat("ElectricFuryDojoRadiusMul", &this->unk768, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1NumTier1", &this->unk764, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1NumTier1", &this->unk76C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1NumTier2", (s32 *) &this->unk768, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1NumTier2", &this->unk770, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1Timer", &this->unk76C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1Timer", &this->unk774, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2NumTier1", &this->unk770, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2NumTier1", &this->unk778, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2NumTier2", &this->unk774, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2NumTier2", &this->unk77C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2Timer", &this->unk778, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2Timer", &this->unk780, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1NumTier1", &this->unk77C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1NumTier1", &this->unk784, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1NumTier2", &this->unk780, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1NumTier2", &this->unk788, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1Timer", &this->unk784, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1Timer", &this->unk78C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2NumTier1", &this->unk788, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2NumTier1", &this->unk790, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2NumTier2", &this->unk78C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2NumTier2", &this->unk794, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2Timer", &this->unk790, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2Timer", &this->unk798, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("IceBreath2VanguardDistance", (f32 *) &this->unk794, 0) != 0) {
-        this->unk794 = 100.0f * M2C_BITWISE(f32, this->unk794);
+    if (arg0->LoadFloat("IceBreath2VanguardDistance", &this->unk79C, 0) != 0) {
+        this->unk79C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2NumLevel1Iterations", &this->unk798, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2NumLevel1Iterations", &this->unk7A0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceFuryNumTier1", (s32 *) &this->unk79C, 0) != 0) {
+    if (arg0->LoadInt("IceFuryNumTier1", &this->unk7A4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceFuryNumTier2", &this->unk7A0, 0) != 0) {
+    if (arg0->LoadInt("IceFuryNumTier2", &this->unk7A8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("IceFuryDojoRadiusMul", (f32 *) &this->unk7A4, 0) != 0) {
+    if (arg0->LoadFloat("IceFuryDojoRadiusMul", &this->unk7AC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1NumTier1", &this->unk7A8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1NumTier1", &this->unk7B0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1NumTier2", (s32 *) &this->unk7AC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1NumTier2", &this->unk7B4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1Timer", &this->unk7B0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1Timer", &this->unk7B8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2NumTier1", &this->unk7B4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2NumTier1", &this->unk7BC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2NumTier2", &this->unk7B8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2NumTier2", &this->unk7C0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2Timer", &this->unk7BC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2Timer", &this->unk7C4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1NumTier1", &this->unk7C0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1NumTier1", &this->unk7C8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1NumTier2", &this->unk7C4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1NumTier2", &this->unk7CC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1Timer", &this->unk7C8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1Timer", &this->unk7D0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2NumTier1", &this->unk7CC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2NumTier1", &this->unk7D4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2NumTier2", &this->unk7D0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2NumTier2", &this->unk7D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2Timer", &this->unk7D4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2Timer", &this->unk7DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthFuryNumTier1", &this->unk7D8, 0) != 0) {
+    if (arg0->LoadInt("EarthFuryNumTier1", &this->unk7E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthFuryNumTier2", &this->unk7DC, 0) != 0) {
+    if (arg0->LoadInt("EarthFuryNumTier2", &this->unk7E4, 0) != 0) {
         return 1U;
     }
-    return (u8) (arg0->LoadFloat("EarthFuryDojoRadiusMul", (f32 *) &this->unk7E0, 0) != 0);
+    return (u8) (arg0->LoadFloat("EarthFuryDojoRadiusMul", &this->unk7E8, 0) != 0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to
 void DojoController::Deinit() {
+    SpawnPointData *temp_r3_14510;
+    SpawnPointData *temp_r3_14515;
     SpawnPointData *temp_r3_14520;
     SpawnPointData *temp_r3_14525;
     s32 temp_cr0_eq_14497;
-    s32 temp_r3_14515;
     s32 var_r30_14492;
     s32 var_r31_14493;
-    u32 temp_r3_14510;
     void **temp_r3_14496;
 
-    ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->Deinit(this);
+    this->unk360.Deinit(this);
     this->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         this->unk2C0.KillAll();
     }
-    ((SpawnerObject *) &this->unk310)->GetNumberActive();
+    this->unk310.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-        ((SpawnerObject *) &this->unk310)->KillAll();
+        this->unk310.KillAll();
     }
     this->unk2C0.Deinit();
-    ((SpawnerObject *) &this->unk310)->Deinit();
+    this->unk310.Deinit();
     var_r30_14492 = 0;
     var_r31_14493 = 0;
     do {
@@ -7037,19 +7028,19 @@ void DojoController::Deinit() {
         var_r30_14492 += 1;
         var_r31_14493 += 0x60;
     } while (var_r30_14492 < 6);
-    temp_r3_14510 = this->unk444;
-    if (temp_r3_14510 != 0) {
-        operator delete((void *) temp_r3_14510);
+    temp_r3_14510 = this->unk44C;
+    if (temp_r3_14510 != NULL) {
+        operator delete(temp_r3_14510);
     }
-    temp_r3_14515 = this->unk448;
-    if ((u32) temp_r3_14515 != 0U) {
-        operator delete((void *) temp_r3_14515);
+    temp_r3_14515 = this->unk450;
+    if (temp_r3_14515 != NULL) {
+        operator delete(temp_r3_14515);
     }
-    temp_r3_14520 = this->unk44C;
+    temp_r3_14520 = this->unk454;
     if (temp_r3_14520 != NULL) {
         operator delete(temp_r3_14520);
     }
-    temp_r3_14525 = this->unk450;
+    temp_r3_14525 = this->unk458;
     if (temp_r3_14525 != NULL) {
         operator delete(temp_r3_14525);
     }
@@ -7058,7 +7049,7 @@ void DojoController::Deinit() {
     M2C_FIELD(&gb, s8 *, 7) = 1;
     M2C_FIELD(&gb, s8 *, 4) = 1;
     M2C_FIELD(&gb, s8 *, 8) = 1;
-    PhrasePlayer_StopEvent(this->unk7E4);
+    PhrasePlayer_StopEvent(this->unk7EC);
     M2C_FIELD(&gb, s8 *, 0x59) = 0;
     M2C_FIELD(&gb, s8 *, 0xA) = 0;
     ((GameGlobals *) &gb)->InfiniteMagicOff();
@@ -7069,29 +7060,29 @@ void DojoController::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void DojoController::Init() {
     SpawnPointData *temp_r29_14593;
+    SpawnPointData *temp_r3_14701;
+    SpawnPointData *temp_r3_14722;
     SpawnPointData *temp_r3_14743;
     SpawnPointData *temp_r3_14764;
     s32 temp_r0_14652;
     s32 temp_r0_14681;
-    s32 temp_r3_14722;
     s32 var_ctr_14650;
     s32 var_ctr_14679;
     s32 var_r28_14586;
     s32 var_r30_14587;
     s32 var_r3_14640;
     s32 var_r3_14660;
-    u32 temp_r3_14701;
     void **temp_r3_14790;
     void **temp_r3_14801;
     void **temp_r3_14812;
     void **temp_r3_14823;
 
-    Init__32KDStateMachine<14DojoController>FPQ232KDStateMachine<14DojoController>5StateP32KDStateMachine<14DojoController>((KDStateMachine<DojoController> *) &this->unk310.unk4C, &dojoStates, NULL);
-    this->unk3AC = -1.0f;
+    Init__32KDStateMachine<14DojoController>FPQ232KDStateMachine<14DojoController>5StateP32KDStateMachine<14DojoController>(&this->unk360, &dojoStates, NULL);
+    this->unk3B4 = -1.0f;
     M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk2C0.Init(EnemySpawnPool_Action, 0);
-    ((SpawnerObject *) &this->unk310)->Init(EnemySpawnPool_Action, 0);
+    this->unk310.Init(EnemySpawnPool_Action, 0);
     var_r28_14586 = 0;
     var_r30_14587 = 0;
     do {
@@ -7113,20 +7104,20 @@ void DojoController::Init() {
         var_r28_14586 += 1;
         var_r30_14587 += 0x60;
     } while (var_r28_14586 < 6);
-    this->unk7E4 = 0;
-    M2C_FIELD(this, s8 *, 0x7F0) = 0;
-    strcpy(this + 0x7F1, "");
+    this->unk7EC = 0;
+    this->unk7F0 = 0;
+    strcpy(&this->unk7F1, "");
     M2C_FIELD(&gb, s8 *, 0x59) = 1;
     var_r3_14640 = 0;
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
-    M2C_FIELD(this, s8 *, 0x3BF) = 0;
-    M2C_FIELD(this, s8 *, 0x3C0) = 0;
-    M2C_FIELD(this, s8 *, 0x3C1) = 0;
-    M2C_FIELD(this, s8 *, 0x3C2) = 0;
-    M2C_FIELD(this, s8 *, 0x3C3) = 0;
-    this->unk3BC = 0;
-    M2C_FIELD(this, s8 *, 0x678) = 0;
-    M2C_FIELD(this, s8 *, 0x679) = 0;
+    this->unk3BE = 0;
+    this->unk3BF = 0;
+    this->unk3C0 = 0;
+    this->unk3C1 = 0;
+    this->unk3C2 = 0;
+    this->unk3C3 = 0;
+    this->unk3C4 = 0;
+    this->unk678 = 0;
+    this->unk679 = 0;
     var_ctr_14650 = 7;
     do {
         temp_r0_14652 = var_r3_14640 + 0x410;
@@ -7134,20 +7125,20 @@ void DojoController::Init() {
         *(this + temp_r0_14652) = 0;
         var_ctr_14650 -= 1;
     } while (var_ctr_14650 != 0);
-    this->unk440 = 0;
+    this->unk448 = 0;
     var_r3_14660 = 0;
-    this->unk404 = NULL;
-    this->unk3B0 = 0.0f;
+    this->unk40C = 0;
+    this->unk3B8 = 0.0f;
     this->unk814 = 0.0f;
     this->unk818 = 0;
-    this->unk814 = 0.0f;
-    this->unk3D0 = 0;
-    this->unk3FC = 0;
-    this->unk400 = 0;
-    this->unk3DC = NULL;
-    this->unk3E0 = NULL;
+    this->unk81C = 0;
+    this->unk3D8 = NULL;
+    this->unk404 = NULL;
+    this->unk408 = NULL;
     this->unk3E4 = NULL;
     this->unk3E8 = NULL;
+    this->unk3EC = NULL;
+    this->unk3F0 = NULL;
     this->unk60 = NULL;
     this->unk64 = NULL;
     this->unk68 = NULL;
@@ -7166,52 +7157,52 @@ void DojoController::Init() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unk444 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_14701 = this->unk444;
-    M2C_FIELD(*temp_r3_14701, M2C_UNK (**)(u32, DojoController *, M2C_UNK), 8)(temp_r3_14701, this, 0);
-    operator new(0x18U, NULL, 0);
-    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
-        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
-    }
-    this->unk448 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_14722 = this->unk448;
-    M2C_FIELD(*temp_r3_14722, M2C_UNK (**)(s32, DojoController *, M2C_UNK), 8)(temp_r3_14722, this, 0);
-    operator new(0x18U, NULL, 0);
-    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
-        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
-    }
     this->unk44C = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_14743 = this->unk44C;
-    temp_r3_14743->~SpawnPointData(this, 0);
+    temp_r3_14701 = this->unk44C;
+    temp_r3_14701->~SpawnPointData(this, 0);
     operator new(0x18U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unk450 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_14764 = this->unk450;
+    temp_r3_14722 = this->unk450;
+    temp_r3_14722->~SpawnPointData(this, 0);
+    operator new(0x18U, NULL, 0);
+    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
+        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+    }
+    this->unk454 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r3_14743 = this->unk454;
+    temp_r3_14743->~SpawnPointData(this, 0);
+    operator new(0x18U, NULL, 0);
+    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
+        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+    }
+    this->unk458 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r3_14764 = this->unk458;
     temp_r3_14764->~SpawnPointData(this, 0);
-    this->unk70 = (void **) this->unk444;
+    this->unk70 = &this->unk44C->__vptr;
     switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
     case 0:
-        this->unk70 = (void **) this->unk444;
+        this->unk70 = &this->unk44C->__vptr;
         temp_r3_14790 = this->unk70;
         M2C_FIELD(*temp_r3_14790, M2C_UNK (**)(void **, DojoController *, M2C_UNK), 8)(temp_r3_14790, this, 0);
         break;
     case 1:
-        this->unk70 = (void **) this->unk448;
+        this->unk70 = &this->unk450->__vptr;
         temp_r3_14801 = this->unk70;
         M2C_FIELD(*temp_r3_14801, M2C_UNK (**)(void **, DojoController *, M2C_UNK), 8)(temp_r3_14801, this, 0);
         break;
     case 2:
-        this->unk70 = &this->unk44C->__vptr;
+        this->unk70 = &this->unk454->__vptr;
         temp_r3_14812 = this->unk70;
         M2C_FIELD(*temp_r3_14812, M2C_UNK (**)(void **, DojoController *, M2C_UNK), 8)(temp_r3_14812, this, 0);
         break;
     case 3:
-        this->unk70 = &this->unk450->__vptr;
+        this->unk70 = &this->unk458->__vptr;
         temp_r3_14823 = this->unk70;
         M2C_FIELD(*temp_r3_14823, M2C_UNK (**)(void **, DojoController *, M2C_UNK), 8)(temp_r3_14823, this, 0);
         break;
@@ -7236,24 +7227,24 @@ DojoController::DojoController() {
     this->unk2C0.unk3C.Init();
     this->unk2C0.unk40.unk0 = 0;
     this->unk2C0.unk40.Init();
-    M2C_FIELD(this, M2C_UNK **, 0x310) = &__vt;
-    this->unk310.unk38 = 0.0f;
-    ((EventMessage *) &this->unk310.unk38)->Init();
+    this->unk310.__vptr = &__vt;
     this->unk310.unk3C.unk0 = 0;
     this->unk310.unk3C.Init();
-    M2C_FIELD(this, s32 *, 0x360) = -1;
+    this->unk310.unk40.unk0 = 0;
+    this->unk310.unk40.Init();
+    this->unk360.unk0 = -1;
     this->unk364 = -1;
     this->unk368 = 0;
-    this->unk364 = 0;
+    this->unk36C = 0;
     M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    this->unk3AC = -1.0f;
-    M2C_FIELD(this, s8 *, 0x3BE) = 0;
-    M2C_FIELD(this, s8 *, 0x3BF) = 0;
-    M2C_FIELD(this, s8 *, 0x3C0) = 0;
-    this->unk3D0 = 0;
-    this->unk3D4 = 0;
+    this->unk3B4 = -1.0f;
+    this->unk3BE = 0;
+    this->unk3BF = 0;
+    this->unk3C0 = 0;
     this->unk3D8 = NULL;
+    this->unk3DC = NULL;
+    this->unk3E0 = NULL;
     return this;
 }
 #endif

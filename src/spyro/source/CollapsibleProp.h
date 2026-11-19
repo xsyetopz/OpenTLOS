@@ -24,11 +24,9 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     void SetState(CollapsibleProp::State);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ Shadow unk98;
-    /* 0x0c5 */ u8 padC5[0x3];
     /* 0x0c8 */ s32 unkC8;
 };
 
@@ -36,7 +34,6 @@ class CollapsiblePropDescriptor : public KDPropDescriptor {  // base: inlined ct
 public:
     virtual void Init(void);
     virtual void LoadDone(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;

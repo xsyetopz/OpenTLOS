@@ -403,7 +403,6 @@ void *FlyingMonkey::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void FlyingMonkeyDescriptor::LoadDone() {
     s8 *temp_r30_679;
     s8 *temp_r30_695;
@@ -464,7 +463,6 @@ void FlyingMonkeyDescriptor::LoadDone() {
     this->unk104 = (s32) var_r3_777;
     this->unk108 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "A035_weapon03");
 }
-#endif
 
 void FlyingMonkeyDescriptor::Deinit() {
     pFlyingMonkeyDescriptor = NULL;

@@ -13,7 +13,7 @@ class Projectile;
 class ProjectileDescriptor;
 class ShapedTrailFX;
 
-class LavaBall : public Projectile {  // base: vtable prefix
+class LavaBall : public Projectile {  // base: base ctor call
 public:
     virtual ~LavaBall(void);
     virtual void LoadDone(void);
@@ -22,11 +22,10 @@ public:
     virtual void Collided(MKCollisionResult &);
     LavaBall(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ ShapedTrailFX* unk150;
 };
 
-class LavaBallDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class LavaBallDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROFALLSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroAnimTables.h"
 #include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
@@ -48,7 +49,8 @@ public:
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x4];
+    /* 0x014 */ KDStateMachine<SpyroFallState> unk14;
+    /* 0x015 */ u8 pad15[0x3];
     /* 0x018 */ f64 unk18;
     /* 0x020 */ u8 pad20[0x8];
     /* 0x028 */ f32 unk28;
@@ -86,10 +88,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroFallState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROFALLSTATE_H

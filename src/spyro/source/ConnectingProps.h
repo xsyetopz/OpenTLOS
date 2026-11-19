@@ -24,7 +24,6 @@ public:
     s32 UpdateState(void);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ PolyRegion unk50;
-    /* 0x09c */ u8 pad9C[0x4];
     /* 0x0a0 */ ChunkInfo* unkA0;
     /* 0x0a4 */ u8 padA4[0x8];
     /* 0x0ac */ s32 unkAC;

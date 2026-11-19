@@ -6,7 +6,6 @@
 #include "spyro/source/UIButton.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIImage.h"
-#include "spyro/source/UIMessage.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
@@ -19,8 +18,6 @@ class HealthSafetyScreen;
 class ImageArc;
 class LanguageButtonGroup;
 class LocalizedVideoScreen;
-class MKFont;
-class MKMaterial;
 class MarkerButtonGroup;
 class NoisyButtonGroup;
 class NoisySystem;
@@ -39,7 +36,6 @@ class UIButton;
 class UIButtonGroup;
 class UIContainer;
 class UIDataLine;
-class UIEvent;
 class UIImage;
 class UIMessage;
 class UIPie;
@@ -60,9 +56,6 @@ public:
     virtual void Draw(const RenderContext &);
     GameText(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x64];
-    /* 0x068 */ s8* unk68;
-    /* 0x06c */ s32 unk6C;
 };
 
 class HealthSafetyScreen : public UIScreen {  // base: ctor/dtor vtable stores
@@ -73,31 +66,6 @@ public:
     virtual void OnExit(void);
     HealthSafetyScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x64];
-    /* 0x068 */ s32 unk68;
-    /* 0x06c */ s32 unk6C;
-    /* 0x070 */ s32 unk70;
-    /* 0x074 */ s32 unk74;
-    /* 0x078 */ s32 unk78;
-    /* 0x07c */ s32 unk7C;
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ s32 unk84;
-    /* 0x088 */ s32 unk88;
-    /* 0x08c */ s32 unk8C;
-    /* 0x090 */ s32 unk90;
-    /* 0x094 */ s32 unk94;
-    /* 0x098 */ s32 unk98;
-    /* 0x09c */ s32 unk9C;
-    /* 0x0a0 */ s32 unkA0;
-    /* 0x0a4 */ s32 unkA4;
-    /* 0x0a8 */ s32 unkA8;
-    /* 0x0ac */ s32 unkAC;
-    /* 0x0b0 */ s32 unkB0;
-    /* 0x0b4 */ s32 unkB4;
-    /* 0x0b8 */ s32 unkB8;
-    /* 0x0bc */ s32 unkBC;
-    /* 0x0c0 */ s32 unkC0;
-    /* 0x0c4 */ s32 unkC4;
     /* 0x0c8 */ UIImage* unkC8;
     /* 0x0cc */ UIImage* unkCC;
     /* 0x0d0 */ s32 unkD0;
@@ -114,21 +82,23 @@ public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0xa];
-    /* 0x064 */ MKMaterial* unk64;
-    /* 0x068 */ f32 unk68;
-    /* 0x06c */ f32 unk6C;
-    /* 0x070 */ f32 unk70;
-    /* 0x074 */ f32 unk74;
     /* 0x078 */ f32 unk78;
     /* 0x07c */ f32 unk7C;
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;
 };
 
-class ScriptButtonGroup : public UIButtonGroup {  // base: vtable prefix
+class NoisyButtonGroup : public UIButtonGroup {  // base: ctor/dtor vtable stores
+public:
+    virtual void Init(void);
+    virtual void Update(void);
+    virtual void Message(UIMessage *);
+    NoisyButtonGroup(void);
+    static u8 descriptor[0x14];
+    /* 0x078 */ f32 unk78;
+};
+
+class ScriptButtonGroup : public NoisyButtonGroup {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void Deinit(void);
@@ -138,30 +108,25 @@ public:
     virtual s32 SetSelection(int);
     ScriptButtonGroup(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x64];
-    /* 0x068 */ s32 unk68;
-    /* 0x06c */ u8 pad6C[0x14];
     /* 0x080 */ s8* unk80;
     /* 0x084 */ u8 unk84;
 };
 
-class LanguageButtonGroup : public ScriptButtonGroup {  // base: vtable prefix
+class LanguageButtonGroup : public ScriptButtonGroup {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     LanguageButtonGroup(void);
     static u8 descriptor[0x14];
 };
 
-class LocalizedVideoScreen : public UIVideoScreen {  // base: vtable prefix
+class LocalizedVideoScreen : public UIVideoScreen {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     LocalizedVideoScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0xdc];
-    /* 0x0e0 */ s8* unkE0;
 };
 
-class MarkerButtonGroup : public UIButtonGroup {  // base: vtable prefix
+class MarkerButtonGroup : public NoisyButtonGroup {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void Deinit(void);
@@ -173,29 +138,12 @@ public:
     MarkerButtonGroup(void);
     u8 GetTargetAttributes(Attributes *);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0xe];
-    /* 0x068 */ s32 unk68;
-    /* 0x06c */ u8 pad6C[0x14];
     /* 0x080 */ void* unk80;
     /* 0x084 */ u8 pad84[0x14];
     /* 0x098 */ Attributes unk98;
-    /* 0x0da */ u8 padDA[0x6];
     /* 0x0e0 */ s8* unkE0;
     /* 0x0e4 */ u8 padE4[0x14];
     /* 0x0f8 */ u8 unkF8;
-};
-
-class NoisyButtonGroup : public UIButtonGroup {  // base: ctor/dtor vtable stores
-public:
-    virtual void Init(void);
-    virtual void Update(void);
-    virtual void Message(UIMessage *);
-    NoisyButtonGroup(void);
-    static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x74];
-    /* 0x078 */ f32 unk78;
 };
 
 class NoisySystem : public UISystem {  // base: ctor/dtor vtable stores
@@ -218,13 +166,12 @@ public:
     virtual void SetOnDeselect(const char *);
     ScriptButton(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x8c];
     /* 0x090 */ s8* unk90;
     /* 0x094 */ s8* unk94;
     /* 0x098 */ s8* unk98;
 };
 
-class OptionButton : public ScriptButton {  // base: vtable prefix
+class OptionButton : public ScriptButton {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void LoadDone(void);
@@ -232,18 +179,6 @@ public:
     virtual void Message(UIMessage *);
     OptionButton(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ OptionButton* unk4;
-    /* 0x008 */ u8 pad8[0xc];
-    /* 0x014 */ u8 unk14;
-    /* 0x015 */ u8 unk15;
-    /* 0x016 */ u8 unk16;
-    /* 0x017 */ u8 pad17[0xd];
-    /* 0x024 */ f32 unk24;
-    /* 0x028 */ u8 pad28[0x20];
-    /* 0x048 */ f32 unk48;
-    /* 0x04c */ u8 pad4C[0xc];
-    /* 0x058 */ u16 unk58;
-    /* 0x05a */ u8 pad5A[0x46];
     /* 0x0a0 */ f32 unkA0;
 };
 
@@ -254,19 +189,6 @@ public:
     virtual void LoadDone(void);
     virtual void Draw(const RenderContext &);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ f64 unk18;
-    /* 0x020 */ f64 unk20;
-    /* 0x028 */ f64 unk28;
-    /* 0x030 */ f64 unk30;
-    /* 0x038 */ f64 unk38;
-    /* 0x040 */ f64 unk40;
-    /* 0x048 */ f32 unk48;
-    /* 0x04c */ f32 unk4C;
-    /* 0x050 */ f32 unk50;
-    /* 0x054 */ s32 unk54;
-    /* 0x058 */ u16 unk58;
-    /* 0x05a */ u8 pad5A[0x1e];
     /* 0x078 */ s32 unk78;
     /* 0x07c */ u8 pad7C[0x4];
     /* 0x080 */ f64 unk80;
@@ -289,10 +211,6 @@ public:
     virtual void Message(UIMessage *);
     void Reset(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x48];
-    /* 0x04c */ f32 unk4C;
-    /* 0x050 */ u8 pad50[0x10];
-    /* 0x060 */ void* unk60;
 };
 
 class PromptText : public DSText {  // base: ctor/dtor vtable stores
@@ -303,11 +221,6 @@ public:
     virtual void Message(UIMessage *);
     PromptText(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ u8 pad8[0x5c];
-    /* 0x064 */ MKFont* unk64;
-    /* 0x068 */ s8* unk68;
-    /* 0x06c */ s32 unk6C;
 };
 
 class RadialButtonGroup : public UIButtonGroup {  // base: ctor/dtor vtable stores
@@ -323,21 +236,6 @@ public:
     void SetPositions(void);
     RadialButtonGroup(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x8];
-    /* 0x00c */ UIContainer* unkC;
-    /* 0x010 */ u8 pad10[0x5];
-    /* 0x015 */ u8 unk15;
-    /* 0x016 */ u8 pad16[0x12];
-    /* 0x028 */ f64 unk28;
-    /* 0x030 */ f64 unk30;
-    /* 0x038 */ u8 pad38[0x14];
-    /* 0x04c */ f32 unk4C;
-    /* 0x050 */ f32 unk50;
-    /* 0x054 */ u8 pad54[0xc];
-    /* 0x060 */ void* unk60;
-    /* 0x064 */ s32 unk64;
-    /* 0x068 */ s32 unk68;
-    /* 0x06c */ UIEvent unk6C;
     /* 0x078 */ u8 pad78[0x14];
     /* 0x08c */ u8 unk8C;
     /* 0x08d */ u8 pad8D[0x3];
@@ -369,18 +267,13 @@ public:
     virtual void Message(UIMessage *);
     ScriptProgressBar(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0x6e];
-    /* 0x0c8 */ f32 unkC8;
-    /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ s8* unkD0;
     /* 0x0d4 */ s8* unkD4;
     /* 0x0d8 */ s8* unkD8;
     /* 0x0dc */ u8 unkDC;
 };
 
-class ScriptVideoScreen : public UIVideoScreen {  // base: vtable prefix
+class ScriptVideoScreen : public UIVideoScreen {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void Deinit(void);
@@ -388,27 +281,17 @@ public:
     virtual void DoExit(void);
     ScriptVideoScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x124];
+    /* 0x108 */ u8 pad108[0x20];
     /* 0x128 */ s8* unk128;
 };
 
-class ThrobButton : public ScriptButton {  // base: vtable prefix
+class ThrobButton : public ScriptButton {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Update(void);
     virtual void Message(UIMessage *);
     ThrobButton(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x11];
-    /* 0x015 */ u8 unk15;
-    /* 0x016 */ u8 unk16;
-    /* 0x017 */ u8 pad17[0x1];
-    /* 0x018 */ f64 unk18;
-    /* 0x020 */ f64 unk20;
-    /* 0x028 */ u8 pad28[0x30];
-    /* 0x058 */ u16 unk58;
-    /* 0x05a */ u8 pad5A[0x6];
-    /* 0x060 */ void* unk60;
 };
 
 class UIPie : public UIImage {  // base: ctor/dtor vtable stores
@@ -416,11 +299,6 @@ public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0xa];
-    /* 0x064 */ MKMaterial* unk64;
-    /* 0x068 */ u8 pad68[0x10];
     /* 0x078 */ f32 unk78;
 };
 
@@ -435,16 +313,16 @@ extern u8 buttonLabel[0x1c];
 extern u8 buttonString[0x1c];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
+#include <m2c_macros.h>
+
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline GameText::GameText() {
     return this;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline HealthSafetyScreen::HealthSafetyScreen() {
-    this->unk60 = NULL;
-    this->unk64 = 0;
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
     this->unk68.unk8 = NULL;
@@ -467,16 +345,18 @@ inline HealthSafetyScreen::HealthSafetyScreen() {
     this->unkB0.unk4 = 0;
     this->unkB0.unk8 = NULL;
     this->unkBC.unk0 = NULL;
+    this->unkBC.unk4 = 0;
+    this->unkBC.unk8 = NULL;
     return this;
 }
 #endif
 
 inline void ImageArc::Init() {
     UIImage::Init();
-    this->unk70 = 2.0f;
-    this->unk74 = 2.0f;
-    this->unk78 = 0.0f;
-    this->unk7C = 6.2831855f;
+    this->unk78 = 2.0f;
+    this->unk7C = 2.0f;
+    this->unk80 = 0.0f;
+    this->unk84 = 6.2831855f;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
@@ -501,9 +381,9 @@ inline MarkerButtonGroup::MarkerButtonGroup() {
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline NoisyButtonGroup::NoisyButtonGroup() {
-    this->unk64 = 0;
-    this->unk68 = 0;
     this->unk6C.unk0 = NULL;
+    this->unk6C.unk4 = 0;
+    this->unk6C.unk8 = NULL;
     return this;
 }
 #endif
@@ -526,22 +406,20 @@ inline PromptText::PromptText() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: '(' expected
 inline RadialButtonGroup::RadialButtonGroup() {
-    this->unk64 = 0;
-    this->unk68 = 0;
     this->unk6C.unk0 = NULL;
-    this->unk6C.unk4 = (s32) &__vt;
-    this->unk6C.unk4 = (s32) &__vt;
-    this->unk6C.unk4 = (s32) &__vt;
+    this->unk6C.unk4 = 0;
+    this->unk6C.unk8 = NULL;
+    M2C_FIELD(this, struct __vt **, 0x78) = &__vt;
+    M2C_FIELD(this, struct __vt **, 0x78) = &__vt;
+    M2C_FIELD(this, struct __vt **, 0x78) = (struct __vt *) &__vt;
     return this;
 }
 #endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ScriptButton::ScriptButton() {
-    this->unk60 = NULL;
-    this->unk64 = 0;
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
     this->unk68.unk8 = NULL;
@@ -549,6 +427,8 @@ inline ScriptButton::ScriptButton() {
     this->unk74.unk4 = 0;
     this->unk74.unk8 = NULL;
     this->unk80.unk0 = NULL;
+    this->unk80.unk4 = 0;
+    this->unk80.unk8 = NULL;
     return this;
 }
 #endif

@@ -19,8 +19,6 @@ public:
     virtual void GetMatrix(Matrix *) const;
     KDMatrixRefProperty(void);
     static KDMatrixRefProperty classInfo;
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ s32 unk8;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

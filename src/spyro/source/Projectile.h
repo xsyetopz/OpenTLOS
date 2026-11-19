@@ -4,11 +4,10 @@
 #include <dolphin/types.h>
 #include "common/Source/MKPtrList.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 #include "unplaced_enums.h"
 
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKAttachment;
 class MKCollisionResult;
 class MKIniLine;
@@ -18,7 +17,7 @@ class MKVector3;
 class Projectile;
 class ProjectileDescriptor;
 
-class Projectile : public GameProp {  // base: vtable prefix
+class Projectile : public GameProp {  // base: base ctor call
 public:
     virtual ~Projectile(void);
     virtual void Init(void);
@@ -45,7 +44,6 @@ public:
     virtual void SetAttachment(MKAttachment *);
     Projectile(void);
     s32 CreateInstance(ProjectileType);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;
@@ -74,13 +72,11 @@ public:
     /* 0x14c */ u8 unk14C;
 };
 
-class ProjectileDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class ProjectileDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     ProjectileDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
 };

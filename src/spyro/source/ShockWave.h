@@ -20,7 +20,7 @@ public:
     void UpdateShockWave(int);
     s32 Start(MKVector3, float, float, bool, bool, bool);
     void SetMessage(int, const char *);
-    /* 0x089 */ u8 pad89[0xa7];
+    /* 0x090 */ u8 pad90[0xa0];
     /* 0x130 */ f64 unk130;
     /* 0x138 */ f64 unk138;
     /* 0x140 */ f64 unk140;

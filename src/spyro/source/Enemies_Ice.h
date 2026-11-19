@@ -28,7 +28,7 @@ public:
     void __sinit(void);
 };
 
-class IceTier1 : public Enemy {  // base: vtable prefix
+class IceTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~IceTier1(void);
     virtual void Init(void);
@@ -36,7 +36,6 @@ public:
     virtual void Update(void);
     virtual void Spawn(EnemyGeneratorDoor *);
     IceTier1(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ Goal<Enemy>* unkB10;
 };
 
@@ -47,7 +46,7 @@ public:
     IceTier1Descriptor(void);
 };
 
-class IceTier2 : public Enemy {  // base: vtable prefix
+class IceTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~IceTier2(void);
     virtual void Init(void);
@@ -62,7 +61,6 @@ public:
     virtual void OnArmourDestroyed(void);
     virtual void DrawCustomGlow(void);
     IceTier2(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ MKCollisionInfo* unkB10;
     /* 0xb14 */ MKCollisionInfo* unkB14;
     /* 0xb18 */ f64 unkB18;
@@ -83,7 +81,7 @@ public:
     /* 0x2bc */ s32 unk2BC;
 };
 
-class IceTier3 : public Enemy {  // base: vtable prefix
+class IceTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~IceTier3(void);
     virtual void Init(void);
@@ -92,18 +90,16 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier1::IceTier1() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier1::~IceTier1() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -113,28 +109,28 @@ inline IceTier1Descriptor::IceTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier2::IceTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    M2C_FIELD(this, s32 *, 0xB38) = 0;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB38 = 0;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier2::~IceTier2() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if ((&this->unkB20 != NULL) && (&this->unkB20 != NULL)) {
-        KDSound_Stop((s32 *) &this->unkB20);
+    this->unk6B8 = &__vt.unk84;
+    if ((&this->unkB38 != NULL) && (&this->unkB38 != NULL)) {
+        KDSound_Stop(&this->unkB38);
     }
 }
 #endif
 
 inline void *IceTier2::GetCollisionInfo() {
-    if (M2C_BITWISE(s32, this->unkACC) == 0) {
+    if ((s32) this->unkAE4 == 0) {
         return (MKCollisionInfo *) this->unk634;
     }
-    return (MKCollisionInfo *) this->unkAFC;
+    return this->unkB14;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
@@ -143,16 +139,16 @@ inline IceTier2Descriptor::IceTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier3::IceTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceTier3::~IceTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

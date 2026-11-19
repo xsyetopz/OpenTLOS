@@ -25,9 +25,6 @@ public:
     virtual void Command(int);
     virtual void Init(char *);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ KDAnimScriptProperty* unk10;
     /* 0x014 */ void* unk14;
     /* 0x018 */ s32 unk18;

@@ -69,7 +69,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     f64 sp8;
 
     if (this->unkEC <= 0.0f) {
-        this->unkF0 = 0;
+        M2C_FIELD(this, s8 *, 0xF0) = 0;
         sp17C = 0;
         MKVector(0.4f, 0.4f, 0.4f);
         sp48 = sp118 * 5.634608575e-315;
@@ -397,7 +397,7 @@ void VolcanoRumble::MakeCrudRainSound() {
     void *temp_r4_784;
     void *temp_r4_856;
 
-    if ((u8) this->unkF0 == 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xF0) == 0) {
         temp_f1_670 = this->unkEC;
         if (((temp_f1_670 < 3.0f) && (temp_f1_670 > 2.5f)) || ((temp_f1_670 < 0.75f) && (temp_f1_670 > 0.0f))) {
             if ((s8) init_625 == 0) {
@@ -485,7 +485,7 @@ void VolcanoRumble::Message(MKMessage *arg0) {
 void VolcanoRumble::Reset() {
     MKProp::Reset();
     this->unkEC = -1.0f;
-    this->unkF0 = 0;
+    M2C_FIELD(this, s8 *, 0xF0) = 0;
 }
 
 #if 0 // DRAFT: function call 'KDSound_Stop(VolcanoRumble *)' does not match
@@ -500,7 +500,7 @@ void VolcanoRumble::Deinit() {
         var_r30_970 += 1;
         var_r31_971 += 0x28;
     } while (var_r30_970 < 4);
-    this->unkF0 = 0;
+    M2C_FIELD(this, s8 *, 0xF0) = 0;
     if ((u32) M2C_FIELD(&gb, u32 *, 0x2B0) == this) {
         M2C_FIELD(&gb, u32 *, 0x2B0) = 0U;
     }
@@ -521,6 +521,6 @@ void VolcanoRumble::Init() {
         var_r30_1008 += 1;
         var_r31_1009 += 0x28;
     } while (var_r30_1008 < 4);
-    this->unkF0 = 0;
+    M2C_FIELD(this, s8 *, 0xF0) = 0;
     M2C_FIELD(&gb, VolcanoRumble **, 0x2B0) = this;
 }

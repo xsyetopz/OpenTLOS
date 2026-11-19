@@ -27,7 +27,7 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pSludgeDescriptor;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Sludge::Update() {
     Matrix sp1B0;
     Matrix sp170;
@@ -209,7 +209,7 @@ void Sludge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void Sludge::Collided(MKCollisionResult &arg0) {
     s8 sp2E9;
     s8 sp2E8;
@@ -569,7 +569,7 @@ void *Sludge::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void SludgeDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSludgeDescriptor = (MKPropDescriptor *) this;

@@ -15,8 +15,6 @@
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/FuryFXElectricity.h"
-#include "spyro/source/FuryFXElectricity2.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
@@ -26,7 +24,6 @@
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
-#include "spyro/source/ScorchTrail.h"
 #include "spyro/source/ShakeCameraMessage.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "spyro/source/TargetManager.h"
@@ -77,20 +74,20 @@ static u8 lit_1495 = 0;
 static u8 lit_1549 = 1;
 static u8 lit_1631 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FuryFXElectricity'
 void ZapBreathFX::ResetFury() {
-    ((FuryFXElectricity *) this->unk9EC)->ResetFury();
-    ((FuryFXElectricity2 *) (M2C_BITWISE(FuryFXElectricity2 *, this->unk9F0)))->ResetFury();
+    this->unk9F4->ResetFury();
+    this->unk9F8->ResetFury();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'ScorchTrail'
 void ZapBreathFX::ButtonReleased() {
-    ((ScorchTrail *) this->unk9F8)->EndTrail();
-    ((ScorchTrail *) this->unk9FC)->EndTrail();
+    this->unkA00->EndTrail();
+    this->unkA04->EndTrail();
     this->unkD4 = 0.0f;
-    this->unkA00 = 0.0f;
-    this->unkA04 = 0.0f;
+    this->unkA08 = 0.0f;
+    this->unkA0C = 0.0f;
 }
 #endif
 
@@ -645,6 +642,8 @@ void ZapBreathFX::UpdateZapMissiles() {
     f32 sp10;
     s32 sp8;
     Enemy *temp_r3_1165;
+    MKProp *temp_r3_1264;
+    MKProp *temp_r3_1561;
     MKVector3 *temp_r8_738;
     ManagedLight *temp_r4_778;
     ZapCage *temp_r3_1176;
@@ -725,11 +724,9 @@ void ZapBreathFX::UpdateZapMissiles() {
     void *temp_r3_1055;
     void *temp_r3_1066;
     void *temp_r3_1199;
-    void *temp_r3_1264;
     void *temp_r3_1268;
     void *temp_r3_1368;
     void *temp_r3_1374;
-    void *temp_r3_1561;
     void *temp_r3_1565;
     void *temp_r3_1620;
     void *temp_r3_1631;
@@ -950,7 +947,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     if (var_f25_953 < 300.0f) {
                         temp_r3_1161 = *(this->unkAC + (var_r27_718 + 0x50));
                         temp_r3_1165 = M2C_FIELD(*temp_r3_1161, Enemy *(**)(void **), 0xC)(temp_r3_1161);
-                        if ((temp_r3_1165 != NULL) && (temp_r3_1165->IsKnockedUp() != 0) && !(((u8) M2C_FIELD(temp_r3_1165, u8 *, 0xB02) >> 6U) & 1)) {
+                        if ((temp_r3_1165 != NULL) && (temp_r3_1165->IsKnockedUp() != 0) && !(((u8) temp_r3_1165->unkB02 >> 6U) & 1)) {
                             temp_r3_1176 = checked_cast<ZapCage *, MKProp>(this->unkFC->CreateInstance());
                             if (temp_r3_1176 != NULL) {
                                 M2C_FIELD(temp_r3_1176->__vptr, M2C_UNK (**)(), 0x30)();
@@ -958,23 +955,23 @@ void ZapBreathFX::UpdateZapMissiles() {
                                 temp_r3_1176->Trigger(M2C_FIELD(*temp_r3_1185, MKProp *(**)(void **), 8)(temp_r3_1185), 3.0f);
                             }
                         }
-                        M2C_FIELD(this, u8 *, 0x1B0) = 0U;
+                        this->unk160.unk50 = 0;
                         temp_r3_1199 = ((u8 *) this->unkAC) + var_r27_718;
                         temp_f1_1200 = M2C_FIELD(temp_r3_1199, f64 *, 0);
                         M2C_FIELD(this, f64 *, 0x170) = temp_f1_1200;
                         M2C_FIELD(this, f64 *, 0x178) = (f64) M2C_FIELD(temp_r3_1199, f64 *, 8);
                         temp_r3_1205 = *(this->unkAC + (var_r27_718 + 0x50));
-                        M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_1205, void *(**)(void **, f64), 8)(temp_r3_1205, temp_f1_1200), void **, 0x44), M2C_UNK (**)(M2C_UNK *), 0x2C)(&this->unk160);
+                        M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_1205, void *(**)(void **, f64), 8)(temp_r3_1205, temp_f1_1200), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unk160);
                         *(this->unkAC + (var_r27_718 + 0x40)) = 0.0f;
-                        if ((u8) M2C_FIELD(this, u8 *, 0x1B0) != 0) {
+                        if ((u8) this->unk160.unk50 != 0) {
                             temp_r3_1224 = *(this->unkAC + (var_r27_718 + 0x50));
                             KDSound_Play3d(GS_SpyBreathEnergyHit, M2C_FIELD(M2C_FIELD(*temp_r3_1224, void *(**)(void **), 8)(temp_r3_1224), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
                             temp_r3_1240 = *(this->unkAC + (var_r27_718 + 0x50));
                             temp_r26_1246 = M2C_FIELD(*temp_r3_1240, void *(**)(void **), 8)(temp_r3_1240);
                             ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **, M2C_UNK *), 0x40)(M2C_FIELD(&gb, void ***, 0), &gb)))->RumblePlay3D(0.2f, 0.5f, 0.05f, M2C_FIELD(temp_r26_1246, s32 *, 8) + 0x30, 50.0f, 0, 4.0f, 0U);
                         }
-                        temp_r3_1264 = M2C_FIELD(this, void **, 0x9E8);
-                        temp_r3_1268 = M2C_FIELD(M2C_FIELD(temp_r3_1264, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1264);
+                        temp_r3_1264 = this->unk9E8;
+                        temp_r3_1268 = M2C_FIELD(temp_r3_1264->__vptr, void *(**)(MKProp *), 0x3C)(temp_r3_1264);
                         if (temp_r3_1268 != NULL) {
                             temp_r25_1273 = M2C_FIELD(temp_r3_1268, void **, 0x2C);
                             temp_r4_1274 = ((u8 *) this->unkAC) + var_r27_718;
@@ -993,7 +990,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                             M2C_FIELD(temp_r25_1273, f64 *, 8) = (f64) sp68;
                             M2C_FIELD(temp_r25_1273, f32 *, 0x18) = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
                             M2C_FIELD(temp_r25_1273, f32 *, 0x10) = 0.0f;
-                            M2C_FIELD(temp_r25_1273, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(this, void **, 0x9E8), f32 *, 0xF4);
+                            M2C_FIELD(temp_r25_1273, f32 *, 0x14) = (f32) M2C_FIELD(this->unk9E8, f32 *, 0xF4);
                         }
                         var_r25_1310 = 0;
                         do {
@@ -1068,7 +1065,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                         var_r0_1469 = 0U;
                     }
                     if (var_r0_1469 == 0U) {
-                        ((ScorchTrail *) this->unk9F8)->SpawnScorchMark(*((MKVector3 *) &sp480), *((MKVector3 *) &sp490), 4.0f);
+                        this->unkA00->SpawnScorchMark(*((MKVector3 *) &sp480), *((MKVector3 *) &sp490), 4.0f);
                         KDSound_Play3d(GS_Emergency14, (MKVector3 *) &sp480, 0U, -1, 0.0f, 0U);
                         var_r25_1491 = 0;
                         do {
@@ -1100,8 +1097,8 @@ void ZapBreathFX::UpdateZapMissiles() {
                             ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp480), *((MKVector3 *) &sp2C0), sp24, *((MKVector4 *) &sp290), -1979.9999f);
                             var_r25_1491 += 1;
                         } while (var_r25_1491 < 5);
-                        temp_r3_1561 = M2C_FIELD(this, void **, 0x9E8);
-                        temp_r3_1565 = M2C_FIELD(M2C_FIELD(temp_r3_1561, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1561);
+                        temp_r3_1561 = this->unk9E8;
+                        temp_r3_1565 = M2C_FIELD(temp_r3_1561->__vptr, void *(**)(MKProp *), 0x3C)(temp_r3_1561);
                         if (temp_r3_1565 != NULL) {
                             temp_r25_1568 = M2C_FIELD(temp_r3_1565, void **, 0x2C);
                             M2C_FIELD(temp_r3_1565, f64 *, 0) = (f64) sp480;
@@ -1119,7 +1116,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                             M2C_FIELD(temp_r25_1568, f64 *, 8) = (f64) sp48;
                             M2C_FIELD(temp_r25_1568, f32 *, 0x18) = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
                             M2C_FIELD(temp_r25_1568, f32 *, 0x10) = 0.0f;
-                            M2C_FIELD(temp_r25_1568, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(this, void **, 0x9E8), f32 *, 0xF4);
+                            M2C_FIELD(temp_r25_1568, f32 *, 0x14) = (f32) M2C_FIELD(this->unk9E8, f32 *, 0xF4);
                         }
                     }
                 }
@@ -1594,10 +1591,10 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     temp_r0_2000 = &arg4;
     if (temp_r0_2000 == 3) {
         if (((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(3) == 0) {
-            return ((FuryFXElectricity *) this->unk9EC)->Trigger(arg1, 0U);
+            return this->unk9F4->Trigger(arg1, 0U);
         }
-        ((FuryFXElectricity *) this->unk9EC)->Trigger(arg1, 1U);
-        return ((FuryFXElectricity2 *) (M2C_BITWISE(FuryFXElectricity2 *, this->unk9F0)))->Trigger(arg1);
+        this->unk9F4->Trigger(arg1, 1U);
+        return this->unk9F8->Trigger(arg1);
     }
     if (temp_r0_2000 == 1) {
         sp1C = this->unkD4 + gUpdateTimeDelta;
@@ -1611,7 +1608,7 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 temp_r21_2061 = temp_r18_2057;
                 temp_r22_2063 = *(&GameData::gameData[0x70] + ((temp_r18_2057 << 5) + 0x7C));
                 temp_r17_2068 = ((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(temp_r22_2063);
-                ((BreathHitMessage *) &this->unk160)->Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r21_2061, temp_r22_2063, ((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(temp_r22_2063)), temp_r22_2063, temp_r17_2068, temp_r18_2057, temp_r18_2057, 0, -1);
+                this->unk160.Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r21_2061, temp_r22_2063, ((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(temp_r22_2063)), temp_r22_2063, temp_r17_2068, temp_r18_2057, temp_r18_2057, 0, -1);
                 var_r16_2088 = 1;
                 temp_r3_2092 = ((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathUpgrade(*(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)));
                 switch (temp_r3_2092) {             /* switch 1; irregular */
@@ -1734,21 +1731,21 @@ loop_22:
     switch (temp_r22_2312) {                        /* switch 3; irregular */
     case 0:                                         /* switch 3 */
         var_r24_2433 = 0;
-        this->unk9F4 = (FuryFXElectricity *)1;
+        this->unk9FC = 1;
         break;
     case 1:                                         /* switch 3 */
         var_f28_2432 = 800.0f;
-        this->unk9F4 = (FuryFXElectricity *)2;
+        this->unk9FC = 2;
         var_r24_2433 = 0;
         break;
     case 2:                                         /* switch 3 */
         var_f28_2432 = 1000.0f;
-        this->unk9F4 = (FuryFXElectricity *)3;
+        this->unk9FC = 3;
         var_r24_2433 = 1;
         break;
     case 3:                                         /* switch 3 */
         var_f28_2432 = 1400.0f;
-        this->unk9F4 = (FuryFXElectricity *)4;
+        this->unk9FC = 4;
         var_r24_2433 = 2;
         break;
     }
@@ -2058,7 +2055,7 @@ loop_147:
         sp3A0.operator*(2000.0f);
         ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp7A0), sp3A0, 3.0f, 0U);
         if (var_r26_2380 == 0) {
-            ((ScorchTrail *) this->unk9F8)->AddNode(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp7E0));
+            this->unkA00->AddNode(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp7E0));
             if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
                 MKVector(0.0f, 1.0f, 0.0f);
                 Cross(sp380, *((MKVector3 *) &sp7E0));
@@ -2076,11 +2073,11 @@ loop_147:
                 sp330.operator*(20.0f);
                 sp340.operator+(*((MKVector3 *) &sp7A0));
                 sp350.operator+(sp340);
-                ((ScorchTrail *) this->unk9F8)->SpawnPlasmaBubble(sp350, *((MKVector3 *) &sp7E0), temp_f26_3518);
+                this->unkA00->SpawnPlasmaBubble(sp350, *((MKVector3 *) &sp7E0), temp_f26_3518);
             }
         }
     } else {
-        ((ScorchTrail *) this->unk9F8)->EndTrail();
+        this->unkA00->EndTrail();
     }
     if (var_r27_2378 != 0) {
         var_r16_3566 = 0;
@@ -2102,7 +2099,7 @@ loop_147:
         sp2C0.operator*(1000.0f);
         ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp790), sp2C0, 3.0f, 0U);
         if (var_r25_2382 == 0) {
-            ((ScorchTrail *) this->unk9FC)->AddNode(*((MKVector3 *) &sp790), *((MKVector3 *) &sp7D0));
+            this->unkA04->AddNode(*((MKVector3 *) &sp790), *((MKVector3 *) &sp7D0));
             if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
                 MKVector(0.0f, 1.0f, 0.0f);
                 Cross(sp2A0, *((MKVector3 *) &sp7D0));
@@ -2120,22 +2117,22 @@ loop_147:
                 sp250.operator*(20.0f);
                 sp260.operator+(*((MKVector3 *) &sp790));
                 sp270.operator+(sp260);
-                ((ScorchTrail *) this->unk9FC)->SpawnPlasmaBubble(sp270, *((MKVector3 *) &sp7D0), temp_f26_3683);
+                this->unkA04->SpawnPlasmaBubble(sp270, *((MKVector3 *) &sp7D0), temp_f26_3683);
             }
         }
     } else {
-        ((ScorchTrail *) this->unk9FC)->EndTrail();
+        this->unkA04->EndTrail();
     }
     if (temp_r22_2312 == 3) {
         if ((u8) this->unk9E0 == 0) {
-            this->unk1C0.unk18 = sp7A0;
-            this->unk1C0.unk20 = sp7A8;
+            this->unk1C0.unk20 = sp7A0;
+            this->unk1C0.unk28 = sp7A8;
             this->unk3E0 = sp7A0;
-            this->unk3E0 = sp7A8;
+            this->unk3E8 = sp7A8;
             this->unk5E0 = sp790;
-            this->unk5E0 = sp798;
+            this->unk5E8 = sp798;
             this->unk7E0 = sp790;
-            this->unk7E0 = sp798;
+            this->unk7E8 = sp798;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp874 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
@@ -2152,7 +2149,7 @@ loop_147:
             temp_f28_3782 = M2C_FIELD(&arg1, f64 *, 0);
             temp_f27_3783 = M2C_FIELD(&arg1, f64 *, 8);
 loop_182:
-            if (var_r15_3779 < (FuryFXElectricity *) this->unk9F4) {
+            if (var_r15_3779 < (s32) this->unk9FC) {
                 sp1D0 = temp_f30_3778;
                 sp1D8 = temp_f29_3780;
                 sp1E0 = sp7A0;
@@ -2174,12 +2171,12 @@ loop_182:
             var_r14_3840 = 0;
             temp_f27_3843 = M2C_FIELD(&arg1, f64 *, 0);
             temp_f29_3845 = M2C_FIELD(&arg1, f64 *, 8);
-            temp_f28_3846 = 6.2831855f / (f32) this->unk9F4;
+            temp_f28_3846 = 6.2831855f / (f32) this->unk9FC;
             do {
                 if (var_r15_2510 == NULL) {
                     temp_f25_3860 = temp_f28_3846 * (f32) var_r16_3836;
-                    temp_f26_3865 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f25_3860));
-                    sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3860);
+                    temp_f26_3865 = -_table_sinf(1.5707964f + ((3.0f * this->unkA0C) + temp_f25_3860));
+                    sp6F0 = _table_sinf(this->unkA0C + temp_f25_3860);
                     sp6F4 = temp_f26_3865;
                     sp6F8 = 0.0f;
                     ApplyMatrix(sp1B0, (Matrix *) &sp6F0);
@@ -2210,8 +2207,8 @@ loop_182:
             do {
                 if (var_r15_2510 == NULL) {
                     temp_f25_3935 = temp_f28_3846 * (f32) var_r16_3919;
-                    temp_f26_3940 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f25_3935));
-                    sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3935);
+                    temp_f26_3940 = -_table_sinf(1.5707964f + ((3.0f * this->unkA0C) + temp_f25_3935));
+                    sp6F0 = _table_sinf(this->unkA0C + temp_f25_3935);
                     sp6F4 = temp_f26_3940;
                     sp6F8 = 0.0f;
                     ApplyMatrix(sp160, (Matrix *) &sp6F0);
@@ -2241,7 +2238,7 @@ loop_182:
             var_r5_3998 = 0;
             var_r3_3999 = 0;
 loop_198:
-            if (var_r5_3998 < (FuryFXElectricity *) this->unk9F4) {
+            if (var_r5_3998 < (s32) this->unk9FC) {
                 temp_r4_4005 = this + (var_r3_3999 + 0x1E0);
                 var_r5_3998 += 1;
                 var_r3_3999 += 0x200;
@@ -2264,9 +2261,9 @@ loop_198:
         KDMath_BuildMatrixFromFwd(&sp890, *((MKVector3 *) &sp820), (MKVector3 *) &sp6E0);
         var_r17_4073 = 0;
         var_r14_4075 = 0;
-        temp_f28_4078 = 6.2831855f / (f32) this->unk9F4;
+        temp_f28_4078 = 6.2831855f / (f32) this->unk9FC;
 loop_208:
-        if (var_r17_4073 < (FuryFXElectricity *) this->unk9F4) {
+        if (var_r17_4073 < (s32) this->unk9FC) {
             if (arg5 != 0) {
                 spC0 = sp820;
                 spC8 = sp828;
@@ -2277,8 +2274,8 @@ loop_208:
                 ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->SetBeamPositions((MKVector3) &spE0, (MKVector3) &spD0, (MKVector3) &spC0);
             } else {
                 temp_f30_4112 = temp_f28_4078 * (f32) var_r17_4073;
-                temp_f26_4117 = -_table_sinf(1.5707964f + (M2C_BITWISE(f32, this->unkA00) + temp_f30_4112));
-                sp6D0 = _table_sinf(M2C_BITWISE(f32, this->unkA00) + temp_f30_4112);
+                temp_f26_4117 = -_table_sinf(1.5707964f + (this->unkA08 + temp_f30_4112));
+                sp6D0 = _table_sinf(this->unkA08 + temp_f30_4112);
                 sp6D4 = temp_f26_4117;
                 sp6D8 = 0.0f;
                 ApplyMatrix(spB0, (Matrix *) &sp6D0);
@@ -2288,8 +2285,8 @@ loop_208:
                 sp6C0 = spA0;
                 sp6C8 = spA8;
                 if (var_r15_2510 == NULL) {
-                    temp_f26_4150 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f30_4112));
-                    sp6C0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f30_4112);
+                    temp_f26_4150 = -_table_sinf(1.5707964f + ((3.0f * this->unkA0C) + temp_f30_4112));
+                    sp6C0 = _table_sinf(this->unkA0C + temp_f30_4112);
                     (*(f32 *) ((u8 *) &sp6B0 + 0x14)) = temp_f26_4150;
                     sp6C8 = 0.0f;
                     ApplyMatrix(sp90, (Matrix *) &sp6C0);
@@ -2315,9 +2312,9 @@ loop_208:
             goto loop_208;
         }
     }
-    ((ElectricBeam *) &this->unk1C0)->EmitSparks();
+    this->unk1C0.EmitSparks();
     this->unk9E0 = 1;
-    this->unk9E4 = (Corona *)1;
+    this->unk9EC = 1;
     this->unkC8 = 1;
     this->unkC9 = 1;
     return 1U;
@@ -2389,7 +2386,6 @@ void ZapBreathFX::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
 void ZapBreathFX::Draw() {
     s32 var_r30_4607;
     s32 var_r31_4608;
@@ -2398,7 +2394,7 @@ void ZapBreathFX::Draw() {
         var_r30_4607 = 0;
         var_r31_4608 = 0;
 loop_3:
-        if (var_r30_4607 < (FuryFXElectricity *) this->unk9F4) {
+        if (var_r30_4607 < (s32) this->unk9FC) {
             ((ElectricBeam *) (this + (var_r31_4608 + 0x1C0)))->Draw();
             var_r30_4607 += 1;
             var_r31_4608 += 0x200;
@@ -2406,7 +2402,6 @@ loop_3:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void ZapBreathFX::Message(MKMessage *arg0) {
@@ -2424,7 +2419,7 @@ void ZapBreathFX::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'ScorchTrail *' to
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ZapBreathFX::Update() {
     f64 sp360;
     f64 sp358;
@@ -2544,7 +2539,6 @@ void ZapBreathFX::Update() {
     f64 sp18;
     f64 sp10;
     f64 sp8;
-    Corona *temp_r0_4948;
     Corona *temp_r3_4708;
     Corona *temp_r4_4695;
     ManagedLight *temp_r3_4847;
@@ -2599,6 +2593,7 @@ void ZapBreathFX::Update() {
     f64 temp_f0_5283;
     f64 temp_f0_5293;
     f64 temp_f0_5303;
+    s32 temp_r0_4948;
     s32 temp_r0_4975;
     s32 temp_r0_5168;
     s32 temp_r0_5190;
@@ -2629,10 +2624,10 @@ void ZapBreathFX::Update() {
     var_r29_4671 = 0;
     var_r30_4673 = 0;
     this->unkDC -= gUpdateTimeDelta;
-    this->unkA00 = M2C_BITWISE(f32, this->unkA00) + gUpdateTimeDelta;
-    this->unkA04 = (6.2831855f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unkA04);
+    this->unkA08 += gUpdateTimeDelta;
+    this->unkA0C += 6.2831855f * gUpdateTimeDelta;
 loop_2:
-    if (var_r29_4671 < (FuryFXElectricity *) this->unk9F4) {
+    if (var_r29_4671 < (s32) this->unk9FC) {
         ((ElectricBeam *) (this + (var_r30_4673 + 0x1C0)))->Update();
         var_r29_4671 += 1;
         var_r30_4673 += 0x200;
@@ -2640,8 +2635,8 @@ loop_2:
     }
     temp_r4_4695 = this->unk9E4;
     if (temp_r4_4695 != NULL) {
-        temp_r4_4695->unk0 = this->unk1C0.unk8;
-        temp_r4_4695->unk8 = this->unk1C0.unk10;
+        temp_r4_4695->unk0 = this->unk1C0.unk10;
+        temp_r4_4695->unk8 = this->unk1C0.unk18;
         this->unk9E4->unk24 = MKRand_Float(&gViewSeed, 0.8f, 1.1f);
         temp_r3_4708 = this->unk9E4;
         temp_r3_4708->unk31 = (temp_r3_4708->unk31 & ~0x40) | ((this->unk9E0 << 6) & 0x40);
@@ -2759,18 +2754,18 @@ loop_2:
             }
         }
     }
-    temp_r0_4948 = this->unk9E4;
+    temp_r0_4948 = this->unk9EC;
     switch (temp_r0_4948) {                         /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         if ((u8) this->unk9E0 == 0) {
-            this->unk9E4 = (Corona *)2;
-            this->unk9E8 = 0.2f;
+            this->unk9EC = 2;
+            this->unk9F0 = 0.2f;
         } else {
             var_r4_4970 = 0;
             temp_r30_4971 = MKRand_Int(&gViewSeed, 0, 0xA) != 0;
             var_r3_4972 = 0;
 loop_33:
-            if (var_r4_4970 < (FuryFXElectricity *) this->unk9F4) {
+            if (var_r4_4970 < (s32) this->unk9FC) {
                 temp_r0_4975 = var_r3_4972 + 0x3B4;
                 var_r3_4972 += 0x200;
                 *(this + temp_r0_4975) = temp_r30_4971;
@@ -2863,25 +2858,25 @@ loop_33:
         }
         break;
     case 2:                                         /* switch 1 */
-        this->unk9E8 = M2C_BITWISE(f32, this->unk9E8) - gUpdateTimeDelta;
-        if (M2C_BITWISE(f32, this->unk9E8) <= 0.0f) {
+        this->unk9F0 -= gUpdateTimeDelta;
+        if (this->unk9F0 <= 0.0f) {
             var_r5_5163 = 0;
             var_r3_5164 = 0;
 loop_50:
-            if (var_r5_5163 < (FuryFXElectricity *) this->unk9F4) {
+            if (var_r5_5163 < (s32) this->unk9FC) {
                 temp_r0_5168 = var_r3_5164 + 0x3B4;
                 var_r3_5164 += 0x200;
                 *(this + temp_r0_5168) = 0;
                 var_r5_5163 += 1;
                 goto loop_50;
             }
-            this->unk9E4 = NULL;
+            this->unk9EC = 0;
         } else {
             var_r4_5185 = 0;
             temp_r30_5186 = MKRand_Int(&gViewSeed, 0, 2) != 0;
             var_r3_5187 = 0;
 loop_54:
-            if (var_r4_5185 < (FuryFXElectricity *) this->unk9F4) {
+            if (var_r4_5185 < (s32) this->unk9FC) {
                 temp_r0_5190 = var_r3_5187 + 0x3B4;
                 var_r3_5187 += 0x200;
                 *(this + temp_r0_5190) = temp_r30_5186;
@@ -3237,9 +3232,9 @@ void ZapBreathFX::Init() {
     M2C_FIELD(this, f32 *, 0xF0) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF4) = 1.0f;
     this->unkF8 = 1.0f;
-    ((MKSceneManager *) gMK)->CreatePropDeferred("ZapMissileImpactPS", (MKProp **) &this->unk9E0);
-    ((MKSceneManager *) gMK)->CreatePropDeferred("FuryFXElectricity", (MKProp **) &this->unk9EC);
-    ((MKSceneManager *) gMK)->CreatePropDeferred("FuryFXElectricity2", (MKProp **) &this->unk9F0);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("ZapMissileImpactPS", &this->unk9E8);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("FuryFXElectricity", (MKProp **) &this->unk9F4);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("FuryFXElectricity2", (MKProp **) &this->unk9F8);
     var_r28_5967 = 0;
     var_r30_5968 = 0;
     do {
@@ -3248,13 +3243,13 @@ void ZapBreathFX::Init() {
         var_r30_5968 += 0x200;
     } while (var_r28_5967 < 4);
     this->unk9E0 = 0;
-    this->unk9E8 = 0.0f;
-    this->unk9E4 = NULL;
-    this->unk9F4 = NULL;
-    ((MKSceneManager *) gMK)->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unk9F8);
-    ((MKSceneManager *) gMK)->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unk9FC);
-    this->unkA00 = 0.0f;
-    this->unkA04 = 0.0f;
+    this->unk9F0 = 0.0f;
+    this->unk9EC = 0;
+    this->unk9FC = 0;
+    ((MKSceneManager *) gMK)->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unkA00);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unkA04);
+    this->unkA08 = 0.0f;
+    this->unkA0C = 0.0f;
 }
 #endif
 

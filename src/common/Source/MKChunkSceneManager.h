@@ -70,15 +70,7 @@ public:
     MKChunkSceneManager * StripExtension(const char *, char);
     static u8 bChunksUseHeaps[0x1];
     static u8 bPackageSystemInUse[0x1];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ void* unk8;
-    /* 0x00c */ u8 padC[0xd];
-    /* 0x019 */ s8 unk19;
-    /* 0x01a */ u8 pad1A[0x76];
-    /* 0x090 */ s32 unk90;
-    /* 0x094 */ u8 pad94[0x14];
-    /* 0x0a8 */ s32 unkA8;
-    /* 0x0ac */ u8 padAC[0x2c];
+    /* 0x0d4 */ u8 padD4[0x4];
     /* 0x0d8 */ MKHeap* unkD8;
     /* 0x0dc */ void* unkDC;
     /* 0x0e0 */ u8 padE0[0x4];

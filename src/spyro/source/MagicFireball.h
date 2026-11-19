@@ -30,7 +30,7 @@ public:
     virtual void Collided(MKCollisionResult &);
     MagicFireball(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x13];
+    /* 0x150 */ u8 pad150[0x10];
     /* 0x160 */ ManagedLight* unk160;
     /* 0x164 */ s32 unk164;
     /* 0x168 */ u8 pad168[0x24];

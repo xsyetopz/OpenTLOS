@@ -121,7 +121,6 @@ public:
     /* 0x100 */ f64 unk100;
     /* 0x108 */ f64 unk108;
     /* 0x110 */ CollisionObject unk110;
-    /* 0x584 */ u8 pad584[0x4];
     /* 0x588 */ MKVector3 unk588;
     /* 0x598 */ f32 unk598;
     /* 0x59c */ f32 unk59C;
@@ -142,7 +141,6 @@ public:
     /* 0x5f0 */ s32 unk5F0;
     /* 0x5f4 */ u8 pad5F4[0xc];
     /* 0x600 */ Shadow unk600;
-    /* 0x62d */ u8 pad62D[0x3];
     /* 0x630 */ void* unk630;
     /* 0x634 */ void* unk634;
     /* 0x638 */ void* unk638;
@@ -180,35 +178,35 @@ inline void Character::UpdateMovementCustom() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier 'unk678'
 inline Character::~Character() {
-    Character *temp_r0_5423;
-    M2C_UNK *temp_r0_5407;
-    M2C_UNK *temp_r5_5410;
-    SB2 **temp_r5_5426;
+    M2C_UNK *temp_r0_5423;
+    M2C_UNK *temp_r5_5426;
+    u8 *temp_r0_5407;
+    u8 *temp_r5_5410;
 
     if (this != NULL) {
         if (&this->unk670 != NULL) {
-            temp_r0_5407 = M2C_FIELD(this, M2C_UNK **, 0x678);
+            temp_r0_5407 = this->unk678;
             if (temp_r0_5407 != NULL) {
                 temp_r5_5410 = &this->unk670;
                 if (temp_r0_5407 != temp_r5_5410) {
-                    M2C_FIELD(this->unk67C, M2C_UNK **, 8) = temp_r0_5407;
-                    M2C_FIELD(M2C_FIELD(this, M2C_UNK **, 0x678), M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
+                    M2C_FIELD(this->unk67C, u8 **, 8) = temp_r0_5407;
+                    M2C_FIELD(this->unk678, u8 **, 0xC) = (u8 *) this->unk67C;
                     this->unk67C = temp_r5_5410;
-                    M2C_FIELD(this, M2C_UNK **, 0x678) = temp_r5_5410;
+                    this->unk678 = temp_r5_5410;
                 }
             }
         }
-        if (&this->unk640 != NULL) {
-            temp_r0_5423 = this->unk660;
+        if (&this->unk648 != NULL) {
+            temp_r0_5423 = this->unk668;
             if (temp_r0_5423 != NULL) {
-                temp_r5_5426 = &this->unk640;
+                temp_r5_5426 = &this->unk648;
                 if (temp_r0_5423 != temp_r5_5426) {
-                    M2C_FIELD(this->unk664, Character **, 0x20) = temp_r0_5423;
-                    this->unk660->unk24 = M2C_BITWISE(f32, this->unk664);
-                    this->unk664 = temp_r5_5426;
-                    this->unk660 = (Character *) temp_r5_5426;
+                    M2C_FIELD(this->unk66C, M2C_UNK **, 0x20) = temp_r0_5423;
+                    M2C_FIELD(this->unk668, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk66C;
+                    this->unk66C = temp_r5_5426;
+                    this->unk668 = temp_r5_5426;
                 }
             }
         }

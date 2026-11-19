@@ -16,7 +16,7 @@ extern f32 gUpdateTimeDelta;
 
 static s32 lit_555 = 0;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp90'
 void ShotgunWarpFX::UpdateWarp() {
     f32 spAC;
     f32 spA8;
@@ -157,7 +157,6 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ShotgunWarpFX::StartWarp(Matrix *arg0) {
     f64 sp20;
     f64 sp18;
@@ -220,7 +219,6 @@ void ShotgunWarpFX::StartWarp(Matrix *arg0) {
     this->unk70 = 1;
     this->unk74 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ShotgunWarpFX::BuildLocalVertexList() {
@@ -372,7 +370,7 @@ void ShotgunWarpFX::Deinit() {
     free(temp_r31_625);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal type
 void ShotgunWarpFX::Draw() {
     Matrix spC0;
     MKVector3 spB0;

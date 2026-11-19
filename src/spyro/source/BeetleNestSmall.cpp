@@ -10,7 +10,6 @@
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointObject.h"
-#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/shatterwaypointspawn.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
@@ -35,13 +34,13 @@ void BeetleNestSmall::Message(MKMessage *arg0) {
         }
         return;
     case 0xB5:
-        ((SpawnerObject *) &this->unk198)->FunctionOn();
+        this->unk1A8.FunctionOn();
     default:
 block_10:
         Shatterable::Message(arg0);
         break;
     case 0xB4:
-        ((SpawnerObject *) &this->unk198)->FunctionOff();
+        this->unk1A8.FunctionOff();
         goto block_10;
     }
 }
@@ -74,10 +73,10 @@ void BeetleNestSmall::Update() {
     f32 temp_f3_194;
     f64 temp_f0_192;
     f64 temp_f0_203;
+    s32 temp_r29_242;
     s32 temp_r3_99;
-    s32 temp_r4_252;
     s32 var_r28_246;
-    u32 *temp_r29_242;
+    u32 temp_r4_252;
     u8 var_r30_134;
     void *temp_r29_136;
     void *temp_r3_187;
@@ -89,21 +88,21 @@ void BeetleNestSmall::Update() {
     if ((temp_r3_99 & 1) && !(temp_r3_99 & 2)) {
         this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x170), 1.0f, 0.0f, 0, -1);
     }
-    if ((((SpawnerObject *) &this->unk198)->IsSpawning() != 0) && (IsDead() != 0)) {
-        ((SpawnerObject *) &this->unk198)->FunctionOff();
+    if ((this->unk1A8.IsSpawning() != 0) && (IsDead() != 0)) {
+        this->unk1A8.FunctionOff();
     }
-    if (((SpawnerObject *) &this->unk198)->IsSpawning() != 0) {
+    if (this->unk1A8.IsSpawning() != 0) {
         var_r30_134 = 0;
         temp_r29_136 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_137 = M2C_FIELD(temp_r29_136, KDSynkerPlayer3 **, 0x78);
         if (((temp_r3_137 != NULL) && (temp_r3_137->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_136, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r29_136) + 0x24))->GetState() == 2))) {
             var_r30_134 = 1;
         }
-        if ((var_r30_134 == 0) && ((u32 *) this->unk1A8.unk44 > 0)) {
-            M2C_FIELD(this->unk198, M2C_UNK (**)(f32 *), 0xC)(&this->unk198);
-            if (((SpawnerObject *) &this->unk198)->TrySpawnItem(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C)) != NULL) {
+        if ((var_r30_134 == 0) && ((s32) this->unk1FC > 0)) {
+            this->unk1A8.UpdateUsedSpawnPointMask();
+            if (this->unk1A8.TrySpawnItem(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C)) != NULL) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x174), 1.0f, 0.0f, 0, -1);
-                MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk208, &sp98);
+                MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) this->unk208, &sp98);
                 temp_r3_187 = checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                 temp_r4_190 = ((u8 *) this->unk8) + 0x10;
                 temp_f0_192 = M2C_FIELD(temp_r4_190, f64 *, 0) * 5.53552857e-315;
@@ -132,15 +131,15 @@ void BeetleNestSmall::Update() {
             }
         }
     }
-    temp_r29_242 = this->unk1A8.unk44;
-    if (temp_r29_242 != NULL) {
+    temp_r29_242 = this->unk1FC;
+    if (temp_r29_242 != 0) {
         var_r28_246 = 0;
 loop_21:
         if (var_r28_246 < temp_r29_242) {
             temp_r4_252 = this->unk208;
-            temp_r30_253 = ((SpawnerObject *) &this->unk198)->GetSpawnPoint(var_r28_246);
-            if ((u32) temp_r4_252 != -1U) {
-                MKModel_CalculateRefPointWorldPosition(this->unk4, temp_r4_252, &sp88);
+            temp_r30_253 = this->unk1A8.GetSpawnPoint(var_r28_246);
+            if (temp_r4_252 != -1U) {
+                MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_252, &sp88);
                 temp_r30_253->unk40 = M2C_BITWISE(f32, sp88);
                 temp_r30_253->unk44 = sp88.unk4;
                 temp_r30_253->unk48 = sp88.unk8;
@@ -153,42 +152,42 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void BeetleNestSmall::LoadDone() {
     f64 sp20;
     f64 sp18;
     MKVector3 sp8;
     SpawnPointObject *temp_r3_316;
-    s32 temp_r4_338;
+    s32 temp_r28_302;
     s32 var_r27_310;
     s32 var_r31_311;
-    u32 *temp_r28_302;
+    u32 temp_r4_338;
     void *temp_r30_320;
     void *temp_r3_331;
 
     ShatterWaypointSpawn::LoadDone();
-    this->unk208 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "spawn");
-    temp_r28_302 = this->unk1A8.unk44;
-    this->unk1A8.unk20 = 0.0f;
-    this->unk1A8.unk24 = 5.0f;
-    M2C_FIELD(this, u8 *, 0x1F4) = (u8) (M2C_FIELD(this, u8 *, 0x1F4) | 0x10);
-    if (temp_r28_302 != NULL) {
+    this->unk208 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "spawn");
+    temp_r28_302 = this->unk1FC;
+    this->unk1A8.unk30 = 0.0f;
+    this->unk1A8.unk34 = 5.0f;
+    this->unk1A8.unk4C |= 0x10;
+    if (temp_r28_302 != 0) {
         var_r27_310 = 0;
         var_r31_311 = 0;
 loop_5:
         if (var_r27_310 < temp_r28_302) {
-            temp_r3_316 = ((SpawnerObject *) &this->unk198)->GetSpawnPoint(var_r27_310);
+            temp_r3_316 = this->unk1A8.GetSpawnPoint(var_r27_310);
             temp_r30_320 = checked_cast<EnemySpawnPointData *, SpawnPointData>(temp_r3_316->unk4);
             operator new(0x30U, NULL, 0);
             M2C_FIELD(temp_r30_320, KDPathSegment **, 0x1C) = (KDPathSegment *) M2C_ERROR(/* Read from unset register $r3 */);
             ((KDPathSegment *) (M2C_FIELD(temp_r30_320, KDPathSegment **, 0x1C)))->Init();
-            temp_r3_331 = this->unk1A8.unk40.unk0 + var_r31_311;
+            temp_r3_331 = ((u8 *) this->unk1F8) + var_r31_311;
             sp18 = M2C_FIELD(temp_r3_331, f64 *, 0);
             sp20 = M2C_FIELD(temp_r3_331, f64 *, 8);
             ((KDPathSegment *) (M2C_FIELD(temp_r30_320, KDPathSegment **, 0x1C)))->CopyWaypointArray((MKVector3 *) &sp18, 1);
             temp_r4_338 = this->unk208;
-            if ((u32) temp_r4_338 != -1U) {
-                MKModel_CalculateRefPointWorldPosition(this->unk4, temp_r4_338, &sp8);
+            if (temp_r4_338 != -1U) {
+                MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_338, &sp8);
                 temp_r3_316->unk40 = M2C_BITWISE(f32, sp8);
                 temp_r3_316->unk44 = sp8.unk4;
                 temp_r3_316->unk48 = sp8.unk8;
@@ -214,7 +213,7 @@ void BeetleNestSmallDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void BeetleNestSmallDescriptor::Init() {
     ShatterWaypointSpawnDescriptor::Init();
     this->unk174 = 0;

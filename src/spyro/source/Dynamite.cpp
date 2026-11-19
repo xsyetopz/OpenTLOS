@@ -857,7 +857,6 @@ void Dynamite::Init() {
     this->unk17C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void DynamiteDescriptor::LoadDone() {
     s32 temp_r0_1611;
 
@@ -879,9 +878,8 @@ void DynamiteDescriptor::LoadDone() {
     }
     this->unkF0 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: function call 'DataMap_LoadLine(MKIniLine *, const char[8], DataMap *,
 s32 DynamiteDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1656;
 
@@ -893,7 +891,6 @@ s32 DynamiteDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void DynamiteDescriptor::Deinit() {
     s32 temp_r0_1687;
 
@@ -914,12 +911,9 @@ void DynamiteDescriptor::Deinit() {
     }
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void DynamiteDescriptor::Init() {
     ProjectileDescriptor::Init();
     this->unkF0 = -1;
     this->unkF4 = 0;
 }
-#endif

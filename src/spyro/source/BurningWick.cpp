@@ -37,7 +37,7 @@ s32 BurningWick::Burnt() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp230'
 void BurningWick::Update() {
     f32 sp24C;
     f32 sp248;
@@ -1019,7 +1019,7 @@ void BurningWick::InitData(const int &arg0, MKModel *arg1, const MKVector3 &arg2
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'spB0'
 void BurningWick::Reset() {
     f32 spCC;
     f32 spC8;

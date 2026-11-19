@@ -24,7 +24,7 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     void DropABall(void);
-    /* 0x089 */ u8 pad89[0x17];
+    /* 0x090 */ u8 pad90[0x10];
     /* 0x0a0 */ MKVector3 unkA0;
     /* 0x0b0 */ u8 unkB0;
     /* 0x0b1 */ u8 padB1[0x3];
@@ -40,7 +40,6 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;

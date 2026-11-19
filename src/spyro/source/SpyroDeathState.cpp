@@ -22,7 +22,7 @@ extern void **gMK;
 #if 0 // DRAFT: identifier 'gb' redeclared
 extern M2C_UNK gb;
 #endif
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 static M2C_UNK lit_779;                                /* unable to generate initializer: unknown type */
 SpyroDeathState states__15SpyroDeathState;          /* unable to generate initializer: confusing struct layout */
 
@@ -86,11 +86,11 @@ void SpyroDeathState::SpawnExit() {
     void *temp_r3_170;
 
     temp_r4_146 = this->unk10;
-    temp_r4_146->unk420 = (void *) ((s32) temp_r4_146->unk420 & 0xFFFF7FFF);
+    temp_r4_146->unk428 &= 0xFFFF7FFF;
     temp_r4_150 = this->unk10;
-    temp_r4_150->unk420 = (void *) ((s32) temp_r4_150->unk420 | 0x1000);
-    M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
-    M2C_FIELD(this->unk10, s8 *, 0x3CC) = 0;
+    temp_r4_150->unk428 |= 0x1000;
+    this->unk10->unk3CF = 0;
+    this->unk10->unk3CC = 0;
     temp_r3_159 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x44A;
@@ -109,15 +109,15 @@ void SpyroDeathState::SpawnEnter() {
     Spyro *temp_r3_211;
     Spyro *temp_r3_215;
 
-    M2C_FIELD(this->unk10, s8 *, 0x3CF) = 1;
+    this->unk10->unk3CF = 1;
     this->unk28 = 1;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_207 = this->unk10;
-    temp_r3_207->unk420 = (void *) ((s32) temp_r3_207->unk420 | 0x8000);
+    temp_r3_207->unk428 |= 0x8000;
     temp_r3_211 = this->unk10;
-    temp_r3_211->unk420 = (void *) ((s32) temp_r3_211->unk420 | 0x20);
+    temp_r3_211->unk428 |= 0x20;
     temp_r3_215 = this->unk10;
-    temp_r3_215->unk420 = (void *) ((s32) temp_r3_215->unk420 & 0xFFFFEFFF);
+    temp_r3_215->unk428 &= 0xFFFFEFFF;
     this->unk10->ClearSafePos();
     if ((u32) M2C_FIELD(&gb, u32 *, 0x360) == 0U) {
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
@@ -125,7 +125,7 @@ void SpyroDeathState::SpawnEnter() {
     M2C_FIELD(&gb, s8 *, 0xD0) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroDeathState::RespawnTransition() {
     if ((s32) this->unk14.unk0 != 5) {
         this->unk14.SetState(this, 5, 0U);
@@ -143,7 +143,7 @@ void SpyroDeathState::RespawnUpdate() {
 }
 
 void SpyroDeathState::RespawnExit() {
-    M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
+    this->unk10->unk3CF = 0;
     ((Targetable *) &this->unk10->unk4C)->RegisterTargetable();
 }
 
@@ -153,8 +153,8 @@ void SpyroDeathState::RespawnEnter() {
     Spyro *temp_r4_314;
 
     temp_r4_314 = this->unk10;
-    temp_r4_314->unk420 = (void *) ((s32) temp_r4_314->unk420 & 0xFFFFEFFF);
-    M2C_FIELD(this->unk10, s8 *, 0x3CF) = 1;
+    temp_r4_314->unk428 &= 0xFFFFEFFF;
+    this->unk10->unk3CF = 1;
     this->unk10->ClearSafePos();
     this->unk28 = 1;
     spC = 0;
@@ -163,7 +163,7 @@ void SpyroDeathState::RespawnEnter() {
     DialogBox_ReleaseContexts();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroDeathState::AirTransition() {
     u8 var_r31_358;
     u8 var_r3_390;
@@ -173,10 +173,10 @@ u8 SpyroDeathState::AirTransition() {
     if (((M2C_FIELD(&gb, f32 *, 0x30C) - this->unk2C) > 4.0f) && ((s32) M2C_FIELD(&gb, s32 *, 0x50) == 3)) {
         var_r31_358 = 1;
     }
-    if ((s32) M2C_FIELD(this->unk10->unk26C.unk8, s32 *, 0x16C) > 0) {
+    if ((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0) {
         this->unk2A = 0;
     }
-    if (((s32) M2C_FIELD(this->unk10->unk26C.unk8, s32 *, 0x16C) > 0) && ((s32) this->unk14.unk0 != 0)) {
+    if (((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0) && ((s32) this->unk14.unk0 != 0)) {
         this->unk14.SetState(this, 0, 0U);
         var_r3_390 = 1;
     } else {
@@ -218,9 +218,9 @@ void SpyroDeathState::AirUpdate() {
 }
 
 void SpyroDeathState::AirExit() {
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     this->unk10->unk6F8.FadeOut(4);
-    M2C_FIELD(this->unk10, f32 *, 0x3DC) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f);
+    this->unk10->unk3DC = M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f;
     if ((u8) this->unk2A != 0) {
         this->unk2A = 0;
         this->unk10->BroadcastMessage(0x15);
@@ -245,10 +245,10 @@ void SpyroDeathState::AirEnter() {
     void *temp_r3_594;
 
     this->unk10->SetMedium((Spyro::Medium) 2);
-    M2C_FIELD(this->unk10, s8 *, 0x3CD) = 1;
+    this->unk10->unk3CD = 1;
     temp_r3_535 = this->unk10;
-    temp_r3_535->unk388 = 3800.0f;
-    temp_f1_537 = temp_r3_535->unk388;
+    temp_r3_535->unk390 = 3800.0f;
+    temp_f1_537 = temp_r3_535->unk390;
     var_f2_538 = temp_r3_535->unk33C;
     temp_f0_539 = -temp_f1_537;
     if (var_f2_538 < temp_f1_537) {
@@ -262,8 +262,8 @@ void SpyroDeathState::AirEnter() {
         var_f2_538 = temp_f0_539;
     }
     temp_r3_535->unk33C = var_f2_538;
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    if (((u8) this->unk30 == 0) && (temp_r3_559 = this->unk10, (((u8) M2C_FIELD(temp_r3_559, u8 *, 0x2F0) == 0) == 0)) && (M2C_FIELD(temp_r3_559, f32 *, 0x298) < 1000.0f)) {
+    this->unk10->unk38C = 1900.0f;
+    if (((u8) this->unk30 == 0) && (temp_r3_559 = this->unk10, (((u8) temp_r3_559->unk2F0 == 0) == 0)) && (temp_r3_559->unk298 < 1000.0f)) {
         temp_r3_559->SetAnim(0x3FU, 0.4f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     } else {
         this->unk10->SetAnim(0x57U, 0.4f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -299,7 +299,7 @@ void SpyroDeathState::StrafeUpdate() {
 #endif
 
 void SpyroDeathState::StrafeExit() {
-    M2C_FIELD(this->unk10, f32 *, 0x3DC) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f);
+    this->unk10->unk3DC = M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f;
     this->unk2A = 0;
     this->unk10->BroadcastMessage(0x15);
 }
@@ -309,7 +309,7 @@ void SpyroDeathState::StrafeEnter() {
     this->unk10->SetMedium((Spyro::Medium) 1);
     this->unk10->SetAnim(0x13U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk10->BroadcastMessage(0x14);
-    M2C_FIELD(this->unk10, s8 *, 0x3CD) = 1;
+    this->unk10->unk3CD = 1;
     ((Targetable *) &this->unk10->unk4C)->UnregisterTargetable();
 }
 #endif
@@ -361,7 +361,7 @@ void SpyroDeathState::LandUpdate() {
 #endif
 
 void SpyroDeathState::LandExit() {
-    M2C_FIELD(this->unk10, f32 *, 0x3DC) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f);
+    this->unk10->unk3DC = M2C_FIELD(&gb, f32 *, 0x30C) + 0.5f;
     this->unk10->BroadcastMessage(0x15);
 }
 
@@ -370,12 +370,11 @@ void SpyroDeathState::LandEnter() {
     this->unk10->SetMedium((Spyro::Medium) 1);
     this->unk10->SetAnim(0x56U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk10->BroadcastMessage(0x14);
-    M2C_FIELD(this->unk10, s8 *, 0x3CD) = 1;
+    this->unk10->unk3CD = 1;
     ((Targetable *) &this->unk10->unk4C)->UnregisterTargetable();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroDeathState::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0xA3) {
         return;
@@ -384,27 +383,22 @@ void SpyroDeathState::Message(MKMessage *arg0) {
         this->unk14.SetState(this, 4, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 s32 SpyroDeathState::Transition() {
     u32 var_r31_929;
 
     var_r31_929 = 4;
-    if ((u8) this->unk10->unk3CE != 0) {
+    if ((u8) this->unk10->unk3D6 != 0) {
         var_r31_929 = 3;
     }
     this->unk10->TryChangeState(this->unk14.GetState() == 3, var_r31_929, NULL, 0U);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroDeathState::Update() {
     this->unk14.Update(this, 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroDeathState::Exit() {
     s32 sp14;
     s32 sp10;
@@ -424,14 +418,14 @@ void SpyroDeathState::Exit() {
         M2C_FIELD(temp_r3_986->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     }
     temp_r3_997 = this->unk10;
-    temp_r3_997->unk420 = (void *) ((s32) temp_r3_997->unk420 | 0x20000);
+    temp_r3_997->unk428 |= 0x20000;
     temp_r3_1001 = this->unk10;
-    temp_r3_1001->unk420 = (void *) ((s32) temp_r3_1001->unk420 | 0x800);
+    temp_r3_1001->unk428 |= 0x800;
     this->unk10->DeathReset();
-    M2C_FIELD(this->unk10, s8 *, 0x3CD) = 0;
-    M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
-    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
-    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
+    this->unk10->unk3CD = 0;
+    this->unk10->unk3CF = 0;
+    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
+    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
     temp_r3_1022 = this->unk10;
     spC = 0;
     sp8 = 0xAA;
@@ -455,9 +449,9 @@ void SpyroDeathState::Enter(SpyroStateMessages &arg0) {
     void *temp_r3_1147;
 
     temp_r5_1050 = this->unk10;
-    temp_r5_1050->unk420 = (void *) ((s32) temp_r5_1050->unk420 & 0xFFF9FD7E);
+    temp_r5_1050->unk428 &= 0xFFF9FD7E;
     temp_r3_1054 = this->unk10;
-    temp_r3_1054->unk420 = (void *) ((s32) temp_r3_1054->unk420 & 0xFFFFF7FF);
+    temp_r3_1054->unk428 &= 0xFFFFF7FF;
     temp_r3_1059 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x42B;
@@ -465,7 +459,7 @@ void SpyroDeathState::Enter(SpyroStateMessages &arg0) {
     this->unk2C = M2C_FIELD(&gb, f32 *, 0x30C);
     this->unk29 = 0;
     this->unk30 = arg0.IsMessageOnList(0x183);
-    if ((u8) M2C_FIELD(this->unk10, u8 *, 0x3CC) != 0) {
+    if ((u8) this->unk10->unk3CC != 0) {
         this->unk14.SetState(this, 5, 0U);
     } else if (arg0.IsMessageOnList(0x188) != 0) {
         this->unk14.SetState(this, 4, 0U);
@@ -490,11 +484,9 @@ void SpyroDeathState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroDeathState::Deinit() {
     this->unk14.Deinit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__33KDStateMachine'
 void SpyroDeathState::Init(Spyro *arg0) {

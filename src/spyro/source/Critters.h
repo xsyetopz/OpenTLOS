@@ -21,7 +21,6 @@ public:
     virtual void Deinit(void);
     virtual void Update(void);
     virtual void Draw(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ u8 pad94[0x8];
     /* 0x09c */ u8 unk9C;

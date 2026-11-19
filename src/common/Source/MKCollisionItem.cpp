@@ -532,7 +532,7 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spD8;
     M2C_UNK spD4;
@@ -1691,7 +1691,7 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: undefined identifier 'MKCollision_RayToSphere'
 void MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
@@ -1701,7 +1701,7 @@ void MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollision
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to
+#if 0 // DRAFT: undefined identifier 'MKCollision_RayToSphere'
 s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
@@ -1946,7 +1946,7 @@ s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     return temp_r3_3414;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk10'
 void MKCollisionModelItem::Update() {
     MKModel *temp_r3_3434;
 
@@ -1962,7 +1962,7 @@ void MKCollisionModelItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to
 void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
     M2C_UNK spB0;
     Matrix sp70;
@@ -2031,7 +2031,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk8EC'
 void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult *arg1, MKBestResult *arg2, MKBestResult *arg3, int arg4) {
     MKSweptBox sp70;
     Matrix sp30;
@@ -2065,7 +2065,7 @@ void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult 
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 s32 MKCollisionModelItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionBox sp50;
     Matrix sp10;
@@ -2101,7 +2101,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionRay sp68;
     M2C_UNK sp64;
@@ -2139,7 +2138,6 @@ loop_5:
     this->unk120->unk2C = NULL;
     return temp_r3_3818;
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
@@ -2213,7 +2211,7 @@ void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionR
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'const MKCollisionRay *' to
 s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2284,7 +2282,6 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2354,7 +2351,6 @@ s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *ar
     this->unk120->unk2C = NULL;
     return var_r29_4090;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp8'
 void MKCollisionModelItem::Init(MKCollisionModel *arg0, MKModel *arg1, int arg2, MKCollisionMode arg3, MKCollisionInfo *arg4, int arg5, unsigned int arg6, MKCollisionManager *arg7) {

@@ -6,7 +6,6 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
@@ -239,26 +238,26 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
     }
     var_r30_354 = var_r3_346;
     if ((u8) var_r3_346 == 0) {
-        ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+        this->unk10->unkB90.GetCurrentTarget();
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             temp_r3_361 = this->unk10;
             temp_r4_362 = temp_r3_361->unk8;
             sp50 = M2C_FIELD(temp_r4_362, f64 *, 0x30);
             sp58 = M2C_FIELD(temp_r4_362, f64 *, 0x38);
-            ((SpyroTargetList *) &temp_r3_361->unkB90)->GetCurrentTarget();
+            temp_r3_361->unkB90.GetCurrentTarget();
             temp_r3_373 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
             sp60 = M2C_FIELD(temp_r3_373, f64 *, 0x30);
             sp68 = M2C_FIELD(temp_r3_373, f64 *, 0x38);
             var_r30_354 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
         }
     }
-    ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+    this->unk10->unkB90.GetCurrentTarget();
     if (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) || ((u8) var_r30_354 != 0)) {
         this->unk10->SelectStrafeTarget((u8) var_r30_354);
     }
-    ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+    this->unk10->unkB90.GetCurrentTarget();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+        this->unk10->unkB90.GetCurrentTarget();
         temp_r5_422 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         temp_r3_423 = this->unk10->unk8;
         sp80 = M2C_FIELD(temp_r5_422, f64 *, 0x30);
@@ -312,7 +311,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
         sp70 = (f32) sp70 * var_f4_436;
         (*(f32 *) ((u8 *) &sp68 + 0xc)) *= var_f4_436;
         sp78 = (f32) sp78 * var_f4_436;
-        ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp70), 15.0f);
+        this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp70), 15.0f);
     }
     ((Matrix *) this->unk10->unk8)->ZAxis3();
     sp10 = -*M2C_ERROR(/* Read from unset register $r3 */);
@@ -398,7 +397,6 @@ void SpyroStrafeState::SelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 u8 SpyroStrafeState::AnyToDodgeTranstion() {
     InputModifier *temp_r3_705;
     InputModifier *temp_r3_750;
@@ -457,7 +455,6 @@ u8 SpyroStrafeState::AnyToDodgeTranstion() {
     }
     return var_r3_742;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroStrafeState::DodgeForwardBackTransition() {
@@ -656,7 +653,7 @@ void SpyroStrafeState::CircleTargetTransition() {
     temp_r30_1184 = this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20 != M2C_FIELD(this->unk10->unkB4, s32 *, 0x8C);
     var_r3_1185 = AnyToDodgeTranstion();
     if (var_r3_1185 == 0) {
-        ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+        this->unk10->unkB90.GetCurrentTarget();
         if (((u8) (M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0) && ((s32) this->unk14.unk0 != 0)) {
             this->unk14.SetState(this, 0, 0U);
             var_r3_1185 = 1;
@@ -721,7 +718,7 @@ void SpyroStrafeState::CircleTargetEnter() {
     M2C_FIELD(M2C_FIELD(temp_r3_1327, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_1327, &sp8, 0x17);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 void SpyroStrafeState::NoTargetTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -794,7 +791,7 @@ void SpyroStrafeState::NoTargetUpdate() {
         M2C_FIELD(this, f64 *, 0x28) = M2C_BITWISE(f64, sp18);
         M2C_FIELD(this, f64 *, 0x30) = (f64) sp18.unk8;
     }
-    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &this->unk28), 15.0f);
+    this->unk10->unk3A8.YawTowards(*((MKVector3 *) &this->unk28), 15.0f);
     SetDesiredVelocity();
     SelectAnim();
     NoTargetTransition();
@@ -838,7 +835,7 @@ s32 SpyroStrafeState::Transition() {
     return var_r31_1561;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroStrafeState::Update() {
     f64 sp28;
     f64 sp20;
@@ -870,7 +867,7 @@ void SpyroStrafeState::Exit() {
     Spyro *temp_r4_1623;
 
     temp_r4_1623 = this->unk10;
-    temp_r4_1623->unk420 = (void *) ((s32) temp_r4_1623->unk420 | 0x20000);
+    temp_r4_1623->unk428 |= 0x20000;
     temp_r3_1628 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x43F;
@@ -908,9 +905,9 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     void *temp_r5_1675;
 
     temp_r5_1655 = this->unk10;
-    temp_r5_1655->unk420 = (void *) ((s32) temp_r5_1655->unk420 | 0x8000);
+    temp_r5_1655->unk428 |= 0x8000;
     temp_r4_1659 = this->unk10;
-    temp_r4_1659->unk420 = (void *) ((s32) temp_r4_1659->unk420 & 0xFFFDFFFF);
+    temp_r4_1659->unk428 &= 0xFFFDFFFF;
     this->unk38 = 0;
     this->unk44 = 0.0f;
     this->unk40 = 0.0f;
@@ -970,11 +967,9 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroStrafeState::Deinit() {
     this->unk14.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroStrafeState::Init(Spyro *arg0) {

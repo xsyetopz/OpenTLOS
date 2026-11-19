@@ -4,10 +4,10 @@
 #include <dolphin/types.h>
 #include "spyro/source/UITools.h"
 
-class ScriptButton;
+class OptionButton;
 class ScriptOptionButton;
 
-class ScriptOptionButton : public ScriptButton {  // base: vtable prefix
+class ScriptOptionButton : public OptionButton {  // base: base ctor call
 public:
     ScriptOptionButton(void);
     static u8 descriptor[0x14];

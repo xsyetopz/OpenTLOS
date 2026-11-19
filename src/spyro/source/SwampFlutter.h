@@ -62,7 +62,6 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     SwampFlutterCritterDescriptor(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
 };
 

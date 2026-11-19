@@ -41,10 +41,9 @@ public:
     void UpdateBeam(MKVector3, MKVector3, MKVector3);
     s32 Trigger(MKProp *, const MKVector3 &, const MKVector3 &, const MKVector3 &, const float &, int, float);
     void BreathFire(void);
-    /* 0x0a4 */ u8 padA4[0x8];
+    /* 0x0a8 */ u8 padA8[0x4];
     /* 0x0ac */ s32 unkAC;
     /* 0x0b0 */ FlameBreathBeam unkB0;
-    /* 0x1c4 */ u8 pad1C4[0x4];
     /* 0x1c8 */ f32 unk1C8;
     /* 0x1cc */ MKProp* unk1CC;
     /* 0x1d0 */ f32 unk1D0;
@@ -53,7 +52,6 @@ public:
 class CynderBreathFXDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ s32 unk74;
 };

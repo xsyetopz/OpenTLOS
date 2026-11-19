@@ -30,7 +30,7 @@ class NodeLookAtIK;
 class SpawnPointRef;
 class SuckeyPS;
 
-class Cynder : public Enemy {  // base: vtable prefix
+class Cynder : public Enemy {  // base: base ctor call
 public:
     virtual ~Cynder(void);
     virtual void Init(void);
@@ -69,7 +69,6 @@ public:
     void EnableFlyingRotation(bool);
     void UpdateFlyingRotation(Matrix *);
     void UpdateLookAtNodes(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ NodeLookAtIK unkB10;
     /* 0xb58 */ NodeLookAtIK unkB58;
     /* 0xba0 */ NodeLookAtIK unkBA0;
@@ -219,33 +218,19 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline Cynder::Cynder() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     this->unkCC0 = 0;
     this->unkCC4 = 0;
     this->unkCC8 = 0.0f;
     this->unkCCC = 0;
     this->unkCD4 = 0;
-    this->unkCC0 = 0;
-    this->unkCC4 = 0.0f;
-    this->unkCC8 = 0.0f;
-    M2C_FIELD(this, s32 *, 0xD6C) = 0;
-    __construct_array((f32 *) &this->unkDA0, (MKAnimScript *(*)(MKAnimScript *)) &EnemyRegion::EnemyRegion, NULL, 0x38, 4);
-    this->unkEB0 = 0.0f;
-    ((EventMessage *) &this->unkEB0)->Init();
-    this->unkECC.unk0 = 0;
-    this->unkECC.Init();
-    M2C_FIELD(this, s32 *, 0xED0) = 0;
-    ((EventMessage *) &this->unkEB8)->Init();
-    M2C_FIELD(this, s32 *, 0xED4) = 0;
-    ((EventMessage *) (this + 0xED4))->Init();
-    this->unkEC0 = 0.0f;
-    ((EventMessage *) &this->unkEC0)->Init();
-    this->unkEDC.unk0 = 0;
-    this->unkEDC.Init();
+    this->unkCD8 = 0;
+    this->unkCDC = 0.0f;
+    this->unkCE0 = 0;
+    this->unkD6C = 0;
+    __construct_array((KDUniformSpline *) &this->unkDB8, (MKAnimScript *(*)(MKAnimScript *)) &EnemyRegion::EnemyRegion, NULL, 0x38, 4);
     this->unkEC8.unk0 = 0;
     this->unkEC8.Init();
     this->unkECC.unk0 = 0;
@@ -272,18 +257,48 @@ inline Cynder::Cynder() {
     this->unkEF4.Init();
     this->unkEF8.unk0 = 0;
     this->unkEF8.Init();
+    this->unkEFC.unk0 = 0;
+    this->unkEFC.Init();
+    this->unkF00.unk0 = 0;
+    this->unkF00.Init();
+    this->unkF04.unk0 = 0;
+    this->unkF04.Init();
+    this->unkF08.unk0 = 0;
+    this->unkF08.Init();
+    this->unkF0C.unk0 = 0;
+    this->unkF0C.Init();
+    this->unkF10.unk0 = 0;
+    this->unkF10.Init();
     this->unk1000.unk0 = 0;
     this->unk1000.Init();
-    M2C_FIELD(this, s8 *, 0x1010) = 1;
+    this->unk1010 = 1;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline Cynder::~Cynder() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
     if (&this->unk1000 != NULL) {
         this->unk1000.Deinit();
+    }
+    if (&this->unkF10 != NULL) {
+        this->unkF10.Deinit();
+    }
+    if (&this->unkF0C != NULL) {
+        this->unkF0C.Deinit();
+    }
+    if (&this->unkF08 != NULL) {
+        this->unkF08.Deinit();
+    }
+    if (&this->unkF04 != NULL) {
+        this->unkF04.Deinit();
+    }
+    if (&this->unkF00 != NULL) {
+        this->unkF00.Deinit();
+    }
+    if (&this->unkEFC != NULL) {
+        this->unkEFC.Deinit();
     }
     if (&this->unkEF8 != NULL) {
         this->unkEF8.Deinit();
@@ -324,26 +339,8 @@ inline Cynder::~Cynder() {
     if (&this->unkEC8 != NULL) {
         this->unkEC8.Deinit();
     }
-    if (&this->unkEDC != NULL) {
-        this->unkEDC.Deinit();
-    }
-    if (&this->unkEC0 != NULL) {
-        ((EventMessage *) &this->unkEC0)->Deinit();
-    }
-    if ((this + 0xED4) != NULL) {
-        ((EventMessage *) (this + 0xED4))->Deinit();
-    }
-    if (&this->unkEB8 != NULL) {
-        ((EventMessage *) &this->unkEB8)->Deinit();
-    }
-    if (&this->unkECC != NULL) {
-        this->unkECC.Deinit();
-    }
-    if (&this->unkEB0 != NULL) {
-        ((EventMessage *) &this->unkEB0)->Deinit();
-    }
-    if (((this + 0xD6C) != NULL) && ((this + 0xD6C) != NULL)) {
-        KDSound_Stop(this + 0xD6C);
+    if ((&this->unkD6C != NULL) && (&this->unkD6C != NULL)) {
+        KDSound_Stop(&this->unkD6C);
     }
 }
 #endif

@@ -15,8 +15,6 @@ public:
     virtual void InitInstance(void);
     virtual void Command(int);
     static PhrasePlayerProperty classInfo;
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

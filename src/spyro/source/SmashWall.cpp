@@ -32,7 +32,7 @@ void SmashWall::Message(MKMessage *arg0) {
         if (temp_r3_68 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_68, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp18);
         }
-        if ((sp20 != 0) && ((s32) this->unk16C != 3)) {
+        if ((sp20 != 0) && ((s32) this->unk17C != 3)) {
             temp_r3_88 = this->unk8;
             temp_f0_92 = M2C_FIELD(temp_r3_61, f32 *, 0x20) + GetCollisionRadius();
             sp8 = M2C_FIELD(temp_r3_88, f64 *, 0x30);

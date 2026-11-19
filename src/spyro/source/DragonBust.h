@@ -14,7 +14,7 @@ class MKModel;
 class MKSceneManager;
 class ManagedLight;
 
-class DragonBust : public GameProp {  // base: vtable prefix
+class DragonBust : public GameProp {  // base: base ctor call
 public:
     class State;
     virtual ~DragonBust(void);
@@ -38,7 +38,6 @@ public:
     void IdleEnter(void);
     void SetState(DragonBust::State);
     static u8 states[0xd8];
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ u8 padCC[0x10];
     /* 0x0dc */ s32 unkDC;

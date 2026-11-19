@@ -28,7 +28,7 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static M2C_UNK lit_672;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<StalactiteCharge>::State StalactiteChargeStates; /* unable to generate initializer: confusing struct layout */
 
@@ -37,11 +37,9 @@ void StalactiteCharge::StateSCResetExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 void StalactiteCharge::StateSCResetUpdate() {
     this->unk50.SetState(this, 0, 0U);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDSplinePathSegment' to
 void StalactiteCharge::StateSCResetEnter() {
@@ -817,7 +815,7 @@ void StalactiteCharge::StateSCWaitEnter() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: ')' expected
 void StalactiteCharge::Update() {
     KDUniformSpline sp18;
     f32 sp10;
@@ -851,7 +849,6 @@ void StalactiteCharge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 void StalactiteCharge::Message(MKMessage *arg0) {
     s32 temp_r0_1552;
 
@@ -871,9 +868,8 @@ void StalactiteCharge::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void StalactiteCharge::Resolve() {
     MKSceneManager *temp_r3_1606;
     u32 temp_r4_1605;
@@ -887,7 +883,7 @@ void StalactiteCharge::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void StalactiteCharge::LoadDone() {
     KDUniformSpline sp38;
     KDUniformSpline sp18;
@@ -958,7 +954,7 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: ')' expected
 void StalactiteCharge::Deinit() {
     IceBossStalactiteSpawner *temp_r31_1841;
     KDSplinePathSegment *temp_r3_1855;
@@ -1025,7 +1021,7 @@ void StalactiteCharge::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: undefined identifier 'unk0'
 StalactiteCharge::StalactiteCharge() {
     this->unk50.unk0 = -1;
     this->unk54 = -1;

@@ -6,7 +6,6 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/MoleTether.h"
 #include "spyro/source/NPCGoal_Think.h"
@@ -29,14 +28,14 @@ void MiningMole::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x98) {
 
     } else if (checked_cast<FreeMiningMoleBounceMessage *, MKMessage>(arg0) != 0U) {
-        ((NPCGoal_Think *) (checked_cast<P13NPCGoal_Think))->AddGoal_Rescue(12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA24));
+        ((NPCGoal_Think *) (checked_cast<P13NPCGoal_Think))->AddGoal_Rescue(12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA3C));
     }
     Enemy::Message(arg0);
 }
 #endif
 
 void Exhumor::Message(MKMessage *arg0) {
-    ((KDSoundPlayer *) &this->unkAFC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unkB14)->Message(arg0);
     Enemy::Message(arg0);
 }
 
@@ -63,7 +62,7 @@ void Exhumor::Update() {
     u8 var_r31_196;
 
     Enemy::Update();
-    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkAF8, &sp88);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB10, &sp88);
     MKVector(1.0f, 1.0f, 1.0f);
     MKVector(-1.0f, -1.0f, -1.0f);
     KDRand_Vector(sp68, sp58);
@@ -98,18 +97,18 @@ block_6:
         var_r31_196 = 1;
     }
     sp8 = 1;
-    ((KDSoundFader *) &this->unkAFC)->Update(GS_MoleLeaderCandleLP1, 1U, var_r31_196, NULL, &sp88, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB14)->Update(GS_MoleLeaderCandleLP1, 1U, var_r31_196, NULL, &sp88, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 #endif
 
 void Exhumor::LoadDone() {
     Enemy::LoadDone();
-    this->unkAF8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
+    this->unkB10 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Exhumor::Deinit() {
-    KDSound_Stop(&this->unkAFC);
+    KDSound_Stop(&this->unkB14);
     Enemy::Deinit();
 }
 #endif
@@ -136,19 +135,19 @@ void Exhumor::Init() {
     }
     temp_r31_288->Init((Enemy *) this);
     temp_r31_288->unk38 = 0;
-    this->unkA24 = (EnemyAttack *) temp_r31_288;
-    ((KDSoundFader *) &this->unkAFC)->Init(0.25f, 0.25f);
+    this->unkA3C = &temp_r31_288->__vptr;
+    ((KDSoundFader *) &this->unkB14)->Init(0.25f, 0.25f);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'P13NPCGoal_Think'
 void MiningMoleLeader::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x169) {
-        ((KDSoundPlayer *) &this->unkAFC)->Message(arg0);
+        ((KDSoundPlayer *) &this->unkB14)->Message(arg0);
         Enemy::Message(arg0);
         return;
     }
-    ((NPCGoal_Think *) (checked_cast<P13NPCGoal_Think))->AddGoal_BreakRock(12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA24));
+    ((NPCGoal_Think *) (checked_cast<P13NPCGoal_Think))->AddGoal_BreakRock(12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA3C));
 }
 #endif
 
@@ -253,7 +252,7 @@ void MiningMoleLeader::Update() {
     M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(this, f64 *, 0xE0);
     M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(this, f64 *, 0xE8);
     this->unk6B5 |= 0x40;
-    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkAF8, &spB8);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB10, &spB8);
     MKVector(1.0f, 1.0f, 1.0f);
     MKVector(-1.0f, -1.0f, -1.0f);
     KDRand_Vector(sp88, sp78);
@@ -287,18 +286,18 @@ block_26:
         var_r30_584 = 1;
     }
     sp8 = 1;
-    ((KDSoundFader *) &this->unkAFC)->Update(GS_MoleLeaderCandleLP1, 1U, var_r30_584, NULL, &spB8, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB14)->Update(GS_MoleLeaderCandleLP1, 1U, var_r30_584, NULL, &spB8, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 #endif
 
 void MiningMoleLeader::LoadDone() {
     Enemy::LoadDone();
-    this->unkAF8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
+    this->unkB10 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MiningMoleLeader::Deinit() {
-    KDSound_Stop(&this->unkAFC);
+    KDSound_Stop(&this->unkB14);
     Enemy::Deinit();
 }
 #endif
@@ -325,30 +324,32 @@ void MiningMoleLeader::Init() {
     }
     temp_r31_675->Init((Enemy *) this);
     temp_r31_675->unk38 = 0;
-    this->unkA24 = (EnemyAttack *) temp_r31_675;
-    this->unkAF8 = -1;
-    ((KDSoundFader *) &this->unkAFC)->Init(0.25f, 0.25f);
+    this->unkA3C = &temp_r31_675->__vptr;
+    this->unkB10 = -1;
+    ((KDSoundFader *) &this->unkB14)->Init(0.25f, 0.25f);
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void MiningMole::Despawn(bool arg0) {
     s32 spC;
     s32 sp8;
-    s32 temp_r3_725;
-    s32 temp_r3_737;
+    MoleTether *temp_r3_725;
+    MoleTether *temp_r3_737;
 
-    temp_r3_725 = this->unkAFC;
-    if ((u32) temp_r3_725 != 0U) {
+    temp_r3_725 = this->unkB14;
+    if (temp_r3_725 != NULL) {
         spC = 0;
         sp8 = 0xBF;
-        M2C_FIELD(M2C_FIELD(temp_r3_725, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-        temp_r3_737 = this->unkAFC;
-        M2C_FIELD(M2C_FIELD(temp_r3_737, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_737);
+        M2C_FIELD(temp_r3_725->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        temp_r3_737 = this->unkB14;
+        temp_r3_737->Disable();
     }
     Enemy::Despawn(arg0);
 }
+#endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     s8 sp170;
     s32 sp16C;
@@ -401,23 +402,23 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f64 sp18;
     s32 sp14;
     s32 sp10;
+    MoleTether *temp_r3_772;
+    MoleTether *temp_r3_920;
+    MoleTether *temp_r3_925;
     f64 temp_f0_809;
     f64 temp_f0_886;
-    s32 temp_r3_772;
-    s32 temp_r3_920;
-    s32 temp_r3_925;
     void *temp_r3_787;
     void *temp_r3_807;
     void *temp_r4_805;
     void *temp_r4_811;
 
-    if (M2C_FIELD(this->unkA2C, s32 *, 4) & 0x100000) {
-        temp_r3_772 = this->unkAFC;
-        M2C_FIELD(M2C_FIELD(temp_r3_772, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_772);
+    if (M2C_FIELD(this->unkA44, s32 *, 4) & 0x100000) {
+        temp_r3_772 = this->unkB14;
+        temp_r3_772->Reset();
     }
     if (Enemy::Spawn(arg0, arg1) != 0) {
-        M2C_FIELD(this->unkAF8, s32 *, 0x34) = 0;
-        temp_r3_787 = this->unkA2C;
+        this->unkB10->unk34 = NULL;
+        temp_r3_787 = this->unkA44;
         if ((temp_r3_787 != NULL) && (M2C_FIELD(temp_r3_787, s32 *, 4) & 0x100000)) {
             M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r4_805 = this->unk8;
@@ -480,14 +481,14 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             spE0.unk34 = (*(f32 *) ((u8 *) &spC8 + 0x4));
             spE0.unk38 = (f32) spD0;
             spE0.unk3C = 1.0f;
-            ((MoleTether *) this->unkAFC)->SetWorldMatrix(spE0);
-            temp_r3_920 = this->unkAFC;
-            M2C_FIELD(M2C_FIELD(temp_r3_920, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_920);
-            temp_r3_925 = this->unkAFC;
+            this->unkB14->SetWorldMatrix(spE0);
+            temp_r3_920 = this->unkB14;
+            temp_r3_920->Enable();
+            temp_r3_925 = this->unkB14;
             sp14 = 0;
             sp10 = 0xBE;
-            M2C_FIELD(M2C_FIELD(temp_r3_925, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_925, &sp10, 0);
-            M2C_FIELD(this->unkAF8, s32 *, 0x34) = (s32) this->unkAFC;
+            temp_r3_925->Message(&sp10, 0);
+            this->unkB10->unk34 = this->unkB14;
         }
         return 1;
     }
@@ -495,17 +496,15 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MoleTether *' to
 void MiningMole::LoadDone() {
-    s32 temp_r3_972;
+    MoleTether *temp_r3_972;
 
     Enemy::LoadDone();
-    this->unkAFC = checked_cast<MoleTether *, MKProp>(gMK->CreateProp("MoleTether"));
-    M2C_FIELD(this->unkAFC, MiningMole **, 0x1F0) = this;
-    temp_r3_972 = this->unkAFC;
-    M2C_FIELD(M2C_FIELD(temp_r3_972, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_972);
+    this->unkB14 = checked_cast<MoleTether *, MKProp>(gMK->CreateProp("MoleTether"));
+    this->unkB14->unk1F0 = this;
+    temp_r3_972 = this->unkB14;
+    temp_r3_972->Disable();
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
 void MiningMole::Init() {
@@ -524,9 +523,9 @@ void MiningMole::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x14) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    ((NPCGoal_Think *) this->unkAF8)->Init((Enemy *) this);
-    M2C_FIELD(this->unkAF8, s8 *, 0x38) = 1;
-    this->unkA24 = (EnemyAttack *) this->unkAF8;
+    this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unkB10->Init((Enemy *) this);
+    this->unkB10->unk38 = 1;
+    this->unkA3C = &this->unkB10->__vptr;
 }
 #endif

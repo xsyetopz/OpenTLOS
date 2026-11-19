@@ -52,7 +52,6 @@ void SkiffterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SkiffterCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -77,7 +76,6 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void SkiffterCritter::Update() {

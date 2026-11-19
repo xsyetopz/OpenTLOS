@@ -79,6 +79,8 @@ void MCFileInfo::Reset() {
     s32 spC;
     s32 sp8;
     TimerInfo *temp_r4_274;
+    UIObject *var_r28_463;
+    UIObject *var_r30_340;
     f32 temp_f31_431;
     s32 temp_r30_288;
     s32 temp_ret_412;
@@ -88,17 +90,15 @@ void MCFileInfo::Reset() {
     s8 *temp_r3_298;
     s8 *temp_r3_310;
     s8 *temp_r3_321;
+    u32 temp_r29_515;
     u32 temp_r3_434;
     u8 temp_r3_381;
     u8 var_r29_344;
     u8 var_r31_467;
-    void *temp_r29_515;
     void *temp_r30_282;
     void *temp_r30_297;
     void *temp_r30_309;
     void *temp_r3_331;
-    void *var_r28_463;
-    void *var_r30_340;
     void *var_r30_403;
     void *var_r4_518;
     void *var_r7_456;
@@ -109,12 +109,12 @@ void MCFileInfo::Reset() {
         }
         temp_r4_274 = *MemoryCardScreen::selectedCard + ((this->unk218 * 0xC0) + 0x40);
         if (((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA5) != 0) || ((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA4) == 0)) {
-            temp_r30_282 = this->unk68;
+            temp_r30_282 = this->unk70;
             if (temp_r30_282 != NULL) {
                 if ((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA4) == 0) {
                     temp_r30_288 = M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x18);
                     if ((temp_r30_288 < MemoryCard_GetSaveGameBlockSize()) || ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x14) < 1)) {
-                        temp_r30_297 = this->unk68;
+                        temp_r30_297 = this->unk70;
                         temp_r3_298 = M2C_FIELD(temp_r30_297, s8 **, 0x68);
                         if (temp_r3_298 != NULL) {
                             UIStringTable_Remove(temp_r3_298);
@@ -122,7 +122,7 @@ void MCFileInfo::Reset() {
                         M2C_FIELD(temp_r30_297, s8 **, 0x68) = NULL;
                         M2C_FIELD(temp_r30_297, s32 *, 0x6C) = 0x4A;
                     } else {
-                        temp_r30_309 = this->unk68;
+                        temp_r30_309 = this->unk70;
                         temp_r3_310 = M2C_FIELD(temp_r30_309, s8 **, 0x68);
                         if (temp_r3_310 != NULL) {
                             UIStringTable_Remove(temp_r3_310);
@@ -138,7 +138,7 @@ void MCFileInfo::Reset() {
                     M2C_FIELD(temp_r30_282, s8 **, 0x68) = NULL;
                     M2C_FIELD(temp_r30_282, s32 *, 0x6C) = 0x4B;
                 }
-                temp_r3_331 = this->unk68;
+                temp_r3_331 = this->unk70;
                 sp10 = 2;
                 M2C_FIELD(M2C_FIELD(temp_r3_331, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_331, &sp10);
             }
@@ -146,7 +146,7 @@ void MCFileInfo::Reset() {
 loop_28:
             if (var_r30_340 != NULL) {
                 var_r29_344 = 0;
-                if (((void *) M2C_FIELD(var_r30_340, void **, 4) == NULL) || (stricmp"background" == 0) || (stricmp(M2C_FIELD(var_r30_340, void **, 4), "message") == 0)) {
+                if (((u32) var_r30_340->unk4 == 0) || (stricmp"background" == 0) || (stricmp((void *) var_r30_340->unk4, "message") == 0)) {
                     var_r29_344 = 1;
                 }
                 var_r3_364 = 3;
@@ -154,8 +154,8 @@ loop_28:
                     var_r3_364 = 2;
                 }
                 spC = var_r3_364;
-                M2C_FIELD(M2C_FIELD(var_r30_340, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r30_340, &spC);
-                var_r30_340 = M2C_FIELD(var_r30_340, void **, 0x10);
+                var_r30_340->Message(&spC);
+                var_r30_340 = var_r30_340->unk10;
                 goto loop_28;
             }
             return;
@@ -169,14 +169,14 @@ loop_28:
         Tools_GetDateString(temp_r4_274);
         strcpy(&this->unk178, M2C_ERROR(/* Read from unset register $r3 */));
         var_r30_403 = NULL;
-        M2C_FIELD(this, s8 *, 0x78) = 0;
+        this->unk78 = 0;
         if ((s8) M2C_FIELD(temp_r4_274, u8 *, 0x20) != 0) {
             temp_ret_412 = stricmp(temp_r4_274 + 0x20, "swamp_07");
             if (temp_ret_412 == 0) {
-                strcpy((s8 *) &this->unk70, M2C_FIELD(gpTranslation_StringArray, s8 **, 0x38));
+                strcpy(&this->unk78, M2C_FIELD(gpTranslation_StringArray, s8 **, 0x38));
             } else {
                 var_r30_403 = M2C_FIELD(((Level *) (temp_r4_274 + 0x20))->GetChunkByName((s8 *) (u32) (u64) temp_ret_412), void **, 4);
-                strcpy((s8 *) &this->unk70, *(gpTranslation_StringArray + (M2C_FIELD(var_r30_403, s32 *, 0x10) * 4)));
+                strcpy(&this->unk78, *(gpTranslation_StringArray + (M2C_FIELD(var_r30_403, s32 *, 0x10) * 4)));
             }
         }
         temp_f31_431 = M2C_FIELD(temp_r4_274, f32 *, 0x1C);
@@ -191,27 +191,27 @@ loop_28:
 loop_60:
         if (var_r28_463 != NULL) {
             var_r31_467 = 0;
-            if ((void *) M2C_FIELD(var_r28_463, void **, 4) == NULL) {
+            if ((u32) var_r28_463->unk4 == 0) {
                 var_r31_467 = 1;
             } else if (stricmp"percent" == 0) {
                 var_r31_467 = 1;
-            } else if (stricmp(M2C_FIELD(var_r28_463, void **, 4), "time") == 0) {
+            } else if (stricmp((void *) var_r28_463->unk4, "time") == 0) {
                 var_r31_467 = 1;
-            } else if (stricmp(M2C_FIELD(var_r28_463, void **, 4), "location") == 0) {
+            } else if (stricmp((void *) var_r28_463->unk4, "location") == 0) {
                 var_r31_467 = 1;
             } else {
-                temp_ret_506 = stricmp(M2C_FIELD(var_r28_463, void **, 4), "background");
+                temp_ret_506 = stricmp((void *) var_r28_463->unk4, "background");
                 if (temp_ret_506 == 0) {
                     var_r31_467 = 1;
                 } else {
-                    temp_r29_515 = M2C_FIELD(var_r28_463, void **, 4);
+                    temp_r29_515 = var_r28_463->unk4;
                     if (var_r30_403 != NULL) {
                         var_r4_518 = M2C_FIELD(var_r30_403, void **, 4);
                     } else {
                         var_r4_518 = "dojo";
                     }
                     Str_Printf("icon_%s", var_r4_518, M2C_BITWISE(f32, temp_ret_506));
-                    if (stricmp(temp_r29_515) == 0) {
+                    if (stricmp((void *) temp_r29_515) == 0) {
                         var_r31_467 = 1;
                     }
                 }
@@ -221,24 +221,24 @@ loop_60:
                 var_r3_532 = 2;
             }
             sp8 = var_r3_532;
-            M2C_FIELD(M2C_FIELD(var_r28_463, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r28_463, &sp8);
-            var_r28_463 = M2C_FIELD(var_r28_463, void **, 0x10);
+            var_r28_463->Message(&sp8);
+            var_r28_463 = var_r28_463->unk10;
             goto loop_60;
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: pointer/array required
 void MCFileInfo::Resolve() {
-    UIObject *temp_r30_626;
-    s32 temp_r30_643;
     s8 *temp_r3_629;
     s8 *temp_r3_646;
     s8 *temp_r3_663;
     u32 temp_r3_566;
     u32 var_r4_570;
     u8 temp_r3_591;
+    void *temp_r30_626;
+    void *temp_r30_643;
     void *temp_r30_660;
 
     UIContainer::Resolve();
@@ -258,11 +258,11 @@ loop_6:
         }
     }
     this->unk218 -= 1;
-    this->unk60 = ui_cast<UIText *, UIObject *>(FindChild("Percent"));
-    this->unk64 = ui_cast<UIText *, UIObject *>(FindChild("Time"));
-    this->unk6C = ui_cast<UIText *, UIObject *>(FindChild("Location"));
-    this->unk68 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
-    temp_r30_626 = this->unk60;
+    this->unk68 = ui_cast<UIText *, UIObject *>(FindChild("Percent"));
+    this->unk6C = ui_cast<UIText *, UIObject *>(FindChild("Time"));
+    this->unk74 = ui_cast<UIText *, UIObject *>(FindChild("Location"));
+    this->unk70 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
+    temp_r30_626 = this->unk68;
     if (temp_r30_626 != NULL) {
         temp_r3_629 = M2C_FIELD(temp_r30_626, s8 **, 0x68);
         if (temp_r3_629 != NULL) {
@@ -271,10 +271,10 @@ loop_6:
         UIStringTable_Add(NULL);
         M2C_FIELD(temp_r30_626, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
         M2C_FIELD(temp_r30_626, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk60, s8 **, 0x68) = &this->unk178;
+        M2C_FIELD(this->unk68, s8 **, 0x68) = &this->unk178;
     }
-    temp_r30_643 = this->unk64;
-    if ((u32) temp_r30_643 != 0U) {
+    temp_r30_643 = this->unk6C;
+    if (temp_r30_643 != NULL) {
         temp_r3_646 = M2C_FIELD(temp_r30_643, s8 **, 0x68);
         if (temp_r3_646 != NULL) {
             UIStringTable_Remove(temp_r3_646);
@@ -282,9 +282,9 @@ loop_6:
         UIStringTable_Add(NULL);
         M2C_FIELD(temp_r30_643, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
         M2C_FIELD(temp_r30_643, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk64, s8 **, 0x68) = &this->unk1B8;
+        M2C_FIELD(this->unk6C, s8 **, 0x68) = &this->unk1B8;
     }
-    temp_r30_660 = this->unk6C;
+    temp_r30_660 = this->unk74;
     if (temp_r30_660 != NULL) {
         temp_r3_663 = M2C_FIELD(temp_r30_660, s8 **, 0x68);
         if (temp_r3_663 != NULL) {
@@ -293,41 +293,39 @@ loop_6:
         UIStringTable_Add(NULL);
         M2C_FIELD(temp_r30_660, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
         M2C_FIELD(temp_r30_660, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk6C, s8 **, 0x68) = (s8 *) &this->unk70;
+        M2C_FIELD(this->unk74, s8 **, 0x68) = &this->unk78;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MCFileInfo::Deinit() {
-    UIObject *temp_r4_690;
-    s32 temp_r4_696;
+    void *temp_r4_690;
+    void *temp_r4_696;
     void *temp_r4_702;
 
-    temp_r4_690 = this->unk60;
+    temp_r4_690 = this->unk68;
     if (temp_r4_690 != NULL) {
         M2C_FIELD(temp_r4_690, s32 *, 0x68) = 0;
     }
-    temp_r4_696 = this->unk64;
-    if ((u32) temp_r4_696 != 0U) {
+    temp_r4_696 = this->unk6C;
+    if (temp_r4_696 != NULL) {
         M2C_FIELD(temp_r4_696, s32 *, 0x68) = 0;
     }
-    temp_r4_702 = this->unk6C;
+    temp_r4_702 = this->unk74;
     if (temp_r4_702 != NULL) {
         M2C_FIELD(temp_r4_702, s32 *, 0x68) = 0;
     }
     UIContainer::Deinit();
 }
-#endif
 
 void MCFileInfo::Init() {
     UIContainer::Init();
     this->unk218 = 0;
     this->unk178 = 0;
     this->unk1B8 = 0;
-    M2C_FIELD(this, s8 *, 0x78) = 0;
-    this->unk60 = NULL;
-    this->unk64 = 0;
-    this->unk6C = NULL;
+    this->unk78 = 0;
     this->unk68 = NULL;
+    this->unk6C = NULL;
+    this->unk74 = NULL;
+    this->unk70 = NULL;
 }

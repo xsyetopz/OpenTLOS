@@ -14,17 +14,17 @@
 extern s32 GS_MenuSelect;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void OptionsScreen::OnExit() {
     KDSynkerPlayer3 *temp_r3_49;
     u8 var_r31_46;
     void *temp_r30_48;
 
     UIScreen::OnExit();
-    if (KDSound_IsVoicePlaying((s32) this->unkBC.unk8) != 0) {
-        KDSound_Stop((s32 *) &this->unkBC.unk8);
+    if (KDSound_IsVoicePlaying(this->unkCC) != 0) {
+        KDSound_Stop(&this->unkCC);
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0xC8) != 0) {
+    if ((u8) this->unkC8 != 0) {
         KDSound_PauseMusic(0U, 0U);
         return;
     }
@@ -47,8 +47,6 @@ void OptionsScreen::Update() {
     s32 spC;
     s32 sp8;
     KDSynkerPlayer3 *temp_r3_146;
-    UIContainer *temp_r3_214;
-    s32 temp_r4_174;
     s32 var_r4_181;
     s32 var_r5_199;
     u8 var_r28_142;
@@ -56,19 +54,21 @@ void OptionsScreen::Update() {
     void **temp_r3_118;
     void **temp_r3_177;
     void **temp_r3_195;
+    void **temp_r3_214;
     void **temp_r3_91;
+    void **temp_r4_174;
     void *temp_r29_145;
 
     UIScreen::Update();
-    temp_r3_91 = ui_cast<UIButton *, UIObject *>(((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("SoundVolume"));
+    temp_r3_91 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("SoundVolume"));
     if ((temp_r3_91 != NULL) && ((u8) M2C_FIELD(temp_r3_91, u8 *, 0x16) != 0) && ((UIControls_DirectionPressed((FrontEndControls) 7, -1) != 0) || (UIControls_DirectionPressed((FrontEndControls) 5, -1) != 0))) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
     }
-    temp_r3_118 = ui_cast<UIButton *, UIObject *>(((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("MusicVolume"));
+    temp_r3_118 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("MusicVolume"));
     if (temp_r3_118 != NULL) {
         if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) != 0) && (KDSound_IsMusicPaused() != 0)) {
             KDSound_PauseMusic(0U, 0U);
-        } else if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) == 0) && (KDSound_IsMusicPaused() == 0) && ((u8) M2C_FIELD(this, u8 *, 0xC8) == 0)) {
+        } else if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) == 0) && (KDSound_IsMusicPaused() == 0) && ((u8) this->unkC8 == 0)) {
             var_r28_142 = 1;
             var_r30_144 = 0;
             temp_r29_145 = M2C_FIELD(&gb, void **, 0xC);
@@ -82,9 +82,9 @@ void OptionsScreen::Update() {
             KDSound_PauseMusic(1U, var_r28_142);
         }
     }
-    temp_r4_174 = this->unkCC;
-    if ((u32) temp_r4_174 != 0U) {
-        temp_r3_177 = this->unkD4;
+    temp_r4_174 = this->unkD4;
+    if (temp_r4_174 != NULL) {
+        temp_r3_177 = this->unkDC;
         if (temp_r3_177 != NULL) {
             var_r4_181 = 3;
             if ((u8) M2C_FIELD(temp_r4_174, u8 *, 0x16) == 0) {
@@ -94,21 +94,21 @@ void OptionsScreen::Update() {
             sp1C = 0;
             M2C_FIELD(*temp_r3_177, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
         }
-        temp_r3_195 = this->unkD8;
+        temp_r3_195 = this->unkE0;
         if (temp_r3_195 != NULL) {
             var_r5_199 = 3;
-            if ((u8) M2C_FIELD(this->unkCC, u8 *, 0x16) != 0) {
+            if ((u8) M2C_FIELD(this->unkD4, u8 *, 0x16) != 0) {
                 var_r5_199 = 2;
             }
             sp10 = var_r5_199;
             sp14 = 0;
             M2C_FIELD(*temp_r3_195, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
         }
-        temp_r3_214 = this->unkD0;
+        temp_r3_214 = this->unkD8;
         if (temp_r3_214 != NULL) {
             sp8 = 1;
             spC = 0;
-            M2C_FIELD(temp_r3_214->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+            M2C_FIELD(*temp_r3_214, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
     }
 }
@@ -137,22 +137,22 @@ void OptionsScreen::OnEnter() {
     UIContainer *temp_r3_263;
     UIContainer *temp_r3_314;
     UIContainer *temp_r3_323;
-    UIContainer *temp_r3_382;
     u8 var_r30_279;
     void **temp_r3_270;
     void **temp_r3_356;
     void **temp_r3_369;
+    void **temp_r3_382;
 
     UIScreen::OnEnter();
     if (KDSound_IsMusicPaused() != 0) {
-        M2C_FIELD(this, s8 *, 0xC8) = 0;
+        this->unkC8 = 0;
     } else {
-        M2C_FIELD(this, s8 *, 0xC8) = 1;
+        this->unkC8 = 1;
     }
     sp48 = 1;
     sp4C = 0;
     Message(&sp48);
-    temp_r3_263 = M2C_FIELD(this, UIContainer **, 0xD0);
+    temp_r3_263 = this->unkD0;
     if (temp_r3_263 != NULL) {
         temp_r3_270 = ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound"));
         if (temp_r3_270 != NULL) {
@@ -168,10 +168,10 @@ void OptionsScreen::OnEnter() {
                     sp38 = 3;
                     sp3C = 0;
                     M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp38);
-                    temp_r3_314 = M2C_FIELD(this, UIContainer **, 0xD0);
-                    if ((UIObject *) temp_r3_314->unk60 == NULL) {
+                    temp_r3_314 = this->unkD0;
+                    if ((s32) M2C_FIELD(temp_r3_314, s32 *, 0x68) == 0) {
                         M2C_FIELD(temp_r3_314->__vptr, M2C_UNK (**)(M2C_UNK), 0x38)(1);
-                        temp_r3_323 = M2C_FIELD(this, UIContainer **, 0xD0);
+                        temp_r3_323 = this->unkD0;
                         sp30 = 1;
                         sp34 = 0;
                         temp_r3_323->Message(&sp30, 1);
@@ -190,23 +190,23 @@ block_13:
             }
         }
     }
-    temp_r3_356 = this->unkD4;
+    temp_r3_356 = this->unkDC;
     if (temp_r3_356 != NULL) {
         sp18 = 2;
         sp1C = 0;
         M2C_FIELD(*temp_r3_356, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
     }
-    temp_r3_369 = this->unkD8;
+    temp_r3_369 = this->unkE0;
     if (temp_r3_369 != NULL) {
         sp10 = 3;
         sp14 = 0;
         M2C_FIELD(*temp_r3_369, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     }
-    temp_r3_382 = this->unkD0;
+    temp_r3_382 = this->unkD8;
     if (temp_r3_382 != NULL) {
         sp8 = 1;
         spC = 0;
-        M2C_FIELD(temp_r3_382->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        M2C_FIELD(*temp_r3_382, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
 }
 #endif
@@ -218,24 +218,24 @@ void OptionsScreen::Resolve() {
     s32 spC;
     s32 sp8;
     UIContainer *temp_r3_418;
-    UIContainer *temp_r3_435;
     UIObject *temp_r3_457;
     UIObject *var_r3_479;
+    void **temp_r3_435;
 
     UIScreen::Resolve();
-    M2C_FIELD(this, UIContainer **, 0xD0) = ui_cast<UIButtonGroup *, UIObject *>(FindChild("OptionsButtons"));
-    temp_r3_418 = M2C_FIELD(this, UIContainer **, 0xD0);
+    this->unkD0 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("OptionsButtons"));
+    temp_r3_418 = this->unkD0;
     if (temp_r3_418 != NULL) {
-        this->unkCC = ui_cast<UIButton *, UIObject *>(temp_r3_418->FindChild("Position"));
+        this->unkD4 = ui_cast<UIButton *, UIObject *>(temp_r3_418->FindChild("Position"));
     }
-    this->unkD0 = ui_cast<UIContainer *, UIObject *>(FindChild("PromptGroup"));
-    temp_r3_435 = this->unkD0;
+    this->unkD8 = ui_cast<UIContainer *, UIObject *>(FindChild("PromptGroup"));
+    temp_r3_435 = this->unkD8;
     if (temp_r3_435 != NULL) {
-        this->unkD4 = temp_r3_435->FindChild("LeftRight");
-        this->unkD8 = this->unkD0->FindChild("Forward");
+        this->unkDC = ((UIContainer *) temp_r3_435)->FindChild("LeftRight");
+        this->unkE0 = ((UIContainer *) this->unkD8)->FindChild("Forward");
     }
     if (Sound_GetSystemAudioMode() == 0) {
-        temp_r3_457 = ((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("Output");
+        temp_r3_457 = this->unkD0->FindChild("Output");
         if (temp_r3_457 != NULL) {
             sp10 = 5;
             sp14 = 0;
@@ -255,15 +255,13 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void OptionsScreen::Init() {
     UIContainer::Init();
-    M2C_FIELD(this, s8 *, 0xC8) = 0;
-    this->unkBC.unk8 = NULL;
-    M2C_FIELD(this, s32 *, 0xD0) = 0;
+    this->unkC8 = 0;
     this->unkCC = 0;
     this->unkD0 = NULL;
     this->unkD4 = NULL;
     this->unkD8 = NULL;
+    this->unkDC = NULL;
+    this->unkE0 = NULL;
 }
-#endif

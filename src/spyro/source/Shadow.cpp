@@ -244,7 +244,7 @@ void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, floa
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Frustum *, int)' does not match
+#if 0 // DRAFT: function call 'IsVisible(long, BoundingVolume *)' does not match
 void Shadow_Draw() {
     Frustum sp8;
     M2C_UNK sp4;

@@ -208,9 +208,7 @@ void Trap::Init() {
     this->unkD9 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void TrapDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkC = 0x10;
 }
-#endif

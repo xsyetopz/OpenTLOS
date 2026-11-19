@@ -9,7 +9,7 @@ class LightProp;
 class ManagedLight;
 class Matrix;
 
-class LightProp : public GameProp {  // base: vtable prefix
+class LightProp : public GameProp {  // base: base ctor call
 public:
     virtual ~LightProp(void);
     virtual void Init(void);
@@ -18,7 +18,6 @@ public:
     virtual void Update(void);
     LightProp(void);
     void SetOrientation(Matrix *);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ ManagedLight* unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ u8 unkD0;

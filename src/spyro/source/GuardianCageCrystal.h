@@ -14,7 +14,7 @@ class MKVector3;
 class Shatterable;
 class ShatterableDescriptor;
 
-class GuardianCageCrystal : public Shatterable {  // base: vtable prefix
+class GuardianCageCrystal : public Shatterable {  // base: base ctor call
 public:
     virtual ~GuardianCageCrystal(void);
     virtual void Init(void);
@@ -28,7 +28,6 @@ public:
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *, bool, bool);
     GuardianCageCrystal(void);
     void Explode(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ MKVector3 unk1A8;
     /* 0x1b8 */ f64 unk1B8;
     /* 0x1c0 */ f64 unk1C0;
@@ -42,13 +41,12 @@ public:
     /* 0x200 */ MKVector3 unk200;
 };
 
-class GuardianCageCrystalDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class GuardianCageCrystalDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     GuardianCageCrystalDescriptor(void);
-    /* 0x16c */ s32 unk16C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
@@ -56,7 +54,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline GuardianCageCrystal::GuardianCageCrystal() {
     this->unkC8 = &__vt + 0x48;
-    this->unk1C8 = NULL;
+    this->unk1D8 = 0;
     return this;
 }
 #endif
@@ -64,8 +62,8 @@ inline GuardianCageCrystal::GuardianCageCrystal() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline GuardianCageCrystal::~GuardianCageCrystal() {
     this->unkC8 = &__vt.unk48;
-    if ((&this->unk1C8 != NULL) && (&this->unk1C8 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk1C8);
+    if ((&this->unk1D8 != NULL) && (&this->unk1D8 != NULL)) {
+        KDSound_Stop(&this->unk1D8);
     }
 }
 #endif

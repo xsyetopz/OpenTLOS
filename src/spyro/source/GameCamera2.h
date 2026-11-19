@@ -83,7 +83,7 @@ public:
     void InitModule(void);
     static u8 pPossibleStateChanges[0x4];
     static u8 pEmuStateDescriptors[0x4];
-    /* 0x214 */ u8 pad214[0xc];
+    /* 0x218 */ u8 pad218[0x8];
     /* 0x220 */ f32 unk220;
     /* 0x224 */ f32 unk224;
     /* 0x228 */ f32 unk228;
@@ -126,15 +126,6 @@ public:
     virtual void Deinit(void);
     u8 LoadDeltaStages(MKIniLine *);
     KDCameraDeltaStages * GetDeltaStages(int);
-    /* 0x004 */ u8 pad4[0x78];
-    /* 0x07c */ f32 unk7C;
-    /* 0x080 */ u8 pad80[0x14];
-    /* 0x094 */ s32 unk94;
-    /* 0x098 */ u8 pad98[0x4];
-    /* 0x09c */ s32 unk9C;
-    /* 0x0a0 */ s32 unkA0;
-    /* 0x0a4 */ f32* unkA4;
-    /* 0x0a8 */ s32 unkA8;
     /* 0x0ac */ f32 unkAC;
     /* 0x0b0 */ f32 unkB0;
     /* 0x0b4 */ s32 unkB4;

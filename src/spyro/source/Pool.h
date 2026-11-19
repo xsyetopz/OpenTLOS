@@ -10,7 +10,7 @@ public:
     void Deinit(void);
     void Init(int, int);
     void Free(T0 *);
-    void Alloc(int);
+    u32 Alloc(int);
     void Merge(Fragment **);
 };
 

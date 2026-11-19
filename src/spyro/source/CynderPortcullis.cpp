@@ -58,14 +58,14 @@ void CynderPortcullis::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderPortcullisDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4.LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 CynderPortcullisDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_247;
 
@@ -77,14 +77,14 @@ s32 CynderPortcullisDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderPortcullisDescriptor::Deinit() {
     this->unkE4.Deinit();
     KDPropExDescriptor::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderPortcullisDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unk64 |= 0x2000;

@@ -26,7 +26,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ClusterBomb::DrawClusterBombs() {
     Matrix sp10;
     M2C_UNK spC;
@@ -52,7 +51,6 @@ loop_4:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ClusterBomb::UpdateClusterBombs() {

@@ -27,7 +27,7 @@ extern MKFont *gpDebugFont;
 extern void *pDescriptorList;
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'long (CreateWidgetWindow::*)(MKWidget *,
 void CreateWidgetWindow::CreateWidgets() {
     f32 sp68;                                       /* compiler-managed */
     f32 sp64;
@@ -175,7 +175,7 @@ void MaterialEditor::Show(MKMaterial *arg0) {
     MKWidget_SetFocus(this->unk4);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'long (MaterialEditor::*)(MKWidget *,
 void MaterialEditor::CreateWidgets() {
     f32 sp40;
     f32 sp3C;
@@ -246,7 +246,7 @@ void ColorEditor::Show(const MKVector4 &arg0, MKWidget *arg1) {
     MKWidget_SetFocus(this->unk10);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'long (ColorEditor::*)(MKWidget *,
 void ColorEditor::CreateWidgets() {
     f32 sp5C;
     f32 sp58;
@@ -401,7 +401,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
+#if 0 // DRAFT: function call 'MKWidget_Create(signed char *, const char *,
 void MKWidgetContextMenu::AddItem(const char *arg0) {
     f32 sp40;
     f32 sp3C;
@@ -517,7 +517,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'long (MKWidgetContextMenu::*)(MKWidget
 void MKWidgetContextMenu::CreateWidgets() {
     f32 sp40;
     f32 sp3C;

@@ -36,7 +36,7 @@ public:
     LiquidFX(void);
     void SpawnGroundCollisionFX(LFX_Blob *);
     s32 Emit(const int &, const MKVector3 &, const MKVector3 &, const MKVector3 &, const float &, float, bool, BreathHitMessage *, int, int);
-    /* 0x0c4 */ u8 padC4[0x3e84];
+    /* 0x0c8 */ u8 padC8[0x3e80];
     /* 0x3f48 */ s32 unk3F48;
     /* 0x3f4c */ s32 unk3F4C;
     /* 0x3f50 */ f32 unk3F50;
@@ -62,7 +62,6 @@ public:
     virtual void Deinit(void);
     LiquidFXDescriptor(void);
     static u8 pFirstDesc[0x4];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ LiquidFXDescriptor* unkEC;
     /* 0x0f0 */ LiquidFXDescriptor* unkF0;

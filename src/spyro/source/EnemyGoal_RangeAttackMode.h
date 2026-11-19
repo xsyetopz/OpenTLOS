@@ -26,7 +26,6 @@ public:
     /* 0x009 */ u8 pad9[0x3];
     /* 0x00c */ Enemy* unkC;
     /* 0x010 */ MKAttachment unk10;
-    /* 0x015 */ u8 pad15[0x3];
     /* 0x018 */ f64 unk18;
     /* 0x020 */ f64 unk20;
     /* 0x028 */ MKVector3 unk28;

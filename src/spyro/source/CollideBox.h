@@ -16,7 +16,6 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Message(MKMessage *);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ u8 unk90;
 };
 

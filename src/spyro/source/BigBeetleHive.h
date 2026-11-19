@@ -12,7 +12,7 @@ class MKVector3;
 class Shatterable;
 class ShatterableDescriptor;
 
-class BigBeetleHive : public Shatterable {  // base: vtable prefix
+class BigBeetleHive : public Shatterable {  // base: base ctor call
 public:
     virtual ~BigBeetleHive(void);
     virtual void Init(void);
@@ -25,18 +25,16 @@ public:
     BigBeetleHive(void);
     void EmitGoopDrips(void);
     void UpdateAttachedNests(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ void* unk1A8;
     /* 0x1ac */ u8 pad1AC[0x3c];
     /* 0x1e8 */ f32 unk1E8;
 };
 
-class BigBeetleHiveDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class BigBeetleHiveDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void LoadDone(void);
     BigBeetleHiveDescriptor(void);
-    /* 0x16c */ s32 unk16C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

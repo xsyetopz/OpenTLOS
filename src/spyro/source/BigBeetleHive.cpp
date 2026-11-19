@@ -93,8 +93,6 @@ void BigBeetleHive::Message(MKMessage *arg0) {
     BigBeetleHive **temp_r4_145;
     BigBeetleHive **var_r4_122;
     BigBeetleHive *temp_r0_131;
-    f32 temp_r4_261;
-    f32 temp_r4_417;
     f32 var_f3_238;
     f32 var_f3_394;
     f32 var_f4_171;
@@ -115,7 +113,9 @@ void BigBeetleHive::Message(MKMessage *arg0) {
     void *temp_r3_118;
     void *temp_r3_304;
     void *temp_r4_150;
+    void *temp_r4_261;
     void *temp_r4_306;
+    void *temp_r4_417;
 
     temp_r0_105 = arg0->unk0;
     switch (temp_r0_105) {                          /* switch 1; irregular */
@@ -200,11 +200,11 @@ block_14:
         spC8 = (f64) sp58;
         temp_f0_256 = spC0 * 5.49408334e-315;
         sp20 = temp_f0_256;
-        temp_r4_261 = this->unk198;
+        temp_r4_261 = this->unk1A8;
         sp90 = temp_f0_256;
         sp28 = (f32) spC8 * 50.0f;
         sp98 = (f64) sp28;
-        *M2C_BITWISE(void *, temp_r4_261) = (f64) (*M2C_BITWISE(f64 *, temp_r4_261) + temp_f0_256);
+        M2C_FIELD(temp_r4_261, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_261, f64 *, 0) + temp_f0_256);
         M2C_FIELD(temp_r4_261, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_261, f32 *, 8) + (f32) sp98);
         M2C_FIELD(temp_r3_118, s8 *, 0x3E) = 1;
         KDSound_Play3d(GS_OBBigHiveHit1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
@@ -264,11 +264,11 @@ block_14:
         spB8 = (f64) sp38;
         temp_f0_412 = spB0 * 5.41119288e-315;
         sp10 = temp_f0_412;
-        temp_r4_417 = this->unk198;
+        temp_r4_417 = this->unk1A8;
         sp70 = temp_f0_412;
         sp18 = (f32) spB8 * 12.5f;
         sp78 = (f64) sp18;
-        *M2C_BITWISE(void *, temp_r4_417) = (f64) (*M2C_BITWISE(f64 *, temp_r4_417) + temp_f0_412);
+        M2C_FIELD(temp_r4_417, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_417, f64 *, 0) + temp_f0_412);
         M2C_FIELD(temp_r4_417, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_417, f32 *, 8) + (f32) sp78);
         if ((s32) M2C_FIELD(temp_r3_304, s32 *, 0x38) != 3) {
             KDSound_Play3d(GS_OBBigHiveHit4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
@@ -313,7 +313,7 @@ void BigBeetleHive::UpdateAttachedNests() {
 void BigBeetleHive::Update() {
     Shatterable::Update();
     UpdateAttachedNests();
-    if ((MKProp *) this->unk170 == (s32) (M2C_FIELD(checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
+    if ((s32) this->unk180 == (s32) (M2C_FIELD(checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
         EmitGoopDrips();
     }
 }
@@ -342,12 +342,10 @@ void BigBeetleHive::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void BigBeetleHive::LoadDone() {
     Shatterable::LoadDone();
-    this->unk198 = M2C_BITWISE(f32, MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1")));
+    this->unk1A8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1"));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
@@ -386,7 +384,7 @@ void BigBeetleHive::Init() {
 
     Shatterable::Init();
     var_r3_704 = 0;
-    this->unk198 = 0.0f;
+    this->unk1A8 = NULL;
     var_ctr_707 = 5;
     do {
         temp_r6_709 = this + var_r3_704;
@@ -419,7 +417,7 @@ void BigBeetleHiveDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'StickyPS *' to
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void BigBeetleHiveDescriptor::Init() {
     ShatterableDescriptor::Init();
     this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));

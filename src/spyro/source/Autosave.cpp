@@ -25,7 +25,7 @@ extern s32 gameDataSize;
 extern M2C_UNK gb;
 extern void *pGameDataCopy;
 static TimerInfo autosaveTimeStamp = { 0, 0, 0, 0, 0, 0, 0 };
-static UIImage autosaveIcon;                        /* type too large by 8 */
+static UIImage autosaveIcon;
 static s32 autosaveFile = -1;
 static s32 autosave_state = -1;
 static u8 bRemovalCheck = 1;

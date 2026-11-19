@@ -26,7 +26,7 @@ void NPCGoal_Think::AddGoal_BreakRock() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Rescue() {
     if (IsPresent(0x4E) == 0) {
         RemoveAllSubgoals();
@@ -35,7 +35,7 @@ void NPCGoal_Think::AddGoal_Rescue() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
@@ -44,7 +44,7 @@ void NPCGoal_Think::AddGoal_Respawn() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGoal_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_117;
 
@@ -95,7 +95,6 @@ void NPCGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 NPCGoal_Think::Update() {
     s32 temp_r3_231;
 
@@ -114,7 +113,6 @@ u8 NPCGoal_Think::Update() {
     }
     return (u8) this->unk8;
 }
-#endif
 
 void NPCGoal_Think::Activate() {
     this->unk8 = 0;

@@ -64,7 +64,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void BirdCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -87,7 +86,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'Volume' to
 void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {

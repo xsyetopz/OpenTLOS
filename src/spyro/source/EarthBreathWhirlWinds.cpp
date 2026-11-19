@@ -221,7 +221,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'Draw(MKProp *, MKModel **, unsigned char *, double)' does
 void EarthBreathWhirlWinds::Draw() {
     f64 sp40;
     f64 sp38;

@@ -75,7 +75,7 @@ public:
 class ElementalWallDescriptor : public SplinePropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void LoadDone(void);
-    /* 0x004 */ u8 pad4[0x5c];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s32 unk60;
 };
 

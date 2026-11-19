@@ -252,7 +252,7 @@ u8 states__10DragonBust[0xD8] = {
 static s32 lit_709 = 0;
 static u8 lit_710 = 1;
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DragonBust::Deinit() {
     ManagedLight *temp_r4_58;
 
@@ -269,7 +269,6 @@ void DragonBust::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Draw() {
     GameProp::Draw();
     if (((KDStateMachine<DragonBust> *) &this->unkC8)->GetState() == 3) {
@@ -278,9 +277,8 @@ void DragonBust::Draw() {
         gRenderState = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'CollisionObjectCollideMsg'
 void DragonBust::Message(MKMessage *arg0) {
     void *temp_r3_126;
 
@@ -540,7 +538,7 @@ void DragonBust::ActivatingBEnter() {
     this->unkE4 = 0.5f;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void DragonBust::ActivatingAUpdate() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -619,7 +617,7 @@ void DragonBust::ActivatingAUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void DragonBust::ActivatingAEnter() {
     Matrix sp60;
     M2C_UNK sp5C;
@@ -1085,7 +1083,6 @@ void DragonBust::SetState(DragonBust::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Update() {
     s32 sp8;
 
@@ -1095,7 +1092,6 @@ void DragonBust::Update() {
     this->unk158 = 0;
     GameProp::Update();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void DragonBust::Reset() {

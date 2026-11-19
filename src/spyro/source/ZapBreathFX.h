@@ -87,9 +87,9 @@ public:
     /* 0x100 */ f32 unk100;
     /* 0x104 */ f32 unk104;
     /* 0x108 */ BreathHitMessage unk108;
-    /* 0x159 */ u8 pad159[0x7];
+    /* 0x15c */ u8 pad15C[0x4];
     /* 0x160 */ BreathHitMessage unk160;
-    /* 0x1b1 */ u8 pad1B1[0xf];
+    /* 0x1b4 */ u8 pad1B4[0xc];
     /* 0x1c0 */ ElectricBeam unk1C0;
     /* 0x3c0 */ u8 pad3C0[0x20];
     /* 0x3e0 */ f64 unk3E0;
@@ -130,8 +130,8 @@ inline ZapBreathFX::ZapBreathFX() {
     this->unkBC = 0.0f;
     this->unkC0 = 0;
     this->unk108.unk4 = 0;
-    this->unk160.unk0 = 0;
-    __construct_array(&this->unk1C0, (MKAnimScript *(*)(MKAnimScript *)) &ElectricBeam::ElectricBeam, NULL, 0x200, 4);
+    this->unk160.unk4 = 0;
+    __construct_array((KDUniformSpline *) &this->unk1C0, (MKAnimScript *(*)(MKAnimScript *)) &ElectricBeam::ElectricBeam, NULL, 0x200, 4);
     return this;
 }
 #endif

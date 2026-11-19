@@ -8,7 +8,7 @@ class MCQueryScreen;
 class MemoryCardScreen;
 class UIContainer;
 
-class MCQueryScreen : public MemoryCardScreen {  // base: vtable prefix
+class MCQueryScreen : public MemoryCardScreen {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void Update(void);
@@ -17,9 +17,6 @@ public:
     MCQueryScreen(void);
     static u8 descriptor[0x14];
     static u8 query[0x4];
-    /* 0x004 */ u8 pad4[0xc4];
-    /* 0x0c8 */ void** unkC8;
-    /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ void** unkD4;
     /* 0x0d8 */ void** unkD8;

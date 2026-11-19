@@ -308,7 +308,7 @@ void ScorchTrail::SpawnPlasmaBubble(const MKVector3 &arg0, const MKVector3 &arg1
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void ScorchTrail::DrawPlasmaBubbles() {
     f32 sp10C;
     f32 sp108;

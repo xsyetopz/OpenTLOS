@@ -7,7 +7,7 @@
 class GuardTowerDescriptor;
 class LavaSmashPropDescriptor;
 
-class GuardTowerDescriptor : public LavaSmashPropDescriptor {  // base: vtable prefix
+class GuardTowerDescriptor : public LavaSmashPropDescriptor {  // base: base ctor call
 public:
     GuardTowerDescriptor(void);
 };

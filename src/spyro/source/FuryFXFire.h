@@ -58,7 +58,7 @@ public:
     /* 0x104 */ s32 unk104;
     /* 0x108 */ u8 pad108[0x188];
     /* 0x290 */ BreathHitMessage unk290;
-    /* 0x2e1 */ u8 pad2E1[0x7];
+    /* 0x2e4 */ u8 pad2E4[0x4];
     /* 0x2e8 */ s32 unk2E8;
     /* 0x2ec */ s32 unk2EC;
     /* 0x2f0 */ u8 unk2F0;

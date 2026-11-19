@@ -431,7 +431,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp2F0'
 void GunPowderFuse::Draw() {
     Matrix sp350;
     M2C_UNK sp34C;

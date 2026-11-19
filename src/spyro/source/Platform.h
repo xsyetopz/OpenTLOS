@@ -3,11 +3,10 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/PlatformObject.h"
 
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKIniLine;
 class MKMessage;
 class MKVector3;
@@ -29,7 +28,7 @@ public:
     /* 0x008 */ f64 unk8;
 };
 
-class Platform : public GameProp {  // base: vtable prefix
+class Platform : public GameProp {  // base: base ctor call
 public:
     virtual ~Platform(void);
     virtual void Init(void);
@@ -47,7 +46,6 @@ public:
     virtual void UpdateBob(void);
     Platform(void);
     void UpdateShadow(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f32 unkD8;
@@ -59,7 +57,6 @@ public:
     /* 0x0f8 */ f64 unkF8;
     /* 0x100 */ f64 unk100;
     /* 0x108 */ PlatformObject unk108;
-    /* 0x14c */ u8 pad14C[0x4];
     /* 0x150 */ PlatformRider unk150;
     /* 0x160 */ u8 pad160[0xc];
     /* 0x16c */ f32 unk16C;
@@ -70,14 +67,12 @@ public:
     /* 0x178 */ s32 unk178;
 };
 
-class PlatformDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class PlatformDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     PlatformDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ f32 unkE4;
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ f32 unkEC;
     /* 0x0f0 */ f32 unkF0;

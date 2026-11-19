@@ -1282,7 +1282,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
     Matrix sp150;
     M2C_UNK sp14C;

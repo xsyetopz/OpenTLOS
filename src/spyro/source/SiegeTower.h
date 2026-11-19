@@ -2,7 +2,6 @@
 #define SPYRO_SOURCE_SIEGETOWER_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnergyBeam.h"
@@ -14,14 +13,14 @@ class EnemyGeneratorDescriptor;
 class MKDynamicBone;
 class MKIniLine;
 class MKMessage;
-class MKPropDescriptor;
 class MKVector3;
 class Shatterable;
+class ShatterableDescriptor;
 class SiegeTower;
 class SiegeTowerDescriptor;
 class Targetable;
 
-class SiegeTower : public Shatterable {  // base: vtable prefix
+class SiegeTower : public Shatterable {  // base: base ctor call
 public:
     virtual ~SiegeTower(void);
     virtual void Init(void);
@@ -40,13 +39,11 @@ public:
     void AllocElecBeams(void);
     void UpdateTurning(MKVector3);
     void UpdateTurretBone(MKDynamicBone *, void *);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ f64 unk1A8;
     /* 0x1b0 */ f64 unk1B0;
     /* 0x1b8 */ f32 unk1B8;
     /* 0x1bc */ u8 pad1BC[0x4];
     /* 0x1c0 */ EnemyGenerator unk1C0;
-    /* 0x246 */ u8 pad246[0x2];
     /* 0x248 */ void* unk248;
     /* 0x24c */ EnergyBeam::Beam* unk24C;
     /* 0x250 */ MKVector3 unk250;
@@ -72,17 +69,13 @@ public:
     /* 0x32d */ u8 unk32D;
 };
 
-class SiegeTowerDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SiegeTowerDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     SiegeTowerDescriptor(void);
-    /* 0x044 */ u8 pad44[0x20];
-    /* 0x064 */ s32 unk64;
-    /* 0x068 */ u8 pad68[0x104];
-    /* 0x16c */ s32 unk16C;
     /* 0x170 */ s32 unk170;
     /* 0x174 */ s32 unk174;
     /* 0x178 */ s32 unk178;
@@ -96,25 +89,23 @@ s32 SiegeTower_GetMaxPerGroup(void);
 void SiegeTower_InitModule(void);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline SiegeTower::SiegeTower() {
-    f64 *temp_r30_21900;
+    EnemyGenerator *temp_r30_21900;
 
-    temp_r30_21900 = &this->unk1B0;
+    temp_r30_21900 = &this->unk1C0;
     this->unkC8 = &__vt + 0x48;
-    M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
-    this->unk1C0.unk2C = 0;
-    ((EventMessage *) (temp_r30_21900 + 0x3C))->Init();
-    this->unk1C0.unk30 = 0.0f;
-    ((EventMessage *) (temp_r30_21900 + 0x40))->Init();
-    M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
-    this->unk1C0.unk58 = NULL;
-    ((EventMessage *) (temp_r30_21900 + 0x68))->Init();
-    this->unk1C0.unk5C = NULL;
-    ((EventMessage *) (temp_r30_21900 + 0x6C))->Init();
-    this->unk280.unkC = 0.0f;
+    this->unk1C0.__vptr = &__vt;
+    this->unk1C0.unk3C.unk0 = 0;
+    temp_r30_21900->unk3C.Init();
+    this->unk1C0.unk40.unk0 = 0;
+    temp_r30_21900->unk40.Init();
+    this->unk1C0.__vptr = &__vt;
+    this->unk1C0.unk68.unk0 = 0;
+    temp_r30_21900->unk68.Init();
+    this->unk1C0.unk6C.unk0 = 0;
+    temp_r30_21900->unk6C.Init();
+    this->unk2A0 = 0;
     this->unk2C8 = 0;
     this->unk2F0 = 0;
     return this;
@@ -123,10 +114,10 @@ inline SiegeTower::SiegeTower() {
 
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline SiegeTower::~SiegeTower() {
-    f32 *temp_r3_60;
-    s32 *temp_r3_66;
-    void **temp_r3_47;
-    void **temp_r3_53;
+    EventMessage *temp_r3_47;
+    EventMessage *temp_r3_53;
+    EventMessage *temp_r3_60;
+    EventMessage *temp_r3_66;
 
     if (this != NULL) {
         this->unkC8 = &__vt.unk48;
@@ -136,28 +127,28 @@ inline SiegeTower::~SiegeTower() {
         if ((&this->unk2C8 != NULL) && (&this->unk2C8 != NULL)) {
             KDSound_Stop(&this->unk2C8);
         }
-        if ((&this->unk280.unkC != NULL) && (&this->unk280.unkC != NULL)) {
-            KDSound_Stop((s32 *) &this->unk280.unkC);
+        if ((&this->unk2A0 != NULL) && (&this->unk2A0 != NULL)) {
+            KDSound_Stop(&this->unk2A0);
         }
-        if (&this->unk1B0 != NULL) {
-            temp_r3_47 = &this->unk1C0.unk5C;
-            M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
+        if (&this->unk1C0 != NULL) {
+            temp_r3_47 = &this->unk1C0.unk6C;
+            this->unk1C0.__vptr = &__vt;
             if (temp_r3_47 != NULL) {
-                ((EventMessage *) temp_r3_47)->Deinit();
+                temp_r3_47->Deinit();
             }
-            temp_r3_53 = &this->unk1C0.unk58;
+            temp_r3_53 = &this->unk1C0.unk68;
             if (temp_r3_53 != NULL) {
-                ((EventMessage *) temp_r3_53)->Deinit();
+                temp_r3_53->Deinit();
             }
-            if (&this->unk1B0 != NULL) {
-                temp_r3_60 = &this->unk1C0.unk30;
-                M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
+            if (&this->unk1C0 != NULL) {
+                temp_r3_60 = &this->unk1C0.unk40;
+                this->unk1C0.__vptr = &__vt;
                 if (temp_r3_60 != NULL) {
-                    ((EventMessage *) temp_r3_60)->Deinit();
+                    temp_r3_60->Deinit();
                 }
-                temp_r3_66 = &this->unk1C0.unk2C;
+                temp_r3_66 = &this->unk1C0.unk3C;
                 if (temp_r3_66 != NULL) {
-                    ((EventMessage *) temp_r3_66)->Deinit();
+                    temp_r3_66->Deinit();
                 }
             }
         }

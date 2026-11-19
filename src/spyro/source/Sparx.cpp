@@ -50,7 +50,7 @@ static struct _struct_localOffset_0x10 localOffset[0xF] = {
     { 0xF, 40.0f, -60.000004f, 0.0f },
 };
 #endif
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static KDStateMachine<Sparx>::State sparxStates;    /* unable to generate initializer: confusing struct layout */
 
 void Sparx::StateAction_StrafeTargetUpdate() {
@@ -200,8 +200,8 @@ void Sparx::StateAction_FollowPathUpdate() {
             temp_f2_279 = M2C_FIELD(temp_r3_278, f64 *, 0x30);
             temp_f1_280 = M2C_FIELD(temp_r3_278, f64 *, 0x38);
             sp60 = temp_f2_279;
-            M2C_FIELD(this, f64 *, 0x2B0) = temp_f2_279;
-            this->unk2B0 = temp_f1_280;
+            this->unk2B0 = temp_f2_279;
+            this->unk2B8 = temp_f1_280;
             this->unk1FD = 1;
             sp68 = temp_f1_280;
             this->unk200 = 0.0f;
@@ -209,11 +209,11 @@ void Sparx::StateAction_FollowPathUpdate() {
         }
         sp40.operator*(temp_f1_271);
         sp10 = this->unk208 + M2C_BITWISE(f64, sp40);
-        M2C_FIELD(this, f64 *, 0x2B0) = sp10;
+        this->unk2B0 = sp10;
         sp18 = this->unk210 + sp40.unk8;
         sp50 = sp10;
         sp58 = (f64) sp18;
-        this->unk2B0 = (f64) sp18;
+        this->unk2B8 = (f64) sp18;
         return;
     }
     temp_r4_309 = this->unk1F4;
@@ -223,8 +223,8 @@ void Sparx::StateAction_FollowPathUpdate() {
     }
     sp8 = 0.0f;
     ((KDUniformSpline *) &sp30)->GetMeasure(this->unk200, (Matrix *) &this->unk1F4->unkB0->unk30, KDSpline_PositionMixer);
-    M2C_FIELD(this, f64 *, 0x2B0) = sp30;
-    this->unk2B0 = sp38;
+    this->unk2B0 = sp30;
+    this->unk2B8 = sp38;
     if (this->unk200 >= 1.0f) {
         temp_r30_342 = this->unk1F4;
         SetState(0, 1U);
@@ -260,22 +260,22 @@ void Sparx::StateAction_FollowPathEnter() {
     this->unk1F8 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: ')' expected
 void Sparx::StateAction_LoadCatapultUpdate() {
     MKVector3 sp8;
     f32 temp_f31_404;
-    f32 temp_r5_402;
+    void *temp_r5_402;
 
-    temp_r5_402 = this->unk28C;
+    temp_r5_402 = this->unk290;
     temp_f31_404 = M2C_FIELD(temp_r5_402, f32 *, 0x13C);
-    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(this->unk28C, MKModel **, 4), (s32) Tools_GetMatchingRefPointIndex(M2C_FIELD(temp_r5_402, MKModel **, 4), "r_ammo"), &sp8);
+    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(this->unk290, MKModel **, 4), (s32) Tools_GetMatchingRefPointIndex(M2C_FIELD(temp_r5_402, MKModel **, 4), "r_ammo"), &sp8);
     sp8.unk4 += 100.0f * -((1.6f * temp_f31_404) - 0.95f);
     UpdateLerpToWorldPos(sp8, M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
 }
 #endif
 
 void Sparx::StateAction_LoadCatapultExit() {
-    this->unk28C = 0.0f;
+    this->unk290 = NULL;
 }
 
 void Sparx::StateAction_LoadCatapultEnter() {
@@ -328,9 +328,9 @@ void Sparx::StateAction_SpyroHintUpdate() {
         temp_f1_519 = M2C_FIELD(temp_r3_518, f64 *, 0x30);
         temp_f0_520 = M2C_FIELD(temp_r3_518, f64 *, 0x38);
         sp8 = temp_f1_519;
-        M2C_FIELD(this, f64 *, 0x2B0) = temp_f1_519;
+        this->unk2B0 = temp_f1_519;
         sp10 = temp_f0_520;
-        this->unk2B0 = temp_f0_520;
+        this->unk2B8 = temp_f0_520;
     }
 }
 
@@ -347,26 +347,26 @@ void Sparx::StateAction_SpyroHintEnter() {
     s32 temp_r0_558;
     void *temp_r3_588;
 
-    if (((s32) this->unk4C != 2) && (PhrasePlayer_IsAnyEventPlaying() == 0) && (M2C_BITWISE(f32, this->unk2A8) <= 0.0f)) {
+    if (((s32) this->unk4C != 2) && (PhrasePlayer_IsAnyEventPlaying() == 0) && (this->unk2AC <= 0.0f)) {
         temp_r0_558 = this->unk4C;
         switch (temp_r0_558) {                      /* irregular */
         case 0:
-            this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxSomethingOfInterest"));
+            this->unk2A8 = PhrasePlayer_PlayEvent("SparxSomethingOfInterest");
             break;
         case 1:
-            this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxDojoComeHere"));
+            this->unk2A8 = PhrasePlayer_PlayEvent("SparxDojoComeHere");
             break;
         }
-        this->unk2A8 = M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xB4);
+        this->unk2AC = M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xB4);
     }
     if ((u8) this->unk1F2 != 0) {
         temp_r3_588 = M2C_FIELD(this->unk1E8, void **, 8);
         temp_f1_589 = M2C_FIELD(temp_r3_588, f64 *, 0x30);
         temp_f0_590 = M2C_FIELD(temp_r3_588, f64 *, 0x38);
         sp8 = temp_f1_589;
-        M2C_FIELD(this, f64 *, 0x2B0) = temp_f1_589;
+        this->unk2B0 = temp_f1_589;
         sp10 = temp_f0_590;
-        this->unk2B0 = temp_f0_590;
+        this->unk2B8 = temp_f0_590;
     }
 }
 #endif
@@ -408,7 +408,7 @@ void Sparx::StateAction_SpyroJumpEnter() {
 #endif
 
 void Sparx::StateAction_SpyroDeadDieUpdate() {
-    UpdateLerpToWorldPos(*((MKVector3 *) &this->unk298), 0.2f, 0.1f);
+    UpdateLerpToWorldPos(this->unk298, 0.2f, 0.1f);
 }
 
 void Sparx::StateAction_SpyroDeadDieExit() {
@@ -416,8 +416,8 @@ void Sparx::StateAction_SpyroDeadDieExit() {
 }
 
 void Sparx::StateAction_SpyroDeadDieEnter() {
-    M2C_FIELD(this, f64 *, 0x298) = (f64) M2C_FIELD(this, f64 *, 0x2B0);
-    M2C_FIELD(this, f64 *, 0x2A0) = (f64) this->unk2B0;
+    M2C_FIELD(this, f64 *, 0x298) = (f64) this->unk2B0;
+    M2C_FIELD(this, f64 *, 0x2A0) = (f64) this->unk2B8;
 }
 
 void Sparx::StateAction_SpyroSpeedwayUpdate() {
@@ -436,12 +436,12 @@ void Sparx::StateAction_SpyroSpeedwayEnter() {
 
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroFuryUpdate() {
-    this->unk288 += gUpdateTimeDelta;
-    if (this->unk288 > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
+    this->unk28C += gUpdateTimeDelta;
+    if (this->unk28C > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
         CalculateAttackPosition(1U);
-        this->unk288 = 0.0f;
+        this->unk28C = 0.0f;
     }
-    UpdateLerpToWorldPos(*((MKVector3 *) &this->unk278), M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
+    UpdateLerpToWorldPos(this->unk278, M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
 }
 #endif
 
@@ -452,20 +452,20 @@ void Sparx::StateAction_SpyroFuryExit() {
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroFuryEnter() {
     this->unk218 = 1;
-    this->unk278.unkC = 0.0f;
     this->unk288 = 0.0f;
-    this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
+    this->unk28C = 0.0f;
+    this->unk28C = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
 }
 #endif
 
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroAirCombatUpdate() {
-    this->unk288 += gUpdateTimeDelta;
-    if (this->unk288 > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
+    this->unk28C += gUpdateTimeDelta;
+    if (this->unk28C > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
         CalculateAttackPosition(0U);
-        this->unk288 = 0.0f;
+        this->unk28C = 0.0f;
     }
-    UpdateLerpToWorldPos(*((MKVector3 *) &this->unk278), M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
+    UpdateLerpToWorldPos(this->unk278, M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
 }
 #endif
 
@@ -475,20 +475,20 @@ void Sparx::StateAction_SpyroAirCombatExit() {
 
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroAirCombatEnter() {
-    this->unk278.unkC = 0.0f;
     this->unk288 = 0.0f;
-    this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
+    this->unk28C = 0.0f;
+    this->unk28C = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
 }
 #endif
 
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroGroundCombatUpdate() {
-    this->unk288 += gUpdateTimeDelta;
-    if (this->unk288 > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
+    this->unk28C += gUpdateTimeDelta;
+    if (this->unk28C > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80)) {
         CalculateAttackPosition(0U);
-        this->unk288 = 0.0f;
+        this->unk28C = 0.0f;
     }
-    UpdateLerpToWorldPos(*((MKVector3 *) &this->unk278), M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
+    UpdateLerpToWorldPos(this->unk278, M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x98), 0.1f);
 }
 #endif
 
@@ -498,9 +498,9 @@ void Sparx::StateAction_SpyroGroundCombatExit() {
 
 #if 0 // DRAFT: ')' expected
 void Sparx::StateAction_SpyroGroundCombatEnter() {
-    this->unk278.unkC = 0.0f;
     this->unk288 = 0.0f;
-    this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
+    this->unk28C = 0.0f;
+    this->unk28C = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
 }
 #endif
 
@@ -564,8 +564,8 @@ void Sparx::CalculateAttackPosition(bool arg0) {
     sp58 = sp18;
     M2C_FIELD(this, f64 *, 0x280) = (f64) sp20;
     sp60 = (f64) sp20;
-    this->unk278.unk0 += 100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
-    if (MKCollision_RayCollide(*((MKVector3 *) &this->unk2AC), *((MKVector3 *) &this->unk278), &this->unk220, (MKCollisionMode) 4, 0x04000000) != 0) {
+    this->unk278.unk4 += 100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
+    if (MKCollision_RayCollide(*((MKVector3 *) &this->unk2B0), this->unk278, &this->unk220, (MKCollisionMode) 4, 0x04000000) != 0) {
         M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(this, f64 *, 0x220);
         M2C_FIELD(this, f64 *, 0x280) = (f64) M2C_FIELD(this, f64 *, 0x228);
     }
@@ -677,7 +677,7 @@ loop_46:
     if (var_r27_1162 >= 0xA) {
         this->unk104.unk8 = 0.0f;
         this->unk104.unk4 = 0;
-        this->unk104.AddNode(*((MKVector3 *) &this->unk2AC));
+        this->unk104.AddNode(*((MKVector3 *) &this->unk2B0));
         var_r24_1487 = 0;
         var_r26_1488 = 0;
         do {
@@ -685,7 +685,7 @@ loop_46:
             var_r24_1487 += 1;
             var_r26_1488 += 0x10;
         } while (var_r24_1487 < 0xA);
-        this->unk104.AddNode(*((MKVector3 *) &this->unk2AC));
+        this->unk104.AddNode(*((MKVector3 *) &this->unk2B0));
         var_r24_1501 = 0;
         do {
             this->unk104.Smooth();
@@ -719,8 +719,8 @@ loop_44:
 loop_35:
     if ((u8) this->unk1E4 != 0) {
         if ((var_r27_1162 == 0) || (var_r27_1162 == 9)) {
-            this->unk1C8 = M2C_FIELD(this, f64 *, 0x2B0);
-            this->unk1D0 = this->unk2B0;
+            this->unk1C8 = this->unk2B0;
+            this->unk1D0 = this->unk2B8;
         } else {
             this->unk1C8 = M2C_FIELD(temp_r30_1173, f64 *, 0x108);
             this->unk1D0 = M2C_FIELD(temp_r30_1173, f64 *, 0x110);
@@ -789,7 +789,7 @@ loop_35:
     (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f5_1288;
     sp128 = (f32) sp128 * var_f5_1288;
     sp100.operator*(MKRand_Float(&gViewSeed, 250.0f, 5250.0f));
-    sp20 = M2C_FIELD(this, f64 *, 0x2B0) + M2C_BITWISE(f64, sp100);
+    sp20 = this->unk2B0 + M2C_BITWISE(f64, sp100);
     sp40 = 0.0f;
     sp44 = 10000.0f;
     sp28 = M2C_FIELD(this, f32 *, 0x2B8) + sp100.unk8;
@@ -1081,7 +1081,7 @@ u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     f64 sp8;
     f64 temp_f0_2053;
 
-    temp_f0_2053 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(this, f64 *, 0x2B0);
+    temp_f0_2053 = M2C_FIELD(&arg0, f64 *, 0) - this->unk2B0;
     sp18 = temp_f0_2053;
     sp38 = temp_f0_2053;
     sp20 = arg0.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
@@ -1091,8 +1091,8 @@ u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     }
     sp8 = sp38 * (f64) arg1;
     sp10 = (f32) sp40 * arg1;
-    this->unk2B8 = sp8;
-    this->unk2C0 = (f64) sp10;
+    this->unk2C0 = sp8;
+    this->unk2C8 = (f64) sp10;
     sp28 = sp8;
     sp30 = (f64) sp10;
     return 1U;
@@ -1149,7 +1149,7 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
     struct _struct_localOffset_0x10 (*temp_r4_2109)[];
     void *temp_r3_2114;
 
-    if (this->unk278.unkC > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x90)) {
+    if (this->unk288 > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x90)) {
         temp_r4_2109 = this->unkC0;
         sp90 = temp_r4_2109[0][0].unk4;
         temp_r3_2114 = M2C_FIELD(this->unk94, void **, 8);
@@ -1167,14 +1167,14 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
         if (this->unkC4 > 3.0f) {
             spD0 = (f64) M2C_FIELD(temp_r3_2114, f32 *, 0x30);
             spD8 = (f64) M2C_FIELD(temp_r3_2114, f32 *, 0x38);
-            sp10 = M2C_FIELD(this, f64 *, 0x2B0) - spD0;
+            sp10 = this->unk2B0 - spD0;
             sp70 = sp10;
             sp18 = M2C_FIELD(this, f32 *, 0x2B8) - (f32) spD8;
             sp80 = sp10;
             sp78 = (f64) sp18;
             sp88 = (f64) sp18;
-            if (((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))))) < 2250000.0f) && (MKCollision_RayCollide(*((MKVector3 *) &this->unk2AC), *((MKVector3 *) &sp120), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0)) {
-                sp60 = M2C_FIELD(this, f64 *, 0x220) - M2C_FIELD(this, f64 *, 0x2B0);
+            if (((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))))) < 2250000.0f) && (MKCollision_RayCollide(*((MKVector3 *) &this->unk2B0), *((MKVector3 *) &sp120), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0)) {
+                sp60 = M2C_FIELD(this, f64 *, 0x220) - this->unk2B0;
                 sp100 = sp60;
                 sp68 = this->unk220.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
                 sp108 = (f64) sp68;
@@ -1230,20 +1230,20 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
             }
         }
     } else {
-        sp120 = M2C_FIELD(this, f64 *, 0x2B0);
-        sp128 = this->unk2B0;
+        sp120 = this->unk2B0;
+        sp128 = this->unk2B8;
     }
-    temp_f0_2331 = sp120 - M2C_FIELD(this, f64 *, 0x2B0);
+    temp_f0_2331 = sp120 - this->unk2B0;
     sp50 = temp_f0_2331;
     spF0 = temp_f0_2331;
     sp58 = (f32) sp128 - M2C_FIELD(this, f32 *, 0x2B8);
     spF8 = (f64) sp58;
     sp20 = temp_f0_2331 * (f64) arg0;
-    this->unk2B8 = sp20;
+    this->unk2C0 = sp20;
     sp28 = (f32) spF8 * arg0;
     spA0 = sp20;
     spA8 = (f64) sp28;
-    this->unk2C0 = (f64) sp28;
+    this->unk2C8 = (f64) sp28;
 }
 #endif
 
@@ -1318,7 +1318,7 @@ void Sparx::Update() {
     s32 var_r0_2469;
 
     MKProp::Update();
-    temp_f2_2394 = M2C_BITWISE(f32, this->unk2A8);
+    temp_f2_2394 = this->unk2AC;
     if (temp_f2_2394 != 0.0f) {
         var_f0_2399 = temp_f2_2394 - gUpdateTimeDelta;
         if (var_f0_2399 > 0.0f) {
@@ -1326,9 +1326,9 @@ void Sparx::Update() {
         } else {
             var_f0_2399 = 0.0f;
         }
-        this->unk2A8 = var_f0_2399;
+        this->unk2AC = var_f0_2399;
     }
-    this->unk278.unkC += gUpdateTimeDelta;
+    this->unk288 += gUpdateTimeDelta;
     this->unkC4 += gUpdateTimeDelta;
     temp_f2_2417 = M2C_FIELD(this, f32 *, 0x2C0);
     temp_f1_2418 = M2C_FIELD(this, f32 *, 0x2C4);
@@ -1378,24 +1378,24 @@ void Sparx::Update() {
     M2C_FIELD(this, f32 *, 0x2C4) = (f32) (M2C_FIELD(this, f32 *, 0x2C4) * var_f2_2492);
     M2C_FIELD(this, f32 *, 0x2C8) = (f32) (M2C_FIELD(this, f32 *, 0x2C8) * var_f2_2492);
     if (var_f31_2491 > 0.0f) {
-        temp_f0_2513 = this->unk2B8 * (f64) var_f31_2491;
+        temp_f0_2513 = this->unk2C0 * (f64) var_f31_2491;
         sp40 = temp_f0_2513;
         sp120 = temp_f0_2513;
         sp48 = M2C_FIELD(this, f32 *, 0x2C8) * var_f31_2491;
         sp128 = (f64) sp48;
-        M2C_FIELD(this, f64 *, 0x2B0) = (f64) (M2C_FIELD(this, f64 *, 0x2B0) + temp_f0_2513);
+        this->unk2B0 += temp_f0_2513;
         M2C_FIELD(this, f32 *, 0x2B8) = (f32) (M2C_FIELD(this, f32 *, 0x2B8) + (f32) sp128);
         temp_f30_2538 = -((gUpdateTimeDelta * (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C))) - var_f31_2491);
-        sp30 = this->unk2B8 * (f64) temp_f30_2538;
-        this->unk2B8 = sp30;
+        sp30 = this->unk2C0 * (f64) temp_f30_2538;
+        this->unk2C0 = sp30;
         sp38 = M2C_FIELD(this, f32 *, 0x2C8) * temp_f30_2538;
         sp110 = sp30;
         sp118 = (f64) sp38;
-        this->unk2C0 = (f64) sp38;
+        this->unk2C8 = (f64) sp38;
     }
     temp_r30_2553 = &this->unk50.unk30;
-    this->unk50.unk30 = this->unk2AC;
-    this->unk50.unk34 = this->unk2B4;
+    this->unk50.unk30 = (f32) M2C_FIELD(this, f64 *, 0x2B0);
+    this->unk50.unk34 = M2C_FIELD(this, f32 *, 0x2B4);
     this->unk50.unk38 = M2C_FIELD(this, f32 *, 0x2B8);
     this->unk50.unk3C = 1.0f;
     this->unk98->SetSparxPos(*((MKVector3 *) temp_r30_2553));
@@ -1646,7 +1646,7 @@ void Sparx::ResetHint() {
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void Sparx::Message(MKMessage *arg0) {
     s32 temp_r0_3103;
-    u32 temp_r0_3154;
+    void *temp_r0_3154;
 
     temp_r0_3103 = arg0->unk0;
     switch (temp_r0_3103) {                         /* irregular */
@@ -1666,9 +1666,9 @@ block_19:
         goto block_19;
     case 0x19:
         if ((u8) this->unk1F0 != 1) {
-            temp_r0_3154 = M2C_FIELD(checked_cast<SparxCatapultMsg *, MKMessage>(arg0), u32 *, 8);
-            if (temp_r0_3154 != 0U) {
-                this->unk28C = M2C_BITWISE(f32, temp_r0_3154);
+            temp_r0_3154 = M2C_FIELD(checked_cast<SparxCatapultMsg *, MKMessage>(arg0), void **, 8);
+            if (temp_r0_3154 != NULL) {
+                this->unk290 = temp_r0_3154;
                 SetState(0xC, 0U);
             } else {
                 SetState(0, 0U);
@@ -1683,11 +1683,9 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9C'
 void Sparx::SetState(int arg0, bool arg1) {
     this->unk9C.SetState(this, arg0, arg1);
 }
-#endif
 
 u8 Sparx::GetTaskMode() {
     u8 var_r4_3210;
@@ -1695,7 +1693,7 @@ u8 Sparx::GetTaskMode() {
 
     var_r4_3210 = 1;
     var_r5_3211 = 1;
-    if ((M2C_BITWISE(u32, this->unk28C) == 0U) && ((u8) this->unk1F0 == 0)) {
+    if (((void *) this->unk290 == NULL) && ((u8) this->unk1F0 == 0)) {
         var_r5_3211 = 0;
     }
     if ((var_r5_3211 == 0) && ((s32) this->unk1FC == 0)) {
@@ -1724,24 +1722,24 @@ void Sparx::Spawn() {
         return;
     }
     Reset();
-    this->unk278.unkC = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
+    this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
     sp38.operator*(1000.0f);
     temp_r4_3268 = this->unk94;
     M2C_FIELD(M2C_FIELD(temp_r4_3268, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3268);
     sp18 = sp48 + M2C_BITWISE(f64, sp38);
     sp10 = 0.0f;
     sp20 = sp50 + sp38.unk8;
-    M2C_FIELD(this, f64 *, 0x2B0) = sp18;
+    this->unk2B0 = sp18;
     sp8 = 0.0f;
     spC = 0.0f;
-    this->unk2B0 = (f64) sp20;
-    this->unk2B8 = (f64) sp8;
-    this->unk2C0 = (f64) sp10;
-    M2C_FIELD(this, f32 *, 0x2D0) = 100.0f;
+    this->unk2B8 = (f64) sp20;
+    this->unk2C0 = (f64) sp8;
+    this->unk2C8 = (f64) sp10;
+    this->unk2D0 = 100.0f;
     sp58 = sp18;
-    this->unk50.unk30 = this->unk2AC;
+    this->unk50.unk30 = (f32) M2C_FIELD(this, f64 *, 0x2B0);
     sp60 = (f64) sp20;
-    this->unk50.unk34 = this->unk2B4;
+    this->unk50.unk34 = M2C_FIELD(this, f32 *, 0x2B4);
     sp28 = (f64) sp8;
     this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);
     sp30 = (f64) sp10;
@@ -1773,7 +1771,7 @@ void Sparx::RespawnOnSpyroDeath() {
     this->unkF8 = MKRand_Int(&gViewSeed, 1, 3);
     this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
     this->unk1EC = -1;
-    memset(&this->unk2AC, 0, 0x28U);
+    memset(&this->unk2B0, 0, 0x28U);
     this->unk220.unk0 = 0.0f;
     this->unk220.unk4 = 0.0f;
     this->unk220.unk8 = 0.0f;
@@ -1795,27 +1793,27 @@ void Sparx::RespawnOnSpyroDeath() {
     this->unk220.unk48 = NULL;
     this->unk220.unk4C = -1;
     this->unk220.unk50 = 0;
-    this->unk28C = 0.0f;
+    this->unk290 = NULL;
     if ((u8) this->unk1F0 == 0) {
         ResetHint();
-        this->unk278.unkC = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
+        this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
         sp38.operator*(1000.0f);
         temp_r4_3404 = this->unk94;
         M2C_FIELD(M2C_FIELD(temp_r4_3404, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3404);
         sp18 = sp48 + M2C_BITWISE(f64, sp38);
         sp10 = 0.0f;
         sp20 = sp50 + sp38.unk8;
-        M2C_FIELD(this, f64 *, 0x2B0) = sp18;
+        this->unk2B0 = sp18;
         sp8 = 0.0f;
         spC = 0.0f;
-        this->unk2B0 = (f64) sp20;
-        this->unk2B8 = (f64) sp8;
-        this->unk2C0 = (f64) sp10;
-        M2C_FIELD(this, f32 *, 0x2D0) = 100.0f;
+        this->unk2B8 = (f64) sp20;
+        this->unk2C0 = (f64) sp8;
+        this->unk2C8 = (f64) sp10;
+        this->unk2D0 = 100.0f;
         sp58 = sp18;
-        this->unk50.unk30 = this->unk2AC;
+        this->unk50.unk30 = (f32) M2C_FIELD(this, f64 *, 0x2B0);
         sp60 = (f64) sp20;
-        this->unk50.unk34 = this->unk2B4;
+        this->unk50.unk34 = M2C_FIELD(this, f32 *, 0x2B4);
         sp28 = (f64) sp8;
         this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);
         sp30 = (f64) sp10;
@@ -1836,7 +1834,7 @@ void Sparx::Reset() {
     this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
     this->unk1E8 = NULL;
     this->unk1EC = -1;
-    memset(&this->unk2AC, 0, 0x28U);
+    memset(&this->unk2B0, 0, 0x28U);
     this->unk220.unk0 = 0.0f;
     this->unk220.unk4 = 0.0f;
     this->unk220.unk8 = 0.0f;
@@ -1858,7 +1856,7 @@ void Sparx::Reset() {
     this->unk220.unk48 = NULL;
     this->unk220.unk4C = -1;
     this->unk220.unk50 = 0;
-    this->unk28C = 0.0f;
+    this->unk290 = NULL;
     ResetHint();
 }
 #endif
@@ -1875,29 +1873,27 @@ void Sparx::SetDefaults() {
 
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Sparx::LoadDone() {
     this->unk8 = &this->unk50;
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
     SetDefaults();
-    M2C_FIELD(this, f64 *, 0x2B0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
-    this->unk2B0 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
-    this->unk50.unk30 = this->unk2AC;
-    this->unk50.unk34 = this->unk2B4;
+    this->unk2B0 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    this->unk2B8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
+    this->unk50.unk30 = (f32) M2C_FIELD(this, f64 *, 0x2B0);
+    this->unk50.unk34 = M2C_FIELD(this, f32 *, 0x2B4);
     this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);
     this->unk50.unk3C = 1.0f;
-    this->unk98->SetSparxPos(*((MKVector3 *) &this->unk2AC));
+    this->unk98->SetSparxPos(*((MKVector3 *) &this->unk2B0));
 }
-#endif
 
 void Sparx::Deinit() {
-    f32 temp_r3_3624;
+    s32 temp_r3_3624;
 
     M2C_FIELD(this->unk94, s32 *, 0xB70) = 0;
-    temp_r3_3624 = this->unk298.unkC;
-    if (M2C_BITWISE(s32, temp_r3_3624) != 0) {
-        PhrasePlayer_StopEvent(M2C_BITWISE(s32, temp_r3_3624));
+    temp_r3_3624 = this->unk2A8;
+    if (temp_r3_3624 != 0) {
+        PhrasePlayer_StopEvent(temp_r3_3624);
     }
     this->unk104.Deinit();
     MKProp::Deinit();
@@ -1908,7 +1904,7 @@ void Sparx::Init() {
     MKProp::Init();
     this->unk90 = checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     Init__22KDStateMachine<5Sparx>FPQ222KDStateMachine<5Sparx>5StateP22KDStateMachine<5Sparx>(&this->unk9C, &sparxStates, NULL);
-    memset(&this->unk2AC, 0, 0x28U);
+    memset(&this->unk2B0, 0, 0x28U);
     this->unk220.unk0 = 0.0f;
     this->unk220.unk4 = 0.0f;
     this->unk220.unk8 = 0.0f;
@@ -1935,18 +1931,18 @@ void Sparx::Init() {
     this->unkC0 = NULL;
     this->unkCC = 0.0f;
     this->unkC8 = 0.0f;
-    this->unk2A8 = 0.0f;
+    this->unk2AC = 0.0f;
     this->unkC4 = 0.0f;
     this->unkF8 = MKRand_Int(&gViewSeed, 1, 3);
     this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
     this->unk1EC = -1;
     this->unk1E8 = NULL;
     this->unk98 = checked_cast<SparxFX *, MKProp>(gMK->CreateProp("SparxFX"));
-    this->unk298.unkC = 0.0f;
+    this->unk2A8 = 0;
     this->unk1FC = 0;
     this->unk94 = NULL;
     this->unk1F4 = NULL;
-    this->unk28C = 0.0f;
+    this->unk290 = NULL;
     this->unk1F1 = 0;
     this->unk1F2 = 0;
     this->unk4C = 0;

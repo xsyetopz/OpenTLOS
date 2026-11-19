@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYRODEATHSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 
 class MKMessage;
@@ -43,7 +44,8 @@ public:
     static SpyroDeathState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroDeathState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ u8 unk28;
     /* 0x029 */ u8 unk29;
     /* 0x02a */ u8 unk2A;
@@ -59,10 +61,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroDeathState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYRODEATHSTATE_H

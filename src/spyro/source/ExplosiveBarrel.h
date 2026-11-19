@@ -13,7 +13,7 @@ class MKMessage;
 class Shatterable;
 class ShatterableDescriptor;
 
-class ExplosiveBarrel : public Shatterable {  // base: vtable prefix
+class ExplosiveBarrel : public Shatterable {  // base: base ctor call
 public:
     class States;
     virtual ~ExplosiveBarrel(void);
@@ -39,7 +39,6 @@ public:
     f32 GetRadius(void);
     void SetOwner(ExplosiveBarrelPath *);
     void SetDefaults(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ ExplosiveBarrelPath* unk1A8;
     /* 0x1ac */ BurningWick* unk1AC;
     /* 0x1b0 */ f32 unk1B0;
@@ -51,13 +50,12 @@ public:
     /* 0x1bc */ s32 unk1BC;
 };
 
-class ExplosiveBarrelDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class ExplosiveBarrelDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     ExplosiveBarrelDescriptor(void);
-    /* 0x16c */ s32 unk16C;
     /* 0x170 */ s32 unk170;
     /* 0x174 */ f32 unk174;
     /* 0x178 */ f32 unk178;
@@ -68,7 +66,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline ExplosiveBarrel::ExplosiveBarrel() {
     this->unkC8 = &__vt + 0x48;
-    this->unk1AC = NULL;
+    this->unk1BC = 0;
     return this;
 }
 #endif
@@ -76,8 +74,8 @@ inline ExplosiveBarrel::ExplosiveBarrel() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline ExplosiveBarrel::~ExplosiveBarrel() {
     this->unkC8 = &__vt.unk48;
-    if (&this->unk1AC != NULL) {
-        KDSound_Stop((s32 *) &this->unk1AC);
+    if (&this->unk1BC != NULL) {
+        KDSound_Stop(&this->unk1BC);
     }
 }
 #endif

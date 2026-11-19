@@ -16,7 +16,7 @@ class PoisonBombDescriptor;
 class Projectile;
 class ProjectileDescriptor;
 
-class PoisonBomb : public Projectile {  // base: vtable prefix
+class PoisonBomb : public Projectile {  // base: base ctor call
 public:
     virtual ~PoisonBomb(void);
     virtual void Init(void);
@@ -40,7 +40,6 @@ public:
     void PlatformAttach(MKProp *, MKCollisionInfo *);
     void SetInitialState(void);
     PoisonBomb * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ u8 unk150;
     /* 0x151 */ u8 pad151[0x7];
     /* 0x158 */ void* unk158;
@@ -70,7 +69,7 @@ public:
     /* 0x1d0 */ f32 unk1D0;
 };
 
-class PoisonBombDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class PoisonBombDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

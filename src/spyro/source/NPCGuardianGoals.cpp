@@ -1,4 +1,5 @@
 #include "spyro/source/NPCGuardianGoals.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
@@ -55,13 +56,13 @@ u8 NPCGuardianGoal_Idle::Update() {
             }
         } else if (((TargetContext *) (this->unk10 + 0x40))->Get() != NULL) {
             temp_r5_95 = this->unkC;
-            M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, M2C_UNK (**)(M2C_UNK *, M2C_UNK *), 0x28)(&temp_r5_95->unk588, &temp_r5_95->unk700);
+            M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, M2C_UNK (**)(MKVector3 *, M2C_UNK *), 0x28)(&temp_r5_95->unk588, &temp_r5_95->unk700);
         }
     } else if ((temp_r3_53 != NULL) && ((s32) M2C_FIELD(temp_r3_53, s32 *, 0x6C) == 1) && ((s32) M2C_FIELD(temp_r3_53, s32 *, 0x68) == 9)) {
         var_r30_112 = 0;
         if (temp_r29_52->HasAnimFinished() != 0) {
             temp_r4_116 = temp_r29_52->unkA50;
-            if ((temp_r4_116 != NULL) && ((u32) M2C_FIELD(temp_r4_116, u32 *, 0) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_52, void **, 0x630), u32 *, 0x20))) {
+            if ((temp_r4_116 != NULL) && ((u32) M2C_FIELD(temp_r4_116, u32 *, 0) == (u32) M2C_FIELD(temp_r29_52->unk630, u32 *, 0x20))) {
                 var_r30_112 = 1;
             }
         }
@@ -74,7 +75,7 @@ u8 NPCGuardianGoal_Idle::Update() {
         temp_r3_152 = this->unkC;
         var_r6_153 = 0;
         temp_r5_154 = temp_r3_152->unkA50;
-        if ((temp_r5_154 != NULL) && ((u32) M2C_FIELD(temp_r5_154, u32 *, 0x20) == (u32) M2C_FIELD(M2C_FIELD(temp_r3_152, void **, 0x630), u32 *, 0x20))) {
+        if ((temp_r5_154 != NULL) && ((u32) M2C_FIELD(temp_r5_154, u32 *, 0x20) == (u32) M2C_FIELD(temp_r3_152->unk630, u32 *, 0x20))) {
             var_r6_153 = 1;
         }
         if ((var_r6_153 != 0) && (temp_r3_152->HasAnimFinished() != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk14)) {
@@ -85,7 +86,7 @@ u8 NPCGuardianGoal_Idle::Update() {
         temp_r3_191 = this->unkC;
         var_r6_192 = 0;
         temp_r5_193 = temp_r3_191->unkA50;
-        if ((temp_r5_193 != NULL) && ((u32) M2C_FIELD(temp_r5_193, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r3_191, void **, 0x630), u32 *, 0x20))) {
+        if ((temp_r5_193 != NULL) && ((u32) M2C_FIELD(temp_r5_193, u32 *, 0x40) == (u32) M2C_FIELD(temp_r3_191->unk630, u32 *, 0x20))) {
             var_r6_192 = 1;
         }
         if ((var_r6_192 != 0) && (temp_r3_191->HasAnimFinished() != 0)) {
@@ -93,7 +94,7 @@ u8 NPCGuardianGoal_Idle::Update() {
             temp_r3_216 = this->unk10;
             if ((temp_r3_216 != 0) && (((TargetContext *) (temp_r3_216 + 0x40))->Get() != NULL)) {
                 temp_r5_227 = this->unkC;
-                if (M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, u8 (**)(M2C_UNK *, M2C_UNK *), 0x28)(&temp_r5_227->unk588, &temp_r5_227->unk700) != 0) {
+                if (M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, u8 (**)(MKVector3 *, M2C_UNK *), 0x28)(&temp_r5_227->unk588, &temp_r5_227->unk700) != 0) {
                     this->unkC->unk6F8 = 1;
                 }
             }
@@ -112,7 +113,7 @@ void NPCGuardianGoal_Idle::Activate() {
     temp_r3_257 = this->unk10;
     if ((temp_r3_257 != 0) && (((TargetContext *) (temp_r3_257 + 0x40))->Get() != NULL)) {
         temp_r5_268 = this->unkC;
-        if (M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, u8 (**)(M2C_UNK *, M2C_UNK *), 0x28)(&temp_r5_268->unk588, &temp_r5_268->unk700) != 0) {
+        if (M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, u8 (**)(MKVector3 *, M2C_UNK *), 0x28)(&temp_r5_268->unk588, &temp_r5_268->unk700) != 0) {
             this->unkC->unk6F8 = 1;
         }
     }

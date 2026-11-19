@@ -29,7 +29,7 @@ class Matrix;
 class Shatterable;
 class SpawnPointRef;
 
-class IceBoss : public Enemy {  // base: vtable prefix
+class IceBoss : public Enemy {  // base: base ctor call
 public:
     virtual ~IceBoss(void);
     virtual void Init(void);
@@ -81,7 +81,6 @@ public:
     void InitWeapon(int, const char *, int, int);
     void InitBodyPart(IceBossBodyPart *, int, const char *, int, int, SubObjectType, bool);
     void InitBodyPart(int, const char *, int, int, SubObjectType, bool);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ MKSceneManager* unkB10;
     /* 0xb14 */ s32 unkB14;
     /* 0xb18 */ s32 unkB18;
@@ -203,40 +202,38 @@ public:
 void IceBoss_UpdateParams(void *);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceBoss::IceBoss() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkFCC = 0.0f;
-    ((EventMessage *) &this->unkFCC)->Init();
-    this->unkFD0 = 0.0f;
-    ((EventMessage *) &this->unkFD0)->Init();
-    this->unkFD4 = 0.0f;
-    ((EventMessage *) &this->unkFD4)->Init();
-    this->unkFFC = NULL;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkFE4.unk0 = 0;
+    this->unkFE4.Init();
+    this->unkFE8.unk0 = 0;
+    this->unkFE8.Init();
+    this->unkFEC.unk0 = 0;
+    this->unkFEC.Init();
+    this->unk1014 = 0;
     this->unk103C = 0;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline IceBoss::~IceBoss() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
     if ((&this->unk103C != NULL) && (&this->unk103C != NULL)) {
         KDSound_Stop(&this->unk103C);
     }
-    if ((&this->unkFFC != NULL) && (&this->unkFFC != NULL)) {
-        KDSound_Stop((s32 *) &this->unkFFC);
+    if ((&this->unk1014 != NULL) && (&this->unk1014 != NULL)) {
+        KDSound_Stop(&this->unk1014);
     }
-    if (&this->unkFD4 != NULL) {
-        ((EventMessage *) &this->unkFD4)->Deinit();
+    if (&this->unkFEC != NULL) {
+        this->unkFEC.Deinit();
     }
-    if (&this->unkFD0 != NULL) {
-        ((EventMessage *) &this->unkFD0)->Deinit();
+    if (&this->unkFE8 != NULL) {
+        this->unkFE8.Deinit();
     }
-    if (&this->unkFCC != NULL) {
-        ((EventMessage *) &this->unkFCC)->Deinit();
+    if (&this->unkFE4 != NULL) {
+        this->unkFE4.Deinit();
     }
 }
 #endif

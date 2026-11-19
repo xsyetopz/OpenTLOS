@@ -30,7 +30,7 @@ class MKVector3;
 class Matrix;
 class SpawnPointRef;
 
-class EarthBoss : public Enemy {  // base: vtable prefix
+class EarthBoss : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthBoss(void);
     virtual void Init(void);
@@ -59,7 +59,7 @@ public:
     void TempDisableCollision(bool);
     void UpdateEnemyHud(void);
     void SetupCollisionSphere(int, const char *, const char *, float, const MKVector3 &);
-    /* 0xb0c */ u8 padB0C[0x1b4];
+    /* 0xb10 */ u8 padB10[0x1b0];
     /* 0xcc0 */ EarthBossArm* unkCC0;
     /* 0xcc4 */ EarthShockwave* unkCC4;
     /* 0xcc8 */ f32 unkCC8;
@@ -171,20 +171,20 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthBoss::EarthBoss() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    M2C_FIELD(this, s32 *, 0xCF4) = 0;
-    ((EventMessage *) &this->unkCDC)->Init();
+    this->unk6B8 = &__vt + 0x84;
+    this->unkCF4.unk0 = 0;
+    this->unkCF4.Init();
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthBoss::~EarthBoss() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if (&this->unkCDC != NULL) {
-        ((EventMessage *) &this->unkCDC)->Deinit();
+    this->unk6B8 = &__vt.unk84;
+    if (&this->unkCF4 != NULL) {
+        this->unkCF4.Deinit();
     }
 }
 #endif

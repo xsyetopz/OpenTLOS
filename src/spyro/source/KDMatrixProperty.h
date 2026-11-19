@@ -44,11 +44,9 @@ inline s32 KDMatrixProperty::GetMatrixRef() const {
     return *KDProperty::pInstanceMem + this->unk8;
 }
 
-#if 0 // DRAFT: function call 'memcpy(Matrix *, const long, int)' does not match
 inline void KDMatrixProperty::GetMatrix(Matrix *arg0) const {
     M2C_STRUCT_COPY(arg0, *KDProperty::pInstanceMem + this->unk8, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void KDMatrixProperty::GetPos() const {

@@ -7,7 +7,7 @@
 class GuardTower;
 class LavaSmashProp;
 
-class GuardTower : public LavaSmashProp {  // base: vtable prefix
+class GuardTower : public LavaSmashProp {  // base: base ctor call
 public:
     virtual ~GuardTower(void);
     virtual void Init(void);

@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROTAILSTRIKESTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
 
@@ -42,9 +43,9 @@ public:
     static SpyroTailStrikeState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroTailStrikeState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ SpyroStuck unk28;
-    /* 0x044 */ u8 pad44[0x4];
     /* 0x048 */ f32 unk48;
     /* 0x04c */ s32 unk4C;
     /* 0x050 */ u8 unk50;
@@ -57,10 +58,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroTailStrikeState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROTAILSTRIKESTATE_H

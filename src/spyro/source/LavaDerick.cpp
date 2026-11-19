@@ -21,7 +21,7 @@ void LavaDerick::Message(MKMessage *arg0) {
 
     if ((s32) arg0->unk0 != 0x12) {
 
-    } else if ((MKProp *) this->unk170 == (s32) (M2C_FIELD(checked_cast<LavaDerickDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
+    } else if ((s32) this->unk180 == (s32) (M2C_FIELD(checked_cast<LavaDerickDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
         temp_r3_61 = M2C_FIELD(checked_cast<CollisionObjectCollideMsg *, MKMessage>(arg0), void ***, 0xC);
         temp_r3_65 = M2C_FIELD(*temp_r3_61, void *(**)(void **), 0x2C)(temp_r3_61);
         if (temp_r3_65 != NULL) {

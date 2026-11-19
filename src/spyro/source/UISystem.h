@@ -26,7 +26,6 @@ public:
     void DoTransition(void);
     void ProvokeTransition(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;
     /* 0x070 */ u8 pad70[0x24];

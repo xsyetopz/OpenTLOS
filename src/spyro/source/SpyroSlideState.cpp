@@ -48,7 +48,6 @@ u8 states__15SpyroSlideState[0x24] = {
 };
 
 s32 SpyroSlideState::Transition() {
-    MKProp *temp_r4_32;
     Spyro *temp_r3_121;
     Spyro *temp_r3_31;
     f32 temp_f0_55;
@@ -63,14 +62,15 @@ s32 SpyroSlideState::Transition() {
     u8 var_r29_88;
     u8 var_r30_87;
     u8 var_r31_85;
+    void *temp_r4_32;
     void *var_r4_43;
 
     temp_r3_31 = this->unk10;
-    temp_r4_32 = temp_r3_31->unk26C.unk8;
+    temp_r4_32 = temp_r3_31->unk27C;
     temp_r4_34 = M2C_FIELD(temp_r4_32, s32 *, 0x16C);
     if (((u32) (-temp_r4_34 & ~temp_r4_34) >> 0x1FU) != 0) {
         if (temp_r4_34 != 0) {
-            var_r4_43 = &temp_r4_32->unk8 + ((temp_r4_34 - 1) * 0x58);
+            var_r4_43 = ((u8 *) temp_r4_32) + 8 + ((temp_r4_34 - 1) * 0x58);
         } else {
             var_r4_43 = NULL;
         }
@@ -78,10 +78,10 @@ s32 SpyroSlideState::Transition() {
     } else {
         var_r0_48 = 0;
     }
-    temp_f1_53 = temp_r3_31->unk330;
+    temp_f1_53 = temp_r3_31->unk338;
     temp_f0_55 = temp_r3_31->unk33C;
     var_r29_56 = 0;
-    temp_f3_58 = temp_r3_31->unk338;
+    temp_f3_58 = temp_r3_31->unk340;
     if ((((temp_f3_58 * temp_f3_58) + ((temp_f1_53 * temp_f1_53) + (temp_f0_55 * temp_f0_55))) < 22500.0f) && (((KDInput *) (temp_r3_31->GetInput()))->GetLeftMag() != 0.0f)) {
         var_r29_56 = 1;
     }
@@ -107,7 +107,7 @@ block_19:
     }
     if (var_r26_86 == 0) {
         temp_r3_121 = this->unk10;
-        if (temp_r3_121->TryChangeState((M2C_FIELD(temp_r3_121->unk26C.unk8, s32 *, 0x16C) > 0) == 0, 6U, NULL, 0U) == 0) {
+        if (temp_r3_121->TryChangeState((M2C_FIELD(temp_r3_121->unk27C, s32 *, 0x16C) > 0) == 0, 6U, NULL, 0U) == 0) {
             var_r29_88 = 0;
         }
     }
@@ -123,7 +123,6 @@ block_19:
     return var_r31_85;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroSlideState::Update() {
     f64 sp80;
     f64 sp78;
@@ -161,7 +160,7 @@ void SpyroSlideState::Update() {
     temp_f3_189 = M2C_FIELD(temp_r3_176, f64 *, 0x338);
     temp_f0_190 = temp_f3_189 * (f64) var_f2_184;
     sp38 = temp_f0_190;
-    temp_f4_192 = temp_r3_176->unk338;
+    temp_f4_192 = temp_r3_176->unk340;
     sp58 = temp_f0_190;
     sp40 = temp_f4_192 * var_f2_184;
     sp60 = (f64) sp40;
@@ -184,31 +183,26 @@ void SpyroSlideState::Update() {
     this->unk14.Update(this, 0);
     this->unk28.Update();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroSlideState::Exit() {
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroSlideState::Enter(SpyroStateMessages &arg0) {
     Spyro *temp_r3_275;
 
     temp_r3_275 = this->unk10;
-    temp_r3_275->unk420 = (void *) ((s32) temp_r3_275->unk420 & 0xFFFFFFFE);
+    temp_r3_275->unk428 &= 0xFFFFFFFE;
     this->unk10->SetAnim(0U, 0.17f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     Init__33KDStateMachine<15SpyroSlideState>FPQ233KDStateMachine<15SpyroSlideState>5StateP33KDStateMachine<15SpyroSlideState>(&this->unk14, (KDStateMachine<SpyroSlideState>::State *) SpyroSlideState::states, NULL);
     this->unk28.Reset();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroSlideState::Deinit() {
     this->unk14.Deinit(this);
 }
-#endif
 
 void SpyroSlideState::Init(Spyro *arg0) {
     this->unk10 = arg0;

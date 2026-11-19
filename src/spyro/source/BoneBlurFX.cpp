@@ -77,7 +77,7 @@ void BoneBlurFX::Teleport() {
     TakeFrameSnapshot();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal type
 void BoneBlurFX::CalcUVs() {
     Matrix sp20;
     MKVector3 sp10;

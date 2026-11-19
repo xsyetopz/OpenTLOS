@@ -67,11 +67,6 @@ public:
     virtual void Arbitrate(void);
     FireTier2Goal_Think(void);
     void Init(Enemy *);
-    /* 0x004 */ u8 pad4[0x5];
-    /* 0x009 */ s8 unk9;
-    /* 0x00a */ u8 padA[0x2];
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ u8 pad10[0x64];
     /* 0x074 */ MKHeap* unk74;
     /* 0x078 */ Goal<Enemy>* unk78;
     /* 0x07c */ u8 unk7C;

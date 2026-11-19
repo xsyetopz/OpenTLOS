@@ -1,11 +1,11 @@
 #include "spyro/source/Enemies_Swamp.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
-#include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -30,7 +30,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
+#if 0 // DRAFT: ';' expected
 static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
@@ -40,7 +40,7 @@ u8 SwampTier3::CanMoveAwayFromHero() {
     void **temp_r3_48;
 
     var_r31_47 = 0;
-    temp_r3_48 = this->unkA28;
+    temp_r3_48 = this->unkA40;
     if ((M2C_FIELD(*temp_r3_48, u8 (**)(void **, M2C_UNK), 0x3C)(temp_r3_48, 0x7B) == 0) && (Enemy::CanMoveAwayFromHero() != 0)) {
         var_r31_47 = 1;
     }
@@ -73,21 +73,21 @@ void SwampTier3::CheckAnimEvents() {
     f32 sp10;
     s32 spC;
     f32 sp8;
-    CharacterFireFX *temp_r3_188;
+    EnemyAttack *temp_r3_188;
+    MKHeap *temp_r0_100;
+    MKHeap *var_r27_104;
     s32 var_r26_110;
-    u32 *temp_r0_100;
-    u32 *var_r27_104;
 
     Enemy::CheckAnimEvents();
-    if ((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkAEC) != 0)) {
-        KDSound_Stop(&this->unkAEC);
+    if ((((MKAnimScript *) this->unk630)->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkB04) != 0)) {
+        KDSound_Stop(&this->unkB04);
     }
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
-        temp_r0_100 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
+    if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
+        temp_r0_100 = this->unkA38->unk27C;
         if (temp_r0_100 != NULL) {
             var_r27_104 = temp_r0_100;
 loop_9:
-            if ((u32) *var_r27_104 != -1U) {
+            if ((MKHeap *) var_r27_104->unk0 != (MKHeap *)-1U) {
                 var_r26_110 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -97,7 +97,7 @@ loop_9:
                     sp88 = sp28;
                     spC0 = (f64) sp30;
                     sp90 = (f64) sp30;
-                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r27_104, &spA8);
+                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r27_104->unk0, &spA8);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
@@ -117,17 +117,17 @@ loop_9:
             }
         }
     }
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(1) != 0) {
-        temp_r3_188 = this->unkA08;
-        if ((temp_r3_188 != NULL) && (M2C_FIELD(temp_r3_188, s32 *, 0x38) & 1)) {
-            MKModel_CalculateRefPointWorldPosition(this->unk4, *M2C_FIELD(temp_r3_188, s32 **, 0x7C), &sp98);
+    if (((MKAnimScript *) this->unk630)->CheckEvent(1) != 0) {
+        temp_r3_188 = this->unkA20;
+        if ((temp_r3_188 != NULL) && (temp_r3_188->unk38 & 1)) {
+            MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) *temp_r3_188->unk7C, &sp98);
             sp38 = 0.5f;
             sp3C = 0.6f;
             sp40 = 0.0f;
             sp44 = 1.0f;
             sp48 = (f64) sp38;
             sp50 = (f64) sp40;
-            ((EarthShockwave *) this->unkB04)->Trigger(sp98, 0.5f, 0U, (MKVector4) &sp48);
+            this->unkB1C->Trigger(sp98, 0.5f, 0U, (MKVector4) &sp48);
         }
     }
 }
@@ -135,13 +135,13 @@ loop_9:
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnerObject'
 s32 SwampTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
-    M2C_FIELD(this, s8 *, 0xB10) = 1;
-    this->unkAFC = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
+    this->unkB10 = 1;
+    this->unkB14 = 0.0f;
+    this->unkB18 = 0.0f;
     this->unkA4C->SetDefaults();
     if (Enemy::Spawn(arg0, arg1) != 0) {
-        if (M2C_BITWISE(u32, this->unkA7C) != 0U) {
-            M2C_FIELD(this, s8 *, 0xB10) = 0;
+        if ((Enemy *) this->unkA94 != NULL) {
+            this->unkB10 = 0;
         }
         return 1;
     }
@@ -149,18 +149,16 @@ s32 SwampTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6C4'
 void SwampTier3::LoadDone() {
     Enemy::LoadDone();
-    this->unk6C4 = -0.9519978f;
-    this->unk6C0.unk0 = 0.9519978f;
     this->unk6C0.unk4 = -0.9519978f;
-    this->unk6C0.unk8 = 0.62831855f;
-    this->unkB04 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
+    this->unk6C0.unk8 = 0.9519978f;
+    this->unk6C0.unkC = -0.9519978f;
+    this->unk6C0.unk10 = 0.62831855f;
+    this->unkB1C = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
 }
-#endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier3::Init() {
     SwampTier3Goal_Think *temp_r31_312;
 
@@ -181,10 +179,10 @@ void SwampTier3::Init() {
         temp_r31_312->__vptr = &__vt;
     }
     temp_r31_312->Init(this);
-    this->unkA24 = (EnemyAttack *) temp_r31_312;
-    M2C_FIELD(this, s8 *, 0xB10) = 0;
-    this->unkAFC = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
+    this->unkA3C = &temp_r31_312->__vptr;
+    this->unkB10 = 0;
+    this->unkB14 = 0.0f;
+    this->unkB18 = 0.0f;
     InitSpawnerObject(3, 3, 3);
 }
 #endif
@@ -216,20 +214,20 @@ void SwampTier2::CheckAnimEvents() {
     f32 sp10;
     s32 spC;
     f32 sp8;
+    MKHeap *temp_r0_417;
+    MKHeap *var_r28_423;
     s32 var_r27_428;
-    u32 *temp_r0_417;
-    u32 *var_r28_423;
 
     Enemy::CheckAnimEvents();
-    if ((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkAEC) != 0)) {
-        KDSound_Stop(&this->unkAEC);
+    if ((((MKAnimScript *) this->unk630)->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkB04) != 0)) {
+        KDSound_Stop(&this->unkB04);
     }
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
-        temp_r0_417 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
+    if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
+        temp_r0_417 = this->unkA38->unk27C;
         if (temp_r0_417 != NULL) {
             var_r28_423 = temp_r0_417;
 loop_9:
-            if ((u32) *var_r28_423 != -1U) {
+            if ((MKHeap *) var_r28_423->unk0 != (MKHeap *)-1U) {
                 var_r27_428 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -240,7 +238,7 @@ loop_9:
                     sp90 = (f64) sp30;
                     sp68 = sp28;
                     sp70 = (f64) sp30;
-                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r28_423, &sp78);
+                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r28_423->unk0, &sp78);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
@@ -302,7 +300,7 @@ void SwampTier2::Draw() {
     temp_r3_531 = MKMaterial_GetColor(temp_r3_529);
     spA8 = M2C_FIELD(temp_r3_531, f64 *, 0);
     spB0 = M2C_FIELD(temp_r3_531, f64 *, 8);
-    temp_r0_536 = this->unkAF8;
+    temp_r0_536 = this->unkB10;
     switch (temp_r0_536) {                          /* irregular */
     case 1:
         sp38 = 1.0f;
@@ -317,8 +315,8 @@ void SwampTier2::Draw() {
         sp90 = (f64) sp40;
         sp78 = (f64) sp28;
         sp80 = (f64) sp30;
-        M2C_FIELD(this, f32 *, 0xB18) = (f32) fmod(M2C_FIELD(this, f32 *, 0xB18) + gUpdateTimeDelta, 1.0, (f64) sp28, 0.3f, (f64) sp40, (f64) sp38, 1.0f);
-        temp_f1_578 = 0.5f * (1.0f + _table_sinf(6.2831855f * M2C_FIELD(this, f32 *, 0xB18)));
+        this->unkB18 = (f32) fmod(this->unkB18 + gUpdateTimeDelta, 1.0, (f64) sp28, 0.3f, (f64) sp40, (f64) sp38, 1.0f);
+        temp_f1_578 = 0.5f * (1.0f + _table_sinf(6.2831855f * this->unkB18));
         sp8 = sp78 - sp88;
         temp_f0_585 = (f64) sp30 - sp90;
         sp10 = temp_f0_585;
@@ -347,7 +345,7 @@ void SwampTier2::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2::Init() {
     SwampTier2Goal_Think *temp_r31_651;
 
@@ -368,11 +366,11 @@ void SwampTier2::Init() {
         temp_r31_651->__vptr = &__vt;
     }
     temp_r31_651->Init(this);
-    this->unkA24 = (EnemyAttack *) temp_r31_651;
-    this->unkAFC = 0;
-    this->unkAF8 = 0;
-    M2C_FIELD(this, f32 *, 0xB18) = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-    this->unkB04 = 0.0f;
+    this->unkA3C = &temp_r31_651->__vptr;
+    this->unkB14 = 0;
+    this->unkB10 = 0;
+    this->unkB18 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    this->unkB1C = 0.0f;
 }
 #endif
 
@@ -407,18 +405,18 @@ void SwampTier1::CheckAnimEvents() {
     f32 sp10;
     s32 spC;
     f32 sp8;
+    MKHeap *temp_r0_747;
+    MKHeap *var_r28_754;
     s32 var_r27_759;
     s32 var_r27_801;
-    u32 *temp_r0_747;
-    u32 *var_r28_754;
 
     Enemy::CheckAnimEvents();
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
-        temp_r0_747 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
+    if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
+        temp_r0_747 = this->unkA38->unk27C;
         if (temp_r0_747 != NULL) {
             var_r28_754 = temp_r0_747;
 loop_8:
-            if ((u32) *var_r28_754 != -1U) {
+            if ((MKHeap *) var_r28_754->unk0 != (MKHeap *)-1U) {
                 var_r27_759 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -429,7 +427,7 @@ loop_8:
                     sp90 = (f64) sp30;
                     sp68 = sp28;
                     sp70 = (f64) sp30;
-                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r28_754, &sp78);
+                    MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r28_754->unk0, &sp78);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
@@ -446,7 +444,7 @@ loop_8:
                     sp90 = (f64) sp20;
                     (*(f32 *) ((u8 *) &sp88 + 0x4)) = 400.0f;
                     sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-                    gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp88), sp8);
+                    gb.EmitCrud(this->unk588, *((MKVector3 *) &sp88), sp8);
                     var_r27_801 += 1;
                 } while (var_r27_801 < 3);
                 var_r28_754 += 4;
@@ -457,7 +455,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier1::Init() {
     SwampTier1Goal_Think *temp_r31_867;
 
@@ -478,7 +476,7 @@ void SwampTier1::Init() {
         temp_r31_867->__vptr = &__vt;
     }
     temp_r31_867->Init(this);
-    this->unkA24 = (EnemyAttack *) temp_r31_867;
+    this->unkA3C = &temp_r31_867->__vptr;
 }
 #endif
 
@@ -489,7 +487,7 @@ void SwampTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'swampTier1BodyFXInit'
 void Enemies_Swamp_cpp::__sinit() {
     f32 sp340;
     f32 sp33C;

@@ -26,18 +26,18 @@ extern s32 GS_PauseScreen;
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void ExitConfirmScreen::Update() {
     s32 spC;
     s32 sp8;
-    s32 temp_r3_22;
-    s8 *temp_r0_30;
+    s32 temp_r0_30;
+    void **temp_r3_22;
 
     UIScreen::Update();
-    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && (temp_r3_22 = this->unkBC.unk4, (((u32) temp_r3_22 == 0U) == 0)) && ((s32) M2C_FIELD(temp_r3_22, s32 *, 0x68) == 1)) {
+    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && (temp_r3_22 = this->unkC8, ((temp_r3_22 == NULL) == 0)) && ((s32) M2C_FIELD(temp_r3_22, s32 *, 0x68) == 1)) {
         PhrasePlayer_StopAnyEvent();
         KDSound_SoundDucking_Deinit();
-        temp_r0_30 = this->unkBC.unk8;
+        temp_r0_30 = this->unkCC;
         switch (temp_r0_30) {                       /* irregular */
         case 0:
             ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SwitchTo(NULL);
@@ -62,42 +62,38 @@ void ExitConfirmScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ExitConfirmScreen::OnEnter() {
     s32 spC;
     s32 sp8;
-    s32 temp_r3_103;
+    void **temp_r3_103;
 
     UIScreen::OnEnter();
-    temp_r3_103 = this->unkBC.unk4;
-    if ((u32) temp_r3_103 != 0U) {
+    temp_r3_103 = this->unkC8;
+    if (temp_r3_103 != NULL) {
         sp8 = 1;
         spC = 0;
         M2C_FIELD(*temp_r3_103, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'UIButtonGroup *' to
 void ExitConfirmScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkBC.unk4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
+    this->unkC8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
     if (stricmp(this->unk4, "QuitGame") == 0) {
-        this->unkBC.unk8 = NULL;
+        this->unkCC = 0;
         return;
     }
-    this->unkBC.unk8 = (s8 *)1;
+    this->unkCC = 1;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ExitConfirmScreen::Init() {
     UIContainer::Init();
-    this->unkBC.unk4 = 0;
+    this->unkC8 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void PauseMainScreen::Update() {
     f32 sp34;
     void *sp30;
@@ -111,34 +107,34 @@ void PauseMainScreen::Update() {
     s32 sp10;
     s32 spC;
     s32 sp8;
+    UIContainer *temp_r3_205;
+    UIContainer *temp_r3_215;
     UIContainer *temp_r3_218;
     UIContainer *temp_r3_229;
-    s32 temp_r3_205;
-    s32 temp_r3_215;
     s8 *temp_r3_288;
     s8 *temp_r3_321;
     void *temp_r3_269;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0xD0) == 0) {
+    if ((u8) this->unkD0 == 0) {
         UIScreen::Update();
-        if ((u8) M2C_FIELD(this, u8 *, 0xD1) != 0) {
+        if ((u8) this->unkD1 != 0) {
             KDSound_Play(GS_PauseScreen, 0U, -1);
-            M2C_FIELD(this, u8 *, 0xD1) = 0U;
+            this->unkD1 = 0;
         }
         if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
-            temp_r3_205 = this->unkBC.unk4;
+            temp_r3_205 = this->unkC8;
             sp10 = 6;
             sp14 = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_205, void **, 0), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_205, &sp10, 6);
-            temp_r3_215 = this->unkBC.unk4;
-            temp_r3_218 = ui_cast<UIButton *, UIObject *>(((UIContainer *) temp_r3_215)->GetChild(M2C_FIELD(temp_r3_215, s32 *, 0x68)));
+            temp_r3_205->Message(&sp10, 6);
+            temp_r3_215 = this->unkC8;
+            temp_r3_218 = ui_cast<UIButton *, UIObject *>(temp_r3_215->GetChild(M2C_FIELD(temp_r3_215, s32 *, 0x68)));
             if (temp_r3_218 != NULL) {
                 if (stricmp(temp_r3_218->unk4, "Continue") == 0) {
                     temp_r3_229 = GetRoot();
                     sp8 = 0xF;
                     spC = 0;
                     M2C_FIELD(temp_r3_229->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-                    M2C_FIELD(this, u8 *, 0xD1) = 1U;
+                    this->unkD1 = 1;
                 } else if (stricmp(temp_r3_218->unk4, "SaveGame") == 0) {
                     memcpy(Autosave_GetGameDataCopy() + 0x40, &GameData::gameData[0x40], 0x20U);
                 } else if (stricmp(temp_r3_218->unk4, "Cheat") == 0) {
@@ -179,21 +175,21 @@ void PauseMainScreen::Update() {
             }
         }
         if (UIControls_Pressed((FrontEndControls) 0xF, -1) != 0) {
-            M2C_FIELD(this, u8 *, 0xD1) = 1U;
+            this->unkD1 = 1;
         }
     }
-    M2C_FIELD(this, u8 *, 0xD0) = 0U;
+    this->unkD0 = 0;
 }
 #endif
 
 void PauseMainScreen::OnExit() {
     UIScreen::OnExit();
     if (UIControls_Pressed((FrontEndControls) 3, -1) != 0) {
-        M2C_FIELD(this, s8 *, 0xD1) = 1;
+        this->unkD1 = 1;
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
 void PauseMainScreen::OnEnter() {
     s32 sp1C;
     s32 sp18;
@@ -210,7 +206,7 @@ void PauseMainScreen::OnEnter() {
     void **temp_r3_446;
 
     UIScreen::OnEnter();
-    temp_r3_397 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) this->unkBC.unk4)->FindChild("SaveGame"));
+    temp_r3_397 = ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("SaveGame"));
     if (temp_r3_397 != NULL) {
         var_r28_401 = 0;
         var_r30_404 = 0;
@@ -228,7 +224,7 @@ void PauseMainScreen::OnEnter() {
         sp1C = 0;
         M2C_FIELD(*temp_r3_397, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_397, &sp18);
     }
-    temp_r3_446 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) this->unkBC.unk4)->FindChild("LevelUp"));
+    temp_r3_446 = ui_cast<UIContainer *, UIObject *>(this->unkC8->FindChild("LevelUp"));
     if (temp_r3_446 != NULL) {
         var_r4_450 = 5;
         if (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) {
@@ -245,7 +241,7 @@ void PauseMainScreen::OnEnter() {
         spC = 0;
         M2C_FIELD(*temp_r3_446, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_446, &sp8);
     }
-    M2C_FIELD(this, s8 *, 0xD0) = 1;
+    this->unkD0 = 1;
     if ((void *) M2C_FIELD(&gb, void **, 0x354) != NULL) {
         M2C_FIELD(M2C_FIELD(&gb, void **, 0x354), s8 *, 5) = 1;
     }
@@ -253,7 +249,7 @@ void PauseMainScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'PromptGroup *' to
 void PauseMainScreen::Resolve() {
     s32 sp14;
     s32 sp10;
@@ -263,17 +259,17 @@ void PauseMainScreen::Resolve() {
     UIObject *temp_r3_552;
 
     UIScreen::Resolve();
-    M2C_FIELD(this, s8 *, 0xD1) = 1;
-    this->unkBC.unk8 = ui_cast<PromptGroup *, UIObject *>(FindChild("PromptGroup"));
-    this->unkBC.unk4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
-    temp_r3_529 = ((UIContainer *) this->unkBC.unk4)->FindChild("Cheat");
+    this->unkD1 = 1;
+    this->unkCC = ui_cast<PromptGroup *, UIObject *>(FindChild("PromptGroup"));
+    this->unkC8 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
+    temp_r3_529 = this->unkC8->FindChild("Cheat");
     if (temp_r3_529 != NULL) {
         sp14 = 5;
         M2C_FIELD(temp_r3_529->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp14);
         sp10 = 3;
         temp_r3_529->Message(&sp10);
     }
-    temp_r3_552 = ((UIContainer *) this->unkBC.unk4)->FindChild("ChangeLevel");
+    temp_r3_552 = this->unkC8->FindChild("ChangeLevel");
     if (temp_r3_552 != NULL) {
         spC = 5;
         M2C_FIELD(temp_r3_552->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);

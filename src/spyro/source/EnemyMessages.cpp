@@ -4,7 +4,6 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
-#include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterIceCubesFX.h"
 #include "spyro/source/Enemy.h"
@@ -16,9 +15,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
-#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
-#include "spyro/source/MeleeTrails.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroHud.h"
@@ -191,11 +188,11 @@ void Enemy::Message(MKMessage *arg0) {
     Enemy *temp_r0_828;
     Enemy *var_r0_2300;
     Enemy *var_r4_2098;
-    EnemyAttack *temp_r3_1966;
-    EnemyAttack *temp_r3_2015;
-    EnemyAttack *temp_r4_1353;
     EnemyDamageFeedback *temp_r3_712;
     EnemyDamageFeedback *temp_r3_758;
+    EnemyDescriptor *temp_r3_1966;
+    EnemyDescriptor *temp_r3_2015;
+    EnemyDescriptor *temp_r4_1353;
     EnemyGenerator *temp_r3_2226;
     IsInAlertRangeMsg *temp_r25_1772;
     SpawnPointObject *temp_r4_2225;
@@ -259,7 +256,6 @@ void Enemy::Message(MKMessage *arg0) {
     s32 var_r4_369;
     s32 var_r6_216;
     u32 temp_r25_815;
-    u32 temp_r3_2064;
     u32 var_r25_2136;
     u32 var_r25_354;
     u8 temp_r3_1724;
@@ -294,6 +290,7 @@ void Enemy::Message(MKMessage *arg0) {
     void *temp_r3_181;
     void *temp_r3_1880;
     void *temp_r3_191;
+    void *temp_r3_2064;
     void *temp_r3_2223;
     void *temp_r3_2257;
     void *temp_r3_2298;
@@ -313,13 +310,13 @@ void Enemy::Message(MKMessage *arg0) {
     void *temp_r7_771;
     void *temp_r8_2350;
 
-    ((KDSound_LoopSoundEvent *) &this->unk948.unk28)->Message(arg0);
+    this->unk980.Message(arg0);
     temp_r0_21 = arg0->unk0;
     switch (temp_r0_21) {                           /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         if ((IsDying() == 0) && (IsDead() == 0) && (IsFriend() == 0)) {
             var_r3_165 = 0;
-            if (((s32) this->unk750.unk68 == 3) && (this->unk750.unk84 > 0.0f)) {
+            if (((s32) this->unk750.unk78 == 3) && (this->unk750.unk94 > 0.0f)) {
                 var_r3_165 = 1;
             }
             if (var_r3_165 == 0) {
@@ -385,7 +382,7 @@ block_409:
                 sp3C8 = temp_f0_315;
                 sp450 = (f64) sp70;
                 sp3D0 = (f64) sp70;
-                if ((this->unkAB4 > 0.0f) && ((s32) M2C_FIELD(this->unkA20, s32 *, 0x234) > 0)) {
+                if ((this->unkACC > 0.0f) && ((s32) this->unkA38->unk234 > 0)) {
                     SetArmour(0.0f);
                     Armour_Destroy();
                 }
@@ -429,7 +426,7 @@ block_103:
                     if (temp_r0_412 == 1) {
                         if (IsKnockedUp() != 0) {
                             var_r26_280 = 9;
-                            this->unkADC = 0;
+                            this->unkAF4 = 0;
                         } else if ((s32) temp_r3_272->unk3C >= 0) {
                             var_r26_280 = 2;
                         } else {
@@ -448,9 +445,9 @@ block_103:
                         var_r26_280 = 0;
                     }
                     if ((s32) temp_r3_272->unk38 == 1) {
-                        if ((IsKnockedUp() != 0) || (temp_r3_461 = this->unkA28, ((M2C_FIELD(*temp_r3_461, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_461, 0xC) == 0) == 0))) {
+                        if ((IsKnockedUp() != 0) || (temp_r3_461 = this->unkA40, ((M2C_FIELD(*temp_r3_461, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_461, 0xC) == 0) == 0))) {
                             var_r26_280 = 9;
-                        } else if ((this->unkAA8 >= 1.0f) || (M2C_BITWISE(s32, this->unk92C) != 1) || !(this->unk920 & 4)) {
+                        } else if ((this->unkAC0 >= 1.0f) || ((s32) this->unk93C != 1) || !(this->unk930 & 4)) {
                             var_r26_280 = 0;
                         } else {
                             var_r26_280 = 0xE;
@@ -495,7 +492,7 @@ block_103:
                             var_f31_281 = (0.25f * (f32) temp_r29_578 * (temp_r3_272->unk20.Magnitude() / 5000.0f)) + 1.0f;
                         }
                     }
-                    if ((var_r27_278 != 0) && ((u8) M2C_FIELD(this->unkA20, u8 *, 0xFC) != 0)) {
+                    if ((var_r27_278 != 0) && ((u8) this->unkA38->unkFC != 0)) {
                         var_r26_280 = 0xC;
                     }
                     break;
@@ -526,11 +523,11 @@ block_103:
                         var_r29_668 = 0;
                         sp428 = M2C_FIELD(temp_r3_272, f64 *, 0x10);
                         sp430 = M2C_FIELD(temp_r3_272, f64 *, 0x18);
-                        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
+                        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk40.Get() != NULL)) {
                             var_r29_668 = 1;
                         }
-                        if ((var_r29_668 != 0) && (((AITargetData *) &this->unk838.unk28)->GetProp() == (u32) temp_r3_272->unk8)) {
-                            M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 1);
+                        if ((var_r29_668 != 0) && (this->unk870.GetProp() == (u32) temp_r3_272->unk8)) {
+                            this->unkB08 |= 1;
                         }
                         DoBlockFx(var_r25_354, *((MKVector3 *) &sp428));
                         TriggerShieldGlow(temp_r3_272->unk40);
@@ -665,21 +662,21 @@ block_199:
                             TriggerShieldGlow(M2C_FIELD(GameData::gameData, s32 *, 0x158));
                             var_r27_990 = 0;
                             M2C_FIELD(temp_r3_812, s8 *, 0x3D) = 1;
-                            if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
+                            if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk40.Get() != NULL)) {
                                 var_r27_990 = 1;
                             }
-                            if ((var_r27_990 != 0) && (((AITargetData *) &this->unk838.unk28)->GetProp() == (void **) M2C_FIELD(temp_r3_812, void ***, 8))) {
-                                M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 1);
+                            if ((var_r27_990 != 0) && (this->unk870.GetProp() == (void **) M2C_FIELD(temp_r3_812, void ***, 8))) {
+                                this->unkB08 |= 1;
                             }
                             if (this->unkAA0 > 0.0f) {
-                                KDSound_Play(M2C_FIELD(this->unkA20, s32 *, 0x18C), 0U, -1);
+                                KDSound_Play(this->unkA38->unk18C, 0U, -1);
                                 this->unkAA0 = 0.25f;
                             }
                             AddDamage(1.0f, 0U, *(temp_r3_812 + 0x10), (s32) temp_r25_815, temp_r26_817, 0U, 1U, M2C_FIELD(temp_r3_812, MKCollisionInfo **, 0x38), 0.0f, 1.0f);
                             return;
                         }
                     }
-                    if (!(((u8) M2C_FIELD(this, u8 *, 0xB02) >> 1U) & 1) && ((u32) temp_r26_817 <= 0xEU)) {
+                    if (!(((u8) this->unkB02 >> 1U) & 1) && ((u32) temp_r26_817 <= 0xEU)) {
                         switch (temp_r26_817) {     /* switch 4 */
                         case 0:                     /* switch 4 */
                         case 14:                    /* switch 4 */
@@ -738,13 +735,13 @@ block_199:
                         }
                     }
                     AddDamage(M2C_FIELD(temp_r3_812, f32 *, 0x20), M2C_FIELD(temp_r3_812, u8 *, 0x3C), *((MKVector3 *) &sp3F8), (s32) temp_r25_815, temp_r26_817, 0U, 0U, M2C_FIELD(temp_r3_812, MKCollisionInfo **, 0x38), 1.0f, M2C_FIELD(temp_r3_812, f32 *, 0x24));
-                    if (!(((u8) M2C_FIELD(this, u8 *, 0xB02) >> 2U) & 1)) {
-                        temp_r4_1353 = this->unkA20;
-                        temp_r3_1354 = M2C_FIELD(temp_r4_1353, s32 *, 0x188);
+                    if (!(((u8) this->unkB02 >> 2U) & 1)) {
+                        temp_r4_1353 = this->unkA38;
+                        temp_r3_1354 = temp_r4_1353->unk188;
                         if ((temp_r3_1354 != 0) && ((u32) M2C_FIELD(temp_r3_812, u32 *, 0x30) == 0x1000)) {
                             KDSound_Play3d(temp_r3_1354, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                         } else {
-                            temp_r3_1369 = M2C_FIELD(temp_r4_1353, s32 *, 0x184);
+                            temp_r3_1369 = temp_r4_1353->unk184;
                             if ((temp_r3_1369 != 0) && (var_r27_1286 == 0) && ((u32) M2C_FIELD(temp_r3_812, u32 *, 0x30) == 0x1000)) {
                                 KDSound_Play3d(temp_r3_1369, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                             } else if ((temp_r3_1369 != 0) && (var_r27_1286 == 0)) {
@@ -766,7 +763,7 @@ block_199:
         }
         break;
     case 164:                                       /* switch 1 */
-        if (this->unkAB0 != 0.0f) {
+        if (this->unkAC8 != 0.0f) {
             temp_r29_1426 = checked_cast<WhirlWindHitMsg *, MKMessage>(arg0);
             sp4BC = 0;
             var_r25_1428 = 2;
@@ -814,15 +811,15 @@ block_199:
                 sp4EC = 0;
                 sp4F0 = 0;
                 sp4DC = 1.0f;
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) | 4);
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) | 2);
+                this->unkB02 |= 4;
+                this->unkB02 |= 2;
                 Message(&sp4B8, 1, 8, 0, M2C_BITWISE(void *, sp1C0), sp1B8);
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~4);
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~2);
+                this->unkB02 &= ~4;
+                this->unkB02 &= ~2;
                 if ((s32) M2C_FIELD(temp_r29_1426, s32 *, 8) == 3) {
-                    M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) | 2);
+                    this->unkB0A |= 2;
                 } else {
-                    M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) & ~2);
+                    this->unkB0A &= ~2;
                 }
             } else if (var_r26_1430 != 0) {
                 temp_r0_1562 = M2C_FIELD(temp_r29_1426, s32 *, 8);
@@ -870,23 +867,23 @@ block_199:
                 sp4F0 = 0;
                 sp4DC = var_f5_1563;
                 sp3E8 = sp78;
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) | 2);
+                this->unkB02 |= 2;
                 sp3F0 = (f64) sp80;
                 Message(&sp4B8, 1, 8, 0, M2C_BITWISE(void *, (f64) sp80), sp78, M2C_BITWISE(void *, (f32) sp1B0), temp_f4_1588);
-                M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~2);
+                this->unkB02 &= ~2;
             }
         }
         goto block_409;
     case 81:                                        /* switch 1 */
         if ((IsIdling() != 0) || (IsPatrolling() != 0)) {
-            M2C_FIELD(this, u8 *, 0xB0B) = (u8) (M2C_FIELD(this, u8 *, 0xB0B) | 0x40);
+            this->unkB0B |= 0x40;
         }
         goto block_409;
     case 117:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) | 0x40);
+        this->unkB0A |= 0x40;
         return;
     case 118:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) & ~0x40);
+        this->unkB0A &= ~0x40;
         return;
     case 224:                                       /* switch 1 */
         temp_r6_1681 = this->unk8;
@@ -895,13 +892,13 @@ block_199:
         AddDamage(1000.0f, 1U, *((MKVector3 *) &sp178), 0, 0, 0U, 0U, NULL, 0.0f, 1.0f);
         return;
     case 225:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) | 0x20);
+        this->unkB0A |= 0x20;
         return;
     case 87:                                        /* switch 1 */
         if ((IsFriend() == 0) && (IsDead() == 0) && (IsDying() == 0)) {
-            temp_r3_1724 = M2C_FIELD(this, u8 *, 0xB08);
+            temp_r3_1724 = this->unkB08;
             if (!((temp_r3_1724 >> 6U) & 1)) {
-                M2C_FIELD(this, u8 *, 0xB08) = (u8) (temp_r3_1724 | 0x20);
+                this->unkB08 = temp_r3_1724 | 0x20;
                 return;
             }
         }
@@ -924,7 +921,7 @@ block_199:
     case 114:                                       /* switch 1 */
         temp_r25_1772 = checked_cast<IsInAlertRangeMsg *, MKMessage>(arg0);
         if ((IsFriend() == 0) && (IsDead() == 0) && (IsDying() == 0)) {
-            temp_r3_1789 = M2C_FIELD(this, u8 *, 0xB08);
+            temp_r3_1789 = this->unkB08;
             if (!((temp_r3_1789 >> 6U) & 1) && !((temp_r3_1789 >> 5U) & 1) && ((u32) temp_r25_1772->unk4 != this)) {
                 temp_r25_1772->Test(this);
                 return;
@@ -932,8 +929,8 @@ block_199:
         }
         break;
     case 360:                                       /* switch 1 */
-        if ((IsFriend() == 0) && (IsDead() == 0) && (IsDying() == 0) && !(((u8) M2C_FIELD(this, u8 *, 0xB08) >> 6U) & 1) && (IsAttacking() == 0) && ((u32) arg0->unk4 != this)) {
-            M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 0x20);
+        if ((IsFriend() == 0) && (IsDead() == 0) && (IsDying() == 0) && !(((u8) this->unkB08 >> 6U) & 1) && (IsAttacking() == 0) && ((u32) arg0->unk4 != this)) {
+            this->unkB08 |= 0x20;
             return;
         }
         break;
@@ -941,88 +938,88 @@ block_199:
         IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (IsFriend() == 0) && (IsDead() == 0) && (IsDying() == 0) && (IsAttacking() == 0)) {
             var_r3_1869 = 0;
-            if (((s32) this->unk750.unk68 == 3) && (this->unk750.unk84 > 0.0f)) {
+            if (((s32) this->unk750.unk78 == 3) && (this->unk750.unk94 > 0.0f)) {
                 var_r3_1869 = 1;
             }
-            if ((var_r3_1869 == 0) && ((temp_r3_1880 = this->unkA2C, temp_cr0_eq_1881 = temp_r3_1880 == NULL, (temp_cr0_eq_1881 != 0)) || ((temp_cr0_eq_1881 == 0) && !(M2C_FIELD(temp_r3_1880, s32 *, 4) & 0x10000)))) {
-                M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) | 2);
+            if ((var_r3_1869 == 0) && ((temp_r3_1880 = this->unkA44, temp_cr0_eq_1881 = temp_r3_1880 == NULL, (temp_cr0_eq_1881 != 0)) || ((temp_cr0_eq_1881 == 0) && !(M2C_FIELD(temp_r3_1880, s32 *, 4) & 0x10000)))) {
+                this->unkB09 |= 2;
                 return;
             }
         }
         break;
     case 116:                                       /* switch 1 */
-        temp_r7_1898 = this->unkA2C;
+        temp_r7_1898 = this->unkA44;
         temp_r30_1899 = checked_cast<AttackOrderMsg *, MKMessage>(arg0);
         temp_cr0_eq_1901 = temp_r7_1898 == NULL;
-        temp_r6_1902 = 1 << M2C_FIELD(this->unkA20, s32 *, 0xF4);
-        if (((temp_cr0_eq_1901 != 0) || ((temp_cr0_eq_1901 == 0) && !(M2C_FIELD(temp_r7_1898, s32 *, 4) & 0x10000))) && ((((M2C_FIELD(temp_r30_1899, s32 *, 0x14) & temp_r6_1902) ^ 0) | ((M2C_FIELD(temp_r30_1899, s32 *, 0x10) & (temp_r6_1902 >> 0x1F)) ^ 0)) != 0) && ((IsIdling() != 0) || (IsPatrolling() != 0)) && ((u32 *) M2C_FIELD(temp_r30_1899, u32 **, 8) != this)) {
+        temp_r6_1902 = 1 << this->unkA38->unkF4;
+        if (((temp_cr0_eq_1901 != 0) || ((temp_cr0_eq_1901 == 0) && !(M2C_FIELD(temp_r7_1898, s32 *, 4) & 0x10000))) && ((((M2C_FIELD(temp_r30_1899, s32 *, 0x14) & temp_r6_1902) ^ 0) | ((M2C_FIELD(temp_r30_1899, s32 *, 0x10) & (temp_r6_1902 >> 0x1F)) ^ 0)) != 0) && ((IsIdling() != 0) || (IsPatrolling() != 0)) && ((u32) M2C_FIELD(temp_r30_1899, u32 *, 8) != this)) {
             if ((u8) M2C_FIELD(temp_r30_1899, u8 *, 0x18) != 0) {
                 M2C_FIELD(temp_r30_1899, s32 *, 0x1C) = (s32) (M2C_FIELD(temp_r30_1899, s32 *, 0x1C) + 1);
                 return;
             }
-            M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 0x20);
-            M2C_FIELD(this, u8 *, 0xB0A) = (u8) (M2C_FIELD(this, u8 *, 0xB0A) | 1);
-            this->unkA1C = M2C_FIELD(temp_r30_1899, u32 **, 8);
+            this->unkB08 |= 0x20;
+            this->unkB0A |= 1;
+            this->unkA34 = M2C_FIELD(temp_r30_1899, u32 *, 8);
             return;
         }
         break;
     case 332:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) | 1);
+        this->unkB09 |= 1;
         goto block_409;
     case 6:                                         /* switch 1 */
         this->unk6B5 |= 8;
         goto block_409;
     case 21:                                        /* switch 1 */
-        if (this->unkAB0 > 0.0f) {
-            temp_r3_1966 = this->unkA20;
-            if ((s32) M2C_FIELD(temp_r3_1966, s32 *, 0xF4) == 0x1B) {
-                if (M2C_BITWISE(s32, this->unkAD0) == 0) {
-                    temp_r3_1973 = this->unkA28;
+        if (this->unkAC8 > 0.0f) {
+            temp_r3_1966 = this->unkA38;
+            if ((s32) temp_r3_1966->unkF4 == 0x1B) {
+                if ((s32) this->unkAE8 == 0) {
+                    temp_r3_1973 = this->unkA40;
                     if (M2C_FIELD(*temp_r3_1973, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_1973, 0x12) == 0) {
-                        SetHealth(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0));
-                        SetArmour(((EnemyDescriptor *) this->unkA20)->GetMaxArmour());
+                        SetHealth(this->unkA38->GetEnemySetting((EnemySettingType) 0));
+                        SetArmour(this->unkA38->GetMaxArmour());
                         Armour_SetDefaults();
                     }
                 }
             } else {
-                SetHealth(((EnemyDescriptor *) temp_r3_1966)->GetEnemySetting((EnemySettingType) 0));
-                SetArmour(((EnemyDescriptor *) this->unkA20)->GetMaxArmour());
+                SetHealth(temp_r3_1966->GetEnemySetting((EnemySettingType) 0));
+                SetArmour(this->unkA38->GetMaxArmour());
                 Armour_SetDefaults();
             }
         }
         goto block_409;
     case -3:                                        /* switch 1 */
-        if ((this->unkAB0 > 0.0f) && ((SetHealth(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0)), temp_r3_2015 = this->unkA20, (((s32) M2C_FIELD(temp_r3_2015, s32 *, 0xF4) == 0x1B) == 0)) || (M2C_BITWISE(s32, this->unkAD0) == 0))) {
-            SetArmour(((EnemyDescriptor *) temp_r3_2015)->GetMaxArmour());
+        if ((this->unkAC8 > 0.0f) && ((SetHealth(this->unkA38->GetEnemySetting((EnemySettingType) 0)), temp_r3_2015 = this->unkA38, (((s32) temp_r3_2015->unkF4 == 0x1B) == 0)) || ((s32) this->unkAE8 == 0))) {
+            SetArmour(temp_r3_2015->GetMaxArmour());
             Armour_SetDefaults();
         }
-        temp_r3_2029 = this->unkA28;
+        temp_r3_2029 = this->unkA40;
         if ((temp_r3_2029 != NULL) && (M2C_FIELD(*temp_r3_2029, u8 (**)(M2C_UNK), 0x38)(6) != 0)) {
             TryFreeze(1, 1, 1.0f);
         }
         goto block_409;
     case -4:                                        /* switch 1 */
         DefrostBall();
-        temp_r3_2054 = this->unkA28;
+        temp_r3_2054 = this->unkA40;
         if ((temp_r3_2054 != NULL) && (M2C_FIELD(*temp_r3_2054, u8 (**)(M2C_UNK), 0x38)(6) != 0)) {
-            temp_r3_2064 = this->unk9E8.unk4;
-            if ((temp_r3_2064 != 0) && ((u8) M2C_FIELD(temp_r3_2064, u8 *, 0x20) != 0)) {
+            temp_r3_2064 = this->unkA00;
+            if ((temp_r3_2064 != NULL) && ((u8) M2C_FIELD(temp_r3_2064, u8 *, 0x20) != 0)) {
                 ((CharacterIceCubesFX *) temp_r3_2064)->Reset();
             }
         }
         var_r25_2073 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk40.Get() != NULL)) {
             var_r25_2073 = 1;
         }
         if (var_r25_2073 != 0) {
-            var_r3_2090 = M2C_FIELD(((TargetContext *) &this->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_2090 = M2C_FIELD(this->unk870.unk40.Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_2090 = NULL;
         }
         if (var_r3_2090 != NULL) {
             var_r4_2098 = this;
             if (this != NULL) {
-                var_r4_2098 = (Enemy *) &this->unk6B0;
+                var_r4_2098 = (Enemy *) &this->unk6B8;
             }
             var_r3_2090->Remove((Targetable *) var_r4_2098, 0xFFFF);
         }
@@ -1030,7 +1027,7 @@ block_199:
         goto block_409;
     case 123:                                       /* switch 1 */
         sp458.EnemyHudData();
-        temp_f31_2115 = this->unkAB0;
+        temp_f31_2115 = this->unkAC8;
         GetMaxHealth();
         sp458.Init(this, temp_f31_2115, M2C_ERROR(/* Read from unset register $f1 */));
         EnemyHud_Modified(sp458);
@@ -1046,7 +1043,7 @@ block_199:
             temp_r3_2167 = gb.unk0->GetTargetable();
             M2C_FIELD(*temp_r3_2167, M2C_UNK (**)(f32 *, void **), 0x30)(&sp158, temp_r3_2167);
             if ((((sp160 * sp160) + ((sp158 * sp158) + (sp15C * sp15C))) > 1.0f) && ((gb.GetSpyro(), ((((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetCrowdCount() < 5) == 0)) || (gb.unk0->InAir() != 0))) {
-                M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) | 0x40);
+                this->unkB09 |= 0x40;
             }
         }
         goto block_409;
@@ -1073,21 +1070,21 @@ block_199:
         goto block_409;
     case 54:                                        /* switch 1 */
         temp_r3_2257 = checked_cast<SpawnPointDestroyedMsg *, MKMessage>(arg0);
-        if ((AttackSweepData *) this->unkA30 == (u32) M2C_FIELD(temp_r3_2257, u32 *, 8)) {
-            this->unkA30 = NULL;
-            this->unkA2C = NULL;
+        if ((u32) this->unkA48 == (u32) M2C_FIELD(temp_r3_2257, u32 *, 8)) {
+            this->unkA48 = 0;
+            this->unkA44 = NULL;
             M2C_FIELD(temp_r3_2257, s8 *, 0xC) = 1;
         }
         goto block_409;
     case 55:                                        /* switch 1 */
-        this->unkA30 = NULL;
-        this->unkA2C = NULL;
+        this->unkA48 = 0;
+        this->unkA44 = NULL;
         goto block_409;
     case 146:                                       /* switch 1 */
-        this->unkA70 = M2C_FIELD(checked_cast<GraphInfoMsg *, MKMessage>(arg0), f32 *, 8);
+        this->unkA88 = M2C_FIELD(checked_cast<GraphInfoMsg *, MKMessage>(arg0), s32 *, 8);
         goto block_409;
     case 147:                                       /* switch 1 */
-        this->unkA74 = M2C_FIELD(checked_cast<GraphArriveMsg *, MKMessage>(arg0), f32 *, 8);
+        this->unkA8C = M2C_FIELD(checked_cast<GraphArriveMsg *, MKMessage>(arg0), s32 *, 8);
         goto block_409;
     case 141:                                       /* switch 1 */
         temp_r25_2291 = GetCharacterName();
@@ -1097,18 +1094,18 @@ block_199:
         temp_r3_2298 = checked_cast<GetTargetableMsg *, MKMessage>(arg0);
         var_r0_2300 = this;
         if (this != NULL) {
-            var_r0_2300 = (Enemy *) &this->unk6B0;
+            var_r0_2300 = (Enemy *) &this->unk6B8;
         }
         M2C_FIELD(temp_r3_2298, Enemy **, 8) = var_r0_2300;
         return;
     case 353:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) & ~0x80);
+        this->unkB01 &= ~0x80;
         goto block_409;
     case 352:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) | 0x80);
+        this->unkB01 |= 0x80;
         goto block_409;
     case 357:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) | 0x40);
+        this->unkB01 |= 0x40;
         goto block_409;
     case 95:                                        /* switch 1 */
         temp_r3_2326 = checked_cast<BallHitMessage *, MKMessage>(arg0);
@@ -1144,8 +1141,8 @@ block_199:
         }
         goto block_409;
     case 78:                                        /* switch 1 */
-        if ((MeleeTrails *) this->unkA14 == (u32) arg0->unk4) {
-            this->unkA14 = NULL;
+        if ((void *) this->unkA2C == (u32) arg0->unk4) {
+            this->unkA2C = NULL;
         }
         goto block_409;
     case 166:                                       /* switch 1 */

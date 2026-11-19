@@ -25,7 +25,6 @@ extern M2C_UNK gb;
 static s32 lit_598 = 0;
 static u8 lit_599 = 0;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CynderEnergyCrystal::UpdateModel() {
     Matrix sp20;
     M2C_UNK sp1C;
@@ -55,7 +54,6 @@ void CynderEnergyCrystal::UpdateModel() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'spC'
 void CynderEnergyCrystal::UpdateMovement() {
@@ -180,7 +178,7 @@ void CynderEnergyCrystal::Init() {
     this->unk160 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderEnergyCrystalDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4.Init();

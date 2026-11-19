@@ -35,7 +35,7 @@ void TrainController::SetStage(int arg0) {
     }
     temp_r3_74 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve((s32) var_r4_61));
     if (temp_r3_74 != NULL) {
-        temp_r3_74->unk108 = M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x64);
+        temp_r3_74->unk10C = M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x64);
     }
     this->unk60 = 0.0f;
 }
@@ -178,7 +178,7 @@ void TrainController::Message(MKMessage *arg0) {
     case 0x13B:
         temp_r3_306 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         if (temp_r3_306 != NULL) {
-            M2C_FIELD(temp_r3_306, s8 *, 0x131) = 0;
+            temp_r3_306->unk131 = 0;
         }
         SetStage(3);
         return;
@@ -234,7 +234,7 @@ void TrainController::Message(MKMessage *arg0) {
     case 0x142:
         temp_r3_402 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         if (temp_r3_402 != NULL) {
-            M2C_FIELD(temp_r3_402, s8 *, 0x131) = 1;
+            temp_r3_402->unk131 = 1;
             return;
         }
         break;

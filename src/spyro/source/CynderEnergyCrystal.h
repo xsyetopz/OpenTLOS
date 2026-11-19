@@ -3,22 +3,19 @@
 
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
-#include "spyro/source/CollisionObject.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 
-class ColObjDescriptor;
 class CynderEnergyCrystal;
 class CynderEnergyCrystalDescriptor;
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKDynamicBone;
 class MKIniLine;
 class MKMessage;
 class ManagedLight;
 class Matrix;
 
-class CynderEnergyCrystal : public GameProp {  // base: vtable prefix
+class CynderEnergyCrystal : public GameProp {  // base: base ctor call
 public:
     virtual ~CynderEnergyCrystal(void);
     virtual void Init(void);
@@ -31,7 +28,6 @@ public:
     CynderEnergyCrystal(void);
     void UpdateModel(void);
     void UpdateMovement(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ Matrix* unkC8;
     /* 0x0cc */ u8 unkCC;
     /* 0x0cd */ u8 padCD[0x3];
@@ -53,12 +49,13 @@ public:
     /* 0x5e8 */ u8 unk5E8;
 };
 
-class CynderEnergyCrystalDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class CynderEnergyCrystalDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     CynderEnergyCrystalDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ ColObjDescriptor unkE4;
+    /* 0x0e8 */ f32 unkE8;
+    /* 0x0ec */ u8 padEC[0x10];
+    /* 0x0fc */ s32 unkFC;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

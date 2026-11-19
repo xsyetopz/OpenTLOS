@@ -726,7 +726,7 @@ void WeatherRegion::Draw() {
 
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void WeatherRegion::Update() {
     Frustum spE0;
     MKVector3 spD0;
@@ -910,13 +910,11 @@ void WeatherRegion::Init() {
     this->unk78 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void WeatherRegionDescriptor::Update() {
     MKPropDescriptor::Update();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) &this->unk5C + 4, 0x40);
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), s32 *, 8) - 4 + 4, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'WeatherSnowPS *' to
 void WeatherRegionDescriptor::Resolve() {
@@ -930,10 +928,8 @@ void WeatherRegionDescriptor::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void WeatherRegionDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) &this->unk9C + 4, 0x40);
 }
-#endif

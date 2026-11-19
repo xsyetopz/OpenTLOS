@@ -16,22 +16,22 @@
 #include <m2c_macros.h>
 
 void UISystem::ClearStack(UIScreen *arg0) {
-    this->unk60 = (UIObject *)4;
+    this->unk68 = 4;
     this->unk94 = arg0;
     ProvokeTransition();
 }
 
 void UISystem::PopScreen_Internal() {
-    if ((UIObject *) this->unk60 != (UIObject *)3) {
-        this->unk60 = (UIObject *)3;
-        this->unk94 = M2C_FIELD((this + (this->unk64 * 4)), UIScreen **, 0x6C);
+    if ((s32) this->unk68 != 3) {
+        this->unk68 = 3;
+        this->unk94 = M2C_FIELD((this + (this->unk6C * 4)), UIScreen **, 0x6C);
         ProvokeTransition();
     }
 }
 
 void UISystem::PushScreen_Internal(UIScreen *arg0) {
-    if (((UIObject *) this->unk60 != (UIObject *)2) || ((UIScreen *) this->unk94 != arg0)) {
-        this->unk60 = (UIObject *)2;
+    if (((s32) this->unk68 != 2) || ((UIScreen *) this->unk94 != arg0)) {
+        this->unk68 = 2;
         this->unk94 = arg0;
         ProvokeTransition();
     }
@@ -49,8 +49,8 @@ void UISystem::PushScreen(const char *arg0) {
 #endif
 
 void UISystem::ChangeScreen_Internal(UIScreen *arg0) {
-    if (((UIObject *) this->unk60 != (UIObject *)1) || ((UIScreen *) this->unk94 != arg0)) {
-        this->unk60 = (UIObject *)1;
+    if (((s32) this->unk68 != 1) || ((UIScreen *) this->unk94 != arg0)) {
+        this->unk68 = 1;
         this->unk94 = arg0;
         ProvokeTransition();
     }
@@ -67,61 +67,61 @@ void UISystem::ChangeScreen(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand 'UIObject *'
+#if 0 // DRAFT: illegal operand
 void UISystem::DoTransition() {
-    UIObject *temp_r0_149;
+    s32 temp_r0_149;
     s32 temp_r0_200;
 
-    temp_r0_149 = this->unk60;
+    temp_r0_149 = this->unk68;
     switch (temp_r0_149) {                          /* irregular */
     case 0:
         break;
     case 1:
-        M2C_FIELD((this + (this->unk64 * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
+        M2C_FIELD((this + (this->unk6C * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
         break;
     case 2:
-        this->unk64 += 1;
-        M2C_FIELD((this + (this->unk64 * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
+        this->unk6C += 1;
+        M2C_FIELD((this + (this->unk6C * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
         break;
     case 3:
-        M2C_FIELD((this + (this->unk64 * 4)), s32 *, 0x70) = 0;
-        this->unk64 -= 1;
+        M2C_FIELD((this + (this->unk6C * 4)), s32 *, 0x70) = 0;
+        this->unk6C -= 1;
         break;
     case 4:
 loop_13:
-        temp_r0_200 = this->unk64;
+        temp_r0_200 = this->unk6C;
         if (temp_r0_200 > 0) {
             *(this + ((temp_r0_200 * 4) + 0x70)) = 0;
-            this->unk64 -= 1;
+            this->unk6C -= 1;
             goto loop_13;
         }
         M2C_FIELD((this + (temp_r0_200 * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
         break;
     }
     this->unk94 = NULL;
-    if ((u32) M2C_FIELD((this + (this->unk64 * 4)), u32 *, 0x70) != 0U) {
-        M2C_FIELD(this, s8 *, 0x9D) = 1;
+    if ((u32) M2C_FIELD((this + (this->unk6C * 4)), u32 *, 0x70) != 0U) {
+        this->unk9D = 1;
         return;
     }
-    M2C_FIELD(this, s8 *, 0x9D) = 0;
-    this->unk60 = NULL;
+    this->unk9D = 0;
+    this->unk68 = 0;
 }
 #endif
 
 void UISystem::ProvokeTransition() {
     s32 temp_r0_237;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0x9D) != 0) {
+    if ((u8) this->unk9D != 0) {
         DoTransition();
         return;
     }
-    temp_r0_237 = this->unk64;
+    temp_r0_237 = this->unk6C;
     if ((temp_r0_237 < 0) || ((u32) M2C_FIELD((this + (temp_r0_237 * 4)), u32 *, 0x70) == 0U)) {
-        this->unk98 = 0;
+        this->unk98 = NULL;
         DoTransition();
         return;
     }
-    M2C_FIELD(this, s8 *, 0x9C) = 1;
+    this->unk9C = 1;
 }
 
 #if 0 // DRAFT: undefined identifier 'P8UIScreen'
@@ -143,7 +143,7 @@ block_14:
         PopScreen_Internal();
         goto block_14;
     case 0x8001:
-        M2C_FIELD(this, s8 *, 0x9E) = 1;
+        this->unk9E = 1;
         return;
     }
 }
@@ -152,43 +152,41 @@ block_14:
 void UISystem::Draw(const RenderContext &arg0) {
     void **temp_r5_331;
 
-    temp_r5_331 = M2C_FIELD((this + (this->unk64 * 4)), void ***, 0x70);
-    if ((temp_r5_331 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x9D) == 0)) {
+    temp_r5_331 = M2C_FIELD((this + (this->unk6C * 4)), void ***, 0x70);
+    if ((temp_r5_331 != NULL) && ((u8) this->unk9D == 0)) {
         M2C_FIELD(*temp_r5_331, M2C_UNK (**)(void **), 0x1C)(temp_r5_331);
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void UISystem::Update() {
     void **temp_r3_366;
     void **temp_r3_393;
     void **temp_r3_407;
 
     UIControls_Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0x9C) != 0) {
-        M2C_FIELD(this, u8 *, 0x9C) = 0U;
-        temp_r3_366 = M2C_FIELD((this + (this->unk64 * 4)), void ***, 0x70);
+    if ((u8) this->unk9C != 0) {
+        this->unk9C = 0;
+        temp_r3_366 = M2C_FIELD((this + (this->unk6C * 4)), void ***, 0x70);
         M2C_FIELD(*temp_r3_366, M2C_UNK (**)(void **), 0x3C)(temp_r3_366);
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x9E) != 0) {
-        M2C_FIELD(this, u8 *, 0x9E) = 0U;
-        this->unk98 = M2C_FIELD((this + (this->unk64 * 4)), s32 *, 0x70);
+    if ((u8) this->unk9E != 0) {
+        this->unk9E = 0;
+        this->unk98 = M2C_FIELD((this + (this->unk6C * 4)), void **, 0x70);
         DoTransition();
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x9D) != 0) {
-        M2C_FIELD(this, u8 *, 0x9D) = 0U;
-        temp_r3_393 = M2C_FIELD((this + (this->unk64 * 4)), void ***, 0x70);
+    if ((u8) this->unk9D != 0) {
+        this->unk9D = 0;
+        temp_r3_393 = M2C_FIELD((this + (this->unk6C * 4)), void ***, 0x70);
         M2C_FIELD(*temp_r3_393, M2C_UNK (**)(void **), 0x38)(temp_r3_393);
-        if ((u8) M2C_FIELD(this, u8 *, 0x9E) == 0) {
-            this->unk60 = NULL;
+        if ((u8) this->unk9E == 0) {
+            this->unk68 = 0;
         }
     }
-    temp_r3_407 = M2C_FIELD((this + (this->unk64 * 4)), void ***, 0x70);
+    temp_r3_407 = M2C_FIELD((this + (this->unk6C * 4)), void ***, 0x70);
     if (temp_r3_407 != NULL) {
         M2C_FIELD(*temp_r3_407, M2C_UNK (**)(), 0x18)();
     }
 }
-#endif
 
 void UISystem::Deinit() {
     UIContainer::Deinit();
@@ -321,9 +319,9 @@ loop_48:
         goto loop_48;
     }
     UIContainer::Init();
-    this->unk60 = NULL;
+    this->unk68 = 0;
     var_r3_628 = 0;
-    this->unk64 = 0;
+    this->unk6C = 0;
     var_ctr_630 = 9;
     do {
         temp_r0_632 = var_r3_628 + 0x70;
@@ -332,9 +330,9 @@ loop_48:
         var_ctr_630 -= 1;
     } while (var_ctr_630 != 0);
     this->unk94 = NULL;
-    this->unk98 = 0;
-    M2C_FIELD(this, s8 *, 0x9C) = 0;
-    M2C_FIELD(this, s8 *, 0x9D) = 0;
-    M2C_FIELD(this, s8 *, 0x9E) = 0;
+    this->unk98 = NULL;
+    this->unk9C = 0;
+    this->unk9D = 0;
+    this->unk9E = 0;
 }
 #endif

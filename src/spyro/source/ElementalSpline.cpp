@@ -46,7 +46,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static M2C_UNK lit_685;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<ElementalSpline>::State ElementalSplineStates; /* unable to generate initializer: confusing struct layout */
 static s32 lit_812 = 1;
@@ -82,7 +82,7 @@ void ElementalSpline::StateESTurningOffExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElementalSpline::StateESTurningOffUpdate() {
     s8 spC1;
     s8 spC0;
@@ -221,7 +221,7 @@ void ElementalSpline::StateESOnExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElementalSpline::StateESOnUpdate() {
     s8 spC1;
     s8 spC0;
@@ -357,7 +357,7 @@ void ElementalSpline::StateESTurningOnExit() {
 
 }
 
-#if 0 // DRAFT: '(' expected
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElementalSpline::StateESTurningOnUpdate() {
     s8 spC1;
     s8 spC0;
@@ -692,7 +692,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     f64 spF0;
     f64 spE8;
@@ -971,7 +971,7 @@ void ElementalSpline::EmitParticles(float arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'fabs'
 void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     Matrix sp200;
     M2C_UNK sp1FC;
@@ -1308,7 +1308,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'fabs'
 void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     Matrix sp200;
     M2C_UNK sp1FC;
@@ -1645,7 +1645,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'fabs'
 void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     Matrix sp1B0;
     M2C_UNK sp1AC;
@@ -1954,7 +1954,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'lit_812'
 void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     s32 sp304;
     s32 sp300;
@@ -2376,7 +2376,6 @@ loop_73:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Draw() {
     f32 var_f30_4321;
     f32 var_f31_4319;
@@ -2413,9 +2412,7 @@ void ElementalSpline::Draw() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Update() {
     u8 var_r31_4413;
 
@@ -2427,9 +2424,7 @@ void ElementalSpline::Update() {
     }
     ((KDSound_SoundWall *) &this->unk120)->Update(var_r31_4413);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Message(MKMessage *arg0) {
     s32 temp_r0_4444;
 
@@ -2449,9 +2444,8 @@ void ElementalSpline::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void ElementalSpline::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2594,7 +2588,7 @@ s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of non-static member
 void ElementalSpline::Deinit() {
     MKMaterial *temp_r3_4902;
     MKMaterial *temp_r3_4907;

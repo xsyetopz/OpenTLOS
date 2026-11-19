@@ -495,7 +495,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LightningStrikeFX::Init() {
     MKProp::Init();
     this->unk4C = NULL;
@@ -505,7 +504,6 @@ void LightningStrikeFX::Init() {
     this->unkC4 = 0.0f;
     this->unkC0 = 0.0f;
 }
-#endif
 
 void LightningStrikeFXDescriptor::FlashLightningLight(const MKVector3 &arg0) {
     f64 sp20;

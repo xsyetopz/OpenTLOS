@@ -9,7 +9,7 @@ class MKMessage;
 class Platform;
 class YawPlatform;
 
-class YawPlatform : public Platform {  // base: vtable prefix
+class YawPlatform : public Platform {  // base: base ctor call
 public:
     virtual ~YawPlatform(void);
     virtual void Init(void);
@@ -19,7 +19,6 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     YawPlatform(void);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ f32 unk180;
     /* 0x184 */ f32 unk184;
 };

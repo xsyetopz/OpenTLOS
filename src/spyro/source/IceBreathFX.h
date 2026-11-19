@@ -33,15 +33,14 @@ public:
     void SpawnWallIceShard(const MKVector3 &, const MKVector3 &, float);
     u8 ShootIceShard(const MKVector3 &, const MKVector3 &, const MKVector3 &);
     u8 Trigger(MKProp *, const MKVector3 &, const MKVector3 &, const MKVector3 &, const float &, const int &);
-    /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ Matrix** unkA8;
     /* 0x0ac */ f32 unkAC;
     /* 0x0b0 */ s32 unkB0;
     /* 0x0b4 */ MKModel* unkB4;
     /* 0x0b8 */ BreathHitMessage unkB8;
-    /* 0x109 */ u8 pad109[0x7];
+    /* 0x10c */ u8 pad10C[0x4];
     /* 0x110 */ BreathHitMessage unk110;
-    /* 0x161 */ u8 pad161[0x7];
+    /* 0x164 */ u8 pad164[0x4];
     /* 0x168 */ ManagedLight* unk168;
     /* 0x16c */ f32 unk16C;
     /* 0x170 */ FuryFXIce* unk170;
@@ -67,7 +66,7 @@ public:
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline IceBreathFX::IceBreathFX() {
     this->unkB8.unk4 = 0;
-    this->unk110.unk0 = 0;
+    this->unk110.unk4 = 0;
     return this;
 }
 #endif

@@ -3,7 +3,6 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Shadow.h"
 
 class Ball;
@@ -11,7 +10,7 @@ class BallDescriptor;
 class Ball_cpp;
 class Catapult;
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKCollisionInfo;
 class MKIniLine;
 class MKMessage;
@@ -21,7 +20,7 @@ class Matrix;
 class Shadow;
 class SnowballTree;
 
-class Ball : public GameProp {  // base: vtable prefix
+class Ball : public GameProp {  // base: base ctor call
 public:
     class State;
     virtual ~Ball(void);
@@ -77,7 +76,6 @@ public:
     void SetWorldMatrix(const Matrix *);
     void DropFromTree(void);
     void PutInTree(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32* unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ f64 unkD0;
@@ -119,7 +117,6 @@ public:
     /* 0x1a0 */ u8 unk1A0;
     /* 0x1a1 */ u8 pad1A1[0x7];
     /* 0x1a8 */ Shadow unk1A8;
-    /* 0x1d5 */ u8 pad1D5[0x3];
     /* 0x1d8 */ s32 unk1D8;
     /* 0x1dc */ u8 pad1DC[0x24];
     /* 0x200 */ s32 unk200;
@@ -154,14 +151,12 @@ public:
     /* 0x2ac */ u8 unk2AC;
 };
 
-class BallDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class BallDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     BallDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;
@@ -192,33 +187,33 @@ void Ball_InitModule(void);
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Ball::~Ball() {
+    MKProp ***temp_r0_25;
     MKProp ***temp_r4_28;
     MKProp **temp_r0_41;
     MKProp **temp_r4_44;
-    void *temp_r0_25;
 
     if (this != NULL) {
         this->unkC8 = &__vt.unk48;
-        if (&this->unk244 != NULL) {
-            temp_r0_25 = this->unk264;
+        if (&this->unk248 != NULL) {
+            temp_r0_25 = this->unk268;
             if (temp_r0_25 != NULL) {
-                temp_r4_28 = &this->unk244;
+                temp_r4_28 = &this->unk248;
                 if (temp_r0_25 != temp_r4_28) {
-                    M2C_FIELD(this->unk26C, void **, 0x20) = temp_r0_25;
-                    M2C_FIELD(this->unk264, MKProp ****, 0x24) = (MKProp ***) this->unk26C;
+                    M2C_FIELD(this->unk26C, MKProp ****, 0x20) = temp_r0_25;
+                    M2C_FIELD(this->unk268, MKProp ****, 0x24) = (MKProp ***) this->unk26C;
                     this->unk26C = temp_r4_28;
-                    this->unk264 = temp_r4_28;
+                    this->unk268 = temp_r4_28;
                 }
             }
         }
-        if (&this->unk234 != NULL) {
+        if (&this->unk238 != NULL) {
             temp_r0_41 = this->unk240;
             if (temp_r0_41 != NULL) {
-                temp_r4_44 = &this->unk234;
+                temp_r4_44 = &this->unk238;
                 if (temp_r0_41 != temp_r4_44) {
-                    M2C_FIELD(this->unk240, MKProp ***, 8) = temp_r0_41;
-                    M2C_FIELD(this->unk240, MKProp ***, 0xC) = (MKProp **) this->unk240;
-                    this->unk240 = temp_r4_44;
+                    M2C_FIELD(this->unk244, MKProp ***, 8) = temp_r0_41;
+                    M2C_FIELD(this->unk240, MKProp ***, 0xC) = (MKProp **) this->unk244;
+                    this->unk244 = temp_r4_44;
                     this->unk240 = temp_r4_44;
                 }
             }
@@ -305,18 +300,18 @@ inline Ball::Ball() {
 
     this->unkC8 = &__vt.unk0;
     this->unkCC = -1;
-    temp_r4_20649 = &this->unk234;
-    temp_r0_20650 = &this->unk244;
+    temp_r4_20649 = &this->unk238;
+    temp_r0_20650 = &this->unk248;
     this->unkC8 = &__vt + 0x48;
     this->unk1D8 = 0;
     this->unk200 = 0;
-    this->unk234 = NULL;
+    this->unk238 = NULL;
     this->unk23C = 0;
     this->unk240 = temp_r4_20649;
-    this->unk240 = temp_r4_20649;
-    this->unk260 = 0;
+    this->unk244 = temp_r4_20649;
     this->unk260 = NULL;
-    this->unk264 = temp_r0_20650;
+    this->unk264 = NULL;
+    this->unk268 = temp_r0_20650;
     this->unk26C = temp_r0_20650;
     this->unk25C = 0;
     this->unk258 = 0.0f;

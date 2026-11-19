@@ -43,7 +43,7 @@ public:
     /* 0x0c0 */ f32 unkC0;
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ SpawnerObject unkC8;
-    /* 0x115 */ u8 pad115[0x24b];
+    /* 0x118 */ u8 pad118[0x248];
     /* 0x360 */ s32 unk360;
     /* 0x364 */ s32 unk364;
     /* 0x368 */ s32 unk368;
@@ -97,7 +97,7 @@ inline ElementalCombatController::~ElementalCombatController() {
     EventMessage *temp_r3_36;
 
     if (this != NULL) {
-        __destroy_arr(&this->unk39C, &EventMessage::~EventMessage, 4, 0x10);
+        __destroy_arr(&this->unk3A0, &EventMessage::~EventMessage, 4, 0x10);
         if (&this->unkC8 != NULL) {
             temp_r3_30 = &this->unkC8.unk40;
             this->unkC8.__vptr = &__vt;

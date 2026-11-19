@@ -22,7 +22,6 @@ public:
     LavaBubbleFX(void);
     void CreateBubble(const MKVector3 &, const MKVector3 &);
     void DrawBubbleRings(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ MKHeap* unkC8;
     /* 0x0cc */ MKMaterial* unkCC;
     /* 0x0d0 */ MKMaterial* unkD0;

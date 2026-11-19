@@ -24,7 +24,7 @@ public:
     void Init(void);
 };
 
-class CharacterGraphNode : public KDGraphNode {  // base: vtable prefix
+class CharacterGraphNode : public KDGraphNode {  // base: base ctor call
 public:
     virtual void Init(void);
     void SendArriveMessage(void);
@@ -36,9 +36,6 @@ public:
     s32 IsLinked(CharacterGraphNode *) const;
     s32 Link(CharacterGraphNode *, int, LinkInformation, KDSplinePathSegmentProp *);
     CharacterGraphNode(void);
-    /* 0x004 */ u8 pad4[0x2c];
-    /* 0x030 */ s32 unk30;
-    /* 0x034 */ u8 pad34[0x4];
     /* 0x038 */ EventMessage unk38;
     /* 0x03c */ s32 unk3C;
     /* 0x040 */ MKProp* unk40;

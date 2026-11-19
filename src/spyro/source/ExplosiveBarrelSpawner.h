@@ -3,31 +3,27 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 
 class ExplosiveBarrelSpawner;
 class ExplosiveBarrelSpawnerDescriptor;
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKIniLine;
 
-class ExplosiveBarrelSpawner : public GameProp {  // base: vtable prefix
+class ExplosiveBarrelSpawner : public GameProp {  // base: base ctor call
 public:
     virtual ~ExplosiveBarrelSpawner(void);
     virtual void LoadDone(void);
     virtual void Update(void);
     ExplosiveBarrelSpawner(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ void* unkC8;
 };
 
-class ExplosiveBarrelSpawnerDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class ExplosiveBarrelSpawnerDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     ExplosiveBarrelSpawnerDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

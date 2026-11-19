@@ -20,7 +20,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void LavaSmashProp::PostShatter() {
     s8 sp288;
     f64 sp280;
@@ -140,7 +140,7 @@ void LavaSmashProp::PostShatter() {
     void *temp_r3_32;
     void *temp_r5_27;
 
-    if (!(M2C_BITWISE(f32, this->unk168) > 0.0f)) {
+    if (!(this->unk178 > 0.0f)) {
         temp_r5_27 = this->unk8;
         temp_r30_29 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         temp_r3_32 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -200,7 +200,7 @@ void LavaSmashProp::PostShatter() {
         }
         sp78 = -0.5f;
         sp68 = 0.5f;
-        this->unk1E8.unk8 = var_f0_126;
+        this->unk200 = var_f0_126;
         sp70 = -0.5f;
         sp74 = 0.0f;
         sp60 = 0.5f;
@@ -218,23 +218,23 @@ void LavaSmashProp::PostShatter() {
         temp_f0_178 = this->unk1D8 + temp_f0_166;
         sp40 = temp_f0_178;
         sp200 = temp_f0_178;
-        sp48 = M2C_FIELD(this, f32 *, 0x1E0) + (f32) sp1F8;
+        sp48 = this->unk1E0 + (f32) sp1F8;
         sp208 = (f64) sp48;
-        KDMath_Smooth<MKVector3>(sp210, *((MKVector3 *) &this->unk1D8), 2.0f, gUpdateTimeDelta);
-        this->unk1D8 = M2C_BITWISE(f64, sp210);
+        KDMath_Smooth<MKVector3>(sp210, this->unk1E8, 2.0f, gUpdateTimeDelta);
+        M2C_FIELD(this, f64 *, 0x1E8) = M2C_BITWISE(f64, sp210);
         M2C_FIELD(this, f64 *, 0x1F0) = (f64) sp210.unk8;
-        this->unk1E8.unk0 += M2C_FIELD(temp_r30_29, f32 *, 0x178) * gUpdateTimeDelta;
-        temp_f1_203 = this->unk1E8.unk0;
+        this->unk1F8 += M2C_FIELD(temp_r30_29, f32 *, 0x178) * gUpdateTimeDelta;
+        temp_f1_203 = this->unk1F8;
         if (temp_f1_203 <= M2C_FIELD(temp_r30_29, f32 *, 0x174)) {
             SetSmashPropState((SmashPropState) 3);
-            M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x40);
+            this->unk1A1 &= ~0x40;
             this->unk1D0 = 0;
             return;
         }
         sp34 = temp_f1_203;
         sp30 = 0.0f;
         sp38 = 0.0f;
-        M2C_FIELD(this, f64 *, 0x130) = (f64) sp30;
+        this->unk130 = (f64) sp30;
         sp1B0 = (f64) sp30;
         sp1B8 = (f64) sp38;
         this->unk138 = (f64) sp38;
@@ -301,12 +301,12 @@ void LavaSmashProp::PostShatter() {
             sp170 = temp_f0_351;
             spC8 = (f32) sp268 * temp_f4_340;
             sp178 = (f64) spC8;
-            spB0 = this->unk1D8 + temp_f0_351;
+            spB0 = M2C_FIELD(this, f64 *, 0x1E8) + temp_f0_351;
             sp88 = 1.0f;
             spA8 = 0.0f;
             sp80 = 1.0f;
             sp84 = 1.0f;
-            spB8 = this->unk1E0 + (f32) sp178;
+            spB8 = this->unk1E8.unk8 + (f32) sp178;
             sp140 = (f64) sp80;
             sp148 = (f64) sp88;
             spA0 = 0.0f;
@@ -324,7 +324,7 @@ void LavaSmashProp::PostShatter() {
         }
         this->unk1D0 = 1;
         sp274 = 0;
-        temp_f1_416 = this->unk1E8.unk8;
+        temp_f1_416 = this->unk200;
         temp_f4_417 = -temp_f1_416;
         sp18 = temp_f1_416;
         sp28 = temp_f4_417;
@@ -349,7 +349,7 @@ void LavaSmashProp::PostShatter() {
 
 void LavaSmashProp::Message(MKMessage *arg0) {
     Shatterable::Message(arg0);
-    ((KDSoundPlayer *) &this->unk198)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk1A8)->Message(arg0);
 }
 
 #if 0 // DRAFT: ')' expected
@@ -366,15 +366,15 @@ void LavaSmashProp::Update() {
     if ((s32) M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x17C) != 0) {
         temp_r4_577 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) &this->unk198)->Update(M2C_FIELD(temp_r4_577, s32 *, 0x17C), 1U, this->unk1D0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk1A8)->Update(M2C_FIELD(temp_r4_577, s32 *, 0x17C), 1U, this->unk1D0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if ((s32) this->unk16C == 3) {
-        this->unk1E8.unk4 += gUpdateTimeDelta;
-        temp_f1_612 = 0.5f * (this->unk1E8.unkC * (1.0f + _table_sinf(0.5f * (6.2831855f * (f32) fmod(this->unk1E8.unk4, 2.0)))));
+    if ((s32) this->unk17C == 3) {
+        this->unk1FC += gUpdateTimeDelta;
+        temp_f1_612 = 0.5f * (this->unk204 * (1.0f + _table_sinf(0.5f * (6.2831855f * (f32) fmod(this->unk1FC, 2.0)))));
         sp10 = this->unk108 + temp_f1_612;
-        sp14 = this->unk108 - temp_f1_612;
-        sp18 = this->unk10C - temp_f1_612;
-        sp1C = this->unk110;
+        sp14 = this->unk10C - temp_f1_612;
+        sp18 = this->unk110 - temp_f1_612;
+        sp1C = this->unk114;
         MKModel_SetColor(this->unk4, *((MKVector4 *) &sp10));
     }
 }
@@ -386,47 +386,48 @@ void LavaSmashProp::Resolve() {
 
     Shatterable::Resolve();
     temp_r31_644 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk198)->Init(M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x180), M2C_FIELD(temp_r31_644, f32 *, 0x184));
+    ((KDSoundFader *) &this->unk1A8)->Init(M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x180), M2C_FIELD(temp_r31_644, f32 *, 0x184));
     this->unk1D0 = 0;
 }
 #endif
 
 void LavaSmashProp::Reset() {
     Shatterable::Reset();
-    this->unk1E8.unk4 = 1.5f;
-    this->unk1E8.unk8 = 0.0f;
+    this->unk1FC = 1.5f;
+    this->unk200 = 0.0f;
     this->unk1D0 = 0;
 }
 
 #if 0 // DRAFT: undefined identifier 'unk108'
 void LavaSmashProp::LoadDone() {
     Shatterable::LoadDone();
-    this->unk1D8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
+    M2C_FIELD(this, f64 *, 0x1E8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
     M2C_FIELD(this, f64 *, 0x1F0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
-    this->unk1D8 = this->unk1D8;
+    this->unk1D8 = M2C_FIELD(this, f64 *, 0x1E8);
     M2C_FIELD(this, f64 *, 0x1E0) = (f64) M2C_FIELD(this, f64 *, 0x1F0);
     M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
-    this->unk1E8.unkC = 1.0f - this->unk108;
+    this->unk204 = 1.0f - this->unk108;
 }
 #endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void LavaSmashProp::Deinit() {
     Shatterable::Deinit();
-    KDSound_Stop((s32 *) &this->unk198);
+    KDSound_Stop(&this->unk1A8);
 }
 #endif
 
 void LavaSmashProp::Init() {
     Shatterable::Init();
-    this->unk1E8.unk0 = 0.0f;
-    this->unk1E8.unk4 = 1.5f;
-    this->unk1E8.unk8 = 0.0f;
+    this->unk1F8 = 0.0f;
+    this->unk1FC = 1.5f;
+    this->unk200 = 0.0f;
     this->unk1D0 = 0;
-    this->unk1E8.unkC = 0.0f;
+    this->unk204 = 0.0f;
 }
 
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void LavaSmashPropDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
     this->unk16C *= 100.0f;
@@ -434,8 +435,9 @@ void LavaSmashPropDescriptor::LoadDone() {
     this->unk174 *= 100.0f;
     this->unk178 *= 100.0f;
 }
+#endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
+#if 0 // DRAFT: undefined identifier 'unk16C'
 s32 LavaSmashPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_796;
 
@@ -447,6 +449,7 @@ s32 LavaSmashPropDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void LavaSmashPropDescriptor::Init() {
     ShatterableDescriptor::Init();
     this->unk16C = 0.0f;
@@ -457,3 +460,4 @@ void LavaSmashPropDescriptor::Init() {
     this->unk184 = 0.25f;
     this->unk17C = GS_PLACEHOLDER;
 }
+#endif

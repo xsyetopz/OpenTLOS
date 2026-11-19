@@ -25,7 +25,6 @@ public:
     virtual void DoExit(void);
     UIVideoScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0xc4];
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ u8 padCC[0x8];
     /* 0x0d4 */ s32 unkD4;
@@ -52,10 +51,8 @@ inline void UIVideoScreen::DoExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD8'
+#if 0 // DRAFT: undefined identifier 'unkCC'
 inline UIVideoScreen::UIVideoScreen() {
-    this->unk60 = NULL;
-    this->unk64 = 0;
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
     this->unk68.unk8 = NULL;
@@ -81,9 +78,11 @@ inline UIVideoScreen::UIVideoScreen() {
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
     this->unkC8 = 0;
+    this->unkCC = 0;
+    this->unkD0 = 0;
     this->unkD4 = 0;
     this->unkD8 = 0;
-    this->unkD4 = 0;
+    this->unkDC = 0;
     return this;
 }
 #endif

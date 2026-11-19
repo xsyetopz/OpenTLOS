@@ -1,6 +1,5 @@
 #include "spyro/source/LevelUpScreen.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -24,11 +23,11 @@ extern s8 DialogBox_bAllowOverCutscene;
 extern s32 GS_LevelUPExpLP;
 extern s32 GS_LevelUPFull;
 extern s32 GS_LevelUpDrainexpLP;
-extern DialogBoxContext *GS_LevelUpEarthLP;
-extern DialogBoxContext *GS_LevelUpElecLP;
+extern s32 GS_LevelUpEarthLP;
+extern s32 GS_LevelUpElecLP;
 extern s32 GS_LevelUpEnd;
-extern DialogBoxContext *GS_LevelUpFireLP;
-extern DialogBoxContext *GS_LevelUpIceLP;
+extern s32 GS_LevelUpFireLP;
+extern s32 GS_LevelUpIceLP;
 extern s32 GS_LevelUpStart;
 extern s32 GS_MenuMoveThru;
 extern f32 gUpdateTimeDelta;
@@ -50,45 +49,45 @@ static s32 pointsPerUpgrade[4] = { 0, 0x43C80000, 0x44480000, 0x44C80000 }; /* c
 static s32 attackMasks[2] = { 1, 2 };               /* const */
 
 void LevelUpScreen::SetBreathText() {
+    DialogBoxContext *temp_r3_45;
     DialogBoxContext *temp_r3_85;
     DialogBoxContext *temp_r3_89;
+    DialogBoxContext *temp_r4_17;
     DialogBoxContext *temp_r4_57;
-    MKModel *temp_r3_45;
-    MKModel *temp_r4_17;
     u32 temp_r30_18;
     u32 temp_r30_58;
 
-    temp_r4_17 = this->unkC8.unk70;
+    temp_r4_17 = this->unk140;
     temp_r30_18 = GetBreathAttackName();
-    if ((temp_r4_17 == NULL) || (temp_r30_18 != M2C_BITWISE(u32, temp_r4_17->unk10.unk20))) {
-        DialogBox_ReleaseContext((DialogBoxContext *) temp_r4_17);
+    if ((temp_r4_17 == NULL) || (temp_r30_18 != (s8 *) temp_r4_17->unk30)) {
+        DialogBox_ReleaseContext(temp_r4_17);
         if (temp_r30_18 != 0) {
-            this->unkC8.unk70 = DialogBox_InitContext();
-            this->unkC8.unk70->unk0 = M2C_FIELD(&gb, void **, 0x324);
-            this->unkC8.unk70->unk10.unk0 = 200.0f;
-            this->unkC8.unk70->unk10.unk4 = 38.399994f;
-            temp_r3_45 = this->unkC8.unk70;
-            temp_r3_45->unk10.unk8 = 592.0f - temp_r3_45->unk10.unk0;
-            this->unkC8.unk70->unk10.unkC = 64.0f;
-            this->unkC8.unk70->unk10.unk20 = M2C_BITWISE(f32, temp_r30_18);
-            this->unkC8.unk70->unkC = 0xC;
+            this->unk140 = DialogBox_InitContext();
+            this->unk140->unk0 = M2C_FIELD(&gb, s32 *, 0x324);
+            this->unk140->unk10 = 200.0f;
+            this->unk140->unk14 = 38.399994f;
+            temp_r3_45 = this->unk140;
+            temp_r3_45->unk18 = 592.0f - temp_r3_45->unk10;
+            this->unk140->unk1C = 64.0f;
+            this->unk140->unk30 = (s8 *) temp_r30_18;
+            this->unk140->unkC = 0xC;
         }
     }
-    temp_r4_57 = this->unkC8.unk74;
+    temp_r4_57 = this->unk144;
     temp_r30_58 = GetBreathAttackDesc();
     if ((temp_r4_57 == NULL) || (temp_r30_58 != (s8 *) temp_r4_57->unk30)) {
         DialogBox_ReleaseContext(temp_r4_57);
         if (temp_r30_58 != 0) {
-            this->unkC8.unk74 = DialogBox_InitContext();
-            this->unkC8.unk74->unk0 = (s32) M2C_FIELD(&gb, void **, 0x324);
-            this->unkC8.unk74->unk10 = 376.0f;
-            this->unkC8.unk74->unk14 = 124.0f;
-            temp_r3_85 = this->unkC8.unk74;
+            this->unk144 = DialogBox_InitContext();
+            this->unk144->unk0 = M2C_FIELD(&gb, s32 *, 0x324);
+            this->unk144->unk10 = 376.0f;
+            this->unk144->unk14 = 124.0f;
+            temp_r3_85 = this->unk144;
             temp_r3_85->unk18 = 592.0f - temp_r3_85->unk10;
-            temp_r3_89 = this->unkC8.unk74;
+            temp_r3_89 = this->unk144;
             temp_r3_89->unk1C = 428.0f - temp_r3_89->unk14;
-            this->unkC8.unk74->unk30 = (s8 *) temp_r30_58;
-            this->unkC8.unk74->unkC = 0xC;
+            this->unk144->unk30 = (s8 *) temp_r30_58;
+            this->unk144->unkC = 0xC;
         }
     }
 }
@@ -341,7 +340,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, float arg5) {
     Matrix sp90;
     M2C_UNK sp8C;
@@ -442,7 +440,6 @@ void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const M
         MKEndPrimitive();
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'HasAttack'
 void DrawBreathIcon(float arg0, float arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5) {
@@ -504,7 +501,7 @@ void DrawBreathSelection(float arg0, float arg1, float arg2, float arg3) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void LevelUpScreen::Update() {
     s32 sp8;
     f32 temp_f1_1161;
@@ -535,22 +532,22 @@ void LevelUpScreen::Update() {
     if ((s32 *) pContextFury == NULL) {
         UIScreen::Update();
         sp8 = 1;
-        ((KDSoundFader *) &this->unkBC.unk4)->Update(GS_LevelUPExpLP, 0U, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        this->unkC8.Update(GS_LevelUPExpLP, 0U, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         switch ((s32) selectionElement) {           /* irregular */
         case 0:
-            this->unk140 = GS_LevelUpFireLP;
+            this->unk14C = GS_LevelUpFireLP;
             break;
         case 1:
-            this->unk140 = GS_LevelUpElecLP;
+            this->unk14C = GS_LevelUpElecLP;
             break;
         case 2:
-            this->unk140 = GS_LevelUpIceLP;
+            this->unk14C = GS_LevelUpIceLP;
             break;
         case 3:
-            this->unk140 = GS_LevelUpEarthLP;
+            this->unk14C = GS_LevelUpEarthLP;
             break;
         }
-        var_r3_1003 = M2C_FIELD(this, u8 *, 0x154);
+        var_r3_1003 = this->unk154;
         if (var_r3_1003 != 0) {
             var_r3_1003 = UIControls_Held((FrontEndControls) 0xE, -1);
         }
@@ -574,19 +571,19 @@ void LevelUpScreen::Update() {
         if (var_r3_1003 != 0) {
             var_r28_1052 = HasAttack(selectionElement, selectionAttack);
         }
-        if ((DialogBoxContext *) this->unk144 != (DialogBoxContext *) this->unk140) {
-            KDSound_Stop((s32 *) &this->unkC8.unkC.unk14);
+        if ((s32) this->unk150 != (s32) this->unk14C) {
+            KDSound_Stop((s32 *) &this->unkC8.unk28);
         }
-        this->unk144 = this->unk140;
+        this->unk150 = this->unk14C;
         sp8 = 1;
-        ((KDSoundFader *) &this->unkC8.unkC.unk14)->Update((s32) this->unk140, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkC8.unk28)->Update(this->unk14C, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
-        ((KDSoundFader *) &this->unkC8.unk48)->Update(GS_LevelUpDrainexpLP, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-        if (((u8) M2C_FIELD(this, u8 *, 0x156) == 0) && (var_r28_1052 != 0)) {
+        ((KDSoundFader *) &this->unkC8.unk50)->Update(GS_LevelUpDrainexpLP, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        if (((u8) this->unk156 == 0) && (var_r28_1052 != 0)) {
             KDSound_Play(GS_LevelUpStart, 0U, -1);
         }
-        M2C_FIELD(this, u8 *, 0x156) = var_r28_1052;
-        if (((u8) M2C_FIELD(this, u8 *, 0x154) != 0) && (UIControls_Held((FrontEndControls) 0xE, -1) != 0) && (HasAttack(selectionElement, selectionAttack) != 0)) {
+        this->unk156 = var_r28_1052;
+        if (((u8) this->unk154 != 0) && (UIControls_Held((FrontEndControls) 0xE, -1) != 0) && (HasAttack(selectionElement, selectionAttack) != 0)) {
             temp_f31_1114 = M2C_FIELD(GameData::gameData, f32 *, 0x88);
             if (temp_f31_1114 > 0.0f) {
                 temp_r7_1121 = selectionElement << 5;
@@ -617,7 +614,7 @@ void LevelUpScreen::Update() {
                         M2C_FIELD((&GameData::gameData[0x70] + (selectionElement << 5) + (selectionAttack * 4)), f32 *, 0x70) = 0.0f;
                         KDSound_Play(GS_LevelUPFull, 0U, -1);
                         var_r4_1182 = 0;
-                        M2C_FIELD(this, u8 *, 0x154) = 0U;
+                        this->unk154 = 0;
                         temp_r6_1189 = &GameData::gameData[0x70] + ((selectionElement << 5) + 0x64);
                         if ((s32) selectionAttack == 3) {
                             if (((s32) M2C_FIELD(temp_r6_1189, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r6_1189, s32 *, 4) == 3)) {
@@ -639,12 +636,12 @@ void LevelUpScreen::Update() {
                                 var_r0_1223 = *(temp_r6_1189 + (temp_r0_1209 * 4));
                             }
                             if (var_r0_1223 == 3) {
-                                KDSound_Stop((s32 *) &this->unkC8.unkC.unk14);
-                                KDSound_Stop((s32 *) &this->unkC8.unk48);
-                                DialogBox_ReleaseContext((DialogBoxContext *) this->unkC8.unk70);
-                                this->unkC8.unk70 = NULL;
-                                DialogBox_ReleaseContext(this->unkC8.unk74);
-                                this->unkC8.unk74 = NULL;
+                                KDSound_Stop((s32 *) &this->unkC8.unk28);
+                                KDSound_Stop((s32 *) &this->unkC8.unk50);
+                                DialogBox_ReleaseContext(this->unk140);
+                                this->unk140 = NULL;
+                                DialogBox_ReleaseContext(this->unk144);
+                                this->unk144 = NULL;
                                 temp_r3_1243 = DialogBox_InitContext();
                                 pContextFury = temp_r3_1243;
                                 *temp_r3_1243 = M2C_FIELD(&gb, s32 *, 0x324);
@@ -656,7 +653,7 @@ void LevelUpScreen::Update() {
                                 M2C_FIELD(pContextFury, s32 *, 0x30) = (s32) M2C_FIELD((gpTranslation_StringArray + (selectionElement * 4)), s32 *, 0xA24);
                                 M2C_FIELD(pContextFury, void (**)(DialogBoxContext *, s32), 0x6C) = DialogCallback;
                                 M2C_FIELD(pContextFury, s32 *, 0xC) = 0x1C;
-                                PauseMenu_AllowStartToQuit(M2C_FIELD(this, u8 *, 0x154));
+                                PauseMenu_AllowStartToQuit(this->unk154);
                             } else {
                                 goto block_60;
                             }
@@ -668,47 +665,47 @@ block_60:
                         *(temp_r4_1148 + temp_r6_1147) = temp_f2_1158;
                     }
                     ((Stat *) (&GameData::gameData[0x70] + 0x18))->SetValue(var_f29_1160 + (temp_f31_1114 - var_f30_1149), 0U);
-                } else if ((temp_cr0_lt_1142 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x155) != 0)) {
-                    M2C_FIELD(this, u8 *, 0x155) = 0U;
+                } else if ((temp_cr0_lt_1142 == 0) && ((u8) this->unk155 != 0)) {
+                    this->unk155 = 0;
                     KDSound_Play(GS_LevelUpEnd, 0U, -1);
                 }
             } else {
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-                if ((temp_f31_1114 == 0.0f) && ((u8) M2C_FIELD(this, u8 *, 0x155) != 0)) {
-                    M2C_FIELD(this, u8 *, 0x155) = 0U;
+                if ((temp_f31_1114 == 0.0f) && ((u8) this->unk155 != 0)) {
+                    this->unk155 = 0;
                     KDSound_Play(GS_LevelUpEnd, 0U, -1);
                 }
             }
         } else if (UIControls_Pressed((FrontEndControls) 4, -1) != 0) {
             selectionElement = (selectionElement - 1) & 3;
             KDSound_Play(GS_MenuMoveThru, 0U, -1);
-            M2C_FIELD(this, u8 *, 0x155) = 1U;
+            this->unk155 = 1;
             pulseRot = 0.0f;
             SetBreathText();
         } else if (UIControls_Pressed((FrontEndControls) 6, -1) != 0) {
             selectionElement = (selectionElement + 1) & 3;
             KDSound_Play(GS_MenuMoveThru, 0U, -1);
-            M2C_FIELD(this, u8 *, 0x155) = 1U;
+            this->unk155 = 1;
             pulseRot = 0.0f;
             SetBreathText();
         } else if (UIControls_Pressed((FrontEndControls) 7, -1) != 0) {
             selectionAttack = 1 - selectionAttack;
             KDSound_Play(GS_MenuMoveThru, 0U, -1);
-            M2C_FIELD(this, u8 *, 0x155) = 1U;
+            this->unk155 = 1;
             pulseRot = 0.0f;
             SetBreathText();
         } else if (UIControls_Pressed((FrontEndControls) 5, -1) != 0) {
             selectionAttack = 1 - selectionAttack;
             KDSound_Play(GS_MenuMoveThru, 0U, -1);
-            M2C_FIELD(this, u8 *, 0x155) = 1U;
+            this->unk155 = 1;
             pulseRot = 0.0f;
             SetBreathText();
         }
         if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
-            M2C_FIELD(this, u8 *, 0x154) = 1U;
+            this->unk154 = 1;
         }
         if ((UIControls_Pressed((FrontEndControls) 0xE, -1) == 0) && (UIControls_Held((FrontEndControls) 0xE, -1) == 0)) {
-            M2C_FIELD(this, u8 *, 0x155) = 1U;
+            this->unk155 = 1;
         }
         this->unk148 = KDMath_NormaliseAngle(this->unk148 + gUpdateTimeDelta);
         pulseRot = KDMath_NormaliseAngle(pulseRot + gUpdateTimeDelta);
@@ -728,23 +725,22 @@ void DialogCallback(DialogBoxContext *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void LevelUpScreen::OnExit() {
     UIScreen::OnExit();
-    DialogBox_ReleaseContext(this->unkC8.unk74);
-    DialogBox_ReleaseContext((DialogBoxContext *) this->unkC8.unk70);
+    DialogBox_ReleaseContext(this->unk144);
+    DialogBox_ReleaseContext(this->unk140);
     DialogBox_bAllowOverCutscene = 0;
-    this->unkC8.unk74 = NULL;
-    this->unkC8.unk70 = NULL;
-    M2C_FIELD(this, s8 *, 0x155) = 1;
-    M2C_FIELD(this, s8 *, 0x156) = 0;
-    KDSound_Stop(&this->unkBC.unk4);
-    KDSound_Stop((s32 *) &this->unkC8.unk48);
-    KDSound_Stop((s32 *) &this->unkC8.unkC.unk14);
+    this->unk144 = NULL;
+    this->unk140 = NULL;
+    this->unk155 = 1;
+    this->unk156 = 0;
+    KDSound_Stop(&this->unkC8.unk0);
+    KDSound_Stop((s32 *) &this->unkC8.unk50);
+    KDSound_Stop((s32 *) &this->unkC8.unk28);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void LevelUpScreen::OnEnter() {
     UIScreen::OnEnter();
     SetBreathText();
@@ -754,31 +750,28 @@ void LevelUpScreen::OnEnter() {
         M2C_FIELD(M2C_FIELD(&gb, void **, 0x354), s8 *, 5) = 1;
     }
     UIControls_Ignore(1U);
-    M2C_FIELD(this, s8 *, 0x154) = 0;
-    M2C_FIELD(this, s8 *, 0x155) = 1;
-    M2C_FIELD(this, s8 *, 0x156) = 0;
-    ((KDSoundFader *) &this->unkBC.unk4)->Init(0.25f, 0.25f);
-    ((KDSoundFader *) &this->unkC8.unk48)->Init(0.25f, 0.25f);
-    ((KDSoundFader *) &this->unkC8.unkC.unk14)->Init(0.25f, 0.25f);
+    this->unk154 = 0;
+    this->unk155 = 1;
+    this->unk156 = 0;
+    this->unkC8.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkC8.unk50)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkC8.unk28)->Init(0.25f, 0.25f);
     DialogBox_bAllowOverCutscene = 1;
 }
-#endif
 
 void LevelUpScreen::Deinit() {
     UIContainer::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk74'
 void LevelUpScreen::Init() {
     UIContainer::Init();
-    this->unkC8.unk74 = NULL;
-    this->unkC8.unk70 = NULL;
-    M2C_FIELD(this, s8 *, 0x155) = 1;
-    M2C_FIELD(this, s8 *, 0x156) = 0;
-    this->unk140 = GS_LevelUpFireLP;
-    this->unk144 = this->unk140;
+    this->unk144 = NULL;
+    this->unk140 = NULL;
+    this->unk155 = 1;
+    this->unk156 = 0;
+    this->unk14C = GS_LevelUpFireLP;
+    this->unk150 = this->unk14C;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'HasAttack'
 u32 GetBreathAttackDesc() {

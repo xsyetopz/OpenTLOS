@@ -358,10 +358,9 @@ loop_3:
 #endif
 
 void LoadingScreen::OnExit() {
-    M2C_FIELD(this, s8 *, 0xC8) = 1;
+    this->unkC8 = 1;
 }
 
-#if 0 // DRAFT: expression syntax error
 void LoadingScreen::OnEnter() {
     UIScreen::OnEnter();
     this->unk18.unk40 |= 1;
@@ -369,22 +368,21 @@ void LoadingScreen::OnEnter() {
     this->unk18.unk4 = 0.0f;
     M2C_FIELD(this, f32 *, 0x20) = 0.0f;
     M2C_FIELD(this, f32 *, 0x24) = 1.0f;
-    M2C_FIELD(this, s8 *, 0xC8) = 0;
-    this->unkBC.unk8 = 0.0f;
+    this->unkC8 = 0;
+    this->unkCC = 0.0f;
     KDSound_SetMusicNotInterrupt(0U);
     KDSound_StopAll();
     Music_Stop(0.0f);
     Music_ClearDelayedPlayBuffer();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'pDots'
 void LoadingScreen::Draw(const RenderContext &arg0) {
     s32 temp_r6_775;
     u32 temp_r0_778;
     u32 temp_r6_777;
 
-    temp_r6_775 = (s32) M2C_BITWISE(f32, this->unkBC.unk8);
+    temp_r6_775 = (s32) this->unkCC;
     temp_r6_777 = (u32) temp_r6_775 >> 0x1FU;
     temp_r0_778 = (temp_r6_775 << 0x1E) - temp_r6_777;
     M2C_FIELD(pText, s8 **, 0x68) = Str_Printf("%s\n%s", M2C_FIELD(gpTranslation_StringArray, s32 *, 0xE8), pDots[((temp_r0_778 << 2) | (temp_r0_778 >> 0x1EU)) + temp_r6_777], temp_r6_777, "<p0><colour=0, 0, 0, 1>...</colour>");
@@ -393,7 +391,7 @@ void LoadingScreen::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unkC'
 void LoadingScreen::Update() {
     s32 sp8;
     f32 temp_f0_829;
@@ -404,8 +402,8 @@ void LoadingScreen::Update() {
     void **temp_r3_867;
 
     UIScreen::Update();
-    this->unkBC.unk8 = (4.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unkBC.unk8);
-    if ((u8) M2C_FIELD(this, u8 *, 0xC8) != 0) {
+    this->unkCC += 4.0f * gUpdateTimeDelta;
+    if ((u8) this->unkC8 != 0) {
         if (this->unk18.unk0 <= 0.0f) {
             UIScreen::OnExit();
         }

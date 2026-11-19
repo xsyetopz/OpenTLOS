@@ -37,7 +37,7 @@ u8 boundingVolume__8KDVolume[0x20] = {
     0,
 };
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal use of non-static member
 void KDVolume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;

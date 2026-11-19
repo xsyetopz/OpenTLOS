@@ -33,7 +33,6 @@ public:
     u8 FindZapTargets(bool);
     void DrawLightCone(void);
     void UpdateTurretBone(MKDynamicBone *, void *);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;
@@ -62,7 +61,6 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     virtual void Resolve(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ MKMaterial* unk74;
     /* 0x078 */ s32 unk78;

@@ -27,7 +27,6 @@ public:
     void SnapDown(void);
     u8 IsUp(void);
     u8 IsDown(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ EventMessage unk90;
     /* 0x094 */ EventMessage unk94;
     /* 0x098 */ EventMessage unk98;

@@ -16,7 +16,7 @@ class MobilePlatformDescriptor;
 class Platform;
 class PlatformDescriptor;
 
-class MobilePlatform : public Platform {  // base: vtable prefix
+class MobilePlatform : public Platform {  // base: base ctor call
 public:
     virtual ~MobilePlatform(void);
     virtual void Init(void);
@@ -33,7 +33,6 @@ public:
     void SetYaw(float, float);
     f32 GetTime(void);
     static u8 mpfLoadInfo[0x10];
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ f32 unk180;
     /* 0x184 */ s32 unk184;
     /* 0x188 */ s32 unk188;
@@ -42,7 +41,6 @@ public:
     /* 0x194 */ f32 unk194;
     /* 0x198 */ f32 unk198;
     /* 0x19c */ KDSplinePathSegment unk19C;
-    /* 0x1e2 */ u8 pad1E2[0x2];
     /* 0x1e4 */ u8 unk1E4;
     /* 0x1e5 */ u8 pad1E5[0x3];
     /* 0x1e8 */ f32 unk1E8;
@@ -70,7 +68,7 @@ public:
     /* 0x258 */ f32 unk258;
 };
 
-class MobilePlatformDescriptor : public PlatformDescriptor {  // base: vtable prefix
+class MobilePlatformDescriptor : public PlatformDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -78,7 +76,6 @@ public:
     MobilePlatformDescriptor(void);
     s32 IsDescriptor(MKPropDescriptor *);
     static u8 pFirstDesc[0x4];
-    /* 0x124 */ f32 unk124;
     /* 0x128 */ f32 unk128;
     /* 0x12c */ s32 unk12C;
     /* 0x130 */ s32 unk130;
@@ -101,25 +98,25 @@ inline MobilePlatform::MobilePlatform() {
     this->unk19C.unk30.unk0 = 0;
     this->unk19C.unk30.unk4 = 0.0f;
     this->unk19C.unk30.unk8 = 0.0f;
-    this->unk1F8 = 0.0f;
-    ((EventMessage *) &this->unk1F8)->Init();
     this->unk1FC = 0.0f;
     ((EventMessage *) &this->unk1FC)->Init();
-    this->unk214 = 0.0f;
+    this->unk200.unk0 = 0;
+    this->unk200.Init();
+    M2C_FIELD(this, s32 *, 0x21C) = 0;
     return this;
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MobilePlatform::~MobilePlatform() {
-    if ((&this->unk214 != NULL) && (&this->unk214 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk214);
+    if ((&this->unk218 != NULL) && (&this->unk218 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk218);
+    }
+    if (&this->unk200 != NULL) {
+        this->unk200.Deinit();
     }
     if (&this->unk1FC != NULL) {
         ((EventMessage *) &this->unk1FC)->Deinit();
-    }
-    if (&this->unk1F8 != NULL) {
-        ((EventMessage *) &this->unk1F8)->Deinit();
     }
 }
 #endif

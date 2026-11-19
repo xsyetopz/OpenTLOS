@@ -1,6 +1,5 @@
 #include "spyro/source/SpyroJumpState.h"
 #include "common/Source/MKAnimScript.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameData.h"
@@ -8,9 +7,7 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroState.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -55,7 +52,7 @@ void SpyroJumpState::DoubleJumpUpdate() {
 }
 
 void SpyroJumpState::DoubleJumpExit() {
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
 }
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
@@ -126,7 +123,7 @@ void SpyroJumpState::DoubleJumpEnter() {
     sp38 = sp18;
     (*(f32 *) ((u8 *) &sp30 + 0x4)) = var_f31_144;
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp30), 540000.0f);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(1U);
+    this->unk10->unk460.SetTailStrikeEnabled(1U);
 }
 #endif
 
@@ -164,7 +161,7 @@ void SpyroJumpState::JumpCommonUpdate() {
             sp10.unk20 = M2C_FIELD(temp_r3_284, f64 *, 0x30);
             sp10.unk28 = M2C_FIELD(temp_r3_284, f64 *, 0x38);
             temp_f31_293 = 300.0f - ((*(f32 *) ((u8 *) &sp10 + 0x24)) - this->unk34);
-            if ((temp_f31_293 < 100.0f) || ((s32) M2C_FIELD(temp_r4_282->unk26C.unk8, s32 *, 0x43C) > 0)) {
+            if ((temp_f31_293 < 100.0f) || ((s32) M2C_FIELD(temp_r4_282->unk27C, s32 *, 0x43C) > 0)) {
                 if ((u8) M2C_FIELD(this, u8 *, 0x2D) == 0) {
                     ((SpyroJumpState *) &sp10.unk10)->GetJumpVel();
                     var_f5_313 = 1900.0f * (2.0f * temp_f31_293);
@@ -221,7 +218,7 @@ void SpyroJumpState::JumpCommonUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroJumpState::JumpLoftTransition() {
     InputModifier *temp_r3_433;
     u8 var_r0_434;
@@ -244,7 +241,7 @@ s32 SpyroJumpState::JumpLoftTransition() {
         }
     }
     if (var_r3_422 != 0) {
-        var_r3_422 = M2C_FIELD(this->unk10, u8 *, 0x3D2) == 0;
+        var_r3_422 = (u8) this->unk10->unk3D2 == 0;
     }
     if ((var_r3_422 != 0) && ((s32) this->unk18.unk0 != 3)) {
         this->unk18.SetState(this, 3, 0U);
@@ -283,7 +280,7 @@ void SpyroJumpState::JumpLoftEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroJumpState::JumpCycleTransition() {
     InputModifier *temp_r3_606;
     u8 var_r0_573;
@@ -319,7 +316,7 @@ u8 SpyroJumpState::JumpCycleTransition() {
             }
         }
         if (var_r3_595 != 0) {
-            var_r3_595 = M2C_FIELD(this->unk10, u8 *, 0x3D2) == 0;
+            var_r3_595 = (u8) this->unk10->unk3D2 == 0;
         }
         if ((var_r3_595 != 0) && ((s32) this->unk18.unk0 != 3)) {
             this->unk18.SetState(this, 3, 0U);
@@ -348,7 +345,7 @@ void SpyroJumpState::JumpCycleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroJumpState::JumpStartTransition() {
     InputModifier *temp_r3_756;
     u8 var_r0_702;
@@ -392,7 +389,7 @@ u8 SpyroJumpState::JumpStartTransition() {
             }
         }
         if (var_r3_745 != 0) {
-            var_r3_745 = M2C_FIELD(this->unk10, u8 *, 0x3D2) == 0;
+            var_r3_745 = (u8) this->unk10->unk3D2 == 0;
         }
         if ((var_r3_745 != 0) && ((s32) this->unk18.unk0 != 3)) {
             this->unk18.SetState(this, 3, 0U);
@@ -419,12 +416,11 @@ void SpyroJumpState::JumpStartExit() {
 void SpyroJumpState::JumpStartEnter() {
     M2C_FIELD(this, s8 *, 0x2C) = 0;
     M2C_FIELD(this, s8 *, 0x2D) = 0;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepComboCount(0);
+    this->unk10->unk460.SetTailSweepComboCount(0);
     this->unk10->SetAnim(*this->unk60, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 s32 SpyroJumpState::Transition() {
     SpyroStateMessages sp8;
     InputModifier *temp_r3_905;
@@ -486,7 +482,6 @@ s32 SpyroJumpState::Transition() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void SpyroJumpState::Update() {
@@ -573,8 +568,6 @@ void SpyroJumpState::Update() {
     f32 spC;
     f32 sp8;
     InputModifier *temp_r3_1064;
-    MKProp *temp_r3_1024;
-    MKProp *temp_r3_1749;
     Spyro *temp_r3_1276;
     Spyro *temp_r3_1289;
     Spyro *temp_r3_1740;
@@ -628,8 +621,10 @@ void SpyroJumpState::Update() {
     s32 var_r0_1661;
     u32 var_r0_1768;
     u8 var_r4_1066;
+    void *temp_r3_1024;
     void *temp_r3_1117;
     void *temp_r3_1726;
+    void *temp_r3_1749;
     void *temp_r3_1765;
     void *temp_r3_1809;
     void *temp_r3_1823;
@@ -640,11 +635,11 @@ void SpyroJumpState::Update() {
     void *var_r3_1826;
     void *var_r4_1032;
 
-    temp_r3_1024 = this->unk10->unk26C.unk8;
+    temp_r3_1024 = this->unk10->unk27C;
     temp_r3_1026 = M2C_FIELD(temp_r3_1024, s32 *, 0x2D4);
     if (temp_r3_1026 > 0) {
         if (temp_r3_1026 != 0) {
-            var_r4_1032 = temp_r3_1024 + 0x170 + ((temp_r3_1026 - 1) * 0x58);
+            var_r4_1032 = ((u8 *) temp_r3_1024) + 0x170 + ((temp_r3_1026 - 1) * 0x58);
         } else {
             var_r4_1032 = NULL;
         }
@@ -671,13 +666,13 @@ block_6:
         if (var_f1_1077 == 0.0f) {
             SetStrafeJump(0U);
         } else {
-            ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+            this->unk10->unkB90.GetCurrentTarget();
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) {
                 this->unk10->SelectStrafeTarget(0U);
             }
-            ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+            this->unk10->unkB90.GetCurrentTarget();
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-                ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
+                this->unk10->unkB90.GetCurrentTarget();
                 temp_r5_1116 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
                 temp_r3_1117 = this->unk10->unk8;
                 sp218 = M2C_FIELD(temp_r5_1116, f64 *, 0x30);
@@ -733,7 +728,7 @@ block_6:
                 sp210 = (f32) sp210 * var_f4_1130;
                 sp228 = (f64) sp208;
                 sp230 = (f64) sp210;
-                ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp208), 15.0f);
+                this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp208), 15.0f);
             } else {
                 ((Matrix *) this->unk10->unk8)->ZAxis3();
                 sp18 = -*M2C_ERROR(/* Read from unset register $r3 */);
@@ -954,7 +949,7 @@ block_6:
             } else {
                 var_f1_1718 = 900.0f;
             }
-            ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp1B8), var_f1_1718);
+            this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp1B8), var_f1_1718);
             var_f2_1725 = this->unk38;
             temp_r3_1726 = this->unk10->unk8;
             sp108 = M2C_FIELD(temp_r3_1726, f64 *, 0x30);
@@ -970,11 +965,11 @@ block_6:
         spF8 = M2C_FIELD(temp_r3_1740, f64 *, 0x338);
         sp100 = M2C_FIELD(temp_r3_1740, f64 *, 0x340);
         if ((*(f32 *) ((u8 *) &spF8 + 0x4)) > 0.0f) {
-            temp_r3_1749 = temp_r3_1740->unk26C.unk8;
+            temp_r3_1749 = temp_r3_1740->unk27C;
             temp_r3_1751 = M2C_FIELD(temp_r3_1749, s32 *, 0x43C);
             if (temp_r3_1751 > 0) {
                 if (temp_r3_1751 != 0) {
-                    var_r3_1757 = temp_r3_1749 + 0x2D8 + ((temp_r3_1751 - 1) * 0x58);
+                    var_r3_1757 = ((u8 *) temp_r3_1749) + 0x2D8 + ((temp_r3_1751 - 1) * 0x58);
                 } else {
                     var_r3_1757 = NULL;
                 }
@@ -999,7 +994,7 @@ block_6:
                     sp268 = spD8;
                     sp270 = spE0;
                     sp250 = 0x3C;
-                    temp_r3_1809 = this->unk10->unk26C.unk8 + 0x2D8;
+                    temp_r3_1809 = this->unk10->unk27C + 0x2D8;
                     temp_r4_1810 = M2C_FIELD(temp_r3_1809, s32 *, 0x164);
                     if (temp_r4_1810 != 0) {
                         var_r3_1815 = ((u8 *) temp_r3_1809) + ((temp_r4_1810 - 1) * 0x58);
@@ -1019,7 +1014,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroJumpState::Exit() {
     s32 spC;
     s32 sp8;
@@ -1028,17 +1023,17 @@ void SpyroJumpState::Exit() {
     Spyro *temp_r3_1998;
 
     this->unk18.Exit(this);
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
-    M2C_FIELD(this->unk10, f32 *, 0x388) = 0.0f;
+    this->unk10->unk3D2 = 0;
+    this->unk10->unk388 = 0.0f;
     SetStrafeJump(0U);
     temp_r3_1984 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x43F;
     M2C_FIELD(temp_r3_1984->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     temp_r3_1994 = this->unk10;
-    temp_r3_1994->unk420 = (void *) ((s32) temp_r3_1994->unk420 | 0x20000);
+    temp_r3_1994->unk428 |= 0x20000;
     temp_r3_1998 = this->unk10;
-    temp_r3_1998->unk420 = (void *) ((s32) temp_r3_1998->unk420 & 0xFFFF7FFF);
+    temp_r3_1998->unk428 &= 0xFFFF7FFF;
 }
 #endif
 
@@ -1101,11 +1096,11 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
     this->unk30 = 0;
     this->unk3C = 0.0f;
     temp_r5_2085 = this->unk10;
-    temp_r5_2085->unk420 = (void *) ((s32) temp_r5_2085->unk420 | 0x8007);
+    temp_r5_2085->unk428 |= 0x8007;
     temp_r5_2089 = this->unk10;
-    temp_r5_2089->unk420 = (void *) ((s32) temp_r5_2089->unk420 & 0xFFFDFFD7);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
+    temp_r5_2089->unk428 &= 0xFFFDFFD7;
+    this->unk10->unk460.SetTailSweepEnabled(1U);
+    this->unk10->unk460.SetHornDiveEnabled(1U);
     if (arg0.IsMessageOnList(0x178) != 0) {
         SetStrafeJump(1U);
         this->unk60 = &this->unk58;
@@ -1125,8 +1120,8 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
         this->unk10->SetDesiredVelocityVectical(M2C_FIELD(this, f32 *, 0x44), 540000.0f);
     } else {
         temp_r3_2148 = this->unk10;
-        if (((u8) M2C_FIELD(temp_r3_2148, u8 *, 0x3D2) != 0) || ((u8) M2C_FIELD(temp_r3_2148, u8 *, 0x3D1) != 0)) {
-            M2C_FIELD(temp_r3_2148, f32 *, 0x38C) = 3420.0f;
+        if (((u8) temp_r3_2148->unk3D2 != 0) || ((u8) temp_r3_2148->unk3D1 != 0)) {
+            temp_r3_2148->unk38C = 3420.0f;
             this->unk10->SetDesiredVelocityVectical(600.0f, 540000.0f);
         } else {
             ((SpyroJumpState *) &sp20)->GetJumpVel();
@@ -1145,7 +1140,7 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
         var_r5_2193 = 3;
     }
     this->unk18.SetState(this, var_r5_2193, 0U);
-    M2C_FIELD(this->unk10, f32 *, 0x388) = 0.5f;
+    this->unk10->unk388 = 0.5f;
     temp_r3_2205 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x414;
@@ -1164,11 +1159,9 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 void SpyroJumpState::Deinit() {
     this->unk18.Deinit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroJumpState::Init(Spyro *arg0) {

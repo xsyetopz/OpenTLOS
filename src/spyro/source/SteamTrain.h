@@ -3,11 +3,10 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Shadow.h"
 
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKAnimScript;
 class MKDynamicBone;
 class MKIniLine;
@@ -114,7 +113,7 @@ public:
     /* 0x238 */ f32 unk238;
 };
 
-class SteamTrain : public GameProp {  // base: vtable prefix
+class SteamTrain : public GameProp {  // base: base ctor call
 public:
     virtual ~SteamTrain(void);
     virtual void Init(void);
@@ -158,11 +157,9 @@ public:
     void StateFleeEnter(void);
     void TriggerDamageFX(const MKVector3 &, float);
     static u8 states[0xd8];
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32* unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ Shadow unkD0;
-    /* 0x0fd */ u8 padFD[0x3];
     /* 0x100 */ MKMaterial* unk100;
     /* 0x104 */ f32 unk104;
     /* 0x108 */ f32 unk108;
@@ -198,12 +195,10 @@ public:
     /* 0x3f0 */ u8 unk3F0;
 };
 
-class SteamTrainDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class SteamTrainDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     SteamTrainDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;
@@ -226,10 +221,10 @@ inline SteamTrain::SteamTrain() {
     this->unkCC = -1;
     this->unkC8 = &__vt + 0x48;
     this->unk378 = -1;
-    this->unk378 = -1;
+    this->unk37C = -1;
     this->unk380 = 0;
     this->unk384 = 0;
-    this->unk390 = NULL;
+    this->unk394 = 0;
     this->unk3BC = 0;
     return this;
 }
@@ -241,8 +236,8 @@ inline SteamTrain::~SteamTrain() {
     if ((&this->unk3BC != NULL) && (&this->unk3BC != NULL)) {
         KDSound_Stop(&this->unk3BC);
     }
-    if ((&this->unk390 != NULL) && (&this->unk390 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk390);
+    if ((&this->unk394 != NULL) && (&this->unk394 != NULL)) {
+        KDSound_Stop(&this->unk394);
     }
 }
 #endif

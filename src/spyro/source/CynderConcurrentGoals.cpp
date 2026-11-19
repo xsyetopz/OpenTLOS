@@ -13,7 +13,7 @@ M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderConcurrentGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     s32 temp_r0_17;
     s32 temp_r0_48;
@@ -71,7 +71,6 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 CynderConcurrentGoal_Think::Update() {
     s32 temp_r3_128;
     u32 temp_r31_132;
@@ -93,9 +92,8 @@ u8 CynderConcurrentGoal_Think::Update() {
     }
     return (u8) this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderConcurrentGoal_Think::Arbitrate() {
     Matrix sp50;
     EnemyDamageFeedback sp10;

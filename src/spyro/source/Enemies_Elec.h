@@ -25,7 +25,7 @@ class PlatformObject;
 class SlimeTrailFX;
 class SpawnPointRef;
 
-class ElecTier1 : public Enemy {  // base: vtable prefix
+class ElecTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~ElecTier1(void);
     virtual void Init(void);
@@ -37,7 +37,6 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     virtual void GetCharacterName(void);
     ElecTier1(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ SlimeTrailFX* unkB10;
     /* 0xb14 */ u8 padB14[0x4];
     /* 0xb18 */ f64 unkB18;
@@ -54,7 +53,7 @@ public:
     /* 0x2b4 */ MKMaterial* unk2B4;
 };
 
-class ElecTier2 : public Enemy {  // base: vtable prefix
+class ElecTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~ElecTier2(void);
     virtual void Init(void);
@@ -72,7 +71,6 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     ElecTier2(void);
     s32 FindLandingPos(MKVector3 *);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ u8 unkB10;
     /* 0xb11 */ u8 unkB11;
     /* 0xb12 */ s8 unkB12;
@@ -104,7 +102,7 @@ public:
     /* 0x2dd */ u8 unk2DD;
 };
 
-class ElecTier3 : public Enemy {  // base: vtable prefix
+class ElecTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~ElecTier3(void);
     virtual void Init(void);
@@ -122,7 +120,6 @@ public:
     void DrawScan(void);
     void UpdateScan(void);
     void EnableScan(bool);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ Matrix unkB10;
     /* 0xb50 */ f32 unkB50;
     /* 0xb54 */ u8 unkB54;
@@ -147,21 +144,19 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier1::ElecTier1() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkB10 = NULL;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB28 = 0;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier1::~ElecTier1() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if ((&this->unkB10 != NULL) && (&this->unkB10 != NULL)) {
-        KDSound_Stop((s32 *) &this->unkB10);
+    this->unk6B8 = &__vt.unk84;
+    if ((&this->unkB28 != NULL) && (&this->unkB28 != NULL)) {
+        KDSound_Stop(&this->unkB28);
     }
 }
 #endif
@@ -172,36 +167,36 @@ inline ElecTier1Descriptor::ElecTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier2::ElecTier2() {
-    f32 *temp_r0_6579;
+    PlatformAttachment *temp_r0_6579;
 
-    temp_r0_6579 = &this->unkB28.unk10;
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkB28.unk10 = 0.0f;
-    this->unkB28.unk14 = 0;
-    this->unkB28.unk18.unk0 = M2C_BITWISE(f32, temp_r0_6579);
-    this->unkB28.unk18.unk4 = M2C_BITWISE(f32, temp_r0_6579);
+    temp_r0_6579 = &this->unkB28.unk28;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB28.unk28.unk0 = NULL;
+    this->unkB28.unk28.unk4 = NULL;
+    this->unkB28.unk28.unk8 = temp_r0_6579;
+    this->unkB28.unk28.unkC = temp_r0_6579;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier2::~ElecTier2() {
-    f32 *temp_r4_2117;
-    f32 temp_r0_2119;
+    PlatformAttachment *temp_r0_2119;
+    PlatformAttachment *temp_r4_2117;
 
     if (this != NULL) {
-        M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-        if (&this->unkB10 != NULL) {
-            temp_r4_2117 = &this->unkB28.unk10;
+        this->unk6B8 = &__vt.unk84;
+        if (&this->unkB28 != NULL) {
+            temp_r4_2117 = &this->unkB28.unk28;
             if (temp_r4_2117 != NULL) {
-                temp_r0_2119 = this->unkB28.unk18.unk0;
-                if ((M2C_BITWISE(u32, temp_r0_2119) != 0U) && (M2C_BITWISE(u32, temp_r0_2119) != temp_r4_2117)) {
-                    M2C_FIELD(this->unkB28.unk18.unk4, f32 *, 8) = temp_r0_2119;
-                    M2C_FIELD(this->unkB28.unk18.unk0, f32 *, 0xC) = (f32) this->unkB28.unk18.unk4;
-                    this->unkB28.unk18.unk4 = M2C_BITWISE(f32, temp_r4_2117);
-                    this->unkB28.unk18.unk0 = M2C_BITWISE(f32, temp_r4_2117);
+                temp_r0_2119 = this->unkB28.unk28.unk8;
+                if ((temp_r0_2119 != NULL) && (temp_r0_2119 != temp_r4_2117)) {
+                    this->unkB28.unk28.unkC->unk8 = temp_r0_2119;
+                    this->unkB28.unk28.unk8->unkC = this->unkB28.unk28.unkC;
+                    this->unkB28.unk28.unkC = temp_r4_2117;
+                    this->unkB28.unk28.unk8 = temp_r4_2117;
                 }
             }
         }
@@ -215,16 +210,16 @@ inline ElecTier2Descriptor::ElecTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier3::ElecTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ElecTier3::~ElecTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

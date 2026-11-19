@@ -22,7 +22,7 @@ public:
     void EmitCrudAbovePlayer(void);
     void MakeCrudRainSound(void);
     /* 0x04c */ KDSoundFader unk4C;
-    /* 0x0c0 */ u8 padC0[0x2c];
+    /* 0x0c4 */ u8 padC4[0x28];
     /* 0x0ec */ f32 unkEC;
     /* 0x0f0 */ u8 unkF0;
 };

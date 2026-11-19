@@ -2,15 +2,12 @@
 #define SPYRO_SOURCE_MEMORYCARD_H
 
 #include <dolphin/types.h>
-#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UITools.h"
 
-class Attributes;
 class DSText;
 class MCSaveScreen;
 class MCText;
-class MKFont;
 class MemoryCardScreen;
 class RenderContext;
 class UIContainer;
@@ -29,17 +26,15 @@ public:
     static u8 operation[0x4];
     static u8 selectedCard[0x4];
     static u8 bNewGame[0x1];
-    /* 0x004 */ u8 pad4[0xc4];
     /* 0x0c8 */ UIContainer* unkC8;
 };
 
-class MCSaveScreen : public MemoryCardScreen {  // base: vtable prefix
+class MCSaveScreen : public MemoryCardScreen {  // base: base ctor call
 public:
     virtual void Update(void);
     virtual void OnEnter(void);
     MCSaveScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ s8* unk4;
 };
 
 class MCText : public DSText {  // base: ctor/dtor vtable stores
@@ -47,14 +42,6 @@ public:
     virtual void Draw(const RenderContext &);
     MCText(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0xa];
-    /* 0x064 */ MKFont* unk64;
-    /* 0x068 */ u8 pad68[0x4];
-    /* 0x06c */ s32 unk6C;
-    /* 0x070 */ f32 unk70;
-    /* 0x074 */ f32 unk74;
 };
 
 s32 MemoryCard_GetSaveGameBlockSize(void);
@@ -89,8 +76,6 @@ inline void MemoryCardScreen::PopScreen() {
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MemoryCardScreen::MemoryCardScreen() {
-    this->unk60 = NULL;
-    this->unk64 = 0;
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
     this->unk68.unk8 = NULL;
@@ -113,6 +98,8 @@ inline MemoryCardScreen::MemoryCardScreen() {
     this->unkB0.unk4 = 0;
     this->unkB0.unk8 = NULL;
     this->unkBC.unk0 = NULL;
+    this->unkBC.unk4 = 0;
+    this->unkBC.unk8 = NULL;
     return this;
 }
 #endif

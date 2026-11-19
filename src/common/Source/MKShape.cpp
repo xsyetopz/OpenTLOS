@@ -44,7 +44,7 @@ void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVe
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
     f32 sp11C;
     f32 sp118;
@@ -179,7 +179,7 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5, const Matrix &arg6, bool arg7) {
     f64 sp1A0;
     f64 sp198;

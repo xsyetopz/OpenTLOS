@@ -17,7 +17,6 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     void Trigger(const MKVector3 &, float, bool, MKVector4);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ f64 unk90;
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ f32 unkA0;

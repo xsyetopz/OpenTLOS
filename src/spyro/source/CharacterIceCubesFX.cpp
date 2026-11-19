@@ -204,7 +204,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
+#if 0 // DRAFT: illegal type
 void CharacterIceCubesFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFXData *temp_r3_401;
     MKHeap *temp_r3_404;

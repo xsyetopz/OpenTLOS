@@ -6,35 +6,43 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unkB10'
 s32 FireBossDriver::IsCharging() {
-    s32 temp_r3_54;
     s32 var_r31_53;
+    void **temp_r3_54;
 
     var_r31_53 = 0;
-    temp_r3_54 = this->unkAF8;
-    if ((M2C_FIELD(*temp_r3_54, u8 (**)(s32, M2C_UNK), 0x38)(temp_r3_54, 0x6E) != 0) && ((u32) M2C_FIELD(M2C_FIELD(this, void **, 0x630), u32 *, 0x20) != (void *) this->unkA38->__vptr)) {
+    temp_r3_54 = this->unkB10;
+    if ((M2C_FIELD(*temp_r3_54, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_54, 0x6E) != 0) && ((u32) M2C_FIELD(this->unk630, u32 *, 0x20) != (u32) this->unkA50->unk40)) {
         var_r31_53 = 1;
     }
     return var_r31_53;
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::CrashExit() {
-    ((FireBossDriverGoal_Think *) this->unkAF8)->CrashExit();
+    ((FireBossDriverGoal_Think *) this->unkB10)->CrashExit();
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::CrashEnter() {
-    ((FireBossDriverGoal_Think *) this->unkAF8)->CrashEnter();
+    ((FireBossDriverGoal_Think *) this->unkB10)->CrashEnter();
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::ChargeExit() {
-    ((FireBossDriverGoal_Think *) this->unkAF8)->ChargeExit();
+    ((FireBossDriverGoal_Think *) this->unkB10)->ChargeExit();
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::ChargeEnter() {
-    ((FireBossDriverGoal_Think *) this->unkAF8)->ChargeEnter();
+    ((FireBossDriverGoal_Think *) this->unkB10)->ChargeEnter();
 }
+#endif
 
 void FireBossDriver::Draw() {
     Enemy::Draw();
@@ -45,7 +53,7 @@ void FireBossDriver::Update() {
 }
 
 void FireBossDriver::Resolve() {
-    M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) & ~0x20);
+    this->unkB09 &= ~0x20;
     Enemy::Resolve();
 }
 
@@ -55,7 +63,7 @@ void FireBossDriver::LoadDone() {
 
 void FireBossDriver::SetDefaults() {
     Enemy::SetDefaults();
-    M2C_FIELD(this, s8 *, 0xB14) = 0;
+    this->unkB14 = 0;
 }
 
 #if 0 // DRAFT: pointer/array required
@@ -75,9 +83,9 @@ void FireBossDriver::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x14) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    ((FireBossDriverGoal_Think *) this->unkAF8)->Init((Enemy *) this);
-    this->unkA24 = checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>((FireBossDriverGoal_Think *) this->unkAF8);
+    this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+    ((FireBossDriverGoal_Think *) this->unkB10)->Init((Enemy *) this);
+    this->unkA3C = checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>((FireBossDriverGoal_Think *) this->unkB10);
 }
 #endif
 

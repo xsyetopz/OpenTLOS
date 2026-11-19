@@ -50,7 +50,7 @@ static u8 lit_738 = 0;
 
 void FlameBreathFX::ResetFury() {
     this->unk260->ResetFury();
-    ((FuryFXFire2 *) this->unk260)->ResetFury();
+    this->unk264->ResetFury();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
@@ -80,7 +80,7 @@ void FlameBreathFX::GetAttack1UpgradeVariables(int arg0, float &arg1, float &arg
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, bool arg3) {
     s8 sp320;
     s32 sp31C;
@@ -243,7 +243,7 @@ u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, co
     void *temp_r4_197;
     void *temp_r5_643;
 
-    temp_r3_141 = checked_cast<FireBombFX *, MKProp>(((MKPropDescriptor *) (M2C_BITWISE(MKPropDescriptor *, this->unk268)))->CreateInstance());
+    temp_r3_141 = checked_cast<FireBombFX *, MKProp>(this->unk26C->CreateInstance());
     if (temp_r3_141 != NULL) {
         M2C_FIELD(temp_r3_141->__vptr, M2C_UNK (**)(), 0x30)();
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
@@ -1167,7 +1167,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
             sp7C8 = temp_f0_1257;
             sp380 = (f32) sp7C0 + arg3.unk8;
             sp7D0 = (f64) sp380;
-            CreateCollisionTest(arg1, *((MKVector3 *) &sp7C8), M2C_BITWISE(f32, this->unk264), 0x04000000U, FlameBreathFXHitCallback);
+            CreateCollisionTest(arg1, *((MKVector3 *) &sp7C8), this->unk268, 0x04000000U, FlameBreathFXHitCallback);
             KDSound_Play3d(GS_SpyroOutOfBreath, M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
             return 1;
         }
@@ -1550,7 +1550,7 @@ block_64:
             sp548 = temp_f0_2140;
             sp170 = (f32) sp540 + arg3.unk8;
             sp550 = (f64) sp170;
-            CreateCollisionTest(arg1, *((MKVector3 *) &sp548), M2C_BITWISE(f32, this->unk264), 0x04000000U, FlameBreathFXHitCallback);
+            CreateCollisionTest(arg1, *((MKVector3 *) &sp548), this->unk268, 0x04000000U, FlameBreathFXHitCallback);
         }
         temp_r4_2159 = this->unkDC;
         if (temp_r4_2159 != NULL) {
@@ -1761,7 +1761,7 @@ loop_144:
             return this->unk260->Trigger(arg1, 0U, 0U, (HeroHurtReactionType) 1);
         }
         this->unk260->Trigger(arg1, 1U, 0U, (HeroHurtReactionType) 1);
-        return ((FuryFXFire2 *) this->unk260)->Trigger(arg1);
+        return this->unk264->Trigger(arg1);
     }
 }
 #endif
@@ -2337,11 +2337,11 @@ void FlameBreathFX::Resolve() {
     if (temp_r4_3583 != NULL) {
         temp_r4_3583->unk31 &= ~0x40;
     }
-    this->unk268 = M2C_BITWISE(f32, checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "FireBombFX")));
+    this->unk26C = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "FireBombFX"));
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FlameBreathFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -2361,7 +2361,7 @@ void FlameBreathFX::Init() {
     this->unkC0 = 0.75f;
     sp8 = 1.0f;
     spC = 1.0f;
-    this->unk264 = 75.0f;
+    this->unk268 = 75.0f;
     sp10 = 0.0f;
     sp14 = 1.0f;
     M2C_FIELD(this, f64 *, 0xC8) = (f64) sp8;
@@ -2375,10 +2375,10 @@ void FlameBreathFX::Init() {
     this->unk144 = 0.0f;
     this->unk148.Init("fx_357", "fx_357Glow", "fx_358", "fx_358Glow");
     this->unk260 = checked_cast<FuryFXFire *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire"));
-    this->unk260 = checked_cast<FuryFXFire2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire2"));
+    this->unk264 = checked_cast<FuryFXFire2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire2"));
     var_r30_3682 = 0;
     this->unk13C = 0.0f;
-    this->unk268 = 0.0f;
+    this->unk26C = NULL;
     do {
         temp_r3_3689 = checked_cast<FireBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FireBombFX"));
         if (temp_r3_3689 != NULL) {

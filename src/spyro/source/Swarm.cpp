@@ -62,7 +62,7 @@ void SwarmProp::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'lit_620'
 void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector4 &arg2, float arg3) {
     f64 sp2C8;
     f64 sp2C0;
@@ -277,7 +277,7 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk8C'
 void SwarmProp::Draw() {
     Matrix sp70;
     Matrix sp30;
@@ -519,7 +519,7 @@ void SwarmProp::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk8C'
 void SwarmProp::LoadDone() {
     f64 sp50;
     f64 sp48;

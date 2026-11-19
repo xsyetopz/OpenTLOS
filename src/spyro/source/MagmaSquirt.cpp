@@ -350,12 +350,10 @@ void *MagmaSquirt::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MagmaSquirtDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pMagmaSquirtDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void MagmaSquirtDescriptor::Deinit() {
     pMagmaSquirtDescriptor = NULL;

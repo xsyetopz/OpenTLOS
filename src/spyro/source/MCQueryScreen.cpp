@@ -35,18 +35,18 @@ void MCQueryScreen::Update() {
     s32 spC;
     s32 sp8;
     KDMemoryCard *temp_r3_95;
-    UIContainer *temp_r0_57;
+    UIContainer *temp_r3_176;
+    UIContainer *temp_r3_224;
+    UIContainer *temp_r3_234;
+    UIContainer *temp_r3_244;
+    s32 temp_r0_57;
     s32 temp_r30_71;
     s32 temp_r3_183;
-    s32 temp_r3_204;
-    s32 temp_r3_224;
     s32 temp_ret_95;
     s32 var_r3_313;
-    void **temp_r3_176;
     void **temp_r3_194;
+    void **temp_r3_204;
     void **temp_r3_214;
-    void **temp_r3_234;
-    void **temp_r3_244;
 
     if (KDMemoryCard::Update() == 0) {
         if (((void *) autosaveCard != NULL) && (((u8) M2C_FIELD(autosaveCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(autosaveCard, u8 *, 8) != 0))) {
@@ -57,13 +57,13 @@ void MCQueryScreen::Update() {
             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
             return;
         }
-        temp_r0_57 = this->unkC8;
-        if (temp_r0_57 == (UIContainer *)1) {
+        temp_r0_57 = this->unkD0;
+        if (temp_r0_57 == 1) {
             ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 3);
-            this->unkC8 = (UIContainer *)2;
+            this->unkD0 = 2;
             return;
         }
-        if (temp_r0_57 == (UIContainer *)2) {
+        if (temp_r0_57 == 2) {
             if (((s32) (*MemoryCardScreen::selectedCard)->unk24 > 0) && ((temp_r30_71 = (*MemoryCardScreen::selectedCard)->unk18, ((temp_r30_71 < MemoryCard_GetSaveGameBlockSize()) != 0)) || ((s32) (*MemoryCardScreen::selectedCard)->unk14 < 1))) {
                 *MCQueryScreen::query = 6;
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
@@ -82,7 +82,7 @@ void MCQueryScreen::Update() {
         goto block_20;
     }
 block_20:
-    if ((UIContainer *) this->unkC8 == NULL) {
+    if ((s32) this->unkD0 == 0) {
         if (UIControls_Pressed((FrontEndControls) 0xC, -1) != 0) {
             if ((u8) *MemoryCardScreen::bNewGame != 0) {
                 KDSound_Play(GS_MenuSelect, 0U, -1);
@@ -106,35 +106,35 @@ block_20:
         }
         if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
             KDSound_Play(GS_MenuSelect, 0U, -1);
-            temp_r3_176 = this->unkDC;
-            temp_r3_183 = M2C_FIELD(ui_cast<UIText *, UIObject *>(((UIContainer *) (ui_cast<P8UIButton))->GetChild(P8UIObject>__FP8UIObject(((UIContainer *) temp_r3_176)->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68))), 0)), s32 *, 0x6C);
+            temp_r3_176 = this->unkE4;
+            temp_r3_183 = M2C_FIELD(ui_cast<UIText *, UIObject *>(((UIContainer *) (ui_cast<P8UIButton))->GetChild(P8UIObject>__FP8UIObject(temp_r3_176->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68))), 0)), s32 *, 0x6C);
             switch (temp_r3_183) {
             case 0x34:
-                temp_r3_194 = this->unkD8;
+                temp_r3_194 = this->unkE0;
                 sp30 = 3;
                 sp34 = 0;
                 M2C_FIELD(*temp_r3_194, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_194, &sp30, 3);
-                temp_r3_204 = this->unkD0;
+                temp_r3_204 = this->unkD8;
                 sp28 = 3;
                 sp2C = 0;
-                M2C_FIELD(*temp_r3_204, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_204, &sp28, 3);
+                M2C_FIELD(*temp_r3_204, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_204, &sp28, 3);
                 temp_r3_214 = this->unkD4;
                 sp20 = 3;
                 sp24 = 0;
                 M2C_FIELD(*temp_r3_214, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_214, &sp20, 3);
-                temp_r3_224 = this->unkBC.unk4;
+                temp_r3_224 = this->unkC8;
                 sp18 = 3;
                 sp1C = 0;
-                M2C_FIELD(*temp_r3_224, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_224, &sp18, 3);
-                temp_r3_234 = this->unkDC;
+                temp_r3_224->Message(&sp18, 3);
+                temp_r3_234 = this->unkE4;
                 sp10 = 3;
                 sp14 = 0;
-                M2C_FIELD(M2C_FIELD(temp_r3_234, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_234, &sp10, 3);
-                temp_r3_244 = this->unkDC;
+                temp_r3_234->Message(&sp10, 3);
+                temp_r3_244 = this->unkE4;
                 sp8 = 5;
                 spC = 0;
-                M2C_FIELD(M2C_FIELD(temp_r3_244, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_244, &sp8, 5);
-                this->unkC8 = (UIContainer *)1;
+                temp_r3_244->Message(&sp8, 5);
+                this->unkD0 = 1;
                 return;
             case 0x35:
                 if (((s32) *MCQueryScreen::query == 6) && ((s32) (*MemoryCardScreen::selectedCard)->unk24 > 0)) {
@@ -220,13 +220,12 @@ void MCQueryScreen::OnEnter() {
     s32 spC;
     s32 sp8;
     KDMemoryCard *var_r3_508;
-    UIContainer *temp_r3_568;
-    UIContainer *temp_r3_575;
-    UIContainer *temp_r3_637;
-    UIContainer *temp_r3_644;
+    UIContainer *temp_r3_476;
+    UIContainer *temp_r3_486;
+    UIContainer *temp_r3_496;
+    UIContainer *temp_r3_618;
+    UIContainer *temp_r3_686;
     s32 temp_r29_421;
-    s32 temp_r3_446;
-    s32 temp_r3_476;
     s32 var_r28_418;
     s32 var_r29_364;
     s32 var_r30_419;
@@ -237,29 +236,30 @@ void MCQueryScreen::OnEnter() {
     s8 *temp_r3_626;
     s8 *temp_r3_655;
     void **temp_r30_400;
-    void **temp_r30_556;
-    void **temp_r30_586;
-    void **temp_r30_625;
-    void **temp_r30_654;
     void **temp_r3_411;
     void **temp_r3_423;
     void **temp_r3_432;
+    void **temp_r3_446;
     void **temp_r3_456;
     void **temp_r3_466;
-    void **temp_r3_486;
-    void **temp_r3_496;
     void **temp_r3_538;
     void **temp_r3_545;
+    void **temp_r3_568;
+    void **temp_r3_575;
     void **temp_r3_598;
     void **temp_r3_605;
-    void **temp_r3_618;
+    void **temp_r3_637;
+    void **temp_r3_644;
     void **temp_r3_666;
     void **temp_r3_673;
-    void **temp_r3_686;
     void *temp_r30_526;
+    void *temp_r30_556;
+    void *temp_r30_586;
+    void *temp_r30_625;
+    void *temp_r30_654;
 
     MemoryCardScreen::OnEnter();
-    this->unkC8 = NULL;
+    this->unkD0 = 0;
     switch (*MCQueryScreen::query) {              /* switch 1 */
     default:                                        /* switch 1 */
         var_r29_364 = -1;
@@ -296,14 +296,14 @@ void MCQueryScreen::OnEnter() {
         var_r29_364 = 0x26;
         break;
     }
-    temp_r30_400 = this->unkD8;
+    temp_r30_400 = this->unkE0;
     temp_r3_401 = M2C_FIELD(temp_r30_400, s8 **, 0x68);
     if (temp_r3_401 != NULL) {
         UIStringTable_Remove(temp_r3_401);
     }
     M2C_FIELD(temp_r30_400, s8 **, 0x68) = NULL;
     M2C_FIELD(temp_r30_400, s32 *, 0x6C) = var_r29_364;
-    temp_r3_411 = this->unkD8;
+    temp_r3_411 = this->unkE0;
     sp98 = 2;
     sp9C = 0;
     M2C_FIELD(M2C_FIELD(temp_r3_411, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_411, &sp98, 0);
@@ -322,122 +322,122 @@ void MCQueryScreen::OnEnter() {
         var_r28_418 += 1;
         var_r30_419 += 4;
     } while (var_r28_418 < 3);
-    temp_r3_446 = this->unkD0;
+    temp_r3_446 = this->unkD8;
     sp80 = 2;
     sp84 = 0;
-    M2C_FIELD(*temp_r3_446, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_446, &sp80, 2);
+    M2C_FIELD(*temp_r3_446, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_446, &sp80, 2);
     temp_r3_456 = this->unkD4;
     sp78 = 2;
     sp7C = 0;
     M2C_FIELD(*temp_r3_456, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_456, &sp78, 2);
-    temp_r3_466 = this->unkD4;
+    temp_r3_466 = this->unkDC;
     sp70 = 3;
     sp74 = 0;
     M2C_FIELD(*temp_r3_466, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_466, &sp70, 3);
-    temp_r3_476 = this->unkBC.unk4;
+    temp_r3_476 = this->unkC8;
     sp68 = 2;
     sp6C = 0;
-    M2C_FIELD(*temp_r3_476, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_476, &sp68, 2);
-    temp_r3_486 = this->unkDC;
+    temp_r3_476->Message(&sp68, 2);
+    temp_r3_486 = this->unkE4;
     sp60 = 2;
     sp64 = 0;
-    M2C_FIELD(*temp_r3_486, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_486, &sp60, 2);
-    temp_r3_496 = this->unkDC;
+    temp_r3_486->Message(&sp60, 2);
+    temp_r3_496 = this->unkE4;
     sp58 = 4;
     sp5C = 0;
-    M2C_FIELD(*temp_r3_496, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_496, &sp58, 4);
+    temp_r3_496->Message(&sp58, 4);
     var_r3_508 = NULL;
     spA0 = 1;
     spA4 = 0;
     switch ((s32) *MCQueryScreen::query) {        /* switch 2; irregular */
     case 6:                                         /* switch 2 */
-        temp_r30_526 = this->unkF4;
+        temp_r30_526 = this->unkFC;
         temp_r3_527 = M2C_FIELD(temp_r30_526, s8 **, 0x68);
         if (temp_r3_527 != NULL) {
             UIStringTable_Remove(temp_r3_527);
         }
         M2C_FIELD(temp_r30_526, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r30_526, s32 *, 0x6C) = 0x49;
-        temp_r3_538 = this->unkE8;
+        temp_r3_538 = this->unkF0;
         sp50 = 2;
         sp54 = 0;
         M2C_FIELD(*temp_r3_538, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_538, &sp50, 0);
-        temp_r3_545 = this->unkE8;
+        temp_r3_545 = this->unkF0;
         sp48 = 4;
         sp4C = 0;
         M2C_FIELD(*temp_r3_545, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_545, &sp48, 4);
         /* fallthrough */
     case 7:                                         /* switch 2 */
-        temp_r30_556 = this->unkF0;
+        temp_r30_556 = this->unkF8;
         temp_r3_557 = M2C_FIELD(temp_r30_556, s8 **, 0x68);
         if (temp_r3_557 != NULL) {
             UIStringTable_Remove(temp_r3_557);
         }
         M2C_FIELD(temp_r30_556, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r30_556, s32 *, 0x6C) = 0x35;
-        temp_r3_568 = this->unkE4;
+        temp_r3_568 = this->unkEC;
         sp40 = 2;
         sp44 = 0;
-        temp_r3_568->Message(&sp40, 0);
-        temp_r3_575 = this->unkE4;
+        M2C_FIELD(*temp_r3_568, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_568, &sp40, 0);
+        temp_r3_575 = this->unkEC;
         sp38 = 4;
         sp3C = 0;
-        temp_r3_575->Message(&sp38, 4);
+        M2C_FIELD(*temp_r3_575, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_575, &sp38, 4);
         /* fallthrough */
     case 5:                                         /* switch 2 */
-        temp_r30_586 = this->unkEC;
+        temp_r30_586 = this->unkF4;
         temp_r3_587 = M2C_FIELD(temp_r30_586, s8 **, 0x68);
         if (temp_r3_587 != NULL) {
             UIStringTable_Remove(temp_r3_587);
         }
         M2C_FIELD(temp_r30_586, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r30_586, s32 *, 0x6C) = 0x34;
-        temp_r3_598 = this->unkE0;
+        temp_r3_598 = this->unkE8;
         sp30 = 2;
         sp34 = 0;
         M2C_FIELD(*temp_r3_598, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_598, &sp30, 0);
-        temp_r3_605 = this->unkE0;
+        temp_r3_605 = this->unkE8;
         sp28 = 4;
         sp2C = 0;
         M2C_FIELD(*temp_r3_605, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_605, &sp28, 4);
         spA4 = 0;
-        temp_r3_618 = this->unkDC;
-        var_r3_508 = M2C_FIELD(*temp_r3_618, KDMemoryCard *(**)(void **, s32 *), 0x2C)(temp_r3_618, &spA0);
+        temp_r3_618 = this->unkE4;
+        var_r3_508 = temp_r3_618->Message(&spA0);
         break;
     default:                                        /* switch 2 */
-        temp_r30_625 = this->unkF0;
+        temp_r30_625 = this->unkF8;
         temp_r3_626 = M2C_FIELD(temp_r30_625, s8 **, 0x68);
         if (temp_r3_626 != NULL) {
             UIStringTable_Remove(temp_r3_626);
         }
         M2C_FIELD(temp_r30_625, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r30_625, s32 *, 0x6C) = 0x2D;
-        temp_r3_637 = this->unkE4;
+        temp_r3_637 = this->unkEC;
         sp20 = 2;
         sp24 = 0;
-        temp_r3_637->Message(&sp20, 0);
-        temp_r3_644 = this->unkE4;
+        M2C_FIELD(*temp_r3_637, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_637, &sp20, 0);
+        temp_r3_644 = this->unkEC;
         sp18 = 4;
         sp1C = 0;
-        temp_r3_644->Message(&sp18, 4);
-        temp_r30_654 = this->unkEC;
+        M2C_FIELD(*temp_r3_644, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_644, &sp18, 4);
+        temp_r30_654 = this->unkF4;
         temp_r3_655 = M2C_FIELD(temp_r30_654, s8 **, 0x68);
         if (temp_r3_655 != NULL) {
             UIStringTable_Remove(temp_r3_655);
         }
         M2C_FIELD(temp_r30_654, s8 **, 0x68) = NULL;
         M2C_FIELD(temp_r30_654, s32 *, 0x6C) = 0x2C;
-        temp_r3_666 = this->unkE0;
+        temp_r3_666 = this->unkE8;
         sp10 = 2;
         sp14 = 0;
         M2C_FIELD(*temp_r3_666, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_666, &sp10, 0);
-        temp_r3_673 = this->unkE0;
+        temp_r3_673 = this->unkE8;
         sp8 = 4;
         spC = 0;
         M2C_FIELD(*temp_r3_673, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_673, &sp8, 4);
         spA4 = 1;
-        temp_r3_686 = this->unkDC;
-        var_r3_508 = M2C_FIELD(*temp_r3_686, KDMemoryCard *(**)(void **, s32 *), 0x2C)(temp_r3_686, &spA0);
+        temp_r3_686 = this->unkE4;
+        var_r3_508 = temp_r3_686->Message(&spA0);
         break;
     }
     if (((KDMemoryCard *) *MemoryCardScreen::selectedCard != NULL) && (var_r3_508->Update() == 0)) {
@@ -456,24 +456,24 @@ void MCQueryScreen::Resolve() {
     void *temp_r30_767;
 
     MemoryCardScreen::Resolve();
-    this->unkD0 = FindChild("promptBg");
+    this->unkD8 = FindChild("promptBg");
     this->unkD4 = FindPrompt((UIContainer *) this);
-    this->unkD4 = FindChild("dashPrompt");
-    this->unkD8 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
-    temp_r31_740 = this->unkD8;
+    this->unkDC = FindChild("dashPrompt");
+    this->unkE0 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
+    temp_r31_740 = this->unkE0;
     temp_r3_741 = M2C_FIELD(temp_r31_740, s8 **, 0x68);
     if (temp_r3_741 != NULL) {
         UIStringTable_Remove(temp_r3_741);
     }
     M2C_FIELD(temp_r31_740, s8 **, 0x68) = NULL;
     M2C_FIELD(temp_r31_740, s32 *, 0x6C) = -1;
-    this->unkDC = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
-    if ((void **) this->unkDC != NULL) {
+    this->unkE4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
+    if ((UIContainer *) this->unkE4 != NULL) {
         var_r29_760 = 0;
         var_r31_761 = 0;
         do {
             temp_r30_767 = this + var_r31_761;
-            M2C_FIELD(temp_r30_767, UIContainer **, 0xE8) = ui_cast<UIButton *, UIObject *>(((UIContainer *) this->unkDC)->GetChild(var_r29_760));
+            M2C_FIELD(temp_r30_767, UIContainer **, 0xE8) = ui_cast<UIButton *, UIObject *>(this->unkE4->GetChild(var_r29_760));
             temp_r3_769 = M2C_FIELD(temp_r30_767, UIContainer **, 0xE8);
             if (temp_r3_769 != NULL) {
                 M2C_FIELD(temp_r30_767, void ***, 0xF4) = ui_cast<UIText *, UIObject *>(temp_r3_769->GetChild(0));
@@ -491,12 +491,12 @@ void MCQueryScreen::Init() {
     void *temp_r5_808;
 
     MemoryCardScreen::Init();
-    this->unkD0 = 0;
+    this->unkD8 = NULL;
     var_r3_801 = 0;
     this->unkD4 = NULL;
-    this->unkD4 = NULL;
-    this->unkD8 = NULL;
     this->unkDC = NULL;
+    this->unkE0 = NULL;
+    this->unkE4 = NULL;
     var_ctr_806 = 3;
     do {
         temp_r5_808 = this + var_r3_801;

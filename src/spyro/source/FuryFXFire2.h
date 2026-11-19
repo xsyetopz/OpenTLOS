@@ -34,7 +34,6 @@ public:
     void UpdateMeteors(void);
     s32 Trigger(const MKVector3 &);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ u8 padD4[0x4];
@@ -45,7 +44,7 @@ public:
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ u8 padEC[0x4];
     /* 0x0f0 */ BreathHitMessage unkF0;
-    /* 0x141 */ u8 pad141[0x7];
+    /* 0x144 */ u8 pad144[0x4];
     /* 0x148 */ MKModel* unk148;
     /* 0x14c */ f32 unk14C;
     /* 0x150 */ FuryFXFire2::Meteor** unk150;

@@ -174,7 +174,7 @@ void PhrasePlayer_StopEvent(int arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal type
 s32 PhrasePlayer_PlayEvent(const char *arg0) {
     s32 var_r27_352;
     s32 var_r27_380;
@@ -598,7 +598,7 @@ s32 Phrase_Play(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal type
 void Phrase_Update() {
     u8 var_r31_1270;
 

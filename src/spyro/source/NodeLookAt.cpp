@@ -248,7 +248,7 @@ void NodeLookAt::Reset() {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 void NodeLookAt::Update(MKVector3 *arg0) {
     Matrix sp150;
     Matrix sp110;

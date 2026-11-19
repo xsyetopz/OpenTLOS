@@ -18,7 +18,7 @@ extern M2C_UNK gb;
 extern s32 iSpawnPools;
 extern MKHeap *pSpawnPools;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemyDescriptor'
 void EnemySpawnPool_Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -32,7 +32,7 @@ void EnemySpawnPool_Destroy(Enemy *arg0) {
 
     if ((arg0 != NULL) && (var_r31_18 = 0, var_ctr_20 = iSpawnPools, (((s32) iSpawnPools > 0) != 0))) {
 loop_2:
-        if ((s32) M2C_FIELD(arg0->unkA20, s32 *, 0xF4) == (s32) *(pSpawnPools + var_r31_18)) {
+        if ((s32) arg0->unkA38->unkF4 == (s32) *(pSpawnPools + var_r31_18)) {
             var_r30_30 = *(pSpawnPools + (var_r31_18 + 4));
 loop_7:
             if (var_r30_30 != NULL) {

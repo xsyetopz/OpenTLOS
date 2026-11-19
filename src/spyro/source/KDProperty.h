@@ -107,7 +107,6 @@ public:
     virtual void Command(int);
     virtual void Trigger(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ KDPropertyCommandList unk10;
 };
 

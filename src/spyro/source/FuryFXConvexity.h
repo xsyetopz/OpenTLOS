@@ -38,7 +38,6 @@ public:
     void ResetFury(void);
     s32 Trigger(const MKVector3 &);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;

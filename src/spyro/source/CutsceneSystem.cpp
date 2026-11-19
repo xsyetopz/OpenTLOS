@@ -52,7 +52,7 @@ extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: identifier 'pLoadChunkInfo' redeclared
 extern void *pLoadChunkInfo;
 #endif
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<CutsceneSystem>::State cutsceneStates; /* unable to generate initializer: confusing struct layout */
 
@@ -287,7 +287,7 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void CutsceneSystem::Abort(bool arg0) {
     MKHeap *temp_r3_514;
     MKVector3 *temp_r3_535;
@@ -572,7 +572,6 @@ void CutsceneSystem::Location::SetTextID(int arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void CutsceneSystem::Location::Update() {
     f32 temp_f0_1299;
     f32 temp_f1_1298;
@@ -637,7 +636,6 @@ block_20:
         break;
     }
 }
-#endif
 
 void CutsceneSystem::Location::Deinit() {
 
@@ -653,7 +651,7 @@ void CutsceneSystem::Location::Init(CutsceneSystem *arg1) {
     M2C_FIELD(this, CutsceneSystem **, 0x18) = arg1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::UnloadingDeinit() {
     MKVector3 *temp_r3_1401;
     MKVector3 *temp_r3_1407;
@@ -669,7 +667,7 @@ void CutsceneSystem::UnloadingDeinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to
 void CutsceneSystem::UnloadingUpdate() {
     CutsceneObject *temp_r0_1462;
     CutsceneObject *temp_r3_1482;
@@ -713,7 +711,6 @@ void CutsceneSystem::UnloadingUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::UnloadingInit() {
     MKVector3 *temp_r3_1553;
 
@@ -728,14 +725,12 @@ void CutsceneSystem::UnloadingInit() {
         ((KDSynkerPlayer3 *) this->unk78)->Unload();
     }
 }
-#endif
 
 void CutsceneSystem::MissingCutsceneDeinit() {
     OnStop();
     Deactivate();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24'
 void CutsceneSystem::MissingCutsceneUpdate() {
     s32 var_r3_1610;
     u8 var_r3_1597;
@@ -753,7 +748,6 @@ void CutsceneSystem::MissingCutsceneUpdate() {
         this->unk24.SetState(this, 0, 0U);
     }
 }
-#endif
 
 void CutsceneSystem::MissingCutsceneInit() {
     this->unk70 = 1;
@@ -802,7 +796,6 @@ void CutsceneSystem::PlayCutsceneDeinit() {
     OnStop();
 }
 
-#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::PlayCutsceneUpdate() {
     f64 sp80;
     f64 sp78;
@@ -953,7 +946,6 @@ void CutsceneSystem::PlayCutsceneUpdate() {
         }
     }
 }
-#endif
 
 void CutsceneSystem::PlayCutsceneInit() {
     s32 spC;
@@ -990,7 +982,6 @@ void CutsceneSystem::LoadingDeinit() {
     M2C_FIELD(&gb, s8 *, 0x396) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24'
 void CutsceneSystem::LoadingUpdate() {
     ((KDSynkerPlayer3 *) this->unk78)->Update();
     if (((KDSynkerPlayer3 *) this->unk78)->IsLoading() == 0) {
@@ -1006,7 +997,6 @@ void CutsceneSystem::LoadingUpdate() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::LoadingInit() {
@@ -1029,7 +1019,7 @@ void CutsceneSystem::LoadingInit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void CutsceneSystem::Update() {
     MKHeap *temp_r3_2159;
     u8 var_r31_2157;
@@ -1196,11 +1186,11 @@ void CutsceneSystem::InitModule() {
 
 void GameSynkerPlayer::Deinit() {
     KDSynkerPlayer3::Deinit();
-    ((UIStringTable *) &this->unk260)->Deinit();
+    this->unk260.Deinit();
 }
 
 void GameSynkerPlayer::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) {
-    ((UIStringTable *) &this->unk260)->Init(0x800);
+    this->unk260.Init(0x800);
     KDSynkerPlayer3::Init(arg0, arg1, arg2, arg3);
 }
 

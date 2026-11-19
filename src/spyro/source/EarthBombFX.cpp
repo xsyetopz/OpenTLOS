@@ -44,7 +44,7 @@ extern void **gb;
 static s32 lit_728 = 0;
 static u8 lit_729 = 1;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal type
 void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, const MKVector3 &arg4) {
     s8 spB0;
     s32 spAC;
@@ -1211,7 +1211,7 @@ void EarthBombFXDescriptor::Deinit() {
     KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void EarthBombFXDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));

@@ -24,7 +24,6 @@ public:
     virtual void PropUpdate(void);
     virtual void UpdateMove(void);
     FloatingPlatform(void);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ f32 unk180;
     /* 0x184 */ f32 unk184;
     /* 0x188 */ f32 unk188;

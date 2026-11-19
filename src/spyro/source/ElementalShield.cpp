@@ -71,7 +71,6 @@ void ElementalShield::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalShield::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -101,7 +100,6 @@ void ElementalShield::Draw() {
         }
     }
 }
-#endif
 
 void ElementalShield::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unkC4)->Message(arg0);

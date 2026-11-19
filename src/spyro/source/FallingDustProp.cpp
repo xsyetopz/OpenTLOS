@@ -37,7 +37,6 @@ void FallingDustProp::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FallingDustProp::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -51,7 +50,6 @@ void FallingDustProp::Draw() {
     MKMaterial_SetColor(this->unkA8, this->unkB0);
     KDProp::Draw();
 }
-#endif
 
 void FallingDustProp::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0xB5) {

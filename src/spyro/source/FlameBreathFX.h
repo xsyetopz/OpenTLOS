@@ -37,7 +37,6 @@ public:
     u8 ShootFireBomb(const MKVector3 &, const MKVector3 &, const MKVector3 &, bool);
     s32 Trigger(MKProp *, const MKVector3 &, const MKVector3 &, const MKVector3 &, const float &, const int &, bool, bool);
     void DrawFlameBreath(void);
-    /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ ManagedLight* unkA8;
     /* 0x0ac */ FlameBreathPS* unkAC;
     /* 0x0b0 */ u8 padB0[0x4];
@@ -59,7 +58,6 @@ public:
     /* 0x140 */ GroundFire unk140;
     /* 0x144 */ f32 unk144;
     /* 0x148 */ FlameBreathBeam unk148;
-    /* 0x25c */ u8 pad25C[0x4];
     /* 0x260 */ FuryFXFire* unk260;
     /* 0x264 */ FuryFXFire2* unk264;
     /* 0x268 */ f32 unk268;

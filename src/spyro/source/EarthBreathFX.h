@@ -36,7 +36,6 @@ public:
     void DrawSeedBullets(void);
     void UpdateSeedBullets(void);
     void * SpawnSeedBullet(const MKVector3 &, const MKVector3 &, const MKVector3 &, float, bool);
-    /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ f32 unkA8;
     /* 0x0ac */ f32 unkAC;
     /* 0x0b0 */ s8 unkB0;
@@ -49,7 +48,7 @@ public:
     /* 0x0c8 */ MKVector3** unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ BreathHitMessage unkD0;
-    /* 0x121 */ u8 pad121[0x7];
+    /* 0x124 */ u8 pad124[0x4];
     /* 0x128 */ MKModel* unk128;
     /* 0x12c */ f32 unk12C;
     /* 0x130 */ f64 unk130;

@@ -4,8 +4,6 @@
 #include "common/Source/MKIni.h"
 #include "spyro/source/CharacterGraph.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
-#include "spyro/source/EventMessage.h"
 #include "spyro/source/NPCGuardianGoal_Think.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
@@ -14,7 +12,7 @@ void NPCGuardian::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0xB5) {
 
     } else {
-        M2C_FIELD(this, s8 *, 0xB10) = 1;
+        this->unkB10 = 1;
     }
     Enemy::Message(arg0);
 }
@@ -26,20 +24,20 @@ void NPCGuardian::Resolve() {
     u32 temp_r3_78;
 
     Enemy::Resolve();
-    temp_r3_74 = M2C_FIELD(this, MKSceneManager **, 0xB18);
+    temp_r3_74 = this->unkB18;
     if (temp_r3_74 != NULL) {
         temp_r3_78 = checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_74->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         if (temp_r3_78 != 0U) {
-            this->unkA68 = M2C_BITWISE(f32, (temp_r3_78 + 0x50));
-            this->unkA78 = 0.0f;
+            this->unkA80 = temp_r3_78 + 0x50;
+            this->unkA90 = 0;
         }
     }
-    temp_r31_86 = this->unkB04;
-    M2C_FIELD(checked_cast<P21NPCGuardianGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA24), s32 *, 0x20) = temp_r31_86;
+    temp_r31_86 = this->unkB1C;
+    M2C_FIELD(checked_cast<P21NPCGuardianGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA3C), s32 *, 0x20) = temp_r31_86;
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
-    ((EventMessage *) &this->unkAFC)->Send(NULL);
+    this->unkB14.Send(NULL);
 }
 #endif
 
@@ -52,13 +50,13 @@ s32 NPCGuardian::LoadLine(MKIniLine *arg0) {
     if (Enemy::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FollowGraphID", (s32 *) &this->unkB00, 0) != 0) {
+    if (arg0->LoadInt("FollowGraphID", (s32 *) &this->unkB18, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("Behaviour", &this->unkB04, 0) != 0) {
+    if (arg0->LoadInt("Behaviour", &this->unkB1C, 0) != 0) {
         return 1U;
     }
-    return (u8) (((EventMessage *) &this->unkAFC)->LoadLine(arg0, "OnLoad") != 0);
+    return (u8) (this->unkB14.LoadLine(arg0, "OnLoad") != 0);
 }
 #endif
 
@@ -83,11 +81,11 @@ void NPCGuardian::Init() {
         temp_r31_191->__vptr = &__vt;
     }
     temp_r31_191->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_191;
-    this->unk588.unkC = 0.0f;
+    this->unkA3C = &temp_r31_191->__vptr;
     this->unk598 = 0.0f;
     this->unk59C = 0.0f;
-    M2C_FIELD(this, s32 *, 0xB18) = 0;
-    M2C_FIELD(this, s8 *, 0xB10) = 0;
+    this->unk5A0 = 0.0f;
+    this->unkB18 = NULL;
+    this->unkB10 = 0;
 }
 #endif

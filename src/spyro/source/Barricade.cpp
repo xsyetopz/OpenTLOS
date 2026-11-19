@@ -89,7 +89,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
 
     if ((s32) arg0->unk0 == 0x15E) {
         this->unk80->SetAnim(this->unk80->GetAnim("Explode"), 1.0f, 0.0f, 0, -1);
-        this->unk19C = 1;
+        this->unk1AC = 1;
         var_r29_162 = 0;
         do {
             temp_r5_170 = this->unk8;
@@ -124,7 +124,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
             var_r29_162 += 1;
         } while (var_r29_162 < 0xA);
     }
-    if ((u8) this->unk19C != 0) {
+    if ((u8) this->unk1AC != 0) {
         Shatterable::Message(arg0);
         return;
     }
@@ -143,21 +143,19 @@ void BarricadeProp::Resolve() {
     Shatterable::Resolve();
 }
 
-#if 0 // DRAFT: type mismatch
 void BarricadeProp::LoadDone() {
     Shatterable::LoadDone();
-    if ((MKProp *) this->unk170 > 0) {
-        this->unk19C = 1;
+    if ((s32) this->unk180 > 0) {
+        this->unk1AC = 1;
     }
 }
-#endif
 
 void BarricadeProp::Deinit() {
     Shatterable::Deinit();
 }
 
 void BarricadeProp::Init() {
-    this->unk198 = 0.0f;
-    this->unk19C = 0;
+    this->unk1A8 = 0;
+    this->unk1AC = 0;
     Shatterable::Init();
 }

@@ -8,8 +8,6 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -20,7 +18,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK iMeleeAttackTypeMap;
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned long **' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
 SpyroTailStrikeState states__20SpyroTailStrikeState; /* unable to generate initializer: confusing struct layout */
 
@@ -29,7 +27,7 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
     s8 sp55;
     s8 sp54;
     MKCollisionInfo *sp50;
-    M2C_UNK *sp4C;
+    u32 **sp4C;
     s32 sp48;
     s32 sp44;
     s32 sp40;
@@ -78,7 +76,7 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
         sp10 = temp_f2_56;
         arg0->Message(&sp18, GS_SpyroStompHit, -1, 1, 0, 4, temp_r10_46, temp_f2_56, temp_f3_54);
         if (sp56 != 0) {
-            M2C_FIELD(this, s8 *, 0x50) = 0;
+            this->unk50 = 0;
         }
     }
 }
@@ -149,7 +147,7 @@ void SpyroTailStrikeState::LandUpdate() {
     void *temp_r3_197;
     void *temp_r3_272;
 
-    if (M2C_BITWISE(s32, this->unk48) <= 3) {
+    if ((s32) this->unk4C <= 3) {
         temp_r3_197 = this->unk10->unk8;
         temp_f4_201 = M2C_FIELD(temp_r3_197, f64 *, 0x30);
         temp_f3_202 = M2C_FIELD(temp_r3_197, f64 *, 0x38);
@@ -194,7 +192,7 @@ loop_9:
             var_r31_218 += 1;
         } while (var_r31_218 < 4);
     }
-    this->unk48 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk48) + 1));
+    this->unk4C += 1;
     LandTransition();
 }
 #endif
@@ -205,9 +203,9 @@ void SpyroTailStrikeState::LandExit() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroTailStrikeState::LandEnter() {
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     this->unk10->SetAnim(0x43U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
-    this->unk48 = 0.0f;
+    this->unk4C = 0;
 }
 #endif
 
@@ -248,7 +246,7 @@ s32 SpyroTailStrikeState::DescentTransition() {
     if (MKCollision_SphereCollide(*((MKVector3 *) &sp48), 100.0f, &sp58, 0xA, (MKCollisionMode) 7, 0x04000220) != 0) {
         var_r31_358 = 1;
     }
-    if ((var_r31_358 != 0) && ((u8) M2C_FIELD(this, u8 *, 0x50) != 0)) {
+    if ((var_r31_358 != 0) && ((u8) this->unk50 != 0)) {
         KDSound_Play3d(GS_SpyroStompLand, this->unk10->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         ((KDInput *) (this->unk10->GetInput()))->RumblePlay(0.5f, 0.7f, 0.1f, 0, 4.0f, 0U);
     }
@@ -283,7 +281,7 @@ void SpyroTailStrikeState::DescentExit() {
     Spyro *temp_r3_487;
 
     temp_r3_487 = this->unk10;
-    temp_r3_487->unk420 = (void *) ((s32) temp_r3_487->unk420 | 0x20000);
+    temp_r3_487->unk428 |= 0x20000;
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -298,8 +296,8 @@ void SpyroTailStrikeState::DescentEnter() {
     f32 var_f2_506;
 
     temp_r3_503 = this->unk10;
-    temp_r3_503->unk388 = 3800.0f;
-    temp_f1_505 = temp_r3_503->unk388;
+    temp_r3_503->unk390 = 3800.0f;
+    temp_f1_505 = temp_r3_503->unk390;
     var_f2_506 = temp_r3_503->unk33C;
     temp_f0_507 = -temp_f1_505;
     if (var_f2_506 < temp_f1_505) {
@@ -313,16 +311,16 @@ void SpyroTailStrikeState::DescentEnter() {
         var_f2_506 = temp_f0_507;
     }
     temp_r3_503->unk33C = var_f2_506;
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
+    this->unk10->unk38C = 0.0f;
     temp_r3_529 = this->unk10;
-    temp_r3_529->unk420 = (void *) ((s32) temp_r3_529->unk420 & 0xFFFDFFFF);
+    temp_r3_529->unk428 &= 0xFFFDFFFF;
     this->unk48 = -3400.0f;
     this->unk10->SetAnim(0x42U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_538 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x416;
     M2C_FIELD(temp_r3_538->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-    M2C_FIELD(this, s8 *, 0x50) = 1;
+    this->unk50 = 1;
     this->unk28.Reset();
 }
 #endif
@@ -345,7 +343,7 @@ void SpyroTailStrikeState::StartExit() {
     Spyro *temp_r3_609;
 
     temp_r3_609 = this->unk10;
-    temp_r3_609->unk420 = (void *) ((s32) temp_r3_609->unk420 | 0x20000);
+    temp_r3_609->unk428 |= 0x20000;
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -356,11 +354,11 @@ void SpyroTailStrikeState::StartEnter() {
     Spyro *temp_r3_638;
 
     this->unk10->GetYaw();
-    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(M2C_ERROR(/* Read from unset register $f1 */), 900.0f);
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
+    this->unk10->unk3A8.YawTowards(M2C_ERROR(/* Read from unset register $f1 */), 900.0f);
+    this->unk10->unk38C = 0.0f;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_638 = this->unk10;
-    temp_r3_638->unk420 = (void *) ((s32) temp_r3_638->unk420 & 0xFFFDFFFF);
+    temp_r3_638->unk428 &= 0xFFFDFFFF;
     this->unk10->SetAnim(0x41U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_650 = this->unk10->GetCamera();
     spC = 0;
@@ -387,58 +385,50 @@ s32 SpyroTailStrikeState::Transition() {
     return var_r31_687;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroTailStrikeState::Update() {
     this->unk14.Update(this, 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroTailStrikeState::Exit() {
     Spyro *temp_r3_732;
 
     temp_r3_732 = this->unk10;
-    temp_r3_732->unk420 = (void *) ((s32) temp_r3_732->unk420 | 1);
+    temp_r3_732->unk428 |= 1;
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroTailStrikeState::Enter(SpyroStateMessages &arg0) {
     Spyro *temp_r3_761;
     Spyro *temp_r4_777;
 
     this->unk14.SetState(this, 0, 0U);
     temp_r3_761 = this->unk10;
-    temp_r3_761->unk420 = (void *) ((s32) temp_r3_761->unk420 & 0xFFFFFFFE);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
+    temp_r3_761->unk428 &= 0xFFFFFFFE;
+    this->unk10->unk460.SetTailStrikeEnabled(0U);
+    this->unk10->unk460.SetTailSweepEnabled(0U);
+    this->unk10->unk460.SetHornDiveEnabled(0U);
     temp_r4_777 = this->unk10;
 loop_2:
-    if ((u32) *M2C_FIELD(temp_r4_777, u32 **, 0x6F0) != 0U) {
-        M2C_FIELD(temp_r4_777, u32 **, 0x6F0) = (u32 *) (M2C_FIELD(temp_r4_777, u32 **, 0x6F0) + 4);
+    if ((u32) *temp_r4_777->unk6F0 != 0) {
+        temp_r4_777->unk6F0 += 4;
         goto loop_2;
     }
     this->unk10->ClearMeleeButtonState();
     this->unk10->SetMeleeButtonStateTimeout(1U);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroTailStrikeState::Deinit() {
     this->unk14.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__38KDStateMachine'
 void SpyroTailStrikeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
     Init__38KDStateMachine<20SpyroTailStrikeState>FPQ238KDStateMachine<20SpyroTailStrikeState>5StateP38KDStateMachine<20SpyroTailStrikeState>(&this->unk14, (KDStateMachine<SpyroTailStrikeState>::State *) &SpyroTailStrikeState::states, NULL);
     this->unk48 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x50) = 1;
-    this->unk48 = 0.0f;
+    this->unk50 = 1;
+    this->unk4C = 0;
     this->unk28.Init((MKProp *) this->unk10);
 }
 #endif

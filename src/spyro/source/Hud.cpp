@@ -87,7 +87,6 @@ void Hud_DrawIcon(int arg0, int arg1, const MKVector2 &arg2, const MKVector2 &ar
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float arg5, const MKVector4 &arg6, float arg7, float arg8, float arg9, float arg10, bool arg11, bool arg12, const Matrix &arg13) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -286,7 +285,6 @@ void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float 
     MKSetMatrix(Matrix::identity);
     MKEndPrimitive();
 }
-#endif
 
 void Hud_Show(bool arg0) {
     Hud_bDisableDraw = arg0 == 0;

@@ -118,7 +118,7 @@ void Coronas::Update() {
     MKProp::Update();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Coronas::Draw() {
     Matrix sp10;
     M2C_UNK spC;

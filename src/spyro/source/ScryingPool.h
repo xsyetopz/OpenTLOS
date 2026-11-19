@@ -19,13 +19,12 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     ScryingPool(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ s32 unk94;
     /* 0x098 */ s32 unk98;
 };
 
-class ScryingPoolDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class ScryingPoolDescriptor : public KDPropExDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

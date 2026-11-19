@@ -4,11 +4,10 @@
 #include <dolphin/types.h>
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 
 class EventMessage;
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKIniLine;
 class MKMessage;
 class MKSceneManager;
@@ -16,7 +15,7 @@ class MKVector3;
 class Trap;
 class TrapDescriptor;
 
-class Trap : public GameProp {  // base: vtable prefix
+class Trap : public GameProp {  // base: base ctor call
 public:
     virtual ~Trap(void);
     virtual void Init(void);
@@ -45,7 +44,6 @@ public:
     virtual s32 IsAttacking(void);
     virtual f32 GetTimeLastHit(void);
     Trap(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ u8 unkC8;
     /* 0x0c9 */ u8 padC9[0x7];
     /* 0x0d0 */ s32 unkD0;
@@ -56,7 +54,7 @@ public:
     /* 0x0dc */ EventMessage unkDC;
 };
 
-class TrapDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class TrapDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     TrapDescriptor(void);

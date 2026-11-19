@@ -26,7 +26,7 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pHotSpitDescriptor;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void HotSpit::Update() {
     Matrix sp1F0;
     Matrix sp1B0;
@@ -232,7 +232,7 @@ void HotSpit::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void HotSpit::Collided(MKCollisionResult &arg0) {
     s8 sp2C9;
     s8 sp2C8;
@@ -632,7 +632,7 @@ void *HotSpit::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'GoopFX *' to
 void HotSpitDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pHotSpitDescriptor = (MKPropDescriptor *) this;

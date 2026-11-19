@@ -7,7 +7,7 @@
 class ShatterableDescriptor;
 class ShatterablePlatformDescriptor;
 
-class ShatterablePlatformDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class ShatterablePlatformDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     ShatterablePlatformDescriptor(void);
 };

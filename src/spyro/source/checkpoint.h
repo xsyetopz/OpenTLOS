@@ -29,9 +29,6 @@ public:
     virtual void Message(MKMessage *);
     void SetCurrentCheckPoint(CheckPoint *);
     static u8 pCurrentCheckPoint[0x4];
-    /* 0x089 */ u8 pad89[0x3];
-    /* 0x08c */ u8 unk8C;
-    /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ u8 unk90;
     /* 0x091 */ u8 pad91[0x3f];
     /* 0x0d0 */ MKVector3 unkD0;
@@ -54,7 +51,6 @@ public:
 class CheckPointDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;

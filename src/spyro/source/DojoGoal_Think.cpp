@@ -11,13 +11,13 @@
 #include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/EnemyGoals_Movement.h"
 #include "spyro/source/EnemyRegion.h"
-#include "spyro/source/TargetManager.h"
+#include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
@@ -32,7 +32,7 @@ void DojoGoal_Think::AddGoal_SpawnIdle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Spawn() {
     void **temp_r3_60;
 
@@ -50,7 +50,7 @@ void DojoGoal_Think::StartFollowingSpawnGraph() {
 
     if (!(((u8) this->unk54 >> 6U) & 1)) {
         temp_r4_98 = this->unk20;
-        M2C_FIELD(temp_r4_98, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r4_98, u8 *, 0xB09) | 8);
+        temp_r4_98->unkB09 |= 8;
         this->unk54 |= 0x40;
     }
 }
@@ -61,17 +61,17 @@ void DojoGoal_Think::StopFollowingSpawnGraph() {
     Enemy *temp_r5_119;
 
     temp_r5_119 = this->unk20;
-    M2C_FIELD(temp_r5_119, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r5_119, u8 *, 0xB09) & ~8);
+    temp_r5_119->unkB09 &= ~8;
     if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, Enemy *, M2C_UNK), 0x38)(0x2A, temp_r5_119, 0) != 0) {
         RemoveAllSubgoals();
     }
     temp_r3_132 = this->unk20;
-    temp_r3_132->SetupEnemyRegion(*((MKVector3 *) &temp_r3_132->unk588), 1000.0f);
+    temp_r3_132->SetupEnemyRegion(temp_r3_132->unk588, 1000.0f);
 }
 #endif
 
 u8 DojoGoal_Think::IsFollowingSpawnGraph() {
-    return ((u8) M2C_FIELD(this->unk20, u8 *, 0xB09) >> 3U) & 1;
+    return ((u8) this->unk20->unkB09 >> 3U) & 1;
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -127,7 +127,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
 
     temp_r3_162 = this->unk20;
     var_r0_166 = 0;
-    if ((temp_r3_162->unk710.unk0 == MKVector3::zero.unk0) && (temp_r3_162->unk710.unk4 == MKVector3::zero.unk4) && (temp_r3_162->unk710.unk8 == MKVector3::zero.unk8)) {
+    if ((temp_r3_162->unk720 == MKVector3::zero.unk0) && (temp_r3_162->unk724 == MKVector3::zero.unk4) && (temp_r3_162->unk728 == MKVector3::zero.unk8)) {
         var_r0_166 = 1;
     }
     if (var_r0_166 != 0) {
@@ -144,7 +144,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         temp_f0_206 = M2C_FIELD(temp_r3_196, f64 *, 0x720) + (f64) sp58;
         sp48 = temp_f0_206;
         spB8 = temp_f0_206;
-        sp50 = temp_r3_196->unk710.unk8 + (f32) sp80;
+        sp50 = temp_r3_196->unk728 + (f32) sp80;
         spC0 = (f64) sp50;
         temp_r4_216 = temp_r3_196->unk634;
         sp10 = temp_r4_216;
@@ -154,7 +154,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         }
         temp_r3_225 = this->unk20;
         var_r30_226 = 0;
-        if (((u8) M2C_FIELD(temp_r3_225, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_225->unk870.unk30)->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_225, u8 *, 0x8B8) == 2) || (temp_r3_225->unk870.unk40.Get() != NULL)) {
             var_r30_226 = 1;
         }
         if ((var_r30_226 == 0) || (MKCollision_SphereCollide(*((MKVector3 *) &spB8), temp_f31_191, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
@@ -171,7 +171,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         goto block_39;
     }
     var_r30_272 = 0;
-    if (((u8) M2C_FIELD(temp_r3_162, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_162->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_162, u8 *, 0x8B8) == 2) || (temp_r3_162->unk870.unk40.Get() != NULL)) {
         var_r30_272 = 1;
     }
     if (var_r30_272 != 0) {
@@ -187,7 +187,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         temp_f0_303 = M2C_FIELD(temp_r3_292, f64 *, 0x720) + (f64) sp38;
         sp28 = temp_f0_303;
         spA8 = temp_f0_303;
-        sp30 = temp_r3_292->unk710.unk8 + (f32) sp70;
+        sp30 = temp_r3_292->unk728 + (f32) sp70;
         spB0 = (f64) sp30;
         temp_r4_313 = temp_r3_292->unk634;
         sp8 = temp_r4_313;
@@ -204,25 +204,25 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         RemoveAllSubgoals();
         temp_r28_341 = this->unk20;
         var_r29_342 = 0;
-        if (((EnemyRegion *) &temp_r28_341->unk750.unkA0)->IsPointWithin(temp_r28_341->unk710) != 0) {
+        if (temp_r28_341->unk800.IsPointWithin(*((MKVector3 *) &temp_r28_341->unk720)) != 0) {
             ((EnemyRegion *) &sp18)->GetRegionPos();
-            if ((f32) fabs(sp1C - temp_r28_341->unk710.unk4) <= 500.0f) {
+            if ((f32) fabs(sp1C - temp_r28_341->unk724) <= 500.0f) {
                 var_r29_342 = 1;
             }
         }
-        if ((var_r29_342 != 0) && (temp_r4_365 = this->unk20, ((((EnemyRegion *) &temp_r4_365->unk800.unk28)->IsPointWithin(temp_r4_365->unk710) == 0) != 0))) {
+        if ((var_r29_342 != 0) && (temp_r4_365 = this->unk20, ((temp_r4_365->unk838.IsPointWithin(*((MKVector3 *) &temp_r4_365->unk720)) == 0) != 0))) {
             temp_r4_371 = this->unk20;
-            ((AITargetData *) &temp_r4_371->unk870.unk40)->Set(temp_r4_371->unk710, 0U);
+            temp_r4_371->unk8C0.Set(*((MKVector3 *) &temp_r4_371->unk720), 0U);
         } else {
             temp_r4_378 = this->unk20;
-            ((EnemyRegion *) &temp_r4_378->unk750.unkA0)->GetNearestPointOnBoundingRegion(temp_r4_378->unk710, &sp98, &sp88);
-            ((AITargetData *) &this->unk20->unk870.unk40)->Set(sp98, 0U);
+            temp_r4_378->unk800.GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_378->unk720), &sp98, &sp88);
+            this->unk20->unk8C0.Set(sp98, 0U);
         }
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk50);
         temp_r3_393 = this->unk20;
         temp_f1_397 = temp_r3_393->GetCollisionRadius();
         temp_r8_400 = this->unk50;
-        M2C_FIELD(temp_r8_400, TargetContext **, 0x10) = &this->unk20->unk870.unk40;
+        M2C_FIELD(temp_r8_400, AITargetData **, 0x10) = &this->unk20->unk8C0;
         M2C_FIELD(temp_r8_400, f32 *, 0x18) = temp_f1_397;
         M2C_FIELD(temp_r8_400, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_400, u8 *, 0x30) | 0x80);
         M2C_FIELD(temp_r8_400, s32 *, 0x20) = 2;
@@ -231,7 +231,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         M2C_FIELD(temp_r8_400, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_400, u8 *, 0x30) | 0x40);
         M2C_FIELD(temp_r8_400, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_400, u8 *, 0x30) | 0x20);
         M2C_FIELD(temp_r8_400, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_400, u8 *, 0x30) | 0x10);
-        ((AITargetData *) &this->unk20->unk870.unk40)->SetInsideRegion(1U);
+        this->unk20->unk8C0.SetInsideRegion(1U);
         this->unk54 |= 0x10;
         if (sp8 != NULL) {
             M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -243,7 +243,7 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_471;
     Enemy *temp_r3_476;
@@ -252,14 +252,14 @@ void DojoGoal_Think::AddGoal_FollowSpawnGraph() {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48);
         temp_r3_471 = this->unk20;
-        M2C_FIELD(temp_r3_471, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_471, u8 *, 0xB09) | 8);
+        temp_r3_471->unkB09 |= 8;
         temp_r3_476 = this->unk20;
-        M2C_FIELD(temp_r3_476, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_476, u8 *, 0xB08) | 0x40);
+        temp_r3_476->unkB08 |= 0x40;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_ReceiveOrders() {
     if (IsPresent(0x4D) == 0) {
         RemoveAllSubgoals();
@@ -268,7 +268,7 @@ void DojoGoal_Think::AddGoal_ReceiveOrders() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
@@ -277,7 +277,7 @@ void DojoGoal_Think::AddGoal_Respawn() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_572;
     s32 temp_r0_576;
@@ -289,13 +289,13 @@ void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     u8 var_r31_658;
 
     var_r29_553 = 0;
-    if ((((u8) M2C_FIELD(this->unk20, u8 *, 0xB0A) >> 5U) & 1) && (IsPresent(0x5B) == 0)) {
+    if ((((u8) this->unk20->unkB0A >> 5U) & 1) && (IsPresent(0x5B) == 0)) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
         return;
     }
     temp_r4_572 = this->unk20;
-    temp_r3_573 = M2C_FIELD(temp_r4_572, u8 *, 0xB0A);
+    temp_r3_573 = temp_r4_572->unkB0A;
     if (!((temp_r3_573 >> 5U) & 1)) {
         temp_r0_576 = arg0->unk28;
         if (temp_r0_576 == 6) {
@@ -305,7 +305,7 @@ void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
             }
         } else {
             if (temp_r0_576 == 0xC) {
-                M2C_FIELD(temp_r4_572, u8 *, 0xB0A) = (u8) (temp_r3_573 | 8);
+                temp_r4_572->unkB0A = temp_r3_573 | 8;
             }
             var_r29_600 = 0;
             if ((IsActive(0x11) == 0) && ((IsActive(0xB) != 0) || (IsActive(0x13) != 0) || (IsActive(0xC) != 0))) {
@@ -347,7 +347,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r3_893;
     Enemy *temp_r4_956;
@@ -360,7 +360,6 @@ void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     s32 temp_r3_943;
     s32 var_r28_728;
     u32 temp_r0_873;
-    u32 temp_r3_840;
     u8 temp_r23_748;
     u8 temp_r24_755;
     u8 temp_r25_762;
@@ -368,6 +367,7 @@ void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     u8 temp_r30_769;
     u8 temp_r31_741;
     u8 temp_r31_777;
+    void *temp_r3_840;
 
     var_r28_728 = arg0->unk28;
     var_f31_731 = 0.0f;
@@ -405,22 +405,22 @@ void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     } else if (var_r28_728 == 0xA) {
         var_r28_728 = 8;
     }
-    temp_r3_840 = this->unk20->unk9E8.unk4;
-    if ((temp_r3_840 != 0) && ((u8) M2C_FIELD(temp_r3_840, u8 *, 0x20) != 0) && (arg0->unk20 & 0x47F1)) {
+    temp_r3_840 = this->unk20->unkA00;
+    if ((temp_r3_840 != NULL) && ((u8) M2C_FIELD(temp_r3_840, u8 *, 0x20) != 0) && (arg0->unk20 & 0x47F1)) {
         RemoveAllSubgoals();
     }
     if (var_r28_728 == 9) {
-        temp_r3_855 = this->unk20->unkADC;
+        temp_r3_855 = this->unk20->unkAF4;
         if ((temp_r3_855 >= 3) && !(arg0->unk20 & 8) && (((temp_r0_861 = arg0->unk28, ((temp_r0_861 == 4) == 0)) && (temp_r0_861 != 5)) || (temp_r3_855 >= 6))) {
             var_r28_728 = 0xE;
         }
     }
     temp_r0_873 = ((u8) arg0->unk34 >> 4U) & 1;
-    if ((temp_r0_873 != 0) && (this->unk20->unkAB4 <= 0.0f) && ((var_r28_728 == 0) || (var_r28_728 == 4) || (var_r28_728 == 5))) {
+    if ((temp_r0_873 != 0) && (this->unk20->unkACC <= 0.0f) && ((var_r28_728 == 0) || (var_r28_728 == 4) || (var_r28_728 == 5))) {
         var_r28_728 = 7;
     } else if (temp_r0_873 != 0) {
         temp_r3_893 = this->unk20;
-        if (temp_r3_893->unkAB4 <= 0.0f) {
+        if (temp_r3_893->unkACC <= 0.0f) {
             temp_r3_893->Armour_Destroy();
         }
     }
@@ -452,25 +452,25 @@ block_58:
             arg0->unk28 = var_r28_728;
             arg0->unk18 = var_f31_731;
             temp_r4_956 = this->unk20;
-            M2C_FIELD(temp_r4_956, f64 *, 0x910) = (f64) arg0->unk0;
+            temp_r4_956->unk910 = arg0->unk0;
             M2C_FIELD(temp_r4_956, f64 *, 0x918) = (f64) arg0->unk8;
-            M2C_FIELD(temp_r4_956, s32 *, 0x920) = (s32) arg0->unk10;
-            M2C_FIELD(temp_r4_956, s32 *, 0x924) = (s32) arg0->unk14;
-            temp_r4_956->unk918 = arg0->unk18;
+            temp_r4_956->unk920 = arg0->unk10;
+            temp_r4_956->unk924 = arg0->unk14;
+            temp_r4_956->unk928 = arg0->unk18;
             temp_r4_956->unk92C = arg0->unk1C;
-            temp_r4_956->unk920 = arg0->unk20;
-            temp_r4_956->unk924 = arg0->unk24;
-            temp_r4_956->unk928 = M2C_BITWISE(f32, arg0->unk28);
-            temp_r4_956->unk92C = M2C_BITWISE(f32, arg0->unk2C);
-            temp_r4_956->unk930 = arg0->unk30;
-            M2C_FIELD(temp_r4_956, u8 *, 0x944) = (u8) arg0->unk34;
+            temp_r4_956->unk930 = arg0->unk20;
+            temp_r4_956->unk934 = arg0->unk24;
+            temp_r4_956->unk938 = arg0->unk28;
+            temp_r4_956->unk93C = arg0->unk2C;
+            temp_r4_956->unk940 = arg0->unk30;
+            temp_r4_956->unk944 = arg0->unk34;
             AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_1014;
 
@@ -485,7 +485,7 @@ void DojoGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_1050;
 
@@ -502,7 +502,7 @@ void DojoGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void DojoGoal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
@@ -519,7 +519,7 @@ void DojoGoal_Think::Reset() {
     this->unk54 &= ~0x20;
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DojoGoal_Think::Arbitrate() {
     EnemyDamageFeedback sp40;
     EnemyDamageFeedback sp8;
@@ -551,18 +551,18 @@ void DojoGoal_Think::Arbitrate() {
     void *temp_r5_1147;
 
     temp_r4_1133 = this->unk20;
-    if (!(((u8) M2C_FIELD(temp_r4_1133, u8 *, 0xB09) >> 7U) & 1)) {
+    if (!(((u8) temp_r4_1133->unkB09 >> 7U) & 1)) {
         AddGoal_Respawn();
         return;
     }
     if (!(((u8) this->unk54 >> 7U) & 1) && ((void **) this->unk40 != NULL)) {
-        temp_r5_1147 = temp_r4_1133->unkA2C;
+        temp_r5_1147 = temp_r4_1133->unkA44;
         if ((temp_r5_1147 != NULL) && (M2C_FIELD(temp_r5_1147, s32 *, 4) & 0x200)) {
             AddGoal_Spawn();
             return;
         }
     }
-    if ((((u8) M2C_FIELD(temp_r4_1133, u8 *, 0xB0A) >> 5U) & 1) && ((s32) temp_r4_1133->unk110.unk16C > 0)) {
+    if ((((u8) temp_r4_1133->unkB0A >> 5U) & 1) && ((s32) temp_r4_1133->unk110.unk16C > 0)) {
         if (((u8) temp_r4_1133->unk110.unk58 != 0) && (temp_r3_1165 = temp_r4_1133->unk110.unk50, ((temp_r3_1165 == NULL) == 0)) && (var_r0_1168 = M2C_FIELD(temp_r3_1165, u32 *, 8), ((var_r0_1168 == 0U) == 0))) {
 
         } else {
@@ -583,8 +583,8 @@ block_16:
         }
         this->unk20->TakeDamage(&sp8, 0U);
         temp_r3_1217 = this->unk20;
-        M2C_FIELD(temp_r3_1217, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r3_1217, u8 *, 0xB0A) & ~1);
-        if ((this->unk20->unkAB0 <= 0.0f) && (IsPresent(0x29) == 0)) {
+        temp_r3_1217->unkB0A &= ~1;
+        if ((this->unk20->unkAC8 <= 0.0f) && (IsPresent(0x29) == 0)) {
             AddGoal_Death(&sp8);
             return;
         }
@@ -594,7 +594,7 @@ block_16:
         }
         if ((sp8.unk34 >> 4U) & 1) {
             temp_r3_1252 = this->unk20;
-            if (temp_r3_1252->unkAB4 <= 0.0f) {
+            if (temp_r3_1252->unkACC <= 0.0f) {
                 temp_r3_1252->Armour_Destroy();
             }
         }
@@ -604,41 +604,41 @@ block_29:
     temp_r3_1260 = this->unk40;
     if ((temp_r3_1260 == NULL) || (M2C_FIELD(*temp_r3_1260, u8 (**)(), 0x28)() == 0)) {
         temp_r3_1270 = this->unk20;
-        if (temp_r3_1270->unkAB0 > 0.0f) {
+        if (temp_r3_1270->unkAC8 > 0.0f) {
             temp_r3_1270->IsFlinching();
             if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 temp_r3_1278 = this->unk20;
-                if (((u8) M2C_FIELD(temp_r3_1278, u8 *, 0xB01) >> 4U) & 1) {
+                if (((u8) temp_r3_1278->unkB01 >> 4U) & 1) {
                     AddGoal_SpawnIdle();
                     return;
                 }
-                if (((u8) M2C_FIELD(temp_r3_1278, u8 *, 0xB0A) >> 7U) & 1) {
+                if (((u8) temp_r3_1278->unkB0A >> 7U) & 1) {
                     var_r30_1290 = 0;
-                    if (((u8) M2C_FIELD(temp_r3_1278, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1278->unk870.unk30)->Get() != NULL)) {
+                    if (((u8) M2C_FIELD(temp_r3_1278, u8 *, 0x8B8) == 2) || (temp_r3_1278->unk870.unk40.Get() != NULL)) {
                         var_r30_1290 = 1;
                     }
                     if (var_r30_1290 != 0) {
                         temp_r4_1302 = this->unk20;
-                        M2C_FIELD(temp_r4_1302, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r4_1302, u8 *, 0xB0A) & ~0x80);
+                        temp_r4_1302->unkB0A &= ~0x80;
                         temp_r4_1309 = this->unk20;
-                        M2C_FIELD(temp_r4_1309, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r4_1309, u8 *, 0xB08) | 0x40);
-                        AddGoal_AlertMode((AITargetData *) &this->unk20->unk838.unk28);
+                        temp_r4_1309->unkB08 |= 0x40;
+                        AddGoal_AlertMode(&this->unk20->unk870);
                         return;
                     }
                     goto block_41;
                 }
 block_41:
                 temp_r3_1318 = this->unk20;
-                if (M2C_FIELD(temp_r3_1318, u8 *, 0xB0A) & 1) {
+                if (temp_r3_1318->unkB0A & 1) {
                     AddGoal_ReceiveOrders();
                     return;
                 }
                 if (((u8) this->unk54 >> 5U) & 1) {
                     var_r30_1330 = 0;
-                    if (((u8) M2C_FIELD(temp_r3_1318, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1318->unk870.unk30)->Get() != NULL)) {
+                    if (((u8) M2C_FIELD(temp_r3_1318, u8 *, 0x8B8) == 2) || (temp_r3_1318->unk870.unk40.Get() != NULL)) {
                         var_r30_1330 = 1;
                     }
-                    if ((var_r30_1330 != 0) && (((temp_r3_1342 = this->unk20, ((M2C_BITWISE(s32, temp_r3_1342->unkA78) == 1) != 0)) && (((AITargetData *) &temp_r3_1342->unk838.unk28)->GetDist() < M2C_FIELD(this->unk20->unkA20, f32 *, 0x140))) || (M2C_BITWISE(s32, this->unk20->unkA78) != 1))) {
+                    if ((var_r30_1330 != 0) && (((temp_r3_1342 = this->unk20, (((s32) temp_r3_1342->unkA90 == 1) != 0)) && (temp_r3_1342->unk870.GetDist() < this->unk20->unkA38->unk140)) || ((s32) this->unk20->unkA90 != 1))) {
                         AddGoal_FollowSpawnGraph();
                         temp_r5_1361 = this->unk48;
                         M2C_FIELD(temp_r5_1361, u8 *, 0x95) = (u8) (M2C_FIELD(temp_r5_1361, u8 *, 0x95) | 8);
@@ -651,12 +651,12 @@ block_52:
                 if (((u8) this->unk54 >> 5U) & 1) {
                     temp_r3_1375 = this->unk20;
                     var_r30_1376 = 0;
-                    if (((u8) M2C_FIELD(temp_r3_1375, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1375->unk870.unk30)->Get() != NULL)) {
+                    if (((u8) M2C_FIELD(temp_r3_1375, u8 *, 0x8B8) == 2) || (temp_r3_1375->unk870.unk40.Get() != NULL)) {
                         var_r30_1376 = 1;
                     }
                     if (var_r30_1376 != 0) {
                         temp_r3_1389 = this->unk20;
-                        if ((M2C_BITWISE(s32, temp_r3_1389->unkA78) == 1) && (((AITargetData *) &temp_r3_1389->unk838.unk28)->GetDist() > M2C_FIELD(this->unk20->unkA20, f32 *, 0x140))) {
+                        if (((s32) temp_r3_1389->unkA90 == 1) && (temp_r3_1389->unk870.GetDist() > this->unk20->unkA38->unk140)) {
                             AddGoal_Idle();
                             return;
                         }
@@ -673,25 +673,25 @@ block_60:
         }
 block_63:
         temp_r3_1415 = this->unk20;
-        if ((temp_r3_1415->unkAB0 > 0.0f) && (M2C_FIELD(temp_r3_1415->__vptr, u8 (**)(), 0x134)() == 0) && (this->unk20->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x28) == 0)) {
+        if ((temp_r3_1415->unkAC8 > 0.0f) && (M2C_FIELD(temp_r3_1415->__vptr, u8 (**)(), 0x134)() == 0) && (this->unk20->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x28) == 0)) {
             temp_r4_1438 = this->unk20;
-            if (((u8) M2C_FIELD(temp_r4_1438, u8 *, 0xB08) >> 6U) & 1) {
-                var_f0_1443 = M2C_FIELD(temp_r4_1438->unkA20, f32 *, 0x134);
+            if (((u8) temp_r4_1438->unkB08 >> 6U) & 1) {
+                var_f0_1443 = temp_r4_1438->unkA38->unk134;
             } else {
-                var_f0_1443 = M2C_FIELD(temp_r4_1438->unkA20, f32 *, 0x12C);
+                var_f0_1443 = temp_r4_1438->unkA38->unk12C;
             }
             var_r30_1451 = 0;
-            if (((u8) M2C_FIELD(temp_r4_1438, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r4_1438->unk870.unk30)->Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r4_1438, u8 *, 0x8B8) == 2) || (temp_r4_1438->unk870.unk40.Get() != NULL)) {
                 var_r30_1451 = 1;
             }
-            if ((var_r30_1451 != 0) && (((AITargetData *) &this->unk20->unk838.unk28)->IsAttackable() != 0) && ((temp_r3_1468 = this->unk20, (((((u8) M2C_FIELD(temp_r3_1468, u8 *, 0xB08) >> 5U) & 1) == 0) == 0)) || ((((AITargetData *) &temp_r3_1468->unk838.unk28)->GetDistSq() < (var_f0_1443 * var_f0_1443)) && ((temp_r3_1476 = this->unk20, (((((u8) M2C_FIELD(temp_r3_1476, u8 *, 0xB08) >> 6U) & 1) == 0) == 0)) || (((u8) M2C_FIELD(temp_r3_1476, u8 *, 0x8B9) >> 4U) & 1))))) {
+            if ((var_r30_1451 != 0) && (this->unk20->unk870.IsAttackable() != 0) && ((temp_r3_1468 = this->unk20, (((((u8) temp_r3_1468->unkB08 >> 5U) & 1) == 0) == 0)) || ((temp_r3_1468->unk870.GetDistSq() < (var_f0_1443 * var_f0_1443)) && ((temp_r3_1476 = this->unk20, (((((u8) temp_r3_1476->unkB08 >> 6U) & 1) == 0) == 0)) || (((u8) M2C_FIELD(temp_r3_1476, u8 *, 0x8B9) >> 4U) & 1))))) {
                 temp_r3_1484 = this->unk20;
                 if (temp_r3_1484->IsTargetBehindWall() == 0) {
-                    AddGoal_AlertMode((AITargetData *) &this->unk20->unk838.unk28);
+                    AddGoal_AlertMode(&this->unk20->unk870);
                     return;
                 }
             }
-            if ((AddGoal_MoveToLastPlayerPos() == 0) && ((IsPresent(2) == 0) || (((u8) M2C_FIELD(this->unk20, u8 *, 0xB08) >> 6U) & 1))) {
+            if ((AddGoal_MoveToLastPlayerPos() == 0) && ((IsPresent(2) == 0) || (((u8) this->unk20->unkB08 >> 6U) & 1))) {
                 AddGoal_PatrolMode();
             }
         }
@@ -705,7 +705,6 @@ void DojoGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 DojoGoal_Think::Update() {
     Enemy *temp_r3_1560;
 
@@ -724,11 +723,10 @@ u8 DojoGoal_Think::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void DojoGoal_Think::Activate() {
     this->unk8 = 0;
-    if (M2C_BITWISE(u32, this->unk20->unkA68) != 0U) {
+    if ((u32) this->unk20->unkA80 != 0) {
         StartFollowingSpawnGraph();
         this->unk54 |= 0x20;
     }
@@ -954,7 +952,7 @@ void DojoGoal_Think::Init(Enemy *arg0) {
         }
         this->unk50 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unk3C = NULL;
-        if ((u32) arg0->unkA4C != 0U) {
+        if ((SpawnerObject *) arg0->unkA4C != NULL) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;

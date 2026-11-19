@@ -2,6 +2,7 @@
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKDistanceLevelChunk.h"
@@ -16,16 +17,12 @@
 #include "spyro/source/ElecTier2Goals.h"
 #include "spyro/source/ElecTier3Goals.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/KDSound.h"
-#include "spyro/source/PlatformObject.h"
 #include "spyro/source/SlimeTrailFX.h"
-#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -119,7 +116,7 @@ void ElecTier3::DrawScan() {
     spE0 = (f64) sp20;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
-    if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
+    if ((u8) this->unkB55 != 0) {
         spE0 = 0.1f;
         spD8 = 0.7f;
         (*(f32 *) ((u8 *) &spD0 + 0xc)) = 0.7f;
@@ -144,7 +141,7 @@ void ElecTier3::DrawScan() {
     } while (var_r29_126 < 8);
     MKMaterial_SetMaterial(M2C_FIELD(checked_cast<ElecTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2C0));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(*((Matrix *) &this->unkAF8));
+    MKSetMatrix(this->unkB10);
     MKBegin(0x10);
     var_r29_165 = 0;
     var_r31_167 = 0;
@@ -243,54 +240,54 @@ void ElecTier3::UpdateScan() {
     Normalise(spD0);
     sp110 = M2C_BITWISE(f64, spD0);
     sp118 = (f64) spD0.unk8;
-    this->unkAF8 = (f32) sp110;
-    this->unkAFC = (*(f32 *) ((u8 *) &sp110 + 0x4));
-    M2C_FIELD(this, f32 *, 0xB18) = (f32) sp118;
+    this->unkB10.unk0 = (f32) sp110;
+    this->unkB10.unk4 = (*(f32 *) ((u8 *) &sp110 + 0x4));
+    this->unkB10.unk8 = (f32) sp118;
     sp18 = ((f32) spF0 * (*(f32 *) ((u8 *) &sp110 + 0x4))) - ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp110);
     sp10 = ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp118) - ((f32) spF8 * (*(f32 *) ((u8 *) &sp110 + 0x4)));
     sp14 = ((f32) spF8 * (f32) sp110) - ((f32) spF0 * (f32) sp118);
     sp108 = (f64) sp18;
     sp100 = (f64) sp10;
-    this->unkB04 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB20) = (f32) sp100;
-    this->unkB24 = (*(f32 *) ((u8 *) &sp100 + 0x4));
-    this->unkB10.unk0 = (f32) sp108;
-    this->unkB10.unk4 = 0.0f;
+    this->unkB10.unkC = 0.0f;
+    this->unkB10.unk10 = (f32) sp100;
+    this->unkB10.unk14 = (*(f32 *) ((u8 *) &sp100 + 0x4));
+    this->unkB10.unk18 = (f32) sp108;
+    this->unkB10.unk1C = 0.0f;
     sp68 = 0.0f;
-    this->unkB10.unk8 = (f32) spF0;
+    this->unkB10.unk20 = (f32) spF0;
     sp60 = 0.0f;
-    this->unkB10.unkC = (*(f32 *) ((u8 *) &spF0 + 0x4));
+    this->unkB10.unk24 = (*(f32 *) ((u8 *) &spF0 + 0x4));
     sp64 = 1.0f;
-    this->unkB10.unk10 = (f32) spF8;
-    this->unkB10.unk14 = 0.0f;
+    this->unkB10.unk28 = (f32) spF8;
+    this->unkB10.unk2C = 0.0f;
     spB0 = (f64) sp10;
-    this->unkB10.unk18 = sp120.unk30;
+    this->unkB10.unk30 = sp120.unk30;
     spB8 = (f64) sp18;
-    this->unkB10.unk1C = sp120.unk34;
-    this->unkB10.unk20 = sp120.unk38;
-    this->unkB10.unk24 = 1.0f;
+    this->unkB10.unk34 = sp120.unk34;
+    this->unkB10.unk38 = sp120.unk38;
+    this->unkB10.unk3C = 1.0f;
     spA0 = (f64) sp60;
     spA8 = (f64) sp68;
-    Tools_RotateMatrixToDirection((Matrix *) &this->unkAF8, *((MKVector3 *) &spF0), *((MKVector3 *) &spA0), -0.3926991f);
-    if ((u8) M2C_FIELD(this, u8 *, 0xB55) == 0) {
+    Tools_RotateMatrixToDirection(&this->unkB10, *((MKVector3 *) &spF0), *((MKVector3 *) &spA0), -0.3926991f);
+    if ((u8) this->unkB55 == 0) {
         var_r31_382 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk40.Get() != NULL)) {
             var_r31_382 = 1;
         }
         if (var_r31_382 != 0) {
             temp_f0_397 = (f64) M2C_FIELD(this, f32 *, 0xB30) * 5.72858887e-315;
             sp50 = temp_f0_397;
             sp80 = temp_f0_397;
-            sp58 = this->unkB10.unk10 * 2500.0f;
+            sp58 = this->unkB10.unk28 * 2500.0f;
             sp88 = (f64) sp58;
             temp_f0_409 = (f64) M2C_FIELD(this, f32 *, 0xB40) + temp_f0_397;
             sp40 = temp_f0_409;
             sp90 = temp_f0_409;
-            sp48 = this->unkB10.unk20 + (f32) sp88;
+            sp48 = this->unkB10.unk38 + (f32) sp88;
             sp98 = (f64) sp48;
             ((AITargetData *) &sp70)->GetPos();
-            M2C_FIELD(this, u8 *, 0xB55) = (u8) (Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk18), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f);
-            if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
+            this->unkB55 = Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk30), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f;
+            if ((u8) this->unkB55 != 0) {
                 KDSound_Play3d(GS_ConduitAlert, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             }
         }
@@ -303,13 +300,13 @@ void ElecTier3::EnableScan(bool arg0) {
     u8 var_r0_465;
     void *temp_r31_473;
 
-    M2C_FIELD(this, u8 *, 0xB54) = arg0;
+    this->unkB54 = arg0;
     if (arg0 != 0) {
         var_r0_465 = 0;
     } else {
-        var_r0_465 = M2C_FIELD(this, u8 *, 0xB55);
+        var_r0_465 = this->unkB55;
     }
-    M2C_FIELD(this, u8 *, 0xB55) = var_r0_465;
+    this->unkB55 = var_r0_465;
     temp_r31_473 = checked_cast<ElecTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r31_480 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeParentIndex(M2C_FIELD(temp_r31_473, s32 *, 0x2B8));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix((s32) temp_r31_480, NULL, (AnimationMatrixPosition) 4, 0U);
@@ -317,19 +314,18 @@ void ElecTier3::EnableScan(bool arg0) {
 
 void ElecTier3::Draw() {
     Enemy::Draw();
-    if ((u8) M2C_FIELD(this, u8 *, 0xB54) != 0) {
+    if ((u8) this->unkB54 != 0) {
         DrawScan();
     }
 }
 
 void ElecTier3::Update() {
     Enemy::Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0xB54) != 0) {
+    if ((u8) this->unkB54 != 0) {
         UpdateScan();
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElecTier3::UpdateMovementCustom() {
     Matrix sp10;
     M2C_UNK spC;
@@ -337,10 +333,9 @@ void ElecTier3::UpdateMovementCustom() {
     UpdateRotation();
     UpdateModel();
     M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    sp10.Scale3x3(&sp10, this->unkB10.unk28);
+    sp10.Scale3x3(&sp10, this->unkB50);
     MKModel_SetWorldMatrix(this->unk4, sp10);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 s32 ElecTier3::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
@@ -374,10 +369,10 @@ void ElecTier3::GetCharacterName() {
 
 void ElecTier3::SetDefaults() {
     Enemy::SetDefaults();
-    this->unkB10.unk28 = 1.0f;
-    M2C_FIELD(this, s8 *, 0xB54) = 0;
-    M2C_FIELD(this, s8 *, 0xB55) = 0;
-    ((Matrix *) &this->unkAF8)->SetIdentity();
+    this->unkB50 = 1.0f;
+    this->unkB54 = 0;
+    this->unkB55 = 0;
+    this->unkB10.SetIdentity();
 }
 
 void ElecTier3::Deinit() {
@@ -405,7 +400,7 @@ void ElecTier3::Init() {
         temp_r31_713->__vptr = &__vt;
     }
     temp_r31_713->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_713;
+    this->unkA3C = &temp_r31_713->__vptr;
 }
 #endif
 
@@ -483,7 +478,7 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
     sp1C = 4000.0f;
     sp20 = 0.0f;
     sp48 = M2C_FIELD(this, f64 *, 0x588);
-    temp_f31_884 = this->unk588.unk0 - sp58.unk4;
+    temp_f31_884 = this->unk588.unk4 - sp58.unk4;
     sp28 = (f64) sp18;
     sp50 = M2C_FIELD(this, f64 *, 0x590);
     sp30 = (f64) sp20;
@@ -496,7 +491,7 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
         sp58 = M2C_BITWISE(f64, sp68);
         sp58.unk8 = (f64) sp68.unk8;
         sp58.unk4 += temp_f31_884;
-        temp_r4_923 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) + 8;
+        temp_r4_923 = this->unkA38->GetAnimSequence(0xA, 0xDD, this->unkAE4, NULL) + 8;
         sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_923, f64 *, 0);
         sp58.unk8 -= M2C_FIELD(temp_r4_923, f32 *, 8);
         M2C_FIELD(arg0, f64 *, 0) = sp58;
@@ -509,50 +504,50 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
 
 void ElecTier2::UpdateMovementCustom() {
     M2C_FIELD(this, f64 *, 0x588) = (f64) (M2C_FIELD(this, f64 *, 0x588) + M2C_FIELD(this, f64 *, 0x598));
-    this->unk588.unk4 += this->unk59C;
+    this->unk588.unk8 += this->unk5A0;
     UpdateRotation();
     UpdateModel();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkB38'
+#if 0 // DRAFT: undefined identifier 'sp10'
 void ElecTier2::Update() {
     f64 sp8;
     f32 temp_f1_1007;
     f32 temp_f1_1018;
 
-    ((PlatformObject *) &this->unkB10)->BeginUpdate();
+    this->unkB28.BeginUpdate();
     Enemy::Update();
     MKModel_GetWorldMatrix(this->unk4);
     ((Matrix *) &sp8)->GetRotationPYR();
     M2C_FIELD(this, f64 *, 0xB30) = sp8;
-    this->unkB38 = sp10;
-    ((PlatformObject *) &this->unkB10)->EndUpdate();
-    if ((u8) M2C_FIELD(this, u8 *, 0xB12) != 0) {
-        temp_f1_1007 = M2C_FIELD(this, f32 *, 0xB18);
+    M2C_FIELD(this, f64 *, 0xB38) = sp10;
+    this->unkB28.EndUpdate();
+    if ((u8) this->unkB12 != 0) {
+        temp_f1_1007 = this->unkB18;
         if (temp_f1_1007 > 0.0f) {
-            M2C_FIELD(this, f32 *, 0xB18) = (f32) (temp_f1_1007 - gUpdateTimeDelta);
+            this->unkB18 = temp_f1_1007 - gUpdateTimeDelta;
         }
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0xB12) == 0) {
-        temp_f1_1018 = M2C_BITWISE(f32, this->unkB04);
+    if ((u8) this->unkB12 == 0) {
+        temp_f1_1018 = this->unkB1C;
         if (temp_f1_1018 > 0.0f) {
-            this->unkB04 = temp_f1_1018 - gUpdateTimeDelta;
+            this->unkB1C = temp_f1_1018 - gUpdateTimeDelta;
         }
     }
 }
 #endif
 
 void ElecTier2::Message(MKMessage *arg0) {
-    ((PlatformObject *) &this->unkB10)->Message(arg0);
+    this->unkB28.Message(arg0);
     Enemy::Message(arg0);
 }
 
 void ElecTier2::Despawn(bool arg0) {
     Enemy::Despawn(arg0);
-    ((PlatformObject *) &this->unkB10)->Reset();
+    this->unkB28.Reset();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: ')' expected
 s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     MKCollisionResult sp170;
     Matrix sp130;
@@ -609,14 +604,14 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     sp120.unk8 = 0.0f;
     sp110 = 0.0f;
     sp110.unk8 = 0.0f;
-    temp_r4_1117 = this->unkA2C;
+    temp_r4_1117 = this->unkA44;
     if ((temp_r4_1117 != NULL) && (M2C_FIELD(temp_r4_1117, s32 *, 4) & 0x200)) {
         var_r3_1112 = 1;
     }
     sp80 = 0.0f;
     sp84 = 100.0f;
     sp88 = 0.0f;
-    M2C_FIELD(this, u8 *, 0xB10) = var_r3_1112;
+    this->unkB10 = var_r3_1112;
     spE0 = (f64) sp80;
     spE8 = (f64) sp88;
     temp_f3_1136 = sp130.unk30;
@@ -631,7 +626,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     sp68 = sp130.unk38 + sp120.unk8;
     spF8 = (f64) sp68;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *((MKVector3 *) &spF0), &sp170, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
-        if ((u8) M2C_FIELD(this, u8 *, 0xB10) != 0) {
+        if ((u8) this->unkB10 != 0) {
             sp20 = -M2C_BITWISE(f32, sp110);
             sp24 = -sp110.unk4;
             sp28 = -sp110.unk8;
@@ -660,19 +655,19 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp130.unk38 = (f32) spB8;
             sp130.unk3C = 1.0f;
         }
-        M2C_FIELD(this, s8 *, 0xB13) = 1;
+        this->unkB13 = 1;
     } else {
-        M2C_FIELD(this, u8 *, 0xB10) = 0U;
-        M2C_FIELD(this, s8 *, 0xB13) = 0;
+        this->unkB10 = 0;
+        this->unkB13 = 0;
     }
     if (Enemy::Spawn(&sp130, NULL) != 0) {
         this->unk6B5 |= 0x10;
         this->unk6B5 &= ~0x20;
-        M2C_FIELD(this, s8 *, 0xB12) = 1;
-        M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
-        this->unkB04 = 0.0f;
-        M2C_FIELD(this, u8 *, 0xB11) = (u8) M2C_FIELD(this, u8 *, 0xB10);
-        if ((u8) M2C_FIELD(this, u8 *, 0xB11) != 0) {
+        this->unkB12 = 1;
+        this->unkB18 = 0.0f;
+        this->unkB1C = 0.0f;
+        this->unkB11 = this->unkB10;
+        if ((u8) this->unkB11 != 0) {
             temp_f0_1273 = M2C_BITWISE(f64, sp110) + sp130.unk30;
             sp50 = temp_f0_1273;
             sp90 = temp_f0_1273;
@@ -680,8 +675,8 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp98 = (f64) sp58;
             SetupEnemyRegion(*((MKVector3 *) &sp90), 1500.0f);
         }
-        this->unkAFC = 0;
-        ((PlatformObject *) &this->unkB10)->Reset();
+        this->unkB14 = 0;
+        this->unkB28.Reset();
         return 1;
     }
     return 0;
@@ -710,23 +705,21 @@ void ElecTier2::UpdateCollisionItems() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ElecTier2::SetupCollision() {
     u16 temp_r31_1380;
     void *temp_r30_1374;
 
     temp_r30_1374 = checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r31_1380 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "collision");
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, (s32) temp_r31_1380, (MKCollisionMode) 2, this->unk634, M2C_FIELD(temp_r30_1374, u32 *, 0x70));
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, (s32) temp_r31_1380, (MKCollisionMode) 2, (MKCollisionInfo *) this->unk634, M2C_FIELD(temp_r30_1374, u32 *, 0x70));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'P19ElecTier2Descriptor'
 void ElecTier2::LoadDone() {
     Enemy::LoadDone();
-    ((PlatformObject *) &this->unkB10)->Init(checked_cast<P19ElecTier2Descriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x2CC, this->unk634);
-    ((PlatformObject *) &this->unkB10)->LoadDone((MKProp *) this, NULL);
-    this->unkA28 = (void **) this->unkA24;
+    this->unkB28.Init(checked_cast<P19ElecTier2Descriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x2CC, (MKCollisionInfo *) this->unk634);
+    this->unkB28.LoadDone((MKProp *) this, NULL);
+    this->unkA40 = this->unkA3C;
 }
 #endif
 
@@ -739,7 +732,7 @@ s32 ElecTier2::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->LoadBool("bStartGrounded", &sp8, 0) != 0) {
-        M2C_FIELD(this, u8 *, 0xB10) = sp8;
+        this->unkB10 = sp8;
         return 1;
     }
     return 0;
@@ -747,8 +740,8 @@ s32 ElecTier2::LoadLine(MKIniLine *arg0) {
 #endif
 
 void ElecTier2::Deinit() {
-    ((PlatformObject *) &this->unkB10)->DetachAll();
-    ((PlatformObject *) &this->unkB10)->Deinit();
+    this->unkB28.DetachAll();
+    this->unkB28.Deinit();
     Enemy::Deinit();
 }
 
@@ -773,9 +766,9 @@ void ElecTier2::Init() {
         temp_r31_1504->__vptr = &__vt;
     }
     temp_r31_1504->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_1504;
-    M2C_FIELD(this, s8 *, 0xB10) = 0;
-    M2C_FIELD(this, s8 *, 0xB13) = 0;
+    this->unkA3C = &temp_r31_1504->__vptr;
+    this->unkB10 = 0;
+    this->unkB13 = 0;
 }
 #endif
 
@@ -819,14 +812,14 @@ void ElecTier2Descriptor::Init() {
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ElecTier1::Despawn(bool arg0) {
-    s32 temp_r4_1692;
+    SlimeTrailFX *temp_r4_1692;
 
-    temp_r4_1692 = this->unkAF8;
-    if ((u32) temp_r4_1692 != 0U) {
-        ((SlimeTrailFXManager *) (&gb + 0x2B8))->FreeTrail((SlimeTrailFX *) temp_r4_1692);
-        this->unkAF8 = 0;
+    temp_r4_1692 = this->unkB10;
+    if (temp_r4_1692 != NULL) {
+        ((SlimeTrailFXManager *) (&gb + 0x2B8))->FreeTrail(temp_r4_1692);
+        this->unkB10 = NULL;
     }
-    KDSound_Stop((s32 *) &this->unkB10);
+    KDSound_Stop(&this->unkB28);
     Enemy::Despawn(arg0);
 }
 #endif
@@ -861,13 +854,13 @@ void ElecTier1::CheckAnimEvents() {
     f64 sp8;
     f64 temp_f0_1764;
 
-    if ((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) && ((u32) this->unkAF8 != 0U)) {
+    if ((((MKAnimScript *) this->unk630)->CheckEvent(0x16) != 0) && ((SlimeTrailFX *) this->unkB10 != NULL)) {
         sp28 = 0.0f;
         sp2C = -100.0f;
         sp30 = 0.0f;
-        spB8 = M2C_FIELD(this, f64 *, 0xB18);
+        spB8 = this->unkB18;
         sp78 = (f64) sp28;
-        spC0 = M2C_FIELD(this, f64 *, 0xB20);
+        spC0 = this->unkB20;
         sp80 = (f64) sp30;
         sp18 = spB8 + sp78;
         sp50 = 0.0f;
@@ -892,9 +885,9 @@ void ElecTier1::CheckAnimEvents() {
             sp70 = (f64) sp10;
             spC0 = (f64) sp10;
         }
-        M2C_FIELD(this, f64 *, 0xB18) = spB8;
-        M2C_FIELD(this, f64 *, 0xB20) = spC0;
-        ((SlimeTrailFX *) this->unkAF8)->UpdatePos((MKVector3 *) &this->unkB00, *(this->unk8 + 0x10));
+        this->unkB18 = spB8;
+        this->unkB20 = spC0;
+        this->unkB10->UpdatePos((MKVector3 *) &this->unkB18, *(this->unk8 + 0x10));
     }
     Enemy::CheckAnimEvents();
 }
@@ -908,25 +901,25 @@ void ElecTier1::GetCharacterName() {
 
 #if 0 // DRAFT: ')' expected
 void ElecTier1::Message(MKMessage *arg0) {
+    SlimeTrailFX *temp_r4_1845;
     s32 temp_r0_1837;
-    s32 temp_r4_1845;
 
     temp_r0_1837 = arg0->unk0;
     switch (temp_r0_1837) {                         /* irregular */
     case -4:
-        temp_r4_1845 = this->unkAF8;
-        if ((u32) temp_r4_1845 != 0U) {
-            ((SlimeTrailFXManager *) (&gb + 0x2B8))->FreeTrail((SlimeTrailFX *) temp_r4_1845);
-            this->unkAF8 = 0;
+        temp_r4_1845 = this->unkB10;
+        if (temp_r4_1845 != NULL) {
+            ((SlimeTrailFXManager *) (&gb + 0x2B8))->FreeTrail(temp_r4_1845);
+            this->unkB10 = NULL;
         }
         break;
     case -3:
-        if ((u32) this->unkAF8 == 0U) {
-            this->unkAF8 = ((SlimeTrailFXManager *) (&gb + 0x2B8))->AllocTrail(M2C_FIELD(checked_cast<ElecTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2B4));
+        if ((SlimeTrailFX *) this->unkB10 == NULL) {
+            this->unkB10 = ((SlimeTrailFXManager *) (&gb + 0x2B8))->AllocTrail(M2C_FIELD(checked_cast<ElecTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2B4));
         }
         break;
     }
-    ((KDSoundPlayer *) &this->unkB10)->Message(arg0);
+    ((KDSoundPlayer *) &this->unkB28)->Message(arg0);
     Enemy::Message(arg0);
 }
 #endif
@@ -937,18 +930,18 @@ void ElecTier1::Update() {
 
     Enemy::Update();
     sp8 = 1;
-    ((KDSoundFader *) &this->unkB10)->Update(GS_ELElecTrailLP, 1U, this->unkAF8 != 0, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB28)->Update(GS_ELElecTrailLP, 1U, this->unkB10 != NULL, NULL, (MKVector3 *) &this->unkB18, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (IsKnockedUp() == 0) {
         temp_r3_1907 = this->unk8;
-        M2C_FIELD(this, f64 *, 0xB18) = (f64) M2C_FIELD(temp_r3_1907, f64 *, 0x30);
-        M2C_FIELD(this, f64 *, 0xB20) = (f64) M2C_FIELD(temp_r3_1907, f64 *, 0x38);
+        this->unkB18 = M2C_FIELD(temp_r3_1907, f64 *, 0x30);
+        this->unkB20 = M2C_FIELD(temp_r3_1907, f64 *, 0x38);
     }
 }
 
 #if 0 // DRAFT: ')' expected
 s32 ElecTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
-    if ((u32) this->unkAF8 == 0U) {
-        this->unkAF8 = ((SlimeTrailFXManager *) (&gb + 0x2B8))->AllocTrail(M2C_FIELD(checked_cast<ElecTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2B4));
+    if ((SlimeTrailFX *) this->unkB10 == NULL) {
+        this->unkB10 = ((SlimeTrailFXManager *) (&gb + 0x2B8))->AllocTrail(M2C_FIELD(checked_cast<ElecTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2B4));
     }
     Enemy::Spawn(arg0, arg1);
 }
@@ -957,7 +950,7 @@ s32 ElecTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ElecTier1::Deinit() {
     Enemy::Deinit();
-    KDSound_Stop((s32 *) &this->unkB10);
+    KDSound_Stop(&this->unkB28);
 }
 #endif
 
@@ -982,9 +975,9 @@ void ElecTier1::Init() {
         temp_r31_1984->__vptr = &__vt;
     }
     temp_r31_1984->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_1984;
-    this->unkAF8 = 0;
-    ((KDSoundFader *) &this->unkB10)->Init(0.25f, 0.25f);
+    this->unkA3C = &temp_r31_1984->__vptr;
+    this->unkB10 = NULL;
+    ((KDSoundFader *) &this->unkB28)->Init(0.25f, 0.25f);
 }
 #endif
 

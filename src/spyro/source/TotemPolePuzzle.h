@@ -13,7 +13,7 @@ class MKVector3;
 class TotemPolePiece;
 class TotemPolePuzzle;
 
-class TotemPolePiece : public GameProp {  // base: vtable prefix
+class TotemPolePiece : public GameProp {  // base: base ctor call
 public:
     virtual ~TotemPolePiece(void);
     virtual void Init(void);
@@ -42,7 +42,7 @@ public:
     virtual s32 IsAttacking(void);
     TotemPolePiece(void);
     void SetDesiredYaw(int);
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ s32 unkD4;
     /* 0x0d8 */ f32 unkD8;
@@ -50,7 +50,7 @@ public:
     /* 0x0e0 */ f32 unkE0;
 };
 
-class TotemPolePuzzle : public GameProp {  // base: vtable prefix
+class TotemPolePuzzle : public GameProp {  // base: base ctor call
 public:
     virtual ~TotemPolePuzzle(void);
     virtual void Init(void);
@@ -59,7 +59,6 @@ public:
     virtual void Deinit(void);
     virtual void Update(void);
     TotemPolePuzzle(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ void* unkC8;
     /* 0x0cc */ s32 unkCC;
     /* 0x0d0 */ f32 unkD0;

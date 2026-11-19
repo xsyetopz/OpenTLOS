@@ -3,12 +3,13 @@
 
 #include <dolphin/types.h>
 
+class GamePropDescriptor;
 class MKPropDescriptor;
 
 template <class T0>
 class PropCreatorHelper {
 public:
-    void Create(MKPropDescriptor *);
+    GamePropDescriptor * Create(MKPropDescriptor *);
 };
 
 #endif  // SPYRO_SOURCE_PROPCREATORHELPER_H

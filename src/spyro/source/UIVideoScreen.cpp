@@ -19,17 +19,16 @@
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameVideo *' to
 void UIVideoScreen::Draw(const RenderContext &arg0) {
     GameVideo_Draw(this->unkE4);
     UIContainer::Draw(arg0);
-    if (M2C_BITWISE(f32, this->unkE4) > 0.0f) {
+    if (this->unkEC > 0.0f) {
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKSetBaseColorF(1.0f, 1.0f, 1.0f, 1.0f);
         MKPrimitive(0xC, 3);
         MKSetMatrix(Matrix::identity);
         MKBegin(4);
-        MKSetColorF(0.0f, 0.0f, 0.0f, M2C_BITWISE(f32, this->unkE4));
+        MKSetColorF(0.0f, 0.0f, 0.0f, this->unkEC);
         MKSetPositionF(-108.0f, 0.0f, 0.0f);
         MKSetPositionF(748.0f, 0.0f, 0.0f);
         MKSetPositionF(-108.0f, 512.0f, 0.0f);
@@ -38,9 +37,7 @@ void UIVideoScreen::Draw(const RenderContext &arg0) {
         MKEndPrimitive();
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void UIVideoScreen::Update() {
     GameVideo *temp_r3_341;
     f32 temp_f1_276;
@@ -75,7 +72,7 @@ void UIVideoScreen::Update() {
     void *temp_r3_87;
 
     UIScreen::Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0xFB) == 0) {
+    if ((u8) this->unkFB == 0) {
         temp_r3_87 = UIInput(-1);
         var_r4_89 = 0;
         if (((u8) M2C_FIELD(temp_r3_87, u8 *, 5) != 0) || ((u8) M2C_FIELD(temp_r3_87, u8 *, 4) != 0)) {
@@ -186,35 +183,35 @@ void UIVideoScreen::Update() {
             }
         } else {
 block_57:
-            M2C_FIELD(this, u8 *, 0xFB) = 1U;
+            this->unkFB = 1;
             ((UIEvent *) &this->unkD4)->Send();
         }
     }
-    temp_f1_276 = M2C_BITWISE(f32, this->unkE0);
-    temp_f2_277 = M2C_BITWISE(f32, this->unkE4);
+    temp_f1_276 = this->unkE8;
+    temp_f2_277 = this->unkEC;
     if (temp_f1_276 > temp_f2_277) {
-        this->unkE4 = temp_f2_277 + (gUpdateTimeDelta / 0.5f);
-        temp_f1_286 = M2C_BITWISE(f32, this->unkE0);
-        if (M2C_BITWISE(f32, this->unkE4) > temp_f1_286) {
-            this->unkE4 = temp_f1_286;
+        this->unkEC = temp_f2_277 + (gUpdateTimeDelta / 0.5f);
+        temp_f1_286 = this->unkE8;
+        if (this->unkEC > temp_f1_286) {
+            this->unkEC = temp_f1_286;
         }
-        temp_f2_294 = 1.0f - M2C_BITWISE(f32, this->unkE4);
-        KDSound_SetMasterVolume(temp_f2_294 * M2C_FIELD(this, f32 *, 0x100), temp_f2_294 * M2C_FIELD(this, f32 *, 0xFC));
+        temp_f2_294 = 1.0f - this->unkEC;
+        KDSound_SetMasterVolume(temp_f2_294 * this->unk100, temp_f2_294 * this->unkFC);
         goto block_69;
     }
     if (temp_f1_276 < temp_f2_277) {
-        this->unkE4 = temp_f2_277 - (gUpdateTimeDelta / 0.5f);
-        temp_f1_308 = M2C_BITWISE(f32, this->unkE0);
-        if (M2C_BITWISE(f32, this->unkE4) < temp_f1_308) {
-            this->unkE4 = temp_f1_308;
+        this->unkEC = temp_f2_277 - (gUpdateTimeDelta / 0.5f);
+        temp_f1_308 = this->unkE8;
+        if (this->unkEC < temp_f1_308) {
+            this->unkEC = temp_f1_308;
         }
         goto block_69;
     }
     if ((temp_f1_276 == 1.0f) && (temp_f2_277 == temp_f1_276)) {
-        this->unkE8 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkE8) + 1));
-        if (M2C_BITWISE(s32, this->unkE8) >= 3) {
+        this->unkF0 += 1;
+        if ((s32) this->unkF0 >= 3) {
             GameVideo_Destroy(this->unkE4);
-            KDSound_SetMasterVolume(M2C_FIELD(this, f32 *, 0x100), M2C_FIELD(this, f32 *, 0xFC));
+            KDSound_SetMasterVolume(this->unk100, this->unkFC);
             this->unkE4 = NULL;
             UIScreen::OnExit();
             DoExit();
@@ -225,24 +222,22 @@ block_69:
     temp_r3_341 = this->unkE4;
     if (temp_r3_341 != NULL) {
         temp_f1_344 = GameVideo_GetRemainingTime(temp_r3_341);
-        if (((u8) M2C_FIELD(this, u8 *, 0xF5) != 0) && (M2C_BITWISE(f32, this->unkE0) <= M2C_BITWISE(f32, this->unkE4)) && (temp_f1_344 >= 0.0f) && (temp_f1_344 <= 0.5f) && ((u8) M2C_FIELD(this, u8 *, 0xFB) == 0)) {
-            ((UIEvent *) &this->unkBC.unk4)->Send();
+        if (((u8) this->unkF5 != 0) && (this->unkE8 <= this->unkEC) && (temp_f1_344 >= 0.0f) && (temp_f1_344 <= 0.5f) && ((u8) this->unkFB == 0)) {
+            ((UIEvent *) &this->unkC8)->Send();
         }
-        if ((GameVideo_Update(this->unkE4) == 0) && (((u8) M2C_FIELD(this, u8 *, 0xF5) == 0) || (M2C_BITWISE(f32, this->unkE0) != 1.0f))) {
-            ((UIEvent *) &this->unkBC.unk4)->Send();
+        if ((GameVideo_Update(this->unkE4) == 0) && (((u8) this->unkF5 == 0) || (this->unkE8 != 1.0f))) {
+            ((UIEvent *) &this->unkC8)->Send();
         }
-    } else if (((u8) M2C_FIELD(this, u8 *, 0xF5) == 0) || (M2C_BITWISE(f32, this->unkE0) != 1.0f)) {
-        ((UIEvent *) &this->unkBC.unk4)->Send();
+    } else if (((u8) this->unkF5 == 0) || (this->unkE8 != 1.0f)) {
+        ((UIEvent *) &this->unkC8)->Send();
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void UIVideoScreen::OnExit() {
-    if ((u8) M2C_FIELD(this, u8 *, 0xF5) != 0) {
-        M2C_FIELD(this, f32 *, 0x100) = KDSound_GetMasterSoundVolume();
-        M2C_FIELD(this, f32 *, 0xFC) = KDSound_GetMasterMusicVolume();
-        this->unkE0 = 1.0f;
+    if ((u8) this->unkF5 != 0) {
+        this->unk100 = KDSound_GetMasterSoundVolume();
+        this->unkFC = KDSound_GetMasterMusicVolume();
+        this->unkE8 = 1.0f;
         return;
     }
     GameVideo_Destroy(this->unkE4);
@@ -250,7 +245,6 @@ void UIVideoScreen::OnExit() {
     UIScreen::OnExit();
     DoExit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'GameVideo_Create(signed char *, long, long)' does not match
 void UIVideoScreen::OnEnter() {
@@ -261,11 +255,11 @@ void UIVideoScreen::OnEnter() {
 
     UIScreen::OnEnter();
     M2C_FIELD(&gb, s8 *, 9) = 0;
-    temp_r3_457 = 0 - M2C_FIELD(this, u8 *, 0xFA);
-    temp_r0_461 = 0 - M2C_FIELD(this, u8 *, 0xF9);
-    this->unkE4 = GameVideo_Create(this->unkE0, (M2C_FIELD(this, u8 *, 0xF8) != 0) | (2 & ((temp_r0_461 - temp_r0_461) - !M2C_CARRY)), (temp_r3_457 - temp_r3_457) - !M2C_CARRY);
+    temp_r3_457 = 0 - this->unkFA;
+    temp_r0_461 = 0 - this->unkF9;
+    this->unkE4 = GameVideo_Create(this->unkE0, (this->unkF8 != 0) | (2 & ((temp_r0_461 - temp_r0_461) - !M2C_CARRY)), (temp_r3_457 - temp_r3_457) - !M2C_CARRY);
     var_r3_469 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0xF4) != 0) && ((GameVideo *) this->unkE4 != NULL)) {
+    if (((u8) this->unkF4 != 0) && ((GameVideo *) this->unkE4 != NULL)) {
         var_r3_469 = 1;
     }
     if (var_r3_469 != 0) {
@@ -273,10 +267,10 @@ void UIVideoScreen::OnEnter() {
     } else {
         var_f0_480 = 0.0f;
     }
-    this->unkE4 = var_f0_480;
-    this->unkE0 = 0.0f;
+    this->unkEC = var_f0_480;
     this->unkE8 = 0.0f;
-    M2C_FIELD(this, s8 *, 0xFB) = 0;
+    this->unkF0 = 0;
+    this->unkFB = 0;
 }
 #endif
 
@@ -286,7 +280,7 @@ void UIVideoScreen::Message(UIMessage *arg0) {
 
 void UIVideoScreen::Resolve() {
     UIScreen::Resolve();
-    ((UIEvent *) &this->unkBC.unk4)->Resolve((UIObject *) this);
+    ((UIEvent *) &this->unkC8)->Resolve((UIObject *) this);
     ((UIEvent *) &this->unkD4)->Resolve((UIObject *) this);
 }
 
@@ -307,7 +301,7 @@ s32 UIVideoScreen::LoadLine(UIDataLine *arg0) {
         return 1;
     }
     var_r31_570 = 0;
-    if ((((UIEvent *) &this->unkBC.unk4)->LoadLine("OnComplete", arg0) != 0) || (((UIEvent *) &this->unkD4)->LoadLine("OnButtonPressed", arg0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeIn", (u8 *) &this->unkEC, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeOut", this + 0xF5, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bWideScreen", (u8 *) &this->unkF0, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bZoom", this + 0xF9, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bLocalized", this + 0xFA, 0) != 0) || (UIScreen::LoadLine(arg0) != 0)) {
+    if ((((UIEvent *) &this->unkC8)->LoadLine("OnComplete", arg0) != 0) || (((UIEvent *) &this->unkD4)->LoadLine("OnButtonPressed", arg0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeIn", &this->unkF4, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeOut", &this->unkF5, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bWideScreen", &this->unkF8, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bZoom", &this->unkF9, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bLocalized", &this->unkFA, 0) != 0) || (UIScreen::LoadLine(arg0) != 0)) {
         var_r31_570 = 1;
     }
     return var_r31_570;
@@ -334,10 +328,10 @@ void UIVideoScreen::Init() {
     UIContainer::Init();
     this->unkE4 = NULL;
     this->unkE0 = NULL;
-    M2C_FIELD(this, s8 *, 0xF4) = 0;
-    M2C_FIELD(this, s8 *, 0xF5) = 0;
-    M2C_FIELD(this, s8 *, 0xF8) = 0;
-    M2C_FIELD(this, s8 *, 0xFA) = 0;
-    M2C_FIELD(this, s8 *, 0xFB) = 0;
-    M2C_FIELD(this, s8 *, 0xF9) = 0;
+    this->unkF4 = 0;
+    this->unkF5 = 0;
+    this->unkF8 = 0;
+    this->unkFA = 0;
+    this->unkFB = 0;
+    this->unkF9 = 0;
 }

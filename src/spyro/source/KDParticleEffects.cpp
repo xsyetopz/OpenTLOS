@@ -195,7 +195,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'unk24'
 void KDParticleLineEmitterProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r4_512;
 
@@ -207,7 +207,7 @@ void KDParticleLineEmitterProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: undefined identifier 'unk24'
 s32 KDParticleLineEmitterProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_539;
 

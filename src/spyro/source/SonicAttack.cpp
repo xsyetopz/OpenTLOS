@@ -439,7 +439,6 @@ void SonicAttack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SonicAttack::LoadDone() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -464,7 +463,6 @@ void SonicAttack::LoadDone() {
     sp30.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(this->unk160, &sp30);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SonicAttack::Init() {
@@ -527,12 +525,10 @@ void *SonicAttack::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void SonicAttackDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSonicAttackDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void SonicAttackDescriptor::Deinit() {
     pSonicAttackDescriptor = NULL;

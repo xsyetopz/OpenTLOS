@@ -518,13 +518,13 @@ void SB2::GraphFollowingAny() {
     sp140 = sp130;
     sp148 = sp138;
     temp_r3_693 = this->unk0;
-    if (temp_r3_693->unk694 <= 0.0f) {
+    if (temp_r3_693->unk69C <= 0.0f) {
         var_f31_698 = 1.0f;
     } else {
         var_f31_698 = 3.0f;
     }
     temp_r3_708 = this->unk0;
-    temp_f1_710 = temp_r3_708->unk68C;
+    temp_f1_710 = temp_r3_708->unk694;
     var_f31_711 = 50.0f;
     temp_f0_712 = (temp_f1_710 * gUpdateTimeDelta) + (M2C_FIELD(temp_r3_693->__vptr, f32 (**)(), 0x100)() / var_f31_698);
     if (var_f31_711 > temp_f0_712) {
@@ -532,7 +532,7 @@ void SB2::GraphFollowingAny() {
     } else {
         var_f31_711 = temp_f0_712;
     }
-    temp_f1_720 = KDMath_GetTurningCircleRadius(temp_f1_710, M2C_BITWISE(f32, temp_r3_708->unk684));
+    temp_f1_720 = KDMath_GetTurningCircleRadius(temp_f1_710, temp_r3_708->unk68C);
     if (var_f31_711 > temp_f1_720) {
 
     } else {
@@ -1167,7 +1167,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     sp150 = (f64) sp60;
     ((AITargetData *) &sp118)->GetVel();
     if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
-        temp_f28_1774 = M2C_BITWISE(f32, this->unk0->unk688);
+        temp_f28_1774 = this->unk0->unk690;
         ((AITargetData *) &sp108)->GetVel();
         var_f4_1784 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
         if (var_f4_1784 > 0.0f) {
@@ -1212,7 +1212,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         }
         var_f29_1742 = this->unk450->GetDist() / var_f28_1848;
     }
-    if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
+    if (this->unk0->unk68C > 0.0f) {
         ((AITargetData *) &spF8)->GetDir();
         var_f1_1876 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
         if (var_f1_1876 < 1.0f) {
@@ -1225,7 +1225,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         } else {
             var_f1_1876 = -1.0f;
         }
-        var_f29_1742 += (f32) acos(var_f1_1876) / M2C_BITWISE(f32, this->unk0->unk684);
+        var_f29_1742 += (f32) acos(var_f1_1876) / this->unk0->unk68C;
     }
     (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
     ((AITargetData *) &spC8)->GetVel();
@@ -1765,7 +1765,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     sp150 = (f64) sp60;
     ((AITargetData *) &sp118)->GetVel();
     if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
-        temp_f28_2750 = M2C_BITWISE(f32, this->unk0->unk688);
+        temp_f28_2750 = this->unk0->unk690;
         ((AITargetData *) &sp108)->GetVel();
         var_f4_2760 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
         if (var_f4_2760 > 0.0f) {
@@ -1810,7 +1810,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         }
         var_f29_2718 = this->unk450->GetDist() / var_f28_2824;
     }
-    if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
+    if (this->unk0->unk68C > 0.0f) {
         ((AITargetData *) &spF8)->GetDir();
         var_f1_2852 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
         if (var_f1_2852 < 1.0f) {
@@ -1823,7 +1823,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         } else {
             var_f1_2852 = -1.0f;
         }
-        var_f29_2718 += (f32) acos(var_f1_2852) / M2C_BITWISE(f32, this->unk0->unk684);
+        var_f29_2718 += (f32) acos(var_f1_2852) / this->unk0->unk68C;
     }
     (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
     ((AITargetData *) &spC8)->GetVel();
@@ -2411,7 +2411,7 @@ void SB2::Containment() {
     void *temp_r3_4157;
 
     temp_r3_3830 = this->unk0;
-    var_f3_3831 = temp_r3_3830->unk694;
+    var_f3_3831 = temp_r3_3830->unk69C;
     if (var_f3_3831 > 0.1f) {
 
     } else {
@@ -3037,7 +3037,7 @@ void SB2::PathFollowingSetGoal() {
 
     temp_r4_4781 = this->unk0;
     temp_r3_4784 = temp_r4_4781->unk8;
-    temp_f30_4786 = M2C_BITWISE(f32, temp_r4_4781->unk688);
+    temp_f30_4786 = temp_r4_4781->unk690;
     sp138 = M2C_FIELD(temp_r3_4784, f64 *, 0x30);
     sp140 = M2C_FIELD(temp_r3_4784, f64 *, 0x38);
     if (!(((u8) this->unk434 >> 4U) & 1)) {
@@ -3068,8 +3068,8 @@ void SB2::PathFollowingSetGoal() {
         sp120 = (f64) sp70;
         temp_f31_4853 = M2C_FIELD(temp_r30_4840->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r30_4840, sp68, sp14);
         temp_r3_4859 = this->unk0;
-        temp_f31_4860 = (temp_r30_4840->unk694 * M2C_FIELD(temp_r30_4840->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r30_4840)) + temp_f31_4853;
-        var_f1_4863 = KDMath_GetTurningCircleRadius(temp_r3_4859->unk68C, M2C_BITWISE(f32, temp_r3_4859->unk684));
+        temp_f31_4860 = (temp_r30_4840->unk69C * M2C_FIELD(temp_r30_4840->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r30_4840)) + temp_f31_4853;
+        var_f1_4863 = KDMath_GetTurningCircleRadius(temp_r3_4859->unk694, temp_r3_4859->unk68C);
         if (temp_f31_4860 > var_f1_4863) {
             var_f1_4863 = temp_f31_4860;
         }
@@ -3188,7 +3188,7 @@ void SB2::PathFollowingSetGoal() {
         sp110 = (f64) sp40;
         temp_r3_5196 = this->unk0;
         temp_f30_5198 = M2C_FIELD(temp_r3_5183->__vptr, f32 (**)(Character *, f64, f32, f32), 0x100)(temp_r3_5183, (f64) sp38, 0.0f, temp_f3_5180);
-        var_f1_5200 = KDMath_GetTurningCircleRadius(temp_r3_5196->unk68C, M2C_BITWISE(f32, temp_r3_5196->unk684));
+        var_f1_5200 = KDMath_GetTurningCircleRadius(temp_r3_5196->unk694, temp_r3_5196->unk68C);
         if (temp_f30_5198 > var_f1_5200) {
             var_f1_5200 = temp_f30_5198;
         }
@@ -3316,7 +3316,7 @@ void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool 
         sp40 = (f64) sp20;
         temp_r3_5475 = this->unk0;
         temp_f31_5477 = M2C_FIELD(temp_r3_5462->__vptr, f32 (**)(Character *, f64, f32, f32), 0x100)(temp_r3_5462, (f64) sp18, 0.0f, temp_f3_5459);
-        var_f1_5479 = KDMath_GetTurningCircleRadius(temp_r3_5475->unk68C, M2C_BITWISE(f32, temp_r3_5475->unk684));
+        var_f1_5479 = KDMath_GetTurningCircleRadius(temp_r3_5475->unk694, temp_r3_5475->unk68C);
         if (temp_f31_5477 > var_f1_5479) {
             var_f1_5479 = temp_f31_5477;
         }
@@ -3938,7 +3938,7 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
             }
         }
         var_f30_6654 = 1.0f;
-        temp_f0_6656 = M2C_BITWISE(f32, this->unk0->unk688) + var_f4_6590;
+        temp_f0_6656 = this->unk0->unk690 + var_f4_6590;
         if (var_f30_6654 > temp_f0_6656) {
 
         } else {

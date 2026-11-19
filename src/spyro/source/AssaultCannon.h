@@ -2,10 +2,11 @@
 #define SPYRO_SOURCE_ASSAULTCANNON_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/ShatterablePlatformDescriptor.h"
 
 class AssaultCannon;
 class AssaultCannonDescriptor;
@@ -14,11 +15,11 @@ class MKDynamicBone;
 class MKHeap;
 class MKIniLine;
 class MKMessage;
-class MKPropDescriptor;
 class MKVector3;
 class ShatterablePlatform;
+class ShatterablePlatformDescriptor;
 
-class AssaultCannon : public ShatterablePlatform {  // base: vtable prefix
+class AssaultCannon : public ShatterablePlatform {  // base: base ctor call
 public:
     virtual ~AssaultCannon(void);
     virtual void Init(void);
@@ -63,7 +64,8 @@ public:
     void TakeDamage(float, const MKVector3 &);
     void SetDefaults(void);
     static u8 states[0xb4];
-    /* 0x218 */ u8 pad218[0x18];
+    /* 0x218 */ KDStateMachine<AssaultCannon> unk218;
+    /* 0x219 */ u8 pad219[0x17];
     /* 0x230 */ MKVector3 unk230;
     /* 0x240 */ f64 unk240;
     /* 0x248 */ f64 unk248;
@@ -110,15 +112,13 @@ public:
     /* 0x360 */ f64 unk360;
 };
 
-class AssaultCannonDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class AssaultCannonDescriptor : public ShatterablePlatformDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     AssaultCannonDescriptor(void);
-    /* 0x044 */ u8 pad44[0x128];
-    /* 0x16c */ s8* unk16C;
     /* 0x170 */ u8 pad170[0x4];
     /* 0x174 */ s32 unk174;
     /* 0x178 */ MKHeap* unk178;
@@ -151,8 +151,8 @@ inline AssaultCannon::~AssaultCannon() {
     if ((&this->unk294 != NULL) && (&this->unk294 != NULL)) {
         KDSound_Stop(&this->unk294);
     }
-    if (((this + 0x26C) != NULL) && ((this + 0x26C) != NULL)) {
-        KDSound_Stop(this + 0x26C);
+    if ((&this->unk26C != NULL) && (&this->unk26C != NULL)) {
+        KDSound_Stop(&this->unk26C);
     }
 }
 #endif
@@ -216,9 +216,9 @@ inline AssaultCannon::AssaultCannon() {
     this->unkC8 = &__vt + 0x48;
     this->unk218 = -1;
     this->unk21C = -1;
-    M2C_FIELD(this, s32 *, 0x220) = 0;
-    M2C_FIELD(this, s32 *, 0x224) = 0;
-    M2C_FIELD(this, s32 *, 0x26C) = 0;
+    this->unk220 = 0;
+    this->unk224 = 0;
+    this->unk26C = 0;
     this->unk294 = 0;
     return this;
 }

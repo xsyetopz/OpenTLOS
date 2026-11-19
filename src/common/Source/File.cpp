@@ -69,7 +69,7 @@ s32 File_IsBusy(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match
 u32 File_Length(const char *arg0) {
     s8 sp44;
     DVDFileInfo sp8;

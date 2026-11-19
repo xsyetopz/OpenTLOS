@@ -17,14 +17,14 @@ void SpyroBreatheAnimTable::Update(Spyro *arg0) {
     u32 temp_r4_23;
     u32 temp_r4_45;
 
-    if ((u8) M2C_FIELD(arg0, u8 *, 0x3D3) != 0) {
+    if ((u8) arg0->unk3D3 != 0) {
         temp_r4_23 = this->unk4;
         if ((u32) arg0->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20 != (u32) M2C_FIELD((arg0->unkB4 + (temp_r4_23 * 8)), u32 *, 4)) {
             arg0->SetAnim(temp_r4_23, 0.2f, (Spyro::AnimScriptNode) 0, 1U, 1.0f);
             return;
         }
     }
-    if ((u8) M2C_FIELD(arg0, u8 *, 0x3D3) == 0) {
+    if ((u8) arg0->unk3D3 == 0) {
         temp_r4_45 = this->unk0;
         if ((u32) arg0->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20 != (u32) M2C_FIELD((arg0->unkB4 + (temp_r4_45 * 8)), u32 *, 4)) {
             arg0->SetAnim(temp_r4_45, 0.2f, (Spyro::AnimScriptNode) 0, 1U, 1.0f);
@@ -35,7 +35,7 @@ void SpyroBreatheAnimTable::Update(Spyro *arg0) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroBreatheAnimTable::Start(Spyro *arg0, float arg1) {
-    if ((u8) M2C_FIELD(arg0, u8 *, 0x3D3) != 0) {
+    if ((u8) arg0->unk3D3 != 0) {
         arg0->SetAnim(this->unk4, arg1, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
         return;
     }

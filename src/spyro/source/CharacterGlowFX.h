@@ -20,9 +20,6 @@ public:
     virtual void Draw(void);
     virtual void Deinit(void);
     void Enable(bool, const MKVector4 &, float);
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ void* unk8;
-    /* 0x00c */ u8 padC[0x8];
     /* 0x014 */ u8 unk14;
     /* 0x015 */ u8 pad15[0x3];
     /* 0x018 */ MKMaterial* unk18;

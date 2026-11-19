@@ -2,7 +2,6 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
-#include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -11,9 +10,9 @@
 extern M2C_UNK gb;
 
 void CynderBarracks::SetState(CynderBarracksState arg0) {
-    this->unk198 = M2C_BITWISE(f32, arg0);
-    if (M2C_BITWISE(s32, this->unk198) == 1) {
-        M2C_FIELD(this, f32 *, 0x1B0) = (f32) (5.0f + M2C_FIELD(&gb, f32 *, 0x30C));
+    this->unk1A8 = (s32) arg0;
+    if ((s32) this->unk1A8 == 1) {
+        this->unk1B0 = 5.0f + M2C_FIELD(&gb, f32 *, 0x30C);
     }
 }
 
@@ -28,12 +27,12 @@ void CynderBarracks::Message(MKMessage *arg0) {
             goto block_8;
         }
         temp_r3_104 = checked_cast<FindInteractivePropMsg *, MKMessage>(arg0);
-        if ((M2C_BITWISE(s32, this->unk198) != 2) && ((s32) M2C_FIELD(temp_r3_104, s32 *, 8) == 2)) {
+        if (((s32) this->unk1A8 != 2) && ((s32) M2C_FIELD(temp_r3_104, s32 *, 8) == 2)) {
             M2C_FIELD(temp_r3_104, CynderBarracks **, 0xC) = this;
         }
     } else {
         if (temp_r0_90 < 0xB6) {
-            ((EnemyGenerator *) &this->unk1B4)->Message(arg0);
+            this->unk1B4.Message(arg0);
         }
 block_8:
         Shatterable::Message(arg0);
@@ -43,61 +42,59 @@ block_8:
 
 void CynderBarracks::Update() {
     Shatterable::Update();
-    if (M2C_BITWISE(s32, this->unk198) != 0) {
+    if ((s32) this->unk1A8 != 0) {
         return;
     }
-    if ((s32) this->unk16C == 3) {
+    if ((s32) this->unk17C == 3) {
         SetState((CynderBarracksState) 2);
         return;
     }
-    ((EnemyGenerator *) &this->unk1B4)->Update();
+    this->unk1B4.Update();
 }
 
 void CynderBarracks::Resolve() {
     Shatterable::Resolve();
-    ((EnemyGenerator *) &this->unk1B4)->Resolve();
+    this->unk1B4.Resolve();
 }
 
 void CynderBarracks::LoadDone() {
     Shatterable::LoadDone();
-    ((EnemyGenerator *) &this->unk1B4)->LoadDone();
+    this->unk1B4.LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'EnemyGenerator *' to
 s32 CynderBarracks::LoadLine(MKIniLine *arg0) {
     s32 var_r31_202;
 
     var_r31_202 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x1B4), u8 (**)(M2C_UNK *, MKIniLine *), 8)(&this->unk1B4, arg0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (this->unk1B4.LoadLine(arg0) != 0)) {
         var_r31_202 = 1;
     }
     return var_r31_202;
 }
-#endif
 
 void CynderBarracks::Deinit() {
-    ((EnemyGenerator *) &this->unk1B4)->Deinit();
+    this->unk1B4.Deinit();
     Shatterable::Deinit();
 }
 
 #if 0 // DRAFT: undefined identifier 'P24CynderBarracksDescriptor'
 void CynderBarracks::Init() {
     Shatterable::Init();
-    M2C_FIELD(this, s32 *, 0x1AC) = 0x32;
-    M2C_FIELD(this, f32 *, 0x1B0) = 0.0f;
+    this->unk1AC = 0x32;
+    this->unk1B0 = 0.0f;
     SetState((CynderBarracksState) 0);
-    ((EnemyGenerator *) &this->unk1B4)->Init(checked_cast<P24CynderBarracksDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x16C, (MKProp *) this);
+    this->unk1B4.Init(checked_cast<P24CynderBarracksDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x16C, (MKProp *) this);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
     this->unk16C.LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk16C'
 s32 CynderBarracksDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_301;
 
@@ -109,14 +106,14 @@ s32 CynderBarracksDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::Deinit() {
     this->unk16C.Deinit();
     ShatterableDescriptor::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::Init() {
     ShatterableDescriptor::Init();
     this->unk64 |= 0x2000;

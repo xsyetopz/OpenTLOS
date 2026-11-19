@@ -31,14 +31,13 @@ public:
     void FindInRangeTargets(float);
     s32 Trigger(const MKVector3 &);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ BreathHitMessage unkA8;
-    /* 0x0f9 */ u8 padF9[0x7];
+    /* 0x0fc */ u8 padFC[0x4];
     /* 0x100 */ Matrix** unk100;
     /* 0x104 */ MKModel* unk104;
     /* 0x108 */ Targetable*** unk108;

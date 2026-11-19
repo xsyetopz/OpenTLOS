@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROAIRCOMBATSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 
 class MKMessage;
@@ -66,7 +67,8 @@ public:
     static SpyroAirCombatState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroAirCombatState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ s32 unk28;
     /* 0x02c */ s32 unk2C;
     /* 0x030 */ s8 unk30;
@@ -96,10 +98,8 @@ extern u8 HornDiveZSpeed[0x4];
 extern u8 HornDiveYSpeed[0x4];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroAirCombatState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROAIRCOMBATSTATE_H

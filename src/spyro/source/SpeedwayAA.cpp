@@ -283,12 +283,10 @@ void *SpeedwayAA::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpeedwayAADescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSpeedwayAADescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void SpeedwayAADescriptor::Deinit() {
     pSpeedwayAADescriptor = NULL;

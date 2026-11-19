@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 
 class KDUniformSpline;
 class MKCollisionResult;
@@ -104,7 +105,8 @@ public:
     /* 0x090 */ void* unk90;
     /* 0x094 */ void* unk94;
     /* 0x098 */ SparxFX* unk98;
-    /* 0x09c */ u8 pad9C[0x18];
+    /* 0x09c */ KDStateMachine<Sparx> unk9C;
+    /* 0x09d */ u8 pad9D[0x17];
     /* 0x0b4 */ f32 unkB4;
     /* 0x0b8 */ f32 unkB8;
     /* 0x0bc */ f32 unkBC;
@@ -157,7 +159,7 @@ public:
     /* 0x218 */ s8 unk218;
     /* 0x219 */ u8 pad219[0x7];
     /* 0x220 */ MKCollisionResult unk220;
-    /* 0x271 */ u8 pad271[0x7];
+    /* 0x274 */ u8 pad274[0x4];
     /* 0x278 */ MKVector3 unk278;
     /* 0x288 */ f32 unk288;
     /* 0x28c */ f32 unk28C;

@@ -15,7 +15,7 @@ class MKVector3;
 class Shatterable;
 class ShatterableDescriptor;
 
-class IceBossStalactite : public Shatterable {  // base: vtable prefix
+class IceBossStalactite : public Shatterable {  // base: base ctor call
 public:
     virtual ~IceBossStalactite(void);
     virtual void LoadDone(void);
@@ -30,7 +30,6 @@ public:
     void Spawn(const MKVector3 &, bool, bool);
     void Shatter(bool, MKVector3 *, int, MKVector3 *);
     void MeltFX(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ f64 unk1A8;
     /* 0x1b0 */ f64 unk1B0;
     /* 0x1b8 */ f32 unk1B8;
@@ -63,11 +62,10 @@ public:
     /* 0x246 */ u8 unk246;
 };
 
-class IceBossStalactiteDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class IceBossStalactiteDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     IceBossStalactiteDescriptor(void);
-    /* 0x16c */ s32 unk16C;
 };
 
 class IceBossStalactiteSpawner {

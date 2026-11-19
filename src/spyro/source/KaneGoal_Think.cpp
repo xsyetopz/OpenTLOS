@@ -4,7 +4,7 @@
 #include "spyro/source/EnemyGoal_FollowGraph.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
@@ -25,7 +25,7 @@ void KaneGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void KaneGoal_Think::AddGoal_FollowSpawnGraph() {
     s32 temp_r3_64;
     s32 temp_r3_69;
@@ -68,7 +68,6 @@ void KaneGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 KaneGoal_Think::Update() {
     s32 temp_r3_156;
 
@@ -83,7 +82,6 @@ u8 KaneGoal_Think::Update() {
     }
     return (u8) this->unk8;
 }
-#endif
 
 void KaneGoal_Think::Activate() {
     this->unk8 = 0;

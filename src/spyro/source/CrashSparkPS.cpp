@@ -19,7 +19,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void CrashSparkPS::Draw() {
     f32 sp410;
     f64 sp408;

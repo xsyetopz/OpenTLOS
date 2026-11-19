@@ -33,7 +33,6 @@ static u8 lit_729 = 0;
 
 static u8 lit_833 = 1;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GemMagicFX::DrawGlow(GemMagicFX::Magic *arg1, Matrix *arg2, MKVector3 *arg3) {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -71,7 +70,6 @@ void GemMagicFX::DrawGlow(GemMagicFX::Magic *arg1, Matrix *arg2, MKVector3 *arg3
     MKSetPositionV(*(arg3 + 0x30));
     MKEnd();
 }
-#endif
 
 void GemMagicFX::Emit(const MKVector3 &arg0, const MKVector3 &arg1, MKVector3 *arg2, const MKVector4 &arg3, bool arg4) {
     MKHeap *temp_r9_125;

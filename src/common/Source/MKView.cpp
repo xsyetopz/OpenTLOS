@@ -795,7 +795,6 @@ void MKView_Pop() {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKView_Push() {
     M2C_STRUCT_COPY((s32) (pStack + 0x7C) + 4, (s32) (pStack - 4) + 4, 0x40);
     pStack[3].unk0 = pStack[1].unk0;
@@ -816,7 +815,6 @@ void MKView_Push() {
     pStack[3].unk3C = pStack[1].unk3C;
     pStack += 0x80;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'Texture *' to
 void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {

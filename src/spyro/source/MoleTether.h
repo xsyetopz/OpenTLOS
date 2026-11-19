@@ -15,7 +15,7 @@ class MoleTetherDescriptor;
 class Shatterable;
 class ShatterableDescriptor;
 
-class MoleTether : public Shatterable {  // base: vtable prefix
+class MoleTether : public Shatterable {  // base: base ctor call
 public:
     virtual ~MoleTether(void);
     virtual void Init(void);
@@ -26,7 +26,6 @@ public:
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *, bool);
     MoleTether(void);
     void SetWorldMatrix(Matrix &);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ MKVector3 unk1A8;
     /* 0x1b8 */ f64 unk1B8;
     /* 0x1c0 */ f64 unk1C0;
@@ -38,21 +37,18 @@ public:
     /* 0x1fc */ u8 unk1FC;
 };
 
-class MoleTetherDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class MoleTetherDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     MoleTetherDescriptor(void);
-    /* 0x16c */ s32 unk16C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline MoleTether::MoleTether() {
     this->unkC8 = &__vt + 0x48;
-    M2C_FIELD(this, s32 *, 0x1C8) = 0;
+    this->unk1C8 = 0;
     return this;
 }
 #endif
@@ -60,8 +56,8 @@ inline MoleTether::MoleTether() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline MoleTether::~MoleTether() {
     this->unkC8 = &__vt.unk48;
-    if ((&this->unk1B8 != NULL) && (&this->unk1B8 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk1B8);
+    if ((&this->unk1C8 != NULL) && (&this->unk1C8 != NULL)) {
+        KDSound_Stop(&this->unk1C8);
     }
 }
 #endif

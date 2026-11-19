@@ -14,7 +14,6 @@ void DragonBustDoor::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void DragonBustDoor::Message(MKMessage *arg0) {
     u8 sp18;
     s32 sp14;
@@ -57,17 +56,14 @@ void DragonBustDoor::Message(MKMessage *arg0) {
         }
     }
 }
-#endif
 
 void DragonBustDoor::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void DragonBustDoor::Update() {
     Door::Update();
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKModel_EnableSubObject(MKModel *, SubObjectType,
 void DragonBustDoor::LoadDone() {
@@ -101,7 +97,6 @@ s32 DragonBustDoor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void DragonBustDoor::Init() {
     s32 var_ctr_278;
     s32 var_r3_276;
@@ -118,4 +113,3 @@ void DragonBustDoor::Init() {
         var_ctr_278 -= 1;
     } while (var_ctr_278 != 0);
 }
-#endif

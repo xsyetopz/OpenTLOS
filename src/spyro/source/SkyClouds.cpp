@@ -541,12 +541,10 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SkyClouds::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void SkyClouds::Update() {

@@ -12,7 +12,7 @@ class ProjectileDescriptor;
 class SpeedwayAA;
 class SpeedwayAADescriptor;
 
-class SpeedwayAA : public Projectile {  // base: vtable prefix
+class SpeedwayAA : public Projectile {  // base: base ctor call
 public:
     virtual ~SpeedwayAA(void);
     virtual void LoadDone(void);
@@ -25,7 +25,7 @@ public:
     void * CreateInstance(void);
 };
 
-class SpeedwayAADescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class SpeedwayAADescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

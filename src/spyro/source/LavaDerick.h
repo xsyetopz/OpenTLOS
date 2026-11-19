@@ -11,14 +11,14 @@ class MKMessage;
 class Shatterable;
 class ShatterableDescriptor;
 
-class LavaDerick : public Shatterable {  // base: vtable prefix
+class LavaDerick : public Shatterable {  // base: base ctor call
 public:
     virtual ~LavaDerick(void);
     virtual void Message(MKMessage *);
     LavaDerick(void);
 };
 
-class LavaDerickDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class LavaDerickDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Resolve(void);
     LavaDerickDescriptor(void);

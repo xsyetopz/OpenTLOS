@@ -245,7 +245,7 @@ s32 SpeedwayCynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, 
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp1E0'
 void SpeedwayCynder::UpdateFireBomb() {
     f64 sp1D0;
     M2C_UNK sp1BC;
@@ -552,7 +552,7 @@ void SpeedwayCynder::SetAnim(int arg0, float arg1, unsigned int arg2) {
     SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x260), arg1, arg2);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpeedwayCynder::PostLTWUpdate() {
     f32 temp_f0_1064;
     f32 var_f1_1054;
@@ -732,7 +732,7 @@ void SpeedwayCynder::SetState(SpeedwayCynder::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpeedwayCynder::AnyToFlinchTransition() {
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &this->unk350), this->unk340, CYNDER_HEAD_COLLISION_RADIUS, NULL, (MKCollisionMode) 5, 0) != 0) {
         if ((s32) this->unk24C.unk0 != 2) {
@@ -745,7 +745,7 @@ u8 SpeedwayCynder::AnyToFlinchTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpeedwayCynder::FlinchTransition() {
     if ((this->unk390 < 0.025f) && ((s32) this->unk24C.unk0 != 0)) {
         this->unk24C.SetState(this, 0, 0U);
@@ -755,7 +755,7 @@ s32 SpeedwayCynder::FlinchTransition() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp108'
 void SpeedwayCynder::EventCameraUpdate() {
     Matrix sp110;
     s32 sp10C;
@@ -873,7 +873,7 @@ void SpeedwayCynder::FlinchEnter() {
     SetTargetZTime(0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpeedwayCynder::AnyToBiteTransition() {
     f64 sp20;
     f64 sp18;
@@ -913,7 +913,7 @@ u8 SpeedwayCynder::AnyToBiteTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: undefined identifier 'unk0'
 void SpeedwayCynder::BiteTransition() {
     s32 temp_r0_1778;
     u8 var_r0_1782;
@@ -1166,7 +1166,6 @@ void SpeedwayCynder::StateEnter() {
     this->unk39C = -1.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
 void SpeedwayCynder::UpdateLookAtNodes() {
     f64 sp10;
     f64 sp8;
@@ -1200,9 +1199,8 @@ void SpeedwayCynder::UpdateLookAtNodes() {
         var_r31_2265 += 0x48;
     } while (var_r30_2264 < 6);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: undefined identifier 'unk3FC'
 void SpeedwayCynder::Deinit() {
     MKHeap *temp_r31_2300;
     MKHeap *temp_r3_2295;
@@ -1275,7 +1273,7 @@ void SpeedwayCynder::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpeedwayCynder::Reset() {
     Matrix sp50;
     M2C_UNK sp4C;

@@ -178,7 +178,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void MeleeTrails::Draw() {
     Matrix sp90;
     Matrix sp50;
@@ -340,7 +340,7 @@ void MeleeTrails::Init() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void MeleeTrailsDescriptor::Deinit() {
     MKHeap *temp_r0_628;
     MKHeap *temp_r0_647;
@@ -385,7 +385,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MeleeTrailsDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     InitMeleeTrailData(&this->unkE8);
@@ -451,7 +451,7 @@ s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MeleeTrailsDescriptor::Init() {
     MKHeap *temp_r3_861;
     MKHeap *temp_r3_883;

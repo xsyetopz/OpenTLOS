@@ -36,7 +36,7 @@ void CharacterBreathFX::UpdateBreathingFX() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CharacterBreathFX::EmitConeBreathFx(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     MKVector3 sp140;
     f64 sp130;
@@ -139,7 +139,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CharacterBreathFX::EmitBreathFx(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     MKVector3 sp120;
     f64 sp110;

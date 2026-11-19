@@ -14,7 +14,6 @@
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/SteamTrain.h"
-#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
@@ -32,7 +31,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal operands 'void' != 'int'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 FireBossGoal_Think::Update() {
     EnemyDamageFeedback sp28;
     EnemyHudData sp8;
@@ -622,16 +621,16 @@ void FireBossGoal_Turn::Activate() {
     f32 temp_f7_1121;
 
     this->unk8 = 0;
-    M2C_FIELD(this->unkC, f32 *, 0xB20) = 0.0f;
+    this->unkC->unkB20 = 0.0f;
     this->unkC->unkB24 = 100.0f;
-    this->unkC->unkB04 = 100.0f;
-    this->unkC->unk684 = 3.1415927f;
-    this->unkC->unkC20 = (u8 *)1;
-    this->unkC->unkC24 = 1;
+    this->unkC->unkB1C = 100.0f;
+    this->unkC->unk68C = 3.1415927f;
+    this->unkC->unkC38 = 1;
+    this->unkC->unkC3C = 1;
     temp_r4_1097 = this->unkC;
-    Tools_GetClosestSplineTimeXZ((KDUniformSpline *) &temp_r4_1097->unkB20, *((MKVector3 *) &temp_r4_1097->unk588), 0x20);
+    Tools_GetClosestSplineTimeXZ(&temp_r4_1097->unkB38, temp_r4_1097->unk588, 0x20);
     temp_r4_1101 = this->unkC;
-    this->unkC->SetCurrentEdge(temp_r4_1101->unkC18->GetEdge((KDUniformSpline *) &temp_r4_1101->unkB20, M2C_ERROR(/* Read from unset register $f1 */), 1), M2C_ERROR(/* Read from unset register $f1 */));
+    this->unkC->SetCurrentEdge(temp_r4_1101->unkC18->GetEdge(&temp_r4_1101->unkB38, M2C_ERROR(/* Read from unset register $f1 */), 1), M2C_ERROR(/* Read from unset register $f1 */));
     temp_r8_1111 = this->unkC;
     temp_f4_1115 = temp_r8_1111->unkC8;
     temp_f7_1121 = temp_r8_1111->unkC4;
@@ -676,7 +675,7 @@ u8 FireBossGoal_Crash::Update() {
     var_r30_1191 = 0;
     if (temp_r29_1190->HasAnimFinished() != 0) {
         temp_r4_1196 = temp_r29_1190->unkA50;
-        if ((temp_r4_1196 != NULL) && ((u32) temp_r4_1196->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1190, void **, 0x630), u32 *, 0x20))) {
+        if ((temp_r4_1196 != NULL) && ((u32) temp_r4_1196->unk0 == (u32) M2C_FIELD(temp_r29_1190->unk630, u32 *, 0x20))) {
             var_r30_1191 = 1;
         }
     }
@@ -687,7 +686,7 @@ u8 FireBossGoal_Crash::Update() {
         M2C_FIELD(this->unkC, s8 *, 0xFC9) = 0;
     }
     temp_r5_1218 = this->unkC;
-    if (((u32) temp_r5_1218->unkA54 == &temp_r5_1218->unkA50->unk20) && (((s32) M2C_FIELD(M2C_FIELD(temp_r5_1218, void **, 0x630), s32 *, 0x44) >= (s32) (4 - temp_r5_1218->unkB10)) || (M2C_FIELD(temp_r5_1218, f32 *, 0xC48) >= 20.0f))) {
+    if (((u32) temp_r5_1218->unkA54 == &temp_r5_1218->unkA50->unk20) && (((s32) M2C_FIELD(temp_r5_1218->unk630, s32 *, 0x44) >= (s32) (4 - M2C_FIELD(temp_r5_1218, s32 *, 0xB10))) || (M2C_FIELD(temp_r5_1218, f32 *, 0xC48) >= 20.0f))) {
         M2C_FIELD(temp_r5_1218, f32 *, 0xC48) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB24) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB1C) = -100.0f;
@@ -700,7 +699,7 @@ u8 FireBossGoal_Crash::Update() {
     var_r30_1254 = 0;
     if (temp_r29_1253->HasAnimFinished() != 0) {
         temp_r4_1259 = temp_r29_1253->unkA50;
-        if ((temp_r4_1259 != NULL) && ((u32) temp_r4_1259->unk40 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1253, void **, 0x630), u32 *, 0x20))) {
+        if ((temp_r4_1259 != NULL) && ((u32) temp_r4_1259->unk40 == (u32) M2C_FIELD(temp_r29_1253->unk630, u32 *, 0x20))) {
             var_r30_1254 = 1;
         }
     }
@@ -723,7 +722,7 @@ void FireBossGoal_Crash::Activate() {
     M2C_FIELD(this->unkC, f32 *, 0xB20) = 0.0f;
     M2C_FIELD(this->unkC, f32 *, 0xB24) = 0.0f;
     M2C_FIELD(this->unkC, f32 *, 0xB1C) = 0.0f;
-    this->unkC->unk684 = 0.0f;
+    this->unkC->unk68C = 0.0f;
     M2C_FIELD(this->unkC, s8 *, 0xC41) = 0;
     M2C_FIELD(this->unkC, f32 *, 0xD24) = 0.0f;
     M2C_FIELD(this->unkC, s8 *, 0xDA0) = 0;
@@ -738,7 +737,7 @@ void FireBossGoal_Stage4::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD24'
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
 u8 FireBossGoal_Stage4::Update() {
     f64 sp68;
     f64 sp60;
@@ -769,6 +768,7 @@ u8 FireBossGoal_Stage4::Update() {
     FireBoss *temp_r4_1544;
     FireBoss *temp_r4_1566;
     FireBoss *temp_r4_1597;
+    FireBossGraphEdge *temp_r3_1474;
     f64 temp_f0_1584;
     s32 temp_r3_1483;
     s32 var_ctr_1493;
@@ -778,57 +778,56 @@ u8 FireBossGoal_Stage4::Update() {
     u8 temp_r30_1379;
     u8 var_r27_1441;
     u8 var_r4_1484;
-    void *temp_r3_1474;
 
     ActivateIfInactive();
     temp_r29_1374 = this->unkC->IsSpyroOnInsideTrack(0);
     temp_r4_1378 = this->unkC;
     temp_r30_1379 = this->unkC->IsSpyroOnInsideTrack(1);
     sp60 = M2C_FIELD(temp_r4_1378, f64 *, 0x588);
-    temp_r4_1378->unkD24 = 6.0f;
+    temp_r4_1378->unkD10.unk14 = 6.0f;
     temp_r3_1385 = this->unkC;
     sp68 = M2C_FIELD(temp_r4_1378, f64 *, 0x590);
-    temp_r3_1385->MoveAlongCurrentSpline(M2C_FIELD(temp_r3_1385, f32 *, 0xB20));
+    temp_r3_1385->MoveAlongCurrentSpline(temp_r3_1385->unkB20);
     temp_r4_1389 = this->unkC;
-    temp_r4_1389->unkD10.unk230 -= gUpdateTimeDelta;
+    temp_r4_1389->unkF58 -= gUpdateTimeDelta;
     temp_r3_1396 = this->unkC;
-    if (temp_r3_1396->unkD10.unk230 <= 0.0f) {
-        if ((u8) temp_r3_1396->unkD10.unk78 != 0) {
-            temp_r3_1396->unkD10.unk230 = temp_r3_1396->unkD10.unk238;
+    if (temp_r3_1396->unkF58 <= 0.0f) {
+        if ((u8) temp_r3_1396->unkD10.unk90 != 0) {
+            temp_r3_1396->unkF58 = temp_r3_1396->unkF60;
         } else {
-            temp_r3_1396->unkD10.unk230 = temp_r3_1396->unkD10.unk234;
+            temp_r3_1396->unkF58 = temp_r3_1396->unkF5C;
         }
         temp_r3_1411 = this->unkC;
-        temp_r3_1411->unkD10.unk78 = temp_r3_1411->unkD10.unk78 == 0;
+        temp_r3_1411->unkD10.unk90 = temp_r3_1411->unkD10.unk90 == 0;
     }
     temp_r4_1417 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_1417->unkC1C, u8 *, 0x1D) == 1) {
-        ((SteamTrainEffects *) &temp_r4_1417->unkD10)->EmitSmoke();
+    if ((u8) temp_r4_1417->unkC1C->unk1D == 1) {
+        temp_r4_1417->unkD10.EmitSmoke();
     } else {
-        ((SteamTrainEffects *) &temp_r4_1417->unkD10)->EmitSteam();
+        temp_r4_1417->unkD10.EmitSteam();
     }
     temp_r4_1429 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_1429->unkC1C, u8 *, 0x1D) == 4) {
-        ((SteamTrainEffects *) &temp_r4_1429->unkD10)->EmitBrakingEffects();
-        M2C_FIELD(this->unkC, s8 *, 0xFC9) = 1;
+    if ((u8) temp_r4_1429->unkC1C->unk1D == 4) {
+        temp_r4_1429->unkD10.EmitBrakingEffects();
+        this->unkC->unkFC9 = 1;
     }
     temp_r3_1440 = this->unkC;
     var_r27_1441 = 0;
-    if (((u8) M2C_FIELD(temp_r3_1440, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1440->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1440, u8 *, 0x8B8) == 2) || (temp_r3_1440->unk870.unk40.Get() != NULL)) {
         var_r27_1441 = 1;
     }
     if ((var_r27_1441 != 0) && (temp_r29_1374 == 0) && (temp_r30_1379 == 0)) {
         temp_r3_1458 = this->unkC;
-        temp_r3_1458->unkD10.unk228 -= gUpdateTimeDelta;
+        temp_r3_1458->unkF50 -= gUpdateTimeDelta;
         temp_r3_1464 = this->unkC;
-        if (temp_r3_1464->unkD10.unk228 <= 0.0f) {
+        if (temp_r3_1464->unkF50 <= 0.0f) {
             temp_r3_1464->TriggerFireball();
         }
     }
     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         temp_r27_1473 = this->unkC;
         temp_r3_1474 = temp_r27_1473->unkC1C;
-        temp_r0_1475 = M2C_FIELD(temp_r3_1474, u8 *, 0x1D);
+        temp_r0_1475 = temp_r3_1474->unk1D;
         switch ((s32) temp_r0_1475) {               /* irregular */
         case 0:
             temp_r3_1483 = temp_r27_1473->unkC24;
@@ -858,10 +857,10 @@ loop_27:
             }
             goto block_34;
         case 4:
-            temp_r27_1473->unkB10 = M2C_FIELD(temp_r3_1474, f32 *, 0x10);
+            temp_r27_1473->unkB28 = temp_r3_1474->unk10;
             temp_r4_1544 = this->unkC;
             spC = 0.0f;
-            ((KDUniformSpline *) &sp50)->GetMeasure(M2C_BITWISE(f32, temp_r4_1544->unkB10), temp_r4_1544->unkC14, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp50)->GetMeasure(temp_r4_1544->unkB28, (Matrix *) temp_r4_1544->unkC14, KDSpline_PositionMixer);
             temp_r3_1550 = this->unkC;
             M2C_FIELD(temp_r3_1550, f64 *, 0x588) = sp50;
             M2C_FIELD(temp_r3_1550, f64 *, 0x590) = sp58;
@@ -876,7 +875,7 @@ loop_27:
 block_34:
         temp_r4_1566 = this->unkC;
         sp8 = 0.0f;
-        ((KDUniformSpline *) &sp40)->GetMeasure(M2C_BITWISE(f32, temp_r4_1566->unkB10), temp_r4_1566->unkC14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_r4_1566->unkB28, (Matrix *) temp_r4_1566->unkC14, KDSpline_PositionMixer);
         temp_r3_1575 = this->unkC;
         M2C_FIELD(temp_r3_1575, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_1575, f64 *, 0x590) = sp48;
@@ -884,7 +883,7 @@ block_34:
         temp_f0_1584 = M2C_FIELD(temp_r3_1580, f64 *, 0x588) - sp60;
         sp10 = temp_f0_1584;
         sp20 = temp_f0_1584;
-        sp18 = temp_r3_1580->unk588.unk4 - (f32) sp68;
+        sp18 = temp_r3_1580->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_1597 = this->unkC;
@@ -902,17 +901,17 @@ void FireBossGoal_Stage4::Activate() {
     this->unk8 = 0;
     this->unkC->unkB24 = 2600.0f;
     temp_r3_1639 = this->unkC;
-    temp_r3_1639->unkB04 = 0.083333336f * temp_r3_1639->unkB24;
-    this->unkC->unk684 = 3.1415927f;
-    this->unkC->unkC24 = 3;
-    this->unkC->unkD10.unk228 = 1.25f;
-    this->unkC->unkD10.unk22C = 1.5f;
-    this->unkC->unkD10.unk230 = 2.0f;
-    this->unkC->unkD10.unk234 = 1.0f;
-    this->unkC->unkD10.unk238 = 2.0f;
+    temp_r3_1639->unkB1C = 0.083333336f * temp_r3_1639->unkB24;
+    this->unkC->unk68C = 3.1415927f;
+    this->unkC->unkC3C = 3;
+    this->unkC->unkF50 = 1.25f;
+    this->unkC->unkF54 = 1.5f;
+    this->unkC->unkF58 = 2.0f;
+    this->unkC->unkF5C = 1.0f;
+    this->unkC->unkF60 = 2.0f;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
     ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk1074 = 4;
+    this->unkC->unk108C = 4;
     this->unkC->TriggerExplosion();
 }
 
@@ -920,7 +919,7 @@ void FireBossGoal_Stage3::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD24'
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
 u8 FireBossGoal_Stage3::Update() {
     f64 sp68;
     f64 sp60;
@@ -951,6 +950,7 @@ u8 FireBossGoal_Stage3::Update() {
     FireBoss *temp_r4_1882;
     FireBoss *temp_r4_1904;
     FireBoss *temp_r4_1935;
+    FireBossGraphEdge *temp_r3_1808;
     f64 temp_f0_1922;
     s32 temp_r3_1822;
     s32 var_ctr_1831;
@@ -960,55 +960,54 @@ u8 FireBossGoal_Stage3::Update() {
     u8 temp_r30_1701;
     u8 var_r27_1771;
     u8 var_r4_1818;
-    void *temp_r3_1808;
 
     ActivateIfInactive();
     temp_r29_1696 = this->unkC->IsSpyroOnInsideTrack(0);
     temp_r4_1700 = this->unkC;
     temp_r30_1701 = this->unkC->IsSpyroOnInsideTrack(1);
     sp60 = M2C_FIELD(temp_r4_1700, f64 *, 0x588);
-    temp_r4_1700->unkD24 = 6.0f;
+    temp_r4_1700->unkD10.unk14 = 6.0f;
     temp_r3_1707 = this->unkC;
     sp68 = M2C_FIELD(temp_r4_1700, f64 *, 0x590);
-    temp_r3_1707->MoveAlongCurrentSpline(M2C_FIELD(temp_r3_1707, f32 *, 0xB20));
+    temp_r3_1707->MoveAlongCurrentSpline(temp_r3_1707->unkB20);
     temp_r4_1711 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_1711->unkC1C, u8 *, 0x1D) == 0) {
-        temp_r4_1711->unkD10.unk230 -= gUpdateTimeDelta;
+    if ((u8) temp_r4_1711->unkC1C->unk1D == 0) {
+        temp_r4_1711->unkF58 -= gUpdateTimeDelta;
         temp_r3_1722 = this->unkC;
-        if (temp_r3_1722->unkD10.unk230 <= 0.0f) {
-            if ((u8) temp_r3_1722->unkD10.unk78 != 0) {
-                temp_r3_1722->unkD10.unk230 = temp_r3_1722->unkD10.unk238;
+        if (temp_r3_1722->unkF58 <= 0.0f) {
+            if ((u8) temp_r3_1722->unkD10.unk90 != 0) {
+                temp_r3_1722->unkF58 = temp_r3_1722->unkF60;
             } else {
-                temp_r3_1722->unkD10.unk230 = temp_r3_1722->unkD10.unk234;
+                temp_r3_1722->unkF58 = temp_r3_1722->unkF5C;
             }
             temp_r3_1737 = this->unkC;
-            temp_r3_1737->unkD10.unk78 = temp_r3_1737->unkD10.unk78 == 0;
+            temp_r3_1737->unkD10.unk90 = temp_r3_1737->unkD10.unk90 == 0;
         }
     } else {
-        temp_r4_1711->unkD10.unk78 = 0;
+        temp_r4_1711->unkD10.unk90 = 0;
     }
     temp_r4_1747 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_1747->unkC1C, u8 *, 0x1D) == 1) {
-        ((SteamTrainEffects *) &temp_r4_1747->unkD10)->EmitSmoke();
+    if ((u8) temp_r4_1747->unkC1C->unk1D == 1) {
+        temp_r4_1747->unkD10.EmitSmoke();
     } else {
-        ((SteamTrainEffects *) &temp_r4_1747->unkD10)->EmitSteam();
+        temp_r4_1747->unkD10.EmitSteam();
     }
     temp_r4_1759 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_1759->unkC1C, u8 *, 0x1D) == 4) {
-        ((SteamTrainEffects *) &temp_r4_1759->unkD10)->EmitBrakingEffects();
-        M2C_FIELD(this->unkC, s8 *, 0xFC9) = 1;
+    if ((u8) temp_r4_1759->unkC1C->unk1D == 4) {
+        temp_r4_1759->unkD10.EmitBrakingEffects();
+        this->unkC->unkFC9 = 1;
     }
     temp_r3_1770 = this->unkC;
     var_r27_1771 = 0;
-    if (((u8) M2C_FIELD(temp_r3_1770, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1770->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1770, u8 *, 0x8B8) == 2) || (temp_r3_1770->unk870.unk40.Get() != NULL)) {
         var_r27_1771 = 1;
     }
     if ((var_r27_1771 != 0) && (temp_r29_1696 == 0) && (temp_r30_1701 == 0)) {
         temp_r4_1788 = this->unkC;
-        if ((u8) M2C_FIELD(temp_r4_1788->unkC1C, u8 *, 0x1D) == 0) {
-            temp_r4_1788->unkD10.unk228 -= gUpdateTimeDelta;
+        if ((u8) temp_r4_1788->unkC1C->unk1D == 0) {
+            temp_r4_1788->unkF50 -= gUpdateTimeDelta;
             temp_r3_1798 = this->unkC;
-            if (temp_r3_1798->unkD10.unk228 <= 0.0f) {
+            if (temp_r3_1798->unkF50 <= 0.0f) {
                 temp_r3_1798->TriggerFireball();
             }
         }
@@ -1016,11 +1015,11 @@ u8 FireBossGoal_Stage3::Update() {
     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         temp_r27_1807 = this->unkC;
         temp_r3_1808 = temp_r27_1807->unkC1C;
-        temp_r0_1809 = M2C_FIELD(temp_r3_1808, u8 *, 0x1D);
+        temp_r0_1809 = temp_r3_1808->unk1D;
         switch ((s32) temp_r0_1809) {               /* irregular */
         case 0:
             var_r4_1818 = 0;
-            if (M2C_FIELD(temp_r27_1807, f32 *, 0xB18) > 1.0f) {
+            if (temp_r27_1807->unkB18 > 1.0f) {
                 temp_r3_1822 = temp_r27_1807->unkC24;
                 if ((temp_r3_1822 > 1) && ((temp_r29_1696 != 0) || (temp_r30_1701 != 0))) {
                     var_r29_1830 = 0;
@@ -1048,10 +1047,10 @@ loop_31:
             }
             goto block_38;
         case 4:
-            temp_r27_1807->unkB10 = M2C_FIELD(temp_r3_1808, f32 *, 0x10);
+            temp_r27_1807->unkB28 = temp_r3_1808->unk10;
             temp_r4_1882 = this->unkC;
             spC = 0.0f;
-            ((KDUniformSpline *) &sp50)->GetMeasure(M2C_BITWISE(f32, temp_r4_1882->unkB10), temp_r4_1882->unkC14, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp50)->GetMeasure(temp_r4_1882->unkB28, (Matrix *) temp_r4_1882->unkC14, KDSpline_PositionMixer);
             temp_r3_1888 = this->unkC;
             M2C_FIELD(temp_r3_1888, f64 *, 0x588) = sp50;
             M2C_FIELD(temp_r3_1888, f64 *, 0x590) = sp58;
@@ -1066,7 +1065,7 @@ loop_31:
 block_38:
         temp_r4_1904 = this->unkC;
         sp8 = 0.0f;
-        ((KDUniformSpline *) &sp40)->GetMeasure(M2C_BITWISE(f32, temp_r4_1904->unkB10), temp_r4_1904->unkC14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_r4_1904->unkB28, (Matrix *) temp_r4_1904->unkC14, KDSpline_PositionMixer);
         temp_r3_1913 = this->unkC;
         M2C_FIELD(temp_r3_1913, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_1913, f64 *, 0x590) = sp48;
@@ -1074,7 +1073,7 @@ block_38:
         temp_f0_1922 = M2C_FIELD(temp_r3_1918, f64 *, 0x588) - sp60;
         sp10 = temp_f0_1922;
         sp20 = temp_f0_1922;
-        sp18 = temp_r3_1918->unk588.unk4 - (f32) sp68;
+        sp18 = temp_r3_1918->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_1935 = this->unkC;
@@ -1092,17 +1091,17 @@ void FireBossGoal_Stage3::Activate() {
     this->unk8 = 0;
     this->unkC->unkB24 = 2200.0f;
     temp_r3_1976 = this->unkC;
-    temp_r3_1976->unkB04 = 0.083333336f * temp_r3_1976->unkB24;
-    this->unkC->unk684 = 3.1415927f;
-    this->unkC->unkC24 = 3;
-    this->unkC->unkD10.unk228 = 2.5f;
-    this->unkC->unkD10.unk22C = 2.5f;
-    this->unkC->unkD10.unk230 = 2.5f;
-    this->unkC->unkD10.unk234 = 1.0f;
-    this->unkC->unkD10.unk238 = 2.5f;
+    temp_r3_1976->unkB1C = 0.083333336f * temp_r3_1976->unkB24;
+    this->unkC->unk68C = 3.1415927f;
+    this->unkC->unkC3C = 3;
+    this->unkC->unkF50 = 2.5f;
+    this->unkC->unkF54 = 2.5f;
+    this->unkC->unkF58 = 2.5f;
+    this->unkC->unkF5C = 1.0f;
+    this->unkC->unkF60 = 2.5f;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
     ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk1074 = 3;
+    this->unkC->unk108C = 3;
     this->unkC->TriggerExplosion();
 }
 
@@ -1110,7 +1109,7 @@ void FireBossGoal_Stage2::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD24'
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
 u8 FireBossGoal_Stage2::Update() {
     f64 sp68;
     f64 sp60;
@@ -1141,6 +1140,7 @@ u8 FireBossGoal_Stage2::Update() {
     FireBoss *temp_r4_2218;
     FireBoss *temp_r4_2240;
     FireBoss *temp_r4_2271;
+    FireBossGraphEdge *temp_r3_2144;
     f64 temp_f0_2258;
     s32 temp_r3_2158;
     s32 var_ctr_2167;
@@ -1150,55 +1150,54 @@ u8 FireBossGoal_Stage2::Update() {
     u8 temp_r30_2037;
     u8 var_r27_2107;
     u8 var_r4_2154;
-    void *temp_r3_2144;
 
     ActivateIfInactive();
     temp_r29_2032 = this->unkC->IsSpyroOnInsideTrack(0);
     temp_r4_2036 = this->unkC;
     temp_r30_2037 = this->unkC->IsSpyroOnInsideTrack(1);
     sp60 = M2C_FIELD(temp_r4_2036, f64 *, 0x588);
-    temp_r4_2036->unkD24 = 6.0f;
+    temp_r4_2036->unkD10.unk14 = 6.0f;
     temp_r3_2043 = this->unkC;
     sp68 = M2C_FIELD(temp_r4_2036, f64 *, 0x590);
-    temp_r3_2043->MoveAlongCurrentSpline(M2C_FIELD(temp_r3_2043, f32 *, 0xB20));
+    temp_r3_2043->MoveAlongCurrentSpline(temp_r3_2043->unkB20);
     temp_r4_2047 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_2047->unkC1C, u8 *, 0x1D) == 0) {
-        temp_r4_2047->unkD10.unk230 -= gUpdateTimeDelta;
+    if ((u8) temp_r4_2047->unkC1C->unk1D == 0) {
+        temp_r4_2047->unkF58 -= gUpdateTimeDelta;
         temp_r3_2058 = this->unkC;
-        if (temp_r3_2058->unkD10.unk230 <= 0.0f) {
-            if ((u8) temp_r3_2058->unkD10.unk78 != 0) {
-                temp_r3_2058->unkD10.unk230 = temp_r3_2058->unkD10.unk238;
+        if (temp_r3_2058->unkF58 <= 0.0f) {
+            if ((u8) temp_r3_2058->unkD10.unk90 != 0) {
+                temp_r3_2058->unkF58 = temp_r3_2058->unkF60;
             } else {
-                temp_r3_2058->unkD10.unk230 = temp_r3_2058->unkD10.unk234;
+                temp_r3_2058->unkF58 = temp_r3_2058->unkF5C;
             }
             temp_r3_2073 = this->unkC;
-            temp_r3_2073->unkD10.unk78 = temp_r3_2073->unkD10.unk78 == 0;
+            temp_r3_2073->unkD10.unk90 = temp_r3_2073->unkD10.unk90 == 0;
         }
     } else {
-        temp_r4_2047->unkD10.unk78 = 0;
+        temp_r4_2047->unkD10.unk90 = 0;
     }
     temp_r4_2083 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_2083->unkC1C, u8 *, 0x1D) == 1) {
-        ((SteamTrainEffects *) &temp_r4_2083->unkD10)->EmitSmoke();
+    if ((u8) temp_r4_2083->unkC1C->unk1D == 1) {
+        temp_r4_2083->unkD10.EmitSmoke();
     } else {
-        ((SteamTrainEffects *) &temp_r4_2083->unkD10)->EmitSteam();
+        temp_r4_2083->unkD10.EmitSteam();
     }
     temp_r4_2095 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_2095->unkC1C, u8 *, 0x1D) == 4) {
-        ((SteamTrainEffects *) &temp_r4_2095->unkD10)->EmitBrakingEffects();
-        M2C_FIELD(this->unkC, s8 *, 0xFC9) = 1;
+    if ((u8) temp_r4_2095->unkC1C->unk1D == 4) {
+        temp_r4_2095->unkD10.EmitBrakingEffects();
+        this->unkC->unkFC9 = 1;
     }
     temp_r3_2106 = this->unkC;
     var_r27_2107 = 0;
-    if (((u8) M2C_FIELD(temp_r3_2106, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_2106->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2106, u8 *, 0x8B8) == 2) || (temp_r3_2106->unk870.unk40.Get() != NULL)) {
         var_r27_2107 = 1;
     }
     if ((var_r27_2107 != 0) && (temp_r29_2032 == 0) && (temp_r30_2037 == 0)) {
         temp_r4_2124 = this->unkC;
-        if ((u8) M2C_FIELD(temp_r4_2124->unkC1C, u8 *, 0x1D) == 0) {
-            temp_r4_2124->unkD10.unk228 -= gUpdateTimeDelta;
+        if ((u8) temp_r4_2124->unkC1C->unk1D == 0) {
+            temp_r4_2124->unkF50 -= gUpdateTimeDelta;
             temp_r3_2134 = this->unkC;
-            if (temp_r3_2134->unkD10.unk228 <= 0.0f) {
+            if (temp_r3_2134->unkF50 <= 0.0f) {
                 temp_r3_2134->TriggerFireball();
             }
         }
@@ -1206,11 +1205,11 @@ u8 FireBossGoal_Stage2::Update() {
     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         temp_r27_2143 = this->unkC;
         temp_r3_2144 = temp_r27_2143->unkC1C;
-        temp_r0_2145 = M2C_FIELD(temp_r3_2144, u8 *, 0x1D);
+        temp_r0_2145 = temp_r3_2144->unk1D;
         switch ((s32) temp_r0_2145) {               /* irregular */
         case 0:
             var_r4_2154 = 0;
-            if (M2C_FIELD(temp_r27_2143, f32 *, 0xB18) > 2.0f) {
+            if (temp_r27_2143->unkB18 > 2.0f) {
                 temp_r3_2158 = temp_r27_2143->unkC24;
                 if ((temp_r3_2158 > 1) && ((temp_r29_2032 != 0) || (temp_r30_2037 != 0))) {
                     var_r29_2166 = 0;
@@ -1238,10 +1237,10 @@ loop_31:
             }
             goto block_38;
         case 4:
-            temp_r27_2143->unkB10 = M2C_FIELD(temp_r3_2144, f32 *, 0x10);
+            temp_r27_2143->unkB28 = temp_r3_2144->unk10;
             temp_r4_2218 = this->unkC;
             spC = 0.0f;
-            ((KDUniformSpline *) &sp50)->GetMeasure(M2C_BITWISE(f32, temp_r4_2218->unkB10), temp_r4_2218->unkC14, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp50)->GetMeasure(temp_r4_2218->unkB28, (Matrix *) temp_r4_2218->unkC14, KDSpline_PositionMixer);
             temp_r3_2224 = this->unkC;
             M2C_FIELD(temp_r3_2224, f64 *, 0x588) = sp50;
             M2C_FIELD(temp_r3_2224, f64 *, 0x590) = sp58;
@@ -1256,7 +1255,7 @@ loop_31:
 block_38:
         temp_r4_2240 = this->unkC;
         sp8 = 0.0f;
-        ((KDUniformSpline *) &sp40)->GetMeasure(M2C_BITWISE(f32, temp_r4_2240->unkB10), temp_r4_2240->unkC14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_r4_2240->unkB28, (Matrix *) temp_r4_2240->unkC14, KDSpline_PositionMixer);
         temp_r3_2249 = this->unkC;
         M2C_FIELD(temp_r3_2249, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_2249, f64 *, 0x590) = sp48;
@@ -1264,7 +1263,7 @@ block_38:
         temp_f0_2258 = M2C_FIELD(temp_r3_2254, f64 *, 0x588) - sp60;
         sp10 = temp_f0_2258;
         sp20 = temp_f0_2258;
-        sp18 = temp_r3_2254->unk588.unk4 - (f32) sp68;
+        sp18 = temp_r3_2254->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_2271 = this->unkC;
@@ -1282,17 +1281,17 @@ void FireBossGoal_Stage2::Activate() {
     this->unk8 = 0;
     this->unkC->unkB24 = 1800.0f;
     temp_r3_2313 = this->unkC;
-    temp_r3_2313->unkB04 = 0.083333336f * temp_r3_2313->unkB24;
-    this->unkC->unk684 = 3.1415927f;
-    this->unkC->unkC24 = 3;
-    this->unkC->unkD10.unk228 = 5.0f;
-    this->unkC->unkD10.unk22C = 3.5f;
-    this->unkC->unkD10.unk230 = 3.0f;
-    this->unkC->unkD10.unk234 = 1.0f;
-    this->unkC->unkD10.unk238 = 3.0f;
+    temp_r3_2313->unkB1C = 0.083333336f * temp_r3_2313->unkB24;
+    this->unkC->unk68C = 3.1415927f;
+    this->unkC->unkC3C = 3;
+    this->unkC->unkF50 = 5.0f;
+    this->unkC->unkF54 = 3.5f;
+    this->unkC->unkF58 = 3.0f;
+    this->unkC->unkF5C = 1.0f;
+    this->unkC->unkF60 = 3.0f;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
     ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk1074 = 1;
+    this->unkC->unk108C = 1;
     this->unkC->TriggerExplosion();
 }
 
@@ -1300,7 +1299,7 @@ void FireBossGoal_Stage1::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD24'
+#if 0 // DRAFT: illegal explicit conversion from 'FireBoss' to
 u8 FireBossGoal_Stage1::Update() {
     f64 sp68;
     f64 sp60;
@@ -1328,6 +1327,7 @@ u8 FireBossGoal_Stage1::Update() {
     FireBoss *temp_r4_2526;
     FireBoss *temp_r4_2548;
     FireBoss *temp_r4_2579;
+    FireBossGraphEdge *temp_r3_2452;
     f64 temp_f0_2566;
     s32 temp_r3_2466;
     s32 var_ctr_2475;
@@ -1337,41 +1337,40 @@ u8 FireBossGoal_Stage1::Update() {
     u8 temp_r30_2375;
     u8 var_r27_2410;
     u8 var_r4_2462;
-    void *temp_r3_2452;
 
     ActivateIfInactive();
     temp_r29_2370 = this->unkC->IsSpyroOnInsideTrack(0);
     temp_r4_2374 = this->unkC;
     temp_r30_2375 = this->unkC->IsSpyroOnInsideTrack(1);
     sp60 = M2C_FIELD(temp_r4_2374, f64 *, 0x588);
-    temp_r4_2374->unkD24 = 6.0f;
+    temp_r4_2374->unkD10.unk14 = 6.0f;
     temp_r3_2381 = this->unkC;
     sp68 = M2C_FIELD(temp_r4_2374, f64 *, 0x590);
-    temp_r3_2381->MoveAlongCurrentSpline(M2C_FIELD(temp_r3_2381, f32 *, 0xB20));
+    temp_r3_2381->MoveAlongCurrentSpline(temp_r3_2381->unkB20);
     temp_r4_2385 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_2385->unkC1C, u8 *, 0x1D) == 1) {
-        ((SteamTrainEffects *) &temp_r4_2385->unkD10)->EmitSmoke();
+    if ((u8) temp_r4_2385->unkC1C->unk1D == 1) {
+        temp_r4_2385->unkD10.EmitSmoke();
     } else {
-        ((SteamTrainEffects *) &temp_r4_2385->unkD10)->EmitSteam();
+        temp_r4_2385->unkD10.EmitSteam();
     }
     temp_r4_2398 = this->unkC;
-    if ((u8) M2C_FIELD(temp_r4_2398->unkC1C, u8 *, 0x1D) == 4) {
-        ((SteamTrainEffects *) &temp_r4_2398->unkD10)->EmitBrakingEffects();
-        M2C_FIELD(this->unkC, s8 *, 0xFC9) = 1;
+    if ((u8) temp_r4_2398->unkC1C->unk1D == 4) {
+        temp_r4_2398->unkD10.EmitBrakingEffects();
+        this->unkC->unkFC9 = 1;
     }
     temp_r3_2409 = this->unkC;
     var_r27_2410 = 0;
-    if (((u8) M2C_FIELD(temp_r3_2409, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_2409->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2409, u8 *, 0x8B8) == 2) || (temp_r3_2409->unk870.unk40.Get() != NULL)) {
         var_r27_2410 = 1;
     }
     if ((var_r27_2410 != 0) && (temp_r29_2370 == 0) && (temp_r30_2375 == 0)) {
         temp_r4_2427 = this->unkC;
-        if ((u8) M2C_FIELD(temp_r4_2427->unkC1C, u8 *, 0x1D) == 0) {
-            if (M2C_FIELD(temp_r4_2427, f32 *, 0xB18) > 1.0f) {
-                temp_r4_2427->unkD10.unk228 -= gUpdateTimeDelta;
+        if ((u8) temp_r4_2427->unkC1C->unk1D == 0) {
+            if (temp_r4_2427->unkB18 > 1.0f) {
+                temp_r4_2427->unkF50 -= gUpdateTimeDelta;
             }
             temp_r3_2441 = this->unkC;
-            if (temp_r3_2441->unkD10.unk228 <= 0.0f) {
+            if (temp_r3_2441->unkF50 <= 0.0f) {
                 temp_r3_2441->TriggerFireball();
             }
         }
@@ -1379,11 +1378,11 @@ u8 FireBossGoal_Stage1::Update() {
     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         temp_r27_2451 = this->unkC;
         temp_r3_2452 = temp_r27_2451->unkC1C;
-        temp_r0_2453 = M2C_FIELD(temp_r3_2452, u8 *, 0x1D);
+        temp_r0_2453 = temp_r3_2452->unk1D;
         switch ((s32) temp_r0_2453) {               /* irregular */
         case 0:
             var_r4_2462 = 0;
-            if (M2C_FIELD(temp_r27_2451, f32 *, 0xB18) > 1.0f) {
+            if (temp_r27_2451->unkB18 > 1.0f) {
                 temp_r3_2466 = temp_r27_2451->unkC24;
                 if ((temp_r3_2466 > 1) && ((temp_r29_2370 != 0) || (temp_r30_2375 != 0))) {
                     var_r29_2474 = 0;
@@ -1411,10 +1410,10 @@ loop_26:
             }
             goto block_33;
         case 4:
-            temp_r27_2451->unkB10 = M2C_FIELD(temp_r3_2452, f32 *, 0x10);
+            temp_r27_2451->unkB28 = temp_r3_2452->unk10;
             temp_r4_2526 = this->unkC;
             spC = 0.0f;
-            ((KDUniformSpline *) &sp50)->GetMeasure(M2C_BITWISE(f32, temp_r4_2526->unkB10), temp_r4_2526->unkC14, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp50)->GetMeasure(temp_r4_2526->unkB28, (Matrix *) temp_r4_2526->unkC14, KDSpline_PositionMixer);
             temp_r3_2532 = this->unkC;
             M2C_FIELD(temp_r3_2532, f64 *, 0x588) = sp50;
             M2C_FIELD(temp_r3_2532, f64 *, 0x590) = sp58;
@@ -1429,7 +1428,7 @@ loop_26:
 block_33:
         temp_r4_2548 = this->unkC;
         sp8 = 0.0f;
-        ((KDUniformSpline *) &sp40)->GetMeasure(M2C_BITWISE(f32, temp_r4_2548->unkB10), temp_r4_2548->unkC14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_r4_2548->unkB28, (Matrix *) temp_r4_2548->unkC14, KDSpline_PositionMixer);
         temp_r3_2557 = this->unkC;
         M2C_FIELD(temp_r3_2557, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_2557, f64 *, 0x590) = sp48;
@@ -1437,7 +1436,7 @@ block_33:
         temp_f0_2566 = M2C_FIELD(temp_r3_2562, f64 *, 0x588) - sp60;
         sp10 = temp_f0_2566;
         sp20 = temp_f0_2566;
-        sp18 = temp_r3_2562->unk588.unk4 - (f32) sp68;
+        sp18 = temp_r3_2562->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_2579 = this->unkC;
@@ -1455,12 +1454,12 @@ void FireBossGoal_Stage1::Activate() {
     this->unk8 = 0;
     this->unkC->unkB24 = 1200.0f;
     temp_r3_2620 = this->unkC;
-    temp_r3_2620->unkB04 = 0.083333336f * temp_r3_2620->unkB24;
-    this->unkC->unk684 = 3.1415927f;
-    this->unkC->unkC24 = 1;
-    this->unkC->unkD10.unk228 = 5.0f;
-    this->unkC->unkD10.unk22C = 5.0f;
+    temp_r3_2620->unkB1C = 0.083333336f * temp_r3_2620->unkB24;
+    this->unkC->unk68C = 3.1415927f;
+    this->unkC->unkC3C = 1;
+    this->unkC->unkF50 = 5.0f;
+    this->unkC->unkF54 = 5.0f;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
     ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk1074 = 0;
+    this->unkC->unk108C = 0;
 }

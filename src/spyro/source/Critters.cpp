@@ -11,13 +11,11 @@ void Critters::Update() {
 
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Critters::LoadDone() {
     KDProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     this->unkE0.Init(this->unkA0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 Critters::LoadLine(MKIniLine *arg0) {

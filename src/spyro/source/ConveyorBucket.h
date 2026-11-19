@@ -9,7 +9,7 @@ class GameProp;
 class MKIniLine;
 class MKMessage;
 
-class ConveyorBucket : public GameProp {  // base: vtable prefix
+class ConveyorBucket : public GameProp {  // base: base ctor call
 public:
     virtual ~ConveyorBucket(void);
     virtual void Init(void);
@@ -21,7 +21,6 @@ public:
     virtual void Message(MKMessage *);
     ConveyorBucket(void);
     void DirtParticles(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ u8 padD4[0x4];

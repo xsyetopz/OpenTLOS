@@ -168,7 +168,6 @@ void Leviathan::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Leviathan::Draw() {
     f64 sp78;
     f64 sp70;
@@ -210,7 +209,6 @@ void Leviathan::Draw() {
     OmniLight_SuspendAll(temp_r30_152);
     MKMaterial_EnableFog(temp_r31_135);
 }
-#endif
 
 void Leviathan::Message(MKMessage *arg0) {
     s32 temp_r0_178;

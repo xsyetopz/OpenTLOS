@@ -362,7 +362,9 @@ void SteamValve::Init() {
     this->unkDD = 1;
 }
 
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void SteamValveDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
+#endif

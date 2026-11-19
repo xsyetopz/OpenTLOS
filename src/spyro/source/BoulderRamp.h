@@ -3,19 +3,18 @@
 
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
 
 class Ball;
 class BoulderRamp;
 class BoulderRampDescriptor;
 class BoulderRamp_cpp;
-class KDPropExDescriptor;
 class MKIniLine;
 class Matrix;
 class Trap;
+class TrapDescriptor;
 
-class BoulderRamp : public Trap {  // base: vtable prefix
+class BoulderRamp : public Trap {  // base: base ctor call
 public:
     class State;
     virtual ~BoulderRamp(void);
@@ -43,14 +42,12 @@ public:
     /* 0x0f4 */ Matrix unkF4;
 };
 
-class BoulderRampDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class BoulderRampDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     BoulderRampDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
 };

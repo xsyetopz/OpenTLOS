@@ -1,8 +1,6 @@
 #include "spyro/source/UITools.h"
-#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
-#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -100,22 +98,22 @@ void HealthSafetyScreen::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
+    UIImage *temp_r3_69;
+    UIImage *temp_r3_75;
+    UIImage *temp_r3_84;
+    UIImage *temp_r3_90;
     f32 temp_f1_150;
     f32 temp_f1_44;
     s32 temp_r0_21;
     s32 var_r29_102;
     s32 var_r3_118;
-    s8 *temp_r3_69;
-    s8 *temp_r3_75;
-    s8 *temp_r3_84;
-    s8 *temp_r3_90;
     u8 var_r30_103;
     u8 var_r3_107;
     void **temp_r3_157;
 
     UIScreen::Update();
-    M2C_FIELD(this, f32 *, 0xDC) = (f32) (M2C_FIELD(this, f32 *, 0xDC) + gUpdateTimeDelta);
-    temp_r0_21 = this->unkD0;
+    this->unkDC += gUpdateTimeDelta;
+    temp_r0_21 = this->unkD8;
     switch (temp_r0_21) {                           /* irregular */
     case 0:
         sp28 = M2C_FIELD(&gb, f64 *, 0x48);
@@ -124,33 +122,33 @@ void HealthSafetyScreen::Update() {
         (*(f32 *) ((u8 *) &sp28 + 0x4)) = temp_f1_44;
         if (temp_f1_44 < 0.0f) {
             (*(f32 *) ((u8 *) &sp28 + 0x4)) = 0.0f;
-            this->unkD0 = 1;
+            this->unkD8 = 1;
         }
         M2C_FIELD(&gb, f64 *, 0x40) = sp20;
         M2C_FIELD(&gb, f64 *, 0x48) = sp28;
         return;
     case 1:
-        if (M2C_FIELD(this, f32 *, 0xDC) > 1.5f) {
-            this->unkD0 = 2;
+        if (this->unkDC > 1.5f) {
+            this->unkD8 = 2;
             return;
         }
         return;
     case 2:
-        if ((u8) M2C_FIELD(this, u8 *, 0xE0) != 0) {
-            temp_r3_69 = this->unkBC.unk8;
+        if ((u8) this->unkE0 != 0) {
+            temp_r3_69 = this->unkCC;
             M2C_FIELD(temp_r3_69, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r3_69, f32 *, 0x24) - gUpdateTimeDelta);
-            temp_r3_75 = this->unkBC.unk8;
+            temp_r3_75 = this->unkCC;
             if (M2C_FIELD(temp_r3_75, f32 *, 0x24) < 0.0f) {
                 M2C_FIELD(temp_r3_75, f32 *, 0x24) = 0.0f;
-                M2C_FIELD(this, u8 *, 0xE0) = 0U;
+                this->unkE0 = 0;
             }
         } else {
-            temp_r3_84 = this->unkBC.unk8;
+            temp_r3_84 = this->unkCC;
             M2C_FIELD(temp_r3_84, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r3_84, f32 *, 0x24) + gUpdateTimeDelta);
-            temp_r3_90 = this->unkBC.unk8;
+            temp_r3_90 = this->unkCC;
             if (M2C_FIELD(temp_r3_90, f32 *, 0x24) > 1.0f) {
                 M2C_FIELD(temp_r3_90, f32 *, 0x24) = 1.0f;
-                M2C_FIELD(this, u8 *, 0xE0) = 1U;
+                this->unkE0 = 1;
             }
         }
         var_r29_102 = 3;
@@ -158,20 +156,20 @@ void HealthSafetyScreen::Update() {
 loop_25:
         if ((var_r29_102 <= 0xF) && (var_r30_103 == 0)) {
             var_r3_107 = 0;
-            if (((u8) M2C_FIELD(this, u8 *, 0xD5) != 0) || ((u8) M2C_FIELD(this, u8 *, 0xD4) != 0)) {
+            if (((u8) this->unkD5 != 0) || ((u8) this->unkD4 != 0)) {
                 var_r3_107 = 1;
             }
             if (var_r3_107 != 0) {
                 var_r3_118 = 0;
             } else {
-                var_r3_118 = MKInput_Pressed(var_r29_102, (MKInputDevices) this->unkC8);
+                var_r3_118 = MKInput_Pressed(var_r29_102, (MKInputDevices) this->unkD0);
             }
             var_r29_102 += 1;
             var_r30_103 |= var_r3_118;
             goto loop_25;
         }
         if (var_r30_103 != 0) {
-            this->unkD0 = 3;
+            this->unkD8 = 3;
             return;
         }
         break;
@@ -199,7 +197,7 @@ void HealthSafetyScreen::OnExit() {
     M2C_FIELD(&gb, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void HealthSafetyScreen::OnEnter() {
     f64 sp20;
     f64 sp18;
@@ -209,22 +207,22 @@ void HealthSafetyScreen::OnEnter() {
     f32 sp8;
 
     UIScreen::OnEnter();
-    this->unkC8 = NULL;
-    M2C_FIELD(this, s8 *, 0xD4) = 0;
-    M2C_FIELD(this, s8 *, 0xD5) = 0;
-    this->unkBC.unk4 = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x23D));
+    this->unkD0 = 0;
+    this->unkD4 = 0;
+    this->unkD5 = 0;
+    this->unkC8 = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x23D));
     if ((s32) gDisplay == 1) {
 
     } else {
         GameLanguage_GetCode(-1);
     }
-    M2C_FIELD(this->unkBC.unk4, MKResource **, 0x64) = MKMaterial_Create(Str_Printf(&lit_stringBase0 + 0x248, M2C_ERROR(/* Read from unset register $r3 */), &lit_stringBase0));
-    this->unkBC.unk8 = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x256));
-    M2C_FIELD(this, f32 *, 0xDC) = 0.0f;
-    M2C_FIELD(this, s8 *, 0xE0) = 1;
+    this->unkC8->unk64 = MKMaterial_Create(Str_Printf(&lit_stringBase0 + 0x248, M2C_ERROR(/* Read from unset register $r3 */), &lit_stringBase0));
+    this->unkCC = ui_cast<UIImage *, UIObject *>(FindChild(&lit_stringBase0 + 0x256));
+    this->unkDC = 0.0f;
+    this->unkE0 = 1;
     sp8 = 0.0f;
     spC = 0.0f;
-    this->unkD0 = 0;
+    this->unkD8 = 0;
     sp10 = 0.0f;
     sp14 = 1.0f;
     sp18 = (f64) sp8;
@@ -234,13 +232,11 @@ void HealthSafetyScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void HealthSafetyScreen::Init() {
     UIContainer::Init();
-    this->unkBC.unk4 = 0;
-    this->unkBC.unk8 = NULL;
+    this->unkC8 = NULL;
+    this->unkCC = NULL;
 }
-#endif
 
 #if 0 // DRAFT: function call 'GameLanguage_GetLast(long *, unsigned int)' does not match
 void LanguageButtonGroup::LoadDone() {
@@ -325,7 +321,7 @@ void ScriptVideoScreen::DoExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 s32 ScriptVideoScreen::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_494;
 
@@ -355,7 +351,6 @@ void ScriptVideoScreen::Init() {
     this->unk128 = NULL;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void ImageArc::Draw(const RenderContext &arg0) {
     RenderContext sp20;
     f32 sp14;
@@ -384,13 +379,13 @@ void ImageArc::Draw(const RenderContext &arg0) {
     s32 var_r28_702;
     s32 var_r29_679;
 
-    if (!(this->unk70 <= 0.0f)) {
-        if (this->unk74 <= 0.0f) {
+    if (!(this->unk78 <= 0.0f)) {
+        if (this->unk7C <= 0.0f) {
             return;
         }
         sp20.RenderContext(arg0, this->unk18);
-        temp_f1_601 = this->unk78;
-        temp_f4_602 = this->unk7C;
+        temp_f1_601 = this->unk80;
+        temp_f4_602 = this->unk84;
         temp_r3_603 = this->unk18.unk40 & 0x20;
         var_f29_604 = temp_f1_601;
         var_f28_605 = temp_f1_601 + temp_f4_602;
@@ -408,13 +403,13 @@ void ImageArc::Draw(const RenderContext &arg0) {
         if ((temp_r3_603 == 0) || (temp_r0_625 = this->unk18.unk3C & 0xC, ((temp_r0_625 == 0) != 0))) {
             var_f26_631 = 0.5f * this->unk18.unk34;
             var_f3_633 = 0.5f * this->unk18.unk38;
-            var_f27_635 = var_f26_631 - this->unk70;
-            var_f2_636 = var_f3_633 - this->unk74;
+            var_f27_635 = var_f26_631 - this->unk78;
+            var_f2_636 = var_f3_633 - this->unk7C;
         } else if (temp_r0_625 == 4) {
             temp_f5_645 = 0.5f * this->unk18.unk38;
             temp_f6_647 = 0.5f * this->unk18.unk34;
-            temp_f1_648 = 0.5f * this->unk70;
-            temp_f0_649 = 0.5f * this->unk74;
+            temp_f1_648 = 0.5f * this->unk78;
+            temp_f0_649 = 0.5f * this->unk7C;
             var_f27_635 = temp_f6_647 - temp_f1_648;
             var_f2_636 = temp_f5_645 - temp_f0_649;
             var_f26_631 = temp_f6_647 + temp_f1_648;
@@ -422,8 +417,8 @@ void ImageArc::Draw(const RenderContext &arg0) {
         } else {
             var_f27_635 = 0.5f * this->unk18.unk34;
             var_f2_636 = 0.5f * this->unk18.unk38;
-            var_f26_631 = var_f27_635 + this->unk70;
-            var_f3_633 = var_f2_636 + this->unk74;
+            var_f26_631 = var_f27_635 + this->unk78;
+            var_f3_633 = var_f2_636 + this->unk7C;
         }
         temp_f31_667 = -var_f3_633;
         var_f1_670 = -temp_f31_667;
@@ -434,7 +429,7 @@ void ImageArc::Draw(const RenderContext &arg0) {
         if ((s32) lit_1179 > var_r29_679) {
             var_r29_679 = lit_1179;
         }
-        temp_f24_687 = this->unk68 - M2C_BITWISE(f32, this->unk60);
+        temp_f24_687 = this->unk70 - this->unk68;
         MKMaterial_SetMaterial(this->unk64);
         MKPrimitive(0xC, 1);
         MKSetMatrix(*((Matrix *) &sp20));
@@ -445,10 +440,10 @@ loop_20:
         if (var_r28_702 <= var_r29_679) {
             temp_f23_717 = (f32) var_r28_702 / (f32) var_r29_679;
             _table_sincosf((temp_f23_717 * (var_f28_605 - var_f29_604)) + var_f29_604, sp14, sp10);
-            temp_f23_722 = (temp_f24_687 * temp_f23_717) + M2C_BITWISE(f32, this->unk60);
-            MKSetTexCoord1F(temp_f23_722, this->unk6C);
+            temp_f23_722 = (temp_f24_687 * temp_f23_717) + this->unk68;
+            MKSetTexCoord1F(temp_f23_722, this->unk74);
             MKSetPositionF(sp14 * var_f27_635, sp10 * -var_f2_636, 0.0f);
-            MKSetTexCoord1F(temp_f23_722, M2C_BITWISE(f32, this->unk64));
+            MKSetTexCoord1F(temp_f23_722, this->unk6C);
             MKSetPositionF(sp14 * var_f26_631, sp10 * temp_f31_667, 0.0f);
             var_r28_702 += 1;
             goto loop_20;
@@ -457,45 +452,46 @@ loop_20:
         MKEndPrimitive();
     }
 }
-#endif
 
+#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Draw(const RenderContext &arg0) {
-    M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *), 0x1C)(&this->unk6C.unk4);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x1C)(&this->unk78);
     UIContainer::Draw(arg0);
 }
+#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'floor'
 void RadialButtonGroup::Update() {
     s32 sp20;
     s32 sp1C;
-    UIObject *sp18;
+    s32 sp18;
     s32 sp14;
     s32 sp10;
     s32 spC;
     s32 sp8;
-    UIObject *temp_r0_1019;
-    UIObject *temp_r31_810;
-    UIObject *temp_r5_1009;
     f32 temp_f31_1042;
-    f32 temp_r3_1006;
     f32 var_f1_825;
     f32 var_f2_849;
     f32 var_f3_880;
+    s32 temp_r0_1019;
+    s32 temp_r31_810;
     s32 temp_r3_868;
     s32 temp_r3_901;
+    s32 temp_r5_1009;
     s32 var_r3_929;
     s32 var_r3_962;
     u8 var_r4_814;
     u8 var_r4_838;
     u8 var_r4_918;
     u8 var_r4_951;
+    void **temp_r3_1006;
     void *temp_r3_812;
     void *temp_r3_836;
     void *temp_r3_916;
     void *temp_r3_949;
 
     if ((u8) this->unk15 != 0) {
-        temp_r31_810 = this->unk60;
+        temp_r31_810 = this->unk68;
         temp_r3_812 = UIInput(-1);
         var_r4_814 = 0;
         if (((u8) M2C_FIELD(temp_r3_812, u8 *, 5) != 0) || ((u8) M2C_FIELD(temp_r3_812, u8 *, 4) != 0)) {
@@ -523,7 +519,7 @@ void RadialButtonGroup::Update() {
                 var_f3_880 += 6.2831855f;
             }
             temp_r3_901 = (s32) (f32) floor((f64) ((var_f3_880 * (f32) temp_r3_868) / 6.2831855f));
-            if (temp_r3_901 != (UIObject *) this->unk60) {
+            if (temp_r3_901 != (s32) this->unk68) {
                 sp20 = temp_r3_901;
                 sp1C = 0xC;
                 Message(&sp1C);
@@ -559,43 +555,43 @@ void RadialButtonGroup::Update() {
                 }
             }
         }
-        if (temp_r31_810 != (UIObject *) this->unk60) {
+        if (temp_r31_810 != (s32) this->unk68) {
             KDSound_Play(GS_MenuMoveThru, 0U, -1);
-            if ((u8) GetChild((s32) this->unk60)->unk15 != 0) {
-                M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
-                this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
+            if ((u8) GetChild(this->unk68)->unk15 != 0) {
+                this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
+                this->unk98 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
             } else {
-                M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 0);
-                this->unk90 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 8);
+                this->unk90 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 0);
+                this->unk98 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 8);
             }
-            temp_r3_1006 = this->unkF0;
-            if (M2C_BITWISE(u32, temp_r3_1006) != 0U) {
-                temp_r5_1009 = this->unk60;
+            temp_r3_1006 = this->unkF8;
+            if (temp_r3_1006 != NULL) {
+                temp_r5_1009 = this->unk68;
                 sp14 = 0xC;
                 sp18 = temp_r5_1009;
-                M2C_FIELD(*temp_r3_1006, M2C_UNK (**)(s32 *, UIObject *), 0x2C)(&sp14, temp_r5_1009);
+                M2C_FIELD(*temp_r3_1006, M2C_UNK (**)(s32 *, s32), 0x2C)(&sp14, temp_r5_1009);
             }
         }
-        temp_r0_1019 = this->unk60;
+        temp_r0_1019 = this->unk68;
         if (temp_r0_1019 >= 0) {
             temp_f31_1042 = (-6.2831855f * ((f32) temp_r0_1019 / (f32) this->unkFC)) - (3.1415927f * this->unkF0);
             if ((u8) this->unk8C == 0) {
                 sp8 = 2;
-                M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *, s32 *), 0x2C)(&this->unk6C.unk4, &sp8);
-                this->unkB0 = temp_f31_1042;
+                M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &sp8);
+                this->unkB8 = temp_f31_1042;
             } else {
-                KDMath_SmoothToAngle(this->unkB0, temp_f31_1042, 15.0f, gUpdateTimeDelta);
-                this->unkB0 = M2C_ERROR(/* Read from unset register $f1 */);
+                KDMath_SmoothToAngle(this->unkB8, temp_f31_1042, 15.0f, gUpdateTimeDelta);
+                this->unkB8 = M2C_ERROR(/* Read from unset register $f1 */);
             }
-            this->unk98 = M2C_FIELD(this, f64 *, 0x28);
-            this->unkA0 = M2C_FIELD(this, f64 *, 0x30);
+            this->unkA0 = M2C_FIELD(this, f64 *, 0x28);
+            this->unkA8 = M2C_FIELD(this, f64 *, 0x30);
         }
     }
     UIContainer::Update();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void RadialButtonGroup::Message(UIMessage *arg0) {
     s32 sp2C;
     s32 sp28;
@@ -611,18 +607,18 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
     UIObject *temp_r3_1143;
     UIObject *temp_r3_1165;
     UIObject *temp_r3_1185;
-    UIObject *temp_r3_1198;
-    UIObject *temp_r4_1117;
-    UIObject *temp_r4_1136;
-    UIObject *temp_r4_1159;
-    UIObject *temp_r4_1178;
-    f32 temp_r3_1265;
     s32 temp_r0_1087;
+    s32 temp_r3_1198;
+    s32 temp_r4_1117;
+    s32 temp_r4_1136;
+    s32 temp_r4_1159;
+    s32 temp_r4_1178;
+    void **temp_r3_1265;
 
     temp_r0_1087 = arg0->unk0;
     switch (temp_r0_1087) {                         /* irregular */
     case 6:
-        if ((u8) GetChild((s32) this->unk60)->unk15 == 0) {
+        if ((u8) GetChild(this->unk68)->unk15 == 0) {
             KDSound_Play(GS_MenuCancel, 0U, -1);
             return;
         }
@@ -631,61 +627,61 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
         UIButtonGroup::Message(arg0);
         return;
     case 12:
-        temp_r4_1117 = this->unk60;
+        temp_r4_1117 = this->unk68;
         if ((temp_r4_1117 >= 0) && (temp_r4_1117 < (s32) this->unk64)) {
-            temp_r3_1123 = GetChild((s32) temp_r4_1117);
+            temp_r3_1123 = GetChild(temp_r4_1117);
             sp28 = 9;
             sp2C = 0;
             M2C_FIELD(temp_r3_1123->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp28);
         }
-        this->unk60 = (UIObject *) arg0->unk4;
-        temp_r4_1136 = this->unk60;
+        this->unk68 = arg0->unk4;
+        temp_r4_1136 = this->unk68;
         if ((temp_r4_1136 >= 0) && (temp_r4_1136 < (s32) this->unk64)) {
-            temp_r3_1143 = GetChild((s32) temp_r4_1136);
+            temp_r3_1143 = GetChild(temp_r4_1136);
             sp20 = 8;
             sp24 = 0;
             M2C_FIELD(temp_r3_1143->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp20);
         }
-        ((UIEvent *) &this->unk64)->Send();
+        this->unk6C.Send();
         return;
     case 1:
-        temp_r4_1159 = this->unk60;
+        temp_r4_1159 = this->unk68;
         if ((temp_r4_1159 >= 0) && (temp_r4_1159 < (s32) this->unk64)) {
-            temp_r3_1165 = GetChild((s32) temp_r4_1159);
+            temp_r3_1165 = GetChild(temp_r4_1159);
             sp18 = 9;
             sp1C = 0;
             M2C_FIELD(temp_r3_1165->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
         }
-        this->unk60 = (UIObject *) arg0->unk4;
-        temp_r4_1178 = this->unk60;
+        this->unk68 = arg0->unk4;
+        temp_r4_1178 = this->unk68;
         if ((temp_r4_1178 >= 0) && (temp_r4_1178 < (s32) this->unk64)) {
-            temp_r3_1185 = GetChild((s32) temp_r4_1178);
+            temp_r3_1185 = GetChild(temp_r4_1178);
             sp10 = 8;
             sp14 = 0;
             M2C_FIELD(temp_r3_1185->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
         }
         SetPositions();
-        temp_r3_1198 = this->unk60;
-        if (temp_r3_1198 == (UIObject *)-1) {
+        temp_r3_1198 = this->unk68;
+        if (temp_r3_1198 == -1) {
             spC = 3;
-            M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *, s32 *), 0x2C)(&this->unk6C.unk4, &spC);
-            this->unkB0 = 0.0f;
+            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &spC);
+            this->unkB8 = 0.0f;
         } else {
-            this->unkB0 = (-6.2831855f * ((f32) temp_r3_1198 / (f32) this->unkFC)) - (3.1415927f * this->unkF0);
-            if ((u8) GetChild((s32) this->unk60)->unk15 != 0) {
-                M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
-                this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
+            this->unkB8 = (-6.2831855f * ((f32) temp_r3_1198 / (f32) this->unkFC)) - (3.1415927f * this->unkF0);
+            if ((u8) GetChild(this->unk68)->unk15 != 0) {
+                this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
+                this->unk98 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
             } else {
-                M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 0);
-                this->unk90 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 8);
+                this->unk90 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 0);
+                this->unk98 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 8);
             }
             sp8 = 2;
-            M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *, s32 *), 0x2C)(&this->unk6C.unk4, &sp8);
+            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &sp8);
         }
-        this->unk98 = M2C_FIELD(this, f64 *, 0x28);
-        this->unkA0 = M2C_FIELD(this, f64 *, 0x30);
-        temp_r3_1265 = this->unkF0;
-        if (M2C_BITWISE(u32, temp_r3_1265) != 0U) {
+        this->unkA0 = M2C_FIELD(this, f64 *, 0x28);
+        this->unkA8 = M2C_FIELD(this, f64 *, 0x30);
+        temp_r3_1265 = this->unkF8;
+        if (temp_r3_1265 != NULL) {
             M2C_FIELD(*temp_r3_1265, M2C_UNK (**)(UIMessage *), 0x2C)(arg0);
         }
         UIContainer::Message(arg0);
@@ -694,30 +690,30 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void RadialButtonGroup::Resolve() {
     UIButtonGroup::Resolve();
     SetPositions();
-    this->unkF0 = M2C_BITWISE(f32, ui_cast<UIContainer *, UIObject *>(this->unkC->FindChild(&lit_stringBase0 + 0x275)));
+    this->unkF8 = ui_cast<UIContainer *, UIObject *>(this->unkC->FindChild(&lit_stringBase0 + 0x275));
 }
 #endif
 
 void RadialButtonGroup::SetPositions() {
     f32 spC;
     f32 sp8;
+    UIObject *var_r30_1352;
+    UIObject *var_r4_1327;
     s32 temp_r0_1341;
     s32 var_r29_1347;
-    void *var_r30_1352;
-    void *var_r4_1327;
 
     this->unkFC = 0;
     var_r4_1327 = this->unk60;
 loop_4:
     if (var_r4_1327 != NULL) {
-        if ((u8) M2C_FIELD(var_r4_1327, u8 *, 0x14) != 0) {
+        if ((u8) var_r4_1327->unk14 != 0) {
             this->unkFC += 1;
         }
-        var_r4_1327 = M2C_FIELD(var_r4_1327, void **, 0x10);
+        var_r4_1327 = var_r4_1327->unk10;
         goto loop_4;
     }
     temp_r0_1341 = this->unkFC;
@@ -726,54 +722,62 @@ loop_4:
         var_r30_1352 = this->unk60;
 loop_10:
         if (var_r30_1352 != NULL) {
-            if ((u8) M2C_FIELD(var_r30_1352, u8 *, 0x14) != 0) {
+            if ((u8) var_r30_1352->unk14 != 0) {
                 _table_sincosf((6.2831855f / (f32) temp_r0_1341) * (f32) var_r29_1347, spC, sp8);
                 var_r29_1347 += 1;
-                M2C_FIELD(var_r30_1352, f32 *, 0x28) = (f32) (spC * (0.5f * this->unk18.unk34));
-                M2C_FIELD(var_r30_1352, f32 *, 0x2C) = (f32) (-sp8 * (0.5f * this->unk18.unk38));
-                M2C_FIELD(var_r30_1352, u16 *, 0x58) = (u16) (M2C_FIELD(var_r30_1352, u16 *, 0x58) | 2);
+                var_r30_1352->unk18.unk10.unk0 = spC * (0.5f * this->unk18.unk34);
+                var_r30_1352->unk18.unk10.unk4 = -sp8 * (0.5f * this->unk18.unk38);
+                var_r30_1352->unk18.unk40 |= 2;
             }
-            var_r30_1352 = M2C_FIELD(var_r30_1352, void **, 0x10);
+            var_r30_1352 = var_r30_1352->unk10;
             goto loop_10;
         }
         this->unkF0 = 1.0f / (f32) this->unkFC;
     }
 }
 
+#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::FreeResources() {
     UIContainer::FreeResources();
-    M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *), 0x24)(&this->unk6C.unk4);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x24)(&this->unk78);
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::LoadResources() {
     UIContainer::LoadResources();
-    M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *), 0x20)(&this->unk6C.unk4);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x20)(&this->unk78);
     this->unkF0 = 0.125f;
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Deinit() {
     UIContainer::Deinit();
-    M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *), 0xC)(&this->unk6C.unk4);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk78);
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Init() {
     UIButtonGroup::Init();
-    M2C_FIELD(this->unk6C.unk4, M2C_UNK (**)(s32 *), 8)(&this->unk6C.unk4);
-    M2C_FIELD(this, u16 *, 0xD0) = (u16) (M2C_FIELD(this, u16 *, 0xD0) | 0x37);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 8)(&this->unk78);
+    this->unkD0 |= 0x37;
     M2C_FIELD(this, f32 *, 0xA0) = 0.0f;
     M2C_FIELD(this, f32 *, 0xA4) = 0.0f;
     M2C_FIELD(this, f32 *, 0xA8) = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB0) = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB4) = 0.0f;
     this->unkB0 = 0.0f;
+    this->unkB4 = 0.0f;
+    this->unkB8 = 0.0f;
     this->unkC4 = 1120.0f;
     this->unkC8 = 1120.0f;
-    M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
-    this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
-    this->unkC4 = 7e-45f;
-    this->unkF0 = 0.0f;
+    this->unk90 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 0);
+    this->unk98 = M2C_FIELD(&RADIAL_V_COLOR, f64 *, 8);
+    this->unkCC = 5;
+    this->unkF8 = NULL;
     this->unkFC = 0;
 }
+#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to
 void UIPie::Draw(const RenderContext &arg0) {
@@ -819,7 +823,7 @@ void UIPie::Draw(const RenderContext &arg0) {
     s32 var_r28_1639;
     s32 var_r29_1608;
 
-    if (!(this->unk70 < 0.00390625f)) {
+    if (!(this->unk78 < 0.00390625f)) {
         MKMaterial_SetMaterial(this->unk64);
         sp100.RenderContext(arg0, this->unk18);
         sp68 = 0.0f;
@@ -843,7 +847,7 @@ void UIPie::Draw(const RenderContext &arg0) {
         spC0.Translate(&spC0, *((MKVector3 *) &spB0));
         ((Matrix *) &sp100)->Multiply(&spC0, (Matrix *) &sp100);
         var_r29_1608 = 0;
-        temp_f3_1610 = 16.0f * this->unk70;
+        temp_f3_1610 = 16.0f * this->unk78;
         temp_r30_1615 = (s32) temp_f3_1610;
         if ((temp_f3_1610 - (f32) temp_r30_1615) > 0.0625f) {
             var_r29_1608 = 1;
@@ -877,7 +881,7 @@ loop_13:
             goto loop_13;
         }
         if (var_r29_1608 != 0) {
-            _table_sincosf(6.2831855f * this->unk70, sp14, sp10);
+            _table_sincosf(6.2831855f * this->unk78, sp14, sp10);
             temp_f2_1729 = sp14 * -0.5f;
             temp_f3_1731 = sp10 * -0.5f;
             sp14 = temp_f2_1729;
@@ -903,7 +907,7 @@ loop_13:
 
 void UIPie::Init() {
     UIImage::Init();
-    this->unk70 = 0.0f;
+    this->unk78 = 0.0f;
 }
 
 #if 0 // DRAFT: undefined identifier 'lit_stringBase0'
@@ -924,7 +928,7 @@ void LocalizedVideoScreen::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
 u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     RenderContext sp30;
     f64 sp28;
@@ -935,7 +939,6 @@ u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     Attributes *var_r30_1923;
     ScriptProgressBar *temp_r3_1927;
     UIObject *temp_r3_1900;
-    UIObject *temp_r4_1880;
     f32 temp_f2_1913;
     f32 var_f0_1914;
     f32 var_f31_1898;
@@ -944,15 +947,16 @@ u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     s32 temp_r0_1960;
     s32 temp_r0_1976;
     s32 temp_r3_1959;
-    void *temp_r3_1888;
+    s32 temp_r4_1880;
+    void **temp_r3_1888;
 
     arg0->SetIdentity();
     arg0->unk40 = 0x10;
-    temp_r4_1880 = this->unk60;
+    temp_r4_1880 = this->unk68;
     if (temp_r4_1880 < 0) {
         return 0U;
     }
-    temp_r3_1888 = ui_cast<UIContainer *, UIObject *>(GetChild((s32) temp_r4_1880));
+    temp_r3_1888 = ui_cast<UIContainer *, UIObject *>(GetChild(temp_r4_1880));
     if ((temp_r3_1888 == NULL) || ((u8) M2C_FIELD(temp_r3_1888, u8 *, 0x14) == 0)) {
         return 0U;
     }
@@ -985,7 +989,7 @@ block_16:
     arg0->unk34 = M2C_FIELD(temp_r3_1888, f32 *, 0x48) * (var_f31_1898 * var_r30_1923->unk30);
     arg0->unk38 = M2C_FIELD(temp_r3_1888, f32 *, 0x48) * (var_r30_1923->unk38 * var_r30_1923->unk30);
     sp30.RenderContext();
-    sp30.AddState(*(temp_r3_1888 + 0x18));
+    sp30.AddState(*(Attributes *) (temp_r3_1888 + 0x18));
     sp30.AddState(*var_r30_1923);
     temp_r3_1959 = var_r30_1923->unk3C;
     temp_r0_1960 = temp_r3_1959 & 3;
@@ -1016,35 +1020,31 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::Draw(const RenderContext &arg0) {
     RenderContext sp10;
 
     sp10.RenderContext(arg0, this->unk18);
     if ((u8) this->unkF8 != 0) {
-        M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *, RenderContext *), 0x1C)(&this->unk80, &sp10);
+        M2C_FIELD(this->unk80, M2C_UNK (**)(void **, RenderContext *), 0x1C)(&this->unk80, &sp10);
     }
     UIContainer::Draw(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MarkerButtonGroup::Update() {
     Attributes sp8;
-    M2C_UNK *temp_r3_2090;
+    Attributes *temp_r3_2090;
 
     NoisyButtonGroup::Update();
     this->unkF8 = GetTargetAttributes(&sp8);
     temp_r3_2090 = &this->unk98;
-    ((Attributes *) temp_r3_2090)->Tween((Attributes *) temp_r3_2090, &sp8, 0.5f);
-    M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x18)(&this->unk80);
+    temp_r3_2090->Tween(temp_r3_2090, &sp8, 0.5f);
+    M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0x18)(&this->unk80);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 void MarkerButtonGroup::Message(UIMessage *arg0) {
     Attributes sp8;
-    M2C_UNK *temp_r3_2124;
+    Attributes *temp_r3_2124;
 
     if ((s32) arg0->unk0 != 1) {
         return NoisyButtonGroup::Message(arg0);
@@ -1052,52 +1052,46 @@ void MarkerButtonGroup::Message(UIMessage *arg0) {
     NoisyButtonGroup::Message(arg0);
     GetTargetAttributes(&sp8);
     temp_r3_2124 = &this->unk98;
-    ((Attributes *) temp_r3_2124)->Tween((Attributes *) temp_r3_2124, &sp8, 1.0f);
+    temp_r3_2124->Tween(temp_r3_2124, &sp8, 1.0f);
     return 1;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::FreeResources() {
     UIContainer::FreeResources();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x24)(&this->unk80);
+    M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0x24)(&this->unk80);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::LoadResources() {
     UIContainer::LoadResources();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x20)(&this->unk80);
+    M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0x20)(&this->unk80);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MarkerButtonGroup::Deinit() {
     UIContainer::Deinit();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk80);
+    M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 0xC)(&this->unk80);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void MarkerButtonGroup::Init() {
     s8 *temp_r3_2218;
 
     NoisyButtonGroup::Init();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 8)(&this->unk80);
-    temp_r3_2218 = M2C_FIELD(this, s8 **, 0xE0);
+    M2C_FIELD(this->unk80, M2C_UNK (**)(void **), 8)(&this->unk80);
+    temp_r3_2218 = this->unkE0;
     if (temp_r3_2218 != NULL) {
         UIStringTable_Remove(temp_r3_2218);
     }
     UIStringTable_Add(&lit_stringBase0 + 0x281);
-    M2C_FIELD(this, s8 **, 0xE0) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-    M2C_FIELD(this, s16 *, 0xD8) = 0x3F;
-    M2C_FIELD(this, f32 *, 0x98) = 1.0f;
-    this->unk9C = 1.0f;
+    this->unkE0 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unk98.unk40 = 0x3F;
     this->unk98.unk0 = 1.0f;
     this->unk98.unk4 = 1.0f;
-    this->unk98.unk20.unkC = 100.0f;
-    this->unk98.unk30 = 30.0f;
-    this->unk98.unk34 = 7e-45f;
+    M2C_FIELD(this, f32 *, 0xA0) = 1.0f;
+    M2C_FIELD(this, f32 *, 0xA4) = 1.0f;
+    this->unk98.unk34 = 100.0f;
+    this->unk98.unk38 = 30.0f;
+    this->unk98.unk3C = 5;
     this->unkF8 = 1;
 }
 #endif
@@ -1118,14 +1112,12 @@ void NoisySystem::Message(UIMessage *arg0) {
     UISystem::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal operand
 s32 ScriptButtonGroup::SetSelection(int arg0) {
-    if (arg0 != (UIObject *) this->unk60) {
+    if (arg0 != (s32) this->unk68) {
         return UIButtonGroup::SetSelection(arg0);
     }
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
 void ScriptButtonGroup::Message(UIMessage *arg0) {
@@ -1159,7 +1151,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void ScriptButtonGroup::Update() {
     s32 spC;
     s32 sp8;
@@ -1213,20 +1205,18 @@ void ScriptButtonGroup::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ScriptButtonGroup::Init() {
     NoisyButtonGroup::Init();
     this->unk80 = NULL;
     this->unk84 = 0;
 }
-#endif
 
 void NoisyButtonGroup::Update() {
     f32 temp_f1_2525;
 
-    temp_f1_2525 = M2C_BITWISE(f32, this->unk6C.unk4);
+    temp_f1_2525 = this->unk78;
     if (temp_f1_2525 > 0.0f) {
-        this->unk6C.unk4 = temp_f1_2525 - gUpdateTimeDelta;
+        this->unk78 = temp_f1_2525 - gUpdateTimeDelta;
     }
     UIContainer::Update();
 }
@@ -1239,8 +1229,8 @@ void NoisyButtonGroup::Message(UIMessage *arg0) {
     if (temp_r0_2548 < 0xA) {
         if (temp_r0_2548 != 6) {
 
-        } else if (M2C_BITWISE(f32, this->unk6C.unk4) <= 0.0f) {
-            this->unk6C.unk4 = 0.15f;
+        } else if (this->unk78 <= 0.0f) {
+            this->unk78 = 0.15f;
             KDSound_Play(GS_MenuSelect, 0U, -1);
         }
         goto block_10;
@@ -1259,14 +1249,14 @@ block_10:
 
 void NoisyButtonGroup::Init() {
     UIButtonGroup::Init();
-    this->unk6C.unk4 = 0.0f;
+    this->unk78 = 0.0f;
 }
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: pointer/array required
 void GameText::Draw(const RenderContext &arg0) {
     s8 sp8;
-    MKFont *temp_r0_2624;
-    MKFont *temp_r25_2721;
+    s32 temp_r0_2624;
+    s32 temp_r25_2721;
     s32 temp_ret_2688;
     s8 *temp_r25_2673;
     s8 *temp_r27_2722;
@@ -1278,11 +1268,11 @@ void GameText::Draw(const RenderContext &arg0) {
     void *var_r3_2663;
 
     var_r29_2623 = &sp8;
-    temp_r0_2624 = this->unk64;
+    temp_r0_2624 = this->unk6C;
     if (temp_r0_2624 >= 0) {
-        var_r0_2629 = *(gpTranslation_StringArray + ((s32) temp_r0_2624 * 4));
+        var_r0_2629 = *(gpTranslation_StringArray + (temp_r0_2624 * 4));
     } else {
-        var_r0_2629 = this->unk60;
+        var_r0_2629 = this->unk68;
     }
     var_r28_2636 = var_r0_2629;
 loop_17:
@@ -1319,13 +1309,13 @@ loop_17:
         goto loop_17;
     }
     *var_r29_2623 = 0;
-    temp_r25_2721 = this->unk64;
-    temp_r27_2722 = this->unk60;
-    this->unk64 = (MKFont *)-1;
-    this->unk60 = &sp8;
+    temp_r25_2721 = this->unk6C;
+    temp_r27_2722 = this->unk68;
+    this->unk6C = -1;
+    this->unk68 = &sp8;
     UIText::Draw(arg0);
-    this->unk64 = temp_r25_2721;
-    this->unk60 = temp_r27_2722;
+    this->unk6C = temp_r25_2721;
+    this->unk68 = temp_r27_2722;
 }
 #endif
 
@@ -1333,20 +1323,20 @@ void DSText::Init() {
     UIText::Init();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
 void ScriptProgressBar::Message(UIMessage *arg0) {
     s32 temp_r0_2757;
 
     temp_r0_2757 = arg0->unk0;
     switch (temp_r0_2757) {                         /* irregular */
     case 8:
-        M2C_FIELD(this, s8 *, 0xDC) = 1;
+        this->unkDC = 1;
         break;
     case 9:
-        M2C_FIELD(this, s8 *, 0xDC) = 0;
+        this->unkDC = 0;
         break;
     case 1:
-        M2C_FIELD(this, f32 *, 0xC8) = Console_Execute(M2C_BITWISE(s8 *, this->unkC8));
+        this->unkC8 = Console_Execute(this->unkD0);
         break;
     }
     UIObject::Message(arg0);
@@ -1356,13 +1346,13 @@ void ScriptProgressBar::Message(UIMessage *arg0) {
 #if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
 void ScriptProgressBar::Update() {
     UIImage::Update();
-    if ((u8) M2C_FIELD(this, u8 *, 0xDC) != 0) {
+    if ((u8) this->unkDC != 0) {
         if (UIControls_DirectionPressed((FrontEndControls) 7, -1) != 0) {
-            Console_Execute(this->unkD0);
+            Console_Execute(this->unkD8);
         } else if (UIControls_DirectionPressed((FrontEndControls) 5, -1) != 0) {
             Console_Execute(this->unkD4);
         }
-        M2C_FIELD(this, f32 *, 0xC8) = Console_Execute(M2C_BITWISE(s8 *, this->unkC8));
+        this->unkC8 = Console_Execute(this->unkD0);
     }
 }
 #endif
@@ -1375,7 +1365,7 @@ s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
 
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2B4) != 0) {
         temp_r31_2850 = ((MKIniLine *) arg0)->GetString(0);
-        this->unkC8 = M2C_BITWISE(f32, ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850));
+        this->unkD0 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850);
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2BF) != 0) {
@@ -1385,7 +1375,7 @@ s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
     }
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2CB) != 0) {
         temp_r31_2884 = ((MKIniLine *) arg0)->GetString(0);
-        this->unkD0 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884);
+        this->unkD8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884);
 block_7:
         return 1;
     }
@@ -1395,11 +1385,11 @@ block_7:
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void ScriptProgressBar::Deinit() {
-    f32 temp_r31_2927;
     s8 *temp_r31_2913;
     s8 *temp_r31_2920;
+    s8 *temp_r31_2927;
 
-    temp_r31_2913 = this->unkD0;
+    temp_r31_2913 = this->unkD8;
     if (temp_r31_2913 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_2913);
     }
@@ -1407,9 +1397,9 @@ void ScriptProgressBar::Deinit() {
     if (temp_r31_2920 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_2920);
     }
-    temp_r31_2927 = this->unkC8;
-    if (M2C_BITWISE(u32, temp_r31_2927) != 0U) {
-        ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(M2C_BITWISE(s8 *, temp_r31_2927));
+    temp_r31_2927 = this->unkD0;
+    if (temp_r31_2927 != NULL) {
+        ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_2927);
     }
     UIImage::Deinit();
 }
@@ -1417,64 +1407,60 @@ void ScriptProgressBar::Deinit() {
 
 void ScriptProgressBar::Init() {
     ProgressBar::Init();
-    this->unkC8 = 0.0f;
-    this->unkD4 = NULL;
     this->unkD0 = NULL;
-    M2C_FIELD(this, s8 *, 0xDC) = 0;
+    this->unkD4 = NULL;
+    this->unkD8 = NULL;
+    this->unkDC = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
 void ProgressBar::Draw(const RenderContext &arg0) {
-    f32 temp_r0_3003;
+    s32 temp_r0_3003;
 
-    M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(this, f64 *, 0x80);
-    this->unk18.unk8 = this->unk80;
-    M2C_FIELD(this, f64 *, 0x28) = (f64) this->unk88;
-    M2C_FIELD(this, f64 *, 0x30) = (f64) this->unk90;
-    M2C_FIELD(this, f64 *, 0x38) = (f64) this->unk98;
-    M2C_FIELD(this, f64 *, 0x40) = (f64) this->unkA0;
-    this->unk18.unk30 = M2C_FIELD(this, f32 *, 0xB0);
-    this->unk18.unk34 = M2C_FIELD(this, f32 *, 0xB4);
-    this->unk18.unk38 = this->unkB0;
-    this->unk18.unk3C = M2C_BITWISE(s32, this->unkB4);
-    this->unk18.unk40 = M2C_FIELD(this, u16 *, 0xC0);
+    M2C_FIELD(this, f64 *, 0x18) = (f64) this->unk80;
+    this->unk18.unk8 = this->unk88;
+    M2C_FIELD(this, f64 *, 0x28) = (f64) this->unk90;
+    M2C_FIELD(this, f64 *, 0x30) = (f64) this->unk98;
+    M2C_FIELD(this, f64 *, 0x38) = (f64) this->unkA0;
+    M2C_FIELD(this, f64 *, 0x40) = (f64) this->unkA8;
+    this->unk18.unk30 = this->unkB0;
+    this->unk18.unk34 = this->unkB4;
+    this->unk18.unk38 = this->unkB8;
+    this->unk18.unk3C = this->unkBC;
+    this->unk18.unk40 = this->unkC0;
     SetUVs(0.0f, 0.0f, 1.0f, 0.5f);
     UIImage::Draw(arg0);
-    temp_r0_3003 = this->unk70;
-    switch (M2C_BITWISE(s32, temp_r0_3003)) {       /* irregular */
+    temp_r0_3003 = this->unk78;
+    switch (temp_r0_3003) {                         /* irregular */
     case 0:
-        this->unk18.unk34 *= M2C_FIELD(this, f32 *, 0xC8);
-        SetUVs(0.0f, 0.5f, M2C_FIELD(this, f32 *, 0xC8), 1.0f);
+        this->unk18.unk34 *= this->unkC8;
+        SetUVs(0.0f, 0.5f, this->unkC8, 1.0f);
         break;
     case 1:
-        this->unk18.unk34 *= M2C_FIELD(this, f32 *, 0xC8);
-        this->unk18.unk10.unk0 += M2C_FIELD(this, f32 *, 0xB4) - this->unk18.unk34;
-        SetUVs(M2C_FIELD(this, f32 *, 0xC8), 0.5f, 0.0f, 1.0f);
+        this->unk18.unk34 *= this->unkC8;
+        this->unk18.unk10.unk0 += this->unkB4 - this->unk18.unk34;
+        SetUVs(this->unkC8, 0.5f, 0.0f, 1.0f);
         break;
     case 2:
-        this->unk18.unk38 *= M2C_FIELD(this, f32 *, 0xC8);
-        SetUVs(0.0f, 1.0f - M2C_FIELD(this, f32 *, 0xC8), 1.0f, 1.0f);
+        this->unk18.unk38 *= this->unkC8;
+        SetUVs(0.0f, 1.0f - this->unkC8, 1.0f, 1.0f);
         break;
     }
     UIImage::Draw(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void ProgressBar::LoadDone() {
-    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(this, f64 *, 0x18);
-    this->unk80 = this->unk18.unk8;
-    this->unk88 = M2C_FIELD(this, f64 *, 0x28);
-    this->unk90 = M2C_FIELD(this, f64 *, 0x30);
-    this->unk98 = M2C_FIELD(this, f64 *, 0x38);
-    this->unkA0 = M2C_FIELD(this, f64 *, 0x40);
-    M2C_FIELD(this, f32 *, 0xB0) = (f32) this->unk18.unk30;
-    M2C_FIELD(this, f32 *, 0xB4) = (f32) this->unk18.unk34;
-    this->unkB0 = this->unk18.unk38;
-    this->unkB4 = M2C_BITWISE(f32, this->unk18.unk3C);
-    M2C_FIELD(this, u16 *, 0xC0) = (u16) this->unk18.unk40;
+    this->unk80 = M2C_FIELD(this, f64 *, 0x18);
+    this->unk88 = this->unk18.unk8;
+    this->unk90 = M2C_FIELD(this, f64 *, 0x28);
+    this->unk98 = M2C_FIELD(this, f64 *, 0x30);
+    this->unkA0 = M2C_FIELD(this, f64 *, 0x38);
+    this->unkA8 = M2C_FIELD(this, f64 *, 0x40);
+    this->unkB0 = this->unk18.unk30;
+    this->unkB4 = this->unk18.unk34;
+    this->unkB8 = this->unk18.unk38;
+    this->unkBC = this->unk18.unk3C;
+    this->unkC0 = this->unk18.unk40;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ProgressBar::LoadLine(UIDataLine *arg0) {
@@ -1483,11 +1469,11 @@ s32 ProgressBar::LoadLine(UIDataLine *arg0) {
     sp8 = NULL;
     if (((MKIniLine *) arg0)->LoadString(&lit_stringBase0 + 0x2D7, &sp8, 0) != 0) {
         if (stricmp(sp8, &lit_stringBase0 + 0x2E3) == 0) {
-            this->unk70 = 0.0f;
+            this->unk78 = 0;
         } else if (stricmp(sp8, &lit_stringBase0 + 0x2EF) == 0) {
-            this->unk70 = 1e-45f;
+            this->unk78 = 1;
         } else if (stricmp(sp8, &lit_stringBase0 + 0x2FB) == 0) {
-            this->unk70 = 3e-45f;
+            this->unk78 = 2;
         }
         return 1;
     }
@@ -1497,19 +1483,19 @@ s32 ProgressBar::LoadLine(UIDataLine *arg0) {
 
 void ProgressBar::Init() {
     UIImage::Init();
-    M2C_FIELD(this, f32 *, 0xC8) = 1.0f;
-    this->unk70 = 0.0f;
+    this->unkC8 = 1.0f;
+    this->unk78 = 0;
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void ScriptButton::SetOnDeselect(const char *arg0) {
     s8 *temp_r31_3190;
 
-    temp_r31_3190 = this->unk90;
+    temp_r31_3190 = this->unk98;
     if (temp_r31_3190 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3190);
     }
-    this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
+    this->unk98 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
 }
 #endif
 
@@ -1529,19 +1515,19 @@ void ScriptButton::SetOnSelect(const char *arg0) {
 void ScriptButton::SetOnActivate(const char *arg0) {
     s8 *temp_r31_3244;
 
-    temp_r31_3244 = this->unk80.unk8;
+    temp_r31_3244 = this->unk90;
     if (temp_r31_3244 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3244);
     }
-    this->unk80.unk8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
+    this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add(arg0);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'IsParentScreenActive'
 void ScriptButton::OnDeselection() {
     UIButton::OnDeselection();
-    if (((s8 *) this->unk90 != NULL) && (IsParentScreenActive((UIObject *) this) != 0)) {
-        Console_Execute(this->unk90);
+    if (((s8 *) this->unk98 != NULL) && (IsParentScreenActive((UIObject *) this) != 0)) {
+        Console_Execute(this->unk98);
     }
 }
 #endif
@@ -1558,8 +1544,8 @@ void ScriptButton::OnSelection() {
 #if 0 // DRAFT: undefined identifier 'IsParentScreenActive'
 void ScriptButton::OnActivate() {
     UIButton::OnActivate();
-    if (((s8 *) this->unk80.unk8 != NULL) && (IsParentScreenActive((UIObject *) this) != 0)) {
-        Console_Execute(this->unk80.unk8);
+    if (((s8 *) this->unk90 != NULL) && (IsParentScreenActive((UIObject *) this) != 0)) {
+        Console_Execute(this->unk90);
     }
 }
 #endif
@@ -1572,7 +1558,7 @@ s32 ScriptButton::LoadLine(UIDataLine *arg0) {
 
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x304) != 0) {
         temp_r31_3359 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk80.unk8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359);
+        this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359);
         goto block_7;
     }
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x313) != 0) {
@@ -1582,7 +1568,7 @@ s32 ScriptButton::LoadLine(UIDataLine *arg0) {
     }
     if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x31C) != 0) {
         temp_r31_3393 = ((MKIniLine *) arg0)->GetString(0);
-        this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393);
+        this->unk98 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393);
 block_7:
         return 1;
     }
@@ -1596,7 +1582,7 @@ void ScriptButton::Deinit() {
     s8 *temp_r31_3429;
     s8 *temp_r31_3436;
 
-    temp_r31_3422 = this->unk90;
+    temp_r31_3422 = this->unk98;
     if (temp_r31_3422 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3422);
     }
@@ -1604,7 +1590,7 @@ void ScriptButton::Deinit() {
     if (temp_r31_3429 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3429);
     }
-    temp_r31_3436 = this->unk80.unk8;
+    temp_r31_3436 = this->unk90;
     if (temp_r31_3436 != NULL) {
         ((UIStringTable *) (UIStringTable_GetCurrent()))->Remove(temp_r31_3436);
     }
@@ -1614,9 +1600,9 @@ void ScriptButton::Deinit() {
 
 void ScriptButton::Init() {
     UIContainer::Init();
-    this->unk80.unk8 = NULL;
-    this->unk94 = NULL;
     this->unk90 = NULL;
+    this->unk94 = NULL;
+    this->unk98 = NULL;
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
@@ -1643,12 +1629,12 @@ void OptionButton::Message(UIMessage *arg0) {
                 sp14 = 2;
                 Message(&sp14);
                 M2C_FIELD(this, f32 *, 0x24) = 1.0f;
-                this->unk18.unk30 = M2C_BITWISE(f32, this->unk98);
+                this->unk18.unk30 = this->unkA0;
             } else {
                 sp10 = 3;
                 Message(&sp10);
                 M2C_FIELD(this, f32 *, 0x24) = 0.0f;
-                this->unk18.unk30 = 0.5f * M2C_BITWISE(f32, this->unk98);
+                this->unk18.unk30 = 0.5f * this->unkA0;
             }
             break;
         case 4:
@@ -1703,30 +1689,25 @@ void OptionButton::Update() {
                 M2C_FIELD(this, f32 *, 0x24) = var_f3_3605;
             }
         }
-        this->unk18.unk30 = M2C_BITWISE(f32, this->unk98) * ((0.25f * M2C_FIELD(this, f32 *, 0x24)) + 0.75f);
+        this->unk18.unk30 = this->unkA0 * ((0.25f * M2C_FIELD(this, f32 *, 0x24)) + 0.75f);
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void OptionButton::LoadDone() {
-    this->unk98 = this->unk18.unk30;
+    this->unkA0 = this->unk18.unk30;
     this->unk18.unk40 |= 9;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void OptionButton::Init() {
     ScriptButton::Init();
-    this->unk98 = 1.0f;
+    this->unkA0 = 1.0f;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void ThrobButton::Message(UIMessage *arg0) {
+    UIObject *var_r31_3729;
+    UIObject *var_r31_3748;
     s32 temp_r0_3670;
-    void *var_r31_3729;
-    void *var_r31_3748;
 
     temp_r0_3670 = arg0->unk0;
     if ((u32) temp_r0_3670 <= 9U) {
@@ -1762,8 +1743,8 @@ void ThrobButton::Message(UIMessage *arg0) {
             var_r31_3729 = this->unk60;
 loop_13:
             if (var_r31_3729 != NULL) {
-                M2C_FIELD(M2C_FIELD(var_r31_3729, void **, 0), M2C_UNK (**)(void *, UIMessage *), 0x2C)(var_r31_3729, arg0);
-                var_r31_3729 = M2C_FIELD(var_r31_3729, void **, 0x10);
+                var_r31_3729->Message(arg0);
+                var_r31_3729 = var_r31_3729->unk10;
                 goto loop_13;
             }
             break;
@@ -1773,8 +1754,8 @@ loop_13:
             var_r31_3748 = this->unk60;
 loop_17:
             if (var_r31_3748 != NULL) {
-                M2C_FIELD(M2C_FIELD(var_r31_3748, void **, 0), M2C_UNK (**)(void *, UIMessage *), 0x2C)(var_r31_3748, arg0);
-                var_r31_3748 = M2C_FIELD(var_r31_3748, void **, 0x10);
+                var_r31_3748->Message(arg0);
+                var_r31_3748 = var_r31_3748->unk10;
                 goto loop_17;
             }
             break;
@@ -1782,9 +1763,7 @@ loop_17:
     }
     UIButton::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void ThrobButton::Update() {
     UIContainer::Update();
     if ((u8) this->unk15 == 0) {
@@ -1800,13 +1779,10 @@ void ThrobButton::Update() {
     M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x200);
     this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x208);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void ThrobButton::LoadDone() {
     this->unk18.unk40 |= 9;
 }
-#endif
 
 PromptGroup *FindPrompt(UIContainer *arg0) {
     UIObject *var_r3_3830;
@@ -1838,6 +1814,8 @@ loop_2:
 }
 
 void PromptGroup::Reset() {
+    UIObject *var_r4_3868;
+    UIObject *var_r6_3869;
     f32 temp_f2_3933;
     f32 temp_f3_3883;
     f32 temp_f6_3916;
@@ -1846,8 +1824,6 @@ void PromptGroup::Reset() {
     f32 var_f5_3886;
     f32 var_f6_3904;
     s32 var_r5_3866;
-    void *var_r4_3868;
-    void *var_r6_3869;
 
     var_r5_3866 = 0;
     var_f2_3867 = 0.0f;
@@ -1855,11 +1831,11 @@ void PromptGroup::Reset() {
     var_r6_3869 = var_r4_3868;
 loop_4:
     if (var_r6_3869 != NULL) {
-        if ((u8) M2C_FIELD(var_r6_3869, u8 *, 0x14) != 0) {
+        if ((u8) var_r6_3869->unk14 != 0) {
             var_r5_3866 += 1;
-            var_f2_3867 += M2C_FIELD(var_r6_3869, f32 *, 0x4C);
+            var_f2_3867 += var_r6_3869->unk18.unk34;
         }
-        var_r6_3869 = M2C_FIELD(var_r6_3869, void **, 0x10);
+        var_r6_3869 = var_r6_3869->unk10;
         goto loop_4;
     }
     temp_f3_3883 = this->unk18.unk34;
@@ -1873,21 +1849,21 @@ loop_4:
     var_f6_3904 = (0.5f * var_f4_3887) - (temp_f3_3883 * 0.5f);
 loop_15:
     if (var_r4_3868 != NULL) {
-        if ((u8) M2C_FIELD(var_r4_3868, u8 *, 0x14) != 0) {
-            M2C_FIELD(var_r4_3868, f32 *, 0x48) = var_f5_3886;
-            temp_f6_3916 = (0.5f * ((M2C_FIELD(var_r4_3868, f32 *, 0x4C) * var_f5_3886) + var_f4_3887)) + var_f6_3904;
-            if (M2C_FIELD(var_r4_3868, f32 *, 0x48) != 1.0f) {
-                M2C_FIELD(var_r4_3868, u16 *, 0x58) = (u16) (M2C_FIELD(var_r4_3868, u16 *, 0x58) | 8);
+        if ((u8) var_r4_3868->unk14 != 0) {
+            var_r4_3868->unk18.unk30 = var_f5_3886;
+            temp_f6_3916 = (0.5f * ((var_r4_3868->unk18.unk34 * var_f5_3886) + var_f4_3887)) + var_f6_3904;
+            if (var_r4_3868->unk18.unk30 != 1.0f) {
+                var_r4_3868->unk18.unk40 |= 8;
             } else {
-                M2C_FIELD(var_r4_3868, u16 *, 0x58) = (u16) (M2C_FIELD(var_r4_3868, u16 *, 0x58) & 0xFFFFFFF7);
+                var_r4_3868->unk18.unk40 &= 0xFFFFFFF7;
             }
-            M2C_FIELD(var_r4_3868, f32 *, 0x2C) = 0.0f;
-            M2C_FIELD(var_r4_3868, f32 *, 0x28) = temp_f6_3916;
-            temp_f2_3933 = M2C_FIELD(var_r4_3868, f32 *, 0x4C);
+            var_r4_3868->unk18.unk10.unk4 = 0.0f;
+            var_r4_3868->unk18.unk10.unk0 = temp_f6_3916;
+            temp_f2_3933 = var_r4_3868->unk18.unk34;
             var_f6_3904 = (0.5f * ((temp_f2_3933 * var_f5_3886) + var_f4_3887)) + temp_f6_3916;
-            M2C_FIELD(var_r4_3868, f32 *, 0x4C) = (f32) (temp_f2_3933 + (var_f4_3887 / var_f5_3886));
+            var_r4_3868->unk18.unk34 = temp_f2_3933 + (var_f4_3887 / var_f5_3886);
         }
-        var_r4_3868 = M2C_FIELD(var_r4_3868, void **, 0x10);
+        var_r4_3868 = var_r4_3868->unk10;
         goto loop_15;
     }
 }
@@ -1904,16 +1880,16 @@ void PromptGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKFont'
 void PromptText::Message(UIMessage *arg0) {
-    f32 temp_r4_3987;
+    s32 temp_r4_3987;
 
     if ((s32) arg0->unk0 != 1) {
 
     } else {
-        temp_r4_3987 = this->unk70;
-        if (M2C_BITWISE(s32, temp_r4_3987) > -1) {
-            this->unk18.unk34 = 20.0f + this->unk64->CalcLength(Str_Printf(&lit_stringBase0 + 0x327, buttonString[M2C_BITWISE(s32, temp_r4_3987)], *(gpTranslation_StringArray + ((s32) this->unk64 * 4)), &lit_stringBase0));
+        temp_r4_3987 = M2C_FIELD(this, s32 *, 0x78);
+        if (temp_r4_3987 > -1) {
+            this->unk18.unk34 = 20.0f + this->unk64->CalcLength(Str_Printf(&lit_stringBase0 + 0x327, buttonString[temp_r4_3987], *(gpTranslation_StringArray + (this->unk6C * 4)), &lit_stringBase0));
         }
     }
     UIObject::Message(arg0);
@@ -1922,46 +1898,44 @@ void PromptText::Message(UIMessage *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void PromptText::Draw(const RenderContext &arg0) {
-    MKFont *temp_r31_4030;
-    f32 temp_r6_4029;
+    s32 temp_r31_4030;
+    s32 temp_r6_4029;
     s8 *temp_r30_4032;
 
-    temp_r6_4029 = this->unk70;
-    temp_r31_4030 = this->unk64;
-    temp_r30_4032 = this->unk60;
-    if (M2C_BITWISE(s32, temp_r6_4029) >= 0) {
-        this->unk60 = Str_Printf(&lit_stringBase0 + 0x327, buttonString[M2C_BITWISE(s32, temp_r6_4029)], *(gpTranslation_StringArray + ((s32) temp_r31_4030 * 4)), M2C_BITWISE(s32, temp_r6_4029) * 4, &lit_stringBase0);
-        this->unk64 = (MKFont *)-1;
+    temp_r6_4029 = M2C_FIELD(this, s32 *, 0x78);
+    temp_r31_4030 = this->unk6C;
+    temp_r30_4032 = this->unk68;
+    if (temp_r6_4029 >= 0) {
+        this->unk68 = Str_Printf(&lit_stringBase0 + 0x327, buttonString[temp_r6_4029], *(gpTranslation_StringArray + (temp_r31_4030 * 4)), temp_r6_4029 * 4, &lit_stringBase0);
+        this->unk6C = -1;
     }
     UIText::Draw(arg0);
-    this->unk60 = temp_r30_4032;
-    this->unk64 = temp_r31_4030;
+    this->unk68 = temp_r30_4032;
+    this->unk6C = temp_r31_4030;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'nanf'
+#if 0 // DRAFT: function call 'stricmp(signed char *, unsigned char)' does not match
 void PromptText::Resolve() {
-    f32 temp_r0_4087;
+    s32 temp_r0_4087;
 
     UIObject::Resolve();
-    this->unk70 = 0.0f;
+    M2C_FIELD(this, s32 *, 0x78) = 0;
 loop_3:
-    temp_r0_4087 = this->unk70;
-    if (M2C_BITWISE(s32, temp_r0_4087) >= 7) {
-        this->unk70 = nanf;
-    } else if (stricmp((s8 *) this->unk4, buttonLabel[M2C_BITWISE(s32, temp_r0_4087)]) != 0) {
-        this->unk70 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk70) + 1));
+    temp_r0_4087 = M2C_FIELD(this, s32 *, 0x78);
+    if (temp_r0_4087 >= 7) {
+        M2C_FIELD(this, s32 *, 0x78) = -1;
+    } else if (stricmp((s8 *) this->unk4, buttonLabel[temp_r0_4087]) != 0) {
+        M2C_FIELD(this, s32 *, 0x78) = (s32) (M2C_FIELD(this, s32 *, 0x78) + 1);
         goto loop_3;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'nanf'
 void PromptText::Init() {
     DSText::Init();
-    this->unk70 = nanf;
+    M2C_FIELD(this, s32 *, 0x78) = -1;
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void UITools_RegisterAll() {

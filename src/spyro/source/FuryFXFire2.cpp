@@ -5,13 +5,10 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
-#include "spyro/source/ClusterBomb.h"
-#include "spyro/source/Explosion4.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/GroundFire.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -23,8 +20,8 @@
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-void *malloc(M2C_UNK);                              /* extern */
+M2C_UNK free(FuryFXFire2::Meteor **);               /* extern */
+FuryFXFire2::Meteor **malloc(M2C_UNK);              /* extern */
 extern s32 GS_SpyroFuryMissile1;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
@@ -34,21 +31,21 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void FuryFXFire2::ResetFury() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
+    FuryFXFire2::Meteor **temp_r3_88;
+    FuryFXFire2::Meteor **var_r29_55;
+    FuryFXFire2::Meteor *temp_r30_100;
+    FuryFXFire2::Meteor *temp_r4_91;
     MKProp *temp_r6_75;
-    f32 temp_r3_88;
-    f32 var_r29_55;
-    void *temp_r30_100;
-    void *temp_r4_91;
 
     SetDefaults();
-    var_r29_55 = this->unk14C;
+    var_r29_55 = this->unk150;
 loop_4:
-    if (M2C_BITWISE(u32, var_r29_55) != 0U) {
+    if (var_r29_55 != NULL) {
         temp_r30_100 = *var_r29_55;
         if (temp_r30_100 == NULL) {
 
@@ -56,32 +53,32 @@ loop_4:
             if ((s32) M2C_FIELD(temp_r30_100, s32 *, 0x44) != 2) {
                 sp10 = M2C_FIELD(temp_r30_100, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r30_100, f64 *, 0x38);
-                KDSound_Stop(((u8 *) temp_r30_100) + 0x48);
+                KDSound_Stop(temp_r30_100 + 0x48);
                 temp_r6_75 = gb.unk0->GetProp();
                 sp8 = 1;
-                ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                this->unk154->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 M2C_FIELD(temp_r30_100, s32 *, 0x44) = 2;
-                temp_r3_88 = this->unk14C;
-                this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_88) + 4));
+                temp_r3_88 = this->unk150;
+                this->unk150 = temp_r3_88 + 4;
                 temp_r4_91 = *temp_r3_88;
-                *temp_r3_88 = (void *) *var_r29_55;
+                *temp_r3_88 = *var_r29_55;
                 *var_r29_55 = temp_r4_91;
             }
-            var_r29_55 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r29_55) + 4));
+            var_r29_55 += 4;
             goto loop_4;
         }
     }
 loop_8:
-    if ((void *) *this->unk14C != NULL) {
-        this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk14C) + 4));
+    if ((FuryFXFire2::Meteor *) *this->unk150 != NULL) {
+        this->unk150 += 4;
         goto loop_8;
     }
     gb.EnableSlowMotion(0U, -1.0f, 0.5f);
-    this->unk154 = (Explosion4 *)-1;
+    this->unk158 = -1;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXFire2::SpawnMeteor() {
     s8 sp138;
     s32 sp134;
@@ -128,20 +125,20 @@ void FuryFXFire2::SpawnMeteor() {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    f32 temp_r3_146;
+    FuryFXFire2::Meteor **temp_r3_146;
+    FuryFXFire2::Meteor **temp_r3_155;
+    FuryFXFire2::Meteor *temp_r31_177;
     f64 temp_f0_220;
     f64 temp_f0_232;
     f64 temp_f0_267;
-    u32 *temp_r3_155;
-    u32 temp_r31_177;
 
-    this->unk148 = M2C_BITWISE(f32, this->unk148) - gUpdateTimeDelta;
-    if (!(M2C_BITWISE(f32, this->unk148) > 0.0f)) {
-        this->unk148 = 0.05f;
-        temp_r3_146 = this->unk14C;
+    this->unk14C -= gUpdateTimeDelta;
+    if (!(this->unk14C > 0.0f)) {
+        this->unk14C = 0.05f;
+        temp_r3_146 = this->unk150;
         if ((u32) M2C_FIELD(temp_r3_146, u32 *, -4) != 0U) {
             spE8 = 0.0f;
-            temp_r3_155 = M2C_BITWISE(s32, temp_r3_146) - 4;
+            temp_r3_155 = temp_r3_146 - 4;
             spEC = 0.0f;
             spF0 = 0.0f;
             spF8 = 0.0f;
@@ -162,9 +159,9 @@ void FuryFXFire2::SpawnMeteor() {
             sp130 = 0;
             sp134 = -1;
             sp138 = 0;
-            this->unk14C = M2C_BITWISE(f32, temp_r3_155);
+            this->unk150 = temp_r3_155;
             temp_r31_177 = *temp_r3_155;
-            if (temp_r31_177 != 0) {
+            if (temp_r31_177 != NULL) {
                 M2C_STRUCT_COPY(temp_r31_177, &Matrix::identity, 0x40);
                 M2C_FIELD(temp_r31_177, s32 *, 0x48) = 0;
                 MKVector(0.0f, 2000.0f, 0.0f);
@@ -215,40 +212,38 @@ void FuryFXFire2::DrawMeteor(FuryFXFire2::Meteor *arg1) {
     MKModel_Draw(this->unk148, NULL);
 }
 
-#if 0 // DRAFT: pointer/array required
 void FuryFXFire2::DrawMeteors() {
+    FuryFXFire2::Meteor **var_r31_334;
     FuryFXFire2::Meteor *temp_r4_343;
-    f32 var_r31_334;
 
-    var_r31_334 = this->unk14C;
+    var_r31_334 = this->unk150;
 loop_2:
-    if (M2C_BITWISE(u32, var_r31_334) != 0U) {
+    if (var_r31_334 != NULL) {
         temp_r4_343 = *var_r31_334;
         if (temp_r4_343 != NULL) {
             DrawMeteor(temp_r4_343);
-            var_r31_334 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r31_334) + 4));
+            var_r31_334 += 4;
             goto loop_2;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void FuryFXFire2::UpdateMeteors() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
+    FuryFXFire2::Meteor **temp_r3_421;
+    FuryFXFire2::Meteor **var_r30_362;
+    FuryFXFire2::Meteor *temp_r31_433;
+    FuryFXFire2::Meteor *temp_r4_424;
     MKProp *temp_r6_406;
     f32 temp_f1_391;
-    f32 temp_r3_421;
-    f32 var_r30_362;
     s32 temp_r0_365;
-    void *temp_r31_433;
-    void *temp_r4_424;
 
-    var_r30_362 = this->unk14C;
+    var_r30_362 = this->unk150;
 loop_9:
-    if (M2C_BITWISE(u32, var_r30_362) != 0U) {
+    if (var_r30_362 != NULL) {
         temp_r31_433 = *var_r30_362;
         if (temp_r31_433 != NULL) {
             temp_r0_365 = M2C_FIELD(temp_r31_433, s32 *, 0x44);
@@ -264,22 +259,22 @@ loop_9:
                 temp_f1_391 = M2C_FIELD(temp_r31_433, f32 *, 0x40);
                 if ((*(f32 *) ((u8 *) &sp10 + 0x4)) <= temp_f1_391) {
                     (*(f32 *) ((u8 *) &sp10 + 0x4)) = temp_f1_391;
-                    KDSound_Stop(((u8 *) temp_r31_433) + 0x48);
+                    KDSound_Stop(temp_r31_433 + 0x48);
                     temp_r6_406 = gb.unk0->GetProp();
                     sp8 = 1;
-                    ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                    this->unk154->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                     M2C_FIELD(temp_r31_433, s32 *, 0x44) = 2;
                 }
                 break;
             case 2:
-                temp_r3_421 = this->unk14C;
-                this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_421) + 4));
+                temp_r3_421 = this->unk150;
+                this->unk150 = temp_r3_421 + 4;
                 temp_r4_424 = *temp_r3_421;
-                *temp_r3_421 = (void *) *var_r30_362;
+                *temp_r3_421 = *var_r30_362;
                 *var_r30_362 = temp_r4_424;
                 break;
             }
-            var_r30_362 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r30_362) + 4));
+            var_r30_362 += 4;
             goto loop_9;
         }
     }
@@ -323,7 +318,6 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void FuryFXFire2::SetDefaults() {
     SetDefaults();
     this->unkD0 = 0;
@@ -332,53 +326,52 @@ void FuryFXFire2::SetDefaults() {
     this->unkDC = 1.0f;
     this->unkE0 = 1.0f;
     this->unkE8 = 0.0f;
-    this->unk148 = 0.0f;
+    this->unk14C = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: type mismatch
 void FuryFXFire2::Deinit() {
+    FuryFXFire2::Meteor **var_r31_568;
+    FuryFXFire2::Meteor **var_r3_569;
+    FuryFXFire2::Meteor **var_r4_567;
+    FuryFXFire2::Meteor *temp_r0_572;
+    FuryFXFire2::Meteor *temp_r0_591;
     MKHeap *temp_r3_594;
-    f32 var_r31_568;
-    f32 var_r3_569;
-    f32 var_r4_567;
-    u32 temp_r0_572;
     u32 temp_r0_577;
-    u32 temp_r0_591;
 
-    var_r4_567 = this->unk14C;
+    var_r4_567 = this->unk150;
     var_r31_568 = var_r4_567;
     var_r3_569 = var_r4_567;
 loop_3:
     temp_r0_577 = M2C_FIELD(var_r3_569, u32 *, -4);
-    var_r3_569 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_569) - 4));
+    var_r3_569 -= 4;
     if (temp_r0_577 != 0U) {
         temp_r0_572 = *var_r3_569;
-        if (temp_r0_572 < M2C_BITWISE(u32, var_r31_568)) {
-            var_r31_568 = M2C_BITWISE(f32, temp_r0_572);
+        if (temp_r0_572 < var_r31_568) {
+            var_r31_568 = (FuryFXFire2::Meteor **) temp_r0_572;
         }
         goto loop_3;
     }
-    if (M2C_BITWISE(u32, var_r3_569) != &gEmptyPtrListDL) {
+    if (var_r3_569 != &gEmptyPtrListDL) {
 loop_9:
         temp_r0_591 = *var_r4_567;
-        if (temp_r0_591 != 0U) {
-            if (temp_r0_591 < M2C_BITWISE(u32, var_r31_568)) {
-                var_r31_568 = M2C_BITWISE(f32, temp_r0_591);
+        if (temp_r0_591 != NULL) {
+            if (temp_r0_591 < var_r31_568) {
+                var_r31_568 = (FuryFXFire2::Meteor **) temp_r0_591;
             }
-            var_r4_567 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r4_567) + 4));
+            var_r4_567 += 4;
             goto loop_9;
         }
-        temp_r3_594 = ((MKHeap *) (M2C_BITWISE(MKHeap *, var_r3_569)))->Current();
+        temp_r3_594 = ((MKHeap *) var_r3_569)->Current();
         if (temp_r3_594 != NULL) {
-            ((MKHeap *) (temp_r3_594->Current()))->Free(M2C_BITWISE(void *, var_r31_568), NULL, 0);
+            ((MKHeap *) (temp_r3_594->Current()))->Free(var_r31_568, NULL, 0);
         } else {
-            free(M2C_BITWISE(MKHeap *, var_r31_568));
+            free(var_r31_568);
         }
     }
-    this->unk14C = 0.0f;
+    this->unk150 = NULL;
     MKModel_Destroy(this->unk148);
-    ((GroundFire *) &this->unk160)->Deinit();
+    this->unk164.Deinit();
     FuryFX::Deinit();
 }
 #endif
@@ -666,7 +659,7 @@ void FuryFXFire2::Update() {
     void *temp_r3_984;
 
     this->unkE8 = this->unkE8 - gUpdateTimeDelta;
-    ((GroundFire *) &this->unk160)->Update();
+    this->unk164.Update();
     if ((s32) this->unkD0 != 0) {
         UpdateMeteors();
     }
@@ -840,7 +833,7 @@ void FuryFXFire2::Update() {
                 KDSound_Play3d(GS_SpyroFuryMissile1, (MKVector3 *) &sp6B0, 0U, -1, 0.0f, 0U);
                 KDSound_Play3d(GS_SpyroFuryMissile1, (MKVector3 *) &sp6A0, 0U, -1, 0.0f, 0U);
                 gb.GetSpyro();
-                this->unk158 = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(0.0f);
+                this->unk15C = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(0.0f);
                 return;
             }
             break;
@@ -896,7 +889,7 @@ void FuryFXFire2::Update() {
                 sp688 = (f64) M2C_FIELD(this, f32 *, 0xC8);
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, BreathHitMessage *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32, f64), 0x94)(gMK, &this->unkF0, 0, 0, &sp680, 1, 3000.0f, temp_f2_1297);
                 gb.GetSpyro();
-                ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(M2C_BITWISE(f32, this->unk158));
+                ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(this->unk15C);
                 return;
             }
             break;
@@ -957,7 +950,7 @@ void FuryFXFire2::Update() {
                     sp340 = temp_f0_1451;
                     sp138 = (f32) sp678 * (f32) temp_f1_1448;
                     sp348 = (f64) sp138;
-                    ((ClusterBomb *) (M2C_BITWISE(ClusterBomb *, this->unk15C)))->SpawnClusterBomb(*((MKVector3 *) &sp390), *((MKVector3 *) &sp340));
+                    this->unk160->SpawnClusterBomb(*((MKVector3 *) &sp390), *((MKVector3 *) &sp340));
                     var_r28_1369 += 1;
                 } while (var_r28_1369 < 0xA);
                 var_r28_1474 = 0;
@@ -1010,7 +1003,7 @@ void FuryFXFire2::Update() {
                         sp660 = M2C_BITWISE(f64, sp760);
                         sp668 = (f64) sp760.unk8;
                     }
-                    ((GroundFire *) &this->unk160)->Emit(*((MKVector3 *) &sp660), MKRand_Float(&gViewSeed, 3.0f, 5.0f), 0U);
+                    this->unk164.Emit(*((MKVector3 *) &sp660), MKRand_Float(&gViewSeed, 3.0f, 5.0f), 0U);
                     var_r28_1474 += 1;
                 } while (var_r28_1474 < 0xA);
                 return;
@@ -1039,14 +1032,14 @@ void FuryFXFire2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXFire2::Init() {
+    FuryFXFire2::Meteor **temp_r3_1675;
+    FuryFXFire2::Meteor **temp_r4_1681;
+    FuryFXFire2::Meteor **var_r3_1660;
+    FuryFXFire2::Meteor **var_r5_1669;
     MKHeap *temp_r3_1653;
-    f32 temp_r3_1675;
-    f32 temp_r4_1681;
-    f32 var_r5_1669;
     s32 var_ctr_1673;
-    void *var_r3_1660;
 
     FuryFX::Init();
     SetDefaults();
@@ -1056,26 +1049,26 @@ void FuryFXFire2::Init() {
     } else {
         var_r3_1660 = malloc(0x698);
     }
-    this->unk14C = M2C_BITWISE(f32, var_r3_1660);
-    var_r5_1669 = this->unk14C;
-    this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1669) + 0x640));
+    this->unk150 = var_r3_1660;
+    var_r5_1669 = this->unk150;
+    this->unk150 = var_r5_1669 + 0x640;
     M2C_FIELD(var_r5_1669, s32 *, 0x640) = 0;
     var_ctr_1673 = 0x14;
     do {
-        temp_r3_1675 = this->unk14C;
-        this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_1675) + 4));
-        M2C_FIELD(M2C_BITWISE(void *, temp_r3_1675), f32 *, 4) = var_r5_1669;
-        var_r5_1669 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1669) + 0x50));
+        temp_r3_1675 = this->unk150;
+        this->unk150 = temp_r3_1675 + 4;
+        M2C_FIELD(temp_r3_1675, FuryFXFire2::Meteor ***, 4) = var_r5_1669;
+        var_r5_1669 += 0x50;
         var_ctr_1673 -= 1;
     } while (var_ctr_1673 != 0);
-    temp_r4_1681 = this->unk14C;
-    this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r4_1681) + 4));
-    M2C_FIELD(M2C_BITWISE(void *, temp_r4_1681), s32 *, 4) = 0;
+    temp_r4_1681 = this->unk150;
+    this->unk150 = temp_r4_1681 + 4;
+    M2C_FIELD(temp_r4_1681, FuryFXFire2::Meteor ***, 4) = NULL;
     this->unk148 = MKModel_Create("P0002_LavaCannonBall", NULL, 2, NULL);
-    ((MKSceneManager *) gMK)->CreatePropDeferred("Explosion4", (MKProp **) &this->unk150);
-    ((MKSceneManager *) gMK)->CreatePropDeferred("ClusterBomb", (MKProp **) &this->unk15C);
-    ((GroundFire *) &this->unk160)->Init(0xA);
-    this->unk154 = (Explosion4 *)-1;
+    ((MKSceneManager *) gMK)->CreatePropDeferred("Explosion4", (MKProp **) &this->unk154);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("ClusterBomb", (MKProp **) &this->unk160);
+    this->unk164.Init(0xA);
+    this->unk158 = -1;
 }
 #endif
 

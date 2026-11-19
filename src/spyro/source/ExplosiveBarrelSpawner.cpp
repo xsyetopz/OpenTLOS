@@ -41,13 +41,11 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void ExplosiveBarrelSpawnerDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = 1;

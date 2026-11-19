@@ -7,7 +7,7 @@
 class ShatterableDescriptor;
 class SmashWallDescriptor;
 
-class SmashWallDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class SmashWallDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     SmashWallDescriptor(void);
 };

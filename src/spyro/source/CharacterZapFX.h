@@ -21,10 +21,6 @@ public:
     virtual void Deinit(void);
     void Enable(bool, float, bool);
     void SpawnZap(void);
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ u32 unk8;
-    /* 0x00c */ MKModel* unkC;
-    /* 0x010 */ u8 pad10[0x4];
     /* 0x014 */ u8 unk14;
     /* 0x015 */ u8 unk15;
     /* 0x016 */ u8 unk16;

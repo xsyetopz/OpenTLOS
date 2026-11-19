@@ -887,7 +887,7 @@ void Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, 
     Tools_GetClosestSplineTimeXZ(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp40;
     M2C_UNK sp3C;
@@ -940,7 +940,7 @@ void Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, in
     Tools_GetClosestSplineTime(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp60;
     M2C_UNK sp5C;

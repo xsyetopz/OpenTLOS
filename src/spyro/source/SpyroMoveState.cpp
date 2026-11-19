@@ -6,8 +6,6 @@
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -51,7 +49,7 @@ void SpyroMoveState::WalkDeinit() {
     Spyro *temp_r3_105;
 
     temp_r3_105 = this->unk10;
-    temp_r3_105->unk420 = (void *) ((s32) temp_r3_105->unk420 & 0xFFFFFFF7);
+    temp_r3_105->unk428 &= 0xFFFFFFF7;
 }
 
 void SpyroMoveState::WalkInit() {
@@ -60,10 +58,10 @@ void SpyroMoveState::WalkInit() {
     this->unk4C = 190.0f;
     this->unk38.Start(this->unk10, 0.2f);
     temp_r3_126 = this->unk10;
-    temp_r3_126->unk420 = (void *) ((s32) temp_r3_126->unk420 | 8);
+    temp_r3_126->unk428 |= 8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroMoveState::SelectState(float arg0) {
     f32 temp_f0_171;
     f32 temp_f0_192;
@@ -108,9 +106,6 @@ s32 SpyroMoveState::Transition() {
     InputModifier *temp_r3_340;
     InputModifier *temp_r3_422;
     M2C_UNK var_r23_470;
-    MKProp *temp_r3_287;
-    MKProp *temp_r4_237;
-    MKProp *temp_r4_395;
     Spyro *temp_r3_236;
     Spyro *temp_r3_388;
     f32 var_f1_353;
@@ -139,17 +134,20 @@ s32 SpyroMoveState::Transition() {
     u8 var_r4_342;
     u8 var_r4_424;
     u8 var_r5_392;
+    void *temp_r3_287;
+    void *temp_r4_237;
+    void *temp_r4_395;
     void *var_r3_298;
     void *var_r4_248;
     void *var_r4_406;
 
     if (this->unk10->SlipTest() == 0) {
         temp_r3_236 = this->unk10;
-        temp_r4_237 = temp_r3_236->unk26C.unk8;
+        temp_r4_237 = temp_r3_236->unk27C;
         temp_r4_239 = M2C_FIELD(temp_r4_237, s32 *, 0x16C);
         if (((u32) (-temp_r4_239 & ~temp_r4_239) >> 0x1FU) != 0) {
             if (temp_r4_239 != 0) {
-                var_r4_248 = &temp_r4_237->unk8 + ((temp_r4_239 - 1) * 0x58);
+                var_r4_248 = ((u8 *) temp_r4_237) + 8 + ((temp_r4_239 - 1) * 0x58);
             } else {
                 var_r4_248 = NULL;
             }
@@ -169,11 +167,11 @@ s32 SpyroMoveState::Transition() {
         var_r25_281 = 1;
         var_r23_282 = 1;
         if (temp_r3_236->SlipTest() == 0) {
-            temp_r3_287 = this->unk10->unk26C.unk8;
+            temp_r3_287 = this->unk10->unk27C;
             temp_r3_289 = M2C_FIELD(temp_r3_287, s32 *, 0x16C);
             if (((u32) (-temp_r3_289 & ~temp_r3_289) >> 0x1FU) != 0) {
                 if (temp_r3_289 != 0) {
-                    var_r3_298 = &temp_r3_287->unk8 + ((temp_r3_289 - 1) * 0x58);
+                    var_r3_298 = ((u8 *) temp_r3_287) + 8 + ((temp_r3_289 - 1) * 0x58);
                 } else {
                     var_r3_298 = NULL;
                 }
@@ -224,12 +222,12 @@ s32 SpyroMoveState::Transition() {
             var_r25_389 = 0;
             var_r26_390 = 0;
             var_r5_392 = 0;
-            if ((u8) temp_r3_388->unk3CD == 0) {
-                temp_r4_395 = temp_r3_388->unk26C.unk8;
+            if ((u8) temp_r3_388->unk3D5 == 0) {
+                temp_r4_395 = temp_r3_388->unk27C;
                 temp_r4_397 = M2C_FIELD(temp_r4_395, s32 *, 0x16C);
                 if (((u32) (-temp_r4_397 & ~temp_r4_397) >> 0x1FU) != 0) {
                     if (temp_r4_397 != 0) {
-                        var_r4_406 = &temp_r4_395->unk8 + ((temp_r4_397 - 1) * 0x58);
+                        var_r4_406 = ((u8 *) temp_r4_395) + 8 + ((temp_r4_397 - 1) * 0x58);
                     } else {
                         var_r4_406 = NULL;
                     }
@@ -290,7 +288,7 @@ s32 SpyroMoveState::Transition() {
         }
         if (var_r30_276 == 0) {
             var_r25_527 = 0;
-            if ((((KDInput *) (this->unk10->GetInput()))->GetLeftMag() == 0.0f) || ((u8) M2C_FIELD(this->unk10, u8 *, 0x1C4) == 0)) {
+            if ((((KDInput *) (this->unk10->GetInput()))->GetLeftMag() == 0.0f) || ((u8) this->unk10->unk1C4 == 0)) {
                 var_r25_527 = 1;
             }
             if (this->unk10->TryChangeState(var_r25_527, 4U, NULL, 0U) == 0) {
@@ -318,9 +316,7 @@ void SpyroMoveState::Update() {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    MKProp *temp_r3_586;
-    MKProp *temp_r3_705;
-    MKProp *temp_r3_722;
+    ContextInfo *temp_r3_706;
     Spyro *temp_r5_581;
     f32 temp_f2_627;
     f32 temp_f2_683;
@@ -336,6 +332,8 @@ void SpyroMoveState::Update() {
     s32 var_r0_738;
     u8 var_r4_574;
     void *temp_r3_575;
+    void *temp_r3_586;
+    void *temp_r3_722;
     void *var_r3_597;
     void *var_r3_733;
 
@@ -349,12 +347,12 @@ void SpyroMoveState::Update() {
     this->unk60 = temp_f0_577;
     temp_r5_581 = this->unk10;
     sp50 = temp_f0_577;
-    if (((u32) temp_r5_581->unk420 >> 5U) & 1) {
-        temp_r3_586 = temp_r5_581->unk26C.unk8;
+    if (((u32) temp_r5_581->unk428 >> 5U) & 1) {
+        temp_r3_586 = temp_r5_581->unk27C;
         temp_r3_588 = M2C_FIELD(temp_r3_586, s32 *, 0x16C);
         if (((u32) (-temp_r3_588 & ~temp_r3_588) >> 0x1FU) != 0) {
             if (temp_r3_588 != 0) {
-                var_r3_597 = &temp_r3_586->unk8 + ((temp_r3_588 - 1) * 0x58);
+                var_r3_597 = ((u8 *) temp_r3_586) + 8 + ((temp_r3_588 - 1) * 0x58);
             } else {
                 var_r3_597 = NULL;
             }
@@ -369,7 +367,7 @@ void SpyroMoveState::Update() {
     if (var_r4_574 != 0) {
         this->unk4C *= M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_581->unk0), f32 *, 0xD8);
     }
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
+    this->unk10->unk3D2 = 0;
     ((Spyro *) &sp38)->CalcYawTurnDir(30.0f);
     temp_f2_627 = this->unk4C;
     temp_f0_630 = sp38 * (f64) temp_f2_627;
@@ -403,21 +401,21 @@ void SpyroMoveState::Update() {
     sp58 = temp_f0_686;
     sp10 = sp30 * temp_f2_683;
     sp60 = (f64) sp10;
-    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp58), 30.0f);
+    this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp58), 30.0f);
     this->unk14.Update(this, 0);
-    temp_r3_705 = this->unk10->unk26C.unk8;
-    if ((s32) M2C_FIELD(temp_r3_705, s32 *, 0x16C) > 0) {
-        if (((ContextInfo *) &temp_r3_705->unk8)->HitID(2U) != 0) {
+    temp_r3_706 = this->unk10->unk27C + 8;
+    if ((s32) temp_r3_706->unk164 > 0) {
+        if (temp_r3_706->HitID(2U) != 0) {
             this->unk50 = 1;
         } else {
             this->unk50 = 0;
         }
     }
-    temp_r3_722 = this->unk10->unk26C.unk8;
+    temp_r3_722 = this->unk10->unk27C;
     temp_r3_724 = M2C_FIELD(temp_r3_722, s32 *, 0x16C);
     if (((u32) (-temp_r3_724 & ~temp_r3_724) >> 0x1FU) != 0) {
         if (temp_r3_724 != 0) {
-            var_r3_733 = &temp_r3_722->unk8 + ((temp_r3_724 - 1) * 0x58);
+            var_r3_733 = ((u8 *) temp_r3_722) + 8 + ((temp_r3_724 - 1) * 0x58);
         } else {
             var_r3_733 = NULL;
         }
@@ -437,11 +435,9 @@ void SpyroMoveState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroMoveState::Exit() {
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
@@ -475,9 +471,9 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     this->unk48 = 1;
     temp_r3_835 = this->unk10;
     sp10 = temp_f0_830;
-    temp_r3_835->unk420 = (void *) ((s32) temp_r3_835->unk420 | 0x100000 | 0x8000);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
+    temp_r3_835->unk428 = temp_r3_835->unk428 | 0x100000 | 0x8000;
+    this->unk10->unk460.SetTailSweepEnabled(1U);
+    this->unk10->unk460.SetHornDiveEnabled(1U);
     sp2C = 0;
     sp28 = 0x17;
     sp30 = 3;
@@ -486,11 +482,9 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroMoveState::Deinit() {
     this->unk14.Exit(this);
 }
-#endif
 
 void SpyroMoveState::Init(Spyro *arg0) {
     this->unk10 = arg0;

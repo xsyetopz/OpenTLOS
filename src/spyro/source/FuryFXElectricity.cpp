@@ -61,18 +61,18 @@ void FuryFXElectricity::ResetFury() {
     temp_r3_64->Disable();
     temp_r3_69 = this->unk100;
     temp_r3_69->Disable();
-    gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk180));
-    this->unk180 = nanf;
+    gb.unk2CC.Disable(this->unk188);
+    this->unk188 = -1;
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         spC = 0;
         sp8 = 0x459;
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
-    M2C_FIELD(this, s8 *, 0x18C) = 0;
+    this->unk18C = 0;
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXElectricity::DrawWindyRing(FuryFXElectricity::WindyRing *arg1) {
     M2C_UNK sp120;
     Matrix spE0;
@@ -209,7 +209,7 @@ void FuryFXElectricity::DrawWindyRing(FuryFXElectricity::WindyRing *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXElectricity::DrawElectricityRing() {
     M2C_UNK sp100;
     Matrix spC0;
@@ -259,8 +259,8 @@ void FuryFXElectricity::DrawElectricityRing() {
     spB8 = (f64) sp58;
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     spC0.unk30 = this->unk160;
-    spC0.unk34 = this->unk160;
-    spC0.unk38 = this->unk164;
+    spC0.unk34 = this->unk164;
+    spC0.unk38 = this->unk168;
     spC0.unk3C = 1.0f;
     spC0.Scale3x3(&spC0, this->unk98);
     var_r27_400 = 0;
@@ -383,17 +383,17 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
     if ((s32) this->unk90 != 0) {
         return 0;
     }
-    M2C_FIELD(this, f32 *, 0x180) = 0.0f;
-    M2C_FIELD(this, f32 *, 0x184) = 0.0f;
+    this->unk180 = 0.0f;
+    this->unk184 = 0.0f;
     this->unk170 = M2C_FIELD(&arg0, f64 *, 0);
-    this->unk170 = M2C_FIELD(&arg0, f64 *, 8);
+    this->unk178 = M2C_FIELD(&arg0, f64 *, 8);
     M2C_FIELD(this, f64 *, 0x160) = (f64) this->unk170;
-    M2C_FIELD(this, f64 *, 0x168) = (f64) this->unk170;
+    M2C_FIELD(this, f64 *, 0x168) = (f64) this->unk178;
     M2C_FIELD(this, f64 *, 0xB0) = (f64) M2C_FIELD(this, f64 *, 0x160);
     M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(this, f64 *, 0x168);
     this->unk90 = 1;
     this->unkAC = 1.0f;
-    this->unk180 = M2C_BITWISE(f32, gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f));
+    this->unk188 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
     temp_r3_600 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
     temp_r0_602 = *(&GameData::gameData[0x70] + (temp_r3_600 + 0x7C));
     temp_r4_604 = &GameData::gameData[0x70] + (temp_r3_600 + 0x64);
@@ -441,13 +441,13 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
     sp80 = (f64) sp30;
     if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp78), (MKCollisionResult *) &sp88, (MKCollisionMode) 4, 0x0C000000) != 0) {
         this->unk170 = (f64) sp88;
-        this->unk170 = (f64) sp90;
+        this->unk178 = (f64) sp90;
     }
     sp18 = 0.0f;
     sp1C = 700.0f;
-    M2C_FIELD(this, u8 *, 0x18C) = arg1;
+    this->unk18C = arg1;
     sp20 = 0.0f;
-    M2C_FIELD(this, f32 *, 0x194) = 0.25f;
+    this->unk194 = 0.25f;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     temp_f0_720 = M2C_FIELD(this, f64 *, 0xB0) + sp48;
@@ -456,7 +456,7 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
     sp10 = this->unkB8 + (f32) sp50;
     sp60 = (f64) sp10;
     this->unkC0->Trigger(*((MKVector3 *) &sp58));
-    this->unkC0->SetScale(M2C_FIELD(this, f32 *, 0x194));
+    this->unkC0->SetScale(this->unk194);
     gb.unk381 = 1;
     return 1;
 }
@@ -464,8 +464,8 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
 
 void FuryFXElectricity::SetDefaults() {
     SetDefaults();
-    M2C_FIELD(this, f32 *, 0x180) = -1.0f;
-    M2C_FIELD(this, f32 *, 0x184) = 0.0f;
+    this->unk180 = -1.0f;
+    this->unk184 = 0.0f;
     this->unk90 = 0;
 }
 
@@ -492,8 +492,8 @@ void FuryFXElectricity::Deinit() {
     if (temp_r4_794 != NULL) {
         ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_794);
     }
-    gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk180));
-    this->unk180 = nanf;
+    gb.unk2CC.Disable(this->unk188);
+    this->unk188 = -1;
     FuryFX::Deinit();
 }
 #endif
@@ -874,27 +874,27 @@ void FuryFXElectricity::Update() {
     void *temp_r3_2360;
     void *temp_r3_2387;
 
-    temp_f1_889 = M2C_FIELD(this, f32 *, 0x180);
+    temp_f1_889 = this->unk180;
     if (temp_f1_889 >= 0.0f) {
-        M2C_FIELD(this, f32 *, 0x180) = (f32) (temp_f1_889 + gUpdateTimeDelta);
-        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (((temp_f1_920 = M2C_FIELD(this, f32 *, 0x180), ((temp_f1_920 >= 0.0f) != 0)) && (temp_f1_920 <= 1.0f)) || ((temp_f1_920 >= 5.0f) && (temp_f1_920 <= 7.0f)))) {
+        this->unk180 = temp_f1_889 + gUpdateTimeDelta;
+        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (((temp_f1_920 = this->unk180, ((temp_f1_920 >= 0.0f) != 0)) && (temp_f1_920 <= 1.0f)) || ((temp_f1_920 >= 5.0f) && (temp_f1_920 <= 7.0f)))) {
             ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
         } else {
-            temp_f2_955 = M2C_FIELD(this, f32 *, 0x180);
+            temp_f2_955 = this->unk180;
             if ((temp_f2_955 > 1.0f) && (temp_f2_955 <= 4.4f)) {
                 if ((temp_f2_955 > 1.0f) && (temp_f2_955 <= 2.1f)) {
-                    M2C_FIELD(this, f32 *, 0x184) = (f32) ((0.909f * (temp_f2_955 - 1.0f) * 0.125f) + 0.0f);
+                    this->unk184 = (0.909f * (temp_f2_955 - 1.0f) * 0.125f) + 0.0f;
                 } else if ((temp_f2_955 > 2.1f) && (temp_f2_955 <= 2.9f)) {
-                    M2C_FIELD(this, f32 *, 0x184) = (f32) ((1.25f * (temp_f2_955 - 2.1f) * 0.125f) + 0.125f);
+                    this->unk184 = (1.25f * (temp_f2_955 - 2.1f) * 0.125f) + 0.125f;
                 } else if ((temp_f2_955 > 2.9f) && (temp_f2_955 <= 3.7f)) {
-                    M2C_FIELD(this, f32 *, 0x184) = (f32) ((1.25f * (temp_f2_955 - 2.9f) * 0.06999999f) + 0.25f);
+                    this->unk184 = (1.25f * (temp_f2_955 - 2.9f) * 0.06999999f) + 0.25f;
                 } else if ((temp_f2_955 > 3.7f) && (temp_f2_955 <= 4.4f)) {
-                    M2C_FIELD(this, f32 *, 0x184) = (f32) ((1.429f * (temp_f2_955 - 3.7f) * 0.18f) + 0.32f);
+                    this->unk184 = (1.429f * (temp_f2_955 - 3.7f) * 0.18f) + 0.32f;
                 }
-                temp_f22_1025 = M2C_FIELD(this, f32 *, 0x184);
+                temp_f22_1025 = this->unk184;
                 ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.7f * temp_f22_1025, temp_f22_1025, 0.033f, 0, 4.0f, 0U);
             } else if (temp_f2_955 > 7.0f) {
-                M2C_FIELD(this, f32 *, 0x180) = -1.0f;
+                this->unk180 = -1.0f;
             }
         }
     }
@@ -922,7 +922,7 @@ void FuryFXElectricity::Update() {
         }
         if (this->unkAC <= 0.0f) {
             this->unk90 = 2;
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            if ((u8) this->unk18C != 0) {
                 this->unkAC = 3.0f;
             } else {
                 this->unkAC = 0.8f;
@@ -976,11 +976,11 @@ void FuryFXElectricity::Update() {
                 sp7D0 = (f64) sp170;
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8D8, sp168);
             }
-            gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk180));
-            this->unk180 = nanf;
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            gb.unk2CC.Disable(this->unk188);
+            this->unk188 = -1;
+            if ((u8) this->unk18C != 0) {
                 gb.GetSpyro();
-                this->unk188 = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(0.9f);
+                this->unk190 = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(0.9f);
             }
         }
     default:                                        /* switch 1 */
@@ -996,19 +996,19 @@ block_172:
         } while (var_r28_2664 < 3);
         temp_r3_2692 = this->unk90;
         if (temp_r3_2692 != 4) {
-            if (((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) && (temp_r3_2692 != 3)) {
-                M2C_FIELD(this, f32 *, 0x194) = (f32) ((0.6f * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0x194));
+            if (((u8) this->unk18C != 0) && (temp_r3_2692 != 3)) {
+                this->unk194 += 0.6f * gUpdateTimeDelta;
             } else {
-                M2C_FIELD(this, f32 *, 0x194) = (f32) (M2C_FIELD(this, f32 *, 0x194) + gUpdateTimeDelta);
+                this->unk194 += gUpdateTimeDelta;
             }
-            this->unkC0->SetScale(M2C_FIELD(this, f32 *, 0x194));
+            this->unkC0->SetScale(this->unk194);
         }
         break;
     case 2:                                         /* switch 1 */
         if (this->unk98.unk0 == 0.1f) {
             M2C_FIELD(this, f64 *, 0x160) = (f64) this->unk170;
-            M2C_FIELD(this, f64 *, 0x168) = (f64) this->unk170;
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            M2C_FIELD(this, f64 *, 0x168) = (f64) this->unk178;
+            if ((u8) this->unk18C != 0) {
                 var_f22_1274 = this->unkAC;
                 if (var_f22_1274 < 3.0f) {
 
@@ -1049,7 +1049,7 @@ block_172:
                 M2C_FIELD(this, f64 *, 0x98) = M2C_BITWISE(f64, sp738);
                 M2C_FIELD(this, f64 *, 0xA0) = (f64) sp738.unk8;
             }
-            if (((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) && (this->unk98.unk4 >= 20.0f)) {
+            if (((u8) this->unk18C != 0) && (this->unk98.unk4 >= 20.0f)) {
                 sp138 = 6.0f;
                 sp13C = 0.25f;
                 sp140 = 6.0f;
@@ -1076,7 +1076,7 @@ block_172:
         } else {
             M2C_FIELD(this, f64 *, 0x160) = (f64) M2C_FIELD(this, f64 *, 0xB0);
             M2C_FIELD(this, f64 *, 0x168) = (f64) M2C_FIELD(this, f32 *, 0xB8);
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            if ((u8) this->unk18C != 0) {
                 var_f22_1466 = this->unkAC;
                 if (var_f22_1466 < 3.0f) {
 
@@ -1118,7 +1118,7 @@ block_172:
                 M2C_FIELD(this, f64 *, 0xA0) = (f64) sp638.unk8;
             }
         }
-        if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+        if ((u8) this->unk18C != 0) {
             var_f2_1584 = this->unkAC;
             if (var_f2_1584 < 3.0f) {
 
@@ -1173,7 +1173,7 @@ block_172:
         if (this->unkAC <= 0.0f) {
             this->unk90 = 3;
             this->unkAC = 1.2f;
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            if ((u8) this->unk18C != 0) {
                 spE8 = 0.1f;
                 spEC = 1000.0f;
                 spF0 = 0.1f;
@@ -1211,7 +1211,7 @@ block_172:
         M2C_FIELD(this, f64 *, 0x98) = M2C_BITWISE(f64, sp5A8);
         M2C_FIELD(this, f64 *, 0xA0) = (f64) sp5A8.unk8;
         sp2E0 = -1.0f;
-        temp_f29_1775 = M2C_FIELD(this, f32 *, 0x194);
+        temp_f29_1775 = this->unk194;
         sp2D0 = 1.0f;
         sp2D8 = -1.0f;
         sp2DC = 0.0f;
@@ -1414,7 +1414,7 @@ block_172:
                 sp420 = (f64) spB0;
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp878, spA8);
             }
-            this->unk180 = M2C_BITWISE(f32, gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f));
+            this->unk188 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
             M2C_FIELD(this, f64 *, 0x160) = (f64) M2C_FIELD(this, f64 *, 0xB0);
             M2C_FIELD(this, f64 *, 0x168) = (f64) M2C_FIELD(this, f32 *, 0xB8);
             gb.GetSpyro();
@@ -1550,9 +1550,9 @@ loop_151:
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp808, 30.0f, 0.017453292f);
         }
         if (var_f26_2522 < 0.5f) {
-            gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk180));
-            this->unk180 = nanf;
-            if ((u8) M2C_FIELD(this, u8 *, 0x18C) != 0) {
+            gb.unk2CC.Disable(this->unk188);
+            this->unk188 = -1;
+            if ((u8) this->unk18C != 0) {
                 gb.GetSpyro();
                 ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetFuryAnimSpeed(1.0f);
             }
@@ -1624,8 +1624,8 @@ void FuryFXElectricity::Resolve() {
 void FuryFXElectricity::Init() {
     FuryFX::Init();
     this->unk90 = 0;
-    M2C_FIELD(this, f32 *, 0x180) = -1.0f;
-    M2C_FIELD(this, f32 *, 0x184) = 0.0f;
+    this->unk180 = -1.0f;
+    this->unk184 = 0.0f;
     this->unkA8 = MKMaterial_Create("fx_370");
     this->unkC8 = MKMaterial_Create("windymat");
     this->unkCC = MKMaterial_Create("windymat2");
@@ -1642,9 +1642,9 @@ void FuryFXElectricity::Init() {
     this->unkE8 = this->unkCC;
     this->unkF8 = this->unkC8;
     this->unk100 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
-    this->unk180 = nanf;
-    M2C_FIELD(this, s8 *, 0x18C) = 0;
-    M2C_FIELD(this, f32 *, 0x194) = 0.0f;
+    this->unk188 = -1;
+    this->unk18C = 0;
+    this->unk194 = 0.0f;
 }
 #endif
 

@@ -2,10 +2,8 @@
 #define SPYRO_SOURCE_MCFILEINFO_H
 
 #include <dolphin/types.h>
-#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
 
-class Attributes;
 class MCFileInfo;
 class RenderContext;
 class UIContainer;
@@ -20,12 +18,6 @@ public:
     virtual void Message(UIMessage *);
     void Reset(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8* unk4;
-    /* 0x008 */ u8 pad8[0x10];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0x6];
-    /* 0x060 */ void* unk60;
-    /* 0x064 */ u8 pad64[0x4];
     /* 0x068 */ void* unk68;
     /* 0x06c */ void* unk6C;
     /* 0x070 */ void* unk70;

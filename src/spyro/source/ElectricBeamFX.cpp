@@ -373,7 +373,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void ElectricBeam::UpdateWiggleBones() {
     Matrix sp250;
     Matrix sp210;
@@ -593,7 +593,6 @@ void ElectricBeam::UpdateWiggleBones() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp10;
     M2C_UNK spC;
@@ -604,7 +603,6 @@ void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
     temp_r31_1256 = M2C_FIELD(M2C_FIELD(this, void **, 0x20), s16 *, 0x70);
     ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, &sp10, (AnimationMatrixPosition) 4, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void ElectricBeam::Init() {

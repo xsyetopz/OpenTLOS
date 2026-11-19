@@ -1014,7 +1014,7 @@ void ExplosiveBarrelPath::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
 void ExplosiveBarrelPath::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -1218,7 +1218,6 @@ void ExplosiveBarrelPath::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosiveBarrelPath::Init() {
     s32 var_r26_2206;
     s32 var_r30_2203;
@@ -1263,7 +1262,6 @@ void ExplosiveBarrelPath::Init() {
     this->unk238 = 0.0f;
     this->unk23C = 1.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void ExplosiveBarrelPathDescriptor::LoadDone() {

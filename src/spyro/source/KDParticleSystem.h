@@ -22,7 +22,7 @@ public:
     virtual void GetName(void);
     virtual void UpdateParticles(void);
     void KDConfigureSystemData(KDParticleSystem *, MKParticle *);
-    /* 0x0e4 */ u8 padE4[0x10];
+    /* 0x0e8 */ u8 padE8[0xc];
     /* 0x0f4 */ f32 unkF4;
     /* 0x0f8 */ s32 unkF8;
 };

@@ -142,10 +142,10 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
     void *temp_r5_272;
 
     if ((s32) this->unk104 == 0) {
-        M2C_FIELD(this, u8 *, 0x2F0) = arg1;
-        M2C_FIELD(this, u8 *, 0x2F1) = arg2;
-        this->unk2E8 = (s32) arg3;
-        if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+        this->unk2F0 = arg1;
+        this->unk2F1 = arg2;
+        this->unk2EC = (s32) arg3;
+        if ((u8) this->unk2F1 == 0) {
             this->unk90.unk30 = arg0.unk0;
             this->unk90.unk34 = arg0.unk4;
             this->unk90.unk38 = arg0.unk8;
@@ -241,9 +241,9 @@ void FuryFXFire::SetDefaults() {
     this->unk100 = 0.0f;
     this->unkF8 = -1.0f;
     this->unkFC = 0.0f;
-    M2C_FIELD(this, s8 *, 0x2F0) = 0;
-    M2C_FIELD(this, s8 *, 0x2F1) = 0;
-    this->unk2E8 = 1;
+    this->unk2F0 = 0;
+    this->unk2F1 = 0;
+    this->unk2EC = 1;
 }
 #endif
 
@@ -289,7 +289,6 @@ void FuryFXFire::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FuryFXFire::Draw() {
     Matrix sp40;
     M2C_UNK sp3C;
@@ -320,7 +319,7 @@ void FuryFXFire::Draw() {
         sp28 = (f64) sp18;
         sp40.Scale3x3(&sp40, *((MKVector3 *) &sp28));
         MKModel_SetWorldMatrix(this->unkF0, sp40);
-        if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+        if ((u8) this->unk2F1 != 0) {
             gRenderState = this->unkE4;
             MKModel_Draw(this->unkF0, NULL);
             gRenderState = NULL;
@@ -335,9 +334,8 @@ void FuryFXFire::Draw() {
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void FuryFXFire::UpdateDragons() {
     Matrix spA0;
     M2C_UNK sp9C;
@@ -422,7 +420,7 @@ void FuryFXFire::UpdateDragons() {
         M2C_FIELD(temp_r30_570, f64 *, 0x120) = (f64) M2C_FIELD(temp_r3_648, f64 *, 0x30);
         M2C_FIELD(temp_r30_570, f64 *, 0x128) = (f64) M2C_FIELD(temp_r3_648, f64 *, 0x38);
         var_r4_654 = GS_SpyroFuryAttack1;
-        if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+        if ((u8) this->unk2F1 != 0) {
             var_r4_654 = GS_CynderFuryLP;
         }
         temp_r25_660 = ((u8 *) temp_r30_570) + 0x120;
@@ -430,7 +428,7 @@ void FuryFXFire::UpdateDragons() {
         ((KDSoundFader *) (((u8 *) temp_r30_570) + 0x134))->Update(var_r4_654, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
         var_r4_676 = GS_SpyroFuryAttack3;
-        if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+        if ((u8) this->unk2F1 != 0) {
             var_r4_676 = GS_CynderFuryExtra1;
         }
         ((KDSoundFader *) (((u8 *) temp_r30_570) + 0x15C))->Update(var_r4_676, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -912,7 +910,7 @@ void FuryFXFire::Update() {
     void *temp_r6_1154;
 
     this->unk100 -= gUpdateTimeDelta;
-    if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+    if ((u8) this->unk2F1 == 0) {
         temp_f3_860 = this->unkF8;
         if (temp_f3_860 >= 0.0f) {
             this->unkF8 = temp_f3_860 + gUpdateTimeDelta;
@@ -931,11 +929,11 @@ void FuryFXFire::Update() {
                 }
                 temp_f20_932 = this->unkFC;
                 ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(temp_f20_932, temp_f20_932, 0.033f, 0, 4.0f, 0U);
-            } else if ((temp_f1_869 >= 5.1f) && (temp_f1_869 <= 5.4f) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
+            } else if ((temp_f1_869 >= 5.1f) && (temp_f1_869 <= 5.4f) && ((u8) this->unk2F0 == 0)) {
                 ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.6f, 0.0f, 0.05f, 0, 4.0f, 0U);
-            } else if ((temp_f1_869 >= 6.1f) && (temp_f1_869 <= 6.4f) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
+            } else if ((temp_f1_869 >= 6.1f) && (temp_f1_869 <= 6.4f) && ((u8) this->unk2F0 == 0)) {
                 ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.0f, 0.4f, 0.05f, 0, 4.0f, 0U);
-            } else if ((temp_f1_869 >= 7.0f) && (temp_f1_869 <= 7.4f) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
+            } else if ((temp_f1_869 >= 7.0f) && (temp_f1_869 <= 7.4f) && ((u8) this->unk2F0 == 0)) {
                 ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.3f, 0.0f, 0.05f, 0, 4.0f, 0U);
             } else if (temp_f1_869 > 7.4f) {
                 this->unkF8 = -1.0f;
@@ -950,7 +948,7 @@ void FuryFXFire::Update() {
         switch (temp_r0_1041) {
             return;
         case 1:
-            if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+            if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) this->unk2F1 == 0)) {
                 var_f20_1061 = this->unk100;
                 if (var_f20_1061 < 1.0f) {
 
@@ -976,7 +974,7 @@ void FuryFXFire::Update() {
                 this->unkD0 = 0.05f;
                 this->unkD4 = 1.0f;
                 this->unkD8 = 0.05f;
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+                if ((u8) this->unk2F1 != 0) {
                     KDSound_Play3d(GS_CynderFuryBuildUp2, (MKVector3 *) &this->unk90.unk30, 0U, -1, 0.0f, 0U);
                 }
                 temp_r4_1131 = this->unkE8;
@@ -1045,11 +1043,11 @@ void FuryFXFire::Update() {
             M2C_FIELD(this, f32 *, 0xD8) = (f64) sp7D0.unk8;
             if (this->unk100 <= 0.0f) {
                 this->unk100 = 1.5f;
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+                if ((u8) this->unk2F1 != 0) {
                     this->unk100 -= 0.3f;
                 }
                 this->unk104 += 1;
-                if (((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+                if (((u8) this->unk2F0 == 0) && ((u8) this->unk2F1 == 0)) {
                     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.5f, 0.5f, 0.33f, 0, 4.0f, 0U);
                 }
                 temp_r4_1331 = this->unkF4;
@@ -1107,7 +1105,7 @@ loop_71:
                     sp860 = temp_f0_1476;
                     sp328 = this->unk90.unk38 + (f32) sp758;
                     sp868 = (f64) sp328;
-                    if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+                    if ((u8) this->unk2F1 == 0) {
                         temp_f21_1493 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
                         temp_f20_1498 = MKRand_Float(&gViewSeed, 0.6f, 0.8f);
                         sp300 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
@@ -1175,7 +1173,7 @@ loop_71:
                 temp_r3_1659->unk2C += 2.0f * gUpdateTimeDelta;
             }
             if (this->unk100 <= 0.0f) {
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F0) != 0) {
+                if ((u8) this->unk2F0 != 0) {
                     this->unk100 = 3.0f;
                 } else {
                     this->unk100 = 0.2f;
@@ -1228,7 +1226,7 @@ loop_87:
                 sp850 = temp_f0_1812;
                 sp2A8 = this->unk90.unk38 + (f32) sp648;
                 sp858 = (f64) sp2A8;
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+                if ((u8) this->unk2F1 == 0) {
                     temp_f21_1829 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
                     temp_f20_1834 = MKRand_Float(&gViewSeed, 0.6f, 0.8f);
                     sp280 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
@@ -1265,7 +1263,7 @@ loop_87:
             }
             return;
         case 4:
-            if ((u8) M2C_FIELD(this, u8 *, 0x2F0) != 0) {
+            if ((u8) this->unk2F0 != 0) {
                 MKVector(5.0f, 50.0f, 5.0f);
                 MKVector(-2.0f, 0.0f, -2.0f);
                 sp5A0.operator*(gUpdateTimeDelta);
@@ -1340,10 +1338,10 @@ loop_87:
                 sp4F0 = (f64) sp250;
                 sp4F8 = (f64) sp258;
                 gb.unkB8.EnableScreenFlash(*((MKVector4 *) &sp4F0), 3.0f * gUpdateTimeDelta);
-                if (((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+                if (((u8) this->unk2F0 == 0) && ((u8) this->unk2F1 == 0)) {
                     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.99f, 0.99f, 0.66f, 0, 4.0f, 0U);
                 }
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+                if ((u8) this->unk2F1 != 0) {
                     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.99f, 0.66f, (MKVector3 *) &this->unk90.unk30, 50.0f, 0, 4.0f, 1U);
                 }
                 M2C_STRUCT_COPY((s32) &sp8FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -1374,7 +1372,7 @@ loop_87:
                 sp900.unk38 = (f32) sp4C8;
                 sp900.unk3C = 1.0f;
                 gb.unk1C0.StartWarp(&sp900);
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+                if ((u8) this->unk2F1 == 0) {
                     this->unk290.unk50 = 0;
                     temp_f2_2249 = M2C_FIELD(this, f64 *, 0xC0);
                     M2C_FIELD(this, f64 *, 0x2A0) = temp_f2_2249;
@@ -1388,7 +1386,7 @@ loop_87:
                     sp4A8 = (f64) spB8;
                     sp4A0 = (f64) spB0;
                     sp940 = 7;
-                    sp968 = this->unk2E8;
+                    sp968 = this->unk2EC;
                     sp96C = 0;
                     sp948 = (f64) spB0;
                     sp950 = (f64) spB8;
@@ -1408,7 +1406,7 @@ loop_87:
                     M2C_FIELD(M2C_FIELD(gb.unk0->GetProp(), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp940);
                 }
                 var_r3_2323 = GS_SpyroFuryAttack2;
-                if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
+                if ((u8) this->unk2F1 != 0) {
                     var_r3_2323 = GS_CynderFuryImpact;
                 }
                 KDSound_Play3d(var_r3_2323, (MKVector3 *) &this->unk290.unk10, 0U, -1, 0.0f, 0U);
@@ -1431,7 +1429,7 @@ loop_87:
                 if (((temp_r3_2372 != NULL) && (temp_r3_2372->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_2371, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_2371) + 0x24))->GetState() == 2))) {
                     var_r27_2370 = 1;
                 }
-                if ((var_r27_2370 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+                if ((var_r27_2370 == 0) && ((u8) this->unk2F1 == 0)) {
                     gb.GetSpyro();
                     ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetRage(0, 15.0f);
                 }
@@ -1504,7 +1502,7 @@ loop_87:
             Max(sp450, sp80);
             M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp450);
             M2C_FIELD(this, f32 *, 0xD8) = (f64) sp450.unk8;
-            if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && (var_f27_2435 <= 0.5f) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+            if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && (var_f27_2435 <= 0.5f) && ((u8) this->unk2F1 == 0)) {
                 sp834 = 0;
                 temp_f1_2559 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), f32 (**)(), 0x54)();
                 sp830 = 0x458;
@@ -1518,7 +1516,7 @@ loop_87:
                 if (temp_r4_2586 != NULL) {
                     ((LightManager *) gb.unk80)->EnableLight(temp_r4_2586, 0U);
                 }
-                if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
+                if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) this->unk2F1 == 0)) {
                     sp2C = 0;
                     sp28 = 0x459;
                     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp28);
@@ -1576,7 +1574,7 @@ loop_156:
                     sp810 = temp_f1_2740;
                     sp1B8 = (f32) sp3E8 + (f32) sp3B8;
                     sp818 = (f64) sp1B8;
-                    if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
+                    if ((u8) this->unk2F1 == 0) {
                         sp1A0 = sp820 * 5.676053805e-315;
                         sp1A8 = (f32) sp828 * 1000.0f;
                         sp3A0 = sp1A0;

@@ -48,7 +48,7 @@ void PauseMenu_AutosaveScreen(const char *arg0) {
         return;
     }
     if (((UISystem *) pSystem != NULL) && ((u32) gb.unk398 == 1)) {
-        temp_r3_41 = M2C_FIELD((pSystem + (pSystem->unk64 * 4)), void **, 0x70);
+        temp_r3_41 = M2C_FIELD((pSystem + (pSystem->unk6C * 4)), void **, 0x70);
         if ((temp_r3_41 != NULL) && (stricmp(M2C_FIELD(temp_r3_41, s32 *, 4), "AutosaveWarning") == 0)) {
             pSystem->ChangeScreen(arg0);
             return;
@@ -150,7 +150,7 @@ s32 PauseMenu_Update() {
             pSystem->ClearStack(NULL);
         }
         pSystem->Update();
-        if ((u32) M2C_FIELD((pSystem + (pSystem->unk64 * 4)), u32 *, 0x70) == 0U) {
+        if ((u32) M2C_FIELD((pSystem + (pSystem->unk6C * 4)), u32 *, 0x70) == 0U) {
             gb.SetGamePaused(0U, (u8 (*)()) PauseMenu_Update, PauseMenu_Draw, 1U);
             if ((u8) bStopSoundsAfterPauseMenu != 0) {
                 KDSound_StopAll();

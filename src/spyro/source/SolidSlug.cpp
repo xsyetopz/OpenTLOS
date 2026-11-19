@@ -15,7 +15,7 @@
 extern s32 GS_PLACEHOLDER;
 extern MKPropDescriptor *pSolidSlugDescriptor;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SolidSlug::Update() {
     Matrix sp90;
     Matrix sp50;
@@ -253,12 +253,10 @@ void *SolidSlug::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void SolidSlugDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSolidSlugDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SolidSlugDescriptor::LoadLine(MKIniLine *arg0) {

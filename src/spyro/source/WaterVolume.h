@@ -30,8 +30,6 @@ public:
 class WaterVolumeDescriptor : public KDWaterVolumeDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x004 */ u8 pad4[0x8];
-    /* 0x00c */ s32 unkC;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

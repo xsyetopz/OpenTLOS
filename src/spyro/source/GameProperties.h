@@ -11,7 +11,6 @@ class EventMessageProperty;
 class GameProperties_cpp;
 class KDMessageHandlerProperty;
 class KDProperty;
-class KDPropertyCommandList;
 class KDPropertySet;
 class KDScriptProperty;
 class MKIniLine;
@@ -26,7 +25,6 @@ public:
     virtual s32 ResolveCommand(const char *) const;
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ f32 unk18;
@@ -44,9 +42,6 @@ public:
     virtual void ResolveInstance(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ s8* unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ f32 unk18;
@@ -66,9 +61,6 @@ public:
     virtual s32 LoadLineInstance(MKIniLine *);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ s8* unk10;
 };
 
@@ -90,22 +82,17 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ f32 unk10;
     /* 0x014 */ s8* unk14;
     /* 0x018 */ s32 unk18;
 };
 
-class MessageHandlerProperty : public KDMessageHandlerProperty {  // base: vtable prefix
+class MessageHandlerProperty : public KDMessageHandlerProperty {  // base: base ctor call
 public:
     virtual void Resolve(KDPropertySet *);
     virtual void * GetClassInfo(void) const;
     MessageHandlerProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x18];
-    /* 0x01c */ s8* unk1C;
 };
 
 class TimerProperty : public KDScriptProperty {  // base: ctor/dtor vtable stores
@@ -120,10 +107,6 @@ public:
     virtual void Command(int);
     TimerProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ KDPropertyCommandList unk10;
     /* 0x01c */ f32 unk1C;
 };
 

@@ -15,7 +15,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern void **gb;
 u8 tempBoxRot__16TriggerBoxObject[0x10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
 s32 TriggerPolyObject::CheckTarget() {
     f64 sp10;
     f64 sp8;
@@ -39,7 +38,6 @@ s32 TriggerPolyObject::CheckTarget() {
     }
     return var_r31_47;
 }
-#endif
 
 s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     f32 temp_f1_81;
@@ -162,7 +160,6 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
 s32 TriggerPlaneGroupObject::CheckTarget() {
     f64 sp40;
     f64 sp38;
@@ -235,7 +232,6 @@ loop_17:
     this->unk84 = 0;
     return this->unk84;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void TriggerPlaneGroupObject::LoadDone() {
@@ -321,7 +317,6 @@ void TriggerPlaneObject::LoadDone() {
     this->unkC4 = 0;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 0) = 0.0f;
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 4) = 0.0f;
@@ -334,7 +329,6 @@ void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
     this->unk64 = this->unk74 / -2.0f;
     this->unk68 = this->unk78 / -2.0f;
 }
-#endif
 
 void TriggerBoxObject::LoadDone() {
     this->unk10.SetRotationPYR(*((MKVector3 *) TriggerBoxObject::tempBoxRot));

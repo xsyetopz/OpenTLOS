@@ -10,7 +10,7 @@ class MKCollisionResult;
 class Projectile;
 class ProjectileDescriptor;
 
-class IceShard : public Projectile {  // base: vtable prefix
+class IceShard : public Projectile {  // base: base ctor call
 public:
     virtual ~IceShard(void);
     virtual void LoadDone(void);
@@ -20,7 +20,7 @@ public:
     void * CreateInstance(void);
 };
 
-class IceShardDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class IceShardDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

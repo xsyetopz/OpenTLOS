@@ -24,33 +24,7 @@ public:
     void SetBreathText(void);
     LevelUpScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x64];
-    /* 0x068 */ s32 unk68;
-    /* 0x06c */ s32 unk6C;
-    /* 0x070 */ s32 unk70;
-    /* 0x074 */ s32 unk74;
-    /* 0x078 */ s32 unk78;
-    /* 0x07c */ s32 unk7C;
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ s32 unk84;
-    /* 0x088 */ s32 unk88;
-    /* 0x08c */ s32 unk8C;
-    /* 0x090 */ s32 unk90;
-    /* 0x094 */ s32 unk94;
-    /* 0x098 */ s32 unk98;
-    /* 0x09c */ s32 unk9C;
-    /* 0x0a0 */ s32 unkA0;
-    /* 0x0a4 */ s32 unkA4;
-    /* 0x0a8 */ s32 unkA8;
-    /* 0x0ac */ s32 unkAC;
-    /* 0x0b0 */ s32 unkB0;
-    /* 0x0b4 */ s32 unkB4;
-    /* 0x0b8 */ s32 unkB8;
-    /* 0x0bc */ s32 unkBC;
-    /* 0x0c0 */ s32 unkC0;
-    /* 0x0c4 */ s32 unkC4;
     /* 0x0c8 */ KDSoundFader unkC8;
-    /* 0x13c */ u8 pad13C[0x4];
     /* 0x140 */ DialogBoxContext* unk140;
     /* 0x144 */ DialogBoxContext* unk144;
     /* 0x148 */ f32 unk148;
@@ -80,10 +54,10 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: expression syntax error
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LevelUpScreen::LevelUpScreen() {
-    this->unk60 = NULL;
-    this->unk64 = 0;
     this->unk68.unk0 = NULL;
     this->unk68.unk4 = 0;
     this->unk68.unk8 = NULL;
@@ -107,8 +81,10 @@ inline LevelUpScreen::LevelUpScreen() {
     this->unkB0.unk8 = NULL;
     this->unkBC.unk0 = NULL;
     this->unkBC.unk4 = 0;
-    this->unkC8.unkC.unk14 = 0.0f;
-    this->unkC8.unk48 = 0.0f;
+    this->unkBC.unk8 = NULL;
+    this->unkC8.unk0 = 0;
+    M2C_FIELD(this, s32 *, 0xF0) = 0;
+    this->unkC8.unk50 = 0.0f;
     return this;
 }
 #endif

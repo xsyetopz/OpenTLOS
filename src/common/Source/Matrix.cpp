@@ -217,7 +217,6 @@ void Matrix::Scale3x3(const Matrix *arg0, float arg1) {
     this->unk3C = arg0->unk3C;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     f64 sp70;
     f64 sp68;
@@ -329,7 +328,6 @@ void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     sp4C = (temp_f27_671 * temp_f15_657) + ((temp_f28_646 * temp_f19_629) + ((temp_f30_611 * temp_f25_609) + (temp_f29_592 * temp_f23_591)));
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
-#endif
 
 void Matrix::Multiply3x3(const Matrix *arg0, const Matrix *arg1) {
     f32 temp_f0_775;
@@ -424,7 +422,6 @@ f32 Matrix::Multiply(const Matrix *arg0, const Matrix *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::InverseSimple(const Matrix *arg0) {
     Matrix sp10;
     M2C_UNK spC;
@@ -447,7 +444,6 @@ void Matrix::InverseSimple(const Matrix *arg0) {
     sp10.unk3C = 1.0f;
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp10'
 void Matrix::Transpose3x3(const Matrix *arg0) {
@@ -471,7 +467,6 @@ void Matrix::Transpose3x3(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::Transpose(const Matrix *arg0) {
     f32 sp4C;
     f32 sp48;
@@ -509,7 +504,6 @@ void Matrix::Transpose(const Matrix *arg0) {
     sp4C = arg0->unk3C;
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
@@ -590,7 +584,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void Matrix::GetRotationRPY() const {
     Matrix sp20;
     M2C_UNK sp1C;
@@ -617,7 +611,7 @@ void Matrix::GetRotationRPY() const {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, int, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp28'
 void Matrix::GetRotationPRY() const {
     f32 sp20;
     M2C_UNK sp1C;
@@ -664,7 +658,7 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, int, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp24'
 void Matrix::GetRotationPYR() const {
     f32 sp20;
     M2C_UNK sp1C;

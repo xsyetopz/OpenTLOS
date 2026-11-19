@@ -138,7 +138,7 @@ void MKDynamicBone::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 void MKDynamicBone::Update() {
     Matrix sp6A0;
     Matrix sp660;

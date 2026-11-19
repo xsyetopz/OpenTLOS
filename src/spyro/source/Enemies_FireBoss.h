@@ -72,7 +72,6 @@ public:
     void CreateInsideSplines(void);
     void CreateOutsideSpline(void);
     void UpdatePhrasesAndSounds(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ s32 unkB10;
     /* 0xb14 */ s32 unkB14;
     /* 0xb18 */ f32 unkB18;
@@ -198,32 +197,30 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireBoss::FireBoss() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkB20 = 0.0f;
-    this->unkB24 = 0.0f;
-    this->unkB28 = 0.0f;
-    this->unkB2C = 0.0f;
-    __construct_array(&this->unkB34, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
-    __construct_array((f32 *) &this->unkB4C.unk10, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 8);
-    this->unkF70.unk44 = 0;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB38.unk0 = 0;
+    this->unkB38.unk4 = 0;
+    this->unkB38.unk8 = 0.0f;
+    this->unkB38.unkC = 0;
+    __construct_array(&this->unkB4C, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    __construct_array(&this->unkB74, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 8);
+    this->unkFCC = 0;
     this->unkFF4 = 0;
     this->unk101C = 0;
     this->unk1044 = 0;
-    this->unk106C = 0;
-    ((EventMessage *) &this->unk106C)->Init();
+    this->unk1084.unk0 = 0;
+    this->unk1084.Init();
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline FireBoss::~FireBoss() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if (&this->unk106C != NULL) {
-        ((EventMessage *) &this->unk106C)->Deinit();
+    this->unk6B8 = &__vt.unk84;
+    if (&this->unk1084 != NULL) {
+        this->unk1084.Deinit();
     }
     if ((&this->unk1044 != NULL) && (&this->unk1044 != NULL)) {
         KDSound_Stop(&this->unk1044);
@@ -234,8 +231,8 @@ inline FireBoss::~FireBoss() {
     if ((&this->unkFF4 != NULL) && (&this->unkFF4 != NULL)) {
         KDSound_Stop(&this->unkFF4);
     }
-    if ((&this->unkF70.unk44 != NULL) && (&this->unkF70.unk44 != NULL)) {
-        KDSound_Stop(&this->unkF70.unk44);
+    if ((&this->unkFCC != NULL) && (&this->unkFCC != NULL)) {
+        KDSound_Stop(&this->unkFCC);
     }
 }
 #endif

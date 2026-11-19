@@ -728,7 +728,6 @@ void SpeedWaySpyro::SetColObjEnabled(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::Teleport(float arg0, bool arg1) {
     this->unk328 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk330 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -746,9 +745,8 @@ void SpeedWaySpyro::Teleport(float arg0, bool arg1) {
     UpdateCameraAndSpyro(arg0, 1U, arg1);
     M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
 }
-#endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp24'
 void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -799,7 +797,6 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
     if (DealDamage(-arg0->unk48) != 0) {
         arg0->unk50 = 1;
@@ -810,7 +807,6 @@ void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
         ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 7, 1U);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 u8 SpeedWaySpyro::DealDamage(float arg0) {
@@ -887,7 +883,7 @@ void SpeedWaySpyro::GetJoyDir() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::UpdateDrift(float arg0) {
     MKVector3 sp68;
     MKVector3 sp58;
@@ -1799,7 +1795,6 @@ block_49:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     f64 sp40;
     f64 sp38;
@@ -1902,7 +1897,6 @@ u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
@@ -2168,7 +2162,6 @@ void SpeedWaySpyro::DeathEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::HurtCenterTransition() {
     if ((((MKVector3 *) &this->unk308)->IsNear(MKVector3::zero, 15.000001f) != 0) && ((s32) this->unk180 != 2)) {
         ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
@@ -2176,7 +2169,6 @@ s32 SpeedWaySpyro::HurtCenterTransition() {
     }
     return 0;
 }
-#endif
 
 void SpeedWaySpyro::HurtCenterUpdate() {
     if (this->unk80->unk2C & 1) {
@@ -2202,7 +2194,6 @@ void SpeedWaySpyro::HurtCenterEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::HurtFlinchTransition() {
     if ((this->unk80->unk2C & 1) && ((s32) this->unk180 != 2)) {
         ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
@@ -2210,7 +2201,6 @@ s32 SpeedWaySpyro::HurtFlinchTransition() {
     }
     return 0;
 }
-#endif
 
 void SpeedWaySpyro::HurtFlinchUpdate() {
     HurtFlinchTransition();
@@ -2236,7 +2226,6 @@ void SpeedWaySpyro::HurtFlinchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::PowerRollTransition() {
     u8 var_r30_4279;
     u8 var_r3_4280;
@@ -2271,7 +2260,6 @@ u8 SpeedWaySpyro::PowerRollTransition() {
     }
     return var_r3_4280;
 }
-#endif
 
 void SpeedWaySpyro::PowerRollUpdate() {
     f64 sp40;
@@ -2444,7 +2432,6 @@ void SpeedWaySpyro::MoveSelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::MoveTransition() {
     u8 var_r3_4696;
 
@@ -2464,7 +2451,6 @@ u8 SpeedWaySpyro::MoveTransition() {
     }
     return var_r3_4696;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::MoveUpdate() {
@@ -2522,7 +2508,6 @@ void SpeedWaySpyro::MoveEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::IdleTransition() {
     u8 var_r3_4848;
 
@@ -2541,7 +2526,6 @@ u8 SpeedWaySpyro::IdleTransition() {
     }
     return var_r3_4848;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void SpeedWaySpyro::IdleUpdate() {
@@ -2579,7 +2563,6 @@ void SpeedWaySpyro::IdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::RespawnTransition() {
     if (((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) == 0) && ((s32) this->unk180 != 2)) {
         ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
@@ -2587,7 +2570,6 @@ s32 SpeedWaySpyro::RespawnTransition() {
     }
     return 0;
 }
-#endif
 
 void SpeedWaySpyro::RespawnUpdate() {
     RespawnTransition();
@@ -2624,7 +2606,6 @@ void SpeedWaySpyro::StateEnter() {
     this->unk194 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Start() {
     f64 sp18;
     f64 sp10;
@@ -2663,9 +2644,7 @@ void SpeedWaySpyro::Start() {
         M2C_FIELD(M2C_FIELD(temp_r3_5202, void **, 0x44), M2C_UNK (**)(), 0x20)();
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Update() {
     f64 sp30;
     f64 sp28;
@@ -2702,7 +2681,6 @@ void SpeedWaySpyro::Update() {
         this->unk80->Animate(MKModel_GetAnimation(temp_r3_5295->unk8), -1, &this->unk130);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::ClearData() {
@@ -2815,7 +2793,6 @@ void SpeedWaySpyro::ClearData() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::Draw() {
     Matrix sp50;
     Matrix sp10;
@@ -2828,7 +2805,6 @@ void SpeedWaySpyro::Draw() {
     MKModel_Draw(this->unk4, NULL);
     MKModel_SetWorldMatrix(this->unk4, sp50);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void SpeedWaySpyro::Message(MKMessage *arg0) {

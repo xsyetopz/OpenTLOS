@@ -22,8 +22,6 @@ public:
 class SoundPropDescriptor : public KDSoundPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x004 */ u8 pad4[0x8];
-    /* 0x00c */ s32 unkC;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

@@ -37,7 +37,6 @@ public:
     void Fire(const MKVector3 &, const MKVector3 &, float, MKProp *, bool, bool, int, const MKVector3 &);
     void DrawFlameBall(void);
     void Explode(const MKVector3 &, const MKVector3 &, MKCollisionInfo *);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f32 unkC8;
     /* 0x0cc */ ShapedTrailFX* unkCC;
     /* 0x0d0 */ f64 unkD0;
@@ -56,7 +55,7 @@ public:
     /* 0x128 */ f32 unk128;
     /* 0x12c */ u8 pad12C[0x4];
     /* 0x130 */ BreathHitMessage unk130;
-    /* 0x181 */ u8 pad181[0x7];
+    /* 0x184 */ u8 pad184[0x4];
     /* 0x188 */ s32 unk188;
     /* 0x18c */ u8 pad18C[0x24];
     /* 0x1b0 */ u8 unk1B0;
@@ -88,14 +87,14 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: undefined identifier 'unk1CC'
 inline FireBombFX::FireBombFX() {
     this->unk130.unk4 = 0;
     this->unk188 = 0;
-    this->unk1BC = 0;
     this->unk1C0 = 0;
-    this->unk1C4 = 0.0f;
+    this->unk1C4 = 0;
     this->unk1C8 = 0.0f;
+    this->unk1CC = 0;
     return this;
 }
 #endif

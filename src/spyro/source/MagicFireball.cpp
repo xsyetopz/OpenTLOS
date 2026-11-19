@@ -64,7 +64,7 @@ void MagicFireball::Deactivate() {
     GameProp::Deactivate();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MagicFireball::Update() {
     Matrix sp130;
     Matrix spF0;
@@ -245,7 +245,7 @@ void MagicFireball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void MagicFireball::Collided(MKCollisionResult &arg0) {
     s8 sp2A9;
     s8 sp2A8;
@@ -685,7 +685,7 @@ void MagicFireball::Init() {
     this->unk18C = 1;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void MagicFireballDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pMagicFireballDescriptor = (MKPropDescriptor *) this;

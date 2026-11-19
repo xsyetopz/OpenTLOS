@@ -11,7 +11,7 @@ class MKIniLine;
 class MKMessage;
 class Matrix;
 
-class Conveyor : public GameProp {  // base: vtable prefix
+class Conveyor : public GameProp {  // base: base ctor call
 public:
     virtual ~Conveyor(void);
     virtual void Init(void);
@@ -22,7 +22,7 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     Conveyor(void);
-    /* 0x0c4 */ u8 padC4[0x54];
+    /* 0x0c8 */ u8 padC8[0x50];
     /* 0x118 */ Matrix unk118;
 };
 
@@ -33,7 +33,7 @@ inline Conveyor::~Conveyor() {
 
 #if 0 // DRAFT: '(' expected
 inline Conveyor::Conveyor() {
-    __construct_array(&this->unk118.unk0, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    __construct_array((KDUniformSpline *) &this->unk118, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
     return this;
 }
 #endif

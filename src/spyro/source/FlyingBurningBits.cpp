@@ -152,7 +152,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FlyingBurningBits::Draw() {
     M2C_UNK sp34C;
     f64 sp340;

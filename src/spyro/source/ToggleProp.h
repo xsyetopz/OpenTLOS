@@ -18,7 +18,6 @@ public:
     virtual void Deinit(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ u8 unk90;
 };
 
@@ -28,7 +27,6 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s8* unk70;
     /* 0x074 */ s8* unk74;
     /* 0x078 */ s32 unk78;

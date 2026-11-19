@@ -444,7 +444,7 @@ void MineCartTrack::Update() {
                 M2C_STRUCT_COPY((s32) &sp2FC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk4) - 4 + 4, 0x40);
                 temp_r3_614 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
                 sp1A8 = temp_r3_614->unk168;
-                sp1B0 = temp_r3_614->unk168;
+                sp1B0 = temp_r3_614->unk170;
                 temp_f0_621 = sp2A8 + sp1A8;
                 sp68 = temp_f0_621;
                 sp1B8 = temp_f0_621;
@@ -720,7 +720,6 @@ void MineCartTrack::Deinit() {
     ((KDUniformSpline *) &this->unk50.unk14)->Deinit();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MineCartTrack::Init() {
     s32 var_ctr_1332;
     s32 var_r3_1330;
@@ -757,7 +756,6 @@ void MineCartTrack::Init() {
     this->unk144 = 0;
     this->unk4C = 0;
 }
-#endif
 
 void MineCartTrackDescriptor::Init() {
     MKPropDescriptor::Init();

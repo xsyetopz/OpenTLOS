@@ -13,7 +13,7 @@ class GuardianCage_cpp;
 class MKIniLine;
 class MKMessage;
 
-class GuardianCage : public GameProp {  // base: vtable prefix
+class GuardianCage : public GameProp {  // base: base ctor call
 public:
     virtual ~GuardianCage(void);
     virtual void Init(void);
@@ -37,7 +37,6 @@ public:
     void StateFloatingEnter(void);
     void GetBeamPosition(int);
     static u8 states[0x90];
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ s32 unkCC;
     /* 0x0d0 */ s32 unkD0;

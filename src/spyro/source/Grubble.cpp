@@ -41,7 +41,6 @@ void GrubbleCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GrubbleCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -66,7 +65,6 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'spF8'
 void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {

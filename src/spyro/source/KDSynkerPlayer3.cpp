@@ -3,13 +3,8 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
-#include "spyro/source/KDInput.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
-#include "spyro/source/KDSynkerPlayerActorList.h"
-#include "spyro/source/KDSynkerPlayerEvents.h"
-#include "spyro/source/KDSynkerPlayerSounds.h"
-#include "spyro/source/KDSynkerPlayerTools.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
 #include "spyro/source/GameLanguage.h"
@@ -35,18 +30,18 @@ s8 *KDSynkerPlayer3::GetSubtitlesFileName(const char *arg0) {
 
 #if 0 // DRAFT: pointer/array required
 s32 KDSynkerPlayer3::GetActorProp(int arg0) {
-    return *(this->unk100.unk0 + ((arg0 * 0x138) + 0x30));
+    return *(this->unk100.unk4 + ((arg0 * 0x138) + 0x30));
 }
 #endif
 
 #if 0 // DRAFT: pointer/array required
 s32 KDSynkerPlayer3::GetActorAnimScript(int arg0) {
-    return *(this->unk100.unk0 + ((arg0 * 0x138) + 0x38));
+    return *(this->unk100.unk4 + ((arg0 * 0x138) + 0x38));
 }
 #endif
 
 void KDSynkerPlayer3::GetActorModel(int arg0) {
-    ((KDSP_Actor *) (this->unk100.unk0 + (arg0 * 0x138)))->GetModel();
+    ((KDSP_Actor *) (this->unk100.unk4 + (arg0 * 0x138)))->GetModel();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
@@ -64,12 +59,12 @@ void KDSynkerPlayer3::ParseSK2() {
         this->unk54->Init(Str_Printf("%s.sc2", &this->unk28), 1, NULL);
     }
     ParseHeader();
-    ((KDSP_EnvelopeList *) &this->unk100.unk10)->HeapAddSize(&this->unk4, this->unk54);
-    ((KDSP_Sounds *) &this->unk120.unk24)->HeapAddSize(&this->unk4, this->unk54);
-    ((KDSP_ActorList *) &this->unk100)->HeapAddSize(&this->unk4, this->unk54);
+    this->unk114.HeapAddSize(&this->unk4, this->unk54);
+    this->unk148.HeapAddSize(&this->unk4, this->unk54);
+    this->unk100.HeapAddSize(&this->unk4, this->unk54);
     this->unk60.HeapAddSize(&this->unk4, &this->unk28, this->unk54);
-    ((KDSP_Events *) &this->unk114.unk8)->HeapAddSize(&this->unk4, this->unk54, M2C_FIELD(this, u8 *, 0x148));
-    ((KDSP_Subtitles *) &this->unk148.unk24)->HeapAddSize(&this->unk4, GetSubtitlesFileName(&this->unk28));
+    this->unk120.HeapAddSize(&this->unk4, this->unk54, this->unk148.unk0);
+    this->unk170.HeapAddSize(&this->unk4, GetSubtitlesFileName(&this->unk28));
     var_r29_133 = 0;
     var_r30_134 = 0;
     do {
@@ -87,17 +82,17 @@ void KDSynkerPlayer3::ParseSK2() {
         var_r29_133 += 1;
         var_r30_134 += 0xC;
     } while (var_r29_133 < 3);
-    ((KDSP_EnvelopeList *) &this->unk100.unk10)->Parse(&this->unk4, this->unk54);
-    ((KDSP_Sounds *) &this->unk120.unk24)->ParseDynamicSFX(&this->unk4, this->unk54);
-    ((KDSP_ActorList *) &this->unk100)->Parse(&this->unk4, this->unk54, *((s32 *) &this->unk238), (KDInput *) this->unk234);
-    this->unk60.Parse(&this->unk4, &this->unk28, this->unk54, *((s32 *) &this->unk238));
+    this->unk114.Parse(&this->unk4, this->unk54);
+    this->unk148.ParseDynamicSFX(&this->unk4, this->unk54);
+    this->unk100.Parse(&this->unk4, this->unk54, this->unk23C, this->unk238);
+    this->unk60.Parse(&this->unk4, &this->unk28, this->unk54, this->unk23C);
     if (!(this->unk50 & 8)) {
-        ((KDSP_ActorList *) &this->unk100)->Load(this->unk54, *((s32 *) &this->unk238), 0U, this->unk60.unk88 == 0);
+        this->unk100.Load(this->unk54, this->unk23C, 0U, this->unk60.unk88 == 0);
     }
-    ((KDSP_ActorList *) &this->unk100)->ResolveLookAt();
-    ((KDSP_Events *) &this->unk114.unk8)->Parse(this, &this->unk4, &this->unk28, this->unk54, M2C_FIELD(this, u8 *, 0x148), (KDSP_ActorList *) &this->unk100);
-    ((KDSP_Subtitles *) &this->unk148.unk24)->Parse(&this->unk4, GetSubtitlesFileName(&this->unk28));
-    ((KDSP_Sounds *) &this->unk120.unk24)->ResolveActors((KDSP_ActorList *) &this->unk100);
+    this->unk100.ResolveLookAt();
+    this->unk120.Parse(this, &this->unk4, &this->unk28, this->unk54, this->unk148.unk0, &this->unk100);
+    this->unk170.Parse(&this->unk4, GetSubtitlesFileName(&this->unk28));
+    this->unk148.ResolveActors(&this->unk100);
 }
 #endif
 
@@ -130,7 +125,7 @@ s32 KDSynkerPlayer3::GetSubTitle(int arg0) {
 }
 
 s32 KDSynkerPlayer3::GetSubTitleCount() {
-    return this->unk170.unkA0;
+    return this->unk170.unkA4;
 }
 
 s32 KDSynkerPlayer3::IsUnloaded() {
@@ -202,7 +197,7 @@ void KDSynkerPlayer3::Unload() {
     temp_r3_381 = this->unk50;
     temp_r4_382 = temp_r3_381 & 0x10;
     if (((temp_r4_382 != 0) && ((s32) this->unk4C == 3)) || (!(temp_r3_381 & 8) && (temp_r4_382 == 0))) {
-        temp_r3_393 = this->unk24C;
+        temp_r3_393 = this->unk250;
         if (temp_r3_393 > 0) {
             MKPackage_QCancel(temp_r3_393);
         }
@@ -217,14 +212,14 @@ void KDSynkerPlayer3::Unload() {
     }
     if (temp_r0_398 < 6) {
         this->unk4C = 7;
-        if ((u8) M2C_FIELD(this, u8 *, 0x148) != 0) {
-            ((KDSP_Events *) &this->unk114.unk8)->StopSfx();
+        if ((u8) this->unk148.unk0 != 0) {
+            this->unk120.StopSfx();
         }
-        ((KDSP_Events *) &this->unk114.unk8)->Deinit();
-        ((KDSP_Sounds *) &this->unk120.unk24)->Deinit();
-        ((KDSP_EnvelopeList *) &this->unk100.unk10)->Deinit();
+        this->unk120.Deinit();
+        this->unk148.Deinit();
+        this->unk114.Deinit();
         ActorCallback((KDSynkerPlayer3::CallBackMode) 1);
-        ((KDSP_ActorList *) &this->unk100)->Deinit(((u32) this->unk50 >> 5U) & 1);
+        this->unk100.Deinit(((u32) this->unk50 >> 5U) & 1);
         this->unk60.Deinit();
         var_r28_436 = 0;
         var_r30_437 = 0;
@@ -256,7 +251,7 @@ void KDSynkerPlayer3::Unload() {
             }
             this->unk54 = NULL;
         }
-        this->unk250 = 3;
+        this->unk254 = 3;
     }
 }
 #endif
@@ -273,12 +268,12 @@ void KDSynkerPlayer3::Draw() {
         if ((u32) *KDSynkerPlayer3::pActorCallback != 0U) {
             ActorCallback((KDSynkerPlayer3::CallBackMode) 3);
         } else {
-            temp_r30_520 = M2C_FIELD(this, s32 *, 0x100);
+            temp_r30_520 = this->unk100.unk0;
             var_r29_521 = 0;
             var_r31_522 = 0;
 loop_13:
             if (var_r29_521 < temp_r30_520) {
-                temp_r3_526 = this->unk100.unk0 + var_r31_522;
+                temp_r3_526 = this->unk100.unk4 + var_r31_522;
                 if (temp_r3_526 != NULL) {
                     var_r4_529 = 0;
                     if (((u32) temp_r3_526->unk30 == 0U) && !(temp_r3_526->unk40 & 4) && ((s32) temp_r3_526->unkCC != -1)) {
@@ -293,7 +288,7 @@ loop_13:
                 goto loop_13;
             }
         }
-        ((KDSP_Events *) &this->unk114.unk8)->Draw();
+        this->unk120.Draw();
     }
 }
 #endif
@@ -306,36 +301,34 @@ void KDSynkerPlayer3::Play(bool arg0) {
         this->unk50 &= 0xFFFFFFFE;
     }
     if (this->unk50 & 8) {
-        ((KDSP_ActorList *) &this->unk100)->Load(this->unk54, *((s32 *) &this->unk238), 1U, arg0 == 0);
+        this->unk100.Load(this->unk54, this->unk23C, 1U, arg0 == 0);
     }
     ActorCallback((KDSynkerPlayer3::CallBackMode) 0);
-    ((KDSP_ActorList *) &this->unk100)->SendMessageToActorProp(1U);
+    this->unk100.SendMessageToActorProp(1U);
     this->unk50 &= 0xFFFFFFFD;
     this->unk4C = 5;
     Update_Playing(1U);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDInput *' to
 void KDSynkerPlayer3::SkipToEnd(bool arg0) {
-    this->unk248 = M2C_BITWISE(f32, this->unk238);
-    this->unk244 = (f32) this->unk248;
-    M2C_FIELD(this, f32 *, 0x244) = (f32) (this->unk244 / 30.0f);
-    ((KDSP_Subtitles *) &this->unk148.unk24)->Reset();
+    this->unk24C = this->unk23C;
+    this->unk248 = (f32) this->unk24C;
+    this->unk244 = this->unk248 / 30.0f;
+    this->unk170.Reset();
     this->unk50 |= 0x20;
     if (arg0 != 0) {
-        ((KDSP_Events *) &this->unk114.unk8)->SkipToEnd();
+        this->unk120.SkipToEnd();
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSynkerPlayer3::Update_Unloading_Playing() {
     if (!(this->unk50 & 8)) {
-        ((KDSP_Sounds *) &this->unk120.unk24)->UnloadPlaying(&this->unk24C);
+        this->unk148.UnloadPlaying(&this->unk250);
     }
-    this->unk250 -= 1;
-    if (((s32) this->unk250 <= 0) && ((s32) this->unk148.unk10 == -1)) {
+    this->unk254 -= 1;
+    if (((s32) this->unk254 <= 0) && ((s32) this->unk148.unk14 == -1)) {
         this->unk4C = 8;
     }
 }
@@ -349,9 +342,9 @@ void KDSynkerPlayer3::Update_Unloading_Loading() {
         this->unk4C = 8;
         return;
     }
-    if (MKPackage_QIsLoaded(this->unk24C, NULL, NULL) != 0) {
-        MKPackage_QFree(this->unk24C);
-        this->unk24C = 0;
+    if (MKPackage_QIsLoaded(this->unk250, NULL, NULL) != 0) {
+        MKPackage_QFree(this->unk250);
+        this->unk250 = 0;
         this->unk4C = 8;
     }
 }
@@ -365,12 +358,12 @@ void KDSynkerPlayer3::ActorCallback(KDSynkerPlayer3::CallBackMode arg1) {
     void *temp_r5_743;
 
     if (((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, s32)) *KDSynkerPlayer3::pActorCallback) != NULL) {
-        temp_r30_737 = M2C_FIELD(this, s32 *, 0x100);
+        temp_r30_737 = this->unk100.unk0;
         var_r29_738 = 0;
         var_r31_739 = 0;
 loop_12:
         if (var_r29_738 < temp_r30_737) {
-            temp_r5_743 = this->unk100.unk0 + var_r31_739;
+            temp_r5_743 = this->unk100.unk4 + var_r31_739;
             if ((temp_r5_743 != NULL) && (((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, s32)) *KDSynkerPlayer3::pActorCallback) != NULL) && ((u32) M2C_FIELD(temp_r5_743, u32 *, 0x30) == 0U)) {
                 temp_r3_751 = M2C_FIELD(temp_r5_743, s32 *, 0x40);
                 if (!(temp_r3_751 & 4) && (((s32) M2C_FIELD(temp_r5_743, s32 *, 0xCC) != -1) || ((u32) ((s32) arg1 - 2) > 1U))) {
@@ -393,53 +386,53 @@ loop_12:
 void KDSynkerPlayer3::Update_Playing(bool arg0) {
     KDS_Message_SetCamera spC;
     s32 sp8;
+    s32 temp_r3_826;
+    s32 temp_r3_876;
     u32 temp_r3_847;
-    void *temp_r3_826;
-    void *temp_r3_876;
 
     if (arg0 == 0) {
-        M2C_FIELD(this, s8 *, 0x240) = (s8) (((KDSP_Sounds *) &this->unk120.unk24)->Update(M2C_BITWISE(s32, this->unk248), this->unk48, (s32) this->unk238, &this->unk24C, &sp8) == 0);
-        if (((u8) M2C_FIELD(this, u8 *, 0x148) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x149) != 0)) {
-            ((KDSP_Events *) &this->unk114.unk8)->UpdateSfx((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248), this->unk48);
+        this->unk240 = this->unk148.Update(this->unk24C, this->unk48, this->unk23C, &this->unk250, &sp8) == 0;
+        if (((u8) this->unk148.unk0 != 0) && ((u8) this->unk148.unk1 != 0)) {
+            this->unk120.UpdateSfx(&this->unk100, this->unk24C, this->unk48);
         }
-        temp_r3_826 = this->unk238 - 1;
-        if (M2C_BITWISE(s32, this->unk248) >= temp_r3_826) {
-            this->unk248 = M2C_BITWISE(f32, temp_r3_826);
-            this->unk244 = (f32) this->unk248;
-            M2C_FIELD(this, f32 *, 0x244) = (f32) (this->unk244 / 30.0f);
+        temp_r3_826 = this->unk23C - 1;
+        if ((s32) this->unk24C >= temp_r3_826) {
+            this->unk24C = temp_r3_826;
+            this->unk248 = (f32) this->unk24C;
+            this->unk244 = this->unk248 / 30.0f;
             this->unk50 |= 4;
         }
         temp_r3_847 = this->unk50;
-        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (((KDSP_Sounds *) &this->unk120.unk24)->WaitingForSoundPackage(&this->unk24C) == 0))) {
-            M2C_FIELD(this, f32 *, 0x244) = (f32) ((gUpdateTimeDelta * this->unk48) + M2C_FIELD(this, f32 *, 0x244));
-            this->unk244 = 30.0f * M2C_FIELD(this, f32 *, 0x244);
-            this->unk248 = M2C_BITWISE(f32, (s32) this->unk244);
-            temp_r3_876 = this->unk238 - 1;
-            if (M2C_BITWISE(s32, this->unk248) >= temp_r3_876) {
-                this->unk248 = M2C_BITWISE(f32, temp_r3_876);
-                this->unk244 = (f32) this->unk248;
-                M2C_FIELD(this, f32 *, 0x244) = (f32) (this->unk244 / 30.0f);
+        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (this->unk148.WaitingForSoundPackage(&this->unk250) == 0))) {
+            this->unk244 += gUpdateTimeDelta * this->unk48;
+            this->unk248 = 30.0f * this->unk244;
+            this->unk24C = (s32) this->unk248;
+            temp_r3_876 = this->unk23C - 1;
+            if ((s32) this->unk24C >= temp_r3_876) {
+                this->unk24C = temp_r3_876;
+                this->unk248 = (f32) this->unk24C;
+                this->unk244 = this->unk248 / 30.0f;
             }
         }
     }
     if (this->unk50 & 1) {
-        this->unk60.Update(&this->unk28, this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10);
+        this->unk60.Update(&this->unk28, this->unk248, &this->unk114);
     }
     if ((this->unk50 & 1) && ((void *) *KDSynkerPlayer3::pCameraProp != NULL)) {
         spC.unk4 = 0;
         spC.Init((Matrix *) &this->unk60, this->unk60.unk60, this->unk60.unk64, this->unk60.unk68);
         M2C_FIELD(M2C_FIELD(*KDSynkerPlayer3::pCameraProp, void **, 0x44), M2C_UNK (**)(void *, KDS_Message_SetCamera *), 0x2C)(*KDSynkerPlayer3::pCameraProp, &spC);
     }
-    ((KDSP_Subtitles *) &this->unk148.unk24)->Update((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248));
-    ((KDSP_ActorList *) &this->unk100)->Update(this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10, *((MKVector3 *) &this->unk60.unk40), (u8) this->unk60.unk6C);
-    ((KDSP_Events *) &this->unk114.unk8)->Update(this, this->unk244, ((u32) this->unk50 >> 2U) & 1);
-    ((KDSP_Events *) &this->unk114.unk8)->UpdateTweenAnims(M2C_BITWISE(s32, this->unk248), (KDSP_EnvelopeList *) &this->unk100.unk10);
+    this->unk170.Update(&this->unk100, this->unk24C);
+    this->unk100.Update(this->unk248, &this->unk114, *((MKVector3 *) &this->unk60.unk40), (u8) this->unk60.unk6C);
+    this->unk120.Update(this, this->unk248, ((u32) this->unk50 >> 2U) & 1);
+    this->unk120.UpdateTweenAnims(this->unk24C, &this->unk114);
     ActorCallback((KDSynkerPlayer3::CallBackMode) 2);
 }
 #endif
 
 void KDSynkerPlayer3::Update_PrimingSound() {
-    if (MKPackage_QIsLoaded(this->unk24C, NULL, NULL) != 0) {
+    if (MKPackage_QIsLoaded(this->unk250, NULL, NULL) != 0) {
         this->unk4C = 4;
     }
 }
@@ -448,14 +441,14 @@ void KDSynkerPlayer3::Update_PrimingSound() {
 void KDSynkerPlayer3::Update_ParseData() {
     u32 temp_r3_992;
 
-    ((KDSP_Sounds *) &this->unk120.unk24)->LoadStaticSoundBank(&this->unk28, ((u32) this->unk50 >> 3U) & 1);
+    this->unk148.LoadStaticSoundBank(&this->unk28, ((u32) this->unk50 >> 3U) & 1);
     ParseSK2();
     temp_r3_992 = this->unk50;
     if (!(temp_r3_992 & 8) && !(temp_r3_992 & 0x10)) {
-        MKPackage_QFree(this->unk24C);
-        this->unk24C = 0;
+        MKPackage_QFree(this->unk250);
+        this->unk250 = 0;
     }
-    if (((KDSP_Sounds *) &this->unk120.unk24)->LoadDynamicSoundBank(&this->unk24C, ((u32) this->unk50 >> 3U) & 1) != 0) {
+    if (this->unk148.LoadDynamicSoundBank(&this->unk250, ((u32) this->unk50 >> 3U) & 1) != 0) {
         this->unk4C = 3;
         return;
     }
@@ -464,7 +457,7 @@ void KDSynkerPlayer3::Update_ParseData() {
 #endif
 
 void KDSynkerPlayer3::Update_Loading() {
-    if (MKPackage_QIsLoaded(this->unk24C, NULL, NULL) != 0) {
+    if (MKPackage_QIsLoaded(this->unk250, NULL, NULL) != 0) {
         Update_ParseData();
     }
 }
@@ -530,27 +523,27 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
     this->unk4.unk1C = 0;
     this->unk4.unk18 = NULL;
     this->unk60.Init();
-    ((KDSP_ActorList *) &this->unk100)->Init();
-    ((KDSP_EnvelopeList *) &this->unk100.unk10)->Init();
-    ((KDSP_Events *) &this->unk114.unk8)->Init(this, *KDSynkerPlayer3::pEventCreationTable);
-    ((KDSP_Sounds *) &this->unk120.unk24)->Init();
-    ((KDSP_Subtitles *) &this->unk148.unk24)->Init();
+    this->unk100.Init();
+    this->unk114.Init();
+    this->unk120.Init(this, *KDSynkerPlayer3::pEventCreationTable);
+    this->unk148.Init();
+    this->unk170.Init();
     this->unk234 = 0;
-    this->unk238 = NULL;
-    M2C_FIELD(this, f32 *, 0x244) = 0.0f;
-    this->unk248 = 0.0f;
+    this->unk23C = 0;
     this->unk244 = 0.0f;
+    this->unk24C = 0;
+    this->unk248 = 0.0f;
     this->unk48 = 1.0f;
-    M2C_FIELD(this, s8 *, 0x240) = 0;
-    this->unk234 = 0;
+    this->unk240 = 0;
+    this->unk238 = NULL;
     temp_r3_1176 = this->unk50;
     if ((temp_r3_1176 & 8) || (temp_r3_1176 & 0x10)) {
-        this->unk24C = 0;
+        this->unk250 = 0;
         this->unk4C = 2;
         Update();
         return;
     }
     this->unk4C = 1;
-    this->unk24C = MKPackage_QLoad(Str_Printf("%s.sc2", &this->unk28, 0.0f), 0);
+    this->unk250 = MKPackage_QLoad(Str_Printf("%s.sc2", &this->unk28, 0.0f), 0);
 }
 #endif

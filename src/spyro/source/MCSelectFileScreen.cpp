@@ -59,9 +59,9 @@ block_11:
         PopScreen();
         return;
     }
-    if (((u8) M2C_FIELD(this->unkD4, u8 *, 0x15) != 0) && (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0)) {
+    if (((u8) M2C_FIELD(this->unkDC, u8 *, 0x15) != 0) && (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0)) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
-        temp_r0_107 = M2C_FIELD(this->unkD4, s32 *, 0x68);
+        temp_r0_107 = M2C_FIELD(this->unkDC, s32 *, 0x68);
         *MemoryCardScreen::selectedFile = temp_r0_107;
         temp_r3_111 = *MemoryCardScreen::selectedCard + ((temp_r0_107 * 0xC0) + 0x40);
         if ((s8) M2C_FIELD(temp_r3_111, u8 *, 0xA5) != 0) {
@@ -156,40 +156,40 @@ void MCSelectFileScreen::OnEnter() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    UIContainer *temp_r3_314;
-    UIContainer *temp_r3_396;
-    UIContainer *temp_r3_489;
-    s32 temp_r3_457;
-    s32 temp_r3_499;
+    UIContainer *temp_r3_457;
+    UIContainer *temp_r3_499;
     s32 var_r27_224;
     s32 var_r29_225;
     u8 var_r0_206;
     u8 var_r30_223;
-    void **temp_r3_249;
-    void **temp_r3_286;
     void **temp_r3_294;
     void **temp_r3_304;
-    void **temp_r3_324;
-    void **temp_r3_334;
+    void **temp_r3_314;
     void **temp_r3_344;
+    void **temp_r3_354;
     void **temp_r3_364;
     void **temp_r3_376;
     void **temp_r3_386;
-    void **temp_r3_406;
-    void **temp_r3_416;
+    void **temp_r3_396;
     void **temp_r3_426;
+    void **temp_r3_436;
     void **temp_r3_446;
     void **temp_r3_469;
     void **temp_r3_479;
-    void **temp_r3_527;
-    void **temp_r3_537;
-    void **temp_r3_555;
+    void **temp_r3_489;
     void **temp_r3_560;
+    void **temp_r3_570;
     void **temp_r3_580;
     void **temp_r3_596;
-    void *temp_r3_354;
-    void *temp_r3_436;
-    void *temp_r3_570;
+    void *temp_r3_249;
+    void *temp_r3_286;
+    void *temp_r3_324;
+    void *temp_r3_334;
+    void *temp_r3_406;
+    void *temp_r3_416;
+    void *temp_r3_527;
+    void *temp_r3_537;
+    void *temp_r3_555;
     void *var_r27_512;
     void *var_r28_226;
     void *var_r3_202;
@@ -214,7 +214,7 @@ loop_1:
         var_r30_223 = 0;
         var_r27_224 = 0;
         var_r29_225 = 0;
-        var_r28_226 = M2C_FIELD(this->unkD4, void **, 0x60);
+        var_r28_226 = M2C_FIELD(this->unkDC, void **, 0x60);
         do {
             if ((s8) *(*MemoryCardScreen::selectedCard + (var_r29_225 + 0xE4)) != 0) {
                 spF0 = 4;
@@ -223,8 +223,8 @@ loop_1:
                 if (var_r30_223 == 0) {
                     sp10C = var_r27_224;
                     sp108 = 1;
-                    temp_r3_249 = this->unkD4;
-                    M2C_FIELD(M2C_FIELD(temp_r3_249, void **, 0), M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_249, &sp108);
+                    temp_r3_249 = this->unkDC;
+                    M2C_FIELD(M2C_FIELD(temp_r3_249, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_249, &sp108);
                     var_r30_223 = 1;
                 }
             } else {
@@ -239,39 +239,39 @@ loop_1:
         if (((s32) *MemoryCardScreen::selectedFile >= 0) && ((s8) *(*MemoryCardScreen::selectedCard + ((var_r27_224 * 0xC0) + 0xE4)) != 0)) {
             sp104 = *MemoryCardScreen::selectedFile;
             sp100 = 1;
-            temp_r3_286 = this->unkD4;
-            M2C_FIELD(M2C_FIELD(temp_r3_286, void **, 0), M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_286, &sp100);
+            temp_r3_286 = this->unkDC;
+            M2C_FIELD(M2C_FIELD(temp_r3_286, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_286, &sp100);
         }
         if (var_r30_223 != 0) {
             temp_r3_294 = this->unkD4;
             spE0 = 2;
             spE4 = 0;
             M2C_FIELD(*temp_r3_294, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_294, &spE0, 2);
-            temp_r3_304 = this->unkD0;
+            temp_r3_304 = this->unkD8;
             spD8 = 2;
             spDC = 0;
             M2C_FIELD(*temp_r3_304, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_304, &spD8, 2);
-            temp_r3_314 = this->unkC8;
+            temp_r3_314 = this->unkD0;
             spD0 = 1;
             spD4 = 0;
-            temp_r3_314->Message(&spD0, 1);
-            temp_r3_324 = this->unkD4;
+            M2C_FIELD(*temp_r3_314, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_314, &spD0, 1);
+            temp_r3_324 = this->unkDC;
             spC8 = 4;
             spCC = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_324, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_324, &spC8, 4);
-            temp_r3_334 = this->unkD4;
+            M2C_FIELD(M2C_FIELD(temp_r3_324, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_324, &spC8, 4);
+            temp_r3_334 = this->unkDC;
             spC0 = 2;
             spC4 = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_334, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_334, &spC0, 2);
-            temp_r3_344 = this->unkD8;
+            M2C_FIELD(M2C_FIELD(temp_r3_334, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_334, &spC0, 2);
+            temp_r3_344 = this->unkE0;
             spB8 = 2;
             spBC = 0;
             M2C_FIELD(*temp_r3_344, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_344, &spB8, 2);
-            temp_r3_354 = this->unkDC;
+            temp_r3_354 = this->unkE4;
             spB0 = 2;
             spB4 = 0;
-            M2C_FIELD(*temp_r3_354, M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_354, &spB0, 2);
-            temp_r3_364 = this->unkE0;
+            M2C_FIELD(*temp_r3_354, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_354, &spB0, 2);
+            temp_r3_364 = this->unkE8;
             spA8 = 3;
             spAC = 0;
             M2C_FIELD(*temp_r3_364, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_364, &spA8, 3);
@@ -280,57 +280,57 @@ loop_1:
             spA0 = 3;
             spA4 = 0;
             M2C_FIELD(*temp_r3_376, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_376, &spA0, 3);
-            temp_r3_386 = this->unkD0;
+            temp_r3_386 = this->unkD8;
             sp98 = 3;
             sp9C = 0;
             M2C_FIELD(*temp_r3_386, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_386, &sp98, 3);
-            temp_r3_396 = this->unkC8;
+            temp_r3_396 = this->unkD0;
             sp90 = 1;
             sp94 = 0;
-            temp_r3_396->Message(&sp90, 1);
-            temp_r3_406 = this->unkD4;
+            M2C_FIELD(*temp_r3_396, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_396, &sp90, 1);
+            temp_r3_406 = this->unkDC;
             sp88 = 5;
             sp8C = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_406, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_406, &sp88, 5);
-            temp_r3_416 = this->unkD4;
+            M2C_FIELD(M2C_FIELD(temp_r3_406, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_406, &sp88, 5);
+            temp_r3_416 = this->unkDC;
             sp80 = 3;
             sp84 = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_416, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_416, &sp80, 3);
-            temp_r3_426 = this->unkD8;
+            M2C_FIELD(M2C_FIELD(temp_r3_416, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_416, &sp80, 3);
+            temp_r3_426 = this->unkE0;
             sp78 = 3;
             sp7C = 0;
             M2C_FIELD(*temp_r3_426, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_426, &sp78, 3);
-            temp_r3_436 = this->unkDC;
+            temp_r3_436 = this->unkE4;
             sp70 = 3;
             sp74 = 0;
-            M2C_FIELD(*temp_r3_436, M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_436, &sp70, 3);
-            temp_r3_446 = this->unkE0;
+            M2C_FIELD(*temp_r3_436, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_436, &sp70, 3);
+            temp_r3_446 = this->unkE8;
             sp68 = 2;
             sp6C = 0;
             M2C_FIELD(*temp_r3_446, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_446, &sp68, 2);
         }
-        temp_r3_457 = this->unkBC.unk4;
+        temp_r3_457 = this->unkC8;
         sp60 = 2;
         sp64 = 0;
-        M2C_FIELD(*temp_r3_457, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_457, &sp60, 2);
+        temp_r3_457->Message(&sp60, 2);
     } else {
         temp_r3_469 = this->unkD4;
         sp58 = 2;
         sp5C = 0;
         M2C_FIELD(*temp_r3_469, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_469, &sp58, 2);
-        temp_r3_479 = this->unkD0;
+        temp_r3_479 = this->unkD8;
         sp50 = 2;
         sp54 = 0;
         M2C_FIELD(*temp_r3_479, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_479, &sp50, 2);
-        temp_r3_489 = this->unkC8;
+        temp_r3_489 = this->unkD0;
         sp48 = 1;
         sp4C = 0;
-        temp_r3_489->Message(&sp48, 1);
-        temp_r3_499 = this->unkBC.unk4;
+        M2C_FIELD(*temp_r3_489, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_489, &sp48, 1);
+        temp_r3_499 = this->unkC8;
         sp40 = 2;
         sp44 = 0;
-        M2C_FIELD(*temp_r3_499, M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_499, &sp40, 2);
-        var_r27_512 = M2C_FIELD(this->unkD4, void **, 0x60);
+        temp_r3_499->Message(&sp40, 2);
+        var_r27_512 = M2C_FIELD(this->unkDC, void **, 0x60);
 loop_23:
         if (var_r27_512 != NULL) {
             sp38 = 4;
@@ -339,33 +339,33 @@ loop_23:
             var_r27_512 = M2C_FIELD(var_r27_512, void **, 0x10);
             goto loop_23;
         }
-        temp_r3_527 = this->unkD4;
+        temp_r3_527 = this->unkDC;
         sp30 = 4;
         sp34 = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_527, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_527, &sp30, 4);
-        temp_r3_537 = this->unkD4;
+        M2C_FIELD(M2C_FIELD(temp_r3_527, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_527, &sp30, 4);
+        temp_r3_537 = this->unkDC;
         sp28 = 2;
         sp2C = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_537, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_537, &sp28, 2);
+        M2C_FIELD(M2C_FIELD(temp_r3_537, void **, 0), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_537, &sp28, 2);
         spF8 = 1;
         spFC = *MemoryCardScreen::selectedFile & (((u32) *MemoryCardScreen::selectedFile >> 0x1FU) - 1);
-        temp_r3_555 = this->unkD4;
-        M2C_FIELD(M2C_FIELD(temp_r3_555, void **, 0), M2C_UNK (**)(void **, s32 *, s32), 0x2C)(temp_r3_555, &spF8, *MemoryCardScreen::selectedFile);
-        temp_r3_560 = this->unkD8;
+        temp_r3_555 = this->unkDC;
+        M2C_FIELD(M2C_FIELD(temp_r3_555, void **, 0), M2C_UNK (**)(void *, s32 *, s32), 0x2C)(temp_r3_555, &spF8, *MemoryCardScreen::selectedFile);
+        temp_r3_560 = this->unkE0;
         sp20 = 2;
         sp24 = 0;
         M2C_FIELD(*temp_r3_560, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_560, &sp20, 2);
-        temp_r3_570 = this->unkDC;
+        temp_r3_570 = this->unkE4;
         sp18 = 2;
         sp1C = 0;
-        M2C_FIELD(*temp_r3_570, M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_570, &sp18, 2);
-        temp_r3_580 = this->unkE0;
+        M2C_FIELD(*temp_r3_570, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_570, &sp18, 2);
+        temp_r3_580 = this->unkE8;
         sp10 = 3;
         sp14 = 0;
         M2C_FIELD(*temp_r3_580, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_580, &sp10, 3);
     }
     *MemoryCardScreen::selectedFile = -1;
-    temp_r3_596 = this->unkD8;
+    temp_r3_596 = this->unkE0;
     sp8 = 1;
     spC = 0;
     if (((KDMemoryCard *) (M2C_FIELD(*temp_r3_596, KDMemoryCard *(**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_596, &sp8, 1)))->Update() == 0) {
@@ -374,29 +374,29 @@ loop_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'UIButtonGroup *' to
+#if 0 // DRAFT: illegal implicit conversion from 'UIObject *' to
 void MCSelectFileScreen::Resolve() {
     MemoryCardScreen::Resolve();
-    this->unkD4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
-    this->unkDC = FindChild("SelectText");
-    this->unkE0 = FindChild("NoFiles");
-    this->unkC8 = FindPrompt((UIContainer *) this);
-    this->unkD4 = this->unkC8->FindChild("UpDown");
+    this->unkDC = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
+    this->unkE4 = FindChild("SelectText");
+    this->unkE8 = FindChild("NoFiles");
+    this->unkD0 = FindPrompt((UIContainer *) this);
+    this->unkD4 = ((UIContainer *) this->unkD0)->FindChild("UpDown");
     if ((void **) this->unkD4 == NULL) {
-        this->unkD4 = this->unkC8->FindChild("LeftRight");
+        this->unkD4 = ((UIContainer *) this->unkD0)->FindChild("LeftRight");
     }
-    this->unkD0 = this->unkC8->FindChild("Forward");
-    this->unkD8 = FindChild("FileInfo");
+    this->unkD8 = ((UIContainer *) this->unkD0)->FindChild("Forward");
+    this->unkE0 = FindChild("FileInfo");
 }
 #endif
 
 void MCSelectFileScreen::Init() {
     MemoryCardScreen::Init();
-    this->unkD4 = NULL;
-    this->unkD8 = NULL;
     this->unkDC = NULL;
     this->unkE0 = NULL;
-    this->unkC8 = NULL;
-    this->unkD4 = NULL;
+    this->unkE4 = NULL;
+    this->unkE8 = NULL;
     this->unkD0 = NULL;
+    this->unkD4 = NULL;
+    this->unkD8 = NULL;
 }

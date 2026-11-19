@@ -21,7 +21,7 @@ public:
     virtual void Deinit(void);
     void Emit(void);
     void Enable(bool, MKVector4);
-    /* 0x004 */ u8 pad4[0x14];
+    /* 0x014 */ u8 pad14[0x4];
     /* 0x018 */ MKVector4 unk18;
     /* 0x028 */ f32 unk28;
     /* 0x02c */ s32 unk2C;

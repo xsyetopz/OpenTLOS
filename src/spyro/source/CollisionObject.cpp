@@ -337,7 +337,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp18'
 void CollisionObject::SortResults() {
     M2C_UNK sp14;
     ContextInfo *sp10;

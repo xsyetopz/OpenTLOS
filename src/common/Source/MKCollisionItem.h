@@ -3,7 +3,6 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKCollisionManager.h"
-#include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -75,15 +74,7 @@ public:
     virtual void Update(void);
     virtual void GetRadius(void);
     void Init(MKVector3 *, MKVector3 *, float, const MKVector4 &, const MKVector4 &, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ f64 unk8;
-    /* 0x010 */ f64 unk10;
-    /* 0x018 */ f64 unk18;
-    /* 0x020 */ f64 unk20;
-    /* 0x028 */ f64 unk28;
-    /* 0x030 */ u8 pad30[0x24];
-    /* 0x054 */ s32 unk54;
-    /* 0x058 */ u8 pad58[0x8];
+    /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ MKVector3 unk60;
     /* 0x070 */ MKVector3 unk70;
     /* 0x080 */ MKVector4 unk80;
@@ -113,12 +104,6 @@ public:
     void LocaliseRay(const MKCollisionRay &);
     void ToWorldResult(const MKCollisionResult &, MKCollisionResult *);
     void Init(MKCollisionModel *, MKModel *, int, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ f64 unk8;
-    /* 0x010 */ MKCollisionAABB unk10;
-    /* 0x02c */ u8 pad2C[0x28];
-    /* 0x054 */ s32 unk54;
-    /* 0x058 */ u8 pad58[0x4];
     /* 0x05c */ u8 unk5C;
     /* 0x05d */ u8 pad5D[0x3];
     /* 0x060 */ f32 unk60;
@@ -157,15 +142,7 @@ public:
     virtual void Update(void);
     virtual void GetRadius(void);
     void Init(MKVector3 *, float, float, const MKVector4 &, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ f64 unk8;
-    /* 0x010 */ f64 unk10;
-    /* 0x018 */ f64 unk18;
-    /* 0x020 */ f64 unk20;
-    /* 0x028 */ f64 unk28;
-    /* 0x030 */ u8 pad30[0x24];
-    /* 0x054 */ s32 unk54;
-    /* 0x058 */ u8 pad58[0x8];
+    /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ f64 unk60;
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
@@ -185,9 +162,11 @@ inline void MKCollisionCapsuleItem::SweepSphereCollide(MKCollisionRay &arg0, MKC
 }
 #endif
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionAABB'
 inline void MKCollisionCapsuleItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
 
 }
+#endif
 
 inline s32 MKCollisionItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
     return 0;
@@ -205,8 +184,10 @@ inline void MKCollisionItem::ReLoad(MKModel *arg0) {
 
 }
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionAABB'
 inline void MKCollisionSphereItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
 
 }
+#endif
 
 #endif  // COMMON_SOURCE_MKCOLLISIONITEM_H

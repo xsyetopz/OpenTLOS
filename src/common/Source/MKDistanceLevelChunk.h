@@ -7,7 +7,6 @@
 
 class BoundingVolume;
 class MKDistanceLevelChunk;
-class MKFFTWater;
 class MKLevelChunk;
 class MKMessage;
 class MKModel;
@@ -80,25 +79,6 @@ public:
     void UpdateProp(MKProp *, MKMessage *);
     void DrawRecursiveTerrain(SMNode *, int);
     void * ChunkCreator(const char *);
-    /* 0x004 */ u32 unk4;
-    /* 0x008 */ u8 pad8[0x78];
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ s32 unk84;
-    /* 0x088 */ u8 pad88[0x8];
-    /* 0x090 */ s32 unk90;
-    /* 0x094 */ u8 pad94[0x4];
-    /* 0x098 */ MKFFTWater* unk98;
-    /* 0x09c */ u16* unk9C;
-    /* 0x0a0 */ u8 padA0[0x88];
-    /* 0x128 */ MKProp* unk128;
-    /* 0x12c */ MKPropDescriptor* unk12C;
-    /* 0x130 */ u8 pad130[0x8];
-    /* 0x138 */ s32 unk138;
-    /* 0x13c */ s32 unk13C;
-    /* 0x140 */ s32 unk140;
-    /* 0x144 */ f32 unk144;
-    /* 0x148 */ u8 pad148[0x4];
-    /* 0x14c */ MKPropDescriptor* unk14C;
     /* 0x150 */ u8 unk150;
     /* 0x151 */ u8 pad151[0x7];
     /* 0x158 */ f64 unk158;

@@ -27,9 +27,6 @@ public:
     void UpdateDynamicBone(MKDynamicBone *, void *);
     RotateProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
     /* 0x010 */ s8* unk10;
     /* 0x014 */ u32 unk14;
     /* 0x018 */ MKIniLine* unk18;

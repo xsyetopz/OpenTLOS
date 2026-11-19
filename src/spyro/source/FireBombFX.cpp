@@ -170,7 +170,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     temp_r3_147 = this->unkCC;
     temp_r3_147->unkA0 |= 0x40;
     this->unk120 = arg3;
-    M2C_FIELD(this, u8 *, 0x1B8) = arg5;
+    this->unk1B8 = arg5;
     this->unkFC = 0.0f;
     this->unk104 = 0.0f;
     this->unk128 = arg2;
@@ -208,8 +208,8 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     if ((temp_r3_231 != NULL) && (M2C_FIELD(temp_r3_231->unk0, s32 *, 0xC) & 8)) {
         this->unk130.unk34 = 5.0f;
     }
-    M2C_FIELD(this, s32 *, 0x1BC) = arg6;
-    temp_r0_242 = M2C_FIELD(this, s32 *, 0x1BC);
+    this->unk1BC = arg6;
+    temp_r0_242 = this->unk1BC;
     switch (temp_r0_242) {                          /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_f1_245 = M2C_FIELD(&arg1, f64 *, 0);
@@ -305,14 +305,14 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         sp68 = sp18;
         sp20 = arg0.unk8 + (f32) sp50;
         sp70 = (f64) sp20;
-        this->unk1C4 = 0.0f;
-        this->unk1C0 = 0;
-        ((KDUniformSpline *) &this->unk1BC)->AddNode(arg0);
-        ((KDUniformSpline *) &this->unk1BC)->AddNode(*((MKVector3 *) &sp68));
-        ((KDUniformSpline *) &this->unk1BC)->AddNode(arg7);
+        this->unk1C8 = 0.0f;
+        this->unk1C4 = 0;
+        ((KDUniformSpline *) &this->unk1C0)->AddNode(arg0);
+        ((KDUniformSpline *) &this->unk1C0)->AddNode(*((MKVector3 *) &sp68));
+        ((KDUniformSpline *) &this->unk1C0)->AddNode(arg7);
         this->unk1D4 = 0.0f;
-        this->unk1D4 = 10000.0f / M2C_BITWISE(f32, this->unk1C4);
-        if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) && (gb.unk0->GetHeroType() == 0)) {
+        this->unk1D8 = 10000.0f / this->unk1C8;
+        if (((s32) this->unk1BC == 2) && (gb.unk0->GetHeroType() == 0)) {
             KDSound_Play3d(GS_CynderBreathStart2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         break;
@@ -329,13 +329,13 @@ void FireBombFX::Deinit() {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_493, 0U);
         ((LightManager *) gb.unk80)->FreeManagedLight(this->unk108);
     }
-    ((KDUniformSpline *) &this->unk1BC)->Deinit();
+    ((KDUniformSpline *) &this->unk1C0)->Deinit();
     KDSound_Stop(&this->unk188);
     GameProp::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: ')' expected
 void FireBombFX::DrawFlameBall() {
     Matrix sp2C0;
     Matrix sp280;
@@ -711,9 +711,9 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     if ((s32) this->unk130.unk3C == 0) {
         var_r31_1121 = 0;
     }
-    if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 1) || (gb.unk0->GetHeroType() == 2)) {
+    if (((s32) this->unk1BC == 1) || (gb.unk0->GetHeroType() == 2)) {
         this->unkF8->unk88 = GS_Explosion7;
-    } else if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
+    } else if ((s32) this->unk1BC == 2) {
         if (gb.unk0->GetHeroType() == 1) {
             this->unkF8->unk88 = GS_SWCynderFireball3;
         } else {
@@ -733,7 +733,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         temp_r3_1197 = arg2->unk8;
         temp_r3_1197->Message(&this->unk130, temp_f1_1190);
     }
-    if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
+    if ((s32) this->unk1BC == 2) {
         var_f26_1207 = 750.0f;
         if ((u8) gb.unk35D != 0) {
             var_f26_1207 = 400.0f;
@@ -766,7 +766,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     if (temp_r4_1297 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1297, 0U);
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x1B8) != 0) {
+    if ((u8) this->unk1B8 != 0) {
         var_r31_1312 = 0;
         temp_f26_1313 = arg0.unk8;
         temp_f27_1314 = arg1.unk8;
@@ -796,7 +796,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
             sp80 = temp_f0_1357;
             sp18 = temp_f27_1314 + (f32) sp78;
             sp88 = (f64) sp18;
-            ((ClusterBomb *) (M2C_FIELD(this, ClusterBomb **, 0x1B4)))->SpawnClusterBomb(*((MKVector3 *) &sp80), *((MKVector3 *) &spE0));
+            this->unk1B4->SpawnClusterBomb(*((MKVector3 *) &sp80), *((MKVector3 *) &spE0));
             var_r31_1312 += 1;
         } while (var_r31_1312 < 5);
     }
@@ -1081,7 +1081,7 @@ void FireBombFX::Update() {
     void *temp_r4_1573;
     void *temp_r5_1930;
 
-    temp_r0_1444 = M2C_FIELD(this, s32 *, 0x1BC);
+    temp_r0_1444 = this->unk1BC;
     switch (temp_r0_1444) {                         /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         sp8 = 1;
@@ -1147,7 +1147,7 @@ void FireBombFX::Update() {
         sp500 = temp_f0_1611;
         sp4E8 = temp_f1_1610;
         sp4F0 = temp_f0_1611;
-        temp_r0_1616 = M2C_FIELD(this, s32 *, 0x1BC);
+        temp_r0_1616 = this->unk1BC;
         switch (temp_r0_1616) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             sp408.operator*(gUpdateTimeDelta);
@@ -1169,7 +1169,7 @@ void FireBombFX::Update() {
             break;
         case 1:                                     /* switch 2 */
         case 2:                                     /* switch 2 */
-            var_f0_1674 = (this->unk1D4 * gUpdateTimeDelta) + this->unk1D4;
+            var_f0_1674 = (this->unk1D8 * gUpdateTimeDelta) + this->unk1D4;
             if (var_f0_1674 < 1.0f) {
 
             } else {
@@ -1182,7 +1182,7 @@ void FireBombFX::Update() {
             }
             this->unk1D4 = var_f0_1674;
             sp14 = 0.0f;
-            ((KDUniformSpline *) &sp3D8)->GetMeasure(this->unk1D4, (Matrix *) &this->unk1BC, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp3D8)->GetMeasure(this->unk1D4, (Matrix *) &this->unk1C0, KDSpline_PositionMixer);
             sp4E8 = sp3D8;
             sp4F0 = sp3E0;
             if (this->unk1D4 == 1.0f) {
@@ -1316,7 +1316,7 @@ void FireBombFX::Update() {
             sp498 = temp_f0_1996;
             sp200 = (f32) sp4F0 + (f32) sp3C0;
             sp4A0 = (f64) sp200;
-            if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
+            if ((s32) this->unk1BC == 2) {
                 sp24 = MKRand_Float(&gViewSeed, 6.0f, 8.0f);
                 sp1F0 = 0.0f;
                 sp1E8 = 0.0f;
@@ -1337,7 +1337,7 @@ void FireBombFX::Update() {
                 Explode(*((MKVector3 *) &sp4C8), *((MKVector3 *) &sp4E8), NULL);
             }
         }
-        if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
+        if ((s32) this->unk1BC == 2) {
             temp_f30_2070 = this->unkC8;
             temp_f28_2075 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f27_2080 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1569,7 +1569,6 @@ void FireBombFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ClusterBomb *' to
 void FireBombFX::Init() {
     GameProp::Init();
     this->unkCC = checked_cast<ShapedTrailFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ShapedTrailFX"));
@@ -1587,8 +1586,7 @@ void FireBombFX::Init() {
     this->unk120 = NULL;
     this->unk124 = 1000.0f;
     ((KDSoundFader *) &this->unk188)->Init(0.25f, 0.25f);
-    M2C_FIELD(this, s32 *, 0x1B4) = checked_cast<ClusterBomb *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ClusterBomb"));
-    M2C_FIELD(this, s8 *, 0x1B8) = 0;
-    ((KDUniformSpline *) &this->unk1BC)->Init(3, 0U);
+    this->unk1B4 = checked_cast<ClusterBomb *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ClusterBomb"));
+    this->unk1B8 = 0;
+    ((KDUniformSpline *) &this->unk1C0)->Init(3, 0U);
 }
-#endif

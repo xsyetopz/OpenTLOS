@@ -235,12 +235,10 @@ void *IceSquirt::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void IceSquirtDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pIceSquirtDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void IceSquirtDescriptor::Deinit() {
     pIceSquirtDescriptor = NULL;

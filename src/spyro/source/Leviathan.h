@@ -12,7 +12,7 @@ class MKProp;
 class Platform;
 class WaterSurfaceFX;
 
-class Leviathan : public Platform {  // base: vtable prefix
+class Leviathan : public Platform {  // base: base ctor call
 public:
     virtual ~Leviathan(void);
     virtual void Init(void);
@@ -29,7 +29,6 @@ public:
     void EmitWaterSpray(void);
     void EmitHugeSplash(void);
     void SetAnim(int);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ s32 unk180;
     /* 0x184 */ u8 pad184[0x4];
     /* 0x188 */ f32 unk188;

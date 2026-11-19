@@ -14,7 +14,7 @@ class ManagedLight;
 class Projectile;
 class ProjectileDescriptor;
 
-class CynderElecAttack : public Projectile {  // base: vtable prefix
+class CynderElecAttack : public Projectile {  // base: base ctor call
 public:
     virtual ~CynderElecAttack(void);
     virtual void Init(void);
@@ -32,7 +32,6 @@ public:
     CynderElecAttack(void);
     void SetDefaults(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ MKVector3* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ u8 unk158;
@@ -41,7 +40,7 @@ public:
     /* 0x160 */ EnergyBeam::Beam* unk160;
 };
 
-class CynderElecAttackDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class CynderElecAttackDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

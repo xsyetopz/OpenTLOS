@@ -2,14 +2,14 @@
 #define SPYRO_SOURCE_DRAGONBUSTDOOR_H
 
 #include <dolphin/types.h>
-#include "spyro/source/Trap.h"
+#include "spyro/source/Door.h"
 
+class Door;
 class DragonBustDoor;
 class MKIniLine;
 class MKMessage;
-class Trap;
 
-class DragonBustDoor : public Trap {  // base: vtable prefix
+class DragonBustDoor : public Door {  // base: base ctor call
 public:
     virtual ~DragonBustDoor(void);
     virtual void Init(void);
@@ -20,7 +20,6 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     DragonBustDoor(void);
-    /* 0x0e0 */ u8 padE0[0x8];
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;

@@ -311,7 +311,7 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp170'
 void TeslaTower::DrawLightCone() {
     M2C_UNK sp250;
     f32 sp24C;
@@ -745,7 +745,7 @@ void TeslaTower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
     Matrix sp30;
     M2C_UNK sp2C;

@@ -18,9 +18,7 @@ void KnifeTrap::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KnifeTrapDescriptor::Init() {
     TrapDescriptor::Init();
     this->unkC = 0x12;
 }
-#endif

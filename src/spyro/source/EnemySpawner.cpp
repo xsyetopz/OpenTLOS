@@ -77,7 +77,7 @@ void EnemySpawner::Update() {
             return;
         }
         if (this->unk90.IsSpawning() != 0) {
-            this->unk90.TrySpawnItems(this->unkE0, 0U);
+            this->unk90.TrySpawnItems((s32) this->unkE4, 0U);
             return;
         }
         if (this->unk90.IsDying() != 0) {
@@ -114,7 +114,7 @@ void EnemySpawner::LoadDone() {
 
 #if 0 // DRAFT: function call 'PropFlagsLoadLine(unsigned long *, MKIniLine *)' does not
 s32 EnemySpawner::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, (u32 *) &this->unkE0) != 0) || (this->unk90.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, &this->unkE4) != 0) || (this->unk90.LoadLine(arg0) != 0)) {
         return 1;
     }
     return 0;
@@ -209,7 +209,6 @@ void SpawnPoint::Resolve() {
     this->unk50.Resolve();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpawnPoint::LoadDone() {
     MKProp::LoadDone();
     this->unk50.LoadDone();
@@ -218,7 +217,6 @@ void SpawnPoint::LoadDone() {
         this->unk8 = &this->unk50.unk10;
     }
 }
-#endif
 
 s32 SpawnPoint::LoadLine(MKIniLine *arg0) {
     s32 var_r31_560;

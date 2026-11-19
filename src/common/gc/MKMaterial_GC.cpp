@@ -636,7 +636,6 @@ void SetZCompLoc(unsigned char arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKMaterial_GC_cpp::__sinit() {
     f32 sp14;
     f32 sp10;
@@ -653,4 +652,3 @@ void MKMaterial_GC_cpp::__sinit() {
     M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
     M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
-#endif

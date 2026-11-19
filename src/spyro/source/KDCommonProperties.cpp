@@ -33,7 +33,7 @@ u8 classInfo__22KDPathFollowerProperty[0x10];
 u8 classInfo__25KDSoundAttachmentProperty[0x10];
 u8 classInfo__22KDAmbientSoundProperty[0x10];
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDAmbientSoundProperty::Update() {
     s32 sp8;
     KDSoundFader *temp_r30_44;
@@ -649,13 +649,11 @@ s32 KDPathFollowerProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
 void KDMessageHandlerProperty::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 == (s32) this->unk1C) {
         Trigger();
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDMessageHandlerProperty::Trigger() {
@@ -703,7 +701,6 @@ void KDMessageHandlerProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDMessageHandlerProperty::Resolve(KDPropertySet *arg0) {
     KDProperty *var_r31_1364;
     KDPropertyCommand **var_r31_1334;
@@ -740,9 +737,8 @@ loop_13:
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDMessageHandlerProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r30_1397;
     u8 var_r31_1400;
@@ -833,7 +829,7 @@ s32 KDAnimProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C'
+#if 0 // DRAFT: pointer/array required
 void KDAnimEventProperty::Update() {
     MKAnimScript *temp_r31_1615;
     s32 temp_r4_1628;
@@ -857,7 +853,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match
 void KDAnimEventProperty::Resolve(KDPropertySet *arg0) {
     KDPropertyCommand **var_r30_1655;
     MKAnimScript *temp_r3_1693;
@@ -913,7 +909,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDAnimEventProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1747;
 

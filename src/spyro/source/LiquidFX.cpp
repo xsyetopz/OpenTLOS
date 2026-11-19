@@ -2515,7 +2515,7 @@ void LiquidFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'CrashMistPS *' to
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void LiquidFXDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp("CrashMistPS"));

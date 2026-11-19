@@ -23,7 +23,6 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void Trigger(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ s32 unk94;
     /* 0x098 */ s32 unk98;
@@ -38,7 +37,6 @@ public:
 class FallingDustPropDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
 };
 

@@ -37,7 +37,6 @@ void SwampFlutterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SwampFlutterCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -60,7 +59,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp88'
 void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {

@@ -6,7 +6,7 @@
 template <class T0, class T1>
 class ExDescriptorCreatorHelper {
 public:
-    void Create(void);
+    T1 * Create(void);
 };
 
 #endif  // SPYRO_SOURCE_EXDESCRIPTORCREATORHELPER_H

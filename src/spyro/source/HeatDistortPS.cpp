@@ -20,7 +20,7 @@ M2C_UNK qsort(MKHeap *, M2C_UNK, s32 (*)(void *, void *)); /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *arg2) {
     f64 sp2C8;
     f64 sp2C0;
@@ -347,7 +347,7 @@ void HeatDistortPS::Deinit() {
     free(temp_r31_450);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
 void HeatDistortPS::Draw() {
     Matrix spE0;
     Matrix spA0;

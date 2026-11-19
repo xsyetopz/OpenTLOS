@@ -98,13 +98,13 @@ void UIImage::Draw(const RenderContext &arg0) {
     MKSetMatrix(*((Matrix *) &sp90));
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) &sp90.unk40));
-    MKSetTexCoord1F(M2C_BITWISE(f32, this->unk60), M2C_BITWISE(f32, this->unk64));
-    MKSetPositionV(*((MKVector3 *) &sp50));
-    MKSetTexCoord1F(this->unk68, M2C_BITWISE(f32, this->unk64));
-    MKSetPositionV(*((MKVector3 *) &sp60));
-    MKSetTexCoord1F(M2C_BITWISE(f32, this->unk60), this->unk6C);
-    MKSetPositionV(*((MKVector3 *) &sp70));
     MKSetTexCoord1F(this->unk68, this->unk6C);
+    MKSetPositionV(*((MKVector3 *) &sp50));
+    MKSetTexCoord1F(this->unk70, this->unk6C);
+    MKSetPositionV(*((MKVector3 *) &sp60));
+    MKSetTexCoord1F(this->unk68, this->unk74);
+    MKSetPositionV(*((MKVector3 *) &sp70));
+    MKSetTexCoord1F(this->unk70, this->unk74);
     MKSetPositionV(*((MKVector3 *) &sp80));
     MKEnd();
     MKEndPrimitive();
@@ -131,10 +131,10 @@ s32 UIImage::LoadLine(UIDataLine *arg0) {
         return 1;
     }
     if (((MKIniLine *) arg0)->IsField("UVs") != 0) {
-        ((MKIniLine *) arg0)->AsFloat(0, (f32 *) &this->unk60);
-        ((MKIniLine *) arg0)->AsFloat(1, (f32 *) &this->unk64);
-        ((MKIniLine *) arg0)->AsFloat(2, &this->unk68);
-        ((MKIniLine *) arg0)->AsFloat(3, &this->unk6C);
+        ((MKIniLine *) arg0)->AsFloat(0, &this->unk68);
+        ((MKIniLine *) arg0)->AsFloat(1, &this->unk6C);
+        ((MKIniLine *) arg0)->AsFloat(2, &this->unk70);
+        ((MKIniLine *) arg0)->AsFloat(3, &this->unk74);
         return 1;
     }
     return UIObject::LoadLine(arg0);
@@ -165,14 +165,12 @@ void UIImage::LoadResources() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void UIImage::SetUVs(float arg0, float arg1, float arg2, float arg3) {
-    this->unk60 = arg0;
-    this->unk64 = arg1;
-    this->unk68 = arg2;
-    this->unk6C = arg3;
+    this->unk68 = arg0;
+    this->unk6C = arg1;
+    this->unk70 = arg2;
+    this->unk74 = arg3;
 }
-#endif
 
 #if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void UIImage::Deinit() {

@@ -2,18 +2,17 @@
 #define SPYRO_SOURCE_DOOR_H
 
 #include <dolphin/types.h>
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
 #include "unplaced_enums.h"
 
 class Door;
 class DoorDescriptor;
-class KDPropExDescriptor;
 class MKIniLine;
 class MKMessage;
 class Trap;
+class TrapDescriptor;
 
-class Door : public Trap {  // base: vtable prefix
+class Door : public Trap {  // base: base ctor call
 public:
     virtual ~Door(void);
     virtual void Init(void);
@@ -26,14 +25,12 @@ public:
     /* 0x0e4 */ s32 unkE4;
 };
 
-class DoorDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class DoorDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     DoorDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;

@@ -42,9 +42,6 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void DrawEntity(SwarmEntity *, const Matrix &, const MKVector4 &, float);
-    /* 0x089 */ u8 pad89[0x3];
-    /* 0x08c */ u8 unk8C;
-    /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ MKVector3 unkD0;
     /* 0x0e0 */ u8 unkE0;
@@ -57,7 +54,6 @@ public:
 class SwarmPropDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ u8 unk70;
     /* 0x071 */ u8 pad71[0x7];
     /* 0x078 */ f64 unk78;

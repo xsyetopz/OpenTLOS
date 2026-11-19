@@ -18,7 +18,6 @@ public:
     virtual void Update(void);
     FightElevatorAnchor(void);
     void GetZapAnchorPos(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ MKSceneManager* unk1A8;
     /* 0x1ac */ s32 unk1AC;
 };

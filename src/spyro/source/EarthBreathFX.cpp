@@ -3,7 +3,6 @@
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -24,6 +23,7 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -53,7 +53,7 @@ extern M2C_UNK gb;
 static s32 lit_777 = 0;
 static u8 lit_778 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, bool arg3) {
     s8 sp220;
     s32 sp21C;
@@ -164,7 +164,7 @@ u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, c
     void *temp_r3_259;
     void *temp_r4_122;
 
-    temp_r3_68 = checked_cast<EarthBombFX *, MKProp>(((MKPropDescriptor *) (M2C_BITWISE(MKPropDescriptor *, this->unk150.unk38)))->CreateInstance());
+    temp_r3_68 = checked_cast<EarthBombFX *, MKProp>(this->unk190->CreateInstance());
     if (temp_r3_68 != NULL) {
         M2C_FIELD(temp_r3_68->__vptr, M2C_UNK (**)(), 0x30)();
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
@@ -390,7 +390,6 @@ void EarthBreathFX::ResetFury() {
     this->unkC4->ResetFury();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
 void EarthBreathFX::DrawShotgunMuzzelFlash() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -403,9 +402,9 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
     f32 temp_f3_694;
     f32 var_f2_670;
 
-    if (!(M2C_BITWISE(f32, this->unk128) <= 0.0f)) {
+    if (!(this->unk12C <= 0.0f)) {
         M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &this->unk14C + 4, 0x40);
-        var_f2_670 = M2C_BITWISE(f32, this->unk128);
+        var_f2_670 = this->unk12C;
         if (var_f2_670 < 0.25f) {
 
         } else {
@@ -424,11 +423,10 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
         sp28 = (f64) sp18;
         sp20 = (f64) sp10;
         sp30.Scale3x3(&sp30, *((MKVector3 *) &sp20));
-        MKModel_SetWorldMatrix(M2C_FIELD(this, MKModel **, 0x140), sp30);
-        MKModel_Draw(M2C_FIELD(this, MKModel **, 0x140), NULL);
+        MKModel_SetWorldMatrix(this->unk140, sp30);
+        MKModel_Draw(this->unk140, NULL);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
@@ -581,8 +579,8 @@ s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, co
         var_r29_768 = 0;
         ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(1.0f, 1.0f, 0.11f, 0, 4.0f, 0U);
         KDSound_Play3d(GS_SpyroBreathRumble2, &arg0, 0U, -1, 0.0f, 0U);
-        M2C_FIELD(this, s8 *, 0x198) = 1;
-        this->unk194 = 0.125f;
+        this->unk198 = 1;
+        this->unk19C = 0.125f;
         break;
     case 3:
         var_r31_766 = GS_SpyroEarthBlast4;
@@ -625,7 +623,7 @@ block_19:
     } else {
 block_27:
         KDSound_Play3d(var_r31_766, &arg0, 0U, -1, 0.0f, 0U);
-        this->unk128 = 0.25f;
+        this->unk12C = 0.25f;
     }
     M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp110 = 0.0f;
@@ -633,14 +631,14 @@ block_27:
     sp10C = 1.0f;
     sp220 = (f64) sp110;
     sp218 = (f64) sp108;
-    KDMath_BuildMatrixFromUp((Matrix *) &this->unk150, arg1, *((MKVector3 *) &sp218));
-    this->unk150.unk28 = arg0.unk0;
+    KDMath_BuildMatrixFromUp(&this->unk150, arg1, *((MKVector3 *) &sp218));
+    this->unk150.unk30 = arg0.unk0;
     var_r24_987 = 0;
     temp_f29_988 = arg0.unk8;
-    this->unk150.unk2C = arg0.unk4;
-    this->unk150.unk30 = temp_f29_988;
+    this->unk150.unk34 = arg0.unk4;
+    this->unk150.unk38 = temp_f29_988;
     temp_f31_992 = arg1.unk8;
-    this->unk150.unk34 = 1.0f;
+    this->unk150.unk3C = 1.0f;
     temp_f20_994 = arg2.unk8;
     do {
         spF8 = M2C_FIELD(&arg1, f64 *, 0) * 5.49408334e-315;
@@ -792,8 +790,8 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     void *temp_r4_1473;
     void *temp_r5_1388;
 
-    M2C_FIELD(this, f64 *, 0x130) = (f64) M2C_FIELD(&arg2, f64 *, 0);
-    this->unk130 = M2C_FIELD(&arg2, f64 *, 8);
+    this->unk130 = M2C_FIELD(&arg2, f64 *, 0);
+    this->unk138 = M2C_FIELD(&arg2, f64 *, 8);
     switch (arg4) {                                 /* irregular */
     case 0:
         if (this->unkBC <= 0.0f) {
@@ -824,8 +822,8 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         }
         return 0;
     case 1:
-        if ((this->unk150.unk3C <= 0.0f) && (ShootEarthBomb(arg1, arg2, arg3, arg5) != 0)) {
-            this->unk150.unk3C = 1.0f;
+        if ((this->unk194 <= 0.0f) && (ShootEarthBomb(arg1, arg2, arg3, arg5) != 0)) {
+            this->unk194 = 1.0f;
             return 1;
         }
     case 2:
@@ -1357,7 +1355,7 @@ loop_11:
     }
     this->unkC8 = NULL;
     MKModel_Destroy(this->unk128);
-    MKModel_Destroy(M2C_FIELD(this, MKModel **, 0x140));
+    MKModel_Destroy(this->unk140);
     temp_r4_2335 = this->unkB8;
     if (temp_r4_2335 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_2335);
@@ -1371,7 +1369,7 @@ void EarthBreathFX::Draw() {
     DrawShotgunMuzzelFlash();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void EarthBreathFX::Update() {
     f64 spA0;
     f64 sp98;
@@ -1404,9 +1402,9 @@ void EarthBreathFX::Update() {
 
     BaseBreathFX::Update();
     this->unkBC -= gUpdateTimeDelta;
-    this->unk128 = M2C_BITWISE(f32, this->unk128) - gUpdateTimeDelta;
-    this->unk150.unk3C -= gUpdateTimeDelta;
+    this->unk12C -= gUpdateTimeDelta;
     this->unk194 -= gUpdateTimeDelta;
+    this->unk19C -= gUpdateTimeDelta;
     temp_f3_2396 = this->unkA8;
     if (temp_f3_2396 > 0.0f) {
         if (this->unkAC >= 0.25f) {
@@ -1418,7 +1416,7 @@ void EarthBreathFX::Update() {
     }
     temp_r4_2416 = this->unkB8;
     if (temp_r4_2416 != NULL) {
-        if (M2C_BITWISE(f32, this->unk128) > 0.0f) {
+        if (this->unk12C > 0.0f) {
             sp58.operator*(5000.0f);
             sp68.operator*(gUpdateTimeDelta);
             temp_r4_2431 = this->unkB8;
@@ -1433,7 +1431,7 @@ void EarthBreathFX::Update() {
                 M2C_FIELD(temp_r3_2446, f64 *, 0x10) = sp18;
                 M2C_FIELD(temp_r3_2446, f64 *, 0x18) = (f64) sp20;
             }
-            var_f1_2453 = M2C_BITWISE(f32, this->unk128);
+            var_f1_2453 = this->unk12C;
             if (var_f1_2453 < 0.25f) {
 
             } else {
@@ -1462,7 +1460,7 @@ void EarthBreathFX::Update() {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2416, 0U);
         }
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x198) != 0) && (this->unk194 <= 0.0f)) {
+    if (((u8) this->unk198 != 0) && (this->unk19C <= 0.0f)) {
         sp30 = 0.0f;
         sp98 = M2C_FIELD(this, f64 *, 0x180);
         spA0 = M2C_FIELD(this, f64 *, 0x188);
@@ -1473,7 +1471,7 @@ void EarthBreathFX::Update() {
         sp38 = (f64) sp28;
         sp40 = (f64) sp30;
         ShootShotgun(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), *((MKVector3 *) &sp38));
-        M2C_FIELD(this, u8 *, 0x198) = 0U;
+        this->unk198 = 0;
     }
     UpdateSeedBullets();
     this->unkB0 = 0;
@@ -1522,7 +1520,7 @@ void EarthBreathFX::Resolve() {
     if (temp_r4_2583 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2583, 0U);
     }
-    this->unk150.unk38 = M2C_BITWISE(f32, checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "EarthBombFX")));
+    this->unk190 = checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "EarthBombFX"));
 }
 #endif
 
@@ -1570,12 +1568,12 @@ void EarthBreathFX::Init() {
     this->unk128 = MKModel_Create("FX0018_EarthShot", NULL, 2, NULL);
     this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth"));
     this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth2"));
-    this->unk128 = 0.0f;
+    this->unk12C = 0.0f;
     M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    M2C_FIELD(this, MKModel **, 0x140) = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
+    this->unk140 = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
     var_r29_2710 = 0;
-    this->unk150.unk3C = 0.0f;
-    this->unk150.unk38 = 0.0f;
+    this->unk194 = 0.0f;
+    this->unk190 = NULL;
     do {
         temp_r3_2717 = checked_cast<EarthBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBombFX"));
         if (temp_r3_2717 != NULL) {
@@ -1583,7 +1581,7 @@ void EarthBreathFX::Init() {
         }
         var_r29_2710 += 1;
     } while (var_r29_2710 < 8);
-    M2C_FIELD(this, s8 *, 0x198) = 0;
-    this->unk194 = 0.0f;
+    this->unk198 = 0;
+    this->unk19C = 0.0f;
 }
 #endif

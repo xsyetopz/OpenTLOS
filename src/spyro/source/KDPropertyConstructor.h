@@ -6,7 +6,7 @@
 template <class T0>
 class KDPropertyConstructor {
 public:
-    void Construct(void);
+    T0 * Construct(void);
 };
 
 #endif  // SPYRO_SOURCE_KDPROPERTYCONSTRUCTOR_H

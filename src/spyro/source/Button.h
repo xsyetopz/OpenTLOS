@@ -13,7 +13,7 @@ class MKMessage;
 class Trap;
 class TrapDescriptor;
 
-class Button : public Trap {  // base: vtable prefix
+class Button : public Trap {  // base: base ctor call
 public:
     virtual ~Button(void);
     virtual void Init(void);
@@ -29,12 +29,10 @@ public:
     /* 0x0ec */ u8 unkEC;
 };
 
-class ButtonDescriptor : public TrapDescriptor {  // base: vtable prefix
+class ButtonDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     ButtonDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;

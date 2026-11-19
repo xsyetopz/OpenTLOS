@@ -318,7 +318,6 @@ void TotemPolePiece::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TotemPolePiece::Update() {
     Matrix sp10;
     M2C_UNK spC;
@@ -358,7 +357,6 @@ void TotemPolePiece::Update() {
     sp10.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, sp10);
 }
-#endif
 
 void TotemPolePiece::Init() {
     GameProp::Init();

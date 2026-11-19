@@ -8,7 +8,6 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
@@ -16,7 +15,7 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk0'
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroIdleState states__14SpyroIdleState;            /* unable to generate initializer: confusing struct layout */
 
@@ -30,10 +29,10 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
     temp_r3_31 = EventCamera_GetCurrent();
     var_r3_34 = temp_r3_31 == NULL;
     if ((u8) (temp_r3_31 == NULL) != 0) {
-        var_r3_34 = M2C_FIELD(this->unk10, u8 *, 0x3D3);
+        var_r3_34 = this->unk10->unk3D3;
     }
     if (var_r3_34 != 0) {
-        var_r3_34 = M2C_FIELD(this->unk10->unk258, u8 *, 0x14);
+        var_r3_34 = M2C_FIELD(this->unk10->unk260, u8 *, 0x14);
     }
     if (var_r3_34 != 0) {
         var_r3_34 = M2C_FIELD(GameData::gameData, s32 *, 0x158) != 2;
@@ -48,7 +47,7 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
         temp_r3_71 = EventCamera_GetCurrent();
         var_r0_74 = temp_r3_71 == NULL;
         if ((u8) (temp_r3_71 == NULL) != 0) {
-            var_r0_74 = M2C_FIELD(this->unk10, u8 *, 0x3D3);
+            var_r0_74 = this->unk10->unk3D3;
         }
         if ((var_r0_74 != 0) && ((s32) this->unk14.unk0 != 3)) {
             this->unk14.SetState(this, 3, 0U);
@@ -62,7 +61,7 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroIdleState::Breathing2Transition() {
     Spyro *temp_r3_126;
     u8 var_r0_127;
@@ -76,9 +75,9 @@ u8 SpyroIdleState::Breathing2Transition() {
     }
     if (var_r3_119 == 0) {
         temp_r3_126 = this->unk10;
-        var_r0_127 = M2C_FIELD(temp_r3_126, u8 *, 0x3D3);
+        var_r0_127 = temp_r3_126->unk3D3;
         if (var_r0_127 != 0) {
-            var_r0_127 = M2C_FIELD(temp_r3_126->unk258, u8 *, 0x14) == 0;
+            var_r0_127 = M2C_FIELD(temp_r3_126->unk260, u8 *, 0x14) == 0;
         }
         if (var_r0_127 != 0) {
             this->unk14.SetState(this, 3, 1U);
@@ -114,12 +113,11 @@ void SpyroIdleState::Breathing2Enter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 s32 SpyroIdleState::BreathingTransition() {
     u8 temp_r0_219;
     u8 var_r0_222;
 
-    temp_r0_219 = M2C_FIELD(this->unk10, u8 *, 0x3D3);
+    temp_r0_219 = this->unk10->unk3D3;
     var_r0_222 = temp_r0_219 == 0;
     if ((u8) (temp_r0_219 == 0) == 0) {
         var_r0_222 = EventCamera_GetCurrent() != NULL;
@@ -130,7 +128,6 @@ s32 SpyroIdleState::BreathingTransition() {
     }
     return 0;
 }
-#endif
 
 void SpyroIdleState::BreathingUpdate() {
     BreathingTransition();
@@ -166,11 +163,11 @@ void SpyroIdleState::OneOffIdleExit() {
 
     if ((u8) this->unk5D == 0) {
         temp_r4_342 = this->unk10;
-        temp_r4_342->unk420 = (void *) ((s32) temp_r4_342->unk420 | 1);
+        temp_r4_342->unk428 |= 1;
     }
     if ((u8) this->unk5C == 0) {
         temp_r4_350 = this->unk10;
-        temp_r4_350->unk420 = (void *) ((s32) temp_r4_350->unk420 | 0x40000);
+        temp_r4_350->unk428 |= 0x40000;
     }
     this->unk48 = -1;
     this->unk10->SetMeleeButtonStateTimeout(0U);
@@ -188,11 +185,11 @@ void SpyroIdleState::OneOffIdleEnter() {
     }
     if ((u8) this->unk5D == 0) {
         temp_r3_387 = this->unk10;
-        temp_r3_387->unk420 = (void *) ((s32) temp_r3_387->unk420 & 0xFFFFFFFE);
+        temp_r3_387->unk428 &= 0xFFFFFFFE;
     }
     if ((u8) this->unk5C == 0) {
         temp_r3_395 = this->unk10;
-        temp_r3_395->unk420 = (void *) ((s32) temp_r3_395->unk420 & 0xFFFBFFFF);
+        temp_r3_395->unk428 &= 0xFFFBFFFF;
     }
     this->unk10->SetMeleeButtonStateTimeout(1U);
 }
@@ -200,11 +197,11 @@ void SpyroIdleState::OneOffIdleEnter() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroIdleState::SelectAnimation() {
-    MKProp *temp_r3_477;
     Spyro *temp_r4_476;
     s32 temp_r3_479;
     s32 temp_r5_418;
     u32 var_r6_493;
+    void *temp_r3_477;
     void *var_r3_488;
 
     temp_r5_418 = this->unk3C;
@@ -222,11 +219,11 @@ void SpyroIdleState::SelectAnimation() {
         this->unk28 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
     }
     temp_r4_476 = this->unk10;
-    temp_r3_477 = temp_r4_476->unk26C.unk8;
+    temp_r3_477 = temp_r4_476->unk27C;
     temp_r3_479 = M2C_FIELD(temp_r3_477, s32 *, 0x16C);
     if (((u32) (-temp_r3_479 & ~temp_r3_479) >> 0x1FU) != 0) {
         if (temp_r3_479 != 0) {
-            var_r3_488 = &temp_r3_477->unk8 + ((temp_r3_479 - 1) * 0x58);
+            var_r3_488 = ((u8 *) temp_r3_477) + 8 + ((temp_r3_479 - 1) * 0x58);
         } else {
             var_r3_488 = NULL;
         }
@@ -238,22 +235,22 @@ void SpyroIdleState::SelectAnimation() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroIdleState::SlideTransition() {
-    MKProp *temp_r3_522;
     s32 temp_r3_524;
     u32 var_r0_538;
     u8 var_r3_518;
     u8 var_r3_544;
+    void *temp_r3_522;
     void *var_r3_533;
 
     var_r3_518 = AnyToBreathingTranistion();
     if (var_r3_518 == 0) {
-        temp_r3_522 = this->unk10->unk26C.unk8;
+        temp_r3_522 = this->unk10->unk27C;
         temp_r3_524 = M2C_FIELD(temp_r3_522, s32 *, 0x16C);
         if (((u32) (-temp_r3_524 & ~temp_r3_524) >> 0x1FU) != 0) {
             if (temp_r3_524 != 0) {
-                var_r3_533 = &temp_r3_522->unk8 + ((temp_r3_524 - 1) * 0x58);
+                var_r3_533 = ((u8 *) temp_r3_522) + 8 + ((temp_r3_524 - 1) * 0x58);
             } else {
                 var_r3_533 = NULL;
             }
@@ -312,7 +309,7 @@ void SpyroIdleState::NormalEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 SpyroIdleState::Transition() {
     M2C_UNK var_r28_760;
     s32 var_r29_726;
@@ -362,14 +359,14 @@ void SpyroIdleState::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: illegal type
 void SpyroIdleState::Update() {
     Spyro *temp_r3_839;
 
     temp_r3_839 = this->unk10;
-    if ((s32) M2C_FIELD(temp_r3_839->unk26C.unk8, s32 *, 0x16C) > 0) {
+    if ((s32) M2C_FIELD(temp_r3_839->unk27C, s32 *, 0x16C) > 0) {
         temp_r3_839->SetDesiredVelocity(MKVector3::zero, 540000.0f);
-        if (((ContextInfo *) &this->unk10->unk26C.unk8->unk8)->HitID(2U) != 0) {
+        if (((ContextInfo *) (this->unk10->unk27C + 8))->HitID(2U) != 0) {
             this->unk44 = 1;
         } else {
             this->unk44 = 0;
@@ -404,7 +401,6 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     s32 sp8;
     KDCamera *temp_r3_1072;
     KDCamera *temp_r3_937;
-    MKProp *temp_r3_1009;
     Spyro *temp_r3_913;
     Spyro *temp_r3_918;
     Spyro *temp_r5_1008;
@@ -413,17 +409,18 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     f32 temp_f3_1035;
     s32 temp_r3_1011;
     s32 var_r0_1025;
+    void *temp_r3_1009;
     void *temp_r3_1090;
     void *temp_r3_986;
     void *var_r3_1020;
 
     temp_r3_913 = this->unk10;
-    temp_r3_913->unk420 = (void *) ((s32) temp_r3_913->unk420 | 0xE0000 | 0x3FA7);
+    temp_r3_913->unk428 = temp_r3_913->unk428 | 0xE0000 | 0x3FA7;
     temp_r3_918 = this->unk10;
-    temp_r3_918->unk420 = (void *) ((s32) temp_r3_918->unk420 | 0x300000 | 0x8000);
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
+    temp_r3_918->unk428 = temp_r3_918->unk428 | 0x300000 | 0x8000;
+    this->unk10->unk38C = 1900.0f;
+    this->unk10->unk460.SetTailSweepEnabled(1U);
+    this->unk10->unk460.SetHornDiveEnabled(1U);
     this->unk2C = 0;
     this->unk48 = -1;
     temp_r3_937 = this->unk10->GetCamera();
@@ -431,7 +428,7 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     sp10 = 0x453;
     M2C_FIELD(temp_r3_937->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     this->unk44 = arg0.IsMessageOnList(0x176);
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
+    this->unk10->unk3D2 = 0;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     if (arg0.IsMessageOnList(0x186) != 0) {
         this->unk14.SetState(this, 0, 0U);
@@ -448,11 +445,11 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
         this->unk14.SetState(this, 2, 0U);
     } else {
         temp_r5_1008 = this->unk10;
-        temp_r3_1009 = temp_r5_1008->unk26C.unk8;
+        temp_r3_1009 = temp_r5_1008->unk27C;
         temp_r3_1011 = M2C_FIELD(temp_r3_1009, s32 *, 0x16C);
         if (((u32) (-temp_r3_1011 & ~temp_r3_1011) >> 0x1FU) != 0) {
             if (temp_r3_1011 != 0) {
-                var_r3_1020 = &temp_r3_1009->unk8 + ((temp_r3_1011 - 1) * 0x58);
+                var_r3_1020 = ((u8 *) temp_r3_1009) + 8 + ((temp_r3_1011 - 1) * 0x58);
             } else {
                 var_r3_1020 = NULL;
             }
@@ -460,9 +457,9 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
         } else {
             var_r0_1025 = 0;
         }
-        if ((var_r0_1025 & 8) && (temp_f1_1032 = temp_r5_1008->unk330, temp_f0_1033 = temp_r5_1008->unk33C, temp_f3_1035 = temp_r5_1008->unk338, ((((temp_f3_1035 * temp_f3_1035) + ((temp_f1_1032 * temp_f1_1032) + (temp_f0_1033 * temp_f0_1033))) > 10000.0f) != 0))) {
+        if ((var_r0_1025 & 8) && (temp_f1_1032 = temp_r5_1008->unk338, temp_f0_1033 = temp_r5_1008->unk33C, temp_f3_1035 = temp_r5_1008->unk340, ((((temp_f3_1035 * temp_f3_1035) + ((temp_f1_1032 * temp_f1_1032) + (temp_f0_1033 * temp_f0_1033))) > 10000.0f) != 0))) {
             this->unk14.SetState(this, 1, 0U);
-        } else if ((u8) M2C_FIELD(temp_r5_1008, u8 *, 0x3D3) != 0) {
+        } else if ((u8) temp_r5_1008->unk3D3 != 0) {
             this->unk14.SetState(this, 3, 0U);
         } else {
             this->unk14.SetState(this, 0, 0U);
@@ -482,12 +479,10 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroIdleState::Deinit() {
     this->unk30.Deinit();
     this->unk14.Deinit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroIdleState::Init(Spyro *arg0) {

@@ -75,12 +75,10 @@ void KDSoundProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDSoundProp::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDSoundProp::LoadLine(MKIniLine *arg0) {

@@ -1608,7 +1608,7 @@ void Level_TerrainDrawCallback(MKModel *arg0, unsigned short *arg1, void *arg2) 
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal type
 void Level::UpdateState() {
     QueueInfo sp10;
     s32 spC;
@@ -1728,7 +1728,7 @@ void Level::Update() {
         if (((temp_r3_3162 != NULL) && (temp_r3_3162->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r27_3161, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r27_3161) + 0x24))->GetState() == 2))) {
             var_r29_3147 = 1;
         }
-        if ((var_r29_3147 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0) && (temp_r3_3186 = M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78)->unk100.unk0, (((u32) temp_r3_3186 == 0U) == 0))) {
+        if ((var_r29_3147 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0) && (temp_r3_3186 = M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78)->unk100.unk4, (((u32) temp_r3_3186 == 0U) == 0))) {
             MKModel_GetPosition(((KDSP_Actor *) temp_r3_3186)->GetModel());
             sp28 = *M2C_ERROR(/* Read from unset register $r3 */);
             sp30 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);

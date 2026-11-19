@@ -89,7 +89,7 @@ void SpikeTrap::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void SpikeTrapDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("inactive");
@@ -99,14 +99,10 @@ void SpikeTrapDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 SpikeTrapDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpikeTrapDescriptor::Init() {
     TrapDescriptor::Init();
 }
-#endif

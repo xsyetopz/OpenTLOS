@@ -24,8 +24,8 @@
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-void *malloc(M2C_UNK);                              /* extern */
+M2C_UNK free(void ****);                            /* extern */
+void ****malloc(M2C_UNK);                           /* extern */
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gEmptyPtrListDL;
@@ -42,20 +42,18 @@ static u8 lit_817 = 1;
 static u8 lit_895 = 1;
 static u8 lit_898 = 1;
 
-#if 0 // DRAFT: pointer/array required
 void FuryFXElectricity2::ResetFury() {
     SetDefaults();
     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkA8, 0U);
     DestroyAllLightningCages();
 loop_2:
-    if ((u32) *this->unk11C != 0U) {
-        this->unk11C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk11C) + 4));
+    if ((void ***) *this->unk124 != NULL) {
+        this->unk124 += 4;
         goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void FuryFXElectricity2::DestroyAllLightningCages() {
     f64 sp98;
     f64 sp90;
@@ -83,10 +81,10 @@ void FuryFXElectricity2::DestroyAllLightningCages() {
     f32 temp_f1_134;
     f32 temp_f2_119;
     f32 temp_f2_125;
-    f32 temp_r3_170;
-    f32 var_r30_99;
     f64 temp_f0_154;
     f64 temp_f1_148;
+    void ****temp_r3_170;
+    void ****var_r30_99;
     void ***temp_r31_181;
     void ***temp_r4_173;
     void **temp_r3_114;
@@ -94,9 +92,9 @@ void FuryFXElectricity2::DestroyAllLightningCages() {
     void **temp_r3_135;
     void *temp_r3_147;
 
-    var_r30_99 = this->unk11C;
+    var_r30_99 = this->unk124;
 loop_2:
-    if (M2C_BITWISE(u32, var_r30_99) != 0U) {
+    if (var_r30_99 != NULL) {
         temp_r31_181 = *var_r30_99;
         if (temp_r31_181 != NULL) {
             sp10 = 1.0f;
@@ -132,12 +130,12 @@ loop_2:
             sp38 = (f32) sp88 + (f32) sp78;
             sp98 = (f64) sp38;
             this->unkAC->Emit(*((MKVector3 *) &sp90), *((MKVector3 *) &sp60), sp8, (MKVector4) &sp50);
-            temp_r3_170 = this->unk11C;
-            this->unk11C = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_170) + 4));
+            temp_r3_170 = this->unk124;
+            this->unk124 = temp_r3_170 + 4;
             temp_r4_173 = *temp_r3_170;
-            *temp_r3_170 = (void ***) *var_r30_99;
+            *temp_r3_170 = *var_r30_99;
             *var_r30_99 = temp_r4_173;
-            var_r30_99 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r30_99) + 4));
+            var_r30_99 += 4;
             goto loop_2;
         }
     }
@@ -233,26 +231,26 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FuryFXElectricity2::SpawnLightningCage(Targetable *arg0) {
-    f32 temp_r5_383;
-    void **temp_r5_387;
-    void *temp_r3_389;
+    void ****temp_r5_383;
+    void ****temp_r5_387;
+    void ***temp_r3_389;
 
-    temp_r5_383 = this->unk11C;
+    temp_r5_383 = this->unk124;
     if ((u32) M2C_FIELD(temp_r5_383, u32 *, -4) != 0U) {
-        temp_r5_387 = M2C_BITWISE(s32, temp_r5_383) - 4;
-        this->unk11C = M2C_BITWISE(f32, temp_r5_387);
+        temp_r5_387 = temp_r5_383 - 4;
+        this->unk124 = temp_r5_387;
         temp_r3_389 = *temp_r5_387;
         if (temp_r3_389 != NULL) {
-            M2C_FIELD(temp_r3_389, Targetable **, 0) = arg0;
+            M2C_FIELD(temp_r3_389, void ***, 0) = &arg0->__vptr;
             M2C_FIELD(temp_r3_389, f32 *, 4) = 0.0f;
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FuryFXElectricity2::UpdateLightningCages() {
     BreathHitMessage sp188;
     f64 sp180;
@@ -322,7 +320,6 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f32 temp_f22_698;
     f32 var_f4_540;
     f32 var_f6_607;
-    f32 var_r29_429;
     f64 temp_f0_474;
     f64 temp_f0_511;
     f64 temp_f0_523;
@@ -333,23 +330,24 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f64 temp_f1_556;
     s32 temp_r3_575;
     s32 var_r0_585;
+    void ****var_r29_429;
+    void ***temp_r30_768;
     void **temp_r3_449;
     void **temp_r3_455;
     void **temp_r3_484;
     void **temp_r3_658;
     void **temp_r3_668;
     void *temp_r27_673;
-    void *temp_r30_768;
     void *temp_r4_454;
 
-    var_r29_429 = this->unk11C;
+    var_r29_429 = this->unk124;
 loop_24:
-    if (M2C_BITWISE(u32, var_r29_429) != 0U) {
+    if (var_r29_429 != NULL) {
         temp_r30_768 = *var_r29_429;
         if (temp_r30_768 != NULL) {
             M2C_FIELD(temp_r30_768, f32 *, 4) = (f32) (M2C_FIELD(temp_r30_768, f32 *, 4) - gUpdateTimeDelta);
-            temp_f1_445 = this->unk118;
-            this->unk118 = temp_f1_445 + gUpdateTimeDelta;
+            temp_f1_445 = this->unk120;
+            this->unk120 = temp_f1_445 + gUpdateTimeDelta;
             temp_r3_449 = M2C_FIELD(temp_r30_768, void ***, 0);
             temp_r4_454 = M2C_FIELD(M2C_FIELD(*temp_r3_449, void *(**)(void **, f32), 8)(temp_r3_449, temp_f1_445), void **, 8);
             temp_r3_455 = M2C_FIELD(temp_r30_768, void ***, 0);
@@ -480,7 +478,7 @@ loop_24:
                 ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp168), *((MKVector3 *) &spC8), sp14, lit_898, (MKVector4) &spE8);
                 M2C_FIELD(temp_r30_768, f32 *, 4) = MKRand_Float(&gViewSeed, 0.05f, 0.125f);
             }
-            var_r29_429 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r29_429) + 4));
+            var_r29_429 += 4;
             goto loop_24;
         }
     }
@@ -531,13 +529,13 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
         return 0;
     }
     this->unk108 = M2C_FIELD(&arg0, f64 *, 0);
-    this->unk108 = M2C_FIELD(&arg0, f64 *, 8);
+    this->unk110 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk98 = this->unk108;
-    M2C_FIELD(this, f64 *, 0xA0) = (f64) this->unk108;
+    M2C_FIELD(this, f64 *, 0xA0) = (f64) this->unk110;
     this->unk90 = 1;
     this->unk94 = 1.0f;
-    this->unk118 = 0.0f;
-    M2C_FIELD(this, f32 *, 0x11C) = 0.0f;
+    this->unk120 = 0.0f;
+    this->unk11C = 0.0f;
     temp_r3_835 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
     temp_r0_837 = *(&GameData::gameData[0x70] + (temp_r3_835 + 0x7C));
     temp_r5_839 = &GameData::gameData[0x70] + (temp_r3_835 + 0x64);
@@ -585,7 +583,7 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 4, 0x0C000000) != 0) {
         this->unk108 = (f64) sp48;
-        this->unk108 = (f64) sp50;
+        this->unk110 = (f64) sp50;
     }
     M2C_FIELD(&gb, s8 *, 0x381) = 1;
     return 1;
@@ -595,52 +593,52 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
 void FuryFXElectricity2::SetDefaults() {
     SetDefaults();
     this->unk90 = 0;
-    M2C_FIELD(this, f32 *, 0x11C) = -1.0f;
+    this->unk11C = -1.0f;
     this->unk94 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: type mismatch
 void FuryFXElectricity2::Deinit() {
     MKHeap *temp_r3_1010;
     ManagedLight *temp_r4_1025;
-    f32 var_r31_984;
-    f32 var_r3_985;
-    f32 var_r4_983;
-    u32 temp_r0_1007;
-    u32 temp_r0_988;
     u32 temp_r0_993;
+    void ****var_r31_984;
+    void ****var_r3_985;
+    void ****var_r4_983;
+    void ***temp_r0_1007;
+    void ***temp_r0_988;
 
-    var_r4_983 = this->unk11C;
+    var_r4_983 = this->unk124;
     var_r31_984 = var_r4_983;
     var_r3_985 = var_r4_983;
 loop_3:
     temp_r0_993 = M2C_FIELD(var_r3_985, u32 *, -4);
-    var_r3_985 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_985) - 4));
+    var_r3_985 -= 4;
     if (temp_r0_993 != 0U) {
         temp_r0_988 = *var_r3_985;
-        if (temp_r0_988 < M2C_BITWISE(u32, var_r31_984)) {
-            var_r31_984 = M2C_BITWISE(f32, temp_r0_988);
+        if (temp_r0_988 < var_r31_984) {
+            var_r31_984 = (void ****) temp_r0_988;
         }
         goto loop_3;
     }
-    if (M2C_BITWISE(u32, var_r3_985) != &gEmptyPtrListDL) {
+    if (var_r3_985 != &gEmptyPtrListDL) {
 loop_9:
         temp_r0_1007 = *var_r4_983;
-        if (temp_r0_1007 != 0U) {
-            if (temp_r0_1007 < M2C_BITWISE(u32, var_r31_984)) {
-                var_r31_984 = M2C_BITWISE(f32, temp_r0_1007);
+        if (temp_r0_1007 != NULL) {
+            if (temp_r0_1007 < var_r31_984) {
+                var_r31_984 = (void ****) temp_r0_1007;
             }
-            var_r4_983 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r4_983) + 4));
+            var_r4_983 += 4;
             goto loop_9;
         }
-        temp_r3_1010 = ((MKHeap *) (M2C_BITWISE(MKHeap *, var_r3_985)))->Current();
+        temp_r3_1010 = ((MKHeap *) var_r3_985)->Current();
         if (temp_r3_1010 != NULL) {
-            ((MKHeap *) (temp_r3_1010->Current()))->Free(M2C_BITWISE(void *, var_r31_984), NULL, 0);
+            ((MKHeap *) (temp_r3_1010->Current()))->Free(var_r31_984, NULL, 0);
         } else {
-            free(M2C_BITWISE(MKHeap *, var_r31_984));
+            free(var_r31_984);
         }
     }
-    this->unk11C = 0.0f;
+    this->unk124 = NULL;
     temp_r4_1025 = this->unkA8;
     if (temp_r4_1025 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_1025);
@@ -774,14 +772,14 @@ void FuryFXElectricity2::Update() {
     void *temp_r3_1643;
     void *temp_r3_1670;
 
-    temp_f1_1061 = M2C_FIELD(this, f32 *, 0x11C);
+    temp_f1_1061 = this->unk11C;
     if (temp_f1_1061 >= 0.0f) {
-        M2C_FIELD(this, f32 *, 0x11C) = (f32) (temp_f1_1061 + gUpdateTimeDelta);
-        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (M2C_FIELD(this, f32 *, 0x11C) <= 7.0f)) {
+        this->unk11C = temp_f1_1061 + gUpdateTimeDelta;
+        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (this->unk11C <= 7.0f)) {
             ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
         }
-        if (M2C_FIELD(this, f32 *, 0x11C) > 7.0f) {
-            M2C_FIELD(this, f32 *, 0x11C) = -1.0f;
+        if (this->unk11C > 7.0f) {
+            this->unk11C = -1.0f;
         }
     }
     UpdateLightningCages();
@@ -860,7 +858,7 @@ void FuryFXElectricity2::Update() {
         if (this->unk94 <= 0.0f) {
             this->unk90 = 3;
             this->unk94 = 2.5f;
-            M2C_FIELD(this, f32 *, 0x118) = 1.0f;
+            this->unk118 = 1.0f;
             SpawnLightningCages();
             return;
         }
@@ -881,7 +879,7 @@ void FuryFXElectricity2::Update() {
         spD8 = 1.0f;
         spE0 = -1.0f;
         spE4 = 0.0f;
-        M2C_FIELD(this, f32 *, 0x118) = (f32) ((1.5f * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0x118));
+        this->unk118 += 1.5f * gUpdateTimeDelta;
         spD0 = 1.0f;
         spD4 = 0.0f;
         sp1C0 = (f64) spE0;
@@ -1113,20 +1111,20 @@ void FuryFXElectricity2::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXElectricity2::Init() {
     MKHeap *temp_r3_1796;
     ZapPS *temp_r3_1794;
-    f32 temp_r3_1818;
-    f32 temp_r3_1824;
-    f32 var_r5_1812;
     s32 var_ctr_1816;
-    void *var_r3_1803;
+    void ****temp_r3_1818;
+    void ****temp_r3_1824;
+    void ****var_r3_1803;
+    void ****var_r5_1812;
 
     FuryFX::Init();
     this->unk90 = 0;
     this->unk94 = 0.0f;
-    M2C_FIELD(this, f32 *, 0x11C) = -1.0f;
+    this->unk11C = -1.0f;
     this->unkA8 = NULL;
     temp_r3_1794 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
     this->unkAC = temp_r3_1794;
@@ -1136,22 +1134,22 @@ void FuryFXElectricity2::Init() {
     } else {
         var_r3_1803 = malloc(0xF8);
     }
-    this->unk11C = M2C_BITWISE(f32, var_r3_1803);
-    var_r5_1812 = this->unk11C;
-    this->unk11C = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1812) + 0xA0));
+    this->unk124 = var_r3_1803;
+    var_r5_1812 = this->unk124;
+    this->unk124 = var_r5_1812 + 0xA0;
     M2C_FIELD(var_r5_1812, s32 *, 0xA0) = 0;
     var_ctr_1816 = 0x14;
     do {
-        temp_r3_1818 = this->unk11C;
-        this->unk11C = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_1818) + 4));
-        M2C_FIELD(M2C_BITWISE(void *, temp_r3_1818), f32 *, 4) = var_r5_1812;
-        var_r5_1812 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1812) + 8));
+        temp_r3_1818 = this->unk124;
+        this->unk124 = temp_r3_1818 + 4;
+        M2C_FIELD(temp_r3_1818, void *****, 4) = var_r5_1812;
+        var_r5_1812 += 8;
         var_ctr_1816 -= 1;
     } while (var_ctr_1816 != 0);
-    temp_r3_1824 = this->unk11C;
-    this->unk11C = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_1824) + 4));
-    M2C_FIELD(M2C_BITWISE(void *, temp_r3_1824), s32 *, 4) = 0;
-    this->unk120 = nanf;
+    temp_r3_1824 = this->unk124;
+    this->unk124 = temp_r3_1824 + 4;
+    M2C_FIELD(temp_r3_1824, void *****, 4) = NULL;
+    this->unk128 = -1;
 }
 #endif
 

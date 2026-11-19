@@ -7,7 +7,7 @@
 class MCLoadCheckScreen;
 class MemoryCardScreen;
 
-class MCLoadCheckScreen : public MemoryCardScreen {  // base: vtable prefix
+class MCLoadCheckScreen : public MemoryCardScreen {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual void Update(void);
@@ -15,7 +15,6 @@ public:
     virtual void OnEnter(void);
     MCLoadCheckScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0xcc];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ void** unkD4;
     /* 0x0d8 */ void** unkD8;

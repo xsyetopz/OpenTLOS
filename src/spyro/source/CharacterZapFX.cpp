@@ -108,7 +108,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'spB0'
 void CharacterZapFX::Draw() {
     f32 spCC;
     f32 spC8;
@@ -361,7 +361,7 @@ void CharacterZapFX::SpawnZap() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CharacterZapFX::Update() {
     f64 sp140;
     M2C_UNK sp10C;

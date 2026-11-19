@@ -15,7 +15,6 @@ class KDPathFollowerProperty;
 class KDPathProperty;
 class KDProperty;
 class KDPropertyClassRegistry;
-class KDPropertyCommand;
 class KDPropertySet;
 class KDRefPointProperty;
 class KDScriptProperty;
@@ -35,9 +34,6 @@ public:
     virtual void InitInstance(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ s32 unk10;
     /* 0x014 */ s8* unk14;
     /* 0x018 */ s8* unk18;
@@ -55,12 +51,6 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ void** unk14;
-    /* 0x018 */ u8 pad18[0x4];
     /* 0x01c */ u8 unk1C;
     /* 0x01d */ u8 pad1D[0x3];
     /* 0x020 */ f32 unk20;
@@ -77,11 +67,8 @@ public:
     virtual void Update(void);
     KDAnimEventProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ KDPropertyCommand unk14;
+    /* 0x01c */ void* unk1C;
+    /* 0x020 */ s8* unk20;
 };
 
 class KDAnimProperty : public KDProperty {  // base: inlined ctor vtable stores
@@ -92,8 +79,6 @@ public:
     virtual s32 ResolveCommand(const char *) const;
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ u8 pad8[0x8];
     /* 0x010 */ void* unk10;
     /* 0x014 */ MKAnim* unk14;
     /* 0x018 */ f32 unk18;
@@ -118,11 +103,8 @@ public:
     virtual void Message(MKMessage *);
     KDMessageHandlerProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ KDProperty* unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ KDPropertyCommand unk14;
+    /* 0x01c */ s32 unk1C;
+    /* 0x020 */ KDMessageHandlerProperty* unk20;
     /* 0x024 */ u8 unk24;
 };
 
@@ -142,9 +124,6 @@ public:
     void UpdateSplinePath(void);
     void UpdateNormalPath(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ u8 unk10;
     /* 0x011 */ u8 pad11[0x3];
     /* 0x014 */ KDPathProperty* unk14;
@@ -160,9 +139,6 @@ public:
     virtual void Update(void);
     KDRefPointProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
     /* 0x010 */ s8* unk10;
     /* 0x014 */ u32 unk14;
 };
@@ -182,11 +158,9 @@ inline void *KDAmbientSoundProperty::GetClassInfo() const {
     return (KDAmbientSoundProperty *) KDAmbientSoundProperty::classInfo;
 }
 
-#if 0 // DRAFT: expression syntax error
 inline void KDAnimEventProperty::Deinit() {
     this->unk10.Deinit();
 }
-#endif
 
 inline s32 KDAnimEventProperty::Query(int arg0) {
     return arg0 == 1;
@@ -196,7 +170,7 @@ inline void *KDAnimEventProperty::GetClassInfo() const {
     return (KDAnimEventProperty *) KDAnimEventProperty::classInfo;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDAnimEventProperty::KDAnimEventProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;
@@ -227,7 +201,7 @@ inline void *KDMessageHandlerProperty::GetClassInfo() const {
     return (KDMessageHandlerProperty *) KDMessageHandlerProperty::classInfo;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDMessageHandlerProperty::KDMessageHandlerProperty() {
     this->unk4 = NULL;
     this->unkC = NULL;

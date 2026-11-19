@@ -7,7 +7,7 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
@@ -20,7 +20,7 @@ void NPCGuardianGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void NPCGuardianGoal_Think::AddGoal_FollowSpawnGraph() {
     Goal<Enemy> *temp_r4_70;
     s32 temp_r4_60;
@@ -92,7 +92,6 @@ void NPCGuardianGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 NPCGuardianGoal_Think::Update() {
     s32 temp_r3_222;
 
@@ -113,7 +112,6 @@ u8 NPCGuardianGoal_Think::Update() {
     }
     return (u8) this->unk8;
 }
-#endif
 
 void NPCGuardianGoal_Think::Activate() {
     this->unk8 = 0;

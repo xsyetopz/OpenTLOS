@@ -35,13 +35,12 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void FuryFXIce2::ResetFury() {
+    IceExplosion *temp_r3_75;
     Matrix **temp_r3_60;
     Matrix **var_r6_55;
     Matrix *temp_r3_71;
     Matrix *temp_r5_63;
-    f32 temp_r3_75;
 
     SetDefaults();
     var_r6_55 = this->unk100;
@@ -59,12 +58,10 @@ loop_2:
             goto loop_2;
         }
     }
-    temp_r3_75 = this->unk110;
-    M2C_FIELD(M2C_FIELD(temp_r3_75, void **, 0x44), M2C_UNK (**)(f32), 0x34)(temp_r3_75);
+    temp_r3_75 = this->unk114;
+    temp_r3_75->Disable();
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Targetable ***' to
 void FuryFXIce2::TargetAndSpawnIceSpear() {
     Targetable ***temp_r3_104;
     Targetable ***temp_r3_117;
@@ -72,26 +69,25 @@ void FuryFXIce2::TargetAndSpawnIceSpear() {
     Targetable **temp_r3_120;
     Targetable *temp_r4_123;
 
-    this->unk10C = M2C_BITWISE(f32, this->unk10C) - gUpdateTimeDelta;
-    if (!(M2C_BITWISE(f32, this->unk10C) > 0.0f)) {
-        this->unk10C = 0.0f;
-        temp_r3_104 = this->unk108;
+    this->unk110 -= gUpdateTimeDelta;
+    if (!(this->unk110 > 0.0f)) {
+        this->unk110 = 0.0f;
+        temp_r3_104 = this->unk10C;
         if ((temp_r3_104 == NULL) || (temp_r3_107 = *temp_r3_104, ((temp_r3_107 == NULL) != 0)) || ((Targetable *) *temp_r3_107 == NULL)) {
-            this->unk108 = (Targetable ***) this->unk104;
+            this->unk10C = this->unk108;
         }
-        temp_r3_117 = this->unk108;
+        temp_r3_117 = this->unk10C;
         if ((temp_r3_117 != NULL) && (temp_r3_120 = *temp_r3_117, ((temp_r3_120 == NULL) == 0)) && (temp_r4_123 = *temp_r3_120, ((temp_r4_123 == NULL) == 0))) {
             SpawnIceSpear(temp_r4_123);
-            this->unk108 += 4;
+            this->unk10C += 4;
         } else {
             SpawnIceSpear(NULL);
         }
-        if ((Targetable ***) this->unk108 == NULL) {
+        if ((Targetable ***) this->unk10C == NULL) {
             SpawnIceSpear(NULL);
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
@@ -244,7 +240,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
                 spB8 = (f64) sp18;
                 M2C_FIELD(temp_r31_168, f64 *, 0x48) = (f64) sp18;
             }
-            ((IceExplosion *) (M2C_BITWISE(IceExplosion *, this->unk110)))->Trigger(*((MKVector3 *) &sp120), 1.0f);
+            this->unk114->Trigger(*((MKVector3 *) &sp120), 1.0f);
             KDSound_Play3d(GS_SpyroFuryIce4, (MKVector3 *) &temp_r31_168->unk30, 0U, -1, 0.0f, 0U);
         }
     }
@@ -260,8 +256,8 @@ loop_2:
     if (var_r31_408 != NULL) {
         temp_r4_420 = *var_r31_408;
         if (temp_r4_420 != NULL) {
-            MKModel_SetWorldMatrix((MKModel *) this->unk100, *temp_r4_420);
-            MKModel_Draw((MKModel *) this->unk100, NULL);
+            MKModel_SetWorldMatrix(this->unk104, *temp_r4_420);
+            MKModel_Draw(this->unk104, NULL);
             var_r31_408 += 4;
             goto loop_2;
         }
@@ -522,7 +518,7 @@ loop_56:
                         spE8 = temp_f0_815;
                         M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_820, void *(**)(void **, f64), 8)(temp_r3_820, temp_f1_814), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unkA8);
                     }
-                    ((IceExplosion *) (M2C_BITWISE(IceExplosion *, this->unk110)))->Trigger(*((MKVector3 *) &temp_r30_934->unk30), 1.0f);
+                    this->unk114->Trigger(*((MKVector3 *) &temp_r30_934->unk30), 1.0f);
                     temp_r3_840 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x2A0), void **, 0x44), void *(**)(void *), 0x3C)(M2C_FIELD(&gb, void **, 0x2A0));
                     if (temp_r3_840 != NULL) {
                         temp_r26_850 = M2C_FIELD(temp_r3_840, void **, 0x2C);
@@ -586,21 +582,21 @@ void FuryFXIce2::FindInRangeTargets(float arg0) {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    MKModel *temp_r3_1063;
-    MKModel *temp_r3_1067;
     TargetManager ***var_r29_978;
     TargetManager **temp_r30_1076;
+    Targetable ***temp_r3_1063;
+    Targetable ***temp_r3_1067;
     f64 temp_f0_1042;
     f64 temp_f1_1035;
     void *temp_r3_1034;
     void *temp_r3_985;
 
 loop_2:
-    if ((void *) this->unk104->unk0 != NULL) {
-        this->unk104 = (MKModel *) &this->unk104->unk4;
+    if ((Targetable **) M2C_FIELD(this->unk108, Targetable ***, 0) != NULL) {
+        this->unk108 += 4;
         goto loop_2;
     }
-    this->unk108 = NULL;
+    this->unk10C = NULL;
     var_r29_978 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->Begin();
 loop_14:
     if (var_r29_978 != NULL) {
@@ -618,11 +614,11 @@ loop_14:
                 sp10 = (f32) sp20 - this->unkA0;
                 sp30 = (f64) sp10;
                 if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))))) <= arg0) {
-                    temp_r3_1063 = this->unk104;
+                    temp_r3_1063 = this->unk108;
                     if ((u32) M2C_FIELD(temp_r3_1063, u32 *, -4) != 0U) {
                         temp_r3_1067 = temp_r3_1063 - 4;
-                        this->unk104 = temp_r3_1067;
-                        *temp_r3_1067->unk0 = temp_r30_1076;
+                        this->unk108 = temp_r3_1067;
+                        **temp_r3_1067 = (Targetable *) temp_r30_1076;
                     }
                 }
             }
@@ -633,9 +629,9 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: illegal type
 s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
-    f32 temp_r3_1098;
+    IceExplosion *temp_r3_1098;
     s32 temp_r0_1117;
     s32 temp_r29_1140;
     s32 temp_r3_1115;
@@ -643,8 +639,8 @@ s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
     u8 var_r3_1123;
     void *temp_r5_1119;
 
-    temp_r3_1098 = this->unk110;
-    M2C_FIELD(M2C_FIELD(temp_r3_1098, void **, 0x44), M2C_UNK (**)(f32), 0x30)(temp_r3_1098);
+    temp_r3_1098 = this->unk114;
+    temp_r3_1098->Enable();
     this->unk90 = 1;
     this->unk94 = 3.0f;
     this->unk98 = M2C_FIELD(&arg0, f64 *, 0);
@@ -664,7 +660,7 @@ s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
     temp_r29_1140 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unkA8.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), 15.0f * M2C_FIELD(&gb, f32 *, 0x37C), 3, var_r30_1133, temp_r29_1140, temp_r29_1140, 0, -1);
     FindInRangeTargets(9e6f);
-    if ((void *) this->unk104->unk0 != NULL) {
+    if ((Targetable **) *this->unk108 != NULL) {
         KDSound_Play3d(GS_SpyroFuryIce3, (MKVector3 *) &this->unk98, 0U, -1, 0.0f, 0U);
     } else {
         KDSound_Play3d(GS_SpyroFuryIce6, (MKVector3 *) &this->unk98, 0U, -1, 0.0f, 0U);
@@ -683,20 +679,20 @@ void FuryFXIce2::SetDefaults() {
 void FuryFXIce2::Deinit() {
     MKHeap *temp_r3_1252;
     MKHeap *temp_r3_1294;
-    MKModel *var_r30_1268;
-    MKModel *var_r3_1269;
-    MKModel *var_r4_1267;
     Matrix **var_r30_1226;
     Matrix **var_r3_1227;
     Matrix **var_r4_1225;
     Matrix *temp_r0_1230;
     Matrix *temp_r0_1249;
+    Targetable ***var_r30_1268;
+    Targetable ***var_r3_1269;
+    Targetable ***var_r4_1267;
+    Targetable **temp_r0_1272;
+    Targetable **temp_r0_1291;
     u32 temp_r0_1235;
     u32 temp_r0_1277;
-    void *temp_r0_1272;
-    void *temp_r0_1291;
 
-    MKModel_Destroy((MKModel *) this->unk100);
+    MKModel_Destroy(this->unk104);
     var_r4_1225 = this->unk100;
     var_r30_1226 = var_r4_1225;
     var_r3_1227 = var_r4_1225;
@@ -728,25 +724,25 @@ loop_9:
         }
     }
     this->unk100 = NULL;
-    var_r4_1267 = this->unk104;
+    var_r4_1267 = this->unk108;
     var_r30_1268 = var_r4_1267;
     var_r3_1269 = var_r4_1267;
 loop_16:
     temp_r0_1277 = M2C_FIELD(var_r3_1269, u32 *, -4);
     var_r3_1269 -= 4;
     if (temp_r0_1277 != 0U) {
-        temp_r0_1272 = var_r3_1269->unk0;
+        temp_r0_1272 = *var_r3_1269;
         if (temp_r0_1272 < var_r30_1268) {
-            var_r30_1268 = (MKModel *) temp_r0_1272;
+            var_r30_1268 = (Targetable ***) temp_r0_1272;
         }
         goto loop_16;
     }
     if (var_r3_1269 != &gEmptyPtrListDL) {
 loop_22:
-        temp_r0_1291 = var_r4_1267->unk0;
+        temp_r0_1291 = *var_r4_1267;
         if (temp_r0_1291 != NULL) {
             if (temp_r0_1291 < var_r30_1268) {
-                var_r30_1268 = (MKModel *) temp_r0_1291;
+                var_r30_1268 = (Targetable ***) temp_r0_1291;
             }
             var_r4_1267 += 4;
             goto loop_22;
@@ -758,7 +754,7 @@ loop_22:
             free((Matrix **) var_r30_1268);
         }
     }
-    this->unk104 = NULL;
+    this->unk108 = NULL;
     FuryFX::Deinit();
 }
 #endif
@@ -946,27 +942,27 @@ void FuryFXIce2::Resolve() {
     FuryFX::Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce2::Init() {
     MKHeap *temp_r3_1592;
     MKHeap *temp_r3_1625;
-    MKModel *temp_r3_1647;
-    MKModel *temp_r4_1653;
-    MKModel *var_r5_1641;
-    Matrix **temp_r3_1590;
+    MKModel *temp_r3_1590;
     Matrix **temp_r3_1614;
     Matrix **temp_r3_1620;
     Matrix **temp_r3_1622;
     Matrix **var_r3_1599;
     Matrix **var_r3_1632;
     Matrix **var_r5_1608;
+    Targetable ***temp_r3_1647;
+    Targetable ***temp_r4_1653;
+    Targetable ***var_r5_1641;
     s32 var_ctr_1612;
     s32 var_ctr_1645;
 
     FuryFX::Init();
     SetDefaults();
     temp_r3_1590 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
-    this->unk100 = temp_r3_1590;
+    this->unk104 = temp_r3_1590;
     temp_r3_1592 = ((MKHeap *) temp_r3_1590)->Current();
     if (temp_r3_1592 != NULL) {
         var_r3_1599 = ((MKHeap *) (temp_r3_1592->Current()))->Alloc(0x4E28, NULL, 0);
@@ -995,21 +991,21 @@ void FuryFXIce2::Init() {
     } else {
         var_r3_1632 = malloc(0xA8);
     }
-    this->unk104 = (MKModel *) var_r3_1632;
-    var_r5_1641 = this->unk104;
-    this->unk104 = (MKModel *) &var_r5_1641->unk50;
+    this->unk108 = (Targetable ***) var_r3_1632;
+    var_r5_1641 = this->unk108;
+    this->unk108 = var_r5_1641 + 0x50;
     M2C_FIELD(var_r5_1641, s32 *, 0x50) = 0;
     var_ctr_1645 = 0x14;
     do {
-        temp_r3_1647 = this->unk104;
-        this->unk104 = (MKModel *) &temp_r3_1647->unk4;
-        M2C_FIELD(temp_r3_1647, MKModel **, 4) = var_r5_1641;
+        temp_r3_1647 = this->unk108;
+        this->unk108 = temp_r3_1647 + 4;
+        M2C_FIELD(temp_r3_1647, Targetable ****, 4) = var_r5_1641;
         var_r5_1641 += 4;
         var_ctr_1645 -= 1;
     } while (var_ctr_1645 != 0);
-    temp_r4_1653 = this->unk104;
-    this->unk104 = (MKModel *) &temp_r4_1653->unk4;
-    M2C_FIELD(temp_r4_1653, MKModel **, 4) = NULL;
-    this->unk110 = M2C_BITWISE(f32, checked_cast<IceExplosion *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceExplosion")));
+    temp_r4_1653 = this->unk108;
+    this->unk108 = temp_r4_1653 + 4;
+    M2C_FIELD(temp_r4_1653, Targetable ****, 4) = NULL;
+    this->unk114 = checked_cast<IceExplosion *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceExplosion"));
 }
 #endif

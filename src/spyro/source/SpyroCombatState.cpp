@@ -12,7 +12,6 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroTools.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -79,8 +78,8 @@ void SpyroCombatState::CometDashUpdate() {
     sp20 = -M2C_FIELD(temp_r4_72, f32 *, 0x28);
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    if (((CombatStateData *) &temp_r3_71->unk430.unk28)->GetHitTarget() == 0) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->GetTargetDir((MKVector3 *) &sp38);
+    if (temp_r3_71->unk460.GetHitTarget() == 0) {
+        this->unk10->unk460.GetTargetDir((MKVector3 *) &sp38);
     }
     temp_f0_97 = sp38 * 5.7204941e-315;
     sp8 = temp_f0_97;
@@ -147,8 +146,8 @@ void SpyroCombatState::CometDashEnter() {
     this->unk38 = M2C_FIELD(&gb, f32 *, 0x30C) + 1.0f;
     this->unk2F = 0;
     this->unk28 = 6;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(5);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(8);
+    this->unk10->unk460.SetCombatArc(5);
+    this->unk10->unk460.SetHitType(8);
     this->unk10->SetAnim(9U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_178 = this->unk10->GetCamera();
     sp10 = 0;
@@ -219,11 +218,11 @@ void SpyroCombatState::CometDashEnter() {
         sp30 = (f32) sp70 * var_f4_230;
         sp98 = (f64) sp28;
         spA0 = (f64) sp30;
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(1U, *((MKVector3 *) &sp98));
+        this->unk10->unk460.SetTargetDir(1U, *((MKVector3 *) &sp98));
     } else {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
+        this->unk10->unk460.SetTargetDir(0U, MKVector3::zero);
     }
-    this->unk10->StartCombatArc(((CombatStateData *) &this->unk10->unk430.unk28)->GetCombatArc());
+    this->unk10->StartCombatArc(this->unk10->unk460.GetCombatArc());
     this->unk32 = 1;
 }
 #endif
@@ -256,7 +255,7 @@ u8 SpyroCombatState::ChargeKnockdownTransition() {
     if (this->unk10->OnFloor() == 0) {
         temp_r3_388 = this->unk10;
         var_r4_389 = 1;
-        if ((u8) M2C_FIELD(temp_r3_388, u8 *, 0x2F0) != 0) {
+        if ((u8) temp_r3_388->unk2F0 != 0) {
             temp_r5_393 = temp_r3_388->unk8;
             sp8 = M2C_FIELD(temp_r5_393, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r5_393, f64 *, 0x38);
@@ -273,7 +272,7 @@ block_6:
     var_r31_416 = 1;
     temp_r3_417 = this->unk10;
     var_r4_418 = 0;
-    if (((u8) this->unk2E != 0) && ((s32) M2C_FIELD(temp_r3_417->unk26C.unk8, s32 *, 0x16C) > 0)) {
+    if (((u8) this->unk2E != 0) && ((s32) M2C_FIELD(temp_r3_417->unk27C, s32 *, 0x16C) > 0)) {
         var_r4_418 = 1;
     }
     if ((temp_r3_417->TryChangeState(var_r4_418, 4U, (MKMessage *) &sp18, 0U) == 0) && (this->unk10->TryChangeState(this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1, 4U, NULL, 0U) == 0)) {
@@ -382,24 +381,24 @@ void SpyroCombatState::ChargeKnockdownEnter() {
 
     this->unk2E = 0;
     this->unk28 = 5;
-    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetChargeTime() > 0.5f) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(8);
+    if (this->unk10->unk460.GetChargeTime() > 0.5f) {
+        this->unk10->unk460.SetHitType(8);
     } else {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(1);
+        this->unk10->unk460.SetHitType(1);
     }
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(1);
+    this->unk10->unk460.SetCombatArc(1);
     temp_r3_564 = this->unk10;
-    temp_r3_564->unk420 = (void *) ((s32) temp_r3_564->unk420 | 1);
+    temp_r3_564->unk428 |= 1;
     this->unk10->SetAnim(0x21U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r4_575 = this->unk10;
 loop_5:
-    if ((u32) *temp_r4_575->unk6F0 != 0U) {
+    if ((u32) *temp_r4_575->unk6F0 != 0) {
         temp_r4_575->unk6F0 += 4;
         goto loop_5;
     }
     SetTargetDirection();
-    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetChargeHitProp() != NULL) {
-        temp_r3_595 = ((CombatStateData *) &this->unk10->unk430.unk28)->GetChargeHitProp();
+    if (this->unk10->unk460.GetChargeHitProp() != NULL) {
+        temp_r3_595 = this->unk10->unk460.GetChargeHitProp();
         if (temp_r3_595 != NULL) {
             sp188.unk4 = 0;
             this->unk10->SetupMeleeAttackHitMsg(this->unk28, &sp188);
@@ -470,12 +469,12 @@ loop_5:
                 sp128.unk28 = (f64) sp30;
                 sp78 = (f64) sp18;
                 sp80 = (f64) sp20;
-                temp_r28_755 = M2C_FIELD(temp_r4_682->unk258, void **, 4);
+                temp_r28_755 = M2C_FIELD(temp_r4_682->unk260, void **, 4);
                 ((HitFX *) (M2C_FIELD(temp_r28_755, HitFX **, 0x10)))->Trigger(*((MKVector3 *) &sp128.unk20), *((MKVector3 *) &sp78), *((GameStats *) &GameData::gameData[0x70])->GetCurrentBreathColor(), temp_r29_745);
-                ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
-                ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastCombatEnemy(temp_r3_595);
-                ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitTarget(1U);
-                this->unk10->unk3CD = 1;
+                this->unk10->unk460.SetTargetDir(0U, MKVector3::zero);
+                this->unk10->unk460.SetLastCombatEnemy(temp_r3_595);
+                this->unk10->unk460.SetHitTarget(1U);
+                this->unk10->unk3D5 = 1;
             }
         }
     }
@@ -513,7 +512,7 @@ s32 SpyroCombatState::KnockupTransition() {
     if (this->unk10->TryChangeState(var_r28_800, 0xCU, NULL, 0U) == 0) {
         var_r4_835 = 0;
         temp_r3_836 = this->unk10;
-        if (((u8) this->unk2E != 0) && ((s32) M2C_FIELD(temp_r3_836->unk26C.unk8, s32 *, 0x16C) > 0)) {
+        if (((u8) this->unk2E != 0) && ((s32) M2C_FIELD(temp_r3_836->unk27C, s32 *, 0x16C) > 0)) {
             var_r4_835 = 1;
         }
         if (temp_r3_836->TryChangeState(var_r4_835, 4U, (MKMessage *) &sp8, 0U) != 0) {
@@ -560,15 +559,15 @@ void SpyroCombatState::KnockupUpdate() {
 void SpyroCombatState::KnockupExit() {
     Enemy *var_r3_945;
 
-    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+    this->unk10->unk460.GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+        this->unk10->unk460.GetLastCombatEnemy();
         var_r3_945 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)();
     } else {
         var_r3_945 = NULL;
     }
     if ((var_r3_945 != NULL) && (var_r3_945->IsKnockedUp() != 0)) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetKnockupTime(M2C_FIELD(&gb, f32 *, 0x30C));
+        this->unk10->unk460.SetKnockupTime(M2C_FIELD(&gb, f32 *, 0x30C));
     }
 }
 #endif
@@ -591,11 +590,11 @@ void SpyroCombatState::KnockupEnter() {
     this->unk2F = 0;
     this->unk28 = 3;
     temp_r3_989 = this->unk10;
-    temp_r3_989->unk420 = (void *) ((s32) temp_r3_989->unk420 | 1);
+    temp_r3_989->unk428 |= 1;
     temp_r3_993 = this->unk10;
-    temp_r3_993->unk420 = (void *) ((s32) temp_r3_993->unk420 | 0x30);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(2);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0);
+    temp_r3_993->unk428 |= 0x30;
+    this->unk10->unk460.SetHitType(2);
+    this->unk10->unk460.SetCombatArc(0);
     this->unk10->SetAnim(0x20U, 0.2f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
     sp10 = 2.0f;
     sp8 = 2.0f;
@@ -639,7 +638,7 @@ u8 SpyroCombatState::CombatTransition() {
     if (this->unk10->OnFloor() == 0) {
         temp_r3_1056 = this->unk10;
         var_r4_1057 = 1;
-        if ((u8) M2C_FIELD(temp_r3_1056, u8 *, 0x2F0) != 0) {
+        if ((u8) temp_r3_1056->unk2F0 != 0) {
             temp_r5_1061 = temp_r3_1056->unk8;
             sp8 = M2C_FIELD(temp_r5_1061, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r5_1061, f64 *, 0x38);
@@ -659,7 +658,7 @@ block_6:
         temp_r0_1093 = (temp_r3_1090 << 0x1E) - temp_r3_1092;
         this->unk28 = ((temp_r0_1093 << 2) | (temp_r0_1093 >> 0x1EU)) + temp_r3_1092;
         if ((s32) this->unk28 == 3) {
-            if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
+            if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (this->unk10->unk460.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk460.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk460.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
                 this->unk30 = 1;
             } else {
                 this->unk28 = 0;
@@ -674,7 +673,7 @@ block_6:
         var_r3_1136 = ((u8) GameData::gameData[0x168] >> 5U) & 1;
     }
     if (var_r3_1136 != 0) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+        this->unk10->unk460.GetLastCombatEnemy();
         var_r3_1136 = M2C_ERROR(/* Read from unset register $r3 */) != 0;
     }
     if (var_r3_1136 != 0) {
@@ -698,7 +697,7 @@ block_6:
     if (var_r3_1164 == 0) {
         var_r4_1190 = this->unk2E;
         if (var_r4_1190 != 0) {
-            var_r4_1190 = M2C_FIELD(this->unk10->unk26C.unk8, s32 *, 0x16C) > 0;
+            var_r4_1190 = M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0;
         }
         var_r3_1164 = this->unk10->TryChangeState(var_r4_1190, 4U, (MKMessage *) &sp18, 0U);
     }
@@ -710,7 +709,7 @@ block_6:
 #endif
 
 void SpyroCombatState::CombatUpdate() {
-    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetTargetDir(NULL) == 0) {
+    if (this->unk10->unk460.GetTargetDir(NULL) == 0) {
         this->unk10->SetLVEScale(MKVector3::one);
     }
     CombatTransition();
@@ -722,7 +721,7 @@ void SpyroCombatState::CombatExit() {
 
     this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk38 = 1.0f;
     temp_r4_1269 = this->unk10;
-    temp_r4_1269->unk420 = (void *) ((s32) temp_r4_1269->unk420 & 0xFFFFFFCF);
+    temp_r4_1269->unk428 &= 0xFFFFFFCF;
     this->unk2C = 0;
     this->unk2E = 0;
 }
@@ -810,10 +809,10 @@ void SpyroCombatState::CombatEnter() {
     sp38 = (f64) sp28;
     this->unk10->SetLVEScale(*((MKVector3 *) &sp38));
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = (s32) this->unk28;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(GetCombatHitType());
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(this->unk28 + 2);
+    this->unk10->unk460.SetHitType(GetCombatHitType());
+    this->unk10->unk460.SetCombatArc(this->unk28 + 2);
     temp_r3_1429 = this->unk10;
-    temp_r3_1429->unk420 = (void *) ((s32) temp_r3_1429->unk420 | 0x30);
+    temp_r3_1429->unk428 |= 0x30;
     temp_r4_1436 = this->unk28 + 0x1D;
     if ((u8) this->unk2C != 0) {
         this->unk10->SetAnim(temp_r4_1436, 0.2f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -825,7 +824,6 @@ void SpyroCombatState::CombatEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 s32 SpyroCombatState::GetCombatHitType() {
     if (this->unk14.GetState() == 0) {
         if ((s32) this->unk28 != 2) {
@@ -835,24 +833,23 @@ s32 SpyroCombatState::GetCombatHitType() {
     }
     return 2;
 }
-#endif
 
 void SpyroCombatState::SetTargetDirection() {
     MKVector3 sp18;
     MKVector3 sp8;
 
     if (this->unk10->ChooseCombatTarget(&sp18, &sp8) != 0) {
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(1U, sp8);
+        this->unk10->unk460.SetTargetDir(1U, sp8);
         return;
     }
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
+    this->unk10->unk460.SetTargetDir(0U, MKVector3::zero);
 }
 
 void SpyroCombatState::ProcessAnimEvent(unsigned int arg0) {
     if ((s32) arg0 != 0x15) {
         return;
     }
-    this->unk10->StartCombatArc(((CombatStateData *) &this->unk10->unk430.unk28)->GetCombatArc());
+    this->unk10->StartCombatArc(this->unk10->unk460.GetCombatArc());
     this->unk32 = 0;
 }
 
@@ -906,7 +903,7 @@ void SpyroCombatState::Update() {
     void *temp_r4_1716;
 
     var_r30_1607 = 0;
-    M2C_FIELD(this->unk10->unk26C.unk8, f32 *, 0x47C) = 50.0f;
+    M2C_FIELD(this->unk10->unk27C, f32 *, 0x47C) = 50.0f;
     temp_r3_1612 = this->unk10->GetMeleeButtonState();
     if (((u8) this->unk2F == 0) && ((u8) this->unk30 == 0) && (temp_r3_1612 != 0)) {
         var_r30_1607 = 1;
@@ -929,7 +926,7 @@ void SpyroCombatState::Update() {
     this->unk2E = var_r30_1653;
     sp70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetTargetDir((MKVector3 *) &sp70) != 0) {
+    if (this->unk10->unk460.GetTargetDir((MKVector3 *) &sp70) != 0) {
         if ((u8) this->unk32 == 0) {
             var_f1_1692 = *(this->unk10 + (((this->unk28 + 2) << 5) + 0x4E8)) - M2C_FIELD(&gb, f32 *, 0x30C);
             if (var_f1_1692 > 0.0f) {
@@ -943,16 +940,16 @@ void SpyroCombatState::Update() {
             goto block_19;
         }
 block_18:
-        ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp70), 12.0f);
+        this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp70), 12.0f);
     } else {
 block_19:
-        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+        this->unk10->unk460.GetLastCombatEnemy();
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             temp_r3_1715 = this->unk10;
             temp_r4_1716 = temp_r3_1715->unk8;
             sp30 = M2C_FIELD(temp_r4_1716, f64 *, 0x30);
             sp38 = M2C_FIELD(temp_r4_1716, f64 *, 0x38);
-            ((CombatStateData *) &temp_r3_1715->unk430.unk28)->GetLastCombatEnemy();
+            temp_r3_1715->unk460.GetLastCombatEnemy();
             temp_r3_1727 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
             temp_f1_1728 = M2C_FIELD(temp_r3_1727, f64 *, 0x30);
             sp40 = temp_f1_1728;
@@ -1005,29 +1002,27 @@ block_19:
             sp18 = (f32) sp58 * var_f4_1818;
             sp60 = (f64) sp10;
             sp68 = (f64) sp18;
-            ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp60), 12.0f);
+            this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp60), 12.0f);
         }
     }
     this->unk14.Update(this, 0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroCombatState::Exit() {
     Spyro *temp_r3_1863;
     Spyro *temp_r3_1867;
 
     this->unk10->SetLVEScale(MKVector3::one);
     temp_r3_1863 = this->unk10;
-    temp_r3_1863->unk420 = (void *) ((s32) temp_r3_1863->unk420 & 0xFFFF7FFF);
+    temp_r3_1863->unk428 &= 0xFFFF7FFF;
     temp_r3_1867 = this->unk10;
-    temp_r3_1867->unk420 = (void *) ((s32) temp_r3_1867->unk420 | 1);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
+    temp_r3_1867->unk428 |= 1;
+    this->unk10->unk460.SetDefaults();
     this->unk34 = M2C_FIELD(&gb, f32 *, 0x30C);
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
@@ -1052,17 +1047,17 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
     temp_r30_1906 = this->unk10->GetMeleeButtonState() == 2;
     this->unk10->ClearMeleeButtonState();
     temp_r5_1908 = this->unk10;
-    temp_r5_1908->unk420 = (void *) ((s32) temp_r5_1908->unk420 | 0x8000);
+    temp_r5_1908->unk428 |= 0x8000;
     temp_r3_1915 = this->unk10;
-    temp_r3_1915->unk420 = (void *) ((s32) temp_r3_1915->unk420 & 0xFFFFFFFE);
+    temp_r3_1915->unk428 &= 0xFFFFFFFE;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r4_1923 = this->unk10;
     M2C_FIELD(temp_r4_1923, f64 *, 0x338) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(temp_r4_1923, f64 *, 0x340) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
+    this->unk10->unk460.SetDefaults();
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastCombatEnemy(NULL);
-    M2C_FIELD(this->unk10->unk26C.unk8, f32 *, 0x47C) = 50.0f;
+    this->unk10->unk460.SetLastCombatEnemy(NULL);
+    M2C_FIELD(this->unk10->unk27C, f32 *, 0x47C) = 50.0f;
     var_r26_1947 = arg0.IsMessageOnList(0x17F);
     var_r29_1952 = arg0.IsMessageOnList(0x17E);
     temp_r27_1956 = arg0.IsMessageOnList(0x181);
@@ -1073,7 +1068,7 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
     SetTargetDirection();
     this->unk2C = 0;
     if (((u8) var_r26_1947 != 0) || ((u8) var_r29_1952 != 0)) {
-        if (((u8) var_r29_1952 != 0) && (temp_r30_1906 == 0) && ((((CombatStateData *) &this->unk10->unk430.unk28)->GetChargeHitProp() == NULL) || !(M2C_FIELD(((CombatStateData *) &this->unk10->unk430.unk28)->GetChargeHitProp()->unk0, s32 *, 0xC) & 8))) {
+        if (((u8) var_r29_1952 != 0) && (temp_r30_1906 == 0) && ((this->unk10->unk460.GetChargeHitProp() == NULL) || !(M2C_FIELD(this->unk10->unk460.GetChargeHitProp()->unk0, s32 *, 0xC) & 8))) {
             var_r29_1952 = 0;
         }
         var_r5_1994 = 2;
@@ -1087,7 +1082,7 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
         this->unk14.SetState(this, 3, 1U);
     } else {
         var_r29_2018 = 0;
-        ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeHitProp(NULL);
+        this->unk10->unk460.SetChargeHitProp(NULL);
         temp_f2_2022 = this->unk34;
         if ((temp_f2_2022 != 0.0f) && ((M2C_FIELD(&gb, f32 *, 0x30C) - temp_f2_2022) < 0.5f) && ((s32) this->unk28 < 4)) {
             this->unk2C = 1;
@@ -1096,7 +1091,7 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
             temp_r0_2042 = (temp_r3_2039 << 0x1E) - temp_r3_2041;
             this->unk28 = ((temp_r0_2042 << 2) | (temp_r0_2042 >> 0x1EU)) + temp_r3_2041;
             if ((s32) this->unk28 == 3) {
-                if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
+                if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (this->unk10->unk460.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk460.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk460.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
                     var_r29_2018 = 1;
                 } else {
                     this->unk28 = 0;
@@ -1115,11 +1110,9 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroCombatState::Deinit() {
     this->unk14.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroCombatState::Init(Spyro *arg0) {
@@ -1134,7 +1127,7 @@ void SpyroCombatState::Init(Spyro *arg0) {
     this->unk31 = 0;
     this->unk32 = 0;
     this->unk34 = 0.0f;
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeHitProp(NULL);
+    this->unk10->unk460.SetChargeHitProp(NULL);
 }
 #endif
 

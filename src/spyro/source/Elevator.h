@@ -11,7 +11,7 @@ class MKIniLine;
 class MKMessage;
 class Matrix;
 
-class Elevator : public GameProp {  // base: vtable prefix
+class Elevator : public GameProp {  // base: base ctor call
 public:
     virtual ~Elevator(void);
     virtual void Init(void);
@@ -27,7 +27,6 @@ public:
     void ShudderState(void);
     void GoingDownState(void);
     void GoingUpState(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ u8 padD8[0x8];

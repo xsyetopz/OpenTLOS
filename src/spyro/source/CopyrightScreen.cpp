@@ -12,29 +12,29 @@ s32 stricmp(void *, u32);                           /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'UISystem *' to
 void CopyrightScreen::Update() {
     s32 sp8;
+    KDMemoryCard *temp_r3_129;
+    KDMemoryCard *temp_r3_141;
+    KDMemoryCard *temp_r3_157;
+    KDMemoryCard *temp_r3_179;
+    KDMemoryCard *temp_r3_199;
     f32 temp_f0_109;
     f32 temp_f0_40;
-    f32 temp_r3_129;
     s32 temp_r0_115;
     s32 temp_r0_21;
     s32 temp_r0_257;
-    s32 temp_r3_141;
-    s32 temp_r3_157;
-    s32 temp_r3_179;
-    s32 temp_r3_199;
     s32 temp_ret_123;
     u8 temp_r4_158;
     void **temp_r3_86;
 
     UIScreen::Update();
-    temp_r0_21 = this->unkBC.unk4;
+    temp_r0_21 = this->unkC8;
     switch (temp_r0_21) {                           /* switch 1; irregular */
     case 0:                                         /* switch 1 */
-        this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + (gUpdateTimeDelta / 0.25f);
-        temp_f0_40 = M2C_BITWISE(f32, this->unkBC.unk8);
+        this->unkCC += gUpdateTimeDelta / 0.25f;
+        temp_f0_40 = this->unkCC;
         if (temp_f0_40 < 1.0f) {
             this->unk18.unk0 = temp_f0_40;
             this->unk18.unk4 = temp_f0_40;
@@ -45,80 +45,80 @@ void CopyrightScreen::Update() {
             this->unk18.unk4 = 1.0f;
             M2C_FIELD(this, f32 *, 0x20) = 1.0f;
             M2C_FIELD(this, f32 *, 0x24) = 1.0f;
-            this->unkBC.unk4 = 1;
-            this->unkBC.unk8 = 0.0f;
+            this->unkC8 = 1;
+            this->unkCC = 0.0f;
         }
         break;
     case 1:                                         /* switch 1 */
-        this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + (gUpdateTimeDelta / 4.5f);
-        if ((M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
-            this->unkBC.unk4 = 2;
-            this->unkBC.unk8 = 0.0f;
+        this->unkCC += gUpdateTimeDelta / 4.5f;
+        if ((this->unkCC >= 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
+            this->unkC8 = 2;
+            this->unkCC = 0.0f;
         }
         break;
     case 2:                                         /* switch 1 */
-        if (M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) {
+        if (this->unkCC >= 1.0f) {
             temp_r3_86 = ui_cast<UISystem *, UIContainer *>(GetRoot());
             sp8 = 0xF;
             M2C_FIELD(*temp_r3_86, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
-        this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + (gUpdateTimeDelta / 0.25f);
-        if (M2C_BITWISE(f32, this->unkBC.unk8) > 1.0f) {
-            this->unkBC.unk8 = 1.0f;
+        this->unkCC += gUpdateTimeDelta / 0.25f;
+        if (this->unkCC > 1.0f) {
+            this->unkCC = 1.0f;
         }
-        temp_f0_109 = 1.0f - M2C_BITWISE(f32, this->unkBC.unk8);
+        temp_f0_109 = 1.0f - this->unkCC;
         this->unk18.unk0 = temp_f0_109;
         this->unk18.unk4 = temp_f0_109;
         M2C_FIELD(this, f32 *, 0x20) = temp_f0_109;
         M2C_FIELD(this, f32 *, 0x24) = 1.0f;
         break;
     }
-    temp_r0_115 = this->unkC8;
+    temp_r0_115 = this->unkD0;
     switch (temp_r0_115) {                          /* switch 2; irregular */
     case 1:                                         /* switch 2 */
         temp_ret_123 = ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update();
         if (temp_ret_123 == 0) {
-            this->unkCC = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkCC) + 1));
-            temp_r3_129 = this->unkCC;
-            if (M2C_BITWISE(s32, temp_r3_129) < 2) {
-                this->unkD0 = ((KDMemoryCard *) (M2C_BITWISE(KDMemoryCard *, temp_r3_129)))->GetCard((s32) (u32) (u64) temp_ret_123);
-                ((KDMemoryCard *) this->unkD0)->SetState((KDMCState) 2);
+            this->unkD4 += 1;
+            temp_r3_129 = this->unkD4;
+            if (temp_r3_129 < 2) {
+                this->unkD8 = temp_r3_129->GetCard((s32) (u32) (u64) temp_ret_123);
+                this->unkD8->SetState((KDMCState) 2);
             } else {
-                this->unkD0 = ((KDMemoryCard *) (M2C_BITWISE(KDMemoryCard *, temp_r3_129)))->GetFirstAvailable();
-                temp_r3_141 = this->unkD0;
-                if ((u32) temp_r3_141 != 0U) {
-                    ((KDMemoryCard *) temp_r3_141)->SetState((KDMCState) 3);
-                    this->unkC8 = 2;
+                this->unkD8 = temp_r3_129->GetFirstAvailable();
+                temp_r3_141 = this->unkD8;
+                if (temp_r3_141 != NULL) {
+                    temp_r3_141->SetState((KDMCState) 3);
+                    this->unkD0 = 2;
                 } else {
-                    this->unkC8 = 0;
+                    this->unkD0 = 0;
                 }
             }
         }
         break;
     case 2:                                         /* switch 2 */
         if (((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update() == 0) {
-            temp_r3_157 = this->unkD0;
-            temp_r4_158 = M2C_FIELD(temp_r3_157, u8 *, 9);
-            if ((temp_r4_158 != 0) && ((u8) M2C_FIELD(temp_r3_157, u8 *, 8) != 0)) {
-                ((KDMemoryCard *) temp_r3_157)->SetState((KDMCState) 3);
-            } else if ((temp_r4_158 == 0) || (((s32) M2C_FIELD(temp_r3_157, s32 *, 0x1C) != 0) && ((s32) M2C_FIELD(temp_r3_157, s32 *, 0x20) == 0))) {
-                this->unkD0 = ((KDMemoryCard *) temp_r3_157)->GetNextAvailable((KDMemoryCard *) temp_r4_158);
-                temp_r3_179 = this->unkD0;
-                if ((u32) temp_r3_179 != 0U) {
-                    ((KDMemoryCard *) temp_r3_179)->SetState((KDMCState) 3);
+            temp_r3_157 = this->unkD8;
+            temp_r4_158 = temp_r3_157->unk9;
+            if ((temp_r4_158 != 0) && ((u8) temp_r3_157->unk8 != 0)) {
+                temp_r3_157->SetState((KDMCState) 3);
+            } else if ((temp_r4_158 == 0) || (((s32) temp_r3_157->unk1C != 0) && ((s32) temp_r3_157->unk20 == 0))) {
+                this->unkD8 = temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158);
+                temp_r3_179 = this->unkD8;
+                if (temp_r3_179 != NULL) {
+                    temp_r3_179->SetState((KDMCState) 3);
                 }
-            } else if ((s32) M2C_FIELD(temp_r3_157, s32 *, 0x24) != 0) {
+            } else if ((s32) temp_r3_157->unk24 != 0) {
                 M2C_FIELD(&gb, s8 *, 0x382) = 1;
-                this->unkD0 = 0;
+                this->unkD8 = NULL;
             } else {
-                this->unkD0 = ((KDMemoryCard *) temp_r3_157)->GetNextAvailable((KDMemoryCard *) temp_r4_158);
-                temp_r3_199 = this->unkD0;
-                if ((u32) temp_r3_199 != 0U) {
-                    ((KDMemoryCard *) temp_r3_199)->SetState((KDMCState) 3);
+                this->unkD8 = temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158);
+                temp_r3_199 = this->unkD8;
+                if (temp_r3_199 != NULL) {
+                    temp_r3_199->SetState((KDMCState) 3);
                 }
             }
-            if ((u32) this->unkD0 == 0U) {
-                this->unkC8 = 0;
+            if ((KDMemoryCard *) this->unkD8 == NULL) {
+                this->unkD0 = 0;
             }
         }
         break;
@@ -131,34 +131,34 @@ void CopyrightScreen::Update() {
         this->unk18.unk30 += gUpdateTimeDelta / 150.0f;
     }
     if (((stricmp("Developer", this->unk4) == 0) || (stricmp("VideoMaker", this->unk4) == 0)) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) > 0.0f)) {
-        temp_r0_257 = this->unkBC.unk4;
+        temp_r0_257 = this->unkC8;
         switch (temp_r0_257) {                      /* switch 3; irregular */
         case 0:                                     /* switch 3 */
-            this->unkBC.unk4 = 2;
+            this->unkC8 = 2;
             return;
         case 1:                                     /* switch 3 */
-            this->unkBC.unk8 = 1.0f;
+            this->unkCC = 1.0f;
             break;
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CopyrightScreen::OnEnter() {
     UIScreen::OnEnter();
-    this->unkBC.unk4 = 0;
-    this->unkBC.unk8 = 0.0f;
+    this->unkC8 = 0;
+    this->unkCC = 0.0f;
     this->unk18.unk0 = 0.0f;
     this->unk18.unk4 = 0.0f;
     M2C_FIELD(this, f32 *, 0x20) = 0.0f;
     M2C_FIELD(this, f32 *, 0x24) = 1.0f;
     this->unk18.unk40 |= 1;
     if ((u8) *CopyrightScreen::bMemoryCardCheckDone == 0) {
-        this->unkC8 = 1;
-        this->unkCC = 0.0f;
-        this->unkD0 = ((KDMemoryCard *) (M2C_BITWISE(KDMemoryCard *, this->unkCC)))->GetCard(M2C_ERROR(/* Read from unset register $r4 */));
-        ((KDMemoryCard *) this->unkD0)->SetState((KDMCState) 2);
+        this->unkD0 = 1;
+        this->unkD4 = NULL;
+        this->unkD8 = this->unkD4->GetCard(M2C_ERROR(/* Read from unset register $r4 */));
+        this->unkD8->SetState((KDMCState) 2);
     }
 }
 #endif

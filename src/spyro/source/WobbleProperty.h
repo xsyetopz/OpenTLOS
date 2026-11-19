@@ -25,9 +25,6 @@ public:
     virtual void Command(int);
     WobbleProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ f32 unk18;

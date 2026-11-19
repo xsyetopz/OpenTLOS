@@ -1,6 +1,5 @@
 #include "spyro/source/ConvexTier2Goals.h"
 #include "common/Source/MKHeap.h"
-#include "common/Source/MKVector3.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -8,7 +7,6 @@
 #include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/SB2.h"
-#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
@@ -17,18 +15,18 @@ void *malloc(M2C_UNK);                              /* extern */
 
 void ConvexTier2Goal_FlyIdle::Terminate() {
     Character *temp_r3_25;
-    void *temp_r3_21;
+    SB2 *temp_r3_21;
 
     this->unk8 = 1;
-    temp_r3_21 = this->unkC->unk638;
-    M2C_FIELD(temp_r3_21, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_21, u8 *, 0x464) & ~0x80);
+    temp_r3_21 = this->unkC->unk640;
+    temp_r3_21->unk464 &= ~0x80;
     temp_r3_25 = this->unkC;
-    temp_r3_25->unk588.unkC = 0.0f;
     temp_r3_25->unk598 = 0.0f;
     temp_r3_25->unk59C = 0.0f;
-    ((SB2 *) this->unkC->unk638)->WanderOff();
-    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
-    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
+    temp_r3_25->unk5A0 = 0.0f;
+    this->unkC->unk640->WanderOff();
+    this->unkC->unk640->ObstacleAvoidanceOff();
+    this->unkC->unk640->WallAvoidanceOff();
 }
 
 u8 ConvexTier2Goal_FlyIdle::Update() {
@@ -40,7 +38,7 @@ u8 ConvexTier2Goal_FlyIdle::Update() {
 void ConvexTier2Goal_FlyIdle::Activate() {
     Character *temp_r3_77;
     Character *temp_r9_88;
-    void *temp_r3_99;
+    SB2 *temp_r3_99;
 
     this->unk8 = 0;
     this->unkC->unkAEC = 0;
@@ -48,14 +46,14 @@ void ConvexTier2Goal_FlyIdle::Activate() {
     temp_r3_77 = this->unkC;
     temp_r3_77->unk6B5 |= 0x10;
     temp_r9_88 = this->unkC;
-    temp_r9_88->unk684 = M2C_FIELD(temp_r9_88->unkA38, f32 *, 0x158);
+    temp_r9_88->unk68C = M2C_FIELD(temp_r9_88->unkA38, f32 *, 0x158);
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    temp_r3_99 = this->unkC->unk638;
-    M2C_FIELD(temp_r3_99, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_99, u8 *, 0x464) | 0x80);
-    ((SB2 *) this->unkC->unk638)->WanderOn();
-    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
-    ((SB2 *) this->unkC->unk638)->WallAvoidanceOn();
+    temp_r3_99 = this->unkC->unk640;
+    temp_r3_99->unk464 |= 0x80;
+    this->unkC->unk640->WanderOn();
+    this->unkC->unk640->ObstacleAvoidanceOn(NULL);
+    this->unkC->unk640->WallAvoidanceOn();
 }
 #endif
 
@@ -64,13 +62,11 @@ void ConvexTier2Goal_PatrolMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 ConvexTier2Goal_PatrolMode::Update() {
     ActivateIfInactive();
     this->unk8 = UpdateSubgoals();
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ConvexTier2Goal_PatrolMode::Activate() {
@@ -79,7 +75,7 @@ void ConvexTier2Goal_PatrolMode::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r4_166 = this->unkC;
-    M2C_FIELD(temp_r4_166, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r4_166, u8 *, 0xB08) & ~0x40);
+    temp_r4_166->unkB08 &= ~0x40;
     AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
 }
 #endif
@@ -161,7 +157,7 @@ void ConvexTier2Goal_Think::StartFollowingSpawnGraph() {
 
     if (!(((u8) this->unk3C >> 6U) & 1)) {
         temp_r4_319 = this->unkC;
-        M2C_FIELD(temp_r4_319, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r4_319, u8 *, 0xB09) | 8);
+        temp_r4_319->unkB09 |= 8;
         this->unk3C |= 0x40;
     }
 }
@@ -174,21 +170,21 @@ void ConvexTier2Goal_Think::StopFollowingSpawnGraph() {
     u8 temp_r5_344;
 
     temp_r6_338 = this->unkC;
-    temp_r5_339 = M2C_FIELD(temp_r6_338, u8 *, 0xB09);
+    temp_r5_339 = temp_r6_338->unkB09;
     if ((temp_r5_339 >> 3U) & 1) {
         temp_r5_344 = temp_r5_339 & ~8;
-        M2C_FIELD(temp_r6_338, u8 *, 0xB09) = temp_r5_344;
+        temp_r6_338->unkB09 = temp_r5_344;
         if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, u8), 0x38)(0x2A, temp_r5_344) != 0) {
             RemoveAllSubgoals();
         }
         temp_r3_355 = this->unkC;
-        temp_r3_355->SetupEnemyRegion(*((MKVector3 *) &temp_r3_355->unk588), 1000.0f);
+        temp_r3_355->SetupEnemyRegion(temp_r3_355->unk588, 1000.0f);
     }
 }
 #endif
 
 u8 ConvexTier2Goal_Think::IsFollowingSpawnGraph() {
-    return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 3U) & 1;
+    return ((u8) this->unkC->unkB09 >> 3U) & 1;
 }
 
 void ConvexTier2Goal_Think::StartFollowingSpawnPath() {
@@ -196,7 +192,7 @@ void ConvexTier2Goal_Think::StartFollowingSpawnPath() {
 
     if (!(((u8) this->unk3C >> 7U) & 1)) {
         temp_r4_382 = this->unkC;
-        M2C_FIELD(temp_r4_382, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r4_382, u8 *, 0xB09) | 0x10);
+        temp_r4_382->unkB09 |= 0x10;
         this->unk3C |= 0x80;
     }
 }
@@ -209,24 +205,24 @@ void ConvexTier2Goal_Think::StopFollowingSpawnPath() {
     u8 temp_r5_407;
 
     temp_r6_401 = this->unkC;
-    temp_r5_402 = M2C_FIELD(temp_r6_401, u8 *, 0xB09);
+    temp_r5_402 = temp_r6_401->unkB09;
     if ((temp_r5_402 >> 4U) & 1) {
         temp_r5_407 = temp_r5_402 & ~0x10;
-        M2C_FIELD(temp_r6_401, u8 *, 0xB09) = temp_r5_407;
+        temp_r6_401->unkB09 = temp_r5_407;
         if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, u8), 0x38)(0x22, temp_r5_407) != 0) {
             RemoveAllSubgoals();
         }
         temp_r3_418 = this->unkC;
-        temp_r3_418->SetupEnemyRegion(*((MKVector3 *) &temp_r3_418->unk588), 1000.0f);
+        temp_r3_418->SetupEnemyRegion(temp_r3_418->unk588, 1000.0f);
     }
 }
 #endif
 
 u8 ConvexTier2Goal_Think::IsFollowingSpawnPath() {
-    return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 4U) & 1;
+    return ((u8) this->unkC->unkB09 >> 4U) & 1;
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ConvexTier2Goal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_468;
     Enemy *temp_r3_472;
@@ -239,14 +235,14 @@ void ConvexTier2Goal_Think::AddGoal_FollowSpawnGraph() {
         M2C_FIELD(temp_r5_459, u8 *, 0x95) = (u8) (M2C_FIELD(temp_r5_459, u8 *, 0x95) | 8);
         M2C_FIELD(temp_r5_459, u8 *, 0x95) = (u8) (M2C_FIELD(temp_r5_459, u8 *, 0x95) & ~1);
         temp_r3_468 = this->unkC;
-        M2C_FIELD(temp_r3_468, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_468, u8 *, 0xB09) | 8);
+        temp_r3_468->unkB09 |= 8;
         temp_r3_472 = this->unkC;
-        M2C_FIELD(temp_r3_472, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_472, u8 *, 0xB08) | 0x40);
+        temp_r3_472->unkB08 |= 0x40;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ConvexTier2Goal_Think::AddGoal_FollowSpawnPath() {
     Enemy *temp_r3_529;
     Enemy *temp_r3_533;
@@ -256,7 +252,7 @@ void ConvexTier2Goal_Think::AddGoal_FollowSpawnPath() {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r6_509 = this->unk2C;
-        M2C_FIELD(temp_r6_509, f32 *, 0x10) = (f32) this->unkC->unkA7C;
+        M2C_FIELD(temp_r6_509, Enemy **, 0x10) = (Enemy *) this->unkC->unkA94;
         M2C_FIELD(temp_r6_509, f32 *, 0x14) = 0.0f;
         M2C_FIELD(temp_r6_509, s32 *, 0x18) = 1;
         M2C_FIELD(temp_r6_509, s32 *, 0x20) = (s32) this->unk34;
@@ -266,15 +262,15 @@ void ConvexTier2Goal_Think::AddGoal_FollowSpawnPath() {
         M2C_FIELD(temp_r6_509, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r6_509, u8 *, 0x24) & ~8);
         M2C_FIELD(temp_r6_509, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r6_509, u8 *, 0x24) & ~4);
         temp_r3_529 = this->unkC;
-        M2C_FIELD(temp_r3_529, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_529, u8 *, 0xB09) | 0x10);
+        temp_r3_529->unkB09 |= 0x10;
         temp_r3_533 = this->unkC;
-        M2C_FIELD(temp_r3_533, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_533, u8 *, 0xB08) | 0x40);
-        ((KDPathIterator *) &this->unkC->unkA7C)->Init();
+        temp_r3_533->unkB08 |= 0x40;
+        ((KDPathIterator *) &this->unkC->unkA94)->Init();
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoalToFront__21CompositeGoal'
 void ConvexTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     if (((s32) arg0->unk28 != 0xE) && (IsActive(0x59) == 0)) {
         AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
@@ -282,7 +278,7 @@ void ConvexTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ConvexTier2Goal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
@@ -331,12 +327,12 @@ block_7:
         return;
     }
     temp_r3_679 = this->unkC;
-    if ((temp_r3_679->unkAB0 > 0.0f) && (M2C_FIELD(temp_r3_679->__vptr, u8 (**)(), 0x134)() == 0)) {
+    if ((temp_r3_679->unkAC8 > 0.0f) && (M2C_FIELD(temp_r3_679->__vptr, u8 (**)(), 0x134)() == 0)) {
         this->unkC->IsFlinching();
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             temp_r3_694 = this->unkC;
             var_r31_695 = 0;
-            if (((u8) M2C_FIELD(temp_r3_694, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_694->unk870.unk30)->Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r3_694, u8 *, 0x8B8) == 2) || (temp_r3_694->unk870.unk40.Get() != NULL)) {
                 var_r31_695 = 1;
             }
             if (var_r31_695 != 0) {
@@ -352,7 +348,6 @@ void ConvexTier2Goal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 ConvexTier2Goal_Think::Update() {
     Enemy *temp_r3_748;
 
@@ -370,14 +365,13 @@ u8 ConvexTier2Goal_Think::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void ConvexTier2Goal_Think::Activate() {
     this->unk8 = 0;
-    if (M2C_BITWISE(u32, this->unkC->unkA7C) != 0U) {
+    if ((Enemy *) this->unkC->unkA94 != NULL) {
         StartFollowingSpawnPath();
     }
-    if (M2C_BITWISE(u32, this->unkC->unkA68) != 0U) {
+    if ((u32) this->unkC->unkA80 != 0) {
         StartFollowingSpawnGraph();
     }
     Arbitrate();

@@ -28,7 +28,7 @@ class MKPropDescriptor;
 class MKVector3;
 class SpawnPointObject;
 
-class CynderTier1 : public Enemy {  // base: vtable prefix
+class CynderTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier1(void);
     virtual void Init(void);
@@ -45,7 +45,6 @@ public:
     virtual void DefrostBall(void);
     virtual s32 IsInFrozenBall(void);
     CynderTier1(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ Goal<Enemy>* unkB10;
     /* 0xb14 */ Goal<Enemy>* unkB14;
     /* 0xb18 */ MKPropDescriptor* unkB18;
@@ -61,7 +60,7 @@ public:
     /* 0x2b8 */ s32 unk2B8;
 };
 
-class CynderTier2 : public Enemy {  // base: vtable prefix
+class CynderTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier2(void);
     virtual void Init(void);
@@ -70,7 +69,6 @@ public:
     virtual void Update(void);
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier2(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ Goal<Enemy>* unkB10;
 };
 
@@ -83,7 +81,7 @@ public:
     /* 0x2b4 */ s8 unk2B4;
 };
 
-class CynderTier2Train : public Enemy {  // base: vtable prefix
+class CynderTier2Train : public CynderTier2 {  // base: base ctor call
 public:
     virtual ~CynderTier2Train(void);
     virtual void Init(void);
@@ -91,13 +89,13 @@ public:
     CynderTier2Train(void);
 };
 
-class CynderTier2TrainDescriptor : public CynderTier2Descriptor {  // base: vtable prefix
+class CynderTier2TrainDescriptor : public CynderTier2Descriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     CynderTier2TrainDescriptor(void);
 };
 
-class CynderTier3 : public Enemy {  // base: vtable prefix
+class CynderTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~CynderTier3(void);
     virtual void Init(void);
@@ -108,7 +106,6 @@ public:
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier3(void);
     void EmitClubEffects(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ Goal<Enemy>* unkB10;
     /* 0xb14 */ u8 padB14[0x4];
     /* 0xb18 */ MKVector3 unkB18;
@@ -133,7 +130,7 @@ public:
     void __sinit(void);
 };
 
-class EnemyTest : public Enemy {  // base: vtable prefix
+class EnemyTest : public Enemy {  // base: base ctor call
 public:
     virtual ~EnemyTest(void);
     virtual void Init(void);
@@ -152,23 +149,21 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier1::CynderTier1() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier1::~CynderTier1() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
 inline s32 CynderTier1::IsInFrozenBall() {
-    return this->unkB04 != 0;
+    return this->unkB1C != NULL;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
@@ -177,16 +172,16 @@ inline CynderTier1Descriptor::CynderTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2::CynderTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2::~CynderTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
 }
 #endif
 
@@ -196,16 +191,16 @@ inline CynderTier2Descriptor::CynderTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2Train::CynderTier2Train() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier2Train::~CynderTier2Train() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -215,19 +210,19 @@ inline CynderTier2TrainDescriptor::CynderTier2TrainDescriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier3::CynderTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
-    this->unkB10 = NULL;
+    this->unk6B8 = &__vt + 0x84;
+    this->unkB28 = 0;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline CynderTier3::~CynderTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
-    if ((&this->unkB10 != NULL) && (&this->unkB10 != NULL)) {
-        KDSound_Stop((s32 *) &this->unkB10);
+    this->unk6B8 = &__vt.unk84;
+    if ((&this->unkB28 != NULL) && (&this->unkB28 != NULL)) {
+        KDSound_Stop(&this->unkB28);
     }
 }
 #endif
@@ -238,16 +233,16 @@ inline CynderTier3Descriptor::CynderTier3Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EnemyTest::EnemyTest() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EnemyTest::~EnemyTest() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

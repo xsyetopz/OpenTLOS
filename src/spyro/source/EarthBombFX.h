@@ -31,7 +31,6 @@ public:
     EarthBombFX(void);
     void Fire(const MKVector3 &, const MKVector3 &, float, MKProp *, const MKVector3 &);
     void Explode(const MKVector3 &, const MKVector3 &, MKCollisionInfo *);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f32 unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ f64 unkD0;
@@ -48,7 +47,7 @@ public:
     /* 0x120 */ f32 unk120;
     /* 0x124 */ u8 pad124[0x4];
     /* 0x128 */ BreathHitMessage unk128;
-    /* 0x179 */ u8 pad179[0x7];
+    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ s32 unk180;
 };
 
@@ -57,7 +56,6 @@ public:
     virtual void Init(void);
     virtual void Deinit(void);
     EarthBombFXDescriptor(void);
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ MKMaterial* unkEC;
 };

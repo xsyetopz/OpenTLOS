@@ -15,7 +15,7 @@ class MKMessage;
 class Matrix;
 class SpawnPointRef;
 
-class ConvexTier2 : public Enemy {  // base: vtable prefix
+class ConvexTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~ConvexTier2(void);
     virtual void Init(void);
@@ -38,7 +38,7 @@ public:
     ConvexTier2Descriptor(void);
 };
 
-class ConvexTier3 : public Enemy {  // base: vtable prefix
+class ConvexTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~ConvexTier3(void);
     virtual void Init(void);
@@ -63,18 +63,16 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier2::ConvexTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier2::~ConvexTier2() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -84,16 +82,16 @@ inline ConvexTier2Descriptor::ConvexTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier3::ConvexTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline ConvexTier3::~ConvexTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

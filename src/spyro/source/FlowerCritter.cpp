@@ -43,7 +43,6 @@ void FlowerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FlowerCritter::Draw() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -94,7 +93,6 @@ loop_6:
         goto loop_6;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void FlowerCritter::Update() {

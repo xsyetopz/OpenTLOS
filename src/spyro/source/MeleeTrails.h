@@ -2,20 +2,18 @@
 #define SPYRO_SOURCE_MELEETRAILS_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "spyro/source/GameProp.h"
 
 class GameProp;
+class GamePropDescriptor;
 class MKAnim;
 class MKAnimScript;
-class MKHeap;
 class MKIniLine;
 class MKMaterial;
-class MKPropDescriptor;
 class MeleeTrails;
 class MeleeTrailsDescriptor;
 
-class MeleeTrails : public GameProp {  // base: vtable prefix
+class MeleeTrails : public GameProp {  // base: base ctor call
 public:
     virtual ~MeleeTrails(void);
     virtual void Init(void);
@@ -26,12 +24,11 @@ public:
     MeleeTrails(void);
     void ResolveAnims(MKAnimScript *);
     void EnableTrail(MKAnim *, int, bool, float, float, float);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ MKAnimScript* unkC8;
     /* 0x0cc */ MKMaterial* unkCC;
 };
 
-class MeleeTrailsDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class MeleeTrailsDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -39,8 +36,6 @@ public:
     virtual void Deinit(void);
     MeleeTrailsDescriptor(void);
     void InitMeleeTrailData(char *);
-    /* 0x044 */ u8 pad44[0xa0];
-    /* 0x0e4 */ MKHeap* unkE4;
     /* 0x0e8 */ s8 unkE8;
     /* 0x0e9 */ u8 padE9[0x3e];
     /* 0x127 */ s8 unk127;

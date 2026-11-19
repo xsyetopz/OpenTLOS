@@ -740,7 +740,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp70'
 void FallingLeaves::Update() {
     M2C_UNK sp4C;
     f64 sp48;                                       /* compiler-managed */

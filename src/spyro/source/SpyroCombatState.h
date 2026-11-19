@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROCOMBATSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 #include "spyro/source/TargetManager.h"
 
@@ -109,7 +110,8 @@ public:
     static SpyroCombatState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroCombatState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ s32 unk28;
     /* 0x02c */ u8 unk2C;
     /* 0x02d */ u8 unk2D;
@@ -130,10 +132,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroCombatState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROCOMBATSTATE_H

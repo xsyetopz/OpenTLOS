@@ -56,7 +56,7 @@ void MineCartDoor::Reset() {
     SetState(3);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void MineCartDoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");

@@ -2,10 +2,8 @@
 #define SPYRO_SOURCE_UIIMAGE_H
 
 #include <dolphin/types.h>
-#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIObject.h"
 
-class Attributes;
 class MKMaterial;
 class RenderContext;
 class UIDataLine;
@@ -23,9 +21,6 @@ public:
     virtual void FreeResources(void);
     void SetUVs(float, float, float, float);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0x14];
-    /* 0x018 */ Attributes unk18;
-    /* 0x05a */ u8 pad5A[0x6];
     /* 0x060 */ s8* unk60;
     /* 0x064 */ MKMaterial* unk64;
     /* 0x068 */ f32 unk68;

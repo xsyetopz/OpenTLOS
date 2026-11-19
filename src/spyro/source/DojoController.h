@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpawnerObject.h"
 #include "unplaced_enums.h"
 
@@ -81,9 +82,9 @@ public:
     /* 0x070 */ void** unk70;
     /* 0x074 */ u8 pad74[0x24c];
     /* 0x2c0 */ SpawnerObject unk2C0;
-    /* 0x30d */ u8 pad30D[0x3];
     /* 0x310 */ SpawnerObject unk310;
-    /* 0x35d */ u8 pad35D[0x7];
+    /* 0x360 */ KDStateMachine<DojoController> unk360;
+    /* 0x361 */ u8 pad361[0x3];
     /* 0x364 */ s32 unk364;
     /* 0x368 */ s32 unk368;
     /* 0x36c */ s32 unk36C;
@@ -314,11 +315,6 @@ public:
     s32 IsBreath1Complete(void);
     void SetupBreath1SpawnPoints(void);
     void SetupNumBreath1Enemies(void);
-    /* 0x004 */ DojoController* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ s32 unk14;
 };
 
 class ElectricDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
@@ -349,11 +345,6 @@ public:
     s32 IsBreath1Complete(void);
     void SetupBreath1SpawnPoints(void);
     void SetupNumBreath1Enemies(void);
-    /* 0x004 */ DojoController* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ s32 unk14;
 };
 
 class FireDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
@@ -394,11 +385,6 @@ public:
     s32 IsMeleeKnockUpComplete(void);
     void SetupMeleeKnockUpSpawnPoints(void);
     void SetupNumMeleeKnockUpEnemies(void);
-    /* 0x004 */ DojoController* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ s32 unk14;
 };
 
 class IceDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
@@ -429,34 +415,27 @@ public:
     s32 IsBreath1Complete(void);
     void SetupBreath1SpawnPoints(void);
     void SetupNumBreath1Enemies(void);
-    /* 0x004 */ DojoController* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ s32 unk14;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier '__vptr'
 inline DojoController::~DojoController() {
     EventMessage *temp_r3_14988;
+    EventMessage *temp_r3_14994;
     EventMessage *temp_r3_15001;
     EventMessage *temp_r3_15007;
-    f32 *temp_r3_14994;
 
     if (this != NULL) {
         if (&this->unk310 != NULL) {
-            temp_r3_14988 = &this->unk310.unk3C;
-            M2C_FIELD(this, M2C_UNK **, 0x310) = &__vt;
+            temp_r3_14988 = &this->unk310.unk40;
+            this->unk310.__vptr = &__vt;
             if (temp_r3_14988 != NULL) {
                 temp_r3_14988->Deinit();
             }
-            temp_r3_14994 = &this->unk310.unk38;
+            temp_r3_14994 = &this->unk310.unk3C;
             if (temp_r3_14994 != NULL) {
-                ((EventMessage *) temp_r3_14994)->Deinit();
+                temp_r3_14994->Deinit();
             }
         }
         if (&this->unk2C0 != NULL) {

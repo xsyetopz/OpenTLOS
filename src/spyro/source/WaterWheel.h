@@ -8,7 +8,7 @@ class MKMessage;
 class Platform;
 class WaterWheel;
 
-class WaterWheel : public Platform {  // base: vtable prefix
+class WaterWheel : public Platform {  // base: base ctor call
 public:
     virtual ~WaterWheel(void);
     virtual void Init(void);
@@ -18,7 +18,6 @@ public:
     virtual void Message(MKMessage *);
     virtual void UpdateMove(void);
     WaterWheel(void);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ f32 unk180;
     /* 0x184 */ s32 unk184;
     /* 0x188 */ u8 pad188[0x2c];

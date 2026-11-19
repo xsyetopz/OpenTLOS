@@ -65,7 +65,6 @@ public:
     /* 0x058 */ u8 unk58;
     /* 0x059 */ u8 pad59[0x7];
     /* 0x060 */ KDSP_Camera unk60;
-    /* 0x0fc */ u8 padFC[0x4];
     /* 0x100 */ KDSP_ActorList unk100;
     /* 0x114 */ KDSP_EnvelopeList unk114;
     /* 0x120 */ KDSP_Events unk120;

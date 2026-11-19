@@ -68,11 +68,11 @@ void LevelSelectScreen::Populate() {
     s32 sp8;
     UIContainer *var_r29_20;
     f32 var_r28_23;
-    s32 temp_r3_107;
     s32 var_r27_22;
     s32 var_r31_21;
+    void **temp_r3_107;
 
-    var_r29_20 = ui_cast<LevelButton *, UIObject *>(M2C_FIELD(this->unkBC.unk4, UIObject **, 0x60));
+    var_r29_20 = ui_cast<LevelButton *, UIObject *>(M2C_FIELD(this->unkC8, UIObject **, 0x60));
     var_r31_21 = 0;
     var_r27_22 = 0;
     var_r28_23 = pMenuCurrent->unk18.unk10.unkC;
@@ -113,8 +113,8 @@ loop_11:
     }
     sp2C = var_r31_21;
     sp28 = 1;
-    temp_r3_107 = this->unkBC.unk4;
-    M2C_FIELD(*temp_r3_107, M2C_UNK (**)(s32, s32 *), 0x2C)(temp_r3_107, &sp28);
+    temp_r3_107 = this->unkC8;
+    M2C_FIELD(*temp_r3_107, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_107, &sp28);
 }
 #endif
 
@@ -122,7 +122,7 @@ void LevelSelectScreen::Draw(const RenderContext &arg0) {
     UIContainer::Draw(arg0);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void LevelSelectScreen::Update() {
     s32 spC;
     s32 sp8;
@@ -131,11 +131,11 @@ void LevelSelectScreen::Update() {
     UIContainer *temp_r3_376;
     f32 temp_r0_360;
     f32 temp_r4_322;
-    s32 temp_r3_299;
+    void **temp_r3_299;
     void *temp_r3_323;
 
     UIScreen::Update();
-    temp_r3_299 = this->unkBC.unk4;
+    temp_r3_299 = this->unkC8;
     temp_r3_302 = ui_cast<LevelButton *, UIObject *>(((UIContainer *) temp_r3_299)->GetChild(M2C_FIELD(temp_r3_299, s32 *, 0x68)));
     pMenuCurrent->unk18.unk20.unk4 = M2C_FIELD(temp_r3_302, f32 *, 0xA0);
     if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (UIControls_Pressed((FrontEndControls) 3, -1) != 0)) {
@@ -182,9 +182,9 @@ void LevelSelectScreen::OnEnter() {
     Populate();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'LevelSelectButtons *' to
 void LevelSelectScreen::LoadDone() {
-    this->unkBC.unk4 = ui_cast<LevelSelectButtons *, UIObject *>(FindChild("LevelButtons"));
+    this->unkC8 = ui_cast<LevelSelectButtons *, UIObject *>(FindChild("LevelButtons"));
 }
 #endif
 
@@ -205,7 +205,7 @@ void LevelSelectScreen::Deinit() {
         pMenuRoot = NULL;
     }
     pMenuCurrent = NULL;
-    var_r30_468 = ui_cast<LevelButton *, UIObject *>(M2C_FIELD(this->unkBC.unk4, UIObject **, 0x60));
+    var_r30_468 = ui_cast<LevelButton *, UIObject *>(M2C_FIELD(this->unkC8, UIObject **, 0x60));
 loop_7:
     if (var_r30_468 != NULL) {
         M2C_FIELD(ui_cast<DSText *, UIObject *>(var_r30_468->GetChild(0)), s32 *, 0x68) = 0;
@@ -392,5 +392,5 @@ void LevelSelectButtons::Init() {
 
 void LevelButton::Init() {
     ScriptButton::Init();
-    this->unk98 = NULL;
+    this->unkA0 = 0;
 }

@@ -5,6 +5,7 @@
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Shadow.h"
 
 class Ball;
@@ -44,7 +45,6 @@ public:
     void Unload(void);
     static u8 states[0xb4];
     static u8 pEvents[0x8];
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ f64 unk90;
     /* 0x098 */ f64 unk98;
     /* 0x0a0 */ s32 unkA0;
@@ -56,7 +56,8 @@ public:
     /* 0x0b8 */ f32 unkB8;
     /* 0x0bc */ u8 padBC[0xc];
     /* 0x0c8 */ Shadow unkC8;
-    /* 0x0f5 */ u8 padF5[0x17];
+    /* 0x0f8 */ KDStateMachine<Catapult> unkF8;
+    /* 0x0f9 */ u8 padF9[0x13];
     /* 0x10c */ EventMessage unk10C;
     /* 0x110 */ EventMessage unk110;
     /* 0x114 */ EventMessage unk114;
@@ -78,7 +79,6 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;
@@ -103,11 +103,11 @@ inline Catapult::~Catapult() {
     s32 temp_cr0_eq_43;
 
     if (this != NULL) {
+        if (&this->unk114 != NULL) {
+            this->unk114.Deinit();
+        }
         if (&this->unk110 != NULL) {
             this->unk110.Deinit();
-        }
-        if (&this->unk10C != NULL) {
-            this->unk10C.Deinit();
         }
         if (&this->unk10C != NULL) {
             this->unk10C.Deinit();

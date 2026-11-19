@@ -11,7 +11,7 @@ class MKVector3;
 class ManagedLight;
 class Torch;
 
-class Torch : public GameProp {  // base: vtable prefix
+class Torch : public GameProp {  // base: base ctor call
 public:
     virtual ~Torch(void);
     virtual void Init(void);
@@ -21,7 +21,7 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     Torch(void);
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ u8 unkD0;
     /* 0x0d1 */ u8 padD1[0x7];
     /* 0x0d8 */ f64 unkD8;

@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKVector3.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 
 class MKMessage;
@@ -37,7 +38,8 @@ public:
     static SpyroLedgeGrabState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroLedgeGrabState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ f32 unk28;
     /* 0x02c */ f32 unk2C;
     /* 0x030 */ f32 unk30;
@@ -54,16 +56,12 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroLedgeGrabState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroLedgeGrabState::GetState() {
     this->unk14.GetState();
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROLEDGEGRABSTATE_H

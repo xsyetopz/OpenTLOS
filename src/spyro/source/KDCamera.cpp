@@ -2426,7 +2426,7 @@ void KDCamera::UpdateLTW() {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void KDCamera::SetLTW(const Matrix &arg0) {
     f64 sp40;
     f64 sp38;
@@ -2470,7 +2470,6 @@ KDCamera::KDCamera() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDCamera::Use() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -2508,7 +2507,6 @@ void KDCamera::Use() {
     this->unk118 = M2C_FIELD(temp_r3_4795, f32 *, 0x68);
     this->unk11C = M2C_FIELD(temp_r3_4795, f32 *, 0x6C);
 }
-#endif
 
 void KDCamera::Message(MKMessage *arg0) {
     if ((u8) this->unk4C != 0) {

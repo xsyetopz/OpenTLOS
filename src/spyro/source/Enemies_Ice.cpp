@@ -10,8 +10,8 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBreathFX.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyGoal_Think.h"
@@ -25,8 +25,8 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(s32);                                  /* extern */
-s32 malloc(M2C_UNK);                                /* extern */
+M2C_UNK free(MKCollisionInfo *);                    /* extern */
+MKCollisionInfo *malloc(M2C_UNK);                   /* extern */
 extern s32 GS_IceOgreGhostIdle;
 extern s32 GS_IceTrollHitGround;
 #if 0 // DRAFT: identifier 'fingerprintData' redeclared
@@ -60,19 +60,18 @@ void IceTier3::Init() {
         temp_r31_51->__vptr = &__vt;
     }
     temp_r31_51->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_51;
+    this->unkA3C = &temp_r31_51->__vptr;
 }
 #endif
 
 void IceTier2::UpdateCollisionItems() {
     Character::UpdateCollisionItems();
-    if (M2C_BITWISE(s32, this->unkACC) > 0) {
-        this->unkABC = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkABC) | 0x1F0));
-        MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(this->unkA20, s32 *, 0x270), (MKVector3 *) &this->unkB10);
+    if ((s32) this->unkAE4 > 0) {
+        this->unkAD4 |= 0x1F0;
+        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) this->unkA38->unk270, &this->unkB28);
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void IceTier2::SetupCollision() {
     f64 sp20;
     f64 sp18;
@@ -84,10 +83,10 @@ void IceTier2::SetupCollision() {
     void *temp_r31_143;
 
     Enemy::SetupCollision();
-    M2C_FIELD(this, f64 *, 0xB18) = (f64) M2C_FIELD(this, f64 *, 0x588);
-    M2C_FIELD(this, f64 *, 0xB20) = (f64) M2C_FIELD(this, f64 *, 0x590);
+    this->unkB18 = M2C_FIELD(this, f64 *, 0x588);
+    this->unkB20 = M2C_FIELD(this, f64 *, 0x590);
     M2C_FIELD(this, f64 *, 0xB28) = (f64) this->unk70;
-    this->unkB18 = this->unk78;
+    M2C_FIELD(this, f64 *, 0xB30) = (f64) this->unk78;
     temp_r30_132 = checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = 1.0f;
     spC = 1.0f;
@@ -96,30 +95,29 @@ void IceTier2::SetupCollision() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     temp_r31_143 = checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddSphere((MKVector3 *) &this->unkB10, 0.75f * M2C_FIELD(temp_r31_143, f32 *, 0x60), 0.0f, *((MKVector4 *) &sp18), (MKCollisionMode) 2, (MKCollisionInfo *) this->unkAFC, M2C_FIELD(temp_r30_132, u32 *, 0x70));
-    M2C_FIELD(this->unkAFC, s8 *, 4) = 0;
-    this->unkAF8 = this->unk634;
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddSphere(&this->unkB28, 0.75f * M2C_FIELD(temp_r31_143, f32 *, 0x60), 0.0f, *((MKVector4 *) &sp18), (MKCollisionMode) 2, this->unkB14, M2C_FIELD(temp_r30_132, u32 *, 0x70));
+    this->unkB14->unk4 = 0;
+    this->unkB10 = (MKCollisionInfo *) this->unk634;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void IceTier2::OnArmourDestroyed() {
-    s32 temp_r4_192;
+    CharacterBreathFX *temp_r4_192;
 
     SetCurrAnimSet(1);
     this->unkB60 = 1;
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), 1U, 1U);
-    temp_r4_192 = this->unk9E8.unk10;
-    if ((u32) temp_r4_192 != 0U) {
-        M2C_FIELD(temp_r4_192, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_192, u8 *, 0x10) & ~0x40);
+    temp_r4_192 = this->unkA0C;
+    if (temp_r4_192 != NULL) {
+        temp_r4_192->unk10 &= ~0x40;
     }
     M2C_FIELD(this->unk634, s8 *, 4) = 0;
-    M2C_FIELD(this->unkAFC, s8 *, 4) = 1;
-    this->unk634 = this->unkAFC;
+    this->unkB14->unk4 = 1;
+    this->unk634 = this->unkB14;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: ')' expected
 s32 IceTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     s32 var_r8_221;
     u32 var_r7_220;
@@ -128,7 +126,7 @@ s32 IceTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     var_r7_220 = 0U;
     var_r8_221 = 0;
     this->unkB60 = 0;
-    this->unk634 = this->unkAF8;
+    this->unk634 = this->unkB10;
 loop_2:
     if ((s8) M2C_FIELD((&fingerprintData + var_r8_221), u8 *, 8) != 0) {
         temp_r3_233 = &fingerprintData + var_r8_221;
@@ -137,7 +135,7 @@ loop_2:
         goto loop_2;
     }
     if (var_r7_220 != (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) {
-        M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) | 0x80);
+        this->unkB01 |= 0x80;
     }
     if (Enemy::Spawn(arg0, arg1) != 0) {
         MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), 0U, 1U);
@@ -149,10 +147,10 @@ loop_2:
 
 void IceTier2::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
-    ((KDSoundPlayer *) &this->unkB20)->Message(arg0);
+    ((KDSoundPlayer *) &this->unkB38)->Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: ')' expected
 void IceTier2::DrawCustomGlow() {
     Matrix sp70;
     Matrix sp30;
@@ -162,9 +160,9 @@ void IceTier2::DrawCustomGlow() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    s32 *temp_r5_373;
+    s32 temp_r5_373;
 
-    if (M2C_BITWISE(s32, this->unkACC) > 0) {
+    if ((s32) this->unkAE4 > 0) {
         M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &sp30.unk3C + 4, 0x40);
         sp18 = 1.01f;
@@ -179,8 +177,8 @@ void IceTier2::DrawCustomGlow() {
         Character::Draw();
         gRenderState = 0;
         MKModel_SetWorldMatrix(this->unk4, sp70);
-        temp_r5_373 = M2C_FIELD(this->unkA20, s32 **, 0x238);
-        if (temp_r5_373 != NULL) {
+        temp_r5_373 = this->unkA38->unk238;
+        if ((u32) temp_r5_373 != 0U) {
             MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, *temp_r5_373, 0U, 1U);
         }
     }
@@ -197,27 +195,27 @@ void IceTier2::Update() {
         var_r31_401 = 1;
     }
     sp8 = 1;
-    ((KDSoundFader *) &this->unkB20)->Update(GS_IceOgreGhostIdle, 1U, var_r31_401, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB38)->Update(GS_IceOgreGhostIdle, 1U, var_r31_401, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void IceTier2::Deinit() {
+    MKCollisionInfo *temp_r31_444;
     MKHeap *temp_r3_447;
-    s32 temp_r31_444;
 
-    this->unk634 = this->unkAF8;
+    this->unk634 = this->unkB10;
     Enemy::Deinit();
-    KDSound_Stop((s32 *) &this->unkB20);
-    temp_r31_444 = this->unkAFC;
-    if ((u32) temp_r31_444 != 0U) {
+    KDSound_Stop(&this->unkB38);
+    temp_r31_444 = this->unkB14;
+    if (temp_r31_444 != NULL) {
         temp_r3_447 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_447 != NULL) {
-            ((MKHeap *) (temp_r3_447->Current()))->Free((void *) temp_r31_444, NULL, 0);
+            ((MKHeap *) (temp_r3_447->Current()))->Free(temp_r31_444, NULL, 0);
         } else {
             free(temp_r31_444);
         }
     }
-    this->unkAFC = 0;
+    this->unkB14 = NULL;
 }
 #endif
 
@@ -249,9 +247,9 @@ s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void IceTier2::Init() {
     EnemyGoal_Think *temp_r30_544;
+    MKCollisionInfo *temp_r4_594;
+    MKCollisionInfo *var_r3_585;
     MKHeap *temp_r3_578;
-    s32 temp_r4_594;
-    void *var_r3_585;
 
     Enemy::Init();
     operator new(0x74U, NULL, 0);
@@ -270,22 +268,22 @@ void IceTier2::Init() {
         temp_r30_544->__vptr = &__vt;
     }
     temp_r30_544->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r30_544;
+    this->unkA3C = &temp_r30_544->__vptr;
     this->unkB60 = 0;
-    ((KDSoundFader *) &this->unkB20)->Init(0.25f, 0.25f);
-    this->unkAFC = 0;
+    ((KDSoundFader *) &this->unkB38)->Init(0.25f, 0.25f);
+    this->unkB14 = NULL;
     temp_r3_578 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_578 != NULL) {
         var_r3_585 = ((MKHeap *) (temp_r3_578->Current()))->Alloc(0x10, NULL, 0);
     } else {
         var_r3_585 = malloc(0x10);
     }
-    this->unkAFC = (s32) var_r3_585;
-    temp_r4_594 = this->unkAFC;
-    M2C_FIELD(temp_r4_594, s32 *, 0) = 0;
-    M2C_FIELD(temp_r4_594, s8 *, 4) = 1;
-    M2C_FIELD(temp_r4_594, IceTier2 **, 8) = this;
-    M2C_FIELD(temp_r4_594, s32 *, 0xC) = 0;
+    this->unkB14 = var_r3_585;
+    temp_r4_594 = this->unkB14;
+    temp_r4_594->unk0 = 0;
+    temp_r4_594->unk4 = 1;
+    temp_r4_594->unk8 = (MKProp *) this;
+    temp_r4_594->unkC = 0;
 }
 #endif
 
@@ -309,8 +307,8 @@ void IceTier2Descriptor::LoadDone() {
 
 #if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void IceTier1::Spawn(EnemyGeneratorDoor *arg0) {
-    M2C_FIELD(this->unkAF8, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA24, (Goal<Enemy> *) this->unkAF8);
+    M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0);
 }
 #endif
@@ -351,7 +349,7 @@ void IceTier1::Update() {
     u16 temp_r30_731;
 
     Enemy::Update();
-    if (!(((u8) M2C_FIELD(this, u8 *, 0xB08) >> 1U) & 1) && (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(2) != 0)) {
+    if (!(((u8) this->unkB08 >> 1U) & 1) && (((MKAnimScript *) this->unk630)->CheckEvent(2) != 0)) {
         KDSound_Play3d(GS_IceTrollHitGround, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         temp_r30_731 = Tools_GetMatchingNodeIndex(this->unk4, "r_hand");
         temp_r31_734 = MKModel_GetWorldMatrix(this->unk4);
@@ -400,14 +398,14 @@ void IceTier1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void IceTier1::Deinit() {
-    s32 temp_r3_860;
+    Goal<Enemy> *temp_r3_860;
 
-    temp_r3_860 = this->unkAF8;
-    if ((u32) temp_r3_860 != 0U) {
-        M2C_FIELD(*temp_r3_860, M2C_UNK (**)(), 0xC)();
-        operator delete((void *) this->unkAF8);
+    temp_r3_860 = this->unkB10;
+    if (temp_r3_860 != NULL) {
+        M2C_FIELD(temp_r3_860->__vptr, M2C_UNK (**)(), 0xC)();
+        operator delete(this->unkB10);
     }
     Enemy::Deinit();
 }
@@ -416,7 +414,7 @@ void IceTier1::Deinit() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void IceTier1::Init() {
     EnemyGoal_Think *temp_r31_892;
-    s32 temp_r4_942;
+    Goal<Enemy> *temp_r4_942;
 
     Enemy::Init();
     operator new(0x74U, NULL, 0);
@@ -436,7 +434,7 @@ void IceTier1::Init() {
     }
     temp_r31_892->Init((Enemy *) this);
     temp_r31_892->InitFrozenGoal();
-    this->unkA24 = (EnemyAttack *) temp_r31_892;
+    this->unkA3C = &temp_r31_892->__vptr;
     operator new(0x18U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -446,8 +444,8 @@ void IceTier1::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r4_942 = this->unkAF8;
+    this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r4_942 = this->unkB10;
     M2C_FIELD(temp_r4_942, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_942, IceTier1 **, 0xC) = this;
     M2C_FIELD(temp_r4_942, s32 *, 4) = 0x38;
@@ -455,7 +453,7 @@ void IceTier1::Init() {
         M2C_FIELD(temp_r4_942, s8 *, 9) = 1;
     }
     M2C_FIELD(temp_r4_942, s32 *, 0x10) = 0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_892, (Goal<Enemy> *) this->unkAF8);
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_892, (Goal<Enemy> *) this->unkB10);
 }
 #endif
 

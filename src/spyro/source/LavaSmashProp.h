@@ -13,7 +13,7 @@ class MKVector3;
 class Shatterable;
 class ShatterableDescriptor;
 
-class LavaSmashProp : public Shatterable {  // base: vtable prefix
+class LavaSmashProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~LavaSmashProp(void);
     virtual void Init(void);
@@ -25,7 +25,6 @@ public:
     virtual void Message(MKMessage *);
     virtual void PostShatter(void);
     LavaSmashProp(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ s32 unk1A8;
     /* 0x1ac */ u8 pad1AC[0x24];
     /* 0x1d0 */ u8 unk1D0;
@@ -40,13 +39,12 @@ public:
     /* 0x204 */ f32 unk204;
 };
 
-class LavaSmashPropDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class LavaSmashPropDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     LavaSmashPropDescriptor(void);
-    /* 0x16c */ f32 unk16C;
     /* 0x170 */ f32 unk170;
     /* 0x174 */ f32 unk174;
     /* 0x178 */ f32 unk178;
@@ -60,7 +58,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline LavaSmashProp::LavaSmashProp() {
     this->unkC8 = &__vt + 0x48;
-    this->unk198 = 0.0f;
+    this->unk1A8 = 0;
     return this;
 }
 #endif
@@ -68,8 +66,8 @@ inline LavaSmashProp::LavaSmashProp() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline LavaSmashProp::~LavaSmashProp() {
     this->unkC8 = &__vt + 0x48;
-    if ((&this->unk198 != NULL) && (&this->unk198 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk198);
+    if ((&this->unk1A8 != NULL) && (&this->unk1A8 != NULL)) {
+        KDSound_Stop(&this->unk1A8);
     }
 }
 #endif

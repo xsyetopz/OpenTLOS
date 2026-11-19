@@ -65,7 +65,7 @@ public:
     /* 0x0ac */ f32 unkAC;
 };
 
-class GameParticleEmitter : public GameProp {  // base: vtable prefix
+class GameParticleEmitter : public GameProp {  // base: base ctor call
 public:
     virtual ~GameParticleEmitter(void);
     virtual void Init(void);
@@ -88,7 +88,6 @@ public:
     void EmitFoundryGas(void);
     void EmitMoltenMetal(void);
     void EmitLavaBubble(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ void** unkC8;
     /* 0x0cc */ u32 unkCC;
     /* 0x0d0 */ s32 unkD0;

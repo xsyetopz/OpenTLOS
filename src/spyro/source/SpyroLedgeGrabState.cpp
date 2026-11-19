@@ -5,7 +5,6 @@
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/MobilePlatform.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -37,7 +36,7 @@ void SpyroLedgeGrabState::PullUpDescendTransition() {
     sp1C = 1;
     sp1D = 1;
     temp_r3_59 = this->unk10;
-    temp_r3_59->TryChangeState(M2C_FIELD(temp_r3_59->unk26C.unk8, s32 *, 0x16C) > 0, 4U, (MKMessage *) &sp8, 0U);
+    temp_r3_59->TryChangeState(M2C_FIELD(temp_r3_59->unk27C, s32 *, 0x16C) > 0, 4U, (MKMessage *) &sp8, 0U);
 }
 
 void SpyroLedgeGrabState::PullUpDescendUpdate() {
@@ -53,8 +52,8 @@ void SpyroLedgeGrabState::PullUpDescendEnter() {
 
     this->unk10->SetAnim(0x5AU, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_100 = this->unk10;
-    temp_r3_100->unk388 = 3800.0f;
-    temp_f1_103 = temp_r3_100->unk388;
+    temp_r3_100->unk390 = 3800.0f;
+    temp_f1_103 = temp_r3_100->unk390;
     var_f2_104 = temp_r3_100->unk33C;
     temp_f0_105 = -temp_f1_103;
     if (var_f2_104 < temp_f1_103) {
@@ -68,11 +67,11 @@ void SpyroLedgeGrabState::PullUpDescendEnter() {
         var_f2_104 = temp_f0_105;
     }
     temp_r3_100->unk33C = var_f2_104;
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroLedgeGrabState::PullUpAscendTransition() {
     if ((this->unk10->unk33C <= 0.0f) && ((s32) this->unk14.unk0 != 2)) {
         this->unk14.SetState(this, 2, 0U);
@@ -118,7 +117,7 @@ void SpyroLedgeGrabState::PullUpAscendEnter() {
     M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk10->SetModelVisualOffset(this->unk48, 0U);
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     this->unk10->SetDesiredVelocityVectical(PULL_UP_Y_VELOCITY, 540000.0f);
 }
 #endif
@@ -175,7 +174,7 @@ void SpyroLedgeGrabState::AttachUpdate() {
     sp48 = temp_f0_320;
     sp20 = this->unk30 - sp40;
     sp50 = (f64) sp20;
-    if ((s32) M2C_FIELD(temp_r3_322->unk26C.unk8, s32 *, 0x2D4) > 0) {
+    if ((s32) M2C_FIELD(temp_r3_322->unk27C, s32 *, 0x2D4) > 0) {
         var_r0_338 = 0;
         if ((this->unk48.unk0 == MKVector3::zero.unk0) && (this->unk48.unk4 == MKVector3::zero.unk4) && (this->unk48.unk8 == MKVector3::zero.unk8)) {
             var_r0_338 = 1;
@@ -273,31 +272,30 @@ void SpyroLedgeGrabState::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 SpyroLedgeGrabState::Transition() {
     void *sp10;
     s32 spC;
     s32 sp8;
-    f32 temp_r3_590;
+    MKProp *temp_r3_590;
     u8 var_r4_600;
 
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 1;
+    this->unk10->unk3D2 = 1;
     spC = 0;
     sp10 = NULL;
     sp8 = 0x27;
-    temp_r3_590 = this->unk10->unk3E4;
-    if (M2C_BITWISE(u32, temp_r3_590) != 0U) {
-        M2C_FIELD(M2C_FIELD(temp_r3_590, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    temp_r3_590 = this->unk10->unk3EC;
+    if (temp_r3_590 != NULL) {
+        M2C_FIELD(temp_r3_590->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
     var_r4_600 = 0;
-    if (((sp10 != NULL) && ((u8) M2C_FIELD(sp10, u8 *, 4) == 0)) || (((u8) this->unk58 != 0) && (M2C_BITWISE(u32, this->unk10->unk3E4) == 0U))) {
+    if (((sp10 != NULL) && ((u8) M2C_FIELD(sp10, u8 *, 4) == 0)) || (((u8) this->unk58 != 0) && ((MKProp *) this->unk10->unk3EC == NULL))) {
         var_r4_600 = 1;
     }
     this->unk10->TryChangeState(var_r4_600, 6U, NULL, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroLedgeGrabState::Update() {
     f64 sp20;
     f64 sp18;
@@ -310,23 +308,20 @@ void SpyroLedgeGrabState::Update() {
     sp10 = -this->unk38.unk8;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp18), 10.0f);
+    this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp18), 10.0f);
     this->unk14.Update(this, 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroLedgeGrabState::Exit() {
     Spyro *temp_r3_679;
 
     this->unk10->SetModelVisualOffset(MKVector3::zero, 0U);
     temp_r3_679 = this->unk10;
-    temp_r3_679->unk420 = (void *) ((s32) temp_r3_679->unk420 | 0x20000);
+    temp_r3_679->unk428 |= 0x20000;
     this->unk10->PlatformDetach();
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'SpyroLedgeGrabMessage'
 void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
@@ -345,9 +340,9 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     temp_r29_717 = checked_cast<SpyroLedgeGrabMessage *, MKMessage>(arg0.GetMessage(0x184));
     M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
+    this->unk10->unk38C = 0.0f;
     temp_r4_723 = this->unk10;
-    temp_r4_723->unk420 = (void *) ((s32) temp_r4_723->unk420 & 0xFFF9FEDE);
+    temp_r4_723->unk428 &= 0xFFF9FEDE;
     this->unk10->PlatformDetach();
     temp_r4_729 = M2C_FIELD(temp_r29_717, MKProp **, 0x28);
     if (temp_r4_729 != NULL) {
@@ -368,7 +363,7 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     temp_f0_764 = M2C_FIELD(temp_r3_760, f64 *, 0x338) * 5.222099017e-315;
     sp8 = temp_f0_764;
     sp18 = temp_f0_764;
-    sp10 = temp_r3_760->unk338 * 0.5f;
+    sp10 = temp_r3_760->unk340 * 0.5f;
     sp20 = (f64) sp10;
     temp_r3_760->SetDesiredVelocity(*((MKVector3 *) &sp18), 540000.0f);
     this->unk10->CheckForLedge(MKVector3::zero, (MKVector3 *) &this->unk28, NULL, &this->unk38, NULL);
@@ -376,11 +371,9 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroLedgeGrabState::Deinit() {
     this->unk14.Deinit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__37KDStateMachine'
 void SpyroLedgeGrabState::Init(Spyro *arg0) {

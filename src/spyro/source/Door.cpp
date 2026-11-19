@@ -97,7 +97,7 @@ void Door::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void DoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
@@ -107,7 +107,7 @@ void DoorDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
@@ -122,9 +122,7 @@ s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void DoorDescriptor::Init() {
     TrapDescriptor::Init();
     this->unkF4 = 0;
 }
-#endif

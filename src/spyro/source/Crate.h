@@ -4,7 +4,6 @@
 #include <dolphin/types.h>
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/PlatformObject.h"
 
 class Attachment;
@@ -12,6 +11,7 @@ class Crate;
 class CrateDescriptor;
 class EventMessage;
 class GameProp;
+class GamePropDescriptor;
 class KDPropEx;
 class KDPropExDescriptor;
 class MKIniLine;
@@ -72,7 +72,7 @@ public:
     /* 0x080 */ MKProp* unk80;
 };
 
-class Crate : public GameProp {  // base: vtable prefix
+class Crate : public GameProp {  // base: base ctor call
 public:
     virtual ~Crate(void);
     virtual void Init(void);
@@ -94,13 +94,11 @@ public:
     void Fall(void);
     void Burn(void);
     void ClearData(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ f32 unkCC;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;
     /* 0x0e0 */ ShatterObject unkE0;
-    /* 0x164 */ u8 pad164[0x4];
     /* 0x168 */ f32 unk168;
     /* 0x16c */ f32 unk16C;
     /* 0x170 */ f32 unk170;
@@ -113,7 +111,6 @@ public:
     /* 0x188 */ MKModel* unk188;
     /* 0x18c */ u8 pad18C[0x4];
     /* 0x190 */ PlatformObject unk190;
-    /* 0x1d4 */ u8 pad1D4[0x4];
     /* 0x1d8 */ ShockWave* unk1D8;
     /* 0x1dc */ Attachment unk1DC;
 };
@@ -143,14 +140,12 @@ public:
     /* 0x08c */ s32 unk8C;
 };
 
-class CrateDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class CrateDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     CrateDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ f32 unkE4;
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ f32 unkEC;
     /* 0x0f0 */ f32 unkF0;
@@ -182,38 +177,36 @@ public:
 extern u8 crateDescFlags[0x50];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: type mismatch
 inline Crate::~Crate() {
+    Attachment **temp_r4_26;
+    Attachment *temp_r0_23;
     EventMessage *temp_r3_56;
-    PlatformObject *temp_r0_41;
-    ShockWave **temp_r4_26;
-    f32 *temp_r4_39;
-    void *temp_r0_23;
+    PlatformAttachment *temp_r0_41;
+    PlatformAttachment *temp_r4_39;
 
     if (this != NULL) {
-        if (&this->unk1D8 != NULL) {
-            temp_r0_23 = this->unk1DC.unk0;
+        if (&this->unk1DC.unk4 != NULL) {
+            temp_r0_23 = this->unk1DC.unk8;
             if (temp_r0_23 != NULL) {
-                temp_r4_26 = &this->unk1D8;
+                temp_r4_26 = &this->unk1DC.unk4;
                 if (temp_r0_23 != temp_r4_26) {
-                    this->unk1DC.unk4->unk4 = (Attachment *) temp_r0_23;
-                    M2C_FIELD(this->unk1DC.unk0, Attachment **, 8) = (Attachment *) this->unk1DC.unk4;
-                    this->unk1DC.unk4 = (Attachment *) temp_r4_26;
-                    this->unk1DC.unk0 = temp_r4_26;
+                    this->unk1E4->unk4 = temp_r0_23;
+                    this->unk1DC.unk8->unk8 = this->unk1E4;
+                    this->unk1E4 = (Attachment *) temp_r4_26;
+                    this->unk1DC.unk8 = (Attachment *) temp_r4_26;
                 }
             }
         }
         if (&this->unk190 != NULL) {
-            temp_r4_39 = &this->unk190.unk18.unkC;
+            temp_r4_39 = &this->unk190.unk28;
             if (temp_r4_39 != NULL) {
-                temp_r0_41 = this->unk190.unk28.unk4;
+                temp_r0_41 = this->unk190.unk28.unk8;
                 if ((temp_r0_41 != NULL) && (temp_r0_41 != temp_r4_39)) {
-                    this->unk190.unk28.unk8->unk8 = (PlatformAttachment *) temp_r0_41;
-                    this->unk190.unk28.unk4->unkC = M2C_BITWISE(f32, this->unk190.unk28.unk8);
-                    this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_39;
-                    this->unk190.unk28.unk4 = (PlatformObject *) temp_r4_39;
+                    this->unk190.unk28.unkC->unk8 = temp_r0_41;
+                    this->unk190.unk28.unk8->unkC = this->unk190.unk28.unkC;
+                    this->unk190.unk28.unkC = temp_r4_39;
+                    this->unk190.unk28.unk8 = temp_r4_39;
                 }
             }
         }
@@ -227,22 +220,22 @@ inline Crate::~Crate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+#if 0 // DRAFT: undefined identifier 'unk1E4'
 inline Crate::Crate() {
-    ShockWave **temp_r0_18686;
-    f32 *temp_r4_18684;
+    Attachment **temp_r0_18686;
+    PlatformAttachment *temp_r4_18684;
 
     this->unkE0.unk78.unk0 = 0;
     this->unkE0.unk78.Init();
-    temp_r4_18684 = &this->unk190.unk18.unkC;
-    this->unk190.unk18.unkC = 0.0f;
-    temp_r0_18686 = &this->unk1D8;
+    temp_r4_18684 = &this->unk190.unk28;
     this->unk190.unk28.unk0 = NULL;
-    this->unk190.unk28.unk4 = (PlatformObject *) temp_r4_18684;
-    this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_18684;
-    this->unk1D8 = NULL;
-    this->unk1DC.unk0 = temp_r0_18686;
-    this->unk1DC.unk4 = (Attachment *) temp_r0_18686;
+    temp_r0_18686 = &this->unk1DC.unk4;
+    this->unk190.unk28.unk4 = NULL;
+    this->unk190.unk28.unk8 = temp_r4_18684;
+    this->unk190.unk28.unkC = temp_r4_18684;
+    this->unk1DC.unk4 = NULL;
+    this->unk1DC.unk8 = (Attachment *) temp_r0_18686;
+    this->unk1E4 = temp_r0_18686;
     return this;
 }
 #endif

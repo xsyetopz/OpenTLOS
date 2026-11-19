@@ -146,7 +146,7 @@ void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) 
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3) {
     f64 sp190;
     f64 sp188;
@@ -476,7 +476,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void ConvexityBreathFX::Draw() {
     Matrix sp70;
     Matrix sp30;
@@ -788,7 +788,7 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ConvexityBreathFX::Init() {
     Matrix sp50;
     M2C_UNK sp4C;

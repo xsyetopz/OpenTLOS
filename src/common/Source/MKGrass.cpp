@@ -49,7 +49,7 @@ extern void ***grassModelsList;
 static u8 MKGrass_bEnable = 1;
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Frustum *, int)' does not match
+#if 0 // DRAFT: undefined identifier 'spA8'
 static MKHeap lit_stringBase0;                         /* extra bytes: 0xA; unable to generate initializer: non-zero padding; const */
 
 void MKGrass_Draw() {

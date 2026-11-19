@@ -10,7 +10,7 @@ class ProjectileDescriptor;
 class Sludge;
 class SludgeDescriptor;
 
-class Sludge : public Projectile {  // base: vtable prefix
+class Sludge : public Projectile {  // base: base ctor call
 public:
     virtual ~Sludge(void);
     virtual void LoadDone(void);
@@ -18,13 +18,12 @@ public:
     virtual void Collided(MKCollisionResult &);
     Sludge(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ f32 unk150;
     /* 0x154 */ f32 unk154;
     /* 0x158 */ f32 unk158;
 };
 
-class SludgeDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class SludgeDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

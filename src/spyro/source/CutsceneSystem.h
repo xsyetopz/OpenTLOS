@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKVector4.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/UIStringTable.h"
 
@@ -68,7 +69,9 @@ public:
     /* 0x014 */ u8 pad14[0x8];
     /* 0x01c */ void* unk1C;
     /* 0x020 */ u8 unk20;
-    /* 0x021 */ u8 pad21[0x17];
+    /* 0x021 */ u8 pad21[0x3];
+    /* 0x024 */ KDStateMachine<CutsceneSystem> unk24;
+    /* 0x025 */ u8 pad25[0x13];
     /* 0x038 */ MKVector4 unk38;
     /* 0x048 */ s8 unk48;
     /* 0x049 */ u8 pad49[0x1f];
@@ -109,7 +112,7 @@ class GameSynkerPlayer : public KDSynkerPlayer3 {  // base: inlined ctor vtable 
 public:
     virtual void Init(const char *, bool, bool, MKIni *);
     virtual void Deinit(void);
-    /* 0x004 */ u8 pad4[0x25c];
+    /* 0x258 */ u8 pad258[0x8];
     /* 0x260 */ UIStringTable unk260;
 };
 

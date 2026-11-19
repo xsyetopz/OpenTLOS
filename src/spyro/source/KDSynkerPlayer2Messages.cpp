@@ -54,12 +54,10 @@ void KDS_Message_PropEnd::Init(bool arg0, bool arg1) {
     this->unk9 = (s8) arg1;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDS_Message_SetCameraSimple::Init(const Matrix &arg0) {
     this->unk0 = 0x801;
     M2C_STRUCT_COPY((s32) (this + 0xC) + 4, (s32) (&arg0 - 4) + 4, 0x40);
 }
-#endif
 
 void KDS_Message_SetCamera::Init(Matrix *arg0, float arg1, float arg2, float arg3) {
     this->unk0 = 0x800;

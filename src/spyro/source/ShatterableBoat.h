@@ -2,8 +2,8 @@
 #define SPYRO_SOURCE_SHATTERABLEBOAT_H
 
 #include <dolphin/types.h>
-#include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/ShatterablePlatformDescriptor.h"
 
 class MKAnim;
 class MKAnimScript;
@@ -14,11 +14,11 @@ class MKProp;
 class MKVector3;
 class ShatterableBoat;
 class ShatterableBoatDescriptor;
-class ShatterableDescriptor;
 class ShatterablePlatform;
+class ShatterablePlatformDescriptor;
 class WaterSurfaceFX;
 
-class ShatterableBoat : public ShatterablePlatform {  // base: vtable prefix
+class ShatterableBoat : public ShatterablePlatform {  // base: base ctor call
 public:
     virtual ~ShatterableBoat(void);
     virtual void Init(void);
@@ -80,12 +80,11 @@ public:
     /* 0x364 */ s32 unk364;
 };
 
-class ShatterableBoatDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class ShatterableBoatDescriptor : public ShatterablePlatformDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     ShatterableBoatDescriptor(void);
-    /* 0x16c */ s32 unk16C;
     /* 0x170 */ s32 unk170;
 };
 
@@ -98,9 +97,9 @@ inline ShatterableBoat::ShatterableBoat() {
     this->unkC8 = &__vt + 0x48;
     this->unk218 = 0;
     this->unk21C = 0;
-    M2C_FIELD(this, f32 *, 0x220) = 0.0f;
-    M2C_FIELD(this, s32 *, 0x224) = 0;
-    this->unk320 = 0.0f;
+    this->unk220 = 0.0f;
+    this->unk224 = 0;
+    this->unk338 = 0;
     return this;
 }
 #endif
@@ -108,8 +107,8 @@ inline ShatterableBoat::ShatterableBoat() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline ShatterableBoat::~ShatterableBoat() {
     this->unkC8 = &__vt.unk48;
-    if ((&this->unk320 != NULL) && (&this->unk320 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk320);
+    if ((&this->unk338 != NULL) && (&this->unk338 != NULL)) {
+        KDSound_Stop(&this->unk338);
     }
 }
 #endif

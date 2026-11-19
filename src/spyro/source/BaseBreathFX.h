@@ -19,7 +19,6 @@ public:
     virtual void Update(void);
     f32 SplineCollide(KDSplinePathSegment *, float);
     void CreateCollisionTest(const MKVector3 &, const MKVector3 &, float, unsigned int, void (*)(BreathFXCollisionSphereTest *));
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ void* unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ u8 pad98[0x4];

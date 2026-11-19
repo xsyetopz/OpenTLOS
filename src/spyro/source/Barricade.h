@@ -9,7 +9,7 @@ class MKMessage;
 class MKVector3;
 class Shatterable;
 
-class BarricadeProp : public Shatterable {  // base: vtable prefix
+class BarricadeProp : public Shatterable {  // base: base ctor call
 public:
     virtual ~BarricadeProp(void);
     virtual void Init(void);
@@ -21,7 +21,6 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     BarricadeProp(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ s32 unk1A8;
     /* 0x1ac */ u8 unk1AC;
 };

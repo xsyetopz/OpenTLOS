@@ -22,7 +22,6 @@
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/MovementObject.h"
 #include "spyro/source/SB2.h"
-#include "spyro/source/Shadow.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
@@ -35,8 +34,8 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKCollisionInfo *);                    /* extern */
-MKCollisionInfo *malloc(M2C_UNK);                   /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(M2C_UNK);                              /* extern */
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
@@ -53,21 +52,21 @@ void Character::UpdateSpeed() {
     } else {
         var_f2_22 = 1.0f;
     }
-    temp_f1_29 = this->unk694;
-    temp_f3_30 = this->unk698;
+    temp_f1_29 = this->unk69C;
+    temp_f3_30 = this->unk6A0;
     temp_f1_32 = (var_f2_22 * (temp_f3_30 - temp_f1_29)) + temp_f1_29;
-    this->unk694 = (var_f2_22 * (temp_f3_30 - temp_f1_32)) + temp_f1_32;
+    this->unk69C = (var_f2_22 * (temp_f3_30 - temp_f1_32)) + temp_f1_32;
 }
 
 void Character::SetDesiredSpeed(float arg0) {
-    this->unk698 = arg0;
+    this->unk6A0 = arg0;
 }
 
 u8 Character::IsSteeringEnabled() {
-    void *temp_r4_49;
+    SB2 *temp_r4_49;
 
-    temp_r4_49 = this->unk638;
-    if ((temp_r4_49 != NULL) && (((u8) M2C_FIELD(temp_r4_49, u8 *, 0x464) >> 7U) & 1)) {
+    temp_r4_49 = this->unk640;
+    if ((temp_r4_49 != NULL) && (((u8) temp_r4_49->unk464 >> 7U) & 1)) {
         return 1U;
     }
     return 0U;
@@ -93,14 +92,14 @@ void Character::UpdateCollisionItems() {
         sp48.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
         sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
         this->unk60 = sp18;
-        sp20 = this->unk588.unk4 + sp48.unk8;
+        sp20 = this->unk588.unk8 + sp48.unk8;
         sp58 = sp18;
         this->unk68 = (f64) sp20;
         sp60 = (f64) sp20;
         sp28.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x64));
         sp8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp28);
         this->unk70 = sp8;
-        sp10 = this->unk588.unk4 + sp28.unk8;
+        sp10 = this->unk588.unk8 + sp28.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         this->unk78 = (f64) sp10;
@@ -248,13 +247,13 @@ void Character::ClearHorizForces() {
 #endif
 
 void Character::SetMovementType(CharacterMoveType arg0) {
-    u32 temp_r0_378;
+    s32 temp_r0_378;
 
-    temp_r0_378 = this->unk680;
-    if (((s32) temp_r0_378 != (s32) arg0) && ((s32) temp_r0_378 == 1)) {
+    temp_r0_378 = this->unk688;
+    if ((temp_r0_378 != (s32) arg0) && (temp_r0_378 == 1)) {
         this->unk110.Teleport(this->unk588, 0xA, 1.0f);
     }
-    this->unk680 = (u32) arg0;
+    this->unk688 = (s32) arg0;
 }
 
 void Character::ResetCloth() {
@@ -329,9 +328,9 @@ void Character::UpdateRotation() {
     s32 temp_r3_548;
     s32 var_r0_558;
 
-    temp_f31_442 = M2C_BITWISE(f32, this->unk684) * gUpdateTimeDelta;
+    temp_f31_442 = this->unk68C * gUpdateTimeDelta;
     if (IsSteeringEnabled() != 0) {
-        ((SB2 *) &sp120)->Calculate((u32) this->unk638);
+        ((SB2 *) &sp120)->Calculate((u32) this->unk640);
         M2C_FIELD(this, f64 *, 0xE0) = sp120;
         M2C_FIELD(this, f64 *, 0xE8) = sp128;
     }
@@ -490,8 +489,8 @@ MKVector3 *Character::UpdateVelocity() {
     if (var_r3_705 == 0) {
         var_r3_705 = 0x598;
         M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + M2C_FIELD(this, f64 *, 0x90));
-        this->unk59C += this->unk98;
-    } else if (this->unk698 > 0.0f) {
+        this->unk5A0 += this->unk98;
+    } else if (this->unk6A0 > 0.0f) {
         temp_f2_727 = 1.0f / gUpdateTimeDelta;
         temp_f0_730 = M2C_FIELD(this, f64 *, 0x90) * (f64) temp_f2_727;
         sp60 = temp_f0_730;
@@ -499,9 +498,9 @@ MKVector3 *Character::UpdateVelocity() {
         sp68 = this->unk98 * temp_f2_727;
         spF0 = temp_f0_730;
         M2C_FIELD(this, f32 *, 0x5A0) = (f64) sp68;
-        temp_f1_740 = this->unk588.unkC;
-        temp_f0_741 = this->unk598;
-        temp_f4_742 = this->unk59C;
+        temp_f1_740 = this->unk598;
+        temp_f0_741 = this->unk59C;
+        temp_f4_742 = this->unk5A0;
         spF8 = (f64) sp68;
         var_f4_748 = (temp_f4_742 * temp_f4_742) + ((temp_f1_740 * temp_f1_740) + (temp_f0_741 * temp_f0_741));
         if (var_f4_748 > 0.0f) {
@@ -539,12 +538,12 @@ MKVector3 *Character::UpdateVelocity() {
                 var_f4_748 = *(u8) &__float_nan;
             }
         }
-        this->unk688 = var_f4_748;
+        this->unk690 = var_f4_748;
     } else {
-        this->unk588.unkC = 0.0f;
         this->unk598 = 0.0f;
         this->unk59C = 0.0f;
-        this->unk688 = 0.0f;
+        this->unk5A0 = 0.0f;
+        this->unk690 = 0.0f;
     }
     if (((u8) this->unk6B5 >> 2U) & 1) {
         temp_f0_826 = M2C_FIELD(this, f64 *, 0xA0) * (f64) gUpdateTimeDelta;
@@ -553,7 +552,7 @@ MKVector3 *Character::UpdateVelocity() {
         sp58 = this->unkA8 * gUpdateTimeDelta;
         spE8 = (f64) sp58;
         M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_826);
-        this->unk59C += (f32) spE8;
+        this->unk5A0 += (f32) spE8;
     }
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (this->unk5E4 < 0.0f) && ((s32) this->unk110.unk16C <= 0)) {
         if (IsSteeringEnabled() == 0) {
@@ -565,7 +564,7 @@ MKVector3 *Character::UpdateVelocity() {
             sp48 = spC0.unk8 * temp_f30_860;
             spD8 = (f64) sp48;
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_867);
-            this->unk59C += (f32) spD8;
+            this->unk5A0 += (f32) spD8;
             temp_f29_888 = gUpdateTimeDelta;
             spA0.operator*(this->unk5E4);
             temp_f0_893 = spA0 * (f64) temp_f29_888;
@@ -583,24 +582,24 @@ MKVector3 *Character::UpdateVelocity() {
             sp28 = MKVector3::up.unk8 * temp_f2_913;
             sp98 = (f64) sp28;
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_918);
-            this->unk59C += (f32) sp98;
+            this->unk5A0 += (f32) sp98;
         }
         var_r3_705 = (u8) &MKVector3::up;
-        temp_f4_938 = this->unk598;
-        temp_f5_940 = this->unk588.unkC;
-        temp_f6_944 = this->unk59C;
+        temp_f4_938 = this->unk59C;
+        temp_f5_940 = this->unk598;
+        temp_f6_944 = this->unk5A0;
         if (((temp_f6_944 * M2C_FIELD((u8) &MKVector3::up, f32 *, 8)) + ((temp_f5_940 * M2C_FIELD((u8) &MKVector3::up, f32 *, 0)) + (temp_f4_938 * M2C_FIELD((u8) &MKVector3::up, f32 *, 4)))) < -1500.0f) {
             __ml((temp_f6_944 * this->unkD8) + ((temp_f5_940 * this->unkD0) + (temp_f4_938 * this->unkD4)), sp80);
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) - M2C_BITWISE(f64, sp80));
             var_r3_705 = (u8) &MKVector3::up;
-            this->unk59C -= sp80.unk8;
+            this->unk5A0 -= sp80.unk8;
             temp_f0_973 = (f64) M2C_FIELD((u8) &MKVector3::up, f32 *, 0) * 1.630724106e-314;
             sp10 = temp_f0_973;
             sp70 = temp_f0_973;
             sp18 = M2C_FIELD((u8) &MKVector3::up, f32 *, 8) * -1500.0f;
             sp78 = (f64) sp18;
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_973);
-            this->unk59C += (f32) sp78;
+            this->unk5A0 += (f32) sp78;
         }
     }
     return (MKVector3 *) var_r3_705;
@@ -614,7 +613,6 @@ void Character::UpdateAnimation() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKAnimScript *temp_r3_1016;
     f32 temp_f3_1030;
     f32 temp_f6_1036;
     f32 temp_f7_1042;
@@ -622,12 +620,13 @@ void Character::UpdateAnimation() {
     s32 temp_r3_1089;
     u32 var_r5_1101;
     u8 var_r30_1073;
+    void *temp_r3_1016;
     void *temp_r3_1029;
     void *var_r3_1096;
 
-    temp_r3_1016 = M2C_FIELD(this, MKAnimScript **, 0x630);
-    if ((temp_r3_1016 != NULL) && ((u32) temp_r3_1016->unk20 != 0U)) {
-        ((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->Animate(MKModel_GetAnimation(temp_r3_1016->unk8), -1, (MKVector3 *) &this->unk80);
+    temp_r3_1016 = this->unk630;
+    if ((temp_r3_1016 != NULL) && ((u32) M2C_FIELD(temp_r3_1016, u32 *, 0x20) != 0U)) {
+        ((MKAnimScript *) this->unk630)->Animate(MKModel_GetAnimation(M2C_FIELD(temp_r3_1016, MKModel **, 8)), -1, (MKVector3 *) &this->unk80);
         temp_r3_1029 = this->unk8;
         temp_f3_1030 = this->unk84;
         temp_f6_1036 = this->unk80;
@@ -663,12 +662,11 @@ block_11:
         } else {
             var_r5_1101 = 0;
         }
-        KDSound_Play3d(M2C_FIELD(this, MKAnimScript **, 0x630), (MKVector3 *) &this->unk588, var_r5_1101, 0.0f, 0U);
+        KDSound_Play3d((MKAnimScript *) this->unk630, &this->unk588, var_r5_1101, 0.0f, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Character::UpdateModel() {
     f32 spAC;
     f32 spA8;
@@ -743,33 +741,32 @@ void Character::UpdateModel() {
     sp94 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp98 = (f32) sp48;
     sp9C = 0.0f;
-    spA0 = M2C_FIELD(this, f32 *, 0x588);
-    spA4 = this->unk588.unk0;
-    spA8 = this->unk588.unk4;
+    spA0 = this->unk588.unk0;
+    spA4 = this->unk588.unk4;
+    spA8 = this->unk588.unk8;
     spAC = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp70));
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
 void Character::StopMovement(bool arg0) {
     MKVector3 sp8;
     f32 temp_f1_1240;
 
-    this->unk684 = 0.0f;
+    this->unk68C = 0.0f;
     if (arg0 != 0) {
-        this->unk694 = 0.0f;
-        this->unk698 = 0.0f;
+        this->unk69C = 0.0f;
+        this->unk6A0 = 0.0f;
     }
-    temp_f1_1240 = (this->unk59C * this->unkD8) + ((this->unk588.unkC * this->unkD0) + (this->unk598 * this->unkD4));
+    temp_f1_1240 = (this->unk5A0 * this->unkD8) + ((this->unk598 * this->unkD0) + (this->unk59C * this->unkD4));
     if (temp_f1_1240 < 0.0f) {
         __ml(temp_f1_1240, sp8);
         M2C_FIELD(this, f32 *, 0x598) = M2C_BITWISE(f64, sp8);
         M2C_FIELD(this, f32 *, 0x5A0) = (f64) sp8.unk8;
     } else {
-        this->unk588.unkC = 0.0f;
         this->unk598 = 0.0f;
         this->unk59C = 0.0f;
+        this->unk5A0 = 0.0f;
     }
     ClearHorizForces();
 }
@@ -948,7 +945,7 @@ void Character::UpdateMovementArbitrary() {
         temp_f0_1402 = M2C_FIELD(this, f64 *, 0x588) + temp_f0_1390;
         sp110 = temp_f0_1402;
         sp2F0 = temp_f0_1402;
-        sp118 = this->unk588.unk4 + (f32) sp2D8;
+        sp118 = this->unk588.unk8 + (f32) sp2D8;
         sp2F8 = (f64) sp118;
         temp_f2_1414 = M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60);
         temp_f0_1418 = M2C_FIELD(this, f64 *, 0xC0) * (f64) temp_f2_1414;
@@ -997,7 +994,7 @@ void Character::UpdateMovementArbitrary() {
             temp_f0_1547 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp230);
             sp30 = temp_f0_1547;
             sp240 = temp_f0_1547;
-            sp38 = this->unk588.unk4 + sp230.unk8;
+            sp38 = this->unk588.unk8 + sp230.unk8;
             sp248 = (f64) sp38;
             spC0 = sp240 + sp300;
             sp2F0 = spC0;
@@ -1022,7 +1019,7 @@ void Character::UpdateMovementArbitrary() {
                 temp_f0_1623 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp1D0);
                 sp20 = temp_f0_1623;
                 sp1E0 = temp_f0_1623;
-                sp28 = this->unk588.unk4 + sp1D0.unk8;
+                sp28 = this->unk588.unk8 + sp1D0.unk8;
                 sp1E8 = (f64) sp28;
                 temp_f0_1635 = sp1E0 + M2C_BITWISE(f64, sp1C0);
                 spA0 = temp_f0_1635;
@@ -1047,7 +1044,7 @@ void Character::UpdateMovementArbitrary() {
         temp_f0_1682 = M2C_FIELD(this, f64 *, 0x588) + sp300;
         sp10 = temp_f0_1682;
         sp1A0 = temp_f0_1682;
-        sp18 = this->unk588.unk4 + (f32) sp308;
+        sp18 = this->unk588.unk8 + (f32) sp308;
         sp1A8 = (f64) sp18;
         temp_f0_1694 = sp1A0 + M2C_BITWISE(f64, sp190);
         sp90 = temp_f0_1694;
@@ -1069,7 +1066,7 @@ void Character::UpdateMovementArbitrary() {
         if (MKCollision_RayCollide(*((MKVector3 *) &sp2F0), *((MKVector3 *) &sp2E0), &sp310, (MKCollisionMode) 5, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
             sp70 = M2C_BITWISE(f64, sp310) - M2C_FIELD(this, f64 *, 0x588);
             this->unk110.unk16C = 1;
-            sp78 = sp310.unk8 - this->unk588.unk4;
+            sp78 = sp310.unk8 - this->unk588.unk8;
             this->unk110.unk8 = M2C_BITWISE(f64, sp310);
             this->unk110.unk10 = (f64) sp310.unk8;
             sp160 = sp70;
@@ -1098,7 +1095,7 @@ void Character::UpdateMovementArbitrary() {
             sp68 = sp140.unk8 * temp_f28_1788;
             sp158 = (f64) sp68;
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_1795);
-            this->unk59C += (f32) sp158;
+            this->unk5A0 += (f32) sp158;
             sp300 = M2C_FIELD(this, f64 *, 0x598);
             M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
             M2C_FIELD(this, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
@@ -1107,8 +1104,8 @@ void Character::UpdateMovementArbitrary() {
         }
     }
     M2C_FIELD(this, f64 *, 0x588) = (f64) (M2C_FIELD(this, f64 *, 0x588) + sp300);
-    temp_f2_1837 = this->unk588.unk4 + (f32) sp308;
-    this->unk588.unk4 = temp_f2_1837;
+    temp_f2_1837 = this->unk588.unk8 + (f32) sp308;
+    this->unk588.unk8 = temp_f2_1837;
     this->unk100 = sp300;
     this->unk108 = sp308;
     UpdateModel(sp300, temp_f2_1837);
@@ -1164,11 +1161,11 @@ void Character::UpdateMovementNormal() {
     this->unk100 = sp48;
     this->unk108 = sp50;
     this->unk110.unk440 = NULL;
-    temp_f1_1942 = (this->unk59C * this->unkD8) + ((this->unk588.unkC * this->unkD0) + (this->unk598 * this->unkD4));
-    if (!(((u8) this->unk6B5 >> 4U) & 1) && (temp_f1_1942 < 0.0f) && ((s32) this->unk110.unk16C > 0) && ((void *) this->unk634 == NULL) && (this->unk5F0 & 1)) {
+    temp_f1_1942 = (this->unk5A0 * this->unkD8) + ((this->unk598 * this->unkD0) + (this->unk59C * this->unkD4));
+    if (!(((u8) this->unk6B5 >> 4U) & 1) && (temp_f1_1942 < 0.0f) && ((s32) this->unk110.unk16C > 0) && ((MKProp *) this->unk63C == NULL) && (this->unk5F0 & 1)) {
         __ml(temp_f1_1942, sp38);
         M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) - M2C_BITWISE(f64, sp38));
-        this->unk59C -= sp38.unk8;
+        this->unk5A0 -= sp38.unk8;
         temp_f31_1970 = gUpdateTimeDelta;
         sp18.operator*(this->unk5E4);
         temp_f0_1975 = sp18 * (f64) temp_f31_1970;
@@ -1177,7 +1174,7 @@ void Character::UpdateMovementNormal() {
         sp10 = sp18.unk8 * temp_f31_1970;
         sp30 = (f64) sp10;
         M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) + temp_f0_1975);
-        this->unk59C += (f32) sp30;
+        this->unk5A0 += (f32) sp30;
     }
     UpdateModel();
 }
@@ -1185,13 +1182,13 @@ void Character::UpdateMovementNormal() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Character::UpdateMovement() {
+    s32 temp_r0_2021;
     s32 temp_r30_2022;
-    u32 temp_r0_2021;
     void *temp_r31_2055;
 
-    temp_r0_2021 = this->unk680;
+    temp_r0_2021 = this->unk688;
     temp_r30_2022 = EnableCollision(0);
-    switch ((s32) temp_r0_2021) {                   /* irregular */
+    switch (temp_r0_2021) {                         /* irregular */
     case 0:
         UpdateMovementNormal();
         break;
@@ -1262,7 +1259,7 @@ void Character::BridgeHit(float arg0, float arg1) {
         temp_f1_2116 = M2C_FIELD(this, f64 *, 0x598) * 4.89153186e-315;
         sp28 = temp_f1_2116;
         sp98 = temp_f1_2116;
-        sp30 = this->unk59C * 0.002f;
+        sp30 = this->unk5A0 * 0.002f;
         spC = -1.0f;
         spA0 = (f64) sp30;
         sp8 = -(f32) sp98;
@@ -1342,75 +1339,75 @@ block_19:
     return var_r3_2174;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Character::PlatformDetach() {
     s32 sp2C;
     s8 sp28;
-    M2C_UNK *sp24;
+    u8 *sp24;
     s32 sp20;
     s32 sp1C;
     s8 sp18;
-    SB2 **sp10;
+    M2C_UNK *sp10;
     s32 spC;
     s32 sp8;
-    void *temp_r3_2246;
+    MKProp *temp_r3_2246;
     void *temp_r3_2266;
 
-    temp_r3_2246 = this->unk634;
+    temp_r3_2246 = this->unk63C;
     if (temp_r3_2246 != NULL) {
         sp20 = 0;
         sp1C = 0x24;
         sp24 = &this->unk670;
         sp28 = 0;
         sp2C = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_2246, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp1C, 0x24, 0);
-        this->unk634 = NULL;
+        M2C_FIELD(temp_r3_2246->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp1C, 0x24, 0);
+        this->unk63C = NULL;
         return;
     }
     temp_r3_2266 = this->unk664;
     if (temp_r3_2266 != NULL) {
         spC = 0;
         sp8 = 0x9A;
-        sp10 = &this->unk640;
+        sp10 = &this->unk648;
         sp18 = 0;
         M2C_FIELD(M2C_FIELD(temp_r3_2266, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x9A, 0);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Character::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp2C;
     u8 sp28;
-    M2C_UNK *sp24;
+    u8 *sp24;
     s32 sp20;
     s32 sp1C;
     s8 sp18;
     MKCollisionInfo *sp14;
-    SB2 **sp10;
+    M2C_UNK *sp10;
     s32 spC;
     s32 sp8;
+    MKProp *temp_r3_2314;
     s32 temp_r3_2301;
-    void *temp_r3_2314;
 
     PlatformDetach();
     temp_r3_2301 = M2C_FIELD(arg0->unk0, s32 *, 0xC);
     if (temp_r3_2301 & 0x4000) {
-        this->unk634 = arg0;
+        this->unk63C = arg0;
         sp20 = 0;
         sp1C = 0x23;
         sp24 = &this->unk670;
         sp28 = 0;
         sp2C = arg1;
-        temp_r3_2314 = this->unk634;
-        M2C_FIELD(M2C_FIELD(temp_r3_2314, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_2314, &sp1C, 0);
+        temp_r3_2314 = this->unk63C;
+        temp_r3_2314->Message(&sp1C, 0);
         if (sp28 == 0) {
-            this->unk634 = NULL;
+            this->unk63C = NULL;
         }
     } else if (temp_r3_2301 & 0x20000) {
         spC = 0;
         sp8 = 0x99;
-        sp10 = &this->unk640;
+        sp10 = &this->unk648;
         sp14 = arg1;
         sp18 = 0;
         arg0->Message(&sp8, 0x99, 0);
@@ -1419,10 +1416,10 @@ void Character::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
 #endif
 
 void Character::PlatformUpdate() {
+    MKProp *temp_r0_2387;
     MKProp *var_r31_2358;
     s32 temp_r3_2420;
     s32 temp_r4_2359;
-    void *temp_r0_2387;
     void *temp_r0_2393;
     void *var_r3_2366;
     void *var_r3_2379;
@@ -1445,11 +1442,11 @@ void Character::PlatformUpdate() {
             var_r31_2358 = M2C_FIELD(M2C_FIELD(var_r3_2379, void **, 0x48), MKProp **, 8);
         }
     }
-    temp_r0_2387 = this->unk634;
+    temp_r0_2387 = this->unk63C;
     if (((temp_r0_2387 != NULL) && (var_r31_2358 != temp_r0_2387)) || ((temp_r0_2393 = this->unk664, ((temp_r0_2393 == NULL) == 0)) && (var_r31_2358 != temp_r0_2393))) {
         PlatformDetach();
     }
-    if ((var_r31_2358 != NULL) && (((var_r31_2358 != (void *) this->unk634) && (M2C_FIELD(var_r31_2358->unk0, s32 *, 0xC) & 0x4000)) || ((var_r31_2358 != (void *) this->unk664) && (M2C_FIELD(var_r31_2358->unk0, s32 *, 0xC) & 0x20000)))) {
+    if ((var_r31_2358 != NULL) && (((var_r31_2358 != (MKProp *) this->unk63C) && (M2C_FIELD(var_r31_2358->unk0, s32 *, 0xC) & 0x4000)) || ((var_r31_2358 != (void *) this->unk664) && (M2C_FIELD(var_r31_2358->unk0, s32 *, 0xC) & 0x20000)))) {
         temp_r3_2420 = this->unk110.unk16C;
         if (temp_r3_2420 != 0) {
             var_r3_2426 = this + ((temp_r3_2420 - 1) * 0x58) + 0x118;
@@ -1546,13 +1543,13 @@ s32 Character::HasAnimFinished() {
     s32 var_r5_2663;
     void *temp_r6_2655;
 
-    temp_r6_2655 = M2C_FIELD(this, void **, 0x630);
+    temp_r6_2655 = this->unk630;
     temp_r4_2656 = M2C_FIELD(temp_r6_2655, s32 *, 0x2C);
     if (temp_r4_2656 & 1) {
         return 1;
     }
     var_r5_2663 = 0;
-    if ((temp_r4_2656 & 2) && ((s32) M2C_FIELD(temp_r6_2655, s32 *, 0x44) > M2C_BITWISE(s32, this->unk69C))) {
+    if ((temp_r4_2656 & 2) && ((s32) M2C_FIELD(temp_r6_2655, s32 *, 0x44) > (s32) this->unk6A4)) {
         var_r5_2663 = 1;
     }
     return var_r5_2663;
@@ -1560,11 +1557,11 @@ s32 Character::HasAnimFinished() {
 
 #if 0 // DRAFT: illegal operand
 void Character::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsigned int arg4) {
-    MKAnimScript *temp_r3_2696;
     f32 var_f3_0;
     s32 temp_r3_2723;
     u32 temp_r6_2697;
     u32 var_r5_2735;
+    void *temp_r3_2696;
     void *var_r3_2730;
 
     var_f3_0 = arg3;
@@ -1572,17 +1569,17 @@ void Character::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsign
         var_f3_0 = 0.0f;
     }
     if (arg0 != NULL) {
-        temp_r3_2696 = M2C_FIELD(this, MKAnimScript **, 0x630);
-        temp_r6_2697 = temp_r3_2696->unk20;
+        temp_r3_2696 = this->unk630;
+        temp_r6_2697 = M2C_FIELD(temp_r3_2696, u32 *, 0x20);
         if ((temp_r6_2697 != arg0) || (arg4 & 4)) {
             if ((temp_r6_2697 == arg0) && (arg4 & 4)) {
                 var_f3_0 = 0.0f;
             }
-            temp_r3_2696->SetAnim(arg0, arg2, var_f3_0, (s32) arg4, -1);
-            this->unk68C = arg1;
-            this->unk69C = 0.0f;
+            ((MKAnimScript *) temp_r3_2696)->SetAnim(arg0, arg2, var_f3_0, (s32) arg4, -1);
+            this->unk694 = arg1;
+            this->unk6A4 = 0;
             if (arg2 < 0.0f) {
-                this->unk69C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk69C) + 1));
+                this->unk6A4 += 1;
             }
             temp_r3_2723 = this->unk110.unk16C;
             if (temp_r3_2723 > 0) {
@@ -1595,14 +1592,14 @@ void Character::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsign
             } else {
                 var_r5_2735 = 0;
             }
-            KDSound_Play3d(M2C_FIELD(this, MKAnimScript **, 0x630), (MKVector3 *) &this->unk588, var_r5_2735, 0.0f, 0U);
+            KDSound_Play3d((MKAnimScript *) this->unk630, &this->unk588, var_r5_2735, 0.0f, 0U);
             return;
         }
-        if (arg2 != temp_r3_2696->unk38) {
-            temp_r3_2696->unk38 = arg2;
-            this->unk68C = arg1;
+        if (arg2 != M2C_FIELD(temp_r3_2696, f32 *, 0x38)) {
+            M2C_FIELD(temp_r3_2696, f32 *, 0x38) = arg2;
+            this->unk694 = arg1;
         }
-        this->unk69C = M2C_FIELD(this, MKAnimScript **, 0x630)->unk44;
+        this->unk6A4 = M2C_FIELD(this->unk630, s32 *, 0x44);
     }
 }
 #endif
@@ -1716,7 +1713,6 @@ void Character::FindGroundColour(bool arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollisionResult &arg2) {
     f64 sp88;
     f64 sp80;
@@ -1737,17 +1733,17 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     f32 sp18;
     f64 sp10;
     u8 spC;
-    MKCollisionInfo *sp8;
-    MKCollisionInfo *temp_r6_2951;
+    void *sp8;
     f32 temp_f4_2974;
     f64 temp_f0_2990;
     f64 temp_f5_2969;
+    void *temp_r6_2951;
 
     temp_r6_2951 = this->unk634;
     sp8 = temp_r6_2951;
     if (temp_r6_2951 != NULL) {
-        spC = temp_r6_2951->unk4;
-        temp_r6_2951->unk4 = 0;
+        spC = M2C_FIELD(temp_r6_2951, u8 *, 4);
+        M2C_FIELD(temp_r6_2951, u8 *, 4) = 0U;
     }
     sp40 = 0.0f;
     sp44 = 10.0f;
@@ -1772,10 +1768,9 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     sp78 = (f64) sp18;
     MKCollision_RayCollide(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), &arg2, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x200);
     if (sp8 != NULL) {
-        sp8->unk4 = spC;
+        M2C_FIELD(sp8, u8 *, 4) = spC;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const float' to
 s32 Character::Teleport(const Matrix *arg0) {
@@ -1813,8 +1808,8 @@ s32 Character::Teleport(const Matrix *arg0) {
         UpdateCollisionItems(sp10);
         UpdateModel();
         ResetCloth();
-        if (((u32) this->unk634->unkC != 0U) && (M2C_FIELD(*gMK, u32 (**)(void **), 0x7C)(gMK) != 0U)) {
-            ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk634->unkC);
+        if (((u32) M2C_FIELD(this->unk634, u32 *, 0xC) != 0) && (M2C_FIELD(*gMK, u32 (**)(void **), 0x7C)(gMK) != 0U)) {
+            ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate(M2C_FIELD(this->unk634, u32 *, 0xC));
         }
         if (sp8 != NULL) {
             sp8->unk4 = spC;
@@ -1828,7 +1823,6 @@ s32 Character::Teleport(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Character::SetupCollision() {
     f64 sp60;
     f64 sp58;
@@ -1874,7 +1868,7 @@ void Character::SetupCollision() {
         sp50 = (f64) sp20;
         sp58 = (f64) sp28;
         sp60 = (f64) sp30;
-        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64, f64, f64), 0x84)(gMK, (f64) sp28, (f64) sp20, (f64) sp18)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, M2C_FIELD(temp_r30_3147, f32 *, 0x60), *((MKVector4 *) &sp58), *((MKVector4 *) &sp48), (MKCollisionMode) var_r31_3154, this->unk634, M2C_FIELD(temp_r30_3147, u32 *, 0x70));
+        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64, f64, f64), 0x84)(gMK, (f64) sp28, (f64) sp20, (f64) sp18)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, M2C_FIELD(temp_r30_3147, f32 *, 0x60), *((MKVector4 *) &sp58), *((MKVector4 *) &sp48), (MKCollisionMode) var_r31_3154, (MKCollisionInfo *) this->unk634, M2C_FIELD(temp_r30_3147, u32 *, 0x70));
         return;
     case 1:
         sp8 = 1.0f;
@@ -1884,14 +1878,13 @@ void Character::SetupCollision() {
         sp38 = (f64) sp8;
         sp40 = (f64) sp10;
         temp_f31_3215 = M2C_FIELD(temp_r30_3147, f32 *, 0x60);
-        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64), 0x84)(gMK, (f64) sp8)))->AddSphere((MKVector3 *) &this->unk60, temp_f31_3215, temp_f31_3215, *((MKVector4 *) &sp38), (MKCollisionMode) 2, this->unk634, M2C_FIELD(temp_r30_3147, u32 *, 0x70));
+        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64), 0x84)(gMK, (f64) sp8)))->AddSphere((MKVector3 *) &this->unk60, temp_f31_3215, temp_f31_3215, *((MKVector4 *) &sp38), (MKCollisionMode) 2, (MKCollisionInfo *) this->unk634, M2C_FIELD(temp_r30_3147, u32 *, 0x70));
         return;
     case 2:
-        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, 0, (MKCollisionMode) 2, this->unk634, 0U);
+        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, 0, (MKCollisionMode) 2, (MKCollisionInfo *) this->unk634, 0U);
         return;
     }
 }
-#endif
 
 s32 Character::IsActive() {
     s32 temp_r3_3259;
@@ -1933,14 +1926,14 @@ s32 Character::Spawn(SpawnPointRef *arg0) {
     Activate();
     SetMovementType((CharacterMoveType) 2);
     this->unk5B8 = 0.0f;
-    this->unk5B8 = 0.0f;
     this->unk5BC = 0.0f;
-    this->unk5C8 = 0.0f;
+    this->unk5C0 = 0.0f;
     this->unk5C8 = 0.0f;
     this->unk5CC = 0.0f;
-    M2C_FIELD(this, f32 *, 0x588) = 0.0f;
+    this->unk5D0 = 0.0f;
     this->unk588.unk0 = 0.0f;
     this->unk588.unk4 = 0.0f;
+    this->unk588.unk8 = 0.0f;
     UpdateCollisionItems();
     sp18 = 0.0f;
     sp1C = 0.0f;
@@ -1996,7 +1989,7 @@ s32 Character::Spawn(const Matrix *arg0) {
     M2C_FIELD(this, f64 *, 0x5C0) = (f64) M2C_FIELD(arg0, f64 *, 0x38);
     M2C_FIELD(this, f64 *, 0x5C8) = (f64) M2C_FIELD(arg0, f64 *, 0x20);
     M2C_FIELD(this, f64 *, 0x5D0) = (f64) M2C_FIELD(arg0, f64 *, 0x28);
-    this->unk634 = NULL;
+    this->unk63C = NULL;
     temp_r29_3446 = this->unk110.unk460;
     temp_r3_3456 = MKCollision_SphereCollide(*((MKVector3 *) &this->unk5B8), M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60), &sp10, 0xA, (MKCollisionMode) 2, M2C_FIELD(temp_r29_3446, s32 *, 0x18) | 0x2000);
     if (temp_r3_3456 != 0) {
@@ -2038,24 +2031,22 @@ s32 Character::Spawn(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 u8 Character::IsCollisionEnabled() {
-    return this->unk634->unk4;
+    return M2C_FIELD(this->unk634, u8 *, 4);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 void Character::EnableCollision(bool arg0) {
-    MKCollisionInfo *temp_r4_3568;
     u8 temp_r3_3569;
+    void *temp_r4_3568;
 
     temp_r4_3568 = this->unk634;
-    temp_r3_3569 = temp_r4_3568->unk4;
+    temp_r3_3569 = M2C_FIELD(temp_r4_3568, u8 *, 4);
     if (arg0 != 0) {
-        temp_r4_3568->unk4 = 1;
+        M2C_FIELD(temp_r4_3568, u8 *, 4) = 1U;
         return temp_r3_3569;
     }
-    temp_r4_3568->unk4 = 0;
+    M2C_FIELD(temp_r4_3568, u8 *, 4) = 0U;
     return temp_r3_3569;
 }
 #endif
@@ -2064,7 +2055,7 @@ void Character::EnableCollision(bool arg0) {
 void Character::Deactivate() {
     PropFlagsClear((u32 *) &this->unk10, 0x60000U);
     EnableCollision(0);
-    ((Shadow *) &this->unk600)->Show(0U);
+    this->unk600.Show(0U);
 }
 #endif
 
@@ -2155,10 +2146,10 @@ void Character::Message(MKMessage *arg0) {
             EnableCollision(M2C_FIELD(checked_cast<CollisionMsg *, MKMessage>(arg0), u8 *, 8));
             goto block_88;
         case 39:
-            M2C_FIELD(checked_cast<CollisionInfoRequest *, MKMessage>(arg0), MKCollisionInfo **, 8) = (MKCollisionInfo *) this->unk634;
+            M2C_FIELD(checked_cast<CollisionInfoRequest *, MKMessage>(arg0), void **, 8) = (void *) this->unk634;
             goto block_88;
         case 2050:
-            ((KDS_Message_PropResolve *) (checked_cast<P23KDS_Message_PropResolve))->Set(9MKMessage>__FP9MKMessage(arg0), (MKProp *) this, M2C_FIELD(this, MKAnimScript **, 0x630));
+            ((KDS_Message_PropResolve *) (checked_cast<P23KDS_Message_PropResolve))->Set(9MKMessage>__FP9MKMessage(arg0), (MKProp *) this, (MKAnimScript *) this->unk630);
             goto block_88;
         case 2051:
             if (this->unk10 & 0x01000000) {
@@ -2202,21 +2193,21 @@ void Character::Message(MKMessage *arg0) {
                     var_r31_3868 = 1;
                 }
             }
-            ((Shadow *) &this->unk600)->Show(var_r31_3868);
+            this->unk600.Show(var_r31_3868);
             PropFlagsSet((u32 *) &this->unk10, 0x20000U);
             goto block_88;
         case -4:
             this->unk110.ResetResults();
-            ((Shadow *) &this->unk600)->Show(0U);
+            this->unk600.Show(0U);
             PropFlagsClear((u32 *) &this->unk10, 0x20000U);
             goto block_88;
         case 28:
         case 31:
-            this->unk6A0 = 1.15e-43f;
+            M2C_FIELD(this, s32 *, 0x6A8) = 0x52;
             this->unk6B0 = 1;
-            Message(&this->unk6A0);
+            Message(&this->unk6A8);
             if (!(((u8) this->unk6B5 >> 7U) & 1)) {
-                ((Shadow *) &this->unk600)->Show(0U);
+                this->unk600.Show(0U);
             }
             goto block_88;
         case 358:
@@ -2226,12 +2217,12 @@ void Character::Message(MKMessage *arg0) {
             this->unk6B5 &= ~0x80;
             goto block_88;
         case 29:
-            this->unk6A0 = 1.16e-43f;
-            Message(&this->unk6A0);
-            ((Shadow *) &this->unk600)->Show(((u32) this->unk10 >> 0x12U) & 1);
+            M2C_FIELD(this, s32 *, 0x6A8) = 0x53;
+            Message(&this->unk6A8);
+            this->unk600.Show(((u32) this->unk10 >> 0x12U) & 1);
             goto block_88;
         case 34:
-            if ((void *) this->unk634 != NULL) {
+            if ((MKProp *) this->unk63C != NULL) {
                 temp_f8_3977 = this->unkC0;
                 temp_r31_3978 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
                 sp70 = temp_f8_3977;
@@ -2367,10 +2358,10 @@ void Character::Update() {
     this->unk94 = 0.0f;
     this->unk98 = 0.0f;
     if ((IsSteeringEnabled() == 0) && !(((u8) this->unk6B5 >> 1U) & 1)) {
-        this->unk588.unkC = 0.0f;
         this->unk598 = 0.0f;
         this->unk59C = 0.0f;
-        this->unk688 = 0.0f;
+        this->unk5A0 = 0.0f;
+        this->unk690 = 0.0f;
     }
     if (this->unk10 & 0x20000) {
         if (!(((u8) this->unk6B5 >> 7U) & 1)) {
@@ -2423,7 +2414,7 @@ loop_28:
                 var_r28_4299 += 1;
                 goto loop_28;
             }
-            ((Shadow *) &this->unk600)->Show(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1);
+            this->unk600.Show(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1);
             temp_r3_4328 = this->unk110.unk16C;
             if (temp_r3_4328 > 0) {
                 if (temp_r3_4328 != 0) {
@@ -2431,7 +2422,7 @@ loop_28:
                 } else {
                     var_r3_4335 = NULL;
                 }
-                this->unk600.unk24 = M2C_FIELD(var_r3_4335, f32 *, 4);
+                this->unk600.unk28 = M2C_FIELD(var_r3_4335, f32 *, 4);
             }
         }
     }
@@ -2439,9 +2430,9 @@ loop_28:
 #endif
 
 void Character::SetDefaults() {
-    void *temp_r3_4417;
+    SB2 *temp_r3_4417;
 
-    this->unk10 = this->unk680;
+    this->unk10 = (s32) this->unk680;
     this->unk6B4 = 0;
     this->unk6B5 &= ~0x80;
     this->unk6B5 &= ~0x10;
@@ -2456,7 +2447,7 @@ void Character::SetDefaults() {
     M2C_FIELD(this, f32 *, 0x58) = 1.0f;
     M2C_FIELD(this, f32 *, 0x5C) = 1.0f;
     this->unk684 = 0;
-    this->unk680 = 0;
+    this->unk688 = 0;
     this->unk90 = 0.0f;
     this->unk94 = 0.0f;
     this->unk98 = 0.0f;
@@ -2472,27 +2463,27 @@ void Character::SetDefaults() {
     M2C_FIELD(this, f32 *, 0x100) = 0.0f;
     M2C_FIELD(this, f32 *, 0x104) = 0.0f;
     M2C_FIELD(this, f32 *, 0x108) = 0.0f;
-    this->unk688 = 0.0f;
-    this->unk694 = 0.0f;
-    this->unk698 = 0.0f;
-    this->unk684 = 0.0f;
-    this->unk690 = 1.0f;
-    this->unk634 = NULL;
-    this->unk630 = NULL;
-    temp_r3_4417 = this->unk638;
-    if (temp_r3_4417 != NULL) {
-        ((SB2 *) temp_r3_4417)->SetDefaults();
-    }
+    this->unk690 = 0.0f;
     this->unk69C = 0.0f;
+    this->unk6A0 = 0.0f;
+    this->unk68C = 0.0f;
+    this->unk698 = 1.0f;
+    this->unk63C = NULL;
+    this->unk638 = NULL;
+    temp_r3_4417 = this->unk640;
+    if (temp_r3_4417 != NULL) {
+        temp_r3_4417->SetDefaults();
+    }
+    this->unk6A4 = 0;
 }
 
 void Character::Resolve() {
-    void *temp_r3_4440;
+    MKProp *temp_r3_4440;
 
     MKProp::Resolve();
-    temp_r3_4440 = this->unk634;
+    temp_r3_4440 = this->unk63C;
     if (temp_r3_4440 != NULL) {
-        this->unk634 = NULL;
+        this->unk63C = NULL;
         PlatformAttach(((MKSceneManager *) temp_r3_4440)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)), NULL);
     }
 }
@@ -2514,7 +2505,7 @@ void Character::LoadDone() {
     void *temp_r3_4560;
     void *temp_r4_4468;
 
-    this->unk10 = this->unk680;
+    this->unk10 = (s32) this->unk680;
     temp_r4_4468 = this->unk0;
     temp_r3_4469 = M2C_FIELD(temp_r4_4468, void **, 0x34);
     if (temp_r3_4469 != NULL) {
@@ -2522,8 +2513,8 @@ void Character::LoadDone() {
         if ((u32) MKModel_GetAnimation(M2C_FIELD(temp_r3_4469, MKModel **, 8))->unk18 != 0U) {
             var_r30_4473 = (s8 *)1;
         }
-        M2C_FIELD(this, MKAnimScript **, 0x630) = ((MKAnimScript *) (((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName()))->Create(var_r30_4473, M2C_ERROR(/* Read from unset register $r5 */));
-        this->unk4 = M2C_FIELD(this, MKAnimScript **, 0x630)->unk8;
+        this->unk630 = ((MKAnimScript *) (((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName()))->Create(var_r30_4473, M2C_ERROR(/* Read from unset register $r5 */));
+        this->unk4 = M2C_FIELD(this->unk630, MKModel **, 8);
         this->unk10 &= 0xFFFFFFFB;
     } else {
         temp_r3_4494 = M2C_FIELD(temp_r4_4468, MKModel **, 0x2C);
@@ -2536,7 +2527,7 @@ void Character::LoadDone() {
         this->unk8 = MKModel_GetWorldMatrix(temp_r3_4504);
     }
     MKProp::LoadDone();
-    if (((MKAnimScript *) M2C_FIELD(this, MKAnimScript **, 0x630) == NULL) && ((MKModel *) this->unk4 == NULL)) {
+    if (((void *) this->unk630 == NULL) && ((MKModel *) this->unk4 == NULL)) {
         this->unk10 = (this->unk10 & 0xFFFFFFFC) | 2;
         return;
     }
@@ -2547,7 +2538,7 @@ void Character::LoadDone() {
         MKModel_SetClothManualUpdate(this->unk4, 1U);
     }
     if ((u32) M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xDC) != 0U) {
-        this->unk63C = MKMaterial_Create(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0xDC));
+        this->unk644 = MKMaterial_Create(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0xDC));
     }
     this->unk680 |= this->unk10;
     temp_r30_4558 = checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -2561,7 +2552,7 @@ void Character::LoadDone() {
     M2C_FIELD(this, f64 *, 0x5C0) = sp28;
     M2C_FIELD(this, f64 *, 0x588) = (f64) M2C_FIELD(this, f64 *, 0x5B8);
     M2C_FIELD(this, f64 *, 0x590) = (f64) M2C_FIELD(this, f64 *, 0x5C0);
-    KDMath_GetDirection(NormaliseAngle(this->unk5C8));
+    KDMath_GetDirection(NormaliseAngle(this->unk5CC));
     M2C_FIELD(this, f64 *, 0x5C8) = sp10;
     M2C_FIELD(this, f64 *, 0x5D0) = sp18;
     M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(this, f64 *, 0x5C8);
@@ -2581,8 +2572,8 @@ void Character::LoadDone() {
     this->unk6B5 |= 0x40;
     UpdateModel(&MKVector3::up, 1, temp_f1_4629, temp_f2_4621, temp_f3_4620);
     SetupCollision();
-    ((Shadow *) &this->unk600)->Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
-    ((Shadow *) &this->unk600)->Show(0U);
+    this->unk600.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
+    this->unk600.Show(0U);
 }
 #endif
 
@@ -2597,7 +2588,7 @@ s32 Character::LoadLine(MKIniLine *arg0) {
     if ((arg0->IsField("bSynkerAnimate") != 0) && (arg0->GetBool(0) != 0)) {
         PropFlagsSet((u32 *) &this->unk10, 0x01000000U);
     }
-    if ((MKProp::LoadLine(arg0) != 0) || (((MovementObject *) &this->unk588)->LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk634, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((MovementObject *) &this->unk588)->LoadLine(arg0) != 0) || (PropFlagsLoadLine(&this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk63C, 0) != 0)) {
         return 1;
     }
     if (arg0->LoadBool("bDrawInCutscenes", &sp8, 0) != 0) {
@@ -2608,33 +2599,33 @@ s32 Character::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal operand
 void Character::Deinit() {
-    MKAnimScript *temp_r3_4777;
-    MKCollisionInfo *temp_r31_4797;
     MKHeap *temp_r3_4800;
-    MKProp *temp_r3_4790;
-    void *temp_r3_4766;
+    MKMaterial *temp_r3_4790;
+    SB2 *temp_r3_4766;
+    void *temp_r31_4797;
+    void *temp_r3_4777;
 
-    temp_r3_4766 = this->unk638;
+    temp_r3_4766 = this->unk640;
     if (temp_r3_4766 != NULL) {
-        ((SB2 *) temp_r3_4766)->Deinit();
-        operator delete(this->unk638);
+        temp_r3_4766->Deinit();
+        operator delete(this->unk640);
     }
     PlatformDetach();
-    ((Shadow *) &this->unk600)->Deinit();
-    temp_r3_4777 = M2C_FIELD(this, MKAnimScript **, 0x630);
+    this->unk600.Deinit();
+    temp_r3_4777 = this->unk630;
     if (temp_r3_4777 != NULL) {
-        temp_r3_4777->Destroy();
+        ((MKAnimScript *) temp_r3_4777)->Destroy();
     }
-    M2C_FIELD(this, MKAnimScript **, 0x630) = NULL;
+    this->unk630 = NULL;
     this->unk4 = NULL;
     this->unk110.Deinit();
-    temp_r3_4790 = this->unk63C;
+    temp_r3_4790 = this->unk644;
     if (temp_r3_4790 != NULL) {
-        MKMaterial_Destroy((MKMaterial *) temp_r3_4790);
+        MKMaterial_Destroy(temp_r3_4790);
     }
-    this->unk63C = NULL;
+    this->unk644 = NULL;
     temp_r31_4797 = this->unk634;
     if (temp_r31_4797 != NULL) {
         temp_r3_4800 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -2652,11 +2643,11 @@ void Character::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: ')' expected
 void Character::Init() {
-    MKCollisionInfo *temp_r4_4861;
-    MKCollisionInfo *var_r3_4851;
     MKHeap *temp_r3_4844;
+    void *temp_r4_4861;
+    void *var_r3_4851;
 
     MKProp::Init();
     this->unk634 = NULL;
@@ -2668,12 +2659,12 @@ void Character::Init() {
     }
     this->unk634 = var_r3_4851;
     temp_r4_4861 = this->unk634;
-    temp_r4_4861->unk0 = 0;
-    temp_r4_4861->unk4 = 1;
-    temp_r4_4861->unk8 = (MKProp *) this;
-    temp_r4_4861->unkC = 0;
-    M2C_FIELD(this, s32 *, 0x630) = 0;
-    this->unk63C = NULL;
+    M2C_FIELD(temp_r4_4861, s32 *, 0) = 0;
+    M2C_FIELD(temp_r4_4861, s8 *, 4) = 1;
+    M2C_FIELD(temp_r4_4861, Character **, 8) = this;
+    M2C_FIELD(temp_r4_4861, s32 *, 0xC) = 0;
+    this->unk630 = NULL;
+    this->unk644 = NULL;
     this->unk680 = this->unk10 | 0x160000;
     M2C_FIELD(this, f32 *, 0x60) = 0.0f;
     M2C_FIELD(this, f32 *, 0x64) = 0.0f;
@@ -2681,13 +2672,13 @@ void Character::Init() {
     M2C_FIELD(this, f32 *, 0x70) = 0.0f;
     M2C_FIELD(this, f32 *, 0x74) = 0.0f;
     M2C_FIELD(this, f32 *, 0x78) = 0.0f;
-    this->unk638 = NULL;
+    this->unk640 = NULL;
     if ((u8) M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x77) != 0) {
         operator new(0x468U, NULL, 0);
-        this->unk638 = M2C_ERROR(/* Read from unset register $r3 */);
-        ((SB2 *) this->unk638)->Init();
+        this->unk640 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk640->Init();
     }
-    this->unk634 = NULL;
+    this->unk63C = NULL;
     M2C_FIELD(this, Character **, 0x670) = this;
     this->unk660 = this;
     Character::SetDefaults();

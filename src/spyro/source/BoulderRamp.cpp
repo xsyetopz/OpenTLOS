@@ -258,8 +258,8 @@ void BoulderRamp::ReceivingBoulderUpdate() {
     this->unkE8 = var_f3_190;
     temp_r31_199 = this->unkF0;
     if (temp_r31_199 != NULL) {
-        sp20.operator*(M2C_BITWISE(f32, temp_r31_199->unk270));
-        sp30.operator*(temp_r31_199->unk27C);
+        sp20.operator*(temp_r31_199->unk274);
+        sp30.operator*(temp_r31_199->unk280);
         sp40.operator*(0.5f);
         sp8 = 0.0f;
         sp50.GetMeasure(this->unkE8, &this->unkF4, KDSpline_PositionMixer);
@@ -476,13 +476,11 @@ void BoulderRamp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void BoulderRampDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 BoulderRampDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_662;
 
@@ -494,7 +492,7 @@ s32 BoulderRampDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void BoulderRampDescriptor::Init() {
     TrapDescriptor::Init();
     this->unkE4 = GS_PLACEHOLDER;

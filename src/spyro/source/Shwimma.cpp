@@ -40,7 +40,6 @@ void ShwimmaCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ShwimmaCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -65,7 +64,6 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ShwimmaCritter::Update() {

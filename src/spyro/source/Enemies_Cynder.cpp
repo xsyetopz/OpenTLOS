@@ -4,6 +4,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
@@ -17,7 +18,6 @@
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyGoal_Think.h"
@@ -132,7 +132,7 @@ void EnemyTest::Init() {
         temp_r31_77->__vptr = &__vt;
     }
     temp_r31_77->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_77;
+    this->unkA3C = &temp_r31_77->__vptr;
 }
 #endif
 
@@ -333,17 +333,17 @@ void CynderTier3::EmitClubEffects() {
     f64 temp_f0_889;
     f64 temp_f0_966;
     s32 temp_r0_210;
+    s32 temp_r4_197;
     s32 var_r27_498;
     s32 var_r27_534;
-    u32 temp_r4_197;
     void *temp_r26_687;
     void *temp_r3_683;
 
     temp_f0_192 = M2C_FIELD(this->unk0, f32 *, 8);
-    if (!(this->unk24 > (temp_f0_192 * temp_f0_192)) && (temp_r4_197 = M2C_FIELD(this->unkA20, u32 *, 0x280), ((temp_r4_197 == -1U) == 0))) {
-        MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_197, (MKVector3 *) &this->unkB00);
-        temp_f26_209 = MKModel_GetRefPointRadius(this->unk4, (s32) M2C_FIELD(this->unkA20, u32 *, 0x280));
-        temp_r0_210 = M2C_FIELD(this->unkA20, s32 *, 0x1D0);
+    if (!(this->unk24 > (temp_f0_192 * temp_f0_192)) && (temp_r4_197 = this->unkA38->unk280, (((u32) temp_r4_197 == -1U) == 0))) {
+        MKModel_CalculateRefPointWorldPosition(this->unk4, temp_r4_197, &this->unkB18);
+        temp_f26_209 = MKModel_GetRefPointRadius(this->unk4, this->unkA38->unk280);
+        temp_r0_210 = this->unkA38->unk1D0;
         switch (temp_r0_210) {                      /* irregular */
         case 0:
             if (gb.unk30C >= this->unkB50) {
@@ -368,7 +368,7 @@ void CynderTier3::EmitClubEffects() {
                 temp_f0_292 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                 sp1C8 = temp_f0_292;
                 sp598 = temp_f0_292;
-                sp1D0 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+                sp1D0 = this->unkB18.unk8 + (f32) sp630;
                 sp5A0 = (f64) sp1D0;
                 gb.unk240.Emit(*((MKVector3 *) &sp598), *((MKVector3 *) &sp618), temp_f1_288, 0.75f);
                 this->unkB50 = gb.unk30C + MKRand_Float(&gViewSeed, 0.375f, 0.75f);
@@ -394,7 +394,7 @@ void CynderTier3::EmitClubEffects() {
             temp_f0_388 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp1B8 = temp_f0_388;
             sp518 = temp_f0_388;
-            sp1C0 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+            sp1C0 = this->unkB18.unk8 + (f32) sp630;
             sp520 = (f64) sp1C0;
             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp518), *((MKVector3 *) &sp618), sp20);
             MKVector(1.0f, 1.0f, 1.0f);
@@ -424,7 +424,7 @@ void CynderTier3::EmitClubEffects() {
             temp_f0_472 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp1A8 = temp_f0_472;
             sp498 = temp_f0_472;
-            sp1B0 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+            sp1B0 = this->unkB18.unk8 + (f32) sp630;
             sp4A0 = (f64) sp1B0;
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp618), sp1C, *((MKVector4 *) &sp488), 0.0f);
             return;
@@ -439,7 +439,7 @@ void CynderTier3::EmitClubEffects() {
                     sp618 = spC8;
                     sp480 = (f64) spD0;
                     sp620 = (f64) spD0;
-                    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &this->unkB00), *((MKVector3 *) &sp618), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+                    ((ElectricSparks *) gb.unk230)->Emit(this->unkB18, *((MKVector3 *) &sp618), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
                     var_r27_498 += 1;
                 } while (var_r27_498 < 2);
                 var_r27_534 = 0;
@@ -468,7 +468,7 @@ loop_17:
                     temp_f0_590 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                     sp188 = temp_f0_590;
                     sp3F8 = temp_f0_590;
-                    sp190 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+                    sp190 = this->unkB18.unk8 + (f32) sp630;
                     sp400 = (f64) sp190;
                     ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp3F8), *((MKVector3 *) &sp618), sp18, lit_1140, (MKVector4) &sp3E8);
                     var_r27_534 += 1;
@@ -502,7 +502,7 @@ loop_17:
                 temp_r26_687 = M2C_FIELD(temp_r3_683, void **, 0x2C);
                 sp88 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                 M2C_FIELD(temp_r3_683, f64 *, 0) = sp88;
-                sp90 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+                sp90 = this->unkB18.unk8 + (f32) sp630;
                 sp368 = sp88;
                 M2C_FIELD(temp_r3_683, f64 *, 8) = (f64) sp90;
                 M2C_FIELD(temp_r3_683, f32 *, 0x20) = 0.0f;
@@ -544,7 +544,7 @@ loop_17:
                 temp_f0_800 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                 sp168 = temp_f0_800;
                 sp2E8 = temp_f0_800;
-                sp170 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+                sp170 = this->unkB18.unk8 + (f32) sp630;
                 sp2F0 = (f64) sp170;
                 ((FallingLeaves *) (M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), FallingLeaves **, 0x2B8)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp618), sp14, sp10, 1U);
                 this->unkB50 = gb.unk30C + MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -570,7 +570,7 @@ loop_17:
             temp_f0_889 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp158 = temp_f0_889;
             sp268 = temp_f0_889;
-            sp160 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+            sp160 = this->unkB18.unk8 + (f32) sp630;
             sp270 = (f64) sp160;
             gb.EmitSmallRocks(*((MKVector3 *) &sp268), *((MKVector3 *) &sp618), spC);
             MKVector(1.0f, 1.0f, 1.0f);
@@ -600,7 +600,7 @@ loop_17:
             temp_f0_966 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp148 = temp_f0_966;
             sp1E8 = temp_f0_966;
-            sp150 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
+            sp150 = this->unkB18.unk8 + (f32) sp630;
             sp1F0 = (f64) sp150;
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp1E8), *((MKVector3 *) &sp618), sp8, *((MKVector4 *) &sp1D8), 0.0f);
             break;
@@ -611,15 +611,15 @@ loop_17:
 
 #if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier3::Spawn(EnemyGeneratorDoor *arg0) {
-    M2C_FIELD(this->unkAF8, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA24, (Goal<Enemy> *) this->unkAF8);
+    M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
 #endif
 
 void CynderTier3::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
-    ((KDSoundPlayer *) &this->unkB10)->Message(arg0);
+    ((KDSoundPlayer *) &this->unkB28)->Message(arg0);
 }
 
 #if 0 // DRAFT: undefined identifier 'unkC'
@@ -638,7 +638,7 @@ void CynderTier3::Update() {
         if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
             var_r29_1066 = 1;
         }
-        if ((var_r29_1066 == 0) && ((s32) this->unk750.unk68 != 1) && (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, M2C_FIELD(this->unk0, BoundingVolume **, 0x1C)) != 0)) {
+        if ((var_r29_1066 == 0) && ((s32) this->unk750.unk78 != 1) && (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, M2C_FIELD(this->unk0, BoundingVolume **, 0x1C)) != 0)) {
             EmitClubEffects();
         }
     }
@@ -654,16 +654,16 @@ void CynderTier3::Update() {
             var_r27_1104 = 1;
         }
     }
-    if ((var_r27_1104 != 0) && ((s32) this->unk750.unk68 != 1)) {
+    if ((var_r27_1104 != 0) && ((s32) this->unk750.unk78 != 1)) {
         var_r28_1102 = 1;
     }
     if ((var_r28_1102 != 0) && (IsDying() == 0)) {
         var_r31_1101 = 1;
     }
-    if (((u32) M2C_FIELD(this->unkA20, u32 *, 0x280) != -1U) && ((s32) M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B4) != 0)) {
+    if (((u32) this->unkA38->unk280 != -1U) && ((s32) M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B4) != 0)) {
         temp_r4_1155 = checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) &this->unkB10)->Update(M2C_FIELD(temp_r4_1155, s32 *, 0x2B4), 1U, var_r31_1101, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkB28)->Update(M2C_FIELD(temp_r4_1155, s32 *, 0x2B4), 1U, var_r31_1101, NULL, &this->unkB18, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     TestForSpikes();
     TestForTraps();
@@ -673,21 +673,21 @@ void CynderTier3::Update() {
 #if 0 // DRAFT: undefined identifier 'cynderTier3NodeBlurDef'
 void CynderTier3::LoadDone() {
     Enemy::LoadDone();
-    M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
-    ((BoneBlurFX *) (M2C_FIELD(this, BoneBlurFX **, 0xA10)))->InitData(M2C_FIELD(M2C_FIELD(this, void **, 0x630), MKModel **, 8), &cynderTier3NodeBlurDef, 0x14, cynderTier3NodeBlurChains, 5, 5, 1U);
+    this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
+    this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier3NodeBlurDef, 0x14, cynderTier3NodeBlurChains, 5, 5, 1U);
     this->unkB50 = gb.unk30C + 0.0f;
 }
 #endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void CynderTier3::Deinit() {
-    s32 temp_r3_1229;
+    Goal<Enemy> *temp_r3_1229;
 
-    KDSound_Stop((s32 *) &this->unkB10);
-    temp_r3_1229 = this->unkAF8;
-    if ((u32) temp_r3_1229 != 0U) {
-        M2C_FIELD(*temp_r3_1229, M2C_UNK (**)(), 0xC)();
-        operator delete((void *) this->unkAF8);
+    KDSound_Stop(&this->unkB28);
+    temp_r3_1229 = this->unkB10;
+    if (temp_r3_1229 != NULL) {
+        M2C_FIELD(temp_r3_1229->__vptr, M2C_UNK (**)(), 0xC)();
+        operator delete(this->unkB10);
     }
     Enemy::Deinit();
 }
@@ -696,7 +696,7 @@ void CynderTier3::Deinit() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier3::Init() {
     EnemyGoal_Think *temp_r31_1269;
-    s32 temp_r4_1321;
+    Goal<Enemy> *temp_r4_1321;
 
     Enemy::Init();
     InitSpawnerObject(3, 3, 3);
@@ -718,7 +718,7 @@ void CynderTier3::Init() {
     temp_r31_1269->Init((Enemy *) this);
     temp_r31_1269->InitOperateLeverGoal();
     temp_r31_1269->InitKongGoal();
-    this->unkA24 = (EnemyAttack *) temp_r31_1269;
+    this->unkA3C = &temp_r31_1269->__vptr;
     operator new(0x18U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -728,8 +728,8 @@ void CynderTier3::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r4_1321 = this->unkAF8;
+    this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r4_1321 = this->unkB10;
     M2C_FIELD(temp_r4_1321, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_1321, CynderTier3 **, 0xC) = this;
     M2C_FIELD(temp_r4_1321, s32 *, 4) = 0x38;
@@ -737,11 +737,11 @@ void CynderTier3::Init() {
         M2C_FIELD(temp_r4_1321, s8 *, 9) = 1;
     }
     M2C_FIELD(temp_r4_1321, s32 *, 0x10) = 0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1269, (Goal<Enemy> *) this->unkAF8);
-    M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
-    this->unkB04 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB20) = 0.0f;
-    ((KDSoundFader *) &this->unkB10)->Init(0.25f, 0.25f);
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1269, (Goal<Enemy> *) this->unkB10);
+    this->unkB18.unk0 = 0.0f;
+    this->unkB18.unk4 = 0.0f;
+    this->unkB18.unk8 = 0.0f;
+    ((KDSoundFader *) &this->unkB28)->Init(0.25f, 0.25f);
 }
 #endif
 
@@ -787,7 +787,7 @@ void CynderTier2Train::UpdateMovementCustom() {
     MKVector3 sp10;
     void *temp_r3_1468;
 
-    temp_r3_1468 = this->unk630;
+    temp_r3_1468 = this->unk638;
     MKModel_GetRefPointMatrix(M2C_FIELD(temp_r3_1468, MKModel **, 0), M2C_FIELD(temp_r3_1468, s32 *, 4) + M2C_FIELD(temp_r3_1468, s32 *, 8), &sp80, 1U);
     M2C_FIELD(this, f64 *, 0x588) = (f64) sp80.unk30;
     M2C_FIELD(this, f64 *, 0x590) = (f64) sp80.unk38;
@@ -812,15 +812,15 @@ void CynderTier2Train::UpdateMovementCustom() {
     sp80.unk3C = 1.0f;
     sp40.SetRotateAroundAxis(*((MKVector3 *) &sp80.unk10), 3.1415927f);
     sp80.Multiply3x3(&sp80, &sp40);
-    sp80.unk30 = (f32) M2C_FIELD(this, f64 *, 0x588);
-    sp80.unk34 = this->unk588.unk0;
-    sp80.unk38 = this->unk588.unk4;
+    sp80.unk30 = this->unk588.unk0;
+    sp80.unk34 = this->unk588.unk4;
+    sp80.unk38 = this->unk588.unk8;
     sp80.unk3C = 1.0f;
     SetWorldMatrix(&sp80);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier2Train::Init() {
     CynderTier2TrainGoal_Think *temp_r31_1557;
 
@@ -841,8 +841,8 @@ void CynderTier2Train::Init() {
         temp_r31_1557->__vptr = &__vt;
     }
     temp_r31_1557->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_1557;
-    M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) | 8);
+    this->unkA3C = &temp_r31_1557->__vptr;
+    this->unkB02 |= 8;
 }
 #endif
 
@@ -853,8 +853,8 @@ void CynderTier2TrainDescriptor::Init() {
 
 #if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier2::Spawn(EnemyGeneratorDoor *arg0) {
-    M2C_FIELD(this->unkAF8, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA24, (Goal<Enemy> *) this->unkAF8);
+    M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
 #endif
@@ -868,19 +868,19 @@ void CynderTier2::Update() {
 #if 0 // DRAFT: undefined identifier 'cynderTier2NodeBlurDef'
 void CynderTier2::LoadDone() {
     Enemy::LoadDone();
-    M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
-    ((BoneBlurFX *) (M2C_FIELD(this, BoneBlurFX **, 0xA10)))->InitData(M2C_FIELD(M2C_FIELD(this, void **, 0x630), MKModel **, 8), &cynderTier2NodeBlurDef, 0x13, cynderTier2NodeBlurChains, 5, 5, 1U);
+    this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
+    this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier2NodeBlurDef, 0x13, cynderTier2NodeBlurChains, 5, 5, 1U);
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier2::Deinit() {
-    s32 temp_r3_1699;
+    Goal<Enemy> *temp_r3_1699;
 
-    temp_r3_1699 = this->unkAF8;
-    if ((u32) temp_r3_1699 != 0U) {
-        M2C_FIELD(*temp_r3_1699, M2C_UNK (**)(), 0xC)();
-        operator delete((void *) this->unkAF8);
+    temp_r3_1699 = this->unkB10;
+    if (temp_r3_1699 != NULL) {
+        M2C_FIELD(temp_r3_1699->__vptr, M2C_UNK (**)(), 0xC)();
+        operator delete(this->unkB10);
     }
     Enemy::Deinit();
 }
@@ -889,10 +889,10 @@ void CynderTier2::Deinit() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier2::Init() {
     EnemyGoal_Think *temp_r31_1737;
-    s32 temp_r4_1785;
+    Goal<Enemy> *temp_r4_1785;
 
     Enemy::Init();
-    this->unkAF8 = 0;
+    this->unkB10 = NULL;
     if ((u8) M2C_FIELD(this->unk0, u8 *, 0x2B4) != 0) {
         operator new(0x74U, NULL, 0);
         temp_r31_1737 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -910,7 +910,7 @@ void CynderTier2::Init() {
             temp_r31_1737->__vptr = &__vt;
         }
         temp_r31_1737->Init((Enemy *) this);
-        this->unkA24 = (EnemyAttack *) temp_r31_1737;
+        this->unkA3C = &temp_r31_1737->__vptr;
         operator new(0x18U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -920,8 +920,8 @@ void CynderTier2::Init() {
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
             *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
         }
-        this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-        temp_r4_1785 = this->unkAF8;
+        this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+        temp_r4_1785 = this->unkB10;
         M2C_FIELD(temp_r4_1785, s8 *, 8) = 1;
         M2C_FIELD(temp_r4_1785, CynderTier2 **, 0xC) = this;
         M2C_FIELD(temp_r4_1785, s32 *, 4) = 0x38;
@@ -929,7 +929,7 @@ void CynderTier2::Init() {
             M2C_FIELD(temp_r4_1785, s8 *, 9) = 1;
         }
         M2C_FIELD(temp_r4_1785, s32 *, 0x10) = 0;
-        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1737, (Goal<Enemy> *) this->unkAF8);
+        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_1737, (Goal<Enemy> *) this->unkB10);
     }
 }
 #endif
@@ -953,20 +953,22 @@ void CynderTier2Descriptor::Init() {
     this->unk2B4 = 1;
 }
 
+#if 0 // DRAFT: function call 'Message(Ball *)' does not match
 void CynderTier1::Message(MKMessage *arg0) {
-    s32 temp_r0_1877;
+    Ball *temp_r0_1877;
 
     if ((s32) arg0->unk0 != 4) {
         goto block_4;
     }
-    temp_r0_1877 = this->unkB04;
-    if ((u32) temp_r0_1877 != 0U) {
-        M2C_FIELD(M2C_FIELD(temp_r0_1877, void **, 0x44), M2C_UNK (**)(s32), 0x2C)(temp_r0_1877);
+    temp_r0_1877 = this->unkB1C;
+    if (temp_r0_1877 != NULL) {
+        temp_r0_1877->Message();
         return;
     }
 block_4:
     Enemy::Message(arg0);
 }
+#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void CynderTier1::DefrostBall() {
@@ -997,16 +999,16 @@ void CynderTier1::DefrostBall() {
     f64 sp18;
     f32 sp10;
     f64 sp8;
+    Ball *temp_r3_1947;
     EnemyGoal_Think *temp_r3_1987;
     f64 temp_f0_2022;
     f64 temp_f1_2012;
     f64 temp_f2_1920;
     f64 temp_f3_1918;
-    s32 temp_r3_1947;
     void *temp_r3_2009;
     void *temp_r5_1914;
 
-    if ((u32) this->unkB04 != 0U) {
+    if ((Ball *) this->unkB1C != NULL) {
         sp6C = 0;
         temp_r5_1914 = this->unk8;
         temp_f3_1918 = M2C_FIELD(temp_r5_1914, f64 *, 0x30);
@@ -1028,20 +1030,20 @@ void CynderTier1::DefrostBall() {
         sp8C = 1.0f;
         sp60 = temp_f2_1920;
         gMK->SendMessage(&sp68, 0, 0, ((u8 *) temp_r5_1914) + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
-        ((Ball *) this->unkB04)->Smash();
-        temp_r3_1947 = this->unkB04;
-        M2C_FIELD(M2C_FIELD(temp_r3_1947, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_1947);
-        M2C_FIELD(this->unkB04, s32 *, 0x230) = 0;
-        ((Ball *) this->unkB04)->SetGroup(0xFF);
-        this->unkB04 = 0;
+        this->unkB1C->Smash();
+        temp_r3_1947 = this->unkB1C;
+        temp_r3_1947->Disable();
+        this->unkB1C->unk230 = NULL;
+        this->unkB1C->SetGroup(0xFF);
+        this->unkB1C = NULL;
         this->unk110.Teleport(this->unk588, 0xA, 5.0f);
         M2C_FIELD(GetCollisionInfo(), s8 *, 4) = 1;
         SetMovementType((CharacterMoveType) 0);
         SetInvulnerableToMeleeAttacks(0U, 1U);
-        SetupEnemyRegion(*((MKVector3 *) &this->unk588), 1000.0f);
-        temp_r3_1987 = checked_cast<P15EnemyGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA28);
+        SetupEnemyRegion(this->unk588, 1000.0f);
+        temp_r3_1987 = checked_cast<P15EnemyGoal_Think,12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA40);
         temp_r3_1987->RemoveAllInactiveSubgoals(0x5B);
-        if ((this->unkAB0 > 0.0f) && (temp_r3_1987->IsPresent(0x5B) == 0)) {
+        if ((this->unkAC8 > 0.0f) && (temp_r3_1987->IsPresent(0x5B) == 0)) {
             sp18 = M2C_FIELD(this, f64 *, 0xC0) * 5.53552857e-315;
             temp_r3_2009 = this->unk8;
             temp_f1_2012 = M2C_FIELD(temp_r3_2009, f64 *, 0x30);
@@ -1061,7 +1063,7 @@ void CynderTier1::DefrostBall() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal type
 void CynderTier1::UpdateFrozenBallMovement() {
     f32 spBC;
     f32 spB8;
@@ -1079,15 +1081,15 @@ void CynderTier1::UpdateFrozenBallMovement() {
     f64 sp20;
     f32 sp18;
     f64 sp10;
+    Ball *temp_r3_2067;
+    Ball *temp_r5_2137;
     f64 temp_f0_2099;
     f64 temp_f1_2146;
-    s32 temp_r3_2067;
-    s32 temp_r5_2137;
     u8 temp_r4_2169;
 
-    temp_r3_2067 = this->unkB04;
-    if ((u32) temp_r3_2067 != 0U) {
-        M2C_STRUCT_COPY((s32) &sp60.unk1C + 4, M2C_FIELD(temp_r3_2067, s32 *, 8) - 4 + 4, 0x40);
+    temp_r3_2067 = this->unkB1C;
+    if (temp_r3_2067 != NULL) {
+        M2C_STRUCT_COPY((s32) &sp60.unk1C + 4, (s32) (temp_r3_2067->unk8 - 4) + 4, 0x40);
         sp60.NormaliseScale();
         sp30 = -sp60.unk30;
         sp34 = -sp60.unk34;
@@ -1110,31 +1112,31 @@ void CynderTier1::UpdateFrozenBallMovement() {
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp60.unk20));
         M2C_FIELD(this, f64 *, 0x588) = (f64) spB0;
         M2C_FIELD(this, f64 *, 0x590) = (f64) spB8;
-        temp_r5_2137 = this->unkB04;
-        this->unk110.unk8 = M2C_FIELD(temp_r5_2137, f64 *, 0x150);
-        this->unk110.unk10 = M2C_FIELD(temp_r5_2137, f64 *, 0x158);
-        this->unk110.unk18 = M2C_FIELD(temp_r5_2137, f64 *, 0x160);
-        this->unk110.unk20 = M2C_FIELD(temp_r5_2137, f64 *, 0x168);
-        temp_f1_2146 = M2C_FIELD(temp_r5_2137, f64 *, 0x170);
+        temp_r5_2137 = this->unkB1C;
+        this->unk110.unk8 = temp_r5_2137->unk150;
+        this->unk110.unk10 = temp_r5_2137->unk158;
+        this->unk110.unk18 = temp_r5_2137->unk160;
+        this->unk110.unk20 = temp_r5_2137->unk168;
+        temp_f1_2146 = temp_r5_2137->unk170;
         this->unk110.unk28 = temp_f1_2146;
-        this->unk110.unk30 = M2C_FIELD(temp_r5_2137, f64 *, 0x178);
-        this->unk110.unk38 = M2C_FIELD(temp_r5_2137, f32 *, 0x180);
-        this->unk110.unk3C = M2C_FIELD(temp_r5_2137, f32 *, 0x184);
-        this->unk110.unk40 = M2C_FIELD(temp_r5_2137, s32 *, 0x188);
-        this->unk110.unk44 = M2C_FIELD(temp_r5_2137, s32 *, 0x18C);
-        this->unk110.unk48 = M2C_FIELD(temp_r5_2137, f32 *, 0x190);
-        this->unk110.unk4C = M2C_FIELD(temp_r5_2137, s32 *, 0x194);
-        this->unk110.unk50 = M2C_FIELD(temp_r5_2137, void **, 0x198);
-        this->unk110.unk54 = M2C_FIELD(temp_r5_2137, s32 *, 0x19C);
-        this->unk110.unk58 = M2C_FIELD(temp_r5_2137, u8 *, 0x1A0);
-        temp_r4_2169 = M2C_FIELD(this->unkB04, u8 *, 0x1A0);
+        this->unk110.unk30 = temp_r5_2137->unk178;
+        this->unk110.unk38 = temp_r5_2137->unk180;
+        this->unk110.unk3C = temp_r5_2137->unk184;
+        this->unk110.unk40 = temp_r5_2137->unk188;
+        this->unk110.unk44 = temp_r5_2137->unk18C;
+        this->unk110.unk48 = temp_r5_2137->unk190;
+        this->unk110.unk4C = (s32) temp_r5_2137->unk194;
+        this->unk110.unk50 = temp_r5_2137->unk198;
+        this->unk110.unk54 = temp_r5_2137->unk19C;
+        this->unk110.unk58 = temp_r5_2137->unk1A0;
+        temp_r4_2169 = this->unkB1C->unk1A0;
         this->unk110.unk16C = temp_r4_2169 != 0;
         UpdateCollisionItems(temp_r4_2169, temp_r5_2137, temp_f1_2146);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Ball *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 CynderTier1::TryFreezeBall() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -1143,15 +1145,15 @@ s32 CynderTier1::TryFreezeBall() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    s32 temp_r3_2203;
-    s32 temp_r3_2210;
+    Ball *temp_r3_2203;
+    Ball *temp_r3_2210;
 
-    this->unkB04 = checked_cast<Ball *, MKProp>(((MKPropDescriptor *) (M2C_FIELD(this, MKPropDescriptor **, 0xB18)))->CreateInstance());
-    temp_r3_2203 = this->unkB04;
-    if ((u32) temp_r3_2203 != 0U) {
-        M2C_FIELD(M2C_FIELD(temp_r3_2203, void **, 0x44), M2C_UNK (**)(), 0x30)();
-        temp_r3_2210 = this->unkB04;
-        M2C_FIELD(M2C_FIELD(temp_r3_2210, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_2210);
+    this->unkB1C = checked_cast<Ball *, MKProp>(this->unkB18->CreateInstance());
+    temp_r3_2203 = this->unkB1C;
+    if (temp_r3_2203 != NULL) {
+        M2C_FIELD(temp_r3_2203->__vptr, M2C_UNK (**)(), 0x30)();
+        temp_r3_2210 = this->unkB1C;
+        temp_r3_2210->Reset();
         M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
         sp18 = 0.0f;
         sp10 = 0.0f;
@@ -1159,10 +1161,10 @@ s32 CynderTier1::TryFreezeBall() {
         sp28 = (f64) sp18;
         sp20 = (f64) sp10;
         sp30.Translate(&sp30, *((MKVector3 *) &sp20));
-        ((Ball *) this->unkB04)->SetWorldMatrix(&sp30);
-        M2C_FIELD(this->unkB04, f32 *, 0x280) = 1.75f;
-        M2C_FIELD(this->unkB04, CynderTier1 **, 0x230) = this;
-        ((Ball *) this->unkB04)->FindClosestGroup();
+        this->unkB1C->SetWorldMatrix(&sp30);
+        this->unkB1C->unk280 = 1.75f;
+        this->unkB1C->unk230 = this;
+        this->unkB1C->FindClosestGroup();
         M2C_FIELD(GetCollisionInfo(), s8 *, 4) = 0;
         SetMovementType((CharacterMoveType) 2);
         SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
@@ -1312,6 +1314,8 @@ void CynderTier1::CheckAnimEvents() {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    MKHeap *temp_r0_2335;
+    MKHeap *var_r27_2341;
     MKPropDescriptor *temp_r22_2655;
     f32 temp_f15_2803;
     f32 temp_f15_2817;
@@ -1340,24 +1344,22 @@ void CynderTier1::CheckAnimEvents() {
     s32 var_r23_2517;
     s32 var_r23_2557;
     s32 var_r25_2657;
-    u32 *temp_r0_2335;
-    u32 *var_r27_2341;
     void *temp_r22_2589;
     void *temp_r24_2663;
     void *temp_r24_3031;
     void *temp_r3_2584;
 
     Enemy::CheckAnimEvents();
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
-        temp_r0_2335 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
+    if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
+        temp_r0_2335 = this->unkA38->unk27C;
         if (temp_r0_2335 != NULL) {
             var_r27_2341 = temp_r0_2335;
 loop_50:
-            if ((u32) *var_r27_2341 != -1U) {
-                temp_r3_2347 = this->unkAE0;
+            if ((MKHeap *) var_r27_2341->unk0 != (MKHeap *)-1U) {
+                temp_r3_2347 = this->unkAF8;
                 switch (temp_r3_2347) {             /* irregular */
                 case 0x8000000:
-                    KDSound_Play3d(GS_DDFireSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDFireSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r23_2375 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1369,13 +1371,13 @@ loop_50:
                         sp430 = (f64) sp110;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp34);
+                        ((CrashFirePS *) gb.unk68)->Emit(this->unk588, *((MKVector3 *) &sp428), sp34);
                         sp408 = 1.0f;
                         sp40C = 0.75f;
                         sp410 = 0.75f;
                         sp414 = 1.0f;
                         sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp30, *((MKVector4 *) &sp408), 0.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(this->unk588, *((MKVector3 *) &sp428), sp30, *((MKVector4 *) &sp408), 0.0f);
                         var_r23_2375 += 1;
                     } while (var_r23_2375 < 0x1E);
                     var_r23_2430 = 0;
@@ -1388,7 +1390,7 @@ loop_50:
                         sp3D0 = (f64) sp100;
                         sp430 = (f64) sp100;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                        gb.unk240.Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                        gb.unk240.Emit(this->unk588, *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
                         var_r23_2430 += 1;
                     } while (var_r23_2430 < 0xF);
                     var_r23_2468 = 0;
@@ -1402,12 +1404,12 @@ loop_50:
                         sp430 = (f64) spF0;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                         sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp2C, 0.0f);
+                        gb.EmitDust(this->unk588, *((MKVector3 *) &sp428), sp2C, 0.0f);
                         var_r23_2468 += 1;
                     } while (var_r23_2468 < 5);
                     break;
                 case 0x10000000:
-                    KDSound_Play3d(GS_DDIceSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDIceSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r23_2517 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1419,7 +1421,7 @@ loop_50:
                         sp430 = (f64) spE0;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
                         sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        ((IceBitsPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), IceBitsPS **, 0x260)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp28);
+                        ((IceBitsPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), IceBitsPS **, 0x260)))->Emit(this->unk588, *((MKVector3 *) &sp428), sp28);
                         var_r23_2517 += 1;
                     } while (var_r23_2517 < 0x14);
                     var_r23_2557 = 0;
@@ -1441,7 +1443,7 @@ loop_50:
                             sp338.operator*(50.0f);
                             spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp338);
                             M2C_FIELD(temp_r3_2584, f64 *, 0) = spB8;
-                            spC0 = this->unk588.unk4 + sp338.unk8;
+                            spC0 = this->unk588.unk8 + sp338.unk8;
                             sp348 = spB8;
                             M2C_FIELD(temp_r3_2584, f64 *, 8) = (f64) spC0;
                             M2C_FIELD(temp_r3_2584, f32 *, 0x20) = 0.0f;
@@ -1462,7 +1464,7 @@ loop_50:
                         *(&sp3F8 + var_r25_2657) = checked_cast<PooledShatterProp *, MKProp>(temp_r22_2655->CreateInstance());
                         temp_r24_2663 = *(&sp3F8 + var_r25_2657);
                         if (temp_r24_2663 != NULL) {
-                            M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x38)(temp_r24_2663, &this->unk588);
+                            M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r24_2663, &this->unk588);
                             M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r24_2663);
                             M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r24_2663);
                             M2C_FIELD(M2C_FIELD(temp_r24_2663, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r24_2663, 0, 0, -1, 0, 1, 0);
@@ -1472,7 +1474,7 @@ loop_50:
                     } while (var_r21_2656 < 3);
                     break;
                 case 0x20000000:
-                    KDSound_Play3d(GS_DDElecSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDElecSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r21_2710 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1491,7 +1493,7 @@ loop_50:
                         sp2D8 = (f64) sp178;
                         sp2E0 = (f64) sp180;
                         sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
-                        ((ZapPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B4)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp24, (MKVector4) &sp2D8);
+                        ((ZapPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B4)))->Emit(this->unk588, *((MKVector3 *) &sp428), sp24, (MKVector4) &sp2D8);
                         var_r21_2710 += 1;
                     } while (var_r21_2710 < 0xF);
                     var_r21_2760 = 0;
@@ -1517,7 +1519,7 @@ loop_34:
                             sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2B8);
                             sp16C = 0.0f;
                             sp168 = (f32) sp470;
-                            spA0 = this->unk588.unk4 + sp2B8.unk8;
+                            spA0 = this->unk588.unk8 + sp2B8.unk8;
                             sp170 = (f32) sp478;
                             sp174 = (f32) sp470;
                             sp2C8 = sp98;
@@ -1554,7 +1556,7 @@ loop_34:
                         sp268 = (f64) sp158;
                         sp270 = (f64) sp160;
                         sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
+                        ((ZapArcFX *) gb.unk94)->Trigger(this->unk588, *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
                         var_r21_2881 += 1;
                     } while (var_r21_2881 < 3);
                     temp_f16_2931 = MKVector3::up.unk8;
@@ -1575,14 +1577,14 @@ loop_34:
                         temp_f0_2970 = M2C_FIELD(this, f64 *, 0x588) - sp228;
                         sp138 = temp_f0_2970;
                         sp238 = temp_f0_2970;
-                        sp140 = this->unk588.unk4 - (f32) sp230;
+                        sp140 = this->unk588.unk8 - (f32) sp230;
                         sp240 = (f64) sp140;
                         ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 1U);
                         var_r21_2934 += 1;
                     } while (var_r21_2934 < 0xF);
                     break;
                 case 0x40000000:
-                    KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDEarthSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     temp_f17_3003 = MKVector3::up.unk8;
                     var_r21_3006 = 0;
                     do {
@@ -1602,7 +1604,7 @@ loop_34:
                         temp_f0_3045 = M2C_FIELD(this, f64 *, 0x588) + sp1E8;
                         sp118 = temp_f0_3045;
                         sp1F8 = temp_f0_3045;
-                        sp120 = this->unk588.unk4 + (f32) sp1F0;
+                        sp120 = this->unk588.unk8 + (f32) sp1F0;
                         sp200 = (f64) sp120;
                         sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                         sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -1620,7 +1622,7 @@ loop_34:
                         sp430 = (f64) sp60;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
-                        gb.EmitSmallRocks(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp10);
+                        gb.EmitSmallRocks(this->unk588, *((MKVector3 *) &sp428), sp10);
                         var_r21_3078 += 1;
                     } while (var_r21_3078 < 0x1E);
                     var_r21_3118 = 0;
@@ -1634,7 +1636,7 @@ loop_34:
                         sp430 = (f64) sp50;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                         spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), spC, 0.0f);
+                        gb.EmitDust(this->unk588, *((MKVector3 *) &sp428), spC, 0.0f);
                         var_r21_3118 += 1;
                     } while (var_r21_3118 < 5);
                     var_r21_3159 = 0;
@@ -1648,7 +1650,7 @@ loop_34:
                         sp430 = (f64) sp40;
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                         sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                        gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp8);
+                        gb.EmitCrud(this->unk588, *((MKVector3 *) &sp428), sp8);
                         var_r21_3159 += 1;
                     } while (var_r21_3159 < 5);
                     break;
@@ -1664,7 +1666,7 @@ loop_34:
 #if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 s32 CynderTier1::Spawn(SpawnPointObject *arg0) {
     if (M2C_FIELD(arg0->unk4, s32 *, 4) & 0x200) {
-        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA24, (Goal<Enemy> *) this->unkAFC);
+        SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB14);
     }
     Enemy::Spawn(arg0);
 }
@@ -1672,8 +1674,8 @@ s32 CynderTier1::Spawn(SpawnPointObject *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
 void CynderTier1::Spawn(EnemyGeneratorDoor *arg0) {
-    M2C_FIELD(this->unkAF8, EnemyGeneratorDoor **, 0x10) = arg0;
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA24, (Goal<Enemy> *) this->unkAF8);
+    M2C_FIELD(this->unkB10, EnemyGeneratorDoor **, 0x10) = arg0;
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unkA3C, (Goal<Enemy> *) this->unkB10);
     Enemy::Spawn(arg0->unk18);
 }
 #endif
@@ -1686,32 +1688,32 @@ void CynderTier1::Update() {
 #if 0 // DRAFT: function call 'checked_cast(unsigned long)' does not match
 void CynderTier1::Resolve() {
     Enemy::Resolve();
-    M2C_FIELD(this, s32 *, 0xB18) = checked_cast<BallDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("CynderTier1Ball"));
+    this->unkB18 = checked_cast<BallDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("CynderTier1Ball"));
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'cynderTier1NodeBlurDef'
 void CynderTier1::LoadDone() {
     Enemy::LoadDone();
-    M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
-    ((BoneBlurFX *) (M2C_FIELD(this, BoneBlurFX **, 0xA10)))->InitData(M2C_FIELD(M2C_FIELD(this, void **, 0x630), MKModel **, 8), &cynderTier1NodeBlurDef, 0x13, cynderTier1NodeBlurChains, 5, 5, 1U);
+    this->unkA10 = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
+    this->unkA10->InitData(M2C_FIELD(this->unk630, MKModel **, 8), &cynderTier1NodeBlurDef, 0x13, cynderTier1NodeBlurChains, 5, 5, 1U);
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier1::Deinit() {
-    s32 temp_r3_3385;
-    s32 temp_r3_3395;
+    Goal<Enemy> *temp_r3_3385;
+    Goal<Enemy> *temp_r3_3395;
 
-    temp_r3_3385 = this->unkAF8;
-    if ((u32) temp_r3_3385 != 0U) {
-        M2C_FIELD(*temp_r3_3385, M2C_UNK (**)(), 0xC)();
-        operator delete((void *) this->unkAF8);
+    temp_r3_3385 = this->unkB10;
+    if (temp_r3_3385 != NULL) {
+        M2C_FIELD(temp_r3_3385->__vptr, M2C_UNK (**)(), 0xC)();
+        operator delete(this->unkB10);
     }
-    temp_r3_3395 = this->unkAFC;
-    if ((u32) temp_r3_3395 != 0U) {
-        M2C_FIELD(*temp_r3_3395, M2C_UNK (**)(), 0xC)();
-        operator delete((void *) this->unkAFC);
+    temp_r3_3395 = this->unkB14;
+    if (temp_r3_3395 != NULL) {
+        M2C_FIELD(temp_r3_3395->__vptr, M2C_UNK (**)(), 0xC)();
+        operator delete(this->unkB14);
     }
     Enemy::Deinit();
 }
@@ -1720,8 +1722,8 @@ void CynderTier1::Deinit() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier1::Init() {
     EnemyGoal_Think *temp_r30_3427;
-    s32 temp_r4_3475;
-    s32 temp_r4_3508;
+    Goal<Enemy> *temp_r4_3475;
+    Goal<Enemy> *temp_r4_3508;
 
     Enemy::Init();
     operator new(0x74U, NULL, 0);
@@ -1740,7 +1742,7 @@ void CynderTier1::Init() {
         temp_r30_3427->__vptr = &__vt;
     }
     temp_r30_3427->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r30_3427;
+    this->unkA3C = &temp_r30_3427->__vptr;
     operator new(0x18U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -1750,8 +1752,8 @@ void CynderTier1::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r4_3475 = this->unkAF8;
+    this->unkB10 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r4_3475 = this->unkB10;
     M2C_FIELD(temp_r4_3475, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_3475, CynderTier1 **, 0xC) = this;
     M2C_FIELD(temp_r4_3475, s32 *, 4) = 0x38;
@@ -1768,15 +1770,15 @@ void CynderTier1::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unkAFC = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r4_3508 = this->unkAFC;
+    this->unkB14 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r4_3508 = this->unkB14;
     M2C_FIELD(temp_r4_3508, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_3508, CynderTier1 **, 0xC) = this;
     M2C_FIELD(temp_r4_3508, s32 *, 4) = 0x38;
     if ((CynderTier1 *) M2C_FIELD(temp_r4_3508, CynderTier1 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_3508, s8 *, 9) = 1;
     }
-    this->unkB04 = 0;
+    this->unkB1C = NULL;
 }
 #endif
 
@@ -1789,16 +1791,16 @@ void CynderTier1Descriptor::Deinit() {
 
 #if 0 // DRAFT: undefined identifier 'unk244'
 void CynderTier1Descriptor::LoadDone() {
+    Ball *temp_r3_3568;
     s32 var_r29_3561;
-    void *temp_r3_3568;
 
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&cynderTier1BodyFXInit, 0xE, (MKAnimScript *) this->unk34);
     var_r29_3561 = 0;
     do {
         temp_r3_3568 = checked_cast<Ball *, MKProp>(gMK->CreateProp("CynderTier1Ball"));
-        M2C_FIELD(temp_r3_3568, u8 *, 0x2AC) = (u8) (M2C_FIELD(temp_r3_3568, u8 *, 0x2AC) | 8);
-        M2C_FIELD(M2C_FIELD(temp_r3_3568, void **, 0x44), M2C_UNK (**)(), 0x34)();
+        temp_r3_3568->unk2AC |= 8;
+        M2C_FIELD(temp_r3_3568->__vptr, M2C_UNK (**)(), 0x34)();
         var_r29_3561 += 1;
     } while (var_r29_3561 < 3);
     this->unk2B4 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));

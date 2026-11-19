@@ -49,7 +49,7 @@ extern GameGlobals gb;
 static s32 lit_780 = 0;
 static u8 lit_781 = 1;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'spF8'
 void FuryFXConvexity::EmitVortexParticles() {
     f64 spF0;
     M2C_UNK spCC;

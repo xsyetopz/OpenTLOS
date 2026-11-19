@@ -1,7 +1,6 @@
 #include "spyro/source/CynderBreathFX.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
@@ -11,6 +10,7 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "unplaced_templates.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -111,7 +111,7 @@ void CynderBreathFX::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 s32 CynderBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, int arg5, float arg6) {
     f64 spB8;
     f64 spB0;
@@ -144,11 +144,11 @@ s32 CynderBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3
     f64 temp_f0_302;
     f64 temp_f1_243;
 
-    this->unk1C8 = M2C_BITWISE(f32, arg0);
+    this->unk1CC = arg0;
     this->unkAC = arg5;
-    this->unk1CC = arg6;
+    this->unk1D0 = arg6;
     sp8 = -1;
-    streamHitMsg.Init(M2C_BITWISE(MKProp *, this->unk1C8), 5, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    streamHitMsg.Init(this->unk1CC, 5, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f1_243 = M2C_FIELD(&arg1, f64 *, 0);
     temp_f0_245 = M2C_FIELD(&arg1, f64 *, 8);
     sp90 = M2C_FIELD(&arg2, f64 *, 0);
@@ -250,7 +250,7 @@ void CynderBreathFX::Draw() {
     this->unkB0.Draw();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void CynderBreathFX::BreathFire() {
     Matrix sp160;
     f64 sp158;
@@ -294,7 +294,7 @@ void CynderBreathFX::BreathFire() {
     void *temp_r3_583;
     void *temp_r3_595;
 
-    MKModel_GetRefPointMatrix(M2C_FIELD(this->unk1C8, MKModel **, 4), this->unkAC, &sp160, 1U);
+    MKModel_GetRefPointMatrix(this->unk1CC->unk4, this->unkAC, &sp160, 1U);
     sp50 = -sp160.unk20;
     sp54 = -sp160.unk24;
     sp58 = -sp160.unk28;
@@ -362,7 +362,7 @@ void CynderBreathFX::BreathFire() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CynderBreathFX::Update() {
     s8 spA0;
     f64 sp98;
@@ -394,7 +394,7 @@ void CynderBreathFX::Update() {
     BaseBreathFX::Update();
     if ((u8) this->unkB0.unk108 != 0) {
         BreathFire();
-        temp_r4_664 = M2C_FIELD(this->unk1C8, void **, 8);
+        temp_r4_664 = this->unk1CC->unk8;
         temp_r3_665 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         temp_f1_667 = M2C_FIELD(temp_r3_665, f64 *, 0x30);
         sp58 = M2C_FIELD(temp_r4_664, f64 *, 0x30);
@@ -413,7 +413,7 @@ void CynderBreathFX::Update() {
             temp_f30_712 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f29_717 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f29_717, temp_f30_712);
-            sp38.operator*(M2C_BITWISE(f32, this->unk1CC));
+            sp38.operator*(this->unk1D0);
             sp8 = sp38 * (f64) temp_f28_709;
             sp88 = 0x417;
             sp90 = sp8;

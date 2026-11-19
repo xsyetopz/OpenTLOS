@@ -15,9 +15,6 @@ public:
     virtual void OnEnter(void);
     MCSelectFileScreen(void);
     static u8 descriptor[0x14];
-    /* 0x004 */ u8 pad4[0xc4];
-    /* 0x0c8 */ void** unkC8;
-    /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ void** unkD0;
     /* 0x0d4 */ void** unkD4;
     /* 0x0d8 */ void** unkD8;

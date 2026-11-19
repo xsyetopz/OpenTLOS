@@ -3,7 +3,6 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKCollision.h"
-#include "common/Source/MKProp.h"
 #include "spyro/source/Projectile.h"
 
 class Dynamite;
@@ -13,10 +12,10 @@ class MKCollisionResult;
 class MKIniLine;
 class MKMessage;
 class MKProp;
-class MKPropDescriptor;
 class Projectile;
+class ProjectileDescriptor;
 
-class Dynamite : public Projectile {  // base: vtable prefix
+class Dynamite : public Projectile {  // base: base ctor call
 public:
     virtual ~Dynamite(void);
     virtual void Init(void);
@@ -37,7 +36,6 @@ public:
     void PlatformAttach(MKProp *, MKCollisionInfo *);
     void SetInitialState(void);
     Dynamite * CreateInstance(int);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ s32 unk150;
     /* 0x154 */ u8 unk154;
     /* 0x155 */ u8 pad155[0x7];
@@ -59,14 +57,13 @@ public:
     /* 0x1a0 */ f64 unk1A0;
 };
 
-class DynamiteDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class DynamiteDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     DynamiteDescriptor(void);
-    /* 0x044 */ u8 pad44[0xac];
     /* 0x0f0 */ s32 unkF0;
     /* 0x0f4 */ s32 unkF4;
 };

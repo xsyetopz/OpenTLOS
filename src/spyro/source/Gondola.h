@@ -2,22 +2,20 @@
 #define SPYRO_SOURCE_GONDOLA_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/Platform.h"
 
 class EnemyGenerator;
-class EnemyGeneratorDescriptor;
 class Gondola;
 class GondolaDescriptor;
 class Gondola_cpp;
 class MKIniLine;
 class MKMessage;
-class MKPropDescriptor;
 class Platform;
+class PlatformDescriptor;
 class SkyClouds;
 
-class Gondola : public Platform {  // base: vtable prefix
+class Gondola : public Platform {  // base: base ctor call
 public:
     class WaveMotion {
     public:
@@ -37,7 +35,6 @@ public:
     virtual void UpdateMove(void);
     Gondola(void);
     void SetDefaults(void);
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ s32 unk180;
     /* 0x184 */ u8 pad184[0x8];
     /* 0x18c */ s32 unk18C;
@@ -50,7 +47,6 @@ public:
     /* 0x1ac */ Gondola::WaveMotion unk1AC;
     /* 0x1ad */ u8 pad1AD[0x3];
     /* 0x1b0 */ EnemyGenerator unk1B0;
-    /* 0x236 */ u8 pad236[0x2];
     /* 0x238 */ SkyClouds* unk238;
     /* 0x23c */ f32 unk23C;
     /* 0x240 */ s32 unk240;
@@ -59,15 +55,13 @@ public:
     /* 0x24c */ u8 unk24C;
 };
 
-class GondolaDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class GondolaDescriptor : public PlatformDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
     GondolaDescriptor(void);
-    /* 0x044 */ u8 pad44[0xe0];
-    /* 0x124 */ EnemyGeneratorDescriptor unk124;
 };
 
 class Gondola_cpp {

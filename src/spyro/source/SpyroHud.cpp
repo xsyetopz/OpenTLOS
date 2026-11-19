@@ -31,6 +31,7 @@ static M2C_UNK hudItem;
 static M2C_UNK hudData;
 static s32 iEnemyHealthBarColours = 5;
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemyDescriptor'
 static M2C_UNK hudDesc;                             /* unable to generate initializer: unknown type; const */
 
 void EnemyHudData::Init(Enemy *arg0, float arg1, float arg2) {
@@ -41,12 +42,13 @@ void EnemyHudData::Init(Enemy *arg0, float arg1, float arg2) {
     this->unkC = arg2;
     temp_r4_14 = this->unk0;
     if (temp_r4_14 != NULL) {
-        this->unk8 = temp_r4_14->unkAB0;
-        this->unk10 = M2C_FIELD(this->unk0->unkA20, s32 *, 0x118);
-        this->unk14 = M2C_FIELD(this->unk0->unkA20, s32 *, 0x11C);
-        this->unk18 = M2C_BITWISE(s32, this->unk0->unkAD0);
+        this->unk8 = temp_r4_14->unkAC8;
+        this->unk10 = this->unk0->unkA38->unk118;
+        this->unk14 = this->unk0->unkA38->unk11C;
+        this->unk18 = this->unk0->unkAE8;
     }
 }
+#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 EnemyHudData::EnemyHudData() {

@@ -13,9 +13,9 @@ public:
     void Update(T0 *, bool);
     void SetState(T0 *, int, bool);
     void Exit(T0 *);
-    void GetState(void);
-    void GetLastState(void);
-    void GetStateName(int);
+    s32 GetState(void);
+    s32 GetLastState(void);
+    s8 * GetStateName(int);
 };
 
 #endif  // SPYRO_SOURCE_KDSTATEMACHINE_H

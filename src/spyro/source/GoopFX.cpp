@@ -671,7 +671,6 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
 void GoopFXDescriptor::DrawGoopList() {
     GoopFXDescriptor::Goop **var_r31_1121;
     GoopFXDescriptor::Goop *temp_r4_1130;
@@ -700,7 +699,6 @@ loop_5:
         }
     }
 }
-#endif
 
 void GoopFXDescriptor::UpdateGoopList() {
     GoopFXDescriptor::Goop **temp_r3_1165;

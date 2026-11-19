@@ -36,7 +36,6 @@ public:
     void UpdateLightPosition(float, float);
     s32 Trigger(const MKVector3 &);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ s32 unk94;
     /* 0x098 */ f32 unk98;

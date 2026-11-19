@@ -36,7 +36,6 @@ public:
     virtual void Deinit(void);
     KDPropExDescriptor(void);
     static u8 propertyClassRegistry[0x4];
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ KDPropertySet unk74;
     /* 0x084 */ u32 unk84;

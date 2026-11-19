@@ -15,7 +15,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp90'
 void ExplosionWarpFX::UpdateWarp() {
     f32 spAC;
     f32 spA8;
@@ -143,7 +143,6 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosionWarpFX::StartWarp(Matrix *arg0) {
     f64 sp20;
     f64 sp18;
@@ -198,7 +197,6 @@ void ExplosionWarpFX::StartWarp(Matrix *arg0) {
     this->unk64 = 0.65f;
     this->unk68 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ExplosionWarpFX::BuildLocalVertexList() {
@@ -349,7 +347,7 @@ void ExplosionWarpFX::Deinit() {
     free(temp_r31_595);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal type
 void ExplosionWarpFX::Draw() {
     Matrix sp80;
     MKVector3 sp70;

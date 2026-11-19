@@ -74,7 +74,7 @@ public:
     virtual ~TriggerPlaneGroupProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x0c1 */ u8 padC1[0xf];
+    /* 0x0c4 */ u8 padC4[0xc];
     /* 0x0d0 */ void* unkD0;
 };
 
@@ -104,7 +104,7 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(void);
     TriggerPlaneProp(void);
-    /* 0x0c1 */ u8 padC1[0xdf];
+    /* 0x0c4 */ u8 padC4[0xdc];
     /* 0x1a0 */ MKProp* unk1A0;
     /* 0x1a4 */ MKSceneManager* unk1A4;
 };
@@ -114,7 +114,7 @@ public:
     virtual ~TriggerPolyProp(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x0c1 */ u8 padC1[0xf];
+    /* 0x0c4 */ u8 padC4[0xc];
     /* 0x0d0 */ void* unkD0;
 };
 

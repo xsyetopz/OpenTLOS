@@ -8,6 +8,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CollisionObject.h"
 #include "spyro/source/InputModifier.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroState.h"
@@ -261,7 +262,9 @@ public:
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ u8 unk78;
-    /* 0x079 */ u8 pad79[0x7];
+    /* 0x079 */ u8 pad79[0x3];
+    /* 0x07c */ KDStateMachine<Spyro> unk7C;
+    /* 0x07d */ u8 pad7D[0x3];
     /* 0x080 */ f32 unk80;
     /* 0x084 */ u8 pad84[0x4];
     /* 0x088 */ void* unk88;
@@ -276,7 +279,6 @@ public:
     /* 0x0c0 */ MKAnimScript unkC0;
     /* 0x118 */ u8 pad118[0x60];
     /* 0x178 */ NodeLookAt unk178;
-    /* 0x1b1 */ u8 pad1B1[0x3];
     /* 0x1b4 */ TargetContext unk1B4;
     /* 0x1c4 */ u8 unk1C4;
     /* 0x1c5 */ u8 unk1C5;
@@ -423,7 +425,7 @@ public:
     /* 0x430 */ SpyroLighting unk430;
     /* 0x45c */ u8 pad45C[0x4];
     /* 0x460 */ CombatStateData unk460;
-    /* 0x4b4 */ u8 pad4B4[0xc];
+    /* 0x4b8 */ u8 pad4B8[0x8];
     /* 0x4c0 */ s32 unk4C0;
     /* 0x4c4 */ f32 unk4C4;
     /* 0x4c8 */ f32 unk4C8;
@@ -445,7 +447,6 @@ public:
     /* 0xb78 */ AttackerManager unkB78;
     /* 0xb7c */ u8 padB7C[0x14];
     /* 0xb90 */ SpyroTargetList unkB90;
-    /* 0xba5 */ u8 padBA5[0x3];
     /* 0xba8 */ f32 unkBA8;
     /* 0xbac */ s32 unkBAC;
     /* 0xbb0 */ u8 unkBB0;
@@ -501,10 +502,10 @@ extern f32 SPYRO_COMBAT_SCALE_MAG;
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Spyro::~Spyro() {
-    M2C_UNK *temp_r0_34;
-    M2C_UNK *temp_r4_37;
-    Spyro *temp_r0_50;
-    s32 *temp_r4_53;
+    M2C_UNK *temp_r0_50;
+    M2C_UNK *temp_r4_53;
+    u8 *temp_r4_37;
+    void *temp_r0_34;
 
     if (this != NULL) {
         this->unk4C = &__vt.unk38;
@@ -512,26 +513,26 @@ inline Spyro::~Spyro() {
             __destroy_arr(&this->unk6F8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
         }
         if (&this->unk418 != NULL) {
-            temp_r0_34 = M2C_FIELD(this, M2C_UNK **, 0x420);
+            temp_r0_34 = this->unk420;
             if (temp_r0_34 != NULL) {
                 temp_r4_37 = &this->unk418;
                 if (temp_r0_34 != temp_r4_37) {
-                    M2C_FIELD(this->unk41C, M2C_UNK **, 8) = temp_r0_34;
-                    M2C_FIELD(M2C_FIELD(this, M2C_UNK **, 0x420), s32 *, 0xC) = (s32) this->unk41C;
-                    this->unk41C = (s32) temp_r4_37;
-                    M2C_FIELD(this, M2C_UNK **, 0x420) = temp_r4_37;
+                    M2C_FIELD(this->unk424, void **, 8) = temp_r0_34;
+                    M2C_FIELD(this->unk420, u8 **, 0xC) = (u8 *) this->unk424;
+                    this->unk424 = temp_r4_37;
+                    this->unk420 = temp_r4_37;
                 }
             }
         }
-        if (&this->unk3E8 != NULL) {
-            temp_r0_50 = this->unk408;
+        if (&this->unk3F0 != NULL) {
+            temp_r0_50 = this->unk410;
             if (temp_r0_50 != NULL) {
-                temp_r4_53 = &this->unk3E8;
+                temp_r4_53 = &this->unk3F0;
                 if (temp_r0_50 != temp_r4_53) {
-                    M2C_FIELD(this->unk40C, Spyro **, 0x20) = temp_r0_50;
-                    this->unk408->unk24 = M2C_BITWISE(f32, this->unk40C);
-                    this->unk40C = (u32) temp_r4_53;
-                    this->unk408 = (Spyro *) temp_r4_53;
+                    M2C_FIELD(this->unk414, M2C_UNK **, 0x20) = temp_r0_50;
+                    M2C_FIELD(this->unk410, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk414;
+                    this->unk414 = temp_r4_53;
+                    this->unk410 = temp_r4_53;
                 }
             }
         }
@@ -549,7 +550,7 @@ inline s32 Spyro::IsAttacking() {
     s32 var_r31_98;
 
     var_r31_98 = 0;
-    if ((IsCharging() != 0) || (IsInMelee() != 0) || (IsInTailSweep() != 0) || (IsInTailStrike() != 0) || ((u8) M2C_FIELD(this, u8 *, 0x3D3) != 0)) {
+    if ((IsCharging() != 0) || (IsInMelee() != 0) || (IsInTailSweep() != 0) || (IsInTailStrike() != 0) || ((u8) this->unk3D3 != 0)) {
         var_r31_98 = 1;
     }
     return var_r31_98;
@@ -568,7 +569,7 @@ inline f32 Spyro::GetCollisionRadius() {
 }
 
 inline MKCollisionInfo *Spyro::GetCollisionInfo() {
-    return (MKCollisionInfo *) &this->unk264;
+    return &this->unk26C;
 }
 
 inline void Spyro::GetVel() {
@@ -636,7 +637,7 @@ inline s32 Spyro::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 
 inline u8 Spyro::IsDead() {
-    return M2C_FIELD(this, u8 *, 0x3CD);
+    return this->unk3CD;
 }
 
 inline s32 Spyro::IsShatterable() {

@@ -36,9 +36,6 @@ public:
     virtual void Message(MKMessage *);
     void Detach(PlatformAttachment *);
     void Attach(PlatformAttachment *);
-    /* 0x089 */ u8 pad89[0x3];
-    /* 0x08c */ u8 unk8C;
-    /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ Matrix unk90;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;
@@ -62,7 +59,6 @@ class SeeSawDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ s32 unk70;
     /* 0x074 */ f32 unk74;
     /* 0x078 */ f32 unk78;

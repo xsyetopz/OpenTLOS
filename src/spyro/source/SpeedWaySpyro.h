@@ -123,7 +123,6 @@ public:
     void Start(void);
     void ClearData(void);
     static u8 states[0x144];
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32* unk90;
     /* 0x094 */ u8 pad94[0x4];
     /* 0x098 */ s32 unk98;
@@ -271,7 +270,6 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x06d */ u8 pad6D[0x3];
     /* 0x070 */ u8 unk70;
     /* 0x071 */ u8 pad71[0x37];
     /* 0x0a8 */ f32 unkA8;

@@ -185,7 +185,7 @@ void EnemySettings_DeinitModule() {
     pLevelSettings = NULL;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void EnemySettings_InitModule() {
     s8 sp8;
     M2C_UNK sp4;

@@ -15,7 +15,7 @@ class MKMessage;
 class MoltenMetalBucket;
 class MoltenMetalBucketDescriptor;
 
-class MoltenMetalBucket : public GameProp {  // base: vtable prefix
+class MoltenMetalBucket : public GameProp {  // base: base ctor call
 public:
     virtual ~MoltenMetalBucket(void);
     virtual void Init(void);
@@ -29,7 +29,6 @@ public:
     void Start(void);
     void PourStop(void);
     void Pour(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ u8 padD4[0x4];
@@ -51,14 +50,13 @@ public:
     /* 0x180 */ BreathHitMessage unk180;
 };
 
-class MoltenMetalBucketDescriptor : public GamePropDescriptor {  // base: vtable prefix
+class MoltenMetalBucketDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
     virtual void Resolve(void);
     MoltenMetalBucketDescriptor(void);
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ MKMaterial* unkEC;
     /* 0x0f0 */ s32 unkF0;

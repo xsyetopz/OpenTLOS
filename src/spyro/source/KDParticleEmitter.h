@@ -61,7 +61,6 @@ public:
     virtual void Init(void);
     virtual ~KDParticleLineEmitter(void);
     void InitLineParticlePostion(KDParticleEmitter *, MKParticle *);
-    /* 0x004 */ u8 pad4[0x74];
     /* 0x078 */ s32 unk78;
 };
 

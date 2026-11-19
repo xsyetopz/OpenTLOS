@@ -478,7 +478,6 @@ f32 MKFont::GetWidthOfCharacter(char arg0, CharInfo *arg1, FontPage *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 f32 MKFont::DrawString2dWrapped(const char *arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, unsigned int arg7) {
     Matrix sp10;
     M2C_UNK spC;
@@ -496,7 +495,6 @@ f32 MKFont::DrawString2dWrapped(const char *arg0, float arg1, float arg2, float 
     MKView_Pop();
     return temp_f31_840;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void *MKFont::GetCharacterFontPage(unsigned int arg0) {

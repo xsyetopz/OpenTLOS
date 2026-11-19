@@ -10,27 +10,24 @@ class GamePropColored;
 class GamePropColoredDescriptor;
 class GamePropDescriptor;
 class MKIniLine;
-class MKMaterial;
 class MKVector4;
 
-class GamePropColored : public GameProp {  // base: vtable prefix
+class GamePropColored : public GameProp {  // base: base ctor call
 public:
     virtual ~GamePropColored(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Draw(void);
     GamePropColored(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ MKVector4 unkC8;
 };
 
-class GamePropColoredDescriptor : public GamePropDescriptor {  // base: vtable prefix
+class GamePropColoredDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
     GamePropColoredDescriptor(void);
-    /* 0x0e4 */ MKMaterial* unkE4;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

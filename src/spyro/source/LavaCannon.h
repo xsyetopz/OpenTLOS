@@ -22,7 +22,7 @@ public:
     /* 0x000 */ s8* unk0;
 };
 
-class LavaCannon : public Shatterable {  // base: vtable prefix
+class LavaCannon : public Shatterable {  // base: base ctor call
 public:
     virtual ~LavaCannon(void);
     virtual void Init(void);
@@ -39,7 +39,6 @@ public:
     void EmitExplodingEffects(void);
     void EmitFiringEffects(void);
     void SetState(int);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ f64 unk1A8;
     /* 0x1b0 */ f64 unk1B0;
     /* 0x1b8 */ f64 unk1B8;
@@ -76,14 +75,13 @@ public:
     /* 0x264 */ u8 unk264;
 };
 
-class LavaCannonDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class LavaCannonDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Resolve(void);
     LavaCannonDescriptor(void);
-    /* 0x16c */ s32 unk16C;
     /* 0x170 */ s32 unk170;
     /* 0x174 */ s32 unk174;
     /* 0x178 */ s32 unk178;

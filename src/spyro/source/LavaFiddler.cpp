@@ -43,7 +43,6 @@ void LavaFiddlerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LavaFiddlerCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -66,7 +65,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void LavaFiddlerCritter::SetIdleState(LavaFiddler *arg0) {

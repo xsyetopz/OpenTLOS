@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "spyro/source/KDStateMachine.h"
 
 class IceBossStalactiteSpawner;
 class KDSplinePathSegment;
@@ -39,7 +40,8 @@ public:
     void StateSCWaitEnter(void);
     StalactiteCharge(void);
     /* 0x04c */ IceBossStalactiteSpawner* unk4C;
-    /* 0x050 */ u8 pad50[0x4];
+    /* 0x050 */ KDStateMachine<StalactiteCharge> unk50;
+    /* 0x051 */ u8 pad51[0x3];
     /* 0x054 */ s32 unk54;
     /* 0x058 */ s32 unk58;
     /* 0x05c */ s32 unk5C;

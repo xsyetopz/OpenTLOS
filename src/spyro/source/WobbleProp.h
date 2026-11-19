@@ -3,17 +3,16 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/GameProp.h"
-#include "spyro/source/KDPropEx.h"
 
 class GameProp;
-class KDPropExDescriptor;
+class GamePropDescriptor;
 class MKIniLine;
 class MKMaterial;
 class MKMessage;
 class WobbleProp;
 class WobblePropDescriptor;
 
-class WobbleProp : public GameProp {  // base: vtable prefix
+class WobbleProp : public GameProp {  // base: base ctor call
 public:
     virtual ~WobbleProp(void);
     virtual void Init(void);
@@ -22,7 +21,6 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     WobbleProp(void);
-    /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ void* unkC8;
     /* 0x0cc */ u8 unkCC;
     /* 0x0cd */ u8 padCD[0x3];
@@ -36,13 +34,11 @@ public:
     /* 0x0e8 */ f32 unkE8;
 };
 
-class WobblePropDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class WobblePropDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     WobblePropDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ s8* unkEC;
 };

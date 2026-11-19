@@ -87,7 +87,7 @@ void Button::Init() {
     memset(&this->unkEC, 0, 1U);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void ButtonDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("inactive");

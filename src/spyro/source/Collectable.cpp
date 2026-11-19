@@ -451,7 +451,7 @@ s32 Collectable::PlayCollectSound() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Collectable::RotateCameraFacing() {
     Matrix spA0;
     Matrix sp60;
@@ -562,7 +562,7 @@ void Collectable::SetState(CollectableState arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::CollectedState() {
     Matrix sp10;
     M2C_UNK spC;
@@ -2111,7 +2111,6 @@ void Collectable::DrawShadow() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable::Draw() {
     Matrix sp40;
     M2C_UNK sp3C;
@@ -2171,7 +2170,6 @@ void Collectable::Draw() {
         }
     }
 }
-#endif
 
 void Collectable::CalcShadowPos() {
     MKCollisionResult sp48;

@@ -8,7 +8,7 @@ class MKMessage;
 class Shatterable;
 class SmashWall;
 
-class SmashWall : public Shatterable {  // base: vtable prefix
+class SmashWall : public Shatterable {  // base: base ctor call
 public:
     virtual ~SmashWall(void);
     virtual void Message(MKMessage *);

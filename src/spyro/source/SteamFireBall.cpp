@@ -87,11 +87,11 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
     sp10 = arg0.unk8 + (f32) sp30;
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 4, 0x0C000000) != 0) {
-        this->unk184 = sp4C;
+        this->unk188 = sp4C;
     } else {
-        this->unk184 = arg1.unk4;
+        this->unk188 = arg1.unk4;
     }
-    this->unk150.unk28 = this->unk184 - 100.0f;
+    this->unk150.unk28 = this->unk188 - 100.0f;
     this->unk150.Show(1U);
     Projectile::FireAtTarget(arg0, arg1, arg2, arg3, arg4, arg5);
 }
@@ -122,7 +122,7 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SteamFireBall::Update() {
     Matrix sp190;
     Matrix sp150;
@@ -182,7 +182,7 @@ void SteamFireBall::Update() {
     void *temp_r3_461;
 
     Projectile::Update();
-    this->unk180 = (10.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unk180);
+    this->unk184 += 10.0f * gUpdateTimeDelta;
     M2C_STRUCT_COPY((s32) &sp150.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f1_242 = M2C_FIELD(this, f32 *, 0xC8);
     temp_f0_243 = M2C_FIELD(this, f32 *, 0xCC);
@@ -238,7 +238,7 @@ void SteamFireBall::Update() {
     spF0 = (f64) sp60;
     KDMath_BuildMatrixFromFwd(&sp190, *((MKVector3 *) &spF8), (MKVector3 *) &spE8);
     M2C_STRUCT_COPY((s32) &sp110.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    sp150.RotateRoll(&sp150, 2.0f * M2C_BITWISE(f32, this->unk180));
+    sp150.RotateRoll(&sp150, 2.0f * this->unk184);
     sp150.Multiply3x3(&sp150, &sp190);
     temp_f0_373 = sp150.unk10 * 5.53552857e-315;
     sp48 = temp_f0_373;
@@ -261,7 +261,7 @@ void SteamFireBall::Update() {
         temp_r3_428 = this->unk8;
         spA8 = M2C_FIELD(temp_r3_428, f64 *, 0x30);
         spB0 = M2C_FIELD(temp_r3_428, f64 *, 0x38);
-        var_f1_441 = 0.18f * -((0.00022222222f * ((*(f32 *) ((u8 *) &spA8 + 0x4)) - this->unk184)) - 1.0f);
+        var_f1_441 = 0.18f * -((0.00022222222f * ((*(f32 *) ((u8 *) &spA8 + 0x4)) - this->unk188)) - 1.0f);
         if (var_f1_441 < 1.0f) {
 
         } else {
@@ -280,7 +280,7 @@ void SteamFireBall::Update() {
         sp88 = temp_f4_464;
         sp80 = temp_f3_465;
         sp18 = (f32) sp88;
-        sp1C = this->unk184;
+        sp1C = this->unk188;
         sp20 = (f32) sp80;
         sp98 = (f64) sp18;
         spA0 = (f64) sp20;
@@ -308,13 +308,11 @@ void SteamFireBall::Deinit() {
     Projectile::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void SteamFireBall::Init() {
     Projectile::Init();
-    this->unk180 = 0.0f;
     this->unk184 = 0.0f;
+    this->unk188 = 0.0f;
 }
-#endif
 
 void *SteamFireBall::CreateInstance() {
     void *temp_r3_593;
@@ -329,7 +327,7 @@ void *SteamFireBall::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void SteamFireBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));

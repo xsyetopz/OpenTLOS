@@ -12,7 +12,7 @@ class MKVector3;
 class Projectile;
 class ProjectileDescriptor;
 
-class HotSpit : public Projectile {  // base: vtable prefix
+class HotSpit : public Projectile {  // base: base ctor call
 public:
     virtual ~HotSpit(void);
     virtual void LoadDone(void);
@@ -21,13 +21,12 @@ public:
     virtual void Collided(MKCollisionResult &);
     HotSpit(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ f32 unk150;
     /* 0x154 */ f32 unk154;
     /* 0x158 */ f32 unk158;
 };
 
-class HotSpitDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class HotSpitDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

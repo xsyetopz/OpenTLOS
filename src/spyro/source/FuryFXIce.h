@@ -35,7 +35,6 @@ public:
     void SpawnIcePatch(const MKVector3 &, const MKVector3 &, float);
     s32 Trigger(const MKVector3 &, bool);
     void SetDefaults(void);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ s32 unk90;
     /* 0x094 */ f32 unk94;
     /* 0x098 */ ManagedLight* unk98;
@@ -46,7 +45,7 @@ public:
     /* 0x0b1 */ s8 unkB1;
     /* 0x0b2 */ u8 padB2[0x6];
     /* 0x0b8 */ BreathHitMessage unkB8;
-    /* 0x109 */ u8 pad109[0x7];
+    /* 0x10c */ u8 pad10C[0x4];
     /* 0x110 */ void* unk110;
     /* 0x114 */ MKMaterial* unk114;
     /* 0x118 */ IceBreathSnowFlakes* unk118;

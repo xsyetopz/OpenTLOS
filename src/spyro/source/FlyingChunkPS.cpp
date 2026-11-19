@@ -269,7 +269,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKModel_SetColor(MKModel *, Matrix)' does not match
 void FlyingChunkPS::Draw() {
     Matrix sp10;
     M2C_UNK spC;

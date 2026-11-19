@@ -20,18 +20,18 @@ static s8 *pVideos[1] = { "AttractVideo" };
 #endif
 static s32 videoCount = 1;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void TitleScreen::Update() {
     s32 spC;
     s32 sp8;
     UISystem *temp_r3_71;
     f32 temp_f1_37;
-    f32 temp_r3_133;
-    f32 temp_r3_64;
     f32 var_f31_41;
     s32 temp_r0_76;
+    s32 temp_r3_64;
     s32 temp_r7_72;
     s32 var_r4_137;
+    void **temp_r3_133;
 
     UIScreen::Update();
     if ((s32) M2C_FIELD(&gb, s32 *, 0x358) > -1) {
@@ -39,8 +39,8 @@ void TitleScreen::Update() {
         M2C_FIELD(UIInput(-1), s8 *, 4) = 0;
         UIControls_Reset();
     }
-    this->unkBC.unk4 = M2C_BITWISE(f32, this->unkBC.unk4) + gUpdateTimeDelta;
-    temp_f1_37 = M2C_BITWISE(f32, this->unkBC.unk4);
+    this->unkC8 += gUpdateTimeDelta;
+    temp_f1_37 = this->unkC8;
     if (temp_f1_37 >= 30.0f) {
         var_f31_41 = temp_f1_37 - 30.0f;
         if (var_f31_41 < 1.0f) {
@@ -56,9 +56,9 @@ void TitleScreen::Update() {
         FrontEnd_SetFade(var_f31_41);
         if (var_f31_41 >= 1.0f) {
             FrontEnd_PlayBackgroundVideo(0U);
-            temp_r3_64 = this->unkC8;
-            this->unkC8 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_64) + 1));
-            if (M2C_BITWISE(s32, temp_r3_64) >= 5) {
+            temp_r3_64 = this->unkD0;
+            this->unkD0 = temp_r3_64 + 1;
+            if (temp_r3_64 >= 5) {
                 temp_r3_71 = ui_cast<UISystem *, UIContainer *>(GetRoot());
                 temp_r7_72 = loopCount;
                 temp_r0_76 = temp_r7_72 / (s32) videoCount;
@@ -67,7 +67,7 @@ void TitleScreen::Update() {
             }
         }
     } else if (FrontEnd_GetFade() > 0.0f) {
-        FrontEnd_SetFade(1.0f - M2C_BITWISE(f32, this->unkBC.unk4));
+        FrontEnd_SetFade(1.0f - this->unkC8);
     }
     if (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) > 0.0f) {
         M2C_FIELD(M2C_FIELD(&gb, void **, 0x354), s32 *, 0) = 0;
@@ -77,10 +77,10 @@ void TitleScreen::Update() {
         KDSound_Play(GS_MenuSelect, 0U, -1);
         ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
     }
-    this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + gUpdateTimeDelta;
-    if (M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) {
-        temp_r3_133 = this->unkCC;
-        if (M2C_BITWISE(u32, temp_r3_133) != 0U) {
+    this->unkCC += gUpdateTimeDelta;
+    if (this->unkCC >= 1.0f) {
+        temp_r3_133 = this->unkD4;
+        if (temp_r3_133 != NULL) {
             var_r4_137 = 2;
             if ((u8) M2C_FIELD(temp_r3_133, u8 *, 0x14) != 0) {
                 var_r4_137 = 3;
@@ -89,7 +89,7 @@ void TitleScreen::Update() {
             spC = 0;
             M2C_FIELD(M2C_FIELD(temp_r3_133, void **, 0), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
-        this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) - 1.0f;
+        this->unkCC -= 1.0f;
     }
 }
 #endif
@@ -99,21 +99,21 @@ void TitleScreen::OnExit() {
     FrontEnd_SetFade(0.0f);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 void TitleScreen::OnEnter() {
     s32 spC;
     s32 sp8;
     UIContainer *temp_r3_211;
-    f32 temp_r3_197;
     f32 var_f1_219;
     u32 temp_r31_213;
+    void **temp_r3_197;
 
     UIScreen::OnEnter();
-    this->unkBC.unk4 = 0.0f;
-    this->unkBC.unk8 = 1.0f;
+    this->unkC8 = 0.0f;
+    this->unkCC = 1.0f;
     M2C_FIELD(&gb, s8 *, 9) = 0;
-    temp_r3_197 = this->unkCC;
-    if (M2C_BITWISE(u32, temp_r3_197) != 0U) {
+    temp_r3_197 = this->unkD4;
+    if (temp_r3_197 != NULL) {
         spC = 0;
         sp8 = 3;
         M2C_FIELD(*temp_r3_197, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -129,19 +129,19 @@ void TitleScreen::OnEnter() {
     ((GameData *) GameData::gameData)->GetGameSettings();
     KDSound_SetMasterVolume(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
     FrontEnd_PlayBackgroundVideo(1U);
-    this->unkC8 = 0.0f;
+    this->unkD0 = 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'UIObject *' to
+#if 0 // DRAFT: illegal implicit conversion from 'UIObject *' to
 void TitleScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkCC = M2C_BITWISE(f32, FindChild(""));
+    this->unkD4 = FindChild("");
     this->unk18.unk40 |= 1;
 }
 #endif
 
 void TitleScreen::Init() {
     UIContainer::Init();
-    this->unkCC = 0.0f;
+    this->unkD4 = NULL;
 }

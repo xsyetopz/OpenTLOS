@@ -796,7 +796,7 @@ void PoisonBomb::Init() {
     this->unk1CC = Tools_GetMatchingMaterial(this->unk1C4, "fx_gasblur");
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion3 *' to
 void PoisonBombDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkF0 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));

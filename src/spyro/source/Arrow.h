@@ -2,16 +2,15 @@
 #define SPYRO_SOURCE_ARROW_H
 
 #include <dolphin/types.h>
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
 
 class Arrow;
 class ArrowDescriptor;
-class KDPropExDescriptor;
 class Matrix;
 class Trap;
+class TrapDescriptor;
 
-class Arrow : public Trap {  // base: vtable prefix
+class Arrow : public Trap {  // base: base ctor call
 public:
     virtual ~Arrow(void);
     virtual void Reset(void);
@@ -23,7 +22,7 @@ public:
     /* 0x0e8 */ f32 unkE8;
 };
 
-class ArrowDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class ArrowDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     ArrowDescriptor(void);

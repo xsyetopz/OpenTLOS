@@ -22,39 +22,37 @@ extern DataMap projectileTypeDataMap;
 static DataMap dataMapEAP;                          /* unable to generate initializer: confusing struct layout */
 
 void EnemyMovementManager::SetExitingAnim() {
+    AnimSequence *temp_r4_19;
     Enemy *temp_r3_18;
-    EnemyDescriptor *temp_r4_19;
 
     this->unk14 |= 0x40;
     temp_r3_18 = this->unk0;
-    temp_r4_19 = temp_r3_18->unkA38;
-    if ((temp_r4_19 != NULL) && ((void *) temp_r4_19->__vptr != NULL)) {
-        temp_r3_18->SetAnim((AnimSequence *) temp_r4_19, (AnimTransition *) &temp_r4_19->__vptr, 0.15f, 0U);
+    temp_r4_19 = temp_r3_18->unkA50;
+    if ((temp_r4_19 != NULL) && ((u32) temp_r4_19->unk40 != 0)) {
+        temp_r3_18->SetAnim(temp_r4_19, (AnimTransition *) &temp_r4_19->unk40, 0.15f, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 **EnemyMovementManager::SelectAnim() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    AnimSequence *temp_r8_45;
     Enemy *temp_r11_44;
-    EnemyAttack *temp_r5_46;
-    EnemyDescriptor *temp_r8_45;
+    EnemyDescriptor *temp_r5_46;
     f32 temp_f1_84;
     f32 temp_f2_116;
     f32 temp_f3_55;
     f32 temp_f6_64;
     f32 temp_f8_57;
-    f32 var_r7_42;
     s32 **temp_r31_89;
     s32 **temp_r9_159;
     s32 **var_r4_40;
     s32 *temp_r9_115;
-    s32 temp_r0_48;
     s32 temp_r12_91;
     s32 temp_r5_49;
     s32 temp_r7_190;
@@ -63,17 +61,19 @@ s32 **EnemyMovementManager::SelectAnim() {
     s32 var_ctr_85;
     s32 var_r6_154;
     s32 var_r6_41;
+    s32 var_r7_42;
     s32 var_r8_59;
     u32 temp_r8_178;
+    void *temp_r0_48;
 
     var_r4_40 = NULL;
     var_r6_41 = 0;
-    var_r7_42 = 0.0f;
+    var_r7_42 = 0;
     temp_r11_44 = this->unk0;
-    temp_r8_45 = temp_r11_44->unkA38;
-    temp_r5_46 = temp_r11_44->unkA20;
-    temp_r0_48 = M2C_FIELD(temp_r5_46, s32 *, 0x204);
-    temp_r5_49 = M2C_FIELD(temp_r5_46, s32 *, 0x208);
+    temp_r8_45 = temp_r11_44->unkA50;
+    temp_r5_46 = temp_r11_44->unkA38;
+    temp_r0_48 = temp_r5_46->unk204;
+    temp_r5_49 = temp_r5_46->unk208;
     if (temp_r8_45 != NULL) {
         var_r6_41 = temp_r8_45->unk6C;
         var_r7_42 = temp_r8_45->unk68;
@@ -91,12 +91,12 @@ s32 **EnemyMovementManager::SelectAnim() {
     var_ctr_85 = temp_r5_49;
     if (temp_r5_49 > 0) {
         do {
-            temp_r31_89 = temp_r0_48 + var_r8_59;
+            temp_r31_89 = ((u8 *) temp_r0_48) + var_r8_59;
             temp_r12_91 = M2C_FIELD(temp_r31_89, s32 *, 4);
             if ((this->unk4 & temp_r12_91) && (!(temp_r12_91 & 1) || ((s32) this->unk8 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 2) || ((s32) this->unkC == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 4) || ((s32) this->unk10 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC)))) {
                 temp_r9_115 = M2C_FIELD(temp_r31_89, s32 **, 0);
-                temp_f2_116 = temp_r11_44->unk694;
-                if ((temp_f2_116 >= M2C_FIELD(temp_r9_115, f32 *, 4)) && (temp_f2_116 <= M2C_FIELD(temp_r9_115, f32 *, 8)) && (temp_f1_84 >= M2C_FIELD(temp_r9_115, f32 *, 0xC)) && (temp_f1_84 <= M2C_FIELD(temp_r9_115, f32 *, 0x10)) && ((var_r4_40 == NULL) || ((s32) **var_r4_40 < (s32) M2C_FIELD(temp_r9_115, s32 *, 0)) || ((var_r6_41 == (s32) M2C_FIELD(temp_r31_89, s32 *, 8)) && (M2C_BITWISE(s32, var_r7_42) == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))))) {
+                temp_f2_116 = temp_r11_44->unk69C;
+                if ((temp_f2_116 >= M2C_FIELD(temp_r9_115, f32 *, 4)) && (temp_f2_116 <= M2C_FIELD(temp_r9_115, f32 *, 8)) && (temp_f1_84 >= M2C_FIELD(temp_r9_115, f32 *, 0xC)) && (temp_f1_84 <= M2C_FIELD(temp_r9_115, f32 *, 0x10)) && ((var_r4_40 == NULL) || ((s32) **var_r4_40 < (s32) M2C_FIELD(temp_r9_115, s32 *, 0)) || ((var_r6_41 == (s32) M2C_FIELD(temp_r31_89, s32 *, 8)) && (var_r7_42 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))))) {
                     var_r4_40 = temp_r31_89;
                 }
             }
@@ -109,7 +109,7 @@ s32 **EnemyMovementManager::SelectAnim() {
         var_ctr_155 = temp_r5_49;
         if (temp_r5_49 > 0) {
             do {
-                temp_r9_159 = temp_r0_48 + var_r6_154;
+                temp_r9_159 = ((u8 *) temp_r0_48) + var_r6_154;
                 temp_r8_161 = M2C_FIELD(temp_r9_159, s32 *, 4);
                 if ((this->unk4 & temp_r8_161) && (!(temp_r8_161 & 1) || ((s32) this->unk8 == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC))) && (!(temp_r8_161 & 2) || ((s32) this->unkC == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC))) && ((temp_r8_178 = temp_r8_161 & 4, ((temp_r8_178 == 0) != 0)) || ((s32) this->unk10 == (s32) M2C_FIELD(temp_r9_159, s32 *, 0xC)))) {
                     if (var_r4_40 == NULL) {
@@ -132,8 +132,11 @@ s32 **EnemyMovementManager::SelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void EnemyMovementManager::Update() {
+    AnimSequence *temp_r3_224;
+    AnimSequence *temp_r3_260;
+    AnimSequence *temp_r4_316;
+    AnimSequence *temp_r4_331;
     Enemy *temp_r28_310;
     Enemy *temp_r3_328;
     Enemy *temp_r4_284;
@@ -141,26 +144,22 @@ void EnemyMovementManager::Update() {
     Enemy *temp_r4_296;
     Enemy *temp_r4_302;
     Enemy *temp_r4_348;
-    EnemyDescriptor *temp_r3_224;
-    EnemyDescriptor *temp_r3_260;
-    EnemyDescriptor *temp_r4_316;
-    EnemyDescriptor *temp_r4_331;
     f32 temp_f2_349;
     f32 temp_f3_352;
     f32 var_f0_357;
-    f32 var_r29_220;
     s32 **temp_r31_233;
     s32 *temp_r3_347;
     s32 temp_r0_271;
     s32 temp_r4_238;
     s32 var_r28_219;
+    s32 var_r29_220;
     u8 temp_r3_339;
     u8 var_r29_311;
 
     var_r28_219 = 0;
-    var_r29_220 = 0.0f;
+    var_r29_220 = 0;
     ((Character *) this->unk0)->UpdateSpeed();
-    temp_r3_224 = this->unk0->unkA38;
+    temp_r3_224 = this->unk0->unkA50;
     if (temp_r3_224 != NULL) {
         var_r28_219 = temp_r3_224->unk6C;
         var_r29_220 = temp_r3_224->unk68;
@@ -168,12 +167,12 @@ void EnemyMovementManager::Update() {
     temp_r31_233 = SelectAnim();
     if (!(((u8) this->unk14 >> 6U) & 1) && (temp_r31_233 != NULL)) {
         temp_r4_238 = M2C_FIELD(temp_r31_233, s32 *, 8);
-        if ((var_r28_219 != temp_r4_238) || (M2C_BITWISE(s32, var_r29_220) != (s32) M2C_FIELD(temp_r31_233, s32 *, 0xC))) {
+        if ((var_r28_219 != temp_r4_238) || (var_r29_220 != (s32) M2C_FIELD(temp_r31_233, s32 *, 0xC))) {
             this->unk0->SetAnim((AnimSequenceType) temp_r4_238, M2C_FIELD(temp_r31_233, s32 *, 0xC), 0, 0.15f, 0U, 0U);
             this->unk14 &= ~0x80;
             this->unk14 &= ~0x40;
-            temp_r3_260 = this->unk0->unkA38;
-            if ((temp_r3_260 != NULL) && (M2C_BITWISE(u32, temp_r3_260->unk20) != 0U)) {
+            temp_r3_260 = this->unk0->unkA50;
+            if ((temp_r3_260 != NULL) && ((u32) temp_r3_260->unk20 != 0)) {
                 this->unk14 |= 0x80;
             }
         }
@@ -182,34 +181,34 @@ void EnemyMovementManager::Update() {
         case 4:
         case 1:
             temp_r4_284 = this->unk0;
-            temp_r4_284->unk684 = M2C_FIELD(temp_r4_284->unkA20, f32 *, 0x154);
+            temp_r4_284->unk68C = temp_r4_284->unkA38->unk154;
             break;
         case 5:
             temp_r4_290 = this->unk0;
-            temp_r4_290->unk684 = M2C_FIELD(temp_r4_290->unkA20, f32 *, 0x158);
+            temp_r4_290->unk68C = temp_r4_290->unkA38->unk158;
             break;
         case 6:
             temp_r4_296 = this->unk0;
-            temp_r4_296->unk684 = M2C_FIELD(temp_r4_296->unkA20, f32 *, 0x15C);
+            temp_r4_296->unk68C = temp_r4_296->unkA38->unk15C;
             break;
         default:
             temp_r4_302 = this->unk0;
-            temp_r4_302->unk684 = M2C_FIELD(temp_r4_302->unkA20, f32 *, 0x15C);
+            temp_r4_302->unk68C = temp_r4_302->unkA38->unk15C;
             break;
         }
         if (((u8) this->unk14 >> 7U) & 1) {
             temp_r28_310 = this->unk0;
             var_r29_311 = 0;
             if (((Character *) temp_r28_310)->HasAnimFinished() != 0) {
-                temp_r4_316 = temp_r28_310->unkA38;
-                if ((temp_r4_316 != NULL) && ((s8 *) temp_r4_316->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r28_310, void **, 0x630), u32 *, 0x20))) {
+                temp_r4_316 = temp_r28_310->unkA50;
+                if ((temp_r4_316 != NULL) && ((u32) temp_r4_316->unk0 == (u32) M2C_FIELD(temp_r28_310->unk630, u32 *, 0x20))) {
                     var_r29_311 = 1;
                 }
             }
             if (var_r29_311 != 0) {
                 temp_r3_328 = this->unk0;
-                temp_r4_331 = temp_r3_328->unkA38;
-                temp_r3_328->SetAnim((AnimSequence *) temp_r4_331, (AnimTransition *) &temp_r4_331->unk20, 0.15f, 0U);
+                temp_r4_331 = temp_r3_328->unkA50;
+                temp_r3_328->SetAnim(temp_r4_331, (AnimTransition *) &temp_r4_331->unk20, 0.15f, 0U);
                 this->unk14 &= ~0x80;
             }
         }
@@ -218,18 +217,17 @@ void EnemyMovementManager::Update() {
             temp_r3_347 = M2C_FIELD(temp_r31_233, s32 **, 0);
             temp_r4_348 = this->unk0;
             temp_f2_349 = M2C_FIELD(temp_r3_347, f32 *, 4);
-            temp_f3_352 = temp_r4_348->unk694 - temp_f2_349;
+            temp_f3_352 = temp_r4_348->unk69C - temp_f2_349;
             var_f0_357 = ((temp_f3_352 / (M2C_FIELD(temp_r3_347, f32 *, 8) - temp_f2_349)) * temp_f3_352) + 0.5f;
             if (var_f0_357 < 1.0f) {
 
             } else {
                 var_f0_357 = 1.0f;
             }
-            M2C_FIELD(M2C_FIELD(temp_r4_348, void **, 0x630), f32 *, 0x38) = var_f0_357;
+            M2C_FIELD(temp_r4_348->unk630, f32 *, 0x38) = var_f0_357;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyMovementManager::Set(unsigned int arg0, int arg1, int arg2, int arg3) {

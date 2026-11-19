@@ -731,7 +731,6 @@ void ScriptCE::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosionNodeCE::Update() {
     Matrix sp70;
     Matrix sp30;
@@ -757,7 +756,6 @@ void ExplosionNodeCE::Update() {
         ((Explosion4 *) (M2C_FIELD(&gb, Explosion4 **, 0x2C0)))->Trigger(*((MKVector3 *) &sp18), this->unkC, 0U, NULL, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 ExplosionNodeCE::LoadLine() {
@@ -832,7 +830,7 @@ s32 AttachScaleOffsetCE::LoadLine() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp70'
 void ScaleCE::Update() {
     M2C_UNK sp40;
     M2C_UNK sp3C;
@@ -910,7 +908,6 @@ void AlphaChangeCE::Init() {
     this->unk8 = 1.0f;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void AttachPropToRefPointCE::Update() {
     Matrix sp50;
     Matrix sp10;
@@ -926,7 +923,6 @@ void AttachPropToRefPointCE::Update() {
         MKModel_SetWorldMatrix(this->unk4->unk4, sp10);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 AttachPropToRefPointCE::LoadLine() {

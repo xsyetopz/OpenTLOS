@@ -1,17 +1,15 @@
 #include "spyro/source/Enemies_DreadWing.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/DropBox.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
-#include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
+#include "common/Source/MKModel.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -22,89 +20,89 @@ extern void *gpTranslation_StringArray;
 static CharacterBodyFxInit dreadWingBodyFXInit;     /* unable to generate initializer: confusing struct layout */
 
 void DreadWing::DropDropBox() {
-    s32 temp_r3_67;
+    DropBox *temp_r3_67;
 
-    temp_r3_67 = this->unkAFC;
-    if ((u32) temp_r3_67 != 0U) {
-        ((DropBox *) temp_r3_67)->Drop();
-        this->unkAFC = 0;
+    temp_r3_67 = this->unkB14;
+    if (temp_r3_67 != NULL) {
+        temp_r3_67->Drop();
+        this->unkB14 = NULL;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'DropBox *' to
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnerObject'
 s32 DreadWing::PickUpDropBox(int arg0) {
-    AttackSweepData *temp_r4_117;
-    AttackSweepData *temp_r4_224;
+    DropBox *temp_r3_108;
+    DropBox *temp_r3_215;
+    DropBox *temp_r4_90;
+    MKPropDescriptor *temp_r3_102;
+    MKPropDescriptor *temp_r3_209;
     s32 temp_r0_136;
-    s32 temp_r3_102;
-    s32 temp_r3_108;
-    s32 temp_r3_209;
-    s32 temp_r3_215;
-    s32 temp_r4_90;
+    s32 temp_r4_117;
+    s32 temp_r4_224;
 
-    temp_r4_90 = this->unkAFC;
-    if ((u32) temp_r4_90 != 0U) {
-        M2C_FIELD(temp_r4_90, s32 *, 0x18) = (s32) this->unk18;
-        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
+    temp_r4_90 = this->unkB14;
+    if (temp_r4_90 != NULL) {
+        temp_r4_90->unk18 = this->unk18;
+        this->unkB14->unk1D4->unk18 = this->unk18;
         return 0;
     }
-    temp_r3_102 = this->unkAF8;
-    if ((u32) temp_r3_102 != 0U) {
-        this->unkAFC = checked_cast<DropBox *, MKProp>(((MKPropDescriptor *) temp_r3_102)->CreateInstance());
-        temp_r3_108 = this->unkAFC;
-        if ((u32) temp_r3_108 != 0U) {
-            ((DropBox *) temp_r3_108)->SetDefaults();
-            M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
-            M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
-            temp_r4_117 = this->unkA30;
-            if (temp_r4_117 != NULL) {
-                ((SpawnerObject *) (M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)))->SetParentSpawner((SpawnerObject *) temp_r4_117->unk0);
+    temp_r3_102 = this->unkB10;
+    if (temp_r3_102 != NULL) {
+        this->unkB14 = checked_cast<DropBox *, MKProp>(temp_r3_102->CreateInstance());
+        temp_r3_108 = this->unkB14;
+        if (temp_r3_108 != NULL) {
+            temp_r3_108->SetDefaults();
+            this->unkB14->unk210 = arg0;
+            this->unkB14->unk1D4->unk24 = arg0;
+            temp_r4_117 = this->unkA48;
+            if ((u32) temp_r4_117 != 0U) {
+                this->unkB14->unk1D4->SetParentSpawner(*temp_r4_117);
             }
         }
-        M2C_FIELD(this->unkAFC, s32 *, 0x18) = (s32) this->unk18;
-        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
+        this->unkB14->unk18 = this->unk18;
+        this->unkB14->unk1D4->unk18 = this->unk18;
         return 1;
     }
-    temp_r0_136 = M2C_FIELD(this->unkA20, s32 *, 0xF4);
+    temp_r0_136 = this->unkA38->unkF4;
     switch (temp_r0_136) {                          /* irregular */
     case 35:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
         break;
     case 36:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
         break;
     case 37:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     case 38:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox"));
         break;
     case 39:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     }
-    temp_r3_209 = this->unkAF8;
-    if ((u32) temp_r3_209 != 0U) {
-        this->unkAFC = checked_cast<DropBox *, MKProp>(((MKPropDescriptor *) temp_r3_209)->CreateInstance());
-        temp_r3_215 = this->unkAFC;
-        if ((u32) temp_r3_215 != 0U) {
-            ((DropBox *) temp_r3_215)->SetDefaults();
-            M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
-            M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
-            temp_r4_224 = this->unkA30;
-            if (temp_r4_224 != NULL) {
-                ((SpawnerObject *) (M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)))->SetParentSpawner((SpawnerObject *) temp_r4_224->unk0);
+    temp_r3_209 = this->unkB10;
+    if (temp_r3_209 != NULL) {
+        this->unkB14 = checked_cast<DropBox *, MKProp>(temp_r3_209->CreateInstance());
+        temp_r3_215 = this->unkB14;
+        if (temp_r3_215 != NULL) {
+            temp_r3_215->SetDefaults();
+            this->unkB14->unk210 = arg0;
+            this->unkB14->unk1D4->unk24 = arg0;
+            temp_r4_224 = this->unkA48;
+            if ((u32) temp_r4_224 != 0U) {
+                this->unkB14->unk1D4->SetParentSpawner(*temp_r4_224);
             }
         }
-        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
+        this->unkB14->unk1D4->unk18 = this->unk18;
         return 1;
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DreadWing::UpdateDropBox() {
     Matrix sp100;
     M2C_UNK spFC;
@@ -142,7 +140,7 @@ void DreadWing::UpdateDropBox() {
     s32 var_r0_387;
     void *temp_r4_315;
 
-    if ((u32) this->unkAFC != 0U) {
+    if ((DropBox *) this->unkB14 != NULL) {
         M2C_STRUCT_COPY((s32) &spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "R_Foot"), &spE8);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Foot"), &spD8);
@@ -216,13 +214,13 @@ void DreadWing::UpdateDropBox() {
         sp100.unk34 = (*(f32 *) ((u8 *) &sp58 + 0x4));
         sp100.unk38 = (f32) sp60;
         sp100.unk3C = 1.0f;
-        MKModel_SetWorldMatrix(M2C_FIELD(this->unkAFC, MKModel **, 4), sp100);
+        MKModel_SetWorldMatrix(this->unkB14->unk4, sp100);
     }
 }
 #endif
 
 void DreadWing::CheckAnimEvents() {
-    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0) != 0) {
+    if (((MKAnimScript *) this->unk630)->CheckEvent(0) != 0) {
         DropDropBox();
     }
     Enemy::CheckAnimEvents();
@@ -242,12 +240,12 @@ void DreadWing::Message(MKMessage *arg0) {
 #endif
 
 void DreadWing::Despawn(bool arg0) {
-    s32 temp_r3_522;
+    DropBox *temp_r3_522;
 
     Enemy::Despawn(arg0);
-    temp_r3_522 = this->unkAFC;
-    if ((u32) temp_r3_522 != 0U) {
-        ((DropBox *) temp_r3_522)->Drop();
+    temp_r3_522 = this->unkB14;
+    if (temp_r3_522 != NULL) {
+        temp_r3_522->Drop();
     }
 }
 
@@ -260,22 +258,22 @@ void DreadWing::Update() {
 void DreadWing::Resolve() {
     s32 temp_r0_561;
 
-    temp_r0_561 = M2C_FIELD(this->unkA20, s32 *, 0xF4);
+    temp_r0_561 = this->unkA38->unkF4;
     switch (temp_r0_561) {                          /* irregular */
     case 35:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
         break;
     case 36:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
         break;
     case 37:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     case 38:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox"));
         break;
     case 39:
-        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkB10 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     }
     Enemy::Resolve();
@@ -303,9 +301,9 @@ void DreadWing::Init() {
         temp_r31_656->__vptr = &__vt;
     }
     temp_r31_656->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_656;
-    this->unkAFC = 0;
-    this->unkAF8 = 0;
+    this->unkA3C = &temp_r31_656->__vptr;
+    this->unkB14 = NULL;
+    this->unkB10 = NULL;
 }
 #endif
 

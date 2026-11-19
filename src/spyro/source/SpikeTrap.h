@@ -3,18 +3,17 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/EventMessage.h"
-#include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
 
 class EventMessage;
-class KDPropExDescriptor;
 class MKIniLine;
 class MKMessage;
 class SpikeTrap;
 class SpikeTrapDescriptor;
 class Trap;
+class TrapDescriptor;
 
-class SpikeTrap : public Trap {  // base: vtable prefix
+class SpikeTrap : public Trap {  // base: base ctor call
 public:
     virtual ~SpikeTrap(void);
     virtual void Init(void);
@@ -33,14 +32,12 @@ public:
     /* 0x0ec */ EventMessage unkEC;
 };
 
-class SpikeTrapDescriptor : public KDPropExDescriptor {  // base: vtable prefix
+class SpikeTrapDescriptor : public TrapDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     SpikeTrapDescriptor(void);
-    /* 0x0c0 */ u8 padC0[0x24];
-    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ s32 unkEC;
     /* 0x0f0 */ s32 unkF0;

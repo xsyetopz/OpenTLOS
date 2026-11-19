@@ -1,5 +1,6 @@
 #include "spyro/source/Enemies_Convex.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
@@ -9,9 +10,9 @@
 #include "spyro/source/ConvexTier2Goals.h"
 #include "spyro/source/ConvexTier3Goals.h"
 #include "spyro/source/Enemy.h"
-#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/MovementObject.h"
+#include "spyro/source/SB2.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
@@ -104,7 +105,7 @@ void ConvexTier3::Init() {
         temp_r31_193->__vptr = &__vt;
     }
     temp_r31_193->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_193;
+    this->unkA3C = &temp_r31_193->__vptr;
 }
 #endif
 
@@ -134,7 +135,7 @@ void ConvexTier2::UpdateMovementCustom() {
     s32 sp1C;
     s32 sp18;
     f64 sp8;
-    void *temp_r6_300;
+    SB2 *temp_r6_300;
 
     sp44 = &__vt;
     sp18 = 0x30;
@@ -152,8 +153,8 @@ void ConvexTier2::UpdateMovementCustom() {
     this->unk110.unk440 = (MKMessage *) &sp18;
     UpdateRotation();
     UpdateVelocity();
-    temp_r6_300 = this->unk638;
-    if (((temp_r6_300 != NULL) && (((u8) M2C_FIELD(temp_r6_300, u8 *, 0x464) >> 7U) & 1)) || (((u8) this->unk6B5 >> 1U) & 1)) {
+    temp_r6_300 = this->unk640;
+    if (((temp_r6_300 != NULL) && (((u8) temp_r6_300->unk464 >> 7U) & 1)) || (((u8) this->unk6B5 >> 1U) & 1)) {
 
     }
     ((MovementObject *) &sp8)->Update((u8) &this->unk588);
@@ -173,7 +174,7 @@ void ConvexTier2::Despawn(bool arg0) {
 
 s32 ConvexTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     if (Enemy::Spawn(arg0, arg1) != 0) {
-        SetupEnemyRegion(*((MKVector3 *) &this->unk588), 3000.0f);
+        SetupEnemyRegion(this->unk588, 3000.0f);
         return 1;
     }
     return 0;
@@ -195,14 +196,14 @@ void ConvexTier2::UpdateCollisionItems() {
     sp48.operator*(200.0f);
     sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
     this->unk60 = sp18;
-    sp20 = this->unk588.unk4 + sp48.unk8;
+    sp20 = this->unk588.unk8 + sp48.unk8;
     sp58 = sp18;
     sp60 = (f64) sp20;
     this->unk68 = (f64) sp20;
     sp28.operator*(1000.0f);
     sp8 = M2C_FIELD(this, f64 *, 0x588) - M2C_BITWISE(f64, sp28);
     this->unk70 = sp8;
-    sp10 = this->unk588.unk4 - sp28.unk8;
+    sp10 = this->unk588.unk8 - sp28.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     this->unk78 = (f64) sp10;
@@ -241,7 +242,7 @@ void ConvexTier2::SetupCollision() {
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     temp_f31_480 = GetCollisionRadius((f64) sp18, (f64) sp10, (f64) sp8);
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, temp_f31_480, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unk634, M2C_FIELD(temp_r31_457, u32 *, 0x70));
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, temp_f31_480, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, (MKCollisionInfo *) this->unk634, M2C_FIELD(temp_r31_457, u32 *, 0x70));
 }
 #endif
 
@@ -302,7 +303,7 @@ void ConvexTier2::Init() {
         temp_r31_578->__vptr = &__vt;
     }
     temp_r31_578->Init((Enemy *) this);
-    this->unkA24 = (EnemyAttack *) temp_r31_578;
+    this->unkA3C = &temp_r31_578->__vptr;
 }
 #endif
 

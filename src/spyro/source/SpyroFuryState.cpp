@@ -62,7 +62,7 @@ void SpyroFuryState::Message(MKMessage *arg0) {
 s32 SpyroFuryState::Transition() {
     s32 var_r31_70;
 
-    if (((u8) this->unk39 == 0) && ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) || ((s32) M2C_FIELD(this->unk10->unk26C.unk8, s32 *, 0x16C) > 0))) {
+    if (((u8) this->unk39 == 0) && ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) || ((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0))) {
         if ((u8) this->unk38 != 0) {
             return this->unk10->TryChangeState(1U, 6U, (SpyroStateMsg) 0x175, 0U);
         }
@@ -106,17 +106,15 @@ void SpyroFuryState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroFuryState::Exit() {
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     M2C_FIELD(GameData::gameData, s32 *, 0x158) = (s32) M2C_FIELD(GameData::gameData, s32 *, 0x15C);
     this->unk10->UpdateWaterSurfaceFX(1U);
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroFuryState::Enter(SpyroStateMessages &arg0) {
     s32 sp30;
     s32 sp2C;
@@ -155,11 +153,11 @@ void SpyroFuryState::Enter(SpyroStateMessages &arg0) {
         this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk38 = 0.75f;
     }
     temp_r6_282 = this->unk10;
-    temp_r6_282->unk420 = (void *) ((s32) temp_r6_282->unk420 & 0xFFF3BE5E);
+    temp_r6_282->unk428 &= 0xFFF3BE5E;
     temp_r3_291 = this->unk10;
-    temp_r3_291->unk420 = (void *) ((s32) temp_r3_291->unk420 | 0x4000);
+    temp_r3_291->unk428 |= 0x4000;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
+    this->unk10->unk38C = 0.0f;
     temp_r3_301 = this->unk10->unkB70;
     if (temp_r3_301 != NULL) {
         sp2C = 0;
@@ -182,11 +180,9 @@ void SpyroFuryState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroFuryState::Deinit() {
     this->unk14.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFuryState::Init(Spyro *arg0) {

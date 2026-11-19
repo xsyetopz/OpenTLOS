@@ -1,13 +1,10 @@
 #include "spyro/source/ElecTier2Goals.h"
 #include "common/Source/MKHeap.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
-#include "spyro/source/CharacterFireFX.h"
-#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Enemies_Elec.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -59,7 +56,7 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     temp_r3_29 = this->unkC;
     sp20 = this->unk18 - M2C_FIELD(temp_r3_29, f64 *, 0x588);
     sp40 = sp20;
-    sp28 = this->unk20 - temp_r3_29->unk588.unk4;
+    sp28 = this->unk20 - temp_r3_29->unk588.unk8;
     sp48 = (f64) sp28;
     var_f31_52 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
     if (var_f31_52 > 0.000001f) {
@@ -119,7 +116,7 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     sp38 = (f64) sp18;
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_162 = 0;
-        temp_r5_163 = M2C_FIELD(this->unkC, void **, 0x630);
+        temp_r5_163 = this->unkC->unk630;
         if (((u32) M2C_FIELD(temp_r5_163, u32 *, 0x2C) >> 1U) & 1) {
             var_r3_168 = 0;
             if ((M2C_FIELD(temp_r5_163, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_163, s32 *, 0x44) > 1)) {
@@ -163,14 +160,14 @@ void ElecTier2Goal_Attack::Terminate() {
 
     var_r31_260 = 0;
     temp_r3_261 = this->unkC;
-    M2C_FIELD(temp_r3_261, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_261, u8 *, 0xB08) & ~0x10);
-    this->unkC->unkA08 = NULL;
+    temp_r3_261->unkB08 &= ~0x10;
+    this->unkC->unkA20 = NULL;
     temp_r3_267 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_267, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_267->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_267, u8 *, 0x8B8) == 2) || (temp_r3_267->unk870.unk40.Get() != NULL)) {
         var_r31_260 = 1;
     }
     if (var_r31_260 != 0) {
-        var_r3_286 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_286 = M2C_FIELD(this->unkC->unk870.unk40.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_286 = NULL;
     }
@@ -188,17 +185,17 @@ void ElecTier2Goal_Attack::Terminate() {
 #endif
 
 u8 ElecTier2Goal_Attack::Update() {
-    CharacterFireFX *temp_r4_333;
     Enemy *temp_r3_327;
     Enemy *temp_r3_332;
+    EnemyAttack *temp_r4_333;
 
     ActivateIfInactive();
     temp_r3_327 = this->unkC;
     M2C_FIELD(temp_r3_327, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_327, f64 *, 0x90);
     M2C_FIELD(temp_r3_327, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_327, f64 *, 0x98);
     temp_r3_332 = this->unkC;
-    temp_r4_333 = temp_r3_332->unkA08;
-    if ((temp_r4_333 != NULL) && ((s32) M2C_FIELD(temp_r4_333, s32 *, 0x78) > 0) && (((u8) M2C_FIELD(temp_r3_332, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_332->CheckMeleeHit((EnemyAttack *) temp_r4_333, -1) != 0)) {
+    temp_r4_333 = temp_r3_332->unkA20;
+    if ((temp_r4_333 != NULL) && ((s32) temp_r4_333->unk78 > 0) && (((u8) temp_r3_332->unkB08 >> 4U) & 1) && (temp_r3_332->CheckMeleeHit(temp_r4_333, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     if (((Character *) this->unkC)->HasAnimFinished() != 0) {
@@ -209,47 +206,47 @@ u8 ElecTier2Goal_Attack::Update() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier2Goal_Attack::Activate() {
+    AnimSequence *temp_r4_411;
+    AttackSweepData *temp_r3_426;
     AttackerManager *var_r3_451;
     Enemy *temp_r3_378;
     Enemy *temp_r3_407;
     Enemy *temp_r3_431;
     Enemy *temp_r4_414;
     Enemy *var_r4_458;
-    MKMaterial *temp_r3_426;
     u8 var_r30_379;
     u8 var_r30_432;
-    void *temp_r4_411;
 
     this->unk8 = 0;
     ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_378 = this->unkC;
     var_r30_379 = 0;
-    if (((u8) M2C_FIELD(temp_r3_378, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_378->unk870.unk30)->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_378, u8 *, 0x8B8) == 2) || (temp_r3_378->unk870.unk40.Get() != NULL)) {
         var_r30_379 = 1;
     }
-    if ((var_r30_379 == 0) || (this->unkC->SelectAttack(((AITargetData *) &this->unkC->unk838.unk28)->GetDist(), 4U, 0U, 0U) == 0)) {
+    if ((var_r30_379 == 0) || (this->unkC->SelectAttack(this->unkC->unk870.GetDist(), 4U, 0U, 0U) == 0)) {
         this->unk8 = 2;
     } else {
         temp_r3_407 = this->unkC;
-        temp_r4_411 = temp_r3_407->unkA08->__vptr;
-        temp_r3_407->SetAnim((AnimSequence *) temp_r4_411, (AnimTransition *) temp_r4_411, 0.15f, 0U);
+        temp_r4_411 = temp_r3_407->unkA20->unk0;
+        temp_r3_407->SetAnim(temp_r4_411, (AnimTransition *) temp_r4_411, 0.15f, 0U);
         temp_r4_414 = this->unkC;
 loop_8:
-        if ((void *) temp_r4_414->unkA04->__vptr != NULL) {
-            temp_r4_414->unkA04 = (CharacterZapFX *) &temp_r4_414->unkA04->unk4;
+        if ((u32) *temp_r4_414->unkA1C != 0) {
+            temp_r4_414->unkA1C += 4;
             goto loop_8;
         }
-        temp_r3_426 = this->unkC->unkA18;
+        temp_r3_426 = this->unkC->unkA30;
         if (temp_r3_426 != NULL) {
-            ((AttackSweepData *) temp_r3_426)->SetDefaults();
+            temp_r3_426->SetDefaults();
         }
         temp_r3_431 = this->unkC;
         var_r30_432 = 0;
-        if (((u8) M2C_FIELD(temp_r3_431, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_431->unk870.unk30)->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_431, u8 *, 0x8B8) == 2) || (temp_r3_431->unk870.unk40.Get() != NULL)) {
             var_r30_432 = 1;
         }
         if (var_r30_432 != 0) {
-            var_r3_451 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_451 = M2C_FIELD(this->unkC->unk870.unk40.Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_451 = NULL;
         }
@@ -265,7 +262,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_485'
+#if 0 // DRAFT: ')' expected
 u8 ElecTier2Goal_Land::Update() {
     MKVector3 sp28;
     f64 sp20;
@@ -281,7 +278,7 @@ u8 ElecTier2Goal_Land::Update() {
     ActivateIfInactive();
     temp_r3_485 = this->unkC;
     M2C_FIELD(temp_r3_485, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_485, f64 *, 0x598) + M2C_FIELD(temp_r3_485, f64 *, 0x90));
-    temp_r3_485->unk59C += temp_r3_485->unk98;
+    temp_r3_485->unk5A0 += temp_r3_485->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 1;
         ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(0U, 1U);
@@ -313,14 +310,13 @@ void ElecTier2Goal_Land::Activate() {
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_593'
 u8 ElecTier2Goal_TakeOff::Update() {
     Character *temp_r3_593;
 
     ActivateIfInactive();
     temp_r3_593 = this->unkC;
     M2C_FIELD(temp_r3_593, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_593, f64 *, 0x598) + M2C_FIELD(temp_r3_593, f64 *, 0x90));
-    temp_r3_593->unk59C += temp_r3_593->unk98;
+    temp_r3_593->unk5A0 += temp_r3_593->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 0;
         ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(0U, 1U);
@@ -329,7 +325,6 @@ u8 ElecTier2Goal_TakeOff::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void ElecTier2Goal_TakeOff::Activate() {
     this->unk8 = 0;
@@ -340,7 +335,6 @@ void ElecTier2Goal_TakeOff::Activate() {
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_678'
 u8 ElecTier2Goal_FlyIdle::Update() {
     Character *temp_r3_678;
     u8 var_r3_694;
@@ -353,7 +347,7 @@ u8 ElecTier2Goal_FlyIdle::Update() {
     M2C_FIELD(temp_r3_678, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_678, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_688 = 0;
-        temp_r5_689 = M2C_FIELD(this->unkC, void **, 0x630);
+        temp_r5_689 = this->unkC->unk630;
         if (((u32) M2C_FIELD(temp_r5_689, u32 *, 0x2C) >> 1U) & 1) {
             var_r3_694 = 0;
             if ((M2C_FIELD(temp_r5_689, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_689, s32 *, 0x44) > 1)) {
@@ -372,7 +366,6 @@ block_8:
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_FlyIdle::Activate() {
@@ -390,7 +383,6 @@ void ElecTier2Goal_Idle::Reset() {
     this->unk18 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_775'
 u8 ElecTier2Goal_Idle::Update() {
     Character *temp_r3_775;
     u8 var_r3_791;
@@ -403,7 +395,7 @@ u8 ElecTier2Goal_Idle::Update() {
     M2C_FIELD(temp_r3_775, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_775, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_785 = 0;
-        temp_r5_786 = M2C_FIELD(this->unkC, void **, 0x630);
+        temp_r5_786 = this->unkC->unk630;
         if (((u32) M2C_FIELD(temp_r5_786, u32 *, 0x2C) >> 1U) & 1) {
             var_r3_791 = 0;
             if ((M2C_FIELD(temp_r5_786, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_786, s32 *, 0x44) > 1)) {
@@ -422,7 +414,6 @@ block_8:
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_Idle::Activate() {
@@ -439,7 +430,6 @@ void ElecTier2Goal_PatrolMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 ElecTier2Goal_PatrolMode::Update() {
     MKVector3 sp8;
     ElecTier2 *temp_r3_903;
@@ -453,14 +443,14 @@ u8 ElecTier2Goal_PatrolMode::Update() {
         temp_r3_882 = this->unk30;
         if (M2C_FIELD(*temp_r3_882, u8 (**)(void **), 0x24)(temp_r3_882) != 0) {
             temp_r4_889 = this->unk20;
-            temp_r3_890 = temp_r4_889->unkAFC;
-            temp_r4_889->unkAFC = temp_r3_890 + 1;
-            this->unk20->unkAFC = (temp_r3_890 + 1) % M2C_FIELD(M2C_FIELD(this->unkC->unkA2C, void **, 0x18), s32 *, 0x20);
+            temp_r3_890 = temp_r4_889->unkB14;
+            temp_r4_889->unkB14 = temp_r3_890 + 1;
+            this->unk20->unkB14 = (temp_r3_890 + 1) % M2C_FIELD(M2C_FIELD(this->unkC->unkA44, void **, 0x18), s32 *, 0x20);
         }
         temp_r3_903 = this->unk20;
-        if (M2C_BITWISE(f32, temp_r3_903->unkB04) <= 0.0f) {
+        if (temp_r3_903->unkB1C <= 0.0f) {
             if (temp_r3_903->FindLandingPos(&sp8) != 0) {
-                M2C_FIELD(this->unk20, s8 *, 0xB12) = 1;
+                this->unk20->unkB12 = 1;
             } else {
                 Activate();
             }
@@ -470,7 +460,6 @@ u8 ElecTier2Goal_PatrolMode::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_PatrolMode::Activate() {
@@ -489,25 +478,25 @@ void ElecTier2Goal_PatrolMode::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r3_950 = this->unkC;
-    M2C_FIELD(temp_r3_950, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_950, u8 *, 0xB08) & ~0x40);
-    if ((u8) M2C_FIELD(this->unk20, u8 *, 0xB11) != 0) {
+    temp_r3_950->unkB08 &= ~0x40;
+    if ((u8) this->unk20->unkB11 != 0) {
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     }
     temp_r4_963 = this->unkC;
     if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_963->unkA7C) {
         var_r30_972 = 0;
-        if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r4_963->unk870.unk30)->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (temp_r4_963->unk870.unk40.Get() != NULL)) {
             var_r30_972 = 1;
         }
         if (var_r30_972 != 0) {
             temp_r30_984 = this->unkC;
             if (((u8) M2C_FIELD(temp_r30_984, u8 *, 0x8B9) >> 6U) & 1) {
                 ((AITargetData *) &sp18)->GetPos();
-                temp_f3_995 = sp20 - temp_r30_984->unk588.unk4;
-                temp_f2_997 = sp18 - temp_r30_984->unk588;
+                temp_f3_995 = sp20 - temp_r30_984->unk588.unk8;
+                temp_f2_997 = sp18 - temp_r30_984->unk588.unk0;
                 if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
                     ((AITargetData *) &sp8)->GetPos();
-                    if (this->unkC->unk588.unk0 > spC) {
+                    if (this->unkC->unk588.unk4 > spC) {
                         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
                     }
                 }
@@ -520,9 +509,9 @@ block_11:
     if (this->unkC->HasWaypoints() != 0) {
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
-        temp_r5_1031 = M2C_FIELD(this->unkC->unkA2C, void **, 0x18);
+        temp_r5_1031 = M2C_FIELD(this->unkC->unkA44, void **, 0x18);
         temp_r4_1032 = this->unk30;
-        temp_r3_1036 = M2C_FIELD(temp_r5_1031, s32 *, 0x24) + (this->unk20->unkAFC * M2C_FIELD(temp_r5_1031, s32 *, 0x1C));
+        temp_r3_1036 = M2C_FIELD(temp_r5_1031, s32 *, 0x24) + (this->unk20->unkB14 * M2C_FIELD(temp_r5_1031, s32 *, 0x1C));
         M2C_FIELD(temp_r4_1032, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_1036, f64 *, 0);
         M2C_FIELD(temp_r4_1032, f64 *, 0x20) = (f64) M2C_FIELD(temp_r3_1036, f64 *, 8);
         return;
@@ -678,7 +667,6 @@ void ElecTier2Goal_GroundMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 ElecTier2Goal_GroundMode::Update() {
     ElecTier2 *temp_r3_1333;
 
@@ -686,15 +674,14 @@ u8 ElecTier2Goal_GroundMode::Update() {
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 == 2) {
         temp_r3_1333 = this->unk20;
-        if (M2C_FIELD(temp_r3_1333, f32 *, 0xB18) <= 0.0f) {
-            M2C_FIELD(temp_r3_1333, s8 *, 0xB12) = 0;
+        if (temp_r3_1333->unkB18 <= 0.0f) {
+            temp_r3_1333->unkB12 = 0;
         } else {
             Activate();
         }
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_GroundMode::Activate() {
@@ -707,9 +694,9 @@ void ElecTier2Goal_GroundMode::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r3_1368 = this->unkC;
-    M2C_FIELD(temp_r3_1368, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1368, u8 *, 0xB08) & ~0x40);
+    temp_r3_1368->unkB08 &= ~0x40;
     temp_r3_1373 = this->unk20;
-    if ((u8) M2C_FIELD(temp_r3_1373, u8 *, 0xB11) == 0) {
+    if ((u8) temp_r3_1373->unkB11 == 0) {
         temp_r3_1373->FindLandingPos(&sp8);
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
@@ -842,7 +829,7 @@ void ElecTier2Goal_GroundMode::Init(Enemy *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void ElecTier2Goal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
@@ -855,17 +842,17 @@ void ElecTier2Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ElecTier2Goal_Think::AddGoal_PatrolMode() {
     if (IsPresent(0x53) == 0) {
-        this->unk20->unkB04 = MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+        M2C_FIELD(this->unk20, f32 *, 0xB1C) = MKRand_Float(&gViewSeed, 10.0f, 15.0f);
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal operands 'void' == 'int'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ElecTier2Goal_Think::AddGoal_GroundMode() {
     if (IsPresent(0xCB) == 0) {
         M2C_FIELD(this->unk20, f32 *, 0xB18) = MKRand_Float(&gViewSeed, 7.0f, 10.0f);
@@ -892,7 +879,7 @@ void ElecTier2Goal_Think::Arbitrate() {
     s32 temp_cr0_eq_1813;
 
     temp_r4_1747 = this->unkC;
-    if (!(((u8) M2C_FIELD(temp_r4_1747, u8 *, 0xB09) >> 7U) & 1)) {
+    if (!(((u8) temp_r4_1747->unkB09 >> 7U) & 1)) {
         AddGoal_Respawn();
         return;
     }
@@ -902,7 +889,7 @@ void ElecTier2Goal_Think::Arbitrate() {
         if ((sp8.unk28 == 4) || (sp8.unk28 == 5) || (sp8.unk28 == 2) || (sp8.unk28 == 3)) {
             sp8.unk28 = 0xE;
         }
-        if (this->unkC->unkAB0 <= 0.0f) {
+        if (this->unkC->unkAC8 <= 0.0f) {
             AddGoal_Death(&sp8);
             return;
         }
@@ -910,7 +897,7 @@ void ElecTier2Goal_Think::Arbitrate() {
     }
 block_10:
     temp_r3_1788 = this->unkC;
-    if ((temp_r3_1788->unkAB0 > 0.0f) && (M2C_FIELD(temp_r3_1788->__vptr, u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x28) == 0)) {
+    if ((temp_r3_1788->unkAC8 > 0.0f) && (M2C_FIELD(temp_r3_1788->__vptr, u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x28) == 0)) {
         temp_cr0_eq_1813 = (u8) M2C_FIELD(this->unk20, u8 *, 0xB12) == 0;
         if (temp_cr0_eq_1813 == 0) {
             AddGoal_GroundMode();
@@ -928,7 +915,6 @@ void ElecTier2Goal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 ElecTier2Goal_Think::Update() {
     Enemy *temp_r3_1860;
 
@@ -946,7 +932,6 @@ u8 ElecTier2Goal_Think::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void ElecTier2Goal_Think::Activate() {
     this->unk8 = 0;

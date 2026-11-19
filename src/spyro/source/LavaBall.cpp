@@ -98,7 +98,7 @@ void *LavaBall::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void LavaBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));

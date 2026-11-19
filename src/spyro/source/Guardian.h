@@ -19,7 +19,6 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     void AttachToCage(bool);
-    /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ MKAnim* unk90;
     /* 0x094 */ MKAnim* unk94;
     /* 0x098 */ MKAnim* unk98;

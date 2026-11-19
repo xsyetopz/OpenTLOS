@@ -216,7 +216,7 @@ void DrawQuad(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg
     *(f32 *)0xCC008000 = temp_f8_260;
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp658'
 void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
     s32 sp73C;
     s32 sp738;
@@ -1334,7 +1334,7 @@ void EnableLights(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp80'
 void SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, int arg3) {
     GXLightObj spA0;
     f32 sp88;

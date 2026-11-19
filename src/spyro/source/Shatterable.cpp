@@ -10,14 +10,12 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Crate.h"
-#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/FXBase.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
@@ -99,7 +97,7 @@ void Shatterable::ResetPercentageShattered() {
         }
         var_r31_58 = var_r0_75;
     }
-    this->unk170 = (MKProp *) (s32) (this->unk188 * (f32) var_r31_58);
+    this->unk180 = (s32) (this->unk198 * (f32) var_r31_58);
 }
 #endif
 
@@ -1189,16 +1187,16 @@ void Shatterable::TriggerShatterFX() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: illegal type
 void Shatterable::PostShatter() {
-    if (((MKProp *) this->unk170 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) != 0)) {
+    if (((s32) this->unk180 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x178) != 0)) {
         SetSmashPropState((SmashPropState) 0);
-        this->unk168 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
+        this->unk178 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
         return;
     }
     SetSmashPropState((SmashPropState) 3);
     this->unk15C.Send(NULL);
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x40);
+    this->unk1A1 &= ~0x40;
 }
 #endif
 
@@ -1211,27 +1209,27 @@ void Shatterable::SetSmashPropState(SmashPropState arg0) {
     if ((MKAnimScript *) this->unk80 != NULL) {
         if (((s32) arg0 == 0) && ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 != NULL)) {
             this->unk80->SetAnim(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unkE4, 1.0f, 0.0f, 0, -1);
-        } else if (((s32) this->unk16C == 0) && ((s32) arg0 == 1) && ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 != NULL)) {
+        } else if (((s32) this->unk17C == 0) && ((s32) arg0 == 1) && ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 != NULL)) {
             this->unk80->SetAnim(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unkE8, 1.0f, 0.0f, 0, -1);
         }
     }
     if ((s32) arg0 == 2) {
-        this->unk16C = (s32) arg0;
+        this->unk17C = (s32) arg0;
         spC = 0;
         sp8 = 0xBA;
         Message(&sp8);
         return;
     }
     if ((s32) arg0 == 1) {
-        ((EventMessage *) &this->unk154)->Send((MKProp *) this);
-        this->unk180 += 1;
+        this->unk164.Send((MKProp *) this);
+        this->unk190 += 1;
         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF4 != 0) {
-            temp_r3_1760 = this->unk180;
-            SpawnGems((s32) ((f32) this->unk184 * (f32) ceil(temp_r3_1760, (f32) temp_r3_1760 * 0.25f)));
+            temp_r3_1760 = this->unk190;
+            SpawnGems((s32) ((f32) this->unk194 * (f32) ceil(temp_r3_1760, (f32) temp_r3_1760 * 0.25f)));
         }
-        this->unk184 = NULL;
+        this->unk194 = 0;
     }
-    this->unk16C = (s32) arg0;
+    this->unk17C = (s32) arg0;
 }
 #endif
 
@@ -1247,7 +1245,7 @@ void Shatterable::DestroyShatterable() {
         sp8 = 0xBA;
 loop_3:
         if (var_r30_1815 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) {
-            this->unk16C = 2;
+            this->unk17C = 2;
             Message(&sp8);
             var_r30_1815 += 1;
             goto loop_3;
@@ -1256,49 +1254,53 @@ loop_3:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk140'
 void Shatterable::PlatformDetach() {
     s32 sp18;
     s8 sp14;
-    f64 *sp10;
+    M2C_UNK *sp10;
     s32 spC;
     s32 sp8;
-    s32 temp_r3_1850;
+    MKProp *temp_r3_1850;
 
-    temp_r3_1850 = this->unk160.unk0;
-    if ((u32) temp_r3_1850 != 0U) {
+    temp_r3_1850 = this->unk170;
+    if (temp_r3_1850 != NULL) {
         spC = 0;
         sp8 = 0x24;
-        sp10 = &this->unk130;
+        sp10 = &this->unk140;
         sp14 = 0;
         sp18 = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_1850, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x24, 0);
-        this->unk160.unk0 = 0;
+        M2C_FIELD(temp_r3_1850->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x24, 0);
+        this->unk170 = NULL;
     }
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk140'
 void Shatterable::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp18;
     u8 sp14;
-    f64 *sp10;
+    M2C_UNK *sp10;
     s32 spC;
     s32 sp8;
-    s32 temp_r3_1888;
+    MKProp *temp_r3_1888;
 
     PlatformDetach();
-    this->unk160.unk0 = (s32) arg0;
-    temp_r3_1888 = this->unk160.unk0;
-    if ((u32) temp_r3_1888 != 0U) {
+    this->unk170 = arg0;
+    temp_r3_1888 = this->unk170;
+    if (temp_r3_1888 != NULL) {
         spC = 0;
         sp8 = 0x23;
-        sp10 = &this->unk130;
+        sp10 = &this->unk140;
         sp14 = 0;
         sp18 = arg1;
-        M2C_FIELD(M2C_FIELD(temp_r3_1888, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x23, 0);
+        M2C_FIELD(temp_r3_1888->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x23, 0);
         if (sp14 == 0) {
-            this->unk160.unk0 = 0;
+            this->unk170 = NULL;
         }
     }
 }
+#endif
 
 void Shatterable::SetStateAnim(int arg0) {
     s32 temp_r31_1931;
@@ -1314,14 +1316,14 @@ void Shatterable::SetStateAnim(int arg0) {
 #if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void Shatterable::EnableCollision() {
     PropFlagsSet((u32 *) &this->unk10, 0x100000U);
-    *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
+    *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 1;
 }
 #endif
 
 #if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Shatterable::DisableCollision() {
     PropFlagsClear((u32 *) &this->unk10, 0x100000U);
-    *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 0;
+    *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 0;
 }
 #endif
 
@@ -1342,10 +1344,6 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     f32 sp18;
     f32 sp10;
     f64 sp8;
-    MKProp *temp_r4_2095;
-    MKProp *temp_r4_2148;
-    MKProp *temp_r4_2221;
-    MKProp *temp_r4_2330;
     MKVector3 *temp_r29_2254;
     MKVector3 *var_r26_2164;
     MKVector3 *var_r3_2114;
@@ -1360,6 +1358,10 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     s32 temp_r0_2208;
     s32 temp_r0_2236;
     s32 temp_r3_2052;
+    s32 temp_r4_2095;
+    s32 temp_r4_2148;
+    s32 temp_r4_2221;
+    s32 temp_r4_2330;
     s32 var_r26_2202;
     s32 var_r28_2203;
     s32 var_r4_2174;
@@ -1367,11 +1369,11 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     void *temp_r4_2112;
     void *temp_r5_2099;
 
-    if (((s32) M2C_FIELD(&gb, s32 *, 0x340) == 0) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) != 0) && ((MKProp *) this->unk170 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160)) {
-        if (((u8) M2C_FIELD(this, u8 *, 0x1A2) != 0) && ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk104 != 0)) {
+    if (((s32) M2C_FIELD(&gb, s32 *, 0x340) == 0) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x178) != 0) && ((s32) this->unk180 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160)) {
+        if (((u8) this->unk1A2 != 0) && ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk104 != 0)) {
             temp_r3_2052 = KDSound_Play(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk104, 0U, -1);
             if (temp_r3_2052 != 0) {
-                KDSound_SetPitch(temp_r3_2052, (0.1f * (f32) this->unk170) + 1.0f);
+                KDSound_SetPitch(temp_r3_2052, (0.1f * (f32) this->unk180) + 1.0f);
             }
         }
         if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 3U) & 1) {
@@ -1381,14 +1383,14 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
         if (((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF4 != 0) && (arg5 == 0)) {
             SpawnGems(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unkF4);
         }
-        temp_r4_2095 = this->unk170;
+        temp_r4_2095 = this->unk180;
         temp_r5_2099 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C;
         sp20 = 0.0f;
         sp18 = 0.0f;
-        sp1C = M2C_FIELD((((u8 *) temp_r5_2099) + ((s32) temp_r4_2095 * 0x17C)), f32 *, 0x15C);
+        sp1C = M2C_FIELD((((u8 *) temp_r5_2099) + (temp_r4_2095 * 0x17C)), f32 *, 0x15C);
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
-        temp_r4_2112 = ((u8 *) this->unk158) + (((s32) temp_r4_2095 << 7) + 0x20);
+        temp_r4_2112 = ((u8 *) this->unk168) + ((temp_r4_2095 << 7) + 0x20);
         if (arg3 != NULL) {
             var_r3_2114 = arg3;
         } else {
@@ -1401,10 +1403,10 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
         } else {
             var_f0_2125 = 1.0f;
         }
-        M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), f32 *, 0x38) = var_f0_2125;
-        *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 0;
-        if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk108 != 0) && (temp_r4_2148 = this->unk170, (((void *) (temp_r4_2148 + 1) < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) != 0))) {
-            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) temp_r4_2148 << 7)))->Shatter(0, ((u8 *) this->unk8) + 0x30);
+        M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), f32 *, 0x38) = var_f0_2125;
+        *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 0;
+        if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk108 != 0) && (temp_r4_2148 = this->unk180, (((s32) (temp_r4_2148 + 1) < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) != 0))) {
+            ((KDShatter2 *) (((u8 *) this->unk168) + (temp_r4_2148 << 7)))->Shatter(0, ((u8 *) this->unk8) + 0x30);
         } else {
             if (arg1 != NULL) {
                 var_r26_2164 = arg1;
@@ -1416,10 +1418,10 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
             } else {
                 var_r4_2174 = arg2;
             }
-            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->Shatter(var_r4_2174, var_r26_2164);
+            ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->Shatter(var_r4_2174, var_r26_2164);
         }
-        *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
-        temp_r0_2196 = *(this->unk158 + (((s32) this->unk170 << 7) + 0x44));
+        *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 1;
+        temp_r0_2196 = *(this->unk168 + ((this->unk180 << 7) + 0x44));
         if ((temp_r0_2196 == 1) || (temp_r0_2196 == 2)) {
             var_r26_2202 = 0;
             var_r28_2203 = 0;
@@ -1428,16 +1430,16 @@ loop_32:
                 temp_r0_2208 = var_r26_2202 + 0x6C;
                 var_r28_2203 += 1;
                 var_r26_2202 += 0x80;
-                *(this->unk158 + temp_r0_2208) = 0;
+                *(this->unk168 + temp_r0_2208) = 0;
                 goto loop_32;
             }
-            temp_r4_2221 = this->unk170;
+            temp_r4_2221 = this->unk180;
             if (temp_r4_2221 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) {
-                *(this->unk158 + (((s32) (temp_r4_2221 + 1) << 7) + 0x6C)) = 1;
+                *(this->unk168 + (((temp_r4_2221 + 1) << 7) + 0x6C)) = 1;
             }
-            temp_r0_2236 = *(this->unk158 + (((s32) this->unk170 << 7) + 0x44));
+            temp_r0_2236 = *(this->unk168 + ((this->unk180 << 7) + 0x44));
             if (temp_r0_2236 == 1) {
-                this->unk15C.unk0 = 2;
+                this->unk16C = 2;
                 SetStateAnim(1);
                 if ((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk154 > 0.0f) && (arg4 != 0)) {
                     temp_r29_2254 = ((u8 *) this->unk8) + 0x30;
@@ -1447,33 +1449,33 @@ loop_32:
                     ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **, void ***), 0x40)(M2C_FIELD(&gb, void ***, 0), &gb)))->RumblePlay3D(temp_r26_2263->unk14C, temp_r27_2259->unk150, temp_r28_2256->unk154, temp_r29_2254, 37.0f, 0, 4.0f, 0U);
                 }
             } else if (temp_r0_2236 == 2) {
-                this->unk15C.unk0 = 0;
-                this->unk178 = 0.0f;
+                this->unk16C = 0;
+                this->unk188 = 0.0f;
                 SetStateAnim(2);
             }
-            ((EventMessage *) &this->unk150)->Send((MKProp *) this);
-            if ((u32) M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
+            this->unk160.Send((MKProp *) this);
+            if ((u32) M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), u32 *, 0x78) != 0U) {
                 temp_r26_2301 = *KDProperty::pInstanceMem;
                 *KDProperty::pInstanceMem = this;
-                temp_r3_2307 = M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), void ***, 0x78);
+                temp_r3_2307 = M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
                 *KDProperty::pInstanceMem = temp_r26_2301;
             }
         }
-        ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->ClearVisible();
-        this->unk170 += 1;
+        ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->ClearVisible();
+        this->unk180 += 1;
         if (!(this->unk10 & 0x100000)) {
             DisableCollision();
         }
-        temp_r4_2330 = this->unk170;
+        temp_r4_2330 = this->unk180;
         if (temp_r4_2330 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) {
-            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) temp_r4_2330 << 7)))->SetVisibleUnshattered();
+            ((KDShatter2 *) (((u8 *) this->unk168) + (temp_r4_2330 << 7)))->SetVisibleUnshattered();
         }
-        if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) && (((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 == 0) || ((MKProp *) this->unk170 == (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) || ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) == 0))) {
+        if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) && (((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 == 0) || ((s32) this->unk180 == (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) || ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x178) == 0))) {
             this->unkC8.UnregisterTargetable();
         }
         if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk166 != 0)) {
-            temp_f4_2379 = M2C_BITWISE(f32, this->unk17C);
+            temp_f4_2379 = this->unk18C;
             if (temp_f4_2379 != 0.0f) {
                 sp5C = 0;
                 temp_f31_2389 = 100.0f * temp_f4_2379;
@@ -1493,7 +1495,7 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: ')' expected
 void Shatterable::Message(MKMessage *arg0) {
     struct __vt *vtable174;
     s32 sp170;
@@ -1664,17 +1666,17 @@ block_296:
         DisableCollision();
         goto block_296;
     case 353:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0x19C) = 1U;
+        this->unk19C = 1;
         goto block_296;
     case 352:                                       /* switch 1 */
-        M2C_FIELD(this, u8 *, 0x19C) = 0U;
+        this->unk19C = 0;
         goto block_296;
     case 1:                                         /* switch 1 */
         if (this->unk10 & 0x160000) {
-            if ((u8) M2C_FIELD(this, u8 *, 0x19C) == 0) {
+            if ((u8) this->unk19C == 0) {
                 return;
             }
-            if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0)) {
+            if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0)) {
                 temp_r28_2595 = checked_cast<ExplodeMsg *, MKMessage>(arg0);
                 if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 4U) & 1) {
                     temp_r3_2606 = this->unk8;
@@ -1685,9 +1687,9 @@ block_296:
                     temp_f4_2620 = (f32) sp108 - M2C_FIELD(temp_r28_2595, f32 *, 0x10);
                     temp_f3_2623 = (f32) sp110 - M2C_FIELD(temp_r28_2595, f32 *, 0x18);
                     if (((temp_f3_2623 * temp_f3_2623) + ((temp_f4_2620 * temp_f4_2620) + (temp_f5_2616 * temp_f5_2616))) < (temp_f0_2610 * temp_f0_2610)) {
-                        if (M2C_BITWISE(f32, this->unk168) > 0.0f) {
+                        if (this->unk178 > 0.0f) {
                             temp_f2_2638 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
-                            var_f0_2639 = M2C_BITWISE(f32, this->unk168) - M2C_FIELD(temp_r28_2595, f32 *, 0x2C);
+                            var_f0_2639 = this->unk178 - M2C_FIELD(temp_r28_2595, f32 *, 0x2C);
                             if (var_f0_2639 < temp_f2_2638) {
 
                             } else {
@@ -1698,10 +1700,10 @@ block_296:
                             } else {
                                 var_f0_2639 = 0.0f;
                             }
-                            this->unk168 = var_f0_2639;
-                            this->unk184 = (MKSceneManager *) (s32) M2C_FIELD(temp_r28_2595, f32 *, 0x2C);
+                            this->unk178 = var_f0_2639;
+                            this->unk194 = (s32) M2C_FIELD(temp_r28_2595, f32 *, 0x2C);
                         } else {
-                            this->unk184 = NULL;
+                            this->unk194 = 0;
                         }
                         SetSmashPropState((SmashPropState) 1);
                         return;
@@ -1718,11 +1720,11 @@ block_296:
         }
         break;
     case 4:                                         /* switch 1 */
-        if ((this->unk10 & 0x160000) && ((u8) M2C_FIELD(this, u8 *, 0x19C) != 0)) {
-            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x179) == 0) {
+        if ((this->unk10 & 0x160000) && ((u8) this->unk19C != 0)) {
+            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x179) == 0) {
                 return;
             }
-            if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0) && (temp_r31_2713 = checked_cast<MeleeAttackHitMsg *, MKMessage>(arg0), (((s32) this->unk16C == 0) != 0))) {
+            if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0) && (temp_r31_2713 = checked_cast<MeleeAttackHitMsg *, MKMessage>(arg0), (((s32) this->unk17C == 0) != 0))) {
                 temp_r4_2716 = M2C_FIELD(temp_r31_2713, Shatterable ****, 0x34);
                 if (temp_r4_2716 != NULL) {
                     var_r3_2719 = *temp_r4_2716;
@@ -1750,7 +1752,7 @@ block_84:
                         }
                     }
                     if (((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 7U) & 1) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x1FF)) || ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 6U) & 1) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x200)) || ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 5U) & 1) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x400)) || ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 1U) & 1) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x2000)) || ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 4U) & 1) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x1000))) {
-                        M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) | 0x80);
+                        this->unk1A1 |= 0x80;
                         M2C_FIELD(temp_r31_2713, s8 *, 0x3E) = 1;
                         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk100 != 0) {
                             temp_r28_2803 = ((u8 *) this->unk8) + 0x30;
@@ -1761,9 +1763,9 @@ block_84:
                                 KDSound_Play3d(temp_r3_2814, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                             }
                         }
-                        if (M2C_BITWISE(f32, this->unk168) > 0.0f) {
+                        if (this->unk178 > 0.0f) {
                             temp_f2_2836 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
-                            var_f0_2837 = M2C_BITWISE(f32, this->unk168) - M2C_FIELD(temp_r31_2713, f32 *, 0x20);
+                            var_f0_2837 = this->unk178 - M2C_FIELD(temp_r31_2713, f32 *, 0x20);
                             if (var_f0_2837 < temp_f2_2836) {
 
                             } else {
@@ -1774,14 +1776,14 @@ block_84:
                             } else {
                                 var_f0_2837 = 0.0f;
                             }
-                            this->unk168 = var_f0_2837;
-                            this->unk184 = (MKSceneManager *) (s32) M2C_FIELD(temp_r31_2713, f32 *, 0x20);
+                            this->unk178 = var_f0_2837;
+                            this->unk194 = (s32) M2C_FIELD(temp_r31_2713, f32 *, 0x20);
                         } else {
-                            this->unk184 = NULL;
+                            this->unk194 = 0;
                         }
-                        if ((M2C_BITWISE(f32, this->unk168) <= 0.0f) && ((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0)) {
+                        if ((this->unk178 <= 0.0f) && ((s32) this->unk16C == 2) && ((s32) this->unk17C == 0)) {
                             SetSmashPropState((SmashPropState) 1);
-                        } else if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0)) {
+                        } else if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0)) {
                             SetSmashPropState((SmashPropState) 1);
                             temp_r3_2890 = MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1);
                             temp_r4_2891 = this->unk8;
@@ -2034,26 +2036,26 @@ block_84:
         }
         break;
     case 49:                                        /* switch 1 */
-        if ((this->unk10 & 0x160000) && ((u8) M2C_FIELD(this, u8 *, 0x19C) != 0)) {
-            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x179) == 0) {
+        if ((this->unk10 & 0x160000) && ((u8) this->unk19C != 0)) {
+            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x179) == 0) {
                 return;
             }
-            if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0) && (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 & 1) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) != 0)) {
+            if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0) && (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 & 1) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x178) != 0)) {
 loop_223:
-                if (((MKProp *) this->unk170 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (((s32) this->unk170 * 0x17C) + 0x2F4)) != 0)) {
-                    ((EventMessage *) &this->unk150)->Send((MKProp *) this);
-                    if ((u32) *(this->unk158 + (((s32) this->unk170 << 7) + 0x78)) != 0U) {
+                if (((s32) this->unk180 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((this->unk180 * 0x17C) + 0x2F4)) != 0)) {
+                    this->unk160.Send((MKProp *) this);
+                    if ((u32) *(this->unk168 + ((this->unk180 << 7) + 0x78)) != 0U) {
                         temp_r28_3455 = *KDProperty::pInstanceMem;
                         *KDProperty::pInstanceMem = this;
-                        temp_r4_3458 = this->unk158;
-                        temp_r3_3461 = *(temp_r4_3458 + (((s32) this->unk170 << 7) + 0x78));
+                        temp_r4_3458 = this->unk168;
+                        temp_r3_3461 = *(temp_r4_3458 + ((this->unk180 << 7) + 0x78));
                         M2C_FIELD(*temp_r3_3461, M2C_UNK (**)(void **, void *), 0x4C)(temp_r3_3461, temp_r4_3458);
                         *KDProperty::pInstanceMem = temp_r28_3455;
                     }
-                    this->unk170 += 1;
+                    this->unk180 += 1;
                     goto loop_223;
                 }
-                this->unk168 = 0.0f;
+                this->unk178 = 0.0f;
                 SetSmashPropState((SmashPropState) 1);
                 M2C_FIELD(checked_cast<ShatterOnCollisionMsg *, MKMessage>(arg0), s8 *, 0x18) = 1;
             }
@@ -2061,26 +2063,26 @@ loop_223:
         }
         break;
     case 136:                                       /* switch 1 */
-        if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0) && ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk115 == 1)) {
+        if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0) && ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk115 == 1)) {
             M2C_FIELD(checked_cast<CanHeroHurtYouMsg *, MKMessage>(arg0), s8 *, 8) = 1;
         }
         goto block_296;
     case 5:                                         /* switch 1 */
-        if ((this->unk10 & 0x160000) && ((u8) M2C_FIELD(this, u8 *, 0x19C) != 0)) {
-            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x179) == 0) {
+        if ((this->unk10 & 0x160000) && ((u8) this->unk19C != 0)) {
+            if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x179) == 0) {
                 return;
             }
             temp_r3_3535 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
             if ((s32) M2C_FIELD(temp_r3_3535, s32 *, 0x38) == 3) {
-                if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 2U) & 1) && ((s32) this->unk16C != 3)) {
+                if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 2U) & 1) && ((s32) this->unk17C != 3)) {
                     DestroyShatterable();
                     return;
                 }
             } else {
                 if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 1U) & 1) && (((temp_r3_3561 = M2C_FIELD(temp_r3_3535, s32 *, 0x38), ((temp_r3_3561 == 0) != 0)) && ((s32) M2C_FIELD(temp_r3_3535, s32 *, 0x40) == 3)) || ((temp_r3_3561 == 1) && ((temp_r0_3570 = M2C_FIELD(temp_r3_3535, s32 *, 0x40), ((temp_r0_3570 == 0) != 0)) || (temp_r0_3570 == 3) || (temp_r0_3570 == 2))))) {
-                    if (M2C_BITWISE(f32, this->unk168) > 0.0f) {
+                    if (this->unk178 > 0.0f) {
                         temp_f2_3586 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
-                        var_f0_3587 = M2C_BITWISE(f32, this->unk168) - M2C_FIELD(temp_r3_3535, f32 *, 0x34);
+                        var_f0_3587 = this->unk178 - M2C_FIELD(temp_r3_3535, f32 *, 0x34);
                         if (var_f0_3587 < temp_f2_3586) {
 
                         } else {
@@ -2091,15 +2093,15 @@ loop_223:
                         } else {
                             var_f0_3587 = 0.0f;
                         }
-                        this->unk168 = var_f0_3587;
-                        this->unk184 = (MKSceneManager *) (s32) M2C_FIELD(temp_r3_3535, f32 *, 0x34);
+                        this->unk178 = var_f0_3587;
+                        this->unk194 = (s32) M2C_FIELD(temp_r3_3535, f32 *, 0x34);
                     } else {
-                        this->unk184 = NULL;
+                        this->unk194 = 0;
                     }
                     M2C_FIELD(temp_r3_3535, s8 *, 0x50) = 1;
-                    if ((M2C_BITWISE(f32, this->unk168) <= 0.0f) && ((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0)) {
+                    if ((this->unk178 <= 0.0f) && ((s32) this->unk16C == 2) && ((s32) this->unk17C == 0)) {
                         SetSmashPropState((SmashPropState) 2);
-                    } else if (((s32) this->unk15C.unk0 == 2) && ((s32) this->unk16C == 0)) {
+                    } else if (((s32) this->unk16C == 2) && ((s32) this->unk17C == 0)) {
                         SetSmashPropState((SmashPropState) 1);
                     }
                 }
@@ -2109,8 +2111,8 @@ loop_223:
         break;
     case 186:                                       /* switch 1 */
         if (this->unk10 & 0x160000) {
-            temp_r3_3644 = this->unk15C.unk0;
-            if ((temp_r3_3644 == 2) && ((s32) this->unk16C == 0)) {
+            temp_r3_3644 = this->unk16C;
+            if ((temp_r3_3644 == 2) && ((s32) this->unk17C == 0)) {
                 SetSmashPropState((SmashPropState) 2);
                 return;
             }
@@ -2132,48 +2134,48 @@ loop_223:
         }
         break;
     case 48:                                        /* switch 1 */
-        if (((s32) this->unk15C.unk0 == 2) && ((temp_ret_3686 = checked_cast<ShatterExtendedMsg *, MKMessage>(arg0), temp_r4_3686 = (u32) temp_ret_3686, temp_r0_3687 = this->unk174, temp_r28_3688 = temp_ret_3686, ((temp_r0_3687 == NULL) != 0)) || (temp_r0_3687->PropResolver_Resolve((s32) temp_r4_3686) == (u32) M2C_FIELD(temp_r28_3688, u32 *, 0x28)))) {
+        if (((s32) this->unk16C == 2) && ((temp_ret_3686 = checked_cast<ShatterExtendedMsg *, MKMessage>(arg0), temp_r4_3686 = (u32) temp_ret_3686, temp_r0_3687 = this->unk184, temp_r28_3688 = temp_ret_3686, ((temp_r0_3687 == NULL) != 0)) || (temp_r0_3687->PropResolver_Resolve((s32) temp_r4_3686) == (u32) M2C_FIELD(temp_r28_3688, u32 *, 0x28)))) {
             M2C_FIELD(temp_r28_3688, s8 *, 0x18) = 1;
             sp118 = M2C_FIELD(temp_r28_3688, f64 *, 8);
             sp120 = M2C_FIELD(temp_r28_3688, f64 *, 0x10);
-            (*(f32 *) ((u8 *) &sp118 + 0x4)) = M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), f32 *, 0x15C);
+            (*(f32 *) ((u8 *) &sp118 + 0x4)) = M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), f32 *, 0x15C);
             Shatter(M2C_FIELD(temp_r28_3688, u8 *, 0x24), M2C_FIELD(temp_r28_3688, s32 *, 0x20), M2C_FIELD(temp_r28_3688, s32 *, 0x1C), &sp118, 1, 0);
         }
         goto block_296;
     case 77:                                        /* switch 1 */
-        if ((s32) this->unk15C.unk0 == 2) {
+        if ((s32) this->unk16C == 2) {
             sp20 = 0;
             sp1C = 0xBA;
             Message(&sp1C);
         }
         goto block_296;
     case 181:                                       /* switch 1 */
-        if ((s32) this->unk15C.unk0 == 1) {
-            this->unk15C.unk0 = 2;
+        if ((s32) this->unk16C == 1) {
+            this->unk16C = 2;
         }
         goto block_296;
     case 180:                                       /* switch 1 */
-        if ((s32) this->unk15C.unk0 == 2) {
-            this->unk15C.unk0 = 1;
+        if ((s32) this->unk16C == 2) {
+            this->unk16C = 1;
         }
         goto block_296;
     case 139:                                       /* switch 1 */
         temp_r3_3754 = checked_cast<GetNumHitsToDestroyMsg *, MKMessage>(arg0);
         var_r28_3756 = 0x3E8;
-        if (((s32) M2C_FIELD(temp_r3_3754, s32 *, 0xC) != 0) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) != 0)) {
+        if (((s32) M2C_FIELD(temp_r3_3754, s32 *, 0xC) != 0) && ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (this->unk180 * 0x17C)), u8 *, 0x178) != 0)) {
             temp_r28_3771 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             if ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (temp_r28_3771->unk160 * 0x17C)), u8 *, -4) != 0) {
                 var_r28_3783 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160;
             } else {
                 var_r28_3783 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1;
             }
-            var_r28_3756 = (s32) ((f32) (s32) (((f32) ((var_r28_3783 - 1) - this->unk170) * checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0) + M2C_BITWISE(f32, this->unk168)) / (f32) M2C_FIELD(temp_r3_3754, s32 *, 0xC));
+            var_r28_3756 = (s32) ((f32) (s32) (((f32) ((var_r28_3783 - 1) - this->unk180) * checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0) + this->unk178) / (f32) M2C_FIELD(temp_r3_3754, s32 *, 0xC));
         }
         M2C_FIELD(temp_r3_3754, s32 *, 8) = var_r28_3756;
         goto block_296;
     case -4:                                        /* switch 1 */
-        if ((s32) this->unk15C.unk0 == 3) {
-            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->Finish();
+        if ((s32) this->unk16C == 3) {
+            ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->Finish();
         }
         goto block_296;
     case -3:                                        /* switch 1 */
@@ -2198,7 +2200,7 @@ loop_223:
     case 92:                                        /* switch 1 */
         temp_r3_3870 = arg0->unk4;
         temp_r4_3872 = temp_r3_3870 + 0x128;
-        M2C_FIELD(temp_r3_3870, M2C_UNK **, 0x12C) = &this->unk150;
+        M2C_FIELD(temp_r3_3870, u8 **, 0x12C) = &this->unk150;
         M2C_FIELD(temp_r3_3870, void **, 0x130) = (void *) this->unk158;
         this->unk158 = temp_r4_3872;
         M2C_FIELD(M2C_FIELD(temp_r3_3870, void **, 0x130), void **, 4) = temp_r4_3872;
@@ -2206,7 +2208,7 @@ loop_223:
     case 93:                                        /* switch 1 */
         temp_r3_3881 = arg0->unk4;
         temp_r4_3882 = temp_r3_3881 + 0x128;
-        M2C_FIELD(M2C_FIELD(temp_r3_3881, void **, 0x130), M2C_UNK **, 4) = (M2C_UNK *) M2C_FIELD(temp_r3_3881, M2C_UNK **, 0x12C);
+        M2C_FIELD(M2C_FIELD(temp_r3_3881, void **, 0x130), u8 **, 4) = (u8 *) M2C_FIELD(temp_r3_3881, u8 **, 0x12C);
         M2C_FIELD(M2C_FIELD(temp_r4_3882, void **, 4), void **, 8) = (void *) M2C_FIELD(temp_r4_3882, void **, 8);
         M2C_FIELD(temp_r4_3882, void **, 8) = temp_r4_3882;
         M2C_FIELD(temp_r4_3882, void **, 4) = temp_r4_3882;
@@ -2254,10 +2256,10 @@ u8 Shatterable::AbleToRespawn() {
     void *temp_r3_3959;
     void *temp_r5_3947;
 
-    if (((s32) this->unk15C.unk0 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x19D) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x19E) == 0)) {
-        this->unk178 -= gUpdateTimeDelta;
-        if (this->unk178 <= 0.0f) {
-            this->unk178 = 0.5f;
+    if (((s32) this->unk16C == 0) && ((u8) this->unk19D != 0) && ((u8) this->unk19E == 0)) {
+        this->unk188 -= gUpdateTimeDelta;
+        if (this->unk188 <= 0.0f) {
+            this->unk188 = 0.5f;
             temp_f31_3939 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x18);
             temp_r5_3947 = this->unk8;
             temp_f3_3948 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x10) + temp_f31_3939;
@@ -2308,7 +2310,6 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void Shatterable::Update() {
     s32 sp8;
     ShatterableDescriptor *temp_r29_4050;
@@ -2322,7 +2323,7 @@ void Shatterable::Update() {
     var_r30_4052 = 0;
 loop_2:
     if (var_r28_4051 < (s32) temp_r29_4050->unk160) {
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4052))->Update();
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4052))->Update();
         var_r28_4051 += 1;
         var_r30_4052 += 0x80;
         goto loop_2;
@@ -2330,28 +2331,27 @@ loop_2:
     if (AbleToRespawn() != 0) {
         Reset();
     }
-    M2C_FIELD(this, s8 *, 0x19E) = 0;
+    this->unk19E = 0;
     if ((KDSoundPlayer *) this->unk100 != NULL) {
         temp_r4_4082 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) this->unk100)->Update(temp_r4_4082->unkFC, 1U, ((u8) M2C_FIELD(this, u8 *, 0x1A1) >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk100)->Update(temp_r4_4082->unkFC, 1U, ((u8) this->unk1A1 >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if ((s32) this->unk16C == 1) {
-        if (M2C_BITWISE(f32, this->unk168) <= 0.0f) {
+    if ((s32) this->unk17C == 1) {
+        if (this->unk178 <= 0.0f) {
             SetSmashPropState((SmashPropState) 2);
         } else if (((MKAnimScript *) this->unk80 != NULL) && ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 != NULL) && (this->unk80->unk2C & 1)) {
             PostShatter();
         }
     }
-    if ((s32) this->unk16C == 2) {
+    if ((s32) this->unk17C == 2) {
         PostShatter();
     }
-    if (((s32) this->unk16C == 1) && (((MKAnimScript *) this->unk80 == NULL) || ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 == NULL) || ((this->unk80->unk2C & 1) && !(((u8) M2C_FIELD(this, u8 *, 0x1A1) >> 7U) & 1)))) {
+    if (((s32) this->unk17C == 1) && (((MKAnimScript *) this->unk80 == NULL) || ((u32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkE8 == NULL) || ((this->unk80->unk2C & 1) && !(((u8) this->unk1A1 >> 7U) & 1)))) {
         SetSmashPropState((SmashPropState) 0);
     }
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x80);
+    this->unk1A1 &= ~0x80;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void Shatterable::Draw() {
@@ -2368,10 +2368,10 @@ void Shatterable::Draw() {
     s32 var_r3_4208;
     s32 var_r5_4207;
 
-    if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        ((GlowingProp *) &this->unk118)->BeginGlowingPropDraw((MKProp *) this);
+    if ((u8) this->unk1A0 != 0) {
+        this->unk118.BeginGlowingPropDraw((MKProp *) this);
     }
-    M2C_FIELD(this, s8 *, 0x19E) = 1;
+    this->unk19E = 1;
     temp_r29_4189 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     MKModel_EnableScissoring(this->unk4, ((u32) this->unk10 >> 0xFU) & 1);
     if (((u8) this->unk88 >> 7U) & 1) {
@@ -2387,8 +2387,8 @@ void Shatterable::Draw() {
     var_ctr_4209 = temp_r0_4205;
     if (temp_r0_4205 > 0) {
         do {
-            temp_r0_4215 = *(this->unk158 + (var_r3_4208 + 0x44));
-            if ((temp_r0_4215 == 1) || (temp_r0_4215 == 2) || (var_r5_4207 < (MKProp *) this->unk170)) {
+            temp_r0_4215 = *(this->unk168 + (var_r3_4208 + 0x44));
+            if ((temp_r0_4215 == 1) || (temp_r0_4215 == 2) || (var_r5_4207 < (s32) this->unk180)) {
                 var_r27_4206 = var_r5_4207 + 1;
             }
             var_r5_4207 += 1;
@@ -2401,7 +2401,7 @@ void Shatterable::Draw() {
 loop_15:
     if (var_r28_4230 < (s32) temp_r29_4189->unk160) {
         if (var_r28_4230 == var_r27_4206) {
-            ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4231))->Draw(1U);
+            ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4231))->Draw(1U);
         }
         var_r28_4230 += 1;
         var_r30_4231 += 0x80;
@@ -2411,13 +2411,13 @@ loop_15:
     var_r30_4248 = 0;
 loop_18:
     if (var_r28_4247 < (s32) temp_r29_4189->unk160) {
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4248))->Draw(0U);
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4248))->Draw(0U);
         var_r28_4247 += 1;
         var_r30_4248 += 0x80;
         goto loop_18;
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        ((GlowingProp *) &this->unk118)->EndGlowingPropDraw();
+    if ((u8) this->unk1A0 != 0) {
+        this->unk118.EndGlowingPropDraw();
     }
 }
 #endif
@@ -2425,51 +2425,51 @@ loop_18:
 #if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
 void Shatterable::Resolve() {
     MKProp *temp_r3_4287;
-    s32 temp_r3_4283;
+    MKSceneManager *temp_r3_4283;
 
     KDPropEx::Resolve();
-    temp_r3_4283 = this->unk164.unk0;
-    if (temp_r3_4283 != 0) {
-        temp_r3_4287 = checked_cast<KDProp *, MKProp>(((MKSceneManager *) temp_r3_4283)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_4283 = this->unk174;
+    if (temp_r3_4283 != NULL) {
+        temp_r3_4287 = checked_cast<KDProp *, MKProp>(temp_r3_4283->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         PlatformAttach(temp_r3_4287, temp_r3_4287 + 0x70);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
+#if 0 // DRAFT: illegal type
 void Shatterable::Reset() {
     s32 var_r29_4329;
     s32 var_r30_4328;
 
     GameProp::Reset();
-    this->unk168 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x80);
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) | 0x40);
+    this->unk178 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
+    this->unk1A1 &= ~0x80;
+    this->unk1A1 |= 0x40;
     SetSmashPropState((SmashPropState) 0);
-    this->unk15C.unk0 = 2;
+    this->unk16C = 2;
     var_r30_4328 = 0;
     var_r29_4329 = 0;
-    this->unk178 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x19E) = 0;
+    this->unk188 = 0.0f;
+    this->unk19E = 0;
 loop_2:
     if (var_r29_4329 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) {
-        *(this->unk158 + (var_r30_4328 + 0x3C)) = M2C_FIELD(this->unk0, f32 *, 0x20);
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4328))->Reset();
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4328))->ClearVisible();
+        *(this->unk168 + (var_r30_4328 + 0x3C)) = M2C_FIELD(this->unk0, f32 *, 0x20);
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4328))->Reset();
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4328))->ClearVisible();
         var_r29_4329 += 1;
         var_r30_4328 += 0x80;
         goto loop_2;
     }
     ResetPercentageShattered();
-    ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
+    ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->SetVisibleUnshattered();
     EnableCollision();
     this->unk70.unk4 = 0;
-    if ((u8) M2C_FIELD(this, u8 *, 0x19F) == 0) {
-        this->unk15C.unk0 = 1;
+    if ((u8) this->unk19F == 0) {
+        this->unk16C = 1;
     }
     SetStateAnim(0);
-    this->unk180 = 0;
-    this->unk184 = NULL;
+    this->unk190 = 0;
+    this->unk194 = 0;
     if ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) {
         this->unkC8.RegisterTargetable();
     }
@@ -2495,7 +2495,7 @@ void Shatterable::LoadDone() {
     void *temp_r5_4428;
 
     GameProp::LoadDone();
-    var_f0_4400 = this->unk188;
+    var_f0_4400 = this->unk198;
     if (var_f0_4400 < 1.0f) {
 
     } else {
@@ -2506,7 +2506,7 @@ void Shatterable::LoadDone() {
     } else {
         var_f0_4400 = 0.0f;
     }
-    this->unk188 = var_f0_4400;
+    this->unk198 = var_f0_4400;
     ResetPercentageShattered();
     this->unkD0.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unkD0.Show(1U);
@@ -2533,7 +2533,7 @@ void Shatterable::LoadDone() {
 loop_19:
     if (var_r30_4475 < (s32) temp_r31_4474->unk160) {
         var_r25_4482 = 0;
-        temp_r4_4484 = ((u8 *) this->unk158) + (var_r27_4477 + 0x68);
+        temp_r4_4484 = ((u8 *) this->unk168) + (var_r27_4477 + 0x68);
         var_r26_4485 = 0;
         M2C_FIELD(temp_r4_4484, s32 *, 0) = 0;
         M2C_FIELD(temp_r4_4484, s8 *, 4) = 1;
@@ -2542,50 +2542,50 @@ loop_19:
 loop_15:
         temp_r4_4503 = var_r28_4476 + temp_r31_4474->unk11C;
         if (var_r26_4485 < (s32) M2C_FIELD(temp_r4_4503, u16 *, 0x110)) {
-            AddCollisionSubObject((s32) *(temp_r4_4503 + (var_r25_4482 + 0x112)), ((u8 *) this->unk158) + (var_r27_4477 + 0x68));
+            AddCollisionSubObject((s32) *(temp_r4_4503 + (var_r25_4482 + 0x112)), ((u8 *) this->unk168) + (var_r27_4477 + 0x68));
             var_r26_4485 += 1;
             var_r25_4482 += 2;
             goto loop_15;
         }
-        *(this->unk158 + (var_r27_4477 + 0x6C)) = 0;
-        *(this->unk158 + var_r27_4477) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x168));
-        *(this->unk158 + (var_r27_4477 + 4)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x164));
-        *(this->unk158 + (var_r27_4477 + 0x10)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x16C));
-        *(this->unk158 + (var_r27_4477 + 8)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x170));
-        *(this->unk158 + (var_r27_4477 + 0x14)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x174));
-        *(this->unk158 + (var_r27_4477 + 0x18)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x160));
+        *(this->unk168 + (var_r27_4477 + 0x6C)) = 0;
+        *(this->unk168 + var_r27_4477) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x168));
+        *(this->unk168 + (var_r27_4477 + 4)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x164));
+        *(this->unk168 + (var_r27_4477 + 0x10)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x16C));
+        *(this->unk168 + (var_r27_4477 + 8)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x170));
+        *(this->unk168 + (var_r27_4477 + 0x14)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x174));
+        *(this->unk168 + (var_r27_4477 + 0x18)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x160));
         temp_r4_4549 = temp_r31_4474->unk11C + var_r28_4476;
-        temp_r3_4550 = ((u8 *) this->unk158) + var_r27_4477;
+        temp_r3_4550 = ((u8 *) this->unk168) + var_r27_4477;
         M2C_FIELD(temp_r3_4550, void **, 0x54) = temp_r4_4549;
         M2C_FIELD(temp_r3_4550, void **, 0x58) = (void *) (((u8 *) temp_r4_4549) + 0x44);
         M2C_FIELD(temp_r3_4550, void **, 0x5C) = (void *) (((u8 *) temp_r4_4549) + 0x88);
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r27_4477))->LoadDone(this->unk4, temp_r31_4474->unk11C + (var_r28_4476 + 0xCC));
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r27_4477))->ClearVisible();
-        *(this->unk158 + (var_r27_4477 + 0x30)) = temp_r31_4474->unk158;
-        *(this->unk158 + (var_r27_4477 + 0x60)) = temp_r31_4474->unk165;
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r27_4477))->LoadDone(this->unk4, temp_r31_4474->unk11C + (var_r28_4476 + 0xCC));
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r27_4477))->ClearVisible();
+        *(this->unk168 + (var_r27_4477 + 0x30)) = temp_r31_4474->unk158;
+        *(this->unk168 + (var_r27_4477 + 0x60)) = temp_r31_4474->unk165;
         temp_r4_4575 = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x158));
         if (temp_r4_4575 != NULL) {
-            *(this->unk158 + (var_r27_4477 + 0x78)) = property_cast<KDScriptProperty *, KDProperty *>(temp_r31_4474->unk74.Find(temp_r4_4575));
+            *(this->unk168 + (var_r27_4477 + 0x78)) = property_cast<KDScriptProperty *, KDProperty *>(temp_r31_4474->unk74.Find(temp_r4_4575));
         }
         var_r30_4475 += 1;
         var_r28_4476 += 0x17C;
         var_r27_4477 += 0x80;
         goto loop_19;
     }
-    ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
-    *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
-    M2C_FIELD(this, f64 *, 0x130) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->SetVisibleUnshattered();
+    *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 1;
+    this->unk130 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk138 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    if ((u8) M2C_FIELD(this, u8 *, 0x19F) == 0) {
-        this->unk15C.unk0 = 1;
+    if ((u8) this->unk19F == 0) {
+        this->unk16C = 1;
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        ((GlowingProp *) &this->unk118)->Init();
+    if ((u8) this->unk1A0 != 0) {
+        this->unk118.Init();
     }
     if ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) {
         this->unkC8.RegisterTargetable();
     }
-    this->unk168 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
+    this->unk178 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF0;
 }
 #endif
 
@@ -2594,7 +2594,7 @@ s32 Shatterable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4647;
 
     var_r31_4647 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", this + 0x19D, 0) != 0) || (arg0->LoadBool("bStartActive", this + 0x19F, 0) != 0) || (((EventMessage *) &this->unk150)->LoadLine(arg0, "onShatter") != 0) || (((EventMessage *) &this->unk154)->LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", (u8 *) &this->unk190, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", this + 0x1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", &this->unk164.unk0, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", (f32 *) &this->unk17C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk188, 0) != 0) || (arg0->LoadBool("Hitable", (u8 *) &this->unk18C, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk184, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", &this->unk19D, 0) != 0) || (arg0->LoadBool("bStartActive", &this->unk19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (this->unk164.LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", &this->unk1A0, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", &this->unk1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", &this->unk18C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk198, 0) != 0) || (arg0->LoadBool("Hitable", &this->unk19C, 0) != 0)) {
         var_r31_4647 = 1;
     }
     return var_r31_4647;
@@ -2641,20 +2641,20 @@ loop_3:
 loop_11:
     temp_r3_4816 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     if (var_r30_4805 < (s32) temp_r3_4816->unk160) {
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r31_4806))->Deinit();
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r31_4806))->Deinit();
         var_r30_4805 += 1;
         var_r31_4806 += 0x80;
         goto loop_11;
     }
-    temp_r30_4820 = this->unk158;
+    temp_r30_4820 = this->unk168;
     temp_r3_4821 = ((MKHeap *) temp_r3_4816)->Current();
     if (temp_r3_4821 != NULL) {
         ((MKHeap *) (temp_r3_4821->Current()))->Free(temp_r30_4820, NULL, 0);
     } else {
         free(temp_r30_4820);
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        ((GlowingProp *) &this->unk118)->Deinit();
+    if ((u8) this->unk1A0 != 0) {
+        this->unk118.Deinit();
     }
     PlatformDetach();
     if ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) {
@@ -2688,13 +2688,13 @@ void Shatterable::Init() {
     void *var_r3_4919;
 
     GameProp::Init();
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x80);
+    this->unk1A1 &= ~0x80;
     this->unk100 = NULL;
-    M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) | 0x40);
+    this->unk1A1 |= 0x40;
     this->unk10 |= 0x10;
-    this->unk178 = 0.0f;
-    this->unk174 = NULL;
-    M2C_FIELD(this, s8 *, 0x19D) = 0;
+    this->unk188 = 0.0f;
+    this->unk184 = NULL;
+    this->unk19D = 0;
     temp_r3_4909 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r29_4911 = M2C_FIELD(temp_r3_4909, s32 *, 0x160) << 7;
     temp_r3_4912 = temp_r3_4909->Current();
@@ -2704,30 +2704,30 @@ void Shatterable::Init() {
         var_r3_4919 = malloc(temp_r29_4911);
     }
     var_r30_4925 = 0;
-    this->unk158 = var_r3_4919;
+    this->unk168 = var_r3_4919;
     var_r28_4928 = 0;
     do {
-        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4925))->Init();
+        ((KDShatter2 *) (((u8 *) this->unk168) + var_r30_4925))->Init();
         var_r28_4928 += 1;
         temp_r0_4935 = var_r30_4925 + 0x78;
         var_r30_4925 += 0x80;
-        *(this->unk158 + temp_r0_4935) = 0;
+        *(this->unk168 + temp_r0_4935) = 0;
     } while (var_r28_4928 < 0xA);
-    M2C_FIELD(this, s8 *, 0x19F) = 1;
-    M2C_FIELD(this, s8 *, 0x1A0) = 0;
-    M2C_FIELD(this, s8 *, 0x1A2) = 0;
-    this->unk160.unk0 = 0;
-    this->unk17C = 0.0f;
-    this->unk164.unk0 = 0;
+    this->unk19F = 1;
+    this->unk1A0 = 0;
+    this->unk1A2 = 0;
+    this->unk170 = NULL;
+    this->unk18C = 0.0f;
+    this->unk174 = NULL;
     M2C_FIELD(this, Shatterable **, 0x140) = this;
-    this->unk180 = 0;
-    this->unk184 = NULL;
-    this->unk188 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x19C) = 1;
+    this->unk190 = 0;
+    this->unk194 = 0;
+    this->unk198 = 0.0f;
+    this->unk19C = 1;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: ')' expected
 void ShatterableDescriptor::LoadDone() {
     s8 sp3C;
     s8 sp1C;
@@ -2969,7 +2969,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 ShatterableDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *spC;
     u8 sp8;
@@ -3226,7 +3226,7 @@ void ShatterableDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unkE4'
 void ShatterableDescriptor::Init() {
     s32 temp_r0_6383;
     s32 var_ctr_6381;

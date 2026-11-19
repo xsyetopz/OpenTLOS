@@ -8,8 +8,6 @@
 #include "spyro/source/KDWaterVolume.h"
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
-#include "spyro/source/SpyroCombatState.h"
-#include "spyro/source/SpyroTools.h"
 #include "spyro/source/checkpoint.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -318,7 +316,7 @@ void SpyroCynderStrafeState::Landed(bool arg0) {
         M2C_FIELD(temp_r3_54->OnProp()->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
     }
     temp_r3_73 = this->unk10;
-    if (((s32) M2C_FIELD(temp_r3_73->unk26C.unk8, s32 *, 0x16C) > 0) && ((u32) temp_r3_73->unk40C != 0U)) {
+    if (((s32) M2C_FIELD(temp_r3_73->unk27C, s32 *, 0x16C) > 0) && ((u32) temp_r3_73->unk40C != 0)) {
         temp_r3_73->BridgeHit(0.0f, 1000.0f);
     }
 }
@@ -356,7 +354,6 @@ void SpyroCynderStrafeState::JumpLoftEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpyroCynderStrafeState::JumpCycleTransition() {
     u8 var_r0_188;
 
@@ -370,7 +367,6 @@ s32 SpyroCynderStrafeState::JumpCycleTransition() {
     }
     return 0;
 }
-#endif
 
 void SpyroCynderStrafeState::JumpCycleUpdate() {
     JumpCycleTransition();
@@ -386,7 +382,7 @@ void SpyroCynderStrafeState::JumpCycleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroCynderStrafeState::JumpStartTransition() {
     u8 var_r0_261;
     u8 var_r3_276;
@@ -441,7 +437,7 @@ void SpyroCynderStrafeState::AnyStateEnter() {
     spC = 0;
     sp8 = 0x42B;
     M2C_FIELD(temp_r3_362->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-    M2C_FIELD(this->unk10, s8 *, 0x25C) = 1;
+    this->unk10->unk25C = 1;
 }
 #endif
 
@@ -449,19 +445,19 @@ void SpyroCynderStrafeState::AnyStateEnter() {
 u8 SpyroCynderStrafeState::FallTransition() {
     f64 sp10;
     f64 sp8;
-    MKProp *temp_r3_415;
     Spyro *temp_r4_393;
     s32 temp_r3_395;
     s32 temp_r3_417;
     u32 temp_r30_398;
     u32 var_r29_411;
     u8 var_r3_449;
+    void *temp_r3_415;
     void *temp_r6_400;
     void *var_r3_426;
 
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
+    this->unk10->unk3D2 = 0;
     temp_r4_393 = this->unk10;
-    temp_r3_395 = M2C_FIELD(temp_r4_393->unk26C.unk8, s32 *, 0x16C);
+    temp_r3_395 = M2C_FIELD(temp_r4_393->unk27C, s32 *, 0x16C);
     temp_r30_398 = (u32) (-temp_r3_395 & ~temp_r3_395) >> 0x1FU;
     if (temp_r30_398 != 0) {
         temp_r6_400 = temp_r4_393->unk8;
@@ -470,11 +466,11 @@ u8 SpyroCynderStrafeState::FallTransition() {
         if (((KDWaterVolume *) &sp8)->IsWithin(*NULL, NULL, (s32 *) temp_r6_400) != 0) {
             var_r29_411 = 0x01000000;
         } else {
-            temp_r3_415 = this->unk10->unk26C.unk8;
+            temp_r3_415 = this->unk10->unk27C;
             temp_r3_417 = M2C_FIELD(temp_r3_415, s32 *, 0x16C);
             if (((u32) (-temp_r3_417 & ~temp_r3_417) >> 0x1FU) != 0) {
                 if (temp_r3_417 != 0) {
-                    var_r3_426 = &temp_r3_415->unk8 + ((temp_r3_417 - 1) * 0x58);
+                    var_r3_426 = ((u8 *) temp_r3_415) + 8 + ((temp_r3_417 - 1) * 0x58);
                 } else {
                     var_r3_426 = NULL;
                 }
@@ -530,11 +526,11 @@ void SpyroCynderStrafeState::FallExit() {
     sp8 = 0x450;
     M2C_FIELD(temp_r3_516->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     temp_r3_526 = this->unk10;
-    temp_r3_526->unk420 = (void *) ((s32) temp_r3_526->unk420 | 0x80);
+    temp_r3_526->unk428 |= 0x80;
     temp_r3_530 = this->unk10;
-    temp_r3_530->unk420 = (void *) ((s32) temp_r3_530->unk420 & 0xFFFF7FFF);
-    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
-    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk258, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
+    temp_r3_530->unk428 &= 0xFFFF7FFF;
+    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
+    ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
 }
 #endif
 
@@ -573,10 +569,10 @@ void SpyroCynderStrafeState::FallEnter() {
     AnyStateEnter();
     this->unk10->SetMedium((Spyro::Medium) 2);
     temp_r4_563 = this->unk10;
-    temp_r4_563->unk420 = (void *) ((s32) temp_r4_563->unk420 & 0xFFFDF7DF);
+    temp_r4_563->unk428 &= 0xFFFDF7DF;
     temp_r3_570 = this->unk10;
-    temp_r3_570->unk388 = 3800.0f;
-    temp_f1_572 = temp_r3_570->unk388;
+    temp_r3_570->unk390 = 3800.0f;
+    temp_f1_572 = temp_r3_570->unk390;
     var_f2_573 = temp_r3_570->unk33C;
     temp_f0_574 = -temp_f1_572;
     if (var_f2_573 < temp_f1_572) {
@@ -591,13 +587,13 @@ void SpyroCynderStrafeState::FallEnter() {
     }
     temp_r3_570->unk33C = var_f2_573;
     var_r0_588 = 1;
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     temp_r4_592 = this->unk10;
     temp_r3_593 = temp_r4_592->unk54.unkC;
     if ((temp_r3_593 != 9) && (temp_r3_593 != 4)) {
         var_r0_588 = 0;
     }
-    temp_r4_592->unk3CC = var_r0_588 != 0;
+    temp_r4_592->unk3D4 = var_r0_588 != 0;
     temp_r3_605 = this->unk10->unk8;
     sp28 = M2C_FIELD(temp_r3_605, f64 *, 0x30);
     sp30 = M2C_FIELD(temp_r3_605, f64 *, 0x38);
@@ -615,8 +611,8 @@ void SpyroCynderStrafeState::FallEnter() {
     sp20 = M2C_FIELD(temp_r3_636, f64 *, 0x38);
     this->unk78 = (*(f32 *) ((u8 *) &sp18 + 0x4));
     temp_r3_643 = this->unk10;
-    temp_r3_643->unk388 = 3800.0f;
-    temp_f1_645 = temp_r3_643->unk388;
+    temp_r3_643->unk390 = 3800.0f;
+    temp_f1_645 = temp_r3_643->unk390;
     var_f2_646 = temp_r3_643->unk33C;
     temp_f0_647 = -temp_f1_645;
     if (var_f2_646 < temp_f1_645) {
@@ -630,9 +626,9 @@ void SpyroCynderStrafeState::FallEnter() {
         var_f2_646 = temp_f0_647;
     }
     temp_r3_643->unk33C = var_f2_646;
-    M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
+    this->unk10->unk38C = 1900.0f;
     temp_r4_666 = this->unk10;
-    temp_r4_666->unk420 = (void *) ((s32) temp_r4_666->unk420 | 0x8000);
+    temp_r4_666->unk428 |= 0x8000;
     this->unk7C.Start(this->unk10, 0.0f);
     this->unk88.Reset();
     sp3C = 0;
@@ -644,7 +640,7 @@ void SpyroCynderStrafeState::FallEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroCynderStrafeState::JumpTransition() {
     u8 var_r3_705;
 
@@ -704,7 +700,7 @@ void SpyroCynderStrafeState::JumpUpdate() {
             sp40 = M2C_FIELD(temp_r3_776, f64 *, 0x30);
             sp48 = M2C_FIELD(temp_r3_776, f64 *, 0x38);
             temp_f31_785 = 300.0f - ((*(f32 *) ((u8 *) &sp30 + 0x14)) - this->unk68);
-            if ((temp_f31_785 < 100.0f) || ((s32) M2C_FIELD(temp_r4_774->unk26C.unk8, s32 *, 0x43C) > 0)) {
+            if ((temp_f31_785 < 100.0f) || ((s32) M2C_FIELD(temp_r4_774->unk27C, s32 *, 0x43C) > 0)) {
                 if ((u8) this->unk65 == 0) {
                     sp30.GetMoveVelocityHorz();
                     var_f5_805 = 1900.0f * (2.0f * temp_f31_785);
@@ -769,19 +765,17 @@ void SpyroCynderStrafeState::JumpUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpyroCynderStrafeState::JumpExit() {
     Spyro *temp_r3_938;
     Spyro *temp_r3_942;
 
     ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Exit(this);
-    M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
+    this->unk10->unk3D2 = 0;
     temp_r3_938 = this->unk10;
-    temp_r3_938->unk420 = (void *) ((s32) temp_r3_938->unk420 | 0x20000);
+    temp_r3_938->unk428 |= 0x20000;
     temp_r3_942 = this->unk10;
-    temp_r3_942->unk420 = (void *) ((s32) temp_r3_942->unk420 & 0xFFFF7FFF);
+    temp_r3_942->unk428 &= 0xFFFF7FFF;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroCynderStrafeState::JumpEnter() {
@@ -805,11 +799,11 @@ void SpyroCynderStrafeState::JumpEnter() {
     AnyStateEnter();
     this->unk10->SetMedium((Spyro::Medium) 2);
     temp_r5_965 = this->unk10;
-    temp_r5_965->unk420 = (void *) ((s32) temp_r5_965->unk420 | 0x8007);
+    temp_r5_965->unk428 |= 0x8007;
     temp_r5_972 = this->unk10;
-    temp_r5_972->unk420 = (void *) ((s32) temp_r5_972->unk420 & 0xFFFDF7D7);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
-    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
+    temp_r5_972->unk428 &= 0xFFFDF7D7;
+    this->unk10->unk460.SetTailSweepEnabled(0U);
+    this->unk10->unk460.SetHornDiveEnabled(0U);
     this->unk74 = &this->unk6C;
     ((SpyroCynderStrafeState *) &sp20)->GetMoveVelocityHorz();
     sp40 = sp20;
@@ -834,7 +828,6 @@ void SpyroCynderStrafeState::JumpEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 u8 SpyroCynderStrafeState::AnyToDodgeTranstion() {
     InputModifier *temp_r3_1051;
     s32 var_r3_1059;
@@ -862,7 +855,6 @@ u8 SpyroCynderStrafeState::AnyToDodgeTranstion() {
     }
     return 0U;
 }
-#endif
 
 void SpyroCynderStrafeState::DodgeLeftRightSetLVEScale() {
     s32 temp_r0_1108;
@@ -943,7 +935,7 @@ void SpyroCynderStrafeState::DodgeLeftRightUpdate() {
 }
 
 void SpyroCynderStrafeState::DodgeLeftRightExit() {
-    M2C_FIELD(this->unk10, s8 *, 0x25C) = 0;
+    this->unk10->unk25C = 0;
     this->unk10->SetLVEScale(MKVector3::one);
 }
 
@@ -954,7 +946,7 @@ void SpyroCynderStrafeState::DodgeLeftRightEnter() {
 
     AnyStateEnter();
     temp_r4_1303 = this->unk10;
-    temp_r4_1303->unk420 = (void *) ((s32) temp_r4_1303->unk420 & 0xFFFDF7FF);
+    temp_r4_1303->unk428 &= 0xFFFDF7FF;
     if (((InputModifier *) (this->unk10->GetInput()))->GetLeftX() < 0.0f) {
         var_r4_1315 = 0x14;
     } else {
@@ -966,7 +958,7 @@ void SpyroCynderStrafeState::DodgeLeftRightEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroCynderStrafeState::NoTargetTransition() {
     InputModifier *temp_r3_1351;
     s32 var_r3_1359;
@@ -1007,7 +999,7 @@ void SpyroCynderStrafeState::NoTargetUpdate() {
         temp_r3_1403 = this->unk10;
         temp_r0_1404 = temp_r3_1403->unk54.unk8;
         if ((temp_r0_1404 != 0xB) && (temp_r0_1404 != 2)) {
-            ((SpyroTargetList *) &temp_r3_1403->unkB90)->ClearCurrentTarget();
+            temp_r3_1403->unkB90.ClearCurrentTarget();
         }
     }
 }
@@ -1023,20 +1015,20 @@ void SpyroCynderStrafeState::NoTargetEnter() {
     s32 sp8;
     Spyro *temp_r8_1437;
     s32 temp_r6_1445;
+    s32 temp_r7_1441;
     void *temp_r3_1451;
-    void *temp_r7_1441;
 
     AnyStateEnter();
     this->unk10->SetMedium((Spyro::Medium) 1);
     temp_r8_1437 = this->unk10;
-    temp_r7_1441 = temp_r8_1437->unk420;
-    temp_r6_1445 = (s32) temp_r7_1441 & 0xFFFDF7FF;
-    temp_r8_1437->unk420 = (void *) temp_r6_1445;
+    temp_r7_1441 = temp_r8_1437->unk428;
+    temp_r6_1445 = temp_r7_1441 & 0xFFFDF7FF;
+    temp_r8_1437->unk428 = temp_r6_1445;
     spC = 0;
     sp8 = 0x17;
     sp10 = 3;
     temp_r3_1451 = this->unk10->unkB70;
-    M2C_FIELD(M2C_FIELD(temp_r3_1451, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, s32, void *, Spyro *), 0x2C)(temp_r3_1451, &sp8, 0, temp_r6_1445, temp_r7_1441, temp_r8_1437);
+    M2C_FIELD(M2C_FIELD(temp_r3_1451, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, s32, s32, Spyro *), 0x2C)(temp_r3_1451, &sp8, 0, temp_r6_1445, temp_r7_1441, temp_r8_1437);
 }
 #endif
 
@@ -1424,18 +1416,14 @@ s32 SpyroCynderStrafeState::Transition() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 void SpyroCynderStrafeState::Update() {
     ClampMovementUpdate();
     this->unk18.Update(this, 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 void SpyroCynderStrafeState::Exit() {
     this->unk18.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
@@ -1451,9 +1439,9 @@ void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     f64 temp_f1_2175;
 
     temp_r4_2165 = this->unk10;
-    temp_r4_2165->unk420 = (void *) ((s32) temp_r4_2165->unk420 | 0x8000);
+    temp_r4_2165->unk428 |= 0x8000;
     temp_r4_2170 = this->unk10;
-    temp_r4_2170->unk420 = (void *) ((s32) temp_r4_2170->unk420 & 0xFFFDF7FF);
+    temp_r4_2170->unk428 &= 0xFFFDF7FF;
     temp_f1_2175 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF0);
     temp_f0_2176 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF8);
     sp20 = temp_f1_2175;
@@ -1473,12 +1461,10 @@ void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpyroCynderStrafeState::Deinit() {
     ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Deinit();
     this->unk18.Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__40KDStateMachine'
 void SpyroCynderStrafeState::Init(Spyro *arg0) {

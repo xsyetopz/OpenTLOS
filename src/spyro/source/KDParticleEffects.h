@@ -34,9 +34,6 @@ public:
     virtual void GetColor(void);
     KDParticleEmitterProperty(void);
     static u8 classInfo[0x10];
-    /* 0x004 */ s32 unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ s32 unkC;
     /* 0x010 */ MKIniLine* unk10;
     /* 0x014 */ s8* unk14;
     /* 0x018 */ KDParticleSystemProperty* unk18;
@@ -56,13 +53,6 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
-    /* 0x010 */ MKIniLine* unk10;
-    /* 0x014 */ u8 pad14[0xc];
-    /* 0x020 */ void** unk20;
-    /* 0x024 */ u8 pad24[0x4];
     /* 0x028 */ f64 unk28;
     /* 0x030 */ f64 unk30;
     /* 0x038 */ f64 unk38;
@@ -86,13 +76,6 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
-    /* 0x010 */ MKIniLine* unk10;
-    /* 0x014 */ u8 pad14[0xc];
-    /* 0x020 */ void** unk20;
-    /* 0x024 */ s8* unk24;
     /* 0x028 */ void* unk28;
 };
 
@@ -109,9 +92,6 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ s8* unk10;
     /* 0x014 */ void** unk14;
     /* 0x018 */ u8 unk18;

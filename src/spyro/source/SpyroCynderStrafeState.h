@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROCYNDERSTRAFESTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroAnimTables.h"
 #include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
@@ -69,7 +70,8 @@ public:
     /* 0x008 */ f64 unk8;
     /* 0x010 */ Spyro* unk10;
     /* 0x014 */ s32 unk14;
-    /* 0x018 */ u8 pad18[0x8];
+    /* 0x018 */ KDStateMachine<SpyroCynderStrafeState> unk18;
+    /* 0x019 */ u8 pad19[0x7];
     /* 0x020 */ f64 unk20;
     /* 0x028 */ f64 unk28;
     /* 0x030 */ f32 unk30;
@@ -104,10 +106,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk18'
 inline void SpyroCynderStrafeState::GetStateInfo() {
     this->unk18.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROCYNDERSTRAFESTATE_H

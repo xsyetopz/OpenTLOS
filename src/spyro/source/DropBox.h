@@ -17,7 +17,7 @@ class Shatterable;
 class ShatterableDescriptor;
 class SpawnerObject;
 
-class DropBox : public Shatterable {  // base: vtable prefix
+class DropBox : public Shatterable {  // base: base ctor call
 public:
     virtual ~DropBox(void);
     virtual void Init(void);
@@ -33,7 +33,6 @@ public:
     void Drop(void);
     void SpawnEnemies(void);
     void InitSpawnerObject(void);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ f32 unk1A8;
     /* 0x1ac */ f32 unk1AC;
     /* 0x1b0 */ f32 unk1B0;
@@ -58,13 +57,12 @@ public:
     /* 0x218 */ s32 unk218;
 };
 
-class DropBoxDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class DropBoxDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     DropBoxDescriptor(void);
-    /* 0x16c */ s32 unk16C;
     /* 0x170 */ s32 unk170;
     /* 0x174 */ s32 unk174;
 };
@@ -74,8 +72,8 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline DropBox::DropBox() {
     this->unkC8 = &__vt + 0x48;
-    this->unk1C8 = 0;
-    ((EventMessage *) &this->unk1C8)->Init();
+    this->unk1D8.unk0 = 0;
+    this->unk1D8.Init();
     return this;
 }
 #endif
@@ -83,8 +81,8 @@ inline DropBox::DropBox() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline DropBox::~DropBox() {
     this->unkC8 = &__vt.unk48;
-    if (&this->unk1C8 != NULL) {
-        ((EventMessage *) &this->unk1C8)->Deinit();
+    if (&this->unk1D8 != NULL) {
+        this->unk1D8.Deinit();
     }
 }
 #endif

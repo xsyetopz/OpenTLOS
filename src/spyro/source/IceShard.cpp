@@ -11,7 +11,7 @@
 
 extern MKPropDescriptor *pIceShardDescriptor;
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceShard::Update() {
     Matrix sp90;
     Matrix sp50;
@@ -189,12 +189,10 @@ void *IceShard::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void IceShardDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pIceShardDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void IceShardDescriptor::Deinit() {
     pIceShardDescriptor = NULL;

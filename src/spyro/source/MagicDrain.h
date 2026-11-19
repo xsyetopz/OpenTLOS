@@ -15,7 +15,7 @@ class ManagedLight;
 class Projectile;
 class ProjectileDescriptor;
 
-class MagicDrain : public Projectile {  // base: vtable prefix
+class MagicDrain : public Projectile {  // base: base ctor call
 public:
     virtual ~MagicDrain(void);
     virtual void Init(void);
@@ -33,18 +33,17 @@ public:
     MagicDrain(void);
     void SetDefaults(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ MKVector3* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ u8 unk158;
     /* 0x159 */ u8 pad159[0x3];
     /* 0x15c */ ManagedLight* unk15C;
     /* 0x160 */ BreathHitMessage unk160;
-    /* 0x1b1 */ u8 pad1B1[0x7];
+    /* 0x1b4 */ u8 pad1B4[0x4];
     /* 0x1b8 */ f32 unk1B8;
 };
 
-class MagicDrainDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class MagicDrainDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

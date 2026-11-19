@@ -23,7 +23,7 @@ public:
     void __sinit(void);
 };
 
-class SwampTier1 : public Enemy {  // base: vtable prefix
+class SwampTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~SwampTier1(void);
     virtual void Init(void);
@@ -38,14 +38,13 @@ public:
     SwampTier1Descriptor(void);
 };
 
-class SwampTier2 : public Enemy {  // base: vtable prefix
+class SwampTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~SwampTier2(void);
     virtual void Init(void);
     virtual void Draw(void);
     virtual void CheckAnimEvents(void);
     SwampTier2(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ s32 unkB10;
     /* 0xb14 */ s32 unkB14;
     /* 0xb18 */ f32 unkB18;
@@ -58,7 +57,7 @@ public:
     SwampTier2Descriptor(void);
 };
 
-class SwampTier3 : public Enemy {  // base: vtable prefix
+class SwampTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~SwampTier3(void);
     virtual void Init(void);
@@ -67,7 +66,6 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     virtual u8 CanMoveAwayFromHero(void);
     SwampTier3(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ s8 unkB10;
     /* 0xb11 */ u8 padB11[0x3];
     /* 0xb14 */ f32 unkB14;
@@ -83,18 +81,16 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier1::SwampTier1() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier1::~SwampTier1() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -104,16 +100,16 @@ inline SwampTier1Descriptor::SwampTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier2::SwampTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier2::~SwampTier2() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -123,16 +119,16 @@ inline SwampTier2Descriptor::SwampTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier3::SwampTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline SwampTier3::~SwampTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

@@ -2,11 +2,9 @@
 #define SPYRO_SOURCE_SHATTERABLE_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GlowingPropManager.h"
-#include "spyro/source/KDProperty.h"
 #include "spyro/source/Shadow.h"
 #include "unplaced_enums.h"
 
@@ -14,14 +12,13 @@ class Attachment;
 class DataMap;
 class EventMessage;
 class GameProp;
+class GamePropDescriptor;
 class GlowingProp;
-class KDPropertySet;
 class KDSoundPlayer;
 class MKCollisionInfo;
 class MKIniLine;
 class MKMessage;
 class MKProp;
-class MKPropDescriptor;
 class MKSceneManager;
 class MKVector3;
 class MKVector4;
@@ -29,7 +26,7 @@ class Shadow;
 class Shatterable;
 class ShatterableDescriptor;
 
-class Shatterable : public GameProp {  // base: vtable prefix
+class Shatterable : public GameProp {  // base: base ctor call
 public:
     virtual ~Shatterable(void);
     virtual void Init(void);
@@ -73,13 +70,11 @@ public:
     void EnableCollision(void);
     void DisableCollision(void);
     u8 AbleToRespawn(void);
-    /* 0x0c4 */ u8 padC4[0xc];
+    /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ Shadow unkD0;
-    /* 0x0fd */ u8 padFD[0x3];
     /* 0x100 */ KDSoundPlayer* unk100;
     /* 0x104 */ u8 pad104[0x14];
     /* 0x118 */ GlowingProp unk118;
-    /* 0x12d */ u8 pad12D[0x3];
     /* 0x130 */ f64 unk130;
     /* 0x138 */ f64 unk138;
     /* 0x140 */ u8 pad140[0x10];
@@ -112,7 +107,7 @@ public:
     /* 0x1a2 */ u8 unk1A2;
 };
 
-class ShatterableDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ShatterableDescriptor : public GamePropDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -120,10 +115,6 @@ public:
     virtual void Deinit(void);
     ShatterableDescriptor(void);
     void EmitHitEffects(const MKVector3 &, const MKVector3 &, const MKVector4 &, MKProp *, int);
-    /* 0x044 */ u8 pad44[0x30];
-    /* 0x074 */ KDPropertySet unk74;
-    /* 0x084 */ u8 pad84[0x60];
-    /* 0x0e4 */ s8* unkE4;
     /* 0x0e8 */ s8* unkE8;
     /* 0x0ec */ s8* unkEC;
     /* 0x0f0 */ f32 unkF0;
@@ -172,18 +163,18 @@ extern DataMap ShatterableHitFXDataMap;
 
 #if 0 // DRAFT: undefined identifier 'vtableC8'
 inline Shatterable::~Shatterable() {
-    M2C_UNK *temp_r0_18991;
-    M2C_UNK *temp_r4_18994;
-    f64 *temp_r0_19007;
-    f64 *temp_r4_19010;
+    Attachment *temp_r0_18991;
+    M2C_UNK *temp_r0_19007;
+    M2C_UNK *temp_r4_19010;
+    u8 *temp_r4_18994;
 
     if (this != NULL) {
         this->vtableC8 = &__vt + 0x48;
-        if (&this->unk154 != NULL) {
-            ((EventMessage *) &this->unk154)->Deinit();
+        if (&this->unk164 != NULL) {
+            this->unk164.Deinit();
         }
-        if (&this->unk150 != NULL) {
-            ((EventMessage *) &this->unk150)->Deinit();
+        if (&this->unk160 != NULL) {
+            this->unk160.Deinit();
         }
         if (&this->unk15C != NULL) {
             this->unk15C.Deinit();
@@ -193,22 +184,22 @@ inline Shatterable::~Shatterable() {
             if (temp_r0_18991 != NULL) {
                 temp_r4_18994 = &this->unk150;
                 if (temp_r0_18991 != temp_r4_18994) {
-                    M2C_FIELD(this->unk158, M2C_UNK **, 4) = temp_r0_18991;
-                    M2C_FIELD(this->unk154, M2C_UNK **, 8) = (M2C_UNK *) this->unk158;
+                    M2C_FIELD(this->unk158, Attachment **, 4) = temp_r0_18991;
+                    this->unk154->unk8 = (Attachment *) this->unk158;
                     this->unk158 = temp_r4_18994;
-                    this->unk154 = temp_r4_18994;
+                    this->unk154 = (Attachment *) temp_r4_18994;
                 }
             }
         }
-        if (&this->unk130 != NULL) {
-            temp_r0_19007 = M2C_FIELD(this, f64 **, 0x148);
+        if (&this->unk140 != NULL) {
+            temp_r0_19007 = this->unk148;
             if (temp_r0_19007 != NULL) {
-                temp_r4_19010 = &this->unk130;
+                temp_r4_19010 = &this->unk140;
                 if (temp_r0_19007 != temp_r4_19010) {
-                    M2C_FIELD(M2C_FIELD(this, f64 **, 0x14C), f64 **, 8) = temp_r0_19007;
-                    M2C_FIELD(M2C_FIELD(this, f64 **, 0x148), f64 **, 0xC) = (f64 *) M2C_FIELD(this, f64 **, 0x14C);
-                    M2C_FIELD(this, f64 **, 0x14C) = temp_r4_19010;
-                    M2C_FIELD(this, f64 **, 0x148) = temp_r4_19010;
+                    M2C_FIELD(this->unk14C, M2C_UNK **, 8) = temp_r0_19007;
+                    M2C_FIELD(this->unk148, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk14C;
+                    this->unk14C = temp_r4_19010;
+                    this->unk148 = temp_r4_19010;
                 }
             }
         }
@@ -218,27 +209,27 @@ inline Shatterable::~Shatterable() {
 
 #if 0 // DRAFT: undefined identifier 'vtableC8'
 inline Shatterable::Shatterable() {
-    M2C_UNK *temp_r0_19056;
-    f64 *temp_r4_19055;
+    M2C_UNK *temp_r4_19055;
+    u8 *temp_r0_19056;
 
     this->vtableC8 = &__vt;
     this->unkCC = -1;
-    temp_r4_19055 = &this->unk130;
+    temp_r4_19055 = &this->unk140;
     temp_r0_19056 = &this->unk150;
     this->vtableC8 = &__vt + 0x48;
     M2C_FIELD(this, s32 *, 0x140) = 0;
-    M2C_FIELD(this, s32 *, 0x144) = 0;
-    M2C_FIELD(this, f64 **, 0x148) = temp_r4_19055;
-    M2C_FIELD(this, f64 **, 0x14C) = temp_r4_19055;
+    this->unk144 = 0;
+    this->unk148 = temp_r4_19055;
+    this->unk14C = temp_r4_19055;
     M2C_FIELD(this, s32 *, 0x150) = 0;
-    this->unk154 = temp_r0_19056;
+    this->unk154 = (Attachment *) temp_r0_19056;
     this->unk158 = temp_r0_19056;
     this->unk15C.unk0 = 0;
     this->unk15C.Init();
-    M2C_FIELD(this, s32 *, 0x160) = 0;
-    ((EventMessage *) &this->unk150)->Init();
-    this->unk154 = NULL;
-    ((EventMessage *) &this->unk154)->Init();
+    this->unk160.unk0 = 0;
+    this->unk160.Init();
+    this->unk164.unk0 = 0;
+    this->unk164.Init();
     return this;
 }
 #endif
@@ -277,7 +268,7 @@ inline s32 Shatterable::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 
 inline s32 Shatterable::IsDead() {
-    return this->unk16C == 3;
+    return this->unk17C == 3;
 }
 
 inline s32 Shatterable::IsShatterable() {

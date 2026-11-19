@@ -1062,7 +1062,7 @@ s32 NodeLoadLine1(KDSynkerPlayer3 *arg0, MKIniLine *arg1, const char *arg2, MKMo
         temp_r3_1924 = strchr(temp_r3_1921, 0x3A);
         temp_r29_1927 = *temp_r3_1924;
         *temp_r3_1924 = 0;
-        temp_r30_1933 = ((KDSP_ActorList *) &arg0->unk100)->GetActorId(temp_r3_1921);
+        temp_r30_1933 = arg0->unk100.GetActorId(temp_r3_1921);
         if (arg5 != NULL) {
             *arg5 = temp_r30_1933;
         }

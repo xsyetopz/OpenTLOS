@@ -398,7 +398,7 @@ void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void SparxFX::Draw() {
     Matrix sp70;
     M2C_UNK sp6C;

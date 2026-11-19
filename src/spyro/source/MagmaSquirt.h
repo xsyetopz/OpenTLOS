@@ -16,7 +16,7 @@ class ManagedLight;
 class Projectile;
 class ProjectileDescriptor;
 
-class MagmaSquirt : public Projectile {  // base: vtable prefix
+class MagmaSquirt : public Projectile {  // base: base ctor call
 public:
     virtual ~MagmaSquirt(void);
     virtual void Init(void);
@@ -34,7 +34,6 @@ public:
     MagmaSquirt(void);
     void SetDefaults(void);
     void * CreateInstance(void);
-    /* 0x14d */ u8 pad14D[0x3];
     /* 0x150 */ LiquidFX* unk150;
     /* 0x154 */ MKVector3* unk154;
     /* 0x158 */ MKVector3* unk158;
@@ -47,7 +46,7 @@ public:
     /* 0x170 */ BreathHitMessage unk170;
 };
 
-class MagmaSquirtDescriptor : public ProjectileDescriptor {  // base: vtable prefix
+class MagmaSquirtDescriptor : public ProjectileDescriptor {  // base: base ctor call
 public:
     virtual void LoadDone(void);
     virtual void Deinit(void);

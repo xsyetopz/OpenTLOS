@@ -13,7 +13,7 @@ class Shatterable;
 class ShatterableDescriptor;
 class SpawnerObject;
 
-class ShatterWaypointSpawn : public Shatterable {  // base: vtable prefix
+class ShatterWaypointSpawn : public Shatterable {  // base: base ctor call
 public:
     virtual ~ShatterWaypointSpawn(void);
     virtual void Init(void);
@@ -24,42 +24,37 @@ public:
     virtual s32 LoadWaypoints(MKIniLine *, const char *);
     ShatterWaypointSpawn(void);
     void SetSpawnPos(int, const MKVector3 &);
-    /* 0x1a3 */ u8 pad1A3[0x5];
     /* 0x1a8 */ SpawnerObject unk1A8;
-    /* 0x1f5 */ u8 pad1F5[0x3];
     /* 0x1f8 */ void* unk1F8;
     /* 0x1fc */ s32 unk1FC;
     /* 0x200 */ s32 unk200;
 };
 
-class ShatterWaypointSpawnDescriptor : public ShatterableDescriptor {  // base: vtable prefix
+class ShatterWaypointSpawnDescriptor : public ShatterableDescriptor {  // base: base ctor call
 public:
     virtual void Init(void);
     virtual s32 GetSpawnEnemyType(void) = 0;
     ShatterWaypointSpawnDescriptor(void);
-    /* 0x16c */ s32 unk16C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline ShatterWaypointSpawn::~ShatterWaypointSpawn() {
-    f32 *temp_r3_21055;
-    s32 *temp_r3_21061;
+    EventMessage *temp_r3_21055;
+    EventMessage *temp_r3_21061;
 
     if (this != NULL) {
         this->unkC8 = &__vt + 0x48;
-        if (&this->unk198 != NULL) {
-            temp_r3_21055 = &this->unk1A8.unk30;
-            this->unk198 = M2C_BITWISE(f32, &__vt);
+        if (&this->unk1A8 != NULL) {
+            temp_r3_21055 = &this->unk1A8.unk40;
+            this->unk1A8.__vptr = &__vt;
             if (temp_r3_21055 != NULL) {
-                ((EventMessage *) temp_r3_21055)->Deinit();
+                temp_r3_21055->Deinit();
             }
-            temp_r3_21061 = &this->unk1A8.unk2C;
+            temp_r3_21061 = &this->unk1A8.unk3C;
             if (temp_r3_21061 != NULL) {
-                ((EventMessage *) temp_r3_21061)->Deinit();
+                temp_r3_21061->Deinit();
             }
         }
     }
@@ -69,11 +64,11 @@ inline ShatterWaypointSpawn::~ShatterWaypointSpawn() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline ShatterWaypointSpawn::ShatterWaypointSpawn() {
     this->unkC8 = &__vt + 0x48;
-    this->unk198 = M2C_BITWISE(f32, &__vt);
-    this->unk1A8.unk2C = 0;
-    ((EventMessage *) &this->unk1A8.unk2C)->Init();
-    this->unk1A8.unk30 = 0.0f;
-    ((EventMessage *) &this->unk1A8.unk30)->Init();
+    this->unk1A8.__vptr = &__vt;
+    this->unk1A8.unk3C.unk0 = 0;
+    this->unk1A8.unk3C.Init();
+    this->unk1A8.unk40.unk0 = 0;
+    this->unk1A8.unk40.Init();
     return this;
 }
 #endif

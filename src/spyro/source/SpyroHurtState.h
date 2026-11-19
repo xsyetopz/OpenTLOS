@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROHURTSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroAnimTables.h"
 #include "spyro/source/SpyroState.h"
 
@@ -57,7 +58,8 @@ public:
     static SpyroHurtState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
-    /* 0x014 */ u8 pad14[0x14];
+    /* 0x014 */ KDStateMachine<SpyroHurtState> unk14;
+    /* 0x015 */ u8 pad15[0x13];
     /* 0x028 */ SpyroStartCycleAnimTable unk28;
     /* 0x030 */ SpyroStartCycleAnimTable unk30;
     /* 0x038 */ void** unk38;
@@ -91,10 +93,8 @@ public:
 extern f32 * Hurt_pKnockToSafePosTime;
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk14'
 inline void SpyroHurtState::GetStateInfo() {
     this->unk14.GetStateName(-1);
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYROHURTSTATE_H

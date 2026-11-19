@@ -49,7 +49,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     GrubbleCritterDescriptor(void);
-    /* 0x06d */ u8 pad6D[0x7];
+    /* 0x070 */ u8 pad70[0x4];
     /* 0x074 */ s32 unk74;
     /* 0x078 */ s32 unk78;
     /* 0x07c */ s32 unk7C;

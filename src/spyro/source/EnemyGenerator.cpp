@@ -458,7 +458,7 @@ void EnemyGenerator::StartEnemyWave() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpawnPointObject **' to
+#if 0 // DRAFT: illegal implicit conversion from 'double' to
 void EnemyGenerator::UpdateUsedSpawnPointMask() {
     EnemyGeneratorDoor sp8;
     s32 temp_r30_1066;

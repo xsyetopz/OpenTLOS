@@ -233,7 +233,7 @@ void EarthShockwave::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void EarthShockwave::Update() {
     Matrix spC0;
     M2C_UNK spBC;

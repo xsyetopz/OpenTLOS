@@ -382,7 +382,6 @@ void GuardianCage::StateDyingExit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GuardianCage::StateDyingUpdate() {
     Matrix spD0;
     M2C_UNK spCC;
@@ -467,7 +466,6 @@ void GuardianCage::StateDyingUpdate() {
     spD0.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, spD0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 void GuardianCage::StateDyingEnter() {
@@ -678,14 +676,11 @@ void GuardianCage::GetBeamPosition(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Deinit() {
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->Exit(this);
     GameProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Message(MKMessage *arg0) {
     s32 temp_r3_920;
 
@@ -702,17 +697,14 @@ void GuardianCage::Message(MKMessage *arg0) {
     }
     GameProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Draw() {
     if (((KDStateMachine<GuardianCage> *) &this->unk14C)->GetState() != 3) {
         GameProp::Draw();
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void GuardianCage::Update() {
     Matrix sp20;
     MKVector3 sp10;
@@ -780,7 +772,6 @@ s32 GuardianCage::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GuardianCage::Reset() {
     Matrix sp10;
     M2C_UNK spC;
@@ -795,7 +786,6 @@ void GuardianCage::Reset() {
     MKModel_SetWorldMatrix(this->unk4, sp10);
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 1, 0U);
 }
-#endif
 
 void GuardianCage::Init() {
     GameProp::Init();

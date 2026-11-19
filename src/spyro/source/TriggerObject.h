@@ -8,7 +8,6 @@
 class BoundingRegion;
 class MKIniLine;
 class MKMessage;
-class MKSceneManager;
 class MKVector3;
 class Matrix;
 class TriggerBoxObject;
@@ -60,20 +59,6 @@ public:
     virtual s32 LoadLine(char *, MKIniLine *);
     virtual void LoadDone(const MKVector3 &, const Matrix &);
     static u8 tempBoxRot[0x10];
-    /* 0x004 */ u8 pad4[0x8];
-    /* 0x00c */ u8 unkC;
-    /* 0x00d */ u8 padD[0x3];
-    /* 0x010 */ Matrix unk10;
-    /* 0x050 */ s32 unk50;
-    /* 0x054 */ MKSceneManager* unk54;
-    /* 0x058 */ u8 pad58[0x8];
-    /* 0x060 */ f32 unk60;
-    /* 0x064 */ f32 unk64;
-    /* 0x068 */ f32 unk68;
-    /* 0x06c */ u8 pad6C[0x4];
-    /* 0x070 */ f32 unk70;
-    /* 0x074 */ f32 unk74;
-    /* 0x078 */ f32 unk78;
     /* 0x07c */ u8 pad7C[0x4];
     /* 0x080 */ f32 unk80;
     /* 0x084 */ f32 unk84;
@@ -104,10 +89,7 @@ public:
     virtual s32 CheckPos(const MKVector3 &);
     virtual s32 CheckTarget(void);
     s32 AddPlane(TriggerPlaneObject *);
-    /* 0x004 */ u8 pad4[0x4c];
-    /* 0x050 */ s32 unk50;
-    /* 0x054 */ MKSceneManager* unk54;
-    /* 0x058 */ u8 pad58[0x28];
+    /* 0x07c */ u8 pad7C[0x4];
     /* 0x080 */ TriggerPlaneObject*** unk80;
     /* 0x084 */ u8 unk84;
 };
@@ -115,13 +97,6 @@ public:
 class TriggerPlaneObject : public TriggerBoxObject {  // base: ctor/dtor vtable stores
 public:
     virtual void LoadDone(void);
-    /* 0x004 */ u8 pad4[0x2c];
-    /* 0x030 */ f32 unk30;
-    /* 0x034 */ f32 unk34;
-    /* 0x038 */ f32 unk38;
-    /* 0x03c */ u8 pad3C[0x18];
-    /* 0x054 */ MKSceneManager* unk54;
-    /* 0x058 */ u8 pad58[0x68];
     /* 0x0c0 */ u8 unkC0;
     /* 0x0c1 */ u8 padC1[0x3];
     /* 0x0c4 */ s32 unkC4;
@@ -135,9 +110,7 @@ public:
     virtual s32 CheckPos(const MKVector3 &);
     virtual s32 CheckTarget(void);
     virtual s32 LoadLine(char *, MKIniLine *);
-    /* 0x004 */ u8 pad4[0x50];
-    /* 0x054 */ MKSceneManager* unk54;
-    /* 0x058 */ u8 pad58[0x28];
+    /* 0x07c */ u8 pad7C[0x4];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ MKVector3* unk84;
     /* 0x088 */ BoundingRegion unk88;
@@ -153,18 +126,7 @@ public:
     virtual s32 LoadLine(char *, MKIniLine *);
     virtual f32 GetRadiusSquared(void);
     virtual void SetRadius(float);
-    /* 0x004 */ u8 pad4[0x3c];
-    /* 0x040 */ f64 unk40;
-    /* 0x048 */ f64 unk48;
-    /* 0x050 */ s32 unk50;
-    /* 0x054 */ MKSceneManager* unk54;
-    /* 0x058 */ u8 pad58[0x8];
-    /* 0x060 */ f32 unk60;
-    /* 0x064 */ f32 unk64;
-    /* 0x068 */ f32 unk68;
-    /* 0x06c */ u8 pad6C[0x4];
-    /* 0x070 */ f64 unk70;
-    /* 0x078 */ f64 unk78;
+    /* 0x07c */ u8 pad7C[0x4];
     /* 0x080 */ f32 unk80;
 };
 
@@ -172,7 +134,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
+#if 0 // DRAFT: undefined identifier 'MKSceneManager'
 inline s32 TriggerBoxObject::CheckTarget() {
     f64 sp10;
     f64 sp8;
@@ -245,12 +207,10 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 inline void TriggerBoxObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
     ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
@@ -262,11 +222,9 @@ inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 inline void TriggerObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
 }
-#endif
 
 inline void TriggerObject::LoadDone() {
 
@@ -305,7 +263,7 @@ inline s32 TriggerSphereObject::CheckPos(const MKVector3 &arg0) {
     return (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
+#if 0 // DRAFT: undefined identifier 'MKSceneManager'
 inline s32 TriggerSphereObject::CheckTarget() {
     f64 sp10;
     f64 sp8;

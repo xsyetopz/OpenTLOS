@@ -142,7 +142,6 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ConvexityVortex::Draw() {
     Matrix sp30;
     f64 sp28;
@@ -185,7 +184,6 @@ loop_5:
         }
     }
 }
-#endif
 
 void ConvexityVortex::Message(MKMessage *arg0) {
     MKVector3 **var_r31_349;
@@ -394,7 +392,7 @@ loop_39:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ConvexityVortex::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);

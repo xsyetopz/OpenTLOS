@@ -14,13 +14,12 @@ class Enemies_Earth_cpp;
 class Enemy;
 class EnemyDescriptor;
 
-class EarthTier1 : public Enemy {  // base: vtable prefix
+class EarthTier1 : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthTier1(void);
     virtual void Init(void);
     virtual void Update(void);
     EarthTier1(void);
-    /* 0xb0c */ u8 padB0C[0x4];
     /* 0xb10 */ f32 unkB10;
 };
 
@@ -31,7 +30,7 @@ public:
     EarthTier1Descriptor(void);
 };
 
-class EarthTier2 : public Enemy {  // base: vtable prefix
+class EarthTier2 : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthTier2(void);
     virtual void Init(void);
@@ -39,7 +38,7 @@ public:
     EarthTier2(void);
 };
 
-class EarthTier3 : public Enemy {  // base: vtable prefix
+class EarthTier3 : public Enemy {  // base: base ctor call
 public:
     virtual ~EarthTier3(void);
     virtual void Init(void);
@@ -62,18 +61,16 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier1::EarthTier1() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier1::~EarthTier1() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
@@ -83,29 +80,29 @@ inline EarthTier1Descriptor::EarthTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier2::EarthTier2() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier2::~EarthTier2() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier3::EarthTier3() {
-    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unk6B8 = &__vt + 0x84;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk6B8'
 inline EarthTier3::~EarthTier3() {
-    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    this->unk6B8 = &__vt.unk84;
 }
 #endif
 

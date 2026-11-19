@@ -81,7 +81,7 @@ void Volume::GetRandPos() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: illegal use of non-static member
 void Volume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;

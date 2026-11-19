@@ -258,12 +258,10 @@ void *MagicDrain::CreateInstance() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MagicDrainDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pMagicDrainDescriptor = (MKPropDescriptor *) this;
 }
-#endif
 
 void MagicDrainDescriptor::Deinit() {
     pMagicDrainDescriptor = NULL;

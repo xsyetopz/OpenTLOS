@@ -8,7 +8,7 @@ class MKPropDescriptor;
 template <class T0, class T1>
 class ExPropCreatorHelper {
 public:
-    void Create(MKPropDescriptor *);
+    T0 * Create(MKPropDescriptor *);
 };
 
 #endif  // SPYRO_SOURCE_EXPROPCREATORHELPER_H
