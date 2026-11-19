@@ -118,15 +118,13 @@ void SpikeTrap::Init() {
     PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void SpikeTrapDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("inactive");
+    M2C_FIELD(this, s32 *, 0xE4) = (s32) (((MKAnimScript *) this->unk34)->GetAnim("inactive"));
     this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("activating"));
     this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("activated"));
     this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("deactivating"));
 }
-#endif
 
 s32 SpikeTrapDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);

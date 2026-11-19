@@ -162,15 +162,14 @@ loop_20:
     M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) - (f32) M2C_FIELD(this, f64 *, 0x98));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 s32 SplineProp::LoadDone() {
-    KDUniformSpline sp10;
+    typedef MKVector3 (KDUniformSpline::*MeasureFn)(float, Matrix *, float *) const;
+    MKVector3 sp10;
     f32 sp8;
 
     sp8 = 0.0f;
-    sp10.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-    M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40) = M2C_BITWISE(f64, sp10);
-    M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48) = (f64) sp10.unk8;
+    sp10 = (((KDUniformSpline *) &this->unkB0->unk30)->*(MeasureFn) &KDUniformSpline::GetMeasure)(0.0f, (Matrix *) KDSpline_PositionMixer, &sp8);
+    M2C_FIELD(&MKProp::loadInfo, MKVector3 *, 0x40) = sp10;
     MKProp::LoadDone();
     this->unk8 = &this->unk50;
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
@@ -179,7 +178,6 @@ s32 SplineProp::LoadDone() {
     this->unkC = (BoundingVolume *) &this->unk90;
     this->unkB0->LoadDone();
 }
-#endif
 
 s32 SplineProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {

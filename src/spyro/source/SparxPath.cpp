@@ -50,28 +50,27 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal operand
 void SparxPath::Message(MKMessage *arg0) {
     Sparx *temp_r3_77;
+    void *spyro;
     s32 temp_r0_58;
 
     temp_r0_58 = arg0->unk0;
     switch (temp_r0_58) {                           /* irregular */
     case 0xB5:
-        gb.GetSpyro();
-        ((Sparx *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70)))->SetPath(this);
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        ((Sparx *) (M2C_FIELD(spyro, Sparx **, 0xB70)))->SetPath(this);
         break;
     case 0xB4:
-        gb.GetSpyro();
-        temp_r3_77 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70);
-        if ((u32) temp_r3_77->unk1F4 == this) {
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        temp_r3_77 = (Sparx *) M2C_FIELD(spyro, Sparx **, 0xB70);
+        if ((u32) temp_r3_77->unk1F4 == (u32) this) {
             temp_r3_77->SetPath(NULL);
         }
         break;
     }
     MKProp::Message(arg0);
 }
-#endif
 
 f32 SparxPath::Resolve() {
     MKProp::Resolve();
