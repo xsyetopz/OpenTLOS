@@ -1952,14 +1952,14 @@ void LiquidFXDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'LiquidFXDescriptor *' to
 void LiquidFXDescriptor::Deinit() {
     LiquidFXDescriptor *temp_r3_4028;
     LiquidFXDescriptor *temp_r3_4034;
 
     KDPropExDescriptor::Deinit();
-    if ((s8 *) LiquidFXDescriptor::pFirstDesc.unk0 == this) {
-        LiquidFXDescriptor::pFirstDesc.unk0 = (s8 *) this->unkF0;
+    if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc == this) {
+        *LiquidFXDescriptor::pFirstDesc = this->unkF0;
     }
     temp_r3_4028 = this->unkEC;
     if (temp_r3_4028 != NULL) {
@@ -1975,15 +1975,15 @@ void LiquidFXDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void LiquidFXDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkF0 = (LiquidFXDescriptor *) LiquidFXDescriptor::pFirstDesc.unk0;
+    this->unkF0 = *LiquidFXDescriptor::pFirstDesc;
     this->unkEC = NULL;
-    if ((s8 *) LiquidFXDescriptor::pFirstDesc.unk0 != NULL) {
-        M2C_FIELD(LiquidFXDescriptor::pFirstDesc.unk0, LiquidFXDescriptor **, 0xEC) = this;
+    if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc != NULL) {
+        (*LiquidFXDescriptor::pFirstDesc)->unkEC = this;
     }
-    LiquidFXDescriptor::pFirstDesc.unk0 = (s8 *) this;
+    *LiquidFXDescriptor::pFirstDesc = this;
     this->unkE8 = gMK->GetWorkingChunk();
 }
 #endif

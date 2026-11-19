@@ -95,7 +95,7 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk18'
 void SteamFireBall::Collided(MKCollisionResult &arg0) {
     s32 sp8;
     f32 temp_f1_170;
@@ -108,7 +108,7 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
     ((Explosion4 *) (M2C_FIELD(temp_r3_148, Explosion4 **, 0xF0)))->Trigger(*((MKVector3 *) &arg0), 0.3f, 1U, this->unk130, 5, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk150.Show(0U);
     var_r5_167 = 3;
-    temp_f1_170 = GameData::gameData.unkA0 / GameData::gameData.unkA4;
+    temp_f1_170 = M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4);
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f1_170 == 0.9f) {
         var_r5_167 = 0;

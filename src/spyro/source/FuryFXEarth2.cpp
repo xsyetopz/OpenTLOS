@@ -590,9 +590,9 @@ loop_4:
         }
     }
     this->unkE4 = 0.0f;
-    temp_r3_1107 = GameData::gameData.unk158 << 5;
-    temp_r0_1109 = *(&GameData::gameData.unk70 + (temp_r3_1107 + 0x7C));
-    temp_r4_1111 = &GameData::gameData.unk70 + (temp_r3_1107 + 0x64);
+    temp_r3_1107 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_1109 = *(&GameData::gameData[0x70] + (temp_r3_1107 + 0x7C));
+    temp_r4_1111 = &GameData::gameData[0x70] + (temp_r3_1107 + 0x64);
     if (temp_r0_1109 == 3) {
         var_r3_1115 = 0;
         if (((s32) M2C_FIELD(temp_r4_1111, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1111, s32 *, 4) == 3)) {
@@ -602,7 +602,7 @@ loop_4:
     } else {
         var_r30_1125 = *(temp_r4_1111 + (temp_r0_1109 * 4));
     }
-    temp_r29_1132 = GameData::gameData.unk158;
+    temp_r29_1132 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unkE8.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), 15.0f * M2C_FIELD(&gb, f32 *, 0x37C), 3, var_r30_1125, temp_r29_1132, temp_r29_1132, 0, -1);
     M2C_FIELD(&gb, s8 *, 0x381) = 1;
     return 1;
@@ -1047,9 +1047,9 @@ loop_49:
                     M2C_FIELD(temp_r3_1862, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1862, f32 *, 0x24));
                 }
             }
-            temp_r3_1879 = GameData::gameData.unk158 << 5;
-            temp_r28_1881 = *(&GameData::gameData.unk70 + (temp_r3_1879 + 0x7C));
-            temp_r4_1883 = &GameData::gameData.unk70 + (temp_r3_1879 + 0x64);
+            temp_r3_1879 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+            temp_r28_1881 = *(&GameData::gameData[0x70] + (temp_r3_1879 + 0x7C));
+            temp_r4_1883 = &GameData::gameData[0x70] + (temp_r3_1879 + 0x64);
             if (temp_r28_1881 == 3) {
                 var_r3_1887 = 0;
                 if (((s32) M2C_FIELD(temp_r4_1883, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1883, s32 *, 4) == 3)) {
@@ -1059,7 +1059,7 @@ loop_49:
             } else {
                 var_r30_1897 = *(temp_r4_1883 + (temp_r28_1881 * 4));
             }
-            temp_r27_1904 = GameData::gameData.unk158;
+            temp_r27_1904 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
             this->unkE8.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), 15.0f * M2C_FIELD(&gb, f32 *, 0x37C), temp_r28_1881, var_r30_1897, temp_r27_1904, temp_r27_1904, 0, -1);
             temp_f2_1925 = this->unkA0;
             M2C_FIELD(this, f64 *, 0xF8) = temp_f2_1925;

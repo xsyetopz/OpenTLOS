@@ -534,7 +534,7 @@ void Credits_Init(MKProp *arg0) {
         ((MKIni *) (pCredits + 0x50))->Init("credits-pal.ini", 0, platformCode);
     }
     M2C_FIELD(pCredits, MKProp **, 0xA4) = arg0;
-    if ((MKHeap *) MKHeap::tempMemOverride.unk0 > 0) {
+    if ((s32) *MKHeap::tempMemOverride > 0) {
         pCredits->DeactivateTempMemOverride();
     }
     DialogBox_bAllowOverCutscene = 1;

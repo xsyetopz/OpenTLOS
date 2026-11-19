@@ -252,7 +252,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
             var_r4_389 = M2C_FIELD(arg0, void **, 0) + 0x10;
         }
         arg_sp318 = M2C_FIELD(var_r4_389, f32 *, 0);
-        temp_r30_401 = ((u8) GameData::gameData.unk168 >> 3U) & 1;
+        temp_r30_401 = ((u8) GameData::gameData[0x168] >> 3U) & 1;
         arg_sp31C = M2C_FIELD(var_r4_389, f32 *, 4);
         temp_r26_403 = M2C_FIELD(arg0, void **, 0);
         if ((M2C_FIELD(temp_r26_403, s32 *, 0) & 0x10) && ((void *) M2C_FIELD(arg0, void **, 0x24) != NULL) && ((u8) M2C_FIELD(arg0, u8 *, 0x35) == 0)) {
@@ -419,7 +419,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
         temp_r26_841 = M2C_FIELD(arg0, void **, 0);
         if (M2C_FIELD(temp_r26_841, s32 *, 0) & 1) {
             arg_sp124 = 0.0f;
-            arg_sp120 = 2.5f * GameData::gameData.unk74;
+            arg_sp120 = 2.5f * M2C_FIELD(GameData::gameData, f32 *, 0x74);
             arg_sp2D4 = arg_sp124;
             arg_sp2D0 = arg_sp120;
             arg_sp118 = M2C_FIELD(temp_r26_841, f32 *, 0x38) * 0.75f;
@@ -457,13 +457,13 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
             arg_sp590 = (f64) arg_sp430;
             arg_sp598 = (f64) arg_sp438;
             arg_sp8 = 0.0f;
-            Hud_DrawBarHorz(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp2C8), *((MKVector2 *) &arg_sp2C0), *((MKVector2 *) &arg_sp2B8), *((MKVector2 *) &arg_sp2C0), *((MKVector4 *) &arg_sp590), *((MKVector4 *) &arg_sp580), *((MKVector4 *) &arg_sp570), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0x94), GameData::gameData.unk70 / GameData::gameData.unk74, GameData::gameData.unk78 / GameData::gameData.unk74, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            Hud_DrawBarHorz(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp2C8), *((MKVector2 *) &arg_sp2C0), *((MKVector2 *) &arg_sp2B8), *((MKVector2 *) &arg_sp2C0), *((MKVector4 *) &arg_sp590), *((MKVector4 *) &arg_sp580), *((MKVector4 *) &arg_sp570), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0x94), M2C_FIELD(GameData::gameData, f32 *, 0x70) / M2C_FIELD(GameData::gameData, f32 *, 0x74), M2C_FIELD(GameData::gameData, f32 *, 0x78) / M2C_FIELD(GameData::gameData, f32 *, 0x74), M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         }
         if (temp_r30_401 != 0) {
             temp_r26_945 = M2C_FIELD(arg0, void **, 0);
             if (M2C_FIELD(temp_r26_945, s32 *, 0) & 2) {
                 arg_spFC = 0.0f;
-                arg_spF8 = 2.0f * GameData::gameData.unkA4;
+                arg_spF8 = 2.0f * M2C_FIELD(GameData::gameData, f32 *, 0xA4);
                 arg_sp2B4 = arg_spFC;
                 arg_sp2B0 = arg_spF8;
                 arg_spF0 = M2C_FIELD(temp_r26_945, f32 *, 0x48) * 0.75f;
@@ -501,13 +501,13 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 arg_sp560 = (f64) arg_sp400;
                 arg_sp568 = (f64) arg_sp408;
                 arg_sp8 = 0.0f;
-                Hud_DrawBarHorz(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp2A8), *((MKVector2 *) &arg_sp2A0), *((MKVector2 *) &arg_sp298), *((MKVector2 *) &arg_sp2A0), *((MKVector4 *) &arg_sp560), *((MKVector4 *) &arg_sp550), *((MKVector4 *) &arg_sp540), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0x9C), GameData::gameData.unkA0 / GameData::gameData.unkA4, GameData::gameData.unkA8 / GameData::gameData.unkA4, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                Hud_DrawBarHorz(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp2A8), *((MKVector2 *) &arg_sp2A0), *((MKVector2 *) &arg_sp298), *((MKVector2 *) &arg_sp2A0), *((MKVector4 *) &arg_sp560), *((MKVector4 *) &arg_sp550), *((MKVector4 *) &arg_sp540), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0x9C), M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4), M2C_FIELD(GameData::gameData, f32 *, 0xA8) / M2C_FIELD(GameData::gameData, f32 *, 0xA4), M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             }
         }
         temp_r26_1047 = M2C_FIELD(arg0, void **, 0);
         if (M2C_FIELD(temp_r26_1047, s32 *, 0) & 4) {
             arg_spD0 = 0.0f;
-            arg_spD4 = 0.2f * GameData::gameData.unk8C;
+            arg_spD4 = 0.2f * M2C_FIELD(GameData::gameData, f32 *, 0x8C);
             arg_sp290 = arg_spD0;
             arg_sp294 = arg_spD4;
             arg_spC8 = M2C_FIELD(temp_r26_1047, f32 *, 0x58) * 0.75f;
@@ -545,7 +545,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
             arg_sp530 = (f64) arg_sp3D0;
             arg_sp538 = (f64) arg_sp3D8;
             arg_sp8 = 0.0f;
-            Hud_DrawBarVert(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp288), *((MKVector2 *) &arg_sp280), *((MKVector2 *) &arg_sp278), *((MKVector2 *) &arg_sp280), *((MKVector4 *) &arg_sp530), *((MKVector4 *) &arg_sp520), *((MKVector4 *) &arg_sp510), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0xA0), GameData::gameData.unk88 / GameData::gameData.unk8C, GameData::gameData.unk90 / GameData::gameData.unk8C, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            Hud_DrawBarVert(*((MKVector2 *) &arg_sp318), *((MKVector2 *) &arg_sp288), *((MKVector2 *) &arg_sp280), *((MKVector2 *) &arg_sp278), *((MKVector2 *) &arg_sp280), *((MKVector4 *) &arg_sp530), *((MKVector4 *) &arg_sp520), *((MKVector4 *) &arg_sp510), 0.75f * M2C_FIELD(M2C_FIELD(arg0, void **, 0), f32 *, 0xA0), M2C_FIELD(GameData::gameData, f32 *, 0x88) / M2C_FIELD(GameData::gameData, f32 *, 0x8C), M2C_FIELD(GameData::gameData, f32 *, 0x90) / M2C_FIELD(GameData::gameData, f32 *, 0x8C), M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         }
         temp_r4_1149 = M2C_FIELD(arg0, void **, 0);
         if (!(M2C_FIELD(temp_r4_1149, s32 *, 0) & 0x10)) {
@@ -667,7 +667,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 arg_sp4D8 = (f64) arg_sp358;
                 arg_sp1A0 = arg_sp38;
                 arg_sp1A4 = arg_sp3C;
-                Hud_DrawIcon(GameData::gameData.unk15C, 8 & ~((temp_r0_1456 - temp_r0_1456) - !M2C_CARRY), *((MKVector2 *) &arg_sp268), *((MKVector2 *) &arg_sp1A0), *((MKVector4 *) &arg_sp4D0), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
+                Hud_DrawIcon(M2C_FIELD(GameData::gameData, s32 *, 0x15C), 8 & ~((temp_r0_1456 - temp_r0_1456) - !M2C_CARRY), *((MKVector2 *) &arg_sp268), *((MKVector2 *) &arg_sp1A0), *((MKVector4 *) &arg_sp4D0), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
             }
             arg_sp340 = 1.0f;
             arg_sp344 = 1.0f;
@@ -680,7 +680,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
         if (temp_r30_401 != 0) {
             temp_r3_1507 = M2C_FIELD(arg0, void **, 0);
             if (M2C_FIELD(temp_r3_1507, s32 *, 0) & 8) {
-                temp_f0_1515 = GameData::gameData.unkB8 / GameData::gameData.unkBC;
+                temp_f0_1515 = M2C_FIELD(GameData::gameData, f32 *, 0xB8) / M2C_FIELD(GameData::gameData, f32 *, 0xBC);
                 var_f1_1519 = 1.0f;
                 arg_sp30 = M2C_FIELD(temp_r3_1507, f32 *, 0x28) * 0.75f;
                 arg_sp34 = M2C_FIELD(temp_r3_1507, f32 *, 0x2C) * 0.75f;
@@ -1308,7 +1308,6 @@ void Hud_DrawBarHorz(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 SpyroHud_Update(void *arg0) {
     f32 temp_f1_2769;
     f32 temp_f2_2772;
@@ -1319,21 +1318,21 @@ s32 SpyroHud_Update(void *arg0) {
     f32 var_f0_2806;
     s32 var_r3_2829;
 
-    if ((*M2C_FIELD(arg0, s32 **, 0) & 1) && (GameData::gameData.unk78 != GameData::gameData.unk70)) {
+    if ((*M2C_FIELD(arg0, s32 **, 0) & 1) && (M2C_FIELD(GameData::gameData, f32 *, 0x78) != M2C_FIELD(GameData::gameData, f32 *, 0x70))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData.unk70))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
-    if ((*M2C_FIELD(arg0, s32 **, 0) & 2) && (GameData::gameData.unkA8 != GameData::gameData.unkA0)) {
+    if ((*M2C_FIELD(arg0, s32 **, 0) & 2) && (M2C_FIELD(GameData::gameData, f32 *, 0xA8) != M2C_FIELD(GameData::gameData, f32 *, 0xA0))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData.unkA0))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
-    if ((*M2C_FIELD(arg0, s32 **, 0) & 4) && (GameData::gameData.unk90 != GameData::gameData.unk88)) {
+    if ((*M2C_FIELD(arg0, s32 **, 0) & 4) && (M2C_FIELD(GameData::gameData, f32 *, 0x90) != M2C_FIELD(GameData::gameData, f32 *, 0x88))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData.unk88))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) ((Stat *) &GameData::gameData[0x88]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
-    if ((*M2C_FIELD(arg0, s32 **, 0) & 8) && (GameData::gameData.unkC0 != GameData::gameData.unkB8)) {
+    if ((*M2C_FIELD(arg0, s32 **, 0) & 8) && (M2C_FIELD(GameData::gameData, f32 *, 0xC0) != M2C_FIELD(GameData::gameData, f32 *, 0xB8))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData.unkB8))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
     if ((*M2C_FIELD(arg0, s32 **, 0) & 0x10) && (M2C_FIELD(arg0, f32 *, 0x2C) != M2C_FIELD(arg0, f32 *, 0x28))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
@@ -1386,7 +1385,6 @@ s32 SpyroHud_Update(void *arg0) {
     }
     return var_r3_2829;
 }
-#endif
 
 #if 0 // DRAFT: '(' expected
 void SpyroHud_cpp::__sinit() {

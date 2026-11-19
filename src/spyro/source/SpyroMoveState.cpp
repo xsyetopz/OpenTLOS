@@ -14,7 +14,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 static M2C_UNK lit_723;                                /* unable to generate initializer: unknown type */
-static SpyroMoveState states__14SpyroMoveState;     /* unable to generate initializer: confusing struct layout */
+SpyroMoveState states__14SpyroMoveState;            /* unable to generate initializer: confusing struct layout */
 
 s32 SpyroMoveState::RunTransition() {
     return 0;

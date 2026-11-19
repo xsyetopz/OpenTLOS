@@ -128,8 +128,6 @@ void Cheats_CheckCommandLineParameters() {
     M2C_FIELD(&gb, u8 *, 0x3B4) = (u8) (var_r4_207 != 0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void LotsOfLevelUps(void *arg0) {
-    ((Stat *) (&GameData::gameData.unk88))->SetValue(23000.0f, 0U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x88]))->SetValue(23000.0f, 0U);
 }
-#endif

@@ -982,9 +982,6 @@ void GunPowderFuse::Update() {
     s32 var_r28_1962;
     s32 var_r30_1960;
     s32 var_r30_2246;
-    s8 *var_r27_1857;
-    s8 *var_r4_1844;
-    s8 *var_r4_1941;
     void *temp_r28_2248;
     void *temp_r31_1874;
     void *temp_r31_1965;
@@ -1000,14 +997,17 @@ void GunPowderFuse::Update() {
     void *temp_r4_2140;
     void *temp_r4_2227;
     void *var_r26_1868;
+    void *var_r27_1857;
     void *var_r28_1747;
+    void *var_r4_1844;
+    void *var_r4_1941;
 
     MKProp::Update();
     if (IsBurntOut() == 0) {
         temp_r3_1665 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x3C)(gb.unk0);
         if (temp_r3_1665 != NULL) {
             gb.GetSpyro();
-            if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) GameData::gameData.unk158 == 0) && ((s32) *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x7C)) == 0)) {
+            if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) == 0)) {
                 temp_r3_1692 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
                 sp170 = M2C_FIELD(temp_r3_1692, f64 *, 0x30);
                 sp178 = M2C_FIELD(temp_r3_1692, f64 *, 0x38);
@@ -1063,10 +1063,10 @@ loop_15:
                 goto loop_15;
             }
         }
-        var_r4_1844 = LiquidFXDescriptor::pFirstDesc.unk0;
+        var_r4_1844 = *LiquidFXDescriptor::pFirstDesc;
 loop_18:
         if ((var_r4_1844 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_1844, void **, 0xE8), s32 *, 0x138) & 2)) {
-            var_r4_1844 = M2C_FIELD(var_r4_1844, s8 **, 0xF0);
+            var_r4_1844 = M2C_FIELD(var_r4_1844, void **, 0xF0);
             goto loop_18;
         }
         var_r27_1857 = var_r4_1844;
@@ -1104,10 +1104,10 @@ loop_30:
                     goto loop_30;
                 }
             }
-            var_r4_1941 = M2C_FIELD(var_r27_1857, s8 **, 0xF0);
+            var_r4_1941 = M2C_FIELD(var_r27_1857, void **, 0xF0);
 loop_33:
             if ((var_r4_1941 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_1941, void **, 0xE8), s32 *, 0x138) & 2)) {
-                var_r4_1941 = M2C_FIELD(var_r4_1941, s8 **, 0xF0);
+                var_r4_1941 = M2C_FIELD(var_r4_1941, void **, 0xF0);
                 goto loop_33;
             }
             var_r27_1857 = var_r4_1941;

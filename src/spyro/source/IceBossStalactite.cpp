@@ -754,7 +754,7 @@ void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 
     this->unk218 = 0.0f;
     if (((u8) M2C_FIELD(this, u8 *, 0x246) >> 7U) & 1) {
         var_r5_1364 = 3;
-        temp_f1_1367 = GameData::gameData.unkA0 / GameData::gameData.unkA4;
+        temp_f1_1367 = M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4);
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (temp_f1_1367 == 0.9f) {
             var_r5_1364 = 0;

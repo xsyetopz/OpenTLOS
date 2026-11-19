@@ -15,7 +15,7 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 #if 0 // DRAFT: illegal operand
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
-static SpyroStrafeState states__16SpyroStrafeState[2]; /* unable to generate initializer: confusing struct layout */
+SpyroStrafeState states__16SpyroStrafeState;        /* unable to generate initializer: confusing struct layout */
 
 void SpyroStrafeState::InputOverride::Set(KDInput *arg1) {
     f32 var_f1_46;
@@ -966,7 +966,7 @@ void SpyroStrafeState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroStrafeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroStrafeState>FPQ234KDStateMachine<16SpyroStrafeState>5StateP34KDStateMachine<16SpyroStrafeState>(&this->unk14, (KDStateMachine<SpyroStrafeState>::State *) SpyroStrafeState::states, NULL);
+    Init__34KDStateMachine<16SpyroStrafeState>FPQ234KDStateMachine<16SpyroStrafeState>5StateP34KDStateMachine<16SpyroStrafeState>(&this->unk14, (KDStateMachine<SpyroStrafeState>::State *) &SpyroStrafeState::states, NULL);
     M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x30) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk38 = 0;

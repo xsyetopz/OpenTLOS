@@ -35,7 +35,7 @@
 #include <m2c_macros.h>
 
 f64 atan2(f32);                                     /* extern */
-UIObject *malloc(void *);                           /* extern */
+UIObject *malloc(s32);                              /* extern */
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern s32 GS_MenuCancel;
 extern s32 GS_MenuMoveThru;
@@ -45,13 +45,11 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 gpTranslation_StringArray;
 #if 0 // DRAFT: identifier 'buttonLabel' redeclared
-static PromptText descriptor__10PromptText;         /* type too large by 0x6C; unable to generate initializer: not enough data */
-static PromptGroup descriptor__11PromptGroup;       /* type too large by 0x5C; unable to generate initializer: not enough data */
-static ScriptButton descriptor__12ScriptButton;     /* type too large by 0x94; unable to generate initializer: not enough data */
-static OptionButton descriptor__12OptionButton;     /* type too large by 0x9C; unable to generate initializer: not enough data */
-static ProgressBar descriptor__11ProgressBar;       /* type too large by 0xC4; unable to generate initializer: not enough data */
-static ScriptProgressBar descriptor__17ScriptProgressBar; /* type too large by 0xD4; unable to generate initializer: not enough data */
-static DSText descriptor__6DSText;                  /* type too large by 0x6C; unable to generate initializer: not enough data */
+u8 descriptor__10PromptText[0x14];                  /* unable to generate initializer: cannot parse lit_stringBase0 as integer */
+u8 descriptor__11PromptGroup[0x14];                 /* unable to generate initializer: cannot parse .L_8035BE63 as integer */
+u8 descriptor__12OptionButton[0x14];                /* unable to generate initializer: cannot parse .L_8035BE88 as integer */
+u8 descriptor__17ScriptProgressBar[0x14];           /* unable to generate initializer: cannot parse .L_8035BEB4 as integer */
+u8 descriptor__6DSText[0x14];                       /* unable to generate initializer: cannot parse .L_8035BEC6 as integer */
 static M2C_UNK *buttonLabel[7] = {
     &.L_8035BF86,
     &.L_8035BF8B,
@@ -79,12 +77,6 @@ static M2C_UNK RADIAL_V_DISABLED_COLOR;             /* unable to generate initia
 static s32 lit_1179 = 1;
 #if 0 // DRAFT: declaration syntax error
 static MKHeap lit_stringBase0;                         /* type too large by 0x115; unable to generate initializer: not enough data; const */
-static M2C_UNK .L_8035BE63;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BE6F;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BE88;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BEA8;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BEB4;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BEC6;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BF86;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BF8B;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BF93;                         /* unable to generate initializer: unknown type; const */
@@ -259,23 +251,23 @@ void LanguageButtonGroup::LoadDone() {
     UIObject *temp_r3_396;
     UIObject *var_r26_329;
     UIObject *var_r26_378;
+    s32 temp_r26_320;
+    s32 temp_r26_369;
     s8 *temp_r0_406;
     s8 *temp_r3_418;
-    void *temp_r26_320;
-    void *temp_r26_369;
 
     if (GameLanguage_GetLast(&spC, 1U) != 0) {
         var_r3_312 = &lit_stringBase0;
         do {
-            temp_r26_320 = OptionButton::descriptor.unk8;
+            temp_r26_320 = M2C_FIELD(OptionButton::descriptor, s32 *, 8);
             temp_r3_321 = var_r3_312->Current();
             if (temp_r3_321 != NULL) {
-                var_r26_329 = ((MKHeap *) (temp_r3_321->Current()))->Alloc((s32) temp_r26_320, NULL, 0);
+                var_r26_329 = ((MKHeap *) (temp_r3_321->Current()))->Alloc(temp_r26_320, NULL, 0);
             } else {
                 var_r26_329 = malloc(temp_r26_320);
             }
-            ((M2C_UNK (*)(UIObject *)) OptionButton::descriptor.unkC)(var_r26_329);
-            var_r26_329->unk8 = &OptionButton::descriptor;
+            M2C_FIELD(OptionButton::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r26_329);
+            var_r26_329->unk8 = OptionButton::descriptor;
             var_r26_329->Init();
             temp_r3_347 = ui_cast<OptionButton *, UIObject *>(var_r26_329);
             temp_r3_347->unk18.unk40 = 0xB;
@@ -285,15 +277,15 @@ void LanguageButtonGroup::LoadDone() {
             GameLanguage_GetCode(spC);
             M2C_FIELD(temp_r3_347->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x4C)(temp_r3_347, Str_Printf(&lit_stringBase0 + 0x25C, M2C_ERROR(/* Read from unset register $r3 */)));
             Add(temp_r3_347);
-            temp_r26_369 = DSText::descriptor.unk8;
+            temp_r26_369 = M2C_FIELD(DSText::descriptor, s32 *, 8);
             temp_r3_370 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
             if (temp_r3_370 != NULL) {
-                var_r26_378 = ((MKHeap *) (temp_r3_370->Current()))->Alloc((s32) temp_r26_369, NULL, 0);
+                var_r26_378 = ((MKHeap *) (temp_r3_370->Current()))->Alloc(temp_r26_369, NULL, 0);
             } else {
                 var_r26_378 = malloc(temp_r26_369);
             }
-            ((M2C_UNK (*)(UIObject *)) DSText::descriptor.unkC)(var_r26_378);
-            var_r26_378->unk8 = &DSText::descriptor;
+            M2C_FIELD(DSText::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r26_378);
+            var_r26_378->unk8 = DSText::descriptor;
             var_r26_378->Init();
             temp_r3_396 = ui_cast<UIText *, UIObject *>(var_r26_378);
             temp_r3_396->unk18.unk40 = 0x32;
@@ -1275,7 +1267,7 @@ loop_17:
                 temp_ret_2688 = strnicmp(var_r28_2636 + 1, &lit_stringBase0 + 0x2A2, 0xE);
                 if (temp_ret_2688 == 0) {
                     var_r28_2636 += 0xE;
-                    var_r29_2623 = &var_r29_2623[sprintf(var_r29_2623, &lit_stringBase0 + 0x2B1, GameData::gameData.unk164, M2C_BITWISE(f32, temp_ret_2688))] - 1;
+                    var_r29_2623 = &var_r29_2623[sprintf(var_r29_2623, &lit_stringBase0 + 0x2B1, M2C_FIELD(GameData::gameData, s32 *, 0x164), M2C_BITWISE(f32, temp_ret_2688))] - 1;
                 } else {
                     *var_r29_2623 = (s8) (u8) M2C_FIELD(var_r28_2636, s8 *, 0);
                 }
@@ -1703,32 +1695,32 @@ void ThrobButton::Message(UIMessage *arg0) {
         switch (temp_r0_3670) {
         case 1:
             if ((u8) this->unk15 == 0) {
-                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E0);
-                this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E8);
+                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1E0);
+                this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1E8);
             } else if ((u8) this->unk16 != 0) {
-                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F0);
-                this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F8);
+                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1F0);
+                this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1F8);
             } else {
-                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x200);
-                this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x208);
+                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x200);
+                this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x208);
             }
             break;
         case 4:
             if ((u8) this->unk16 != 0) {
-                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F0);
-                this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F8);
+                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1F0);
+                this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1F8);
             } else {
-                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x200);
-                this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x208);
+                M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x200);
+                this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x208);
             }
             break;
         case 5:
-            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E0);
-            this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E8);
+            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1E0);
+            this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1E8);
             break;
         case 8:
-            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F0);
-            this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F8);
+            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1F0);
+            this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1F8);
             var_r31_3729 = this->unk60;
 loop_13:
             if (var_r31_3729 != NULL) {
@@ -1738,8 +1730,8 @@ loop_13:
             }
             break;
         case 9:
-            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x200);
-            this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x208);
+            M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x200);
+            this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x208);
             var_r31_3748 = this->unk60;
 loop_17:
             if (var_r31_3748 != NULL) {
@@ -1758,17 +1750,17 @@ loop_17:
 void ThrobButton::Update() {
     UIContainer::Update();
     if ((u8) this->unk15 == 0) {
-        M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E0);
-        this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E8);
+        M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1E0);
+        this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1E8);
         return;
     }
     if ((u8) this->unk16 != 0) {
-        M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F0);
-        this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F8);
+        M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x1F0);
+        this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x1F8);
         return;
     }
-    M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&PromptText::descriptor, f64 *, 0x200);
-    this->unk18.unk8 = M2C_FIELD(&PromptText::descriptor, f64 *, 0x208);
+    M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(PromptText::descriptor, f64 *, 0x200);
+    this->unk18.unk8 = M2C_FIELD(PromptText::descriptor, f64 *, 0x208);
 }
 #endif
 
@@ -1790,7 +1782,7 @@ loop_9:
     }
     var_r5_3833 = var_r3_3830->unk8;
 loop_2:
-    if (var_r5_3833 == &PromptGroup::descriptor) {
+    if (var_r5_3833 == PromptGroup::descriptor) {
         var_r0_3837 = 1;
     } else {
         var_r5_3833 = M2C_FIELD(var_r5_3833, void **, 4);
@@ -1933,9 +1925,8 @@ void PromptText::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 void UITools_RegisterAll() {
-    MCLoadCheckScreen *temp_r3_4438;
     MCLoadCheckScreen *temp_r4_4131;
     MCLoadCheckScreen *temp_r4_4147;
     MCLoadCheckScreen *temp_r4_4163;
@@ -1944,29 +1935,17 @@ void UITools_RegisterAll() {
     MCLoadCheckScreen *temp_r4_4211;
     MCLoadCheckScreen *temp_r4_4227;
     MCLoadCheckScreen *temp_r4_4243;
-    MCLoadCheckScreen *temp_r4_4246;
     MCLoadCheckScreen *temp_r4_4259;
-    MCLoadCheckScreen *temp_r4_4262;
     MCLoadCheckScreen *temp_r4_4275;
-    MCLoadCheckScreen *temp_r4_4278;
     MCLoadCheckScreen *temp_r4_4291;
-    MCLoadCheckScreen *temp_r4_4294;
     MCLoadCheckScreen *temp_r4_4307;
-    MCLoadCheckScreen *temp_r4_4310;
     MCLoadCheckScreen *temp_r4_4323;
-    MCLoadCheckScreen *temp_r4_4326;
     MCLoadCheckScreen *temp_r4_4339;
-    MCLoadCheckScreen *temp_r4_4342;
     MCLoadCheckScreen *temp_r4_4355;
-    MCLoadCheckScreen *temp_r4_4358;
     MCLoadCheckScreen *temp_r4_4371;
-    MCLoadCheckScreen *temp_r4_4374;
     MCLoadCheckScreen *temp_r4_4387;
-    MCLoadCheckScreen *temp_r4_4390;
     MCLoadCheckScreen *temp_r4_4403;
-    MCLoadCheckScreen *temp_r4_4406;
     MCLoadCheckScreen *temp_r4_4419;
-    MCLoadCheckScreen *temp_r4_4422;
     MCLoadCheckScreen *temp_r5_4435;
     UIObjectDescriptor *var_r4_4428;
     UIObjectDescriptor *var_r5_4122;
@@ -1988,14 +1967,33 @@ void UITools_RegisterAll() {
     UIObjectDescriptor *var_r5_4380;
     UIObjectDescriptor *var_r5_4396;
     UIObjectDescriptor *var_r5_4412;
+    u8 *temp_r3_4438;
+    u8 *temp_r4_4150;
+    u8 *temp_r4_4166;
+    u8 *temp_r4_4182;
+    u8 *temp_r4_4198;
+    u8 *temp_r4_4214;
+    u8 *temp_r4_4230;
+    u8 *temp_r4_4246;
+    u8 *temp_r4_4262;
+    u8 *temp_r4_4278;
+    u8 *temp_r4_4294;
+    u8 *temp_r4_4310;
+    u8 *temp_r4_4326;
+    u8 *temp_r4_4342;
+    u8 *temp_r4_4358;
+    u8 *temp_r4_4374;
+    u8 *temp_r4_4390;
+    u8 *temp_r4_4406;
+    u8 *temp_r4_4422;
 
     var_r5_4122 = &UIObjectDescriptor::list;
 loop_3:
     temp_r4_4131 = var_r5_4122->unk0;
     if (temp_r4_4131 == NULL) {
-        var_r5_4122->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor;
-        PromptText::descriptor.unk10 = NULL;
-    } else if (temp_r4_4131 != &PromptText::descriptor) {
+        var_r5_4122->unk0 = (MCLoadCheckScreen *) PromptText::descriptor;
+        M2C_FIELD(PromptText::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r4_4131 != PromptText::descriptor) {
         var_r5_4122 = (UIObjectDescriptor *) &temp_r4_4131->unk10;
         goto loop_3;
     }
@@ -2003,9 +2001,10 @@ loop_3:
 loop_8:
     temp_r4_4147 = var_r5_4140->unk0;
     if (temp_r4_4147 == NULL) {
-        var_r5_4140->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk14;
-        M2C_FIELD(&PromptText::descriptor, s32 *, 0x24) = 0;
-    } else if (temp_r4_4147 != &PromptText::descriptor.unk14) {
+        temp_r4_4150 = PromptText::descriptor + 0x14;
+        var_r5_4140->unk0 = (MCLoadCheckScreen *) temp_r4_4150;
+        M2C_FIELD(temp_r4_4150, s32 *, 0x10) = 0;
+    } else if (temp_r4_4147 != (u8 *) (PromptText::descriptor + 0x14)) {
         var_r5_4140 = (UIObjectDescriptor *) &temp_r4_4147->unk10;
         goto loop_8;
     }
@@ -2013,9 +2012,10 @@ loop_8:
 loop_13:
     temp_r4_4163 = var_r5_4156->unk0;
     if (temp_r4_4163 == NULL) {
-        var_r5_4156->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk18.unk10;
-        PromptText::descriptor.unk18.unk20.unk0 = 0.0f;
-    } else if (temp_r4_4163 != &PromptText::descriptor.unk18.unk10) {
+        temp_r4_4166 = PromptText::descriptor + 0x28;
+        var_r5_4156->unk0 = (MCLoadCheckScreen *) temp_r4_4166;
+        M2C_FIELD(temp_r4_4166, s32 *, 0x10) = 0;
+    } else if (temp_r4_4163 != (u8 *) (PromptText::descriptor + 0x28)) {
         var_r5_4156 = (UIObjectDescriptor *) &temp_r4_4163->unk10;
         goto loop_13;
     }
@@ -2023,9 +2023,10 @@ loop_13:
 loop_18:
     temp_r4_4179 = var_r5_4172->unk0;
     if (temp_r4_4179 == NULL) {
-        var_r5_4172->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk18.unk20.unk4;
-        PromptText::descriptor.unk18.unk34 = 0.0f;
-    } else if (temp_r4_4179 != &PromptText::descriptor.unk18.unk20.unk4) {
+        temp_r4_4182 = PromptText::descriptor + 0x3C;
+        var_r5_4172->unk0 = (MCLoadCheckScreen *) temp_r4_4182;
+        M2C_FIELD(temp_r4_4182, s32 *, 0x10) = 0;
+    } else if (temp_r4_4179 != (u8 *) (PromptText::descriptor + 0x3C)) {
         var_r5_4172 = (UIObjectDescriptor *) &temp_r4_4179->unk10;
         goto loop_18;
     }
@@ -2033,9 +2034,10 @@ loop_18:
 loop_23:
     temp_r4_4195 = var_r5_4188->unk0;
     if (temp_r4_4195 == NULL) {
-        var_r5_4188->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk18.unk38;
-        PromptText::descriptor.unk60 = 0;
-    } else if (temp_r4_4195 != &PromptText::descriptor.unk18.unk38) {
+        temp_r4_4198 = PromptText::descriptor + 0x50;
+        var_r5_4188->unk0 = (MCLoadCheckScreen *) temp_r4_4198;
+        M2C_FIELD(temp_r4_4198, s32 *, 0x10) = 0;
+    } else if (temp_r4_4195 != (u8 *) (PromptText::descriptor + 0x50)) {
         var_r5_4188 = (UIObjectDescriptor *) &temp_r4_4195->unk10;
         goto loop_23;
     }
@@ -2043,9 +2045,10 @@ loop_23:
 loop_28:
     temp_r4_4211 = var_r5_4204->unk0;
     if (temp_r4_4211 == NULL) {
-        var_r5_4204->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk64;
-        PromptText::descriptor.unk6C = 0;
-    } else if (temp_r4_4211 != &PromptText::descriptor.unk64) {
+        temp_r4_4214 = PromptText::descriptor + 0x64;
+        var_r5_4204->unk0 = (MCLoadCheckScreen *) temp_r4_4214;
+        M2C_FIELD(temp_r4_4214, s32 *, 0x10) = 0;
+    } else if (temp_r4_4211 != (u8 *) (PromptText::descriptor + 0x64)) {
         var_r5_4204 = (UIObjectDescriptor *) &temp_r4_4211->unk10;
         goto loop_28;
     }
@@ -2053,9 +2056,10 @@ loop_28:
 loop_33:
     temp_r4_4227 = var_r5_4220->unk0;
     if (temp_r4_4227 == NULL) {
-        var_r5_4220->unk0 = (MCLoadCheckScreen *) &PromptText::descriptor.unk70;
-        M2C_FIELD(&PromptText::descriptor, s32 *, 0x88) = 0;
-    } else if (temp_r4_4227 != &PromptText::descriptor.unk70) {
+        temp_r4_4230 = PromptText::descriptor + 0x78;
+        var_r5_4220->unk0 = (MCLoadCheckScreen *) temp_r4_4230;
+        M2C_FIELD(temp_r4_4230, s32 *, 0x10) = 0;
+    } else if (temp_r4_4227 != (u8 *) (PromptText::descriptor + 0x78)) {
         var_r5_4220 = (UIObjectDescriptor *) &temp_r4_4227->unk10;
         goto loop_33;
     }
@@ -2063,10 +2067,10 @@ loop_33:
 loop_38:
     temp_r4_4243 = var_r5_4236->unk0;
     if (temp_r4_4243 == NULL) {
-        temp_r4_4246 = &PromptText::descriptor + 0x8C;
-        var_r5_4236->unk0 = temp_r4_4246;
-        temp_r4_4246->unk10 = NULL;
-    } else if (temp_r4_4243 != (void *) (&PromptText::descriptor + 0x8C)) {
+        temp_r4_4246 = PromptText::descriptor + 0x8C;
+        var_r5_4236->unk0 = (MCLoadCheckScreen *) temp_r4_4246;
+        M2C_FIELD(temp_r4_4246, s32 *, 0x10) = 0;
+    } else if (temp_r4_4243 != (u8 *) (PromptText::descriptor + 0x8C)) {
         var_r5_4236 = (UIObjectDescriptor *) &temp_r4_4243->unk10;
         goto loop_38;
     }
@@ -2074,10 +2078,10 @@ loop_38:
 loop_43:
     temp_r4_4259 = var_r5_4252->unk0;
     if (temp_r4_4259 == NULL) {
-        temp_r4_4262 = &PromptText::descriptor + 0xA0;
-        var_r5_4252->unk0 = temp_r4_4262;
-        temp_r4_4262->unk10 = NULL;
-    } else if (temp_r4_4259 != (void *) (&PromptText::descriptor + 0xA0)) {
+        temp_r4_4262 = PromptText::descriptor + 0xA0;
+        var_r5_4252->unk0 = (MCLoadCheckScreen *) temp_r4_4262;
+        M2C_FIELD(temp_r4_4262, s32 *, 0x10) = 0;
+    } else if (temp_r4_4259 != (u8 *) (PromptText::descriptor + 0xA0)) {
         var_r5_4252 = (UIObjectDescriptor *) &temp_r4_4259->unk10;
         goto loop_43;
     }
@@ -2085,10 +2089,10 @@ loop_43:
 loop_48:
     temp_r4_4275 = var_r5_4268->unk0;
     if (temp_r4_4275 == NULL) {
-        temp_r4_4278 = &PromptText::descriptor + 0xB4;
-        var_r5_4268->unk0 = temp_r4_4278;
-        temp_r4_4278->unk10 = NULL;
-    } else if (temp_r4_4275 != (void *) (&PromptText::descriptor + 0xB4)) {
+        temp_r4_4278 = PromptText::descriptor + 0xB4;
+        var_r5_4268->unk0 = (MCLoadCheckScreen *) temp_r4_4278;
+        M2C_FIELD(temp_r4_4278, s32 *, 0x10) = 0;
+    } else if (temp_r4_4275 != (u8 *) (PromptText::descriptor + 0xB4)) {
         var_r5_4268 = (UIObjectDescriptor *) &temp_r4_4275->unk10;
         goto loop_48;
     }
@@ -2096,10 +2100,10 @@ loop_48:
 loop_53:
     temp_r4_4291 = var_r5_4284->unk0;
     if (temp_r4_4291 == NULL) {
-        temp_r4_4294 = &PromptText::descriptor + 0xC8;
-        var_r5_4284->unk0 = temp_r4_4294;
-        temp_r4_4294->unk10 = NULL;
-    } else if (temp_r4_4291 != (void *) (&PromptText::descriptor + 0xC8)) {
+        temp_r4_4294 = PromptText::descriptor + 0xC8;
+        var_r5_4284->unk0 = (MCLoadCheckScreen *) temp_r4_4294;
+        M2C_FIELD(temp_r4_4294, s32 *, 0x10) = 0;
+    } else if (temp_r4_4291 != (u8 *) (PromptText::descriptor + 0xC8)) {
         var_r5_4284 = (UIObjectDescriptor *) &temp_r4_4291->unk10;
         goto loop_53;
     }
@@ -2107,10 +2111,10 @@ loop_53:
 loop_58:
     temp_r4_4307 = var_r5_4300->unk0;
     if (temp_r4_4307 == NULL) {
-        temp_r4_4310 = &PromptText::descriptor + 0xDC;
-        var_r5_4300->unk0 = temp_r4_4310;
-        temp_r4_4310->unk10 = NULL;
-    } else if (temp_r4_4307 != (void *) (&PromptText::descriptor + 0xDC)) {
+        temp_r4_4310 = PromptText::descriptor + 0xDC;
+        var_r5_4300->unk0 = (MCLoadCheckScreen *) temp_r4_4310;
+        M2C_FIELD(temp_r4_4310, s32 *, 0x10) = 0;
+    } else if (temp_r4_4307 != (u8 *) (PromptText::descriptor + 0xDC)) {
         var_r5_4300 = (UIObjectDescriptor *) &temp_r4_4307->unk10;
         goto loop_58;
     }
@@ -2118,10 +2122,10 @@ loop_58:
 loop_63:
     temp_r4_4323 = var_r5_4316->unk0;
     if (temp_r4_4323 == NULL) {
-        temp_r4_4326 = &PromptText::descriptor + 0x104;
-        var_r5_4316->unk0 = temp_r4_4326;
-        temp_r4_4326->unk10 = NULL;
-    } else if (temp_r4_4323 != (void *) (&PromptText::descriptor + 0x104)) {
+        temp_r4_4326 = PromptText::descriptor + 0x104;
+        var_r5_4316->unk0 = (MCLoadCheckScreen *) temp_r4_4326;
+        M2C_FIELD(temp_r4_4326, s32 *, 0x10) = 0;
+    } else if (temp_r4_4323 != (u8 *) (PromptText::descriptor + 0x104)) {
         var_r5_4316 = (UIObjectDescriptor *) &temp_r4_4323->unk10;
         goto loop_63;
     }
@@ -2129,10 +2133,10 @@ loop_63:
 loop_68:
     temp_r4_4339 = var_r5_4332->unk0;
     if (temp_r4_4339 == NULL) {
-        temp_r4_4342 = &PromptText::descriptor + 0x118;
-        var_r5_4332->unk0 = temp_r4_4342;
-        temp_r4_4342->unk10 = NULL;
-    } else if (temp_r4_4339 != (void *) (&PromptText::descriptor + 0x118)) {
+        temp_r4_4342 = PromptText::descriptor + 0x118;
+        var_r5_4332->unk0 = (MCLoadCheckScreen *) temp_r4_4342;
+        M2C_FIELD(temp_r4_4342, s32 *, 0x10) = 0;
+    } else if (temp_r4_4339 != (u8 *) (PromptText::descriptor + 0x118)) {
         var_r5_4332 = (UIObjectDescriptor *) &temp_r4_4339->unk10;
         goto loop_68;
     }
@@ -2140,10 +2144,10 @@ loop_68:
 loop_73:
     temp_r4_4355 = var_r5_4348->unk0;
     if (temp_r4_4355 == NULL) {
-        temp_r4_4358 = &PromptText::descriptor + 0x12C;
-        var_r5_4348->unk0 = temp_r4_4358;
-        temp_r4_4358->unk10 = NULL;
-    } else if (temp_r4_4355 != (void *) (&PromptText::descriptor + 0x12C)) {
+        temp_r4_4358 = PromptText::descriptor + 0x12C;
+        var_r5_4348->unk0 = (MCLoadCheckScreen *) temp_r4_4358;
+        M2C_FIELD(temp_r4_4358, s32 *, 0x10) = 0;
+    } else if (temp_r4_4355 != (u8 *) (PromptText::descriptor + 0x12C)) {
         var_r5_4348 = (UIObjectDescriptor *) &temp_r4_4355->unk10;
         goto loop_73;
     }
@@ -2151,10 +2155,10 @@ loop_73:
 loop_78:
     temp_r4_4371 = var_r5_4364->unk0;
     if (temp_r4_4371 == NULL) {
-        temp_r4_4374 = &PromptText::descriptor + 0x140;
-        var_r5_4364->unk0 = temp_r4_4374;
-        temp_r4_4374->unk10 = NULL;
-    } else if (temp_r4_4371 != (void *) (&PromptText::descriptor + 0x140)) {
+        temp_r4_4374 = PromptText::descriptor + 0x140;
+        var_r5_4364->unk0 = (MCLoadCheckScreen *) temp_r4_4374;
+        M2C_FIELD(temp_r4_4374, s32 *, 0x10) = 0;
+    } else if (temp_r4_4371 != (u8 *) (PromptText::descriptor + 0x140)) {
         var_r5_4364 = (UIObjectDescriptor *) &temp_r4_4371->unk10;
         goto loop_78;
     }
@@ -2162,10 +2166,10 @@ loop_78:
 loop_83:
     temp_r4_4387 = var_r5_4380->unk0;
     if (temp_r4_4387 == NULL) {
-        temp_r4_4390 = &PromptText::descriptor + 0x154;
-        var_r5_4380->unk0 = temp_r4_4390;
-        temp_r4_4390->unk10 = NULL;
-    } else if (temp_r4_4387 != (void *) (&PromptText::descriptor + 0x154)) {
+        temp_r4_4390 = PromptText::descriptor + 0x154;
+        var_r5_4380->unk0 = (MCLoadCheckScreen *) temp_r4_4390;
+        M2C_FIELD(temp_r4_4390, s32 *, 0x10) = 0;
+    } else if (temp_r4_4387 != (u8 *) (PromptText::descriptor + 0x154)) {
         var_r5_4380 = (UIObjectDescriptor *) &temp_r4_4387->unk10;
         goto loop_83;
     }
@@ -2173,10 +2177,10 @@ loop_83:
 loop_88:
     temp_r4_4403 = var_r5_4396->unk0;
     if (temp_r4_4403 == NULL) {
-        temp_r4_4406 = &PromptText::descriptor + 0x168;
-        var_r5_4396->unk0 = temp_r4_4406;
-        temp_r4_4406->unk10 = NULL;
-    } else if (temp_r4_4403 != (void *) (&PromptText::descriptor + 0x168)) {
+        temp_r4_4406 = PromptText::descriptor + 0x168;
+        var_r5_4396->unk0 = (MCLoadCheckScreen *) temp_r4_4406;
+        M2C_FIELD(temp_r4_4406, s32 *, 0x10) = 0;
+    } else if (temp_r4_4403 != (u8 *) (PromptText::descriptor + 0x168)) {
         var_r5_4396 = (UIObjectDescriptor *) &temp_r4_4403->unk10;
         goto loop_88;
     }
@@ -2184,10 +2188,10 @@ loop_88:
 loop_93:
     temp_r4_4419 = var_r5_4412->unk0;
     if (temp_r4_4419 == NULL) {
-        temp_r4_4422 = &PromptText::descriptor + 0x17C;
-        var_r5_4412->unk0 = temp_r4_4422;
-        temp_r4_4422->unk10 = NULL;
-    } else if (temp_r4_4419 != (void *) (&PromptText::descriptor + 0x17C)) {
+        temp_r4_4422 = PromptText::descriptor + 0x17C;
+        var_r5_4412->unk0 = (MCLoadCheckScreen *) temp_r4_4422;
+        M2C_FIELD(temp_r4_4422, s32 *, 0x10) = 0;
+    } else if (temp_r4_4419 != (u8 *) (PromptText::descriptor + 0x17C)) {
         var_r5_4412 = (UIObjectDescriptor *) &temp_r4_4419->unk10;
         goto loop_93;
     }
@@ -2195,12 +2199,12 @@ loop_93:
 loop_98:
     temp_r5_4435 = var_r4_4428->unk0;
     if (temp_r5_4435 == NULL) {
-        temp_r3_4438 = &PromptText::descriptor + 0x190;
-        var_r4_4428->unk0 = temp_r3_4438;
-        temp_r3_4438->unk10 = NULL;
+        temp_r3_4438 = PromptText::descriptor + 0x190;
+        var_r4_4428->unk0 = (MCLoadCheckScreen *) temp_r3_4438;
+        M2C_FIELD(temp_r3_4438, s32 *, 0x10) = 0;
         return;
     }
-    if (temp_r5_4435 != (void *) (&PromptText::descriptor + 0x190)) {
+    if (temp_r5_4435 != (u8 *) (PromptText::descriptor + 0x190)) {
         var_r4_4428 = (UIObjectDescriptor *) &temp_r5_4435->unk10;
         goto loop_98;
     }
@@ -2273,14 +2277,14 @@ void UITools_cpp::__sinit() {
     spC = 0.0f;
     sp10 = 0.0f;
     sp14 = 0.3f;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E0) = (f64) sp48;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x1E8) = (f64) sp50;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F0) = (f64) sp38;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x1F8) = (f64) sp40;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x200) = (f64) sp28;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x208) = (f64) sp30;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x210) = (f64) sp18;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x218) = (f64) sp20;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x220) = (f64) sp8;
-    M2C_FIELD(&PromptText::descriptor, f64 *, 0x228) = (f64) sp10;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x1E0) = (f64) sp48;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x1E8) = (f64) sp50;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x1F0) = (f64) sp38;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x1F8) = (f64) sp40;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x200) = (f64) sp28;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x208) = (f64) sp30;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x210) = (f64) sp18;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x218) = (f64) sp20;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x220) = (f64) sp8;
+    M2C_FIELD(PromptText::descriptor, f64 *, 0x228) = (f64) sp10;
 }

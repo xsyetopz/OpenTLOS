@@ -468,7 +468,7 @@ void CutsceneSystem::DrawSubtitles() {
     if ((temp_r3_991 != NULL) && (temp_r3_991->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) != 0)) {
         ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xE8), 544.0f, 435.2f, (Matrix *) &arg_sp30, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
     }
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) == 0) || ((s32) this->unk74 == 1)) {
         if ((s8 *) this->unk80 != NULL) {
             if ((s32) this->unk8C != 5) {
@@ -1006,7 +1006,7 @@ void CutsceneSystem::LoadingUpdate() {
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::LoadingInit() {
     MKVector3 *temp_r3_2115;
-    void *var_r0_2136;
+    s32 var_r0_2136;
 
     M2C_FIELD(&gb, s8 *, 0x396) = 1;
     OnBeginLoad();
@@ -1016,11 +1016,11 @@ void CutsceneSystem::LoadingInit() {
     M2C_FIELD(this->unk78, void (**)(s8 *, MKModel **, MKAnimScript **), 0x108) = (void (*)(s8 *, MKModel **, MKAnimScript **)) this->unkA0;
     M2C_FIELD(this->unk78, s32 *, 0x238) = (s32) M2C_FIELD(&gb, s32 *, 0x354);
     if ((s32) this->unk74 == 0) {
-        var_r0_2136 = M2C_FIELD(&gb, void **, 0x3B8);
+        var_r0_2136 = M2C_FIELD(&gb, s32 *, 0x3B8);
     } else {
-        var_r0_2136 = NULL;
+        var_r0_2136 = 0;
     }
-    KDSynkerPlayer3::pCameraProp.__vptr = var_r0_2136;
+    *KDSynkerPlayer3::pCameraProp = var_r0_2136;
 }
 #endif
 
@@ -1100,7 +1100,7 @@ void CutsceneSystem::Init() {
         ((UIStringTable *) (temp_r31_2281 + 0x260))->UIStringTable();
     }
     this->unk78 = temp_r31_2281;
-    KDSynkerPlayer3::pEventCreationTable.__vptr = &gEventCreationTable;
+    *KDSynkerPlayer3::pEventCreationTable = &gEventCreationTable;
     this->unk68 = NULL;
     this->unk6C = NULL;
     this->unk70 = 0;

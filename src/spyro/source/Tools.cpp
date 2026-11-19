@@ -801,7 +801,7 @@ void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg
     var_r29_1579 = 0;
 loop_4:
     if (var_r29_1579 < temp_r31_1576) {
-        if (gMK->IsEnabled(*(&sp18 + var_r26_1575), MKResource::sWorkingChunkID.unk0) != 0) {
+        if (gMK->IsEnabled(*(&sp18 + var_r26_1575), *MKResource::sWorkingChunkID) != 0) {
             *(this + (this->unk7F8 * 8)) = *(&sp18 + var_r26_1575);
             temp_r4_1599 = this->unk7F8 * 8;
             temp_r3_1602 = M2C_FIELD(*(this + temp_r4_1599), void **, 8);

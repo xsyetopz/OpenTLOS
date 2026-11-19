@@ -172,7 +172,7 @@ loop_8:
                 spC8.unk4 = 0;
                 temp_r4_244 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0));
                 sp8 = -1;
-                spC8.Init(temp_r4_244, 1, 0, *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x64)), 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                spC8.Init(temp_r4_244, 1, 0, *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64)), 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 spC8.unk10 = M2C_FIELD(temp_r26_306, f64 *, 0x28);
                 spC8.unk18 = temp_r26_306->unk30;
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, BreathHitMessage *, M2C_UNK, M2C_UNK, MKHeap **, M2C_UNK, f32), 0x94)(gMK, &spC8, 0, 0, &temp_r26_306->unk28, 1, 75.0f * M2C_BITWISE(f32, temp_r26_306->unk40));

@@ -139,14 +139,14 @@ void PauseMainScreen::Update() {
                     M2C_FIELD(temp_r3_229->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
                     M2C_FIELD(this, u8 *, 0xD1) = 1U;
                 } else if (stricmp(temp_r3_218->unk4, "SaveGame") == 0) {
-                    memcpy(Autosave_GetGameDataCopy() + 0x40, &GameData::gameData.unk40, 0x20U);
+                    memcpy(Autosave_GetGameDataCopy() + 0x40, &GameData::gameData[0x40], 0x20U);
                 } else if (stricmp(temp_r3_218->unk4, "Cheat") == 0) {
                     temp_r3_269 = ui_cast<UIText *, UIObject *>(temp_r3_218->GetChild(0));
                     if ((s32) M2C_FIELD(temp_r3_269, s32 *, 0x6C) == 0x13) {
                         M2C_FIELD(&gb, s8 *, 0x3B5) = 1;
                         M2C_FIELD(&gb, s8 *, 0x3B4) = 1;
-                        ((Stat *) (&GameData::gameData.unk70.unk18))->SetValue(23000.0f, 0U);
-                        ((GameStats *) (&GameData::gameData.unk70))->SetEverything();
+                        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x18)))->SetValue(23000.0f, 0U);
+                        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetEverything();
                         temp_r3_288 = M2C_FIELD(temp_r3_269, s8 **, 0x68);
                         if (temp_r3_288 != NULL) {
                             UIStringTable_Remove(temp_r3_288);
@@ -161,7 +161,7 @@ void PauseMainScreen::Update() {
                     } else {
                         M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                         M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                        ((Stat *) (&GameData::gameData.unk70.unk18))->SetValue(0.0f, 0U);
+                        ((Stat *) ((Stat *) &GameData::gameData[0x88]))->SetValue(0.0f, 0U);
                         temp_r3_321 = M2C_FIELD(temp_r3_269, s8 **, 0x68);
                         if (temp_r3_321 != NULL) {
                             UIStringTable_Remove(temp_r3_321);
@@ -232,14 +232,14 @@ void PauseMainScreen::OnEnter() {
     temp_r3_446 = ui_cast<UIContainer *, UIObject *>(this->unkBC.unk4->FindChild("LevelUp"));
     if (temp_r3_446 != NULL) {
         var_r4_450 = 5;
-        if (GameData::gameData.unk70.unk60 & 1) {
+        if (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) {
             var_r4_450 = 4;
         }
         sp10 = var_r4_450;
         sp14 = 0;
         M2C_FIELD(*temp_r3_446, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_446, &sp10);
         var_r3_467 = 3;
-        if (GameData::gameData.unk70.unk60 & 1) {
+        if (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) {
             var_r3_467 = 2;
         }
         sp8 = var_r3_467;

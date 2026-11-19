@@ -22,18 +22,18 @@ s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */
 extern f32 *KDSpline_PositionMixer;
 extern u8 bRegistered;
 extern f32 gUpdateTimeDelta;
-static KDPositionProperty classInfo__18KDPositionProperty;
-static KDRefPointProperty classInfo__18KDRefPointProperty; /* type too large by 8 */
-static KDAnimEventProperty classInfo__19KDAnimEventProperty; /* type too large by 0x14 */
-static KDAnimProperty classInfo__14KDAnimProperty;  /* type too large by 0x10 */
-static KDMessageHandlerProperty classInfo__24KDMessageHandlerProperty; /* type too large by 0x18 */
-static KDPathProperty classInfo__14KDPathProperty;
-static KDSplinePathProperty classInfo__20KDSplinePathProperty;
-#if 0 // DRAFT: expression syntax error
-static KDPathFollowerProperty classInfo__22KDPathFollowerProperty; /* type too large by 0xC */
-static KDSoundAttachmentProperty classInfo__25KDSoundAttachmentProperty; /* type too large by 0xC */
-static KDAmbientSoundProperty classInfo__22KDAmbientSoundProperty; /* type too large by 0x18 */
+KDPositionProperty classInfo__18KDPositionProperty;
+u8 classInfo__18KDRefPointProperty[0x10];
+u8 classInfo__19KDAnimEventProperty[0x10];
+u8 classInfo__14KDAnimProperty[0x10];
+u8 classInfo__24KDMessageHandlerProperty[0x10];
+KDPathProperty classInfo__14KDPathProperty;
+KDSplinePathProperty classInfo__20KDSplinePathProperty;
+u8 classInfo__22KDPathFollowerProperty[0x10];
+u8 classInfo__25KDSoundAttachmentProperty[0x10];
+u8 classInfo__22KDAmbientSoundProperty[0x10];
 
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDAmbientSoundProperty::Update() {
     s32 sp8;
     KDSoundFader *temp_r30_44;
@@ -42,27 +42,27 @@ void KDAmbientSoundProperty::Update() {
     void **temp_r3_40;
 
     temp_r3_40 = this->unk14;
-    temp_r30_44 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r30_44 = *KDProperty::pInstanceMem + this->unk8;
     temp_r31_47 = (u32) M2C_FIELD(temp_r30_44, u32 *, 0x28) >> 0x1FU;
-    temp_r8_51 = M2C_FIELD(*temp_r3_40, MKVector3 *(**)(void **, void *), 0x50)(temp_r3_40, KDProperty::pInstanceMem.__vptr);
+    temp_r8_51 = M2C_FIELD(*temp_r3_40, MKVector3 *(**)(void **, s32), 0x50)(temp_r3_40, *KDProperty::pInstanceMem);
     sp8 = 1;
     temp_r30_44->Update(this->unk10, 1U, (u8) temp_r31_47, NULL, temp_r8_51, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'KDSound_Stop(long)' does not match
 void KDAmbientSoundProperty::DeinitInstance() {
-    KDSound_Stop(KDProperty::pInstanceMem.__vptr + this->unk8);
+    KDSound_Stop(*KDProperty::pInstanceMem + this->unk8);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDAmbientSoundProperty::InitInstance() {
     void *temp_r3_107;
 
-    *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x28)) = 0;
-    ((KDSoundFader *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Init(this->unk20, this->unk24);
-    temp_r3_107 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    *(*KDProperty::pInstanceMem + (this->unk8 + 0x28)) = 0;
+    ((KDSoundFader *) (*KDProperty::pInstanceMem + this->unk8))->Init(this->unk20, this->unk24);
+    temp_r3_107 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) this->unk1C != 0) {
         M2C_FIELD(temp_r3_107, s32 *, 0x28) = (s32) (M2C_FIELD(temp_r3_107, s32 *, 0x28) | 0x80000000);
         return;
@@ -92,7 +92,7 @@ void KDAmbientSoundProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDAmbientSoundProperty::Command(int arg0) {
     void *temp_r5_210;
 
@@ -100,22 +100,22 @@ void KDAmbientSoundProperty::Command(int arg0) {
         if (arg0 < 1) {
             return;
         }
-        temp_r5_210 = KDProperty::pInstanceMem.__vptr + this->unk8;
+        temp_r5_210 = *KDProperty::pInstanceMem + this->unk8;
         if (arg0 == 1) {
             M2C_FIELD(temp_r5_210, s32 *, 0x28) = (s32) (M2C_FIELD(temp_r5_210, s32 *, 0x28) | 0x80000000);
         } else {
             M2C_FIELD(temp_r5_210, s32 *, 0x28) = (s32) (M2C_FIELD(temp_r5_210, s32 *, 0x28) & 0x7FFFFFFF);
         }
         if (arg0 == 2) {
-            KDSound_Stop(KDProperty::pInstanceMem.__vptr + this->unk8);
+            KDSound_Stop(*KDProperty::pInstanceMem + this->unk8);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDSoundAttachmentProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 
@@ -155,26 +155,26 @@ void KDSoundAttachmentProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDSoundAttachmentProperty::Command(int arg0) {
+    s32 temp_r30_361;
     s32 temp_r31_363;
     s8 *temp_r3_353;
     s8 *temp_r3_360;
-    void *temp_r30_361;
 
     switch (arg0) {                                 /* irregular */
     case 1:
         temp_r3_353 = this->unk14;
         if (M2C_FIELD(*temp_r3_353, u32 (**)(s8 *), 0x50)(temp_r3_353) != 0U) {
             temp_r3_360 = this->unk14;
-            temp_r30_361 = KDProperty::pInstanceMem.__vptr;
+            temp_r30_361 = *KDProperty::pInstanceMem;
             temp_r31_363 = this->unk8;
             *(temp_r30_361 + temp_r31_363) = KDSound_Play3d(this->unk10, M2C_FIELD(*temp_r3_360, MKVector3 *(**)(s8 *), 0x50)(temp_r3_360), 0U, -1, 0.0f, 1U);
             return;
         }
         return;
     case 2:
-        KDSound_Stop(KDProperty::pInstanceMem.__vptr + this->unk8);
+        KDSound_Stop(*KDProperty::pInstanceMem + this->unk8);
         break;
     }
 }
@@ -192,7 +192,7 @@ s32 KDSoundAttachmentProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDPathFollowerProperty::UpdateSplinePath() {
     f64 sp28;
     KDUniformSpline sp10;
@@ -203,7 +203,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
     void *temp_r3_487;
     void *temp_r4_435;
 
-    temp_r4_435 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r4_435 = *KDProperty::pInstanceMem + this->unk8;
     temp_f2_438 = M2C_FIELD(temp_r4_435, f32 *, 0x14) * gUpdateTimeDelta;
     if ((u8) M2C_FIELD(temp_r4_435, u8 *, 1) == 0) {
         M2C_FIELD(temp_r4_435, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_435, f32 *, 0x18) + temp_f2_438);
@@ -233,7 +233,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDPathFollowerProperty::UpdateNormalPath() {
     f64 sp88;
     f64 sp80;
@@ -274,7 +274,7 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     void *temp_r7_571;
     void *temp_r7_668;
 
-    temp_r4_513 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r4_513 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r4_513, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_513, f32 *, 0x18) + (gUpdateTimeDelta * (M2C_FIELD(temp_r4_513, f32 *, 0x14) / M2C_FIELD(temp_r4_513, f32 *, 8))));
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (M2C_FIELD(temp_r4_513, f32 *, 0x18) == 1.0f) {
@@ -380,9 +380,9 @@ void KDPathFollowerProperty::UpdateNormalPath() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDPathFollowerProperty::Update() {
-    if ((u8) *(KDProperty::pInstanceMem.__vptr + this->unk8) != 0) {
+    if ((u8) *(*KDProperty::pInstanceMem + this->unk8) != 0) {
         if ((u8) this->unk10 != 0) {
             UpdateSplinePath();
             return;
@@ -392,45 +392,45 @@ void KDPathFollowerProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDPathFollowerProperty::ResolveInstance() {
     void *temp_r31_766;
     void *temp_r4_785;
 
-    temp_r31_766 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r31_766 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) this->unk10 != 0) {
-        M2C_FIELD(temp_r31_766, void **, 4) = (void *) (KDProperty::pInstanceMem.__vptr + property_cast<KDSplinePathProperty *, KDPathProperty *>(this->unk14)->unk8);
+        M2C_FIELD(temp_r31_766, void **, 4) = (void *) (*KDProperty::pInstanceMem + property_cast<KDSplinePathProperty *, KDPathProperty *>(this->unk14)->unk8);
         M2C_FIELD(temp_r31_766, f32 *, 0x14) = (f32) (M2C_FIELD(temp_r31_766, f32 *, 0x14) / M2C_FIELD(M2C_FIELD(temp_r31_766, void **, 4), f32 *, 0x38));
         return;
     }
-    M2C_FIELD(temp_r31_766, void **, 4) = (void *) (KDProperty::pInstanceMem.__vptr + this->unk14->unk8);
+    M2C_FIELD(temp_r31_766, void **, 4) = (void *) (*KDProperty::pInstanceMem + this->unk14->unk8);
     temp_r4_785 = M2C_FIELD(temp_r31_766, void **, 4);
     M2C_FIELD(temp_r31_766, f32 *, 8) = (f32) *(M2C_FIELD(temp_r4_785, s32 *, 0x24) + ((M2C_FIELD(temp_r31_766, s32 *, 0x10) * M2C_FIELD(temp_r4_785, s32 *, 0x1C)) + 0xC));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r30_835;
     void *temp_r3_824;
 
-    if (arg0->LoadBool("bFunctioning", KDProperty::pInstanceMem.__vptr + (this->unk8 + 3), 0) != 0) {
-        temp_r3_824 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    if (arg0->LoadBool("bFunctioning", *KDProperty::pInstanceMem + (this->unk8 + 3), 0) != 0) {
+        temp_r3_824 = *KDProperty::pInstanceMem + this->unk8;
         M2C_FIELD(temp_r3_824, u8 *, 0) = (u8) M2C_FIELD(temp_r3_824, u8 *, 3);
     }
     var_r30_835 = 0;
-    if ((arg0->LoadFloat("pathSpeed", KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x14), 0) != 0) || (arg0->LoadBool("bLooping", KDProperty::pInstanceMem.__vptr + (this->unk8 + 2), 0) != 0)) {
+    if ((arg0->LoadFloat("pathSpeed", *KDProperty::pInstanceMem + (this->unk8 + 0x14), 0) != 0) || (arg0->LoadBool("bLooping", *KDProperty::pInstanceMem + (this->unk8 + 2), 0) != 0)) {
         var_r30_835 = 1;
     }
     return var_r30_835;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDPathFollowerProperty::InitInstance() {
     void *temp_r3_872;
 
-    temp_r3_872 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_872 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r3_872, s8 *, 0) = 0;
     M2C_FIELD(temp_r3_872, s8 *, 1) = 0;
     M2C_FIELD(temp_r3_872, s8 *, 2) = 1;
@@ -463,7 +463,7 @@ s32 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDPathFollowerProperty::Command(int arg0) {
     f64 sp88;
     f64 sp80;
@@ -505,13 +505,13 @@ void KDPathFollowerProperty::Command(int arg0) {
 
     switch (arg0) {                                 /* switch 1; irregular */
     case 1:                                         /* switch 1 */
-        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
+        *(*KDProperty::pInstanceMem + this->unk8) = 1;
         return;
     case 2:                                         /* switch 1 */
-        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+        *(*KDProperty::pInstanceMem + this->unk8) = 0;
         return;
     case 3:                                         /* switch 1 */
-        temp_r4_976 = KDProperty::pInstanceMem.__vptr + this->unk8;
+        temp_r4_976 = *KDProperty::pInstanceMem + this->unk8;
         M2C_FIELD(temp_r4_976, u8 *, 1) = (u8) (M2C_FIELD(temp_r4_976, u8 *, 1) == 0);
         M2C_FIELD(temp_r4_976, f32 *, 0x18) = (f32) (1.0f - M2C_FIELD(temp_r4_976, f32 *, 0x18));
         if ((u8) this->unk10 == 0) {
@@ -523,7 +523,7 @@ void KDPathFollowerProperty::Command(int arg0) {
         return;
     case 4:                                         /* switch 1 */
         var_r8_996 = 1;
-        temp_r4_998 = KDProperty::pInstanceMem.__vptr + this->unk8;
+        temp_r4_998 = *KDProperty::pInstanceMem + this->unk8;
         M2C_FIELD(temp_r4_998, u8 *, 0) = (u8) M2C_FIELD(temp_r4_998, u8 *, 3);
         M2C_FIELD(temp_r4_998, s8 *, 1) = 0;
         M2C_FIELD(temp_r4_998, s32 *, 0xC) = 0;
@@ -637,17 +637,17 @@ void KDMessageHandlerProperty::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDMessageHandlerProperty::Trigger() {
     KDPropertyCommand **var_r29_1269;
     KDPropertyCommand *temp_r3_1275;
     s32 temp_cr0_eq_1258;
     s32 temp_r0_1281;
+    s32 temp_r30_1257;
     s32 temp_r31_1259;
     u8 var_r5_1282;
-    void *temp_r30_1257;
 
-    temp_r30_1257 = KDProperty::pInstanceMem.__vptr;
+    temp_r30_1257 = *KDProperty::pInstanceMem;
     temp_cr0_eq_1258 = (u8) this->unk24 == 0;
     temp_r31_1259 = this->unk8;
     if ((temp_cr0_eq_1258 != 0) || ((temp_cr0_eq_1258 == 0) && ((u8) *(temp_r30_1257 + temp_r31_1259) == 0))) {
@@ -677,9 +677,9 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDMessageHandlerProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 
@@ -747,7 +747,7 @@ void KDMessageHandlerProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDAnimProperty::Command(int arg0) {
     s32 var_r5_1459;
 
@@ -758,7 +758,7 @@ void KDAnimProperty::Command(int arg0) {
     if ((u8) this->unk1C != 0) {
         var_r5_1459 = 1;
     }
-    ((MKAnimScript *) (*(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8))))->SetAnim(this->unk14, 1.0f, this->unk18, var_r5_1459, -1);
+    ((MKAnimScript *) (*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8))))->SetAnim(this->unk14, 1.0f, this->unk18, var_r5_1459, -1);
 }
 #endif
 
@@ -813,7 +813,7 @@ s32 KDAnimProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk1C'
 void KDAnimEventProperty::Update() {
     MKAnimScript *temp_r31_1615;
     s32 temp_r4_1628;
@@ -821,7 +821,7 @@ void KDAnimEventProperty::Update() {
     u32 temp_r3_1632;
 
     var_r30_1611 = 0;
-    temp_r31_1615 = *(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk1C, s32 *, 8));
+    temp_r31_1615 = *(*KDProperty::pInstanceMem + M2C_FIELD(this->unk1C, s32 *, 8));
 loop_3:
     temp_r4_1628 = var_r30_1611;
     var_r30_1611 += 1;
@@ -905,13 +905,13 @@ s32 KDAnimEventProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDRefPointProperty::Update() {
     Matrix *temp_r3_1796;
 
-    MKModel_GetRefPointMatrix(*(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8)), (s32) this->unk14, KDProperty::pInstanceMem.__vptr + this->unk8, 0U);
-    temp_r3_1796 = KDProperty::pInstanceMem.__vptr + this->unk8;
-    temp_r3_1796->Multiply4x4(temp_r3_1796, MKModel_GetWorldMatrix(*(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8))));
+    MKModel_GetRefPointMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8)), (s32) this->unk14, *KDProperty::pInstanceMem + this->unk8, 0U);
+    temp_r3_1796 = *KDProperty::pInstanceMem + this->unk8;
+    temp_r3_1796->Multiply4x4(temp_r3_1796, MKModel_GetWorldMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8))));
 }
 #endif
 
@@ -968,7 +968,7 @@ s32 KDRefPointProperty::LoadLine(MKIniLine *arg0) {
 void KDCommonProperties_RegisterAll(KDPropertyClassRegistry *arg0) {
     if ((u8) bRegistered == 0) {
         bRegistered = 1;
-        arg0->Add((KDPropertyClassInfo *) &KDScriptProperty::classInfo);
+        arg0->Add((KDPropertyClassInfo *) KDScriptProperty::classInfo);
         arg0->Add((KDPropertyClassInfo *) &KDPositionProperty::classInfo);
         arg0->Add((KDPropertyClassInfo *) (&KDPositionProperty::classInfo + 0x10));
         arg0->Add((KDPropertyClassInfo *) (&KDPositionProperty::classInfo + 0x20));
@@ -1031,7 +1031,7 @@ void KDCommonProperties_cpp::__sinit() {
     temp_r9_3073->unk8 = NULL;
     temp_r9_3073->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAnimScriptProperty>::Construct;
     M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x60) = "KDAnimEvent";
-    temp_r6_3076->unk8 = (KDPositionProperty *) &KDScriptProperty::classInfo;
+    temp_r6_3076->unk8 = (KDPositionProperty *) KDScriptProperty::classInfo;
     temp_r6_3076->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAnimEventProperty>::Construct;
     M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x70) = "KDAnim";
     temp_r16_3070->unk8 = NULL;
@@ -1044,7 +1044,7 @@ void KDCommonProperties_cpp::__sinit() {
     temp_r22_3125 = &KDPositionProperty::classInfo + 0xD0;
     temp_r19_3128 = &KDPositionProperty::classInfo + 0xE0;
     M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x80) = "KDMessageHandler";
-    temp_r11_3110->unk8 = (KDPositionProperty *) &KDScriptProperty::classInfo;
+    temp_r11_3110->unk8 = (KDPositionProperty *) KDScriptProperty::classInfo;
     temp_r11_3110->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDMessageHandlerProperty>::Construct;
     M2C_FIELD(&KDPositionProperty::classInfo, s8 **, 0x90) = "KDPath";
     temp_r8_3113->unk8 = NULL;

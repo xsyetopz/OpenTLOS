@@ -670,12 +670,10 @@ void GameGlobals::InfiniteMagicOff() {
     this->unkB = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
 void GameGlobals::InfiniteMagicOn() {
     this->unkB = 1;
-    ((Stat *) (&GameData::gameData.unkA0))->SetValue(30.0f, 0U);
+    ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->SetValue(30.0f, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 HeroInterface *GameGlobals::SetHero(HeroInterface *arg0) {
@@ -866,7 +864,7 @@ void LoadGlobalResources_Deinit() {
 void LoadGlobalResources_Update() {
     MemoryCard_InitModule();
     if ((M2C_UNK *) gb[0xCF] != NULL) {
-        ((GameData *) (&GameData::gameData))->ClearData();
+        ((GameData *) ((GameData *) GameData::gameData))->ClearData();
         ((Level *) ((Level *) gb[0xCB]))->SwitchTo((ChunkInfo *) gb[0xCC]);
         return;
     }
@@ -1178,7 +1176,7 @@ loop_5:
         }
     }
     var_r3_1978->ModuleInit();
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     EnemySettings_InitModule();
     gb->ResetInGameData();

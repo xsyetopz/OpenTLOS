@@ -225,17 +225,17 @@ void Level::EnvDomeChanged() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+#if 0 // DRAFT: pointer/array required
 void *Level::GetStartLevelInfo() {
     s32 var_ctr_294;
     s32 var_r3_292;
 
     var_r3_292 = 0;
-    var_ctr_294 = Level::levelInfoCount;
-    if ((s32) Level::levelInfoCount > 0) {
+    var_ctr_294 = *Level::levelInfoCount;
+    if ((s32) *Level::levelInfoCount > 0) {
 loop_1:
-        if ((u8) *(Level::pLevelInfo + (var_r3_292 + 0x19)) != 0) {
-            return Level::pLevelInfo + var_r3_292;
+        if ((u8) *(*Level::pLevelInfo + (var_r3_292 + 0x19)) != 0) {
+            return *Level::pLevelInfo + var_r3_292;
         }
         var_r3_292 += 0x128;
         var_ctr_294 -= 1;
@@ -455,7 +455,7 @@ MKModel *Level::GetEnvDome() {
     return var_r31_620;
 }
 
-#if 0 // DRAFT: function call 'stricmp(Level *, unsigned char)' does not match
+#if 0 // DRAFT: pointer/array required
 void *Level::GetLevelByName(const char *arg0) {
     s32 var_r30_694;
     s32 var_r31_695;
@@ -463,11 +463,11 @@ void *Level::GetLevelByName(const char *arg0) {
     var_r30_694 = 0;
     var_r31_695 = 0;
 loop_4:
-    if (var_r30_694 >= (s32) Level::levelInfoCount) {
+    if (var_r30_694 >= (s32) *Level::levelInfoCount) {
         return NULL;
     }
-    if (stricmp(this, *(Level::pLevelInfo + (var_r31_695 + 4))) == 0) {
-        return Level::pLevelInfo + var_r31_695;
+    if (stricmp(this, *(*Level::pLevelInfo + (var_r31_695 + 4))) == 0) {
+        return *Level::pLevelInfo + var_r31_695;
     }
     var_r30_694 += 1;
     var_r31_695 += 0x128;
@@ -717,7 +717,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 Level *Level::GetNextChunk(ChunkInfo *arg0) {
     Level *temp_r0_1123;
     Level *var_r4_1117;
@@ -728,7 +728,7 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
 
     var_r4_1117 = NULL;
     if (this == NULL) {
-        var_r4_1117 = Level::pChunkInfo;
+        var_r4_1117 = *Level::pChunkInfo;
     } else {
         temp_r0_1123 = M2C_FIELD(this, Level **, 8);
         if (temp_r0_1123 != NULL) {
@@ -738,13 +738,13 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
             if (temp_r3_1129 != NULL) {
                 var_r0_1132 = M2C_FIELD(temp_r3_1129, void **, 0x124);
             } else {
-                var_r0_1132 = Level::pLevelInfo;
+                var_r0_1132 = *Level::pLevelInfo;
             }
             if (var_r0_1132 != NULL) {
                 if (temp_r3_1129 != NULL) {
                     var_r3_1141 = M2C_FIELD(temp_r3_1129, void **, 0x124);
                 } else {
-                    var_r3_1141 = Level::pLevelInfo;
+                    var_r3_1141 = *Level::pLevelInfo;
                 }
                 var_r4_1117 = M2C_FIELD(var_r3_1141, Level **, 0x11C);
             }
@@ -760,7 +760,7 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(Level *)' does not match
+#if 0 // DRAFT: pointer/array required
 void *Level::GetChunkByName(const char *arg0) {
     s32 var_r30_1175;
     s32 var_r31_1176;
@@ -768,11 +768,11 @@ void *Level::GetChunkByName(const char *arg0) {
     var_r30_1175 = 0;
     var_r31_1176 = 0;
 loop_5:
-    if (var_r30_1175 >= (s32) Level::chunkInfoCount) {
+    if (var_r30_1175 >= (s32) *Level::chunkInfoCount) {
         return NULL;
     }
-    if (((u32) *(Level::pChunkInfo + var_r31_1176) != 0U) && (stricmp(this) == 0)) {
-        return Level::pChunkInfo + var_r31_1176;
+    if (((u32) *(*Level::pChunkInfo + var_r31_1176) != 0U) && (stricmp(this) == 0)) {
+        return *Level::pChunkInfo + var_r31_1176;
     }
     var_r30_1175 += 1;
     var_r31_1176 += 0x64;
@@ -1046,9 +1046,9 @@ void Level::CreateNormalResources() {
     arg_sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     arg_sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     arg_sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_sp48 = Level::pGlobalModelIni;
+    arg_sp48 = *Level::pGlobalModelIni;
     arg_sp50 = &gCreationTable;
-    arg_sp4C = Level::pGlobalLevelIni;
+    arg_sp4C = *Level::pGlobalLevelIni;
     temp_r26_1944 = this->unk78;
     arg_sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     arg_sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -1062,10 +1062,10 @@ void Level::CreateNormalResources() {
     temp_r3_1961 = __construct_new_array();
     pChunkData = temp_r3_1961;
     var_r4_1965 = 0;
-    arg_sp5C = M2C_FIELD(Level::pWorldInfo, s32 *, 0x3C);
-    arg_sp60 = M2C_FIELD(Level::pWorldInfo, s32 *, 0x5C);
-    arg_sp68 = M2C_FIELD(Level::pWorldInfo, s32 *, 0x4C);
-    arg_sp64 = M2C_FIELD(Level::pWorldInfo, s32 *, 0x2C);
+    arg_sp5C = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x3C);
+    arg_sp60 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x5C);
+    arg_sp68 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x4C);
+    arg_sp64 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x2C);
     arg_sp6C = 1;
     *temp_r3_1961 = 0;
     M2C_FIELD(pChunkData, s32 *, 4) = 0;
@@ -1076,11 +1076,11 @@ void Level::CreateNormalResources() {
             temp_r3_1984 = var_r4_1965 + 1;
             temp_r10_1988 = temp_r3_1984 * 0x10;
             temp_r9_1992 = &arg_sp20 + (temp_r3_1984 * 0x18);
-            M2C_FIELD(temp_r9_1992, s32 *, 0x3C) = (s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x40);
+            M2C_FIELD(temp_r9_1992, s32 *, 0x3C) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x40);
             var_r4_1965 += 1;
-            M2C_FIELD(temp_r9_1992, s32 *, 0x40) = (s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x60);
-            M2C_FIELD(temp_r9_1992, s32 *, 0x48) = (s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x50);
-            M2C_FIELD(temp_r9_1992, s32 *, 0x44) = (s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x30);
+            M2C_FIELD(temp_r9_1992, s32 *, 0x40) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x60);
+            M2C_FIELD(temp_r9_1992, s32 *, 0x48) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x50);
+            M2C_FIELD(temp_r9_1992, s32 *, 0x44) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x30);
             M2C_FIELD(temp_r9_1992, s8 *, 0x4C) = 0;
             *(pChunkData + temp_r10_1988) = 2;
             *(pChunkData + (temp_r10_1988 + 4)) = 0;
@@ -1104,21 +1104,21 @@ loop_39:
         }
         temp_r0_2027 = temp_r30_1924 + 1 + var_r6_2015;
         temp_r5_2033 = &arg_sp20 + (temp_r0_2027 * 0x18);
-        M2C_FIELD(temp_r5_2033, s32 *, 0x3C) = (s32) ((s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x48) / (s32) M2C_FIELD(var_r5_2020, s32 *, 0x20));
+        M2C_FIELD(temp_r5_2033, s32 *, 0x3C) = (s32) ((s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x48) / (s32) M2C_FIELD(var_r5_2020, s32 *, 0x20));
         temp_r8_2035 = this->unk18;
         if ((u32) temp_r8_2035 != 0U) {
             var_r12_2038 = M2C_FIELD(temp_r8_2035, void **, 4);
         } else {
             var_r12_2038 = M2C_FIELD(this->unk24, void **, 4);
         }
-        M2C_FIELD(temp_r5_2033, s32 *, 0x40) = (s32) ((s32) (((M2C_FIELD(Level::pWorldInfo, s32 *, 0x58) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x5C)) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x64)) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x60)) / (s32) M2C_FIELD(var_r12_2038, s32 *, 0x20));
+        M2C_FIELD(temp_r5_2033, s32 *, 0x40) = (s32) ((s32) (((M2C_FIELD(*Level::pWorldInfo, s32 *, 0x58) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x5C)) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x64)) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x60)) / (s32) M2C_FIELD(var_r12_2038, s32 *, 0x20));
         temp_r8_2054 = this->unk18;
         if ((u32) temp_r8_2054 != 0U) {
             var_r12_2057 = M2C_FIELD(temp_r8_2054, void **, 4);
         } else {
             var_r12_2057 = M2C_FIELD(this->unk24, void **, 4);
         }
-        M2C_FIELD(temp_r5_2033, s32 *, 0x48) = (s32) ((s32) (((M2C_FIELD(&gMKDefaults, s32 *, 0xDC) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x4C)) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x54)) - M2C_FIELD(Level::pWorldInfo, s32 *, 0x50)) / (s32) M2C_FIELD(var_r12_2057, s32 *, 0x20));
+        M2C_FIELD(temp_r5_2033, s32 *, 0x48) = (s32) ((s32) (((M2C_FIELD(&gMKDefaults, s32 *, 0xDC) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x4C)) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x54)) - M2C_FIELD(*Level::pWorldInfo, s32 *, 0x50)) / (s32) M2C_FIELD(var_r12_2057, s32 *, 0x20));
         temp_r8_2073 = this->unk18;
         if ((u32) temp_r8_2073 != 0U) {
             var_r8_2076 = M2C_FIELD(temp_r8_2073, void **, 4);
@@ -1127,7 +1127,7 @@ loop_39:
         }
         temp_r11_2083 = temp_r0_2027 * 0x10;
         var_r6_2015 += 1;
-        M2C_FIELD(temp_r5_2033, s32 *, 0x44) = (s32) ((s32) M2C_FIELD(Level::pWorldInfo, s32 *, 0x38) / (s32) M2C_FIELD(var_r8_2076, s32 *, 0x20));
+        M2C_FIELD(temp_r5_2033, s32 *, 0x44) = (s32) ((s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x38) / (s32) M2C_FIELD(var_r8_2076, s32 *, 0x20));
         M2C_FIELD(temp_r5_2033, s8 *, 0x4C) = 0;
         *(pChunkData + temp_r11_2083) = 1;
         *(pChunkData + (temp_r11_2083 + 4)) = 0;
@@ -1275,7 +1275,7 @@ loop_10:
             }
         }
     } else {
-        ChunkData::pCurrentEventStrings.unk0 = temp_r31_2335 + 8;
+        *ChunkData::pCurrentEventStrings = temp_r31_2335 + 8;
         temp_r3_2392 = M2C_FIELD(M2C_FIELD(temp_r31_2335, void **, 4), void **, 0x1C);
         if (temp_r3_2392 != NULL) {
             spC = 0;
@@ -1332,7 +1332,7 @@ s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
         }
         ((UIStringTable *) (temp_r31_2421 + 8))->Init(var_r4_2452);
         var_r3_2464 = 0;
-        ChunkData::pCurrentEventStrings.unk0 = temp_r31_2421 + 8;
+        *ChunkData::pCurrentEventStrings = temp_r31_2421 + 8;
         temp_r4_2466 = M2C_FIELD(temp_r31_2421, ChunkInfo **, 4);
         temp_r5_2467 = temp_r4_2466->unk4;
         if ((temp_r5_2467 != NULL) && ((u32) M2C_FIELD(temp_r5_2467, u32 *, 0x118) == temp_r4_2466)) {
@@ -1356,7 +1356,7 @@ s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
             ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetEnvChunk(NULL);
         }
         ((UIStringTable *) (temp_r31_2421 + 8))->Deinit();
-        ChunkData::pCurrentEventStrings.unk0 = 0;
+        *ChunkData::pCurrentEventStrings = 0;
         M2C_FIELD(temp_r31_2421, ChunkInfo **, 4) = NULL;
     }
     return 1;
@@ -1843,7 +1843,7 @@ void Level::Init(ChunkInfo *arg0) {
     this->unk18 = 0;
     this->unk1C = 0;
     this->unkAC = 0;
-    MKParticleSystem_InitModule(M2C_FIELD(Level::pWorldInfo, s32 *, 4));
+    MKParticleSystem_InitModule(M2C_FIELD(*Level::pWorldInfo, s32 *, 4));
     MKCollision_Init();
     sp10 = 69864.0f;
     sp20 = -61537.0f;
@@ -1863,7 +1863,7 @@ void Level::Init(ChunkInfo *arg0) {
         var_r3_3471 = M2C_FIELD(this->unk24, void **, 4);
     }
     var_r30_3480 = 0;
-    M2C_FIELD(Level::pGlobalModelIni, s32 *, 0x44) = (s32) M2C_FIELD(var_r3_3471, s32 *, 4);
+    M2C_FIELD(*Level::pGlobalModelIni, s32 *, 0x44) = (s32) M2C_FIELD(var_r3_3471, s32 *, 4);
     M2C_FIELD(this, f32 *, 0xE4) = 0.0f;
     this->unkE0 = 0.0f;
     this->unkEC = 0.0f;
@@ -1876,13 +1876,13 @@ void Level::Init(ChunkInfo *arg0) {
     this->unk28 = 1;
     this->unk2C = 1.0f;
     if ((s32) M2C_FIELD(&gb, s32 *, 0x350) != 0) {
-        ((GameData *) (&GameData::gameData))->GetGameSettings();
+        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
         if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
             var_r30_3480 = 1;
         }
     }
     MKRumble_Enable(var_r30_3480);
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     MKZRequest_InitModule();
     this->unk58.unk0 = 0.0f;
@@ -1919,25 +1919,25 @@ loop_2:
         var_r31_3563 = var_r3_3562;
         goto loop_2;
     }
-    temp_r31_3574 = Level::pLevelInfo;
+    temp_r31_3574 = *Level::pLevelInfo;
     temp_r3_3575 = var_r3_3562->Current();
     if (temp_r3_3575 != NULL) {
         ((MKHeap *) (temp_r3_3575->Current()))->Free(temp_r31_3574, NULL, 0);
     } else {
         free(temp_r31_3574);
     }
-    Level::pLevelInfo = NULL;
-    Level::levelInfoCount = 0;
-    ((MKIni *) (Level::pGlobalLevelIni))->Deinit();
-    ((MKIni *) (Level::pGlobalModelIni))->Deinit();
-    temp_r31_3595 = Level::pGlobalLevelIni;
+    *Level::pLevelInfo = NULL;
+    *Level::levelInfoCount = 0;
+    ((MKIni *) (*Level::pGlobalLevelIni))->Deinit();
+    ((MKIni *) (*Level::pGlobalModelIni))->Deinit();
+    temp_r31_3595 = *Level::pGlobalLevelIni;
     temp_r3_3596 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_3596 != NULL) {
         ((MKHeap *) (temp_r3_3596->Current()))->Free(temp_r31_3595, NULL, 0);
     } else {
         free((MKHeap *) temp_r31_3595);
     }
-    temp_r31_3609 = Level::pGlobalModelIni;
+    temp_r31_3609 = *Level::pGlobalModelIni;
     temp_r3_3610 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_3610 != NULL) {
         ((MKHeap *) (temp_r3_3610->Current()))->Free(temp_r31_3609, NULL, 0);
@@ -1947,7 +1947,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void Level::InitLevelInfo() {
     LevelInfo *temp_r3_3813;
     MKHeap *temp_r3_3747;
@@ -1968,28 +1968,28 @@ void Level::InitLevelInfo() {
     void *temp_r0_3760;
     void *temp_r6_3764;
 
-    Level::pGlobalLevelIni->unk44 = platformCode;
-    Level::levelInfoCount = 0;
-    Level::chunkInfoCount = 1;
-    Level::terrainInfoCount = 0;
-    Level::materialInfoCount = 0;
-    var_r29_3649 = ((MKIni *) (Level::pGlobalLevelIni))->GetFirstLine();
+    (*Level::pGlobalLevelIni)->unk44 = platformCode;
+    *Level::levelInfoCount = 0;
+    *Level::chunkInfoCount = 1;
+    *Level::terrainInfoCount = 0;
+    *Level::materialInfoCount = 0;
+    var_r29_3649 = ((MKIni *) (*Level::pGlobalLevelIni))->GetFirstLine();
 loop_15:
     if (var_r29_3649 != NULL) {
         if (var_r29_3649->IsField("") != 0) {
-            Level::levelInfoCount = (s32) (Level::levelInfoCount + 1);
+            *Level::levelInfoCount += 1;
             var_r28_3665 = var_r29_3649->unkC->GetSubLine(var_r29_3649);
 loop_13:
             if (var_r28_3665 != NULL) {
                 if (var_r28_3665->IsField("") != 0) {
-                    Level::chunkInfoCount = (s32) (Level::chunkInfoCount + 1);
+                    *Level::chunkInfoCount += 1;
                     var_r26_3681 = var_r28_3665->unkC->GetSubLine(var_r28_3665);
 loop_11:
                     if (var_r26_3681 != NULL) {
                         if ((var_r26_3681->IsField("") != 0) && (var_r26_3681->GetNmbrOfSubLines() != 0)) {
-                            Level::terrainInfoCount = (s32) (Level::terrainInfoCount + 1);
+                            *Level::terrainInfoCount += 1;
                         } else if (var_r26_3681->IsField("") != 0) {
-                            Level::materialInfoCount = (s32) (Level::materialInfoCount + var_r26_3681->GetNmbrOfSubLines());
+                            *Level::materialInfoCount += var_r26_3681->GetNmbrOfSubLines();
                         }
                         var_r26_3681 = var_r26_3681->unkC->GetNextLine(var_r26_3681);
                         goto loop_11;
@@ -2002,10 +2002,10 @@ loop_11:
         var_r29_3649 = var_r29_3649->unkC->GetNextLine(var_r29_3649);
         goto loop_15;
     }
-    temp_r27_3737 = Level::chunkInfoCount * 0x64;
-    temp_r28_3740 = Level::terrainInfoCount * 0xC;
-    temp_r3_3741 = Level::materialInfoCount * 0x10;
-    temp_r26_3744 = Level::levelInfoCount * 0x128;
+    temp_r27_3737 = *Level::chunkInfoCount * 0x64;
+    temp_r28_3740 = *Level::terrainInfoCount * 0xC;
+    temp_r3_3741 = *Level::materialInfoCount * 0x10;
+    temp_r26_3744 = *Level::levelInfoCount * 0x128;
     temp_r29_3746 = temp_r26_3744 + (temp_r27_3737 + 0x100 + temp_r28_3740 + temp_r3_3741);
     temp_r3_3747 = temp_r3_3741->Current();
     if (temp_r3_3747 != NULL) {
@@ -2014,32 +2014,32 @@ loop_11:
         var_r3_3754 = malloc(temp_r29_3746);
     }
     temp_r0_3760 = var_r3_3754 + temp_r26_3744;
-    Level::pLevelInfo = var_r3_3754;
+    *Level::pLevelInfo = var_r3_3754;
     temp_r4_3762 = temp_r0_3760 + temp_r27_3737;
     temp_r6_3764 = temp_r4_3762 + 0x100;
-    Level::pChunkInfo = temp_r0_3760;
-    Level::pWorldInfo = temp_r4_3762;
-    Level::pTerrainInfo = temp_r6_3764;
-    Level::pMaterialInfo = (void *) (temp_r6_3764 + temp_r28_3740);
+    *Level::pChunkInfo = temp_r0_3760;
+    *Level::pWorldInfo = temp_r4_3762;
+    *Level::pTerrainInfo = temp_r6_3764;
+    *Level::pMaterialInfo = temp_r6_3764 + temp_r28_3740;
     memset(var_r3_3754, 0, (u32) temp_r29_3746);
-    var_r27_3775 = ((MKIni *) (Level::pGlobalLevelIni))->GetFirstLine();
+    var_r27_3775 = ((MKIni *) (*Level::pGlobalLevelIni))->GetFirstLine();
 loop_31:
     if (var_r27_3775 != NULL) {
         if (var_r27_3775->IsField("") != 0) {
-            ((WorldInfo *) (Level::pWorldInfo))->Init();
+            ((WorldInfo *) (*Level::pWorldInfo))->Init();
             var_r26_3789 = var_r27_3775->unkC->GetSubLine(var_r27_3775);
 loop_23:
             if (var_r26_3789 != NULL) {
-                ((WorldInfo *) (Level::pWorldInfo))->LoadLine(var_r26_3789);
+                ((WorldInfo *) (*Level::pWorldInfo))->LoadLine(var_r26_3789);
                 var_r26_3789 = var_r26_3789->unkC->GetNextLine(var_r26_3789);
                 goto loop_23;
             }
-            ((WorldInfo *) (Level::pWorldInfo))->LoadDone();
+            ((WorldInfo *) (*Level::pWorldInfo))->LoadDone();
         } else {
             temp_r3_3810 = var_r27_3775->IsField("");
             if (temp_r3_3810 != 0) {
                 temp_r3_3813 = temp_r3_3810->AllocLevelInfo();
-                ((WorldInfo *) (Level::pWorldInfo))->AddLevelInfo(temp_r3_3813);
+                ((WorldInfo *) (*Level::pWorldInfo))->AddLevelInfo(temp_r3_3813);
                 temp_r3_3813->Init();
                 var_r27_3775->AsString(0, &temp_r3_3813->unk4);
                 var_r29_3828 = var_r27_3775->unkC->GetSubLine(var_r27_3775);
@@ -2058,57 +2058,57 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void Level::InitModule() {
     operator new(0x50U, NULL, 0);
-    Level::pGlobalLevelIni = (MKIni *) M2C_ERROR(/* Read from unset register $r3 */);
+    *Level::pGlobalLevelIni = M2C_ERROR(/* Read from unset register $r3 */);
     operator new(0x50U, NULL, 0);
-    Level::pGlobalModelIni = (MKIni *) M2C_ERROR(/* Read from unset register $r3 */);
-    gAssertBool = ((MKIni *) (Level::pGlobalLevelIni))->Init(pGlobalLevelName, 0, NULL);
-    gAssertBool = ((MKIni *) (Level::pGlobalModelIni))->Init(pGlobalModelName, 0, NULL);
+    *Level::pGlobalModelIni = M2C_ERROR(/* Read from unset register $r3 */);
+    gAssertBool = ((MKIni *) (*Level::pGlobalLevelIni))->Init(pGlobalLevelName, 0, NULL);
+    gAssertBool = ((MKIni *) (*Level::pGlobalModelIni))->Init(pGlobalModelName, 0, NULL);
     MKWind_Set(4.0f, 400.0f, 10.0f, 4.0f, MKVector3::zero, 0.5f);
     ((Level *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitLevelInfo();
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 MaterialInfo *Level::AllocMaterialInfo() {
     s32 temp_r0_3907;
 
-    temp_r0_3907 = Level::materialInfoAllocCount * 0x10;
-    Level::materialInfoAllocCount = (s32) (Level::materialInfoAllocCount + 1);
-    return Level::pMaterialInfo + temp_r0_3907;
+    temp_r0_3907 = *Level::materialInfoAllocCount * 0x10;
+    *Level::materialInfoAllocCount += 1;
+    return *Level::pMaterialInfo + temp_r0_3907;
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 TerrainInfo *Level::AllocTerrainInfo() {
     s32 temp_r0_3918;
 
-    temp_r0_3918 = Level::terrainInfoAllocCount * 0xC;
-    Level::terrainInfoAllocCount = (s32) (Level::terrainInfoAllocCount + 1);
-    return Level::pTerrainInfo + temp_r0_3918;
+    temp_r0_3918 = *Level::terrainInfoAllocCount * 0xC;
+    *Level::terrainInfoAllocCount += 1;
+    return *Level::pTerrainInfo + temp_r0_3918;
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 ChunkInfo *Level::AllocChunkInfo() {
     s32 temp_r0_3930;
 
-    temp_r0_3930 = Level::chunkInfoAllocCount * 0x64;
-    Level::chunkInfoAllocCount = (s32) (Level::chunkInfoAllocCount + 1);
-    return Level::pChunkInfo + temp_r0_3930;
+    temp_r0_3930 = *Level::chunkInfoAllocCount * 0x64;
+    *Level::chunkInfoAllocCount += 1;
+    return *Level::pChunkInfo + temp_r0_3930;
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: pointer/array required
 LevelInfo *Level::AllocLevelInfo() {
     s32 temp_r0_3946;
 
-    *(Level::pLevelInfo + (Level::levelInfoAllocCount * 0x128)) = Level::levelInfoAllocCount;
-    temp_r0_3946 = Level::levelInfoAllocCount * 0x128;
-    Level::levelInfoAllocCount = (s32) (Level::levelInfoAllocCount + 1);
-    return Level::pLevelInfo + temp_r0_3946;
+    *(*Level::pLevelInfo + (*Level::levelInfoAllocCount * 0x128)) = *Level::levelInfoAllocCount;
+    temp_r0_3946 = *Level::levelInfoAllocCount * 0x128;
+    *Level::levelInfoAllocCount += 1;
+    return *Level::pLevelInfo + temp_r0_3946;
 }
 #endif
 
@@ -2233,7 +2233,7 @@ loop_6:
     sp20 = temp_f1_4201;
     sp28 = temp_f0_4202;
     sp10 = temp_f0_4202;
-    M2C_FIELD(M2C_FIELD(Spyro::pInstance.unk0, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64), 0x2C)(Spyro::pInstance.unk0, &sp18, temp_r5_4200, temp_f1_4201);
+    M2C_FIELD(M2C_FIELD(*Spyro::pInstance, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64), 0x2C)(*Spyro::pInstance, &sp18, temp_r5_4200, temp_f1_4201);
     temp_r4_4212 = this->unk4;
     M2C_FIELD(&gb, f32 *, 0x37C) = (f32) M2C_FIELD(temp_r4_4212, f32 *, 0x110);
     MKMat_MK2_SetGlowWeights(M2C_FIELD(temp_r4_4212, f32 *, 0x108), M2C_FIELD(temp_r4_4212, f32 *, 0x10C));

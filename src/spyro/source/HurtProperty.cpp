@@ -30,7 +30,7 @@ void HurtProperty::DoHurt() {
     arg_sp68 = (f64) arg_sp18;
     arg_spC0 = 7;
     arg_spE8 = 1;
-    arg_spEC = KDProperty::pInstanceMem.__vptr;
+    arg_spEC = *KDProperty::pInstanceMem;
     arg_spC8 = (f64) arg_sp10;
     arg_spD0 = (f64) arg_sp18;
     arg_sp100 = 0;
@@ -42,7 +42,7 @@ void HurtProperty::DoHurt() {
     arg_spD8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
     arg_spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     arg_sp110 = 0;
-    if ((void *) KDProperty::pInstanceMem.__vptr != NULL) {
+    if ((u32) *KDProperty::pInstanceMem != 0U) {
         arg_sp30.GetPos();
         arg_spF0 = arg_sp30;
         arg_spF8 = arg_sp38;
@@ -79,15 +79,15 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void HurtProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
-        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
+        *(*KDProperty::pInstanceMem + this->unk8) = 1;
         DoHurt();
         return;
     case 2:
-        *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+        *(*KDProperty::pInstanceMem + this->unk8) = 0;
         return;
     case 3:
         DoHurt();
@@ -111,9 +111,9 @@ s32 HurtProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void HurtProperty::Update() {
-    if ((u8) *(KDProperty::pInstanceMem.__vptr + this->unk8) != 0) {
+    if ((u8) *(*KDProperty::pInstanceMem + this->unk8) != 0) {
         DoHurt();
     }
 }
@@ -123,9 +123,9 @@ void HurtProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void HurtProperty::LoadDoneInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = this->unk20;
+    *(*KDProperty::pInstanceMem + this->unk8) = this->unk20;
 }
 #endif
 
@@ -141,11 +141,11 @@ s32 HurtProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void HurtProperty::InitInstance() {
     MKIniLine *var_r31_339;
 
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
     var_r31_339 = this->unk18;
 loop_2:
     if (var_r31_339 != NULL) {

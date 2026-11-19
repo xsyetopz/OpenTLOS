@@ -15,35 +15,35 @@
 
 s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */
 extern MKSceneManager *gMK;
-#if 0 // DRAFT: expression syntax error
-static KDParticleSystemProperty classInfo__24KDParticleSystemProperty; /* type too large by 0xC */
-static KDParticleEmitterProperty classInfo__25KDParticleEmitterProperty; /* type too large by 0x14 */
-static KDParticleLineEmitterProperty classInfo__29KDParticleLineEmitterProperty; /* type too large by 0x1C */
-static KDParticleBoxEmitterProperty classInfo__28KDParticleBoxEmitterProperty; /* type too large by 0x38 */
+u8 classInfo__24KDParticleSystemProperty[0x10];
+u8 classInfo__25KDParticleEmitterProperty[0x10];
+u8 classInfo__29KDParticleLineEmitterProperty[0x10];
+u8 classInfo__28KDParticleBoxEmitterProperty[0x10];
 
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::Command(int arg0) {
     void **temp_r3_127;
     void *temp_r31_133;
     if (arg0 == 3) {
         temp_r3_127 = this->unk20;
-        temp_r31_133 = KDProperty::pInstanceMem.__vptr + this->unk8;
-        M2C_FIELD(*temp_r3_127, M2C_UNK (**)(void **, M2C_UNK *, void *), 0x58)(temp_r3_127, &arg_sp10, KDProperty::pInstanceMem.__vptr);
+        temp_r31_133 = *KDProperty::pInstanceMem + this->unk8;
+        M2C_FIELD(*temp_r3_127, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_127, &arg_sp10, *KDProperty::pInstanceMem);
         M2C_FIELD(temp_r31_133, M2C_UNK **, 0x70) = &arg_sp10;
         M2C_FIELD(temp_r31_133, f64 *, 0x18) = arg_sp40;
         M2C_FIELD(temp_r31_133, f64 *, 0x20) = arg_sp48;
         M2C_FIELD(temp_r31_133, f64 **, 0x6C) = &arg_sp40;
-        ((KDParticleEmitter *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Burst();
+        ((KDParticleEmitter *) (*KDProperty::pInstanceMem + this->unk8))->Burst();
         return;
     }
     KDParticleEmitterProperty::Command(arg0);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_172;
     void **temp_r3_176;
-    temp_r31_172 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r31_172 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_172->unk40 != 0) {
         temp_r3_176 = this->unk20;
         M2C_FIELD(*temp_r3_176, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_176, &arg_sp10);
@@ -56,33 +56,33 @@ void KDParticleBoxEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::ResolveInstance() {
     void *temp_r3_215;
     void *temp_r3_223;
 
     KDParticleEmitterProperty::ResolveInstance();
-    temp_r3_215 = KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x78);
+    temp_r3_215 = *KDProperty::pInstanceMem + (this->unk8 + 0x78);
     M2C_FIELD(temp_r3_215, f64 *, 0) = (f64) this->unk28;
     M2C_FIELD(temp_r3_215, f64 *, 8) = (f64) this->unk30;
-    temp_r3_223 = KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x88);
+    temp_r3_223 = *KDProperty::pInstanceMem + (this->unk8 + 0x88);
     M2C_FIELD(temp_r3_223, f64 *, 0) = (f64) this->unk38;
     M2C_FIELD(temp_r3_223, f64 *, 8) = (f64) this->unk40;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::InitInstance() {
     M2C_UNK **temp_r5_243;
     MKIniLine *var_r31_259;
     void **temp_r3_254;
 
-    temp_r5_243 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r5_243 = *KDProperty::pInstanceMem + this->unk8;
     if (temp_r5_243 != NULL) {
         *temp_r5_243 = &__vt;
         *temp_r5_243 = &__vt;
     }
-    temp_r3_254 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_254 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(*temp_r3_254, M2C_UNK (**)(void **), 8)(temp_r3_254);
     var_r31_259 = this->unk10;
 loop_4:
@@ -108,30 +108,30 @@ s32 KDParticleBoxEmitterProperty::LoadLine(MKIniLine *arg0) {
     return var_r31_307;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleLineEmitterProperty::Command(int arg0) {
     void **temp_r3_351;
     void *temp_r31_357;
     if (arg0 == 3) {
         temp_r3_351 = this->unk20;
-        temp_r31_357 = KDProperty::pInstanceMem.__vptr + this->unk8;
-        M2C_FIELD(*temp_r3_351, M2C_UNK (**)(void **, M2C_UNK *, void *), 0x58)(temp_r3_351, &arg_sp10, KDProperty::pInstanceMem.__vptr);
+        temp_r31_357 = *KDProperty::pInstanceMem + this->unk8;
+        M2C_FIELD(*temp_r3_351, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_351, &arg_sp10, *KDProperty::pInstanceMem);
         M2C_FIELD(temp_r31_357, M2C_UNK **, 0x70) = &arg_sp10;
         M2C_FIELD(temp_r31_357, f64 *, 0x18) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
         M2C_FIELD(temp_r31_357, f64 *, 0x20) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
         M2C_FIELD(temp_r31_357, MKVector3 **, 0x6C) = &MKVector3::zero;
-        ((KDParticleEmitter *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Burst();
+        ((KDParticleEmitter *) (*KDProperty::pInstanceMem + this->unk8))->Burst();
         return;
     }
     KDParticleEmitterProperty::Command(arg0);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleLineEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_396;
     void **temp_r3_400;
-    temp_r31_396 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r31_396 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_396->unk40 != 0) {
         temp_r3_400 = this->unk20;
         M2C_FIELD(*temp_r3_400, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_400, &arg_sp10);
@@ -144,34 +144,34 @@ void KDParticleLineEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDParticleLineEmitterProperty::ResolveInstance() {
+    s32 temp_r4_440;
     void *temp_r3_435;
-    void *temp_r4_440;
 
     KDParticleEmitterProperty::ResolveInstance();
     temp_r3_435 = this->unk28;
     if (temp_r3_435 != NULL) {
-        temp_r4_440 = KDProperty::pInstanceMem.__vptr + M2C_FIELD(temp_r3_435, s32 *, 8);
-        if (temp_r4_440 != NULL) {
-            *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x78)) = temp_r4_440;
+        temp_r4_440 = *KDProperty::pInstanceMem + M2C_FIELD(temp_r3_435, s32 *, 8);
+        if (temp_r4_440 != 0) {
+            *(*KDProperty::pInstanceMem + (this->unk8 + 0x78)) = temp_r4_440;
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleLineEmitterProperty::InitInstance() {
     M2C_UNK **temp_r5_463;
     MKIniLine *var_r31_479;
     void **temp_r3_474;
 
-    temp_r5_463 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r5_463 = *KDProperty::pInstanceMem + this->unk8;
     if (temp_r5_463 != NULL) {
         *temp_r5_463 = &__vt;
         *temp_r5_463 = &__vt;
     }
-    temp_r3_474 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_474 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(*temp_r3_474, M2C_UNK (**)(void **), 8)(temp_r3_474);
     var_r31_479 = this->unk10;
 loop_4:
@@ -207,7 +207,7 @@ s32 KDParticleLineEmitterProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDParticleEmitterProperty::Command(int arg0) {
     void **temp_r3_601;
     void *temp_r31_607;
@@ -215,24 +215,24 @@ void KDParticleEmitterProperty::Command(int arg0) {
     void *temp_r3_629;
     switch (arg0) {                                 /* irregular */
     case 1:
-        *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x40)) = 1;
+        *(*KDProperty::pInstanceMem + (this->unk8 + 0x40)) = 1;
         return;
     case 2:
-        temp_r3_596 = KDProperty::pInstanceMem.__vptr + this->unk8;
+        temp_r3_596 = *KDProperty::pInstanceMem + this->unk8;
         M2C_FIELD(temp_r3_596, s8 *, 0x40) = 0;
         M2C_FIELD(temp_r3_596, f32 *, 0x34) = 0.0f;
         return;
     case 3:
         temp_r3_601 = this->unk20;
-        temp_r31_607 = KDProperty::pInstanceMem.__vptr + this->unk8;
-        M2C_FIELD(*temp_r3_601, M2C_UNK (**)(void **, M2C_UNK *, void *), 0x58)(temp_r3_601, &arg_sp10, KDProperty::pInstanceMem.__vptr);
+        temp_r31_607 = *KDProperty::pInstanceMem + this->unk8;
+        M2C_FIELD(*temp_r3_601, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_601, &arg_sp10, *KDProperty::pInstanceMem);
         M2C_FIELD(temp_r31_607, M2C_UNK **, 0x70) = &arg_sp10;
         M2C_FIELD(temp_r31_607, M2C_UNK **, 0x6C) = &arg_sp40;
-        ((KDParticleEmitter *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Burst();
+        ((KDParticleEmitter *) (*KDProperty::pInstanceMem + this->unk8))->Burst();
         return;
     case 4:
-        ((MKBaseParticleSystem *) (*(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x28))))->DestroyAllParticles();
-        temp_r3_629 = KDProperty::pInstanceMem.__vptr + this->unk8;
+        ((MKBaseParticleSystem *) (*(*KDProperty::pInstanceMem + (this->unk8 + 0x28))))->DestroyAllParticles();
+        temp_r3_629 = *KDProperty::pInstanceMem + this->unk8;
         M2C_FIELD(temp_r3_629, s8 *, 0x40) = 0;
         M2C_FIELD(temp_r3_629, f32 *, 0x34) = 0.0f;
         return;
@@ -258,11 +258,11 @@ s32 KDParticleEmitterProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_708;
     void **temp_r3_720;
-    temp_r31_708 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r31_708 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_708->unk40 != 0) {
         if ((u8) this->unk18->unk18 != 0) {
             arg_sp10.SetIdentity();
@@ -277,23 +277,23 @@ void KDParticleEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void KDParticleEmitterProperty::ResolveInstance() {
-    *(KDProperty::pInstanceMem.__vptr + (this->unk8 + 0x28)) = *(KDProperty::pInstanceMem.__vptr + this->unk18->unk8);
+    *(*KDProperty::pInstanceMem + (this->unk8 + 0x28)) = *(*KDProperty::pInstanceMem + this->unk18->unk8);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleEmitterProperty::InitInstance() {
     M2C_UNK **temp_r4_765;
     MKIniLine *var_r31_778;
     void **temp_r3_773;
 
-    temp_r4_765 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r4_765 = *KDProperty::pInstanceMem + this->unk8;
     if (temp_r4_765 != NULL) {
         *temp_r4_765 = &__vt;
     }
-    temp_r3_773 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_773 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(*temp_r3_773, M2C_UNK (**)(void **), 8)(temp_r3_773);
     var_r31_778 = this->unk10;
 loop_4:
@@ -354,12 +354,12 @@ KDParticleEmitterProperty::KDParticleEmitterProperty() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 void KDParticleSystemProperty::Command(int arg0) {
     if (arg0 != 1) {
         return;
     }
-    ((MKBaseParticleSystem *) (*(KDProperty::pInstanceMem.__vptr + this->unk8)))->DestroyAllParticles();
+    ((MKBaseParticleSystem *) (*(*KDProperty::pInstanceMem + this->unk8)))->DestroyAllParticles();
 }
 #endif
 
@@ -375,12 +375,12 @@ void KDParticleSystemProperty::Update() {
 
     if ((u8) this->unk18 != 0) {
         temp_r3_957 = this->unk14;
-        M2C_FIELD(*temp_r3_957, M2C_UNK (**)(void **, s32), 0x58)(temp_r3_957, *(KDProperty::pInstanceMem.__vptr + this->unk8) + 0x60);
+        M2C_FIELD(*temp_r3_957, M2C_UNK (**)(void **, s32), 0x58)(temp_r3_957, *(*KDProperty::pInstanceMem + this->unk8) + 0x60);
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 void KDParticleSystemProperty::ResolveInstance() {
     MKHeap **temp_r3_993;
     MKModel *temp_r3_988;
@@ -391,8 +391,8 @@ void KDParticleSystemProperty::ResolveInstance() {
     void *temp_r3_1031;
     void *temp_r4_994;
 
-    temp_r31_987 = *(KDProperty::pInstanceMem.__vptr + this->unk8);
-    temp_r3_988 = *(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8));
+    temp_r31_987 = *(*KDProperty::pInstanceMem + this->unk8);
+    temp_r3_988 = *(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8));
     if (temp_r3_988 != NULL) {
         temp_r3_993 = MKModel_GetBoundingVolume(temp_r3_988, (SubObjectType) 0, -1);
         temp_r4_994 = M2C_FIELD(temp_r31_987, void **, 0);
@@ -428,12 +428,12 @@ void KDParticleSystemProperty::ResolveInstance() {
 
 #if 0 // DRAFT: undefined identifier 'unk4'
 void KDParticleSystemProperty::InitInstance() {
+    s32 temp_r30_1061;
     s32 temp_r31_1063;
     s8 *var_r4_1060;
-    void *temp_r30_1061;
 
     var_r4_1060 = this->unk4;
-    temp_r30_1061 = KDProperty::pInstanceMem.__vptr;
+    temp_r30_1061 = *KDProperty::pInstanceMem;
     temp_r31_1063 = this->unk8;
     if (var_r4_1060 != NULL) {
 
@@ -472,35 +472,35 @@ s32 KDParticleSystemProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDParticleEffects_RegisterAll(KDPropertyClassRegistry *arg0) {
-    arg0->Add((KDPropertyClassInfo *) &KDParticleSystemProperty::classInfo);
-    arg0->Add((KDPropertyClassInfo *) &KDParticleSystemProperty::classInfo.unk10);
-    arg0->Add(&KDParticleSystemProperty::classInfo + 0x20);
-    arg0->Add(&KDParticleSystemProperty::classInfo + 0x30);
+    arg0->Add((KDPropertyClassInfo *) KDParticleSystemProperty::classInfo);
+    arg0->Add((KDPropertyClassInfo *) (KDParticleSystemProperty::classInfo + 0x10));
+    arg0->Add((KDPropertyClassInfo *) (KDParticleSystemProperty::classInfo + 0x20));
+    arg0->Add((KDPropertyClassInfo *) (KDParticleSystemProperty::classInfo + 0x30));
 }
-#endif
 
 /* KDPropertyConstructor<KDParticleBoxEmitterProperty>::Construct (void) */
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
 void KDParticleEffects_cpp::__sinit() {
-    void *temp_r4_1456;
-    void *temp_r7_1454;
+    u8 *temp_r10_1452;
+    u8 *temp_r4_1456;
+    u8 *temp_r7_1454;
 
-    temp_r7_1454 = &KDParticleSystemProperty::classInfo + 0x20;
-    temp_r4_1456 = &KDParticleSystemProperty::classInfo + 0x30;
-    KDParticleSystemProperty::classInfo.__vptr = "KDParticleSystem";
-    KDParticleSystemProperty::classInfo.unk8 = 0;
-    KDParticleSystemProperty::classInfo.unk4 = (s8 *) &KDPropertyConstructor<KDParticleSystemProperty>::Construct;
-    KDParticleSystemProperty::classInfo.unk10 = "KDParticleEmitter";
-    M2C_FIELD(&KDParticleSystemProperty::classInfo, s32 *, 0x18) = 0;
-    KDParticleSystemProperty::classInfo.unk14 = (void **) &KDPropertyConstructor<KDParticleEmitterProperty>::Construct;
-    M2C_FIELD(&KDParticleSystemProperty::classInfo, s8 **, 0x20) = "KDParticleLineEmitter";
-    M2C_FIELD(temp_r7_1454, s8 ***, 8) = &KDParticleSystemProperty::classInfo.unk10;
+    temp_r10_1452 = KDParticleSystemProperty::classInfo + 0x10;
+    temp_r7_1454 = KDParticleSystemProperty::classInfo + 0x20;
+    temp_r4_1456 = KDParticleSystemProperty::classInfo + 0x30;
+    M2C_FIELD(KDParticleSystemProperty::classInfo, s8 **, 0) = "KDParticleSystem";
+    M2C_FIELD(KDParticleSystemProperty::classInfo, s32 *, 8) = 0;
+    M2C_FIELD(KDParticleSystemProperty::classInfo, void (**)(KDPropertyConstructor<KDParticleSystemProperty> *), 4) = &KDPropertyConstructor<KDParticleSystemProperty>::Construct;
+    M2C_FIELD(KDParticleSystemProperty::classInfo, s8 **, 0x10) = "KDParticleEmitter";
+    M2C_FIELD(temp_r10_1452, s32 *, 8) = 0;
+    M2C_FIELD(temp_r10_1452, KDParticleEmitterProperty *(**)(KDPropertyConstructor<KDParticleEmitterProperty> *), 4) = &KDPropertyConstructor<KDParticleEmitterProperty>::Construct;
+    M2C_FIELD(KDParticleSystemProperty::classInfo, s8 **, 0x20) = "KDParticleLineEmitter";
+    M2C_FIELD(temp_r7_1454, u8 **, 8) = temp_r10_1452;
     M2C_FIELD(temp_r7_1454, void *(**)(KDPropertyConstructor<KDParticleLineEmitterProperty> *), 4) = &KDPropertyConstructor<KDParticleLineEmitterProperty>::Construct;
-    M2C_FIELD(&KDParticleSystemProperty::classInfo, s8 **, 0x30) = "KDParticleBoxEmitter";
-    M2C_FIELD(temp_r4_1456, s8 ***, 8) = &KDParticleSystemProperty::classInfo.unk10;
+    M2C_FIELD(KDParticleSystemProperty::classInfo, s8 **, 0x30) = "KDParticleBoxEmitter";
+    M2C_FIELD(temp_r4_1456, u8 **, 8) = temp_r10_1452;
     M2C_FIELD(temp_r4_1456, struct __vt **(**)(KDPropertyConstructor<KDParticleBoxEmitterProperty> *), 4) = &KDPropertyConstructor<KDParticleBoxEmitterProperty>::Construct;
 }
 #endif

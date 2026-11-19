@@ -31,14 +31,14 @@ void SoundProp::Message(MKMessage *arg0) {
     switch (temp_r0_89) {                           /* irregular */
     case 0x1F:
     case 0x1C:
-        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
         case 0xB4:
         case 0xBF:
             Disable();
         }
         break;
     case 0x1D:
-        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, SoundProp *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
         case 0xBE:
         case 0xB5:
             Enable();

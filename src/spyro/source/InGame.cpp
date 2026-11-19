@@ -779,7 +779,7 @@ loop_3:
             goto block_27;
         }
 block_27:
-        GameData::gameData.unk1C += gUpdateTimeDelta;
+        M2C_FIELD(GameData::gameData, f32 *, 0x1C) = (f32) (M2C_FIELD(GameData::gameData, f32 *, 0x1C) + gUpdateTimeDelta);
         gb.unkC->Update();
         var_r29_1574 = 0;
         if ((((MKVector3 *) gb.unkC->unk78 != NULL) || ((GameVideo *) gb.unkC->unk84 != NULL)) && (gb.unkC->unk24.GetState() != 0)) {

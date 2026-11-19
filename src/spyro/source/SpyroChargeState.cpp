@@ -17,7 +17,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: illegal explicit conversion from 'long' to
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
-static SpyroChargeState states__16SpyroChargeState[2]; /* unable to generate initializer: confusing struct layout */
+SpyroChargeState states__16SpyroChargeState;        /* unable to generate initializer: confusing struct layout */
 
 void SpyroChargeState::ChargeTransition() {
     InputModifier *temp_r3_32;
@@ -514,7 +514,7 @@ void SpyroChargeState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroChargeState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroChargeState>FPQ234KDStateMachine<16SpyroChargeState>5StateP34KDStateMachine<16SpyroChargeState>(&this->unk14, (KDStateMachine<SpyroChargeState>::State *) SpyroChargeState::states, NULL);
+    Init__34KDStateMachine<16SpyroChargeState>FPQ234KDStateMachine<16SpyroChargeState>5StateP34KDStateMachine<16SpyroChargeState>(&this->unk14, (KDStateMachine<SpyroChargeState>::State *) &SpyroChargeState::states, NULL);
     this->unk28 = 0.0f;
     this->unk2C = 0.0f;
 }

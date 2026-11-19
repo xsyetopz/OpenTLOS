@@ -16,8 +16,8 @@
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
-static KDSynkerPlayerEvent loadInfo__19KDSynkerPlayerEvent[0xB];
-static KDSynkerPlayerEvent updateData__19KDSynkerPlayerEvent;
+KDSynkerPlayerEvent loadInfo__19KDSynkerPlayerEvent;
+KDSynkerPlayerEvent updateData__19KDSynkerPlayerEvent;
 
 #if 0 // DRAFT: identifier 'PLAYSOUND3D_STRING' redeclared
 static s8 *PLAYSOUND3D_STRING = "PlaySound3D";
@@ -126,7 +126,7 @@ static s8 .L_8035FFF4[0x5D] = {
 void KDSynkerPlayerEvent::Load(MKIniLine *arg0) {
     MKIniLine *temp_r3_27;
 
-    ((KDSynkerPlayerEventLoadInfo *) ((KDSynkerPlayerEventLoadInfo *) KDSynkerPlayerEvent::loadInfo))->Init();
+    ((KDSynkerPlayerEventLoadInfo *) ((KDSynkerPlayerEventLoadInfo *) &KDSynkerPlayerEvent::loadInfo))->Init();
     Init();
     temp_r3_27 = arg0->unkC->GetSubLine(arg0);
     KDSynkerPlayerEvent::pLine.__vptr = temp_r3_27->unkC->GetNextLine(temp_r3_27);

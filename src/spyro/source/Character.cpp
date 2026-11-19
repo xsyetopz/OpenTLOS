@@ -1788,19 +1788,17 @@ void Character::SetupCollision() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 Character::IsActive() {
     s32 temp_r3_3259;
     s32 var_r31_3258;
 
     var_r31_3258 = 0;
     temp_r3_3259 = this->unk10;
-    if ((temp_r3_3259 & 0x20000) && (temp_r3_3259 & 0x40000) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) != 0)) {
+    if ((temp_r3_3259 & 0x20000) && (temp_r3_3259 & 0x40000) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, *MKResource::sWorkingChunkID) != 0)) {
         var_r31_3258 = 1;
     }
     return var_r31_3258;
 }
-#endif
 
 void Character::Recycle() {
     PlatformDetach();

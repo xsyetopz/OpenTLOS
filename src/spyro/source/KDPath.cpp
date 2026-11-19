@@ -7,8 +7,8 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(KDPathManager *);                      /* extern */
-KDPathManager *malloc(s32);                         /* extern */
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
 static MKVector3 waypointLoadInfo[0x40];
 
 #if 0 // DRAFT: pointer/array required
@@ -74,7 +74,7 @@ loop_8:
         var_r28_116 = var_r28_116->unk28;
         goto loop_10;
     }
-    this->unk0 = (KDPathManager *) sp48;
+    this->unk0 = (s32) sp48;
     this->unk4 = sp48.unk4;
     this->unk8 = M2C_BITWISE(f32, sp48.unk8);
 }
@@ -119,15 +119,15 @@ loop_5:
         var_r30_250 = var_r30_250->unk28;
         goto loop_7;
     }
-    this->unk0 = (KDPathManager *) sp28;
+    this->unk0 = (s32) sp28;
     this->unk4 = sp28.unk4;
     this->unk8 = M2C_BITWISE(f32, sp28.unk8);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 KDPathSegment *KDPathManager::GetPathList(int arg0) {
-    return *(KDPathManager::pPathLists.unk0 + ((s32) this * 4));
+    return *(*KDPathManager::pPathLists + ((s32) this * 4));
 }
 #endif
 
@@ -144,8 +144,8 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
         temp_r3_335->unk28 = this->unk28;
     } else {
         temp_r3_344 = this->unk18 * 4;
-        if ((u32) *(KDPathManager::pPathLists.unk0 + temp_r3_344) == this) {
-            *(KDPathManager::pPathLists.unk0 + temp_r3_344) = this->unk28;
+        if ((u32) *(*KDPathManager::pPathLists + temp_r3_344) == this) {
+            *(*KDPathManager::pPathLists + temp_r3_344) = this->unk28;
         }
     }
     temp_r3_351 = this->unk28;
@@ -157,7 +157,7 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void KDPathManager::AddPath(KDPathSegment *arg0) {
     f64 spC0;
     f64 spB8;
@@ -184,7 +184,7 @@ void KDPathManager::AddPath(KDPathSegment *arg0) {
     KDPathNode *var_r4_379;
 
     var_r4_379 = NULL;
-    var_r3_382 = KDPathManager::pPathLists.unk0 + (this->unk18 * 4);
+    var_r3_382 = *KDPathManager::pPathLists + (this->unk18 * 4);
     var_r31_383 = *var_r3_382;
 loop_10:
     if (var_r31_383 != NULL) {
@@ -242,12 +242,12 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPathManager::Deinit() {
-    KDPathManager *temp_r31_550;
     MKHeap *temp_r3_553;
+    void *temp_r31_550;
 
-    temp_r31_550 = KDPathManager::pPathLists.unk0;
+    temp_r31_550 = *KDPathManager::pPathLists;
     if (temp_r31_550 != NULL) {
         temp_r3_553 = MKHeap::Current();
         if (temp_r3_553 != NULL) {
@@ -256,35 +256,35 @@ void KDPathManager::Deinit() {
             free(temp_r31_550);
         }
     }
-    KDPathManager::pPathLists.unk0 = NULL;
-    KDPathManager::numTypes.unk0 = NULL;
+    *KDPathManager::pPathLists = NULL;
+    *KDPathManager::numTypes = 0;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDPathManager *' to
 void KDPathManager::Init(int arg0) {
-    KDPathManager *var_r3_592;
     MKHeap *temp_r3_585;
     s32 temp_r31_583;
     s32 var_r3_603;
     void *temp_r4_601;
     void *var_ctr_604;
+    void *var_r3_592;
 
     temp_r31_583 = (s32) this * 4;
-    KDPathManager::numTypes.unk0 = this;
+    *KDPathManager::numTypes = this;
     temp_r3_585 = MKHeap::Current();
     if (temp_r3_585 != NULL) {
         var_r3_592 = ((MKHeap *) (temp_r3_585->Current()))->Alloc(temp_r31_583, NULL, 0);
     } else {
         var_r3_592 = malloc(temp_r31_583);
     }
-    KDPathManager::pPathLists.unk0 = var_r3_592;
-    temp_r4_601 = KDPathManager::numTypes.unk0 - 1;
+    *KDPathManager::pPathLists = var_r3_592;
+    temp_r4_601 = *KDPathManager::numTypes - 1;
     var_r3_603 = (s32) temp_r4_601 * 4;
     var_ctr_604 = temp_r4_601 + 1;
     if (temp_r4_601 >= 0) {
         do {
-            *(KDPathManager::pPathLists.unk0 + var_r3_603) = 0;
+            *(*KDPathManager::pPathLists + var_r3_603) = 0;
             var_r3_603 -= 4;
             var_ctr_604 -= 1;
         } while (var_ctr_604 != NULL);
@@ -769,7 +769,6 @@ void KDPathSegment::LoadDone() {
     f64 sp20;
     f32 sp18;
     f32 sp8;
-    KDPathManager *var_r3_1586;
     MKHeap *temp_r3_1579;
     f32 var_f5_1633;
     f64 temp_f1_1636;
@@ -785,6 +784,7 @@ void KDPathSegment::LoadDone() {
     void *temp_r4_1612;
     void *temp_r4_1698;
     void *temp_r5_1608;
+    void *var_r3_1586;
 
     temp_r3_1571 = this->unk20;
     if (temp_r3_1571 > 0) {
@@ -860,7 +860,6 @@ loop_25:
 
 #if 0 // DRAFT: pointer/array required
 void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
-    KDPathManager *var_r3_1738;
     MKHeap *temp_r3_1731;
     s32 temp_r0_1753;
     s32 temp_r31_1730;
@@ -869,6 +868,7 @@ void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
     s32 var_r6_1745;
     void *temp_r4_1750;
     void *temp_r4_1757;
+    void *var_r3_1738;
 
     this->unk20 = arg1;
     temp_r3_1728 = this->unk20;
@@ -898,12 +898,12 @@ loop_5:
 
 #if 0 // DRAFT: pointer/array required
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
-    KDPathManager *var_r3_1803;
     MKHeap *temp_r3_1796;
     MKIniLine *var_r29_1815;
     s32 temp_r30_1795;
     s32 temp_r3_1788;
     s32 var_r28_1814;
+    void *var_r3_1803;
 
     if (arg0->IsField(arg1) != 0) {
         this->unk20 = arg0->GetNmbrOfSubLines();
@@ -975,7 +975,7 @@ void KDPathSegment::Deinit() {
         if (temp_r3_1933 != NULL) {
             ((MKHeap *) (temp_r3_1933->Current()))->Free(temp_r31_1930, NULL, 0);
         } else {
-            free((KDPathManager *) temp_r31_1930);
+            free(temp_r31_1930);
         }
     }
     this->unk24 = NULL;

@@ -9,7 +9,6 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CameraData.h"
-#include "spyro/source/GameCameraEmuStateMachine.h"
 #include "spyro/source/GameCameraMessages.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
@@ -427,7 +426,7 @@ loop_9:
     if (var_r30_724 != NULL) {
         temp_r31_793 = *var_r30_724;
         if (temp_r31_793 != NULL) {
-            if ((M2C_FIELD(*gMK, u8 (**)(void **, M2C_UNK *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, M2C_UNK **, 0), MKResource::sWorkingChunkID.unk0) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
+            if ((M2C_FIELD(*gMK, u8 (**)(void **, M2C_UNK *, s32), 0x9C)(gMK, M2C_FIELD(temp_r31_793, M2C_UNK **, 0), *MKResource::sWorkingChunkID) != 0) && (((u8) M2C_FIELD(temp_r31_793, u8 *, 0xC) != 0) || ((u8) M2C_FIELD(temp_r31_793, u8 *, 0xD) != 0))) {
                 M2C_FIELD(temp_r31_793, u8 *, 0xD) = 0U;
                 temp_r3_747 = this->unk8;
                 temp_r4_748 = M2C_FIELD(M2C_FIELD(temp_r31_793, M2C_UNK **, 0), void **, 8);
@@ -1602,7 +1601,7 @@ void GameCamera2::PlayerAdjustUpdate() {
     } else {
         var_f29_3129 = 0.0f;
     }
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x14) != 0) {
         var_f0_3140 = -1.0f;
     } else {
@@ -1663,7 +1662,7 @@ void GameCamera2::PlayerAdjustUpdate() {
     }
     temp_f29_3235 = 3.1415927f * gUpdateTimeDelta;
     temp_f2_3239 = -temp_f29_3235;
-    var_f1_3240 = var_f28_3146 * temp_f30_3104 * ((CameraData *) (((GameData *) (&GameData::gameData))->GetCameraData()))->GetPlayerRotateYawMultiplier();
+    var_f1_3240 = var_f28_3146 * temp_f30_3104 * ((CameraData *) (((GameData *) ((GameData *) GameData::gameData))->GetCameraData()))->GetPlayerRotateYawMultiplier();
     if (var_f1_3240 < temp_f29_3235) {
 
     } else {
@@ -1702,7 +1701,7 @@ void GameCamera2::PlayerAdjustUpdate() {
             this->unk284 += (gUpdateTimeDelta * (((1.0f - this->unk284) * 25.0f) - (2.0f * temp_f5_3321 * 5.0f))) + temp_f5_3321;
         }
         temp_r5_3340 = this->unk8;
-        temp_r29_3341 = ((GameData *) (&GameData::gameData))->GetCameraData();
+        temp_r29_3341 = ((GameData *) ((GameData *) GameData::gameData))->GetCameraData();
         temp_r4_3342 = this->unkA4;
         spC0 = M2C_FIELD(temp_r5_3340, f64 *, 0x30);
         temp_f28_3348 = this->unk284;
@@ -1744,7 +1743,7 @@ void GameCamera2::PlayerAdjustExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 s32 GameCamera2::CameraStatesMessage(MKMessage *arg0) {
     KDCameraStateChangeRequest *temp_r5_3534;
 
@@ -1761,11 +1760,13 @@ s32 GameCamera2::CameraStatesMessage(MKMessage *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::EmuStatesUpdate() {
     if (TestUserStateFlag(0x800U) != 0) {
         this->unk26C->UpdateStates(this);
     }
 }
+#endif
 
 void GameCamera2::PostStateUpdate() {
 
@@ -1875,7 +1876,7 @@ void GameCamera2::PreCameraUpdate() {
     KDCamera::PreCameraUpdate();
     this->unk29C = 0;
     temp_r4_3756 = this->unk140;
-    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (((GameData *) (&GameData::gameData))->GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
+    temp_r4_3756->unk0 = (temp_r4_3756->unk0 & ~0x80) | (((u8) (((CameraData *) (((GameData *) ((GameData *) GameData::gameData))->GetCameraData()))->GetJumpWithTy() == 0) << 7) & 0x80);
     UpdateSnaps();
     EmuStatesUpdate();
     CenterBehindHeroUpdate();
@@ -2245,6 +2246,7 @@ void GameCamera2::TrainEnter() {
     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(this, f64 *, 0x228);
 }
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
     KDCamera::ProcessCameraStateRequest(arg0);
     if (arg0 != 0x800) {
@@ -2253,6 +2255,7 @@ u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
         }
     }
 }
+#endif
 
 #if 0 // DRAFT: expression syntax error
 void GameCamera2::IsUnderwater() {
@@ -2364,6 +2367,7 @@ void GameCamera2::DrawCamera() {
     KDCamera::DrawCamera();
 }
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::ClearData() {
     this->unk2B0 = 1;
     KDCamera::ClearData();
@@ -2388,6 +2392,7 @@ void GameCamera2::ClearData() {
     this->unk2B4 = 0.0f;
     this->unk2B0 = 0;
 }
+#endif
 
 void GameCamera2::ResetCamera() {
     s32 temp_r3_4843;
@@ -2474,7 +2479,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::Init() {
     GameCamera2Descriptor *temp_r3_5023;
     M2C_UNK *temp_r3_5055;
@@ -2498,7 +2503,7 @@ void GameCamera2::Init() {
     this->unk2B0 = 0;
     operator new(0x10U, NULL, 0);
     this->unk26C = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk26C->Init(this, (GameCameraEmuStateDescriptor *) GameCamera2::pEmuStateDescriptors.unk0);
+    this->unk26C->Init(this, *GameCamera2::pEmuStateDescriptors);
     temp_r3_5023 = checked_cast<GameCamera2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r30_5024 = temp_r3_5023->unkB4;
     if (temp_r30_5024 == 0) {
@@ -2532,7 +2537,7 @@ void GameCamera2::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp **' to
 void GameCamera2::InitModule() {
     s32 sp1C;
     s32 sp18;
@@ -2543,7 +2548,7 @@ void GameCamera2::InitModule() {
     void *temp_r3_5098;
 
     deltaStageInfo.InitModule();
-    GameCamera2::pPossibleStateChanges.unk0 = &deltaStageInfo.unk30;
+    *GameCamera2::pPossibleStateChanges = &deltaStageInfo.unk30;
     if ((s8) init_762 == 0) {
         temp_r3_5098 = &deltaStageInfo + 0xDC;
         M2C_FIELD(temp_r3_5098, f32 *, 0x14) = (f32) deltaStageInfo.unk60.unk10;
@@ -2587,7 +2592,7 @@ void GameCamera2::InitModule() {
         M2C_FIELD(temp_r3_5098, s32 *, 0xF4) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xD8);
         init_762 = 1;
     }
-    KDCamera::pStateDescriptors.unk0 = &deltaStageInfo + 0xDC;
+    *KDCamera::pStateDescriptors = &deltaStageInfo + 0xDC;
     if ((s8) init_780 == 0) {
         sp8 = M2C_FIELD(&__ptmf_null, s32 *, 0);
         spC = M2C_FIELD(&__ptmf_null, s32 *, 4);
@@ -2675,8 +2680,8 @@ void GameCamera2::InitModule() {
         M2C_FIELD(&deltaStageInfo, s32 *, 0x480) = (s32) deltaStageInfo.unk28C;
         init_780 = 1;
     }
-    GameCamera2::pEmuStateDescriptors.unk0 = &deltaStageInfo.unk290;
-    KDCamera::pMessageStorageDescriptors.unk0 = &deltaStageInfo + 0x4C0;
+    *GameCamera2::pEmuStateDescriptors = &deltaStageInfo.unk290;
+    *KDCamera::pMessageStorageDescriptors = &deltaStageInfo + 0x4C0;
 }
 #endif
 

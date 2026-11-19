@@ -22,7 +22,7 @@
 #include <m2c_macros.h>
 
 M2C_UNK free(void **);                              /* extern */
-UIObject *malloc(void *);                           /* extern */
+UIObject *malloc(s32);                              /* extern */
 extern s32 GS_MenuSelect;
 extern s32 gDisplay;
 extern GameStateMachine gGMState;
@@ -32,7 +32,7 @@ extern s32 numLanguages;
 extern void **pSystem;
 extern UIStringTable strings;
 #if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match
-static LanguageSelectScreen descriptor__20LanguageSelectScreen; /* type too large by 0xC4; unable to generate initializer: not enough data */
+u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse lit_stringBase0 as integer */
 static MKHeap lit_stringBase0;                         /* type too large by 0xD5; unable to generate initializer: not enough data; const */
 
 void NoController_Draw() {
@@ -116,32 +116,32 @@ void Language_Init() {
     MKHeap *temp_r3_250;
     UIObject *var_r30_258;
     UIObjectDescriptor *var_r4_284;
+    s32 temp_r30_249;
     s32 temp_r3_237;
-    void *temp_r30_249;
 
     temp_r3_237 = GameLanguage_Count();
     numLanguages = temp_r3_237;
     if (temp_r3_237 > 1) {
         strings.Init(0x400);
         temp_r3_245 = UIStringTable_SetCurrent(&strings);
-        temp_r30_249 = NoisySystem::descriptor.unk8;
+        temp_r30_249 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
         temp_r3_250 = temp_r3_245->Current();
         if (temp_r3_250 != NULL) {
-            var_r30_258 = ((MKHeap *) (temp_r3_250->Current()))->Alloc((s32) temp_r30_249, NULL, 0);
+            var_r30_258 = ((MKHeap *) (temp_r3_250->Current()))->Alloc(temp_r30_249, NULL, 0);
         } else {
             var_r30_258 = malloc(temp_r30_249);
         }
-        ((M2C_UNK (*)(UIObject *, NoisySystem *)) NoisySystem::descriptor.unkC)(var_r30_258, &NoisySystem::descriptor);
-        var_r30_258->unk8 = &NoisySystem::descriptor;
-        var_r30_258->Init(&NoisySystem::descriptor);
+        M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r30_258, NoisySystem::descriptor);
+        var_r30_258->unk8 = NoisySystem::descriptor;
+        var_r30_258->Init(NoisySystem::descriptor);
         pSystem = checked_cast<NoisySystem *, UIObject>(var_r30_258);
         var_r4_284 = &UIObjectDescriptor::list;
 loop_7:
         temp_r3_291 = var_r4_284->unk0;
         if (temp_r3_291 == NULL) {
-            var_r4_284->unk0 = (MCLoadCheckScreen *) &LanguageSelectScreen::descriptor;
-            LanguageSelectScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_291 != &LanguageSelectScreen::descriptor) {
+            var_r4_284->unk0 = (MCLoadCheckScreen *) LanguageSelectScreen::descriptor;
+            M2C_FIELD(LanguageSelectScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_291 != LanguageSelectScreen::descriptor) {
             var_r4_284 = (UIObjectDescriptor *) &temp_r3_291->unk10;
             goto loop_7;
         }
@@ -217,7 +217,7 @@ void LanguageSelectScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LanguageSelectScreen::LoadDone() {
     s32 sp8;
     MKHeap *temp_r3_492;
@@ -229,24 +229,24 @@ void LanguageSelectScreen::LoadDone() {
     UIObject *var_r24_500;
     UIObject *var_r24_582;
     UIObject *var_r24_637;
+    s32 temp_r24_491;
+    s32 temp_r24_573;
+    s32 temp_r24_628;
     s32 temp_r5_532;
     s32 var_r26_557;
     s8 *temp_r0_665;
     s8 *temp_r3_677;
-    void *temp_r24_491;
-    void *temp_r24_573;
-    void *temp_r24_628;
 
-    temp_r24_491 = MarkerButtonGroup::descriptor.unk8;
-    temp_r3_492 = ((MKHeap *) ((MKHeap *) &MarkerButtonGroup::descriptor))->Current();
+    temp_r24_491 = M2C_FIELD(MarkerButtonGroup::descriptor, s32 *, 8);
+    temp_r3_492 = ((MKHeap *) ((MKHeap *) MarkerButtonGroup::descriptor))->Current();
     if (temp_r3_492 != NULL) {
-        var_r24_500 = ((MKHeap *) (temp_r3_492->Current()))->Alloc((s32) temp_r24_491, NULL, 0);
+        var_r24_500 = ((MKHeap *) (temp_r3_492->Current()))->Alloc(temp_r24_491, NULL, 0);
     } else {
         var_r24_500 = malloc(temp_r24_491);
     }
-    ((M2C_UNK (*)(UIObject *, MarkerButtonGroup *)) MarkerButtonGroup::descriptor.unkC)(var_r24_500, &MarkerButtonGroup::descriptor);
-    var_r24_500->unk8 = &MarkerButtonGroup::descriptor;
-    var_r24_500->Init(&MarkerButtonGroup::descriptor);
+    M2C_FIELD(MarkerButtonGroup::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r24_500, MarkerButtonGroup::descriptor);
+    var_r24_500->unk8 = MarkerButtonGroup::descriptor;
+    var_r24_500->Init(MarkerButtonGroup::descriptor);
     this->unkBC.unk4 = ui_cast<UIButtonGroup *, UIObject *>(var_r24_500);
     M2C_FIELD(this->unkBC.unk4, s16 *, 0x58) = 2;
     temp_r5_532 = this->unkBC.unk4;
@@ -259,15 +259,15 @@ void LanguageSelectScreen::LoadDone() {
     if (GameLanguage_GetLast(&sp8, 0U) != 0) {
         var_r3_563 = &lit_stringBase0;
         do {
-            temp_r24_573 = ThrobButton::descriptor.unk8;
+            temp_r24_573 = M2C_FIELD(ThrobButton::descriptor, s32 *, 8);
             temp_r3_574 = var_r3_563->Current();
             if (temp_r3_574 != NULL) {
-                var_r24_582 = ((MKHeap *) (temp_r3_574->Current()))->Alloc((s32) temp_r24_573, NULL, 0);
+                var_r24_582 = ((MKHeap *) (temp_r3_574->Current()))->Alloc(temp_r24_573, NULL, 0);
             } else {
                 var_r24_582 = malloc(temp_r24_573);
             }
-            ((M2C_UNK (*)(UIObject *)) ThrobButton::descriptor.unkC)(var_r24_582);
-            var_r24_582->unk8 = &ThrobButton::descriptor;
+            M2C_FIELD(ThrobButton::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r24_582);
+            var_r24_582->unk8 = ThrobButton::descriptor;
             var_r24_582->Init();
             temp_r3_600 = ui_cast<ScriptButton *, UIObject *>(var_r24_582);
             temp_r3_600->unk18.unk40 = 0xB;
@@ -277,15 +277,15 @@ void LanguageSelectScreen::LoadDone() {
             GameLanguage_GetCode(sp8);
             M2C_FIELD(temp_r3_600->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x48)(temp_r3_600, Str_Printf(&lit_stringBase0 + 0x39, M2C_ERROR(/* Read from unset register $r3 */)));
             this->unkBC.unk4->Add(temp_r3_600);
-            temp_r24_628 = DSText::descriptor.unk8;
+            temp_r24_628 = M2C_FIELD(DSText::descriptor, s32 *, 8);
             temp_r3_629 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
             if (temp_r3_629 != NULL) {
-                var_r24_637 = ((MKHeap *) (temp_r3_629->Current()))->Alloc((s32) temp_r24_628, NULL, 0);
+                var_r24_637 = ((MKHeap *) (temp_r3_629->Current()))->Alloc(temp_r24_628, NULL, 0);
             } else {
                 var_r24_637 = malloc(temp_r24_628);
             }
-            ((M2C_UNK (*)(UIObject *)) DSText::descriptor.unkC)(var_r24_637);
-            var_r24_637->unk8 = &DSText::descriptor;
+            M2C_FIELD(DSText::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r24_637);
+            var_r24_637->unk8 = DSText::descriptor;
             var_r24_637->Init();
             temp_r3_655 = ui_cast<UIText *, UIObject *>(var_r24_637);
             temp_r3_655->unk18.unk40 = 0x32;

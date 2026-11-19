@@ -24,12 +24,12 @@ static M2C_UNK .L_8035FAA5;                         /* unable to generate initia
 static M2C_UNK .L_8035FAB2;                         /* unable to generate initializer: unknown type; const */
 
 void KDPropEx::Update() {
-    void *sp8;
-    void *temp_r0_16;
+    KDPropEx *sp8;
+    KDPropEx *temp_r0_16;
     void *var_r31_21;
 
-    temp_r0_16 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_16 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r0_16;
     var_r31_21 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x78);
 loop_2:
@@ -41,20 +41,20 @@ loop_2:
     }
     KDProp::Update();
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPropEx::Message(MKMessage *arg0) {
-    void *sp8;
-    void *temp_r0_59;
+    KDPropEx *sp8;
+    KDPropEx *temp_r0_59;
     void *var_r31_64;
 
     KDProp::Message(arg0);
-    temp_r0_59 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_59 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r0_59;
     var_r31_64 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x84);
 loop_4:
@@ -66,20 +66,20 @@ loop_4:
         goto loop_4;
     }
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPropEx::Resolve() {
-    void *sp8;
-    void *temp_r0_103;
+    KDPropEx *sp8;
+    KDPropEx *temp_r0_103;
     void *var_r31_108;
 
     MKProp::Resolve();
-    temp_r0_103 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_103 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r0_103;
     var_r31_108 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
 loop_2:
@@ -90,22 +90,22 @@ loop_2:
         goto loop_2;
     }
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPropEx::LoadDone() {
-    void *sp8;
+    KDPropEx *sp8;
+    KDPropEx *temp_r3_143;
     s32 temp_r3_161;
     void **temp_r3_156;
-    void *temp_r3_143;
     void *var_r31_183;
 
     KDProp::LoadDone();
-    temp_r3_143 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r3_143 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r3_143;
     if ((MKModel *) this->unk4 == NULL) {
         temp_r3_156 = property_cast<KDMatrixProperty *, KDProperty *>(((KDPropertySet *) (checked_cast<P18KDPropExDescriptor))->Find(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x74, "ltwm"));
@@ -122,20 +122,20 @@ loop_4:
         goto loop_4;
     }
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 s32 KDPropEx::LoadLine(MKIniLine *arg0) {
-    void *spC;
+    KDPropEx *spC;
     u8 sp8;
-    void *temp_r0_218;
+    KDPropEx *temp_r0_218;
     void *var_r31_223;
 
-    temp_r0_218 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_218 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     spC = temp_r0_218;
     var_r31_223 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
 loop_2:
@@ -147,7 +147,7 @@ loop_2:
     }
     if (KDProp::LoadLine(arg0) != 0) {
         if (&spC != NULL) {
-            KDProperty::pInstanceMem.__vptr = spC;
+            *KDProperty::pInstanceMem = spC;
         }
         return 1;
     }
@@ -155,20 +155,20 @@ loop_2:
         this->unk70.unk4 = 0;
     }
     if (&spC != NULL) {
-        KDProperty::pInstanceMem.__vptr = spC;
+        *KDProperty::pInstanceMem = spC;
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPropEx::Deinit() {
-    void *sp8;
-    void *temp_r0_288;
+    KDPropEx *sp8;
+    KDPropEx *temp_r0_288;
     void *var_r31_293;
 
-    temp_r0_288 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_288 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r0_288;
     var_r31_293 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
 loop_2:
@@ -179,21 +179,21 @@ loop_2:
         goto loop_2;
     }
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
     KDProp::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDPropEx::Init() {
-    void *sp8;
-    void *temp_r0_330;
+    KDPropEx *sp8;
+    KDPropEx *temp_r0_330;
     void *var_r31_335;
 
     KDProp::Init();
-    temp_r0_330 = KDProperty::pInstanceMem.__vptr;
-    KDProperty::pInstanceMem.__vptr = this;
+    temp_r0_330 = *KDProperty::pInstanceMem;
+    *KDProperty::pInstanceMem = this;
     sp8 = temp_r0_330;
     var_r31_335 = M2C_FIELD(checked_cast<KDPropExDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
 loop_2:
@@ -204,7 +204,7 @@ loop_2:
         goto loop_2;
     }
     if (&sp8 != NULL) {
-        KDProperty::pInstanceMem.__vptr = sp8;
+        *KDProperty::pInstanceMem = sp8;
     }
 }
 #endif
@@ -246,7 +246,7 @@ s32 KDPropExDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_455;
 
     var_r31_455 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (this->unk74.LoadLine(arg0, (KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (this->unk74.LoadLine(arg0, (KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry) != 0)) {
         var_r31_455 = 1;
     }
     return var_r31_455;
@@ -254,7 +254,7 @@ s32 KDPropExDescriptor::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void KDPropExDescriptor::Init() {
-    KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) &KDPropExDescriptor::propertyClassRegistry);
+    KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry);
     KDPropDescriptor::Init();
     this->unk74.unk0 = NULL;
     this->unk74.unk4 = NULL;
@@ -275,8 +275,6 @@ void KDPropExDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDPropEx_cpp::__sinit() {
-    KDPropExDescriptor::propertyClassRegistry.unk0 = NULL;
+    *KDPropExDescriptor::propertyClassRegistry = 0;
 }
-#endif

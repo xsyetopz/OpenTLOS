@@ -43,7 +43,7 @@ static f32 animSpeedMultiplier[0x11] = {
     0.0f,
     0.0f,
 };
-static SpyroCombatState states__16SpyroCombatState[2]; /* extra bytes: 9; unable to generate initializer: confusing struct layout */
+SpyroCombatState states__16SpyroCombatState;        /* unable to generate initializer: confusing struct layout */
 
 void SpyroCombatState::CometDashTransition() {
     u32 var_r5_37;
@@ -447,7 +447,7 @@ loop_5:
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 sp20 = 0.0f;
                 sp18 = 0.0f;
-                temp_r29_745 = GameData::gameData.unk70.unkE8;
+                temp_r29_745 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
                 sp1C = 1.0f;
                 sp30 = (f32) spD0 + (f32) sp90;
                 sp128.unk20 = sp28;
@@ -455,7 +455,7 @@ loop_5:
                 sp78 = (f64) sp18;
                 sp80 = (f64) sp20;
                 temp_r28_755 = M2C_FIELD(temp_r4_682->unk258, void **, 4);
-                ((HitFX *) (M2C_FIELD(temp_r28_755, HitFX **, 0x10)))->Trigger(*((MKVector3 *) &sp128.unk20), *((MKVector3 *) &sp78), *((GameStats *) (&GameData::gameData.unk70))->GetCurrentBreathColor(), temp_r29_745);
+                ((HitFX *) (M2C_FIELD(temp_r28_755, HitFX **, 0x10)))->Trigger(*((MKVector3 *) &sp128.unk20), *((MKVector3 *) &sp78), *((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathColor(), temp_r29_745);
                 this->unk10->unk430.unk28.SetTargetDir(0U, MKVector3::zero);
                 this->unk10->unk430.unk28.SetLastCombatEnemy(temp_r3_595);
                 this->unk10->unk430.unk28.SetHitTarget(1U);
@@ -645,7 +645,7 @@ block_6:
         temp_r0_1093 = (temp_r3_1090 << 0x1E) - temp_r3_1092;
         this->unk28 = ((temp_r0_1093 << 2) | (temp_r0_1093 >> 0x1EU)) + temp_r3_1092;
         if ((s32) this->unk28 == 3) {
-            if (((s32) ((u8) GameData::gameData.unk70.unkF8 & 0x20) == 0x20) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
+            if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
                 this->unk30 = 1;
             } else {
                 this->unk28 = 0;
@@ -657,7 +657,7 @@ block_6:
         var_r3_1136 = this->unk30;
     }
     if (var_r3_1136 != 0) {
-        var_r3_1136 = ((u8) GameData::gameData.unk70.unkF8 >> 5U) & 1;
+        var_r3_1136 = ((u8) GameData::gameData[0x168] >> 5U) & 1;
     }
     if (var_r3_1136 != 0) {
         this->unk10->unk430.unk28.GetLastCombatEnemy();
@@ -796,7 +796,7 @@ void SpyroCombatState::CombatEnter() {
     sp40 = (f64) sp30;
     sp38 = (f64) sp28;
     this->unk10->SetLVEScale(*((MKVector3 *) &sp38));
-    GameData::gameData.unk70.unkE0 = this->unk28;
+    M2C_FIELD(GameData::gameData, s32 *, 0x150) = (s32) this->unk28;
     this->unk10->unk430.unk28.SetHitType(GetCombatHitType());
     this->unk10->unk430.unk28.SetCombatArc(this->unk28 + 2);
     temp_r3_1429 = this->unk10;
@@ -1012,7 +1012,7 @@ void SpyroCombatState::Exit() {
     temp_r3_1867->unk428 |= 1;
     this->unk10->unk430.unk28.SetDefaults();
     this->unk34 = M2C_FIELD(&gb, f32 *, 0x30C);
-    GameData::gameData.unk70.unkE0 = 0;
+    M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk14.Exit(this);
 }
 #endif
@@ -1048,13 +1048,13 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(temp_r4_1923, f64 *, 0x338) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(temp_r4_1923, f64 *, 0x340) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk10->unk430.unk28.SetDefaults();
-    GameData::gameData.unk70.unkE0 = 0;
+    M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk10->unk430.unk28.SetLastCombatEnemy(NULL);
     M2C_FIELD(this->unk10->unk26C.unk8, f32 *, 0x47C) = 50.0f;
     var_r26_1947 = arg0.IsMessageOnList(0x17F);
     var_r29_1952 = arg0.IsMessageOnList(0x17E);
     temp_r27_1956 = arg0.IsMessageOnList(0x181);
-    if (((u8) var_r29_1952 != 0) && ((s32) ((u8) GameData::gameData.unk70.unkF8 & 0x20) != 0x20)) {
+    if (((u8) var_r29_1952 != 0) && ((s32) (GameData::gameData[0x168] & 0x20) != 0x20)) {
         var_r26_1947 = 1;
         var_r29_1952 = 0;
     }
@@ -1084,7 +1084,7 @@ void SpyroCombatState::Enter(SpyroStateMessages &arg0) {
             temp_r0_2042 = (temp_r3_2039 << 0x1E) - temp_r3_2041;
             this->unk28 = ((temp_r0_2042 << 2) | (temp_r0_2042 >> 0x1EU)) + temp_r3_2041;
             if ((s32) this->unk28 == 3) {
-                if (((s32) ((u8) GameData::gameData.unk70.unkF8 & 0x20) == 0x20) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
+                if (((s32) (GameData::gameData[0x168] & 0x20) == 0x20) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() == 0U) == 0)) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) != 0))) {
                     var_r29_2018 = 1;
                 } else {
                     this->unk28 = 0;
@@ -1112,7 +1112,7 @@ void SpyroCombatState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__34KDStateMachine'
 void SpyroCombatState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__34KDStateMachine<16SpyroCombatState>FPQ234KDStateMachine<16SpyroCombatState>5StateP34KDStateMachine<16SpyroCombatState>(&this->unk14, (KDStateMachine<SpyroCombatState>::State *) SpyroCombatState::states, NULL);
+    Init__34KDStateMachine<16SpyroCombatState>FPQ234KDStateMachine<16SpyroCombatState>5StateP34KDStateMachine<16SpyroCombatState>(&this->unk14, (KDStateMachine<SpyroCombatState>::State *) &SpyroCombatState::states, NULL);
     this->unk28 = 0;
     this->unk2C = 0;
     this->unk2D = 0;

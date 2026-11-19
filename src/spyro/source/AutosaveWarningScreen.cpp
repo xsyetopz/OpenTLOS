@@ -25,7 +25,7 @@ void AutosaveWarningScreen::Update() {
     UIScreen::Update();
     if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
         if ((s32) *gGMState.GetCurrState() == 5) {
-            if ((void *) MemoryCardScreen::operation.__vptr == NULL) {
+            if ((s32) *MemoryCardScreen::operation == 0) {
                 gGMState.SwitchState(6, 1, 0U);
                 return;
             }
@@ -47,7 +47,7 @@ void AutosaveWarningScreen::OnExit() {
     FrontEnd_SetFade(0.0f);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void AutosaveWarningScreen::OnEnter() {
     s32 var_r31_100;
     s8 *temp_r3_105;
@@ -57,7 +57,7 @@ void AutosaveWarningScreen::OnEnter() {
     temp_r3_96 = ui_cast<UIText *, UIObject *>(FindChild("Success"));
     if (temp_r3_96 != NULL) {
         var_r31_100 = 0x40;
-        if ((void *) MemoryCardScreen::operation.__vptr == NULL) {
+        if ((s32) *MemoryCardScreen::operation == 0) {
             var_r31_100 = 0x41;
         }
         temp_r3_105 = M2C_FIELD(temp_r3_96, s8 **, 0x68);

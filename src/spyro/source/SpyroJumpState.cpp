@@ -17,7 +17,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: undefined identifier '__vptr'
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
-static SpyroJumpState states__14SpyroJumpState;     /* extra bytes: 0x19; unable to generate initializer: confusing struct layout */
+SpyroJumpState states__14SpyroJumpState;            /* unable to generate initializer: confusing struct layout */
 
 void SpyroJumpState::SetStrafeJump(bool arg0) {
     s32 sp14;
@@ -217,7 +217,7 @@ void SpyroJumpState::JumpCommonUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
 s32 SpyroJumpState::JumpLoftTransition() {
     InputModifier *temp_r3_433;
     u8 var_r0_434;
@@ -225,7 +225,7 @@ s32 SpyroJumpState::JumpLoftTransition() {
 
     var_r3_422 = this->unk2F;
     if (var_r3_422 != 0) {
-        var_r3_422 = GameData::gameData.unk168 & 1;
+        var_r3_422 = GameData::gameData[0x168] & 1;
     }
     if (var_r3_422 != 0) {
         temp_r3_433 = this->unk10->GetInput();
@@ -300,7 +300,7 @@ u8 SpyroJumpState::JumpCycleTransition() {
     if (var_r3_588 == 0) {
         var_r3_595 = this->unk2F;
         if (var_r3_595 != 0) {
-            var_r3_595 = GameData::gameData.unk168 & 1;
+            var_r3_595 = GameData::gameData[0x168] & 1;
         }
         if (var_r3_595 != 0) {
             temp_r3_606 = this->unk10->GetInput();
@@ -373,7 +373,7 @@ u8 SpyroJumpState::JumpStartTransition() {
     if (var_r3_717 == 0) {
         var_r3_745 = this->unk2F;
         if (var_r3_745 != 0) {
-            var_r3_745 = GameData::gameData.unk168 & 1;
+            var_r3_745 = GameData::gameData[0x168] & 1;
         }
         if (var_r3_745 != 0) {
             temp_r3_756 = this->unk10->GetInput();
@@ -435,7 +435,7 @@ u8 SpyroJumpState::Transition() {
     if ((u8) this->unk2E != 0) {
         sp8.AddMessage(0x17D);
     }
-    if (((u8) this->unk2F != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (GameData::gameData.unk168 & 1) == 1)) {
+    if (((u8) this->unk2F != 0) && ((this->unk18.GetState() == 0) || (this->unk18.GetState() == 1) || (this->unk18.GetState() == 2)) && ((s32) (GameData::gameData[0x168] & 1) == 1)) {
         sp8.AddMessage(0x16F);
     }
     if (this->unk18.GetState() == 3) {
@@ -1112,7 +1112,7 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
         }
     }
     var_r29_2179 = 0;
-    if (((s32) (GameData::gameData.unk168 & 1) == 1) && (arg0.IsMessageOnList(0x16E) != 0)) {
+    if (((s32) (GameData::gameData[0x168] & 1) == 1) && (arg0.IsMessageOnList(0x16E) != 0)) {
         var_r29_2179 = 1;
     }
     var_r5_2193 = 0;

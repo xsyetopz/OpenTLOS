@@ -18,10 +18,155 @@ extern s32 GS_SpyroLand;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier '__vptr'
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
-static SpyroFallState states__14SpyroFallState;     /* type too large by 0x10; unable to generate initializer: confusing struct layout */
+u8 states__14SpyroFallState[0x90] = {
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::SetStrafeJump(bool arg0) {
     s32 sp14;
     s32 sp10;
@@ -1398,7 +1543,7 @@ void SpyroFallState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__32KDStateMachine'
 void SpyroFallState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroFallState>FPQ232KDStateMachine<14SpyroFallState>5StateP32KDStateMachine<14SpyroFallState>(&this->unk14, (KDStateMachine<SpyroFallState>::State *) &SpyroFallState::states, NULL);
+    Init__32KDStateMachine<14SpyroFallState>FPQ232KDStateMachine<14SpyroFallState>5StateP32KDStateMachine<14SpyroFallState>(&this->unk14, (KDStateMachine<SpyroFallState>::State *) SpyroFallState::states, NULL);
     this->unk44 = 0x3D;
     this->unk3C = 0x187;
     this->unk48 = 0.0f;
@@ -1428,7 +1573,6 @@ void SpyroFallState::Init(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroFallState_cpp::__sinit() {
     f64 temp_f0_2773;
     f64 temp_f1_2743;
@@ -1488,4 +1632,3 @@ void SpyroFallState_cpp::__sinit() {
     M2C_FIELD(temp_r3_2734, s32 *, 0x88) = (s32) M2C_FIELD(&lit_728, s32 *, 0x88);
     M2C_FIELD(temp_r3_2734, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_728, s32 *, 0x8C);
 }
-#endif

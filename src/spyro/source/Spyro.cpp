@@ -88,20 +88,16 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 extern f32 maxStandAngle;
 extern DataMap spyroCombatArcDataMap;
-#if 0 // DRAFT: illegal use of abstract class ('Spyro::pure_slot12()')
-static Spyro pNodeNames__5Spyro;                    /* type too large by 0xBB0; unable to generate initializer: confusing struct layout */
-static Spyro stateCreators__5Spyro;                 /* type too large by 0xAD8; unable to generate initializer: confusing struct layout */
+u8 pNodeNames__5Spyro[0x18];                        /* unable to generate initializer: cannot parse "Head" as integer */
+u8 stateCreators__5Spyro[0xF0];                     /* unable to generate initializer: cannot parse Create__35SpyroStateCreator<14SpyroMoveState>FPcUiUi as integer */
 static MKVector3 p_1138;
-#endif
 
 static f32 SPYRO_COMBAT_SCALE_MAG = 400.0f;
-#if 0 // DRAFT: illegal use of abstract class ('Spyro::pure_slot12()')
-static Spyro pRefPointNames__5Spyro;                /* type too large by 0xBC4; unable to generate initializer: confusing struct layout */
-static Spyro defaultEvents__5Spyro;                 /* type too large by 0xBC0; unable to generate initializer: confusing struct layout */
-static Spyro pAnimScrNodeNames__5Spyro;             /* type too large by 0xBC0; unable to generate initializer: confusing struct layout */
+u8 pRefPointNames__5Spyro[4];                       /* unable to generate initializer: cannot parse .L_8035C1BC as integer */
+u8 defaultEvents__5Spyro[8] = { 0, 0, 0, 0xB, 0, 0, 0, 0x12 };
+u8 pAnimScrNodeNames__5Spyro[8];                    /* unable to generate initializer: cannot parse .L_8035C1C6 as integer */
 
 static f32 fMeleeButtonTimeout = 0.25f;
-#endif
 static f32 fMaxKnockupHoldButtonTime = 0.2f;
 
 static u8 lit_2937 = 1;
@@ -118,10 +114,10 @@ void Spyro::AddStat(StatType arg0, float arg1) {
 
     if (((u8) M2C_FIELD(this, u8 *, 0x25D) != 0) && ((s32) arg0 == 3)) {
         var_f1_331 = this->unk250 + arg1;
-        if (var_f1_331 < GameData::gameData.unkBC) {
+        if (var_f1_331 < M2C_FIELD(GameData::gameData, f32 *, 0xBC)) {
 
         } else {
-            var_f1_331 = GameData::gameData.unkBC;
+            var_f1_331 = M2C_FIELD(GameData::gameData, f32 *, 0xBC);
         }
         if (var_f1_331 > 0.0f) {
 
@@ -131,7 +127,7 @@ void Spyro::AddStat(StatType arg0, float arg1) {
         this->unk250 = var_f1_331;
         return;
     }
-    ((Stat *) (&GameData::gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
+    ((Stat *) (GameData::gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
 }
 #endif
 
@@ -259,14 +255,14 @@ block_7:
             M2C_FIELD(this, f32 *, 0x24C) = var_f0_424;
             temp_f1_440 = M2C_FIELD(this, f32 *, 0x24C);
             if (temp_f1_440 > 0.0f) {
-                if ((u8) GameData::gameData.unk156 != 0) {
-                    ((Stat *) (&GameData::gameData.unk70 + 0x48))->SetValue(GameData::gameData.unkBC, 0U);
+                if ((u8) GameData::gameData[0x156] != 0) {
+                    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC), 0U);
                 } else {
-                    var_f1_459 = (temp_f1_440 / this->unk248) * GameData::gameData.unkBC;
-                    if (var_f1_459 < GameData::gameData.unkBC) {
+                    var_f1_459 = (temp_f1_440 / this->unk248) * M2C_FIELD(GameData::gameData, f32 *, 0xBC);
+                    if (var_f1_459 < M2C_FIELD(GameData::gameData, f32 *, 0xBC)) {
 
                     } else {
-                        var_f1_459 = GameData::gameData.unkBC;
+                        var_f1_459 = M2C_FIELD(GameData::gameData, f32 *, 0xBC);
                     }
                     temp_f0_466 = this->unk250;
                     if (var_f1_459 > temp_f0_466) {
@@ -274,7 +270,7 @@ block_7:
                     } else {
                         var_f1_459 = temp_f0_466;
                     }
-                    ((Stat *) (&GameData::gameData.unk70 + 0x48))->SetValue(var_f1_459, 0U);
+                    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(var_f1_459, 0U);
                 }
                 temp_r0_476 = this->unk24C;
                 switch (M2C_BITWISE(s32, temp_r0_476)) { /* switch 1; irregular */
@@ -312,7 +308,7 @@ loop_73:
                                 if ((((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C))) == 250000.0f) {
                                     temp_r28_623 = (*temp_r28_860)->unk8.unk0(temp_r28_860);
                                     sp1A8.unk4 = 0;
-                                    sp1A8.Init((MKProp *) this, ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->GetBreathAttackDamage(1, 0, 0), 0, 0, 1, 0, 0, -1);
+                                    sp1A8.Init((MKProp *) this, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(1, 0, 0), 0, 0, 1, 0, 0, -1);
                                     var_f0_639 = 0.0f;
                                     temp_r3_641 = this->unk8;
                                     sp68 = 0.0f;
@@ -449,11 +445,11 @@ loop_73:
             } else {
                 M2C_FIELD(this, u8 *, 0x25D) = 0U;
                 this->unk6F8.FadeOut(1);
-                if ((u8) GameData::gameData.unk156 != 0) {
-                    ((Stat *) (&GameData::gameData.unkB8))->SetValue(GameData::gameData.unkBC, 0U);
+                if ((u8) GameData::gameData[0x156] != 0) {
+                    ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC), 0U);
                     return;
                 }
-                ((Stat *) (&GameData::gameData.unkB8))->SetValue(this->unk250, 0U);
+                ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(this->unk250, 0U);
             }
         }
     }
@@ -1618,7 +1614,7 @@ void Spyro::SetupMeleeAttackHitMsg(int arg0, MeleeAttackHitMsg *arg1) {
             break;
         }
     } else {
-        switch ((s32) GameData::gameData.unk158) { /* switch 2; irregular */
+        switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158)) { /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             var_r31_3116 = 0x10;
             break;
@@ -1837,14 +1833,14 @@ loop_10:
                     M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
                     unksp68 = 0.0f;
                     unksp60 = 0.0f;
-                    temp_r20_3553 = GameData::gameData.unk158;
+                    temp_r20_3553 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
                     unksp64 = 1.0f;
                     unksp78 = unksp168 + unksp128;
                     unksp1B0 = unksp70;
                     unksp1B8 = unksp78;
                     unksp110 = 0.0;
                     unksp118 = unksp68;
-                    ((HitFX *) (M2C_FIELD(M2C_FIELD(this, void **, 0x264), HitFX **, 0x10)))->Trigger(*((MKVector3 *) &unksp1B0), *((MKVector3 *) &unksp110), *((GameStats *) ((GameStats *) &GameData::gameData.unk70))->GetCurrentBreathColor(), temp_r20_3553);
+                    ((HitFX *) (M2C_FIELD(M2C_FIELD(this, void **, 0x264), HitFX **, 0x10)))->Trigger(*((MKVector3 *) &unksp1B0), *((MKVector3 *) &unksp110), *((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathColor(), temp_r20_3553);
                     if (var_r26_3301 != 0) {
                         unksp1F4 = 0;
                         MKVector(1.0f, 1.0f, 1.0f);
@@ -3098,7 +3094,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'unsigned char' to
 void Spyro::PreSetAnim() {
     s32 var_r29_6171;
     s32 var_r31_6172;
@@ -3106,7 +3102,7 @@ void Spyro::PreSetAnim() {
     var_r29_6171 = 0;
     var_r31_6172 = 0;
     do {
-        ProcessAnimationEvent((Spyro::AnimEvents) *(&Spyro::defaultEvents + var_r31_6172));
+        ProcessAnimationEvent((Spyro::AnimEvents) Spyro::defaultEvents[var_r31_6172]);
         var_r29_6171 += 1;
         var_r31_6172 += 4;
     } while (var_r29_6171 < 2);
@@ -3293,7 +3289,7 @@ u8 Spyro::TailSweepTailStrikeTransition() {
     if (((u8) gb.unk5 != 0) && (this->unk430.unk28.GetTailStrikeEnabled() != 0)) {
         var_r30_6485 = 1;
     }
-    if ((var_r30_6485 != 0) && ((s32) (GameData::gameData.unk168 & 2) == 2)) {
+    if ((var_r30_6485 != 0) && ((s32) (GameData::gameData[0x168] & 2) == 2)) {
         var_r31_6483 = 1;
     }
     var_r28_6506 = 0;
@@ -5349,7 +5345,7 @@ void Spyro::ProcessAnimationEvent(Spyro::AnimEvents arg1) {
         sp14 = 1.0f;
         sp68 = (f64) sp8;
         sp70 = (f64) sp10;
-        switch ((s32) GameData::gameData.unk158) { /* switch 2; irregular */
+        switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158)) { /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             sp68 = 1.0f;
             unksp6C = 0.8f;
@@ -5381,7 +5377,7 @@ void Spyro::ProcessAnimationEvent(Spyro::AnimEvents arg1) {
         break;
     }
     var_r29_10043 = 0;
-    switch ((s32) GameData::gameData.unk158) {     /* switch 3; irregular */
+    switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158)) { /* switch 3; irregular */
     case 0:                                         /* switch 3 */
         var_r29_10043 = 0;
         break;
@@ -5526,8 +5522,8 @@ void Spyro::DeathReset() {
     SetAnim(0U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r31_10314 = MKModel_GetAnimation(this->unk4);
     ((MKAnimScript *) (GetAnimScript((Spyro::AnimScriptNode) 0)))->Animate(temp_r31_10314, -1, NULL);
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->SetValue(GameData::gameData.unk74, 0U);
-    ((Stat *) (&GameData::gameData.unk70 + 0x30))->SetValue(GameData::gameData.unkA4, 0U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
     this->unkB74 = 0.0f;
     this->unkB78.Reset();
     this->unk250 = 0.0f;
@@ -5535,14 +5531,14 @@ void Spyro::DeathReset() {
     M2C_FIELD(this, f32 *, 0x248) = 0.0f;
     this->unkB90.SetDefaults();
     if (((u8) M2C_FIELD(this, u8 *, 0x25D) != 0) && (M2C_FIELD(this, f32 *, 0x24C) > 0.0f)) {
-        ((Stat *) (&GameData::gameData.unk70 + 0x48))->SetValue(0.0f, 0U);
+        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(0.0f, 0U);
     }
     M2C_FIELD(this, f32 *, 0x24C) = 0.0f;
     M2C_FIELD(this, u8 *, 0x25D) = 0U;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk54'
 void Spyro::ClearData() {
     f64 temp_f30_10445;
     f64 temp_f31_10449;
@@ -5586,8 +5582,8 @@ void Spyro::ClearData() {
     this->unk398 = 0.0f;
     this->unk3E4 = 0.0f;
     M2C_FIELD(this, f32 *, 0x3DC) = 0.0f;
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->Init(50.0f, 50.0f, NULL, NULL);
-    ((Stat *) (&GameData::gameData.unk70 + 0x30))->Init(30.0f, 30.0f, NULL, NULL);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Init(50.0f, 50.0f, NULL, NULL);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Init(30.0f, 30.0f, NULL, NULL);
     temp_f30_10445 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r29_10446 = 0;
     this->unk308 = 0.0f;
@@ -6072,7 +6068,7 @@ void Spyro::Message(MKMessage *arg0) {
             }
             goto block_216;
         case 0xE6:
-            ((Stat *) ((Stat *) &GameData::gameData.unk70))->SetValue(GameData::gameData.unk74, 0U);
+            ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
             goto block_216;
         case 0x52:
             temp_r29_11448 = M2C_FIELD(GetCollisionInfo(), u8 *, 4);
@@ -6480,7 +6476,7 @@ s8 Spyro::Hurt(HurtMessage *arg0) {
     if (arg0->unk48 > 0.0f) {
         M2C_FIELD(this, f32 *, 0x248) = 0.5f;
     }
-    if ((M2C_FIELD(&GameData::gameData, f32 *, 0x70) > 0.0f) && (temp_r3_12136 = arg0->unk28, ((temp_r3_12136 == 8) == 0)) && (temp_r3_12136 != 9) && ((u8) arg0->unk51 == 0)) {
+    if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) && (temp_r3_12136 = arg0->unk28, ((temp_r3_12136 == 8) == 0)) && (temp_r3_12136 != 9) && ((u8) arg0->unk51 == 0)) {
         if (temp_r3_12136 != 0) {
             spB0.unk50 = 0;
             spB0.AddMessage((MKMessage *) arg0);
@@ -6560,11 +6556,11 @@ u8 Spyro::DealDamage(float arg0, bool arg1, bool arg2, HurtMessage *arg3) {
         }
         var_f31_12210 = 0.0f;
     }
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->Add(-var_f31_12210, 1U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(-var_f31_12210, 1U);
     this->unk3DC = 2.0f;
     this->unkB74 = gb.unk30C;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((gb.unk30C == M2C_FIELD(this, f32 *, 0x3DC)) && (arg1 != 0) && ((M2C_FIELD(&GameData::gameData, f32 *, 0x70) / GameData::gameData.unk74) > 0.0f)) {
+    if ((gb.unk30C == M2C_FIELD(this, f32 *, 0x3DC)) && (arg1 != 0) && ((M2C_FIELD(GameData::gameData, f32 *, 0x70) / M2C_FIELD(GameData::gameData, f32 *, 0x74)) > 0.0f)) {
         SetInvincibilityTimeOut(gb.unk390);
     }
     return 1U;
@@ -8313,8 +8309,8 @@ block_28:
                 var_f2_15374 = temp_f0_15375;
             }
             this->unk3DC = var_f2_15374;
-            if ((this->unk3DC == 0.0f) && (M2C_FIELD(&GameData::gameData, f32 *, 0x70) < GameData::gameData.unk74)) {
-                ((Stat *) ((Stat *) &GameData::gameData.unk70))->Add(10.0f * gUpdateTimeDelta, 1U);
+            if ((this->unk3DC == 0.0f) && (M2C_FIELD(GameData::gameData, f32 *, 0x70) < M2C_FIELD(GameData::gameData, f32 *, 0x74))) {
+                ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(10.0f * gUpdateTimeDelta, 1U);
             }
         }
         UpdateEffects((MKVector3 *) &this->unk308);
@@ -8543,8 +8539,8 @@ void Spyro::Resolve() {
     if (this == (u32) M2C_FIELD(this->unk0, u32 *, 0x28)) {
         M2C_FIELD(&gb, f32 *, 0x3B8) = (f32) this->unk214.unkC;
     }
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->Init(50.0f, 50.0f, NULL, NULL);
-    ((Stat *) (&GameData::gameData.unk70 + 0x30))->Init(30.0f, 30.0f, NULL, NULL);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Init(50.0f, 50.0f, NULL, NULL);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Init(30.0f, 30.0f, NULL, NULL);
     temp_r3_15877 = this->unkB70;
     if (temp_r3_15877 != NULL) {
         temp_r3_15877->unk18 = this->unk18;
@@ -8596,9 +8592,9 @@ void Spyro::Reset() {
 
     MKProp::Reset();
     this->unk428.Reset();
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->SetValue(GameData::gameData.unk74, 0U);
-    ((Stat *) (&GameData::gameData.unk70 + 0x30))->SetValue(GameData::gameData.unkA4, 0U);
-    ((Stat *) (&GameData::gameData.unk70 + 0x48))->SetValue(0.0f, 0U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(0.0f, 0U);
     ClearData();
     this->unk68 = M2C_FIELD(&MKVector3::one, f64 *, 0);
     this->unk70 = M2C_FIELD(&MKVector3::one, f64 *, 8);
@@ -8725,7 +8721,7 @@ void Spyro::LoadDone() {
     arg_sp68 = (f64) arg_sp28;
     this->unk26C.unkC->ResetCollisionSweepSphere((s32) &arg_sp60, M2C_ERROR(/* Read from unset register $r5 */));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
-    Init__22KDStateMachine<5Spyro>FPQ222KDStateMachine<5Spyro>5StateP22KDStateMachine<5Spyro>(&this->unk7C, (KDStateMachine<Spyro>::State *) &Spyro::pNodeNames.unk460.unk20.unkC, NULL);
+    Init__22KDStateMachine<5Spyro>FPQ222KDStateMachine<5Spyro>5StateP22KDStateMachine<5Spyro>(&this->unk7C, (KDStateMachine<Spyro>::State *) (Spyro::pNodeNames + 0x494), NULL);
     this->unk7C.SetState(this, 0, 0U);
     this->unk8 = MKModel_GetWorldMatrix(this->unk4);
     M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
@@ -8741,13 +8737,13 @@ void Spyro::LoadDone() {
         var_r26_16300 += 1;
         var_r29_16301 += 0x58;
     } while (var_r26_16300 < 2);
-    this->unkB4.Init((AnimEntry *) &Spyro::pNodeNames.unk18, 0x5C, &this->unkC0);
+    this->unkB4.Init((AnimEntry *) (Spyro::pNodeNames + 0x18), 0x5C, &this->unkC0);
     var_r26_16325 = 0;
     var_r29_16326 = 0;
     do {
-        if ((u32) *(&Spyro::pAnimScrNodeNames + var_r29_16326) != 0U) {
+        if ((u32) Spyro::pAnimScrNodeNames[var_r29_16326] != 0U) {
             temp_ret_16333 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            temp_r27_16341 = Str_Printf("%s%s", M2C_FIELD(temp_ret_16333, s32 *, 0xAC), *(&Spyro::pAnimScrNodeNames + var_r29_16326), "Head", M2C_BITWISE(f32, temp_ret_16333));
+            temp_r27_16341 = Str_Printf("%s%s", M2C_FIELD(temp_ret_16333, s32 *, 0xAC), Spyro::pAnimScrNodeNames[var_r29_16326], "Head", M2C_BITWISE(f32, temp_ret_16333));
             ((Animation *) (MKModel_GetAnimation(this->unk4)))->NodeExists(temp_r27_16341, this + (var_r29_16326 + 0x170));
         } else {
             *(this + (var_r29_16326 + 0x170)) = -1;
@@ -8758,7 +8754,7 @@ void Spyro::LoadDone() {
     var_r26_16358 = 0;
     var_r29_16359 = 0;
     do {
-        ((MKAnimScript *) (this + (var_r29_16359 + 0xC0)))->InitEvents((s8 **) &Spyro::pNodeNames.unk2F0);
+        ((MKAnimScript *) (this + (var_r29_16359 + 0xC0)))->InitEvents((s8 **) (Spyro::pNodeNames + 0x2F8));
         var_r26_16358 += 1;
         var_r29_16359 += 0x58;
     } while (var_r26_16358 < 2);
@@ -8766,13 +8762,13 @@ void Spyro::LoadDone() {
     var_r31_16373 = 0;
     do {
         temp_ret_16376 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        temp_r29_16382 = Str_Printf("%s%s", M2C_FIELD(temp_ret_16376, s32 *, 0xAC), *(&Spyro::pNodeNames + var_r31_16373), M2C_BITWISE(f32, temp_ret_16376));
+        temp_r29_16382 = Str_Printf("%s%s", M2C_FIELD(temp_ret_16376, s32 *, 0xAC), Spyro::pNodeNames[var_r31_16373], M2C_BITWISE(f32, temp_ret_16376));
         var_r26_16372 += 1;
         *(this + (var_r31_16373 + 0x98)) = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(temp_r29_16382);
         var_r31_16373 += 4;
     } while (var_r26_16372 < 6);
     temp_ret_16397 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    MKModel_RefPointExists(this->unk4, Str_Printf("%s%s", M2C_FIELD(temp_ret_16397, s32 *, 0xB4), Spyro::pRefPointNames.unk0, M2C_BITWISE(f32, temp_ret_16397)), &this->unkB0);
+    MKModel_RefPointExists(this->unk4, Str_Printf("%s%s", M2C_FIELD(temp_ret_16397, s32 *, 0xB4), *Spyro::pRefPointNames, M2C_BITWISE(f32, temp_ret_16397)), &this->unkB0);
     this->unkC0.SetAnim(M2C_FIELD(this->unkB4, MKAnim **, 4), 1.0f, 0.0f, 0, -1);
     this->unk3A0.Init(this->unk4, -1);
     MKModel_GetWorldMatrix(this->unk4);
@@ -8981,7 +8977,7 @@ void Spyro::Init() {
     this->unk1B4.unk8 = 0;
     M2C_FIELD(this, s8 *, 0x284) = 0;
     this->unk10 |= 8;
-    this->unk54.Init(this, (SpyroStateCreatorTableEntry *) &Spyro::stateCreators, 0xF);
+    this->unk54.Init(this, (SpyroStateCreatorTableEntry *) Spyro::stateCreators, 0xF);
     M2C_FIELD(this, f32 *, 0x38C) = 1900.0f;
     M2C_FIELD(this, s8 *, 0x3D2) = 0;
     this->unk280 = 1.0f;
@@ -9018,7 +9014,7 @@ void Spyro::Init() {
     this->unk408 = this;
     M2C_FIELD(this, Spyro **, 0x418) = this;
     this->unkBB4 = 0;
-    Spyro::pInstance.unk0 = this;
+    *Spyro::pInstance = this;
 }
 #endif
 
@@ -9209,9 +9205,9 @@ void SafePosInfo::GetPos() {
 
 #if 0 // DRAFT: undefined identifier 'cos'
 void Spyro_cpp::__sinit() {
-    f32 sp10;
-    MKProp *spC;
-    f32 sp8;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
     f32 temp_f0_18735;
     f32 temp_f0_18741;
     f64 temp_f2_18715;
@@ -9220,6 +9216,7 @@ void Spyro_cpp::__sinit() {
     f64 temp_f5_18714;
     f64 temp_f5_18722;
     f64 temp_f9_18702;
+    u8 *temp_r23_18744;
 
     temp_f4_18700 = __frsqrte(2014000.0);
     temp_f9_18702 = __frsqrte(380000.0);
@@ -9231,36 +9228,37 @@ void Spyro_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f5_18722 * -((2014000.0 * (temp_f5_18722 * temp_f5_18722)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = temp_f0_18735;
     temp_f0_18741 = (f32) cos(0.6457718014717102);
-    Spyro::pNodeNames.unk460.unk20.unkC = M2C_FIELD(&__ptmf_null, f32 *, 0);
-    Spyro::pNodeNames.unk460.unk30 = M2C_FIELD(&__ptmf_null, MKProp **, 4);
-    Spyro::pNodeNames.unk460.unk34 = M2C_FIELD(&__ptmf_null, f32 *, 8);
-    Spyro::pNodeNames.unk460.unk38 = M2C_FIELD(&__ptmf_null, f32 *, 0);
-    Spyro::pNodeNames.unk460.unk3C = (s32) M2C_FIELD(&__ptmf_null, MKProp **, 4);
-    Spyro::pNodeNames.unk460.unk40 = M2C_BITWISE(s32, M2C_FIELD(&__ptmf_null, f32 *, 8));
-    Spyro::pNodeNames.unk460.unk44 = M2C_BITWISE(s32, M2C_FIELD(&__ptmf_null, f32 *, 0));
-    Spyro::pNodeNames.unk460.unk48 = (s32) M2C_FIELD(&__ptmf_null, MKProp **, 4);
-    M2C_FIELD(&Spyro::pNodeNames, f32 *, 0x4B4) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-    M2C_FIELD(&Spyro::pNodeNames, f32 *, 0x4B8) = (f32) Spyro::pNodeNames.unk430.unk14;
-    Spyro::pNodeNames.unk460.unk54 = Spyro::pNodeNames.unk430.unk18;
-    Spyro::pNodeNames.unk4C0 = M2C_BITWISE(s32, Spyro::pNodeNames.unk430.unk1C);
-    Spyro::pNodeNames.unk4C4 = Spyro::pNodeNames.unk430.unk20;
-    Spyro::pNodeNames.unk4C8 = Spyro::pNodeNames.unk430.unk24;
-    M2C_FIELD(&Spyro::pNodeNames, void **, 0x4CC) = (void *) Spyro::pNodeNames.unk430.unk28;
-    Spyro::pNodeNames.unk4D0 = Spyro::pNodeNames.unk464;
-    Spyro::pNodeNames.unk4D4 = Spyro::pNodeNames.unk460.unk0;
-    M2C_FIELD(&Spyro::pNodeNames, s32 *, 0x4D8) = (s32) Spyro::pNodeNames.unk460.unk4;
-    Spyro::pNodeNames.unk4DC = M2C_FIELD(&Spyro::pNodeNames, s32 *, 0x470);
-    Spyro::pNodeNames.unk4E0 = M2C_FIELD(&Spyro::pNodeNames, s32 *, 0x474);
-    Spyro::pNodeNames.unk4E4 = Spyro::pNodeNames.unk460.unk10;
-    Spyro::pNodeNames.unk4E8 = Spyro::pNodeNames.unk460.unk14;
-    Spyro::pNodeNames.unk4EC = Spyro::pNodeNames.unk460.unk18;
-    Spyro::pNodeNames.unk4F0 = Spyro::pNodeNames.unk460.unk1C;
-    Spyro::pNodeNames.unk4F4 = Spyro::pNodeNames.unk460.unk20.unk0;
-    M2C_FIELD(&Spyro::pNodeNames, Targetable **, 0x4F8) = (Targetable *) Spyro::pNodeNames.unk460.unk20.unk4;
-    Spyro::pNodeNames.unk4FC = Spyro::pNodeNames.unk460.unk20.unk8;
-    sp8 = M2C_FIELD(&__ptmf_null, f32 *, 0);
-    spC = M2C_FIELD(&__ptmf_null, MKProp **, 4);
-    sp10 = M2C_FIELD(&__ptmf_null, f32 *, 8);
+    temp_r23_18744 = Spyro::pNodeNames + 0x494;
+    M2C_FIELD(Spyro::pNodeNames, s32 *, 0x494) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(Spyro::pNodeNames, s32 *, 0x498) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+    M2C_FIELD(Spyro::pNodeNames, s32 *, 0x49C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(temp_r23_18744, s32 *, 0xC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x10) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x14) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x18) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x1C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x20) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x24) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x44C);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x28) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x450);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x2C) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x454);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x30) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x458);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x34) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x45C);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x38) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x460);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x3C) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x464);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x40) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x468);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x44) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x46C);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x48) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x470);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x4C) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x474);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x50) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x478);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x54) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x47C);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x58) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x480);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x5C) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x484);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x60) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x488);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x64) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x48C);
+    M2C_FIELD(temp_r23_18744, s32 *, 0x68) = (s32) M2C_FIELD(Spyro::pNodeNames, s32 *, 0x490);
+    sp8 = M2C_FIELD(&__ptmf_null, s32 *, 0);
+    spC = M2C_FIELD(&__ptmf_null, s32 *, 4);
+    sp10 = M2C_FIELD(&__ptmf_null, s32 *, 8);
     maxStandAngle = temp_f0_18741;
 }
 #endif

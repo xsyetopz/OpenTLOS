@@ -171,10 +171,10 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         gb.unk80->EnableLight(temp_r4_161, 1U);
     }
     this->unk124 = 10000.0f;
-    temp_r30_175 = GameData::gameData.unk70.unkE8;
+    temp_r30_175 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     temp_r4_176 = temp_r30_175 << 5;
-    temp_r31_178 = *(&GameData::gameData.unk70 + (temp_r4_176 + 0x7C));
-    temp_r5_180 = &GameData::gameData.unk70 + (temp_r4_176 + 0x64);
+    temp_r31_178 = *(&GameData::gameData[0x70] + (temp_r4_176 + 0x7C));
+    temp_r5_180 = &GameData::gameData[0x70] + (temp_r4_176 + 0x64);
     if (temp_r31_178 == 3) {
         var_r4_184 = 0;
         if (((s32) M2C_FIELD(temp_r5_180, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_180, s32 *, 4) == 3)) {
@@ -193,7 +193,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     } else {
         var_r23_213 = *(temp_r5_180 + (temp_r31_178 * 4));
     }
-    this->unk130.Init(arg3, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
+    this->unk130.Init(arg3, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
     temp_r3_231 = this->unk120;
     if ((temp_r3_231 != NULL) && (M2C_FIELD(temp_r3_231->unk0, s32 *, 0xC) & 8)) {
         this->unk130.unk34 = 5.0f;

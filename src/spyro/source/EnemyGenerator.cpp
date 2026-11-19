@@ -808,7 +808,7 @@ loop_54:
     AddSpawnPointEnd();
     SetDefaults();
     this->unk4C = (this->unk4C & ~0x10) | ((this->unk50->unk18 << 4) & 0x10);
-    if (((u8) this->unk84 == 0) || (((MKProp *) this->unk60 != NULL) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) == 0))) {
+    if (((u8) this->unk84 == 0) || (((MKProp *) this->unk60 != NULL) && (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, *MKResource::sWorkingChunkID) == 0))) {
         FunctionOff();
     }
 }

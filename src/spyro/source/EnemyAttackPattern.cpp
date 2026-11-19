@@ -472,7 +472,7 @@ loop_17:
             if (var_r26_791 < (s32) M2C_FIELD(temp_r3_850, s32 *, 8)) {
                 var_f30_796 = 0.0f;
                 temp_r25_797 = M2C_FIELD(temp_r3_850, s32 *, 4) + var_r17_792;
-                if (((s32) temp_r25_797->unk8 != 1) && (!(M2C_FIELD(M2C_FIELD(temp_r3_850, void **, 0), s32 *, 0x38) & 0x1000) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((GameData::gameData.unkA0 == 0.0f) == 0)))) {
+                if (((s32) temp_r25_797->unk8 != 1) && (!(M2C_FIELD(M2C_FIELD(temp_r3_850, void **, 0), s32 *, 0x38) & 0x1000) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) == 0)))) {
                     if (EvaluateCondition(temp_r4_849 + var_r18_787, temp_r25_797, arg0, arg1) != 0) {
                         var_f30_796 = temp_r25_797->unkC;
                         if (var_r28_790 == 0) {

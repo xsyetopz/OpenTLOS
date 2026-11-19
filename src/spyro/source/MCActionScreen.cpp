@@ -36,18 +36,18 @@ void MCActionScreen::Abort() {
     if (((void *) autosaveCard != NULL) && (((u8) M2C_FIELD(autosaveCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(autosaveCard, u8 *, 8) != 0))) {
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
     }
-    if (((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
-        MemoryCardScreen::selectedCard.__vptr = NULL;
+    if (((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 8) != 0)) {
+        *MemoryCardScreen::selectedCard = NULL;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
         return;
     }
-    switch ((void *) MCActionScreen::action.__vptr) { /* irregular */
+    switch ((s32) *MCActionScreen::action) {      /* irregular */
     case 6:
-        MemoryCardScreen::selectedFile.__vptr = (void *)-1;
+        *MemoryCardScreen::selectedFile = -1;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectFile");
         return;
     case 1:
-        MCQueryScreen::query.__vptr = (void *)6;
+        *MCQueryScreen::query = 6;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
         return;
     case 5:
@@ -57,7 +57,7 @@ void MCActionScreen::Abort() {
             return;
         }
     default:
-        if ((u32) KDMemoryCard::numCardsPresent.unk0 == 1U) {
+        if ((u32) *KDMemoryCard::numCardsPresent == 1U) {
             PopScreen();
             return;
         }
@@ -167,7 +167,7 @@ void MCActionScreen::Update() {
     temp_r0_153 = this->unkEC;
     if ((temp_r0_153 == NULL) || (temp_r0_153 == (void *)4)) {
         if (UIControls_Pressed((FrontEndControls) 0xC, -1) != 0) {
-            if ((u8) MemoryCardScreen::bNewGame != 0) {
+            if ((u8) *MemoryCardScreen::bNewGame != 0) {
                 KDSound_Play(GS_MenuSelect, 0U, -1);
                 FrontEnd_GoToNewGame();
                 return;
@@ -185,7 +185,7 @@ block_8:
     if (((void *) this->unkEC == NULL) && (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0)) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
         var_r5_200 = 0;
-        if ((void *) MCActionScreen::action.__vptr == (void *)5) {
+        if ((s32) *MCActionScreen::action == 5) {
             var_r5_200 = 1;
         }
         if (var_r5_200 == (s32) M2C_FIELD(this->unkDC, s32 *, 0x68)) {
@@ -212,8 +212,8 @@ block_8:
             this->unkEC = (void *)1;
             goto block_18;
         }
-        if (((void *) (MCActionScreen::action.__vptr - 3) <= 1U) || ((void *) MCActionScreen::action.__vptr == (void *)5)) {
-            ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 3);
+        if (((u32) (*MCActionScreen::action - 3) <= 1U) || ((s32) *MCActionScreen::action == 5)) {
+            ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 3);
             this->unkEC = (void *)5;
             goto block_18;
         }
@@ -234,11 +234,11 @@ block_18:
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
                 return;
             }
-            if (((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
+            if (((u8) (*MemoryCardScreen::selectedCard)->unk9 == 0) || ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0)) {
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
                 return;
             }
-            temp_ret_346 = ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->GetNextCard();
+            temp_ret_346 = ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->GetNextCard();
             temp_r3_346 = temp_ret_346;
             if (temp_r3_346 != NULL) {
                 ((KDMemoryCard *) (temp_r3_346->GetNextCard()))->SetState((KDMCState) 2);
@@ -251,11 +251,11 @@ block_18:
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
                 return;
             }
-            if (((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
+            if (((u8) (*MemoryCardScreen::selectedCard)->unk9 == 0) || ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0)) {
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
                 return;
             }
-            switch ((void *) MCActionScreen::action.__vptr) { /* switch 2; irregular */
+            switch ((s32) *MCActionScreen::action) { /* switch 2; irregular */
             case 1:                                 /* switch 2 */
                 System_DoReset(1U, 1U, 1U);
                 break;
@@ -268,7 +268,7 @@ block_18:
                 }
                 M2C_FIELD(temp_r29_418, s8 **, 0x68) = NULL;
                 M2C_FIELD(temp_r29_418, s32 *, 0x6C) = 0x62;
-                ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 7);
+                ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 7);
                 break;
             default:                                /* switch 2 */
                 temp_r29_433 = this->unkD8;
@@ -278,7 +278,7 @@ block_18:
                 }
                 M2C_FIELD(temp_r29_433, s8 **, 0x68) = NULL;
                 M2C_FIELD(temp_r29_433, s32 *, 0x6C) = 0x63;
-                ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 6);
+                ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 6);
                 break;
             case 5:                                 /* switch 2 */
                 temp_r29_448 = this->unkD8;
@@ -288,10 +288,10 @@ block_18:
                 }
                 M2C_FIELD(temp_r29_448, s8 **, 0x68) = NULL;
                 M2C_FIELD(temp_r29_448, s32 *, 0x6C) = 0x64;
-                ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 8);
+                ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 8);
                 break;
             case 6:                                 /* switch 2 */
-                if ((void *) MemoryCardScreen::operation.__vptr == (void *)1) {
+                if ((s32) *MemoryCardScreen::operation == 1) {
                     temp_r29_466 = this->unkD8;
                     temp_r3_467 = M2C_FIELD(temp_r29_466, s8 **, 0x68);
                     if (temp_r3_467 != NULL) {
@@ -299,10 +299,10 @@ block_18:
                     }
                     M2C_FIELD(temp_r29_466, s8 **, 0x68) = NULL;
                     M2C_FIELD(temp_r29_466, s32 *, 0x6C) = 0x62;
-                    ((GameData *) (&GameData::gameData))->UpdateDataHeader(Autosave_GetGameDataCopy());
-                    ((GameData *) (&GameData::gameData))->GetSaveGameDescription();
+                    ((GameData *) ((GameData *) GameData::gameData))->UpdateDataHeader(Autosave_GetGameDataCopy());
+                    ((GameData *) ((GameData *) GameData::gameData))->GetSaveGameDescription();
                     temp_r30_486 = Autosave_GetGameDataSize();
-                    ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SaveData((s32) MemoryCardScreen::selectedFile.__vptr, Autosave_GetGameDataCopy(), temp_r30_486, M2C_ERROR(/* Read from unset register $r3 */));
+                    ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SaveData(*MemoryCardScreen::selectedFile, Autosave_GetGameDataCopy(), temp_r30_486, M2C_ERROR(/* Read from unset register $r3 */));
                     M2C_FIELD(&gb, s8 *, 0x382) = 1;
                 } else {
                     temp_r29_500 = this->unkD8;
@@ -314,9 +314,9 @@ block_18:
                     M2C_FIELD(temp_r29_500, s32 *, 0x6C) = 0x61;
                     M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                     M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                    ((GameStats *) (&GameData::gameData.unk70))->SetLevelUpPoints(0);
+                    ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetLevelUpPoints(0);
                     temp_r30_520 = Autosave_GetGameDataSize();
-                    ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->LoadData((s32) MemoryCardScreen::selectedFile.__vptr, Autosave_GetGameDataCopy(), temp_r30_520);
+                    ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->LoadData(*MemoryCardScreen::selectedFile, Autosave_GetGameDataCopy(), temp_r30_520);
                 }
                 temp_r3_528 = this->unkD8;
                 sp78 = 2;
@@ -329,13 +329,13 @@ block_18:
             goto block_127;
         case 2:                                     /* switch 1 */
             if (temp_r3_291->WasErrorDuringLast() != 0) {
-                switch ((void *) MCActionScreen::action.__vptr) { /* switch 3; irregular */
+                switch ((s32) *MCActionScreen::action) { /* switch 3; irregular */
                 case 6:                             /* switch 3 */
-                    if ((void *) MemoryCardScreen::operation.__vptr == (void *)1) {
-                        if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 0xA) != 0) {
-                            MCQueryScreen::query.__vptr = (void *)2;
+                    if ((s32) *MemoryCardScreen::operation == 1) {
+                        if ((u8) (*MemoryCardScreen::selectedCard)->unkA != 0) {
+                            *MCQueryScreen::query = 2;
                             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
-                        } else if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0) {
+                        } else if ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0) {
                             temp_r29_572 = this->unkD8;
                             temp_r3_573 = M2C_FIELD(temp_r29_572, s8 **, 0x68);
                             if (temp_r3_573 != NULL) {
@@ -352,7 +352,7 @@ block_18:
                             M2C_FIELD(temp_r29_584, s8 **, 0x68) = NULL;
                             M2C_FIELD(temp_r29_584, s32 *, 0x6C) = 0x66;
                         }
-                    } else if ((((void *) MCActionScreen::action.__vptr == (void *)4) || ((void *) MCActionScreen::action.__vptr == (void *)3)) && ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
+                    } else if ((((s32) *MCActionScreen::action == 4) || ((s32) *MCActionScreen::action == 3)) && ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0)) {
                         temp_r29_605 = this->unkD8;
                         temp_r3_606 = M2C_FIELD(temp_r29_605, s8 **, 0x68);
                         if (temp_r3_606 != NULL) {
@@ -364,7 +364,7 @@ block_18:
                     default:                        /* switch 3 */
                         temp_r29_617 = this->unkD8;
                         temp_r3_620 = M2C_FIELD(temp_r29_617, s8 **, 0x68);
-                        temp_r30_622 = error_message[(s32) MCActionScreen::action.__vptr];
+                        temp_r30_622 = error_message[*MCActionScreen::action];
                         if (temp_r3_620 != NULL) {
                             UIStringTable_Remove(temp_r3_620);
                         }
@@ -404,10 +404,10 @@ block_18:
                 this->unkEC = (void *)4;
                 return;
             }
-            switch ((void *) MCActionScreen::action.__vptr) { /* switch 4; irregular */
+            switch ((s32) *MCActionScreen::action) { /* switch 4; irregular */
             case 4:                                 /* switch 4 */
             case 3:                                 /* switch 4 */
-                if (((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) == 0) || ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0)) {
+                if (((u8) (*MemoryCardScreen::selectedCard)->unk9 == 0) || ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0)) {
                     temp_r29_719 = this->unkD8;
                     temp_r3_720 = M2C_FIELD(temp_r29_719, s8 **, 0x68);
                     if (temp_r3_720 != NULL) {
@@ -446,13 +446,13 @@ block_18:
                     this->unkEC = (void *)4;
                     return;
                 }
-                if ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x18) == 0) {
-                    ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 3);
+                if ((s32) (*MemoryCardScreen::selectedCard)->unk18 == 0) {
+                    ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 3);
                     return;
                 }
-                if ((void *) MCActionScreen::action.__vptr == (void *)5) {
+                if ((s32) *MCActionScreen::action == 5) {
                 case 5:                             /* switch 4 */
-                    ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 3);
+                    ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 3);
                     this->unkEC = (void *)3;
                     return;
                 }
@@ -460,11 +460,11 @@ block_18:
                 this->unkEC = (void *)3;
             case 3:                                 /* switch 1 */
                 if (((u8) M2C_FIELD(this->unkD8, u8 *, 0x14) == 0) || !(M2C_BITWISE(f32, this->unkE8) < 3.0f)) {
-                    if ((void *) MCActionScreen::action.__vptr == (void *)6) {
-                        if ((void *) MemoryCardScreen::operation.__vptr != (void *)1) {
-                            ((GameData *) (&GameData::gameData))->CopyToGameData(Autosave_GetGameDataCopy());
+                    if ((s32) *MCActionScreen::action == 6) {
+                        if ((s32) *MemoryCardScreen::operation != 1) {
+                            ((GameData *) ((GameData *) GameData::gameData))->CopyToGameData(Autosave_GetGameDataCopy());
                         }
-                        Autosave_SetTarget((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr, (s32) MemoryCardScreen::selectedFile.__vptr, *(MemoryCardScreen::selectedCard.__vptr + (((s32) MemoryCardScreen::selectedFile.__vptr * 0xC0) + 0x40) + 0x80));
+                        Autosave_SetTarget(*MemoryCardScreen::selectedCard, *MemoryCardScreen::selectedFile, *(*MemoryCardScreen::selectedCard + ((*MemoryCardScreen::selectedFile * 0xC0) + 0x40) + 0x80));
                         Autosave_EnableRemovalCheck(1U);
                         temp_r29_851 = this->unkD8;
                         temp_r3_852 = M2C_FIELD(temp_r29_851, s8 **, 0x68);
@@ -507,7 +507,7 @@ block_127:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void MCActionScreen::OnEnter() {
     s32 spB4;
     s32 spB0;
@@ -603,7 +603,7 @@ void MCActionScreen::OnEnter() {
     this->unkEC = NULL;
     temp_r30_947 = this->unkD8;
     temp_r3_949 = M2C_FIELD(temp_r30_947, s8 **, 0x68);
-    temp_r29_952 = message_575[(s32) MCActionScreen::action.__vptr];
+    temp_r29_952 = message_575[*MCActionScreen::action];
     if (temp_r3_949 != NULL) {
         UIStringTable_Remove(temp_r3_949);
     }
@@ -648,7 +648,7 @@ void MCActionScreen::OnEnter() {
     var_r3_1050 = NULL;
     spB0 = 1;
     spB4 = 0;
-    switch ((void *) MCActionScreen::action.__vptr) { /* irregular */
+    switch ((s32) *MCActionScreen::action) {      /* irregular */
     default:
         temp_r29_1068 = this->unkE0;
         temp_r3_1069 = M2C_FIELD(temp_r29_1068, s8 **, 0x68);
@@ -669,7 +669,7 @@ void MCActionScreen::OnEnter() {
         var_r3_1050 = M2C_FIELD(*temp_r3_1091, KDMemoryCard *(**)(void **, s32 *), 0x2C)(temp_r3_1091, &spB0);
         break;
     case 1:
-        if (((void *) MemoryCardScreen::operation.__vptr == NULL) || ((u8) MemoryCardScreen::bNewGame != 0)) {
+        if (((s32) *MemoryCardScreen::operation == 0) || ((u8) *MemoryCardScreen::bNewGame != 0)) {
             temp_r3_1105 = this->unkD8;
             sp60 = 3;
             sp64 = 0;
@@ -737,7 +737,7 @@ void MCActionScreen::OnEnter() {
         var_r3_1050 = M2C_FIELD(*temp_r3_1221, KDMemoryCard *(**)(void **, s32 *), 0x2C)(temp_r3_1221, &spB0);
         break;
     case 6:
-        if (((void *) MemoryCardScreen::operation.__vptr == (void *)1) && ((s8) *(MemoryCardScreen::selectedCard.__vptr + (((s32) MemoryCardScreen::selectedFile.__vptr * 0xC0) + 0xE4)) != 0)) {
+        if (((s32) *MemoryCardScreen::operation == 1) && ((s8) *(*MemoryCardScreen::selectedCard + ((*MemoryCardScreen::selectedFile * 0xC0) + 0xE4)) != 0)) {
             temp_r29_1238 = this->unkE0;
             temp_r3_1239 = M2C_FIELD(temp_r29_1238, s8 **, 0x68);
             if (temp_r3_1239 != NULL) {
@@ -785,7 +785,7 @@ void MCActionScreen::OnEnter() {
         break;
     }
     if (((void *) this->unkEC == NULL) && (var_r3_1050->Update() == 0)) {
-        ((KDMemoryCard *) ((KDMemoryCard *) MemoryCardScreen::selectedCard.__vptr))->SetState((KDMCState) 2);
+        ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 2);
     }
 }
 #endif

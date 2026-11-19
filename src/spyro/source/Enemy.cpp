@@ -561,7 +561,7 @@ s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     sp38 = sp8;
     sp10 = this->unk588.unk4 + (f32) sp30;
     sp40 = (f64) sp10;
-    if ((((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
+    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
         temp_r30_1053 = (s32) (f32) arg1;
         if ((f32) temp_r30_1053 > 0.0f) {
             ((CollectableSpawner *) (M2C_FIELD((&gb + (SpawnerType_ResolveFromStatType(arg0) * 4)), CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp38), temp_r30_1053, 200.0f, 500.0f, -1, NULL);
@@ -2175,7 +2175,7 @@ void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
         if ((temp_r31_4021 == 0) || (var_r26_4403 != 0)) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unkAB0 == 0.0f) {
-                this->unkAD8 = GameData::gameData.unk70.unkE0;
+                this->unkAD8 = M2C_FIELD(GameData::gameData, s32 *, 0x150);
                 DoDeathFx((u32) this->unk948.unk10);
             }
         }

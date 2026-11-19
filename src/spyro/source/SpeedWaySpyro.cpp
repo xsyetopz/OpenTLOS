@@ -50,16 +50,339 @@ extern f32 g_pathMaxDistance;
 #if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
 #endif
-#if 0 // DRAFT: illegal use of abstract class ('SpeedWaySpyro::pure_slot13()')
 static M2C_UNK lit_818;                                /* unable to generate initializer: unknown type */
-static SpeedWaySpyro states__13SpeedWaySpyro;       /* type too large by 0x78C; unable to generate initializer: confusing struct layout */
+u8 states__13SpeedWaySpyro[0x144] = {
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
 static M2C_UNK lit_869;                                /* unable to generate initializer: unknown type; const */
 
 void SpeedwayFX::Deinit() {
 
 }
-#endif
 
 #if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 u8 SpeedwayFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
@@ -359,17 +682,17 @@ void SpeedWaySpyro::UpdateEffects() {
         }
         this->unk304 = var_f2_898;
     }
-    if ((this->unk304 == 0.0f) && (GameData::gameData.unkA0.unk0 < GameData::gameData.unkA0.unk4)) {
-        ((Stat *) (&GameData::gameData.unkA0))->Add(15.0f * gUpdateTimeDelta, 1U);
+    if ((this->unk304 == 0.0f) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) < M2C_FIELD(GameData::gameData, f32 *, 0xA4))) {
+        ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->Add(15.0f * gUpdateTimeDelta, 1U);
     }
     var_r30_926 = 0;
-    temp_f31_930 = GameData::gameData.unkA0.unk0;
-    if ((temp_f31_930 > ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->GetInitialBreathCost()) && (this->unk98 & 0x10)) {
+    temp_f31_930 = M2C_FIELD(GameData::gameData, f32 *, 0xA0);
+    if ((temp_f31_930 > ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost()) && (this->unk98 & 0x10)) {
         var_r30_926 = 1;
     }
     this->unk300 = this->unk2FC.Update((Matrix *) &arg_sp20, var_r30_926);
     if ((u8) this->unk300 != 0) {
-        ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x30)))->Add(-((GameStats *) ((GameStats *) &GameData::gameData.unk70))->GetInitialBreathCost(), 1U);
+        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost(), 1U);
         this->unk304 = 1.0f;
     }
 }
@@ -448,7 +771,7 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
 void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
     if (DealDamage(-arg0->unk48) != 0) {
         arg0->unk50 = 1;
-        if (GameData::gameData.unk70 > 0.0f) {
+        if (M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) {
             this->unk180.SetState(this, 5, 1U);
             return;
         }
@@ -457,12 +780,12 @@ void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 u8 SpeedWaySpyro::DealDamage(float arg0) {
-    if (((u8) M2C_FIELD(&gb, u8 *, 0x3B4) != 0) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), (((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) == 0) != 0)) || !(this->unk98 & 0x20) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((GameData::gameData.unk70 == 0.0f) != 0))) {
+    if (((u8) M2C_FIELD(&gb, u8 *, 0x3B4) != 0) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), (((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) == 0) != 0)) || !(this->unk98 & 0x20) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) != 0))) {
         return 0U;
     }
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->Add(arg0, 1U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(arg0, 1U);
     this->unk2F8 = M2C_FIELD(&gb, f32 *, 0x30C) + M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x18C);
     this->unk2EC = M2C_FIELD(&gb, f32 *, 0x30C);
     return 1U;
@@ -500,7 +823,7 @@ void SpeedWaySpyro::GetJoyDir() {
     u8 var_r4_1336;
 
     temp_r31_1299 = M2C_ERROR(/* Read from unset register $r4 */);
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13) != 0) {
         var_f31_1304 = -1.0f;
     } else {
@@ -653,7 +976,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: identifier 'SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &, const
 u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f64 spA8;
     f64 spA0;
@@ -1160,8 +1483,8 @@ void SpeedWaySpyro::UpdateStageInfo() {
         }
         this->unkA5 = (u8) (var_f1_2932 != 0.0f) == 0;
     }
-    temp_f30_2957 = ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->GetSpeedwayBoostCost();
-    if ((this->unk98 & 0x80) && (GameData::gameData.unkA0.unk0 > 0.0f)) {
+    temp_f30_2957 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetSpeedwayBoostCost();
+    if ((this->unk98 & 0x80) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) > 0.0f)) {
         temp_r3_2966 = GetInput();
         var_r4_2968 = 0;
         if (((u8) temp_r3_2966->unk5 != 0) || ((u8) temp_r3_2966->unk4 != 0)) {
@@ -1175,7 +1498,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
         if ((var_f1_2979 != 0.0f) && ((u8) this->unkA4 != 0)) {
             this->unkA0 = 2;
             this->unk148 += temp_f31_2877 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x160);
-            ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x30)))->Add(-temp_f30_2957, 1U);
+            ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-temp_f30_2957, 1U);
             var_f2_3008 = this->unk304;
             temp_f0_3009 = 2.0f * gUpdateTimeDelta;
             if (var_f2_3008 > temp_f0_3009) {
@@ -1185,7 +1508,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
             }
             this->unk304 = var_f2_3008;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (GameData::gameData.unkA0.unk0 == 0.0f) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) {
                 this->unkA4 = 0;
             }
         } else {
@@ -1193,7 +1516,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
         }
     } else {
 block_34:
-        if ((this->unk98 & 0x80) && (GameData::gameData.unkA0.unk0 > 0.0f)) {
+        if ((this->unk98 & 0x80) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) > 0.0f)) {
             temp_r3_3035 = GetInput();
             var_r4_3037 = 0;
             if (((u8) temp_r3_3035->unk5 != 0) || ((u8) temp_r3_3035->unk4 != 0)) {
@@ -1207,7 +1530,7 @@ block_34:
             if ((var_f1_3048 != 0.0f) && ((u8) this->unkA5 != 0)) {
                 this->unkA0 = 0;
                 this->unk148 += -temp_f31_2877 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x160);
-                ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x30)))->Add(-temp_f30_2957, 1U);
+                ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-temp_f30_2957, 1U);
                 var_f2_3078 = this->unk304;
                 temp_f0_3079 = 2.0f * gUpdateTimeDelta;
                 if (var_f2_3078 > temp_f0_3079) {
@@ -1217,7 +1540,7 @@ block_34:
                 }
                 this->unk304 = var_f2_3078;
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (GameData::gameData.unkA0.unk0 == 0.0f) {
+                if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) {
                     this->unkA5 = 0;
                 }
             } else {
@@ -1491,14 +1814,14 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
         if (((((f32) sp28 * M2C_FIELD(var_r30_3496, f32 *, 0x18)) + (((f32) sp20 * M2C_FIELD(var_r30_3496, f32 *, 0x10)) + (unksp24 * M2C_FIELD(var_r30_3496, f32 *, 0x14)))) < -0.9f) && (DealDamage(-5.0f) != 0)) {
             if (M2C_FIELD(var_r30_3496, s32 *, 0x44) & 0x100) {
                 KDSound_Play(GS_SpyroLavaBurn, 0U, -1);
-                if ((GameData::gameData.unk70 == 0.0f) && ((s32) this->unk180 != 7)) {
+                if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) && ((s32) this->unk180 != 7)) {
                     this->unk180.SetState(this, 7, 0U);
                     var_r3_3674 = 1;
                 } else {
                     var_r3_3674 = 0;
                 }
                 if (var_r3_3674 == 0) {
-                    if ((GameData::gameData.unk70 > 0.0f) && ((s32) this->unk180 != 5)) {
+                    if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) && ((s32) this->unk180 != 5)) {
                         this->unk180.SetState(this, 5, 0U);
                         return 1U;
                     }
@@ -1507,14 +1830,14 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
                 /* Duplicate return node #61. Try simplifying control flow for better match */
                 return var_r3_3674;
             }
-            if ((GameData::gameData.unk70 == 0.0f) && ((s32) this->unk180 != 7)) {
+            if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) && ((s32) this->unk180 != 7)) {
                 this->unk180.SetState(this, 7, 0U);
                 var_r3_3674 = 1;
             } else {
                 var_r3_3674 = 0;
             }
             if (var_r3_3674 == 0) {
-                if ((GameData::gameData.unk70 > 0.0f) && ((s32) this->unk180 != 6)) {
+                if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) && ((s32) this->unk180 != 6)) {
                     this->unk180.SetState(this, 6, 0U);
                     return 1U;
                 }
@@ -2097,7 +2420,7 @@ void SpeedWaySpyro::StateEnter() {
     this->unk194 = 0.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpeedWaySpyro::Start() {
     f64 sp18;
     f64 sp10;
@@ -2108,11 +2431,11 @@ void SpeedWaySpyro::Start() {
     void *temp_r4_5180;
 
     ClearData();
-    ((Stat *) ((Stat *) &GameData::gameData.unk70))->Init(50.0f, 50.0f, NULL, NULL);
-    ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x30)))->Init(30.0f, 30.0f, NULL, NULL);
-    ((Stat *) ((Stat *) (&GameData::gameData.unk70 + 0x48)))->SetValue(0.0f, 0U);
-    ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->SetCurrentBreath((BreathElement) 0);
-    *(&GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x7C)) = 1;
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Init(50.0f, 50.0f, NULL, NULL);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Init(30.0f, 30.0f, NULL, NULL);
+    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(0.0f, 0U);
+    ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 0);
+    *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) = 1;
     ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     if ((u8) this->unk2E9 == 0) {
         temp_r3_5161 = GetCamera();
@@ -2347,7 +2670,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         Hurt(checked_cast<P11HurtMessage, 9MKMessage>__FP9MKMessage(arg0));
         break;
     case 0xE6:
-        ((Stat *) ((Stat *) &GameData::gameData.unk70))->SetValue(GameData::gameData.unk74, 0U);
+        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
         break;
     case 0x150:
         SetStageIndex(1);
@@ -2453,7 +2776,7 @@ void SpeedWaySpyro::Resolve() {
     arg_sp8 = this;
     arg_spC = 0;
     M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(M2C_UNK *, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &arg_sp80, 0, &this->unk70, 1, 1, 0);
-    Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) &SpeedWaySpyro::states, NULL);
+    Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
     this->unk180.SetState(this, 0, 1U);
     this->unk2FC.Resolve();
     this->unk8B4 = (f32) KDSound_GetSoundEventVol(GS_SpyroSpeedwayGlideLP) / 255.0f;
@@ -2711,7 +3034,7 @@ void SpeedWaySpyroDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_818'
+#if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpeedWaySpyro_cpp::__sinit() {
     s32 sp44;
     s32 sp40;

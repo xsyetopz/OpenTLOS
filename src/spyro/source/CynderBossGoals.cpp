@@ -729,7 +729,7 @@ void CynderBossGoal_Stage3Fury::Activate() {
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0x141, 0, 0.15f, 0U, 0U);
-    ((Stat *) (&GameData::gameData.unkB8))->SetValue(0.0f, 1U);
+    ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(0.0f, 1U);
     ((EventMessage *) (this->unkC + 0xEEC))->Send(NULL);
 }
 #endif
@@ -4004,7 +4004,7 @@ void CynderBossGoal_AttackPhase3::Activate() {
             this->unkC->StopMovement(1U);
             this->unkC->EnableFlyingRotation(0U);
         }
-        ((Stat *) (&GameData::gameData.unkB8))->SetValue(0.0f, 1U);
+        ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(0.0f, 1U);
         M2C_FIELD(this->unkC, u8 *, 0xF1B) = 0U;
         temp_r3_7885 = this->unkC;
         if ((u8) M2C_FIELD(temp_r3_7885, u8 *, 0xF1C) != 0) {
@@ -7015,10 +7015,10 @@ void CynderBossGoal_Think::Arbitrate() {
             if ((arg_sp58 == 0xD) && !((arg_sp64 >> 6U) & 1)) {
                 temp_r3_13743 = this->unkC;
                 if ((u8) M2C_FIELD(temp_r3_13743, u8 *, 0xF1E) == 0) {
-                    temp_f31_13749 = GameData::gameData.unkB8.unk4;
-                    temp_f30_13751 = GameData::gameData.unkB8.unk0;
+                    temp_f31_13749 = M2C_FIELD(GameData::gameData, f32 *, 0xBC);
+                    temp_f30_13751 = M2C_FIELD(GameData::gameData, f32 *, 0xB8);
                     temp_f29_13757 = temp_f31_13749 * (1.0f - temp_r3_13743->GetHealthPercentage());
-                    ((Stat *) (&GameData::gameData.unkB8))->SetValue(temp_f29_13757, 0U);
+                    ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(temp_f29_13757, 0U);
                     arg_sp58 = 0xE;
                     if (temp_f30_13751 < temp_f31_13749) {
                         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);

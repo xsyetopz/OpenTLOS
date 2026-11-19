@@ -168,9 +168,9 @@ u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, c
         }
         var_f30_113 = 2000.0f;
         var_f29_115 = 1.0f;
-        temp_r3_118 = GameData::gameData.unk70.unkE8 << 5;
-        temp_r0_120 = *(&GameData::gameData.unk70 + (temp_r3_118 + 0x7C));
-        temp_r4_122 = &GameData::gameData.unk70 + (temp_r3_118 + 0x64);
+        temp_r3_118 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+        temp_r0_120 = *(&GameData::gameData[0x70] + (temp_r3_118 + 0x7C));
+        temp_r4_122 = &GameData::gameData[0x70] + (temp_r3_118 + 0x64);
         if (temp_r0_120 == 3) {
             var_r3_126 = 0;
             if (((s32) M2C_FIELD(temp_r4_122, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_122, s32 *, 4) == 3)) {
@@ -671,7 +671,7 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, int arg4, bool arg5) {
     s32 temp_r30_1383;
     s32 temp_r31_1386;
@@ -690,10 +690,10 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     case 0:
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unkBC == 0.0f) {
-            temp_r30_1383 = GameData::gameData.unk70.unkE8;
+            temp_r30_1383 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
             temp_r4_1384 = temp_r30_1383 << 5;
-            temp_r31_1386 = *(&GameData::gameData.unk70 + (temp_r4_1384 + 0x7C));
-            temp_r5_1388 = &GameData::gameData.unk70 + (temp_r4_1384 + 0x64);
+            temp_r31_1386 = *(&GameData::gameData[0x70] + (temp_r4_1384 + 0x7C));
+            temp_r5_1388 = &GameData::gameData[0x70] + (temp_r4_1384 + 0x64);
             if (temp_r31_1386 == 3) {
                 var_r4_1392 = 0;
                 if (((s32) M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
@@ -712,7 +712,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
             } else {
                 var_r24_1421 = *(temp_r5_1388 + (temp_r31_1386 * 4));
             }
-            this->unkD0.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
+            this->unkD0.Init(arg0, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
             return ShootShotgun(arg1, arg2, arg3);
         }
         return 0;
@@ -727,7 +727,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         return 0;
     case 3:
         var_r3_1467 = 0;
-        temp_r4_1473 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
+        temp_r4_1473 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
         if (((s32) M2C_FIELD(temp_r4_1473, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1473, s32 *, 4) == 3)) {
             var_r3_1467 = 1;
         }

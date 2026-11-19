@@ -29,7 +29,7 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 static M2C_UNK lit_727;                                /* unable to generate initializer: unknown type */
-static SpyroHurtState states__14SpyroHurtState;     /* extra bytes: 0x71; unable to generate initializer: confusing struct layout */
+SpyroHurtState states__14SpyroHurtState;            /* unable to generate initializer: confusing struct layout */
 
 s32 SpyroHurtState::CynderFuryDazedTransition() {
     Spyro *temp_r4_40;
@@ -65,11 +65,9 @@ void SpyroHurtState::CynderFuryDazedUpdate() {
     CynderFuryDazedTransition();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpyroHurtState::CynderFuryDazedExit() {
-    ((Stat *) (&GameData::gameData.unk70))->SetValue(GameData::gameData.unk70.unk4, 1U);
+    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroHurtState::CynderFuryDazedEnter() {
@@ -514,17 +512,15 @@ void SpyroHurtState::DazedUpdate() {
     DazedTransition();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpyroHurtState::DazedExit() {
     Spyro *temp_r4_1035;
 
     temp_r4_1035 = this->unk10;
     temp_r4_1035->unk428 |= 0x40000;
     if ((u8) this->unk9A != 0) {
-        ((Stat *) (&GameData::gameData.unk70))->SetValue(GameData::gameData.unk70.unk4, 1U);
+        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
     }
 }
-#endif
 
 void SpyroHurtState::DazedEnter() {
     Spyro *temp_r3_1072;

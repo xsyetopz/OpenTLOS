@@ -37,7 +37,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp18'
 void Shadow::Draw() {
     MKVector3 sp48;
     f64 sp40;
@@ -48,7 +48,7 @@ void Shadow::Draw() {
     f32 sp10;
     f32 temp_f4_69;
 
-    if (((MKProp *) this->unk14 == NULL) || (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, MKResource::sWorkingChunkID.unk0) != 0)) {
+    if (((MKProp *) this->unk14 == NULL) || (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, *MKResource::sWorkingChunkID) != 0)) {
         MKModel_CalculateCentre(this->unk10, &sp48);
         temp_f4_69 = this->unk20;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);

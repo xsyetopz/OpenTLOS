@@ -152,7 +152,7 @@ void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKV
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'CollectRequestMsg'
 void Collectable2::Message(MKMessage *arg0) {
     f64 sp60;
     f64 sp58;
@@ -176,7 +176,7 @@ void Collectable2::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 9) {
         return;
     }
-    if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable2 *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
+    if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable2 *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
         temp_r3_336 = checked_cast<CollectRequestMsg *, MKMessage>(arg0);
         temp_r4_340 = M2C_FIELD(checked_cast<MKProp *, MKProp>(M2C_FIELD(temp_r3_336, MKProp **, 0xC)), void **, 8);
         temp_r3_341 = this->unk8;
@@ -196,7 +196,7 @@ void Collectable2::Message(MKMessage *arg0) {
         sp20 = (f64) sp10;
         sp30 = (f64) sp10;
         if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < (temp_f4_347 * temp_f4_347)) {
-            ((Stat *) (&GameData::gameData.unkA0))->Add(2.0f, 1U);
+            ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->Add(2.0f, 1U);
         }
     }
 }

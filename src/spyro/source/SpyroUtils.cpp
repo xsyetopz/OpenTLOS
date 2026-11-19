@@ -517,7 +517,7 @@ void SpyroSoundPlayer::FadeOut(int arg0) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void SpyroSoundPlayer::FadeIn(int arg0, int arg1) {
     s32 temp_r0_846;
     s32 temp_r31_832;
@@ -537,9 +537,9 @@ void SpyroSoundPlayer::FadeIn(int arg0, int arg1) {
         if (var_r5_0 != -1) {
 
         } else {
-            temp_r3_844 = GameData::gameData.unk158 << 5;
-            temp_r0_846 = *(&GameData::gameData.unk70 + (temp_r3_844 + 0x7C));
-            temp_r3_848 = &GameData::gameData.unk70 + (temp_r3_844 + 0x64);
+            temp_r3_844 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+            temp_r0_846 = *(&GameData::gameData[0x70] + (temp_r3_844 + 0x7C));
+            temp_r3_848 = &GameData::gameData[0x70] + (temp_r3_844 + 0x64);
             if (temp_r0_846 == 3) {
                 if (((s32) M2C_FIELD(temp_r3_848, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_848, s32 *, 4) == 3)) {
                     var_r6_834 = 1;

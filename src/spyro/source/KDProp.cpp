@@ -9,6 +9,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -324,7 +325,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDProp::LoadDone() {
     MKAnim *var_r3_627;
     MKAnim *var_r3_647;
@@ -332,24 +333,24 @@ void KDProp::LoadDone() {
     MKAnimScript *temp_r29_619;
     MKAnimScript *temp_r29_635;
     MKAnimScript *temp_r3_586;
+    MKHeap *var_r0_695;
     MKHeap *var_r3_690;
     MKModel *temp_r3_678;
     MKModel *temp_r3_715;
+    MKResource *var_r3_603;
     s32 var_r29_768;
     s32 var_r29_791;
     s8 *var_r29_594;
     void *temp_r3_584;
-    void *var_r0_695;
-    void *var_r3_603;
 
     temp_r3_584 = checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r3_586 = M2C_FIELD(temp_r3_584, MKAnimScript **, 0x34);
-    if ((temp_r3_586 != NULL) || ((void *) KDProp::pCustomAnimScrName.unk0 != NULL)) {
+    if ((temp_r3_586 != NULL) || ((MKResource *) *KDProp::pCustomAnimScrName != NULL)) {
         var_r29_594 = NULL;
         if ((temp_r3_586 != NULL) && ((u32) MKModel_GetAnimation(temp_r3_586->unk8)->unk18 != 0U)) {
             var_r29_594 = (s8 *)1;
         }
-        var_r3_603 = KDProp::pCustomAnimScrName.unk0;
+        var_r3_603 = *KDProp::pCustomAnimScrName;
         if (var_r3_603 != NULL) {
 
         } else {
@@ -382,13 +383,13 @@ void KDProp::LoadDone() {
         this->unk10 &= 0xFFFFFFFB;
     } else {
         temp_r3_678 = M2C_FIELD(temp_r3_584, MKModel **, 0x2C);
-        if ((temp_r3_678 != NULL) || ((void *) KDProp::pCustomModelName.unk0 != NULL)) {
+        if ((temp_r3_678 != NULL) || ((MKHeap *) *KDProp::pCustomModelName != NULL)) {
             if (MKModel_GetAnimation(temp_r3_678) != NULL) {
                 var_r3_690 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r3_584, MKModel **, 0x2C))))->GetName();
             } else {
                 var_r3_690 = NULL;
             }
-            var_r0_695 = KDProp::pCustomModelName.unk0;
+            var_r0_695 = *KDProp::pCustomModelName;
             if (var_r0_695 != NULL) {
 
             } else {
@@ -397,8 +398,8 @@ void KDProp::LoadDone() {
             this->unk4 = MKModel_Create((s8 *) var_r0_695, (s8 *) var_r3_690, 2, NULL);
         }
     }
-    KDProp::pCustomAnimScrName.unk0 = NULL;
-    KDProp::pCustomModelName.unk0 = NULL;
+    *KDProp::pCustomAnimScrName = NULL;
+    *KDProp::pCustomModelName = NULL;
     temp_r3_715 = this->unk4;
     if ((temp_r3_715 != NULL) && ((this->unk8 = MKModel_GetWorldMatrix(temp_r3_715), this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70), this->unk58 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78), (((f32) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70) == 1.0f) == 0)) || (M2C_FIELD(&MKProp::loadInfo, f32 *, 0x74) != 1.0f) || ((f32) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78) != 1.0f))) {
         MKModel_SetColor(this->unk4, MKProp::loadInfo + 0x70);

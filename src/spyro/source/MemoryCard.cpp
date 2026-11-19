@@ -29,19 +29,16 @@
 
 extern GameStateMachine gGMState;
 extern void *gpTranslation_StringArray;
-static MCSaveScreen descriptor__12MCSaveScreen;     /* type too large by 0xC4; unable to generate initializer: not enough data */
-static MCText descriptor__6MCText;                  /* type too large by 0x6C; unable to generate initializer: not enough data */
+u8 descriptor__12MCSaveScreen[0x14];                /* unable to generate initializer: cannot parse .L_8035CDF0 as integer */
+u8 descriptor__6MCText[0x14];                       /* unable to generate initializer: cannot parse .L_8035CDFD as integer */
 static s32 memCardSlotSizes;
 static s8 gameNameBuffer[0x20];
 #if 0 // DRAFT: illegal implicit conversion from 'const char[16]' to
 static s8 *pDirectoryName = "BASLUS-21372s06";
 #endif
-#if 0 // DRAFT: declaration syntax error
-static MemoryCardScreen operation__16MemoryCardScreen; /* type too large by 0xD4; unable to generate initializer: not enough data */
+u8 operation__16MemoryCardScreen[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-static M2C_UNK .L_8035CDF0;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035CDFD;                         /* unable to generate initializer: unknown type; const */
-
+#if 0 // DRAFT: undefined identifier 'arg_sp58'
 void MCText::Draw(const RenderContext &arg0) {
     MKFont *temp_r4_123;
     f32 temp_f3_134;
@@ -107,60 +104,60 @@ void MCText::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void MemoryCardScreen::ExamineCard() {
     s32 temp_r30_344;
     s32 var_ctr_319;
     s32 var_r3_318;
 
-    if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 0xC) != 0) {
-        MCQueryScreen::query.__vptr = (void *)5;
+    if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 0xC) != 0) {
+        *MCQueryScreen::query = 5;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
-    if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 0xD) != 0) {
-        MCQueryScreen::query.__vptr = (void *)1;
+    if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 0xD) != 0) {
+        *MCQueryScreen::query = 1;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
-    if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 0xA) != 0) {
-        MCQueryScreen::query.__vptr = (void *)2;
+    if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 0xA) != 0) {
+        *MCQueryScreen::query = 2;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
-    if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 0xB) != 0) {
-        MCQueryScreen::query.__vptr = (void *)9;
+    if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 0xB) != 0) {
+        *MCQueryScreen::query = 9;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
-    if ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x1C) == 0) {
-        MCQueryScreen::query.__vptr = (void *)8;
+    if ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x1C) == 0) {
+        *MCQueryScreen::query = 8;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
-    if ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x20) == 0) {
-        if ((void *) MemoryCardScreen::operation.__vptr == NULL) {
-            MCQueryScreen::query.__vptr = (void *)7;
+    if ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x20) == 0) {
+        if ((s32) *MemoryCardScreen::operation == 0) {
+            *MCQueryScreen::query = 7;
             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
             return;
         }
-        MCActionScreen::action.__vptr = (void *)2;
+        *MCActionScreen::action = 2;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     var_r3_318 = 0;
     var_ctr_319 = 3;
 loop_15:
-    if ((s8) *(MemoryCardScreen::selectedCard.__vptr + (var_r3_318 + 0xE5)) != 0) {
-        MCActionScreen::action.__vptr = (void *)5;
+    if ((s8) *(*MemoryCardScreen::selectedCard + (var_r3_318 + 0xE5)) != 0) {
+        *MCActionScreen::action = 5;
         ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     var_r3_318 += 0xC0;
     var_ctr_319 -= 1;
     if (var_ctr_319 == 0) {
-        if (((void *) MemoryCardScreen::operation.__vptr == (void *)1) && ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x24) == 0) && ((temp_r30_344 = M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x18), ((temp_r30_344 < MemoryCard_GetSaveGameBlockSize()) != 0)) || ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x14) < 1))) {
-            MCQueryScreen::query.__vptr = (void *)6;
+        if (((s32) *MemoryCardScreen::operation == 1) && ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x24) == 0) && ((temp_r30_344 = M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x18), ((temp_r30_344 < MemoryCard_GetSaveGameBlockSize()) != 0)) || ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x14) < 1))) {
+            *MCQueryScreen::query = 6;
             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
             return;
         }
@@ -187,7 +184,7 @@ void MemoryCardScreen::OnExit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void MemoryCardScreen::OnEnter() {
     UIObject *var_r30_429;
     s32 temp_r3_426;
@@ -205,7 +202,7 @@ loop_11:
         } else {
             temp_r3_433 = ui_cast<UIText *, UIObject *>(var_r30_429);
             if (temp_r3_433 != NULL) {
-                if ((void *) MemoryCardScreen::operation.__vptr == (void *)1) {
+                if ((s32) *MemoryCardScreen::operation == 1) {
                     temp_r3_439 = M2C_FIELD(temp_r3_433, s8 **, 0x68);
                     if (temp_r3_439 != NULL) {
                         UIStringTable_Remove(temp_r3_439);
@@ -256,10 +253,10 @@ void MCSaveScreen::Update() {
         if (temp_r3_534 != NULL) {
             var_r31_527 = ui_cast<UIText *, UIObject *>(temp_r3_534->FindChild(""));
         }
-        MemoryCardScreen::operation.__vptr = (void *)-1;
-        MemoryCardScreen::bNewGame = 0;
+        *MemoryCardScreen::operation = -1;
+        *MemoryCardScreen::bNewGame = 0;
         if (strnicmp((s8 *) this->unk4, "", 4) == 0) {
-            MemoryCardScreen::operation.__vptr = (void *)1;
+            *MemoryCardScreen::operation = 1;
             if (var_r31_527 != NULL) {
                 temp_r3_560 = M2C_FIELD(var_r31_527, s8 **, 0x68);
                 if (temp_r3_560 != NULL) {
@@ -269,8 +266,8 @@ void MCSaveScreen::Update() {
                 M2C_FIELD(var_r31_527, s32 *, 0x6C) = 0x83;
             }
         } else if (strnicmp((s8 *) this->unk4, "", 3) == 0) {
-            MemoryCardScreen::operation.__vptr = (void *)1;
-            MemoryCardScreen::bNewGame = 1;
+            *MemoryCardScreen::operation = 1;
+            *MemoryCardScreen::bNewGame = 1;
             if (var_r31_527 != NULL) {
                 temp_r3_584 = M2C_FIELD(var_r31_527, s8 **, 0x68);
                 if (temp_r3_584 != NULL) {
@@ -280,7 +277,7 @@ void MCSaveScreen::Update() {
                 M2C_FIELD(var_r31_527, s32 *, 0x6C) = 0x82;
             }
         } else if (strnicmp((s8 *) this->unk4, "", 4) == 0) {
-            MemoryCardScreen::operation.__vptr = NULL;
+            *MemoryCardScreen::operation = 0;
             if (var_r31_527 != NULL) {
                 temp_r3_607 = M2C_FIELD(var_r31_527, s8 **, 0x68);
                 if (temp_r3_607 != NULL) {
@@ -335,7 +332,7 @@ void MemoryCard_InitModule() {
 
     MemoryCard_String(gameNameBuffer, 3);
     M2C_FIELD(&memCardSlotSizes, s32 *, 0) = 3;
-    temp_r3_704 = ((GameData *) (&GameData::gameData))->GetGameDataSize();
+    temp_r3_704 = ((GameData *) ((GameData *) GameData::gameData))->GetGameDataSize();
     M2C_FIELD(&memCardSlotSizes, s32 *, 0xC) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 8) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 4) = temp_r3_704;
@@ -346,9 +343,9 @@ void MemoryCard_InitModule() {
 loop_3:
     temp_r3_725 = var_r4_717->unk0;
     if (temp_r3_725 == NULL) {
-        var_r4_717->unk0 = (MCLoadCheckScreen *) &MCSaveScreen::descriptor;
-        MCSaveScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_725 != &MCSaveScreen::descriptor) {
+        var_r4_717->unk0 = (MCLoadCheckScreen *) MCSaveScreen::descriptor;
+        M2C_FIELD(MCSaveScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_725 != MCSaveScreen::descriptor) {
         var_r4_717 = (UIObjectDescriptor *) &temp_r3_725->unk10;
         goto loop_3;
     }
@@ -356,9 +353,9 @@ loop_3:
 loop_8:
     temp_r3_743 = var_r4_735->unk0;
     if (temp_r3_743 == NULL) {
-        var_r4_735->unk0 = (MCLoadCheckScreen *) &MCSelectCardScreen::descriptor;
-        MCSelectCardScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_743 != &MCSelectCardScreen::descriptor) {
+        var_r4_735->unk0 = (MCLoadCheckScreen *) MCSelectCardScreen::descriptor;
+        M2C_FIELD(MCSelectCardScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_743 != MCSelectCardScreen::descriptor) {
         var_r4_735 = (UIObjectDescriptor *) &temp_r3_743->unk10;
         goto loop_8;
     }
@@ -366,9 +363,9 @@ loop_8:
 loop_13:
     temp_r3_761 = var_r4_753->unk0;
     if (temp_r3_761 == NULL) {
-        var_r4_753->unk0 = (MCLoadCheckScreen *) &MCSelectFileScreen::descriptor;
-        MCSelectFileScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_761 != &MCSelectFileScreen::descriptor) {
+        var_r4_753->unk0 = (MCLoadCheckScreen *) MCSelectFileScreen::descriptor;
+        M2C_FIELD(MCSelectFileScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_761 != MCSelectFileScreen::descriptor) {
         var_r4_753 = (UIObjectDescriptor *) &temp_r3_761->unk10;
         goto loop_13;
     }
@@ -376,9 +373,9 @@ loop_13:
 loop_18:
     temp_r3_779 = var_r4_771->unk0;
     if (temp_r3_779 == NULL) {
-        var_r4_771->unk0 = (MCLoadCheckScreen *) &MCActionScreen::descriptor;
-        MCActionScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_779 != &MCActionScreen::descriptor) {
+        var_r4_771->unk0 = (MCLoadCheckScreen *) MCActionScreen::descriptor;
+        M2C_FIELD(MCActionScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_779 != MCActionScreen::descriptor) {
         var_r4_771 = (UIObjectDescriptor *) &temp_r3_779->unk10;
         goto loop_18;
     }
@@ -386,9 +383,9 @@ loop_18:
 loop_23:
     temp_r3_797 = var_r4_789->unk0;
     if (temp_r3_797 == NULL) {
-        var_r4_789->unk0 = (MCLoadCheckScreen *) &MCQueryScreen::descriptor;
-        MCQueryScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_797 != &MCQueryScreen::descriptor) {
+        var_r4_789->unk0 = (MCLoadCheckScreen *) MCQueryScreen::descriptor;
+        M2C_FIELD(MCQueryScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_797 != MCQueryScreen::descriptor) {
         var_r4_789 = (UIObjectDescriptor *) &temp_r3_797->unk10;
         goto loop_23;
     }
@@ -396,9 +393,9 @@ loop_23:
 loop_28:
     temp_r3_815 = var_r4_807->unk0;
     if (temp_r3_815 == NULL) {
-        var_r4_807->unk0 = (MCLoadCheckScreen *) &MCText::descriptor;
-        MCText::descriptor.unk10 = NULL;
-    } else if (temp_r3_815 != &MCText::descriptor) {
+        var_r4_807->unk0 = (MCLoadCheckScreen *) MCText::descriptor;
+        M2C_FIELD(MCText::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_815 != MCText::descriptor) {
         var_r4_807 = (UIObjectDescriptor *) &temp_r3_815->unk10;
         goto loop_28;
     }
@@ -406,9 +403,9 @@ loop_28:
 loop_33:
     temp_r3_833 = var_r4_825->unk0;
     if (temp_r3_833 == NULL) {
-        var_r4_825->unk0 = (MCLoadCheckScreen *) &MCFileInfo::descriptor;
-        MCFileInfo::descriptor.unk10 = NULL;
-    } else if (temp_r3_833 != &MCFileInfo::descriptor) {
+        var_r4_825->unk0 = (MCLoadCheckScreen *) MCFileInfo::descriptor;
+        M2C_FIELD(MCFileInfo::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_833 != MCFileInfo::descriptor) {
         var_r4_825 = (UIObjectDescriptor *) &temp_r3_833->unk10;
         goto loop_33;
     }
@@ -416,9 +413,9 @@ loop_33:
 loop_38:
     temp_r3_851 = var_r4_843->unk0;
     if (temp_r3_851 == NULL) {
-        var_r4_843->unk0 = (MCLoadCheckScreen *) &AutosaveWarningScreen::descriptor;
-        AutosaveWarningScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_851 != &AutosaveWarningScreen::descriptor) {
+        var_r4_843->unk0 = (MCLoadCheckScreen *) AutosaveWarningScreen::descriptor;
+        M2C_FIELD(AutosaveWarningScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_851 != AutosaveWarningScreen::descriptor) {
         var_r4_843 = (UIObjectDescriptor *) &temp_r3_851->unk10;
         goto loop_38;
     }
@@ -497,8 +494,8 @@ loop_25:
                 break;
             case 0x73:                              /* switch 2 */
                 var_r4_978 = NULL;
-                if ((u32) MemoryCardScreen::selectedCard.__vptr != 0U) {
-                    var_r4_978 = *(gpTranslation_StringArray + ((*MemoryCardScreen::selectedCard.__vptr * 4) + 0x11C));
+                if ((s32 *) *MemoryCardScreen::selectedCard != NULL) {
+                    var_r4_978 = *(gpTranslation_StringArray + ((**MemoryCardScreen::selectedCard * 4) + 0x11C));
                 }
                 if (var_r4_978 != NULL) {
                     do {

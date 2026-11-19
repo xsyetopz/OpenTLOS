@@ -90,13 +90,13 @@ Enemy *TrainChaseSpawnPool::Create() {
 void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
     switch (this) {                                 /* irregular */
     case 0:
-        *arg1 = ((TrainChaseSpawnPool *) ((TrainChaseSpawnPool *) TrainChaseSpawnPool::pInstance.unk0))->Create();
+        *arg1 = ((TrainChaseSpawnPool *) (*TrainChaseSpawnPool::pInstance))->Create();
         return;
     case 1:
         *arg1 = NULL;
         return;
     case 2:
-        ((TrainChaseSpawnPool *) ((TrainChaseSpawnPool *) TrainChaseSpawnPool::pInstance.unk0))->Destroy(*arg1);
+        ((TrainChaseSpawnPool *) (*TrainChaseSpawnPool::pInstance))->Destroy(*arg1);
         return;
     }
 }
@@ -143,11 +143,11 @@ loop_9:
         }
     }
     this->unk0 = NULL;
-    TrainChaseSpawnPool::pInstance.unk0 = NULL;
+    *TrainChaseSpawnPool::pInstance = 0;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'TrainChaseSpawnPool *' to
 void TrainChaseSpawnPool::Init() {
     Enemy ***temp_r3_249;
     Enemy ***temp_r4_255;
@@ -158,7 +158,7 @@ void TrainChaseSpawnPool::Init() {
     MKHeap *temp_r3_227;
     s32 var_ctr_247;
 
-    TrainChaseSpawnPool::pInstance.unk0 = (Enemy ***) this;
+    *TrainChaseSpawnPool::pInstance = this;
     temp_r3_227 = MKHeap::Current();
     if (temp_r3_227 != NULL) {
         var_r3_234 = ((MKHeap *) (temp_r3_227->Current()))->Alloc(0x18, NULL, 0);

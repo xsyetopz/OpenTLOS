@@ -10,7 +10,44 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
-static SpyroFuryState states__14SpyroFuryState;     /* type too large by 0x1C; unable to generate initializer: confusing struct layout */
+u8 states__14SpyroFuryState[0x24] = {
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
 void SpyroFuryState::ProcessAnimEvent(unsigned int arg0) {
 
@@ -69,7 +106,7 @@ void SpyroFuryState::Update() {
 #if 0 // DRAFT: undefined identifier 'unk10'
 void SpyroFuryState::Exit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    GameData::gameData.unk158 = GameData::gameData.unk15C;
+    M2C_FIELD(GameData::gameData, s32 *, 0x158) = (s32) M2C_FIELD(GameData::gameData, s32 *, 0x15C);
     this->unk10->UpdateWaterSurfaceFX(1U);
     this->unk10->SetMeleeButtonStateTimeout(0U);
     this->unk14.Exit(this);
@@ -151,7 +188,7 @@ void SpyroFuryState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'unk10'
 void SpyroFuryState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__32KDStateMachine<14SpyroFuryState>FPQ232KDStateMachine<14SpyroFuryState>5StateP32KDStateMachine<14SpyroFuryState>(&this->unk14, (KDStateMachine<SpyroFuryState>::State *) &SpyroFuryState::states, NULL);
+    Init__32KDStateMachine<14SpyroFuryState>FPQ232KDStateMachine<14SpyroFuryState>5StateP32KDStateMachine<14SpyroFuryState>(&this->unk14, (KDStateMachine<SpyroFuryState>::State *) SpyroFuryState::states, NULL);
     this->unk38 = 0;
 }
 #endif
@@ -159,8 +196,8 @@ void SpyroFuryState::Init(Spyro *arg0) {
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpyroFuryState_cpp::__sinit() {
     s32 sp10;
-    Spyro *spC;
-    void *sp8;
+    s32 spC;
+    s32 sp8;
     f64 temp_f0_611;
     f64 temp_f1_608;
     f64 temp_f1_624;
@@ -174,20 +211,20 @@ void SpyroFuryState_cpp::__sinit() {
     temp_f8_604 = __frsqrte(380000.0);
     temp_f1_608 = temp_f3_602 * temp_f3_602;
     temp_f0_611 = temp_f8_604 * temp_f8_604;
-    sp8 = M2C_FIELD(&__ptmf_null, void **, 0);
-    SpyroFuryState::states.__vptr = M2C_FIELD(&__ptmf_null, void **, 0);
-    spC = M2C_FIELD(&__ptmf_null, Spyro **, 4);
+    sp8 = M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    spC = M2C_FIELD(&__ptmf_null, s32 *, 4);
     sp10 = M2C_FIELD(&__ptmf_null, s32 *, 8);
-    SpyroFuryState::states.unk4 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 4) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
     temp_f4_622 = 0.5 * temp_f3_602 * -((2014000.0 * temp_f1_608) - 3.0);
-    SpyroFuryState::states.unk8 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
     temp_f1_624 = 0.5 * temp_f8_604 * -((380000.0 * temp_f0_611) - 3.0);
-    SpyroFuryState::states.unkC = M2C_FIELD(&__ptmf_null, void **, 0);
-    SpyroFuryState::states.unk10 = M2C_FIELD(&__ptmf_null, Spyro **, 4);
-    SpyroFuryState::states.unk14.unk0 = M2C_FIELD(&__ptmf_null, s32 *, 8);
-    SpyroFuryState::states.unk18 = M2C_FIELD(&__ptmf_null, void **, 0);
-    SpyroFuryState::states.unk1C = M2C_FIELD(&__ptmf_null, Spyro **, 4);
-    SpyroFuryState::states.unk20 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0xC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0x10) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0x14) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0x18) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0x1C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+    M2C_FIELD(SpyroFuryState::states, s32 *, 0x20) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
     temp_f4_637 = 0.5 * temp_f4_622 * -((2014000.0 * (temp_f4_622 * temp_f4_622)) - 3.0);
     temp_f1_638 = 0.5 * temp_f1_624 * -((380000.0 * (temp_f1_624 * temp_f1_624)) - 3.0);
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_637 * -((2014000.0 * (temp_f4_637 * temp_f4_637)) - 3.0)));

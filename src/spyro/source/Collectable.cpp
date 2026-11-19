@@ -1664,7 +1664,7 @@ block_81:
         MKProp::Message(arg0);
         return;
     case 0x9:                                       /* switch 1 */
-        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
             if (!(this->unk10 & 0x40000)) {
                 return;
             }
@@ -1756,7 +1756,7 @@ block_81:
         }
         goto block_81;
     case 0xB9:                                      /* switch 1 */
-        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0) {
+        if (M2C_FIELD(*gMK, u8 (**)(void **, Collectable *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
             if (!(this->unk10 & 0x40000)) {
                 return;
             }
@@ -2109,7 +2109,7 @@ void Collectable::Draw() {
             MKModel_SetAlpha(this->unk4, this->unk20);
         }
         MKModel_Draw(this->unk4, NULL);
-        if (((s32) this->unk124->unk9C & 0x10) || ((u8) CollectableDescriptor::bDrawLocator != 0)) {
+        if (((s32) this->unk124->unk9C & 0x10) || ((u8) *CollectableDescriptor::bDrawLocator != 0)) {
             DrawLocator();
         }
         if ((s32) this->unk124->unk9C & 8) {

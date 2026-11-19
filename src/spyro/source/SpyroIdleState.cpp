@@ -15,7 +15,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
-static SpyroIdleState states__14SpyroIdleState;     /* extra bytes: 0x45; unable to generate initializer: confusing struct layout */
+SpyroIdleState states__14SpyroIdleState;            /* unable to generate initializer: confusing struct layout */
 
 u8 SpyroIdleState::AnyToBreathingTranistion() {
     EventCamera *temp_r3_31;
@@ -33,7 +33,7 @@ u8 SpyroIdleState::AnyToBreathingTranistion() {
         var_r3_34 = M2C_FIELD(this->unk10->unk258, u8 *, 0x14);
     }
     if (var_r3_34 != 0) {
-        var_r3_34 = GameData::gameData.unk158 != 2;
+        var_r3_34 = M2C_FIELD(GameData::gameData, s32 *, 0x158) != 2;
     }
     if ((var_r3_34 != 0) && ((s32) this->unk14.unk0 != 4)) {
         this->unk14.SetState(this, 4, 0U);

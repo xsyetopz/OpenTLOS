@@ -51,7 +51,7 @@ void CopyrightScreen::Update() {
     case 1:                                         /* switch 1 */
         this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + (gUpdateTimeDelta / 4.5f);
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_BITWISE(f32, this->unkBC.unk8) == 1.0f) && ((u8) CopyrightScreen::bMemoryCardCheckDone != 0)) {
+        if ((M2C_BITWISE(f32, this->unkBC.unk8) == 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
             this->unkBC.unk4 = 2;
             this->unkBC.unk8 = 0.0f;
         }
@@ -124,7 +124,7 @@ void CopyrightScreen::Update() {
         }
         break;
     default:                                        /* switch 2 */
-        CopyrightScreen::bMemoryCardCheckDone = 1U;
+        *CopyrightScreen::bMemoryCardCheckDone = 1;
         break;
     }
     if (stricmp("VideoMaker", this->unk4) == 0) {
@@ -155,7 +155,7 @@ void CopyrightScreen::OnEnter() {
     M2C_FIELD(this, f32 *, 0x20) = 0.0f;
     M2C_FIELD(this, f32 *, 0x24) = 1.0f;
     this->unk18.unk40 |= 1;
-    if ((u8) CopyrightScreen::bMemoryCardCheckDone == 0) {
+    if ((u8) *CopyrightScreen::bMemoryCardCheckDone == 0) {
         this->unkC8 = 1;
         this->unkCC = 0.0f;
         this->unkD0 = ((KDMemoryCard *) (M2C_BITWISE(KDMemoryCard *, this->unkCC)))->GetCard(M2C_ERROR(/* Read from unset register $r4 */));

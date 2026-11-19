@@ -23,12 +23,11 @@ extern s32 gpTranslation_StringArray;
 extern UIObject *pMenuCurrent;
 extern UIObject *pMenuRoot;
 #if 0 // DRAFT: expression syntax error
-static LevelSelectButtons descriptor__18LevelSelectButtons; /* type too large by 0xFC; unable to generate initializer: not enough data */
-static LevelButton descriptor__11LevelButton;       /* type too large by 0x9C; unable to generate initializer: not enough data */
+u8 descriptor__18LevelSelectButtons[0x14];          /* unable to generate initializer: cannot parse "LevelSelectButtons" as integer */
+u8 descriptor__11LevelButton[0x14];                 /* unable to generate initializer: cannot parse .L_8035BD7D as integer */
 static s8 *pFontName = .L_8035BD89;
 #endif
 #if 0 // DRAFT: declaration syntax error
-static M2C_UNK .L_8035BD7D;                         /* unable to generate initializer: unknown type; const */
 static s8 .L_8035BD89[0x17] = {
     0x66,
     0x6F,
@@ -150,7 +149,7 @@ void LevelSelectScreen::Update() {
         if (var_r31_326 != NULL) {
             bZ3AttractHack = 0;
             M2C_FIELD(&gb, s8 *, 0x334) = 1;
-            ((GameData *) (&GameData::gameData))->ClearData();
+            ((GameData *) ((GameData *) GameData::gameData))->ClearData();
             ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SwitchTo(var_r31_326);
             return;
         }
@@ -216,7 +215,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LevelSelectScreen::Init() {
     MKHeap *temp_r3_504;
     UIObject *var_r3_511;
@@ -238,8 +237,8 @@ void LevelSelectScreen::Init() {
     void *var_r4_585;
 
     UIContainer::Init();
-    temp_r27_503 = (Level::levelInfoCount + (Level::chunkInfoCount + 1)) << 6;
-    temp_r3_504 = ((MKHeap *) (Level::chunkInfoCount))->Current();
+    temp_r27_503 = (*Level::levelInfoCount + (*Level::chunkInfoCount + 1)) << 6;
+    temp_r3_504 = ((MKHeap *) (*Level::chunkInfoCount))->Current();
     if (temp_r3_504 != NULL) {
         var_r3_511 = ((MKHeap *) (temp_r3_504->Current()))->Alloc(temp_r27_503, NULL, 0);
     } else {
@@ -248,7 +247,7 @@ void LevelSelectScreen::Init() {
     pMenuRoot = var_r3_511;
     memset(var_r3_511, 0, (u32) temp_r27_503);
     var_r31_522 = 1;
-    var_r30_523 = Level::pLevelInfo;
+    var_r30_523 = *Level::pLevelInfo;
     var_r28_524 = 0x40;
     pMenuCurrent = pMenuRoot;
 loop_26:
@@ -306,7 +305,7 @@ loop_16:
         if (var_r30_523 != NULL) {
             var_r0_612 = M2C_FIELD(var_r30_523, void **, 0x124);
         } else {
-            var_r0_612 = Level::pLevelInfo;
+            var_r0_612 = *Level::pLevelInfo;
         }
         var_r30_523 = var_r0_612;
         goto loop_26;
@@ -315,7 +314,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LevelSelectButtons::Init() {
     f64 sp20;
     f64 sp18;
@@ -329,24 +328,24 @@ void LevelSelectButtons::Init() {
     UIObject *temp_r3_747;
     UIObject *var_r27_673;
     UIObject *var_r27_729;
+    s32 temp_r27_664;
+    s32 temp_r27_720;
     s32 var_r29_658;
     s8 *temp_r27_750;
     s8 *temp_r3_749;
-    void *temp_r27_664;
-    void *temp_r27_720;
 
     MarkerButtonGroup::Init();
     var_r29_658 = 0;
     do {
-        temp_r27_664 = LevelButton::descriptor.unk8;
+        temp_r27_664 = M2C_FIELD(LevelButton::descriptor, s32 *, 8);
         temp_r3_665 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_665 != NULL) {
-            var_r27_673 = ((MKHeap *) (temp_r3_665->Current()))->Alloc((s32) temp_r27_664, NULL, 0);
+            var_r27_673 = ((MKHeap *) (temp_r3_665->Current()))->Alloc(temp_r27_664, NULL, 0);
         } else {
-            var_r27_673 = malloc((s32) temp_r27_664);
+            var_r27_673 = malloc(temp_r27_664);
         }
-        ((M2C_UNK (*)(UIObject *)) LevelButton::descriptor.unkC)(var_r27_673);
-        var_r27_673->unk8 = &LevelButton::descriptor;
+        M2C_FIELD(LevelButton::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r27_673);
+        var_r27_673->unk8 = LevelButton::descriptor;
         var_r27_673->Init();
         temp_r3_691 = ui_cast<LevelButton *, UIObject *>(var_r27_673);
         temp_r25_696 = temp_r3_691;
@@ -361,15 +360,15 @@ void LevelSelectButtons::Init() {
         sp18 = (f64) sp8;
         M2C_FIELD(temp_r3_691->__vptr, M2C_UNK (**)(M2C_UNK, f64), 0x14)(0x23, (f64) sp8);
         AddBefore(NULL, (UIObject *) temp_r25_696);
-        temp_r27_720 = DSText::descriptor.unk8;
+        temp_r27_720 = M2C_FIELD(DSText::descriptor, s32 *, 8);
         temp_r3_721 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_721 != NULL) {
-            var_r27_729 = ((MKHeap *) (temp_r3_721->Current()))->Alloc((s32) temp_r27_720, NULL, 0);
+            var_r27_729 = ((MKHeap *) (temp_r3_721->Current()))->Alloc(temp_r27_720, NULL, 0);
         } else {
-            var_r27_729 = malloc((s32) temp_r27_720);
+            var_r27_729 = malloc(temp_r27_720);
         }
-        ((M2C_UNK (*)(UIObject *)) DSText::descriptor.unkC)(var_r27_729);
-        var_r27_729->unk8 = &DSText::descriptor;
+        M2C_FIELD(DSText::descriptor, M2C_UNK (**)(UIObject *), 0xC)(var_r27_729);
+        var_r27_729->unk8 = DSText::descriptor;
         var_r27_729->Init();
         temp_r3_747 = ui_cast<DSText *, UIObject *>(var_r27_729);
         temp_r3_749 = M2C_FIELD(temp_r3_747, s8 **, 0x60);

@@ -475,7 +475,7 @@ void Crate::Shatter(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Crate::SpawnContents() {
     f64 sp10;
     f64 sp8;
@@ -489,7 +489,7 @@ void Crate::SpawnContents() {
 loop_6:
     if (var_r30_913 < (s32) this->unk17C) {
         temp_r29_917 = M2C_FIELD(this, s32 *, 0x17C);
-        if (((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) temp_r29_917) != 0) {
+        if (((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) temp_r29_917) != 0) {
             temp_r0_923 = this->unk180;
             var_r6_924 = -1;
             if (temp_r0_923 > -1) {
@@ -592,7 +592,7 @@ void Crate::Burn() {
     this->unkC8 = 2;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'TargetPositionRequest'
 void Crate::Message(MKMessage *arg0) {
     f64 sp40;
     f64 sp38;
@@ -619,7 +619,7 @@ void Crate::Message(MKMessage *arg0) {
     var_r28_1166 = 0;
     temp_r0_1167 = this->unkC8;
     var_r29_1169 = 0;
-    if ((temp_r0_1167 != 4) && (temp_r0_1167 != 2) && (temp_r0_1167 != 7) && (M2C_FIELD(*gMK, u8 (**)(void **, Crate *, s32), 0x9C)(gMK, this, MKResource::sWorkingChunkID.unk0) != 0)) {
+    if ((temp_r0_1167 != 4) && (temp_r0_1167 != 2) && (temp_r0_1167 != 7) && (M2C_FIELD(*gMK, u8 (**)(void **, Crate *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0)) {
         var_r29_1169 = 1;
     }
     if ((var_r29_1169 != 0) && (this->unk10 & 0x160000)) {

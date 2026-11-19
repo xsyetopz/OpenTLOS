@@ -17,9 +17,9 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK iMeleeAttackTypeMap;
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned long **' to
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
-static SpyroTailStrikeState states__20SpyroTailStrikeState; /* extra bytes: 5; unable to generate initializer: confusing struct layout */
+SpyroTailStrikeState states__20SpyroTailStrikeState; /* unable to generate initializer: confusing struct layout */
 
 void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
     u8 sp56;
@@ -48,8 +48,8 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
 
     if (arg0 != NULL) {
         sp1C = 0;
-        temp_r28_44 = *(&iMeleeAttackTypeMap + (GameData::gameData.unk70.unkE8 * 4)) | 0x400;
-        temp_f1_45 = ((GameStats *) (&GameData::gameData.unk70))->TailStrikeDamage();
+        temp_r28_44 = *(&iMeleeAttackTypeMap + (M2C_FIELD(GameData::gameData, s32 *, 0x158) * 4)) | 0x400;
+        temp_f1_45 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->TailStrikeDamage();
         temp_r10_46 = this->unk10;
         temp_r3_50 = temp_r10_46->unk8;
         temp_f3_54 = M2C_FIELD(temp_r3_50, f64 *, 0x30);

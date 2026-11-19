@@ -439,9 +439,9 @@ block_103:
                     if (temp_r0_491 == 1) {
                         var_r26_280 = 1;
                     } else if (temp_r0_491 == 0) {
-                        temp_r3_504 = GameData::gameData.unk70.unkE8 << 5;
-                        temp_r0_506 = *(&GameData::gameData.unk70 + (temp_r3_504 + 0x7C));
-                        temp_r4_508 = &GameData::gameData.unk70 + (temp_r3_504 + 0x64);
+                        temp_r3_504 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+                        temp_r0_506 = *(&GameData::gameData[0x70] + (temp_r3_504 + 0x7C));
+                        temp_r4_508 = &GameData::gameData[0x70] + (temp_r3_504 + 0x64);
                         if (temp_r0_506 == 3) {
                             var_r3_512 = 0;
                             if (((s32) M2C_FIELD(temp_r4_508, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_508, s32 *, 4) == 3)) {
@@ -465,7 +465,7 @@ block_103:
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                             sp358 = sp58;
                             sp60 = sp308.unk48 + M2C_BITWISE(f32, sp308.unk38);
-                            temp_r29_578 = *(&GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64));
+                            temp_r29_578 = *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64));
                             sp448 = sp58;
                             sp360 = (f64) sp60;
                             sp450 = (f64) sp60;
@@ -514,7 +514,7 @@ block_103:
                         if (temp_r3_712 != NULL) {
                             temp_r3_712->unk2C = temp_r3_272->unk38;
                             temp_r5_720 = temp_r3_272->unk38;
-                            temp_r7_725 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
+                            temp_r7_725 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
                             if (temp_r5_720 == 3) {
                                 var_r4_728 = 0;
                                 if (((s32) M2C_FIELD(temp_r7_725, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r7_725, s32 *, 4) == 3)) {
@@ -535,7 +535,7 @@ block_180:
                 if (temp_r3_758 != NULL) {
                     temp_r3_758->unk2C = temp_r3_272->unk38;
                     temp_r5_766 = temp_r3_272->unk38;
-                    temp_r7_771 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
+                    temp_r7_771 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
                     if (temp_r5_766 == 3) {
                         var_r4_774 = 0;
                         if (((s32) M2C_FIELD(temp_r7_771, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r7_771, s32 *, 4) == 3)) {
@@ -635,7 +635,7 @@ block_199:
                             spB0 = (f32) sp280 + (f32) sp230;
                             sp410 = (f64) spB0;
                             DoBlockFx(temp_r25_815, *((MKVector3 *) &sp408));
-                            TriggerShieldGlow(GameData::gameData.unk70.unkE8);
+                            TriggerShieldGlow(M2C_FIELD(GameData::gameData, s32 *, 0x158));
                             var_r27_990 = 0;
                             M2C_FIELD(temp_r3_812, s8 *, 0x3D) = 1;
                             if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
@@ -771,7 +771,7 @@ block_199:
                     var_r25_1428 = 9;
                 }
                 temp_r4_1493 = this->unk8;
-                temp_f31_1495 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(3, 1, M2C_FIELD(temp_r29_1426, s32 *, 8));
+                temp_f31_1495 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(3, 1, M2C_FIELD(temp_r29_1426, s32 *, 8));
                 temp_f1_1497 = M2C_FIELD(temp_r4_1493, f64 *, 0x30);
                 sp1B8 = temp_f1_1497;
                 sp1C0 = M2C_FIELD(temp_r4_1493, f64 *, 0x38);

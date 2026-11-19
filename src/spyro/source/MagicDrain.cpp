@@ -87,7 +87,7 @@ void MagicDrain::Draw() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void MagicDrain::Update() {
     MKVector3 sp68;
     f64 sp60;
@@ -119,7 +119,7 @@ void MagicDrain::Update() {
         this->unk1B8 -= gUpdateTimeDelta;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk1B8 == 0.0f) {
-            if (GameData::gameData.unkA0.unk0 != 0.0f) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) != 0.0f) {
                 sp20 = 1.0f;
                 sp30 = -1.0f;
                 sp8 = 0.0f;
@@ -140,18 +140,18 @@ void MagicDrain::Update() {
                 ((GemMagicFX *) (M2C_FIELD(&gb, GemMagicFX **, 0x238)))->Emit(*this->unk154, sp68, this->unk150, *((MKVector4 *) &sp38), 0U);
                 KDSound_Play3d(GS_ELExtra3, this->unk154, 0U, -1, 0.0f, 0U);
                 if ((u8) M2C_FIELD(&gb, u8 *, 0x3B5) == 0) {
-                    var_f1_283 = -((20.0f * gUpdateTimeDelta) - GameData::gameData.unkA0.unk0);
-                    if (var_f1_283 < GameData::gameData.unkA0.unk4) {
+                    var_f1_283 = -((20.0f * gUpdateTimeDelta) - M2C_FIELD(GameData::gameData, f32 *, 0xA0));
+                    if (var_f1_283 < M2C_FIELD(GameData::gameData, f32 *, 0xA4)) {
 
                     } else {
-                        var_f1_283 = GameData::gameData.unkA0.unk4;
+                        var_f1_283 = M2C_FIELD(GameData::gameData, f32 *, 0xA4);
                     }
                     if (var_f1_283 > 0.0f) {
 
                     } else {
                         var_f1_283 = 0.0f;
                     }
-                    ((Stat *) (&GameData::gameData.unkA0))->SetValue(var_f1_283, 0U);
+                    ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->SetValue(var_f1_283, 0U);
                 }
             }
             this->unk1B8 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);

@@ -277,7 +277,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
     s32 temp_r0_472;
     s32 temp_r29_495;
@@ -293,9 +293,9 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
     if ((s32) this->unkD0 == 0) {
         this->unkD0 = 1;
         this->unkE8 = 1.0f;
-        temp_r3_470 = GameData::gameData.unk158 << 5;
-        temp_r0_472 = *(&GameData::gameData.unk70 + (temp_r3_470 + 0x7C));
-        temp_r5_474 = &GameData::gameData.unk70 + (temp_r3_470 + 0x64);
+        temp_r3_470 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+        temp_r0_472 = *(&GameData::gameData[0x70] + (temp_r3_470 + 0x7C));
+        temp_r5_474 = &GameData::gameData[0x70] + (temp_r3_470 + 0x64);
         if (temp_r0_472 == 3) {
             var_r3_478 = 0;
             if (((s32) M2C_FIELD(temp_r5_474, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_474, s32 *, 4) == 3)) {
@@ -305,7 +305,7 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
         } else {
             var_r30_488 = *(temp_r5_474 + (temp_r0_472 * 4));
         }
-        temp_r29_495 = GameData::gameData.unk158;
+        temp_r29_495 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
         this->unkF0.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r30_488, temp_r29_495, temp_r29_495, 0, -1);
         gb.unk381 = 1;
         return 1;

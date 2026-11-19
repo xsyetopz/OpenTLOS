@@ -29,7 +29,7 @@
 #include <m2c_macros.h>
 
 M2C_UNK free(void **);                              /* extern */
-UIObject *malloc(void *);                           /* extern */
+UIObject *malloc(s32);                              /* extern */
 extern u8 bCheckedConnectors;
 extern M2C_UNK enableChunkMessage;
 extern GameStateMachine gGMState;
@@ -48,14 +48,13 @@ extern UIStringTable residentLSStrings;
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 static M2C_UNK *pDots[4] = { "<p0><colour=0,0,0,1>...</colour>", &.L_8035BDC1, &.L_8035BDE2, &.L_8035BE03 };
 #endif
-static LoadingScreen descriptor__13LoadingScreen;   /* type too large by 0xC4; unable to generate initializer: not enough data */
+u8 descriptor__13LoadingScreen[0x14];               /* unable to generate initializer: cannot parse .L_8035BE0B as integer */
 static s32 hPackage = -1;
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BDC1;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BDE2;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035BE03;                         /* unable to generate initializer: unknown type; const */
-static M2C_UNK .L_8035BE0B;                         /* unable to generate initializer: unknown type; const */
 
 void LoadLevel_Draw() {
     if ((void **) pLoadingScreenSystem != NULL) {
@@ -67,7 +66,7 @@ void LoadLevel_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp18'
 void LoadLevel_UpdateLoading() {
     f64 sp10;
     f64 sp8;
@@ -81,9 +80,9 @@ void LoadLevel_UpdateLoading() {
             hPackage = MKPackage_QLoad("GlobalInit", 0);
         }
         if (MKPackage_QIsLoaded(hPackage, NULL, NULL) != 0) {
-            GameData::gameData.unk168 |= (u8) pLoadChunkInfo->unk28;
-            GameData::gameData.unk169 |= (u8) pLoadChunkInfo->unk2C;
-            ((GameStats *) ((GameStats *) &GameData::gameData.unk70))->SetAttacksAvailable(pLoadChunkInfo->unk30);
+            GameData::gameData[0x168] |= (u8) pLoadChunkInfo->unk28;
+            GameData::gameData[0x169] |= (u8) pLoadChunkInfo->unk2C;
+            ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetAttacksAvailable(pLoadChunkInfo->unk30);
             gb.ResetInGameData();
             gb.unk32C->Init(pLoadChunkInfo);
             gb.unk32C->LoadGlobalResources();
@@ -115,7 +114,7 @@ void LoadLevel_UpdateLoading() {
         loadState = 3;
         return;
     case 3:
-        if (((u32) gb.unk32C->unk1C == 0) && (((u8) bCheckedConnectors != 0) || ((void *) CheckPoint::pCurrentCheckPoint.unk0 == NULL) || (bCheckedConnectors = 1, sp8 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF0), sp10 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF8), ((Connector_Update(*((MKVector3 *) &sp8)) == 0) == 0)))) {
+        if (((u32) gb.unk32C->unk1C == 0) && (((u8) bCheckedConnectors != 0) || ((void *) *CheckPoint::pCurrentCheckPoint == NULL) || (bCheckedConnectors = 1, sp8 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF0), sp10 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF8), ((Connector_Update(*((MKVector3 *) &sp8)) == 0) == 0)))) {
             gb.unk32C->FinaliseResources();
             loadState = 4;
         }
@@ -307,7 +306,7 @@ void LoadLevel_FreeResources() {
     residentLSStrings.Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 void LoadLevel_LoadResources() {
     s32 spC;
     s32 sp8;
@@ -316,31 +315,31 @@ void LoadLevel_LoadResources() {
     MKHeap *temp_r3_645;
     UIObject *var_r31_653;
     UIObjectDescriptor *var_r4_617;
+    s32 temp_r31_644;
     void **temp_r3_675;
-    void *temp_r31_644;
 
     var_r4_617 = &UIObjectDescriptor::list;
 loop_3:
     temp_r3_627 = var_r4_617->unk0;
     if (temp_r3_627 == NULL) {
-        var_r4_617->unk0 = (MCLoadCheckScreen *) &LoadingScreen::descriptor;
-        LoadingScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_627 != &LoadingScreen::descriptor) {
+        var_r4_617->unk0 = (MCLoadCheckScreen *) LoadingScreen::descriptor;
+        M2C_FIELD(LoadingScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_627 != LoadingScreen::descriptor) {
         var_r4_617 = (UIObjectDescriptor *) &temp_r3_627->unk10;
         goto loop_3;
     }
     residentLSStrings.Init(0xC0);
     temp_r3_640 = UIStringTable_SetCurrent(&residentLSStrings);
-    temp_r31_644 = UISystem::descriptor.unk8;
+    temp_r31_644 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
     temp_r3_645 = temp_r3_640->Current();
     if (temp_r3_645 != NULL) {
-        var_r31_653 = ((MKHeap *) (temp_r3_645->Current()))->Alloc((s32) temp_r31_644, NULL, 0);
+        var_r31_653 = ((MKHeap *) (temp_r3_645->Current()))->Alloc(temp_r31_644, NULL, 0);
     } else {
         var_r31_653 = malloc(temp_r31_644);
     }
-    ((M2C_UNK (*)(UIObject *, UISystem *)) UISystem::descriptor.unkC)(var_r31_653, &UISystem::descriptor);
-    var_r31_653->unk8 = &UISystem::descriptor;
-    var_r31_653->Init(&UISystem::descriptor);
+    M2C_FIELD(UISystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r31_653, UISystem::descriptor);
+    var_r31_653->unk8 = UISystem::descriptor;
+    var_r31_653->Init(UISystem::descriptor);
     temp_r3_675 = ui_cast<UISystem *, UIObject *>(var_r31_653);
     pResidentLSSystem = temp_r3_675;
     if (temp_r3_675->Load("LoadLevel.ui", NULL) != 0) {

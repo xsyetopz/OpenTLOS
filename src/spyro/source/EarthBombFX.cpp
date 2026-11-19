@@ -74,10 +74,10 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_97, 1U);
     }
     this->unk11C = 10000.0f;
-    temp_r30_111 = GameData::gameData.unk70.unkE8;
+    temp_r30_111 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     temp_r4_112 = temp_r30_111 << 5;
-    temp_r31_114 = *(&GameData::gameData.unk70 + (temp_r4_112 + 0x7C));
-    temp_r5_116 = &GameData::gameData.unk70 + (temp_r4_112 + 0x64);
+    temp_r31_114 = *(&GameData::gameData[0x70] + (temp_r4_112 + 0x7C));
+    temp_r5_116 = &GameData::gameData[0x70] + (temp_r4_112 + 0x64);
     if (temp_r31_114 == 3) {
         var_r4_120 = 0;
         if (((s32) M2C_FIELD(temp_r5_116, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_116, s32 *, 4) == 3)) {
@@ -96,7 +96,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     } else {
         var_r26_149 = *(temp_r5_116 + (temp_r31_114 * 4));
     }
-    temp_f31_159 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
+    temp_f31_159 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
     this->unk128.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f31_159, temp_r31_114, var_r26_149, temp_r30_111, temp_r30_111, 0, -1);
     temp_f1_176 = M2C_FIELD(&arg1, f64 *, 0);
     this->unkD0 = temp_f1_176;

@@ -6,7 +6,7 @@
 M2C_UNK free(KDPropertyCommand *);                  /* extern */
 KDPropertyCommand *malloc(s32);                     /* extern */
 s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */
-static KDScriptProperty classInfo__16KDScriptProperty; /* type too large by 0x14 */
+u8 classInfo__16KDScriptProperty[0x10];
 
 void KDScriptProperty::Command(int arg0) {
     KDPropertyCommand **var_r31_100;
@@ -390,10 +390,10 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
 void KDProperty_cpp::__sinit() {
-    KDScriptProperty::classInfo.__vptr = "KDScript";
-    KDScriptProperty::classInfo.unk8 = 0;
-    KDScriptProperty::classInfo.unk4 = &KDPropertyConstructor<KDScriptProperty>::Construct;
+    M2C_FIELD(KDScriptProperty::classInfo, s8 **, 0) = "KDScript";
+    M2C_FIELD(KDScriptProperty::classInfo, s32 *, 8) = 0;
+    M2C_FIELD(KDScriptProperty::classInfo, void (**)(KDPropertyConstructor<KDScriptProperty> *), 4) = &KDPropertyConstructor<KDScriptProperty>::Construct;
 }
 #endif

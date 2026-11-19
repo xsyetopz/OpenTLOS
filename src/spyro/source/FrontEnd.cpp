@@ -32,7 +32,7 @@
 #include <m2c_macros.h>
 
 M2C_UNK free(void **);                              /* extern */
-UIObject *malloc(void *);                           /* extern */
+UIObject *malloc(s32);                              /* extern */
 extern u8 bGoToNewGame;
 extern u8 bGoToVideo;
 extern u8 bResetFade;
@@ -130,7 +130,7 @@ void FrontEnd_SetFade(float arg0) {
         var_f1_0 = 0.0f;
     }
     fade = var_f1_0;
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     temp_f2_196 = 1.0f - fade;
     KDSound_SetMasterVolume(temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
 }
@@ -198,7 +198,7 @@ void FrontEnd_Update() {
                 bGoToNewGame = 0;
                 M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                 M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                ((GameStats *) (&GameData::gameData.unk70))->SetLevelUpPoints(0);
+                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetLevelUpPoints(0);
             }
         }
         goto block_26;
@@ -314,8 +314,8 @@ void FrontEnd_Init() {
     UIObjectDescriptor *var_r4_784;
     UIObjectDescriptor *var_r4_802;
     UIStringTable *temp_r30_619;
+    s32 temp_r29_624;
     s32 var_r31_582;
-    void *temp_r29_624;
 
     if ((s32) *gGMState.GetLastState() != 4) {
         var_r31_582 = -1;
@@ -333,24 +333,24 @@ loop_4:
         temp_r30_619 = UIStringTable_SetCurrent(&frontEndStrings);
         Hud_InitModule();
         Autosave_Reset();
-        temp_r29_624 = NoisySystem::descriptor.unk8;
-        temp_r3_625 = ((MKHeap *) ((MKHeap *) &NoisySystem::descriptor))->Current();
+        temp_r29_624 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
+        temp_r3_625 = ((MKHeap *) ((MKHeap *) NoisySystem::descriptor))->Current();
         if (temp_r3_625 != NULL) {
-            var_r29_633 = ((MKHeap *) (temp_r3_625->Current()))->Alloc((s32) temp_r29_624, NULL, 0);
+            var_r29_633 = ((MKHeap *) (temp_r3_625->Current()))->Alloc(temp_r29_624, NULL, 0);
         } else {
             var_r29_633 = malloc(temp_r29_624);
         }
-        ((M2C_UNK (*)(UIObject *, NoisySystem *)) NoisySystem::descriptor.unkC)(var_r29_633, &NoisySystem::descriptor);
-        var_r29_633->unk8 = &NoisySystem::descriptor;
-        var_r29_633->Init(&NoisySystem::descriptor);
+        M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r29_633, NoisySystem::descriptor);
+        var_r29_633->unk8 = NoisySystem::descriptor;
+        var_r29_633->Init(NoisySystem::descriptor);
         pFrontEndSystem = checked_cast<NoisySystem *, UIObject>(var_r29_633);
         var_r4_659 = &UIObjectDescriptor::list;
 loop_11:
         temp_r3_666 = var_r4_659->unk0;
         if (temp_r3_666 == NULL) {
-            var_r4_659->unk0 = &MCLoadCheckScreen::descriptor;
-            MCLoadCheckScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_666 != &MCLoadCheckScreen::descriptor) {
+            var_r4_659->unk0 = (MCLoadCheckScreen *) MCLoadCheckScreen::descriptor;
+            M2C_FIELD(MCLoadCheckScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_666 != MCLoadCheckScreen::descriptor) {
             var_r4_659 = (UIObjectDescriptor *) &temp_r3_666->unk10;
             goto loop_11;
         }
@@ -358,9 +358,9 @@ loop_11:
 loop_16:
         temp_r3_684 = var_r4_676->unk0;
         if (temp_r3_684 == NULL) {
-            var_r4_676->unk0 = (MCLoadCheckScreen *) &CopyrightScreen::descriptor;
-            CopyrightScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_684 != &CopyrightScreen::descriptor) {
+            var_r4_676->unk0 = (MCLoadCheckScreen *) CopyrightScreen::descriptor;
+            M2C_FIELD(CopyrightScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_684 != CopyrightScreen::descriptor) {
             var_r4_676 = (UIObjectDescriptor *) &temp_r3_684->unk10;
             goto loop_16;
         }
@@ -368,9 +368,9 @@ loop_16:
 loop_21:
         temp_r3_702 = var_r4_694->unk0;
         if (temp_r3_702 == NULL) {
-            var_r4_694->unk0 = (MCLoadCheckScreen *) &TitleScreen::descriptor;
-            TitleScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_702 != &TitleScreen::descriptor) {
+            var_r4_694->unk0 = (MCLoadCheckScreen *) TitleScreen::descriptor;
+            M2C_FIELD(TitleScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_702 != TitleScreen::descriptor) {
             var_r4_694 = (UIObjectDescriptor *) &temp_r3_702->unk10;
             goto loop_21;
         }
@@ -378,9 +378,9 @@ loop_21:
 loop_26:
         temp_r3_720 = var_r4_712->unk0;
         if (temp_r3_720 == NULL) {
-            var_r4_712->unk0 = (MCLoadCheckScreen *) &MainMenuScreen::descriptor;
-            MainMenuScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_720 != &MainMenuScreen::descriptor) {
+            var_r4_712->unk0 = (MCLoadCheckScreen *) MainMenuScreen::descriptor;
+            M2C_FIELD(MainMenuScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_720 != MainMenuScreen::descriptor) {
             var_r4_712 = (UIObjectDescriptor *) &temp_r3_720->unk10;
             goto loop_26;
         }
@@ -388,9 +388,9 @@ loop_26:
 loop_31:
         temp_r3_738 = var_r4_730->unk0;
         if (temp_r3_738 == NULL) {
-            var_r4_730->unk0 = (MCLoadCheckScreen *) &LevelSelectButtons::descriptor;
-            LevelSelectButtons::descriptor.unk10 = NULL;
-        } else if (temp_r3_738 != &LevelSelectButtons::descriptor) {
+            var_r4_730->unk0 = (MCLoadCheckScreen *) LevelSelectButtons::descriptor;
+            M2C_FIELD(LevelSelectButtons::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_738 != LevelSelectButtons::descriptor) {
             var_r4_730 = (UIObjectDescriptor *) &temp_r3_738->unk10;
             goto loop_31;
         }
@@ -398,9 +398,9 @@ loop_31:
 loop_36:
         temp_r3_756 = var_r4_748->unk0;
         if (temp_r3_756 == NULL) {
-            var_r4_748->unk0 = (MCLoadCheckScreen *) &LevelSelectScreen::descriptor;
-            LevelSelectScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_756 != &LevelSelectScreen::descriptor) {
+            var_r4_748->unk0 = (MCLoadCheckScreen *) LevelSelectScreen::descriptor;
+            M2C_FIELD(LevelSelectScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_756 != LevelSelectScreen::descriptor) {
             var_r4_748 = (UIObjectDescriptor *) &temp_r3_756->unk10;
             goto loop_36;
         }
@@ -408,9 +408,9 @@ loop_36:
 loop_41:
         temp_r3_774 = var_r4_766->unk0;
         if (temp_r3_774 == NULL) {
-            var_r4_766->unk0 = (MCLoadCheckScreen *) &LanguageSelectScreen::descriptor;
-            LanguageSelectScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_774 != &LanguageSelectScreen::descriptor) {
+            var_r4_766->unk0 = (MCLoadCheckScreen *) LanguageSelectScreen::descriptor;
+            M2C_FIELD(LanguageSelectScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_774 != LanguageSelectScreen::descriptor) {
             var_r4_766 = (UIObjectDescriptor *) &temp_r3_774->unk10;
             goto loop_41;
         }
@@ -418,9 +418,9 @@ loop_41:
 loop_46:
         temp_r3_792 = var_r4_784->unk0;
         if (temp_r3_792 == NULL) {
-            var_r4_784->unk0 = (MCLoadCheckScreen *) &OptionsScreen::descriptor;
-            OptionsScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_792 != &OptionsScreen::descriptor) {
+            var_r4_784->unk0 = (MCLoadCheckScreen *) OptionsScreen::descriptor;
+            M2C_FIELD(OptionsScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_792 != OptionsScreen::descriptor) {
             var_r4_784 = (UIObjectDescriptor *) &temp_r3_792->unk10;
             goto loop_46;
         }
@@ -428,9 +428,9 @@ loop_46:
 loop_51:
         temp_r3_810 = var_r4_802->unk0;
         if (temp_r3_810 == NULL) {
-            var_r4_802->unk0 = (MCLoadCheckScreen *) &CreditsScreen::descriptor;
-            CreditsScreen::descriptor.unk10 = NULL;
-        } else if (temp_r3_810 != &CreditsScreen::descriptor) {
+            var_r4_802->unk0 = (MCLoadCheckScreen *) CreditsScreen::descriptor;
+            M2C_FIELD(CreditsScreen::descriptor, s32 *, 0x10) = 0;
+        } else if (temp_r3_810 != CreditsScreen::descriptor) {
             var_r4_802 = (UIObjectDescriptor *) &temp_r3_810->unk10;
             goto loop_51;
         }
@@ -455,7 +455,7 @@ loop_51:
                 pFrontEndSystem->PushScreen("HealthSafety");
                 break;
             case 1:
-                ((GameData *) (&GameData::gameData))->ClearData();
+                ((GameData *) ((GameData *) GameData::gameData))->ClearData();
                 pFrontEndSystem->PushScreen("LevelScreen");
                 break;
             case 2:

@@ -327,9 +327,9 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     temp_r3_556->Reset();
     temp_r3_561 = this->unk160;
     temp_r3_561->Enable();
-    temp_r3_570 = GameData::gameData.unk158 << 5;
-    temp_r0_572 = *(&GameData::gameData.unk70 + (temp_r3_570 + 0x7C));
-    temp_r4_574 = &GameData::gameData.unk70 + (temp_r3_570 + 0x64);
+    temp_r3_570 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_572 = *(&GameData::gameData[0x70] + (temp_r3_570 + 0x7C));
+    temp_r4_574 = &GameData::gameData[0x70] + (temp_r3_570 + 0x64);
     if (temp_r0_572 == 3) {
         var_r3_578 = 0;
         if (((s32) M2C_FIELD(temp_r4_574, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_574, s32 *, 4) == 3)) {
@@ -339,7 +339,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     } else {
         var_r31_588 = *(temp_r4_574 + (temp_r0_572 * 4));
     }
-    temp_r29_595 = GameData::gameData.unk158;
+    temp_r29_595 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unk168.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
     temp_r4_616 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if ((temp_r4_616 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {

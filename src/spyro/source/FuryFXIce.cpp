@@ -342,7 +342,7 @@ void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, floa
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp38;
     f64 sp30;
@@ -371,9 +371,9 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     this->unkA0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unkA8 = M2C_FIELD(&arg0, f64 *, 8);
     this->unkB1 = (s8) arg1;
-    temp_r3_628 = GameData::gameData.unk158 << 5;
-    temp_r29_630 = *(&GameData::gameData.unk70 + (temp_r3_628 + 0x7C));
-    temp_r5_632 = &GameData::gameData.unk70 + (temp_r3_628 + 0x64);
+    temp_r3_628 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r29_630 = *(&GameData::gameData[0x70] + (temp_r3_628 + 0x7C));
+    temp_r5_632 = &GameData::gameData[0x70] + (temp_r3_628 + 0x64);
     if (temp_r29_630 == 3) {
         var_r3_636 = 0;
         if (((s32) M2C_FIELD(temp_r5_632, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_632, s32 *, 4) == 3)) {
@@ -383,7 +383,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     } else {
         var_r28_646 = *(temp_r5_632 + (temp_r29_630 * 4));
     }
-    temp_r27_653 = GameData::gameData.unk158;
+    temp_r27_653 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     temp_r4_661 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -734,7 +734,7 @@ loop_31:
                 this->unk94 = 1.5f;
                 var_r4_1391 = 0;
                 this->unk90 = 3;
-                temp_r3_1396 = &GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x64);
+                temp_r3_1396 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
                 if (((s32) M2C_FIELD(temp_r3_1396, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1396, s32 *, 4) == 3)) {
                     var_r4_1391 = 1;
                 }
@@ -754,7 +754,7 @@ loop_31:
                 this->unk94 = 1.5f;
                 var_r4_1463 = 0;
                 this->unk90 = 4;
-                temp_r3_1468 = &GameData::gameData.unk70 + ((GameData::gameData.unk158 << 5) + 0x64);
+                temp_r3_1468 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
                 if (((s32) M2C_FIELD(temp_r3_1468, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1468, s32 *, 4) == 3)) {
                     var_r4_1463 = 1;
                 }

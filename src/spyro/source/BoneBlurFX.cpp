@@ -412,14 +412,14 @@ void BoneBlurFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void BoneBlurFXDescriptor::DrawInstances() {
     void *var_r30_773;
     void *var_r31_768;
     void *var_r4_756;
     void *var_r4_787;
 
-    var_r4_756 = BoneBlurFXDescriptor::pFirstDesc.__vptr;
+    var_r4_756 = *BoneBlurFXDescriptor::pFirstDesc;
 loop_2:
     if ((var_r4_756 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r4_756, void **, 0x60), s32 *, 0x138) & 2)) {
         var_r4_756 = M2C_FIELD(var_r4_756, void **, 0x68);
@@ -447,13 +447,13 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'BoneBlurFXDescriptor *' to
 void BoneBlurFXDescriptor::Deinit() {
     BoneBlurFXDescriptor *temp_r4_822;
     BoneBlurFXDescriptor *temp_r4_828;
 
-    if ((void *) BoneBlurFXDescriptor::pFirstDesc.__vptr == this) {
-        BoneBlurFXDescriptor::pFirstDesc.__vptr = this->unk68;
+    if ((BoneBlurFXDescriptor *) *BoneBlurFXDescriptor::pFirstDesc == this) {
+        *BoneBlurFXDescriptor::pFirstDesc = this->unk68;
     }
     temp_r4_822 = this->unk64;
     if (temp_r4_822 != NULL) {
@@ -470,15 +470,15 @@ void BoneBlurFXDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void BoneBlurFXDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk68 = (BoneBlurFXDescriptor *) BoneBlurFXDescriptor::pFirstDesc.__vptr;
+    this->unk68 = *BoneBlurFXDescriptor::pFirstDesc;
     this->unk64 = NULL;
-    if ((void *) BoneBlurFXDescriptor::pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(BoneBlurFXDescriptor::pFirstDesc.__vptr, BoneBlurFXDescriptor **, 0x64) = this;
+    if ((BoneBlurFXDescriptor *) *BoneBlurFXDescriptor::pFirstDesc != NULL) {
+        (*BoneBlurFXDescriptor::pFirstDesc)->unk64 = this;
     }
-    BoneBlurFXDescriptor::pFirstDesc.__vptr = this;
+    *BoneBlurFXDescriptor::pFirstDesc = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

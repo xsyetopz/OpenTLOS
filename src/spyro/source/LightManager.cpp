@@ -51,7 +51,7 @@ void LightManager::EnableLight(ManagedLight *arg0, bool arg1) {
         temp_r3_95 = arg0->unk3C;
         if ((u8) M2C_FIELD(temp_r3_95, u8 *, 0x30) != 1) {
             M2C_FIELD(temp_r3_95, u8 *, 0x30) = 1U;
-            OmniLight::totalEnabled = (s32) (OmniLight::totalEnabled + 1);
+            *OmniLight::totalEnabled += 1;
         }
     } else if (arg1 != 0) {
         var_r4_109 = 0;

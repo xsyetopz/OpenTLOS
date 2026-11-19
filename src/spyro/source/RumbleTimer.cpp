@@ -13,7 +13,7 @@ static f32 timer = 15.0f;
 
 #if 0 // DRAFT: undefined identifier 'StopRumbling'
 void RumbleTimer_Update() {
-    ((GameData *) (&GameData::gameData))->GetGameSettings();
+    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
         timer -= gUpdateTimeDelta;
         if (StopRumbling() != 0) {

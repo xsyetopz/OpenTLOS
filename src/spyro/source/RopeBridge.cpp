@@ -2150,13 +2150,13 @@ s32 RopeBridgeDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'RopeBridgeDescriptor *' to
 void RopeBridgeDescriptor::Deinit() {
     RopeBridgeDescriptor *temp_r4_3909;
     RopeBridgeDescriptor *temp_r4_3915;
 
-    if ((void *) RopeBridgeDescriptor::pFirstDesc.__vptr == this) {
-        RopeBridgeDescriptor::pFirstDesc.__vptr = this->unk6C;
+    if ((RopeBridgeDescriptor *) *RopeBridgeDescriptor::pFirstDesc == this) {
+        *RopeBridgeDescriptor::pFirstDesc = this->unk6C;
     }
     temp_r4_3909 = this->unk68;
     if (temp_r4_3909 != NULL) {
@@ -2173,17 +2173,17 @@ void RopeBridgeDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void RopeBridgeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
     this->unkC |= 0x20000;
-    this->unk6C = (RopeBridgeDescriptor *) RopeBridgeDescriptor::pFirstDesc.__vptr;
+    this->unk6C = *RopeBridgeDescriptor::pFirstDesc;
     this->unk68 = NULL;
-    if ((void *) RopeBridgeDescriptor::pFirstDesc.__vptr != NULL) {
-        M2C_FIELD(RopeBridgeDescriptor::pFirstDesc.__vptr, RopeBridgeDescriptor **, 0x68) = this;
+    if ((RopeBridgeDescriptor *) *RopeBridgeDescriptor::pFirstDesc != NULL) {
+        (*RopeBridgeDescriptor::pFirstDesc)->unk68 = this;
     }
-    RopeBridgeDescriptor::pFirstDesc.__vptr = this;
+    *RopeBridgeDescriptor::pFirstDesc = this;
     this->unk64 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
 }
 #endif

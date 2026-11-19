@@ -10,7 +10,7 @@
 #include <m2c_macros.h>
 
 M2C_UNK free(void **);                              /* extern */
-UIObject *malloc(void *);                           /* extern */
+UIObject *malloc(s32);                              /* extern */
 extern void **gMK;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp10'
@@ -80,24 +80,24 @@ void UIProp::LoadDone() {
     MKHeap *temp_r3_194;
     MKHeap *temp_r3_199;
     UIObject *var_r31_207;
+    s32 temp_r31_198;
     void **temp_r3_237;
     void **temp_r3_242;
     void **temp_r3_247;
-    void *temp_r31_198;
 
     MKProp::LoadDone();
     this->unk58.Init(this->unk4C);
     temp_r3_194 = UIStringTable_SetCurrent(&this->unk58);
-    temp_r31_198 = UISystem::descriptor.unk8;
+    temp_r31_198 = M2C_FIELD(UISystem::descriptor, s32 *, 8);
     temp_r3_199 = temp_r3_194->Current();
     if (temp_r3_199 != NULL) {
-        var_r31_207 = ((MKHeap *) (temp_r3_199->Current()))->Alloc((s32) temp_r31_198, NULL, 0);
+        var_r31_207 = ((MKHeap *) (temp_r3_199->Current()))->Alloc(temp_r31_198, NULL, 0);
     } else {
         var_r31_207 = malloc(temp_r31_198);
     }
-    ((M2C_UNK (*)(UIObject *, UISystem *)) UISystem::descriptor.unkC)(var_r31_207, &UISystem::descriptor);
-    var_r31_207->unk8 = &UISystem::descriptor;
-    var_r31_207->Init(&UISystem::descriptor);
+    M2C_FIELD(UISystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r31_207, UISystem::descriptor);
+    var_r31_207->unk8 = UISystem::descriptor;
+    var_r31_207->Init(UISystem::descriptor);
     this->unk54 = checked_cast<UISystem *, UIObject>(var_r31_207);
     if (this->unk54->Load(this->unk50, NULL) != 0) {
         temp_r3_237 = this->unk54;

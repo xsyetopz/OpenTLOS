@@ -3,24 +3,24 @@
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 
 void PhrasePlayerProperty::Command(int arg0) {
+    s32 temp_r30_51;
     s32 temp_r31_52;
-    void *temp_r30_51;
 
     switch (arg0) {                                 /* irregular */
     case 1:
-        temp_r30_51 = KDProperty::pInstanceMem.__vptr;
+        temp_r30_51 = *KDProperty::pInstanceMem;
         temp_r31_52 = this->unk8;
         *(temp_r30_51 + temp_r31_52) = PhrasePlayer_PlayEvent(this->unk4);
         return;
     case 2:
-        PhrasePlayer_StopEvent(*(KDProperty::pInstanceMem.__vptr + this->unk8));
+        PhrasePlayer_StopEvent(*(*KDProperty::pInstanceMem + this->unk8));
         return;
     case 3:
-        PhrasePlayer_StopEvent(*(KDProperty::pInstanceMem.__vptr + this->unk8));
+        PhrasePlayer_StopEvent(*(*KDProperty::pInstanceMem + this->unk8));
         return;
     }
 }

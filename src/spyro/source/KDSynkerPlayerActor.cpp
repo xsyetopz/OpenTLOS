@@ -1398,21 +1398,19 @@ s32 KDSP_Actor::GetMatchingNodeIndex(const char *arg0) {
     return KDSP_ToolsGetMatchingNodeIndex(this->unk38->unk8, arg0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void KDSP_Actor::GetEnvelope(int arg0) {
-    ((KDSP_EnvelopeList *) (KDSP_Actor::pEnvelopeData.unk0))->GetEnvelope((s32) this);
+    ((KDSP_EnvelopeList *) (*KDSP_Actor::pEnvelopeData))->GetEnvelope((s32) this);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDSP_Actor *' to
 void KDSP_Actor::SetInput(KDInput *arg0) {
-    KDSP_Actor::pInput.unk0 = (KDSP_EnvelopeList *) this;
+    *KDSP_Actor::pInput = this;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDSP_Actor *' to
 void KDSP_Actor::SetEnvelopeList(KDSP_EnvelopeList *arg0) {
-    KDSP_Actor::pEnvelopeData.unk0 = (KDSP_EnvelopeList *) this;
+    *KDSP_Actor::pEnvelopeData = this;
 }
 #endif
 

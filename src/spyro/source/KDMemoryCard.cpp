@@ -2,16 +2,9 @@
 #include "common/Source/MKMemoryCard.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'tmpfileInfo' redeclared
 static M2C_UNK lit_490;                                /* unable to generate initializer: unknown type */
-static KDMemoryCard stateData__12KDMemoryCard[6] = {
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-}; /* extra bytes: 9 */
+KDMemoryCard stateData__12KDMemoryCard = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+#if 0 // DRAFT: identifier 'tmpfileInfo' redeclared
 static MKMemoryCardFileInfo tmpfileInfo[0x10];
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_card_0x280'
@@ -331,47 +324,44 @@ void KDMemoryCard::SetState(KDMCState arg0) {
     s32 temp_r5_679;
 
     temp_r5_679 = (s32) arg0 * 0x18;
-    KDMemoryCard::state.unk0 = (s32) arg0;
-    KDMemoryCard::currentCard.unk0 = (s32) this;
-    if (__ptmf_test(KDMemoryCard::stateData + temp_r5_679, temp_r5_679) != 0) {
-        __ptmf_scall(this, KDMemoryCard::state.unk0 * 0x18);
+    *KDMemoryCard::state = (s32) arg0;
+    *KDMemoryCard::currentCard = this;
+    if (__ptmf_test(&KDMemoryCard::stateData + temp_r5_679, temp_r5_679) != 0) {
+        __ptmf_scall(this, *KDMemoryCard::state * 0x18);
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 s32 KDMemoryCard::Update() {
     s32 var_r3_743;
 
-    if (((u32) KDMemoryCard::currentCard.unk0 == 0U) || ((s32) KDMemoryCard::state.unk0 == 0) || ((s32) KDMemoryCard::state.unk0 == 1)) {
+    if (((KDMemoryCard *) *KDMemoryCard::currentCard == NULL) || ((s32) *KDMemoryCard::state == 0) || ((s32) *KDMemoryCard::state == 1)) {
         return 0;
     }
-    if (MKMemoryCard_GetStatus(*KDMemoryCard::currentCard.unk0) == 1) {
+    if (MKMemoryCard_GetStatus((*KDMemoryCard::currentCard)->unk0) == 1) {
         return 1;
     }
-    __ptmf_scall((KDMemoryCard *) KDMemoryCard::currentCard.unk0, (s32) (KDMemoryCard::stateData + (KDMemoryCard::state.unk0 * 0x18)));
+    __ptmf_scall(*KDMemoryCard::currentCard, (s32) (&KDMemoryCard::stateData + (*KDMemoryCard::state * 0x18)));
     var_r3_743 = 0;
-    if (((s32) KDMemoryCard::state.unk0 != 0) && ((s32) KDMemoryCard::state.unk0 != 1)) {
+    if (((s32) *KDMemoryCard::state != 0) && ((s32) *KDMemoryCard::state != 1)) {
         var_r3_743 = 1;
     }
     return var_r3_743;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::WasErrorDuringLast() {
-    return KDMemoryCard::state.unk0 == 1;
+    return *KDMemoryCard::state == 1;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void KDMemoryCard::Reset(bool arg0) {
     this->unk8 = 1;
     if ((u8) this->unk9 != arg0) {
         if (arg0 != 0) {
-            KDMemoryCard::numCardsPresent.unk0 += 1;
+            *KDMemoryCard::numCardsPresent += 1;
         } else {
-            KDMemoryCard::numCardsPresent.unk0 -= 1;
+            *KDMemoryCard::numCardsPresent -= 1;
         }
     }
     this->unk9 = arg0;
@@ -387,12 +377,11 @@ void KDMemoryCard::Reset(bool arg0) {
     this->unk24 = 0;
     memset(this + 0x40, 0, 0x240U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk0'
 void KDMemoryCard::Init(int arg0) {
     this->unk0 = arg0;
-    KDMemoryCard::state.unk0 = 0;
+    *KDMemoryCard::state = 0;
     this->unk4 = -1;
     Reset(0U);
 }
@@ -413,12 +402,12 @@ void KDMemoryCard::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 s32 KDMemoryCard::GetNextCard() {
-    if ((u32) KDMemoryCard::currentCard.unk0 >= &card[1]) {
+    if ((u32) *KDMemoryCard::currentCard >= &card[1]) {
         return 0;
     }
-    return KDMemoryCard::currentCard.unk0 + 0x280;
+    return *KDMemoryCard::currentCard + 0x280;
 }
 #endif
 
@@ -428,7 +417,7 @@ void *KDMemoryCard::GetCard(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_490'
+#if 0 // DRAFT: undefined identifier '__ptmf_null'
 void KDMemoryCard_cpp::__sinit() {
     s32 sp28;
     s32 sp24;

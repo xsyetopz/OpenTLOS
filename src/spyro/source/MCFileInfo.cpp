@@ -72,7 +72,7 @@ void MCFileInfo::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MCFileInfo::Reset() {
     s32 sp10;
     s32 spC;
@@ -102,17 +102,17 @@ void MCFileInfo::Reset() {
     void *var_r4_518;
     void *var_r7_456;
 
-    if (((void *) MemoryCardScreen::selectedCard.__vptr != NULL) && ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 9) != 0)) {
-        if ((u8) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, u8 *, 8) != 0) {
+    if (((void *) *MemoryCardScreen::selectedCard != NULL) && ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 9) != 0)) {
+        if ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 8) != 0) {
             return;
         }
-        temp_r4_274 = MemoryCardScreen::selectedCard.__vptr + ((this->unk218 * 0xC0) + 0x40);
+        temp_r4_274 = *MemoryCardScreen::selectedCard + ((this->unk218 * 0xC0) + 0x40);
         if (((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA5) != 0) || ((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA4) == 0)) {
             temp_r30_282 = this->unk68;
             if (temp_r30_282 != NULL) {
                 if ((s8) M2C_FIELD(temp_r4_274, u8 *, 0xA4) == 0) {
-                    temp_r30_288 = M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x18);
-                    if ((temp_r30_288 < MemoryCard_GetSaveGameBlockSize()) || ((s32) M2C_FIELD(MemoryCardScreen::selectedCard.__vptr, s32 *, 0x14) < 1)) {
+                    temp_r30_288 = M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x18);
+                    if ((temp_r30_288 < MemoryCard_GetSaveGameBlockSize()) || ((s32) M2C_FIELD(*MemoryCardScreen::selectedCard, s32 *, 0x14) < 1)) {
                         temp_r30_297 = this->unk68;
                         temp_r3_298 = M2C_FIELD(temp_r30_297, s8 **, 0x68);
                         if (temp_r3_298 != NULL) {

@@ -36,7 +36,7 @@ loop_7:
         if (var_r30_48->IsField("ScriptCommand") != 0) {
             temp_r3_59 = var_r30_48->GetString(0);
             if ((s8) *temp_r3_59 != 0) {
-                this->unk0 = ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Add(temp_r3_59);
+                this->unk0 = ((UIStringTable *) (*ChunkData::pCurrentEventStrings))->Add(temp_r3_59);
             }
             return 1;
         }
@@ -48,13 +48,13 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void EventMessage::Deinit() {
     s32 temp_r4_96;
 
     temp_r4_96 = this->unk0;
     if ((u32) temp_r4_96 != 0U) {
-        ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Remove((s8 *) temp_r4_96);
+        ((UIStringTable *) (*ChunkData::pCurrentEventStrings))->Remove((s8 *) temp_r4_96);
     }
     this->unk0 = 0;
 }
@@ -64,9 +64,9 @@ void EventMessage::Init() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 EventMessage *EventMessage::operator=(const EventMessage &arg0) {
-    this->unk0 = ((UIStringTable *) (ChunkData::pCurrentEventStrings.unk0))->Add((s8 *) arg0.unk0);
+    this->unk0 = ((UIStringTable *) (*ChunkData::pCurrentEventStrings))->Add((s8 *) arg0.unk0);
     return this;
 }
 #endif

@@ -14,7 +14,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 static M2C_UNK lit_737;                                /* unable to generate initializer: unknown type */
-static SpyroLedgeGrabState states__19SpyroLedgeGrabState; /* extra bytes: 1; unable to generate initializer: confusing struct layout */
+SpyroLedgeGrabState states__19SpyroLedgeGrabState;  /* unable to generate initializer: confusing struct layout */
 
 void SpyroLedgeGrabState::PullUpDescendTransition() {
     s8 sp1D;

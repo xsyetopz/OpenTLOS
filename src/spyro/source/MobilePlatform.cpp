@@ -27,9 +27,9 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: ')' expected
-static MobilePlatform mpfLoadInfo__14MobilePlatform; /* type too large by 0x258 */
+u8 mpfLoadInfo__14MobilePlatform[0x10];
 
+#if 0 // DRAFT: ')' expected
 void MobilePlatform::UpdateSag() {
     f32 temp_f1_111;
     f32 temp_f1_114;
@@ -352,7 +352,7 @@ block_73:
     case 0xD5:
         Reset();
         M2C_FIELD(this, s8 *, 0x218) = 0;
-        var_f1_820 = M2C_BITWISE(f32, MobilePlatform::mpfLoadInfo.unk8);
+        var_f1_820 = M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 8);
         if (var_f1_820 < 1.0f) {
 
         } else {
@@ -522,7 +522,6 @@ void MobilePlatform::PropUpdate() {
 
 #if 0 // DRAFT: undefined identifier 'arg_sp20'
 void MobilePlatform::LoadDone() {
-    f32 temp_f1_1355;
     f32 var_f1_1389;
     f64 temp_f0_1285;
     f64 temp_f1_1284;
@@ -561,16 +560,15 @@ void MobilePlatform::LoadDone() {
         arg_sp18 = M2C_FIELD(this, f64 *, 0x118);
         arg_sp30.SetRotationPYR(*((MKVector3 *) &arg_sp10));
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
-        temp_f1_1355 = M2C_BITWISE(f32, MobilePlatform::mpfLoadInfo.unk4);
-        if (temp_f1_1355 > 0.0f) {
-            MobilePlatform::mpfLoadInfo.unk0 = this->unk19C.unk30.unk8 / temp_f1_1355;
+        if (M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4) > 0.0f) {
+            M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0) = (f32) (this->unk19C.unk30.unk8 / M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4));
         }
-        this->unk18C = this->unk19C.unk30.unk8 / M2C_BITWISE(f32, MobilePlatform::mpfLoadInfo.unk0);
+        this->unk18C = this->unk19C.unk30.unk8 / M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0);
         this->unk1E8 = this->unk18C * (f32) ((u8) ((u8) this->unk19C.unk45 == 0) + 1);
     } else {
         this->unk1E8 = 1.0f;
     }
-    var_f1_1389 = M2C_BITWISE(f32, MobilePlatform::mpfLoadInfo.unk8);
+    var_f1_1389 = M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 8);
     if (var_f1_1389 < 1.0f) {
 
     } else {
@@ -593,12 +591,12 @@ void MobilePlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
     var_r31_1449 = 0;
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) &MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo.unk4, 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo.unk8, 0) != 0) || (arg0->LoadBool("bMoveOne", &this->unk1E4, 0) != 0) || (arg0->LoadBool("bNonCircular", (u8 *) &MobilePlatform::mpfLoadInfo.unkC, 0) != 0) || (arg0->LoadBool("bSingleMove", (u8 *) &this->unk1E8, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F8, 0) != 0) || (this->unk1FC.LoadLine(arg0, "OnAttach") != 0) || (this->unk200.LoadLine(arg0, "OnDetach") != 0) || (this->unk19C.LoadLine(arg0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo[4], 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo[8], 0) != 0) || (arg0->LoadBool("bMoveOne", &this->unk1E4, 0) != 0) || (arg0->LoadBool("bNonCircular", &MobilePlatform::mpfLoadInfo[0xC], 0) != 0) || (arg0->LoadBool("bSingleMove", (u8 *) &this->unk1E8, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F8, 0) != 0) || (this->unk1FC.LoadLine(arg0, "OnAttach") != 0) || (this->unk200.LoadLine(arg0, "OnDetach") != 0) || (this->unk19C.LoadLine(arg0) != 0)) {
         var_r31_1449 = 1;
     }
     return var_r31_1449;
@@ -621,13 +619,13 @@ void MobilePlatform::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void MobilePlatform::Init() {
     Platform::Init();
-    M2C_FIELD(&MobilePlatform::mpfLoadInfo, s8 *, 0xC) = 0;
-    MobilePlatform::mpfLoadInfo.unk0 = 7.0f;
-    MobilePlatform::mpfLoadInfo.unk4 = -1.0f;
-    MobilePlatform::mpfLoadInfo.unk8 = 0.0f;
+    MobilePlatform::mpfLoadInfo[0xC] = 0;
+    M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0) = 7.0f;
+    M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4) = -1.0f;
+    M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 8) = 0.0f;
     this->unk19C.Init();
     this->unk184 = 0;
     this->unk188 = 2;
@@ -649,16 +647,16 @@ void MobilePlatform::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 s32 MobilePlatformDescriptor::IsDescriptor(MKPropDescriptor *arg0) {
-    s8 *var_r4_1682;
-    s8 *var_r5_1670;
-    s8 *var_r5_1690;
+    void *var_r4_1682;
+    void *var_r5_1670;
+    void *var_r5_1690;
 
-    var_r5_1670 = MobilePlatformDescriptor::pFirstDesc.unk0;
+    var_r5_1670 = *MobilePlatformDescriptor::pFirstDesc;
 loop_2:
     if ((var_r5_1670 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r5_1670, void **, 0x144), s32 *, 0x138) & 2)) {
-        var_r5_1670 = M2C_FIELD(var_r5_1670, s8 **, 0x14C);
+        var_r5_1670 = M2C_FIELD(var_r5_1670, void **, 0x14C);
         goto loop_2;
     }
     var_r4_1682 = var_r5_1670;
@@ -669,10 +667,10 @@ loop_12:
     if (var_r4_1682 == this) {
         return 1;
     }
-    var_r5_1690 = M2C_FIELD(var_r4_1682, s8 **, 0x14C);
+    var_r5_1690 = M2C_FIELD(var_r4_1682, void **, 0x14C);
 loop_9:
     if ((var_r5_1690 != NULL) && !(M2C_FIELD(M2C_FIELD(var_r5_1690, void **, 0x144), s32 *, 0x138) & 2)) {
-        var_r5_1690 = M2C_FIELD(var_r5_1690, s8 **, 0x14C);
+        var_r5_1690 = M2C_FIELD(var_r5_1690, void **, 0x14C);
         goto loop_9;
     }
     var_r4_1682 = var_r5_1690;
@@ -692,13 +690,13 @@ s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'MobilePlatformDescriptor *' to
 void MobilePlatformDescriptor::Deinit() {
     MobilePlatformDescriptor *temp_r4_1813;
     MobilePlatformDescriptor *temp_r4_1819;
 
-    if ((s8 *) MobilePlatformDescriptor::pFirstDesc.unk0 == this) {
-        MobilePlatformDescriptor::pFirstDesc.unk0 = (s8 *) this->unk14C;
+    if ((MobilePlatformDescriptor *) *MobilePlatformDescriptor::pFirstDesc == this) {
+        *MobilePlatformDescriptor::pFirstDesc = this->unk14C;
     }
     temp_r4_1813 = this->unk148;
     if (temp_r4_1813 != NULL) {
@@ -715,7 +713,7 @@ void MobilePlatformDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MobilePlatformDescriptor::Init() {
     PlatformDescriptor::Init();
     this->unkF0 = 2.5f;
@@ -732,12 +730,12 @@ void MobilePlatformDescriptor::Init() {
     this->unk138 = GS_PLACEHOLDER;
     this->unk13C = GS_PLACEHOLDER;
     this->unk140 = 0.0f;
-    this->unk14C = (MobilePlatformDescriptor *) MobilePlatformDescriptor::pFirstDesc.unk0;
+    this->unk14C = *MobilePlatformDescriptor::pFirstDesc;
     this->unk148 = NULL;
-    if ((s8 *) MobilePlatformDescriptor::pFirstDesc.unk0 != NULL) {
-        M2C_FIELD(MobilePlatformDescriptor::pFirstDesc.unk0, MobilePlatformDescriptor **, 0x148) = this;
+    if ((MobilePlatformDescriptor *) *MobilePlatformDescriptor::pFirstDesc != NULL) {
+        (*MobilePlatformDescriptor::pFirstDesc)->unk148 = this;
     }
-    MobilePlatformDescriptor::pFirstDesc.unk0 = (s8 *) this;
+    *MobilePlatformDescriptor::pFirstDesc = this;
     this->unk144 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
 }
 #endif

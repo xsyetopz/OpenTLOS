@@ -99,7 +99,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1, float arg2, float arg3, int arg4, bool arg5, unsigned char arg6, unsigned char arg7) {
     s32 var_r28_166;
     s32 var_r3_191;
@@ -108,7 +107,7 @@ void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1,
 
     var_r28_166 = arg4;
     var_r31_169 = arg7;
-    temp_r3_171 = ((FireBossDirectedGraph *) (FireBossGraphNode::pGraph.unk0))->AddEdge();
+    temp_r3_171 = ((FireBossDirectedGraph *) (*FireBossGraphNode::pGraph))->AddEdge();
     M2C_FIELD(temp_r3_171, void **, 8) = (void *) this->unk18;
     this->unk18 = temp_r3_171;
     M2C_FIELD(temp_r3_171, FireBossGraphNode **, 4) = arg0;
@@ -135,16 +134,17 @@ void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1,
         arg0->AddEdges(this, arg1, arg3, arg2, var_r28_166, 0U, arg6, var_r31_169);
     }
 }
-#endif
 
+#if 0 // DRAFT: undefined identifier 'unk0'
 void FireBossGraphNode::Init(const MKVector3 &arg0, int arg1) {
     this->unk8 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk10 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk4 = arg1;
     this->unk18 = NULL;
     this->unk1C = 0;
-    M2C_FIELD(this, s8 *, 0) = (s8) ((s8) this->unk4 + 0x41);
+    this->unk0 = (s8) this->unk4 + 0x41;
 }
+#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 FireBossGraphEdge *FireBossDirectedGraph::GetEdge(KDUniformSpline *arg0, float arg1, int arg2) {
@@ -321,8 +321,8 @@ void FireBossDirectedGraph::Init() {
     this->unkC = this->unk0 + 0x2A8;
     this->unk8->Init(MKVector3::zero, 0);
     this->unkC->Init(MKVector3::zero, 0);
-    *this->unk8 = 0x58;
-    *this->unkC = 0x59;
+    this->unk8->unk0 = 0x58;
+    this->unkC->unk0 = 0x59;
     this->unk10 = 0;
     this->unk14 = 0;
 }
@@ -1038,6 +1038,7 @@ u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk0'
 void FireBoss::SetCurrentEdge(FireBossGraphEdge *arg0, float arg1) {
     FireBossGraphEdge *temp_r3_1879;
     FireBossGraphEdge *temp_r3_1918;
@@ -1046,7 +1047,7 @@ void FireBoss::SetCurrentEdge(FireBossGraphEdge *arg0, float arg1) {
 
     temp_r3_1879 = this->unkC1C;
     if (temp_r3_1879 != NULL) {
-        this->unkC20 = (u8 *) temp_r3_1879->unk4;
+        this->unkC20 = &temp_r3_1879->unk4->unk0;
     } else {
         this->unkC20 = this->unkC18->GetNode(0x41);
     }
@@ -1083,6 +1084,7 @@ void FireBoss::SetCurrentEdge(FireBossGraphEdge *arg0, float arg1) {
     }
     UpdateNextBranch();
 }
+#endif
 
 s32 FireBoss::CheckForEndOfEdge(bool arg0) {
     FireBossGraphEdge *temp_r5_1980;
@@ -2426,7 +2428,7 @@ void FireBoss::Init() {
     }
     this->unkC18 = (FireBossDirectedGraph *) var_r3_4718;
     this->unkC18->Init();
-    FireBossGraphNode::pGraph.unk0 = this->unkC18;
+    *FireBossGraphNode::pGraph = this->unkC18;
     temp_r3_4729 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_4729 != NULL) {
         var_r3_4736 = ((MKHeap *) (temp_r3_4729->Current()))->Alloc(0x58, NULL, 0);

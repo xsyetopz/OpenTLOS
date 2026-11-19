@@ -589,7 +589,7 @@ loop_14:
         temp_r30_1076 = *var_r29_978;
         if (temp_r30_1076 != NULL) {
             temp_r3_985 = (*temp_r30_1076)->unk8.unk0(temp_r30_1076);
-            if ((temp_r3_985 != NULL) && ((M2C_FIELD(*temp_r30_1076, u8 (**)(TargetManager **), 0x18)(temp_r30_1076) == 0) || ((((u32 (*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076) != 0U) && (((Character *) (((Character *(*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076)))->IsActive() != 0))) && (temp_r3_985 != M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u32 (**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) && (M2C_FIELD(*gMK, u8 (**)(void **, void *, s32), 0x9C)(gMK, temp_r3_985, MKResource::sWorkingChunkID.unk0) != 0)) {
+            if ((temp_r3_985 != NULL) && ((M2C_FIELD(*temp_r30_1076, u8 (**)(TargetManager **), 0x18)(temp_r30_1076) == 0) || ((((u32 (*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076) != 0U) && (((Character *) (((Character *(*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076)))->IsActive() != 0))) && (temp_r3_985 != M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u32 (**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) && (M2C_FIELD(*gMK, u8 (**)(void **, void *, s32), 0x9C)(gMK, temp_r3_985, *MKResource::sWorkingChunkID) != 0)) {
                 temp_r3_1034 = M2C_FIELD((*temp_r30_1076)->unk8.unk0(temp_r30_1076), void **, 8);
                 sp18 = M2C_FIELD(temp_r3_1034, f64 *, 0x30);
                 sp20 = M2C_FIELD(temp_r3_1034, f64 *, 0x38);
@@ -631,9 +631,9 @@ s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
     this->unk94 = 3.0f;
     this->unk98 = M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xA0) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-    temp_r3_1115 = GameData::gameData.unk158 << 5;
-    temp_r0_1117 = *(&GameData::gameData.unk70 + (temp_r3_1115 + 0x7C));
-    temp_r5_1119 = &GameData::gameData.unk70 + (temp_r3_1115 + 0x64);
+    temp_r3_1115 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_1117 = *(&GameData::gameData[0x70] + (temp_r3_1115 + 0x7C));
+    temp_r5_1119 = &GameData::gameData[0x70] + (temp_r3_1115 + 0x64);
     if (temp_r0_1117 == 3) {
         var_r3_1123 = 0;
         if (((s32) M2C_FIELD(temp_r5_1119, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_1119, s32 *, 4) == 3)) {
@@ -643,7 +643,7 @@ s32 FuryFXIce2::Trigger(const MKVector3 &arg0) {
     } else {
         var_r30_1133 = *(temp_r5_1119 + (temp_r0_1117 * 4));
     }
-    temp_r29_1140 = GameData::gameData.unk158;
+    temp_r29_1140 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unkA8.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), 15.0f * M2C_FIELD(&gb, f32 *, 0x37C), 3, var_r30_1133, temp_r29_1140, temp_r29_1140, 0, -1);
     FindInRangeTargets(9e6f);
     if ((void *) this->unk104->unk0 != NULL) {

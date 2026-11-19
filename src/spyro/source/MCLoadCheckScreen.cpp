@@ -94,7 +94,7 @@ void MCLoadCheckScreen::Update() {
                 ((KDMemoryCard *) (temp_r3_82->GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
-            if ((u32) KDMemoryCard::numCardsPresent.unk0 == 0U) {
+            if ((u32) *KDMemoryCard::numCardsPresent == 0U) {
                 this->unkC8 = (UIContainer *)4;
                 return;
             }
@@ -134,13 +134,13 @@ loop_16:
                     }
                 }
                 this->unkC8 = (UIContainer *)4;
-                MemoryCardScreen::selectedCard.__vptr = var_r29_101->GetCard((s32) var_r4_125);
+                *MemoryCardScreen::selectedCard = var_r29_101->GetCard((s32) var_r4_125);
                 return;
             }
 block_25:
             var_r29_101 += 1;
             if (var_r29_101 >= 2) {
-                if (((u32) KDMemoryCard::numCardsPresent.unk0 != 0U) && (var_r28_100 == (u32) KDMemoryCard::numCardsPresent.unk0)) {
+                if (((u32) *KDMemoryCard::numCardsPresent != 0U) && (var_r28_100 == (u32) *KDMemoryCard::numCardsPresent)) {
                     this->unkC8 = (UIContainer *)3;
                     temp_r3_163 = this->unkD4;
                     sp20 = 2;
@@ -160,7 +160,7 @@ block_25:
                     sp8 = 2;
                     spC = 0;
                     temp_r3_206 = ((KDMemoryCard *) (M2C_FIELD(*temp_r3_196, KDMemoryCard *(**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_196, &sp8, 2)))->GetFirstAvailable();
-                    MemoryCardScreen::selectedCard.__vptr = temp_r3_206;
+                    *MemoryCardScreen::selectedCard = temp_r3_206;
                     temp_r3_206->SetState((KDMCState) 3);
                     return;
                 }

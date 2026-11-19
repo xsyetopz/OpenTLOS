@@ -7,7 +7,6 @@
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
-#include "spyro/source/KDSynkerPlayerEvents.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
@@ -260,7 +259,7 @@ void KDSynkerPlayer3::Unload() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSynkerPlayer3::Draw() {
     KDSP_Actor *temp_r3_526;
     s32 temp_r30_520;
@@ -269,7 +268,7 @@ void KDSynkerPlayer3::Draw() {
     u8 var_r4_529;
 
     if (((s32) this->unk4C == 5) && !(this->unk50 & 4)) {
-        if ((void *) KDSynkerPlayer3::pActorCallback.__vptr != NULL) {
+        if ((u32) *KDSynkerPlayer3::pActorCallback != 0U) {
             ActorCallback((KDSynkerPlayer3::CallBackMode) 3);
         } else {
             temp_r30_520 = M2C_FIELD(this, s32 *, 0x100);
@@ -363,20 +362,20 @@ void KDSynkerPlayer3::ActorCallback(KDSynkerPlayer3::CallBackMode arg1) {
     s32 var_r31_739;
     void *temp_r5_743;
 
-    if ((void *) KDSynkerPlayer3::pActorCallback.__vptr != NULL) {
+    if (((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, s32)) *KDSynkerPlayer3::pActorCallback) != NULL) {
         temp_r30_737 = M2C_FIELD(this, s32 *, 0x100);
         var_r29_738 = 0;
         var_r31_739 = 0;
 loop_12:
         if (var_r29_738 < temp_r30_737) {
             temp_r5_743 = this->unk100.unk0 + var_r31_739;
-            if ((temp_r5_743 != NULL) && ((void *) KDSynkerPlayer3::pActorCallback.__vptr != NULL) && ((u32) M2C_FIELD(temp_r5_743, u32 *, 0x30) == 0U)) {
+            if ((temp_r5_743 != NULL) && (((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, s32)) *KDSynkerPlayer3::pActorCallback) != NULL) && ((u32) M2C_FIELD(temp_r5_743, u32 *, 0x30) == 0U)) {
                 temp_r3_751 = M2C_FIELD(temp_r5_743, s32 *, 0x40);
                 if (!(temp_r3_751 & 4) && (((s32) M2C_FIELD(temp_r5_743, s32 *, 0xCC) != -1) || ((u32) ((s32) arg1 - 2) > 1U))) {
                     if (temp_r3_751 & 0x40) {
-                        ((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, s32, M2C_UNK)) KDSynkerPlayer3::pActorCallback.__vptr)(arg1, var_r29_738, M2C_FIELD(temp_r5_743, s32 *, 0x3C), 0);
+                        *KDSynkerPlayer3::pActorCallback(arg1, var_r29_738, M2C_FIELD(temp_r5_743, s32 *, 0x3C), 0);
                     } else {
-                        ((M2C_UNK (*)(KDSynkerPlayer3::CallBackMode, s32, M2C_UNK, s32)) KDSynkerPlayer3::pActorCallback.__vptr)(arg1, var_r29_738, 0, M2C_FIELD(temp_r5_743, s32 *, 0x38));
+                        *KDSynkerPlayer3::pActorCallback(arg1, var_r29_738, 0, M2C_FIELD(temp_r5_743, s32 *, 0x38));
                     }
                 }
             }
@@ -424,10 +423,10 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
     if (this->unk50 & 1) {
         this->unk60.Update(&this->unk28, this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10);
     }
-    if ((this->unk50 & 1) && ((void *) KDSynkerPlayer3::pCameraProp.__vptr != NULL)) {
+    if ((this->unk50 & 1) && ((void *) *KDSynkerPlayer3::pCameraProp != NULL)) {
         spC.unk4 = 0;
         spC.Init((Matrix *) &this->unk60, this->unk60.unk60, this->unk60.unk64, this->unk60.unk68);
-        M2C_FIELD(M2C_FIELD(KDSynkerPlayer3::pCameraProp.__vptr, void **, 0x44), M2C_UNK (**)(void *, KDS_Message_SetCamera *), 0x2C)(KDSynkerPlayer3::pCameraProp.__vptr, &spC);
+        M2C_FIELD(M2C_FIELD(*KDSynkerPlayer3::pCameraProp, void **, 0x44), M2C_UNK (**)(void *, KDS_Message_SetCamera *), 0x2C)(*KDSynkerPlayer3::pCameraProp, &spC);
     }
     this->unk148.unk24.Update((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248));
     this->unk100.Update(this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10, *((MKVector3 *) &this->unk60.unk40), (u8) this->unk60.unk6C);
@@ -531,7 +530,7 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
     this->unk60.Init();
     this->unk100.Init();
     this->unk100.unk10.Init();
-    this->unk114.unk8.Init(this, (KDSynkerPlayerEventCreationTable *) KDSynkerPlayer3::pEventCreationTable.__vptr);
+    this->unk114.unk8.Init(this, *KDSynkerPlayer3::pEventCreationTable);
     this->unk120.unk24.Init();
     this->unk148.unk24.Init();
     this->unk234 = 0;

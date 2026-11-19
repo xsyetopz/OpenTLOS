@@ -21,12 +21,12 @@ extern void **gMK;
 #if 0 // DRAFT: identifier 'gb' redeclared
 extern M2C_UNK gb;
 #endif
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk14'
 static M2C_UNK lit_779;                                /* unable to generate initializer: unknown type */
-static SpyroDeathState states__15SpyroDeathState[4]; /* unable to generate initializer: confusing struct layout */
+SpyroDeathState states__15SpyroDeathState;          /* unable to generate initializer: confusing struct layout */
 
 s32 SpyroDeathState::SpawnTransition() {
-    if (((void *) CheckPoint::pCurrentCheckPoint.unk0 != NULL) && ((s32) this->unk14.unk0 != 3)) {
+    if (((u32) *CheckPoint::pCurrentCheckPoint != 0U) && ((s32) this->unk14.unk0 != 3)) {
         this->unk14.SetState(this, 3, 0U);
         return 1;
     }
@@ -34,7 +34,6 @@ s32 SpyroDeathState::SpawnTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroDeathState::SpawnUpdate() {
     f64 sp20;
     f64 sp18;
@@ -45,10 +44,10 @@ void SpyroDeathState::SpawnUpdate() {
     void *temp_r4_77;
 
     this->unk28 = 0;
-    if ((void *) CheckPoint::pCurrentCheckPoint.unk0 != NULL) {
-        sp18 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF0);
-        sp20 = M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, f64 *, 0xF8);
-        KDMath_GetYaw(M2C_FIELD(CheckPoint::pCurrentCheckPoint.unk0, Matrix **, 8));
+    if ((void *) *CheckPoint::pCurrentCheckPoint != NULL) {
+        sp18 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF0);
+        sp20 = M2C_FIELD(*CheckPoint::pCurrentCheckPoint, f64 *, 0xF8);
+        KDMath_GetYaw(M2C_FIELD(*CheckPoint::pCurrentCheckPoint, Matrix **, 8));
         this->unk10->StableReposition(*((MKVector3 *) &sp18), M2C_ERROR(/* Read from unset register $f1 */), 0U, 0U);
         temp_r4_77 = this->unk10->unk8;
         sp8 = M2C_FIELD(temp_r4_77, f64 *, 0x30);
@@ -73,7 +72,6 @@ void SpyroDeathState::SpawnUpdate() {
     }
     SpawnTransition();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroDeathState::SpawnExit() {
@@ -188,7 +186,7 @@ u8 SpyroDeathState::AirTransition() {
     if (var_r3_390 == 0) {
         var_r3_398 = var_r31_358;
         if (var_r31_358 != 0) {
-            var_r3_398 = CheckPoint::pCurrentCheckPoint.unk0 != NULL;
+            var_r3_398 = *CheckPoint::pCurrentCheckPoint != 0;
         }
         if ((var_r3_398 != 0) && ((s32) this->unk14.unk0 != 4)) {
             this->unk14.SetState(this, 4, 0U);
@@ -199,7 +197,7 @@ u8 SpyroDeathState::AirTransition() {
     }
     if (var_r3_390 == 0) {
         if (var_r31_358 != 0) {
-            var_r31_358 = CheckPoint::pCurrentCheckPoint.unk0 == NULL;
+            var_r31_358 = *CheckPoint::pCurrentCheckPoint == 0;
         }
         if ((var_r31_358 != 0) && ((s32) this->unk14.unk0 != 3)) {
             this->unk14.SetState(this, 3, 0U);
@@ -329,7 +327,7 @@ u8 SpyroDeathState::LandTransition() {
     }
     var_r3_746 = var_r31_732;
     if (var_r31_732 != 0) {
-        var_r3_746 = CheckPoint::pCurrentCheckPoint.unk0 != NULL;
+        var_r3_746 = *CheckPoint::pCurrentCheckPoint != 0;
     }
     if ((var_r3_746 != 0) && ((s32) this->unk14.unk0 != 4)) {
         this->unk14.SetState(this, 4, 0U);
@@ -339,7 +337,7 @@ u8 SpyroDeathState::LandTransition() {
     }
     if (var_r3_763 == 0) {
         if (var_r31_732 != 0) {
-            var_r31_732 = CheckPoint::pCurrentCheckPoint.unk0 == NULL;
+            var_r31_732 = *CheckPoint::pCurrentCheckPoint == 0;
         }
         if ((var_r31_732 != 0) && ((s32) this->unk14.unk0 != 3)) {
             this->unk14.SetState(this, 3, 0U);
@@ -507,7 +505,7 @@ void SpyroDeathState::Init(Spyro *arg0) {
     this->unk2A = 0;
     this->unk2C = 0.0f;
     this->unk30 = 0;
-    Init__33KDStateMachine<15SpyroDeathState>FPQ233KDStateMachine<15SpyroDeathState>5StateP33KDStateMachine<15SpyroDeathState>(&this->unk14, (KDStateMachine<SpyroDeathState>::State *) SpyroDeathState::states, NULL);
+    Init__33KDStateMachine<15SpyroDeathState>FPQ233KDStateMachine<15SpyroDeathState>5StateP33KDStateMachine<15SpyroDeathState>(&this->unk14, (KDStateMachine<SpyroDeathState>::State *) &SpyroDeathState::states, NULL);
 }
 #endif
 

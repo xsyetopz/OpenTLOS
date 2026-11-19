@@ -194,7 +194,7 @@ void UISystem::Deinit() {
     UIContainer::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 void UISystem::Init() {
     MCLoadCheckScreen *temp_r3_452;
     MCLoadCheckScreen *temp_r3_470;
@@ -224,9 +224,9 @@ void UISystem::Init() {
 loop_3:
     temp_r3_452 = var_r4_443->unk0;
     if (temp_r3_452 == NULL) {
-        var_r4_443->unk0 = (MCLoadCheckScreen *) &UIContainer::descriptor;
-        UIContainer::descriptor.unk10 = NULL;
-    } else if (temp_r3_452 != &UIContainer::descriptor) {
+        var_r4_443->unk0 = (MCLoadCheckScreen *) UIContainer::descriptor;
+        M2C_FIELD(UIContainer::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_452 != UIContainer::descriptor) {
         var_r4_443 = (UIObjectDescriptor *) &temp_r3_452->unk10;
         goto loop_3;
     }
@@ -234,9 +234,9 @@ loop_3:
 loop_8:
     temp_r3_470 = var_r4_462->unk0;
     if (temp_r3_470 == NULL) {
-        var_r4_462->unk0 = (MCLoadCheckScreen *) &UIImage::descriptor;
-        UIImage::descriptor.unk10 = NULL;
-    } else if (temp_r3_470 != &UIImage::descriptor) {
+        var_r4_462->unk0 = (MCLoadCheckScreen *) UIImage::descriptor;
+        M2C_FIELD(UIImage::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_470 != UIImage::descriptor) {
         var_r4_462 = (UIObjectDescriptor *) &temp_r3_470->unk10;
         goto loop_8;
     }
@@ -244,9 +244,9 @@ loop_8:
 loop_13:
     temp_r3_488 = var_r4_480->unk0;
     if (temp_r3_488 == NULL) {
-        var_r4_480->unk0 = (MCLoadCheckScreen *) &UIText::descriptor;
-        UIText::descriptor.unk10 = NULL;
-    } else if (temp_r3_488 != &UIText::descriptor) {
+        var_r4_480->unk0 = (MCLoadCheckScreen *) UIText::descriptor;
+        M2C_FIELD(UIText::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_488 != UIText::descriptor) {
         var_r4_480 = (UIObjectDescriptor *) &temp_r3_488->unk10;
         goto loop_13;
     }
@@ -254,9 +254,9 @@ loop_13:
 loop_18:
     temp_r3_506 = var_r4_498->unk0;
     if (temp_r3_506 == NULL) {
-        var_r4_498->unk0 = (MCLoadCheckScreen *) &UIModel::descriptor;
-        UIModel::descriptor.unk10 = NULL;
-    } else if (temp_r3_506 != &UIModel::descriptor) {
+        var_r4_498->unk0 = (MCLoadCheckScreen *) UIModel::descriptor;
+        M2C_FIELD(UIModel::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_506 != UIModel::descriptor) {
         var_r4_498 = (UIObjectDescriptor *) &temp_r3_506->unk10;
         goto loop_18;
     }
@@ -264,9 +264,9 @@ loop_18:
 loop_23:
     temp_r3_524 = var_r4_516->unk0;
     if (temp_r3_524 == NULL) {
-        var_r4_516->unk0 = (MCLoadCheckScreen *) &UIAnimatedModel::descriptor;
-        UIAnimatedModel::descriptor.unk10 = NULL;
-    } else if (temp_r3_524 != &UIAnimatedModel::descriptor) {
+        var_r4_516->unk0 = (MCLoadCheckScreen *) UIAnimatedModel::descriptor;
+        M2C_FIELD(UIAnimatedModel::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_524 != UIAnimatedModel::descriptor) {
         var_r4_516 = (UIObjectDescriptor *) &temp_r3_524->unk10;
         goto loop_23;
     }
@@ -274,9 +274,9 @@ loop_23:
 loop_28:
     temp_r3_542 = var_r4_534->unk0;
     if (temp_r3_542 == NULL) {
-        var_r4_534->unk0 = (MCLoadCheckScreen *) &UIReference::descriptor;
-        UIReference::descriptor.unk10 = NULL;
-    } else if (temp_r3_542 != &UIReference::descriptor) {
+        var_r4_534->unk0 = (MCLoadCheckScreen *) UIReference::descriptor;
+        M2C_FIELD(UIReference::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_542 != UIReference::descriptor) {
         var_r4_534 = (UIObjectDescriptor *) &temp_r3_542->unk10;
         goto loop_28;
     }
@@ -284,9 +284,9 @@ loop_28:
 loop_33:
     temp_r3_560 = var_r4_552->unk0;
     if (temp_r3_560 == NULL) {
-        var_r4_552->unk0 = (MCLoadCheckScreen *) &UIScreen::descriptor;
-        UIScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_560 != &UIScreen::descriptor) {
+        var_r4_552->unk0 = (MCLoadCheckScreen *) UIScreen::descriptor;
+        M2C_FIELD(UIScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_560 != UIScreen::descriptor) {
         var_r4_552 = (UIObjectDescriptor *) &temp_r3_560->unk10;
         goto loop_33;
     }
@@ -294,9 +294,9 @@ loop_33:
 loop_38:
     temp_r3_578 = var_r4_570->unk0;
     if (temp_r3_578 == NULL) {
-        var_r4_570->unk0 = (MCLoadCheckScreen *) &UIVideoScreen::descriptor;
-        UIVideoScreen::descriptor.unk10 = NULL;
-    } else if (temp_r3_578 != &UIVideoScreen::descriptor) {
+        var_r4_570->unk0 = (MCLoadCheckScreen *) UIVideoScreen::descriptor;
+        M2C_FIELD(UIVideoScreen::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_578 != UIVideoScreen::descriptor) {
         var_r4_570 = (UIObjectDescriptor *) &temp_r3_578->unk10;
         goto loop_38;
     }
@@ -304,9 +304,9 @@ loop_38:
 loop_43:
     temp_r3_596 = var_r4_588->unk0;
     if (temp_r3_596 == NULL) {
-        var_r4_588->unk0 = (MCLoadCheckScreen *) &UIButton::descriptor;
-        UIButton::descriptor.unk10 = NULL;
-    } else if (temp_r3_596 != &UIButton::descriptor) {
+        var_r4_588->unk0 = (MCLoadCheckScreen *) UIButton::descriptor;
+        M2C_FIELD(UIButton::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_596 != UIButton::descriptor) {
         var_r4_588 = (UIObjectDescriptor *) &temp_r3_596->unk10;
         goto loop_43;
     }
@@ -314,9 +314,9 @@ loop_43:
 loop_48:
     temp_r3_614 = var_r4_606->unk0;
     if (temp_r3_614 == NULL) {
-        var_r4_606->unk0 = (MCLoadCheckScreen *) &UIButtonGroup::descriptor;
-        UIButtonGroup::descriptor.unk10 = NULL;
-    } else if (temp_r3_614 != &UIButtonGroup::descriptor) {
+        var_r4_606->unk0 = (MCLoadCheckScreen *) UIButtonGroup::descriptor;
+        M2C_FIELD(UIButtonGroup::descriptor, s32 *, 0x10) = 0;
+    } else if (temp_r3_614 != UIButtonGroup::descriptor) {
         var_r4_606 = (UIObjectDescriptor *) &temp_r3_614->unk10;
         goto loop_48;
     }

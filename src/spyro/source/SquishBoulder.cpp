@@ -283,9 +283,9 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
     this->unk260.unk24 = arg0.unk8;
     this->unk260.unk28 = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &this->unk200.unk50));
-    temp_r3_668 = GameData::gameData.unk158 << 5;
-    temp_r0_670 = *(&GameData::gameData.unk70 + (temp_r3_668 + 0x7C));
-    temp_r4_672 = &GameData::gameData.unk70 + (temp_r3_668 + 0x64);
+    temp_r3_668 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_670 = *(&GameData::gameData[0x70] + (temp_r3_668 + 0x7C));
+    temp_r4_672 = &GameData::gameData[0x70] + (temp_r3_668 + 0x64);
     if (temp_r0_670 == 3) {
         var_r3_676 = 0;
         if (((s32) M2C_FIELD(temp_r4_672, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_672, s32 *, 4) == 3)) {
@@ -295,7 +295,7 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_r29_686 = *(temp_r4_672 + (temp_r0_670 * 4));
     }
-    temp_r28_693 = GameData::gameData.unk158;
+    temp_r28_693 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     this->unk200.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x218) = (f64) M2C_FIELD(&arg1, f64 *, 8);

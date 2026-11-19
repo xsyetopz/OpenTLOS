@@ -850,7 +850,7 @@ void Shatterable::SpawnGems(int arg0) {
 loop_9:
         if (var_r26_1532 < arg0) {
             temp_r29_1540 = MKRand_Int(&gViewSeed, 0, 4);
-            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) (&GameData::gameData.unk70))->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
+            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
                 ((CollectableSpawner *) (M2C_FIELD(&(&gb)[temp_r29_1540], CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp48), 1, 200.0f, 500.0f, -1, (MKProp *) this);
                 var_r27_1530 += 1;
             }
@@ -1044,6 +1044,7 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     MKVector3 *temp_r29_2254;
     MKVector3 *var_r26_2164;
     MKVector3 *var_r3_2114;
+    Shatterable *temp_r26_2301;
     ShatterableDescriptor *temp_r26_2263;
     ShatterableDescriptor *temp_r27_2259;
     ShatterableDescriptor *temp_r28_2256;
@@ -1057,7 +1058,6 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     s32 var_r28_2203;
     s32 var_r4_2174;
     void **temp_r3_2307;
-    void *temp_r26_2301;
     void *temp_r4_2112;
     void *temp_r5_2099;
 
@@ -1147,11 +1147,11 @@ loop_32:
             }
             this->unk160.Send((MKProp *) this);
             if ((u32) M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
-                temp_r26_2301 = KDProperty::pInstanceMem.__vptr;
-                KDProperty::pInstanceMem.__vptr = this;
+                temp_r26_2301 = *KDProperty::pInstanceMem;
+                *KDProperty::pInstanceMem = this;
                 temp_r3_2307 = M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
-                KDProperty::pInstanceMem.__vptr = temp_r26_2301;
+                *KDProperty::pInstanceMem = temp_r26_2301;
             }
         }
         ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->ClearVisible();
@@ -1251,6 +1251,7 @@ void Shatterable::Message(MKMessage *arg0) {
     Shatterable **temp_r3_2742;
     Shatterable **var_r3_2719;
     Shatterable *temp_r0_2728;
+    Shatterable *temp_r28_3455;
     Shatterable *var_r0_3856;
     ShatterableDescriptor *temp_r28_3363;
     ShatterableDescriptor *temp_r28_3771;
@@ -1319,7 +1320,6 @@ void Shatterable::Message(MKMessage *arg0) {
     u64 temp_ret_3686;
     void **temp_r3_3461;
     void *temp_r28_2595;
-    void *temp_r28_3455;
     void *temp_r31_2713;
     void *temp_r3_2606;
     void *temp_r3_2968;
@@ -1727,12 +1727,12 @@ loop_223:
                 if (((MKProp *) this->unk170 < (s32) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 - 1)) && ((u8) *(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + (((s32) this->unk170 * 0x17C) + 0x2F4)) != 0)) {
                     this->unk160.Send((MKProp *) this);
                     if ((u32) *(this->unk158 + (((s32) this->unk170 << 7) + 0x78)) != 0U) {
-                        temp_r28_3455 = KDProperty::pInstanceMem.__vptr;
-                        KDProperty::pInstanceMem.__vptr = this;
+                        temp_r28_3455 = *KDProperty::pInstanceMem;
+                        *KDProperty::pInstanceMem = this;
                         temp_r4_3458 = this->unk158;
                         temp_r3_3461 = *(temp_r4_3458 + (((s32) this->unk170 << 7) + 0x78));
                         M2C_FIELD(*temp_r3_3461, M2C_UNK (**)(void **, void *), 0x4C)(temp_r3_3461, temp_r4_3458);
-                        KDProperty::pInstanceMem.__vptr = temp_r28_3455;
+                        *KDProperty::pInstanceMem = temp_r28_3455;
                     }
                     this->unk170 += 1;
                     goto loop_223;

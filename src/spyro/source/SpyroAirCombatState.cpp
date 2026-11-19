@@ -31,7 +31,7 @@ extern M2C_UNK gb;
 #endif
 #if 0 // DRAFT: identifier 'bAirCombatSlowMo' redeclared
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
-static SpyroAirCombatState states__19SpyroAirCombatState[4]; /* extra bytes: 1; unable to generate initializer: confusing struct layout */
+SpyroAirCombatState states__19SpyroAirCombatState;  /* unable to generate initializer: confusing struct layout */
 
 static u8 bAirCombatSlowMo = 1;
 #endif
@@ -2327,7 +2327,7 @@ void SpyroAirCombatState::Exit() {
     temp_r3_4300 = this->unk10;
     temp_r3_4300->unk428 &= 0xFFFF7FFF;
     this->unk10->unk430.unk28.SetDefaults();
-    GameData::gameData.unk150 = 0;
+    M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk14.Exit(this);
     temp_r3_4315 = this->unk10->GetCamera();
     spC = 0;
@@ -2361,7 +2361,7 @@ void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     temp_r3_4359 = this->unk10;
     temp_r3_4359->unk428 |= 0x8000;
     this->unk10->unk430.unk28.SetDefaults();
-    GameData::gameData.unk150 = 0;
+    M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
     this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
     this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
@@ -2385,11 +2385,11 @@ void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     this->unk14.SetState(this, var_r31_4393, 1U);
     if (((u8) bAirCombatSlowMo != 0) && ((u8) this->unk36 == 0) && ((u8) M2C_FIELD(&gb, u8 *, 0xA) == 0) && ((u8) this->unk38 == 0)) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (GameData::gameData.unk40 == 0.0f) {
+        if (M2C_FIELD(GameData::gameData, f32 *, 0x40) == 0.0f) {
             this->unk36 = 0;
         } else {
             temp_f31_4476 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            if (temp_f31_4476 < ((((GameGlobals::KillRate *) (&gb + 0x2F8))->GetRate() * 0.5f) + GameData::gameData.unk40)) {
+            if (temp_f31_4476 < ((((GameGlobals::KillRate *) (&gb + 0x2F8))->GetRate() * 0.5f) + M2C_FIELD(GameData::gameData, f32 *, 0x40))) {
                 this->unk36 = 1;
             }
         }
@@ -2420,7 +2420,7 @@ void SpyroAirCombatState::Deinit() {
 #if 0 // DRAFT: undefined identifier 'Init__37KDStateMachine'
 void SpyroAirCombatState::Init(Spyro *arg0) {
     this->unk10 = arg0;
-    Init__37KDStateMachine<19SpyroAirCombatState>FPQ237KDStateMachine<19SpyroAirCombatState>5StateP37KDStateMachine<19SpyroAirCombatState>(&this->unk14, (KDStateMachine<SpyroAirCombatState>::State *) SpyroAirCombatState::states, NULL);
+    Init__37KDStateMachine<19SpyroAirCombatState>FPQ237KDStateMachine<19SpyroAirCombatState>5StateP37KDStateMachine<19SpyroAirCombatState>(&this->unk14, (KDStateMachine<SpyroAirCombatState>::State *) &SpyroAirCombatState::states, NULL);
     this->unk2C = 0;
     this->unk28 = -1;
     this->unk30 = 0;

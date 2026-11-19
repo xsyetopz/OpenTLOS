@@ -538,9 +538,9 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
         this->unk188 = NULL;
     }
     this->unk18C = M2C_FIELD(&gb, f32 *, 0x30C);
-    temp_r3_520 = GameData::gameData.unk70.unkE8 << 5;
-    temp_r0_522 = *(&GameData::gameData.unk70 + (temp_r3_520 + 0x7C));
-    temp_r4_524 = &GameData::gameData.unk70 + (temp_r3_520 + 0x64);
+    temp_r3_520 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_522 = *(&GameData::gameData[0x70] + (temp_r3_520 + 0x7C));
+    temp_r4_524 = &GameData::gameData[0x70] + (temp_r3_520 + 0x64);
     if (temp_r0_522 == 3) {
         var_r3_528 = 0;
         if (((s32) M2C_FIELD(temp_r4_524, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_524, s32 *, 4) == 3)) {
@@ -1186,9 +1186,9 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         var_r25_1853 = 0;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (M2C_FIELD(this, f32 *, 0x1A4) == 0.0f) {
-            temp_r6_1863 = GameData::gameData.unk70.unkE8 << 5;
-            temp_r5_1865 = *(&GameData::gameData.unk70 + (temp_r6_1863 + 0x7C));
-            temp_r7_1867 = &GameData::gameData.unk70 + (temp_r6_1863 + 0x64);
+            temp_r6_1863 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+            temp_r5_1865 = *(&GameData::gameData[0x70] + (temp_r6_1863 + 0x7C));
+            temp_r7_1867 = &GameData::gameData[0x70] + (temp_r6_1863 + 0x64);
             if (temp_r5_1865 == 3) {
                 var_r6_1871 = 0;
                 if (((s32) M2C_FIELD(temp_r7_1867, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r7_1867, s32 *, 4) == 3)) {
@@ -1198,10 +1198,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             } else {
                 var_r6_1881 = *(temp_r7_1867 + (temp_r5_1865 * 4));
             }
-            var_f1_1852 = ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(GameData::gameData.unk70.unkE8, temp_r5_1865, var_r6_1881);
-            temp_r3_1889 = GameData::gameData.unk70.unkE8 << 5;
-            temp_r0_1891 = *(&GameData::gameData.unk70 + (temp_r3_1889 + 0x7C));
-            temp_r4_1893 = &GameData::gameData.unk70 + (temp_r3_1889 + 0x64);
+            var_f1_1852 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(M2C_FIELD(GameData::gameData, s32 *, 0x158), temp_r5_1865, var_r6_1881);
+            temp_r3_1889 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+            temp_r0_1891 = *(&GameData::gameData[0x70] + (temp_r3_1889 + 0x7C));
+            temp_r4_1893 = &GameData::gameData[0x70] + (temp_r3_1889 + 0x64);
             if (temp_r0_1891 == 3) {
                 var_r3_1897 = 0;
                 if (((s32) M2C_FIELD(temp_r4_1893, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1893, s32 *, 4) == 3)) {
@@ -1226,9 +1226,9 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 break;
             }
         }
-        temp_r3_1944 = GameData::gameData.unk70.unkE8 << 5;
-        temp_r5_1946 = *(&GameData::gameData.unk70 + (temp_r3_1944 + 0x7C));
-        temp_r4_1948 = &GameData::gameData.unk70 + (temp_r3_1944 + 0x64);
+        temp_r3_1944 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+        temp_r5_1946 = *(&GameData::gameData[0x70] + (temp_r3_1944 + 0x7C));
+        temp_r4_1948 = &GameData::gameData[0x70] + (temp_r3_1944 + 0x64);
         if (temp_r5_1946 == 3) {
             var_r3_1952 = 0;
             if (((s32) M2C_FIELD(temp_r4_1948, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1948, s32 *, 4) == 3)) {
@@ -1238,10 +1238,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r6_1962 = *(temp_r4_1948 + (temp_r5_1946 * 4));
         }
-        this->unk110.Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, GameData::gameData.unk70.unkE8, GameData::gameData.unk70.unkE8, 0, -1);
-        temp_r3_1976 = GameData::gameData.unk70.unkE8 << 5;
-        temp_r0_1978 = *(&GameData::gameData.unk70 + (temp_r3_1976 + 0x7C));
-        temp_r4_1980 = &GameData::gameData.unk70 + (temp_r3_1976 + 0x64);
+        this->unk110.Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, M2C_FIELD(GameData::gameData, s32 *, 0x158), M2C_FIELD(GameData::gameData, s32 *, 0x158), 0, -1);
+        temp_r3_1976 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+        temp_r0_1978 = *(&GameData::gameData[0x70] + (temp_r3_1976 + 0x7C));
+        temp_r4_1980 = &GameData::gameData[0x70] + (temp_r3_1976 + 0x64);
         if (temp_r0_1978 == 3) {
             var_r3_1984 = 0;
             if (((s32) M2C_FIELD(temp_r4_1980, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1980, s32 *, 4) == 3)) {
@@ -1821,10 +1821,10 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         M2C_FIELD(this, s8 *, 0x19C) = (s8) var_r25_1853;
         return (u8) var_r25_1853;
     case 1:                                         /* switch 1 */
-        temp_r25_3532 = GameData::gameData.unk70.unkE8;
+        temp_r25_3532 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
         temp_r4_3533 = temp_r25_3532 << 5;
-        temp_r26_3535 = *(&GameData::gameData.unk70 + (temp_r4_3533 + 0x7C));
-        temp_r5_3537 = &GameData::gameData.unk70 + (temp_r4_3533 + 0x64);
+        temp_r26_3535 = *(&GameData::gameData[0x70] + (temp_r4_3533 + 0x7C));
+        temp_r5_3537 = &GameData::gameData[0x70] + (temp_r4_3533 + 0x64);
         if (temp_r26_3535 == 3) {
             var_r4_3541 = 0;
             if (((s32) M2C_FIELD(temp_r5_3537, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_3537, s32 *, 4) == 3)) {
@@ -1843,11 +1843,11 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r24_3570 = *(temp_r5_3537 + (temp_r26_3535 * 4));
         }
-        this->unkB8.Init(arg0, ((GameStats *) (&GameData::gameData.unk70))->GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
+        this->unkB8.Init(arg0, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
         return ShootIceShard(arg1, arg2, arg3);
     case 3:                                         /* switch 1 */
         var_r3_3596 = 0;
-        temp_r4_3602 = &GameData::gameData.unk70 + ((GameData::gameData.unk70.unkE8 << 5) + 0x64);
+        temp_r4_3602 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
         if (((s32) M2C_FIELD(temp_r4_3602, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_3602, s32 *, 4) == 3)) {
             var_r3_3596 = 1;
         }
@@ -2422,9 +2422,9 @@ void IceBreathFX::Update() {
         if (M2C_BITWISE(f32, this->unk190) > 3.5f) {
             this->unk190 = -1.0f;
         }
-        temp_r3_4708 = GameData::gameData.unk70.unkE8 << 5;
-        temp_r0_4710 = *(&GameData::gameData.unk70 + (temp_r3_4708 + 0x7C));
-        temp_r4_4712 = &GameData::gameData.unk70 + (temp_r3_4708 + 0x64);
+        temp_r3_4708 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+        temp_r0_4710 = *(&GameData::gameData[0x70] + (temp_r3_4708 + 0x7C));
+        temp_r4_4712 = &GameData::gameData[0x70] + (temp_r3_4708 + 0x64);
         if (temp_r0_4710 == 3) {
             var_r3_4716 = 0;
             if (((s32) M2C_FIELD(temp_r4_4712, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_4712, s32 *, 4) == 3)) {
