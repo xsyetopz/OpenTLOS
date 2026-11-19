@@ -92,30 +92,24 @@ void SplitPath::GetPosition(float arg0) {
     ((KDUniformSpline *) this)->GetMeasure(spC, temp_r4_106, KDSpline_PositionMixer);
 }
 
-#if 0 // DRAFT: illegal type
 void SplitPath::Deinit() {
-    s32 var_r30_129;
-    s32 var_r31_130;
-    void *temp_r31_145;
+    s32 i;
+    s32 off;
+    void *buf;
 
-    var_r30_129 = 0;
-    var_r31_130 = 0;
-loop_2:
-    if (var_r30_129 < (s32) this->unk4) {
-        ((KDUniformSpline *) (*(this->unk0 + var_r31_130)))->Deinit();
-        operator delete(*(this->unk0 + var_r31_130));
-        var_r30_129 += 1;
-        var_r31_130 += 0x14;
-        goto loop_2;
+    off = 0;
+    for (i = 0; i < this->unk4; i++) {
+        ((KDUniformSpline *) M2C_FIELD(this->unk0, void **, off))->Deinit();
+        operator delete(M2C_FIELD(this->unk0, void **, off));
+        off += 0x14;
     }
-    temp_r31_145 = this->unk0;
+    buf = this->unk0;
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_145, NULL, 0);
+        ((MKHeap *) (MKHeap::Current()))->Free(buf, NULL, 0);
         return;
     }
-    free(temp_r31_145);
+    free(buf);
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void SplitPath::Init(const KDUniformSpline &arg0, int arg1, int arg2) {
@@ -207,24 +201,14 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 f32 SplineTools_GetNodeTime(const KDUniformSpline &arg0, int arg1) {
-    f32 var_f1_314;
-    s32 temp_r0_321;
-    s32 var_ctr_317;
-    s32 var_r5_315;
+    f32 sum = 0.0f;
+    s32 i;
+    u8 *node = (u8 *) arg0.unkC;
 
-    var_f1_314 = 0.0f;
-    var_r5_315 = 0;
-    var_ctr_317 = arg1;
-    if (arg1 > 0) {
-        do {
-            temp_r0_321 = var_r5_315 + 0x1C;
-            var_r5_315 += 0x20;
-            var_f1_314 += *(arg0.unkC + temp_r0_321);
-            var_ctr_317 -= 1;
-        } while (var_ctr_317 != 0);
+    for (i = 0; i < arg1; i++) {
+        sum += M2C_FIELD(node, f32 *, 0x1C);
+        node += 0x20;
     }
-    return var_f1_314 / arg0.unk8;
+    return sum / arg0.unk8;
 }
-#endif
