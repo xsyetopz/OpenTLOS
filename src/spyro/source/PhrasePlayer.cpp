@@ -291,7 +291,7 @@ loop_3:
             goto loop_3;
         }
         temp_r31_547 = *temp_r27_522;
-        temp_r3_548 = var_r3_0->Current();
+        temp_r3_548 = ((MKHeap *) var_r3_0)->Current();
         if (temp_r3_548 != NULL) {
             ((MKHeap *) (temp_r3_548->Current()))->Free(temp_r31_547, NULL, 0);
         } else {
@@ -467,7 +467,7 @@ loop_3:
     }
     temp_r30_943 = M2C_FIELD(phraseData, PhraseEvent **, 0x38);
     if (temp_r30_943 != NULL) {
-        temp_r3_946 = phraseData->Current();
+        temp_r3_946 = ((MKHeap *) phraseData)->Current();
         if (temp_r3_946 != NULL) {
             ((MKHeap *) (temp_r3_946->Current()))->Free(temp_r30_943, NULL, 0);
         } else {
@@ -512,7 +512,7 @@ void Phrase_LoadSound() {
     temp_r3_1024->DeactivateTempMemOverride();
     temp_r3_1030 = Sound_LoadBankFromMemory((SoundBankHeader *) temp_r3_1024, 0U, -1);
     M2C_FIELD(phraseData, s32 *, 0x2C) = temp_r3_1030;
-    temp_r3_1034 = temp_r3_1030->Current();
+    temp_r3_1034 = ((MKHeap *) temp_r3_1030)->Current();
     if (temp_r3_1034 != NULL) {
         ((MKHeap *) (temp_r3_1034->Current()))->Free(temp_r3_1024, NULL, 0);
     } else {
@@ -523,16 +523,16 @@ void Phrase_LoadSound() {
     sp8 = 0;
     temp_r3_1059 = MKArchive_Exists(temp_r3_1054, &sp8);
     if (temp_r3_1059 != 0) {
-        temp_r3_1059->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_1059)->ActivateTempMemOverride();
         temp_r30_1064 = sp8 + 1;
-        temp_r3_1065 = sp8->Current();
+        temp_r3_1065 = ((MKHeap *) sp8)->Current();
         if (temp_r3_1065 != NULL) {
             var_r3_1072 = ((MKHeap *) (temp_r3_1065->Current()))->Alloc(temp_r30_1064, NULL, 0);
         } else {
             var_r3_1072 = malloc(temp_r30_1064);
         }
         M2C_FIELD(phraseData, PhraseEvent **, 0x38) = var_r3_1072;
-        var_r3_1072->DeactivateTempMemOverride();
+        ((MKHeap *) var_r3_1072)->DeactivateTempMemOverride();
         temp_r3_1086 = MKArchive_Load(temp_r29_1056, NULL, M2C_FIELD(phraseData, PhraseEvent **, 0x38), sp8);
         M2C_FIELD(phraseData, PhraseEvent **, 0x38) = temp_r3_1086;
         *(temp_r3_1086 + sp8) = 0;
@@ -571,10 +571,10 @@ void Phrase_LoadPackage() {
         strcat(&sp8, "\n");
         var_r3_1166 = strcat(&sp8, temp_r3_1163);
     }
-    var_r3_1166->ActivateTempMemOverride();
+    ((MKHeap *) var_r3_1166)->ActivateTempMemOverride();
     temp_r3_1191 = MKPackage_QLoadDynamic(&sp8, 0, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".pkg"));
     M2C_FIELD(phraseData, s32 *, 0x28) = temp_r3_1191;
-    temp_r3_1191->DeactivateTempMemOverride();
+    ((MKHeap *) temp_r3_1191)->DeactivateTempMemOverride();
     M2C_FIELD(phraseData, s32 *, 0x24) = 2;
 }
 #endif

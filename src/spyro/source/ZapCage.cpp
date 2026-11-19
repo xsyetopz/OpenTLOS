@@ -190,7 +190,7 @@ void ZapCage::Update() {
         if (this->unk5C <= 0.0f) {
             this->unk5C = 0.3f;
             sp1D0.unk4 = 0;
-            sp1D0.Init(NULL, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(1, 1, 0), 1, 0, 1, 0, 0, -1);
+            sp1D0.Init(NULL, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(1, 1, 0), 1, 0, 1, 0, 0, -1);
             M2C_FIELD(M2C_FIELD(temp_r29_332, void **, 0x44), M2C_UNK (**)(void *, BreathHitMessage *), 0x2C)(temp_r29_332, &sp1D0);
         }
         if ((this->unk50 <= 0.0f) || (M2C_FIELD(temp_r29_332, f32 *, 0xAC8) <= 0.0f)) {

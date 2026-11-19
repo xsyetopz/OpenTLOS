@@ -175,7 +175,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     } while (temp_r3_255 != 0);
     this->unk8 = arg1;
     temp_r30_265 = this->unk8 * 4;
-    temp_r3_266 = temp_r3_255->Current();
+    temp_r3_266 = ((MKHeap *) temp_r3_255)->Current();
     if (temp_r3_266 != NULL) {
         var_r3_273 = ((MKHeap *) (temp_r3_266->Current()))->Alloc(temp_r30_265, NULL, 0);
     } else {

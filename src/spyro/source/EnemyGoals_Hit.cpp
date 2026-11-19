@@ -10,7 +10,9 @@
 #include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -19,7 +21,6 @@
 #include "common/Source/Str.h"
 #include "spyro/source/GameConsole.h"
 #include "spyro/source/InGame.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -206,7 +207,7 @@ u8 EnemyGoal_Hit::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Hit::Activate() {
     f64 sp20;
     f64 sp18;
@@ -275,7 +276,7 @@ void EnemyGoal_Hit::Activate() {
 
             } else {
 block_12:
-                if (temp_r5_388->unkA20->GetAnimSequence(2, 0x2A, M2C_BITWISE(s32, temp_r5_388->unkACC), NULL) == NULL) {
+                if (((EnemyDescriptor *) temp_r5_388->unkA20)->GetAnimSequence(2, 0x2A, M2C_BITWISE(s32, temp_r5_388->unkACC), NULL) == NULL) {
                     var_r31_389 = 1e-45f;
                 }
             }
@@ -298,7 +299,7 @@ block_14:
             break;
         case 5:
             temp_r6_450 = this->unkC;
-            if (temp_r6_450->unkA20->GetAnimSequence(2, 0x31, M2C_BITWISE(s32, temp_r6_450->unkACC), NULL) != NULL) {
+            if (((EnemyDescriptor *) temp_r6_450->unkA20)->GetAnimSequence(2, 0x31, M2C_BITWISE(s32, temp_r6_450->unkACC), NULL) != NULL) {
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
             } else {
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
@@ -393,7 +394,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void EnemyGoal_Hit::Deinit() {
     Goal<Enemy> *temp_r3_659;
     Goal<Enemy> *temp_r3_664;
@@ -442,8 +443,8 @@ void EnemyGoal_Hit::Deinit() {
     operator delete(this->unk28);
     operator delete(this->unk2C);
     operator delete(this->unk30);
-    this->unk34->~EnemyGoal_HitKnockdown(1);
-    this->unk38->~EnemyGoal_HitKnockdownSlide(1);
+    ((EnemyGoal_HitKnockdown *) this->unk34)->~EnemyGoal_HitKnockdown(1);
+    ((EnemyGoal_HitKnockdownSlide *) this->unk38)->~EnemyGoal_HitKnockdownSlide(1);
     operator delete(this->unk40);
     operator delete(this->unk44);
     operator delete(this->unk48);
@@ -768,7 +769,7 @@ void EnemyGoal_HitFrozen::Activate() {
     Enemy *temp_r3_1397;
 
     this->unk8 = 0;
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_1397 = this->unkC;
     if (temp_r3_1397->unkAB0 > 0.0f) {
         M2C_FIELD(temp_r3_1397->__vptr, M2C_UNK (**)(), 0x1D4)();
@@ -792,20 +793,19 @@ void EnemyGoal_HitArmourDestroyed::Terminate() {
 
 u8 EnemyGoal_HitArmourDestroyed::Update() {
     ActivateIfInactive();
-    if (this->unkC->HasAnimFinished() != 0) {
+    if (((Character *) this->unkC)->HasAnimFinished() != 0) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 void EnemyGoal_HitArmourDestroyed::Activate() {
     Enemy *temp_r3_1529;
     Enemy *temp_r6_1491;
 
     this->unk8 = 0;
     temp_r6_1491 = this->unkC;
-    if (temp_r6_1491->unkA20->GetAnimSequence(2, 0x2F, M2C_BITWISE(s32, temp_r6_1491->unkACC), NULL) != NULL) {
+    if (((EnemyDescriptor *) temp_r6_1491->unkA20)->GetAnimSequence(2, 0x2F, M2C_BITWISE(s32, temp_r6_1491->unkACC), NULL) != NULL) {
         this->unkC->SetInvulnerableToMeleeAttacks(1U, 0U);
         this->unkC->SetInvulnerableToBreathAttacks(1U, 0U);
         this->unkC->SetAnim((AnimSequenceType) 2, 0x2F, 0, 0.15f, 0U, 0U);
@@ -813,13 +813,12 @@ void EnemyGoal_HitArmourDestroyed::Activate() {
         this->unkC->SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
         this->unkC->Armour_Destroy();
     }
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_1529 = this->unkC;
     if ((s32) temp_r3_1529->unk680 != 2) {
-        temp_r3_1529->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_1529)->SetMovementType((CharacterMoveType) 0);
     }
 }
-#endif
 
 void EnemyGoal_HitStand::Terminate() {
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
@@ -843,7 +842,7 @@ u8 EnemyGoal_HitStand::Update() {
 
     ActivateIfInactive();
     temp_r3_1582 = this->unkC;
-    if ((temp_r3_1582->unkAB0 <= 0.0f) || (temp_r3_1582->HasAnimFinished() != 0)) {
+    if ((temp_r3_1582->unkAB0 <= 0.0f) || (((Character *) temp_r3_1582)->HasAnimFinished() != 0)) {
         this->unk8 = 2;
     }
     if (GetPushOutWallNormal(this->unkC, &sp28) != 0) {
@@ -868,13 +867,13 @@ u8 EnemyGoal_HitStand::Update() {
 void EnemyGoal_HitStand::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 2, 0x2B, 0, 0.15f, 0U, 0U);
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->EnableBlurFX(1U);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 void EnemyGoal_HitFall::Terminate() {
     M2C_UNK sp8;
     Enemy *temp_r3_1686;
@@ -897,7 +896,7 @@ void EnemyGoal_HitFall::Terminate() {
     temp_r3_1702 = this->unkC;
     temp_r3_1702->unk6B5 &= ~1;
     if (this->unkC->unkAB0 > 0.0f) {
-        sp8.GetRegionPos();
+        ((EnemyRegion *) &sp8)->GetRegionPos();
         temp_r3_1713 = this->unkC;
         if ((f32) fabs(spC - temp_r3_1713->unk588.unk0) > 100.0f) {
             temp_r3_1713->SetupEnemyRegion(*((MKVector3 *) &temp_r3_1713->unk588), 1000.0f);
@@ -930,7 +929,7 @@ u8 EnemyGoal_HitFall::Update() {
     ActivateIfInactive();
     temp_r29_1744 = this->unkC;
     var_r30_1745 = 0;
-    if (temp_r29_1744->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_1744)->HasAnimFinished() != 0) {
         temp_r4_1750 = temp_r29_1744->unkA38;
         if ((temp_r4_1750 != NULL) && ((s8 *) temp_r4_1750->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1744, void **, 0x630), u32 *, 0x20))) {
             var_r30_1745 = 1;
@@ -961,7 +960,7 @@ u8 EnemyGoal_HitFall::Update() {
             }
         } else {
             var_r30_1816 = 0;
-            if (temp_r29_1780->HasAnimFinished() != 0) {
+            if (((Character *) temp_r29_1780)->HasAnimFinished() != 0) {
                 temp_r4_1820 = temp_r29_1780->unkA38;
                 if ((temp_r4_1820 != NULL) && ((void *) temp_r4_1820->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1780, void **, 0x630), u32 *, 0x20))) {
                     var_r30_1816 = 1;
@@ -991,7 +990,6 @@ u8 EnemyGoal_HitFall::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 void EnemyGoal_HitFall::Activate() {
     Enemy *temp_r3_1953;
     Enemy *temp_r3_1958;
@@ -1006,7 +1004,7 @@ void EnemyGoal_HitFall::Activate() {
     void *temp_r3_1896;
 
     temp_r6_1893 = this->unkC;
-    temp_r3_1896 = temp_r6_1893->unkA20->GetAnimSequence(2, 0x30, M2C_BITWISE(s32, temp_r6_1893->unkACC), NULL);
+    temp_r3_1896 = ((EnemyDescriptor *) temp_r6_1893->unkA20)->GetAnimSequence(2, 0x30, M2C_BITWISE(s32, temp_r6_1893->unkACC), NULL);
     var_r7_1898 = 0;
     temp_r5_1900 = this->unkC->unkA38;
     this->unk8 = 0;
@@ -1041,10 +1039,9 @@ block_7:
     temp_r3_1958->unk59C = 0.0f;
     temp_r3_1962 = this->unkC;
     if ((s32) temp_r3_1962->unk680 != 2) {
-        temp_r3_1962->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_1962)->SetMovementType((CharacterMoveType) 0);
     }
 }
-#endif
 
 void EnemyGoal_HitAirCombo::Terminate() {
     Enemy *temp_r3_1986;
@@ -1392,9 +1389,9 @@ loop_2:
         temp_r4_2535->unkA1C += 4;
         goto loop_2;
     }
-    this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
-    this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
-    this->unkC->EnableBlurFX(0U);
+    ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(0U, 1U);
+    ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(0U, 1U);
+    ((Enemy *) this->unkC)->EnableBlurFX(0U);
     this->unk38 &= ~0x80;
     this->unk38 &= ~0x40;
     temp_r4_2564 = this->unkC;
@@ -1404,9 +1401,9 @@ loop_2:
     KDSound_Stop(&this->unk10);
     temp_r3_2573 = this->unkC;
     if (temp_r3_2573->unkAC8 > 0.0f) {
-        temp_r3_2573->ThawIfFrozen();
+        ((Enemy *) temp_r3_2573)->ThawIfFrozen();
         temp_r3_2579 = this->unkC;
-        temp_r3_2579->SetupEnemyRegion(*((MKVector3 *) &temp_r3_2579->unk588), 1000.0f);
+        ((Enemy *) temp_r3_2579)->SetupEnemyRegion(*((MKVector3 *) &temp_r3_2579->unk588), 1000.0f);
     }
     temp_r4_2584 = this->unkC;
     if (temp_r4_2584->unkAC8 <= 0.0f) {
@@ -1535,7 +1532,7 @@ u8 EnemyGoal_HitKnockdownSlide::Update() {
     if (var_r29_2722 != 0) {
         temp_r3_2739 = this->unkC;
         temp_r4_2742 = temp_r3_2739->unkA50;
-        temp_r3_2739->SetAnim(temp_r4_2742, (AnimTransition *) &temp_r4_2742->unk40, 0.15f, 0U);
+        ((Enemy *) temp_r3_2739)->SetAnim(temp_r4_2742, (AnimTransition *) &temp_r4_2742->unk40, 0.15f, 0U);
     }
     temp_r4_2746 = this->unk38;
     if (!((temp_r4_2746 >> 6U) & 1) && (var_f4_2757 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C)), ((var_f4_2757 > 0.001f) != 0))) {
@@ -1596,7 +1593,7 @@ u8 EnemyGoal_HitKnockdownSlide::Update() {
         this->unk38 &= ~0x80;
     }
     sp8 = 1;
-    this->unk10.Update(GS_EnemySlideGround, 1U, ((u8) this->unk38 >> 7U) & 1, (MKProp *) this->unkC, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk10)->Update(GS_EnemySlideGround, 1U, ((u8) this->unk38 >> 7U) & 1, (MKProp *) this->unkC, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (((u8) this->unk38 >> 7U) & 1) {
         this->unkC->unkA58 = this->unk10;
     }
@@ -1646,7 +1643,7 @@ void EnemyGoal_HitKnockdownSlide::Activate() {
     temp_r3_2916->unk6B5 |= 1;
     temp_r3_2920 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_2920->unkA38, u8 *, 0x123) != 0) {
-        temp_r3_2920->SnapToDirOfHitSource();
+        ((Enemy *) temp_r3_2920)->SnapToDirOfHitSource();
         temp_r5_2927 = this->unkC;
         M2C_FIELD(temp_r5_2927, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
         M2C_FIELD(temp_r5_2927, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
@@ -1708,10 +1705,10 @@ void EnemyGoal_HitKnockdownSlide::Activate() {
     if ((s32) temp_r3_3044->unk680 != 2) {
         temp_r3_3044->SetMovementType((CharacterMoveType) 0);
     }
-    this->unkC->SetAnim((AnimSequenceType) 2, 0x2A, 0, 0.15f, 0U, 0U);
-    this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
-    this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
-    this->unkC->EnableBlurFX(1U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 2, 0x2A, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->EnableBlurFX(1U);
     temp_r4_3070 = this->unkC;
 loop_20:
     if ((u32) *temp_r4_3070->unkA1C != 0U) {
@@ -1720,7 +1717,7 @@ loop_20:
     }
     this->unk38 &= ~0x80;
     this->unk38 &= ~0x40;
-    this->unk10.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk10)->Init(0.25f, 0.25f);
 }
 #endif
 
@@ -2411,7 +2408,7 @@ block_72:
                             sp1B8 = (f32) sp1B8 * var_f3_4091;
                             unksp1BC = temp_f1_4101;
                             sp1C0 = temp_f0_4102;
-                            temp_f31_4110 = this->unkC->unkA0.Magnitude();
+                            temp_f31_4110 = ((MKVector3 *) &this->unkC->unkA0)->Magnitude();
                             sp28 = -sp1B8;
                             sp2C = -temp_f1_4101;
                             sp30 = -temp_f0_4102;
@@ -2504,7 +2501,7 @@ block_72:
         }
         temp_r30_4327 = this->unkC;
         var_r28_4328 = 0;
-        if (temp_r30_4327->HasAnimFinished() != 0) {
+        if (((Character *) temp_r30_4327)->HasAnimFinished() != 0) {
             temp_r4_4333 = temp_r30_4327->unkA38;
             if ((temp_r4_4333 != NULL) && ((void *) temp_r4_4333->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r30_4327, void **, 0x630), u32 *, 0x20))) {
                 var_r28_4328 = 1;
@@ -2517,7 +2514,7 @@ block_72:
         }
     }
     sp8 = 1;
-    this->unk14.Update(GS_EnemySlideGround, 1U, ((u8) this->unk40 >> 7U) & 1, (MKProp *) this->unkC, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk14)->Update(GS_EnemySlideGround, 1U, ((u8) this->unk40 >> 7U) & 1, (MKProp *) this->unkC, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (((u8) this->unk40 >> 7U) & 1) {
         this->unkC->unkA40 = (void **) this->unk14;
     }
@@ -2525,7 +2522,7 @@ block_72:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnemyGoal_HitKnockdown::Activate() {
     f64 sp160;
     f64 sp158;
@@ -2591,11 +2588,11 @@ void EnemyGoal_HitKnockdown::Activate() {
     temp_r4_4465->unk6B5 &= ~0x20;
     temp_r4_4470 = this->unkC;
     temp_r4_4470->unk6B5 |= 1;
-    this->unk14.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk14)->Init(0.25f, 0.25f);
     temp_r31_4475 = this->unkC;
     temp_r3_4476 = temp_r31_4475->unkA38;
     if ((temp_r3_4476 == NULL) || ((s32) temp_r3_4476->unk6C != 2) || (M2C_BITWISE(s32, temp_r3_4476->unk68) != 0x2A)) {
-        temp_r31_4475->unkA38 = temp_r31_4475->unkA20->GetAnimSequence(2, 0x2A, M2C_BITWISE(s32, temp_r31_4475->unkACC), NULL);
+        temp_r31_4475->unkA38 = ((EnemyDescriptor *) temp_r31_4475->unkA20)->GetAnimSequence(2, 0x2A, M2C_BITWISE(s32, temp_r31_4475->unkACC), NULL);
     }
     temp_r3_4494 = this->unkC;
     temp_r31_4496 = temp_r3_4494->unkA38;
@@ -2672,7 +2669,7 @@ void EnemyGoal_HitKnockdown::Activate() {
     }
     temp_r3_4687 = this->unkC;
     if ((s32) temp_r3_4687->unk680 != 2) {
-        temp_r3_4687->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_4687)->SetMovementType((CharacterMoveType) 0);
     }
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
@@ -2792,7 +2789,7 @@ u8 EnemyGoal_HitKnockup::Update() {
     ActivateIfInactive();
     temp_r29_4833 = this->unkC;
     var_r30_4834 = 0;
-    if (temp_r29_4833->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_4833)->HasAnimFinished() != 0) {
         temp_r4_4839 = temp_r29_4833->unkA38;
         if ((temp_r4_4839 != NULL) && ((s8 *) temp_r4_4839->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_4833, void **, 0x630), u32 *, 0x20))) {
             var_r30_4834 = 1;
@@ -2954,10 +2951,10 @@ void EnemyGoal_HitKnockup::Activate() {
     this->unkC->unk5E4 = 0.0f;
     this->unkC->unk684 = 0.0f;
     this->unkC->SetAnim((AnimSequenceType) 2, 0x2A, 0, 0.15f, 0U, 0U);
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_5186 = this->unkC;
     if ((s32) temp_r3_5186->unk680 != 2) {
-        temp_r3_5186->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_5186)->SetMovementType((CharacterMoveType) 0);
     }
     temp_r3_5193 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_5193->unkA20, u8 *, 0x123) != 0) {
@@ -3046,7 +3043,7 @@ u8 EnemyGoal_HitKnockback::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
+#if 0 // DRAFT: undefined identifier 'unkA38'
 void EnemyGoal_HitKnockback::Activate() {
     Character *temp_r3_5394;
     Character *temp_r3_5418;
@@ -3056,9 +3053,9 @@ void EnemyGoal_HitKnockback::Activate() {
     this->unk8 = 0;
     temp_r3_5394 = this->unkC;
     if (((u8) temp_r3_5394->unk6B5 >> 4U) & 1) {
-        temp_r3_5394->SetAnim((AnimSequenceType) 2, 0x2E, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_5394)->SetAnim((AnimSequenceType) 2, 0x2E, 0, 0.15f, 0U, 0U);
     } else {
-        temp_r3_5394->SetAnim((AnimSequenceType) 2, 0x29, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_5394)->SetAnim((AnimSequenceType) 2, 0x29, 0, 0.15f, 0U, 0U);
     }
     this->unkC->StopMovement(1U);
     temp_r3_5418 = this->unkC;
@@ -3067,7 +3064,7 @@ void EnemyGoal_HitKnockback::Activate() {
     }
     temp_r3_5425 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_5425->unkA38, u8 *, 0x123) != 0) {
-        temp_r3_5425->SnapToDirOfHitSource();
+        ((Enemy *) temp_r3_5425)->SnapToDirOfHitSource();
         temp_r5_5432 = this->unkC;
         M2C_FIELD(temp_r5_5432, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
         M2C_FIELD(temp_r5_5432, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
@@ -3133,7 +3130,7 @@ block_10:
             temp_r3_5553 = this->unkC;
             temp_r4_5554 = temp_r3_5553->unkA50;
             if ((u32) temp_r4_5554->unk40 != 0) {
-                temp_r3_5553->SetAnim(temp_r4_5554, (AnimTransition *) &temp_r4_5554->unk40, 0.15f, 0U);
+                ((Enemy *) temp_r3_5553)->SetAnim(temp_r4_5554, (AnimTransition *) &temp_r4_5554->unk40, 0.15f, 0U);
             } else {
                 this->unk8 = 2;
                 temp_r3_5567 = this->unkC;
@@ -3197,7 +3194,7 @@ void EnemyGoal_HitBurn::Activate() {
         }
     } else {
 block_7:
-        this->unkC->SetAnim((AnimSequenceType) 2, 0x31, 1, 0.0f, 4U, 1U);
+        ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 2, 0x31, 1, 0.0f, 4U, 1U);
     }
     this->unkC->StopMovement(1U);
     temp_r3_5636 = this->unkC;
@@ -3206,7 +3203,7 @@ block_7:
     }
     temp_r3_5643 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_5643->unkA38, u8 *, 0x123) != 0) {
-        temp_r3_5643->SnapToDirOfHitSource();
+        ((Enemy *) temp_r3_5643)->SnapToDirOfHitSource();
         temp_r5_5650 = this->unkC;
         M2C_FIELD(temp_r5_5650, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
         M2C_FIELD(temp_r5_5650, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
@@ -3319,7 +3316,7 @@ u8 EnemyGoal_HitShock::Update() {
         }
     } else {
         var_r30_5893 = 0;
-        if (temp_r29_5856->HasAnimFinished() != 0) {
+        if (((Character *) temp_r29_5856)->HasAnimFinished() != 0) {
             temp_r4_5897 = temp_r29_5856->unkA38;
             if ((temp_r4_5897 != NULL) && ((void *) temp_r4_5897->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_5856, void **, 0x630), u32 *, 0x20))) {
                 var_r30_5893 = 1;
@@ -3335,6 +3332,7 @@ u8 EnemyGoal_HitShock::Update() {
 }
 #endif
 
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_HitShock::Activate() {
     Enemy *temp_r3_5936;
     Enemy *temp_r3_5940;
@@ -3351,10 +3349,10 @@ void EnemyGoal_HitShock::Activate() {
     if ((temp_r4_5941 == NULL) || ((s32) temp_r4_5941->unk6C != 2) || (M2C_BITWISE(s32, temp_r4_5941->unk68) != 0x2C) || ((s32) M2C_FIELD(M2C_FIELD(temp_r3_5940, void **, 0x630), s32 *, 0x44) >= 2)) {
         temp_r3_5940->SetAnim((AnimSequenceType) 2, 0x2C, 0, 0.0f, 4U, 1U);
     }
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_5966 = this->unkC;
     if ((s32) temp_r3_5966->unk680 != 2) {
-        temp_r3_5966->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_5966)->SetMovementType((CharacterMoveType) 0);
     }
     temp_r3_5973 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_5973->unkA20, u8 *, 0x123) != 0) {
@@ -3367,6 +3365,7 @@ void EnemyGoal_HitShock::Activate() {
         temp_r5_5980->unk6B5 |= 0x40;
     }
 }
+#endif
 
 u8 EnemyGoal_HitFlinch::Update() {
     ActivateIfInactive();
@@ -3376,7 +3375,7 @@ u8 EnemyGoal_HitFlinch::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
+#if 0 // DRAFT: undefined identifier 'temp_r3_6039'
 void EnemyGoal_HitFlinch::Activate() {
     Character *temp_r3_6039;
     Character *temp_r3_6051;
@@ -3387,14 +3386,14 @@ void EnemyGoal_HitFlinch::Activate() {
     this->unk8 = 0;
     if ((u8) this->unk10 != 0) {
         temp_r3_6039 = this->unkC;
-        temp_r3_6039->SetAnim((AnimSequenceType) 2, M2C_FIELD(temp_r3_6039->unk630, s32 *, 8) + 0x69, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_6039)->SetAnim((AnimSequenceType) 2, M2C_FIELD(temp_r3_6039->unk630, s32 *, 8) + 0x69, 0, 0.15f, 0U, 0U);
         return;
     }
     temp_r3_6051 = this->unkC;
     if (((u8) temp_r3_6051->unk6B5 >> 4U) & 1) {
-        temp_r3_6051->SetAnim((AnimSequenceType) 2, 0x2D, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_6051)->SetAnim((AnimSequenceType) 2, 0x2D, 0, 0.15f, 0U, 0U);
     } else {
-        temp_r3_6051->SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_6051)->SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
     }
     this->unkC->StopMovement(1U);
     temp_r3_6075 = this->unkC;
@@ -3403,7 +3402,7 @@ void EnemyGoal_HitFlinch::Activate() {
     }
     temp_r3_6082 = this->unkC;
     if ((u8) M2C_FIELD(temp_r3_6082->unkA38, u8 *, 0x123) != 0) {
-        temp_r3_6082->SnapToDirOfHitSource();
+        ((Enemy *) temp_r3_6082)->SnapToDirOfHitSource();
         temp_r5_6089 = this->unkC;
         M2C_FIELD(temp_r5_6089, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
         M2C_FIELD(temp_r5_6089, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);

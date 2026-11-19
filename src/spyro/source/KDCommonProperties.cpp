@@ -460,7 +460,7 @@ void KDPathFollowerProperty::Resolve(KDPropertySet *arg0) {
     if (temp_r4_900 != NULL) {
         this->unk14 = property_cast<KDPathProperty *, KDProperty *>(arg0->Find((s8 *) temp_r4_900));
     }
-    this->unk10 = this->unk14->IsOfType((KDPropertyClassInfo *) &KDSplinePathProperty::classInfo);
+    this->unk10 = ((KDProperty *) this->unk14)->IsOfType((KDPropertyClassInfo *) &KDSplinePathProperty::classInfo);
 }
 #endif
 
@@ -717,7 +717,7 @@ void KDMessageHandlerProperty::Resolve(KDPropertySet *arg0) {
     }
 loop_9:
     if (var_r31_1334 != NULL) {
-        var_r31_1334->Resolve(arg0);
+        ((KDPropertyCommand *) var_r31_1334)->Resolve(arg0);
         temp_r0_1343 = this->unk10.unk0;
         var_r5_1344 = 0;
         if ((temp_r0_1343 > 1) && ((KDPropertyCommand **) (var_r31_1334 + 8) < (void *) (this->unk10.unk4 + (temp_r0_1343 * 8)))) {
@@ -874,7 +874,7 @@ void KDAnimEventProperty::Resolve(KDPropertySet *arg0) {
     }
 loop_9:
     if (var_r30_1655 != NULL) {
-        var_r30_1655->Resolve(arg0);
+        ((KDPropertyCommand *) var_r30_1655)->Resolve(arg0);
         temp_r0_1664 = this->unk10.unk0;
         var_r5_1665 = 0;
         if ((temp_r0_1664 > 1) && ((KDPropertyCommand **) (var_r30_1655 + 8) < (void *) (this->unk10.unk4 + (temp_r0_1664 * 8)))) {

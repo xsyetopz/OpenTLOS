@@ -12,11 +12,13 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SparxHint.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/TargetManager.h"
@@ -40,7 +42,9 @@ extern s32 GS_TrainingFail;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern s32 gViewSeed;
+#if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
+#endif
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 static M2C_UNK lit_761;                                /* unable to generate initializer: unknown type */
@@ -57,7 +61,7 @@ static s32 lit_3055 = 0;
 static s32 lit_3057 = 0;
 static s32 lit_3059 = 0;
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: pointer/array required
 u8 EarthDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -82,7 +86,7 @@ u8 EarthDojoLesson::HasSucceededFury() {
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -95,7 +99,7 @@ u8 EarthDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 u8 EarthDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -135,7 +139,7 @@ u8 EarthDojoLesson::HasSucceededBreath2() {
                 }
             } else {
 block_17:
-                gb.GetSpyro();
+                ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_169 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
                 if ((temp_r3_169 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_169, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
@@ -148,7 +152,7 @@ block_17:
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -160,7 +164,7 @@ block_17:
 u8 EarthDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -184,6 +188,7 @@ u8 EarthDojoLesson::HasSucceededLesson() {
     }
 }
 
+#if 0 // DRAFT: pointer/array required
 s32 EarthDojoLesson::HasFailedFury() {
     DojoController *temp_r4_304;
 
@@ -191,7 +196,7 @@ s32 EarthDojoLesson::HasFailedFury() {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
             M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
         }
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         temp_r4_304 = this->unk4;
         if (((s32) temp_r4_304->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_304, u8 *, 0x3BC) == 0)) {
             return 1;
@@ -201,6 +206,7 @@ s32 EarthDojoLesson::HasFailedFury() {
     M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
     return 0;
 }
+#endif
 
 s32 EarthDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_332;
@@ -457,7 +463,7 @@ loop_31:
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_701 + 0x84)), s32 *, 4) = 0x40004200;
             temp_r5_771 = this->unk4;
-            temp_r5_771->unk310.AddSpawnPoint(temp_r5_771 + (var_r28_701 + 0x80));
+            ((SpawnerObject *) &temp_r5_771->unk310)->AddSpawnPoint(temp_r5_771 + (var_r28_701 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_701 + 0x90)))->SetIdentity();
             temp_r6_780 = var_r28_701 + 0x90;
             temp_r6_783 = this->unk4 + temp_r6_780;
@@ -470,7 +476,7 @@ loop_31:
             var_r28_701 += 0x60;
             goto loop_31;
         }
-        temp_r4_798->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &temp_r4_798->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -616,19 +622,19 @@ void EarthDojoLesson::MakeChildrenInvulnerable() {
             sp1C = 0;
             sp18 = 0x161;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp18);
-            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp18);
+            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp18);
             return;
         }
         sp14 = 0;
         sp10 = 0x165;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
         return;
     case 2:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
         return;
     }
 }
@@ -808,7 +814,7 @@ void EarthDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: pointer/array required
 u8 IceDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -833,7 +839,7 @@ u8 IceDojoLesson::HasSucceededFury() {
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -875,7 +881,7 @@ block_12:
     case 1:
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            this->unk4->unk310.GetNumberActive();
+            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -887,7 +893,7 @@ block_12:
 u8 IceDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -911,6 +917,7 @@ u8 IceDojoLesson::HasSucceededLesson() {
     }
 }
 
+#if 0 // DRAFT: pointer/array required
 s32 IceDojoLesson::HasFailedFury() {
     DojoController *temp_r4_1798;
 
@@ -918,7 +925,7 @@ s32 IceDojoLesson::HasFailedFury() {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
             M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
         }
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         temp_r4_1798 = this->unk4;
         if (((s32) temp_r4_1798->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_1798, u8 *, 0x3BC) == 0)) {
             return 1;
@@ -928,6 +935,7 @@ s32 IceDojoLesson::HasFailedFury() {
     M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
     return 0;
 }
+#endif
 
 s32 IceDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_1826;
@@ -1184,7 +1192,7 @@ loop_31:
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_2195 + 0x84)), s32 *, 4) = 0x10004200;
             temp_r5_2265 = this->unk4;
-            temp_r5_2265->unk310.AddSpawnPoint(temp_r5_2265 + (var_r28_2195 + 0x80));
+            ((SpawnerObject *) &temp_r5_2265->unk310)->AddSpawnPoint(temp_r5_2265 + (var_r28_2195 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_2195 + 0x90)))->SetIdentity();
             temp_r6_2274 = var_r28_2195 + 0x90;
             temp_r6_2277 = this->unk4 + temp_r6_2274;
@@ -1197,7 +1205,7 @@ loop_31:
             var_r28_2195 += 0x60;
             goto loop_31;
         }
-        temp_r4_2292->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &temp_r4_2292->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -1372,7 +1380,7 @@ void IceDojoLesson::MakeChildrenInvulnerable() {
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
     }
 }
 
@@ -1561,7 +1569,7 @@ void IceDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: pointer/array required
 u8 ElectricDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -1586,7 +1594,7 @@ u8 ElectricDojoLesson::HasSucceededFury() {
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -1599,7 +1607,7 @@ u8 ElectricDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'lit_2532'
 u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -1648,7 +1656,7 @@ u8 ElectricDojoLesson::HasSucceededBreath2() {
                 goto block_17;
             }
 block_17:
-            gb.GetSpyro();
+            ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (((Enemy *) (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)()))->IsKnockedUp() != 0)) {
                 this->unk4->ClearCombatArcs();
@@ -1686,7 +1694,7 @@ block_43:
                 }
             } else {
 block_37:
-                gb.GetSpyro();
+                ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_3347 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
                 if ((temp_r3_3347 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_3347, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
@@ -1698,7 +1706,7 @@ block_37:
         }
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            this->unk4->unk310.GetNumberActive();
+            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -1729,7 +1737,7 @@ loop_2:
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -1754,6 +1762,7 @@ u8 ElectricDojoLesson::HasSucceededLesson() {
     }
 }
 
+#if 0 // DRAFT: pointer/array required
 s32 ElectricDojoLesson::HasFailedFury() {
     DojoController *temp_r4_3503;
 
@@ -1761,7 +1770,7 @@ s32 ElectricDojoLesson::HasFailedFury() {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
             M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
         }
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         temp_r4_3503 = this->unk4;
         if (((s32) temp_r4_3503->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_3503, u8 *, 0x3BC) == 0)) {
             return 1;
@@ -1771,6 +1780,7 @@ s32 ElectricDojoLesson::HasFailedFury() {
     M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
     return 0;
 }
+#endif
 
 s32 ElectricDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_3531;
@@ -2027,7 +2037,7 @@ loop_31:
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_3900 + 0x84)), s32 *, 4) = 0x20004200;
             temp_r5_3970 = this->unk4;
-            temp_r5_3970->unk310.AddSpawnPoint(temp_r5_3970 + (var_r28_3900 + 0x80));
+            ((SpawnerObject *) &temp_r5_3970->unk310)->AddSpawnPoint(temp_r5_3970 + (var_r28_3900 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_3900 + 0x90)))->SetIdentity();
             temp_r6_3979 = var_r28_3900 + 0x90;
             temp_r6_3982 = this->unk4 + temp_r6_3979;
@@ -2040,7 +2050,7 @@ loop_31:
             var_r28_3900 += 0x60;
             goto loop_31;
         }
-        temp_r4_3997->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &temp_r4_3997->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -2389,25 +2399,25 @@ void ElectricDojoLesson::MakeChildrenInvulnerable() {
             sp24 = 0;
             sp20 = 0x165;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp20);
-            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp20);
+            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp20);
             return;
         }
         sp1C = 0;
         sp18 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp18);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp18);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp18);
         return;
     case 1:
         sp14 = 0;
         sp10 = 0x165;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
         return;
     case 2:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
         return;
     }
 }
@@ -2584,7 +2594,7 @@ void ElectricDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
+#if 0 // DRAFT: pointer/array required
 u8 FireDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -2609,7 +2619,7 @@ u8 FireDojoLesson::HasSucceededFury() {
     }
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             spC = NULL;
             sp8 = 0x163;
@@ -2646,7 +2656,7 @@ loop_5:
     case 1:
         this->unk4->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            this->unk4->unk310.GetNumberActive();
+            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1U;
             }
@@ -2660,7 +2670,7 @@ loop_5:
 u8 FireDojoLesson::HasSucceededBreath1() {
     this->unk4->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             return 1U;
         }
@@ -2783,9 +2793,9 @@ loop_44:
                         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                             this->unk4->unk2C0.DespawnAll();
                         }
-                        this->unk4->unk310.GetNumberActive();
+                        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
                         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                            this->unk4->unk310.DespawnAll();
+                            ((SpawnerObject *) &this->unk4->unk310)->DespawnAll();
                         }
                         this->unk4->unk3C8 = 0;
                         this->unk4->unk3CC = 0;
@@ -2819,7 +2829,7 @@ loop_44:
             temp_r4_5508 = this->unk4;
             if (((u32) temp_r4_5508->unk40C == (u32) temp_r4_5508->unk428) || ((u32) temp_r4_5508->unk410 == (u32) temp_r4_5508->unk42C) || ((u32) temp_r4_5508->unk414 == (u32) temp_r4_5508->unk430) || ((u32) temp_r4_5508->unk418 == (u32) temp_r4_5508->unk434) || ((u32) temp_r4_5508->unk41C == (u32) temp_r4_5508->unk438) || ((u32) temp_r4_5508->unk420 == (u32) temp_r4_5508->unk43C)) {
                 temp_r4_5508->unk668 = M2C_BITWISE(s32, temp_r4_5508->unk66C);
-                gb.GetSpyro();
+                ((GameGlobals *) &gb)->GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_5541 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
                 if ((temp_r3_5541 != NULL) && ((s32) M2C_FIELD(M2C_FIELD(temp_r3_5541, void **, 0xA38), s32 *, 0xF4) == 0x2D)) {
@@ -2885,7 +2895,7 @@ u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
         M2C_FIELD(this->unk4, s8 *, 0x678) = 1;
         temp_r4_5637 = this->unk4;
         if ((MKSceneManager *) temp_r4_5637->unk408 == (u32) temp_r4_5637->unk424) {
-            gb.GetSpyro();
+            ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (((Enemy *) (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)()))->IsKnockedUp() != 0)) {
                 this->unk4->ClearCombatArcs();
@@ -2930,7 +2940,7 @@ block_37:
         }
         temp_r4_5739 = this->unk4;
         if ((MKSceneManager *) temp_r4_5739->unk408 == (u32) temp_r4_5739->unk424) {
-            gb.GetSpyro();
+            ((GameGlobals *) &gb)->GetSpyro();
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             temp_r3_5749 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
             if (temp_r3_5749 != NULL) {
@@ -3007,6 +3017,7 @@ u8 FireDojoLesson::HasSucceededLesson() {
     }
 }
 
+#if 0 // DRAFT: pointer/array required
 s32 FireDojoLesson::HasFailedFury() {
     DojoController *temp_r4_5967;
 
@@ -3014,7 +3025,7 @@ s32 FireDojoLesson::HasFailedFury() {
         if (M2C_FIELD(*gb, u8 (**)(void **), 0x70)(gb) != 0) {
             M2C_FIELD(this->unk4, u8 *, 0x3BC) = 1U;
         }
-        this->unk4->unk310.GetNumberActive();
+        ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
         temp_r4_5967 = this->unk4;
         if (((s32) temp_r4_5967->unk3CC != (s32) M2C_ERROR(/* Read from unset register $r3 */)) && ((u8) M2C_FIELD(temp_r4_5967, u8 *, 0x3BC) == 0)) {
             return 1;
@@ -3024,6 +3035,7 @@ s32 FireDojoLesson::HasFailedFury() {
     M2C_FIELD(this->unk4, u8 *, 0x3BC) = 0U;
     return 0;
 }
+#endif
 
 s32 FireDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_5995;
@@ -3076,7 +3088,7 @@ s32 FireDojoLesson::HasFailedMeleeKnockUp() {
     if ((u8) M2C_FIELD(temp_r3_6090, u8 *, 0x3BE) != 0) {
         temp_r3_6090->unk2C0.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            this->unk4->unk310.GetNumberActive();
+            ((SpawnerObject *) &this->unk4->unk310)->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                 return 1;
             }
@@ -3327,7 +3339,7 @@ loop_31:
             sp138 = (f64) sp60.unk8;
             M2C_FIELD(*(this->unk4 + (var_r28_6465 + 0x84)), s32 *, 4) = 0x08004200;
             temp_r5_6535 = this->unk4;
-            temp_r5_6535->unk310.AddSpawnPoint(temp_r5_6535 + (var_r28_6465 + 0x80));
+            ((SpawnerObject *) &temp_r5_6535->unk310)->AddSpawnPoint(temp_r5_6535 + (var_r28_6465 + 0x80));
             ((Matrix *) (this->unk4 + (var_r28_6465 + 0x90)))->SetIdentity();
             temp_r6_6544 = var_r28_6465 + 0x90;
             temp_r6_6547 = this->unk4 + temp_r6_6544;
@@ -3340,7 +3352,7 @@ loop_31:
             var_r28_6465 += 0x60;
             goto loop_31;
         }
-        temp_r4_6562->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &temp_r4_6562->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -4068,7 +4080,7 @@ void FireDojoLesson::MakeChildrenInvulnerable() {
             sp14 = 0;
             sp10 = 0x165;
             this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp10);
-            this->unk4->unk310.SendMessageToActive((MKMessage *) &sp10);
+            ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp10);
             return;
         }
         goto block_7;
@@ -4078,7 +4090,7 @@ block_7:
         spC = 0;
         sp8 = 0x161;
         this->unk4->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-        this->unk4->unk310.SendMessageToActive((MKMessage *) &sp8);
+        ((SpawnerObject *) &this->unk4->unk310)->SendMessageToActive((MKMessage *) &sp8);
     }
 }
 
@@ -4396,9 +4408,9 @@ void DojoController::StateDojoStatueUpExit() {
 
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoStatueUpUpdate() {
-    if (this->unk3FC->IsUp() != 0) {
+    if (((DragonStatue *) this->unk3FC)->IsUp() != 0) {
         switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             this->unk4C.Send((MKProp *) this);
@@ -4427,12 +4439,11 @@ void DojoController::StateDojoStatueUpUpdate() {
             M2C_FIELD(GameData::gameData, s32 *, 0x18C) = 0;
             break;
         }
-        this->unk310.unk4C.SetState(this, 0, 0U);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 0, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void DojoController::StateDojoStatueUpEnter() {
     s8 sp3A;
     s8 sp39;
@@ -4458,14 +4469,14 @@ void DojoController::StateDojoStatueUpEnter() {
     temp_r3_8638 = this->unk3FC;
     M2C_FIELD(M2C_FIELD(temp_r3_8638, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_8638);
     if ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C) == 0) {
-        this->unk3FC->SnapDown();
+        ((DragonStatue *) this->unk3FC)->SnapDown();
     }
     temp_r3_8651 = this->unk3FC;
     spC = 0;
     sp8 = 0xB5;
     M2C_FIELD(M2C_FIELD(temp_r3_8651, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_8651, &sp8, 0);
     M2C_FIELD(&gb, s8 *, 4) = 1;
-    gb.InfiniteMagicOff();
+    ((GameGlobals *) &gb)->InfiniteMagicOff();
     sp1C = 0;
     sp18 = 0xE;
     sp38 = 0;
@@ -4477,30 +4488,29 @@ void DojoController::StateDojoStatueUpEnter() {
     sp3A = 1;
     sp39 = 1;
     sp38 = 1;
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
 }
-#endif
 
 void DojoController::StateDojoFinishExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoFinishUpdate() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8) {
-        this->unk310.unk4C.SetState(this, 7, 0U);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 7, 0U);
         M2C_FIELD(&gb, s8 *, 5) = 1;
         M2C_FIELD(&gb, s8 *, 6) = 1;
         M2C_FIELD(&gb, s8 *, 7) = 1;
         M2C_FIELD(&gb, s8 *, 4) = 1;
         M2C_FIELD(&gb, s8 *, 8) = 1;
-        gb.InfiniteMagicOff();
+        ((GameGlobals *) &gb)->InfiniteMagicOff();
         return;
     }
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->BroadcaseCollectRequestMessage(7500.0f);
     }
 }
@@ -4527,9 +4537,9 @@ void DojoController::StateDojoFinishEnter() {
         }
     }
     M2C_FIELD(&gb, s8 *, 0xA) = 0;
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->BroadcaseCollectRequestMessage(7500.0f);
     }
     this->unk3A8 = M2C_FIELD(&gb, f32 *, 0x30C) + 4.0f;
@@ -4543,7 +4553,7 @@ void DojoController::StateDojoSuccessExit() {
     M2C_FIELD(&gb, s8 *, 8) = 1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoSuccessUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4606,7 +4616,7 @@ void DojoController::StateDojoSuccessUpdate() {
         InGame_SystemMessage((MKMessage *) &sp88);
     }
     this->unk2C0.GetNumberActive();
-    if (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (this->unk310.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
+    if (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (((SpawnerObject *) &this->unk310)->GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
         if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
             if ((u8) this->unk3BC == 0) {
                 switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
@@ -4695,7 +4705,7 @@ void DojoController::StateDojoSuccessUpdate() {
                 spC = 0;
                 sp8 = 0xB4;
                 M2C_FIELD(temp_r3_9091->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9091, &sp8, 0);
-                this->unk310.unk4C.SetState(this, 2, 0U);
+                ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
             }
         } else if ((PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 != 0)) {
             var_f0_9118 = M2C_FIELD(this, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
@@ -4734,7 +4744,7 @@ void DojoController::StateDojoSuccessEnter() {
     this->unk3B0 = 0.0f;
     M2C_FIELD(this, s8 *, 0x3BE) = 0;
     this->unk2C0.SendMessageToActive((MKMessage *) &sp8);
-    this->unk310.SendMessageToActive((MKMessage *) &sp8);
+    ((SpawnerObject *) &this->unk310)->SendMessageToActive((MKMessage *) &sp8);
     M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f);
     M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + M2C_BITWISE(f32, this->unk458));
     KDSound_Play(GS_TrainingComplete, 0U, -1);
@@ -4765,7 +4775,7 @@ void DojoController::StateDojoFailExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoFailUpdate() {
     DojoController *sp8C;
     s32 sp88;
@@ -4915,7 +4925,7 @@ void DojoController::StateDojoFailUpdate() {
             spC = 0;
             sp8 = 0xB4;
             M2C_FIELD(temp_r3_9500->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9500, &sp8, 0);
-            this->unk310.unk4C.SetState(this, 2, 0U);
+            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
         }
     } else if ((PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 != 0)) {
         var_f0_9527 = M2C_FIELD(this, f32 *, 0x398) - M2C_FIELD(&gb, f32 *, 0x30C);
@@ -4941,9 +4951,9 @@ void DojoController::StateDojoFailEnter() {
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         this->unk2C0.DespawnAll();
     }
-    this->unk310.GetNumberActive();
+    ((SpawnerObject *) &this->unk310)->GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-        this->unk310.DespawnAll();
+        ((SpawnerObject *) &this->unk310)->DespawnAll();
     }
     M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + this->unk45C);
     this->unk3B0 += 0.2f;
@@ -5011,7 +5021,7 @@ void DojoController::StateDojoFightExit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoFightUpdate() {
     f32 temp_f1_9785;
     f32 var_f2_9752;
@@ -5031,7 +5041,7 @@ void DojoController::StateDojoFightUpdate() {
 
     temp_r3_9720 = this->unk70;
     if ((M2C_FIELD(*temp_r3_9720, u8 (**)(void **), 0x20)(temp_r3_9720) != 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0)) {
-        this->unk310.unk4C.SetState(this, 5, 0U);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 5, 0U);
         return;
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x3BF) != 0) {
@@ -5066,10 +5076,10 @@ void DojoController::StateDojoFightUpdate() {
             temp_r3_9842 = this->unk70;
             if (temp_r30_9838 != (s32) M2C_FIELD(temp_r3_9842, s32 *, 0x10)) {
                 if (M2C_FIELD(M2C_FIELD(temp_r3_9842, void **, 0), u8 (**)(), 0x1C)() != 0) {
-                    this->unk310.unk4C.SetState(this, 6, 0U);
+                    ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 6, 0U);
                     return;
                 }
-                this->unk310.unk4C.SetState(this, 4, 0U);
+                ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 4, 0U);
                 return;
             }
             M2C_FIELD(this, u8 *, 0x3BE) = 0U;
@@ -5077,9 +5087,9 @@ void DojoController::StateDojoFightUpdate() {
         }
     }
 block_24:
-    if ((((s32) M2C_FIELD(this->unk70, s32 *, 0xC) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0)) || (((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0) && (this->unk2C0.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (this->unk310.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)))) {
+    if ((((s32) M2C_FIELD(this->unk70, s32 *, 0xC) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0)) || (((u8) M2C_FIELD(this, u8 *, 0x3BE) == 0) && (this->unk2C0.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (((SpawnerObject *) &this->unk310)->GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)))) {
         this->unk2C0.RemoveAllSpawnPoints(0U);
-        this->unk310.RemoveAllSpawnPoints(0U);
+        ((SpawnerObject *) &this->unk310)->RemoveAllSpawnPoints(0U);
         temp_r3_9895 = this->unk70;
         temp_r4_9896 = M2C_FIELD(temp_r3_9895, s32 *, 0x14);
         switch (temp_r4_9896) {                     /* switch 1; irregular */
@@ -5106,12 +5116,12 @@ block_42:
                                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                                     this->unk2C0.DespawnAll();
                                 }
-                                this->unk310.GetNumberActive();
+                                ((SpawnerObject *) &this->unk310)->GetNumberActive();
                                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                                    this->unk310.DespawnAll();
+                                    ((SpawnerObject *) &this->unk310)->DespawnAll();
                                 }
                                 this->unk2C0.RemoveAllSpawnPoints(0U);
-                                this->unk310.RemoveAllSpawnPoints(0U);
+                                ((SpawnerObject *) &this->unk310)->RemoveAllSpawnPoints(0U);
                                 temp_r3_9972 = this->unk70;
                                 M2C_FIELD(M2C_FIELD(temp_r3_9972, void **, 0), M2C_UNK (**)(void **), 0x10)(temp_r3_9972);
                                 AttemptSpawn();
@@ -5183,15 +5193,15 @@ void DojoController::StateDojoInstructExit() {
 
     temp_r0_10070 = M2C_FIELD(this->unk70, s32 *, 8);
     if (temp_r0_10070 == 4) {
-        ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) * 0.5f, 0U);
+        ((Stat *) &GameData::gameData[0xB8])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) * 0.5f, 0U);
     } else {
         temp_cr0_eq_10083 = temp_r0_10070 == 2;
         if (temp_cr0_eq_10083 != 0) {
-            ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) * 0.25f, 0U);
+            ((Stat *) &GameData::gameData[0xB8])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) * 0.25f, 0U);
         } else if (temp_cr0_eq_10083 != 0) {
-            ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) / 6.0f, 0U);
+            ((Stat *) &GameData::gameData[0xB8])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC) / 6.0f, 0U);
         } else {
-            ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->SetValue(0.0f, 0U);
+            ((Stat *) &GameData::gameData[0xB8])->SetValue(0.0f, 0U);
         }
     }
     temp_r3_10113 = this->unk70;
@@ -5427,7 +5437,7 @@ void DojoController::StateDojoInstructUpdate() {
                     sp12A = 1;
                     sp129 = 1;
                     sp128 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 } else {
                     spE4 = 0;
@@ -5441,7 +5451,7 @@ void DojoController::StateDojoInstructUpdate() {
                     sp102 = 1;
                     sp101 = 1;
                     sp100 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 }
                 break;
@@ -5458,7 +5468,7 @@ void DojoController::StateDojoInstructUpdate() {
                     spDA = 1;
                     spD9 = 1;
                     spD8 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 } else {
                     sp94 = 0;
@@ -5472,7 +5482,7 @@ void DojoController::StateDojoInstructUpdate() {
                     spB2 = 1;
                     spB1 = 1;
                     spB0 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 }
                 break;
@@ -5491,7 +5501,7 @@ void DojoController::StateDojoInstructUpdate() {
                     sp8A = 1;
                     sp89 = 1;
                     sp88 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 } else {
                     sp44 = 0;
@@ -5505,7 +5515,7 @@ void DojoController::StateDojoInstructUpdate() {
                     sp62 = 1;
                     sp61 = 1;
                     sp60 = 1;
-                    gb.GetSpyro();
+                    ((GameGlobals *) &gb)->GetSpyro();
                     M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
                 }
                 break;
@@ -5522,7 +5532,7 @@ void DojoController::StateDojoInstructUpdate() {
         sp1C = 0;
         sp18 = 0xBC;
         M2C_FIELD(M2C_FIELD(temp_r3_10658, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10658, &sp18, 0);
-        this->unk310.unk4C.SetState(this, 3, 0U);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 3, 0U);
         M2C_FIELD(this, u8 *, 0x3C1) = 0U;
         temp_r3_10675 = this->unk70;
         M2C_FIELD(M2C_FIELD(temp_r3_10675, void **, 0), M2C_UNK (**)(void **), 0x14)(temp_r3_10675);
@@ -5572,48 +5582,46 @@ void DojoController::StateDojoStatueDownExit() {
 
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::StateDojoStatueDownUpdate() {
     s32 spC;
     s32 sp8;
     s32 temp_r3_10781;
 
     if ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C) != 0) {
-        if (this->unk3FC->IsUp() != 0) {
+        if (((DragonStatue *) this->unk3FC)->IsUp() != 0) {
             temp_r3_10781 = this->unk3FC;
             spC = 0;
             sp8 = 0xB5;
             M2C_FIELD(M2C_FIELD(temp_r3_10781, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10781, &sp8, 0);
         }
-        if (this->unk3FC->IsDown() != 0) {
-            this->unk310.unk4C.SetState(this, 2, 0U);
+        if (((DragonStatue *) this->unk3FC)->IsDown() != 0) {
+            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
         }
     } else {
-        this->unk310.unk4C.SetState(this, 2, 0U);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 2, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoStatueDownEnter() {
     switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
     case 0:
-        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 0);
+        ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 0);
         break;
     case 1:
-        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 1);
+        ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 1);
         break;
     case 2:
-        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 2);
+        ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 2);
         break;
     case 3:
-        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 3);
+        ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 3);
         break;
     }
-    gb.InfiniteMagicOn();
+    ((GameGlobals *) &gb)->InfiniteMagicOn();
     M2C_FIELD(&gb, s8 *, 4) = 0;
 }
-#endif
 
 void DojoController::StateDojoWaitingForActivateExit() {
 
@@ -5665,16 +5673,16 @@ void DojoLesson::UpdateCombatArcs() {
             this->unk4->PlayButtonTone();
         }
     }
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     if (((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags() != 0U) {
         temp_r4_10968 = this->unk4;
         if ((MKSceneManager *) temp_r4_10968->unk408 == NULL) {
             temp_r4_10968->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
         }
     }
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     if ((DragonStatue *) this->unk4->unk404 != ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags()) {
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         temp_r30_10991 = this->unk4;
         temp_r30_10991->AddCombatArc((s32) temp_r30_10991->unk404 ^ ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetCombatArcHitFlags());
         if (((s32) this->unk14 == 0) && ((temp_r3_11001 = this->unk8, ((temp_r3_11001 == 1) != 0)) || (temp_r3_11001 == 2))) {
@@ -5730,10 +5738,10 @@ void DojoController::PlayButtonTone() {
     KDSound_SetPitch(KDSound_Play(GS_ButtonPush4, 0U, -1), (0.1f * (f32) this->unk674) + 0.8f);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::Update() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) > 0.0f) {
-        this->unk310.unk4C.Update(this, 0);
+        ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->Update(this, 0);
     }
     if (((u8) M2C_FIELD(this, u8 *, 0x7F0) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x39C))) {
         M2C_FIELD(this, u8 *, 0x7F0) = 0U;
@@ -6178,7 +6186,7 @@ loop_82:
             } else {
                 M2C_FIELD(M2C_FIELD(temp_r16_12006, void **, 0x84), s32 *, 0x24) = 0;
             }
-            this->unk310.AddSpawnPoint(temp_r16_12006 + 0x80);
+            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(temp_r16_12006 + 0x80);
             temp_r15_12029 = temp_r16_12006 + 0x90;
             temp_r15_12029->SetIdentity();
             M2C_FIELD(temp_r16_12006, f32 *, 0xC0) = (f32) spD8;
@@ -6194,7 +6202,7 @@ loop_82:
             var_r23_11966 += 4;
             goto loop_92;
         }
-        this->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &this->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -6395,7 +6403,7 @@ loop_39:
             sp150 = (f64) sp10;
             sp40 = (f64) sp10;
             M2C_FIELD(M2C_FIELD(temp_r20_12506, void **, 0x84), u32 *, 4) = arg7;
-            this->unk310.AddSpawnPoint(temp_r20_12506 + 0x80);
+            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(temp_r20_12506 + 0x80);
             temp_r21_12521 = temp_r20_12506 + 0x90;
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
@@ -6410,7 +6418,7 @@ loop_39:
             var_r22_12348 += 0x60;
             goto loop_39;
         }
-        this->unk310.AddSpawnPointEnd();
+        ((SpawnerObject *) &this->unk310)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -6461,7 +6469,7 @@ void DojoController::ClearCombatArcs() {
     this->unk440 = 0;
     this->unk404 = NULL;
     this->unk674 = 0;
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->ClearCombatArcHitFlags();
     this->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f;
     temp_r3_12643 = this->unk70;
@@ -6479,19 +6487,19 @@ void DojoController::AttemptSpawn() {
         this->unk2C0.FunctionOff();
     }
     if (((u8) M2C_FIELD(this, u8 *, 0x35C) >> 7U) & 1) {
-        this->unk310.FunctionOn();
+        ((SpawnerObject *) &this->unk310)->FunctionOn();
         this->unk310.unk34 = M2C_FIELD(&gb, f32 *, 0x30C) - 1.0f;
-        this->unk310.TrySpawnItems(0x2D, 0U);
-        this->unk310.FunctionOff();
+        ((SpawnerObject *) &this->unk310)->TrySpawnItems(0x2D, 0U);
+        ((SpawnerObject *) &this->unk310)->FunctionOff();
     }
     this->unk2C0.GetNumberActive();
     this->unk3C8 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk310.GetNumberActive();
+    ((SpawnerObject *) &this->unk310)->GetNumberActive();
     this->unk3CC = M2C_ERROR(/* Read from unset register $r3 */);
     this->unk3A8 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.25f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::Message(MKMessage *arg0) {
     s32 temp_r0_12745;
 
@@ -6500,16 +6508,16 @@ void DojoController::Message(MKMessage *arg0) {
     case 0xB4:
         break;
     case 0xB5:
-        if (this->unk310.unk4C.GetState() == 0) {
+        if (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 0) {
             M2C_FIELD(&gb, s8 *, 0xA) = 1;
             ClearCombatArcs();
-            this->unk310.unk4C.SetState(this, 1, 0U);
-        } else if ((this->unk310.unk4C.GetState() == 4) || (this->unk310.unk4C.GetState() == 5)) {
+            ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 1, 0U);
+        } else if ((((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 4) || (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 5)) {
             M2C_FIELD(this, s8 *, 0x3C3) = 1;
         }
         break;
     case 0x97:
-        if (this->unk310.unk4C.GetState() == 2) {
+        if (((KDStateMachine<DojoController> *) &this->unk310.unk4C)->GetState() == 2) {
             M2C_FIELD(this, f32 *, 0x398) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 0.0f);
             if (PhrasePlayer_IsEventPlaying(this->unk7E4) != 0) {
                 PhrasePlayer_StopEvent(this->unk7E4);
@@ -6521,7 +6529,7 @@ void DojoController::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::Resolve() {
     s32 sp24;
     s32 sp20;
@@ -6554,7 +6562,7 @@ void DojoController::Resolve() {
     void *temp_r3_12926;
 
     M2C_FIELD(this, s8 *, 0x3BE) = 0;
-    temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) this->unk310.unk4C.SetState(this, 0, 0U)));
+    temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->SetState(this, 0, 0U)));
     this->unk60 = temp_ret_12829;
     temp_ret_12833 = checked_cast<EventCamera *, MKProp>(this->unk5C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12829));
     this->unk5C = temp_ret_12833;
@@ -6578,15 +6586,15 @@ void DojoController::Resolve() {
     temp_r3_12877 = this->unk6C;
     spC = 0;
     sp8 = 0xB4;
-    temp_ret_12889 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unk3D0->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0)));
+    temp_ret_12889 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D0)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0)));
     this->unk3D0 = temp_ret_12889 + 0x50;
-    temp_ret_12894 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unk3D4->PropResolver_Resolve((s32) (u32) temp_ret_12889));
+    temp_ret_12894 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D4)->PropResolver_Resolve((s32) (u32) temp_ret_12889));
     this->unk3D4 = temp_ret_12894 + 0x50;
-    temp_ret_12899 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unk3D8->PropResolver_Resolve((s32) (u32) temp_ret_12894));
+    temp_ret_12899 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) temp_ret_12894));
     this->unk3D8 = temp_ret_12899 + 0x50;
-    temp_ret_12904 = checked_cast<ElementalWall *, MKProp>(this->unk3DC->PropResolver_Resolve((s32) (u32) temp_ret_12899));
+    temp_ret_12904 = checked_cast<ElementalWall *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12899));
     this->unk3DC = temp_ret_12904;
-    temp_ret_12908 = checked_cast<ElementalWall *, MKProp>(this->unk3E0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904));
+    temp_ret_12908 = checked_cast<ElementalWall *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904));
     this->unk3E0 = temp_ret_12908;
     temp_ret_12912 = checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908));
     this->unk3E4 = temp_ret_12912;
@@ -6603,9 +6611,9 @@ void DojoController::Resolve() {
         var_r28_12918 += 1;
         var_r30_12919 += 4;
     } while (var_r28_12918 < 4);
-    temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(this->unk3FC->PropResolver_Resolve((s32) var_r4_12916));
+    temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(((MKSceneManager *) this->unk3FC)->PropResolver_Resolve((s32) var_r4_12916));
     this->unk3FC = temp_ret_12937;
-    this->unk400 = checked_cast<MKProp *, MKProp>(this->unk400->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937));
+    this->unk400 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unk400)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937));
     MKProp::Resolve();
 }
 #endif
@@ -6615,9 +6623,9 @@ void DojoController::LoadDone() {
     s32 var_r31_12979;
 
     this->unk2C0.LoadDone(0, 6, 0U, 1U);
-    this->unk310.LoadDone(0, 6, 0U, 1U);
+    ((SpawnerObject *) &this->unk310)->LoadDone(0, 6, 0U, 1U);
     this->unk2C0.AddSpawnPointBegin(6);
-    this->unk310.AddSpawnPointBegin(6);
+    ((SpawnerObject *) &this->unk310)->AddSpawnPointBegin(6);
     var_r30_12978 = 0;
     var_r31_12979 = 0;
     do {
@@ -6996,7 +7004,7 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DojoController::Deinit() {
     SpawnPointData *temp_r3_14520;
     SpawnPointData *temp_r3_14525;
@@ -7007,17 +7015,17 @@ void DojoController::Deinit() {
     u32 temp_r3_14510;
     void **temp_r3_14496;
 
-    this->unk310.unk4C.Deinit(this);
+    ((KDStateMachine<DojoController> *) &this->unk310.unk4C)->Deinit(this);
     this->unk2C0.GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         this->unk2C0.KillAll();
     }
-    this->unk310.GetNumberActive();
+    ((SpawnerObject *) &this->unk310)->GetNumberActive();
     if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-        this->unk310.KillAll();
+        ((SpawnerObject *) &this->unk310)->KillAll();
     }
     this->unk2C0.Deinit();
-    this->unk310.Deinit();
+    ((SpawnerObject *) &this->unk310)->Deinit();
     var_r30_14492 = 0;
     var_r31_14493 = 0;
     do {
@@ -7053,7 +7061,7 @@ void DojoController::Deinit() {
     PhrasePlayer_StopEvent(this->unk7E4);
     M2C_FIELD(&gb, s8 *, 0x59) = 0;
     M2C_FIELD(&gb, s8 *, 0xA) = 0;
-    gb.InfiniteMagicOff();
+    ((GameGlobals *) &gb)->InfiniteMagicOff();
     MKProp::Deinit();
 }
 #endif
@@ -7083,7 +7091,7 @@ void DojoController::Init() {
     M2C_FIELD(this, f64 *, 0x378) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x380) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk2C0.Init(EnemySpawnPool_Action, 0);
-    this->unk310.Init(EnemySpawnPool_Action, 0);
+    ((SpawnerObject *) &this->unk310)->Init(EnemySpawnPool_Action, 0);
     var_r28_14586 = 0;
     var_r30_14587 = 0;
     do {
@@ -7230,7 +7238,7 @@ DojoController::DojoController() {
     this->unk2C0.unk40.Init();
     M2C_FIELD(this, M2C_UNK **, 0x310) = &__vt;
     this->unk310.unk38 = 0.0f;
-    this->unk310.unk38.Init();
+    ((EventMessage *) &this->unk310.unk38)->Init();
     this->unk310.unk3C.unk0 = 0;
     this->unk310.unk3C.Init();
     M2C_FIELD(this, s32 *, 0x360) = -1;

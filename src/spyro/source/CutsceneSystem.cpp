@@ -13,6 +13,7 @@
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/PropGroupVolume.h"
 #include "spyro/source/SpyroEffects.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/UIStringTable.h"
@@ -111,12 +112,12 @@ void CutsceneSystem::NotifyProps(bool arg0) {
         temp_r4_82 = this->unk78;
         sp20 = M2C_FIELD(temp_r4_82, f64 *, 0xB0);
         sp28 = M2C_FIELD(temp_r4_82, f64 *, 0xB8);
-        sp20.CullGroups(*temp_r4_82);
+        ((PropGroupVolume *) &sp20)->CullGroups(*temp_r4_82);
     } else {
         temp_r4_98 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), MKVector3 **, 8);
         sp10 = M2C_FIELD(temp_r4_98, f64 *, 0x30);
         sp18 = M2C_FIELD(temp_r4_98, f64 *, 0x38);
-        sp10.CullGroups(*temp_r4_98);
+        ((PropGroupVolume *) &sp10)->CullGroups(*temp_r4_98);
     }
     if (arg0 != 0) {
         spC = 0;
@@ -305,7 +306,7 @@ void CutsceneSystem::Abort(bool arg0) {
         bIgnoreEvent = 1;
         temp_r3_535 = this->unk78;
         if ((temp_r3_535 != NULL) && ((s32) this->unk74 != 2)) {
-            temp_r3_535->SkipToEnd(1U);
+            ((KDSynkerPlayer3 *) temp_r3_535)->SkipToEnd(1U);
         }
         MKRumble_Reset();
         bIgnoreEvent = 0;
@@ -332,7 +333,7 @@ void CutsceneSystem::PlayIntro(CutsceneObject &arg0, float arg1) {
         KDSound_SoundDucking_Deinit();
         if ((u8) this->unk68->unk59 != 0) {
             M2C_FIELD(&gb, s8 *, 0x396) = 1;
-            ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->Reset();
+            ((GameGlobals::Fade *) (&gb + 0x30))->Reset();
             Music_Clear();
             if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
                 ((SpyroEffects *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), SpyroEffects *(**)(), 0x3C)()))->ResetFury();
@@ -378,7 +379,7 @@ s32 CutsceneSystem::Play(CutsceneObject &arg0, float arg1) {
         Abort(0U);
         temp_r3_726 = this->unk78;
         var_r29_727 = 0;
-        if (((temp_r3_726 != NULL) && (temp_r3_726->IsPlaying() != 0)) || (((s32) this->unk74 == 2) && (this->unk24.GetState() == (MKHeap *)2))) {
+        if (((temp_r3_726 != NULL) && (((KDSynkerPlayer3 *) temp_r3_726)->IsPlaying() != 0)) || (((s32) this->unk74 == 2) && (this->unk24.GetState() == (MKHeap *)2))) {
             var_r29_727 = 1;
         }
         if (var_r29_727 != 0) {
@@ -474,10 +475,10 @@ void CutsceneSystem::DrawSubtitles() {
         ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(*(gpTranslation_StringArray + (this->unk4 * 4)), 544.0f, 435.2f, &sp30, 8, 1U, 1.0f, 1.0f, NULL, 1U);
     }
     temp_r3_991 = this->unk78;
-    if ((temp_r3_991 != NULL) && (temp_r3_991->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) != 0)) {
+    if ((temp_r3_991 != NULL) && (((KDSynkerPlayer3 *) temp_r3_991)->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) != 0)) {
         ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xE8), 544.0f, 435.2f, &sp30, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
     }
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) == 0) || ((s32) this->unk74 == 1)) {
         if ((s8 *) this->unk80 != NULL) {
             if ((s32) this->unk8C != 5) {
@@ -492,11 +493,11 @@ block_11:
             temp_ret_1043 = this->unk24.GetState();
             if (temp_ret_1043 == (MKHeap *)3) {
                 ErrorMessage_Draw(Str_Printf("Cutscene %s not found. Press <font=font_buttons:0>!</font> to continue.", &this->unk48, M2C_BITWISE(f32, temp_ret_1043)));
-            } else if ((this->unk78->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) == 0)) {
+            } else if ((((KDSynkerPlayer3 *) this->unk78)->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) == 0)) {
                 var_r30_1063 = 0;
 loop_20:
-                if (var_r30_1063 < this->unk78->GetSubTitleCount()) {
-                    if (this->unk78->GetSubTitle(var_r30_1063) != 0) {
+                if (var_r30_1063 < ((KDSynkerPlayer3 *) this->unk78)->GetSubTitleCount()) {
+                    if (((KDSynkerPlayer3 *) this->unk78)->GetSubTitle(var_r30_1063) != 0) {
                         strcat(this->unk7C);
                     }
                     var_r30_1063 += 1;
@@ -552,12 +553,12 @@ void CutsceneSystem::Draw() {
         return;
     }
     temp_r3_1219 = this->unk78;
-    if ((temp_r3_1219 == NULL) || (temp_r3_1219->IsPlaying() == 0)) {
+    if ((temp_r3_1219 == NULL) || (((KDSynkerPlayer3 *) temp_r3_1219)->IsPlaying() == 0)) {
         if ((this->unk24.GetState() == (MKHeap *)4) || ((u8) this->unkA9 != 0)) {
             MKView_Clear(3, this->unk38, 0.0f, 0U);
         }
     } else {
-        this->unk78->Draw();
+        ((KDSynkerPlayer3 *) this->unk78)->Draw();
     }
 }
 #endif
@@ -652,14 +653,14 @@ void CutsceneSystem::Location::Init(CutsceneSystem *arg1) {
     M2C_FIELD(this, CutsceneSystem **, 0x18) = arg1;
 }
 
-#if 0 // DRAFT: undefined identifier 'IsActive'
+#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::UnloadingDeinit() {
     MKVector3 *temp_r3_1401;
     MKVector3 *temp_r3_1407;
 
     if ((s32) this->unk74 != 2) {
         temp_r3_1401 = this->unk78;
-        if ((temp_r3_1401 != NULL) && (temp_r3_1401->IsActive() != 0)) {
+        if ((temp_r3_1401 != NULL) && (((KDSynkerPlayer3 *) temp_r3_1401)->IsActive() != 0)) {
             temp_r3_1407 = this->unk78;
             M2C_FIELD(temp_r3_1407->unk0, M2C_UNK (**)(MKVector3 *), 0xC)(temp_r3_1407);
         }
@@ -668,7 +669,7 @@ void CutsceneSystem::UnloadingDeinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsActive'
+#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::UnloadingUpdate() {
     CutsceneObject *temp_r0_1462;
     CutsceneObject *temp_r3_1482;
@@ -678,7 +679,7 @@ void CutsceneSystem::UnloadingUpdate() {
     u8 temp_r30_1460;
 
     this->unk98 = this->unk98 + 1;
-    if ((((s32) this->unk74 != 2) && ((this->unk78->IsActive() == 0) || (this->unk78->IsUnloaded() != 0))) || ((temp_r3_1446 = this->unk74, ((temp_r3_1446 == 2) != 0)) && ((s32) this->unk98 >= 5))) {
+    if ((((s32) this->unk74 != 2) && ((((KDSynkerPlayer3 *) this->unk78)->IsActive() == 0) || (((KDSynkerPlayer3 *) this->unk78)->IsUnloaded() != 0))) || ((temp_r3_1446 = this->unk74, ((temp_r3_1446 == 2) != 0)) && ((s32) this->unk98 >= 5))) {
         temp_r30_1460 = this->unk74 == 1;
         this->unk24.SetState(this, 0, 0U);
         temp_r0_1462 = this->unk6C;
@@ -707,12 +708,12 @@ void CutsceneSystem::UnloadingUpdate() {
             this->unk70 = 0;
         }
     } else if (temp_r3_1446 != 2) {
-        this->unk78->Update();
+        ((KDSynkerPlayer3 *) this->unk78)->Update();
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsActive'
+#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::UnloadingInit() {
     MKVector3 *temp_r3_1553;
 
@@ -723,8 +724,8 @@ void CutsceneSystem::UnloadingInit() {
         return;
     }
     temp_r3_1553 = this->unk78;
-    if ((temp_r3_1553 != NULL) && (temp_r3_1553->IsActive() != 0)) {
-        this->unk78->Unload();
+    if ((temp_r3_1553 != NULL) && (((KDSynkerPlayer3 *) temp_r3_1553)->IsActive() != 0)) {
+        ((KDSynkerPlayer3 *) this->unk78)->Unload();
     }
 }
 #endif
@@ -801,7 +802,7 @@ void CutsceneSystem::PlayCutsceneDeinit() {
     OnStop();
 }
 
-#if 0 // DRAFT: undefined identifier 'IsAtEnd'
+#if 0 // DRAFT: expression syntax error
 void CutsceneSystem::PlayCutsceneUpdate() {
     f64 sp80;
     f64 sp78;
@@ -865,10 +866,10 @@ void CutsceneSystem::PlayCutsceneUpdate() {
         }
     }
     temp_r3_1782 = this->unk74;
-    if (((temp_r3_1782 != 1) && ((u8) this->unk9F != 0)) || ((temp_r3_1782 != 2) && (this->unk78->IsAtEnd() != 0))) {
+    if (((temp_r3_1782 != 1) && ((u8) this->unk9F != 0)) || ((temp_r3_1782 != 2) && (((KDSynkerPlayer3 *) this->unk78)->IsAtEnd() != 0))) {
         bIgnoreEvent = 1;
         if ((s32) this->unk74 != 2) {
-            this->unk78->SkipToEnd(1U);
+            ((KDSynkerPlayer3 *) this->unk78)->SkipToEnd(1U);
         }
         Console_PurgeDelayedCmds();
         MKRumble_Reset();
@@ -919,8 +920,8 @@ void CutsceneSystem::PlayCutsceneUpdate() {
             M2C_FIELD(this, f64 *, 0x40) = (f64) sp20;
         }
     } else {
-        this->unk78->Update();
-        if ((this->unk78->IsAtEnd() != 0) && (temp_r3_1906 = this->unk68, ((temp_r3_1906 == NULL) == 0))) {
+        ((KDSynkerPlayer3 *) this->unk78)->Update();
+        if ((((KDSynkerPlayer3 *) this->unk78)->IsAtEnd() != 0) && (temp_r3_1906 = this->unk68, ((temp_r3_1906 == NULL) == 0))) {
             this->unkA9 = temp_r3_1906->unk5C;
             this->unkAA = this->unk68->unk5D;
             temp_r4_1915 = this->unk68;
@@ -944,17 +945,16 @@ void CutsceneSystem::PlayCutsceneUpdate() {
             sp40 = (f64) sp10;
             M2C_FIELD(this, f64 *, 0x40) = (f64) sp10;
         }
-        if ((this->unk78->IsPlaying() != 0) && ((s32) this->unk74 == 0)) {
+        if ((((KDSynkerPlayer3 *) this->unk78)->IsPlaying() != 0) && ((s32) this->unk74 == 0)) {
             temp_r4_1953 = this->unk78;
             sp28 = M2C_FIELD(temp_r4_1953, f64 *, 0xB0);
             sp30 = M2C_FIELD(temp_r4_1953, f64 *, 0xB8);
-            sp28.CullGroups(*temp_r4_1953);
+            ((PropGroupVolume *) &sp28)->CullGroups(*temp_r4_1953);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Play'
 void CutsceneSystem::PlayCutsceneInit() {
     s32 spC;
     s32 sp8;
@@ -970,7 +970,7 @@ void CutsceneSystem::PlayCutsceneInit() {
     }
     this->unk9F = 0;
     OnPlay();
-    ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->Reset();
+    ((GameGlobals::Fade *) (&gb + 0x30))->Reset();
     if ((s32) this->unk74 == 0) {
         spC = 0;
         sp8 = 0x402;
@@ -978,24 +978,23 @@ void CutsceneSystem::PlayCutsceneInit() {
     }
     if ((s32) this->unk74 != 2) {
         temp_r3_2015 = this->unk78;
-        temp_r3_2015->Play(M2C_FIELD(temp_r3_2015, s32 *, 0xE8) != 0);
+        ((KDSynkerPlayer3 *) temp_r3_2015)->Play(M2C_FIELD(temp_r3_2015, s32 *, 0xE8) != 0);
         if ((s32) M2C_FIELD(&gb, s32 *, 0x344) != 0) {
-            this->unk78->SetPlaySpeed(4.0f);
+            ((KDSynkerPlayer3 *) this->unk78)->SetPlaySpeed(4.0f);
         }
     }
     bShowLoading = 0;
 }
-#endif
 
 void CutsceneSystem::LoadingDeinit() {
     M2C_FIELD(&gb, s8 *, 0x396) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'Update'
+#if 0 // DRAFT: undefined identifier 'unk24'
 void CutsceneSystem::LoadingUpdate() {
-    this->unk78->Update();
-    if (this->unk78->IsLoading() == 0) {
-        if (this->unk78->IsReadyToPlay() == 0) {
+    ((KDSynkerPlayer3 *) this->unk78)->Update();
+    if (((KDSynkerPlayer3 *) this->unk78)->IsLoading() == 0) {
+        if (((KDSynkerPlayer3 *) this->unk78)->IsReadyToPlay() == 0) {
             return;
         }
         if (((s32) M2C_FIELD(&gb, s32 *, 0x50) != 2) && ((u8) M2C_FIELD(&gb, u8 *, 0x381) == 0)) {
@@ -1051,7 +1050,7 @@ void CutsceneSystem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsActive'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::Deinit() {
     MKHeap *temp_r3_2237;
     MKVector3 *temp_r31_2234;
@@ -1060,18 +1059,18 @@ void CutsceneSystem::Deinit() {
 
     Deactivate();
     M2C_FIELD(&gb, s8 *, 0x396) = 0;
-    var_r3_2200 = this->unk78->IsActive();
+    var_r3_2200 = ((KDSynkerPlayer3 *) this->unk78)->IsActive();
     if ((u8) var_r3_2200 != 0) {
-        if (this->unk78->IsUnloading() == 0) {
+        if (((KDSynkerPlayer3 *) this->unk78)->IsUnloading() == 0) {
             bIgnoreEvent = 1;
-            this->unk78->SkipToEnd(1U);
-            this->unk78->Unload();
+            ((KDSynkerPlayer3 *) this->unk78)->SkipToEnd(1U);
+            ((KDSynkerPlayer3 *) this->unk78)->Unload();
             MKRumble_Reset();
             bIgnoreEvent = 0;
         }
 loop_4:
-        if (this->unk78->IsUnloading() != 0) {
-            this->unk78->Update();
+        if (((KDSynkerPlayer3 *) this->unk78)->IsUnloading() != 0) {
+            ((KDSynkerPlayer3 *) this->unk78)->Update();
             goto loop_4;
         }
         temp_r3_2226 = this->unk78;
@@ -1080,7 +1079,7 @@ loop_4:
     this->unk68 = NULL;
     temp_r31_2234 = this->unk78;
     if (temp_r31_2234 != NULL) {
-        temp_r3_2237 = var_r3_2200->Current();
+        temp_r3_2237 = ((MKHeap *) var_r3_2200)->Current();
         if (temp_r3_2237 != NULL) {
             ((MKHeap *) (temp_r3_2237->Current()))->Free(temp_r31_2234, NULL, 0);
         } else {
@@ -1197,11 +1196,11 @@ void CutsceneSystem::InitModule() {
 
 void GameSynkerPlayer::Deinit() {
     KDSynkerPlayer3::Deinit();
-    this->unk260.Deinit();
+    ((UIStringTable *) &this->unk260)->Deinit();
 }
 
 void GameSynkerPlayer::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) {
-    this->unk260.Init(0x800);
+    ((UIStringTable *) &this->unk260)->Init(0x800);
     KDSynkerPlayer3::Init(arg0, arg1, arg2, arg3);
 }
 

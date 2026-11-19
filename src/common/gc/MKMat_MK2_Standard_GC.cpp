@@ -1056,7 +1056,7 @@ void MKMat_MK2_Standard::UsePass() {
             sp68 = sp6C;
             sp78 = sp7C;
             sp88 = sp8C;
-            sp50.Transpose((Matrix *) &sp50);
+            ((Matrix *) &sp50)->Transpose((Matrix *) &sp50);
             GXLoadTexMtxImm((f32 (*)[4]) &sp50, 0x40U, GX_MTX3x4);
             GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX3x4, GX_TG_POS, 0U, 0U, 0x40U);
             temp_r31_1783->Use();
@@ -1155,7 +1155,7 @@ loop_14:
     }
     if ((MKMaterial *) pOverlay_536 != NULL) {
         gpPreviousMaterial = (MKMat_MK2_Standard *) pOverlay_536;
-        pOverlay_536->UsePass();
+        ((MKMat_MK2_Standard *) pOverlay_536)->UsePass();
         pOverlay_536 = pOverlay_536->unk3C;
         currentInternalPass += 1;
         return 1;

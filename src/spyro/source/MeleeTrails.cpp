@@ -315,7 +315,7 @@ void MeleeTrails::Init() {
     temp_r3_571 = &temp_r3_569->unk4;
     M2C_FIELD(this, MKHeap **, 0xD0) = (MKHeap *) temp_r3_571;
     temp_r3_569->unk4 = 0;
-    temp_r3_574 = temp_r3_571->Current();
+    temp_r3_574 = ((MKHeap *) temp_r3_571)->Current();
     if (temp_r3_574 != NULL) {
         var_r3_581 = ((MKHeap *) (temp_r3_574->Current()))->Alloc(0x9CC, NULL, 0);
     } else {

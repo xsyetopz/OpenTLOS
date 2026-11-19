@@ -1,4 +1,5 @@
 #include "spyro/source/EarthBreathFX.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
@@ -818,7 +819,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
             } else {
                 var_r24_1421 = *(temp_r5_1388 + (temp_r31_1386 * 4));
             }
-            this->unkD0.Init(arg0, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
+            this->unkD0.Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
             return ShootShotgun(arg1, arg2, arg3);
         }
         return 0;
@@ -1347,7 +1348,7 @@ loop_11:
             var_r4_2289 += 4;
             goto loop_11;
         }
-        temp_r3_2316 = var_r3_2291->Current();
+        temp_r3_2316 = ((MKHeap *) var_r3_2291)->Current();
         if (temp_r3_2316 != NULL) {
             ((MKHeap *) (temp_r3_2316->Current()))->Free(var_r31_2290, NULL, 0);
         } else {
@@ -1544,7 +1545,7 @@ void EarthBreathFX::Init() {
     this->unkB8 = NULL;
     this->unkA8 = 0.0f;
     this->unkAC = 0.0f;
-    temp_r3_2627 = temp_r3_2620->Current();
+    temp_r3_2627 = ((MKHeap *) temp_r3_2620)->Current();
     if (temp_r3_2627 != NULL) {
         var_r3_2634 = ((MKHeap *) (temp_r3_2627->Current()))->Alloc(0x28A8, NULL, 0);
     } else {
@@ -1567,8 +1568,8 @@ void EarthBreathFX::Init() {
     M2C_FIELD(temp_r4_2655, MKVector3 ***, 4) = NULL;
     this->unkBC = 0.0f;
     this->unk128 = MKModel_Create("FX0018_EarthShot", NULL, 2, NULL);
-    this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(gMK->CreateProp("FuryFXEarth"));
-    this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(gMK->CreateProp("FuryFXEarth2"));
+    this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth"));
+    this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth2"));
     this->unk128 = 0.0f;
     M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_FIELD(this, MKModel **, 0x140) = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
@@ -1576,7 +1577,7 @@ void EarthBreathFX::Init() {
     this->unk150.unk3C = 0.0f;
     this->unk150.unk38 = 0.0f;
     do {
-        temp_r3_2717 = checked_cast<EarthBombFX *, MKProp>(gMK->CreateProp("EarthBombFX"));
+        temp_r3_2717 = checked_cast<EarthBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBombFX"));
         if (temp_r3_2717 != NULL) {
             M2C_FIELD(temp_r3_2717->__vptr, M2C_UNK (**)(), 0x34)();
         }

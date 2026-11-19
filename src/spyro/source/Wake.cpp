@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "common/Source/MKMaterial.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -228,7 +229,7 @@ loop_41:
                 spD0 = temp_f0_336;
                 sp58 = M2C_FIELD(var_r28_224, f32 *, 0x40) + (f32) spA8;
                 spD8 = (f64) sp58;
-                if (spD0.IsWithin(*((MKVector3 *) &sp8), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
+                if (((KDWaterVolume *) &spD0)->IsWithin(*((MKVector3 *) &sp8), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
                     M2C_FIELD(var_r28_224, f32 *, 0x3C) = sp8;
                     M2C_FIELD(var_r28_224, f32 *, 0x3C) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x3C) + 1.0f);
                 }
@@ -240,7 +241,7 @@ loop_41:
                 sp98 = (f64) sp28;
                 spD8 = (f64) sp28;
                 sp8 = 0.0f;
-                if (spD0.IsWithin(*((MKVector3 *) &sp8), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
+                if (((KDWaterVolume *) &spD0)->IsWithin(*((MKVector3 *) &sp8), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
                     M2C_FIELD(var_r28_224, f32 *, 0x4C) = sp8;
                     M2C_FIELD(var_r28_224, f32 *, 0x4C) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x4C) + 1.0f);
                 }

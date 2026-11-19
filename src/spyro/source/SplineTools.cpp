@@ -144,7 +144,7 @@ void SplitPath::Init(const KDUniformSpline &arg0, int arg1, int arg2) {
     temp_r3_181 = arg0.unk0 % temp_r0_175;
     this->unk4 = (temp_r19_174 / temp_r0_175) + (temp_r3_181 != 0);
     temp_r18_187 = this->unk4 * 0x14;
-    temp_r3_188 = temp_r3_181->Current();
+    temp_r3_188 = ((MKHeap *) temp_r3_181)->Current();
     if (temp_r3_188 != NULL) {
         var_r3_195 = ((MKHeap *) (temp_r3_188->Current()))->Alloc(temp_r18_187, NULL, 0);
     } else {

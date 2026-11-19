@@ -5,8 +5,8 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
-#include "common/Source/MKModel.h"
 #include "spyro/source/KDSound.h"
+#include "common/Source/MKModel.h"
 #include <m2c_macros.h>
 
 extern s32 GS_ElecBossFieldHurtSpyro;
@@ -103,14 +103,12 @@ void ElementalShield::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElementalShield::Message(MKMessage *arg0) {
-    this->unkC4.Message(arg0);
+    ((KDSoundPlayer *) &this->unkC4)->Message(arg0);
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp64'
 void ElementalShield::Update() {
     s8 spC1;
     s8 spC0;
@@ -154,7 +152,7 @@ void ElementalShield::Update() {
     void *temp_r3_410;
 
     sp8 = 1;
-    this->unkC4.Update(this->unkBC, 1U, this->unk90 != 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkC4)->Update(this->unkBC, 1U, this->unk90 != 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unkA0 += 6.0f * gUpdateTimeDelta;
     temp_f1_293 = this->unkA0;
     if (temp_f1_293 >= 6.2831855f) {
@@ -220,7 +218,7 @@ block_29:
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    sp20.GetPos();
+                    ((MKProp *) &sp20)->GetPos();
                     spA0 = sp20;
                     spA8 = sp28;
                 } else {
@@ -264,7 +262,6 @@ block_29:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElementalShield::Init() {
     KDProp::Init();
     this->unk90 = 0;
@@ -279,7 +276,6 @@ void ElementalShield::Init() {
     this->unkBC = GS_ElecBossForceFieldLP;
     this->unkC0 = GS_ElecBossFieldHurtSpyro;
     this->unkB0 = NULL;
-    this->unkC4.Init(0.75f, 0.75f);
+    ((KDSoundFader *) &this->unkC4)->Init(0.75f, 0.75f);
     this->unkA0 = 0.0f;
 }
-#endif

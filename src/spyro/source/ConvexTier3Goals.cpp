@@ -1,6 +1,9 @@
 #include "spyro/source/ConvexTier3Goals.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyGoal_FollowGraph.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
@@ -40,7 +43,7 @@ void ConvexTier3Goal_FlyIdle::Activate() {
     this->unk8 = 0;
     this->unkC->unkAEC = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
 #endif
@@ -213,7 +216,7 @@ void ConvexTier3Goal_Think::AddGoal_FollowSpawnPath() {
         M2C_FIELD(temp_r3_424, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_424, u8 *, 0xB09) | 0x10);
         temp_r3_428 = this->unkC;
         M2C_FIELD(temp_r3_428, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_428, u8 *, 0xB08) | 0x40);
-        this->unkC->unkA7C.Init();
+        ((KDPathIterator *) &this->unkC->unkA7C)->Init();
     }
 }
 #endif
@@ -251,7 +254,7 @@ void ConvexTier3Goal_Think::Arbitrate() {
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             temp_r3_523 = this->unkC;
             var_r31_524 = 0;
-            if (((u8) M2C_FIELD(temp_r3_523, u8 *, 0x8B8) == 2) || (temp_r3_523->unk870.unk30.Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r3_523, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_523->unk870.unk30)->Get() != NULL)) {
                 var_r31_524 = 1;
             }
             if (var_r31_524 != 0) {
@@ -397,7 +400,7 @@ void ConvexTier3Goal_Think::Init(Enemy *arg0) {
     if ((Enemy *) this->unkC != NULL) {
         this->unk9 = 1;
     }
-    this->unk24->Init(arg0);
+    ((ConvexTier3Goal_PatrolMode *) this->unk24)->Init(arg0);
     temp_r4_828 = this->unk28;
     M2C_FIELD(temp_r4_828, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_828, Enemy **, 0xC) = arg0;
@@ -405,7 +408,7 @@ void ConvexTier3Goal_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_828, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_828, s8 *, 9) = 1;
     }
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_FollowGraph *) this->unk2C)->Init(arg0);
     this->unk38 &= ~0x80;
     this->unk38 &= ~0x40;
     this->unk30 = 0xA;

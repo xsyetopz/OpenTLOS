@@ -89,7 +89,7 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
     sp70 = M2C_BITWISE(f64, sp50);
     sp78 = (f64) sp50.unk8;
     sp8 = 0.0f;
-    sp40.GetMeasure(temp_f30_142, arg1 + 0x64, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp40)->GetMeasure(temp_f30_142, arg1 + 0x64, KDSpline_PositionMixer);
     sp50.unk10 = sp40;
     sp68 = sp48;
     temp_f0_169 = sp70 + M2C_BITWISE(f64, sp50.unk10);
@@ -251,15 +251,15 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp290 = M2C_BITWISE(f64, sp1F0);
     sp298 = (f64) sp1F0.unk8;
     sp24 = 0.0f;
-    sp1E0.GetMeasure(temp_f29_225, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1E0)->GetMeasure(temp_f29_225, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp280 = sp1E0;
     sp288 = sp1E8;
     sp20 = 0.0f;
-    sp1D0.GetMeasure(var_f28_228, &this->unk50, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1D0)->GetMeasure(var_f28_228, &this->unk50, KDSpline_PositionMixer);
     sp270 = sp1D0;
     sp278 = sp1D8;
     sp1C = 0.0f;
-    sp1C0.GetMeasure(var_f28_228, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1C0)->GetMeasure(var_f28_228, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp260 = sp1C0;
     sp268 = sp1C8;
     sp100 = sp290 + sp280;
@@ -458,9 +458,9 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp308 = (f32) sp238;
     sp30C = 0.0f;
     sp2A0.SetRotateAroundAxis(*((MKVector3 *) &sp300), 1.5707964f);
-    sp2E0.Multiply3x3((Matrix *) &sp2E0, &sp2A0);
+    ((Matrix *) &sp2E0)->Multiply3x3((Matrix *) &sp2E0, &sp2A0);
     sp2A0.SetRotateAroundAxis(*((MKVector3 *) &sp2F0), arg1->unk8);
-    sp2E0.Multiply3x3((Matrix *) &sp2E0, &sp2A0);
+    ((Matrix *) &sp2E0)->Multiply3x3((Matrix *) &sp2E0, &sp2A0);
     MKModel_SetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4), *((Matrix *) &sp2E0));
     sp1F0.unk10 = (f64) sp310;
     sp208 = (f64) sp318;
@@ -559,7 +559,7 @@ s32 ExplosiveBarrelPath::SpawnBarrel(MKProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void ExplosiveBarrelPath::CalcStandPosAndDir() {
     MKCollisionResult sp190;
     f64 sp188;
@@ -628,7 +628,7 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     sp14 = 0.0f;
     sp150.GetMeasure(0.0f, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp18 = 0.0f;
-    sp150.unk10.GetMeasure(0.0f, &this->unk50, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp150.unk10)->GetMeasure(0.0f, &this->unk50, KDSpline_PositionMixer);
     temp_f0_962 = M2C_BITWISE(f64, sp150.unk10) + M2C_BITWISE(f64, sp150);
     sp30 = temp_f0_962;
     sp170 = temp_f0_962;
@@ -668,7 +668,7 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     spC = 0.0f;
     spC0.GetMeasure(0.01f, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp10 = 0.0f;
-    spC0.unk10.GetMeasure(0.01f, &this->unk50, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spC0.unk10)->GetMeasure(0.01f, &this->unk50, KDSpline_PositionMixer);
     temp_f0_1061 = M2C_BITWISE(f64, spC0.unk10) + M2C_BITWISE(f64, spC0);
     sp20 = temp_f0_1061;
     spE0 = temp_f0_1061;
@@ -1096,7 +1096,7 @@ void ExplosiveBarrelPath::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
 s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1125,7 +1125,7 @@ s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
         var_r30_1936 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1937 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1937 != 0) {
-            this->unk50.Init(temp_r3_1937, 0U);
+            ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1937, 0U);
 loop_9:
             if (var_r30_1936 != NULL) {
                 sp58.GetVector3((s32) var_r30_1936);
@@ -1147,7 +1147,7 @@ loop_9:
                     this->unk1A0 = M2C_BITWISE(f64, sp38);
                     this->unk1A8 = (f64) sp38.unk8;
                 }
-                this->unk50.AddNode(*((MKVector3 *) &sp78));
+                ((KDUniformSpline *) &this->unk50)->AddNode(*((MKVector3 *) &sp78));
                 var_r30_1936 = var_r30_1936->unkC->GetNextLine(var_r30_1936);
                 goto loop_9;
             }
@@ -1158,7 +1158,7 @@ loop_9:
         var_r30_2010 = arg0->unkC->GetSubLine(arg0);
         temp_r3_2011 = arg0->GetNmbrOfSubLines();
         if (temp_r3_2011 != 0) {
-            this->unk50.unk14.Init(temp_r3_2011, 0U);
+            ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_2011, 0U);
 loop_18:
             if (var_r30_2010 != NULL) {
                 sp28.GetVector3((s32) var_r30_2010);
@@ -1180,7 +1180,7 @@ loop_18:
                     this->unk1A0 = M2C_BITWISE(f64, sp8);
                     this->unk1A8 = (f64) sp8.unk8;
                 }
-                this->unk50.unk14.AddNode(*((MKVector3 *) &sp68));
+                ((KDUniformSpline *) &this->unk50.unk14)->AddNode(*((MKVector3 *) &sp68));
                 var_r30_2010 = var_r30_2010->unkC->GetNextLine(var_r30_2010);
                 goto loop_18;
             }
@@ -1195,7 +1195,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Deinit'
+#if 0 // DRAFT: illegal type
 void ExplosiveBarrelPath::Deinit() {
     s32 var_r29_2170;
     s32 var_r31_2171;
@@ -1203,8 +1203,8 @@ void ExplosiveBarrelPath::Deinit() {
     void *temp_r3_2174;
 
     MKProp::Deinit();
-    this->unk50.Deinit();
-    this->unk50.unk14.Deinit();
+    ((KDUniformSpline *) &this->unk50)->Deinit();
+    ((KDUniformSpline *) &this->unk50.unk14)->Deinit();
     var_r29_2170 = 0;
     var_r31_2171 = 0;
     do {

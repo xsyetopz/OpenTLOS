@@ -1,5 +1,6 @@
 #include "spyro/source/TrainTrack.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
@@ -98,7 +99,7 @@ loop_4:
         var_r27_54 += 4;
         goto loop_6;
     }
-    temp_ret_90 = 0x31->PropResolver_Resolve((s32) (u32) (u64) temp_ret_85);
+    temp_ret_90 = ((MKSceneManager *)0x31)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_85);
     var_f1_90 = M2C_BITWISE(f32, temp_ret_90);
     temp_r3_90 = temp_ret_90;
     sp18 = -1;
@@ -170,7 +171,7 @@ loop_30:
         if (var_r25_280 < var_r29_52) {
             temp_r28_284 = *(&spD0 + var_r27_281);
             gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), "r_Steam_L0", &spC);
-            sp50.GetMeasure(1.0f, (Matrix *) &this->unk74);
+            ((KDSpline *) &sp50)->GetMeasure(1.0f, (Matrix *) &this->unk74);
             sp90 = sp50;
             sp98 = sp58;
             MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r28_284, MKModel **, 4), spC, (MKVector3 *) &sp70.unk10);
@@ -205,7 +206,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp58'
 void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     f64 sp78;
     f64 sp70;
@@ -229,10 +230,10 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     s32 temp_r3_482;
     s32 var_r0_492;
 
-    sp50.GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp50)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp70 = sp50;
     sp78 = sp58;
-    sp40.GetTrackPos(arg0, 100.0f + arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp40)->GetTrackPos(arg0, 100.0f + arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp60 = sp40;
     sp68 = sp48;
     sp10 = sp70 - sp60;
@@ -286,7 +287,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     TrainTrack sp40;
     f32 sp30;
@@ -311,7 +312,7 @@ void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     s32 temp_r3_620;
     s32 var_r0_630;
 
-    sp30.GetTrackZAxis(arg0, arg1);
+    ((TrainTrack *) &sp30)->GetTrackZAxis(arg0, arg1);
     sp40.GetTrackXAxis(arg0, arg1);
     temp_f4_559 = M2C_BITWISE(f32, sp40.unk8);
     temp_f7_562 = M2C_BITWISE(f32, sp40.unk4);
@@ -371,7 +372,7 @@ void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp58'
 void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     f64 sp78;
     f64 sp70;
@@ -395,10 +396,10 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     s32 temp_r3_761;
     s32 var_r0_771;
 
-    sp50.GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp50)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp70 = sp50;
     sp78 = sp58;
-    sp40.GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp40)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp60 = sp40;
     sp68 = sp48;
     sp10 = sp70 - sp60;
@@ -501,7 +502,7 @@ block_13:
             sp78.GetMeasure(var_f30_844, temp_r31_868 + 0x4C);
             M2C_FIELD(arg0, f64 *, 0xA0) = M2C_BITWISE(f64, sp78);
             M2C_FIELD(arg0, f64 *, 0xA8) = (f64) sp78.unk8;
-            sp68.GetMeasure(var_f30_844, temp_r31_868 + 0x60);
+            ((KDSpline *) &sp68)->GetMeasure(var_f30_844, temp_r31_868 + 0x60);
             M2C_FIELD(arg0, f64 *, 0xB0) = sp68;
             M2C_FIELD(arg0, f64 *, 0xB8) = sp70;
             temp_f0_890 = M2C_FIELD(arg0, f64 *, 0xA0) + M2C_FIELD(arg0, f64 *, 0xB0);
@@ -517,7 +518,7 @@ block_13:
             M2C_FIELD(arg0, f64 *, 0xC8) = (f64) sp20;
         }
     } else {
-        sp28.unk10.GetMeasure(var_f30_844, arg0 + (temp_r4_840 + 0x4C));
+        ((KDSpline *) &sp28.unk10)->GetMeasure(var_f30_844, arg0 + (temp_r4_840 + 0x4C));
         M2C_FIELD(arg0, f64 *, 0xC0) = M2C_BITWISE(f64, sp28.unk10);
         M2C_FIELD(arg0, f64 *, 0xC8) = sp40;
     }

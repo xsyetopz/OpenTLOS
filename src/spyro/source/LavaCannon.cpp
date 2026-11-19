@@ -11,6 +11,7 @@
 #include "spyro/source/AnimUtils.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/Projectile.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -218,7 +219,7 @@ void LavaCannon::Reset() {
     M2C_FIELD(this, s8 *, 0x264) = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void LavaCannon::Draw() {
     Matrix sp110;
     Matrix spD0;
@@ -248,7 +249,7 @@ void LavaCannon::Draw() {
     sp90.SetRotationPitch(M2C_FIELD(this, f32 *, 0x248));
     sp110.SetIdentity();
     temp_r30_545 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp70.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    ((Animation *) &sp70)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
     sp20 = -sp70;
     sp24 = -sp74;
     sp28 = -sp78;
@@ -257,7 +258,7 @@ void LavaCannon::Draw() {
     sp110.Translate(&sp110, *((MKVector3 *) &sp80));
     sp110.Multiply(&sp110, &sp90);
     temp_r30_576 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp60.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    ((Animation *) &sp60)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
     sp110.Translate(&sp110, *((MKVector3 *) &sp60));
     temp_r30_590 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, &sp110, (AnimationMatrixPosition) 2, 0U);
@@ -265,7 +266,7 @@ void LavaCannon::Draw() {
     sp90.SetRotationYaw(this->unk24C);
     spD0.SetIdentity();
     temp_r30_608 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp40.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    ((Animation *) &sp40)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
     sp10 = -sp40;
     sp14 = -sp44;
     sp18 = -sp48;
@@ -274,7 +275,7 @@ void LavaCannon::Draw() {
     spD0.Translate(&spD0, *((MKVector3 *) &sp50));
     spD0.Multiply(&spD0, &sp90);
     temp_r30_639 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    ((Animation *) &sp30)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
     spD0.Translate(&spD0, *((MKVector3 *) &sp30));
     temp_r30_653 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, &spD0, (AnimationMatrixPosition) 2, 0U);
@@ -425,7 +426,7 @@ void LavaCannon::Update() {
             }
             break;
         }
-        this->unk1F8.Update(this->unk80);
+        ((AnimEventManager *) &this->unk1F8)->Update(this->unk80);
         if (M2C_BITWISE(s32, this->unk1F8.unk4) & 1) {
             temp_r3_968 = this->unk230;
             temp_cr0_eq_969 = M2C_BITWISE(u32, temp_r3_968) == 0U;
@@ -433,7 +434,7 @@ void LavaCannon::Update() {
                 if (temp_cr0_eq_969 == 0) {
                     M2C_FIELD(temp_r3_968, s32 *, 0x130) = 0;
                 }
-                this->unk230 = M2C_BITWISE(f32, 8->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
+                this->unk230 = M2C_BITWISE(f32, ((Projectile *)8)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
                 temp_r3_978 = this->unk230;
                 if (M2C_BITWISE(u32, temp_r3_978) != 0U) {
                     M2C_FIELD(M2C_FIELD(temp_r3_978, void **, 0x44), M2C_UNK (**)(f64 *, AnimEventManager *, LavaCannon *, M2C_UNK, M2C_UNK), 0x48)(&this->unk1E8, &this->unk208, this, 0, 0);
@@ -469,10 +470,10 @@ void LavaCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: undefined identifier 'P20LavaCannonDescriptor'
 void LavaCannon::Resolve() {
     Shatterable::Resolve();
-    this->unk1F8.Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
+    ((AnimEventManager *) &this->unk1F8)->Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->EnableCustomMatrices(1U);
 }
 #endif
@@ -566,7 +567,7 @@ void LavaCannonDescriptor::Resolve() {
     this->unk1A4.Init(&this->unk1AC, 2, (MKAnimScript *) this->unk34);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void LavaCannonDescriptor::LoadDone() {
     s8 *temp_r30_1378;
     s8 *temp_r30_1398;
@@ -583,43 +584,43 @@ void LavaCannonDescriptor::LoadDone() {
 
     ShatterableDescriptor::LoadDone();
     temp_r30_1378 = this->unk34;
-    if (temp_r30_1378->Exists("idle") != 0) {
-        var_r3_1390 = temp_r30_1378->GetAnim("idle");
+    if (((MKAnimScript *) temp_r30_1378)->Exists("idle") != 0) {
+        var_r3_1390 = ((MKAnimScript *) temp_r30_1378)->GetAnim("idle");
     } else {
         var_r3_1390 = NULL;
     }
     this->unk16C = (s32) var_r3_1390;
     temp_r30_1398 = this->unk34;
-    if (temp_r30_1398->Exists("idle") != 0) {
-        var_r3_1408 = temp_r30_1398->GetAnim("idle");
+    if (((MKAnimScript *) temp_r30_1398)->Exists("idle") != 0) {
+        var_r3_1408 = ((MKAnimScript *) temp_r30_1398)->GetAnim("idle");
     } else {
         var_r3_1408 = NULL;
     }
     this->unk170 = (s32) var_r3_1408;
     temp_r30_1416 = this->unk34;
-    if (temp_r30_1416->Exists("idle") != 0) {
-        var_r3_1426 = temp_r30_1416->GetAnim("idle");
+    if (((MKAnimScript *) temp_r30_1416)->Exists("idle") != 0) {
+        var_r3_1426 = ((MKAnimScript *) temp_r30_1416)->GetAnim("idle");
     } else {
         var_r3_1426 = NULL;
     }
     this->unk174 = (s32) var_r3_1426;
     temp_r30_1434 = this->unk34;
-    if (temp_r30_1434->Exists("firing") != 0) {
-        var_r3_1444 = temp_r30_1434->GetAnim("firing");
+    if (((MKAnimScript *) temp_r30_1434)->Exists("firing") != 0) {
+        var_r3_1444 = ((MKAnimScript *) temp_r30_1434)->GetAnim("firing");
     } else {
         var_r3_1444 = NULL;
     }
     this->unk178 = (s32) var_r3_1444;
     temp_r30_1452 = this->unk34;
-    if (temp_r30_1452->Exists("exploding") != 0) {
-        var_r3_1462 = temp_r30_1452->GetAnim("exploding");
+    if (((MKAnimScript *) temp_r30_1452)->Exists("exploding") != 0) {
+        var_r3_1462 = ((MKAnimScript *) temp_r30_1452)->GetAnim("exploding");
     } else {
         var_r3_1462 = NULL;
     }
     this->unk17C = (s32) var_r3_1462;
     temp_r30_1470 = this->unk34;
-    if (temp_r30_1470->Exists("idle") != 0) {
-        var_r3_1480 = temp_r30_1470->GetAnim("idle");
+    if (((MKAnimScript *) temp_r30_1470)->Exists("idle") != 0) {
+        var_r3_1480 = ((MKAnimScript *) temp_r30_1470)->GetAnim("idle");
     } else {
         var_r3_1480 = NULL;
     }

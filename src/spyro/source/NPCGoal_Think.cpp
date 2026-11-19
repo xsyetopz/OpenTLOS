@@ -1,6 +1,8 @@
 #include "spyro/source/NPCGoal_Think.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/MoleTether.h"
 #include <m2c_macros.h>
 
@@ -59,7 +61,7 @@ void NPCGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void NPCGoal_Think::Arbitrate() {
     MoleTether *temp_r3_162;
     s32 temp_r3_154;
@@ -70,7 +72,7 @@ void NPCGoal_Think::Arbitrate() {
         AddGoal_Respawn();
         return;
     }
-    if (temp_r4_143->WasHit() != 0) {
+    if (((Enemy *) temp_r4_143)->WasHit() != 0) {
         temp_r3_154 = this->unkC;
         M2C_FIELD(temp_r3_154, s32 *, 0x9D8) = 0;
         M2C_FIELD(temp_r3_154, s32 *, 0x9D4) = 0;
@@ -93,11 +95,11 @@ void NPCGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 NPCGoal_Think::Update() {
     s32 temp_r3_231;
 
-    if (this->unkC->WasHit() != 0) {
+    if (((Enemy *) this->unkC)->WasHit() != 0) {
         this->unk8 = 1;
     }
     ActivateIfInactive();
@@ -269,8 +271,8 @@ void NPCGoal_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_543, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_543, s8 *, 9) = 1;
     }
-    this->unk28->Init(arg0);
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk28)->Init(arg0);
+    ((EnemyGoal_Death *) this->unk2C)->Init(arg0);
     temp_r4_560 = this->unk30;
     M2C_FIELD(temp_r4_560, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_560, Enemy **, 0xC) = arg0;

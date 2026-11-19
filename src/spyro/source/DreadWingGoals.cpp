@@ -1,4 +1,5 @@
 #include "spyro/source/DreadWingGoals.h"
+#include "spyro/source/Character.h"
 #include "spyro/source/Enemies_DreadWing.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
@@ -21,7 +22,7 @@ u8 DreadWingGoal_Drop::Update() {
     ActivateIfInactive();
     temp_r30_42 = this->unkC;
     var_r31_43 = 0;
-    if (temp_r30_42->HasAnimFinished() != 0) {
+    if (((Character *) temp_r30_42)->HasAnimFinished() != 0) {
         temp_r4_48 = temp_r30_42->unkA38;
         if ((temp_r4_48 != NULL) && ((s8 *) temp_r4_48->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r30_42, void **, 0x630), u32 *, 0x20))) {
             var_r31_43 = 1;

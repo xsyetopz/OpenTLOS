@@ -1,21 +1,27 @@
 #include "spyro/source/ElementalWall.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CrashFirePS.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SplineProp.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -66,16 +72,16 @@ void ElementalWall::StateEWOffExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWOffUpdate() {
     if (this->unk124 >= this->unk120) {
-        this->unkE0.SetState(this, 3, 0U);
+        ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
         return;
     }
     if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, this->unkC) != 0) {
         EmitParticles(this->unk124 / this->unk120, 1.0f);
     }
-    this->unk130.SetBeginEndTimes(this->unk124 / this->unk120, 1.0f);
+    ((KDSound_SoundWall *) &this->unk130)->SetBeginEndTimes(this->unk124 / this->unk120, 1.0f);
     this->unk124 += gUpdateTimeDelta;
 }
 #endif
@@ -88,17 +94,17 @@ void ElementalWall::StateEWTurningOffExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWTurningOffUpdate() {
     if (this->unk124 >= this->unk120) {
         this->unk10C = 0.0f;
-        this->unkE0.SetState(this, 3, 0U);
+        ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
         return;
     }
     if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, this->unkC) != 0) {
         EmitParticles(this->unk124 / this->unk120, 1.0f);
     }
-    this->unk130.SetBeginEndTimes(this->unk124 / this->unk120, 1.0f);
+    ((KDSound_SoundWall *) &this->unk130)->SetBeginEndTimes(this->unk124 / this->unk120, 1.0f);
     this->unk10C = this->unk110 * (1.0f - (this->unk124 / this->unk120));
     this->unk124 += gUpdateTimeDelta;
 }
@@ -112,7 +118,7 @@ void ElementalWall::StateEWOnExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElementalWall::StateEWOnUpdate() {
     s8 sp161;
     s8 sp160;
@@ -190,7 +196,7 @@ void ElementalWall::StateEWOnUpdate() {
     if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, this->unkC) != 0) {
         EmitParticles(0.0f, 1.0f);
     }
-    this->unk130.SetBeginEndTimes(0.0f, 1.0f);
+    ((KDSound_SoundWall *) &this->unk130)->SetBeginEndTimes(0.0f, 1.0f);
     this->unk124 += gUpdateTimeDelta;
     if ((u8) this->unk128 == 0) {
         var_r30_259 = 0;
@@ -280,7 +286,7 @@ void ElementalWall::StateEWOnUpdate() {
             sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp160 = 0;
             if (this != NULL) {
-                sp20.GetPos();
+                ((MKProp *) &sp20)->GetPos();
                 sp140 = sp20;
                 sp148 = sp28;
             } else {
@@ -314,7 +320,7 @@ void ElementalWall::StateEWOnUpdate() {
                 spD8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp108 = 0;
                 if (this != NULL) {
-                    sp10.GetPos();
+                    ((MKProp *) &sp10)->GetPos();
                     spE8 = sp10;
                     spF0 = sp18;
                 } else {
@@ -360,17 +366,17 @@ void ElementalWall::StateEWTurningOnExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalWall::StateEWTurningOnUpdate() {
     if (this->unk124 >= this->unk120) {
         this->unk10C = this->unk110;
-        this->unkE0.SetState(this, 1, 0U);
+        ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 1, 0U);
         return;
     }
     if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, this->unkC) != 0) {
         EmitParticles(0.0f, this->unk124 / this->unk120);
     }
-    this->unk130.SetBeginEndTimes(0.0f, this->unk124 / this->unk120);
+    ((KDSound_SoundWall *) &this->unk130)->SetBeginEndTimes(0.0f, this->unk124 / this->unk120);
     this->unk10C = this->unk110 * (this->unk124 / this->unk120);
     this->unk124 += gUpdateTimeDelta;
 }
@@ -449,7 +455,7 @@ loop_3:
         if ((f32) var_r26_867 < (1.5f * (f32) this->unk104)) {
             temp_f1_874 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            spC8.GetMeasure(temp_f1_874, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &spC8)->GetMeasure(temp_f1_874, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = spC8;
             sp120 = spD0;
             KDRand_UnitVectorXZ();
@@ -465,7 +471,7 @@ loop_3:
             gb.EmitSmallRocks(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp18);
             temp_f1_920 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            sp98.GetMeasure(temp_f1_920, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp98)->GetMeasure(temp_f1_920, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = sp98;
             sp120 = spA0;
             KDRand_UnitVectorXZ();
@@ -485,7 +491,7 @@ loop_3:
             sp68 = (f64) sp58;
             sp70 = (f64) sp60;
             sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp14, *((MKVector4 *) &sp68), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp14, *((MKVector4 *) &sp68), 0.0f);
             var_r26_867 += 1;
             goto loop_3;
         }
@@ -538,7 +544,7 @@ loop_8:
     if (var_r28_1110 < (s32) ((s32) this->unk104 / 2)) {
         temp_f1_1116 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp40.GetMeasure(temp_f1_1116, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_f1_1116, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = sp40;
         sp78 = sp48;
         KDRand_UnitVector();
@@ -611,13 +617,13 @@ loop_3:
             sp88.unk10 = sp18;
             sp80 = (f64) sp20;
             spA0 = (f64) sp20;
-            gb.unk230->Emit(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+            ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
             var_r29_1232 += 1;
             goto loop_3;
         }
         temp_f1_1292 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp58.GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp58)->GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         spA8 = sp58;
         spB0 = sp60;
         unkspAC += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
@@ -631,7 +637,7 @@ loop_3:
         sp38 = (f64) sp28;
         sp40 = (f64) sp30;
         sp10 = 0.1f * (0.01f * this->unk10C);
-        gb.unk94->Trigger(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), sp10, lit_996, (MKVector4) &sp38);
+        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), sp10, lit_996, (MKVector4) &sp38);
         this->unkFC = gb.unk30C + 0.05f;
     }
 }
@@ -702,7 +708,7 @@ loop_3:
         if (var_r27_1475 < (s32) this->unk104) {
             temp_f1_1481 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            spC0.GetMeasure(temp_f1_1481, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &spC0)->GetMeasure(temp_f1_1481, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = spC0;
             sp118 = spC8;
             KDRand_UnitVectorXZ();
@@ -715,10 +721,10 @@ loop_3:
             spB8 = (f64) sp38;
             sp104 = MKRand_Float(&gViewSeed, 0.5f * temp_f2_1508, temp_f2_1508);
             sp18 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-            gb.unk68->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp18);
+            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp18);
             temp_f1_1526 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            sp90.GetMeasure(temp_f1_1526, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp90)->GetMeasure(temp_f1_1526, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = sp90;
             sp118 = sp98;
             KDRand_UnitVectorXZ();
@@ -738,7 +744,7 @@ loop_3:
             sp60 = (f64) sp50;
             sp68 = (f64) sp58;
             sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp14, *((MKVector4 *) &sp60), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp14, *((MKVector4 *) &sp60), 0.0f);
             var_r27_1475 += 1;
             goto loop_3;
         }
@@ -747,11 +753,11 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::EmitParticles(float arg0, float arg1) {
     s32 temp_r0_1629;
 
-    if (this->unkE0.GetState() != 3) {
+    if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() != 3) {
         temp_r0_1629 = this->unk100;
         switch (temp_r0_1629) {                     /* irregular */
         case 0:
@@ -913,7 +919,7 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
 loop_61:
     if (var_r27_1790 < (s32) (var_r28_1748 + 1)) {
         if (var_r27_1790 == var_r28_1748) {
-            sp1A8.GetPos();
+            ((MKProp *) &sp1A8)->GetPos();
             var_f1_1801 = 1.0f;
             if (arg1 < var_f1_1801) {
                 var_f1_1801 = arg1;
@@ -926,7 +932,7 @@ loop_61:
             sp1B8.unk18 = (f64) sp60;
             sp210 = (f64) sp60;
         } else {
-            sp178.GetPos();
+            ((MKProp *) &sp178)->GetPos();
             var_f1_1838 = ((f32) var_r27_1790 * this->unk114) + arg0;
             if (var_f1_1838 < 1.0f) {
 
@@ -941,7 +947,7 @@ loop_61:
             sp188.unk18 = (f64) sp50;
             sp210 = (f64) sp50;
         }
-        sp168.GetVelocity((f32) var_r27_1790 * this->unk114);
+        ((KDSplinePathSegment *) &sp168)->GetVelocity((f32) var_r27_1790 * this->unk114);
         sp1B8.unk30.unk10 = sp168;
         temp_f1_1877 = M2C_BITWISE(f32, sp1B8.unk30.unk10);
         temp_f2_1878 = M2C_BITWISE(f32, sp1B8.unk44);
@@ -1252,7 +1258,7 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
 loop_61:
     if (var_r27_2382 < (s32) (var_r28_2340 + 1)) {
         if (var_r27_2382 == var_r28_2340) {
-            sp1A8.GetPos();
+            ((MKProp *) &sp1A8)->GetPos();
             var_f1_2393 = 1.0f;
             if (arg1 < var_f1_2393) {
                 var_f1_2393 = arg1;
@@ -1265,7 +1271,7 @@ loop_61:
             sp1B8.unk18 = (f64) sp60;
             sp210 = (f64) sp60;
         } else {
-            sp178.GetPos();
+            ((MKProp *) &sp178)->GetPos();
             var_f1_2430 = ((f32) var_r27_2382 * this->unk114) + arg0;
             if (var_f1_2430 < 1.0f) {
 
@@ -1280,7 +1286,7 @@ loop_61:
             sp188.unk18 = (f64) sp50;
             sp210 = (f64) sp50;
         }
-        sp168.GetVelocity((f32) var_r27_2382 * this->unk114);
+        ((KDSplinePathSegment *) &sp168)->GetVelocity((f32) var_r27_2382 * this->unk114);
         sp1B8.unk30.unk10 = sp168;
         temp_f1_2469 = M2C_BITWISE(f32, sp1B8.unk30.unk10);
         temp_f2_2470 = M2C_BITWISE(f32, sp1B8.unk44);
@@ -1505,8 +1511,8 @@ loop_7:
         temp_r3_3095 = this->unk104;
         if (var_r31_2925 < (s32) (temp_r3_3095 + 1)) {
             if ((var_r31_2925 == 0) || (var_r31_2925 == temp_r3_3095)) {
-                spA0.unk40.GetPos();
-                spF0.GetPosition((f32) var_r31_2925 * this->unk114);
+                ((MKProp *) &spA0.unk40)->GetPos();
+                ((KDSplinePathSegment *) &spF0)->GetPosition((f32) var_r31_2925 * this->unk114);
                 sp30 = spF0 - M2C_BITWISE(f64, spA0.unk40);
                 sp38 = spF8 - spA0.unk48;
                 sp110 = sp30;
@@ -1518,7 +1524,7 @@ loop_7:
                 KDRand_UnitVector();
                 sp90.operator*(20.0f);
                 spA0.GetPos();
-                spA0.unk10.GetPosition((f32) var_r31_2925 * this->unk114);
+                ((KDSplinePathSegment *) &spA0.unk10)->GetPosition((f32) var_r31_2925 * this->unk114);
                 temp_f0_3002 = spA0.unk10 - M2C_BITWISE(f64, spA0);
                 sp10 = temp_f0_3002;
                 spA0.unk20 = temp_f0_3002;
@@ -1793,7 +1799,7 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
 loop_61:
     if (var_r25_3254 < (s32) (var_r27_3211 + 1)) {
         if (var_r25_3254 == var_r27_3211) {
-            sp360.GetPos();
+            ((MKProp *) &sp360)->GetPos();
             var_f1_3265 = 1.0f;
             if (arg1 < var_f1_3265) {
                 var_f1_3265 = arg1;
@@ -1806,7 +1812,7 @@ loop_61:
             sp370.unk18 = (f64) spB8;
             sp3C8 = (f64) spB8;
         } else {
-            sp330.GetPos();
+            ((MKProp *) &sp330)->GetPos();
             var_f1_3302 = ((f32) var_r25_3254 * this->unk114) + arg0;
             if (var_f1_3302 < 1.0f) {
 
@@ -1821,7 +1827,7 @@ loop_61:
             sp340.unk18 = (f64) spA8;
             sp3C8 = (f64) spA8;
         }
-        sp320.GetVelocity((f32) var_r25_3254 * this->unk114);
+        ((KDSplinePathSegment *) &sp320)->GetVelocity((f32) var_r25_3254 * this->unk114);
         sp370.unk30.unk10 = sp320;
         temp_f1_3341 = M2C_BITWISE(f32, sp370.unk30.unk10);
         temp_f2_3342 = M2C_BITWISE(f32, sp370.unk44);
@@ -1998,7 +2004,7 @@ loop_61:
 loop_117:
     if (var_r26_3712 < (s32) (var_r27_3211 + 1)) {
         if (var_r26_3712 == var_r27_3211) {
-            sp250.GetPos();
+            ((MKProp *) &sp250)->GetPos();
             var_f1_3724 = 1.0f;
             if (arg1 < var_f1_3724) {
                 var_f1_3724 = arg1;
@@ -2011,7 +2017,7 @@ loop_117:
             sp260.unk18 = (f64) sp68;
             sp3C8 = (f64) sp68;
         } else {
-            sp220.GetPos();
+            ((MKProp *) &sp220)->GetPos();
             var_f1_3761 = ((f32) var_r26_3712 * this->unk114) + arg0;
             if (var_f1_3761 < 1.0f) {
 
@@ -2034,7 +2040,7 @@ loop_117:
         sp218 = (f64) sp48;
         sp3C0 += temp_f0_3791;
         sp3C8 = (f32) sp3C8 + (f32) sp218;
-        sp1F0.GetVelocity((f32) var_r26_3712 * this->unk114);
+        ((KDSplinePathSegment *) &sp1F0)->GetVelocity((f32) var_r26_3712 * this->unk114);
         sp370.unk30.unk10 = sp1F0;
         temp_f2_3822 = M2C_BITWISE(f32, sp370.unk44);
         sp3B8 = sp1F8;
@@ -2192,22 +2198,22 @@ loop_117:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Draw() {
     f32 var_f30_4209;
     f32 var_f31_4207;
     s32 temp_r0_4236;
 
-    if (this->unkE0.GetState() != 3) {
+    if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() != 3) {
         var_f31_4207 = 0.0f;
         var_f30_4209 = 0.0f;
-        if (this->unkE0.GetState() == 1) {
+        if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() == 1) {
             var_f31_4207 = 0.0f;
             var_f30_4209 = 1.0f;
-        } else if (this->unkE0.GetState() == 0) {
+        } else if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() == 0) {
             var_f31_4207 = 0.0f;
             var_f30_4209 = this->unk124 / this->unk120;
-        } else if (this->unkE0.GetState() == 2) {
+        } else if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() == 2) {
             var_f30_4209 = 1.0f;
             var_f31_4207 = this->unk124 / this->unk120;
         }
@@ -2230,41 +2236,41 @@ void ElementalWall::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Update() {
     u8 var_r30_4297;
     u8 var_r31_4295;
 
-    this->unkE0.Update(this, 0);
+    ((KDStateMachine<ElementalWall> *) &this->unkE0)->Update(this, 0);
     var_r31_4295 = 1;
     var_r30_4297 = 1;
-    if ((this->unkE0.GetState() != 1) && (this->unkE0.GetState() != 0)) {
+    if ((((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() != 1) && (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() != 0)) {
         var_r30_4297 = 0;
     }
-    if ((var_r30_4297 == 0) && (this->unkE0.GetState() != 2)) {
+    if ((var_r30_4297 == 0) && (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() != 2)) {
         var_r31_4295 = 0;
     }
-    this->unk130.Update(var_r31_4295);
+    ((KDSound_SoundWall *) &this->unk130)->Update(var_r31_4295);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Message(MKMessage *arg0) {
     s32 temp_r0_4336;
     s32 temp_r0_4372;
     void *temp_r3_4369;
 
-    this->unk130.Message(arg0);
+    ((KDSound_SoundWall *) &this->unk130)->Message(arg0);
     temp_r0_4336 = arg0->unk0;
     switch (temp_r0_4336) {                         /* switch 1; irregular */
     case 0xB5:                                      /* switch 1 */
-        if (this->unkE0.GetState() == 3) {
-            this->unkE0.SetState(this, 0, 0U);
+        if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() == 3) {
+            ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 0, 0U);
         }
         break;
     case 0xB4:                                      /* switch 1 */
-        if (this->unkE0.GetState() == 1) {
-            this->unkE0.SetState(this, 2, 0U);
+        if (((KDStateMachine<ElementalWall> *) &this->unkE0)->GetState() == 1) {
+            ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 2, 0U);
         }
         break;
     case 0x16:                                      /* switch 1 */
@@ -2291,29 +2297,29 @@ void ElementalWall::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Resolve() {
     s32 temp_r0_4423;
 
-    this->unkE0.SetState(this, 3, 0U);
+    ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
     temp_r0_4423 = this->unk100;
     switch (temp_r0_4423) {                         /* irregular */
     case 0:
         this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
         this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
-        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 1:
         this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
-        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 2:
         this->unkF4 = MKMaterial_Create"FX_ElementalIceWall";
-        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 3:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthWall";
-        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     }
     this->unk114 = 1.0f / (f32) this->unk104;
@@ -2348,13 +2354,13 @@ s32 ElementalWall::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalWall::Deinit() {
     MKMaterial *temp_r3_4657;
     MKMaterial *temp_r3_4662;
 
-    this->unkE0.Deinit(this);
-    this->unk130.Deinit();
+    ((KDStateMachine<ElementalWall> *) &this->unkE0)->Deinit(this);
+    ((KDSound_SoundWall *) &this->unk130)->Deinit();
     temp_r3_4657 = this->unkF4;
     if (temp_r3_4657 != NULL) {
         MKMaterial_Destroy(temp_r3_4657);
@@ -2389,10 +2395,10 @@ void ElementalWall::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void ElementalWallDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk60 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
 }
 #endif
 

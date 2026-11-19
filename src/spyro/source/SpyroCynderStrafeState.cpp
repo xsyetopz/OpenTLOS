@@ -5,8 +5,11 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDCamera.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "spyro/source/checkpoint.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -353,7 +356,7 @@ void SpyroCynderStrafeState::JumpLoftEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpyroCynderStrafeState::JumpCycleTransition() {
     u8 var_r0_188;
 
@@ -362,7 +365,7 @@ s32 SpyroCynderStrafeState::JumpCycleTransition() {
         var_r0_188 = this->unk64;
     }
     if ((var_r0_188 != 0) && ((s32) this->unk50 != 2)) {
-        this->unk50.SetState(this, 2, 0U);
+        ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->SetState(this, 2, 0U);
         return 1;
     }
     return 0;
@@ -383,7 +386,7 @@ void SpyroCynderStrafeState::JumpCycleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpyroCynderStrafeState::JumpStartTransition() {
     u8 var_r0_261;
     u8 var_r3_276;
@@ -393,14 +396,14 @@ u8 SpyroCynderStrafeState::JumpStartTransition() {
         var_r0_261 = this->unk64;
     }
     if ((var_r0_261 != 0) && ((s32) this->unk50 != 2)) {
-        this->unk50.SetState(this, 2, 0U);
+        ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->SetState(this, 2, 0U);
         var_r3_276 = 1;
     } else {
         var_r3_276 = 0;
     }
     if (var_r3_276 == 0) {
         if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk50 != 1)) {
-            this->unk50.SetState(this, 1, 0U);
+            ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->SetState(this, 1, 0U);
             return 1U;
         }
         var_r3_276 = 0;
@@ -442,7 +445,7 @@ void SpyroCynderStrafeState::AnyStateEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 u8 SpyroCynderStrafeState::FallTransition() {
     f64 sp10;
     f64 sp8;
@@ -464,7 +467,7 @@ u8 SpyroCynderStrafeState::FallTransition() {
         temp_r6_400 = temp_r4_393->unk8;
         sp8 = M2C_FIELD(temp_r6_400, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r6_400, f64 *, 0x38);
-        if (sp8.IsWithin(*NULL, NULL, (s32 *) temp_r6_400) != 0) {
+        if (((KDWaterVolume *) &sp8)->IsWithin(*NULL, NULL, (s32 *) temp_r6_400) != 0) {
             var_r29_411 = 0x01000000;
         } else {
             temp_r3_415 = this->unk10->unk26C.unk8;
@@ -498,14 +501,14 @@ u8 SpyroCynderStrafeState::FallTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SpyroCynderStrafeState::FallUpdate() {
     f64 sp20;
     f64 sp18;
     f64 sp8;
 
     this->unk7C.Update(this->unk10);
-    sp8.GetMoveVelocityHorz();
+    ((SpyroCynderStrafeState *) &sp8)->GetMoveVelocityHorz();
     sp18 = sp8;
     sp20 = sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp18), 3800.0f);
@@ -746,7 +749,7 @@ void SpyroCynderStrafeState::JumpUpdate() {
                     this->unk65 = 1;
                 }
             } else {
-                sp20.GetMoveVelocityHorz();
+                ((SpyroCynderStrafeState *) &sp20)->GetMoveVelocityHorz();
                 sp50 = sp20;
                 sp58 = sp28;
                 unksp54 = SPYRO_MIN_JUMP_Y_VELOCITY;
@@ -758,20 +761,20 @@ void SpyroCynderStrafeState::JumpUpdate() {
         this->unk64 = 1;
     }
     if (var_r30_744 == 0) {
-        sp10.GetMoveVelocityHorz();
+        ((SpyroCynderStrafeState *) &sp10)->GetMoveVelocityHorz();
         this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp10), 3800.0f);
     }
-    this->unk50.Update(this, 0);
+    ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Update(this, 0);
     JumpTransition();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpyroCynderStrafeState::JumpExit() {
     Spyro *temp_r3_938;
     Spyro *temp_r3_942;
 
-    this->unk50.Exit(this);
+    ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Exit(this);
     M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
     temp_r3_938 = this->unk10;
     temp_r3_938->unk428 |= 0x20000;
@@ -805,15 +808,15 @@ void SpyroCynderStrafeState::JumpEnter() {
     temp_r5_965->unk428 |= 0x8007;
     temp_r5_972 = this->unk10;
     temp_r5_972->unk428 &= 0xFFFDF7D7;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
     this->unk74 = &this->unk6C;
-    sp20.GetMoveVelocityHorz();
+    ((SpyroCynderStrafeState *) &sp20)->GetMoveVelocityHorz();
     sp40 = sp20;
     sp48 = sp28;
     unksp44 = SPYRO_MIN_JUMP_Y_VELOCITY;
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp40), 540000.0f);
-    this->unk50.SetState(this, 0, 0U);
+    ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->SetState(this, 0, 0U);
     temp_r3_1004 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x414;
@@ -1004,7 +1007,7 @@ void SpyroCynderStrafeState::NoTargetUpdate() {
         temp_r3_1403 = this->unk10;
         temp_r0_1404 = temp_r3_1403->unk54.unk8;
         if ((temp_r0_1404 != 0xB) && (temp_r0_1404 != 2)) {
-            temp_r3_1403->unkB90.ClearCurrentTarget();
+            ((SpyroTargetList *) &temp_r3_1403->unkB90)->ClearCurrentTarget();
         }
     }
 }
@@ -1247,14 +1250,12 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroCynderStrafeState::SetDesiredVelocityHorz() {
     M2C_UNK sp8;
 
-    sp8.GetMoveVelocityHorz();
+    ((SpyroCynderStrafeState *) &sp8)->GetMoveVelocityHorz();
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp8), 100000.0f);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp54'
 void SpyroCynderStrafeState::ClampMovementUpdate() {
@@ -1472,9 +1473,9 @@ void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpyroCynderStrafeState::Deinit() {
-    this->unk50.Deinit();
+    ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->Deinit();
     this->unk18.Deinit();
 }
 #endif

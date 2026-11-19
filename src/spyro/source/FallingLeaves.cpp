@@ -710,7 +710,7 @@ loop_6:
             M2C_FIELD(temp_r30_1082, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_1082, f32 *, 8) + (f32) (f64) sp28);
         } else {
             temp_f31_1120 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            sp60.GetVelocity(*((MKVector3 *) arg0));
+            ((WindFX *) &sp60)->GetVelocity(*((MKVector3 *) arg0));
             sp30 = sp60 * (f64) temp_f31_1120;
             sp70.unk20 = sp30;
             sp38 = sp68 * temp_f31_1120;

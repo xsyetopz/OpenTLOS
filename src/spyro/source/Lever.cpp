@@ -10,6 +10,7 @@
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include <m2c_macros.h>
@@ -166,7 +167,7 @@ void Lever::Update() {
     temp_r3_388 = this->unk100;
     if (temp_r3_388 != NULL) {
         sp8 = 1;
-        temp_r3_388->Update(var_r4_381, 1U, this->unkD0 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) temp_r3_388)->Update(var_r4_381, 1U, this->unkD0 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     temp_r0_404 = this->unkD0;
     switch (temp_r0_404) {                          /* irregular */
@@ -205,14 +206,14 @@ void Lever::LoadDone() {
     this->unkE0 = (f64) sp50.unk38;
     this->unkE8 = (f64) sp50.unk20;
     this->unkF0 = (f64) sp50.unk28;
-    this->unkC8.RegisterTargetable();
+    ((Targetable *) &this->unkC8)->RegisterTargetable();
     if ((s32) M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
         operator new(0x28U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk100 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk100->Init(0.25f, 0.75f);
+        ((KDSoundFader *) this->unk100)->Init(0.25f, 0.75f);
     }
 }
 #endif
@@ -233,7 +234,7 @@ void Lever::Deinit() {
     KDSoundPlayer *temp_r3_575;
     s32 temp_cr0_eq_580;
 
-    this->unkC8.UnregisterTargetable();
+    ((Targetable *) &this->unkC8)->UnregisterTargetable();
     temp_r3_575 = this->unk100;
     if (temp_r3_575 != NULL) {
         KDSound_Stop(&temp_r3_575->unk0);
@@ -266,10 +267,10 @@ void Lever::Init() {
 void LeverDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "r_P0029_Stand");
-    this->unkEC = this->unk34->GetAnim("BindPose");
-    this->unkF0 = this->unk34->GetAnim("LeverPull_Start");
-    this->unkF4 = this->unk34->GetAnim("LeverPull_Loop");
-    this->unkF8 = this->unk34->GetAnim("LeverPull_End");
+    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("BindPose");
+    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Start");
+    this->unkF4 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_Loop");
+    this->unkF8 = ((MKAnimScript *) this->unk34)->GetAnim("LeverPull_End");
 }
 #endif
 

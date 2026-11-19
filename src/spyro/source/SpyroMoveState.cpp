@@ -2,9 +2,12 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -367,7 +370,7 @@ void SpyroMoveState::Update() {
         this->unk4C *= M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_581->unk0), f32 *, 0xD8);
     }
     M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
-    sp38.CalcYawTurnDir(30.0f);
+    ((Spyro *) &sp38)->CalcYawTurnDir(30.0f);
     temp_f2_627 = this->unk4C;
     temp_f0_630 = sp38 * (f64) temp_f2_627;
     sp18 = temp_f0_630;
@@ -393,18 +396,18 @@ void SpyroMoveState::Update() {
     } else {
         this->unk10->unk3C0 = 0.0f;
     }
-    sp28.CalcYawTurnDir(30.0f);
+    ((Spyro *) &sp28)->CalcYawTurnDir(30.0f);
     temp_f2_683 = this->unk4C;
     temp_f0_686 = sp28 * (f64) temp_f2_683;
     sp8 = temp_f0_686;
     sp58 = temp_f0_686;
     sp10 = sp30 * temp_f2_683;
     sp60 = (f64) sp10;
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp58), 30.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp58), 30.0f);
     this->unk14.Update(this, 0);
     temp_r3_705 = this->unk10->unk26C.unk8;
     if ((s32) M2C_FIELD(temp_r3_705, s32 *, 0x16C) > 0) {
-        if (temp_r3_705->unk8.HitID(2U) != 0) {
+        if (((ContextInfo *) &temp_r3_705->unk8)->HitID(2U) != 0) {
             this->unk50 = 1;
         } else {
             this->unk50 = 0;
@@ -458,7 +461,7 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     Init__32KDStateMachine<14SpyroMoveState>FPQ232KDStateMachine<14SpyroMoveState>5StateP32KDStateMachine<14SpyroMoveState>(&this->unk14, (KDStateMachine<SpyroMoveState>::State *) &SpyroMoveState::states, NULL);
     SelectState(0.0f);
     this->unk50 = arg0.IsMessageOnList(0x176);
-    sp18.GetJoyDir();
+    ((Spyro *) &sp18)->GetJoyDir();
     this->unk28 = sp18;
     this->unk30 = sp20;
     this->unk54 = 0.0f;
@@ -473,8 +476,8 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     temp_r3_835 = this->unk10;
     sp10 = temp_f0_830;
     temp_r3_835->unk428 = temp_r3_835->unk428 | 0x100000 | 0x8000;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(1U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
     sp2C = 0;
     sp28 = 0x17;
     sp30 = 3;

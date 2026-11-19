@@ -11,7 +11,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 static MKVector3 waypointLoadInfo[0x40];
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
     KDPathIterator sp48;
     f64 sp40;
@@ -37,9 +37,9 @@ void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
 
     var_f31_101 = 3.4028235e38f;
     sp48.Init();
-    sp48.SetTo(arg0->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
+    sp48.SetTo(((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
     temp_f30_115 = arg1.unk8;
-    var_r28_116 = arg0->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
+    var_r28_116 = ((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
 loop_10:
     if (var_r28_116 != NULL) {
         var_r30_119 = var_r28_116->unk30;
@@ -82,7 +82,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void KDPathManager::NearestPoint(int arg0, const MKVector3 &arg1) {
     KDPathIterator sp28;
     f64 sp20;
@@ -99,9 +99,9 @@ void KDPathManager::NearestPoint(int arg0, const MKVector3 &arg1) {
 
     var_f29_235 = 1e11f;
     sp28.Init();
-    sp28.SetTo(arg0->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
+    sp28.SetTo(((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
     temp_f31_249 = arg1.unk8;
-    var_r30_250 = arg0->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
+    var_r30_250 = ((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
 loop_7:
     if (var_r30_250 != NULL) {
         var_r31_253 = 0;
@@ -143,7 +143,7 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
     s32 temp_r3_344;
 
     KDPathNode::Unlink();
-    this->unk8.Unlink();
+    ((KDPathNode *) &this->unk8)->Unlink();
     temp_r3_335 = this->unk2C;
     if (temp_r3_335 != NULL) {
         temp_r3_335->unk28 = this->unk28;
@@ -236,7 +236,7 @@ loop_10:
         sp78 = sp18;
         sp80 = (f64) sp20;
         if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 10000.0f) {
-            this->unk8.Link(var_r31_383);
+            ((KDPathNode *) &this->unk8)->Link(var_r31_383);
         }
         temp_r3_496 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
         temp_r4_497 = this->unk24 + ((this->unk20 - 1) * this->unk1C);
@@ -247,7 +247,7 @@ loop_10:
         sp50 = (f64) sp10;
         sp60 = (f64) sp10;
         if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < 10000.0f) {
-            this->unk8.Link((KDPathNode *) &var_r31_383->unk8);
+            ((KDPathNode *) &this->unk8)->Link((KDPathNode *) &var_r31_383->unk8);
         }
         var_r4_379 = var_r31_383;
         var_r3_382 = &var_r31_383->unk28;
@@ -323,25 +323,21 @@ void KDPathIterator::Init() {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'AddPath'
 void KDSplinePathSegmentProp::LoadDone() {
     MKProp::LoadDone();
-    this->unk4C.LoadDone();
-    this->unk4C.AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDSplinePathSegment *) &this->unk4C)->LoadDone();
+    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'RemovePath'
 void KDSplinePathSegmentProp::Deinit() {
     MKProp::Deinit();
-    this->unk4C.RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
-    this->unk4C.Deinit();
+    ((KDPathManager *) &this->unk4C)->RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDSplinePathSegment *) &this->unk4C)->Deinit();
 }
-#endif
 
 void KDSplinePathSegmentProp::Init() {
     MKProp::Init();
-    this->unk4C.Init();
+    ((KDSplinePathSegment *) &this->unk4C)->Init();
 }
 
 #if 0 // DRAFT: illegal type
@@ -685,42 +681,36 @@ void KDLocalPathSegmentProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddPath'
 void KDLocalPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
-    this->unk4C.LoadDone();
-    this->unk4C.AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDPathSegment *) &this->unk4C)->LoadDone();
+    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDLocalPathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1356;
 
     var_r31_1356 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0) || (arg0->LoadInt("parentID", (s32 *) &this->unk4C.unk34, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((KDPathSegment *) &this->unk4C)->LoadLine(arg0) != 0) || (arg0->LoadInt("parentID", (s32 *) &this->unk4C.unk34, 0) != 0)) {
         var_r31_1356 = 1;
     }
     return var_r31_1356;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'RemovePath'
 void KDLocalPathSegmentProp::Deinit() {
     MKProp::Deinit();
-    this->unk4C.RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
-    this->unk4C.Deinit();
+    ((KDPathManager *) &this->unk4C)->RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDPathSegment *) &this->unk4C)->Deinit();
     this->unk4C.unk34 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: function call 'Init(KDLocalPathSegmentProp *, KDLocalPathSegmentProp *)'
 void KDLocalPathSegmentProp::Init() {
     MKProp::Init();
-    this->unk4C.Init(this);
+    ((KDLocalPathSegment *) &this->unk4C)->Init(this);
     this->unk4C.unk34 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void KDLocalPathSegment::Init(KDLocalPathSegmentProp *arg0) {
@@ -731,25 +721,21 @@ void KDLocalPathSegment::Init(KDLocalPathSegmentProp *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddPath'
 void KDPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
-    this->unk4C.LoadDone();
-    this->unk4C.AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDPathSegment *) &this->unk4C)->LoadDone();
+    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'RemovePath'
 void KDPathSegmentProp::Deinit() {
     MKProp::Deinit();
-    this->unk4C.RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
-    this->unk4C.Deinit();
+    ((KDPathManager *) &this->unk4C)->RemovePath(M2C_ERROR(/* Read from unset register $r4 */));
+    ((KDPathSegment *) &this->unk4C)->Deinit();
 }
-#endif
 
 void KDPathSegmentProp::Init() {
     MKProp::Init();
-    this->unk4C.Init();
+    ((KDPathSegment *) &this->unk4C)->Init();
 }
 
 #if 0 // DRAFT: illegal type
@@ -797,7 +783,7 @@ void KDPathSegment::Resolve() {
 
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void KDPathSegment::LoadDone() {
     f64 sp28;
     f64 sp20;
@@ -827,7 +813,7 @@ void KDPathSegment::LoadDone() {
     if (temp_r3_1571 > 0) {
         if ((void *) this->unk24 == NULL) {
             temp_r30_1578 = temp_r3_1571 * this->unk1C;
-            temp_r3_1579 = temp_r3_1571->Current();
+            temp_r3_1579 = ((MKHeap *) temp_r3_1571)->Current();
             if (temp_r3_1579 != NULL) {
                 var_r3_1586 = ((MKHeap *) (temp_r3_1579->Current()))->Alloc(temp_r30_1578, NULL, 0);
             } else {
@@ -895,7 +881,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
     MKHeap *temp_r3_1731;
     s32 temp_r0_1753;
@@ -910,7 +896,7 @@ void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
     this->unk20 = arg1;
     temp_r3_1728 = this->unk20;
     temp_r31_1730 = temp_r3_1728 * this->unk1C;
-    temp_r3_1731 = temp_r3_1728->Current();
+    temp_r3_1731 = ((MKHeap *) temp_r3_1728)->Current();
     if (temp_r3_1731 != NULL) {
         var_r3_1738 = ((MKHeap *) (temp_r3_1731->Current()))->Alloc(temp_r31_1730, NULL, 0);
     } else {
@@ -933,7 +919,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKHeap *temp_r3_1796;
     MKIniLine *var_r29_1815;
@@ -949,7 +935,7 @@ u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
             return 1U;
         }
         temp_r30_1795 = temp_r3_1788 * this->unk1C;
-        temp_r3_1796 = temp_r3_1788->Current();
+        temp_r3_1796 = ((MKHeap *) temp_r3_1788)->Current();
         if (temp_r3_1796 != NULL) {
             var_r3_1803 = ((MKHeap *) (temp_r3_1796->Current()))->Alloc(temp_r30_1795, NULL, 0);
         } else {
@@ -1030,7 +1016,7 @@ void KDPathSegment::Init() {
     this->unk10 = NULL;
     this->unk14 = 0;
     KDPathNode::Init(this, 1U);
-    this->unk8.Init(this, 0U);
+    ((KDPathNode *) &this->unk8)->Init(this, 0U);
 }
 #endif
 

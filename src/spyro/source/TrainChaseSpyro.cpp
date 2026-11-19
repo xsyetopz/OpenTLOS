@@ -12,6 +12,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/FlameBreathFX.h"
 #include "spyro/source/Game.h"
@@ -21,11 +22,14 @@
 #include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LightProp.h"
 #include "spyro/source/SpyroEffects.h"
 #include "spyro/source/SpyroUtils.h"
 #include "spyro/source/SteamTrain.h"
 #include "spyro/source/SteamTrainCaboose.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/TrainController.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
@@ -36,9 +40,7 @@
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -320,7 +322,7 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
         var_r31_289 = 0;
         if ((temp_r3_282 != 0) && ((u8) M2C_FIELD(temp_r3_282, u8 *, 0xD8) == 0)) {
             var_r31_289 = temp_r3_282;
-            sp168.GetVel();
+            ((SteamTrainCaboose *) &sp168)->GetVel();
             sp178 = sp168;
             sp180 = sp170;
             sp1E8.unk4C.unk4 = sp168;
@@ -436,8 +438,8 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
             temp_f2_528 = M2C_BITWISE(f32, sp1E8.unk18);
             temp_f4_530 = M2C_BITWISE(f32, sp1E8.unk10);
             temp_f6_533 = M2C_BITWISE(f32, sp1E8.unk28);
-            sp108.operator*(4.0f * (((temp_f2_528 * temp_f2_528) + ((temp_f4_530 * temp_f4_530) + (temp_f2_523 * temp_f2_523))) / ((temp_f6_533 * temp_f6_533) + ((sp1E8.unk20 * sp1E8.unk20) + (sp1E8.unk24 * sp1E8.unk24)))) * sp1E8.unk4C.unk4.Magnitude());
-            sp118.GetPos();
+            sp108.operator*(4.0f * (((temp_f2_528 * temp_f2_528) + ((temp_f4_530 * temp_f4_530) + (temp_f2_523 * temp_f2_523))) / ((temp_f6_533 * temp_f6_533) + ((sp1E8.unk20 * sp1E8.unk20) + (sp1E8.unk24 * sp1E8.unk24)))) * ((MKVector3 *) &sp1E8.unk4C.unk4)->Magnitude());
+            ((MKProp *) &sp118)->GetPos();
             sp48 = sp118 - M2C_BITWISE(f64, sp108);
             sp1E8.unk40 = sp48;
             sp50 = sp120 - sp108.unk8;
@@ -600,9 +602,9 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
     void *temp_r5_1192;
     void *temp_ret_1259;
 
-    this->unkE8.Message(arg0);
-    this->unk110.Message(arg0);
-    this->unk138.Message(arg0);
+    ((KDSoundPlayer *) &this->unkE8)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk110)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk138)->Message(arg0);
     temp_r0_850 = arg0->unk0;
     switch (temp_r0_850) {                          /* switch 1; irregular */
     case 0x7:                                       /* switch 1 */
@@ -856,7 +858,7 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     sp1C = 1.0f;
     sp70 = (f64) sp10;
     sp78 = (f64) sp18;
-    gb.unk74->Emit(arg0, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp70), -1000.0f);
+    ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp70), -1000.0f);
 }
 #endif
 
@@ -878,7 +880,7 @@ u8 TrainChaseSpyro::DealDamage(float arg0) {
         return 0U;
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x3B4) == 0) {
-        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(arg0, 1U);
+        ((Stat *) &GameData::gameData[0x70])->Add(arg0, 1U);
     }
     this->unk728 = gb.unk30C;
     return 1U;
@@ -994,7 +996,7 @@ void TrainChaseSpyro::RepositionLightProp() {
     temp_ret_1603 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     temp_r3_1603 = temp_ret_1603;
     if ((temp_r3_1603 != 0) && (checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1FC)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_1603)) != NULL)) {
-        temp_f1_1613 = temp_r3_1603->GetTrackLength(0);
+        temp_f1_1613 = ((TrainTrack *) temp_r3_1603)->GetTrackLength(0);
         var_f0_1616 = 10000.0f + this->unkE0;
         if (var_f0_1616 < temp_f1_1613) {
 
@@ -1038,10 +1040,10 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp288 = 0;
         sp28C = -1;
         sp290 = 0;
-        sp178.GetTrackXAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
+        ((TrainTrack *) &sp178)->GetTrackXAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
         sp198.unk40 = sp178;
         sp198.unk48 = sp180;
-        sp168.GetTrackZAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
+        ((TrainTrack *) &sp168)->GetTrackZAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
         sp198.unk30 = sp168;
         sp198.unk38 = sp170;
         temp_f7_1703 = M2C_BITWISE(f32, sp198.unk30);
@@ -1170,7 +1172,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp234 = sp198.unk4C.unk8;
         sp238 = sp198.unk4C.unkC;
         sp23C = 1.0f;
-        this->unk280->SetOrientation((Matrix *) &sp198.unk60.unk8);
+        ((LightProp *) this->unk280)->SetOrientation((Matrix *) &sp198.unk60.unk8);
     }
 }
 #endif
@@ -1299,8 +1301,8 @@ void TrainChaseSpyro::UpdateCameraInfo() {
     sp630.unk9C = 0;
     sp630.unkA0 = 7;
     sp580.GetPos();
-    sp580.unk10.GetPos();
-    sp580.unk20.GetPos();
+    ((MKProp *) &sp580.unk10)->GetPos();
+    ((MKProp *) &sp580.unk20)->GetPos();
     sp108 = M2C_BITWISE(f32, sp580.unk8);
     sp100 = sp580.unk20;
     sp104 = 400.0f + M2C_BITWISE(f32, sp580.unk14);
@@ -1322,7 +1324,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
             switch (M2C_BITWISE(s32, temp_r0_2149)) {
             case 0:
             case 4:
-                sp540.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                ((TrainTrack *) &sp540)->GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                 sp550.operator*(cameraYOffset);
                 sp560.GetTrackPos(temp_r3_2137, temp_f30_2153, 0);
                 spF0 = sp560 + M2C_BITWISE(f64, sp550);
@@ -1345,14 +1347,14 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                         var_f31_2200 = 1.0f;
                     }
                     sp490.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    sp490.unk10.operator*(cameraYOffset);
-                    sp490.unk20.operator*(var_f31_2200);
-                    sp490.unk30.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    sp490.unk40.operator*(2100.0f);
-                    sp490.unk4C.unk4.operator*(var_f31_2200);
-                    sp490.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                    sp490.unk60.unk10.operator*(cameraXOffset);
-                    sp490.unk74.unkC.operator*(var_f31_2200);
+                    ((MKVector3 *) &sp490.unk10)->operator*(cameraYOffset);
+                    ((MKVector3 *) &sp490.unk20)->operator*(var_f31_2200);
+                    ((TrainTrack *) &sp490.unk30)->GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    ((MKVector3 *) &sp490.unk40)->operator*(2100.0f);
+                    ((MKVector3 *) &sp490.unk4C.unk4)->operator*(var_f31_2200);
+                    ((TrainTrack *) &sp490.unk60)->GetTrackXAxis(temp_r3_2137, this->unkE0);
+                    ((MKVector3 *) &sp490.unk60.unk10)->operator*(cameraXOffset);
+                    ((MKVector3 *) &sp490.unk74.unkC)->operator*(var_f31_2200);
                     temp_f0_2249 = sp490.unk74.unkC - M2C_BITWISE(f64, sp490.unk4C.unk4);
                     sp60 = temp_f0_2249;
                     sp490.unk88.unk8 = temp_f0_2249;
@@ -1366,13 +1368,13 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp580.unk48 = (f64) (sp580.unk48 + temp_f0_2261);
                     sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + (f32) sp538;
                     sp3F0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    sp3F0.unk10.operator*(cameraYOffset);
-                    sp3F0.unk20.operator*(2.0f);
-                    sp3F0.unk30.operator*(var_f31_2200);
-                    sp3F0.unk40.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    sp3F0.unk4C.unk4.operator*(1428.0f);
-                    sp3F0.unk60.operator*(var_f31_2200);
-                    sp3F0.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
+                    ((MKVector3 *) &sp3F0.unk10)->operator*(cameraYOffset);
+                    ((MKVector3 *) &sp3F0.unk20)->operator*(2.0f);
+                    ((MKVector3 *) &sp3F0.unk30)->operator*(var_f31_2200);
+                    ((TrainTrack *) &sp3F0.unk40)->GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    ((MKVector3 *) &sp3F0.unk4C.unk4)->operator*(1428.0f);
+                    ((MKVector3 *) &sp3F0.unk60)->operator*(var_f31_2200);
+                    ((TrainTrack *) &sp3F0.unk60.unk10)->GetTrackPos(temp_r3_2137, this->unkE0, 0);
                     temp_f0_2318 = sp3F0.unk60.unk10 - M2C_BITWISE(f64, sp3F0.unk60);
                     sp50 = temp_f0_2318;
                     sp3F0.unk74.unkC = temp_f0_2318;
@@ -1389,13 +1391,13 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     temp_f31_2344 = M2C_BITWISE(f32, this->unk738);
                     temp_f29_2348 = 750.0f * temp_f31_2344;
                     sp350.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    sp350.unk10.operator*(cameraYOffset);
-                    sp350.unk20.operator*(0.375f);
-                    sp350.unk30.operator*(temp_f31_2344);
-                    sp350.unk40.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    sp350.unk4C.unk4.operator*(temp_f29_2348);
-                    sp350.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                    sp350.unk60.unk10.operator*(-temp_f29_2348);
+                    ((MKVector3 *) &sp350.unk10)->operator*(cameraYOffset);
+                    ((MKVector3 *) &sp350.unk20)->operator*(0.375f);
+                    ((MKVector3 *) &sp350.unk30)->operator*(temp_f31_2344);
+                    ((TrainTrack *) &sp350.unk40)->GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    ((MKVector3 *) &sp350.unk4C.unk4)->operator*(temp_f29_2348);
+                    ((TrainTrack *) &sp350.unk60)->GetTrackXAxis(temp_r3_2137, this->unkE0);
+                    ((MKVector3 *) &sp350.unk60.unk10)->operator*(-temp_f29_2348);
                     temp_f0_2384 = sp350.unk60.unk10 - M2C_BITWISE(f64, sp350.unk4C.unk4);
                     sp40 = temp_f0_2384;
                     sp350.unk74.unkC = temp_f0_2384;
@@ -1408,7 +1410,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp350.unk88.unk10 = (f64) spC8;
                     sp580.unk48 = (f64) (sp580.unk48 + (f64) sp350.unk88.unk8);
                     sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + M2C_BITWISE(f32, sp350.unk88.unk10);
-                    sp2E0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                    ((TrainTrack *) &sp2E0)->GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                     sp2F0.operator*(cameraYOffset);
                     sp300.operator*(2.0f);
                     sp310.operator*(0.375f);
@@ -1433,14 +1435,14 @@ void TrainChaseSpyro::UpdateCameraInfo() {
             case 3:
             case 7:
                 sp230.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                sp230.unk10.operator*(cameraYOffset);
-                sp230.unk20.operator*(M2C_BITWISE(f32, this->unk738));
-                sp230.unk30.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                sp230.unk40.operator*(2100.0f);
-                sp230.unk4C.unk4.operator*(M2C_BITWISE(f32, this->unk738));
-                sp230.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                sp230.unk60.unk10.operator*(cameraXOffset);
-                sp230.unk74.unkC.operator*(M2C_BITWISE(f32, this->unk738));
+                ((MKVector3 *) &sp230.unk10)->operator*(cameraYOffset);
+                ((MKVector3 *) &sp230.unk20)->operator*(M2C_BITWISE(f32, this->unk738));
+                ((TrainTrack *) &sp230.unk30)->GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                ((MKVector3 *) &sp230.unk40)->operator*(2100.0f);
+                ((MKVector3 *) &sp230.unk4C.unk4)->operator*(M2C_BITWISE(f32, this->unk738));
+                ((TrainTrack *) &sp230.unk60)->GetTrackXAxis(temp_r3_2137, this->unkE0);
+                ((MKVector3 *) &sp230.unk60.unk10)->operator*(cameraXOffset);
+                ((MKVector3 *) &sp230.unk74.unkC)->operator*(M2C_BITWISE(f32, this->unk738));
                 temp_f0_2515 = sp230.unk74.unkC - M2C_BITWISE(f64, sp230.unk4C.unk4);
                 sp30 = temp_f0_2515;
                 sp230.unk88.unk8 = temp_f0_2515;
@@ -1454,13 +1456,13 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 sp580.unk48 = (f64) (sp580.unk48 + temp_f0_2527);
                 sp560.unk60.unk10 += (f32) sp2D8;
                 sp190.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                sp190.unk10.operator*(cameraYOffset);
-                sp190.unk20.operator*(2.0f);
-                sp190.unk30.operator*(M2C_BITWISE(f32, this->unk738));
-                sp190.unk40.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                sp190.unk4C.unk4.operator*(1428.0f);
-                sp190.unk60.operator*(M2C_BITWISE(f32, this->unk738));
-                sp190.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
+                ((MKVector3 *) &sp190.unk10)->operator*(cameraYOffset);
+                ((MKVector3 *) &sp190.unk20)->operator*(2.0f);
+                ((MKVector3 *) &sp190.unk30)->operator*(M2C_BITWISE(f32, this->unk738));
+                ((TrainTrack *) &sp190.unk40)->GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                ((MKVector3 *) &sp190.unk4C.unk4)->operator*(1428.0f);
+                ((MKVector3 *) &sp190.unk60)->operator*(M2C_BITWISE(f32, this->unk738));
+                ((TrainTrack *) &sp190.unk60.unk10)->GetTrackPos(temp_r3_2137, this->unkE0, 0);
                 temp_f0_2584 = sp190.unk60.unk10 - M2C_BITWISE(f64, sp190.unk60);
                 sp20 = temp_f0_2584;
                 sp190.unk74.unkC = temp_f0_2584;
@@ -2062,7 +2064,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
                     var_f0_3600 = var_f2_3599;
                 }
                 this->unkD4 = var_f0_3600;
-                temp_f1_3623 = temp_r3_3569->GetTrackLength(0);
+                temp_f1_3623 = ((TrainTrack *) temp_r3_3569)->GetTrackLength(0);
                 var_f0_3628 = (M2C_FIELD(temp_r3_3574, f32 *, 0x110) - 2000.0f) - 100.0f;
                 if (var_f0_3628 < temp_f1_3623) {
 
@@ -2113,7 +2115,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
             break;
         case 1:                                     /* switch 1 */
         case 5:                                     /* switch 1 */
-            spC8.GetTrackPos(temp_r3_3569, this->unkE0, 0);
+            ((TrainTrack *) &spC8)->GetTrackPos(temp_r3_3569, this->unkE0, 0);
             spD8.GetTrackPos(temp_r3_3569, this->unkE0, 1);
             sp28 = spD8 - spC8;
             spD8.unk10 = sp28;
@@ -2178,7 +2180,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
                         var_f0_3833 = var_f2_3832;
                     }
                     this->unkD4 = var_f0_3833;
-                    temp_f1_3856 = temp_r3_3569->GetTrackLength(0);
+                    temp_f1_3856 = ((TrainTrack *) temp_r3_3569)->GetTrackLength(0);
                     var_f0_3861 = (M2C_FIELD(temp_r3_3574, f32 *, 0x110) - 2000.0f) - 100.0f;
                     if (var_f0_3861 < temp_f1_3856) {
 
@@ -2200,7 +2202,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
             break;
         case 2:                                     /* switch 1 */
         case 6:                                     /* switch 1 */
-            sp98.GetTrackPos(temp_r3_3569, this->unkE0, 0);
+            ((TrainTrack *) &sp98)->GetTrackPos(temp_r3_3569, this->unkE0, 0);
             spA8.GetTrackPos(temp_r3_3569, this->unkE0, 1);
             sp18 = spA8 - sp98;
             spA8.unk10 = sp18;
@@ -2301,7 +2303,7 @@ void TrainChaseSpyro::UpdateCartPosition() {
 
     temp_r3_4083 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_4083 != 0U) {
-        sp8.GetTrackZAxis((s32) temp_r3_4083, this->unkE0);
+        ((TrainTrack *) &sp8)->GetTrackZAxis((s32) temp_r3_4083, this->unkE0);
         sp18 = sp8;
         var_f1_4095 = unksp1C;
         sp20 = sp10;
@@ -2367,19 +2369,19 @@ void TrainChaseSpyro::UpdateCartOrientation() {
 
     temp_r3_4148 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_4148 != 0) {
-        spA0.GetTrackZAxis(temp_r3_4148, this->unkE0);
+        ((TrainTrack *) &spA0)->GetTrackZAxis(temp_r3_4148, this->unkE0);
         temp_r4_4156 = this->unk8;
         spB0 = spA0;
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x30);
         spB8 = spA8;
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x38);
         M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        sp90.GetTrackPos(temp_r3_4148, this->unkE0, 0);
+        ((TrainTrack *) &sp90)->GetTrackPos(temp_r3_4148, this->unkE0, 0);
         spF0 = sp90;
         spF4 = sp94;
         spF8 = sp98;
         spFC = 1.0f;
-        sp80.GetTrackXAxis(temp_r3_4148, this->unkE0);
+        ((TrainTrack *) &sp80)->GetTrackXAxis(temp_r3_4148, this->unkE0);
         spC0 = sp80;
         sp38 = ((f32) spB0 * sp84) - (unkspB4 * sp80);
         sp30 = (unkspB4 * sp88) - ((f32) spB8 * sp84);
@@ -2519,8 +2521,8 @@ void TrainChaseSpyro::StateFlinchUpdate() {
     sp38 = 500.0f;
     sp3C = 500.0f;
     MKModel_CalculateCentre(this->unk4, &sp8);
-    this->unk288->StoreClosestProps(sp8, 1000.0f, 0x5E);
-    this->unk288->SendMessage((MKMessage *) &sp18, 0, 1500.0f);
+    ((Tools_SendMessageHelper *) this->unk288)->StoreClosestProps(sp8, 1000.0f, 0x5E);
+    ((Tools_SendMessageHelper *) this->unk288)->SendMessage((MKMessage *) &sp18, 0, 1500.0f);
     UpdateCameraInfo();
     if ((this->unk80->unk2C & 1) && (this->unk724->unk2C & 1)) {
         this->unk260.SetState(this, 1, 1U);
@@ -2584,8 +2586,8 @@ void TrainChaseSpyro::StateChaseUpdate() {
         sp38 = 500.0f;
         sp3C = 500.0f;
         MKModel_CalculateCentre(this->unk4, &sp8);
-        this->unk288->StoreClosestProps(sp8, 1000.0f, 0x5E);
-        this->unk288->SendMessage((MKMessage *) &sp18, 0, 1500.0f);
+        ((Tools_SendMessageHelper *) this->unk288)->StoreClosestProps(sp8, 1000.0f, 0x5E);
+        ((Tools_SendMessageHelper *) this->unk288)->SendMessage((MKMessage *) &sp18, 0, 1500.0f);
         UpdateCameraInfo();
     }
 }
@@ -2732,7 +2734,7 @@ void TrainChaseSpyro::UpdateSpyro() {
         sp110.unk38 = sp78.unk8;
         sp110.unk3C = 1.0f;
         spA8 = &sp110;
-        sp38.GetEffectsVelocity();
+        ((TrainChaseSpyro *) &sp38)->GetEffectsVelocity();
         sp88 = sp38;
         sp90 = sp40;
         spB4 = 0;
@@ -2742,7 +2744,7 @@ void TrainChaseSpyro::UpdateSpyro() {
         spBC = temp_r5_4911;
         spC4 = 0;
         spC5 = 1;
-        this->unk294->Update((SpyroEffectsUpdateData *) &sp88, GetInput());
+        ((SpyroEffects *) this->unk294)->Update((SpyroEffectsUpdateData *) &sp88, GetInput());
         this->unk2A8.Update();
         KDSound_Play(this->unk724, 0U);
     }
@@ -2764,9 +2766,9 @@ void TrainChaseSpyro::Update() {
 
     GameProp::Update();
     sp8 = 1;
-    this->unkE8.Update(GS_CartSparksLP, 1U, ((u8) this->unkE4 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkE8)->Update(GS_CartSparksLP, 1U, ((u8) this->unkE4 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk138.Update(GS_SpyroCartExtra4, 1U, ((u8) this->unkE4 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk138)->Update(GS_SpyroCartExtra4, 1U, ((u8) this->unkE4 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f2_4969 = this->unkD4;
     if (temp_f2_4969 <= 1800.0f) {
         KDSound_SetPitch(this->unk110, 0.9f);
@@ -2778,7 +2780,7 @@ void TrainChaseSpyro::Update() {
     if ((((u8) this->unkE4 >> 6U) & 1) && (this->unkD4 > 0.0f)) {
         var_r6_4989 = 1;
     }
-    this->unk110.Update(GS_Train1LP, 1U, var_r6_4989, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk110)->Update(GS_Train1LP, 1U, var_r6_4989, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk260.Update(this, 0);
     UpdateAnimEvents();
     var_r3_5014 = 0;
@@ -2801,7 +2803,7 @@ void TrainChaseSpyro::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void TrainChaseSpyro::Reset() {
     s32 spC;
     s32 sp8;
@@ -2810,7 +2812,7 @@ void TrainChaseSpyro::Reset() {
     void *temp_ret_5083;
 
     GameProp::Reset();
-    this->unk72C.Reset();
+    ((AttackerManager *) &this->unk72C)->Reset();
     this->unk728 = 0.0f;
     this->unk730 = 0.0f;
     this->unk734.unk0 = 0.0f;
@@ -2836,8 +2838,8 @@ void TrainChaseSpyro::Reset() {
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8);
         }
         this->unk284 = 0.0f;
-        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
-        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
+        ((Stat *) &GameData::gameData[0x70])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
+        ((Stat *) (&GameData::gameData[0x70] + 0x30))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
         temp_r7_5134 = this->unk8;
         this->unk1E8 = M2C_FIELD(temp_r7_5134, f64 *, 0x30);
         this->unk1E8 = M2C_FIELD(temp_r7_5134, f64 *, 0x38);
@@ -2846,10 +2848,10 @@ void TrainChaseSpyro::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: undefined identifier 'unk2C4'
 void TrainChaseSpyro::Resolve() {
     KDPropEx::Resolve();
-    this->unk294->Init(gb.unk2C4, (MKProp *) this, &this->unk2A8);
+    ((SpyroEffects *) this->unk294)->Init(gb.unk2C4, (MKProp *) this, &this->unk2A8);
 }
 #endif
 
@@ -2896,7 +2898,7 @@ void TrainChaseSpyro::LoadDone() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &lit_747 + 0x130;
     }
     this->unk294 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk72C.Init(0xF);
+    ((AttackerManager *) &this->unk72C)->Init(0xF);
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
     this->unk274 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "spyro");
     this->unk278 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "rearwheel_l");
@@ -2909,17 +2911,17 @@ void TrainChaseSpyro::LoadDone() {
     this->unk178 = sp28.unk8;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r25_5291), (void (*)(MKDynamicBone *, void *)) &TrainChaseSpyro::UpdateWheelBone, &this->unk170);
     temp_r26_5314 = Tools_GetMatchingNodeIndex(this->unk4, "rearwheel_R");
-    sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &sp18)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     this->unk188 = sp18;
     this->unk190 = sp20;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r26_5314), (void (*)(MKDynamicBone *, void *)) &TrainChaseSpyro::UpdateWheelBone, &this->unk188);
     temp_r26_5337 = Tools_GetMatchingNodeIndex(this->unk4, "frontwheel");
-    sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     this->unk1A0 = sp8;
     this->unk1A8 = sp10;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r26_5337), (void (*)(MKDynamicBone *, void *)) &TrainChaseSpyro::UpdateWheelBone, &this->unk1A0);
     this->unk80->InitEvents(&lit_747 + 0x104);
-    this->unk280 = checked_cast<LightProp *, MKProp>(gMK->CreateProp("TrainTrackLight"));
+    this->unk280 = checked_cast<LightProp *, MKProp>(((MKSceneManager *) gMK)->CreateProp("TrainTrackLight"));
     this->unk1B8.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unk1B8.Show(1U);
     Init__33KDStateMachine<15TrainChaseSpyro>FPQ233KDStateMachine<15TrainChaseSpyro>5StateP33KDStateMachine<15TrainChaseSpyro>(&this->unk260, &lit_747 + 0x48, NULL);
@@ -2964,8 +2966,8 @@ void TrainChaseSpyro::Deinit() {
     operator delete(M2C_BITWISE(void *, this->unk28C));
     this->unk1B8.Deinit();
     this->unk2A8.Deinit();
-    this->unk72C.Deinit();
-    this->unk294->Deinit();
+    ((AttackerManager *) &this->unk72C)->Deinit();
+    ((SpyroEffects *) this->unk294)->Deinit();
     operator delete(this->unk294);
     this->unk294 = NULL;
     this->unk724->Destroy();
@@ -3012,7 +3014,7 @@ void TrainChaseSpyro::Init() {
     this->unk1B4 = 0.0f;
     operator new(0x7FCU, NULL, 0);
     this->unk288 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk288->ClearData();
+    ((Tools_SendMessageHelper *) this->unk288)->ClearData();
     M2C_FIELD(this, s32 *, 0x1F8) = 0;
     M2C_FIELD(this, s32 *, 0x1FC) = 0;
     this->unk1F8 = NULL;
@@ -3023,9 +3025,9 @@ void TrainChaseSpyro::Init() {
     this->unk168 = 0.0f;
     this->unk160 = 0;
     this->unk164 = 0;
-    this->unkE8.Init(0.25f, 0.5f);
-    this->unk110.Init(0.25f, 0.25f);
-    this->unk138.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkE8)->Init(0.25f, 0.5f);
+    ((KDSoundFader *) &this->unk110)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk138)->Init(0.25f, 0.25f);
     this->unk730 = 0.0f;
     this->unk734.unk0 = 0.0f;
     this->unk738 = 0.0f;

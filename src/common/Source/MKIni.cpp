@@ -417,18 +417,16 @@ s32 MKIniLine::AsFlag(int arg0, int *arg1) {
     return 1;
 }
 
-#if 0 // DRAFT: pointer/array required
 void MKIniLine::GetVector3(int arg0) {
     f64 sp10;
     f64 sp8;
 
     sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg0->AsVector3(M2C_ERROR(/* Read from unset register $r5 */), (MKVector3 *) &sp8);
+    ((MKIniLine *) arg0)->AsVector3(M2C_ERROR(/* Read from unset register $r5 */), (MKVector3 *) &sp8);
     M2C_FIELD(this, f64 *, 0) = sp8;
     M2C_FIELD(this, f64 *, 8) = sp10;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 f32 MKIniLine::GetFloat(int arg0) {

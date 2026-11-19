@@ -9,6 +9,7 @@
 #include "spyro/source/Coronas.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -220,7 +221,7 @@ void Collectable2::Message(MKMessage *arg0) {
         sp20 = (f64) sp10;
         sp30 = (f64) sp10;
         if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < (temp_f4_347 * temp_f4_347)) {
-            ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->Add(2.0f, 1U);
+            ((Stat *) &GameData::gameData[0xA0])->Add(2.0f, 1U);
         }
     }
 }
@@ -383,7 +384,7 @@ void Collectable2::Update() {
     sp250.Multiply3x3(&sp250, &sp1D0);
     MKModel_SetWorldMatrix(this->unk4, sp250);
     sp14 = 0.0f;
-    spE8.GetMeasure(this->unk60, (Matrix *) &this->unk4C, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE8)->GetMeasure(this->unk60, (Matrix *) &this->unk4C, KDSpline_PositionMixer);
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &spE8));
     temp_r4_605 = this->unk74;
     if (temp_r4_605 != NULL) {

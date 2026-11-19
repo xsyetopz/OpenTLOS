@@ -12,11 +12,11 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKView.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
@@ -225,7 +225,7 @@ s32 Catapult::CanLoadBall() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp80'
 void Catapult::SetBall(Ball *arg0) {
     f64 spB0;
     f64 spA8;
@@ -258,7 +258,7 @@ void Catapult::SetBall(Ball *arg0) {
     temp_r5_113 = M2C_FIELD(this, Ball **, 0x12C)->unk8;
     spA8 = M2C_FIELD(temp_r5_113, f64 *, 0x30);
     spB0 = M2C_FIELD(temp_r5_113, f64 *, 0x38);
-    sp78.GetAmmoPos();
+    ((Catapult *) &sp78)->GetAmmoPos();
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 100.0f;
@@ -283,9 +283,9 @@ void Catapult::SetBall(Ball *arg0) {
     sp90 = (f64) sp10;
     this->unk118.unk4 = 0.0f;
     this->unk118.unk0 = 0;
-    this->unk114.AddNode(*((MKVector3 *) &spA8));
-    this->unk114.AddNode(*((MKVector3 *) &sp88));
-    this->unk114.AddNode(*((MKVector3 *) &sp98));
+    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &spA8));
+    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &sp88));
+    ((KDUniformSpline *) &this->unk114)->AddNode(*((MKVector3 *) &sp98));
     this->unk134 = 0.0f;
     SetState((Catapult::State) 1);
 }
@@ -311,7 +311,7 @@ void Catapult::GetAmmoPos() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unkF8'
 void Catapult::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -323,7 +323,7 @@ void Catapult::Message(MKMessage *arg0) {
     void *temp_r31_293;
     void *temp_r3_298;
 
-    this->unkA0.Message(arg0);
+    ((KDSoundPlayer *) &this->unkA0)->Message(arg0);
     temp_r0_268 = arg0->unk0;
     switch (temp_r0_268) {                          /* irregular */
     default:
@@ -450,7 +450,7 @@ void Catapult::WindBackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spA8'
 void Catapult::FireUpdate() {
     Matrix spD0;
     f64 spC8;
@@ -477,12 +477,12 @@ void Catapult::FireUpdate() {
     Ball *temp_r30_546;
     Ball *temp_r3_576;
 
-    spA0.GetAmmoPos();
+    ((Catapult *) &spA0)->GetAmmoPos();
     temp_r30_546 = M2C_FIELD(this, Ball **, 0x12C);
     spC0 = spA0;
     spC8 = spA8;
     if (temp_r30_546 != NULL) {
-        sp50.GetAmmoDir();
+        ((Catapult *) &sp50)->GetAmmoDir();
         sp60.operator*(temp_r30_546->unk270);
         sp70.operator*(temp_r30_546->unk27C);
         sp80.operator*(0.5f);
@@ -538,7 +538,7 @@ void Catapult::FireEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void Catapult::LoadAmmoUpdate() {
     f64 sp78;
     KDUniformSpline sp60;
@@ -564,7 +564,7 @@ void Catapult::LoadAmmoUpdate() {
     this->unk134 = var_f3_770;
     temp_r31_779 = M2C_FIELD(this, void **, 0x12C);
     if (temp_r31_779 != NULL) {
-        sp20.GetAmmoDir();
+        ((Catapult *) &sp20)->GetAmmoDir();
         sp30.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x274));
         sp40.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x280));
         sp50.operator*(0.5f);
@@ -600,7 +600,7 @@ void Catapult::IdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp18'
 void Catapult::Update() {
     f64 sp10;
     s32 sp8;
@@ -608,7 +608,7 @@ void Catapult::Update() {
     f32 var_f1_923;
     void *temp_r4_933;
 
-    sp10.GetAmmoPos();
+    ((Catapult *) &sp10)->GetAmmoPos();
     this->unk90 = sp10;
     this->unk98 = sp18;
     KDProp::Update();
@@ -624,12 +624,12 @@ void Catapult::Update() {
         KDSound_SetPitch(this->unkA0, var_f1_923);
         temp_r4_933 = checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unkA0.Update(M2C_FIELD(temp_r4_933, s32 *, 0x84), 1U, M2C_FIELD(this, u8 *, 0x14C), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkA0)->Update(M2C_FIELD(temp_r4_933, s32 *, 0x84), 1U, M2C_FIELD(this, u8 *, 0x14C), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void Catapult::Reset() {
     f64 sp8;
 
@@ -639,7 +639,7 @@ void Catapult::Reset() {
     this->unk134 = 0.0f;
     this->unk138 = 1.0f;
     M2C_FIELD(this, s32 *, 0x12C) = 0;
-    sp8.GetAmmoPos();
+    ((Catapult *) &sp8)->GetAmmoPos();
     this->unk90 = sp8;
     this->unk98 = sp10;
     SetState((Catapult::State) 0);
@@ -715,7 +715,7 @@ void Catapult::Deinit() {
         } while (var_ctr_1153 != 0);
     }
     this->unkF8.Deinit();
-    this->unk114.Deinit();
+    ((KDUniformSpline *) &this->unk114)->Deinit();
     this->unkC8.Deinit();
     KDSound_Stop(&this->unkA0);
     temp_r3_1174 = this->unk144;
@@ -726,23 +726,21 @@ void Catapult::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Init(Catapult *, int, unsigned int)' does not match
 void Catapult::Init() {
     KDProp::Init();
-    this->unk114.Init(3, 0U);
-    this->unkA0.Init(0.25f, 0.25f);
+    ((KDUniformSpline *) &this->unk114)->Init(3, 0U);
+    ((KDSoundFader *) &this->unkA0)->Init(0.25f, 0.25f);
     M2C_FIELD(this, s8 *, 0x14D) = 0xFF;
     this->unk13C = 1.0f;
     this->unk144 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CatapultDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk7C = this->unk34->GetAnim("fire");
-    this->unk74 = this->unk34->GetAnim("windup");
-    this->unk78 = this->unk34->GetAnim("loaded");
+    this->unk7C = ((MKAnimScript *) this->unk34)->GetAnim("fire");
+    this->unk74 = ((MKAnimScript *) this->unk34)->GetAnim("windup");
+    this->unk78 = ((MKAnimScript *) this->unk34)->GetAnim("loaded");
     this->unk70 = MKModel_GetRefPointIndex(this->unk2C, "r_ammo");
 }
 #endif

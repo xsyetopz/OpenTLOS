@@ -99,7 +99,7 @@ void SnowballTree::LoadDone() {
 
     KDProp::LoadDone();
     MKVector(0.0f, 600.0f, 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     var_r28_232 = 0;
     var_r31_234 = 0;
@@ -152,7 +152,6 @@ void SnowballTree::Init() {
     this->unkC0 = 200.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
 void SnowballTreeDescriptor::LoadDone() {
     s8 *temp_r30_426;
     s8 *temp_r30_443;
@@ -164,21 +163,20 @@ void SnowballTreeDescriptor::LoadDone() {
     this->unk74 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ballspawn02");
     this->unk78 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ballspawn03");
     temp_r30_426 = this->unk34;
-    if (temp_r30_426->Exists("idle") != 0) {
-        var_r3_435 = temp_r30_426->GetAnim("idle");
+    if (((MKAnimScript *) temp_r30_426)->Exists("idle") != 0) {
+        var_r3_435 = ((MKAnimScript *) temp_r30_426)->GetAnim("idle");
     } else {
         var_r3_435 = NULL;
     }
     this->unk88 = (s32) var_r3_435;
     temp_r30_443 = this->unk34;
-    if (temp_r30_443->Exists("hit") != 0) {
-        var_r3_453 = temp_r30_443->GetAnim("hit");
+    if (((MKAnimScript *) temp_r30_443)->Exists("hit") != 0) {
+        var_r3_453 = ((MKAnimScript *) temp_r30_443)->GetAnim("hit");
     } else {
         var_r3_453 = NULL;
     }
     this->unk8C = (s32) var_r3_453;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 SnowballTreeDescriptor::LoadLine(MKIniLine *arg0) {

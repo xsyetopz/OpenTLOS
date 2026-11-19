@@ -1,10 +1,12 @@
 #include "spyro/source/FuryFXFire.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Coronas.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
@@ -13,6 +15,7 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "spyro/source/Spyro.h"
@@ -54,7 +57,7 @@ static u8 lit_910 = 0;
 
 static u8 lit_1163 = 0;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unkD0'
 void FuryFXFire::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -69,7 +72,7 @@ void FuryFXFire::ResetFury() {
     SetDefaults();
     temp_r4_63 = this->unkE8;
     if (temp_r4_63 != NULL) {
-        gb.unk80->EnableLight(temp_r4_63, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_63, 0U);
     }
     gb.unkD0 = 0;
     gb.unk2CC.Disable(this->unk2E8);
@@ -265,13 +268,13 @@ void FuryFXFire::Deinit() {
     MKMaterial_Destroy(this->unkE0);
     temp_r4_382 = this->unkE8;
     if (temp_r4_382 != NULL) {
-        gb.unk80->EnableLight(temp_r4_382, 0U);
-        gb.unk80->FreeManagedLight(this->unkE8);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_382, 0U);
+        ((LightManager *) gb.unk80)->FreeManagedLight(this->unkE8);
         this->unkE8 = NULL;
     }
     temp_r4_396 = this->unkF4;
     if (temp_r4_396 != NULL) {
-        gb.unk64->Free(temp_r4_396);
+        ((Coronas *) gb.unk64)->Free(temp_r4_396);
         this->unkF4 = NULL;
     }
     MKModel_Destroy(this->unkEC);
@@ -978,7 +981,7 @@ void FuryFXFire::Update() {
                 }
                 temp_r4_1131 = this->unkE8;
                 if (temp_r4_1131 != NULL) {
-                    gb.unk80->EnableLight(temp_r4_1131, 1U);
+                    ((LightManager *) gb.unk80)->EnableLight(temp_r4_1131, 1U);
                 }
                 var_r28_1141 = 0;
                 var_r29_1143 = 0;
@@ -1119,7 +1122,7 @@ loop_71:
                         sp318 = 0.0f;
                         sp720 = (f64) sp310;
                         sp728 = (f64) sp318;
-                        gb.unk74->Emit(*((MKVector3 *) &sp860), *((MKVector3 *) &sp720), sp24, *((MKVector4 *) &sp710), 100.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp860), *((MKVector3 *) &sp720), sp24, *((MKVector4 *) &sp710), 100.0f);
                     } else {
                         temp_f20_1542 = MKRand_Float(&gViewSeed, 0.3f, 1.9f);
                         sp2E4 = MKRand_Float(&gViewSeed, 0.1f, 0.2f);
@@ -1134,7 +1137,7 @@ loop_71:
                         sp2F8 = 0.0f;
                         sp700 = (f64) sp2F0;
                         sp708 = (f64) sp2F8;
-                        gb.unk74->Emit(*((MKVector3 *) &sp860), *((MKVector3 *) &sp700), sp20, *((MKVector4 *) &sp6F0), 100.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp860), *((MKVector3 *) &sp700), sp20, *((MKVector4 *) &sp6F0), 100.0f);
                     }
                     var_r26_1414 += 1;
                     goto loop_71;
@@ -1240,7 +1243,7 @@ loop_87:
                     sp298 = 0.0f;
                     sp610 = (f64) sp290;
                     sp618 = (f64) sp298;
-                    gb.unk74->Emit(*((MKVector3 *) &sp850), *((MKVector3 *) &sp610), sp1C, *((MKVector4 *) &sp600), 100.0f);
+                    ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp850), *((MKVector3 *) &sp610), sp1C, *((MKVector4 *) &sp600), 100.0f);
                 } else {
                     temp_f20_1878 = MKRand_Float(&gViewSeed, 0.3f, 1.9f);
                     sp264 = MKRand_Float(&gViewSeed, 0.1f, 0.2f);
@@ -1255,7 +1258,7 @@ loop_87:
                     sp278 = 0.0f;
                     sp5F0 = (f64) sp270;
                     sp5F8 = (f64) sp278;
-                    gb.unk74->Emit(*((MKVector3 *) &sp850), *((MKVector3 *) &sp5F0), sp18, *((MKVector4 *) &sp5E0), 100.0f);
+                    ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp850), *((MKVector3 *) &sp5F0), sp18, *((MKVector4 *) &sp5E0), 100.0f);
                 }
                 var_r26_1750 += 1;
                 goto loop_87;
@@ -1513,7 +1516,7 @@ loop_87:
                 this->unk100 = 1.4f;
                 temp_r4_2586 = this->unkE8;
                 if (temp_r4_2586 != NULL) {
-                    gb.unk80->EnableLight(temp_r4_2586, 0U);
+                    ((LightManager *) gb.unk80)->EnableLight(temp_r4_2586, 0U);
                 }
                 if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
                     sp2C = 0;
@@ -1587,7 +1590,7 @@ loop_156:
                         sp19C = 1.0f;
                         sp390 = (f64) sp190;
                         sp398 = (f64) sp198;
-                        gb.unk74->Emit(*((MKVector3 *) &sp810), *((MKVector3 *) &sp3A0), sp14, *((MKVector4 *) &sp390), -400.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp810), *((MKVector3 *) &sp3A0), sp14, *((MKVector4 *) &sp390), -400.0f);
                     } else {
                         sp180 = sp820 * 5.676053805e-315;
                         sp188 = (f32) sp828 * 1000.0f;
@@ -1601,7 +1604,7 @@ loop_156:
                         sp17C = 1.0f;
                         sp370 = (f64) sp170;
                         sp378 = (f64) sp178;
-                        gb.unk74->Emit(*((MKVector3 *) &sp810), *((MKVector3 *) &sp380), sp10, *((MKVector4 *) &sp370), -400.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp810), *((MKVector3 *) &sp380), sp10, *((MKVector4 *) &sp370), -400.0f);
                     }
                     var_r24_2650 += 1;
                     goto loop_156;
@@ -1691,10 +1694,10 @@ void FuryFXFire::Resolve() {
     spB0 = (f64) sp50;
     spB8 = (f64) sp58;
     spC0 = (f64) sp60;
-    this->unkE8 = gb.unk80->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762);
+    this->unkE8 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762);
     temp_r4_2975 = this->unkE8;
     if (temp_r4_2975 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2975, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2975, 0U);
     }
     sp18 = 1.0f;
     sp1C = 1.0f;
@@ -1707,7 +1710,7 @@ void FuryFXFire::Resolve() {
     sp80 = (f64) sp20;
     sp88 = (f64) sp28;
     sp90 = (f64) sp30;
-    this->unkF4 = gb.unk64->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767);
+    this->unkF4 = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767);
     temp_r4_3009 = this->unkF4;
     if (temp_r4_3009 != NULL) {
         temp_r4_3009->unk31 &= ~0x40;
@@ -1751,7 +1754,7 @@ void FuryFXFire::Init() {
     var_r29_3123 = 0;
     var_r31_3124 = 0;
     do {
-        gMK->CreatePropDeferred("ShapedTrailFX", this + (var_r31_3124 + 0x130));
+        ((MKSceneManager *) gMK)->CreatePropDeferred("ShapedTrailFX", this + (var_r31_3124 + 0x130));
         var_r29_3123 += 1;
         var_r31_3124 += 0x80;
     } while (var_r29_3123 < 3);

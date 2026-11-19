@@ -1,5 +1,6 @@
 #include "spyro/source/Ball.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKCollisionResult.h"
@@ -8,6 +9,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/BoulderRamp.h"
 #include "spyro/source/Catapult.h"
 #include "spyro/source/CrashMistPS.h"
 #include "spyro/source/Game.h"
@@ -16,19 +18,20 @@
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/SiegeTower.h"
 #include "spyro/source/SnowballTree.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/BoulderRamp.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -730,7 +733,7 @@ void Ball::CheckForRamps() {
 loop_12:
         if (var_r30_1203 < temp_r31_1202) {
             temp_r3_1208 = BoulderRamp_GetCatapult((s32) this->unk2A4, var_r30_1203);
-            if ((temp_r3_1208 != 0) && (temp_r3_1208->HasBoulder() == 0)) {
+            if ((temp_r3_1208 != 0) && (((BoulderRamp *) temp_r3_1208)->HasBoulder() == 0)) {
                 temp_r4_1214 = this->unk8;
                 temp_r3_1215 = M2C_FIELD(temp_r3_1208, void **, 8);
                 temp_f7_1216 = M2C_FIELD(temp_r4_1214, f64 *, 0x30);
@@ -757,7 +760,7 @@ loop_12:
                     sp80 = (f64) sp10;
                     temp_f3_1272 = 100.0f * (4.5f * this->unk27C);
                     if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C))) < (temp_f3_1272 * temp_f3_1272)) {
-                        temp_r3_1208->SetBoulder(this);
+                        ((BoulderRamp *) temp_r3_1208)->SetBoulder(this);
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
                         }
@@ -812,7 +815,7 @@ void Ball::CheckForCatapults() {
 loop_15:
         if (var_r28_1330 < temp_r30_1329) {
             temp_r3_1335 = Catapult_GetCatapult((s32) this->unk2A4, var_r28_1330);
-            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (temp_r3_1335->CanLoadBall() != 0)) {
+            if ((temp_r3_1335 != 0) && ((u32) M2C_FIELD(temp_r3_1335, u32 *, 0x12C) == 0U) && (((Catapult *) temp_r3_1335)->CanLoadBall() != 0)) {
                 temp_r4_1344 = this->unk8;
                 temp_r3_1345 = M2C_FIELD(temp_r3_1335, void **, 8);
                 temp_f5_1346 = M2C_FIELD(temp_r4_1344, f64 *, 0x30);
@@ -829,7 +832,7 @@ loop_15:
                 if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 1000000.0f) {
                     sp28 = temp_f5_1346;
                     sp30 = temp_f4_1348;
-                    sp38.GetAmmoPos();
+                    ((Catapult *) &sp38)->GetAmmoPos();
                     temp_f0_1385 = sp38 - sp28;
                     sp8 = temp_f0_1385;
                     sp78 = temp_f0_1385;
@@ -842,7 +845,7 @@ loop_15:
                             KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC), temp_r29_1418, 0U, -1, 0.0f, 0U);
                         }
                         this->unk228 = temp_r3_1335;
-                        this->unk228->SetBall(this);
+                        ((Catapult *) this->unk228)->SetBall(this);
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
                         }
@@ -1097,7 +1100,7 @@ void Ball::CheckForHero() {
                     sp168 = temp_f0_1827;
                     sp60 = (f32) sp110 - (f32) sp100;
                     sp170 = (f64) sp60;
-                    spD8.GetPos();
+                    ((MKProp *) &spD8)->GetPos();
                     sp38 = sp168 - spD8;
                     sp178 = sp38;
                     sp40 = (f32) sp170 - spE0;
@@ -1590,7 +1593,7 @@ void Ball::UpdateMeltingGrowing() {
         spC8 = (f64) sp48;
         spD0 = (f64) sp50;
         sp10 = 3.0f * this->unk27C;
-        gb.unk6C->Emit(*((MKVector3 *) &sp138), *((MKVector3 *) &spC8), sp10, 0U, 1U, NULL);
+        ((WaterDripPS *) gb.unk6C)->Emit(*((MKVector3 *) &sp138), *((MKVector3 *) &spC8), sp10, 0U, 1U, NULL);
         sp28 = (f64) M2C_FIELD(&MKVector3::up, f32 *, 0) * 5.56078426e-315;
         spB8 = sp28;
         sp30 = MKVector3::up.unk8 * 150.0f;
@@ -2088,7 +2091,7 @@ void Ball::UpdatePhysics() {
                 sp458 -= M2C_BITWISE(f64, sp388);
                 sp460 = (f32) sp460 - sp388.unk8;
                 sp358.operator*(0.1f + temp_f29_3044);
-                sp368.GetPos();
+                ((MKProp *) &sp368)->GetPos();
                 spC8 = sp368 + M2C_BITWISE(f64, sp358);
                 this->unkE0 = spC8;
                 spD0 = sp370 + sp358.unk8;
@@ -2665,8 +2668,8 @@ void Ball::Message(MKMessage *arg0) {
     void *temp_r3_4892;
     void *temp_r4_4476;
 
-    this->unk1D8.Message(arg0);
-    this->unk200.Message(arg0);
+    ((KDSoundPlayer *) &this->unk1D8)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk200)->Message(arg0);
     temp_r0_4404 = arg0->unk0;
     switch (temp_r0_4404) {                         /* switch 1; irregular */
     case 224:                                       /* switch 1 */
@@ -2948,7 +2951,7 @@ void Ball::Update() {
             if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108) != 0) {
                 temp_r4_5025 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                 sp8 = 1;
-                this->unk1D8.Update(M2C_FIELD(temp_r4_5025, s32 *, 0x108), 1U, 0U, (MKProp *) this, NULL, M2C_BITWISE(u32, this->unk2A0), -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                ((KDSoundFader *) &this->unk1D8)->Update(M2C_FIELD(temp_r4_5025, s32 *, 0x108), 1U, 0U, (MKProp *) this, NULL, M2C_BITWISE(u32, this->unk2A0), -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             }
             M2C_FIELD(this, u8 *, 0x2AC) = (u8) (M2C_FIELD(this, u8 *, 0x2AC) & ~0x20);
         } else {
@@ -2992,12 +2995,12 @@ void Ball::Update() {
         }
         temp_r4_5126 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk1D8.Update(M2C_FIELD(temp_r4_5126, s32 *, 0x108), 1U, var_r30_5115, (MKProp *) this, NULL, M2C_BITWISE(u32, this->unk2A0), -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk1D8)->Update(M2C_FIELD(temp_r4_5126, s32 *, 0x108), 1U, var_r30_5115, (MKProp *) this, NULL, M2C_BITWISE(u32, this->unk2A0), -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF8) != 0) {
         temp_r4_5146 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk200.Update(M2C_FIELD(temp_r4_5146, s32 *, 0xF8), 1U, this->unk270 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk200)->Update(M2C_FIELD(temp_r4_5146, s32 *, 0xF8), 1U, this->unk270 == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     M2C_FIELD(this, u8 *, 0x2AC) = (u8) (M2C_FIELD(this, u8 *, 0x2AC) & ~0x20);
 }
@@ -3025,7 +3028,7 @@ void Ball::Reset() {
     this->unk118 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     temp_r3_5204 = this->unk228;
     if ((u32) temp_r3_5204 != 0U) {
-        temp_r3_5204->Unload();
+        ((Catapult *) temp_r3_5204)->Unload();
     }
     this->unk228 = 0;
     this->unk27C = 1.0f;
@@ -3128,16 +3131,16 @@ void Ball::PutInTree() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void Ball::Resolve() {
     void *temp_r31_5414;
     void *temp_r31_5423;
 
     KDPropEx::Resolve();
     temp_r31_5414 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk1D8.Init(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C), M2C_FIELD(temp_r31_5414, f32 *, 0x110));
+    ((KDSoundFader *) &this->unk1D8)->Init(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C), M2C_FIELD(temp_r31_5414, f32 *, 0x110));
     temp_r31_5423 = checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk200.Init(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x114), M2C_FIELD(temp_r31_5423, f32 *, 0x118));
+    ((KDSoundFader *) &this->unk200)->Init(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x114), M2C_FIELD(temp_r31_5423, f32 *, 0x118));
     if (!(((u8) M2C_FIELD(this, u8 *, 0x2AC) >> 3U) & 1)) {
         SetGroup((s32) this->unk2A4);
     }
@@ -3159,7 +3162,7 @@ void Ball::LoadDone() {
     MKModel_GetPosition(this->unk4);
     this->unkD0 = *M2C_ERROR(/* Read from unset register $r3 */);
     this->unkD8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
-    this->unkC8.RegisterTargetable();
+    ((Targetable *) &this->unkC8)->RegisterTargetable();
     temp_f1_5474 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0xC);
     sp8 = 1.0f;
     spC = 1.0f;
@@ -3192,7 +3195,7 @@ void Ball::Deinit() {
     }
     KDSound_Stop(&this->unk1D8);
     KDSound_Stop(&this->unk200);
-    this->unkC8.UnregisterTargetable();
+    ((Targetable *) &this->unkC8)->UnregisterTargetable();
     if ((Ball *) pDribblee == this) {
         pDribblee = NULL;
     }
@@ -3256,7 +3259,7 @@ void Ball::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void BallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unk120 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp("CrashMistPS"));
+    this->unk120 = checked_cast<CrashMistPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CrashMistPS"));
 }
 #endif
 

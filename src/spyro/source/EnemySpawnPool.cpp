@@ -234,7 +234,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void EnemySpawnPool_Init() {
     MKHeap *temp_r3_332;
     MKHeap *temp_r3_377;
@@ -274,7 +274,7 @@ void EnemySpawnPool_Init() {
     pSpawnPools = NULL;
     if (temp_r3_325 > 0) {
         temp_r24_331 = temp_r3_325 * 8;
-        temp_r3_332 = temp_r3_325->Current();
+        temp_r3_332 = ((MKHeap *) temp_r3_325)->Current();
         if (temp_r3_332 != NULL) {
             var_r3_339 = ((MKHeap *) (temp_r3_332->Current()))->Alloc(temp_r24_331, NULL, 0);
         } else {

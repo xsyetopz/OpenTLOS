@@ -1,5 +1,6 @@
 #include "spyro/source/Crate.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKIni.h"
@@ -13,8 +14,10 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDShatter2.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/ShockWave.h"
 #include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
@@ -146,10 +149,10 @@ loop_7:
         if (strnicmp(temp_r3_233, "", 2) == 0) {
             MKModel_EnableSubObject(this->unk80->unk4, (SubObjectType) 0, var_r28_226, 0U, 1U);
             if (((s8 *) pCollisionName != NULL) && (stricmp(temp_r3_233) == 0)) {
-                this->unk80->AddCollisionSubObject(var_r28_226, (MKCollisionInfo *) &this->unk68);
+                ((KDProp *) this->unk80)->AddCollisionSubObject(var_r28_226, (MKCollisionInfo *) &this->unk68);
             } else {
                 temp_r3_260 = this->unk80;
-                temp_r3_260->AddCollisionSubObject(var_r28_226, temp_r3_260 + 0x70);
+                ((KDProp *) temp_r3_260)->AddCollisionSubObject(var_r28_226, temp_r3_260 + 0x70);
             }
         }
         var_r28_226 += 1;
@@ -494,7 +497,7 @@ void Crate::SpawnContents() {
 loop_6:
     if (var_r30_913 < (s32) this->unk17C) {
         temp_r29_917 = M2C_FIELD(this, s32 *, 0x17C);
-        if (((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) temp_r29_917) != 0) {
+        if (((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) temp_r29_917) != 0) {
             temp_r0_923 = this->unk180;
             var_r6_924 = -1;
             if (temp_r0_923 > -1) {
@@ -641,7 +644,7 @@ void Crate::Message(MKMessage *arg0) {
         }
     default:
 block_38:
-        this->unk190.Message(arg0);
+        ((PlatformObject *) &this->unk190)->Message(arg0);
         GameProp::Message(arg0);
         return;
     case 0xBA:
@@ -687,11 +690,11 @@ block_38:
         this->unkC8 = 1;
         goto block_38;
     case 0xD5:
-        this->unk190.Message(arg0);
+        ((PlatformObject *) &this->unk190)->Message(arg0);
         GameProp::Message(arg0);
         if (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C) > 0.0f) {
             temp_f31_1310 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
-            temp_r3_1311 = gb->GetPosPtr();
+            temp_r3_1311 = ((HeroInterface *) gb)->GetPosPtr();
             temp_r4_1313 = this->unk8 + 0x30;
             sp8 = M2C_FIELD(temp_r4_1313, f64 *, 0) - M2C_FIELD(temp_r3_1311, f64 *, 0);
             sp18 = sp8;
@@ -772,7 +775,7 @@ void Crate::Update() {
             if (this->unk16C <= 0.0f) {
                 this->unk70.unk4 = 0;
                 temp_f31_1509 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
-                temp_r3_1510 = ((HeroInterface *) ((HeroInterface *) M2C_FIELD(&gb, void ***, 0)))->GetPosPtr();
+                temp_r3_1510 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPosPtr();
                 temp_r4_1512 = this->unk8 + 0x30;
                 sp10 = M2C_FIELD(temp_r4_1512, f64 *, 0) - M2C_FIELD(temp_r3_1510, f64 *, 0);
                 sp30 = sp10;
@@ -897,7 +900,7 @@ void Crate::LoadDone() {
 
     GameProp::LoadDone();
     this->unkE0.LoadDone();
-    this->unk190.LoadDone((MKProp *) this, NULL);
+    ((PlatformObject *) &this->unk190)->LoadDone((MKProp *) this, NULL);
     temp_r29_1769 = M2C_FIELD(this, u32 *, 0x17C);
     M2C_FIELD(this, u32 *, 0x17C) = 0U;
 loop_3:
@@ -933,7 +936,7 @@ loop_3:
     this->unkD0 = M2C_FIELD(temp_r3_1865, f64 *, 0x30);
     this->unkD8 = M2C_FIELD(temp_r3_1865, f64 *, 0x38);
     if (((u8) M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x1B8) != 0) && (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x1C0) > 0.0f)) {
-        gMK->CreatePropDeferred("", (MKProp **) &this->unk1D8);
+        ((MKSceneManager *) gMK)->CreatePropDeferred("", (MKProp **) &this->unk1D8);
     }
 }
 #endif
@@ -970,7 +973,7 @@ loop_3:
         MKModel_Destroy((MKModel *) temp_r3_1976);
     }
     this->unk184 = 0;
-    this->unk190.Deinit();
+    ((PlatformObject *) &this->unk190)->Deinit();
     this->unkE0.Deinit();
     GameProp::Deinit();
 }
@@ -1000,7 +1003,7 @@ void Crate::Init() {
     this->unk1D8 = NULL;
     this->unk184 = 0;
     this->unk16C = 0.0f;
-    this->unk190.Init(checked_cast<P15CrateDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x110, &this->unk70);
+    ((PlatformObject *) &this->unk190)->Init(checked_cast<P15CrateDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x110, &this->unk70);
 }
 #endif
 

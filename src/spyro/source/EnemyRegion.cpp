@@ -104,7 +104,7 @@ loop_5:
             sp130.GetPos((s32) &this->unk10);
             sp180 = M2C_BITWISE(f64, sp130);
             sp188 = sp130.unk8;
-            sp120.GetPos((s32) &this->unk10);
+            ((BoundingRegion *) &sp120)->GetPos((s32) &this->unk10);
             sp170 = sp120;
             sp178 = sp128;
             Tools_GetClosestPtOnLine2D(sp110, *((MKVector3 *) &sp180), *((MKVector3 *) &sp170));
@@ -123,10 +123,10 @@ loop_5:
             var_r24_53 += 1;
             goto loop_5;
         }
-        sp100.GetPos((s32) &this->unk10);
+        ((BoundingRegion *) &sp100)->GetPos((s32) &this->unk10);
         sp180 = sp100;
         sp188 = sp108;
-        spF0.GetPos((s32) &this->unk10);
+        ((BoundingRegion *) &spF0)->GetPos((s32) &this->unk10);
         sp170 = spF0;
         sp178 = spF8;
         Tools_GetClosestPtOnLine2D(spE0, *((MKVector3 *) &sp180), *((MKVector3 *) &sp170));
@@ -144,7 +144,7 @@ loop_5:
         M2C_FIELD(arg1, f64 *, 8) = sp198;
         if (arg2 != NULL) {
             spA0.GetPos((s32) &this->unk10);
-            spA0.unk10.GetPos((s32) &this->unk10);
+            ((BoundingRegion *) &spA0.unk10)->GetPos((s32) &this->unk10);
             var_f4_170 = 0.0f;
             sp54 = 0.0f;
             sp50 = spA0.unk10 - M2C_BITWISE(f32, spA0);
@@ -334,7 +334,7 @@ loop_6:
             sp100.GetPos((s32) &this->unk10);
             sp150 = M2C_BITWISE(f64, sp100);
             sp158 = sp100.unk8;
-            spF0.GetPos((s32) &this->unk10);
+            ((BoundingRegion *) &spF0)->GetPos((s32) &this->unk10);
             sp140 = spF0;
             sp148 = spF8;
             if ((Tools_Line2DToLine2DIntersect(arg0, arg1, *((MKVector3 *) &sp150), *((MKVector3 *) &sp140), &spC) != 0) && (spC < var_f30_473)) {
@@ -344,10 +344,10 @@ loop_6:
             var_r25_476 += 1;
             goto loop_6;
         }
-        spE0.GetPos((s32) &this->unk10);
+        ((BoundingRegion *) &spE0)->GetPos((s32) &this->unk10);
         sp130 = spE0;
         sp138 = spE8;
-        spD0.GetPos((s32) &this->unk10);
+        ((BoundingRegion *) &spD0)->GetPos((s32) &this->unk10);
         sp120 = spD0;
         sp128 = spD8;
         if ((Tools_Line2DToLine2DIntersect(arg0, arg1, *((MKVector3 *) &sp130), *((MKVector3 *) &sp120), &spC) != 0) && (spC < var_f30_473)) {
@@ -368,7 +368,7 @@ loop_6:
             spC8 = (f64) sp28;
             M2C_FIELD(arg2, f64 *, 8) = (f64) sp28;
             sp60.GetPos((s32) &this->unk10);
-            sp60.unk10.GetPos((s32) &this->unk10);
+            ((BoundingRegion *) &sp60.unk10)->GetPos((s32) &this->unk10);
             var_f4_587 = 0.0f;
             sp44 = 0.0f;
             sp40 = sp60.unk10 - M2C_BITWISE(f32, sp60);
@@ -466,7 +466,6 @@ void EnemyRegion::GetRegionPos() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     f32 temp_f1_806;
     f32 temp_f3_821;
@@ -475,7 +474,7 @@ u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     u8 var_r0_807;
 
     if ((u8) this->unk31 != 0) {
-        return this->unk10.IsPointWithin(arg0);
+        return ((BoundingRegion *) &this->unk10)->IsPointWithin(arg0);
     }
     temp_f1_806 = this->unk2C;
     var_r0_807 = 0;
@@ -489,7 +488,6 @@ u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     }
     return var_r0_807;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to
 s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
@@ -528,8 +526,8 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
         sp84 = 0.0f;
         sp88 = 0.0f;
         sp8C = 0.0f;
-        sp74.Init((KDLocalPathSegment *) sp38);
-        if (sp74.IsPointWithin(arg0) != 0) {
+        ((BoundingRegion *) &sp74)->Init((KDLocalPathSegment *) sp38);
+        if (((BoundingRegion *) &sp74)->IsPointWithin(arg0) != 0) {
             PolygonCentroid((KDPathSegment *) &sp28);
             temp_r3_891 = ((KDLocalPathSegment *) sp38)->unk30;
             sp38.unk20 = sp28;
@@ -560,7 +558,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
     f64 sp8;
 
@@ -571,7 +569,7 @@ void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
     M2C_FIELD(this, f32 *, 8) = 0.0f;
     this->unk2C = 0.0f;
     if (arg0 != NULL) {
-        this->unk10.Init(arg0);
+        ((BoundingRegion *) &this->unk10)->Init(arg0);
         this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) arg0);
         PolygonCentroid((KDPathSegment *) &sp8);
         this->unk0 = sp8;
@@ -609,8 +607,8 @@ void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
     this->unk2C = arg1;
     temp_cr0_eq_1033 = (KDLocalPathSegment *) sp68 == NULL;
     if ((temp_cr0_eq_1033 == 0) && (temp_cr0_eq_1033 == 0)) {
-        this->unk10.Init((KDLocalPathSegment *) sp68);
-        if (this->unk10.IsPointWithin(arg0) != 0) {
+        ((BoundingRegion *) &this->unk10)->Init((KDLocalPathSegment *) sp68);
+        if (((BoundingRegion *) &this->unk10)->IsPointWithin(arg0) != 0) {
             this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) (KDLocalPathSegment *) sp68);
             PolygonCentroid((KDPathSegment *) &sp28);
             temp_r3_1050 = ((KDLocalPathSegment *) sp68)->unk30;

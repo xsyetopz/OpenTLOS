@@ -1,5 +1,6 @@
 #include "spyro/source/LookAtProp.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
@@ -43,12 +44,10 @@ void LookAtProp::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'PropResolver_Resolve'
 void LookAtProp::Resolve() {
-    this->unk4C = checked_cast<MKProp *, MKProp>(this->unk4C->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    this->unk4C = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unk4C)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     MKProp::Resolve();
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LookAtProp::LoadDone() {

@@ -1,6 +1,7 @@
 #include "spyro/source/UITools.h"
 #include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -307,7 +308,7 @@ void LanguageButtonGroup::LoadDone() {
             }
             UIStringTable_Add(&lit_stringBase0 + 0x264);
             M2C_FIELD(temp_r3_396, s8 **, 0x60) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-            temp_r3_347->Add(temp_r3_396);
+            ((UIContainer *) temp_r3_347)->Add(temp_r3_396);
             if (GameLanguage_Available(spC) == 0) {
                 sp8 = 5;
                 temp_r3_347->Message(&sp8);
@@ -324,12 +325,12 @@ void ScriptVideoScreen::DoExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ScriptVideoScreen::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_494;
 
-    if (arg0->IsField(&lit_stringBase0 + 0x26E) != 0) {
-        temp_r31_494 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x26E) != 0) {
+        temp_r31_494 = ((MKIniLine *) arg0)->GetString(0);
         this->unk128 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_494);
         return 1;
     }
@@ -645,7 +646,7 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
             sp24 = 0;
             M2C_FIELD(temp_r3_1143->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp20);
         }
-        this->unk64.Send();
+        ((UIEvent *) &this->unk64)->Send();
         return;
     case 1:
         temp_r4_1159 = this->unk60;
@@ -840,7 +841,7 @@ void UIPie::Draw(const RenderContext &arg0) {
         }
         spC0.SetIdentity();
         spC0.Translate(&spC0, *((MKVector3 *) &spB0));
-        sp100.Multiply(&spC0, (Matrix *) &sp100);
+        ((Matrix *) &sp100)->Multiply(&spC0, (Matrix *) &sp100);
         var_r29_1608 = 0;
         temp_f3_1610 = 16.0f * this->unk70;
         temp_r30_1615 = (s32) temp_f3_1610;
@@ -959,7 +960,7 @@ u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     temp_r3_1900 = ui_cast<UIText *, UIObject *>(M2C_FIELD(temp_r3_1888, UIObject **, 0x60));
     if (temp_r3_1900 != NULL) {
         if (((s32) M2C_FIELD(temp_r3_1900, s32 *, 0x6C) >= 0) || ((u32) M2C_FIELD(temp_r3_1900, u32 *, 0x68) != 0U)) {
-            temp_r3_1900->GetStringWidth();
+            ((UIText *) temp_r3_1900)->GetStringWidth();
             temp_f2_1913 = temp_r3_1900->unk18.unk34;
             var_f0_1914 = 10.0f + M2C_ERROR(/* Read from unset register $f1 */);
             if (var_f0_1914 < temp_f2_1913) {
@@ -1035,7 +1036,7 @@ void MarkerButtonGroup::Update() {
     NoisyButtonGroup::Update();
     this->unkF8 = GetTargetAttributes(&sp8);
     temp_r3_2090 = &this->unk98;
-    temp_r3_2090->Tween((Attributes *) temp_r3_2090, &sp8, 0.5f);
+    ((Attributes *) temp_r3_2090)->Tween((Attributes *) temp_r3_2090, &sp8, 0.5f);
     M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *), 0x18)(&this->unk80);
 }
 #endif
@@ -1051,7 +1052,7 @@ void MarkerButtonGroup::Message(UIMessage *arg0) {
     NoisyButtonGroup::Message(arg0);
     GetTargetAttributes(&sp8);
     temp_r3_2124 = &this->unk98;
-    temp_r3_2124->Tween((Attributes *) temp_r3_2124, &sp8, 1.0f);
+    ((Attributes *) temp_r3_2124)->Tween((Attributes *) temp_r3_2124, &sp8, 1.0f);
     return 1;
 }
 #endif
@@ -1187,12 +1188,12 @@ void ScriptButtonGroup::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ScriptButtonGroup::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2454;
 
-    if (arg0->IsField(&lit_stringBase0 + 0x28E) != 0) {
-        temp_r31_2454 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x28E) != 0) {
+        temp_r31_2454 = ((MKIniLine *) arg0)->GetString(0);
         this->unk80 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2454);
         return 1;
     }
@@ -1366,24 +1367,24 @@ void ScriptProgressBar::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ScriptProgressBar::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_2850;
     s32 temp_r31_2867;
     s32 temp_r31_2884;
 
-    if (arg0->IsField(&lit_stringBase0 + 0x2B4) != 0) {
-        temp_r31_2850 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2B4) != 0) {
+        temp_r31_2850 = ((MKIniLine *) arg0)->GetString(0);
         this->unkC8 = M2C_BITWISE(f32, ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2850));
         goto block_7;
     }
-    if (arg0->IsField(&lit_stringBase0 + 0x2BF) != 0) {
-        temp_r31_2867 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2BF) != 0) {
+        temp_r31_2867 = ((MKIniLine *) arg0)->GetString(0);
         this->unkD4 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2867);
         goto block_7;
     }
-    if (arg0->IsField(&lit_stringBase0 + 0x2CB) != 0) {
-        temp_r31_2884 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x2CB) != 0) {
+        temp_r31_2884 = ((MKIniLine *) arg0)->GetString(0);
         this->unkD0 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_2884);
 block_7:
         return 1;
@@ -1475,12 +1476,12 @@ void ProgressBar::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ProgressBar::LoadLine()' redeclared
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ProgressBar::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 
     sp8 = NULL;
-    if (arg0->LoadString(&lit_stringBase0 + 0x2D7, &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString(&lit_stringBase0 + 0x2D7, &sp8, 0) != 0) {
         if (stricmp(sp8, &lit_stringBase0 + 0x2E3) == 0) {
             this->unk70 = 0.0f;
         } else if (stricmp(sp8, &lit_stringBase0 + 0x2EF) == 0) {
@@ -1563,24 +1564,24 @@ void ScriptButton::OnActivate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ScriptButton::LoadLine(UIDataLine *arg0) {
     s32 temp_r31_3359;
     s32 temp_r31_3376;
     s32 temp_r31_3393;
 
-    if (arg0->IsField(&lit_stringBase0 + 0x304) != 0) {
-        temp_r31_3359 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x304) != 0) {
+        temp_r31_3359 = ((MKIniLine *) arg0)->GetString(0);
         this->unk80.unk8 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3359);
         goto block_7;
     }
-    if (arg0->IsField(&lit_stringBase0 + 0x313) != 0) {
-        temp_r31_3376 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x313) != 0) {
+        temp_r31_3376 = ((MKIniLine *) arg0)->GetString(0);
         this->unk94 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3376);
         goto block_7;
     }
-    if (arg0->IsField(&lit_stringBase0 + 0x31C) != 0) {
-        temp_r31_3393 = arg0->GetString(0);
+    if (((MKIniLine *) arg0)->IsField(&lit_stringBase0 + 0x31C) != 0) {
+        temp_r31_3393 = ((MKIniLine *) arg0)->GetString(0);
         this->unk90 = ((UIStringTable *) (UIStringTable_GetCurrent()))->Add((s8 *) temp_r31_3393);
 block_7:
         return 1;

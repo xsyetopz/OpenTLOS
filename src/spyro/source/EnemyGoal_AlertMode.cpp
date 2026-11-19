@@ -5,6 +5,13 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyGoal_DefensiveMode.h"
+#include "spyro/source/EnemyGoal_FlyingAttackMode.h"
+#include "spyro/source/EnemyGoal_MeleeAttackMode.h"
+#include "spyro/source/EnemyGoal_RangeAttackMode.h"
+#include "spyro/source/EnemyGoals_Movement.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
@@ -17,7 +24,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1E0;                                      /* compiler-managed */
     f64 sp1D8;
@@ -96,8 +103,8 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (arg0 != 0) {
-        sp198.GetPos();
-        this->unkC->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        ((AITargetData *) &sp198)->GetPos();
+        ((EnemyRegion *) &this->unkC->unk750.unkA0)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp178.operator*(100.0f);
         sp68 = sp1D8 + M2C_BITWISE(f64, sp178);
         sp188 = sp68;
@@ -115,7 +122,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
         sp168 = temp_f0_105;
         spB0 = (f32) sp1E0 + (f32) sp160;
         sp170 = (f64) spB0;
-        if (this->unkC->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &sp168), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
+        if (((EnemyRegion *) &this->unkC->unk750.unkA0)->GetFirstIntersectionPlane(*((MKVector3 *) &sp168), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
             temp_f0_125 = sp1C8 - sp1D8;
             sp28 = temp_f0_125;
             sp138 = temp_f0_125;
@@ -130,8 +137,8 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             sp1E0 = (f32) sp1E0 + (f32) sp150;
         } else {
             var_r30_158 = 0;
-            if (this->unkC->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
-                sp98.GetRegionPos();
+            if (((EnemyRegion *) &this->unkC->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
+                ((EnemyRegion *) &sp98)->GetRegionPos();
                 if ((f32) fabs(sp9C - unksp1CC) <= 500.0f) {
                     var_r30_158 = 1;
                 }
@@ -142,8 +149,8 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             }
         }
     } else {
-        sp128.GetPos();
-        this->unkC->unk800.unk28.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        ((AITargetData *) &sp128)->GetPos();
+        ((EnemyRegion *) &this->unkC->unk800.unk28)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp1B8 *= 1.58735232e-314;
         sp1C0 = (f32) sp1C0 * -1.0f;
         sp108.operator*(100.0f);
@@ -163,7 +170,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
         spF8 = temp_f0_231;
         sp80 = (f32) sp1E0 + (f32) spF0;
         sp100 = (f64) sp80;
-        if (this->unkC->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
+        if (((EnemyRegion *) &this->unkC->unk800.unk28)->GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
             temp_f0_251 = sp1C8 - sp1D8;
             sp18 = temp_f0_251;
             spC8 = temp_f0_251;
@@ -176,15 +183,15 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             spE0 = (f64) sp40;
             sp1D8 += temp_f0_263;
             sp1E0 = (f32) sp1E0 + (f32) spE0;
-        } else if (this->unkC->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp1C8)) == 0) {
+        } else if (((EnemyRegion *) &this->unkC->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp1C8)) == 0) {
             sp1D8 = sp1C8;
             sp1E0 = sp1D0;
         }
     }
-    this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp1D8), 0U);
-    this->unkC->unk870.unk40.SetInsideRegion(1U);
+    ((AITargetData *) &this->unkC->unk870.unk40)->Set(*((MKVector3 *) &sp1D8), 0U);
+    ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
     temp_r4_302 = this->unkC;
-    temp_r4_302->unk870.unk40.Update(*((MKVector3 *) &temp_r4_302->unk588));
+    ((AITargetData *) &temp_r4_302->unk870.unk40)->Update(*((MKVector3 *) &temp_r4_302->unk588));
 }
 #endif
 
@@ -484,7 +491,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
         sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r4_900 = this->unkC;
         temp_f31_901 = temp_r3_893->GetCollisionRadius(M2C_FIELD(&MKVector3::zero, f64 *, 0));
-        temp_r4_900->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_900->unk700), (MKVector3 *) &spC8, (MKVector3 *) &spB8);
+        ((EnemyRegion *) &temp_r4_900->unk750.unkA0)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &temp_r4_900->unk700), (MKVector3 *) &spC8, (MKVector3 *) &spB8);
         temp_f0_909 = 2.0f * temp_f31_901;
         if (150.0f > temp_f0_909) {
             var_f30_912 = 150.0f;
@@ -528,8 +535,8 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
             if (MKCollision_SphereCollide(*((MKVector3 *) &sp78), temp_f31_901, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
                 return 0U;
             }
-            this->unkC->unk870.unk40.Set(*((MKVector3 *) &spC8), 0U);
-            this->unkC->unk870.unk40.SetInsideRegion(1U);
+            ((AITargetData *) &this->unkC->unk870.unk40)->Set(*((MKVector3 *) &spC8), 0U);
+            ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
             temp_r3_1024 = this->unkC;
             temp_f1_1028 = temp_r3_1024->GetCollisionRadius();
@@ -544,7 +551,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
             M2C_FIELD(temp_r6_1031, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_1031, u8 *, 0x30) | 0x20);
             M2C_FIELD(temp_r6_1031, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_1031, u8 *, 0x30) & ~0x10);
             temp_r4_1052 = this->unkC;
-            temp_r4_1052->unk870.unk40.Update(*((MKVector3 *) &temp_r4_1052->unk588));
+            ((AITargetData *) &temp_r4_1052->unk870.unk40)->Update(*((MKVector3 *) &temp_r4_1052->unk588));
             return 1U;
         }
         return 0U;
@@ -607,7 +614,7 @@ u8 EnemyGoal_AlertMode::AddGoal_Summon() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: illegal implicit conversion from 'Enemy *' to
 s32 EnemyGoal_AlertMode::AddGoal_Alert() {
     IsInAlertRangeMsg sp18;
     f64 sp10;
@@ -618,7 +625,7 @@ s32 EnemyGoal_AlertMode::AddGoal_Alert() {
     void *temp_r5_1194;
 
     temp_r5_1176 = this->unkC;
-    if (!(((u8) M2C_FIELD(temp_r5_1176, u8 *, 0xB08) >> 6U) & 1) && (temp_r5_1176->unkA20->GetAnimSequence(1, 2, M2C_BITWISE(s32, temp_r5_1176->unkACC), NULL) != NULL)) {
+    if (!(((u8) M2C_FIELD(temp_r5_1176, u8 *, 0xB08) >> 6U) & 1) && (((EnemyDescriptor *) temp_r5_1176->unkA20)->GetAnimSequence(1, 2, M2C_BITWISE(s32, temp_r5_1176->unkACC), NULL) != NULL)) {
         sp18.unk4 = 0;
         temp_r5_1194 = this->unkC->unk8;
         sp8 = M2C_FIELD(temp_r5_1194, f64 *, 0x30);
@@ -654,7 +661,7 @@ void EnemyGoal_AlertMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 u8 EnemyGoal_AlertMode::Update() {
     AITargetData sp48;
     f64 sp38;
@@ -692,7 +699,7 @@ u8 EnemyGoal_AlertMode::Update() {
             if ((temp_r3_1300 == 0) || ((u32) ((temp_r0_1299 >> 5U) & 1) != 0)) {
                 CalculateRegionEdgeMoveTarget(temp_r3_1300 == 0);
                 sp48.GetPos();
-                sp48.unk10.GetPos();
+                ((AITargetData *) &sp48.unk10)->GetPos();
                 temp_f4_1321 = unksp5C - unksp4C;
                 temp_f5_1323 = (f32) sp48.unk10 - M2C_BITWISE(f32, sp48);
                 temp_f3_1327 = (f32) sp48.unk18 - sp48.unk8;
@@ -704,7 +711,7 @@ u8 EnemyGoal_AlertMode::Update() {
                     sp1C = 50.0f + temp_f30_1339;
                     sp30 = (f64) sp20;
                     sp28 = (f64) sp18;
-                    sp38.GetPos();
+                    ((AITargetData *) &sp38)->GetPos();
                     sp8 = sp38 + sp28;
                     temp_f3_1364 = 2.0f * temp_f30_1339;
                     var_f31_1365 = 200.0f;
@@ -716,7 +723,7 @@ u8 EnemyGoal_AlertMode::Update() {
                     } else {
                         var_f31_1365 = temp_f3_1364;
                     }
-                    if (!(this->unkC->unk870.unk40.GetDist() > var_f31_1365) || (MKCollision_SphereCollide(*((MKVector3 *) &sp48.unk20), temp_f30_1339, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
+                    if (!(((AITargetData *) &this->unkC->unk870.unk40)->GetDist() > var_f31_1365) || (MKCollision_SphereCollide(*((MKVector3 *) &sp48.unk20), temp_f30_1339, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
                         this->unk8 = 1;
                     }
                 } else {
@@ -881,7 +888,7 @@ void EnemyGoal_AlertMode::Init(Enemy *arg0) {
             *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
         }
         this->unk28 = M2C_ERROR(/* Read from unset register $r3 */);
-        if (arg0->unkA20->GetAnimSequence(1, 2, 0, NULL) != NULL) {
+        if (((EnemyDescriptor *) arg0->unkA20)->GetAnimSequence(1, 2, 0, NULL) != NULL) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -1020,18 +1027,18 @@ void EnemyGoal_AlertMode::Init(Enemy *arg0) {
         }
         temp_r3_1976 = this->unk2C;
         if (temp_r3_1976 != NULL) {
-            temp_r3_1976->Init(arg0);
+            ((EnemyGoal_MeleeAttackMode *) temp_r3_1976)->Init(arg0);
         }
         temp_r3_1982 = this->unk30;
         if (temp_r3_1982 != NULL) {
-            temp_r3_1982->Init(arg0);
+            ((EnemyGoal_RangeAttackMode *) temp_r3_1982)->Init(arg0);
         }
         temp_r3_1988 = this->unk34;
         if (temp_r3_1988 != NULL) {
-            temp_r3_1988->Init(arg0);
+            ((EnemyGoal_FlyingAttackMode *) temp_r3_1988)->Init(arg0);
         }
-        this->unk38->Init(arg0);
-        this->unk3C->Init(arg0);
+        ((EnemyGoal_MoveAwayFromHero *) this->unk38)->Init(arg0);
+        ((EnemyGoal_DefensiveMode *) this->unk3C)->Init(arg0);
         temp_r4_2000 = this->unk40;
         M2C_FIELD(temp_r4_2000, s8 *, 8) = 1;
         M2C_FIELD(temp_r4_2000, Enemy **, 0xC) = arg0;

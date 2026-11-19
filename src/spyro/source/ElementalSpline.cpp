@@ -1,19 +1,26 @@
 #include "spyro/source/ElementalSpline.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CrashFirePS.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SplineProp.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -75,7 +82,7 @@ void ElementalSpline::StateESTurningOffExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalSpline::StateESTurningOffUpdate() {
     s8 spC1;
     s8 spC0;
@@ -116,7 +123,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
     void *temp_r3_134;
 
     if (this->unk10C >= this->unk108) {
-        this->unkC0.SetState(this, 3, 0U);
+        ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 3, 0U);
         this->unkD8.Send(NULL);
         return;
     }
@@ -189,7 +196,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    sp10.GetPos();
+                    ((MKProp *) &sp10)->GetPos();
                     spA0 = sp10;
                     spA8 = sp18;
                 } else {
@@ -214,7 +221,7 @@ void ElementalSpline::StateESOnExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalSpline::StateESOnUpdate() {
     s8 spC1;
     s8 spC0;
@@ -255,7 +262,7 @@ void ElementalSpline::StateESOnUpdate() {
     void *temp_r3_383;
 
     if (this->unk10C >= this->unk104) {
-        this->unkC0.SetState(this, 2, 0U);
+        ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 2, 0U);
         return;
     }
     if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible((Matrix *) this->unk8, this->unkC) != 0) {
@@ -326,7 +333,7 @@ void ElementalSpline::StateESOnUpdate() {
             sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spC0 = 0;
             if (this != NULL) {
-                sp10.GetPos();
+                ((MKProp *) &sp10)->GetPos();
                 spA0 = sp10;
                 spA8 = sp18;
             } else {
@@ -350,7 +357,7 @@ void ElementalSpline::StateESTurningOnExit() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: '(' expected
 void ElementalSpline::StateESTurningOnUpdate() {
     s8 spC1;
     s8 spC0;
@@ -391,7 +398,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
     void *temp_r3_632;
 
     if (this->unk10C >= this->unk100) {
-        this->unkC0.SetState(this, 1, 0U);
+        ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 1, 0U);
         this->unkD4.Send(NULL);
         return;
     }
@@ -464,7 +471,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    sp10.GetPos();
+                    ((MKProp *) &sp10)->GetPos();
                     spA0 = sp10;
                     spA8 = sp18;
                 } else {
@@ -570,7 +577,7 @@ loop_7:
     if (var_r26_949 < var_r0_1055) {
         temp_f1_956 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        spC8.GetMeasure(temp_f1_956, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &spC8)->GetMeasure(temp_f1_956, this->unkB0 + 0x30, KDSpline_PositionMixer);
         sp118 = spC8;
         sp120 = spD0;
         KDRand_UnitVectorXZ();
@@ -597,7 +604,7 @@ loop_7:
         sp80 = (f64) sp30;
         sp110 = (f64) sp30;
         sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-        gb.unk74->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp14, this->unkE0, 0.0f);
+        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp14, this->unkE0, 0.0f);
         var_r26_949 += 1;
         goto loop_7;
     }
@@ -655,7 +662,7 @@ loop_8:
     if (var_r27_1187 < var_r0_1267) {
         temp_f1_1195 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp40.GetMeasure(temp_f1_1195, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_f1_1195, this->unkB0 + 0x30, KDSpline_PositionMixer);
         sp70 = sp40;
         sp78 = sp48;
         temp_f30_1208 = this->unkB4;
@@ -685,7 +692,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk30C'
+#if 0 // DRAFT: ';' expected
 void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     f64 spF0;
     f64 spE8;
@@ -755,17 +762,17 @@ loop_3:
             spC0 = (f64) sp40;
             spE0 = (f64) sp40;
             spDC += 300.0f;
-            gb.unk230->Emit(*((MKVector3 *) &spE8), *((MKVector3 *) &spC8.unk10), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+            ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spE8), *((MKVector3 *) &spC8.unk10), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
             var_r27_1330 += 1;
             goto loop_3;
         }
         temp_f1_1400 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        sp98.GetMeasure(temp_f1_1400, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp98)->GetMeasure(temp_f1_1400, this->unkB0 + 0x30, KDSpline_PositionMixer);
         spE8 = sp98;
         spF0 = spA0;
         temp_f30_1416 = this->unkB4;
-        sp78.GetVelocity(MKRand_Float(&gViewSeed, arg0, arg1));
+        ((KDSplinePathSegment *) &sp78)->GetVelocity(MKRand_Float(&gViewSeed, arg0, arg1));
         sp28 = sp78 * (f64) temp_f30_1416;
         spC8.unk10 = sp28;
         sp30 = sp80 * temp_f30_1416;
@@ -834,7 +841,7 @@ loop_3:
             var_f4_1543 = temp_f0_1553;
         }
         sp14 = 0.01f * this->unkB4 * var_f4_1543;
-        gb.unk94->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &spC8.unk10), sp14, lit_1057, (MKVector4) &sp48);
+        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &spC8.unk10), sp14, lit_1057, (MKVector4) &sp48);
         this->unkF0 = gb.unk30C + 0.05f;
     }
 }
@@ -905,7 +912,7 @@ loop_3:
         if (var_r25_1688 < var_r0_1798) {
             temp_f1_1696 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            spA0.GetMeasure(temp_f1_1696, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &spA0)->GetMeasure(temp_f1_1696, this->unkB0 + 0x30, KDSpline_PositionMixer);
             spF0 = spA0;
             spF8 = spA8;
             temp_f24_1710 = this->unkB4;
@@ -919,10 +926,10 @@ loop_3:
             sp98 = (f64) sp38;
             spE4 += 5.0f * this->unkB4;
             sp18 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-            gb.unk68->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0.unk10), sp18);
+            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0.unk10), sp18);
             temp_f1_1743 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            sp70.GetMeasure(temp_f1_1743, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp70)->GetMeasure(temp_f1_1743, this->unkB0 + 0x30, KDSpline_PositionMixer);
             spF0 = sp70;
             spF8 = sp78;
             temp_f29_1756 = this->unkB4;
@@ -935,7 +942,7 @@ loop_3:
             sp68 = (f64) sp28;
             spE4 += 5.0f * this->unkB4;
             sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0.unk10), sp14, this->unkE0, 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0.unk10), sp14, this->unkE0, 0.0f);
             var_r25_1688 += 1;
             goto loop_3;
         }
@@ -1105,7 +1112,7 @@ loop_65:
             if (arg1 < var_f1_1991) {
                 var_f1_1991 = arg1;
             }
-            sp178.GetVelocity(var_f1_1991);
+            ((KDSplinePathSegment *) &sp178)->GetVelocity(var_f1_1991);
             sp1A8 = sp178;
             sp1B0 = sp180;
         } else if (var_r30_1969 == 0) {
@@ -1114,14 +1121,14 @@ loop_65:
                 var_f1_2011 = arg0;
             }
             sp1C = 0.0f;
-            sp168.GetMeasure(var_f1_2011, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2011, this->unkB0 + 0x30, KDSpline_PositionMixer);
             var_f1_2024 = 1.0f;
             sp1D8 = sp168;
             sp1E0 = sp170;
             if (arg0 < var_f1_2024) {
                 var_f1_2024 = arg0;
             }
-            sp158.GetVelocity(var_f1_2024);
+            ((KDSplinePathSegment *) &sp158)->GetVelocity(var_f1_2024);
             sp1A8 = sp158;
             sp1B0 = sp160;
         } else {
@@ -1132,7 +1139,7 @@ loop_65:
                 var_f1_2051 = 1.0f;
             }
             sp18 = 0.0f;
-            sp148.GetMeasure(var_f1_2051, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2051, this->unkB0 + 0x30, KDSpline_PositionMixer);
             sp1D8 = sp148;
             var_f1_2078 = ((f32) var_r30_1969 * this->unkFC) + arg0;
             sp1E0 = sp150;
@@ -1141,7 +1148,7 @@ loop_65:
             } else {
                 var_f1_2078 = 1.0f;
             }
-            sp138.GetVelocity(var_f1_2078);
+            ((KDSplinePathSegment *) &sp138)->GetVelocity(var_f1_2078);
             sp1A8 = sp138;
             sp1B0 = sp140;
         }
@@ -1442,7 +1449,7 @@ loop_65:
             if (arg1 < var_f1_2583) {
                 var_f1_2583 = arg1;
             }
-            sp178.GetVelocity(var_f1_2583);
+            ((KDSplinePathSegment *) &sp178)->GetVelocity(var_f1_2583);
             sp1A8 = sp178;
             sp1B0 = sp180;
         } else if (var_r30_2561 == 0) {
@@ -1451,14 +1458,14 @@ loop_65:
                 var_f1_2603 = arg0;
             }
             sp1C = 0.0f;
-            sp168.GetMeasure(var_f1_2603, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2603, this->unkB0 + 0x30, KDSpline_PositionMixer);
             var_f1_2616 = 1.0f;
             sp1D8 = sp168;
             sp1E0 = sp170;
             if (arg0 < var_f1_2616) {
                 var_f1_2616 = arg0;
             }
-            sp158.GetVelocity(var_f1_2616);
+            ((KDSplinePathSegment *) &sp158)->GetVelocity(var_f1_2616);
             sp1A8 = sp158;
             sp1B0 = sp160;
         } else {
@@ -1469,7 +1476,7 @@ loop_65:
                 var_f1_2643 = 1.0f;
             }
             sp18 = 0.0f;
-            sp148.GetMeasure(var_f1_2643, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2643, this->unkB0 + 0x30, KDSpline_PositionMixer);
             sp1D8 = sp148;
             var_f1_2670 = ((f32) var_r30_2561 * this->unkFC) + arg0;
             sp1E0 = sp150;
@@ -1478,7 +1485,7 @@ loop_65:
             } else {
                 var_f1_2670 = 1.0f;
             }
-            sp138.GetVelocity(var_f1_2670);
+            ((KDSplinePathSegment *) &sp138)->GetVelocity(var_f1_2670);
             sp1A8 = sp138;
             sp1B0 = sp140;
         }
@@ -1763,7 +1770,7 @@ loop_65:
             if (arg1 < var_f1_3171) {
                 var_f1_3171 = arg1;
             }
-            sp130.GetVelocity(var_f1_3171);
+            ((KDSplinePathSegment *) &sp130)->GetVelocity(var_f1_3171);
             sp160 = sp130;
             sp168 = sp138;
         } else if (var_r30_3149 == 0) {
@@ -1772,14 +1779,14 @@ loop_65:
                 var_f1_3191 = arg0;
             }
             sp18 = 0.0f;
-            sp120.GetMeasure(var_f1_3191, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp120)->GetMeasure(var_f1_3191, this->unkB0 + 0x30, KDSpline_PositionMixer);
             var_f1_3204 = 1.0f;
             sp190 = sp120;
             sp198 = sp128;
             if (arg0 < var_f1_3204) {
                 var_f1_3204 = arg0;
             }
-            sp110.GetVelocity(var_f1_3204);
+            ((KDSplinePathSegment *) &sp110)->GetVelocity(var_f1_3204);
             sp160 = sp110;
             sp168 = sp118;
         } else {
@@ -1791,7 +1798,7 @@ loop_65:
             } else {
                 var_f1_3237 = 1.0f;
             }
-            spF0.GetPosition(var_f1_3237);
+            ((KDSplinePathSegment *) &spF0)->GetPosition(var_f1_3237);
             sp60 = spF0 + M2C_BITWISE(f64, spE0);
             sp68 = spF8 + spE0.unk8;
             sp190 = sp60;
@@ -1804,7 +1811,7 @@ loop_65:
             } else {
                 var_f1_3270 = 1.0f;
             }
-            spC0.GetVelocity(var_f1_3270);
+            ((KDSplinePathSegment *) &spC0)->GetVelocity(var_f1_3270);
             sp160 = spC0;
             sp168 = spC8;
         }
@@ -2129,7 +2136,7 @@ loop_73:
             if (arg1 < var_f1_3740) {
                 var_f1_3740 = arg1;
             }
-            sp238.GetVelocity(var_f1_3740);
+            ((KDSplinePathSegment *) &sp238)->GetVelocity(var_f1_3740);
             sp268 = sp238;
             sp270 = sp240;
         } else if (var_r30_3717 == 0) {
@@ -2138,14 +2145,14 @@ loop_73:
                 var_f1_3760 = arg0;
             }
             sp1C = 0.0f;
-            sp228.GetMeasure(var_f1_3760, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp228)->GetMeasure(var_f1_3760, this->unkB0 + 0x30, KDSpline_PositionMixer);
             var_f1_3773 = 1.0f;
             sp298 = sp228;
             sp2A0 = sp230;
             if (arg0 < var_f1_3773) {
                 var_f1_3773 = arg0;
             }
-            sp218.GetVelocity(var_f1_3773);
+            ((KDSplinePathSegment *) &sp218)->GetVelocity(var_f1_3773);
             sp268 = sp218;
             sp270 = sp220;
         } else {
@@ -2156,7 +2163,7 @@ loop_73:
                 var_f1_3800 = 1.0f;
             }
             sp18 = 0.0f;
-            sp208.GetMeasure(var_f1_3800, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp208)->GetMeasure(var_f1_3800, this->unkB0 + 0x30, KDSpline_PositionMixer);
             sp298 = sp208;
             var_f1_3827 = ((f32) var_r30_3717 * this->unkFC) + arg0;
             sp2A0 = sp210;
@@ -2165,7 +2172,7 @@ loop_73:
             } else {
                 var_f1_3827 = 1.0f;
             }
-            sp1F8.GetVelocity(var_f1_3827);
+            ((KDSplinePathSegment *) &sp1F8)->GetVelocity(var_f1_3827);
             sp268 = sp1F8;
             sp270 = sp200;
         }
@@ -2369,7 +2376,7 @@ loop_73:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Draw() {
     f32 var_f30_4321;
     f32 var_f31_4319;
@@ -2378,14 +2385,14 @@ void ElementalSpline::Draw() {
     MKProp::Draw();
     var_f31_4319 = 0.0f;
     var_f30_4321 = 0.0f;
-    if (this->unkC0.GetState() != 3) {
-        if (this->unkC0.GetState() == 1) {
+    if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() != 3) {
+        if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() == 1) {
             var_f31_4319 = 0.0f;
             var_f30_4321 = 1.0f;
-        } else if (this->unkC0.GetState() == 0) {
+        } else if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() == 0) {
             var_f31_4319 = 0.0f;
             var_f30_4321 = this->unk10C / this->unk100;
-        } else if (this->unkC0.GetState() == 2) {
+        } else if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() == 2) {
             var_f30_4321 = 1.0f;
             var_f31_4319 = this->unk10C / this->unk108;
         }
@@ -2408,35 +2415,35 @@ void ElementalSpline::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Update() {
     u8 var_r31_4413;
 
     MKProp::Update();
-    this->unkC0.Update(this, 0);
+    ((KDStateMachine<ElementalSpline> *) &this->unkC0)->Update(this, 0);
     var_r31_4413 = 1;
-    if ((this->unkC0.GetState() != 1) && (this->unkC0.GetState() != 0)) {
+    if ((((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() != 1) && (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() != 0)) {
         var_r31_4413 = 0;
     }
-    this->unk120.Update(var_r31_4413);
+    ((KDSound_SoundWall *) &this->unk120)->Update(var_r31_4413);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Message(MKMessage *arg0) {
     s32 temp_r0_4444;
 
-    this->unk120.Message(arg0);
+    ((KDSound_SoundWall *) &this->unk120)->Message(arg0);
     temp_r0_4444 = arg0->unk0;
     switch (temp_r0_4444) {                         /* irregular */
     case 0xB5:
-        if (this->unkC0.GetState() == 3) {
-            this->unkC0.SetState(this, 0, 0U);
+        if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() == 3) {
+            ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 0, 0U);
         }
         break;
     case 0xB4:
-        if (this->unkC0.GetState() == 1) {
-            this->unkC0.SetState(this, 2, 0U);
+        if (((KDStateMachine<ElementalSpline> *) &this->unkC0)->GetState() == 1) {
+            ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 2, 0U);
         }
         break;
     }
@@ -2444,7 +2451,7 @@ void ElementalSpline::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2473,13 +2480,13 @@ void ElementalSpline::Resolve() {
     s32 temp_r0_4497;
 
     MKProp::Resolve();
-    this->unkC0.SetState(this, 3, 0U);
+    ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 3, 0U);
     temp_r0_4497 = this->unk110;
     switch (temp_r0_4497) {                         /* irregular */
     case 0:
         this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
         this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
-        this->unk120.Init(this->unkB0 + 0x30, this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }
@@ -2496,7 +2503,7 @@ void ElementalSpline::Resolve() {
         break;
     case 1:
         this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
-        this->unk120.Init(this->unkB0 + 0x30, this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 25.0f;
         }
@@ -2513,7 +2520,7 @@ void ElementalSpline::Resolve() {
         break;
     case 2:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        this->unk120.Init(this->unkB0 + 0x30, this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 300.0f;
         }
@@ -2530,7 +2537,7 @@ void ElementalSpline::Resolve() {
         break;
     case 3:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        this->unk120.Init(this->unkB0 + 0x30, this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }
@@ -2587,13 +2594,13 @@ s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void ElementalSpline::Deinit() {
     MKMaterial *temp_r3_4902;
     MKMaterial *temp_r3_4907;
 
-    this->unkC0.Deinit(this);
-    this->unk120.Deinit();
+    ((KDStateMachine<ElementalSpline> *) &this->unkC0)->Deinit(this);
+    ((KDSound_SoundWall *) &this->unk120)->Deinit();
     temp_r3_4902 = this->unkF4;
     if (temp_r3_4902 != NULL) {
         MKMaterial_Destroy(temp_r3_4902);
@@ -2634,10 +2641,10 @@ void ElementalSpline::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void ElementalSplineDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk60 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
 }
 #endif
 

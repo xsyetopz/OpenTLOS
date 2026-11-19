@@ -202,7 +202,7 @@ inline s32 KDPathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2274;
 
     var_r31_2274 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((KDPathSegment *) &this->unk4C)->LoadLine(arg0) != 0)) {
         var_r31_2274 = 1;
     }
     return var_r31_2274;
@@ -210,7 +210,7 @@ inline s32 KDPathSegmentProp::LoadLine(MKIniLine *arg0) {
 
 inline void KDPathSegmentProp::Resolve() {
     MKProp::Resolve();
-    this->unk4C.Resolve();
+    ((KDPathSegment *) &this->unk4C)->Resolve();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'int' to
@@ -258,17 +258,15 @@ inline s32 KDSplinePathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_47;
 
     var_r31_47 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((KDSplinePathSegment *) &this->unk4C)->LoadLine(arg0) != 0)) {
         var_r31_47 = 1;
     }
     return var_r31_47;
 }
 
-#if 0 // DRAFT: undefined identifier 'Resolve'
 inline void KDSplinePathSegmentProp::Resolve() {
     MKProp::Resolve();
-    this->unk4C.Resolve();
+    ((KDPathSegment *) &this->unk4C)->Resolve();
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDPATH_H

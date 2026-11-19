@@ -129,5 +129,5 @@ void Cheats_CheckCommandLineParameters() {
 }
 
 void LotsOfLevelUps(void *arg0) {
-    ((Stat *) ((Stat *) &GameData::gameData[0x88]))->SetValue(23000.0f, 0U);
+    ((Stat *) &GameData::gameData[0x88])->SetValue(23000.0f, 0U);
 }

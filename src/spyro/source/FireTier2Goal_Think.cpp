@@ -3,11 +3,15 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/Character.h"
 #include "spyro/source/Enemies_Fire.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -20,7 +24,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_MWHit1;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 FireTier2Goal_Think::Update() {
     f64 sp18;
     f64 sp10;
@@ -37,7 +41,7 @@ u8 FireTier2Goal_Think::Update() {
     temp_r6_40 = M2C_FIELD(temp_r3_38, void **, 8);
     sp10 = M2C_FIELD(temp_r6_40, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r6_40, f64 *, 0x38);
-    if ((temp_r3_38->InWaterVolume(*((MKVector3 *) &sp10), &sp8) != 0) && (sp8 & 1)) {
+    if ((((Enemy *) temp_r3_38)->InWaterVolume(*((MKVector3 *) &sp10), &sp8) != 0) && (sp8 & 1)) {
         var_r31_35 = 1;
     }
     this->unk7C = var_r31_35;
@@ -83,16 +87,16 @@ void FireTier2Goal_Think::Arbitrate() {
         M2C_FIELD(M2C_FIELD(temp_r3_103, void **, 0x44), M2C_UNK (**)(s32), 0x58)(temp_r3_103);
         return;
     }
-    temp_r3_111 = temp_r5_87->IsInvulnerable();
+    temp_r3_111 = ((Enemy *) temp_r5_87)->IsInvulnerable();
     if (temp_r3_111 != 0) {
         temp_r3_115 = this->unkC;
         M2C_FIELD(temp_r3_115, s32 *, 0x9D8) = 0;
         M2C_FIELD(temp_r3_115, s32 *, 0x9D4) = 0;
     }
-    if ((this->unkC->WasHit() != 0) && (temp_r3_111 == 0)) {
+    if ((((Enemy *) this->unkC)->WasHit() != 0) && (temp_r3_111 == 0)) {
         temp_r30_134 = IsActive(0x29);
         sp8.Init();
-        this->unkC->TakeDamage(&sp8, temp_r30_134);
+        ((Enemy *) this->unkC)->TakeDamage(&sp8, temp_r30_134);
         if (IsFollowingSpawnPath() != 0) {
             StopFollowingSpawnPath();
         }
@@ -153,7 +157,7 @@ block_29:
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk78);
             return;
         }
-        if ((IsFollowingSpawnPath() == 0) && (temp_r3_281 = this->unkC, ((M2C_FIELD(temp_r3_281, f32 *, 0xAC8) > 0.0f) != 0)) && (M2C_FIELD(M2C_FIELD(temp_r3_281, void **, 0x44), u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0) && (IsPresent(0x28) == 0)) {
+        if ((IsFollowingSpawnPath() == 0) && (temp_r3_281 = this->unkC, ((M2C_FIELD(temp_r3_281, f32 *, 0xAC8) > 0.0f) != 0)) && (M2C_FIELD(M2C_FIELD(temp_r3_281, void **, 0x44), u8 (**)(), 0x134)() == 0) && (((Enemy *) this->unkC)->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0) && (IsPresent(0x28) == 0)) {
             temp_r4_312 = this->unkC;
             if (((u8) M2C_FIELD(temp_r4_312, u8 *, 0xB08) >> 6U) & 1) {
                 var_f31_317 = M2C_FIELD(M2C_FIELD(temp_r4_312, void **, 0xA38), f32 *, 0x134);
@@ -206,7 +210,7 @@ void FireTier2Goal_Think::Init(Enemy *arg0) {
         }
         this->unk78 = M2C_ERROR(/* Read from unset register $r3 */);
     }
-    this->unk78->Init(arg0);
+    ((FireTier2Goal_JumpOutOfLava *) this->unk78)->Init(arg0);
     Init(arg0);
 }
 #endif
@@ -232,7 +236,7 @@ u8 FireTier2Goal_JumpOutOfLava::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unkspDC'
 u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     MKCollisionResult spF8;
     f64 spF0;
@@ -288,7 +292,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *a
     sp88 = temp_f0_585;
     sp30 = (f32) sp80 + (f32) sp70;
     sp90 = (f64) sp30;
-    temp_f31_597 = sp88.GetWaterSurface(arg0);
+    temp_f31_597 = ((KDWaterVolume *) &sp88)->GetWaterSurface(arg0);
     sp18 = M2C_FIELD(&arg0, f64 *, 0) * 5.5769738e-315;
     var_r31_602 = 0;
     temp_r3_605 = this->unkC->unk8;
@@ -350,7 +354,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp1C'
 u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     s32 sp2C;
     s32 sp28;
@@ -365,7 +369,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
     void *temp_r4_764;
     void *temp_r4_797;
 
-    sp18.NearestPoint(2, arg0);
+    ((KDPathManager *) &sp18)->NearestPoint(2, arg0);
     sp24 = sp18;
     sp28 = sp1C;
     sp2C = sp20;
@@ -390,7 +394,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireTier2Goal_JumpOutOfLava::Activate() {
     AITargetData sp60;
     M2C_UNK sp50;
@@ -432,17 +436,17 @@ void FireTier2Goal_JumpOutOfLava::Activate() {
     u8 var_r31_936;
 
     temp_r4_823 = this->unkC;
-    temp_r4_823->unk838.unk28.Update(*((MKVector3 *) &temp_r4_823->unk588));
+    ((AITargetData *) &temp_r4_823->unk838.unk28)->Update(*((MKVector3 *) &temp_r4_823->unk588));
     if (((u8) M2C_FIELD(this->unk20, u8 *, 0xB10) >> 7U) & 1) {
         temp_r3_831 = this->unkC;
         var_r31_832 = 0;
-        if (((u8) M2C_FIELD(temp_r3_831, u8 *, 0x8B8) == 2) || (temp_r3_831->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_831, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_831->unk870.unk30)->Get() != NULL)) {
             var_r31_832 = 1;
         }
         if (var_r31_832 != 0) {
             temp_r3_845 = this->unkC;
             if (((u8) M2C_FIELD(temp_r3_845, u8 *, 0x8B9) >> 6U) & 1) {
-                if (temp_r3_845->unk838.unk28.GetDist() > 1500.0f) {
+                if (((AITargetData *) &temp_r3_845->unk838.unk28)->GetDist() > 1500.0f) {
                     return;
                 }
                 goto block_8;
@@ -465,11 +469,11 @@ block_8:
         sp60.unk30 = var_r3_874->unk0;
         sp60.unk38 = M2C_FIELD(var_r3_874, f64 *, 8);
         temp_r3_885 = this->unkC;
-        if (((u8) M2C_FIELD(temp_r3_885, u8 *, 0x8B8) == 2) || (temp_r3_885->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_885, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_885->unk870.unk30)->Get() != NULL)) {
             var_r31_881 = 1;
         }
         if (var_r31_881 != 0) {
-            sp50.GetDir();
+            ((AITargetData *) &sp50)->GetDir();
             var_r3_902 = &sp50;
         } else {
             KDMath_GetDirection(this->unkC->unk5C8);
@@ -506,8 +510,8 @@ block_8:
         if (var_r29_938 != 0) {
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
-            this->unkC->unk870.unk40.Set(this->unk38, 0U);
-            this->unkC->unk870.unk40.SetInsideRegion(1U);
+            ((AITargetData *) &this->unkC->unk870.unk40)->Set(this->unk38, 0U);
+            ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
             temp_f0_1015 = (f64) M2C_FIELD(this, f32 *, 0x48) - (f64) M2C_FIELD(this, f32 *, 0x38);
             sp10 = temp_f0_1015;
             sp60.unk10 = temp_f0_1015;
@@ -719,7 +723,6 @@ void FireTier2Goal_JumpOutOfLava::Init(Enemy *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void FireTier2Goal_MoveToLavaEdge::Terminate() {
     Enemy *temp_r3_1415;
     Enemy *temp_r3_1423;
@@ -737,14 +740,13 @@ void FireTier2Goal_MoveToLavaEdge::Terminate() {
     temp_r3_1423->unk59C = 0.0f;
     temp_r3_1428 = this->unkC->unk638;
     M2C_FIELD(temp_r3_1428, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1428, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->ArriveOff();
-    this->unkC->unk638->ObstacleAvoidanceOff();
-    this->unkC->unk638->WallAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->ArriveOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
     this->unk8 = 1;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, void *, float, float)' does not
 u8 FireTier2Goal_MoveToLavaEdge::Update() {
     u8 sp138;
     s32 sp134;
@@ -815,7 +817,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
     ActivateIfInactive();
     temp_r3_1465 = this->unkC;
     var_r30_1466 = 0;
-    if (((u8) M2C_FIELD(temp_r3_1465, u8 *, 0x908) == 2) || (temp_r3_1465->unk8C0.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1465, u8 *, 0x908) == 2) || (((TargetContext *) &temp_r3_1465->unk8C0.unk30)->Get() != NULL)) {
         var_r30_1466 = 1;
     }
     if (var_r30_1466 == 0) {
@@ -825,7 +827,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         temp_r5_1485 = temp_r3_1483->unk8;
         spB8 = M2C_FIELD(temp_r5_1485, f64 *, 0x30);
         spC0 = M2C_FIELD(temp_r5_1485, f64 *, 0x38);
-        temp_r3_1483->unk870.unk40.Update(*((MKVector3 *) &spB8));
+        ((AITargetData *) &temp_r3_1483->unk870.unk40)->Update(*((MKVector3 *) &spB8));
         temp_r3_1492 = this->unkC;
         temp_f1_1496 = temp_r3_1492->GetCollisionHeight();
         temp_f0_1501 = M2C_FIELD(&MKVector3::up, f64 *, 0) * temp_f1_1496;
@@ -850,7 +852,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         sp30 = temp_f1_1534;
         spE0 = (f64) sp30;
         temp_f31_1546 = 150.0f + temp_r3_1515->GetCollisionRadius(temp_r4_1518, temp_f1_1534, (f32) spB0);
-        sp68.GetDir();
+        ((AITargetData *) &sp68)->GetDir();
         temp_f0_1551 = sp68 * (f64) temp_f31_1546;
         sp18 = temp_f0_1551;
         sp78 = temp_f0_1551;
@@ -882,7 +884,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         sp134 = -1;
         sp138 = 0;
         MKCollision_RayCollide(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8), (MKCollisionResult *) &spE8, (MKCollisionMode) 4, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18));
-        if (((sp138 != 0) && (sp58.GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp60) + ((temp_r3_1613->unkC0 * sp58) + (temp_r3_1613->unkC4 * sp5C))) > 0.95f) != 0))) || (this->unkC->unk870.unk40.GetDist() <= this->unk14)) {
+        if (((sp138 != 0) && (((AITargetData *) &sp58)->GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp60) + ((temp_r3_1613->unkC0 * sp58) + (temp_r3_1613->unkC4 * sp5C))) > 0.95f) != 0))) || (((AITargetData *) &this->unkC->unk870.unk40)->GetDist() <= this->unk14)) {
             this->unk8 = 2;
         } else {
             temp_r3_1639 = this->unkC;
@@ -904,7 +906,6 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Set(MKVector3, unsigned int)' does not match
 void FireTier2Goal_MoveToLavaEdge::Activate() {
     Enemy *temp_r3_1720;
     Enemy *temp_r4_1695;
@@ -912,18 +913,17 @@ void FireTier2Goal_MoveToLavaEdge::Activate() {
     void *temp_r3_1691;
 
     this->unk8 = 0;
-    this->unkC->unk870.unk40.Set(*this->unk10, 0U);
+    ((AITargetData *) &this->unkC->unk870.unk40)->Set(*this->unk10, 0U);
     temp_r3_1691 = this->unkC->unk638;
     M2C_FIELD(temp_r3_1691, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1691, u8 *, 0x464) | 0x80);
     temp_r4_1695 = this->unkC;
-    temp_r4_1695->unk638->ArriveOn((AITargetData *) &temp_r4_1695->unk870.unk40);
+    ((SB2 *) temp_r4_1695->unk638)->ArriveOn((AITargetData *) &temp_r4_1695->unk870.unk40);
     temp_r6_1699 = this->unkC;
-    temp_r6_1699->unkA20->GetAnimSequence(5, 0, M2C_BITWISE(s32, temp_r6_1699->unkACC), NULL);
+    ((EnemyDescriptor *) temp_r6_1699->unkA20)->GetAnimSequence(5, 0, M2C_BITWISE(s32, temp_r6_1699->unkACC), NULL);
     this->unkC->SetWalkMovementSpeed(1U);
     this->unkC->SetAnim((AnimSequenceType) 5, 0, 0, 0.15f, 0U, 0U);
-    this->unkC->SetMovementType((CharacterMoveType) 0);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
     temp_r3_1720 = this->unkC;
     temp_r3_1720->unk6B5 &= ~0x20;
     this->unkC->unk5E4 = 0.0f;
 }
-#endif

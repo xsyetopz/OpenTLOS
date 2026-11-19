@@ -70,7 +70,7 @@ loop_5:
 loop_10:
     if (var_r30_67 != NULL) {
         if (var_r30_67->LoadInt("difficulty", &sp8, 0) != 0) {
-            ((EnemySettings *) ((EnemySettings *) &ddaSettings[sp8]))->LoadLine(var_r30_67->unkC->GetSubLine(var_r30_67));
+            ((EnemySettings *) &ddaSettings[sp8])->LoadLine(var_r30_67->unkC->GetSubLine(var_r30_67));
         }
         var_r30_67 = var_r30_67->unkC->GetNextLine(var_r30_67);
         goto loop_10;
@@ -103,7 +103,7 @@ loop_11:
     goto loop_11;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'baselineSettings'
 void EnemySettings_ParseBaselineSettings(MKIniLine *arg0) {
     MKIniLine *var_r30_215;
 
@@ -113,7 +113,7 @@ loop_5:
         return;
     }
     if ((var_r30_215->IsSection("baseline") != 0) || (var_r30_215->IsField("baseline") != 0)) {
-        baselineSettings->LoadLine(var_r30_215->unkC->GetSubLine(var_r30_215));
+        ((EnemySettings *) baselineSettings)->LoadLine(var_r30_215->unkC->GetSubLine(var_r30_215));
         return;
     }
     var_r30_215 = var_r30_215->unkC->GetNextLine(var_r30_215);
@@ -137,7 +137,7 @@ loop_5:
     goto loop_5;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 void EnemySettings_ParseIniFile(const char *arg0) {
     MKIni sp8;
     Level *var_r30_324;
@@ -145,9 +145,9 @@ void EnemySettings_ParseIniFile(const char *arg0) {
     s32 var_r31_325;
     u8 temp_r3_306;
 
-    temp_r3_306 = arg0->Exists(M2C_ERROR(/* Read from unset register $r4 */));
+    temp_r3_306 = ((MKIni *) arg0)->Exists(M2C_ERROR(/* Read from unset register $r4 */));
     if (temp_r3_306 != 0) {
-        temp_r3_306->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_306)->ActivateTempMemOverride();
         ((MKHeap *) (sp8.Init(arg0, 0, NULL)))->DeactivateTempMemOverride();
         temp_r3_317 = sp8.GetFirstLine();
         EnemySettings_ParseEnemyDDALevel(temp_r3_317);
@@ -208,12 +208,12 @@ void EnemySettings_InitModule() {
     memset(baselineSettings, 0, 0x24U);
     temp_r4_428 = (u32) (u64) memset(ddaSettings, 0, 0xB4U);
     if ((s32) iLevels != 0) {
-        temp_r3_433 = sp8.Exists((s8 *) temp_r4_428);
+        temp_r3_433 = ((MKIni *) &sp8)->Exists((s8 *) temp_r4_428);
         if (temp_r3_433 == 0) {
             return;
         }
         temp_r30_439 = iLevels * 0x24;
-        temp_r3_440 = temp_r3_433->Current();
+        temp_r3_440 = ((MKHeap *) temp_r3_433)->Current();
         if (temp_r3_440 != NULL) {
             var_r3_447 = ((MKHeap *) (temp_r3_440->Current()))->Alloc(temp_r30_439, NULL, 0);
         } else {

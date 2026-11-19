@@ -2,6 +2,7 @@
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKCollisionResult.h"
@@ -19,7 +20,9 @@
 #include "spyro/source/CollisionObject.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/MovementObject.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
@@ -268,7 +271,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp128'
 void Character::UpdateRotation() {
     f64 sp138;
     f64 sp130;
@@ -328,7 +331,7 @@ void Character::UpdateRotation() {
 
     temp_f31_442 = M2C_BITWISE(f32, this->unk684) * gUpdateTimeDelta;
     if (IsSteeringEnabled() != 0) {
-        sp120.Calculate((u32) this->unk638);
+        ((SB2 *) &sp120)->Calculate((u32) this->unk638);
         M2C_FIELD(this, f64 *, 0xE0) = sp120;
         M2C_FIELD(this, f64 *, 0xE8) = sp128;
     }
@@ -1157,7 +1160,7 @@ void Character::UpdateMovementNormal() {
     if ((IsSteeringEnabled() != 0) || (((u8) this->unk6B5 >> 1U) & 1)) {
 
     }
-    sp48.Update((u8) &this->unk588);
+    ((MovementObject *) &sp48)->Update((u8) &this->unk588);
     this->unk100 = sp48;
     this->unk108 = sp50;
     this->unk110.unk440 = NULL;
@@ -1472,15 +1475,15 @@ void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
         sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         sp30.unk10 = M2C_BITWISE(f64, sp30);
         sp30.unk18 = sp30.unk8;
-        sp30.unk20.SetIdentity();
+        ((Matrix *) &sp30.unk20)->SetIdentity();
         sp10 = -M2C_BITWISE(f32, sp30.unk10);
         sp14 = -M2C_BITWISE(f32, sp30.unk14);
         sp18 = -M2C_BITWISE(f32, sp30.unk18);
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        sp30.unk20.RotatePYR((Matrix *) &sp30.unk20, arg1);
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        ((Matrix *) &sp30.unk20)->RotatePYR((Matrix *) &sp30.unk20, arg1);
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
         ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
@@ -1499,15 +1502,15 @@ void Character::RotateNodePitch(int arg0, float arg1) {
         sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         sp30.unk10 = M2C_BITWISE(f64, sp30);
         sp30.unk18 = sp30.unk8;
-        sp30.unk20.SetIdentity();
+        ((Matrix *) &sp30.unk20)->SetIdentity();
         sp10 = -M2C_BITWISE(f32, sp30.unk10);
         sp14 = -M2C_BITWISE(f32, sp30.unk14);
         sp18 = -M2C_BITWISE(f32, sp30.unk18);
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        sp30.unk20.RotatePitch((Matrix *) &sp30.unk20, arg1);
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        ((Matrix *) &sp30.unk20)->RotatePitch((Matrix *) &sp30.unk20, arg1);
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
         ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
@@ -1526,15 +1529,15 @@ void Character::RotateNodeYaw(int arg0, float arg1) {
         sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         sp30.unk10 = M2C_BITWISE(f64, sp30);
         sp30.unk18 = sp30.unk8;
-        sp30.unk20.SetIdentity();
+        ((Matrix *) &sp30.unk20)->SetIdentity();
         sp10 = -M2C_BITWISE(f32, sp30.unk10);
         sp14 = -M2C_BITWISE(f32, sp30.unk14);
         sp18 = -M2C_BITWISE(f32, sp30.unk18);
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        sp30.unk20.RotateYaw((Matrix *) &sp30.unk20, arg1);
-        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        ((Matrix *) &sp30.unk20)->RotateYaw((Matrix *) &sp30.unk20, arg1);
+        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
         ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
@@ -2063,7 +2066,7 @@ void Character::EnableCollision(bool arg0) {
 void Character::Deactivate() {
     PropFlagsClear((u32 *) &this->unk10, 0x60000U);
     EnableCollision(0);
-    this->unk600.Show(0U);
+    ((Shadow *) &this->unk600)->Show(0U);
 }
 #endif
 
@@ -2201,12 +2204,12 @@ void Character::Message(MKMessage *arg0) {
                     var_r31_3868 = 1;
                 }
             }
-            this->unk600.Show(var_r31_3868);
+            ((Shadow *) &this->unk600)->Show(var_r31_3868);
             PropFlagsSet((u32 *) &this->unk10, 0x20000U);
             goto block_88;
         case -4:
             this->unk110.ResetResults();
-            this->unk600.Show(0U);
+            ((Shadow *) &this->unk600)->Show(0U);
             PropFlagsClear((u32 *) &this->unk10, 0x20000U);
             goto block_88;
         case 28:
@@ -2215,7 +2218,7 @@ void Character::Message(MKMessage *arg0) {
             this->unk6B0 = 1;
             Message(&this->unk6A0);
             if (!(((u8) this->unk6B5 >> 7U) & 1)) {
-                this->unk600.Show(0U);
+                ((Shadow *) &this->unk600)->Show(0U);
             }
             goto block_88;
         case 358:
@@ -2227,7 +2230,7 @@ void Character::Message(MKMessage *arg0) {
         case 29:
             this->unk6A0 = 1.16e-43f;
             Message(&this->unk6A0);
-            this->unk600.Show(((u32) this->unk10 >> 0x12U) & 1);
+            ((Shadow *) &this->unk600)->Show(((u32) this->unk10 >> 0x12U) & 1);
             goto block_88;
         case 34:
             if ((void *) this->unk634 != NULL) {
@@ -2255,7 +2258,7 @@ void Character::Message(MKMessage *arg0) {
                 sp54 = unksp44;
                 sp58 = (f32) sp48;
                 sp5C = 0.0f;
-                sp50.RotateYaw((Matrix *) &sp50, M2C_FIELD(M2C_FIELD(temp_r31_3978, void **, 0xC), f32 *, 4));
+                ((Matrix *) &sp50)->RotateYaw((Matrix *) &sp50, M2C_FIELD(M2C_FIELD(temp_r31_3978, void **, 0xC), f32 *, 4));
                 M2C_FIELD(this, f32 *, 0xC0) = (f64) sp70;
                 M2C_FIELD(this, f32 *, 0xC8) = (f64) sp78;
                 temp_r5_4024 = M2C_FIELD(temp_r31_3978, void **, 8);
@@ -2422,7 +2425,7 @@ loop_28:
                 var_r28_4299 += 1;
                 goto loop_28;
             }
-            this->unk600.Show(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1);
+            ((Shadow *) &this->unk600)->Show(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1);
             temp_r3_4328 = this->unk110.unk16C;
             if (temp_r3_4328 > 0) {
                 if (temp_r3_4328 != 0) {
@@ -2437,7 +2440,6 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Character::SetDefaults() {
     void *temp_r3_4417;
 
@@ -2481,13 +2483,11 @@ void Character::SetDefaults() {
     this->unk630 = NULL;
     temp_r3_4417 = this->unk638;
     if (temp_r3_4417 != NULL) {
-        temp_r3_4417->SetDefaults();
+        ((SB2 *) temp_r3_4417)->SetDefaults();
     }
     this->unk69C = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void Character::Resolve() {
     void *temp_r3_4440;
 
@@ -2495,10 +2495,9 @@ void Character::Resolve() {
     temp_r3_4440 = this->unk634;
     if (temp_r3_4440 != NULL) {
         this->unk634 = NULL;
-        PlatformAttach(temp_r3_4440->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)), NULL);
+        PlatformAttach(((MKSceneManager *) temp_r3_4440)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)), NULL);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Character::LoadDone() {
@@ -2558,7 +2557,7 @@ void Character::LoadDone() {
     sp8 = this;
     spC = 0;
     this->unk110.Init(temp_r3_4560 + 0x7C, this->unk5B8, M2C_FIELD(temp_r30_4558, u8 *, 0x76), this->unk634, 0, 1, 0);
-    this->unk588.Init(checked_cast<P19CharacterDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xC8, &this->unk110);
+    ((MovementObject *) &this->unk588)->Init(checked_cast<P19CharacterDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xC8, &this->unk110);
     M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *), 0x4C)(&sp20, &this->unk110);
     M2C_FIELD(this, f64 *, 0x5B8) = sp20;
     M2C_FIELD(this, f64 *, 0x5C0) = sp28;
@@ -2584,8 +2583,8 @@ void Character::LoadDone() {
     this->unk6B5 |= 0x40;
     UpdateModel(&MKVector3::up, 1, temp_f1_4629, temp_f2_4621, temp_f3_4620);
     SetupCollision();
-    this->unk600.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
-    this->unk600.Show(0U);
+    ((Shadow *) &this->unk600)->Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
+    ((Shadow *) &this->unk600)->Show(0U);
 }
 #endif
 
@@ -2600,7 +2599,7 @@ s32 Character::LoadLine(MKIniLine *arg0) {
     if ((arg0->IsField("bSynkerAnimate") != 0) && (arg0->GetBool(0) != 0)) {
         PropFlagsSet((u32 *) &this->unk10, 0x01000000U);
     }
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk588.LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk634, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((MovementObject *) &this->unk588)->LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk634, 0) != 0)) {
         return 1;
     }
     if (arg0->LoadBool("bDrawInCutscenes", &sp8, 0) != 0) {
@@ -2611,7 +2610,7 @@ s32 Character::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Character::Deinit() {
     MKAnimScript *temp_r3_4777;
     MKCollisionInfo *temp_r31_4797;
@@ -2621,11 +2620,11 @@ void Character::Deinit() {
 
     temp_r3_4766 = this->unk638;
     if (temp_r3_4766 != NULL) {
-        temp_r3_4766->Deinit();
+        ((SB2 *) temp_r3_4766)->Deinit();
         operator delete(this->unk638);
     }
     PlatformDetach();
-    this->unk600.Deinit();
+    ((Shadow *) &this->unk600)->Deinit();
     temp_r3_4777 = M2C_FIELD(this, MKAnimScript **, 0x630);
     if (temp_r3_4777 != NULL) {
         temp_r3_4777->Destroy();
@@ -2688,7 +2687,7 @@ void Character::Init() {
     if ((u8) M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x77) != 0) {
         operator new(0x468U, NULL, 0);
         this->unk638 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk638->Init();
+        ((SB2 *) this->unk638)->Init();
     }
     this->unk634 = NULL;
     M2C_FIELD(this, Character **, 0x670) = this;

@@ -12,6 +12,7 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SquishBoulder.h"
@@ -272,12 +273,12 @@ void FuryFXEarth::ResetFury() {
     temp_r3_445->Disable();
     temp_r4_450 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if (temp_r4_450 != NULL) {
-        gb.unk80->EnableLight(temp_r4_450, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_450, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: identifier 'FuryFXEarth::Trigger(const MKVector3 &, bool)' redeclared
 s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp30;
     f64 sp28;
@@ -356,7 +357,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     this->unk168.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
     temp_r4_616 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if ((temp_r4_616 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
-        gb.unk80->EnableLight(temp_r4_616, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_616, 1U);
         MKVector(0.0f, 500.0f, 0.0f);
         sp8 = M2C_FIELD(this, f64 *, 0x110) + sp18;
         temp_r3_641 = M2C_FIELD(this, ManagedLight **, 0x1CC);
@@ -391,21 +392,21 @@ void FuryFXEarth::SetDefaults() {
     this->unk108 = 0.0f;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 void FuryFXEarth::Deinit() {
     Corona *temp_r4_711;
     ManagedLight *temp_r4_728;
 
     temp_r4_711 = this->unk164;
     if (temp_r4_711 != NULL) {
-        gb.unk64->Free(temp_r4_711);
+        ((Coronas *) gb.unk64)->Free(temp_r4_711);
         this->unk164 = NULL;
     }
     gb.unk2CC.Disable((s32) this->unk1C0);
     this->unk1C0 = (MKPropDescriptor *)-1;
     temp_r4_728 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if (temp_r4_728 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_728);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_728);
     }
     FuryFX::Deinit();
 }
@@ -873,7 +874,7 @@ loop_59:
             }
             temp_r4_1549 = M2C_FIELD(this, ManagedLight **, 0x1CC);
             if ((temp_r4_1549 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
-                gb.unk80->EnableLight(temp_r4_1549, 0U);
+                ((LightManager *) gb.unk80)->EnableLight(temp_r4_1549, 0U);
             }
             gb.unk381 = 0;
         }
@@ -882,7 +883,7 @@ loop_59:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXEarth::Resolve() {
     f64 spA0;
     f64 sp98;
@@ -926,7 +927,7 @@ void FuryFXEarth::Resolve() {
     sp90 = (f64) sp40;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    this->unk164 = gb.unk64->Alloc(*((MKVector3 *) &sp98), *((MKVector4 *) &sp88), 1.0f, lit_778, lit_779);
+    this->unk164 = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp98), *((MKVector4 *) &sp88), 1.0f, lit_778, lit_779);
     temp_r4_1613 = this->unk164;
     if (temp_r4_1613 != NULL) {
         temp_r4_1613->unk31 &= ~0x40;
@@ -947,10 +948,10 @@ void FuryFXEarth::Resolve() {
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
     sp80 = (f64) sp30;
-    M2C_FIELD(this, ManagedLight **, 0x1CC) = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784);
+    M2C_FIELD(this, ManagedLight **, 0x1CC) = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_783, lit_784);
     temp_r4_1656 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if (temp_r4_1656 != NULL) {
-        gb.unk80->EnableLight(temp_r4_1656, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1656, 0U);
     }
 }
 #endif

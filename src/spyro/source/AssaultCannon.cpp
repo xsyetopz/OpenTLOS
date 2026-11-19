@@ -11,6 +11,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EnemyDeathFX.h"
 #include "spyro/source/EnergyBeam.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Game.h"
@@ -18,6 +19,7 @@
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/Projectile.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
 #include "unplaced_templates.h"
@@ -574,7 +576,7 @@ void AssaultCannon::StateDeadUpdate() {
         this->unk2D4 = M2C_BITWISE(f32, this->unk2D4) - gUpdateTimeDelta;
         if (M2C_BITWISE(f32, this->unk2D4) <= 0.0f) {
             M2C_FIELD(this, u8 *, 0x2F1) = 1U;
-            gb.unk98->Trigger(NULL, *(this->unk8 + 0x30), 2.0f, 0);
+            ((EnemyDeathFX *) gb.unk98)->Trigger(NULL, *(this->unk8 + 0x30), 2.0f, 0);
             if ((s32) M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x1A8) != 0) {
                 SpawnGems(M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x1A8));
             }
@@ -1271,7 +1273,7 @@ void AssaultCannon::StateFireUpdate() {
                 M2C_FIELD(temp_r3_1556, AssaultCannon **, 0x130) = NULL;
                 this->unk2C8 = 0;
             }
-            this->unk2C8 = 0xE->CreateInstance((ProjectileType) temp_r4_1545);
+            this->unk2C8 = ((Projectile *)0xE)->CreateInstance((ProjectileType) temp_r4_1545);
             temp_r3_1566 = this->unk2C8;
             if (temp_r3_1566 != 0) {
                 M2C_FIELD(temp_r3_1566, AssaultCannon **, 0x130) = this;
@@ -1862,7 +1864,7 @@ void AssaultCannon::StateFireUpdate() {
             M2C_FIELD(temp_r3_2848, AssaultCannon **, 0x130) = NULL;
             this->unk2C8 = 0;
         }
-        this->unk2C8 = 0x15->CreateInstance((ProjectileType) temp_r4_2847);
+        this->unk2C8 = ((Projectile *)0x15)->CreateInstance((ProjectileType) temp_r4_2847);
         temp_r3_2858 = this->unk2C8;
         if (temp_r3_2858 != 0) {
             M2C_FIELD(temp_r3_2858, AssaultCannon **, 0x130) = this;
@@ -2131,7 +2133,7 @@ void AssaultCannon::StateFireEnter() {
     case 0:                                         /* switch 1 */
         this->unk2CC = 2.0f;
         M2C_FIELD(this, s8 *, 0x2F0) = 1;
-        this->unk2C8 = 5->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2C8 = ((Projectile *)5)->CreateInstance((ProjectileType) temp_r4_3081);
         temp_r3_3110 = this->unk2C8;
         if (temp_r3_3110 != 0) {
             M2C_FIELD(temp_r3_3110, AssaultCannon **, 0x130) = this;
@@ -2279,7 +2281,7 @@ void AssaultCannon::StateFireEnter() {
     case 2:                                         /* switch 1 */
         this->unk2CC = 0.5f;
         M2C_FIELD(this, s8 *, 0x2F0) = 1;
-        this->unk2C8 = 0x11->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2C8 = ((Projectile *)0x11)->CreateInstance((ProjectileType) temp_r4_3081);
         temp_r3_3414 = this->unk2C8;
         if (temp_r3_3414 != 0) {
             M2C_FIELD(temp_r3_3414, AssaultCannon **, 0x130) = this;
@@ -2437,7 +2439,7 @@ void AssaultCannon::StateFireEnter() {
             sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp270 = 0;
             if (this != NULL) {
-                sp90.GetPos();
+                ((MKProp *) &sp90)->GetPos();
                 sp250 = sp90;
                 sp258 = sp98;
             } else {
@@ -2454,7 +2456,7 @@ void AssaultCannon::StateFireEnter() {
     case 3:                                         /* switch 1 */
         this->unk2CC = 2.0f;
         M2C_FIELD(this, s8 *, 0x2F0) = 1;
-        this->unk2C8 = 0x12->CreateInstance((ProjectileType) temp_r4_3081);
+        this->unk2C8 = ((Projectile *)0x12)->CreateInstance((ProjectileType) temp_r4_3081);
         temp_r3_3767 = this->unk2C8;
         if (temp_r3_3767 != 0) {
             M2C_FIELD(temp_r3_3767, AssaultCannon **, 0x130) = this;
@@ -3166,7 +3168,7 @@ void AssaultCannon::Draw() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk218'
 void AssaultCannon::Message(MKMessage *arg0) {
     f64 sp260;
     f64 sp258;
@@ -3298,7 +3300,7 @@ void AssaultCannon::Message(MKMessage *arg0) {
     void *temp_r5_5480;
 
     ((KDSoundPlayer *) (this + 0x26C))->Message(arg0);
-    this->unk294.Message(arg0);
+    ((KDSoundPlayer *) &this->unk294)->Message(arg0);
     temp_r0_5148 = arg0->unk0;
     switch (temp_r0_5148) {                         /* switch 1; irregular */
     case 49:                                        /* switch 1 */
@@ -3597,11 +3599,11 @@ void AssaultCannon::Update() {
     if ((s32) M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194) != 0) {
         temp_r4_5748 = checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk294.Update(M2C_FIELD(temp_r4_5748, s32 *, 0x194), 1U, M2C_FIELD(this, u8 *, 0x2F0), NULL, (MKVector3 *) &this->unk240, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk294)->Update(M2C_FIELD(temp_r4_5748, s32 *, 0x194), 1U, M2C_FIELD(this, u8 *, 0x2F0), NULL, (MKVector3 *) &this->unk240, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     CalcBarrelBeamPositions();
     CalcSpikeBeamPositions();
-    sp30.GetPos();
+    ((MKProp *) &sp30)->GetPos();
     sp10 = sp30 - this->unk330;
     this->unk340 = sp10;
     sp18 = sp38 - M2C_FIELD(this, f32 *, 0x350);
@@ -3694,7 +3696,7 @@ void AssaultCannon::LoadDone() {
     } else {
         var_r30_5939 = Tools_GetMatchingNodeIndex(this->unk4, "turret");
     }
-    sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &sp18)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     M2C_FIELD(this, f64 *, 0x250) = sp18;
     this->unk240 = sp20;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) var_r30_5939), (void (*)(MKDynamicBone *, void *)) &AssaultCannon::UpdateTurretBone, &this->unk230.unk8);
@@ -3741,7 +3743,7 @@ void AssaultCannon::Init() {
     temp_r31_6038 = checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     ((KDSoundFader *) (this + 0x26C))->Init(M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x198), M2C_FIELD(temp_r31_6038, f32 *, 0x19C));
     temp_r31_6047 = checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk294.Init(M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x1A0), M2C_FIELD(temp_r31_6047, f32 *, 0x1A4));
+    ((KDSoundFader *) &this->unk294)->Init(M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x1A0), M2C_FIELD(temp_r31_6047, f32 *, 0x1A4));
     M2C_FIELD(this, f32 *, 0x358) = 0.0f;
     M2C_FIELD(this, f32 *, 0x35C) = 0.0f;
     M2C_FIELD(this, f32 *, 0x360) = 0.0f;

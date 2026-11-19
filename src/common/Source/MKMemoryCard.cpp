@@ -943,7 +943,7 @@ s32 MKMemoryCard_CalculateFileSize() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void *LoadIconFile(const char *arg0, int *arg1, int *arg2, unsigned long *arg3) {
     M2C_UNK spC;
     void *sp8;
@@ -1016,7 +1016,7 @@ loop_10:
         } while (var_ctr_1967 != 0);
     }
     temp_r26_1981 = *arg1;
-    temp_r3_1982 = var_r3_1966->Current();
+    temp_r3_1982 = ((MKHeap *) var_r3_1966)->Current();
     if (temp_r3_1982 != NULL) {
         var_r3_1989 = ((MKHeap *) (temp_r3_1982->Current()))->Alloc(temp_r26_1981, NULL, 0);
     } else {

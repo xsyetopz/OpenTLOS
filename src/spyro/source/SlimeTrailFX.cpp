@@ -129,7 +129,6 @@ SlimeTrailFX *SlimeTrailFXManager::AllocTrail(MKMaterial *arg0) {
     return NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'Draw'
 void SlimeTrailFXManager::Draw() {
     f32 sp8;
     MKHeap *temp_r3_176;
@@ -146,14 +145,13 @@ loop_2:
     if (var_r31_168 != NULL) {
         temp_r3_176 = var_r31_168->unk0;
         if (temp_r3_176 != NULL) {
-            temp_r3_176->Draw();
+            ((SlimeTrailFX *) temp_r3_176)->Draw();
             var_r31_168 += 4;
             goto loop_2;
         }
     }
     MKView_Pop();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void SlimeTrailFXManager::Update() {
@@ -320,7 +318,7 @@ loop_7:
     if ((u32) M2C_FIELD(this->unk0, u32 *, -4) != 0U) {
         temp_r3_457 = this->unk0 - 4;
         this->unk0 = temp_r3_457;
-        temp_r3_457->unk0->Init();
+        ((SlimeTrailFX *) temp_r3_457->unk0)->Init();
         goto loop_7;
     }
 loop_10:

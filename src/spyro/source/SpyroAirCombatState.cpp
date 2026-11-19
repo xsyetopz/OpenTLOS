@@ -11,6 +11,8 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/TimeDeltaModifier.h"
 #include "unplaced_templates.h"
@@ -127,7 +129,7 @@ void SpyroAirCombatState::EnableProtoSlowMotion() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 u8 SpyroAirCombatState::CanEnableProtoSlowMotion() {
     f32 temp_f30_274;
     f32 temp_f31_251;
@@ -135,11 +137,11 @@ u8 SpyroAirCombatState::CanEnableProtoSlowMotion() {
     void *temp_r30_277;
 
     if ((u8) this->unk36 != 0) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-            this->unk10->unk430.unk28.GetLastCombatEnemy();
+            ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
             if (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)() != 0U) {
-                this->unk10->unk430.unk28.GetLastCombatEnemy();
+                ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
                 temp_f31_251 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 0xC)(), f32 *, 0xAC8);
                 temp_r30_255 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0);
                 temp_f30_274 = (f32) M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk10->unk0), s32 *, 0x260) + (f32) M2C_FIELD(temp_r30_255, s32 *, 0x27C);
@@ -172,7 +174,7 @@ void SpyroAirCombatState::TryEnableKillingBlowSlowMotion() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
     s8 sp190;
     s32 sp18C;
@@ -257,9 +259,9 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
     void *temp_r4_582;
     void *temp_r8_458;
 
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         temp_r3_406 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         sp130 = M2C_FIELD(temp_r3_406, f64 *, 0x30);
         sp138 = M2C_FIELD(temp_r3_406, f64 *, 0x38);
@@ -267,7 +269,7 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
         temp_r4_412 = temp_r3_411->unk8;
         sp100 = M2C_FIELD(temp_r4_412, f64 *, 0x30);
         sp108 = M2C_FIELD(temp_r4_412, f64 *, 0x38);
-        temp_r3_411->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &temp_r3_411->unk430.unk28)->GetLastCombatEnemy();
         M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), M2C_UNK (**)(), 0x2C)();
         sp140 = 0.0f;
         sp144 = 0.0f;
@@ -382,7 +384,7 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
             spB8 = (f64) sp38;
             temp_r3_580->SetDeltaPos(*((MKVector3 *) &spB0));
         }
-        if (this->unk10->unk430.unk28.GetHitTarget() != 0) {
+        if (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0) {
             this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
         }
     }
@@ -433,7 +435,7 @@ Targetable *SpyroAirCombatState::SelectNewTarget() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::UpdateAirStrafe() {
     f64 sp128;
     f64 sp120;
@@ -494,9 +496,9 @@ void SpyroAirCombatState::UpdateAirStrafe() {
     void *temp_r4_915;
     void *temp_r6_782;
 
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         temp_r5_781 = this->unk10;
         temp_r6_782 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         temp_r4_783 = temp_r5_781->unk8;
@@ -617,13 +619,11 @@ void SpyroAirCombatState::HornDiveHitUpdate() {
     HornDiveHitTransition();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpyroAirCombatState::HornDiveHitExit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(1U);
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(1U);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::HornDiveHitEnter() {
@@ -751,7 +751,7 @@ block_37:
         var_r3_1259 = this->unk10->SpikyTransition();
     }
     if ((u8) var_r3_1259 == 0) {
-        if ((this->unk10->unk430.unk28.GetHitTarget() != 0) && ((s32) this->unk14.unk0 != 7)) {
+        if ((((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0) && ((s32) this->unk14.unk0 != 7)) {
             this->unk14.SetState(this, 7, 0U);
             var_r3_1259 = 1;
         } else {
@@ -916,7 +916,7 @@ void SpyroAirCombatState::HornDiveAttackExit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::HornDiveAttackEnter() {
     MKVector3 sp70;
     f64 sp68;
@@ -943,9 +943,9 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
     void *temp_r3_1585;
     void *temp_r3_1715;
 
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
     this->unk10->SetAnim(0x2CU, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     if (this->unk10->ChooseCombatTarget(&sp70, NULL) != 0) {
         temp_r3_1585 = this->unk10->unk8;
@@ -999,12 +999,12 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
         sp18 = (f32) sp58 * var_f3_1676;
         sp60 = (f64) sp10;
         sp68 = (f64) sp18;
-        this->unk10->unk430.unk28.SetTargetDir(1U, *((MKVector3 *) &sp60));
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(1U, *((MKVector3 *) &sp60));
     } else {
-        this->unk10->unk430.unk28.SetTargetDir(0U, MKVector3::zero);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
     }
-    this->unk10->unk430.unk28.SetHitType(3);
-    this->unk10->unk430.unk28.SetCombatArc(0x10);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(3);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0x10);
     temp_r3_1715 = this->unk10->unk8;
     sp30 = M2C_FIELD(temp_r3_1715, f64 *, 0x30);
     sp38 = M2C_FIELD(temp_r3_1715, f64 *, 0x38);
@@ -1100,7 +1100,7 @@ u8 SpyroAirCombatState::KnockdownTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::KnockdownUpdate() {
     s8 sp180;
     s32 sp17C;
@@ -1181,22 +1181,22 @@ void SpyroAirCombatState::KnockdownUpdate() {
     void *temp_r6_2020;
     void *temp_r8_2032;
 
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         var_r30_1947 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)();
     } else {
         var_r30_1947 = 0U;
     }
-    if (((u8) this->unk41 != 0) && (var_r30_1947 != 0U) && (this->unk10->unk430.unk28.GetHitTarget() != 0)) {
+    if (((u8) this->unk41 != 0) && (var_r30_1947 != 0U) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0)) {
         EnableProtoSlowMotion();
         this->unk41 = 0;
     }
-    if ((var_r30_1947 != 0U) && (this->unk10->unk430.unk28.GetHitTarget() == 0)) {
+    if ((var_r30_1947 != 0U) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() == 0)) {
         UpdateAirStrafe();
     }
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
-    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (this->unk10->unk430.unk28.GetHitTarget() == 0)) {
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() == 0)) {
         sp130 = 0.0f;
         sp134 = 0.0f;
         sp138 = 0.0f;
@@ -1218,7 +1218,7 @@ void SpyroAirCombatState::KnockdownUpdate() {
         sp178 = 0;
         sp17C = -1;
         sp180 = 0;
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         temp_r6_2020 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         spF0 = M2C_FIELD(temp_r6_2020, f64 *, 0x30);
         spF8 = M2C_FIELD(temp_r6_2020, f64 *, 0x38);
@@ -1318,25 +1318,23 @@ void SpyroAirCombatState::KnockdownUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroAirCombatState::KnockdownExit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(1U);
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(1U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::KnockdownEnter() {
     this->unk2C = 2;
-    this->unk10->unk430.unk28.SetHitType(0xA);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(0xA);
     if ((u8) this->unk38 != 0) {
-        this->unk10->unk430.unk28.SetCombatArc(9);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(9);
     } else {
-        this->unk10->unk430.unk28.SetCombatArc(0xC);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0xC);
     }
-    this->unk10->unk430.unk28.SetHitTarget(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitTarget(0U);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetLVEScale(MKVector3::one);
     this->unk10->SetAnim(0x26U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
@@ -1349,14 +1347,14 @@ void SpyroAirCombatState::KnockdownEnter() {
     EnableSlowMotion(1U);
     TryEnableKillingBlowSlowMotion();
     this->unk41 = 1;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
     this->unk10->ClearMeleeButtonState();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::JuggleTransition() {
     s32 spC;
     s32 sp8;
@@ -1367,9 +1365,9 @@ void SpyroAirCombatState::JuggleTransition() {
 
     var_r31_2362 = 0;
     var_r30_2363 = 0;
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         var_r3_2375 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)();
     } else {
         var_r3_2375 = NULL;
@@ -1428,18 +1426,18 @@ void SpyroAirCombatState::JuggleTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::JuggleUpdate() {
     u32 var_r3_2510;
 
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         var_r3_2510 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 0xC)();
     } else {
         var_r3_2510 = 0U;
     }
-    if (((u8) this->unk41 != 0) && (var_r3_2510 != 0U) && (this->unk10->unk430.unk28.GetHitTarget() != 0)) {
+    if (((u8) this->unk41 != 0) && (var_r3_2510 != 0U) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0)) {
         EnableProtoSlowMotion();
         this->unk41 = 0;
     }
@@ -1448,16 +1446,14 @@ void SpyroAirCombatState::JuggleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroAirCombatState::JuggleExit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(1U);
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(1U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::JuggleEnter() {
     s32 var_r4_2592;
 
@@ -1466,16 +1462,16 @@ void SpyroAirCombatState::JuggleEnter() {
     this->unk33 = 0;
     this->unk32 = 0;
     this->unk31 = 0;
-    this->unk10->unk430.unk28.SetHitTarget(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitTarget(0U);
     var_r4_2592 = 9;
     if ((s32) this->unk2C == 2) {
         var_r4_2592 = 3;
     }
-    this->unk10->unk430.unk28.SetHitType(var_r4_2592);
-    this->unk10->unk430.unk28.SetCombatArc(this->unk2C + 0xD);
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(var_r4_2592);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(this->unk2C + 0xD);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetAnim(this->unk2C + 0x23, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     if ((u8) this->unk42 == 0) {
@@ -1531,16 +1527,16 @@ void SpyroAirCombatState::LaunchUpdate() {
     LaunchTransition();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::LaunchExit() {
     s32 spC;
     s32 sp8;
     void *temp_r3_2765;
 
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         temp_r3_2765 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)();
         spC = 0;
         sp8 = 0x76;
@@ -1549,7 +1545,7 @@ void SpyroAirCombatState::LaunchExit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::LaunchEnter() {
     s32 spC;
     s32 sp8;
@@ -1561,8 +1557,8 @@ void SpyroAirCombatState::LaunchEnter() {
     this->unk33 = 0;
     this->unk32 = 0;
     this->unk31 = 0;
-    this->unk10->unk430.unk28.SetHitType(9);
-    this->unk10->unk430.unk28.SetCombatArc(0xB);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(9);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0xB);
     temp_r3_2806 = this->unk10;
     temp_r3_2806->unk428 &= 0xFFFFFFDF;
     this->unk10->SetMedium((Spyro::Medium) 2);
@@ -1570,9 +1566,9 @@ void SpyroAirCombatState::LaunchEnter() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     this->unk10->SetAnim(0x22U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         temp_r3_2844 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)();
         spC = 0;
         sp8 = 0x75;
@@ -1584,7 +1580,7 @@ void SpyroAirCombatState::LaunchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::TailSweepComboTransition() {
     Enemy *temp_r3_2916;
     InputModifier *temp_r3_3012;
@@ -1620,10 +1616,10 @@ void SpyroAirCombatState::TailSweepComboTransition() {
         var_r3_2877 = 4;
     }
     var_r28_2885 = 0;
-    if (((s32) this->unk2C < 2) && (((u8) this->unk33 != 0) || (temp_r4_2878 != 0)) && (this->unk10->unk430.unk28.GetHitTarget() != 0) && (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1)) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+    if (((s32) this->unk2C < 2) && (((u8) this->unk33 != 0) || (temp_r4_2878 != 0)) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0) && (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1)) {
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-            this->unk10->unk430.unk28.GetLastCombatEnemy();
+            ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
             temp_r3_2916 = M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), Enemy *(**)(), 0xC)();
             if (temp_r3_2916 != NULL) {
                 var_r27_2920 = 0;
@@ -1633,9 +1629,9 @@ void SpyroAirCombatState::TailSweepComboTransition() {
                 var_r28_2885 = var_r27_2920;
             } else {
                 var_r27_2936 = 0;
-                this->unk10->unk430.unk28.GetLastCombatEnemy();
+                ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
                 if (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x1C)() != 0) {
-                    this->unk10->unk430.unk28.GetLastCombatEnemy();
+                    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
                     if (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x20)() == 0) {
                         var_r27_2936 = 1;
                     }
@@ -1646,7 +1642,7 @@ void SpyroAirCombatState::TailSweepComboTransition() {
     }
     var_r30_2959 = 0;
     var_r27_2960 = 0;
-    if (((u8) this->unk35 != 0) && ((s32) this->unk2C == 2) && (this->unk10->unk430.unk28.GetHitTarget() != 0)) {
+    if (((u8) this->unk35 != 0) && ((s32) this->unk2C == 2) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0)) {
         var_r27_2960 = 1;
     }
     if ((var_r27_2960 != 0) && (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1)) {
@@ -1657,17 +1653,17 @@ void SpyroAirCombatState::TailSweepComboTransition() {
         temp_r3_2987 = SelectNewTarget();
         var_r27_2984 = 0;
         if (temp_r3_2987 != NULL) {
-            this->unk10->unk430.unk28.GetLastCombatEnemy();
+            ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
             if (temp_r3_2987 != (u32) M2C_ERROR(/* Read from unset register $r3 */)) {
                 var_r27_2984 = 1;
             }
         }
         if (var_r27_2984 != 0) {
-            this->unk10->unk430.unk28.SetLastCombatEnemy(temp_r3_2987);
+            ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastCombatEnemy(temp_r3_2987);
         }
     }
     var_r30_3006 = 0;
-    this->unk10->unkB90.GetCurrentTarget();
+    ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         temp_r3_3012 = this->unk10->GetInput();
         var_r4_3014 = 0;
@@ -1741,7 +1737,6 @@ void SpyroAirCombatState::TailSweepComboTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroAirCombatState::TailSweepComboUpdate() {
     InputModifier *temp_r3_3181;
     s32 var_r3_3194;
@@ -1750,9 +1745,9 @@ void SpyroAirCombatState::TailSweepComboUpdate() {
 
     UpdateAirStrafe();
     UpdateTailSweepStickToTarget();
-    if (this->unk10->unk430.unk28.GetHitTarget() != 0) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
-        this->unk10->unk430.unk28.SetLastTailSweepTarget(M2C_ERROR(/* Read from unset register $r3 */));
+    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0) {
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastTailSweepTarget(M2C_ERROR(/* Read from unset register $r3 */));
     }
     var_r31_3177 = 1;
     if ((u8) this->unk35 == 0) {
@@ -1773,7 +1768,6 @@ void SpyroAirCombatState::TailSweepComboUpdate() {
     this->unk35 = var_r31_3177;
     TailSweepComboTransition();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroAirCombatState::TailSweepComboExit() {
@@ -1805,7 +1799,7 @@ void SpyroAirCombatState::TailSweepComboExit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::TailSweepComboEnter() {
     f64 sp70;
     f64 sp68;
@@ -1848,20 +1842,20 @@ void SpyroAirCombatState::TailSweepComboEnter() {
     this->unk34 = 0;
     this->unk33 = 0;
     this->unk2C += 1;
-    this->unk10->unk430.unk28.SetCombatArc(this->unk2C + 6);
-    if (this->unk10->unk430.unk28.GetCombatArc() == 8) {
-        this->unk10->unk430.unk28.SetHitType(3);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(this->unk2C + 6);
+    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetCombatArc() == 8) {
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(3);
     } else {
-        this->unk10->unk430.unk28.SetHitType(9);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(9);
     }
-    this->unk10->unk430.unk28.SetHitTarget(0U);
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitTarget(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         temp_r3_3322 = this->unk10;
         temp_r4_3323 = temp_r3_3322->unk8;
         sp38 = M2C_FIELD(temp_r4_3323, f64 *, 0x30);
         sp40 = M2C_FIELD(temp_r4_3323, f64 *, 0x38);
-        temp_r3_3322->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &temp_r3_3322->unk430.unk28)->GetLastCombatEnemy();
         temp_r3_3334 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         temp_f1_3335 = M2C_FIELD(temp_r3_3334, f64 *, 0x30);
         sp48 = temp_f1_3335;
@@ -1914,9 +1908,9 @@ void SpyroAirCombatState::TailSweepComboEnter() {
         sp20 = (f32) sp60 * var_f3_3425;
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
-        this->unk10->unk430.unk28.SetTargetDir(1U, *((MKVector3 *) &sp68));
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(1U, *((MKVector3 *) &sp68));
     } else {
-        this->unk10->unk430.unk28.SetTargetDir(0U, MKVector3::zero);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
     }
     temp_r4_3455 = this->unk10;
     temp_r4_3455->unk428 &= 0xFFFDFFDF;
@@ -1943,8 +1937,8 @@ void SpyroAirCombatState::TailSweepComboEnter() {
         var_f2_3483 = temp_f0_3484;
     }
     temp_r3_3480->unk33C = var_f2_3483;
-    this->unk10->unk430.unk28.GetLastCombatEnemy();
-    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (this->unk10->unk430.unk28.GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x18)() == 0) == 0))) {
+    ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) && (((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy(), ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x18)() == 0) == 0))) {
         this->unk10->SetAnim(this->unk2C + 0x27, 0.1f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
     } else {
         this->unk10->SetAnim(0x27U, 0.1f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
@@ -1959,7 +1953,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void SpyroAirCombatState::TailSweepUpdate() {
     f64 sp30;
     f64 sp28;
@@ -1969,7 +1963,7 @@ void SpyroAirCombatState::TailSweepUpdate() {
     f32 temp_f31_3569;
     f64 temp_f0_3571;
 
-    sp18.CalcVelTurnDir(2.3999999f);
+    ((Spyro *) &sp18)->CalcVelTurnDir(2.3999999f);
     temp_f31_3569 = 750.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
     temp_f0_3571 = sp18 * (f64) temp_f31_3569;
     sp8 = temp_f0_3571;
@@ -1978,9 +1972,9 @@ void SpyroAirCombatState::TailSweepUpdate() {
     sp30 = (f64) sp10;
     UpdateAirStrafe();
     UpdateTailSweepStickToTarget();
-    if (this->unk10->unk430.unk28.GetHitTarget() != 0) {
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
-        this->unk10->unk430.unk28.SetLastTailSweepTarget(M2C_ERROR(/* Read from unset register $r3 */));
+    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetHitTarget() != 0) {
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastTailSweepTarget(M2C_ERROR(/* Read from unset register $r3 */));
     }
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp28), 3800.0f);
     TailSweepComboTransition();
@@ -2013,11 +2007,11 @@ void SpyroAirCombatState::TailSweepExit() {
     M2C_FIELD(temp_r3_3643->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetLVEScale(MKVector3::one);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SpyroAirCombatState::TailSweepEnter() {
     MKVector3 spA8;
     f64 spA0;
@@ -2066,12 +2060,12 @@ void SpyroAirCombatState::TailSweepEnter() {
     this->unk32 = 0;
     this->unk31 = 0;
     this->unk2C = 0;
-    if (this->unk10->unk430.unk28.GetTailSweepComboCount() <= 0) {
-        this->unk10->unk430.unk28.SetLastTailSweepTarget(NULL);
+    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetTailSweepComboCount() <= 0) {
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastTailSweepTarget(NULL);
     }
-    this->unk10->unk430.unk28.IncTailSweepComboCount();
-    this->unk10->unk430.unk28.SetHitType(9);
-    this->unk10->unk430.unk28.SetCombatArc(6);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->IncTailSweepComboCount();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(9);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(6);
     if ((u8) this->unk37 != 0) {
         sp50 = 3.0f;
         sp48 = 3.0f;
@@ -2139,9 +2133,9 @@ void SpyroAirCombatState::TailSweepEnter() {
         sp20 = (f32) sp70 * var_f3_3836;
         sp78 = (f64) sp18;
         sp80 = (f64) sp20;
-        this->unk10->unk430.unk28.SetTargetDir(1U, *((MKVector3 *) &sp78));
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(1U, *((MKVector3 *) &sp78));
     } else {
-        this->unk10->unk430.unk28.SetTargetDir(0U, MKVector3::zero);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetTargetDir(0U, MKVector3::zero);
     }
     temp_r4_3866 = this->unk10;
     temp_r4_3866->unk428 &= 0xFFFDFFDF;
@@ -2173,14 +2167,12 @@ void SpyroAirCombatState::TailSweepEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpyroAirCombatState::ProcessAnimEvent(unsigned int arg0) {
     if ((s32) arg0 != 0x15) {
         return;
     }
-    this->unk10->StartCombatArc(this->unk10->unk430.unk28.GetCombatArc());
+    this->unk10->StartCombatArc(((CombatStateData *) &this->unk10->unk430.unk28)->GetCombatArc());
 }
-#endif
 
 void SpyroAirCombatState::Message(MKMessage *arg0) {
 
@@ -2293,10 +2285,10 @@ void SpyroAirCombatState::Update() {
     this->unk32 = var_r31_4090;
     sp70 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp78 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    if (this->unk10->unk430.unk28.GetTargetDir((MKVector3 *) &sp70) != 0) {
+    if (((CombatStateData *) &this->unk10->unk430.unk28)->GetTargetDir((MKVector3 *) &sp70) != 0) {
         temp_f31_4119 = M2C_FIELD(&gb, f32 *, 0x30C);
         temp_r3_4123 = this->unk10;
-        var_f1_4127 = *(temp_r3_4123 + ((this->unk10->unk430.unk28.GetCombatArc() << 5) + 0x4E8)) - temp_f31_4119;
+        var_f1_4127 = *(temp_r3_4123 + ((((CombatStateData *) &this->unk10->unk430.unk28)->GetCombatArc() << 5) + 0x4E8)) - temp_f31_4119;
         if (var_f1_4127 > 0.0f) {
 
         } else {
@@ -2304,19 +2296,19 @@ void SpyroAirCombatState::Update() {
         }
         if (var_f1_4127 != 0.0f) {
             temp_r3_4123->SetDesiredVelocity(*((MKVector3 *) &sp70), 540000.0f);
-            this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp70), 12.0f);
+            ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp70), 12.0f);
         } else {
             goto block_36;
         }
     } else {
 block_36:
-        this->unk10->unk430.unk28.GetLastCombatEnemy();
+        ((CombatStateData *) &this->unk10->unk430.unk28)->GetLastCombatEnemy();
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             temp_r3_4152 = this->unk10;
             temp_r4_4153 = temp_r3_4152->unk8;
             sp30 = M2C_FIELD(temp_r4_4153, f64 *, 0x30);
             sp38 = M2C_FIELD(temp_r4_4153, f64 *, 0x38);
-            temp_r3_4152->unk430.unk28.GetLastCombatEnemy();
+            ((CombatStateData *) &temp_r3_4152->unk430.unk28)->GetLastCombatEnemy();
             temp_r3_4164 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
             var_f4_4165 = 0.0f;
             sp40 = M2C_FIELD(temp_r3_4164, f64 *, 0x30);
@@ -2368,14 +2360,14 @@ block_36:
             sp18 = (f32) sp58 * var_f4_4165;
             sp60 = (f64) sp10;
             sp68 = (f64) sp18;
-            this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp60), 12.0f);
+            ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp60), 12.0f);
         }
     }
     this->unk14.Update(this, 0);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroAirCombatState::Exit() {
     s32 spC;
     s32 sp8;
@@ -2385,7 +2377,7 @@ void SpyroAirCombatState::Exit() {
     this->unk10->SetLVEScale(MKVector3::one);
     temp_r3_4300 = this->unk10;
     temp_r3_4300->unk428 &= 0xFFFF7FFF;
-    this->unk10->unk430.unk28.SetDefaults();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
     this->unk14.Exit(this);
     temp_r3_4315 = this->unk10->GetCamera();
@@ -2397,7 +2389,7 @@ void SpyroAirCombatState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     s32 sp10;
     s32 spC;
@@ -2419,26 +2411,26 @@ void SpyroAirCombatState::Enter(SpyroStateMessages &arg0) {
     this->unk38 = 0;
     temp_r3_4359 = this->unk10;
     temp_r3_4359->unk428 |= 0x8000;
-    this->unk10->unk430.unk28.SetDefaults();
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetDefaults();
     M2C_FIELD(GameData::gameData, s32 *, 0x150) = 0;
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
-    this->unk10->unk430.unk28.SetHitType(9);
-    this->unk10->unk430.unk28.SetCombatArc(0xB);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHitType(9);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetCombatArc(0xB);
     var_r31_4393 = 2;
     M2C_FIELD(this->unk10->unk26C.unk8, f32 *, 0x47C) = 50.0f;
     if (arg0.IsMessageOnList(0x173) != 0) {
         var_r31_4393 = 0;
         this->unk38 = 1;
-        this->unk10->unk430.unk28.SetLastCombatEnemy(NULL);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastCombatEnemy(NULL);
         temp_r4_4410 = this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk20;
         if ((temp_r4_4410 != 0) && ((temp_r3_4414 = this->unk10->unkB4, ((temp_r4_4410 == (u32) M2C_FIELD(temp_r3_4414, u32 *, 0x194)) != 0)) || (temp_r4_4410 == (u32) M2C_FIELD(temp_r3_4414, u32 *, 0x19C)) || (temp_r4_4410 == (u32) M2C_FIELD(temp_r3_4414, u32 *, 0x1A4)))) {
             this->unk37 = 1;
         }
     } else if (arg0.IsMessageOnList(0x17B) != 0) {
         var_r31_4393 = 5;
-        this->unk10->unk430.unk28.SetLastCombatEnemy(NULL);
+        ((CombatStateData *) &this->unk10->unk430.unk28)->SetLastCombatEnemy(NULL);
     }
     this->unk2C = -1;
     this->unk14.SetState(this, var_r31_4393, 1U);

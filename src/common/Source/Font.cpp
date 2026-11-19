@@ -246,7 +246,7 @@ loop_13:
                 strncpy(&spC, arg1 + &M2C_FIELD(&arg0[*MKFont::startTokenLen], M2C_UNK *, 1), ((var_r31_295 - *MKFont::startTokenLen) - arg1) - 1);
                 (&spB)[(var_r31_295 - *MKFont::startTokenLen) - arg1] = 0;
                 temp_r28_333 = var_r30_305 - var_r31_295;
-                *(*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)) = spC.Find(&spB);
+                *(*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)) = ((MKFont *) &spC)->Find(&spB);
                 strncpy(&spC, &arg0[var_r31_295] + 1, temp_r28_333 - 1);
                 (&spB)[temp_r28_333] = 0;
                 var_r4_349 = 0;
@@ -1316,7 +1316,7 @@ loop_4:
             var_r30_2211 += 1;
             goto loop_4;
         }
-        temp_r3_2229 = temp_r3_2226->Current();
+        temp_r3_2229 = ((MKHeap *) temp_r3_2226)->Current();
         if (temp_r3_2229 != NULL) {
             var_r3_2236 = ((MKHeap *) (temp_r3_2229->Current()))->Alloc(var_r30_2211 * 4, NULL, 0);
         } else {

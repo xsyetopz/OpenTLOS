@@ -170,7 +170,6 @@ void CollapsibleProp::Init() {
     this->unkC8 = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
 void CollapsiblePropDescriptor::LoadDone() {
     s8 *temp_r30_406;
     s8 *temp_r30_426;
@@ -183,29 +182,28 @@ void CollapsiblePropDescriptor::LoadDone() {
     this->unkC |= 0x80000;
     temp_r30_406 = this->unk34;
     if (temp_r30_406 != NULL) {
-        if (temp_r30_406->Exists("Idle") != 0) {
-            var_r3_418 = temp_r30_406->GetAnim("Idle");
+        if (((MKAnimScript *) temp_r30_406)->Exists("Idle") != 0) {
+            var_r3_418 = ((MKAnimScript *) temp_r30_406)->GetAnim("Idle");
         } else {
             var_r3_418 = NULL;
         }
         this->unk70 = (s32) var_r3_418;
         temp_r30_426 = this->unk34;
-        if (temp_r30_426->Exists("Collapsing") != 0) {
-            var_r3_436 = temp_r30_426->GetAnim("Collapsing");
+        if (((MKAnimScript *) temp_r30_426)->Exists("Collapsing") != 0) {
+            var_r3_436 = ((MKAnimScript *) temp_r30_426)->GetAnim("Collapsing");
         } else {
             var_r3_436 = NULL;
         }
         this->unk74 = (s32) var_r3_436;
         temp_r30_444 = this->unk34;
-        if (temp_r30_444->Exists("Rebuilding") != 0) {
-            var_r3_454 = temp_r30_444->GetAnim("Rebuilding");
+        if (((MKAnimScript *) temp_r30_444)->Exists("Rebuilding") != 0) {
+            var_r3_454 = ((MKAnimScript *) temp_r30_444)->GetAnim("Rebuilding");
         } else {
             var_r3_454 = NULL;
         }
         this->unk78 = (s32) var_r3_454;
     }
 }
-#endif
 
 void CollapsiblePropDescriptor::Init() {
     KDPropDescriptor::Init();

@@ -1,10 +1,12 @@
 #include "spyro/source/KDSynkerPlayerEvents.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/KDBasicEnvelope.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
@@ -126,7 +128,7 @@ static s8 .L_8035FFF4[0x5D] = {
 void KDSynkerPlayerEvent::Load(MKIniLine *arg0) {
     MKIniLine *temp_r3_27;
 
-    ((KDSynkerPlayerEventLoadInfo *) ((KDSynkerPlayerEventLoadInfo *) &KDSynkerPlayerEvent::loadInfo))->Init();
+    ((KDSynkerPlayerEventLoadInfo *) &KDSynkerPlayerEvent::loadInfo)->Init();
     Init();
     temp_r3_27 = arg0->unkC->GetSubLine(arg0);
     KDSynkerPlayerEvent::pLine.__vptr = temp_r3_27->unkC->GetNextLine(temp_r3_27);
@@ -147,7 +149,7 @@ s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
 
     temp_ret_68 = LoadInt(arg0, &sp8);
     if (temp_ret_68 != 0) {
-        *arg1 = sp8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_68);
+        *arg1 = ((MKSceneManager *) sp8)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_68);
         return 1;
     }
     return 0;
@@ -158,7 +160,7 @@ s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
 s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
     MKIniLine sp8;
 
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
         sp8.GetVector3((s32) KDSynkerPlayerEvent::pLine.__vptr);
         M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp8);
         M2C_FIELD(arg1, f64 *, 8) = M2C_BITWISE(f64, sp8.unk8);
@@ -170,8 +172,8 @@ s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
-        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetFloat(0);
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetFloat(0);
         return 1;
     }
     return 0;
@@ -180,8 +182,8 @@ s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
-        strcpy(arg1, ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0));
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
+        strcpy(arg1, ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetString(0));
         return 1;
     }
     return 0;
@@ -190,8 +192,8 @@ s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
-        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetInt(0) != 0;
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetInt(0) != 0;
         return 1;
     }
     return 0;
@@ -200,8 +202,8 @@ s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadInt(const char *arg0, int *arg1) {
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
-        *arg1 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetInt(0);
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
+        *arg1 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetInt(0);
         return 1U;
     }
     return 0U;
@@ -219,7 +221,7 @@ s32 KDSynkerPlayerEvent::LoadActorModel(const char *arg0, MKModel **arg1) {
     s32 sp8;
 
     if (LoadActorID(arg0, &sp8) != 0) {
-        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(sp8);
+        ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorModel(sp8);
         *arg1 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;
     }
@@ -232,7 +234,7 @@ s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **ar
     s32 sp8;
 
     if (LoadActorID(arg0, &sp8) != 0) {
-        *arg1 = ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorAnimScript(sp8);
+        *arg1 = ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorAnimScript(sp8);
         return 1;
     }
     return 0;
@@ -241,8 +243,8 @@ s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **ar
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadActorID(const char *arg0, int *arg1) {
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) {
-        *arg1 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0));
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
+        *arg1 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetString(0));
         return 1U;
     }
     return 0U;
@@ -536,7 +538,7 @@ loop_15:
             temp_r24_890 = arg1->GetEnvelope(M2C_FIELD(temp_r30_834, s32 *, 0x18));
             ((Animation *) (MKModel_GetAnimation(M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r30_834, void **, 8), void **, 0x38), MKModel **, 8))))->TweenNode(M2C_FIELD(temp_r30_834, f32 *, 0x10), 1.0f, M2C_FIELD(temp_r30_834, s32 *, 0xC), 1U, 1U);
             temp_r25_905 = MKModel_GetAnimation(M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r30_834, void **, 8), void **, 0x38), MKModel **, 8));
-            temp_r25_905->TweenNode(M2C_FIELD(temp_r30_834, f32 *, 0x14), temp_r24_890->GetValue(var_f31_872), M2C_FIELD(temp_r30_834, s32 *, 0xC), 1U, 1U);
+            temp_r25_905->TweenNode(M2C_FIELD(temp_r30_834, f32 *, 0x14), ((KDBasicEnvelope *) temp_r24_890)->GetValue(var_f31_872), M2C_FIELD(temp_r30_834, s32 *, 0xC), 1U, 1U);
         }
         var_r31_828 += 1;
         var_r26_829 += 0x1C;
@@ -613,7 +615,7 @@ loop_41:
                     } else {
                         var_f1_1030 = 0.0f;
                     }
-                    KDSynkerPlayerEvent::updateData.__vptr = var_r3_1007->GetValue(var_f1_1030);
+                    KDSynkerPlayerEvent::updateData.__vptr = ((KDBasicEnvelope *) var_r3_1007)->GetValue(var_f1_1030);
                 } else {
                     var_f0_1065 = (arg1 - (f32) M2C_FIELD(temp_r27_959, s32 *, 0)) / (f32) M2C_FIELD(temp_r27_959, s32 *, 4);
                     if (var_f0_1065 < 1.0f) {
@@ -1066,7 +1068,7 @@ s32 NodeLoadLine1(KDSynkerPlayer3 *arg0, MKIniLine *arg1, const char *arg2, MKMo
         temp_r3_1924 = strchr(temp_r3_1921, 0x3A);
         temp_r29_1927 = *temp_r3_1924;
         *temp_r3_1924 = 0;
-        temp_r30_1933 = arg0->unk100.GetActorId(temp_r3_1921);
+        temp_r30_1933 = ((KDSP_ActorList *) &arg0->unk100)->GetActorId(temp_r3_1921);
         if (arg5 != NULL) {
             *arg5 = temp_r30_1933;
         }

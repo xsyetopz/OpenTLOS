@@ -455,7 +455,7 @@ inline void Enemy::UpdateMovementCustom() {
 }
 
 inline void Enemy::GetCharacterName() {
-    this->unk9E0.GetName();
+    ((Name *) &this->unk9E0)->GetName();
 }
 
 inline s32 Enemy::TryFreezeBall() {
@@ -548,14 +548,14 @@ inline void Enemy::GetProp() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 inline u8 Enemy::IsInsideEnemyRegion() {
     M2C_UNK sp8;
     u8 var_r31_10920;
 
     var_r31_10920 = 0;
-    if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &this->unk588)) != 0) {
-        sp8.GetRegionPos();
+    if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &this->unk588)) != 0) {
+        ((EnemyRegion *) &sp8)->GetRegionPos();
         if ((f32) fabs(spC - this->unk588.unk0) <= 500.0f) {
             var_r31_10920 = 1;
         }

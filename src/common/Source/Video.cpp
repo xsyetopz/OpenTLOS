@@ -288,9 +288,9 @@ MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3,
     M2C_FIELD(&currentVideo, s8 **, 0x30) = NULL;
     M2C_FIELD(&currentVideo, s8 *, 0x35) = 1;
     currentVideo.ActivateTempMemOverride();
-    M2C_FIELD(&currentVideo, s8 **, 0x30) = arg0->CreateMpegTarget(NULL, (void *) currentVideo.unk8, currentVideo.unkC, M2C_ERROR(/* Read from unset register $r7 */));
+    M2C_FIELD(&currentVideo, s8 **, 0x30) = ((Texture *) arg0)->CreateMpegTarget(NULL, (void *) currentVideo.unk8, currentVideo.unkC, M2C_ERROR(/* Read from unset register $r7 */));
     temp_r29_600 = MKMaterial_Create(arg0);
-    ((Texture *) ((Texture *) M2C_FIELD(&currentVideo, s8 **, 0x30)))->Destroy();
+    ((Texture *) M2C_FIELD(&currentVideo, s8 **, 0x30))->Destroy();
     ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
     currentVideo.unk2C = (s32) temp_r29_600;
     MKMaterial_SetParameter((MKMaterial *) temp_r29_600, (MKMaterialParameter) 1, 1);

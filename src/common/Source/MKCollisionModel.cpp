@@ -5297,7 +5297,7 @@ MKCollisionModel *MKCollisionModel::Create(const char *arg0, MKModel *arg1) {
     sp8 = 0;
     temp_r3_8116 = MKArchive_Load(Str_Printf("%s.cgr", this, M2C_BITWISE(f32, temp_ret_8100)), &sp8, NULL, -1);
     if (temp_r3_8116 != NULL) {
-        return temp_r3_8116->Create((void *) sp8, M2C_ERROR(/* Read from unset register $r5 */));
+        return ((MKCollisionModel *) temp_r3_8116)->Create((void *) sp8, M2C_ERROR(/* Read from unset register $r5 */));
     }
     return NULL;
 }

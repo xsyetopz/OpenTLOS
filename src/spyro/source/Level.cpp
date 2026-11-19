@@ -37,16 +37,21 @@
 #include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeatDistortPS.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/LavaBubbleFX.h"
+#include "spyro/source/LensFlare.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/Points.h"
+#include "spyro/source/PropGroupVolume.h"
 #include "spyro/source/PuddleSplash.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "spyro/source/ShotgunWarpFX.h"
 #include "spyro/source/SlimeTrailFX.h"
 #include "spyro/source/SparksPS.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/TimeDeltaModifier.h"
 #include "spyro/source/TriggerProp.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/WaterDripPS.h"
@@ -512,7 +517,7 @@ void Level::SetEnvChunk(ChunkInfo *arg0) {
         this->unk18 = (s32) arg0;
         temp_r3_799 = this->unk18;
         if ((u32) temp_r3_799 != 0U) {
-            temp_r3_799->Use();
+            ((ChunkInfo *) temp_r3_799)->Use();
         }
         if (arg0 != NULL) {
             temp_r4_806 = arg0->unk20;
@@ -1202,7 +1207,7 @@ loop_54:
         var_r27_2202 += 4;
         goto loop_54;
     }
-    temp_r3_2217 = var_r3_2199->Current();
+    temp_r3_2217 = ((MKHeap *) var_r3_2199)->Current();
     if (temp_r3_2217 != NULL) {
         ((MKHeap *) (temp_r3_2217->Main()))->TFree(var_r3_2135, NULL, 0);
     } else {
@@ -1224,7 +1229,7 @@ loop_54:
     this->unk68 = (s32) var_r3_2252;
     temp_r3_2259 = this->unk68;
     if ((u32) temp_r3_2259 != 0U) {
-        temp_r3_2259->Init(&this->unk58);
+        ((LensFlare *) temp_r3_2259)->Init(&this->unk58);
     }
 }
 #endif
@@ -1309,7 +1314,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetWorldInfo'
+#if 0 // DRAFT: illegal operand
 s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
     ChunkInfo *temp_r4_2439;
     ChunkInfo *temp_r4_2466;
@@ -1330,7 +1335,7 @@ s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
         if ((s32) M2C_FIELD(&gb, s32 *, 0x340) != 0) {
             var_f1_2428 = 2.0f;
         } else {
-            gb.GetWorldInfo();
+            ((Level *) &gb)->GetWorldInfo();
             var_f1_2428 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x1C);
         }
         KDSound_ResolveSoundIDs(var_f1_2428);
@@ -1512,7 +1517,6 @@ void Level::DrawEnvDome() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Level::Draw() {
     f64 sp20;
     f64 sp18;
@@ -1542,7 +1546,7 @@ void Level::Draw() {
         sp8 = M2C_FIELD(var_r4_2708, f64 *, 0x30);
         sp10 = M2C_FIELD(var_r4_2708, f64 *, 0x38);
     }
-    var_r3_2705->CullGroups(*var_r4_2708);
+    ((PropGroupVolume *) var_r3_2705)->CullGroups(*var_r4_2708);
     if ((u8) M2C_FIELD(this, u8 *, 0x6C) == 0) {
         if ((u8) M2C_FIELD(&gb, CutsceneSystem **, 0xC)->unkA9 != 0) {
             ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->Draw();
@@ -1583,18 +1587,17 @@ void Level::Draw() {
         ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->Draw();
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, M2C_UNK), 0x24)(gMK, 3);
         M2C_FIELD(*gMK, M2C_UNK (**)(void **, M2C_UNK), 0x24)(gMK, 4);
-        ((CharacterBodyFXManager *) ((CharacterBodyFXManager *) (&gb + 0x2A8)))->Draw();
-        ((SlimeTrailFXManager *) ((SlimeTrailFXManager *) (&gb + 0x2B8)))->Draw();
+        ((CharacterBodyFXManager *) (&gb + 0x2A8))->Draw();
+        ((SlimeTrailFXManager *) (&gb + 0x2B8))->Draw();
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x64), void **, 0x44), M2C_UNK (**)(void *), 0x28)(M2C_FIELD(&gb, void **, 0x64));
         if ((u32) this->unk18 != 0U) {
             temp_r3_2913 = this->unk68;
             if ((u32) temp_r3_2913 != 0U) {
-                temp_r3_2913->Draw();
+                ((LensFlare *) temp_r3_2913)->Draw();
             }
         }
     }
 }
-#endif
 
 void Level_TerrainDrawCallback(MKModel *arg0, unsigned short *arg1, void *arg2) {
     u8 var_r31_2935;
@@ -1633,8 +1636,8 @@ void Level::UpdateState() {
 block_6:
         temp_r3_2986 = this->unk1C;
         if (temp_r3_2986 != 0) {
-            temp_r3_2986->UpdateState();
-            if (this->unk1C->IsLoaded() != 0) {
+            ((ChunkInfo *) temp_r3_2986)->UpdateState();
+            if (((ChunkInfo *) this->unk1C)->IsLoaded() != 0) {
                 this->unk1C = 0;
             }
         }
@@ -1661,7 +1664,7 @@ block_6:
                 } while (var_r25_3047 < 3);
             }
             if ((u8) this->unk9 != 0) {
-                ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->FadeIn(NULL);
+                ((GameGlobals::Fade *) (&gb + 0x30))->FadeIn(NULL);
                 this->unk9 = 0;
             }
         }
@@ -1705,7 +1708,7 @@ void Level::Update() {
         }
     } else {
         temp_r31_3123 = &gb + 0x2CC;
-        temp_r31_3123->Begin();
+        ((TimeDeltaModifier *) temp_r31_3123)->Begin();
         ((TriggerProp *) (M2C_FIELD(*gMK, TriggerProp *(**)(void **), 0x1C)(gMK)))->UpdateActiveList();
         MKCollision_Update();
         MKGrass_Update();
@@ -1730,7 +1733,7 @@ void Level::Update() {
             var_r29_3147 = 1;
         }
         if ((var_r29_3147 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0) && (temp_r3_3186 = M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78)->unk100.unk0, (((u32) temp_r3_3186 == 0U) == 0))) {
-            MKModel_GetPosition(temp_r3_3186->GetModel());
+            MKModel_GetPosition(((KDSP_Actor *) temp_r3_3186)->GetModel());
             sp28 = *M2C_ERROR(/* Read from unset register $r3 */);
             sp30 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
             FogPoints_Update(*((MKVector3 *) &sp28), (FogInfo *) &this->unkB0);
@@ -1745,17 +1748,17 @@ void Level::Update() {
             sp10 = M2C_FIELD(temp_r5_3225, f64 *, 0x38);
             WindPoints_Update(*((MKVector3 *) &sp8), (WindInfo *) &this->unkC8);
         }
-        ((CharacterBodyFXManager *) ((CharacterBodyFXManager *) (&gb + 0x2A8)))->Update();
-        ((SlimeTrailFXManager *) ((SlimeTrailFXManager *) (&gb + 0x2B8)))->Update();
-        ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->Update();
-        ((ShotgunWarpFX *) ((ShotgunWarpFX *) (&gb + 0x130)))->Update();
-        ((ExplosionWarpFX *) ((ExplosionWarpFX *) (&gb + 0x1C0)))->Update();
-        ((HeatDistortPS *) ((HeatDistortPS *) (&gb + 0x240)))->Update();
-        temp_r31_3123->End();
-        ((CustomMaterialUpdateManager *) ((CustomMaterialUpdateManager *) (&gb + 0x2BC)))->Update();
+        ((CharacterBodyFXManager *) (&gb + 0x2A8))->Update();
+        ((SlimeTrailFXManager *) (&gb + 0x2B8))->Update();
+        ((ScreenWobbleFX *) (&gb + 0xB8))->Update();
+        ((ShotgunWarpFX *) (&gb + 0x130))->Update();
+        ((ExplosionWarpFX *) (&gb + 0x1C0))->Update();
+        ((HeatDistortPS *) (&gb + 0x240))->Update();
+        ((TimeDeltaModifier *) temp_r31_3123)->End();
+        ((CustomMaterialUpdateManager *) (&gb + 0x2BC))->Update();
         temp_r3_3264 = this->unk68;
         if ((u32) temp_r3_3264 != 0U) {
-            temp_r3_3264->Update();
+            ((LensFlare *) temp_r3_3264)->Update();
         }
     }
 }
@@ -1792,12 +1795,12 @@ void Level::Deinit() {
     CancelQueue();
     M2C_FIELD(*gMK, M2C_UNK (**)(void **), 0xC)(gMK);
     FreeGlobalResources();
-    ((CustomMaterialUpdateManager *) ((CustomMaterialUpdateManager *) (&gb + 0x2BC)))->Deinit();
+    ((CustomMaterialUpdateManager *) (&gb + 0x2BC))->Deinit();
     Hud_DeinitModule();
-    ((CharacterBodyFXManager *) ((CharacterBodyFXManager *) (&gb + 0x2A8)))->Deinit();
+    ((CharacterBodyFXManager *) (&gb + 0x2A8))->Deinit();
     gBoneBlurFXPool.Deinit();
     gGlowingPropManager.Deinit();
-    ((SlimeTrailFXManager *) ((SlimeTrailFXManager *) (&gb + 0x2B8)))->Deinit();
+    ((SlimeTrailFXManager *) (&gb + 0x2B8))->Deinit();
     temp_cr0_eq_3351 = (s32 *) pChunkData == NULL;
     M2C_FIELD(&gb, s32 *, 0x2C4) = 0;
     if ((temp_cr0_eq_3351 == 0) && (temp_cr0_eq_3351 == 0)) {
@@ -1821,7 +1824,7 @@ void Level::Deinit() {
     ((CharacterGraphManager *) (M2C_ERROR(/* Read from unset register $r3 */)))->Deinit();
     temp_r3_3377 = this->unk68;
     if ((u32) temp_r3_3377 != 0U) {
-        temp_r3_3377->Deinit();
+        ((LensFlare *) temp_r3_3377)->Deinit();
         temp_r30_3381 = this->unk68;
         temp_r3_3382 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_3382 != NULL) {
@@ -1838,7 +1841,7 @@ void Level::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: expression syntax error
 void Level::Init(ChunkInfo *arg0) {
     f64 sp40;
     f64 sp38;
@@ -1859,7 +1862,7 @@ void Level::Init(ChunkInfo *arg0) {
     this->unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk48 = 0;
     this->unk4C = 1.0f;
-    8->Init((s32) arg0);
+    ((KDPathManager *)8)->Init((s32) arg0);
     ((CharacterGraphManager *) (M2C_ERROR(/* Read from unset register $r3 */)))->Init();
     this->unk24 = (s32) arg0;
     this->unk18 = 0;
@@ -1898,24 +1901,24 @@ void Level::Init(ChunkInfo *arg0) {
     this->unk28 = 1;
     this->unk2C = 1.0f;
     if ((s32) M2C_FIELD(&gb, s32 *, 0x350) != 0) {
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
             var_r30_3480 = 1;
         }
     }
     MKRumble_Enable(var_r30_3480);
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     MKZRequest_InitModule();
     this->unk58.unk0 = 0.0f;
     this->unk58.unk4 = 0.0f;
     this->unk58.unk8 = 0.0f;
     this->unk68 = 0;
-    ((CharacterBodyFXManager *) ((CharacterBodyFXManager *) (&gb + 0x2A8)))->Init();
+    ((CharacterBodyFXManager *) (&gb + 0x2A8))->Init();
     gBoneBlurFXPool.Init(BONE_BLUR_FX_NODE_POOL_MAX_NODES, BONE_BLUR_FX_NODE_POOL_MAX_ALLOCS);
     gGlowingPropManager.Init();
-    ((SlimeTrailFXManager *) ((SlimeTrailFXManager *) (&gb + 0x2B8)))->Init();
-    ((CustomMaterialUpdateManager *) ((CustomMaterialUpdateManager *) (&gb + 0x2BC)))->Init();
+    ((SlimeTrailFXManager *) (&gb + 0x2B8))->Init();
+    ((CustomMaterialUpdateManager *) (&gb + 0x2BC))->Init();
     M2C_FIELD(&gb, s32 *, 0x2C4) = 0;
     Hud_InitModule();
 }
@@ -1936,13 +1939,13 @@ void Level::DeinitModule() {
     var_r31_3563 = var_r3_3562;
 loop_2:
     if (var_r31_3563 != NULL) {
-        var_r31_3563->Deinit();
+        ((ChunkInfo *) var_r31_3563)->Deinit();
         var_r3_3562 = var_r31_3563->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
         var_r31_3563 = var_r3_3562;
         goto loop_2;
     }
     temp_r31_3574 = *Level::pLevelInfo;
-    temp_r3_3575 = var_r3_3562->Current();
+    temp_r3_3575 = ((MKHeap *) var_r3_3562)->Current();
     if (temp_r3_3575 != NULL) {
         ((MKHeap *) (temp_r3_3575->Current()))->Free(temp_r31_3574, NULL, 0);
     } else {
@@ -2029,7 +2032,7 @@ loop_11:
     temp_r3_3741 = *Level::materialInfoCount * 0x10;
     temp_r26_3744 = *Level::levelInfoCount * 0x128;
     temp_r29_3746 = temp_r26_3744 + (temp_r27_3737 + 0x100 + temp_r28_3740 + temp_r3_3741);
-    temp_r3_3747 = temp_r3_3741->Current();
+    temp_r3_3747 = ((MKHeap *) temp_r3_3741)->Current();
     if (temp_r3_3747 != NULL) {
         var_r3_3754 = ((MKHeap *) (temp_r3_3747->Current()))->Alloc(temp_r29_3746, NULL, 0);
     } else {
@@ -2060,7 +2063,7 @@ loop_23:
         } else {
             temp_r3_3810 = var_r27_3775->IsField("");
             if (temp_r3_3810 != 0) {
-                temp_r3_3813 = temp_r3_3810->AllocLevelInfo();
+                temp_r3_3813 = ((Level *) temp_r3_3810)->AllocLevelInfo();
                 ((WorldInfo *) (*Level::pWorldInfo))->AddLevelInfo(temp_r3_3813);
                 temp_r3_3813->Init();
                 var_r27_3775->AsString(0, &temp_r3_3813->unk4);
@@ -2135,7 +2138,7 @@ LevelInfo *Level::AllocLevelInfo() {
 #endif
 
 void MaterialInfo::Destroy() {
-    ((CustomMaterialUpdateManager *) ((CustomMaterialUpdateManager *) (&gb + 0x2BC)))->Destroy(this->unk4);
+    ((CustomMaterialUpdateManager *) (&gb + 0x2BC))->Destroy(this->unk4);
     this->unk4 = NULL;
 }
 
@@ -2146,7 +2149,7 @@ void MaterialInfo::Create(MKModel *arg0) {
     if (arg0 != NULL) {
         temp_r3_3987 = Tools_GetMatchingMaterial(arg0, this->unk0);
         if (temp_r3_3987 != NULL) {
-            this->unk4 = ((CustomMaterialUpdateManager *) ((CustomMaterialUpdateManager *) (&gb + 0x2BC)))->Create(temp_r3_3987, this->unk8);
+            this->unk4 = ((CustomMaterialUpdateManager *) (&gb + 0x2BC))->Create(temp_r3_3987, this->unk8);
         }
     }
 }
@@ -2187,7 +2190,7 @@ loop_2:
     WindPoints_Deinit();
     FogPoints_Deinit();
     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->DisableAllLights();
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     M2C_FIELD(&gb, f32 *, 0xDC) = 0.0f;
     M2C_FIELD(&gb, s8 *, 0x35D) = 0;
     temp_r3_4098 = this->unk40;
@@ -2358,7 +2361,7 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
     if (arg0->IsField("") != 0) {
         temp_r3_4412 = arg0->unkC->GetSubLine(arg0);
         if (temp_r3_4412 != NULL) {
-            temp_r30_4416 = temp_r3_4412->AllocTerrainInfo();
+            temp_r30_4416 = ((Level *) temp_r3_4412)->AllocTerrainInfo();
             temp_r30_4416->unk0 = arg0->GetString(0);
             temp_r30_4416->unk4 = this->unk14;
             this->unk14 = temp_r30_4416;
@@ -2377,7 +2380,7 @@ loop_9:
         var_r31_4453 = var_r3_4452;
 loop_14:
         if (var_r31_4453 != NULL) {
-            temp_r3_4456 = var_r3_4452->AllocMaterialInfo();
+            temp_r3_4456 = ((Level *) var_r3_4452)->AllocMaterialInfo();
             temp_r3_4456->unkC = this->unk18;
             this->unk18 = temp_r3_4456;
             temp_r3_4456->Init();
@@ -2543,7 +2546,7 @@ s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     }
     temp_r3_5007 = arg0->IsField("");
     if (temp_r3_5007 != 0) {
-        temp_r3_5010 = temp_r3_5007->AllocChunkInfo();
+        temp_r3_5010 = ((Level *) temp_r3_5007)->AllocChunkInfo();
         temp_r3_5010->Init();
         AddChunkInfo(temp_r3_5010);
         arg0->AsString(0, &temp_r3_5010->unk0);
@@ -2759,7 +2762,7 @@ void WorldInfo::Init() {
     memcpy(&this->unk80, &defaultLights, 0x70U);
     this->unkF8 = 0x1000;
     this->unkFC = 0x800;
-    this->unk18 = 0x1000->AllocChunkInfo();
+    this->unk18 = ((Level *)0x1000)->AllocChunkInfo();
     this->unk18->Init();
     this->unk18->unk0 = (s8 *) pGlobalLV3Name;
     this->unk18->unkC = 0;

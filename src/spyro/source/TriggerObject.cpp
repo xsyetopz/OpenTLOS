@@ -1,8 +1,10 @@
 #include "spyro/source/TriggerObject.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -24,7 +26,7 @@ s32 TriggerPolyObject::CheckTarget() {
 
     temp_r3_32 = this->unk54;
     if (temp_r3_32 > 0) {
-        var_r3_35 = temp_r3_32->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_35 = ((MKSceneManager *) temp_r3_32)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
     } else {
         var_r3_35 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -78,7 +80,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
     MKHeap *temp_r3_174;
     MKIniLine *var_r28_192;
@@ -92,7 +94,7 @@ s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
         temp_r3_170 = arg1->GetNmbrOfSubLines();
         this->unk80 = temp_r3_170;
         temp_r29_173 = this->unk80 * 0x10;
-        temp_r3_174 = temp_r3_170->Current();
+        temp_r3_174 = ((MKHeap *) temp_r3_170)->Current();
         if (temp_r3_174 != NULL) {
             var_r3_181 = ((MKHeap *) (temp_r3_174->Current()))->Alloc(temp_r29_173, NULL, 0);
         } else {
@@ -194,7 +196,7 @@ loop_17:
         if (temp_r3_321 != (u8) temp_r29_316->unkC0) {
             temp_r3_327 = temp_r29_316->unk54;
             if (temp_r3_327 > 0) {
-                var_r3_330 = temp_r3_327->PropResolver_Resolve((s32) (u32) (u64) temp_ret_321);
+                var_r3_330 = ((MKSceneManager *) temp_r3_327)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_321);
             } else {
                 var_r3_330 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
             }
@@ -302,7 +304,7 @@ loop_9:
             var_r4_615 += 4;
             goto loop_9;
         }
-        temp_r3_642 = var_r3_617->Current();
+        temp_r3_642 = ((MKHeap *) var_r3_617)->Current();
         if (temp_r3_642 != NULL) {
             ((MKHeap *) (temp_r3_642->Current()))->Free(var_r31_616, NULL, 0);
         } else {
@@ -327,25 +329,23 @@ void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg1 - 4) + 4, 0x40);
     M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x78) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-    this->unk80.InverseSimple(&this->unk10);
+    ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
     this->unk60 = this->unk70 / -2.0f;
     this->unk64 = this->unk74 / -2.0f;
     this->unk68 = this->unk78 / -2.0f;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void TriggerBoxObject::LoadDone() {
     this->unk10.SetRotationPYR(*((MKVector3 *) TriggerBoxObject::tempBoxRot));
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 0) = 0.0f;
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 4) = 0.0f;
     M2C_FIELD(TriggerBoxObject::tempBoxRot, f32 *, 8) = 0.0f;
-    this->unk80.InverseSimple(&this->unk10);
+    ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
     this->unk60 = this->unk70 / -2.0f;
     this->unk64 = this->unk74 / -2.0f;
     this->unk68 = this->unk78 / -2.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
 s32 TriggerBoxObject::LoadLine(char *arg0, MKIniLine *arg1) {

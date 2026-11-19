@@ -359,12 +359,12 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     sp90 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 8);
     sp98 = M2C_FIELD(arg1, f64 *, 0);
     spA0 = M2C_FIELD(arg1, f64 *, 8);
-    temp_f29_9019 = arg0->GetParabolaApexTimeFromP1((MKVector3) &sp98, (MKVector3) &sp88, arg2, arg3);
+    temp_f29_9019 = ((EnemyGoal_GraphJump *) arg0)->GetParabolaApexTimeFromP1((MKVector3) &sp98, (MKVector3) &sp88, arg2, arg3);
     sp68 = M2C_FIELD(temp_r31_9001, f64 *, 0);
     sp70 = M2C_FIELD(temp_r31_9001, f64 *, 8);
     sp78 = M2C_FIELD(arg1, f64 *, 0);
     sp80 = M2C_FIELD(arg1, f64 *, 8);
-    temp_f1_9032 = arg0->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3);
+    temp_f1_9032 = ((EnemyGoal_GraphJump *) arg0)->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3);
     temp_f4_9034 = *(f64 *) arg1;
     sp18 = M2C_FIELD(temp_r31_9001, f64 *, 0) - temp_f4_9034;
     temp_f3_9040 = temp_f29_9019 / (temp_f29_9019 + temp_f1_9032);

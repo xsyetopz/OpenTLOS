@@ -1,4 +1,5 @@
 #include "spyro/source/Arrow.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
@@ -132,7 +133,7 @@ void Arrow::Update() {
             spE8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp118 = 0;
             if (this != NULL) {
-                sp18.GetPos();
+                ((MKProp *) &sp18)->GetPos();
                 spF8 = sp18;
                 sp100 = sp20;
             } else {

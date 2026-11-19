@@ -2,6 +2,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/SplineTools.h"
 #include <m2c_macros.h>
@@ -155,44 +156,38 @@ void SpeedWay::GetPathMatrix(float arg0) {
 
 void SpeedWay::Resolve() {
     MKProp::Resolve();
-    this->unk4C.Resolve();
-    this->unk94.Resolve();
+    ((KDPathSegment *) &this->unk4C)->Resolve();
+    ((KDPathSegment *) &this->unk94)->Resolve();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpeedWay::LoadDone() {
     MKProp::LoadDone();
-    this->unk4C.LoadDone();
-    this->unk94.LoadDone();
-    this->unkDC.Init(*((KDUniformSpline *) &this->unk4C.unk2C), 0x10, 2);
-    this->unkDC.unk4.Init(*((KDUniformSpline *) &this->unk94.unk2C), 0x10, 2);
+    ((KDSplinePathSegment *) &this->unk4C)->LoadDone();
+    ((KDSplinePathSegment *) &this->unk94)->LoadDone();
+    ((SplitPath *) &this->unkDC)->Init(*((KDUniformSpline *) &this->unk4C.unk2C), 0x10, 2);
+    ((SplitPath *) &this->unkDC.unk4)->Init(*((KDUniformSpline *) &this->unk94.unk2C), 0x10, 2);
 }
-#endif
 
-#if 0 // DRAFT: function call 'LoadLine(SpeedWay *, MKIniLine *, const char[9])' does not
 s32 SpeedWay::LoadLine(MKIniLine *arg0) {
     s32 var_r31_317;
 
     var_r31_317 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0, "pathLeft") != 0) || (this->unk94.LoadLine(arg0, "pathRight") != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((KDSplinePathSegment *) &this->unk4C)->LoadLine(arg0, "pathLeft") != 0) || (((KDSplinePathSegment *) &this->unk94)->LoadLine(arg0, "pathRight") != 0)) {
         var_r31_317 = 1;
     }
     return var_r31_317;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void SpeedWay::Deinit() {
-    this->unkDC.Deinit();
-    this->unkDC.unk4.Deinit();
-    this->unk4C.Deinit();
-    this->unk94.Deinit();
+    ((SplitPath *) &this->unkDC)->Deinit();
+    ((SplitPath *) &this->unkDC.unk4)->Deinit();
+    ((KDSplinePathSegment *) &this->unk4C)->Deinit();
+    ((KDSplinePathSegment *) &this->unk94)->Deinit();
     MKProp::Deinit();
 }
-#endif
 
 void SpeedWay::Init() {
     MKProp::Init();
-    this->unk4C.Init();
-    this->unk94.Init();
+    ((KDSplinePathSegment *) &this->unk4C)->Init();
+    ((KDSplinePathSegment *) &this->unk94)->Init();
 }

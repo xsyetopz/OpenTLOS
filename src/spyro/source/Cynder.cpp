@@ -24,6 +24,7 @@
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/FuryFXFire.h"
+#include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSound.h"
@@ -33,6 +34,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/SuckeyPS.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -65,7 +67,9 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
+#if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
+#endif
 extern void *gpTranslation_StringArray;
 
 static s32 lit_897 = 0;
@@ -94,6 +98,7 @@ void Cynder::ResetFury() {
 }
 #endif
 
+#if 0 // DRAFT: pointer/array required
 void Cynder::TriggerFury() {
     f64 sp10;
     f64 sp8;
@@ -106,6 +111,7 @@ void Cynder::TriggerFury() {
     sp10 = M2C_FIELD(temp_r4_200, f64 *, 0x38);
     ((FuryFXFire *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0x3C)(gb, temp_r4_200, temp_f1_203), void **, 4), void **, 0x14), FuryFXFire **, 0x260)))->Trigger(*((MKVector3 *) &sp8), 0U, 1U, (HeroHurtReactionType) this->unkF0C.unk0);
 }
+#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void Cynder::UpdateFuryPowerUp() {
@@ -219,7 +225,7 @@ void Cynder::UpdateFuryPowerUp() {
             sp38 = -(f32) spF8;
             sp70 = (f64) sp30;
             sp78 = (f64) sp38;
-            this->unkF10.unk0->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &sp70), sp8, 2.0f);
+            ((SuckeyPS *) this->unkF10.unk0)->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &sp70), sp8, 2.0f);
             var_r30_348 += 1;
         } while (var_r30_348 < 5);
         temp_r3_412 = this->unkF14;
@@ -257,7 +263,7 @@ void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
     temp_r3_475 = this->unkF10.unk0;
     M2C_FIELD(M2C_FIELD(temp_r3_475, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_475);
     if ((s32) this->unkF0C.unk0 == 8) {
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->UseCynderStrafeState(1U, 0U);
     }
     temp_r3_490 = this->unkF14;
@@ -273,7 +279,7 @@ void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'Tools_GetClosestSplineTimeXZ(long *, MKVector3, int)' does
 void Cynder::CalcLandingFlightPathData() {
     MKCollisionResult sp270;
     Matrix sp230;
@@ -360,14 +366,14 @@ void Cynder::CalcLandingFlightPathData() {
         var_f30_541 = 1.0f;
     }
     var_r31_547 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
         var_r31_547 = 1;
     }
     if (var_r31_547 != 0) {
         temp_r5_559 = this->unk8;
         sp1C0.unk10 = M2C_FIELD(temp_r5_559, f64 *, 0x30);
         sp1C0.unk18 = M2C_FIELD(temp_r5_559, f64 *, 0x38);
-        this->unk838.unk28.Update(*((MKVector3 *) &sp1C0.unk10));
+        ((AITargetData *) &this->unk838.unk28)->Update(*((MKVector3 *) &sp1C0.unk10));
         sp1C0.GetPos();
         Tools_GetClosestSplineTimeXZ(&this->unkCC0, *((MKVector3 *) &sp1C0), 0x14);
         var_f27_574 = M2C_ERROR(/* Read from unset register $f1 */);
@@ -393,15 +399,15 @@ void Cynder::CalcLandingFlightPathData() {
         var_f30_615 += 1.0f;
     }
     sp18 = 0.0f;
-    sp1A0.GetMeasure(var_f29_580, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1A0)->GetMeasure(var_f29_580, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
     sp1C0.unk40 = sp1A0;
     sp1C0.unk40.unk8 = sp1A8;
     sp14 = 0.0f;
-    sp190.GetMeasure(var_f28_602, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp190)->GetMeasure(var_f28_602, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
     sp1C0.unk30 = sp190;
     sp1C0.unk38 = sp198;
     sp10 = 0.0f;
-    sp180.GetMeasure(var_f30_615, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp180)->GetMeasure(var_f30_615, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
     sp1C0.unk20 = sp180;
     sp1C0.unk28 = sp188;
     sp160.GetVelocity(var_f28_602);
@@ -476,7 +482,7 @@ void Cynder::CalcLandingFlightPathData() {
     sp230.unk4 = unkspE4;
     sp230.unk8 = (f32) spE8;
     sp230.unkC = 0.0f;
-    temp_r3_847 = this->unkA20->GetAnimSequence(0xA, 0xDD, 0, NULL);
+    temp_r3_847 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xDD, 0, NULL);
     temp_f3_848 = M2C_FIELD(temp_r3_847, f32 *, 0xC);
     temp_f6_854 = M2C_FIELD(temp_r3_847, f32 *, 8);
     temp_f7_860 = M2C_FIELD(temp_r3_847, f32 *, 0x10);
@@ -490,9 +496,9 @@ void Cynder::CalcLandingFlightPathData() {
     this->unkFF8 = var_f29_580;
     this->unkCC4 = 0.0f;
     this->unkCC0 = 0;
-    this->unkCD4.AddNode(*((MKVector3 *) &sp1C0.unk40));
-    this->unkCD4.AddNode(*((MKVector3 *) &sp1C0.unk30));
-    this->unkCD4.AddNode(*((MKVector3 *) &sp1C0.unk20));
+    ((KDUniformSpline *) &this->unkCD4)->AddNode(*((MKVector3 *) &sp1C0.unk40));
+    ((KDUniformSpline *) &this->unkCD4)->AddNode(*((MKVector3 *) &sp1C0.unk30));
+    ((KDUniformSpline *) &this->unkCD4)->AddNode(*((MKVector3 *) &sp1C0.unk20));
 }
 #endif
 
@@ -619,11 +625,11 @@ void Cynder::CalcFlightPathData2() {
     temp_f24_949 = M2C_ERROR(/* Read from unset register $f1 */);
     temp_f25_955 = (f32) fmod(0.5f + temp_f24_949, 1.0);
     sp20 = 0.0f;
-    sp1F8.GetMeasure(temp_f24_949, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1F8)->GetMeasure(temp_f24_949, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
     sp298 = sp1F8;
     sp2A0 = sp200;
     sp1C = 0.0f;
-    sp1E8.GetMeasure(temp_f25_955, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp1E8)->GetMeasure(temp_f25_955, (Matrix *) &this->unkCC0, KDSpline_PositionMixer);
     sp288 = sp1E8;
     sp290 = sp1F0;
     sp248 = M2C_FIELD(this, f64 *, 0xC0);
@@ -686,7 +692,7 @@ void Cynder::CalcFlightPathData2() {
         sp240 = (f32) sp240 * -1.0f;
     }
     sp14 = 0.0f;
-    spD8.GetMeasure(temp_f25_955, (Matrix *) &this->unkCC0, KDSpline_VelocityMixer);
+    ((KDUniformSpline *) &spD8)->GetMeasure(temp_f25_955, (Matrix *) &this->unkCC0, KDSpline_VelocityMixer);
     spC8 = spD8;
     spD0 = spE0;
     spB8 = spC8 * (f64) sp14;
@@ -847,7 +853,7 @@ void Cynder::CalcFlightPathData2() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spA0'
 s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     f64 sp130;
     f64 sp128;
@@ -906,10 +912,10 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp108 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp110 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    spD8.GetPos();
-    temp_r30_1556 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &spD8));
-    spC8.GetPos();
-    temp_r3_1562 = this->unk800.unk28.IsPointWithin(*((MKVector3 *) &spC8));
+    ((AITargetData *) &spD8)->GetPos();
+    temp_r30_1556 = ((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &spD8));
+    ((AITargetData *) &spC8)->GetPos();
+    temp_r3_1562 = ((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &spC8));
     var_r30_1564 = 0;
     if ((temp_r30_1556 == 0) || (temp_r3_1562 != 0)) {
         if (CalculateRegionEdgeMoveTarget(arg0, (MKVector3 *) &sp128) != 0) {
@@ -921,9 +927,9 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
         temp_r5_1582 = this->unk8;
         spB8 = M2C_FIELD(temp_r5_1582, f64 *, 0x30);
         spC0 = M2C_FIELD(temp_r5_1582, f64 *, 0x38);
-        spA8.GetPos();
-        if (this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
-            sp98.GetPos();
+        ((AITargetData *) &spA8)->GetPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->GetFirstIntersectionPlane(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
+            ((AITargetData *) &sp98)->GetPos();
             var_r30_1564 = 1;
             sp108 = sp98;
             sp110 = spA0;
@@ -931,9 +937,9 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
             temp_r5_1608 = this->unk8;
             sp88 = M2C_FIELD(temp_r5_1608, f64 *, 0x30);
             sp90 = M2C_FIELD(temp_r5_1608, f64 *, 0x38);
-            sp78.GetPos();
-            if (this->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
-                sp68.GetPos();
+            ((AITargetData *) &sp78)->GetPos();
+            if (((EnemyRegion *) &this->unk800.unk28)->GetFirstIntersectionPlane(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
+                ((AITargetData *) &sp68)->GetPos();
                 var_r30_1564 = 1;
                 sp108 = sp68;
                 sp110 = sp70;
@@ -954,11 +960,11 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
             var_f25_1655 += 1.0f;
         }
         sp10 = 0.0f;
-        sp48.GetMeasure(temp_f1_1657, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp48)->GetMeasure(temp_f1_1657, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spF8 = sp48;
         sp100 = sp50;
         spC = 0.0f;
-        sp38.GetMeasure(var_f25_1655, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp38)->GetMeasure(var_f25_1655, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spE8 = sp38;
         spF0 = sp40;
         temp_f3_1691 = (f32) sp100 - (f32) sp110;
@@ -978,13 +984,13 @@ loop_31:
             goto block_32;
         }
         sp8 = 0.0f;
-        sp28.GetMeasure(var_f29_1715, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp28)->GetMeasure(var_f29_1715, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spF8 = sp28;
         sp100 = sp30;
-        if ((this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0) && (this->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0)) {
+        if ((((EnemyRegion *) &this->unk750.unkA0)->GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0) && (((EnemyRegion *) &this->unk800.unk28)->GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0)) {
             M2C_FIELD(this, f64 *, 0xF80) = spF8;
             M2C_FIELD(this, f64 *, 0xF88) = sp100;
-            this->unk870.unk40.Set(*((MKVector3 *) &sp108), 0U);
+            ((AITargetData *) &this->unk870.unk40)->Set(*((MKVector3 *) &sp108), 0U);
             if (temp_f31_1646 > var_f29_1715) {
                 if ((temp_f31_1646 - var_f29_1715) >= 0.5f) {
                     this->unkF78 = 1.0f;
@@ -1016,7 +1022,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
     AITargetData sp138;
     M2C_UNK sp128;
@@ -1070,9 +1076,9 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
         return 0U;
     }
     sp138.GetPos();
-    temp_r30_1866 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp138));
-    sp128.GetPos();
-    temp_r31_1876 = this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp128));
+    temp_r30_1866 = ((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp138));
+    ((AITargetData *) &sp128)->GetPos();
+    temp_r31_1876 = ((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp128));
     sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp138.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -1084,8 +1090,8 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
     sp138.unk10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp138.unk18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (temp_r30_1866 == 0) {
-        sp118.GetPos();
-        this->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp118), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
+        ((AITargetData *) &sp118)->GetPos();
+        ((EnemyRegion *) &this->unk750.unkA0)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp118), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
         spF8.operator*(600.0f);
         temp_f2_1901 = M2C_BITWISE(f64, sp138.unk40);
         sp48 = temp_f2_1901 + M2C_BITWISE(f64, spF8);
@@ -1105,7 +1111,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
         spE8 = temp_f0_1927;
         sp70 = temp_f3_1905 + (f32) spE0;
         spF0 = (f64) sp70;
-        if (this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spE8), *((MKVector3 *) &sp138.unk30), (MKVector3 *) &sp138.unk30, (MKVector3 *) &sp138.unk10) != 0) {
+        if (((EnemyRegion *) &this->unk750.unkA0)->GetFirstIntersectionPlane(*((MKVector3 *) &spE8), *((MKVector3 *) &sp138.unk30), (MKVector3 *) &sp138.unk30, (MKVector3 *) &sp138.unk10) != 0) {
             temp_f0_1946 = sp138.unk30 - M2C_BITWISE(f64, sp138.unk40);
             sp18 = temp_f0_1946;
             spB8 = temp_f0_1946;
@@ -1120,8 +1126,8 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
             sp138.unk40.unk8 = M2C_BITWISE(f32, sp138.unk40.unk8) + (f32) spD0;
         } else {
             var_r29_1979 = 0;
-            if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp138.unk30)) != 0) {
-                sp58.GetRegionPos();
+            if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp138.unk30)) != 0) {
+                ((EnemyRegion *) &sp58)->GetRegionPos();
                 if ((f32) fabs(sp5C - sp138.unk34) <= 500.0f) {
                     var_r29_1979 = 1;
                 }
@@ -1132,8 +1138,8 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
             }
         }
     } else if (temp_r31_1876 != 0) {
-        spA8.GetPos();
-        this->unk800.unk28.GetNearestPointOnBoundingRegion(*((MKVector3 *) &spA8), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
+        ((AITargetData *) &spA8)->GetPos();
+        ((EnemyRegion *) &this->unk800.unk28)->GetNearestPointOnBoundingRegion(*((MKVector3 *) &spA8), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
         sp138.unk20 *= 1.58735232e-314;
         sp138.unk28 = (f32) sp138.unk28 * -1.0f;
         sp88.operator*(600.0f);
@@ -1155,11 +1161,11 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'Cynder::ShootFireBomb(const MKVector3 &, const MKVector3 &,
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 Cynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     FireBombFX *temp_r3_2081;
 
-    temp_r3_2081 = checked_cast<FireBombFX *, MKProp>(this->unkCD8->CreateInstance());
+    temp_r3_2081 = checked_cast<FireBombFX *, MKProp>(((MKPropDescriptor *) this->unkCD8)->CreateInstance());
     if (temp_r3_2081 == NULL) {
         return 0;
     }
@@ -1193,7 +1199,7 @@ void Cynder::UpdateEnemyHud() {
     EnemyHud_Modified(sp8);
 }
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 Cynder::CanLeap(bool arg0) {
     MKCollisionResult sp1A0;
     f32 sp18C;
@@ -1267,10 +1273,10 @@ s32 Cynder::CanLeap(bool arg0) {
     if (arg0 != 0) {
         var_r5_2187 = 0x1C;
     }
-    temp_r3_2199 = this->unkA20->GetAnimSequence(9, var_r5_2187, M2C_BITWISE(s32, this->unkACC), NULL);
+    temp_r3_2199 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(9, var_r5_2187, M2C_BITWISE(s32, this->unkACC), NULL);
     if (temp_r3_2199 != NULL) {
         M2C_STRUCT_COPY((s32) &sp15C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        sp130.GetDir();
+        ((AITargetData *) &sp130)->GetDir();
         sp30 = -sp130;
         sp34 = -sp134;
         sp38 = -sp138;
@@ -1284,7 +1290,7 @@ s32 Cynder::CanLeap(bool arg0) {
         sp174 = MKVector3::up.unk4;
         sp178 = MKVector3::up.unk8;
         sp17C = 0.0f;
-        sp100.GetDir();
+        ((AITargetData *) &sp100)->GetDir();
         sp10 = -sp100;
         sp14 = -sp104;
         sp18 = -sp108;
@@ -1313,13 +1319,13 @@ s32 Cynder::CanLeap(bool arg0) {
         sp150 = temp_f0_2320;
         sp98 = this->unk588.unk4 + (f32) spF8;
         sp158 = (f64) sp98;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp150)) != 0) {
-            sp80.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp150)) != 0) {
+            ((EnemyRegion *) &sp80)->GetRegionPos();
             if ((f32) fabs(sp84 - unksp154) <= 500.0f) {
                 var_r30_2326 = 1;
             }
         }
-        if ((var_r30_2326 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp150)) == 0)) {
+        if ((var_r30_2326 != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp150)) == 0)) {
             sp50 = 0.0f;
             sp54 = 500.0f;
             sp58 = 0.0f;
@@ -1350,7 +1356,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
     AITargetData sp18;
     f64 sp8;
@@ -1365,7 +1371,7 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
 
     if ((arg0 != NULL) && (arg1 != NULL)) {
         var_r31_2441 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_2441 = 1;
         }
         if (var_r31_2441 != 0) {
@@ -1374,7 +1380,7 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
             temp_f28_2466 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp18)));
             temp_f30_2469 = NormaliseAngle(temp_f29_2456 + arg0->unk1C);
             temp_f31_2472 = NormaliseAngle(temp_f29_2456 + arg0->unk20);
-            this->unk838.unk28.GetDist();
+            ((AITargetData *) &this->unk838.unk28)->GetDist();
             if (temp_f30_2469 > temp_f31_2472) {
                 var_r0_2479 = 0;
                 temp_f0_2480 = 6.2831855f - temp_f30_2469;
@@ -1484,7 +1490,7 @@ loop_6:
         if ((u8) M2C_FIELD(this, u8 *, 0xD01) == 0) {
             temp_r3_2672 = checked_cast<KDLocalPathSegmentProp *, MKProp>(this->unkDA0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             if (temp_r3_2672 != 0) {
-                this->unk800.unk28.SetupRegion(temp_r3_2672 + 0x4C);
+                ((EnemyRegion *) &this->unk800.unk28)->SetupRegion(temp_r3_2672 + 0x4C);
             }
             var_r28_2679 = 0;
             var_r30_2680 = 0;
@@ -1515,7 +1521,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Cynder::Message(MKMessage *arg0) {
     f32 spFC;
     f32 spF8;
@@ -1600,7 +1606,7 @@ block_34:
             M2C_FIELD(this, s8 *, 0xF1E) = 0;
             this->unkEFC.unk0 = 0.0f;
             if (M2C_BITWISE(s32, this->unkAD0) <= 2) {
-                this->unkEB0.Send(NULL);
+                ((EventMessage *) &this->unkEB0)->Send(NULL);
             }
             temp_cr0_eq_2839 = M2C_BITWISE(s32, this->unkAD0) == 3;
             if (temp_cr0_eq_2839 == 0) {
@@ -1690,7 +1696,7 @@ void Cynder::Draw() {
     Enemy::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Cynder::CalculateDiveTrajectory() {
     f32 sp34C;
     f32 sp348;
@@ -1840,7 +1846,7 @@ void Cynder::CalculateDiveTrajectory() {
     temp_r0_3068 = this->unkCDC;
     switch (M2C_BITWISE(s32, temp_r0_3068)) {       /* switch 1; irregular */
     case 1:                                         /* switch 1 */
-        temp_r3_3081 = this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL);
+        temp_r3_3081 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL);
         M2C_STRUCT_COPY((s32) &sp31C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         var_f4_3096 = 0.0f;
         sp164 = 0.0f;
@@ -2094,7 +2100,7 @@ void Cynder::CalculateDiveTrajectory() {
             unksp2C4 += 650.0f;
             sp2B8 = (f64) spA8;
             unksp2B4 += 500.0f;
-            sp170.GetPos();
+            ((AITargetData *) &sp170)->GetPos();
             this->unkD30 = sp170;
             this->unkD38 = sp178;
             M2C_FIELD(this, f32 *, 0xD4C) = (f32) (M2C_FIELD(this, f32 *, 0xD4C) + 300.0f);
@@ -2201,7 +2207,7 @@ void Cynder::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
+#if 0 // DRAFT: illegal operands 'CynderDescriptor' != 'float'
 void Cynder::UpdatePhrasesAndSounds() {
     EnemyAttack *temp_r3_3840;
     MKVector3 *temp_r30_4010;
@@ -2222,8 +2228,8 @@ void Cynder::UpdatePhrasesAndSounds() {
 
     temp_r3_3840 = this->unkA20;
     temp_f30_3847 = this->unkAB0;
-    temp_f31_3851 = (f32) M2C_FIELD(temp_r3_3840, s32 *, 0x11C) * this->unkA20->GetEnemySetting((EnemySettingType) 0);
-    temp_f31_3866 = ((temp_f31_3851 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * temp_r3_3840->GetEnemySetting((EnemySettingType) 0))) + temp_f30_3847) / temp_f31_3851;
+    temp_f31_3851 = (f32) M2C_FIELD(temp_r3_3840, s32 *, 0x11C) * ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0);
+    temp_f31_3866 = ((temp_f31_3851 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * ((EnemyDescriptor *) temp_r3_3840)->GetEnemySetting((EnemySettingType) 0))) + temp_f30_3847) / temp_f31_3851;
     if (temp_f31_3866 > M2C_FIELD(this, f32 *, 0xD64)) {
         M2C_FIELD(this, f32 *, 0xD64) = temp_f31_3866;
     }
@@ -2377,14 +2383,14 @@ void Cynder::EnableFlyingRotation(bool arg0) {
         sp84 = unksp44;
         sp88 = (f32) sp48;
         sp8C = 0.0f;
-        sp30.GetRotationRPY();
+        ((Matrix *) &sp30)->GetRotationRPY();
         M2C_FIELD(this, f64 *, 0xD08) = sp30;
         M2C_FIELD(this, f64 *, 0xD10) = sp38;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Cynder::UpdateFlyingRotation(Matrix *arg0) {
     f32 sp2FC;
     f32 sp2F8;
@@ -2492,11 +2498,11 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
     u8 var_r31_4335;
 
     var_r31_4335 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x908) == 2) || (this->unk8C0.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x908) == 2) || (((TargetContext *) &this->unk8C0.unk30)->Get() != NULL)) {
         var_r31_4335 = 1;
     }
     if (var_r31_4335 != 0) {
-        this->unk870.unk40.Update(*((MKVector3 *) &this->unk588));
+        ((AITargetData *) &this->unk870.unk40)->Update(*((MKVector3 *) &this->unk588));
         M2C_STRUCT_COPY((s32) &sp290.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f0_4369 = 0.0f;
         sp68 = -sp2F0;
@@ -2574,7 +2580,7 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         spB0 = (MKVector3::up.unk0 * unksp14C) - (MKVector3::up.unk4 * (f32) sp148);
         sp1A8 = (f64) spA8;
         sp1B0 = (f64) spB0;
-        sp138.GetDir();
+        ((AITargetData *) &sp138)->GetDir();
         sp198 = sp138;
         sp1A0 = sp140;
         sp98 = (MKVector3::up.unk4 * (f32) sp1A0) - (MKVector3::up.unk8 * unksp19C);
@@ -2707,7 +2713,7 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Cynder::UpdateLookAtNodes() {
     EnemyDescriptor *temp_r3_5003;
     s32 var_r30_5019;
@@ -2719,7 +2725,7 @@ void Cynder::UpdateLookAtNodes() {
 
     if (M2C_BITWISE(s32, this->unkAD0) == 2) {
         var_r31_4946 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_4946 = 1;
         }
         if (var_r31_4946 == 0) {
@@ -2730,10 +2736,10 @@ void Cynder::UpdateLookAtNodes() {
 block_5:
     if ((u8) M2C_FIELD(this, u8 *, 0xD00) == 0) {
         var_r31_4963 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_4963 = 1;
         }
-        if ((var_r31_4963 != 0) && (this->unk838.unk28.GetDist() < 4000.0f) && !(((u8) this->unk6B5 >> 4U) & 1)) {
+        if ((var_r31_4963 != 0) && (((AITargetData *) &this->unk838.unk28)->GetDist() < 4000.0f) && !(((u8) this->unk6B5 >> 4U) & 1)) {
             goto block_12;
         }
         var_r30_5031 = 0;
@@ -2751,7 +2757,7 @@ block_12:
         this->unkC30.unk3C = 0.0f;
     } else {
         this->unkC30.unk30 = 5.0f;
-        M2C_FIELD(this->unk870.unk30.Get()->__vptr, M2C_UNK (**)(f32 *, u8 *), 0x28)(&this->unk588, &this->unk6C0.unk38);
+        M2C_FIELD(((TargetContext *) &this->unk870.unk30)->Get()->__vptr, M2C_UNK (**)(f32 *, u8 *), 0x28)(&this->unk588, &this->unk6C0.unk38);
         temp_r3_5003 = this->unkA38;
         if ((temp_r3_5003 != NULL) && ((s32) temp_r3_5003->unk6C == 5)) {
             this->unkC30.unk3C = 0.0f;
@@ -2759,7 +2765,7 @@ block_12:
             this->unkC30.unk3C = 0.5235987f;
         }
     }
-    this->unkC30.unk30.Update((MKVector3 *) &this->unk6C0.unk38);
+    ((NodeLookAtIK *) &this->unkC30.unk30)->Update((MKVector3 *) &this->unk6C0.unk38);
     var_r30_5019 = 4;
     var_r31_5020 = 0x120;
     do {
@@ -2935,7 +2941,7 @@ void Cynder::Resolve() {
     }
     var_r30_5350 = 0;
     do {
-        temp_r3_5356 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("CynderFireBomb"));
+        temp_r3_5356 = checked_cast<FireBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CynderFireBomb"));
         if (temp_r3_5356 != NULL) {
             M2C_FIELD(temp_r3_5356->__vptr, M2C_UNK (**)(), 0x34)();
         }
@@ -3010,16 +3016,16 @@ void Cynder::LoadDone() {
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
-    this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
-    this->unkCD4 = checked_cast<CynderBreathFX *, MKProp>(gMK->CreateProp("CynderBreathFX"));
+    this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthShockwave"));
+    this->unkCD4 = checked_cast<CynderBreathFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CynderBreathFX"));
     SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>((CynderBreathFX *) this->unkCD4, (MKPtrList<MKProp> *) &this->unkA04);
     this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
-    this->unkAF8.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
-    this->unkB10.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));
-    this->unkB58.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
-    this->unkBA0.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
-    this->unkBE8.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
-    this->unkC30.unk30.Init(this->unk4, this->unkCF8);
+    ((NodeLookAtIK *) &this->unkAF8)->Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
+    ((NodeLookAtIK *) &this->unkB10.unk30)->Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));
+    ((NodeLookAtIK *) &this->unkB58.unk30)->Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
+    ((NodeLookAtIK *) &this->unkBA0.unk30)->Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
+    ((NodeLookAtIK *) &this->unkBE8.unk30)->Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
+    ((NodeLookAtIK *) &this->unkC30.unk30)->Init(this->unk4, this->unkCF8);
     var_r7_5546 = 1;
     var_r3_5547 = 0x48;
     var_ctr_5549 = 5;
@@ -3065,12 +3071,12 @@ void Cynder::LoadDone() {
     KDMath_GetDirection(this->unkEAC);
     M2C_FIELD(this, f64 *, 0xEA8) = sp8;
     M2C_FIELD(this, f64 *, 0xEB0) = sp10;
-    temp_r3_5635 = this->unkA20->GetAnimSequence(0xA, 0x140, 0, NULL);
+    temp_r3_5635 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0x140, 0, NULL);
     if (temp_r3_5635 != NULL) {
         M2C_FIELD(this, f64 *, 0xEB8) = (f64) M2C_FIELD(temp_r3_5635, f64 *, 8);
         M2C_FIELD(this, f64 *, 0xEC0) = (f64) M2C_FIELD(temp_r3_5635, f64 *, 0x10);
     }
-    this->unkF10.unk0 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("cynderFuryPowerupPS"));
+    this->unkF10.unk0 = checked_cast<SuckeyPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("cynderFuryPowerupPS"));
     M2C_FIELD(this->unkF10.unk0, s8 **, 0x140) = &this->unkF18;
 }
 #endif
@@ -3083,7 +3089,7 @@ s32 Cynder::LoadLine(MKIniLine *arg0) {
     s32 var_r27_5873;
     s32 var_r29_5875;
 
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", this + 0xD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF60, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", (MKVector3 *) &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkEB8.LoadLine(arg0, "OnStage2End") != 0) || (((EventMessage *) (this + 0xED4))->LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEB0.LoadLine(arg0, "OnReset") != 0) || (this->unkEC0.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEC8.LoadLine(arg0, "Fury1c") != 0) || (this->unkECC.LoadLine(arg0, "Fury1d") != 0) || (this->unkED0.LoadLine(arg0, "Fury1e") != 0) || (this->unkED4.LoadLine(arg0, "Fury2a") != 0) || (this->unkED8.LoadLine(arg0, "Fury2b") != 0) || (this->unkEDC.LoadLine(arg0, "Fury2c") != 0) || (this->unkEE0.LoadLine(arg0, "Fury2d") != 0) || (this->unkEE4.LoadLine(arg0, "Fury2e") != 0) || (this->unkEE8.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkEEC.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkEF0.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkEF4.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkEF8.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", this + 0xD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF60, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", (MKVector3 *) &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (((EventMessage *) &this->unkEB8)->LoadLine(arg0, "OnStage2End") != 0) || (((EventMessage *) (this + 0xED4))->LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (((EventMessage *) &this->unkEB0)->LoadLine(arg0, "OnReset") != 0) || (((EventMessage *) &this->unkEC0)->LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEC8.LoadLine(arg0, "Fury1c") != 0) || (this->unkECC.LoadLine(arg0, "Fury1d") != 0) || (this->unkED0.LoadLine(arg0, "Fury1e") != 0) || (this->unkED4.LoadLine(arg0, "Fury2a") != 0) || (this->unkED8.LoadLine(arg0, "Fury2b") != 0) || (this->unkEDC.LoadLine(arg0, "Fury2c") != 0) || (this->unkEE0.LoadLine(arg0, "Fury2d") != 0) || (this->unkEE4.LoadLine(arg0, "Fury2e") != 0) || (this->unkEE8.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkEEC.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkEF0.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkEF4.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkEF8.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
         return 1;
     }
     var_r27_5873 = 0;
@@ -3112,29 +3118,29 @@ void Cynder::Deinit() {
     f32 temp_r4_5928;
 
     this->unkCC0.Deinit();
-    this->unkCD4.Deinit();
+    ((KDUniformSpline *) &this->unkCD4)->Deinit();
     PhrasePlayer_StopEvent(M2C_FIELD(this, s32 *, 0xD58));
     KDSound_Stop(this + 0xD6C);
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 1.0f, 1.0f);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 1.0f, 1.0f);
     temp_r4_5928 = this->unkF14;
     if (M2C_BITWISE(u32, temp_r4_5928) != 0U) {
         ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(M2C_BITWISE(Corona *, temp_r4_5928));
         this->unkF14 = 0.0f;
     }
     if ((u8) M2C_FIELD(this, u8 *, 0xD01) == 0) {
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         sp14 = 0;
         sp10 = 0xAA;
         M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         spC = 0;
         sp8 = 0xAC;
         M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->UseCynderStrafeState(0U, 1U);
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetForceLookAtTarget(NULL);
-        gb.GetSpyro();
+        ((GameGlobals *) &gb)->GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetAutoHealthRegen(0U);
     }
     Enemy::Deinit();
@@ -3149,7 +3155,7 @@ void Cynder::Init() {
 
     Enemy::Init();
     this->unkCC0.Init(0x21, 0U);
-    this->unkCD4.Init(0xA, 0U);
+    ((KDUniformSpline *) &this->unkCD4)->Init(0xA, 0U);
     this->unkCD4 = 0;
     M2C_FIELD(this, s8 *, 0xD01) = 0;
     M2C_FIELD(this, s32 *, 0xD58) = 0;
@@ -3182,11 +3188,11 @@ void Cynder::Init() {
     this->unkE98.unk8 = 0.0f;
     this->unkE98.unkC = 0.0f;
     this->unkEA8 = 0.0f;
-    this->unkEB0.Init();
+    ((EventMessage *) &this->unkEB0)->Init();
     this->unkECC.Init();
-    this->unkEB8.Init();
+    ((EventMessage *) &this->unkEB8)->Init();
     ((EventMessage *) (this + 0xED4))->Init();
-    this->unkEC0.Init();
+    ((EventMessage *) &this->unkEC0)->Init();
     this->unkEDC.Init();
     this->unkEC8.Init();
     this->unkECC.Init();

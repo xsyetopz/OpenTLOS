@@ -4,6 +4,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/FireMolePrisonDescriptor.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/shatterwaypointspawn.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -39,7 +40,7 @@ loop_6:
             sp8 = M2C_FIELD(temp_r6_60, f64 *, 0);
             sp10 = M2C_FIELD(temp_r6_60, f64 *, 8);
             SetSpawnPos(var_r30_52, *((MKVector3 *) &sp8));
-            temp_r3_74 = this->unk198.TrySpawnItem(M2C_FIELD(M2C_FIELD(checked_cast<FireMolePrisonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x40), s32 (**)(), 0x24)());
+            temp_r3_74 = ((SpawnerObject *) &this->unk198)->TrySpawnItem(M2C_FIELD(M2C_FIELD(checked_cast<FireMolePrisonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x40), s32 (**)(), 0x24)());
             if (temp_r3_74 != NULL) {
                 sp1C = 0;
                 sp18 = 0x98;

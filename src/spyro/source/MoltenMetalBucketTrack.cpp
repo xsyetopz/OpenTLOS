@@ -317,15 +317,15 @@ void MoltenMetalBucketTrack::Update() {
     sp200 = M2C_BITWISE(f64, sp170);
     sp208 = (f64) sp170.unk8;
     sp24 = 0.0f;
-    sp160.GetMeasure(temp_f30_397, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp160)->GetMeasure(temp_f30_397, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
     sp1F0 = sp160;
     sp1F8 = sp168;
     sp20 = 0.0f;
-    sp150.GetMeasure(var_f29_400, &this->unk4C, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp150)->GetMeasure(var_f29_400, &this->unk4C, KDSpline_PositionMixer);
     sp1E0 = sp150;
     sp1E8 = sp158;
     sp1C = 0.0f;
-    sp140.GetMeasure(var_f29_400, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp140)->GetMeasure(var_f29_400, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
     sp1D0 = sp140;
     sp1D8 = sp148;
     unksp1E4 = unksp204;
@@ -528,7 +528,7 @@ void MoltenMetalBucketTrack::Resolve() {
     Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
 s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -556,7 +556,7 @@ s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
         var_r30_942 = arg0->unkC->GetSubLine(arg0);
         temp_r3_943 = arg0->GetNmbrOfSubLines();
         if (temp_r3_943 != 0) {
-            this->unk4C.Init(temp_r3_943, 0U);
+            ((KDUniformSpline *) &this->unk4C)->Init(temp_r3_943, 0U);
 loop_9:
             if (var_r30_942 != NULL) {
                 sp58.GetVector3((s32) var_r30_942);
@@ -578,7 +578,7 @@ loop_9:
                     this->unk90 = M2C_BITWISE(f64, sp38);
                     this->unk98 = (f64) sp38.unk8;
                 }
-                this->unk4C.AddNode(*((MKVector3 *) &sp78));
+                ((KDUniformSpline *) &this->unk4C)->AddNode(*((MKVector3 *) &sp78));
                 var_r30_942 = var_r30_942->unkC->GetNextLine(var_r30_942);
                 goto loop_9;
             }
@@ -589,7 +589,7 @@ loop_9:
         var_r30_1016 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1017 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1017 != 0) {
-            this->unk4C.unk14.Init(temp_r3_1017, 0U);
+            ((KDUniformSpline *) &this->unk4C.unk14)->Init(temp_r3_1017, 0U);
 loop_18:
             if (var_r30_1016 != NULL) {
                 sp28.GetVector3((s32) var_r30_1016);
@@ -611,7 +611,7 @@ loop_18:
                     this->unk90 = M2C_BITWISE(f64, sp8);
                     this->unk98 = (f64) sp8.unk8;
                 }
-                this->unk4C.unk14.AddNode(*((MKVector3 *) &sp68));
+                ((KDUniformSpline *) &this->unk4C.unk14)->AddNode(*((MKVector3 *) &sp68));
                 var_r30_1016 = var_r30_1016->unkC->GetNextLine(var_r30_1016);
                 goto loop_18;
             }
@@ -622,13 +622,11 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Deinit'
 void MoltenMetalBucketTrack::Deinit() {
     MKProp::Deinit();
-    this->unk4C.Deinit();
-    this->unk4C.unk14.Deinit();
+    ((KDUniformSpline *) &this->unk4C)->Deinit();
+    ((KDUniformSpline *) &this->unk4C.unk14)->Deinit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MoltenMetalBucketTrack::Init() {

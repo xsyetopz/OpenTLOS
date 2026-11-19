@@ -2,9 +2,10 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/BoundingRegion.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 M2C_UNK free(MKVector3 *);                          /* extern */
 MKVector3 *malloc(s32);                             /* extern */
 
@@ -21,7 +22,7 @@ s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
     if (arg1->IsField(arg0) != 0) {
         temp_r3_22 = arg1->GetNmbrOfSubLines();
         temp_r28_23 = temp_r3_22 * 0x10;
-        temp_r3_24 = temp_r3_22->Current();
+        temp_r3_24 = ((MKHeap *) temp_r3_22)->Current();
         if (temp_r3_24 != NULL) {
             var_r3_31 = ((MKHeap *) (temp_r3_24->Current()))->Alloc(temp_r28_23, NULL, 0);
         } else {
@@ -46,7 +47,7 @@ loop_12:
             var_r27_42 = var_r27_42->unkC->GetNextLine(var_r27_42);
             goto loop_12;
         }
-        this->unk4.Init(this->unk0, arg1->GetNmbrOfSubLines());
+        ((BoundingRegion *) &this->unk4)->Init(this->unk0, arg1->GetNmbrOfSubLines());
         this->unk30 = M2C_FIELD(this, f32 *, 0x10);
         this->unk34 = this->unk4.unk10;
         this->unk40 = M2C_FIELD(this, f32 *, 0x14);

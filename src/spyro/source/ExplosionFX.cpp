@@ -111,7 +111,7 @@ loop_9:
             var_r4_139 += 4;
             goto loop_9;
         }
-        temp_r3_166 = var_r3_141->Current();
+        temp_r3_166 = ((MKHeap *) var_r3_141)->Current();
         if (temp_r3_166 != NULL) {
             ((MKHeap *) (temp_r3_166->Current()))->Free(var_r30_140, NULL, 0);
         } else {
@@ -146,7 +146,7 @@ loop_24:
             var_r4_186 += 4;
             goto loop_24;
         }
-        temp_r3_213 = var_r3_188->Current();
+        temp_r3_213 = ((MKHeap *) var_r3_188)->Current();
         if (temp_r3_213 != NULL) {
             ((MKHeap *) (temp_r3_213->Current()))->Free(var_r30_187, NULL, 0);
         } else {
@@ -610,7 +610,7 @@ void ExplosionFX::Init() {
     M2C_FIELD(temp_r4_946, Matrix ***, 4) = NULL;
     temp_r3_953 = MKMaterial_Create("fx_338");
     this->unk4C = temp_r3_953;
-    temp_r3_955 = temp_r3_953->Current();
+    temp_r3_955 = ((MKHeap *) temp_r3_953)->Current();
     if (temp_r3_955 != NULL) {
         var_r3_962 = ((MKHeap *) (temp_r3_955->Current()))->Alloc(0x350, NULL, 0);
     } else {

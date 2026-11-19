@@ -3,20 +3,20 @@
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "spyro/source/KDSound.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/Sound_GC.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void KDSoundProp::Play() {
     s32 sp8;
 
     sp8 = 1;
-    this->unkA0.Update(this->unk50, 0U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundPlayer *) &this->unkA0)->Update(this->unk50, 0U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk54 = MKRand_Float(&gViewSeed, this->unk58, this->unk5C);
 }
 #endif
@@ -33,7 +33,6 @@ void KDSoundProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDSoundProp::Update() {
     s32 sp8;
     s32 temp_r0_79;
@@ -50,7 +49,7 @@ void KDSoundProp::Update() {
         return;
     case 2:
         sp8 = 1;
-        this->unkA0.Update(this->unk50, 0U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundPlayer *) &this->unkA0)->Update(this->unk50, 0U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         temp_r3_110 = this->unkA0;
         if ((temp_r3_110 == 0) || (Sound_IsVoicePlaying(temp_r3_110) == 0)) {
             this->unkA0 = 0;
@@ -66,7 +65,6 @@ void KDSoundProp::Update() {
         break;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundProp::Reset() {

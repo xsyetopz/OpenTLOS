@@ -3,6 +3,7 @@
 #include "common/Source/MKAttachment.h"
 #include "common/Source/MKDynamicBone.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -101,7 +102,7 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
             break;
         }
         if ((var_r31_81 != NULL) && (var_r31_81 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_81, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r31_81, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_81 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
@@ -165,7 +166,7 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
             break;
         }
         if ((var_r31_227 != NULL) && (var_r31_227 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_227, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r31_227, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_227 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
@@ -230,13 +231,13 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
             break;
         }
         if ((var_r31_432 != NULL) && (var_r31_432 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_432, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r31_432, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_432 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
     sp8 = (s16) arg1;
     arg0->unk70->CalculateMatrices(arg2, 1, &sp8, var_r31_432);
-    sp20.GetNodeOrigin((s32) arg0->unk70);
+    ((Animation *) &sp20)->GetNodeOrigin((s32) arg0->unk70);
     sp10 = (sp28 * arg2->unk20) + ((sp20 * arg2->unk0) + (sp24 * arg2->unk10));
     sp14 = (sp28 * arg2->unk24) + ((sp20 * arg2->unk4) + (sp24 * arg2->unk14));
     sp30 = (f64) sp10;
@@ -284,13 +285,13 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
             break;
         }
         if ((var_r31_592 != NULL) && (var_r31_592 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_592, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r31_592, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_592 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
     sp10 = (s16) arg1;
     arg0->unk70->CalculateMatrices(&sp50, 1, &sp10, var_r31_592);
-    sp28.GetNodeOrigin((s32) arg0->unk70);
+    ((Animation *) &sp28)->GetNodeOrigin((s32) arg0->unk70);
     sp18 = sp50.unk30 + ((sp30 * sp50.unk20) + ((sp28 * M2C_BITWISE(f32, sp50)) + (sp2C * sp50.unk10)));
     sp1C = sp50.unk34 + ((sp30 * sp50.unk24) + ((sp28 * sp50.unk4) + (sp2C * sp50.unk14)));
     sp20 = sp50.unk38 + ((sp30 * sp50.unk28) + ((sp28 * sp50.unk8) + (sp2C * sp50.unk18)));
@@ -704,7 +705,7 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
             break;
         }
         if ((var_r31_1443 != NULL) && (var_r31_1443 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_1443, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r31_1443, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_1443 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
@@ -1142,7 +1143,7 @@ void MKModel_DrawModelParticles(const MKModel *arg0, const Matrix *arg1) {
             break;
         }
         if ((var_r29_2115 != NULL) && (var_r29_2115 != &Matrix::identity)) {
-            ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r29_2115, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
+            ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix)->Multiply(var_r29_2115, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r29_2115 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
@@ -1411,11 +1412,11 @@ loop_5:
                 }
                 ((MKHeap *) (M2C_FIELD(var_r30_2657->unk0, MKHeap **, 0x30)->unk6C))->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
                 ((MKHeap *) (M2C_FIELD(var_r30_2657->unk0, MKHeap **, 0x30)))->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
-                var_r30_2657->unk0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+                ((MKHeap *) var_r30_2657->unk0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
             }
             *var_r31_2656 = M2C_FIELD(var_r30_2657, MKAttachment **, 8);
             if (var_r30_2657->unk5 & 1) {
-                var_r30_2657->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+                ((MKHeap *) var_r30_2657)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
             }
         } else {
             var_r31_2656 = (MKAttachment **) (var_r30_2657 + 8);
@@ -2167,7 +2168,7 @@ MKModel *MKModel_Create(const char *arg0, const char *arg1, int arg2, MKModelSLW
     temp_r26_3632 = var_r3_0;
     var_r27_3636 = pTemplatesList;
 loop_2:
-    if ((var_r27_3636 != NULL) && ((var_r3_0 = strcmpi(temp_r26_3632, var_r27_3636), ((var_r3_0 == NULL) == 0)) || (var_r3_0 = var_r27_3636->IsResourceAvailable(), (((u8) var_r3_0 == 0) != 0)))) {
+    if ((var_r27_3636 != NULL) && ((var_r3_0 = strcmpi(temp_r26_3632, var_r27_3636), ((var_r3_0 == NULL) == 0)) || (var_r3_0 = ((MKResource *) var_r27_3636)->IsResourceAvailable(), (((u8) var_r3_0 == 0) != 0)))) {
         var_r27_3636 = M2C_FIELD(var_r27_3636, s8 **, 0x3C);
         goto loop_2;
     }
@@ -2175,7 +2176,7 @@ loop_2:
         var_r3_3655 = M2C_FIELD(var_r27_3636, MKHeap **, 0x24);
         M2C_FIELD(var_r27_3636, MKHeap **, 0x24) = (MKHeap *) (var_r3_3655 + 1);
     } else {
-        temp_r3_3660 = var_r3_0->Current();
+        temp_r3_3660 = ((MKHeap *) var_r3_0)->Current();
         if (temp_r3_3660 != NULL) {
             var_r25_3668 = ((MKHeap *) (temp_r3_3660->Current()))->Alloc(0x4C, NULL, 0);
         } else {
@@ -2186,7 +2187,7 @@ loop_2:
         M2C_FIELD(var_r25_3668, s8 **, 0x30) = temp_ret_3689;
         M2C_FIELD(M2C_FIELD(var_r25_3668, s8 **, 0x30), s8 **, 0x6C) = MKArchive_Load(Str_Printf("%s.mdg", temp_r26_3632, M2C_BITWISE(f32, temp_ret_3689)), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
         strcpy(var_r25_3668, temp_r26_3632);
-        ((MKModelTemplateData *) ((MKModelTemplateData *) M2C_FIELD(var_r25_3668, s8 **, 0x30)))->UnpackTemplatePointers(0U);
+        ((MKModelTemplateData *) M2C_FIELD(var_r25_3668, s8 **, 0x30))->UnpackTemplatePointers(0U);
         var_r28_3709 = 0;
         var_r25_3710 = 0;
 loop_16:
@@ -2206,7 +2207,7 @@ loop_16:
         }
         MKModel_UnpackTemplatePlatformSpecific((MKModelTemplate *) var_r27_3636);
         M2C_FIELD(var_r27_3636, s32 *, 0x24) = 1;
-        var_r27_3636->InitialiseResource();
+        ((MKResource *) var_r27_3636)->InitialiseResource();
         M2C_FIELD(var_r27_3636, s8 **, 0x3C) = (s8 *) pTemplatesList;
         if ((s8 *) pTemplatesList != NULL) {
             M2C_FIELD(pTemplatesList, s8 **, 0x40) = var_r27_3636;
@@ -2315,7 +2316,7 @@ block_50:
         var_r23_3909 = temp_r26_3913;
         var_r26_3865 = (M2C_FIELD(var_r28_3897, s32 *, 8) << 8) + temp_r26_3913 + 0x40;
     }
-    temp_r3_3919 = var_r3_3890->Current();
+    temp_r3_3919 = ((MKHeap *) var_r3_3890)->Current();
     if (temp_r3_3919 != NULL) {
         var_r30_3927 = ((MKHeap *) (temp_r3_3919->Current()))->Alloc(var_r26_3865, NULL, 0);
     } else {
@@ -2355,7 +2356,7 @@ block_50:
         memcpy(M2C_FIELD(var_r30_3927, s8 **, 0x80), M2C_FIELD(temp_r4_4011, s8 **, 0x54), M2C_FIELD(temp_r4_4011, s16 *, 6) * 4);
     }
     if (arg1 != NULL) {
-        M2C_FIELD(var_r30_3927, Animation **, 0x70) = arg1->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+        M2C_FIELD(var_r30_3927, Animation **, 0x70) = ((Animation *) arg1)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
         M2C_FIELD(var_r30_3927, u8 *, 4) = (u8) (M2C_FIELD(var_r30_3927, u8 *, 4) | 4);
         MKModelInternal_FixUpBlendShapes((MKModel *) var_r30_3927);
     }

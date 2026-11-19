@@ -198,7 +198,6 @@ inline s32 KDScriptProperty::LoadLine(MKIniLine *arg0) {
     return (u8) (this->unk10.LoadLine(arg0, "script") != 0);
 }
 
-#if 0 // DRAFT: expression syntax error
 inline void KDScriptProperty::Resolve(KDPropertySet *arg0) {
     KDPropertyCommand **var_r31_40;
     s32 temp_r0_49;
@@ -211,7 +210,7 @@ inline void KDScriptProperty::Resolve(KDPropertySet *arg0) {
     }
 loop_9:
     if (var_r31_40 != NULL) {
-        var_r31_40->Resolve(arg0);
+        ((KDPropertyCommand *) var_r31_40)->Resolve(arg0);
         temp_r0_49 = this->unk10.unk0;
         var_r5_50 = 0;
         if ((temp_r0_49 > 1) && ((KDPropertyCommand **) (var_r31_40 + 8) < (void *) (this->unk10.unk4 + (temp_r0_49 * 8)))) {
@@ -225,7 +224,6 @@ loop_9:
         goto loop_9;
     }
 }
-#endif
 
 inline void *KDScriptProperty::GetClassInfo() const {
     return (KDScriptProperty *) KDScriptProperty::classInfo;

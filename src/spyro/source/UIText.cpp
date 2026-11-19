@@ -1,5 +1,6 @@
 #include "spyro/source/UIText.h"
 #include "common/Source/MKFont.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/UIAttributes.h"
@@ -79,7 +80,7 @@ void UIText::Draw(const RenderContext &arg0) {
         }
         sp70.SetIdentity();
         sp70.Translate(&sp70, *((MKVector3 *) &sp60));
-        spB0.Multiply(&sp70, (Matrix *) &spB0);
+        ((Matrix *) &spB0)->Multiply(&sp70, (Matrix *) &spB0);
         temp_r0_151 = this->unk64;
         if (temp_r0_151 >= 0) {
             var_r29_156 = *(gpTranslation_StringArray + ((s32) temp_r0_151 * 4));
@@ -117,14 +118,14 @@ void UIText::Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIText::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_276;
     s8 *temp_r3_297;
 
     sp8 = NULL;
-    if (arg0->LoadString("font", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("font", &sp8, 0) != 0) {
         temp_r3_276 = this->unk60;
         if (temp_r3_276 != NULL) {
             UIStringTable_Remove(temp_r3_276);
@@ -133,7 +134,7 @@ s32 UIText::LoadLine(UIDataLine *arg0) {
         this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;
     }
-    if (arg0->LoadString("text", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("text", &sp8, 0) != 0) {
         temp_r3_297 = this->unk60;
         if (temp_r3_297 != NULL) {
             UIStringTable_Remove(temp_r3_297);
@@ -143,7 +144,7 @@ s32 UIText::LoadLine(UIDataLine *arg0) {
         this->unk64 = (MKFont *)-1;
         return 1;
     }
-    if (arg0->LoadInt("stringId", (s32 *) &this->unk64, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadInt("stringId", (s32 *) &this->unk64, 0) != 0) {
         return 1;
     }
     return UIObject::LoadLine(arg0);
@@ -160,7 +161,6 @@ void UIText::FreeResources() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
 void UIText::LoadResources() {
     s8 *temp_r3_367;
 
@@ -169,10 +169,9 @@ void UIText::LoadResources() {
         if (temp_r3_367 == NULL) {
             return;
         }
-        this->unk64 = temp_r3_367->Create(M2C_ERROR(/* Read from unset register $r4 */));
+        this->unk64 = ((MKFont *) temp_r3_367)->Create(M2C_ERROR(/* Read from unset register $r4 */));
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void UIText::Deinit() {

@@ -759,9 +759,9 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'MKPtrList'
 void MKCollision_RemoveManager(MKCollisionManager *arg0) {
-    managers.Destroy(arg0);
+    ((MKPtrList<MKCollisionManager> *) &managers)->Destroy(arg0);
 }
 #endif
 
@@ -803,7 +803,7 @@ void MKCollision_Deinit() {
         managers = temp_r31_1184;
     } while ((u32) M2C_FIELD(temp_r3_1183, u32 *, -4) != 0U);
     if (temp_r31_1184 != &gEmptyPtrList) {
-        temp_r3_1192 = temp_r3_1183->Current();
+        temp_r3_1192 = ((MKHeap *) temp_r3_1183)->Current();
         if (temp_r3_1192 != NULL) {
             ((MKHeap *) (temp_r3_1192->Current()))->Free(temp_r31_1184, NULL, 0);
         } else {

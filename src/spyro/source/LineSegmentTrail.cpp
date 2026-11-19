@@ -6,6 +6,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -136,7 +137,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LineSegmentTrailPool::Init() {
     f64 sp20;
     f64 sp18;
@@ -162,7 +163,7 @@ void LineSegmentTrailPool::Init() {
     temp_cr0_gt_213 = temp_r3_211 > 0;
     *LineSegmentTrailPool::refCount = temp_r3_211 + 1;
     if (temp_cr0_gt_213 == 0) {
-        temp_r3_216 = temp_r3_211->Current();
+        temp_r3_216 = ((MKHeap *) temp_r3_211)->Current();
         if (temp_r3_216 != NULL) {
             var_r3_223 = ((MKHeap *) (temp_r3_216->Current()))->Alloc(0x1E0, NULL, 0);
         } else {
@@ -241,7 +242,7 @@ void LineSegmentTrail::BeginTrail(const MKVector4 &arg0) {
 loop_1:
     temp_r30_331 = var_r31_329 + 0x58;
     if ((u32) *(temp_r27_326 + temp_r30_331) == 0U) {
-        var_r3_0 = var_r3_0->Alloc();
+        var_r3_0 = ((LineSegmentTrailPool *) var_r3_0)->Alloc();
         *(temp_r27_326 + temp_r30_331) = var_r3_0;
         if ((u32) *(temp_r27_326 + temp_r30_331) != 0U) {
             temp_r5_340 = temp_r27_326 + var_r31_329;
@@ -374,7 +375,7 @@ void LineSegmentTrail::FreeActiveTrail(LSTrail *arg0) {
         temp_r3_623 = var_r31_617 + 0x58;
         if ((u32) *(this + temp_r3_623) == arg0) {
             *(this + temp_r3_623) = 0;
-            arg0->Free(M2C_ERROR(/* Read from unset register $r4 */));
+            ((LineSegmentTrailPool *) arg0)->Free(M2C_ERROR(/* Read from unset register $r4 */));
         }
         var_r29_620 += 1;
         var_r31_617 += 4;
@@ -497,7 +498,7 @@ loop_28:
                         var_f2_806 = 0.05f;
                     }
                     MKSetTexCoord1F(0.0f, var_f2_806);
-                    sp18.GetMeasure(var_f28_789, (Matrix *) &this->unk88);
+                    ((KDSpline *) &sp18)->GetMeasure(var_f28_789, (Matrix *) &this->unk88);
                     MKSetPositionV(*((MKVector3 *) &sp18));
                     MKSetColorV(*((MKVector4 *) &sp28));
                     if (var_f27_805 < 1.0f) {
@@ -511,7 +512,7 @@ loop_28:
                         var_f27_805 = 0.05f;
                     }
                     MKSetTexCoord1F(1.0f, var_f27_805);
-                    sp8.GetMeasure(var_f28_789, (Matrix *) &this->unk74);
+                    ((KDSpline *) &sp8)->GetMeasure(var_f28_789, (Matrix *) &this->unk74);
                     MKSetPositionV(*((MKVector3 *) &sp8));
                     var_r27_778 += 1;
                     goto loop_28;

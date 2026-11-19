@@ -181,7 +181,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 UIContainer::LoadLine(UIDataLine *arg0) {
     MCLoadCheckScreen *var_r29_339;
     MKHeap *temp_r3_348;
@@ -190,8 +190,8 @@ s32 UIContainer::LoadLine(UIDataLine *arg0) {
     u8 temp_r3_344;
     void *temp_r30_347;
 
-    if (arg0->IsField("include") != 0) {
-        Load(arg0->GetString(0), NULL);
+    if (((MKIniLine *) arg0)->IsField("include") != 0) {
+        Load(((MKIniLine *) arg0)->GetString(0), NULL);
         return 1;
     }
     var_r29_339 = UIObjectDescriptor::list.unk0;
@@ -199,10 +199,10 @@ loop_12:
     if (var_r29_339 == NULL) {
         return UIObject::LoadLine(arg0);
     }
-    temp_r3_344 = arg0->IsField((s8 *) var_r29_339->__vptr);
+    temp_r3_344 = ((MKIniLine *) arg0)->IsField((s8 *) var_r29_339->__vptr);
     if (temp_r3_344 != 0) {
         temp_r30_347 = var_r29_339->unk8;
-        temp_r3_348 = temp_r3_344->Current();
+        temp_r3_348 = ((MKHeap *) temp_r3_344)->Current();
         if (temp_r3_348 != NULL) {
             var_r31_356 = ((MKHeap *) (temp_r3_348->Current()))->Alloc((s32) temp_r30_347, NULL, 0);
         } else {

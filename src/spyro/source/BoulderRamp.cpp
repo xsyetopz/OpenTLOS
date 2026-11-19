@@ -3,6 +3,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Ball.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Trap.h"
@@ -164,9 +165,9 @@ u8 states__11BoulderRamp[0x90] = {
 static struct _struct_boulderRampGroups_0x18 boulderRampGroups[8];
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void BoulderRamp::BoulderSinkingExit() {
-    this->unkF4.unk14.Send((MKProp *) this);
+    ((EventMessage *) &this->unkF4.unk14)->Send((MKProp *) this);
     this->unkF0->SetState((Ball::State) 6);
 }
 #endif
@@ -280,7 +281,6 @@ void BoulderRamp::ReceivingBoulderUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddNode'
 void BoulderRamp::ReceivingBoulderEnter() {
     f64 spE0;
     f64 spD8;
@@ -357,12 +357,11 @@ void BoulderRamp::ReceivingBoulderEnter() {
     spC0 = (f64) sp10;
     this->unkF4.unk8 = 0.0f;
     this->unkF4.unk4 = 0.0f;
-    this->unkF4.AddNode(*((MKVector3 *) &spD8));
-    this->unkF4.AddNode(*((MKVector3 *) &spB8));
-    this->unkF4.AddNode(*((MKVector3 *) &spC8));
+    ((KDUniformSpline *) &this->unkF4)->AddNode(*((MKVector3 *) &spD8));
+    ((KDUniformSpline *) &this->unkF4)->AddNode(*((MKVector3 *) &spB8));
+    ((KDUniformSpline *) &this->unkF4)->AddNode(*((MKVector3 *) &spC8));
     this->unkE8 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void BoulderRamp::SetBoulder(Ball *arg0) {
@@ -383,13 +382,13 @@ s32 BoulderRamp::HasBoulder() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoulderRamp::State'
 void BoulderRamp::SetState(BoulderRamp::State arg1) {
-    this->unkF4.unk18.SetState(this, (s32) arg1, 0U);
+    ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->SetState(this, (s32) arg1, 0U);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void BoulderRamp::Update() {
-    this->unkF4.unk18.Update(this, 0);
+    ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->Update(this, 0);
     GameProp::Update();
 }
 #endif
@@ -427,9 +426,8 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkF4.unk14.LoadLine(arg0, "OnSet") != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (((EventMessage *) &this->unkF4.unk14)->LoadLine(arg0, "OnSet") != 0)) {
         return 1;
     }
     if (arg0->IsField("group") != 0) {
@@ -438,17 +436,16 @@ s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'Deinit'
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void BoulderRamp::Deinit() {
     s32 var_ctr_582;
     s32 var_r3_577;
     struct _struct_boulderRampGroups_0x18 *temp_r5_586;
 
-    this->unkF4.Deinit();
-    this->unkF4.unk14.Deinit();
-    this->unkF4.unk18.Deinit();
+    ((KDUniformSpline *) &this->unkF4)->Deinit();
+    ((EventMessage *) &this->unkF4.unk14)->Deinit();
+    ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->Deinit();
     if ((s32) this->unkE0 < 0xFF) {
         var_r3_577 = 0;
         var_ctr_582 = 6;
@@ -465,15 +462,15 @@ void BoulderRamp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: undefined identifier 'Init__29KDStateMachine'
 void BoulderRamp::Init() {
     this->unkE0 = 0xFF;
     this->unkE4 = 0;
     this->unkE8 = 0.0f;
     this->unkEC = 0.0f;
     this->unkF0 = NULL;
-    this->unkF4.Init(3, 0U);
-    this->unkF4.unk14.Init();
+    ((KDUniformSpline *) &this->unkF4)->Init(3, 0U);
+    ((EventMessage *) &this->unkF4.unk14)->Init();
     Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18, (KDStateMachine<BoulderRamp>::State *) BoulderRamp::states, NULL);
     Trap::Init();
 }

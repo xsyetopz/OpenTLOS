@@ -159,15 +159,15 @@ void Conveyor::Update() {
         sp200 = M2C_BITWISE(f64, sp170);
         sp208 = (f64) sp170.unk8;
         sp24 = 0.0f;
-        sp160.GetMeasure(temp_f24_101, (Matrix *) &this->unk118.unk14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp160)->GetMeasure(temp_f24_101, (Matrix *) &this->unk118.unk14, KDSpline_PositionMixer);
         sp1F0 = sp160;
         sp1F8 = sp168;
         sp20 = 0.0f;
-        sp150.GetMeasure(var_f23_102, &this->unk118, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp150)->GetMeasure(var_f23_102, &this->unk118, KDSpline_PositionMixer);
         sp1E0 = sp150;
         sp1E8 = sp158;
         sp1C = 0.0f;
-        sp140.GetMeasure(var_f23_102, (Matrix *) &this->unk118.unk14, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp140)->GetMeasure(var_f23_102, (Matrix *) &this->unk118.unk14, KDSpline_PositionMixer);
         sp1D0 = sp140;
         sp1D8 = sp148;
         temp_f0_158 = sp200 + sp1F0;
@@ -363,7 +363,7 @@ void Conveyor::Update() {
         sp26C = 0.0f;
         M2C_STRUCT_COPY((s32) &unksp20C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         sp210.SetRotateAroundAxis(*((MKVector3 *) &sp190), -0.5235988f);
-        sp250.Multiply3x3((Matrix *) &sp250, &sp210);
+        ((Matrix *) &sp250)->Multiply3x3((Matrix *) &sp250, &sp210);
         MKModel_SetWorldMatrix(M2C_FIELD(*(this + temp_r30_107), MKModel **, 4), *((Matrix *) &sp250));
         var_r29_84 += 1;
         var_r27_86 += 4;
@@ -420,22 +420,20 @@ s32 Conveyor::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'Deinit'
 void Conveyor::Deinit() {
     GameProp::Deinit();
-    this->unk118.Deinit();
-    this->unk118.unk14.Deinit();
+    ((KDUniformSpline *) &this->unk118)->Deinit();
+    ((KDUniformSpline *) &this->unk118.unk14)->Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: illegal operand
 void Conveyor::Init() {
     s32 var_r29_745;
     s32 var_r31_747;
 
     GameProp::Init();
-    this->unk118.Init(0xA, 0U);
-    this->unk118.unk14.Init(0xA, 0U);
+    ((KDUniformSpline *) &this->unk118)->Init(0xA, 0U);
+    ((KDUniformSpline *) &this->unk118.unk14)->Init(0xA, 0U);
     var_r29_745 = 0;
     var_r31_747 = 0;
     do {

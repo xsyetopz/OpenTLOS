@@ -210,7 +210,7 @@ void SolidSlug::Collided(MKCollisionResult &arg0) {
                 spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (temp_r9_233 != NULL) {
-                    sp18.GetPos();
+                    ((MKProp *) &sp18)->GetPos();
                     spB8 = sp18;
                     spC0 = sp20;
                 } else {

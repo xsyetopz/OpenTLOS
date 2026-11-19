@@ -535,7 +535,7 @@ loop_22:
                             spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             spD0 = 0;
                             if (var_r4_989 != 0U) {
-                                sp18.GetPos();
+                                ((MKProp *) &sp18)->GetPos();
                                 spB0 = sp18;
                                 spB8 = sp20;
                             } else {

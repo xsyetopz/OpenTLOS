@@ -3,8 +3,8 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "spyro/source/KDPropEx.h"
-#include "unplaced_templates.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_templates.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -17,14 +17,12 @@ void ScryingPool::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ScryingPool::Message(MKMessage *arg0) {
-    this->unk98.Message(arg0);
+    ((KDSoundPlayer *) &this->unk98)->Message(arg0);
     KDPropEx::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void ScryingPool::Update() {
     s32 sp8;
     s32 temp_r4_104;
@@ -35,7 +33,7 @@ void ScryingPool::Update() {
     temp_r4_104 = this->unk94;
     if (temp_r4_104 != 0) {
         sp8 = 1;
-        this->unk98.Update(temp_r4_104, 1U, temp_r4_104 == this->unk90, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk98)->Update(temp_r4_104, 1U, temp_r4_104 == this->unk90, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if (((s32) this->unk94 != (s32) this->unk90) && (KDSound_IsVoicePlaying(this->unk98) == 0)) {
         this->unk94 = this->unk90;
@@ -69,14 +67,12 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ScryingPool::Init() {
     KDPropEx::Init();
-    this->unk98.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk98)->Init(0.25f, 0.25f);
     this->unk90 = GS_PLACEHOLDER;
     this->unk94 = GS_PLACEHOLDER;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 ScryingPoolDescriptor::LoadLine(MKIniLine *arg0) {

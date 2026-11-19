@@ -5,12 +5,15 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
@@ -18,7 +21,6 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroEarthFuryFall;
@@ -211,7 +213,7 @@ void SquishBoulder::EmitLandingEffects() {
         spFC = 1.0f;
         sp240 = (f64) spF0;
         sp248 = (f64) spF8;
-        gb.unk74->Emit(*((MKVector3 *) &this->unk260.unk1C), *((MKVector3 *) &sp260), sp18, *((MKVector4 *) &sp240), -980.0f);
+        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk260.unk1C), *((MKVector3 *) &sp260), sp18, *((MKVector4 *) &sp240), -980.0f);
         var_r29_153 += 1;
     } while (var_r29_153 < 0x1E);
     temp_r3_220 = M2C_FIELD(temp_r28_88, void **, 0x16C);
@@ -405,7 +407,7 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
         var_r29_686 = *(temp_r4_672 + (temp_r0_670 * 4));
     }
     temp_r28_693 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    this->unk200.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
+    ((BreathHitMessage *) &this->unk200)->Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x218) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
@@ -427,12 +429,10 @@ void SquishBoulder::Draw() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
 void SquishBoulder::Message(MKMessage *arg0) {
-    this->unk1C8.Message(arg0);
+    ((KDSoundPlayer *) &this->unk1C8)->Message(arg0);
     Shatterable::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void SquishBoulder::Update() {
@@ -461,7 +461,7 @@ void SquishBoulder::Update() {
 
     PooledShatterProp::Update();
     sp8 = 1;
-    this->unk1C8.Update(GS_SpyroEarthFuryFall, 1U, M2C_FIELD(this, s32 *, 0x1D4) == 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk1C8)->Update(GS_SpyroEarthFuryFall, 1U, M2C_FIELD(this, s32 *, 0x1D4) == 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     M2C_FIELD(this, f32 *, 0x1D0) = (f32) (M2C_FIELD(this, f32 *, 0x1D0) - gUpdateTimeDelta);
     temp_r0_813 = M2C_FIELD(this, s32 *, 0x1D4);
     switch (temp_r0_813) {                          /* irregular */
@@ -518,13 +518,11 @@ block_15:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SquishBoulder::Init() {
     Shatterable::Init();
     this->unk198 = 0.0f;
-    this->unk1C8.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk1C8)->Init(0.25f, 0.25f);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void SquishBoulderDescriptor::Init() {

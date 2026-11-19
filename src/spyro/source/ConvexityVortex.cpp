@@ -70,7 +70,7 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
             M2C_FIELD(temp_r31_57, f32 *, 0x30) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
             M2C_FIELD(temp_r31_57, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
             M2C_FIELD(temp_r31_57, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            ((KDSoundFader *) ((KDSoundFader *) (temp_r31_57 + 0x40)))->Init(0.25f, 0.25f);
+            ((KDSoundFader *) (temp_r31_57 + 0x40))->Init(0.25f, 0.25f);
         }
     }
 }
@@ -130,7 +130,7 @@ loop_15:
             var_r4_184 += 4;
             goto loop_15;
         }
-        temp_r3_211 = var_r3_186->Current();
+        temp_r3_211 = ((MKHeap *) var_r3_186)->Current();
         if (temp_r3_211 != NULL) {
             ((MKHeap *) (temp_r3_211->Current()))->Free(var_r31_185, NULL, 0);
         } else {
@@ -207,7 +207,7 @@ loop_8:
     if (var_r31_349 != NULL) {
         temp_r3_359 = *var_r31_349;
         if (temp_r3_359 != NULL) {
-            ((KDSoundPlayer *) ((KDSoundPlayer *) (temp_r3_359 + 0x40)))->Message(arg0);
+            ((KDSoundPlayer *) (temp_r3_359 + 0x40))->Message(arg0);
             var_r31_349 += 4;
             goto loop_8;
         }
@@ -372,7 +372,7 @@ loop_39:
             if ((temp_r0_647 == 2) || (temp_r0_647 == 1)) {
                 var_r6_646 = 1;
             }
-            ((KDSoundFader *) ((KDSoundFader *) (temp_r31_693 + 0x40)))->Update(GS_ConvexFlyingPlatformLP, 1U, var_r6_646, NULL, temp_r31_693, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) (temp_r31_693 + 0x40))->Update(GS_ConvexFlyingPlatformLP, 1U, var_r6_646, NULL, temp_r31_693, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             if ((s32) M2C_FIELD(temp_r31_693, s32 *, 0x38) != 3) {
 
             } else {

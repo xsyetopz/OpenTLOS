@@ -13,6 +13,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -1434,14 +1435,14 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     unksp74 += 100.0f;
     unksp64 -= 1000.0f;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60), &sp80, (MKCollisionMode) 7, 0x200) != 0) {
-        if (this->unk90.IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) == 0) {
+        if (((KDWaterVolume *) &this->unk90)->IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) == 0) {
             this->unk120 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
             M2C_FIELD(this, f32 *, 0x94) = (f32) (50.0f + sp80.unk4);
         }
         if ((u8) this->unk120 == 0) {
             spC = 0.0f;
             M2C_FIELD(this, f32 *, 0x94) = (f32) (M2C_FIELD(this, f32 *, 0x94) - 50.0f);
-            if (this->unk90.IsWithin(*((MKVector3 *) &spC), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
+            if (((KDWaterVolume *) &this->unk90)->IsWithin(*((MKVector3 *) &spC), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
                 this->unk120 = 1;
             }
             M2C_FIELD(this, f32 *, 0x94) = (f32) (M2C_FIELD(this, f32 *, 0x94) + 50.0f);
@@ -1540,7 +1541,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
             SpawnStatic(*var_r28_3046, *arg1);
         }
         this->unk10 |= 0x80;
-        if (this->unk90.IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
+        if (((KDWaterVolume *) &this->unk90)->IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
             this->unk10 |= 0x200;
         } else {
             this->unk10 &= 0xFFFFFDFF;
@@ -2277,7 +2278,7 @@ void Collectable::Resolve() {
         this->unkC4 = NULL;
     }
     M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK *, Collectable *), 0x44)(&sp8, this);
-    if (sp8.IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
+    if (((KDWaterVolume *) &sp8)->IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
         this->unk10 |= 0x200;
     }
 }

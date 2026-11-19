@@ -233,7 +233,7 @@ loop_16:
                             sp198 = (f64) sp1C8;
                             sp1A0 = (f64) sp1D0;
                         }
-                        sp138.GetRandPos();
+                        ((Volume *) &sp138)->GetRandPos();
                         sp38 = 0.0f;
                         sp3C = -200.0f;
                         sp40 = 0.0f;
@@ -508,7 +508,6 @@ void SwampFlickerDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SwampFlickerDescriptor::LoadDone() {
     s8 *temp_r30_843;
     s8 *temp_r30_861;
@@ -519,28 +518,27 @@ void SwampFlickerDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_843 = this->unk34;
-    if (temp_r30_843->Exists("idle_01") != 0) {
-        var_r3_853 = temp_r30_843->GetAnim("idle_01");
+    if (((MKAnimScript *) temp_r30_843)->Exists("idle_01") != 0) {
+        var_r3_853 = ((MKAnimScript *) temp_r30_843)->GetAnim("idle_01");
     } else {
         var_r3_853 = NULL;
     }
     this->unk70 = (s32) var_r3_853;
     temp_r30_861 = this->unk34;
-    if (temp_r30_861->Exists("idle_02") != 0) {
-        var_r3_871 = temp_r30_861->GetAnim("idle_02");
+    if (((MKAnimScript *) temp_r30_861)->Exists("idle_02") != 0) {
+        var_r3_871 = ((MKAnimScript *) temp_r30_861)->GetAnim("idle_02");
     } else {
         var_r3_871 = NULL;
     }
     this->unk74 = (s32) var_r3_871;
     temp_r30_879 = this->unk34;
-    if (temp_r30_879->Exists("bounce") != 0) {
-        var_r3_889 = temp_r30_879->GetAnim("bounce");
+    if (((MKAnimScript *) temp_r30_879)->Exists("bounce") != 0) {
+        var_r3_889 = ((MKAnimScript *) temp_r30_879)->GetAnim("bounce");
     } else {
         var_r3_889 = NULL;
     }
     this->unk78 = (s32) var_r3_889;
 }
-#endif
 
 void SwampFlickerDescriptor::Init() {
     KDPropDescriptor::Init();

@@ -7,6 +7,7 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -45,7 +46,7 @@ void FlyingMonkey::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *ar
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FlyingMonkey::Update() {
     MKCollisionResult sp220;
     Matrix sp1E0;
@@ -123,7 +124,7 @@ void FlyingMonkey::Update() {
     if ((s32 *) this->unk138 != NULL) {
         temp_r4_129 = checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk138->Update(M2C_FIELD(temp_r4_129, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk138)->Update(M2C_FIELD(temp_r4_129, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     this->unk140 -= gUpdateTimeDelta;
     if (this->unk140 <= 0.0f) {
@@ -269,7 +270,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void FlyingMonkey::Collided(MKCollisionResult &arg0) {
     s8 spD9;
     s8 spD8;
@@ -372,7 +373,7 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                 spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (temp_r9_529 != NULL) {
-                    sp18.GetPos();
+                    ((MKProp *) &sp18)->GetPos();
                     spB8 = sp18;
                     spC0 = sp20;
                 } else {
@@ -420,43 +421,43 @@ void FlyingMonkeyDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pFlyingMonkeyDescriptor = (MKPropDescriptor *) this;
     temp_r30_679 = this->unk34;
-    if (temp_r30_679->Exists("Hit_Shock01") != 0) {
-        var_r3_687 = temp_r30_679->GetAnim("Hit_Shock01");
+    if (((MKAnimScript *) temp_r30_679)->Exists("Hit_Shock01") != 0) {
+        var_r3_687 = ((MKAnimScript *) temp_r30_679)->GetAnim("Hit_Shock01");
     } else {
         var_r3_687 = NULL;
     }
     this->unkF0 = (s32) var_r3_687;
     temp_r30_695 = this->unk34;
-    if (temp_r30_695->Exists("Hit_Shock02") != 0) {
-        var_r3_705 = temp_r30_695->GetAnim("Hit_Shock02");
+    if (((MKAnimScript *) temp_r30_695)->Exists("Hit_Shock02") != 0) {
+        var_r3_705 = ((MKAnimScript *) temp_r30_695)->GetAnim("Hit_Shock02");
     } else {
         var_r3_705 = NULL;
     }
     this->unkF4 = (s32) var_r3_705;
     temp_r30_713 = this->unk34;
-    if (temp_r30_713->Exists("Hit_Shock03") != 0) {
-        var_r3_723 = temp_r30_713->GetAnim("Hit_Shock03");
+    if (((MKAnimScript *) temp_r30_713)->Exists("Hit_Shock03") != 0) {
+        var_r3_723 = ((MKAnimScript *) temp_r30_713)->GetAnim("Hit_Shock03");
     } else {
         var_r3_723 = NULL;
     }
     this->unkF8 = (s32) var_r3_723;
     temp_r30_731 = this->unk34;
-    if (temp_r30_731->Exists("Leap_Miss_Loop") != 0) {
-        var_r3_741 = temp_r30_731->GetAnim("Leap_Miss_Loop");
+    if (((MKAnimScript *) temp_r30_731)->Exists("Leap_Miss_Loop") != 0) {
+        var_r3_741 = ((MKAnimScript *) temp_r30_731)->GetAnim("Leap_Miss_Loop");
     } else {
         var_r3_741 = NULL;
     }
     this->unkFC = (s32) var_r3_741;
     temp_r30_749 = this->unk34;
-    if (temp_r30_749->Exists("Flee") != 0) {
-        var_r3_759 = temp_r30_749->GetAnim("Flee");
+    if (((MKAnimScript *) temp_r30_749)->Exists("Flee") != 0) {
+        var_r3_759 = ((MKAnimScript *) temp_r30_749)->GetAnim("Flee");
     } else {
         var_r3_759 = NULL;
     }
     this->unk100 = (s32) var_r3_759;
     temp_r30_767 = this->unk34;
-    if (temp_r30_767->Exists("Jump_up_Loop") != 0) {
-        var_r3_777 = temp_r30_767->GetAnim("Jump_up_Loop");
+    if (((MKAnimScript *) temp_r30_767)->Exists("Jump_up_Loop") != 0) {
+        var_r3_777 = ((MKAnimScript *) temp_r30_767)->GetAnim("Jump_up_Loop");
     } else {
         var_r3_777 = NULL;
     }

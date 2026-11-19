@@ -23,7 +23,7 @@ void *MKMetadata_Resolve(MKMetadata *arg0, int arg1, const char **arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Current'
+#if 0 // DRAFT: undefined identifier 'free'
 void MKMetadata_Close(MKMetadata *arg0) {
     MKHeap *temp_r3_32;
     MKHeap *temp_r3_46;
@@ -32,7 +32,7 @@ void MKMetadata_Close(MKMetadata *arg0) {
     MKMetadata *temp_r31_45;
 
     temp_r31_31 = arg0->unk0;
-    temp_r3_32 = arg0->Current();
+    temp_r3_32 = ((MKHeap *) arg0)->Current();
     if (temp_r3_32 != NULL) {
         ((MKHeap *) (temp_r3_32->Current()))->Free(temp_r31_31, NULL, 0);
     } else {
@@ -58,7 +58,7 @@ void MKMetadata_Open(const char *arg0, const char *arg1, int *arg2) {
     MKMetadata_OpenFromBuffer(MKArchive_Load(arg0, NULL, NULL, -1), NULL, arg2);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'const void *' to
 void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     MKHeap *temp_r3_111;
     s32 temp_r0_134;
@@ -78,7 +78,7 @@ void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     void *temp_r9_128;
     void *var_r3_118;
 
-    temp_r3_111 = arg0->Current();
+    temp_r3_111 = ((MKHeap *) arg0)->Current();
     if (temp_r3_111 != NULL) {
         var_r3_118 = ((MKHeap *) (temp_r3_111->Current()))->Alloc(8, NULL, 0);
     } else {

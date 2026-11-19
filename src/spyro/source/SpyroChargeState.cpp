@@ -7,6 +7,8 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -414,8 +416,8 @@ void SpyroChargeState::Update() {
     if (var_r4_701 != 0) {
         var_f30_702 = 1.0f * M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_700->unk0), f32 *, 0xD8);
     }
-    sp40.CalcYawTurnDir(3.5f);
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp40), 3.5f);
+    ((Spyro *) &sp40)->CalcYawTurnDir(3.5f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp40), 3.5f);
     temp_r3_747 = this->unk10;
     temp_r4_749 = temp_r3_747->unk8;
     temp_f3_750 = 1400.0f * var_f30_702;
@@ -435,7 +437,7 @@ void SpyroChargeState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroChargeState::Exit() {
     s32 sp14;
     s32 sp10;
@@ -454,7 +456,7 @@ void SpyroChargeState::Exit() {
         var_f1_810 = temp_f0_811;
     }
     this->unk10->unk3C4 = var_f1_810;
-    this->unk10->unk430.unk28.SetChargeTime(this->unk28);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeTime(this->unk28);
     temp_r3_825 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x43A;
@@ -503,7 +505,7 @@ void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
     temp_r3_916 = this->unk10;
     temp_r3_916->unk428 &= 0xFFFFFFFE;
     this->unk28 = 0.0f;
-    this->unk10->unk430.unk28.SetChargeTime(0.0f);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetChargeTime(0.0f);
     sp1C = 0;
     sp18 = 0x17;
     sp20 = 4;

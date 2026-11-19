@@ -120,7 +120,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Current'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     s8 *sp10;
     s32 spC;
@@ -152,7 +152,7 @@ s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
         temp_r3_227 = arg0->unkC->GetSubLine(arg0);
         var_r28_229 = temp_r3_227;
         temp_r29_230 = this->unkCC * 4;
-        temp_r3_231 = temp_r3_227->Current();
+        temp_r3_231 = ((MKHeap *) temp_r3_227)->Current();
         if (temp_r3_231 != NULL) {
             var_r3_238 = ((MKHeap *) (temp_r3_231->Current()))->Alloc(temp_r29_230, NULL, 0);
         } else {

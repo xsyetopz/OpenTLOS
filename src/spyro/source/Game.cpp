@@ -476,9 +476,9 @@ void GameGlobals::Capture::Deinit() {
     ((Texture *) (M2C_FIELD(this, Texture **, 4)))->Destroy();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void GameGlobals::Capture::Init(char *arg1, int arg2) {
-    arg1->CreateRenderTarget((s8 *) arg2, arg2, 0, M2C_ERROR(/* Read from unset register $r7 */));
+    ((Texture *) arg1)->CreateRenderTarget((s8 *) arg2, arg2, 0, M2C_ERROR(/* Read from unset register $r7 */));
     M2C_FIELD(this, s32 *, 4) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
     M2C_FIELD(this, MKResource **, 0) = MKMaterial_Create(arg1);
 }
@@ -671,7 +671,7 @@ void GameGlobals::InfiniteMagicOff() {
 
 void GameGlobals::InfiniteMagicOn() {
     this->unkB = 1;
-    ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->SetValue(30.0f, 0U);
+    ((Stat *) &GameData::gameData[0xA0])->SetValue(30.0f, 0U);
 }
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -743,12 +743,12 @@ void GameGlobals::Deinit() {
     TargetManager *temp_r30_1104;
 
     RumbleTimer_Deinit();
-    ((GameGlobals::KillRate *) ((GameGlobals::KillRate *) &gb[0xBE]))->Deinit();
-    ((GameGlobals::Fade *) ((GameGlobals::Fade *) &gb[0xC]))->Deinit();
-    ((HeatDistortPS *) ((HeatDistortPS *) &gb[0x90]))->Deinit();
-    ((ExplosionWarpFX *) ((ExplosionWarpFX *) &gb[0x70]))->Deinit();
-    ((ShotgunWarpFX *) ((ShotgunWarpFX *) &gb[0x4C]))->Deinit();
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) &gb[0x2E]))->Deinit();
+    ((GameGlobals::KillRate *) &gb[0xBE])->Deinit();
+    ((GameGlobals::Fade *) &gb[0xC])->Deinit();
+    ((HeatDistortPS *) &gb[0x90])->Deinit();
+    ((ExplosionWarpFX *) &gb[0x70])->Deinit();
+    ((ShotgunWarpFX *) &gb[0x4C])->Deinit();
+    ((ScreenWobbleFX *) &gb[0x2E])->Deinit();
     this->unk24.Deinit();
     this->unk354 = NULL;
     this->unk20->Deinit();
@@ -803,8 +803,8 @@ void GameGlobals::Init() {
     this->unk396 = 0;
     this->unk35C = 0;
     this->unk35E = 1;
-    this->unk318 = ((MKFont *) ((MKFont *) ""))->Create(NULL);
-    this->unk31C = ((MKFont *) ((MKFont *) ""))->Create("053b3(ret)");
+    this->unk318 = ((MKFont *) "")->Create(NULL);
+    this->unk31C = ((MKFont *) "")->Create("053b3(ret)");
     temp_r3_1216 = DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f);
     this->unk324 = temp_r3_1216;
     this->unk398 = 0;
@@ -814,7 +814,7 @@ void GameGlobals::Init() {
     M2C_FIELD(this, s32 *, 0x3A4) = 0;
     M2C_FIELD(this, s32 *, 0x3A8) = 0;
     this->unk382 = 0;
-    temp_r3_1226 = temp_r3_1216->Current();
+    temp_r3_1226 = ((MKHeap *) temp_r3_1216)->Current();
     if (temp_r3_1226 != NULL) {
         var_r3_1233 = ((MKHeap *) (temp_r3_1226->Current()))->Alloc(0x10, NULL, 0);
     } else {
@@ -828,15 +828,15 @@ void GameGlobals::Init() {
     M2C_FIELD(&input, s8 *, 4) = 0;
     M2C_FIELD(&input, s8 *, 5) = 0;
     this->unk24.Init("", 0x100);
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) &gb[0x2E]))->Init();
+    ((ScreenWobbleFX *) &gb[0x2E])->Init();
     gb[0x32] = 0.9f;
     gb[0x33] = NULL;
-    ((ShotgunWarpFX *) ((ShotgunWarpFX *) &gb[0x4C]))->Init();
-    ((ExplosionWarpFX *) ((ExplosionWarpFX *) &gb[0x70]))->Init();
-    ((HeatDistortPS *) ((HeatDistortPS *) &gb[0x90]))->Init();
-    ((GameGlobals::Fade *) ((GameGlobals::Fade *) &gb[0xC]))->Init();
-    ((GameGlobals::KillRate *) ((GameGlobals::KillRate *) &gb[0xBE]))->Init(0x14, 10.0f);
-    ((TimeDeltaModifier *) ((TimeDeltaModifier *) &gb[0xB3]))->Init();
+    ((ShotgunWarpFX *) &gb[0x4C])->Init();
+    ((ExplosionWarpFX *) &gb[0x70])->Init();
+    ((HeatDistortPS *) &gb[0x90])->Init();
+    ((GameGlobals::Fade *) &gb[0xC])->Init();
+    ((GameGlobals::KillRate *) &gb[0xBE])->Init(0x14, 10.0f);
+    ((TimeDeltaModifier *) &gb[0xB3])->Init();
     RumbleTimer_Init();
     this->unkA = 0;
     this->unk4 = 1;
@@ -863,8 +863,8 @@ void LoadGlobalResources_Deinit() {
 void LoadGlobalResources_Update() {
     MemoryCard_InitModule();
     if ((M2C_UNK *) gb[0xCF] != NULL) {
-        ((GameData *) ((GameData *) GameData::gameData))->ClearData();
-        ((Level *) ((Level *) gb[0xCB]))->SwitchTo((ChunkInfo *) gb[0xCC]);
+        ((GameData *) GameData::gameData)->ClearData();
+        ((Level *) gb[0xCB])->SwitchTo((ChunkInfo *) gb[0xCC]);
         return;
     }
     gGMState.SwitchState(1, 0, 0U);
@@ -993,12 +993,12 @@ void Game_Draw() {
     }
     sp14 = var_f0_1652;
     MKView_SetOrthoRect((MKRect *) &spC);
-    ((GameStateMachine *) ((GameStateMachine *) (gb + 0x490)))->Draw();
+    ((GameStateMachine *) (gb + 0x490))->Draw();
     sp8.Tools_Ortho();
     if (((u8) DialogBox_bAllowOverCutscene == 0) && (temp_r29_1668 = gb[3], (((u32) temp_r29_1668 == 0U) == 0))) {
         temp_r3_1671 = M2C_FIELD(temp_r29_1668, KDSynkerPlayer3 **, 0x78);
         var_r30_1672 = 0;
-        if (((temp_r3_1671 != NULL) && (temp_r3_1671->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1668, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) ((KDStateMachine<CutsceneSystem> *) (temp_r29_1668 + 0x24)))->GetState() == 2))) {
+        if (((temp_r3_1671 != NULL) && (temp_r3_1671->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1668, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_1668 + 0x24))->GetState() == 2))) {
             var_r30_1672 = 1;
         }
         if (var_r30_1672 == 0) {
@@ -1009,11 +1009,11 @@ block_17:
         DialogBox_Draw();
     }
     if ((u8) M2C_FIELD(gb, u8 *, 0x395) == 0) {
-        ((GameGlobals::Fade *) ((GameGlobals::Fade *) &gb[0xC]))->Draw();
+        ((GameGlobals::Fade *) &gb[0xC])->Draw();
     }
     if ((u8) M2C_FIELD(gb, u8 *, 0x395) == 0) {
         Credits_Draw();
-        ((CutsceneSystem *) ((CutsceneSystem *) (gb + 0x3C0)))->DrawSubtitles();
+        ((CutsceneSystem *) (gb + 0x3C0))->DrawSubtitles();
         Subtitles_Draw();
     }
     sp8.~Tools_Ortho(-1);
@@ -1030,24 +1030,24 @@ u8 Game_Update() {
     temp_f31_1729 = gUpdateTimeDelta;
     MKInput_DespatchEvents();
     M2C_FIELD(*gMK, M2C_UNK (**)(void **), 0x20)(gMK);
-    ((Level *) ((Level *) gb[0xCB]))->UpdateState();
+    ((Level *) gb[0xCB])->UpdateState();
     gGMState.Update();
     GameSounds_Update();
     if (((u8) M2C_FIELD(gb, u8 *, 0x395) == 0) && ((M2C_UNK *) gb[0xD6] == (M2C_UNK *)-1)) {
-        ((TimeDeltaModifier *) ((TimeDeltaModifier *) &gb[0xB3]))->Begin();
+        ((TimeDeltaModifier *) &gb[0xB3])->Begin();
         Console_UpdateDelayedCmds();
-        ((TimeDeltaModifier *) ((TimeDeltaModifier *) &gb[0xB3]))->End();
+        ((TimeDeltaModifier *) &gb[0xB3])->End();
     }
     gUpdateTimeDelta = temp_f31_1729;
     if (((u8) M2C_FIELD(gb[0xCB], u8 *, 8) == 0) && ((u8) M2C_FIELD(gb, u8 *, 0x395) == 0)) {
-        ((GameGlobals::Fade *) ((GameGlobals::Fade *) &gb[0xC]))->Update();
-        ((GameGlobals::KillRate *) ((GameGlobals::KillRate *) &gb[0xBE]))->Update();
+        ((GameGlobals::Fade *) &gb[0xC])->Update();
+        ((GameGlobals::KillRate *) &gb[0xBE])->Update();
     }
     MKRumble_Update();
     if (((u8) DialogBox_bAllowOverCutscene == 0) && (temp_r29_1782 = gb[3], (((u32) temp_r29_1782 == 0U) == 0))) {
         temp_r3_1785 = M2C_FIELD(temp_r29_1782, KDSynkerPlayer3 **, 0x78);
         var_r31_1786 = 0;
-        if (((temp_r3_1785 != NULL) && (temp_r3_1785->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1782, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) ((KDStateMachine<CutsceneSystem> *) (temp_r29_1782 + 0x24)))->GetState() == 2))) {
+        if (((temp_r3_1785 != NULL) && (temp_r3_1785->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1782, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_1782 + 0x24))->GetState() == 2))) {
             var_r31_1786 = 1;
         }
         if (var_r31_1786 == 0) {
@@ -1075,13 +1075,13 @@ block_14:
 #if 0 // DRAFT: illegal operand
 void Game_Deinit() {
     Subtitles_DeinitModule();
-    ((CutsceneSystem *) ((CutsceneSystem *) (gb + 0x3C0)))->DeinitModule();
+    ((CutsceneSystem *) (gb + 0x3C0))->DeinitModule();
     PhrasePlayer_Deinit();
     Music_Deinit();
     Cheats_Deinit();
     EnemySettings_DeinitModule();
     LoadLevel_FreeResources();
-    ((GameStateMachine *) ((GameStateMachine *) (gb + 0x490)))->Deinit();
+    ((GameStateMachine *) (gb + 0x490))->Deinit();
     KDSound_DeinitModule();
     ((GameData *) (M2C_ERROR(/* Read from unset register $r3 */)))->ModuleDeinit();
     ((KDShatter2 *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeinitModule();
@@ -1089,13 +1089,13 @@ void Game_Deinit() {
     FogPoints_DeinitModule();
     ConsoleCmds_Unregister();
     Console_Deinit();
-    gb->Deinit();
+    ((GameGlobals *) gb)->Deinit();
     DialogBox_DeinitModule();
     MemoryCard_DeinitModule();
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'GameGlobals' to
 void Game_Init() {
     KDPropModuleInfo sp8;
     M2C_UNK sp4;
@@ -1106,7 +1106,7 @@ void Game_Init() {
     MKMaterial_InitMaterialIDs();
     MKPackage_UseQ();
     DialogBox_InitModule();
-    gb->Init();
+    ((GameGlobals *) gb)->Init();
     Console_Init();
     ConsoleCmds_Register();
     Game_CheckCommandLineParameters();
@@ -1155,7 +1155,7 @@ loop_5:
         }
         var_r3_1978 = gb[0xCC];
         if ((s32) M2C_FIELD(var_r3_1978, s32 *, 0xC) == 2) {
-            var_r3_1978 = var_r3_1978->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
+            var_r3_1978 = ((Level *) var_r3_1978)->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
             gb[0xCC] = var_r3_1978;
         }
     } else if ((Level *) pStartChunkName != NULL) {
@@ -1174,20 +1174,20 @@ loop_5:
             gb[0xCC] = M2C_FIELD(var_r3_1978, M2C_UNK **, 0x114);
         }
     }
-    var_r3_1978->ModuleInit();
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) var_r3_1978)->ModuleInit();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
     EnemySettings_InitModule();
-    gb->ResetInGameData();
+    ((GameGlobals *) gb)->ResetInGameData();
     gb[0xC3] = 0.0f;
     gb[0xC4] = -200.0f;
     gb[0xC5] = 0.72f;
     Cheats_Init();
     Music_Init();
     PhrasePlayer_Init();
-    ((CutsceneSystem *) ((CutsceneSystem *) (gb + 0x3C0)))->InitModule();
+    ((CutsceneSystem *) (gb + 0x3C0))->InitModule();
     gb[3] = &*(gb + 0x3C0);
-    ((GameStateMachine *) ((GameStateMachine *) (gb + 0x490)))->Init(gameStates, &gameStateInit);
+    ((GameStateMachine *) (gb + 0x490))->Init(gameStates, &gameStateInit);
 }
 #endif
 

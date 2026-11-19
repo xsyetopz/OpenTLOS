@@ -82,14 +82,14 @@ loop_5:
     return var_r3_151;
 }
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIObject::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r31_204;
     u32 temp_r3_187;
 
     sp8 = NULL;
-    if (arg0->LoadString("id", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("id", &sp8, 0) != 0) {
         temp_r3_187 = this->unk4;
         if (temp_r3_187 != 0) {
             UIStringTable_Remove((s8 *) temp_r3_187);
@@ -99,7 +99,7 @@ s32 UIObject::LoadLine(UIDataLine *arg0) {
         return 1;
     }
     var_r31_204 = 0;
-    if ((arg0->LoadBool("bVisible", &this->unk14, 0) != 0) || (arg0->LoadBool("bEnabled", (u8 *) &this->unk15, 0) != 0) || (this->unk18.LoadLine(arg0) != 0)) {
+    if ((((MKIniLine *) arg0)->LoadBool("bVisible", &this->unk14, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bEnabled", (u8 *) &this->unk15, 0) != 0) || (this->unk18.LoadLine(arg0) != 0)) {
         var_r31_204 = 1;
     }
     return var_r31_204;

@@ -307,7 +307,6 @@ void Updater_Scroll(MKMaterial *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'FreeFromAnyHeap'
 void MKMat_MK2_Standard_DESTROY(MKMaterial *arg0) {
     MKMaterial *temp_r3_553;
     Texture *temp_r3_558;
@@ -320,11 +319,10 @@ void MKMat_MK2_Standard_DESTROY(MKMaterial *arg0) {
     if (temp_r3_558 != NULL) {
         temp_r3_558->Destroy();
     }
-    arg0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'Current'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     MKHeap *temp_r3_582;
     MKHeap *temp_r3_608;
@@ -350,7 +348,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     u32 var_r4_600;
     void *temp_r3_849;
 
-    temp_r3_582 = arg0->Current();
+    temp_r3_582 = ((MKHeap *) arg0)->Current();
     if (temp_r3_582 != NULL) {
         var_r30_590 = ((MKHeap *) (temp_r3_582->Current()))->Alloc(0x40, NULL, 0);
     } else {
@@ -371,7 +369,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
         var_r30_590->unk3C = (MKMaterial *) var_r3_625;
     }
     if ((arg0->unkE8.unk58 != 0.0f) || (arg0->unkE8.unk5C != 0.0f)) {
-        temp_r3_651 = var_r3_625->Current();
+        temp_r3_651 = ((MKHeap *) var_r3_625)->Current();
         if (temp_r3_651 != NULL) {
             var_r5_659 = ((MKHeap *) (temp_r3_651->Current()))->Alloc(0xC, NULL, 0);
         } else {
@@ -382,7 +380,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
         var_r5_659->unk0 = 0.0f;
         MKMaterialInternal_AddUpdater(var_r30_590, Updater_Scroll, var_r5_659);
     } else if (((M2C_BITWISE(f32, arg0->unkE8.unk60.dummy[6]) != 0.0f) && (arg0->unkE8.unk80 != 0.0f)) || ((M2C_BITWISE(f32, arg0->unkE8.unk60.dummy[7]) != 0.0f) && (arg0->unkE8.unk84 != 0.0f))) {
-        temp_r3_691 = var_r3_625->Current();
+        temp_r3_691 = ((MKHeap *) var_r3_625)->Current();
         if (temp_r3_691 != NULL) {
             var_r5_699 = ((MKHeap *) (temp_r3_691->Current()))->Alloc(8, NULL, 0);
         } else {
@@ -392,7 +390,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
         var_r5_699->unk0 = 0.0f;
         MKMaterialInternal_AddUpdater(var_r30_590, Updater_SinScroll, var_r5_699);
     } else if (arg0->unkE8.unk54 != 0.0f) {
-        temp_r3_719 = var_r3_625->Current();
+        temp_r3_719 = ((MKHeap *) var_r3_625)->Current();
         if (temp_r3_719 != NULL) {
             var_r5_727 = ((MKHeap *) (temp_r3_719->Current()))->Alloc(8, NULL, 0);
         } else {
@@ -402,7 +400,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
         var_r5_727->unk0 = 0.017453292f * arg0->unkE8.unk54;
         MKMaterialInternal_AddUpdater(var_r30_590, Updater_Rotate, var_r5_727);
     } else if ((M2C_BITWISE(f32, arg0->unkE8.unk60.dummy[5]) != 0.0f) && (M2C_BITWISE(f32, arg0->unkE8.unk60.dummy[4]) != 0.0f)) {
-        temp_r3_752 = var_r3_625->Current();
+        temp_r3_752 = ((MKHeap *) var_r3_625)->Current();
         if (temp_r3_752 != NULL) {
             var_r5_760 = ((MKHeap *) (temp_r3_752->Current()))->Alloc(8, NULL, 0);
         } else {
@@ -412,7 +410,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
         var_r5_760->unk4 = 0.017453292f * M2C_BITWISE(f32, arg0->unkE8.unk60.dummy[5]);
         MKMaterialInternal_AddUpdater(var_r30_590, Updater_SinRotate, var_r5_760);
     } else if (((M2C_BITWISE(f32, arg0->unkE8.unk40) != 0.0f) || (M2C_BITWISE(f32, arg0->unkE8.unk44) != 0.0f)) && (M2C_BITWISE(f32, arg0->unkE8.unk48) != 0.0f)) {
-        temp_r3_791 = var_r3_625->Current();
+        temp_r3_791 = ((MKHeap *) var_r3_625)->Current();
         if (temp_r3_791 != NULL) {
             var_r5_799 = ((MKHeap *) (temp_r3_791->Current()))->Alloc(0xC, NULL, 0);
         } else {

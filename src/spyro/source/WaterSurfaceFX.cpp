@@ -643,7 +643,7 @@ loop_7:
         this->unk4C = temp_r3_1047;
         temp_r3_1049 = *temp_r3_1047;
         temp_r30_1050 = *temp_r3_1049;
-        temp_r3_1051 = temp_r3_1049->Current();
+        temp_r3_1051 = ((MKHeap *) temp_r3_1049)->Current();
         if (temp_r3_1051 != NULL) {
             ((MKHeap *) (temp_r3_1051->Current()))->Free(temp_r30_1050, NULL, 0);
         } else {
@@ -673,7 +673,7 @@ loop_17:
             var_r4_1064 += 4;
             goto loop_17;
         }
-        temp_r3_1094 = var_r3_1069->Current();
+        temp_r3_1094 = ((MKHeap *) var_r3_1069)->Current();
         if (temp_r3_1094 != NULL) {
             ((MKHeap *) (temp_r3_1094->Current()))->Free(var_r30_1068, NULL, 0);
         } else {
@@ -704,7 +704,7 @@ loop_30:
             var_r4_1109 += 4;
             goto loop_30;
         }
-        temp_r3_1136 = var_r3_1111->Current();
+        temp_r3_1136 = ((MKHeap *) var_r3_1111)->Current();
         if (temp_r3_1136 != NULL) {
             ((MKHeap *) (temp_r3_1136->Current()))->Free(var_r30_1110, NULL, 0);
         } else {
@@ -861,7 +861,7 @@ loop_10:
         temp_r3_1358 = this->unk4C - 4;
         this->unk4C = temp_r3_1358;
         temp_r30_1360 = *temp_r3_1358;
-        temp_r3_1361 = temp_r3_1358->Current();
+        temp_r3_1361 = ((MKHeap *) temp_r3_1358)->Current();
         if (temp_r3_1361 != NULL) {
             var_r3_1368 = ((MKHeap *) (temp_r3_1361->Current()))->Alloc(0x7D0, NULL, 0);
         } else {
@@ -880,7 +880,7 @@ loop_13:
     }
     this->unk50 = NULL;
     this->unk54 = 0.0f;
-    temp_r3_1397 = temp_r3_1389->Current();
+    temp_r3_1397 = ((MKHeap *) temp_r3_1389)->Current();
     if (temp_r3_1397 != NULL) {
         var_r3_1404 = ((MKHeap *) (temp_r3_1397->Current()))->Alloc(0x94, NULL, 0);
     } else {

@@ -14,6 +14,7 @@
 #include "common/Source/MKView.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKSystem.h"
@@ -1302,7 +1303,7 @@ void Tools_SetMatrixScale(Matrix *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetWaterHeight'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     u8 sp60;
     s32 sp5C;
@@ -1347,7 +1348,7 @@ s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     sp58 = 0;
     sp5C = -1;
     sp60 = 0;
-    if ((arg0.GetWaterHeight(sp8, arg1, &sp8.unk8, (MKCollisionResult *)0x200, 0) != 0) && (sp60 != 0)) {
+    if ((((KDWaterVolume *) &arg0)->GetWaterHeight(sp8, arg1, &sp8.unk8, (MKCollisionResult *)0x200, 0) != 0) && (sp60 != 0)) {
         temp_f0_2540 = M2C_BITWISE(f32, sp8);
         if (temp_f0_2540 > sp8.unkC) {
             if (arg2 != NULL) {

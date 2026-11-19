@@ -9,6 +9,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "common/gc/MeshChunkExplorer_GC.h"
 #include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "common/Source/GPInit.h"
@@ -147,11 +148,9 @@ void MKModel_ExploreCalculateVertex(MeshChunkExplorer *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetMeshChunk'
 void MKModel_ExploreMeshChunk(MeshChunkExplorer *arg0, int arg1, int arg2, int arg3) {
-    arg0->SetMeshChunk(arg1, arg2, arg3);
+    ((MeshChunkExplorer_GC *) arg0)->SetMeshChunk(arg1, arg2, arg3);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const MKModel *' to
 void MKModel_ExploreBegin(const MKModel *arg0) {

@@ -656,10 +656,10 @@ block_8:
             sp14 = 0.0f;
         }
     }
-    sp20.RotateYaw((Matrix *) &sp20, -sp14);
+    ((Matrix *) &sp20)->RotateYaw((Matrix *) &sp20, -sp14);
     temp_f1_1365 = -(f32) atan2(M2C_BITWISE(s32, sp24), M2C_BITWISE(void *, sp20));
     sp18 = (f32) temp_f1_1365;
-    sp20.RotateRoll((Matrix *) &sp20, -(f32) temp_f1_1365);
+    ((Matrix *) &sp20)->RotateRoll((Matrix *) &sp20, -(f32) temp_f1_1365);
     sp10 = (f32) atan2(M2C_BITWISE(s32, sp44), M2C_BITWISE(void *, sp48));
     M2C_FIELD(this, f64 *, 0) = (f64) sp10;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;
@@ -703,10 +703,10 @@ block_8:
             sp18 = 0.0f;
         }
     }
-    sp20.RotateRoll((Matrix *) &sp20, -sp18);
+    ((Matrix *) &sp20)->RotateRoll((Matrix *) &sp20, -sp18);
     temp_f0_1461 = (f32) atan2(M2C_BITWISE(s32, sp28), M2C_BITWISE(void *, sp20));
     sp14 = temp_f0_1461;
-    sp20.RotateYaw((Matrix *) &sp20, -temp_f0_1461);
+    ((Matrix *) &sp20)->RotateYaw((Matrix *) &sp20, -temp_f0_1461);
     sp10 = (f32) atan2(M2C_BITWISE(s32, sp44), M2C_BITWISE(void *, sp48));
     M2C_FIELD(this, f64 *, 0) = (f64) sp10;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;

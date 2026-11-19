@@ -136,7 +136,7 @@ void LevelSelectScreen::Update() {
 
     UIScreen::Update();
     temp_r3_299 = this->unkBC.unk4;
-    temp_r3_302 = ui_cast<LevelButton *, UIObject *>(temp_r3_299->GetChild(M2C_FIELD(temp_r3_299, s32 *, 0x68)));
+    temp_r3_302 = ui_cast<LevelButton *, UIObject *>(((UIContainer *) temp_r3_299)->GetChild(M2C_FIELD(temp_r3_299, s32 *, 0x68)));
     pMenuCurrent->unk18.unk20.unk4 = M2C_FIELD(temp_r3_302, f32 *, 0xA0);
     if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (UIControls_Pressed((FrontEndControls) 3, -1) != 0)) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
@@ -150,7 +150,7 @@ void LevelSelectScreen::Update() {
         if (var_r31_326 != NULL) {
             bZ3AttractHack = 0;
             M2C_FIELD(&gb, s8 *, 0x334) = 1;
-            ((GameData *) ((GameData *) GameData::gameData))->ClearData();
+            ((GameData *) GameData::gameData)->ClearData();
             ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SwitchTo(var_r31_326);
             return;
         }

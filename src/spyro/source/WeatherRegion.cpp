@@ -6,6 +6,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/BoundingRegion.h"
 #include "spyro/source/WeatherAshPS.h"
 #include "spyro/source/WeatherConvexityPS.h"
 #include "spyro/source/WeatherEmbersPS.h"
@@ -146,7 +147,7 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     var_r31_253 = 0;
     arg0.unk8 += (f32) sp68;
     temp_f1_258 = arg0.unk4;
-    if ((temp_f1_258 >= this->unk80.unk4.unk18) && (temp_f1_258 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+    if ((temp_f1_258 >= this->unk80.unk4.unk18) && (temp_f1_258 <= this->unk80.unk4.unk1C) && (((BoundingRegion *) &this->unk80.unk4)->IsPointWithin(arg0) != 0)) {
         var_r31_253 = 1;
     }
     if (var_r31_253 != 0) {
@@ -312,7 +313,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     var_r28_516 = 0;
     arg0.unk8 += (f32) spD8;
     temp_f1_521 = arg0.unk4;
-    if ((temp_f1_521 >= this->unk80.unk4.unk18) && (temp_f1_521 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+    if ((temp_f1_521 >= this->unk80.unk4.unk18) && (temp_f1_521 <= this->unk80.unk4.unk1C) && (((BoundingRegion *) &this->unk80.unk4)->IsPointWithin(arg0) != 0)) {
         var_r28_516 = 1;
     }
     if (var_r28_516 != 0) {
@@ -512,7 +513,7 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     var_r31_923 = 0;
     arg0.unk8 += (f32) sp68;
     temp_f1_928 = arg0.unk4;
-    if ((temp_f1_928 >= this->unk80.unk4.unk18) && (temp_f1_928 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+    if ((temp_f1_928 >= this->unk80.unk4.unk18) && (temp_f1_928 <= this->unk80.unk4.unk1C) && (((BoundingRegion *) &this->unk80.unk4)->IsPointWithin(arg0) != 0)) {
         var_r31_923 = 1;
     }
     if (var_r31_923 != 0) {
@@ -706,7 +707,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     var_r30_1273 = 0;
     arg0.unk8 += (f32) sp80;
     temp_f1_1278 = arg0.unk4;
-    if ((temp_f1_1278 >= this->unk80.unk4.unk18) && (temp_f1_1278 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+    if ((temp_f1_1278 >= this->unk80.unk4.unk18) && (temp_f1_1278 <= this->unk80.unk4.unk1C) && (((BoundingRegion *) &this->unk80.unk4)->IsPointWithin(arg0) != 0)) {
         var_r30_1273 = 1;
     }
     if (var_r30_1273 != 0) {

@@ -1004,7 +1004,7 @@ void GlobalSoundData::Init(const char *arg0, int arg1) {
         if (arg1 > 0) {
             var_r3_2092 = arg1;
         }
-        this->unk20 = var_r3_2092->Create(M2C_ERROR(/* Read from unset register $r4 */));
+        this->unk20 = ((MKStringCache *) var_r3_2092)->Create(M2C_ERROR(/* Read from unset register $r4 */));
         ParseAndBuildHeaps(&sp8);
         ParseInSoundEvents(&sp8);
         sp8.Deinit();
@@ -1407,7 +1407,7 @@ u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, long)' does
 void KDS_UpdateMusicFading() {
     f32 temp_f31_2977;
     f32 var_f1_2970;
@@ -1424,8 +1424,8 @@ void KDS_UpdateMusicFading() {
             return;
         }
 block_27:
-        kdsData.unk58.unk4.Update();
-        KDSound_ScaleMasterVolume(kdsData.unk58.unk4.GetFadePercentage(), 2);
+        ((KDFaderObject *) &kdsData.unk58.unk4)->Update();
+        KDSound_ScaleMasterVolume(((KDFaderObject *) &kdsData.unk58.unk4)->GetFadePercentage(), 2);
         return;
     case 2:
         if ((M2C_BITWISE(s32, kdsData.unk58.unk8) == 2) || (M2C_BITWISE(s32, kdsData.unk58.unk8) == 1)) {
@@ -1435,7 +1435,7 @@ block_27:
         }
         goto block_27;
     case 3:
-        if (kdsData.unk58.unk4.GetFadePercentage() == 0.0f) {
+        if (((KDFaderObject *) &kdsData.unk58.unk4)->GetFadePercentage() == 0.0f) {
             Sound_MusicStop();
             if ((u32) kdsData.unk78 != 0U) {
                 kdsData.unk58.unk0 = 1e-45f;
@@ -1457,11 +1457,11 @@ block_27:
             bMusicDucked = 0;
             return;
         }
-        kdsData.unk58.unk4.Update();
+        ((KDFaderObject *) &kdsData.unk58.unk4)->Update();
         var_f1_2970 = 0.0f;
         if (M2C_FIELD(&kdsData, f32 *, 0x40) > 0.0f) {
             temp_f31_2977 = kdsData.unk4C / M2C_FIELD(&kdsData, f32 *, 0x40);
-            var_f1_2970 = ((1.0f - temp_f31_2977) * kdsData.unk58.unk4.GetFadePercentage()) + temp_f31_2977;
+            var_f1_2970 = ((1.0f - temp_f31_2977) * ((KDFaderObject *) &kdsData.unk58.unk4)->GetFadePercentage()) + temp_f31_2977;
         }
         KDSound_ScaleMasterVolume(var_f1_2970, 2);
         return;
@@ -1628,7 +1628,7 @@ void KDSound_UnDuckMusic(float arg0) {
             }
         }
         kdsData.unk50 = arg0;
-        kdsData.unk58.unk4.Fade((KDFaderObject::FadeMode) 1, (f32) arg0, 0.0f, 0.0f, 0U);
+        ((KDFaderObject *) &kdsData.unk58.unk4)->Fade((KDFaderObject::FadeMode) 1, (f32) arg0, 0.0f, 0.0f, 0U);
         kdsData.unk58.unk0 = 6e-45f;
     }
 }
@@ -1656,7 +1656,7 @@ void KDSound_DuckMusic(float arg0, float arg1) {
 block_9:
             kdsData.unk4C = arg0;
             kdsData.unk50 = arg1;
-            kdsData.unk58.unk4.Fade((KDFaderObject::FadeMode) 5, 0.0f, (f32) arg1, 0.0f, var_r5_3410);
+            ((KDFaderObject *) &kdsData.unk58.unk4)->Fade((KDFaderObject::FadeMode) 5, 0.0f, (f32) arg1, 0.0f, var_r5_3410);
             kdsData.unk58.unk0 = 6e-45f;
             bMusicDucked = 1;
         }
@@ -1664,7 +1664,6 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDSound_PauseMusic(bool arg0, bool arg1) {
     f32 temp_f31_3527;
 
@@ -1687,7 +1686,7 @@ void KDSound_PauseMusic(bool arg0, bool arg1) {
                     }
                 } else {
                     temp_f31_3527 = kdsData.unk4C / M2C_FIELD(&kdsData, f32 *, 0x40);
-                    KDSound_ScaleMasterVolume(((1.0f - temp_f31_3527) * kdsData.unk58.unk4.GetFadePercentage()) + temp_f31_3527, 2);
+                    KDSound_ScaleMasterVolume(((1.0f - temp_f31_3527) * ((KDFaderObject *) &kdsData.unk58.unk4)->GetFadePercentage()) + temp_f31_3527, 2);
                 }
             } else {
                 bMusicDucked = 0;
@@ -1699,32 +1698,29 @@ void KDSound_PauseMusic(bool arg0, bool arg1) {
         kdsData.unk58.unk0 = 3e-45f;
     }
 }
-#endif
 
 s32 KDSound_MusicIsStopping() {
     return M2C_BITWISE(s32, kdsData.unk58.unk0) == 3;
 }
 
-#if 0 // DRAFT: expression syntax error
 void KDSound_ResetMusic() {
     Sound_MusicStop();
     M2C_FIELD(&kdsData, s8 *, 0xBC) = 0;
     M2C_FIELD(&kdsData, s8 *, 0xD0) = 0;
     M2C_FIELD(&kdsData, s8 *, 0x104) = 0;
     kdsData.unk58.unk0 = 0.0f;
-    kdsData.unk58.unk4.Reset();
+    ((KDFaderObject *) &kdsData.unk58.unk4)->Reset();
     kdsData.unk4C = 1.0f;
     bMusicDucked = 0;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSound_StopMusic(float arg0) {
     if ((u8) M2C_FIELD(&kdsData, u8 *, 0xBC) == 0) {
         M2C_FIELD(&kdsData, s8 *, 0xD0) = 0;
         if (arg0 > 0.0f) {
             kdsData.unk58.unk0 = 4e-45f;
-            kdsData.unk58.unk4.Fade((KDFaderObject::FadeMode) 5, 0.0f, arg0, 0.0f, 1U);
+            ((KDFaderObject *) &kdsData.unk58.unk4)->Fade((KDFaderObject::FadeMode) 5, 0.0f, arg0, 0.0f, 1U);
             return;
         }
         kdsData.unk58.unk0 = 0.0f;
@@ -1750,12 +1746,12 @@ void KDSound_PlayMusic(const char *arg0, float arg1, float arg2, int arg3) {
         if (arg2 > 0.0f) {
             kdsData.unk78 = (s32) &kdsData.unk7C;
             kdsData.unk58.unk0 = 4e-45f;
-            kdsData.unk58.unk4.Fade((KDFaderObject::FadeMode) 7, arg1, arg2, 0.0f, 1U);
+            ((KDFaderObject *) &kdsData.unk58.unk4)->Fade((KDFaderObject::FadeMode) 7, arg1, arg2, 0.0f, 1U);
             return;
         }
         if (arg1 > 0.0f) {
             kdsData.unk58.unk0 = 1e-45f;
-            kdsData.unk58.unk4.Fade((KDFaderObject::FadeMode) 1, arg1, 0.0f, 0.0f, 1U);
+            ((KDFaderObject *) &kdsData.unk58.unk4)->Fade((KDFaderObject::FadeMode) 1, arg1, 0.0f, 0.0f, 1U);
         } else {
             kdsData.unk58.unk0 = 1e-45f;
             KDSound_ScaleMasterVolume(1.0f, 2);
@@ -2053,7 +2049,6 @@ void KDSound_SetListener(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void KDSound_Update() {
     if ((u8) M2C_FIELD(&kdsData, u8 *, 0xC8) != 0) {
         kdsData.unkB8.unk8 = 0.0f;
@@ -2061,11 +2056,10 @@ void KDSound_Update() {
     KDS_UpdateEnvironmentalAudio();
     KDS_UpdateMusicFading();
     KDS_UpdatePlay3dFollowSounds();
-    gsData->Update();
+    ((GlobalSoundData *) gsData)->Update();
     KDSound_ProcessChronoSound();
     KDSound_SoundDucking_Update();
 }
-#endif
 
 void KDSound_Deinit() {
     Sound_StopAll();
@@ -2187,17 +2181,13 @@ loop_48:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void KDSound_InvalidateSoundIDRange(int arg0, int arg1) {
-    gsData->InvalidateSoundIDRange(arg0, arg1);
+    ((GlobalSoundData *) gsData)->InvalidateSoundIDRange(arg0, arg1);
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void KDSound_ResolveSoundIDs(float arg0) {
-    gsData->ResolveSoundIDs(arg0);
+    ((GlobalSoundData *) gsData)->ResolveSoundIDs(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'strncpy(signed char *, const char *, unsigned int)' does
 void KDSound_Init(const char *arg0) {
@@ -2216,7 +2206,7 @@ void KDSound_Init(const char *arg0) {
     if (temp_ret_4806 != 0) {
         kdsData.unk2C = M2C_BITWISE(f32, Sound_LoadBank(Str_Printf("VOX_%s", arg0, M2C_BITWISE(f32, temp_ret_4806)), 0U, -1));
     }
-    gsData->ResolveSoundIDs();
+    ((GlobalSoundData *) gsData)->ResolveSoundIDs();
     temp_r3_4828 = M2C_FIELD(&kdsData, u8 *, 0x150) & ~0x80;
     M2C_FIELD(&kdsData, s32 *, 0x14C) = 0;
     M2C_FIELD(&kdsData, u8 *, 0x150) = temp_r3_4828;
@@ -2259,7 +2249,7 @@ loop_9:
             var_r4_4852 += 4;
             goto loop_9;
         }
-        temp_r3_4879 = var_r3_4854->Current();
+        temp_r3_4879 = ((MKHeap *) var_r3_4854)->Current();
         if (temp_r3_4879 != NULL) {
             ((MKHeap *) (temp_r3_4879->Current()))->Free(var_r31_4853, NULL, 0);
         } else {
@@ -2267,20 +2257,20 @@ loop_9:
         }
     }
     instanceCache = NULL;
-    gsData->Deinit();
-    kdsData.Deinit();
+    ((GlobalSoundData *) gsData)->Deinit();
+    ((KDSoundData *) &kdsData)->Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'bool' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDSound_InitModule(bool arg0, int arg1) {
     MKHeap *temp_r3_4931;
     MKHeap *var_r3_4938;
     s32 var_ctr_4950;
 
-    kdsData.Init(arg0);
-    gsData->Init("global.sound", arg1);
-    gsData->ResolveSoundIDs();
+    ((KDSoundData *) &kdsData)->Init(arg0);
+    ((GlobalSoundData *) gsData)->Init("global.sound", arg1);
+    ((GlobalSoundData *) gsData)->ResolveSoundIDs();
     KDS_FollowSndPosArrayInit();
     temp_r3_4931 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_4931 != NULL) {

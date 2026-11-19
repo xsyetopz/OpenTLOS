@@ -105,7 +105,7 @@ void CharacterGraphNodeProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
     s32 sp14;
     s32 sp10;
@@ -113,9 +113,9 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
     s32 sp8;
 
     sp14 = 0;
-    sp14.Init();
+    ((EventMessage *) &sp14)->Init();
     if (MKProp::LoadLine(arg0) != 0) {
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("ArriveInfo", &spC, 0) != 0) {
@@ -123,64 +123,64 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
             this->unk50.unk44 = spC;
             this->unk50.unk80 |= 0x80;
         }
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("Count", &sp8, 0) != 0) {
         this->unk50.unk48 = sp8;
         this->unk50.unk80 |= 0x40;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("PropID", &this->unk50.unkBC, 0) != 0) {
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo1", &sp10, 0) != 0) {
         this->unk50.unk50 = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo2", &sp10, 0) != 0) {
         this->unk50.unk54 = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo3", &sp10, 0) != 0) {
         this->unk50.unk58 = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo4", &sp10, 0) != 0) {
         this->unk50.unk5C = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo5", &sp10, 0) != 0) {
         this->unk50.unk60 = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if (arg0->LoadInt("LinkInfo6", &sp10, 0) != 0) {
         this->unk50.unk64 = sp10;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if ((arg0->LoadInt("PathID1", &this->unk50.unkA4, 0) != 0) || (arg0->LoadInt("PathID2", &this->unk50.unkA8, 0) != 0) || (arg0->LoadInt("PathID3", &this->unk50.unkAC, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB0, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB4, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB8, 0) != 0)) {
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
     if ((arg0->LoadInt("LinkID1", &this->unk50.unk8C, 0) != 0) || (arg0->LoadInt("LinkID2", &this->unk50.unk90, 0) != 0) || (arg0->LoadInt("LinkID3", &this->unk50.unk94, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unk98, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unk9C, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unkA0, 0) != 0)) {
         this->unk50.unk88 += 1;
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (sp14.LoadLine(arg0, "OnArrive") != 0) {
+    if (((EventMessage *) &sp14)->LoadLine(arg0, "OnArrive") != 0) {
         this->unk50.unk38.operator=(*((EventMessage *) &sp14));
-        sp14.Deinit();
+        ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    sp14.Deinit();
+    ((EventMessage *) &sp14)->Deinit();
     return 0;
 }
 #endif

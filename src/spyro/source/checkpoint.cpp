@@ -10,11 +10,11 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_CrystalLP1;
@@ -41,7 +41,7 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
                 var_r3_64 = 1;
             }
             if (var_r3_64 == 0) {
-                ((GameData *) ((GameData *) GameData::gameData))->SetSaveChunk(temp_r4_63);
+                ((GameData *) GameData::gameData)->SetSaveChunk(temp_r4_63);
             }
         }
     }
@@ -94,7 +94,7 @@ void CheckPoint::Message(MKMessage *arg0) {
         }
         break;
     }
-    this->unk190.Message(arg0);
+    ((KDSoundPlayer *) &this->unk190)->Message(arg0);
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, MKMessage *), 0x1C)(&this->unk100, arg0);
     KDProp::Message(arg0);
 }
@@ -127,7 +127,7 @@ void CheckPoint::Update() {
             var_r6_263 = 0;
         }
         sp8 = 1;
-        this->unk190.Update(GS_CrystalLP1, 1U, var_r6_263, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk190)->Update(GS_CrystalLP1, 1U, var_r6_263, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         temp_r3_282 = this->unk80;
         if (((u32) temp_r3_282->unk20 == (u32) M2C_FIELD(temp_r30_259, u32 *, 0x74)) && (temp_r3_282->unk2C & 1)) {
             temp_r3_282->SetAnim(M2C_FIELD(temp_r30_259, MKAnim **, 0x78), 1.0f, 0.0f, 0, -1);
@@ -215,7 +215,7 @@ void CheckPoint::LoadDone() {
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(M2C_UNK *, f64 *, void *, f64), 0x28)(&this->unk100, &sp48, temp_r5_436, temp_f1_439);
     if ((u8) this->unk1C1 == 0) {
         MKVector(300.0f, 0.0f, 0.0f);
-        sp28.GetPos();
+        ((MKProp *) &sp28)->GetPos();
         sp8 = sp28 - sp18;
         this->unkF0 = sp8;
         sp10 = sp30 - sp20;
@@ -305,7 +305,7 @@ void CheckPoint::Init() {
     M2C_FIELD(this, f32 *, 0xF4) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF8) = 0.0f;
     this->unk1C1 = 0;
-    this->unk190.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk190)->Init(0.25f, 0.25f);
     this->unk1BC = 0;
     this->unk1C2 = 1;
 }

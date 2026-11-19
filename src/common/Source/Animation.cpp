@@ -1,5 +1,6 @@
 #include "common/Source/Animation.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -1406,7 +1407,7 @@ void Animation::Destroy() {
             temp_r3_2641->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
         }
         ((MKHeap *) (M2C_FIELD(this->unk0, MKHeap **, 0x28)))->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
-        this->unk0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+        ((MKHeap *) this->unk0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
         this->unk0 = NULL;
         this->unk10 = 0;
     }
@@ -1460,7 +1461,7 @@ Animation *Animation::Create(const char *arg0, int arg1) {
         var_r30_2696 = temp_r27_2709;
         var_r27_2705 = temp_r27_2709 + (((s8) temp_r4_2697 + 1) << 6);
     }
-    temp_r3_2714 = var_r3_2702->Current();
+    temp_r3_2714 = ((MKHeap *) var_r3_2702)->Current();
     if (temp_r3_2714 != NULL) {
         var_r29_2722 = ((MKHeap *) (temp_r3_2714->Current()))->Alloc(var_r27_2705, NULL, 0);
     } else {
@@ -1469,7 +1470,7 @@ Animation *Animation::Create(const char *arg0, int arg1) {
     memset(var_r29_2722, 0, (u32) var_r27_2705);
     var_r29_2722->unk0 = temp_r3_2692;
     var_r29_2722->unk10 = 1e-45f;
-    var_r29_2722->ReloadGuts();
+    ((Animation *) var_r29_2722)->ReloadGuts();
     var_r3_2738 = NULL;
     var_r29_2722->unk14 = 0;
     temp_r4_2740 = temp_r3_2692->unk28;
@@ -1524,7 +1525,7 @@ loop_18:
         M2C_FIELD(temp_r6_2811, f32 *, 0x6C) = 0.0f;
         goto loop_18;
     }
-    var_r29_2722->Tween(0.0f, 1.0f);
+    ((Animation *) var_r29_2722)->Tween(0.0f, 1.0f);
     var_r30_2843 = 0;
     var_r28_2845 = 0;
 loop_24:
@@ -1532,7 +1533,7 @@ loop_24:
     if (var_r30_2843 < (s8) M2C_FIELD(temp_r3_2892, u8 *, 8)) {
         temp_r27_2849 = *(temp_r3_2892->unk1C + var_r28_2845);
         temp_ret_2851 = strlen(temp_r27_2849);
-        if (var_r29_2722->NodeExists(Str_Printf("z%.*s", temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), &sp8) != 0) {
+        if (((Animation *) var_r29_2722)->NodeExists(Str_Printf("z%.*s", temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), &sp8) != 0) {
             *(var_r29_2722->unk0->unk28->unk1C + (var_r28_2845 + 8)) = (s8) sp8;
             *(var_r29_2722->unk0->unk28 + ((sp8 << 5) + 0x3C)) = var_r30_2843;
         } else {
@@ -1543,8 +1544,8 @@ loop_24:
         var_r28_2845 += 0x10;
         goto loop_24;
     }
-    var_r29_2722->LinkBlendShapeToNode("t_A002_Sparx_mouth_00", "z_A002_Jaw");
-    var_r29_2722->LinkBlendShapeToNode("t_blendShape_00", "z_b2");
+    ((Animation *) var_r29_2722)->LinkBlendShapeToNode("t_A002_Sparx_mouth_00", "z_A002_Jaw");
+    ((Animation *) var_r29_2722)->LinkBlendShapeToNode("t_blendShape_00", "z_b2");
     return (Animation *) var_r29_2722;
 }
 #endif
@@ -1564,7 +1565,7 @@ MKHeap *CreateTemplate(const char *arg0) {
     var_r31_2925 = Animation_pTemplates;
 loop_4:
     if (var_r31_2925 != NULL) {
-        if ((stricmp(var_r31_2925, arg0) != 0) || (var_r31_2925->IsResourceAvailable() == 0)) {
+        if ((stricmp(var_r31_2925, arg0) != 0) || (((MKResource *) var_r31_2925)->IsResourceAvailable() == 0)) {
             var_r31_2925 = M2C_FIELD(var_r31_2925, s8 **, 0x2C);
             goto loop_4;
         }
@@ -1589,7 +1590,7 @@ loop_4:
         }
         strncpy(var_r31_2925, arg0, 0x1FU);
         M2C_FIELD(var_r31_2925, s8 **, 0x28) = MKArchive_Load(temp_r3_2955, &sp8, NULL, -1);
-        ((AnimationData *) ((AnimationData *) M2C_FIELD(var_r31_2925, s8 **, 0x28)))->UnpackTemplatePointers(0U);
+        ((AnimationData *) M2C_FIELD(var_r31_2925, s8 **, 0x28))->UnpackTemplatePointers(0U);
         var_r4_3001 = 0;
         var_r6_3003 = 0;
         M2C_FIELD(M2C_FIELD(var_r31_2925, s8 **, 0x28), s32 *, 0x18) = 0;
@@ -1603,7 +1604,7 @@ loop_14:
             var_r6_3003 += 1;
             goto loop_14;
         }
-        var_r31_2925->InitialiseResource();
+        ((MKResource *) var_r31_2925)->InitialiseResource();
     }
     return (MKHeap *) var_r31_2925;
 }

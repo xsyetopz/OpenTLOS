@@ -302,8 +302,8 @@ block_18:
                     }
                     M2C_FIELD(temp_r29_466, s8 **, 0x68) = NULL;
                     M2C_FIELD(temp_r29_466, s32 *, 0x6C) = 0x62;
-                    ((GameData *) ((GameData *) GameData::gameData))->UpdateDataHeader(Autosave_GetGameDataCopy());
-                    ((GameData *) ((GameData *) GameData::gameData))->GetSaveGameDescription();
+                    ((GameData *) GameData::gameData)->UpdateDataHeader(Autosave_GetGameDataCopy());
+                    ((GameData *) GameData::gameData)->GetSaveGameDescription();
                     temp_r30_486 = Autosave_GetGameDataSize();
                     ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SaveData(*MemoryCardScreen::selectedFile, Autosave_GetGameDataCopy(), temp_r30_486, M2C_ERROR(/* Read from unset register $r3 */));
                     M2C_FIELD(&gb, s8 *, 0x382) = 1;
@@ -317,7 +317,7 @@ block_18:
                     M2C_FIELD(temp_r29_500, s32 *, 0x6C) = 0x61;
                     M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                     M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                    ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetLevelUpPoints(0);
+                    ((GameStats *) &GameData::gameData[0x70])->SetLevelUpPoints(0);
                     temp_r30_520 = Autosave_GetGameDataSize();
                     ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->LoadData(*MemoryCardScreen::selectedFile, Autosave_GetGameDataCopy(), temp_r30_520);
                 }
@@ -331,7 +331,7 @@ block_18:
             this->unkE8 = 0.0f;
             goto block_127;
         case 2:                                     /* switch 1 */
-            if (temp_r3_291->WasErrorDuringLast() != 0) {
+            if (((KDMemoryCard *) temp_r3_291)->WasErrorDuringLast() != 0) {
                 switch ((s32) *MCActionScreen::action) { /* switch 3; irregular */
                 case 6:                             /* switch 3 */
                     if ((s32) *MemoryCardScreen::operation == 1) {
@@ -465,7 +465,7 @@ block_18:
                 if (((u8) M2C_FIELD(this->unkD8, u8 *, 0x14) == 0) || !(M2C_BITWISE(f32, this->unkE8) < 3.0f)) {
                     if ((s32) *MCActionScreen::action == 6) {
                         if ((s32) *MemoryCardScreen::operation != 1) {
-                            ((GameData *) ((GameData *) GameData::gameData))->CopyToGameData(Autosave_GetGameDataCopy());
+                            ((GameData *) GameData::gameData)->CopyToGameData(Autosave_GetGameDataCopy());
                         }
                         Autosave_SetTarget(*MemoryCardScreen::selectedCard, *MemoryCardScreen::selectedFile, *(*MemoryCardScreen::selectedCard + ((*MemoryCardScreen::selectedFile * 0xC0) + 0x40) + 0x80));
                         Autosave_EnableRemovalCheck(1U);
@@ -491,7 +491,7 @@ block_18:
             }
             break;
         case 4:                                     /* switch 1 */
-            temp_ret_906 = temp_r3_291->GetNextCard();
+            temp_ret_906 = ((KDMemoryCard *) temp_r3_291)->GetNextCard();
             temp_r3_906 = temp_ret_906;
             if (temp_r3_906 != NULL) {
                 ((KDMemoryCard *) (temp_r3_906->GetNextCard()))->SetState((KDMCState) 2);
@@ -804,11 +804,11 @@ void MCActionScreen::Resolve() {
     MemoryCardScreen::Resolve();
     this->unkC8 = FindChild("promptBg");
     this->unkD4 = FindPrompt((UIContainer *) this);
-    this->unkD0 = this->unkD4->FindChild("UpDown");
+    this->unkD0 = ((UIContainer *) this->unkD4)->FindChild("UpDown");
     if ((void **) this->unkD0 == NULL) {
-        this->unkD0 = this->unkD4->FindChild("LeftRight");
+        this->unkD0 = ((UIContainer *) this->unkD4)->FindChild("LeftRight");
     }
-    this->unkD4 = this->unkD4->FindChild("Forward");
+    this->unkD4 = ((UIContainer *) this->unkD4)->FindChild("Forward");
     this->unkD8 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
     temp_r30_1395 = this->unkD8;
     temp_r3_1396 = M2C_FIELD(temp_r30_1395, s8 **, 0x68);
@@ -820,11 +820,11 @@ void MCActionScreen::Resolve() {
     this->unkDC = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
     temp_r3_1412 = this->unkDC;
     if (temp_r3_1412 != NULL) {
-        temp_r3_1417 = ui_cast<UIContainer *, UIObject *>(temp_r3_1412->GetChild(0));
+        temp_r3_1417 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) temp_r3_1412)->GetChild(0));
         if (temp_r3_1417 != NULL) {
             this->unkE0 = ui_cast<UIText *, UIObject *>(temp_r3_1417->GetChild(0));
         }
-        temp_r3_1428 = ui_cast<UIContainer *, UIObject *>(this->unkDC->GetChild(1));
+        temp_r3_1428 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) this->unkDC)->GetChild(1));
         if (temp_r3_1428 != NULL) {
             this->unkE4 = ui_cast<UIText *, UIObject *>(temp_r3_1428->GetChild(0));
         }

@@ -5,6 +5,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -20,7 +21,7 @@ void SpeedwayAA::Draw() {
     Projectile::Draw();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpeedwayAA::Update() {
     MKCollisionResult sp130;
     Matrix spF0;
@@ -68,7 +69,7 @@ void SpeedwayAA::Update() {
     if ((s32 *) this->unk138 != NULL) {
         temp_r4_68 = checked_cast<SpeedwayAADescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk138->Update(M2C_FIELD(temp_r4_68, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk138)->Update(M2C_FIELD(temp_r4_68, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     spA4 = 0;
     var_r4_84 = NULL;
@@ -181,7 +182,7 @@ void SpeedwayAA::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     s8 sp89;
     s8 sp88;
@@ -234,7 +235,7 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (temp_r4_352 != NULL) {
-        sp18.GetPos();
+        ((MKProp *) &sp18)->GetPos();
         sp68 = sp18;
         sp70 = sp20;
     } else {

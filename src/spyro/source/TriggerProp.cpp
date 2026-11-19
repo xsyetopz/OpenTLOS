@@ -4,6 +4,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/TriggerObject.h"
 #include "unplaced_templates.h"
 #include "spyro/source/PropFlags.h"
@@ -76,7 +77,7 @@ s32 TriggerPlaneProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_232;
 
     var_r31_232 = 0;
-    if ((TriggerProp::LoadLine(arg0) != 0) || (M2C_FIELD(this->unkD0.__vptr, u8 (**)(TriggerObject *, void *, MKIniLine *), 0x38)(&this->unkD0, "box", arg0) != 0) || (this->unk1A0.LoadLine(arg0, "planeGroupID"), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
+    if ((TriggerProp::LoadLine(arg0) != 0) || (M2C_FIELD(this->unkD0.__vptr, u8 (**)(TriggerObject *, void *, MKIniLine *), 0x38)(&this->unkD0, "box", arg0) != 0) || (((Tools_ResolvableProp *) &this->unk1A0)->LoadLine(arg0, "planeGroupID"), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
         var_r31_232 = 1;
     }
     return var_r31_232;

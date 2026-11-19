@@ -107,7 +107,7 @@ block_20:
         if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
             KDSound_Play(GS_MenuSelect, 0U, -1);
             temp_r3_176 = this->unkDC;
-            temp_r3_183 = M2C_FIELD(ui_cast<UIText *, UIObject *>(((UIContainer *) (ui_cast<P8UIButton))->GetChild(P8UIObject>__FP8UIObject(temp_r3_176->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68))), 0)), s32 *, 0x6C);
+            temp_r3_183 = M2C_FIELD(ui_cast<UIText *, UIObject *>(((UIContainer *) (ui_cast<P8UIButton))->GetChild(P8UIObject>__FP8UIObject(((UIContainer *) temp_r3_176)->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68))), 0)), s32 *, 0x6C);
             switch (temp_r3_183) {
             case 0x34:
                 temp_r3_194 = this->unkD8;
@@ -473,7 +473,7 @@ void MCQueryScreen::Resolve() {
         var_r31_761 = 0;
         do {
             temp_r30_767 = this + var_r31_761;
-            M2C_FIELD(temp_r30_767, UIContainer **, 0xE8) = ui_cast<UIButton *, UIObject *>(this->unkDC->GetChild(var_r29_760));
+            M2C_FIELD(temp_r30_767, UIContainer **, 0xE8) = ui_cast<UIButton *, UIObject *>(((UIContainer *) this->unkDC)->GetChild(var_r29_760));
             temp_r3_769 = M2C_FIELD(temp_r30_767, UIContainer **, 0xE8);
             if (temp_r3_769 != NULL) {
                 M2C_FIELD(temp_r30_767, void ***, 0xF4) = ui_cast<UIText *, UIObject *>(temp_r3_769->GetChild(0));

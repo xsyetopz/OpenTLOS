@@ -228,10 +228,10 @@ s32 MKLevelChunk::Update_LoadSound() {
         temp_r3_482 = this->unk138 | 0x40000;
         this->unk138 = temp_r3_482;
         *MKChunkSceneManager::bPackageSystemInUse = 1;
-        temp_r3_482->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_482)->ActivateTempMemOverride();
         temp_r3_497 = MKPackage_QLoadDynamic(Str_Printf("%s%s.bni", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 0, NULL);
         this->unk10 = temp_r3_497;
-        temp_r3_497->DeactivateTempMemOverride();
+        ((MKHeap *) temp_r3_497)->DeactivateTempMemOverride();
         var_r30_446 = 2;
     }
     return var_r30_446;
@@ -250,7 +250,7 @@ s32 MKLevelChunk::Update_LoadingIni() {
         if ((temp_r3_529 != 0) || (this->unk138 & 0x20)) {
             var_r31_520 = 0xA;
         } else {
-            temp_r3_529->ActivateTempMemOverride();
+            ((MKHeap *) temp_r3_529)->ActivateTempMemOverride();
             ((MKHeap *) (((MKIni *) (M2C_BITWISE(MKIni *, this->unk14.unk74)))->Init(Str_Printf("%s%s", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 4, NULL)))->DeactivateTempMemOverride();
             this->unk138 |= 0x20000;
             MKPackage_QFree(this->unk10);
@@ -288,7 +288,7 @@ s32 MKLevelChunk::Update_Unloaded() {
             this->unk138 &= 0xFFFFFF7F;
         } else {
             if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-                this->unk14.unk5C = this->unk14.Mark();
+                this->unk14.unk5C = ((MKHeap *) &this->unk14)->Mark();
             }
             var_r31_605 = 0xC;
             this->unk138 |= 0x40;
@@ -296,7 +296,7 @@ s32 MKLevelChunk::Update_Unloaded() {
         }
     } else if ((strlen((s8 *) &this->unk14.unkEC) != 0) && ((u8) *MKChunkSceneManager::bPackageSystemInUse == 0)) {
         if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-            this->unk14.unk5C = this->unk14.Mark();
+            this->unk14.unk5C = ((MKHeap *) &this->unk14)->Mark();
         }
         strcpy((s8 *) &this->unk14.unkAC, (s8 *) &this->unk14.unkEC);
         temp_f1_656 = M2C_BITWISE(f32, strcpy((s8 *) &this->unk14.unk88.unk4, (s8 *) &this->unk14.unkCC));
@@ -573,7 +573,7 @@ loop_34:
                             var_r28_1143 = Str_Printf("%s%s", temp_r26_1137, ".mdl", M2C_BITWISE(f32, temp_ret_1146));
                         }
                         if (MKArchive_Exists((s8 *) var_r28_1143, NULL) != 0) {
-                            M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *, MKChunkSceneManager *, s32), 0x64)(this, temp_r26_1137->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)), temp_r27_1141);
+                            M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *, MKChunkSceneManager *, s32), 0x64)(this, ((MKChunkSceneManager *) temp_r26_1137)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)), temp_r27_1141);
                         }
                     }
                 }
@@ -785,10 +785,10 @@ s8 *MKLevelChunk::GetChunkName() {
         return ((MKChunkSceneManager *) (M2C_BITWISE(s32, this->unk14.unk74) + 0x1C))->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
     }
     if (strlen((s8 *) &this->unk14.unkAC) != 0) {
-        return this->unk14.unkAC.StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
+        return ((MKChunkSceneManager *) &this->unk14.unkAC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
     }
     if (strlen((s8 *) &this->unk14.unkEC) != 0) {
-        return this->unk14.unkEC.StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
+        return ((MKChunkSceneManager *) &this->unk14.unkEC)->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */));
     }
     return NULL;
 }
@@ -796,7 +796,7 @@ s8 *MKLevelChunk::GetChunkName() {
 
 void MKLevelChunk::Release() {
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-        this->unk14.Release(this->unk14.unk5C);
+        ((MKHeap *) &this->unk14)->Release(this->unk14.unk5C);
         this->unk14.unk5C = -1;
     }
 }
@@ -863,7 +863,7 @@ void MKLevelChunk::Deactivate() {
 
 void MKLevelChunk::Activate() {
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-        this->unk14.Push();
+        ((MKHeap *) &this->unk14)->Push();
     }
 }
 
@@ -884,10 +884,10 @@ void MKLevelChunk::Destroy() {
     this->unk14.unk7C = 0.0f;
     M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *), 0x58)(this);
     if ((u8) *MKChunkSceneManager::bChunksUseHeaps != 0) {
-        ((MKHeap *) (((MKHeap *) (this->unk14.Release(this->unk14.unk58)))->Main()))->Push();
-        this->unk14.DeInit();
+        ((MKHeap *) (((MKHeap *) (((MKHeap *) &this->unk14)->Release(this->unk14.unk58)))->Main()))->Push();
+        ((MKHeap *) &this->unk14)->DeInit();
         ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop();
-        this->unk14.unk58->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+        ((MKHeap *) this->unk14.unk58)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
     Deactivate();
 }
@@ -907,8 +907,8 @@ void MKLevelChunk::Create(int arg0, int arg1, int arg2, int arg3, const char *ar
         } else {
             var_r3_2006 = malloc(arg0);
         }
-        this->unk14.Init(arg0, 0, arg4, var_r3_2006);
-        this->unk14.unk58 = this->unk14.Mark();
+        ((MKHeap *) &this->unk14)->Init(arg0, 0, arg4, var_r3_2006);
+        this->unk14.unk58 = ((MKHeap *) &this->unk14)->Mark();
     } else {
         this->unk14.unk58 = -1;
     }

@@ -456,7 +456,7 @@ inline DojoController::~DojoController() {
             }
             temp_r3_14994 = &this->unk310.unk38;
             if (temp_r3_14994 != NULL) {
-                temp_r3_14994->Deinit();
+                ((EventMessage *) temp_r3_14994)->Deinit();
             }
         }
         if (&this->unk2C0 != NULL) {

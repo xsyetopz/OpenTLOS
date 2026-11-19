@@ -13,6 +13,7 @@
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterDripPS.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
@@ -326,7 +327,7 @@ loop_9:
             var_r4_501 += 4;
             goto loop_9;
         }
-        temp_r3_528 = var_r3_503->Current();
+        temp_r3_528 = ((MKHeap *) var_r3_503)->Current();
         if (temp_r3_528 != NULL) {
             ((MKHeap *) (temp_r3_528->Current()))->Free(var_r31_502, NULL, 0);
         } else {
@@ -785,7 +786,7 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
         }
     }
     if ((u8) M2C_FIELD(checked_cast<IceBossStalactiteDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x114) != 0) {
-        this->unkC8.RegisterTargetable();
+        ((Targetable *) &this->unkC8)->RegisterTargetable();
     }
     M2C_FIELD(this, s8 *, 0x245) = 0;
     Enable();

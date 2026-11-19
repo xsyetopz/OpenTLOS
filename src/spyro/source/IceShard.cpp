@@ -98,7 +98,7 @@ void IceShard::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void IceShard::Collided(MKCollisionResult &arg0) {
     s8 sp89;
     s8 sp88;
@@ -151,7 +151,7 @@ void IceShard::Collided(MKCollisionResult &arg0) {
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (temp_r4_214 != NULL) {
-        sp18.GetPos();
+        ((MKProp *) &sp18)->GetPos();
         sp68 = sp18;
         sp70 = sp20;
     } else {

@@ -6,12 +6,12 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -79,7 +79,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Message'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ConvexityDebris::Message(MKMessage *arg0) {
     MKHeap *temp_r31_160;
     MKHeap *temp_r3_129;
@@ -92,7 +92,7 @@ loop_2:
     if (var_r31_120 != NULL) {
         temp_r3_129 = var_r31_120->unk0;
         if (temp_r3_129 != NULL) {
-            temp_r3_129->Message(arg0);
+            ((KDSoundPlayer *) temp_r3_129)->Message(arg0);
             var_r31_120 += 4;
             goto loop_2;
         }
@@ -163,7 +163,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Update'
+#if 0 // DRAFT: pointer/array required
 void ConvexityDebris::Update() {
     f64 sp28;
     f64 sp20;
@@ -187,7 +187,7 @@ loop_2:
         temp_r3_311 = var_r30_293->unk0;
         if (temp_r3_311 != NULL) {
             sp8 = 1;
-            temp_r3_311->Update(GS_ConvexFlyingPlatform2LP, 1U, this->unk64 != 0, NULL, (MKVector3 *) &temp_r3_311->unk58, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) temp_r3_311)->Update(GS_ConvexFlyingPlatform2LP, 1U, this->unk64 != 0, NULL, (MKVector3 *) &temp_r3_311->unk58, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             var_r30_293 += 4;
             goto loop_2;
         }
@@ -325,7 +325,7 @@ loop_4:
             temp_r30_469->unk58 = 0.0f;
             temp_r30_469->unk5C = 0.0f;
             temp_r30_469->unk60 = 0.0f;
-            temp_r30_469->Init(0.25f, 0.25f);
+            ((KDSoundFader *) temp_r30_469)->Init(0.25f, 0.25f);
         }
         var_f27_458 += temp_f28_463;
         goto loop_4;

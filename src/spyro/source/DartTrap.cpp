@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -32,7 +33,7 @@ void DartTrap::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((checked_cast<DartTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0 * 4)), MKAnim **, 0x70), this->unkA0, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void DartTrap::Shoot() {
     MKCollisionResult spC0;
     MKVector3 spB0;
@@ -77,7 +78,7 @@ void DartTrap::Shoot() {
     if (temp_r3_91 != NULL) {
         M2C_FIELD(temp_r3_91, s32 *, 0x130) = 0;
     }
-    this->unk90 = 0xE->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
+    this->unk90 = ((Projectile *)0xE)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
     temp_r3_100 = this->unk90;
     if (temp_r3_100 != NULL) {
         M2C_FIELD(M2C_FIELD(temp_r3_100, void **, 0x44), M2C_UNK (**)(), 0x20)();
@@ -277,7 +278,6 @@ void DartTrap::Init() {
     this->unkB0 = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
 void DartTrapDescriptor::LoadDone() {
     s8 *temp_r30_638;
     s8 *temp_r30_658;
@@ -290,35 +290,34 @@ void DartTrapDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_638 = this->unk34;
-    if (temp_r30_638->Exists("Idle") != 0) {
-        var_r3_650 = temp_r30_638->GetAnim("Idle");
+    if (((MKAnimScript *) temp_r30_638)->Exists("Idle") != 0) {
+        var_r3_650 = ((MKAnimScript *) temp_r30_638)->GetAnim("Idle");
     } else {
         var_r3_650 = NULL;
     }
     this->unk70 = (s32) var_r3_650;
     temp_r30_658 = this->unk34;
-    if (temp_r30_658->Exists("Open") != 0) {
-        var_r3_668 = temp_r30_658->GetAnim("Open");
+    if (((MKAnimScript *) temp_r30_658)->Exists("Open") != 0) {
+        var_r3_668 = ((MKAnimScript *) temp_r30_658)->GetAnim("Open");
     } else {
         var_r3_668 = NULL;
     }
     this->unk74 = (s32) var_r3_668;
     temp_r30_676 = this->unk34;
-    if (temp_r30_676->Exists("Shoot") != 0) {
-        var_r3_686 = temp_r30_676->GetAnim("Shoot");
+    if (((MKAnimScript *) temp_r30_676)->Exists("Shoot") != 0) {
+        var_r3_686 = ((MKAnimScript *) temp_r30_676)->GetAnim("Shoot");
     } else {
         var_r3_686 = NULL;
     }
     this->unk78 = (s32) var_r3_686;
     temp_r30_694 = this->unk34;
-    if (temp_r30_694->Exists("Close") != 0) {
-        var_r3_704 = temp_r30_694->GetAnim("Close");
+    if (((MKAnimScript *) temp_r30_694)->Exists("Close") != 0) {
+        var_r3_704 = ((MKAnimScript *) temp_r30_694)->GetAnim("Close");
     } else {
         var_r3_704 = NULL;
     }
     this->unk7C = (s32) var_r3_704;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void DartTrapDescriptor::Init() {

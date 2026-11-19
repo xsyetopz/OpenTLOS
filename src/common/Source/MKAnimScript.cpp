@@ -522,7 +522,7 @@ void MKAnimScript::Apply(Animation *arg0, int arg1) {
     arg0->TweenNode(temp_f31_987, var_f2_1066, arg1, 1U, 1U);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKAnimScript_LVECalc' to
 void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
     s32 sp174;
     s32 sp170;
@@ -583,7 +583,7 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                     this->unk10 = NULL;
                 }
             }
-            if (this->unk20.Animate(this->unk38, &sp100) != 0) {
+            if (((MKAnimScript_AnimInfo *) &this->unk20)->Animate(this->unk38, &sp100) != 0) {
                 this->unk10 = NULL;
             }
             if (this->unk2C & 2) {
@@ -593,7 +593,7 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
             this->unk3C = this->unk40;
             this->unk40 = M2C_FIELD(this->unk20, s16 *, 0xA) + (s32) (this->unk24 * (f32) (M2C_FIELD(temp_r3_1188, s16 *, 0xC) - M2C_FIELD(temp_r3_1188, s16 *, 0xA)));
             if ((MKAnim *) this->unk10 != NULL) {
-                this->unk10.Animate(this->unk38, &sp98);
+                ((MKAnimScript_AnimInfo *) &this->unk10)->Animate(this->unk38, &sp98);
             }
             if (arg0 != NULL) {
                 Apply(arg0, arg1);
@@ -607,10 +607,10 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                 sp174 = temp_r6_1239 ^ 0x80000000;
                 temp_f31_1251 = (f32) temp_r6_1239;
                 temp_f30_1253 = (f32) M2C_FIELD(temp_r7_1235, s16 *, 0xC) - temp_f31_1251;
-                sp78.GetPositionalOffset((M2C_BITWISE(f32, sp100) * temp_f30_1253) + temp_f31_1251);
+                ((Animation *) &sp78)->GetPositionalOffset((M2C_BITWISE(f32, sp100) * temp_f30_1253) + temp_f31_1251);
                 sp128 = sp78;
                 sp130 = sp80;
-                sp68.GetPositionalOffset((sp100.unk4 * temp_f30_1253) + temp_f31_1251);
+                ((Animation *) &sp68)->GetPositionalOffset((sp100.unk4 * temp_f30_1253) + temp_f31_1251);
                 sp138 = sp68;
                 sp140 = sp70;
                 sp18 = sp138 - sp128;
@@ -620,10 +620,10 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                 sp60 = (f64) sp20;
                 sp90 = (f64) sp20;
                 if ((u8) sp100.unk10 != 0) {
-                    sp48.GetPositionalOffset((sp100.unk8 * temp_f30_1253) + temp_f31_1251);
+                    ((Animation *) &sp48)->GetPositionalOffset((sp100.unk8 * temp_f30_1253) + temp_f31_1251);
                     sp148 = sp48;
                     sp150 = sp50;
-                    sp38.GetPositionalOffset((sp100.unkC * temp_f30_1253) + temp_f31_1251);
+                    ((Animation *) &sp38)->GetPositionalOffset((sp100.unkC * temp_f30_1253) + temp_f31_1251);
                     sp158 = sp38;
                     sp160 = sp40;
                     temp_f0_1310 = sp158 - sp148;
@@ -1004,8 +1004,8 @@ s32 MKAnimScript::GetEvent(int arg1, MKAnimScriptedEvent::EventType arg2) {
         var_r30_1949 = temp_r4_1937;
         var_r29_1950 = temp_r0_1936;
     }
-    temp_r31_1958 = temp_r3_1933->GetFirstEvent(arg2);
-    temp_r3_1961 = this->unk20->GetNumberOfEvents(arg2);
+    temp_r31_1958 = ((MKAnim *) temp_r3_1933)->GetFirstEvent(arg2);
+    temp_r3_1961 = ((MKAnim *) this->unk20)->GetNumberOfEvents(arg2);
     var_r5_1962 = 0;
     var_r4_1963 = 0;
     var_ctr_1964 = temp_r3_1961;
@@ -1540,9 +1540,9 @@ void MKAnimScript::Deinit() {
         temp_r0_2807 = temp_r4_2803->unk24 - 1;
         temp_r4_2803->unk24 = temp_r0_2807;
         if (temp_r0_2807 == 0) {
-            this->unk4->DeinitMKAnimScriptData();
+            ((MKAnimScriptTemplate *) this->unk4)->DeinitMKAnimScriptData();
             temp_r31_2815 = this->unk4;
-            temp_r3_2816 = ((MKHeap *) (mkAnimScriptTemplates.Destroy((MKAnimScriptTemplate *) this->unk4)))->Current();
+            temp_r3_2816 = ((MKHeap *) (((MKPtrList<MKAnimScriptTemplate> *) &mkAnimScriptTemplates)->Destroy((MKAnimScriptTemplate *) this->unk4)))->Current();
             if (temp_r3_2816 != NULL) {
                 ((MKHeap *) (temp_r3_2816->Current()))->Free(temp_r31_2815, NULL, 0);
             } else {
@@ -1803,7 +1803,7 @@ loop_28:
     }
     temp_r3_3221 = var_r26_3062 * 0x30;
     temp_r25_3225 = temp_r3_3221 + (var_r31_3067 * 0x10) + var_r23_3068 + 0x10;
-    temp_r3_3226 = temp_r3_3221->Current();
+    temp_r3_3226 = ((MKHeap *) temp_r3_3221)->Current();
     if (temp_r3_3226 != NULL) {
         var_r23_3234 = ((MKHeap *) (temp_r3_3226->Current()))->Alloc(temp_r25_3225 + 0x38, NULL, 0);
     } else {
@@ -2046,7 +2046,7 @@ void MKAnimScript_DeinitModule() {
         mkAnimScriptTemplates = temp_r31_3900;
     } while ((u32) M2C_FIELD(temp_r3_3899, u32 *, -4) != 0U);
     if (temp_r31_3900 != &gEmptyPtrList) {
-        temp_r3_3908 = temp_r3_3899->Current();
+        temp_r3_3908 = ((MKHeap *) temp_r3_3899)->Current();
         if (temp_r3_3908 != NULL) {
             ((MKHeap *) (temp_r3_3908->Current()))->Free(temp_r31_3900, NULL, 0);
         } else {

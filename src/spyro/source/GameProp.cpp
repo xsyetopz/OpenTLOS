@@ -445,7 +445,7 @@ void GameProp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
 void GamePropDescriptor::LoadDone() {
     s8 *temp_r3_752;
     s8 *temp_r4_755;
@@ -457,15 +457,15 @@ void GamePropDescriptor::LoadDone() {
     if (temp_r3_752 != NULL) {
         temp_r4_755 = this->unkC0;
         if (temp_r4_755 != NULL) {
-            this->unkC0 = temp_r3_752->GetAnim(temp_r4_755);
+            this->unkC0 = ((MKAnimScript *) temp_r3_752)->GetAnim(temp_r4_755);
         }
         temp_r4_761 = this->unkC4;
         if (temp_r4_761 != NULL) {
-            this->unkC4 = this->unk34->GetAnim(temp_r4_761);
+            this->unkC4 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_761);
         }
         temp_r4_768 = this->unkC8;
         if (temp_r4_768 != NULL) {
-            this->unkC8 = this->unk34->GetAnim(temp_r4_768);
+            this->unkC8 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_768);
         }
     }
     this->unkC |= 0x20;

@@ -178,7 +178,7 @@ s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     temp_r3_309 = arg0->LoadInt("Envelope", &this->unkD0, 0);
     if (temp_r3_309 != 0) {
         temp_r27_313 = this->unkD0 * 0x14;
-        temp_r3_314 = temp_r3_309->Current();
+        temp_r3_314 = ((MKHeap *) temp_r3_309)->Current();
         if (temp_r3_314 != NULL) {
             var_r3_321 = ((MKHeap *) (temp_r3_314->Current()))->Alloc(temp_r27_313, NULL, 0);
         } else {

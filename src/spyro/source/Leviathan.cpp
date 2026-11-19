@@ -8,6 +8,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Platform.h"
 #include "spyro/source/WaterSurfaceFX.h"
@@ -18,7 +19,6 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
@@ -159,9 +159,9 @@ void Leviathan::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Leviathan::Deinit() {
-    this->unk180.Deinit();
+    ((KDUniformSpline *) &this->unk180)->Deinit();
     KDSound_Stop(&this->unk1C0);
     MKModel_Destroy(this->unk1B8);
     Platform::Deinit();
@@ -212,11 +212,10 @@ void Leviathan::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Leviathan::Message(MKMessage *arg0) {
     s32 temp_r0_178;
 
-    this->unk1C0.Message(arg0);
+    ((KDSoundPlayer *) &this->unk1C0)->Message(arg0);
     temp_r0_178 = arg0->unk0;
     switch (temp_r0_178) {                          /* irregular */
     case 0xB5:
@@ -240,7 +239,6 @@ block_10:
         goto block_10;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void Leviathan::EmitWaterSpray() {
@@ -810,7 +808,7 @@ void Leviathan::UpdateMove() {
         } else {
             var_f1_936 = 0.0f;
         }
-        sp80.GetVelocity(var_f1_936);
+        ((KDUniformSpline *) &sp80)->GetVelocity(var_f1_936);
         spD0 = sp80;
         spD8 = sp88;
         if ((this->unk194 == 1.0f) && ((s32) this->unk19C != 2)) {
@@ -979,14 +977,14 @@ void Leviathan::UpdateMove() {
         spF0.unk38 = (f32) spE8;
         spF0.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, spF0);
-        sp50.GetRotationPYR();
+        ((Matrix *) &sp50)->GetRotationPYR();
         M2C_FIELD(this, f64 *, 0x110) = sp50;
         M2C_FIELD(this, f64 *, 0x118) = sp58;
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void Leviathan::Update() {
     f64 spE8;
     f64 spE0;
@@ -1027,7 +1025,7 @@ void Leviathan::Update() {
     s32 var_r0_1451;
 
     sp8 = 1;
-    this->unk1C0.Update(GS_TurtleSwim, 1U, this->unk19C == 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk1C0)->Update(GS_TurtleSwim, 1U, this->unk19C == 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if ((s32) this->unk19C != 2) {
         var_f1_1362 = this->unk194 - 0.001f;
         if (var_f1_1362 < 1.0f) {
@@ -1097,7 +1095,7 @@ void Leviathan::Update() {
         sp48 = (f32) spE8 * 2000.0f;
         sp14 = 0.0f;
         spA8 = (f64) sp48;
-        spB0.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &spB0)->GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
         temp_f0_1510 = spB0 + spA0;
         sp30 = temp_f0_1510;
         spD0 = temp_f0_1510;
@@ -1199,12 +1197,12 @@ s32 Leviathan::LoadLine(MKIniLine *arg0) {
         if (temp_r3_1772 == 0) {
             return 0;
         }
-        this->unk180.Init(temp_r3_1772, 0U);
+        ((KDUniformSpline *) &this->unk180)->Init(temp_r3_1772, 0U);
         var_r30_1785 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r30_1785 != NULL) {
             var_r30_1785->AsVector3(0, &sp8);
-            this->unk180.AddNode(sp8);
+            ((KDUniformSpline *) &this->unk180)->AddNode(sp8);
             var_r30_1785 = var_r30_1785->unkC->GetNextLine(var_r30_1785);
             goto loop_11;
         }
@@ -1214,7 +1212,6 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Leviathan::Init() {
     Platform::Init();
     this->unk19C = 2;
@@ -1225,6 +1222,5 @@ void Leviathan::Init() {
     this->unk1A4->unk58 = 2.0f;
     this->unk1B8 = MKModel_Create("", NULL, 2, NULL);
     this->unk1BC = 0.0f;
-    this->unk1C0.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk1C0)->Init(0.25f, 0.25f);
 }
-#endif

@@ -140,7 +140,7 @@ loop_13:
             var_r4_198 += 4;
             goto loop_13;
         }
-        temp_r3_225 = var_r3_200->Current();
+        temp_r3_225 = ((MKHeap *) var_r3_200)->Current();
         if (temp_r3_225 != NULL) {
             ((MKHeap *) (temp_r3_225->Current()))->Free(var_r31_199, NULL, 0);
         } else {
@@ -647,7 +647,7 @@ loop_40:
                         sp158 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         sp188 = 0;
                         if (temp_r4_1010 != 0U) {
-                            sp38.GetPos();
+                            ((MKProp *) &sp38)->GetPos();
                             sp168 = sp38;
                             sp170 = sp40;
                         } else {

@@ -760,7 +760,7 @@ void KDShatter2::SetVisibleUnshattered() {
     SetVisible(this->unk54);
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
     MKHeap *temp_r3_1302;
     MKHeap *temp_r3_1354;
@@ -783,7 +783,7 @@ void KDShatter2::LoadDone(MKModel *arg0, unsigned short *arg1) {
     if (arg1 != NULL) {
         temp_r3_1299 = *arg1;
         temp_r29_1301 = (temp_r3_1299 + 2) * 2;
-        temp_r3_1302 = temp_r3_1299->Current();
+        temp_r3_1302 = ((MKHeap *) temp_r3_1299)->Current();
         if (temp_r3_1302 != NULL) {
             var_r3_1309 = ((MKHeap *) (temp_r3_1302->Current()))->Alloc(temp_r29_1301, NULL, 0);
         } else {
@@ -815,7 +815,7 @@ loop_12:
             var_r28_1338 += 1;
             goto loop_12;
         }
-        temp_r3_1354 = var_r3_1336->Current();
+        temp_r3_1354 = ((MKHeap *) var_r3_1336)->Current();
         if (temp_r3_1354 != NULL) {
             var_r3_1362 = ((MKHeap *) (temp_r3_1354->Current()))->Alloc((var_r27_1334 + 2) * 2, NULL, 0);
         } else {
@@ -874,7 +874,7 @@ loop_5:
     }
     temp_r31_1447 = temp_r30_1423->unk48;
     if (temp_r31_1447 != NULL) {
-        temp_r3_1450 = var_r3_0->Current();
+        temp_r3_1450 = ((MKHeap *) var_r3_0)->Current();
         if (temp_r3_1450 != NULL) {
             ((MKHeap *) (temp_r3_1450->Current()))->Free(temp_r31_1447, NULL, 0);
         } else {
@@ -944,7 +944,7 @@ loop_9:
             var_r4_1518 += 4;
             goto loop_9;
         }
-        temp_r3_1545 = var_r3_1520->Current();
+        temp_r3_1545 = ((MKHeap *) var_r3_1520)->Current();
         if (temp_r3_1545 != NULL) {
             ((MKHeap *) (temp_r3_1545->Current()))->Free(var_r31_1519, NULL, 0);
         } else {

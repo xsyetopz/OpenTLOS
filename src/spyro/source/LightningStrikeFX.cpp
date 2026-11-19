@@ -281,7 +281,7 @@ void LightningStrikeFX::Strike() {
     sp24 = 1.0f;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableScreenFlash(*((MKVector4 *) &spC8), 3.0f * gUpdateTimeDelta);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableScreenFlash(*((MKVector4 *) &spC8), 3.0f * gUpdateTimeDelta);
 }
 #endif
 
@@ -455,7 +455,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_791;
     MKIniLine *var_r30_809;
@@ -472,7 +472,7 @@ s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
         temp_r3_787 = arg0->GetNmbrOfSubLines();
         this->unk50 = temp_r3_787;
         temp_r31_790 = this->unk50 * 0x10;
-        temp_r3_791 = temp_r3_787->Current();
+        temp_r3_791 = ((MKHeap *) temp_r3_787)->Current();
         if (temp_r3_791 != NULL) {
             var_r3_798 = ((MKHeap *) (temp_r3_791->Current()))->Alloc(temp_r31_790, NULL, 0);
         } else {
@@ -1279,7 +1279,7 @@ loop_13:
             var_r4_2038 += 4;
             goto loop_13;
         }
-        temp_r3_2065 = var_r3_2040->Current();
+        temp_r3_2065 = ((MKHeap *) var_r3_2040)->Current();
         if (temp_r3_2065 != NULL) {
             ((MKHeap *) (temp_r3_2065->Current()))->Free(var_r31_2039, NULL, 0);
         } else {
@@ -1458,7 +1458,7 @@ void LightningStrikeFXDescriptor::Init() {
     this->unkA4 = 0;
     temp_r3_2359 = MKMaterial_Create("fx_351");
     this->unk94 = temp_r3_2359;
-    temp_r3_2361 = temp_r3_2359->Current();
+    temp_r3_2361 = ((MKHeap *) temp_r3_2359)->Current();
     if (temp_r3_2361 != NULL) {
         var_r3_2368 = ((MKHeap *) (temp_r3_2361->Current()))->Alloc(0x698, NULL, 0);
     } else {

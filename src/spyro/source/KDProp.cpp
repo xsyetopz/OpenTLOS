@@ -358,7 +358,7 @@ void KDProp::LoadDone() {
         } else {
             var_r3_603 = ((MKAnimScript *) (M2C_FIELD(temp_r3_584, MKAnimScript **, 0x34)))->GetName();
         }
-        this->unk80 = var_r3_603->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */));
+        this->unk80 = ((MKAnimScript *) var_r3_603)->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */));
         this->unk4 = this->unk80->unk8;
         temp_r29_619 = this->unk80;
         if (temp_r29_619->Exists("idle01") != 0) {

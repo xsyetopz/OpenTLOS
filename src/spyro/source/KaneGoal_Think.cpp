@@ -1,6 +1,7 @@
 #include "spyro/source/KaneGoal_Think.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyGoal_FollowGraph.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal operands 'void' == 'int'
@@ -67,14 +68,14 @@ void KaneGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 KaneGoal_Think::Update() {
     s32 temp_r3_156;
 
     ActivateIfInactive();
     temp_r3_156 = this->unkC;
     if (M2C_FIELD(M2C_FIELD(temp_r3_156, void **, 0x44), u8 (**)(s32), 0xE8)(temp_r3_156) == 0) {
-        this->unkC->SelectTarget();
+        ((Enemy *) this->unkC)->SelectTarget();
     }
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 != 0) {
@@ -173,7 +174,7 @@ void KaneGoal_Think::Init(Enemy *arg0) {
     if ((u32) this->unkC != 0U) {
         this->unk9 = 1;
     }
-    this->unk20->Init(arg0);
+    ((EnemyGoal_FollowGraph *) this->unk20)->Init(arg0);
     temp_r4_363 = this->unk24;
     M2C_FIELD(temp_r4_363, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_363, Enemy **, 0xC) = arg0;

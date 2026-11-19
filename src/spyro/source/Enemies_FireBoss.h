@@ -214,7 +214,7 @@ inline FireBoss::FireBoss() {
     this->unk101C = 0;
     this->unk1044 = 0;
     this->unk106C = 0;
-    this->unk106C.Init();
+    ((EventMessage *) &this->unk106C)->Init();
     return this;
 }
 #endif
@@ -223,7 +223,7 @@ inline FireBoss::FireBoss() {
 inline FireBoss::~FireBoss() {
     M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
     if (&this->unk106C != NULL) {
-        this->unk106C.Deinit();
+        ((EventMessage *) &this->unk106C)->Deinit();
     }
     if ((&this->unk1044 != NULL) && (&this->unk1044 != NULL)) {
         KDSound_Stop(&this->unk1044);

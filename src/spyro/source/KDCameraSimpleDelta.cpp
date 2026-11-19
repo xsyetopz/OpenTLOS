@@ -2,6 +2,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDCameraDeltaDrag.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -116,8 +117,8 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
             var_f31_102 = __float_nan;
         }
     }
-    temp_f30_167 = this->unk14.GetZDelta();
-    temp_f1_169 = this->unk14.GetYDelta();
+    temp_f30_167 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetZDelta();
+    temp_f1_169 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetYDelta();
     sp18 = temp_f30_167;
     sp10 = 0.0f;
     sp14 = temp_f1_169;
@@ -168,7 +169,7 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void KDCameraSimpleDelta::OverrideUpdate() {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;
@@ -252,7 +253,7 @@ void KDCameraSimpleDelta::OverrideUpdate() {
                 var_f3_309 = temp_f0_363;
             }
             this->unk14 = var_f3_309;
-            this->unk44.DisableSmoothPitch();
+            ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
         }
     }
     if (this->unk54 & 2) {
@@ -272,26 +273,24 @@ void KDCameraSimpleDelta::OverrideUpdate() {
         this->unk18 = unksp4C;
         this->unk1C = sp50;
         if (IsUsingIdealDelta() != 0) {
-            this->unk44.DisableSmoothDelta();
+            ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDCameraSimpleDelta::DisableDeltaOverride(float arg0) {
     if (IsUsingIdealDelta() == 0) {
         if (arg0 != 0.0f) {
-            this->unk44.EnableSmoothDelta(arg0);
+            ((KDCameraSimpleDelta::Override *) &this->unk44)->EnableSmoothDelta(arg0);
             return;
         }
-        this->unk44.DisableSmoothDelta();
+        ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
         this->unk18 = this->unk4;
     }
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::DisablePitchOverride(float arg0) {
     f32 temp_f0_567;
     f32 temp_f0_575;
@@ -314,10 +313,10 @@ void KDCameraSimpleDelta::DisablePitchOverride(float arg0) {
         } else {
             var_f1_566 = temp_f0_575;
         }
-        this->unk44.EnableSmoothPitch(var_f1_566, arg0, 1U);
+        ((KDCameraSimpleDelta::Override *) &this->unk44)->EnableSmoothPitch(var_f1_566, arg0, 1U);
         return;
     }
-    this->unk44.DisableSmoothPitch();
+    ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
     var_f1_590 = KDCameraDeltaStagesEx::GetPitch();
     temp_f0_593 = *this->unk24;
     if (var_f1_590 < temp_f0_593) {
@@ -340,7 +339,6 @@ void KDCameraSimpleDelta::DisableOverride(float arg0, float arg1) {
     DisableDeltaOverride(arg1);
 }
 
-#if 0 // DRAFT: expression syntax error
 void KDCameraSimpleDelta::EnablePitchOverride(float arg0, float arg1) {
     f32 temp_f0_669;
     f32 temp_f0_676;
@@ -363,7 +361,7 @@ void KDCameraSimpleDelta::EnablePitchOverride(float arg0, float arg1) {
             var_f1_0 = temp_f0_676;
         }
         this->unk14 = var_f1_0;
-        this->unk44.DisableSmoothPitch();
+        ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
         return;
     }
     var_f0_689 = this->unk0;
@@ -376,25 +374,22 @@ void KDCameraSimpleDelta::EnablePitchOverride(float arg0, float arg1) {
     if (var_f0_689 > *this->unkC) {
 
     }
-    this->unk44.EnableSmoothPitch(var_f1_0, arg1, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1);
+    ((KDCameraSimpleDelta::Override *) &this->unk44)->EnableSmoothPitch(var_f1_0, arg1, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void KDCameraSimpleDelta::EnableOverride(float arg0, float arg1, float arg2) {
-    this->unk44.DisableSmoothDelta();
-    this->unk14.SetStages(arg0, arg1, arg2);
+    ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
+    ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, bool arg2) {
     f32 temp_f0_770;
     f32 temp_f0_780;
     f32 var_f1_769;
 
-    this->unk44.DisableSmoothDelta();
-    this->unk44.DisableSmoothPitch();
+    ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
+    ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
     KDCameraDeltaStagesEx::SetStages(arg0->unk0, arg0->unk4, arg0->unk8);
     if (arg2 != 0) {
         var_f1_769 = this->unk14;
@@ -413,7 +408,7 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
         EnableOverride(var_f1_769, this->unk18, this->unk1C);
         DisableOverride(5.0f, 1.5f);
     } else {
-        this->unk14.SetStages(arg0->unk0, arg0->unk4, arg0->unk8);
+        ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(arg0->unk0, arg0->unk4, arg0->unk8);
     }
     if (arg1 != 0) {
         this->unk28 = 0.0f;
@@ -449,7 +444,7 @@ void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
@@ -474,8 +469,8 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     s32 var_r0_1040;
 
     temp_f31_975 = this->unk28;
-    temp_f31_978 = this->unk14.GetZDelta() + temp_f31_975;
-    temp_f1_980 = this->unk14.GetYDelta();
+    temp_f31_978 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetZDelta() + temp_f31_975;
+    temp_f1_980 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetYDelta();
     var_f4_981 = 0.0f;
     sp28 = temp_f31_978;
     sp20 = 0.0f;
@@ -525,25 +520,23 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     sp40 = (f64) sp10;
     sp48 = (f64) sp18;
     if ((((f32) sp48 * MKVector3::up.unk8) + (((f32) sp40 * MKVector3::up.unk0) + (unksp44 * MKVector3::up.unk4))) > 0.8f) {
-        this->unk28.Update(MKVector3::zero);
+        ((KDCameraDeltaDrag *) &this->unk28)->Update(MKVector3::zero);
     } else {
-        this->unk28.Update(arg0);
+        ((KDCameraDeltaDrag *) &this->unk28)->Update(arg0);
     }
     OverrideUpdate();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void KDCameraSimpleDelta::ClearData() {
-    this->unk28.ClearData();
+    ((KDCameraDeltaDrag *) &this->unk28)->ClearData();
     this->unk54 = 0;
     this->unk44 = 0;
     this->unk4C = 0.0f;
     this->unk48 = 0.0f;
     this->unk50 = 0.0f;
-    this->unk14.SetStages(this->unk0, this->unk4, this->unk8);
+    ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(this->unk0, this->unk4, this->unk8);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::Init(const KDCameraDeltaStages &arg0, float arg1, float arg2) {
@@ -551,9 +544,9 @@ void KDCameraSimpleDelta::Init(const KDCameraDeltaStages &arg0, float arg1, floa
     this->unk40 = arg2;
     KDCameraDeltaStagesEx::Init(&this->unk3C, &this->unk40);
     KDCameraDeltaStagesEx::SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
-    this->unk14.Init(&this->unk3C, &this->unk40);
-    this->unk14.SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
-    this->unk28.ClearData();
+    ((KDCameraDeltaStagesEx *) &this->unk14)->Init(&this->unk3C, &this->unk40);
+    ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
+    ((KDCameraDeltaDrag *) &this->unk28)->ClearData();
     ClearData();
 }
 #endif

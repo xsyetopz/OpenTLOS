@@ -583,7 +583,7 @@ inline s32 Spyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
@@ -604,7 +604,7 @@ inline s32 Spyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;

@@ -1,4 +1,5 @@
 #include "spyro/source/UIReference.h"
+#include "common/Source/MKIni.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
@@ -31,12 +32,12 @@ void UIReference::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIReference::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 
     sp8 = NULL;
-    if (arg0->LoadString("target", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("target", &sp8, 0) != 0) {
         UIStringTable_Add(sp8);
         this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;

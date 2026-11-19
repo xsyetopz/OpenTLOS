@@ -10,6 +10,7 @@
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/shatterwaypointspawn.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
@@ -34,13 +35,13 @@ void BeetleNestSmall::Message(MKMessage *arg0) {
         }
         return;
     case 0xB5:
-        this->unk198.FunctionOn();
+        ((SpawnerObject *) &this->unk198)->FunctionOn();
     default:
 block_10:
         Shatterable::Message(arg0);
         break;
     case 0xB4:
-        this->unk198.FunctionOff();
+        ((SpawnerObject *) &this->unk198)->FunctionOff();
         goto block_10;
     }
 }
@@ -88,10 +89,10 @@ void BeetleNestSmall::Update() {
     if ((temp_r3_99 & 1) && !(temp_r3_99 & 2)) {
         this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x170), 1.0f, 0.0f, 0, -1);
     }
-    if ((this->unk198.IsSpawning() != 0) && (IsDead() != 0)) {
-        this->unk198.FunctionOff();
+    if ((((SpawnerObject *) &this->unk198)->IsSpawning() != 0) && (IsDead() != 0)) {
+        ((SpawnerObject *) &this->unk198)->FunctionOff();
     }
-    if (this->unk198.IsSpawning() != 0) {
+    if (((SpawnerObject *) &this->unk198)->IsSpawning() != 0) {
         var_r30_134 = 0;
         temp_r29_136 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_137 = M2C_FIELD(temp_r29_136, KDSynkerPlayer3 **, 0x78);
@@ -100,7 +101,7 @@ void BeetleNestSmall::Update() {
         }
         if ((var_r30_134 == 0) && ((u32 *) this->unk1A8.unk44 > 0)) {
             M2C_FIELD(this->unk198, M2C_UNK (**)(f32 *), 0xC)(&this->unk198);
-            if (this->unk198.TrySpawnItem(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C)) != NULL) {
+            if (((SpawnerObject *) &this->unk198)->TrySpawnItem(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C)) != NULL) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x174), 1.0f, 0.0f, 0, -1);
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk208, &sp98);
                 temp_r3_187 = checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -137,7 +138,7 @@ void BeetleNestSmall::Update() {
 loop_21:
         if (var_r28_246 < temp_r29_242) {
             temp_r4_252 = this->unk208;
-            temp_r30_253 = this->unk198.GetSpawnPoint(var_r28_246);
+            temp_r30_253 = ((SpawnerObject *) &this->unk198)->GetSpawnPoint(var_r28_246);
             if ((u32) temp_r4_252 != -1U) {
                 MKModel_CalculateRefPointWorldPosition(this->unk4, temp_r4_252, &sp88);
                 temp_r30_253->unk40 = M2C_BITWISE(f32, sp88);
@@ -176,7 +177,7 @@ void BeetleNestSmall::LoadDone() {
         var_r31_311 = 0;
 loop_5:
         if (var_r27_310 < temp_r28_302) {
-            temp_r3_316 = this->unk198.GetSpawnPoint(var_r27_310);
+            temp_r3_316 = ((SpawnerObject *) &this->unk198)->GetSpawnPoint(var_r27_310);
             temp_r30_320 = checked_cast<EnemySpawnPointData *, SpawnPointData>(temp_r3_316->unk4);
             operator new(0x30U, NULL, 0);
             M2C_FIELD(temp_r30_320, KDPathSegment **, 0x1C) = (KDPathSegment *) M2C_ERROR(/* Read from unset register $r3 */);
@@ -205,11 +206,11 @@ void BeetleNestSmall::Init() {
     ShatterWaypointSpawn::Init();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void BeetleNestSmallDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk170 = this->unk34->GetAnim("idle");
-    this->unk174 = this->unk34->GetAnim("spawn");
+    this->unk170 = ((MKAnimScript *) this->unk34)->GetAnim("idle");
+    this->unk174 = ((MKAnimScript *) this->unk34)->GetAnim("spawn");
 }
 #endif
 

@@ -32,7 +32,7 @@ void EnemyGeneratorDescriptor::LoadDone() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'Current'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
     MKHeap *temp_r3_68;
@@ -74,7 +74,7 @@ loop_7:
         if (var_r28_32 > 0) {
             this->unk8 = var_r28_32;
             temp_r27_67 = this->unk8 * 0x24;
-            temp_r3_68 = var_r3_36->Current();
+            temp_r3_68 = ((MKHeap *) var_r3_36)->Current();
             if (temp_r3_68 != NULL) {
                 var_r3_75 = ((MKHeap *) (temp_r3_68->Current()))->Alloc(temp_r27_67, NULL, 0);
             } else {
@@ -86,7 +86,7 @@ loop_7:
         if (var_r26_33 > 0) {
             this->unkC = var_r26_33;
             temp_r26_92 = this->unkC * 0x14;
-            temp_r3_93 = var_r3_36->Current();
+            temp_r3_93 = ((MKHeap *) var_r3_36)->Current();
             if (temp_r3_93 != NULL) {
                 var_r3_100 = ((MKHeap *) (temp_r3_93->Current()))->Alloc(temp_r26_92, NULL, 0);
             } else {
@@ -191,7 +191,7 @@ void EnemyGeneratorDoor::GetSpawnPos() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to
 void EnemyGeneratorDoor::GetDoorDir() {
     Matrix sp80;
     EnemyGeneratorDoor sp48;
@@ -226,7 +226,7 @@ void EnemyGeneratorDoor::GetDoorDir() {
         return;
     }
     sp48.GetSpawnPos();
-    sp48.unk10.GetDoorPos();
+    ((EnemyGeneratorDoor *) &sp48.unk10)->GetDoorPos();
     sp18 = sp48.unk10 - M2C_BITWISE(f64, sp48);
     sp48.unk20 = sp18;
     sp20 = M2C_BITWISE(f32, sp48.unk18) - (f32) sp48.unk8;
@@ -495,7 +495,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 SpawnPointObject *EnemyGenerator::GetSpawnPointObject() {
     f32 sp8;
     SpawnPointObject *temp_r3_1121;
@@ -503,7 +503,7 @@ SpawnPointObject *EnemyGenerator::GetSpawnPointObject() {
     temp_r3_1121 = SpawnerObject::GetSpawnPointObject();
     if (temp_r3_1121 != NULL) {
         GetDoor(temp_r3_1121);
-        sp8.GetSpawnPos();
+        ((EnemyGeneratorDoor *) &sp8)->GetSpawnPos();
         temp_r3_1121->unk40 = sp8;
         temp_r3_1121->unk44 = spC;
         temp_r3_1121->unk48 = sp10;
@@ -740,7 +740,7 @@ loop_54:
             sp80.GetSpawnPos();
             spB0 = M2C_BITWISE(f64, sp80);
             spB8 = sp80.unk8;
-            sp70.GetDoorPos();
+            ((EnemyGeneratorDoor *) &sp70)->GetDoorPos();
             sp80.unk20 = sp70;
             sp80.unk28 = sp78;
             temp_f0_1492 = M2C_BITWISE(f64, sp80.unk20) - spB0;
@@ -982,7 +982,7 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     temp_r0_1964 = this->unk70;
     if (temp_r0_1964 > 0) {
         temp_r30_1967 = temp_r0_1964 * 0x30;
-        temp_r3_1968 = temp_r3_1956->Current();
+        temp_r3_1968 = ((MKHeap *) temp_r3_1956)->Current();
         if (temp_r3_1968 != NULL) {
             var_r3_1975 = ((MKHeap *) (temp_r3_1968->Current()))->Alloc(temp_r30_1967, NULL, 0);
         } else {
@@ -995,7 +995,7 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     temp_r0_1989 = temp_r3_1988->unk4;
     if (temp_r0_1989 > 0) {
         temp_r30_1992 = temp_r0_1989 * 4;
-        temp_r3_1993 = temp_r3_1988->Current();
+        temp_r3_1993 = ((MKHeap *) temp_r3_1988)->Current();
         if (temp_r3_1993 != NULL) {
             var_r3_2000 = ((MKHeap *) (temp_r3_1993->Current()))->Alloc(temp_r30_1992, NULL, 0);
         } else {
@@ -1008,7 +1008,7 @@ void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {
     temp_r0_2015 = temp_r3_2014->unk0;
     if (temp_r0_2015 > 0) {
         temp_r30_2018 = temp_r0_2015 * 4;
-        temp_r3_2019 = temp_r3_2014->Current();
+        temp_r3_2019 = ((MKHeap *) temp_r3_2014)->Current();
         if (temp_r3_2019 != NULL) {
             var_r3_2026 = ((MKHeap *) (temp_r3_2019->Current()))->Alloc(temp_r30_2018, NULL, 0);
         } else {

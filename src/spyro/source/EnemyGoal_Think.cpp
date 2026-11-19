@@ -8,7 +8,12 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_AlertMode.h"
+#include "spyro/source/EnemyGoal_FollowGraph.h"
 #include "spyro/source/EnemyGoal_GroundAttackMode.h"
+#include "spyro/source/EnemyGoals.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyGoals_Hit.h"
+#include "spyro/source/EnemyGoals_Movement.h"
 #include "spyro/source/EnemyRegion.h"
 #include "spyro/source/ExplosiveBarrelPath.h"
 #include "spyro/source/KDPath.h"
@@ -221,7 +226,7 @@ void EnemyGoal_Think::StopFollowingSpawnGraph() {
     if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, s32, M2C_UNK), 0x38)(0x2A, temp_r5_439, 0) != 0) {
         RemoveAllSubgoals();
         temp_r3_451 = this->unkC;
-        temp_r3_451->SetupEnemyRegion(*(temp_r3_451 + 0x588), 1000.0f);
+        ((Enemy *) temp_r3_451)->SetupEnemyRegion(*(temp_r3_451 + 0x588), 1000.0f);
     }
 }
 #endif
@@ -250,7 +255,7 @@ void EnemyGoal_Think::StopFollowingSpawnPath() {
     if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, s32, M2C_UNK), 0x38)(0x22, temp_r5_499, 0) != 0) {
         RemoveAllSubgoals();
         temp_r3_511 = this->unkC;
-        temp_r3_511->SetupEnemyRegion(*(temp_r3_511 + 0x588), 1000.0f);
+        ((Enemy *) temp_r3_511)->SetupEnemyRegion(*(temp_r3_511 + 0x588), 1000.0f);
     }
 }
 #endif
@@ -264,7 +269,7 @@ void EnemyGoal_Think::AddGoal_Kong(MKProp *arg0) {
     if (IsPresent(0x48) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk40);
-        this->unk40->SetParams((ExplosiveBarrelPath *) arg0);
+        ((EnemyGoal_Kong *) this->unk40)->SetParams((ExplosiveBarrelPath *) arg0);
     }
 }
 #endif
@@ -274,7 +279,7 @@ void EnemyGoal_Think::AddGoal_OperateLever(MKProp *arg0) {
     if (IsPresent(0x47) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk3C);
-        this->unk3C->SetParams((Lever *) arg0);
+        ((EnemyGoal_OperateLever *) this->unk3C)->SetParams((Lever *) arg0);
     }
 }
 #endif
@@ -476,7 +481,7 @@ void EnemyGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
         case 9:
         case 11:
             if (var_r25_1010 != 0xB) {
-                temp_r4_1086->ThawIfFrozen();
+                ((Enemy *) temp_r4_1086)->ThawIfFrozen();
             }
             var_r25_1010 = 9;
             break;
@@ -510,7 +515,7 @@ void EnemyGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     } else if (((u8) arg0->unk34 >> 4U) & 1) {
         temp_r3_1231 = this->unkC;
         if (M2C_FIELD(temp_r3_1231, f32 *, 0xACC) <= 0.0f) {
-            temp_r3_1231->Armour_Destroy();
+            ((Enemy *) temp_r3_1231)->Armour_Destroy();
         }
     }
     if (var_r25_1010 != 0xE) {
@@ -709,7 +714,7 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         var_r29_1566 = 0;
         temp_r30_1567 = temp_r28_1565 + 0x720;
         if (((EnemyRegion *) (temp_r28_1565 + 0x800))->IsPointWithin(*temp_r30_1567) != 0) {
-            sp18.GetRegionPos();
+            ((EnemyRegion *) &sp18)->GetRegionPos();
             if ((f32) fabs(sp1C - temp_r30_1567->unk4) <= 500.0f) {
                 var_r29_1566 = 1;
             }
@@ -761,7 +766,7 @@ void EnemyGoal_Think::AddGoal_GroundAttackMode() {
             M2C_FIELD(temp_r4_1701, f32 *, 0x18) = 0.0f;
         }
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk64);
-        this->unk64->SetParams(this->unkC + 0x870, 1U, NULL);
+        ((EnemyGoal_GroundAttackMode *) this->unk64)->SetParams(this->unkC + 0x870, 1U, NULL);
     }
 }
 #endif
@@ -798,7 +803,7 @@ void EnemyGoal_Think::Reset() {
     this->unk70 &= ~0x20;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EnemyGoal_Think::ArbitrateOld() {
     f32 var_f31_1867;
     s32 temp_r3_1829;
@@ -814,7 +819,7 @@ void EnemyGoal_Think::ArbitrateOld() {
     void *temp_r3_1932;
 
     temp_r3_1829 = this->unkC;
-    if (!(M2C_FIELD(temp_r3_1829, f32 *, 0xAC8) <= 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_1829, void **, 0x44), u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0)) {
+    if (!(M2C_FIELD(temp_r3_1829, f32 *, 0xAC8) <= 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_1829, void **, 0x44), u8 (**)(), 0x134)() == 0) && (((Enemy *) this->unkC)->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0)) {
         if (IsPresent(0x28) != 0) {
             return;
         }
@@ -860,7 +865,7 @@ void EnemyGoal_Think::ArbitrateOld() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void EnemyGoal_Think::Arbitrate() {
     EnemyDamageFeedback sp28;
     EnemyHudData sp8;
@@ -890,7 +895,7 @@ void EnemyGoal_Think::Arbitrate() {
         AddGoal_Respawn();
         return;
     }
-    if (((s32) M2C_FIELD(temp_r4_2054, s32 *, 0xAFC) != 0) && (temp_r4_2054->CanStrafe() != 0)) {
+    if (((s32) M2C_FIELD(temp_r4_2054, s32 *, 0xAFC) != 0) && (((Enemy *) temp_r4_2054)->CanStrafe() != 0)) {
         AddGoal_Strafe();
         M2C_FIELD(this->unkC, s32 *, 0xAFC) = 0;
         return;
@@ -903,16 +908,16 @@ void EnemyGoal_Think::Arbitrate() {
             return;
         }
     }
-    temp_r3_2096 = this->unkC->IsInvulnerable();
+    temp_r3_2096 = ((Enemy *) this->unkC)->IsInvulnerable();
     if (temp_r3_2096 != 0) {
         temp_r3_2100 = this->unkC;
         M2C_FIELD(temp_r3_2100, s32 *, 0x9D8) = 0;
         M2C_FIELD(temp_r3_2100, s32 *, 0x9D4) = 0;
     }
-    if ((this->unkC->WasHit() != 0) && (temp_r3_2096 == 0)) {
+    if ((((Enemy *) this->unkC)->WasHit() != 0) && (temp_r3_2096 == 0)) {
         temp_r30_2119 = IsActive(0x29);
         sp28.Init();
-        this->unkC->TakeDamage(&sp28, temp_r30_2119);
+        ((Enemy *) this->unkC)->TakeDamage(&sp28, temp_r30_2119);
         if (IsFollowingSpawnPath() != 0) {
             StopFollowingSpawnPath();
         }
@@ -929,10 +934,10 @@ void EnemyGoal_Think::Arbitrate() {
             temp_r4_2168 = M2C_FIELD(temp_r5_2162, s32 *, 0xAE8);
             if (temp_r4_2168 < (s32) (M2C_FIELD(M2C_FIELD(temp_r5_2162, void **, 0xA38), s32 *, 0x11C) - 1)) {
                 M2C_FIELD(temp_r5_2162, s32 *, 0xAE8) = (s32) (temp_r4_2168 + 1);
-                this->unkC->GetMaxHealth();
-                this->unkC->SetHealth(M2C_ERROR(/* Read from unset register $f1 */));
+                ((Enemy *) this->unkC)->GetMaxHealth();
+                ((Enemy *) this->unkC)->SetHealth(M2C_ERROR(/* Read from unset register $f1 */));
                 sp8.EnemyHudData();
-                this->unkC->GetMaxHealth();
+                ((Enemy *) this->unkC)->GetMaxHealth();
                 sp8.Init((Enemy *) this->unkC, 0.0f, M2C_ERROR(/* Read from unset register $f1 */));
                 EnemyHud_Modified(sp8);
             }
@@ -962,7 +967,7 @@ void EnemyGoal_Think::Arbitrate() {
             return;
         }
         if (((sp28.unk34 >> 4U) & 1) && (M2C_FIELD(temp_r3_2191, f32 *, 0xACC) <= 0.0f)) {
-            temp_r3_2191->Armour_Destroy();
+            ((Enemy *) temp_r3_2191)->Armour_Destroy();
         }
         goto block_46;
     }
@@ -1015,7 +1020,7 @@ void EnemyGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyGoal_Think::Update() {
     s32 temp_r3_2405;
     s32 temp_r3_2427;
@@ -1024,23 +1029,23 @@ u8 EnemyGoal_Think::Update() {
 
     temp_r3_2405 = this->unkC;
     if (M2C_FIELD(M2C_FIELD(temp_r3_2405, void **, 0x44), u8 (**)(s32), 0xE8)(temp_r3_2405) == 0) {
-        this->unkC->SelectTarget();
+        ((Enemy *) this->unkC)->SelectTarget();
     }
-    if (this->unkC->WasHit() != 0) {
+    if (((Enemy *) this->unkC)->WasHit() != 0) {
         this->unk8 = 1;
     }
     ActivateIfInactive();
     this->unk8 = UpdateSubgoals();
     temp_r3_2427 = this->unkC;
     if (((EAPManager *) M2C_FIELD(temp_r3_2427, EAPManager **, 0xA5C) != NULL) && ((Goal<Enemy> *) this->unk64 != NULL)) {
-        temp_r3_2427->IsFlinching();
+        ((Enemy *) temp_r3_2427)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) && ((IsActive(8) != 0) || (IsActive(0xA) != 0) || (IsActive(0xF) != 0) || (IsActive(0x10) != 0))) {
             temp_r4_2470 = this->unkC;
             temp_r3_2475 = ((EAPManager *) (M2C_FIELD(temp_r4_2470, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_2470, temp_r4_2470 + 0x870, NULL, 0);
             if ((temp_r3_2475 != 0) && (M2C_FIELD(*temp_r3_2475, s32 *, 0x38) & 0x30000)) {
                 RemoveAllSubgoals();
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk64);
-                this->unk64->SetParams(this->unkC + 0x870, 1U, (EAPItem *) temp_r3_2475);
+                ((EnemyGoal_GroundAttackMode *) this->unk64)->SetParams(this->unkC + 0x870, 1U, (EAPItem *) temp_r3_2475);
             }
         }
     }
@@ -1211,7 +1216,7 @@ void EnemyGoal_Think::InitKongGoal() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unk40 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk40->Init((Enemy *) this->unkC);
+    ((EnemyGoal_Kong *) this->unk40)->Init((Enemy *) this->unkC);
 }
 #endif
 
@@ -1256,7 +1261,7 @@ void EnemyGoal_Think::InitOperateLeverGoal() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unk3C = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk3C->Init((Enemy *) this->unkC);
+    ((EnemyGoal_OperateLever *) this->unk3C)->Init((Enemy *) this->unkC);
 }
 #endif
 
@@ -1482,9 +1487,9 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
     if ((u32) this->unkC != 0U) {
         this->unk9 = 1;
     }
-    this->unk20->Init(arg0);
-    this->unk28->Init(arg0);
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_PatrolMode *) this->unk20)->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk28)->Init(arg0);
+    ((EnemyGoal_Death *) this->unk2C)->Init(arg0);
     temp_r4_3292 = this->unk30;
     M2C_FIELD(temp_r4_3292, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_3292, Enemy **, 0xC) = arg0;
@@ -1506,7 +1511,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_3314, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_3314, s8 *, 9) = 1;
     }
-    this->unk50->Init(arg0);
+    ((EnemyGoal_FollowGraph *) this->unk50)->Init(arg0);
     temp_r4_3328 = this->unk54;
     M2C_FIELD(temp_r4_3328, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_3328, Enemy **, 0xC) = arg0;
@@ -1524,11 +1529,11 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
     M2C_FIELD(temp_r4_3339, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r4_3339, u8 *, 0x30) & ~0x10);
     temp_r3_3354 = this->unk3C;
     if (temp_r3_3354 != NULL) {
-        temp_r3_3354->Init(arg0);
+        ((EnemyGoal_OperateLever *) temp_r3_3354)->Init(arg0);
     }
     temp_r3_3360 = this->unk40;
     if (temp_r3_3360 != NULL) {
-        temp_r3_3360->Init(arg0);
+        ((EnemyGoal_Kong *) temp_r3_3360)->Init(arg0);
     }
     temp_r4_3366 = this->unk44;
     if (temp_r4_3366 != NULL) {
@@ -1561,7 +1566,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
     }
     temp_r3_3410 = this->unk24;
     if (temp_r3_3410 != NULL) {
-        temp_r3_3410->Init(arg0);
+        ((EnemyGoal_AlertMode *) temp_r3_3410)->Init(arg0);
         SetSummonGoal__19EnemyGoal_AlertModeFP12Goal<5Enemy>((EnemyGoal_AlertMode *) this->unk24, (Goal<Enemy> *) this->unk44);
     }
     temp_r4_3419 = this->unk60;
@@ -1575,7 +1580,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
     }
     temp_r3_3432 = this->unk64;
     if (temp_r3_3432 != NULL) {
-        temp_r3_3432->Init(arg0);
+        ((EnemyGoal_GroundAttackMode *) temp_r3_3432)->Init(arg0);
         SetSummonGoal__26EnemyGoal_GroundAttackModeFP12Goal<5Enemy>((EnemyGoal_GroundAttackMode *) this->unk64, (Goal<Enemy> *) this->unk44);
     }
     this->unk70 &= ~0x40;

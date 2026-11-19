@@ -89,7 +89,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'Scale3x3'
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void SonicAttack::UpdateSonicRings() {
     u8 sp140;
     s32 sp13C;
@@ -166,7 +166,7 @@ loop_24:
     if (var_r28_156 != NULL) {
         temp_r30_362 = var_r28_156->unk0;
         if (temp_r30_362 != NULL) {
-            temp_r30_362->Scale3x3((Matrix *) temp_r30_362, (2.0f * gUpdateTimeDelta) + 1.0f);
+            ((Matrix *) temp_r30_362)->Scale3x3((Matrix *) temp_r30_362, (2.0f * gUpdateTimeDelta) + 1.0f);
             temp_f29_175 = gUpdateTimeDelta;
             sp8 = -M2C_BITWISE(f32, temp_r30_362->unk20);
             spC = -M2C_BITWISE(f32, temp_r30_362->unk24);
@@ -180,7 +180,7 @@ loop_24:
             sp88 = temp_f0_190;
             sp30 = sp78.unk8 * temp_f29_175;
             sp90 = (f64) sp30;
-            temp_r30_362->Translate((Matrix *) temp_r30_362, *((MKVector3 *) &sp88));
+            ((Matrix *) temp_r30_362)->Translate((Matrix *) temp_r30_362, *((MKVector3 *) &sp88));
             var_r27_211 = 0;
             temp_r30_362->unk40 = M2C_BITWISE(f32, temp_r30_362->unk40) - gUpdateTimeDelta;
             spF0 = 0.0f;
@@ -251,7 +251,7 @@ block_16:
                         spB8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spE8 = 0;
                         if (temp_r4_286 != NULL) {
-                            sp38.GetPos();
+                            ((MKProp *) &sp38)->GetPos();
                             spC8 = sp38;
                             spD0 = sp40;
                         } else {

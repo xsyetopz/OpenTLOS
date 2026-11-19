@@ -2,22 +2,23 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: expression syntax error
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
 
 void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
     SpawnPointObject *temp_r3_17;
 
-    temp_r3_17 = this->unk198.GetSpawnPoint(arg0);
+    temp_r3_17 = ((SpawnerObject *) &this->unk198)->GetSpawnPoint(arg0);
     if (temp_r3_17 != NULL) {
         temp_r3_17->unk40 = arg1.unk0;
         temp_r3_17->unk44 = arg1.unk4;
@@ -25,7 +26,6 @@ void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
         temp_r3_17->unk4C = 1.0f;
     }
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void ShatterWaypointSpawn::Resolve() {
@@ -65,8 +65,8 @@ void ShatterWaypointSpawn::LoadDone() {
     Shatterable::LoadDone();
     temp_r5_90 = this->unk1A8.unk44;
     if (temp_r5_90 > 0) {
-        this->unk198.LoadDone((s32) this->unk1A8.unk48, (s32) temp_r5_90, 0U, (u32) this->unk18);
-        this->unk198.AddSpawnPointBegin((s32) this->unk1A8.unk44);
+        ((SpawnerObject *) &this->unk198)->LoadDone((s32) this->unk1A8.unk48, (s32) temp_r5_90, 0U, (u32) this->unk18);
+        ((SpawnerObject *) &this->unk198)->AddSpawnPointBegin((s32) this->unk1A8.unk44);
         var_r29_102 = 0;
 loop_5:
         if (var_r29_102 < (u32 *) this->unk1A8.unk44) {
@@ -91,17 +91,17 @@ loop_5:
             temp_r4_145 = this->unk8;
             sp8 = M2C_FIELD(temp_r4_145, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r4_145, f64 *, 0x38);
-            temp_r0_109->unk10.SetIdentity();
+            ((Matrix *) &temp_r0_109->unk10)->SetIdentity();
             temp_r0_109->unk40 = (f32) sp8;
             temp_r0_109->unk44 = unkspC;
             temp_r0_109->unk48 = (f32) sp10;
             temp_r0_109->unk4C = 1.0f;
-            this->unk198.AddSpawnPoint(temp_r0_109);
+            ((SpawnerObject *) &this->unk198)->AddSpawnPoint(temp_r0_109);
             var_r29_102 += 1;
             M2C_FIELD(temp_r30_115, s32 *, 4) = (s32) (M2C_FIELD(temp_r30_115, s32 *, 4) | 0x220);
             goto loop_5;
         }
-        this->unk198.AddSpawnPointEnd();
+        ((SpawnerObject *) &this->unk198)->AddSpawnPointEnd();
     }
 }
 #endif
@@ -124,7 +124,7 @@ s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
             return 1;
         }
         temp_r29_205 = (s32) temp_r0_199 * 0x10;
-        temp_r3_206 = temp_r3_197->Current();
+        temp_r3_206 = ((MKHeap *) temp_r3_197)->Current();
         if (temp_r3_206 != NULL) {
             var_r3_213 = ((MKHeap *) (temp_r3_206->Current()))->Alloc(temp_r29_205, NULL, 0);
         } else {
@@ -157,13 +157,12 @@ s32 ShatterWaypointSpawn::LoadLine(MKIniLine *arg0) {
     return var_r31_269;
 }
 
-#if 0 // DRAFT: expression syntax error
 void ShatterWaypointSpawn::Deinit() {
     MKHeap *temp_r3_311;
     s32 temp_r31_308;
 
-    this->unk198.RemoveAllSpawnPoints(1U);
-    this->unk198.Deinit();
+    ((SpawnerObject *) &this->unk198)->RemoveAllSpawnPoints(1U);
+    ((SpawnerObject *) &this->unk198)->Deinit();
     temp_r31_308 = this->unk1A8.unk40.unk0;
     if ((u32) temp_r31_308 != 0U) {
         temp_r3_311 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -176,13 +175,12 @@ void ShatterWaypointSpawn::Deinit() {
     }
     Shatterable::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
 void ShatterWaypointSpawn::Init() {
     Shatterable::Init();
     this->unk1A8.unk48 = NULL;
-    this->unk198.Init(EnemySpawnPool_Action, 0);
+    ((SpawnerObject *) &this->unk198)->Init(EnemySpawnPool_Action, 0);
     this->unk1A8.unk20 = 0.0f;
     this->unk1A8.unk24 = 0.0f;
     this->unk1A8.unk44 = NULL;

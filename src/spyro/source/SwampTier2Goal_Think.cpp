@@ -10,7 +10,12 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyGoal_FollowGraph.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyGoals_Hit.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -22,7 +27,6 @@ extern void **gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
 void SwampTier2Goal_MoveToTarget::Terminate() {
     Character *temp_r3_28;
     void *temp_r3_33;
@@ -33,13 +37,12 @@ void SwampTier2Goal_MoveToTarget::Terminate() {
     temp_r3_28->unk59C = 0.0f;
     temp_r3_33 = this->unkC->unk638;
     M2C_FIELD(temp_r3_33, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_33, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->SeekOff();
-    this->unkC->unk638->ContainmentOff();
-    this->unkC->unk638->ObstacleAvoidanceOff();
-    this->unkC->unk638->WallAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->SeekOff();
+    ((SB2 *) this->unkC->unk638)->ContainmentOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8B8'
 u8 SwampTier2Goal_MoveToTarget::Update() {
@@ -63,7 +66,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
     ActivateIfInactive();
     temp_r3_67 = this->unkC;
     var_r30_68 = 0;
-    if (((u8) temp_r3_67->unk8B8 == 2) || (temp_r3_67->unk8B0.Get() != NULL)) {
+    if (((u8) temp_r3_67->unk8B8 == 2) || (((TargetContext *) &temp_r3_67->unk8B0)->Get() != NULL)) {
         var_r30_68 = 1;
     }
     if (var_r30_68 != 0) {
@@ -71,16 +74,16 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
         temp_r5_83 = temp_r3_81->unk8;
         sp8 = M2C_FIELD(temp_r5_83, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r5_83, f64 *, 0x38);
-        temp_r3_81->unk870.Update(*((MKVector3 *) &sp8));
+        ((AITargetData *) &temp_r3_81->unk870)->Update(*((MKVector3 *) &sp8));
     }
     temp_r3_91 = this->unkC;
     var_r30_92 = 0;
-    if (((u8) temp_r3_91->unk8B8 == 2) || (temp_r3_91->unk8B0.Get() != NULL)) {
+    if (((u8) temp_r3_91->unk8B8 == 2) || (((TargetContext *) &temp_r3_91->unk8B0)->Get() != NULL)) {
         var_r30_92 = 1;
     }
     if ((var_r30_92 == 0) || (temp_r3_105 = this->unkC, (((((u8) temp_r3_105->unk8B9 >> 6U) & 1) == 0) != 0))) {
         this->unk8 = 3;
-    } else if (temp_r3_105->unk870.GetDist() <= this->unk10) {
+    } else if (((AITargetData *) &temp_r3_105->unk870)->GetDist() <= this->unk10) {
         this->unk8 = 2;
     } else {
         temp_r29_124 = this->unkC;
@@ -94,7 +97,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
         if (var_r30_125 != 0) {
             temp_r3_142 = this->unkC;
             temp_r4_145 = temp_r3_142->unkA50;
-            temp_r3_142->SetAnim(temp_r4_145, (AnimTransition *) &temp_r4_145->unk20, 0.0f, 0U);
+            ((Enemy *) temp_r3_142)->SetAnim(temp_r4_145, (AnimTransition *) &temp_r4_145->unk20, 0.0f, 0U);
         }
         temp_r5_149 = this->unkC;
         if ((u32) temp_r5_149->unkA54 == &temp_r5_149->unkA50->unk20) {
@@ -116,7 +119,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
+#if 0 // DRAFT: expression syntax error
 void SwampTier2Goal_MoveToTarget::Activate() {
     Character *temp_r3_196;
     Character *temp_r4_229;
@@ -130,17 +133,17 @@ void SwampTier2Goal_MoveToTarget::Activate() {
         var_r6_188 = 0;
         M2C_FIELD(temp_r3_196, f32 *, 0xB20) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f);
     }
-    this->unkC->SetAnim((AnimSequenceType) 6, 0, var_r6_188, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 6, 0, var_r6_188, 0.15f, 0U, 0U);
     this->unkC->StopMovement(1U);
-    this->unkC->SetRunMovementSpeed(1U);
+    ((Enemy *) this->unkC)->SetRunMovementSpeed(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
     temp_r3_225 = this->unkC->unk638;
     M2C_FIELD(temp_r3_225, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_225, u8 *, 0x464) | 0x80);
     temp_r4_229 = this->unkC;
-    temp_r4_229->unk638->SeekOn((AITargetData *) &temp_r4_229->unk870);
-    this->unkC->unk638->ObstacleAvoidanceOn(NULL);
-    this->unkC->unk638->ContainmentOn();
-    this->unkC->unk638->WallAvoidanceOn();
+    ((SB2 *) temp_r4_229->unk638)->SeekOn((AITargetData *) &temp_r4_229->unk870);
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
+    ((SB2 *) this->unkC->unk638)->ContainmentOn();
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOn();
 }
 #endif
 
@@ -153,7 +156,7 @@ void SwampTier2Goal_MoveToTarget::Init(SwampTier2 *arg0) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2Goal_Attack2::Terminate() {
     AttackerManager *var_r3_299;
     Enemy *temp_r3_274;
@@ -166,11 +169,11 @@ void SwampTier2Goal_Attack2::Terminate() {
     M2C_FIELD(temp_r3_274, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_274, u8 *, 0xB08) & ~0x10);
     this->unkC->unkA08 = NULL;
     temp_r3_280 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_280, u8 *, 0x8B8) == 2) || (temp_r3_280->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_280, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_280->unk870.unk30)->Get() != NULL)) {
         var_r31_273 = 1;
     }
     if (var_r31_273 != 0) {
-        var_r3_299 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_299 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_299 = NULL;
     }
@@ -187,7 +190,7 @@ void SwampTier2Goal_Attack2::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 u8 SwampTier2Goal_Attack2::Update() {
     CharacterFireFX *temp_r4_402;
     Enemy *temp_r29_360;
@@ -208,17 +211,17 @@ u8 SwampTier2Goal_Attack2::Update() {
 
     var_r30_339 = 0;
     temp_r3_340 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_340, u8 *, 0x8B8) == 2) || (temp_r3_340->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_340, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_340->unk870.unk30)->Get() != NULL)) {
         var_r30_339 = 1;
     }
     if (var_r30_339 != 0) {
         temp_r4_353 = this->unkC;
-        temp_r4_353->unk838.unk28.Update(*((MKVector3 *) &temp_r4_353->unk588));
+        ((AITargetData *) &temp_r4_353->unk838.unk28)->Update(*((MKVector3 *) &temp_r4_353->unk588));
     }
     ActivateIfInactive();
     temp_r29_360 = this->unkC;
     var_r30_361 = 0;
-    if (temp_r29_360->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_360)->HasAnimFinished() != 0) {
         temp_r4_366 = temp_r29_360->unkA38;
         if ((temp_r4_366 != NULL) && ((s8 *) temp_r4_366->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_360, void **, 0x630), u32 *, 0x20))) {
             var_r30_361 = 1;
@@ -231,7 +234,7 @@ u8 SwampTier2Goal_Attack2::Update() {
     }
     temp_r3_385 = this->unkC;
     if ((void **) temp_r3_385->unkA3C == &temp_r3_385->unkA38->unk20) {
-        if (temp_r3_385->HasAnimFinished() != 0) {
+        if (((Character *) temp_r3_385)->HasAnimFinished() != 0) {
             temp_r3_394 = this->unkC;
             temp_r4_397 = temp_r3_394->unkA38;
             temp_r3_394->SetAnim((AnimSequence *) temp_r4_397, (AnimTransition *) &temp_r4_397->__vptr, 0.0f, 0U);
@@ -244,7 +247,7 @@ u8 SwampTier2Goal_Attack2::Update() {
     }
     temp_r29_417 = this->unkC;
     var_r30_418 = 0;
-    if (temp_r29_417->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_417)->HasAnimFinished() != 0) {
         temp_r4_423 = temp_r29_417->unkA38;
         if ((temp_r4_423 != NULL) && ((void *) temp_r4_423->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_417, void **, 0x630), u32 *, 0x20))) {
             var_r30_418 = 1;
@@ -277,15 +280,15 @@ loop_2:
     }
     temp_r3_472 = this->unkC->unkA18;
     if (temp_r3_472 != NULL) {
-        temp_r3_472->SetDefaults();
+        ((AttackSweepData *) temp_r3_472)->SetDefaults();
     }
     temp_r3_477 = this->unkC;
     var_r30_478 = 0;
-    if (((u8) M2C_FIELD(temp_r3_477, u8 *, 0x8B8) == 2) || (temp_r3_477->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_477, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_477->unk870.unk30)->Get() != NULL)) {
         var_r30_478 = 1;
     }
     if (var_r30_478 != 0) {
-        var_r3_497 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_497 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_497 = NULL;
     }
@@ -302,8 +305,8 @@ loop_2:
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
     this->unkC->SetAnim((AnimSequenceType) 0x10, 0x3D, 0, 0.15f, 0U, 0U);
-    this->unkC->StopMovement(1U);
-    this->unkC->SetMovementType((CharacterMoveType) 0);
+    ((Character *) this->unkC)->StopMovement(1U);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
 }
 #endif
 
@@ -329,11 +332,11 @@ void SwampTier2Goal_Attack1::Terminate() {
     M2C_FIELD(temp_r3_570, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_570, u8 *, 0xB08) & ~0x10);
     this->unkC->unkA08 = NULL;
     temp_r3_576 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_576, u8 *, 0x8B8) == 2) || (temp_r3_576->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_576, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_576->unk870.unk30)->Get() != NULL)) {
         var_r31_569 = 1;
     }
     if (var_r31_569 != 0) {
-        var_r3_595 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_595 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_595 = NULL;
     }
@@ -350,7 +353,7 @@ void SwampTier2Goal_Attack1::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 u8 SwampTier2Goal_Attack1::Update() {
     f64 sp50;
     f64 sp48;
@@ -385,17 +388,17 @@ u8 SwampTier2Goal_Attack1::Update() {
 
     var_r30_637 = 0;
     temp_r3_638 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_638, u8 *, 0x8B8) == 2) || (temp_r3_638->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_638, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_638->unk870.unk30)->Get() != NULL)) {
         var_r30_637 = 1;
     }
     if (var_r30_637 != 0) {
         temp_r4_651 = this->unkC;
-        temp_r4_651->unk838.unk28.Update(*((MKVector3 *) &temp_r4_651->unk588));
+        ((AITargetData *) &temp_r4_651->unk838.unk28)->Update(*((MKVector3 *) &temp_r4_651->unk588));
     }
     ActivateIfInactive();
     temp_r29_658 = this->unkC;
     var_r30_659 = 0;
-    if (temp_r29_658->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_658)->HasAnimFinished() != 0) {
         temp_r4_664 = temp_r29_658->unkA38;
         if ((temp_r4_664 != NULL) && ((s8 *) temp_r4_664->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_658, void **, 0x630), u32 *, 0x20))) {
             var_r30_659 = 1;
@@ -421,13 +424,13 @@ u8 SwampTier2Goal_Attack1::Update() {
         sp48 = temp_f0_709;
         sp20 = temp_r30_693->unk588.unk4 + (f32) sp40;
         sp50 = (f64) sp20;
-        if (temp_r30_693->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            sp8.GetRegionPos();
+        if (((EnemyRegion *) &temp_r30_693->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
+            ((EnemyRegion *) &sp8)->GetRegionPos();
             if ((f32) fabs(spC - unksp4C) <= 500.0f) {
                 var_r29_715 = 1;
             }
         }
-        if ((var_r29_715 == 0) || (this->unkC->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp48)) != 0) || ((s32) M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x44) >= 2)) {
+        if ((var_r29_715 == 0) || (((EnemyRegion *) &this->unkC->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) || ((s32) M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x44) >= 2)) {
             temp_r3_753 = this->unkC;
             temp_r4_756 = temp_r3_753->unkA38;
             temp_r3_753->SetAnim((AnimSequence *) temp_r4_756, (AnimTransition *) &temp_r4_756->__vptr, 0.15f, 0U);
@@ -440,7 +443,7 @@ u8 SwampTier2Goal_Attack1::Update() {
     }
     temp_r29_776 = this->unkC;
     var_r30_777 = 0;
-    if (temp_r29_776->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_776)->HasAnimFinished() != 0) {
         temp_r4_782 = temp_r29_776->unkA38;
         if ((temp_r4_782 != NULL) && ((void *) temp_r4_782->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_776, void **, 0x630), u32 *, 0x20))) {
             var_r30_777 = 1;
@@ -473,15 +476,15 @@ loop_2:
     }
     temp_r3_833 = this->unkC->unkA18;
     if (temp_r3_833 != NULL) {
-        temp_r3_833->SetDefaults();
+        ((AttackSweepData *) temp_r3_833)->SetDefaults();
     }
     temp_r3_838 = this->unkC;
     var_r30_839 = 0;
-    if (((u8) M2C_FIELD(temp_r3_838, u8 *, 0x8B8) == 2) || (temp_r3_838->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_838, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_838->unk870.unk30)->Get() != NULL)) {
         var_r30_839 = 1;
     }
     if (var_r30_839 != 0) {
-        var_r3_858 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_858 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_858 = NULL;
     }
@@ -498,8 +501,8 @@ loop_2:
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
     this->unkC->SetAnim((AnimSequenceType) 0x10, 0x3C, 0, 0.15f, 0U, 0U);
-    this->unkC->StopMovement(1U);
-    this->unkC->SetMovementType((CharacterMoveType) 0);
+    ((Character *) this->unkC)->StopMovement(1U);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
 }
 #endif
 
@@ -852,9 +855,9 @@ void SwampTier2Goal_AlertMode::Init(SwampTier2 *arg0) {
         if ((SwampTier2 *) M2C_FIELD(temp_r4_1600, SwampTier2 **, 0xC) != NULL) {
             M2C_FIELD(temp_r4_1600, s8 *, 9) = 1;
         }
-        this->unk2C->Init(arg0);
-        this->unk30->Init(arg0);
-        this->unk34->Init(arg0);
+        ((SwampTier2Goal_Attack1 *) this->unk2C)->Init(arg0);
+        ((SwampTier2Goal_Attack2 *) this->unk30)->Init(arg0);
+        ((SwampTier2Goal_MoveToTarget *) this->unk34)->Init(arg0);
         temp_r4_1620 = this->unk38;
         M2C_FIELD(temp_r4_1620, s8 *, 8) = 1;
         M2C_FIELD(temp_r4_1620, SwampTier2 **, 0xC) = arg0;
@@ -906,7 +909,7 @@ u8 SwampTier2Goal_Hide::Update() {
     if (var_r30_1676 != 0) {
         temp_r3_1693 = this->unkC;
         temp_r4_1696 = temp_r3_1693->unkA50;
-        temp_r3_1693->SetAnim(temp_r4_1696, (AnimTransition *) &temp_r4_1696->unk20, 0.15f, 0U);
+        ((Enemy *) temp_r3_1693)->SetAnim(temp_r4_1696, (AnimTransition *) &temp_r4_1696->unk20, 0.15f, 0U);
         this->unkC->unkB10 = 2;
     }
     temp_r3_1703 = this->unk10;
@@ -916,7 +919,7 @@ u8 SwampTier2Goal_Hide::Update() {
         temp_r4_1711->unkB10 = temp_r4_1711->unkB14 != 0;
         temp_r3_1716 = this->unkC;
         temp_r4_1717 = temp_r3_1716->unkA50;
-        temp_r3_1716->SetAnim(temp_r4_1717, (AnimTransition *) &temp_r4_1717->unk40, 0.15f, 0U);
+        ((Enemy *) temp_r3_1716)->SetAnim(temp_r4_1717, (AnimTransition *) &temp_r4_1717->unk40, 0.15f, 0U);
     }
     temp_r29_1721 = this->unkC;
     var_r30_1722 = 0;
@@ -933,16 +936,14 @@ u8 SwampTier2Goal_Hide::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void SwampTier2Goal_Hide::Activate() {
     this->unk8 = 0;
     this->unk10 &= ~0x80;
     M2C_FIELD(this->unkC, f32 *, 0xB1C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
-    this->unkC->SetAnim((AnimSequenceType) 1, 0xC, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 0xC, 0, 0.15f, 0U, 0U);
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
 }
-#endif
 
 void SwampTier2Goal_Hide::Init(SwampTier2 *arg0) {
     this->unk8 = 1;
@@ -1284,12 +1285,12 @@ block_16:
             var_f31_2556 = M2C_FIELD(temp_r4_2551->unkA20, f32 *, 0x12C);
         }
         var_r30_2563 = 0;
-        if (((u8) M2C_FIELD(temp_r4_2551, u8 *, 0x8B8) == 2) || (temp_r4_2551->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r4_2551, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r4_2551->unk870.unk30)->Get() != NULL)) {
             var_r30_2563 = 1;
         }
-        if ((var_r30_2563 != 0) && (this->unkC->unk838.unk28.IsAttackable() != 0) && ((temp_r3_2580 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2580, u8 *, 0xB08) >> 5U) & 1) == 0) == 0)) || ((temp_r3_2580->unk838.unk28.GetDist() < var_f31_2556) && ((temp_r3_2588 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2588, u8 *, 0xB08) >> 6U) & 1) == 0) == 0)) || (((u8) M2C_FIELD(temp_r3_2588, u8 *, 0x8B9) >> 4U) & 1) || (temp_r3_2588->unk838.unk28.GetDist() < M2C_FIELD(this->unkC->unkA20, f32 *, 0x130))))) && (temp_r3_2603 = this->unkC, ((temp_r3_2603->IsTargetBehindWall() == 0) != 0))) {
+        if ((var_r30_2563 != 0) && (((AITargetData *) &this->unkC->unk838.unk28)->IsAttackable() != 0) && ((temp_r3_2580 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2580, u8 *, 0xB08) >> 5U) & 1) == 0) == 0)) || ((((AITargetData *) &temp_r3_2580->unk838.unk28)->GetDist() < var_f31_2556) && ((temp_r3_2588 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2588, u8 *, 0xB08) >> 6U) & 1) == 0) == 0)) || (((u8) M2C_FIELD(temp_r3_2588, u8 *, 0x8B9) >> 4U) & 1) || (((AITargetData *) &temp_r3_2588->unk838.unk28)->GetDist() < M2C_FIELD(this->unkC->unkA20, f32 *, 0x130))))) && (temp_r3_2603 = this->unkC, ((temp_r3_2603->IsTargetBehindWall() == 0) != 0))) {
             temp_r4_2613 = this->unkC;
-            if ((this->unkC->unk838.unk28.GetDist() < M2C_FIELD(temp_r4_2613->unkA20, f32 *, 0x130)) || (temp_r4_2613->unk838.unk28.GetDist() < (0.5f * var_f31_2556))) {
+            if ((((AITargetData *) &this->unkC->unk838.unk28)->GetDist() < M2C_FIELD(temp_r4_2613->unkA20, f32 *, 0x130)) || (((AITargetData *) &temp_r4_2613->unk838.unk28)->GetDist() < (0.5f * var_f31_2556))) {
                 temp_r3_2625 = this->unkC;
                 M2C_FIELD(temp_r3_2625, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_2625, u8 *, 0xB08) | 0x40);
             }
@@ -1537,7 +1538,7 @@ void SwampTier2Goal_Think::Init(SwampTier2 *arg0) {
     if ((SwampTier2 *) M2C_FIELD(temp_r4_3123, SwampTier2 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_3123, s8 *, 9) = 1;
     }
-    this->unk28->Init((Enemy *) arg0);
+    ((EnemyGoal_Death *) this->unk28)->Init((Enemy *) arg0);
     temp_r4_3137 = this->unk2C;
     M2C_FIELD(temp_r4_3137, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_3137, SwampTier2 **, 0xC) = arg0;
@@ -1545,10 +1546,10 @@ void SwampTier2Goal_Think::Init(SwampTier2 *arg0) {
     if ((SwampTier2 *) M2C_FIELD(temp_r4_3137, SwampTier2 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_3137, s8 *, 9) = 1;
     }
-    this->unk30->Init(arg0);
-    this->unk24->Init((Enemy *) arg0);
-    this->unk34->Init(arg0);
-    this->unk38->Init((Enemy *) arg0);
+    ((SwampTier2Goal_Hide *) this->unk30)->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk24)->Init((Enemy *) arg0);
+    ((SwampTier2Goal_AlertMode *) this->unk34)->Init(arg0);
+    ((EnemyGoal_FollowGraph *) this->unk38)->Init((Enemy *) arg0);
     this->unk3C &= ~0x80;
 }
 #endif

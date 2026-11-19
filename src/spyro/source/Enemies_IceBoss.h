@@ -209,11 +209,11 @@ void IceBoss_UpdateParams(void *);
 inline IceBoss::IceBoss() {
     M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     this->unkFCC = 0.0f;
-    this->unkFCC.Init();
+    ((EventMessage *) &this->unkFCC)->Init();
     this->unkFD0 = 0.0f;
-    this->unkFD0.Init();
+    ((EventMessage *) &this->unkFD0)->Init();
     this->unkFD4 = 0.0f;
-    this->unkFD4.Init();
+    ((EventMessage *) &this->unkFD4)->Init();
     this->unkFFC = NULL;
     this->unk103C = 0;
     return this;
@@ -230,13 +230,13 @@ inline IceBoss::~IceBoss() {
         KDSound_Stop((s32 *) &this->unkFFC);
     }
     if (&this->unkFD4 != NULL) {
-        this->unkFD4.Deinit();
+        ((EventMessage *) &this->unkFD4)->Deinit();
     }
     if (&this->unkFD0 != NULL) {
-        this->unkFD0.Deinit();
+        ((EventMessage *) &this->unkFD0)->Deinit();
     }
     if (&this->unkFCC != NULL) {
-        this->unkFCC.Deinit();
+        ((EventMessage *) &this->unkFCC)->Deinit();
     }
 }
 #endif

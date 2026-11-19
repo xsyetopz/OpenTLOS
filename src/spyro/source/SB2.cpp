@@ -167,7 +167,7 @@ void SB2::Arbitrate() {
         sp98 = (f64) sp38;
         spA0 = (f64) sp40;
         if ((((f32) sp70 * temp_f11_133) + (((f32) sp68 * temp_f10_125) + (unksp6C * temp_f7_121))) > -0.9f) {
-            temp_r3_91->ZAxis3();
+            ((Matrix *) temp_r3_91)->ZAxis3();
             sp18 = -*M2C_ERROR(/* Read from unset register $r3 */);
             sp1C = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
             sp20 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
@@ -275,40 +275,40 @@ void SB2::Calculate(unsigned int arg0) {
             ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &sp90.unk10));
             sp90.GetDir();
             if (((sp90.unk8 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((M2C_BITWISE(f32, sp90) * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + (unksp94 * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) {
-                sp80.GetDir();
+                ((AITargetData *) &sp80)->GetDir();
                 M2C_FIELD(&vBaseHeading, f64 *, 0) = sp80;
                 M2C_FIELD(&vBaseHeading, f64 *, 8) = sp88;
             }
         }
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 1) {
-        arg0->SeekSetGoal();
+        ((SB2 *) arg0)->SeekSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 4) {
-        arg0->ArriveSetGoal();
+        ((SB2 *) arg0)->ArriveSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 8) {
-        arg0->PursuitSetGoal();
+        ((SB2 *) arg0)->PursuitSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x10) {
-        arg0->RandomPursuitSetGoal();
+        ((SB2 *) arg0)->RandomPursuitSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x40) {
-        arg0->WanderSetGoal();
+        ((SB2 *) arg0)->WanderSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x80) {
-        arg0->PathFollowingSetGoal();
+        ((SB2 *) arg0)->PathFollowingSetGoal();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x4000) {
-        arg0->GraphFollowingSetGoal();
+        ((SB2 *) arg0)->GraphFollowingSetGoal();
     }
     temp_r5_419 = M2C_FIELD(arg0, Character **, 0)->unk8;
     sp70 = M2C_FIELD(temp_r5_419, f64 *, 0x30);
     sp78 = M2C_FIELD(temp_r5_419, f64 *, 0x38);
     ((AITargetData *) (arg0 + 0x18))->Update(*((MKVector3 *) &sp70));
     temp_r3_425 = M2C_FIELD(arg0, s32 *, 0x460);
-    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (sp60.GetDir(), ((((sp68 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((sp60 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + (sp64 * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
-        sp50.GetDir();
+    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (((AITargetData *) &sp60)->GetDir(), ((((sp68 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((sp60 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + (sp64 * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
+        ((AITargetData *) &sp50)->GetDir();
         M2C_FIELD(&vBaseHeading, f64 *, 0) = sp50;
         M2C_FIELD(&vBaseHeading, f64 *, 8) = sp58;
     }
@@ -319,37 +319,37 @@ loop_32:
     M2C_FIELD(temp_r3_486, f64 *, 0) = M2C_BITWISE(f64, sp40);
     M2C_FIELD(temp_r3_486, f64 *, 8) = (f64) sp40.unk8;
     if (M2C_FIELD(arg0, s32 *, 0x460) & 1) {
-        arg0->Seek();
+        ((SB2 *) arg0)->Seek();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 4) {
-        arg0->Arrive();
+        ((SB2 *) arg0)->Arrive();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 8) {
-        arg0->Pursuit();
+        ((SB2 *) arg0)->Pursuit();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x10) {
-        arg0->RandomPursuit();
+        ((SB2 *) arg0)->RandomPursuit();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x40) {
-        arg0->Wander();
+        ((SB2 *) arg0)->Wander();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x80) {
-        arg0->PathFollowing();
+        ((SB2 *) arg0)->PathFollowing();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x4000) {
-        arg0->GraphFollowing();
+        ((SB2 *) arg0)->GraphFollowing();
     }
     if ((M2C_FIELD(arg0, s32 *, 0x460) & 0x200) && ((u8) M2C_FIELD(arg0, u8 *, 0x418) == 0)) {
-        arg0->ObstacleAvoidance();
+        ((SB2 *) arg0)->ObstacleAvoidance();
     }
     if ((M2C_FIELD(arg0, s32 *, 0x460) & 0x400) && ((u8) M2C_FIELD(arg0, u8 *, 0x418) == 0)) {
-        arg0->WallAvoidance();
+        ((SB2 *) arg0)->WallAvoidance();
     }
     if ((M2C_FIELD(arg0, s32 *, 0x460) & 0x8000) && ((u8) M2C_FIELD(arg0, u8 *, 0x418) == 0)) {
-        arg0->Containment();
+        ((SB2 *) arg0)->Containment();
     }
     if (M2C_FIELD(arg0, s32 *, 0x460) & 0x10000) {
-        arg0->HazardAvoidance();
+        ((SB2 *) arg0)->HazardAvoidance();
     }
     temp_r3_564 = OSGetTick();
     temp_r5_566 = temp_r3_564 - var_r29_280;
@@ -361,7 +361,7 @@ loop_32:
         goto loop_32;
     }
     if ((s32) M2C_FIELD(arg0, s32 *, 0x3F8) >= 5) {
-        arg0->Arbitrate();
+        ((SB2 *) arg0)->Arbitrate();
         temp_r3_590 = M2C_FIELD(arg0, Character **, 0)->unk8;
         sp20 = -temp_r3_590->unk20;
         sp24 = -temp_r3_590->unk24;
@@ -1165,10 +1165,10 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     sp170 = M2C_FIELD(temp_r5_1736, f64 *, 0x38);
     sp148 = (f64) sp58;
     sp150 = (f64) sp60;
-    sp118.GetVel();
+    ((AITargetData *) &sp118)->GetVel();
     if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
         temp_f28_1774 = M2C_BITWISE(f32, this->unk0->unk688);
-        sp108.GetVel();
+        ((AITargetData *) &sp108)->GetVel();
         var_f4_1784 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
         if (var_f4_1784 > 0.0f) {
             temp_f1_1787 = __frsqrte(var_f4_1784);
@@ -1213,7 +1213,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         var_f29_1742 = this->unk450->GetDist() / var_f28_1848;
     }
     if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
-        spF8.GetDir();
+        ((AITargetData *) &spF8)->GetDir();
         var_f1_1876 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + (unksp14C * spFC));
         if (var_f1_1876 < 1.0f) {
 
@@ -1228,7 +1228,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         var_f29_1742 += (f32) acos(var_f1_1876) / M2C_BITWISE(f32, this->unk0->unk684);
     }
     unksp16C = unksp17C;
-    spC8.GetVel();
+    ((AITargetData *) &spC8)->GetVel();
     spD8.operator*(var_f29_1742);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
@@ -1649,7 +1649,7 @@ void SB2::GraphFollowing_PursuitNoMoreNodes() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp120'
 s32 SB2::GraphFollowing_PursuitSelectLink() {
     f64 sp180;
     f64 sp178;
@@ -1763,10 +1763,10 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     sp170 = M2C_FIELD(temp_r5_2712, f64 *, 0x38);
     sp148 = (f64) sp58;
     sp150 = (f64) sp60;
-    sp118.GetVel();
+    ((AITargetData *) &sp118)->GetVel();
     if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
         temp_f28_2750 = M2C_BITWISE(f32, this->unk0->unk688);
-        sp108.GetVel();
+        ((AITargetData *) &sp108)->GetVel();
         var_f4_2760 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
         if (var_f4_2760 > 0.0f) {
             temp_f1_2763 = __frsqrte(var_f4_2760);
@@ -1811,7 +1811,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         var_f29_2718 = this->unk450->GetDist() / var_f28_2824;
     }
     if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
-        spF8.GetDir();
+        ((AITargetData *) &spF8)->GetDir();
         var_f1_2852 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + (unksp14C * spFC));
         if (var_f1_2852 < 1.0f) {
 
@@ -1826,7 +1826,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         var_f29_2718 += (f32) acos(var_f1_2852) / M2C_BITWISE(f32, this->unk0->unk684);
     }
     unksp16C = unksp17C;
-    spC8.GetVel();
+    ((AITargetData *) &spC8)->GetVel();
     spD8.operator*(var_f29_2718);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
@@ -2156,7 +2156,7 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
                 M2C_FIELD(this, f64 *, 0x438) = M2C_BITWISE(f64, sp70);
                 M2C_FIELD(this, f64 *, 0x440) = (f64) sp70.unk8;
             } else {
-                sp20.GetPos();
+                ((MKProp *) &sp20)->GetPos();
                 M2C_FIELD(arg0->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp30, arg0);
                 sp10 = sp30 - sp20;
                 M2C_FIELD(this, f64 *, 0x438) = sp10;
@@ -3106,7 +3106,7 @@ void SB2::PathFollowingSetGoal() {
                     this->unk424 = 1.0f;
                     if (this->unk42C > 0.0f) {
                         spC = 0.0f;
-                        spE8.GetMeasure(this->unk424, (Matrix *) &this->unk420->unk30, KDSpline_PositionMixer);
+                        ((KDUniformSpline *) &spE8)->GetMeasure(this->unk424, (Matrix *) &this->unk420->unk30, KDSpline_PositionMixer);
                         sp128 = spE8;
                         sp130 = spF0;
                         temp_f1_5032 = (f32) sp138 - (f32) sp128;
@@ -3128,7 +3128,7 @@ void SB2::PathFollowingSetGoal() {
                     this->unk424 = 0.0f;
                     if (this->unk42C > 0.0f) {
                         sp8 = 0.0f;
-                        spC8.unk10.GetMeasure(this->unk424, (Matrix *) &this->unk420->unk30, KDSpline_PositionMixer);
+                        ((KDUniformSpline *) &spC8.unk10)->GetMeasure(this->unk424, (Matrix *) &this->unk420->unk30, KDSpline_PositionMixer);
                         sp128 = M2C_BITWISE(f64, spC8.unk10);
                         sp130 = spE0;
                         temp_f1_5088 = (f32) sp138 - (f32) sp128;
@@ -3237,7 +3237,7 @@ void SB2::PathFollowingOff() {
     this->unk434 &= ~8;
 }
 
-#if 0 // DRAFT: undefined identifier 'GetIndexOf'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool arg3, bool arg4, float arg5) {
     f64 sp60;
     f64 sp58;
@@ -3288,7 +3288,7 @@ void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool 
     this->unk434 = (this->unk434 & ~0x10) | ((arg2 << 4) & 0x10);
     this->unk434 &= ~8;
     if (((u8) this->unk434 >> 4U) & 1) {
-        this->unk430 = arg0->GetIndexOf(arg0->GetNearestPointXZ(*((MKVector3 *) &sp58)));
+        this->unk430 = ((KDPathSegment *) arg0)->GetIndexOf(((KDPathSegment *) arg0)->GetNearestPointXZ(*((MKVector3 *) &sp58)));
         temp_r7_5420 = this->unk420;
         temp_r6_5421 = this->unk430;
         temp_r3_5422 = temp_r7_5420->unk1C;
@@ -3539,7 +3539,7 @@ void SB2::WanderSetGoal() {
             temp_r3_5668 = this->unk0;
             temp_f25_5671 = 200.0f + M2C_FIELD(temp_r3_5663->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5663);
             temp_f26_5679 = (0.5f * M2C_FIELD(temp_r3_5668->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5668)) + 300.0f;
-            sp2C8.GetDir();
+            ((MKProp *) &sp2C8)->GetDir();
             sp2D8.operator*(temp_f25_5671);
             sp2E8.GetPos();
             spE8 = sp2E8 + M2C_BITWISE(f64, sp2D8);
@@ -3753,14 +3753,14 @@ void SB2::WanderOn() {
     this->unk408 = 0.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::RandomPursuit() {
     f32 sp8;
     f32 var_f1_6289;
     void *temp_r3_6283;
     void *temp_r3_6312;
 
-    sp8.GetDir();
+    ((AITargetData *) &sp8)->GetDir();
     temp_r3_6283 = this + ((this->unk3F8 * 0x98) + 0x100);
     var_f1_6289 = (M2C_FIELD(temp_r3_6283, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6283, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6283, f32 *, 4) * spC));
     if (var_f1_6289 < 1.0f) {
@@ -3778,14 +3778,14 @@ void SB2::RandomPursuit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::RandomPursuitSetGoal() {
     f64 sp20;
     f64 sp18;
     f64 sp8;
     void *temp_r4_6349;
 
-    sp8.GetPos();
+    ((AITargetData *) &sp8)->GetPos();
     sp18 = sp8;
     sp20 = sp10;
     if (PursuitPredictPos((MKVector3 *) &sp18) != 0) {
@@ -3821,14 +3821,14 @@ void SB2::RandomPursuitOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::Pursuit() {
     f32 sp8;
     f32 var_f1_6438;
     void *temp_r3_6432;
     void *temp_r3_6461;
 
-    sp8.GetDir();
+    ((AITargetData *) &sp8)->GetDir();
     temp_r3_6432 = this + ((this->unk3F8 * 0x98) + 0x100);
     var_f1_6438 = (M2C_FIELD(temp_r3_6432, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6432, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6432, f32 *, 4) * spC));
     if (var_f1_6438 < 1.0f) {
@@ -3894,15 +3894,15 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     }
     spB0.GetDir();
     if ((((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() == NULL) || (((((f32) spB0.unk28 * spB0.unk8) + (((f32) spB0.unk20 * M2C_BITWISE(f32, spB0)) + (unkspD4 * unkspB4))) > 0.0f) && (var_f31_6484 < -0.95f))) {
-        sp60.unk40.GetPos();
+        ((AITargetData *) &sp60.unk40)->GetPos();
         M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp60.unk40);
         M2C_FIELD(arg0, f64 *, 8) = M2C_BITWISE(f64, sp60.unk40.unk8);
         return 0U;
     }
     var_f30_6564 = 0.0f;
-    sp90.GetVel();
+    ((AITargetData *) &sp90)->GetVel();
     if (((sp98 * sp98) + ((sp90 * sp90) + (sp94 * sp94))) > 0.01f) {
-        sp80.GetVel();
+        ((AITargetData *) &sp80)->GetVel();
         var_f4_6590 = (sp88 * sp88) + ((sp80 * sp80) + (sp84 * sp84));
         if (var_f4_6590 > 0.0f) {
             temp_f1_6593 = __frsqrte(var_f4_6590);
@@ -3946,7 +3946,7 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
         }
         var_f30_6564 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetDist() / var_f30_6654;
     }
-    sp40.GetVel();
+    ((AITargetData *) &sp40)->GetVel();
     sp50.operator*(var_f30_6564);
     sp60.GetPos();
     sp10 = sp60.unk0 + M2C_BITWISE(f64, sp50);
@@ -3959,14 +3959,14 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::PursuitSetGoal() {
     f64 sp20;
     f64 sp18;
     f64 sp8;
     void *temp_r4_6731;
 
-    sp8.GetPos();
+    ((AITargetData *) &sp8)->GetPos();
     sp18 = sp8;
     sp20 = sp10;
     if (PursuitPredictPos((MKVector3 *) &sp18) != 0) {
@@ -4002,14 +4002,14 @@ void SB2::PursuitOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::Arrive() {
     f32 sp8;
     f32 var_f1_6820;
     void *temp_r3_6814;
     void *temp_r3_6843;
 
-    sp8.GetDir();
+    ((AITargetData *) &sp8)->GetDir();
     temp_r3_6814 = this + ((this->unk3F8 * 0x98) + 0x100);
     var_f1_6820 = (M2C_FIELD(temp_r3_6814, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6814, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6814, f32 *, 4) * spC));
     if (var_f1_6820 < 1.0f) {
@@ -4064,14 +4064,14 @@ void SB2::ArriveOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SB2::Seek() {
     f32 sp8;
     f32 var_f1_6954;
     void *temp_r3_6948;
     void *temp_r3_6976;
 
-    sp8.GetDir();
+    ((AITargetData *) &sp8)->GetDir();
     temp_r3_6948 = this + ((this->unk3F8 * 0x98) + 0x100);
     var_f1_6954 = (M2C_FIELD(temp_r3_6948, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6948, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6948, f32 *, 4) * spC));
     if (var_f1_6954 < 1.0f) {
@@ -4126,7 +4126,7 @@ void SB2::SeekOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void SB2::ResetSteerDirections() {
     f64 sp20;
     f64 sp18;
@@ -4142,7 +4142,7 @@ void SB2::ResetSteerDirections() {
     M2C_FIELD(this, f32 *, 0x70) = 0.0f;
     temp_r3_7079 = this->unk0;
     if (temp_r3_7079 != NULL) {
-        temp_r3_7079->unk8->ZAxis3();
+        ((Matrix *) temp_r3_7079->unk8)->ZAxis3();
         sp8 = -*M2C_ERROR(/* Read from unset register $r3 */);
         spC = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
         sp10 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);

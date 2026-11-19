@@ -294,7 +294,7 @@ loop_15:
             var_r4_473 += 4;
             goto loop_15;
         }
-        temp_r3_500 = var_r3_475->Current();
+        temp_r3_500 = ((MKHeap *) var_r3_475)->Current();
         if (temp_r3_500 != NULL) {
             ((MKHeap *) (temp_r3_500->Current()))->Free(var_r31_474, NULL, 0);
         } else {
@@ -668,7 +668,7 @@ void SkyClouds::Init() {
         var_r3_1092 = malloc(0x1F40);
     }
     this->unk50 = var_r3_1092;
-    temp_r3_1099 = var_r3_1092->Current();
+    temp_r3_1099 = ((MKHeap *) var_r3_1092)->Current();
     if (temp_r3_1099 != NULL) {
         var_r3_1106 = ((MKHeap *) (temp_r3_1099->Current()))->Alloc(0x190, NULL, 0);
     } else {
@@ -702,7 +702,7 @@ void SkyClouds::Init() {
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     this->unkC = (BoundingVolume *) &this->unk60;
-    temp_r3_1152 = temp_r3_1126->Current();
+    temp_r3_1152 = ((MKHeap *) temp_r3_1126)->Current();
     if (temp_r3_1152 != NULL) {
         var_r3_1159 = ((MKHeap *) (temp_r3_1152->Current()))->Alloc(0x210, NULL, 0);
     } else {

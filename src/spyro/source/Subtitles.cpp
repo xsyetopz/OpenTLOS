@@ -148,22 +148,22 @@ void Subtitles_Update() {
         }
         sub.unk70 = M2C_BITWISE(f32, sub.unk70) + (1.0f / var_f1_260);
 loop_38:
-        if (((u32) sub.unk64 != 0) && (sub.unk64->GetFloat(0) <= M2C_BITWISE(f32, sub.unk70))) {
-            if (sub.unk64->IsField("subtitle") != 0) {
-                sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
-                temp_f1_292 = sub.unk64->GetFloat(1);
+        if (((u32) sub.unk64 != 0) && (((MKIniLine *) sub.unk64)->GetFloat(0) <= M2C_BITWISE(f32, sub.unk70))) {
+            if (((MKIniLine *) sub.unk64)->IsField("subtitle") != 0) {
+                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (s32 *) &sub.unk80);
+                temp_f1_292 = ((MKIniLine *) sub.unk64)->GetFloat(1);
                 sub.unk8 = 0;
                 sub.unk0 = temp_f1_292;
                 ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 9, 0U);
-            } else if (sub.unk64->IsField("credit") != 0) {
-                sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
-                temp_f1_320 = sub.unk64->GetFloat(1);
+            } else if (((MKIniLine *) sub.unk64)->IsField("credit") != 0) {
+                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (s32 *) &sub.unk80);
+                temp_f1_320 = ((MKIniLine *) sub.unk64)->GetFloat(1);
                 sub.unk8 = 1;
                 sub.unk0 = temp_f1_320;
                 ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 5, 1U);
-            } else if (sub.unk64->IsField("logo") != 0) {
+            } else if (((MKIniLine *) sub.unk64)->IsField("logo") != 0) {
                 sub.unk4 = 0;
-                sub.unk0 = sub.unk64->GetFloat(1);
+                sub.unk0 = ((MKIniLine *) sub.unk64)->GetFloat(1);
                 sub.unk8 = 2;
                 M2C_FIELD(&sub, u8 *, 0x10) = 1U;
                 M2C_FIELD(&sub, u8 *, 0x11) = 0U;
@@ -251,7 +251,7 @@ void Subtitles_Deinit() {
         } else {
             free(M2C_BITWISE(void *, temp_r29_501));
         }
-        sub.unk14.Deinit();
+        ((MKIni *) &sub.unk14)->Deinit();
         M2C_FIELD(&sub, u8 *, 0x84) = 0U;
         sub.unk64 = 0;
     }
@@ -288,9 +288,9 @@ void Subtitles_Init(const char *arg0) {
     Subtitles_Deinit();
     temp_r3_548 = MKArchive_Exists(Str_Printf("%s.ini.bni", arg0), NULL);
     if (temp_r3_548 != 0) {
-        temp_r3_548->ActivateTempMemOverride();
-        sub.unk14.Init(Str_Printf("%s.ini", arg0), 0, NULL);
-        temp_r3_567 = sub.unk14.GetFirstLine();
+        ((MKHeap *) temp_r3_548)->ActivateTempMemOverride();
+        ((MKIni *) &sub.unk14)->Init(Str_Printf("%s.ini", arg0), 0, NULL);
+        temp_r3_567 = ((MKIni *) &sub.unk14)->GetFirstLine();
         sub.unk64 = temp_r3_567;
         var_r4_581 = 0;
         sub.unk64 = ((MKIni *) (M2C_FIELD(temp_r3_567, MKIni **, 0xC)))->GetSubLine((MKIniLine *) temp_r3_567);
@@ -310,7 +310,7 @@ void Subtitles_Init(const char *arg0) {
             var_ctr_591 -= 1;
         } while (var_ctr_591 != 0);
         sub.unk7C = 0.0f;
-        if (sub.unk64->IsField("preload") != 0) {
+        if (((MKIniLine *) sub.unk64)->IsField("preload") != 0) {
             sub.unk68 = MKMaterial_Create("ui_logo1");
             sub.unk6C = M2C_BITWISE(f32, MKMaterial_Create("ui_logo2"));
             sub.unk7C = 3e-45f;
@@ -322,7 +322,7 @@ void Subtitles_Init(const char *arg0) {
         var_r3_642 = MKArchive_Exists(temp_r3_639, &sp8);
         if ((u8) var_r3_642 != 0) {
             temp_r28_646 = sp8 + 1;
-            temp_r3_647 = sp8->Current();
+            temp_r3_647 = ((MKHeap *) sp8)->Current();
             if (temp_r3_647 != NULL) {
                 var_r5_655 = ((MKHeap *) (temp_r3_647->Current()))->Alloc(temp_r28_646, NULL, 0);
             } else {
@@ -356,7 +356,7 @@ loop_18:
                 goto loop_18;
             }
             temp_r27_708 = M2C_BITWISE(s32, sub.unk7C) * 8;
-            temp_r3_709 = var_r3_666->Current();
+            temp_r3_709 = ((MKHeap *) var_r3_666)->Current();
             if (temp_r3_709 != NULL) {
                 var_r3_716 = ((MKHeap *) (temp_r3_709->Current()))->Alloc(temp_r27_708, NULL, 0);
             } else {
@@ -409,7 +409,7 @@ block_30:
                 goto loop_38;
             }
         }
-        var_r3_642->DeactivateTempMemOverride();
+        ((MKHeap *) var_r3_642)->DeactivateTempMemOverride();
     }
 }
 #endif

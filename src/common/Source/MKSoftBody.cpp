@@ -3359,7 +3359,7 @@ void MKCloth::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void MKCloth::Create() {
     M2C_UNK sp8;
     f64 temp_f30_5455;
@@ -3379,7 +3379,7 @@ void MKCloth::Create() {
 loop_2:
     temp_r29_5481 = M2C_FIELD(this, void **, 4);
     if (var_r28_5454 < (s32) M2C_FIELD(temp_r29_5481, s32 *, 0)) {
-        sp8.GetWorldBindPos((s32) this);
+        ((MKCloth *) &sp8)->GetWorldBindPos((s32) this);
         SetNode(var_r28_5454, *((MKVector3 *) &sp8), *(M2C_FIELD(temp_r29_5481, s32 *, 4) + (var_r30_5458 + 0x10)));
         temp_r0_5473 = var_r31_5456 + 0x20;
         var_r28_5454 += 1;
@@ -3773,7 +3773,7 @@ void MKClothManager::Deinit() {
     } while ((MKModel *) *temp_r3_6085 != NULL);
     temp_r31_6090 = this->unk0;
     if (temp_r31_6090 != &gEmptyPtrList) {
-        temp_r3_6094 = temp_r3_6085->Current();
+        temp_r3_6094 = ((MKHeap *) temp_r3_6085)->Current();
         if (temp_r3_6094 != NULL) {
             ((MKHeap *) (temp_r3_6094->Current()))->Free(temp_r31_6090, NULL, 0);
         } else {

@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -196,7 +197,7 @@ loop_13:
             MKSetMatrix(Matrix::identity);
             sp20 = 0.0f;
             temp_f27_267 = 1.0f / (f32) var_r30_176;
-            spB8.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &spB8)->GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_PositionMixer);
             sp80 = 0.0f;
             sp78 = 0.0f;
             sp7C = 1.0f;
@@ -205,7 +206,7 @@ loop_13:
             spE8 = (f64) sp78;
             spF0 = (f64) sp80;
             sp1C = 0.0f;
-            sp68.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_VelocityMixer);
+            ((KDUniformSpline *) &sp68)->GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_VelocityMixer);
             sp58 = sp68;
             sp60 = sp70;
             sp38 = sp58 * (f64) sp1C;
@@ -301,7 +302,7 @@ loop_80:
                     var_f21_492 = 0.0f;
                 }
                 sp18 = 0.0f;
-                spA8.GetMeasure(var_f21_492, (Matrix *) &this->unk60, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &spA8)->GetMeasure(var_f21_492, (Matrix *) &this->unk60, KDSpline_PositionMixer);
                 sp30 = 0.0f;
                 sp28 = 0.0f;
                 sp2C = 1.0f;
@@ -311,7 +312,7 @@ loop_80:
                 spA0 = (f64) sp30;
                 spE8 = (f64) sp28;
                 spF0 = (f64) sp30;
-                sp88.GetVelocity(var_f21_492);
+                ((KDUniformSpline *) &sp88)->GetVelocity(var_f21_492);
                 spD8 = sp88;
                 spE0 = sp90;
                 var_f4_541 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));

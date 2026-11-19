@@ -92,10 +92,10 @@ void SpikeTrap::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void SpikeTrapDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim("inactive");
-    this->unkE8 = this->unk34->GetAnim("activating");
-    this->unkEC = this->unk34->GetAnim("activated");
-    this->unkF0 = this->unk34->GetAnim("deactivating");
+    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("inactive");
+    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("activating");
+    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("activated");
+    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("deactivating");
 }
 #endif
 

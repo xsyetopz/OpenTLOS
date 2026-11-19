@@ -7,6 +7,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDVolume.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/MessageMap.h"
@@ -48,7 +49,7 @@ void SpawnEffectBox::Update() {
         temp_f29_71 = this->unk50.GetWidth();
         temp_f31_74 = this->unk50.GetHeight();
         temp_f30_77 = this->unk50.GetDepth();
-        sp30.GetCenterPos();
+        ((KDVolume *) &sp30)->GetCenterPos();
         temp_f30_85 = MKRand_Float(&gViewSeed, -temp_f30_77, temp_f30_77);
         temp_f31_90 = MKRand_Float(&gViewSeed, -temp_f31_74, temp_f31_74);
         sp20 = MKRand_Float(&gViewSeed, -temp_f29_71, temp_f29_71);
@@ -115,7 +116,7 @@ void SpawnEffectBox::LoadDone() {
         }
     }
     temp_r30_470 = this->unkE8 * 4;
-    temp_r3_471 = var_r3_458->Current();
+    temp_r3_471 = ((MKHeap *) var_r3_458)->Current();
     if (temp_r3_471 != NULL) {
         var_r3_478 = ((MKHeap *) (temp_r3_471->Current()))->Alloc(temp_r30_470, NULL, 0);
     } else {

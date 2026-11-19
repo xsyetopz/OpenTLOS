@@ -202,17 +202,17 @@ void FloorSwitch::Update() {
         KDSound_SetPitch(temp_r3_281->unk0, 1.0f);
         temp_r4_290 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk114->Update(M2C_FIELD(temp_r4_290, s32 *, 0xEC), 1U, ((u8) this->unk110 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk114)->Update(M2C_FIELD(temp_r4_290, s32 *, 0xEC), 1U, ((u8) this->unk110 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((KDSoundPlayer *) this->unk118 != NULL) {
         temp_r4_309 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk118->Update(M2C_FIELD(temp_r4_309, s32 *, 0xF0), 1U, ((u8) this->unk110 >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk118)->Update(M2C_FIELD(temp_r4_309, s32 *, 0xF0), 1U, ((u8) this->unk110 >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((KDSoundPlayer *) this->unk11C != NULL) {
         temp_r4_328 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk11C->Update(M2C_FIELD(temp_r4_328, s32 *, 0xF4), 1U, ((u8) this->unk110 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk11C)->Update(M2C_FIELD(temp_r4_328, s32 *, 0xF4), 1U, ((u8) this->unk110 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if (((u8) this->unk110 >> 5U) & 1) {
         sp11C = 0;
@@ -372,7 +372,7 @@ void FloorSwitch::LoadDone() {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk114 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk114->Init(0.25f, 0.25f);
+        ((KDSoundFader *) this->unk114)->Init(0.25f, 0.25f);
     }
     if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF0) != 0) {
         operator new(0x28U, NULL, 0);
@@ -380,7 +380,7 @@ void FloorSwitch::LoadDone() {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk118 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk118->Init(0.25f, 0.25f);
+        ((KDSoundFader *) this->unk118)->Init(0.25f, 0.25f);
     }
     if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF4) != 0) {
         operator new(0x28U, NULL, 0);
@@ -388,7 +388,7 @@ void FloorSwitch::LoadDone() {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk11C = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk11C->Init(0.25f, 0.25f);
+        ((KDSoundFader *) this->unk11C)->Init(0.25f, 0.25f);
     }
     this->unk128 = MKMaterial_Create("p_white_pad");
 }
@@ -516,10 +516,10 @@ void FloorSwitchDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     temp_r3_989 = this->unk34;
     if (temp_r3_989 != NULL) {
-        this->unkF8 = temp_r3_989->GetAnim("idle");
-        this->unkFC = this->unk34->GetAnim("activate");
-        this->unk100 = this->unk34->GetAnim("activated");
-        this->unk104 = this->unk34->GetAnim("deactivate");
+        this->unkF8 = ((MKAnimScript *) temp_r3_989)->GetAnim("idle");
+        this->unkFC = ((MKAnimScript *) this->unk34)->GetAnim("activate");
+        this->unk100 = ((MKAnimScript *) this->unk34)->GetAnim("activated");
+        this->unk104 = ((MKAnimScript *) this->unk34)->GetAnim("deactivate");
     }
 }
 #endif

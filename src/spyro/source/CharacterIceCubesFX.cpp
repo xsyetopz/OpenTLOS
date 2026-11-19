@@ -103,7 +103,7 @@ loop_5:
             if (temp_r3_154 != NULL) {
                 M2C_STRUCT_COPY((s32) &sp10.unkC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r3_154, MKModel **, 4)) - 4 + 4, 0x40);
                 sp10.NormaliseScale();
-                sp10.unk10.Scale3x3((Matrix *) &sp10.unk10, *(*(this->unk4 + var_r29_149) + 0x10));
+                ((Matrix *) &sp10.unk10)->Scale3x3((Matrix *) &sp10.unk10, *(*(this->unk4 + var_r29_149) + 0x10));
                 MKModel_SetWorldMatrix(M2C_FIELD(*(this->unk14 + var_r28_150), MKModel **, 4), *((Matrix *) &sp10.unk10));
                 temp_r3_187 = *(this->unk14 + var_r28_150);
                 M2C_FIELD(M2C_FIELD(temp_r3_187, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r3_187, 0, 0, -1, 0, 1, 0);
@@ -220,7 +220,7 @@ void CharacterIceCubesFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBF
     CharacterBodyFX::InitData(arg0, arg1, arg2);
     temp_r3_401 = this->unk8;
     temp_r31_403 = temp_r3_401->unk4 * 4;
-    temp_r3_404 = temp_r3_401->Current();
+    temp_r3_404 = ((MKHeap *) temp_r3_401)->Current();
     if (temp_r3_404 != NULL) {
         var_r3_411 = ((MKHeap *) (temp_r3_404->Current()))->Alloc(temp_r31_403, NULL, 0);
     } else {

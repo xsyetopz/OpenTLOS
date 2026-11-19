@@ -6,14 +6,18 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/FoundryGas.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/LavaSteamPS.h"
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/SparksPS.h"
+#include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
@@ -311,7 +315,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         temp_r3_448 = this->unk9C;
         if (temp_r3_448 & 1) {
             this->unk38 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            this->unk3C.GetPositionAlongPath(this->unk38, *arg0);
+            ((KDPathSegment *) &this->unk3C)->GetPositionAlongPath(this->unk38, *arg0);
         } else if (temp_r3_448 & 2) {
             if ((s32) this->unkA0 == 0) {
                 this->unk38 += gUpdateTimeDelta;
@@ -342,11 +346,11 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
                     this->unk38 = 1.0f;
                 }
             }
-            this->unk3C.GetPositionAlongPath(this->unk38, *arg0);
+            ((KDPathSegment *) &this->unk3C)->GetPositionAlongPath(this->unk38, *arg0);
         }
         temp_r3_530 = this->unk9C;
         if (temp_r3_530 & 8) {
-            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp168);
+            ((KDPathSegment *) &this->unk3C.unk2C)->GetPositionAlongPath(this->unk38, sp168);
             temp_f31_541 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             temp_f3_543 = M2C_FIELD(arg0, f64 *, 0);
             temp_f0_544 = M2C_BITWISE(f64, sp168) - temp_f3_543;
@@ -362,7 +366,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             M2C_FIELD(arg0, f64 *, 0) = (f64) (temp_f3_543 + temp_f0_555);
             arg0->unk8 += (f32) sp120;
         } else if (temp_r3_530 & 0x10) {
-            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp158);
+            ((KDPathSegment *) &this->unk3C.unk2C)->GetPositionAlongPath(this->unk38, sp158);
             temp_f0_581 = M2C_BITWISE(f64, sp158) - M2C_FIELD(arg0, f64 *, 0);
             sp68 = temp_f0_581;
             sp148 = temp_f0_581;
@@ -408,8 +412,8 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         temp_r0_693 = this->unk9C;
         switch (temp_r0_693) {                      /* irregular */
         case 0:
-            this->unk3C.GetPositionAlongPath(this->unk38, sp138);
-            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp128);
+            ((KDPathSegment *) &this->unk3C)->GetPositionAlongPath(this->unk38, sp138);
+            ((KDPathSegment *) &this->unk3C.unk2C)->GetPositionAlongPath(this->unk38, sp128);
             temp_f0_706 = M2C_BITWISE(f64, sp128) - M2C_BITWISE(f64, sp138);
             sp28 = temp_f0_706;
             sp98 = temp_f0_706;
@@ -444,12 +448,10 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void DirectedLineEmitter::Deinit() {
-    this->unk3C.unk2C.Deinit();
-    this->unk3C.Deinit();
+    ((KDPathSegment *) &this->unk3C.unk2C)->Deinit();
+    ((KDPathSegment *) &this->unk3C)->Deinit();
 }
-#endif
 
 void DirectedLineEmitter::Draw() {
 
@@ -459,12 +461,10 @@ void DirectedLineEmitter::Update() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
 void DirectedLineEmitter::LoadDone() {
-    this->unk3C.unk2C.LoadDone();
-    this->unk3C.LoadDone();
+    ((KDPathSegment *) &this->unk3C.unk2C)->LoadDone();
+    ((KDPathSegment *) &this->unk3C)->LoadDone();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DirectedLineEmitter::LoadLine(MKIniLine *arg0) {
@@ -482,8 +482,8 @@ loop_2:
         var_r30_865->LoadFloat("MaxScale", &this->unk4, 0);
         var_r30_865->LoadFloat("MinVel", &this->unk10, 0);
         var_r30_865->LoadFloat("MaxVel", &this->unkC, 0);
-        this->unk3C.unk2C.LoadWaypoints(var_r30_865, "DestPath");
-        this->unk3C.LoadWaypoints(var_r30_865, "SourcePath");
+        ((KDPathSegment *) &this->unk3C.unk2C)->LoadWaypoints(var_r30_865, "DestPath");
+        ((KDPathSegment *) &this->unk3C)->LoadWaypoints(var_r30_865, "SourcePath");
         var_r30_865 = var_r30_865->unkC->GetNextLine(var_r30_865);
         goto loop_2;
     }
@@ -501,13 +501,12 @@ void DirectedLineEmitter::SetDirection(const MKVector3 &arg0) {
     this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
 }
 
-#if 0 // DRAFT: expression syntax error
 void DirectedLineEmitter::Init() {
     this->unk38 = 0.0f;
     this->unkA4 = 0.0f;
     this->unkA8 = 0.0f;
-    this->unk3C.Init();
-    this->unk3C.unk2C.Init();
+    ((KDPathSegment *) &this->unk3C)->Init();
+    ((KDPathSegment *) &this->unk3C.unk2C)->Init();
     this->unkA0 = 0;
     this->unk9C = 0;
     this->unk9C = 9;
@@ -516,7 +515,6 @@ void DirectedLineEmitter::Init() {
     this->unkC = 1.0f;
     this->unk10 = 0.5f;
 }
-#endif
 
 void GameParticleEmitter::Deinit() {
     void **temp_r3_998;
@@ -636,7 +634,6 @@ void GameParticleEmitter::Update() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void GameParticleEmitter::EmitEmber() {
     MKVector3 sp28;
     f32 sp18;
@@ -650,13 +647,12 @@ loop_3:
         if (var_r30_1211 < (s32) this->unkDC) {
             temp_r3_1215 = this->unkC8;
             M2C_FIELD(*temp_r3_1215, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1215, &sp28, &sp8, &sp18, 0);
-            gb.unk74->Emit(sp28, sp8, sp18, this->unk108, 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(sp28, sp8, sp18, this->unk108, 0.0f);
             var_r30_1211 += 1;
             goto loop_3;
         }
     }
 }
-#endif
 
 void GameParticleEmitter::EmitDust() {
     MKVector3 sp28;
@@ -678,7 +674,6 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void GameParticleEmitter::EmitWaterDrip() {
     MKVector3 sp28;
     f32 sp18;
@@ -692,13 +687,12 @@ loop_3:
         if (var_r30_1300 < (s32) this->unkDC) {
             temp_r3_1304 = this->unkC8;
             M2C_FIELD(*temp_r3_1304, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1304, &sp28, &sp8, &sp18, 0);
-            gb.unk6C->Emit(sp28, sp8, sp18, 1U, 1U, NULL);
+            ((WaterDripPS *) gb.unk6C)->Emit(sp28, sp8, sp18, 1U, 1U, NULL);
             var_r30_1300 += 1;
             goto loop_3;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp30'
 void GameParticleEmitter::EmitWaterfallMist() {
@@ -930,7 +924,6 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void GameParticleEmitter::EmitLavaBubble() {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -943,13 +936,12 @@ loop_3:
         if (var_r30_1776 < (s32) this->unkDC) {
             temp_r3_1780 = this->unkC8;
             M2C_FIELD(*temp_r3_1780, M2C_UNK (**)(void **, MKVector3 *, M2C_UNK, MKVector3 *, M2C_UNK), 0x20)(temp_r3_1780, &sp18, 0, &sp8, 0);
-            gb.unk90->CreateBubble(sp18, sp8);
+            ((LavaBubbleFX *) gb.unk90)->CreateBubble(sp18, sp8);
             var_r30_1776 += 1;
             goto loop_3;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void GameParticleEmitter::LoadDone() {

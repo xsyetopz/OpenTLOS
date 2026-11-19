@@ -37,7 +37,7 @@ public:
 inline NPCGuardian::NPCGuardian() {
     M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     this->unkAFC = 0;
-    this->unkAFC.Init();
+    ((EventMessage *) &this->unkAFC)->Init();
     return this;
 }
 #endif
@@ -46,7 +46,7 @@ inline NPCGuardian::NPCGuardian() {
 inline NPCGuardian::~NPCGuardian() {
     M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
     if (&this->unkAFC != NULL) {
-        this->unkAFC.Deinit();
+        ((EventMessage *) &this->unkAFC)->Deinit();
     }
 }
 #endif

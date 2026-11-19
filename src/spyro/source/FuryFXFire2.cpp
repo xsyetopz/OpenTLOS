@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXFire2.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -10,6 +11,7 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GroundFire.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -57,7 +59,7 @@ loop_4:
                 KDSound_Stop(temp_r30_100 + 0x48);
                 temp_r6_75 = gb.unk0->GetProp();
                 sp8 = 1;
-                this->unk150->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 M2C_FIELD(temp_r30_100, s32 *, 0x44) = 2;
                 temp_r3_88 = this->unk14C;
                 this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_88) + 4));
@@ -265,7 +267,7 @@ loop_9:
                     KDSound_Stop(temp_r31_433 + 0x48);
                     temp_r6_406 = gb.unk0->GetProp();
                     sp8 = 1;
-                    this->unk150->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                    ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                     M2C_FIELD(temp_r31_433, s32 *, 0x44) = 2;
                 }
                 break;
@@ -376,7 +378,7 @@ loop_9:
     }
     this->unk14C = 0.0f;
     MKModel_Destroy(this->unk148);
-    this->unk160.Deinit();
+    ((GroundFire *) &this->unk160)->Deinit();
     FuryFX::Deinit();
 }
 #endif
@@ -397,7 +399,7 @@ void FuryFXFire2::Draw() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FuryFXFire2::Update() {
     MKCollisionResult sp760;
     Matrix sp720;
@@ -664,7 +666,7 @@ void FuryFXFire2::Update() {
     void *temp_r3_984;
 
     this->unkE8 = this->unkE8 - gUpdateTimeDelta;
-    this->unk160.Update();
+    ((GroundFire *) &this->unk160)->Update();
     if ((s32) this->unkD0 != 0) {
         UpdateMeteors();
     }
@@ -1008,7 +1010,7 @@ void FuryFXFire2::Update() {
                         sp660 = M2C_BITWISE(f64, sp760);
                         sp668 = (f64) sp760.unk8;
                     }
-                    this->unk160.Emit(*((MKVector3 *) &sp660), MKRand_Float(&gViewSeed, 3.0f, 5.0f), 0U);
+                    ((GroundFire *) &this->unk160)->Emit(*((MKVector3 *) &sp660), MKRand_Float(&gViewSeed, 3.0f, 5.0f), 0U);
                     var_r28_1474 += 1;
                 } while (var_r28_1474 < 0xA);
                 return;
@@ -1070,9 +1072,9 @@ void FuryFXFire2::Init() {
     this->unk14C = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r4_1681) + 4));
     M2C_FIELD(M2C_BITWISE(void *, temp_r4_1681), s32 *, 4) = 0;
     this->unk148 = MKModel_Create("P0002_LavaCannonBall", NULL, 2, NULL);
-    gMK->CreatePropDeferred("Explosion4", (MKProp **) &this->unk150);
-    gMK->CreatePropDeferred("ClusterBomb", (MKProp **) &this->unk15C);
-    this->unk160.Init(0xA);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("Explosion4", (MKProp **) &this->unk150);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("ClusterBomb", (MKProp **) &this->unk15C);
+    ((GroundFire *) &this->unk160)->Init(0xA);
     this->unk154 = (Explosion4 *)-1;
 }
 #endif

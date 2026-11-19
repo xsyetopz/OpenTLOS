@@ -9,6 +9,7 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDCamera.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
@@ -613,7 +614,7 @@ void EventCamera::FunctionOn() {
                 sp150 = temp_f0_904;
                 this->unkA8 = temp_f0_904;
             }
-            sp138.GetTargetStart();
+            ((EventCamera *) &sp138)->GetTargetStart();
             M2C_FIELD(&cameraPos, f64 *, 0x20) = sp138;
             M2C_FIELD(&cameraPos, f64 *, 0x28) = sp140;
             this->unk80 = sp138;
@@ -636,12 +637,12 @@ void EventCamera::FunctionOn() {
                     sp4C = M2C_FIELD(temp_r7_947, f32 *, 4) - this->unkEC;
                     sp100 = (f64) sp50;
                     spF8 = (f64) sp48;
-                    sp108.CalculateCircleTangent((MKVector3) this, (MKVector3) &spF8, this->unkDC);
+                    ((EventCamera *) &sp108)->CalculateCircleTangent((MKVector3) this, (MKVector3) &spF8, this->unkDC);
                     M2C_FIELD(&cameraPos, f64 *, 0) = sp108;
                     M2C_FIELD(&cameraPos, f64 *, 8) = sp110;
                 }
             } else {
-                spD8.GetSourceStart();
+                ((EventCamera *) &spD8)->GetSourceStart();
                 M2C_FIELD(&cameraPos, f64 *, 0) = spD8;
                 M2C_FIELD(&cameraPos, f64 *, 8) = spE0;
             }
@@ -753,7 +754,7 @@ void EventCamera::FunctionOn() {
             }
         }
         if (((u8) this->unkF8 != 0) && ((void *) pCurrentCamera->unkB4 != NULL)) {
-            sp78.GetDir((u8) M2C_FIELD(&gb, void **, 0x3B8));
+            ((KDCamera *) &sp78)->GetDir((u8) M2C_FIELD(&gb, void **, 0x3B8));
             sp88.GetPos();
             sp28 = sp88 + sp78;
             temp_r3_1239 = M2C_FIELD(pCurrentCamera->unkB4, void **, 0x70);
@@ -794,7 +795,7 @@ void EventCamera::GetSourceStart() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned long' to
 void EventCamera::GetTargetStart() {
     f64 sp98;
     f64 sp90;
@@ -834,7 +835,7 @@ void EventCamera::GetTargetStart() {
     sp98 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (temp_r6_1331 != 0U) {
         spC = 0.0f;
-        sp80.GetMeasure(0.0f, temp_r6_1331 + 0x7C, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp80)->GetMeasure(0.0f, temp_r6_1331 + 0x7C, KDSpline_PositionMixer);
         sp90 = sp80;
         sp98 = sp88;
     } else {
@@ -881,7 +882,7 @@ void EventCamera::GetTargetStart() {
             if ((temp_r0_1409 == 0) && ((u32) M2C_FIELD(temp_r30_1325, u32 *, 0xB0) != 0U)) {
                 sp20.GetVelocity(0.0f);
                 sp8 = 0.0f;
-                sp20.unk10.GetMeasure(0.0f, M2C_FIELD(temp_r30_1325, u32 *, 0xB0) + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp20.unk10)->GetMeasure(0.0f, M2C_FIELD(temp_r30_1325, u32 *, 0xB0) + 0x7C, KDSpline_PositionMixer);
                 sp10 = M2C_BITWISE(f64, sp20.unk10) + M2C_BITWISE(f64, sp20);
                 sp40 = sp10;
                 sp18 = sp38 + sp20.unk8;
@@ -1204,7 +1205,7 @@ void EventCamera::Update() {
                         sp768 = (f64) sp48;
                         sp730.operator*(this->unkDC);
                         ((SpawnerObject *) (temp_r3_1512 + 0x90))->GetActive(0);
-                        sp740.GetPos();
+                        ((MKProp *) &sp740)->GetPos();
                         temp_f0_1557 = sp740 - M2C_BITWISE(f64, sp730);
                         sp1C0 = temp_f0_1557;
                         M2C_FIELD(&cameraPos, f64 *, 0) = temp_f0_1557;
@@ -1229,7 +1230,7 @@ void EventCamera::Update() {
                         M2C_FIELD(&cameraDir, f64 *, 8) = (f64) sp1B8;
                         cameraDir.Normalise();
                     } else {
-                        sp700.GetTargetStart();
+                        ((EventCamera *) &sp700)->GetTargetStart();
                         M2C_FIELD(&cameraDir, f64 *, 0) = sp700;
                         M2C_FIELD(&cameraDir, f64 *, 8) = sp708;
                         sp6D0 = this->unk90;
@@ -1239,7 +1240,7 @@ void EventCamera::Update() {
                         sp1A4 = cameraDir.unk4 - this->unkEC;
                         sp6E8 = (f64) sp1A8;
                         sp6E0 = (f64) sp1A0;
-                        sp6F0.CalculateCircleTangent((MKVector3) this, (MKVector3) &sp6E0, this->unkDC);
+                        ((EventCamera *) &sp6F0)->CalculateCircleTangent((MKVector3) this, (MKVector3) &sp6E0, this->unkDC);
                         M2C_FIELD(&cameraPos, f64 *, 0) = sp6F0;
                         M2C_FIELD(&cameraPos, f64 *, 8) = sp6F8;
                         sp190 = M2C_FIELD(&cameraDir, f64 *, 0) - M2C_FIELD(&cameraPos, f64 *, 0);
@@ -1251,12 +1252,12 @@ void EventCamera::Update() {
                         cameraDir.Normalise();
                     }
                 } else {
-                    sp6B0.GetTargetStart();
+                    ((EventCamera *) &sp6B0)->GetTargetStart();
                     M2C_FIELD(&cameraDir, f64 *, 0) = sp6B0;
                     M2C_FIELD(&cameraDir, f64 *, 8) = sp6B8;
                     this->unk80 = sp6B0;
                     this->unk88 = sp6B8;
-                    sp6A0.GetSourceStart();
+                    ((EventCamera *) &sp6A0)->GetSourceStart();
                     M2C_FIELD(&cameraPos, f64 *, 0) = sp6A0;
                     M2C_FIELD(&cameraPos, f64 *, 8) = sp6A8;
                     sp180 = M2C_FIELD(&cameraDir, f64 *, 0) - M2C_FIELD(&cameraPos, f64 *, 0);
@@ -1328,7 +1329,7 @@ void EventCamera::Update() {
                     sp7C0 = temp_f0_1849;
                     sp158 = (f32) sp658 + (f32) sp238;
                     sp7C8 = (f64) sp158;
-                    sp630.GetTargetStart();
+                    ((EventCamera *) &sp630)->GetTargetStart();
                     sp7B0 = sp630;
                     sp7B8 = sp638;
                     sp140 = sp630 - sp7C0;
@@ -1337,7 +1338,7 @@ void EventCamera::Update() {
                     sp7B0 = sp140;
                     sp628 = (f64) sp148;
                     sp7B8 = (f64) sp148;
-                    sp7B0.Normalise();
+                    ((MKVector3 *) &sp7B0)->Normalise();
                     KDMath_NormalisedSlerp(sp600, *((MKVector3 *) &this->unkA0), this->unkC8 / var_f30_1804);
                     sp130 = this->unk50 + M2C_BITWISE(f64, sp600);
                     M2C_FIELD(this, f64 *, 0x60) = sp130;
@@ -1346,7 +1347,7 @@ void EventCamera::Update() {
                     sp618 = (f64) sp138;
                     M2C_FIELD(this, f64 *, 0x68) = (f64) sp138;
                 } else {
-                    sp5F0.GetTargetStart();
+                    ((EventCamera *) &sp5F0)->GetTargetStart();
                     M2C_FIELD(this, f64 *, 0x60) = sp5F0;
                     M2C_FIELD(this, f64 *, 0x68) = sp5F8;
                 }
@@ -1367,7 +1368,7 @@ void EventCamera::Update() {
             Lerp((MKVector3) &sp5C0, (MKVector3) &sp5B0, 1.0f);
             this->unk50 = sp5C0;
             this->unk58 = sp5C8;
-            sp590.GetTargetStart();
+            ((EventCamera *) &sp590)->GetTargetStart();
             M2C_FIELD(this, f64 *, 0x60) = sp590;
             M2C_FIELD(this, f64 *, 0x68) = sp598;
             this->unk101 = 0;
@@ -1445,13 +1446,13 @@ void EventCamera::Update() {
                     sp7A0 = temp_f0_2136;
                     spF8 = (f32) sp558 + (f32) sp218;
                     sp7A8 = (f64) spF8;
-                    sp530.GetTargetStart();
+                    ((EventCamera *) &sp530)->GetTargetStart();
                     temp_f0_2151 = sp530 - sp7A0;
                     sp200 = temp_f0_2151;
                     sp790 = temp_f0_2151;
                     sp208 = sp538 - (f32) sp7A8;
                     sp798 = (f64) sp208;
-                    sp790.Normalise();
+                    ((MKVector3 *) &sp790)->Normalise();
                     KDMath_NormalisedSlerp(sp510, *((MKVector3 *) &sp790), (this->unkC8 - temp_f30_2098) / temp_f30_2098);
                     spE0 = this->unk50 + M2C_BITWISE(f64, sp510);
                     M2C_FIELD(this, f64 *, 0x60) = spE0;
@@ -1460,7 +1461,7 @@ void EventCamera::Update() {
                     sp528 = (f64) spE8;
                     M2C_FIELD(this, f64 *, 0x68) = (f64) spE8;
                 } else {
-                    sp500.GetTargetStart();
+                    ((EventCamera *) &sp500)->GetTargetStart();
                     M2C_FIELD(this, f64 *, 0x60) = sp500;
                     M2C_FIELD(this, f64 *, 0x68) = sp508;
                 }
@@ -1520,12 +1521,12 @@ void EventCamera::Update() {
             temp_f0_2323 = this->unkC0;
             if (temp_f1_2322 < temp_f0_2323) {
                 sp2C = 0.0f;
-                sp470.GetMeasure(temp_f1_2322 / temp_f0_2323, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp470)->GetMeasure(temp_f1_2322 / temp_f0_2323, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
                 M2C_FIELD(this, f64 *, 0x60) = sp470;
                 M2C_FIELD(this, f64 *, 0x68) = sp478;
             } else {
                 sp28 = 0.0f;
-                sp460.GetMeasure(1.0f, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp460)->GetMeasure(1.0f, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
                 M2C_FIELD(this, f64 *, 0x60) = sp460;
                 M2C_FIELD(this, f64 *, 0x68) = sp468;
             }
@@ -1536,7 +1537,7 @@ void EventCamera::Update() {
             if ((u8) this->unk102 != 0) {
                 ((SpawnerObject *) (checked_cast<P12EnemySpawner))->GetNumberActive(6MKProp>__FP6MKProp(this->unkF0->PropResolver_Resolve((s32) temp_r4_2319)) + 0x90);
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                    sp380.unkD0.GetTargetStart();
+                    ((EventCamera *) &sp380.unkD0)->GetTargetStart();
                     var_r30_1504 = 0;
                     M2C_FIELD(this, f64 *, 0x60) = (f64) sp380.unkD0;
                     M2C_FIELD(this, f64 *, 0x68) = (f64) sp380.unkD8;
@@ -1560,16 +1561,16 @@ void EventCamera::Update() {
             temp_f0_2412 = this->unkBC;
             if (temp_f1_2411 < temp_f0_2412) {
                 if ((EventCamera *) this->unkB8 != NULL) {
-                    sp410.GetSourceStart();
+                    ((EventCamera *) &sp410)->GetSourceStart();
                     sp420.GetTargetStart();
                     temp_f0_2426 = sp420 - sp410;
                     sp1F0 = temp_f0_2426;
                     sp420.unk10 = temp_f0_2426;
                     sp1F8 = M2C_BITWISE(f32, sp420.unk8) - sp418;
                     sp420.unk18 = (f64) sp1F8;
-                    temp_f30_2445 = sp420.unk10.Magnitude();
+                    temp_f30_2445 = ((MKVector3 *) &sp420.unk10)->Magnitude();
                     sp3D0.GetVelocity(this->unkC4 / this->unkBC);
-                    sp3D0.unk10.operator*(temp_f30_2445);
+                    ((MKVector3 *) &sp3D0.unk10)->operator*(temp_f30_2445);
                     sp1C = 0.0f;
                     sp3F0.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                     spA0 = M2C_BITWISE(f64, sp3F0) + M2C_BITWISE(f64, sp3D0.unk10);
@@ -1581,7 +1582,7 @@ void EventCamera::Update() {
                 } else {
                     sp3A0.GetVelocity(temp_f1_2411 / temp_f0_2412);
                     sp18 = 0.0f;
-                    sp3A0.unk10.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp3A0.unk10)->GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                     sp90 = M2C_BITWISE(f64, sp3A0.unk10) + M2C_BITWISE(f64, sp3A0);
                     M2C_FIELD(this, f64 *, 0x60) = sp90;
                     sp98 = sp3B8 + sp3A0.unk8;
@@ -1590,16 +1591,16 @@ void EventCamera::Update() {
                     M2C_FIELD(this, f64 *, 0x68) = (f64) sp98;
                 }
             } else if ((EventCamera *) this->unkB8 != NULL) {
-                sp370.GetSourceStart();
+                ((EventCamera *) &sp370)->GetSourceStart();
                 sp380.GetTargetStart();
                 temp_f0_2520 = sp380 - sp370;
                 sp1E0 = temp_f0_2520;
                 sp380.unk10 = temp_f0_2520;
                 sp1E8 = M2C_BITWISE(f32, sp380.unk8) - sp378;
                 sp380.unk18 = (f64) sp1E8;
-                temp_f30_2537 = sp380.unk10.Magnitude();
+                temp_f30_2537 = ((MKVector3 *) &sp380.unk10)->Magnitude();
                 sp330.GetVelocity(1.0f);
-                sp330.unk10.operator*(temp_f30_2537);
+                ((MKVector3 *) &sp330.unk10)->operator*(temp_f30_2537);
                 sp14 = 0.0f;
                 sp350.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                 sp80 = M2C_BITWISE(f64, sp350) + M2C_BITWISE(f64, sp330.unk10);
@@ -1611,7 +1612,7 @@ void EventCamera::Update() {
             } else {
                 sp300.GetVelocity(1.0f);
                 sp10 = 0.0f;
-                sp300.unk10.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp300.unk10)->GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                 sp70 = M2C_BITWISE(f64, sp300.unk10) + M2C_BITWISE(f64, sp300);
                 M2C_FIELD(this, f64 *, 0x60) = sp70;
                 sp78 = sp318 + sp300.unk8;
@@ -1648,7 +1649,7 @@ void EventCamera::Update() {
                 M2C_FIELD(this, f32 *, 0x54) = 0.0f;
                 M2C_FIELD(this, f64 *, 0x50) = _table_sinf(0.017453292f * this->unkE8);
                 M2C_FIELD(this, f64 *, 0x58) = _table_sinf(1.5707964f + (0.017453292f * this->unkE8));
-                this->unk50.Normalise();
+                ((MKVector3 *) &this->unk50)->Normalise();
                 temp_f31_2681 = this->unkDC;
                 this->unk50 *= (f64) temp_f31_2681;
                 M2C_FIELD(this, f64 *, 0x58) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x58) * temp_f31_2681);
@@ -1663,12 +1664,12 @@ void EventCamera::Update() {
                 temp_f0_2709 = this->unkBC;
                 if (temp_f1_2708 < temp_f0_2709) {
                     sp24 = 0.0f;
-                    sp2C0.GetMeasure(temp_f1_2708 / temp_f0_2709, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp2C0)->GetMeasure(temp_f1_2708 / temp_f0_2709, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
                     this->unk50 = sp2C0;
                     this->unk58 = sp2C8;
                 } else {
                     sp20 = 0.0f;
-                    sp2B0.GetMeasure(1.0f, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp2B0)->GetMeasure(1.0f, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
                     this->unk50 = sp2B0;
                     this->unk58 = sp2B8;
                 }
@@ -1685,11 +1686,11 @@ void EventCamera::Update() {
             temp_f2_2753 = this->unkD4;
             if ((var_f1_2747 < temp_f2_2753) && (var_f1_2747 > 0.0f)) {
                 temp_f30_2761 = (temp_f2_2753 - var_f1_2747) / temp_f2_2753;
-                sp290.GetSourceStart();
+                ((EventCamera *) &sp290)->GetSourceStart();
                 InterpolateLinear(sp2A0, *((MKVector3 *) &this->unk50), temp_f30_2761);
                 this->unk50 = M2C_BITWISE(f64, sp2A0);
                 this->unk58 = (f64) sp2A0.unk8;
-                sp270.GetTargetStart();
+                ((EventCamera *) &sp270)->GetTargetStart();
                 InterpolateLinear(sp280, this->unk60, temp_f30_2761);
                 M2C_FIELD(this, f64 *, 0x60) = M2C_BITWISE(f64, sp280);
                 M2C_FIELD(this, f64 *, 0x68) = (f64) sp280.unk8;
@@ -1863,7 +1864,6 @@ void EventCamera::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EventCamera::Resolve() {
     EventCamera *temp_r3_3237;
     void *temp_r3_3223;
@@ -1872,21 +1872,20 @@ void EventCamera::Resolve() {
     MKProp::Resolve();
     temp_r3_3223 = this->unkB0;
     if (temp_r3_3223 != NULL) {
-        this->unkB0 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_3223->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB0 = checked_cast<KDSplinePathSegmentProp *, MKProp>(((MKSceneManager *) temp_r3_3223)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     }
     temp_r3_3230 = this->unkB4;
     if (temp_r3_3230 != NULL) {
-        this->unkB4 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_3230->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB4 = checked_cast<KDSplinePathSegmentProp *, MKProp>(((MKSceneManager *) temp_r3_3230)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     }
     temp_r3_3237 = this->unkB8;
     if (temp_r3_3237 != NULL) {
-        this->unkB8 = checked_cast<EventCamera *, MKProp>(temp_r3_3237->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB8 = checked_cast<EventCamera *, MKProp>(((MKSceneManager *) temp_r3_3237)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     }
     if ((u8) this->unkFB != 0) {
         this->unkF0 = (MKSceneManager *)1;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp24'
 void EventCamera::LoadDone() {

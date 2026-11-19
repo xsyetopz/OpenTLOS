@@ -1,4 +1,5 @@
 #include "spyro/source/Explosion3.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
@@ -360,17 +361,15 @@ void Explosion3::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Explosion3::Init() {
     MKProp::Init();
-    this->unk4C = checked_cast<ExpSmokeAndFlamesPS *, MKProp>(gMK->CreateProp("ExpSmokeAndFlamesPS"));
-    this->unk50 = checked_cast<ExpShock *, MKProp>(gMK->CreateProp("ExpShock"));
-    this->unk54 = checked_cast<ExplosionFX *, MKProp>(gMK->CreateProp("ExplosionFX"));
+    this->unk4C = checked_cast<ExpSmokeAndFlamesPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ExpSmokeAndFlamesPS"));
+    this->unk50 = checked_cast<ExpShock *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ExpShock"));
+    this->unk54 = checked_cast<ExplosionFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ExplosionFX"));
     this->unk68 = 0;
     this->unk6C = 0;
     this->unk70 = 1;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[11], long *)' does
 s32 Explosion3Descriptor::LoadLine(MKIniLine *arg0) {

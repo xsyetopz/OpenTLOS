@@ -1,6 +1,8 @@
 #include "spyro/source/NPCGuardianGoal_Think.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyGoal_FollowGraph.h"
+#include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/NPCGuardian.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
@@ -90,17 +92,17 @@ void NPCGuardianGoal_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 NPCGuardianGoal_Think::Update() {
     s32 temp_r3_222;
 
-    if (this->unkC->WasHit() != 0) {
+    if (((Enemy *) this->unkC)->WasHit() != 0) {
         this->unk8 = 1;
     }
     ActivateIfInactive();
     temp_r3_222 = this->unkC;
     if (M2C_FIELD(M2C_FIELD(temp_r3_222, void **, 0x44), u8 (**)(s32), 0xE8)(temp_r3_222) == 0) {
-        this->unkC->SelectTarget();
+        ((Enemy *) this->unkC)->SelectTarget();
     }
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 != 0) {
@@ -225,8 +227,8 @@ void NPCGuardianGoal_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_461, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_461, s8 *, 9) = 1;
     }
-    this->unk28->Init(arg0);
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk28)->Init(arg0);
+    ((EnemyGoal_FollowGraph *) this->unk2C)->Init(arg0);
     this->unk30 &= ~0x80;
 }
 #endif

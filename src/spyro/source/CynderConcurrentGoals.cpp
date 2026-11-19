@@ -2,8 +2,10 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Cynder.h"
+#include "spyro/source/CynderBossGoals.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/EventMessage.h"
 #include <m2c_macros.h>
 
@@ -69,18 +71,18 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 CynderConcurrentGoal_Think::Update() {
     s32 temp_r3_128;
     u32 temp_r31_132;
 
-    if (this->unkC->WasHit() != 0) {
+    if (((Enemy *) this->unkC)->WasHit() != 0) {
         this->unk8 = 1;
     }
     temp_r3_128 = this->unkC;
     temp_r31_132 = ((u8) M2C_FIELD(temp_r3_128, u8 *, 0xB09) >> 7U) & 1;
     if (M2C_FIELD(M2C_FIELD(temp_r3_128, void **, 0x44), u8 (**)(s32), 0xE8)(temp_r3_128) == 0) {
-        this->unkC->SelectTarget();
+        ((Enemy *) this->unkC)->SelectTarget();
     }
     ActivateIfInactive();
     if (temp_r31_132 == (u32) (((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1)) {
@@ -93,7 +95,7 @@ u8 CynderConcurrentGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderConcurrentGoal_Think::Arbitrate() {
     Matrix sp50;
     EnemyDamageFeedback sp10;
@@ -104,16 +106,16 @@ void CynderConcurrentGoal_Think::Arbitrate() {
     s32 temp_r3_233;
 
     if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (sp50.SetIdentity(), temp_r3_184 = this->unkC, sp50.unk30 = M2C_FIELD(temp_r3_184, f32 *, 0x5B8), sp50.unk34 = M2C_FIELD(temp_r3_184, f32 *, 0x5BC), temp_f1_192 = M2C_FIELD(temp_r3_184, f32 *, 0x5C0), sp50.unk38 = temp_f1_192, sp50.unk3C = 1.0f, ((M2C_FIELD(M2C_FIELD(temp_r3_184, void **, 0x44), u8 (**)(s32, Matrix *, M2C_UNK, f32), 0x120)(temp_r3_184, &sp50, 0, temp_f1_192) == 0) == 0))) {
-        if (this->unkC->WasHit() != 0) {
+        if (((Enemy *) this->unkC)->WasHit() != 0) {
             sp10.Init();
-            if (this->unkC->IsInvulnerable() != 0) {
+            if (((Enemy *) this->unkC)->IsInvulnerable() != 0) {
                 temp_r3_212 = this->unkC;
                 M2C_FIELD(temp_r3_212, s32 *, 0x9D8) = 0;
                 M2C_FIELD(temp_r3_212, s32 *, 0x9D4) = 0;
                 goto block_12;
             }
-            this->unkC->TakeDamage(&sp10, 0U);
-            this->unkC->UpdateEnemyHud();
+            ((Enemy *) this->unkC)->TakeDamage(&sp10, 0U);
+            ((Cynder *) this->unkC)->UpdateEnemyHud();
             temp_r3_224 = this->unkC;
             if (M2C_FIELD(temp_r3_224, f32 *, 0xAC8) <= 0.0f) {
                 ((EventMessage *) (temp_r3_224 + 0x1000))->Send(NULL);
@@ -130,11 +132,11 @@ void CynderConcurrentGoal_Think::Arbitrate() {
             goto block_12;
         }
 block_12:
-        this->unkC->IsFlinching();
+        ((Enemy *) this->unkC)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (IsPresent(0xB9) == 0)) {
             RemoveAllSubgoals();
             AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
-            this->unk2C->SetParams(this->unkC + 0x870, NULL, 0U);
+            ((CynderGoal_GroundAttackMode *) this->unk2C)->SetParams(this->unkC + 0x870, NULL, 0U);
         }
     }
 }
@@ -257,7 +259,7 @@ void CynderConcurrentGoal_Think::Init(Cynder *arg0) {
     if ((Cynder *) M2C_FIELD(temp_r4_509, Cynder **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_509, s8 *, 9) = 1;
     }
-    this->unk28->Init((Enemy *) arg0);
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk28)->Init((Enemy *) arg0);
+    ((CynderGoal_GroundAttackMode *) this->unk2C)->Init(arg0);
 }
 #endif

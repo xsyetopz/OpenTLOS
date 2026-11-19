@@ -1261,7 +1261,7 @@ MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Translate'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK spA0;
     M2C_UNK sp9C;
@@ -1282,14 +1282,14 @@ void MKWidgetFoldupFrame::Render(MKWidgetRenderContext *arg0) {
     sp48 = (f64) sp28;
     sp24 = -M2C_FIELD(this->unk4, f32 *, 0x80);
     sp40 = (f64) sp20;
-    arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
+    ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
     MKWidgetFrame::Render(arg0);
     sp18 = 0.0f;
     sp10 = 0.0f;
     sp14 = M2C_FIELD(this->unk4, f32 *, 0x80);
     sp38 = (f64) sp18;
     sp30 = (f64) sp10;
-    arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp30));
+    ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp30));
     M2C_STRUCT_COPY((s32) &sp9C + 4, (s32) (arg0 - 4) + 4, 0x50);
     this->unk54.Draw(&spA0, &sp9C + 0x50);
     M2C_STRUCT_COPY((s32) &unksp4C + 4, (s32) (arg0 - 4) + 4, 0x50);
@@ -1615,7 +1615,7 @@ block_70:
         }
         return;
     case 0x64:
-        temp_r29_2450->GetChild((s32) arg1);
+        ((MKWidgetContainer *) temp_r29_2450)->GetChild((s32) arg1);
         M2C_FIELD(this->unk4, u32 *, 0x68) = arg1;
         MKWidget_SendMessage(M2C_ERROR(/* Read from unset register $r3 */), 0x13U, (u32) &sp10);
         MKWidget_SendMessage(&this->unkB0, 0x17U, sp10);
@@ -1641,7 +1641,7 @@ block_70:
         MKWidget_DisableFlag(MKWidget_Create("", (s8 *) arg1, &sp130, this->unk100, NULL, NULL), 4U);
         return;
     case 0x68:
-        temp_r29_2450->GetChild((s32) arg1);
+        ((MKWidgetContainer *) temp_r29_2450)->GetChild((s32) arg1);
         MKWidget_Destroy(M2C_ERROR(/* Read from unset register $r3 */));
         return;
     case 0x69:
@@ -1886,7 +1886,7 @@ block_20:
                 spA8 = sp8;
                 sp80 = (f64) sp10;
                 spA8.unk8 = (f64) sp10;
-                if (arg2->IsFlagSet(0x100U) != 0) {
+                if (((MKWidget *) arg2)->IsFlagSet(0x100U) != 0) {
                     temp_f3_3219 = (f32) fmod(M2C_BITWISE(f32, spA8), 10.0);
                     spA8 = M2C_BITWISE(f32, spA8) - temp_f3_3219;
                     spA8.unk4 -= (f32) fmod(spA8.unk4, 10.0, temp_f3_3219);
@@ -3668,7 +3668,7 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
         temp_r3_5990 = this->unk4;
         temp_r26_5991 = M2C_FIELD(temp_r3_5990, s8 **, 0x68);
         if (temp_r26_5991 != NULL) {
-            temp_r3_5994 = temp_r3_5990->Current();
+            temp_r3_5994 = ((MKHeap *) temp_r3_5990)->Current();
             if (temp_r3_5994 != NULL) {
                 ((MKHeap *) (temp_r3_5994->Current()))->Free(temp_r26_5991, NULL, 0);
             } else {
@@ -3678,7 +3678,7 @@ s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
         }
         if (var_r30_5855 != 0) {
             temp_r26_6013 = this->unk4;
-            temp_r3_6014 = this->unk4->Current();
+            temp_r3_6014 = ((MKHeap *) this->unk4)->Current();
             if (temp_r3_6014 != NULL) {
                 var_r3_6021 = ((MKHeap *) (temp_r3_6014->Current()))->Alloc((s32) var_r30_5855, NULL, 0);
             } else {
@@ -4274,7 +4274,7 @@ MKWidgetTextBox::~MKWidgetTextBox() {
         temp_r3_7148 = this->unk4;
         temp_r31_7149 = M2C_FIELD(temp_r3_7148, s8 **, 0x68);
         if (temp_r31_7149 != NULL) {
-            temp_r3_7152 = temp_r3_7148->Current();
+            temp_r3_7152 = ((MKHeap *) temp_r3_7148)->Current();
             if (temp_r3_7152 != NULL) {
                 ((MKHeap *) (temp_r3_7152->Current()))->Free(temp_r31_7149, NULL, 0);
             } else {
@@ -4307,7 +4307,7 @@ MKWidgetTextBox::MKWidgetTextBox(MKWidgetDescriptor *arg0) {
         temp_r29_7221 = M2C_FIELD(temp_r30_7220, u32 *, 0x70);
         if (temp_r29_7221 != 0) {
             temp_r28_7224 = M2C_FIELD(temp_r30_7220, s8 **, 0x68);
-            temp_r3_7225 = __vt.Current();
+            temp_r3_7225 = ((MKHeap *) &__vt)->Current();
             if (temp_r3_7225 != NULL) {
                 var_r3_7232 = ((MKHeap *) (temp_r3_7225->Current()))->Alloc((s32) temp_r29_7221, NULL, 0);
             } else {
@@ -4542,7 +4542,7 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
         sp18 = -this->unk38;
         sp60 = (f64) sp10;
         sp68 = (f64) sp18;
-        arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp60));
+        ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp60));
         if (PushScissorRect((MKWidgetScissorRect *) &spD0) != 0) {
             if (((s32) this->unk3A0 != -1) && (IsFlagSet(0x01000000U) != 0)) {
                 GetChild(this->unk3A0);
@@ -6767,7 +6767,7 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
         sp18 = 0.0f;
         sp50 = (f64) sp10;
         sp58 = (f64) sp18;
-        arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp50));
+        ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp50));
     }
     if (IsFlagSet(0x1000U) != 0) {
         M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (arg0 - 4) + 4, 0x50);
@@ -7461,7 +7461,7 @@ void MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
         sp40 = temp_f0_13214;
         sp28 = arg0->unk18 * temp_f31_13212;
         sp48 = (f64) sp28;
-        arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
+        ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
     }
     MKWidgetFrame::Render(arg0);
     if (IsFlagSet(0x20000U) != 0) {
@@ -7471,7 +7471,7 @@ void MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
         sp30 = temp_f0_13241;
         sp18 = arg0->unk18 * temp_f2_13238;
         sp38 = (f64) sp18;
-        arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp30));
+        ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp30));
     }
     if (IsFlagSet(0x20000U) != 0) {
         M2C_STRUCT_COPY((s32) &sp6C + 4, (s32) (arg0 - 4) + 4, 0x50);
@@ -7575,7 +7575,7 @@ loop_4:
     case 0x1B:                                      /* switch 1 */
     case 0x1D:                                      /* switch 1 */
     case 0x1E:                                      /* switch 1 */
-        temp_r28_13351 = var_r3_0->MKWidgetFrame::MessageHandler(arg0, arg1);
+        temp_r28_13351 = ((MKWidgetFrame *) var_r3_0)->MKWidgetFrame::MessageHandler(arg0, arg1);
         MKWidget_SendMessage((MKWidget *) var_r3_0, 0x47U, 0U);
         return temp_r28_13351;
     case 0x6B:                                      /* switch 1 */
@@ -7586,41 +7586,41 @@ loop_4:
         M2C_FIELD(var_r3_0->unk4, u32 *, 0x84) = arg1;
         return 0U;
     case 0x12:                                      /* switch 1 */
-        if (var_r3_0->IsFlagSet(0x20000U) != 0) {
-            var_r3_0->MKWidgetFrame::MessageHandler(arg0, arg1);
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
+            ((MKWidgetFrame *) var_r3_0)->MKWidgetFrame::MessageHandler(arg0, arg1);
             M2C_FIELD(arg1, f32 *, 4) = (f32) (M2C_FIELD(arg1, f32 *, 4) + M2C_FIELD(var_r3_0->unk4, f32 *, 0x80));
             M2C_FIELD(arg1, f32 *, 0x14) = (f32) (M2C_FIELD(arg1, f32 *, 0x14) - M2C_FIELD(var_r3_0->unk4, f32 *, 0x80));
         }
         return 0U;
     case 0x47:                                      /* switch 1 */
         M2C_FIELD(var_r3_0->__vptr, M2C_UNK (**)(M2C_UNK, s8 **), 0xC)(5, var_r3_0->unk4 + 0x38);
-        MKWidget_Show(&var_r3_0->unk40, var_r3_0->IsFlagSet(0x20000U) != 0);
-        if (var_r3_0->IsFlagSet(0x100000U) != 0) {
+        MKWidget_Show(&var_r3_0->unk40, ((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0);
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x100000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x100000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x100000U);
         }
-        if (var_r3_0->IsFlagSet(0x200000U) != 0) {
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x200000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x200000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x200000U);
         }
-        if (var_r3_0->IsFlagSet(0x400000U) != 0) {
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x400000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x400000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x400000U);
         }
-        if (var_r3_0->IsFlagSet(0x40000U) != 0) {
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x40000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x40000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x40000U);
         }
-        if (var_r3_0->IsFlagSet(0x01000000U) != 0) {
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x01000000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x01000000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x01000000U);
         }
-        if (var_r3_0->IsFlagSet(0x02000000U) != 0) {
+        if (((MKWidget *) var_r3_0)->IsFlagSet(0x02000000U) != 0) {
             MKWidget_EnableFlag(&var_r3_0->unk40, 0x02000000U);
         } else {
             MKWidget_DisableFlag(&var_r3_0->unk40, 0x02000000U);
@@ -7628,7 +7628,7 @@ loop_4:
         MKWidget_SendMessage(&var_r3_0->unk40, 0x47U, 0U);
     default:                                        /* switch 1 */
 block_158:
-        return var_r3_0->MKWidgetFrame::MessageHandler(arg0, arg1);
+        return ((MKWidgetFrame *) var_r3_0)->MKWidgetFrame::MessageHandler(arg0, arg1);
     case 0x5:                                       /* switch 1 */
         if (M2C_BITWISE(f32, M2C_FIELD(arg1, MKWidgetWindow **, 0)) < 100.0f) {
             M2C_FIELD(arg1, MKWidgetWindow **, 0) = 100.0f;
@@ -7660,7 +7660,7 @@ block_158:
         if ((s32) var_r3_0->unk150 == 0) {
             temp_f3_13559 = var_r3_0->unk140.unk0;
             if (!(temp_f3_13559 < 0.0f) && !(var_r3_0->unk140.unk4 < 0.0f) && (temp_r3_13566 = var_r3_0->unk4, ((temp_f3_13559 >= -((2.0f * M2C_FIELD(temp_r3_13566, f32 *, 0x70)) - M2C_FIELD(temp_r3_13566, f32 *, 0x38))) == 0))) {
-                if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                     var_f3_13580 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                 } else {
                     var_f3_13580 = 0.0f;
@@ -7696,7 +7696,7 @@ block_46:
                 } else {
                     var_r3_0->unk154 = 1;
                 }
-                if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                     var_f3_13651 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                 } else {
                     var_f3_13651 = 0.0f;
@@ -7705,7 +7705,7 @@ block_46:
                 if (var_r3_0->unk140.unk4 < ((3.0f * temp_f4_13658) + (-temp_f4_13658 - var_f3_13651))) {
                     var_r3_0->unk158 = 0;
                 } else {
-                    if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                    if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                         var_f4_13675 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                     } else {
                         var_f4_13675 = 0.0f;
@@ -7791,13 +7791,13 @@ block_46:
         } else {
             MKWidget_GetLocalMousePos((MKWidget *) var_r3_0, &sp88);
             if (!(M2C_BITWISE(f32, sp88) < 0.0f)) {
-                if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                     var_f1_13899 = -M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                 } else {
                     var_f1_13899 = 0.0f;
                 }
                 if (!(sp88.unk4 < var_f1_13899) && (temp_r3_13907 = var_r3_0->unk4, ((M2C_BITWISE(f32, sp88) >= -((2.0f * M2C_FIELD(temp_r3_13907, f32 *, 0x70)) - M2C_FIELD(temp_r3_13907, f32 *, 0x38))) == 0))) {
-                    if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                    if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                         var_f3_13922 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                     } else {
                         var_f3_13922 = 0.0f;
@@ -7824,7 +7824,7 @@ block_113:
                 } else {
                     var_r28_13947 = 1;
                 }
-                if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                     var_f3_13967 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                 } else {
                     var_f3_13967 = 0.0f;
@@ -7833,7 +7833,7 @@ block_113:
                 if (sp88.unk4 < ((3.0f * temp_f4_13974) + (-temp_f4_13974 - var_f3_13967))) {
                     var_r0_13981 = 0;
                 } else {
-                    if (var_r3_0->IsFlagSet(0x20000U) != 0) {
+                    if (((MKWidget *) var_r3_0)->IsFlagSet(0x20000U) != 0) {
                         var_f4_13990 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                     } else {
                         var_f4_13990 = 0.0f;
@@ -8211,7 +8211,7 @@ void MKWidgetSystem::CreateInputReceiver(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 SystemReceiverCallback(MKInputEvent *arg0, void *arg1) {
     MKWidgetBoundingVolume sp78;
     MKVector3 sp68;
@@ -8244,7 +8244,7 @@ s32 SystemReceiverCallback(MKInputEvent *arg0, void *arg1) {
     u32 temp_r29_14865;
     u8 temp_r4_15026;
 
-    if (arg1->AnyVisible() != 0) {
+    if (((MKWidgetSystem *) arg1)->AnyVisible() != 0) {
         temp_r0_14740 = arg0->unk0;
         switch (temp_r0_14740) {                    /* irregular */
         case 2:
@@ -8782,7 +8782,7 @@ void MKWidgetContainer::Draw(MKWidgetRenderContext arg0) {
         sp18 = -this->unk38;
         sp40 = (f64) sp10;
         sp48 = (f64) sp18;
-        arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
+        ((Matrix *) arg0)->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
         if (PushScissorRect((MKWidgetScissorRect *) &sp90) != 0) {
             var_r30_15849 = this->unk28;
 loop_4:
@@ -9107,13 +9107,13 @@ void MKWidget::Draw(MKWidgetRenderContext arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Multiply4x4'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 void MKWidget::Render(MKWidgetRenderContext *arg0) {
     Matrix sp10;
     s8 **temp_r4_16467;
 
     GetWidgetMatrix(&sp10);
-    arg0->Multiply4x4(&sp10, (Matrix *) arg0);
+    ((Matrix *) arg0)->Multiply4x4(&sp10, (Matrix *) arg0);
     temp_r4_16467 = this->unk4 + 0x48;
     M2C_FIELD(arg0, f64 *, 0x40) = (f64) (M2C_FIELD(arg0, f64 *, 0x40) * M2C_FIELD(temp_r4_16467, f64 *, 0));
     M2C_FIELD(arg0, f64 *, 0x48) = (f64) (M2C_FIELD(arg0, f64 *, 0x48) * M2C_FIELD(temp_r4_16467, f64 *, 8));
@@ -9424,7 +9424,7 @@ MKWidget::~MKWidget() {
     if (this != NULL) {
         if ((u8) this->unk8 == 0) {
             temp_r31_16979 = this->unk4;
-            temp_r3_16980 = __vt.Current();
+            temp_r3_16980 = ((MKHeap *) &__vt)->Current();
             if (temp_r3_16980 != NULL) {
                 ((MKHeap *) (temp_r3_16980->Current()))->Free(temp_r31_16979, NULL, 0);
             } else {
@@ -9436,7 +9436,7 @@ MKWidget::~MKWidget() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vt'
 MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
     s8 **temp_r5_17042;
 
@@ -9447,7 +9447,7 @@ MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
     this->unk1C = NULL;
     this->unk20 = 0;
     this->unk24 = 0;
-    this->unk8 = this->unk4.GetMetaData(*(M2C_FIELD(this->unkC, MKWidgetMetaData ***, 4)), (u32) &__vt);
+    this->unk8 = ((MKWidgetSerialise *) &this->unk4)->GetMetaData(*(M2C_FIELD(this->unkC, MKWidgetMetaData ***, 4)), (u32) &__vt);
     if ((u8) this->unk8 == 0) {
         M2C_FIELD(this->unk4, s8 **, 0) = NULL;
         temp_r5_17042 = this->unk4;
@@ -10229,31 +10229,31 @@ void MKWidgetsInternal_cpp::__sinit() {
     M2C_FIELD(&gMKWidgetMetrics, f64 *, 0x2D8) = (f64) sp20;
     M2C_FIELD(temp_r9_18755, f64 *, 0x40) = (f64) sp8;
     M2C_FIELD(temp_r9_18755, f64 *, 0x48) = (f64) sp10;
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor))->MKWidgetDescriptor("", NULL, (MKWidget *(*)()) &MKWidget::MKWidget_FactoryFunc, 1U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor))->MKWidgetDescriptor("MKWidgetContainer", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetContainer::MKWidgetContainer_FactoryFunc, 0U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetSystem::sMKWidgetSystemDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetSystem::MKWidgetSystem_FactoryFunc, 1U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetFrame::MKWidgetFrame_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetScrollableFrame::sMKWidgetScrollableFrameDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetScrollableFrame::MKWidgetScrollableFrame_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetListBox::sMKWidgetListBoxDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetScrollableFrame::sMKWidgetScrollableFrameDescriptor, (MKWidget *(*)()) &MKWidgetListBox::MKWidgetListBox_FactoryFunc, 0U, 0x88U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetWindow::sMKWidgetWindowDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetWindow::MKWidgetWindow_FactoryFunc, 0U, 0x88U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetTabStrip::sMKWidgetTabStripDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc, 0U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetFoldupFrame::sMKWidgetFoldupFrameDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetFoldupFrame::MKWidgetFoldupFrame_FactoryFunc, 0U, 0x88U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetString::sMKWidgetStringDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetString::MKWidgetString_FactoryFunc, 0U, 0x78U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetImage::sMKWidgetImageDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetImage::MKWidgetImage_FactoryFunc, 0U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetButton::sMKWidgetButtonDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetButton::MKWidgetButton_FactoryFunc, 0U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetCheckMark::sMKWidgetCheckMarkDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc, 0U, 0x70U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetCheckBox::sMKWidgetCheckBoxDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetScrollBar::sMKWidgetScrollBarDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetScrollBar::MKWidgetScrollBar_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetTextBox::sMKWidgetTextBoxDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetTextBox::MKWidgetTextBox_FactoryFunc, 0U, 0x88U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetVector::sMKWidgetVectorDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetVector::MKWidgetVector_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetEnvelope::sMKWidgetEnvelopeDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetEnvelope::MKWidgetEnvelope_FactoryFunc, 0U, 0xF0U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetListItem::sMKWidgetListItemDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetListItem::MKWidgetListItem_FactoryFunc, 0U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetSlider::sMKWidgetSliderDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetScrollBar::sMKWidgetScrollBarDescriptor, (MKWidget *(*)()) &MKWidgetSlider::MKWidgetSlider_FactoryFunc, 0U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetColor::sMKWidgetColorDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetColor::MKWidgetColor_FactoryFunc, 0U, 0x78U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetComboBox::sMKWidgetComboBoxDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetComboBox::MKWidgetComboBox_FactoryFunc, 0U, 0x70U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetThumb::sMKWidgetThumbDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetThumb::MKWidgetThumb_FactoryFunc, 2U, 0x80U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetWindowTitleBar::sMKWidgetWindowTitleBarDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetWindowTitleBar::MKWidgetWindowTitleBar_FactoryFunc, 2U, 0x68U);
-    ((MKWidgetDescriptor *) ((MKWidgetDescriptor *) MKWidgetEditable::sMKWidgetEditableDescriptor))->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetEditable::MKWidgetEditable_FactoryFunc, 1U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor)->MKWidgetDescriptor("", NULL, (MKWidget *(*)()) &MKWidget::MKWidget_FactoryFunc, 1U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor)->MKWidgetDescriptor("MKWidgetContainer", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetContainer::MKWidgetContainer_FactoryFunc, 0U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetSystem::sMKWidgetSystemDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetSystem::MKWidgetSystem_FactoryFunc, 1U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetFrame::MKWidgetFrame_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetScrollableFrame::sMKWidgetScrollableFrameDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetScrollableFrame::MKWidgetScrollableFrame_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetListBox::sMKWidgetListBoxDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetScrollableFrame::sMKWidgetScrollableFrameDescriptor, (MKWidget *(*)()) &MKWidgetListBox::MKWidgetListBox_FactoryFunc, 0U, 0x88U);
+    ((MKWidgetDescriptor *) MKWidgetWindow::sMKWidgetWindowDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetWindow::MKWidgetWindow_FactoryFunc, 0U, 0x88U);
+    ((MKWidgetDescriptor *) MKWidgetTabStrip::sMKWidgetTabStripDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc, 0U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetFoldupFrame::sMKWidgetFoldupFrameDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetFrame::sMKWidgetFrameDescriptor, (MKWidget *(*)()) &MKWidgetFoldupFrame::MKWidgetFoldupFrame_FactoryFunc, 0U, 0x88U);
+    ((MKWidgetDescriptor *) MKWidgetString::sMKWidgetStringDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetString::MKWidgetString_FactoryFunc, 0U, 0x78U);
+    ((MKWidgetDescriptor *) MKWidgetImage::sMKWidgetImageDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetImage::MKWidgetImage_FactoryFunc, 0U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetButton::sMKWidgetButtonDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetButton::MKWidgetButton_FactoryFunc, 0U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetCheckMark::sMKWidgetCheckMarkDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc, 0U, 0x70U);
+    ((MKWidgetDescriptor *) MKWidgetCheckBox::sMKWidgetCheckBoxDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetScrollBar::sMKWidgetScrollBarDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetScrollBar::MKWidgetScrollBar_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetTextBox::sMKWidgetTextBoxDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetTextBox::MKWidgetTextBox_FactoryFunc, 0U, 0x88U);
+    ((MKWidgetDescriptor *) MKWidgetVector::sMKWidgetVectorDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetVector::MKWidgetVector_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetEnvelope::sMKWidgetEnvelopeDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetEnvelope::MKWidgetEnvelope_FactoryFunc, 0U, 0xF0U);
+    ((MKWidgetDescriptor *) MKWidgetListItem::sMKWidgetListItemDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetListItem::MKWidgetListItem_FactoryFunc, 0U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetSlider::sMKWidgetSliderDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetScrollBar::sMKWidgetScrollBarDescriptor, (MKWidget *(*)()) &MKWidgetSlider::MKWidgetSlider_FactoryFunc, 0U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetColor::sMKWidgetColorDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetColor::MKWidgetColor_FactoryFunc, 0U, 0x78U);
+    ((MKWidgetDescriptor *) MKWidgetComboBox::sMKWidgetComboBoxDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetComboBox::MKWidgetComboBox_FactoryFunc, 0U, 0x70U);
+    ((MKWidgetDescriptor *) MKWidgetThumb::sMKWidgetThumbDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetThumb::MKWidgetThumb_FactoryFunc, 2U, 0x80U);
+    ((MKWidgetDescriptor *) MKWidgetWindowTitleBar::sMKWidgetWindowTitleBarDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidget::sMKWidgetDescriptor, (MKWidget *(*)()) &MKWidgetWindowTitleBar::MKWidgetWindowTitleBar_FactoryFunc, 2U, 0x68U);
+    ((MKWidgetDescriptor *) MKWidgetEditable::sMKWidgetEditableDescriptor)->MKWidgetDescriptor("", (MKWidgetDescriptor *) MKWidgetContainer::sMKWidgetContainerDescriptor, (MKWidget *(*)()) &MKWidgetEditable::MKWidgetEditable_FactoryFunc, 1U, 0x68U);
     M2C_FIELD(&gMKWidgetMetrics, f64 *, 0x330) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(&gMKWidgetMetrics, f64 *, 0x338) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }

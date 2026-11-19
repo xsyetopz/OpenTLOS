@@ -43,8 +43,8 @@ void Name::Create(int arg0) {
         this->unk0 = NULL;
         return;
     }
-    this->unk0 = ((Names *) ((Names *) &firstNames[arg0]))->GetRandom();
-    this->unk4 = ((Names *) ((Names *) &lastNames[arg0]))->GetRandom();
+    this->unk0 = ((Names *) &firstNames[arg0])->GetRandom();
+    this->unk4 = ((Names *) &lastNames[arg0])->GetRandom();
 }
 #endif
 

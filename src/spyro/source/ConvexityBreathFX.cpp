@@ -11,9 +11,11 @@
 #include "spyro/source/BaseBreathFX.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
@@ -21,7 +23,6 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -32,7 +33,9 @@ extern s32 GS_SpyroConvexFireballLP;
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
+#if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
+#endif
 
 void ConvexityBreathFX::DrawRings() {
     f64 sp20;
@@ -459,7 +462,7 @@ loop_9:
             var_r4_808 += 4;
             goto loop_9;
         }
-        temp_r3_835 = var_r3_810->Current();
+        temp_r3_835 = ((MKHeap *) var_r3_810)->Current();
         if (temp_r3_835 != NULL) {
             ((MKHeap *) (temp_r3_835->Current()))->Free(var_r31_809, NULL, 0);
         } else {
@@ -517,20 +520,18 @@ void ConvexityBreathFX::Draw() {
         MKModel_Draw(this->unk160, NULL);
     }
     temp_r31_958 = &gb + 0x24;
-    temp_r31_958->Get();
+    ((GameGlobals::Capture *) temp_r31_958)->Get();
     DrawRings();
-    temp_r31_958->Release();
+    ((GameGlobals::Capture *) temp_r31_958)->Release();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ConvexityBreathFX::Message(MKMessage *arg0) {
-    this->unk124.Message(arg0);
+    ((KDSoundPlayer *) &this->unk124)->Message(arg0);
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void ConvexityBreathFX::Update() {
     BreathHitMessage sp258;
     MKCollisionResult sp200;
@@ -628,7 +629,7 @@ void ConvexityBreathFX::Update() {
     this->unk120 = this->unk120 - gUpdateTimeDelta;
     this->unk1B0 -= gUpdateTimeDelta;
     sp8 = 1;
-    this->unk124.Update(GS_SpyroConvexFireballLP, 1U, this->unkAC == 1, NULL, (MKVector3 *) &this->unk150, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk124)->Update(GS_SpyroConvexFireballLP, 1U, this->unkAC == 1, NULL, (MKVector3 *) &this->unk150, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     UpdateRings();
     temp_r0_1038 = this->unkAC;
     switch (temp_r0_1038) {                         /* irregular */
@@ -850,7 +851,7 @@ void ConvexityBreathFX::Init() {
     M2C_FIELD(temp_r4_1501, Matrix ***, 4) = NULL;
     this->unk11C = 0.0f;
     this->unk120 = 0.0f;
-    this->unk124.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk124)->Init(0.25f, 0.25f);
     M2C_FIELD(this, f32 *, 0x150) = 0.0f;
     M2C_FIELD(this, f32 *, 0x154) = 0.0f;
     M2C_FIELD(this, f32 *, 0x158) = 0.0f;

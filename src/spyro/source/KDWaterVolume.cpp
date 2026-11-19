@@ -141,7 +141,7 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
             M2C_FIELD(arg2, s32 *, 0x4C) = sp94;
             M2C_FIELD(arg2, u8 *, 0x50) = sp98;
         }
-        return sp48.IsWithin(arg0, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+        return ((KDWaterVolume *) &sp48)->IsWithin(arg0, NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
     return 0;
 }

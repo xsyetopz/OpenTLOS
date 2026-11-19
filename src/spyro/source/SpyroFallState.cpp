@@ -2,11 +2,15 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -225,7 +229,7 @@ void SpyroFallState::GetFallVel() {
     }
 block_6:
     if ((u8) M2C_FIELD(temp_r31_84, u8 *, 0x34) != 0) {
-        sp38.CalcYawTurnDir(3.5f);
+        ((Spyro *) &sp38)->CalcYawTurnDir(3.5f);
         temp_f0_118 = sp38 * 5.655816876e-315;
         sp18 = temp_f0_118;
         M2C_FIELD(this, f64 *, 0) = temp_f0_118;
@@ -233,7 +237,7 @@ block_6:
         this->unk8 = (f64) sp20;
         return;
     }
-    sp28.CalcVelTurnDir(2.3999999f);
+    ((Spyro *) &sp28)->CalcVelTurnDir(2.3999999f);
     temp_f31_136 = 750.0f * ((KDInput *) (((Spyro *) (M2C_FIELD(temp_r31_84, Spyro **, 0x10)))->GetInput()))->GetLeftMag();
     temp_f0_138 = sp28 * (f64) temp_f31_136;
     sp8 = temp_f0_138;
@@ -450,7 +454,7 @@ u8 SpyroFallState::GlideTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void SpyroFallState::GlideUpdate() {
     f64 sp30;
     f64 sp28;
@@ -461,7 +465,7 @@ void SpyroFallState::GlideUpdate() {
     f64 temp_f0_549;
 
     this->unk6C.Update(this->unk10);
-    sp18.CalcYawTurnDir(2.3999999f);
+    ((Spyro *) &sp18)->CalcYawTurnDir(2.3999999f);
     temp_f31_547 = 1000.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
     temp_f0_549 = sp18 * (f64) temp_f31_547;
     sp8 = temp_f0_549;
@@ -469,7 +473,7 @@ void SpyroFallState::GlideUpdate() {
     sp10 = sp20 * temp_f31_547;
     sp30 = (f64) sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp28), 3800.0f);
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp28), 900.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp28), 900.0f);
     GlideTransition();
 }
 #endif
@@ -541,17 +545,17 @@ s32 SpyroFallState::LongFallTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SpyroFallState::LongFallUpdate() {
     f64 sp20;
     f64 sp18;
     f64 sp8;
 
-    sp8.GetFallVel();
+    ((SpyroFallState *) &sp8)->GetFallVel();
     sp18 = sp8;
     sp20 = sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp18), 3800.0f);
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp18), 900.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp18), 900.0f);
     this->unk80.Update();
     LongFallTransition();
 }
@@ -724,7 +728,7 @@ void SpyroFallState::FallUpdate() {
             this->unk64.Update(this->unk10);
         }
     }
-    sp8.GetFallVel();
+    ((SpyroFallState *) &sp8)->GetFallVel();
     sp18 = sp8;
     sp20 = sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp18), 3800.0f);
@@ -734,7 +738,7 @@ void SpyroFallState::FallUpdate() {
         } else {
             var_f1_1042 = 900.0f;
         }
-        this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp18), var_f1_1042);
+        ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp18), var_f1_1042);
     }
     this->unk80.Update();
     FallTransition();
@@ -853,7 +857,7 @@ void SpyroFallState::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 s32 SpyroFallState::Transition() {
     s8 sp81;
     s8 sp80;
@@ -1029,7 +1033,7 @@ s32 SpyroFallState::Transition() {
         temp_r6_1422 = this->unk10->unk8;
         sp20 = M2C_FIELD(temp_r6_1422, f64 *, 0x30);
         sp28 = M2C_FIELD(temp_r6_1422, f64 *, 0x38);
-        if (sp20.IsWithin(*NULL, NULL, (s32 *) temp_r6_1422) != 0) {
+        if (((KDWaterVolume *) &sp20)->IsWithin(*NULL, NULL, (s32 *) temp_r6_1422) != 0) {
             var_r0_1430 = 0x01000000;
         } else {
             temp_r3_1434 = this->unk10->unk26C.unk8;
@@ -1323,13 +1327,13 @@ void SpyroFallState::Update() {
             M2C_FIELD(temp_r3_1918->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);
             SetStrafeJump(0U);
         } else {
-            this->unk10->unkB90.GetCurrentTarget();
+            ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) {
                 this->unk10->SelectStrafeTarget(0U);
             }
-            this->unk10->unkB90.GetCurrentTarget();
+            ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-                this->unk10->unkB90.GetCurrentTarget();
+                ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
                 temp_r5_1955 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
                 temp_r3_1956 = this->unk10->unk8;
                 sp78 = M2C_FIELD(temp_r5_1955, f64 *, 0x30);
@@ -1385,9 +1389,9 @@ void SpyroFallState::Update() {
                 sp70 = (f32) sp70 * var_f4_1969;
                 sp88 = (f64) sp68;
                 sp90 = (f64) sp70;
-                this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp68), 15.0f);
+                ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp68), 15.0f);
             } else {
-                this->unk10->unk8->ZAxis3();
+                ((Matrix *) this->unk10->unk8)->ZAxis3();
                 sp18 = -*M2C_ERROR(/* Read from unset register $r3 */);
                 sp1C = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
                 sp20 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
@@ -1502,7 +1506,7 @@ void SpyroFallState::Enter(SpyroStateMessages &arg0) {
     sp20 = M2C_FIELD(temp_r5_2262, f64 *, 0x38);
     this->unk28 = unksp1C;
     this->unk34 = arg0.IsMessageOnList(0x17D);
-    this->unk36 = this->unk10->unk430.unk28.GetTailSweepEnabled();
+    this->unk36 = ((CombatStateData *) &this->unk10->unk430.unk28)->GetTailSweepEnabled();
     if (arg0.IsMessageOnList(0x170) != 0) {
         this->unk2C = M2C_FIELD(&gb, f32 *, 0x30C) + 0.1667f;
     }

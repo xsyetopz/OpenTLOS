@@ -175,7 +175,7 @@ public:
 inline EarthBoss::EarthBoss() {
     M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     M2C_FIELD(this, s32 *, 0xCF4) = 0;
-    this->unkCDC.Init();
+    ((EventMessage *) &this->unkCDC)->Init();
     return this;
 }
 #endif
@@ -184,7 +184,7 @@ inline EarthBoss::EarthBoss() {
 inline EarthBoss::~EarthBoss() {
     M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
     if (&this->unkCDC != NULL) {
-        this->unkCDC.Deinit();
+        ((EventMessage *) &this->unkCDC)->Deinit();
     }
 }
 #endif

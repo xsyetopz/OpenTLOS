@@ -58,7 +58,7 @@ loop_9:
             var_r4_34 += 4;
             goto loop_9;
         }
-        temp_r3_61 = var_r3_36->Current();
+        temp_r3_61 = ((MKHeap *) var_r3_36)->Current();
         if (temp_r3_61 != NULL) {
             ((MKHeap *) (temp_r3_61->Current()))->Free(var_r31_35, NULL, 0);
         } else {

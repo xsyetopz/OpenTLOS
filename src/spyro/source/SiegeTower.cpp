@@ -9,13 +9,15 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Ball.h"
+#include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/Projectile.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -28,7 +30,7 @@ extern M2C_UNK gb;
 static struct _struct_siegeTowerGroups_0x18 siegeTowerGroups[8];
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'Ball *' to
 void SiegeTower::ZapBall(Ball *arg0) {
     f64 sp10;
     f64 sp8;
@@ -44,7 +46,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
     if ((u32) temp_r3_95 != 0U) {
         M2C_FIELD(temp_r3_95, s32 *, 0x130) = 0;
     }
-    this->unk1C0.unk78 = 0x11->CreateInstance((ProjectileType) arg0);
+    this->unk1C0.unk78 = ((Projectile *)0x11)->CreateInstance((ProjectileType) arg0);
     if ((u32) this->unk1C0.unk78 != 0U) {
         this->unk280.unk4 = M2C_BITWISE(f32, arg0);
         this->unk270.unkC = 0.5f;
@@ -71,7 +73,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SiegeTower::Shoot(Targetable *arg0) {
     s8 sp99;
     s8 sp98;
@@ -106,7 +108,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
     void *temp_r6_198;
 
     if (((u32) this->unk1C0.unk78 == 0U) && (arg0 != NULL)) {
-        this->unk1C0.unk78 = 0x11->CreateInstance((ProjectileType) arg0);
+        this->unk1C0.unk78 = ((Projectile *)0x11)->CreateInstance((ProjectileType) arg0);
         if ((u32) this->unk1C0.unk78 != 0U) {
             this->unk270.unkC = 2.0f;
             M2C_FIELD(this->unk1C0.unk78, SiegeTower **, 0x130) = this;
@@ -146,7 +148,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
             sp68 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp98 = 0;
             if (this != NULL) {
-                sp18.GetPos();
+                ((MKProp *) &sp18)->GetPos();
                 sp78 = sp18;
                 sp80 = sp20;
             } else {
@@ -271,14 +273,14 @@ void SiegeTower::AllocElecBeams() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'FindInteractivePropMsg'
 void SiegeTower::Message(MKMessage *arg0) {
     s32 temp_r0_510;
     s32 temp_r3_544;
     void *temp_r3_535;
 
-    this->unk280.unkC.Message(arg0);
-    this->unk2C8.Message(arg0);
+    ((KDSoundPlayer *) &this->unk280.unkC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk2C8)->Message(arg0);
     temp_r0_510 = arg0->unk0;
     if (temp_r0_510 != 0x31) {
         if (temp_r0_510 < 0x31) {
@@ -304,10 +306,10 @@ void SiegeTower::Message(MKMessage *arg0) {
             }
         } else {
             if (temp_r0_510 < 0xB6) {
-                this->unk1B0.Message(arg0);
+                ((EnemyGenerator *) &this->unk1B0)->Message(arg0);
             }
 block_17:
-            this->unk1B0.Message(arg0);
+            ((EnemyGenerator *) &this->unk1B0)->Message(arg0);
             Shatterable::Message(arg0);
         }
     }
@@ -552,7 +554,7 @@ void SiegeTower::Update() {
         }
         temp_r4_914 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk280.unkC.Update(M2C_FIELD(temp_r4_914, s32 *, 0x178), 1U, var_r29_887, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk280.unkC)->Update(M2C_FIELD(temp_r4_914, s32 *, 0x178), 1U, var_r29_887, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x17C) != 0) {
         var_r29_932 = 0;
@@ -567,7 +569,7 @@ void SiegeTower::Update() {
         }
         temp_r4_959 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk2C8.Update(M2C_FIELD(temp_r4_959, s32 *, 0x17C), 1U, var_r29_932, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk2C8)->Update(M2C_FIELD(temp_r4_959, s32 *, 0x17C), 1U, var_r29_932, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x180) != 0) {
         var_r31_977 = 0;
@@ -576,7 +578,7 @@ void SiegeTower::Update() {
         }
         temp_r4_992 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk2F0.Update(M2C_FIELD(temp_r4_992, s32 *, 0x180), 1U, var_r31_977, NULL, (MKVector3 *) &this->unk250.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk2F0)->Update(M2C_FIELD(temp_r4_992, s32 *, 0x180), 1U, var_r31_977, NULL, (MKVector3 *) &this->unk250.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((MKProp *) this->unk170 == (s32) (M2C_FIELD(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
         FreeElecBeams();
@@ -598,10 +600,10 @@ void SiegeTower::Update() {
             if (temp_r0_1049 == 2) {
                 temp_f31_1052 = M2C_BITWISE(f32, this->unk1C0.unk24);
                 this->unk1C0.unk24 = 0.0f;
-                this->unk1B0.Update();
+                ((EnemyGenerator *) &this->unk1B0)->Update();
                 this->unk1C0.unk24 = temp_f31_1052;
             } else if (temp_r0_1049 != 3) {
-                this->unk1B0.Update();
+                ((EnemyGenerator *) &this->unk1B0)->Update();
             }
         }
         var_r31_1066 = NULL;
@@ -720,7 +722,6 @@ void SiegeTower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SiegeTower::Resolve() {
     u32 temp_r4_1352;
     void *temp_r3_1361;
@@ -734,11 +735,10 @@ void SiegeTower::Resolve() {
         M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_1361, f64 *, 0x30);
         M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_1361, f64 *, 0x38);
     }
-    this->unk1B0.Resolve();
+    ((EnemyGenerator *) &this->unk1B0)->Resolve();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void SiegeTower::LoadDone() {
     f64 sp8;
     f32 temp_r0_1422;
@@ -748,10 +748,10 @@ void SiegeTower::LoadDone() {
     u16 temp_r30_1398;
 
     Shatterable::LoadDone();
-    this->unk1B0.LoadDone();
+    ((EnemyGenerator *) &this->unk1B0)->LoadDone();
     this->unk324 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
     temp_r30_1398 = Tools_GetMatchingNodeIndex(this->unk4, "m_p3028_disc");
-    sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     M2C_FIELD(this, f64 *, 0x1A8) = sp8;
     M2C_FIELD(this, f64 *, 0x1B0) = sp10;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r30_1398), (void (*)(MKDynamicBone *, void *)) &SiegeTower::UpdateTurretBone, &this->unk198);
@@ -790,14 +790,14 @@ s32 SiegeTower::LoadLine(MKIniLine *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SiegeTower::Deinit() {
     s32 temp_r3_1516;
     s32 var_ctr_1542;
     s32 var_r3_1537;
     struct _struct_siegeTowerGroups_0x18 *temp_r5_1546;
 
-    this->unk1B0.Deinit();
+    ((EnemyGenerator *) &this->unk1B0)->Deinit();
     temp_r3_1516 = this->unk1C0.unk78;
     if ((u32) temp_r3_1516 != 0U) {
         M2C_FIELD(temp_r3_1516, s32 *, 0x130) = 0;
@@ -824,15 +824,15 @@ void SiegeTower::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P20SiegeTowerDescriptor'
 void SiegeTower::Init() {
     Shatterable::Init();
-    this->unk1B0.Init(checked_cast<P20SiegeTowerDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x184, (MKProp *) this);
+    ((EnemyGenerator *) &this->unk1B0)->Init(checked_cast<P20SiegeTowerDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x184, (MKProp *) this);
     this->unk1C0.unk78 = 0;
     this->unk270.unkC = 0.0f;
-    this->unk280.unkC.Init(0.05f, 0.25f);
-    this->unk2C8.Init(0.05f, 0.25f);
-    this->unk2F0.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk280.unkC)->Init(0.05f, 0.25f);
+    ((KDSoundFader *) &this->unk2C8)->Init(0.05f, 0.25f);
+    ((KDSoundFader *) &this->unk2F0)->Init(0.25f, 0.25f);
     this->unk260.unkC = 0.0f;
     this->unk270.unk0 = 0.0f;
     this->unk270.unk4 = 0.0f;

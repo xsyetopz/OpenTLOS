@@ -20,6 +20,7 @@
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
+#include "spyro/source/UISystem.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -133,7 +134,7 @@ void FrontEnd_SetFade(float arg0) {
         var_f1_0 = 0.0f;
     }
     fade = var_f1_0;
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     temp_f2_196 = 1.0f - fade;
     KDSound_SetMasterVolume(temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
 }
@@ -181,7 +182,7 @@ void FrontEnd_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void FrontEnd_Update() {
     f32 temp_f1_414;
     f32 temp_f1_432;
@@ -196,14 +197,14 @@ void FrontEnd_Update() {
             timeout = temp_r0_344;
             if (temp_r0_344 >= 3) {
                 if ((s32) gDisplay == 0) {
-                    pFrontEndSystem->ChangeScreen("Prologue1VideoNoTitle");
+                    ((UISystem *) pFrontEndSystem)->ChangeScreen("Prologue1VideoNoTitle");
                 } else {
-                    pFrontEndSystem->ChangeScreen("Prologue1Video");
+                    ((UISystem *) pFrontEndSystem)->ChangeScreen("Prologue1Video");
                 }
                 bGoToNewGame = 0;
                 M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                 M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetLevelUpPoints(0);
+                ((GameStats *) &GameData::gameData[0x70])->SetLevelUpPoints(0);
             }
         }
         goto block_26;
@@ -215,7 +216,7 @@ void FrontEnd_Update() {
             temp_r0_392 = timeout + 1;
             timeout = temp_r0_392;
             if (temp_r0_392 >= 3) {
-                pFrontEndSystem->PushScreen(pVideoName);
+                ((UISystem *) pFrontEndSystem)->PushScreen(pVideoName);
                 bGoToVideo = 0;
                 pVideoName = NULL;
             }
@@ -338,7 +339,7 @@ loop_4:
         Hud_InitModule();
         Autosave_Reset();
         temp_r29_624 = M2C_FIELD(NoisySystem::descriptor, s32 *, 8);
-        temp_r3_625 = ((MKHeap *) ((MKHeap *) NoisySystem::descriptor))->Current();
+        temp_r3_625 = ((MKHeap *) NoisySystem::descriptor)->Current();
         if (temp_r3_625 != NULL) {
             var_r29_633 = ((MKHeap *) (temp_r3_625->Current()))->Alloc(temp_r29_624, NULL, 0);
         } else {
@@ -439,7 +440,7 @@ loop_51:
             goto loop_51;
         }
         KDSound_Init("mainmenu");
-        if (pFrontEndSystem->Load("frontend.ui", NULL) != 0) {
+        if (((UIObject *) pFrontEndSystem)->Load("frontend.ui", NULL) != 0) {
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x28)(pFrontEndSystem);
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x20)(pFrontEndSystem);
             sp8 = 1;
@@ -450,29 +451,29 @@ loop_51:
             }
             switch ((s32) menuLoadingState) {       /* irregular */
             case 0:
-                pFrontEndSystem->PushScreen("MainMenu");
-                pFrontEndSystem->PushScreen("Title");
-                pFrontEndSystem->PushScreen("VideoMaker");
-                pFrontEndSystem->PushScreen("Developer");
-                pFrontEndSystem->PushScreen("Publisher");
-                pFrontEndSystem->PushScreen("Copyright");
-                pFrontEndSystem->PushScreen("HealthSafety");
+                ((UISystem *) pFrontEndSystem)->PushScreen("MainMenu");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Title");
+                ((UISystem *) pFrontEndSystem)->PushScreen("VideoMaker");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Developer");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Publisher");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Copyright");
+                ((UISystem *) pFrontEndSystem)->PushScreen("HealthSafety");
                 break;
             case 1:
-                ((GameData *) ((GameData *) GameData::gameData))->ClearData();
-                pFrontEndSystem->PushScreen("LevelScreen");
+                ((GameData *) GameData::gameData)->ClearData();
+                ((UISystem *) pFrontEndSystem)->PushScreen("LevelScreen");
                 break;
             case 2:
-                pFrontEndSystem->PushScreen("Title");
-                pFrontEndSystem->PushScreen("MainMenu");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Title");
+                ((UISystem *) pFrontEndSystem)->PushScreen("MainMenu");
                 break;
             case 3:
-                pFrontEndSystem->PushScreen("Title");
-                pFrontEndSystem->PushScreen("MainMenu");
-                pFrontEndSystem->PushScreen("ExtrasScreen");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Title");
+                ((UISystem *) pFrontEndSystem)->PushScreen("MainMenu");
+                ((UISystem *) pFrontEndSystem)->PushScreen("ExtrasScreen");
                 break;
             default:
-                pFrontEndSystem->PushScreen("Title");
+                ((UISystem *) pFrontEndSystem)->PushScreen("Title");
                 break;
             }
         }

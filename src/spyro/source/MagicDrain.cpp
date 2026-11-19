@@ -150,7 +150,7 @@ void MagicDrain::Update() {
                     } else {
                         var_f1_283 = 0.0f;
                     }
-                    ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->SetValue(var_f1_283, 0U);
+                    ((Stat *) &GameData::gameData[0xA0])->SetValue(var_f1_283, 0U);
                 }
             }
             this->unk1B8 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);

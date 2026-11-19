@@ -838,7 +838,7 @@ loop_65:
             temp_f1_1210 = var_f24_981 - var_f25_1184;
             if (!(temp_f1_1210 < 0.05f)) {
                 temp_r0_1215 = 0 - var_r30_872;
-                arg1->CalculateNewVelocity((MKVector3 *) &sp70, var_r5_1117, temp_f1_1210, (KDContextInfo *) ((s32) &spE8 & ((temp_r0_1215 - temp_r0_1215) - !M2C_CARRY)), (MKCollisionResult *) &sp80, *(M2C_ERROR(/* Read from unset register $r8 */)));
+                ((KDCollisionObject *) arg1)->CalculateNewVelocity((MKVector3 *) &sp70, var_r5_1117, temp_f1_1210, (KDContextInfo *) ((s32) &spE8 & ((temp_r0_1215 - temp_r0_1215) - !M2C_CARRY)), (MKCollisionResult *) &sp80, *(M2C_ERROR(/* Read from unset register $r8 */)));
                 var_r30_872 = 1;
                 var_r29_955 += 1;
                 spE8 = (f64) sp90;

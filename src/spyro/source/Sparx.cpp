@@ -222,7 +222,7 @@ void Sparx::StateAction_FollowPathUpdate() {
         this->unk200 = 1.0f;
     }
     sp8 = 0.0f;
-    sp30.GetMeasure(this->unk200, (Matrix *) &this->unk1F4->unkB0->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp30)->GetMeasure(this->unk200, (Matrix *) &this->unk1F4->unkB0->unk30, KDSpline_PositionMixer);
     M2C_FIELD(this, f64 *, 0x2B0) = sp30;
     this->unk2B0 = sp38;
     if (this->unk200 >= 1.0f) {

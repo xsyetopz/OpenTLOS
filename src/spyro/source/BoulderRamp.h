@@ -69,7 +69,7 @@ void BoulderRamp_InitModule(void);
 inline BoulderRamp::~BoulderRamp() {
     this->unkC8 = &__vt.unk48;
     if (&this->unkF4.unk14 != NULL) {
-        this->unkF4.unk14.Deinit();
+        ((EventMessage *) &this->unkF4.unk14)->Deinit();
     }
 }
 #endif
@@ -82,7 +82,7 @@ inline BoulderRamp::BoulderRamp() {
     this->unkF4.unk8 = 0.0f;
     this->unkF4.unkC = 0.0f;
     this->unkF4.unk14 = 0.0f;
-    this->unkF4.unk14.Init();
+    ((EventMessage *) &this->unkF4.unk14)->Init();
     this->unkF4.unk18 = nanf;
     this->unkF4.unk1C = nanf;
     this->unkF4.unk20 = 0.0f;

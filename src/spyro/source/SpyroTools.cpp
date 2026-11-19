@@ -443,7 +443,7 @@ loop_9:
             var_r4_828 += 4;
             goto loop_9;
         }
-        temp_r3_855 = var_r3_830->Current();
+        temp_r3_855 = ((MKHeap *) var_r3_830)->Current();
         if (temp_r3_855 != NULL) {
             ((MKHeap *) (temp_r3_855->Current()))->Free(var_r31_829, NULL, 0);
         } else {
@@ -726,10 +726,10 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
         M2C_STRUCT_COPY((s32) &sp9C + 4, MKModel_GetWorldMatrix(this->unk14) - 4 + 4, 0x40);
         sp50 = spD0;
         sp58 = spD8;
-        spA0.SetIdentity();
-        spA0.RotateRoll((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 8));
-        spA0.RotatePitch((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 0));
-        spA0.RotateYaw((Matrix *) &spA0, M2C_FIELD(this, f32 *, 4));
+        ((Matrix *) &spA0)->SetIdentity();
+        ((Matrix *) &spA0)->RotateRoll((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 8));
+        ((Matrix *) &spA0)->RotatePitch((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 0));
+        ((Matrix *) &spA0)->RotateYaw((Matrix *) &spA0, M2C_FIELD(this, f32 *, 4));
         spD0 = (f32) sp50;
         unkspD4 = unksp54;
         spD8 = (f32) sp58;
@@ -737,7 +737,7 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
         MKModel_SetWorldMatrix(this->unk14, *((Matrix *) &spA0));
         return;
     }
-    sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk14));
+    ((Animation *) &sp30)->GetNodeOrigin(MKModel_GetAnimation(this->unk14));
     sp40 = sp30;
     sp48 = sp38;
     sp60.SetIdentity();

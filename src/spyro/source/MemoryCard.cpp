@@ -88,7 +88,7 @@ void MCText::Draw(const RenderContext &arg0) {
         }
         sp60.SetIdentity();
         sp60.Translate(&sp60, *((MKVector3 *) &sp50));
-        spA0.Multiply(&sp60, (Matrix *) &spA0);
+        ((Matrix *) &spA0)->Multiply(&sp60, (Matrix *) &spA0);
         temp_r4_123 = this->unk64;
         if ((temp_r4_123 >= 0) && ((u32) *(gpTranslation_StringArray + ((s32) temp_r4_123 * 4)) != 0U)) {
             MemoryCard_String(&spF0, (s32) temp_r4_123);
@@ -348,7 +348,7 @@ void MemoryCard_InitModule() {
 
     MemoryCard_String(gameNameBuffer, 3);
     M2C_FIELD(&memCardSlotSizes, s32 *, 0) = 3;
-    temp_r3_704 = ((GameData *) ((GameData *) GameData::gameData))->GetGameDataSize();
+    temp_r3_704 = ((GameData *) GameData::gameData)->GetGameDataSize();
     M2C_FIELD(&memCardSlotSizes, s32 *, 0xC) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 8) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 4) = temp_r3_704;

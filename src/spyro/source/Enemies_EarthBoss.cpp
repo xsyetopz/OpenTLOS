@@ -2,6 +2,7 @@
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKCollisionResult.h"
@@ -23,10 +24,12 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/SpyroHud.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -536,7 +539,7 @@ void EarthBoss::ShowFist(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
+#if 0 // DRAFT: illegal operands 'EarthBossDescriptor' != 'float'
 void EarthBoss::UpdatePhrasesAndSounds() {
     EnemyAttack *temp_r3_749;
     f32 temp_f1_851;
@@ -549,8 +552,8 @@ void EarthBoss::UpdatePhrasesAndSounds() {
 
     temp_r3_749 = this->unkA20;
     temp_f31_756 = this->unkAB0;
-    temp_f30_760 = (f32) M2C_FIELD(temp_r3_749, s32 *, 0x11C) * this->unkA20->GetEnemySetting((EnemySettingType) 0);
-    temp_f30_775 = ((temp_f30_760 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * temp_r3_749->GetEnemySetting((EnemySettingType) 0))) + temp_f31_756) / temp_f30_760;
+    temp_f30_760 = (f32) M2C_FIELD(temp_r3_749, s32 *, 0x11C) * ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0);
+    temp_f30_775 = ((temp_f30_760 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * ((EnemyDescriptor *) temp_r3_749)->GetEnemySetting((EnemySettingType) 0))) + temp_f31_756) / temp_f30_760;
     if (temp_f30_775 > M2C_BITWISE(f32, this->unkCD4)) {
         this->unkCD4 = temp_f30_775;
     }
@@ -662,7 +665,7 @@ void EarthBoss::UpdateCollisionItems() {
             }
         }
         if ((u8) M2C_FIELD(temp_r30_891, u8 *, 0xB54) != 0) {
-            sp150.SetIdentity();
+            ((Matrix *) &sp150)->SetIdentity();
             if ((var_r28_888 == 2) && (temp_r4_1013 = this->unkCC0, (((s32) temp_r4_1013->unk38C == 0) == 0))) {
                 MKModel_CalculateNodeWorldMatrix(temp_r4_1013->unk4, temp_r4_1013->unk344, (Matrix *) &sp150);
                 sp80.operator*(200.0f);
@@ -674,7 +677,7 @@ void EarthBoss::UpdateCollisionItems() {
                 M2C_FIELD(temp_r30_891, f64 *, 0xB20) = (f64) sp38;
             } else {
                 MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(temp_r30_891, s32 *, 0xB4C), (Matrix *) &sp150);
-                sp150.YAxis3();
+                ((Matrix *) &sp150)->YAxis3();
                 temp_f0_1050 = *M2C_ERROR(/* Read from unset register $r3 */) * M2C_FIELD(temp_r30_891, f64 *, 0xB28);
                 sp10 = temp_f0_1050;
                 sp60 = temp_f0_1050;
@@ -827,7 +830,7 @@ block_28:
         goto block_28;
     case 21:
         if ((IsDying() == 0) && (IsDead() == 0)) {
-            this->unkCDC.Send(NULL);
+            ((EventMessage *) &this->unkCDC)->Send(NULL);
             RestartStage();
             M2C_FIELD(this, s8 *, 0xCDC) = 1;
             temp_r3_1324 = this->unkCC0;
@@ -1083,7 +1086,6 @@ void EarthBoss::SetupCollision() {
     SetupCollisionSphere(5, "Spine03", "Spine02", 350.0f, *((MKVector3 *) &sp68));
 }
 
-#if 0 // DRAFT: expression syntax error
 void EarthBoss::LoadDone() {
     Enemy::LoadDone();
     this->unkA28 = (void **) this->unkA24;
@@ -1092,25 +1094,22 @@ void EarthBoss::LoadDone() {
     this->unkCD4 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Hand");
     this->unkCC0 = (EarthBossArm *) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "rubble05");
     ShowFist(1U);
-    this->unkCC0 = checked_cast<EarthBossArm *, MKProp>(gMK->CreateProp("EarthBossArm"));
+    this->unkCC0 = checked_cast<EarthBossArm *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBossArm"));
     this->unkCC0->Init2(this);
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 s32 EarthBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1913;
 
     var_r31_1913 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unkCDC.LoadLine(arg0, "OnReset") != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (((EventMessage *) &this->unkCDC)->LoadLine(arg0, "OnReset") != 0)) {
         var_r31_1913 = 1;
     }
     return var_r31_1913;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'EarthBoss' to
 void EarthBoss::Deinit() {
@@ -1166,8 +1165,8 @@ void EarthBoss::Init() {
     this->unkCD0 = 0;
     this->unkCD4 = 0.0f;
     this->unkCD8 = 0.0f;
-    this->unkCC4 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
-    this->unkCDC.Init();
+    this->unkCC4 = checked_cast<EarthShockwave *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthShockwave"));
+    ((EventMessage *) &this->unkCDC)->Init();
 }
 #endif
 
@@ -1812,7 +1811,7 @@ void EarthBossArm::Aim(const MKVector3 &arg0) {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     Enable((f64) sp20, temp_f2_3183, sp60.unk24, temp_f4_3181, sp60.unk20, temp_f6_3170, sp40.unk8);
-    this->unk370->ShowFist(0U);
+    ((EarthBoss *) this->unk370)->ShowFist(0U);
 }
 #endif
 
@@ -1917,7 +1916,7 @@ void EarthBossArm::SetRetracted() {
     do {
         temp_r29_3370 = this + var_r30_3339;
         temp_r28_3296->GetNodeParentIndex(M2C_FIELD(temp_r29_3370, s32 *, 0xC4));
-        sp50.GetNodeOrigin((s32) temp_r28_3296);
+        ((Animation *) &sp50)->GetNodeOrigin((s32) temp_r28_3296);
         spC0 = sp50;
         spC8 = sp58;
         sp20 = sp50 - M2C_FIELD(temp_r29_3370, f64 *, 0x70);
@@ -2280,7 +2279,7 @@ void EarthBossArm::UpdateExtension() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
 void EarthBossArm::UpdateTarget() {
     u8 sp290;
     s32 sp28C;
@@ -2398,7 +2397,7 @@ void EarthBossArm::UpdateTarget() {
 
     var_r30_4086 = 0;
     temp_r3_4087 = this->unk370;
-    if (((u8) M2C_FIELD(temp_r3_4087, u8 *, 0x8B8) == 2) || (temp_r3_4087->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_4087, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_4087->unk870.unk30)->Get() != NULL)) {
         var_r30_4086 = 1;
     }
     if (var_r30_4086 != 0) {
@@ -2422,7 +2421,7 @@ loop_9:
         this->unk380 = (f64) sp198.unk8;
         temp_r4_4133 = this->unk370;
         MKModel_CalculateNodeWorldPosition(temp_r4_4133->unk4, M2C_FIELD(temp_r4_4133, s32 *, 0xCD4), &sp1E8);
-        sp188.GetDir();
+        ((AITargetData *) &sp188)->GetDir();
         temp_r3_4141 = this->unk370;
         temp_f29_4151 = (temp_r3_4141->unkC8 * sp190) + ((temp_r3_4141->unkC0 * sp188) + (temp_r3_4141->unkC4 * sp18C));
         if (temp_f29_4151 < _table_sinf(2.6179938f)) {
@@ -2445,14 +2444,14 @@ loop_9:
             sp224 = temp_r5_4199->unkC4;
             sp228 = temp_r5_4199->unkC8;
             sp22C = 0.0f;
-            sp178.GetDir();
+            ((AITargetData *) &sp178)->GetDir();
             if (((sp180 * M2C_BITWISE(f32, sp198.unk40.unk8)) + ((sp178 * M2C_BITWISE(f32, sp198.unk40)) + (sp17C * M2C_BITWISE(f32, sp198.unk40.unk4)))) > 0.0f) {
-                sp200.RotateYaw((Matrix *) &sp200, -1.0471976f);
+                ((Matrix *) &sp200)->RotateYaw((Matrix *) &sp200, -1.0471976f);
             } else {
-                sp200.RotateYaw((Matrix *) &sp200, 1.0471976f);
+                ((Matrix *) &sp200)->RotateYaw((Matrix *) &sp200, 1.0471976f);
             }
-            sp148.operator*(this->unk370->unk838.unk28.GetDist());
-            sp158.GetPos();
+            sp148.operator*(((AITargetData *) &this->unk370->unk838.unk28)->GetDist());
+            ((MKProp *) &sp158)->GetPos();
             sp48 = sp158 + M2C_BITWISE(f64, sp148);
             this->unk378 = sp48;
             sp50 = sp160 + sp148.unk8;
@@ -2609,7 +2608,7 @@ loop_49:
                     var_r0_4548 = 0U;
                 }
                 if (var_r0_4548 != 0U) {
-                    temp_r3_4559 = M2C_FIELD(sp240.GetProp(), void **, 8);
+                    temp_r3_4559 = M2C_FIELD(((MKCollisionResult *) &sp240)->GetProp(), void **, 8);
                     temp_f1_4561 = M2C_FIELD(temp_r3_4559, f64 *, 0x30);
                     temp_f0_4562 = M2C_FIELD(temp_r3_4559, f64 *, 0x38);
                     spB8 = temp_f1_4561;
@@ -3020,13 +3019,13 @@ void EarthBossArm::Update() {
         sp234 = sp160.unk4;
         sp238 = sp160.unk8;
         sp23C = 0.0f;
-        sp210.ZAxis3();
+        ((Matrix *) &sp210)->ZAxis3();
         sp30 = -*M2C_ERROR(/* Read from unset register $r3 */);
         sp34 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
         sp38 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
         sp110 = (f64) sp30;
         sp118 = (f64) sp38;
-        sp210.XAxis3();
+        ((Matrix *) &sp210)->XAxis3();
         sp20 = -*M2C_ERROR(/* Read from unset register $r3 */);
         sp24 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
         sp28 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
@@ -3057,7 +3056,7 @@ void EarthBossArm::Update() {
             this->unk38C = 0;
             this->unkE0 = sp1E0;
             this->unkE8 = sp1E8;
-            this->unk370->ShowFist(1U);
+            ((EarthBoss *) this->unk370)->ShowFist(1U);
             Disable();
         }
         break;
@@ -3114,7 +3113,7 @@ void EarthBossArm::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void EarthBossArm::InitBoneData(int arg0, const char *arg1) {
     f64 sp8;
     s32 temp_r31_5421;
@@ -3125,7 +3124,7 @@ void EarthBossArm::InitBoneData(int arg0, const char *arg1) {
     temp_r30_5423 = this + temp_r31_5421;
     M2C_FIELD(temp_r30_5423, s32 *, 0xC4) = (s32) Tools_GetMatchingNodeIndex(this->unk4, arg1);
     M2C_FIELD(temp_r30_5423, Enemy **, 0xC0) = (Enemy *) this->unk370;
-    sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     M2C_FIELD(temp_r30_5423, f64 *, 0x70) = sp8;
     M2C_FIELD(temp_r30_5423, f64 *, 0x78) = sp10;
     M2C_FIELD(temp_r30_5423, f32 *, 0x60) = 0.0f;
@@ -3212,13 +3211,13 @@ void EarthBossArm::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void (EarthBossArm::*)(MKDynamicBone *,
 void EarthBossArmDescriptor::LoadDone() {
     s32 var_r29_5657;
     s8 temp_r30_5655;
 
     MKPropDescriptor::LoadDone();
-    temp_r30_5655 = this->unk30->GetNmbrOfNodes();
+    temp_r30_5655 = ((Animation *) this->unk30)->GetNmbrOfNodes();
     var_r29_5657 = 0;
 loop_2:
     if (var_r29_5657 < temp_r30_5655) {

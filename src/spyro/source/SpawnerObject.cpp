@@ -350,7 +350,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 MKProp **SpawnerObject::GetSpawnItemObject() {
     MKProp ***temp_r4_503;
     MKProp ***temp_r4_507;
@@ -365,12 +364,11 @@ MKProp **SpawnerObject::GetSpawnItemObject() {
             this->unk48 = temp_r4_507;
             temp_r3_509 = *temp_r4_507;
             var_r31_499 = temp_r3_509;
-            temp_r3_509->SetDefaults();
+            ((SpawnItemObject *) temp_r3_509)->SetDefaults();
         }
     }
     return var_r31_499;
 }
-#endif
 
 void SpawnerObject::ItemWasRecycled(MKProp *arg0) {
     RemoveItem(arg0);
@@ -682,7 +680,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void SpawnerObject::RemoveAllSpawnPoints(bool arg0) {
     u32 *var_r31_1084;
     u32 *var_r31_1097;
@@ -695,7 +692,7 @@ void SpawnerObject::RemoveAllSpawnPoints(bool arg0) {
 loop_4:
             temp_r3_1092 = *var_r31_1084;
             if (temp_r3_1092 != 0) {
-                temp_r3_1092->Deinit();
+                ((SpawnPointObject *) temp_r3_1092)->Deinit();
                 operator delete((void *) *var_r31_1084);
                 var_r31_1084 += 4;
                 goto loop_4;
@@ -714,7 +711,6 @@ loop_8:
     this->unk1C = 0;
     SetDefaults();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpawnerObject::RemoveSpawnPoint(SpawnPointObject *arg0) {
@@ -759,7 +755,7 @@ loop_9:
                 }
             }
             arg0->unk52 = 0;
-            this->unk44.Destroy(arg0);
+            ((MKPtrList<SpawnPointObject> *) &this->unk44)->Destroy(arg0);
         }
     }
 }
@@ -889,7 +885,7 @@ loop_12:
             var_r4_1305 += 4;
             goto loop_12;
         }
-        temp_r3_1332 = var_r3_1307->Current();
+        temp_r3_1332 = ((MKHeap *) var_r3_1307)->Current();
         if (temp_r3_1332 != NULL) {
             ((MKHeap *) (temp_r3_1332->Current()))->Free((void *) var_r30_1306, NULL, 0);
         } else {
@@ -905,7 +901,7 @@ loop_12:
         } while ((u32) *temp_r3_1355 != 0);
         temp_r30_1360 = this->unk44;
         if (temp_r30_1360 != &gEmptyPtrList) {
-            temp_r3_1364 = temp_r3_1355->Current();
+            temp_r3_1364 = ((MKHeap *) temp_r3_1355)->Current();
             if (temp_r3_1364 != NULL) {
                 ((MKHeap *) (temp_r3_1364->Current()))->Free(temp_r30_1360, NULL, 0);
             } else {
@@ -938,7 +934,7 @@ loop_33:
                 var_r4_1383 += 4;
                 goto loop_33;
             }
-            temp_r3_1410 = var_r3_1385->Current();
+            temp_r3_1410 = ((MKHeap *) var_r3_1385)->Current();
             if (temp_r3_1410 != NULL) {
                 ((MKHeap *) (temp_r3_1410->Current()))->Free(var_r30_1384, NULL, 0);
             } else {
@@ -970,7 +966,7 @@ void SpawnerObject::LoadDone(unsigned int arg0) {
         this->unk48 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_1461 = 1U->Current();
+    temp_r3_1461 = ((MKHeap *)1U)->Current();
     if (temp_r3_1461 != NULL) {
         var_r3_1471 = ((MKHeap *) (temp_r3_1461->Current()))->Alloc(((temp_r30_1453 + 2) * 4) + (temp_r30_1453 * 0xC), NULL, 0);
     } else {
@@ -1018,7 +1014,7 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
         this->unk48 = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_1537 = 1U->Current();
+    temp_r3_1537 = ((MKHeap *)1U)->Current();
     if (temp_r3_1537 != NULL) {
         var_r3_1547 = ((MKHeap *) (temp_r3_1537->Current()))->Alloc(((temp_r30_1529 + 2) * 4) + (temp_r30_1529 * 0xC), NULL, 0);
     } else {

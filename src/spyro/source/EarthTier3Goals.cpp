@@ -1,6 +1,9 @@
 #include "spyro/source/EarthTier3Goals.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
@@ -31,10 +34,10 @@ u8 EarthTier3Goal_Spawn::Update() {
     }
     if (var_r5_43 != 0) {
         var_r30_57 = 0;
-        if (((u8) M2C_FIELD(temp_r6_42, u8 *, 0x8B8) == 2) || (temp_r6_42->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r6_42, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r6_42->unk870.unk30)->Get() != NULL)) {
             var_r30_57 = 1;
         }
-        if ((var_r30_57 != 0) && (this->unkC->unk838.unk28.GetDist() < 1500.0f)) {
+        if ((var_r30_57 != 0) && (((AITargetData *) &this->unkC->unk838.unk28)->GetDist() < 1500.0f)) {
             temp_r3_75 = this->unkC;
             temp_r4_78 = temp_r3_75->unkA38;
             temp_r3_75->SetAnim((AnimSequence *) temp_r4_78, (AnimTransition *) &temp_r4_78->__vptr, 0.15f, 0U);
@@ -42,7 +45,7 @@ u8 EarthTier3Goal_Spawn::Update() {
     }
     temp_r29_82 = this->unkC;
     var_r30_83 = 0;
-    if (temp_r29_82->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_82)->HasAnimFinished() != 0) {
         temp_r4_88 = temp_r29_82->unkA38;
         if ((temp_r4_88 != NULL) && ((void *) temp_r4_88->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_82, void **, 0x630), u32 *, 0x20))) {
             var_r30_83 = 1;

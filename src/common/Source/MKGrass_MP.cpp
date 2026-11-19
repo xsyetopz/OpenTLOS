@@ -626,7 +626,7 @@ loop_2:
     }
     temp_r3_1022 = arg1->unk2 * 0xC;
     temp_r31_1024 = (temp_r3_1022 + 0xF) & 0xFFFFFFF0;
-    temp_r3_1025 = temp_r3_1022->Current();
+    temp_r3_1025 = ((MKHeap *) temp_r3_1022)->Current();
     if (temp_r3_1025 != NULL) {
         var_r3_1032 = ((MKHeap *) (temp_r3_1025->Current()))->Alloc(temp_r31_1024 + var_r27_1001, NULL, 0);
     } else {
@@ -768,7 +768,7 @@ loop_57:
                     M2C_FIELD(temp_r22_1205, s32 *, 4) = (s32) ((temp_r3_1214 + arg1->unk4) * 0x18);
                     temp_r20_1219 = M2C_FIELD(temp_r22_1205, s32 *, 4);
                     temp_r21_1220 = M2C_FIELD(temp_r22_1205, void **, 8);
-                    temp_r3_1221 = temp_r3_1214->Current();
+                    temp_r3_1221 = ((MKHeap *) temp_r3_1214)->Current();
                     if (temp_r3_1221 != NULL) {
                         var_r3_1229 = ((MKHeap *) (temp_r3_1221->Main()))->TReAlloc(temp_r21_1220, temp_r20_1219, NULL, 0);
                     } else {
@@ -981,7 +981,7 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
         var_r27_1638 = 0;
 loop_11:
         if (var_r22_1637 < arg4) {
-            sp28.CalculateColor(*(*(arg5 + var_r27_1638)), *((MKVector3 *) arg0));
+            ((OmniLight *) &sp28)->CalculateColor(*(*(arg5 + var_r27_1638)), *((MKVector3 *) arg0));
             arg0->unk10 += sp28;
             arg0->unk18 += sp30;
             var_r22_1637 += 1;

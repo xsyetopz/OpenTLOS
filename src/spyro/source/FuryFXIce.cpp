@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXIce.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
@@ -13,6 +14,7 @@
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/IceBreathSnowFlakes.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
@@ -76,7 +78,7 @@ loop_2:
     }
     temp_r4_80 = this->unk98;
     if (temp_r4_80 != NULL) {
-        gb.unk80->EnableLight(temp_r4_80, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_80, 0U);
     }
     gb.unk2CC.Disable((s32) this->unk190);
     this->unk190 = (MKModel *)-1;
@@ -463,7 +465,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     this->unk120.unk20 = M2C_FIELD(&arg0, f64 *, 8);
     temp_r4_684 = this->unk98;
     if (temp_r4_684 != NULL) {
-        gb.unk80->EnableLight(temp_r4_684, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_684, 1U);
         temp_r3_692 = this->unk98;
         temp_r3_692->unk38 = 0.1f;
         temp_r3_695 = temp_r3_692->unk3C;
@@ -489,7 +491,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     }
     M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_747 = &this->unk120.unk28;
-    temp_r3_747->RotateYaw((Matrix *) temp_r3_747, 0.3926991f);
+    ((Matrix *) temp_r3_747)->RotateYaw((Matrix *) temp_r3_747, 0.3926991f);
     gb.unk381 = 1;
     return 1;
 }
@@ -533,7 +535,7 @@ loop_9:
             var_r4_790 += 4;
             goto loop_9;
         }
-        temp_r3_817 = var_r3_792->Current();
+        temp_r3_817 = ((MKHeap *) var_r3_792)->Current();
         if (temp_r3_817 != NULL) {
             ((MKHeap *) (temp_r3_817->Current()))->Free(var_r31_791, NULL, 0);
         } else {
@@ -564,7 +566,7 @@ void FuryFXIce::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ApplyWind'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FuryFXIce::Update() {
     s8 sp540;
     s32 sp53C;
@@ -779,7 +781,7 @@ void FuryFXIce::Update() {
 
     FuryFX::Update();
     UpdateIcePatches();
-    this->unk114->ApplyWind((WindFX *) &this->unk120);
+    ((IceBreathSnowFlakes *) this->unk114)->ApplyWind((WindFX *) &this->unk120);
     if ((s32) this->unk90 != 0) {
         temp_f3_938 = this->unk94;
         this->unk94 = temp_f3_938 - gUpdateTimeDelta;
@@ -1014,12 +1016,12 @@ loop_31:
                 }
                 M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r3_1599 = &this->unk120.unk28;
-                temp_r3_1599->RotateYaw((Matrix *) temp_r3_1599, -0.3926991f);
+                ((Matrix *) temp_r3_1599)->RotateYaw((Matrix *) temp_r3_1599, -0.3926991f);
                 gb.unk2CC.Disable((s32) this->unk190);
                 var_r28_1609 = 0;
                 this->unk190 = (MKModel *)-1;
                 do {
-                    temp_r3_1614 = checked_cast<PooledShatterProp *, MKProp>(this->unk194->CreateInstance());
+                    temp_r3_1614 = checked_cast<PooledShatterProp *, MKProp>(((MKPropDescriptor *) this->unk194)->CreateInstance());
                     if (temp_r3_1614 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(), 0x20)();
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_1614);
@@ -1118,7 +1120,7 @@ loop_31:
                 this->unk90 = 0;
                 temp_r4_1891 = this->unk98;
                 if (temp_r4_1891 != NULL) {
-                    gb.unk80->EnableLight(temp_r4_1891, 0U);
+                    ((LightManager *) gb.unk80)->EnableLight(temp_r4_1891, 0U);
                 }
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     sp14 = 0;
@@ -1161,14 +1163,14 @@ loop_31:
             sp340 = (f32) sp340 + (f32) sp190;
             sp178 = (f64) spA8;
             sp180 = (f64) spB0;
-            this->unk114->Emit(*((MKVector3 *) &sp338), *((MKVector3 *) &sp178), 1.0f);
+            ((IceBreathSnowFlakes *) this->unk114)->Emit(*((MKVector3 *) &sp338), *((MKVector3 *) &sp178), 1.0f);
             var_r27_1919 += 1;
         } while (var_r27_1919 < 0xA);
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXIce::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1205,10 +1207,10 @@ void FuryFXIce::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk98 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_744, lit_745);
+    this->unk98 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 10000.0f, lit_744, lit_745);
     temp_r4_2089 = this->unk98;
     if (temp_r4_2089 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2089, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2089, 0U);
     }
     this->unk194 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
 }
@@ -1261,7 +1263,7 @@ void FuryFXIce::Init() {
     M2C_FIELD(temp_r4_2153, M2C_UNK **, 4) = NULL;
     this->unkB0 &= ~0x80;
     this->unk114 = MKMaterial_Create"fx_372";
-    temp_r3_2171 = checked_cast<IceBreathSnowFlakes *, MKProp>(gMK->CreateProp("IceBreathSnowFlakes"));
+    temp_r3_2171 = checked_cast<IceBreathSnowFlakes *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBreathSnowFlakes"));
     sp10 = 0.0f;
     sp20 = 0.0f;
     this->unk114 = temp_r3_2171;
@@ -1273,12 +1275,12 @@ void FuryFXIce::Init() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unk120.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
+    ((WindFX *) &this->unk120)->Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
     this->unk120.unk10 = 2000.0f;
     this->unk120.unk14 = 1000.0f;
     M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_2211 = &this->unk120.unk28;
-    temp_r3_2211->RotateYaw((Matrix *) temp_r3_2211, 0.3926991f);
+    ((Matrix *) temp_r3_2211)->RotateYaw((Matrix *) temp_r3_2211, 0.3926991f);
     M2C_FIELD(this, f32 *, 0x130) = 50.0f;
     this->unk150.unk38 = M2C_BITWISE(f32, MKModel_Create("Fx0020_earthshock", NULL, 2, NULL));
     this->unk150.unk3C = M2C_BITWISE(f32, MKMaterial_Create"FX_IceFuryMat");

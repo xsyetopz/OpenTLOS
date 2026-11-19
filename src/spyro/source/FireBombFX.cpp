@@ -1,5 +1,6 @@
 #include "spyro/source/FireBombFX.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKIni.h"
@@ -9,12 +10,17 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/ClusterBomb.h"
+#include "spyro/source/CrashFirePS.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "unplaced_templates.h"
@@ -26,7 +32,6 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_CynderBreathEnd2;
@@ -86,7 +91,7 @@ void FireBombFXDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, bool arg4, bool arg5, int arg6, const MKVector3 &arg7) {
     s8 spC8;
     s32 spC4;
@@ -173,7 +178,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     this->unkC8 = 10.0f;
     temp_r4_161 = this->unk108;
     if (temp_r4_161 != NULL) {
-        gb.unk80->EnableLight(temp_r4_161, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_161, 1U);
     }
     this->unk124 = 10000.0f;
     temp_r30_175 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
@@ -198,7 +203,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     } else {
         var_r23_213 = *(temp_r5_180 + (temp_r31_178 * 4));
     }
-    this->unk130.Init(arg3, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
+    this->unk130.Init(arg3, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
     temp_r3_231 = this->unk120;
     if ((temp_r3_231 != NULL) && (M2C_FIELD(temp_r3_231->unk0, s32 *, 0xC) & 8)) {
         this->unk130.unk34 = 5.0f;
@@ -302,9 +307,9 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         sp70 = (f64) sp20;
         this->unk1C4 = 0.0f;
         this->unk1C0 = 0;
-        this->unk1BC.AddNode(arg0);
-        this->unk1BC.AddNode(*((MKVector3 *) &sp68));
-        this->unk1BC.AddNode(arg7);
+        ((KDUniformSpline *) &this->unk1BC)->AddNode(arg0);
+        ((KDUniformSpline *) &this->unk1BC)->AddNode(*((MKVector3 *) &sp68));
+        ((KDUniformSpline *) &this->unk1BC)->AddNode(arg7);
         this->unk1D4 = 0.0f;
         this->unk1D4 = 10000.0f / M2C_BITWISE(f32, this->unk1C4);
         if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) && (gb.unk0->GetHeroType() == 0)) {
@@ -315,16 +320,16 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FireBombFX::Deinit() {
     ManagedLight *temp_r4_493;
 
     temp_r4_493 = this->unk108;
     if (temp_r4_493 != NULL) {
-        gb.unk80->EnableLight(temp_r4_493, 0U);
-        gb.unk80->FreeManagedLight(this->unk108);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_493, 0U);
+        ((LightManager *) gb.unk80)->FreeManagedLight(this->unk108);
     }
-    this->unk1BC.Deinit();
+    ((KDUniformSpline *) &this->unk1BC)->Deinit();
     KDSound_Stop(&this->unk188);
     GameProp::Deinit();
 }
@@ -759,7 +764,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     }
     temp_r4_1297 = this->unk108;
     if (temp_r4_1297 != NULL) {
-        gb.unk80->EnableLight(temp_r4_1297, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1297, 0U);
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x1B8) != 0) {
         var_r31_1312 = 0;
@@ -799,14 +804,12 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void FireBombFX::Message(MKMessage *arg0) {
-    this->unk188.Message(arg0);
+    ((KDSoundPlayer *) &this->unk188)->Message(arg0);
     GameProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FireBombFX::Update() {
     u8 sp5E0;
     s32 sp5DC;
@@ -1082,20 +1085,20 @@ void FireBombFX::Update() {
     switch (temp_r0_1444) {                         /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         sp8 = 1;
-        this->unk188.Update(GS_SpyroSWFireballLP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk188)->Update(GS_SpyroSWFireballLP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         break;
     case 2:                                         /* switch 1 */
         if (gb.unk0->GetHeroType() == 1) {
             sp8 = 1;
-            this->unk188.Update(GS_SWCynderFireball2, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) &this->unk188)->Update(GS_SWCynderFireball2, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         } else {
             sp8 = 1;
-            this->unk188.Update(GS_CynderBreathStart3, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) &this->unk188)->Update(GS_CynderBreathStart3, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         }
         break;
     case 0:                                         /* switch 1 */
         sp8 = 1;
-        this->unk188.Update(GS_SpyroSpare2, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk188)->Update(GS_SpyroSpare2, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         break;
     }
     if ((u8) this->unkE0 != 0) {
@@ -1179,7 +1182,7 @@ void FireBombFX::Update() {
             }
             this->unk1D4 = var_f0_1674;
             sp14 = 0.0f;
-            sp3D8.GetMeasure(this->unk1D4, (Matrix *) &this->unk1BC, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp3D8)->GetMeasure(this->unk1D4, (Matrix *) &this->unk1BC, KDSpline_PositionMixer);
             sp4E8 = sp3D8;
             sp4F0 = sp3E0;
             if (this->unk1D4 == 1.0f) {
@@ -1320,7 +1323,7 @@ void FireBombFX::Update() {
                 sp1EC = 0.0f;
                 sp3B0 = (f64) sp1F0;
                 sp3A8 = (f64) sp1E8;
-                gb.unk68->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp3A8), sp24);
+                ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp3A8), sp24);
             } else {
                 sp1D8 = sp510.unk10 * 5.56078426e-315;
                 sp1E0 = sp510.unk18 * 150.0f;
@@ -1373,7 +1376,7 @@ void FireBombFX::Update() {
             sp184 = 1.0f;
             sp338 = (f64) sp178;
             sp340 = (f64) sp180;
-            gb.unk74->Emit(*((MKVector3 *) &sp388), *((MKVector3 *) &sp358), sp1C, *((MKVector4 *) &sp338), -1000.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp388), *((MKVector3 *) &sp358), sp1C, *((MKVector4 *) &sp338), -1000.0f);
         } else {
             temp_f30_2173 = this->unkC8;
             temp_f28_2178 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1413,7 +1416,7 @@ void FireBombFX::Update() {
             sp124 = 1.0f;
             sp2D8 = (f64) sp118;
             sp2E0 = (f64) sp120;
-            gb.unk74->Emit(*((MKVector3 *) &sp328), *((MKVector3 *) &sp2F8), sp18, *((MKVector4 *) &sp2D8), -1000.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp328), *((MKVector3 *) &sp2F8), sp18, *((MKVector4 *) &sp2D8), -1000.0f);
         }
         if ((ManagedLight *) this->unk108 != NULL) {
             temp_f1_2289 = MKRand_Float(&gViewSeed, 0.2f, 0.6f);
@@ -1508,7 +1511,7 @@ void FireBombFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FireBombFX::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -1551,10 +1554,10 @@ void FireBombFX::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unk108 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 1000.0f, lit_536, lit_537);
+    this->unk108 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 1000.0f, lit_536, lit_537);
     temp_r4_2600 = this->unk108;
     if (temp_r4_2600 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2600, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2600, 0U);
     }
     sp8 = 1.0f;
     spC = 1.0f;
@@ -1566,11 +1569,11 @@ void FireBombFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'ClusterBomb *' to
 void FireBombFX::Init() {
     GameProp::Init();
-    this->unkCC = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX"));
-    this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unkCC = checked_cast<ShapedTrailFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ShapedTrailFX"));
+    this->unkF8 = checked_cast<Explosion4 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Explosion4"));
     this->unkE0 = 0;
     this->unkFC = 0.0f;
     this->unk100 = 0.0f;
@@ -1583,9 +1586,9 @@ void FireBombFX::Init() {
     this->unk110.unkC = 1.0f;
     this->unk120 = NULL;
     this->unk124 = 1000.0f;
-    this->unk188.Init(0.25f, 0.25f);
-    M2C_FIELD(this, s32 *, 0x1B4) = checked_cast<ClusterBomb *, MKProp>(gMK->CreateProp("ClusterBomb"));
+    ((KDSoundFader *) &this->unk188)->Init(0.25f, 0.25f);
+    M2C_FIELD(this, s32 *, 0x1B4) = checked_cast<ClusterBomb *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ClusterBomb"));
     M2C_FIELD(this, s8 *, 0x1B8) = 0;
-    this->unk1BC.Init(3, 0U);
+    ((KDUniformSpline *) &this->unk1BC)->Init(3, 0U);
 }
 #endif

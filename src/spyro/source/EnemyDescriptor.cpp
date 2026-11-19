@@ -416,7 +416,7 @@ block_24:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: type mismatch
 void EnemyDescriptor::Deinit_Attacks() {
     MKHeap *temp_r3_615;
     MKHeap *temp_r3_631;
@@ -435,7 +435,7 @@ loop_3:
         if (var_r30_589 != NULL) {
             temp_r3_599 = *var_r30_589;
             if (temp_r3_599 != NULL) {
-                temp_r3_599->Deinit();
+                ((EnemyAttack *) temp_r3_599)->Deinit();
                 operator delete(*var_r30_589);
                 var_r30_589 += 4;
                 goto loop_3;
@@ -448,7 +448,7 @@ loop_3:
         } while ((void **) *temp_r3_606 != NULL);
         temp_r30_611 = *temp_r31_603;
         if (temp_r30_611 != &gEmptyPtrList) {
-            temp_r3_615 = temp_r3_606->Current();
+            temp_r3_615 = ((MKHeap *) temp_r3_606)->Current();
             if (temp_r3_615 != NULL) {
                 ((MKHeap *) (temp_r3_615->Current()))->Free(temp_r30_611, NULL, 0);
             } else {
@@ -517,7 +517,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
     MKHeap *temp_r3_740;
     MKHeap *var_r3_747;
@@ -537,7 +537,7 @@ s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
     temp_r0_736 = this->unk2B0;
     if (temp_r0_736 > 0) {
         temp_r27_739 = temp_r0_736 * 0xC;
-        temp_r3_740 = temp_r3_734->Current();
+        temp_r3_740 = ((MKHeap *) temp_r3_734)->Current();
         if (temp_r3_740 != NULL) {
             var_r3_747 = ((MKHeap *) (temp_r3_740->Current()))->Alloc(temp_r27_739, NULL, 0);
         } else {
@@ -614,7 +614,7 @@ s32 EnemyDescriptor::LoadLine_Attacks(MKIniLine *arg0) {
     if (temp_r3_872 == 0) {
         *temp_r31_874 = &gEmptyPtrList + 4;
     } else {
-        temp_r3_881 = temp_r3_872->Current();
+        temp_r3_881 = ((MKHeap *) temp_r3_872)->Current();
         if (temp_r3_881 != NULL) {
             var_r3_889 = ((MKHeap *) (temp_r3_881->Current()))->Alloc((temp_r3_872 + 2) * 4, NULL, 0);
         } else {
@@ -648,11 +648,11 @@ loop_16:
         var_r30_938 = var_r28_921->unkC->GetSubLine(var_r28_921);
 loop_14:
         if (var_r30_938 != NULL) {
-            temp_r31_929->LoadLine(var_r30_938, this);
+            ((EnemyAttack *) temp_r31_929)->LoadLine(var_r30_938, this);
             var_r30_938 = var_r30_938->unkC->GetNextLine(var_r30_938);
             goto loop_14;
         }
-        temp_r31_929->LoadDone();
+        ((EnemyAttack *) temp_r31_929)->LoadDone();
         var_r28_921 = var_r28_921->unkC->GetNextLine(var_r28_921);
         goto loop_16;
     }
@@ -702,8 +702,8 @@ loop_20:
             if (var_r29_1030->IsField("pEnter") != 0) {
                 temp_r3_1069 = var_r29_1030->GetString(0);
                 temp_r27_1070 = this->unk34;
-                if (temp_r27_1070->Exists(temp_r3_1069) != 0) {
-                    var_r3_1079 = temp_r27_1070->GetAnim(temp_r3_1069);
+                if (((MKAnimScript *) temp_r27_1070)->Exists(temp_r3_1069) != 0) {
+                    var_r3_1079 = ((MKAnimScript *) temp_r27_1070)->GetAnim(temp_r3_1069);
                 } else {
                     var_r3_1079 = NULL;
                 }
@@ -711,8 +711,8 @@ loop_20:
             } else if (var_r29_1030->IsField("pLoop") != 0) {
                 temp_r3_1096 = var_r29_1030->GetString(0);
                 temp_r26_1097 = this->unk34;
-                if (temp_r26_1097->Exists(temp_r3_1096) != 0) {
-                    var_r3_1106 = temp_r26_1097->GetAnim(temp_r3_1096);
+                if (((MKAnimScript *) temp_r26_1097)->Exists(temp_r3_1096) != 0) {
+                    var_r3_1106 = ((MKAnimScript *) temp_r26_1097)->GetAnim(temp_r3_1096);
                 } else {
                     var_r3_1106 = NULL;
                 }
@@ -720,8 +720,8 @@ loop_20:
             } else if (var_r29_1030->IsField("pExit") != 0) {
                 temp_r3_1123 = var_r29_1030->GetString(0);
                 temp_r26_1124 = this->unk34;
-                if (temp_r26_1124->Exists(temp_r3_1123) != 0) {
-                    var_r3_1133 = temp_r26_1124->GetAnim(temp_r3_1123);
+                if (((MKAnimScript *) temp_r26_1124)->Exists(temp_r3_1123) != 0) {
+                    var_r3_1133 = ((MKAnimScript *) temp_r26_1124)->GetAnim(temp_r3_1123);
                 } else {
                     var_r3_1133 = NULL;
                 }
@@ -753,7 +753,7 @@ s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
             temp_r3_1182 = arg0->GetNmbrOfSubLines();
             M2C_FIELD(temp_r28_1181, s32 *, 4) = temp_r3_1182;
             temp_r29_1185 = M2C_FIELD(temp_r28_1181, s32 *, 4) * 0x70;
-            temp_r3_1186 = temp_r3_1182->Current();
+            temp_r3_1186 = ((MKHeap *) temp_r3_1182)->Current();
             if (temp_r3_1186 != NULL) {
                 var_r3_1193 = ((MKHeap *) (temp_r3_1186->Current()))->Alloc(temp_r29_1185, NULL, 0);
             } else {
@@ -800,7 +800,7 @@ s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
     if (arg0->IsField("LeafEffectNodes") != 0) {
         temp_r3_1286 = arg0->unk0;
         temp_r28_1287 = temp_r3_1286 + 1;
-        temp_r3_1288 = temp_r3_1286->Current();
+        temp_r3_1288 = ((MKHeap *) temp_r3_1286)->Current();
         if (temp_r3_1288 != NULL) {
             var_r3_1295 = ((MKHeap *) (temp_r3_1288->Current()))->Alloc(temp_r28_1287 * 4, NULL, 0);
         } else {
@@ -827,7 +827,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void EnemyDescriptor::LoadDescriptorData() {
     MKIni sp28;
     s8 sp8;
@@ -846,9 +846,9 @@ void EnemyDescriptor::LoadDescriptorData() {
     u8 temp_r3_1842;
     void ***var_r3_1890;
 
-    temp_r3_1842 = sp8.Exists((s8 *) (u32) (u64) strcpy(&sp8, Str_Printf("%s.add", this->unk278)));
+    temp_r3_1842 = ((MKIni *) &sp8)->Exists((s8 *) (u32) (u64) strcpy(&sp8, Str_Printf("%s.add", this->unk278)));
     if (temp_r3_1842 != 0) {
-        temp_r3_1842->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_1842)->ActivateTempMemOverride();
         ((MKHeap *) (sp28.Init(&sp8, 0, NULL)))->DeactivateTempMemOverride();
         var_r3_1853 = sp28.GetFirstLine();
         this->unk200 = 0;
@@ -866,7 +866,7 @@ loop_5:
         temp_r0_1879 = this->unk200;
         if (temp_r0_1879 != 0) {
             temp_r28_1882 = temp_r0_1879 * 0x98;
-            temp_r3_1883 = var_r3_1853->Current();
+            temp_r3_1883 = ((MKHeap *) var_r3_1853)->Current();
             if (temp_r3_1883 != NULL) {
                 var_r3_1890 = ((MKHeap *) (temp_r3_1883->Current()))->Alloc(temp_r28_1882, NULL, 0);
             } else {
@@ -920,7 +920,7 @@ loop_24:
             var_r29_1917 = var_r3_1915;
             goto loop_34;
         }
-        var_r3_1915->ActivateTempMemOverride();
+        ((MKHeap *) var_r3_1915)->ActivateTempMemOverride();
         sp28.Deinit();
         ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->DeactivateTempMemOverride();
     }
@@ -1331,7 +1331,7 @@ void EnemyDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetAnim'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {
     f32 sp20;
     f32 sp1C;
@@ -1345,14 +1345,14 @@ void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {
     sp1C = 0.0f;
     sp20 = 0.0f;
     if (temp_r31_2905 != NULL) {
-        arg1->SetAnim(temp_r31_2905, arg2, 0.0f, 4, -1);
+        ((MKAnimScript *) arg1)->SetAnim(temp_r31_2905, arg2, 0.0f, 4, -1);
         if (arg2 < 0.0f) {
-            arg1->SetCurrentFrame((s32) temp_r31_2905->unkC);
+            ((MKAnimScript *) arg1)->SetCurrentFrame((s32) temp_r31_2905->unkC);
         }
 loop_4:
         temp_r3_2942 = arg1->unk2C;
         if (!(temp_r3_2942 & 1) && !(temp_r3_2942 & 2)) {
-            arg1->Animate(MKModel_GetAnimation(M2C_FIELD(arg1, MKModel **, 8)), -1, &sp8);
+            ((MKAnimScript *) arg1)->Animate(MKModel_GetAnimation(M2C_FIELD(arg1, MKModel **, 8)), -1, &sp8);
             sp18 = (f64) sp18 + M2C_BITWISE(f64, sp8);
             sp20 += sp8.unk8;
             goto loop_4;

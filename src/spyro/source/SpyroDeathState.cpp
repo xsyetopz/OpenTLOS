@@ -6,6 +6,7 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/checkpoint.h"
 #include "spyro/source/ConnectingProps.h"
 #include "spyro/source/DialogBox.h"
@@ -141,12 +142,10 @@ void SpyroDeathState::RespawnUpdate() {
     RespawnTransition();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpyroDeathState::RespawnExit() {
     M2C_FIELD(this->unk10, s8 *, 0x3CF) = 0;
-    this->unk10->unk4C.RegisterTargetable();
+    ((Targetable *) &this->unk10->unk4C)->RegisterTargetable();
 }
-#endif
 
 void SpyroDeathState::RespawnEnter() {
     s32 spC;
@@ -284,7 +283,7 @@ void SpyroDeathState::AirEnter() {
         }
     }
     this->unk10->BroadcastMessage(0x14);
-    this->unk10->unk4C.UnregisterTargetable();
+    ((Targetable *) &this->unk10->unk4C)->UnregisterTargetable();
     this->unk2A = 1;
 }
 #endif
@@ -311,7 +310,7 @@ void SpyroDeathState::StrafeEnter() {
     this->unk10->SetAnim(0x13U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk10->BroadcastMessage(0x14);
     M2C_FIELD(this->unk10, s8 *, 0x3CD) = 1;
-    this->unk10->unk4C.UnregisterTargetable();
+    ((Targetable *) &this->unk10->unk4C)->UnregisterTargetable();
 }
 #endif
 
@@ -372,7 +371,7 @@ void SpyroDeathState::LandEnter() {
     this->unk10->SetAnim(0x56U, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     this->unk10->BroadcastMessage(0x14);
     M2C_FIELD(this->unk10, s8 *, 0x3CD) = 1;
-    this->unk10->unk4C.UnregisterTargetable();
+    ((Targetable *) &this->unk10->unk4C)->UnregisterTargetable();
 }
 #endif
 

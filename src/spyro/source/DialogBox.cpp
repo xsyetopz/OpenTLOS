@@ -542,7 +542,7 @@ loop_4:
     }
     M2C_FIELD(var_r28_637, f32 *, 0x14) = temp_f30_632;
     M2C_FIELD(var_r28_637, f32 *, 0x18) = arg3;
-    M2C_FIELD(var_r28_637, void **, 0x1C) = arg1->Create(var_r4_636);
+    M2C_FIELD(var_r28_637, void **, 0x1C) = ((MKFont *) arg1)->Create(var_r4_636);
     return var_r28_637;
 }
 #endif

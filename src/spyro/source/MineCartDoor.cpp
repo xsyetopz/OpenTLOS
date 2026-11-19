@@ -59,9 +59,9 @@ void MineCartDoor::Reset() {
 #if 0 // DRAFT: illegal use of non-static member
 void MineCartDoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim("Opening");
-    this->unkE8 = this->unk34->GetAnim("Open");
-    this->unkEC = this->unk34->GetAnim("Closing");
-    this->unkF0 = this->unk34->GetAnim("Closed");
+    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");
+    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("Open");
+    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("Closing");
+    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
 }
 #endif

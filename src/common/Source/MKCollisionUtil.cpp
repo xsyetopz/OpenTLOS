@@ -1507,7 +1507,7 @@ void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &a
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned int arg2) {
     f64 sp240;
     f64 sp238;
@@ -1597,7 +1597,7 @@ void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned in
     f64 temp_f2_2500;
 
     M2C_STRUCT_COPY(this, &arg0, 0x40);
-    this->unk40.Inverse((Matrix *) this);
+    ((Matrix *) &this->unk40)->Inverse((Matrix *) this);
     M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&arg1, f64 *, 8);
     temp_f2_2313 = this->unk80;

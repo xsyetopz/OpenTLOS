@@ -5,8 +5,10 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/SpyroUtils.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -224,7 +226,7 @@ loop_23:
             M2C_STRUCT_COPY((s32) &sp8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd((Matrix *) &sp90, *((MKVector3 *) &sp68), (MKVector3 *) &sp78);
             temp_r27_397 = (s32) ((1.0f - (var_r31_193->unk0->unk18 / 0.5f)) * (f32) (this->unk50 - 1));
-            sp90.Scale3x3((Matrix *) &sp90, var_f28_279 / 100.0f);
+            ((Matrix *) &sp90)->Scale3x3((Matrix *) &sp90, var_f28_279 / 100.0f);
             spC0 = (f32) sp58;
             spC4 = unksp5C;
             spC8 = (f32) sp60;
@@ -332,7 +334,7 @@ void CharacterZapFX::SpawnZap() {
             sp5C = 1.0f;
             spB0 = (f64) sp50;
             spB8 = (f64) sp58;
-            gb.unk74->Emit(*((MKVector3 *) &temp_r30_470->unk0->unk8), *((MKVector3 *) &spD0), spC, *((MKVector4 *) &spB0), -1979.9999f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &temp_r30_470->unk0->unk8), *((MKVector3 *) &spD0), spC, *((MKVector4 *) &spB0), -1979.9999f);
             temp_f29_572 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f30_577 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -353,7 +355,7 @@ void CharacterZapFX::SpawnZap() {
             sp2C = 1.0f;
             sp80 = (f64) sp20;
             sp88 = (f64) sp28;
-            gb.unk74->Emit(*(temp_r30_470->unk4 + 8), *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp80), -1979.9999f);
+            ((EmbersPS *) gb.unk74)->Emit(*(temp_r30_470->unk4 + 8), *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp80), -1979.9999f);
         }
     }
 }
@@ -517,7 +519,7 @@ loop_6:
             spE8 = temp_f0_870;
             sp60 = sp148 + (f32) spE0;
             spF0 = (f64) sp60;
-            gb.unk94->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &spF8), sp14, lit_749, (MKVector4) &spC8);
+            ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &spF8), sp14, lit_749, (MKVector4) &spC8);
             this->unk1C = 0.5f;
             this->unk17 = 1;
         }

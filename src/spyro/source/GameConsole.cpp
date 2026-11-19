@@ -519,7 +519,7 @@ void Console_AddCommand(ConCmd *arg0) {
         var_r30_376 = var_r3_357 * 4;
         temp_r0_377 = pLookup[var_r3_357];
         if (temp_r0_377 != NULL) {
-            temp_r0_377->Compare(arg0);
+            ((ConCmd *) temp_r0_377)->Compare(arg0);
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) < 0) {
                 arg0->unk4 = (ConCmd *) pLookup[var_r3_357];
                 arg0->unk8 = M2C_FIELD(pLookup[var_r3_357], ConCmd **, 8);
@@ -706,7 +706,6 @@ void Console_UnbindAll() {
     } while ((s32) var_r31_691 < 0x100);
 }
 
-#if 0 // DRAFT: pointer/array required
 void Console_Unbind(unsigned long arg0) {
     MKHeap *temp_r3_719;
     u8 *temp_r31_716;
@@ -714,7 +713,7 @@ void Console_Unbind(unsigned long arg0) {
     if (arg0 < 0x100U) {
         temp_r31_716 = pKeyBind[arg0];
         if (temp_r31_716 != NULL) {
-            temp_r3_719 = arg0->Current();
+            temp_r3_719 = ((MKHeap *) arg0)->Current();
             if (temp_r3_719 != NULL) {
                 ((MKHeap *) (temp_r3_719->Current()))->Free(temp_r31_716, NULL, 0);
             } else {
@@ -724,7 +723,6 @@ void Console_Unbind(unsigned long arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned int' to
 void Console_Bind(unsigned long arg0, const char *arg1) {
@@ -977,9 +975,9 @@ loop_52:
     switch (temp_r0_1150) {                         /* switch 3; irregular */
     case 5:                                         /* switch 3 */
         if (var_r29_913 == 1) {
-            fLastResult = var_r27_1102->AsFloat();
+            fLastResult = ((ConCmd *) var_r27_1102)->AsFloat();
         } else {
-            var_r27_1102->SetAsString(sp10);
+            ((ConCmd *) var_r27_1102)->SetAsString(sp10);
             temp_r3_1171 = M2C_FIELD(var_r27_1102, void **, 0);
             temp_r12_1172 = M2C_FIELD(temp_r3_1171, M2C_UNK (**)(f32 (*)(s32, s8 **)), 0x10);
             if (temp_r12_1172 != NULL) {
@@ -1148,7 +1146,7 @@ loop_12:
             var_r4_1386 += 4;
             goto loop_12;
         }
-        temp_r3_1413 = var_r3_1388->Current();
+        temp_r3_1413 = ((MKHeap *) var_r3_1388)->Current();
         if (temp_r3_1413 != NULL) {
             ((MKHeap *) (temp_r3_1413->Current()))->Free(var_r31_1387, NULL, 0);
         } else {
@@ -1193,7 +1191,7 @@ void Console_Init() {
         var_r3_1481 = malloc(0x400);
     }
     pKeyBind = &var_r3_1481->unk0;
-    temp_r3_1488 = var_r3_1481->Current();
+    temp_r3_1488 = ((MKHeap *) var_r3_1481)->Current();
     if (temp_r3_1488 != NULL) {
         var_r3_1495 = ((MKHeap *) (temp_r3_1488->Current()))->Alloc(0x100, NULL, 0);
     } else {
@@ -1931,7 +1929,7 @@ f32 CmdExec(int arg0, char **arg1) {
         sp8 = 0;
         if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), &sp8) != 0) {
             temp_r31_3163 = sp8 + 1;
-            temp_r3_3164 = sp8->Current();
+            temp_r3_3164 = ((MKHeap *) sp8)->Current();
             if (temp_r3_3164 != NULL) {
                 var_r31_3173 = ((MKHeap *) (temp_r3_3164->Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U);
             } else {

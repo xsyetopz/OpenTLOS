@@ -39,8 +39,8 @@ void *Autosave_GetGameDataCopy() {
 }
 
 void Autosave_CopyGameData() {
-    ((GameData *) ((GameData *) GameData::gameData))->UpdateDataHeader(NULL);
-    ((GameData *) ((GameData *) GameData::gameData))->CopyFromGameData(pGameDataCopy);
+    ((GameData *) GameData::gameData)->UpdateDataHeader(NULL);
+    ((GameData *) GameData::gameData)->CopyFromGameData(pGameDataCopy);
 }
 
 void Autosave_Draw() {
@@ -48,7 +48,7 @@ void Autosave_Draw() {
     f32 var_f0_66;
 
     if (!(autosaveIconOffset <= 0.0f)) {
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11) != 0) {
             var_f0_66 = 60.0f;
         } else {
@@ -88,7 +88,7 @@ void Autosave_ConfirmCard() {
         Autosave_Abort();
         return;
     }
-    ((GameData *) ((GameData *) GameData::gameData))->GetSaveGameDescription();
+    ((GameData *) GameData::gameData)->GetSaveGameDescription();
     autosaveCard->SaveData(autosaveFile, pGameDataCopy, gameDataSize, M2C_ERROR(/* Read from unset register $r3 */));
     M2C_FIELD(&gb, s8 *, 0x382) = 1;
     autosave_state = 3;
@@ -158,7 +158,7 @@ void Autosave_Update() {
             Autosave_ConfirmCard();
             return;
         case 3:
-            if (temp_r3_243->WasErrorDuringLast() != 0) {
+            if (((KDMemoryCard *) temp_r3_243)->WasErrorDuringLast() != 0) {
                 Autosave_Error();
                 return;
             }
@@ -253,7 +253,6 @@ void Autosave_DeinitModule() {
     gameDataSize = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
 void Autosave_InitModule() {
     MKHeap *temp_r3_548;
     s32 temp_r3_545;
@@ -263,9 +262,9 @@ void Autosave_InitModule() {
     autosave_state = 0;
     autosaveIconThrob = 0.0f;
     autosaveIconOffset = 0.0f;
-    temp_r3_545 = ((GameData *) ((GameData *) GameData::gameData))->GetGameDataSize();
+    temp_r3_545 = ((GameData *) GameData::gameData)->GetGameDataSize();
     gameDataSize = temp_r3_545;
-    temp_r3_548 = temp_r3_545->Current();
+    temp_r3_548 = ((MKHeap *) temp_r3_545)->Current();
     if (temp_r3_548 != NULL) {
         var_r3_555 = ((MKHeap *) (temp_r3_548->Current()))->Alloc(temp_r3_545, NULL, 0);
     } else {
@@ -273,7 +272,6 @@ void Autosave_InitModule() {
     }
     pGameDataCopy = var_r3_555;
 }
-#endif
 
 void Autosave_EnableRemovalCheck(bool arg0) {
     bRemovalCheck = arg0;

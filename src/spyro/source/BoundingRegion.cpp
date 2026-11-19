@@ -72,7 +72,7 @@ u32 BoundingRegion::GetIntersectCount(const MKVector3 &arg0, const MKVector3 &ar
     sp70 = sp38.unk8;
 loop_4:
     if (var_r30_105 < (s32) (M2C_FIELD(this, s32 *, 8) - 1)) {
-        sp28.GetPos((s32) this);
+        ((BoundingRegion *) &sp28)->GetPos((s32) this);
         sp58 = sp28;
         sp60 = sp30;
         if (MKLinesIntersect(arg0, arg1, *((MKVector3 *) &sp68), *((MKVector3 *) &sp58)) != 0) {
@@ -83,10 +83,10 @@ loop_4:
         sp70 = sp60;
         goto loop_4;
     }
-    sp18.GetPos((s32) this);
+    ((BoundingRegion *) &sp18)->GetPos((s32) this);
     sp68 = sp18;
     sp70 = sp20;
-    sp8.GetPos((s32) this);
+    ((BoundingRegion *) &sp8)->GetPos((s32) this);
     sp38.unk10 = sp8;
     sp38.unk18 = sp10;
     if (MKLinesIntersect(arg0, arg1, *((MKVector3 *) &sp68), *((MKVector3 *) &sp38.unk10)) != 0) {

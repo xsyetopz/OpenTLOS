@@ -1,6 +1,7 @@
 #include "spyro/source/DropBox.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
@@ -12,6 +13,7 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -250,15 +252,15 @@ void DropBox::Deinit() {
         var_r29_400 += 1;
         var_r31_401 += 8;
     } while (var_r29_400 < 4);
-    this->unk1C4->Deinit();
+    ((SpawnerObject *) this->unk1C4)->Deinit();
     temp_r31_414 = this->unk1C4;
     if (temp_r31_414 != NULL) {
         temp_r31_414->unk0 = &__vt;
         if (&temp_r31_414->unk10.unk30 != NULL) {
-            temp_r31_414->unk10.unk30.Deinit();
+            ((EventMessage *) &temp_r31_414->unk10.unk30)->Deinit();
         }
         if (&temp_r31_414->unk10.unk2C != NULL) {
-            temp_r31_414->unk10.unk2C.Deinit();
+            ((EventMessage *) &temp_r31_414->unk10.unk2C)->Deinit();
         }
         operator delete(temp_r31_414);
     }
@@ -275,7 +277,7 @@ s32 DropBox::LoadLine(MKIniLine *arg0) {
     if (Shatterable::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if ((this->unk1C8.LoadLine(arg0, "OnAllChildrenDead") != 0) && ((u32) this->unk1C8 != 0U)) {
+    if ((((EventMessage *) &this->unk1C8)->LoadLine(arg0, "OnAllChildrenDead") != 0) && ((u32) this->unk1C8 != 0U)) {
         return 1U;
     }
     if (arg0->LoadInt("NumberToSpawn", (s32 *) &this->unk200, 0) != 0) {
@@ -363,7 +365,7 @@ void DropBox::Message(MKMessage *arg0) {
             sp78 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spA8 = 0;
             if (this != NULL) {
-                sp8.GetPos();
+                ((MKProp *) &sp8)->GetPos();
                 sp88 = sp8;
                 sp90 = sp10;
             } else {
@@ -380,7 +382,7 @@ void DropBox::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'RemoveAllSpawnPoints'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DropBox::SpawnEnemies() {
     f32 sp5C;
     f32 sp58;
@@ -397,7 +399,7 @@ void DropBox::SpawnEnemies() {
     s32 var_r31_668;
     void *temp_r27_683;
 
-    this->unk1C4->RemoveAllSpawnPoints(0U);
+    ((SpawnerObject *) this->unk1C4)->RemoveAllSpawnPoints(0U);
     var_r31_668 = 0;
     this->unk1C4->unk10.unk8 = M2C_BITWISE(f32, this->unk18);
     var_r29_670 = 0;
@@ -412,12 +414,12 @@ loop_2:
         sp5C = 1.0f;
         M2C_STRUCT_COPY(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC) + 0xC + 4, (s32) &sp10.unkC + 4, 0x40);
         M2C_FIELD(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC)->unk4, s32 *, 4) = 0x4000;
-        this->unk1C4->AddSpawnPoint(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC));
+        ((SpawnerObject *) this->unk1C4)->AddSpawnPoint(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC));
         var_r31_668 += 1;
         var_r29_670 += 8;
         goto loop_2;
     }
-    this->unk1C4->AddSpawnPointEnd();
+    ((SpawnerObject *) this->unk1C4)->AddSpawnPointEnd();
     temp_r4_724 = this->unk1C4;
     if (M2C_BITWISE(s32, temp_r4_724->unk10.unk10) >= M2C_BITWISE(s32, temp_r4_724->unk10.unk14)) {
         temp_r4_724->unk10.unk10 = 0.0f;
@@ -428,13 +430,13 @@ loop_2:
         temp_r0_747 = this->unk200.unk4;
         switch (M2C_BITWISE(s32, temp_r0_747)) {    /* switch 2; irregular */
         case 0:                                     /* switch 2 */
-            this->unk1C4->TrySpawnItems(7, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(7, 1U);
             return;
         case 1:                                     /* switch 2 */
-            this->unk1C4->TrySpawnItems(8, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(8, 1U);
             return;
         case 2:                                     /* switch 2 */
-            this->unk1C4->TrySpawnItems(9, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(9, 1U);
             return;
         }
         break;
@@ -442,13 +444,13 @@ loop_2:
         temp_r0_777 = this->unk200.unk4;
         switch (M2C_BITWISE(s32, temp_r0_777)) {    /* switch 3; irregular */
         case 0:                                     /* switch 3 */
-            this->unk1C4->TrySpawnItems(0xA, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(0xA, 1U);
             return;
         case 1:                                     /* switch 3 */
-            this->unk1C4->TrySpawnItems(0xB, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(0xB, 1U);
             return;
         case 2:                                     /* switch 3 */
-            this->unk1C4->TrySpawnItems(0xC, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(0xC, 1U);
             return;
         }
         break;
@@ -456,13 +458,13 @@ loop_2:
         temp_r0_807 = this->unk200.unk4;
         switch (M2C_BITWISE(s32, temp_r0_807)) {    /* switch 4; irregular */
         case 0:                                     /* switch 4 */
-            this->unk1C4->TrySpawnItems(1, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(1, 1U);
             return;
         case 1:                                     /* switch 4 */
-            this->unk1C4->TrySpawnItems(2, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(2, 1U);
             return;
         case 2:                                     /* switch 4 */
-            this->unk1C4->TrySpawnItems(3, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(3, 1U);
             return;
         }
         break;
@@ -470,13 +472,13 @@ loop_2:
         temp_r0_837 = this->unk200.unk4;
         switch (M2C_BITWISE(s32, temp_r0_837)) {    /* switch 5; irregular */
         case 0:                                     /* switch 5 */
-            this->unk1C4->TrySpawnItems(4, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(4, 1U);
             return;
         case 1:                                     /* switch 5 */
-            this->unk1C4->TrySpawnItems(5, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(5, 1U);
             return;
         case 2:                                     /* switch 5 */
-            this->unk1C4->TrySpawnItems(6, 1U);
+            ((SpawnerObject *) this->unk1C4)->TrySpawnItems(6, 1U);
             break;
         }
         break;
@@ -484,7 +486,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetNumberActive'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void DropBox::Update() {
     s8 sp271;
     s8 sp270;
@@ -586,10 +588,10 @@ void DropBox::Update() {
     void *temp_r5_1190;
 
     if (((u8) this->unk1FD == 0) && ((u8) this->unk1FC != 0)) {
-        this->unk1C4->GetNumberActive();
+        ((SpawnerObject *) this->unk1C4)->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             this->unk1FC = 0;
-            this->unk1C8.Send((MKProp *) this);
+            ((EventMessage *) &this->unk1C8)->Send((MKProp *) this);
         }
     }
     this->unk1BC -= gUpdateTimeDelta;
@@ -753,7 +755,7 @@ void DropBox::Update() {
                 sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp270 = 0;
                 if (this != NULL) {
-                    sp50.GetPos();
+                    ((MKProp *) &sp50)->GetPos();
                     sp250 = sp50;
                     sp258 = sp58;
                 } else {
@@ -853,9 +855,9 @@ void DropBox::InitSpawnerObject() {
         ((EventMessage *) (temp_r29_1550 + 0x40))->Init();
     }
     this->unk1C4 = temp_r29_1550;
-    this->unk1C4->Init(EnemySpawnPool_Action, 0);
-    this->unk1C4->LoadDone(6, 3, 0U, 1U);
-    this->unk1C4->AddSpawnPointBegin(4);
+    ((SpawnerObject *) this->unk1C4)->Init(EnemySpawnPool_Action, 0);
+    ((SpawnerObject *) this->unk1C4)->LoadDone(6, 3, 0U, 1U);
+    ((SpawnerObject *) this->unk1C4)->AddSpawnPointBegin(4);
     var_r26_1581 = 0;
     var_r30_1583 = 0;
     do {
@@ -879,17 +881,17 @@ void DropBox::InitSpawnerObject() {
         }
         ((SpawnPointObject *) (M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC)))->Init(temp_r28_1604);
         ((SpawnPointObject *) (M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC)))->LoadDone();
-        this->unk1C4->AddSpawnPoint(M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC));
+        ((SpawnerObject *) this->unk1C4)->AddSpawnPoint(M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC));
         var_r26_1581 += 1;
         var_r30_1583 += 8;
     } while (var_r26_1581 < 4);
-    this->unk1C4->AddSpawnPointEnd();
+    ((SpawnerObject *) this->unk1C4)->AddSpawnPointEnd();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void DropBoxDescriptor::LoadDone() {
-    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unk16C = checked_cast<Explosion4 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Explosion4"));
     ShatterableDescriptor::LoadDone();
 }
 #endif

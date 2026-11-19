@@ -219,12 +219,12 @@ s32 FloatingPlatform::LoadLine(MKIniLine *arg0) {
         if (temp_r3_450 == 0) {
             return 0;
         }
-        this->unk198.Init(temp_r3_450, 0U);
+        ((KDUniformSpline *) &this->unk198)->Init(temp_r3_450, 0U);
         var_r30_463 = arg0->unkC->GetSubLine(arg0);
 loop_9:
         if (var_r30_463 != NULL) {
             var_r30_463->AsVector3(0, &sp8);
-            this->unk198.AddNode(sp8);
+            ((KDUniformSpline *) &this->unk198)->AddNode(sp8);
             var_r30_463 = var_r30_463->unkC->GetNextLine(var_r30_463);
             goto loop_9;
         }
@@ -238,14 +238,12 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void FloatingPlatform::Deinit() {
     if ((u32) this->unk1A4 != 0U) {
-        this->unk198.Deinit();
+        ((KDUniformSpline *) &this->unk198)->Deinit();
     }
     Platform::Deinit();
 }
-#endif
 
 void FloatingPlatform::Init() {
     Platform::Init();

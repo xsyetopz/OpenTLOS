@@ -419,7 +419,7 @@ void VolcanoRumble::MakeCrudRainSound() {
                 sp90 += temp_f0_730;
                 sp98 = (f32) sp98 + (f32) sp68;
                 sp8 = 1;
-                this->unk4C.Update(GS_Rumble4, 1U, 1U, NULL, (MKVector3 *) &sp90, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                ((KDSoundFader *) &this->unk4C)->Update(GS_Rumble4, 1U, 1U, NULL, (MKVector3 *) &sp90, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 fTimer_624 = 0.75f;
             }
             fTimer_624 -= gUpdateTimeDelta;

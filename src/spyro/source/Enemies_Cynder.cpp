@@ -12,7 +12,10 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Ball.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/CynderTier2TrainGoal_Think.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
@@ -22,15 +25,16 @@
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -392,7 +396,7 @@ void CynderTier3::EmitClubEffects() {
             sp518 = temp_f0_388;
             sp1C0 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
             sp520 = (f64) sp1C0;
-            gb.unk68->Emit(*((MKVector3 *) &sp518), *((MKVector3 *) &sp618), sp20);
+            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp518), *((MKVector3 *) &sp618), sp20);
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp4E8, sp4D8);
@@ -422,7 +426,7 @@ void CynderTier3::EmitClubEffects() {
             sp498 = temp_f0_472;
             sp1B0 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
             sp4A0 = (f64) sp1B0;
-            gb.unk74->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp618), sp1C, *((MKVector4 *) &sp488), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp618), sp1C, *((MKVector4 *) &sp488), 0.0f);
             return;
         case 1:
             if (gb.unk30C >= this->unkB50) {
@@ -435,7 +439,7 @@ void CynderTier3::EmitClubEffects() {
                     sp618 = spC8;
                     sp480 = (f64) spD0;
                     sp620 = (f64) spD0;
-                    gb.unk230->Emit(*((MKVector3 *) &this->unkB00), *((MKVector3 *) &sp618), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+                    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &this->unkB00), *((MKVector3 *) &sp618), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
                     var_r27_498 += 1;
                 } while (var_r27_498 < 2);
                 var_r27_534 = 0;
@@ -466,7 +470,7 @@ loop_17:
                     sp3F8 = temp_f0_590;
                     sp190 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
                     sp400 = (f64) sp190;
-                    gb.unk94->Trigger(*((MKVector3 *) &sp3F8), *((MKVector3 *) &sp618), sp18, lit_1140, (MKVector4) &sp3E8);
+                    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp3F8), *((MKVector3 *) &sp618), sp18, lit_1140, (MKVector4) &sp3E8);
                     var_r27_534 += 1;
                     goto loop_17;
                 }
@@ -598,7 +602,7 @@ loop_17:
             sp1E8 = temp_f0_966;
             sp150 = M2C_FIELD(this, f32 *, 0xB20) + (f32) sp630;
             sp1F0 = (f64) sp150;
-            gb.unk74->Emit(*((MKVector3 *) &sp1E8), *((MKVector3 *) &sp618), sp8, *((MKVector4 *) &sp1D8), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp1E8), *((MKVector3 *) &sp618), sp8, *((MKVector4 *) &sp1D8), 0.0f);
             break;
         }
     }
@@ -613,12 +617,10 @@ void CynderTier3::Spawn(EnemyGeneratorDoor *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void CynderTier3::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
-    this->unkB10.Message(arg0);
+    ((KDSoundPlayer *) &this->unkB10)->Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC'
 void CynderTier3::Update() {
@@ -661,7 +663,7 @@ void CynderTier3::Update() {
     if (((u32) M2C_FIELD(this->unkA20, u32 *, 0x280) != -1U) && ((s32) M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B4) != 0)) {
         temp_r4_1155 = checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unkB10.Update(M2C_FIELD(temp_r4_1155, s32 *, 0x2B4), 1U, var_r31_1101, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkB10)->Update(M2C_FIELD(temp_r4_1155, s32 *, 0x2B4), 1U, var_r31_1101, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     TestForSpikes();
     TestForTraps();
@@ -739,7 +741,7 @@ void CynderTier3::Init() {
     M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
     this->unkB04 = 0.0f;
     M2C_FIELD(this, f32 *, 0xB20) = 0.0f;
-    this->unkB10.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkB10)->Init(0.25f, 0.25f);
 }
 #endif
 
@@ -1026,11 +1028,11 @@ void CynderTier1::DefrostBall() {
         sp8C = 1.0f;
         sp60 = temp_f2_1920;
         gMK->SendMessage(&sp68, 0, 0, temp_r5_1914 + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
-        this->unkB04->Smash();
+        ((Ball *) this->unkB04)->Smash();
         temp_r3_1947 = this->unkB04;
         M2C_FIELD(M2C_FIELD(temp_r3_1947, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_1947);
         M2C_FIELD(this->unkB04, s32 *, 0x230) = 0;
-        this->unkB04->SetGroup(0xFF);
+        ((Ball *) this->unkB04)->SetGroup(0xFF);
         this->unkB04 = 0;
         this->unk110.Teleport(this->unk588, 0xA, 5.0f);
         M2C_FIELD(GetCollisionInfo(), s8 *, 4) = 1;
@@ -1157,10 +1159,10 @@ s32 CynderTier1::TryFreezeBall() {
         sp28 = (f64) sp18;
         sp20 = (f64) sp10;
         sp30.Translate(&sp30, *((MKVector3 *) &sp20));
-        this->unkB04->SetWorldMatrix(&sp30);
+        ((Ball *) this->unkB04)->SetWorldMatrix(&sp30);
         M2C_FIELD(this->unkB04, f32 *, 0x280) = 1.75f;
         M2C_FIELD(this->unkB04, CynderTier1 **, 0x230) = this;
-        this->unkB04->FindClosestGroup();
+        ((Ball *) this->unkB04)->FindClosestGroup();
         M2C_FIELD(GetCollisionInfo(), s8 *, 4) = 0;
         SetMovementType((CharacterMoveType) 2);
         SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
@@ -1367,13 +1369,13 @@ loop_50:
                         sp430 = (f64) sp110;
                         unksp42C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp34);
+                        ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp34);
                         sp408 = 1.0f;
                         sp40C = 0.75f;
                         sp410 = 0.75f;
                         sp414 = 1.0f;
                         sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp30, *((MKVector4 *) &sp408), 0.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp30, *((MKVector4 *) &sp408), 0.0f);
                         var_r23_2375 += 1;
                     } while (var_r23_2375 < 0x1E);
                     var_r23_2430 = 0;
@@ -1552,7 +1554,7 @@ loop_34:
                         sp268 = (f64) sp158;
                         sp270 = (f64) sp160;
                         sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
+                        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
                         var_r21_2881 += 1;
                     } while (var_r21_2881 < 3);
                     temp_f16_2931 = MKVector3::up.unk8;
@@ -1575,7 +1577,7 @@ loop_34:
                         sp238 = temp_f0_2970;
                         sp140 = this->unk588.unk4 - (f32) sp230;
                         sp240 = (f64) sp140;
-                        gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 1U);
+                        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 1U);
                         var_r21_2934 += 1;
                     } while (var_r21_2934 < 0xF);
                     break;

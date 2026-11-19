@@ -1,8 +1,11 @@
 #include "spyro/source/FireTrap.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/SparksPS.h"
 #include "spyro/source/Trap.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PropFlags.h"
@@ -26,7 +29,7 @@ void FireTrap::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FireTrap::Update() {
     s8 sp199;
     s8 sp198;
@@ -114,7 +117,7 @@ void FireTrap::Update() {
             sp118 = temp_f0_97;
             sp80 = MKVector3::up.unk8 * 650.0f;
             sp120 = (f64) sp80;
-            gb.unk68->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118), 6.0f);
+            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118), 6.0f);
             temp_r4_114 = this->unk8;
             temp_f1_117 = M2C_FIELD(temp_r4_114, f64 *, 0x30);
             spF8 = temp_f1_117;
@@ -150,7 +153,7 @@ void FireTrap::Update() {
                 sp168 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp198 = 0;
                 if (this != NULL) {
-                    sp58.GetPos();
+                    ((MKProp *) &sp58)->GetPos();
                     sp178 = sp58;
                     sp180 = sp60;
                 } else {
@@ -182,7 +185,7 @@ void FireTrap::Update() {
             spA8 = temp_f0_254;
             sp30 = MKVector3::up.unk8 * 300.0f;
             spB0 = (f64) sp30;
-            gb.unk84->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &spA8), 5.0f);
+            ((SparksPS *) gb.unk84)->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &spA8), 5.0f);
         }
         temp_f1_271 = this->unkE0;
         if (((temp_f1_271 > 0.5f) && (temp_f1_271 < 1.0f)) || (MKRand_Int(&gViewSeed, 0, 0xA) == 0)) {

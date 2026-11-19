@@ -8,6 +8,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDPath.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -238,7 +239,7 @@ loop_5:
         var_r31_427 += 4;
         goto loop_5;
     }
-    this->unkB4.LoadDone();
+    ((KDPathSegment *) &this->unkB4)->LoadDone();
 }
 #endif
 
@@ -247,7 +248,7 @@ s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
 
     var_r31_462 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (s32 *) &this->unk110, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk118, 0) != 0) || (arg0->LoadFloat("scale", &this->unk100, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unkB4.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (s32 *) &this->unk110, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk118, 0) != 0) || (arg0->LoadFloat("scale", &this->unk100, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (((KDPathSegment *) &this->unkB4)->LoadLine(arg0) != 0)) {
         var_r31_462 = 1;
     }
     return var_r31_462;
@@ -258,7 +259,7 @@ void TrapSpawnPool::Deinit() {
     MKHeap *temp_r3_589;
     void **temp_r31_588;
 
-    this->unkB4.Deinit();
+    ((KDPathSegment *) &this->unkB4)->Deinit();
     this->unkA0.Deinit();
     temp_r31_588 = this->unk9C;
     temp_r3_589 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -276,7 +277,7 @@ void TrapSpawnPool::Init() {
     this->unk90 = 0;
     this->unk94 = 0.0f;
     this->unk98 = 0.0f;
-    this->unkB4.Init();
+    ((KDPathSegment *) &this->unkB4)->Init();
     this->unk50.SetIdentity();
     this->unkF8 = 0.0f;
     this->unkFC = 0.0f;

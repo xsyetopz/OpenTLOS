@@ -149,7 +149,7 @@ block_29:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp70'
 s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
     f64 sp80;
     f64 sp78;
@@ -182,7 +182,7 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
             temp_r5_289 = M2C_FIELD(this->unk4, void **, 8);
             sp58 = M2C_FIELD(temp_r5_289, f64 *, 0x30);
             sp60 = M2C_FIELD(temp_r5_289, f64 *, 0x38);
-            sp68.GetSourceStart();
+            ((EventCamera *) &sp68)->GetSourceStart();
             temp_f0_297 = sp68 - sp58;
             sp18 = temp_f0_297;
             sp78 = temp_f0_297;
@@ -207,7 +207,7 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
         temp_r5_345 = M2C_FIELD(this->unk4, void **, 8);
         sp28 = M2C_FIELD(temp_r5_345, f64 *, 0x30);
         sp30 = M2C_FIELD(temp_r5_345, f64 *, 0x38);
-        sp38.GetSourceStart();
+        ((EventCamera *) &sp38)->GetSourceStart();
         sp8 = sp38 - sp28;
         temp_r3_357 = this + (var_r30_325 * 4);
         sp48 = sp8;

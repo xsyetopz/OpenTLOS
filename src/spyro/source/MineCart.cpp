@@ -150,7 +150,7 @@ void MineCart::Message(MKMessage *arg0) {
                 spF8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp128 = 0;
                 if (this != NULL) {
-                    sp28.GetPos();
+                    ((MKProp *) &sp28)->GetPos();
                     sp108 = sp28;
                     sp110 = sp30;
                 } else {

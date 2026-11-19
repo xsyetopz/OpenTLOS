@@ -131,7 +131,7 @@ void PauseMainScreen::Update() {
             sp14 = 0;
             M2C_FIELD(M2C_FIELD(temp_r3_205, void **, 0), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_205, &sp10, 6);
             temp_r3_215 = this->unkBC.unk4;
-            temp_r3_218 = ui_cast<UIButton *, UIObject *>(temp_r3_215->GetChild(M2C_FIELD(temp_r3_215, s32 *, 0x68)));
+            temp_r3_218 = ui_cast<UIButton *, UIObject *>(((UIContainer *) temp_r3_215)->GetChild(M2C_FIELD(temp_r3_215, s32 *, 0x68)));
             if (temp_r3_218 != NULL) {
                 if (stricmp(temp_r3_218->unk4, "Continue") == 0) {
                     temp_r3_229 = GetRoot();
@@ -146,8 +146,8 @@ void PauseMainScreen::Update() {
                     if ((s32) M2C_FIELD(temp_r3_269, s32 *, 0x6C) == 0x13) {
                         M2C_FIELD(&gb, s8 *, 0x3B5) = 1;
                         M2C_FIELD(&gb, s8 *, 0x3B4) = 1;
-                        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x18)))->SetValue(23000.0f, 0U);
-                        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetEverything();
+                        ((Stat *) (&GameData::gameData[0x70] + 0x18))->SetValue(23000.0f, 0U);
+                        ((GameStats *) &GameData::gameData[0x70])->SetEverything();
                         temp_r3_288 = M2C_FIELD(temp_r3_269, s8 **, 0x68);
                         if (temp_r3_288 != NULL) {
                             UIStringTable_Remove(temp_r3_288);
@@ -162,7 +162,7 @@ void PauseMainScreen::Update() {
                     } else {
                         M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
                         M2C_FIELD(&gb, s8 *, 0x3B4) = 0;
-                        ((Stat *) ((Stat *) &GameData::gameData[0x88]))->SetValue(0.0f, 0U);
+                        ((Stat *) &GameData::gameData[0x88])->SetValue(0.0f, 0U);
                         temp_r3_321 = M2C_FIELD(temp_r3_269, s8 **, 0x68);
                         if (temp_r3_321 != NULL) {
                             UIStringTable_Remove(temp_r3_321);
@@ -210,7 +210,7 @@ void PauseMainScreen::OnEnter() {
     void **temp_r3_446;
 
     UIScreen::OnEnter();
-    temp_r3_397 = ui_cast<UIContainer *, UIObject *>(this->unkBC.unk4->FindChild("SaveGame"));
+    temp_r3_397 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) this->unkBC.unk4)->FindChild("SaveGame"));
     if (temp_r3_397 != NULL) {
         var_r28_401 = 0;
         var_r30_404 = 0;
@@ -228,7 +228,7 @@ void PauseMainScreen::OnEnter() {
         sp1C = 0;
         M2C_FIELD(*temp_r3_397, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_397, &sp18);
     }
-    temp_r3_446 = ui_cast<UIContainer *, UIObject *>(this->unkBC.unk4->FindChild("LevelUp"));
+    temp_r3_446 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) this->unkBC.unk4)->FindChild("LevelUp"));
     if (temp_r3_446 != NULL) {
         var_r4_450 = 5;
         if (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) {
@@ -266,14 +266,14 @@ void PauseMainScreen::Resolve() {
     M2C_FIELD(this, s8 *, 0xD1) = 1;
     this->unkBC.unk8 = ui_cast<PromptGroup *, UIObject *>(FindChild("PromptGroup"));
     this->unkBC.unk4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons"));
-    temp_r3_529 = this->unkBC.unk4->FindChild("Cheat");
+    temp_r3_529 = ((UIContainer *) this->unkBC.unk4)->FindChild("Cheat");
     if (temp_r3_529 != NULL) {
         sp14 = 5;
         M2C_FIELD(temp_r3_529->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp14);
         sp10 = 3;
         temp_r3_529->Message(&sp10);
     }
-    temp_r3_552 = this->unkBC.unk4->FindChild("ChangeLevel");
+    temp_r3_552 = ((UIContainer *) this->unkBC.unk4)->FindChild("ChangeLevel");
     if (temp_r3_552 != NULL) {
         spC = 5;
         M2C_FIELD(temp_r3_552->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);

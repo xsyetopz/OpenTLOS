@@ -1,5 +1,6 @@
 #include "spyro/source/FightElevator.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
@@ -7,6 +8,7 @@
 #include "spyro/source/EnergyBeam.h"
 #include "spyro/source/FightElevatorAnchor.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Platform.h"
 #include "spyro/source/PlatformObject.h"
@@ -14,7 +16,6 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/SplineTools.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -235,7 +236,7 @@ void FightElevator::SetBeamPositions() {
     this->unk290 = M2C_FIELD(temp_r3_326, f64 *, 0x38);
     do {
         if ((u32) *(this + (var_r30_325 + 0x29C)) != 0U) {
-            sp8.GetZapAnchorPos();
+            ((FightElevatorAnchor *) &sp8)->GetZapAnchorPos();
             temp_r3_341 = this + (var_r31_324 + 0x228);
             M2C_FIELD(temp_r3_341, f64 *, 0) = sp8;
             M2C_FIELD(temp_r3_341, f64 *, 8) = sp10;
@@ -301,7 +302,7 @@ void FightElevator::AllocBeams() {
 void FightElevator::Deinit() {
     KDSound_Stop(&this->unk1BC);
     KDSound_Stop(&this->unk1E4);
-    this->unk180.Deinit();
+    ((KDUniformSpline *) &this->unk180)->Deinit();
     FreeBeams();
     Platform::Deinit();
 }
@@ -311,7 +312,7 @@ void FightElevator::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void FightElevator::Message(MKMessage *arg0) {
     u8 sp84;
     PlatformObject *sp80;
@@ -351,8 +352,8 @@ void FightElevator::Message(MKMessage *arg0) {
     void *temp_r5_714;
     void *temp_r5_729;
 
-    this->unk1BC.Message(arg0);
-    this->unk1E4.Message(arg0);
+    ((KDSoundPlayer *) &this->unk1BC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk1E4)->Message(arg0);
     temp_r0_487 = arg0->unk0;
     switch (temp_r0_487) {                          /* irregular */
     case 148:
@@ -476,7 +477,7 @@ void FightElevator::UpdateMove() {
     sp50.unk38 = (f32) sp40;
     sp50.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, sp50);
-    sp18.GetRotationPYR();
+    ((Matrix *) &sp18)->GetRotationPYR();
     M2C_FIELD(this, f64 *, 0x110) = sp18;
     M2C_FIELD(this, f64 *, 0x118) = sp20;
 }
@@ -554,14 +555,14 @@ void FightElevator::Update() {
         }
         temp_r4_841 = checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk1BC.Update(M2C_FIELD(temp_r4_841, s32 *, 0x12C), 1U, var_r31_830, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk1BC)->Update(M2C_FIELD(temp_r4_841, s32 *, 0x12C), 1U, var_r31_830, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     sp8 = 1;
     var_r6_857 = 0;
     if (((s32) this->unk198 == 3) && ((u8) this->unk1A4 != 0)) {
         var_r6_857 = 1;
     }
-    this->unk1E4.Update(GS_TowerElevatorSparks, 1U, var_r6_857, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk1E4)->Update(GS_TowerElevatorSparks, 1U, var_r6_857, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r0_872 = this->unk19C;
     temp_r3_873 = this->unk198;
     if (temp_r0_872 != temp_r3_873) {
@@ -854,12 +855,12 @@ s32 FightElevator::LoadLine(MKIniLine *arg0) {
         if (temp_r3_1549 == 0) {
             return 0;
         }
-        this->unk180.Init(temp_r3_1549, 0U);
+        ((KDUniformSpline *) &this->unk180)->Init(temp_r3_1549, 0U);
         var_r30_1562 = arg0->unkC->GetSubLine(arg0);
 loop_12:
         if (var_r30_1562 != NULL) {
             var_r30_1562->AsVector3(0, &sp8);
-            this->unk180.AddNode(sp8);
+            ((KDUniformSpline *) &this->unk180)->AddNode(sp8);
             var_r30_1562 = var_r30_1562->unkC->GetNextLine(var_r30_1562);
             goto loop_12;
         }
@@ -886,7 +887,6 @@ void FightElevator::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void FightElevator::Init() {
     s32 var_ctr_1659;
     s32 var_r3_1652;
@@ -896,8 +896,8 @@ void FightElevator::Init() {
     this->unk198 = 0;
     this->unk19C = this->unk198;
     this->unk1A0 = 1;
-    this->unk1BC.Init(0.25f, 0.25f);
-    this->unk1E4.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk1BC)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk1E4)->Init(0.25f, 0.25f);
     this->unk194 = 0.0f;
     var_r3_1652 = 0;
     this->unk1A5 = 0;
@@ -918,12 +918,11 @@ void FightElevator::Init() {
     this->unk1A4 = 0;
     this->unk2B8 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void FightElevatorDescriptor::LoadDone() {
     PlatformDescriptor::LoadDone();
-    this->unk130 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    this->unk130 = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
 }
 #endif
 

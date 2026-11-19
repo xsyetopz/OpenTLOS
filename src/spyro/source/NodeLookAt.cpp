@@ -421,7 +421,7 @@ block_10:
         sp80 = (f64) sp30;
         sp78 = (f64) sp28;
         sp110.SetRotationPYR(*((MKVector3 *) &sp78));
-        sp68.GetNodeOrigin(MKModel_GetAnimation(this->unk30));
+        ((Animation *) &sp68)->GetNodeOrigin(MKModel_GetAnimation(this->unk30));
         sp88.unk10 = sp68;
         sp88.unk18 = sp70;
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);

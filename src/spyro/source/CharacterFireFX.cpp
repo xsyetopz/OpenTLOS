@@ -2,6 +2,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Game.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -43,7 +44,7 @@ void CharacterFireFX::EmitFire() {
                 sp24 = temp_f1_56;
                 sp48 = (f64) sp28;
                 sp40 = (f64) sp20;
-                gb.unk68->Emit(*(temp_r3_40 + 8), *((MKVector3 *) &sp40), sp8);
+                ((CrashFirePS *) gb.unk68)->Emit(*(temp_r3_40 + 8), *((MKVector3 *) &sp40), sp8);
             }
             var_r29_36 += 1;
         } while (var_r29_36 < 5);

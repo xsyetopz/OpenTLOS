@@ -9,7 +9,9 @@
 #include "spyro/source/CutsceneProp.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBossStalactite.h"
+#include "spyro/source/KDCamera.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "unplaced_templates.h"
@@ -17,7 +19,6 @@
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(IceBossStalactiteSpawner *);           /* extern */
@@ -42,7 +43,7 @@ void StalactiteCharge::StateSCResetUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'KDSplinePathSegment' to
 void StalactiteCharge::StateSCResetEnter() {
     f64 sp118;                                      /* compiler-managed */
     KDSplinePathSegment spD0;
@@ -99,7 +100,7 @@ loop_25:
     if (var_r30_103 < temp_r3_357) {
         if (var_r30_103 == (s32) (temp_r3_357 - 1)) {
             spD0.GetPosition(this->unkD8 * (f32) var_r30_103);
-            spD0.unk10.GetPosition((this->unkD8 * (f32) var_r30_103) - 1.0f);
+            ((KDSplinePathSegment *) &spD0.unk10)->GetPosition((this->unkD8 * (f32) var_r30_103) - 1.0f);
             sp30 = spD0.unk10 - M2C_BITWISE(f64, spD0);
             spD0.unk20 = sp30;
             sp38 = M2C_BITWISE(f32, spD0.unk18) - spD0.unk8;
@@ -107,7 +108,7 @@ loop_25:
             spD0.unk28 = (f64) sp38;
             sp118 = (f64) sp38;
         } else {
-            spA0.GetPosition(this->unkD8 * (f32) (var_r30_103 + 1));
+            ((KDSplinePathSegment *) &spA0)->GetPosition(this->unkD8 * (f32) (var_r30_103 + 1));
             spB0.GetPosition(this->unkD8 * (f32) var_r30_103);
             sp20 = spB0.unk0 - spA0;
             spB0.unk10 = sp20;
@@ -213,7 +214,7 @@ void StalactiteCharge::StateSCLerpCameraExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp10);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spB0'
 void StalactiteCharge::StateSCLerpCameraUpdate() {
     s32 sp174;
     KDS_Message_SetCameraSimple sp170;
@@ -318,7 +319,7 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     temp_r4_610 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f32, f32, f32, f32, f32, f64, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_600, (f32) sp100, (f32) spF0, temp_f4_552, 0.33333334f, (f64) sp60, sp58), void **, 8);
     sp98 = M2C_FIELD(temp_r4_610, f64 *, 0x30);
     spA0 = M2C_FIELD(temp_r4_610, f64 *, 0x38);
-    spA8.GetHeroTargetPos(*(M2C_FIELD(&gb, MKVector3 **, 0x3B8)));
+    ((KDCamera *) &spA8)->GetHeroTargetPos(*(M2C_FIELD(&gb, MKVector3 **, 0x3B8)));
     sp108 = spA8;
     sp110 = spB0;
     sp130.SetLookAt(*((MKVector3 *) &sp118), *((MKVector3 *) &sp108));
@@ -738,7 +739,7 @@ void StalactiteCharge::StateSCDropUpdate() {
         var_f1_1305 = 0.0f;
     }
     spAC = 0;
-    sp38.GetPosition(var_f1_1305);
+    ((KDSplinePathSegment *) &sp38)->GetPosition(var_f1_1305);
     sp48.GetPos();
     sp18 = sp48 - sp38;
     spA8 = 0x42E;
@@ -797,7 +798,7 @@ void StalactiteCharge::StateSCDropEnter() {
     sp68 = (f64) sp18;
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp70, 0x419, sp48, temp_f2_1403, (f64) sp18, sp10);
     sp8 = 0.0f;
-    sp20.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp20)->GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     this->unk130 = sp20;
     M2C_FIELD(this, f64 *, 0x138) = sp28;
     this->unkF8 = 1.0f / this->unkEC->unk30.unk8;
@@ -844,17 +845,17 @@ void StalactiteCharge::Update() {
         temp_r31_1515 = checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         temp_r3_1519 = 2 - this->unk50.GetState();
         sp8 = 1;
-        this->unk144.Update(M2C_FIELD(temp_r31_1515, s32 *, 0x60), 1U, temp_r3_1519 == 0, NULL, (MKVector3 *) &this->unk170, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk144)->Update(M2C_FIELD(temp_r31_1515, s32 *, 0x60), 1U, temp_r3_1519 == 0, NULL, (MKVector3 *) &this->unk170, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     MKProp::Update();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk50'
 void StalactiteCharge::Message(MKMessage *arg0) {
     s32 temp_r0_1552;
 
-    this->unk144.Message(arg0);
+    ((KDSoundPlayer *) &this->unk144)->Message(arg0);
     temp_r0_1552 = arg0->unk0;
     switch (temp_r0_1552) {                         /* irregular */
     case 0xB5:
@@ -906,7 +907,7 @@ void StalactiteCharge::LoadDone() {
     sp10 = 0.0f;
     sp18.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     spC = 0.0f;
-    sp18.unk10.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp18.unk10)->GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     sp8 = 0.0f;
     sp38.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     this->unkA0 = M2C_BITWISE(f32, sp38);
@@ -1000,7 +1001,7 @@ void StalactiteCharge::Init() {
     this->unkEC = NULL;
     this->unkF0 = NULL;
     if ((s32) M2C_FIELD(checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) != 0) {
-        this->unk144.Init(0.25f, 0.25f);
+        ((KDSoundFader *) &this->unk144)->Init(0.25f, 0.25f);
     }
     this->unkF4 = 0.0f;
     this->unkF8 = 0.0f;

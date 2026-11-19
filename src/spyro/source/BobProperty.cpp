@@ -122,7 +122,7 @@ void BobProperty::ResolveInstance() {
     }
     this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (SubObjectType) 0, this->unk10);
     temp_r30_252 = Tools_GetMatchingNodeIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), this->unk10 + 2);
-    sp8.GetNodeOrigin(MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)));
+    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)));
     temp_r3_264 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r3_264, f64 *, 0) = sp8;
     M2C_FIELD(temp_r3_264, f64 *, 8) = sp10;

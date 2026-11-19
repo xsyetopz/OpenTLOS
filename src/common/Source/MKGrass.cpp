@@ -206,7 +206,7 @@ loop_45:
 loop_42:
                             if (var_r22_211 < (s32) M2C_FIELD(temp_r31_199, u16 *, 0xA)) {
                                 temp_r21_218 = M2C_FIELD(temp_r31_199, s32 *, 0xC) + var_r18_212;
-                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) > (temp_f1_269 * temp_f1_269)) == 0)) && (spA0.IsVisible(temp_r4_235) != 0)))) {
+                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) > (temp_f1_269 * temp_f1_269)) == 0)) && (((Frustum *) &spA0)->IsVisible(temp_r4_235) != 0)))) {
                                     temp_r3_290 = MKModel_GetBoundingVolume(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0);
                                     var_r17_292 = 0;
                                     sp20 = (0.5f * M2C_FIELD(temp_r3_290, f32 *, 0x10)) + M2C_FIELD(temp_r3_290, f32 *, 0);
@@ -570,7 +570,7 @@ loop_25:
                     if (var_r28_890 != NULL) {
                         temp_r0_893 = M2C_FIELD(var_r28_890, s8 **, 0x2C);
                         if (temp_r0_893 == NULL) {
-                            temp_r3_896 = var_r3_887->Current();
+                            temp_r3_896 = ((MKHeap *) var_r3_887)->Current();
                             if (temp_r3_896 != NULL) {
                                 var_r3_887 = ((MKHeap *) (((MKHeap *) (&*temp_r3_896))->Current()))->Alloc(0x810, NULL, 0);
                             } else {
@@ -588,7 +588,7 @@ loop_21:
                                 } else {
                                     temp_r0_923 = M2C_FIELD(var_r27_910, s8 **, 0x80C);
                                     if (temp_r0_923 == NULL) {
-                                        temp_r3_926 = var_r3_887->Current();
+                                        temp_r3_926 = ((MKHeap *) var_r3_887)->Current();
                                         if (temp_r3_926 != NULL) {
                                             var_r3_887 = ((MKHeap *) (((MKHeap *) (&*temp_r3_926))->Current()))->Alloc(0x810, NULL, 0);
                                         } else {
@@ -1448,7 +1448,7 @@ void MKGrass_DeinitModule() {
         grassModelsList = temp_r31_2722;
     } while ((u32) M2C_FIELD(temp_r3_2721, u32 *, -4) != 0U);
     if (temp_r31_2722 != &gEmptyPtrList) {
-        temp_r3_2730 = temp_r3_2721->Current();
+        temp_r3_2730 = ((MKHeap *) temp_r3_2721)->Current();
         if (temp_r3_2730 != NULL) {
             ((MKHeap *) (((MKHeap *) (&*temp_r3_2730))->Current()))->Free(temp_r31_2722, NULL, 0);
         } else {
@@ -1504,7 +1504,7 @@ void MKGrass_InitModule() {
         gnGrassTypes = 0;
         MKGrass_bEnable = 0;
     } else {
-        temp_r3_2784->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_2784)->ActivateTempMemOverride();
         ((MKHeap *) (sp8.Init(&lit_stringBase0 + 6, 0, NULL)))->DeactivateTempMemOverride();
         gnGrassTypes = 0;
         var_r3_2806 = sp8.GotoLine(NULL, NULL);
@@ -1520,7 +1520,7 @@ loop_6:
         }
         if ((s32) gnGrassTypes != 0) {
             temp_r28_2828 = gnGrassTypes * 0x30;
-            temp_r3_2829 = var_r3_2806->Current();
+            temp_r3_2829 = ((MKHeap *) var_r3_2806)->Current();
             if (temp_r3_2829 != NULL) {
                 var_r3_2836 = ((MKHeap *) (((MKHeap *) (&*temp_r3_2829))->Current()))->Alloc(temp_r28_2828, NULL, 0);
             } else {

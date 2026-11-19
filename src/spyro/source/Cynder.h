@@ -235,15 +235,15 @@ inline Cynder::Cynder() {
     M2C_FIELD(this, s32 *, 0xD6C) = 0;
     __construct_array((f32 *) &this->unkDA0, (MKAnimScript *(*)(MKAnimScript *)) &EnemyRegion::EnemyRegion, NULL, 0x38, 4);
     this->unkEB0 = 0.0f;
-    this->unkEB0.Init();
+    ((EventMessage *) &this->unkEB0)->Init();
     this->unkECC.unk0 = 0;
     this->unkECC.Init();
     M2C_FIELD(this, s32 *, 0xED0) = 0;
-    this->unkEB8.Init();
+    ((EventMessage *) &this->unkEB8)->Init();
     M2C_FIELD(this, s32 *, 0xED4) = 0;
     ((EventMessage *) (this + 0xED4))->Init();
     this->unkEC0 = 0.0f;
-    this->unkEC0.Init();
+    ((EventMessage *) &this->unkEC0)->Init();
     this->unkEDC.unk0 = 0;
     this->unkEDC.Init();
     this->unkEC8.unk0 = 0;
@@ -328,19 +328,19 @@ inline Cynder::~Cynder() {
         this->unkEDC.Deinit();
     }
     if (&this->unkEC0 != NULL) {
-        this->unkEC0.Deinit();
+        ((EventMessage *) &this->unkEC0)->Deinit();
     }
     if ((this + 0xED4) != NULL) {
         ((EventMessage *) (this + 0xED4))->Deinit();
     }
     if (&this->unkEB8 != NULL) {
-        this->unkEB8.Deinit();
+        ((EventMessage *) &this->unkEB8)->Deinit();
     }
     if (&this->unkECC != NULL) {
         this->unkECC.Deinit();
     }
     if (&this->unkEB0 != NULL) {
-        this->unkEB0.Deinit();
+        ((EventMessage *) &this->unkEB0)->Deinit();
     }
     if (((this + 0xD6C) != NULL) && ((this + 0xD6C) != NULL)) {
         KDSound_Stop(this + 0xD6C);

@@ -144,7 +144,7 @@ loop_4:
     if ((arg0->IsField("levelCode") != 0) && (arg0->GetString(0) != 0U)) {
         temp_r3_312 = strlen(arg0->GetString(0));
         if (temp_r3_312 != 0) {
-            temp_r3_315 = temp_r3_312->Current();
+            temp_r3_315 = ((MKHeap *) temp_r3_312)->Current();
             if (temp_r3_315 != NULL) {
                 var_r3_322 = ((MKHeap *) (temp_r3_315->Current()))->Alloc(temp_r3_312 + 1, NULL, 0);
             } else {

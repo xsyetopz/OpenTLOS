@@ -222,7 +222,7 @@ loop_4:
             activeHandle = pQueue->unk0;
             pQueue->unk124->Push();
             temp_r31_301 = *MKHeap::tempMemOverride > 0;
-            pQueue->unk128->SetTempMemOverrideStatus((u8) *MKHeap::tempMemOverride);
+            ((MKHeap *) pQueue->unk128)->SetTempMemOverrideStatus((u8) *MKHeap::tempMemOverride);
             if ((s8) (u8) pQueue->unk24 != 0) {
                 QInterface = 0;
                 MKPackage_LoadDynamic(&pQueue->unk24, 1U, &pQueue->unk4);
@@ -232,7 +232,7 @@ loop_4:
                 MKPackage_Load(&pQueue->unk4, 1U);
                 QInterface = 1;
             }
-            temp_r31_301->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
+            ((MKHeap *) temp_r31_301)->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
             ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop();
         }
     }
@@ -316,7 +316,7 @@ s32 MKPackage_Free() {
     if ((MKHeap *) pHeapToLoadInto != NULL) {
         var_r26_418 = *MKHeap::tempMemOverride > 0;
         pHeapToLoadInto->Push();
-        bTempMemBeingUsed->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
+        ((MKHeap *) bTempMemBeingUsed)->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
     }
     if (((s32) packageState != 3) && (MKPackage_IsLoaded(NULL, NULL) == 0)) {
         MKPackage_Cancel();
@@ -327,7 +327,7 @@ loop_10:
         }
     }
     if ((MKHeap *) pHeapToLoadInto != NULL) {
-        var_r26_418->SetTempMemOverrideStatus((u8) (u32) (u64) ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop());
+        ((MKHeap *) var_r26_418)->SetTempMemOverrideStatus((u8) (u32) (u64) ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop());
     }
     var_r28_455 = 0;
     temp_r29_456 = packageName + 0x40;
@@ -365,7 +365,7 @@ loop_26:
         if ((((s32) nmbrOfPackageEntries != (s32) nmbrOfAutoEntries) || (var_r25_490 != (s32) nmbrOfPackageEntries) || (System_GetCommandLineParameter("OutputPackages", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) && (strcmpi(packageName, "<Dynamic>") != 0)) {
             temp_r3_534 = nmbrOfAutoEntries * 0x24;
             temp_r27_535 = temp_r3_534 + 1;
-            temp_r3_536 = temp_r3_534->Current();
+            temp_r3_536 = ((MKHeap *) temp_r3_534)->Current();
             if (temp_r3_536 != NULL) {
                 var_r3_544 = ((MKHeap *) (temp_r3_536->Main()))->TAlloc(temp_r27_535, NULL, 0, 0U);
             } else {
@@ -464,20 +464,20 @@ u8 MKPackage_IsLoaded(float *arg0, int *arg1) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
     MKHeap *temp_r3_776;
     PackageQueueInfo *var_r3_784;
     s32 temp_r30_775;
     u32 temp_r3_773;
 
-    pHeapToLoadInto = arg0->Current();
+    pHeapToLoadInto = ((MKHeap *) arg0)->Current();
     *binaryPackageName = 0;
     bTempMemBeingUsed = *MKHeap::tempMemOverride > 0;
     temp_r3_773 = strlen(arg0);
     packageTextSize = temp_r3_773;
     temp_r30_775 = temp_r3_773 + 1;
-    temp_r3_776 = temp_r3_773->Current();
+    temp_r3_776 = ((MKHeap *) temp_r3_773)->Current();
     if (temp_r3_776 != NULL) {
         var_r3_784 = ((MKHeap *) (temp_r3_776->Main()))->TAlloc(temp_r30_775, NULL, 0, 0U);
     } else {
@@ -494,7 +494,7 @@ void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap *' to
 void MKPackage_Load(char *arg0, bool arg1) {
     MKHeap *temp_r3_893;
     MKHeap *temp_ret_825;
@@ -507,7 +507,7 @@ void MKPackage_Load(char *arg0, bool arg1) {
     u8 temp_r3_875;
     u8 temp_r7_834;
 
-    temp_ret_825 = arg0->Current();
+    temp_ret_825 = ((MKHeap *) arg0)->Current();
     temp_r7_834 = *MKHeap::tempMemOverride > 0;
     pHeapToLoadInto = temp_ret_825;
     bTempMemBeingUsed = temp_r7_834;
@@ -522,15 +522,15 @@ void MKPackage_Load(char *arg0, bool arg1) {
     temp_r3_872 = Str_Printf("%s.bpk", arg0, M2C_BITWISE(f32, temp_ret_856));
     temp_r3_875 = MKArchive_Exists(temp_r3_872, NULL);
     if (temp_r3_875 != 0) {
-        temp_r3_875->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_875)->ActivateTempMemOverride();
         var_r3_881 = MKArchive_RegisterArchive(temp_r3_872, arg1);
         if ((u8) var_r3_881 != 0) {
             var_r3_881 = strcpy(binaryPackageName, temp_r3_872);
         }
-        var_r3_881->DeactivateTempMemOverride();
+        ((MKHeap *) var_r3_881)->DeactivateTempMemOverride();
     }
     temp_r30_892 = packageTextSize + 1;
-    temp_r3_893 = packageTextSize->Current();
+    temp_r3_893 = ((MKHeap *) packageTextSize)->Current();
     if (temp_r3_893 != NULL) {
         var_r3_901 = ((MKHeap *) (temp_r3_893->Main()))->TAlloc(temp_r30_892, NULL, 0, 0U);
     } else {
@@ -712,7 +712,7 @@ s32 PackageSort(const void *arg0, const void *arg1) {
     return M2C_FIELD(arg0, s32 *, 4) - M2C_FIELD(arg1, s32 *, 4);
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'jumptable_1297'
 void MKPackage_Update() {
     MKHeap *temp_r3_1484;
     MKHeap *temp_r3_1486;
@@ -780,7 +780,7 @@ void MKPackage_Update() {
     if ((MKHeap *) pHeapToLoadInto != NULL) {
         var_r30_1314 = *MKHeap::tempMemOverride > 0;
         pHeapToLoadInto->Push();
-        bTempMemBeingUsed->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
+        ((MKHeap *) bTempMemBeingUsed)->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
     }
 loop_86:
     if (((s32) asyncState != 0) && (File_IsAnyBusy() == 0)) {
@@ -799,7 +799,7 @@ loop_86:
                     asyncState = 2;
                     break;
                 }
-                temp_r3_1337->DeactivateTempMemOverride();
+                ((MKHeap *) temp_r3_1337)->DeactivateTempMemOverride();
                 break;
             case 2:                                 /* switch 1 */
                 afd = MKArchive_Open(packageName, NULL, 1U);
@@ -929,7 +929,7 @@ loop_69:
                     goto loop_69;
                 }
                 temp_r28_1629 = chunkLength_483 + 0x2000;
-                temp_r3_1630 = chunkLength_483->Current();
+                temp_r3_1630 = ((MKHeap *) chunkLength_483)->Current();
                 if (temp_r3_1630 != NULL) {
                     var_r3_1638 = ((MKHeap *) (temp_r3_1630->Main()))->TAlloc(temp_r28_1629, NULL, 0, 1U);
                 } else {
@@ -959,7 +959,7 @@ loop_78:
                     goto loop_78;
                 }
                 temp_r28_1695 = pChunkBuffer_489;
-                temp_r3_1696 = temp_r3_1690->Current();
+                temp_r3_1696 = ((MKHeap *) temp_r3_1690)->Current();
                 if (temp_r3_1696 != NULL) {
                     ((MKHeap *) (temp_r3_1696->Main()))->TFree(temp_r28_1695, NULL, 0);
                 } else {
@@ -981,7 +981,7 @@ loop_78:
         goto loop_86;
     }
     if ((MKHeap *) pHeapToLoadInto != NULL) {
-        var_r30_1314->SetTempMemOverrideStatus((u8) (u32) (u64) ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop());
+        ((MKHeap *) var_r30_1314)->SetTempMemOverrideStatus((u8) (u32) (u64) ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Pop());
     }
 }
 #endif

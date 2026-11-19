@@ -489,7 +489,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
         sp1C0 = (f64) sp1F0;
         sp1C8 = (f64) sp1F8;
     }
-    sp130.GetRandPos();
+    ((Volume *) &sp130)->GetRandPos();
     sp60 = 0.0f;
     sp64 = -500.0f;
     sp68 = 0.0f;
@@ -687,7 +687,6 @@ void ShwimmaCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void ShwimmaCritterDescriptor::LoadDone() {
     s8 *temp_r30_1205;
     s8 *temp_r30_1223;
@@ -712,77 +711,76 @@ void ShwimmaCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1205 = this->unk34;
-    if (temp_r30_1205->Exists("Walk") != 0) {
-        var_r3_1215 = temp_r30_1205->GetAnim("Walk");
+    if (((MKAnimScript *) temp_r30_1205)->Exists("Walk") != 0) {
+        var_r3_1215 = ((MKAnimScript *) temp_r30_1205)->GetAnim("Walk");
     } else {
         var_r3_1215 = NULL;
     }
     this->unk74 = (s32) var_r3_1215;
     temp_r30_1223 = this->unk34;
-    if (temp_r30_1223->Exists("Run") != 0) {
-        var_r3_1233 = temp_r30_1223->GetAnim("Run");
+    if (((MKAnimScript *) temp_r30_1223)->Exists("Run") != 0) {
+        var_r3_1233 = ((MKAnimScript *) temp_r30_1223)->GetAnim("Run");
     } else {
         var_r3_1233 = NULL;
     }
     this->unk78 = (s32) var_r3_1233;
     temp_r30_1241 = this->unk34;
-    if (temp_r30_1241->Exists("Glide_Enter") != 0) {
-        var_r3_1251 = temp_r30_1241->GetAnim("Glide_Enter");
+    if (((MKAnimScript *) temp_r30_1241)->Exists("Glide_Enter") != 0) {
+        var_r3_1251 = ((MKAnimScript *) temp_r30_1241)->GetAnim("Glide_Enter");
     } else {
         var_r3_1251 = NULL;
     }
     this->unk7C = (s32) var_r3_1251;
     temp_r30_1259 = this->unk34;
-    if (temp_r30_1259->Exists("Glide_Cycle") != 0) {
-        var_r3_1269 = temp_r30_1259->GetAnim("Glide_Cycle");
+    if (((MKAnimScript *) temp_r30_1259)->Exists("Glide_Cycle") != 0) {
+        var_r3_1269 = ((MKAnimScript *) temp_r30_1259)->GetAnim("Glide_Cycle");
     } else {
         var_r3_1269 = NULL;
     }
     this->unk80 = (s32) var_r3_1269;
     temp_r30_1277 = this->unk34;
-    if (temp_r30_1277->Exists("Glide_Exit") != 0) {
-        var_r3_1287 = temp_r30_1277->GetAnim("Glide_Exit");
+    if (((MKAnimScript *) temp_r30_1277)->Exists("Glide_Exit") != 0) {
+        var_r3_1287 = ((MKAnimScript *) temp_r30_1277)->GetAnim("Glide_Exit");
     } else {
         var_r3_1287 = NULL;
     }
     this->unk84 = (s32) var_r3_1287;
     temp_r30_1295 = this->unk34;
-    if (temp_r30_1295->Exists("Alert") != 0) {
-        var_r3_1305 = temp_r30_1295->GetAnim("Alert");
+    if (((MKAnimScript *) temp_r30_1295)->Exists("Alert") != 0) {
+        var_r3_1305 = ((MKAnimScript *) temp_r30_1295)->GetAnim("Alert");
     } else {
         var_r3_1305 = NULL;
     }
     this->unk88 = (s32) var_r3_1305;
     temp_r30_1313 = this->unk34;
-    if (temp_r30_1313->Exists("Idle_01") != 0) {
-        var_r3_1323 = temp_r30_1313->GetAnim("Idle_01");
+    if (((MKAnimScript *) temp_r30_1313)->Exists("Idle_01") != 0) {
+        var_r3_1323 = ((MKAnimScript *) temp_r30_1313)->GetAnim("Idle_01");
     } else {
         var_r3_1323 = NULL;
     }
     this->unk8C = (s32) var_r3_1323;
     temp_r30_1331 = this->unk34;
-    if (temp_r30_1331->Exists("Idle_02") != 0) {
-        var_r3_1341 = temp_r30_1331->GetAnim("Idle_02");
+    if (((MKAnimScript *) temp_r30_1331)->Exists("Idle_02") != 0) {
+        var_r3_1341 = ((MKAnimScript *) temp_r30_1331)->GetAnim("Idle_02");
     } else {
         var_r3_1341 = NULL;
     }
     this->unk90 = (s32) var_r3_1341;
     temp_r30_1349 = this->unk34;
-    if (temp_r30_1349->Exists("Idle_03") != 0) {
-        var_r3_1359 = temp_r30_1349->GetAnim("Idle_03");
+    if (((MKAnimScript *) temp_r30_1349)->Exists("Idle_03") != 0) {
+        var_r3_1359 = ((MKAnimScript *) temp_r30_1349)->GetAnim("Idle_03");
     } else {
         var_r3_1359 = NULL;
     }
     this->unk94 = (s32) var_r3_1359;
     temp_r30_1367 = this->unk34;
-    if (temp_r30_1367->Exists("Idle_04") != 0) {
-        var_r3_1377 = temp_r30_1367->GetAnim("Idle_04");
+    if (((MKAnimScript *) temp_r30_1367)->Exists("Idle_04") != 0) {
+        var_r3_1377 = ((MKAnimScript *) temp_r30_1367)->GetAnim("Idle_04");
     } else {
         var_r3_1377 = NULL;
     }
     this->unk98 = (s32) var_r3_1377;
 }
-#endif
 
 void ShwimmaCritterDescriptor::Init() {
     KDPropDescriptor::Init();

@@ -2097,7 +2097,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionRay sp68;
     M2C_UNK sp64;
@@ -2111,7 +2111,7 @@ s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult 
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    sp8.LocaliseRay(*((MKCollisionRay *) this));
+    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
     M2C_STRUCT_COPY((s32) &sp64 + 4, (s32) &sp4 + 4, 0x60);
     this->unk120->unk28 = &this->unk60;
     this->unk120->unk2C = &arg0;
@@ -2169,7 +2169,7 @@ void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionR
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    sp8.LocaliseRay(*((MKCollisionRay *) this));
+    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     var_r29_3897 = 0;
@@ -2209,7 +2209,7 @@ void MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionR
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2241,7 +2241,7 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    sp8.LocaliseRay(*((MKCollisionRay *) this));
+    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     sp6C = 0.0f;
@@ -2280,7 +2280,7 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2312,7 +2312,7 @@ s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *ar
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    sp8.LocaliseRay(*((MKCollisionRay *) this));
+    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     var_r29_4090 = 0;
@@ -2595,7 +2595,7 @@ void MKCollisionItem::Init(MKCollisionInfo *arg0, int arg1, unsigned int arg2, M
     if (arg1 == 0) {
         this->unk58 = &gEmptyPtrListDL + 4;
     } else {
-        temp_r3_4520 = temp_r3_4508->Current();
+        temp_r3_4520 = ((MKHeap *) temp_r3_4508)->Current();
         if (temp_r3_4520 != NULL) {
             var_r3_4530 = ((MKHeap *) (temp_r3_4520->Current()))->Alloc(((arg1 + 2) * 4) + (arg1 * 0xC), NULL, 0);
         } else {

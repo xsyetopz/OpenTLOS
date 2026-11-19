@@ -265,7 +265,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
         temp_r3_344->unk24 += 1;
         return (MKHeap *) temp_r3_344->unk20;
     }
-    var_r3_355 = sp8.Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+    var_r3_355 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
     var_r30_356 = var_r3_355;
     if (var_r30_356 == NULL) {
         MKCollision_MangleName(arg0, arg1, 1U);
@@ -275,13 +275,13 @@ MKHeap *MKCollisionManager::CreateCollisionModel(const char *arg0, int arg1) {
             temp_r3_367->unk24 += 1;
             return (MKHeap *) temp_r3_367->unk20;
         }
-        var_r3_355 = sp8.Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+        var_r3_355 = ((MKCollisionModel *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
         var_r30_356 = var_r3_355;
         goto block_6;
     }
 block_6:
     temp_r29_381 = this->unk24;
-    temp_r3_382 = var_r3_355->Current();
+    temp_r3_382 = ((MKHeap *) var_r3_355)->Current();
     if (temp_r3_382 != NULL) {
         var_r3_389 = ((MKHeap *) (temp_r3_382->Current()))->Alloc(0x2C, NULL, 0);
     } else {
@@ -320,7 +320,7 @@ MKHeap *MKCollisionManager::CreateCollisionModel(MKModel *arg0, int arg1) {
     this->unk24 = var_r3_447;
     M2C_FIELD(this->unk24, s8 **, 0x28) = temp_r30_439;
     strcpy(this->unk24, temp_r3_425);
-    M2C_FIELD(this->unk24, MKCollisionModel **, 0x20) = temp_r3_425->Create((s8 *) arg0, M2C_ERROR(/* Read from unset register $r5 */));
+    M2C_FIELD(this->unk24, MKCollisionModel **, 0x20) = ((MKCollisionModel *) temp_r3_425)->Create((s8 *) arg0, M2C_ERROR(/* Read from unset register $r5 */));
     M2C_FIELD(this->unk24, s32 *, 0x24) = 1;
     return (MKHeap *) M2C_FIELD(this->unk24, MKCollisionModel **, 0x20);
 }

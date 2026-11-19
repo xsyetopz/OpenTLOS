@@ -581,7 +581,7 @@ void SpyroSoundPlayer::Message(MKMessage *arg0) {
     var_r30_937 = 0;
     var_r31_938 = 0;
     do {
-        ((KDSoundPlayer *) ((KDSoundPlayer *) &this[var_r31_938]))->Message(arg0);
+        ((KDSoundPlayer *) &this[var_r31_938])->Message(arg0);
         var_r30_937 += 1;
         var_r31_938 += 0x58;
     } while (var_r30_937 < 0xD);
@@ -602,7 +602,6 @@ void SpyroSoundPlayer::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Init(SpyroSoundPlayer *, float, float)' does not match
 void SpyroSoundPlayer::Init() {
     SpyroSoundPlayer *temp_r30_1001;
     f64 temp_f30_993;
@@ -616,7 +615,7 @@ void SpyroSoundPlayer::Init() {
     var_r31_998 = 0;
     do {
         temp_r30_1001 = &this[var_r31_998];
-        temp_r30_1001->Init(0.75f, 0.75f);
+        ((KDSoundFader *) temp_r30_1001)->Init(0.75f, 0.75f);
         M2C_FIELD(temp_r30_1001, s32 *, 0x2C) = DetermineGameSound(var_r29_997, 0);
         M2C_FIELD(temp_r30_1001, s32 *, 0x30) = -1;
         M2C_FIELD(temp_r30_1001, s32 *, 0x28) = 2;
@@ -630,7 +629,6 @@ void SpyroSoundPlayer::Init() {
         M2C_FIELD(temp_r30_1001, f64 *, 0x50) = temp_f31_996;
     } while (var_r29_997 < 0xD);
 }
-#endif
 
 void SpyroUtils_cpp::__sinit() {
     f32 temp_f0_1078;

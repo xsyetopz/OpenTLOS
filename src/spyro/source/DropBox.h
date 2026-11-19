@@ -75,7 +75,7 @@ public:
 inline DropBox::DropBox() {
     this->unkC8 = &__vt + 0x48;
     this->unk1C8 = 0;
-    this->unk1C8.Init();
+    ((EventMessage *) &this->unk1C8)->Init();
     return this;
 }
 #endif
@@ -84,7 +84,7 @@ inline DropBox::DropBox() {
 inline DropBox::~DropBox() {
     this->unkC8 = &__vt.unk48;
     if (&this->unk1C8 != NULL) {
-        this->unk1C8.Deinit();
+        ((EventMessage *) &this->unk1C8)->Deinit();
     }
 }
 #endif

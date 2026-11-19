@@ -18,7 +18,7 @@ extern M2C_UNK gb;
 void WaterTrickleEmitter::Deinit() {
     MKProp::Deinit();
     if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-        this->unk4C.Deinit();
+        ((KDPathSegment *) &this->unk4C)->Deinit();
     }
 }
 
@@ -65,7 +65,7 @@ void WaterTrickleEmitter::Update() {
 loop_10:
         if (var_r29_104 < M2C_BITWISE(s32, this->unk4C.unk34)) {
             if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-                this->unk4C.GetPositionAlongPath(0.0f, sp50);
+                ((KDPathSegment *) &this->unk4C)->GetPositionAlongPath(0.0f, sp50);
             } else {
                 temp_r3_117 = this->unk8;
                 sp50 = M2C_FIELD(temp_r3_117, f64 *, 0x30);
@@ -109,14 +109,14 @@ void WaterTrickleEmitter::LoadDone() {
 
     MKProp::LoadDone();
     if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-        this->unk4C.LoadDone();
+        ((KDPathSegment *) &this->unk4C)->LoadDone();
         this->unk4C.unk34 = 1e-45f;
     }
-    this->unkA0.SetIdentity();
+    ((Matrix *) &this->unkA0)->SetIdentity();
     temp_r3_239 = &this->unkA0;
-    temp_r3_239->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
+    ((Matrix *) temp_r3_239)->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
     temp_r3_245 = &this->unkA0;
-    temp_r3_245->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
+    ((Matrix *) temp_r3_245)->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
     this->unkA0.unk2C = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
     this->unkA0.unk30 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
     this->unkA0.unk34 = MKProp::loadInfo.unk48;
@@ -138,8 +138,8 @@ s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
             } else {
                 M2C_FIELD(this, s8 *, 0x94) = 1;
             }
-            this->unk4C.Init();
-            this->unk4C.LoadLine(arg0);
+            ((KDPathSegment *) &this->unk4C)->Init();
+            ((KDPathSegment *) &this->unk4C)->LoadLine(arg0);
         }
     }
     return 0;
@@ -158,7 +158,7 @@ void WaterTrickleEmitter::Init() {
     this->unk84 = 0.0f;
     this->unk4C.unk34 = 0.0f;
     this->unk8 = temp_r3_391;
-    temp_r3_391->SetIdentity();
+    ((Matrix *) temp_r3_391)->SetIdentity();
     this->unk88 = 0.0f;
     this->unk8C = 200.0f;
     this->unkA0.unk3C = 0.0f;

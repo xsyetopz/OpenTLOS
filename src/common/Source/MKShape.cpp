@@ -695,7 +695,7 @@ loop_69:
         MKEndPrimitive();
     }
     M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
-    sp110.SetIdentity();
+    ((Matrix *) &sp110)->SetIdentity();
     sp140 = arg0.unk0;
     sp144 = arg0.unk4;
     sp148 = arg0.unk8;

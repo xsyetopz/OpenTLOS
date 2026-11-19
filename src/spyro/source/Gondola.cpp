@@ -11,6 +11,7 @@
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Platform.h"
 #include "spyro/source/SkyClouds.h"
+#include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -40,7 +41,6 @@ void Gondola::WaveMotion::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Gondola::Deinit() {
     MKCollisionInfo *sp10;
     s32 spC;
@@ -50,12 +50,11 @@ void Gondola::Deinit() {
     sp8 = 0x410;
     sp10 = &this->unk70;
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, 0x410);
-    this->unk180.Deinit();
-    this->unk194.Deinit();
+    ((KDUniformSpline *) &this->unk180)->Deinit();
+    ((KDUniformSpline *) &this->unk194)->Deinit();
     this->unk1B0.Deinit();
     Platform::Deinit();
 }
-#endif
 
 void Gondola::Draw() {
     GameProp::Draw();
@@ -139,7 +138,7 @@ void Gondola::Update() {
             this->unk1B0.StartEnemyWave();
         }
     } else {
-        this->unk1B0.FunctionOff();
+        ((SpawnerObject *) &this->unk1B0)->FunctionOff();
     }
 }
 
@@ -393,13 +392,13 @@ void Gondola::UpdateMove() {
             } else {
                 var_f1_384 = 0.0f;
             }
-            sp370.GetVelocity(var_f1_384);
+            ((KDUniformSpline *) &sp370)->GetVelocity(var_f1_384);
             sp3F0 = sp370;
             sp3F8 = sp378;
             break;
         case 1:                                     /* switch 1 */
             sp30 = 0.0f;
-            sp360.GetMeasure(this->unk1A8, (Matrix *) &this->unk194, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp360)->GetMeasure(this->unk1A8, (Matrix *) &this->unk194, KDSpline_PositionMixer);
             var_f1_422 = this->unk1A8 - 0.001f;
             sp400 = sp360;
             sp408 = sp368;
@@ -413,7 +412,7 @@ void Gondola::UpdateMove() {
             } else {
                 var_f1_422 = 0.0f;
             }
-            sp350.GetVelocity(var_f1_422);
+            ((KDUniformSpline *) &sp350)->GetVelocity(var_f1_422);
             sp3F0 = sp350;
             sp3F8 = sp358;
             break;
@@ -434,7 +433,7 @@ void Gondola::UpdateMove() {
             sp348 = (f64) sp178;
             if (temp_r0_474 == 0) {
                 sp2C = 0.0f;
-                sp310.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp310)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
                 var_f1_499 = this->unk1A8 - 0.001f;
                 sp400 = sp310;
                 sp408 = sp318;
@@ -448,7 +447,7 @@ void Gondola::UpdateMove() {
                 } else {
                     var_f1_499 = 0.0f;
                 }
-                sp300.GetVelocity(var_f1_499);
+                ((KDUniformSpline *) &sp300)->GetVelocity(var_f1_499);
                 sp3F0 = sp300;
                 sp3F8 = sp308;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
@@ -462,7 +461,7 @@ void Gondola::UpdateMove() {
                 this->unk23C = 3e-45f;
                 this->unk1A8 = 0.0f;
                 sp28 = 0.0f;
-                sp2F0.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp2F0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
                 var_f1_553 = this->unk1A8 - 0.001f;
                 sp400 = sp2F0;
                 sp408 = sp2F8;
@@ -476,13 +475,13 @@ void Gondola::UpdateMove() {
                 } else {
                     var_f1_553 = 0.0f;
                 }
-                sp2E0.GetVelocity(var_f1_553);
+                ((KDUniformSpline *) &sp2E0)->GetVelocity(var_f1_553);
                 sp3F0 = sp2E0;
                 sp3F8 = sp2E8;
             } else {
                 M2C_FIELD(this, u8 *, 0x24C) = 1U;
                 sp24 = 0.0f;
-                sp2D0.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp2D0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
                 var_f1_593 = this->unk1A8 - 0.001f;
                 sp400 = sp2D0;
                 sp408 = sp2D8;
@@ -496,7 +495,7 @@ void Gondola::UpdateMove() {
                 } else {
                     var_f1_593 = 0.0f;
                 }
-                sp2C0.GetVelocity(var_f1_593);
+                ((KDUniformSpline *) &sp2C0)->GetVelocity(var_f1_593);
                 sp3F0 = sp2C0;
                 sp3F8 = sp2C8;
             }
@@ -513,11 +512,11 @@ void Gondola::UpdateMove() {
         if (M2C_BITWISE(f32, this->unk238) <= 0.0f) {
             this->unk238 = 10.0f;
             sp3C = 0.0f;
-            sp2B0.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp2B0)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
             sp3E0 = sp2B0;
             sp3E8 = sp2B8;
             sp38 = 0.0f;
-            sp160.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_VelocityMixer);
+            ((KDUniformSpline *) &sp160)->GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_VelocityMixer);
             sp150 = sp160;
             sp158 = sp168;
             sp140 = sp150 * (f64) sp38;
@@ -857,14 +856,14 @@ void Gondola::UpdateMove() {
             sp1A0 = temp_f0_1377;
             sp98 = (f32) sp198 + (f32) sp398;
             sp1A8 = (f64) sp98;
-            sp410.SetRotationPYR(*((MKVector3 *) &sp1A0));
+            ((Matrix *) &sp410)->SetRotationPYR(*((MKVector3 *) &sp1A0));
         }
         sp440 = (f32) sp400;
         sp444 = unksp404;
         sp448 = sp408;
         sp44C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp410));
-        sp180.GetRotationPYR();
+        ((Matrix *) &sp180)->GetRotationPYR();
         M2C_FIELD(this, f64 *, 0x110) = sp180;
         M2C_FIELD(this, f64 *, 0x118) = sp188;
     }
@@ -880,7 +879,7 @@ void Gondola::Resolve() {
 
     Platform::Resolve();
     this->unk1B0.Resolve();
-    this->unk1B0.FunctionOff();
+    ((SpawnerObject *) &this->unk1B0)->FunctionOff();
     temp_r5_1440 = &this->unk70;
     spC = 0;
     sp8 = 0x40F;
@@ -916,12 +915,12 @@ s32 Gondola::LoadLine(MKIniLine *arg0) {
         if (temp_r3_1526 == 0) {
             return 0;
         }
-        this->unk180.Init(temp_r3_1526, 0U);
+        ((KDUniformSpline *) &this->unk180)->Init(temp_r3_1526, 0U);
         var_r30_1539 = arg0->unkC->GetSubLine(arg0);
 loop_10:
         if (var_r30_1539 != NULL) {
             var_r30_1539->AsVector3(0, &sp18);
-            this->unk180.AddNode(sp18);
+            ((KDUniformSpline *) &this->unk180)->AddNode(sp18);
             var_r30_1539 = var_r30_1539->unkC->GetNextLine(var_r30_1539);
             goto loop_10;
         }
@@ -936,12 +935,12 @@ loop_10:
         if (temp_r3_1574 == 0) {
             return 0;
         }
-        this->unk194.Init(temp_r3_1574, 0U);
+        ((KDUniformSpline *) &this->unk194)->Init(temp_r3_1574, 0U);
         var_r30_1587 = arg0->unkC->GetSubLine(arg0);
 loop_19:
         if (var_r30_1587 != NULL) {
             var_r30_1587->AsVector3(0, &sp8);
-            this->unk194.AddNode(sp8);
+            ((KDUniformSpline *) &this->unk194)->AddNode(sp8);
             var_r30_1587 = var_r30_1587->unkC->GetNextLine(var_r30_1587);
             goto loop_19;
         }

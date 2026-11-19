@@ -56,7 +56,7 @@ void Texture::ReloadGuts(float arg0) {
                 temp_r3_22->ActivateTempMemOverride();
                 temp_r3_40 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), &spC, NULL, -1);
                 var_r31_0 = temp_r3_40;
-                temp_r3_40->DeactivateTempMemOverride();
+                ((MKHeap *) temp_r3_40)->DeactivateTempMemOverride();
                 DCStoreRange(var_r31_0, (u32) spC);
                 var_r3_46 = spC;
                 this->unk34 = var_r3_46 - 0x20;
@@ -83,7 +83,7 @@ void Texture::ReloadGuts(float arg0) {
                         return;
                     }
                 }
-                temp_r3_109 = var_r3_46->Current();
+                temp_r3_109 = ((MKHeap *) var_r3_46)->Current();
                 if (temp_r3_109 != NULL) {
                     ((MKHeap *) (temp_r3_109->Current()))->Free(var_r31_0, NULL, 0);
                 } else {
@@ -188,7 +188,7 @@ s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) 
         var_r31_280->unk24 = (s32) arg1;
         var_r31_280->unk28 = (MKHeap *) arg2;
         var_r31_280->unk2C = 1;
-        var_r31_280->InitialiseResource();
+        ((MKResource *) var_r31_280)->InitialiseResource();
         M2C_FIELD(var_r31_280, s8 *, 0x32) = 1;
         var_r31_280->unk3C = 0;
         var_r31_280->unk40 = 0;
@@ -379,7 +379,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         switch (arg1) {                             /* irregular */
         case 0x0:
             if (var_r30_800 == NULL) {
-                temp_r3_869 = temp_r3_846->Current();
+                temp_r3_869 = ((MKHeap *) temp_r3_846)->Current();
                 if (temp_r3_869 != NULL) {
                     var_r3_877 = ((MKHeap *) (temp_r3_869->Current()))->Alloc(arg2 * arg3 * 4, NULL, 0);
                 } else {
@@ -404,7 +404,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4A:
             if (var_r30_800 == NULL) {
-                temp_r3_919 = temp_r3_846->Current();
+                temp_r3_919 = ((MKHeap *) temp_r3_846)->Current();
                 if (temp_r3_919 != NULL) {
                     var_r3_927 = ((MKHeap *) (temp_r3_919->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
@@ -417,7 +417,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4B:
             if (var_r30_800 == NULL) {
-                temp_r3_955 = temp_r3_846->Current();
+                temp_r3_955 = ((MKHeap *) temp_r3_846)->Current();
                 if (temp_r3_955 != NULL) {
                     var_r3_963 = ((MKHeap *) (temp_r3_955->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
@@ -430,7 +430,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x40:
             if (var_r30_800 == NULL) {
-                temp_r3_991 = temp_r3_846->Current();
+                temp_r3_991 = ((MKHeap *) temp_r3_846)->Current();
                 if (temp_r3_991 != NULL) {
                     var_r3_998 = ((MKHeap *) (temp_r3_991->Current()))->Alloc(arg2 * arg3, NULL, 0);
                 } else {
@@ -443,7 +443,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
             break;
         case 0x4C:
             if (var_r30_800 == NULL) {
-                temp_r3_1025 = temp_r3_846->Current();
+                temp_r3_1025 = ((MKHeap *) temp_r3_846)->Current();
                 if (temp_r3_1025 != NULL) {
                     var_r3_1033 = ((MKHeap *) (temp_r3_1025->Current()))->Alloc(arg2 * arg3 * 2, NULL, 0);
                 } else {
@@ -457,7 +457,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
         }
         var_r31_805->unk48 = (MKHeap *) var_r30_800;
         var_r31_805->unk2C = 1;
-        var_r31_805->InitialiseResource();
+        ((MKResource *) var_r31_805)->InitialiseResource();
     }
     return (s8 *) var_r31_805;
 }
@@ -486,7 +486,7 @@ loop_5:
     if (var_r30_1114 == NULL) {
         return NULL;
     }
-    if ((stricmp((MKResource *) var_r30_1114, (Texture *) temp_r31_1115) == NULL) && (var_r30_1114->IsResourceAvailable() != 0)) {
+    if ((stricmp((MKResource *) var_r30_1114, (Texture *) temp_r31_1115) == NULL) && (((MKResource *) var_r30_1114)->IsResourceAvailable() != 0)) {
         return (MKHeap *) var_r30_1114;
     }
     var_r30_1114 = M2C_FIELD(var_r30_1114, s8 **, 0x80);
@@ -494,7 +494,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'FreeFromAnyHeap'
+#if 0 // DRAFT: type mismatch
 void Texture::Destroy() {
     GXTexRegion *temp_r3_1155;
     s32 temp_r0_1152;
@@ -507,7 +507,7 @@ void Texture::Destroy() {
         temp_r3_1155 = this->unk48;
         if (temp_r3_1155 != NULL) {
             if ((u8) this->unk38 != 0) {
-                temp_r3_1155->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+                ((MKHeap *) temp_r3_1155)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
             } else if ((u8) M2C_FIELD(this, u8 *, 0x3C) != 0) {
                 ReleasePreloadedTextureRegion(temp_r3_1155);
             }
@@ -559,8 +559,8 @@ s8 *Texture::Create(const char *arg0, float arg1) {
         M2C_FIELD(var_r31_1215, s8 *, 0x32) = 0;
         M2C_FIELD(var_r31_1215, s8 *, 0x30) = 0;
         M2C_FIELD(var_r31_1215, s8 *, 0x3C) = 0;
-        var_r31_1215->ReloadGuts(arg1);
-        var_r31_1215->InitialiseResource();
+        ((Texture *) var_r31_1215)->ReloadGuts(arg1);
+        ((MKResource *) var_r31_1215)->InitialiseResource();
         var_r31_1215->unk2C = 1;
     }
     return (s8 *) var_r31_1215;

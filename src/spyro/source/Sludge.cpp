@@ -402,7 +402,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2E8 = 0;
     if (temp_r4_557 != NULL) {
-        sp88.GetPos();
+        ((MKProp *) &sp88)->GetPos();
         sp2C8 = sp88;
         sp2D0 = sp90;
     } else {
@@ -506,7 +506,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2E8 = 0;
     if (temp_r4_742 != NULL) {
-        sp78.GetPos();
+        ((MKProp *) &sp78)->GetPos();
         sp2C8 = sp78;
         sp2D0 = sp80;
     } else {

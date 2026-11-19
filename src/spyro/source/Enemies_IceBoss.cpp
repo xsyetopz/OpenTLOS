@@ -12,6 +12,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CharacterBreathFX.h"
 #include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/ElementalShield.h"
@@ -19,10 +20,12 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EventCamera.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/IceBossGoals.h"
 #include "spyro/source/IceBossStalactite.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
@@ -38,7 +41,6 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -188,7 +190,7 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     }
     if (arg1 != NULL) {
         MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        sp30.GetPos();
+        ((MKProp *) &sp30)->GetPos();
         sp10 = sp30 + sp20;
         M2C_FIELD(arg1, f64 *, 0) = sp10;
         sp18 = sp38 + sp28;
@@ -347,7 +349,7 @@ void IceBoss::SummonWeapon() {
     sp30 = temp_f0_633;
     sp18 = (f32) sp48 * 5000.0f;
     sp38 = (f64) sp18;
-    temp_r3_635->Translate((Matrix *) temp_r3_635, *((MKVector3 *) &sp30));
+    ((Matrix *) temp_r3_635)->Translate((Matrix *) temp_r3_635, *((MKVector3 *) &sp30));
     M2C_STRUCT_COPY((s32) &this->unkEE0.unk24 + 4, (s32) &this->unkEC4 + 4, 0x40);
     M2C_FIELD(this, s8 *, 0xFBB) = 0;
 }
@@ -442,7 +444,7 @@ void IceBoss::UpdateFormShield() {
     this->unkF98 = M2C_BITWISE(f32, this->unkF94);
     if ((u8) this->unkB08 != 0) {
         if (IsIceKing() != 0) {
-            this->unk9E8.unk10->EmitBreathFx(2, 1000.0f, 0.2f, 0.5f, 0.0f, 0.5235987f);
+            ((CharacterBreathFX *) this->unk9E8.unk10)->EmitBreathFx(2, 1000.0f, 0.2f, 0.5f, 0.0f, 0.5235987f);
             return;
         }
         if (IsIceKing() == 0) {
@@ -537,7 +539,7 @@ void IceBoss::DestroyWeapon() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
+#if 0 // DRAFT: illegal operands 'IceBossDescriptor' != 'float'
 void IceBoss::UpdatePhrasesAndSounds() {
     EnemyAttack *temp_r3_1099;
     f32 temp_f1_1193;
@@ -549,8 +551,8 @@ void IceBoss::UpdatePhrasesAndSounds() {
 
     temp_r3_1099 = this->unkA20;
     temp_f31_1106 = this->unkAB0;
-    temp_f30_1110 = (f32) M2C_FIELD(temp_r3_1099, s32 *, 0x11C) * this->unkA20->GetEnemySetting((EnemySettingType) 0);
-    temp_f30_1125 = ((temp_f30_1110 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * temp_r3_1099->GetEnemySetting((EnemySettingType) 0))) + temp_f31_1106) / temp_f30_1110;
+    temp_f30_1110 = (f32) M2C_FIELD(temp_r3_1099, s32 *, 0x11C) * ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0);
+    temp_f30_1125 = ((temp_f30_1110 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * ((EnemyDescriptor *) temp_r3_1099)->GetEnemySetting((EnemySettingType) 0))) + temp_f31_1106) / temp_f30_1110;
     if (temp_f30_1125 > this->unk1008) {
         this->unk1008 = temp_f30_1125;
     }
@@ -730,7 +732,7 @@ void IceBoss::CheckAnimEvents() {
         }
         sp88 = sp118;
         sp90 = sp120;
-        this->unkFDC->Trigger(*((MKVector3 *) &sp128), var_f1_1321, 0U, (MKVector4) &sp88);
+        ((EarthShockwave *) this->unkFDC)->Trigger(*((MKVector3 *) &sp128), var_f1_1321, 0U, (MKVector4) &sp88);
         return;
     }
     Enemy::CheckAnimEvents();
@@ -803,7 +805,7 @@ void IceBoss::UpdateFormWeapon() {
     this->unkF9C = M2C_BITWISE(f32, this->unkF94);
     if ((u8) this->unkB08 != 0) {
         if (IsIceKing() != 0) {
-            this->unk9E8.unk10->EmitBreathFx(2, 1000.0f, 0.2f, 0.5f, 0.0f, 0.5235987f);
+            ((CharacterBreathFX *) this->unk9E8.unk10)->EmitBreathFx(2, 1000.0f, 0.2f, 0.5f, 0.0f, 0.5235987f);
             return;
         }
         if (IsIceKing() == 0) {
@@ -1041,7 +1043,6 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 IceBoss::TryChangeStage() {
     f32 temp_f1_2026;
     f32 temp_r0_2049;
@@ -1066,7 +1067,7 @@ s32 IceBoss::TryChangeStage() {
             if (IsIceKing() != 0) {
                 M2C_FIELD(this, s8 *, 0xFBE) = 1;
             }
-            this->unkFCC.Send(NULL);
+            ((EventMessage *) &this->unkFCC)->Send(NULL);
             StartPhase2();
             break;
         case 1:
@@ -1082,7 +1083,7 @@ s32 IceBoss::TryChangeStage() {
                 this->unkAFC = 0xA;
                 this->unkAD0 = 3e-45f;
             }
-            this->unkFD0.Send(NULL);
+            ((EventMessage *) &this->unkFD0)->Send(NULL);
             break;
         case 2:
             if (IsIceKing() != 0) {
@@ -1099,7 +1100,6 @@ s32 IceBoss::TryChangeStage() {
     }
     return 0;
 }
-#endif
 
 void IceBoss::UpdateEnemyHud() {
     EnemyHudData sp8;
@@ -1191,7 +1191,7 @@ u8 IceBoss::IsIceKing() {
     return M2C_FIELD(this->unkA20, s32 *, 0x1D0) == 2;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void IceBoss::Message(MKMessage *arg0) {
     f32 sp6C;
     f32 sp68;
@@ -1223,8 +1223,8 @@ void IceBoss::Message(MKMessage *arg0) {
     void *temp_r29_2520;
     void *temp_r3_2540;
 
-    this->unkFFC.Message(arg0);
-    this->unk103C.Message(arg0);
+    ((KDSoundPlayer *) &this->unkFFC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk103C)->Message(arg0);
     temp_r0_2386 = arg0->unk0;
     switch (temp_r0_2386) {                         /* switch 1; irregular */
     case 181:                                       /* switch 1 */
@@ -1495,7 +1495,7 @@ void IceBoss::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void IceBoss::Update() {
     f64 sp48;
     f64 sp40;
@@ -1508,9 +1508,9 @@ void IceBoss::Update() {
     Enemy::Update();
     if (IsIceKing() == 0) {
         sp8 = 1;
-        this->unkFFC.Update(GS_ElecBossExtra1, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkFFC)->Update(GS_ElecBossExtra1, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
-        this->unk103C.Update(GS_ElecBossExtra3, 1U, this->unk1064, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk103C)->Update(GS_ElecBossExtra3, 1U, this->unk1064, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         this->unk1064 = 0;
     }
     UpdateWeapons();
@@ -1521,7 +1521,7 @@ void IceBoss::Update() {
         UpdatePhrasesAndSounds();
     }
     MKVector(0.0f, 400.0f, 0.0f);
-    sp30.GetPos();
+    ((MKProp *) &sp30)->GetPos();
     sp10 = sp30 + sp20;
     this->unkF68 = sp10;
     sp18 = sp38 + sp28;
@@ -1771,11 +1771,11 @@ loop_32:
             var_r23_3477 = 0;
             do {
                 spC = 0.0f;
-                spB8.GetMeasure(0.1f * (f32) var_r23_3477, temp_r30_3306, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &spB8)->GetMeasure(0.1f * (f32) var_r23_3477, temp_r30_3306, KDSpline_PositionMixer);
                 sp198 = spB8;
                 sp1A0 = spC0;
                 sp8 = 0.0f;
-                spA8.GetMeasure(0.1f * (f32) (var_r23_3477 + 1), temp_r30_3306, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &spA8)->GetMeasure(0.1f * (f32) (var_r23_3477 + 1), temp_r30_3306, KDSpline_PositionMixer);
                 sp188 = spA8;
                 sp190 = spB0;
                 if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp198), *((MKVector3 *) &sp188), 100.0f, &sp1C8, (MKCollisionMode) 5, 0) != 0) {
@@ -1942,7 +1942,7 @@ void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubOb
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
 void IceBoss::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -1958,7 +1958,7 @@ void IceBoss::Resolve() {
     s32 temp_ret_3875;
 
     Enemy::Resolve();
-    temp_ret_3875 = checked_cast<EventCamera *, MKProp>(this->unkAF8->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_ret_3875 = checked_cast<EventCamera *, MKProp>(((MKSceneManager *) this->unkAF8)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     this->unkAF8 = temp_ret_3875;
     temp_ret_3879 = checked_cast<Shatterable *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0xF98)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3875));
     M2C_FIELD(this, MKSceneManager **, 0xF98) = temp_ret_3879;
@@ -2096,12 +2096,12 @@ void IceBoss::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 IceBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4375;
 
     var_r31_4375 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unkFCC.LoadLine(arg0, "OnPhase1End") != 0) || (this->unkFD0.LoadLine(arg0, "OnPhase2End") != 0) || (this->unkFD4.LoadLine(arg0, "OnPhase3End") != 0) || (arg0->LoadInt("PhaseCameraID", &this->unkAF8, 0) != 0) || (arg0->LoadInt("Stalactite1ID", (s32 *) &this->unkF80, 0) != 0) || (arg0->LoadInt("Stalactite2ID", this + 0xF9C, 0) != 0) || (arg0->LoadInt("Stalactite3ID", (s32 *) &this->unkF88, 0) != 0) || (arg0->LoadInt("Stalactite4ID", this + 0xFA4, 0) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (((EventMessage *) &this->unkFCC)->LoadLine(arg0, "OnPhase1End") != 0) || (((EventMessage *) &this->unkFD0)->LoadLine(arg0, "OnPhase2End") != 0) || (((EventMessage *) &this->unkFD4)->LoadLine(arg0, "OnPhase3End") != 0) || (arg0->LoadInt("PhaseCameraID", &this->unkAF8, 0) != 0) || (arg0->LoadInt("Stalactite1ID", (s32 *) &this->unkF80, 0) != 0) || (arg0->LoadInt("Stalactite2ID", this + 0xF9C, 0) != 0) || (arg0->LoadInt("Stalactite3ID", (s32 *) &this->unkF88, 0) != 0) || (arg0->LoadInt("Stalactite4ID", this + 0xFA4, 0) != 0)) {
         var_r31_4375 = 1;
     }
     return var_r31_4375;
@@ -2230,12 +2230,12 @@ void IceBoss::Init() {
     this->unkFEC.unk0 = 0;
     this->unk1008 = 0.0f;
     this->unkFF4 = 0.0f;
-    this->unkFFC.Init(0.75f, 0.75f);
-    this->unk103C.Init(0.75f, 0.75f);
+    ((KDSoundFader *) &this->unkFFC)->Init(0.75f, 0.75f);
+    ((KDSoundFader *) &this->unk103C)->Init(0.75f, 0.75f);
     this->unk1068 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
-    this->unkFCC.Init();
-    this->unkFD0.Init();
-    this->unkFD4.Init();
+    ((EventMessage *) &this->unkFCC)->Init();
+    ((EventMessage *) &this->unkFD0)->Init();
+    ((EventMessage *) &this->unkFD4)->Init();
     this->unkAF8 = 0;
     M2C_FIELD(this, s8 *, 0xFBD) = 0;
     this->unk1064 = 0;
@@ -2244,7 +2244,7 @@ void IceBoss::Init() {
     M2C_FIELD(this, f32 *, 0xF80) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF84) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF88) = 0.0f;
-    this->unkFE0->SetElement(M2C_FIELD(this->unkA20, s32 *, 0x1D0));
+    ((ElementalShield *) this->unkFE0)->SetElement(M2C_FIELD(this->unkA20, s32 *, 0x1D0));
     this->unkFE4.unk0 = 0;
 }
 #endif

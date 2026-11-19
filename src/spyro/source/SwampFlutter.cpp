@@ -62,7 +62,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp88'
 void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     f64 spB8;
     f64 spB0;
@@ -114,7 +114,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     s32 var_r0_225;
     s32 var_r0_322;
 
-    sp80.GetRandPos();
+    ((Volume *) &sp80)->GetRandPos();
     spB0 = sp80;
     spB8 = sp88;
     sp20 = sp80 - M2C_FIELD(arg0, f64 *, 0x30);
@@ -376,21 +376,19 @@ void SwampFlutterCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SwampFlutterCritterDescriptor::LoadDone() {
     s8 *temp_r31_700;
     void *var_r3_710;
 
     KDPropDescriptor::LoadDone();
     temp_r31_700 = this->unk34;
-    if (temp_r31_700->Exists("fly01") != 0) {
-        var_r3_710 = temp_r31_700->GetAnim("fly01");
+    if (((MKAnimScript *) temp_r31_700)->Exists("fly01") != 0) {
+        var_r3_710 = ((MKAnimScript *) temp_r31_700)->GetAnim("fly01");
     } else {
         var_r3_710 = NULL;
     }
     this->unk70 = (s32) var_r3_710;
 }
-#endif
 
 void SwampFlutterCritterDescriptor::Init() {
     KDPropDescriptor::Init();

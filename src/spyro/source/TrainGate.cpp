@@ -79,11 +79,11 @@ void TrainGate::Init() {
     this->unkD4 = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void TrainGateDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = this->unk34->GetAnim("closed");
-    this->unkE8 = this->unk34->GetAnim("opening");
-    this->unkEC = this->unk34->GetAnim("open");
+    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("closed");
+    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("opening");
+    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("open");
 }
 #endif

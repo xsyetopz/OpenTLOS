@@ -16,6 +16,8 @@
 #include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "spyro/source/SpeedWay.h"
@@ -31,7 +33,6 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/ConnectingProps.h"
 #include "spyro/source/EventCamera.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
@@ -606,7 +607,7 @@ void SpeedwayFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpeedwayFX::Init() {
     FireBombFX *temp_r3_702;
     s32 var_r30_696;
@@ -614,7 +615,7 @@ void SpeedwayFX::Init() {
     var_r30_696 = 0;
     this->unk0 = NULL;
     do {
-        temp_r3_702 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("SpeedwayFirebomb"));
+        temp_r3_702 = checked_cast<FireBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("SpeedwayFirebomb"));
         if (temp_r3_702 != NULL) {
             M2C_FIELD(temp_r3_702->__vptr, M2C_UNK (**)(), 0x34)();
         }
@@ -631,7 +632,7 @@ s32 SpeedWaySpyro::IsDead() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void SpeedWaySpyro::UpdateSound() {
     s32 sp8;
     f32 *temp_r31_755;
@@ -648,8 +649,8 @@ void SpeedWaySpyro::UpdateSound() {
 
     sp8 = 1;
     temp_r31_755 = &this->unk1A0.unk30;
-    this->unk888.Update(GS_SpyroDeathFall, 1U, this->unk8B0, NULL, (MKVector3 *) temp_r31_755, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    this->unk818.Update(GS_SpyroSpeedwayGlideLP, 1U, this->unk8B1, NULL, (MKVector3 *) temp_r31_755, 0U, -1);
+    ((KDSoundFader *) &this->unk888)->Update(GS_SpyroDeathFall, 1U, this->unk8B0, NULL, (MKVector3 *) temp_r31_755, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFlangedFader *) &this->unk818)->Update(GS_SpyroSpeedwayGlideLP, 1U, this->unk8B1, NULL, (MKVector3 *) temp_r31_755, 0U, -1);
     temp_r3_775 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_f1_776 = M2C_FIELD(temp_r3_775, f32 *, 0xA8);
     temp_f31_779 = -((temp_f1_776 * M2C_FIELD(temp_r3_775, f32 *, 0x160)) - temp_f1_776);
@@ -679,11 +680,11 @@ void SpeedWaySpyro::UpdateEffects() {
     void ***temp_r30_844;
 
     temp_r30_844 = &gb + 0xB8;
-    temp_r30_844->SetSpeedEffectCenter(*((MKVector3 *) &this->unk1A0.unk30));
+    ((ScreenWobbleFX *) temp_r30_844)->SetSpeedEffectCenter(*((MKVector3 *) &this->unk1A0.unk30));
     if ((this->unk98 & 0x10) && ((s32) this->unkA0 == 2)) {
-        temp_r30_844->EnableSpeedEffect(1U, 0.0f, 0.5f);
+        ((ScreenWobbleFX *) temp_r30_844)->EnableSpeedEffect(1U, 0.0f, 0.5f);
     } else {
-        temp_r30_844->EnableSpeedEffect(0U, 0.0f, 1.0f);
+        ((ScreenWobbleFX *) temp_r30_844)->EnableSpeedEffect(0U, 0.0f, 1.0f);
     }
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), &sp10);
     M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
@@ -703,16 +704,16 @@ void SpeedWaySpyro::UpdateEffects() {
         this->unk304 = var_f2_898;
     }
     if ((this->unk304 == 0.0f) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) < M2C_FIELD(GameData::gameData, f32 *, 0xA4))) {
-        ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->Add(15.0f * gUpdateTimeDelta, 1U);
+        ((Stat *) &GameData::gameData[0xA0])->Add(15.0f * gUpdateTimeDelta, 1U);
     }
     var_r30_926 = 0;
     temp_f31_930 = M2C_FIELD(GameData::gameData, f32 *, 0xA0);
-    if ((temp_f31_930 > ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost()) && (this->unk98 & 0x10)) {
+    if ((temp_f31_930 > ((GameStats *) &GameData::gameData[0x70])->GetInitialBreathCost()) && (this->unk98 & 0x10)) {
         var_r30_926 = 1;
     }
     this->unk300 = this->unk2FC.Update(&sp20, var_r30_926);
     if ((u8) this->unk300 != 0) {
-        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost(), 1U);
+        ((Stat *) (&GameData::gameData[0x70] + 0x30))->Add(-((GameStats *) &GameData::gameData[0x70])->GetInitialBreathCost(), 1U);
         this->unk304 = 1.0f;
     }
 }
@@ -798,15 +799,15 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
     if (DealDamage(-arg0->unk48) != 0) {
         arg0->unk50 = 1;
         if (M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) {
-            this->unk180.SetState(this, 5, 1U);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 5, 1U);
             return;
         }
-        this->unk180.SetState(this, 7, 1U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 7, 1U);
     }
 }
 #endif
@@ -816,7 +817,7 @@ u8 SpeedWaySpyro::DealDamage(float arg0) {
     if (((u8) M2C_FIELD(&gb, u8 *, 0x3B4) != 0) || !(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) || !(this->unk98 & 0x20) || (M2C_FIELD(GameData::gameData, f32 *, 0x70) <= 0.0f)) {
         return 0U;
     }
-    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(arg0, 1U);
+    ((Stat *) &GameData::gameData[0x70])->Add(arg0, 1U);
     this->unk2F8 = M2C_FIELD(&gb, f32 *, 0x30C) + M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x18C);
     this->unk2EC = M2C_FIELD(&gb, f32 *, 0x30C);
     return 1U;
@@ -853,7 +854,7 @@ void SpeedWaySpyro::GetJoyDir() {
     u8 var_r4_1336;
 
     temp_r31_1299 = M2C_ERROR(/* Read from unset register $r4 */);
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13) != 0) {
         var_f31_1304 = -1.0f;
     } else {
@@ -1005,7 +1006,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &, const
+#if 0 // DRAFT: ')' expected
 u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f64 spA8;
     f64 spA0;
@@ -1283,7 +1284,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
     sp390.GetPathMatrix(arg0);
     M2C_STRUCT_COPY((s32) &sp390.unk94.unk24 + 4, (s32) &sp38C + 4, 0x40);
-    this->unk1E0.CopyRotation((Matrix *) &sp390.unk94.unk28);
+    ((Matrix *) &this->unk1E0)->CopyRotation((Matrix *) &sp390.unk94.unk28);
     sp2C0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
     if ((u8) bUsePulledBackCamera != 0) {
         var_f1_2017 = 3000.0f;
@@ -1682,7 +1683,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
         }
         this->unkA5 = (u8) (var_f1_2932 != 0.0f) == 0;
     }
-    temp_f30_2957 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetSpeedwayBoostCost();
+    temp_f30_2957 = ((GameStats *) &GameData::gameData[0x70])->GetSpeedwayBoostCost();
     if ((this->unk98 & 0x80) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) > 0.0f)) {
         temp_r3_2966 = GetInput();
         var_r4_2968 = 0;
@@ -1697,7 +1698,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
         if ((var_f1_2979 != 0.0f) && ((u8) this->unkA4 != 0)) {
             this->unkA0 = 2;
             this->unk148 += temp_f31_2877 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x160);
-            ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-temp_f30_2957, 1U);
+            ((Stat *) (&GameData::gameData[0x70] + 0x30))->Add(-temp_f30_2957, 1U);
             var_f2_3008 = this->unk304;
             temp_f0_3009 = 2.0f * gUpdateTimeDelta;
             if (var_f2_3008 > temp_f0_3009) {
@@ -1728,7 +1729,7 @@ block_34:
             if ((var_f1_3048 != 0.0f) && ((u8) this->unkA5 != 0)) {
                 this->unkA0 = 0;
                 this->unk148 += -temp_f31_2877 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x160);
-                ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-temp_f30_2957, 1U);
+                ((Stat *) (&GameData::gameData[0x70] + 0x30))->Add(-temp_f30_2957, 1U);
                 var_f2_3078 = this->unk304;
                 temp_f0_3079 = 2.0f * gUpdateTimeDelta;
                 if (var_f2_3078 > temp_f0_3079) {
@@ -1896,7 +1897,7 @@ u8 SpeedWaySpyro::AnyToPowerRollTransition() {
         }
     }
     if ((var_r30_3370 != 0) && ((s32) this->unk180 != 4)) {
-        this->unk180.SetState(this, 4, 0U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 4, 0U);
         return 1U;
     }
     return 0U;
@@ -2012,14 +2013,14 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
             if (M2C_FIELD(var_r30_3496, s32 *, 0x44) & 0x100) {
                 KDSound_Play(GS_SpyroLavaBurn, 0U, -1);
                 if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) && ((s32) this->unk180 != 7)) {
-                    this->unk180.SetState(this, 7, 0U);
+                    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 7, 0U);
                     var_r3_3674 = 1;
                 } else {
                     var_r3_3674 = 0;
                 }
                 if (var_r3_3674 == 0) {
                     if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) && ((s32) this->unk180 != 5)) {
-                        this->unk180.SetState(this, 5, 0U);
+                        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 5, 0U);
                         return 1U;
                     }
                     return 0U;
@@ -2028,14 +2029,14 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
                 return var_r3_3674;
             }
             if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) && ((s32) this->unk180 != 7)) {
-                this->unk180.SetState(this, 7, 0U);
+                ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 7, 0U);
                 var_r3_3674 = 1;
             } else {
                 var_r3_3674 = 0;
             }
             if (var_r3_3674 == 0) {
                 if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) > 0.0f) && ((s32) this->unk180 != 6)) {
-                    this->unk180.SetState(this, 6, 0U);
+                    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 6, 0U);
                     return 1U;
                 }
                 return 0U;
@@ -2047,7 +2048,7 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
     }
 block_57:
     if ((this->unk810 > 0.5f) && ((s32) this->unk180 != 6)) {
-        this->unk180.SetState(this, 6, 0U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 6, 0U);
         return 1U;
     }
     var_r3_3674 = 0;
@@ -2158,7 +2159,7 @@ void SpeedWaySpyro::DeathEnter() {
     }
     this->unk338 = M2C_FIELD((checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r31_3982 * 0x38)), f32 *, 0x78);
     this->unk338 = 2.3f;
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     SetAnim(this->unk128, 0.2f, 0U);
     this->unk8B0 = 1;
     this->unk9C = -this->unk140;
@@ -2167,10 +2168,10 @@ void SpeedWaySpyro::DeathEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::HurtCenterTransition() {
-    if ((this->unk308.IsNear(MKVector3::zero, 15.000001f) != 0) && ((s32) this->unk180 != 2)) {
-        this->unk180.SetState(this, 2, 0U);
+    if ((((MKVector3 *) &this->unk308)->IsNear(MKVector3::zero, 15.000001f) != 0) && ((s32) this->unk180 != 2)) {
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
         return 1;
     }
     return 0;
@@ -2195,16 +2196,16 @@ void SpeedWaySpyro::HurtCenterEnter() {
     this->unk98 &= 0xFFFFFF3F;
     this->unk338 = 2.3f;
     SetColObjEnabled(0U);
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     SetAnim(this->unk124, 0.2f, 0U);
     ((KDInput *) (GetInput()))->RumblePlay(0.03f, 0.3f, 0.05f, 0, 4.0f, 0U);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::HurtFlinchTransition() {
     if ((this->unk80->unk2C & 1) && ((s32) this->unk180 != 2)) {
-        this->unk180.SetState(this, 2, 0U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
         return 1;
     }
     return 0;
@@ -2235,7 +2236,7 @@ void SpeedWaySpyro::HurtFlinchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::PowerRollTransition() {
     u8 var_r30_4279;
     u8 var_r3_4280;
@@ -2250,7 +2251,7 @@ u8 SpeedWaySpyro::PowerRollTransition() {
             var_r3_4284 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
         }
         if ((var_r3_4284 != 0) && ((s32) this->unk180 != 2)) {
-            this->unk180.SetState(this, 2, 0U);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
             var_r3_4280 = 1;
         } else {
             var_r3_4280 = 0;
@@ -2261,7 +2262,7 @@ u8 SpeedWaySpyro::PowerRollTransition() {
             var_r30_4279 = ((KDInput *) (GetInput()))->GetLeftMag() != 0.0f;
         }
         if ((var_r30_4279 != 0) && ((s32) this->unk180 != 3)) {
-            this->unk180.SetState(this, 3, 0U);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 3, 0U);
             return 1U;
         }
         var_r3_4280 = 0;
@@ -2313,7 +2314,7 @@ void SpeedWaySpyro::PowerRollEnter() {
     StateEnter();
     this->unk338 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x170);
     this->unk380 = 0.0f;
-    sp8.GetJoyDir();
+    ((SpeedWaySpyro *) &sp8)->GetJoyDir();
     Normalise(sp18);
     this->unk370 = M2C_BITWISE(f64, sp18);
     this->unk378 = (f64) sp18.unk8;
@@ -2326,7 +2327,7 @@ void SpeedWaySpyro::PowerRollEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp68'
 void SpeedWaySpyro::MoveSelectAnim() {
     f64 sp78;
     f64 sp70;
@@ -2357,7 +2358,7 @@ void SpeedWaySpyro::MoveSelectAnim() {
     s32 temp_r3_4501;
     s32 var_r0_4511;
 
-    sp60.GetJoyDir();
+    ((SpeedWaySpyro *) &sp60)->GetJoyDir();
     var_f4_4466 = (sp68 * sp68) + ((sp60 * sp60) + (sp64 * sp64));
     if (var_f4_4466 > 1e-12f) {
         if (var_f4_4466 > 0.0f) {
@@ -2443,7 +2444,7 @@ void SpeedWaySpyro::MoveSelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::MoveTransition() {
     u8 var_r3_4696;
 
@@ -2454,7 +2455,7 @@ u8 SpeedWaySpyro::MoveTransition() {
     if (var_r3_4696 == 0) {
         ((KDInput *) (GetInput()))->GetLeftMag();
         if ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) && ((s32) this->unk180 != 2)) {
-            this->unk180.SetState(this, 2, 0U);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
             return 1U;
         }
         var_r3_4696 = 0;
@@ -2490,7 +2491,7 @@ void SpeedWaySpyro::MoveUpdate() {
         var_r0_4753 = this->unk2F4;
     }
     temp_f31_4764 = gUpdateTimeDelta * M2C_FIELD((temp_r31_4745 + (var_r0_4753 * 0x38)), f32 *, 0x74);
-    sp28.GetJoyDir();
+    ((SpeedWaySpyro *) &sp28)->GetJoyDir();
     temp_f0_4768 = sp28 * (f64) temp_f31_4764;
     sp18 = temp_f0_4768;
     sp38 = temp_f0_4768;
@@ -2521,7 +2522,7 @@ void SpeedWaySpyro::MoveEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::IdleTransition() {
     u8 var_r3_4848;
 
@@ -2531,7 +2532,7 @@ u8 SpeedWaySpyro::IdleTransition() {
     }
     if (var_r3_4848 == 0) {
         if (((u8) (((KDInput *) (GetInput()))->GetLeftMag() != 0.0f) != 0) && ((s32) this->unk180 != 3)) {
-            this->unk180.SetState(this, 3, 0U);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 3, 0U);
             return 1U;
         }
         var_r3_4848 = 0;
@@ -2578,10 +2579,10 @@ void SpeedWaySpyro::IdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 SpeedWaySpyro::RespawnTransition() {
     if (((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) == 0) && ((s32) this->unk180 != 2)) {
-        this->unk180.SetState(this, 2, 0U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 0U);
         return 1;
     }
     return 0;
@@ -2593,7 +2594,7 @@ void SpeedWaySpyro::RespawnUpdate() {
 }
 
 void SpeedWaySpyro::RespawnExit() {
-    ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->FadeIn(NULL);
+    ((GameGlobals::Fade *) (&gb + 0x30))->FadeIn(NULL);
     this->unk2E8 = 1;
 }
 
@@ -2623,7 +2624,7 @@ void SpeedWaySpyro::StateEnter() {
     this->unk194 = 0.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Start() {
     f64 sp18;
     f64 sp10;
@@ -2634,12 +2635,12 @@ void SpeedWaySpyro::Start() {
     void *temp_r4_5180;
 
     ClearData();
-    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Init(50.0f, 50.0f, NULL, NULL);
-    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Init(30.0f, 30.0f, NULL, NULL);
-    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(0.0f, 0U);
-    ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 0);
+    ((Stat *) &GameData::gameData[0x70])->Init(50.0f, 50.0f, NULL, NULL);
+    ((Stat *) (&GameData::gameData[0x70] + 0x30))->Init(30.0f, 30.0f, NULL, NULL);
+    ((Stat *) (&GameData::gameData[0x70] + 0x48))->SetValue(0.0f, 0U);
+    ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 0);
     *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) = 1;
-    ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
+    ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     if ((u8) this->unk2E9 == 0) {
         temp_r3_5161 = GetCamera();
         spC = 0;
@@ -2653,9 +2654,9 @@ void SpeedWaySpyro::Start() {
     sp10 = M2C_FIELD(temp_r4_5180, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r4_5180, f64 *, 0x38);
     if (Connector_Update(*((MKVector3 *) &sp10)) == 0) {
-        this->unk180.SetState(this, 1, 1U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 1, 1U);
     } else {
-        this->unk180.SetState(this, 2, 1U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 1U);
     }
     temp_r3_5202 = this->unk390;
     if (temp_r3_5202 != NULL) {
@@ -2664,7 +2665,7 @@ void SpeedWaySpyro::Start() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SpeedWaySpyro::Update() {
     f64 sp30;
     f64 sp28;
@@ -2679,12 +2680,12 @@ void SpeedWaySpyro::Update() {
     sp30 = M2C_FIELD(this, f64 *, 0x1D8);
     UpdateStageInfo();
     UpdateSplineTime();
-    if ((EventCamera_GetCurrent() != NULL) && (this->unk180.GetState() != 8)) {
-        this->unk180.SetState(this, 8, 1U);
-    } else if ((EventCamera_GetCurrent() == NULL) && (this->unk180.GetState() == 8)) {
-        this->unk180.SetState(this, 2, 1U);
+    if ((EventCamera_GetCurrent() != NULL) && (((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->GetState() != 8)) {
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 8, 1U);
+    } else if ((EventCamera_GetCurrent() == NULL) && (((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->GetState() == 8)) {
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 2, 1U);
     }
-    this->unk180.Update(this, 0);
+    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->Update(this, 0);
     this->unk194 += gUpdateTimeDelta;
     UpdateMovementOffset();
     UpdateCameraAndSpyro(this->unk2C0, 0U, 0U);
@@ -2829,7 +2830,7 @@ void SpeedWaySpyro::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void SpeedWaySpyro::Message(MKMessage *arg0) {
     s8 sp161;
     u8 sp160;
@@ -2873,16 +2874,16 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     void *temp_r3_5914;
     void *temp_r3_5925;
 
-    this->unk818.Message(arg0);
-    this->unk888.Message(arg0);
+    ((KDSoundFlangedFader *) &this->unk818)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk888)->Message(arg0);
     temp_r0_5678 = arg0->unk0;
     switch (temp_r0_5678) {                         /* irregular */
     case 0xB5:
         if (this->unk18 & 0x80000000) {
             M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), M2C_UNK (**)(void **), 0x24)(M2C_FIELD(&gb, void ***, 0));
             Enable();
-            this->unk90.RegisterTargetable();
-            this->unk38C = gb.SetHero(this->unk388);
+            ((Targetable *) &this->unk90)->RegisterTargetable();
+            this->unk38C = ((GameGlobals *) &gb)->SetHero(this->unk388);
             Start();
         }
         break;
@@ -2898,12 +2899,12 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
             }
             Disable();
             temp_r29_5779 = &gb + 0xB8;
-            temp_r29_5779->EnableSpeedEffect(0U, 0.0f, 1.0f);
-            this->unk180.SetState(this, 0, 1U);
-            temp_r29_5779->EnableSpeedEffect(0U, 0.0f, 1.0f);
-            gb.SetHero(this->unk38C);
+            ((ScreenWobbleFX *) temp_r29_5779)->EnableSpeedEffect(0U, 0.0f, 1.0f);
+            ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
+            ((ScreenWobbleFX *) temp_r29_5779)->EnableSpeedEffect(0U, 0.0f, 1.0f);
+            ((GameGlobals *) &gb)->SetHero(this->unk38C);
             this->unk38C = NULL;
-            this->unk90.UnregisterTargetable();
+            ((Targetable *) &this->unk90)->UnregisterTargetable();
             M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), M2C_UNK (**)(void **), 0x20)(M2C_FIELD(&gb, void ***, 0));
         }
         break;
@@ -2911,7 +2912,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         Hurt(checked_cast<P11HurtMessage, 9MKMessage>__FP9MKMessage(arg0));
         break;
     case 0xE6:
-        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
+        ((Stat *) &GameData::gameData[0x70])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 0U);
         break;
     case 0x150:
         SetStageIndex(1);
@@ -2930,7 +2931,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         } else {
             var_f1_5853 = temp_f1_5850 * g_invPathMaxDistance;
         }
-        sp90.GetPathMatrix(var_f1_5853);
+        ((SpeedWay *) &sp90)->GetPathMatrix(var_f1_5853);
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
         __ml(M2C_FIELD(this, f32 *, 0x30C), *((MKVector3 *) &sp30.unk10));
         __ml(M2C_FIELD(this, f32 *, 0x308), *((MKVector3 *) &sp30.unk20));
@@ -2947,7 +2948,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         M2C_FIELD(temp_r3_5841, f64 *, 0x18) = (f64) sp28;
         break;
     case 0xE0:
-        this->unk180.SetState(this, 7, 1U);
+        ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 7, 1U);
         break;
     case 0x423:
         temp_r3_5914 = this->unk390;
@@ -3017,14 +3018,14 @@ void SpeedWaySpyro::Resolve() {
     if (temp_r3_6024 != NULL) {
         this->unk390 = checked_cast<SpeedwayCynder *, MKProp>(temp_r3_6024);
     }
-    sp10.GetPathMatrix(0.0f);
+    ((SpeedWay *) &sp10)->GetPathMatrix(0.0f);
     M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
     temp_r3_6045 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
     M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(M2C_UNK *, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
     Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
-    this->unk180.SetState(this, 0, 1U);
+    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
     this->unk2FC.Resolve();
     this->unk8B4 = (f32) KDSound_GetSoundEventVol(GS_SpyroSpeedwayGlideLP) / 255.0f;
 }
@@ -3137,12 +3138,12 @@ void SpeedWaySpyro::Deinit() {
     spC = 0;
     sp8 = 0xB4;
     Message(&sp8);
-    this->unk180.Deinit();
+    ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->Deinit();
     this->unk2FC.Deinit();
     this->unk17C.Deinit();
     operator delete(this->unk388);
     this->unk8B1 = 0;
-    this->unk818.Deinit();
+    ((KDSoundFlangedFader *) &this->unk818)->Deinit();
     this->unk8B0 = 0;
     KDSound_Stop(&this->unk888);
     temp_r3_6372 = this->unk8C4;
@@ -3153,18 +3154,16 @@ void SpeedWaySpyro::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpeedWaySpyro::Init() {
     KDProp::Init();
     this->unk2FC.Init();
-    this->unk818.Init(0, 0.95f, 1.15f, 0.09f, 0.25f, 0.25f);
-    this->unk888.Init(0.5f, 0.025f);
+    ((KDSoundFlangedFader *) &this->unk818)->Init(0, 0.95f, 1.15f, 0.09f, 0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk888)->Init(0.5f, 0.025f);
     this->unk8B1 = 0;
     this->unk8B0 = 0;
     this->unk8C4 = 0;
     this->unk390 = NULL;
 }
-#endif
 
 void SpeedWaySpyroDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
@@ -3251,7 +3250,7 @@ void SpeedWaySpyroDescriptor::Init() {
     this->unk18C = 1.0f;
     System_GetCommandLineParameter("UsePulledBackCamera", 0U);
     bUsePulledBackCamera = M2C_ERROR(/* Read from unset register $r3 */) != 0;
-    gb.GetSpyro();
+    ((GameGlobals *) &gb)->GetSpyro();
     temp_r3_6624 = checked_cast<SpyroDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r3 */));
     this->unk194 = M2C_FIELD(temp_r3_6624, f32 *, 0x60);
     this->unk198 = M2C_FIELD(temp_r3_6624, f32 *, 0x64);

@@ -7,12 +7,28 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CynderElecAttack.h"
+#include "spyro/source/Dynamite.h"
+#include "spyro/source/FlyingMonkey.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/HotSpit.h"
+#include "spyro/source/IceBossStomp.h"
+#include "spyro/source/IceShard.h"
+#include "spyro/source/IceSquirt.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/LavaBall.h"
+#include "spyro/source/MagicDrain.h"
+#include "spyro/source/MagicFireball.h"
+#include "spyro/source/PoisonBomb.h"
+#include "spyro/source/Sludge.h"
+#include "spyro/source/SolidSlug.h"
+#include "spyro/source/SonicAttack.h"
+#include "spyro/source/SpeedwayAA.h"
+#include "spyro/source/SteamFireBall.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -90,45 +106,45 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
         case 1:
             return NULL->CreateInstance((s32) &jumptable_847);
         case 2:
-            return 1->CreateInstance((s32) &jumptable_847);
+            return ((Dynamite *)1)->CreateInstance((s32) &jumptable_847);
         case 3:
-            return 2->CreateInstance((s32) &jumptable_847);
+            return ((Dynamite *)2)->CreateInstance((s32) &jumptable_847);
         case 4:
-            return 3->CreateInstance((s32) &jumptable_847);
+            return ((Dynamite *)3)->CreateInstance((s32) &jumptable_847);
         case 5:
             return jumptable_847.CreateInstance();
         case 6:
-            return jumptable_847.CreateInstance();
+            return ((HotSpit *) &jumptable_847)->CreateInstance();
         case 7:
-            return jumptable_847.CreateInstance();
+            return ((SteamFireBall *) &jumptable_847)->CreateInstance();
         case 8:
-            return jumptable_847.CreateInstance();
+            return ((LavaBall *) &jumptable_847)->CreateInstance();
         case 9:
-            return jumptable_847.CreateInstance();
+            return ((Sludge *) &jumptable_847)->CreateInstance();
         case 10:
-            return jumptable_847.CreateInstance();
+            return ((MagicFireball *) &jumptable_847)->CreateInstance();
         case 11:
-            return 2->CreateInstance((s32) &jumptable_847);
+            return ((IceBossStomp *)2)->CreateInstance((s32) &jumptable_847);
         case 12:
-            return 1->CreateInstance((s32) &jumptable_847);
+            return ((IceBossStomp *)1)->CreateInstance((s32) &jumptable_847);
         case 13:
-            return jumptable_847.CreateInstance();
+            return ((SonicAttack *) &jumptable_847)->CreateInstance();
         case 14:
-            return jumptable_847.CreateInstance();
+            return ((SolidSlug *) &jumptable_847)->CreateInstance();
         case 15:
-            return jumptable_847.CreateInstance();
+            return ((IceShard *) &jumptable_847)->CreateInstance();
         case 16:
-            return jumptable_847.CreateInstance();
+            return ((SpeedwayAA *) &jumptable_847)->CreateInstance();
         case 17:
-            return jumptable_847.CreateInstance();
+            return ((CynderElecAttack *) &jumptable_847)->CreateInstance();
         case 18:
-            return jumptable_847.CreateInstance();
+            return ((IceSquirt *) &jumptable_847)->CreateInstance();
         case 19:
-            return jumptable_847.CreateInstance();
+            return ((PoisonBomb *) &jumptable_847)->CreateInstance();
         case 20:
-            return jumptable_847.CreateInstance();
+            return ((MagicDrain *) &jumptable_847)->CreateInstance();
         case 21:
-            return jumptable_847.CreateInstance();
+            return ((FlyingMonkey *) &jumptable_847)->CreateInstance();
         }
     } else {
     case 0:
@@ -199,17 +215,15 @@ void Projectile::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Projectile::Message(MKMessage *arg0) {
     s32 *temp_r3_428;
 
     GameProp::Message(arg0);
     temp_r3_428 = this->unk138;
     if (temp_r3_428 != NULL) {
-        temp_r3_428->Message(arg0);
+        ((KDSoundPlayer *) temp_r3_428)->Message(arg0);
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Projectile::Draw() {
@@ -232,7 +246,7 @@ void Projectile::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Projectile::Update() {
     MKCollisionResult sp78;
     void *sp70;
@@ -264,7 +278,7 @@ void Projectile::Update() {
     if ((s32 *) this->unk138 != NULL) {
         temp_r4_532 = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk138->Update(M2C_FIELD(temp_r4_532, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk138)->Update(M2C_FIELD(temp_r4_532, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     sp6C = 0;
     var_r4_548 = NULL;
@@ -339,7 +353,7 @@ void Projectile::LoadDone() {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk138 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk138->Init(0.25f, 0.25f);
+        ((KDSoundFader *) this->unk138)->Init(0.25f, 0.25f);
     }
 }
 #endif

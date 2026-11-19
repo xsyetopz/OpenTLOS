@@ -1,4 +1,5 @@
 #include "spyro/source/FlameBreathFX.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKMaterial.h"
@@ -49,7 +50,7 @@ static u8 lit_738 = 0;
 
 void FlameBreathFX::ResetFury() {
     this->unk260->ResetFury();
-    this->unk260->ResetFury();
+    ((FuryFXFire2 *) this->unk260)->ResetFury();
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
@@ -1056,7 +1057,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         } else {
             var_r21_975 = *(temp_r4_942 + (temp_r23_940 * 4));
         }
-        streamHitMsg.Init(arg0, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r22_936, temp_r23_940, var_r6_956), temp_r23_940, var_r21_975, temp_r22_936, temp_r22_936, 0, -1);
+        streamHitMsg.Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r22_936, temp_r23_940, var_r6_956), temp_r23_940, var_r21_975, temp_r22_936, temp_r22_936, 0, -1);
         if (((u8) M2C_FIELD(&gb, u8 *, 0x3B5) == 0) && (M2C_FIELD(GameData::gameData, f32 *, 0xA0) <= 0.0f)) {
             temp_r3_1006 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
             temp_r6_1008 = *(&GameData::gameData[0x70] + (temp_r3_1006 + 0x7C));
@@ -1760,7 +1761,7 @@ loop_144:
             return this->unk260->Trigger(arg1, 0U, 0U, (HeroHurtReactionType) 1);
         }
         this->unk260->Trigger(arg1, 1U, 0U, (HeroHurtReactionType) 1);
-        return this->unk260->Trigger(arg1);
+        return ((FuryFXFire2 *) this->unk260)->Trigger(arg1);
     }
 }
 #endif
@@ -2340,7 +2341,7 @@ void FlameBreathFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void FlameBreathFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -2354,7 +2355,7 @@ void FlameBreathFX::Init() {
     BaseBreathFX::Init();
     this->unkB4 = 0;
     this->unkA8 = NULL;
-    this->unkAC = checked_cast<FlameBreathPS *, MKProp>(gMK->CreateProp("FlameBreathPS"));
+    this->unkAC = checked_cast<FlameBreathPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FlameBreathPS"));
     this->unk94 = 0.0f;
     this->unkBC = 0;
     this->unkC0 = 0.75f;
@@ -2373,13 +2374,13 @@ void FlameBreathFX::Init() {
     this->unkE0 = MKMaterial_Create("fx_303");
     this->unk144 = 0.0f;
     this->unk148.Init("fx_357", "fx_357Glow", "fx_358", "fx_358Glow");
-    this->unk260 = checked_cast<FuryFXFire *, MKProp>(gMK->CreateProp("FuryFXFire"));
-    this->unk260 = checked_cast<FuryFXFire2 *, MKProp>(gMK->CreateProp("FuryFXFire2"));
+    this->unk260 = checked_cast<FuryFXFire *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire"));
+    this->unk260 = checked_cast<FuryFXFire2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXFire2"));
     var_r30_3682 = 0;
     this->unk13C = 0.0f;
     this->unk268 = 0.0f;
     do {
-        temp_r3_3689 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("FireBombFX"));
+        temp_r3_3689 = checked_cast<FireBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FireBombFX"));
         if (temp_r3_3689 != NULL) {
             M2C_FIELD(temp_r3_3689->__vptr, M2C_UNK (**)(), 0x34)();
         }

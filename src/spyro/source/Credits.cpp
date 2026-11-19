@@ -531,13 +531,13 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ActivateTempMemOverride'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Credits_Init(MKProp *arg0) {
     MKHeap *temp_r3_1169;
     MKIni *var_r3_1176;
 
     if (arg0 == NULL) {
-        arg0->ActivateTempMemOverride();
+        ((MKHeap *) arg0)->ActivateTempMemOverride();
     }
     temp_r3_1169 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_1169 != NULL) {
@@ -557,7 +557,7 @@ void Credits_Init(MKProp *arg0) {
     }
     M2C_FIELD(pCredits, MKProp **, 0xA4) = arg0;
     if ((s32) *MKHeap::tempMemOverride > 0) {
-        pCredits->DeactivateTempMemOverride();
+        ((MKHeap *) pCredits)->DeactivateTempMemOverride();
     }
     DialogBox_bAllowOverCutscene = 1;
 }

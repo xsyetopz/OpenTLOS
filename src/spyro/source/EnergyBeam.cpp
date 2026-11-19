@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSpline.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -238,7 +239,7 @@ loop_45:
         } else {
             var_f1_307 = 0.0f;
         }
-        sp158.GetMeasure(var_f1_307, (Matrix *) &this->unk94);
+        ((KDSpline *) &sp158)->GetMeasure(var_f1_307, (Matrix *) &this->unk94);
         sp178 = sp158;
         sp180 = sp160;
         var_f4_334 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
@@ -300,7 +301,7 @@ loop_45:
         sp140 = (f64) sp40;
         sp1B8 = (f64) sp38;
         sp1C0 = (f64) sp40;
-        sp128.GetMeasure(var_f27_293, (Matrix *) &this->unk94);
+        ((KDSpline *) &sp128)->GetMeasure(var_f27_293, (Matrix *) &this->unk94);
         sp1C8 = sp128;
         sp1D0 = sp130;
         if ((var_r27_279 == (s32) (temp_r28_267 - 1)) || (var_r27_279 == 0)) {

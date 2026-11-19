@@ -458,7 +458,7 @@ void ShockWave::Update() {
                         spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
-                            sp30.GetPos();
+                            ((MKProp *) &sp30)->GetPos();
                             spB0 = sp30;
                             spB8 = sp38;
                         } else {
@@ -483,7 +483,7 @@ void ShockWave::Update() {
                         spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
-                            sp20.GetPos();
+                            ((MKProp *) &sp20)->GetPos();
                             spB0 = sp20;
                             spB8 = sp28;
                         } else {

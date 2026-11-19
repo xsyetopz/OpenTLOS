@@ -370,20 +370,20 @@ void MessageHandlerProperty::Resolve(KDPropertySet *arg0) {
 
 void GameProperties_RegisterAll() {
     KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry);
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) MessageHandlerProperty::classInfo);
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x10));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x20));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x30));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x40));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x50));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x60));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x70));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x80));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x90));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xA0));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xB0));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xC0));
-    ((KDPropertyClassRegistry *) ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry))->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xD0));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) MessageHandlerProperty::classInfo);
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x10));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x20));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x30));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x40));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x50));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x60));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x70));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x80));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0x90));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xA0));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xB0));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xC0));
+    ((KDPropertyClassRegistry *) KDPropExDescriptor::propertyClassRegistry)->Add((KDPropertyClassInfo *) (MessageHandlerProperty::classInfo + 0xD0));
 }
 
 #if 0 // DRAFT: '(' expected

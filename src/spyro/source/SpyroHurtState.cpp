@@ -3,6 +3,7 @@
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/CharacterIceCubesFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
@@ -11,6 +12,7 @@
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -67,7 +69,7 @@ void SpyroHurtState::CynderFuryDazedUpdate() {
 }
 
 void SpyroHurtState::CynderFuryDazedExit() {
-    ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
+    ((Stat *) &GameData::gameData[0x70])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
@@ -271,7 +273,7 @@ void SpyroHurtState::KnockToSafePosUpdate() {
         this->unk10->GetYaw();
         this->unk10->Teleport(*((MKVector3 *) &this->unk70), M2C_ERROR(/* Read from unset register $f1 */), 0x1E, 0U, 1U);
     } else {
-        sp88.GetPos();
+        ((MKProp *) &sp88)->GetPos();
         sp18 = spD8 - sp88;
         spC8 = sp18;
         sp20 = (f32) spE0 - sp90;
@@ -285,7 +287,7 @@ void SpyroHurtState::KnockToSafePosUpdate() {
     sp10 = -this->unk58;
     sp78 = (f64) sp8;
     sp80 = (f64) sp10;
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp78), 3.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp78), 3.0f);
     KnockToSafePosTransition();
 }
 #endif
@@ -399,7 +401,7 @@ void SpyroHurtState::FrozenUpdate() {
     }
     if ((u8) var_r3_766 != 0) {
         this->unk88 -= 0.1f;
-        this->unk10->unk3A0.RollTowards(MKRand_Float(&gViewSeed, -0.5f, 0.5f), 900.0f);
+        ((SpyroRotation *) &this->unk10->unk3A0)->RollTowards(MKRand_Float(&gViewSeed, -0.5f, 0.5f), 900.0f);
     }
     FrozenTransition();
 }
@@ -519,7 +521,7 @@ void SpyroHurtState::DazedExit() {
     temp_r4_1035 = this->unk10;
     temp_r4_1035->unk428 |= 0x40000;
     if ((u8) this->unk9A != 0) {
-        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
+        ((Stat *) &GameData::gameData[0x70])->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0x74), 1U);
     }
 }
 
@@ -595,7 +597,7 @@ void SpyroHurtState::SquashEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'temp_r3_1244'
 u8 SpyroHurtState::TumbleTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -661,7 +663,7 @@ void SpyroHurtState::TumbleExit() {
     temp_r3_1332->unk428 |= 0x40000;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroHurtState::TumbleEnter() {
     f64 sp20;
     f64 sp18;
@@ -677,7 +679,7 @@ void SpyroHurtState::TumbleEnter() {
     sp10 = -this->unk58;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp18), 900.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp18), 900.0f);
     this->unk10->SetAnim(0x4BU, 0.15f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_1377 = this->unk10;
     temp_r3_1377->unk428 &= 0xFFFBFFFF;
@@ -757,9 +759,9 @@ void SpyroHurtState::StrafeFlinchUpdate() {
     void *temp_r3_1476;
     void *temp_r5_1475;
 
-    this->unk10->unkB90.GetCurrentTarget();
+    ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        this->unk10->unkB90.GetCurrentTarget();
+        ((SpyroTargetList *) &this->unk10->unkB90)->GetCurrentTarget();
         temp_r5_1475 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
         temp_r3_1476 = this->unk10->unk8;
         sp70 = M2C_FIELD(temp_r5_1475, f64 *, 0x30);
@@ -813,11 +815,11 @@ void SpyroHurtState::StrafeFlinchUpdate() {
         sp60 = (f32) sp60 * var_f4_1489;
         unksp64 *= var_f4_1489;
         sp68 = (f32) sp68 * var_f4_1489;
-        this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp60), 15.0f);
+        ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp60), 15.0f);
         sp80 = (f64) sp60;
         sp88 = (f64) sp68;
     } else {
-        this->unk10->unk8->ZAxis3();
+        ((Matrix *) this->unk10->unk8)->ZAxis3();
         sp10 = -*M2C_ERROR(/* Read from unset register $r3 */);
         sp14 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
         sp18 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
@@ -905,7 +907,7 @@ void SpyroHurtState::FlinchEnter() {
     this->unk10->SetAnim(0x4AU, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r4_1770 = this->unk38;
     if ((temp_r4_1770 != NULL) && (M2C_FIELD(*temp_r4_1770, s32 *, 0xC) & 8)) {
-        sp38.GetPos();
+        ((MKProp *) &sp38)->GetPos();
         sp48.GetPos();
         temp_f0_1785 = sp48 - sp38;
         sp18 = temp_f0_1785;
@@ -919,7 +921,7 @@ void SpyroHurtState::FlinchEnter() {
         sp10 = -this->unk58;
         sp28 = (f64) sp8;
         sp30 = (f64) sp10;
-        this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp28), 900.0f);
+        ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp28), 900.0f);
     }
 }
 #endif
@@ -1086,7 +1088,7 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
     case 5:
         var_r30_1949 = 6;
         if (this->unk10->LastSafePosAvailable() != NULL) {
-            sp118.GetLastSafePos();
+            ((Spyro *) &sp118)->GetLastSafePos();
             this->unk70 = sp118;
             this->unk78 = sp120;
         }
@@ -1114,7 +1116,7 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
         sp1A0 = NULL;
         sp1A4 = -1;
         sp1A8 = 0;
-        spF8.GetPos();
+        ((MKProp *) &spF8)->GetPos();
         sp28 = spF8 + M2C_FIELD(this, f64 *, 0x50);
         this->unk70 = sp28;
         sp30 = sp100 + this->unk58;

@@ -13,6 +13,7 @@
 #include "spyro/source/OptionsScreen.h"
 #include "spyro/source/PauseMainScreen.h"
 #include "spyro/source/UIAttributes.h"
+#include "spyro/source/UIContainer.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UISystem.h"
@@ -145,7 +146,7 @@ s32 PauseMenu_Update() {
     if ((UISystem *) pSystem != NULL) {
         if (((u8) bAllowStartToQuit != 0) && (UIControls_Pressed((FrontEndControls) 3, -1) != 0)) {
             KDSound_Play(GS_MenuCancel, 0U, -1);
-            M2C_FIELD(pSystem->FindChild("main"), s8 *, 0xD1) = 1;
+            M2C_FIELD(((UIContainer *) pSystem)->FindChild("main"), s8 *, 0xD1) = 1;
             pSystem->ClearStack(NULL);
         }
         pSystem->Update();
@@ -336,7 +337,7 @@ loop_31:
         goto loop_31;
     }
     UITools_RegisterAll();
-    if (pSystem->Load("pause.ui", NULL) != 0) {
+    if (((UIObject *) pSystem)->Load("pause.ui", NULL) != 0) {
         pSystem->Resolve();
         pSystem->LoadResources();
     }

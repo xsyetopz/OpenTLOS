@@ -55,11 +55,11 @@ inline ShatterWaypointSpawn::~ShatterWaypointSpawn() {
             temp_r3_21055 = &this->unk1A8.unk30;
             this->unk198 = M2C_BITWISE(f32, &__vt);
             if (temp_r3_21055 != NULL) {
-                temp_r3_21055->Deinit();
+                ((EventMessage *) temp_r3_21055)->Deinit();
             }
             temp_r3_21061 = &this->unk1A8.unk2C;
             if (temp_r3_21061 != NULL) {
-                temp_r3_21061->Deinit();
+                ((EventMessage *) temp_r3_21061)->Deinit();
             }
         }
     }
@@ -71,9 +71,9 @@ inline ShatterWaypointSpawn::ShatterWaypointSpawn() {
     this->unkC8 = &__vt + 0x48;
     this->unk198 = M2C_BITWISE(f32, &__vt);
     this->unk1A8.unk2C = 0;
-    this->unk1A8.unk2C.Init();
+    ((EventMessage *) &this->unk1A8.unk2C)->Init();
     this->unk1A8.unk30 = 0.0f;
-    this->unk1A8.unk30.Init();
+    ((EventMessage *) &this->unk1A8.unk30)->Init();
     return this;
 }
 #endif

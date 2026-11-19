@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXIce2.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
@@ -719,7 +720,7 @@ loop_9:
             var_r4_1225 += 4;
             goto loop_9;
         }
-        temp_r3_1252 = var_r3_1227->Current();
+        temp_r3_1252 = ((MKHeap *) var_r3_1227)->Current();
         if (temp_r3_1252 != NULL) {
             ((MKHeap *) (temp_r3_1252->Current()))->Free(var_r30_1226, NULL, 0);
         } else {
@@ -750,7 +751,7 @@ loop_22:
             var_r4_1267 += 4;
             goto loop_22;
         }
-        temp_r3_1294 = var_r3_1269->Current();
+        temp_r3_1294 = ((MKHeap *) var_r3_1269)->Current();
         if (temp_r3_1294 != NULL) {
             ((MKHeap *) (temp_r3_1294->Current()))->Free(var_r30_1268, NULL, 0);
         } else {
@@ -966,7 +967,7 @@ void FuryFXIce2::Init() {
     SetDefaults();
     temp_r3_1590 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
     this->unk100 = temp_r3_1590;
-    temp_r3_1592 = temp_r3_1590->Current();
+    temp_r3_1592 = ((MKHeap *) temp_r3_1590)->Current();
     if (temp_r3_1592 != NULL) {
         var_r3_1599 = ((MKHeap *) (temp_r3_1592->Current()))->Alloc(0x4E28, NULL, 0);
     } else {
@@ -988,7 +989,7 @@ void FuryFXIce2::Init() {
     temp_r3_1622 = temp_r3_1620 + 4;
     this->unk100 = temp_r3_1622;
     M2C_FIELD(temp_r3_1620, Matrix ***, 4) = NULL;
-    temp_r3_1625 = temp_r3_1622->Current();
+    temp_r3_1625 = ((MKHeap *) temp_r3_1622)->Current();
     if (temp_r3_1625 != NULL) {
         var_r3_1632 = ((MKHeap *) (temp_r3_1625->Current()))->Alloc(0xA8, NULL, 0);
     } else {
@@ -1009,6 +1010,6 @@ void FuryFXIce2::Init() {
     temp_r4_1653 = this->unk104;
     this->unk104 = (MKModel *) &temp_r4_1653->unk4;
     M2C_FIELD(temp_r4_1653, MKModel **, 4) = NULL;
-    this->unk110 = M2C_BITWISE(f32, checked_cast<IceExplosion *, MKProp>(gMK->CreateProp("IceExplosion")));
+    this->unk110 = M2C_BITWISE(f32, checked_cast<IceExplosion *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceExplosion")));
 }
 #endif

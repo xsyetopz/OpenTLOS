@@ -4,6 +4,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/CharacterZapFX.h"
@@ -11,6 +12,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -135,25 +137,23 @@ block_31:
         if (var_f31_52 < 10.0f) {
             this->unk8 = 2;
         } else {
-            this->unkC->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
+            ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
         }
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void ElecTier2Goal_FlyToTarget::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
-    this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
-    this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier2Goal_Attack::Terminate() {
     AttackerManager *var_r3_286;
     Enemy *temp_r3_261;
@@ -166,11 +166,11 @@ void ElecTier2Goal_Attack::Terminate() {
     M2C_FIELD(temp_r3_261, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_261, u8 *, 0xB08) & ~0x10);
     this->unkC->unkA08 = NULL;
     temp_r3_267 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_267, u8 *, 0x8B8) == 2) || (temp_r3_267->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_267, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_267->unk870.unk30)->Get() != NULL)) {
         var_r31_260 = 1;
     }
     if (var_r31_260 != 0) {
-        var_r3_286 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_286 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_286 = NULL;
     }
@@ -201,13 +201,13 @@ u8 ElecTier2Goal_Attack::Update() {
     if ((temp_r4_333 != NULL) && ((s32) M2C_FIELD(temp_r4_333, s32 *, 0x78) > 0) && (((u8) M2C_FIELD(temp_r3_332, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_332->CheckMeleeHit((EnemyAttack *) temp_r4_333, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
-    if (this->unkC->HasAnimFinished() != 0) {
+    if (((Character *) this->unkC)->HasAnimFinished() != 0) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier2Goal_Attack::Activate() {
     AttackerManager *var_r3_451;
     Enemy *temp_r3_378;
@@ -221,13 +221,13 @@ void ElecTier2Goal_Attack::Activate() {
     void *temp_r4_411;
 
     this->unk8 = 0;
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_378 = this->unkC;
     var_r30_379 = 0;
-    if (((u8) M2C_FIELD(temp_r3_378, u8 *, 0x8B8) == 2) || (temp_r3_378->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_378, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_378->unk870.unk30)->Get() != NULL)) {
         var_r30_379 = 1;
     }
-    if ((var_r30_379 == 0) || (this->unkC->SelectAttack(this->unkC->unk838.unk28.GetDist(), 4U, 0U, 0U) == 0)) {
+    if ((var_r30_379 == 0) || (this->unkC->SelectAttack(((AITargetData *) &this->unkC->unk838.unk28)->GetDist(), 4U, 0U, 0U) == 0)) {
         this->unk8 = 2;
     } else {
         temp_r3_407 = this->unkC;
@@ -241,15 +241,15 @@ loop_8:
         }
         temp_r3_426 = this->unkC->unkA18;
         if (temp_r3_426 != NULL) {
-            temp_r3_426->SetDefaults();
+            ((AttackSweepData *) temp_r3_426)->SetDefaults();
         }
         temp_r3_431 = this->unkC;
         var_r30_432 = 0;
-        if (((u8) M2C_FIELD(temp_r3_431, u8 *, 0x8B8) == 2) || (temp_r3_431->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_431, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_431->unk870.unk30)->Get() != NULL)) {
             var_r30_432 = 1;
         }
         if (var_r30_432 != 0) {
-            var_r3_451 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_451 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_451 = NULL;
         }
@@ -261,11 +261,11 @@ loop_8:
             var_r3_451->Add((Targetable *) var_r4_458, 2);
         }
     }
-    this->unkC->SetMovementType((CharacterMoveType) 2);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetInvulnerableToMeleeAttacks'
+#if 0 // DRAFT: undefined identifier 'temp_r3_485'
 u8 ElecTier2Goal_Land::Update() {
     MKVector3 sp28;
     f64 sp20;
@@ -284,8 +284,8 @@ u8 ElecTier2Goal_Land::Update() {
     temp_r3_485->unk59C += temp_r3_485->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 1;
-        this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
-        this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
+        ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(0U, 1U);
+        ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(0U, 1U);
         MKModel_CalculateRefPointWorldPosition(M2C_FIELD(this->unk10, MKModel **, 4), M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>(M2C_FIELD(this->unk10, MKPropDescriptor **, 0)), s32 *, 0x2BC), &sp28);
         temp_r3_519 = this->unkC;
         temp_r5_522 = temp_r3_519->unk8;
@@ -297,25 +297,23 @@ u8 ElecTier2Goal_Land::Update() {
         sp28 = (f32) sp18;
         sp8 = temp_f4_523;
         sp28.unk8 = (f32) sp10;
-        temp_r3_519->SetupEnemyRegion(sp28, 1500.0f);
+        ((Enemy *) temp_r3_519)->SetupEnemyRegion(sp28, 1500.0f);
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void ElecTier2Goal_Land::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDD, 0, 0.15f, 0U, 0U);
-    this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
-    this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0xDD, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'SetInvulnerableToMeleeAttacks'
+#if 0 // DRAFT: undefined identifier 'temp_r3_593'
 u8 ElecTier2Goal_TakeOff::Update() {
     Character *temp_r3_593;
 
@@ -325,25 +323,24 @@ u8 ElecTier2Goal_TakeOff::Update() {
     temp_r3_593->unk59C += temp_r3_593->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 0;
-        this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
-        this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
+        ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(0U, 1U);
+        ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(0U, 1U);
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void ElecTier2Goal_TakeOff::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
-    this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
-    this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetInvulnerableToMeleeAttacks(1U, 1U);
+    ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
-#endif
 
+#if 0 // DRAFT: undefined identifier 'temp_r3_678'
 u8 ElecTier2Goal_FlyIdle::Update() {
     Character *temp_r3_678;
     u8 var_r3_694;
@@ -375,13 +372,14 @@ block_8:
     }
     return this->unk8;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_FlyIdle::Activate() {
     this->unk8 = 0;
     this->unkC->unkAEC = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
 #endif
@@ -392,6 +390,7 @@ void ElecTier2Goal_Idle::Reset() {
     this->unk18 = 1;
 }
 
+#if 0 // DRAFT: undefined identifier 'temp_r3_775'
 u8 ElecTier2Goal_Idle::Update() {
     Character *temp_r3_775;
     u8 var_r3_791;
@@ -423,13 +422,14 @@ block_8:
     }
     return this->unk8;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_Idle::Activate() {
     this->unk8 = 0;
     this->unkC->unkAEC = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetAnim((AnimSequenceType) 1, this->unk18, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, this->unk18, 0, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
 #endif
@@ -496,17 +496,17 @@ void ElecTier2Goal_PatrolMode::Activate() {
     temp_r4_963 = this->unkC;
     if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_963->unkA7C) {
         var_r30_972 = 0;
-        if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (temp_r4_963->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r4_963->unk870.unk30)->Get() != NULL)) {
             var_r30_972 = 1;
         }
         if (var_r30_972 != 0) {
             temp_r30_984 = this->unkC;
             if (((u8) M2C_FIELD(temp_r30_984, u8 *, 0x8B9) >> 6U) & 1) {
-                sp18.GetPos();
+                ((AITargetData *) &sp18)->GetPos();
                 temp_f3_995 = sp20 - temp_r30_984->unk588.unk4;
                 temp_f2_997 = sp18 - temp_r30_984->unk588;
                 if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
-                    sp8.GetPos();
+                    ((AITargetData *) &sp8)->GetPos();
                     if (this->unkC->unk588.unk0 > spC) {
                         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
                     }
@@ -1071,9 +1071,9 @@ void ElecTier2Goal_Think::Init(Enemy *arg0) {
     if ((Enemy *) this->unkC != NULL) {
         this->unk9 = 1;
     }
-    this->unk24->Init(arg0);
-    this->unk28->Init(arg0);
-    this->unk2C->Init(arg0);
+    ((ElecTier2Goal_GroundMode *) this->unk24)->Init(arg0);
+    ((ElecTier2Goal_PatrolMode *) this->unk28)->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk2C)->Init(arg0);
     temp_r4_2134 = this->unk34;
     M2C_FIELD(temp_r4_2134, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_2134, Enemy **, 0xC) = arg0;

@@ -155,7 +155,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
             temp_r31_58->unk4C = 50.0f * arg1.unk4;
             M2C_STRUCT_COPY((s32) &temp_r31_58->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r3_248 = &temp_r31_58->unk60;
-            temp_r3_248->RotateYaw((Matrix *) temp_r3_248, 0.3926991f);
+            ((Matrix *) temp_r3_248)->RotateYaw((Matrix *) temp_r3_248, 0.3926991f);
             M2C_FIELD(temp_r31_58, u8 *, 0x108) = arg3;
             M2C_FIELD(temp_r31_58, f32 *, 0xF0) = arg4;
         }
@@ -277,7 +277,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Message'
 void EarthBreathWhirlWinds::Message(MKMessage *arg0) {
     MKHeap *temp_r3_432;
     MKHeap *var_r31_423;
@@ -287,14 +286,13 @@ loop_2:
     if (var_r31_423 != NULL) {
         temp_r3_432 = var_r31_423->unk0;
         if (temp_r3_432 != NULL) {
-            temp_r3_432->Message(arg0);
+            ((KDSoundPlayer *) temp_r3_432)->Message(arg0);
             var_r31_423 += 4;
             goto loop_2;
         }
     }
     MKProp::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBreathWhirlWinds::Update() {
@@ -497,7 +495,7 @@ loop_59:
         if ((M2C_BITWISE(s32, temp_r0_508) == 1) || (M2C_BITWISE(s32, temp_r0_508) == 2)) {
             var_r6_501 = 1;
         }
-        temp_r29_962->Update(GS_SpyroFuryEarthTornadoLP, 1U, var_r6_501, NULL, (MKVector3 *) temp_r28_496, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) temp_r29_962)->Update(GS_SpyroFuryEarthTornadoLP, 1U, var_r6_501, NULL, (MKVector3 *) temp_r28_496, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         temp_r0_522 = temp_r29_962->unk100;
         switch (M2C_BITWISE(s32, temp_r0_522)) {    /* switch 1; irregular */
         case 0:                                     /* switch 1 */
@@ -762,12 +760,12 @@ loop_8:
             sp30 = (f64) sp10;
             sp38 = (f64) sp18;
             sp40 = (f64) sp20;
-            temp_r30_1162->unk30.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
+            ((WindFX *) &temp_r30_1162->unk30)->Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
             temp_r30_1162->unk48 = 400.0f;
             M2C_FIELD(temp_r30_1162, f32 *, 0x4C) = 800.0f;
             M2C_STRUCT_COPY((s32) &temp_r30_1162->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r3_1202 = &temp_r30_1162->unk60;
-            temp_r3_1202->RotateYaw((Matrix *) temp_r3_1202, 1.5707964f);
+            ((Matrix *) temp_r3_1202)->RotateYaw((Matrix *) temp_r3_1202, 1.5707964f);
             temp_r30_1162->unk40 = 50.0f;
         }
         goto loop_8;

@@ -124,7 +124,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'FreeFromAnyHeap'
 void MKMaterialInternal_RemoveUpdater(MKMaterialUpdater *arg0) {
     MKHeap *temp_r3_219;
     MKMaterialUpdater *temp_r3_199;
@@ -151,9 +150,8 @@ void MKMaterialInternal_RemoveUpdater(MKMaterialUpdater *arg0) {
     if (temp_r3_219 != NULL) {
         temp_r3_219->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
-    arg0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
-#endif
 
 #if 0 // DRAFT: identifier 'arg2' redeclared
 void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, void *), void *arg2) {
@@ -162,7 +160,7 @@ void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, 
     MKMaterialUpdater *var_r3_254;
     MKMaterialUpdater *var_r4_265;
 
-    temp_r3_247 = arg0->Current();
+    temp_r3_247 = ((MKHeap *) arg0)->Current();
     if (temp_r3_247 != NULL) {
         var_r3_254 = ((MKHeap *) (temp_r3_247->Current()))->Alloc(0x14, NULL, 0);
     } else {
@@ -204,7 +202,7 @@ loop_5:
     if (var_r31_308 == NULL) {
         return NULL;
     }
-    if ((stricmp(var_r31_308, arg0) == 0) && (var_r31_308->IsResourceAvailable() != 0)) {
+    if ((stricmp(var_r31_308, arg0) == 0) && (((MKResource *) var_r31_308)->IsResourceAvailable() != 0)) {
         return var_r31_308;
     }
     var_r31_308 = M2C_FIELD(var_r31_308, s8 **, 0x2C);
@@ -366,7 +364,7 @@ s8 *MKMaterial::Create(const char *arg0) {
     temp_r3_616 = Str_Printf("%s.min", this);
     temp_r3_619 = MKArchive_Exists(temp_r3_616, NULL);
     if (temp_r3_619 != 0) {
-        temp_r3_619->ActivateTempMemOverride();
+        ((MKHeap *) temp_r3_619)->ActivateTempMemOverride();
         temp_r3_627 = MKArchive_Load(temp_r3_616, NULL, NULL, -1);
         MKMatInfo_Endian(temp_r3_627);
         MKMatInfo_Merge((MatInfo *) var_r31_600, temp_r3_627);
@@ -417,18 +415,18 @@ loop_4:
         MKMaterialInternal_RemoveUpdatersForMaterial(arg0);
         temp_r6_713 = arg0->unk34;
         temp_r31_717 = M2C_FIELD(temp_r6_713, M2C_UNK (**)(MKMaterial *), 0x14);
-        arg0->unk24->FreeFromAnyHeap(NULL, NULL, (s32) temp_r6_713);
+        ((MKHeap *) arg0->unk24)->FreeFromAnyHeap(NULL, NULL, (s32) temp_r6_713);
         if (temp_r31_717 != NULL) {
             temp_r31_717(arg0);
         } else {
-            arg0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+            ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
         }
         numberOfLoadedMaterials -= 1;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'StringHash'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 MKResource *MKMaterial_Create(const char *arg0) {
     MKResource *temp_r3_775;
     MKResource *temp_r3_783;
@@ -444,7 +442,7 @@ MKResource *MKMaterial_Create(const char *arg0) {
     var_r31_757 = &materialList + (StringHash(arg0, 0x200) * 4);
 loop_5:
     if ((MKResource *) *var_r31_757 == NULL) {
-        temp_r3_783 = arg0->Create(var_r4_753);
+        temp_r3_783 = ((MKMaterial *) arg0)->Create(var_r4_753);
         *var_r31_757 = temp_r3_783;
         temp_r3_783->unk28 = 1;
         temp_r3_783->InitialiseResource();

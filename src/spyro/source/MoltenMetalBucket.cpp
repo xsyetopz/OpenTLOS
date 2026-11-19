@@ -8,13 +8,13 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LiquidFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -238,7 +238,6 @@ void MoltenMetalBucket::Pour() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void MoltenMetalBucket::Message(MKMessage *arg0) {
     s32 temp_r0_177;
 
@@ -252,11 +251,10 @@ void MoltenMetalBucket::Message(MKMessage *arg0) {
         break;
     }
     GameProp::Message(arg0);
-    this->unkEC.Message(arg0);
-    this->unk114.Message(arg0);
-    this->unk13C.Message(arg0);
+    ((KDSoundPlayer *) &this->unkEC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk114)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk13C)->Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void MoltenMetalBucket::Update() {
@@ -488,17 +486,17 @@ void MoltenMetalBucket::Update() {
     if ((s32) M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x104) != 0) {
         temp_r4_533 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unkEC.Update(M2C_FIELD(temp_r4_533, s32 *, 0x104), 1U, ((u8) this->unk178 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkEC)->Update(M2C_FIELD(temp_r4_533, s32 *, 0x104), 1U, ((u8) this->unk178 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108) != 0) {
         temp_r4_554 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk114.Update(M2C_FIELD(temp_r4_554, s32 *, 0x108), 1U, ((u8) this->unkE8 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk114)->Update(M2C_FIELD(temp_r4_554, s32 *, 0x108), 1U, ((u8) this->unkE8 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x10C) != 0) {
         temp_r4_575 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk13C.Update(M2C_FIELD(temp_r4_575, s32 *, 0x10C), 1U, ((u8) this->unkE8 >> 7U) & 1, NULL, (MKVector3 *) &this->unk168, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk13C)->Update(M2C_FIELD(temp_r4_575, s32 *, 0x10C), 1U, ((u8) this->unkE8 >> 7U) & 1, NULL, (MKVector3 *) &this->unk168, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
 #endif
@@ -511,11 +509,11 @@ void MoltenMetalBucket::Resolve() {
 
     KDPropEx::Resolve();
     temp_r31_612 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unkEC.Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x110), M2C_FIELD(temp_r31_612, f32 *, 0x114));
+    ((KDSoundFader *) &this->unkEC)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x110), M2C_FIELD(temp_r31_612, f32 *, 0x114));
     temp_r31_621 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk114.Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x118), M2C_FIELD(temp_r31_621, f32 *, 0x11C));
+    ((KDSoundFader *) &this->unk114)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x118), M2C_FIELD(temp_r31_621, f32 *, 0x11C));
     temp_r31_630 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk13C.Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x120), M2C_FIELD(temp_r31_630, f32 *, 0x124));
+    ((KDSoundFader *) &this->unk13C)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x120), M2C_FIELD(temp_r31_630, f32 *, 0x124));
 }
 #endif
 
@@ -560,11 +558,11 @@ void MoltenMetalBucketDescriptor::Resolve() {
     this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "");
     this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "");
     this->unkEC = MKMaterial_Create"";
-    this->unkF0 = this->unk34->GetAnim("");
-    this->unkF4 = this->unk34->GetAnim("");
-    this->unkF8 = this->unk34->GetAnim("");
-    this->unkFC = this->unk34->GetAnim("");
-    this->unk100 = this->unk34->GetAnim("");
+    this->unkF0 = ((MKAnimScript *) this->unk34)->GetAnim("");
+    this->unkF4 = ((MKAnimScript *) this->unk34)->GetAnim("");
+    this->unkF8 = ((MKAnimScript *) this->unk34)->GetAnim("");
+    this->unkFC = ((MKAnimScript *) this->unk34)->GetAnim("");
+    this->unk100 = ((MKAnimScript *) this->unk34)->GetAnim("");
 }
 #endif
 

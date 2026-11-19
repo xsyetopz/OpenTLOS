@@ -4,10 +4,10 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -29,7 +29,7 @@ void MoleTether::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3, 
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void MoleTether::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -42,7 +42,7 @@ void MoleTether::Message(MKMessage *arg0) {
     void *temp_r3_153;
     void *temp_r3_169;
 
-    this->unk1B8.Message(arg0);
+    ((KDSoundPlayer *) &this->unk1B8)->Message(arg0);
     temp_r0_112 = arg0->unk0;
     switch (temp_r0_112) {                          /* irregular */
     case 0xBE:
@@ -97,7 +97,6 @@ void MoleTether::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void MoleTether::Update() {
     f64 sp18;
     f64 sp10;
@@ -119,25 +118,22 @@ void MoleTether::Update() {
         M2C_FIELD(this, f64 *, 0x1C0) = temp_f0_252;
     }
     sp8 = 1;
-    this->unk1B8.Update(GS_MoleExtra2, 1U, this->unk1FC, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk1B8)->Update(GS_MoleExtra2, 1U, this->unk1FC, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
-#endif
 
 void MoleTether::LoadDone() {
     Shatterable::LoadDone();
     this->unk1F8 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }
 
-#if 0 // DRAFT: expression syntax error
 void MoleTether::Init() {
     Shatterable::Init();
     this->unk1F4 = NULL;
     this->unk1F0 = NULL;
     this->unk1F8 = 0xFFFFU;
-    this->unk1B8.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk1B8)->Init(0.25f, 0.25f);
     this->unk1FC = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void MoleTetherDescriptor::LoadDone() {

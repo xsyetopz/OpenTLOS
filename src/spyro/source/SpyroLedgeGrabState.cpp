@@ -3,7 +3,9 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/InputModifier.h"
+#include "spyro/source/MobilePlatform.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -148,7 +150,7 @@ s32 SpyroLedgeGrabState::AttachTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'Spyro *' to
 void SpyroLedgeGrabState::AttachUpdate() {
     f64 sp50;
     f64 sp48;
@@ -166,7 +168,7 @@ void SpyroLedgeGrabState::AttachUpdate() {
     u8 var_r0_338;
     u8 var_r0_370;
 
-    sp38.GetRefPos((Spyro::RefPoints) this->unk10);
+    ((Spyro *) &sp38)->GetRefPos((Spyro::RefPoints) this->unk10);
     temp_f0_320 = M2C_FIELD(this, f64 *, 0x28) - sp38;
     sp18 = temp_f0_320;
     temp_r3_322 = this->unk10;
@@ -295,7 +297,7 @@ s32 SpyroLedgeGrabState::Transition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroLedgeGrabState::Update() {
     f64 sp20;
     f64 sp18;
@@ -308,7 +310,7 @@ void SpyroLedgeGrabState::Update() {
     sp10 = -this->unk38.unk8;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp18), 10.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp18), 10.0f);
     this->unk14.Update(this, 0);
 }
 #endif
@@ -353,7 +355,7 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     }
     temp_r3_736 = M2C_FIELD(temp_r29_717, MKProp **, 0x28);
     var_r30_737 = 0;
-    if ((temp_r3_736 != NULL) && (temp_r3_736->unk0->IsDescriptor(M2C_ERROR(/* Read from unset register $r4 */)) != 0)) {
+    if ((temp_r3_736 != NULL) && (((MobilePlatformDescriptor *) temp_r3_736->unk0)->IsDescriptor(M2C_ERROR(/* Read from unset register $r4 */)) != 0)) {
         var_r30_737 = 1;
     }
     this->unk58 = var_r30_737;

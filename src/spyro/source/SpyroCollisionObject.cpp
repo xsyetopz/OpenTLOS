@@ -242,7 +242,7 @@ loop_46:
                         sp148 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         sp178 = 0;
                         if (var_r4_306 != NULL) {
-                            sp38.GetPos();
+                            ((MKProp *) &sp38)->GetPos();
                             sp158 = sp38;
                             sp160 = sp40;
                         } else {

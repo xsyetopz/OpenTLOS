@@ -122,8 +122,8 @@ void Chest::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void ChestDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim("Closed");
-    this->unkE8 = this->unk34->GetAnim("Opening");
-    this->unkEC = this->unk34->GetAnim("Open");
+    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
+    this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim("Opening");
+    this->unkEC = ((MKAnimScript *) this->unk34)->GetAnim("Open");
 }
 #endif

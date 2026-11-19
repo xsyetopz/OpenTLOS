@@ -180,7 +180,7 @@ inline s32 TriggerBoxObject::CheckTarget() {
 
     temp_r3_439 = this->unk54;
     if (temp_r3_439 > 0) {
-        var_r3_442 = temp_r3_439->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_442 = ((MKSceneManager *) temp_r3_439)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
     } else {
         var_r3_442 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -244,7 +244,7 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
 #if 0 // DRAFT: undefined identifier 'unkC'
 inline void TriggerBoxObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    this->unk80.InverseSimple(&this->unk10);
+    ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
 }
 #endif
 
@@ -254,7 +254,7 @@ inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
     this->unk10.unk34 = arg0.unk4;
     this->unk10.unk38 = arg0.unk8;
     this->unk10.unk3C = 1.0f;
-    this->unk80.InverseSimple(&this->unk10);
+    ((Matrix *) &this->unk80)->InverseSimple(&this->unk10);
 }
 #endif
 
@@ -315,7 +315,7 @@ inline s32 TriggerSphereObject::CheckTarget() {
 
     temp_r3_1365 = this->unk54;
     if (temp_r3_1365 > 0) {
-        var_r3_1368 = temp_r3_1365->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_1368 = ((MKSceneManager *) temp_r3_1365)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
     } else {
         var_r3_1368 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }

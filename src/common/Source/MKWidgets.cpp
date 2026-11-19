@@ -490,9 +490,9 @@ void MKWidget_CreateMaterial() {
     }
     pBlankData = var_r3_1068;
     memset(var_r3_1068, 0xFF, 0x1000U);
-    temp_r31_1088 = ((Texture *) ((Texture *) "WidgetBlank"))->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
+    temp_r31_1088 = ((Texture *) "WidgetBlank")->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
     pWidgetBlank = MKMaterial_Create("WidgetBlank");
-    temp_r31_1088->Destroy();
+    ((Texture *) temp_r31_1088)->Destroy();
     MKMat_MK2_SetMaterialType((MKMaterial *) pWidgetBlank, (MKMat_MK2_Standard_MaterialType) 3);
     MKCommonDialogs_InitModule();
 }

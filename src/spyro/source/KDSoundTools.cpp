@@ -65,7 +65,7 @@ void KDSound_SoundWall::Update(bool arg0) {
             this->unk58 = var_f1_61;
             temp_f1_76 = Tools_GetClosestSplineTime(this->unk28, *((MKVector3 *) &this->unk30), this->unk68, this->unk54, this->unk58);
             sp10 = 0.0f;
-            sp18.GetMeasure(temp_f1_76, (Matrix *) this->unk28, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp18)->GetMeasure(temp_f1_76, (Matrix *) this->unk28, KDSpline_PositionMixer);
             this->unk40 = sp18;
             this->unk48 = sp20;
             temp_f2_88 = M2C_FIELD(this, f32 *, 0x44);
@@ -175,7 +175,6 @@ void KDSound_LoopSoundEvent::Update(MKVector3 *arg0, unsigned int arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'Message'
 void KDSound_LoopSoundEvent::Message(MKMessage *arg0) {
     KDSoundFader *temp_r3_358;
     KDSoundFader *temp_r3_363;
@@ -183,18 +182,17 @@ void KDSound_LoopSoundEvent::Message(MKMessage *arg0) {
 
     temp_r3_358 = this->unk0;
     if (temp_r3_358 != NULL) {
-        temp_r3_358->Message(arg0);
+        ((KDSoundPlayer *) temp_r3_358)->Message(arg0);
     }
     temp_r3_363 = this->unk4;
     if (temp_r3_363 != NULL) {
-        temp_r3_363->Message(arg0);
+        ((KDSoundPlayer *) temp_r3_363)->Message(arg0);
     }
     temp_r3_369 = this->unk8;
     if (temp_r3_369 != NULL) {
-        temp_r3_369->Message(arg0);
+        ((KDSoundPlayer *) temp_r3_369)->Message(arg0);
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSound_LoopSoundEvent::Deinit() {
@@ -466,7 +464,7 @@ void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, M
     sp8 = 1;
     KDSoundFader::Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk28.Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk28)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (arg2 != 0) {
         temp_r0_884 = this->unk50;
         switch (temp_r0_884) {                      /* switch 1; irregular */
@@ -505,7 +503,7 @@ void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, M
 #if 0 // DRAFT: illegal use of non-static member
 void KDSoundFlangedFader::Message(MKMessage *arg0) {
     KDSoundPlayer::Message(arg0);
-    this->unk28.Message(arg0);
+    ((KDSoundPlayer *) &this->unk28)->Message(arg0);
     if ((s32) arg0->unk0 == -4) {
         Stop();
     }
@@ -542,6 +540,6 @@ void KDSoundFlangedFader::Init(int arg0, float arg1, float arg2, float arg3, flo
     this->unk6C = 0.0f;
     this->unk54 = 0.0f;
     KDSoundFader::Init(arg4, arg5);
-    this->unk28.Init(arg4, arg5);
+    ((KDSoundFader *) &this->unk28)->Init(arg4, arg5);
 }
 #endif

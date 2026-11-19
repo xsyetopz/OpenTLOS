@@ -6,6 +6,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
@@ -304,7 +305,7 @@ void FallingDustProp::Update() {
                 sp310 = sp50;
                 sp1D8 = (f64) sp58;
                 sp318 = (f64) sp58;
-                gb.unkA4->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float(&gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
+                ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float(&gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
                 sp180.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
                 sp40 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp180);
                 sp190 = sp40;

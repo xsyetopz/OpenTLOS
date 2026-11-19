@@ -141,12 +141,12 @@ void GameData::Init() {
 #endif
 
 void GameData::ModuleDeinit() {
-    ((GameData *) ((GameData *) GameData::gameData))->Deinit();
+    ((GameData *) GameData::gameData)->Deinit();
     *GameData::bModuleInitialised = 0;
 }
 
 void GameData::ModuleInit() {
-    ((GameData *) ((GameData *) GameData::gameData))->Init();
+    ((GameData *) GameData::gameData)->Init();
     *GameData::bModuleInitialised = 1;
 }
 
@@ -168,7 +168,7 @@ void GameData::SetSaveChunk(ChunkInfo *arg0) {
 #if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void GameData::SaveState::ClearData() {
     memset(this, 0, 0x40U);
-    ((GameStats *) ((GameStats *) (this + 0x70)))->Clear();
+    ((GameStats *) (this + 0x70))->Clear();
     if ((s8 **) M2C_FIELD(&gb, s8 ***, 0x330) != NULL) {
         strcpy(&(this + 0x190)->unk0, *M2C_FIELD(&gb, s8 ***, 0x330));
         strcpy(&(this + 0x20)->unk0, &(this + 0x190)->unk0);
@@ -177,13 +177,13 @@ void GameData::SaveState::ClearData() {
 #endif
 
 void GameData::SaveState::Deinit() {
-    ((CameraData *) ((CameraData *) (this + 0x60)))->Deinit();
+    ((CameraData *) (this + 0x60))->Deinit();
 }
 
 void GameData::SaveState::Init() {
-    ((GameSettings *) ((GameSettings *) (this + 0x40)))->Init();
-    ((CameraData *) ((CameraData *) (this + 0x60)))->Init();
-    ((GameStats *) ((GameStats *) (this + 0x70)))->Init();
+    ((GameSettings *) (this + 0x40))->Init();
+    ((CameraData *) (this + 0x60))->Init();
+    ((GameStats *) (this + 0x70))->Init();
     memset(this + 0x190, 0, 0x20U);
 }
 
@@ -695,7 +695,7 @@ void GameData_cpp::__sinit() {
     temp_f0_1223 = (f32) (380000.0 * (0.5 * temp_f1_1211 * -((380000.0 * (temp_f1_1211 * temp_f1_1211)) - 3.0)));
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_1210 * -((2014000.0 * (temp_f4_1210 * temp_f4_1210)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = temp_f0_1223;
-    ((GameData *) ((GameData *) GameData::gameData))->GameData();
+    ((GameData *) GameData::gameData)->GameData();
     sp38 = 1.0f;
     sp3C = 0.5f;
     sp40 = 0.2f;

@@ -21,20 +21,32 @@
 #include "spyro/source/CharacterIceCubesFX.h"
 #include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDeathFX.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyRegion.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FootStepFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
@@ -42,13 +54,13 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 f64 acos(f32);                                      /* extern */
@@ -344,7 +356,7 @@ void Enemy::ChillFx_Update() {
                 M2C_FIELD(temp_r28_554, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A4, f32 *, 0xF4);
                 temp_r3_612 = this->unk9E8.unk4;
                 if (temp_r3_612 != 0) {
-                    temp_r3_616 = temp_r3_612->GetRandomNode(NULL);
+                    temp_r3_616 = ((CharacterBodyFX *) temp_r3_612)->GetRandomNode(NULL);
                     if (temp_r3_616 != NULL) {
                         M2C_FIELD(temp_r3_549, f64 *, 0) = (f64) M2C_FIELD(temp_r3_616, f64 *, 8);
                         M2C_FIELD(temp_r3_549, f64 *, 8) = (f64) M2C_FIELD(temp_r3_616, f64 *, 0x10);
@@ -435,11 +447,11 @@ s32 Enemy::TryFreeze(float arg0, bool arg1, bool arg2) {
                 if ((u32) temp_r4_796 != 0U) {
                     M2C_FIELD(temp_r4_796, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_796, u8 *, 0x10) & ~0x40);
                 }
-                this->unk740.SetState(lit_2488, 1.0f);
+                ((FireAndIceFX *) &this->unk740)->SetState(lit_2488, 1.0f);
                 temp_r3_808 = this->unk9E8.unk4;
                 if (temp_r3_808 != 0) {
-                    temp_r3_808->Reset();
-                    this->unk9E8.unk4->Trigger();
+                    ((CharacterIceCubesFX *) temp_r3_808)->Reset();
+                    ((CharacterIceCubesFX *) this->unk9E8.unk4)->Trigger();
                 }
                 ChillFx_EndChill();
                 if (arg2 != 0) {
@@ -469,7 +481,7 @@ block_30:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void Enemy::ThawIfFrozen() {
     f64 sp88;
     f64 sp80;
@@ -501,7 +513,7 @@ void Enemy::ThawIfFrozen() {
         M2C_FIELD(temp_r4_881, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_881, u8 *, 0x10) | 0x40);
     }
     if ((s32) this->unk750.unk68 == 1) {
-        this->unk740.SetState(lit_2451, 1.0f);
+        ((FireAndIceFX *) &this->unk740)->SetState(lit_2451, 1.0f);
     }
     temp_r3_897 = this->unk9E8.unk4;
     if ((temp_r3_897 != 0) && ((u8) M2C_FIELD(temp_r3_897, u8 *, 0x20) != 0)) {
@@ -509,10 +521,10 @@ void Enemy::ThawIfFrozen() {
     }
     temp_r3_912 = this->unk9E8.unk4;
     if ((temp_r3_912 != 0) && ((u8) M2C_FIELD(temp_r3_912, u8 *, 0x20) != 0)) {
-        temp_r3_912->Shatter();
+        ((CharacterIceCubesFX *) temp_r3_912)->Shatter();
         var_r30_922 = 0;
         do {
-            temp_r3_928 = this->unk9E8.unk4->GetRandomNode(NULL);
+            temp_r3_928 = ((CharacterBodyFX *) this->unk9E8.unk4)->GetRandomNode(NULL);
             sp38 = -1.0f;
             sp28 = 1.0f;
             sp30 = -1.0f;
@@ -567,7 +579,7 @@ s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     sp38 = temp_f0_1023;
     sp10 = this->unk588.unk4 + (f32) sp30;
     sp40 = (f64) sp10;
-    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
+    if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) arg0) != 0) && (arg1 > 0)) {
         temp_r30_1053 = (s32) (f32) arg1;
         if ((f32) temp_r30_1053 > 0.0f) {
             ((CollectableSpawner *) (M2C_FIELD((&gb + (SpawnerType_ResolveFromStatType(arg0) * 4)), CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp38), temp_r30_1053, 200.0f, 500.0f, -1, NULL);
@@ -616,18 +628,16 @@ void Enemy::SetInvulnerableToMeleeAttacks(bool arg0, bool arg1) {
     this->unkABC = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkABC) & 0xBFFFFFFF));
 }
 
-#if 0 // DRAFT: undefined identifier 'HasAttack'
 void Enemy::SetCurrAnimSet(int arg0) {
     this->unkACC = M2C_BITWISE(f32, arg0);
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x80) | ((this->unkA20->HasAttack(1U, M2C_BITWISE(s32, this->unkACC)) << 7) & 0x80));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x40) | ((this->unkA20->HasAttack(2U, M2C_BITWISE(s32, this->unkACC)) << 6) & 0x40));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x20) | ((this->unkA20->HasAttack(4U, M2C_BITWISE(s32, this->unkACC)) << 5) & 0x20));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x10) | ((this->unkA20->HasAttack(8U, M2C_BITWISE(s32, this->unkACC)) << 4) & 0x10));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~8) | ((this->unkA20->HasAttack(0x10000U, M2C_BITWISE(s32, this->unkACC)) << 3) & 8));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~4) | ((this->unkA20->HasAttack(0x20000U, M2C_BITWISE(s32, this->unkACC)) << 2) & 4));
-    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~2) | ((this->unkA20->HasAttack(0x40000U, M2C_BITWISE(s32, this->unkACC)) << 1) & 2));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x80) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(1U, M2C_BITWISE(s32, this->unkACC)) << 7) & 0x80));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x40) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(2U, M2C_BITWISE(s32, this->unkACC)) << 6) & 0x40));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x20) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(4U, M2C_BITWISE(s32, this->unkACC)) << 5) & 0x20));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~0x10) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(8U, M2C_BITWISE(s32, this->unkACC)) << 4) & 0x10));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~8) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(0x10000U, M2C_BITWISE(s32, this->unkACC)) << 3) & 8));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~4) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(0x20000U, M2C_BITWISE(s32, this->unkACC)) << 2) & 4));
+    M2C_FIELD(this, u8 *, 0xB00) = (u8) ((M2C_FIELD(this, u8 *, 0xB00) & ~2) | ((((EnemyDescriptor *) this->unkA20)->HasAttack(0x40000U, M2C_BITWISE(s32, this->unkACC)) << 1) & 2));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Enemy::SetWorldMatrix(Matrix *arg0) {
@@ -696,7 +706,7 @@ void Enemy::UpdateLighting() {
         sp60 = temp_f0_1303;
         sp28 = M2C_FIELD(temp_r4_1295, f32 *, 8) + (f32) sp58;
         sp68 = (f64) sp28;
-        sp70.CalculateLightPosForShadow(*((MKVector3 *) gb.unk80));
+        ((LightManager *) &sp70)->CalculateLightPosForShadow(*((MKVector3 *) gb.unk80));
         temp_r3_1320 = this->unk8 + 0x30;
         sp10 = M2C_FIELD(temp_r3_1320, f64 *, 0) - sp70;
         sp80 = sp10;
@@ -1302,7 +1312,7 @@ loop_56:
                             var_f4_2408 = 1.0f;
                         }
                         sp18 = var_f4_2408;
-                        gb.unk94->Trigger(*((MKVector3 *) &sp1A0), *((MKVector3 *) &sp1B0), sp18, lit_2312, (MKVector4) &spC0);
+                        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp1A0), *((MKVector3 *) &sp1B0), sp18, lit_2312, (MKVector4) &spC0);
                     }
                 }
                 var_r30_2137 += 4;
@@ -1313,7 +1323,7 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     f64 spC0;
     f64 spB8;
@@ -1346,7 +1356,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     sp34 = 1.0f;
     sp98 = (f64) sp28;
     spA0 = (f64) sp30;
-    gb.unk74->Emit(arg1, MKVector3::zero, 10.0f, *((MKVector4 *) &sp98), 0.0f);
+    ((EmbersPS *) gb.unk74)->Emit(arg1, MKVector3::zero, 10.0f, *((MKVector4 *) &sp98), 0.0f);
     if (arg0 & 1) {
         KDSound_Play3d(GS_BlockSparksFIRE, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
     } else if (arg0 & 4) {
@@ -1383,7 +1393,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
         sp38 = temp_f0_2656;
         sp20 = (f32) spB0 * 2000.0f;
         sp40 = (f64) sp20;
-        gb.unk230->Emit(*((MKVector3 *) &spB8), *((MKVector3 *) &sp38), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 0U);
+        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spB8), *((MKVector3 *) &sp38), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 0U);
         var_r28_2618 += 1;
     } while (var_r28_2618 < 0xA);
 }
@@ -1429,9 +1439,8 @@ void Enemy::DoHitSoundFx(unsigned int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Enemy::ClearHitAndDeathFX() {
-    this->unk740.SetDefaults();
+    ((FireAndIceFX *) &this->unk740)->SetDefaults();
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~8);
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~4);
     M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) & ~2);
@@ -1439,9 +1448,8 @@ void Enemy::ClearHitAndDeathFX() {
     this->unkAA4 = 0.0f;
     this->unkA90 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'EnemyAttack *' to
 void Enemy::DoDeadFx() {
     f64 sp10;
     f64 sp8;
@@ -1452,11 +1460,11 @@ void Enemy::DoDeadFx() {
     temp_f1_2831 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0xC) / 200.0f;
     sp8 = M2C_FIELD(temp_r4_2829, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r4_2829, f64 *, 0x38);
-    gb.unk98->Trigger(this->unkA20 + 0x108, *((MKVector3 *) &sp8), temp_f1_2831, this->unkAD8);
+    ((EnemyDeathFX *) gb.unk98)->Trigger(this->unkA20 + 0x108, *((MKVector3 *) &sp8), temp_f1_2831, this->unkAD8);
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Enemy::DoDeathFx(unsigned int arg0) {
     f64 sp88;
     f64 sp80;
@@ -1516,9 +1524,9 @@ void Enemy::DoDeathFx(unsigned int arg0) {
             }
             temp_r3_2937 = this->unk9E8.unk8;
             if ((u32) temp_r3_2937 != 0U) {
-                temp_r3_2937->Enable(1U, 1.0f, 0U);
+                ((CharacterZapFX *) temp_r3_2937)->Enable(1U, 1.0f, 0U);
             }
-            this->unk740.SetState(lit_2211, 3.0f);
+            ((FireAndIceFX *) &this->unk740)->SetState(lit_2211, 3.0f);
             temp_f30_2953 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f31_2958 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f1_2962 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1547,7 +1555,7 @@ void Enemy::DoDeathFx(unsigned int arg0) {
                 sp70 = temp_f0_3009;
                 sp28 = M2C_FIELD(temp_r3_3000, f32 *, 8) + (f32) sp68;
                 sp78 = (f64) sp28;
-                gb.unk94->Trigger(*((MKVector3 *) &sp70), *((MKVector3 *) &sp80), sp8, lit_741, (MKVector4) &sp50);
+                ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp70), *((MKVector3 *) &sp80), sp8, lit_741, (MKVector4) &sp50);
                 return;
             }
         } else {
@@ -1799,10 +1807,10 @@ loop_34:
                     var_f30_3347 = 4.0f;
                     break;
                 }
-                this->unk740.SetState(lit_2165, var_f30_3347);
+                ((FireAndIceFX *) &this->unk740)->SetState(lit_2165, var_f30_3347);
                 temp_r3_3371 = this->unk9E8.unkC;
                 if ((u32) temp_r3_3371 != 0U) {
-                    temp_r3_3371->Enable(1U, var_f30_3347);
+                    ((CharacterFireFX *) temp_r3_3371)->Enable(1U, var_f30_3347);
                 }
                 ChillFx_EndChill();
                 return;
@@ -1810,9 +1818,9 @@ loop_34:
             if (temp_r3_3081 & 2) {
                 temp_r3_3384 = this->unk9E8.unk8;
                 if ((u32) temp_r3_3384 != 0U) {
-                    temp_r3_3384->Enable(1U, 1.0f, 0U);
+                    ((CharacterZapFX *) temp_r3_3384)->Enable(1U, 1.0f, 0U);
                 }
-                this->unk740.SetState(lit_2173, 1.0f);
+                ((FireAndIceFX *) &this->unk740)->SetState(lit_2173, 1.0f);
                 temp_f30_3400 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 temp_f31_3405 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 temp_f1_3409 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1841,7 +1849,7 @@ loop_34:
                     sp100 = temp_f0_3456;
                     sp98 = M2C_FIELD(temp_r3_3447, f32 *, 8) + (f32) spF8;
                     sp108 = (f64) sp98;
-                    gb.unk94->Trigger(*((MKVector3 *) &sp100), *((MKVector3 *) &sp160), sp8, lit_741, (MKVector4) &spE0);
+                    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp100), *((MKVector3 *) &sp160), sp8, lit_741, (MKVector4) &spE0);
                 }
             } else if (temp_r3_3081 & 8) {
                 this->unkAA4 = 0.5f;
@@ -1998,7 +2006,7 @@ void Enemy::CheckForHazards() {
             if ((var_r31_3618 == 0) && (temp_r4_3765 = M2C_FIELD(this, u8 *, 0xB09), ((((temp_r4_3765 >> 2U) & 1) == 0) == 0))) {
                 if ((s32) this->unk110.unk16C > 0) {
                     M2C_FIELD(this, u8 *, 0xB09) = (u8) (temp_r4_3765 & ~4);
-                    spB0.GetRegionPos();
+                    ((EnemyRegion *) &spB0)->GetRegionPos();
                     if ((f32) fabs(spB4 - this->unk588.unk0) > 100.0f) {
                         SetupEnemyRegion(*((MKVector3 *) &this->unk588), 1000.0f);
                     }
@@ -2094,7 +2102,7 @@ void Enemy::SetIdleMovementSpeed(bool arg0) {
     this->unk684 = 0.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
     EnemyHudData sp8;
     EnemyAttack *temp_r3_4178;
@@ -2139,7 +2147,7 @@ void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
     temp_f30_4016 = this->unkAB4;
     temp_r31_4021 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
     if (IsDead() == 0) {
-        this->unk938.Init();
+        ((EnemyDamageFeedback *) &this->unk938)->Init();
         ProcessDamageQueue((EnemyDamageFeedback *) &this->unk938, arg1);
         if (arg1 == 0) {
             this->unk9D8 = 0;
@@ -2307,10 +2315,10 @@ void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
         if (arg1 != 0) {
             this->unk948.unk18 = 2e-44f;
         }
-        temp_f30_4446 = this->unkA20->GetEnemySetting((EnemySettingType) 3);
+        temp_f30_4446 = ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 3);
         GetMaxHealth();
         temp_f30_4453 = temp_f30_4446 * (M2C_BITWISE(f32, this->unk948.unk14) / M2C_ERROR(/* Read from unset register $f1 */));
-        temp_f1_4454 = this->unkA20->GetEnemySetting((EnemySettingType) 2);
+        temp_f1_4454 = ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 2);
         var_f0_4456 = this->unkAA0 + temp_f30_4453;
         if (var_f0_4456 < temp_f1_4454) {
 
@@ -2545,25 +2553,21 @@ void Enemy::SetArmour(float arg0) {
     this->unkAB4 = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
 f32 Enemy::GetHealthPercentage() {
     f32 temp_f1_5080;
     f32 temp_f31_5076;
 
     temp_f31_5076 = this->unkAB0;
-    temp_f1_5080 = temp_f31_5076 / this->unkA20->GetEnemySetting((EnemySettingType) 0);
+    temp_f1_5080 = temp_f31_5076 / ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0);
     if (temp_f1_5080 < 1.0f) {
         return temp_f1_5080;
     }
     return 1.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
 void Enemy::GetMaxHealth() {
-    this->unkA20->GetEnemySetting((EnemySettingType) 0);
+    ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0);
 }
-#endif
 
 void Enemy::SetHealth(float arg0) {
     this->unkAB0 = arg0;
@@ -2676,7 +2680,7 @@ loop_28:
         if (temp_r4_5276 & 0x100F) {
             var_r5_5277 += 1;
         }
-        temp_f1_5285 = this->unkA20->GetDamageMultiplier((u32) temp_r4_5276, var_r5_5277, ((u8) arg0->unk34 >> 6U) & 1);
+        temp_f1_5285 = ((EnemyDescriptor *) this->unkA20)->GetDamageMultiplier((u32) temp_r4_5276, var_r5_5277, ((u8) arg0->unk34 >> 6U) & 1);
         var_f2_5286 = 0.0f;
         if (var_f2_5286 > temp_f1_5285) {
 
@@ -2695,7 +2699,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Enemy::Recycle() {
     AttackSweepData *temp_r3_5383;
     AttackerManager *var_r3_5354;
@@ -2707,11 +2711,11 @@ void Enemy::Recycle() {
     if (((u8) M2C_FIELD(this, u8 *, 0xB09) >> 7U) & 1) {
         Deactivate();
         var_r31_5337 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_5337 = 1;
         }
         if (var_r31_5337 != 0) {
-            var_r3_5354 = M2C_FIELD(this->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_5354 = M2C_FIELD(((TargetContext *) &this->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_5354 = NULL;
         }
@@ -2724,13 +2728,13 @@ void Enemy::Recycle() {
         }
         DisableCurrentProjectile(0U, MKVector3::zero);
         RemoveCameraCollisionItem();
-        this->unk6B0.UnregisterTargetable();
+        ((Targetable *) &this->unk6B0)->UnregisterTargetable();
     }
     temp_r3_5383 = this->unkA30;
     if (temp_r3_5383 != NULL) {
         temp_r3_5386 = temp_r3_5383->unk0;
         if ((u32) temp_r3_5386 != 0U) {
-            temp_r3_5386->ItemWasRecycled((MKProp *) this);
+            ((SpawnerObject *) temp_r3_5386)->ItemWasRecycled((MKProp *) this);
         }
     }
     M2C_FIELD(this, u8 *, 0xB01) = (u8) (M2C_FIELD(this, u8 *, 0xB01) & ~0x10);
@@ -2759,11 +2763,11 @@ void Enemy::Despawn(bool arg0) {
             ((EventMessage *) (temp_r3_5438 + 0x10))->Send((MKProp *) this);
         }
         var_r31_5446 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_5446 = 1;
         }
         if (var_r31_5446 != 0) {
-            var_r3_5463 = M2C_FIELD(this->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_5463 = M2C_FIELD(((TargetContext *) &this->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_5463 = NULL;
         }
@@ -2776,9 +2780,9 @@ void Enemy::Despawn(bool arg0) {
         }
         DisableCurrentProjectile(0U, MKVector3::zero);
         RemoveCameraCollisionItem();
-        this->unk6B0.UnregisterTargetable();
+        ((Targetable *) &this->unk6B0)->UnregisterTargetable();
         ThawIfFrozen();
-        this->unk740.SetState(lit_1760, 1.0f);
+        ((FireAndIceFX *) &this->unk740)->SetState(lit_1760, 1.0f);
     }
     M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) & ~0x80);
 }
@@ -2851,7 +2855,7 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         if (M2C_FIELD(temp_r3_5606, s32 *, 4) & 0x80) {
             temp_r4_5612 = M2C_FIELD(temp_r3_5606, KDPathSegment **, 0x20);
             if (temp_r4_5612 != NULL) {
-                this->unkA7C.SetTo(temp_r4_5612, 0);
+                ((KDPathIterator *) &this->unkA7C)->SetTo(temp_r4_5612, 0);
             } else {
                 sp20.NearestPoint(3, *((MKVector3 *) &this->unk588));
                 this->unkA7C = M2C_BITWISE(f32, sp20);
@@ -2948,7 +2952,7 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) | 0x80);
         temp_r3_5843 = this->unkA44;
         if (temp_r3_5843 != NULL) {
-            temp_r3_5843->SetCurrentEAP(M2C_FIELD(this->unkA20, s32 *, 0x22C));
+            ((EAPManager *) temp_r3_5843)->SetCurrentEAP(M2C_FIELD(this->unkA20, s32 *, 0x22C));
         }
         temp_r3_5850 = this->unkA28;
         if (temp_r3_5850 != NULL) {
@@ -2960,7 +2964,7 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         }
         SetupEnemyRegion(*((MKVector3 *) &this->unk588), 1000.0f);
         if ((u8) M2C_FIELD(this->unkA20, u8 *, 0x1D5) != 0) {
-            this->unk6B0.RegisterTargetable();
+            ((Targetable *) &this->unk6B0)->RegisterTargetable();
         }
         temp_r3_5876 = this->unk638;
         if (temp_r3_5876 != NULL) {
@@ -2968,13 +2972,13 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             if (this != NULL) {
                 var_r4_5880 = (Enemy *) &this->unk6B0;
             }
-            temp_r3_5876->SetVehicle((Targetable *) var_r4_5880);
-            this->unk638->SetRegion((EnemyRegion *) &this->unk750.unkA0);
-            this->unk638->SetExclusionRegion((EnemyRegion *) &this->unk800.unk28);
+            ((SB2 *) temp_r3_5876)->SetVehicle((Targetable *) var_r4_5880);
+            ((SB2 *) this->unk638)->SetRegion((EnemyRegion *) &this->unk750.unkA0);
+            ((SB2 *) this->unk638)->SetExclusionRegion((EnemyRegion *) &this->unk800.unk28);
         }
-        this->unk6C0.Reset();
+        ((NodeLookAt *) &this->unk6C0)->Reset();
         M2C_FIELD(this, s8 *, 0x6F8) = 0;
-        this->unk9E0.Create(M2C_FIELD(this->unkA20, s32 *, 0x1CC));
+        ((Name *) &this->unk9E0)->Create(M2C_FIELD(this->unkA20, s32 *, 0x1CC));
         temp_r3_5900 = this->unkA2C;
         if (temp_r3_5900 != NULL) {
             ((EventMessage *) (temp_r3_5900 + 0xC))->Send((MKProp *) this);
@@ -3006,13 +3010,13 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsWithin'
+#if 0 // DRAFT: pointer/array required
 u8 Enemy::InWaterVolume(const MKVector3 &arg0, int *arg1) {
     u8 var_r31_6002;
 
     var_r31_6002 = 0;
     *arg1 = 0;
-    if ((arg0.IsWithin(*NULL, (f32 *) arg1, M2C_ERROR(/* Read from unset register $r6 */)) != 0) && (*arg1 & 5)) {
+    if ((((KDWaterVolume *) &arg0)->IsWithin(*NULL, (f32 *) arg1, M2C_ERROR(/* Read from unset register $r6 */)) != 0) && (*arg1 & 5)) {
         var_r31_6002 = 1;
     }
     return var_r31_6002;
@@ -3209,7 +3213,7 @@ loop_40:
                         }
                         if (var_r3_6285 == NULL) {
                             if (var_r26_6123 != 0) {
-                                sp38.GetPos();
+                                ((MKProp *) &sp38)->GetPos();
                                 sp18 = sp38 - M2C_FIELD(temp_r18_6269, f64 *, 0);
                                 var_f5_6315 = 0.0f;
                                 sp78 = sp18;
@@ -3281,7 +3285,7 @@ loop_40:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 Enemy::MeleeDamageTarget(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int arg3) {
     u8 sp56;
     s8 sp55;
@@ -3326,7 +3330,7 @@ s32 Enemy::MeleeDamageTarget(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &a
         }
         sp1C = 0;
         temp_r28_6515 = arg1->unk50;
-        temp_f1_6517 = this->unkA20->GetEnemyAttackSetting((EnemySettingType) 5, arg1);
+        temp_f1_6517 = ((EnemyDescriptor *) this->unkA20)->GetEnemyAttackSetting((EnemySettingType) 5, arg1);
         temp_r3_6518 = this->unk8;
         temp_f3_6522 = M2C_FIELD(temp_r3_6518, f64 *, 0x30);
         temp_f2_6524 = M2C_FIELD(temp_r3_6518, f64 *, 0x38);
@@ -3363,7 +3367,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
+#if 0 // DRAFT: undefined identifier 'sp10'
 u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int arg3) {
     s8 sp89;
     u8 sp88;
@@ -3398,7 +3402,7 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
     sp28 = sp18;
     sp20 = arg2.unk8 * temp_f2_6582;
     sp30 = (f64) sp20;
-    temp_f1_6598 = this->unkA20->GetEnemyAttackSetting((EnemySettingType) 5, arg1);
+    temp_f1_6598 = ((EnemyDescriptor *) this->unkA20)->GetEnemyAttackSetting((EnemySettingType) 5, arg1);
     sp38 = (MKProp *)7;
     sp60 = arg1->unk48;
     sp64 = this;
@@ -3414,7 +3418,7 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (this != NULL) {
-        sp8.GetPos();
+        ((MKProp *) &sp8)->GetPos();
         sp68 = sp8;
         sp70 = sp10;
     } else {
@@ -3478,27 +3482,27 @@ EnemyDamageFeedback *Enemy::AddDamage(float arg0, bool arg1, const MKVector3 &ar
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 void Enemy::SetupExclusionRegion() {
     KDPathIterator sp14;
     KDLocalPathSegment *sp8;
     s32 temp_cr0_eq_6756;
 
-    if (this->unk750.unkA0.GetPathSegment() != 0) {
+    if (((EnemyRegion *) &this->unk750.unkA0)->GetPathSegment() != 0) {
         sp14.Init();
-        sp8.NearestPointLocalSegment(7, *(M2C_FIELD(this->unk750.unkA0.GetPathSegment(), MKVector3 **, 0x24)));
+        ((KDPathManager *) &sp8)->NearestPointLocalSegment(7, *(M2C_FIELD(((EnemyRegion *) &this->unk750.unkA0)->GetPathSegment(), MKVector3 **, 0x24)));
         temp_cr0_eq_6756 = sp8 == NULL;
         sp14 = sp8;
         sp14.unk4 = spC;
         sp14.unk8 = sp10;
-        if ((temp_cr0_eq_6756 == 0) && (temp_cr0_eq_6756 == 0) && (this->unk750.unkA0.IsPointWithin(*sp8->unk24) != 0)) {
-            this->unk800.unk28.SetupRegion(sp8);
+        if ((temp_cr0_eq_6756 == 0) && (temp_cr0_eq_6756 == 0) && (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*sp8->unk24) != 0)) {
+            ((EnemyRegion *) &this->unk800.unk28)->SetupRegion(sp8);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 void Enemy::TryChangeEnemyRegion() {
     M2C_UNK sp28;
     AITargetData sp18;
@@ -3506,30 +3510,30 @@ void Enemy::TryChangeEnemyRegion() {
     u8 var_r31_6795;
     u8 var_r31_6812;
 
-    if (this->unk750.unkA0.TryChangeRegion(*((MKVector3 *) &this->unk588)) != 0) {
+    if (((EnemyRegion *) &this->unk750.unkA0)->TryChangeRegion(*((MKVector3 *) &this->unk588)) != 0) {
         SetupExclusionRegion();
         var_r31_6795 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_6795 = 1;
         }
         if (var_r31_6795 != 0) {
-            sp28.GetPos();
+            ((AITargetData *) &sp28)->GetPos();
             var_r31_6812 = 0;
-            if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-                sp8.GetRegionPos();
+            if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
+                ((EnemyRegion *) &sp8)->GetRegionPos();
                 if ((f32) fabs(spC - sp2C) <= 500.0f) {
                     var_r31_6812 = 1;
                 }
             }
-            this->unk838.unk28.SetInsideRegion(var_r31_6812);
+            ((AITargetData *) &this->unk838.unk28)->SetInsideRegion(var_r31_6812);
             sp18.GetPos();
-            this->unk838.unk28.SetInsideExclusionRegion(this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp18)));
+            ((AITargetData *) &this->unk838.unk28)->SetInsideExclusionRegion(((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp18)));
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 void Enemy::SetupEnemyRegion(const MKVector3 &arg0, float arg1) {
     M2C_UNK sp28;
     AITargetData sp18;
@@ -3537,24 +3541,24 @@ void Enemy::SetupEnemyRegion(const MKVector3 &arg0, float arg1) {
     u8 var_r31_6863;
     u8 var_r31_6880;
 
-    this->unk750.unkA0.SetupRegion(arg0, arg1);
+    ((EnemyRegion *) &this->unk750.unkA0)->SetupRegion(arg0, arg1);
     SetupExclusionRegion();
     var_r31_6863 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
         var_r31_6863 = 1;
     }
     if (var_r31_6863 != 0) {
-        sp28.GetPos();
+        ((AITargetData *) &sp28)->GetPos();
         var_r31_6880 = 0;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-            sp8.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
+            ((EnemyRegion *) &sp8)->GetRegionPos();
             if ((f32) fabs(spC - sp2C) <= 500.0f) {
                 var_r31_6880 = 1;
             }
         }
-        this->unk838.unk28.SetInsideRegion(var_r31_6880);
+        ((AITargetData *) &this->unk838.unk28)->SetInsideRegion(var_r31_6880);
         sp18.GetPos();
-        this->unk838.unk28.SetInsideExclusionRegion(this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp18)));
+        ((AITargetData *) &this->unk838.unk28)->SetInsideExclusionRegion(((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp18)));
     }
 }
 #endif
@@ -3931,7 +3935,7 @@ void Enemy::Enable() {
     Character::Enable();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spC'
 s32 Enemy::SelectTarget() {
     M2C_UNK sp38;
     M2C_UNK sp28;
@@ -3943,44 +3947,44 @@ s32 Enemy::SelectTarget() {
     u8 var_r30_7709;
 
     var_r30_7666 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
         var_r30_7666 = 1;
     }
     if (var_r30_7666 == 0) {
-        this->unk838.unk28.Set(gb.unk20->unk8.Get(), 0U);
-        this->unk838.unk28.SetIsNew(1U);
+        ((AITargetData *) &this->unk838.unk28)->Set(gb.unk20->unk8.Get(), 0U);
+        ((AITargetData *) &this->unk838.unk28)->SetIsNew(1U);
     }
     var_r30_7693 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
         var_r30_7693 = 1;
     }
     if (var_r30_7693 != 0) {
-        this->unk838.unk28.Update(*((MKVector3 *) &this->unk588));
+        ((AITargetData *) &this->unk838.unk28)->Update(*((MKVector3 *) &this->unk588));
         var_r30_7709 = 1;
-        if (!(this->unk838.unk28.GetDist() < M2C_FIELD(this->unkA20, f32 *, 0x130))) {
-            sp38.GetDir();
+        if (!(((AITargetData *) &this->unk838.unk28)->GetDist() < M2C_FIELD(this->unkA20, f32 *, 0x130))) {
+            ((AITargetData *) &sp38)->GetDir();
             if (IsInsideFOV(*((MKVector3 *) &sp38)) == 0) {
                 var_r30_7709 = 0;
             }
         }
-        sp28.GetPos();
+        ((AITargetData *) &sp28)->GetPos();
         var_r29_7730 = 0;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-            sp8.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
+            ((EnemyRegion *) &sp8)->GetRegionPos();
             if ((f32) fabs(spC - sp2C) <= 500.0f) {
                 var_r29_7730 = 1;
             }
         }
-        this->unk838.unk28.SetInsideRegion(var_r29_7730);
+        ((AITargetData *) &this->unk838.unk28)->SetInsideRegion(var_r29_7730);
         sp18.GetPos();
-        this->unk838.unk28.SetInsideExclusionRegion(this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp18)));
-        this->unk838.unk28.SetInsideFOV(var_r30_7709);
+        ((AITargetData *) &this->unk838.unk28)->SetInsideExclusionRegion(((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp18)));
+        ((AITargetData *) &this->unk838.unk28)->SetInsideFOV(var_r30_7709);
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 s32 Enemy::SelectDefensiveAttack(float arg0, unsigned int arg1) {
     CharacterBreathFX **var_r7_7858;
     CharacterBreathFX *temp_r6_7890;
@@ -4023,7 +4027,7 @@ loop_15:
                 var_r4_7809 = 1;
             }
             var_r25_7818 = 0;
-            if ((var_r4_7809 != 0) && (this->unkAA0 >= this->unkA20->GetEnemyAttackSetting((EnemySettingType) 7, temp_r24_7842))) {
+            if ((var_r4_7809 != 0) && (this->unkAA0 >= ((EnemyDescriptor *) this->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, temp_r24_7842))) {
                 var_r25_7818 = 1;
             }
             if (var_r25_7818 != 0) {
@@ -4476,7 +4480,7 @@ s32 Enemy::CanMoveAwayLeft() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp14'
 u8 Enemy::CanMoveAwayForward() {
     f64 spD8;
     f64 spD0;
@@ -4557,13 +4561,13 @@ u8 Enemy::CanMoveAwayForward() {
     var_r31_8666 = 0;
     var_r30_8668 = 0;
     var_r29_8670 = 0;
-    if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &spC0)) != 0) {
-        sp10.GetRegionPos();
+    if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &spC0)) != 0) {
+        ((EnemyRegion *) &sp10)->GetRegionPos();
         if ((f32) fabs(sp14 - unkspC4) <= 500.0f) {
             var_r29_8670 = 1;
         }
     }
-    if ((var_r29_8670 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &spC0)) == 0)) {
+    if ((var_r29_8670 != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &spC0)) == 0)) {
         var_r30_8668 = 1;
     }
     if ((var_r30_8668 != 0) && (MKCollision_SweepSphereCollide(*((MKVector3 *) &spD0), *((MKVector3 *) &spC0), 100.0f, NULL, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) == 0)) {
@@ -4576,7 +4580,7 @@ u8 Enemy::CanMoveAwayForward() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp88'
 u8 Enemy::CanMoveAwayBack() {
     f64 spE8;
     f64 spE0;
@@ -4654,11 +4658,11 @@ u8 Enemy::CanMoveAwayBack() {
     spD0 = temp_f0_8810;
     sp28 = (f32) spE8 - (f32) sp98;
     spD8 = (f64) sp28;
-    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
         var_r30_8814 = 1;
     }
     if (var_r30_8814 != 0) {
-        sp80.GetDir();
+        ((AITargetData *) &sp80)->GetDir();
         if (((this->unkC8 * sp88) + ((this->unkC0 * sp80) + (this->unkC4 * sp84))) > 0.0f) {
             var_r29_8812 = 1;
         }
@@ -4674,8 +4678,8 @@ u8 Enemy::CanMoveAwayBack() {
     var_r28_8863 = 0;
     if (var_r29_8812 != 0) {
         var_r27_8865 = 0;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &spD0)) != 0) {
-            sp10.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &spD0)) != 0) {
+            ((EnemyRegion *) &sp10)->GetRegionPos();
             if ((f32) fabs(sp14 - unkspD4) <= 500.0f) {
                 var_r27_8865 = 1;
             }
@@ -4684,7 +4688,7 @@ u8 Enemy::CanMoveAwayBack() {
             var_r28_8863 = 1;
         }
     }
-    if ((var_r28_8863 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &spD0)) == 0)) {
+    if ((var_r28_8863 != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &spD0)) == 0)) {
         var_r30_8862 = 1;
     }
     if ((var_r30_8862 != 0) && (MKCollision_SweepSphereCollide(*((MKVector3 *) &spE0), *((MKVector3 *) &spD0), 100.0f, NULL, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) == 0)) {
@@ -4761,77 +4765,53 @@ u8 Enemy::CanMoveAwayFromHero() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanOperateLever() {
-    return this->unkA20->GetAnimSequence(0x12, 0xC8, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0x12, 0xC8, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanCustomSpawn() {
-    return this->unkA20->GetAnimSequence(0xF, 0x64, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xF, 0x64, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanSummonWall() {
-    return this->unkA20->GetAnimSequence(1, 0xA8, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0xA8, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanSummon() {
-    return this->unkA20->GetAnimSequence(1, 0xB, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0xB, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanBarricade() {
-    return this->unkA20->GetAnimSequence(0x12, 0xCE, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0x12, 0xCE, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanGiveOrders() {
-    return this->unkA20->GetAnimSequence(1, 0x37, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0x37, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanPanic() {
-    return this->unkA20->GetAnimSequence(6, 0x11, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(6, 0x11, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanCower() {
-    return this->unkA20->GetAnimSequence(1, 0xD, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0xD, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanTaunt() {
-    return this->unkA20->GetAnimSequence(1, 0xFA, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0xFA, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanAlert() {
-    return this->unkA20->GetAnimSequence(1, 2, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 2, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanSleepOnGround() {
-    return this->unkA20->GetAnimSequence(1, 0xA6, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0xA6, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanSleep() {
-    return this->unkA20->GetAnimSequence(1, 9, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 9, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
 s32 Enemy::CanAttackRanged() {
     return M2C_FIELD(this->unkA20, s32 *, 0x21C) > 0;
@@ -4845,91 +4825,69 @@ s32 Enemy::CanPickUp() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanLand() {
-    return this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanGlide() {
-    return this->unkA20->GetAnimSequence(0xA, 0xE1, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xE1, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanHover() {
-    return this->unkA20->GetAnimSequence(0xA, 0xE3, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xE3, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanFly() {
-    return this->unkA20->GetAnimSequence(0xA, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanJump() {
-    return this->unkA20->GetAnimSequence(9, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(9, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanRun() {
-    return this->unkA20->GetAnimSequence(6, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(6, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanWalk() {
-    return this->unkA20->GetAnimSequence(5, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(5, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanDie() {
-    return this->unkA20->GetAnimSequence(3, 0x1E, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(3, 0x1E, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanCheer() {
-    return this->unkA20->GetAnimSequence(1, 4, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+    return ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 4, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Enemy::CanTurn() {
-    if ((this->unkA20->GetAnimSequence(4, 0x14, M2C_BITWISE(s32, this->unkACC), NULL) != NULL) && (this->unkA20->GetAnimSequence(4, 0x15, M2C_BITWISE(s32, this->unkACC), NULL) != NULL)) {
+    if ((((EnemyDescriptor *) this->unkA20)->GetAnimSequence(4, 0x14, M2C_BITWISE(s32, this->unkACC), NULL) != NULL) && (((EnemyDescriptor *) this->unkA20)->GetAnimSequence(4, 0x15, M2C_BITWISE(s32, this->unkACC), NULL) != NULL)) {
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 u8 Enemy::CanIdle() {
     EnemyAttack *temp_r3_9583;
     u8 var_r31_9563;
     u8 var_r4_9581;
 
     var_r31_9563 = 0;
-    if ((this->unkA20->GetAnimSequence(1, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL) || (this->unkA20->GetAnimSequence(1, 1, M2C_BITWISE(s32, this->unkACC), NULL) != NULL)) {
+    if ((((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 0, M2C_BITWISE(s32, this->unkACC), NULL) != NULL) || (((EnemyDescriptor *) this->unkA20)->GetAnimSequence(1, 1, M2C_BITWISE(s32, this->unkACC), NULL) != NULL)) {
         var_r31_9563 = 1;
     }
     var_r4_9581 = var_r31_9563;
     if (var_r31_9563 == 0) {
         temp_r3_9583 = this->unkA20;
         if ((s32) M2C_FIELD(temp_r3_9583, s32 *, 0xF4) == 0x19) {
-            var_r4_9581 = temp_r3_9583->GetAnimSequence(1, 0xC, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
+            var_r4_9581 = ((EnemyDescriptor *) temp_r3_9583)->GetAnimSequence(1, 0xC, M2C_BITWISE(s32, this->unkACC), NULL) != NULL;
         }
     }
     return var_r4_9581;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: undefined identifier 'spC'
 u8 Enemy::CanStrafeRight(AITargetData *arg0) {
     f64 sp50;
     f64 sp48;
@@ -4951,7 +4909,7 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
     void *temp_r3_9616;
     void *temp_r4_9619;
 
-    temp_r3_9616 = this->unkA20->GetAnimSequence(7, 0x1A, M2C_BITWISE(s32, this->unkACC), NULL);
+    temp_r3_9616 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(7, 0x1A, M2C_BITWISE(s32, this->unkACC), NULL);
     if (temp_r3_9616 != NULL) {
         temp_r4_9619 = this->unk8;
         temp_f3_9621 = M2C_FIELD(temp_r3_9616, f32 *, 0xC);
@@ -4970,13 +4928,13 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
         sp48 = temp_f0_9651;
         sp20 = this->unk588.unk4 + (f32) sp40;
         sp50 = (f64) sp20;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            sp8.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
+            ((EnemyRegion *) &sp8)->GetRegionPos();
             if ((f32) fabs(spC - unksp4C) <= 500.0f) {
                 var_r29_9657 = 1;
             }
         }
-        if ((var_r29_9657 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp48)) == 0)) {
+        if ((var_r29_9657 != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp48)) == 0)) {
             var_r30_9655 = 1;
         }
         if ((var_r30_9655 != 0) && (CheckForCliff(sp48) == 0)) {
@@ -4988,7 +4946,7 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: undefined identifier 'spC'
 u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
     f64 sp50;
     f64 sp48;
@@ -5010,7 +4968,7 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
     void *temp_r3_9729;
     void *temp_r4_9732;
 
-    temp_r3_9729 = this->unkA20->GetAnimSequence(7, 0x19, M2C_BITWISE(s32, this->unkACC), NULL);
+    temp_r3_9729 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(7, 0x19, M2C_BITWISE(s32, this->unkACC), NULL);
     if (temp_r3_9729 != NULL) {
         temp_r4_9732 = this->unk8;
         temp_f3_9734 = M2C_FIELD(temp_r3_9729, f32 *, 0xC);
@@ -5029,13 +4987,13 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
         sp48 = temp_f0_9764;
         sp20 = this->unk588.unk4 + (f32) sp40;
         sp50 = (f64) sp20;
-        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            sp8.GetRegionPos();
+        if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
+            ((EnemyRegion *) &sp8)->GetRegionPos();
             if ((f32) fabs(spC - unksp4C) <= 500.0f) {
                 var_r29_9770 = 1;
             }
         }
-        if ((var_r29_9770 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp48)) == 0)) {
+        if ((var_r29_9770 != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &sp48)) == 0)) {
             var_r30_9768 = 1;
         }
         if ((var_r30_9768 != 0) && (CheckForCliff(sp48) == 0)) {
@@ -5078,10 +5036,10 @@ s32 Enemy::IsObscuringCamera(int *arg0) {
 
     if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((f32) fabs(((KDInput *) (M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), KDInput **, 0x120)))->GetRightMag()) <= 0.000001f)) {
         var_r29_9856 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r29_9856 = 1;
         }
-        if ((var_r29_9856 != 0) && (this->unk838.unk28.GetDistSq() < AVOID_CAMERA_TARGET_DIST_SQ)) {
+        if ((var_r29_9856 != 0) && (((AITargetData *) &this->unk838.unk28)->GetDistSq() < AVOID_CAMERA_TARGET_DIST_SQ)) {
             sp60.GetPos();
             temp_r3_9877 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
             temp_f1_9878 = M2C_FIELD(temp_r3_9877, f64 *, 0x30);
@@ -5134,14 +5092,14 @@ s32 Enemy::IsObscuringCamera(int *arg0) {
             sp60.unk30 *= var_f4_9890;
             sp60.unk34 *= var_f4_9890;
             sp60.unk38 *= var_f4_9890;
-            sp40.GetDir();
+            ((AITargetData *) &sp40)->GetDir();
             sp10 = -sp40;
             sp14 = -sp44;
             sp18 = -sp48;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
             if (((sp60.unk38 * (f32) sp58) + ((sp60.unk30 * (f32) sp50) + (sp60.unk34 * unksp54))) >= AVOID_CAMERA_TARGET_COS_ANGLE) {
-                sp30.GetDir();
+                ((AITargetData *) &sp30)->GetDir();
                 sp60.unk20 = sp30;
                 sp60.unk28 = sp38;
                 temp_f5_10019 = -(f32) sp60.unk20;
@@ -5171,11 +5129,9 @@ block_35:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 u8 Enemy::CanStrafe() {
-    return (u8) (this->unkA20->GetAnimSequence(7, 0x19, M2C_BITWISE(s32, this->unkACC), NULL) != NULL);
+    return (u8) (((EnemyDescriptor *) this->unkA20)->GetAnimSequence(7, 0x19, M2C_BITWISE(s32, this->unkACC), NULL) != NULL);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp34'
 u8 Enemy::IsInsideFOV(const MKVector3 &arg0) {
@@ -5279,7 +5235,7 @@ void Enemy::Draw() {
             }
         } else {
 block_9:
-            if (this->unk740.Draw(M2C_FIELD(this->unkA20, u16 **, 0x28C)) == 0) {
+            if (((FireAndIceFX *) &this->unk740)->Draw(M2C_FIELD(this->unkA20, u16 **, 0x28C)) == 0) {
                 var_r3_10455 = 0;
                 if (((s32) this->unk750.unk68 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x7F4) != 0)) {
                     var_r3_10455 = 1;
@@ -5304,7 +5260,7 @@ block_9:
                     }
                 }
             }
-            this->unk740.DrawCleanup();
+            ((FireAndIceFX *) &this->unk740)->DrawCleanup();
             DrawShieldOverride();
         }
     }
@@ -5406,7 +5362,7 @@ void Enemy::Update() {
         var_r29_10716 = 1;
     }
     sp8 = 1;
-    this->unk980.unk14.Update(M2C_BITWISE(s32, this->unkAC0), 1U, var_r29_10716, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk980.unk14)->Update(M2C_BITWISE(s32, this->unkAC0), 1U, var_r29_10716, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r3_10762 = this->unk110.unk16C;
     if (temp_r3_10762 > 0) {
         if (temp_r3_10762 != 0) {
@@ -5418,7 +5374,7 @@ void Enemy::Update() {
     } else {
         var_r5_10774 = 0;
     }
-    this->unk948.unk28.Update(this->unk8 + 0x30, var_r5_10774);
+    ((KDSound_LoopSoundEvent *) &this->unk948.unk28)->Update(this->unk8 + 0x30, var_r5_10774);
     if (this->unk10 & 0x160000) {
         if (!(((u8) this->unk6B5 >> 7U) & 1)) {
             var_r30_10790 = 0;
@@ -5437,7 +5393,7 @@ block_31:
                     IsFlinching();
                     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
                         var_f3_10833 = 0.0f;
-                        temp_f0_10834 = -((gUpdateTimeDelta * this->unkA20->GetEnemySetting((EnemySettingType) 4)) - this->unkAA0);
+                        temp_f0_10834 = -((gUpdateTimeDelta * ((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 4)) - this->unkAA0);
                         if (var_f3_10833 > temp_f0_10834) {
 
                         } else {
@@ -5455,20 +5411,20 @@ block_31:
             if (this->unk10 & 0x20000) {
                 M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) & ~0x40);
                 Character::UpdateMovement();
-                if ((IsInsideEnemyRegion() != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &this->unk588)) == 0)) {
+                if ((IsInsideEnemyRegion() != 0) && (((EnemyRegion *) &this->unk800.unk28)->IsPointWithin(*((MKVector3 *) &this->unk588)) == 0)) {
                     this->unk700 = M2C_FIELD(this, f64 *, 0x588);
                     this->unk718 = M2C_FIELD(this, f64 *, 0x590);
                 }
                 if ((u32) M2C_FIELD(this->unkA20, u32 *, 0x270) != -1U) {
-                    this->unk6C0.Update((MKVector3 *) &this->unk6C0.unk38);
+                    ((NodeLookAt *) &this->unk6C0)->Update((MKVector3 *) &this->unk6C0.unk38);
                 }
                 PlatformUpdate();
-                this->unk740.Update();
+                ((FireAndIceFX *) &this->unk740)->Update();
                 UpdateBodyFX();
                 UpdateLighting();
                 temp_r3_10900 = this->unk9E8.unk10;
                 if ((u32) temp_r3_10900 != 0U) {
-                    temp_r3_10900->UpdateBreathingFX();
+                    ((CharacterBreathFX *) temp_r3_10900)->UpdateBreathingFX();
                 }
             }
         }
@@ -5585,7 +5541,7 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
             sp68 = 0.0f;
             sp100 = (f64) sp60;
             sp108 = (f64) sp68;
-            sp110.GetPos();
+            ((AITargetData *) &sp110)->GetPos();
             temp_f0_11061 = sp110 + sp100;
             sp50 = temp_f0_11061;
             sp1A0 = temp_f0_11061;
@@ -5642,7 +5598,7 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
             sp198 = (f32) sp198 * var_f4_11158;
 loop_32:
             if (var_r27_11165 > temp_r29_11179) {
-                spB0.GetPos();
+                ((AITargetData *) &spB0)->GetPos();
                 M2C_FIELD(this, f64 *, 0x720) = spB0;
                 M2C_FIELD(this, f64 *, 0x728) = spB8;
                 goto block_34;
@@ -5685,7 +5641,7 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void Enemy::CheckAnimEvents() {
     MKVector3 sp2F8;
     MKVector3 sp2E8;
@@ -5873,7 +5829,7 @@ void Enemy::CheckAnimEvents() {
             sp170 = -M2C_FIELD(temp_r9_11399, f32 *, 0x28);
             sp2A8 = (f64) sp168;
             sp2B0 = (f64) sp170;
-            gb.unk60->EmitFootFX(sp2F8, *((MKVector3 *) &sp2A8), *((MKVector3 *) &sp298), (MKVector4) &sp288, 1.0f, 1.0f, var_r8_11369);
+            ((FootStepFX *) gb.unk60)->EmitFootFX(sp2F8, *((MKVector3 *) &sp2A8), *((MKVector3 *) &sp298), (MKVector4) &sp288, 1.0f, 1.0f, var_r8_11369);
         }
     }
     if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0xA) != 0) {
@@ -5908,7 +5864,7 @@ void Enemy::CheckAnimEvents() {
             sp140 = -M2C_FIELD(temp_r9_11470, f32 *, 0x28);
             sp278 = (f64) sp138;
             sp280 = (f64) sp140;
-            gb.unk60->EmitFootFX(sp2E8, *((MKVector3 *) &sp278), *((MKVector3 *) &sp268), (MKVector4) &sp258, 1.0f, 1.0f, var_r8_11440);
+            ((FootStepFX *) gb.unk60)->EmitFootFX(sp2E8, *((MKVector3 *) &sp278), *((MKVector3 *) &sp268), (MKVector4) &sp258, 1.0f, 1.0f, var_r8_11440);
         }
     }
     if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0xB) != 0) {
@@ -5943,7 +5899,7 @@ void Enemy::CheckAnimEvents() {
             sp218 = (f64) spC8;
             sp220 = (f64) spD0;
             sp14 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-            gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp2D8), sp14, *((MKVector4 *) &sp218), -580.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp2D8), sp14, *((MKVector4 *) &sp218), -580.0f);
             var_r29_11496 += 1;
         } while (var_r29_11496 < 5);
     }
@@ -6067,7 +6023,7 @@ void Enemy::SetAnim(AnimSequence *arg0, AnimTransition *arg1, float arg2, unsign
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Enemy::SetAnim(AnimSequenceType arg0, int arg1, int arg2, float arg3, unsigned int arg4, bool arg5) {
     EnemyDescriptor *temp_r4_11914;
     EnemyDescriptor *temp_r6_11925;
@@ -6079,7 +6035,7 @@ void Enemy::SetAnim(AnimSequenceType arg0, int arg1, int arg2, float arg3, unsig
     } else {
         var_r7_11905 = NULL;
     }
-    this->unkA38 = this->unkA20->GetAnimSequence((s32) arg0, arg1, M2C_BITWISE(s32, this->unkACC), (AnimSequence *) var_r7_11905);
+    this->unkA38 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence((s32) arg0, arg1, M2C_BITWISE(s32, this->unkACC), (AnimSequence *) var_r7_11905);
     temp_r4_11914 = this->unkA38;
     if (temp_r4_11914 != NULL) {
         this->unkA3C = temp_r4_11914 + (arg2 << 5);
@@ -6119,7 +6075,7 @@ s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp8;
 
     MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
@@ -6145,7 +6101,7 @@ s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r4_12034, arg1);
     } else {
         MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        sp28.GetPos();
+        ((MKProp *) &sp28)->GetPos();
         sp8 = sp28 + sp18;
         M2C_FIELD(arg1, f64 *, 0) = sp8;
         sp10 = sp30 + sp20;
@@ -6179,10 +6135,10 @@ void Enemy::SetDefaults() {
     this->unkA48 = gb.unk30C + MKRand_Float(&gViewSeed, 0.0f, 1.0f);
     this->unkA54 = 0.0f;
     this->unkA58 = 0.0f;
-    this->unk750.unkA0.Init();
-    this->unk800.unk28.Init();
-    SetHealth(this->unkA20->GetEnemySetting((EnemySettingType) 0));
-    SetArmour(this->unkA20->GetEnemySetting((EnemySettingType) 1));
+    ((EnemyRegion *) &this->unk750.unkA0)->Init();
+    ((EnemyRegion *) &this->unk800.unk28)->Init();
+    SetHealth(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0));
+    SetArmour(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 1));
     this->unkAB8 = M2C_FIELD(this->unkA20, f32 *, 0xEC);
     this->unkAD8 = 0;
     this->unkAD4 = 0;
@@ -6197,14 +6153,14 @@ void Enemy::SetDefaults() {
     this->unkA3C = NULL;
     this->unk9D8 = 0;
     this->unk9D4 = 0;
-    this->unk8C0.unk40.Init();
-    this->unk838.unk28.SetDefaults();
-    this->unk870.unk40.SetDefaults();
+    ((EnemyDamageFeedback *) &this->unk8C0.unk40)->Init();
+    ((AITargetData *) &this->unk838.unk28)->SetDefaults();
+    ((AITargetData *) &this->unk870.unk40)->SetDefaults();
     this->unkA10 = NULL;
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~2);
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~1);
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~0x80);
-    this->unkA7C.Init();
+    ((KDPathIterator *) &this->unkA7C)->Init();
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~0x40);
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~0x20);
     M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) & ~0x10);
@@ -6240,8 +6196,8 @@ void Enemy::SetDefaults() {
     this->unkABC = 0.0f;
     this->unkAA0 = 0.0f;
     this->unkAC8 = 6e-45f;
-    this->unkA68.SetDefaults();
-    this->unk740.SetDefaults();
+    ((EnemySpawnGraphData *) &this->unkA68)->SetDefaults();
+    ((FireAndIceFX *) &this->unk740)->SetDefaults();
     this->unk710.unk0 = 0.0f;
     this->unk710.unk4 = 0.0f;
     this->unk710.unk8 = 0.0f;
@@ -6251,7 +6207,7 @@ void Enemy::SetDefaults() {
     this->unkA90 = 0.0f;
     temp_r3_12302 = this->unk9E8.unk10;
     if ((u32) temp_r3_12302 != 0U) {
-        temp_r3_12302->SetDefaults();
+        ((CharacterBreathFX *) temp_r3_12302)->SetDefaults();
     }
     this->unkA98 = 0.0f;
     M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) & ~4);
@@ -6270,12 +6226,12 @@ void Enemy::SetDefaults() {
     this->unkAAC = 0.0f;
     temp_r3_12329 = this->unkA44;
     if (temp_r3_12329 != NULL) {
-        temp_r3_12329->SetDefaults();
+        ((EAPManager *) temp_r3_12329)->SetDefaults();
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void Enemy::Resolve() {
     f32 sp6C;
     f32 sp68;
@@ -6306,7 +6262,7 @@ void Enemy::Resolve() {
 
     Character::Resolve();
     temp_r10_12353 = this->unkA20;
-    this->unk948.unk28.Init(M2C_FIELD(this, MKAnimScript **, 0x630), 0x17, M2C_FIELD(temp_r10_12353, s32 *, 0x1A4), 0x18, M2C_FIELD(temp_r10_12353, s32 *, 0x1A8), 0x19, M2C_FIELD(temp_r10_12353, s32 *, 0x1AC));
+    ((KDSound_LoopSoundEvent *) &this->unk948.unk28)->Init(M2C_FIELD(this, MKAnimScript **, 0x630), 0x17, M2C_FIELD(temp_r10_12353, s32 *, 0x1A4), 0x18, M2C_FIELD(temp_r10_12353, s32 *, 0x1A8), 0x19, M2C_FIELD(temp_r10_12353, s32 *, 0x1AC));
     if (((u8) M2C_FIELD(this, u8 *, 0xB09) >> 5U) & 1) {
         Deactivate();
         Disable();
@@ -6378,12 +6334,12 @@ void Enemy::LoadDone() {
     if (temp_r3_12471 != NULL) {
         M2C_FIELD(*temp_r3_12471, M2C_UNK (**)(), 0x18)();
     }
-    this->unk6C0.Init(this->unk4, M2C_FIELD(this->unkA20, s32 *, 0x270), (NLStyle) 0);
+    ((NodeLookAt *) &this->unk6C0)->Init(this->unk4, M2C_FIELD(this->unkA20, s32 *, 0x270), (NLStyle) 0);
     this->unk6C0.unk4 = -0.7853982f;
     this->unk6C0.unk8 = 0.3926991f;
     temp_r3_12489 = this->unkA20;
     if ((((s32) M2C_FIELD(temp_r3_12489, s32 *, 0x214) > 0) || ((s32) M2C_FIELD(temp_r3_12489, s32 *, 0x218) > 0)) && ((s32) M2C_FIELD(temp_r3_12489, s32 *, 0x224) > 0)) {
-        temp_r3_12500 = temp_r3_12489->Current();
+        temp_r3_12500 = ((MKHeap *) temp_r3_12489)->Current();
         if (temp_r3_12500 != NULL) {
             var_r3_12507 = ((MKHeap *) (temp_r3_12500->Current()))->Alloc(8, NULL, 0);
         } else {
@@ -6393,18 +6349,18 @@ void Enemy::LoadDone() {
         M2C_FIELD(this->unkA18, u8 *, 4) = (u8) M2C_FIELD(this->unkA20, s32 *, 0x224);
         temp_r3_12518 = this->unkA18;
         temp_r30_12520 = M2C_FIELD(temp_r3_12518, u8 *, 4) * 0x10;
-        temp_r3_12521 = temp_r3_12518->Current();
+        temp_r3_12521 = ((MKHeap *) temp_r3_12518)->Current();
         if (temp_r3_12521 != NULL) {
             var_r3_12528 = ((MKHeap *) (temp_r3_12521->Current()))->Alloc(temp_r30_12520, NULL, 0);
         } else {
             var_r3_12528 = malloc(temp_r30_12520);
         }
         this->unkA18->unk0 = M2C_BITWISE(f32, var_r3_12528);
-        this->unkA18->SetDefaults();
+        ((AttackSweepData *) this->unkA18)->SetDefaults();
     }
     temp_r3_12539 = this->unkA20;
     if ((u32) M2C_FIELD(temp_r3_12539, u32 *, 0x228) != 0U) {
-        temp_r3_12543 = temp_r3_12539->Current();
+        temp_r3_12543 = ((MKHeap *) temp_r3_12539)->Current();
         if (temp_r3_12543 != NULL) {
             var_r3_12550 = ((MKHeap *) (temp_r3_12543->Current()))->Alloc(0x14, NULL, 0);
         } else {
@@ -6423,7 +6379,7 @@ void Enemy::LoadDone() {
         this->unkA04 = (CharacterZapFX *) &temp_r3_12570->unk4;
         temp_r3_12570->unk4 = 0;
     }
-    this->unk740.Init(this->unk4, 0.75f, 0.25f);
+    ((FireAndIceFX *) &this->unk740)->Init(this->unk4, 0.75f, 0.25f);
     if ((u8) M2C_FIELD(this->unkA20, u8 *, 0x265) != 0) {
         this->unk9E8.unk4 = checked_cast<CharacterIceCubesFX *, CharacterBodyFX>(gb.unk2A8.CreateInstance(0));
         temp_r3_12594 = this->unk9E8.unk4;
@@ -6442,14 +6398,14 @@ void Enemy::LoadDone() {
     }
     temp_r3_12645 = this->unkA20;
     if ((CharacterBreathFXDescriptor *) M2C_FIELD(temp_r3_12645, CharacterBreathFXDescriptor **, 0x258) != NULL) {
-        temp_r3_12649 = temp_r3_12645->Current();
+        temp_r3_12649 = ((MKHeap *) temp_r3_12645)->Current();
         if (temp_r3_12649 != NULL) {
             var_r3_12656 = ((MKHeap *) (temp_r3_12649->Current()))->Alloc(0x14, NULL, 0);
         } else {
             var_r3_12656 = malloc(0x14);
         }
         this->unk9E8.unk10 = (s32) var_r3_12656;
-        this->unk9E8.unk10->Init(M2C_FIELD(this->unkA20, CharacterBreathFXDescriptor **, 0x258), this->unk4);
+        ((CharacterBreathFX *) this->unk9E8.unk10)->Init(M2C_FIELD(this->unkA20, CharacterBreathFXDescriptor **, 0x258), this->unk4);
     }
     this->unkA00 = MKMaterial_Create("fx_HDRGLowOverlay");
 }
@@ -6488,7 +6444,7 @@ s32 Enemy::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Enemy::Deinit() {
     AttackSweepData *temp_r3_12798;
     CharacterZapFX *temp_r30_12835;
@@ -6515,26 +6471,26 @@ void Enemy::Deinit() {
 
     temp_r3_12775 = this->unkA44;
     if (temp_r3_12775 != NULL) {
-        temp_r3_12775->Deinit();
+        ((EAPManager *) temp_r3_12775)->Deinit();
         operator delete(this->unkA44);
     }
     if ((MeleeTrails *) this->unkA14 != NULL) {
         DisableCurrentProjectile(0U, MKVector3::zero);
     }
-    this->unk9D4.Deinit();
+    ((EnemyMovementManager *) &this->unk9D4)->Deinit();
     RemoveCameraCollisionItem();
     temp_r3_12798 = this->unkA30;
     if (temp_r3_12798 != NULL) {
         temp_r3_12801 = temp_r3_12798->unk0;
         if ((u32) temp_r3_12801 != 0U) {
-            temp_r3_12801->RemoveItem((MKProp *) this);
+            ((SpawnerObject *) temp_r3_12801)->RemoveItem((MKProp *) this);
         }
         this->unkA30 = NULL;
     }
-    this->unk800.unk28.Deinit();
-    this->unk750.unkA0.Deinit();
+    ((EnemyRegion *) &this->unk800.unk28)->Deinit();
+    ((EnemyRegion *) &this->unk750.unkA0)->Deinit();
     KDSound_Stop(&this->unk980.unk14);
-    this->unk948.unk28.Deinit();
+    ((KDSound_LoopSoundEvent *) &this->unk948.unk28)->Deinit();
     if ((void **) this->unkA40 != NULL) {
         KDSound_Stop((s32 *) &this->unkA40);
     }
@@ -6545,7 +6501,7 @@ void Enemy::Deinit() {
         } while ((void *) temp_r3_12830->__vptr != NULL);
         temp_r30_12835 = this->unkA04;
         if (temp_r30_12835 != &gEmptyPtrList) {
-            temp_r3_12839 = temp_r3_12830->Current();
+            temp_r3_12839 = ((MKHeap *) temp_r3_12830)->Current();
             if (temp_r3_12839 != NULL) {
                 ((MKHeap *) (temp_r3_12839->Current()))->Free(temp_r30_12835, NULL, 0);
             } else {
@@ -6569,7 +6525,7 @@ void Enemy::Deinit() {
     this->unk9D4 = 0;
     temp_r3_12878 = this->unk9E8.unk10;
     if ((u32) temp_r3_12878 != 0U) {
-        temp_r3_12878->Deinit();
+        ((CharacterBreathFX *) temp_r3_12878)->Deinit();
         temp_r30_12882 = this->unk9E8.unk10;
         temp_r3_12883 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_12883 != NULL) {
@@ -6581,7 +6537,7 @@ void Enemy::Deinit() {
     temp_r3_12896 = this->unkA18;
     if (temp_r3_12896 != NULL) {
         temp_r30_12899 = temp_r3_12896->unk0;
-        temp_r3_12900 = temp_r3_12896->Current();
+        temp_r3_12900 = ((MKHeap *) temp_r3_12896)->Current();
         if (temp_r3_12900 != NULL) {
             ((MKHeap *) (temp_r3_12900->Current()))->Free(M2C_BITWISE(void *, temp_r30_12899), NULL, 0);
         } else {
@@ -6621,13 +6577,13 @@ void Enemy::Deinit() {
             }
         }
     }
-    this->unk740.Deinit();
+    ((FireAndIceFX *) &this->unk740)->Deinit();
     temp_r3_12974 = this->unkA24;
     if (temp_r3_12974 != NULL) {
         temp_r3_12974->unk0->unkC();
         operator delete(this->unkA24);
     }
-    this->unk6B0.UnregisterTargetable();
+    ((Targetable *) &this->unk6B0)->UnregisterTargetable();
     temp_r3_12986 = this->unkA00;
     if (temp_r3_12986 != NULL) {
         MKMaterial_Destroy((MKMaterial *) temp_r3_12986);
@@ -6681,18 +6637,18 @@ void Enemy::Init() {
     this->unkAC4 = 0.0f;
     M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~4);
     M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~2);
-    this->unk980.unk14.Init(0.25f, 0.75f);
+    ((KDSoundFader *) &this->unk980.unk14)->Init(0.25f, 0.75f);
     M2C_FIELD(this, u8 *, 0xB02) = (u8) (M2C_FIELD(this, u8 *, 0xB02) & ~8);
     M2C_FIELD(this, u8 *, 0xB0B) = (u8) (M2C_FIELD(this, u8 *, 0xB0B) & ~0x40);
     this->unk9E8.unk4 = 0;
     this->unk9E8.unk8 = 0;
     this->unk9E8.unkC = 0;
     this->unkA14 = NULL;
-    this->unk9D4.Init(this);
+    ((EnemyMovementManager *) &this->unk9D4)->Init(this);
     if ((EAPManagerDescriptor *) M2C_FIELD(this->unkA20, EAPManagerDescriptor **, 0x230) != NULL) {
         operator new(0x14U, NULL, 0);
         this->unkA44 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unkA44->Init(M2C_FIELD(this->unkA20, EAPManagerDescriptor **, 0x230));
+        ((EAPManager *) this->unkA44)->Init(M2C_FIELD(this->unkA20, EAPManagerDescriptor **, 0x230));
     }
     this->unkAA4 = MKRand_Float(&gViewSeed, -0.1f, 0.1f);
 }

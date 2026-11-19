@@ -68,7 +68,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'spF8'
 void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     s8 sp1E0;
     s32 sp1DC;
@@ -210,7 +210,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
         sp170 = (f64) sp1A0;
         sp178 = (f64) sp1A8;
     }
-    spF0.GetRandPos();
+    ((Volume *) &spF0)->GetRandPos();
     sp30 = 0.0f;
     sp34 = -500.0f;
     sp38 = 0.0f;
@@ -835,7 +835,6 @@ void GrubbleCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void GrubbleCritterDescriptor::LoadDone() {
     s8 *temp_r30_1233;
     s8 *temp_r30_1251;
@@ -848,35 +847,34 @@ void GrubbleCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1233 = this->unk34;
-    if (temp_r30_1233->Exists("Burrow_Enter") != 0) {
-        var_r3_1243 = temp_r30_1233->GetAnim("Burrow_Enter");
+    if (((MKAnimScript *) temp_r30_1233)->Exists("Burrow_Enter") != 0) {
+        var_r3_1243 = ((MKAnimScript *) temp_r30_1233)->GetAnim("Burrow_Enter");
     } else {
         var_r3_1243 = NULL;
     }
     this->unk74 = (s32) var_r3_1243;
     temp_r30_1251 = this->unk34;
-    if (temp_r30_1251->Exists("Burrow_Idle") != 0) {
-        var_r3_1261 = temp_r30_1251->GetAnim("Burrow_Idle");
+    if (((MKAnimScript *) temp_r30_1251)->Exists("Burrow_Idle") != 0) {
+        var_r3_1261 = ((MKAnimScript *) temp_r30_1251)->GetAnim("Burrow_Idle");
     } else {
         var_r3_1261 = NULL;
     }
     this->unk78 = (s32) var_r3_1261;
     temp_r30_1269 = this->unk34;
-    if (temp_r30_1269->Exists("Burrow_Exit") != 0) {
-        var_r3_1279 = temp_r30_1269->GetAnim("Burrow_Exit");
+    if (((MKAnimScript *) temp_r30_1269)->Exists("Burrow_Exit") != 0) {
+        var_r3_1279 = ((MKAnimScript *) temp_r30_1269)->GetAnim("Burrow_Exit");
     } else {
         var_r3_1279 = NULL;
     }
     this->unk7C = (s32) var_r3_1279;
     temp_r30_1287 = this->unk34;
-    if (temp_r30_1287->Exists("Walk") != 0) {
-        var_r3_1297 = temp_r30_1287->GetAnim("Walk");
+    if (((MKAnimScript *) temp_r30_1287)->Exists("Walk") != 0) {
+        var_r3_1297 = ((MKAnimScript *) temp_r30_1287)->GetAnim("Walk");
     } else {
         var_r3_1297 = NULL;
     }
     this->unk80 = (s32) var_r3_1297;
 }
-#endif
 
 void GrubbleCritterDescriptor::Init() {
     KDPropDescriptor::Init();

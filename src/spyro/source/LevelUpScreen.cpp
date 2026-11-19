@@ -7,6 +7,7 @@
 #include "spyro/source/CutsceneEvent.h"
 #include "spyro/source/DialogBox.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIScreen.h"
 #include "unplaced_enums.h"
@@ -15,7 +16,6 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/Hud.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PauseMenu.h"
 #include "spyro/source/UIControls.h"
 #include <m2c_macros.h>
@@ -535,7 +535,7 @@ void LevelUpScreen::Update() {
     if ((s32 *) pContextFury == NULL) {
         UIScreen::Update();
         sp8 = 1;
-        this->unkBC.unk4.Update(GS_LevelUPExpLP, 0U, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkBC.unk4)->Update(GS_LevelUPExpLP, 0U, ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         switch ((s32) selectionElement) {           /* irregular */
         case 0:
             this->unk140 = GS_LevelUpFireLP;
@@ -579,9 +579,9 @@ void LevelUpScreen::Update() {
         }
         this->unk144 = this->unk140;
         sp8 = 1;
-        this->unkC8.unkC.unk14.Update((s32) this->unk140, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkC8.unkC.unk14)->Update((s32) this->unk140, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
-        this->unkC8.unk48.Update(GS_LevelUpDrainexpLP, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unkC8.unk48)->Update(GS_LevelUpDrainexpLP, 0U, var_r28_1052, NULL, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         if (((u8) M2C_FIELD(this, u8 *, 0x156) == 0) && (var_r28_1052 != 0)) {
             KDSound_Play(GS_LevelUpStart, 0U, -1);
         }
@@ -667,7 +667,7 @@ block_60:
                     } else {
                         *(temp_r4_1148 + temp_r6_1147) = temp_f2_1158;
                     }
-                    ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x18)))->SetValue(var_f29_1160 + (temp_f31_1114 - var_f30_1149), 0U);
+                    ((Stat *) (&GameData::gameData[0x70] + 0x18))->SetValue(var_f29_1160 + (temp_f31_1114 - var_f30_1149), 0U);
                 } else if ((temp_cr0_lt_1142 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x155) != 0)) {
                     M2C_FIELD(this, u8 *, 0x155) = 0U;
                     KDSound_Play(GS_LevelUpEnd, 0U, -1);
@@ -757,9 +757,9 @@ void LevelUpScreen::OnEnter() {
     M2C_FIELD(this, s8 *, 0x154) = 0;
     M2C_FIELD(this, s8 *, 0x155) = 1;
     M2C_FIELD(this, s8 *, 0x156) = 0;
-    this->unkBC.unk4.Init(0.25f, 0.25f);
-    this->unkC8.unk48.Init(0.25f, 0.25f);
-    this->unkC8.unkC.unk14.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkBC.unk4)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkC8.unk48)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkC8.unkC.unk14)->Init(0.25f, 0.25f);
     DialogBox_bAllowOverCutscene = 1;
 }
 #endif

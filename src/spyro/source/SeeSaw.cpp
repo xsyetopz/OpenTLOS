@@ -7,11 +7,11 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Platform.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -35,13 +35,13 @@ void SeeSaw::Attach(PlatformAttachment *arg0) {
     this->unk13C += 1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'PlatformAttachDetachMsg'
 void SeeSaw::Message(MKMessage *arg0) {
     s32 temp_r0_111;
     void *temp_r3_120;
     void *temp_r3_130;
 
-    this->unkF0.Message(arg0);
+    ((KDSoundPlayer *) &this->unkF0)->Message(arg0);
     temp_r0_111 = arg0->unk0;
     switch (temp_r0_111) {                          /* irregular */
     case 35:
@@ -150,7 +150,7 @@ void SeeSaw::Update() {
     temp_r0_187 = this->unk13C;
     if (temp_r0_187 != 0) {
         temp_r27_190 = temp_r0_187 * 0x10;
-        temp_r3_191 = ((MKHeap *) ((MKHeap *) &MKVector3::zero))->Current();
+        temp_r3_191 = ((MKHeap *) &MKVector3::zero)->Current();
         if (temp_r3_191 != NULL) {
             var_r3_199 = ((MKHeap *) (temp_r3_191->Main()))->TAlloc(temp_r27_190, NULL, 0, 0U);
         } else {
@@ -233,7 +233,7 @@ loop_8:
             KDSound_SetPitch(this->unkF0, (temp_f30_386 * M2C_FIELD(temp_r27_406, f32 *, 0x80)) + M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x7C));
             temp_r4_417 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
-            this->unkF0.Update(M2C_FIELD(temp_r4_417, s32 *, 0x70), 1U, this->unk140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) &this->unkF0)->Update(M2C_FIELD(temp_r4_417, s32 *, 0x70), 1U, this->unk140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         }
         M2C_FIELD(this, f32 *, 0xE0) = (f64) this->unkD0;
         M2C_FIELD(this, f32 *, 0xE8) = (f64) this->unkD8;
@@ -369,13 +369,13 @@ s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     return var_r31_699;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void SeeSaw::Resolve() {
     void *temp_r31_751;
 
     MKProp::Resolve();
     temp_r31_751 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unkF0.Init(M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x74), M2C_FIELD(temp_r31_751, f32 *, 0x78));
+    ((KDSoundFader *) &this->unkF0)->Init(M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x74), M2C_FIELD(temp_r31_751, f32 *, 0x78));
 }
 #endif
 

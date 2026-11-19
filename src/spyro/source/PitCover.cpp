@@ -1,6 +1,7 @@
 #include "spyro/source/PitCover.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDProp.h"
 #include "common/Source/MKModel.h"
@@ -124,7 +125,7 @@ block_4:
             sp84 = temp_f1_172;
             spE8 = (f64) sp88;
             spE0 = (f64) sp80;
-            gb.unk234->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &spE0), 10.0f, spC, 1U);
+            ((FallingLeaves *) gb.unk234)->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &spE0), 10.0f, spC, 1U);
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spA0);
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spB0);
             temp_f0_203 = M2C_BITWISE(f64, sp180) + M2C_BITWISE(f64, spB0);

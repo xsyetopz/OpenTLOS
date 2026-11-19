@@ -498,7 +498,7 @@ void ExplosionWarpFX::Update() {
     UpdateWarp();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ExplosionWarpFX::Init() {
     MKHeap *temp_r3_858;
     MKHeap *temp_r3_876;
@@ -517,7 +517,7 @@ void ExplosionWarpFX::Init() {
     this->unk10 = 0x14;
     temp_r3_854 = this->unkC;
     temp_r30_857 = temp_r3_854 * this->unk10 * 0x30;
-    temp_r3_858 = temp_r3_854->Current();
+    temp_r3_858 = ((MKHeap *) temp_r3_854)->Current();
     if (temp_r3_858 != NULL) {
         var_r3_865 = ((MKHeap *) (temp_r3_858->Current()))->Alloc(temp_r30_857, NULL, 0);
     } else {
@@ -526,7 +526,7 @@ void ExplosionWarpFX::Init() {
     this->unk0 = var_r3_865;
     temp_r3_872 = this->unkC;
     temp_r30_875 = temp_r3_872 * this->unk10 * 0x30;
-    temp_r3_876 = temp_r3_872->Current();
+    temp_r3_876 = ((MKHeap *) temp_r3_872)->Current();
     if (temp_r3_876 != NULL) {
         var_r3_883 = ((MKHeap *) (temp_r3_876->Current()))->Alloc(temp_r30_875, NULL, 0);
     } else {
@@ -535,7 +535,7 @@ void ExplosionWarpFX::Init() {
     this->unk4 = var_r3_883;
     temp_r3_890 = this->unkC;
     temp_r30_893 = temp_r3_890 * this->unk10 * 8;
-    temp_r3_894 = temp_r3_890->Current();
+    temp_r3_894 = ((MKHeap *) temp_r3_890)->Current();
     if (temp_r3_894 != NULL) {
         var_r3_901 = ((MKHeap *) (temp_r3_894->Current()))->Alloc(temp_r30_893, NULL, 0);
     } else {

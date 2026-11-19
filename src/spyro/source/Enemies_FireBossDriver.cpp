@@ -20,29 +20,21 @@ s32 FireBossDriver::IsCharging() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void FireBossDriver::CrashExit() {
-    this->unkAF8->CrashExit();
+    ((FireBossDriverGoal_Think *) this->unkAF8)->CrashExit();
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void FireBossDriver::CrashEnter() {
-    this->unkAF8->CrashEnter();
+    ((FireBossDriverGoal_Think *) this->unkAF8)->CrashEnter();
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void FireBossDriver::ChargeExit() {
-    this->unkAF8->ChargeExit();
+    ((FireBossDriverGoal_Think *) this->unkAF8)->ChargeExit();
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void FireBossDriver::ChargeEnter() {
-    this->unkAF8->ChargeEnter();
+    ((FireBossDriverGoal_Think *) this->unkAF8)->ChargeEnter();
 }
-#endif
 
 void FireBossDriver::Draw() {
     Enemy::Draw();
@@ -84,7 +76,7 @@ void FireBossDriver::Init() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unkAF8->Init((Enemy *) this);
+    ((FireBossDriverGoal_Think *) this->unkAF8)->Init((Enemy *) this);
     this->unkA24 = checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>((FireBossDriverGoal_Think *) this->unkAF8);
 }
 #endif

@@ -4,15 +4,19 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterIceCubesFX.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/MeleeTrails.h"
 #include "spyro/source/SpawnPointObject.h"
@@ -32,7 +36,7 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal operand
 void Enemy::Message(MKMessage *arg0) {
     s8 sp4F6;
     s8 sp4F5;
@@ -309,7 +313,7 @@ void Enemy::Message(MKMessage *arg0) {
     void *temp_r7_771;
     void *temp_r8_2350;
 
-    this->unk948.unk28.Message(arg0);
+    ((KDSound_LoopSoundEvent *) &this->unk948.unk28)->Message(arg0);
     temp_r0_21 = arg0->unk0;
     switch (temp_r0_21) {                           /* switch 1; irregular */
     case 1:                                         /* switch 1 */
@@ -371,8 +375,8 @@ block_409:
                 sp378.GetPos();
                 KDMath_Sub2D(*((MKVector3 *) &sp378.unk10), *((MKVector3 *) &sp448));
                 Normalise(*((MKVector3 *) &sp378.unk20));
-                sp378.unk30.operator*(temp_f31_294);
-                sp378.unk40.GetPos();
+                ((MKVector3 *) &sp378.unk30)->operator*(temp_f31_294);
+                ((MKProp *) &sp378.unk40)->GetPos();
                 temp_f0_315 = sp378.unk40 + M2C_BITWISE(f64, sp378.unk30);
                 sp68 = temp_f0_315;
                 sp448 = temp_f0_315;
@@ -479,8 +483,8 @@ block_103:
                             sp308.GetPos();
                             KDMath_Sub2D(*((MKVector3 *) &sp308.unk10), *((MKVector3 *) &sp448));
                             Normalise(*((MKVector3 *) &sp308.unk20));
-                            sp308.unk30.operator*(temp_f31_545);
-                            sp308.unk40.GetPos();
+                            ((MKVector3 *) &sp308.unk30)->operator*(temp_f31_545);
+                            ((MKProp *) &sp308.unk40)->GetPos();
                             sp58 = sp308.unk40 + M2C_BITWISE(f64, sp308.unk30);
                             sp358 = sp58;
                             sp60 = sp308.unk48 + M2C_BITWISE(f32, sp308.unk38);
@@ -522,10 +526,10 @@ block_103:
                         var_r29_668 = 0;
                         sp428 = M2C_FIELD(temp_r3_272, f64 *, 0x10);
                         sp430 = M2C_FIELD(temp_r3_272, f64 *, 0x18);
-                        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+                        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
                             var_r29_668 = 1;
                         }
-                        if ((var_r29_668 != 0) && (this->unk838.unk28.GetProp() == (u32) temp_r3_272->unk8)) {
+                        if ((var_r29_668 != 0) && (((AITargetData *) &this->unk838.unk28)->GetProp() == (u32) temp_r3_272->unk8)) {
                             M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 1);
                         }
                         DoBlockFx(var_r25_354, *((MKVector3 *) &sp428));
@@ -661,10 +665,10 @@ block_199:
                             TriggerShieldGlow(M2C_FIELD(GameData::gameData, s32 *, 0x158));
                             var_r27_990 = 0;
                             M2C_FIELD(temp_r3_812, s8 *, 0x3D) = 1;
-                            if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+                            if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
                                 var_r27_990 = 1;
                             }
-                            if ((var_r27_990 != 0) && (this->unk838.unk28.GetProp() == (void **) M2C_FIELD(temp_r3_812, void ***, 8))) {
+                            if ((var_r27_990 != 0) && (((AITargetData *) &this->unk838.unk28)->GetProp() == (void **) M2C_FIELD(temp_r3_812, void ***, 8))) {
                                 M2C_FIELD(this, u8 *, 0xB08) = (u8) (M2C_FIELD(this, u8 *, 0xB08) | 1);
                             }
                             if (this->unkAA0 > 0.0f) {
@@ -722,7 +726,7 @@ block_199:
                             sp400 = (f64) M2C_FIELD(temp_r3_812, f32 *, 0x18);
                         } else {
                             temp_f31_1311 = GetCollisionRadius();
-                            sp1E8.GetDir();
+                            ((MKProp *) &sp1E8)->GetDir();
                             sp1F8.operator*(temp_f31_1311);
                             sp208.GetPos();
                             sp28 = sp208 - M2C_BITWISE(f64, sp1F8);
@@ -792,7 +796,7 @@ block_199:
                     var_r25_1428 = 9;
                 }
                 temp_r4_1493 = this->unk8;
-                temp_f31_1495 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(3, 1, M2C_FIELD(temp_r29_1426, s32 *, 8));
+                temp_f31_1495 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(3, 1, M2C_FIELD(temp_r29_1426, s32 *, 8));
                 temp_f1_1497 = M2C_FIELD(temp_r4_1493, f64 *, 0x30);
                 sp1B8 = temp_f1_1497;
                 sp1C0 = M2C_FIELD(temp_r4_1493, f64 *, 0x38);
@@ -975,21 +979,21 @@ block_199:
                 if (M2C_BITWISE(s32, this->unkAD0) == 0) {
                     temp_r3_1973 = this->unkA28;
                     if (M2C_FIELD(*temp_r3_1973, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_1973, 0x12) == 0) {
-                        SetHealth(this->unkA20->GetEnemySetting((EnemySettingType) 0));
-                        SetArmour(this->unkA20->GetMaxArmour());
+                        SetHealth(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0));
+                        SetArmour(((EnemyDescriptor *) this->unkA20)->GetMaxArmour());
                         Armour_SetDefaults();
                     }
                 }
             } else {
-                SetHealth(temp_r3_1966->GetEnemySetting((EnemySettingType) 0));
-                SetArmour(this->unkA20->GetMaxArmour());
+                SetHealth(((EnemyDescriptor *) temp_r3_1966)->GetEnemySetting((EnemySettingType) 0));
+                SetArmour(((EnemyDescriptor *) this->unkA20)->GetMaxArmour());
                 Armour_SetDefaults();
             }
         }
         goto block_409;
     case -3:                                        /* switch 1 */
-        if ((this->unkAB0 > 0.0f) && ((SetHealth(this->unkA20->GetEnemySetting((EnemySettingType) 0)), temp_r3_2015 = this->unkA20, (((s32) M2C_FIELD(temp_r3_2015, s32 *, 0xF4) == 0x1B) == 0)) || (M2C_BITWISE(s32, this->unkAD0) == 0))) {
-            SetArmour(temp_r3_2015->GetMaxArmour());
+        if ((this->unkAB0 > 0.0f) && ((SetHealth(((EnemyDescriptor *) this->unkA20)->GetEnemySetting((EnemySettingType) 0)), temp_r3_2015 = this->unkA20, (((s32) M2C_FIELD(temp_r3_2015, s32 *, 0xF4) == 0x1B) == 0)) || (M2C_BITWISE(s32, this->unkAD0) == 0))) {
+            SetArmour(((EnemyDescriptor *) temp_r3_2015)->GetMaxArmour());
             Armour_SetDefaults();
         }
         temp_r3_2029 = this->unkA28;
@@ -1003,15 +1007,15 @@ block_199:
         if ((temp_r3_2054 != NULL) && (M2C_FIELD(*temp_r3_2054, u8 (**)(M2C_UNK), 0x38)(6) != 0)) {
             temp_r3_2064 = this->unk9E8.unk4;
             if ((temp_r3_2064 != 0) && ((u8) M2C_FIELD(temp_r3_2064, u8 *, 0x20) != 0)) {
-                temp_r3_2064->Reset();
+                ((CharacterIceCubesFX *) temp_r3_2064)->Reset();
             }
         }
         var_r25_2073 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r25_2073 = 1;
         }
         if (var_r25_2073 != 0) {
-            var_r3_2090 = M2C_FIELD(this->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+            var_r3_2090 = M2C_FIELD(((TargetContext *) &this->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
         } else {
             var_r3_2090 = NULL;
         }
@@ -1147,7 +1151,7 @@ block_199:
     case 166:                                       /* switch 1 */
         temp_r25_2386 = checked_cast<GetConvexFuryTargetPosMsg *, MKMessage>(arg0);
         MKVector(0.0f, 150.0f, 0.0f);
-        sp128.GetPos();
+        ((MKProp *) &sp128)->GetPos();
         sp18 = sp128 + sp118;
         M2C_FIELD(temp_r25_2386, f64 *, 8) = sp18;
         sp20 = sp130 + sp120;

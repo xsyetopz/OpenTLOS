@@ -6,6 +6,9 @@
 #include "spyro/source/Enemies_Swamp.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyGoal_AlertMode.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
@@ -293,7 +296,7 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         }
         temp_r3_462 = this->unkC;
         var_r30_463 = 0;
-        if (((u8) M2C_FIELD(temp_r3_462, u8 *, 0x8B8) == 2) || (temp_r3_462->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_462, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_462->unk870.unk30)->Get() != NULL)) {
             var_r30_463 = 1;
         }
         if ((var_r30_463 == 0) || (MKCollision_SphereCollide(*((MKVector3 *) &spB8), temp_f31_428, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
@@ -310,7 +313,7 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         goto block_39;
     }
     var_r30_507 = 0;
-    if (((u8) M2C_FIELD(temp_r3_399, u8 *, 0x8B8) == 2) || (temp_r3_399->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_399, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_399->unk870.unk30)->Get() != NULL)) {
         var_r30_507 = 1;
     }
     if (var_r30_507 != 0) {
@@ -343,19 +346,19 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         RemoveAllSubgoals();
         temp_r28_576 = this->unkC;
         var_r29_577 = 0;
-        if (temp_r28_576->unk750.unkA0.IsPointWithin(temp_r28_576->unk710) != 0) {
-            sp18.GetRegionPos();
+        if (((EnemyRegion *) &temp_r28_576->unk750.unkA0)->IsPointWithin(temp_r28_576->unk710) != 0) {
+            ((EnemyRegion *) &sp18)->GetRegionPos();
             if ((f32) fabs(sp1C - temp_r28_576->unk710.unk4) <= 500.0f) {
                 var_r29_577 = 1;
             }
         }
-        if ((var_r29_577 != 0) && (temp_r4_600 = this->unkC, ((temp_r4_600->unk800.unk28.IsPointWithin(temp_r4_600->unk710) == 0) != 0))) {
+        if ((var_r29_577 != 0) && (temp_r4_600 = this->unkC, ((((EnemyRegion *) &temp_r4_600->unk800.unk28)->IsPointWithin(temp_r4_600->unk710) == 0) != 0))) {
             temp_r4_606 = this->unkC;
-            temp_r4_606->unk870.unk40.Set(temp_r4_606->unk710, 0U);
+            ((AITargetData *) &temp_r4_606->unk870.unk40)->Set(temp_r4_606->unk710, 0U);
         } else {
             temp_r4_613 = this->unkC;
-            temp_r4_613->unk750.unkA0.GetNearestPointOnBoundingRegion(temp_r4_613->unk710, &sp98, &sp88);
-            this->unkC->unk870.unk40.Set(sp98, 0U);
+            ((EnemyRegion *) &temp_r4_613->unk750.unkA0)->GetNearestPointOnBoundingRegion(temp_r4_613->unk710, &sp98, &sp88);
+            ((AITargetData *) &this->unkC->unk870.unk40)->Set(sp98, 0U);
         }
         AddSubgoal__27CompositeGoal<10SwampTier1>FP18Goal<10SwampTier1>((CompositeGoal<SwampTier1> *) this, (Goal<SwampTier1> *) this->unk38);
         temp_r3_628 = this->unkC;
@@ -370,7 +373,7 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         M2C_FIELD(temp_r8_635, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_635, u8 *, 0x30) | 0x40);
         M2C_FIELD(temp_r8_635, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_635, u8 *, 0x30) | 0x20);
         M2C_FIELD(temp_r8_635, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r8_635, u8 *, 0x30) | 0x10);
-        this->unkC->unk870.unk40.SetInsideRegion(1U);
+        ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
         this->unk3D = 1;
         if (sp8 != NULL) {
             M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -546,12 +549,12 @@ block_14:
         if ((temp_r3_1037->unkAB0 > 0.0f) && (M2C_FIELD(temp_r3_1037->__vptr, u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (temp_r30_971 == 0)) {
             temp_r3_1054 = this->unkC;
             var_r30_1055 = 0;
-            if (((u8) M2C_FIELD(temp_r3_1054, u8 *, 0x8B8) == 2) || (temp_r3_1054->unk870.unk30.Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r3_1054, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_1054->unk870.unk30)->Get() != NULL)) {
                 var_r30_1055 = 1;
             }
             if (var_r30_1055 != 0) {
                 temp_r3_1068 = this->unkC;
-                if ((((u8) M2C_FIELD(temp_r3_1068, u8 *, 0x8B9) >> 6U) & 1) && (temp_r3_1068->unk838.unk28.IsAttackable() != 0)) {
+                if ((((u8) M2C_FIELD(temp_r3_1068, u8 *, 0x8B9) >> 6U) & 1) && (((AITargetData *) &temp_r3_1068->unk838.unk28)->IsAttackable() != 0)) {
                     temp_r3_1076 = this->unkC;
                     if (temp_r3_1076->IsTargetBehindWall() == 0) {
                         AddGoal_AlertMode((AITargetData *) &this->unkC->unk838.unk28);
@@ -773,7 +776,7 @@ void SwampTier1Goal_Think::Init(SwampTier1 *arg0) {
     if ((SwampTier1 *) M2C_FIELD(temp_r4_1500, SwampTier1 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_1500, s8 *, 9) = 1;
     }
-    this->unk28->Init((Enemy *) arg0);
+    ((EnemyGoal_Death *) this->unk28)->Init((Enemy *) arg0);
     temp_r4_1514 = this->unk2C;
     M2C_FIELD(temp_r4_1514, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_1514, SwampTier1 **, 0xC) = arg0;
@@ -788,8 +791,8 @@ void SwampTier1Goal_Think::Init(SwampTier1 *arg0) {
     if ((SwampTier1 *) M2C_FIELD(temp_r4_1525, SwampTier1 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_1525, s8 *, 9) = 1;
     }
-    this->unk24->Init(arg0);
-    this->unk34->Init((Enemy *) arg0);
+    ((SwampTier1Goal_Hit *) this->unk24)->Init(arg0);
+    ((EnemyGoal_AlertMode *) this->unk34)->Init((Enemy *) arg0);
     temp_r4_1542 = this->unk38;
     M2C_FIELD(temp_r4_1542, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_1542, SwampTier1 **, 0xC) = arg0;

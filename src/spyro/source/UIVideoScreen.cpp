@@ -1,4 +1,5 @@
 #include "spyro/source/UIVideoScreen.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameVideo.h"
@@ -39,7 +40,7 @@ void UIVideoScreen::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void UIVideoScreen::Update() {
     GameVideo *temp_r3_341;
     f32 temp_f1_276;
@@ -186,7 +187,7 @@ void UIVideoScreen::Update() {
         } else {
 block_57:
             M2C_FIELD(this, u8 *, 0xFB) = 1U;
-            this->unkD4.Send();
+            ((UIEvent *) &this->unkD4)->Send();
         }
     }
     temp_f1_276 = M2C_BITWISE(f32, this->unkE0);
@@ -225,13 +226,13 @@ block_69:
     if (temp_r3_341 != NULL) {
         temp_f1_344 = GameVideo_GetRemainingTime(temp_r3_341);
         if (((u8) M2C_FIELD(this, u8 *, 0xF5) != 0) && (M2C_BITWISE(f32, this->unkE0) <= M2C_BITWISE(f32, this->unkE4)) && (temp_f1_344 >= 0.0f) && (temp_f1_344 <= 0.5f) && ((u8) M2C_FIELD(this, u8 *, 0xFB) == 0)) {
-            this->unkBC.unk4.Send();
+            ((UIEvent *) &this->unkBC.unk4)->Send();
         }
         if ((GameVideo_Update(this->unkE4) == 0) && (((u8) M2C_FIELD(this, u8 *, 0xF5) == 0) || (M2C_BITWISE(f32, this->unkE0) != 1.0f))) {
-            this->unkBC.unk4.Send();
+            ((UIEvent *) &this->unkBC.unk4)->Send();
         }
     } else if (((u8) M2C_FIELD(this, u8 *, 0xF5) == 0) || (M2C_BITWISE(f32, this->unkE0) != 1.0f)) {
-        this->unkBC.unk4.Send();
+        ((UIEvent *) &this->unkBC.unk4)->Send();
     }
 }
 #endif
@@ -283,22 +284,20 @@ void UIVideoScreen::Message(UIMessage *arg0) {
     UIScreen::Message(arg0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void UIVideoScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkBC.unk4.Resolve((UIObject *) this);
-    this->unkD4.Resolve((UIObject *) this);
+    ((UIEvent *) &this->unkBC.unk4)->Resolve((UIObject *) this);
+    ((UIEvent *) &this->unkD4)->Resolve((UIObject *) this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIVideoScreen::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r31_570;
     s8 *temp_r3_553;
 
     sp8 = NULL;
-    if (arg0->LoadString("video", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("video", &sp8, 0) != 0) {
         temp_r3_553 = this->unkE0;
         if (temp_r3_553 != NULL) {
             UIStringTable_Remove(temp_r3_553);
@@ -308,7 +307,7 @@ s32 UIVideoScreen::LoadLine(UIDataLine *arg0) {
         return 1;
     }
     var_r31_570 = 0;
-    if ((this->unkBC.unk4.LoadLine("OnComplete", arg0) != 0) || (this->unkD4.LoadLine("OnButtonPressed", arg0) != 0) || (arg0->LoadBool("bFadeIn", (u8 *) &this->unkEC, 0) != 0) || (arg0->LoadBool("bFadeOut", this + 0xF5, 0) != 0) || (arg0->LoadBool("bWideScreen", (u8 *) &this->unkF0, 0) != 0) || (arg0->LoadBool("bZoom", this + 0xF9, 0) != 0) || (arg0->LoadBool("bLocalized", this + 0xFA, 0) != 0) || (UIScreen::LoadLine(arg0) != 0)) {
+    if ((((UIEvent *) &this->unkBC.unk4)->LoadLine("OnComplete", arg0) != 0) || (((UIEvent *) &this->unkD4)->LoadLine("OnButtonPressed", arg0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeIn", (u8 *) &this->unkEC, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bFadeOut", this + 0xF5, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bWideScreen", (u8 *) &this->unkF0, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bZoom", this + 0xF9, 0) != 0) || (((MKIniLine *) arg0)->LoadBool("bLocalized", this + 0xFA, 0) != 0) || (UIScreen::LoadLine(arg0) != 0)) {
         var_r31_570 = 1;
     }
     return var_r31_570;

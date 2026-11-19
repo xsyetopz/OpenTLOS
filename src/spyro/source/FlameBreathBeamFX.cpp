@@ -224,7 +224,7 @@ loop_15:
             sp180 = (f64) sp1A0.unk10;
             sp188 = (f64) sp1A0.unk18;
             sp14 = 0.0f;
-            sp150.GetMeasure(var_f26_152, (Matrix *) &this->unkC8, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp150)->GetMeasure(var_f26_152, (Matrix *) &this->unkC8, KDSpline_PositionMixer);
             sp190 = sp150;
             sp198 = sp158;
             if ((var_r26_143 == 0xE) || (var_r26_143 == 0)) {
@@ -392,7 +392,7 @@ void FlameBreathBeam::ResetBeamNodes(MKVector3 arg0, MKVector3 arg1, MKVector3 a
     sp88 = temp_f0_581;
     sp20 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     sp90 = (f64) sp20;
-    sp98.operator*(sp88.Magnitude());
+    sp98.operator*(((MKVector3 *) &sp88)->Magnitude());
     spA8.operator*(0.75f);
     sp38 = this->unk88 + M2C_BITWISE(f64, spA8);
     this->unkA8 = sp38;
@@ -405,7 +405,7 @@ void FlameBreathBeam::ResetBeamNodes(MKVector3 arg0, MKVector3 arg1, MKVector3 a
     sp48 = temp_f0_618;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     sp50 = (f64) sp10;
-    sp58.operator*(sp48.Magnitude());
+    sp58.operator*(((MKVector3 *) &sp48)->Magnitude());
     sp68.operator*(0.35f);
     sp28 = this->unk88 + M2C_BITWISE(f64, sp68);
     this->unk98 = sp28;
@@ -502,7 +502,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     spF0 = temp_f0_693;
     sp28 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     spF8 = (f64) sp28;
-    sp100.operator*(spF0.Magnitude());
+    sp100.operator*(((MKVector3 *) &spF0)->Magnitude());
     sp110.operator*(0.35f);
     sp40 = this->unk88 + M2C_BITWISE(f64, sp110);
     this->unk98 = sp40;
@@ -516,7 +516,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     spB0 = temp_f0_734;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     spB8 = (f64) sp18;
-    spC0.operator*(spB0.Magnitude());
+    spC0.operator*(((MKVector3 *) &spB0)->Magnitude());
     spD0.operator*(0.75f);
     sp30 = this->unk88 + M2C_BITWISE(f64, spD0);
     this->unkA8 = sp30;
@@ -755,7 +755,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp200 = temp_f0_1096;
     sp88 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     sp208 = (f64) sp88;
-    temp_f1_1107 = sp200.Magnitude();
+    temp_f1_1107 = ((MKVector3 *) &sp200)->Magnitude();
     temp_f0_1110 = *(f64 *) arg2 * temp_f1_1107;
     sp70 = temp_f0_1110;
     sp210 = temp_f0_1110;
@@ -780,7 +780,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp1B0 = temp_f0_1160;
     sp48 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     sp1B8 = (f64) sp48;
-    temp_f1_1171 = sp1B0.Magnitude();
+    temp_f1_1171 = ((MKVector3 *) &sp1B0)->Magnitude();
     temp_f0_1174 = *(void *) arg2 * temp_f1_1171;
     sp30 = temp_f0_1174;
     sp1C0 = temp_f0_1174;

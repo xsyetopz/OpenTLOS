@@ -281,7 +281,7 @@ loop_26:
                         sp208 = (f64) sp238;
                         sp210 = (f64) sp240;
                     }
-                    sp188.GetRandPos();
+                    ((Volume *) &sp188)->GetRandPos();
                     sp58 = 0.0f;
                     sp5C = -500.0f;
                     sp60 = 0.0f;
@@ -351,7 +351,7 @@ loop_26:
                     sp3C = 1.0f;
                     sp1F0 = (f64) sp40;
                     sp1E8 = (f64) sp38;
-                    spF8.GetRandPos();
+                    ((Volume *) &spF8)->GetRandPos();
                     sp1D8 = spF8;
                     sp1E0 = sp100;
                     temp_f0_544 = spF8 - M2C_FIELD(temp_r30_197, f64 *, 0x30);
@@ -530,7 +530,7 @@ loop_13:
             M2C_FIELD(temp_r26_657, f64 *, 0x40) = M2C_BITWISE(f64, spE8);
             M2C_FIELD(temp_r26_657, f64 *, 0x48) = (f64) spE8.unk8;
         } else {
-            spA8.GetRandPos();
+            ((Volume *) &spA8)->GetRandPos();
             sp138.unk10 = spA8;
             sp138.unk18 = spB0;
             temp_f0_836 = spA8 - sp138.unk30;
@@ -575,7 +575,6 @@ void FlowerCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void FlowerCritterDescriptor::LoadDone() {
     s8 *temp_r30_1014;
     s8 *temp_r30_1032;
@@ -592,49 +591,48 @@ void FlowerCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_958 = this->unk34;
-    if (temp_r30_958->Exists("idle_01") != 0) {
-        var_r3_970 = temp_r30_958->GetAnim("idle_01");
+    if (((MKAnimScript *) temp_r30_958)->Exists("idle_01") != 0) {
+        var_r3_970 = ((MKAnimScript *) temp_r30_958)->GetAnim("idle_01");
     } else {
         var_r3_970 = NULL;
     }
     this->unk70 = (s32) var_r3_970;
     temp_r30_978 = this->unk34;
-    if (temp_r30_978->Exists("idle_02") != 0) {
-        var_r3_988 = temp_r30_978->GetAnim("idle_02");
+    if (((MKAnimScript *) temp_r30_978)->Exists("idle_02") != 0) {
+        var_r3_988 = ((MKAnimScript *) temp_r30_978)->GetAnim("idle_02");
     } else {
         var_r3_988 = NULL;
     }
     this->unk74 = (s32) var_r3_988;
     temp_r30_996 = this->unk34;
-    if (temp_r30_996->Exists("idle_02") != 0) {
-        var_r3_1006 = temp_r30_996->GetAnim("idle_02");
+    if (((MKAnimScript *) temp_r30_996)->Exists("idle_02") != 0) {
+        var_r3_1006 = ((MKAnimScript *) temp_r30_996)->GetAnim("idle_02");
     } else {
         var_r3_1006 = NULL;
     }
     this->unk78 = (s32) var_r3_1006;
     temp_r30_1014 = this->unk34;
-    if (temp_r30_1014->Exists("fly_01") != 0) {
-        var_r3_1024 = temp_r30_1014->GetAnim("fly_01");
+    if (((MKAnimScript *) temp_r30_1014)->Exists("fly_01") != 0) {
+        var_r3_1024 = ((MKAnimScript *) temp_r30_1014)->GetAnim("fly_01");
     } else {
         var_r3_1024 = NULL;
     }
     this->unk7C = (s32) var_r3_1024;
     temp_r30_1032 = this->unk34;
-    if (temp_r30_1032->Exists("fly_02") != 0) {
-        var_r3_1042 = temp_r30_1032->GetAnim("fly_02");
+    if (((MKAnimScript *) temp_r30_1032)->Exists("fly_02") != 0) {
+        var_r3_1042 = ((MKAnimScript *) temp_r30_1032)->GetAnim("fly_02");
     } else {
         var_r3_1042 = NULL;
     }
     this->unk80 = (s32) var_r3_1042;
     temp_r30_1050 = this->unk34;
-    if (temp_r30_1050->Exists("fly_03") != 0) {
-        var_r3_1060 = temp_r30_1050->GetAnim("fly_03");
+    if (((MKAnimScript *) temp_r30_1050)->Exists("fly_03") != 0) {
+        var_r3_1060 = ((MKAnimScript *) temp_r30_1050)->GetAnim("fly_03");
     } else {
         var_r3_1060 = NULL;
     }
     this->unk84 = (s32) var_r3_1060;
 }
-#endif
 
 void FlowerCritterDescriptor::Init() {
     KDPropDescriptor::Init();

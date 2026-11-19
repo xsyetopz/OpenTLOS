@@ -1293,7 +1293,7 @@ void MKFFTWater::ManagedDraw() {
 loop_5:
     if (var_r26_2364 < (s32) *MKFFTWater::numTypesVisible) {
         temp_r0_2370 = MKFFTWater::typesVisible[var_r31_2361];
-        ((MKFFTBaseType *) ((MKFFTBaseType *) pWaterTypes[temp_r0_2370]))->Update();
+        ((MKFFTBaseType *) pWaterTypes[temp_r0_2370])->Update();
         temp_r3_2374 = pWaterTypes[temp_r0_2370];
         temp_r3_2374->Draw(temp_r3_2374->unk50C4);
         var_r4_2377 = pWaterTypes[temp_r0_2370];
@@ -1410,7 +1410,7 @@ loop_6:
     temp_r0_2554 = this->unk8;
     if (temp_r0_2554 != 0) {
         temp_r28_2557 = temp_r0_2554 * 0x5168;
-        temp_r3_2558 = var_r3_2517->Current();
+        temp_r3_2558 = ((MKHeap *) var_r3_2517)->Current();
         if (temp_r3_2558 != NULL) {
             var_r3_2517 = ((MKHeap *) (temp_r3_2558->Current()))->Alloc(temp_r28_2557, NULL, 0);
         } else {
@@ -1419,7 +1419,7 @@ loop_6:
         this->unkC = &var_r3_2517->unk0;
     }
     if (var_r29_2521 != 0) {
-        temp_r3_2575 = var_r3_2517->Current();
+        temp_r3_2575 = ((MKHeap *) var_r3_2517)->Current();
         if (temp_r3_2575 != NULL) {
             var_r3_2582 = ((MKHeap *) (temp_r3_2575->Current()))->Alloc(0x7740, NULL, 0);
         } else {

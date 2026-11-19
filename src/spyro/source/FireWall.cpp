@@ -6,6 +6,8 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -24,7 +26,7 @@ extern MKHeap gb;
 static s32 lit_548 = 0;
 static u8 lit_549 = 0;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
 void FireWall::Deinit() {
     MKHeap *temp_r29_68;
     MKHeap *temp_r3_71;
@@ -39,7 +41,7 @@ void FireWall::Deinit() {
     var_r28_50 = 0;
 loop_2:
     if (var_r28_50 < (s32) this->unk4C) {
-        gb.unk64->Free(*(this->unk50 + (var_r31_47 + 0x2C)));
+        ((Coronas *) gb.unk64)->Free(*(this->unk50 + (var_r31_47 + 0x2C)));
         var_r3_48 = this->unk50;
         temp_r0_60 = var_r31_47 + 0x2C;
         var_r28_50 += 1;
@@ -514,7 +516,7 @@ loop_16:
             sp24 = temp_f1_876;
             sp58 = (f64) sp28;
             sp50 = (f64) sp20;
-            gb.unk68->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
+            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
             var_r28_828 += 1;
         } while (var_r28_828 < 3);
         sp40.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
@@ -672,11 +674,11 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
         if (stricmp("FlamePath") == 0) {
             var_r30_983 = arg0->unkC->GetSubLine(arg0);
             temp_r3_984 = arg0->GetNmbrOfSubLines();
-            sp1C0.Init(temp_r3_984, 0U);
+            ((KDUniformSpline *) &sp1C0)->Init(temp_r3_984, 0U);
 loop_6:
             if (var_r30_983 != NULL) {
                 var_r30_983->LoadVector3("waypoint", &sp1B0, 0);
-                sp1C0.AddNode(sp1B0);
+                ((KDUniformSpline *) &sp1C0)->AddNode(sp1B0);
                 var_r30_983 = var_r30_983->unkC->GetNextLine(var_r30_983);
                 goto loop_6;
             }
@@ -691,7 +693,7 @@ loop_6:
 loop_32:
             if (var_r28_1029 < temp_r3_984) {
                 sp20 = 0.0f;
-                sp150.GetMeasure(var_f22_1026, (Matrix *) &sp1C0, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp150)->GetMeasure(var_f22_1026, (Matrix *) &sp1C0, KDSpline_PositionMixer);
                 sp190 = sp150;
                 sp198 = sp158;
                 temp_f0_1049 = sp150 - sp1A0;
@@ -768,7 +770,7 @@ loop_130:
             if (var_f18_1179 < 1.0f) {
                 if (var_r30_1200 < (s32) this->unk4C) {
                     sp1C = 0.0f;
-                    sp130.GetMeasure(var_f18_1179, (Matrix *) &sp1C0, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp130)->GetMeasure(var_f18_1179, (Matrix *) &sp1C0, KDSpline_PositionMixer);
                     var_f21_1215 = var_f18_1179 + temp_f23_1198;
                     temp_r3_1218 = this->unk50 + var_r28_1201;
                     M2C_FIELD(temp_r3_1218, f64 *, 0) = sp130;
@@ -783,7 +785,7 @@ loop_130:
                         var_f1_1221 = 0.0f;
                     }
                     sp24 = 0.0f;
-                    sp120.GetMeasure(var_f1_1221, (Matrix *) &sp1C0, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp120)->GetMeasure(var_f1_1221, (Matrix *) &sp1C0, KDSpline_PositionMixer);
                     sp180 = sp120;
                     temp_r3_1243 = this->unk50 + var_r28_1201;
                     sp188 = sp128;
@@ -1019,7 +1021,7 @@ loop_130:
                     temp_r0_1738 = var_r28_1201 + 0x2C;
                     var_r30_1200 += 1;
                     var_r28_1201 += 0x30;
-                    *(this->unk50 + temp_r0_1738) = gb.unk64->Alloc(*((MKVector3 *) &spD0), *((MKVector4 *) &spB0), 8.5f, lit_548, lit_549);
+                    *(this->unk50 + temp_r0_1738) = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &spD0), *((MKVector4 *) &spB0), 8.5f, lit_548, lit_549);
                     if (var_f21_1215 < 1.0f) {
 
                     } else {
@@ -1034,7 +1036,7 @@ loop_130:
                     goto loop_130;
                 }
             }
-            sp1C0.Deinit();
+            ((KDUniformSpline *) &sp1C0)->Deinit();
             return 1;
         }
     }

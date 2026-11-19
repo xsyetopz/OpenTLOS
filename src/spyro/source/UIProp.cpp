@@ -42,7 +42,7 @@ void UIProp::Update() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void UIProp::Message(MKMessage *arg0) {
     s32 sp8;
     s32 temp_r0_107;
@@ -56,10 +56,10 @@ void UIProp::Message(MKMessage *arg0) {
         M2C_FIELD(*temp_r3_117, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_117, &sp8);
         break;
     case 0x7F:
-        this->unk54->PushScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
+        ((UISystem *) this->unk54)->PushScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
         break;
     case 0x80:
-        this->unk54->ChangeScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
+        ((UISystem *) this->unk54)->ChangeScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
         break;
     }
     MKProp::Message(arg0);
@@ -104,7 +104,7 @@ void UIProp::LoadDone() {
     var_r31_207->unk8 = UISystem::descriptor;
     var_r31_207->Init(UISystem::descriptor);
     this->unk54 = checked_cast<UISystem *, UIObject>(var_r31_207);
-    if (this->unk54->Load(this->unk50, NULL) != 0) {
+    if (((UIObject *) this->unk54)->Load(this->unk50, NULL) != 0) {
         temp_r3_237 = this->unk54;
         M2C_FIELD(*temp_r3_237, M2C_UNK (**)(void **), 0x14)(temp_r3_237);
         temp_r3_242 = this->unk54;
@@ -128,7 +128,6 @@ s32 UIProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'temp_r30_314'
 void UIProp::Deinit() {
     MKHeap *temp_r3_328;
     UIStringTable *temp_r30_314;
@@ -152,7 +151,6 @@ void UIProp::Deinit() {
     this->unk58.Deinit();
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8'
 void UIProp::Init() {

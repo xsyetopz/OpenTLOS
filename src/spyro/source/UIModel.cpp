@@ -1,5 +1,6 @@
 #include "spyro/source/UIModel.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -20,7 +21,6 @@ extern u8 init_580;
 static MKVector3 camera_576 = { 0.0f, 0.0f, 0.0f, 0.0f };
 static MKVector3 lookat_579 = { 0.0f, 0.0f, 0.0f, 0.0f };
 
-#if 0 // DRAFT: expression syntax error
 void UIAnimatedModel::FreeResources() {
     MKModel *temp_r3_16;
 
@@ -29,38 +29,35 @@ void UIAnimatedModel::FreeResources() {
         MKModel_Destroy(temp_r3_16);
         this->unk64 = NULL;
     }
-    this->unk60.Deinit();
+    ((MKAnimScript *) &this->unk60)->Deinit();
     this->unk64 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'Init(signed char *, int)' does not match
 void UIAnimatedModel::LoadResources() {
     s8 *temp_r31_51;
 
     if ((MKModel *) this->unk64 == NULL) {
-        this->unk60.Init(this->unk60, NULL);
-        temp_r31_51 = this->unk60.GetAnimName();
-        this->unk64 = MKModel_Create(this->unk60.GetMeshName(), temp_r31_51, 2, NULL);
+        ((MKAnimScript *) &this->unk60)->Init(this->unk60, NULL);
+        temp_r31_51 = ((MKAnimScript *) &this->unk60)->GetAnimName();
+        this->unk64 = MKModel_Create(((MKAnimScript *) &this->unk60)->GetMeshName(), temp_r31_51, 2, NULL);
         M2C_FIELD(this, MKModel **, 0x70) = (MKModel *) this->unk64;
-        this->unk60.CalculateSubObjectIndices();
-        this->unk60.SetAnimation(MKModel_GetAnimation(this->unk64));
-        this->unk60.SetAnim(this->unk60.GetAnim(0), 1.0f, 0.0f, 0, -1);
+        ((MKAnimScript *) &this->unk60)->CalculateSubObjectIndices();
+        ((MKAnimScript *) &this->unk60)->SetAnimation(MKModel_GetAnimation(this->unk64));
+        ((MKAnimScript *) &this->unk60)->SetAnim(((MKAnimScript *) &this->unk60)->GetAnim(0), 1.0f, 0.0f, 0, -1);
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void UIAnimatedModel::Update() {
     MKModel *temp_r3_94;
 
     temp_r3_94 = this->unk64;
     if ((temp_r3_94 != NULL) && (M2C_BITWISE(u32, this->unk68.unk18) != 0U) && ((u8) this->unk15 != 0)) {
-        this->unk60.Animate(MKModel_GetAnimation(temp_r3_94), -1, NULL);
+        ((MKAnimScript *) &this->unk60)->Animate(MKModel_GetAnimation(temp_r3_94), -1, NULL);
         KDSound_Play((MKAnimScript *) &this->unk60, 0U);
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void UIModel::UpdateMatrix(RenderContext *arg0) {
@@ -128,13 +125,13 @@ void UIModel::Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIModel::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_299;
 
     sp8 = NULL;
-    if (arg0->LoadString("model", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("model", &sp8, 0) != 0) {
         temp_r3_299 = this->unk60;
         if (temp_r3_299 != NULL) {
             UIStringTable_Remove(temp_r3_299);

@@ -10,14 +10,14 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 void ShatterablePlatform::Reset() {
     Matrix sp20;
     f64 sp18;
     f64 sp10;
 
     Shatterable::Reset();
-    this->unk1A8.unk8.Reset();
+    ((PlatformObject *) &this->unk1A8.unk8)->Reset();
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(this, f64 *, 0x208);
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(this, f64 *, 0x210);
     sp10 = M2C_FIELD(this, f64 *, 0x1C8);
@@ -28,17 +28,15 @@ void ShatterablePlatform::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::Deinit() {
-    this->unk1A8.unk8.Deinit();
+    ((PlatformObject *) &this->unk1A8.unk8)->Deinit();
     Shatterable::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void ShatterablePlatform::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x88) {
-        this->unk1A8.unk8.Message(arg0);
+        ((PlatformObject *) &this->unk1A8.unk8)->Message(arg0);
         Shatterable::Message(arg0);
         return;
     }
@@ -58,10 +56,10 @@ void ShatterablePlatform::Update() {
         }
     }
     this->unk1A8.unkC = M2C_BITWISE(f32, (this->unk158 + (((s32) this->unk170 << 7) + 0x68)));
-    this->unk1A8.unk8.BeginUpdate();
-    this->unk1A8.unk8.UpdateTilt();
+    ((PlatformObject *) &this->unk1A8.unk8)->BeginUpdate();
+    ((PlatformObject *) &this->unk1A8.unk8)->UpdateTilt();
     UpdateMove();
-    this->unk1A8.unk8.EndUpdate();
+    ((PlatformObject *) &this->unk1A8.unk8)->EndUpdate();
     Shatterable::Update();
 }
 #endif
@@ -71,8 +69,8 @@ void ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
-    this->unk1A8.unk8.Init((PlatformObjectDesc *) &this->unk198, this->unk158 + (((s32) this->unk170 << 7) + 0x68));
-    this->unk1A8.unk8.LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
+    ((PlatformObject *) &this->unk1A8.unk8)->Init((PlatformObjectDesc *) &this->unk198, this->unk158 + (((s32) this->unk170 << 7) + 0x68));
+    ((PlatformObject *) &this->unk1A8.unk8)->LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(this, f64 *, 0x208);
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(this, f64 *, 0x210);
 }

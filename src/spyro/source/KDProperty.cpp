@@ -46,7 +46,7 @@ s32 KDScriptProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
     KDPropertyCommand **var_r0_203;
     KDPropertyCommand **var_r0_236;
@@ -66,7 +66,7 @@ u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
         temp_r0_178 = this->unk0;
         if (temp_r0_178 > 1) {
             temp_r30_181 = temp_r0_178 * 8;
-            temp_r3_182 = temp_r3_176->Current();
+            temp_r3_182 = ((MKHeap *) temp_r3_176)->Current();
             if (temp_r3_182 != NULL) {
                 var_r3_189 = ((MKHeap *) (temp_r3_182->Current()))->Alloc(temp_r30_181, NULL, 0);
             } else {
@@ -84,7 +84,7 @@ loop_16:
             if (var_r30_200 != NULL) {
                 M2C_FIELD(var_r29_208, KDPropertyCommand **, 0) = NULL;
                 M2C_FIELD(var_r29_208, s32 *, 4) = 0;
-                var_r29_208->LoadLine(var_r30_200, NULL);
+                ((KDPropertyCommand *) var_r29_208)->LoadLine(var_r30_200, NULL);
                 temp_r0_221 = this->unk0;
                 var_r5_222 = 0;
                 var_r30_200 = var_r30_200->unkC->GetNextLine(var_r30_200);
@@ -103,9 +103,9 @@ loop_16:
             this->unk4 = NULL;
             this->unk8 = 0;
             if ((s32) this->unk0 == 0) {
-                this->unk4.LoadLine(arg0, arg1);
+                ((KDPropertyCommand *) &this->unk4)->LoadLine(arg0, arg1);
             } else {
-                this->unk4.LoadLine(arg0->unkC->GetSubLine(arg0), NULL);
+                ((KDPropertyCommand *) &this->unk4)->LoadLine(arg0->unkC->GetSubLine(arg0), NULL);
             }
             this->unk0 = 1;
         }

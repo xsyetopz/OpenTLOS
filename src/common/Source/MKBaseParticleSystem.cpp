@@ -133,7 +133,7 @@ loop_9:
             var_r4_135 += 4;
             goto loop_9;
         }
-        temp_r3_162 = var_r3_137->Current();
+        temp_r3_162 = ((MKHeap *) var_r3_137)->Current();
         if (temp_r3_162 != NULL) {
             ((MKHeap *) (temp_r3_162->Current()))->Free(var_r31_136, NULL, 0);
         } else {
@@ -160,7 +160,7 @@ void MKParticleSystem_InitModule(int arg0) {
         gParticleChunks = &gEmptyPtrListDL + 4;
         return;
     }
-    temp_r3_201 = temp_r3_189->Current();
+    temp_r3_201 = ((MKHeap *) temp_r3_189)->Current();
     if (temp_r3_201 != NULL) {
         var_r3_211 = ((MKHeap *) (temp_r3_201->Current()))->Alloc(((temp_r31_193 + 2) * 4) + (temp_r31_193 * 0xA90), NULL, 0);
     } else {

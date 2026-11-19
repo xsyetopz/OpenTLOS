@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXElectricity2.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -1112,7 +1113,7 @@ void FuryFXElectricity2::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void FuryFXElectricity2::Init() {
     MKHeap *temp_r3_1796;
     ZapPS *temp_r3_1794;
@@ -1127,9 +1128,9 @@ void FuryFXElectricity2::Init() {
     this->unk94 = 0.0f;
     M2C_FIELD(this, f32 *, 0x11C) = -1.0f;
     this->unkA8 = NULL;
-    temp_r3_1794 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
+    temp_r3_1794 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
     this->unkAC = temp_r3_1794;
-    temp_r3_1796 = temp_r3_1794->Current();
+    temp_r3_1796 = ((MKHeap *) temp_r3_1794)->Current();
     if (temp_r3_1796 != NULL) {
         var_r3_1803 = ((MKHeap *) (temp_r3_1796->Current()))->Alloc(0xF8, NULL, 0);
     } else {

@@ -1692,19 +1692,19 @@ s32 SpyroHud_Update(void *arg0) {
 
     if ((*M2C_FIELD(arg0, s32 **, 0) & 1) && (M2C_FIELD(GameData::gameData, f32 *, 0x78) != M2C_FIELD(GameData::gameData, f32 *, 0x70))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData[0x70]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) &GameData::gameData[0x70])->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
     if ((*M2C_FIELD(arg0, s32 **, 0) & 2) && (M2C_FIELD(GameData::gameData, f32 *, 0xA8) != M2C_FIELD(GameData::gameData, f32 *, 0xA0))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData[0xA0]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) &GameData::gameData[0xA0])->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
     if ((*M2C_FIELD(arg0, s32 **, 0) & 4) && (M2C_FIELD(GameData::gameData, f32 *, 0x90) != M2C_FIELD(GameData::gameData, f32 *, 0x88))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData[0x88]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) &GameData::gameData[0x88])->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
     if ((*M2C_FIELD(arg0, s32 **, 0) & 8) && (M2C_FIELD(GameData::gameData, f32 *, 0xC0) != M2C_FIELD(GameData::gameData, f32 *, 0xB8))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;
-        ((Stat *) ((Stat *) &GameData::gameData[0xB8]))->AdjustPrevious(gUpdateTimeDelta / 3.0f);
+        ((Stat *) &GameData::gameData[0xB8])->AdjustPrevious(gUpdateTimeDelta / 3.0f);
     }
     if ((*M2C_FIELD(arg0, s32 **, 0) & 0x10) && (M2C_FIELD(arg0, f32 *, 0x2C) != M2C_FIELD(arg0, f32 *, 0x28))) {
         M2C_FIELD(arg0, f32 *, 4) = 2.0f;

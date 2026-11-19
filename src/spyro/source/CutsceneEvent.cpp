@@ -158,7 +158,7 @@ u8 ImageCE::LoadVector2(const char *arg0, MKVector2 *arg1) {
     u8 var_r31_248;
 
     var_r31_248 = 0;
-    if ((((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField(arg0) != 0) && (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->AsFloat(0, &arg1->unk0) != 0) && (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->AsFloat(1, &arg1->unk4) != 0)) {
+    if ((((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) && (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->AsFloat(0, &arg1->unk0) != 0) && (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->AsFloat(1, &arg1->unk4) != 0)) {
         var_r31_248 = 1;
     }
     return var_r31_248;
@@ -711,8 +711,8 @@ s32 ScriptCE::LoadLine() {
     s32 var_r31_1774;
 
     var_r31_1774 = 0;
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("ScriptCommand") != 0) {
-        temp_r31_1782 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField("ScriptCommand") != 0) {
+        temp_r31_1782 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetString(0);
         this->unk4 = ((UIStringTable *) (checked_cast<P16GameSynkerPlayer))->Add(15KDSynkerPlayer3>__FP15KDSynkerPlayer3((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr) + 0x260, (s8 *) temp_r31_1782);
         var_r31_1774 = 1;
     }
@@ -852,9 +852,9 @@ void ScaleCE::Update() {
     sp20 = temp_f0_2141;
     sp18 = (f32) sp38 * -1.0f;
     sp28 = (f64) sp18;
-    sp40.Translate((Matrix *) &sp40, *((MKVector3 *) &sp20));
-    sp40.Scale3x3((Matrix *) &sp40, this->unk8);
-    sp40.Translate((Matrix *) &sp40, *((MKVector3 *) &sp30));
+    ((Matrix *) &sp40)->Translate((Matrix *) &sp40, *((MKVector3 *) &sp20));
+    ((Matrix *) &sp40)->Scale3x3((Matrix *) &sp40, this->unk8);
+    ((Matrix *) &sp40)->Translate((Matrix *) &sp40, *((MKVector3 *) &sp30));
     MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &sp40));
 }
 #endif
@@ -935,14 +935,14 @@ s32 AttachPropToRefPointCE::LoadLine() {
     s8 *temp_r3_2398;
     u8 temp_r29_2401;
 
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("refPoint") != 0) {
-        temp_r3_2395 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField("refPoint") != 0) {
+        temp_r3_2395 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetString(0);
         temp_r3_2398 = strchr(temp_r3_2395, 0x3A);
         temp_r29_2401 = *temp_r3_2398;
         *temp_r3_2398 = 0;
         temp_r3_2406 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(temp_r3_2395);
         *temp_r3_2398 = (s8) temp_r29_2401;
-        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(temp_r3_2406);
+        ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorModel(temp_r3_2406);
         this->unk8 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unkC = MKModel_GetRefPointIndex(this->unk8, temp_r3_2398 + 1);
         return 1U;
@@ -976,7 +976,7 @@ void AttachPropCE::Update() {
         sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk8));
         MKModel_SetPosition(this->unk4->unk4, *((MKVector3 *) &sp18));
         M2C_STRUCT_COPY((s32) &sp18.unk14 + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
-        sp18.unk18.Multiply((Matrix *) &sp18.unk18, &sp70);
+        ((Matrix *) &sp18.unk18)->Multiply((Matrix *) &sp18.unk18, &sp70);
         MKModel_SetWorldMatrix(this->unk4->unk4, *((Matrix *) &sp18.unk18));
     }
 }
@@ -1013,14 +1013,14 @@ s32 AttachActorToRefPointCE::LoadLine() {
     s8 *temp_r3_2613;
     u8 temp_r29_2616;
 
-    if (((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->IsField("refPoint") != 0) {
-        temp_r3_2610 = ((MKIniLine *) ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr))->GetString(0);
+    if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField("refPoint") != 0) {
+        temp_r3_2610 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetString(0);
         temp_r3_2613 = strchr(temp_r3_2610, 0x3A);
         temp_r29_2616 = *temp_r3_2613;
         *temp_r3_2613 = 0;
         temp_r3_2621 = ((KDSP_ActorList *) (KDSynkerPlayerEvent::pSynker.__vptr + 0x100))->GetActorId(temp_r3_2610);
         *temp_r3_2613 = (s8) temp_r29_2616;
-        ((KDSynkerPlayer3 *) ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr))->GetActorModel(temp_r3_2621);
+        ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorModel(temp_r3_2621);
         this->unk8 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unkC = MKModel_GetRefPointIndex(this->unk8, temp_r3_2613 + 1);
         return 1U;
@@ -1054,8 +1054,8 @@ void AttachCE::Update() {
         sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk1C));
         MKModel_SetPosition(this->unk18, *((MKVector3 *) &sp18));
         M2C_STRUCT_COPY((s32) &sp18.unk24 + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
-        sp18.unk28.Multiply((Matrix *) &sp18.unk28, &sp80);
-        sp18.unk28.Translate((Matrix *) &sp18.unk28, this->unk8);
+        ((Matrix *) &sp18.unk28)->Multiply((Matrix *) &sp18.unk28, &sp80);
+        ((Matrix *) &sp18.unk28)->Translate((Matrix *) &sp18.unk28, this->unk8);
         MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &sp18.unk28));
         return;
     }

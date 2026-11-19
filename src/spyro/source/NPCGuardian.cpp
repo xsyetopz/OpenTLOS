@@ -5,6 +5,7 @@
 #include "spyro/source/CharacterGraph.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/NPCGuardianGoal_Think.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
@@ -38,7 +39,7 @@ void NPCGuardian::Resolve() {
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
-    this->unkAFC.Send(NULL);
+    ((EventMessage *) &this->unkAFC)->Send(NULL);
 }
 #endif
 
@@ -57,7 +58,7 @@ s32 NPCGuardian::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("Behaviour", &this->unkB04, 0) != 0) {
         return 1U;
     }
-    return (u8) (this->unkAFC.LoadLine(arg0, "OnLoad") != 0);
+    return (u8) (((EventMessage *) &this->unkAFC)->LoadLine(arg0, "OnLoad") != 0);
 }
 #endif
 

@@ -620,7 +620,7 @@ void MKDynamicBone::Update() {
                     sp3B0 = (f64) sp220;
                     sp6A0.SetRotateAroundAxis(*((MKVector3 *) &sp3A8), temp_f22_701);
                 }
-                sp388.GetNodeOrigin(MKModel_GetAnimation(this->unk24));
+                ((Animation *) &sp388)->GetNodeOrigin(MKModel_GetAnimation(this->unk24));
                 spE8 = sp660.unk30 + ((sp390 * sp660.unk20) + ((sp388 * M2C_BITWISE(f32, sp660)) + (sp38C * sp660.unk10)));
                 spEC = sp660.unk34 + ((sp390 * sp660.unk24) + ((sp388 * sp660.unk4) + (sp38C * sp660.unk14)));
                 spF0 = sp660.unk38 + ((sp390 * sp660.unk28) + ((sp388 * sp660.unk8) + (sp38C * sp660.unk18)));
@@ -1026,7 +1026,7 @@ loop_9:
             var_r4_1448 += 4;
             goto loop_9;
         }
-        temp_r3_1475 = var_r3_1450->Current();
+        temp_r3_1475 = ((MKHeap *) var_r3_1450)->Current();
         if (temp_r3_1475 != NULL) {
             ((MKHeap *) (temp_r3_1475->Current()))->Free(var_r30_1449, NULL, 0);
         } else {
@@ -1057,7 +1057,7 @@ loop_22:
             var_r4_1490 += 4;
             goto loop_22;
         }
-        temp_r3_1517 = var_r3_1492->Current();
+        temp_r3_1517 = ((MKHeap *) var_r3_1492)->Current();
         if (temp_r3_1517 != NULL) {
             ((MKHeap *) (temp_r3_1517->Current()))->Free(var_r30_1491, NULL, 0);
         } else {
@@ -1213,5 +1213,5 @@ void *MKDynamicBone_AddDynamicBone(MKModel *arg0, int arg1) {
 #endif
 
 void MKDynamicBone_ResetModel(MKModel *arg0) {
-    gDynamicBones.ResetModel(arg0);
+    ((MKDynamicBoneSystem *) &gDynamicBones)->ResetModel(arg0);
 }

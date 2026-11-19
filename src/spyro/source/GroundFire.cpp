@@ -169,7 +169,7 @@ loop_8:
             sp10 = 2.0f * temp_f2_199;
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &spB8), *((MKVector3 *) &sp68), sp10);
             sp8 = 1;
-            temp_r26_306->Update(temp_r26_306->unk44, 1U, M2C_FIELD(temp_r26_306, u8 *, 0x48), NULL, (MKVector3 *) &temp_r26_306->unk28, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) temp_r26_306)->Update(temp_r26_306->unk44, 1U, M2C_FIELD(temp_r26_306, u8 *, 0x48), NULL, (MKVector3 *) &temp_r26_306->unk28, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             temp_r26_306->unk3C = M2C_BITWISE(f32, temp_r26_306->unk3C) - gUpdateTimeDelta;
             if (M2C_BITWISE(f32, temp_r26_306->unk3C) <= 0.0f) {
                 spC8.unk4 = 0;

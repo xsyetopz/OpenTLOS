@@ -3,9 +3,9 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSoundProp.h"
 #include "spyro/source/GameEnums.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern void **gMK;
@@ -23,7 +23,6 @@ void SoundProp::Enable() {
     this->unk4C = 1;
 }
 
-#if 0 // DRAFT: expression syntax error
 void SoundProp::Message(MKMessage *arg0) {
     s32 temp_r0_89;
 
@@ -45,10 +44,9 @@ void SoundProp::Message(MKMessage *arg0) {
         }
         break;
     }
-    this->unkA0.Message(arg0);
+    ((KDSoundPlayer *) &this->unkA0)->Message(arg0);
     KDSoundProp::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[11], long *)'
 s32 SoundPropDescriptor::LoadLine(MKIniLine *arg0) {

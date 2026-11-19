@@ -1180,7 +1180,7 @@ void SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1864;
     MKIniLine *var_r28_1883;
@@ -1196,7 +1196,7 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
         temp_r3_1860 = arg0->GetNmbrOfSubLines();
         this->unk178 = temp_r3_1860;
         temp_r29_1863 = this->unk178 * 0x10;
-        temp_r3_1864 = temp_r3_1860->Current();
+        temp_r3_1864 = ((MKHeap *) temp_r3_1860)->Current();
         if (temp_r3_1864 != NULL) {
             var_r3_1871 = ((MKHeap *) (temp_r3_1864->Current()))->Alloc(temp_r29_1863, NULL, 0);
         } else {
@@ -1228,7 +1228,6 @@ void SkiffterCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SkiffterCritterDescriptor::LoadDone() {
     s8 *temp_r30_1954;
     s8 *temp_r30_1974;
@@ -1243,42 +1242,41 @@ void SkiffterCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1954 = this->unk34;
-    if (temp_r30_1954->Exists("Climb") != 0) {
-        var_r3_1966 = temp_r30_1954->GetAnim("Climb");
+    if (((MKAnimScript *) temp_r30_1954)->Exists("Climb") != 0) {
+        var_r3_1966 = ((MKAnimScript *) temp_r30_1954)->GetAnim("Climb");
     } else {
         var_r3_1966 = NULL;
     }
     this->unk74 = (s32) var_r3_1966;
     temp_r30_1974 = this->unk34;
-    if (temp_r30_1974->Exists("Climb_Idle") != 0) {
-        var_r3_1984 = temp_r30_1974->GetAnim("Climb_Idle");
+    if (((MKAnimScript *) temp_r30_1974)->Exists("Climb_Idle") != 0) {
+        var_r3_1984 = ((MKAnimScript *) temp_r30_1974)->GetAnim("Climb_Idle");
     } else {
         var_r3_1984 = NULL;
     }
     this->unk78 = (s32) var_r3_1984;
     temp_r30_1992 = this->unk34;
-    if (temp_r30_1992->Exists("Take_Off") != 0) {
-        var_r3_2002 = temp_r30_1992->GetAnim("Take_Off");
+    if (((MKAnimScript *) temp_r30_1992)->Exists("Take_Off") != 0) {
+        var_r3_2002 = ((MKAnimScript *) temp_r30_1992)->GetAnim("Take_Off");
     } else {
         var_r3_2002 = NULL;
     }
     this->unk7C = (s32) var_r3_2002;
     temp_r30_2010 = this->unk34;
-    if (temp_r30_2010->Exists("Fly") != 0) {
-        var_r3_2020 = temp_r30_2010->GetAnim("Fly");
+    if (((MKAnimScript *) temp_r30_2010)->Exists("Fly") != 0) {
+        var_r3_2020 = ((MKAnimScript *) temp_r30_2010)->GetAnim("Fly");
     } else {
         var_r3_2020 = NULL;
     }
     this->unk80 = (s32) var_r3_2020;
     temp_r30_2028 = this->unk34;
-    if (temp_r30_2028->Exists("Land") != 0) {
-        var_r3_2038 = temp_r30_2028->GetAnim("Land");
+    if (((MKAnimScript *) temp_r30_2028)->Exists("Land") != 0) {
+        var_r3_2038 = ((MKAnimScript *) temp_r30_2028)->GetAnim("Land");
     } else {
         var_r3_2038 = NULL;
     }
     this->unk84 = (s32) var_r3_2038;
 }
-#endif
 
 void SkiffterCritterDescriptor::Init() {
     KDPropDescriptor::Init();

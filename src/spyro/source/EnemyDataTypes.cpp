@@ -3,6 +3,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "unplaced_enums.h"
@@ -158,7 +159,7 @@ void EnemyMovementManager::Update() {
 
     var_r28_219 = 0;
     var_r29_220 = 0.0f;
-    this->unk0->UpdateSpeed();
+    ((Character *) this->unk0)->UpdateSpeed();
     temp_r3_224 = this->unk0->unkA38;
     if (temp_r3_224 != NULL) {
         var_r28_219 = temp_r3_224->unk6C;
@@ -199,7 +200,7 @@ void EnemyMovementManager::Update() {
         if (((u8) this->unk14 >> 7U) & 1) {
             temp_r28_310 = this->unk0;
             var_r29_311 = 0;
-            if (temp_r28_310->HasAnimFinished() != 0) {
+            if (((Character *) temp_r28_310)->HasAnimFinished() != 0) {
                 temp_r4_316 = temp_r28_310->unkA38;
                 if ((temp_r4_316 != NULL) && ((s8 *) temp_r4_316->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r28_310, void **, 0x630), u32 *, 0x20))) {
                     var_r29_311 = 1;
@@ -391,7 +392,7 @@ s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
     if (temp_r3_653 != 0) {
         this->unk78 = (s32) arg0->unk0;
         temp_r28_659 = this->unk78 * 4;
-        temp_r3_660 = temp_r3_653->Current();
+        temp_r3_660 = ((MKHeap *) temp_r3_653)->Current();
         if (temp_r3_660 != NULL) {
             var_r3_667 = ((MKHeap *) (temp_r3_660->Current()))->Alloc(temp_r28_659, NULL, 0);
         } else {

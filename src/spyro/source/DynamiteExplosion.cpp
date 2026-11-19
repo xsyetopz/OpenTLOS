@@ -1,16 +1,21 @@
 #include "spyro/source/DynamiteExplosion.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
+#include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -201,7 +206,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp70 = sp138.unk8 * var_f3_199;
     sp148 = (f64) sp68;
     sp150 = (f64) sp70;
-    gb.unk94->Trigger(*((MKVector3 *) arg1), *((MKVector3 *) &sp148), sp10, lit_1149, (MKVector4) &sp108);
+    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) arg1), *((MKVector3 *) &sp148), sp10, lit_1149, (MKVector4) &sp108);
     temp_f31_231 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
     sp60 = -1.0f;
     sp50 = 1.0f;
@@ -269,7 +274,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     spF8 = temp_f0_356;
     sp30 = (f32) spF0 * temp_f30_78;
     sp100 = (f64) sp30;
-    gb.unk230->Emit(*((MKVector3 *) arg1), *((MKVector3 *) &spF8), temp_f30_78 * (M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float(&gViewSeed, 2.0f, 3.0f)), 1U);
+    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) arg1), *((MKVector3 *) &spF8), temp_f30_78 * (M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float(&gViewSeed, 2.0f, 3.0f)), 1U);
     if (M2C_FIELD(arg1, f32 *, 0x10) <= 0.0f) {
         return 0U;
     }
@@ -566,7 +571,7 @@ loop_24:
         sp13C = 0.0f;
         sp2C0 = (f64) sp140;
         sp2B8 = (f64) sp138;
-        gb.unk74->Emit(arg0, *((MKVector3 *) &sp308), sp24, *((MKVector4 *) &sp2B8), -2000.0f);
+        ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &sp308), sp24, *((MKVector4 *) &sp2B8), -2000.0f);
         var_r27_509 += 1;
         goto loop_24;
     }
@@ -638,7 +643,7 @@ loop_47:
         spF0 = sp298.unk8 * var_f3_795;
         sp2A8 = (f64) spE8;
         sp2B0 = (f64) spF0;
-        gb.unk94->Trigger(arg0, *((MKVector3 *) &sp2A8), sp20, lit_1080, (MKVector4) &sp268);
+        ((ZapArcFX *) gb.unk94)->Trigger(arg0, *((MKVector3 *) &sp2A8), sp20, lit_1080, (MKVector4) &sp268);
         var_r27_674 += 1;
         goto loop_47;
     }
@@ -707,7 +712,7 @@ loop_70:
         sp258 = temp_f0_949;
         spC0 = (f32) sp250 * temp_f1_836;
         sp260 = (f64) spC0;
-        gb.unk230->Emit(arg0, *((MKVector3 *) &sp258), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 1U);
+        ((ElectricSparks *) gb.unk230)->Emit(arg0, *((MKVector3 *) &sp258), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 1U);
         var_r27_829 += 1;
         goto loop_70;
     }
@@ -1298,7 +1303,7 @@ loop_57:
         sp11C = 1.0f;
         sp2A0 = (f64) sp110;
         sp2A8 = (f64) sp118;
-        gb.unk74->Emit(arg0, *((MKVector3 *) &sp2F0), sp18, *((MKVector4 *) &sp2A0), -2000.0f);
+        ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &sp2F0), sp18, *((MKVector4 *) &sp2A0), -2000.0f);
         var_r27_1830 += 1;
         goto loop_57;
     }
@@ -1356,7 +1361,7 @@ loop_60:
         sp248 = (f64) spE8;
         KDRand_Vector(sp1F0, *((MKVector3 *) &sp1E0));
         KDRand_Vector(sp220, *((MKVector3 *) &sp210));
-        gb.unkA8->Emit(*((MKVector3 *) &sp240), *((MKVector3 *) &sp400), sp220, sp1F0, temp_f1_2056, *((MKVector4 *) &sp1C0), 0, NULL);
+        ((FlyingChunkPS *) gb.unkA8)->Emit(*((MKVector3 *) &sp240), *((MKVector3 *) &sp400), sp220, sp1F0, temp_f1_2056, *((MKVector4 *) &sp1C0), 0, NULL);
         var_r28_2002 += 1;
         goto loop_60;
     }
@@ -1799,7 +1804,7 @@ loop_52:
         sp114 = 1.0f;
         sp318 = (f64) sp108;
         sp320 = (f64) sp110;
-        gb.unk74->Emit(arg0, *((MKVector3 *) &sp368), sp20, *((MKVector4 *) &sp318), -2000.0f);
+        ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &sp368), sp20, *((MKVector4 *) &sp318), -2000.0f);
         var_r26_2651 += 1;
         goto loop_52;
     }
@@ -1889,7 +1894,7 @@ loop_58:
         sp220 = (f64) spE0;
         KDRand_Vector(sp1C8, *((MKVector3 *) &sp1B8));
         KDRand_Vector(sp1F8, *((MKVector3 *) &sp1E8));
-        gb.unkAC->Emit(*((MKVector3 *) &sp218), *((MKVector3 *) &sp448), sp1F8, sp1C8, temp_f1_2978, *((MKVector4 *) &sp198), 0, NULL);
+        ((FlyingChunkPS *) gb.unkAC)->Emit(*((MKVector3 *) &sp218), *((MKVector3 *) &sp448), sp1F8, sp1C8, temp_f1_2978, *((MKVector4 *) &sp198), 0, NULL);
         var_r29_2924 += 1;
         goto loop_58;
     }
@@ -2366,7 +2371,7 @@ loop_59:
         sp11C = 1.0f;
         sp280 = (f64) sp110;
         sp288 = (f64) sp118;
-        gb.unk74->Emit(arg0, *((MKVector3 *) &sp2D0), sp18, *((MKVector4 *) &sp280), -2000.0f);
+        ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &sp2D0), sp18, *((MKVector4 *) &sp280), -2000.0f);
         var_r28_3625 += 1;
         goto loop_59;
     }
@@ -2424,7 +2429,7 @@ loop_62:
         sp228 = (f64) spE8;
         KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
         KDRand_Vector(sp200, *((MKVector3 *) &sp1F0));
-        gb.unkA4->Emit(*((MKVector3 *) &sp220), *((MKVector3 *) &sp400), sp200, sp1D0, temp_f1_3849, *((MKVector4 *) &sp1A0), 0xA, NULL);
+        ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp220), *((MKVector3 *) &sp400), sp200, sp1D0, temp_f1_3849, *((MKVector4 *) &sp1A0), 0xA, NULL);
         var_r29_3795 += 1;
         goto loop_62;
     }
@@ -2542,7 +2547,7 @@ loop_9:
             var_r4_4166 += 4;
             goto loop_9;
         }
-        temp_r3_4193 = var_r3_4168->Current();
+        temp_r3_4193 = ((MKHeap *) var_r3_4168)->Current();
         if (temp_r3_4193 != NULL) {
             ((MKHeap *) (temp_r3_4193->Current()))->Free(var_r31_4167, NULL, 0);
         } else {
@@ -2666,17 +2671,17 @@ void DynamiteExplosionDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void DynamiteExplosionDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpFireFlames"));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpFireShock"));
-    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpSmoke"));
-    this->unk6C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpElecShock"));
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpIceFlash"));
-    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpIceShock"));
-    this->unk78 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpEarthFlash"));
-    this->unk7C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpEarthShock"));
-    this->unk80 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpIceSnow"));
+    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireFlames"));
+    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpFireShock"));
+    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpSmoke"));
+    this->unk6C = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpElecShock"));
+    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceFlash"));
+    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceShock"));
+    this->unk78 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthFlash"));
+    this->unk7C = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpEarthShock"));
+    this->unk80 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DynamiteExpIceSnow"));
 }
 #endif

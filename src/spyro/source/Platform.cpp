@@ -10,12 +10,12 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/SeeSaw.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -276,7 +276,7 @@ void Platform::Message(MKMessage *arg0) {
         M2C_FIELD(checked_cast<CollisionInfoRequest *, MKMessage>(arg0), MKCollisionInfo **, 8) = &this->unk70;
         break;
     case -4:
-        this->unk178.Message(arg0);
+        ((KDSoundPlayer *) &this->unk178)->Message(arg0);
         break;
     }
     this->unk108.Message(arg0);

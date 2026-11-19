@@ -51,7 +51,7 @@ inline f32 KDInput::GetRightMag() {
         var_f1_10121 = temp_ret_10128;
         var_r3_10110 = M2C_BITWISE(u8, temp_ret_10128);
     }
-    temp_f1_10132 = var_r3_10110->sqrtf((var_f1_10121 * var_f1_10121) + (var_f31_10099 * var_f31_10099));
+    temp_f1_10132 = ((std *) var_r3_10110)->sqrtf((var_f1_10121 * var_f1_10121) + (var_f31_10099 * var_f31_10099));
     if (temp_f1_10132 < 1.0f) {
         return temp_f1_10132;
     }
@@ -88,7 +88,7 @@ inline f32 KDInput::GetLeftMag() {
         var_f1_5009 = temp_ret_5016;
         var_r3_4998 = M2C_BITWISE(u8, temp_ret_5016);
     }
-    temp_f1_5020 = var_r3_4998->sqrtf((var_f1_5009 * var_f1_5009) + (var_f31_4987 * var_f31_4987));
+    temp_f1_5020 = ((std *) var_r3_4998)->sqrtf((var_f1_5009 * var_f1_5009) + (var_f31_4987 * var_f31_4987));
     if (temp_f1_5020 < 1.0f) {
         return temp_f1_5020;
     }

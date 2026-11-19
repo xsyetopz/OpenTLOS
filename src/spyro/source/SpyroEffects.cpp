@@ -662,7 +662,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     f64 sp20;
     f64 sp18;
@@ -679,7 +679,7 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     void *temp_r3_1139;
 
     if ((u8) GameData::gameData[0x156] != 0) {
-        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x48)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC), 0U);
+        ((Stat *) (&GameData::gameData[0x70] + 0x48))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xBC), 0U);
     }
     if (((u8) M2C_FIELD(&gb, u8 *, 8) != 0) && ((u8 *) arg0->unk38 != NULL) && ((s32) (GameData::gameData[0x168] & 0x10) == 0x10)) {
         temp_r4_1104 = this->unkC;
@@ -709,9 +709,9 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
                     var_r27_1134 = temp_r3_1158;
                     if (temp_r3_1158 != 0) {
                         if ((u8) GameData::gameData[0x156] != 0) {
-                            temp_r28_1149->SetValue(M2C_FIELD(temp_r28_1149, f32 *, 4), 0U);
+                            ((Stat *) temp_r28_1149)->SetValue(M2C_FIELD(temp_r28_1149, f32 *, 4), 0U);
                         } else {
-                            temp_r28_1149->SetValue(0.0f, 0U);
+                            ((Stat *) temp_r28_1149)->SetValue(0.0f, 0U);
                         }
                         sp8 = M2C_FIELD(arg0, f64 *, 0x10);
                         sp10 = M2C_FIELD(arg0, f64 *, 0x18);
@@ -876,7 +876,7 @@ void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
                                 var_r3_1361 = MKInput_Pressed(4, (MKInputDevices) temp_r4_1348->unk0);
                             }
                             if (((u8) var_r3_1361 != 0) && (((s32) (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 1) == 1) || ((s32) (M2C_FIELD(GameData::gameData, s32 *, 0xD0) & 2) == 2))) {
-                                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 0);
+                                ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 0);
                                 M2C_FIELD(GameData::gameData, f32 *, 0x160) = (f32) M2C_FIELD(M2C_FIELD(this->unk4, void **, 0x14), f32 *, 0xA0);
                             }
                             temp_r4_1386 = this->unkC;
@@ -890,7 +890,7 @@ void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
                                 var_r3_1399 = MKInput_Pressed(5, (MKInputDevices) temp_r4_1386->unk0);
                             }
                             if (((u8) var_r3_1399 != 0) && (((s32) (M2C_FIELD(GameData::gameData, s32 *, 0xF0) & 1) == 1) || ((s32) (M2C_FIELD(GameData::gameData, s32 *, 0xF0) & 2) == 2))) {
-                                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 1);
+                                ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 1);
                                 M2C_FIELD(GameData::gameData, f32 *, 0x160) = (f32) M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)->unkA0;
                             }
                             temp_r4_1424 = this->unkC;
@@ -904,7 +904,7 @@ void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
                                 var_r3_1437 = MKInput_Pressed(6, (MKInputDevices) temp_r4_1424->unk0);
                             }
                             if (((u8) var_r3_1437 != 0) && (((s32) (M2C_FIELD(GameData::gameData, s32 *, 0x110) & 1) == 1) || ((s32) (M2C_FIELD(GameData::gameData, s32 *, 0x110) & 2) == 2))) {
-                                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 2);
+                                ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 2);
                                 M2C_FIELD(GameData::gameData, f32 *, 0x160) = (f32) M2C_FIELD(M2C_FIELD(this->unk4, void **, 0x1C), f32 *, 0xA0);
                             }
                             temp_r4_1462 = this->unkC;
@@ -918,7 +918,7 @@ void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
                                 var_r3_1475 = MKInput_Pressed(7, (MKInputDevices) temp_r4_1462->unk0);
                             }
                             if (((u8) var_r3_1475 != 0) && (((s32) (M2C_FIELD(GameData::gameData, s32 *, 0x130) & 1) == 1) || ((s32) (M2C_FIELD(GameData::gameData, s32 *, 0x130) & 2) == 2))) {
-                                ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 3);
+                                ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 3);
                                 M2C_FIELD(GameData::gameData, f32 *, 0x160) = (f32) M2C_FIELD(M2C_FIELD(this->unk4, void **, 0x20), f32 *, 0xA0);
                             }
                         }
@@ -1104,7 +1104,7 @@ block_123:
             }
         }
         if ((u8) arg0->unk3D != 0) {
-            ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) 0);
+            ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) 0);
             *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) = 1;
         }
         temp_r4_1871 = this->unkC;
@@ -1148,16 +1148,16 @@ block_192:
         *arg0->unk30 = 0;
         var_r24_1941 = 0;
         temp_f31_1942 = M2C_FIELD(GameData::gameData, f32 *, 0xA0);
-        temp_r3_1943 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackShotType();
+        temp_r3_1943 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackShotType();
         temp_r7_1944 = arg0->unk3E;
         if (((temp_r7_1944 == 0) && ((u8) arg0->unk34 != 0) && (temp_r4_1952 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5, temp_r4_1957 = 1 << *(&GameData::gameData[0x70] + (temp_r4_1952 + 0x7C)), ((temp_r4_1957 == (s32) (temp_r4_1957 & M2C_FIELD((&GameData::gameData[0x70] + temp_r4_1952), s32 *, 0x60))) != 0)) && (((temp_r3_1943 == 1) && ((u8) var_r26_1501 != 0)) || ((temp_r3_1943 == 0) && (var_r25_1502 != 0)))) || ((temp_r7_1944 != 0) && ((u8) var_r26_1501 != 0) && ((u8) arg0->unk34 != 0)) || (((u8) arg0->unk34 != 0) && (temp_r4_1983 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5, (((s32) (M2C_FIELD((&GameData::gameData[0x70] + temp_r4_1983), s32 *, 0x60) & 1) == 1) != 0)) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 3) && ((s32) *(&GameData::gameData[0x70] + (temp_r4_1983 + 0x7C)) == 0) && ((s32) *(&GameData::gameData[0x70] + (temp_r4_1983 + 0x64)) == 3) && (var_r25_1502 != 0))) {
             arg0->unk24 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
             arg0->unk28 = *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C));
             if ((u8) M2C_FIELD(&gb, u8 *, 0x3B5) == 0) {
                 if (((u8) var_r26_1501 != 0) || (((s32) arg0->unk24 == 3) && ((s32) arg0->unk28 == 0) && ((s32) *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64)) == 3))) {
-                    var_f30_1938 = 0.0f + ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost();
+                    var_f30_1938 = 0.0f + ((GameStats *) &GameData::gameData[0x70])->GetInitialBreathCost();
                 }
-                var_f30_1938 += ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetOngoingBreathCost();
+                var_f30_1938 += ((GameStats *) &GameData::gameData[0x70])->GetOngoingBreathCost();
             }
             if ((var_f30_1938 <= M2C_FIELD(GameData::gameData, f32 *, 0xA0)) || ((u8) arg0->unk3E != 0) || ((temp_r4_2045 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5, (((s32) (M2C_FIELD((&GameData::gameData[0x70] + temp_r4_2045), s32 *, 0x60) & 1) == 1) != 0)) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + (temp_r4_2045 + 0x7C)) == 0) && ((u8) var_r26_1501 != 0))) {
                 if ((u8) arg0->unk3E != 0) {
@@ -1188,7 +1188,7 @@ block_192:
                     }
                     *arg0->unk30 = var_r24_1941;
                     if ((var_r24_1941 != 0) && ((u8) M2C_FIELD(&gb, u8 *, 0xB) == 0)) {
-                        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-var_f30_1938, 1U);
+                        ((Stat *) (&GameData::gameData[0x70] + 0x30))->Add(-var_f30_1938, 1U);
                     }
                 }
             }

@@ -181,7 +181,7 @@ void RotateProperty::ResolveInstance() {
         sp48 = (f64) sp18;
         sp50 = (f64) sp20;
         MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-        sp38.GetRotationPYR();
+        ((Matrix *) &sp38)->GetRotationPYR();
         temp_r3_365 = *KDProperty::pInstanceMem + (this->unk8 + 0x50);
         M2C_FIELD(temp_r3_365, f64 *, 0) = sp38;
         M2C_FIELD(temp_r3_365, f64 *, 8) = sp40;
@@ -196,7 +196,7 @@ void RotateProperty::ResolveInstance() {
     temp_r5_402 = *KDProperty::pInstanceMem + (this->unk8 + 0x70);
     M2C_FIELD(temp_r5_402, f64 *, 0) = (f64) M2C_FIELD(temp_r3_395, f64 *, 0);
     M2C_FIELD(temp_r5_402, f64 *, 8) = (f64) M2C_FIELD(temp_r3_395, f64 *, 8);
-    sp28.GetRotationPYR();
+    ((Matrix *) &sp28)->GetRotationPYR();
     temp_r3_413 = *KDProperty::pInstanceMem + (this->unk8 + 0x50);
     M2C_FIELD(temp_r3_413, f64 *, 0) = sp28;
     M2C_FIELD(temp_r3_413, f64 *, 8) = sp30;

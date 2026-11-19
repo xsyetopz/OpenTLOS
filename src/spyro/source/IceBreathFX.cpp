@@ -60,9 +60,9 @@ static s32 lit_887 = 3;
 
 static s32 lit_889 = 3;
 
-#if 0 // DRAFT: undefined identifier 'ResetFury'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void IceBreathFX::ResetFury() {
-    this->unk168->ResetFury();
+    ((FuryFXIce *) this->unk168)->ResetFury();
     ((FuryFXIce2 *) (M2C_BITWISE(FuryFXIce2 *, this->unk16C)))->ResetFury();
 }
 #endif
@@ -677,7 +677,7 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
             this->unkB8.unk30 = sp4D0;
             M2C_FIELD(var_r3_722->__vptr, M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&this->unkB8, (f64) sp488);
         }
-        this->unk170->Trigger(*((MKVector3 *) &sp488), this->unk198);
+        ((IceExplosion *) this->unk170)->Trigger(*((MKVector3 *) &sp488), this->unk198);
         var_r27_753 = 0;
         do {
             temp_f22_759 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1478,7 +1478,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             } else {
                 var_r6_1881 = *(temp_r7_1867 + (temp_r5_1865 * 4));
             }
-            var_f1_1852 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(M2C_FIELD(GameData::gameData, s32 *, 0x158), temp_r5_1865, var_r6_1881);
+            var_f1_1852 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(M2C_FIELD(GameData::gameData, s32 *, 0x158), temp_r5_1865, var_r6_1881);
             temp_r3_1889 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
             temp_r0_1891 = *(&GameData::gameData[0x70] + (temp_r3_1889 + 0x7C));
             temp_r4_1893 = &GameData::gameData[0x70] + (temp_r3_1889 + 0x64);
@@ -1518,7 +1518,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r6_1962 = *(temp_r4_1948 + (temp_r5_1946 * 4));
         }
-        this->unk110.Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, M2C_FIELD(GameData::gameData, s32 *, 0x158), M2C_FIELD(GameData::gameData, s32 *, 0x158), 0, -1);
+        ((BreathHitMessage *) &this->unk110)->Init(arg0, var_f1_1852, temp_r5_1946, var_r6_1962, M2C_FIELD(GameData::gameData, s32 *, 0x158), M2C_FIELD(GameData::gameData, s32 *, 0x158), 0, -1);
         temp_r3_1976 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
         temp_r0_1978 = *(&GameData::gameData[0x70] + (temp_r3_1976 + 0x7C));
         temp_r4_1980 = &GameData::gameData[0x70] + (temp_r3_1976 + 0x64);
@@ -1559,7 +1559,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp660 = (f64) sp2B0;
             sp8 = 0;
             spC = 0;
-            var_r25_1853 = this->unk178->Emit(lit_872, arg1, *((MKVector3 *) &sp658), *((MKVector3 *) &sp648), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            var_r25_1853 = ((LiquidFX *) this->unk178)->Emit(lit_872, arg1, *((MKVector3 *) &sp658), *((MKVector3 *) &sp648), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             break;
         case 1:                                     /* switch 3 */
             MKVector(0.0f, 0.5f, 0.0f);
@@ -1636,7 +1636,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp600 = (f64) sp290;
             sp8 = 0;
             spC = 0;
-            this->unk178->Emit(lit_875, arg1, *((MKVector3 *) &sp5F8), *((MKVector3 *) &sp5E8), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            ((LiquidFX *) this->unk178)->Emit(lit_875, arg1, *((MKVector3 *) &sp5F8), *((MKVector3 *) &sp5E8), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             MKVector(0.0f, 0.5f, 0.0f);
             sp188 = M2C_FIELD(&arg2, f64 *, 0) + sp5C8;
             sp6A8 = sp188;
@@ -1711,7 +1711,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp5A0 = (f64) sp270;
             sp8 = 0;
             spC = 0;
-            var_r25_1853 = this->unk17C->Emit(lit_877, arg1, *((MKVector3 *) &sp598), *((MKVector3 *) &sp588), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            var_r25_1853 = ((LiquidFX *) this->unk17C)->Emit(lit_877, arg1, *((MKVector3 *) &sp598), *((MKVector3 *) &sp588), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             break;
         case 2:                                     /* switch 3 */
             temp_f30_2493 = _table_sinf(M2C_BITWISE(f32, this->unk184));
@@ -1789,7 +1789,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp540 = (f64) sp250;
             sp8 = 0;
             spC = 0;
-            this->unk178->Emit(lit_880, arg1, *((MKVector3 *) &sp538), *((MKVector3 *) &sp528), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            ((LiquidFX *) this->unk178)->Emit(lit_880, arg1, *((MKVector3 *) &sp538), *((MKVector3 *) &sp528), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             MKVector(0.0f, 0.5f, 0.0f);
             sp148 = M2C_FIELD(&arg2, f64 *, 0) + sp508;
             sp698 = sp148;
@@ -1864,7 +1864,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp4E0 = (f64) sp230;
             sp8 = 0;
             spC = 0;
-            var_r25_1853 = this->unk17C->Emit(lit_882, arg1, *((MKVector3 *) &sp4D8), *((MKVector3 *) &sp4C8), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            var_r25_1853 = ((LiquidFX *) this->unk17C)->Emit(lit_882, arg1, *((MKVector3 *) &sp4D8), *((MKVector3 *) &sp4C8), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             break;
         case 3:                                     /* switch 3 */
             temp_f30_2909 = _table_sinf(M2C_BITWISE(f32, this->unk184));
@@ -1942,7 +1942,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp480 = (f64) sp210;
             sp8 = 0;
             spC = 0;
-            this->unk178->Emit(lit_885, arg1, *((MKVector3 *) &sp478), *((MKVector3 *) &sp468), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            ((LiquidFX *) this->unk178)->Emit(lit_885, arg1, *((MKVector3 *) &sp478), *((MKVector3 *) &sp468), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             MKVector(0.0f, 0.5f, 0.0f);
             sp108 = M2C_FIELD(&arg2, f64 *, 0) + sp448;
             sp688 = sp108;
@@ -2017,7 +2017,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp420 = (f64) sp1F0;
             sp8 = 0;
             spC = 0;
-            this->unk17C->Emit(lit_887, arg1, *((MKVector3 *) &sp418), *((MKVector3 *) &sp408), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            ((LiquidFX *) this->unk17C)->Emit(lit_887, arg1, *((MKVector3 *) &sp418), *((MKVector3 *) &sp408), 1.5f, 0.0f, 0U, (BreathHitMessage *) &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
             temp_f28_3324 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_3324);
             MKVector(0.0f, 0.5f, 0.0f);
@@ -2116,7 +2116,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         } else {
             var_r24_3570 = *(temp_r5_3537 + (temp_r26_3535 * 4));
         }
-        this->unkB8.Init(arg0, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
+        this->unkB8.Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r25_3532, temp_r26_3535, var_r6_3551), temp_r26_3535, var_r24_3570, temp_r25_3532, temp_r25_3532, 0, -1);
         return ShootIceShard(arg1, arg2, arg3);
     case 3:                                         /* switch 1 */
         var_r3_3596 = 0;
@@ -2125,9 +2125,9 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             var_r3_3596 = 1;
         }
         if (var_r3_3596 == 0) {
-            return this->unk168->Trigger(arg1, 0U);
+            return ((FuryFXIce *) this->unk168)->Trigger(arg1, 0U);
         }
-        this->unk168->Trigger(arg1, 1U);
+        ((FuryFXIce *) this->unk168)->Trigger(arg1, 1U);
         return ((FuryFXIce2 *) (M2C_BITWISE(FuryFXIce2 *, this->unk16C)))->Trigger(arg1);
     case 2:                                         /* switch 1 */
         /* fallthrough */
@@ -2187,7 +2187,7 @@ loop_14:
             var_r4_3686 += 4;
             goto loop_14;
         }
-        temp_r3_3713 = var_r3_3688->Current();
+        temp_r3_3713 = ((MKHeap *) var_r3_3688)->Current();
         if (temp_r3_3713 != NULL) {
             ((MKHeap *) (temp_r3_3713->Current()))->Free(var_r31_3687, NULL, 0);
         } else {
@@ -2765,7 +2765,7 @@ void IceBreathFX::Update() {
                         sp248 = (f64) sp88;
                         SpawnWallIceShard(*((MKVector3 *) &sp2B0), *((MKVector3 *) &sp240), 1.0f);
                     }
-                    this->unk170->Trigger(*((MKVector3 *) &sp2B0), this->unk198);
+                    ((IceExplosion *) this->unk170)->Trigger(*((MKVector3 *) &sp2B0), this->unk198);
                 }
                 temp_r4_4589 = this->unk168;
                 if (temp_r4_4589 != NULL) {
@@ -2806,7 +2806,7 @@ void IceBreathFX::Update() {
                 }
             }
             if (var_r29_4000 != 0) {
-                this->unk170->Trigger(*((MKVector3 *) &sp250), this->unk198);
+                ((IceExplosion *) this->unk170)->Trigger(*((MKVector3 *) &sp250), this->unk198);
                 KDSound_Play3d(GS_SpyroBreathIceRico1, (MKVector3 *) &sp2B0, 0U, -1, 0.0f, 0U);
             }
         }
@@ -2955,7 +2955,7 @@ void IceBreathFX::Init() {
     this->unkAC = 0.0f;
     this->unk168 = NULL;
     this->unk16C = 0.0f;
-    temp_r3_4981 = temp_r3_4974->Current();
+    temp_r3_4981 = ((MKHeap *) temp_r3_4974)->Current();
     if (temp_r3_4981 != NULL) {
         var_r3_4988 = ((MKHeap *) (temp_r3_4981->Current()))->Alloc(0x698, NULL, 0);
     } else {

@@ -4,11 +4,9 @@
 #include "spyro/source/UIObject.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: expression syntax error
 void UIButtonGroup::OnSelectionChanged() {
-    this->unk64.Send();
+    ((UIEvent *) &this->unk64)->Send();
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 s32 UIButtonGroup::SetSelection(int arg0) {
@@ -124,24 +122,20 @@ block_26:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void UIButtonGroup::Resolve() {
     UIContainer::Resolve();
-    this->unk64.Resolve((UIObject *) this);
+    ((UIEvent *) &this->unk64)->Resolve((UIObject *) this);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 s32 UIButtonGroup::LoadLine(UIDataLine *arg0) {
     s32 var_r31_261;
 
     var_r31_261 = 0;
-    if ((this->unk64.LoadLine("OnSelectionChanged", arg0) != 0) || (UIContainer::LoadLine(arg0) != 0)) {
+    if ((((UIEvent *) &this->unk64)->LoadLine("OnSelectionChanged", arg0) != 0) || (UIContainer::LoadLine(arg0) != 0)) {
         var_r31_261 = 1;
     }
     return var_r31_261;
 }
-#endif
 
 void UIButtonGroup::Init() {
     UIContainer::Init();
@@ -169,23 +163,17 @@ void UIButton::SetColor() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void UIButton::OnDeselection() {
-    this->unk74.unk4.Send();
+    ((UIEvent *) &this->unk74.unk4)->Send();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void UIButton::OnSelection() {
-    this->unk68.unk4.Send();
+    ((UIEvent *) &this->unk68.unk4)->Send();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void UIButton::OnActivate() {
-    this->unk60.Send();
+    ((UIEvent *) &this->unk60)->Send();
 }
-#endif
 
 void UIButton::Update() {
     SetColor();
@@ -212,23 +200,19 @@ void UIButton::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void UIButton::Resolve() {
     UIContainer::Resolve();
-    this->unk60.Resolve((UIObject *) this);
-    this->unk68.unk4.Resolve((UIObject *) this);
-    this->unk74.unk4.Resolve((UIObject *) this);
+    ((UIEvent *) &this->unk60)->Resolve((UIObject *) this);
+    ((UIEvent *) &this->unk68.unk4)->Resolve((UIObject *) this);
+    ((UIEvent *) &this->unk74.unk4)->Resolve((UIObject *) this);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 s32 UIButton::LoadLine(UIDataLine *arg0) {
     s32 var_r31_486;
 
     var_r31_486 = 0;
-    if ((this->unk60.LoadLine("OnActivate", arg0) != 0) || (this->unk68.unk4.LoadLine("OnSelection", arg0) != 0) || (this->unk74.unk4.LoadLine("OnDeselection", arg0) != 0) || (UIContainer::LoadLine(arg0) != 0)) {
+    if ((((UIEvent *) &this->unk60)->LoadLine("OnActivate", arg0) != 0) || (((UIEvent *) &this->unk68.unk4)->LoadLine("OnSelection", arg0) != 0) || (((UIEvent *) &this->unk74.unk4)->LoadLine("OnDeselection", arg0) != 0) || (UIContainer::LoadLine(arg0) != 0)) {
         var_r31_486 = 1;
     }
     return var_r31_486;
 }
-#endif

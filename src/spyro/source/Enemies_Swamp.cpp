@@ -10,6 +10,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/SwampTier1Goal_Think.h"
 #include "spyro/source/SwampTier2Goal_Think.h"
@@ -99,7 +100,7 @@ loop_9:
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r27_104, &spA8);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-                    gb.unk234->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
+                    ((FallingLeaves *) gb.unk234)->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
                     sp18 = sp58 * 5.53552857e-315;
                     sp68 = sp18;
@@ -126,7 +127,7 @@ loop_9:
             sp44 = 1.0f;
             sp48 = (f64) sp38;
             sp50 = (f64) sp40;
-            this->unkB04->Trigger(sp98, 0.5f, 0U, (MKVector4) &sp48);
+            ((EarthShockwave *) this->unkB04)->Trigger(sp98, 0.5f, 0U, (MKVector4) &sp48);
         }
     }
 }
@@ -242,7 +243,7 @@ loop_9:
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r28_423, &sp78);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-                    gb.unk234->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
+                    ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
                     sp18 = sp38 * 5.53552857e-315;
                     sp88 = sp18;
@@ -431,7 +432,7 @@ loop_8:
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) *var_r28_754, &sp78);
                     spC = MKRand_Int(&gViewSeed, 2, 4);
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-                    gb.unk234->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
+                    ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
                     var_r27_759 += 1;
                 } while (var_r27_759 < 4);
                 var_r27_801 = 0;
@@ -488,7 +489,7 @@ void SwampTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'swampTier1BodyFXInit'
+#if 0 // DRAFT: illegal type
 void Enemies_Swamp_cpp::__sinit() {
     f32 sp340;
     f32 sp33C;

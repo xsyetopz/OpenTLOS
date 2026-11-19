@@ -228,7 +228,7 @@ loop_20:
                     sp198 = (f64) sp1C8;
                     sp1A0 = (f64) sp1D0;
                 }
-                sp138.GetRandPos();
+                ((Volume *) &sp138)->GetRandPos();
                 sp38 = 0.0f;
                 sp3C = -200.0f;
                 sp40 = 0.0f;
@@ -503,7 +503,6 @@ void SwampSlinkyDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void SwampSlinkyDescriptor::LoadDone() {
     s8 *temp_r31_829;
     s8 *temp_r31_847;
@@ -512,21 +511,20 @@ void SwampSlinkyDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r31_829 = this->unk34;
-    if (temp_r31_829->Exists("idle") != 0) {
-        var_r3_839 = temp_r31_829->GetAnim("idle");
+    if (((MKAnimScript *) temp_r31_829)->Exists("idle") != 0) {
+        var_r3_839 = ((MKAnimScript *) temp_r31_829)->GetAnim("idle");
     } else {
         var_r3_839 = NULL;
     }
     this->unk70 = (s32) var_r3_839;
     temp_r31_847 = this->unk34;
-    if (temp_r31_847->Exists("walk") != 0) {
-        var_r3_857 = temp_r31_847->GetAnim("walk");
+    if (((MKAnimScript *) temp_r31_847)->Exists("walk") != 0) {
+        var_r3_857 = ((MKAnimScript *) temp_r31_847)->GetAnim("walk");
     } else {
         var_r3_857 = NULL;
     }
     this->unk74 = (s32) var_r3_857;
 }
-#endif
 
 void SwampSlinkyDescriptor::Init() {
     KDPropDescriptor::Init();

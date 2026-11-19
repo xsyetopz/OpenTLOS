@@ -731,7 +731,7 @@ void GemMagicFX::Init() {
     temp_r3_1061 = &temp_r3_1059->unk4;
     this->unk4C = (MKHeap *) temp_r3_1061;
     temp_r3_1059->unk4 = 0;
-    temp_r3_1064 = temp_r3_1061->Current();
+    temp_r3_1064 = ((MKHeap *) temp_r3_1061)->Current();
     if (temp_r3_1064 != NULL) {
         var_r3_1071 = ((MKHeap *) (temp_r3_1064->Current()))->Alloc(0x50, NULL, 0);
     } else {

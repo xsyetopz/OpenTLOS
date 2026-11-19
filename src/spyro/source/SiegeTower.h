@@ -108,10 +108,10 @@ inline SiegeTower::SiegeTower() {
     this->unk1C0.unk2C = 0;
     ((EventMessage *) (temp_r30_21900 + 0x3C))->Init();
     this->unk1C0.unk30 = 0.0f;
-    ((EventMessage *) ((EventMessage *) (temp_r30_21900 + 0x40)))->Init();
+    ((EventMessage *) (temp_r30_21900 + 0x40))->Init();
     M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
     this->unk1C0.unk58 = NULL;
-    ((EventMessage *) ((EventMessage *) (temp_r30_21900 + 0x68)))->Init();
+    ((EventMessage *) (temp_r30_21900 + 0x68))->Init();
     this->unk1C0.unk5C = NULL;
     ((EventMessage *) (temp_r30_21900 + 0x6C))->Init();
     this->unk280.unkC = 0.0f;
@@ -143,21 +143,21 @@ inline SiegeTower::~SiegeTower() {
             temp_r3_47 = &this->unk1C0.unk5C;
             M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
             if (temp_r3_47 != NULL) {
-                temp_r3_47->Deinit();
+                ((EventMessage *) temp_r3_47)->Deinit();
             }
             temp_r3_53 = &this->unk1C0.unk58;
             if (temp_r3_53 != NULL) {
-                temp_r3_53->Deinit();
+                ((EventMessage *) temp_r3_53)->Deinit();
             }
             if (&this->unk1B0 != NULL) {
                 temp_r3_60 = &this->unk1C0.unk30;
                 M2C_FIELD(this, M2C_UNK **, 0x1C0) = &__vt;
                 if (temp_r3_60 != NULL) {
-                    temp_r3_60->Deinit();
+                    ((EventMessage *) temp_r3_60)->Deinit();
                 }
                 temp_r3_66 = &this->unk1C0.unk2C;
                 if (temp_r3_66 != NULL) {
-                    temp_r3_66->Deinit();
+                    ((EventMessage *) temp_r3_66)->Deinit();
                 }
             }
         }

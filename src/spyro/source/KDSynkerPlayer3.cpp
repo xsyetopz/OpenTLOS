@@ -7,6 +7,8 @@
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
@@ -62,12 +64,12 @@ void KDSynkerPlayer3::ParseSK2() {
         this->unk54->Init(Str_Printf("%s.sc2", &this->unk28), 1, NULL);
     }
     ParseHeader();
-    this->unk100.unk10.HeapAddSize(&this->unk4, this->unk54);
-    this->unk120.unk24.HeapAddSize(&this->unk4, this->unk54);
-    this->unk100.HeapAddSize(&this->unk4, this->unk54);
+    ((KDSP_EnvelopeList *) &this->unk100.unk10)->HeapAddSize(&this->unk4, this->unk54);
+    ((KDSP_Sounds *) &this->unk120.unk24)->HeapAddSize(&this->unk4, this->unk54);
+    ((KDSP_ActorList *) &this->unk100)->HeapAddSize(&this->unk4, this->unk54);
     this->unk60.HeapAddSize(&this->unk4, &this->unk28, this->unk54);
-    this->unk114.unk8.HeapAddSize(&this->unk4, this->unk54, M2C_FIELD(this, u8 *, 0x148));
-    this->unk148.unk24.HeapAddSize(&this->unk4, GetSubtitlesFileName(&this->unk28));
+    ((KDSP_Events *) &this->unk114.unk8)->HeapAddSize(&this->unk4, this->unk54, M2C_FIELD(this, u8 *, 0x148));
+    ((KDSP_Subtitles *) &this->unk148.unk24)->HeapAddSize(&this->unk4, GetSubtitlesFileName(&this->unk28));
     var_r29_133 = 0;
     var_r30_134 = 0;
     do {
@@ -85,17 +87,17 @@ void KDSynkerPlayer3::ParseSK2() {
         var_r29_133 += 1;
         var_r30_134 += 0xC;
     } while (var_r29_133 < 3);
-    this->unk100.unk10.Parse(&this->unk4, this->unk54);
-    this->unk120.unk24.ParseDynamicSFX(&this->unk4, this->unk54);
-    this->unk100.Parse(&this->unk4, this->unk54, *((s32 *) &this->unk238), (KDInput *) this->unk234);
+    ((KDSP_EnvelopeList *) &this->unk100.unk10)->Parse(&this->unk4, this->unk54);
+    ((KDSP_Sounds *) &this->unk120.unk24)->ParseDynamicSFX(&this->unk4, this->unk54);
+    ((KDSP_ActorList *) &this->unk100)->Parse(&this->unk4, this->unk54, *((s32 *) &this->unk238), (KDInput *) this->unk234);
     this->unk60.Parse(&this->unk4, &this->unk28, this->unk54, *((s32 *) &this->unk238));
     if (!(this->unk50 & 8)) {
-        this->unk100.Load(this->unk54, *((s32 *) &this->unk238), 0U, this->unk60.unk88 == 0);
+        ((KDSP_ActorList *) &this->unk100)->Load(this->unk54, *((s32 *) &this->unk238), 0U, this->unk60.unk88 == 0);
     }
-    this->unk100.ResolveLookAt();
-    this->unk114.unk8.Parse(this, &this->unk4, &this->unk28, this->unk54, M2C_FIELD(this, u8 *, 0x148), (KDSP_ActorList *) &this->unk100);
-    this->unk148.unk24.Parse(&this->unk4, GetSubtitlesFileName(&this->unk28));
-    this->unk120.unk24.ResolveActors((KDSP_ActorList *) &this->unk100);
+    ((KDSP_ActorList *) &this->unk100)->ResolveLookAt();
+    ((KDSP_Events *) &this->unk114.unk8)->Parse(this, &this->unk4, &this->unk28, this->unk54, M2C_FIELD(this, u8 *, 0x148), (KDSP_ActorList *) &this->unk100);
+    ((KDSP_Subtitles *) &this->unk148.unk24)->Parse(&this->unk4, GetSubtitlesFileName(&this->unk28));
+    ((KDSP_Sounds *) &this->unk120.unk24)->ResolveActors((KDSP_ActorList *) &this->unk100);
 }
 #endif
 
@@ -181,7 +183,7 @@ void KDSynkerPlayer3::Deinit() {
     this->unk4C = 0;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSynkerPlayer3::Unload() {
     MKHeap *temp_r3_441;
     MKHeap *temp_r3_446;
@@ -216,13 +218,13 @@ void KDSynkerPlayer3::Unload() {
     if (temp_r0_398 < 6) {
         this->unk4C = 7;
         if ((u8) M2C_FIELD(this, u8 *, 0x148) != 0) {
-            this->unk114.unk8.StopSfx();
+            ((KDSP_Events *) &this->unk114.unk8)->StopSfx();
         }
-        this->unk114.unk8.Deinit();
-        this->unk120.unk24.Deinit();
-        this->unk100.unk10.Deinit();
+        ((KDSP_Events *) &this->unk114.unk8)->Deinit();
+        ((KDSP_Sounds *) &this->unk120.unk24)->Deinit();
+        ((KDSP_EnvelopeList *) &this->unk100.unk10)->Deinit();
         ActorCallback((KDSynkerPlayer3::CallBackMode) 1);
-        this->unk100.Deinit(((u32) this->unk50 >> 5U) & 1);
+        ((KDSP_ActorList *) &this->unk100)->Deinit(((u32) this->unk50 >> 5U) & 1);
         this->unk60.Deinit();
         var_r28_436 = 0;
         var_r30_437 = 0;
@@ -291,7 +293,7 @@ loop_13:
                 goto loop_13;
             }
         }
-        this->unk114.unk8.Draw();
+        ((KDSP_Events *) &this->unk114.unk8)->Draw();
     }
 }
 #endif
@@ -304,10 +306,10 @@ void KDSynkerPlayer3::Play(bool arg0) {
         this->unk50 &= 0xFFFFFFFE;
     }
     if (this->unk50 & 8) {
-        this->unk100.Load(this->unk54, *((s32 *) &this->unk238), 1U, arg0 == 0);
+        ((KDSP_ActorList *) &this->unk100)->Load(this->unk54, *((s32 *) &this->unk238), 1U, arg0 == 0);
     }
     ActorCallback((KDSynkerPlayer3::CallBackMode) 0);
-    this->unk100.SendMessageToActorProp(1U);
+    ((KDSP_ActorList *) &this->unk100)->SendMessageToActorProp(1U);
     this->unk50 &= 0xFFFFFFFD;
     this->unk4C = 5;
     Update_Playing(1U);
@@ -319,18 +321,18 @@ void KDSynkerPlayer3::SkipToEnd(bool arg0) {
     this->unk248 = M2C_BITWISE(f32, this->unk238);
     this->unk244 = (f32) this->unk248;
     M2C_FIELD(this, f32 *, 0x244) = (f32) (this->unk244 / 30.0f);
-    this->unk148.unk24.Reset();
+    ((KDSP_Subtitles *) &this->unk148.unk24)->Reset();
     this->unk50 |= 0x20;
     if (arg0 != 0) {
-        this->unk114.unk8.SkipToEnd();
+        ((KDSP_Events *) &this->unk114.unk8)->SkipToEnd();
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSynkerPlayer3::Update_Unloading_Playing() {
     if (!(this->unk50 & 8)) {
-        this->unk120.unk24.UnloadPlaying(&this->unk24C);
+        ((KDSP_Sounds *) &this->unk120.unk24)->UnloadPlaying(&this->unk24C);
     }
     this->unk250 -= 1;
     if (((s32) this->unk250 <= 0) && ((s32) this->unk148.unk10 == -1)) {
@@ -387,7 +389,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSynkerPlayer3::Update_Playing(bool arg0) {
     KDS_Message_SetCamera spC;
     s32 sp8;
@@ -396,9 +398,9 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
     void *temp_r3_876;
 
     if (arg0 == 0) {
-        M2C_FIELD(this, s8 *, 0x240) = (s8) (this->unk120.unk24.Update(M2C_BITWISE(s32, this->unk248), this->unk48, (s32) this->unk238, &this->unk24C, &sp8) == 0);
+        M2C_FIELD(this, s8 *, 0x240) = (s8) (((KDSP_Sounds *) &this->unk120.unk24)->Update(M2C_BITWISE(s32, this->unk248), this->unk48, (s32) this->unk238, &this->unk24C, &sp8) == 0);
         if (((u8) M2C_FIELD(this, u8 *, 0x148) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x149) != 0)) {
-            this->unk114.unk8.UpdateSfx((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248), this->unk48);
+            ((KDSP_Events *) &this->unk114.unk8)->UpdateSfx((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248), this->unk48);
         }
         temp_r3_826 = this->unk238 - 1;
         if (M2C_BITWISE(s32, this->unk248) >= temp_r3_826) {
@@ -408,7 +410,7 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
             this->unk50 |= 4;
         }
         temp_r3_847 = this->unk50;
-        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (this->unk120.unk24.WaitingForSoundPackage(&this->unk24C) == 0))) {
+        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (((KDSP_Sounds *) &this->unk120.unk24)->WaitingForSoundPackage(&this->unk24C) == 0))) {
             M2C_FIELD(this, f32 *, 0x244) = (f32) ((gUpdateTimeDelta * this->unk48) + M2C_FIELD(this, f32 *, 0x244));
             this->unk244 = 30.0f * M2C_FIELD(this, f32 *, 0x244);
             this->unk248 = M2C_BITWISE(f32, (s32) this->unk244);
@@ -428,10 +430,10 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
         spC.Init((Matrix *) &this->unk60, this->unk60.unk60, this->unk60.unk64, this->unk60.unk68);
         M2C_FIELD(M2C_FIELD(*KDSynkerPlayer3::pCameraProp, void **, 0x44), M2C_UNK (**)(void *, KDS_Message_SetCamera *), 0x2C)(*KDSynkerPlayer3::pCameraProp, &spC);
     }
-    this->unk148.unk24.Update((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248));
-    this->unk100.Update(this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10, *((MKVector3 *) &this->unk60.unk40), (u8) this->unk60.unk6C);
-    this->unk114.unk8.Update(this, this->unk244, ((u32) this->unk50 >> 2U) & 1);
-    this->unk114.unk8.UpdateTweenAnims(M2C_BITWISE(s32, this->unk248), (KDSP_EnvelopeList *) &this->unk100.unk10);
+    ((KDSP_Subtitles *) &this->unk148.unk24)->Update((KDSP_ActorList *) &this->unk100, M2C_BITWISE(s32, this->unk248));
+    ((KDSP_ActorList *) &this->unk100)->Update(this->unk244, (KDSP_EnvelopeList *) &this->unk100.unk10, *((MKVector3 *) &this->unk60.unk40), (u8) this->unk60.unk6C);
+    ((KDSP_Events *) &this->unk114.unk8)->Update(this, this->unk244, ((u32) this->unk50 >> 2U) & 1);
+    ((KDSP_Events *) &this->unk114.unk8)->UpdateTweenAnims(M2C_BITWISE(s32, this->unk248), (KDSP_EnvelopeList *) &this->unk100.unk10);
     ActorCallback((KDSynkerPlayer3::CallBackMode) 2);
 }
 #endif
@@ -442,18 +444,18 @@ void KDSynkerPlayer3::Update_PrimingSound() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSynkerPlayer3::Update_ParseData() {
     u32 temp_r3_992;
 
-    this->unk120.unk24.LoadStaticSoundBank(&this->unk28, ((u32) this->unk50 >> 3U) & 1);
+    ((KDSP_Sounds *) &this->unk120.unk24)->LoadStaticSoundBank(&this->unk28, ((u32) this->unk50 >> 3U) & 1);
     ParseSK2();
     temp_r3_992 = this->unk50;
     if (!(temp_r3_992 & 8) && !(temp_r3_992 & 0x10)) {
         MKPackage_QFree(this->unk24C);
         this->unk24C = 0;
     }
-    if (this->unk120.unk24.LoadDynamicSoundBank(&this->unk24C, ((u32) this->unk50 >> 3U) & 1) != 0) {
+    if (((KDSP_Sounds *) &this->unk120.unk24)->LoadDynamicSoundBank(&this->unk24C, ((u32) this->unk50 >> 3U) & 1) != 0) {
         this->unk4C = 3;
         return;
     }
@@ -528,11 +530,11 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
     this->unk4.unk1C = 0;
     this->unk4.unk18 = NULL;
     this->unk60.Init();
-    this->unk100.Init();
-    this->unk100.unk10.Init();
-    this->unk114.unk8.Init(this, *KDSynkerPlayer3::pEventCreationTable);
-    this->unk120.unk24.Init();
-    this->unk148.unk24.Init();
+    ((KDSP_ActorList *) &this->unk100)->Init();
+    ((KDSP_EnvelopeList *) &this->unk100.unk10)->Init();
+    ((KDSP_Events *) &this->unk114.unk8)->Init(this, *KDSynkerPlayer3::pEventCreationTable);
+    ((KDSP_Sounds *) &this->unk120.unk24)->Init();
+    ((KDSP_Subtitles *) &this->unk148.unk24)->Init();
     this->unk234 = 0;
     this->unk238 = NULL;
     M2C_FIELD(this, f32 *, 0x244) = 0.0f;

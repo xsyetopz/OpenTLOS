@@ -8,6 +8,8 @@
 #include "spyro/source/Enemies_Cynder.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -291,9 +293,9 @@ void CynderTier2TrainGoal_Think::Init(Enemy *arg0) {
     if ((u32) M2C_FIELD(temp_r5_597, u32 *, 0xC) != 0U) {
         M2C_FIELD(temp_r5_597, s8 *, 9) = 1;
     }
-    this->unk24->Init(arg0);
-    this->unk28->Init(arg0);
-    this->unk2C->Init(arg0);
+    ((EnemyGoal_TrainAttackMode *) this->unk24)->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk28)->Init(arg0);
+    ((EnemyGoal_Death *) this->unk2C)->Init(arg0);
 }
 #endif
 
@@ -550,16 +552,14 @@ u8 EnemyGoal_SpawnOnTrain::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_SpawnOnTrain::Activate() {
     Character *temp_r3_1143;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
     temp_r3_1143 = this->unkC;
-    temp_r3_1143->SetAnim((AnimSequenceType) 0xF, M2C_FIELD(temp_r3_1143->unk630, s32 *, 8) + 0x65, 0, 0.15f, 0U, 0U);
+    ((Enemy *) temp_r3_1143)->SetAnim((AnimSequenceType) 0xF, M2C_FIELD(temp_r3_1143->unk630, s32 *, 8) + 0x65, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 void CynderTier2TrainGoal_Think_cpp::__sinit() {
     f32 temp_f0_1229;

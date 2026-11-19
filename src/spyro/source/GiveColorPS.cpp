@@ -3,6 +3,7 @@
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -93,7 +94,7 @@ loop_25:
                 var_r31_71->unk8 += (f32) spB0;
             } else {
                 sp8 = 0.0f;
-                sp98.GetMeasure(M2C_FIELD(temp_r30_74, f32 *, 0x20), (Matrix *) &this->unk140, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp98)->GetMeasure(M2C_FIELD(temp_r30_74, f32 *, 0x20), (Matrix *) &this->unk140, KDSpline_PositionMixer);
                 spC8 = sp98;
                 spD0 = spA0;
                 temp_f0_148 = spC8 - M2C_FIELD(var_r31_71, f64 *, 0);
@@ -161,12 +162,10 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void GiveColorPS::Deinit() {
-    this->unk140.Deinit();
+    ((KDUniformSpline *) &this->unk140)->Deinit();
     MKParticleSystem::Deinit();
 }
-#endif
 
 void GiveColorPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
@@ -218,6 +217,6 @@ void GiveColorPS::Init() {
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     this->unk170 = (f64) sp10;
-    this->unk140.Init(3, 0U);
+    ((KDUniformSpline *) &this->unk140)->Init(3, 0U);
 }
 #endif

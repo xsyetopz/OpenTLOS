@@ -292,7 +292,7 @@ inline void KDCameraSimpleDelta::GetCurrentTargetOffset() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp24'
 inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     f64 sp28;
     f64 sp20;
@@ -311,8 +311,8 @@ inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     s32 var_r0_934;
 
     temp_f31_872 = this->unk28;
-    temp_f31_875 = this->unk14.GetZDelta() + temp_f31_872;
-    temp_f1_877 = this->unk14.GetYDelta();
+    temp_f31_875 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetZDelta() + temp_f31_872;
+    temp_f1_877 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetYDelta();
     sp18 = temp_f31_875;
     sp10 = 0.0f;
     sp14 = temp_f1_877;

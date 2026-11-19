@@ -10,6 +10,7 @@
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UIStringTable.h"
+#include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
@@ -149,13 +150,13 @@ loop_7:
             goto loop_7;
         }
         KDSound_Init(&lit_stringBase0 + 0x15);
-        if (pSystem->Load(&lit_stringBase0 + 0x1E, NULL) != 0) {
+        if (((UIObject *) pSystem)->Load(&lit_stringBase0 + 0x1E, NULL) != 0) {
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x28)(pSystem);
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x20)(pSystem);
             sp8 = 1;
             spC = 0;
             M2C_FIELD(*pSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pSystem, &sp8);
-            pSystem->PushScreen(&lit_stringBase0 + 0x2A);
+            ((UISystem *) pSystem)->PushScreen(&lit_stringBase0 + 0x2A);
         }
         UIStringTable_SetCurrent((UIStringTable *) temp_r3_245);
     }
@@ -241,7 +242,7 @@ void LanguageSelectScreen::LoadDone() {
     s8 *temp_r3_677;
 
     temp_r24_491 = M2C_FIELD(MarkerButtonGroup::descriptor, s32 *, 8);
-    temp_r3_492 = ((MKHeap *) ((MKHeap *) MarkerButtonGroup::descriptor))->Current();
+    temp_r3_492 = ((MKHeap *) MarkerButtonGroup::descriptor)->Current();
     if (temp_r3_492 != NULL) {
         var_r24_500 = ((MKHeap *) (temp_r3_492->Current()))->Alloc(temp_r24_491, NULL, 0);
     } else {
@@ -279,7 +280,7 @@ void LanguageSelectScreen::LoadDone() {
             temp_r3_600->unk18.unk10.unk8 = 0.0f;
             GameLanguage_GetCode(sp8);
             M2C_FIELD(temp_r3_600->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x48)(temp_r3_600, Str_Printf(&lit_stringBase0 + 0x39, M2C_ERROR(/* Read from unset register $r3 */)));
-            this->unkBC.unk4->Add(temp_r3_600);
+            ((UIContainer *) this->unkBC.unk4)->Add(temp_r3_600);
             temp_r24_628 = M2C_FIELD(DSText::descriptor, s32 *, 8);
             temp_r3_629 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
             if (temp_r3_629 != NULL) {
@@ -309,7 +310,7 @@ void LanguageSelectScreen::LoadDone() {
             }
             UIStringTable_Add(&lit_stringBase0 + 0x41);
             M2C_FIELD(temp_r3_655, s8 **, 0x60) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-            temp_r3_600->Add(temp_r3_655);
+            ((UIContainer *) temp_r3_600)->Add(temp_r3_655);
             GameLanguage_Get();
             if (sp8 == (s32) M2C_ERROR(/* Read from unset register $r3 */)) {
                 this->unkBC.unk8 = (s8 *) var_r26_557;

@@ -319,7 +319,7 @@ void PlatformObject::EndUpdate() {
     this->unk3C = NULL;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void PlatformObject::BeginUpdate() {
     Matrix sp40;
     M2C_UNK sp3C;
@@ -357,7 +357,7 @@ void PlatformObject::BeginUpdate() {
     if (temp_r0_576 != 0) {
         temp_r3_579 = temp_r0_576 * 0x10;
         temp_r29_580 = temp_r3_579 + 0x70;
-        temp_r3_581 = temp_r3_579->Current();
+        temp_r3_581 = ((MKHeap *) temp_r3_579)->Current();
         if (temp_r3_581 != NULL) {
             var_r3_589 = ((MKHeap *) (temp_r3_581->Main()))->TAlloc(temp_r29_580, NULL, 0, 0U);
         } else {
@@ -438,7 +438,7 @@ void PlatformObject::Message(MKMessage *arg0) {
         sp20.unk38 = M2C_FIELD(temp_r3_775, f32 *, 8);
         sp20.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk40->unk4, sp20);
-        sp10.GetRotationPYR();
+        ((Matrix *) &sp10)->GetRotationPYR();
         M2C_FIELD(this, f64 *, 8) = sp10;
         M2C_FIELD(this, f64 *, 0x10) = sp18;
         EndUpdate();

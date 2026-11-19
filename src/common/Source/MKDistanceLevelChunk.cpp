@@ -2047,12 +2047,12 @@ block_19:
         }
         goto block_19;
     case 4:
-        this->unk29A8.Reset();
-        this->unk29A8.Init((s32) this->unk29E0.unkC, (MKProp *) &this->unk29E0);
+        ((SMTree *) &this->unk29A8)->Reset();
+        ((SMTree *) &this->unk29A8)->Init((s32) this->unk29E0.unkC, (MKProp *) &this->unk29E0);
         this->unk2D50 = 5;
         goto block_19;
     case 5:
-        this->unk29A8.Update();
+        ((SMTree *) &this->unk29A8)->Update();
         if ((s32) this->unk29BC == 4) {
             this->unk2D50 = 0;
             M2C_FIELD(this, s8 *, 0x168) = 1;
@@ -2232,7 +2232,7 @@ loop_10:
         break;
     case 2:
         if (this->unk138 & 0x100000) {
-            this->unk29A8.Deinit();
+            ((SMTree *) &this->unk29A8)->Deinit();
         }
         this->unk4 = 5;
         break;

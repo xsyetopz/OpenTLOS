@@ -10,12 +10,14 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/FXBase.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
@@ -1152,7 +1154,7 @@ void Shatterable::SpawnGems(int arg0) {
 loop_9:
         if (var_r26_1532 < arg0) {
             temp_r29_1540 = MKRand_Int(&gViewSeed, 0, 4);
-            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
+            if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
                 ((CollectableSpawner *) (M2C_FIELD(&(&gb)[temp_r29_1540], CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp48), 1, 200.0f, 500.0f, -1, (MKProp *) this);
                 var_r27_1530 += 1;
             }
@@ -1166,7 +1168,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void Shatterable::TriggerShatterFX() {
     s32 spC;
     s32 sp8;
@@ -1178,7 +1180,7 @@ void Shatterable::TriggerShatterFX() {
     temp_r3_1603 = temp_r3_1601->unk110;
     if (temp_r3_1603 != NULL) {
         M2C_FIELD(temp_r3_1603, void **, 8) = (void *) this->unk8;
-        temp_r3_1601->unk110->Burst(*(this->unk8 + 0x30));
+        ((FXBase *) temp_r3_1601->unk110)->Burst(*(this->unk8 + 0x30));
         temp_r3_1612 = temp_r3_1601->unk110;
         spC = 0;
         sp8 = 0xB5;
@@ -1221,7 +1223,7 @@ void Shatterable::SetSmashPropState(SmashPropState arg0) {
         return;
     }
     if ((s32) arg0 == 1) {
-        this->unk154.Send((MKProp *) this);
+        ((EventMessage *) &this->unk154)->Send((MKProp *) this);
         this->unk180 += 1;
         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF4 != 0) {
             temp_r3_1760 = this->unk180;
@@ -2332,7 +2334,7 @@ loop_2:
     if ((KDSoundPlayer *) this->unk100 != NULL) {
         temp_r4_4082 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk100->Update(temp_r4_4082->unkFC, 1U, ((u8) M2C_FIELD(this, u8 *, 0x1A1) >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk100)->Update(temp_r4_4082->unkFC, 1U, ((u8) M2C_FIELD(this, u8 *, 0x1A1) >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) this->unk16C == 1) {
         if (M2C_BITWISE(f32, this->unk168) <= 0.0f) {
@@ -2367,7 +2369,7 @@ void Shatterable::Draw() {
     s32 var_r5_4207;
 
     if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        this->unk118.BeginGlowingPropDraw((MKProp *) this);
+        ((GlowingProp *) &this->unk118)->BeginGlowingPropDraw((MKProp *) this);
     }
     M2C_FIELD(this, s8 *, 0x19E) = 1;
     temp_r29_4189 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -2415,12 +2417,12 @@ loop_18:
         goto loop_18;
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        this->unk118.EndGlowingPropDraw();
+        ((GlowingProp *) &this->unk118)->EndGlowingPropDraw();
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
 void Shatterable::Resolve() {
     MKProp *temp_r3_4287;
     s32 temp_r3_4283;
@@ -2428,7 +2430,7 @@ void Shatterable::Resolve() {
     KDPropEx::Resolve();
     temp_r3_4283 = this->unk164.unk0;
     if (temp_r3_4283 != 0) {
-        temp_r3_4287 = checked_cast<KDProp *, MKProp>(temp_r3_4283->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_4287 = checked_cast<KDProp *, MKProp>(((MKSceneManager *) temp_r3_4283)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         PlatformAttach(temp_r3_4287, temp_r3_4287 + 0x70);
     }
 }
@@ -2522,7 +2524,7 @@ void Shatterable::LoadDone() {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
         this->unk100 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk100->Init(0.25f, 0.25f);
+        ((KDSoundFader *) this->unk100)->Init(0.25f, 0.25f);
     }
     temp_r31_4474 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     var_r30_4475 = 0;
@@ -2578,7 +2580,7 @@ loop_15:
         this->unk15C.unk0 = 1;
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        this->unk118.Init();
+        ((GlowingProp *) &this->unk118)->Init();
     }
     if ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) {
         this->unkC8.RegisterTargetable();
@@ -2592,7 +2594,7 @@ s32 Shatterable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4647;
 
     var_r31_4647 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", this + 0x19D, 0) != 0) || (arg0->LoadBool("bStartActive", this + 0x19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (this->unk154.LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", (u8 *) &this->unk190, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", this + 0x1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", &this->unk164.unk0, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", (f32 *) &this->unk17C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk188, 0) != 0) || (arg0->LoadBool("Hitable", (u8 *) &this->unk18C, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", this + 0x19D, 0) != 0) || (arg0->LoadBool("bStartActive", this + 0x19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (((EventMessage *) &this->unk154)->LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", (u8 *) &this->unk190, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", this + 0x1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", &this->unk164.unk0, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", (f32 *) &this->unk17C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk188, 0) != 0) || (arg0->LoadBool("Hitable", (u8 *) &this->unk18C, 0) != 0)) {
         var_r31_4647 = 1;
     }
     return var_r31_4647;
@@ -2645,14 +2647,14 @@ loop_11:
         goto loop_11;
     }
     temp_r30_4820 = this->unk158;
-    temp_r3_4821 = temp_r3_4816->Current();
+    temp_r3_4821 = ((MKHeap *) temp_r3_4816)->Current();
     if (temp_r3_4821 != NULL) {
         ((MKHeap *) (temp_r3_4821->Current()))->Free(temp_r30_4820, NULL, 0);
     } else {
         free(temp_r30_4820);
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x1A0) != 0) {
-        this->unk118.Deinit();
+        ((GlowingProp *) &this->unk118)->Deinit();
     }
     PlatformDetach();
     if ((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) {
@@ -2803,15 +2805,15 @@ void ShatterableDescriptor::LoadDone() {
     temp_r25_4993 = this->unk34;
     if (temp_r25_4993 != NULL) {
         temp_r24_4996 = this->unkE4;
-        if (temp_r25_4993->Exists(temp_r24_4996) != 0) {
-            var_r3_5004 = temp_r25_4993->GetAnim(temp_r24_4996);
+        if (((MKAnimScript *) temp_r25_4993)->Exists(temp_r24_4996) != 0) {
+            var_r3_5004 = ((MKAnimScript *) temp_r25_4993)->GetAnim(temp_r24_4996);
         } else {
             var_r3_5004 = NULL;
         }
         this->unkE4 = var_r3_5004;
         temp_r4_5010 = this->unkE8;
         if (temp_r4_5010 != NULL) {
-            this->unkE8 = this->unk34->GetAnim(temp_r4_5010);
+            this->unkE8 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_5010);
         }
         this->unkEC = this->unkE4;
     }
@@ -2945,7 +2947,7 @@ loop_45:
             temp_r24_5302 = var_r26_5300 + 0x120;
             temp_r4_5303 = *(this + temp_r24_5302);
             if (temp_r4_5303 != NULL) {
-                *(this + temp_r24_5302) = this->unk34->GetAnim(temp_r4_5303);
+                *(this + temp_r24_5302) = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_5303);
             }
             var_r23_5299 += 1;
             var_r26_5300 += 4;

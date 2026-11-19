@@ -220,13 +220,13 @@ loop_9:
                     temp_r4_410 = arg0->unkC;
                     temp_r6_412 = arg0->unk14 - 1;
                     arg0->unkC = temp_r4_410 + (((var_r23_358 << 5) + temp_r6_412) & ~temp_r6_412);
-                    ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x18)))->Init(temp_r4_410, var_r23_358, 0U);
+                    ((KDUniformSpline *) (var_r30_345 + 0x18))->Init(temp_r4_410, var_r23_358, 0U);
                 }
                 if (var_r22_359 > 0) {
                     temp_r4_425 = arg0->unkC;
                     temp_r6_427 = arg0->unk14 - 1;
                     arg0->unkC = temp_r4_425 + (((var_r22_359 << 5) + temp_r6_427) & ~temp_r6_427);
-                    ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x2C)))->Init(temp_r4_425, var_r22_359, 0U);
+                    ((KDUniformSpline *) (var_r30_345 + 0x2C))->Init(temp_r4_425, var_r22_359, 0U);
                 }
                 M2C_FIELD(var_r30_345, f32 *, 4) = 0.7853982f;
                 M2C_FIELD(var_r30_345, f32 *, 8) = 0.7853982f;
@@ -245,12 +245,12 @@ loop_31:
                         M2C_FIELD(var_r30_345, f32 *, 0x10) = var_r23_443->GetFloat(0);
                     } else if (var_r23_443->IsField("eye") != 0) {
                         sp18.GetVector3((s32) var_r23_443);
-                        ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x18)))->AddNode(*((MKVector3 *) &sp18));
+                        ((KDUniformSpline *) (var_r30_345 + 0x18))->AddNode(*((MKVector3 *) &sp18));
                         *(M2C_FIELD(var_r30_345, void **, 0x14) + var_r26_360) = var_r23_443->GetFloat(3);
                         var_r26_360 += 4;
                     } else if (var_r23_443->IsField("dst") != 0) {
                         sp8.GetVector3((s32) var_r23_443);
-                        ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x2C)))->AddNode(*((MKVector3 *) &sp8));
+                        ((KDUniformSpline *) (var_r30_345 + 0x2C))->AddNode(*((MKVector3 *) &sp8));
                     }
                     var_r23_443 = var_r23_443->unkC->GetNextLine(var_r23_443);
                     goto loop_31;
@@ -843,19 +843,19 @@ loop_21:
         var_f29_1819 = 0.0f;
     }
     if (temp_r3_1802 != NULL) {
-        var_f31_955 = temp_r3_1802->GetValue(var_f29_1819);
+        var_f31_955 = ((KDBasicEnvelope *) temp_r3_1802)->GetValue(var_f29_1819);
     }
     sp20 = 0.0f;
-    sp90.GetMeasure(var_f31_955, temp_r29_1799 + 0x18, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp90)->GetMeasure(var_f31_955, temp_r29_1799 + 0x18, KDSpline_PositionMixer);
     this->unk40 = sp90;
     this->unk48 = sp98;
     this->unk60 = (M2C_FIELD(temp_r29_1799, f32 *, 8) * var_f31_955) + (M2C_FIELD(temp_r29_1799, f32 *, 4) * (1.0f - var_f31_955));
     temp_r3_1860 = arg2->GetEnvelope(temp_r28_927->unk14);
     if (temp_r3_1860 != NULL) {
-        var_f31_955 = temp_r3_1860->GetValue(var_f29_1819);
+        var_f31_955 = ((KDBasicEnvelope *) temp_r3_1860)->GetValue(var_f29_1819);
     }
     sp1C = 0.0f;
-    sp80.GetMeasure(var_f31_955, temp_r29_1799 + 0x2C, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp80)->GetMeasure(var_f31_955, temp_r29_1799 + 0x2C, KDSpline_PositionMixer);
     this->unk50 = sp80;
     this->unk58 = sp88;
     this->unk64 = M2C_FIELD(temp_r29_1799, f32 *, 0xC);

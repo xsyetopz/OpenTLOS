@@ -483,7 +483,7 @@ loop_13:
         var_r29_969 += 1;
         goto loop_13;
     }
-    this->unk0->GetChildrenRange(&sp78, &sp68);
+    ((MKWidgetScrollableFrame *) this->unk0)->GetChildrenRange(&sp78, &sp68);
     sp8 = var_f30_967;
     sp10 = 0.0f;
     spC = 4.0f + sp68.unk4;

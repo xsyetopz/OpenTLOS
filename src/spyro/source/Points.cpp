@@ -181,7 +181,7 @@ void WindPoints_DeinitModule() {
 
     temp_r31_1042 = wind.unk0;
     if (temp_r31_1042 != NULL) {
-        temp_r3_1045 = wind.Current();
+        temp_r3_1045 = ((MKHeap *) &wind)->Current();
         if (temp_r3_1045 != NULL) {
             ((MKHeap *) (temp_r3_1045->Current()))->Free(temp_r31_1042, NULL, 0);
         } else {
@@ -199,7 +199,7 @@ void WindPoints_InitModule() {
 
     wind.unk4 = 0x14;
     wind.unk8 = 0x2710;
-    temp_r3_1081 = wind.Current();
+    temp_r3_1081 = ((MKHeap *) &wind)->Current();
     if (temp_r3_1081 != NULL) {
         var_r3_1088 = ((MKHeap *) (temp_r3_1081->Current()))->Alloc(0x640, NULL, 0);
     } else {
@@ -324,7 +324,7 @@ void FogPoints_DeinitModule() {
 
     temp_r31_2107 = fog.unk0;
     if (temp_r31_2107 != NULL) {
-        temp_r3_2110 = fog.Current();
+        temp_r3_2110 = ((MKHeap *) &fog)->Current();
         if (temp_r3_2110 != NULL) {
             ((MKHeap *) (temp_r3_2110->Current()))->Free(temp_r31_2107, NULL, 0);
         } else {
@@ -342,7 +342,7 @@ void FogPoints_InitModule() {
 
     fog.unk4 = 0x14;
     fog.unk8 = 0x2710;
-    temp_r3_2146 = fog.Current();
+    temp_r3_2146 = ((MKHeap *) &fog)->Current();
     if (temp_r3_2146 != NULL) {
         var_r3_2153 = ((MKHeap *) (temp_r3_2146->Current()))->Alloc(0x640, NULL, 0);
     } else {

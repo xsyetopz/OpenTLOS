@@ -44,12 +44,10 @@ void UIStringTable::Deinit() {
     this->unk4 = NULL;
 }
 
-#if 0 // DRAFT: pointer/array required
 void UIStringTable::Init(int arg0) {
-    this->unk4 = arg0->Create(arg0);
+    this->unk4 = ((MKStringCache *) arg0)->Create(arg0);
     this->unk0 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 UIStringTable::UIStringTable() {

@@ -9,6 +9,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterGlowFX.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
@@ -16,6 +17,7 @@
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
@@ -590,7 +592,7 @@ loop_113:
                 sp4E8 = (f64) sp1D8;
                 KDMath_BuildMatrixFromFwd((Matrix *) &temp_r29_1508->unk30, *((MKVector3 *) &temp_r29_1508->unk70), (MKVector3 *) &sp4E0);
                 temp_r3_640 = &temp_r29_1508->unk30;
-                temp_r3_640->Scale3x3((Matrix *) temp_r3_640, 1.0f);
+                ((Matrix *) temp_r3_640)->Scale3x3((Matrix *) temp_r3_640, 1.0f);
                 M2C_FIELD(temp_r29_1508, f64 *, 0x60) = (f32) sp4F0;
                 M2C_FIELD(temp_r29_1508, f32 *, 0x64) = unksp4F4;
                 temp_r29_1508->unk68 = (f32) sp4F8;
@@ -798,7 +800,7 @@ block_105:
                 sp4A0 = (f64) sp190;
                 KDMath_BuildMatrixFromFwd((Matrix *) &temp_r29_1508->unk30, *((MKVector3 *) &temp_r29_1508->unk70), (MKVector3 *) &sp4A0);
                 temp_r3_938 = &temp_r29_1508->unk30;
-                temp_r3_938->Scale3x3((Matrix *) temp_r3_938, 1.0f);
+                ((Matrix *) temp_r3_938)->Scale3x3((Matrix *) temp_r3_938, 1.0f);
                 M2C_FIELD(temp_r29_1508, f64 *, 0x60) = (f32) sp4B0;
                 M2C_FIELD(temp_r29_1508, f32 *, 0x64) = unksp4B4;
                 temp_r29_1508->unk68 = (f32) sp4B8;
@@ -962,7 +964,7 @@ block_105:
                 if (M2C_FIELD(temp_r29_1508, f32 *, 0x88) <= 0.0f) {
                     temp_r4_1342 = M2C_FIELD(temp_r29_1508, ManagedLight **, 0x84);
                     if (temp_r4_1342 != NULL) {
-                        gb.unk80->EnableLight(temp_r4_1342, 0U);
+                        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1342, 0U);
                         M2C_FIELD(temp_r29_1508, ManagedLight **, 0x84) = NULL;
                     }
                     KDSound_Stop(&temp_r29_1508->unk0);
@@ -989,7 +991,7 @@ block_105:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp198;
     f64 sp190;
@@ -1090,7 +1092,7 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     sp190 = (f64) sp70;
     KDMath_BuildMatrixFromFwd((Matrix *) &temp_r31_1580->unk30, *((MKVector3 *) &temp_r31_1580->unk70), (MKVector3 *) &sp190);
     temp_r3_1600 = &temp_r31_1580->unk30;
-    temp_r3_1600->Scale3x3((Matrix *) temp_r3_1600, 1.0f);
+    ((Matrix *) temp_r3_1600)->Scale3x3((Matrix *) temp_r3_1600, 1.0f);
     M2C_FIELD(temp_r31_1580, f32 *, 0x60) = (f32) arg0.unk0;
     M2C_FIELD(temp_r31_1580, f32 *, 0x64) = (f32) arg0.unk4;
     temp_r31_1580->unk68 = arg0.unk8;
@@ -1102,7 +1104,7 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     KDSound_Play3d(GS_SpyroBreathConvex1, (MKVector3 *) &temp_r31_1580->unk60, 0U, -1, 0.0f, 0U);
     temp_r4_1630 = this->unkF8;
     if (temp_r4_1630 != NULL) {
-        gb.unk80->EnableLight(temp_r4_1630, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1630, 1U);
         temp_r3_1638 = this->unkF8;
         temp_f1_1639 = (f64) M2C_FIELD(&arg0, f32 *, 0);
         temp_f0_1640 = (f64) M2C_FIELD(&arg0, f32 *, 8);
@@ -1259,14 +1261,14 @@ loop_41:
         sp80 = (f64) sp50;
         sp88 = (f64) sp58;
         spC = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
-        gb.unk74->Emit(*((MKVector3 *) &sp170), *((MKVector3 *) &sp160), spC, *((MKVector4 *) &sp80), 0.0f);
+        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp170), *((MKVector3 *) &sp160), spC, *((MKVector4 *) &sp80), 0.0f);
         var_r27_1877 += 1;
     } while (var_r27_1877 < 0x14);
     return 1;
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 void FuryFXConvexity::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -1276,7 +1278,7 @@ void FuryFXConvexity::ResetFury() {
     Disable();
     temp_r4_2026 = this->unkF8;
     if (temp_r4_2026 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2026, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2026, 0U);
     }
     gb.unk2CC.Disable(this->unk168);
     this->unk168 = -1;
@@ -1379,7 +1381,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
             sp98 = (f64) sp58;
             sp90 = (f64) sp50;
             sp8 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp120), *((MKVector3 *) &sp110), sp8, *((MKVector4 *) &sp90), -580.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp120), *((MKVector3 *) &sp110), sp8, *((MKVector4 *) &sp90), -580.0f);
             var_r28_2138 += 1;
         } while (var_r28_2138 < 0x96);
         sp40 = 1.0f;
@@ -1392,7 +1394,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
         ((CharacterGlowFX *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x260), void **, 4), CharacterGlowFX **, 0x28)))->Enable(1U, *((MKVector4 *) &sp80), 10.0f);
         temp_r4_2244 = this->unkF8;
         if (temp_r4_2244 != NULL) {
-            gb.unk80->EnableLight(temp_r4_2244, 1U);
+            ((LightManager *) gb.unk80)->EnableLight(temp_r4_2244, 1U);
             MKVector(0.0f, 100.0f, 0.0f);
             sp10 = M2C_FIELD(this, f64 *, 0xE0) + sp60;
             temp_r3_2266 = this->unkF8;
@@ -1423,7 +1425,7 @@ void FuryFXConvexity::SetDefaults() {
     this->unk164 = 0.0f;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r31_2359;
     KDSoundFader **var_r3_2360;
@@ -1436,8 +1438,8 @@ void FuryFXConvexity::Deinit() {
 
     temp_r4_2338 = this->unkF8;
     if (temp_r4_2338 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2338, 0U);
-        gb.unk80->FreeManagedLight(this->unkF8);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2338, 0U);
+        ((LightManager *) gb.unk80)->FreeManagedLight(this->unkF8);
         this->unkF8 = NULL;
     }
     MKModel_Destroy(this->unk1E0);
@@ -1466,7 +1468,7 @@ loop_11:
             var_r4_2358 += 4;
             goto loop_11;
         }
-        temp_r3_2385 = var_r3_2360->Current();
+        temp_r3_2385 = ((MKHeap *) var_r3_2360)->Current();
         if (temp_r3_2385 != NULL) {
             ((MKHeap *) (temp_r3_2385->Current()))->Free(var_r31_2359, NULL, 0);
         } else {
@@ -1482,7 +1484,6 @@ void FuryFXConvexity::Draw() {
     DrawDragonChasers();
 }
 
-#if 0 // DRAFT: undefined identifier 'Message'
 void FuryFXConvexity::Message(MKMessage *arg0) {
     KDSoundFader **var_r31_2431;
     KDSoundFader *temp_r3_2440;
@@ -1492,18 +1493,17 @@ loop_2:
     if (var_r31_2431 != NULL) {
         temp_r3_2440 = *var_r31_2431;
         if (temp_r3_2440 != NULL) {
-            temp_r3_2440->Message(arg0);
+            ((KDSoundPlayer *) temp_r3_2440)->Message(arg0);
             var_r31_2431 += 4;
             goto loop_2;
         }
     }
-    this->unkFC.Message(arg0);
-    this->unk124.Message(arg0);
+    ((KDSoundPlayer *) &this->unkFC)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk124)->Message(arg0);
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FuryFXConvexity::Update() {
     f64 sp8B8;
     Matrix sp870;
@@ -1827,14 +1827,14 @@ void FuryFXConvexity::Update() {
 
     this->unkF4 = this->unkF4 - gUpdateTimeDelta;
     sp8 = 1;
-    this->unkFC.Update(GS_SpyroFuryConvexLP1, 1U, this->unk14C, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkFC)->Update(GS_SpyroFuryConvexLP1, 1U, this->unk14C, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk124.Update(GS_SpyroFuryConvexLP3, 1U, this->unk14D, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk124)->Update(GS_SpyroFuryConvexLP3, 1U, this->unk14D, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     UpdateDragonChasers();
     if ((LightActiveOnChasers() == 0) && ((s32) this->unkF0 == 0)) {
         temp_r4_2542 = this->unkF8;
         if (temp_r4_2542 != NULL) {
-            gb.unk80->EnableLight(temp_r4_2542, 0U);
+            ((LightManager *) gb.unk80)->EnableLight(temp_r4_2542, 0U);
         }
     }
     if (this->unk150 >= 0.0f) {
@@ -1909,7 +1909,7 @@ void FuryFXConvexity::Update() {
             sp580 = (f64) sp230;
             sp578 = (f64) sp228;
             sp2C = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp748), *((MKVector3 *) &sp738), sp2C, *((MKVector4 *) &sp578), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp748), *((MKVector3 *) &sp738), sp2C, *((MKVector4 *) &sp578), 0.0f);
             if (this->unkF4 <= 0.0f) {
                 this->unkF0 = 2;
                 this->unkF4 = 2.0f;
@@ -2036,7 +2036,7 @@ void FuryFXConvexity::Update() {
             sp4A0 = (f64) sp1F0;
             sp498 = (f64) sp1E8;
             sp28 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp6F8), *((MKVector3 *) &sp6E8), sp28, *((MKVector4 *) &sp498), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6F8), *((MKVector3 *) &sp6E8), sp28, *((MKVector4 *) &sp498), 0.0f);
             if (this->unkF4 <= 0.0f) {
                 this->unkF4 = 0.1f;
                 this->unkF0 += 1;
@@ -2106,7 +2106,7 @@ void FuryFXConvexity::Update() {
             sp3B0 = (f64) sp1E0;
             sp3A8 = (f64) sp1D8;
             sp24 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp6D8), *((MKVector3 *) &sp6C8), sp24, *((MKVector4 *) &sp3A8), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6D8), *((MKVector3 *) &sp6C8), sp24, *((MKVector4 *) &sp3A8), 0.0f);
             goto block_159;
         case 4:                                     /* switch 1 */
             EmitVortexParticles();
@@ -2139,7 +2139,7 @@ void FuryFXConvexity::Update() {
             sp300 = (f64) sp1D0;
             sp2F8 = (f64) sp1C8;
             sp20 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-            gb.unk74->Emit(*((MKVector3 *) &sp6B8), *((MKVector3 *) &sp6A8), sp20, *((MKVector4 *) &sp2F8), 0.0f);
+            ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6B8), *((MKVector3 *) &sp6A8), sp20, *((MKVector4 *) &sp2F8), 0.0f);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp76C = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
@@ -2428,7 +2428,7 @@ void FuryFXConvexity::Update() {
         }
     } else {
 block_159:
-        gb.unk74->ApplyWind(&this->unk170);
+        ((EmbersPS *) gb.unk74)->ApplyWind(&this->unk170);
         if ((s32) this->unkF0 <= 4) {
             temp_r3_4111 = this->unkF8;
             if (temp_r3_4111 != NULL) {
@@ -2454,7 +2454,7 @@ block_159:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXConvexity::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2501,10 +2501,10 @@ void FuryFXConvexity::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unkF8 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781);
+    this->unkF8 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781);
     temp_r4_4235 = this->unkF8;
     if (temp_r4_4235 != NULL) {
-        gb.unk80->EnableLight(temp_r4_4235, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_4235, 0U);
         temp_r3_4241 = this->unkF8;
         temp_r3_4241->unk38 = 2000.0f;
         temp_r3_4244 = temp_r3_4241->unk3C;
@@ -2584,8 +2584,8 @@ void FuryFXConvexity::Init() {
     this->unk158 = temp_r4_4345 + 4;
     M2C_FIELD(temp_r4_4345, KDSoundFader ***, 4) = NULL;
     this->unkF8 = NULL;
-    this->unkFC.Init(1.0f, 7.0f);
-    this->unk124.Init(0.75f, 6.0f);
+    ((KDSoundFader *) &this->unkFC)->Init(1.0f, 7.0f);
+    ((KDSoundFader *) &this->unk124)->Init(0.75f, 6.0f);
     this->unk14C = 0;
     this->unk14D = 0;
     sp10 = 0.0f;

@@ -10,6 +10,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Shatterable.h"
@@ -134,7 +135,7 @@ void EnemyGoal_Death::Init(Enemy *arg0) {
     if ((Enemy *) this->unkC != NULL) {
         this->unk9 = 1;
     }
-    this->unk20->Init(arg0);
+    ((EnemyGoal_Dying *) this->unk20)->Init(arg0);
 }
 #endif
 
@@ -309,7 +310,7 @@ void EnemyGoal_Dying::Activate() {
     M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, void *, M2C_UNK, f32, f64), 0x94)(gMK, &sp18, 8, 0, temp_r9_451 + 0x30, 1, temp_r9_451, 0, 1000.0f, temp_f2_452);
     temp_r3_465 = this->unkC;
     if (!(((u8) M2C_FIELD(temp_r3_465, u8 *, 0x6B5) >> 4U) & 1)) {
-        temp_r3_465->StopMovement(1U);
+        ((Character *) temp_r3_465)->StopMovement(1U);
         M2C_FIELD(this->unkC, f32 *, 0x59C) = 0.0f;
     }
     temp_r4_475 = this->unkC;
@@ -960,16 +961,14 @@ u8 EnemyGoal_DyingTrain::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_DyingTrain::Activate() {
     Character *temp_r3_1646;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
     temp_r3_1646 = this->unkC;
-    temp_r3_1646->SetAnim((AnimSequenceType) 3, M2C_FIELD(temp_r3_1646->unk630, s32 *, 8) + 0x6E, 0, 0.15f, 0U, 0U);
+    ((Enemy *) temp_r3_1646)->SetAnim((AnimSequenceType) 3, M2C_FIELD(temp_r3_1646->unk630, s32 *, 8) + 0x6E, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk5B0'
 u8 EnemyGoal_DyingAirborn::Update() {
@@ -1038,7 +1037,7 @@ u8 EnemyGoal_DyingAirborn::Update() {
         }
     }
     if (var_r30_1769 != 0) {
-        this->unkC->SetAnim((AnimSequenceType) 3, 0x1F, 1, 0.15f, 0U, 0U);
+        ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, 0x1F, 1, 0.15f, 0U, 0U);
     }
     unksp74 += 50.0f;
     Tools_TestFloor(*((MKVector3 *) &sp70), NULL, 250.0f, (MKCollisionMode) 5);
@@ -1049,7 +1048,6 @@ u8 EnemyGoal_DyingAirborn::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_DyingAirborn::Activate() {
     f64 sp40;
     f64 sp38;
@@ -1085,9 +1083,8 @@ void EnemyGoal_DyingAirborn::Activate() {
     sp40 = (f64) sp20;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    this->unkC->SetAnim((AnimSequenceType) 3, 0x1F, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, 0x1F, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 u8 EnemyGoal_DyingStoned::Update() {
     ActivateIfInactive();
@@ -1222,7 +1219,6 @@ u8 EnemyGoal_DyingFrozen::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_DyingFrozen::Activate() {
     Enemy *temp_r3_2167;
     Enemy *temp_r3_2174;
@@ -1231,7 +1227,7 @@ void EnemyGoal_DyingFrozen::Activate() {
     s32 var_r5_2145;
 
     this->unk8 = 0;
-    this->unkC->unk740.SetCrumble(lit_816);
+    ((FireAndIceFX *) &this->unkC->unk740)->SetCrumble(lit_816);
     temp_r6_2144 = this->unkC;
     var_r5_2145 = 0x1E;
     if (((u8) M2C_FIELD(temp_r6_2144, u8 *, 0xB08) >> 3U) & 1) {
@@ -1251,10 +1247,9 @@ void EnemyGoal_DyingFrozen::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 3, var_r5_2145, 0, 0.15f, 0U, 0U);
     temp_r3_2186 = this->unkC;
     if ((s32) temp_r3_2186->unk680 != 2) {
-        temp_r3_2186->SetMovementType((CharacterMoveType) 0);
+        ((Character *) temp_r3_2186)->SetMovementType((CharacterMoveType) 0);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk750'
 u8 EnemyGoal_DyingBurnt::Update() {
@@ -1309,9 +1304,9 @@ u8 EnemyGoal_DyingBurnt::Update() {
             temp_r3_2252 = this->unkC;
             temp_r4_2253 = temp_r3_2252->unkA50;
             if ((u32) M2C_FIELD(temp_r4_2253, u32 *, 0x20) != 0U) {
-                temp_r3_2252->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x20), 0.15f, 0U);
+                ((Enemy *) temp_r3_2252)->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x20), 0.15f, 0U);
             } else if ((u32) M2C_FIELD(temp_r4_2253, u32 *, 0x40) != 0U) {
-                temp_r3_2252->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x40), 0.15f, 0U);
+                ((Enemy *) temp_r3_2252)->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x40), 0.15f, 0U);
             }
         } else {
             temp_r29_2272 = this->unkC;
@@ -1326,7 +1321,7 @@ u8 EnemyGoal_DyingBurnt::Update() {
                 temp_r3_2294 = this->unkC;
                 temp_r4_2295 = temp_r3_2294->unkA50;
                 if ((u32) M2C_FIELD(temp_r4_2295, u32 *, 0x40) != 0U) {
-                    temp_r3_2294->SetAnim((AnimSequence *) temp_r4_2295, (AnimTransition *) (temp_r4_2295 + 0x40), 0.15f, 0U);
+                    ((Enemy *) temp_r3_2294)->SetAnim((AnimSequence *) temp_r4_2295, (AnimTransition *) (temp_r4_2295 + 0x40), 0.15f, 0U);
                 }
             }
         }
@@ -1355,7 +1350,7 @@ u8 EnemyGoal_DyingBurnt::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ThawIfFrozen'
+#if 0 // DRAFT: undefined identifier 'unk750'
 void EnemyGoal_DyingBurnt::Activate() {
     Character *temp_r3_2401;
     Character *temp_r3_2408;
@@ -1364,7 +1359,7 @@ void EnemyGoal_DyingBurnt::Activate() {
     s32 var_r5_2379;
 
     this->unk8 = 0;
-    this->unkC->ThawIfFrozen();
+    ((Enemy *) this->unkC)->ThawIfFrozen();
     this->unkC->unk750.SetState(lit_773, 1.0f);
     this->unkC->unk750.SetCrumble(lit_774);
     temp_r6_2378 = this->unkC;
@@ -1383,7 +1378,7 @@ void EnemyGoal_DyingBurnt::Activate() {
     }
     temp_r3_2408 = this->unkC;
     temp_r3_2408->unk6B5 &= ~0x10;
-    this->unkC->SetAnim((AnimSequenceType) 3, var_r5_2379, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, var_r5_2379, 0, 0.15f, 0U, 0U);
     temp_r3_2420 = this->unkC;
     if (((u8) temp_r3_2420->unkB08 >> 2U) & 1) {
         temp_r3_2420->unk588.unkC = 0.0f;
@@ -1437,9 +1432,9 @@ u8 EnemyGoal_DyingDefault::Update() {
             temp_r3_2485 = this->unkC;
             temp_r4_2486 = temp_r3_2485->unkA50;
             if ((u32) M2C_FIELD(temp_r4_2486, u32 *, 0x20) != 0U) {
-                temp_r3_2485->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x20), 0.15f, 0U);
+                ((Enemy *) temp_r3_2485)->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x20), 0.15f, 0U);
             } else if ((u32) M2C_FIELD(temp_r4_2486, u32 *, 0x40) != 0U) {
-                temp_r3_2485->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x40), 0.15f, 0U);
+                ((Enemy *) temp_r3_2485)->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x40), 0.15f, 0U);
             } else {
                 this->unk8 = 2;
             }
@@ -1458,7 +1453,7 @@ u8 EnemyGoal_DyingDefault::Update() {
                 temp_r3_2535 = this->unkC;
                 temp_r4_2536 = temp_r3_2535->unkA50;
                 if ((u32) M2C_FIELD(temp_r4_2536, u32 *, 0x40) != 0U) {
-                    temp_r3_2535->SetAnim((AnimSequence *) temp_r4_2536, (AnimTransition *) (temp_r4_2536 + 0x40), 0.15f, 0U);
+                    ((Enemy *) temp_r3_2535)->SetAnim((AnimSequence *) temp_r4_2536, (AnimTransition *) (temp_r4_2536 + 0x40), 0.15f, 0U);
                 }
             }
         }
@@ -1487,7 +1482,7 @@ u8 EnemyGoal_DyingDefault::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ThawIfFrozen'
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_DyingDefault::Activate() {
     Character *temp_r3_2610;
     Character *temp_r3_2622;
@@ -1498,7 +1493,7 @@ void EnemyGoal_DyingDefault::Activate() {
     s32 var_r5_2629;
 
     this->unk8 = 0;
-    this->unkC->ThawIfFrozen();
+    ((Enemy *) this->unkC)->ThawIfFrozen();
     temp_r3_2610 = this->unkC;
     if (((u8) temp_r3_2610->unkB02 >> 4U) & 1) {
         KDSound_Play3d(GS_EnemyLavaBurn, temp_r3_2610->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -1521,7 +1516,7 @@ void EnemyGoal_DyingDefault::Activate() {
     }
     temp_r3_2658 = this->unkC;
     temp_r3_2658->unk6B5 &= ~0x10;
-    this->unkC->SetAnim((AnimSequenceType) 3, var_r5_2629, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, var_r5_2629, 0, 0.15f, 0U, 0U);
     temp_r3_2670 = this->unkC;
     if ((s32) temp_r3_2670->unk680 != 2) {
         temp_r3_2670->SetMovementType((CharacterMoveType) 0);

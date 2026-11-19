@@ -114,7 +114,7 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     unksp84 += 50.0f;
     KDSound_Play3d(GS_GemSpawn1, (MKVector3 *) &this->unk50, 0U, -1, 0.0f, 0U);
     var_r30_186 = 0;
-    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) 0) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) 0) != 0) && (arg0 != NULL)) {
         temp_f3_200 = M2C_FIELD(GameData::gameData, f32 *, 0x70) / M2C_FIELD(GameData::gameData, f32 *, 0x74);
         var_f1_208 = (f32) M2C_FIELD(arg0, s32 *, 0);
         if (temp_f3_200 > 0.9f) {
@@ -129,7 +129,7 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         var_r30_186 = (s32) var_f1_208;
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp80), var_r30_186, 200.0f, 500.0f, -1, NULL);
     }
-    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) 2) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) 2) != 0) && (arg0 != NULL)) {
         temp_f3_258 = M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4);
         var_f1_266 = (f32) M2C_FIELD(arg0, s32 *, 8);
         if (temp_f3_258 > 0.9f) {
@@ -145,11 +145,11 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x18)))->Spawn(*((MKVector3 *) &sp80), temp_r28_301, 200.0f, 500.0f, -1, NULL);
         var_r30_186 += temp_r28_301;
     }
-    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) 3) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) 3) != 0) && (arg0 != NULL)) {
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x1C)))->Spawn(*((MKVector3 *) &sp80), M2C_FIELD(arg0, s32 *, 0xC), 200.0f, 500.0f, -1, NULL);
         var_r30_186 += M2C_FIELD(arg0, s32 *, 0xC);
     }
-    if ((((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetGemAvailable((StatType) 1) != 0) && (arg0 != NULL)) {
+    if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) 1) != 0) && (arg0 != NULL)) {
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x14)))->Spawn(*((MKVector3 *) &sp80), M2C_FIELD(arg0, s32 *, 4), 200.0f, 500.0f, -1, NULL);
         var_r30_186 += M2C_FIELD(arg0, s32 *, 4);
     }

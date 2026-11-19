@@ -20,6 +20,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/TrainChaseSpyro.h"
@@ -28,7 +29,6 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -379,7 +379,7 @@ void SteamTrain::StateRamUpdate() {
                 } else {
                     temp_f2_361 = M2C_FIELD(temp_r3_339, f32 *, 0xE0) - this->unk10C;
                     if (temp_f2_361 < 1000.0f) {
-                        temp_f1_366 = temp_r3_314->GetTrackLength(1);
+                        temp_f1_366 = ((TrainTrack *) temp_r3_314)->GetTrackLength(1);
                         var_f0_369 = M2C_FIELD(temp_r3_339, f32 *, 0xE0) - 1000.0f;
                         if (var_f0_369 < temp_f1_366) {
 
@@ -428,7 +428,7 @@ void SteamTrain::StateRamUpdate() {
                     } else if (temp_r0_344 != 0) {
                         temp_f2_449 = this->unk104;
                         this->unk104 = -((0.4f * temp_f2_449 * gUpdateTimeDelta) - temp_f2_449);
-                        this->unk134.EmitBrakingEffects();
+                        ((SteamTrainEffects *) &this->unk134)->EmitBrakingEffects();
                         var_f2_455 = 0.25f;
                         if (1.0f > 0.25f) {
 
@@ -447,7 +447,7 @@ void SteamTrain::StateRamUpdate() {
                         }
                         this->unk104 = var_f0_477;
                         this->unk10C += this->unk104 * gUpdateTimeDelta;
-                        temp_f1_490 = temp_r3_314->GetTrackLength(1);
+                        temp_f1_490 = ((TrainTrack *) temp_r3_314)->GetTrackLength(1);
                         var_f0_491 = this->unk10C;
                         if (var_f0_491 < temp_f1_490) {
 
@@ -471,14 +471,14 @@ void SteamTrain::StateRamUpdate() {
                         this->unk110 = (var_f2_506 * (0.0f - temp_f1_517)) + temp_f1_517;
                     }
                 }
-                if (this->unk10C < temp_r3_314->GetTrackLength(1)) {
+                if (this->unk10C < ((TrainTrack *) temp_r3_314)->GetTrackLength(1)) {
                     M2C_STRUCT_COPY((s32) &sp138.unk24 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                    sp118.GetTrackPos(temp_r3_314, this->unk10C, 1);
+                    ((TrainTrack *) &sp118)->GetTrackPos(temp_r3_314, this->unk10C, 1);
                     sp138.unk4C.unkC = sp118;
                     sp138.unk4C.unk10 = sp11C;
                     sp138.unk60 = sp120;
                     sp138.unk60.unk4 = 1.0f;
-                    sp108.GetTrackXAxis(temp_r3_314, this->unk10C);
+                    ((TrainTrack *) &sp108)->GetTrackXAxis(temp_r3_314, this->unk10C);
                     temp_f4_562 = M2C_BITWISE(f32, sp138.unk14);
                     temp_f3_566 = M2C_BITWISE(f32, sp138.unk18);
                     temp_f5_568 = M2C_BITWISE(f32, sp138.unk10);
@@ -523,8 +523,8 @@ void SteamTrain::StateRamUpdate() {
                     sp138.unk40 = (f32) spD0;
                     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp138.unk28));
                     if (M2C_BITWISE(u32, this->unk38C) != 0U) {
-                        sp78.unk10.operator*(500.0f);
-                        sp78.unk20.operator*(500.0f);
+                        ((MKVector3 *) &sp78.unk10)->operator*(500.0f);
+                        ((MKVector3 *) &sp78.unk20)->operator*(500.0f);
                         temp_f0_663 = sp138.unk4C.unkC + (f64) sp78.unk20;
                         sp18 = temp_f0_663;
                         sp78.unk30 = temp_f0_663;
@@ -548,7 +548,7 @@ void SteamTrain::StateRamUpdate() {
                     sp10 = 0xB4;
                     Message(&sp10);
                 }
-                this->unk134.EmitSteam();
+                ((SteamTrainEffects *) &this->unk134)->EmitSteam();
                 M2C_FIELD(this, s8 *, 0x3EC) = (s8) ((this->unk10C - M2C_FIELD(temp_r3_339, f32 *, 0xE0)) >= 4500.0f);
             }
         }
@@ -634,7 +634,7 @@ void SteamTrain::StateChaseUpdate() {
 
     temp_r3_768 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, this->unk120)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_768 != 0) {
-        sp108.GetTrackZAxis(temp_r3_768, this->unk10C);
+        ((TrainTrack *) &sp108)->GetTrackZAxis(temp_r3_768, this->unk10C);
         sp118 = sp108;
         sp120 = sp110;
         if (!((((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + (unksp11C * unksp11C))) < 0.0001f)) {
@@ -647,7 +647,7 @@ void SteamTrain::StateChaseUpdate() {
                     this->unk100 = temp_f1_799;
                     this->unk104 += M2C_BITWISE(f32, this->unk100) * gUpdateTimeDelta;
                     this->unk10C += this->unk104 * gUpdateTimeDelta;
-                    temp_f1_822 = temp_r3_768->GetTrackLength(1);
+                    temp_f1_822 = ((TrainTrack *) temp_r3_768)->GetTrackLength(1);
                     var_f0_823 = this->unk10C;
                     if (var_f0_823 < temp_f1_822) {
 
@@ -661,14 +661,14 @@ void SteamTrain::StateChaseUpdate() {
                     }
                     this->unk10C = var_f0_823;
                 }
-                if (this->unk10C < temp_r3_768->GetTrackLength(1)) {
+                if (this->unk10C < ((TrainTrack *) temp_r3_768)->GetTrackLength(1)) {
                     M2C_STRUCT_COPY((s32) &sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                    spF8.GetTrackPos(temp_r3_768, this->unk10C, 1);
+                    ((TrainTrack *) &spF8)->GetTrackPos(temp_r3_768, this->unk10C, 1);
                     sp160 = spF8;
                     sp164 = spFC;
                     sp168 = sp100;
                     sp16C = 1.0f;
-                    spE8.GetTrackXAxis(temp_r3_768, this->unk10C);
+                    ((TrainTrack *) &spE8)->GetTrackXAxis(temp_r3_768, this->unk10C);
                     sp130 = spE8;
                     sp60 = ((f32) sp118 * spEC) - (unksp11C * spE8);
                     sp58 = (unksp11C * spF0) - ((f32) sp120 * spEC);
@@ -733,7 +733,7 @@ void SteamTrain::StateChaseUpdate() {
                     sp10 = 0xB4;
                     Message(&sp10);
                 }
-                this->unk134.EmitSteam();
+                ((SteamTrainEffects *) &this->unk134)->EmitSteam();
                 M2C_FIELD(this, s8 *, 0x3EC) = (s8) ((this->unk10C - M2C_FIELD(temp_r3_793, f32 *, 0xE0)) >= 4500.0f);
             }
         }
@@ -813,7 +813,7 @@ void SteamTrain::StateFallBackUpdate() {
     if (temp_r3_1070 != 0) {
         temp_f2_1075 = this->unk104;
         this->unk104 = -((0.8f * temp_f2_1075 * gUpdateTimeDelta) - temp_f2_1075);
-        this->unk134.EmitBrakingEffects();
+        ((SteamTrainEffects *) &this->unk134)->EmitBrakingEffects();
         var_f3_1081 = 0.25f;
         if (1.0f > 0.25f) {
 
@@ -828,17 +828,17 @@ void SteamTrain::StateFallBackUpdate() {
             this->unk10C += temp_f2_1097 * gUpdateTimeDelta;
         }
         M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        sp100.GetTrackPos(temp_r3_1070, this->unk10C, 1);
+        ((TrainTrack *) &sp100)->GetTrackPos(temp_r3_1070, this->unk10C, 1);
         sp140 = sp100;
         sp144 = sp104;
         sp148 = sp108;
         sp14C = 1.0f;
-        spF0.GetTrackXAxis(temp_r3_1070, this->unk10C);
+        ((TrainTrack *) &spF0)->GetTrackXAxis(temp_r3_1070, this->unk10C);
         sp110 = spF0;
         sp114 = spF4;
         sp118 = spF8;
         sp11C = 0.0f;
-        spE0.GetTrackZAxis(temp_r3_1070, this->unk10C);
+        ((TrainTrack *) &spE0)->GetTrackZAxis(temp_r3_1070, this->unk10C);
         sp130 = spE0;
         sp134 = spE4;
         sp50 = (spE4 * sp118) - (spE8 * sp114);
@@ -981,7 +981,7 @@ void SteamTrain::StateFleeUpdate() {
 
     temp_r3_1330 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, this->unk120)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_1330 != 0) {
-        sp100.GetTrackZAxis(temp_r3_1330, this->unk10C);
+        ((TrainTrack *) &sp100)->GetTrackZAxis(temp_r3_1330, this->unk10C);
         sp110 = sp100;
         var_f31_1343 = 1.0f;
         sp118 = sp108;
@@ -1028,7 +1028,7 @@ void SteamTrain::StateFleeUpdate() {
                 M2C_FIELD(this, u8 *, 0x130) = 0U;
                 temp_f2_1422 = this->unk104;
                 this->unk104 = -((0.8f * temp_f2_1422 * gUpdateTimeDelta) - temp_f2_1422);
-                this->unk134.EmitBrakingEffects();
+                ((SteamTrainEffects *) &this->unk134)->EmitBrakingEffects();
                 var_f2_1428 = 0.25f;
                 if (1.0f > 0.25f) {
 
@@ -1040,7 +1040,7 @@ void SteamTrain::StateFleeUpdate() {
                 this->unk110 = (var_f2_1428 * (1.0f - temp_f1_1439)) + temp_f1_1439;
             } else {
                 this->unk104 += M2C_BITWISE(f32, this->unk100) * gUpdateTimeDelta;
-                this->unk134.EmitSteam();
+                ((SteamTrainEffects *) &this->unk134)->EmitSteam();
                 var_f2_1452 = 0.25f;
                 if (1.0f > 0.25f) {
 
@@ -1059,12 +1059,12 @@ void SteamTrain::StateFleeUpdate() {
             }
             this->unk10C += gUpdateTimeDelta * (this->unk104 * var_f31_1343);
             M2C_STRUCT_COPY((s32) &unksp11C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            spF0.GetTrackPos(temp_r3_1330, this->unk10C, 1);
+            ((TrainTrack *) &spF0)->GetTrackPos(temp_r3_1330, this->unk10C, 1);
             sp150 = spF0;
             sp154 = spF4;
             sp158 = spF8;
             sp15C = 1.0f;
-            spE0.GetTrackXAxis(temp_r3_1330, this->unk10C);
+            ((TrainTrack *) &spE0)->GetTrackXAxis(temp_r3_1330, this->unk10C);
             sp120 = spE0;
             sp58 = ((f32) sp110 * spE4) - (unksp114 * spE0);
             sp50 = (unksp114 * spE8) - ((f32) sp118 * spE4);
@@ -1207,8 +1207,8 @@ void SteamTrain::Message(MKMessage *arg0) {
     void *temp_r3_1943;
     void *temp_r4_1815;
 
-    this->unk390.Message(arg0);
-    this->unk3BC.Message(arg0);
+    ((KDSoundPlayer *) &this->unk390)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk3BC)->Message(arg0);
     temp_r0_1752 = arg0->unk0;
     switch (temp_r0_1752) {                         /* irregular */
     case 0xB5:
@@ -1315,12 +1315,10 @@ void SteamTrain::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SteamTrain::Draw() {
     GameProp::Draw();
-    this->unk134.Draw();
+    ((SteamTrainEffects *) &this->unk134)->Draw();
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
@@ -1474,7 +1472,7 @@ void SteamTrain::Update() {
     this->unk378.Update(this, 0);
     this->unk138.unk22C = this->unk104;
     this->unk138.unk230 = this->unk108;
-    this->unk134.Update();
+    ((SteamTrainEffects *) &this->unk134)->Update();
     temp_f1_2272 = this->unk114;
     if (temp_f1_2272 > 0.0f) {
         this->unk114 = temp_f1_2272 - gUpdateTimeDelta;
@@ -1508,7 +1506,7 @@ void SteamTrain::Update() {
         M2C_FIELD(this, u8 *, 0x3EF) = 1U;
     }
     sp8 = 1;
-    this->unk390.Update(GS_TrainEngineBreakLP, 1U, M2C_FIELD(this, u8 *, 0x3EF), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk390)->Update(GS_TrainEngineBreakLP, 1U, M2C_FIELD(this, u8 *, 0x3EF), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f2_2355 = this->unk104;
     if (temp_f2_2355 <= 1800.0f) {
         KDSound_SetPitch(this->unk3BC, 0.9f);
@@ -1516,7 +1514,7 @@ void SteamTrain::Update() {
         KDSound_SetPitch(this->unk3BC, (0.000025f * temp_f2_2355) + 0.98f);
     }
     sp8 = 1;
-    this->unk3BC.Update(GS_TrainEngineLP, 1U, this->unk3EC, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk3BC)->Update(GS_TrainEngineLP, 1U, this->unk3EC, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r3_2382 = this->unk8;
     sp10 = M2C_FIELD(temp_r3_2382, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r3_2382, f64 *, 0x38);
@@ -1548,12 +1546,10 @@ void SteamTrain::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SteamTrain::Resolve() {
     KDPropEx::Resolve();
-    this->unk134.Resolve();
+    ((SteamTrainEffects *) &this->unk134)->Resolve();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'pSteamAnimEvents'
 void SteamTrain::LoadDone() {
@@ -1564,7 +1560,7 @@ void SteamTrain::LoadDone() {
     this->unk80->InitEvents(&pSteamAnimEvents);
     M2C_FIELD(this, s32 *, 0x134) = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
-    this->unk134.Init((Matrix *) this->unk8, this->unk4, this->unk80);
+    ((SteamTrainEffects *) &this->unk134)->Init((Matrix *) this->unk8, this->unk4, this->unk80);
     this->unk138.unk8 = (MKAnimScript *) this;
     this->unk100 = MKMaterial_Create"steamBrakeGlow";
     this->unkD0.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
@@ -1609,8 +1605,8 @@ void SteamTrain::Init() {
     this->unk118 = 1.0f;
     this->unk3E4 = 0.0f;
     this->unk11C = 6000.0f;
-    this->unk390.Init(0.25f, 0.5f);
-    this->unk3BC.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk390)->Init(0.25f, 0.5f);
+    ((KDSoundFader *) &this->unk3BC)->Init(0.25f, 0.25f);
     M2C_FIELD(this, s8 *, 0x3EF) = 0;
     this->unk3EC = 0;
     M2C_FIELD(this, s8 *, 0x3EC) = 0;
@@ -1625,7 +1621,7 @@ void SteamTrain::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void SteamTrainDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim("idle01");
+    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("idle01");
     this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Engine_damaged");
     this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Guard_F_R_damaged");
     this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Pipe_damaged");
@@ -2120,10 +2116,10 @@ void SteamTrainEffects::Resolve() {
     this->unk1C0 = 0.0f;
     do {
         temp_r27_3677 = this + var_r30_3652;
-        sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+        ((Animation *) &sp18)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         M2C_FIELD(temp_r27_3677, f64 *, 0xA8) = sp18;
         M2C_FIELD(temp_r27_3677, f64 *, 0xB0) = sp20;
-        sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+        ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         M2C_FIELD(temp_r27_3677, f64 *, 0xB8) = sp8;
         M2C_FIELD(temp_r27_3677, f64 *, 0xC0) = sp10;
         MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, M2C_FIELD(temp_r27_3677, s32 *, 0x98)), UpdateLookAtBone, temp_r27_3677 + 0x98);
@@ -2369,7 +2365,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
     sp1DC = 1.0f;
     sp160.Multiply(arg0->unk20, &sp260);
     sp160.Inverse(&sp160);
-    sp1A0.Multiply(&sp160, (Matrix *) &sp1A0);
+    ((Matrix *) &sp1A0)->Multiply(&sp160, (Matrix *) &sp1A0);
     sp260.Multiply(&sp260, (Matrix *) &sp1A0);
     sp220.Inverse(&sp220);
     sp260.Multiply(&sp260, &sp220);

@@ -440,7 +440,7 @@ void TargetManager::Deinit() {
     } while ((TargetManager **) *temp_r3_819 != NULL);
     temp_r31_824 = this->unk0;
     if (temp_r31_824 != &gEmptyPtrList) {
-        temp_r3_828 = temp_r3_819->Current();
+        temp_r3_828 = ((MKHeap *) temp_r3_819)->Current();
         if (temp_r3_828 != NULL) {
             ((MKHeap *) (temp_r3_828->Current()))->Free(temp_r31_824, NULL, 0);
         } else {
@@ -628,7 +628,7 @@ loop_9:
             var_r4_1122 += 4;
             goto loop_9;
         }
-        temp_r3_1149 = var_r3_1124->Current();
+        temp_r3_1149 = ((MKHeap *) var_r3_1124)->Current();
         if (temp_r3_1149 != NULL) {
             ((MKHeap *) (temp_r3_1149->Current()))->Free(var_r31_1123, NULL, 0);
         } else {

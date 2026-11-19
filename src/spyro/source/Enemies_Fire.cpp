@@ -15,6 +15,7 @@
 #include "spyro/source/FireTier1Goal_Think.h"
 #include "spyro/source/FireTier2Goal_Think.h"
 #include "spyro/source/GoopFX.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -549,7 +550,7 @@ loop_5:
             sp58 = temp_f0_936;
             sp30 = (f32) sp80 + (f32) sp50;
             sp60 = (f64) sp30;
-            temp_f1_947 = sp58.GetWaterSurface(*((MKVector3 *) (u32) (u64) temp_ret_922));
+            temp_f1_947 = ((KDWaterVolume *) &sp58)->GetWaterSurface(*((MKVector3 *) (u32) (u64) temp_ret_922));
             unksp7C = (f32) temp_f1_947;
             spA0.unk30 = (f32) sp78;
             spA0.unk34 = (f32) temp_f1_947;

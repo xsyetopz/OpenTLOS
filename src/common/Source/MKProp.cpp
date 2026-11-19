@@ -9,6 +9,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
@@ -111,7 +112,7 @@ void MKPropDescriptor::LoadDone() {
     } else {
         var_r31_117 = NULL;
     }
-    1->DisableClothCreate((u8) var_r4_110);
+    ((MKCloth *)1)->DisableClothCreate((u8) var_r4_110);
     temp_r3_124 = this->unk34;
     if (temp_r3_124 != NULL) {
         temp_ret_129 = Str_Printf(temp_r3_124, this->unk0);
@@ -395,7 +396,6 @@ void MKPropDescriptor::Update() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
 void MKPropDescriptor::Deinit() {
     MKHeap *temp_r3_1190;
     MKModel *temp_r3_1168;
@@ -406,7 +406,7 @@ void MKPropDescriptor::Deinit() {
 
     temp_r3_1160 = this->unk34;
     if (temp_r3_1160 != NULL) {
-        temp_r3_1160->Destroy();
+        ((MKAnimScript *) temp_r3_1160)->Destroy();
         this->unk34 = NULL;
     } else {
         temp_r3_1168 = this->unk2C;
@@ -415,7 +415,7 @@ void MKPropDescriptor::Deinit() {
         } else {
             temp_r3_1174 = this->unk30;
             if (temp_r3_1174 != NULL) {
-                temp_r3_1174->Destroy();
+                ((Animation *) temp_r3_1174)->Destroy();
             }
         }
     }
@@ -433,7 +433,6 @@ void MKPropDescriptor::Deinit() {
         free(temp_r31_1184);
     }
 }
-#endif
 
 void MKPropDescriptor::Init() {
     this->unk10 = 0;
@@ -504,7 +503,7 @@ void MKProp::Resolve() {
 void MKProp::LoadDone() {
     MKModel *temp_r3_1331;
 
-    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->LoadDone();
+    ((MKPropLoadInfo *) &MKProp::loadInfo)->LoadDone();
     temp_r3_1331 = this->unk4;
     if (temp_r3_1331 != NULL) {
         MKModel_SetWorldMatrix(temp_r3_1331, *((Matrix *) &MKProp::loadInfo));
@@ -550,7 +549,7 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
         return 1;
     }
 block_17:
-    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->LoadLine(arg0);
+    ((MKPropLoadInfo *) &MKProp::loadInfo)->LoadLine(arg0);
     return 0;
 }
 #endif
@@ -574,7 +573,7 @@ void MKProp::Init() {
     this->unk20 = 1.0f;
     this->unk24 = 0.0f;
     this->unkC = NULL;
-    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->Init();
+    ((MKPropLoadInfo *) &MKProp::loadInfo)->Init();
 }
 
 #if 0 // DRAFT: illegal use of non-static member

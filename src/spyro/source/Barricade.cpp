@@ -22,7 +22,7 @@ s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp8;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
@@ -33,7 +33,7 @@ s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     MKProp sp38;
     MKVector3 sp28;
@@ -41,7 +41,7 @@ s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f32 sp10;
     f64 sp8;
 
-    sp18.GetDir();
+    ((MKProp *) &sp18)->GetDir();
     sp28.operator*(-150.0f);
     sp38.GetPos();
     sp8 = sp38 + M2C_BITWISE(f64, sp28);

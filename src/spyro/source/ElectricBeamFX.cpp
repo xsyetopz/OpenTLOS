@@ -59,14 +59,13 @@ void ElectricBeam::EmitSparks() {
     sp68 = (f64) sp18;
     temp_f1_57 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
     sp8 = 0.0f;
-    sp30.GetMeasure(temp_f1_57, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp30)->GetMeasure(temp_f1_57, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp50 = sp30;
     sp58 = sp38;
     ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp50), *((MKVector3 *) &sp60), 3.0f, 0U);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElectricBeam::Deinit() {
     MKAnimScript *temp_r3_98;
 
@@ -76,9 +75,8 @@ void ElectricBeam::Deinit() {
         this->unk44 = NULL;
     }
     MKMaterial_Destroy(this->unk1F0);
-    this->unk30.Deinit();
+    ((KDUniformSpline *) &this->unk30)->Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk1A0'
 void ElectricBeam::Draw() {
@@ -171,7 +169,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     this->unk8 = M2C_FIELD(arg2, f64 *, 8);
     this->unk38 = 0.0f;
     this->unk34 = 0;
-    this->unk30.AddNode(*((MKVector3 *) &this->unk10));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &this->unk10));
     sp58 = this->unk20 - this->unk10;
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
@@ -227,8 +225,8 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     spA8 = temp_f0_371;
     sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
     spB0 = (f64) sp30;
-    this->unk30.AddNode(*((MKVector3 *) &spA8));
-    this->unk30.AddNode(*((MKVector3 *) &this->unk20));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &spA8));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &this->unk20));
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp20 = 0.0f;
     sp18 = 0.0f;
@@ -297,7 +295,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     this->unk8 = M2C_FIELD(arg2, f64 *, 8);
     this->unk38 = 0.0f;
     this->unk34 = 0;
-    this->unk30.AddNode(*((MKVector3 *) &this->unk10));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &this->unk10));
     sp58 = this->unk20 - this->unk10;
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
@@ -353,8 +351,8 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     spB8 = temp_f0_607;
     sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
     spC0 = (f64) sp30;
-    this->unk30.AddNode(*((MKVector3 *) &spB8));
-    this->unk30.AddNode(*((MKVector3 *) &this->unk20));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &spB8));
+    ((KDUniformSpline *) &this->unk30)->AddNode(*((MKVector3 *) &this->unk20));
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp20 = 0.0f;
     sp18 = 0.0f;
@@ -481,7 +479,7 @@ void ElectricBeam::UpdateWiggleBones() {
         sp158 = (f64) sp130.unk8;
         do {
             sp14 = 0.0f;
-            sp120.GetMeasure((f32) var_r29_859 / 3.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp120)->GetMeasure((f32) var_r29_859 / 3.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
             sp160 = sp120;
             sp168 = sp128;
             temp_f0_894 = sp150 - sp160;
@@ -608,7 +606,7 @@ void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void ElectricBeam::Init() {
     Animation sp8;
     MKAnim *var_r4_1304;
@@ -625,7 +623,7 @@ void ElectricBeam::Init() {
     void *temp_r5_1350;
     void *var_r3_1381;
 
-    this->unk30.Init(3, 0U);
+    ((KDUniformSpline *) &this->unk30)->Init(3, 0U);
     this->unk48 = lit_stringBase0.Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
     this->unk44 = this->unk48->unk8;
     temp_r27_1294 = this->unk48;

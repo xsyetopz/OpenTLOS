@@ -8,16 +8,20 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Projectile.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -25,7 +29,6 @@
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -46,7 +49,7 @@ static s32 lit_642 = 0;
 static u8 lit_643 = 1;
 
 static u8 lit_845 = 1;
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: type mismatch
 static M2C_UNK lit_715;                                /* unable to generate initializer: unknown type; const */
 
 void IceBossStomp::Deinit() {
@@ -65,7 +68,7 @@ void IceBossStomp::Deinit() {
     Projectile::Deinit();
     temp_r4_45 = this->unk160;
     if (temp_r4_45 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_45);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_45);
     }
     var_r28_53 = this->unk164;
 loop_6:
@@ -122,17 +125,15 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void IceBossStomp::Activate() {
     ManagedLight *temp_r4_140;
 
     GameProp::Activate();
     temp_r4_140 = this->unk160;
     if (temp_r4_140 != NULL) {
-        gb.unk80->EnableLight(temp_r4_140, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_140, 1U);
     }
 }
-#endif
 
 void IceBossStomp::ShatterIceShards() {
     MKHeap *temp_r3_184;
@@ -165,7 +166,7 @@ void IceBossStomp::Disable() {
 
     temp_r4_203 = this->unk160;
     if (temp_r4_203 != NULL) {
-        gb.unk80->EnableLight(temp_r4_203, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_203, 0U);
     }
     var_r30_212 = this->unk164;
 loop_9:
@@ -185,17 +186,15 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void IceBossStomp::Deactivate() {
     ManagedLight *temp_r4_262;
 
     temp_r4_262 = this->unk160;
     if (temp_r4_262 != NULL) {
-        gb.unk80->EnableLight(temp_r4_262, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_262, 0U);
     }
     GameProp::Deactivate();
 }
-#endif
 
 void IceBossStomp::Draw() {
 
@@ -536,7 +535,7 @@ loop_20:
                 sp12C = 1.0f;
                 sp2B0 = (f64) sp120;
                 sp2B8 = (f64) sp128;
-                gb.unk74->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp2D0), sp18, *((MKVector4 *) &sp2B0), 0.0f);
+                ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp2D0), sp18, *((MKVector4 *) &sp2B0), 0.0f);
                 break;
             case 1:
                 temp_f29_710 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -570,7 +569,7 @@ loop_20:
                 sp14 = temp_f1_770;
                 sp260 = (f64) spD0;
                 sp268 = (f64) spD8;
-                gb.unk94->Trigger(*((MKVector3 *) &sp2A0), *((MKVector3 *) &sp270), sp14, lit_845, (MKVector4) &sp260);
+                ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp2A0), *((MKVector3 *) &sp270), sp14, lit_845, (MKVector4) &sp260);
                 temp_f31_795 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
                 sp98 = 0.0f;
                 sp90 = 0.0f;
@@ -618,7 +617,7 @@ loop_20:
                 sp5C = 1.0f;
                 sp1E0 = (f64) sp50;
                 sp1E8 = (f64) sp58;
-                gb.unk74->Emit(*((MKVector3 *) &sp250), *((MKVector3 *) &sp200), sp10, *((MKVector4 *) &sp1E0), 0.0f);
+                ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp250), *((MKVector3 *) &sp200), sp10, *((MKVector4 *) &sp1E0), 0.0f);
                 break;
             }
             var_r29_324 += 4;
@@ -825,7 +824,7 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void IceBossStomp::Update() {
     f64 sp408;
     f64 sp400;
@@ -1009,7 +1008,7 @@ void IceBossStomp::Update() {
     if ((s32 *) this->unk138 != NULL) {
         temp_r4_1345 = checked_cast<IceBossStompDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk138->Update(M2C_FIELD(temp_r4_1345, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this->unk138)->Update(M2C_FIELD(temp_r4_1345, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     sp31C = 0;
     var_r4_1361 = NULL;
@@ -1339,7 +1338,7 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
     spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     spD0 = 0;
     if (temp_r4_2020 != NULL) {
-        sp20.GetPos();
+        ((MKProp *) &sp20)->GetPos();
         spB0 = sp20;
         spB8 = sp28;
     } else {
@@ -1364,7 +1363,7 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBossStomp::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
     s8 sp1B0;
     s32 sp1AC;
@@ -1470,7 +1469,7 @@ loop_8:
     }
     temp_r4_2159 = this->unk160;
     if (temp_r4_2159 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2159, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2159, 1U);
         temp_r3_2167 = this->unk160;
         temp_r3_2167->unk38 = 500.0f;
         temp_r3_2170 = temp_r3_2167->unk3C;
@@ -1608,7 +1607,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void IceBossStomp::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -1651,10 +1650,10 @@ void IceBossStomp::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk160 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 800.0f, lit_642, lit_643);
+    this->unk160 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 800.0f, lit_642, lit_643);
     temp_r4_2501 = this->unk160;
     if (temp_r4_2501 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2501, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2501, 0U);
     }
     temp_r3_2508 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_2508 != NULL) {

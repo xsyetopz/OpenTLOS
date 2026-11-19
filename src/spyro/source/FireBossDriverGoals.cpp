@@ -34,7 +34,7 @@ u8 FireBossDriverGoal_Charge::Update() {
     ActivateIfInactive();
     temp_r29_35 = this->unkC;
     var_r30_36 = 0;
-    if (temp_r29_35->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_35)->HasAnimFinished() != 0) {
         temp_r4_41 = temp_r29_35->unkA38;
         if ((temp_r4_41 != NULL) && ((s8 *) temp_r4_41->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_35, void **, 0x630), u32 *, 0x20))) {
             var_r30_36 = 1;
@@ -47,7 +47,7 @@ u8 FireBossDriverGoal_Charge::Update() {
     }
     temp_r29_60 = this->unkC;
     var_r30_61 = 0;
-    if (temp_r29_60->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_60)->HasAnimFinished() != 0) {
         temp_r4_66 = temp_r29_60->unkA38;
         if ((temp_r4_66 != NULL) && ((void *) temp_r4_66->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_60, void **, 0x630), u32 *, 0x20))) {
             var_r30_61 = 1;
@@ -90,7 +90,7 @@ u8 FireBossDriverGoal_Crash::Update() {
     ActivateIfInactive();
     temp_r29_138 = this->unkC;
     var_r30_139 = 0;
-    if (temp_r29_138->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_138)->HasAnimFinished() != 0) {
         temp_r4_144 = temp_r29_138->unkA38;
         if ((temp_r4_144 != NULL) && ((s8 *) temp_r4_144->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_138, void **, 0x630), u32 *, 0x20))) {
             var_r30_139 = 1;
@@ -103,7 +103,7 @@ u8 FireBossDriverGoal_Crash::Update() {
     }
     temp_r29_163 = this->unkC;
     var_r30_164 = 0;
-    if (temp_r29_163->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_163)->HasAnimFinished() != 0) {
         temp_r4_169 = temp_r29_163->unkA38;
         if ((temp_r4_169 != NULL) && ((void *) temp_r4_169->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_163, void **, 0x630), u32 *, 0x20))) {
             var_r30_164 = 1;
@@ -144,20 +144,20 @@ u8 FireBossDriverGoal_Idle::Update() {
             }
         }
         if ((var_r30_228 != 0) && (temp_r3_245 = this->unkC, temp_r4_246 = temp_r3_245->unkA50, (((u32) temp_r4_246->unk20 == 0) == 0))) {
-            temp_r3_245->SetAnim(temp_r4_246, (AnimTransition *) &temp_r4_246->unk20, 0.15f, 0U);
+            ((Enemy *) temp_r3_245)->SetAnim(temp_r4_246, (AnimTransition *) &temp_r4_246->unk20, 0.15f, 0U);
         } else {
             temp_r3_256 = this->unkC;
             temp_r4_257 = temp_r3_256->unkA50;
             if (((u32) temp_r4_257->unk40 != 0) && (temp_r6_261 = M2C_FIELD(temp_r3_256, void **, 0x630), (((u32) M2C_FIELD(temp_r6_261, u32 *, 0x20) == (u32) temp_r4_257->unk20) != 0))) {
                 if ((s32) M2C_FIELD(temp_r6_261, s32 *, 0x44) >= 3) {
-                    temp_r3_256->SetAnim(temp_r4_257, (AnimTransition *) &temp_r4_257->unk40, 0.15f, 0U);
+                    ((Enemy *) temp_r3_256)->SetAnim(temp_r4_257, (AnimTransition *) &temp_r4_257->unk40, 0.15f, 0U);
                 }
             } else {
                 var_r5_277 = 0x5F;
                 if ((u8) M2C_FIELD(this->unk10, u8 *, 0xB14) != 0) {
                     var_r5_277 = 0x60;
                 }
-                temp_r3_256->SetAnim((AnimSequenceType) 1, var_r5_277, 0, 0.15f, 0U, 0U);
+                ((Enemy *) temp_r3_256)->SetAnim((AnimSequenceType) 1, var_r5_277, 0, 0.15f, 0U, 0U);
             }
         }
     }
@@ -165,7 +165,6 @@ u8 FireBossDriverGoal_Idle::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void FireBossDriverGoal_Idle::Activate() {
     s32 var_r5_303;
 
@@ -174,9 +173,8 @@ void FireBossDriverGoal_Idle::Activate() {
     if ((u8) M2C_FIELD(this->unk10, u8 *, 0xB14) != 0) {
         var_r5_303 = 0x60;
     }
-    this->unkC->SetAnim((AnimSequenceType) 1, var_r5_303, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, var_r5_303, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 void FireBossDriverGoal_Think::CrashExit() {
     this->unk28->Exit();

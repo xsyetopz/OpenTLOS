@@ -1,47 +1,48 @@
 #include "spyro/source/UIAttributes.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/UIMessage.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'LoadVector4'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 stricmp(s8 *, s8 *);                            /* extern */
 
 s32 Attributes::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r30_116;
 
-    if (arg0->LoadVector4("colour", (MKVector4 *) this, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadVector4("colour", (MKVector4 *) this, 0) != 0) {
         this->unk40 |= 1;
         return 1;
     }
-    if (arg0->LoadVector3("position", &this->unk10, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadVector3("position", &this->unk10, 0) != 0) {
         this->unk40 |= 2;
         return 1;
     }
-    if (arg0->LoadVector3("rotation", &this->unk20, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadVector3("rotation", &this->unk20, 0) != 0) {
         this->unk40 |= 4;
         return 1;
     }
-    if (arg0->LoadFloat("scale", &this->unk30, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadFloat("scale", &this->unk30, 0) != 0) {
         this->unk40 |= 8;
         return 1;
     }
-    if (arg0->LoadFloat("width", &this->unk34, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadFloat("width", &this->unk34, 0) != 0) {
         this->unk40 |= 0x10;
         return 1;
     }
-    if (arg0->LoadFloat("height", &this->unk38, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadFloat("height", &this->unk38, 0) != 0) {
         this->unk40 |= 0x10;
         return 1;
     }
-    if (arg0->IsField("alignment") != 0) {
+    if (((MKIniLine *) arg0)->IsField("alignment") != 0) {
         var_r30_116 = 0;
         this->unk40 |= 0x20;
         sp8 = NULL;
 loop_14:
-        arg0->AsString(var_r30_116, &sp8);
+        ((MKIniLine *) arg0)->AsString(var_r30_116, &sp8);
         if (sp8 != NULL) {
             if (stricmp("top") == 0) {
                 this->unk3C &= 3;
@@ -68,7 +69,7 @@ loop_14:
                 goto block_29;
             }
             if (var_r30_116 == 0) {
-                this->unk3C = arg0->GetInt(0);
+                this->unk3C = ((MKIniLine *) arg0)->GetInt(0);
             } else {
 block_29:
                 var_r30_116 += 1;

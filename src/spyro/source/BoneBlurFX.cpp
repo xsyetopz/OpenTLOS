@@ -216,7 +216,7 @@ loop_6:
     temp_r31_334->unk4C = 0;
     temp_r31_334->unk50 = 0;
     temp_r30_381 = temp_r31_334->unk54 << 5;
-    temp_r3_382 = var_r3_0->Current();
+    temp_r3_382 = ((MKHeap *) var_r3_0)->Current();
     if (temp_r3_382 != NULL) {
         var_r3_389 = ((MKHeap *) (temp_r3_382->Current()))->Alloc(temp_r30_381, NULL, 0);
     } else {

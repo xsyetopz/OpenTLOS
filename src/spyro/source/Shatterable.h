@@ -178,7 +178,7 @@ inline Shatterable::~Shatterable() {
     if (this != NULL) {
         this->vtableC8 = &__vt + 0x48;
         if (&this->unk154 != NULL) {
-            this->unk154.Deinit();
+            ((EventMessage *) &this->unk154)->Deinit();
         }
         if (&this->unk160 != NULL) {
             this->unk160.Deinit();
@@ -236,7 +236,7 @@ inline Shatterable::Shatterable() {
     this->unk160.unk0 = 0;
     this->unk160.Init();
     this->unk154 = NULL;
-    this->unk154.Init();
+    ((EventMessage *) &this->unk154)->Init();
     return this;
 }
 #endif

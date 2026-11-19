@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GamePropColored.h"
@@ -256,7 +257,7 @@ loop_9:
             var_r4_376 += 4;
             goto loop_9;
         }
-        temp_r3_403 = var_r3_378->Current();
+        temp_r3_403 = ((MKHeap *) var_r3_378)->Current();
         if (temp_r3_403 != NULL) {
             ((MKHeap *) (temp_r3_403->Current()))->Free(var_r31_377, NULL, 0);
         } else {
@@ -1274,7 +1275,7 @@ loop_205:
                             sp110 = (f32) sp270 * temp_f28_1918;
                             sp280 = (f64) sp110;
                             sp30 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 3.5f, 3.6f);
-                            gb.unk68->Emit(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp278), sp30);
+                            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp278), sp30);
                         }
                         var_r25_1807 += 1;
                         goto loop_205;

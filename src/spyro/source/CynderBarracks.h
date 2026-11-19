@@ -85,21 +85,21 @@ inline CynderBarracks::~CynderBarracks() {
             temp_r3_26 = &this->unk1B4.unk5C;
             M2C_FIELD(this, void **, 0x1B4) = &__vt;
             if (temp_r3_26 != NULL) {
-                temp_r3_26->Deinit();
+                ((EventMessage *) temp_r3_26)->Deinit();
             }
             temp_r3_32 = &this->unk1B4.unk58;
             if (temp_r3_32 != NULL) {
-                temp_r3_32->Deinit();
+                ((EventMessage *) temp_r3_32)->Deinit();
             }
             if (&this->unk1B4 != NULL) {
                 temp_r3_39 = &this->unk1B4.unk30;
                 M2C_FIELD(this, void **, 0x1B4) = &__vt;
                 if (temp_r3_39 != NULL) {
-                    temp_r3_39->Deinit();
+                    ((EventMessage *) temp_r3_39)->Deinit();
                 }
                 temp_r3_45 = &this->unk1B4.unk2C;
                 if (temp_r3_45 != NULL) {
-                    temp_r3_45->Deinit();
+                    ((EventMessage *) temp_r3_45)->Deinit();
                 }
             }
         }

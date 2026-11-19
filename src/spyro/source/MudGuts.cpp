@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -62,7 +63,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp38'
 void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     f64 sp88;
     f64 sp80;
@@ -99,7 +100,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     sp88 = arg0->unk38;
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
-    sp30.GetRandPos();
+    ((Volume *) &sp30)->GetRandPos();
     sp60 = sp30;
     sp68 = sp38;
     temp_f0_173 = sp30 - arg0->unk30;
@@ -248,7 +249,7 @@ loop_2:
     if (var_r29_464 < (s32) this->unk90) {
         temp_r28_471 = this->unk170 + var_r31_465;
         M2C_STRUCT_COPY(temp_r28_471, &Matrix::identity, 0x40);
-        sp8.GetRandPos();
+        ((Volume *) &sp8)->GetRandPos();
         M2C_FIELD(temp_r28_471, f32 *, 0x30) = sp8;
         M2C_FIELD(temp_r28_471, f32 *, 0x34) = spC;
         M2C_FIELD(temp_r28_471, f32 *, 0x38) = sp10;
@@ -286,7 +287,6 @@ void MudGutsCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void MudGutsCritterDescriptor::LoadDone() {
     s8 *temp_r31_577;
     s8 *temp_r31_595;
@@ -295,21 +295,20 @@ void MudGutsCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r31_577 = this->unk34;
-    if (temp_r31_577->Exists("Swim") != 0) {
-        var_r3_587 = temp_r31_577->GetAnim("Swim");
+    if (((MKAnimScript *) temp_r31_577)->Exists("Swim") != 0) {
+        var_r3_587 = ((MKAnimScript *) temp_r31_577)->GetAnim("Swim");
     } else {
         var_r3_587 = NULL;
     }
     this->unk70 = (s32) var_r3_587;
     temp_r31_595 = this->unk34;
-    if (temp_r31_595->Exists("Jump") != 0) {
-        var_r3_605 = temp_r31_595->GetAnim("Jump");
+    if (((MKAnimScript *) temp_r31_595)->Exists("Jump") != 0) {
+        var_r3_605 = ((MKAnimScript *) temp_r31_595)->GetAnim("Jump");
     } else {
         var_r3_605 = NULL;
     }
     this->unk74 = (s32) var_r3_605;
 }
-#endif
 
 void MudGutsCritterDescriptor::Init() {
     KDPropDescriptor::Init();

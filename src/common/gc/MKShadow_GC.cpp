@@ -647,7 +647,7 @@ void MKShadow_InitModule() {
     temp_r3_1167 = RoundUp(M2C_FIELD(&gMKDefaults, s32 *, 0x54) * 8, 0x20);
     temp_r31_1169 = temp_r3_1167;
     pShadowVertexBuffer = (void *)0xE0000000;
-    temp_r3_1171 = temp_r3_1167->Current();
+    temp_r3_1171 = ((MKHeap *) temp_r3_1167)->Current();
     if (temp_r3_1171 != NULL) {
         var_r3_1178 = ((MKHeap *) (temp_r3_1171->Current()))->Alloc((s32) temp_r31_1169, NULL, 0);
     } else {

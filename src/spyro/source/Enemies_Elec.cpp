@@ -12,13 +12,17 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/ElecTier2Goals.h"
 #include "spyro/source/ElecTier3Goals.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/SlimeTrailFX.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -26,7 +30,6 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -271,7 +274,7 @@ void ElecTier3::UpdateScan() {
     Tools_RotateMatrixToDirection((Matrix *) &this->unkAF8, *((MKVector3 *) &spF0), *((MKVector3 *) &spA0), -0.3926991f);
     if ((u8) M2C_FIELD(this, u8 *, 0xB55) == 0) {
         var_r31_382 = 0;
-        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (((TargetContext *) &this->unk870.unk30)->Get() != NULL)) {
             var_r31_382 = 1;
         }
         if (var_r31_382 != 0) {
@@ -285,7 +288,7 @@ void ElecTier3::UpdateScan() {
             sp90 = temp_f0_409;
             sp48 = this->unkB10.unk20 + (f32) sp88;
             sp98 = (f64) sp48;
-            sp70.GetPos();
+            ((AITargetData *) &sp70)->GetPos();
             M2C_FIELD(this, u8 *, 0xB55) = (u8) (Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk18), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f);
             if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
                 KDSound_Play3d(GS_ConduitAlert, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -369,15 +372,13 @@ void ElecTier3::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElecTier3::SetDefaults() {
     Enemy::SetDefaults();
     this->unkB10.unk28 = 1.0f;
     M2C_FIELD(this, s8 *, 0xB54) = 0;
     M2C_FIELD(this, s8 *, 0xB55) = 0;
-    this->unkAF8.SetIdentity();
+    ((Matrix *) &this->unkAF8)->SetIdentity();
 }
-#endif
 
 void ElecTier3::Deinit() {
     Enemy::Deinit();
@@ -444,7 +445,7 @@ void ElecTier3Descriptor::LoadDone() {
     this->unk2BC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "body");
     temp_r3_820 = MKMaterial_Create"teslaLight";
     this->unk2C0 = temp_r3_820;
-    temp_r3_822 = temp_r3_820->Current();
+    temp_r3_822 = ((MKHeap *) temp_r3_820)->Current();
     if (temp_r3_822 != NULL) {
         var_r3_829 = ((MKHeap *) (temp_r3_822->Current()))->Alloc(4, NULL, 0);
     } else {
@@ -495,7 +496,7 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
         sp58 = M2C_BITWISE(f64, sp68);
         sp58.unk8 = (f64) sp68.unk8;
         sp58.unk4 += temp_f31_884;
-        temp_r4_923 = this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) + 8;
+        temp_r4_923 = ((EnemyDescriptor *) this->unkA20)->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) + 8;
         sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_923, f64 *, 0);
         sp58.unk8 -= M2C_FIELD(temp_r4_923, f32 *, 8);
         M2C_FIELD(arg0, f64 *, 0) = sp58;
@@ -513,19 +514,19 @@ void ElecTier2::UpdateMovementCustom() {
     UpdateModel();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unkB38'
 void ElecTier2::Update() {
     f64 sp8;
     f32 temp_f1_1007;
     f32 temp_f1_1018;
 
-    this->unkB10.BeginUpdate();
+    ((PlatformObject *) &this->unkB10)->BeginUpdate();
     Enemy::Update();
     MKModel_GetWorldMatrix(this->unk4);
-    sp8.GetRotationPYR();
+    ((Matrix *) &sp8)->GetRotationPYR();
     M2C_FIELD(this, f64 *, 0xB30) = sp8;
     this->unkB38 = sp10;
-    this->unkB10.EndUpdate();
+    ((PlatformObject *) &this->unkB10)->EndUpdate();
     if ((u8) M2C_FIELD(this, u8 *, 0xB12) != 0) {
         temp_f1_1007 = M2C_FIELD(this, f32 *, 0xB18);
         if (temp_f1_1007 > 0.0f) {
@@ -541,19 +542,15 @@ void ElecTier2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElecTier2::Message(MKMessage *arg0) {
-    this->unkB10.Message(arg0);
+    ((PlatformObject *) &this->unkB10)->Message(arg0);
     Enemy::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void ElecTier2::Despawn(bool arg0) {
     Enemy::Despawn(arg0);
-    this->unkB10.Reset();
+    ((PlatformObject *) &this->unkB10)->Reset();
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
@@ -684,7 +681,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             SetupEnemyRegion(*((MKVector3 *) &sp90), 1500.0f);
         }
         this->unkAFC = 0;
-        this->unkB10.Reset();
+        ((PlatformObject *) &this->unkB10)->Reset();
         return 1;
     }
     return 0;
@@ -724,11 +721,11 @@ void ElecTier2::SetupCollision() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P19ElecTier2Descriptor'
 void ElecTier2::LoadDone() {
     Enemy::LoadDone();
-    this->unkB10.Init(checked_cast<P19ElecTier2Descriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x2CC, this->unk634);
-    this->unkB10.LoadDone((MKProp *) this, NULL);
+    ((PlatformObject *) &this->unkB10)->Init(checked_cast<P19ElecTier2Descriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x2CC, this->unk634);
+    ((PlatformObject *) &this->unkB10)->LoadDone((MKProp *) this, NULL);
     this->unkA28 = (void **) this->unkA24;
 }
 #endif
@@ -749,13 +746,11 @@ s32 ElecTier2::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElecTier2::Deinit() {
-    this->unkB10.DetachAll();
-    this->unkB10.Deinit();
+    ((PlatformObject *) &this->unkB10)->DetachAll();
+    ((PlatformObject *) &this->unkB10)->Deinit();
     Enemy::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier2::Init() {
@@ -899,7 +894,7 @@ void ElecTier1::CheckAnimEvents() {
         }
         M2C_FIELD(this, f64 *, 0xB18) = spB8;
         M2C_FIELD(this, f64 *, 0xB20) = spC0;
-        this->unkAF8->UpdatePos((MKVector3 *) &this->unkB00, *(this->unk8 + 0x10));
+        ((SlimeTrailFX *) this->unkAF8)->UpdatePos((MKVector3 *) &this->unkB00, *(this->unk8 + 0x10));
     }
     Enemy::CheckAnimEvents();
 }
@@ -931,26 +926,24 @@ void ElecTier1::Message(MKMessage *arg0) {
         }
         break;
     }
-    this->unkB10.Message(arg0);
+    ((KDSoundPlayer *) &this->unkB10)->Message(arg0);
     Enemy::Message(arg0);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ElecTier1::Update() {
     s32 sp8;
     void *temp_r3_1907;
 
     Enemy::Update();
     sp8 = 1;
-    this->unkB10.Update(GS_ELElecTrailLP, 1U, this->unkAF8 != 0, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB10)->Update(GS_ELElecTrailLP, 1U, this->unkAF8 != 0, NULL, (MKVector3 *) &this->unkB00, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (IsKnockedUp() == 0) {
         temp_r3_1907 = this->unk8;
         M2C_FIELD(this, f64 *, 0xB18) = (f64) M2C_FIELD(temp_r3_1907, f64 *, 0x30);
         M2C_FIELD(this, f64 *, 0xB20) = (f64) M2C_FIELD(temp_r3_1907, f64 *, 0x38);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 s32 ElecTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
@@ -991,7 +984,7 @@ void ElecTier1::Init() {
     temp_r31_1984->Init((Enemy *) this);
     this->unkA24 = (EnemyAttack *) temp_r31_1984;
     this->unkAF8 = 0;
-    this->unkB10.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkB10)->Init(0.25f, 0.25f);
 }
 #endif
 

@@ -4,6 +4,10 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyGoal_GroundAttackMode.h"
+#include "spyro/source/EnemyGoals_Death.h"
+#include "spyro/source/EnemyGoals_Hit.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
@@ -12,42 +16,40 @@ M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
 void EnemyTestGoal_MoveToTarget::Terminate() {
     Character *temp_r3_61;
     void *temp_r3_30;
 
     temp_r3_30 = this->unkC->unk638;
     M2C_FIELD(temp_r3_30, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_30, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->SeekOff();
-    this->unkC->unk638->PursuitOff();
-    this->unkC->unk638->RandomPursuitOff();
-    this->unkC->unk638->WanderOff();
-    this->unkC->unk638->PathFollowingOff();
-    this->unkC->unk638->ObstacleAvoidanceOff();
-    this->unkC->unk638->WallAvoidanceOff();
-    this->unkC->unk638->ContainmentOff();
-    this->unkC->unk638->HazardAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->SeekOff();
+    ((SB2 *) this->unkC->unk638)->PursuitOff();
+    ((SB2 *) this->unkC->unk638)->RandomPursuitOff();
+    ((SB2 *) this->unkC->unk638)->WanderOff();
+    ((SB2 *) this->unkC->unk638)->PathFollowingOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->ContainmentOff();
+    ((SB2 *) this->unkC->unk638)->HazardAvoidanceOff();
     temp_r3_61 = this->unkC;
     temp_r3_61->unk588.unkC = 0.0f;
     temp_r3_61->unk598 = 0.0f;
     temp_r3_61->unk59C = 0.0f;
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk9E8'
 u8 EnemyTestGoal_MoveToTarget::Update() {
     ActivateIfInactive();
     this->unkC->unk9E8.Update();
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk638->PathFollowingHasLooped() != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (((SB2 *) this->unkC->unk638)->PathFollowingHasLooped() != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyTestGoal_MoveToTarget::Activate() {
     Character *temp_r3_148;
     void *temp_r3_128;
@@ -55,11 +57,11 @@ void EnemyTestGoal_MoveToTarget::Activate() {
     this->unk8 = 0;
     temp_r3_128 = this->unkC->unk638;
     M2C_FIELD(temp_r3_128, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_128, u8 *, 0x464) | 0x80);
-    this->unkC->unk638->WanderOn();
-    this->unkC->unk638->ObstacleAvoidanceOn(NULL);
-    this->unkC->unk638->WallAvoidanceOn();
-    this->unkC->unk638->ContainmentOn();
-    this->unkC->unk638->HazardAvoidanceOn();
+    ((SB2 *) this->unkC->unk638)->WanderOn();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOn();
+    ((SB2 *) this->unkC->unk638)->ContainmentOn();
+    ((SB2 *) this->unkC->unk638)->HazardAvoidanceOn();
     temp_r3_148 = this->unkC;
     if (M2C_FIELD(temp_r3_148->unk638, s32 *, 0x460) & 0x40) {
         if (M2C_FIELD(temp_r3_148->__vptr, u8 (**)(), 0x190)() != 0) {
@@ -277,7 +279,7 @@ void EnemyTest_Think::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyTest_Think::Update() {
     s32 temp_r3_704;
     s32 temp_r3_719;
@@ -285,25 +287,25 @@ u8 EnemyTest_Think::Update() {
     s32 temp_r4_759;
     u8 temp_r0_783;
 
-    if (this->unkC->WasHit() != 0) {
+    if (((Enemy *) this->unkC)->WasHit() != 0) {
         this->unk8 = 1;
     }
     temp_r3_704 = this->unkC;
     if (M2C_FIELD(M2C_FIELD(temp_r3_704, void **, 0x44), u8 (**)(s32), 0xE8)(temp_r3_704) == 0) {
-        this->unkC->SelectTarget();
+        ((Enemy *) this->unkC)->SelectTarget();
     }
     ActivateIfInactive();
     this->unk8 = UpdateSubgoals();
     temp_r3_719 = this->unkC;
     if ((EAPManager *) M2C_FIELD(temp_r3_719, EAPManager **, 0xA5C) != NULL) {
-        temp_r3_719->IsFlinching();
+        ((Enemy *) temp_r3_719)->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) && ((IsActive(8) != 0) || (IsActive(0xA) != 0) || (IsActive(0xF) != 0) || (IsActive(0x10) != 0))) {
             temp_r4_759 = this->unkC;
             temp_r3_764 = ((EAPManager *) (M2C_FIELD(temp_r4_759, EAPManager **, 0xA5C)))->Evaluate((Enemy *) temp_r4_759, temp_r4_759 + 0x870, NULL, 0);
             if ((temp_r3_764 != 0) && (M2C_FIELD(*temp_r3_764, s32 *, 0x38) & 0x30000)) {
                 RemoveAllSubgoals();
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
-                this->unk34->SetParams(this->unkC + 0x870, 1U, (EAPItem *) temp_r3_764);
+                ((EnemyGoal_GroundAttackMode *) this->unk34)->SetParams(this->unkC + 0x870, 1U, (EAPItem *) temp_r3_764);
             }
         }
     }
@@ -318,7 +320,7 @@ u8 EnemyTest_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EnemyTest_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Goal<Enemy> *temp_r4_971;
@@ -327,9 +329,9 @@ void EnemyTest_Think::Arbitrate() {
     s32 temp_r3_938;
     u8 var_r30_939;
 
-    if ((this->unkC->WasHit() != 0) && (IsActive(0x2E) == 0) && (IsActive(0x2F) == 0) && (IsActive(0x31) == 0) && (IsActive(0x2D) == 0)) {
+    if ((((Enemy *) this->unkC)->WasHit() != 0) && (IsActive(0x2E) == 0) && (IsActive(0x2F) == 0) && (IsActive(0x31) == 0) && (IsActive(0x2D) == 0)) {
         sp8.Init();
-        this->unkC->TakeDamage(&sp8, 0U);
+        ((Enemy *) this->unkC)->TakeDamage(&sp8, 0U);
         temp_r3_855 = this->unkC;
         M2C_FIELD(temp_r3_855, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r3_855, u8 *, 0xB0A) & ~1);
         if ((M2C_FIELD(this->unkC, f32 *, 0xAC8) <= 0.0f) && (IsPresent(0x29) == 0)) {
@@ -344,7 +346,7 @@ void EnemyTest_Think::Arbitrate() {
     }
 block_12:
     temp_r3_903 = this->unkC;
-    if ((M2C_FIELD(temp_r3_903, f32 *, 0xAC8) > 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_903, void **, 0x44), u8 (**)(), 0x134)() == 0) && (this->unkC->IsBlocking() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0) && (IsPresent(0x28) == 0)) {
+    if ((M2C_FIELD(temp_r3_903, f32 *, 0xAC8) > 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_903, void **, 0x44), u8 (**)(), 0x134)() == 0) && (((Enemy *) this->unkC)->IsBlocking() == 0) && (((Enemy *) this->unkC)->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0) && (IsPresent(0x28) == 0)) {
         temp_r3_938 = this->unkC;
         var_r30_939 = 0;
         if (((u8) M2C_FIELD(temp_r3_938, u8 *, 0x8B8) == 2) || (((TargetContext *) (temp_r3_938 + 0x8B0))->Get() != NULL)) {
@@ -361,7 +363,7 @@ block_12:
                     M2C_FIELD(temp_r4_971, f32 *, 0x18) = 0.0f;
                 }
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
-                this->unk34->SetParams(this->unkC + 0x870, 1U, NULL);
+                ((EnemyGoal_GroundAttackMode *) this->unk34)->SetParams(this->unkC + 0x870, 1U, NULL);
             }
         } else {
             AddGoal_Idle();
@@ -529,8 +531,8 @@ void EnemyTest_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_1285, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_1285, s8 *, 9) = 1;
     }
-    this->unk24->Init(arg0);
-    this->unk28->Init(arg0);
+    ((EnemyGoal_Hit *) this->unk24)->Init(arg0);
+    ((EnemyGoal_Death *) this->unk28)->Init(arg0);
     temp_r4_1302 = this->unk2C;
     M2C_FIELD(temp_r4_1302, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_1302, Enemy **, 0xC) = arg0;
@@ -545,6 +547,6 @@ void EnemyTest_Think::Init(Enemy *arg0) {
     if ((Enemy *) M2C_FIELD(temp_r4_1313, Enemy **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_1313, s8 *, 9) = 1;
     }
-    this->unk34->Init(arg0);
+    ((EnemyGoal_GroundAttackMode *) this->unk34)->Init(arg0);
 }
 #endif

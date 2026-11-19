@@ -1,5 +1,6 @@
 #include "spyro/source/EarthBombFX.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKProp.h"
@@ -17,6 +18,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
@@ -26,7 +28,6 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroEarthAttack5LP;
@@ -123,7 +124,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     } else {
         var_r26_149 = *(temp_r5_116 + (temp_r31_114 * 4));
     }
-    temp_f31_159 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
+    temp_f31_159 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r30_111, temp_r31_114, var_r6_130);
     this->unk128.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f31_159, temp_r31_114, var_r26_149, temp_r30_111, temp_r30_111, 0, -1);
     temp_f1_176 = M2C_FIELD(&arg1, f64 *, 0);
     this->unkD0 = temp_f1_176;
@@ -610,7 +611,7 @@ loop_18:
     sp3A0.unk34 = unksp204;
     sp3A0.unk38 = (f32) sp208;
     sp3A0.unk3C = 1.0f;
-    ((ExplosionWarpFX *) ((ExplosionWarpFX *) (&gb + 0x1C0)))->StartWarp(&sp3A0);
+    ((ExplosionWarpFX *) (&gb + 0x1C0))->StartWarp(&sp3A0);
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp384 = 0;
         MKVector(1.0f, 1.0f, 1.0f);
@@ -684,14 +685,12 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EarthBombFX::Message(MKMessage *arg0) {
-    this->unk180.Message(arg0);
+    ((KDSoundPlayer *) &this->unk180)->Message(arg0);
     GameProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void EarthBombFX::Update() {
     u8 sp388;
     s32 sp384;
@@ -869,7 +868,7 @@ void EarthBombFX::Update() {
 
     temp_r31_1166 = checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = 1;
-    this->unk180.Update(GS_SpyroEarthAttack5LP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk180)->Update(GS_SpyroEarthAttack5LP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if ((u8) this->unkE0 != 0) {
         var_f6_1185 = 0.5f * (0.85f * gUpdateTimeDelta);
         if (var_f6_1185 < 1.0f) {
@@ -907,7 +906,7 @@ void EarthBombFX::Update() {
         sp160 = 0.0f;
         sp268 = (f64) sp158;
         sp270 = (f64) sp160;
-        ((HeatDistortPS *) ((HeatDistortPS *) (&gb + 0x240)))->Emit(*((MKVector3 *) &sp2B8), *((MKVector3 *) &sp268), 3.0f, 1.0f);
+        ((HeatDistortPS *) (&gb + 0x240))->Emit(*((MKVector3 *) &sp2B8), *((MKVector3 *) &sp268), 3.0f, 1.0f);
         temp_r5_1265 = this->unk8;
         temp_f2_1269 = M2C_FIELD(temp_r5_1265, f64 *, 0x30);
         temp_f0_1270 = M2C_FIELD(temp_r5_1265, f64 *, 0x38);
@@ -1191,7 +1190,6 @@ void EarthBombFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EarthBombFX::Init() {
     GameProp::Init();
     this->unkE0 = 0;
@@ -1205,20 +1203,19 @@ void EarthBombFX::Init() {
     this->unk108.unkC = 1.0f;
     this->unk118 = NULL;
     this->unk11C = 1000.0f;
-    this->unk180.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk180)->Init(0.25f, 0.25f);
 }
-#endif
 
 void EarthBombFXDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkEC);
     KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void EarthBombFXDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
-    this->unkE8 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("EarthBeamBlastPS"));
+    this->unkE4 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    this->unkE8 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBeamBlastPS"));
     this->unkEC = MKMaterial_Create("fx_EarthBomb");
 }
 #endif

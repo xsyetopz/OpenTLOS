@@ -49,13 +49,13 @@ void UIEvent::Resolve(UIObject *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IsField'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIEvent::LoadLine(const char *arg0, UIDataLine *arg1) {
     s8 *sp8;
     MKIniLine *var_r29_106;
     s32 temp_r3_146;
 
-    if (arg1->IsField(arg0) != 0) {
+    if (((MKIniLine *) arg1)->IsField(arg0) != 0) {
         var_r29_106 = arg1->unkC->GetSubLine((MKIniLine *) arg1);
 loop_18:
         if (var_r29_106 != NULL) {

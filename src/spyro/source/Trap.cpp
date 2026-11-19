@@ -75,8 +75,8 @@ s32 Trap::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     sp10 = arg0.unk8 - M2C_BITWISE(f32, sp28.unk8);
     sp28.unk18 = (f64) sp10;
     Normalise(*((MKVector3 *) &sp28.unk20));
-    sp28.unk30.operator*(100.0f);
-    sp28.unk40.GetPos();
+    ((MKVector3 *) &sp28.unk30)->operator*(100.0f);
+    ((MKProp *) &sp28.unk40)->GetPos();
     sp18 = sp28.unk40 + M2C_BITWISE(f64, sp28.unk30);
     M2C_FIELD(arg1, f64 *, 0) = sp18;
     sp20 = sp28.unk48 + M2C_BITWISE(f32, sp28.unk38);
@@ -174,7 +174,7 @@ void Trap::Resolve() {
         this->unkD4 = checked_cast<TrapSystem *, MKProp>(temp_r3_291->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
         temp_r3_297 = this->unkD4;
         if (temp_r3_297 != NULL) {
-            temp_r3_297->Add((MKProp *) this);
+            ((TrapSystem *) temp_r3_297)->Add((MKProp *) this);
             this->unk10 |= 4;
         }
     }

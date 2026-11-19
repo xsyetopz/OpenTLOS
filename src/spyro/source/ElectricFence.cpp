@@ -11,12 +11,12 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/EnergyBeam.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/KDSound.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -201,7 +201,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void ElectricFence::Message(MKMessage *arg0) {
     MKVector3 *temp_r30_356;
     s32 temp_r0_313;
@@ -212,7 +212,7 @@ void ElectricFence::Message(MKMessage *arg0) {
     void *temp_r5_381;
     void *temp_r5_396;
 
-    this->unk114.Message(arg0);
+    ((KDSoundPlayer *) &this->unk114)->Message(arg0);
     temp_r0_313 = arg0->unk0;
     switch (temp_r0_313) {                          /* irregular */
     case 181:
@@ -282,7 +282,7 @@ void ElectricFence::Update() {
     if ((s32) M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x84) != 0) {
         temp_r4_433 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk114.Update(M2C_FIELD(temp_r4_433, s32 *, 0x84), 1U, this->unk54, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk114)->Update(M2C_FIELD(temp_r4_433, s32 *, 0x84), 1U, this->unk54, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     temp_r3_445 = this->unk110;
     if (temp_r3_445 != NULL) {
@@ -709,7 +709,7 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKHeap *temp_r3_1215;
@@ -730,7 +730,7 @@ s32 ElectricFence::LoadLine(MKIniLine *arg0) {
         temp_r3_1211 = arg0->GetNmbrOfSubLines();
         this->unk50 = temp_r3_1211;
         temp_r28_1214 = this->unk50 * 0x70;
-        temp_r3_1215 = temp_r3_1211->Current();
+        temp_r3_1215 = ((MKHeap *) temp_r3_1211)->Current();
         if (temp_r3_1215 != NULL) {
             var_r3_1222 = ((MKHeap *) (temp_r3_1215->Current()))->Alloc(temp_r28_1214, NULL, 0);
         } else {
@@ -784,14 +784,14 @@ void ElectricFence::Init() {
     } while (var_ctr_1317 != 0);
     this->unk110 = NULL;
     temp_r31_1327 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk114.Init(M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C), M2C_FIELD(temp_r31_1327, f32 *, 0x90));
+    ((KDSoundFader *) &this->unk114)->Init(M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C), M2C_FIELD(temp_r31_1327, f32 *, 0x90));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void ElectricFenceDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk80 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    this->unk80 = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
 }
 #endif
 

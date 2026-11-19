@@ -235,7 +235,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
         sp1F0 = (f64) sp220;
         sp1F8 = (f64) sp228;
     }
-    sp160.GetRandPos();
+    ((Volume *) &sp160)->GetRandPos();
     sp1E0 = sp160;
     sp1E8 = sp168;
     unksp1E4 = unksp204;
@@ -708,7 +708,7 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
         sp1A0 = (f64) sp1D0;
         sp1A8 = (f64) sp1D8;
     }
-    sp110.GetRandPos();
+    ((Volume *) &sp110)->GetRandPos();
     sp50 = 0.0f;
     sp54 = -500.0f;
     sp190 = sp110;
@@ -985,7 +985,6 @@ void IceSnoatCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void IceSnoatCritterDescriptor::LoadDone() {
     s8 *temp_r30_1589;
     s8 *temp_r30_1607;
@@ -996,28 +995,27 @@ void IceSnoatCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1589 = this->unk34;
-    if (temp_r30_1589->Exists("bounce") != 0) {
-        var_r3_1599 = temp_r30_1589->GetAnim("bounce");
+    if (((MKAnimScript *) temp_r30_1589)->Exists("bounce") != 0) {
+        var_r3_1599 = ((MKAnimScript *) temp_r30_1589)->GetAnim("bounce");
     } else {
         var_r3_1599 = NULL;
     }
     this->unk70 = (s32) var_r3_1599;
     temp_r30_1607 = this->unk34;
-    if (temp_r30_1607->Exists("run") != 0) {
-        var_r3_1617 = temp_r30_1607->GetAnim("run");
+    if (((MKAnimScript *) temp_r30_1607)->Exists("run") != 0) {
+        var_r3_1617 = ((MKAnimScript *) temp_r30_1607)->GetAnim("run");
     } else {
         var_r3_1617 = NULL;
     }
     this->unk74 = (s32) var_r3_1617;
     temp_r30_1625 = this->unk34;
-    if (temp_r30_1625->Exists("alert") != 0) {
-        var_r3_1635 = temp_r30_1625->GetAnim("alert");
+    if (((MKAnimScript *) temp_r30_1625)->Exists("alert") != 0) {
+        var_r3_1635 = ((MKAnimScript *) temp_r30_1625)->GetAnim("alert");
     } else {
         var_r3_1635 = NULL;
     }
     this->unk78 = (s32) var_r3_1635;
 }
-#endif
 
 void IceSnoatCritterDescriptor::Init() {
     KDPropDescriptor::Init();

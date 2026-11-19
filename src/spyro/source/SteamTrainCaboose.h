@@ -91,7 +91,7 @@ public:
 inline SteamTrainCaboose::SteamTrainCaboose() {
     this->unk110 = &__vt;
     this->unk110.unk38 = 0.0f;
-    this->unk110.unk38.Init();
+    ((EventMessage *) &this->unk110.unk38)->Init();
     this->unk110.unk3C.unk0 = 0;
     this->unk110.unk3C.Init();
     return this;
@@ -112,7 +112,7 @@ inline SteamTrainCaboose::~SteamTrainCaboose() {
             }
             temp_r3_30 = &this->unk110.unk38;
             if (temp_r3_30 != NULL) {
-                temp_r3_30->Deinit();
+                ((EventMessage *) temp_r3_30)->Deinit();
             }
         }
     }

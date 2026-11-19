@@ -9,14 +9,22 @@
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterGraph.h"
+#include "spyro/source/DreadWingGoals.h"
 #include "spyro/source/ElementalSpline.h"
 #include "spyro/source/Enemies_Cynder.h"
 #include "spyro/source/Enemies_Swamp.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyGoal_RangeAttackMode.h"
+#include "spyro/source/EnemyGoals.h"
+#include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemySpawner.h"
+#include "spyro/source/FireTier2Goal_Think.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/SpawnerObject.h"
+#include "spyro/source/SwampTier3Goals.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -66,10 +74,10 @@ void EnemyGoal_GraphBarricade::AddGoal_GiveOrders() {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
         M2C_FIELD(this->unk38, f32 *, 0x10) = 2000.0f;
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_86 = this->unkC->unk638;
         M2C_FIELD(temp_r3_86, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_86, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
 }
 #endif
@@ -105,8 +113,8 @@ void EnemyGoal_GraphBarricade::AddGoal_MoveTo() {
     if (IsPresent(0x21) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20.unk8);
-        this->unkC->unk870.unk40.Set(this->unk20.Get(), 0U);
-        this->unkC->unk870.unk40.SetInsideRegion(1U);
+        ((AITargetData *) &this->unkC->unk870.unk40)->Set(this->unk20.Get(), 0U);
+        ((AITargetData *) &this->unkC->unk870.unk40)->SetInsideRegion(1U);
         temp_f0_207 = M2C_FIELD(MKModel_GetBoundingVolume(M2C_FIELD(M2C_FIELD(M2C_FIELD(this->unk20.Get()->__vptr, void *(**)(), 0x34)(), void **, 8), MKModel **, 4), (SubObjectType) 0, -1), f32 *, 0xC);
         temp_r6_209 = this->unk20.unk8;
         M2C_FIELD(temp_r6_209, TargetContext **, 0x10) = &this->unkC->unk870.unk40;
@@ -125,10 +133,10 @@ void EnemyGoal_GraphBarricade::AddGoal_MoveTo() {
             temp_r4_235 = this->unkC;
             temp_r4_235->unkA6C = M2C_FIELD(temp_r4_235->unk638, f32 *, 0x44C);
         }
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_245 = this->unkC->unk638;
         M2C_FIELD(temp_r3_245, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_245, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
 }
 #endif
@@ -170,7 +178,7 @@ u8 EnemyGoal_GraphBarricade::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void EnemyGoal_GraphBarricade::Arbitrate() {
     Enemy *temp_r3_358;
     Enemy *temp_r3_371;
@@ -183,13 +191,13 @@ void EnemyGoal_GraphBarricade::Arbitrate() {
 
     var_r30_357 = 0;
     temp_r3_358 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_358, u8 *, 0x8B8) == 2) || (temp_r3_358->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_358, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_358->unk870.unk30)->Get() != NULL)) {
         var_r30_357 = 1;
     }
     if (var_r30_357 != 0) {
         temp_r3_371 = this->unkC;
         temp_f31_378 = 3.0f * temp_r3_371->GetCollisionRadius();
-        if (this->unkC->unk838.unk28.GetDist() < temp_f31_378) {
+        if (((AITargetData *) &this->unkC->unk838.unk28)->GetDist() < temp_f31_378) {
             this->unk8 = 2;
             return;
         }
@@ -205,12 +213,12 @@ void EnemyGoal_GraphBarricade::Arbitrate() {
             if ((Goal<Enemy> *) this->unk3C != NULL) {
                 temp_r3_404 = this->unkC;
                 var_r30_405 = 0;
-                if (((u8) M2C_FIELD(temp_r3_404, u8 *, 0x8B8) == 2) || (temp_r3_404->unk870.unk30.Get() != NULL)) {
+                if (((u8) M2C_FIELD(temp_r3_404, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_404->unk870.unk30)->Get() != NULL)) {
                     var_r30_405 = 1;
                 }
                 if (var_r30_405 != 0) {
                     var_r30_419 = 0;
-                    if ((this->unk3C->PositionSpawnPoints_Vanguard(1U) != 0) || ((s32) M2C_FIELD(this->unkC->unkA68, s32 *, 0x48) != 0)) {
+                    if ((((EnemyGoal_Summon *) this->unk3C)->PositionSpawnPoints_Vanguard(1U) != 0) || ((s32) M2C_FIELD(this->unkC->unkA68, s32 *, 0x48) != 0)) {
                         this->unkC->unkA4C->GetNumberActive();
                         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) <= 1) {
                             var_r30_419 = 1;
@@ -438,7 +446,7 @@ void EnemyGoal_GraphBarricade::Init(Enemy *arg0) {
     }
     temp_r3_842 = this->unk34;
     if (temp_r3_842 != NULL) {
-        temp_r3_842->Init(arg0);
+        ((EnemyGoal_RangeAttackMode *) temp_r3_842)->Init(arg0);
     }
     temp_r4_848 = this->unk3C;
     if (temp_r4_848 != NULL) {
@@ -502,7 +510,7 @@ u8 EnemyGoal_BarricadeKick::Update() {
     }
     temp_r29_976 = this->unkC;
     var_r30_977 = 0;
-    if (temp_r29_976->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_976)->HasAnimFinished() != 0) {
         temp_r4_982 = temp_r29_976->unkA38;
         if ((temp_r4_982 != NULL) && ((s8 *) temp_r4_982->unk0 == (u32) M2C_FIELD(temp_r29_976, MKAnimScript **, 0x630)->unk20)) {
             var_r30_977 = 1;
@@ -515,20 +523,18 @@ u8 EnemyGoal_BarricadeKick::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_BarricadeKick::Activate() {
     void *temp_r3_1025;
 
     this->unk8 = 0;
-    this->unkC->StopMovement(1U);
-    this->unkC->unk638->ObstacleAvoidanceOff();
+    ((Character *) this->unkC)->StopMovement(1U);
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     temp_r3_1025 = this->unkC->unk638;
     M2C_FIELD(temp_r3_1025, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1025, u8 *, 0x464) & ~0x40);
     this->unkC->SetAnim((AnimSequenceType) 0x12, 0xCE, 0, 0.15f, 0U, 0U);
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 0U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 0U);
 }
-#endif
 
 void EnemyGoal_Despawn::Terminate() {
 
@@ -585,7 +591,7 @@ u8 EnemyGoal_GraphSummonWall::Update() {
     M2C_FIELD(temp_r3_1136, f64 *, 0) = M2C_BITWISE(f64, sp10);
     M2C_FIELD(temp_r3_1136, f64 *, 8) = (f64) sp10.unk8;
     temp_r29_1139 = this->unkC;
-    if (temp_r29_1139->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_1139)->HasAnimFinished() != 0) {
         temp_r4_1144 = temp_r29_1139->unkA38;
         if ((temp_r4_1144 != NULL) && ((s8 *) temp_r4_1144->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1139, void **, 0x630), u32 *, 0x20))) {
             var_r30_1132 = 1;
@@ -600,7 +606,7 @@ u8 EnemyGoal_GraphSummonWall::Update() {
     } else {
         temp_r29_1176 = this->unkC;
         var_r30_1177 = 0;
-        if (temp_r29_1176->HasAnimFinished() != 0) {
+        if (((Character *) temp_r29_1176)->HasAnimFinished() != 0) {
             temp_r4_1182 = temp_r29_1176->unkA38;
             if ((temp_r4_1182 != NULL) && ((void *) temp_r4_1182->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1176, void **, 0x630), u32 *, 0x20))) {
                 var_r30_1177 = 1;
@@ -623,7 +629,7 @@ void EnemyGoal_GraphSummonWall::Activate() {
     void *temp_r3_1247;
 
     this->unk8 = 0;
-    this->unkC->StopMovement(1U);
+    ((Character *) this->unkC)->StopMovement(1U);
     this->unkC->SetIdleMovementSpeed(1U);
     temp_r3_1247 = this->unkC->unk638;
     M2C_FIELD(temp_r3_1247, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1247, u8 *, 0x464) & ~0x40);
@@ -634,13 +640,13 @@ void EnemyGoal_GraphTurn::Reset() {
     this->unk20 = 0.0f;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_GraphTurn::Terminate() {
     Character *temp_r6_1280;
     void *temp_r3_1289;
 
     temp_r6_1280 = this->unkC;
-    temp_r6_1280->unk638->GraphFollowingOn(temp_r6_1280->unkA80, temp_r6_1280->unkA84, (GraphFollowBehaviours) temp_r6_1280->unkA90, &temp_r6_1280->unk870);
+    ((SB2 *) temp_r6_1280->unk638)->GraphFollowingOn(temp_r6_1280->unkA80, temp_r6_1280->unkA84, (GraphFollowBehaviours) temp_r6_1280->unkA90, &temp_r6_1280->unk870);
     temp_r3_1289 = this->unkC->unk638;
     M2C_FIELD(temp_r3_1289, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1289, u8 *, 0x464) | 0x80);
 }
@@ -662,7 +668,7 @@ u8 EnemyGoal_GraphTurn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'SetIdleMovementSpeed'
+#if 0 // DRAFT: undefined identifier 'sp48'
 void EnemyGoal_GraphTurn::Activate() {
     f64 sp58;
     f64 sp50;
@@ -698,8 +704,8 @@ void EnemyGoal_GraphTurn::Activate() {
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
-    this->unkC->SetIdleMovementSpeed(1U);
-    this->unkC->unk638->GraphFollowingOff();
+    ((Enemy *) this->unkC)->SetIdleMovementSpeed(1U);
+    ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
     temp_r4_1365 = this->unkC->unk638;
     M2C_FIELD(temp_r4_1365, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r4_1365, u8 *, 0x464) & ~0x80);
     KDMath_GetDirection(this->unk20 - 3.1415927f);
@@ -776,16 +782,16 @@ void EnemyGoal_GraphTurn::Activate() {
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
             if ((((f32) sp58 * temp_f2_1492) + (((f32) sp50 * temp_f1_1490) + (unksp54 * temp_f0_1486))) > 0.0f) {
-                temp_r3_1485->SetAnim((AnimSequenceType) 4, 0x15, 0, 0.15f, 0U, 0U);
+                ((Enemy *) temp_r3_1485)->SetAnim((AnimSequenceType) 4, 0x15, 0, 0.15f, 0U, 0U);
                 return;
             }
-            temp_r3_1485->SetAnim((AnimSequenceType) 4, 0x14, 0, 0.15f, 0U, 0U);
+            ((Enemy *) temp_r3_1485)->SetAnim((AnimSequenceType) 4, 0x14, 0, 0.15f, 0U, 0U);
             return;
         }
-        temp_r3_1485->SetAnim((AnimSequenceType) 4, 0x14, 0, 0.15f, 0U, 0U);
+        ((Enemy *) temp_r3_1485)->SetAnim((AnimSequenceType) 4, 0x14, 0, 0.15f, 0U, 0U);
         return;
     }
-    this->unkC->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
 }
 #endif
 
@@ -797,7 +803,7 @@ void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
     void *temp_r3_1631;
 
     if (IsPresent(0x47) == 0) {
-        this->unk70->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(this->unkC->unkA80->unk3C->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk70))));
+        ((EnemyGoal_OperateLever *) this->unk70)->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk70))));
         temp_r4_1611 = this->unkC;
         temp_r0_1613 = M2C_FIELD(temp_r4_1611->unk638, CharacterGraphNode **, 0x448);
         if (temp_r0_1613 != NULL) {
@@ -806,10 +812,10 @@ void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
             temp_r4_1617->unkA84 = M2C_FIELD(temp_r4_1617->unk638, CharacterGraphNode **, 0x44C);
         }
         this->unk95 &= ~0x80;
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_1631 = this->unkC->unk638;
         M2C_FIELD(temp_r3_1631, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1631, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -833,10 +839,10 @@ void EnemyGoal_FollowGraph::AddGoal_GraphHover() {
             temp_r4_1685->unkA84 = M2C_FIELD(temp_r4_1685->unk638, CharacterGraphNode **, 0x44C);
         }
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_1698 = this->unkC->unk638;
         M2C_FIELD(temp_r3_1698, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1698, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -864,22 +870,22 @@ void EnemyGoal_FollowGraph::AddGoal_SummonWall() {
         }
         var_r4_1744 = (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk6C);
         temp_r3_1746 = this->unkC->unkA84;
-        if ((temp_r3_1746 != NULL) && (temp_ret_1751 = checked_cast<MKProp *, MKProp>(temp_r3_1746->unk3C->PropResolver_Resolve((s32) var_r4_1744)), temp_r3_1751 = temp_ret_1751, var_r4_1744 = (u32) temp_ret_1751, ((temp_r3_1751 == 0) == 0))) {
-            M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(this->unkC->unkA84->unk3C->PropResolver_Resolve((s32) var_r4_1744)));
+        if ((temp_r3_1746 != NULL) && (temp_ret_1751 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) temp_r3_1746->unk3C)->PropResolver_Resolve((s32) var_r4_1744)), temp_r3_1751 = temp_ret_1751, var_r4_1744 = (u32) temp_ret_1751, ((temp_r3_1751 == 0) == 0))) {
+            M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) var_r4_1744)));
         } else {
             temp_r3_1765 = this->unkC->unkA80;
             if (temp_r3_1765 != NULL) {
-                M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(temp_r3_1765->unk3C->PropResolver_Resolve((s32) var_r4_1744)));
+                M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) temp_r3_1765->unk3C)->PropResolver_Resolve((s32) var_r4_1744)));
             }
         }
         this->unk95 &= ~0x80;
         this->unk95 &= ~0x20;
         this->unk95 &= ~0x10;
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_1793 = this->unkC->unk638;
         M2C_FIELD(temp_r3_1793, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1793, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -918,9 +924,9 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
             M2C_FIELD(temp_r4_1859, void **, 0x10) = NULL;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r4_1859, void **, 0xC), void **, 0xA4C), s32 *, 0x28) = temp_r5_1861;
         } else {
-            temp_ret_1877 = checked_cast<MKProp *, MKProp>(this->unkC->unkA84->unk3C->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk64)));
+            temp_ret_1877 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk64)));
             if (temp_ret_1877 != 0) {
-                temp_r3_1885 = checked_cast<SpawnPoint *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(this->unkC->unkA80->unk3C->PropResolver_Resolve((s32) (u32) temp_ret_1877)));
+                temp_r3_1885 = checked_cast<SpawnPoint *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_1877)));
                 temp_r5_1887 = this->unk64;
                 temp_r0_1889 = this->unkC->unkA80->unk48;
                 M2C_FIELD(temp_r5_1887, s32 *, 0x14) = temp_r0_1889;
@@ -940,10 +946,10 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
         this->unk95 &= ~0x20;
         this->unk95 &= ~0x10;
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_1928 = this->unkC->unk638;
         M2C_FIELD(temp_r3_1928, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1928, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -966,10 +972,10 @@ void EnemyGoal_FollowGraph::AddGoal_Drop() {
             temp_r4_1970->unkA84 = M2C_FIELD(temp_r4_1970->unk638, CharacterGraphNode **, 0x44C);
         }
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_1983 = this->unkC->unk638;
         M2C_FIELD(temp_r3_1983, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1983, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -979,7 +985,7 @@ void EnemyGoal_FollowGraph::AddGoal_Drop() {
 void EnemyGoal_FollowGraph::AddGoal_PickUp() {
     if (IsPresent(0x91) == 0) {
         AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk7C);
-        this->unk7C->SetParams(this->unkC->unkA84->unk48);
+        ((DreadWingGoal_PickUp *) this->unk7C)->SetParams(this->unkC->unkA84->unk48);
     }
     this->unkC->unkA8C = 0;
 }
@@ -1005,10 +1011,10 @@ void EnemyGoal_FollowGraph::AddGoal_GiveOrders() {
         this->unk95 &= ~0x20;
         this->unk95 &= ~0x10;
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_2082 = this->unkC->unk638;
         M2C_FIELD(temp_r3_2082, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2082, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -1047,10 +1053,10 @@ void EnemyGoal_FollowGraph::AddGoal_RangeAttackMode() {
             this->unk90 = var_r4_2130;
             this->unk94 = 1;
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_2152 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2152, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2152, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             temp_r3_2161 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2161, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2161, u8 *, 0x464) & ~0x80);
         }
@@ -1061,9 +1067,9 @@ void EnemyGoal_FollowGraph::AddGoal_RangeAttackMode() {
                 var_r30_2170 = 1;
             }
             if (var_r30_2170 != 0) {
-                this->unkC->SelectAttack(this->unkC->unk870.GetDist(), 2U, 0U, 0U);
+                ((Enemy *) this->unkC)->SelectAttack(this->unkC->unk870.GetDist(), 2U, 0U, 0U);
             } else {
-                this->unkC->SelectAttack(5000.0f, 2U, 0U, 0U);
+                ((Enemy *) this->unkC)->SelectAttack(5000.0f, 2U, 0U, 0U);
             }
             AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk58);
             M2C_FIELD(this->unk58, s8 *, 0x48) = 0;
@@ -1147,10 +1153,10 @@ void EnemyGoal_FollowGraph::AddGoal_Cower() {
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_2375 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2375, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2375, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
         }
         temp_r4_2383 = this->unk44;
         M2C_FIELD(temp_r4_2383, s32 *, 0x10) = 0;
@@ -1202,10 +1208,10 @@ void EnemyGoal_FollowGraph::AddGoal_Taunt(bool arg0) {
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_2482 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2482, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2482, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
         }
         if (arg0 != 0) {
             temp_r5_2494 = this->unk44;
@@ -1250,10 +1256,10 @@ void EnemyGoal_FollowGraph::AddGoal_Alert() {
             temp_r4_2557->unkA84 = M2C_FIELD(temp_r4_2557->unk638, CharacterGraphNode **, 0x44C);
         }
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_2570 = this->unkC->unk638;
         M2C_FIELD(temp_r3_2570, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2570, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     temp_r3_2578 = this->unkC;
     temp_r5_2580 = this->unk50;
@@ -1291,10 +1297,10 @@ void EnemyGoal_FollowGraph::AddGoal_Sleep() {
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_2673 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2673, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2673, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
         }
         temp_r4_2681 = this->unk44;
         M2C_FIELD(temp_r4_2681, s32 *, 0x10) = 0;
@@ -1345,10 +1351,10 @@ void EnemyGoal_FollowGraph::AddGoal_Cheer() {
             this->unk95 &= ~0x20;
             this->unk95 &= ~0x10;
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_2779 = this->unkC->unk638;
             M2C_FIELD(temp_r3_2779, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2779, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
         }
         temp_r4_2787 = this->unk44;
         M2C_FIELD(temp_r4_2787, s32 *, 0x10) = 0;
@@ -1416,10 +1422,10 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
                     temp_r4_2904->unkA84 = M2C_FIELD(temp_r4_2904->unk638, CharacterGraphNode **, 0x44C);
                 }
                 this->unkC->StopMovement(1U);
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_2917 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_2917, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2917, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             }
         } else if (temp_r0_2884 == 0x12) {
             if (IsPresent(0x66) == 0) {
@@ -1434,10 +1440,10 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
                     temp_r4_2952->unkA84 = M2C_FIELD(temp_r4_2952->unk638, CharacterGraphNode **, 0x44C);
                 }
                 this->unkC->StopMovement(1U);
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_2965 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_2965, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_2965, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             }
         } else {
             if (IsPresent(0) == 0) {
@@ -1450,10 +1456,10 @@ void EnemyGoal_FollowGraph::AddGoal_IdleAndAlertOnTrigger(int arg0) {
                     temp_r4_2991->unkA84 = M2C_FIELD(temp_r4_2991->unk638, CharacterGraphNode **, 0x44C);
                 }
                 this->unkC->StopMovement(1U);
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_3004 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_3004, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3004, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             }
             temp_r4_3012 = this->unk44;
             M2C_FIELD(temp_r4_3012, s32 *, 0x10) = 0;
@@ -1504,10 +1510,10 @@ void EnemyGoal_FollowGraph::AddGoal_IdleUntilTrigger(int arg0) {
                     temp_r4_3091->unkA84 = M2C_FIELD(temp_r4_3091->unk638, CharacterGraphNode **, 0x44C);
                 }
                 this->unkC->StopMovement(1U);
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_3104 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_3104, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3104, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             }
         } else if (IsPresent(0) == 0) {
             AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk44);
@@ -1525,10 +1531,10 @@ void EnemyGoal_FollowGraph::AddGoal_IdleUntilTrigger(int arg0) {
                 temp_r4_3139->unkA84 = M2C_FIELD(temp_r4_3139->unk638, CharacterGraphNode **, 0x44C);
             }
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_3152 = this->unkC->unk638;
             M2C_FIELD(temp_r3_3152, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3152, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
         }
         this->unk95 &= ~0x80;
         this->unk95 |= 0x20;
@@ -1591,9 +1597,9 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
             temp_r4_3233 = this->unkC;
             temp_r4_3233->unkA84 = M2C_FIELD(temp_r4_3233->unk638, CharacterGraphNode **, 0x44C);
         }
-        temp_ret_3245 = checked_cast<MKProp *, MKProp>(this->unkC->unkA84->unk3C->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48)));
+        temp_ret_3245 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48)));
         if (temp_ret_3245 != 0) {
-            temp_r5_3254 = M2C_FIELD(checked_cast<MKProp *, MKProp>(this->unkC->unkA84->unk3C->PropResolver_Resolve((s32) (u32) temp_ret_3245)), void **, 8);
+            temp_r5_3254 = M2C_FIELD(checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_3245)), void **, 8);
             temp_r3_3255 = this->unkC->unk8;
             temp_f1_3257 = M2C_FIELD(temp_r3_3255, f64 *, 0x30);
             sp20 = M2C_FIELD(temp_r5_3254, f64 *, 0x30);
@@ -1651,10 +1657,10 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
             var_f1_3366 = (f32) this->unkC->unkA84->unk48 / 57.295776f;
         }
         M2C_FIELD(this->unk48, f32 *, 0x20) = var_f1_3366;
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_3389 = this->unkC->unk638;
         M2C_FIELD(temp_r3_3389, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3389, u8 *, 0x464) & ~0x80);
-        this->unkC->unk638->ObstacleAvoidanceOff();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     }
     this->unkC->unkA8C = 0;
 }
@@ -1687,10 +1693,10 @@ void EnemyGoal_FollowGraph::AddGoal_Idle() {
                 temp_r4_3439->unkA84 = M2C_FIELD(temp_r4_3439->unk638, CharacterGraphNode **, 0x44C);
             }
             this->unkC->StopMovement(1U);
-            this->unkC->unk638->GraphFollowingOff();
+            ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
             temp_r3_3452 = this->unkC->unk638;
             M2C_FIELD(temp_r3_3452, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3452, u8 *, 0x464) & ~0x80);
-            this->unkC->unk638->ObstacleAvoidanceOff();
+            ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
             temp_r4_3459 = this->unkC;
             temp_r3_3460 = temp_r4_3459->unkA84;
             if (temp_r3_3460 != NULL) {
@@ -1740,8 +1746,8 @@ void EnemyGoal_FollowGraph::AddGoal_Barricade() {
             temp_r4_3569 = this->unkC;
             temp_r4_3569->unkA84 = M2C_FIELD(temp_r4_3569->unk638, CharacterGraphNode **, 0x44C);
         }
-        ((TargetContext *) ((TargetContext *) (this->unk5C + 0x20)))->Set(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(this->unkC->unkA80->unk3C->PropResolver_Resolve((s32) this->unkC)));
-        if (((TargetContext *) ((TargetContext *) (this->unk5C + 0x20)))->Get() != NULL) {
+        ((TargetContext *) (this->unk5C + 0x20))->Set(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) this->unkC)));
+        if (((TargetContext *) (this->unk5C + 0x20))->Get() != NULL) {
             AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk5C);
         }
     }
@@ -1830,7 +1836,7 @@ void EnemyGoal_FollowGraph::AddGoal_Jump() {
         }
         AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         this->unkC->StopMovement(1U);
-        this->unkC->unk638->GraphFollowingOff();
+        ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
         temp_r3_3745 = this->unkC->unk638;
         M2C_FIELD(temp_r3_3745, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_3745, u8 *, 0x464) & ~0x80);
     }
@@ -2053,8 +2059,8 @@ void EnemyGoal_FollowGraph::Terminate() {
     }
     temp_r3_4170 = this->unkC;
     if (((u8) temp_r3_4170->unkB01 >> 2U) & 1) {
-        temp_r3_4170->SetInvulnerableToMeleeAttacks(0U, 1U);
-        this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
+        ((Enemy *) temp_r3_4170)->SetInvulnerableToMeleeAttacks(0U, 1U);
+        ((Enemy *) this->unkC)->SetInvulnerableToBreathAttacks(0U, 1U);
         temp_r3_4181 = this->unkC;
         temp_r3_4181->unkB01 &= ~4;
     }
@@ -2065,13 +2071,13 @@ void EnemyGoal_FollowGraph::Terminate() {
     M2C_FIELD(temp_r3_4196, f64 *, 0x5B8) = (f64) M2C_FIELD(temp_r3_4196, f64 *, 0x588);
     M2C_FIELD(temp_r3_4196, f64 *, 0x5C0) = (f64) M2C_FIELD(temp_r3_4196, f64 *, 0x590);
     temp_r3_4201 = this->unkC;
-    temp_r3_4201->SetupEnemyRegion(*((MKVector3 *) &temp_r3_4201->unk588), 1000.0f);
+    ((Enemy *) temp_r3_4201)->SetupEnemyRegion(*((MKVector3 *) &temp_r3_4201->unk588), 1000.0f);
     this->unk8 = 1;
     RemoveAllSubgoals();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspD4'
+#if 0 // DRAFT: declaration syntax error
 u8 EnemyGoal_FollowGraph::Update() {
     Matrix sp100;
     s32 spFC;
@@ -2189,17 +2195,17 @@ u8 EnemyGoal_FollowGraph::Update() {
         if (this->unk8C > 3.0f) {
             temp_r3_4267 = this->unkC;
             if ((CharacterGraphNode *) temp_r3_4267->unkA84 != NULL) {
-                temp_r3_4267->unk638->GraphFollowingOff();
+                ((SB2 *) temp_r3_4267->unk638)->GraphFollowingOff();
                 temp_r3_4275 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_4275, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_4275, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
                 temp_r3_4282 = this->unkC;
                 temp_r4_4284 = temp_r3_4282->unkA84;
                 temp_r3_4282->unkA84 = temp_r3_4282->unkA80;
                 this->unkC->unkA80 = temp_r4_4284;
                 this->unk8C = 0.0f;
                 temp_r6_4290 = this->unkC;
-                temp_r6_4290->unk638->GraphFollowingOn(temp_r6_4290->unkA80, temp_r6_4290->unkA84, (GraphFollowBehaviours) temp_r6_4290->unkA90, &temp_r6_4290->unk870);
+                ((SB2 *) temp_r6_4290->unk638)->GraphFollowingOn(temp_r6_4290->unkA80, temp_r6_4290->unkA84, (GraphFollowBehaviours) temp_r6_4290->unkA90, &temp_r6_4290->unk870);
                 temp_r5_4301 = this->unkC->unk638;
                 M2C_FIELD(temp_r5_4301, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r5_4301, u8 *, 0x464) | 0x80);
                 temp_r3_4307 = this->unkC;
@@ -2262,7 +2268,7 @@ block_19:
             temp_r4_4466->unkA84 = M2C_FIELD(temp_r4_4466->unk638, CharacterGraphNode **, 0x44C);
         }
         temp_r6_4471 = this->unkC;
-        temp_r6_4471->unk638->GraphFollowingOn(temp_r6_4471->unkA80, temp_r6_4471->unkA84, (GraphFollowBehaviours) temp_r6_4471->unkA90, &temp_r6_4471->unk870);
+        ((SB2 *) temp_r6_4471->unk638)->GraphFollowingOn(temp_r6_4471->unkA80, temp_r6_4471->unkA84, (GraphFollowBehaviours) temp_r6_4471->unkA90, &temp_r6_4471->unk870);
         temp_r4_4481 = this->unkC->unk638;
         M2C_FIELD(temp_r4_4481, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r4_4481, u8 *, 0x464) | 0x80);
         this->unkC->unkA8C = 0;
@@ -2277,7 +2283,7 @@ block_19:
             this->unk14 -= 1;
         }
         temp_r6_4530 = this->unkC;
-        temp_r6_4530->unk638->GraphFollowingOn(temp_r6_4530->unkA80, temp_r6_4530->unkA84, (GraphFollowBehaviours) temp_r6_4530->unkA90, &temp_r6_4530->unk870);
+        ((SB2 *) temp_r6_4530->unk638)->GraphFollowingOn(temp_r6_4530->unkA80, temp_r6_4530->unkA84, (GraphFollowBehaviours) temp_r6_4530->unkA90, &temp_r6_4530->unk870);
         temp_r4_4537 = this->unkC;
         temp_r0_4539 = M2C_FIELD(temp_r4_4537->unk638, CharacterGraphNode **, 0x448);
         if (temp_r0_4539 != NULL) {
@@ -2298,7 +2304,7 @@ block_19:
             }
         }
     } else if (((Goal<Enemy> *) this->unk88 != NULL) && (((u8) this->unk95 >> 5U) & 1) && (this->unkC->unkB09 & 1) && (IsPresent(0x39) != 0)) {
-        this->unk88->TriggerExit();
+        ((EnemyGoal_SpawnIdle *) this->unk88)->TriggerExit();
         temp_r3_4598 = this->unkC;
         temp_r3_4598->unkB09 &= ~1;
         this->unk95 &= ~0x20;
@@ -2557,7 +2563,7 @@ block_19:
                         sp90 = M2C_FIELD(temp_r3_5221, f64 *, 0x30);
                         sp98 = M2C_FIELD(temp_r3_5221, f64 *, 0x38);
                         spE4 = 0;
-                        temp_ret_5231 = this->unk60->GetOderMask(M2C_FIELD(temp_r4_5214->unkA38, s32 *, 0xF4));
+                        temp_ret_5231 = ((EnemyGoal_GiveOrders *) this->unk60)->GetOderMask(M2C_FIELD(temp_r4_5214->unkA38, s32 *, 0xF4));
                         spF4 = (u32) temp_ret_5231;
                         spF0 = temp_ret_5231;
                         spE0 = 0x74;
@@ -2600,7 +2606,7 @@ block_19:
                         temp_r3_5319 = this->unkC;
                         temp_r4_5320 = temp_r3_5319->unkA50;
                         if (((s32) temp_r4_5320->unk6C == 0xA) && ((s32) temp_r4_5320->unk68 == 0xE1)) {
-                            temp_r3_5319->SetAnim((AnimSequenceType) 0xA, 0x46, 0, 0.15f, 0U, 0U);
+                            ((Enemy *) temp_r3_5319)->SetAnim((AnimSequenceType) 0xA, 0x46, 0, 0.15f, 0U, 0U);
                         }
                     }
                     this->unkC->unkA8C = 0;
@@ -3297,7 +3303,7 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
             }
             this->unk58 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if (arg0->unkA20->GetAnimSequence(0xF, 0x74, 0, NULL) != NULL) {
+        if (((EnemyDescriptor *) arg0->unkA20)->GetAnimSequence(0xF, 0x74, 0, NULL) != NULL) {
             operator new(0x14U, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -3366,7 +3372,7 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     }
     temp_r3_6905 = this->unk2C;
     if (temp_r3_6905 != NULL) {
-        temp_r3_6905->Init(arg0);
+        ((EnemyGoal_GraphJump *) temp_r3_6905)->Init(arg0);
     }
     temp_r4_6911 = this->unk30;
     if (temp_r4_6911 != NULL) {
@@ -3397,7 +3403,7 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     }
     temp_r3_6950 = this->unk3C;
     if (temp_r3_6950 != NULL) {
-        temp_r3_6950->Init(arg0);
+        ((EnemyGoal_GraphHover *) temp_r3_6950)->Init(arg0);
     }
     temp_r4_6956 = this->unk78;
     if (temp_r4_6956 != NULL) {
@@ -3456,11 +3462,11 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     }
     temp_r3_7037 = this->unk54;
     if (temp_r3_7037 != NULL) {
-        temp_r3_7037->Init(arg0);
+        ((EnemyGoal_Death *) temp_r3_7037)->Init(arg0);
     }
     temp_r3_7043 = this->unk5C;
     if (temp_r3_7043 != NULL) {
-        temp_r3_7043->Init(arg0);
+        ((EnemyGoal_GraphBarricade *) temp_r3_7043)->Init(arg0);
     }
     temp_r4_7049 = this->unk64;
     if (temp_r4_7049 != NULL) {
@@ -3484,15 +3490,15 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     }
     temp_r3_7080 = this->unk68;
     if (temp_r3_7080 != NULL) {
-        temp_r3_7080->Init((SwampTier3 *) arg0);
+        ((SwampTier3Goal_Summon *) temp_r3_7080)->Init((SwampTier3 *) arg0);
     }
     temp_r3_7086 = this->unk74;
     if (temp_r3_7086 != NULL) {
-        temp_r3_7086->Init(arg0);
+        ((FireTier2Goal_JumpOutOfLava *) temp_r3_7086)->Init(arg0);
     }
     temp_r3_7092 = this->unk70;
     if (temp_r3_7092 != NULL) {
-        temp_r3_7092->Init(arg0);
+        ((EnemyGoal_OperateLever *) temp_r3_7092)->Init(arg0);
     }
     temp_r4_7098 = this->unk60;
     if (temp_r4_7098 != NULL) {
@@ -3506,11 +3512,11 @@ void EnemyGoal_FollowGraph::Init(Enemy *arg0) {
     }
     temp_r3_7115 = this->unk7C;
     if (temp_r3_7115 != NULL) {
-        temp_r3_7115->Init(arg0);
+        ((DreadWingGoal_PickUp *) temp_r3_7115)->Init(arg0);
     }
     temp_r3_7121 = this->unk80;
     if (temp_r3_7121 != NULL) {
-        temp_r3_7121->Init(arg0);
+        ((DreadWingGoal_Drop *) temp_r3_7121)->Init(arg0);
     }
     temp_r4_7127 = this->unk58;
     if (temp_r4_7127 != NULL) {
@@ -3646,7 +3652,7 @@ void EnemyGoal_GraphJump::Terminate() {
     sp18 = 0.0f;
     sp50.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp14 = 0.0f;
-    sp50.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp50.unk10)->GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp20 = M2C_BITWISE(f64, sp50.unk10) - M2C_BITWISE(f64, sp50);
     this->unk20 = sp20;
     sp28 = sp68 - sp50.unk8;
@@ -3866,7 +3872,7 @@ u8 EnemyGoal_GraphJump::Update() {
     if (var_r30_7472 != 0) {
         temp_r3_7489 = this->unkC;
         temp_r4_7492 = temp_r3_7489->unkA50;
-        temp_r3_7489->SetAnim(temp_r4_7492, (AnimTransition *) &temp_r4_7492->unk20, 0.15f, 0U);
+        ((Enemy *) temp_r3_7489)->SetAnim(temp_r4_7492, (AnimTransition *) &temp_r4_7492->unk20, 0.15f, 0U);
         this->unk44 = 0.0f;
     } else {
         temp_r29_7499 = this->unkC;
@@ -3891,7 +3897,7 @@ u8 EnemyGoal_GraphJump::Update() {
                 sp20 = 0.0f;
                 sp1E0.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                 sp1C = 0.0f;
-                sp1E0.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp1E0.unk10)->GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                 spD0 = M2C_BITWISE(f64, sp1E0.unk10) - M2C_BITWISE(f64, sp1E0);
                 this->unk20 = spD0;
                 spD8 = sp1F8 - sp1E0.unk8;
@@ -4075,7 +4081,7 @@ u8 EnemyGoal_GraphJump::Update() {
                         var_f1_7979 = 0.0f;
                     }
                     sp28 = 0.0f;
-                    sp160.GetMeasure(var_f1_7979, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp160)->GetMeasure(var_f1_7979, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                     sp210.unk10 = sp160;
                     sp228 = sp168;
                     spE0 = M2C_BITWISE(f64, sp210.unk10) - this->unk10;
@@ -4166,7 +4172,7 @@ u8 EnemyGoal_GraphJump::Update() {
                     temp_r3_8188->Teleport(&sp280, unksp114, (f32) sp110, 0.0f, (f32) sp128, unksp124, (f32) sp120);
                     temp_r3_8193 = this->unkC;
                     temp_r4_8196 = temp_r3_8193->unkA50;
-                    temp_r3_8193->SetAnim(temp_r4_8196, (AnimTransition *) &temp_r4_8196->unk40, 0.15f, 0U);
+                    ((Enemy *) temp_r3_8193)->SetAnim(temp_r4_8196, (AnimTransition *) &temp_r4_8196->unk40, 0.15f, 0U);
                 } else {
                     this->unk44 = temp_f3_8141 + (gUpdateTimeDelta / this->unk48);
                     if (this->unk44 > 1.0f) {
@@ -4180,7 +4186,7 @@ u8 EnemyGoal_GraphJump::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
+#if 0 // DRAFT: undefined identifier 'unkA80'
 void EnemyGoal_GraphJump::Activate() {
     Matrix sp320;
     M2C_UNK sp31C;
@@ -4324,7 +4330,7 @@ void EnemyGoal_GraphJump::Activate() {
     M2C_FIELD(temp_r3_8239, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_8239, u8 *, 0x464) & ~0x80);
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    this->unkC->SetAnim((AnimSequenceType) 9, 0, 0, 0.15f, 0U, 0U);
+    ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 9, 0, 0, 0.15f, 0U, 0U);
     sp270.GetPos();
     temp_r4_8261 = this->unkC->unkA80;
     M2C_FIELD(temp_r4_8261->__vptr, M2C_UNK (**)(s32 *, CharacterGraphNode *), 0x30)(&sp270.unk10, temp_r4_8261);
@@ -4458,21 +4464,21 @@ void EnemyGoal_GraphJump::Activate() {
     sp1C8 = (f64) sp270.unk48;
     sp1D0 = sp2C0;
     sp1D8 = sp2C8;
-    sp1E0.GetParabolaCentre((MKVector3) this, (MKVector3) &sp1D0, temp_f31_8530, temp_f30_8520);
+    ((EnemyGoal_GraphJump *) &sp1E0)->GetParabolaCentre((MKVector3) this, (MKVector3) &sp1D0, temp_f31_8530, temp_f30_8520);
     this->unk30.AddNode(*((MKVector3 *) &sp1E0));
     this->unk30.AddNode(*((MKVector3 *) &sp270.unk40));
     sp190 = M2C_BITWISE(f64, sp270.unk40);
     sp198 = (f64) sp270.unk48;
     sp1A0 = sp2C0;
     sp1A8 = sp2C8;
-    sp1B0.GetParabolaCentre((MKVector3) this, (MKVector3) &sp1A0, temp_f31_8530, temp_f30_8520);
+    ((EnemyGoal_GraphJump *) &sp1B0)->GetParabolaCentre((MKVector3) this, (MKVector3) &sp1A0, temp_f31_8530, temp_f30_8520);
     Tools_GetClosestSplineTime(&this->unk30, *((MKVector3 *) &sp1B0), 0x32);
     this->unk4C = M2C_ERROR(/* Read from unset register $f1 */);
     M2C_STRUCT_COPY((s32) &sp31C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp1C = 0.0f;
     sp160.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp18 = 0.0f;
-    sp160.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp160.unk10)->GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp90 = M2C_BITWISE(f64, sp160.unk10) - M2C_BITWISE(f64, sp160);
     sp2D0 = sp90;
     sp98 = sp178 - sp160.unk8;
@@ -4620,7 +4626,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp320.unk28 = (f32) spF8;
     sp320.unk2C = 0.0f;
     sp28 = 0.0f;
-    spE0.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE0)->GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp320.unk30 = spE0;
     sp320.unk34 = spE4;
     sp320.unk38 = spE8;
@@ -4829,7 +4835,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     }
     temp_r29_9446 = this->unkC;
     var_r30_9447 = 0;
-    if (temp_r29_9446->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_9446)->HasAnimFinished() != 0) {
         temp_r4_9452 = temp_r29_9446->unkA38;
         if ((temp_r4_9452 != NULL) && ((s8 *) temp_r4_9452->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_9446, void **, 0x630), u32 *, 0x20))) {
             var_r30_9447 = 1;
@@ -4865,13 +4871,13 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     } else {
         var_f1_9530 = temp_f30_9506 - 1.0f;
     }
-    sp1B0.GetVelocity(var_f1_9530);
+    ((KDSplinePathSegment *) &sp1B0)->GetVelocity(var_f1_9530);
     if (temp_f30_9506 > 1.0f) {
         temp_r6_9539 = this->unkC;
-        temp_r6_9539->unk638->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_9539->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_9539->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_9539->unkA78), (AITargetData *) &temp_r6_9539->unk838.unk28);
+        ((SB2 *) temp_r6_9539->unk638)->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_9539->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_9539->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_9539->unkA78), (AITargetData *) &temp_r6_9539->unk838.unk28);
         temp_r4_9549 = this->unkC->unk638;
         M2C_FIELD(temp_r4_9549, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r4_9549, u8 *, 0x464) | 0x80);
-        sp1A0.Calculate((u32) this->unkC->unk638);
+        ((SB2 *) &sp1A0)->Calculate((u32) this->unkC->unk638);
         temp_r4_9558 = this->unkC;
         temp_r0_9560 = M2C_FIELD(temp_r4_9558->unk638, u32 *, 0x448);
         if (temp_r0_9560 != 0U) {
@@ -4880,7 +4886,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 if (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r3_9563)))->GetNextNode() != NULL) {
                     temp_r29_9569 = this->unkC;
                     temp_r30_9570 = temp_r29_9569->unkA68;
-                    this->unkC->unk638->GraphFollowingOn(((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r30_9570)))->GetNextNode(), M2C_BITWISE(CharacterGraphNode *, temp_r30_9570), M2C_BITWISE(GraphFollowBehaviours, temp_r29_9569->unkA78), (AITargetData *) &temp_r29_9569->unk838.unk28);
+                    ((SB2 *) this->unkC->unk638)->GraphFollowingOn(((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r30_9570)))->GetNextNode(), M2C_BITWISE(CharacterGraphNode *, temp_r30_9570), M2C_BITWISE(GraphFollowBehaviours, temp_r29_9569->unkA78), (AITargetData *) &temp_r29_9569->unk838.unk28);
                     temp_r3_9582 = this->unkC->unk638;
                     M2C_FIELD(temp_r3_9582, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_9582, u8 *, 0x464) | 0x80);
                     ((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, this->unkC->unkA68)))->SendArriveMessage();
@@ -4932,10 +4938,10 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     this->unk28 = temp_f30_9681;
                     this->unk2C = 0.0f;
                 }
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_9694 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_9694, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_9694, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
                 var_f30_9705 = this->unk28 / M2C_FIELD(this->unk10, f32 *, 0x38);
                 if (var_f30_9705 <= 1.0f) {
 
@@ -4945,10 +4951,10 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 temp_r4_9723 = this->unkC;
                 if (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r4_9723->unkA6C)))->GetLinkInfo(M2C_BITWISE(CharacterGraphNode *, temp_r4_9723->unkA68)) != 7) {
                     sp1C = 0.0f;
-                    sp190.GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
-                    sp180.GetVelocity(0.0f);
+                    ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
                     temp_f1_9745 = this->unk2C;
                     if (temp_f1_9745 != 0.0f) {
                         var_f2_9753 = (temp_f1_9745 * gUpdateTimeDelta) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -4957,10 +4963,10 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     }
                 } else {
                     sp18 = 0.0f;
-                    sp170.GetMeasure(var_f30_9705, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_9705, this->unk10 + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
-                    sp160.GetVelocity(var_f30_9705);
+                    ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_9705);
                     temp_f2_9785 = this->unk2C;
                     if (temp_f2_9785 != 0.0f) {
                         var_f2_9753 = ((temp_f2_9785 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -4976,7 +4982,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 } else {
                     var_f1_9821 = var_f2_9753;
                 }
-                sp150.GetMeasure(var_f1_9821, this->unk10 + 0x30, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_9821, this->unk10 + 0x30, KDSpline_PositionMixer);
                 spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
@@ -5023,7 +5029,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
         }
         goto block_102;
     }
-    temp_r3_9943 = this->unkC->unkA20->GetAnimSequence(0xA, 0xDD, 0, NULL);
+    temp_r3_9943 = ((EnemyDescriptor *) this->unkC->unkA20)->GetAnimSequence(0xA, 0xDD, 0, NULL);
     temp_f1_9944 = M2C_FIELD(temp_r3_9943, f32 *, 8);
     temp_f0_9945 = M2C_FIELD(temp_r3_9943, f32 *, 0xC);
     temp_f3_9947 = M2C_FIELD(temp_r3_9943, f32 *, 0x10);
@@ -5079,7 +5085,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             } else {
                 var_f1_10070 = var_f2_10055;
             }
-            sp110.GetMeasure(var_f1_10070, this->unk10 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_10070, this->unk10 + 0x30, KDSpline_PositionMixer);
             sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
@@ -5167,7 +5173,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             M2C_FIELD(temp_r3_10285, f64 *, 0x598) = sp50;
             M2C_FIELD(temp_r3_10285, f64 *, 0x5A0) = (f64) sp58;
             spF8 = (f64) sp58;
-            this->unkC->SetMovementType((CharacterMoveType) 0);
+            ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
             this->unk8 = 2;
             return this->unk8;
         }
@@ -5186,7 +5192,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     } else {
         var_f1_10335 = var_f2_10320;
     }
-    spE0.GetMeasure(var_f1_10335, this->unk10 + 0x30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_10335, this->unk10 + 0x30, KDSpline_PositionMixer);
     sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;
@@ -5301,7 +5307,7 @@ void EnemyGoal_GraphGlidePath::Activate() {
     temp_r4_10522 = temp_r3_10521->unkA38;
     if ((((s32) temp_r4_10522->unk6C != 0xA) || (M2C_BITWISE(s32, temp_r4_10522->unk68) != 0xE1)) && (((s32) temp_r4_10522->unk6C != 0xA) || (M2C_BITWISE(s32, temp_r4_10522->unk68) != 0x46))) {
         temp_r3_10521->SetAnim((AnimSequenceType) 0xA, 0xE1, 0, 0.15f, 0U, 0U);
-        this->unkC->SetMovementType((CharacterMoveType) 2);
+        ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
     }
     M2C_STRUCT_COPY((s32) &unksp9C + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
     sp20 = -spA0;
@@ -5322,7 +5328,7 @@ void EnemyGoal_GraphGlidePath::Activate() {
     spC4 = unksp64;
     spC8 = (f32) sp68;
     spCC = 0.0f;
-    sp50.GetRotationRPY();
+    ((Matrix *) &sp50)->GetRotationRPY();
     M2C_FIELD(this, f64 *, 0x18) = sp50;
     M2C_FIELD(this, f64 *, 0x20) = sp58;
 }
@@ -5509,13 +5515,13 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     } else {
         var_f1_10747 = temp_f30_10713 - (f32) (s32) temp_f30_10713;
     }
-    sp1B0.GetVelocity(var_f1_10747);
+    ((KDSplinePathSegment *) &sp1B0)->GetVelocity(var_f1_10747);
     if (temp_f30_10713 > 1.0f) {
         temp_r6_10766 = this->unkC;
-        temp_r6_10766->unk638->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_10766->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_10766->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_10766->unkA78), (AITargetData *) &temp_r6_10766->unk838.unk28);
+        ((SB2 *) temp_r6_10766->unk638)->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_10766->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_10766->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_10766->unkA78), (AITargetData *) &temp_r6_10766->unk838.unk28);
         temp_r4_10776 = this->unkC->unk638;
         M2C_FIELD(temp_r4_10776, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r4_10776, u8 *, 0x464) | 0x80);
-        sp1A0.Calculate((u32) this->unkC->unk638);
+        ((SB2 *) &sp1A0)->Calculate((u32) this->unkC->unk638);
         temp_r4_10785 = this->unkC;
         temp_r3_10787 = M2C_FIELD(temp_r4_10785->unk638, u32 *, 0x448);
         if ((temp_r3_10787 != 0U) && (temp_r3_10787 != M2C_BITWISE(u32, temp_r4_10785->unkA68))) {
@@ -5539,10 +5545,10 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     this->unk28 = temp_f30_10835;
                     this->unk2C = 0.0f;
                 }
-                this->unkC->unk638->GraphFollowingOff();
+                ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
                 temp_r3_10848 = this->unkC->unk638;
                 M2C_FIELD(temp_r3_10848, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_10848, u8 *, 0x464) & ~0x80);
-                this->unkC->unk638->ObstacleAvoidanceOff();
+                ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
                 var_f30_10859 = this->unk28 / M2C_FIELD(this->unk10, f32 *, 0x38);
                 if (var_f30_10859 <= 1.0f) {
 
@@ -5552,10 +5558,10 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 temp_r4_10877 = this->unkC;
                 if (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r4_10877->unkA6C)))->GetLinkInfo(M2C_BITWISE(CharacterGraphNode *, temp_r4_10877->unkA68)) != 4) {
                     sp1C = 0.0f;
-                    sp190.GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
-                    sp180.GetVelocity(0.0f);
+                    ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
                     temp_f1_10899 = this->unk2C;
                     if (temp_f1_10899 != 0.0f) {
                         var_f2_10907 = (temp_f1_10899 * gUpdateTimeDelta) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5564,10 +5570,10 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     }
                 } else {
                     sp18 = 0.0f;
-                    sp170.GetMeasure(var_f30_10859, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_10859, this->unk10 + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
-                    sp160.GetVelocity(var_f30_10859);
+                    ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_10859);
                     temp_f2_10937 = this->unk2C;
                     if (temp_f2_10937 != 0.0f) {
                         var_f2_10907 = ((temp_f2_10937 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5583,7 +5589,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 } else {
                     var_f1_10971 = var_f2_10907;
                 }
-                sp150.GetMeasure(var_f1_10971, this->unk10 + 0x30, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_10971, this->unk10 + 0x30, KDSpline_PositionMixer);
                 spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
@@ -5630,7 +5636,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
         }
         goto block_88;
     }
-    temp_r3_11093 = this->unkC->unkA20->GetAnimSequence(0xA, 0xDD, 0, NULL);
+    temp_r3_11093 = ((EnemyDescriptor *) this->unkC->unkA20)->GetAnimSequence(0xA, 0xDD, 0, NULL);
     temp_f1_11094 = M2C_FIELD(temp_r3_11093, f32 *, 8);
     temp_f0_11095 = M2C_FIELD(temp_r3_11093, f32 *, 0xC);
     temp_f3_11097 = M2C_FIELD(temp_r3_11093, f32 *, 0x10);
@@ -5686,7 +5692,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             } else {
                 var_f1_11218 = var_f2_11205;
             }
-            sp110.GetMeasure(var_f1_11218, this->unk10 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_11218, this->unk10 + 0x30, KDSpline_PositionMixer);
             sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
@@ -5774,7 +5780,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             M2C_FIELD(temp_r3_11433, f64 *, 0x598) = sp50;
             M2C_FIELD(temp_r3_11433, f64 *, 0x5A0) = (f64) sp58;
             spF8 = (f64) sp58;
-            this->unkC->SetMovementType((CharacterMoveType) 0);
+            ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
             this->unk8 = 2;
             return this->unk8;
         }
@@ -5793,7 +5799,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     } else {
         var_f1_11481 = var_f2_11468;
     }
-    spE0.GetMeasure(var_f1_11481, this->unk10 + 0x30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_11481, this->unk10 + 0x30, KDSpline_PositionMixer);
     sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;
@@ -5908,7 +5914,7 @@ void EnemyGoal_GraphFlyPath::Activate() {
     temp_r4_11666 = temp_r3_11665->unkA38;
     if ((temp_r4_11666 == NULL) || ((s32) temp_r4_11666->unk6C != 0xA) || (M2C_BITWISE(s32, temp_r4_11666->unk68) != 0)) {
         temp_r3_11665->SetAnim((AnimSequenceType) 0xA, 0, 0, 0.15f, 0U, 0U);
-        this->unkC->SetMovementType((CharacterMoveType) 2);
+        ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
     }
     M2C_STRUCT_COPY((s32) &unksp9C + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
     sp20 = -spA0;
@@ -5929,7 +5935,7 @@ void EnemyGoal_GraphFlyPath::Activate() {
     spC4 = unksp64;
     spC8 = (f32) sp68;
     spCC = 0.0f;
-    sp50.GetRotationRPY();
+    ((Matrix *) &sp50)->GetRotationRPY();
     M2C_FIELD(this, f64 *, 0x18) = sp50;
     M2C_FIELD(this, f64 *, 0x20) = sp58;
 }
@@ -5958,7 +5964,7 @@ u8 EnemyGoal_GraphHover::Update() {
     }
     temp_r30_11807 = this->unkC;
     var_r31_11808 = 0;
-    if (temp_r30_11807->HasAnimFinished() != 0) {
+    if (((Character *) temp_r30_11807)->HasAnimFinished() != 0) {
         temp_r4_11813 = temp_r30_11807->unkA38;
         if ((temp_r4_11813 != NULL) && ((s8 *) temp_r4_11813->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r30_11807, void **, 0x630), u32 *, 0x20))) {
             var_r31_11808 = 1;
@@ -5997,22 +6003,20 @@ void EnemyGoal_GraphHover::Init(Enemy *arg0) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_GraphFly::Terminate() {
     Enemy *temp_r4_11932;
     void *temp_r3_11917;
 
-    this->unkC->unk638->GraphFollowingOff();
+    ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
     temp_r3_11917 = this->unkC->unk638;
     M2C_FIELD(temp_r3_11917, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_11917, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
     temp_r4_11932 = this->unkC;
     temp_r4_11932->unk6B5 &= ~0x10;
     this->unk8 = 1;
 }
-#endif
 
 u8 EnemyGoal_GraphFly::Update() {
     f64 sp20;
@@ -6061,7 +6065,7 @@ u8 EnemyGoal_GraphFly::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void EnemyGoal_GraphFly::Activate() {
     Enemy *temp_r3_12028;
     Enemy *temp_r3_12041;
@@ -6077,7 +6081,7 @@ void EnemyGoal_GraphFly::Activate() {
     temp_r3_12028->unk6B5 |= 0x10;
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
-    this->unkC->SetMovementType((CharacterMoveType) 0);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
     temp_r3_12041 = this->unkC;
     temp_r3_12041->unk6B5 |= 0x10;
     temp_r3_12047 = this->unkC->unk638;
@@ -6092,30 +6096,28 @@ void EnemyGoal_GraphFly::Activate() {
         temp_r3_12056->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
     }
     this->unkC->SetRunMovementSpeed(1U);
-    this->unkC->SetMovementType((CharacterMoveType) 0);
-    this->unkC->unk638->ContainmentOff();
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 0);
+    ((SB2 *) this->unkC->unk638)->ContainmentOff();
     temp_r6_12093 = this->unkC;
-    temp_r6_12093->unk638->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_12093->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_12093->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_12093->unkA78), (AITargetData *) &temp_r6_12093->unk838.unk28);
+    ((SB2 *) temp_r6_12093->unk638)->GraphFollowingOn(M2C_BITWISE(CharacterGraphNode *, temp_r6_12093->unkA68), M2C_BITWISE(CharacterGraphNode *, temp_r6_12093->unkA6C), M2C_BITWISE(GraphFollowBehaviours, temp_r6_12093->unkA78), (AITargetData *) &temp_r6_12093->unk838.unk28);
     temp_r3_12102 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12102, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12102, u8 *, 0x464) | 0x80);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_GraphRun::Terminate() {
     void *temp_r3_12129;
     void *temp_r3_12141;
 
     this->unkC->StopMovement(1U);
-    this->unkC->unk638->GraphFollowingOff();
+    ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
     temp_r3_12129 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12129, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12129, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->ObstacleAvoidanceOff();
-    this->unkC->unk638->WallAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->WallAvoidanceOff();
     temp_r3_12141 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12141, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12141, u8 *, 0x464) & ~0x40);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk9E8'
 u8 EnemyGoal_GraphRun::Update() {
@@ -6147,14 +6149,14 @@ void EnemyGoal_GraphRun::Activate() {
     }
     this->unkC->unk9E8.Set(EnemyMovementType_GetMask(this->unk14) | 0xB, 0xA, 0, this->unk18);
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    this->unkC->unk638->ContainmentOff();
+    ((SB2 *) this->unkC->unk638)->ContainmentOff();
     temp_r6_12218 = this->unkC;
-    temp_r6_12218->unk638->GraphFollowingOn(temp_r6_12218->unkA80, temp_r6_12218->unkA84, (GraphFollowBehaviours) temp_r6_12218->unkA90, &temp_r6_12218->unk870);
+    ((SB2 *) temp_r6_12218->unk638)->GraphFollowingOn(temp_r6_12218->unkA80, temp_r6_12218->unkA84, (GraphFollowBehaviours) temp_r6_12218->unkA90, &temp_r6_12218->unk870);
     temp_r3_12227 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12227, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12227, u8 *, 0x464) | 0x80);
     if ((u8) this->unk11 != 0) {
-        this->unkC->unk638->ObstacleAvoidanceOn(NULL);
-        this->unkC->unk638->WallAvoidanceOn();
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
+        ((SB2 *) this->unkC->unk638)->WallAvoidanceOn();
     }
 }
 #endif
@@ -6165,10 +6167,10 @@ void EnemyGoal_GraphWalk::Terminate() {
     void *temp_r3_12274;
 
     this->unkC->StopMovement(1U);
-    this->unkC->unk638->GraphFollowingOff();
+    ((SB2 *) this->unkC->unk638)->GraphFollowingOff();
     temp_r3_12265 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12265, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12265, u8 *, 0x464) & ~0x80);
-    this->unkC->unk638->ObstacleAvoidanceOff();
+    ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOff();
     temp_r3_12274 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12274, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12274, u8 *, 0x464) & ~0x40);
 }
@@ -6188,8 +6190,8 @@ u8 EnemyGoal_GraphWalk::Update() {
             temp_r3_12309 = temp_r4_12294->unk638;
             M2C_FIELD(temp_r3_12309, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12309, u8 *, 0x464) | 0x40);
         }
-        this->unkC->SetAnim((AnimSequenceType) 5, 0, 0, 0.15f, 0U, 0U);
-        this->unkC->SetWalkMovementSpeed(1U);
+        ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 5, 0, 0, 0.15f, 0U, 0U);
+        ((Enemy *) this->unkC)->SetWalkMovementSpeed(1U);
         this->unkC->SetMovementType((CharacterMoveType) 0);
     }
     this->unkC->unk9E8.Update();
@@ -6213,13 +6215,13 @@ void EnemyGoal_GraphWalk::Activate() {
     this->unkC->SetMovementType((CharacterMoveType) 0);
     this->unkC->unk694 = 0.0f;
     this->unkC->unk9E8.Set(0xBU, 0xA, 0, 0);
-    this->unkC->unk638->ContainmentOff();
+    ((SB2 *) this->unkC->unk638)->ContainmentOff();
     temp_r6_12378 = this->unkC;
-    temp_r6_12378->unk638->GraphFollowingOn(temp_r6_12378->unkA80, temp_r6_12378->unkA84, (GraphFollowBehaviours) temp_r6_12378->unkA90, &temp_r6_12378->unk870);
+    ((SB2 *) temp_r6_12378->unk638)->GraphFollowingOn(temp_r6_12378->unkA80, temp_r6_12378->unkA84, (GraphFollowBehaviours) temp_r6_12378->unkA90, &temp_r6_12378->unk870);
     temp_r3_12387 = this->unkC->unk638;
     M2C_FIELD(temp_r3_12387, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_12387, u8 *, 0x464) | 0x80);
     if ((u8) this->unk11 != 0) {
-        this->unkC->unk638->ObstacleAvoidanceOn(NULL);
+        ((SB2 *) this->unkC->unk638)->ObstacleAvoidanceOn(NULL);
     }
 }
 #endif

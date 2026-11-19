@@ -1,4 +1,5 @@
 #include "spyro/source/UIImage.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -71,7 +72,7 @@ void UIImage::Draw(const RenderContext &arg0) {
         sp40 = temp_f0_70;
         sp18 = sp30.unk8 + sp20.unk8;
         sp48 = (f64) sp18;
-        sp90.Translate((Matrix *) &sp90, *((MKVector3 *) &sp40));
+        ((Matrix *) &sp90)->Translate((Matrix *) &sp90, *((MKVector3 *) &sp40));
     }
     sp50 = 0.0f;
     temp_f0_90 = this->unk18.unk34;
@@ -114,13 +115,13 @@ void UIImage::Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 UIImage::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s8 *temp_r3_177;
 
     sp8 = NULL;
-    if (arg0->LoadString("texture", &sp8, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadString("texture", &sp8, 0) != 0) {
         temp_r3_177 = this->unk60;
         if (temp_r3_177 != NULL) {
             UIStringTable_Remove(temp_r3_177);
@@ -129,11 +130,11 @@ s32 UIImage::LoadLine(UIDataLine *arg0) {
         this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;
     }
-    if (arg0->IsField("UVs") != 0) {
-        arg0->AsFloat(0, (f32 *) &this->unk60);
-        arg0->AsFloat(1, (f32 *) &this->unk64);
-        arg0->AsFloat(2, &this->unk68);
-        arg0->AsFloat(3, &this->unk6C);
+    if (((MKIniLine *) arg0)->IsField("UVs") != 0) {
+        ((MKIniLine *) arg0)->AsFloat(0, (f32 *) &this->unk60);
+        ((MKIniLine *) arg0)->AsFloat(1, (f32 *) &this->unk64);
+        ((MKIniLine *) arg0)->AsFloat(2, &this->unk68);
+        ((MKIniLine *) arg0)->AsFloat(3, &this->unk6C);
         return 1;
     }
     return UIObject::LoadLine(arg0);

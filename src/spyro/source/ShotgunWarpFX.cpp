@@ -661,7 +661,7 @@ void ShotgunWarpFX::Update() {
     UpdateWarp();
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ShotgunWarpFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -686,7 +686,7 @@ void ShotgunWarpFX::Init() {
     this->unk10 = 0x14;
     temp_r3_1157 = this->unkC;
     temp_r30_1160 = temp_r3_1157 * this->unk10 * 0x30;
-    temp_r3_1161 = temp_r3_1157->Current();
+    temp_r3_1161 = ((MKHeap *) temp_r3_1157)->Current();
     if (temp_r3_1161 != NULL) {
         var_r3_1168 = ((MKHeap *) (temp_r3_1161->Current()))->Alloc(temp_r30_1160, NULL, 0);
     } else {
@@ -695,7 +695,7 @@ void ShotgunWarpFX::Init() {
     this->unk0 = var_r3_1168;
     temp_r3_1175 = this->unkC;
     temp_r30_1178 = temp_r3_1175 * this->unk10 * 0x30;
-    temp_r3_1179 = temp_r3_1175->Current();
+    temp_r3_1179 = ((MKHeap *) temp_r3_1175)->Current();
     if (temp_r3_1179 != NULL) {
         var_r3_1186 = ((MKHeap *) (temp_r3_1179->Current()))->Alloc(temp_r30_1178, NULL, 0);
     } else {
@@ -704,7 +704,7 @@ void ShotgunWarpFX::Init() {
     this->unk4 = var_r3_1186;
     temp_r3_1193 = this->unkC;
     temp_r30_1196 = temp_r3_1193 * this->unk10 * 8;
-    temp_r3_1197 = temp_r3_1193->Current();
+    temp_r3_1197 = ((MKHeap *) temp_r3_1193)->Current();
     if (temp_r3_1197 != NULL) {
         var_r3_1204 = ((MKHeap *) (temp_r3_1197->Current()))->Alloc(temp_r30_1196, NULL, 0);
     } else {

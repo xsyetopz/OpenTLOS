@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXEarth2.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
@@ -392,7 +393,7 @@ void FuryFXEarth2::SpawnVortexElement() {
                 M2C_FIELD(temp_r31_521, f32 *, 0x34) = MKRand_Float(&gViewSeed, 20.0f, 300.0f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x38) = MKRand_Float(&gViewSeed, 0.05f, 0.2f);
                 M2C_FIELD(temp_r31_521, s32 *, 0x3C) = 0;
-                spB0.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+                ((FuryFXEarth2 *) &spB0)->CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
                 M2C_STRUCT_COPY((s32) &spEC + 4, (s32) &spA0.unkC + 4, 0x40);
                 MKModel_SetWorldMatrix(M2C_FIELD((this + (M2C_FIELD(temp_r31_521, s32 *, 0x40) * 4)), MKModel **, 0xB0), spF0);
             }
@@ -415,7 +416,7 @@ loop_2:
     if (var_r30_645 != NULL) {
         temp_r31_684 = *var_r30_645;
         if (temp_r31_684 != NULL) {
-            sp10.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+            ((FuryFXEarth2 *) &sp10)->CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
             M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
             MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), sp50);
             MKModel_SetColor(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), this->unkD0);
@@ -529,7 +530,7 @@ loop_24:
                 }
                 break;
             }
-            sp50.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+            ((FuryFXEarth2 *) &sp50)->CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
             M2C_STRUCT_COPY((s32) &sp8C + 4, (s32) &unksp4C + 4, 0x40);
             MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r29_892, s32 *, 0x40) * 4) + 0xB0)), sp90);
             var_r31_711 += 4;
@@ -735,7 +736,7 @@ loop_9:
             var_r4_1219 += 4;
             goto loop_9;
         }
-        temp_r3_1246 = var_r3_1221->Current();
+        temp_r3_1246 = ((MKHeap *) var_r3_1221)->Current();
         if (temp_r3_1246 != NULL) {
             ((MKHeap *) (temp_r3_1246->Current()))->Free(var_r31_1220, NULL, 0);
         } else {
@@ -1253,7 +1254,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void FuryFXEarth2::Init() {
     M2C_UNK *temp_r3_2187;
     M2C_UNK *temp_r3_2193;
@@ -1264,14 +1265,14 @@ void FuryFXEarth2::Init() {
     s32 var_ctr_2185;
 
     FuryFX::Init();
-    this->unk90 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unk90 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
     SetDefaults();
     this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
     this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);
     this->unkB8 = MKModel_Create("FX0014_RockChunks", NULL, 2, NULL);
     temp_r3_2163 = MKModel_Create("P9011_FireRockLavaSmall", NULL, 2, NULL);
     this->unkBC = temp_r3_2163;
-    temp_r3_2165 = temp_r3_2163->Current();
+    temp_r3_2165 = ((MKHeap *) temp_r3_2163)->Current();
     if (temp_r3_2165 != NULL) {
         var_r3_2172 = ((MKHeap *) (temp_r3_2165->Current()))->Alloc(0x1070, NULL, 0);
     } else {

@@ -3,6 +3,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/Character.h"
 #include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Enemy.h"
@@ -16,7 +17,7 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackFlying::Terminate() {
     AttackerManager *var_r3_47;
     Enemy *temp_r3_17;
@@ -33,11 +34,11 @@ void EnemyGoal_AttackFlying::Terminate() {
     }
     temp_r3_27 = this->unkC;
     var_r31_28 = 0;
-    if (((u8) M2C_FIELD(temp_r3_27, u8 *, 0x8B8) == 2) || (temp_r3_27->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_27, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_27->unk870.unk30)->Get() != NULL)) {
         var_r31_28 = 1;
     }
     if (var_r31_28 != 0) {
-        var_r3_47 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_47 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_47 = NULL;
     }
@@ -54,7 +55,7 @@ void EnemyGoal_AttackFlying::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp10'
 u8 EnemyGoal_AttackFlying::Update() {
     f64 sp8;
     CharacterFireFX *temp_r4_238;
@@ -87,13 +88,13 @@ u8 EnemyGoal_AttackFlying::Update() {
     temp_r3_93->SetInvulnerableToBreathAttacks(((u8) M2C_FIELD(temp_r3_93, u8 *, 0xB08) >> 4U) & 1, 1U);
     temp_r3_98 = this->unkC;
     var_r30_99 = 0;
-    if (((u8) M2C_FIELD(temp_r3_98, u8 *, 0x8B8) == 2) || (temp_r3_98->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_98, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_98->unk870.unk30)->Get() != NULL)) {
         var_r30_99 = 1;
     }
     if (var_r30_99 != 0) {
         temp_r4_112 = this->unkC;
-        temp_r4_112->unk838.unk28.Update(*((MKVector3 *) &temp_r4_112->unk588));
-        sp8.GetDir();
+        ((AITargetData *) &temp_r4_112->unk838.unk28)->Update(*((MKVector3 *) &temp_r4_112->unk588));
+        ((AITargetData *) &sp8)->GetDir();
         temp_r5_120 = this->unkC;
         M2C_FIELD(temp_r5_120, f64 *, 0xE0) = sp8;
         M2C_FIELD(temp_r5_120, f64 *, 0xE8) = sp10;
@@ -105,7 +106,7 @@ u8 EnemyGoal_AttackFlying::Update() {
     }
     temp_r29_139 = this->unkC;
     var_r30_140 = 0;
-    if (temp_r29_139->HasAnimFinished() != 0) {
+    if (((Character *) temp_r29_139)->HasAnimFinished() != 0) {
         temp_r4_145 = temp_r29_139->unkA38;
         if ((temp_r4_145 != NULL) && ((s8 *) temp_r4_145->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_139, void **, 0x630), u32 *, 0x20))) {
             var_r30_140 = 1;
@@ -130,14 +131,14 @@ u8 EnemyGoal_AttackFlying::Update() {
             var_r5_186 = 1;
         }
         if (var_r5_186 != 0) {
-            if (temp_r29_185->HasAnimFinished() != 0) {
+            if (((Character *) temp_r29_185)->HasAnimFinished() != 0) {
                 temp_r3_203 = this->unkC;
                 temp_r4_207 = temp_r3_203->unkA08->__vptr;
                 temp_r3_203->SetAnim((AnimSequence *) temp_r4_207, temp_r4_207 + 0x40, 0.15f, 0U);
             }
         } else {
             var_r30_213 = 0;
-            if (temp_r29_185->HasAnimFinished() != 0) {
+            if (((Character *) temp_r29_185)->HasAnimFinished() != 0) {
                 temp_r4_217 = temp_r29_185->unkA38;
                 if ((temp_r4_217 != NULL) && ((void *) temp_r4_217->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_185, void **, 0x630), u32 *, 0x20))) {
                     var_r30_213 = 1;
@@ -178,8 +179,8 @@ void EnemyGoal_AttackFlying::Activate() {
     temp_r3_268->unk6B5 &= ~0x20;
     temp_r3_272 = this->unkC;
     temp_r3_272->unk6B5 |= 0x10;
-    this->unkC->StopMovement(1U);
-    this->unkC->SetMovementType((CharacterMoveType) 1);
+    ((Character *) this->unkC)->StopMovement(1U);
+    ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 1);
     temp_r4_281 = this->unkC;
     temp_r4_281->unk684 = M2C_FIELD(temp_r4_281->unkA20, f32 *, 0x15C);
     temp_r3_287 = this->unkC;
@@ -191,14 +192,14 @@ loop_2:
         temp_r4_292->unkA04 = (CharacterZapFX *) &temp_r4_292->unkA04->unk4;
         goto loop_2;
     }
-    this->unkC->unkA18->SetDefaults();
+    ((AttackSweepData *) this->unkC->unkA18)->SetDefaults();
     temp_r3_306 = this->unkC;
     var_r30_307 = 0;
-    if (((u8) M2C_FIELD(temp_r3_306, u8 *, 0x8B8) == 2) || (temp_r3_306->unk870.unk30.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_306, u8 *, 0x8B8) == 2) || (((TargetContext *) &temp_r3_306->unk870.unk30)->Get() != NULL)) {
         var_r30_307 = 1;
     }
     if (var_r30_307 != 0) {
-        var_r3_326 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_326 = M2C_FIELD(((TargetContext *) &this->unkC->unk870.unk30)->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_326 = NULL;
     }
@@ -212,7 +213,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_FlyingAttackMode::Terminate() {
     AttackerManager *var_r3_380;
     Targetable *temp_r3_361;
@@ -223,11 +224,11 @@ void EnemyGoal_FlyingAttackMode::Terminate() {
     M2C_FIELD(this->unkC, s32 *, 0xA20) = 0;
     M2C_FIELD(this->unkC, s8 *, 0x6F8) = 0;
     temp_r3_361 = this->unkC;
-    if (((u8) M2C_FIELD(temp_r3_361, u8 *, 0x8B8) == 2) || (((TargetContext *) ((TargetContext *) (temp_r3_361 + 0x8B0)))->Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_361, u8 *, 0x8B8) == 2) || (((TargetContext *) (temp_r3_361 + 0x8B0))->Get() != NULL)) {
         var_r31_356 = 1;
     }
     if (var_r31_356 != 0) {
-        var_r3_380 = M2C_FIELD(((TargetContext *) ((TargetContext *) (this->unkC + 0x8B0)))->Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_380 = M2C_FIELD(((TargetContext *) (this->unkC + 0x8B0))->Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_380 = NULL;
     }
@@ -316,7 +317,7 @@ void EnemyGoal_FlyingAttackMode::Activate() {
         sp10 = temp_f1_494;
         sp50 = (f64) sp10;
         temp_r29_506 = temp_r29_466->IsVisible(*((MKVector3 *) &sp48), M2C_FIELD(M2C_FIELD(temp_r3_469, void **, 0x44), f32 (**)(Targetable *, void *, f32, f32, f64), 0x100)(temp_r3_469, temp_r4_476, temp_f1_494, (f32) sp40, sp18));
-        this->unkC->SelectAttack(this->unk20->GetDist(), 4U, 0U, 0U);
+        ((Enemy *) this->unkC)->SelectAttack(this->unk20->GetDist(), 4U, 0U, 0U);
         temp_r3_514 = this->unkC;
         if ((void *) M2C_FIELD(temp_r3_514, void **, 0xA20) != NULL) {
             if (!(((u8) M2C_FIELD(temp_r3_514, u8 *, 0x6B5) >> 4U) & 1)) {
@@ -326,11 +327,11 @@ void EnemyGoal_FlyingAttackMode::Activate() {
             }
             temp_r3_530 = this->unkC;
             var_r30_531 = 0;
-            if (((u8) M2C_FIELD(temp_r3_530, u8 *, 0x8B8) == 2) || (((TargetContext *) ((TargetContext *) (temp_r3_530 + 0x8B0)))->Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r3_530, u8 *, 0x8B8) == 2) || (((TargetContext *) (temp_r3_530 + 0x8B0))->Get() != NULL)) {
                 var_r30_531 = 1;
             }
             if (var_r30_531 != 0) {
-                var_r28_551 = M2C_FIELD(((TargetContext *) ((TargetContext *) (this->unkC + 0x8B0)))->Get()->__vptr, AttackerManager *(**)(), 0x48)();
+                var_r28_551 = M2C_FIELD(((TargetContext *) (this->unkC + 0x8B0))->Get()->__vptr, AttackerManager *(**)(), 0x48)();
             } else {
                 var_r28_551 = NULL;
             }

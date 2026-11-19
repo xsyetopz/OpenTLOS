@@ -86,7 +86,7 @@ void LoadLevel_UpdateLoading() {
         if (MKPackage_QIsLoaded(hPackage, NULL, NULL) != 0) {
             GameData::gameData[0x168] |= (u8) pLoadChunkInfo->unk28;
             GameData::gameData[0x169] |= (u8) pLoadChunkInfo->unk2C;
-            ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetAttacksAvailable(pLoadChunkInfo->unk30);
+            ((GameStats *) &GameData::gameData[0x70])->SetAttacksAvailable(pLoadChunkInfo->unk30);
             gb.ResetInGameData();
             gb.unk32C->Init(pLoadChunkInfo);
             gb.unk32C->LoadGlobalResources();
@@ -253,7 +253,7 @@ void LoadLevel_Deinit() {
     if ((s32) gb.unk340 != 0) {
         var_f0_475 = 2.0f;
     } else {
-        gb.GetWorldInfo();
+        ((Level *) &gb)->GetWorldInfo();
         var_f0_475 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x1C);
     }
     M2C_FIELD(gMK, f32 *, 0xB0) = var_f0_475;
@@ -269,7 +269,7 @@ void LoadLevel_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void LoadLevel_Init() {
     s32 spC;
     s32 sp8;
@@ -278,7 +278,7 @@ void LoadLevel_Init() {
     pLoadingScreenSystem = pResidentLSSystem;
     spC = 0;
     M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pResidentLSSystem, &sp8);
-    pLoadingScreenSystem->PushScreen("LoadLevelScreen");
+    ((UISystem *) pLoadingScreenSystem)->PushScreen("LoadLevelScreen");
     M2C_FIELD(gMK, f32 *, 0xB0) = 2.0f;
     M2C_FIELD(&gMKDefaults, s8 *, 0x1C) = 0;
     if ((s32) *gGMState.GetCurrState() != 4) {
@@ -346,7 +346,7 @@ loop_3:
     var_r31_653->Init(UISystem::descriptor);
     temp_r3_675 = ui_cast<UISystem *, UIObject *>(var_r31_653);
     pResidentLSSystem = temp_r3_675;
-    if (temp_r3_675->Load("LoadLevel.ui", NULL) != 0) {
+    if (((UIObject *) temp_r3_675)->Load("LoadLevel.ui", NULL) != 0) {
         M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **), 0x28)(pResidentLSSystem);
         M2C_FIELD(*pResidentLSSystem, M2C_UNK (**)(void **), 0x20)(pResidentLSSystem);
         sp8 = 1;

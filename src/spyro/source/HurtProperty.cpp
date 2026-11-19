@@ -1,5 +1,6 @@
 #include "spyro/source/HurtProperty.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/KDMatrixProperty.h"
 #include "spyro/source/KDProperty.h"
@@ -79,7 +80,7 @@ void HurtProperty::DoHurt() {
     spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp110 = 0;
     if ((u32) *KDProperty::pInstanceMem != 0U) {
-        sp30.GetPos();
+        ((MKProp *) &sp30)->GetPos();
         spF0 = sp30;
         spF8 = sp38;
     } else {

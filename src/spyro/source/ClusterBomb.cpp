@@ -1,4 +1,5 @@
 #include "spyro/source/ClusterBomb.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -356,7 +357,7 @@ loop_52:
                     KDRand_Vector(spD8, *((MKVector3 *) &spC8));
                     ((Explosion3 *) (M2C_FIELD(temp_r25_515, Explosion3 **, 0x60)))->Trigger(*temp_r28_593, 2.0f, 1U, 0U, spD8, NULL);
                     sp198.unk4 = 0;
-                    temp_f27_536 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(0, 1, 3);
+                    temp_f27_536 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(0, 1, 3);
                     sp198.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f27_536, 1, 3, 0, 0, 0, -1);
                     sp198.unk10 = M2C_FIELD(temp_r28_593, f64 *, 0);
                     sp198.unk18 = M2C_FIELD(temp_r28_593, f64 *, 8);
@@ -440,7 +441,7 @@ loop_9:
             var_r4_665 += 4;
             goto loop_9;
         }
-        temp_r3_692 = var_r3_667->Current();
+        temp_r3_692 = ((MKHeap *) var_r3_667)->Current();
         if (temp_r3_692 != NULL) {
             ((MKHeap *) (temp_r3_692->Current()))->Free(var_r31_666, NULL, 0);
         } else {
@@ -495,9 +496,7 @@ void ClusterBomb::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void ClusterBombDescriptor::Init() {
     MKPropDescriptor::Init();
-    gMK->CreatePropDeferred("Explosion3", &this->unk60);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("Explosion3", &this->unk60);
 }
-#endif

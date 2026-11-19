@@ -10,12 +10,13 @@
 #include "spyro/source/FloorSwitch.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -251,16 +252,16 @@ u8 states__10DragonBust[0xD8] = {
 static s32 lit_709 = 0;
 static u8 lit_710 = 1;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Deinit() {
     ManagedLight *temp_r4_58;
 
-    this->unkC8.Deinit();
+    ((KDStateMachine<DragonBust> *) &this->unkC8)->Deinit();
     MKMaterial_Destroy(this->unk124);
     KDSound_Stop(&this->unk130);
     temp_r4_58 = this->unk118;
     if (temp_r4_58 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_58);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_58);
     }
     MKMaterial_Destroy(this->unk120);
     MKModel_Destroy(this->unk11C);
@@ -268,10 +269,10 @@ void DragonBust::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Draw() {
     GameProp::Draw();
-    if (this->unkC8.GetState() == 3) {
+    if (((KDStateMachine<DragonBust> *) &this->unkC8)->GetState() == 3) {
         gRenderState = this->unk120;
         MKModel_Draw(this->unk11C, NULL);
         gRenderState = NULL;
@@ -279,11 +280,11 @@ void DragonBust::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Message(MKMessage *arg0) {
     void *temp_r3_126;
 
-    if ((this->unkC8.GetState() < 2) && ((s32) arg0->unk0 == 0x12)) {
+    if ((((KDStateMachine<DragonBust> *) &this->unkC8)->GetState() < 2) && ((s32) arg0->unk0 == 0x12)) {
         temp_r3_126 = checked_cast<CollisionObjectCollideMsg *, MKMessage>(arg0);
         if ((u32) M2C_FIELD(temp_r3_126, u32 *, 0xC) != 0U) {
             gb.GetSpyro();
@@ -292,7 +293,7 @@ void DragonBust::Message(MKMessage *arg0) {
             }
         }
     }
-    this->unk130.Message(arg0);
+    ((KDSoundPlayer *) &this->unk130)->Message(arg0);
     GameProp::Message(arg0);
 }
 #endif
@@ -521,7 +522,6 @@ void DragonBust::ActivatingBUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void DragonBust::ActivatingBEnter() {
     s32 spC;
     s32 sp8;
@@ -530,7 +530,7 @@ void DragonBust::ActivatingBEnter() {
 
     temp_r4_558 = this->unk118;
     if (temp_r4_558 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_558);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_558);
     }
     this->unk158 = 0;
     temp_r3_570 = this->unk128;
@@ -539,7 +539,6 @@ void DragonBust::ActivatingBEnter() {
     M2C_FIELD(M2C_FIELD(temp_r3_570, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_570, &sp8, 0);
     this->unkE4 = 0.5f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DragonBust::ActivatingAUpdate() {
@@ -653,9 +652,9 @@ void DragonBust::ActivatingAEnter() {
     MKModel_SetWorldMatrix(this->unk11C, sp60);
     temp_r4_766 = this->unk118;
     if (temp_r4_766 != NULL) {
-        gb.unk80->EnableLight(temp_r4_766, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_766, 1U);
         sp20.operator*(150.0f);
-        sp30.GetPos();
+        ((MKProp *) &sp30)->GetPos();
         sp10 = sp30 + M2C_BITWISE(f64, sp20);
         temp_r3_791 = this->unk118;
         sp40 = sp10;
@@ -1082,17 +1081,17 @@ void DragonBust::IdleEnter() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DragonBust::State'
 void DragonBust::SetState(DragonBust::State arg1) {
-    this->unkC8.SetState(this, (s32) arg1, 0U);
+    ((KDStateMachine<DragonBust> *) &this->unkC8)->SetState(this, (s32) arg1, 0U);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void DragonBust::Update() {
     s32 sp8;
 
-    this->unkC8.Update(this, 0);
+    ((KDStateMachine<DragonBust> *) &this->unkC8)->Update(this, 0);
     sp8 = 1;
-    this->unk130.Update(GS_StatueMoveLP, 1U, this->unk158, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk130)->Update(GS_StatueMoveLP, 1U, this->unk158, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk158 = 0;
     GameProp::Update();
 }
@@ -1147,10 +1146,10 @@ void DragonBust::LoadDone() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk118 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_709, lit_710);
+    this->unk118 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 500.0f, lit_709, lit_710);
     temp_r4_1604 = this->unk118;
     if (temp_r4_1604 != NULL) {
-        gb.unk80->EnableLight(temp_r4_1604, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1604, 0U);
     }
 }
 #endif
@@ -1185,7 +1184,7 @@ void DragonBust::Init() {
     this->unk124 = NULL;
     this->unk128 = NULL;
     this->unk12C = 0;
-    this->unk130.Init(0.25f, 0.5f);
+    ((KDSoundFader *) &this->unk130)->Init(0.25f, 0.5f);
     this->unk158 = 0;
     GameProp::Init();
 }

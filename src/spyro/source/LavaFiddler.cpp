@@ -81,7 +81,7 @@ void LavaFiddlerCritter::SetIdleState(LavaFiddler *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp150'
 void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     s8 sp258;
     s32 sp254;
@@ -264,7 +264,7 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
         sp1E8 = (f64) sp218;
         sp1F0 = (f64) sp220;
     }
-    sp148.GetRandPos();
+    ((Volume *) &sp148)->GetRandPos();
     sp68 = 0.0f;
     sp6C = -500.0f;
     sp70 = 0.0f;
@@ -1043,7 +1043,6 @@ void LavaFiddlerCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void LavaFiddlerCritterDescriptor::LoadDone() {
     s8 *temp_r30_1634;
     s8 *temp_r30_1652;
@@ -1060,49 +1059,48 @@ void LavaFiddlerCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1634 = this->unk34;
-    if (temp_r30_1634->Exists("idle01") != 0) {
-        var_r3_1644 = temp_r30_1634->GetAnim("idle01");
+    if (((MKAnimScript *) temp_r30_1634)->Exists("idle01") != 0) {
+        var_r3_1644 = ((MKAnimScript *) temp_r30_1634)->GetAnim("idle01");
     } else {
         var_r3_1644 = NULL;
     }
     this->unk70 = (s32) var_r3_1644;
     temp_r30_1652 = this->unk34;
-    if (temp_r30_1652->Exists("Hide_Enter") != 0) {
-        var_r3_1662 = temp_r30_1652->GetAnim("Hide_Enter");
+    if (((MKAnimScript *) temp_r30_1652)->Exists("Hide_Enter") != 0) {
+        var_r3_1662 = ((MKAnimScript *) temp_r30_1652)->GetAnim("Hide_Enter");
     } else {
         var_r3_1662 = NULL;
     }
     this->unk74 = (s32) var_r3_1662;
     temp_r30_1670 = this->unk34;
-    if (temp_r30_1670->Exists("Hide_Loop") != 0) {
-        var_r3_1680 = temp_r30_1670->GetAnim("Hide_Loop");
+    if (((MKAnimScript *) temp_r30_1670)->Exists("Hide_Loop") != 0) {
+        var_r3_1680 = ((MKAnimScript *) temp_r30_1670)->GetAnim("Hide_Loop");
     } else {
         var_r3_1680 = NULL;
     }
     this->unk78 = (s32) var_r3_1680;
     temp_r30_1688 = this->unk34;
-    if (temp_r30_1688->Exists("Hide_Exit") != 0) {
-        var_r3_1698 = temp_r30_1688->GetAnim("Hide_Exit");
+    if (((MKAnimScript *) temp_r30_1688)->Exists("Hide_Exit") != 0) {
+        var_r3_1698 = ((MKAnimScript *) temp_r30_1688)->GetAnim("Hide_Exit");
     } else {
         var_r3_1698 = NULL;
     }
     this->unk7C = (s32) var_r3_1698;
     temp_r30_1706 = this->unk34;
-    if (temp_r30_1706->Exists("Walk_Left") != 0) {
-        var_r3_1716 = temp_r30_1706->GetAnim("Walk_Left");
+    if (((MKAnimScript *) temp_r30_1706)->Exists("Walk_Left") != 0) {
+        var_r3_1716 = ((MKAnimScript *) temp_r30_1706)->GetAnim("Walk_Left");
     } else {
         var_r3_1716 = NULL;
     }
     this->unk80 = (s32) var_r3_1716;
     temp_r30_1724 = this->unk34;
-    if (temp_r30_1724->Exists("Walk_Right") != 0) {
-        var_r3_1734 = temp_r30_1724->GetAnim("Walk_Right");
+    if (((MKAnimScript *) temp_r30_1724)->Exists("Walk_Right") != 0) {
+        var_r3_1734 = ((MKAnimScript *) temp_r30_1724)->GetAnim("Walk_Right");
     } else {
         var_r3_1734 = NULL;
     }
     this->unk84 = (s32) var_r3_1734;
 }
-#endif
 
 void LavaFiddlerCritterDescriptor::Init() {
     KDPropDescriptor::Init();

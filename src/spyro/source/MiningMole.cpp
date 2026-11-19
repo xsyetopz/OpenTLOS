@@ -7,6 +7,7 @@
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/MoleTether.h"
 #include "spyro/source/NPCGoal_Think.h"
 #include "unplaced_templates.h"
@@ -15,7 +16,6 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -35,12 +35,10 @@ void MiningMole::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Exhumor::Message(MKMessage *arg0) {
-    this->unkAFC.Message(arg0);
+    ((KDSoundPlayer *) &this->unkAFC)->Message(arg0);
     Enemy::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 void Exhumor::Update() {
@@ -100,7 +98,7 @@ block_6:
         var_r31_196 = 1;
     }
     sp8 = 1;
-    this->unkAFC.Update(GS_MoleLeaderCandleLP1, 1U, var_r31_196, NULL, &sp88, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkAFC)->Update(GS_MoleLeaderCandleLP1, 1U, var_r31_196, NULL, &sp88, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 #endif
 
@@ -139,14 +137,14 @@ void Exhumor::Init() {
     temp_r31_288->Init((Enemy *) this);
     temp_r31_288->unk38 = 0;
     this->unkA24 = (EnemyAttack *) temp_r31_288;
-    this->unkAFC.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkAFC)->Init(0.25f, 0.25f);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P13NPCGoal_Think'
 void MiningMoleLeader::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x169) {
-        this->unkAFC.Message(arg0);
+        ((KDSoundPlayer *) &this->unkAFC)->Message(arg0);
         Enemy::Message(arg0);
         return;
     }
@@ -289,7 +287,7 @@ block_26:
         var_r30_584 = 1;
     }
     sp8 = 1;
-    this->unkAFC.Update(GS_MoleLeaderCandleLP1, 1U, var_r30_584, NULL, &spB8, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkAFC)->Update(GS_MoleLeaderCandleLP1, 1U, var_r30_584, NULL, &spB8, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 #endif
 
@@ -329,7 +327,7 @@ void MiningMoleLeader::Init() {
     temp_r31_675->unk38 = 0;
     this->unkA24 = (EnemyAttack *) temp_r31_675;
     this->unkAF8 = -1;
-    this->unkAFC.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkAFC)->Init(0.25f, 0.25f);
 }
 #endif
 
@@ -482,7 +480,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             spE0.unk34 = unkspCC;
             spE0.unk38 = (f32) spD0;
             spE0.unk3C = 1.0f;
-            this->unkAFC->SetWorldMatrix(spE0);
+            ((MoleTether *) this->unkAFC)->SetWorldMatrix(spE0);
             temp_r3_920 = this->unkAFC;
             M2C_FIELD(M2C_FIELD(temp_r3_920, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_920);
             temp_r3_925 = this->unkAFC;
@@ -527,7 +525,7 @@ void MiningMole::Init() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unkAF8->Init((Enemy *) this);
+    ((NPCGoal_Think *) this->unkAF8)->Init((Enemy *) this);
     M2C_FIELD(this->unkAF8, s8 *, 0x38) = 1;
     this->unkA24 = (EnemyAttack *) this->unkAF8;
 }

@@ -7,6 +7,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/EnemySpawner.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/Game.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
@@ -17,7 +18,9 @@ M2C_UNK __destroy_arr(s32 *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
+#if 0 // DRAFT: identifier 'gb' redeclared
 extern s32 gb;
+#endif
 
 void ElementalCombatController::AttemptSpawn() {
     s32 temp_r3_84;
@@ -124,7 +127,6 @@ void ElementalCombatController::Update() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
 void ElementalCombatController::Message(MKMessage *arg0) {
     s8 sp2A;
     s8 sp29;
@@ -158,7 +160,7 @@ void ElementalCombatController::Message(MKMessage *arg0) {
             sp28 = 0;
             sp2A = 1;
             sp29 = 1;
-            gb.GetSpyro();
+            ((GameGlobals *) &gb)->GetSpyro();
             M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), M2C_UNK (**)(), 0x2C)();
         }
         break;
@@ -168,7 +170,6 @@ void ElementalCombatController::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to
 void ElementalCombatController::Resolve() {
@@ -298,7 +299,7 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (this->unkB0.LoadLine(arg0, "OnComplete") != 0) {
         return 1U;
     }
-    if (this->unk39C.LoadLine(arg0, "OnWave1Complete") != 0) {
+    if (((EventMessage *) &this->unk39C)->LoadLine(arg0, "OnWave1Complete") != 0) {
         return 1U;
     }
     if (this->unk3A0.LoadLine(arg0, "OnWave2Complete") != 0) {

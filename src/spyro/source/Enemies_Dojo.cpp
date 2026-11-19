@@ -1,13 +1,17 @@
 #include "spyro/source/Enemies_Dojo.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterDojoFX.h"
+#include "spyro/source/CrashFirePS.h"
 #include "spyro/source/DojoGoal_Think.h"
+#include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
@@ -22,6 +26,7 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -246,13 +251,13 @@ loop_49:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
+                    ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r21_135 += 1;
                 } while (var_r21_135 < 0x1E);
                 var_r21_190 = 0;
@@ -430,7 +435,7 @@ loop_33:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1411, (MKVector4) &sp268);
+                    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1411, (MKVector4) &sp268);
                     var_r19_634 += 1;
                 } while (var_r19_634 < 3);
                 temp_f16_687 = MKVector3::up.unk8;
@@ -458,7 +463,7 @@ loop_33:
                     sp238 = temp_f0_728;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
-                    gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
+                    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r19_688 += 1;
                 } while (var_r19_688 < 0xF);
                 break;
@@ -735,13 +740,13 @@ loop_50:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
+                    ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r22_1103 += 1;
                 } while (var_r22_1103 < 0x1E);
                 var_r22_1158 = 0;
@@ -919,7 +924,7 @@ loop_34:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1251, (MKVector4) &sp268);
+                    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1251, (MKVector4) &sp268);
                     var_r20_1602 += 1;
                 } while (var_r20_1602 < 3);
                 temp_f16_1655 = MKVector3::up.unk8;
@@ -947,7 +952,7 @@ loop_34:
                     sp238 = temp_f0_1696;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
-                    gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
+                    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r20_1656 += 1;
                 } while (var_r20_1656 < 0xF);
                 break;
@@ -1030,7 +1035,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1071,7 +1076,7 @@ s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x08000000;
         sp78 = (f64) sp38;
         sp80 = (f64) sp40;
-        this->unkAF8->Enable(1U, (MKVector4) &sp78);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp78);
     } else if (temp_r3_1992 & 0x10000000) {
         sp28 = 0.5f;
         sp2C = 0.5f;
@@ -1080,7 +1085,7 @@ s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x10000000;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
-        this->unkAF8->Enable(1U, (MKVector4) &sp68);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp68);
     } else if (temp_r3_1992 & 0x20000000) {
         sp18 = 1.0f;
         sp1C = 1.0f;
@@ -1089,7 +1094,7 @@ s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x20000000;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
-        this->unkAF8->Enable(1U, (MKVector4) &sp58);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp58);
     } else if (temp_r3_1992 & 0x40000000) {
         sp8 = 0.25f;
         spC = 1.0f;
@@ -1098,7 +1103,7 @@ s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x40000000;
         sp48 = (f64) sp8;
         sp50 = (f64) sp10;
-        this->unkAF8->Enable(1U, (MKVector4) &sp48);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp48);
     } else {
         M2C_FIELD(this, s32 *, 0xB20) = 0;
     }
@@ -1347,13 +1352,13 @@ loop_49:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
+                    ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r21_2283 += 1;
                 } while (var_r21_2283 < 0x1E);
                 var_r21_2338 = 0;
@@ -1531,7 +1536,7 @@ loop_33:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1044, (MKVector4) &sp268);
+                    ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1044, (MKVector4) &sp268);
                     var_r19_2782 += 1;
                 } while (var_r19_2782 < 3);
                 temp_f16_2835 = MKVector3::up.unk8;
@@ -1559,7 +1564,7 @@ loop_33:
                     sp238 = temp_f0_2876;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
-                    gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
+                    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r19_2836 += 1;
                 } while (var_r19_2836 < 0xF);
                 break;
@@ -1839,13 +1844,13 @@ loop_50:
                         sp420 = (f64) sp110;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
+                        ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                         sp3F8 = 1.0f;
                         sp3FC = 0.75f;
                         sp400 = 0.75f;
                         sp404 = 1.0f;
                         sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                         var_r22_3250 += 1;
                     } while (var_r22_3250 < 0x1E);
                     var_r22_3305 = 0;
@@ -2023,7 +2028,7 @@ loop_34:
                         sp268 = (f64) sp158;
                         sp270 = (f64) sp160;
                         sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_884, (MKVector4) &sp268);
+                        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_884, (MKVector4) &sp268);
                         var_r20_3749 += 1;
                     } while (var_r20_3749 < 3);
                     temp_f16_3802 = MKVector3::up.unk8;
@@ -2051,7 +2056,7 @@ loop_34:
                         sp238 = temp_f0_3843;
                         sp140 = this->unk588.unk4 - (f32) sp230;
                         sp240 = (f64) sp140;
-                        gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
+                        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                         var_r20_3803 += 1;
                     } while (var_r20_3803 < 0xF);
                     break;
@@ -2135,7 +2140,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -2176,7 +2181,7 @@ s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x08000000;
         sp78 = (f64) sp38;
         sp80 = (f64) sp40;
-        this->unkAF8->Enable(1U, (MKVector4) &sp78);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp78);
     } else if (temp_r3_4139 & 0x10000000) {
         sp28 = 0.5f;
         sp2C = 0.5f;
@@ -2185,7 +2190,7 @@ s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x10000000;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
-        this->unkAF8->Enable(1U, (MKVector4) &sp68);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp68);
     } else if (temp_r3_4139 & 0x20000000) {
         sp18 = 1.0f;
         sp1C = 1.0f;
@@ -2194,7 +2199,7 @@ s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x20000000;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
-        this->unkAF8->Enable(1U, (MKVector4) &sp58);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp58);
     } else if (temp_r3_4139 & 0x40000000) {
         sp8 = 0.25f;
         spC = 1.0f;
@@ -2203,7 +2208,7 @@ s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
         M2C_FIELD(this, s32 *, 0xB20) = 0x40000000;
         sp48 = (f64) sp8;
         sp50 = (f64) sp10;
-        this->unkAF8->Enable(1U, (MKVector4) &sp48);
+        ((CharacterDojoFX *) this->unkAF8)->Enable(1U, (MKVector4) &sp48);
     } else {
         M2C_FIELD(this, s32 *, 0xB20) = 0;
     }
@@ -2302,7 +2307,7 @@ loop_11:
                     temp_r3_4389 = M2C_FIELD(M2C_FIELD(temp_r3_4385, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_4385);
                     if (temp_r3_4389 != NULL) {
                         temp_r28_4392 = M2C_FIELD(temp_r3_4389, void **, 0x2C);
-                        temp_r3_4395 = this->unk9E8.unk4->GetRandomNode(NULL);
+                        temp_r3_4395 = ((CharacterBodyFX *) this->unk9E8.unk4)->GetRandomNode(NULL);
                         M2C_FIELD(temp_r3_4389, f64 *, 0) = (f64) M2C_FIELD(temp_r3_4395, f64 *, 8);
                         M2C_FIELD(temp_r3_4389, f64 *, 8) = (f64) M2C_FIELD(temp_r3_4395, f64 *, 0x10);
                         M2C_FIELD(temp_r3_4389, f32 *, 0x20) = 0.0f;
@@ -2330,7 +2335,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void DojoEnemy::Despawn(bool arg0) {
     f64 sp20;
     f64 sp18;
@@ -2346,7 +2351,7 @@ void DojoEnemy::Despawn(bool arg0) {
     sp14 = 1.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unkAF8->Enable(0U, (MKVector4) &sp18);
+    ((CharacterDojoFX *) this->unkAF8)->Enable(0U, (MKVector4) &sp18);
 }
 #endif
 
@@ -2378,13 +2383,13 @@ void DojoEnemy::Recycle() {
     Enemy::Recycle();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'IceBitsPS *' to
 void DojoEnemyDescriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
-    this->unk2B4 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
-    this->unk2B8 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
-    this->unk2BC = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
-    this->unk2C0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DojoStuffing"));
+    this->unk2B4 = checked_cast<IceBitsPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBitsPS"));
+    this->unk2B8 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
+    this->unk2BC = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    this->unk2C0 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("DojoStuffing"));
     this->unk204 = &dojoMovementAnims;
     this->unk208 = 0xC;
 }

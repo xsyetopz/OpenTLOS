@@ -11,6 +11,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKView.h"
@@ -347,14 +348,13 @@ void SparxFX::SetSparxPos(const MKVector3 &arg0) {
     this->unk58 += 10.0f * _table_sinf(this->unkA0);
 }
 
-#if 0 // DRAFT: pointer/array required
 void SparxFX::Deinit() {
     MKAnimScript *temp_r31_662;
     MKHeap *temp_r3_663;
 
     MKMaterial_Destroy(this->unk90);
     MKMaterial_Destroy(this->unk94);
-    gb.unk80->FreeManagedLight(this->unkD0);
+    ((LightManager *) gb.unk80)->FreeManagedLight(this->unkD0);
     this->unkE8->Deinit();
     temp_r31_662 = this->unkE8;
     temp_r3_663 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -365,9 +365,7 @@ void SparxFX::Deinit() {
     }
     MKProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void SparxFX::Disable() {
     ManagedLight *temp_r4_698;
 
@@ -375,12 +373,10 @@ void SparxFX::Disable() {
     this->unk8C &= ~0x80;
     temp_r4_698 = this->unkD0;
     if (temp_r4_698 != NULL) {
-        gb.unk80->EnableLight(temp_r4_698, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_698, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void SparxFX::Enable() {
     ManagedLight *temp_r4_726;
 
@@ -388,10 +384,9 @@ void SparxFX::Enable() {
     this->unk8C |= 0x80;
     temp_r4_726 = this->unkD0;
     if (temp_r4_726 != NULL) {
-        gb.unk80->EnableLight(temp_r4_726, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_726, 1U);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to
 void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
@@ -749,7 +744,7 @@ void SparxFX::LoadDone() {
     MKProp::LoadDone();
     temp_r3_1482 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
     this->unk4 = temp_r3_1482;
-    temp_r3_1484 = temp_r3_1482->Current();
+    temp_r3_1484 = ((MKHeap *) temp_r3_1482)->Current();
     if (temp_r3_1484 != NULL) {
         var_r3_1491 = ((MKHeap *) (temp_r3_1484->Current()))->Alloc(0x58, NULL, 0);
     } else {
@@ -762,7 +757,7 @@ void SparxFX::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void SparxFX::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -787,10 +782,10 @@ void SparxFX::Resolve() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unkD0 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), *((MKVector4 *) &this->unk68), 700.0f, lit_537, lit_538);
+    this->unkD0 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), *((MKVector4 *) &this->unk68), 700.0f, lit_537, lit_538);
     temp_r4_1560 = this->unkD0;
     if (temp_r4_1560 != NULL) {
-        gb.unk80->EnableLight(temp_r4_1560, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_1560, 1U);
     }
 }
 #endif

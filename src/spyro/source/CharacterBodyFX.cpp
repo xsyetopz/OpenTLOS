@@ -185,7 +185,7 @@ loop_16:
             var_r4_263 += 4;
             goto loop_16;
         }
-        temp_r3_293 = var_r3_268->Current();
+        temp_r3_293 = ((MKHeap *) var_r3_268)->Current();
         if (temp_r3_293 != NULL) {
             ((MKHeap *) (temp_r3_293->Current()))->Free(var_r31_267, NULL, 0);
         } else {
@@ -409,7 +409,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Current'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFX ***var_r3_736;
     CharacterBodyFXData *temp_r3_726;
@@ -432,7 +432,7 @@ void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNod
         this->unk11 = 0;
         temp_r3_726 = this->unk8;
         temp_r28_728 = temp_r3_726->unk4 * 0x70;
-        temp_r3_729 = temp_r3_726->Current();
+        temp_r3_729 = ((MKHeap *) temp_r3_726)->Current();
         if (temp_r3_729 != NULL) {
             var_r3_736 = ((MKHeap *) (temp_r3_729->Current()))->Alloc(temp_r28_728, NULL, 0);
         } else {

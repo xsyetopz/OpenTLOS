@@ -301,7 +301,7 @@ void SteamValve::Update() {
                 sp1F8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp228 = 0;
                 if (this != NULL) {
-                    sp38.GetPos();
+                    ((MKProp *) &sp38)->GetPos();
                     sp208 = sp38;
                     sp210 = sp40;
                 } else {

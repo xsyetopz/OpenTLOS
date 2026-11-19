@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/Guardian.h"
@@ -308,7 +309,7 @@ void GuardianCage::StateDeadEnter() {
         sp14 = 1.0f;
         spA8 = (f64) sp8;
         spB0 = (f64) sp10;
-        gb.unkA0->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &sp138), *((MKVector3 *) &spE8), *((MKVector3 *) &spC8), temp_f1_226, *((MKVector4 *) &spA8), 0, NULL);
+        ((FlyingChunkPS *) gb.unkA0)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &sp138), *((MKVector3 *) &spE8), *((MKVector3 *) &spC8), temp_f1_226, *((MKVector4 *) &spA8), 0, NULL);
         var_r30_78 += 1;
     } while (var_r30_78 < 0xF);
     KDSound_Play3d(GS_PrisonBallShatter, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -452,7 +453,7 @@ void GuardianCage::StateDyingUpdate() {
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (unkspA4 == temp_f2_496) {
         unkspA4 = temp_f2_496;
-        this->unk14C.SetState(this, 3, 0U);
+        ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 3, 0U);
     }
     temp_f0_515 = this->unkF8 + spB0;
     sp20 = temp_f0_515;
@@ -677,14 +678,14 @@ void GuardianCage::GetBeamPosition(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Deinit() {
-    this->unk14C.Exit(this);
+    ((KDStateMachine<GuardianCage> *) &this->unk14C)->Exit(this);
     GameProp::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Message(MKMessage *arg0) {
     s32 temp_r3_920;
 
@@ -695,7 +696,7 @@ void GuardianCage::Message(MKMessage *arg0) {
         if (temp_r3_920 > 0) {
             this->unk13C = temp_r3_920 - 1;
             if ((s32) this->unk13C <= 0) {
-                this->unk14C.SetState(this, 2, 0U);
+                ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 2, 0U);
             }
         }
     }
@@ -703,21 +704,21 @@ void GuardianCage::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Draw() {
-    if (this->unk14C.GetState() != 3) {
+    if (((KDStateMachine<GuardianCage> *) &this->unk14C)->GetState() != 3) {
         GameProp::Draw();
     }
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void GuardianCage::Update() {
     Matrix sp20;
     MKVector3 sp10;
 
     GameProp::Update();
-    this->unk14C.Update(this, 0);
+    ((KDStateMachine<GuardianCage> *) &this->unk14C)->Update(this, 0);
     if ((Guardian *) this->unk144 != NULL) {
         M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkD0, &sp10);
@@ -735,7 +736,7 @@ void GuardianCage::Resolve() {
     KDPropEx::Resolve();
     this->unk144 = checked_cast<Guardian *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "EarthGuardian"));
     Init__30KDStateMachine<12GuardianCage>FPQ230KDStateMachine<12GuardianCage>5StateP30KDStateMachine<12GuardianCage>((KDStateMachine<GuardianCage> *) &this->unk14C, (KDStateMachine<GuardianCage>::State *) GuardianCage::states, NULL);
-    this->unk14C.SetState(this, 1, 0U);
+    ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 1, 0U);
 }
 #endif
 
@@ -792,7 +793,7 @@ void GuardianCage::Reset() {
     sp10.unk38 = M2C_FIELD(this, f32 *, 0xE0);
     sp10.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, sp10);
-    this->unk14C.SetState(this, 1, 0U);
+    ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 1, 0U);
 }
 #endif
 

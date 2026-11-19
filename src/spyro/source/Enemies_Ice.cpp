@@ -16,12 +16,12 @@
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/KDSound.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -147,12 +147,10 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void IceTier2::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
-    this->unkB20.Message(arg0);
+    ((KDSoundPlayer *) &this->unkB20)->Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void IceTier2::DrawCustomGlow() {
@@ -189,7 +187,6 @@ void IceTier2::DrawCustomGlow() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void IceTier2::Update() {
     s32 sp8;
     u8 var_r31_401;
@@ -200,9 +197,8 @@ void IceTier2::Update() {
         var_r31_401 = 1;
     }
     sp8 = 1;
-    this->unkB20.Update(GS_IceOgreGhostIdle, 1U, var_r31_401, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unkB20)->Update(GS_IceOgreGhostIdle, 1U, var_r31_401, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void IceTier2::Deinit() {
@@ -238,7 +234,7 @@ s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x270), arg1);
     } else {
         MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        sp28.GetPos();
+        ((MKProp *) &sp28)->GetPos();
         sp8 = sp28 + sp18;
         M2C_FIELD(arg1, f64 *, 0) = sp8;
         sp10 = sp30 + sp20;
@@ -276,7 +272,7 @@ void IceTier2::Init() {
     temp_r30_544->Init((Enemy *) this);
     this->unkA24 = (EnemyAttack *) temp_r30_544;
     this->unkB60 = 0;
-    this->unkB20.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unkB20)->Init(0.25f, 0.25f);
     this->unkAFC = 0;
     temp_r3_578 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_578 != NULL) {

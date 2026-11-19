@@ -1,4 +1,5 @@
 #include "spyro/source/Kane.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "spyro/source/CharacterGraph.h"
 #include "spyro/source/Enemy.h"
@@ -16,14 +17,14 @@ s32 Kane::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
 void Kane::Resolve() {
     s32 spC;
     s32 sp8;
     u32 temp_r3_91;
 
     Enemy::Resolve();
-    temp_r3_91 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unkAF8->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_91 = checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unkAF8)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_91 != 0U) {
         this->unkA68 = M2C_BITWISE(f32, (temp_r3_91 + 0x50));
     }

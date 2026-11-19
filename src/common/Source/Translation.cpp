@@ -776,7 +776,7 @@ void Translation_InitModule() {
         var_r29_559 += 0x14;
     } while (var_r26_558 < 0xD);
     gpLanguageOptionStrings[var_r25_556] = 0;
-    temp_r3_594 = gpLanguageOptionStrings->Current();
+    temp_r3_594 = ((MKHeap *) gpLanguageOptionStrings)->Current();
     if (temp_r3_594 != NULL) {
         var_r3_601 = ((MKHeap *) (temp_r3_594->Current()))->Alloc(var_r31_554 + 1, NULL, 0);
     } else {

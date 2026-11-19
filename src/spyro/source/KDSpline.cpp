@@ -1232,7 +1232,7 @@ loop_8:
             *temp_r29_1825 += *(M2C_BITWISE(s32, arg1->unkC) + ((M2C_BITWISE(s32, *arg3) << 5) + 0x1C));
             goto loop_8;
         }
-        arg1->GetMatrix(M2C_BITWISE(s32, *arg3), (Matrix *) arg2);
+        ((KDUniformSpline *) arg1)->GetMatrix(M2C_BITWISE(s32, *arg3), (Matrix *) arg2);
     }
     temp_f3_1887 = *(M2C_BITWISE(s32, arg1->unkC) + ((M2C_BITWISE(s32, *arg3) << 5) + 0x1C));
     temp_f31_1897 = (temp_f30_1842 - (*temp_r29_1825 - temp_f3_1887)) / temp_f3_1887;
@@ -1950,7 +1950,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
         spA8 = M2C_FIELD(temp_r5_3104, f32 *, 8) - M2C_FIELD(temp_r6_3103, f32 *, 8);
         sp228 = (f64) spA8;
         Normalise(sp130);
-        __ml(sp220.Magnitude(), sp140);
+        __ml(((MKVector3 *) &sp220)->Magnitude(), sp140);
         temp_r3_3132 = this->unkC + ((this->unk4 << 5) + 0x10);
         M2C_FIELD(temp_r3_3132, f64 *, 0) = M2C_BITWISE(f64, sp140);
         M2C_FIELD(temp_r3_3132, f64 *, 8) = (f64) sp140.unk8;
@@ -1975,7 +1975,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
             sp38 = M2C_FIELD(temp_r5_3170, f32 *, 0x28) - M2C_FIELD(temp_r5_3170, f32 *, 8);
             spE8 = (f64) sp38;
             Normalise(spD0);
-            __ml(spE0.Magnitude(), spF0);
+            __ml(((MKVector3 *) &spE0)->Magnitude(), spF0);
             temp_r3_3192 = this->unkC;
             M2C_FIELD(temp_r3_3192, f64 *, 0x10) = M2C_BITWISE(f64, spF0);
             M2C_FIELD(temp_r3_3192, f64 *, 0x18) = (f64) spF0.unk8;
@@ -2009,7 +2009,7 @@ void KDSpline::Init(int arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, Matrix *arg5) {
     f32 sp7C;
     f32 sp78;
@@ -2053,7 +2053,7 @@ void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
     sp74 = arg5->unk4;
     sp78 = arg5->unk8;
     sp7C = 1.0f;
-    sp40.Multiply4x4(M2C_ERROR(/* Read from unset register $r8 */), (Matrix *) &sp40);
+    ((Matrix *) &sp40)->Multiply4x4(M2C_ERROR(/* Read from unset register $r8 */), (Matrix *) &sp40);
     temp_f3_3307 = arg4 * arg4;
     sp28 = arg4;
     sp24 = temp_f3_3307;

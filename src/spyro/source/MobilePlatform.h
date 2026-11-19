@@ -95,16 +95,16 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline MobilePlatform::MobilePlatform() {
     M2C_FIELD(this, s32 *, 0x1CC) = 0;
     this->unk19C.unk30.unk0 = 0;
     this->unk19C.unk30.unk4 = 0.0f;
     this->unk19C.unk30.unk8 = 0.0f;
     this->unk1F8 = 0.0f;
-    this->unk1F8.Init();
+    ((EventMessage *) &this->unk1F8)->Init();
     this->unk1FC = 0.0f;
-    this->unk1FC.Init();
+    ((EventMessage *) &this->unk1FC)->Init();
     this->unk214 = 0.0f;
     return this;
 }
@@ -116,10 +116,10 @@ inline MobilePlatform::~MobilePlatform() {
         KDSound_Stop((s32 *) &this->unk214);
     }
     if (&this->unk1FC != NULL) {
-        this->unk1FC.Deinit();
+        ((EventMessage *) &this->unk1FC)->Deinit();
     }
     if (&this->unk1F8 != NULL) {
-        this->unk1F8.Deinit();
+        ((EventMessage *) &this->unk1F8)->Deinit();
     }
 }
 #endif

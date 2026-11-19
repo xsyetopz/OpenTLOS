@@ -87,7 +87,7 @@ s32 MKArchive_Open(const char *arg0, int *arg1, bool arg2) {
     if (temp_r3_88 != NULL) {
         MKArchive_SetOrder(temp_r3_88);
         if (arg2 != 0) {
-            var_r3_99 = ((RkvTOC *) ((RkvTOC *) &rkv[sp8]))->GetAsyncHandle();
+            var_r3_99 = ((RkvTOC *) &rkv[sp8])->GetAsyncHandle();
         } else {
             var_r3_99 = File_Open(&rkv[sp8].unk0, 0);
         }
@@ -212,7 +212,7 @@ loop_29:
         }
         var_r3_239 = File_Close(var_r3_239);
     }
-    temp_r3_296 = var_r3_239->Current();
+    temp_r3_296 = ((MKHeap *) var_r3_239)->Current();
     if (temp_r3_296 != NULL) {
         ((MKHeap *) (temp_r3_296->Main()))->TFree(var_r26_226, NULL, 0);
     } else {
@@ -297,14 +297,14 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
             var_r29_397 = (temp_r3_400->unk4 + 0x20) & 0xFFFFFFE0;
             temp_r3_439 = Util_WildcardPatternMatch(temp_r3_400->unk0, gpTempMemFilePatterns);
             if (temp_r3_439 != 0) {
-                temp_r3_442 = temp_r3_439->Current();
+                temp_r3_442 = ((MKHeap *) temp_r3_439)->Current();
                 if (temp_r3_442 != NULL) {
                     var_r3_450 = ((MKHeap *) (temp_r3_442->Main()))->TAlloc(var_r29_397, NULL, 0, 0U);
                 } else {
                     var_r3_450 = malloc(var_r29_397);
                 }
             } else {
-                temp_r3_457 = temp_r3_439->Current();
+                temp_r3_457 = ((MKHeap *) temp_r3_439)->Current();
                 if (temp_r3_457 != NULL) {
                     var_r3_450 = ((MKHeap *) (temp_r3_457->Current()))->Alloc(var_r29_397, NULL, 0);
                 } else {
@@ -354,7 +354,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r27_552 = 2;
                 do {
                     Translation_GetLanguageName((TranslationLanguage) var_r27_552);
-                    temp_r3_564 = pMainRkv->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
+                    temp_r3_564 = ((RkvTOC *) pMainRkv)->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
                     if ((temp_r3_564 != NULL) && ((s16) temp_r3_564->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_572 = fileOrderId;
@@ -371,7 +371,7 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 var_r28_598 = 2;
                 do {
                     Translation_GetLanguageCode((TranslationLanguage) var_r28_598);
-                    temp_r3_612 = pMainRkv->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
+                    temp_r3_612 = ((RkvTOC *) pMainRkv)->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
                     if ((temp_r3_612 != NULL) && ((s16) temp_r3_612->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_620 = fileOrderId;
@@ -466,7 +466,7 @@ s32 RkvTOC::Deinit() {
 #if 0 // DRAFT: expression syntax error
 s32 MKArchive_GetAsyncRegistrationStatus() {
     if ((s32) M2C_FIELD(&asyncReg, s32 *, 0x80) != 0) {
-        ((RkvTOC *) ((RkvTOC *) &rkv[nmbrRkvs]))->AsyncRegUpdate();
+        ((RkvTOC *) &rkv[nmbrRkvs])->AsyncRegUpdate();
     }
     switch ((s32) M2C_FIELD(&asyncReg, s32 *, 0x80)) { /* irregular */
     case 0:
@@ -567,7 +567,7 @@ block_34:
         temp_r3_981 = File_IsBusy(this->unk60);
         if (temp_r3_981 == 0) {
             temp_r16_984 = M2C_FIELD(&asyncReg, s32 *, 0x18);
-            temp_r3_985 = temp_r3_981->Current();
+            temp_r3_985 = ((MKHeap *) temp_r3_981)->Current();
             if (temp_r3_985 != NULL) {
                 var_r3_993 = ((MKHeap *) (temp_r3_985->Main()))->TAlloc(temp_r16_984, NULL, 0, 0U);
             } else {
@@ -585,14 +585,14 @@ block_34:
             temp_r3_1017 = this->unk64 * 0x18;
             temp_r16_1020 = M2C_FIELD(&asyncReg, u32 *, 8) + temp_r3_1017;
             if ((u8) M2C_FIELD(&asyncReg, u8 *, 0x90) != 0) {
-                temp_r3_1022 = temp_r3_1017->Current();
+                temp_r3_1022 = ((MKHeap *) temp_r3_1017)->Current();
                 if (temp_r3_1022 != NULL) {
                     var_r3_1030 = ((MKHeap *) (temp_r3_1022->Main()))->TAlloc(temp_r16_1020, NULL, 0, 0U);
                 } else {
                     var_r3_1030 = malloc(temp_r16_1020);
                 }
             } else {
-                temp_r3_1037 = temp_r3_1017->Current();
+                temp_r3_1037 = ((MKHeap *) temp_r3_1017)->Current();
                 if (temp_r3_1037 != NULL) {
                     var_r3_1030 = ((MKHeap *) (temp_r3_1037->Current()))->Alloc(temp_r16_1020, NULL, 0);
                 } else {
@@ -631,7 +631,7 @@ loop_27:
                 goto loop_27;
             }
             temp_r16_1124 = M2C_FIELD(&asyncReg, s8 **, 0x8C);
-            temp_r3_1125 = var_r3_1064->Current();
+            temp_r3_1125 = ((MKHeap *) var_r3_1064)->Current();
             if (temp_r3_1125 != NULL) {
                 ((MKHeap *) (temp_r3_1125->Main()))->TFree(temp_r16_1124, NULL, 0);
             } else {
@@ -734,9 +734,9 @@ s32 MKArchive_RegisterArchive(const char *arg0, bool arg1) {
     temp_r3_1331 = FindBestEntry(arg0, &sp8);
     if (temp_r3_1331 != NULL) {
         MKArchive_SetOrder(temp_r3_1331);
-        ((RkvTOC *) ((RkvTOC *) &rkv[nmbrRkvs]))->Init(&rkv[sp8].unk0, arg1, temp_r3_1331->unk8, (s32) temp_r3_1331->unk4, arg0);
+        ((RkvTOC *) &rkv[nmbrRkvs])->Init(&rkv[sp8].unk0, arg1, temp_r3_1331->unk8, (s32) temp_r3_1331->unk4, arg0);
     } else {
-        ((RkvTOC *) ((RkvTOC *) &rkv[nmbrRkvs]))->Init(arg0, arg1, 0U, 0, NULL);
+        ((RkvTOC *) &rkv[nmbrRkvs])->Init(arg0, arg1, 0U, 0, NULL);
     }
     if (arg1 == 0) {
         do {

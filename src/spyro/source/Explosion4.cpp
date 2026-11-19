@@ -1,5 +1,6 @@
 #include "spyro/source/Explosion4.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
@@ -9,10 +10,14 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/EmbersPS.h"
+#include "spyro/source/Enemy.h"
 #include "spyro/source/ExplodeMsg.h"
+#include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
@@ -38,7 +43,7 @@ extern GameGlobals gb;
 static s32 lit_762 = 0;
 static u8 lit_763 = 1;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void Explosion4::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKProp *arg3, int arg4, bool arg5, bool arg6, bool arg7, bool arg8) {
     f64 spF18;
     f64 spF10;
@@ -628,7 +633,7 @@ void Explosion4::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKProp *a
     spD50 = temp_f0_121;
     sp568 = (f32) spD68 - arg0.unk8;
     spD58 = (f64) sp568;
-    spD50.Normalise();
+    ((MKVector3 *) &spD50)->Normalise();
     spD50 *= 5.304989477e-315;
     spD58 = (f32) spD58 * 2.0f;
     this->unkA4 = 0.0f;
@@ -672,7 +677,7 @@ loop_2:
             M2C_FIELD(temp_r3_214, f64 *, 0x10) = sp150;
             M2C_FIELD(temp_r3_214, f64 *, 0x18) = (f64) sp158;
         }
-        gb.unk80->EnableLight(this->unk4C, 1U);
+        ((LightManager *) gb.unk80)->EnableLight(this->unk4C, 1U);
     }
     var_r23_229 = 0;
     temp_r24_234 = (s32) (20.0f * this->unk58);
@@ -929,7 +934,7 @@ loop_22:
         sp18 = this->unk58 * temp_f1_900;
         sp9B0 = (f64) sp4D0;
         sp9B8 = (f64) sp4D8;
-        gb.unk74->Emit(*((MKVector3 *) &spA00), *((MKVector3 *) &sp9D0), sp18, *((MKVector4 *) &sp9B0), -1000.0f);
+        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &spA00), *((MKVector3 *) &sp9D0), sp18, *((MKVector4 *) &sp9B0), -1000.0f);
         var_r27_796 += 1;
         goto loop_22;
     }
@@ -1011,7 +1016,7 @@ loop_30:
                 sp8E0 = temp_f0_1118;
                 sp418 = (f32) sp8D8 * 3.1415927f;
                 sp8E8 = (f64) sp418;
-                gb.unkA8->Emit(*((MKVector3 *) &sp950), *((MKVector3 *) &sp920), *((MKVector3 *) &sp900), *((MKVector3 *) &sp8E0), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 2, NULL);
+                ((FlyingChunkPS *) gb.unkA8)->Emit(*((MKVector3 *) &sp950), *((MKVector3 *) &sp920), *((MKVector3 *) &sp900), *((MKVector3 *) &sp8E0), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 2, NULL);
                 var_r22_967 += 1;
                 goto loop_30;
             }
@@ -1087,7 +1092,7 @@ loop_35:
                 sp800 = temp_f0_1320;
                 sp358 = (f32) sp7F8 * 3.1415927f;
                 sp808 = (f64) sp358;
-                gb.unkA0->Emit(*((MKVector3 *) &sp870), *((MKVector3 *) &sp840), *((MKVector3 *) &sp820), *((MKVector3 *) &sp800), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 0xA, NULL);
+                ((FlyingChunkPS *) gb.unkA0)->Emit(*((MKVector3 *) &sp870), *((MKVector3 *) &sp840), *((MKVector3 *) &sp820), *((MKVector3 *) &sp800), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 0xA, NULL);
                 var_r30_1169 += 1;
                 goto loop_35;
             }
@@ -1163,7 +1168,7 @@ loop_39:
                 sp720 = temp_f0_1515;
                 sp298 = (f32) sp718 * 3.1415927f;
                 sp728 = (f64) sp298;
-                gb.unkA4->Emit(*((MKVector3 *) &sp790), *((MKVector3 *) &sp760), *((MKVector3 *) &sp740), *((MKVector3 *) &sp720), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 0xA, NULL);
+                ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp790), *((MKVector3 *) &sp760), *((MKVector3 *) &sp740), *((MKVector3 *) &sp720), this->unk58 * MKRand_Float(&gViewSeed, 0.75f, 1.0f), *((MKVector4 *) &spE90.unk20), 0xA, NULL);
                 var_r27_1365 += 1;
                 goto loop_39;
             }
@@ -1379,7 +1384,7 @@ loop_44:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: type mismatch
 void Explosion4::Deinit() {
     MKHeap *temp_r3_2275;
     ManagedLight *temp_r4_2254;
@@ -1388,7 +1393,7 @@ void Explosion4::Deinit() {
 
     temp_r4_2254 = this->unk4C;
     if (temp_r4_2254 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_2254);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_2254);
     }
     this->unk5C.Deinit();
     do {
@@ -1397,7 +1402,7 @@ void Explosion4::Deinit() {
     } while ((u32) *temp_r3_2266 != 0);
     temp_r31_2271 = this->unk98;
     if (temp_r31_2271 != &gEmptyPtrList) {
-        temp_r3_2275 = temp_r3_2266->Current();
+        temp_r3_2275 = ((MKHeap *) temp_r3_2266)->Current();
         if (temp_r3_2275 != NULL) {
             ((MKHeap *) (temp_r3_2275->Current()))->Free(temp_r31_2271, NULL, 0);
         } else {
@@ -1470,7 +1475,7 @@ void Explosion4::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unksp3C4'
 void Explosion4::Update() {
     s8 sp406;
     s8 sp405;
@@ -1691,7 +1696,7 @@ void Explosion4::Update() {
             this->unk54 = 0;
             temp_r4_2504 = this->unk4C;
             if (temp_r4_2504 != NULL) {
-                gb.unk80->EnableLight(temp_r4_2504, 0U);
+                ((LightManager *) gb.unk80)->EnableLight(temp_r4_2504, 0U);
             }
         } else {
             temp_r3_2515 = this->unk4C;
@@ -1729,7 +1734,7 @@ loop_30:
                     temp_r29_2699 = *var_r30_2585;
                     if (temp_r29_2699 != NULL) {
                         temp_r28_2596 = ((Character *(*)(TargetManager **)) (*temp_r29_2699)->unk8.unk4)(temp_r29_2699);
-                        if (((*temp_r29_2699)->unk8.unk0(temp_r29_2699) != NULL) && (M2C_FIELD(*temp_r29_2699, u8 (**)(TargetManager **), 0x18)(temp_r29_2699) != 0) && ((temp_cr0_eq_2609 = temp_r28_2596 == NULL, (temp_cr0_eq_2609 != 0)) || ((temp_cr0_eq_2609 == 0) && (temp_r28_2596->IsActive() != 0) && (temp_r28_2596->IsKnockedUp() == 0)))) {
+                        if (((*temp_r29_2699)->unk8.unk0(temp_r29_2699) != NULL) && (M2C_FIELD(*temp_r29_2699, u8 (**)(TargetManager **), 0x18)(temp_r29_2699) != 0) && ((temp_cr0_eq_2609 = temp_r28_2596 == NULL, (temp_cr0_eq_2609 != 0)) || ((temp_cr0_eq_2609 == 0) && (temp_r28_2596->IsActive() != 0) && (((Enemy *) temp_r28_2596)->IsKnockedUp() == 0)))) {
                             temp_r3_2626 = M2C_FIELD((*temp_r29_2699)->unk8.unk0(temp_r29_2699), void **, 8);
                             temp_f1_2627 = M2C_FIELD(temp_r3_2626, f64 *, 0x30);
                             sp368 = temp_f1_2627;
@@ -1965,7 +1970,7 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Explosion4::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -2002,10 +2007,10 @@ void Explosion4::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unk4C = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_762, lit_763);
+    this->unk4C = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 1000.0f, lit_762, lit_763);
     temp_r4_3181 = this->unk4C;
     if (temp_r4_3181 != NULL) {
-        gb.unk80->EnableLight(temp_r4_3181, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_3181, 0U);
     }
 }
 #endif
@@ -2072,13 +2077,13 @@ s32 Explosion4Descriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void Explosion4Descriptor::Init() {
     MKPropDescriptor::Init();
     this->unk6C = GS_Explosion2;
     this->unk70 = GS_Rumble1Soft;
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("Exp4FlamePS"));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("Exp4SmokePS"));
+    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4FlamePS"));
+    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Exp4SmokePS"));
     this->unk68 = MKModel_Create("FX0001_Exp2Shockwave", NULL, 2, NULL);
 }
 #endif

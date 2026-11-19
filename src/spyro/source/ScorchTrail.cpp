@@ -215,7 +215,7 @@ loop_8:
             sp1FC = 0.0f;
             M2C_STRUCT_COPY((s32) &unksp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp150.SetRotationRoll(M2C_FIELD(temp_r28_344, f32 *, 0x28));
-            sp1D0.Multiply(&sp150, (Matrix *) &sp1D0);
+            ((Matrix *) &sp1D0)->Multiply(&sp150, (Matrix *) &sp1D0);
             var_f0_273 = M2C_FIELD(temp_r28_344, f32 *, 0x24);
             if (var_f0_273 < 2.0f) {
 
@@ -228,7 +228,7 @@ loop_8:
                 var_f0_273 = 0.0f;
             }
             temp_f27_287 = var_f0_273 * 0.5f;
-            sp1D0.Scale3x3((Matrix *) &sp1D0, M2C_FIELD(temp_r28_344, f32 *, 0x20) * (1.0f + temp_f27_287));
+            ((Matrix *) &sp1D0)->Scale3x3((Matrix *) &sp1D0, M2C_FIELD(temp_r28_344, f32 *, 0x20) * (1.0f + temp_f27_287));
             sp200 = M2C_FIELD(temp_r28_344, f32 *, 0);
             sp204 = M2C_FIELD(temp_r28_344, f32 *, 4);
             sp208 = M2C_FIELD(temp_r28_344, f32 *, 8);
@@ -427,7 +427,7 @@ loop_8:
                 var_f0_555 = 0.0f;
             }
             temp_f27_569 = var_f0_555 * 0.25f;
-            spD0.Scale3x3((Matrix *) &spD0, M2C_FIELD(temp_r29_603, f32 *, 0x20) * temp_f27_569);
+            ((Matrix *) &spD0)->Scale3x3((Matrix *) &spD0, M2C_FIELD(temp_r29_603, f32 *, 0x20) * temp_f27_569);
             sp100 = M2C_FIELD(temp_r29_603, f32 *, 0);
             sp104 = M2C_FIELD(temp_r29_603, f32 *, 4);
             sp108 = M2C_FIELD(temp_r29_603, f32 *, 8);
@@ -1020,7 +1020,7 @@ void ScorchTrail::Init() {
     temp_r3_1414 = &temp_r3_1412->unk4;
     M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) temp_r3_1414;
     temp_r3_1412->unk4 = 0;
-    temp_r3_1417 = temp_r3_1414->Current();
+    temp_r3_1417 = ((MKHeap *) temp_r3_1414)->Current();
     if (temp_r3_1417 != NULL) {
         var_r3_1424 = ((MKHeap *) (temp_r3_1417->Current()))->Alloc(0x10C, NULL, 0);
     } else {

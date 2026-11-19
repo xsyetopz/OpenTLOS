@@ -44,7 +44,7 @@ void EAPCondition::Init() {
     this->unkC = 0.0f;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void EAPItem::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_90;
     MKIniLine *var_r30_83;
@@ -61,7 +61,7 @@ void EAPItem::LoadLine(MKIniLine *arg0) {
     temp_r0_86 = this->unk8;
     if (temp_r0_86 != 0) {
         temp_r31_89 = temp_r0_86 * 0x10;
-        temp_r3_90 = temp_r3_84->Current();
+        temp_r3_90 = ((MKHeap *) temp_r3_84)->Current();
         if (temp_r3_90 != NULL) {
             var_r3_97 = ((MKHeap *) (temp_r3_90->Current()))->Alloc(temp_r31_89, NULL, 0);
         } else {
@@ -110,7 +110,7 @@ void EAPItem::Init() {
     this->unk8 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void EnemyAttackPattern::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_205;
     MKIniLine *var_r30_198;
@@ -127,7 +127,7 @@ void EnemyAttackPattern::LoadLine(MKIniLine *arg0) {
     temp_r0_201 = this->unk4;
     if (temp_r0_201 != 0) {
         temp_r31_204 = temp_r0_201 * 0xC;
-        temp_r3_205 = temp_r3_199->Current();
+        temp_r3_205 = ((MKHeap *) temp_r3_199)->Current();
         if (temp_r3_205 != NULL) {
             var_r3_212 = ((MKHeap *) (temp_r3_205->Current()))->Alloc(temp_r31_204, NULL, 0);
         } else {
@@ -184,7 +184,7 @@ void EnemyAttackPattern::Init() {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
     MKHeap *temp_r3_328;
     MKIniLine *temp_r0_318;
@@ -204,7 +204,7 @@ void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
     temp_r0_324 = this->unk4;
     if (temp_r0_324 != 0) {
         temp_r31_327 = temp_r0_324 * 8;
-        temp_r3_328 = temp_r3_322->Current();
+        temp_r3_328 = ((MKHeap *) temp_r3_322)->Current();
         if (temp_r3_328 != NULL) {
             var_r3_335 = ((MKHeap *) (temp_r3_328->Current()))->Alloc(temp_r31_327, NULL, 0);
         } else {
@@ -257,7 +257,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
+#if 0 // DRAFT: illegal use of keyword
 u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2, AITargetData *arg3) {
     EnemyAttack **temp_r3_563;
     EnemyAttack **temp_r3_579;
@@ -350,10 +350,10 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
             }
             return var_r4_576;
         case 7:
-            arg2->unkA20->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
+            ((EnemyDescriptor *) arg2->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
             return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
         case 8:
-            arg2->unkA20->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
+            ((EnemyDescriptor *) arg2->unkA20)->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
             return (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
         case 11:
             temp_r4_612 = M2C_FIELD(arg3, u8 *, 0x49);
@@ -378,7 +378,7 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 EAPManager::ReEvaluate(Enemy *arg0, AITargetData *arg1) {
     M2C_UNK sp8;
     EAPCondition *temp_r28_682;
@@ -388,7 +388,7 @@ s32 EAPManager::ReEvaluate(Enemy *arg0, AITargetData *arg1) {
     s32 var_r31_677;
 
     fCachedOwnerAngle = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &arg0->unkC0)));
-    sp8.GetDir();
+    ((AITargetData *) &sp8)->GetDir();
     fCachedTargetAngle = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp8)));
     if ((EnemyAttack **) this->unk8 != NULL) {
         var_r29_676 = 0;

@@ -1,5 +1,6 @@
 #include "spyro/source/ExplosiveBarrel.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
@@ -12,12 +13,13 @@
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDWaterVolume.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_TNTBarrelExplode;
@@ -348,7 +350,7 @@ void ExplosiveBarrel::Message(MKMessage *arg0) {
     } else {
         M2C_FIELD(checked_cast<IsExplodingBarrelMessage *, MKMessage>(arg0), s8 *, 8) = 1;
 block_50:
-        this->unk1AC.Message(arg0);
+        ((KDSoundPlayer *) &this->unk1AC)->Message(arg0);
         Shatterable::Message(arg0);
     case 3:                                         /* switch 3 */
     case 4:                                         /* switch 3 */
@@ -357,7 +359,7 @@ block_50:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void ExplosiveBarrel::Update() {
     f64 sp20;
     f64 sp18;
@@ -373,14 +375,14 @@ void ExplosiveBarrel::Update() {
 
     Shatterable::Update();
     sp8 = 1;
-    this->unk1AC.Update(GS_TNTBarrelFuseLP, 1U, M2C_FIELD(this, u8 *, 0x1BA), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundPlayer *) &this->unk1AC)->Update(GS_TNTBarrelFuseLP, 1U, M2C_FIELD(this, u8 *, 0x1BA), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp14 = 0.0f;
     sp10 = 0.0f;
     if ((u8) M2C_FIELD(this, u8 *, 0x1B9) == 0) {
         temp_r6_757 = this->unk8;
         sp18 = M2C_FIELD(temp_r6_757, f64 *, 0x30);
         sp20 = M2C_FIELD(temp_r6_757, f64 *, 0x38);
-        if ((sp18.IsWithin(*((MKVector3 *) &sp10), &sp14, (s32 *) temp_r6_757) != 0) && (M2C_BITWISE(s32, sp14) == 1)) {
+        if ((((KDWaterVolume *) &sp18)->IsWithin(*((MKVector3 *) &sp10), &sp14, (s32 *) temp_r6_757) != 0) && (M2C_BITWISE(s32, sp14) == 1)) {
             M2C_FIELD(this, u8 *, 0x1B9) = 1U;
             this->unk1B4 = 2;
         }
@@ -445,7 +447,7 @@ void ExplosiveBarrel::Resolve() {
     Shatterable::Resolve();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'P25ExplosiveBarrelDescriptor'
 void ExplosiveBarrel::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -455,7 +457,7 @@ void ExplosiveBarrel::LoadDone() {
     BurningWick *temp_r3_931;
 
     Shatterable::LoadDone();
-    temp_r3_931 = checked_cast<BurningWick *, MKProp>(gMK->CreateProp("BurningWick"));
+    temp_r3_931 = checked_cast<BurningWick *, MKProp>(((MKSceneManager *) gMK)->CreateProp("BurningWick"));
     sp10 = 0.0f;
     sp8 = 1.0f;
     spC = 0.0f;
@@ -497,12 +499,12 @@ void ExplosiveBarrel::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'Explosion4 *' to
 void ExplosiveBarrelDescriptor::LoadDone() {
     BoundingVolume *temp_r3_1064;
 
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unk16C = checked_cast<Explosion4 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Explosion4"));
     this->unk170 = MKModel_GetRefPointIndex(this->unk2C, "r_wick");
     temp_r3_1064 = this->unk1C;
     this->unk174 = 0.5f * (temp_r3_1064->unk10 - temp_r3_1064->unk0);

@@ -340,7 +340,7 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         sp134 = 0.0f;
         sp138 = 0.0f;
         sp13C = 1.0f;
-        sp50.GetNodeOrigin(MKModel_GetAnimation(arg0->unk8));
+        ((Animation *) &sp50)->GetNodeOrigin(MKModel_GetAnimation(arg0->unk8));
         spB0 = sp50;
         spB8 = sp58;
         sp40 = -(f32) spB0;
@@ -1131,7 +1131,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
                 var_f1_1932 = 1.0f;
             }
             sp10 = 0.0f;
-            sp70.GetMeasure(var_f1_1932, temp_r31_1759 + 8, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp70)->GetMeasure(var_f1_1932, temp_r31_1759 + 8, KDSpline_PositionMixer);
             spB0 = sp70;
             spB8 = sp78;
             sp20 = sp70 - spF0;
@@ -2250,7 +2250,7 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
                 this->unk38 = this->unk70;
             } else {
                 this->unk40 |= 0x20;
-                this->unk74 = sp8.Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+                this->unk74 = ((MKAnimScript *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
                 this->unk38 = this->unk74;
                 ((Animation *) (MKModel_GetAnimation(this->unk74->unk8)))->EnableCustomMatrices(1U);
                 MKModel_EnableTrivialRejection(this->unk74->unk8, 1U);

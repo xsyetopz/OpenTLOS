@@ -9,6 +9,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/Projectile.h"
@@ -19,7 +20,6 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_IceOrgeMagicExplode;
@@ -64,7 +64,7 @@ void MagicFireball::Deactivate() {
     GameProp::Deactivate();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MagicFireball::Update() {
     Matrix sp130;
     Matrix spF0;
@@ -121,7 +121,7 @@ void MagicFireball::Update() {
     } else {
         var_r7_150 = (MagicFireball *) this->unk130;
     }
-    this->unk164.Update(GS_IceOrgeMagicLP, 1U, this->unk18C, (MKProp *) var_r7_150, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk164)->Update(GS_IceOrgeMagicLP, 1U, this->unk18C, (MKProp *) var_r7_150, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (MKModel_GetAttachment(this->unk4) != NULL) {
         MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp130);
     } else {
@@ -433,7 +433,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2A8 = 0;
     if (temp_r4_630 != NULL) {
-        sp98.GetPos();
+        ((MKProp *) &sp98)->GetPos();
         sp288 = sp98;
         sp290 = spA0;
     } else {
@@ -539,7 +539,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2A8 = 0;
     if (temp_r4_819 != NULL) {
-        sp88.GetPos();
+        ((MKProp *) &sp88)->GetPos();
         sp288 = sp88;
         sp290 = sp90;
     } else {
@@ -660,12 +660,10 @@ void MagicFireball::Reset() {
     this->unk18C = 1;
 }
 
-#if 0 // DRAFT: expression syntax error
 void MagicFireball::Message(MKMessage *arg0) {
     Projectile::Message(arg0);
-    this->unk164.Message(arg0);
+    ((KDSoundPlayer *) &this->unk164)->Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MagicFireball::Deinit() {
@@ -681,13 +679,11 @@ void MagicFireball::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void MagicFireball::Init() {
     Projectile::Init();
-    this->unk164.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk164)->Init(0.25f, 0.25f);
     this->unk18C = 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void MagicFireballDescriptor::LoadDone() {

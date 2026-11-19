@@ -257,15 +257,15 @@ void MineCartTrack::Update() {
                 sp2E8 = M2C_BITWISE(f64, sp258);
                 sp2F0 = (f64) sp258.unk8;
                 sp24 = 0.0f;
-                sp248.GetMeasure(temp_f30_128, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp248)->GetMeasure(temp_f30_128, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
                 sp2D8 = sp248;
                 sp2E0 = sp250;
                 sp20 = 0.0f;
-                sp238.GetMeasure(var_f29_131, &this->unk50, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp238)->GetMeasure(var_f29_131, &this->unk50, KDSpline_PositionMixer);
                 sp2C8 = sp238;
                 sp2D0 = sp240;
                 sp1C = 0.0f;
-                sp228.GetMeasure(var_f29_131, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp228)->GetMeasure(var_f29_131, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
                 sp2B8 = sp228;
                 sp2C0 = sp230;
                 temp_f0_215 = sp2E8 + sp2D8;
@@ -615,7 +615,7 @@ void MineCartTrack::LoadDone() {
     } while (var_r29_936 < 4);
 }
 
-#if 0 // DRAFT: undefined identifier 'Init'
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to
 s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -644,7 +644,7 @@ s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
         var_r30_1015 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1016 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1016 != 0) {
-            this->unk50.Init(temp_r3_1016, 0U);
+            ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1016, 0U);
 loop_9:
             if (var_r30_1015 != NULL) {
                 sp58.GetVector3((s32) var_r30_1015);
@@ -666,7 +666,7 @@ loop_9:
                     this->unkB0 = M2C_BITWISE(f64, sp38);
                     this->unkB8 = (f64) sp38.unk8;
                 }
-                this->unk50.AddNode(*((MKVector3 *) &sp78));
+                ((KDUniformSpline *) &this->unk50)->AddNode(*((MKVector3 *) &sp78));
                 var_r30_1015 = var_r30_1015->unkC->GetNextLine(var_r30_1015);
                 goto loop_9;
             }
@@ -677,7 +677,7 @@ loop_9:
         var_r30_1089 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1090 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1090 != 0) {
-            this->unk50.unk14.Init(temp_r3_1090, 0U);
+            ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_1090, 0U);
 loop_18:
             if (var_r30_1089 != NULL) {
                 sp28.GetVector3((s32) var_r30_1089);
@@ -699,7 +699,7 @@ loop_18:
                     this->unkB0 = M2C_BITWISE(f64, sp8);
                     this->unkB8 = (f64) sp8.unk8;
                 }
-                this->unk50.unk14.AddNode(*((MKVector3 *) &sp68));
+                ((KDUniformSpline *) &this->unk50.unk14)->AddNode(*((MKVector3 *) &sp68));
                 var_r30_1089 = var_r30_1089->unkC->GetNextLine(var_r30_1089);
                 goto loop_18;
             }
@@ -714,13 +714,11 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Deinit'
 void MineCartTrack::Deinit() {
     MKProp::Deinit();
-    this->unk50.Deinit();
-    this->unk50.unk14.Deinit();
+    ((KDUniformSpline *) &this->unk50)->Deinit();
+    ((KDUniformSpline *) &this->unk50.unk14)->Deinit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MineCartTrack::Init() {

@@ -15,6 +15,7 @@
 #include "spyro/source/EnergyBeam.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapPS.h"
@@ -23,7 +24,6 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -176,7 +176,7 @@ void TeslaTower::ZapTarget(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp68'
 u8 TeslaTower::FindZapTargets(bool arg0) {
     s8 sp139;
     s8 sp138;
@@ -228,7 +228,7 @@ u8 TeslaTower::FindZapTargets(bool arg0) {
     temp_f0_337 = 300.0f * this->unk90.unk30;
     temp_f31_339 = temp_f0_337 * temp_f0_337;
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), &sp70);
-    sp60.GetMeasure(this->unk90.unk14, &this->unk90);
+    ((KDSpline *) &sp60)->GetMeasure(this->unk90.unk14, &this->unk90);
     sp80 = sp60;
     sp88 = sp68;
     var_r31_355 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->Begin();
@@ -277,7 +277,7 @@ loop_19:
                             sp108 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             sp138 = 0;
                             if (this != NULL) {
-                                sp20.GetPos();
+                                ((MKProp *) &sp20)->GetPos();
                                 sp118 = sp20;
                                 sp120 = sp28;
                             } else {
@@ -470,7 +470,7 @@ void TeslaTower::DrawLightCone() {
     sp1B8 = (f64) sp48;
     sp1C0 = (f64) sp50;
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), &sp1E8);
-    sp168.GetMeasure(this->unk90.unk14, &this->unk90);
+    ((KDSpline *) &sp168)->GetMeasure(this->unk90.unk14, &this->unk90);
     sp1D8 = sp168;
     sp1E0 = sp170;
     sp38 = sp168 - M2C_BITWISE(f64, sp1E8);
@@ -610,7 +610,7 @@ void TeslaTower::Deinit() {
     KDSound_Stop(&this->unk13C);
     KDSound_Stop(&this->unk164);
     KDSound_Stop(&this->unk18C);
-    this->unk90.Deinit();
+    ((KDSpline *) &this->unk90)->Deinit();
     ((EnergyBeam *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x70)))->FreeEnergyBeam(this->unk110);
     this->unk110 = NULL;
     KDProp::Deinit();
@@ -637,17 +637,15 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void TeslaTower::Message(MKMessage *arg0) {
-    this->unk114.Message(arg0);
-    this->unk13C.Message(arg0);
-    this->unk164.Message(arg0);
-    this->unk18C.Message(arg0);
+    ((KDSoundPlayer *) &this->unk114)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk13C)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk164)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk18C)->Message(arg0);
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void TeslaTower::Update() {
     MKVector3 sp58;
     f64 sp50;
@@ -671,18 +669,18 @@ void TeslaTower::Update() {
     u8 var_r6_1140;
 
     sp8 = 1;
-    this->unk18C.Update(GS_TeslaTowerExtra1, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk18C)->Update(GS_TeslaTowerExtra1, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk114.Update(GS_TeslaTowerBeamLP, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk114)->Update(GS_TeslaTowerBeamLP, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
     var_r6_1140 = 0;
     temp_r0_1141 = this->unk90.unk24;
     if ((M2C_BITWISE(s32, temp_r0_1141) == 1) || (M2C_BITWISE(s32, temp_r0_1141) == 2)) {
         var_r6_1140 = 1;
     }
-    this->unk13C.Update(GS_TeslaTowerAlarm, 1U, var_r6_1140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk13C)->Update(GS_TeslaTowerAlarm, 1U, var_r6_1140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk164.Update(GS_TeslaTowerZapSpyro1, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk164)->Update(GS_TeslaTowerZapSpyro1, 1U, M2C_BITWISE(s32, this->unk90.unk24) == 2, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f1_1169 = this->unk90.unk2C;
     if (temp_f1_1169 > 0.0f) {
         this->unk90.unk2C = temp_f1_1169 - gUpdateTimeDelta;
@@ -950,7 +948,7 @@ loop_2:
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp38;
     spB8 = (f64) sp38;
     this->unk90.unk1C = M2C_BITWISE(f32, Tools_GetMatchingNodeIndex(this->unk4, "orbit"));
-    spA0.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    ((Animation *) &spA0)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     this->unk1B8 = spA0;
     this->unk1C0 = spA8;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, M2C_BITWISE(s32, this->unk90.unk1C)), (void (*)(MKDynamicBone *, void *)) &TeslaTower::UpdateTurretBone, &this->unk1B8);
@@ -958,7 +956,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Init'
 s32 TeslaTower::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r31_1786;
@@ -967,19 +964,18 @@ s32 TeslaTower::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("Waypoints") != 0) {
-        this->unk90.Init(arg0->GetNmbrOfSubLines(), 0U);
+        ((KDSpline *) &this->unk90)->Init(arg0->GetNmbrOfSubLines(), 0U);
         var_r31_1786 = arg0->unkC->GetSubLine(arg0);
 loop_5:
         if (var_r31_1786 != NULL) {
             var_r31_1786->AsVector3(0, &sp8);
-            this->unk90.AddNode(sp8);
+            ((KDSpline *) &this->unk90)->AddNode(sp8);
             var_r31_1786 = var_r31_1786->unkC->GetNextLine(var_r31_1786);
             goto loop_5;
         }
     }
     return arg0->LoadFloat("patrolSpeed", &this->unk90.unk18, 0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'nanf'
 void TeslaTower::Init() {
@@ -991,10 +987,10 @@ void TeslaTower::Init() {
     this->unkC = (BoundingVolume *) &this->unkD0;
     this->unk90.unk1C = nanf;
     this->unk90.unk2C = 0.0f;
-    this->unk114.Init(0.25f, 0.25f);
-    this->unk13C.Init(0.25f, 0.25f);
-    this->unk164.Init(0.01f, 0.25f);
-    this->unk18C.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk114)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk13C)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk164)->Init(0.01f, 0.25f);
+    ((KDSoundFader *) &this->unk18C)->Init(0.25f, 0.25f);
 }
 #endif
 

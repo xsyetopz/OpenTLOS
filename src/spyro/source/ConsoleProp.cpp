@@ -31,7 +31,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_100;
     MKIniLine *temp_r27_137;
@@ -51,7 +51,7 @@ s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
         temp_r0_96 = this->unk50;
         if (temp_r0_96 != 0) {
             temp_r28_99 = temp_r0_96 * 0x24;
-            temp_r3_100 = temp_r3_94->Current();
+            temp_r3_100 = ((MKHeap *) temp_r3_94)->Current();
             if (temp_r3_100 != NULL) {
                 var_r3_107 = ((MKHeap *) (temp_r3_100->Current()))->Alloc(temp_r28_99, NULL, 0);
             } else {

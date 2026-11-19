@@ -4,6 +4,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
@@ -11,7 +12,6 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 f64 fmod(f32, f64);                                 /* extern */
@@ -347,12 +347,10 @@ void LavaSmashProp::PostShatter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void LavaSmashProp::Message(MKMessage *arg0) {
     Shatterable::Message(arg0);
-    this->unk198.Message(arg0);
+    ((KDSoundPlayer *) &this->unk198)->Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void LavaSmashProp::Update() {
@@ -368,7 +366,7 @@ void LavaSmashProp::Update() {
     if ((s32) M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x17C) != 0) {
         temp_r4_577 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk198.Update(M2C_FIELD(temp_r4_577, s32 *, 0x17C), 1U, this->unk1D0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk198)->Update(M2C_FIELD(temp_r4_577, s32 *, 0x17C), 1U, this->unk1D0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((s32) this->unk16C == 3) {
         this->unk1E8.unk4 += gUpdateTimeDelta;
@@ -382,13 +380,13 @@ void LavaSmashProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void LavaSmashProp::Resolve() {
     void *temp_r31_644;
 
     Shatterable::Resolve();
     temp_r31_644 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk198.Init(M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x180), M2C_FIELD(temp_r31_644, f32 *, 0x184));
+    ((KDSoundFader *) &this->unk198)->Init(M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x180), M2C_FIELD(temp_r31_644, f32 *, 0x184));
     this->unk1D0 = 0;
 }
 #endif

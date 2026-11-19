@@ -239,7 +239,7 @@ loop_1:
                     temp_r3_390 = MKArchive_Load(M2C_ERROR(/* Read from unset register $r3 */), NULL, NULL, -1);
                     temp_r3_394 = Sound_LoadBankFromMemory(temp_r3_390, 0U, -1);
                     this->unk1C = temp_r3_394;
-                    temp_r3_396 = temp_r3_394->Current();
+                    temp_r3_396 = ((MKHeap *) temp_r3_394)->Current();
                     if (temp_r3_396 != NULL) {
                         ((MKHeap *) (temp_r3_396->Current()))->Free(temp_r3_390, NULL, 0);
                     } else {
@@ -332,7 +332,7 @@ void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
         temp_r3_618 = MKArchive_Load(temp_r3_608, NULL, NULL, -1);
         temp_r3_622 = Sound_LoadBankFromMemory(temp_r3_618, 0U, -1);
         this->unk24 = temp_r3_622;
-        temp_r3_624 = temp_r3_622->Current();
+        temp_r3_624 = ((MKHeap *) temp_r3_622)->Current();
         if (temp_r3_624 != NULL) {
             ((MKHeap *) (temp_r3_624->Main()))->TFree(temp_r3_618, NULL, 0);
             return;

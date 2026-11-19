@@ -733,7 +733,7 @@ loop_63:
             sp90 = (f64) sp30;
             sp98 = (f64) sp38;
             spC = 0.0f;
-            sp60.GetMeasure(var_f31_1206, (Matrix *) &temp_r30_1068->unk68, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp60)->GetMeasure(var_f31_1206, (Matrix *) &temp_r30_1068->unk68, KDSpline_PositionMixer);
             M2C_FIELD(temp_r30_1068, f32 *, 0x30) = sp60;
             temp_r30_1068->unk34 = sp64;
             temp_r30_1068->unk38 = sp68;
@@ -784,7 +784,7 @@ loop_7:
             temp_f30_1514 = M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C);
             temp_r30_1502->unk8C = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f30_1514);
         }
-        sp8.GetRandPos();
+        ((Volume *) &sp8)->GetRandPos();
         temp_r5_1526 = this->unk178;
         sp18 = sp8;
         sp20 = sp10;
@@ -830,7 +830,7 @@ void BirdCritter::LoadDone() {
     this->unk170 = var_r3_1631;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1671;
     MKIniLine *var_r30_1689;
@@ -846,7 +846,7 @@ s32 BirdCritter::LoadLine(MKIniLine *arg0) {
         temp_r3_1667 = arg0->GetNmbrOfSubLines();
         this->unk178 = temp_r3_1667;
         temp_r31_1670 = this->unk178 * 0x10;
-        temp_r3_1671 = temp_r3_1667->Current();
+        temp_r3_1671 = ((MKHeap *) temp_r3_1667)->Current();
         if (temp_r3_1671 != NULL) {
             var_r3_1678 = ((MKHeap *) (temp_r3_1671->Current()))->Alloc(temp_r31_1670, NULL, 0);
         } else {
@@ -878,7 +878,6 @@ void BirdCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: expression syntax error
 void BirdCritterDescriptor::LoadDone() {
     s8 *temp_r30_1758;
     s8 *temp_r30_1778;
@@ -895,49 +894,48 @@ void BirdCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1758 = this->unk34;
-    if (temp_r30_1758->Exists("song") != 0) {
-        var_r3_1770 = temp_r30_1758->GetAnim("song");
+    if (((MKAnimScript *) temp_r30_1758)->Exists("song") != 0) {
+        var_r3_1770 = ((MKAnimScript *) temp_r30_1758)->GetAnim("song");
     } else {
         var_r3_1770 = NULL;
     }
     this->unk70 = (s32) var_r3_1770;
     temp_r30_1778 = this->unk34;
-    if (temp_r30_1778->Exists("watch") != 0) {
-        var_r3_1788 = temp_r30_1778->GetAnim("watch");
+    if (((MKAnimScript *) temp_r30_1778)->Exists("watch") != 0) {
+        var_r3_1788 = ((MKAnimScript *) temp_r30_1778)->GetAnim("watch");
     } else {
         var_r3_1788 = NULL;
     }
     this->unk74 = (s32) var_r3_1788;
     temp_r30_1796 = this->unk34;
-    if (temp_r30_1796->Exists("jump") != 0) {
-        var_r3_1806 = temp_r30_1796->GetAnim("jump");
+    if (((MKAnimScript *) temp_r30_1796)->Exists("jump") != 0) {
+        var_r3_1806 = ((MKAnimScript *) temp_r30_1796)->GetAnim("jump");
     } else {
         var_r3_1806 = NULL;
     }
     this->unk78 = (s32) var_r3_1806;
     temp_r30_1814 = this->unk34;
-    if (temp_r30_1814->Exists("depart") != 0) {
-        var_r3_1824 = temp_r30_1814->GetAnim("depart");
+    if (((MKAnimScript *) temp_r30_1814)->Exists("depart") != 0) {
+        var_r3_1824 = ((MKAnimScript *) temp_r30_1814)->GetAnim("depart");
     } else {
         var_r3_1824 = NULL;
     }
     this->unk7C = (s32) var_r3_1824;
     temp_r30_1832 = this->unk34;
-    if (temp_r30_1832->Exists("flight") != 0) {
-        var_r3_1842 = temp_r30_1832->GetAnim("flight");
+    if (((MKAnimScript *) temp_r30_1832)->Exists("flight") != 0) {
+        var_r3_1842 = ((MKAnimScript *) temp_r30_1832)->GetAnim("flight");
     } else {
         var_r3_1842 = NULL;
     }
     this->unk80 = (s32) var_r3_1842;
     temp_r30_1850 = this->unk34;
-    if (temp_r30_1850->Exists("arrive") != 0) {
-        var_r3_1860 = temp_r30_1850->GetAnim("arrive");
+    if (((MKAnimScript *) temp_r30_1850)->Exists("arrive") != 0) {
+        var_r3_1860 = ((MKAnimScript *) temp_r30_1850)->GetAnim("arrive");
     } else {
         var_r3_1860 = NULL;
     }
     this->unk84 = (s32) var_r3_1860;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 BirdCritterDescriptor::LoadLine(MKIniLine *arg0) {

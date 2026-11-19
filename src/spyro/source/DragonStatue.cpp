@@ -9,9 +9,9 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_DragonStatueEnd;
@@ -285,7 +285,7 @@ u8 DragonStatue::IsDown() {
     return (u8) (this->unk100 == 1);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void DragonStatue::Message(MKMessage *arg0) {
     s8 spE5;
     s8 spE4;
@@ -325,8 +325,8 @@ void DragonStatue::Message(MKMessage *arg0) {
     s32 temp_r0_674;
     void *temp_r3_749;
 
-    this->unk104.Message(arg0);
-    this->unk12C.Message(arg0);
+    ((KDSoundPlayer *) &this->unk104)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk12C)->Message(arg0);
     if ((s32) arg0->unk0 != 0xB5) {
 
     } else {
@@ -411,7 +411,7 @@ void DragonStatue::Draw() {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void DragonStatue::Update() {
     Matrix sp330;
     Matrix sp2F0;
@@ -632,14 +632,14 @@ void DragonStatue::Update() {
     if ((temp_r0_847 == 3) || (temp_r0_847 == 2)) {
         var_r6_846 = 1;
     }
-    this->unk104.Update(GS_DragonStatueRumble, 1U, var_r6_846, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk104)->Update(GS_DragonStatueRumble, 1U, var_r6_846, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
     var_r6_865 = 0;
     temp_r0_866 = this->unk100;
     if ((temp_r0_866 == 3) || (temp_r0_866 == 2)) {
         var_r6_865 = 1;
     }
-    this->unk12C.Update(GS_DragonStatueFall, 1U, var_r6_865, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk12C)->Update(GS_DragonStatueFall, 1U, var_r6_865, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r0_880 = this->unk100;
     if ((temp_r0_880 == 3) || (temp_r0_880 == 2)) {
         if (this->unk154 < 2.0f) {
@@ -1250,7 +1250,6 @@ void DragonStatue::LoadDone() {
     M2C_FIELD(this, f64 *, 0xE0) = temp_f0_2295;
 }
 
-#if 0 // DRAFT: expression syntax error
 void DragonStatue::Init() {
     KDProp::Init();
     this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -1266,8 +1265,7 @@ void DragonStatue::Init() {
     this->unkF8 = 0;
     this->unkFC = 0;
     this->unk100 = 0;
-    this->unk104.Init(0.25f, 0.25f);
-    this->unk12C.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk104)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk12C)->Init(0.25f, 0.25f);
     this->unk154 = 0.0f;
 }
-#endif

@@ -88,7 +88,7 @@ void MCLoadCheckScreen::Update() {
             M2C_FIELD(*temp_r3_70, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_70, &sp28, 3);
             return;
         case 1:
-            temp_ret_82 = temp_r3_17->GetNextCard();
+            temp_ret_82 = ((KDMemoryCard *) temp_r3_17)->GetNextCard();
             temp_r3_82 = temp_ret_82;
             var_r4_17 = (u32) (u64) temp_ret_82;
             if (temp_r3_82 != NULL) {

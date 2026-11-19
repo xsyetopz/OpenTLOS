@@ -10,6 +10,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeatDistortPS.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/Projectile.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "unplaced_templates.h"
@@ -18,7 +19,6 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -220,7 +220,7 @@ void PoisonBomb::Activate() {
     GameProp::Activate();
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void PoisonBomb::Update() {
     s8 sp101;
     u8 sp100;
@@ -281,7 +281,7 @@ void PoisonBomb::Update() {
 
     Projectile::Update();
     sp8 = 1;
-    this->unk190.Update(GS_PoisonBombSmokeLP, 1U, this->unk1C0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk190)->Update(GS_PoisonBombSmokeLP, 1U, this->unk1C0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f2_466 = this->unk1BC;
     if (temp_f2_466 > 0.0f) {
         this->unk1BC = temp_f2_466 - gUpdateTimeDelta;
@@ -392,7 +392,7 @@ void PoisonBomb::Update() {
                 spD0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp100 = 0;
                 if (this != NULL) {
-                    sp30.GetPos();
+                    ((MKProp *) &sp30)->GetPos();
                     spE0 = sp30;
                     spE8 = sp38;
                 } else {
@@ -471,14 +471,13 @@ void PoisonBomb::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 PoisonBomb *PoisonBomb::CreateInstance() {
     PoisonBomb *temp_r3_943;
 
     if ((MKPropDescriptor *) pPoisonBombDescriptor != NULL) {
         temp_r3_943 = checked_cast<PoisonBomb *, MKProp>(pPoisonBombDescriptor->CreateInstance());
         if (temp_r3_943 != NULL) {
-            temp_r3_943->unk190.Init(1.0f, 0.25f);
+            ((KDSoundFader *) &temp_r3_943->unk190)->Init(1.0f, 0.25f);
             temp_r3_943->Reset();
             temp_r3_943->SetInitialState();
             return temp_r3_943;
@@ -486,9 +485,8 @@ PoisonBomb *PoisonBomb::CreateInstance() {
     }
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'PlatformMoveMsg'
 void PoisonBomb::Message(MKMessage *arg0) {
     Matrix sp10;
     M2C_UNK spC;
@@ -496,7 +494,7 @@ void PoisonBomb::Message(MKMessage *arg0) {
     void *temp_r31_993;
     void *temp_r3_1014;
 
-    this->unk190.Message(arg0);
+    ((KDSoundPlayer *) &this->unk190)->Message(arg0);
     temp_r0_983 = arg0->unk0;
     switch (temp_r0_983) {                          /* irregular */
     case 34:
@@ -767,7 +765,7 @@ void PoisonBomb::Draw() {
             spFC = 0.0f;
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
-            spD0.Scale3x3((Matrix *) &spD0, *((MKVector3 *) &sp58));
+            ((Matrix *) &spD0)->Scale3x3((Matrix *) &spD0, *((MKVector3 *) &sp58));
             temp_r3_1435 = this->unk8;
             sp100 = M2C_FIELD(temp_r3_1435, f32 *, 0x30);
             sp104 = M2C_FIELD(temp_r3_1435, f32 *, 0x34);
@@ -780,7 +778,6 @@ void PoisonBomb::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void PoisonBomb::Init() {
     Projectile::Init();
     this->unk170 = 0;
@@ -793,12 +790,11 @@ void PoisonBomb::Init() {
     M2C_FIELD(this, PoisonBomb **, 0x150) = this;
     this->unk18C = 0.0f;
     this->unk1B8 = 0;
-    this->unk190.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk190)->Init(0.25f, 0.25f);
     this->unk1C4 = MKModel_Create("FX0042_GasBlur", NULL, 2, NULL);
     this->unk1C8 = 0.0f;
     this->unk1CC = Tools_GetMatchingMaterial(this->unk1C4, "fx_gasblur");
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void PoisonBombDescriptor::LoadDone() {

@@ -1,6 +1,7 @@
 #include "spyro/source/SpeedwayCynder.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -8,6 +9,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SpeedWay.h"
 #include "spyro/source/SpeedWaySpyro.h"
@@ -21,7 +23,6 @@
 #include "common/Source/Str.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -55,15 +56,15 @@ static f32 CYNDER_HEAD_COLLISION_RADIUS = 150.0f;
 static f32 CYNDER_MAX_Z_TIME = 1.2f;
 static f32 CYNDER_MAX_BITE_SIDE_OFFSET = 1000.0f;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void SpeedwayCynder::UpdateSound() {
     s32 sp8;
     f32 temp_f1_90;
 
     sp8 = 1;
-    this->unk3A8.Update(GS_SWCynderGlideLP, 1U, 1U, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk3A8)->Update(GS_SWCynderGlideLP, 1U, 1U, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    this->unk3D0.Update(GS_SWCynderFireBreathLP, 1U, this->unk3F8, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk3D0)->Update(GS_SWCynderFireBreathLP, 1U, this->unk3F8, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f1_90 = this->unk36C;
     if (temp_f1_90 > 0.0f) {
         this->unk36C = temp_f1_90 - gUpdateTimeDelta;
@@ -244,7 +245,7 @@ s32 SpeedwayCynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, 
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedwayCynder::UpdateFireBomb() {
     f64 sp1D0;
     M2C_UNK sp1BC;
@@ -312,7 +313,7 @@ void SpeedwayCynder::UpdateFireBomb() {
 
     this->unk374 -= gUpdateTimeDelta;
     if ((this->unk374 <= 0.0f) && (this->unk390 < CYNDER_SHOOT_FIRE_BALL_END_TIME)) {
-        sp180.GetPathMatrix(this->unk37C->unk2C0);
+        ((SpeedWay *) &sp180)->GetPathMatrix(this->unk37C->unk2C0);
         M2C_STRUCT_COPY((s32) &sp1BC + 4, (s32) &sp17C + 4, 0x40);
         spB0 = -sp1E0;
         spB4 = -sp1E4;
@@ -720,7 +721,7 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     this->unk31C = 1.0f;
     sp150.SetRotationRoll(this->unk3A0);
     temp_r3_1324 = &this->unk2E0;
-    temp_r3_1324->Multiply3x3((Matrix *) temp_r3_1324, &sp150);
+    ((Matrix *) temp_r3_1324)->Multiply3x3((Matrix *) temp_r3_1324, &sp150);
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &this->unk2E0));
 }
 #endif
@@ -787,11 +788,11 @@ void SpeedwayCynder::EventCameraUpdate() {
     } else {
         var_f1_1454 = 0.0f;
     }
-    sp90.GetPathMatrix(var_f1_1454);
+    ((SpeedWay *) &sp90)->GetPathMatrix(var_f1_1454);
     M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
     sp38 = sp100;
     sp40 = sp108;
-    sp50.GetPathMatrix(this->unk37C->unk2C0);
+    ((SpeedWay *) &sp50)->GetPathMatrix(this->unk37C->unk2C0);
     M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp4C + 4, 0x40);
     sp18 = sp38 - sp100;
     sp28 = sp18;
@@ -935,7 +936,7 @@ void SpeedwayCynder::BiteTransition() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp20'
 void SpeedwayCynder::BiteUpdate() {
     u8 sp110;
     s32 sp10C;
@@ -1084,7 +1085,7 @@ void SpeedwayCynder::BiteUpdate() {
                 sp88 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spB8 = 0;
                 if (this != NULL) {
-                    sp18.GetPos();
+                    ((MKProp *) &sp18)->GetPos();
                     sp98 = sp18;
                     spA0 = sp20;
                 } else {
@@ -1181,7 +1182,7 @@ void SpeedwayCynder::UpdateLookAtNodes() {
         sp8 = M2C_FIELD(temp_r5_2242, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r5_2242, f64 *, 0x38);
         this->unk204 = 0.5235987f;
-        this->unk1F8.Update((MKVector3 *) &sp8);
+        ((NodeLookAtIK *) &this->unk1F8)->Update((MKVector3 *) &sp8);
         var_r30_2252 = 4;
         var_r31_2253 = 0x120;
         do {
@@ -1229,10 +1230,9 @@ void SpeedwayCynder::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void SpeedwayCynder::Message(MKMessage *arg0) {
-    this->unk3A8.Message(arg0);
-    this->unk3D0.Message(arg0);
+    ((KDSoundPlayer *) &this->unk3A8)->Message(arg0);
+    ((KDSoundPlayer *) &this->unk3D0)->Message(arg0);
     KDProp::Message(arg0);
     if ((s32) arg0->unk0 != 0x423) {
         return;
@@ -1242,7 +1242,6 @@ void SpeedwayCynder::Message(MKMessage *arg0) {
     }
     PostLTWUpdate();
 }
-#endif
 
 void SpeedwayCynder::Draw() {
     if (!(this->unk37C->unk2C0 < 0.003f)) {
@@ -1301,7 +1300,7 @@ void SpeedwayCynder::Reset() {
     this->unk3A0 = 0.0f;
     memset(&this->unk3A4, 0, 4U);
     this->unk8 = &this->unk2E0;
-    sp10.GetPathMatrix(0.0f);
+    ((SpeedWay *) &sp10)->GetPathMatrix(0.0f);
     M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
     UpdateLTW(&sp50, 1U);
     MKModel_CalculateNodeWorldPosition(this->unk4, this->unk360, &this->unk340);
@@ -1348,7 +1347,7 @@ void SpeedwayCynder::LoadDone() {
     this->unk120.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
     this->unk168.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
     this->unk1B0.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
-    this->unk1F8.Init(this->unk4, this->unk360);
+    ((NodeLookAtIK *) &this->unk1F8)->Init(this->unk4, this->unk360);
     var_r7_2678 = 1;
     var_r3_2679 = 0x48;
     var_ctr_2681 = 5;
@@ -1389,11 +1388,11 @@ void SpeedwayCynder::LoadDone() {
     } while (var_ctr_2731 != 0);
     this->unk204 = 0.5235987f;
     this->unk208 = 2.8274333f;
-    gMK->CreatePropDeferred("CynderBreathFX", (MKProp **) &this->unk384);
+    ((MKSceneManager *) gMK)->CreatePropDeferred("CynderBreathFX", (MKProp **) &this->unk384);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpeedwayCynder::Init() {
     FireBombFX *temp_r3_2790;
     MKHeap *temp_r3_2803;
@@ -1409,19 +1408,19 @@ void SpeedwayCynder::Init() {
     this->unk3F8 = 0;
     this->unk380 = NULL;
     this->unk384 = NULL;
-    this->unk3A8.Init(0.25f, 0.25f);
-    this->unk3D0.Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk3A8)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) &this->unk3D0)->Init(0.25f, 0.25f);
     this->unk388 = 0xFFFF;
     var_r29_2784 = 0;
     this->unk38C = 0.0f;
     do {
-        temp_r3_2790 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("CynderFireBomb"));
+        temp_r3_2790 = checked_cast<FireBombFX *, MKProp>(((MKSceneManager *) gMK)->CreateProp("CynderFireBomb"));
         if (temp_r3_2790 != NULL) {
             M2C_FIELD(temp_r3_2790->__vptr, M2C_UNK (**)(), 0x34)();
         }
         var_r29_2784 += 1;
     } while (var_r29_2784 < 8);
-    this->unk2E0.SetIdentity();
+    ((Matrix *) &this->unk2E0)->SetIdentity();
     temp_r3_2803 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_2803 != NULL) {
         var_r3_2810 = ((MKHeap *) (temp_r3_2803->Current()))->Alloc(0x30, NULL, 0);

@@ -75,7 +75,7 @@ f32 CmdAutosave(int arg0, char **arg1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x228), M2C_FIELD(arg1, s8 **, 0));
         return 0.0f;
     }
-    ((GameData *) ((GameData *) GameData::gameData))->SetSaveChunk(((Level *) (M2C_FIELD(arg1, Level **, 4)))->GetChunkByName((s8 *) arg1));
+    ((GameData *) GameData::gameData)->SetSaveChunk(((Level *) (M2C_FIELD(arg1, Level **, 4)))->GetChunkByName((s8 *) arg1));
     Autosave_Activate();
     return 1.0f;
 }
@@ -188,11 +188,11 @@ f32 CmdFade(int arg0, char **arg1) {
         return 0.0f;
     }
     if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x2B9) == 0) {
-        ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->FadeIn(NULL);
+        ((GameGlobals::Fade *) (&gb + 0x30))->FadeIn(NULL);
         goto block_7;
     }
     if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x2BC) == 0) {
-        ((GameGlobals::Fade *) ((GameGlobals::Fade *) (&gb + 0x30)))->FadeOut(NULL);
+        ((GameGlobals::Fade *) (&gb + 0x30))->FadeOut(NULL);
 block_7:
         return 1.0f;
     }
@@ -675,8 +675,8 @@ f32 CmdActionGive(int arg0, char **arg1) {
         temp_r3_1466 = temp_r3_1460 << 5;
         GameData::gameData[0x168] |= 8;
         M2C_FIELD(&(&GameData::gameData[0x70])[temp_r3_1466], s32 *, 0x60) = (s32) (M2C_FIELD(&(&GameData::gameData[0x70])[temp_r3_1466], s32 *, 0x60) | 1);
-        ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->SetCurrentBreath((BreathElement) temp_r4_1465);
-        ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
+        ((GameStats *) &GameData::gameData[0x70])->SetCurrentBreath((BreathElement) temp_r4_1465);
+        ((Stat *) (&GameData::gameData[0x70] + 0x30))->SetValue(M2C_FIELD(GameData::gameData, f32 *, 0xA4), 0U);
         goto block_22;
     }
     if ((arg0 > 1) && (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x3C0) == 0)) {
@@ -1104,7 +1104,7 @@ loop_9:
 void CmdCutsceneSubtitlesGetStr(char *arg0, int arg1) {
     u8 *var_r6_2424;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r6_2424 = lit_stringBase0 + 0x690;
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) != 0) {
         var_r6_2424 = lit_stringBase0 + 0x68B;
@@ -1118,7 +1118,7 @@ f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2455;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r31_2455 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10);
     if (arg0 > 1) {
         if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x684) == 0) {
@@ -1132,7 +1132,7 @@ f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
         } else if (sscanf(M2C_FIELD(arg1, s8 **, 4), (f32 *) (lit_stringBase0 + 0x2DA), &sp8) == 1) {
             var_r31_2455 = sp8 != 0.0f;
         }
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) = var_r31_2455;
     }
     if (var_r31_2455 != 0) {
@@ -1175,7 +1175,7 @@ f32 CmdScrWide(int arg0, char **arg1) {
             var_r31_2574 = sp8 != 0.0f;
         }
         Tools_EnableWideScreen(var_r31_2574);
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11) = var_r31_2574;
     }
     if (var_r31_2574 != 0) {
@@ -1189,7 +1189,7 @@ f32 CmdScrWide(int arg0, char **arg1) {
 void CmdCamInvertXGetStr(char *arg0, int arg1) {
     u8 *var_r6_2669;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r6_2669 = lit_stringBase0 + 0x690;
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x14) != 0) {
         var_r6_2669 = lit_stringBase0 + 0x68B;
@@ -1203,7 +1203,7 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2700;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r31_2700 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x14);
     if (arg0 > 1) {
         if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x684) == 0) {
@@ -1217,7 +1217,7 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
         } else if (sscanf(M2C_FIELD(arg1, s8 **, 4), (f32 *) (lit_stringBase0 + 0x2DA), &sp8) == 1) {
             var_r31_2700 = sp8 != 0.0f;
         }
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x14) = var_r31_2700;
     }
     if (var_r31_2700 != 0) {
@@ -1231,7 +1231,7 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
 void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
     u8 *var_r6_2793;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r6_2793 = lit_stringBase0 + 0x690;
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13) != 0) {
         var_r6_2793 = lit_stringBase0 + 0x68B;
@@ -1245,7 +1245,7 @@ f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2824;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r31_2824 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13);
     if (arg0 > 1) {
         if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x684) == 0) {
@@ -1259,7 +1259,7 @@ f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
         } else if (sscanf(M2C_FIELD(arg1, s8 **, 4), (f32 *) (lit_stringBase0 + 0x2DA), &sp8) == 1) {
             var_r31_2824 = sp8 != 0.0f;
         }
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13) = var_r31_2824;
     }
     if (var_r31_2824 != 0) {
@@ -1289,7 +1289,7 @@ f32 CmdInputVibrate(int arg0, char **arg1) {
 void CmdInputVibrationGetStr(char *arg0, int arg1) {
     u8 *var_r6_2971;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r6_2971 = lit_stringBase0 + 0x690;
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
         var_r6_2971 = lit_stringBase0 + 0x68B;
@@ -1303,7 +1303,7 @@ f32 CmdInputVibration(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_3002;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     var_r31_3002 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12);
     if (arg0 > 1) {
         if (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x684) == 0) {
@@ -1317,7 +1317,7 @@ f32 CmdInputVibration(int arg0, char **arg1) {
         } else if (sscanf(M2C_FIELD(arg1, s8 **, 4), (f32 *) (lit_stringBase0 + 0x2DA), &sp8) == 1) {
             var_r31_3002 = sp8 != 0.0f;
         }
-        ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+        ((GameData *) GameData::gameData)->GetGameSettings();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) = var_r31_3002;
         MKRumble_Enable(var_r31_3002);
     }
@@ -1435,7 +1435,7 @@ f32 CmdSndSoundVol(int arg0, char **arg1) {
                 }
                 spC = var_f1_3305;
                 KDSound_SetMasterSoundVolume(var_f1_3305);
-                ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+                ((GameData *) GameData::gameData)->GetGameSettings();
                 M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4) = spC;
             }
         } else if (sscanf((s8 *) (lit_stringBase0 + 0x2DA), &spC) == 1) {
@@ -1452,7 +1452,7 @@ f32 CmdSndSoundVol(int arg0, char **arg1) {
             }
             spC = var_f1_3336;
             KDSound_SetMasterSoundVolume(var_f1_3336);
-            ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+            ((GameData *) GameData::gameData)->GetGameSettings();
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4) = spC;
         }
     }
@@ -1474,7 +1474,7 @@ f32 CmdSndMusicVol(int arg0, char **arg1) {
     f32 var_f1_3461;
     u8 temp_r0_3412;
 
-    ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+    ((GameData *) GameData::gameData)->GetGameSettings();
     spC = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
     if (arg0 > 1) {
         temp_r0_3412 = *M2C_FIELD(arg1, u8 **, 4);
@@ -1493,7 +1493,7 @@ f32 CmdSndMusicVol(int arg0, char **arg1) {
                 }
                 spC = var_f1_3430;
                 Music_SetMasterVolume(var_f1_3430);
-                ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+                ((GameData *) GameData::gameData)->GetGameSettings();
                 M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8) = spC;
             }
         } else if (sscanf((s8 *) (lit_stringBase0 + 0x2DA), &spC) == 1) {
@@ -1510,7 +1510,7 @@ f32 CmdSndMusicVol(int arg0, char **arg1) {
             }
             spC = var_f1_3461;
             Music_SetMasterVolume(var_f1_3461);
-            ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
+            ((GameData *) GameData::gameData)->GetGameSettings();
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8) = spC;
         }
     }

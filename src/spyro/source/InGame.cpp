@@ -3,13 +3,16 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/DialogBox.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/PropGroupVolume.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -597,13 +600,13 @@ void InGame_DrawLevel() {
     var_r29_1117 = 0;
     temp_r28_1119 = gb.unkC;
     temp_r3_1120 = temp_r28_1119->unk78;
-    if (((temp_r3_1120 != NULL) && (temp_r3_1120->IsPlaying() != 0)) || (((s32) temp_r28_1119->unk74 == 2) && (temp_r28_1119->unk24.GetState() == 2))) {
+    if (((temp_r3_1120 != NULL) && (((KDSynkerPlayer3 *) temp_r3_1120)->IsPlaying() != 0)) || (((s32) temp_r28_1119->unk74 == 2) && (temp_r28_1119->unk24.GetState() == 2))) {
         var_r29_1117 = 1;
     }
     if ((var_r29_1117 != 0) && (temp_r28_1139 = gb.unkC, (((s32) temp_r28_1139->unk74 == 1) == 0))) {
         temp_r3_1143 = temp_r28_1139->unk78;
         var_r29_1144 = 0;
-        if (((temp_r3_1143 != NULL) && (temp_r3_1143->IsPlaying() != 0)) || (((s32) temp_r28_1139->unk74 == 2) && (temp_r28_1139->unk24.GetState() == 2))) {
+        if (((temp_r3_1143 != NULL) && (((KDSynkerPlayer3 *) temp_r3_1143)->IsPlaying() != 0)) || (((s32) temp_r28_1139->unk74 == 2) && (temp_r28_1139->unk24.GetState() == 2))) {
             var_r29_1144 = 1;
         }
         if (var_r29_1144 != 0) {
@@ -676,7 +679,7 @@ void InGame_Draw() {
         }
         InGame_DrawLevel();
         gb.unk24.Get();
-        gb.unk2AC->DrawInstances();
+        ((BoneBlurFXDescriptor *) gb.unk2AC)->DrawInstances();
         gb.unk24.Release();
         temp_r4_1349 = gb.unk32C->unk18;
         if ((u32) temp_r4_1349 != 0U) {
@@ -898,7 +901,7 @@ void InGame_Init() {
     temp_r4_1867 = M2C_FIELD(gb.unk0->GetProp(), MKVector3 **, 8);
     sp8 = M2C_FIELD(temp_r4_1867, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r4_1867, f64 *, 0x38);
-    sp8.CullGroups(*temp_r4_1867);
+    ((PropGroupVolume *) &sp8)->CullGroups(*temp_r4_1867);
     if ((s32) gb.unk340 != 0) {
         msgTime = 999.0f;
         pMessage = "Autolevelswitch running...";

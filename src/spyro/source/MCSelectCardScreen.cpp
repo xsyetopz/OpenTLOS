@@ -198,7 +198,7 @@ void MCSelectCardScreen::UpdateDisplay() {
             var_r30_196 = M2C_FIELD(var_r30_196, void **, 0x10);
         } while (var_r29_195 < 2);
         temp_r3_230 = this->unkDC;
-        if ((u8) temp_r3_230->GetChild(M2C_FIELD(temp_r3_230, s32 *, 0x68))->unk15 == 0) {
+        if ((u8) ((UIContainer *) temp_r3_230)->GetChild(M2C_FIELD(temp_r3_230, s32 *, 0x68))->unk15 == 0) {
             temp_r3_236 = this->unkDC;
             sp58 = 0xB;
             sp5C = 0;
@@ -299,7 +299,7 @@ block_54:
             this->unkC8 += 1;
             break;
         case 1:
-            temp_r3_461 = temp_r3_415->GetNextCard();
+            temp_r3_461 = ((KDMemoryCard *) temp_r3_415)->GetNextCard();
             if (temp_r3_461 != NULL) {
                 ((KDMemoryCard *) (temp_r3_461->GetNextCard()))->SetState((KDMCState) 2);
                 return;
@@ -390,8 +390,8 @@ void MCSelectCardScreen::Resolve() {
     this->unkE4 = ui_cast<UIText *, UIObject *>(FindChild("NoCardText"));
     this->unkD4 = FindChild("promptBg");
     this->unkD0 = FindPrompt((UIContainer *) this);
-    this->unkD4 = this->unkD0->FindChild("UpDown");
-    this->unkD8 = this->unkD0->FindChild("Forward");
+    this->unkD4 = ((UIContainer *) this->unkD0)->FindChild("UpDown");
+    this->unkD8 = ((UIContainer *) this->unkD0)->FindChild("Forward");
 }
 #endif
 

@@ -241,7 +241,7 @@ void WindFX::GetGlobalVelocity(const MKVector3 &arg0) {
     this->unk8 = (f64) sp10;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp30'
 void WindFX::GetVelocity(const MKVector3 &arg0) {
     f64 sp40;
     f64 sp38;
@@ -260,12 +260,12 @@ void WindFX::GetVelocity(const MKVector3 &arg0) {
     sp38 = (f64) sp8;
     switch (temp_r0_401) {                          /* irregular */
     case 0:
-        sp28.GetGlobalVelocity(arg0);
+        ((WindFX *) &sp28)->GetGlobalVelocity(arg0);
         sp38 = sp28;
         sp40 = sp30;
         break;
     case 1:
-        sp18.GetSwirlVelocity(arg0);
+        ((WindFX *) &sp18)->GetSwirlVelocity(arg0);
         sp38 = sp18;
         sp40 = sp20;
         break;

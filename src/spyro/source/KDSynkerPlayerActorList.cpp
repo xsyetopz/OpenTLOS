@@ -214,19 +214,18 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetEnvelopeList'
 void KDSP_ActorList::Update(float arg0, KDSP_EnvelopeList *arg1, const MKVector3 &arg2, bool arg3) {
     s32 var_r30_356;
     s32 var_r30_371;
     s32 var_r31_355;
     s32 var_r31_370;
 
-    arg1->SetEnvelopeList(arg1);
+    ((KDSP_Actor *) arg1)->SetEnvelopeList(arg1);
     var_r31_355 = this->unk4;
     var_r30_356 = 0;
 loop_2:
     if (var_r30_356 < (s32) this->unk0) {
-        var_r31_355->Update(arg0, arg2, arg3);
+        ((KDSP_Actor *) var_r31_355)->Update(arg0, arg2, arg3);
         var_r31_355 += 0x138;
         var_r30_356 += 1;
         goto loop_2;
@@ -235,13 +234,12 @@ loop_2:
     var_r30_371 = 0;
 loop_5:
     if (var_r30_371 < (s32) this->unk0) {
-        var_r31_370->UpdateLookat();
+        ((KDSP_Actor *) var_r31_370)->UpdateLookat();
         var_r31_370 += 0x138;
         var_r30_371 += 1;
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_ActorList::ResolveLookAt() {
@@ -414,7 +412,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'SetInput'
+#if 0 // DRAFT: illegal type
 void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *arg3) {
     MKIniLine *temp_r28_706;
     MKIniLine *temp_r3_729;
@@ -426,7 +424,7 @@ void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *
     s32 var_r27_726;
     void *temp_r5_714;
 
-    arg3->SetInput((KDInput *) arg0);
+    ((KDSP_Actor *) arg3)->SetInput((KDInput *) arg0);
     temp_r28_706 = this->unkC;
     if (temp_r28_706 != NULL) {
         temp_r0_709 = this->unk0;
@@ -441,8 +439,8 @@ void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *
             var_r28_733 = temp_r3_729->unkC->GetNextLine(temp_r3_729);
 loop_4:
             if (var_r28_733 != NULL) {
-                var_r27_726->Init();
-                var_r27_726->LoadActorDataSection(arg0, var_r28_733);
+                ((KDSP_Actor *) var_r27_726)->Init();
+                ((KDSP_Actor *) var_r27_726)->LoadActorDataSection(arg0, var_r28_733);
                 var_r27_726 += 0x138;
                 var_r28_733 = var_r28_733->unkC->GetNextLine(var_r28_733);
                 goto loop_4;

@@ -1089,8 +1089,8 @@ loop_40:
         sp298 *= var_f2_1535;
         unksp29C = temp_f6_1544;
         sp2A0 = temp_f5_1546;
-        sp2B0.RotateRoll((Matrix *) &sp2B0, *(this->unk184 + (var_r24_1369 + 8)));
-        sp2B0.Multiply3x3((Matrix *) &sp2B0, &this->unk110);
+        ((Matrix *) &sp2B0)->RotateRoll((Matrix *) &sp2B0, *(this->unk184 + (var_r24_1369 + 8)));
+        ((Matrix *) &sp2B0)->Multiply3x3((Matrix *) &sp2B0, &this->unk110);
         if (((u8) this->unk1A8 != 0) && (MKCollision_SphereCollide(sp2E0, 50.0f, &sp330, 1, (MKCollisionMode) 7, 0x7FFFFFFE) != 0)) {
             sp1F8.operator*(30.000002f);
             temp_f0_1607 = sp2E0 + M2C_BITWISE(f64, sp1F8);
@@ -2031,7 +2031,7 @@ void RopeBridge::CalculateTranformationMatrices() {
     sp30 = this->unk168 - this->unk158;
     unksp5C = 0.0f;
     sp60 = (f64) sp30;
-    this->unk50.SetIdentity();
+    ((Matrix *) &this->unk50)->SetIdentity();
     sp18 = -(f32) sp58;
     sp1C = -unksp5C;
     sp20 = -(f32) sp60;
@@ -2042,7 +2042,7 @@ void RopeBridge::CalculateTranformationMatrices() {
     this->unk84 = this->unk154;
     this->unk88 = this->unk158;
     this->unk8C = 1.0f;
-    this->unkD0.Inverse((Matrix *) &this->unk50);
+    ((Matrix *) &this->unkD0)->Inverse((Matrix *) &this->unk50);
     temp_f3_3253 = this->unk164;
     temp_f6_3259 = this->unk160;
     temp_f7_3265 = this->unk168;
@@ -2138,7 +2138,7 @@ void RopeBridge::LoadDone() {
     this->unk184 = __construct_new_array();
     temp_r3_3429 = this->unk188;
     temp_r27_3431 = (temp_r3_3429 + 1) * 0x48;
-    temp_r3_3432 = temp_r3_3429->Current();
+    temp_r3_3432 = ((MKHeap *) temp_r3_3429)->Current();
     if (temp_r3_3432 != NULL) {
         var_r3_3439 = ((MKHeap *) (temp_r3_3432->Current()))->Alloc(temp_r27_3431, NULL, 0);
     } else {
@@ -2276,7 +2276,7 @@ loop_4:
     }
     temp_r28_3802 = temp_r31_3756->unk180;
     if (temp_r28_3802 != NULL) {
-        temp_r3_3805 = var_r3_0->Current();
+        temp_r3_3805 = ((MKHeap *) var_r3_0)->Current();
         if (temp_r3_3805 != NULL) {
             ((MKHeap *) (temp_r3_3805->Current()))->Free(temp_r28_3802, NULL, 0);
         } else {
@@ -2284,7 +2284,7 @@ loop_4:
         }
         temp_r31_3756->unk180 = NULL;
     }
-    temp_r31_3756->MKProp::Deinit();
+    ((MKProp *) temp_r31_3756)->MKProp::Deinit();
 }
 #endif
 

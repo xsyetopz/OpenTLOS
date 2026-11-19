@@ -645,40 +645,32 @@ void MKHeap::InitModule() {
     } while (var_ctr_1069 != 0);
 }
 
-#if 0 // DRAFT: pointer/array required
 void __nwa(unsigned long arg0, const char *arg1, int arg2) {
     MKHeap *temp_r3_1090;
 
-    temp_r3_1090 = arg0->Current();
+    temp_r3_1090 = ((MKHeap *) arg0)->Current();
     if (temp_r3_1090 != NULL) {
         ((MKHeap *) (temp_r3_1090->Current()))->Alloc((s32) arg0, arg1, arg2);
         return;
     }
     malloc((s32) arg0);
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void __nw(unsigned long arg0, const char *arg1, int arg2) {
     MKHeap *temp_r3_1120;
 
-    temp_r3_1120 = arg0->Current();
+    temp_r3_1120 = ((MKHeap *) arg0)->Current();
     if (temp_r3_1120 != NULL) {
         ((MKHeap *) (temp_r3_1120->Current()))->Alloc((s32) arg0, arg1, arg2);
         return;
     }
     malloc((s32) arg0);
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void __dla(void *arg0) {
-    arg0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void __dl(void *arg0) {
-    arg0->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
-#endif

@@ -420,7 +420,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2C8 = 0;
     if (temp_r4_555 != NULL) {
-        sp88.GetPos();
+        ((MKProp *) &sp88)->GetPos();
         sp2A8 = sp88;
         sp2B0 = sp90;
     } else {
@@ -546,7 +546,7 @@ block_24:
     sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2C8 = 0;
     if (temp_r4_764 != NULL) {
-        sp78.GetPos();
+        ((MKProp *) &sp78)->GetPos();
         sp2A8 = sp78;
         sp2B0 = sp80;
     } else {

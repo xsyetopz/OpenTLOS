@@ -3,10 +3,12 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
@@ -360,14 +362,14 @@ void SpyroIdleState::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroIdleState::Update() {
     Spyro *temp_r3_839;
 
     temp_r3_839 = this->unk10;
     if ((s32) M2C_FIELD(temp_r3_839->unk26C.unk8, s32 *, 0x16C) > 0) {
         temp_r3_839->SetDesiredVelocity(MKVector3::zero, 540000.0f);
-        if (this->unk10->unk26C.unk8->unk8.HitID(2U) != 0) {
+        if (((ContextInfo *) &this->unk10->unk26C.unk8->unk8)->HitID(2U) != 0) {
             this->unk44 = 1;
         } else {
             this->unk44 = 0;
@@ -391,7 +393,7 @@ void SpyroIdleState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     s32 sp20;
     s32 sp1C;
@@ -420,8 +422,8 @@ void SpyroIdleState::Enter(SpyroStateMessages &arg0) {
     temp_r3_918 = this->unk10;
     temp_r3_918->unk428 = temp_r3_918->unk428 | 0x300000 | 0x8000;
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
-    this->unk10->unk430.unk28.SetTailSweepEnabled(1U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(1U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(1U);
     this->unk2C = 0;
     this->unk48 = -1;
     temp_r3_937 = this->unk10->GetCamera();

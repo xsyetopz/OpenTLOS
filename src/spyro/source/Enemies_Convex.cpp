@@ -11,6 +11,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/MovementObject.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
@@ -155,7 +156,7 @@ void ConvexTier2::UpdateMovementCustom() {
     if (((temp_r6_300 != NULL) && (((u8) M2C_FIELD(temp_r6_300, u8 *, 0x464) >> 7U) & 1)) || (((u8) this->unk6B5 >> 1U) & 1)) {
 
     }
-    sp8.Update((u8) &this->unk588);
+    ((MovementObject *) &sp8)->Update((u8) &this->unk588);
     this->unk100 = sp8;
     this->unk108 = sp10;
     UpdateModel(sp8);

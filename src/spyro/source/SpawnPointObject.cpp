@@ -1,12 +1,14 @@
 #include "spyro/source/SpawnPointObject.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void SpawnPointObject::Resolve() {
     SpawnerObject *sp10;
     s32 spC;
@@ -18,7 +20,7 @@ void SpawnPointObject::Resolve() {
     void *temp_r3_64;
 
     if (((u8) this->unk52 == 0) && ((u8) this->unk50 == 1)) {
-        temp_r3_23 = this->unk10->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_23 = ((MKSceneManager *) this->unk10)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
         if (temp_r3_23 != NULL) {
             this->unk10 = M2C_FIELD(temp_r3_23, s32 *, 4);
             this->unk14 = (s32) Tools_GetMatchingRefPointIndex((MKModel *) this->unk10, "Spawn_00");
@@ -27,7 +29,7 @@ void SpawnPointObject::Resolve() {
     if ((u8) this->unk52 == 0) {
         temp_r3_38 = this->unk0;
         if (temp_r3_38 != NULL) {
-            temp_r3_41 = temp_r3_38->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+            temp_r3_41 = ((MKSceneManager *) temp_r3_38)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
             spC = 0;
             sp8 = 0x34;
             sp10 = NULL;
@@ -101,11 +103,11 @@ void SpawnPointObject::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void SpawnPointObject::Init(SpawnPointData *arg0) {
     void *temp_r3_227;
 
-    this->unk10.SetIdentity();
+    ((Matrix *) &this->unk10)->SetIdentity();
     this->unk50 = 0;
     this->unk51 = 0;
     this->unk52 = 0;

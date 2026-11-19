@@ -26,13 +26,13 @@ void DreadWing::DropDropBox() {
 
     temp_r3_67 = this->unkAFC;
     if ((u32) temp_r3_67 != 0U) {
-        temp_r3_67->Drop();
+        ((DropBox *) temp_r3_67)->Drop();
         this->unkAFC = 0;
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'DropBox *' to
 s32 DreadWing::PickUpDropBox(int arg0) {
     AttackSweepData *temp_r4_117;
     AttackSweepData *temp_r4_224;
@@ -51,10 +51,10 @@ s32 DreadWing::PickUpDropBox(int arg0) {
     }
     temp_r3_102 = this->unkAF8;
     if ((u32) temp_r3_102 != 0U) {
-        this->unkAFC = checked_cast<DropBox *, MKProp>(temp_r3_102->CreateInstance());
+        this->unkAFC = checked_cast<DropBox *, MKProp>(((MKPropDescriptor *) temp_r3_102)->CreateInstance());
         temp_r3_108 = this->unkAFC;
         if ((u32) temp_r3_108 != 0U) {
-            temp_r3_108->SetDefaults();
+            ((DropBox *) temp_r3_108)->SetDefaults();
             M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
             M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
             temp_r4_117 = this->unkA30;
@@ -86,10 +86,10 @@ s32 DreadWing::PickUpDropBox(int arg0) {
     }
     temp_r3_209 = this->unkAF8;
     if ((u32) temp_r3_209 != 0U) {
-        this->unkAFC = checked_cast<DropBox *, MKProp>(temp_r3_209->CreateInstance());
+        this->unkAFC = checked_cast<DropBox *, MKProp>(((MKPropDescriptor *) temp_r3_209)->CreateInstance());
         temp_r3_215 = this->unkAFC;
         if ((u32) temp_r3_215 != 0U) {
-            temp_r3_215->SetDefaults();
+            ((DropBox *) temp_r3_215)->SetDefaults();
             M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
             M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
             temp_r4_224 = this->unkA30;
@@ -241,17 +241,15 @@ void DreadWing::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void DreadWing::Despawn(bool arg0) {
     s32 temp_r3_522;
 
     Enemy::Despawn(arg0);
     temp_r3_522 = this->unkAFC;
     if ((u32) temp_r3_522 != 0U) {
-        temp_r3_522->Drop();
+        ((DropBox *) temp_r3_522)->Drop();
     }
 }
-#endif
 
 void DreadWing::Update() {
     Enemy::Update();

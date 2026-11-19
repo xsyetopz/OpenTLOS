@@ -4,15 +4,16 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Platform.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/SplineTools.h"
 #include <m2c_macros.h>
@@ -65,7 +66,7 @@ void MobilePlatform::UpdateSag() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void MobilePlatform::SetYaw(float arg0, float arg1) {
     KDSplinePathSegment spB8;
     f64 spB0;
@@ -98,14 +99,14 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
 
     if ((s32) this->unk19C.unk30.unk0 > 1) {
         spB8.GetVelocity(arg0);
-        spB8.unk10.ToWorldDir(*((MKVector3 *) &this->unk150));
+        ((PlatformRider *) &spB8.unk10)->ToWorldDir(*((MKVector3 *) &this->unk150));
         spB8.unk20 = spB8.unk10;
         temp_f2_158 = M2C_BITWISE(f32, spB8.unk20);
         spB8.unk28 = M2C_BITWISE(f64, spB8.unk18);
         spB8.unk24 = 0.0f;
         if (((((f32) spB8.unk28 * (f32) spB8.unk28) + ((temp_f2_158 * temp_f2_158) + (0.0f * 0.0f))) < 0.0001f) && (arg0 == 0.0f)) {
             sp88.GetAcceleration(arg0);
-            sp88.unk10.ToWorldDir(*((MKVector3 *) &this->unk150));
+            ((PlatformRider *) &sp88.unk10)->ToWorldDir(*((MKVector3 *) &this->unk150));
             sp28 = sp88.unk10 * 5.811479333e-315;
             spA8 = sp28;
             sp30 = spA0 * 10000.0f;
@@ -243,7 +244,7 @@ void MobilePlatform::UpdateMove() {
         var_f31_491 = temp_f1_489;
         sp8 = 0.0f;
         sp88.GetMeasure(temp_f1_489, this + 0x1CC, KDSpline_PositionMixer);
-        sp88.unk10.ToWorld(*((MKVector3 *) &this->unk150));
+        ((PlatformRider *) &sp88.unk10)->ToWorld(*((MKVector3 *) &this->unk150));
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp88.unk10));
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
             temp_r3_510 = this->unk184;
@@ -357,7 +358,7 @@ void MobilePlatform::Message(MKMessage *arg0) {
     default:
 block_73:
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-            this->unk214.Message(arg0);
+            ((KDSoundPlayer *) &this->unk214)->Message(arg0);
         }
         PropFlagsMessage((u32 *) &this->unk10, arg0);
         Platform::Message(arg0);
@@ -507,7 +508,7 @@ void MobilePlatform::PropUpdate() {
     if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
         temp_r4_1194 = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk214.Update(M2C_FIELD(temp_r4_1194, s32 *, 0x134), 1U, M2C_FIELD(this, u8 *, 0x218), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk214)->Update(M2C_FIELD(temp_r4_1194, s32 *, 0x134), 1U, M2C_FIELD(this, u8 *, 0x218), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if (!(this->unk10 & 0x20000)) {
         this->unk70.unk4 = 0;
@@ -523,10 +524,10 @@ void MobilePlatform::PropUpdate() {
     if ((temp_f2_1238 > 0.0f) && (temp_f0_1243 = temp_f2_1238 - gUpdateTimeDelta, this->unk200.unk0 = temp_f0_1243, M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */), ((temp_f0_1243 == 0.0f) != 0))) {
         this->unk200.unk0 = -1.0f;
         if ((u8) M2C_FIELD(this, u8 *, 0x20C) != 0) {
-            this->unk1F8.Send((MKProp *) this);
+            ((EventMessage *) &this->unk1F8)->Send((MKProp *) this);
             return;
         }
-        this->unk1FC.Send((MKProp *) this);
+        ((EventMessage *) &this->unk1FC)->Send((MKProp *) this);
     }
 }
 #endif
@@ -546,7 +547,7 @@ void MobilePlatform::LoadDone() {
     void *temp_r3_1315;
 
     Platform::LoadDone();
-    this->unk19C.LoadDone();
+    ((KDSplinePathSegment *) &this->unk19C)->LoadDone();
     temp_r3_1283 = this->unk8;
     temp_f1_1284 = M2C_FIELD(temp_r3_1283, f64 *, 0x30);
     temp_f0_1285 = M2C_FIELD(temp_r3_1283, f64 *, 0x38);
@@ -613,7 +614,7 @@ s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
     var_r31_1449 = 0;
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo[4], 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo[8], 0) != 0) || (arg0->LoadBool("bMoveOne", (u8 *) &this->unk19C.unk44, 0) != 0) || (arg0->LoadBool("bNonCircular", &MobilePlatform::mpfLoadInfo[0xC], 0) != 0) || (arg0->LoadBool("bSingleMove", &this->unk1EC, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F4, 0) != 0) || (this->unk1F8.LoadLine(arg0, "OnAttach") != 0) || (this->unk1FC.LoadLine(arg0, "OnDetach") != 0) || (this->unk19C.LoadLine(arg0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo[4], 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo[8], 0) != 0) || (arg0->LoadBool("bMoveOne", (u8 *) &this->unk19C.unk44, 0) != 0) || (arg0->LoadBool("bNonCircular", &MobilePlatform::mpfLoadInfo[0xC], 0) != 0) || (arg0->LoadBool("bSingleMove", &this->unk1EC, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F4, 0) != 0) || (((EventMessage *) &this->unk1F8)->LoadLine(arg0, "OnAttach") != 0) || (((EventMessage *) &this->unk1FC)->LoadLine(arg0, "OnDetach") != 0) || (((KDSplinePathSegment *) &this->unk19C)->LoadLine(arg0) != 0)) {
         var_r31_1449 = 1;
     }
     return var_r31_1449;
@@ -631,19 +632,19 @@ void MobilePlatform::Deinit() {
     if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
         KDSound_Stop((s32 *) &this->unk214);
     }
-    this->unk19C.Deinit();
+    ((KDSplinePathSegment *) &this->unk19C)->Deinit();
     Platform::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: expression syntax error
 void MobilePlatform::Init() {
     Platform::Init();
     MobilePlatform::mpfLoadInfo[0xC] = 0;
     M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0) = 7.0f;
     M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4) = -1.0f;
     M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 8) = 0.0f;
-    this->unk19C.Init();
+    ((KDSplinePathSegment *) &this->unk19C)->Init();
     this->unk184 = 0;
     this->unk188 = 2;
     this->unk19C.unk44 = 0;
@@ -659,7 +660,7 @@ void MobilePlatform::Init() {
     this->unk248 = 0.0f;
     M2C_FIELD(this, s8 *, 0x218) = 0;
     if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-        this->unk214.Init(1.0f, 1.0f);
+        ((KDSoundFader *) &this->unk214)->Init(1.0f, 1.0f);
     }
 }
 #endif

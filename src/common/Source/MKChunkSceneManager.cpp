@@ -2,6 +2,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFFTWater.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKLevelChunk.h"
 #include "common/Source/MKProp.h"
@@ -66,7 +67,7 @@ loop_6:
         var_r31_65 += 4;
         goto loop_6;
     }
-    var_r3_0->ManagedDraw();
+    ((MKFFTWater *) var_r3_0)->ManagedDraw();
     var_r30_92 = 0;
     var_r31_93 = 0;
 loop_13:
@@ -371,11 +372,11 @@ void MKChunkSceneManager::UnlockChunk(MKLevelChunk *arg0) {
     M2C_FIELD(arg0->unk8, M2C_UNK (**)(MKLevelChunk *), 0x44)(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'Game_ChunkChooser'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 MKLevelChunk *MKChunkSceneManager::LockChunk(MKChunkRequest *arg0, char **arg1, int arg2) {
     MKLevelChunk *temp_r3_588;
 
-    temp_r3_588 = arg0->Game_ChunkChooser((MKChunkRequest *) arg1, (s8 **) arg2, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
+    temp_r3_588 = ((MKLevelChunk *) arg0)->Game_ChunkChooser((MKChunkRequest *) arg1, (s8 **) arg2, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
     M2C_FIELD(temp_r3_588->unk8, M2C_UNK (**)(s32, u8), 0x40)(arg0->unk0, arg0->unkC);
     return temp_r3_588;
 }
@@ -395,7 +396,7 @@ loop_10:
     if (var_r31_617 >= (MKLevelChunk **) this->unkEC) {
         arg1->unkC = 0;
         arg1->unk8 = 0;
-        temp_r3_678 = arg1->Game_ChunkChooser((MKChunkRequest *) arg2, (s8 **) arg3, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
+        temp_r3_678 = ((MKLevelChunk *) arg1)->Game_ChunkChooser((MKChunkRequest *) arg2, (s8 **) arg3, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */));
         temp_r3_678->QueueChunkLoad(arg0, arg1->unk4, arg6);
         return temp_r3_678;
     }
@@ -867,7 +868,7 @@ loop_10:
         var_r30_1481 -= 4;
         goto loop_10;
     }
-    var_r3_1478->PropResolver_Deinit();
+    ((MKSceneManager *) var_r3_1478)->PropResolver_Deinit();
     this->unk19 = 0;
     temp_r29_1504 = this->unkE8;
     temp_r3_1505 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -940,7 +941,7 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     this->unkEC = temp_r3_1595;
     this->unkA8 = -1;
     temp_r26_1600 = (s32) this->unkEC * 4;
-    temp_r3_1601 = temp_r3_1595->Current();
+    temp_r3_1601 = ((MKHeap *) temp_r3_1595)->Current();
     if (temp_r3_1601 != NULL) {
         var_r3_1608 = ((MKHeap *) (temp_r3_1601->Current()))->Alloc(temp_r26_1600, NULL, 0);
     } else {

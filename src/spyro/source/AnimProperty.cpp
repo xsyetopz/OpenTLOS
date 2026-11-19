@@ -149,7 +149,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal type
 s32 AnimProperty::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_311;
     MKIniLine *var_r30_306;
@@ -164,7 +164,7 @@ s32 AnimProperty::LoadLine(MKIniLine *arg0) {
         temp_r3_307 = arg0->GetNmbrOfSubLines();
         this->unk18 = temp_r3_307;
         temp_r31_310 = this->unk18 * 8;
-        temp_r3_311 = temp_r3_307->Current();
+        temp_r3_311 = ((MKHeap *) temp_r3_307)->Current();
         if (temp_r3_311 != NULL) {
             var_r3_318 = ((MKHeap *) (temp_r3_311->Current()))->Alloc(temp_r31_310, NULL, 0);
         } else {

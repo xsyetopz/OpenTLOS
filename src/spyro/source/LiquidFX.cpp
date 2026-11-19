@@ -13,6 +13,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeatDistortPS.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSpline.h"
 #include "spyro/source/KDWaterVolume.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
@@ -392,7 +393,6 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void LiquidFX::Deinit() {
     ManagedLight *temp_r4_659;
 
@@ -409,9 +409,8 @@ void LiquidFX::Deinit() {
     if (temp_r4_659 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_659);
     }
-    this->unk3F48.Deinit();
+    ((KDSpline *) &this->unk3F48)->Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkspB04'
 void LiquidFX::Draw() {
@@ -997,9 +996,9 @@ loop_2:
                 if (var_r5_925 != 0) {
                     temp_r4_969 = this + (var_r4_920 * 0xA0);
                     if ((u8) M2C_FIELD(temp_r4_969, u8 *, 0x159) != 0) {
-                        this->unk3F48.AddNode(*(temp_r4_969 + 0xC8));
+                        ((KDSpline *) &this->unk3F48)->AddNode(*(temp_r4_969 + 0xC8));
                     } else {
-                        this->unk3F48.AddNode(*(temp_r20_913 + 0xC8));
+                        ((KDSpline *) &this->unk3F48)->AddNode(*(temp_r20_913 + 0xC8));
                     }
                     temp_r5_982 = var_r16_732 * 0x10;
                     temp_r4_986 = &sp1320 + temp_r5_982;
@@ -1074,20 +1073,20 @@ loop_2:
                     if (var_r18_1013 == 0x18) {
                         var_f15_1157 = 0.0;
                     }
-                    sp8B0.GetMeasure(var_f18_1023, (Matrix *) &this->unk3F48);
+                    ((KDSpline *) &sp8B0)->GetMeasure(var_f18_1023, (Matrix *) &this->unk3F48);
                     spAD0 = sp8B0;
                     spAD8 = sp8B8;
-                    sp8A0.GetMeasure(var_f18_1023, (Matrix *) &this->unk3F48);
+                    ((KDSpline *) &sp8A0)->GetMeasure(var_f18_1023, (Matrix *) &this->unk3F48);
                     spAC0 = sp8A0;
                     spAC8 = sp8A8;
-                    sp890.GetMeasure(var_f17_1045, (Matrix *) &this->unk3F48);
+                    ((KDSpline *) &sp890)->GetMeasure(var_f17_1045, (Matrix *) &this->unk3F48);
                     spAB0 = sp890;
                     spAB8 = sp898;
-                    sp880.GetMeasure(var_f17_1045, (Matrix *) &this->unk3F48);
+                    ((KDSpline *) &sp880)->GetMeasure(var_f17_1045, (Matrix *) &this->unk3F48);
                     spAA0 = sp880;
                     spAA8 = sp888;
-                    spAC0.Normalise();
-                    spAA0.Normalise();
+                    ((MKVector3 *) &spAC0)->Normalise();
+                    ((MKVector3 *) &spAA0)->Normalise();
                     sp478 = 0.0f;
                     sp470 = 0.0f;
                     sp474 = 1.0f;
@@ -2501,7 +2500,7 @@ void LiquidFX::Init() {
         *(this + temp_r0_3961) = 0;
         var_ctr_3959 -= 1;
     } while (var_ctr_3959 != 0);
-    this->unk3F48.Init(0x64, 0U);
+    ((KDSpline *) &this->unk3F48)->Init(0x64, 0U);
     this->unk3F5C = 0;
     this->unk3F60 = 0;
     this->unk3F64 = NULL;

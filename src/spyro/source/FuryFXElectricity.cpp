@@ -1,4 +1,5 @@
 #include "spyro/source/FuryFXElectricity.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
@@ -9,9 +10,12 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/LightManager.h"
 #include "spyro/source/LitCloudPS.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/WaterDripPS.h"
+#include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -40,7 +44,7 @@ static u8 lit_828 = 1;
 
 static u8 lit_837 = 1;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 void FuryFXElectricity::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -51,7 +55,7 @@ void FuryFXElectricity::ResetFury() {
     SetDefaults();
     temp_r4_55 = this->unkC4;
     if (temp_r4_55 != NULL) {
-        gb.unk80->EnableLight(temp_r4_55, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_55, 0U);
     }
     temp_r3_64 = this->unkC0;
     temp_r3_64->Disable();
@@ -465,7 +469,7 @@ void FuryFXElectricity::SetDefaults() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 void FuryFXElectricity::Deinit() {
     MKMaterial *temp_r3_779;
     MKMaterial *temp_r3_784;
@@ -486,7 +490,7 @@ void FuryFXElectricity::Deinit() {
     }
     temp_r4_794 = this->unkC4;
     if (temp_r4_794 != NULL) {
-        gb.unk80->FreeManagedLight(temp_r4_794);
+        ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_794);
     }
     gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk180));
     this->unk180 = nanf;
@@ -933,7 +937,7 @@ void FuryFXElectricity::Update() {
             KDSound_Play3d(GS_SpyroFuryAttackLightning1, (MKVector3 *) &this->unkB0, 0U, -1, 0.0f, 0U);
             temp_r4_1145 = this->unkC4;
             if (temp_r4_1145 != NULL) {
-                gb.unk80->EnableLight(temp_r4_1145, 1U);
+                ((LightManager *) gb.unk80)->EnableLight(temp_r4_1145, 1U);
                 MKVector(0.0f, 300.0f, 0.0f);
                 sp178 = M2C_FIELD(this, f64 *, 0xB0) + sp7D8;
                 temp_r3_1168 = this->unkC4;
@@ -1304,13 +1308,13 @@ block_172:
         sp4A8 = (f64) sp258;
         sp4B0 = (f64) sp260;
         spC = (2.5f * temp_f26_1727) + 0.1f;
-        gb.unk94->Trigger(*((MKVector3 *) &sp838), *((MKVector3 *) &sp828), spC, lit_828, (MKVector4) &sp4A8);
+        ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp838), *((MKVector3 *) &sp828), spC, lit_828, (MKVector4) &sp4A8);
         sp250 = 0.0f;
         sp248 = 0.0f;
         sp24C = -980.0f;
         sp4A0 = (f64) sp250;
         sp498 = (f64) sp248;
-        gb.unk6C->Emit(*((MKVector3 *) &sp838), *((MKVector3 *) &sp498), 2.0f, 1U, 0U, NULL);
+        ((WaterDripPS *) gb.unk6C)->Emit(*((MKVector3 *) &sp838), *((MKVector3 *) &sp498), 2.0f, 1U, 0U, NULL);
         temp_r3_2002 = this->unkC4;
         if (temp_r3_2002 != NULL) {
             temp_r3_2002->unk10 = sp838;
@@ -1384,7 +1388,7 @@ block_172:
             sp458 = temp_f0_2160;
             sp230 = this->unkB8 + (f32) sp450;
             sp460 = (f64) sp230;
-            gb.unk94->Trigger(*((MKVector3 *) &sp458), *((MKVector3 *) &sp438), 4.0f, lit_837, (MKVector4) &sp4A8);
+            ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp458), *((MKVector3 *) &sp438), 4.0f, lit_837, (MKVector4) &sp4A8);
             sp1F8 = 1.0f;
             sp1FC = 1.0f;
             sp200 = 1.0f;
@@ -1557,7 +1561,7 @@ loop_151:
             this->unk90 = 0;
             temp_r4_2636 = this->unkC4;
             if (temp_r4_2636 != NULL) {
-                gb.unk80->EnableLight(temp_r4_2636, 0U);
+                ((LightManager *) gb.unk80)->EnableLight(temp_r4_2636, 0U);
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp14 = 0;
@@ -1571,7 +1575,7 @@ loop_151:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FuryFXElectricity::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -1608,10 +1612,10 @@ void FuryFXElectricity::Resolve() {
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    this->unkC4 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_739, lit_740);
+    this->unkC4 = ((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), *((MKVector4 *) &sp38), 300.0f, lit_739, lit_740);
     temp_r4_2790 = this->unkC4;
     if (temp_r4_2790 != NULL) {
-        gb.unk80->EnableLight(temp_r4_2790, 0U);
+        ((LightManager *) gb.unk80)->EnableLight(temp_r4_2790, 0U);
     }
 }
 #endif
@@ -1626,7 +1630,7 @@ void FuryFXElectricity::Init() {
     this->unkC8 = MKMaterial_Create("windymat");
     this->unkCC = MKMaterial_Create("windymat2");
     this->unkAC = 0.0f;
-    this->unkC0 = checked_cast<LitCloudPS *, MKProp>(gMK->CreateProp("LitCloudPS"));
+    this->unkC0 = checked_cast<LitCloudPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("LitCloudPS"));
     this->unkC4 = NULL;
     this->unkD0 = 2.0943952f;
     this->unkE0 = 3.1415927f;
@@ -1637,7 +1641,7 @@ void FuryFXElectricity::Init() {
     this->unkD8 = this->unkC8;
     this->unkE8 = this->unkCC;
     this->unkF8 = this->unkC8;
-    this->unk100 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
+    this->unk100 = checked_cast<ZapPS *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ZapPS"));
     this->unk180 = nanf;
     M2C_FIELD(this, s8 *, 0x18C) = 0;
     M2C_FIELD(this, f32 *, 0x194) = 0.0f;

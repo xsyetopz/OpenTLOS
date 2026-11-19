@@ -10,6 +10,7 @@
 #include "spyro/source/DynamiteExplosion.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/Projectile.h"
 #include "spyro/source/SparksPS.h"
@@ -18,7 +19,6 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern DataMap ElementTypeDataMap;
@@ -351,7 +351,7 @@ void Dynamite::Update() {
     } else {
         var_r7_510 = (Dynamite *) this->unk130;
     }
-    this->unk150.Update(GS_TNTFuseLP, 1U, ((u8) this->unk184 >> 5U) & 1, (MKProp *) var_r7_510, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundPlayer *) &this->unk150)->Update(GS_TNTFuseLP, 1U, ((u8) this->unk184 >> 5U) & 1, (MKProp *) var_r7_510, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (((s32) this->unk180 >= 5) && (((u8) this->unk14C >> 6U) & 1)) {
         temp_r5_525 = this->unk8;
         temp_f2_529 = M2C_FIELD(temp_r5_525, f64 *, 0x30);
@@ -540,7 +540,7 @@ void Dynamite::Update() {
         ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(sp1C8, *((MKVector3 *) &sp138), sp1C);
     }
     MKVector(0.0f, 50.0f, 0.0f);
-    spF8.GetPos();
+    ((MKProp *) &spF8)->GetPos();
     sp38 = spF8 + spE8;
     this->unk198 = sp38;
     sp40 = sp100 + spF0;
@@ -564,7 +564,7 @@ void Dynamite::SetInitialState() {
 
     this->unk188.unk4 = 1;
     MKVector(0.0f, 50.0f, 0.0f);
-    sp28.GetPos();
+    ((MKProp *) &sp28)->GetPos();
     sp8 = sp28 + sp18;
     this->unk198 = sp8;
     sp10 = sp30 + sp20;
@@ -710,7 +710,7 @@ void Dynamite::Message(MKMessage *arg0) {
         MKModel_SetWorldMatrix(this->unk4, spB0);
     default:                                        /* switch 1 */
 block_39:
-        this->unk150.Message(arg0);
+        ((KDSoundPlayer *) &this->unk150)->Message(arg0);
         Projectile::Message(arg0);
         break;
     case 38:                                        /* switch 1 */

@@ -8,6 +8,8 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroTools.h"
 #include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -50,7 +52,7 @@ void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
     if (arg0 != NULL) {
         sp1C = 0;
         temp_r28_44 = *(&iMeleeAttackTypeMap + (M2C_FIELD(GameData::gameData, s32 *, 0x158) * 4)) | 0x400;
-        temp_f1_45 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->TailStrikeDamage();
+        temp_f1_45 = ((GameStats *) &GameData::gameData[0x70])->TailStrikeDamage();
         temp_r10_46 = this->unk10;
         temp_r3_50 = temp_r10_46->unk8;
         temp_f3_54 = M2C_FIELD(temp_r3_50, f64 *, 0x30);
@@ -346,7 +348,7 @@ void SpyroTailStrikeState::StartExit() {
     temp_r3_609->unk428 |= 0x20000;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroTailStrikeState::StartEnter() {
     s32 spC;
     s32 sp8;
@@ -354,7 +356,7 @@ void SpyroTailStrikeState::StartEnter() {
     Spyro *temp_r3_638;
 
     this->unk10->GetYaw();
-    this->unk10->unk3A0.YawTowards(M2C_ERROR(/* Read from unset register $f1 */), 900.0f);
+    ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(M2C_ERROR(/* Read from unset register $f1 */), 900.0f);
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 0.0f;
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
     temp_r3_638 = this->unk10;
@@ -410,9 +412,9 @@ void SpyroTailStrikeState::Enter(SpyroStateMessages &arg0) {
     this->unk14.SetState(this, 0, 0U);
     temp_r3_761 = this->unk10;
     temp_r3_761->unk428 &= 0xFFFFFFFE;
-    this->unk10->unk430.unk28.SetTailStrikeEnabled(0U);
-    this->unk10->unk430.unk28.SetTailSweepEnabled(0U);
-    this->unk10->unk430.unk28.SetHornDiveEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailSweepEnabled(0U);
+    ((CombatStateData *) &this->unk10->unk430.unk28)->SetHornDiveEnabled(0U);
     temp_r4_777 = this->unk10;
 loop_2:
     if ((u32) *M2C_FIELD(temp_r4_777, u32 **, 0x6F0) != 0U) {
