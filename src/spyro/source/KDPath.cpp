@@ -138,13 +138,10 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 KDPathSegment *KDPathManager::GetPathList(int arg0) {
-    return *(*KDPathManager::pPathLists + (arg0 * 4));
+    return (*(KDPathSegment ***) KDPathManager::pPathLists)[arg0];
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void KDPathManager::RemovePath(KDPathSegment *arg0) {
     KDPathNode *temp_r3_335;
     KDPathNode *temp_r3_351;
@@ -157,8 +154,8 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
         temp_r3_335->unk28 = this->unk28;
     } else {
         temp_r3_344 = this->unk18 * 4;
-        if ((u32) *(*KDPathManager::pPathLists + temp_r3_344) == this) {
-            *(*KDPathManager::pPathLists + temp_r3_344) = this->unk28;
+        if ((u32) *(KDPathSegment **) ((u8 *) *(KDPathSegment ***) KDPathManager::pPathLists + temp_r3_344) == (u32) this) {
+            *(KDPathSegment **) ((u8 *) *(KDPathSegment ***) KDPathManager::pPathLists + temp_r3_344) = (KDPathSegment *) this->unk28;
         }
     }
     temp_r3_351 = this->unk28;
@@ -168,7 +165,6 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
     this->unk2C = NULL;
     this->unk28 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void KDPathManager::AddPath(KDPathSegment *arg0) {
@@ -282,34 +278,23 @@ void KDPathManager::Deinit() {
     *KDPathManager::numTypes = 0;
 }
 
-#if 0 // DRAFT: type mismatch 'void *' and 'int'
 void KDPathManager::Init(int arg0) {
     s32 temp_r31_583;
-    s32 var_r3_603;
-    void *temp_r4_601;
-    void *var_ctr_604;
+    s32 var_r4_601;
     void *var_r3_592;
 
-    temp_r31_583 = (s32) this * 4;
-    *KDPathManager::numTypes = (unsigned char) (this);
+    temp_r31_583 = arg0 * 4;
+    *(s32 *) KDPathManager::numTypes = arg0;
     if (MKHeap::Current() != NULL) {
         var_r3_592 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_583, NULL, 0);
     } else {
         var_r3_592 = malloc(temp_r31_583);
     }
-    *KDPathManager::pPathLists = (unsigned char) (var_r3_592);
-    temp_r4_601 = (void *) (*KDPathManager::numTypes - 1);
-    var_r3_603 = (s32) temp_r4_601 * 4;
-    var_ctr_604 = ((u8 *) temp_r4_601) + 1;
-    if (temp_r4_601 >= 0) {
-        do {
-            *(*KDPathManager::pPathLists + var_r3_603) = 0;
-            var_r3_603 -= 4;
-            var_ctr_604 -= 1;
-        } while (var_ctr_604 != NULL);
+    *(void **) KDPathManager::pPathLists = var_r3_592;
+    for (var_r4_601 = *(s32 *) KDPathManager::numTypes - 1; var_r4_601 >= 0; var_r4_601--) {
+        (*(KDPathSegment ***) KDPathManager::pPathLists)[var_r4_601] = NULL;
     }
 }
-#endif
 
 void KDPathIterator::SetTo(KDPathSegment *arg0, int arg1) {
     this->unk0 = arg0;
@@ -592,17 +577,15 @@ u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0, const char *arg1) {
     return LoadWaypoints(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1156;
 
     var_r31_1156 = 0;
-    if ((LoadLine(arg0, "waypoints") != 0) || (arg0->LoadBool("bForceLoop", (u8 *) &this->unk44, 0) != 0)) {
+    if ((LoadLine(arg0, "waypoints") != 0) || (arg0->LoadBool("bForceLoop", (bool *) &this->unk44, 0) != 0)) {
         var_r31_1156 = 1;
     }
     return var_r31_1156;
 }
-#endif
 
 void KDSplinePathSegment::Deinit() {
     this->unk30.Deinit();
@@ -761,11 +744,9 @@ void *KDPathSegment::GetNearestPointXZ(const MKVector3 &arg0) {
     return var_r5_1512;
 }
 
-#if 0 // DRAFT: illegal type
 s32 KDPathSegment::GetIndexOf(KDPathPoint *arg0) const {
-    return (s32) (arg0 - this->unk24) / (s32) this->unk1C;
+    return (s32) ((u8 *) arg0 - (u8 *) this->unk24) / this->unk1C;
 }
-#endif
 
 void KDPathSegment::Resolve() {
 
@@ -899,7 +880,6 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r29_1815;
     s32 temp_r30_1795;
@@ -924,7 +904,7 @@ u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r29_1815 = arg0->unkC->GetSubLine(arg0);
 loop_10:
         if (var_r29_1815 != NULL) {
-            if (var_r29_1815->LoadVector3("waypoint", ((u8 *) this->unk24) + (var_r28_1814 * this->unk1C), 0) != 0) {
+            if (var_r29_1815->LoadVector3("waypoint", (MKVector3 *) (((u8 *) this->unk24) + (var_r28_1814 * this->unk1C)), 0) != 0) {
                 var_r28_1814 += 1;
             }
             var_r29_1815 = var_r29_1815->unkC->GetNextLine(var_r29_1815);
@@ -938,7 +918,6 @@ loop_10:
     }
     return 0U;
 }
-#endif
 
 u8 KDPathSegment::LoadLine(MKIniLine *arg0) {
     s32 sp8;
@@ -1093,7 +1072,6 @@ loop_18:
     this->unk6 = 0;
 }
 
-#if 0 // DRAFT: type mismatch 'unsigned char *' and 'KDPathNode *'
 void KDPathNode::Link(KDPathNode *arg0) {
     KDPathNode *temp_r4_2177;
     KDPathNode *var_r0_2152;
@@ -1108,7 +1086,7 @@ loop_9:
     if (temp_r6_2160 != 0) {
         var_r0_2166 = var_r7_2130->unk0 != arg0;
     } else {
-        var_r0_2166 = &var_r7_2130->unk0->unk8 != arg0;
+        var_r0_2166 = (KDPathNode *) &var_r7_2130->unk0->unk8 != arg0;
     }
     if (var_r0_2166 == 0) {
         temp_r4_2177 = var_r7_2130->unk0;
@@ -1121,7 +1099,7 @@ loop_9:
         if (temp_r6_2160 != 0) {
             var_r0_2139 = var_r7_2130->unk0 == this;
         } else {
-            var_r0_2139 = &var_r7_2130->unk0->unk8 == this;
+            var_r0_2139 = (KDPathNode *) &var_r7_2130->unk0->unk8 == this;
         }
         if (var_r0_2139 == 0) {
             if (temp_r6_2160 != 0) {
@@ -1134,7 +1112,6 @@ loop_9:
         }
     }
 }
-#endif
 
 void KDPathNode::Init(KDPathSegment *arg0, bool arg1) {
     this->unk0 = (KDPathNode *) arg0;
