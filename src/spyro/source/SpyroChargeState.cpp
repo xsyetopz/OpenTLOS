@@ -474,7 +474,6 @@ void SpyroChargeState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroChargeState::Exit() {
     s32 sp14;
     s32 sp10;
@@ -497,16 +496,15 @@ void SpyroChargeState::Exit() {
     temp_r3_825 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x43A;
-    M2C_FIELD(temp_r3_825->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+    temp_r3_825->Message((MKMessage *) &sp10);
     if (this->unk2C == -1.0f) {
         temp_r3_840 = this->unk10->GetCamera();
         spC = 0;
         sp8 = 0x446;
-        M2C_FIELD(temp_r3_840->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        temp_r3_840->Message((MKMessage *) &sp8);
     }
     this->unk14.Exit(this);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroChargeState::Enter(SpyroStateMessages &arg0) {
