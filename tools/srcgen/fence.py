@@ -59,6 +59,7 @@ def blocks(lines: list[str]) -> list[tuple[int, int]]:
                 continue
             start = i
         code = re.sub(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'', '""', l.split("//")[0])
+        code = re.sub(r"/\*.*?\*/", "", code)  # m2c's `/* extern */` would hide the `;` that ends a prototype
         depth += code.count("{") - code.count("}")
         if depth == 0 and (code.rstrip().endswith((";", "}"))):
             out.append((start, i))

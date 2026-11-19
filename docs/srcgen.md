@@ -17,7 +17,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 |---|---|---|
 | Class model (bases, vtables, methods, secondary bases) | `classes.py` | `build/srcgen/classes.json` |
 | Field votes from m2c's per-TU inferences | `fields.py` | `build/srcgen/fields.json` |
-| Static methods: parameterless, body never reads r3, and at most 15% of callers write r3 before the `bl` | `mstatic.py` | used by `hmodel.load_model` |
+| Static methods: with G integer or pointer parameters, the body never reads r(3+G) (a member's last parameter) first, and at most 15% of callers write it before the `bl` | `mstatic.py` | used by `hmodel.load_model` |
 | Struct returns: free functions whose body reads the GPR after their last parameter before writing it (r3 holds the hidden result pointer); m2c sees `void f(T *sret, ...)`, the C++ returns `T`, and call sites assign the value to the former destination argument | `sret.py` | used by `hmodel.load_model`, `cctx.py`, `cxxconv.py` |
 | C context of all classes for m2c | `cctx.py` | `ctx.c`, `cnames.json` |
 | m2c with context | `run_m2c.py` | `m2c/` |
