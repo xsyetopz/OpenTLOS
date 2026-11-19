@@ -108,7 +108,6 @@ void Projectile::Disable() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned long, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *,
 void Projectile::Collided(MKCollisionResult &arg0) {
     s32 *temp_r3_136;
     s32 temp_r3_125;
@@ -116,14 +115,13 @@ void Projectile::Collided(MKCollisionResult &arg0) {
     this->unk14C &= ~0x10;
     temp_r3_125 = this->unk148;
     if (temp_r3_125 != 0) {
-        KDSound_Play3d(temp_r3_125, ((u8 *) this->unk8) + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
+        KDSound_Play3d(temp_r3_125, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), (u32) arg0.unk44, -1, 0.0f, false);
     }
     temp_r3_136 = this->unk138;
     if (temp_r3_136 != NULL) {
-        KDSound_Stop(temp_r3_136);
+        KDSound_Stop((int *) temp_r3_136);
     }
 }
-#endif
 
 void Projectile::FireBurstEnd() {
 
@@ -187,10 +185,10 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void Projectile::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
+    ProjectileDescriptor *desc;
     MKVector3 sp8;
-    MKVector3 *temp_r31_322;
+    const MKVector3 *temp_r31_322;
     s32 var_r0_295;
 
     MKModel_SetPosition(this->unk4, arg0);
@@ -204,28 +202,29 @@ void Projectile::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, floa
     if (arg5 != 0) {
         var_r0_295 = arg5;
     } else {
-        var_r0_295 = M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC);
+        desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        var_r0_295 = desc->unkEC;
     }
     this->unk148 = var_r0_295;
     if (arg4 != 0) {
-        KDSound_Play3d(arg4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(arg4, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, -1, 0.0f, false);
         return;
     }
-    if ((s32) M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r31_322 = ((u8 *) this->unk8) + 0x30;
-        KDSound_Play3d(M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r31_322, 0U, -1, 0.0f, 0U);
+    desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (M2C_FIELD(desc, s32 *, 0xE4) != 0) {
+        temp_r31_322 = (const MKVector3 *) (((u8 *) this->unk8) + 0x30);
+        desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        KDSound_Play3d(M2C_FIELD(desc, s32 *, 0xE4), temp_r31_322, 0U, -1, 0.0f, false);
     }
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void Projectile::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    MKVector3 *temp_r31_401;
+    ProjectileDescriptor *desc;
+    const MKVector3 *temp_r31_401;
     s32 var_r0_374;
 
     MKModel_SetPosition(this->unk4, arg0);
-    this->unkC8 = M2C_FIELD(&arg1, f64 *, 0);
-    this->unkD0 = M2C_FIELD(&arg1, f64 *, 8);
+    *(MKVector3 *) &this->unkC8 = arg1;
     this->unk14C |= 0x80;
     this->unk14C |= 0x40;
     this->unk130 = arg2;
@@ -234,19 +233,21 @@ void Projectile::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2
     if (arg4 != 0) {
         var_r0_374 = arg4;
     } else {
-        var_r0_374 = M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC);
+        desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        var_r0_374 = desc->unkEC;
     }
     this->unk148 = var_r0_374;
     if (arg3 != 0) {
-        KDSound_Play3d(arg3, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(arg3, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, -1, 0.0f, false);
         return;
     }
-    if ((s32) M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r31_401 = ((u8 *) this->unk8) + 0x30;
-        KDSound_Play3d(M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r31_401, 0U, -1, 0.0f, 0U);
+    desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (M2C_FIELD(desc, s32 *, 0xE4) != 0) {
+        temp_r31_401 = (const MKVector3 *) (((u8 *) this->unk8) + 0x30);
+        desc = checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        KDSound_Play3d(M2C_FIELD(desc, s32 *, 0xE4), temp_r31_401, 0U, -1, 0.0f, false);
     }
 }
-#endif
 
 void Projectile::Message(MKMessage *arg0) {
     s32 *temp_r3_428;
@@ -494,23 +495,19 @@ void Projectile::Init() {
     this->unk128 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_920;
 
     var_r31_920 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndTravel", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "sndLaunch", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "sndCollide", (int *) &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndTravel", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "sndLaunch", (int *) &M2C_FIELD(this, s32 *, 0xE4)) != 0) || (KDSound_LoadLine(arg0, "sndCollide", (int *) &this->unkEC) != 0)) {
         var_r31_920 = 1;
     }
     return var_r31_920;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void ProjectileDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = GS_PLACEHOLDER;
+    M2C_FIELD(this, s32 *, 0xE4) = GS_PLACEHOLDER;
     this->unkE8 = GS_PLACEHOLDER;
     this->unkEC = GS_PLACEHOLDER;
 }
-#endif
