@@ -86,8 +86,8 @@ void ControllerRumbleProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ControllerRumbleProperty::LoadLine(MKIniLine *)' redeclared
-u8 ControllerRumbleProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 ControllerRumbleProperty::LoadLine(MKIniLine *arg0) {
     if ((MKIniLine *) this->unk18 == NULL) {
         this->unk18 = arg0;
     }

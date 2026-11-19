@@ -81,8 +81,8 @@ void WobbleProp::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'WobbleProp::Update()' redeclared
-void *WobbleProp::Update() {
+#if 0 // DRAFT: undefined identifier 'spA0'
+void WobbleProp::Update() {
     f64 spC0;
     f64 spB8;
     f64 spB0;

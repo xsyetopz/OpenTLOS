@@ -168,8 +168,8 @@ void HurtProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'HurtProperty::LoadLine(MKIniLine *)' redeclared
-u8 HurtProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 HurtProperty::LoadLine(MKIniLine *arg0) {
     if ((MKIniLine *) this->unk18 == NULL) {
         this->unk18 = arg0;
     }

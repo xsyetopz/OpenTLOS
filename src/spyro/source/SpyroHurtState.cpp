@@ -924,11 +924,9 @@ void SpyroHurtState::FlinchEnter() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpyroHurtState::Transition()' redeclared
-s32 SpyroHurtState::Transition() {
+u8 SpyroHurtState::Transition() {
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroHurtState::Update() {

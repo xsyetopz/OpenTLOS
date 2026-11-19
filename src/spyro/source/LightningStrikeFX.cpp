@@ -337,8 +337,8 @@ void LightningStrikeFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'LightningStrikeFX::LoadDone()' redeclared
-s32 LightningStrikeFX::LoadDone() {
+#if 0 // DRAFT: undefined identifier 'arg_sp60'
+void LightningStrikeFX::LoadDone() {
     f32 temp_f3_673;
     f32 temp_f3_708;
     f32 temp_f6_680;

@@ -32,7 +32,7 @@ static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initia
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 
-s32 SwampTier3::CanMoveAwayFromHero() {
+u8 SwampTier3::CanMoveAwayFromHero() {
     s32 var_r31_47;
     void **temp_r3_48;
 
@@ -372,8 +372,8 @@ void SwampTier2Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SwampTier1::GetCharacterName()' redeclared
-s32 SwampTier1::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void SwampTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x358);
 }
 #endif

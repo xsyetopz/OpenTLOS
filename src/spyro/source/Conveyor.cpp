@@ -317,11 +317,9 @@ void Conveyor::LoadDone() {
     GameProp::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'Conveyor::LoadLine(MKIniLine *)' redeclared
-void Conveyor::LoadLine(MKIniLine *arg0) {
+s32 Conveyor::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Deinit'
 void Conveyor::Deinit() {

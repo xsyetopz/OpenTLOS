@@ -1607,8 +1607,8 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal function overloading
-void CynderTier1::Spawn(SpawnPointObject *arg0) {
+#if 0 // DRAFT: undefined identifier 'SetSpawnGoal__15EnemyGoal_ThinkFP12Goal'
+s32 CynderTier1::Spawn(SpawnPointObject *arg0) {
     if (M2C_FIELD(arg0->unk4, s32 *, 4) & 0x200) {
         SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>((EnemyGoal_Think *) this->unk110.unk92C, this->unk110.unkA04);
     }

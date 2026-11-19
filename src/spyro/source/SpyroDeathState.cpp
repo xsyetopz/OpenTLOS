@@ -390,8 +390,8 @@ void SpyroDeathState::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpyroDeathState::Transition()' redeclared
-void SpyroDeathState::Transition() {
+#if 0 // DRAFT: undefined identifier 'unk14'
+u8 SpyroDeathState::Transition() {
     u32 var_r31_929;
 
     var_r31_929 = 4;

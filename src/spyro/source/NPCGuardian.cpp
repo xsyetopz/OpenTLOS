@@ -47,8 +47,8 @@ void NPCGuardian::LoadDone() {
     Enemy::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'NPCGuardian::LoadLine(MKIniLine *)' redeclared
-u8 NPCGuardian::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: undefined identifier 'unkA08'
+s32 NPCGuardian::LoadLine(MKIniLine *arg0) {
     if (Enemy::LoadLine(arg0) != 0) {
         return 1U;
     }

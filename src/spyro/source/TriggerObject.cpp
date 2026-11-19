@@ -175,8 +175,8 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'TriggerPlaneGroupObject::CheckTarget()' redeclared
-u8 TriggerPlaneGroupObject::CheckTarget() {
+#if 0 // DRAFT: undefined identifier 'unk70'
+s32 TriggerPlaneGroupObject::CheckTarget() {
     f64 sp40;
     f64 sp38;
     f64 sp30;

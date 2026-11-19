@@ -1176,11 +1176,9 @@ void KDCamera::ChaseEnter() {
     this->unk13D = 1;
 }
 
-#if 0 // DRAFT: identifier 'KDCamera::ProcessCameraStateRequest(int)' redeclared
-void KDCamera::ProcessCameraStateRequest(int arg0) {
+u8 KDCamera::ProcessCameraStateRequest(int arg0) {
     this->unk15C->HandleStateMessage(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDCameraStateChangeRequest' to
 void KDCamera::UpdateCameraStateRequests() {
@@ -1266,8 +1264,8 @@ u8 KDCamera::TestUserStateFlag(unsigned int arg0) {
     return (arg0 & (this->unk158 | M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC))) != 0;
 }
 
-#if 0 // DRAFT: identifier 'KDCamera::CameraEffectsUpdate()' redeclared
-u32 KDCamera::CameraEffectsUpdate() {
+#if 0 // DRAFT: illegal implicit conversion from 'EventCamera *' to
+void KDCamera::CameraEffectsUpdate() {
     f64 sp60;
     f64 sp58;
     f64 sp50;

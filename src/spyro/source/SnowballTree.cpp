@@ -127,8 +127,7 @@ void SnowballTree::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SnowballTree::LoadLine(MKIniLine *)' redeclared
-u8 SnowballTree::LoadLine(MKIniLine *arg0) {
+s32 SnowballTree::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1U;
     }
@@ -138,7 +137,6 @@ u8 SnowballTree::LoadLine(MKIniLine *arg0) {
     }
     return (u8) (arg0->LoadFloat("MaxBallDistance", &this->unkC0, 0) != 0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SnowballTree::Deinit() {

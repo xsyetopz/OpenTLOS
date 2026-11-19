@@ -46,8 +46,8 @@ static u8 lit_1044 = 1;
 static u8 lit_1251 = 1;
 static u8 lit_1411 = 1;
 
-#if 0 // DRAFT: identifier 'DojoTier2::GetCharacterName()' redeclared
-s32 DojoTier2::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void DojoTier2::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x360);
 }
 #endif
@@ -1139,8 +1139,8 @@ void DojoTier2Descriptor::Init() {
     EnemyDescriptor::Init();
 }
 
-#if 0 // DRAFT: identifier 'DojoTier1::GetCharacterName()' redeclared
-s32 DojoTier1::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void DojoTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x35C);
 }
 #endif

@@ -300,14 +300,11 @@ s32 SpyroCollisionObject::GlueToGround() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpyroCollisionObject::Teleport(const MKVector3 &, float, int)'
-void SpyroCollisionObject::Teleport(const MKVector3 &arg0, float arg1, int arg2) {
+s32 SpyroCollisionObject::Teleport(const MKVector3 &arg0, float arg1, int arg2) {
     CollisionObject::Teleport(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: identifier 'SpyroCollisionObject::Update(MKVector3 *, float, bool)'
-void SpyroCollisionObject::Update(MKVector3 *arg0, float arg1, bool arg2) {
+s32 SpyroCollisionObject::Update(MKVector3 *arg0, float arg1, bool arg2) {
     f32 temp_f1_599;
     f32 temp_f1_602;
     f32 temp_f3_600;
@@ -328,7 +325,6 @@ void SpyroCollisionObject::Update(MKVector3 *arg0, float arg1, bool arg2) {
     temp_f1_602 = (var_f2_592 * (temp_f3_600 - temp_f1_599)) + temp_f1_599;
     this->unk47C = (var_f2_592 * (temp_f3_600 - temp_f1_602)) + temp_f1_602;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp8'
 void SpyroCollisionObject::Init(ColObjDescriptor *arg0, const MKVector3 &arg1, bool arg2, MKCollisionInfo *arg3, bool arg4, bool arg5, unsigned int arg6, MKProp *arg7, bool arg8) {

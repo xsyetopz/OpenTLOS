@@ -1006,8 +1006,8 @@ void MarkerButtonGroup::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MarkerButtonGroup::Message(UIMessage *)' redeclared
-s32 MarkerButtonGroup::Message(UIMessage *arg0) {
+#if 0 // DRAFT: illegal use of non-static member
+void MarkerButtonGroup::Message(UIMessage *arg0) {
     Attributes sp8;
     M2C_UNK *temp_r3_2124;
 
@@ -1198,8 +1198,8 @@ void NoisyButtonGroup::Update() {
     UIContainer::Update();
 }
 
-#if 0 // DRAFT: identifier 'NoisyButtonGroup::Message(UIMessage *)' redeclared
-s32 NoisyButtonGroup::Message(UIMessage *arg0) {
+#if 0 // DRAFT: illegal operands 'void' != 'int'
+void NoisyButtonGroup::Message(UIMessage *arg0) {
     s32 temp_r0_2548;
 
     temp_r0_2548 = arg0->unk0;
@@ -1865,8 +1865,8 @@ loop_15:
     }
 }
 
-#if 0 // DRAFT: identifier 'PromptGroup::Message(UIMessage *)' redeclared
-s32 PromptGroup::Message(UIMessage *arg0) {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void PromptGroup::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);
     if ((s32) arg0->unk0 != 1) {
 

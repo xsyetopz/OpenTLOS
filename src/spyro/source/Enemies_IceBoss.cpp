@@ -93,13 +93,13 @@ static s32 iStalactiteGemsF = 1;
 
 static u8 lit_1160 = 1;
 static u8 lit_1266 = 1;
-#if 0 // DRAFT: identifier 'IceBoss::GetCharacterName()' redeclared
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_753;                                /* unable to generate initializer: unknown type; const */
 
 static s32 lit_959 = 0x10000;                          /* const */
 
-s32 IceBoss::GetCharacterName() {
+void IceBoss::GetCharacterName() {
     if (IsIceKing() != 0) {
         return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x328);
     }

@@ -6630,8 +6630,8 @@ void DojoController::LoadDone() {
     MKProp::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'DojoController::LoadLine(MKIniLine *)' redeclared
-u8 DojoController::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }

@@ -154,11 +154,9 @@ void CynderEnergyCrystal::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'CynderEnergyCrystal::LoadLine(MKIniLine *)' redeclared
-void CynderEnergyCrystal::LoadLine(MKIniLine *arg0) {
+s32 CynderEnergyCrystal::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk168'
 void CynderEnergyCrystal::Deinit() {

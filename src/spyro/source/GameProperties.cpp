@@ -47,8 +47,8 @@ s32 EventMessageProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'EventMessageProperty::LoadLineInstance(MKIniLine *)'
-u8 EventMessageProperty::LoadLineInstance(MKIniLine *arg0) {
+#if 0 // DRAFT: expression syntax error
+s32 EventMessageProperty::LoadLineInstance(MKIniLine *arg0) {
     return (u8) (((EventMessage *) (pInstanceMem.__vptr + this->unk8))->LoadLine(arg0, this->unk10) != 0);
 }
 #endif
@@ -81,8 +81,8 @@ void EventMessageProperty::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'EventMessageProperty::LoadLine(MKIniLine *)' redeclared
-u8 EventMessageProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 EventMessageProperty::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadString("eventName", &this->unk10, 0) != 0);
 }
 #endif

@@ -429,8 +429,8 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'MeleeTrailsDescriptor::LoadLine(MKIniLine *)' redeclared
-void MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
     if ((arg0->IsField("mtdFile") != 0) && (arg0->AsString(0, &sp8) != 0)) {

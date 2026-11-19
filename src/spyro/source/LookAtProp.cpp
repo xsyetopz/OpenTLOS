@@ -59,8 +59,8 @@ void LookAtProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'LookAtProp::LoadLine(MKIniLine *)' redeclared
-u8 LookAtProp::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 LookAtProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }

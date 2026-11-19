@@ -1068,8 +1068,8 @@ void DragonStatue::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'DragonStatue::LoadLine(MKIniLine *)' redeclared
-u8 DragonStatue::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 DragonStatue::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1U;
     }

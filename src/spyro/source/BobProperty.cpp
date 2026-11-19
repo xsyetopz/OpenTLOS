@@ -130,8 +130,8 @@ void BobProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'BobProperty::LoadLineInstance(MKIniLine *)' redeclared
-void BobProperty::LoadLineInstance(MKIniLine *arg0) {
+#if 0 // DRAFT: expression syntax error
+s32 BobProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadBool("Enabled", pInstanceMem.__vptr + (this->unk8 + 0x14), 0);
 }
 #endif
@@ -167,8 +167,8 @@ void BobProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'BobProperty::LoadLine(MKIniLine *)' redeclared
-u8 BobProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 BobProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_409;
 
     if ((MKIniLine *) this->unk18 == NULL) {

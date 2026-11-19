@@ -419,8 +419,8 @@ void SpyroJumpState::JumpStartEnter() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpyroJumpState::Transition()' redeclared
-void SpyroJumpState::Transition() {
+#if 0 // DRAFT: undefined identifier 'unk18'
+u8 SpyroJumpState::Transition() {
     SpyroStateMessages sp8;
     InputModifier *temp_r3_905;
     Spyro *temp_r3_970;

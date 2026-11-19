@@ -309,8 +309,8 @@ void WobbleProperty::LoadDoneInstance() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'WobbleProperty::LoadLineInstance(MKIniLine *)' redeclared
-void WobbleProperty::LoadLineInstance(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 WobbleProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadString("bonename", (s8 **) &this->unk14, 0);
 }
 #endif
@@ -344,8 +344,8 @@ void WobbleProperty::Resolve(KDPropertySet *arg0) {
     this->unk2C = 0.0f;
 }
 
-#if 0 // DRAFT: identifier 'WobbleProperty::LoadLine(MKIniLine *)' redeclared
-u8 WobbleProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine *' to
+s32 WobbleProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_708;
 
     if (M2C_BITWISE(u32, this->unk10) == 0U) {

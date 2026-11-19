@@ -436,8 +436,8 @@ void TriggerProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'TriggerProp::LoadLine(MKIniLine *)' redeclared
-u8 TriggerProp::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     TriggerObject *temp_r3_1155;
     s32 temp_r3_1188;
     s32 temp_r3_1209;

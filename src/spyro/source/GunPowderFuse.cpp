@@ -1450,8 +1450,8 @@ void GunPowderFuse::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'GunPowderFuse::LoadLine(MKIniLine *)' redeclared
-u8 GunPowderFuse::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: undefined identifier 'unk64'
+s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }

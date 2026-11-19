@@ -284,8 +284,8 @@ void DisableShadowCE::Enter() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'DisableShadowCE::LoadLine()' redeclared
-void DisableShadowCE::LoadLine() {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 DisableShadowCE::LoadLine() {
     LoadActorID("actor", &this->unk4);
 }
 #endif
@@ -389,8 +389,8 @@ void BreathEffectCE::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'BreathEffectCE::LoadLine()' redeclared
-void BreathEffectCE::LoadLine() {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+s32 BreathEffectCE::LoadLine() {
     s8 sp8;
 
     if (LoadString("element", &sp8) != 0) {
@@ -456,11 +456,9 @@ void FadeCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'FadeCE::LoadLine()' redeclared
-void FadeCE::LoadLine() {
+s32 FadeCE::LoadLine() {
     LoadVector3("color", (MKVector3 *) &this->unk8);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'zero'
 void FadeCE::Deinit() {
@@ -522,11 +520,9 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ResetClothCE::LoadLine()' redeclared
-void ResetClothCE::LoadLine() {
+s32 ResetClothCE::LoadLine() {
     LoadActorModel("actor", &this->unk4);
 }
-#endif
 
 void DisableWobbleTechCE::Exit() {
     gDynamicBones.Enable(this->unk4, 1U);
@@ -536,11 +532,9 @@ void DisableWobbleTechCE::Enter() {
     gDynamicBones.Enable(this->unk4, 0U);
 }
 
-#if 0 // DRAFT: identifier 'DisableWobbleTechCE::LoadLine()' redeclared
-void DisableWobbleTechCE::LoadLine() {
+s32 DisableWobbleTechCE::LoadLine() {
     LoadActorModel("actor", &this->unk4);
 }
-#endif
 
 void ColorCE::Exit() {
     MKModel_SetColor(this->unk28, this->unk8);
@@ -855,11 +849,9 @@ void CameraShakeCE::Update() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, void ***, M2C_UNK, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, &gb, 0x417, temp_f1_2224);
 }
 
-#if 0 // DRAFT: identifier 'CameraShakeCE::LoadLine()' redeclared
-void CameraShakeCE::LoadLine() {
+s32 CameraShakeCE::LoadLine() {
     LoadVector3("offset", (MKVector3 *) &this->unk8);
 }
-#endif
 
 void AlphaChangeCE::Update() {
     MKModel_GetAlpha(this->unk4);
@@ -895,8 +887,8 @@ void AttachPropToRefPointCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'AttachPropToRefPointCE::LoadLine()' redeclared
-u8 AttachPropToRefPointCE::LoadLine() {
+#if 0 // DRAFT: undefined identifier '__vptr'
+s32 AttachPropToRefPointCE::LoadLine() {
     s32 temp_r3_2406;
     s8 *temp_r3_2395;
     s8 *temp_r3_2398;
@@ -969,8 +961,8 @@ void AttachActorToRefPointCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'AttachActorToRefPointCE::LoadLine()' redeclared
-u8 AttachActorToRefPointCE::LoadLine() {
+#if 0 // DRAFT: undefined identifier '__vptr'
+s32 AttachActorToRefPointCE::LoadLine() {
     s32 temp_r3_2621;
     s8 *temp_r3_2610;
     s8 *temp_r3_2613;

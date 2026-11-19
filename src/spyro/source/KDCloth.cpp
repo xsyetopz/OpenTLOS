@@ -29,8 +29,8 @@ void KDClothProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDClothProperty::LoadLine(MKIniLine *)' redeclared
-u8 KDClothProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 KDClothProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_103;
 
     var_r31_103 = 0;

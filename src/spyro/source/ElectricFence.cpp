@@ -333,8 +333,8 @@ void ElectricFence::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElectricFence::LoadDone()' redeclared
-s32 ElectricFence::LoadDone() {
+#if 0 // DRAFT: undefined identifier 'unk6C'
+void ElectricFence::LoadDone() {
     Matrix *temp_r4_764;
     f32 temp_f3_1088;
     f32 temp_f3_1123;

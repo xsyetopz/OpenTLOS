@@ -217,8 +217,8 @@ void DropBox::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'DropBox::LoadLine(MKIniLine *)' redeclared
-u8 DropBox::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: undefined identifier 'unk1FD'
+s32 DropBox::LoadLine(MKIniLine *arg0) {
     this->unk1FD = 0;
     PropFlagsClear((u32 *) &this->unk10, 0x40000U);
     if (Shatterable::LoadLine(arg0) != 0) {

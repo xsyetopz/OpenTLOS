@@ -477,8 +477,8 @@ void KDPropDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'KDPropDescriptor::LoadLine(MKIniLine *)' redeclared
-u8 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
+s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("defaultScale", &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk64) != 0)) {

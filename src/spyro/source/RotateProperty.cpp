@@ -182,8 +182,8 @@ void RotateProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'RotateProperty::LoadLineInstance(MKIniLine *)' redeclared
-void RotateProperty::LoadLineInstance(MKIniLine *arg0) {
+#if 0 // DRAFT: expression syntax error
+s32 RotateProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadBool("Enabled", pInstanceMem.__vptr + (this->unk8 + 0x84), 0);
 }
 #endif
@@ -226,8 +226,8 @@ void RotateProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'RotateProperty::LoadLine(MKIniLine *)' redeclared
-u8 RotateProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 RotateProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_567;
 
     if ((MKIniLine *) this->unk18 == NULL) {

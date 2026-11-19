@@ -8812,8 +8812,8 @@ void Spyro::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'Spyro::LoadLine(MKIniLine *)' redeclared
-u8 Spyro::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: undefined identifier 'zero'
+s32 Spyro::LoadLine(MKIniLine *arg0) {
     f64 sp10;
     f64 sp8;
     u8 var_r26_16553;

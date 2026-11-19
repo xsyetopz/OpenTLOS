@@ -234,8 +234,8 @@ void ElementalCombatController::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElementalCombatController::LoadLine(MKIniLine *)' redeclared
-u8 ElementalCombatController::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }

@@ -461,11 +461,9 @@ void Coronas::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'Coronas::LoadLine(MKIniLine *)' redeclared
-void Coronas::LoadLine(MKIniLine *arg0) {
+s32 Coronas::LoadLine(MKIniLine *arg0) {
     MKProp::LoadLine(arg0);
 }
-#endif
 
 void Coronas::Init() {
     MKProp::Init();

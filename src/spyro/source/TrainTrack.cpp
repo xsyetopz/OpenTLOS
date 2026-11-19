@@ -553,11 +553,9 @@ void TrainTrack::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: identifier 'TrainTrack::LoadLine(MKIniLine *)' redeclared
-void TrainTrack::LoadLine(MKIniLine *arg0) {
+s32 TrainTrack::LoadLine(MKIniLine *arg0) {
     MKProp::LoadLine(arg0);
 }
-#endif
 
 void TrainTrack::Deinit() {
     MKProp::Deinit();

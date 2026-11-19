@@ -110,11 +110,9 @@ void VelocityTrigger::Init() {
     M2C_FIELD(this, f64 *, 0x288) = (f64) sp10;
 }
 
-#if 0 // DRAFT: identifier 'VelocityTriggerDescriptor::LoadLine(MKIniLine *)' redeclared
-void VelocityTriggerDescriptor::LoadLine(MKIniLine *arg0) {
+s32 VelocityTriggerDescriptor::LoadLine(MKIniLine *arg0) {
     MKPropDescriptor::LoadLine(arg0);
 }
-#endif
 
 void VelocityTriggerDescriptor::Init() {
     TriggerPropDescriptor::Init();

@@ -1951,8 +1951,8 @@ u8 Character::IsCollisionEnabled() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'Character::EnableCollision(bool)' redeclared
-u8 Character::EnableCollision(bool arg0) {
+#if 0 // DRAFT: undefined identifier 'unk524'
+void Character::EnableCollision(bool arg0) {
     MKCollisionInfo *temp_r4_3568;
     u8 temp_r3_3569;
 

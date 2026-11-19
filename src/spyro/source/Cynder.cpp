@@ -1076,8 +1076,8 @@ void Cynder::UpdateEffects() {
     UpdateFuryPowerUp();
 }
 
-#if 0 // DRAFT: identifier 'Cynder::GetCharacterName()' redeclared
-s32 Cynder::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void Cynder::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x330);
 }
 #endif

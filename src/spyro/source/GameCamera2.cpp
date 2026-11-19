@@ -2249,8 +2249,7 @@ void GameCamera2::TrainEnter() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'GameCamera2::ProcessCameraStateRequest(int)' redeclared
-void GameCamera2::ProcessCameraStateRequest(int arg0) {
+u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
     KDCamera::ProcessCameraStateRequest(arg0);
     if (arg0 != 0x800) {
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
@@ -2258,7 +2257,6 @@ void GameCamera2::ProcessCameraStateRequest(int arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void GameCamera2::IsUnderwater() {

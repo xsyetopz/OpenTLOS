@@ -317,8 +317,8 @@ void ElecTier3::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElecTier3::GetCharacterName()' redeclared
-s32 ElecTier3::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void ElecTier3::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x374);
 }
 #endif
@@ -809,8 +809,8 @@ void ElecTier1::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElecTier1::GetCharacterName()' redeclared
-s32 ElecTier1::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void ElecTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x370);
 }
 #endif
@@ -856,8 +856,8 @@ void ElecTier1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElecTier1::Spawn(const Matrix *, SpawnPointRef *)' redeclared
-void ElecTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+#if 0 // DRAFT: ')' expected
+s32 ElecTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     if ((SlimeTrailFX *) M2C_FIELD(this, SlimeTrailFX **, 0xB10) == NULL) {
         M2C_FIELD(this, SlimeTrailFX **, 0xB10) = ((SlimeTrailFXManager *) (&gb + 0x2B8))->AllocTrail(M2C_FIELD(checked_cast<ElecTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x2B4));
     }

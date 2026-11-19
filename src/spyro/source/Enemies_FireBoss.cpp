@@ -1865,8 +1865,8 @@ s32 FireBoss::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'FireBoss::GetCharacterName()' redeclared
-s32 FireBoss::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void FireBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x324);
 }
 #endif

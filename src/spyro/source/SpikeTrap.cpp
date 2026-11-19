@@ -103,8 +103,8 @@ void SpikeTrapDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SpikeTrapDescriptor::LoadLine(MKIniLine *)' redeclared
-void SpikeTrapDescriptor::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal use of non-static member
+s32 SpikeTrapDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);
 }
 #endif

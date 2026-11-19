@@ -50,11 +50,11 @@ extern void *gpTranslation_StringArray;
 static s32 lit_1315 = 4;
 static s32 lit_1319 = 5;
 static s32 lit_1334 = 1;
-#if 0 // DRAFT: identifier 'EarthBoss::GetCharacterName()' redeclared
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 static M2C_UNK lit_1039;                               /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_1040;                               /* unable to generate initializer: unknown type; const */
 
-s32 EarthBoss::GetCharacterName() {
+void EarthBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x32C);
 }
 #endif

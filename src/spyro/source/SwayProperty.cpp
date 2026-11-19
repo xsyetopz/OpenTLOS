@@ -186,8 +186,8 @@ void SwayProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SwayProperty::LoadLineInstance(MKIniLine *)' redeclared
-void SwayProperty::LoadLineInstance(MKIniLine *arg0) {
+#if 0 // DRAFT: expression syntax error
+s32 SwayProperty::LoadLineInstance(MKIniLine *arg0) {
     arg0->LoadBool("Enabled", pInstanceMem.__vptr + (this->unk8 + 0x88), 0);
 }
 #endif
@@ -231,8 +231,8 @@ void SwayProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SwayProperty::LoadLine(MKIniLine *)' redeclared
-u8 SwayProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 SwayProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_576;
 
     if ((MKIniLine *) this->unk18 == NULL) {

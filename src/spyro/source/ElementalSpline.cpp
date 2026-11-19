@@ -2212,8 +2212,8 @@ void ElementalSpline::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElementalSpline::LoadLine(MKIniLine *)' redeclared
-u8 ElementalSpline::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal use of non-static member
+s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }

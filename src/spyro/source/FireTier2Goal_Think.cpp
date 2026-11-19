@@ -20,8 +20,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_MWHit1;
 
-#if 0 // DRAFT: identifier 'FireTier2Goal_Think::Update()' redeclared
-void FireTier2Goal_Think::Update() {
+#if 0 // DRAFT: pointer/array required
+u8 FireTier2Goal_Think::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;

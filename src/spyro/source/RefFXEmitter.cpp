@@ -70,11 +70,9 @@ void RefFXEmitter::LoadDone() {
     KDProp::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'RefFXEmitter::LoadLine(MKIniLine *)' redeclared
-void RefFXEmitter::LoadLine(MKIniLine *arg0) {
+s32 RefFXEmitter::LoadLine(MKIniLine *arg0) {
     KDProp::LoadLine(arg0);
 }
-#endif
 
 void RefFXEmitter::Deinit() {
     KDProp::Deinit();

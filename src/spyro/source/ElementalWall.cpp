@@ -1995,8 +1995,8 @@ void ElementalWall::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ElementalWall::LoadLine(MKIniLine *)' redeclared
-u8 ElementalWall::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }

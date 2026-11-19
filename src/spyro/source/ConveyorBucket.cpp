@@ -203,11 +203,9 @@ void ConveyorBucket::LoadDone() {
     GameProp::LoadDone();
 }
 
-#if 0 // DRAFT: identifier 'ConveyorBucket::LoadLine(MKIniLine *)' redeclared
-void ConveyorBucket::LoadLine(MKIniLine *arg0) {
+s32 ConveyorBucket::LoadLine(MKIniLine *arg0) {
     GameProp::LoadLine(arg0);
 }
-#endif
 
 void ConveyorBucket::Deinit() {
     GameProp::Deinit();

@@ -32,11 +32,9 @@ void ConvexTier3::Despawn(bool arg0) {
     Enemy::Despawn(arg0);
 }
 
-#if 0 // DRAFT: identifier 'ConvexTier3::Spawn(const Matrix *, SpawnPointRef *)'
-void ConvexTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+s32 ConvexTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     Enemy::Spawn(arg0, arg1);
 }
-#endif
 
 void ConvexTier3::UpdateCollisionItems() {
 

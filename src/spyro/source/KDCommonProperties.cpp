@@ -135,8 +135,8 @@ void KDSoundAttachmentProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDSoundAttachmentProperty::LoadLine(MKIniLine *)' redeclared
-u8 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_298;
 
     var_r31_298 = 0;
@@ -457,8 +457,8 @@ void KDPathFollowerProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDPathFollowerProperty::LoadLine(MKIniLine *)' redeclared
-u8 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadString("path", (s8 **) &this->unk14, 0) != 0);
 }
 #endif

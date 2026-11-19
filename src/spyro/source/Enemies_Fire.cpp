@@ -942,8 +942,8 @@ void FireTier1::UpdateMovementCustom() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'FireTier1::Spawn(const Matrix *, SpawnPointRef *)' redeclared
-void FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+#if 0 // DRAFT: undefined identifier 'arg_sp4C'
+s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     s32 temp_cr0_eq_2039;
     u16 temp_r3_2058;
     void *var_r29_2045;
@@ -1016,8 +1016,8 @@ void FireTier1::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'FireTier1::GetCharacterName()' redeclared
-s32 FireTier1::GetCharacterName() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+void FireTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x36C);
 }
 #endif

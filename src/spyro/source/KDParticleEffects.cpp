@@ -325,8 +325,8 @@ void KDParticleEmitterProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDParticleEmitterProperty::LoadLine(MKIniLine *)' redeclared
-u8 KDParticleEmitterProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+s32 KDParticleEmitterProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_858;
 
     if ((MKIniLine *) this->unk10 == NULL) {
@@ -460,8 +460,8 @@ void KDParticleSystemProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDParticleSystemProperty::LoadLine(MKIniLine *)' redeclared
-u8 KDParticleSystemProperty::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: undefined identifier 'unk10'
+s32 KDParticleSystemProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1125;
 
     var_r31_1125 = 0;

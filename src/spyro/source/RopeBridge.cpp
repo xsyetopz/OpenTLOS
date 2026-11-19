@@ -1371,8 +1371,8 @@ void RopeBridge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'RopeBridge::Resolve()' redeclared
-f32 RopeBridge::Resolve() {
+#if 0 // DRAFT: undefined identifier 'unksp25C'
+void RopeBridge::Resolve() {
     s8 sp2B8;
     s32 sp2B4;
     s32 sp2B0;

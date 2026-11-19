@@ -75,8 +75,8 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'SkiffterCritter::Update()' redeclared
-SkiffterCritter *SkiffterCritter::Update() {
+#if 0 // DRAFT: illegal type
+void SkiffterCritter::Update() {
     s8 sp480;
     s32 sp47C;
     s32 sp478;

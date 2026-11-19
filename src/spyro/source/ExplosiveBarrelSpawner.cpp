@@ -41,8 +41,8 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *)'
-void ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
+#if 0 // DRAFT: illegal use of non-static member
+s32 ExplosiveBarrelSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     GamePropDescriptor::LoadLine(arg0);
 }
 #endif
