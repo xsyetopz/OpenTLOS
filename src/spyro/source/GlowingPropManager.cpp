@@ -36,37 +36,34 @@ u8 GlowingPropManager::AddProp(MKProp *arg0) {
     return 1U;
 }
 
-#if 0 // DRAFT: type mismatch 'MKProp **' and 'MKProp ***'
 void GlowingPropManager::Deinit() {
     MKProp ***var_r31_35;
     MKProp ***var_r3_36;
     MKProp ***var_r4_34;
-    MKProp **temp_r0_39;
-    MKProp **temp_r0_58;
+    u32 temp_r0_39;
     u32 temp_r0_44;
+    u32 temp_r0_58;
 
     var_r4_34 = this->unk0;
     var_r31_35 = var_r4_34;
     var_r3_36 = var_r4_34;
-loop_3:
-    temp_r0_44 = M2C_FIELD(var_r3_36, u32 *, -4);
-    var_r3_36 -= 4;
-    if (temp_r0_44 != 0U) {
-        temp_r0_39 = *var_r3_36;
-        if (temp_r0_39 < var_r31_35) {
-            var_r31_35 = (MKProp ***) temp_r0_39;
-        }
-        goto loop_3;
+    goto test_3;
+body_3:
+    temp_r0_39 = *(u32 *) var_r3_36;
+    if (temp_r0_39 < (u32) var_r31_35) {
+        var_r31_35 = (MKProp ***) temp_r0_39;
     }
-    if (var_r3_36 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_58 = *var_r4_34;
-        if (temp_r0_58 != NULL) {
-            if (temp_r0_58 < var_r31_35) {
+test_3:
+    var_r3_36 = (MKProp ***) ((u8 *) var_r3_36 - 4);
+    temp_r0_44 = M2C_FIELD(var_r3_36, u32 *, 0);
+    if (temp_r0_44 != 0U) {
+        goto body_3;
+    }
+    if ((s32 *) var_r3_36 != &gEmptyPtrListDL) {
+        for (; (temp_r0_58 = *(u32 *) var_r4_34) != 0U; var_r4_34 = (MKProp ***) ((u8 *) var_r4_34 + 4)) {
+            if (temp_r0_58 < (u32) var_r31_35) {
                 var_r31_35 = (MKProp ***) temp_r0_58;
             }
-            var_r4_34 += 4;
-            goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r31_35, NULL, 0);
@@ -76,36 +73,18 @@ loop_9:
     }
     this->unk0 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void GlowingPropManager::Draw() {
     MKProp ***var_r31_91;
-    MKProp **temp_r3_102;
-    MKProp *temp_r3_105;
 
     var_r31_91 = this->unk0;
-loop_2:
-    if (var_r31_91 != NULL) {
-        temp_r3_102 = *var_r31_91;
-        if (temp_r3_102 != NULL) {
-            temp_r3_105 = *temp_r3_102;
-            if (temp_r3_105 == NULL) {
-
-            } else {
-                M2C_FIELD(temp_r3_105->__vptr, M2C_UNK (**)(), 0x28)();
-                var_r31_91 += 4;
-                goto loop_2;
-            }
-        }
+    while (var_r31_91 != NULL && *var_r31_91 != NULL && **var_r31_91 != NULL) {
+        (**var_r31_91)->Draw();
+        var_r31_91 = (MKProp ***) ((u8 *) var_r31_91 + 4);
     }
-loop_7:
-    if ((MKProp **) *this->unk0 != NULL) {
-        this->unk0 += 4;
-        goto loop_7;
+    for (; *this->unk0 != NULL; this->unk0 = (MKProp ***) ((u8 *) this->unk0 + 4)) {
     }
 }
-#endif
 
 void GlowingPropManager::Init() {
     MKProp ***temp_r3_155;
@@ -146,22 +125,18 @@ void GlowingProp::EndGlowingPropDraw() {
     this->unk14 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
-    f64 sp28;
-    f64 sp20;
-    f64 sp18;
-    f64 sp10;
+    MKVector4 *color;
+    MKVector4 sp10;
+    MKVector4 sp20;
+    f64 temp_f1_223;
+    f64 temp_f1_229;
+    f64 temp_f1_233;
     f32 sp8;
     f32 var_f0_308;
     f32 var_f1_292;
     f32 var_f30_219;
     f32 var_f31_318;
-    f64 *temp_r3_324;
-    f64 temp_f0_334;
-    f64 temp_f1_223;
-    f64 temp_f1_229;
-    f64 temp_f1_233;
     s32 temp_r3_252;
     s32 var_r0_262;
 
@@ -172,7 +147,7 @@ void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
             temp_f1_229 = 0.5 * temp_f1_223 * -(((f64) var_f30_219 * (temp_f1_223 * temp_f1_223)) - 3.0);
             temp_f1_233 = 0.5 * temp_f1_229 * -(((f64) var_f30_219 * (temp_f1_229 * temp_f1_229)) - 3.0);
             var_f30_219 = (f32) ((f64) var_f30_219 * (0.5 * temp_f1_233 * -(((f64) var_f30_219 * (temp_f1_233 * temp_f1_233)) - 3.0)));
-        } else if (var_f30_219 < M2C_BITWISE(f32, 0.0)) {
+        } else if (var_f30_219 < 0.0f) {
             var_f30_219 = __float_nan;
         } else {
             sp8 = var_f30_219;
@@ -200,7 +175,7 @@ void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
                 var_f30_219 = __float_nan;
             }
         }
-        if ((var_f30_219 > 1500.0f) && (GlowingPropManager::AddProp(&gGlowingPropManager) != 0)) {
+        if ((var_f30_219 > 1500.0f) && (GlowingPropManager::AddProp((MKProp *) &gGlowingPropManager) != 0)) {
             var_f1_292 = var_f30_219 - 1500.0f;
             if (var_f1_292 < 1500.0f) {
 
@@ -223,20 +198,18 @@ void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
             } else {
                 var_f31_318 = 0.0f;
             }
-            temp_r3_324 = MKMaterial_GetColor(this->unk10);
-            this->unk0 = M2C_FIELD(temp_r3_324, f64 *, 0);
-            this->unk8 = M2C_FIELD(temp_r3_324, f64 *, 8);
-            sp10 = this->unk0 * (f64) var_f31_318;
-            temp_f0_334 = this->unk8 * (f64) var_f31_318;
-            sp18 = temp_f0_334;
+            color = (MKVector4 *) MKMaterial_GetColor(this->unk10);
+            *((MKVector4 *) this) = *color;
+            sp10.unk0 = ((MKVector4 *) this)->unk0 * var_f31_318;
+            sp10.unk4 = ((MKVector4 *) this)->unk4 * var_f31_318;
+            sp10.unk8 = ((MKVector4 *) this)->unk8 * var_f31_318;
+            sp10.unkC = ((MKVector4 *) this)->unkC * var_f31_318;
             sp20 = sp10;
-            sp28 = temp_f0_334;
-            MKMaterial_SetColor(this->unk10, *((MKVector4 *) &sp20));
+            MKMaterial_SetColor(this->unk10, sp20);
             gRenderState = this->unk10;
         }
     }
 }
-#endif
 
 void GlowingProp::Deinit() {
     MKMaterial_Destroy(this->unk10);
