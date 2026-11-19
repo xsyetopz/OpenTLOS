@@ -137,8 +137,29 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
+#if 0 // DRAFT: pointer/array required
 void Credits_Draw() {
+    Matrix sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKIniLine *temp_r28_486;
     MKIniLine *temp_r28_529;
     MKIniLine *temp_r3_505;
@@ -150,6 +171,7 @@ void Credits_Draw() {
     s32 temp_cr0_eq_532;
     s32 var_r28_409;
     u8 temp_r0_411;
+
     if (((MKIni *) pCredits != NULL) && ((u8) M2C_FIELD(pCredits, u8 *, 0xF0) != 0)) {
         if ((u8) bDrawn != 0) {
             return;
@@ -159,15 +181,15 @@ void Credits_Draw() {
             return;
         }
         var_r29_333 = M2C_FIELD(pCredits, MKIniLine **, 0xA0);
-        arg_sp90.SetIdentity();
-        arg_sp40 = 320.0f;
-        arg_sp44 = M2C_FIELD(pCredits, f32 *, 0xEC);
-        arg_sp48 = 0.0f;
-        arg_sp80 = (f64) arg_sp40;
-        arg_sp88 = (f64) arg_sp48;
-        arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp80));
+        sp90.SetIdentity();
+        sp40 = 320.0f;
+        sp44 = M2C_FIELD(pCredits, f32 *, 0xEC);
+        sp48 = 0.0f;
+        sp80 = (f64) sp40;
+        sp88 = (f64) sp48;
+        sp90.Translate(&sp90, *((MKVector3 *) &sp80));
 loop_31:
-        if ((arg_spC4 < 512.0f) && (var_r29_333 != NULL)) {
+        if ((sp90.unk34 < 512.0f) && (var_r29_333 != NULL)) {
             var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
             var_f27_363 = 1.0f;
             if (var_r29_333->IsField("heading") != 0) {
@@ -187,22 +209,22 @@ loop_31:
                 }
             }
             if ((u32) var_r28_409 != 0U) {
-                var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, 256.0f * var_f27_363, (Matrix *) &arg_sp90, 9, 0x80808080U, var_f27_363, var_f27_363, DummyRenderText, 0U);
-                arg_sp38 = 0.0f;
-                arg_sp30 = 0.0f;
-                arg_sp34 = 0.5f * var_f31_362;
-                arg_sp78 = (f64) arg_sp38;
-                arg_sp70 = (f64) arg_sp30;
-                arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp70));
-                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, var_f31_362, (Matrix *) &arg_sp90, 9, 0x80808080U, var_f27_363, var_f27_363, NULL, 0U);
-                arg_sp28 = 0.0f;
-                arg_sp20 = 0.0f;
-                arg_sp24 = -0.5f * var_f31_362;
-                arg_sp68 = (f64) arg_sp28;
-                arg_sp60 = (f64) arg_sp20;
-                arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp60));
+                var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, 256.0f * var_f27_363, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, DummyRenderText, 0U);
+                sp38 = 0.0f;
+                sp30 = 0.0f;
+                sp34 = 0.5f * var_f31_362;
+                sp78 = (f64) sp38;
+                sp70 = (f64) sp30;
+                sp90.Translate(&sp90, *((MKVector3 *) &sp70));
+                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, var_f31_362, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, NULL, 0U);
+                sp28 = 0.0f;
+                sp20 = 0.0f;
+                sp24 = -0.5f * var_f31_362;
+                sp68 = (f64) sp28;
+                sp60 = (f64) sp20;
+                sp90.Translate(&sp90, *((MKVector3 *) &sp60));
             }
-            if ((var_f31_362 + arg_spC4) < 0.0f) {
+            if ((var_f31_362 + sp90.unk34) < 0.0f) {
                 temp_r28_486 = M2C_FIELD(pCredits, MKIniLine **, 0xA0);
                 M2C_FIELD(pCredits, MKIniLine **, 0xA0) = temp_r28_486->unkC->GetNextLine(temp_r28_486);
                 if (((MKIniLine *) M2C_FIELD(pCredits, MKIniLine **, 0xA0) == NULL) && ((MKIni *) temp_r28_486->unkC == (MKIni *) pCredits) && (((MKIni *) (pCredits + 0x50))->GetFirstLine() != NULL)) {
@@ -211,12 +233,12 @@ loop_31:
                 }
                 M2C_FIELD(pCredits, f32 *, 0xEC) = (f32) (M2C_FIELD(pCredits, f32 *, 0xEC) + var_f31_362);
             }
-            arg_sp18 = 0.0f;
-            arg_sp10 = 0.0f;
-            arg_sp14 = var_f31_362;
-            arg_sp58 = (f64) arg_sp18;
-            arg_sp50 = (f64) arg_sp10;
-            arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp50));
+            sp18 = 0.0f;
+            sp10 = 0.0f;
+            sp14 = var_f31_362;
+            sp58 = (f64) sp18;
+            sp50 = (f64) sp10;
+            sp90.Translate(&sp90, *((MKVector3 *) &sp50));
             temp_r28_529 = var_r29_333;
             temp_r3_531 = var_r29_333->unkC->GetNextLine(var_r29_333);
             temp_cr0_eq_532 = temp_r3_531 == NULL;

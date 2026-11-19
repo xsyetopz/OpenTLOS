@@ -25,22 +25,25 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ClusterBomb::DrawClusterBombs() {
+    Matrix sp10;
+    M2C_UNK spC;
     MKVector3 **var_r31_49;
     MKVector3 *temp_r6_86;
+
     var_r31_49 = this->unk4C;
 loop_4:
     if (var_r31_49 != NULL) {
         temp_r6_86 = *var_r31_49;
         if (temp_r6_86 != NULL) {
             if ((s32) M2C_FIELD(temp_r6_86, s32 *, 0x24) != 2) {
-                M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                arg_sp40 = temp_r6_86->unk0;
-                arg_sp44 = temp_r6_86->unk4;
-                arg_sp48 = temp_r6_86->unk8;
-                arg_sp4C = 1.0f;
-                MKModel_SetWorldMatrix(this->unk50, *((Matrix *) &arg_sp10));
+                M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                sp10.unk30 = temp_r6_86->unk0;
+                sp10.unk34 = temp_r6_86->unk4;
+                sp10.unk38 = temp_r6_86->unk8;
+                sp10.unk3C = 1.0f;
+                MKModel_SetWorldMatrix(this->unk50, sp10);
                 MKModel_Draw(this->unk50, NULL);
             }
             var_r31_49 += 4;

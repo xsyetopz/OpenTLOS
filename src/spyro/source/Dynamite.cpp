@@ -631,6 +631,24 @@ Dynamite *Dynamite::CreateInstance(int arg0) {
 
 #if 0 // DRAFT: undefined identifier 'PlatformMoveMsg'
 void Dynamite::Message(MKMessage *arg0) {
+    Matrix spB0;
+    M2C_UNK spAC;
+    f64 spA0;                                       /* compiler-managed */
+    f64 sp98;                                       /* compiler-managed */
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp10;
     Dynamite ***temp_r4_1327;
     Dynamite **temp_r3_1349;
     Dynamite **temp_r3_1353;
@@ -653,19 +671,20 @@ void Dynamite::Message(MKMessage *arg0) {
     void *temp_r3_1325;
     void *temp_r3_1357;
     void *temp_r3_1466;
+
     temp_r0_1272 = arg0->unk0;
     switch (temp_r0_1272) {                         /* switch 1; irregular */
     case 34:                                        /* switch 1 */
         temp_r31_1286 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
-        M2C_STRUCT_COPY((s32) &arg_spAC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_spB0.Multiply3x3((Matrix *) &arg_spB0, M2C_FIELD(temp_r31_1286, Matrix **, 0x10));
-        arg_spB0.Multiply3x3((Matrix *) &arg_spB0, M2C_FIELD(temp_r31_1286, Matrix **, 0x14));
+        M2C_STRUCT_COPY((s32) &spAC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        spB0.Multiply3x3(&spB0, M2C_FIELD(temp_r31_1286, Matrix **, 0x10));
+        spB0.Multiply3x3(&spB0, M2C_FIELD(temp_r31_1286, Matrix **, 0x14));
         temp_r3_1307 = M2C_FIELD(temp_r31_1286, void **, 8);
-        arg_spE0 = M2C_FIELD(temp_r3_1307, f32 *, 0);
-        arg_spE4 = M2C_FIELD(temp_r3_1307, f32 *, 4);
-        arg_spE8 = M2C_FIELD(temp_r3_1307, f32 *, 8);
-        arg_spEC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spB0));
+        spB0.unk30 = M2C_FIELD(temp_r3_1307, f32 *, 0);
+        spB0.unk34 = M2C_FIELD(temp_r3_1307, f32 *, 4);
+        spB0.unk38 = M2C_FIELD(temp_r3_1307, f32 *, 8);
+        spB0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, spB0);
     default:                                        /* switch 1 */
 block_39:
         this->unk150.Message(arg0);
@@ -703,16 +722,16 @@ block_16:
                 }
             }
             temp_r3_1357 = this->unk8;
-            arg_sp68 = M2C_FIELD(temp_r3_1357, f64 *, 0x30);
-            arg_sp70 = M2C_FIELD(temp_r3_1357, f64 *, 0x38);
+            sp68 = M2C_FIELD(temp_r3_1357, f64 *, 0x30);
+            sp70 = M2C_FIELD(temp_r3_1357, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             var_f4_1371 = 0.0f;
-            arg_sp98 = arg_sp38;
-            arg_sp40 = (f32) arg_sp70 - M2C_FIELD(temp_r3_1325, f32 *, 0x18);
-            arg_sp9C = 0.0f;
-            arg_spA0 = (f64) arg_sp40;
-            var_f5_1384 = ((f32) arg_spA0 * (f32) arg_spA0) + (((f32) arg_sp98 * (f32) arg_sp98) + (0.0f * 0.0f));
+            sp98 = sp38;
+            sp40 = (f32) sp70 - M2C_FIELD(temp_r3_1325, f32 *, 0x18);
+            unksp9C = 0.0f;
+            spA0 = (f64) sp40;
+            var_f5_1384 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (0.0f * 0.0f));
             if (var_f5_1384 > 0.000001f) {
                 if (var_f5_1384 > 0.0f) {
                     temp_f1_1389 = __frsqrte(var_f5_1384);
@@ -722,18 +741,18 @@ block_16:
                 } else if (var_f5_1384 < M2C_BITWISE(f32, 0.0)) {
                     var_f5_1384 = __float_nan;
                 } else {
-                    arg_sp10 = var_f5_1384;
-                    temp_r3_1418 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f5_1384;
+                    temp_r3_1418 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_1418) {         /* switch 2; irregular */
                     case 0x7F800000:                /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1428 = 1;
                         } else {
                             var_r0_1428 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1428 = 5;
                         } else {
                             var_r0_1428 = 3;
@@ -749,28 +768,28 @@ block_16:
                 }
                 var_f4_1371 = 1.0f / var_f5_1384;
             }
-            temp_f0_1458 = (f32) arg_spA0 * var_f4_1371;
-            arg_sp98 = (f32) arg_sp98 * var_f4_1371;
-            arg_sp9C *= var_f4_1371;
-            arg_spA0 = temp_f0_1458;
+            temp_f0_1458 = (f32) spA0 * var_f4_1371;
+            sp98 = (f32) sp98 * var_f4_1371;
+            unksp9C *= var_f4_1371;
+            spA0 = temp_f0_1458;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
             temp_r3_1466 = this->unk8;
-            arg_sp30 = temp_f0_1458 * 1000.0f;
+            sp30 = temp_f0_1458 * 1000.0f;
             temp_f4_1469 = M2C_FIELD(temp_r3_1466, f64 *, 0x30);
             temp_f3_1471 = M2C_FIELD(temp_r3_1466, f64 *, 0x38);
-            arg_sp48 = arg_sp28;
-            arg_sp58 = temp_f4_1469;
-            arg_sp50 = (f64) arg_sp30;
-            arg_sp60 = temp_f3_1471;
+            sp48 = sp28;
+            sp58 = temp_f4_1469;
+            sp50 = (f64) sp30;
+            sp60 = temp_f3_1471;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            temp_f1_1484 = (f32) arg_sp60 + (f32) arg_sp50;
-            arg_sp78 = temp_f4_1469;
-            arg_sp88 = arg_sp18;
-            arg_sp20 = temp_f1_1484;
-            arg_sp80 = temp_f3_1471;
-            arg_sp90 = (f64) arg_sp20;
-            Reset(temp_f1_1484, (f32) arg_sp60, temp_f3_1471, temp_f4_1469);
-            FireAtTarget(arg_sp78, arg_sp88, this->unk130, 0, 0, 1500.0f);
+            temp_f1_1484 = (f32) sp60 + (f32) sp50;
+            sp78 = temp_f4_1469;
+            sp88 = sp18;
+            sp20 = temp_f1_1484;
+            sp80 = temp_f3_1471;
+            sp90 = (f64) sp20;
+            Reset(temp_f1_1484, (f32) sp60, temp_f3_1471, temp_f4_1469);
+            FireAtTarget(sp78, sp88, this->unk130, 0, 0, 1500.0f);
             M2C_FIELD(temp_r3_1325, s8 *, 0x3E) = 1;
             KDSound_Play3d(GS_TNTKickAway, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             goto block_39;

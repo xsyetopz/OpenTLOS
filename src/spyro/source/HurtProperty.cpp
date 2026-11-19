@@ -10,48 +10,81 @@
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp80'
+#if 0 // DRAFT: undefined identifier 'spB0'
 void HurtProperty::DoHurt() {
+    s8 sp111;
+    s8 sp110;
+    s32 sp10C;
+    f32 sp108;
+    s32 sp104;
+    s8 sp102;
+    s8 sp101;
+    s8 sp100;
+    f64 spF8;                                       /* compiler-managed */
+    f64 spF0;                                       /* compiler-managed */
+    u32 spEC;
+    s32 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    s32 spC4;
+    s32 spC0;
+    M2C_UNK sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp30;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     TargetManager ***var_r31_109;
     TargetManager **temp_r3_157;
     f32 temp_f2_130;
     void **temp_r3_46;
     void *temp_r3_115;
     void *temp_r4_118;
+
     temp_r3_46 = this->unk14;
-    M2C_FIELD(*temp_r3_46, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_46, &arg_sp80);
-    arg_sp18 = 0.0f;
-    arg_sp10 = 0.0f;
-    arg_sp14 = 0.0f;
-    arg_sp70 = arg_spB0;
-    arg_sp78 = arg_spB8;
-    arg_spC4 = 0;
-    arg_sp60 = (f64) arg_sp10;
-    arg_sp68 = (f64) arg_sp18;
-    arg_spC0 = 7;
-    arg_spE8 = 1;
-    arg_spEC = *KDProperty::pInstanceMem;
-    arg_spC8 = (f64) arg_sp10;
-    arg_spD0 = (f64) arg_sp18;
-    arg_sp100 = 0;
-    arg_sp10C = 2;
-    arg_sp108 = 10.0f;
-    arg_sp100 = 0;
-    (s16) arg_sp100 = 1;
-    arg_sp104 = -1;
-    arg_spD8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-    arg_spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-    arg_sp110 = 0;
+    M2C_FIELD(*temp_r3_46, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_46, &sp80);
+    sp18 = 0.0f;
+    sp10 = 0.0f;
+    sp14 = 0.0f;
+    sp70 = spB0;
+    sp78 = spB8;
+    spC4 = 0;
+    sp60 = (f64) sp10;
+    sp68 = (f64) sp18;
+    spC0 = 7;
+    spE8 = 1;
+    spEC = *KDProperty::pInstanceMem;
+    spC8 = (f64) sp10;
+    spD0 = (f64) sp18;
+    sp100 = 0;
+    sp10C = 2;
+    sp108 = 10.0f;
+    sp101 = 0;
+    sp102 = 1;
+    sp104 = -1;
+    spD8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp110 = 0;
     if ((u32) *KDProperty::pInstanceMem != 0U) {
-        arg_sp30.GetPos();
-        arg_spF0 = arg_sp30;
-        arg_spF8 = arg_sp38;
+        sp30.GetPos();
+        spF0 = sp30;
+        spF8 = sp38;
     } else {
-        arg_spF0 = 0.0f;
-        arg_spF4 = 0.0f;
-        arg_spF8 = 0.0f;
+        spF0 = 0.0f;
+        unkspF4 = 0.0f;
+        spF8 = 0.0f;
     }
-    arg_sp110 = 0;
+    sp111 = 0;
     var_r31_109 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->Begin();
 loop_8:
     if (var_r31_109 != NULL) {
@@ -60,16 +93,16 @@ loop_8:
             temp_r3_115 = (*temp_r3_157)->unk8.unk0();
             if (temp_r3_115 != NULL) {
                 temp_r4_118 = M2C_FIELD(temp_r3_115, void **, 8);
-                arg_sp40 = M2C_FIELD(temp_r4_118, f64 *, 0x30);
-                arg_sp48 = M2C_FIELD(temp_r4_118, f64 *, 0x38);
+                sp40 = M2C_FIELD(temp_r4_118, f64 *, 0x30);
+                sp48 = M2C_FIELD(temp_r4_118, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 temp_f2_130 = this->unk1C;
-                arg_sp50 = arg_sp20;
-                arg_sp28 = (f32) arg_sp48 - (f32) arg_sp78;
-                arg_sp58 = (f64) arg_sp28;
+                sp50 = sp20;
+                sp28 = (f32) sp48 - (f32) sp78;
+                sp58 = (f64) sp28;
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((((f32) arg_sp58 * (f32) arg_sp58) + (((f32) arg_sp50 * (f32) arg_sp50) + (arg_sp54 * arg_sp54))) == (temp_f2_130 * temp_f2_130)) {
-                    M2C_FIELD(M2C_FIELD(temp_r3_115, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_spC0);
+                if ((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) == (temp_f2_130 * temp_f2_130)) {
+                    M2C_FIELD(M2C_FIELD(temp_r3_115, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&spC0);
                 }
             }
             var_r31_109 += 4;

@@ -9,29 +9,41 @@ CustomMaterialUpdater **malloc(M2C_UNK);            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
+#if 0 // DRAFT: undefined identifier 'sp20'
 void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdater *arg0) {
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     CustomMaterialUpdater **temp_r7_20;
     f32 temp_f2_54;
     f32 temp_f2_69;
     f64 temp_f5_23;
     f64 temp_f6_22;
     void *temp_r3_21;
+
     temp_r7_20 = arg0->unk8;
     temp_r3_21 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     temp_f6_22 = M2C_FIELD(temp_r3_21, f64 *, 0x30);
     temp_f5_23 = M2C_FIELD(temp_r3_21, f64 *, 0x38);
-    arg_sp50 = temp_f6_22;
-    arg_sp58 = temp_f5_23;
+    sp50 = temp_f6_22;
+    sp58 = temp_f5_23;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r7, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     M2C_FIELD(temp_r7_20, f64 *, 0) = temp_f6_22;
-    arg_sp40 = arg_sp20;
-    arg_sp28 = (f32) arg_sp58 - M2C_FIELD(temp_r7_20, f32 *, 8);
+    sp40 = sp20;
+    sp28 = (f32) sp58 - M2C_FIELD(temp_r7_20, f32 *, 8);
     M2C_FIELD(temp_r7_20, f32 *, 8) = temp_f5_23;
-    arg_sp48 = (f64) arg_sp28;
-    M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) ((((f32) arg_sp40 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) + M2C_FIELD(temp_r7_20, f32 *, 0x14));
-    M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) -((((f32) arg_sp48 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) - M2C_FIELD(temp_r7_20, f32 *, 0x18));
+    sp48 = (f64) sp28;
+    M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) ((((f32) sp40 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) + M2C_FIELD(temp_r7_20, f32 *, 0x14));
+    M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) -((((f32) sp48 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) - M2C_FIELD(temp_r7_20, f32 *, 0x18));
     temp_f2_54 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f2_54 == 5.0f) {
@@ -52,17 +64,17 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
             M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 + 5.0f);
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
-    arg_sp14 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
-    arg_sp18 = 0.0f;
-    arg_sp30 = (f64) arg_sp10;
-    arg_sp38 = (f64) arg_sp18;
-    arg_sp90 = (f32) arg_sp30;
-    arg_sp94 = arg_sp34;
-    arg_sp98 = (f32) arg_sp38;
-    arg_sp9C = 1.0f;
-    MKMaterial_SetTextureMatrix(arg0->unk0, (Matrix *) &arg_sp60);
+    M2C_STRUCT_COPY((s32) &unksp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
+    sp14 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
+    sp18 = 0.0f;
+    sp30 = (f64) sp10;
+    sp38 = (f64) sp18;
+    sp60.unk30 = (f32) sp30;
+    sp60.unk34 = unksp34;
+    sp60.unk38 = (f32) sp38;
+    sp60.unk3C = 1.0f;
+    MKMaterial_SetTextureMatrix(arg0->unk0, &sp60);
 }
 #endif
 

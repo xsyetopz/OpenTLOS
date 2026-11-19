@@ -117,32 +117,46 @@ void Collectable2::Collect() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable2::InitData(const Matrix &arg0, const MKVector3 *arg1, const MKVector3 *arg2, float arg3, float arg4, float arg5) {
+    Matrix sp90;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Corona *temp_r4_286;
-    M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    arg_sp90.Scale3x3((Matrix *) &arg_sp90, 2.0f);
-    arg_sp50.SetRotateAroundAxis(*((MKVector3 *) &arg0), arg5);
-    arg_sp90.Multiply3x3((Matrix *) &arg_sp90, (Matrix *) &arg_sp50);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp90));
+
+    M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) (&arg0 - 4) + 4, 0x40);
+    sp90.Scale3x3(&sp90, 2.0f);
+    sp50.SetRotateAroundAxis(*((MKVector3 *) &arg0), arg5);
+    sp90.Multiply3x3(&sp90, &sp50);
+    MKModel_SetWorldMatrix(this->unk4, sp90);
     this->unk64 = arg1;
     this->unk68 = arg2;
     this->unk6C = arg3;
     this->unk70 = arg4;
     this->unk60 = 0.0f;
     if ((Corona *) this->unk74 == NULL) {
-        arg_sp28 = 0.0f;
-        arg_sp10 = 1.0f;
-        arg_sp14 = 1.0f;
-        arg_sp18 = 1.0f;
-        arg_sp1C = 1.0f;
-        arg_sp20 = 0.0f;
-        arg_sp24 = 0.0f;
-        arg_sp30 = (f64) arg_sp10;
-        arg_sp38 = (f64) arg_sp18;
-        arg_sp40 = (f64) arg_sp20;
-        arg_sp48 = (f64) arg_sp28;
-        this->unk74 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &arg_sp40), *((MKVector4 *) &arg_sp30), 0.5f, lit_778, lit_779);
+        sp28 = 0.0f;
+        sp10 = 1.0f;
+        sp14 = 1.0f;
+        sp18 = 1.0f;
+        sp1C = 1.0f;
+        sp20 = 0.0f;
+        sp24 = 0.0f;
+        sp30 = (f64) sp10;
+        sp38 = (f64) sp18;
+        sp40 = (f64) sp20;
+        sp48 = (f64) sp28;
+        this->unk74 = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp40), *((MKVector4 *) &sp30), 0.5f, lit_778, lit_779);
         temp_r4_286 = this->unk74;
         if (temp_r4_286 != NULL) {
             temp_r4_286->unk31 |= 0x40;
@@ -207,8 +221,55 @@ void Collectable2::Draw() {
     MKModel_Draw(this->unk4, NULL);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp24C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable2::Update() {
+    Matrix sp250;
+    Matrix sp210;
+    Matrix sp1D0;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;                                      /* compiler-managed */
+    f64 sp198;                                      /* compiler-managed */
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    MKVector3 sp108;
+    MKVector3 spF8;
+    M2C_UNK spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    MKVector3 spB8;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp14;
+    f32 sp10;
     Corona *temp_r3_738;
     Corona *temp_r4_605;
     f32 temp_f29_567;
@@ -224,79 +285,80 @@ void Collectable2::Update() {
     void *temp_r3_447;
     void *temp_r3_618;
     void *temp_r4_615;
+
     MKProp::Update();
     temp_r4_432 = MKModel_GetWorldMatrix(this->unk4) - 4;
-    M2C_STRUCT_COPY((s32) &arg_sp24C + 4, temp_r4_432 + 4, 0x40);
-    temp_r3_447 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, s32, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_432 + 0x40, &arg_sp24C + 0x40), void **, 8);
-    arg_sp1B8 = M2C_FIELD(temp_r3_447, f64 *, 0);
+    M2C_STRUCT_COPY((s32) &sp210.unk3C + 4, temp_r4_432 + 4, 0x40);
+    temp_r3_447 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, s32, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_432 + 0x40, &sp210.unk3C + 0x40), void **, 8);
+    sp1B8 = M2C_FIELD(temp_r3_447, f64 *, 0);
     this->unk4C.unk8 = 0.0f;
     this->unk4C.unk4 = 0;
-    arg_sp1C0 = M2C_FIELD(temp_r3_447, f64 *, 8);
+    sp1C0 = M2C_FIELD(temp_r3_447, f64 *, 8);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp178 = arg_spA8;
-    arg_spB0 = (f32) arg_sp1C0 * this->unk70;
-    arg_sp180 = (f64) arg_spB0;
+    sp178 = spA8;
+    spB0 = (f32) sp1C0 * this->unk70;
+    sp180 = (f64) spB0;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp188 = arg_sp98;
-    arg_spA0 = this->unk64->unk8 + (f32) arg_sp180;
-    arg_sp190 = (f64) arg_spA0;
-    this->unk4C.AddNode(*((MKVector3 *) &arg_sp188));
+    sp188 = sp98;
+    spA0 = this->unk64->unk8 + (f32) sp180;
+    sp190 = (f64) spA0;
+    this->unk4C.AddNode(*((MKVector3 *) &sp188));
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp50 = (f32) arg_sp1C0 * (5.0f * this->unk70);
-    arg_sp70 = 0.0f;
-    arg_sp68 = 0.0f;
-    arg_sp6C = 500.0f * this->unk6C;
-    arg_sp118 = arg_sp48;
-    arg_sp120 = (f64) arg_sp50;
-    arg_sp128 = (f64) arg_sp68;
-    arg_sp130 = (f64) arg_sp70;
+    sp50 = (f32) sp1C0 * (5.0f * this->unk70);
+    sp70 = 0.0f;
+    sp68 = 0.0f;
+    sp6C = 500.0f * this->unk6C;
+    sp118 = sp48;
+    sp120 = (f64) sp50;
+    sp128 = (f64) sp68;
+    sp130 = (f64) sp70;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp138 = arg_sp88;
-    arg_sp90 = this->unk64->unk8 + this->unk68->unk8;
-    arg_sp140 = (f64) arg_sp90;
+    sp138 = sp88;
+    sp90 = this->unk64->unk8 + this->unk68->unk8;
+    sp140 = (f64) sp90;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp148 = arg_sp78;
-    arg_sp80 = (f32) arg_sp140 * 0.5f;
-    arg_sp150 = (f64) arg_sp80;
+    sp148 = sp78;
+    sp80 = (f32) sp140 * 0.5f;
+    sp150 = (f64) sp80;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp158 = arg_sp58;
-    arg_sp60 = (f32) arg_sp150 + (f32) arg_sp130;
-    arg_sp160 = (f64) arg_sp60;
+    sp158 = sp58;
+    sp60 = (f32) sp150 + (f32) sp130;
+    sp160 = (f64) sp60;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp168 = arg_sp38;
-    arg_sp40 = (f32) arg_sp160 + (f32) arg_sp120;
-    arg_sp170 = (f64) arg_sp40;
-    this->unk4C.AddNode(*((MKVector3 *) &arg_sp168));
+    sp168 = sp38;
+    sp40 = (f32) sp160 + (f32) sp120;
+    sp170 = (f64) sp40;
+    this->unk4C.AddNode(*((MKVector3 *) &sp168));
     this->unk4C.AddNode(*this->unk68);
     temp_f29_567 = 9.424778f * gUpdateTimeDelta;
-    Normalise(*((MKVector3 *) &arg_sp108));
-    arg_sp210.SetRotateAroundAxis(*((MKVector3 *) &arg_sp108), temp_f29_567);
-    arg_sp250.Multiply3x3((Matrix *) &arg_sp250, (Matrix *) &arg_sp210);
+    Normalise(sp108);
+    sp210.SetRotateAroundAxis(sp108, temp_f29_567);
+    sp250.Multiply3x3(&sp250, &sp210);
     temp_f29_581 = 0.7853982f * gUpdateTimeDelta;
-    Normalise(*((MKVector3 *) &arg_spF8));
-    arg_sp1D0.SetRotateAroundAxis(*((MKVector3 *) &arg_spF8), temp_f29_581);
-    arg_sp250.Multiply3x3((Matrix *) &arg_sp250, (Matrix *) &arg_sp1D0);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp250));
-    arg_sp14 = 0.0f;
-    arg_spE8.GetMeasure(this->unk60, (Matrix *) &this->unk4C, KDSpline_PositionMixer);
-    MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_spE8));
+    Normalise(spF8);
+    sp1D0.SetRotateAroundAxis(spF8, temp_f29_581);
+    sp250.Multiply3x3(&sp250, &sp1D0);
+    MKModel_SetWorldMatrix(this->unk4, sp250);
+    sp14 = 0.0f;
+    spE8.GetMeasure(this->unk60, (Matrix *) &this->unk4C, KDSpline_PositionMixer);
+    MKModel_SetPosition(this->unk4, *((MKVector3 *) &spE8));
     temp_r4_605 = this->unk74;
     if (temp_r4_605 != NULL) {
         temp_r4_605->unk2C += 0.5f * gUpdateTimeDelta;
         temp_r4_615 = this->unk8;
         temp_r3_618 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-        arg_sp1A8 = M2C_FIELD(temp_r4_615, f64 *, 0x30);
-        arg_spD8 = M2C_FIELD(temp_r3_618, f64 *, 0x30);
-        arg_sp1B0 = M2C_FIELD(temp_r4_615, f64 *, 0x38);
-        arg_spE0 = M2C_FIELD(temp_r3_618, f64 *, 0x38);
+        sp1A8 = M2C_FIELD(temp_r4_615, f64 *, 0x30);
+        spD8 = M2C_FIELD(temp_r3_618, f64 *, 0x30);
+        sp1B0 = M2C_FIELD(temp_r4_615, f64 *, 0x38);
+        spE0 = M2C_FIELD(temp_r3_618, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp198 = arg_sp28;
-        arg_sp30 = (f32) arg_spE0 - (f32) arg_sp1B0;
-        arg_sp1A0 = (f64) arg_sp30;
-        var_f4_646 = ((f32) arg_sp1A0 * (f32) arg_sp1A0) + (((f32) arg_sp198 * (f32) arg_sp198) + (arg_sp19C * arg_sp19C));
+        sp198 = sp28;
+        sp30 = (f32) spE0 - (f32) sp1B0;
+        sp1A0 = (f64) sp30;
+        var_f4_646 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
         if (var_f4_646 > 0.000001f) {
             if (var_f4_646 > 0.0f) {
                 temp_f1_652 = __frsqrte(var_f4_646);
@@ -306,18 +368,18 @@ void Collectable2::Update() {
             } else if (var_f4_646 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_646 = __float_nan;
             } else {
-                arg_sp10 = var_f4_646;
-                temp_r3_681 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_646;
+                temp_r3_681 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_681) {              /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_691 = 1;
                     } else {
                         var_r0_691 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_691 = 5;
                     } else {
                         var_r0_691 = 3;
@@ -335,17 +397,17 @@ void Collectable2::Update() {
         } else {
             var_f4_713 = 0.0f;
         }
-        arg_sp198 = (f32) arg_sp198 * var_f4_713;
-        arg_sp19C *= var_f4_713;
-        arg_sp1A0 = (f32) arg_sp1A0 * var_f4_713;
-        arg_spB8.operator*(50.0f);
+        sp198 = (f32) sp198 * var_f4_713;
+        unksp19C *= var_f4_713;
+        sp1A0 = (f32) sp1A0 * var_f4_713;
+        spB8.operator*(50.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_738 = this->unk74;
-        temp_r3_738->unk0 = arg_sp18;
-        arg_sp20 = (f32) arg_sp1B0 + arg_spC0;
-        arg_spC8 = arg_sp18;
-        temp_r3_738->unk8 = (f64) arg_sp20;
-        arg_spD0 = (f64) arg_sp20;
+        temp_r3_738->unk0 = sp18;
+        sp20 = (f32) sp1B0 + spB8.unk8;
+        spC8 = sp18;
+        temp_r3_738->unk8 = (f64) sp20;
+        spD0 = (f64) sp20;
         this->unk78 += 10.0f * gUpdateTimeDelta;
         this->unk74->unk24 = (0.5f * _table_sinf(this->unk78)) + 2.5f;
     }

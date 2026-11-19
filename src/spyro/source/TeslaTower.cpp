@@ -15,6 +15,7 @@
 #include "spyro/source/EnergyBeam.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSpline.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
@@ -36,8 +37,32 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'arg_spA8'
+#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to
 void TeslaTower::UpdateTurretTurning() {
+    Matrix spD0;
+    f64 spC0;
+    f64 spB8;
+    MKVector3 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;                                       /* compiler-managed */
+    f64 sp88;                                       /* compiler-managed */
+    f64 sp80;
+    KDSpline sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    s16 sp10;
     Animation *temp_r3_103;
     f32 temp_f10_218;
     f32 temp_f11_239;
@@ -52,27 +77,28 @@ void TeslaTower::UpdateTurretTurning() {
     s32 temp_r3_178;
     s32 var_r0_188;
     void *temp_r30_99;
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), (MKVector3 *) &arg_spA8);
-    arg_sp68.GetMeasure(this->unk90.unk14, &this->unk90);
-    arg_spB8 = arg_sp68;
+
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), &spA8);
+    sp68.GetMeasure(this->unk90.unk14, &this->unk90);
+    spB8 = M2C_BITWISE(f64, sp68);
     temp_r30_99 = this->unk8;
-    arg_spC0 = arg_sp70;
+    spC0 = (f64) sp68.unk8;
     temp_r31_101 = this->unk90.unk1C;
     temp_r3_103 = MKModel_GetAnimation(this->unk4);
-    arg_sp10 = M2C_BITWISE(s16, temp_r31_101);
-    temp_r3_103->CalculateMatrices((Matrix *) &arg_spD0, 1, &arg_sp10, (Matrix *) temp_r30_99);
-    arg_sp48 = -arg_spF0;
-    arg_sp4C = -arg_spF4;
-    arg_sp50 = -arg_spF8;
-    arg_sp98 = (f64) arg_sp48;
-    arg_spA0 = (f64) arg_sp50;
+    sp10 = M2C_BITWISE(s16, temp_r31_101);
+    temp_r3_103->CalculateMatrices(&spD0, 1, &sp10, (Matrix *) temp_r30_99);
+    sp48 = -spD0.unk20;
+    sp4C = -spD0.unk24;
+    sp50 = -spD0.unk28;
+    sp98 = (f64) sp48;
+    spA0 = (f64) sp50;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     var_f12_127 = 0.0f;
-    arg_sp88 = arg_sp38;
-    arg_sp8C = 0.0f;
-    arg_sp40 = (f32) arg_spC0 - arg_spB0;
-    arg_sp90 = (f64) arg_sp40;
-    var_f4_144 = ((f32) arg_sp90 * (f32) arg_sp90) + (((f32) arg_sp88 * (f32) arg_sp88) + (0.0f * 0.0f));
+    sp88 = sp38;
+    unksp8C = 0.0f;
+    sp40 = (f32) spC0 - spA8.unk8;
+    sp90 = (f64) sp40;
+    var_f4_144 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (0.0f * 0.0f));
     if (var_f4_144 > 0.000001f) {
         if (var_f4_144 > 0.0f) {
             temp_f1_149 = __frsqrte(var_f4_144);
@@ -82,18 +108,18 @@ void TeslaTower::UpdateTurretTurning() {
         } else if (var_f4_144 < M2C_BITWISE(f32, 0.0)) {
             var_f4_144 = __float_nan;
         } else {
-            arg_sp14 = var_f4_144;
-            temp_r3_178 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_144;
+            temp_r3_178 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_178) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_188 = 1;
                 } else {
                     var_r0_188 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_188 = 5;
                 } else {
                     var_r0_188 = 3;
@@ -109,24 +135,24 @@ void TeslaTower::UpdateTurretTurning() {
         }
         var_f12_127 = 1.0f / var_f4_144;
     }
-    arg_sp30 = 0.0f;
-    arg_sp28 = 0.0f;
-    temp_f10_218 = arg_sp8C * var_f12_127;
-    arg_sp2C = 1.0f;
-    arg_sp60 = (f64) arg_sp30;
-    arg_sp58 = (f64) arg_sp28;
-    arg_sp8C = temp_f10_218;
-    temp_f11_239 = (f32) arg_sp88 * var_f12_127;
-    arg_sp18 = (arg_sp5C * (f32) arg_spA0) - ((f32) arg_sp60 * arg_sp9C);
-    temp_f3_241 = (f32) arg_sp90 * var_f12_127;
-    arg_sp1C = ((f32) arg_sp60 * (f32) arg_sp98) - ((f32) arg_sp58 * (f32) arg_spA0);
-    arg_sp20 = ((f32) arg_sp58 * arg_sp9C) - (arg_sp5C * (f32) arg_sp98);
-    arg_sp78 = (f64) arg_sp18;
-    temp_f4_249 = 1.0f - (((f32) arg_spA0 * temp_f3_241) + (((f32) arg_sp98 * temp_f11_239) + (arg_sp9C * temp_f10_218)));
-    arg_sp80 = (f64) arg_sp20;
-    arg_sp88 = temp_f11_239;
-    arg_sp90 = temp_f3_241;
-    if (((temp_f3_241 * (f32) arg_sp80) + ((temp_f11_239 * (f32) arg_sp78) + (temp_f10_218 * arg_sp7C))) > 0.0f) {
+    sp30 = 0.0f;
+    sp28 = 0.0f;
+    temp_f10_218 = unksp8C * var_f12_127;
+    sp2C = 1.0f;
+    sp60 = (f64) sp30;
+    sp58 = (f64) sp28;
+    unksp8C = temp_f10_218;
+    temp_f11_239 = (f32) sp88 * var_f12_127;
+    sp18 = (unksp5C * (f32) spA0) - ((f32) sp60 * unksp9C);
+    temp_f3_241 = (f32) sp90 * var_f12_127;
+    sp1C = ((f32) sp60 * (f32) sp98) - ((f32) sp58 * (f32) spA0);
+    sp20 = ((f32) sp58 * unksp9C) - (unksp5C * (f32) sp98);
+    sp68.unk10 = (f64) sp18;
+    temp_f4_249 = 1.0f - (((f32) spA0 * temp_f3_241) + (((f32) sp98 * temp_f11_239) + (unksp9C * temp_f10_218)));
+    sp80 = (f64) sp20;
+    sp88 = temp_f11_239;
+    sp90 = temp_f3_241;
+    if (((temp_f3_241 * (f32) sp80) + ((temp_f11_239 * M2C_BITWISE(f32, sp68.unk10)) + (temp_f10_218 * sp7C))) > 0.0f) {
         this->unk1C8 -= temp_f4_249;
         return;
     }
@@ -284,8 +310,90 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC8'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TeslaTower::DrawLightCone() {
+    M2C_UNK sp250;
+    f32 sp24C;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f32 sp23C;
+    f32 sp238;
+    f32 sp234;
+    f32 sp230;
+    f32 sp22C;
+    f32 sp228;
+    f32 sp224;
+    f32 sp220;
+    f32 sp21C;
+    f32 sp218;
+    f32 sp214;
+    f32 sp210;
+    M2C_UNK sp20C;
+    f64 sp200;
+    f64 sp1F8;
+    MKVector3 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;                                      /* compiler-managed */
+    f64 sp1C8;                                      /* compiler-managed */
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 temp_f1_657;
     f32 temp_f23_655;
     f32 temp_f5_812;
@@ -306,60 +414,61 @@ void TeslaTower::DrawLightCone() {
     s32 var_r30_896;
     void *temp_r29_905;
     void *temp_r3_659;
-    arg_spC8 = 0.01f;
+
+    spC8 = 0.01f;
     var_f31_615 = 0.0f;
-    arg_spCC = 0.01f;
-    arg_spD0 = 0.01f;
-    arg_spD4 = 1.0f;
-    arg_sp1F8 = (f64) arg_spC8;
-    arg_sp200 = (f64) arg_spD0;
+    spCC = 0.01f;
+    spD0 = 0.01f;
+    spD4 = 1.0f;
+    sp1F8 = (f64) spC8;
+    sp200 = (f64) spD0;
     temp_r0_623 = this->unk90.unk24;
     if ((M2C_BITWISE(s32, temp_r0_623) == 1) || (M2C_BITWISE(s32, temp_r0_623) == 2)) {
-        arg_sp68 = 0.1f;
-        arg_sp6C = 0.0f;
-        arg_sp70 = 0.0f;
-        arg_sp74 = 1.0f;
-        arg_sp198 = (f64) arg_sp68;
-        arg_sp1A0 = (f64) arg_sp70;
-        arg_sp1F8 = (f64) arg_sp68;
-        arg_sp200 = (f64) arg_sp70;
+        sp68 = 0.1f;
+        sp6C = 0.0f;
+        sp70 = 0.0f;
+        sp74 = 1.0f;
+        sp198 = (f64) sp68;
+        sp1A0 = (f64) sp70;
+        sp1F8 = (f64) sp68;
+        sp200 = (f64) sp70;
     }
     var_r28_646 = 0;
     var_r30_648 = 0;
     do {
         temp_f23_655 = 50.0f * -_table_sinf(1.5707964f + var_f31_615);
         temp_f1_657 = 50.0f * _table_sinf(var_f31_615);
-        arg_sp60 = 0.0f;
-        temp_r3_659 = &arg_sp250 + var_r30_648;
+        sp60 = 0.0f;
+        temp_r3_659 = &sp250 + var_r30_648;
         var_r28_646 += 1;
-        arg_sp58 = temp_f1_657;
+        sp58 = temp_f1_657;
         var_f31_615 += 0.8975979f;
         var_r30_648 += 0x10;
-        arg_sp5C = temp_f23_655;
-        arg_sp190 = (f64) arg_sp60;
-        M2C_FIELD(temp_r3_659, f64 *, 0) = (f64) arg_sp58;
-        arg_sp188 = (f64) arg_sp58;
-        M2C_FIELD(temp_r3_659, f64 *, 8) = (f64) arg_sp60;
+        sp5C = temp_f23_655;
+        sp190 = (f64) sp60;
+        M2C_FIELD(temp_r3_659, f64 *, 0) = (f64) sp58;
+        sp188 = (f64) sp58;
+        M2C_FIELD(temp_r3_659, f64 *, 8) = (f64) sp60;
     } while (var_r28_646 < 8);
-    M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp50 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    arg_sp180 = (f64) arg_sp50;
-    arg_sp178 = (f64) arg_sp48;
-    arg_sp1B8 = (f64) arg_sp48;
-    arg_sp1C0 = (f64) arg_sp50;
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), (MKVector3 *) &arg_sp1E8);
-    arg_sp168.GetMeasure(this->unk90.unk14, &this->unk90);
-    arg_sp1D8 = arg_sp168;
-    arg_sp1E0 = arg_sp170;
+    M2C_STRUCT_COPY((s32) &sp20C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp50 = 0.0f;
+    sp48 = 0.0f;
+    sp4C = 1.0f;
+    sp180 = (f64) sp50;
+    sp178 = (f64) sp48;
+    sp1B8 = (f64) sp48;
+    sp1C0 = (f64) sp50;
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_BITWISE(s32, this->unk90.unk20), &sp1E8);
+    sp168.GetMeasure(this->unk90.unk14, &this->unk90);
+    sp1D8 = sp168;
+    sp1E0 = sp170;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp1C8 = arg_sp38;
-    arg_sp40 = (f32) arg_sp1E0 - arg_sp1F0;
-    arg_sp158 = arg_sp38;
-    arg_sp1D0 = (f64) arg_sp40;
-    arg_sp160 = (f64) arg_sp40;
-    var_f0_731 = ((f32) arg_sp1D0 * (f32) arg_sp1D0) + (((f32) arg_sp1C8 * (f32) arg_sp1C8) + (arg_sp1CC * arg_sp1CC));
+    sp1C8 = sp38;
+    sp40 = (f32) sp1E0 - sp1E8.unk8;
+    sp158 = sp38;
+    sp1D0 = (f64) sp40;
+    sp160 = (f64) sp40;
+    var_f0_731 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC));
     if (var_f0_731 > 0.000001f) {
         if (var_f0_731 > 0.0f) {
             temp_f2_737 = __frsqrte(var_f0_731);
@@ -369,18 +478,18 @@ void TeslaTower::DrawLightCone() {
         } else if (var_f0_731 < M2C_BITWISE(f32, 0.0)) {
             var_f0_731 = __float_nan;
         } else {
-            arg_sp10 = var_f0_731;
-            temp_r3_766 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f0_731;
+            temp_r3_766 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_766) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_776 = 1;
                 } else {
                     var_r0_776 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_776 = 5;
                 } else {
                     var_r0_776 = 3;
@@ -399,80 +508,80 @@ void TeslaTower::DrawLightCone() {
         var_f4_798 = 0.0f;
         var_f0_731 = 0.0f;
     }
-    temp_f7_809 = (f32) arg_sp1C8 * var_f4_798;
-    temp_f6_810 = arg_sp1CC * var_f4_798;
-    temp_f5_812 = (f32) arg_sp1D0 * var_f4_798;
-    arg_sp1C8 = temp_f7_809;
-    arg_sp1CC = temp_f6_810;
-    arg_sp28 = (arg_sp1BC * temp_f5_812) - ((f32) arg_sp1C0 * temp_f6_810);
-    arg_sp2C = ((f32) arg_sp1C0 * temp_f7_809) - ((f32) arg_sp1B8 * temp_f5_812);
-    arg_sp30 = ((f32) arg_sp1B8 * temp_f6_810) - (arg_sp1BC * temp_f7_809);
-    arg_sp1D0 = temp_f5_812;
-    arg_sp138 = (f64) arg_sp28;
-    arg_sp140 = (f64) arg_sp30;
-    Normalise(*((MKVector3 *) &arg_sp148));
-    arg_sp1A8 = arg_sp148;
-    arg_sp1B0 = arg_sp150;
-    arg_sp20 = ((f32) arg_sp1C8 * arg_sp1AC) - (arg_sp1CC * (f32) arg_sp1A8);
-    arg_sp1C = ((f32) arg_sp1D0 * (f32) arg_sp1A8) - ((f32) arg_sp1C8 * (f32) arg_sp1B0);
-    arg_sp18 = (arg_sp1CC * (f32) arg_sp1B0) - ((f32) arg_sp1D0 * arg_sp1AC);
-    arg_sp1C0 = (f64) arg_sp20;
-    arg_sp1B8 = (f64) arg_sp18;
-    arg_sp210 = (f32) arg_sp1A8;
-    arg_sp214 = arg_sp1AC;
-    arg_sp218 = (f32) arg_sp1B0;
-    arg_sp21C = 0.0f;
-    arg_sp220 = (f32) arg_sp1B8;
-    arg_sp224 = arg_sp1BC;
-    arg_sp228 = (f32) arg_sp1C0;
-    arg_sp22C = 0.0f;
-    arg_sp230 = (f32) arg_sp1C8;
-    arg_sp234 = arg_sp1CC;
-    arg_sp238 = (f32) arg_sp1D0;
-    arg_sp23C = 0.0f;
-    arg_sp240 = arg_sp1E8;
-    arg_sp244 = arg_sp1EC;
-    arg_sp248 = arg_sp1F0;
-    arg_sp24C = 1.0f;
-    arg_sp128 = (f64) arg_sp18;
-    arg_sp130 = (f64) arg_sp20;
+    temp_f7_809 = (f32) sp1C8 * var_f4_798;
+    temp_f6_810 = unksp1CC * var_f4_798;
+    temp_f5_812 = (f32) sp1D0 * var_f4_798;
+    sp1C8 = temp_f7_809;
+    unksp1CC = temp_f6_810;
+    sp28 = (unksp1BC * temp_f5_812) - ((f32) sp1C0 * temp_f6_810);
+    sp2C = ((f32) sp1C0 * temp_f7_809) - ((f32) sp1B8 * temp_f5_812);
+    sp30 = ((f32) sp1B8 * temp_f6_810) - (unksp1BC * temp_f7_809);
+    sp1D0 = temp_f5_812;
+    sp138 = (f64) sp28;
+    sp140 = (f64) sp30;
+    Normalise(sp148);
+    sp1A8 = M2C_BITWISE(f64, sp148);
+    sp1B0 = (f64) sp148.unk8;
+    sp20 = (sp1C8 * unksp1AC) - (unksp1CC * (f32) sp1A8);
+    sp1C = (sp1D0 * (f32) sp1A8) - (sp1C8 * (f32) sp1B0);
+    sp18 = (unksp1CC * (f32) sp1B0) - (sp1D0 * unksp1AC);
+    sp1C0 = (f64) sp20;
+    sp1B8 = (f64) sp18;
+    sp210 = (f32) sp1A8;
+    sp214 = unksp1AC;
+    sp218 = (f32) sp1B0;
+    sp21C = 0.0f;
+    sp220 = (f32) sp1B8;
+    sp224 = unksp1BC;
+    sp228 = (f32) sp1C0;
+    sp22C = 0.0f;
+    sp230 = sp1C8;
+    sp234 = unksp1CC;
+    sp238 = sp1D0;
+    sp23C = 0.0f;
+    sp240 = M2C_BITWISE(f32, sp1E8);
+    sp244 = sp1E8.unk4;
+    sp248 = sp1E8.unk8;
+    sp24C = 1.0f;
+    sp128 = (f64) sp18;
+    sp130 = (f64) sp20;
     MKMaterial_SetMaterial(M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x74));
     MKPrimitive(0xC, 0x10);
-    MKSetMatrix(*((Matrix *) &arg_sp210));
+    MKSetMatrix(*((Matrix *) &sp210));
     MKBegin(0x10);
     var_r28_895 = 0;
     var_r30_896 = 0;
     do {
-        MKSetColorV(*((MKVector4 *) &arg_sp1F8));
+        MKSetColorV(*((MKVector4 *) &sp1F8));
         MKSetTexCoord1F(0.0f, 0.0f);
-        temp_r29_905 = &arg_sp250 + var_r30_896;
+        temp_r29_905 = &sp250 + var_r30_896;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        arg_sp118 = arg_spB8;
-        arg_spC0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 0.1f;
-        arg_sp120 = (f64) arg_spC0;
-        MKSetPositionV(*((MKVector3 *) &arg_sp118));
-        MKSetColorV(*((MKVector4 *) &arg_sp1F8));
+        sp118 = spB8;
+        spC0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 0.1f;
+        sp120 = (f64) spC0;
+        MKSetPositionV(*((MKVector3 *) &sp118));
+        MKSetColorV(*((MKVector4 *) &sp1F8));
         MKSetTexCoord1F(0.0f, 0.0f);
-        arg_sp90 = 1.25f * var_f0_731;
-        arg_sp88 = 0.0f;
-        arg_sp8C = 0.0f;
-        arg_spE0 = (f64) arg_sp90;
-        arg_spD8 = (f64) arg_sp88;
+        sp90 = 1.25f * var_f0_731;
+        sp88 = 0.0f;
+        sp8C = 0.0f;
+        spE0 = (f64) sp90;
+        spD8 = (f64) sp88;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        arg_spE8 = arg_spA8;
-        arg_spB0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 7.0f;
-        arg_spF0 = (f64) arg_spB0;
+        spE8 = spA8;
+        spB0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 7.0f;
+        spF0 = (f64) spB0;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        arg_spF8 = arg_sp98;
-        arg_spA0 = (f32) arg_spF0 * this->unk90.unk30;
-        arg_sp100 = (f64) arg_spA0;
+        spF8 = sp98;
+        spA0 = (f32) spF0 * this->unk90.unk30;
+        sp100 = (f64) spA0;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp108 = arg_sp78;
-        arg_sp80 = (f32) arg_sp100 + (f32) arg_spE0;
-        arg_sp110 = (f64) arg_sp80;
-        MKSetPositionV(*((MKVector3 *) &arg_sp108));
+        sp108 = sp78;
+        sp80 = (f32) sp100 + (f32) spE0;
+        sp110 = (f64) sp80;
+        MKSetPositionV(*((MKVector3 *) &sp108));
         var_r28_895 += 1;
         var_r30_896 += 0x10;
     } while (var_r28_895 < 8);
@@ -630,36 +739,93 @@ void TeslaTower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s16 temp_r31_1379;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = -arg0->unk0;
-    arg_sp14 = -arg0->unk4;
-    arg_sp18 = -arg0->unk8;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-    arg_sp30.RotateYaw((Matrix *) &arg_sp30, arg0->unk10);
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) arg0));
+
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = -arg0->unk0;
+    sp14 = -arg0->unk4;
+    sp18 = -arg0->unk8;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+    sp30.RotateYaw(&sp30, arg0->unk10);
+    sp30.Translate(&sp30, *((MKVector3 *) arg0));
     temp_r31_1379 = M2C_FIELD(this->unk20, s16 *, 0x70);
-    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_1379, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 4, 0U);
+    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_1379, &sp30, (AnimationMatrixPosition) 4, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
+#if 0 // DRAFT: undefined identifier 'sp90'
 void TeslaTower::LoadDone() {
+    Matrix sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    MKVector3 sp160;
+    MKVector3 sp150;
+    MKVector3 sp140;
+    MKVector3 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    MKVector3 spD0;
+    MKVector3 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA0;
+    f32 sp98;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 temp_f3_1598;
     f32 temp_f3_1635;
     f32 temp_f6_1607;
     f32 temp_f7_1613;
     f32 temp_f8_1641;
     f32 temp_f9_1647;
+    f64 temp_f3_1501;
     s32 var_r28_1502;
     s32 var_r30_1504;
     void *temp_r29_1519;
     void *temp_r3_1429;
     void *temp_r5_1435;
+
     KDProp::LoadDone();
     this->unk90.unk20 = M2C_BITWISE(f32, Tools_GetMatchingRefPointIndex(this->unk4, "zap"));
     temp_r3_1429 = M2C_FIELD(this->unk0, void **, 0x1C);
@@ -669,15 +835,15 @@ void TeslaTower::LoadDone() {
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0xE0) = arg_sp90;
-    arg_sp98 = M2C_FIELD(temp_r5_1435, f32 *, 8) + M2C_FIELD((temp_r5_1435 + 0x10), f32 *, 8);
-    arg_sp170 = arg_sp90;
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) arg_sp98;
+    M2C_FIELD(this, f64 *, 0xE0) = sp90;
+    sp98 = M2C_FIELD(temp_r5_1435, f32 *, 8) + M2C_FIELD((temp_r5_1435 + 0x10), f32 *, 8);
+    sp170 = sp90;
+    M2C_FIELD(this, f64 *, 0xE8) = (f64) sp98;
     M2C_ERROR(/* unknown instruction: ps_madds0 $f24, $f31, $f29, $f24 */);
     M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f29, $f1 */);
     M2C_ERROR(/* unknown instruction: ps_madds1 $f24, $f30, $f3, $f24 */);
     M2C_ERROR(/* unknown instruction: ps_madds1 $f1, $f2, $f3, $f1 */);
-    arg_sp178 = (f64) arg_sp98;
+    sp178 = (f64) sp98;
     M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f3, $f1 */);
     M2C_FIELD(this, f64 *, 0xD8) = (f32) M2C_ERROR(/* unknown instruction: ps_madds0 $f24, $f31, $f3, $f24 */);
     M2C_ERROR(/* unknown instruction: ps_madds0 $f28, $f27, $f25, $f28 */);
@@ -686,94 +852,95 @@ void TeslaTower::LoadDone() {
     M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f1, $f2, $f0 */);
     M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f2, $f0 */);
     this->unkE0.unk8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f28, $f27, $f2, $f28 */);
-    Min(*((MKVector3 *) &arg_sp160), *((MKVector3 *) &this->unkD0));
-    arg_sp190 = arg_sp160;
-    arg_sp198 = arg_sp168;
-    Max(*((MKVector3 *) &arg_sp150), *((MKVector3 *) &this->unkD0));
+    Min(sp160, *((MKVector3 *) &this->unkD0));
+    sp190 = M2C_BITWISE(f64, sp160);
+    sp198 = (f64) sp160.unk8;
+    Max(sp150, *((MKVector3 *) &this->unkD0));
+    temp_f3_1501 = M2C_BITWISE(f64, sp150);
     var_r28_1502 = 0;
     var_r30_1504 = 0;
-    this->unkD0 = arg_sp190;
-    this->unkD8 = arg_sp198;
-    M2C_FIELD(this, f64 *, 0xE0) = arg_sp150;
-    arg_sp180 = arg_sp150;
-    arg_sp188 = arg_sp158;
-    M2C_FIELD(this, f64 *, 0xE8) = arg_sp158;
+    this->unkD0 = sp190;
+    this->unkD8 = sp198;
+    M2C_FIELD(this, f64 *, 0xE0) = temp_f3_1501;
+    sp180 = temp_f3_1501;
+    sp188 = (f64) sp150.unk8;
+    M2C_FIELD(this, f64 *, 0xE8) = (f64) sp150.unk8;
 loop_2:
     if (var_r28_1502 < M2C_BITWISE(s32, this->unk90.unk4)) {
         temp_r29_1519 = M2C_BITWISE(s32, this->unk90.unkC) + var_r30_1504;
-        Min(*((MKVector3 *) &arg_sp140), *((MKVector3 *) &this->unkD0));
-        this->unkD0 = arg_sp140;
-        this->unkD8 = arg_sp148;
-        arg_sp80 = M2C_FIELD(temp_r29_1519, f32 *, 0);
-        arg_sp84 = 800.0f + M2C_FIELD(temp_r29_1519, f32 *, 4);
-        arg_sp88 = M2C_FIELD(temp_r29_1519, f32 *, 8);
-        arg_sp120 = (f64) arg_sp80;
-        arg_sp128 = (f64) arg_sp88;
-        Max(*((MKVector3 *) &arg_sp130), this->unkE0);
+        Min(sp140, *((MKVector3 *) &this->unkD0));
+        this->unkD0 = M2C_BITWISE(f64, sp140);
+        this->unkD8 = (f64) sp140.unk8;
+        sp80 = M2C_FIELD(temp_r29_1519, f32 *, 0);
+        sp84 = 800.0f + M2C_FIELD(temp_r29_1519, f32 *, 4);
+        sp88 = M2C_FIELD(temp_r29_1519, f32 *, 8);
+        sp120 = (f64) sp80;
+        sp128 = (f64) sp88;
+        Max(sp130, this->unkE0);
         var_r28_1502 += 1;
         var_r30_1504 += 0x20;
-        M2C_FIELD(this, f64 *, 0xE0) = arg_sp130;
-        M2C_FIELD(this, f64 *, 0xE8) = arg_sp138;
+        M2C_FIELD(this, f64 *, 0xE0) = M2C_BITWISE(f64, sp130);
+        M2C_FIELD(this, f64 *, 0xE8) = (f64) sp130.unk8;
         goto loop_2;
     }
-    arg_sp70 = 400.0f;
-    arg_sp74 = 400.0f;
-    arg_sp78 = 400.0f;
-    arg_sp110 = (f64) arg_sp70;
-    arg_sp118 = (f64) arg_sp78;
+    sp70 = 400.0f;
+    sp74 = 400.0f;
+    sp78 = 400.0f;
+    sp110 = (f64) sp70;
+    sp118 = (f64) sp78;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    arg_sp68 = 400.0f;
-    arg_sp60 = 400.0f;
-    arg_sp64 = 400.0f;
-    M2C_FIELD(this, f64 *, 0xD8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xD8) - (f32) arg_sp118);
-    arg_sp100 = (f64) arg_sp60;
-    arg_sp108 = (f64) arg_sp68;
+    sp68 = 400.0f;
+    sp60 = 400.0f;
+    sp64 = 400.0f;
+    M2C_FIELD(this, f64 *, 0xD8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xD8) - (f32) sp118);
+    sp100 = (f64) sp60;
+    sp108 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unkE0.unk8 += (f32) arg_sp108;
-    M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-    arg_sp1A0.Inverse((Matrix *) &arg_sp1A0);
+    this->unkE0.unk8 += (f32) sp108;
+    M2C_STRUCT_COPY((s32) &unksp19C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    sp1A0.Inverse(&sp1A0);
     temp_f3_1598 = M2C_FIELD(this, f32 *, 0xD4);
     temp_f6_1607 = (f32) M2C_FIELD(this, f64 *, 0xD0);
     temp_f7_1613 = (f32) M2C_FIELD(this, f64 *, 0xD8);
-    arg_sp50 = arg_sp1D0 + ((temp_f7_1613 * arg_sp1C0) + ((temp_f6_1607 * arg_sp1A0) + (temp_f3_1598 * arg_sp1B0)));
-    arg_sp54 = arg_sp1D4 + ((temp_f7_1613 * arg_sp1C4) + ((temp_f6_1607 * arg_sp1A4) + (temp_f3_1598 * arg_sp1B4)));
-    arg_sp58 = arg_sp1D8 + ((temp_f7_1613 * arg_sp1C8) + ((temp_f6_1607 * arg_sp1A8) + (temp_f3_1598 * arg_sp1B8)));
-    this->unkD0 = (f64) arg_sp50;
-    this->unkD8 = (f64) arg_sp58;
+    sp50 = sp1A0.unk30 + ((temp_f7_1613 * sp1A0.unk20) + ((temp_f6_1607 * M2C_BITWISE(f32, sp1A0)) + (temp_f3_1598 * sp1A0.unk10)));
+    sp54 = sp1A0.unk34 + ((temp_f7_1613 * sp1A0.unk24) + ((temp_f6_1607 * sp1A0.unk4) + (temp_f3_1598 * sp1A0.unk14)));
+    sp58 = sp1A0.unk38 + ((temp_f7_1613 * sp1A0.unk28) + ((temp_f6_1607 * sp1A0.unk8) + (temp_f3_1598 * sp1A0.unk18)));
+    this->unkD0 = (f64) sp50;
+    this->unkD8 = (f64) sp58;
     temp_f3_1635 = this->unkE0.unk4;
     temp_f8_1641 = this->unkE0.unk0;
     temp_f9_1647 = this->unkE0.unk8;
-    arg_spF0 = (f64) arg_sp50;
-    arg_sp40 = arg_sp1D0 + ((temp_f9_1647 * arg_sp1C0) + ((temp_f8_1641 * arg_sp1A0) + (temp_f3_1635 * arg_sp1B0)));
-    arg_sp44 = arg_sp1D4 + ((temp_f9_1647 * arg_sp1C4) + ((temp_f8_1641 * arg_sp1A4) + (temp_f3_1635 * arg_sp1B4)));
-    arg_sp48 = arg_sp1D8 + ((temp_f9_1647 * arg_sp1C8) + ((temp_f8_1641 * arg_sp1A8) + (temp_f3_1635 * arg_sp1B8)));
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) arg_sp40;
-    arg_spF8 = (f64) arg_sp58;
-    arg_spE0 = (f64) arg_sp40;
-    arg_spE8 = (f64) arg_sp48;
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) arg_sp48;
-    Min(*((MKVector3 *) &arg_spD0), *((MKVector3 *) &this->unkD0));
-    arg_sp20 = arg_spD0;
-    arg_sp28 = arg_spD8;
-    Max(*((MKVector3 *) &arg_spC0), *((MKVector3 *) &this->unkD0));
-    arg_sp10 = arg_spC0;
-    this->unkD0 = arg_sp20;
-    arg_sp18 = arg_spC8;
-    this->unkD8 = arg_sp28;
+    spF0 = (f64) sp50;
+    sp40 = sp1A0.unk30 + ((temp_f9_1647 * sp1A0.unk20) + ((temp_f8_1641 * M2C_BITWISE(f32, sp1A0)) + (temp_f3_1635 * sp1A0.unk10)));
+    sp44 = sp1A0.unk34 + ((temp_f9_1647 * sp1A0.unk24) + ((temp_f8_1641 * sp1A0.unk4) + (temp_f3_1635 * sp1A0.unk14)));
+    sp48 = sp1A0.unk38 + ((temp_f9_1647 * sp1A0.unk28) + ((temp_f8_1641 * sp1A0.unk8) + (temp_f3_1635 * sp1A0.unk18)));
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) sp40;
+    spF8 = (f64) sp58;
+    spE0 = (f64) sp40;
+    spE8 = (f64) sp48;
+    M2C_FIELD(this, f64 *, 0xE8) = (f64) sp48;
+    Min(spD0, *((MKVector3 *) &this->unkD0));
+    sp20 = M2C_BITWISE(f64, spD0);
+    sp28 = (f64) spD0.unk8;
+    Max(spC0, *((MKVector3 *) &this->unkD0));
+    sp10 = M2C_BITWISE(f64, spC0);
+    this->unkD0 = sp20;
+    sp18 = (f64) spC0.unk8;
+    this->unkD8 = sp28;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0xE0) = arg_sp30;
-    arg_spB0 = arg_sp30;
-    arg_sp38 = (f32) arg_sp18 - (f32) arg_sp28;
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) arg_sp38;
-    arg_spB8 = (f64) arg_sp38;
+    M2C_FIELD(this, f64 *, 0xE0) = sp30;
+    spB0 = sp30;
+    sp38 = (f32) sp18 - (f32) sp28;
+    M2C_FIELD(this, f64 *, 0xE8) = (f64) sp38;
+    spB8 = (f64) sp38;
     this->unk90.unk1C = M2C_BITWISE(f32, Tools_GetMatchingNodeIndex(this->unk4, "orbit"));
-    arg_spA0.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-    this->unk1B8 = arg_spA0;
-    this->unk1C0 = arg_spA8;
+    spA0.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    this->unk1B8 = spA0;
+    this->unk1C0 = spA8;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, M2C_BITWISE(s32, this->unk90.unk1C)), (void (*)(MKDynamicBone *, void *)) &TeslaTower::UpdateTurretBone, &this->unk1B8);
     this->unk1C8 = 0.0f;
 }

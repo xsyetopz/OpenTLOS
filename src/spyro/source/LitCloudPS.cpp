@@ -388,8 +388,97 @@ void LitCloudPS::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp108'
+#if 0 // DRAFT: undefined identifier 'unksp274'
 void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;
+    f64 sp360;
+    f64 sp358;
+    f64 sp350;
+    Matrix sp310;
+    Matrix sp2D0;
+    Matrix sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    MKVector3 sp240;
+    MKVector3 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    MKVector3 sp200;
+    MKVector3 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    MKVector3 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    MKVector3 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    MKVector3 sp180;
+    f64 sp178;
+    f64 sp170;
+    MKVector3 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spFC;
+    f32 spF8;
+    f32 spF4;
+    f32 spF0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    f64 spB8;
+    f64 spB0;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 var_f0_924;
     f32 var_f0_942;
     f32 var_f0_964;
@@ -399,201 +488,205 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f32 var_f1_956;
     f32 var_f1_973;
     f32 var_f3_1003;
-    arg_sp108 = 0.0f;
-    arg_sp100 = 1.0f;
-    arg_sp104 = 0.0f;
-    arg_sp278 = (f64) arg_sp108;
-    arg_sp270 = (f64) arg_sp100;
-    arg_sp118 = 0.0f;
-    arg_sp48 = -(f32) arg_sp278;
-    arg_sp110 = 0.0f;
-    arg_sp114 = 1.0f;
-    arg_sp40 = -(f32) arg_sp270;
-    arg_sp44 = -arg_sp274;
-    arg_sp280 = (f64) arg_sp110;
-    arg_sp288 = (f64) arg_sp118;
-    arg_sp220 = (f64) arg_sp40;
-    arg_sp228 = (f64) arg_sp48;
-    arg_sp230.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    arg_sp240.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+
+    sp108 = 0.0f;
+    sp100 = 1.0f;
+    sp104 = 0.0f;
+    sp278 = (f64) sp108;
+    sp270 = (f64) sp100;
+    sp118 = 0.0f;
+    sp48 = -(f32) sp278;
+    sp110 = 0.0f;
+    sp114 = 1.0f;
+    sp40 = -(f32) sp270;
+    sp44 = -unksp274;
+    sp280 = (f64) sp110;
+    sp288 = (f64) sp118;
+    sp220 = (f64) sp40;
+    sp228 = (f64) sp48;
+    sp230.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp240.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp350 = arg_spA0;
-    arg_spA8 = arg_sp248 + arg_sp238;
-    arg_sp250 = arg_spA0;
-    arg_sp358 = (f64) arg_spA8;
-    arg_sp258 = (f64) arg_spA8;
-    arg_sp1F0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    arg_sp200.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp350 = spA0;
+    spA8 = sp240.unk8 + sp230.unk8;
+    sp250 = spA0;
+    sp358 = (f64) spA8;
+    sp258 = (f64) spA8;
+    sp1F0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp200.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp38 = -(f32) arg_sp278;
-    arg_sp98 = arg_sp208 + arg_sp1F8;
-    arg_sp30 = -(f32) arg_sp270;
-    arg_sp34 = -arg_sp274;
-    arg_sp360 = arg_sp90;
-    arg_sp368 = (f64) arg_sp98;
-    arg_sp1A0 = (f64) arg_sp30;
-    arg_sp1A8 = (f64) arg_sp38;
-    arg_sp210 = arg_sp90;
-    arg_sp218 = (f64) arg_sp98;
-    arg_sp1B0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    arg_sp20 = -(f32) arg_sp280;
-    arg_sp24 = -arg_sp284;
-    arg_sp28 = -(f32) arg_sp288;
-    arg_sp1C0 = (f64) arg_sp20;
-    arg_sp1C8 = (f64) arg_sp28;
-    arg_sp1D0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp38 = -(f32) sp278;
+    sp98 = sp200.unk8 + sp1F0.unk8;
+    sp30 = -(f32) sp270;
+    sp34 = -unksp274;
+    sp360 = sp90;
+    sp368 = (f64) sp98;
+    sp1A0 = (f64) sp30;
+    sp1A8 = (f64) sp38;
+    sp210 = sp90;
+    sp218 = (f64) sp98;
+    sp1B0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp20 = -(f32) sp280;
+    sp24 = -unksp284;
+    sp28 = -(f32) sp288;
+    sp1C0 = (f64) sp20;
+    sp1C8 = (f64) sp28;
+    sp1D0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp370 = arg_sp80;
-    arg_sp88 = arg_sp1D8 + arg_sp1B8;
-    arg_sp1E0 = arg_sp80;
-    arg_sp378 = (f64) arg_sp88;
-    arg_sp1E8 = (f64) arg_sp88;
-    arg_sp160.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    arg_sp10 = -(f32) arg_sp280;
-    arg_sp14 = -arg_sp284;
-    arg_sp18 = -(f32) arg_sp288;
-    arg_sp170 = (f64) arg_sp10;
-    arg_sp178 = (f64) arg_sp18;
-    arg_sp180.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp370 = sp80;
+    sp88 = sp1D0.unk8 + sp1B0.unk8;
+    sp1E0 = sp80;
+    sp378 = (f64) sp88;
+    sp1E8 = (f64) sp88;
+    sp160.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp10 = -(f32) sp280;
+    sp14 = -unksp284;
+    sp18 = -(f32) sp288;
+    sp170 = (f64) sp10;
+    sp178 = (f64) sp18;
+    sp180.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp190 = arg_sp70;
-    arg_sp78 = arg_sp188 + arg_sp168;
-    arg_sp380 = arg_sp70;
-    arg_sp198 = (f64) arg_sp78;
-    arg_sp388 = (f64) arg_sp78;
-    M2C_STRUCT_COPY((s32) &arg_sp30C + 4, (s32) (arg2 - 4) + 4, 0x40);
-    arg_sp2D0.SetIdentity();
-    arg_sp2D0.RotateRoll((Matrix *) &arg_sp2D0, M2C_FIELD(arg1, f32 *, 0x30));
-    arg_sp310.Multiply3x3((Matrix *) &arg_sp2D0, (Matrix *) &arg_sp310);
-    arg_sp340 = M2C_FIELD(arg1, f32 *, 0);
-    arg_sp344 = M2C_FIELD(arg1, f32 *, 4);
-    arg_sp348 = M2C_FIELD(arg1, f32 *, 8);
-    arg_sp34C = 1.0f;
-    MKSetMatrix(*((Matrix *) &arg_sp290));
-    MKSetMatrix(*((Matrix *) &arg_sp310));
-    arg_spC0 = 1.0f;
-    arg_spC4 = 1.0f;
-    arg_spC8 = 1.0f;
-    arg_spCC = 1.0f;
-    arg_sp120 = (f64) arg_spC0;
-    arg_sp128 = (f64) arg_spC8;
+    sp190 = sp70;
+    sp78 = sp180.unk8 + sp160.unk8;
+    sp380 = sp70;
+    sp198 = (f64) sp78;
+    sp388 = (f64) sp78;
+    M2C_STRUCT_COPY((s32) &sp2D0.unk3C + 4, (s32) (arg2 - 4) + 4, 0x40);
+    sp2D0.SetIdentity();
+    sp2D0.RotateRoll(&sp2D0, M2C_FIELD(arg1, f32 *, 0x30));
+    sp310.Multiply3x3(&sp2D0, &sp310);
+    sp310.unk30 = M2C_FIELD(arg1, f32 *, 0);
+    sp310.unk34 = M2C_FIELD(arg1, f32 *, 4);
+    sp310.unk38 = M2C_FIELD(arg1, f32 *, 8);
+    sp310.unk3C = 1.0f;
+    MKSetMatrix(sp290);
+    MKSetMatrix(sp310);
+    spC0 = 1.0f;
+    spC4 = 1.0f;
+    spC8 = 1.0f;
+    spCC = 1.0f;
+    sp120 = (f64) spC0;
+    sp128 = (f64) spC8;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp130 = arg_spE0;
-    arg_sp138 = arg_spE8;
+    sp130 = spE0;
+    sp138 = spE8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp140 = arg_spD0;
-    var_f1_908 = (f32) arg_sp140;
-    arg_spF0 = 0.0f;
-    arg_spF4 = 0.0f;
-    arg_spF8 = 0.0f;
-    arg_spFC = 0.0f;
-    arg_sp148 = arg_spD8;
-    arg_sp150 = (f64) arg_spF0;
-    arg_sp158 = (f64) arg_spF8;
-    if (var_f1_908 < (f32) arg_sp120) {
+    sp140 = spD0;
+    var_f1_908 = (f32) sp140;
+    spF0 = 0.0f;
+    spF4 = 0.0f;
+    spF8 = 0.0f;
+    spFC = 0.0f;
+    sp148 = spD8;
+    sp150 = (f64) spF0;
+    sp158 = (f64) spF8;
+    if (var_f1_908 < (f32) sp120) {
 
     } else {
-        var_f1_908 = (f32) arg_sp120;
+        var_f1_908 = (f32) sp120;
     }
-    var_f0_924 = arg_sp144;
-    arg_sp60 = var_f1_908;
-    if (var_f0_924 < arg_sp124) {
+    var_f0_924 = unksp144;
+    sp60 = var_f1_908;
+    if (var_f0_924 < unksp124) {
 
     } else {
-        var_f0_924 = arg_sp124;
+        var_f0_924 = unksp124;
     }
-    var_f1_933 = (f32) arg_sp148;
-    arg_sp64 = var_f0_924;
-    if (var_f1_933 < (f32) arg_sp128) {
+    var_f1_933 = (f32) sp148;
+    sp64 = var_f0_924;
+    if (var_f1_933 < (f32) sp128) {
 
     } else {
-        var_f1_933 = (f32) arg_sp128;
+        var_f1_933 = (f32) sp128;
     }
-    var_f0_942 = arg_sp14C;
-    arg_sp68 = var_f1_933;
-    if (var_f0_942 < arg_sp12C) {
+    var_f0_942 = unksp14C;
+    sp68 = var_f1_933;
+    if (var_f0_942 < unksp12C) {
 
     } else {
-        var_f0_942 = arg_sp12C;
+        var_f0_942 = unksp12C;
     }
-    arg_sp6C = var_f0_942;
-    arg_spB0 = (f64) arg_sp60;
-    var_f1_956 = (f32) arg_spB0;
-    arg_spB8 = (f64) arg_sp68;
-    if (var_f1_956 > (f32) arg_sp150) {
+    sp6C = var_f0_942;
+    spB0 = (f64) sp60;
+    var_f1_956 = (f32) spB0;
+    spB8 = (f64) sp68;
+    if (var_f1_956 > (f32) sp150) {
 
     } else {
-        var_f1_956 = (f32) arg_sp150;
+        var_f1_956 = (f32) sp150;
     }
-    var_f0_964 = arg_spB4;
-    arg_sp50 = var_f1_956;
-    if (var_f0_964 > arg_sp154) {
+    var_f0_964 = unkspB4;
+    sp50 = var_f1_956;
+    if (var_f0_964 > unksp154) {
 
     } else {
-        var_f0_964 = arg_sp154;
+        var_f0_964 = unksp154;
     }
-    var_f1_973 = (f32) arg_spB8;
-    arg_sp54 = var_f0_964;
-    if (var_f1_973 > (f32) arg_sp158) {
+    var_f1_973 = (f32) spB8;
+    sp54 = var_f0_964;
+    if (var_f1_973 > (f32) sp158) {
 
     } else {
-        var_f1_973 = (f32) arg_sp158;
+        var_f1_973 = (f32) sp158;
     }
-    var_f0_982 = arg_spBC;
-    arg_sp58 = var_f1_973;
-    if (var_f0_982 > arg_sp15C) {
+    var_f0_982 = unkspBC;
+    sp58 = var_f1_973;
+    if (var_f0_982 > unksp15C) {
 
     } else {
-        var_f0_982 = arg_sp15C;
+        var_f0_982 = unksp15C;
     }
-    arg_sp5C = var_f0_982;
-    arg_sp260 = (f64) arg_sp50;
-    arg_sp268 = (f64) arg_sp58;
+    sp5C = var_f0_982;
+    sp260 = (f64) sp50;
+    sp268 = (f64) sp58;
     var_f3_1003 = (M2C_FIELD(arg1, f32 *, 0x48) / M2C_FIELD(arg1, f32 *, 0x4C)) - 0.5f;
     if (var_f3_1003 < 0.0f) {
         var_f3_1003 = -var_f3_1003;
     }
-    arg_sp26C *= -((2.0f * var_f3_1003) - 1.0f);
+    unksp26C *= -((2.0f * var_f3_1003) - 1.0f);
     MKBegin(4);
-    MKSetColorV(*((MKVector4 *) &arg_sp260));
+    MKSetColorV(*((MKVector4 *) &sp260));
     MKSetTexCoord1F(0.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp350));
-    MKSetColorV(*((MKVector4 *) &arg_sp260));
+    MKSetPositionV(*((MKVector3 *) &sp350));
+    MKSetColorV(*((MKVector4 *) &sp260));
     MKSetTexCoord1F(1.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp360));
-    MKSetColorV(*((MKVector4 *) &arg_sp260));
+    MKSetPositionV(*((MKVector3 *) &sp360));
+    MKSetColorV(*((MKVector4 *) &sp260));
     MKSetTexCoord1F(0.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp370));
-    MKSetColorV(*((MKVector4 *) &arg_sp260));
+    MKSetPositionV(*((MKVector3 *) &sp370));
+    MKSetColorV(*((MKVector4 *) &sp260));
     MKSetTexCoord1F(1.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp380));
+    MKSetPositionV(*((MKVector3 *) &sp380));
     MKEnd();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'LitParticleCompare'
 void LitCloudPS::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 var_r30_1086;
     s32 var_r31_1087;
+
     qsort(this->unk80, this->unk74, 4, LitParticleCompare);
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     MKMaterial_SetMaterial(this->unk84);
     MKPrimitive(0xC, 0);
     var_r30_1086 = 0;
     var_r31_1087 = 0;
 loop_2:
     if (var_r30_1086 < (s32) this->unk74) {
-        DrawCloudlet(*(this->unk80 + var_r31_1087), (Matrix *) &arg_sp10);
+        DrawCloudlet(*(this->unk80 + var_r31_1087), &sp10);
         var_r30_1086 += 1;
         var_r31_1087 += 4;
         goto loop_2;

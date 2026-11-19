@@ -185,17 +185,21 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: illegal type
 void PlatformObject::UpdateRotationMatrix() {
+    Matrix sp50;
+    Matrix sp10;
+    M2C_UNK spC;
+
     if ((u8) this->unk0->unk11 != 0) {
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (this->unk40->unk8 - 4) + 4, 0x40);
-        arg_sp10.SetRotationPitch(this->unk8);
-        arg_sp50.SetRotationRoll(this->unk10);
-        arg_sp10.Multiply3x3((Matrix *) &arg_sp10, (Matrix *) &arg_sp50);
-        arg_sp50.SetRotationYaw(this->unkC);
-        arg_sp10.Multiply3x3((Matrix *) &arg_sp10, (Matrix *) &arg_sp50);
-        arg_sp10.Scale3x3((Matrix *) &arg_sp10, this->unk18);
-        MKModel_SetWorldMatrix(this->unk40->unk4, *((Matrix *) &arg_sp10));
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (this->unk40->unk8 - 4) + 4, 0x40);
+        sp10.SetRotationPitch(this->unk8);
+        sp50.SetRotationRoll(this->unk10);
+        sp10.Multiply3x3(&sp10, &sp50);
+        sp50.SetRotationYaw(this->unkC);
+        sp10.Multiply3x3(&sp10, &sp50);
+        sp10.Scale3x3(&sp10, this->unk18);
+        MKModel_SetWorldMatrix(this->unk40->unk4, sp10);
     }
 }
 #endif
@@ -314,6 +318,16 @@ void PlatformObject::EndUpdate() {
 
 #if 0 // DRAFT: pointer/array required
 void PlatformObject::BeginUpdate() {
+    Matrix sp40;
+    M2C_UNK sp3C;
+    void *sp38;
+    s32 sp34;
+    s32 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap *temp_r3_581;
     Platform *temp_r3_635;
     PlatformAttachment *var_r27_626;
@@ -333,6 +347,7 @@ void PlatformObject::BeginUpdate() {
     void *temp_r3_681;
     void *temp_r3_703;
     void *var_r3_589;
+
     temp_r0_576 = this->unk38;
     if (temp_r0_576 != 0) {
         temp_r3_579 = temp_r0_576 * 0x10;
@@ -344,8 +359,8 @@ void PlatformObject::BeginUpdate() {
             var_r3_589 = malloc(temp_r29_580);
         }
         this->unk3C = var_r3_589;
-        arg_sp40.Inverse(MKModel_GetWorldMatrix(this->unk40->unk4));
-        M2C_STRUCT_COPY((s32) (this->unk3C - 4) + 4, (s32) &arg_sp3C + 4, 0x40);
+        sp40.Inverse(MKModel_GetWorldMatrix(this->unk40->unk4));
+        M2C_STRUCT_COPY((s32) (this->unk3C - 4) + 4, (s32) &sp3C + 4, 0x40);
         temp_r3_613 = this->unk3C;
         var_r28_616 = 0;
         var_r30_618 = 0;
@@ -358,25 +373,25 @@ void PlatformObject::BeginUpdate() {
         var_r27_626 = this->unk28.unk8;
 loop_6:
         if (var_r27_626 != &this->unk28) {
-            arg_sp34 = 0;
-            arg_sp30 = 0x5B;
-            arg_sp38 = NULL;
+            sp34 = 0;
+            sp30 = 0x5B;
+            sp38 = NULL;
             temp_r3_635 = var_r27_626->unk0;
-            temp_r3_635->Message(&arg_sp30);
+            temp_r3_635->Message(&sp30);
             temp_r0_641 = var_r30_618 + 0x60;
-            temp_f3_643 = M2C_FIELD(arg_sp38, f32 *, 4);
+            temp_f3_643 = M2C_FIELD(sp38, f32 *, 4);
             temp_r3_645 = this->unk3C + temp_r0_641;
-            temp_f6_649 = M2C_FIELD(arg_sp38, f32 *, 0);
-            temp_f7_658 = M2C_FIELD(arg_sp38, f32 *, 8);
-            arg_sp10 = arg_sp70 + ((temp_f7_658 * arg_sp60) + ((temp_f6_649 * arg_sp40) + (temp_f3_643 * arg_sp50)));
-            arg_sp14 = arg_sp74 + ((temp_f7_658 * arg_sp64) + ((temp_f6_649 * arg_sp44) + (temp_f3_643 * arg_sp54)));
-            arg_sp18 = arg_sp78 + ((temp_f7_658 * arg_sp68) + ((temp_f6_649 * arg_sp48) + (temp_f3_643 * arg_sp58)));
-            M2C_FIELD(temp_r3_645, f64 *, 0) = (f64) arg_sp10;
-            M2C_FIELD(temp_r3_645, f64 *, 8) = (f64) arg_sp18;
+            temp_f6_649 = M2C_FIELD(sp38, f32 *, 0);
+            temp_f7_658 = M2C_FIELD(sp38, f32 *, 8);
+            sp10 = sp40.unk30 + ((temp_f7_658 * sp40.unk20) + ((temp_f6_649 * M2C_BITWISE(f32, sp40)) + (temp_f3_643 * sp40.unk10)));
+            sp14 = sp40.unk34 + ((temp_f7_658 * sp40.unk24) + ((temp_f6_649 * sp40.unk4) + (temp_f3_643 * sp40.unk14)));
+            sp18 = sp40.unk38 + ((temp_f7_658 * sp40.unk28) + ((temp_f6_649 * sp40.unk8) + (temp_f3_643 * sp40.unk18)));
+            M2C_FIELD(temp_r3_645, f64 *, 0) = (f64) sp10;
+            M2C_FIELD(temp_r3_645, f64 *, 8) = (f64) sp18;
             temp_r3_678 = this->unk3C;
-            arg_sp20 = (f64) arg_sp10;
+            sp20 = (f64) sp10;
             temp_r3_681 = temp_r3_678 + 0x50;
-            arg_sp28 = (f64) arg_sp18;
+            sp28 = (f64) sp18;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -398,28 +413,32 @@ loop_6:
 
 #if 0 // DRAFT: undefined identifier 'PlatformMoveMsg'
 void PlatformObject::Message(MKMessage *arg0) {
+    Matrix sp20;
+    f32 sp1C;
+    f64 sp10;
     s32 temp_r0_738;
     void *temp_r31_754;
     void *temp_r3_775;
     void *temp_r3_800;
     void *temp_r3_809;
+
     temp_r0_738 = arg0->unk0;
     switch (temp_r0_738) {                          /* irregular */
     case 34:
         BeginUpdate();
         temp_r31_754 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
-        M2C_STRUCT_COPY((s32) &arg_sp1C + 4, MKModel_GetWorldMatrix(this->unk40->unk4) - 4 + 4, 0x40);
-        arg_sp20.Multiply3x3((Matrix *) &arg_sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x10));
-        arg_sp20.Multiply3x3((Matrix *) &arg_sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x14));
+        M2C_STRUCT_COPY((s32) &sp1C + 4, MKModel_GetWorldMatrix(this->unk40->unk4) - 4 + 4, 0x40);
+        sp20.Multiply3x3(&sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x10));
+        sp20.Multiply3x3(&sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x14));
         temp_r3_775 = M2C_FIELD(temp_r31_754, void **, 8);
-        arg_sp50 = M2C_FIELD(temp_r3_775, f32 *, 0);
-        arg_sp54 = M2C_FIELD(temp_r3_775, f32 *, 4);
-        arg_sp58 = M2C_FIELD(temp_r3_775, f32 *, 8);
-        arg_sp5C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk40->unk4, *((Matrix *) &arg_sp20));
-        arg_sp10.GetRotationPYR();
-        M2C_FIELD(this, f64 *, 8) = arg_sp10;
-        M2C_FIELD(this, f64 *, 0x10) = arg_sp18;
+        sp20.unk30 = M2C_FIELD(temp_r3_775, f32 *, 0);
+        sp20.unk34 = M2C_FIELD(temp_r3_775, f32 *, 4);
+        sp20.unk38 = M2C_FIELD(temp_r3_775, f32 *, 8);
+        sp20.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk40->unk4, sp20);
+        sp10.GetRotationPYR();
+        M2C_FIELD(this, f64 *, 8) = sp10;
+        M2C_FIELD(this, f64 *, 0x10) = sp18;
         EndUpdate();
         return;
     case 35:

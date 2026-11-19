@@ -44,69 +44,110 @@ void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVe
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp9C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
+    f32 sp11C;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp10C;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spFC;
+    f32 spF8;
+    f32 spF4;
+    f32 spF0;
+    f32 spEC;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    Matrix spA0;
+    MKVector3 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f29_271;
     f32 temp_f30_291;
     f32 temp_f5_159;
     f32 temp_f6_158;
+    f32 temp_f6_186;
     f32 temp_f7_155;
     f32 var_f29_240;
     f32 var_f29_312;
     s32 var_r31_248;
     s32 var_r31_317;
-    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&arg4 - 4) + 4, 0x40);
-    arg_sp48 = 0.0f;
+
+    M2C_STRUCT_COPY((s32) &sp90.unkC + 4, (s32) (&arg4 - 4) + 4, 0x40);
+    sp48 = 0.0f;
     temp_f7_155 = arg1.unk0;
-    arg_sp40 = 13.67f;
+    sp40 = 13.67f;
     temp_f6_158 = arg1.unk4;
     temp_f5_159 = arg1.unk8;
-    arg_sp44 = 3.72f;
-    arg_sp78 = (f64) arg_sp48;
-    arg_sp70 = (f64) arg_sp40;
-    arg_spF0 = temp_f7_155;
-    arg_spF4 = temp_f6_158;
-    arg_spF8 = temp_f5_159;
-    arg_sp38 = ((f32) arg_sp70 * temp_f6_158) - (arg_sp74 * temp_f7_155);
-    arg_sp30 = (arg_sp74 * temp_f5_159) - ((f32) arg_sp78 * temp_f6_158);
-    arg_sp34 = ((f32) arg_sp78 * temp_f7_155) - ((f32) arg_sp70 * temp_f5_159);
-    arg_spFC = 0.0f;
-    arg_sp80 = (f64) arg_sp30;
-    arg_sp88 = (f64) arg_sp38;
-    Normalise(*((MKVector3 *) &arg_sp90));
-    arg_sp100 = arg_sp90;
-    arg_sp104 = arg_sp94;
-    arg_sp28 = (arg_spF0 * arg_sp94) - (arg_spF4 * arg_sp90);
-    arg_sp20 = (arg_spF4 * arg_sp98) - (arg_spF8 * arg_sp94);
-    arg_sp24 = (arg_spF8 * arg_sp90) - (arg_spF0 * arg_sp98);
-    arg_sp108 = arg_sp98;
-    arg_sp10C = 0.0f;
-    arg_sp50 = (f64) arg_sp20;
-    arg_sp58 = (f64) arg_sp28;
-    Normalise(*((MKVector3 *) &arg_sp60));
-    arg_spEC = 0.0f;
-    arg_sp11C = 1.0f;
-    arg_spE0 = arg_sp60;
-    arg_spE4 = arg_sp64;
-    arg_spE8 = arg_sp68;
-    arg_sp110 = arg0.unk0;
-    arg_sp114 = arg0.unk4;
-    arg_sp118 = arg0.unk8;
-    arg_sp10C = 0.0f;
-    arg_spFC = 0.0f;
-    arg_spEC = 0.0f;
-    arg_sp11C = 1.0f;
-    arg_spA0.Multiply((Matrix *) &arg_spE0, (Matrix *) &arg_spA0);
+    sp44 = 3.72f;
+    sp78 = (f64) sp48;
+    sp70 = (f64) sp40;
+    spF0 = temp_f7_155;
+    spF4 = temp_f6_158;
+    spF8 = temp_f5_159;
+    sp38 = ((f32) sp70 * temp_f6_158) - (unksp74 * temp_f7_155);
+    sp30 = (unksp74 * temp_f5_159) - ((f32) sp78 * temp_f6_158);
+    sp34 = ((f32) sp78 * temp_f7_155) - ((f32) sp70 * temp_f5_159);
+    spFC = 0.0f;
+    sp80 = (f64) sp30;
+    sp88 = (f64) sp38;
+    Normalise(sp90);
+    temp_f6_186 = M2C_BITWISE(f32, sp90);
+    sp100 = temp_f6_186;
+    sp104 = sp90.unk4;
+    sp28 = (spF0 * sp90.unk4) - (spF4 * temp_f6_186);
+    sp20 = (spF4 * sp90.unk8) - (spF8 * sp90.unk4);
+    sp24 = (spF8 * temp_f6_186) - (spF0 * sp90.unk8);
+    sp108 = sp90.unk8;
+    sp10C = 0.0f;
+    sp50 = (f64) sp20;
+    sp58 = (f64) sp28;
+    Normalise(sp60);
+    spEC = 0.0f;
+    sp11C = 1.0f;
+    spE0 = M2C_BITWISE(f32, sp60);
+    spE4 = sp60.unk4;
+    spE8 = sp60.unk8;
+    sp110 = arg0.unk0;
+    sp114 = arg0.unk4;
+    sp118 = arg0.unk8;
+    sp10C = 0.0f;
+    spFC = 0.0f;
+    spEC = 0.0f;
+    sp11C = 1.0f;
+    spA0.Multiply((Matrix *) &spE0, &spA0);
     var_f29_240 = -0.5235988f;
     MKPrimitive(0x109, 3);
-    MKSetMatrix(*((Matrix *) &arg_spA0));
+    MKSetMatrix(spA0);
     MKBegin(0x1E);
     MKSetColorV(arg3);
     var_r31_248 = 0;
     do {
         MKSetPositionF(0.0f, 0.0f, 0.0f);
-        _table_sincosf(var_f29_240, arg_sp1C, arg_sp18);
-        MKSetPositionF(arg_sp1C * arg2, 0.0f, arg_sp18 * arg2);
+        _table_sincosf(var_f29_240, sp1C, sp18);
+        MKSetPositionF(sp1C * arg2, 0.0f, sp18 * arg2);
         var_r31_248 += 1;
         var_f29_240 += 0.5235988f;
     } while (var_r31_248 < 0xC);
@@ -122,14 +163,14 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     MKEnd();
     MKEndPrimitive();
     MKPrimitive(0x10A, 3);
-    MKSetMatrix(*((Matrix *) &arg_spA0));
+    MKSetMatrix(spA0);
     var_f29_312 = 0.0f;
     MKBegin(0xD);
     MKSetColorV(arg3);
     var_r31_317 = 0;
     do {
-        _table_sincosf(var_f29_312, arg_sp14, arg_sp10);
-        MKSetPositionF(arg_sp14 * arg2, 0.0f, arg_sp10 * arg2);
+        _table_sincosf(var_f29_312, sp14, sp10);
+        MKSetPositionF(sp14 * arg2, 0.0f, sp10 * arg2);
         var_r31_317 += 1;
         var_f29_312 += 0.5235988f;
     } while (var_r31_317 < 0xD);
@@ -138,8 +179,59 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spCC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5, const Matrix &arg6, bool arg7) {
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f32 sp178;
+    f32 sp174;
+    f32 sp170;
+    f32 sp16C;
+    f32 sp168;
+    f32 sp14C;
+    f32 sp148;
+    f32 sp144;
+    f32 sp140;
+    f32 sp13C;
+    f32 sp138;
+    f32 sp134;
+    f32 sp130;
+    f32 sp12C;
+    f32 sp128;
+    f32 sp124;
+    f32 sp120;
+    f32 sp11C;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    Matrix spD0;
+    M2C_UNK spCC;
+    f64 spC0;                                       /* compiler-managed */
+    f64 spB8;                                       /* compiler-managed */
+    f64 spB0;
+    f64 spA8;
+    MKVector3 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    MKVector3 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 temp_f0_852;
     f32 temp_f10_539;
     f32 temp_f12_537;
@@ -196,6 +288,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     f32 temp_f30_1143;
     f32 temp_f5_514;
     f32 temp_f6_512;
+    f32 temp_f6_570;
     f32 temp_f7_511;
     f32 temp_f8_535;
     f32 var_f16_625;
@@ -243,15 +336,16 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     s32 var_r29_661;
     s32 var_r29_746;
     s32 var_r29_880;
+
     temp_r26_405 = arg4 + (1 - (arg4 & 1));
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_spB8 = arg_sp48;
-    arg_sp50 = arg1.unk8 - arg0.unk8;
-    arg_spC0 = (f64) arg_sp50;
-    var_f31_435 = ((f32) arg_spC0 * (f32) arg_spC0) + (((f32) arg_spB8 * (f32) arg_spB8) + (arg_spBC * arg_spBC));
+    spB8 = sp48;
+    sp50 = arg1.unk8 - arg0.unk8;
+    spC0 = (f64) sp50;
+    var_f31_435 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (unkspBC * unkspBC));
     if (var_f31_435 > 0.000001f) {
         if (var_f31_435 > 0.0f) {
             temp_f1_441 = __frsqrte(var_f31_435);
@@ -261,18 +355,18 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
         } else if (var_f31_435 < M2C_BITWISE(f32, 0.0)) {
             var_f31_435 = __float_nan;
         } else {
-            arg_sp10 = var_f31_435;
-            temp_r3_470 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f31_435;
+            temp_r3_470 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_470) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_480 = 1;
                 } else {
                     var_r0_480 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_480 = 5;
                 } else {
                     var_r0_480 = 3;
@@ -291,60 +385,61 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
         var_f3_502 = 0.0f;
         var_f31_435 = 0.0f;
     }
-    temp_f7_511 = (f32) arg_spB8 * var_f3_502;
-    temp_f6_512 = arg_spBC * var_f3_502;
-    temp_f5_514 = (f32) arg_spC0 * var_f3_502;
-    arg_spB8 = temp_f7_511;
-    arg_spBC = temp_f6_512;
-    arg_spC0 = temp_f5_514;
+    temp_f7_511 = (f32) spB8 * var_f3_502;
+    temp_f6_512 = unkspBC * var_f3_502;
+    temp_f5_514 = (f32) spC0 * var_f3_502;
+    spB8 = temp_f7_511;
+    unkspBC = temp_f6_512;
+    spC0 = temp_f5_514;
     if (var_f31_435 < 0.1f) {
-        arg_spB0 = (f64) M2C_FIELD(&arg0, f32 *, 8);
-        arg_spA8 = M2C_FIELD(&arg0, f64 *, 0);
-        arg_spB4 = arg2;
-        MKShape_DrawSphere(*((MKVector4 *) &arg_spA8), arg3, temp_r26_405, arg5, arg6, arg7);
+        spB0 = (f64) M2C_FIELD(&arg0, f32 *, 8);
+        spA8 = M2C_FIELD(&arg0, f64 *, 0);
+        unkspB4 = arg2;
+        MKShape_DrawSphere(*((MKVector4 *) &spA8), arg3, temp_r26_405, arg5, arg6, arg7);
         return;
     }
     temp_f8_535 = (f32) temp_f5_514;
     temp_f12_537 = (f32) temp_f6_512;
     temp_f10_539 = (f32) temp_f7_511;
-    arg_sp40 = 0.0f;
-    arg_sp38 = 13.67f;
-    arg_sp3C = 3.72f;
-    arg_sp80 = (f64) arg_sp40;
-    arg_sp78 = (f64) arg_sp38;
-    arg_sp120 = temp_f7_511;
-    arg_sp124 = temp_f6_512;
-    arg_sp128 = temp_f5_514;
-    arg_sp30 = ((f32) arg_sp78 * temp_f12_537) - (arg_sp7C * temp_f10_539);
-    arg_sp28 = (arg_sp7C * temp_f8_535) - ((f32) arg_sp80 * temp_f12_537);
-    arg_sp2C = ((f32) arg_sp80 * temp_f10_539) - ((f32) arg_sp78 * temp_f8_535);
-    arg_sp12C = 0.0f;
-    arg_sp88 = (f64) arg_sp28;
-    arg_sp90 = (f64) arg_sp30;
-    Normalise(*((MKVector3 *) &arg_sp98));
-    arg_sp130 = arg_sp98;
-    arg_sp134 = arg_sp9C;
-    arg_sp20 = (arg_sp120 * arg_sp9C) - (arg_sp124 * arg_sp98);
-    arg_sp18 = (arg_sp124 * arg_spA0) - (arg_sp128 * arg_sp9C);
-    arg_sp1C = (arg_sp128 * arg_sp98) - (arg_sp120 * arg_spA0);
-    arg_sp138 = arg_spA0;
-    arg_sp13C = 0.0f;
-    arg_sp58 = (f64) arg_sp18;
-    arg_sp60 = (f64) arg_sp20;
-    Normalise(*((MKVector3 *) &arg_sp68));
-    arg_sp11C = 0.0f;
-    arg_sp14C = 1.0f;
-    arg_sp110 = arg_sp68;
-    arg_sp114 = arg_sp6C;
-    arg_sp118 = arg_sp70;
-    arg_sp140 = arg0.unk0;
-    arg_sp144 = arg0.unk4;
-    arg_sp148 = arg0.unk8;
-    arg_sp13C = 0.0f;
-    arg_sp12C = 0.0f;
-    arg_sp11C = 0.0f;
-    arg_sp14C = 1.0f;
-    arg_spD0.Multiply((Matrix *) &arg_sp110, (Matrix *) &arg_spD0);
+    sp40 = 0.0f;
+    sp38 = 13.67f;
+    sp3C = 3.72f;
+    sp80 = (f64) sp40;
+    sp78 = (f64) sp38;
+    sp120 = temp_f7_511;
+    sp124 = temp_f6_512;
+    sp128 = temp_f5_514;
+    sp30 = ((f32) sp78 * temp_f12_537) - (unksp7C * temp_f10_539);
+    sp28 = (unksp7C * temp_f8_535) - ((f32) sp80 * temp_f12_537);
+    sp2C = ((f32) sp80 * temp_f10_539) - ((f32) sp78 * temp_f8_535);
+    sp12C = 0.0f;
+    sp88 = (f64) sp28;
+    sp90 = (f64) sp30;
+    Normalise(sp98);
+    temp_f6_570 = M2C_BITWISE(f32, sp98);
+    sp130 = temp_f6_570;
+    sp134 = sp98.unk4;
+    sp20 = (sp120 * sp98.unk4) - (sp124 * temp_f6_570);
+    sp18 = (sp124 * sp98.unk8) - (sp128 * sp98.unk4);
+    sp1C = (sp128 * temp_f6_570) - (sp120 * sp98.unk8);
+    sp138 = sp98.unk8;
+    sp13C = 0.0f;
+    sp58 = (f64) sp18;
+    sp60 = (f64) sp20;
+    Normalise(sp68);
+    sp11C = 0.0f;
+    sp14C = 1.0f;
+    sp110 = M2C_BITWISE(f32, sp68);
+    sp114 = sp68.unk4;
+    sp118 = sp68.unk8;
+    sp140 = arg0.unk0;
+    sp144 = arg0.unk4;
+    sp148 = arg0.unk8;
+    sp13C = 0.0f;
+    sp12C = 0.0f;
+    sp11C = 0.0f;
+    sp14C = 1.0f;
+    spD0.Multiply((Matrix *) &sp110, &spD0);
     var_f16_625 = 0.0f;
     var_f23_628 = var_f31_435;
     var_f17_630 = 0.0f;
@@ -352,7 +447,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     temp_f26_642 = 6.2831855f / (f32) arg3;
     if (arg7 != 0) {
         MKPrimitive(0x10A, 3);
-        MKSetMatrix(*((Matrix *) &arg_spD0));
+        MKSetMatrix(spD0);
         MKBegin((arg3 * (temp_r26_405 + 2)) + 1);
         MKSetColorV(arg5);
         var_r21_658 = 0;
@@ -440,26 +535,26 @@ loop_41:
         }
     } else {
         temp_f0_852 = 2.0f * arg2;
-        arg_sp170 = temp_f0_852;
+        sp170 = temp_f0_852;
         temp_f25_860 = 1.0f / (f32) arg3;
         temp_f24_861 = -(1.0f / (var_f31_435 + (f32) temp_f0_852));
         MKPrimitive(4, 0);
-        MKSetMatrix(*((Matrix *) &arg_spD0));
+        MKSetMatrix(spD0);
         temp_f1_867 = fabs(var_f18_641);
         var_f28_870 = var_f31_435;
-        arg_sp178 = arg2 + var_f31_435;
+        sp178 = arg2 + var_f31_435;
         temp_f19_873 = (f32) temp_f1_867;
         var_f23_874 = 0.0f;
         temp_r30_875 = (arg3 + 1) * 2;
-        arg_sp174 = -arg2;
+        sp174 = -arg2;
         var_f29_879 = temp_f19_873;
         var_r29_880 = 0;
-        arg_sp180 = 5.287201034e-315;
+        sp180 = 5.287201034e-315;
 loop_65:
         if (var_r29_880 <= temp_r26_405) {
-            temp_f15_887 = arg2 * _table_sinf((f32) arg_sp180 + var_f29_879);
+            temp_f15_887 = arg2 * _table_sinf((f32) sp180 + var_f29_879);
             temp_f27_892 = _table_sinf(var_f29_879);
-            temp_f22_896 = arg2 * _table_sinf((f32) arg_sp180 + (var_f29_879 - temp_f19_873));
+            temp_f22_896 = arg2 * _table_sinf((f32) sp180 + (var_f29_879 - temp_f19_873));
             var_f30_897 = 0.0f;
             if (var_r29_880 == 0) {
                 temp_f23_899 = temp_f15_887 + var_f28_870;
@@ -470,7 +565,7 @@ loop_65:
                 temp_f14_914 = -(temp_f27_892 * (arg2 * _table_sinf(1.5707964f)));
                 MKSetPositionF(temp_f27_892 * (arg2 * _table_sinf(0.0f)), temp_f23_899, temp_f14_914);
                 MKSetTexCoord1F(0.0f, -1.0f);
-                MKSetPositionF(0.0f, arg_sp178, 0.0f);
+                MKSetPositionF(0.0f, sp178, 0.0f);
                 var_f30_928 = 0.0f + temp_f26_642;
                 var_r21_932 = 1;
 loop_49:
@@ -480,7 +575,7 @@ loop_49:
                     temp_f14_950 = -(temp_f27_892 * (arg2 * _table_sinf(1.5707964f + var_f30_928)));
                     MKSetPositionF(temp_f27_892 * (arg2 * _table_sinf(var_f30_928)), temp_f23_899, temp_f14_950);
                     MKSetTexCoord1F(temp_f16_942, -1.0f);
-                    MKSetPositionF(temp_f16_942, arg_sp178, 0.0f);
+                    MKSetPositionF(temp_f16_942, sp178, 0.0f);
                     var_f30_928 += temp_f26_642;
                     var_r21_932 += 1;
                     goto loop_49;
@@ -492,7 +587,7 @@ loop_49:
                 MKBegin(temp_r30_875);
                 MKSetColorV(arg5);
                 MKSetTexCoord1F(0.0f, 0.0f);
-                MKSetPositionF(0.0f, arg_sp174, 0.0f);
+                MKSetPositionF(0.0f, sp174, 0.0f);
                 MKSetTexCoord1F(0.0f, temp_f15_977);
                 temp_f14_996 = -(var_f23_874 * (arg2 * _table_sinf(1.5707964f)));
                 MKSetPositionF(var_f23_874 * (arg2 * _table_sinf(0.0f)), temp_f18_974, temp_f14_996);
@@ -502,7 +597,7 @@ loop_54:
                 if (var_r21_1007 < (s32) (arg3 + 1)) {
                     temp_f14_1017 = temp_f25_860 * (f32) var_r21_1007;
                     MKSetTexCoord1F(temp_f14_1017, 0.0f);
-                    MKSetPositionF(0.0f, arg_sp174, 0.0f);
+                    MKSetPositionF(0.0f, sp174, 0.0f);
                     MKSetTexCoord1F(temp_f14_1017, temp_f15_977);
                     temp_f14_1032 = -(var_f23_874 * (arg2 * _table_sinf(1.5707964f + var_f30_1003)));
                     MKSetPositionF(var_f23_874 * (arg2 * _table_sinf(var_f30_1003)), temp_f18_974, temp_f14_1032);
@@ -514,21 +609,21 @@ loop_54:
             } else {
                 temp_f18_1047 = temp_f15_887 + var_f28_870;
                 temp_f17_1049 = temp_f22_896 + var_f28_870;
-                arg_sp16C = temp_f24_861 * (arg2 + temp_f18_1047);
-                arg_sp168 = temp_f24_861 * (arg2 + temp_f17_1049);
+                sp16C = temp_f24_861 * (arg2 + temp_f18_1047);
+                sp168 = temp_f24_861 * (arg2 + temp_f17_1049);
                 MKBegin(temp_r30_875);
                 MKSetColorV(arg5);
                 var_r21_1061 = 0;
-                arg_sp188 = 4503601774854144.0;
-                arg_sp190 = 5.287201034e-315;
+                sp188 = 4503601774854144.0;
+                sp190 = 5.287201034e-315;
 loop_58:
                 if (var_r21_1061 < (s32) (arg3 + 1)) {
                     temp_f14_1075 = temp_f25_860 * (f32) var_r21_1061;
-                    MKSetTexCoord1F(temp_f14_1075, arg_sp16C);
-                    temp_f16_1079 = (f32) arg_sp190 + var_f30_897;
+                    MKSetTexCoord1F(temp_f14_1075, sp16C);
+                    temp_f16_1079 = (f32) sp190 + var_f30_897;
                     temp_f20_1085 = -(temp_f27_892 * (arg2 * _table_sinf(temp_f16_1079)));
                     MKSetPositionF(temp_f27_892 * (arg2 * _table_sinf(var_f30_897)), temp_f18_1047, temp_f20_1085);
-                    MKSetTexCoord1F(temp_f14_1075, arg_sp168);
+                    MKSetTexCoord1F(temp_f14_1075, sp168);
                     temp_f14_1100 = -(var_f23_874 * (arg2 * _table_sinf(temp_f16_1079)));
                     MKSetPositionF(var_f23_874 * (arg2 * _table_sinf(var_f30_897)), temp_f17_1049, temp_f14_1100);
                     var_f30_897 += temp_f26_642;
@@ -544,13 +639,13 @@ loop_58:
                     MKBegin(temp_r30_875);
                     MKSetColorV(arg5);
                     var_r21_1129 = 0;
-                    arg_sp198 = 4503601774854144.0;
-                    arg_sp1A0 = 5.287201034e-315;
+                    sp198 = 4503601774854144.0;
+                    sp1A0 = 5.287201034e-315;
 loop_62:
                     if (var_r21_1129 < (s32) (arg3 + 1)) {
                         temp_f30_1143 = temp_f25_860 * (f32) var_r21_1129;
                         MKSetTexCoord1F(temp_f30_1143, temp_f24_861 * (arg2 + temp_f16_1118));
-                        temp_f18_1147 = (f32) arg_sp1A0 + var_f20_1116;
+                        temp_f18_1147 = (f32) sp1A0 + var_f20_1116;
                         temp_f22_1153 = -(temp_f27_892 * (arg2 * _table_sinf(temp_f18_1147)));
                         MKSetPositionF(temp_f27_892 * (arg2 * _table_sinf(var_f20_1116)), temp_f16_1118, temp_f22_1153);
                         MKSetTexCoord1F(temp_f30_1143, temp_f24_861 * (arg2 + temp_f17_1119));
@@ -570,7 +665,7 @@ loop_62:
         }
         var_r22_1193 = 0;
         var_f18_1195 = 0.0f;
-        temp_r21_1205 = (s32) (var_f31_435 / (arg_sp170 / (f32) temp_r26_405));
+        temp_r21_1205 = (s32) (var_f31_435 / (sp170 / (f32) temp_r26_405));
         temp_f19_1210 = var_f31_435 / (f32) temp_r21_1205;
 loop_71:
         if (var_r22_1193 < temp_r21_1205) {
@@ -600,14 +695,14 @@ loop_69:
         }
         MKEndPrimitive();
     }
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
-    arg_sp110.SetIdentity();
-    arg_sp140 = arg0.unk0;
-    arg_sp144 = arg0.unk4;
-    arg_sp148 = arg0.unk8;
-    arg_sp14C = 1.0f;
-    arg_spD0.Multiply((Matrix *) &arg_sp110, (Matrix *) &arg_spD0);
-    MKSetMatrix(*((Matrix *) &arg_spD0));
+    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
+    sp110.SetIdentity();
+    sp140 = arg0.unk0;
+    sp144 = arg0.unk4;
+    sp148 = arg0.unk8;
+    sp14C = 1.0f;
+    spD0.Multiply((Matrix *) &sp110, &spD0);
+    MKSetMatrix(spD0);
     MKBegin(2);
     MKSetColorF(0.0f, 1.0f, 0.0f, 1.0f);
     temp_f14_1307 = 0.5f * arg2;

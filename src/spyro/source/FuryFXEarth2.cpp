@@ -71,36 +71,45 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp40'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoint *arg1) {
+    Matrix sp40;
+    f64 sp38;                                       /* compiler-managed */
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKVector3 *temp_r31_103;
     f32 temp_f1_124;
     f32 temp_f2_148;
     f32 temp_f31_120;
     f32 temp_f3_146;
+
     temp_r31_103 = M2C_ERROR(/* Read from unset register $r5 */);
-    arg_sp40.SetRotationPYR(*temp_r31_103);
-    arg_sp40.Scale3x3((Matrix *) &arg_sp40, M2C_FIELD(temp_r31_103, f32 *, 0x38));
+    sp40.SetRotationPYR(*temp_r31_103);
+    sp40.Scale3x3(&sp40, M2C_FIELD(temp_r31_103, f32 *, 0x38));
     temp_f31_120 = M2C_FIELD(temp_r31_103, f32 *, 0x30) * -_table_sinf(1.5707964f + M2C_FIELD(temp_r31_103, f32 *, 0x20));
     temp_f1_124 = M2C_FIELD(temp_r31_103, f32 *, 0x30) * _table_sinf(M2C_FIELD(temp_r31_103, f32 *, 0x20));
-    arg_sp18 = temp_f31_120;
-    arg_sp10 = temp_f1_124;
-    arg_sp14 = 0.0f;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp30 = (f64) arg_sp10;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp38 = (f64) arg_sp18;
+    sp18 = temp_f31_120;
+    sp10 = temp_f1_124;
+    sp14 = 0.0f;
+    sp28 = (f64) sp18;
+    sp30 = (f64) sp10;
+    sp20 = (f64) sp10;
+    sp38 = (f64) sp18;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    temp_f3_146 = (f32) arg_sp38 + M2C_FIELD(arg1, f32 *, 0xA8);
-    temp_f2_148 = arg_sp34 + M2C_FIELD(temp_r31_103, f32 *, 0x28);
-    arg_sp38 = temp_f3_146;
-    arg_sp34 = temp_f2_148;
-    arg_sp70 = (f32) arg_sp30;
-    arg_sp74 = temp_f2_148;
-    arg_sp78 = temp_f3_146;
-    arg_sp7C = 1.0f;
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_sp3C + 4, 0x40);
+    temp_f3_146 = (f32) sp38 + M2C_FIELD(arg1, f32 *, 0xA8);
+    temp_f2_148 = unksp34 + M2C_FIELD(temp_r31_103, f32 *, 0x28);
+    sp38 = temp_f3_146;
+    unksp34 = temp_f2_148;
+    sp40.unk30 = (f32) sp30;
+    sp40.unk34 = temp_f2_148;
+    sp40.unk38 = temp_f3_146;
+    sp40.unk3C = 1.0f;
+    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &unksp3C + 4, 0x40);
 }
 #endif
 
@@ -301,9 +310,35 @@ loop_2:
 
 #if 0 // DRAFT: undefined identifier 'unkC0'
 void FuryFXEarth2::SpawnVortexElement() {
+    Matrix spF0;
+    M2C_UNK spEC;
+    M2C_UNK spB0;
+    MKVector3 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    MKVector3 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     M2C_UNK *temp_r31_521;
     M2C_UNK *temp_r3_515;
     M2C_UNK *temp_r3_519;
+
     this->unkC8 -= gUpdateTimeDelta;
     if (!(this->unkC8 > 0.0f)) {
         this->unkC8 = 0.01f;
@@ -313,32 +348,32 @@ void FuryFXEarth2::SpawnVortexElement() {
             this->unkC0 = temp_r3_519;
             temp_r31_521 = *temp_r3_519;
             if (temp_r31_521 != NULL) {
-                arg_sp48 = 0.0f;
-                arg_sp38 = 6.2831855f;
-                arg_sp30 = 6.2831855f;
-                arg_sp34 = 6.2831855f;
-                arg_sp40 = 0.0f;
-                arg_sp44 = 0.0f;
-                arg_sp80 = (f64) arg_sp30;
-                arg_sp88 = (f64) arg_sp38;
-                arg_sp90 = (f64) arg_sp40;
-                arg_sp98 = (f64) arg_sp48;
-                KDRand_Vector(*((MKVector3 *) &arg_spA0), *((MKVector3 *) &arg_sp90));
-                arg_sp18 = 6.2831855f;
-                arg_sp28 = 0.0f;
-                M2C_FIELD(temp_r31_521, f64 *, 0) = arg_spA0;
-                M2C_FIELD(temp_r31_521, f64 *, 8) = arg_spA8;
-                arg_sp10 = 6.2831855f;
-                arg_sp14 = 6.2831855f;
-                arg_sp20 = 0.0f;
-                arg_sp24 = 0.0f;
-                arg_sp50 = (f64) arg_sp10;
-                arg_sp58 = (f64) arg_sp18;
-                arg_sp60 = (f64) arg_sp20;
-                arg_sp68 = (f64) arg_sp28;
-                KDRand_Vector(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60));
-                M2C_FIELD(temp_r31_521, f64 *, 0x10) = arg_sp70;
-                M2C_FIELD(temp_r31_521, f64 *, 0x18) = arg_sp78;
+                sp48 = 0.0f;
+                sp38 = 6.2831855f;
+                sp30 = 6.2831855f;
+                sp34 = 6.2831855f;
+                sp40 = 0.0f;
+                sp44 = 0.0f;
+                sp80 = (f64) sp30;
+                sp88 = (f64) sp38;
+                sp90 = (f64) sp40;
+                sp98 = (f64) sp48;
+                KDRand_Vector(spA0, *((MKVector3 *) &sp90));
+                sp18 = 6.2831855f;
+                sp28 = 0.0f;
+                M2C_FIELD(temp_r31_521, f64 *, 0) = M2C_BITWISE(f64, spA0);
+                M2C_FIELD(temp_r31_521, f64 *, 8) = (f64) spA0.unk8;
+                sp10 = 6.2831855f;
+                sp14 = 6.2831855f;
+                sp20 = 0.0f;
+                sp24 = 0.0f;
+                sp50 = (f64) sp10;
+                sp58 = (f64) sp18;
+                sp60 = (f64) sp20;
+                sp68 = (f64) sp28;
+                KDRand_Vector(sp70, *((MKVector3 *) &sp60));
+                M2C_FIELD(temp_r31_521, f64 *, 0x10) = M2C_BITWISE(f64, sp70);
+                M2C_FIELD(temp_r31_521, f64 *, 0x18) = (f64) sp70.unk8;
                 M2C_FIELD(temp_r31_521, f32 *, 0x20) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x24) = MKRand_Float(&gViewSeed, 3.1415927f, 6.2831855f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x28) = -200.0f;
@@ -347,9 +382,9 @@ void FuryFXEarth2::SpawnVortexElement() {
                 M2C_FIELD(temp_r31_521, f32 *, 0x34) = MKRand_Float(&gViewSeed, 20.0f, 300.0f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x38) = MKRand_Float(&gViewSeed, 0.05f, 0.2f);
                 M2C_FIELD(temp_r31_521, s32 *, 0x3C) = 0;
-                arg_spB0.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
-                M2C_STRUCT_COPY((s32) &arg_spEC + 4, (s32) &arg_spAC + 4, 0x40);
-                MKModel_SetWorldMatrix(M2C_FIELD((this + (M2C_FIELD(temp_r31_521, s32 *, 0x40) * 4)), MKModel **, 0xB0), *((Matrix *) &arg_spF0));
+                spB0.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+                M2C_STRUCT_COPY((s32) &spEC + 4, (s32) &spA0.unkC + 4, 0x40);
+                MKModel_SetWorldMatrix(M2C_FIELD((this + (M2C_FIELD(temp_r31_521, s32 *, 0x40) * 4)), MKModel **, 0xB0), spF0);
             }
         }
     }
@@ -358,16 +393,21 @@ void FuryFXEarth2::SpawnVortexElement() {
 
 #if 0 // DRAFT: undefined identifier 'unkC0'
 void FuryFXEarth2::DrawVortex() {
+    Matrix sp50;
+    M2C_UNK sp4C;
+    M2C_UNK sp10;
+    M2C_UNK spC;
     M2C_UNK *temp_r31_684;
     M2C_UNK *var_r30_645;
+
     var_r30_645 = this->unkC0;
 loop_2:
     if (var_r30_645 != NULL) {
         temp_r31_684 = *var_r30_645;
         if (temp_r31_684 != NULL) {
-            arg_sp10.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
-            M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
-            MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), *((Matrix *) &arg_sp50));
+            sp10.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+            M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
+            MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), sp50);
             MKModel_SetColor(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), this->unkD0);
             MKModel_Draw(*(this + ((M2C_FIELD(temp_r31_684, s32 *, 0x40) * 4) + 0xB0)), NULL);
             var_r30_645 += 4;
@@ -379,6 +419,15 @@ loop_2:
 
 #if 0 // DRAFT: undefined identifier 'unkC0'
 void FuryFXEarth2::UpdateVortex() {
+    Matrix sp90;
+    M2C_UNK sp8C;
+    M2C_UNK sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp18;
     M2C_UNK *temp_r29_892;
     M2C_UNK *temp_r3_860;
     M2C_UNK *temp_r4_863;
@@ -394,6 +443,7 @@ void FuryFXEarth2::UpdateVortex() {
     f32 var_f3_778;
     f32 var_f4_759;
     s32 temp_r0_714;
+
     var_r31_711 = this->unkC0;
 loop_24:
     if (var_r31_711 != NULL) {
@@ -404,13 +454,13 @@ loop_24:
             case 0:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                arg_sp40 = arg_sp20;
-                arg_sp28 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
-                arg_sp48 = (f64) arg_sp28;
+                sp40 = sp20;
+                sp28 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
+                sp48 = (f64) sp28;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) arg_sp48);
+                M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) sp48);
                 M2C_FIELD(temp_r29_892, f32 *, 0x20) = (f32) ((gUpdateTimeDelta * (M2C_FIELD(temp_r29_892, f32 *, 0x24) * this->unkC4)) + M2C_FIELD(temp_r29_892, f32 *, 0x20));
                 var_f4_759 = 0.5f * (2.0f * gUpdateTimeDelta);
                 if (var_f4_759 < 1.0f) {
@@ -451,13 +501,13 @@ loop_24:
             case 1:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                arg_sp30 = arg_sp10;
-                arg_sp18 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
-                arg_sp38 = (f64) arg_sp18;
+                sp30 = sp10;
+                sp18 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
+                sp38 = (f64) sp18;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) arg_sp38);
+                M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) sp38);
                 M2C_FIELD(temp_r29_892, f32 *, 0x20) = (f32) ((gUpdateTimeDelta * (M2C_FIELD(temp_r29_892, f32 *, 0x24) * this->unkC4)) + M2C_FIELD(temp_r29_892, f32 *, 0x20));
                 break;
             case 2:
@@ -472,9 +522,9 @@ loop_24:
                 }
                 break;
             }
-            arg_sp50.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
-            M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) &arg_sp4C + 4, 0x40);
-            MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r29_892, s32 *, 0x40) * 4) + 0xB0)), *((Matrix *) &arg_sp90));
+            sp50.CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
+            M2C_STRUCT_COPY((s32) &sp8C + 4, (s32) &unksp4C + 4, 0x40);
+            MKModel_SetWorldMatrix(*(this + ((M2C_FIELD(temp_r29_892, s32 *, 0x40) * 4) + 0xB0)), sp90);
             var_r31_711 += 4;
             goto loop_24;
         }

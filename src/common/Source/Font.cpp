@@ -478,18 +478,21 @@ f32 MKFont::GetWidthOfCharacter(char arg0, CharInfo *arg1, FontPage *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 f32 MKFont::DrawString2dWrapped(const char *arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, unsigned int arg7) {
+    Matrix sp10;
+    M2C_UNK spC;
     f32 temp_f31_840;
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp40 = arg1;
-    arg_sp44 = arg2;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
+
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10.unk30 = arg1;
+    sp10.unk34 = arg2;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
     MKView_Push();
     MKView_SetCameraMatrix(Matrix::identity);
     MKView_SetOrtho(NULL);
-    temp_f31_840 = DrawString(arg0, arg3, arg4, (Matrix *) &arg_sp10, arg6, arg7, arg5, arg5, NULL, 1U);
+    temp_f31_840 = DrawString(arg0, arg3, arg4, &sp10, arg6, arg7, arg5, arg5, NULL, 1U);
     MKView_Pop();
     return temp_f31_840;
 }

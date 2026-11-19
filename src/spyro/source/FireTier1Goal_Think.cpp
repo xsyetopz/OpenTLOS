@@ -433,6 +433,55 @@ void EnemyGoal_WalkToTargetArb::Activate() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 EnemyGoal_FlyToAttackTarget::Update() {
+    MKCollisionResult sp290;
+    Matrix sp250;
+    f64 sp240;
+    f64 sp238;
+    AITargetData sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f32 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    M2C_UNK sp168;
+    M2C_UNK sp158;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKVector3 sp128;
+    M2C_UNK sp118;
+    f32 sp108;
+    AITargetData spE8;
+    AITargetData spD8;
+    f64 spC8;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp10;
     AITargetData *temp_r3_861;
     Enemy *temp_r3_1220;
     Enemy *temp_r3_1283;
@@ -448,6 +497,12 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     f32 temp_f1_896;
     f32 temp_f27_1244;
     f32 temp_f31_1103;
+    f32 temp_f4_1051;
+    f32 temp_f5_1055;
+    f32 temp_f6_942;
+    f32 temp_f7_1053;
+    f32 temp_f7_946;
+    f32 temp_f9_944;
     f32 var_f3_1043;
     f32 var_f4_976;
     f64 temp_f1_982;
@@ -456,6 +511,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     s32 temp_r3_1011;
     s32 var_r0_1021;
     u8 var_r31_865;
+
     ActivateIfInactive();
     temp_r3_861 = this->unk10;
     if (temp_r3_861 != NULL) {
@@ -468,33 +524,36 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
             temp_f1_896 = MKVector3::up.unk8 * M2C_FIELD(this->unk10->unk40.Get()->__vptr, f32 (**)(), 0x3C)();
-            arg_sp1C8 = arg_spB8;
-            arg_spC0 = temp_f1_896;
-            arg_sp1D0 = (f64) arg_spC0;
+            sp1C8 = spB8;
+            spC0 = temp_f1_896;
+            sp1D0 = (f64) spC0;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            arg_sp1D8 = arg_spA8;
-            arg_spB0 = (f32) arg_sp1D0 * 0.75f;
-            arg_sp1E0 = (f64) arg_spB0;
-            arg_sp1E8.GetPos();
+            sp1D8 = spA8;
+            spB0 = (f32) sp1D0 * 0.75f;
+            sp1E0 = (f64) spB0;
+            sp1E8.GetPos();
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp238 = arg_sp98;
-            arg_spA0 = arg_sp1F0 + (f32) arg_sp1E0;
-            arg_sp228 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-            arg_sp240 = (f64) arg_spA0;
-            arg_sp230 = (f64) M2C_FIELD(&MKVector3::up, f32 *, 8);
-            arg_sp198.GetDir();
-            arg_sp88 = -arg_sp198;
-            arg_sp8C = -arg_sp19C;
-            arg_sp90 = -arg_sp1A0;
-            arg_sp1A8 = (f64) arg_sp88;
-            arg_sp1B0 = (f64) arg_sp90;
-            arg_sp78 = (arg_sp22C * (f32) arg_sp1B0) - ((f32) arg_sp230 * arg_sp1AC);
-            arg_sp7C = ((f32) arg_sp230 * (f32) arg_sp1A8) - ((f32) arg_sp228 * (f32) arg_sp1B0);
-            arg_sp80 = ((f32) arg_sp228 * arg_sp1AC) - (arg_sp22C * (f32) arg_sp1A8);
-            arg_sp1B8 = (f64) arg_sp78;
-            arg_sp1C0 = (f64) arg_sp80;
-            var_f4_976 = ((f32) arg_sp1C0 * (f32) arg_sp1C0) + (((f32) arg_sp1B8 * (f32) arg_sp1B8) + (arg_sp1BC * arg_sp1BC));
+            sp238 = sp98;
+            spA0 = sp1E8.unk8 + (f32) sp1E0;
+            sp1E8.unk40 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+            sp240 = (f64) spA0;
+            sp1E8.unk40.unk8 = (f64) M2C_FIELD(&MKVector3::up, f32 *, 8);
+            sp198.GetDir();
+            temp_f6_942 = M2C_BITWISE(f32, sp1E8.unk40.unk8);
+            temp_f9_944 = M2C_BITWISE(f32, sp1E8.unk40);
+            sp88 = -sp198;
+            temp_f7_946 = M2C_BITWISE(f32, sp1E8.unk40.unk4);
+            sp8C = -sp19C;
+            sp90 = -sp1A0;
+            sp1A8 = (f64) sp88;
+            sp1B0 = (f64) sp90;
+            sp78 = (temp_f7_946 * (f32) sp1B0) - (temp_f6_942 * unksp1AC);
+            sp7C = (temp_f6_942 * (f32) sp1A8) - (temp_f9_944 * (f32) sp1B0);
+            sp80 = (temp_f9_944 * unksp1AC) - (temp_f7_946 * (f32) sp1A8);
+            sp1B8 = (f64) sp78;
+            sp1C0 = (f64) sp80;
+            var_f4_976 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (unksp1BC * unksp1BC));
             if (var_f4_976 > 1e-12f) {
                 if (var_f4_976 > 0.0f) {
                     temp_f1_982 = __frsqrte(var_f4_976);
@@ -504,18 +563,18 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                 } else if (var_f4_976 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_976 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_976;
-                    temp_r3_1011 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_976;
+                    temp_r3_1011 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_1011) {         /* irregular */
                     case 0x7F800000:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1021 = 1;
                         } else {
                             var_r0_1021 = 2;
                         }
                         break;
                     case 0x0:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1021 = 5;
                         } else {
                             var_r0_1021 = 3;
@@ -533,87 +592,90 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             } else {
                 var_f3_1043 = 0.0f;
             }
-            arg_sp6C = arg_sp1BC * var_f3_1043;
-            arg_sp68 = (f32) arg_sp1B8 * var_f3_1043;
-            arg_sp70 = (f32) arg_sp1C0 * var_f3_1043;
-            arg_sp218 = (f64) arg_sp68;
-            arg_sp220 = (f64) arg_sp70;
-            arg_sp60 = ((f32) arg_sp218 * arg_sp22C) - (arg_sp21C * (f32) arg_sp228);
-            arg_sp58 = (arg_sp21C * (f32) arg_sp230) - ((f32) arg_sp220 * arg_sp22C);
-            arg_sp5C = ((f32) arg_sp220 * (f32) arg_sp228) - ((f32) arg_sp218 * (f32) arg_sp230);
-            arg_sp210 = (f64) arg_sp60;
-            arg_sp208 = (f64) arg_sp58;
-            arg_sp250.SetIdentity();
-            arg_sp250 = (f32) arg_sp218;
-            arg_sp254 = arg_sp21C;
-            arg_sp258 = (f32) arg_sp220;
-            arg_sp25C = 0.0f;
-            arg_sp260 = (f32) arg_sp228;
-            arg_sp264 = arg_sp22C;
-            arg_sp268 = (f32) arg_sp230;
-            arg_sp26C = 0.0f;
-            arg_sp270 = (f32) arg_sp208;
-            arg_sp274 = arg_sp20C;
-            arg_sp278 = (f32) arg_sp210;
-            arg_sp27C = 0.0f;
+            temp_f4_1051 = M2C_BITWISE(f32, sp1E8.unk40.unk8);
+            temp_f7_1053 = M2C_BITWISE(f32, sp1E8.unk40.unk4);
+            sp6C = unksp1BC * var_f3_1043;
+            temp_f5_1055 = M2C_BITWISE(f32, sp1E8.unk40);
+            sp68 = (f32) sp1B8 * var_f3_1043;
+            sp70 = (f32) sp1C0 * var_f3_1043;
+            sp1E8.unk30 = (f64) sp68;
+            sp1E8.unk38 = (f64) sp70;
+            sp60 = (sp1E8.unk30 * temp_f7_1053) - (sp1E8.unk34 * temp_f5_1055);
+            sp58 = (sp1E8.unk34 * temp_f4_1051) - (sp1E8.unk38 * temp_f7_1053);
+            sp5C = (sp1E8.unk38 * temp_f5_1055) - (sp1E8.unk30 * temp_f4_1051);
+            sp1E8.unk28 = (f64) sp60;
+            sp1E8.unk20 = (f64) sp58;
+            sp250.SetIdentity();
+            sp250 = sp1E8.unk30;
+            sp250.unk4 = sp1E8.unk34;
+            sp250.unk8 = sp1E8.unk38;
+            sp250.unkC = 0.0f;
+            sp250.unk10 = M2C_BITWISE(f32, sp1E8.unk40);
+            sp250.unk14 = M2C_BITWISE(f32, sp1E8.unk40.unk4);
+            sp250.unk18 = M2C_BITWISE(f32, sp1E8.unk40.unk8);
+            sp250.unk1C = 0.0f;
+            sp250.unk20 = (f32) sp1E8.unk20;
+            sp250.unk24 = unksp20C;
+            sp250.unk28 = (f32) sp1E8.unk28;
+            sp250.unk2C = 0.0f;
             temp_f31_1103 = this->unk14;
-            arg_sp168.GetDir();
+            sp168.GetDir();
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp178 = arg_sp48;
-            arg_sp50 = arg_sp170 * temp_f31_1103;
-            arg_sp180 = (f64) arg_sp50;
+            sp178 = sp48;
+            sp50 = sp170 * temp_f31_1103;
+            sp180 = (f64) sp50;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            arg_sp188 = arg_sp38;
-            arg_sp40 = (f32) arg_sp180 * 0.8f;
-            arg_sp190 = (f64) arg_sp40;
+            sp188 = sp38;
+            sp40 = (f32) sp180 * 0.8f;
+            sp190 = (f64) sp40;
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp1F8 = arg_sp28;
-            arg_sp30 = (f32) arg_sp240 - (f32) arg_sp190;
-            arg_sp200 = (f64) arg_sp30;
-            if (MKCollision_GetGroundPoint(*((MKVector3 *) &arg_sp1F8), 500.0f, (MKCollisionResult *) &arg_sp290, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
-                arg_sp1FC = 80.0f + arg_sp294;
+            sp1E8.unk10 = sp28;
+            sp30 = (f32) sp240 - (f32) sp190;
+            sp1E8.unk18 = (f64) sp30;
+            if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp1E8.unk10), 500.0f, &sp290, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
+                unksp1FC = 80.0f + sp290.unk4;
             } else {
-                arg_sp158.GetPos();
-                arg_sp1FC = 80.0f + arg_sp15C;
+                sp158.GetPos();
+                unksp1FC = 80.0f + sp15C;
             }
-            this->unkC->unk870.unk40.Set(*((MKVector3 *) &arg_sp1F8), 1U);
+            this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp1E8.unk10), 1U);
             temp_r4_1171 = this->unkC;
             temp_r4_1171->unk870.unk40.Update(*((MKVector3 *) &temp_r4_1171->unk588));
             if (this->unk10->GetDist() < this->unk14) {
-                arg_sp148.GetDir();
+                sp148.GetDir();
                 temp_r6_1183 = this->unkC;
-                M2C_FIELD(temp_r6_1183, f64 *, 0xE0) = arg_sp148;
-                M2C_FIELD(temp_r6_1183, f64 *, 0xE8) = arg_sp150;
+                M2C_FIELD(temp_r6_1183, f64 *, 0xE0) = sp148;
+                M2C_FIELD(temp_r6_1183, f64 *, 0xE8) = sp150;
                 temp_r6_1183->unk6B5 |= 0x40;
                 temp_r4_1197 = this->unkC;
                 M2C_FIELD(temp_r4_1197, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
                 M2C_FIELD(temp_r4_1197, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f32 *, 8);
                 temp_r4_1197->unk6B5 |= 0x40;
-                arg_sp118.GetDir();
-                __ml(this->unkC->unk80.Magnitude(), *((MKVector3 *) &arg_sp128));
+                sp118.GetDir();
+                __ml(this->unkC->unk80.Magnitude(), sp128);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
                 temp_r3_1220 = this->unkC;
-                arg_sp138 = arg_sp18;
-                arg_sp20 = arg_sp130 * 1.5f;
-                M2C_FIELD(temp_r3_1220, f64 *, 0x598) = arg_sp18;
-                arg_sp140 = (f64) arg_sp20;
-                M2C_FIELD(temp_r3_1220, f64 *, 0x5A0) = (f64) arg_sp20;
+                sp138 = sp18;
+                sp20 = sp128.unk8 * 1.5f;
+                M2C_FIELD(temp_r3_1220, f64 *, 0x598) = sp18;
+                sp140 = (f64) sp20;
+                M2C_FIELD(temp_r3_1220, f64 *, 0x5A0) = (f64) sp20;
             } else {
-                arg_sp108.GetDir();
-                temp_f27_1244 = (arg_sp110 * MKVector3::up.unk8) + ((arg_sp108 * MKVector3::up.unk0) + (arg_sp10C * MKVector3::up.unk4));
+                sp108.GetDir();
+                temp_f27_1244 = (sp110 * MKVector3::up.unk8) + ((sp108 * MKVector3::up.unk0) + (sp10C * MKVector3::up.unk4));
                 temp_f1_1245 = _table_sinf(2.3561945f);
                 if ((temp_f27_1244 > temp_f1_1245) || (temp_f27_1244 < -temp_f1_1245)) {
-                    arg_spE8.GetDir();
-                    __ml(this->unkC->unk80.Magnitude(), *((MKVector3 *) &arg_spF8));
+                    spE8.GetDir();
+                    __ml(this->unkC->unk80.Magnitude(), *((MKVector3 *) &spE8.unk10));
                     temp_r4_1262 = this->unkC;
-                    M2C_FIELD(temp_r4_1262, f64 *, 0x598) = arg_spF8;
-                    M2C_FIELD(temp_r4_1262, f64 *, 0x5A0) = arg_sp100;
-                    arg_spD8.GetDir();
+                    M2C_FIELD(temp_r4_1262, f64 *, 0x598) = spE8.unk10;
+                    M2C_FIELD(temp_r4_1262, f64 *, 0x5A0) = spE8.unk18;
+                    spD8.GetDir();
                     temp_r5_1271 = this->unkC;
-                    M2C_FIELD(temp_r5_1271, f64 *, 0xE0) = arg_spD8;
-                    M2C_FIELD(temp_r5_1271, f64 *, 0xE8) = arg_spE0;
+                    M2C_FIELD(temp_r5_1271, f64 *, 0xE0) = M2C_BITWISE(f64, spD8);
+                    M2C_FIELD(temp_r5_1271, f64 *, 0xE8) = (f64) spD8.unk8;
                     temp_r5_1271->unk6B5 |= 0x40;
                     temp_r3_1283 = this->unkC;
                     M2C_FIELD(temp_r3_1283, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
@@ -624,10 +686,10 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                     M2C_FIELD(temp_r4_1291, f64 *, 0x598) = (f64) M2C_FIELD(temp_r4_1291, f64 *, 0x90);
                     M2C_FIELD(temp_r4_1291, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r4_1291, f64 *, 0x98);
                     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    arg_spC8.GetDir();
+                    spC8.GetDir();
                     temp_r4_1308 = this->unkC;
-                    M2C_FIELD(temp_r4_1308, f64 *, 0xE0) = arg_spC8;
-                    M2C_FIELD(temp_r4_1308, f64 *, 0xE8) = arg_spD0;
+                    M2C_FIELD(temp_r4_1308, f64 *, 0xE0) = spC8;
+                    M2C_FIELD(temp_r4_1308, f64 *, 0xE8) = spD0;
                     temp_r4_1308->unk6B5 = (temp_r4_1308->unk6B5 & ~0x40) | ((((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) == 0) << 6) & 0x40);
                     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     temp_r4_1326 = this->unkC;
@@ -1024,29 +1086,36 @@ void EnemyGoal_FlyIdle::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 u8 EnemyGoal_FlyLand::Update() {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Character *temp_r3_2097;
     Character *temp_r3_2139;
     Character *temp_r4_2126;
     f32 temp_f3_2099;
     f32 temp_f6_2104;
     f32 temp_f7_2110;
+
     ActivateIfInactive();
-    arg_sp30.SetIdentity();
-    this->unkC->GetDesiredHeadingMatrix((Matrix *) &arg_sp30);
+    sp30.SetIdentity();
+    this->unkC->GetDesiredHeadingMatrix(&sp30);
     temp_r3_2097 = this->unkC;
     temp_f3_2099 = temp_r3_2097->unk84;
     temp_f6_2104 = temp_r3_2097->unk80;
     temp_f7_2110 = temp_r3_2097->unk88;
-    arg_sp10 = (temp_f7_2110 * arg_sp50) + ((temp_f6_2104 * arg_sp30) + (temp_f3_2099 * arg_sp40));
-    arg_sp14 = (temp_f7_2110 * arg_sp54) + ((temp_f6_2104 * arg_sp34) + (temp_f3_2099 * arg_sp44));
-    arg_sp18 = (temp_f7_2110 * arg_sp58) + ((temp_f6_2104 * arg_sp38) + (temp_f3_2099 * arg_sp48));
-    M2C_FIELD(temp_r3_2097, f64 *, 0x598) = (f64) arg_sp10;
-    M2C_FIELD(temp_r3_2097, f64 *, 0x5A0) = (f64) arg_sp18;
+    sp10 = (temp_f7_2110 * sp30.unk20) + ((temp_f6_2104 * M2C_BITWISE(f32, sp30)) + (temp_f3_2099 * sp30.unk10));
+    sp14 = (temp_f7_2110 * sp30.unk24) + ((temp_f6_2104 * sp30.unk4) + (temp_f3_2099 * sp30.unk14));
+    sp18 = (temp_f7_2110 * sp30.unk28) + ((temp_f6_2104 * sp30.unk8) + (temp_f3_2099 * sp30.unk18));
+    M2C_FIELD(temp_r3_2097, f64 *, 0x598) = (f64) sp10;
+    M2C_FIELD(temp_r3_2097, f64 *, 0x5A0) = (f64) sp18;
     temp_r4_2126 = this->unkC;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
     temp_r4_2126->unk8C0.Update(*((MKVector3 *) &temp_r4_2126->unk588));
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk8 = 2;
@@ -1059,6 +1128,18 @@ u8 EnemyGoal_FlyLand::Update() {
 
 #if 0 // DRAFT: undefined identifier 'unk8C0'
 void EnemyGoal_FlyLand::Activate() {
+    AITargetData sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Character *temp_r3_2168;
     Character *temp_r3_2172;
     Character *temp_r3_2194;
@@ -1072,6 +1153,7 @@ void EnemyGoal_FlyLand::Activate() {
     f32 temp_f6_2199;
     f32 temp_f7_2197;
     f32 temp_f8_2195;
+
     this->unk8 = 0;
     temp_r3_2168 = this->unkC;
     temp_r3_2168->unk6B5 &= ~0x20;
@@ -1079,48 +1161,48 @@ void EnemyGoal_FlyLand::Activate() {
     temp_r3_2172->unk6B5 &= ~0x10;
     temp_r4_2176 = this->unkC;
     temp_r4_2176->unk8C0.Update(*((MKVector3 *) &temp_r4_2176->unk588));
-    arg_sp70.GetPos();
-    arg_spB0 = arg_sp70;
-    arg_spB4 = arg_sp74;
-    arg_spB8 = arg_sp78;
-    arg_spBC = 1.0f;
+    sp70.GetPos();
+    sp70.unk40 = M2C_BITWISE(f32, sp70);
+    sp70.unk40.unk4 = unksp74;
+    sp70.unk40.unk8 = sp70.unk8;
+    sp70.unk40.unkC = 1.0f;
     temp_r3_2194 = this->unkC;
     temp_f8_2195 = temp_r3_2194->unkC0;
-    arg_spA0 = temp_f8_2195;
+    sp70.unk30 = temp_f8_2195;
     temp_f7_2197 = temp_r3_2194->unkC4;
-    arg_spA4 = temp_f7_2197;
+    sp70.unk34 = temp_f7_2197;
     temp_f6_2199 = temp_r3_2194->unkC8;
-    arg_spA8 = temp_f6_2199;
-    arg_spAC = 0.0f;
+    sp70.unk38 = temp_f6_2199;
+    sp70.unk3C = 0.0f;
     temp_f2_2202 = temp_r3_2194->unkD0;
-    arg_sp90 = temp_f2_2202;
+    sp70.unk20 = temp_f2_2202;
     temp_f4_2205 = temp_r3_2194->unkD4;
-    arg_sp94 = temp_f4_2205;
+    unksp94 = temp_f4_2205;
     temp_f3_2208 = temp_r3_2194->unkD8;
-    arg_sp98 = temp_f3_2208;
-    arg_sp18 = (temp_f2_2202 * temp_f7_2197) - (temp_f4_2205 * temp_f8_2195);
-    arg_sp14 = (temp_f3_2208 * temp_f8_2195) - (temp_f2_2202 * temp_f6_2199);
-    arg_sp10 = (temp_f4_2205 * temp_f6_2199) - (temp_f3_2208 * temp_f7_2197);
-    arg_sp68 = (f64) arg_sp18;
-    arg_sp60 = (f64) arg_sp10;
-    arg_sp9C = 0.0f;
-    arg_sp80 = (f32) arg_sp60;
-    arg_sp84 = arg_sp64;
-    arg_sp88 = (f32) arg_sp68;
-    arg_sp8C = 0.0f;
-    temp_r3_2194->Teleport(&arg_sp80, arg_sp64, (f32) arg_sp60, temp_f3_2208, temp_f4_2205, 0.0f, temp_f6_2199, temp_f7_2197, temp_f8_2195);
+    sp70.unk28 = temp_f3_2208;
+    sp18 = (temp_f2_2202 * temp_f7_2197) - (temp_f4_2205 * temp_f8_2195);
+    sp14 = (temp_f3_2208 * temp_f8_2195) - (temp_f2_2202 * temp_f6_2199);
+    sp10 = (temp_f4_2205 * temp_f6_2199) - (temp_f3_2208 * temp_f7_2197);
+    sp68 = (f64) sp18;
+    sp60 = (f64) sp10;
+    unksp9C = 0.0f;
+    sp70.unk10 = (f32) sp60;
+    unksp84 = unksp64;
+    sp70.unk18 = (f32) sp68;
+    unksp8C = 0.0f;
+    temp_r3_2194->Teleport(&sp70.unk10, unksp64, (f32) sp60, temp_f3_2208, temp_f4_2205, 0.0f, temp_f6_2199, temp_f7_2197, temp_f8_2195);
     temp_r3_2233 = this->unkC;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp40 = arg_sp30;
-    arg_sp38 = temp_r3_2233->unkC8 * 0.1f;
-    arg_sp48 = (f64) arg_sp38;
+    sp40 = sp30;
+    sp38 = temp_r3_2233->unkC8 * 0.1f;
+    sp48 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp50 = arg_sp20;
-    arg_sp28 = this->unk18 + (f32) arg_sp48;
-    arg_sp58 = (f64) arg_sp28;
-    temp_r3_2233->unk8C0.Set(*((MKVector3 *) &arg_sp50), 1U);
+    sp50 = sp20;
+    sp28 = this->unk18 + (f32) sp48;
+    sp58 = (f64) sp28;
+    temp_r3_2233->unk8C0.Set(*((MKVector3 *) &sp50), 1U);
     this->unkC->SetMovementType((CharacterMoveType) 1);
     temp_r5_2266 = this->unkC;
     M2C_FIELD(temp_r5_2266, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r5_2266, f32 *, 0xC0);

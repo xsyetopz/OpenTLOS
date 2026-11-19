@@ -3,6 +3,7 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
@@ -12,8 +13,10 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "spyro/source/SpeedWay.h"
 #include "spyro/source/SpeedwayCynder.h"
@@ -653,12 +656,15 @@ void SpeedWaySpyro::UpdateSound() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void SpeedWaySpyro::UpdateEffects() {
+    Matrix sp20;
+    MKVector3 sp10;
     f32 temp_f0_899;
     f32 temp_f1_894;
     f32 temp_f31_930;
     f32 var_f2_898;
     u8 var_r30_926;
     void ***temp_r30_844;
+
     temp_r30_844 = &gb + 0xB8;
     temp_r30_844->SetSpeedEffectCenter(*((MKVector3 *) &this->unk1A0.unk30));
     if ((this->unk98 & 0x10) && ((s32) this->unkA0 == 2)) {
@@ -666,12 +672,12 @@ void SpeedWaySpyro::UpdateEffects() {
     } else {
         temp_r30_844->EnableSpeedEffect(0U, 0.0f, 1.0f);
     }
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), (MKVector3 *) &arg_sp10);
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-    arg_sp50 = arg_sp10;
-    arg_sp54 = arg_sp14;
-    arg_sp58 = arg_sp18;
-    arg_sp5C = 1.0f;
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), &sp10);
+    M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    sp20.unk30 = M2C_BITWISE(f32, sp10);
+    sp20.unk34 = sp10.unk4;
+    sp20.unk38 = sp10.unk8;
+    sp20.unk3C = 1.0f;
     temp_f1_894 = this->unk304;
     if (temp_f1_894 != 0.0f) {
         var_f2_898 = 0.0f;
@@ -691,7 +697,7 @@ void SpeedWaySpyro::UpdateEffects() {
     if ((temp_f31_930 > ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost()) && (this->unk98 & 0x10)) {
         var_r30_926 = 1;
     }
-    this->unk300 = this->unk2FC.Update((Matrix *) &arg_sp20, var_r30_926);
+    this->unk300 = this->unk2FC.Update(&sp20, var_r30_926);
     if ((u8) this->unk300 != 0) {
         ((Stat *) ((Stat *) (&GameData::gameData[0x70] + 0x30)))->Add(-((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetInitialBreathCost(), 1U);
         this->unk304 = 1.0f;
@@ -728,43 +734,52 @@ void SpeedWaySpyro::Teleport(float arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
+    Matrix sp50;
+    M2C_UNK sp4C;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp20;
+    f32 sp18;
     f32 temp_f2_1099;
     f32 var_f0_1111;
     void *temp_r3_1083;
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&arg0 - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (&arg0 - 4) + 4, 0x40);
     if ((u8) this->unk814 != 0) {
         if (arg1 != 0) {
-            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), u8 (**)(M2C_UNK *, f32 *, M2C_UNK, f32), 0x14)(&this->unk398, &arg_sp80, 0xA, 1.0f) != 0) {
+            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), u8 (**)(M2C_UNK *, f32 *, M2C_UNK, f32), 0x14)(&this->unk398, &sp50.unk30, 0xA, 1.0f) != 0) {
                 this->unk810 = 0.0f;
             }
         } else {
             temp_r3_1083 = this->unk8;
-            arg_sp30 = M2C_FIELD(temp_r3_1083, f64 *, 0x30);
-            arg_sp38 = M2C_FIELD(temp_r3_1083, f64 *, 0x38);
+            sp30 = M2C_FIELD(temp_r3_1083, f64 *, 0x30);
+            sp38 = M2C_FIELD(temp_r3_1083, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            temp_f2_1099 = arg_sp88 - (f32) arg_sp38;
-            arg_sp40 = arg_sp10;
-            arg_sp18 = temp_f2_1099;
-            arg_sp48 = (f64) arg_sp18;
-            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), s32 (**)(M2C_UNK *, f64 *, M2C_UNK, f32, f32), 0x10)(&this->unk398, &arg_sp40, 0, 0.0f, temp_f2_1099) == 8) {
+            temp_f2_1099 = sp50.unk38 - (f32) sp38;
+            sp40 = sp10;
+            sp18 = temp_f2_1099;
+            sp48 = (f64) sp18;
+            if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), s32 (**)(M2C_UNK *, f64 *, M2C_UNK, f32, f32), 0x10)(&this->unk398, &sp40, 0, 0.0f, temp_f2_1099) == 8) {
                 var_f0_1111 = 0.0f;
             } else {
                 var_f0_1111 = this->unk810 + gUpdateTimeDelta;
             }
             this->unk810 = var_f0_1111;
         }
-        M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(f32 *, M2C_UNK *), 0x4C)(&arg_sp20, &this->unk398);
-        arg_sp80 = arg_sp20;
-        arg_sp84 = arg_sp24;
-        arg_sp88 = arg_sp28;
-        arg_sp8C = 1.0f;
+        M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(f32 *, M2C_UNK *), 0x4C)(&sp20, &this->unk398);
+        sp50.unk30 = sp20;
+        sp50.unk34 = sp24;
+        sp50.unk38 = sp28;
+        sp50.unk3C = 1.0f;
     } else {
         this->unk810 = 0.0f;
     }
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+    MKModel_SetWorldMatrix(this->unk4, sp50);
 }
 #endif
 
@@ -1078,14 +1093,114 @@ u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk21C'
+#if 0 // DRAFT: undefined identifier 'KDMath_CriticalDampenedValue'
 void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
+    HeroDataMessage sp4E0;
+    s32 sp494;
+    KDS_Message_SetCameraSimple sp490;
+    SpeedWay sp390;
+    M2C_UNK sp38C;
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;                                      /* compiler-managed */
+    f64 sp360;                                      /* compiler-managed */
+    f64 sp358;
+    f64 sp350;
+    f64 sp348;
+    f64 sp340;
+    f64 sp338;
+    f64 sp330;
+    f64 sp328;
+    f64 sp320;
+    f64 sp318;
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    f64 sp2E8;
+    f64 sp2E0;
+    MKVector3 sp2D0;
+    MKVector3 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    MKVector3 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    KDMath_CriticalDampenedValue<MKVector3> sp1B0;
+    KDMath_CriticalDampenedValue<MKVector3> sp1A0;
+    KDMath_CriticalDampenedValue<MKVector3> sp190;
+    f32 sp188;
+    f32 sp178;
+    f32 sp168;
+    f32 sp158;
+    f32 sp148;
+    f32 sp138;
+    f32 sp128;
+    f32 sp118;
+    f32 sp108;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 *temp_r29_2092;
     f32 temp_f1_2296;
     f32 temp_f1_2315;
     f32 temp_f1_2409;
+    f32 temp_f2_2276;
     f32 temp_f3_2349;
     f32 temp_f3_2377;
+    f32 temp_f4_2489;
+    f32 temp_f9_2483;
     f32 var_f1_2017;
     f32 var_f30_2200;
     f32 var_f3_2267;
@@ -1097,56 +1212,57 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     u8 var_r5_2134;
     void *temp_r7_2151;
     void *temp_r7_2168;
+
     M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
-    arg_sp390.GetPathMatrix(arg0);
-    M2C_STRUCT_COPY((s32) &arg_sp44C + 4, (s32) &arg_sp38C + 4, 0x40);
-    this->unk1E0.CopyRotation((Matrix *) &arg_sp450);
-    arg_sp2C0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
+    sp390.GetPathMatrix(arg0);
+    M2C_STRUCT_COPY((s32) &sp390.unk94.unk24 + 4, (s32) &sp38C + 4, 0x40);
+    this->unk1E0.CopyRotation((Matrix *) &sp390.unk94.unk28);
+    sp2C0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
     if ((u8) bUsePulledBackCamera != 0) {
         var_f1_2017 = 3000.0f;
     } else {
         var_f1_2017 = GetCurrCameraZ();
     }
-    arg_sp2D0.operator*(var_f1_2017);
+    sp2D0.operator*(var_f1_2017);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp2E0 = arg_sp50;
-    arg_sp58 = arg_sp488 - arg_sp2D8;
-    arg_sp2E8 = (f64) arg_sp58;
+    sp2E0 = sp50;
+    sp58 = sp488 - sp2D0.unk8;
+    sp2E8 = (f64) sp58;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp2F0 = arg_spA0;
-    arg_spA8 = (f32) arg_sp2E8 - arg_sp2C8;
-    this->unk210 = (f32) arg_sp2F0;
-    arg_sp2F8 = (f64) arg_spA8;
-    this->unk214 = arg_sp2F4;
-    this->unk218 = (f32) arg_sp2F8;
+    sp2F0 = spA0;
+    spA8 = (f32) sp2E8 - sp2C0.unk8;
+    this->unk210 = (f32) sp2F0;
+    sp2F8 = (f64) spA8;
+    this->unk214 = unksp2F4;
+    this->unk218 = (f32) sp2F8;
     M2C_FIELD(this, f32 *, 0x21C) = 1.0f;
     if (arg1 == 0) {
         UpdateDrift(arg0);
     }
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp380 = arg_sp180;
-    arg_sp188 = arg_sp458 * M2C_FIELD(this, f32 *, 0x308);
-    arg_sp388 = (f64) arg_sp188;
+    sp380 = sp180;
+    sp188 = M2C_BITWISE(f32, sp390.unk94.unk30) * M2C_FIELD(this, f32 *, 0x308);
+    sp388 = (f64) sp188;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp370 = arg_sp170;
-    arg_sp178 = arg_sp468 * M2C_FIELD(this, f32 *, 0x30C);
-    arg_sp378 = (f64) arg_sp178;
-    this->unk1A0.CopyRotation((Matrix *) &arg_sp450);
+    sp370 = sp170;
+    sp178 = sp390.unkD8 * M2C_FIELD(this, f32 *, 0x30C);
+    sp378 = (f64) sp178;
+    this->unk1A0.CopyRotation((Matrix *) &sp390.unk94.unk28);
     temp_r29_2092 = &this->unk210;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2A0 = arg_sp40;
-    arg_sp48 = this->unk218 + (f32) arg_sp388;
-    arg_sp2A8 = (f64) arg_sp48;
+    sp2A0 = sp40;
+    sp48 = this->unk218 + (f32) sp388;
+    sp2A8 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2B0 = arg_sp90;
-    arg_sp98 = (f32) arg_sp2A8 + (f32) arg_sp378;
-    this->unk1A0.unk30 = (f32) arg_sp2B0;
-    arg_sp2B8 = (f64) arg_sp98;
-    this->unk1A0.unk34 = arg_sp2B4;
-    this->unk1A0.unk38 = (f32) arg_sp2B8;
+    sp2B0 = sp90;
+    sp98 = (f32) sp2A8 + (f32) sp378;
+    this->unk1A0.unk30 = (f32) sp2B0;
+    sp2B8 = (f64) sp98;
+    this->unk1A0.unk34 = unksp2B4;
+    this->unk1A0.unk38 = (f32) sp2B8;
     this->unk1A0.unk3C = 1.0f;
     if ((this->unk98 & 8) || (arg1 != 0)) {
         var_r5_2134 = 0;
@@ -1157,24 +1273,24 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     }
     if ((this->unk98 & 4) && (this->unk810 > 0.0f)) {
         temp_r7_2151 = this->unk8;
-        arg_sp290 = M2C_FIELD(temp_r7_2151, f64 *, 0x30);
-        arg_sp298 = M2C_FIELD(temp_r7_2151, f64 *, 0x38);
-        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp290), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1E0), &arg_sp18) != 0) {
-            M2C_FIELD(this, f32 *, 0x318) = arg_sp18;
-            M2C_FIELD(this, f32 *, 0x308) = arg_sp18;
+        sp290 = M2C_FIELD(temp_r7_2151, f64 *, 0x30);
+        sp298 = M2C_FIELD(temp_r7_2151, f64 *, 0x38);
+        if (GetBestMovementOffset(*((MKVector3 *) &sp290), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1E0), &sp18) != 0) {
+            M2C_FIELD(this, f32 *, 0x318) = sp18;
+            M2C_FIELD(this, f32 *, 0x308) = sp18;
         }
         temp_r7_2168 = this->unk8;
-        arg_sp280 = M2C_FIELD(temp_r7_2168, f64 *, 0x30);
-        arg_sp288 = M2C_FIELD(temp_r7_2168, f64 *, 0x38);
-        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp280), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1F0), &arg_sp14) != 0) {
-            M2C_FIELD(this, f32 *, 0x31C) = arg_sp14;
-            M2C_FIELD(this, f32 *, 0x30C) = arg_sp14;
+        sp280 = M2C_FIELD(temp_r7_2168, f64 *, 0x30);
+        sp288 = M2C_FIELD(temp_r7_2168, f64 *, 0x38);
+        if (GetBestMovementOffset(*((MKVector3 *) &sp280), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1F0), &sp14) != 0) {
+            M2C_FIELD(this, f32 *, 0x31C) = sp14;
+            M2C_FIELD(this, f32 *, 0x30C) = sp14;
         }
     }
     if (EventCamera_GetCurrent() == NULL) {
-        arg_sp360 = this->unk308;
-        arg_sp368 = this->unk310;
-        var_f30_2200 = ((f32) arg_sp368 * (f32) arg_sp368) + (((f32) arg_sp360 * (f32) arg_sp360) + (arg_sp364 * arg_sp364));
+        sp360 = this->unk308;
+        sp368 = this->unk310;
+        var_f30_2200 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + (unksp364 * unksp364));
         if (var_f30_2200 > 0.000001f) {
             if (var_f30_2200 > 0.0f) {
                 temp_f1_2206 = __frsqrte(var_f30_2200);
@@ -1184,18 +1300,18 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
             } else if (var_f30_2200 < M2C_BITWISE(f32, 0.0)) {
                 var_f30_2200 = __float_nan;
             } else {
-                arg_sp10 = var_f30_2200;
-                temp_r3_2235 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f30_2200;
+                temp_r3_2235 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_2235) {             /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_2245 = 1;
                     } else {
                         var_r0_2245 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_2245 = 5;
                     } else {
                         var_r0_2245 = 3;
@@ -1214,154 +1330,157 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
             var_f3_2267 = 0.0f;
             var_f30_2200 = 0.0f;
         }
-        arg_sp360 = (f32) arg_sp360 * var_f3_2267;
-        arg_sp364 *= var_f3_2267;
-        arg_sp368 = (f32) arg_sp368 * var_f3_2267;
+        temp_f2_2276 = (f32) sp360 * var_f3_2267;
+        sp360 = temp_f2_2276;
+        unksp364 *= var_f3_2267;
+        sp368 = (f32) sp368 * var_f3_2267;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        temp_f1_2296 = arg_sp458 * ((f32) arg_sp360 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk164);
-        arg_sp350 = arg_sp160;
-        arg_sp168 = temp_f1_2296;
-        arg_sp358 = (f64) arg_sp168;
+        temp_f1_2296 = M2C_BITWISE(f32, sp390.unk94.unk30) * (temp_f2_2276 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk164);
+        sp350 = sp160;
+        sp168 = temp_f1_2296;
+        sp358 = (f64) sp168;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        temp_f1_2315 = arg_sp468 * (arg_sp364 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C);
-        arg_sp340 = arg_sp150;
-        arg_sp158 = temp_f1_2315;
-        arg_sp348 = (f64) arg_sp158;
+        temp_f1_2315 = sp390.unkD8 * (unksp364 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C);
+        sp340 = sp150;
+        sp158 = temp_f1_2315;
+        sp348 = (f64) sp158;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp270 = arg_sp140;
-        arg_sp148 = arg_sp488 + (f32) arg_sp358;
-        arg_sp278 = (f64) arg_sp148;
+        sp270 = sp140;
+        sp148 = sp488 + (f32) sp358;
+        sp278 = (f64) sp148;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp330 = arg_sp130;
-        arg_sp138 = (f32) arg_sp278 + (f32) arg_sp348;
-        arg_sp338 = (f64) arg_sp138;
+        sp330 = sp130;
+        sp138 = (f32) sp278 + (f32) sp348;
+        sp338 = (f64) sp138;
         temp_f3_2349 = M2C_FIELD(this, f32 *, 0x308) / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        arg_sp260 = arg_sp120;
-        arg_sp128 = arg_sp458 * this->unk154;
-        arg_sp268 = (f64) arg_sp128;
+        sp260 = sp120;
+        sp128 = M2C_BITWISE(f32, sp390.unk94.unk30) * this->unk154;
+        sp268 = (f64) sp128;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        arg_sp320 = arg_sp110;
-        arg_sp118 = (f32) arg_sp268 * temp_f3_2349;
-        arg_sp328 = (f64) arg_sp118;
+        sp320 = sp110;
+        sp118 = (f32) sp268 * temp_f3_2349;
+        sp328 = (f64) sp118;
         temp_f3_2377 = M2C_FIELD(this, f32 *, 0x30C) / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-        arg_sp250 = arg_sp100;
-        arg_sp108 = arg_sp468 * this->unk15C;
-        arg_sp258 = (f64) arg_sp108;
+        sp250 = sp100;
+        sp108 = sp390.unkD8 * this->unk15C;
+        sp258 = (f64) sp108;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        arg_sp310 = arg_spF0;
-        arg_spF8 = (f32) arg_sp258 * temp_f3_2377;
-        arg_sp318 = (f64) arg_spF8;
+        sp310 = spF0;
+        spF8 = (f32) sp258 * temp_f3_2377;
+        sp318 = (f64) spF8;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-        temp_f1_2409 = arg_sp468 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188);
-        arg_sp220 = arg_spE0;
-        arg_spE8 = temp_f1_2409;
-        arg_sp228 = (f64) arg_spE8;
+        temp_f1_2409 = sp390.unkD8 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188);
+        sp220 = spE0;
+        spE8 = temp_f1_2409;
+        sp228 = (f64) spE8;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp230 = arg_spD0;
-        arg_spD8 = this->unk218 + (f32) arg_sp228;
-        arg_sp238 = (f64) arg_spD8;
+        sp230 = spD0;
+        spD8 = this->unk218 + (f32) sp228;
+        sp238 = (f64) spD8;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp240 = arg_spC0;
-        arg_spC8 = (f32) arg_sp238 + (f32) arg_sp328;
-        arg_sp248 = (f64) arg_spC8;
+        sp240 = spC0;
+        spC8 = (f32) sp238 + (f32) sp328;
+        sp248 = (f64) spC8;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp300 = arg_spB0;
-        arg_spB8 = (f32) arg_sp248 + (f32) arg_sp318;
-        arg_sp308 = (f64) arg_spB8;
-        M2C_STRUCT_COPY((s32) &arg_sp40C + 4, (s32) &arg_sp44C + 4, 0x40);
-        arg_sp440 = (f32) arg_sp330;
-        arg_sp444 = arg_sp334;
-        arg_sp448 = (f32) arg_sp338;
-        arg_sp44C = 1.0f;
+        sp300 = spB0;
+        spB8 = (f32) sp248 + (f32) sp318;
+        sp308 = (f64) spB8;
+        M2C_STRUCT_COPY((s32) &sp390.unk4C.unk2C + 4, (s32) &sp390.unk94.unk24 + 4, 0x40);
+        sp390.unk94.unk18 = (f32) sp330;
+        sp390.unk94.unk1C = unksp334;
+        sp390.unk94.unk20 = (f32) sp338;
+        sp390.unk94.unk24 = 1.0f;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp200 = arg_sp80;
-        arg_sp88 = (f32) arg_sp308 - (f32) arg_sp338;
-        arg_sp208 = (f64) arg_sp88;
-        Normalise(*((MKVector3 *) &arg_sp210));
-        arg_sp430 = arg_sp210;
-        arg_sp434 = arg_sp214;
-        arg_sp30 = (arg_sp214 * arg_sp428) - (arg_sp218 * arg_sp424);
-        arg_sp34 = (arg_sp218 * arg_sp420) - (arg_sp210 * arg_sp428);
-        arg_sp38 = (arg_sp210 * arg_sp424) - (arg_sp214 * arg_sp420);
-        arg_sp1E0 = (f64) arg_sp30;
-        arg_sp1E8 = (f64) arg_sp38;
-        arg_sp438 = arg_sp218;
-        arg_sp70 = -(f32) arg_sp1E0;
-        arg_sp74 = -arg_sp1E4;
-        arg_sp78 = -(f32) arg_sp1E8;
-        arg_sp1F0 = (f64) arg_sp70;
-        arg_sp1F8 = (f64) arg_sp78;
-        arg_sp43C = 0.0f;
-        arg_sp410 = (f32) arg_sp1F0;
-        arg_sp414 = arg_sp1F4;
-        arg_sp28 = ((f32) arg_sp1F0 * arg_sp214) - (arg_sp1F4 * arg_sp210);
-        arg_sp20 = (arg_sp1F4 * arg_sp218) - ((f32) arg_sp1F8 * arg_sp214);
-        arg_sp24 = ((f32) arg_sp1F8 * arg_sp210) - ((f32) arg_sp1F0 * arg_sp218);
-        arg_sp1C8 = (f64) arg_sp28;
-        arg_sp1C0 = (f64) arg_sp20;
-        arg_sp418 = (f32) arg_sp1F8;
-        arg_sp68 = -(f32) arg_sp1C8;
-        arg_sp60 = -(f32) arg_sp1C0;
-        arg_sp64 = -arg_sp1C4;
-        arg_sp1D8 = (f64) arg_sp68;
-        arg_sp1D0 = (f64) arg_sp60;
-        arg_sp41C = 0.0f;
-        arg_sp420 = (f32) arg_sp1D0;
-        arg_sp424 = arg_sp1D4;
-        arg_sp428 = (f32) arg_sp1D8;
-        arg_sp42C = 0.0f;
+        sp200 = sp80;
+        sp88 = (f32) sp308 - (f32) sp338;
+        sp208 = (f64) sp88;
+        Normalise(sp210);
+        temp_f9_2483 = M2C_BITWISE(f32, sp210);
+        temp_f4_2489 = M2C_BITWISE(f32, sp390.unk94);
+        sp390.unk94.unk8 = temp_f9_2483;
+        unksp434 = sp210.unk4;
+        sp30 = (sp210.unk4 * temp_f4_2489) - (sp210.unk8 * sp390.unk94);
+        sp34 = (sp210.unk8 * sp390.unk90) - (temp_f9_2483 * temp_f4_2489);
+        sp38 = (temp_f9_2483 * sp390.unk94) - (sp210.unk4 * sp390.unk90);
+        sp1E0 = (f64) sp30;
+        sp1E8 = (f64) sp38;
+        sp390.unk94.unk10 = sp210.unk8;
+        sp70 = -(f32) sp1E0;
+        sp74 = -unksp1E4;
+        sp78 = -(f32) sp1E8;
+        sp1F0 = (f64) sp70;
+        sp1F8 = (f64) sp78;
+        sp390.unk94.unk14 = 0.0f;
+        sp390.unk4C.unk30 = (f32) sp1F0;
+        sp390.unk4C.unk34 = unksp1F4;
+        sp28 = ((f32) sp1F0 * sp210.unk4) - (unksp1F4 * temp_f9_2483);
+        sp20 = (unksp1F4 * sp210.unk8) - ((f32) sp1F8 * sp210.unk4);
+        sp24 = ((f32) sp1F8 * temp_f9_2483) - ((f32) sp1F0 * sp210.unk8);
+        sp1C8 = (f64) sp28;
+        sp1C0 = (f64) sp20;
+        sp390.unk88 = (f32) sp1F8;
+        sp68 = -(f32) sp1C8;
+        sp60 = -(f32) sp1C0;
+        sp64 = -unksp1C4;
+        sp1D8 = (f64) sp68;
+        sp1D0 = (f64) sp60;
+        sp390.unk8C = 0.0f;
+        sp390.unk90 = (f32) sp1D0;
+        sp390.unk94 = unksp1D4;
+        sp390.unk94 = (f32) sp1D8;
+        sp390.unk94.unk4 = 0.0f;
         if (arg2 != 0) {
-            M2C_STRUCT_COPY((s32) &arg_sp3CC + 4, (s32) &arg_sp40C + 4, 0x40);
-            this->unk260 = arg_sp3D0;
-            this->unk268 = arg_sp3D8;
+            M2C_STRUCT_COPY((s32) &sp390.unk3C + 4, (s32) &sp390.unk4C.unk2C + 4, 0x40);
+            this->unk260 = M2C_BITWISE(f64, sp390.unk40);
+            this->unk268 = (f64) sp390.unk48;
             memset(&this->unk270, 0, 0x10U);
-            this->unk280 = arg_sp3E0;
-            this->unk288 = arg_sp3E8;
+            this->unk280 = M2C_BITWISE(f64, sp390.unk4C);
+            this->unk288 = sp390.unk4C.unk8;
             memset(&this->unk290, 0, 0x10U);
-            this->unk2A0 = arg_sp3F0;
-            this->unk2A8 = arg_sp3F8;
+            this->unk2A0 = M2C_BITWISE(f64, sp390.unk4C.unk10);
+            this->unk2A8 = M2C_BITWISE(f64, sp390.unk4C.unk18);
             memset(&this->unk2B0, 0, 0x10U);
         } else {
-            arg_sp1B0.Update(*((MKVector3 *) &this->unk260), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
-            arg_sp3D0 = arg_sp1B0;
-            arg_sp3D4 = arg_sp1B4;
-            arg_sp3D8 = arg_sp1B8;
-            arg_sp3DC = 0.0f;
-            arg_sp1A0.Update(*((MKVector3 *) &this->unk280), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
-            arg_sp3E0 = arg_sp1A0;
-            arg_sp3E4 = arg_sp1A4;
-            arg_sp3E8 = arg_sp1A8;
-            arg_sp3EC = 0.0f;
-            arg_sp190.Update(*((MKVector3 *) &this->unk2A0), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
-            arg_sp3FC = 0.0f;
-            arg_sp40C = 1.0f;
-            arg_sp3F0 = arg_sp190;
-            arg_sp3F4 = arg_sp194;
-            arg_sp3F8 = arg_sp198;
-            arg_sp400 = arg_sp440;
-            arg_sp404 = arg_sp444;
-            arg_sp408 = arg_sp448;
-            arg_sp3FC = 0.0f;
-            arg_sp3EC = 0.0f;
-            arg_sp3DC = 0.0f;
-            arg_sp40C = 1.0f;
+            sp1B0.Update(*((MKVector3 *) &this->unk260), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
+            sp390.unk40 = M2C_BITWISE(f32, sp1B0);
+            sp390.__vptr = sp1B4;
+            sp390.unk48 = sp1B8;
+            sp390.unk4C = 0.0f;
+            sp1A0.Update(*((MKVector3 *) &this->unk280), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
+            sp390.unk4C = M2C_BITWISE(f32, sp1A0);
+            sp390.unk4C.unk4 = sp1A4;
+            sp390.unk4C.unk8 = sp1A8;
+            unksp3EC = 0.0f;
+            sp190.Update(*((MKVector3 *) &this->unk2A0), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
+            sp390.unk4C.unk1C = 0.0f;
+            sp390.unk4C.unk2C = 1.0f;
+            sp390.unk4C.unk10 = M2C_BITWISE(f32, sp190);
+            sp390.unk4C.unk14 = sp194;
+            sp390.unk4C.unk18 = sp198;
+            sp390.unk4C.unk20 = M2C_BITWISE(f32, sp390.unk94.unk18);
+            sp390.unk4C.unk24 = M2C_BITWISE(f32, sp390.unk94.unk1C);
+            sp390.unk4C.unk28 = M2C_BITWISE(f32, sp390.unk94.unk20);
+            sp390.unk4C.unk1C = 0.0f;
+            unksp3EC = 0.0f;
+            sp390.unk4C = 0.0f;
+            sp390.unk4C.unk2C = 1.0f;
         }
-        arg_sp494 = 0;
-        arg_sp490.Init(*((Matrix *) &arg_sp3D0));
-        M2C_FIELD(M2C_FIELD(GetCamera(), void **, 0x44), M2C_UNK (**)(M2C_UNK *), 0x2C)(&arg_sp490);
-        arg_sp4E4 = 0;
-        arg_sp4E0.ClearData();
-        arg_sp4E0.Init(&this->unk1A0);
-        arg_sp588 = this;
-        M2C_FIELD(M2C_FIELD(GetCamera(), void **, 0x44), M2C_UNK (**)(M2C_UNK *), 0x2C)(&arg_sp4E0);
+        sp494 = 0;
+        sp490.Init(*((Matrix *) &sp390.unk40));
+        M2C_FIELD(M2C_FIELD(GetCamera(), void **, 0x44), M2C_UNK (**)(KDS_Message_SetCameraSimple *), 0x2C)(&sp490);
+        sp4E0.unk4 = 0;
+        sp4E0.ClearData();
+        sp4E0.Init(&this->unk1A0);
+        sp4E0.unkA8 = this;
+        M2C_FIELD(M2C_FIELD(GetCamera(), void **, 0x44), M2C_UNK (**)(HeroDataMessage *), 0x2C)(&sp4E0);
     }
 }
 #endif
@@ -2610,19 +2729,53 @@ void SpeedWaySpyro::ClearData() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpeedWaySpyro::Draw() {
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &arg_sp4C + 4, 0x40);
-    arg_sp10.Translate((Matrix *) &arg_sp10, *((MKVector3 *) &this->unk2D8));
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    Matrix sp50;
+    Matrix sp10;
+    M2C_UNK spC;
+
+    M2C_STRUCT_COPY((s32) &sp10.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) &sp10.unk3C + 4, 0x40);
+    sp10.Translate(&sp10, *((MKVector3 *) &this->unk2D8));
+    MKModel_SetWorldMatrix(this->unk4, sp10);
     MKModel_Draw(this->unk4, NULL);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+    MKModel_SetWorldMatrix(this->unk4, sp50);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void SpeedWaySpyro::Message(MKMessage *arg0) {
+    s8 sp161;
+    u8 sp160;
+    f32 sp15C;
+    f32 sp158;
+    s32 sp154;
+    s8 sp152;
+    s8 sp151;
+    s8 sp150;
+    f64 sp148;                                      /* compiler-managed */
+    f64 sp140;                                      /* compiler-managed */
+    u32 sp13C;
+    MKHeap *sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f32 sp114;
+    Matrix *sp110;
+    M2C_UNK sp100;
+    M2C_UNK spE0;
+    M2C_UNK spD0;
+    M2C_UNK spCC;
+    M2C_UNK sp90;
+    M2C_UNK sp8C;
+    s8 sp88;
+    s32 sp84;
+    s32 sp80;
+    MKProp sp30;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f1_5850;
     f32 var_f1_5853;
     s32 temp_r0_5678;
@@ -2631,6 +2784,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     void *temp_r3_5841;
     void *temp_r3_5914;
     void *temp_r3_5925;
+
     this->unk818.Message(arg0);
     this->unk888.Message(arg0);
     temp_r0_5678 = arg0->unk0;
@@ -2648,10 +2802,10 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         if (!(this->unk18 & 0x80000000)) {
             this->unk8B1 = 0;
             if ((u8) this->unk2E9 != 0) {
-                arg_sp84 = 0;
-                arg_sp80 = 0x403;
-                arg_sp88 = 1;
-                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp80, 0x403);
+                sp84 = 0;
+                sp80 = 0x403;
+                sp88 = 1;
+                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp80, 0x403);
                 this->unk2E9 = 0;
             }
             Disable();
@@ -2688,21 +2842,21 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         } else {
             var_f1_5853 = temp_f1_5850 * g_invPathMaxDistance;
         }
-        arg_sp90.GetPathMatrix(var_f1_5853);
-        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) &arg_sp8C + 4, 0x40);
-        __ml(M2C_FIELD(this, f32 *, 0x30C), *((MKVector3 *) &arg_sp40));
-        __ml(M2C_FIELD(this, f32 *, 0x308), *((MKVector3 *) &arg_sp50));
+        sp90.GetPathMatrix(var_f1_5853);
+        M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
+        __ml(M2C_FIELD(this, f32 *, 0x30C), *((MKVector3 *) &sp30.unk10));
+        __ml(M2C_FIELD(this, f32 *, 0x308), *((MKVector3 *) &sp30.unk20));
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp60 = arg_sp10;
-        arg_sp18 = arg_sp108 + arg_sp58;
-        arg_sp68 = (f64) arg_sp18;
+        sp30.unk30 = sp10;
+        sp18 = sp108 + M2C_BITWISE(f32, sp30.unk28);
+        sp30.unk38 = (f64) sp18;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(temp_r3_5841, f64 *, 0x10) = arg_sp20;
-        arg_sp28 = (f32) arg_sp68 + arg_sp48;
-        arg_sp70 = arg_sp20;
-        arg_sp78 = (f64) arg_sp28;
-        M2C_FIELD(temp_r3_5841, f64 *, 0x18) = (f64) arg_sp28;
+        M2C_FIELD(temp_r3_5841, f64 *, 0x10) = sp20;
+        sp28 = M2C_BITWISE(f32, sp30.unk38) + M2C_BITWISE(f32, sp30.unk18);
+        sp30.unk40 = sp20;
+        sp30.unk48 = (f64) sp28;
+        M2C_FIELD(temp_r3_5841, f64 *, 0x18) = (f64) sp28;
         break;
     case 0xE0:
         this->unk180.SetState(this, 7, 1U);
@@ -2717,33 +2871,33 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         temp_r3_5925 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
         temp_r4_5927 = M2C_FIELD(temp_r3_5925, u32 *, 8);
         if (temp_r4_5927 != this) {
-            arg_sp114 = 0;
-            arg_sp110 = 7;
-            arg_sp138 = 1;
-            arg_sp13C = temp_r4_5927;
-            arg_sp118 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-            arg_sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-            arg_sp150 = 1;
-            arg_sp15C = 2;
-            arg_sp158 = M2C_FIELD(temp_r3_5925, f32 *, 0x34);
-            arg_sp150 = 0;
-            (s16) arg_sp150 = 0;
-            arg_sp154 = -1;
-            arg_sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-            arg_sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-            arg_sp160 = 0U;
+            sp114 = 0.0f;
+            sp110 = (Matrix *)7;
+            sp138 = (MKHeap *)1;
+            sp13C = temp_r4_5927;
+            sp118 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+            sp150 = 1;
+            sp15C = 3e-45f;
+            sp158 = M2C_FIELD(temp_r3_5925, f32 *, 0x34);
+            sp151 = 0;
+            sp152 = 0;
+            sp154 = -1;
+            sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+            sp160 = 0;
             if (temp_r4_5927 != 0U) {
-                arg_sp30.GetPos();
-                arg_sp140 = arg_sp30;
-                arg_sp148 = arg_sp38;
+                sp30.GetPos();
+                sp140 = M2C_BITWISE(f64, sp30);
+                sp148 = M2C_BITWISE(f64, sp30.unk8);
             } else {
-                arg_sp140 = 0.0f;
-                arg_sp144 = 0.0f;
-                arg_sp148 = 0.0f;
+                sp140 = 0.0f;
+                unksp144 = 0.0f;
+                sp148 = 0.0f;
             }
-            arg_sp160 = 0U;
-            Hurt((HurtMessage *) &arg_sp110);
-            M2C_FIELD(temp_r3_5925, u8 *, 0x50) = arg_sp160;
+            sp161 = 0;
+            Hurt((HurtMessage *) &sp110);
+            M2C_FIELD(temp_r3_5925, u8 *, 0x50) = sp160;
         }
         break;
     }
@@ -2753,11 +2907,17 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'SpeedWay *' to
 void SpeedWaySpyro::Resolve() {
+    M2C_UNK sp80;
+    M2C_UNK sp4C;
+    M2C_UNK sp10;
+    s32 spC;
+    SpeedWaySpyro *sp8;
     MKProp *temp_r3_6024;
     MKSceneManager *temp_r5_6010;
     f32 temp_f1_6017;
     f32 temp_f2_6013;
     void *temp_r3_6045;
+
     MKProp::Resolve();
     this->unk2F0 = checked_cast<SpeedWay *, MKProp>(this->unk2F0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     temp_r5_6010 = this->unk2F0;
@@ -2769,12 +2929,12 @@ void SpeedWaySpyro::Resolve() {
     if (temp_r3_6024 != NULL) {
         this->unk390 = checked_cast<SpeedwayCynder *, MKProp>(temp_r3_6024);
     }
-    arg_sp10.GetPathMatrix(0.0f);
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
+    sp10.GetPathMatrix(0.0f);
+    M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
     temp_r3_6045 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp8 = this;
-    arg_spC = 0;
-    M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(M2C_UNK *, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &arg_sp80, 0, &this->unk70, 1, 1, 0);
+    sp8 = this;
+    spC = 0;
+    M2C_FIELD(M2C_FIELD(this, void **, 0x398), M2C_UNK (**)(M2C_UNK *, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
     Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
     this->unk180.SetState(this, 0, 1U);
     this->unk2FC.Resolve();

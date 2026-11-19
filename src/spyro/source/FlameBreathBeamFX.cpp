@@ -31,6 +31,57 @@ void FlameBreathBeam::Deinit() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'FlameBreathBeam' to
 void FlameBreathBeam::Draw() {
+    Matrix sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;                                      /* compiler-managed */
+    f64 sp160;                                      /* compiler-managed */
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    KDUniformSpline spC0;
+    f64 spB8;
+    f64 spB0;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp58;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_340;
     f32 temp_f24_96;
     f32 temp_f25_95;
@@ -53,6 +104,7 @@ void FlameBreathBeam::Draw() {
     s32 var_r28_89;
     u32 temp_r3_118;
     void *temp_r29_144;
+
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (this->unk104 != 0.0f) {
         var_f4_77 = (1.0f - (this->unk100 / 1.5f)) - 0.25f;
@@ -108,15 +160,15 @@ loop_15:
             } else {
                 var_f1_166 = 0.0f;
             }
-            arg_sp18 = 0.0f;
-            arg_spC0.GetMeasure(var_f1_166, (Matrix *) &this->unkC8, KDSpline_VelocityMixer);
-            arg_spB0 = arg_spC0;
-            arg_spB8 = arg_spC8;
+            sp18 = 0.0f;
+            spC0.GetMeasure(var_f1_166, (Matrix *) &this->unkC8, KDSpline_VelocityMixer);
+            spB0 = M2C_BITWISE(f64, spC0);
+            spB8 = (f64) spC0.unk8;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            arg_sp160 = arg_sp50;
-            arg_sp58 = (f32) arg_spB8 * arg_sp18;
-            arg_sp168 = (f64) arg_sp58;
-            var_f4_207 = ((f32) arg_sp168 * (f32) arg_sp168) + (((f32) arg_sp160 * (f32) arg_sp160) + (arg_sp164 * arg_sp164));
+            sp160 = sp50;
+            sp58 = (f32) spB8 * sp18;
+            sp168 = (f64) sp58;
+            var_f4_207 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + (unksp164 * unksp164));
             if (var_f4_207 > 0.000001f) {
                 if (var_f4_207 > 0.0f) {
                     temp_f1_213 = __frsqrte(var_f4_207);
@@ -126,18 +178,18 @@ loop_15:
                 } else if (var_f4_207 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_207 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_207;
-                    temp_r3_242 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_207;
+                    temp_r3_242 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_242) {          /* irregular */
                     case 0x7F800000:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_252 = 1;
                         } else {
                             var_r0_252 = 2;
                         }
                         break;
                     case 0x0:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_252 = 5;
                         } else {
                             var_r0_252 = 3;
@@ -155,77 +207,77 @@ loop_15:
             } else {
                 var_f3_274 = 0.0f;
             }
-            arg_sp160 = (f32) arg_sp160 * var_f3_274;
-            arg_sp164 *= var_f3_274;
-            arg_sp168 = (f32) arg_sp168 * var_f3_274;
-            arg_sp1A0.SetRotateAroundAxis(*((MKVector3 *) &arg_sp160), M2C_FIELD(temp_r29_144, f32 *, 0));
-            arg_sp180 = arg_sp1B0;
-            arg_sp188 = arg_sp1B8;
-            arg_sp14 = 0.0f;
-            arg_sp150.GetMeasure(var_f26_152, (Matrix *) &this->unkC8, KDSpline_PositionMixer);
-            arg_sp190 = arg_sp150;
-            arg_sp198 = arg_sp158;
+            sp160 = (f32) sp160 * var_f3_274;
+            unksp164 *= var_f3_274;
+            sp168 = (f32) sp168 * var_f3_274;
+            sp1A0.SetRotateAroundAxis(*((MKVector3 *) &sp160), M2C_FIELD(temp_r29_144, f32 *, 0));
+            sp180 = (f64) sp1A0.unk10;
+            sp188 = (f64) sp1A0.unk18;
+            sp14 = 0.0f;
+            sp150.GetMeasure(var_f26_152, (Matrix *) &this->unkC8, KDSpline_PositionMixer);
+            sp190 = sp150;
+            sp198 = sp158;
             if ((var_r26_143 == 0xE) || (var_r26_143 == 0)) {
-                arg_sp40 = 0.0f;
-                arg_sp44 = 0.0f;
-                arg_sp48 = 0.0f;
-                arg_sp4C = 1.0f;
-                arg_sp140 = (f64) arg_sp40;
-                arg_sp148 = (f64) arg_sp48;
-                arg_sp170 = (f64) arg_sp40;
-                arg_sp178 = (f64) arg_sp48;
+                sp40 = 0.0f;
+                sp44 = 0.0f;
+                sp48 = 0.0f;
+                sp4C = 1.0f;
+                sp140 = (f64) sp40;
+                sp148 = (f64) sp48;
+                sp170 = (f64) sp40;
+                sp178 = (f64) sp48;
             } else if (var_r26_143 >= 7) {
-                arg_sp3C = 1.0f;
+                sp3C = 1.0f;
                 temp_f1_340 = var_f22_104 * ((f32) (0xF - var_r26_143) * 0.125f);
-                arg_sp38 = temp_f1_340;
-                arg_sp30 = temp_f1_340;
-                arg_sp34 = temp_f1_340;
-                arg_sp138 = (f64) arg_sp38;
-                arg_sp130 = (f64) arg_sp30;
-                arg_sp170 = (f64) arg_sp30;
-                arg_sp178 = (f64) arg_sp38;
+                sp38 = temp_f1_340;
+                sp30 = temp_f1_340;
+                sp34 = temp_f1_340;
+                sp138 = (f64) sp38;
+                sp130 = (f64) sp30;
+                sp170 = (f64) sp30;
+                sp178 = (f64) sp38;
             } else {
-                arg_sp20 = var_f22_104;
-                arg_sp24 = var_f22_104;
-                arg_sp28 = var_f22_104;
-                arg_sp2C = var_f22_104;
-                arg_sp120 = (f64) arg_sp20;
-                arg_sp128 = (f64) arg_sp28;
-                arg_sp170 = (f64) arg_sp20;
-                arg_sp178 = (f64) arg_sp28;
+                sp20 = var_f22_104;
+                sp24 = var_f22_104;
+                sp28 = var_f22_104;
+                sp2C = var_f22_104;
+                sp120 = (f64) sp20;
+                sp128 = (f64) sp28;
+                sp170 = (f64) sp20;
+                sp178 = (f64) sp28;
             }
             if (var_r26_143 <= 5) {
                 var_f23_374 = var_f22_104 * (200.0f * this->unk110 * ((((0.5f * var_f26_152) + 0.05f) * M2C_FIELD(temp_r29_144, f32 *, 0xC)) + temp_f25_95));
             } else {
                 var_f23_374 = var_f22_104 * (200.0f * this->unk110 * (((0.05f + var_f26_152) * M2C_FIELD(temp_r29_144, f32 *, 0xC)) + temp_f24_96));
             }
-            MKSetColorV(*((MKVector4 *) &arg_sp170));
+            MKSetColorV(*((MKVector4 *) &sp170));
             MKSetTexCoord1F(var_f26_152, 0.0f);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            arg_sp100 = arg_spA0;
-            arg_spA8 = (f32) arg_sp188 * var_f23_374;
-            arg_sp108 = (f64) arg_spA8;
+            sp100 = spA0;
+            spA8 = (f32) sp188 * var_f23_374;
+            sp108 = (f64) spA8;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp110 = arg_sp90;
-            arg_sp98 = (f32) arg_sp198 + (f32) arg_sp108;
-            arg_sp118 = (f64) arg_sp98;
-            MKSetPositionV(*((MKVector3 *) &arg_sp110));
-            MKSetColorV(*((MKVector4 *) &arg_sp170));
+            sp110 = sp90;
+            sp98 = (f32) sp198 + (f32) sp108;
+            sp118 = (f64) sp98;
+            MKSetPositionV(*((MKVector3 *) &sp110));
+            MKSetColorV(*((MKVector4 *) &sp170));
             MKSetTexCoord1F(var_f26_152, 1.0f);
-            arg_sp80 = -(f32) arg_sp180;
-            arg_sp84 = -arg_sp184;
-            arg_sp88 = -(f32) arg_sp188;
-            arg_spD0 = (f64) arg_sp80;
-            arg_spD8 = (f64) arg_sp88;
+            sp80 = -(f32) sp180;
+            sp84 = -unksp184;
+            sp88 = -(f32) sp188;
+            spC0.unk10 = (f64) sp80;
+            spD8 = (f64) sp88;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            arg_spE0 = arg_sp70;
-            arg_sp78 = (f32) arg_spD8 * var_f23_374;
-            arg_spE8 = (f64) arg_sp78;
+            spE0 = sp70;
+            sp78 = (f32) spD8 * var_f23_374;
+            spE8 = (f64) sp78;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_spF0 = arg_sp60;
-            arg_sp68 = (f32) arg_sp198 + (f32) arg_spE8;
-            arg_spF8 = (f64) arg_sp68;
-            MKSetPositionV(*((MKVector3 *) &arg_spF0));
+            spF0 = sp60;
+            sp68 = (f32) sp198 + (f32) spE8;
+            spF8 = (f64) sp68;
+            MKSetPositionV(*((MKVector3 *) &spF0));
             var_r26_143 += 1;
             if (var_r26_143 < 0xF) {
                 goto loop_15;

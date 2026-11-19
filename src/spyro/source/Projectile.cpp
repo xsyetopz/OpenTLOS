@@ -19,18 +19,23 @@
 extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Projectile::SetAttachment(MKAttachment *arg0) {
+    Matrix sp90;
+    Matrix sp50;
+    M2C_UNK sp4C;
+    M2C_UNK spC;
     MKAttachment *temp_r3_58;
+
     this->unk13C = arg0;
     if (((MKAttachment *) this->unk13C != NULL) && ((MKModel *) this->unk4 != NULL)) {
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) &arg_spC + 4, 0x40);
-        M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) &spC + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
         temp_r3_58 = this->unk13C;
-        MKModel_GetRefPointMatrix((MKModel *) temp_r3_58->unk0, M2C_FIELD(temp_r3_58, s32 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp50, 1U);
-        arg_sp90.Multiply((Matrix *) &arg_sp90, (Matrix *) &arg_sp50);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+        MKModel_GetRefPointMatrix((MKModel *) temp_r3_58->unk0, M2C_FIELD(temp_r3_58, s32 *, 4) & 0x0FFFFFFF, &sp50, 1U);
+        sp90.Multiply(&sp90, &sp50);
+        MKModel_SetWorldMatrix(this->unk4, sp50);
     }
 }
 #endif
@@ -206,17 +211,22 @@ void Projectile::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Projectile::Draw() {
+    Matrix sp90;
+    Matrix sp50;
+    M2C_UNK sp4C;
+    M2C_UNK spC;
     MKAttachment *temp_r3_490;
+
     if (((MKAttachment *) this->unk13C != NULL) && ((MKModel *) this->unk4 != NULL)) {
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) &arg_spC + 4, 0x40);
-        M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_spC + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) &spC + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) &spC + 4, 0x40);
         temp_r3_490 = this->unk13C;
-        MKModel_GetRefPointMatrix((MKModel *) temp_r3_490->unk0, M2C_FIELD(temp_r3_490, s32 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp50, 1U);
-        arg_sp90.Multiply((Matrix *) &arg_sp90, (Matrix *) &arg_sp50);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+        MKModel_GetRefPointMatrix((MKModel *) temp_r3_490->unk0, M2C_FIELD(temp_r3_490, s32 *, 4) & 0x0FFFFFFF, &sp50, 1U);
+        sp90.Multiply(&sp90, &sp50);
+        MKModel_SetWorldMatrix(this->unk4, sp50);
     }
     GameProp::Draw();
 }

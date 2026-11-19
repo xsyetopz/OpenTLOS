@@ -4,6 +4,7 @@
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/Tools.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIButton.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIObject.h"
@@ -63,13 +64,16 @@ void ControllerInit_Update() {
     gGMState.SwitchState(5, 0, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: ')' expected
 void Language_Draw() {
+    RenderContext sp20;
+    Tools_Ortho sp10;
+
     if ((void **) pSystem != NULL) {
-        arg_sp10.Tools_Ortho();
-        arg_sp20.RenderContext();
-        M2C_FIELD(*pSystem, M2C_UNK (**)(void **, M2C_UNK *), 0x1C)(pSystem, &arg_sp20);
-        arg_sp10.~Tools_Ortho(-1);
+        sp10.Tools_Ortho();
+        sp20.RenderContext();
+        M2C_FIELD(*pSystem, M2C_UNK (**)(void **, RenderContext *), 0x1C)(pSystem, &sp20);
+        sp10.~Tools_Ortho(-1);
     }
 }
 #endif

@@ -941,12 +941,15 @@ loop_1:
 }
 
 #if 0 // DRAFT: undefined identifier 'GPInit__FP16_GXRenderModeObj'
-s32 main(s32 arg0, void *arg1, void *arg_sp0, s32 arg_sp10, M2C_UNK arg_sp20) {
+s32 main(s32 arg0, void *arg1) {
+    Matrix sp20;
+    s32 sp10;
     GXRenderModeObj *temp_r3_971;
     s32 var_r26_1145;
     s32 var_r26_1167;
     s32 var_r29_1146;
     s32 var_r29_1169;
+
     DVDSetAutoFatalMessaging(1);
     GPInit__FP16_GXRenderModeObj(NULL);
     M2C_ERROR(/* unknown instruction: mtspr GQR2, $r3 */);
@@ -960,9 +963,9 @@ s32 main(s32 arg0, void *arg1, void *arg_sp0, s32 arg_sp10, M2C_UNK arg_sp20) {
     GPGetCurrentBuffer__Fv();
     XFONTSetFrameBuffer__FPv(M2C_ERROR(/* Read from unset register $r3 */));
     XFONTSetFgColor__FUl(0U);
-    SetIdentity__6MatrixFv((Matrix *) &arg_sp20);
-    GXLoadPosMtxImm((f32 (*)[4]) &arg_sp20, 3U);
-    GXLoadNrmMtxImm((f32 (*)[4]) &arg_sp20, 3U);
+    SetIdentity__6MatrixFv(&sp20);
+    GXLoadPosMtxImm((f32 (*)[4]) &sp20, 3U);
+    GXLoadNrmMtxImm((f32 (*)[4]) &sp20, 3U);
     GXSetLineWidth(6U, GX_TO_ZERO);
     GXSetPointSize(4U, GX_TO_ZERO);
     GXSetCullMode(GX_CULL_NONE);
@@ -991,8 +994,8 @@ s32 main(s32 arg0, void *arg1, void *arg_sp0, s32 arg_sp10, M2C_UNK arg_sp20) {
     GXSetNumChans(1U);
     GXSetChanCtrl(GX_COLOR0A0, 0U, GX_SRC_REG, GX_SRC_VTX, 0U, GX_DF_NONE, GX_AF_NONE);
     GXSetChanCtrl(GX_COLOR1A1, 0U, GX_SRC_REG, GX_SRC_REG, 0U, GX_DF_NONE, GX_AF_NONE);
-    arg_sp10 = lit_785;
-    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &arg_sp10);
+    sp10 = lit_785;
+    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &sp10);
     GXSetNumTevStages(1U);
     GXSetNumTexGens(1U);
     GXSetTevOp(GX_TEVSTAGE0, GX_MODULATE);
@@ -1058,16 +1061,18 @@ void System_SetDisplayMode(int arg0, int arg1, int arg2, int arg3, int arg4) {
     M2C_FIELD(&gDisplay, f32 *, 0xC) = (f32) (1.0f / M2C_FIELD(&gDisplay, f32 *, 8));
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void System_GameDraw() {
+    Matrix sp10;
     f32 temp_f30_1418;
     f32 temp_f31_1470;
     s32 temp_r0_1367;
     s32 temp_r3_1397;
     s32 temp_r3_1408;
     u32 temp_ret_1419;
+
     MKView_Push();
-    arg_sp10.SetIdentity();
+    sp10.SetIdentity();
     Game_Draw();
     MKCollision_Draw();
     MKView_Pop();

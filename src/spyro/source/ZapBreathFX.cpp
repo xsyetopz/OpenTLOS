@@ -1,5 +1,6 @@
 #include "spyro/source/ZapBreathFX.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -22,13 +23,14 @@
 #include "spyro/source/KDSound.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/ShakeCameraMessage.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapCage.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -462,6 +464,172 @@ loop_49:
 
 #if 0 // DRAFT: illegal type
 void ZapBreathFX::UpdateZapMissiles() {
+    u8 sp4D0;
+    s32 sp4CC;
+    void *sp4C8;
+    s32 sp4C4;
+    f32 sp4C0;
+    s32 sp4BC;
+    s8 sp4BB;
+    s8 sp4BA;
+    s16 sp4B8;
+    f32 sp4B4;
+    f32 sp4B0;
+    f32 sp4AC;
+    f32 sp4A8;
+    f32 sp4A4;
+    f32 sp4A0;
+    f32 sp498;
+    f32 sp494;
+    f32 sp490;
+    f32 sp488;
+    f32 sp484;
+    f32 sp480;
+    Matrix sp440;
+    f64 sp438;                                      /* compiler-managed */
+    f64 sp430;                                      /* compiler-managed */
+    f64 sp428;
+    f64 sp420;
+    f64 sp418;
+    f64 sp410;
+    f64 sp408;
+    f64 sp400;
+    f64 sp3F8;
+    f64 sp3F0;
+    f64 sp3E8;
+    f64 sp3E0;
+    f64 sp3D8;
+    f64 sp3D0;
+    f64 sp3C8;
+    f64 sp3C0;
+    f64 sp3B8;
+    f64 sp3B0;
+    f64 sp3A8;
+    f64 sp3A0;
+    f64 sp398;
+    f64 sp390;
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;
+    f64 sp360;
+    MKVector3 sp350;
+    MKVector3 sp340;
+    f64 sp338;
+    f64 sp330;
+    f64 sp328;
+    f64 sp320;
+    MKVector3 sp310;
+    MKVector3 sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    MKVector3 sp2E0;
+    MKVector3 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f32 sp1E8;
+    f32 sp1E4;
+    f32 sp1E0;
+    f32 sp1DC;
+    f32 sp1D8;
+    f32 sp1D4;
+    f32 sp1D0;
+    f32 sp1C8;
+    f32 sp1C4;
+    f32 sp1C0;
+    f32 sp1B8;
+    f32 sp1AC;
+    f32 sp1A8;
+    f32 sp1A4;
+    f32 sp1A0;
+    f32 sp198;
+    f32 sp188;
+    f32 sp184;
+    f32 sp180;
+    f32 sp178;
+    f32 sp168;
+    f32 sp164;
+    f32 sp160;
+    f32 sp158;
+    f32 sp148;
+    f32 sp144;
+    f32 sp140;
+    f32 sp138;
+    f32 sp128;
+    f32 sp11C;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spC8;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp94;
+    f32 sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    s32 sp8;
     Enemy *temp_r3_1165;
     MKVector3 *temp_r8_738;
     ManagedLight *temp_r4_778;
@@ -560,6 +728,7 @@ void ZapBreathFX::UpdateZapMissiles() {
     void *temp_r5_1394;
     void *temp_r7_767;
     void *temp_r9_1415;
+
     var_r29_717 = 0;
     var_r27_718 = 0;
     this->unkD0 -= gUpdateTimeDelta;
@@ -567,7 +736,7 @@ void ZapBreathFX::UpdateZapMissiles() {
         temp_r3_723 = this->unkAC + var_r27_718;
         if ((u8) M2C_FIELD(temp_r3_723, u8 *, 0x60) != 0) {
             M2C_FIELD(temp_r3_723, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r3_723, f32 *, 0x40) - gUpdateTimeDelta);
-            arg_sp8 = 1;
+            sp8 = 1;
             temp_r8_738 = this->unkAC + var_r27_718;
             ((KDSoundFader *) (temp_r8_738 + 0x64))->Update(GS_SpyroSpare1, 1U, M2C_FIELD(temp_r8_738, u8 *, 0x60), NULL, temp_r8_738, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             temp_r26_745 = this->unkAC + var_r27_718;
@@ -586,40 +755,40 @@ void ZapBreathFX::UpdateZapMissiles() {
                 if (temp_r4_778 != NULL) {
                     ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_778, 0U);
                 }
-                arg_sp1D0 = 1.0f;
-                arg_sp1D4 = 1.0f;
-                arg_sp1E8 = 0.0f;
-                arg_sp1D8 = 1.0f;
-                arg_sp1DC = 1.0f;
-                arg_sp1E0 = 0.0f;
-                arg_sp1E4 = 0.0f;
-                arg_sp3B0 = (f64) arg_sp1D0;
-                arg_sp3B8 = (f64) arg_sp1D8;
-                arg_sp3C0 = (f64) arg_sp1E0;
-                arg_sp3C8 = (f64) arg_sp1E8;
-                this->unkCC->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &arg_sp3C0), 50.0f, (MKVector4) &arg_sp3B0);
+                sp1D0 = 1.0f;
+                sp1D4 = 1.0f;
+                sp1E8 = 0.0f;
+                sp1D8 = 1.0f;
+                sp1DC = 1.0f;
+                sp1E0 = 0.0f;
+                sp1E4 = 0.0f;
+                sp3B0 = (f64) sp1D0;
+                sp3B8 = (f64) sp1D8;
+                sp3C0 = (f64) sp1E0;
+                sp3C8 = (f64) sp1E8;
+                this->unkCC->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &sp3C0), 50.0f, (MKVector4) &sp3B0);
                 var_r26_810 = 0;
                 do {
                     temp_f25_817 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                     temp_f24_822 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_sp1C0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_sp1C4 = temp_f24_822;
-                    arg_sp1C8 = temp_f25_817;
-                    arg_sp390 = (f64) arg_sp1C0;
-                    arg_sp398 = (f64) arg_sp1C8;
+                    sp1C0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp1C4 = temp_f24_822;
+                    sp1C8 = temp_f25_817;
+                    sp390 = (f64) sp1C0;
+                    sp398 = (f64) sp1C8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    arg_sp3A0 = arg_sp1B0;
-                    arg_sp1B8 = (f32) arg_sp398 * 1000.0f;
-                    arg_sp3A8 = (f64) arg_sp1B8;
+                    sp3A0 = sp1B0;
+                    sp1B8 = (f32) sp398 * 1000.0f;
+                    sp3A8 = (f64) sp1B8;
                     temp_f1_848 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
-                    arg_sp1A0 = 1.0f;
-                    arg_sp1A4 = 1.0f;
-                    arg_sp28 = temp_f1_848;
-                    arg_sp1A8 = 0.4f;
-                    arg_sp1AC = 1.0f;
-                    arg_sp380 = (f64) arg_sp1A0;
-                    arg_sp388 = (f64) arg_sp1A8;
-                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &arg_sp3A0), arg_sp28, *((MKVector4 *) &arg_sp380), -1979.9999f);
+                    sp1A0 = 1.0f;
+                    sp1A4 = 1.0f;
+                    sp28 = temp_f1_848;
+                    sp1A8 = 0.4f;
+                    sp1AC = 1.0f;
+                    sp380 = (f64) sp1A0;
+                    sp388 = (f64) sp1A8;
+                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &sp3A0), sp28, *((MKVector4 *) &sp380), -1979.9999f);
                     var_r26_810 += 1;
                 } while (var_r26_810 < 0xA);
                 temp_r4_871 = *(this->unkAC + (var_r27_718 + 0x58));
@@ -633,34 +802,34 @@ void ZapBreathFX::UpdateZapMissiles() {
                     temp_r3_889 = this->unkAC;
                     temp_f1_890 = M2C_FIELD(temp_r4_887, f64 *, 0x30);
                     temp_f0_891 = M2C_FIELD(temp_r4_887, f64 *, 0x38);
-                    arg_sp420 = temp_f1_890;
-                    arg_sp428 = temp_f0_891;
+                    sp420 = temp_f1_890;
+                    sp428 = temp_f0_891;
                     M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r5, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f2, $f8, $f2 */);
                     var_f2_899 = 0.0f;
-                    arg_sp188 = 0.0f;
-                    arg_sp180 = 0.0f;
-                    arg_sp184 = 100.0f;
-                    arg_sp198 = (f32) arg_sp428 - M2C_FIELD((temp_r3_889 + (var_r27_718 + 0x30)), f32 *, 8);
-                    arg_sp370 = (f64) arg_sp180;
-                    arg_sp410 = arg_sp190;
-                    arg_sp418 = (f64) arg_sp198;
-                    arg_sp378 = (f64) arg_sp188;
+                    sp188 = 0.0f;
+                    sp180 = 0.0f;
+                    sp184 = 100.0f;
+                    sp198 = (f32) sp428 - M2C_FIELD((temp_r3_889 + (var_r27_718 + 0x30)), f32 *, 8);
+                    sp370 = (f64) sp180;
+                    sp410 = sp190;
+                    sp418 = (f64) sp198;
+                    sp378 = (f64) sp188;
                     M2C_ERROR(/* unknown instruction: ps_add $f3, $f8, $f3 */);
-                    arg_sp400 = arg_sp170;
-                    arg_sp178 = (f32) arg_sp428 + (f32) arg_sp378;
-                    arg_sp408 = (f64) arg_sp178;
+                    sp400 = sp170;
+                    sp178 = (f32) sp428 + (f32) sp378;
+                    sp408 = (f64) sp178;
                     M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r4, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f3, $f4, $f3 */);
                     temp_r3_933 = temp_r3_889 + (var_r27_718 + 0x30);
-                    arg_sp430 = arg_sp70;
-                    arg_sp78 = (f32) arg_sp408 - M2C_FIELD((temp_r3_889 + var_r27_718), f32 *, 8);
-                    arg_sp360 = arg_sp70;
-                    arg_sp438 = (f64) arg_sp78;
+                    sp430 = sp70;
+                    sp78 = (f32) sp408 - M2C_FIELD((temp_r3_889 + var_r27_718), f32 *, 8);
+                    sp360 = sp70;
+                    sp438 = (f64) sp78;
                     M2C_FIELD(temp_r3_933, f64 *, 0) = temp_f1_890;
                     M2C_FIELD(temp_r3_933, f64 *, 8) = temp_f0_891;
-                    arg_sp368 = (f64) arg_sp78;
-                    var_f25_953 = ((f32) arg_sp438 * (f32) arg_sp438) + (((f32) arg_sp430 * (f32) arg_sp430) + (arg_sp434 * arg_sp434));
+                    sp368 = (f64) sp78;
+                    var_f25_953 = ((f32) sp438 * (f32) sp438) + (((f32) sp430 * (f32) sp430) + (unksp434 * unksp434));
                     if (var_f25_953 > 0.000001f) {
                         if (var_f25_953 > 0.0f) {
                             temp_f1_958 = __frsqrte(var_f25_953);
@@ -670,18 +839,18 @@ void ZapBreathFX::UpdateZapMissiles() {
                         } else if (var_f25_953 < M2C_BITWISE(f32, 0.0)) {
                             var_f25_953 = __float_nan;
                         } else {
-                            arg_sp18 = var_f25_953;
-                            temp_r3_987 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                            sp18 = var_f25_953;
+                            temp_r3_987 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                             switch (temp_r3_987) {  /* switch 1; irregular */
                             case 0x7F800000:        /* switch 1 */
-                                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                     var_r0_997 = 1;
                                 } else {
                                     var_r0_997 = 2;
                                 }
                                 break;
                             case 0x0:               /* switch 1 */
-                                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                     var_r0_997 = 5;
                                 } else {
                                     var_r0_997 = 3;
@@ -699,20 +868,20 @@ void ZapBreathFX::UpdateZapMissiles() {
                     } else {
                         var_f25_953 = 0.0f;
                     }
-                    arg_sp430 = (f32) arg_sp430 * var_f2_899;
-                    arg_sp434 *= var_f2_899;
-                    arg_sp438 = (f32) arg_sp438 * var_f2_899;
+                    sp430 = (f32) sp430 * var_f2_899;
+                    unksp434 *= var_f2_899;
+                    sp438 = (f32) sp438 * var_f2_899;
                     if (var_f25_953 > 5.0f) {
                         temp_r26_1038 = this->unkAC + var_r27_718;
-                        Normalise(*((MKVector3 *) &arg_sp340));
-                        KDMath_Slerp(*((MKVector3 *) &arg_sp350), *((MKVector3 *) &arg_sp340), 0.5f * -((M2C_FIELD(temp_r26_1038, f32 *, 0x40) * 0.25f) - 1.0f));
+                        Normalise(sp340);
+                        KDMath_Slerp(sp350, sp340, 0.5f * -((M2C_FIELD(temp_r26_1038, f32 *, 0x40) * 0.25f) - 1.0f));
                         temp_r4_1052 = var_r27_718 + 0x10;
                         temp_r3_1055 = this->unkAC + temp_r4_1052;
-                        M2C_FIELD(temp_r3_1055, f64 *, 0) = arg_sp350;
-                        M2C_FIELD(temp_r3_1055, f64 *, 8) = arg_sp358;
+                        M2C_FIELD(temp_r3_1055, f64 *, 0) = M2C_BITWISE(f64, sp350);
+                        M2C_FIELD(temp_r3_1055, f64 *, 8) = (f64) sp350.unk8;
                         temp_r3_1066 = this->unkAC + temp_r4_1052;
-                        var_f6_1072 = ((f32) arg_sp418 * (f32) arg_sp418) + (((f32) arg_sp410 * (f32) arg_sp410) + (arg_sp414 * arg_sp414));
-                        var_f4_1078 = ((f32) arg_sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + (((f32) arg_sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + (arg_sp434 * M2C_FIELD(temp_r3_1066, f32 *, 4)));
+                        var_f6_1072 = ((f32) sp418 * (f32) sp418) + (((f32) sp410 * (f32) sp410) + (unksp414 * unksp414));
+                        var_f4_1078 = (sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + ((sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + (unksp434 * M2C_FIELD(temp_r3_1066, f32 *, 4)));
                         if (var_f6_1072 > 0.0f) {
                             temp_f1_1080 = __frsqrte(var_f6_1072);
                             temp_f1_1086 = 0.5 * temp_f1_1080 * -(((f64) var_f6_1072 * (temp_f1_1080 * temp_f1_1080)) - 3.0);
@@ -721,18 +890,18 @@ void ZapBreathFX::UpdateZapMissiles() {
                         } else if (var_f6_1072 < M2C_BITWISE(f32, 0.0)) {
                             var_f6_1072 = __float_nan;
                         } else {
-                            arg_sp14 = var_f6_1072;
-                            temp_r3_1109 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                            sp14 = var_f6_1072;
+                            temp_r3_1109 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                             switch (temp_r3_1109) { /* switch 2; irregular */
                             case 0x7F800000:        /* switch 2 */
-                                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                     var_r0_1119 = 1;
                                 } else {
                                     var_r0_1119 = 2;
                                 }
                                 break;
                             case 0x0:               /* switch 2 */
-                                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                     var_r0_1119 = 5;
                                 } else {
                                     var_r0_1119 = 3;
@@ -787,14 +956,14 @@ void ZapBreathFX::UpdateZapMissiles() {
                             M2C_FIELD(temp_r3_1268, f32 *, 0x20) = 0.0f;
                             M2C_FIELD(temp_r3_1268, f32 *, 0x28) = 0.0f;
                             temp_f0_1288 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            arg_sp60 = 0.0f;
-                            arg_sp68 = 0.0f;
-                            arg_sp64 = 0.0f;
+                            sp60 = 0.0f;
+                            sp68 = 0.0f;
+                            sp64 = 0.0f;
                             M2C_FIELD(temp_r3_1268, f32 *, 0x24) = (f32) (2.0f * temp_f0_1288);
-                            M2C_FIELD(temp_r25_1273, f64 *, 0) = (f64) arg_sp60;
-                            arg_sp330 = (f64) arg_sp60;
-                            arg_sp338 = (f64) arg_sp68;
-                            M2C_FIELD(temp_r25_1273, f64 *, 8) = (f64) arg_sp68;
+                            M2C_FIELD(temp_r25_1273, f64 *, 0) = (f64) sp60;
+                            sp330 = (f64) sp60;
+                            sp338 = (f64) sp68;
+                            M2C_FIELD(temp_r25_1273, f64 *, 8) = (f64) sp68;
                             M2C_FIELD(temp_r25_1273, f32 *, 0x18) = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
                             M2C_FIELD(temp_r25_1273, f32 *, 0x10) = 0.0f;
                             M2C_FIELD(temp_r25_1273, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(this, void **, 0x9E8), f32 *, 0xF4);
@@ -803,25 +972,25 @@ void ZapBreathFX::UpdateZapMissiles() {
                         do {
                             temp_f23_1316 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                             temp_f22_1321 = MKRand_Float(&gViewSeed, 0.0f, 2.5f);
-                            arg_sp160 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            arg_sp164 = temp_f22_1321;
-                            arg_sp168 = temp_f23_1316;
-                            arg_sp320 = (f64) arg_sp160;
-                            arg_sp328 = (f64) arg_sp168;
+                            sp160 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                            sp164 = temp_f22_1321;
+                            sp168 = temp_f23_1316;
+                            sp320 = (f64) sp160;
+                            sp328 = (f64) sp168;
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                            arg_sp3F0 = arg_sp150;
-                            arg_sp158 = (f32) arg_sp328 * 1000.0f;
-                            arg_sp3F8 = (f64) arg_sp158;
-                            ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &arg_sp3F0), 3.0f, 0U);
+                            sp3F0 = sp150;
+                            sp158 = (f32) sp328 * 1000.0f;
+                            sp3F8 = (f64) sp158;
+                            ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*(this->unkAC + var_r27_718), *((MKVector3 *) &sp3F0), 3.0f, 0U);
                             var_r25_1310 += 1;
                         } while (var_r25_1310 < 0x14);
                     }
                 } else {
-                    Normalise(*((MKVector3 *) &arg_sp300));
-                    KDMath_Slerp(*((MKVector3 *) &arg_sp310), *((MKVector3 *) &arg_sp300), 0.075f);
+                    Normalise(sp300);
+                    KDMath_Slerp(sp310, sp300, 0.075f);
                     temp_r3_1368 = this->unkAC + (var_r27_718 + 0x10);
-                    M2C_FIELD(temp_r3_1368, f64 *, 0) = arg_sp310;
-                    M2C_FIELD(temp_r3_1368, f64 *, 8) = arg_sp318;
+                    M2C_FIELD(temp_r3_1368, f64 *, 0) = M2C_BITWISE(f64, sp310);
+                    M2C_FIELD(temp_r3_1368, f64 *, 8) = (f64) sp310.unk8;
                     temp_r3_1374 = this->unkAC + var_r27_718;
                     var_f2_1383 = (M2C_FIELD(temp_r3_1374, f32 *, 0x28) * M2C_FIELD(temp_r3_1374, f32 *, 0x18)) + ((M2C_FIELD(temp_r3_1374, f32 *, 0x20) * M2C_FIELD(temp_r3_1374, f32 *, 0x10)) + (M2C_FIELD(temp_r3_1374, f32 *, 0x24) * M2C_FIELD(temp_r3_1374, f32 *, 0x14)));
                     if (var_f2_1383 < 0.0f) {
@@ -831,109 +1000,109 @@ void ZapBreathFX::UpdateZapMissiles() {
                 }
                 temp_f29_1393 = gUpdateTimeDelta;
                 temp_r5_1394 = this->unkAC + var_r27_718;
-                arg_sp3E0 = M2C_FIELD(temp_r5_1394, f64 *, 0);
-                arg_sp3E8 = M2C_FIELD(temp_r5_1394, f64 *, 8);
-                arg_sp2D0.operator*(M2C_FIELD(temp_r5_1394, f32 *, 0x48));
-                arg_sp2E0.operator*(6000.0f);
+                sp3E0 = M2C_FIELD(temp_r5_1394, f64 *, 0);
+                sp3E8 = M2C_FIELD(temp_r5_1394, f64 *, 8);
+                sp2D0.operator*(M2C_FIELD(temp_r5_1394, f32 *, 0x48));
+                sp2E0.operator*(6000.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                arg_sp2F0 = arg_sp50;
+                sp2F0 = sp50;
                 temp_r9_1415 = this->unkAC + var_r27_718;
-                arg_sp58 = arg_sp2E8 * temp_f29_1393;
-                arg_sp2F8 = (f64) arg_sp58;
+                sp58 = sp2E0.unk8 * temp_f29_1393;
+                sp2F8 = (f64) sp58;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r9, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r9, 0x0, qr0 */);
-                M2C_FIELD(temp_r9_1415, f32 *, 8) = (f32) (M2C_FIELD(temp_r9_1415, f32 *, 8) + (f32) arg_sp2F8);
-                arg_sp480 = 0.0f;
-                arg_sp484 = 0.0f;
-                arg_sp488 = 0.0f;
-                arg_sp490 = 0.0f;
-                arg_sp494 = 0.0f;
-                arg_sp498 = 0.0f;
-                arg_sp4A0 = 0.0f;
-                arg_sp4A4 = 0.0f;
-                arg_sp4A8 = 0.0f;
-                arg_sp4AC = 1.0f;
-                arg_sp4B0 = 0.0f;
-                arg_sp4B4 = 0.0f;
-                arg_sp4B8 = 0;
-                arg_sp4B8 = 0;
-                (s8) arg_sp4B8 = 0;
-                arg_sp4BC = 0;
-                arg_sp4C0 = 3.4028235e38f;
-                arg_sp4C4 = 0;
-                arg_sp4C8 = NULL;
-                arg_sp4CC = -1;
-                arg_sp4D0 = 0U;
-                if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp3E0), *(this->unkAC + var_r27_718), (MKCollisionResult *) &arg_sp480, (MKCollisionMode) 1, 0x0C000004) != 0) {
-                    if ((arg_sp4D0 != 0) && (arg_sp4C8 != NULL) && (var_r0_1469 = M2C_FIELD(arg_sp4C8, u32 *, 8), ((var_r0_1469 == 0U) == 0))) {
+                M2C_FIELD(temp_r9_1415, f32 *, 8) = (f32) (M2C_FIELD(temp_r9_1415, f32 *, 8) + (f32) sp2F8);
+                sp480 = 0.0f;
+                sp484 = 0.0f;
+                sp488 = 0.0f;
+                sp490 = 0.0f;
+                sp494 = 0.0f;
+                sp498 = 0.0f;
+                sp4A0 = 0.0f;
+                sp4A4 = 0.0f;
+                sp4A8 = 0.0f;
+                sp4AC = 1.0f;
+                sp4B0 = 0.0f;
+                sp4B4 = 0.0f;
+                sp4B8 = 0;
+                sp4BA = 0;
+                sp4BB = 0;
+                sp4BC = 0;
+                sp4C0 = 3.4028235e38f;
+                sp4C4 = 0;
+                sp4C8 = NULL;
+                sp4CC = -1;
+                sp4D0 = 0;
+                if (MKCollision_RayCollide(*((MKVector3 *) &sp3E0), *(this->unkAC + var_r27_718), (MKCollisionResult *) &sp480, (MKCollisionMode) 1, 0x0C000004) != 0) {
+                    if ((sp4D0 != 0) && (sp4C8 != NULL) && (var_r0_1469 = M2C_FIELD(sp4C8, u32 *, 8), ((var_r0_1469 == 0U) == 0))) {
 
                     } else {
                         var_r0_1469 = 0U;
                     }
                     if (var_r0_1469 == 0U) {
-                        this->unk9F8->SpawnScorchMark(*((MKVector3 *) &arg_sp480), *((MKVector3 *) &arg_sp490), 4.0f);
-                        KDSound_Play3d(GS_Emergency14, (MKVector3 *) &arg_sp480, 0U, -1, 0.0f, 0U);
+                        this->unk9F8->SpawnScorchMark(*((MKVector3 *) &sp480), *((MKVector3 *) &sp490), 4.0f);
+                        KDSound_Play3d(GS_Emergency14, (MKVector3 *) &sp480, 0U, -1, 0.0f, 0U);
                         var_r25_1491 = 0;
                         do {
                             temp_f22_1498 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                             temp_f23_1503 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-                            arg_sp140 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            arg_sp144 = temp_f23_1503;
-                            arg_sp148 = temp_f22_1498;
-                            arg_sp2A0 = (f64) arg_sp140;
-                            arg_sp2A8 = (f64) arg_sp148;
+                            sp140 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                            sp144 = temp_f23_1503;
+                            sp148 = temp_f22_1498;
+                            sp2A0 = (f64) sp140;
+                            sp2A8 = (f64) sp148;
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            arg_sp2B0 = arg_sp130;
-                            arg_sp138 = (f32) arg_sp2A8 + arg_sp498;
-                            arg_sp2B8 = (f64) arg_sp138;
+                            sp2B0 = sp130;
+                            sp138 = (f32) sp2A8 + sp498;
+                            sp2B8 = (f64) sp138;
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                            arg_sp2C0 = arg_sp120;
-                            arg_sp128 = (f32) arg_sp2B8 * 800.0f;
-                            arg_sp2C8 = (f64) arg_sp128;
+                            sp2C0 = sp120;
+                            sp128 = (f32) sp2B8 * 800.0f;
+                            sp2C8 = (f64) sp128;
                             temp_f1_1541 = MKRand_Float(&gViewSeed, 22.0f, 25.0f);
-                            arg_sp110 = 1.0f;
-                            arg_sp114 = 1.0f;
-                            arg_sp24 = temp_f1_1541;
-                            arg_sp118 = 0.4f;
-                            arg_sp11C = 1.0f;
-                            arg_sp290 = (f64) arg_sp110;
-                            arg_sp298 = (f64) arg_sp118;
-                            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &arg_sp480), *((MKVector3 *) &arg_sp2C0), arg_sp24, *((MKVector4 *) &arg_sp290), -1979.9999f);
+                            sp110 = 1.0f;
+                            sp114 = 1.0f;
+                            sp24 = temp_f1_1541;
+                            sp118 = 0.4f;
+                            sp11C = 1.0f;
+                            sp290 = (f64) sp110;
+                            sp298 = (f64) sp118;
+                            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp480), *((MKVector3 *) &sp2C0), sp24, *((MKVector4 *) &sp290), -1979.9999f);
                             var_r25_1491 += 1;
                         } while (var_r25_1491 < 5);
                         temp_r3_1561 = M2C_FIELD(this, void **, 0x9E8);
                         temp_r3_1565 = M2C_FIELD(M2C_FIELD(temp_r3_1561, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1561);
                         if (temp_r3_1565 != NULL) {
                             temp_r25_1568 = M2C_FIELD(temp_r3_1565, void **, 0x2C);
-                            M2C_FIELD(temp_r3_1565, f64 *, 0) = (f64) arg_sp480;
-                            M2C_FIELD(temp_r3_1565, f64 *, 8) = (f64) arg_sp488;
+                            M2C_FIELD(temp_r3_1565, f64 *, 0) = (f64) sp480;
+                            M2C_FIELD(temp_r3_1565, f64 *, 8) = (f64) sp488;
                             M2C_FIELD(temp_r3_1565, f32 *, 0x20) = 0.0f;
                             M2C_FIELD(temp_r3_1565, f32 *, 0x28) = 0.0f;
                             temp_f0_1583 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            arg_sp40 = 0.0f;
-                            arg_sp48 = 0.0f;
-                            arg_sp44 = 0.0f;
+                            sp40 = 0.0f;
+                            sp48 = 0.0f;
+                            sp44 = 0.0f;
                             M2C_FIELD(temp_r3_1565, f32 *, 0x24) = (f32) (2.0f * temp_f0_1583);
-                            M2C_FIELD(temp_r25_1568, f64 *, 0) = (f64) arg_sp40;
-                            arg_sp280 = (f64) arg_sp40;
-                            arg_sp288 = (f64) arg_sp48;
-                            M2C_FIELD(temp_r25_1568, f64 *, 8) = (f64) arg_sp48;
+                            M2C_FIELD(temp_r25_1568, f64 *, 0) = (f64) sp40;
+                            sp280 = (f64) sp40;
+                            sp288 = (f64) sp48;
+                            M2C_FIELD(temp_r25_1568, f64 *, 8) = (f64) sp48;
                             M2C_FIELD(temp_r25_1568, f32 *, 0x18) = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
                             M2C_FIELD(temp_r25_1568, f32 *, 0x10) = 0.0f;
                             M2C_FIELD(temp_r25_1568, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(this, void **, 0x9E8), f32 *, 0xF4);
                         }
                     }
                 }
-                M2C_STRUCT_COPY((s32) &arg_sp43C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &unksp43C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r3_1620 = this->unkAC + var_r27_718;
-                arg_sp470 = M2C_FIELD(temp_r3_1620, f32 *, 0);
-                arg_sp474 = M2C_FIELD(temp_r3_1620, f32 *, 4);
-                arg_sp478 = M2C_FIELD(temp_r3_1620, f32 *, 8);
-                arg_sp47C = 1.0f;
-                MKModel_SetWorldMatrix(this->unkE0, *((Matrix *) &arg_sp440));
+                sp440.unk30 = M2C_FIELD(temp_r3_1620, f32 *, 0);
+                sp440.unk34 = M2C_FIELD(temp_r3_1620, f32 *, 4);
+                sp440.unk38 = M2C_FIELD(temp_r3_1620, f32 *, 8);
+                sp440.unk3C = 1.0f;
+                MKModel_SetWorldMatrix(this->unkE0, sp440);
                 temp_r3_1631 = this->unkAC + var_r27_718;
                 temp_r4_1632 = M2C_FIELD(temp_r3_1631, void **, 0x5C);
                 if (temp_r4_1632 != NULL) {
@@ -949,15 +1118,15 @@ void ZapBreathFX::UpdateZapMissiles() {
                 temp_r4_1649 = *(this->unkAC + temp_r5_1648);
                 if (temp_r4_1649 != NULL) {
                     M2C_FIELD(temp_r4_1649, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_1649, u8 *, 0x31) | 0x40);
-                    arg_sp30 = 0.75f;
+                    sp30 = 0.75f;
                     temp_r4_1663 = *(this->unkAC + temp_r5_1648);
-                    arg_sp34 = 0.8f;
-                    arg_sp38 = 0.0f;
-                    arg_sp3C = 1.0f;
-                    M2C_FIELD(temp_r4_1663, f64 *, 0x10) = (f64) arg_sp30;
-                    arg_sp270 = (f64) arg_sp30;
-                    arg_sp278 = (f64) arg_sp38;
-                    M2C_FIELD(temp_r4_1663, f64 *, 0x18) = (f64) arg_sp38;
+                    sp34 = 0.8f;
+                    sp38 = 0.0f;
+                    sp3C = 1.0f;
+                    M2C_FIELD(temp_r4_1663, f64 *, 0x10) = (f64) sp30;
+                    sp270 = (f64) sp30;
+                    sp278 = (f64) sp38;
+                    M2C_FIELD(temp_r4_1663, f64 *, 0x18) = (f64) sp38;
                     M2C_FIELD(*(this->unkAC + (var_r27_718 + 0x58)), f32 *, 0x24) = MKRand_Float(&gViewSeed, 2.0f, 2.5f);
                     temp_r4_1681 = this->unkAC + var_r27_718;
                     temp_r3_1682 = M2C_FIELD(temp_r4_1681, void **, 0x58);
@@ -971,57 +1140,57 @@ void ZapBreathFX::UpdateZapMissiles() {
                 if (*(this->unkAC + temp_r0_1693) < 0.0f) {
                     temp_f25_1707 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                     temp_f24_1712 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_sp100 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_sp104 = temp_f24_1712;
-                    arg_sp108 = temp_f25_1707;
-                    arg_sp250 = (f64) arg_sp100;
-                    arg_sp258 = (f64) arg_sp108;
+                    sp100 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp104 = temp_f24_1712;
+                    sp108 = temp_f25_1707;
+                    sp250 = (f64) sp100;
+                    sp258 = (f64) sp108;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                    arg_sp260 = arg_spF0;
-                    arg_spF8 = (f32) arg_sp258 * 20.0f;
-                    arg_sp268 = (f64) arg_spF8;
+                    sp260 = spF0;
+                    spF8 = (f32) sp258 * 20.0f;
+                    sp268 = (f64) spF8;
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    arg_sp3D0 = arg_spE0;
-                    arg_spE8 = M2C_FIELD((this->unkAC + var_r27_718), f32 *, 8) + (f32) arg_sp268;
-                    arg_sp3D8 = (f64) arg_spE8;
+                    sp3D0 = spE0;
+                    spE8 = M2C_FIELD((this->unkAC + var_r27_718), f32 *, 8) + (f32) sp268;
+                    sp3D8 = (f64) spE8;
                     temp_f25_1753 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                     temp_f24_1758 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-                    arg_spD0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_spD4 = temp_f24_1758;
-                    arg_spD8 = temp_f25_1753;
-                    arg_sp230 = (f64) arg_spD0;
-                    arg_sp238 = (f64) arg_spD8;
+                    spD0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    spD4 = temp_f24_1758;
+                    spD8 = temp_f25_1753;
+                    sp230 = (f64) spD0;
+                    sp238 = (f64) spD8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-                    arg_sp240 = arg_spC0;
-                    arg_spC8 = (f32) arg_sp238 * 600.0f;
-                    arg_sp248 = (f64) arg_spC8;
+                    sp240 = spC0;
+                    spC8 = (f32) sp238 * 600.0f;
+                    sp248 = (f64) spC8;
                     temp_f1_1784 = MKRand_Float(&gViewSeed, 7.0f, 8.0f);
-                    arg_spB0 = 1.0f;
-                    arg_spB4 = 1.0f;
-                    arg_sp20 = temp_f1_1784;
-                    arg_spB8 = 0.4f;
-                    arg_spBC = 1.0f;
-                    arg_sp220 = (f64) arg_spB0;
-                    arg_sp228 = (f64) arg_spB8;
-                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &arg_sp3D0), *((MKVector3 *) &arg_sp240), arg_sp20, *((MKVector4 *) &arg_sp220), -1979.9999f);
+                    spB0 = 1.0f;
+                    spB4 = 1.0f;
+                    sp20 = temp_f1_1784;
+                    spB8 = 0.4f;
+                    spBC = 1.0f;
+                    sp220 = (f64) spB0;
+                    sp228 = (f64) spB8;
+                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp3D0), *((MKVector3 *) &sp240), sp20, *((MKVector4 *) &sp220), -1979.9999f);
                     *(this->unkAC + (var_r27_718 + 0x44)) = 0.075f;
                     temp_f24_1811 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                     temp_f25_1816 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_spA0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    arg_spA4 = temp_f25_1816;
-                    arg_spA8 = temp_f24_1811;
-                    arg_sp200 = (f64) arg_spA0;
-                    arg_sp208 = (f64) arg_spA8;
+                    spA0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    spA4 = temp_f25_1816;
+                    spA8 = temp_f24_1811;
+                    sp200 = (f64) spA0;
+                    sp208 = (f64) spA8;
                     temp_f1_1831 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-                    arg_sp90 = 1.0f;
-                    arg_sp94 = 1.0f;
-                    var_f6_1844 = ((f32) arg_sp208 * (f32) arg_sp208) + (((f32) arg_sp200 * (f32) arg_sp200) + (arg_sp204 * arg_sp204));
-                    arg_sp98 = 0.2f;
-                    arg_sp9C = 1.0f;
-                    arg_sp1C = temp_f1_1831;
-                    arg_sp1F0 = (f64) arg_sp90;
-                    arg_sp1F8 = (f64) arg_sp98;
+                    sp90 = 1.0f;
+                    sp94 = 1.0f;
+                    var_f6_1844 = ((f32) sp208 * (f32) sp208) + (((f32) sp200 * (f32) sp200) + (unksp204 * unksp204));
+                    sp98 = 0.2f;
+                    sp9C = 1.0f;
+                    sp1C = temp_f1_1831;
+                    sp1F0 = (f64) sp90;
+                    sp1F8 = (f64) sp98;
                     if (var_f6_1844 > 1e-12f) {
                         if (var_f6_1844 > 0.0f) {
                             temp_f1_1857 = __frsqrte(var_f6_1844);
@@ -1031,18 +1200,18 @@ void ZapBreathFX::UpdateZapMissiles() {
                         } else if (var_f6_1844 < M2C_BITWISE(f32, 0.0)) {
                             var_f6_1844 = __float_nan;
                         } else {
-                            arg_sp10 = var_f6_1844;
-                            temp_r3_1886 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                            sp10 = var_f6_1844;
+                            temp_r3_1886 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                             switch (temp_r3_1886) { /* switch 3; irregular */
                             case 0x7F800000:        /* switch 3 */
-                                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                     var_r0_1896 = 1;
                                 } else {
                                     var_r0_1896 = 2;
                                 }
                                 break;
                             case 0x0:               /* switch 3 */
-                                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                     var_r0_1896 = 5;
                                 } else {
                                     var_r0_1896 = 3;
@@ -1060,12 +1229,12 @@ void ZapBreathFX::UpdateZapMissiles() {
                     } else {
                         var_f3_1918 = 0.0f;
                     }
-                    arg_sp80 = (f32) arg_sp200 * var_f3_1918;
-                    arg_sp84 = arg_sp204 * var_f3_1918;
-                    arg_sp88 = (f32) arg_sp208 * var_f3_1918;
-                    arg_sp210 = (f64) arg_sp80;
-                    arg_sp218 = (f64) arg_sp88;
-                    ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &arg_sp3D0), *((MKVector3 *) &arg_sp210), arg_sp1C, lit_1549, (MKVector4) &arg_sp1F0);
+                    sp80 = (f32) sp200 * var_f3_1918;
+                    sp84 = unksp204 * var_f3_1918;
+                    sp88 = (f32) sp208 * var_f3_1918;
+                    sp210 = (f64) sp80;
+                    sp218 = (f64) sp88;
+                    ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp3D0), *((MKVector3 *) &sp210), sp1C, lit_1549, (MKVector4) &sp1F0);
                 }
             }
         }
@@ -1077,6 +1246,205 @@ void ZapBreathFX::UpdateZapMissiles() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const int *' to
 u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3, const int &arg4, bool arg5) {
+    MKCollisionResult spAC0;
+    MKCollisionResult spA68;
+    MKCollisionResult spA10;
+    Matrix sp9D0;
+    M2C_UNK sp9CC;
+    M2C_UNK sp990;
+    MeleeAttackHitMsg sp950;
+    MeleeAttackHitMsg sp910;
+    Matrix sp8D0;
+    Matrix sp890;
+    M2C_UNK sp88C;
+    s32 sp874;
+    ShakeCameraMessage sp870;
+    s32 sp854;
+    ShakeCameraMessage sp850;
+    f64 sp848;
+    f64 sp840;
+    f64 sp838;
+    f64 sp830;
+    f64 sp828;
+    f64 sp820;
+    f64 sp818;
+    f64 sp810;
+    f64 sp808;
+    f64 sp800;
+    f64 sp7F8;
+    f64 sp7F0;
+    f64 sp7E8;
+    f64 sp7E0;
+    f64 sp7D8;
+    f64 sp7D0;
+    f64 sp7C8;
+    f64 sp7C0;
+    f64 sp7B8;
+    f64 sp7B0;
+    f64 sp7A8;
+    f64 sp7A0;
+    f64 sp798;
+    f64 sp790;
+    f64 sp788;
+    f64 sp780;
+    f64 sp778;
+    f64 sp770;
+    f64 sp768;
+    f64 sp760;
+    f64 sp758;
+    f64 sp750;
+    f64 sp748;
+    f64 sp740;
+    f64 sp738;
+    f64 sp730;
+    f64 sp728;
+    f64 sp720;
+    f64 sp718;
+    f64 sp710;
+    f64 sp708;
+    f64 sp700;
+    f32 sp6F8;                                      /* compiler-managed */
+    f32 sp6F4;
+    f32 sp6F0;                                      /* compiler-managed */
+    f64 sp6E8;
+    f64 sp6E0;
+    f32 sp6D8;                                      /* compiler-managed */
+    f32 sp6D4;
+    f32 sp6D0;                                      /* compiler-managed */
+    f64 sp6C8;                                      /* compiler-managed */
+    f64 sp6C0;                                      /* compiler-managed */
+    MKVector3 sp6B0;
+    f64 sp6A8;
+    f64 sp6A0;
+    f64 sp690;
+    MKVector3 sp680;
+    MKVector3 sp670;
+    MKVector3 sp660;
+    MKVector3 sp650;
+    M2C_UNK sp640;
+    MKVector3 sp630;
+    MKVector3 sp620;
+    f64 sp610;
+    MKVector3 sp600;
+    MKVector3 sp5F0;
+    MKVector3 sp5E0;
+    M2C_UNK sp5D0;
+    MKVector3 sp5C0;
+    f64 sp5B8;
+    f64 sp5B0;
+    MKVector3 sp5A0;
+    f64 sp598;
+    f64 sp590;
+    MKVector3 sp580;
+    MKVector3 sp570;
+    MKVector3 sp560;
+    MKVector3 sp550;
+    MKVector3 sp540;
+    MKVector3 sp530;
+    MKVector3 sp520;
+    f64 sp518;
+    f64 sp510;
+    MKVector3 sp500;
+    MKVector3 sp4F0;
+    MKVector3 sp4E0;
+    MKVector3 sp4D0;
+    f64 sp4C8;
+    f64 sp4C0;
+    MKVector3 sp4B0;
+    MKVector3 sp4A0;
+    MKVector3 sp490;
+    f64 sp488;
+    f64 sp480;
+    MKVector3 sp470;
+    MKVector3 sp460;
+    f64 sp458;
+    f64 sp450;
+    MKVector3 sp440;
+    MKVector3 sp430;
+    MKVector3 sp420;
+    MKVector3 sp410;
+    MKVector3 sp400;
+    MKVector3 sp3F0;
+    MKVector3 sp3E0;
+    MKVector3 sp3D0;
+    M2C_UNK sp3C0;
+    MKVector4 sp3B0;
+    MKVector3 sp3A0;
+    M2C_UNK sp390;
+    MKVector3 sp380;
+    M2C_UNK sp370;
+    MKVector3 sp360;
+    MKVector3 sp350;
+    MKVector3 sp340;
+    MKVector3 sp330;
+    MKVector3 sp320;
+    MKVector3 sp310;
+    MKVector3 sp300;
+    MKVector3 sp2F0;
+    M2C_UNK sp2E0;
+    MKVector4 sp2D0;
+    MKVector3 sp2C0;
+    M2C_UNK sp2B0;
+    MKVector3 sp2A0;
+    M2C_UNK sp290;
+    MKVector3 sp280;
+    MKVector3 sp270;
+    MKVector3 sp260;
+    MKVector3 sp250;
+    MKVector3 sp240;
+    MKVector3 sp230;
+    MKVector3 sp220;
+    MKVector3 sp210;
+    M2C_UNK sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C0;
+    MKVector3 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    MKVector3 sp180;
+    f64 sp178;
+    f64 sp170;
+    MKVector3 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    MKVector3 sp130;
+    f64 sp128;
+    f64 sp120;
+    MKVector3 sp110;
+    M2C_UNK sp100;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    MKVector3 spB0;
+    f64 spA0;
+    MKVector3 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKProp *temp_r17_3233;
     MKProp *temp_r18_3123;
     TargetManager ***var_r17_2607;
@@ -1123,6 +1491,9 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     f32 var_f2_2850;
     f64 temp_f0_2317;
     f64 temp_f1_2316;
+    f64 temp_f1_2760;
+    f64 temp_f1_3319;
+    f64 temp_f1_3383;
     f64 temp_f27_3783;
     f64 temp_f27_3843;
     f64 temp_f28_3782;
@@ -1189,6 +1560,7 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     void *temp_r5_3199;
     void *temp_r6_2552;
     void *temp_r6_2645;
+
     temp_r0_2000 = &arg4;
     if (temp_r0_2000 == 3) {
         if (((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathUpgrade(3) == 0) {
@@ -1198,8 +1570,8 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
         return ((FuryFXElectricity2 *) (M2C_BITWISE(FuryFXElectricity2 *, this->unk9F0)))->Trigger(arg1);
     }
     if (temp_r0_2000 == 1) {
-        arg_sp1C = this->unkD4 + gUpdateTimeDelta;
-        this->unkD4 = Clamp<float>(0.0f, arg_sp1C, this->unkD8);
+        sp1C = this->unkD4 + gUpdateTimeDelta;
+        this->unkD4 = Clamp<float>(0.0f, sp1C, this->unkD8);
         var_r15_2041 = 0;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unkD0 == 0.0f) {
@@ -1246,21 +1618,21 @@ loop_22:
                 }
                 if (var_r15_2041 != 0) {
                     MKVector(1.0f, 1.0f, 1.0f, 1.0f);
-                    arg_sp6A0 = arg_sp690;
-                    arg_sp6A8 = arg_sp698;
-                    arg_sp18 = MKRand_Float(&gViewSeed, 6.0f, 10.0f);
+                    sp6A0 = sp690;
+                    sp6A8 = sp698;
+                    sp18 = MKRand_Float(&gViewSeed, 6.0f, 10.0f);
                     MKVector(0.0f, 0.0f, 0.0f);
-                    this->unkCC->Emit(arg1, *((MKVector3 *) &arg_sp6B0), arg_sp18, (MKVector4) &arg_sp6A0);
+                    this->unkCC->Emit(arg1, sp6B0, sp18, (MKVector4) &sp6A0);
                     var_r17_2170 = 0;
                     do {
                         MKVector(1.0f, 1.0f, 1.0f);
                         MKVector(-1.0f, -1.0f, -1.0f);
-                        KDRand_Vector(*((MKVector3 *) &arg_sp660), *((MKVector3 *) &arg_sp650));
-                        arg_sp670.operator+(*((MKVector3 *) &arg_sp660));
-                        arg_sp680.operator*(500.0f);
-                        arg_sp840 = arg_sp680;
-                        arg_sp848 = arg_sp688;
-                        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(arg1, *((MKVector3 *) &arg_sp840), 0.5f, 0U);
+                        KDRand_Vector(sp660, sp650);
+                        sp670.operator+(sp660);
+                        sp680.operator*(500.0f);
+                        sp840 = M2C_BITWISE(f64, sp680);
+                        sp848 = (f64) sp680.unk8;
+                        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(arg1, *((MKVector3 *) &sp840), 0.5f, 0U);
                         var_r17_2170 += 1;
                     } while (var_r17_2170 < 6);
                     KDSound_Play3d(GS_SpyBreathEnergyball, &arg1, 0U, -1, 0.0f, 0U);
@@ -1290,44 +1662,44 @@ loop_22:
     this->unk100 = 0.0f;
     temp_f1_2316 = M2C_FIELD(&arg2, f64 *, 0);
     temp_f0_2317 = M2C_FIELD(&arg2, f64 *, 8);
-    arg_sp830 = M2C_FIELD(&arg1, f64 *, 0);
-    arg_sp838 = M2C_FIELD(&arg1, f64 *, 8);
-    arg_sp820 = temp_f1_2316;
-    arg_sp828 = temp_f0_2317;
-    arg_sp810 = temp_f1_2316;
-    arg_sp818 = temp_f0_2317;
+    sp830 = M2C_FIELD(&arg1, f64 *, 0);
+    sp838 = M2C_FIELD(&arg1, f64 *, 8);
+    sp820 = temp_f1_2316;
+    sp828 = temp_f0_2317;
+    sp810 = temp_f1_2316;
+    sp818 = temp_f0_2317;
     if (temp_cr0_eq_2314 != 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp9D0.SetRotationYaw(-0.43633232f);
-        ApplyMatrix(*((MKVector3 *) &arg_sp630), (Matrix *) &arg_sp820);
-        arg_sp820 = arg_sp630;
-        arg_sp828 = arg_sp638;
-        M2C_STRUCT_COPY((s32) &arg_sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp9D0.SetRotationYaw(0.43633232f);
-        ApplyMatrix(*((MKVector3 *) &arg_sp620), (Matrix *) &arg_sp810);
-        arg_sp810 = arg_sp620;
-        arg_sp818 = arg_sp628;
+        M2C_STRUCT_COPY((s32) &sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp9D0.SetRotationYaw(-0.43633232f);
+        ApplyMatrix(sp630, (Matrix *) &sp820);
+        sp820 = M2C_BITWISE(f64, sp630);
+        sp828 = (f64) sp630.unk8;
+        M2C_STRUCT_COPY((s32) &sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp9D0.SetRotationYaw(0.43633232f);
+        ApplyMatrix(sp620, (Matrix *) &sp810);
+        sp810 = M2C_BITWISE(f64, sp620);
+        sp818 = (f64) sp620.unk8;
     }
     var_r28_2376 = 0;
     var_r27_2378 = 0;
     var_r26_2380 = 0;
-    arg_sp800 = arg_sp820;
+    sp800 = sp820;
     var_r25_2382 = 0;
-    arg_sp808 = arg_sp828;
-    arg_sp7F0 = arg_sp810;
-    arg_sp7F8 = arg_sp818;
+    sp808 = sp828;
+    sp7F0 = sp810;
+    sp7F8 = sp818;
     DisableMissileLight(NULL);
     if ((ManagedLight *) this->unkB0 != NULL) {
         MKVector(1.0f, 1.0f, 0.0f, 1.0f);
-        this->unkE8 = arg_sp610;
-        this->unkF0 = arg_sp618;
+        this->unkE8 = sp610;
+        this->unkF0 = sp618;
         this->unkB0->SetColor(*((MKVector4 *) &this->unkE8));
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkB0, 1U);
         MKVector(0.0f, 400.0f, 0.0f);
-        arg_sp5E0.operator*(500.0f);
-        arg_sp5F0.operator+(arg1);
-        arg_sp600.operator+(*((MKVector3 *) &arg_sp5F0));
-        this->unkB0->SetPosition(*((MKVector3 *) &arg_sp600));
+        sp5E0.operator*(500.0f);
+        sp5F0.operator+(arg1);
+        sp600.operator+(sp5F0);
+        this->unkB0->SetPosition(sp600);
     }
     var_f28_2432 = 500.0f;
     var_r24_2433 = 0;
@@ -1359,10 +1731,10 @@ loop_22:
     temp_r14_2478 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathUpgrade(temp_r18_2473);
     temp_f27_2488 = ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(temp_r21_2472, temp_r18_2473, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathUpgrade(temp_r18_2473));
     this->unk108.Init(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), temp_f27_2488, temp_r18_2473, temp_r14_2478, temp_r15_2470, temp_r19_2467, var_r24_2433, -1);
-    arg_sp830 = M2C_FIELD(&arg1, f64 *, 0);
+    sp830 = M2C_FIELD(&arg1, f64 *, 0);
     var_r15_2510 = NULL;
     var_r16_2512 = NULL;
-    arg_sp838 = M2C_FIELD(&arg1, f64 *, 8);
+    sp838 = M2C_FIELD(&arg1, f64 *, 8);
     var_f29_2515 = 3.4028235e38f;
     var_r18_2516 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->Begin();
 loop_64:
@@ -1371,14 +1743,14 @@ loop_64:
         if (temp_r17_2592 != NULL) {
             if (((*temp_r17_2592)->unk8.unk0(temp_r17_2592) != NULL) && (M2C_FIELD(*temp_r17_2592, u8 (**)(TargetManager **), 0x18)(temp_r17_2592) != 0) && ((*temp_r17_2592)->unk8.unk0(temp_r17_2592) != this) && (((u32 (*)(TargetManager **)) (*temp_r17_2592)->unk8.unk4)(temp_r17_2592) != 0U)) {
                 temp_r6_2552 = (*temp_r17_2592)->unk8.unk0(temp_r17_2592)->unk8;
-                arg_sp5B0 = M2C_FIELD(temp_r6_2552, f64 *, 0x30);
-                arg_sp5B8 = M2C_FIELD(temp_r6_2552, f64 *, 0x38);
-                arg_sp5C0.operator-(*((MKVector3 *) &arg_sp5B0));
-                arg_sp7C0 = arg_sp5C0;
-                arg_sp7C8 = arg_sp5C8;
-                temp_f1_2566 = arg_sp7C0.Normalise();
+                sp5B0 = M2C_FIELD(temp_r6_2552, f64 *, 0x30);
+                sp5B8 = M2C_FIELD(temp_r6_2552, f64 *, 0x38);
+                sp5C0.operator-(*((MKVector3 *) &sp5B0));
+                sp7C0 = M2C_BITWISE(f64, sp5C0);
+                sp7C8 = (f64) sp5C0.unk8;
+                temp_f1_2566 = sp7C0.Normalise();
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((temp_f1_2566 == var_f28_2432) && (temp_f1_2566 < var_f29_2515) && ((((f32) arg_sp7C8 * (f32) arg_sp828) + (((f32) arg_sp7C0 * (f32) arg_sp820) + (arg_sp7C4 * arg_sp824))) > 0.0f)) {
+                if ((temp_f1_2566 == var_f28_2432) && (temp_f1_2566 < var_f29_2515) && ((((f32) sp7C8 * (f32) sp828) + (((f32) sp7C0 * (f32) sp820) + (unksp7C4 * unksp824))) > 0.0f)) {
                     var_f29_2515 = temp_f1_2566;
                     var_r15_2510 = temp_r17_2592;
                     var_r28_2376 = 1;
@@ -1400,14 +1772,14 @@ loop_81:
             if (temp_r14_2685 != NULL) {
                 if (((*temp_r14_2685)->unk8.unk0(temp_r14_2685) != NULL) && (M2C_FIELD(*temp_r14_2685, u8 (**)(TargetManager **), 0x18)(temp_r14_2685) != 0) && ((*temp_r14_2685)->unk8.unk0(temp_r14_2685) != this) && (temp_r14_2685 != var_r15_2510) && (((u32 (*)(TargetManager **)) (*temp_r14_2685)->unk8.unk4)(temp_r14_2685) != 0U)) {
                     temp_r6_2645 = (*temp_r14_2685)->unk8.unk0(temp_r14_2685)->unk8;
-                    arg_sp590 = M2C_FIELD(temp_r6_2645, f64 *, 0x30);
-                    arg_sp598 = M2C_FIELD(temp_r6_2645, f64 *, 0x38);
-                    arg_sp5A0.operator-(*((MKVector3 *) &arg_sp590));
-                    arg_sp7B0 = arg_sp5A0;
-                    arg_sp7B8 = arg_sp5A8;
-                    temp_f1_2659 = arg_sp7B0.Normalise();
+                    sp590 = M2C_FIELD(temp_r6_2645, f64 *, 0x30);
+                    sp598 = M2C_FIELD(temp_r6_2645, f64 *, 0x38);
+                    sp5A0.operator-(*((MKVector3 *) &sp590));
+                    sp7B0 = M2C_BITWISE(f64, sp5A0);
+                    sp7B8 = (f64) sp5A0.unk8;
+                    temp_f1_2659 = sp7B0.Normalise();
                     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((temp_f1_2659 == var_f28_2432) && (temp_f1_2659 < var_f29_2606) && ((((f32) arg_sp7B8 * (f32) arg_sp818) + (((f32) arg_sp7B0 * (f32) arg_sp810) + (arg_sp7B4 * arg_sp814))) > 0.0f)) {
+                    if ((temp_f1_2659 == var_f28_2432) && (temp_f1_2659 < var_f29_2606) && ((((f32) sp7B8 * (f32) sp818) + (((f32) sp7B0 * (f32) sp810) + (unksp7B4 * unksp814))) > 0.0f)) {
                         var_f29_2606 = temp_f1_2659;
                         var_r16_2512 = temp_r14_2685;
                         var_r27_2378 = 1;
@@ -1423,23 +1795,24 @@ loop_81:
             var_r25_2382 = 1;
         }
     }
-    arg_sp570.operator*(var_f28_2432);
-    arg_sp580.operator+(arg1);
-    arg_sp7A0 = arg_sp580;
-    arg_sp7A8 = arg_sp588;
-    arg_sp550.operator*(var_f28_2432);
-    arg_sp560.operator+(arg1);
-    arg_sp790 = arg_sp560;
-    arg_sp798 = arg_sp568;
+    sp570.operator*(var_f28_2432);
+    sp580.operator+(arg1);
+    sp7A0 = M2C_BITWISE(f64, sp580);
+    sp7A8 = (f64) sp580.unk8;
+    sp550.operator*(var_f28_2432);
+    sp560.operator+(arg1);
+    sp790 = M2C_BITWISE(f64, sp560);
+    sp798 = (f64) sp560.unk8;
     if ((var_r15_2510 != NULL) && (((Enemy *) (((Enemy *(*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510)))->IsFrozen() == 0) && (((((Enemy *) (((Enemy *(*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510)))->IsKnockedDown() == 0) && (temp_r22_2312 == 0)) || (temp_r22_2312 > 0)) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk100 == 0.0f) != 0))) {
-        M2C_FIELD(*var_r15_2510, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r15_2510, &arg1, &arg_sp7A0);
-        arg_sp540.operator-(*((MKVector3 *) &arg_sp7A0));
-        arg_sp800 = arg_sp540;
+        M2C_FIELD(*var_r15_2510, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r15_2510, &arg1, &sp7A0);
+        sp540.operator-(*((MKVector3 *) &sp7A0));
+        temp_f1_2760 = M2C_BITWISE(f64, sp540);
+        sp800 = temp_f1_2760;
         var_r28_2376 = 1;
         var_r26_2380 = 1;
-        arg_sp808 = arg_sp548;
-        temp_r3_2772 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f64), 0x40)(M2C_FIELD(&gb, void ***, 0), arg_sp540);
-        M2C_STRUCT_COPY((s32) &arg_sp98C + 4, M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), s32 *, 8) - 4 + 4, 0x40);
+        sp808 = (f64) sp540.unk8;
+        temp_r3_2772 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f64), 0x40)(M2C_FIELD(&gb, void ***, 0), temp_f1_2760);
+        M2C_STRUCT_COPY((s32) &sp950.unk3C + 4, M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), s32 *, 8) - 4 + 4, 0x40);
         var_r4_2788 = 0;
         if (((u8) M2C_FIELD(temp_r3_2772, u8 *, 5) != 0) || ((u8) M2C_FIELD(temp_r3_2772, u8 *, 4) != 0)) {
             var_r4_2788 = 1;
@@ -1449,21 +1822,21 @@ loop_81:
         } else {
             var_f1_2799 = MKInput_GetState(0x11, (MKInputDevices) M2C_FIELD(temp_r3_2772, s32 *, 0), NULL, NULL);
         }
-        arg_sp530.operator*(var_f1_2799);
-        arg_sp780 = arg_sp530;
-        arg_sp788 = arg_sp538;
-        temp_f1_2816 = arg_sp780.Normalise();
+        sp530.operator*(var_f1_2799);
+        sp780 = M2C_BITWISE(f64, sp530);
+        sp788 = (f64) sp530.unk8;
+        temp_f1_2816 = sp780.Normalise();
         if ((temp_f1_2816 > 0.25f) && (temp_r22_2312 >= 0)) {
-            arg_sp954 = 0;
+            sp950.unk4 = 0;
             temp_r5_2830 = (*var_r15_2510)->unk8.unk0(var_r15_2510)->unk8;
-            arg_sp510 = M2C_FIELD(temp_r5_2830, f64 *, 0x30);
-            arg_sp518 = M2C_FIELD(temp_r5_2830, f64 *, 0x38);
-            arg_sp4F0.operator-();
-            arg_sp500.operator*(300.0f);
-            arg_sp520.operator+(*((MKVector3 *) &arg_sp510));
-            arg_sp770 = arg_sp520;
+            sp510 = M2C_FIELD(temp_r5_2830, f64 *, 0x30);
+            sp518 = M2C_FIELD(temp_r5_2830, f64 *, 0x38);
+            sp4F0.operator-();
+            sp500.operator*(300.0f);
+            sp520.operator+(*((MKVector3 *) &sp510));
+            sp770 = M2C_BITWISE(f64, sp520);
             var_f2_2850 = 0.5f;
-            arg_sp778 = arg_sp528;
+            sp778 = (f64) sp520.unk8;
             switch (temp_r22_2312) {                /* switch 4; irregular */
             case 1:                                 /* switch 4 */
                 var_f2_2850 = 1.0f;
@@ -1475,39 +1848,39 @@ loop_81:
                 var_f2_2850 = 2.0f;
                 break;
             }
-            arg_sp950.Init(NULL, *((MKVector3 *) &arg_sp770), 0.0f, 0, 8, 0x20U, NULL, var_f2_2850);
+            sp950.Init(NULL, *((MKVector3 *) &sp770), 0.0f, 0, 8, 0x20U, NULL, var_f2_2850);
             if (M2C_FIELD(*var_r15_2510, u8 (**)(TargetManager **), 0x18)(var_r15_2510) != 0) {
                 temp_r3_2892 = checked_cast<Enemy *, MKProp>((*var_r15_2510)->unk8.unk0(var_r15_2510));
                 M2C_FIELD(temp_r3_2892, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r3_2892, u8 *, 0xB02) | 4);
             }
-            M2C_FIELD((*var_r15_2510)->unk8.unk0(var_r15_2510)->__vptr, M2C_UNK (**)(M2C_UNK *), 0x2C)(&arg_sp950);
+            M2C_FIELD((*var_r15_2510)->unk8.unk0(var_r15_2510)->__vptr, M2C_UNK (**)(MeleeAttackHitMsg *), 0x2C)(&sp950);
             if (M2C_FIELD(*var_r15_2510, u8 (**)(TargetManager **), 0x18)(var_r15_2510) != 0) {
                 temp_r3_2920 = checked_cast<Enemy *, MKProp>((*var_r15_2510)->unk8.unk0(var_r15_2510));
                 M2C_FIELD(temp_r3_2920, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r3_2920, u8 *, 0xB02) & ~4);
             }
             if ((temp_r22_2312 == 3) && (var_r16_2512 != NULL)) {
-                M2C_FIELD(*var_r16_2512, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r16_2512, &arg1, &arg_sp790);
-                arg_sp4E0.operator-(*((MKVector3 *) &arg_sp790));
+                M2C_FIELD(*var_r16_2512, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r16_2512, &arg1, &sp790);
+                sp4E0.operator-(*((MKVector3 *) &sp790));
                 var_r27_2378 = 1;
                 var_r25_2382 = 1;
-                arg_sp7F0 = arg_sp4E0;
-                arg_sp7F8 = arg_sp4E8;
+                sp7F0 = M2C_BITWISE(f64, sp4E0);
+                sp7F8 = (f64) sp4E0.unk8;
                 if (temp_f1_2816 > 0.25f) {
-                    arg_sp914 = 0;
+                    sp910.unk4 = 0;
                     temp_r5_2956 = (*var_r16_2512)->unk8.unk0(var_r16_2512)->unk8;
-                    arg_sp4C0 = M2C_FIELD(temp_r5_2956, f64 *, 0x30);
-                    arg_sp4C8 = M2C_FIELD(temp_r5_2956, f64 *, 0x38);
-                    arg_sp4A0.operator-();
-                    arg_sp4B0.operator*(300.0f);
-                    arg_sp4D0.operator+(*((MKVector3 *) &arg_sp4C0));
-                    arg_sp760 = arg_sp4D0;
-                    arg_sp768 = arg_sp4D8;
-                    arg_sp910.Init(NULL, *((MKVector3 *) &arg_sp760), 0.0f, 0, 8, 0x20U, NULL, 3.0f);
+                    sp4C0 = M2C_FIELD(temp_r5_2956, f64 *, 0x30);
+                    sp4C8 = M2C_FIELD(temp_r5_2956, f64 *, 0x38);
+                    sp4A0.operator-();
+                    sp4B0.operator*(300.0f);
+                    sp4D0.operator+(*((MKVector3 *) &sp4C0));
+                    sp760 = M2C_BITWISE(f64, sp4D0);
+                    sp768 = (f64) sp4D0.unk8;
+                    sp910.Init(NULL, *((MKVector3 *) &sp760), 0.0f, 0, 8, 0x20U, NULL, 3.0f);
                     if (M2C_FIELD(*var_r16_2512, u8 (**)(TargetManager **), 0x18)(var_r16_2512) != 0) {
                         temp_r3_2999 = checked_cast<Enemy *, MKProp>((*var_r16_2512)->unk8.unk0(var_r16_2512));
                         M2C_FIELD(temp_r3_2999, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r3_2999, u8 *, 0xB02) | 4);
                     }
-                    M2C_FIELD((*var_r16_2512)->unk8.unk0(var_r16_2512)->__vptr, M2C_UNK (**)(M2C_UNK *), 0x2C)(&arg_sp910);
+                    M2C_FIELD((*var_r16_2512)->unk8.unk0(var_r16_2512)->__vptr, M2C_UNK (**)(MeleeAttackHitMsg *), 0x2C)(&sp910);
                     if (M2C_FIELD(*var_r16_2512, u8 (**)(TargetManager **), 0x18)(var_r16_2512) != 0) {
                         temp_r3_3027 = checked_cast<Enemy *, MKProp>((*var_r16_2512)->unk8.unk0(var_r16_2512));
                         M2C_FIELD(temp_r3_3027, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r3_3027, u8 *, 0xB02) & ~4);
@@ -1519,7 +1892,7 @@ loop_81:
         if (this->unkDC == 0.0f) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unk100 == 0.0f) {
-                temp_r14_3049 = MKCollision_SphereCollide(*((MKVector3 *) &arg_sp7A0), 100.0f, (MKCollisionResult *) &arg_spAC0, 5, (MKCollisionMode) 2, 0);
+                temp_r14_3049 = MKCollision_SphereCollide(*((MKVector3 *) &sp7A0), 100.0f, &spAC0, 5, (MKCollisionMode) 2, 0);
                 if ((temp_r22_2312 >= 0) && (M2C_FIELD(*var_r15_2510, u8 (**)(TargetManager **), 0x18)(var_r15_2510) != 0) && (((u32 (*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510) != 0U) && (M2C_FIELD(M2C_FIELD(((void *(*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510), void **, 0x44), u8 (**)(), 0x1E0)() == 0)) {
                     this->unkDC = 0.5f;
                     this->unk108.unk50 = 0;
@@ -1531,19 +1904,19 @@ loop_81:
                         var_f26_3085 = temp_f1_3084;
                     }
                     temp_r5_3097 = (*var_r15_2510)->unk8.unk0(var_r15_2510)->unk8;
-                    arg_sp480 = M2C_FIELD(temp_r5_3097, f64 *, 0x30);
-                    arg_sp488 = M2C_FIELD(temp_r5_3097, f64 *, 0x38);
-                    arg_sp470.operator*(var_f26_3085);
-                    arg_sp490.operator-(*((MKVector3 *) &arg_sp480));
+                    sp480 = M2C_FIELD(temp_r5_3097, f64 *, 0x30);
+                    sp488 = M2C_FIELD(temp_r5_3097, f64 *, 0x38);
+                    sp470.operator*(var_f26_3085);
+                    sp490.operator-(*((MKVector3 *) &sp480));
                     var_r19_3111 = 0;
                     var_r17_3113 = 0;
-                    M2C_FIELD(this, f64 *, 0x118) = arg_sp490;
-                    M2C_FIELD(this, f64 *, 0x120) = arg_sp498;
+                    M2C_FIELD(this, f64 *, 0x118) = M2C_BITWISE(f64, sp490);
+                    M2C_FIELD(this, f64 *, 0x120) = (f64) sp490.unk8;
 loop_133:
                     if (var_r19_3111 < temp_r14_3049) {
                         temp_r18_3123 = (*var_r15_2510)->unk8.unk0(var_r15_2510);
-                        if (((MKCollisionResult *) (&arg_spAC0 + var_r17_3113))->GetProp() == temp_r18_3123) {
-                            this->unk108.unk30 = *(&arg_spB08 + var_r17_3113);
+                        if (((MKCollisionResult *) (&spAC0 + var_r17_3113))->GetProp() == temp_r18_3123) {
+                            this->unk108.unk30 = *(&spAC0.unk48 + var_r17_3113);
                         } else {
                             var_r19_3111 += 1;
                             var_r17_3113 += 0x58;
@@ -1562,20 +1935,20 @@ loop_133:
                         var_f26_3187 = temp_f1_3186;
                     }
                     temp_r5_3199 = (*var_r16_2512)->unk8.unk0(var_r16_2512)->unk8;
-                    arg_sp450 = M2C_FIELD(temp_r5_3199, f64 *, 0x30);
-                    arg_sp458 = M2C_FIELD(temp_r5_3199, f64 *, 0x38);
-                    arg_sp440.operator*(var_f26_3187);
-                    arg_sp460.operator-(*((MKVector3 *) &arg_sp450));
-                    M2C_FIELD(this, f64 *, 0x118) = arg_sp460;
-                    M2C_FIELD(this, f64 *, 0x120) = arg_sp468;
-                    temp_r18_3223 = MKCollision_SphereCollide(*((MKVector3 *) &arg_sp7A0), 100.0f, (MKCollisionResult *) &arg_spAC0, 5, (MKCollisionMode) 2, 0);
+                    sp450 = M2C_FIELD(temp_r5_3199, f64 *, 0x30);
+                    sp458 = M2C_FIELD(temp_r5_3199, f64 *, 0x38);
+                    sp440.operator*(var_f26_3187);
+                    sp460.operator-(*((MKVector3 *) &sp450));
+                    M2C_FIELD(this, f64 *, 0x118) = M2C_BITWISE(f64, sp460);
+                    M2C_FIELD(this, f64 *, 0x120) = (f64) sp460.unk8;
+                    temp_r18_3223 = MKCollision_SphereCollide(*((MKVector3 *) &sp7A0), 100.0f, &spAC0, 5, (MKCollisionMode) 2, 0);
                     var_r19_3224 = 0;
                     var_r14_3225 = 0;
 loop_147:
                     if (var_r19_3224 < temp_r18_3223) {
                         temp_r17_3233 = (*var_r16_2512)->unk8.unk0(var_r16_2512);
-                        if (((MKCollisionResult *) (&arg_spAC0 + var_r14_3225))->GetProp() == temp_r17_3233) {
-                            this->unk108.unk30 = *(&arg_spB08 + var_r14_3225);
+                        if (((MKCollisionResult *) (&spAC0 + var_r14_3225))->GetProp() == temp_r17_3233) {
+                            this->unk108.unk30 = *(&spAC0.unk48 + var_r14_3225);
                         } else {
                             var_r19_3224 += 1;
                             var_r14_3225 += 0x58;
@@ -1587,29 +1960,30 @@ loop_147:
             }
         }
     } else {
-        arg_spA68.Init();
-        arg_sp420.operator*(var_f28_2432);
-        arg_sp430.operator+(arg1);
-        if (MKCollision_SweepSphereCollide(arg1, *((MKVector3 *) &arg_sp430), 25.0f, (MKCollisionResult *) &arg_spA68, (MKCollisionMode) 7, 0x08000000) != 0) {
+        spA68.Init();
+        sp420.operator*(var_f28_2432);
+        sp430.operator+(arg1);
+        if (MKCollision_SweepSphereCollide(arg1, sp430, 25.0f, &spA68, (MKCollisionMode) 7, 0x08000000) != 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unk100 == 0.0f) {
-                arg_sp7A0 = arg_spA68;
+                sp7A0 = M2C_BITWISE(f64, spA68);
                 var_r28_2376 = 1;
-                arg_sp7A8 = arg_spA70;
-                arg_sp410.operator-(*((MKVector3 *) &arg_sp7A0));
-                arg_sp800 = arg_sp410;
-                arg_sp808 = arg_sp418;
-                arg_sp800.Normalise();
-                arg_sp7E0 = arg_spA78;
-                arg_sp7E8 = arg_spA80;
-                temp_r3_3306 = arg_spA68.GetProp();
+                sp7A8 = (f64) spA68.unk8;
+                sp410.operator-(*((MKVector3 *) &sp7A0));
+                sp800 = M2C_BITWISE(f64, sp410);
+                sp808 = (f64) sp410.unk8;
+                sp800.Normalise();
+                sp7E0 = (f64) spA68.unk10;
+                sp7E8 = (f64) spA68.unk18;
+                temp_r3_3306 = spA68.GetProp();
                 if ((temp_r3_3306 != NULL) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkDC == 0.0f) != 0))) {
                     this->unkDC = 0.5f;
                     this->unk108.unk50 = 0;
-                    M2C_FIELD(this, f64 *, 0x118) = arg_spA68;
-                    M2C_FIELD(this, f64 *, 0x120) = arg_spA70;
-                    this->unk108.unk30 = arg_spAB0;
-                    M2C_FIELD(M2C_FIELD(temp_r3_3306, void **, 0x44), M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&this->unk108, arg_spA68);
+                    temp_f1_3319 = M2C_BITWISE(f64, spA68);
+                    M2C_FIELD(this, f64 *, 0x118) = temp_f1_3319;
+                    M2C_FIELD(this, f64 *, 0x120) = (f64) spA68.unk8;
+                    this->unk108.unk30 = (MKCollisionInfo *) spA68.unk48;
+                    M2C_FIELD(M2C_FIELD(temp_r3_3306, void **, 0x44), M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&this->unk108, temp_f1_3319);
                     var_r26_2380 = 1;
                 } else {
                     var_r26_2380 = 0;
@@ -1618,26 +1992,27 @@ loop_147:
         }
     }
     if ((temp_r22_2312 == 3) && (var_r16_2512 == NULL)) {
-        arg_spA10.Init();
-        arg_sp3F0.operator*(var_f28_2432);
-        arg_sp400.operator+(arg1);
-        if (MKCollision_SweepSphereCollide(arg1, *((MKVector3 *) &arg_sp400), 25.0f, (MKCollisionResult *) &arg_spA10, (MKCollisionMode) 7, 0x08000000) != 0) {
-            arg_sp790 = arg_spA10;
+        spA10.Init();
+        sp3F0.operator*(var_f28_2432);
+        sp400.operator+(arg1);
+        if (MKCollision_SweepSphereCollide(arg1, sp400, 25.0f, &spA10, (MKCollisionMode) 7, 0x08000000) != 0) {
+            sp790 = M2C_BITWISE(f64, spA10);
             var_r27_2378 = 1;
-            arg_sp798 = arg_spA18;
-            arg_sp3E0.operator-(*((MKVector3 *) &arg_sp7A0));
-            arg_sp7F0 = arg_sp3E0;
-            arg_sp7F8 = arg_sp3E8;
-            arg_sp7F0.Normalise();
-            arg_sp7D0 = arg_spA20;
-            arg_sp7D8 = arg_spA28;
-            temp_r3_3377 = arg_spA10.GetProp();
+            sp798 = (f64) spA10.unk8;
+            sp3E0.operator-(*((MKVector3 *) &sp7A0));
+            sp7F0 = M2C_BITWISE(f64, sp3E0);
+            sp7F8 = (f64) sp3E0.unk8;
+            sp7F0.Normalise();
+            sp7D0 = (f64) spA10.unk10;
+            sp7D8 = (f64) spA10.unk18;
+            temp_r3_3377 = spA10.GetProp();
             if (temp_r3_3377 != NULL) {
                 this->unk108.unk50 = 0;
-                M2C_FIELD(this, f64 *, 0x118) = arg_spA10;
-                M2C_FIELD(this, f64 *, 0x120) = arg_spA18;
-                this->unk108.unk30 = arg_spA58;
-                M2C_FIELD(M2C_FIELD(temp_r3_3377, void **, 0x44), M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&this->unk108, arg_spA10);
+                temp_f1_3383 = M2C_BITWISE(f64, spA10);
+                M2C_FIELD(this, f64 *, 0x118) = temp_f1_3383;
+                M2C_FIELD(this, f64 *, 0x120) = (f64) spA10.unk8;
+                this->unk108.unk30 = (MKCollisionInfo *) spA10.unk48;
+                M2C_FIELD(M2C_FIELD(temp_r3_3377, void **, 0x44), M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&this->unk108, temp_f1_3383);
                 var_r25_2382 = 1;
             } else {
                 var_r25_2382 = 0;
@@ -1650,39 +2025,39 @@ loop_147:
             temp_f26_3408 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f27_3413 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_3413, temp_f26_3408);
-            arg_sp3D0.operator*(1000.0f);
-            arg_sp750 = arg_sp3D0;
-            arg_sp758 = arg_sp3D8;
-            arg_sp14 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
+            sp3D0.operator*(1000.0f);
+            sp750 = M2C_BITWISE(f64, sp3D0);
+            sp758 = (f64) sp3D0.unk8;
+            sp14 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
             MKVector(1.0f, 1.0f, 0.4f, 1.0f);
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &arg_sp7A0), *((MKVector3 *) &arg_sp750), arg_sp14, *((MKVector4 *) &arg_sp3B0), -500.0f);
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp750), sp14, sp3B0, -500.0f);
             var_r16_3401 += 1;
         } while (var_r16_3401 < 5);
         temp_f26_3455 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f27_3460 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_3460, temp_f26_3455);
-        arg_sp3A0.operator*(2000.0f);
-        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &arg_sp7A0), *((MKVector3 *) &arg_sp3A0), 3.0f, 0U);
+        sp3A0.operator*(2000.0f);
+        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp7A0), sp3A0, 3.0f, 0U);
         if (var_r26_2380 == 0) {
-            this->unk9F8->AddNode(*((MKVector3 *) &arg_sp7A0), *((MKVector3 *) &arg_sp7E0));
+            this->unk9F8->AddNode(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp7E0));
             if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
                 MKVector(0.0f, 1.0f, 0.0f);
-                Cross(*((MKVector3 *) &arg_sp380), *((MKVector3 *) &arg_sp7E0));
-                arg_sp740 = arg_sp380;
-                arg_sp748 = arg_sp388;
-                Cross(*((MKVector3 *) &arg_sp360), *((MKVector3 *) &arg_sp740));
-                arg_sp730 = arg_sp360;
-                arg_sp738 = arg_sp368;
+                Cross(sp380, *((MKVector3 *) &sp7E0));
+                sp740 = M2C_BITWISE(f64, sp380);
+                sp748 = (f64) sp380.unk8;
+                Cross(sp360, *((MKVector3 *) &sp740));
+                sp730 = M2C_BITWISE(f64, sp360);
+                sp738 = (f64) sp360.unk8;
                 temp_f26_3518 = MKRand_Float(&gViewSeed, 0.3f, 0.5f);
                 temp_f27_3523 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 temp_f28_3528 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                arg_sp300.operator*(temp_f27_3523);
-                arg_sp310.operator*(20.0f);
-                arg_sp320.operator*(temp_f28_3528);
-                arg_sp330.operator*(20.0f);
-                arg_sp340.operator+(*((MKVector3 *) &arg_sp7A0));
-                arg_sp350.operator+(*((MKVector3 *) &arg_sp340));
-                this->unk9F8->SpawnPlasmaBubble(*((MKVector3 *) &arg_sp350), *((MKVector3 *) &arg_sp7E0), temp_f26_3518);
+                sp300.operator*(temp_f27_3523);
+                sp310.operator*(20.0f);
+                sp320.operator*(temp_f28_3528);
+                sp330.operator*(20.0f);
+                sp340.operator+(*((MKVector3 *) &sp7A0));
+                sp350.operator+(sp340);
+                this->unk9F8->SpawnPlasmaBubble(sp350, *((MKVector3 *) &sp7E0), temp_f26_3518);
             }
         }
     } else {
@@ -1694,39 +2069,39 @@ loop_147:
             temp_f26_3573 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f27_3578 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_3578, temp_f26_3573);
-            arg_sp2F0.operator*(200.0f);
-            arg_sp750 = arg_sp2F0;
-            arg_sp758 = arg_sp2F8;
-            arg_sp10 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
+            sp2F0.operator*(200.0f);
+            sp750 = M2C_BITWISE(f64, sp2F0);
+            sp758 = (f64) sp2F0.unk8;
+            sp10 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
             MKVector(1.0f, 1.0f, 0.4f, 1.0f);
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &arg_sp790), *((MKVector3 *) &arg_sp750), arg_sp10, *((MKVector4 *) &arg_sp2D0), -500.0f);
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp790), *((MKVector3 *) &sp750), sp10, sp2D0, -500.0f);
             var_r16_3566 += 1;
         } while (var_r16_3566 < 5);
         temp_f26_3620 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f27_3625 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_3625, temp_f26_3620);
-        arg_sp2C0.operator*(1000.0f);
-        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &arg_sp790), *((MKVector3 *) &arg_sp2C0), 3.0f, 0U);
+        sp2C0.operator*(1000.0f);
+        ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp790), sp2C0, 3.0f, 0U);
         if (var_r25_2382 == 0) {
-            this->unk9FC->AddNode(*((MKVector3 *) &arg_sp790), *((MKVector3 *) &arg_sp7D0));
+            this->unk9FC->AddNode(*((MKVector3 *) &sp790), *((MKVector3 *) &sp7D0));
             if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
                 MKVector(0.0f, 1.0f, 0.0f);
-                Cross(*((MKVector3 *) &arg_sp2A0), *((MKVector3 *) &arg_sp7D0));
-                arg_sp720 = arg_sp2A0;
-                arg_sp728 = arg_sp2A8;
-                Cross(*((MKVector3 *) &arg_sp280), *((MKVector3 *) &arg_sp720));
-                arg_sp710 = arg_sp280;
-                arg_sp718 = arg_sp288;
+                Cross(sp2A0, *((MKVector3 *) &sp7D0));
+                sp720 = M2C_BITWISE(f64, sp2A0);
+                sp728 = (f64) sp2A0.unk8;
+                Cross(sp280, *((MKVector3 *) &sp720));
+                sp710 = M2C_BITWISE(f64, sp280);
+                sp718 = (f64) sp280.unk8;
                 temp_f26_3683 = MKRand_Float(&gViewSeed, 0.3f, 0.5f);
                 temp_f27_3688 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 temp_f28_3693 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                arg_sp220.operator*(temp_f27_3688);
-                arg_sp230.operator*(20.0f);
-                arg_sp240.operator*(temp_f28_3693);
-                arg_sp250.operator*(20.0f);
-                arg_sp260.operator+(*((MKVector3 *) &arg_sp790));
-                arg_sp270.operator+(*((MKVector3 *) &arg_sp260));
-                this->unk9FC->SpawnPlasmaBubble(*((MKVector3 *) &arg_sp270), *((MKVector3 *) &arg_sp7D0), temp_f26_3683);
+                sp220.operator*(temp_f27_3688);
+                sp230.operator*(20.0f);
+                sp240.operator*(temp_f28_3693);
+                sp250.operator*(20.0f);
+                sp260.operator+(*((MKVector3 *) &sp790));
+                sp270.operator+(sp260);
+                this->unk9FC->SpawnPlasmaBubble(sp270, *((MKVector3 *) &sp7D0), temp_f26_3683);
             }
         }
     } else {
@@ -1734,20 +2109,20 @@ loop_147:
     }
     if (temp_r22_2312 == 3) {
         if ((u8) this->unk9E0 == 0) {
-            this->unk1C0.unk18 = arg_sp7A0;
-            this->unk1C0.unk20 = arg_sp7A8;
-            this->unk3E0 = arg_sp7A0;
-            this->unk3E0 = arg_sp7A8;
-            this->unk5E0 = arg_sp790;
-            this->unk5E0 = arg_sp798;
-            this->unk7E0 = arg_sp790;
-            this->unk7E0 = arg_sp798;
+            this->unk1C0.unk18 = sp7A0;
+            this->unk1C0.unk20 = sp7A8;
+            this->unk3E0 = sp7A0;
+            this->unk3E0 = sp7A8;
+            this->unk5E0 = sp790;
+            this->unk5E0 = sp798;
+            this->unk7E0 = sp790;
+            this->unk7E0 = sp798;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
-                arg_sp874 = 0;
+                sp874 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
-                arg_sp210.operator*(50.0f);
-                arg_sp870.Init(*((MKVector3 *) &arg_sp210), 1U);
-                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp870);
+                sp210.operator*(50.0f);
+                sp870.Init(sp210, 1U);
+                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, ShakeCameraMessage *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp870);
             }
         }
         if (arg5 != 0) {
@@ -1759,23 +2134,23 @@ loop_147:
             temp_f27_3783 = M2C_FIELD(&arg1, f64 *, 8);
 loop_182:
             if (var_r15_3779 < (FuryFXElectricity *) this->unk9F4) {
-                arg_sp1D0 = temp_f30_3778;
-                arg_sp1D8 = temp_f29_3780;
-                arg_sp1E0 = arg_sp7A0;
-                arg_sp1E8 = arg_sp7A8;
-                arg_sp1F0 = temp_f28_3782;
-                arg_sp1F8 = temp_f27_3783;
-                ((ElectricBeam *) (this + (var_r14_3781 + 0x1C0)))->SetBeamPositions((MKVector3) &arg_sp1F0, (MKVector3) &arg_sp1E0, (MKVector3) &arg_sp1D0);
+                sp1D0 = temp_f30_3778;
+                sp1D8 = temp_f29_3780;
+                sp1E0 = sp7A0;
+                sp1E8 = sp7A8;
+                sp1F0 = temp_f28_3782;
+                sp1F8 = temp_f27_3783;
+                ((ElectricBeam *) (this + (var_r14_3781 + 0x1C0)))->SetBeamPositions((MKVector3) &sp1F0, (MKVector3) &sp1E0, (MKVector3) &sp1D0);
                 var_r15_3779 += 1;
                 var_r14_3781 += 0x200;
                 goto loop_182;
             }
         } else {
-            M2C_STRUCT_COPY((s32) &arg_sp8CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &sp890.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             MKVector(0.0f, 1.0f, 0.0f);
-            arg_sp700 = arg_sp1C0;
-            arg_sp708 = arg_sp1C8;
-            KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp8D0, arg2, (MKVector3 *) &arg_sp700);
+            sp700 = sp1C0;
+            sp708 = sp1C8;
+            KDMath_BuildMatrixFromFwd(&sp8D0, arg2, (MKVector3 *) &sp700);
             var_r16_3836 = 0;
             var_r14_3840 = 0;
             temp_f27_3843 = M2C_FIELD(&arg1, f64 *, 0);
@@ -1785,27 +2160,27 @@ loop_182:
                 if (var_r15_2510 == NULL) {
                     temp_f25_3860 = temp_f28_3846 * (f32) var_r16_3836;
                     temp_f26_3865 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f25_3860));
-                    arg_sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3860);
-                    arg_sp6F4 = temp_f26_3865;
-                    arg_sp6F8 = 0.0f;
-                    ApplyMatrix(*((MKVector3 *) &arg_sp1B0), (Matrix *) &arg_sp6F0);
-                    arg_sp6F0 = arg_sp1B0;
-                    arg_sp6F8 = arg_sp1B8;
+                    sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3860);
+                    sp6F4 = temp_f26_3865;
+                    sp6F8 = 0.0f;
+                    ApplyMatrix(sp1B0, (Matrix *) &sp6F0);
+                    sp6F0 = M2C_BITWISE(f64, sp1B0);
+                    sp6F8 = (f64) sp1B0.unk8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                    arg_sp6F8 *= 50.0f;
+                    sp6F8 = (f32) sp6F8 * 50.0f;
                 } else {
-                    arg_sp6F0 = 0.0f;
-                    arg_sp6F4 = 0.0f;
-                    arg_sp6F8 = 0.0f;
+                    sp6F0 = 0.0f;
+                    sp6F4 = 0.0f;
+                    sp6F8 = 0.0f;
                 }
-                arg_sp170 = arg_sp820;
-                arg_sp178 = arg_sp828;
-                arg_sp180.operator+(*((MKVector3 *) &arg_sp7A0));
-                arg_sp190 = arg_sp180;
-                arg_sp198 = arg_sp188;
-                arg_sp1A0 = temp_f27_3843;
-                arg_sp1A8 = temp_f29_3845;
-                ((ElectricBeam *) (this + (var_r14_3840 + 0x1C0)))->UpdateBeam((MKVector3) &arg_sp1A0, (MKVector3) &arg_sp190, (MKVector3) &arg_sp170);
+                sp170 = sp820;
+                sp178 = sp828;
+                sp180.operator+(*((MKVector3 *) &sp7A0));
+                sp190 = M2C_BITWISE(f64, sp180);
+                sp198 = (f64) sp180.unk8;
+                sp1A0 = temp_f27_3843;
+                sp1A8 = temp_f29_3845;
+                ((ElectricBeam *) (this + (var_r14_3840 + 0x1C0)))->UpdateBeam((MKVector3) &sp1A0, (MKVector3) &sp190, (MKVector3) &sp170);
                 var_r16_3836 += 1;
                 var_r14_3840 += 0x200;
             } while (var_r16_3836 < 2);
@@ -1817,27 +2192,27 @@ loop_182:
                 if (var_r15_2510 == NULL) {
                     temp_f25_3935 = temp_f28_3846 * (f32) var_r16_3919;
                     temp_f26_3940 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f25_3935));
-                    arg_sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3935);
-                    arg_sp6F4 = temp_f26_3940;
-                    arg_sp6F8 = 0.0f;
-                    ApplyMatrix(*((MKVector3 *) &arg_sp160), (Matrix *) &arg_sp6F0);
-                    arg_sp6F0 = arg_sp160;
-                    arg_sp6F8 = arg_sp168;
+                    sp6F0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f25_3935);
+                    sp6F4 = temp_f26_3940;
+                    sp6F8 = 0.0f;
+                    ApplyMatrix(sp160, (Matrix *) &sp6F0);
+                    sp6F0 = M2C_BITWISE(f64, sp160);
+                    sp6F8 = (f64) sp160.unk8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    arg_sp6F8 *= 50.0f;
+                    sp6F8 = (f32) sp6F8 * 50.0f;
                 } else {
-                    arg_sp6F0 = 0.0f;
-                    arg_sp6F4 = 0.0f;
-                    arg_sp6F8 = 0.0f;
+                    sp6F0 = 0.0f;
+                    sp6F4 = 0.0f;
+                    sp6F8 = 0.0f;
                 }
-                arg_sp120 = arg_sp810;
-                arg_sp128 = arg_sp818;
-                arg_sp130.operator+(*((MKVector3 *) &arg_sp790));
-                arg_sp140 = arg_sp130;
-                arg_sp148 = arg_sp138;
-                arg_sp150 = temp_f30_3918;
-                arg_sp158 = temp_f29_3920;
-                ((ElectricBeam *) (this + (var_r14_3921 + 0x1C0)))->UpdateBeam((MKVector3) &arg_sp150, (MKVector3) &arg_sp140, (MKVector3) &arg_sp120);
+                sp120 = sp810;
+                sp128 = sp818;
+                sp130.operator+(*((MKVector3 *) &sp790));
+                sp140 = M2C_BITWISE(f64, sp130);
+                sp148 = (f64) sp130.unk8;
+                sp150 = temp_f30_3918;
+                sp158 = temp_f29_3920;
+                ((ElectricBeam *) (this + (var_r14_3921 + 0x1C0)))->UpdateBeam((MKVector3) &sp150, (MKVector3) &sp140, (MKVector3) &sp120);
                 var_r16_3919 += 1;
                 var_r14_3921 += 0x200;
             } while (var_r16_3919 < 4);
@@ -1851,70 +2226,70 @@ loop_198:
                 temp_r4_4005 = this + (var_r3_3999 + 0x1E0);
                 var_r5_3998 += 1;
                 var_r3_3999 += 0x200;
-                M2C_FIELD(temp_r4_4005, f64 *, 0) = arg_sp7A0;
-                M2C_FIELD(temp_r4_4005, f64 *, 8) = arg_sp7A8;
+                M2C_FIELD(temp_r4_4005, f64 *, 0) = sp7A0;
+                M2C_FIELD(temp_r4_4005, f64 *, 8) = sp7A8;
                 goto loop_198;
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
-                arg_sp854 = 0;
+                sp854 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
-                arg_sp110.operator*(50.0f);
-                arg_sp850.Init(*((MKVector3 *) &arg_sp110), 1U);
-                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp850);
+                sp110.operator*(50.0f);
+                sp850.Init(sp110, 1U);
+                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, ShakeCameraMessage *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp850);
             }
         }
-        M2C_STRUCT_COPY((s32) &arg_sp88C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp88C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         MKVector(0.0f, 1.0f, 0.0f);
-        arg_sp6E0 = arg_spF0;
-        arg_sp6E8 = arg_spF8;
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp890, *((MKVector3 *) &arg_sp820), (MKVector3 *) &arg_sp6E0);
+        sp6E0 = spF0;
+        sp6E8 = spF8;
+        KDMath_BuildMatrixFromFwd(&sp890, *((MKVector3 *) &sp820), (MKVector3 *) &sp6E0);
         var_r17_4073 = 0;
         var_r14_4075 = 0;
         temp_f28_4078 = 6.2831855f / (f32) this->unk9F4;
 loop_208:
         if (var_r17_4073 < (FuryFXElectricity *) this->unk9F4) {
             if (arg5 != 0) {
-                arg_spC0 = arg_sp820;
-                arg_spC8 = arg_sp828;
-                arg_spD0 = arg_sp7A0;
-                arg_spD8 = arg_sp7A8;
-                arg_spE0 = M2C_FIELD(&arg1, f64 *, 0);
-                arg_spE8 = M2C_FIELD(&arg1, f64 *, 8);
-                ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->SetBeamPositions((MKVector3) &arg_spE0, (MKVector3) &arg_spD0, (MKVector3) &arg_spC0);
+                spC0 = sp820;
+                spC8 = sp828;
+                spD0 = sp7A0;
+                spD8 = sp7A8;
+                spE0 = M2C_FIELD(&arg1, f64 *, 0);
+                spE8 = M2C_FIELD(&arg1, f64 *, 8);
+                ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->SetBeamPositions((MKVector3) &spE0, (MKVector3) &spD0, (MKVector3) &spC0);
             } else {
                 temp_f30_4112 = temp_f28_4078 * (f32) var_r17_4073;
                 temp_f26_4117 = -_table_sinf(1.5707964f + (M2C_BITWISE(f32, this->unkA00) + temp_f30_4112));
-                arg_sp6D0 = _table_sinf(M2C_BITWISE(f32, this->unkA00) + temp_f30_4112);
-                arg_sp6D4 = temp_f26_4117;
-                arg_sp6D8 = 0.0f;
-                ApplyMatrix(*((MKVector3 *) &arg_spB0), (Matrix *) &arg_sp6D0);
-                arg_sp6D0 = arg_spB0;
-                arg_sp6D8 = arg_spB8;
+                sp6D0 = _table_sinf(M2C_BITWISE(f32, this->unkA00) + temp_f30_4112);
+                sp6D4 = temp_f26_4117;
+                sp6D8 = 0.0f;
+                ApplyMatrix(spB0, (Matrix *) &sp6D0);
+                sp6D0 = M2C_BITWISE(f64, spB0);
+                sp6D8 = (f64) spB0.unk8;
                 MKVector(0.0f, 0.0f, 0.0f);
-                arg_sp6C0 = arg_spA0;
-                arg_sp6C8 = arg_spA8;
+                sp6C0 = spA0;
+                sp6C8 = spA8;
                 if (var_r15_2510 == NULL) {
                     temp_f26_4150 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f30_4112));
-                    arg_sp6C0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f30_4112);
-                    arg_sp6C4 = temp_f26_4150;
-                    arg_sp6C8 = 0.0f;
-                    ApplyMatrix(*((MKVector3 *) &arg_sp90), (Matrix *) &arg_sp6C0);
-                    arg_sp6C0 = arg_sp90;
-                    arg_sp6C8 = arg_sp98;
+                    sp6C0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f30_4112);
+                    unksp6C4 = temp_f26_4150;
+                    sp6C8 = 0.0f;
+                    ApplyMatrix(sp90, (Matrix *) &sp6C0);
+                    sp6C0 = M2C_BITWISE(f64, sp90);
+                    sp6C8 = (f64) sp90.unk8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    arg_sp6C8 = (f32) arg_sp6C8 * 50.0f;
+                    sp6C8 = (f32) sp6C8 * 50.0f;
                 }
-                arg_sp20.operator*(0.5f);
-                arg_sp30.operator+(*((MKVector3 *) &arg_sp820));
-                Normalise(*((MKVector3 *) &arg_sp40));
-                arg_sp50 = arg_sp40;
-                arg_sp58 = arg_sp48;
-                arg_sp60.operator+(*((MKVector3 *) &arg_sp7A0));
-                arg_sp70 = arg_sp60;
-                arg_sp78 = arg_sp68;
-                arg_sp80 = M2C_FIELD(&arg1, f64 *, 0);
-                arg_sp88 = M2C_FIELD(&arg1, f64 *, 8);
-                ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->UpdateBeam((MKVector3) &arg_sp80, (MKVector3) &arg_sp70, (MKVector3) &arg_sp50);
+                sp20.operator*(0.5f);
+                sp30.operator+(*((MKVector3 *) &sp820));
+                Normalise(sp40);
+                sp50 = M2C_BITWISE(f64, sp40);
+                sp58 = (f64) sp40.unk8;
+                sp60.operator+(*((MKVector3 *) &sp7A0));
+                sp70 = M2C_BITWISE(f64, sp60);
+                sp78 = (f64) sp60.unk8;
+                sp80 = M2C_FIELD(&arg1, f64 *, 0);
+                sp88 = M2C_FIELD(&arg1, f64 *, 8);
+                ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->UpdateBeam((MKVector3) &sp80, (MKVector3) &sp70, (MKVector3) &sp50);
             }
             var_r17_4073 += 1;
             var_r14_4075 += 0x200;

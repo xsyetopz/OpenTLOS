@@ -765,39 +765,45 @@ void CynderTier3Descriptor::Init() {
     this->unk2B4 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp80'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void CynderTier2Train::UpdateMovementCustom() {
+    Matrix sp80;
+    Matrix sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
+    MKVector3 sp10;
     void *temp_r3_1468;
+
     temp_r3_1468 = this->unk630;
-    MKModel_GetRefPointMatrix(M2C_FIELD(temp_r3_1468, MKModel **, 0), M2C_FIELD(temp_r3_1468, s32 *, 4) + M2C_FIELD(temp_r3_1468, s32 *, 8), (Matrix *) &arg_sp80, 1U);
-    M2C_FIELD(this, f64 *, 0x588) = arg_spB0;
-    M2C_FIELD(this, f64 *, 0x590) = arg_spB8;
-    Normalise(*((MKVector3 *) &arg_sp30));
-    arg_sp80 = arg_sp30;
-    arg_sp84 = arg_sp34;
-    arg_sp88 = arg_sp38;
-    arg_sp8C = 0.0f;
-    Normalise(*((MKVector3 *) &arg_sp20));
-    arg_sp90 = arg_sp20;
-    arg_sp94 = arg_sp24;
-    arg_sp98 = arg_sp28;
-    arg_sp9C = 0.0f;
-    Normalise(*((MKVector3 *) &arg_sp10));
-    arg_spA0 = arg_sp10;
-    arg_spA4 = arg_sp14;
-    arg_spA8 = arg_sp18;
-    arg_spAC = 0.0f;
-    arg_spB0 = 0.0f;
-    arg_spB4 = 0.0f;
-    arg_spB8 = 0.0f;
-    arg_spBC = 1.0f;
-    arg_sp40.SetRotateAroundAxis(*((MKVector3 *) &arg_sp90), 3.1415927f);
-    arg_sp80.Multiply3x3((Matrix *) &arg_sp80, (Matrix *) &arg_sp40);
-    arg_spB0 = (f32) M2C_FIELD(this, f64 *, 0x588);
-    arg_spB4 = this->unk588.unk0;
-    arg_spB8 = this->unk588.unk4;
-    arg_spBC = 1.0f;
-    SetWorldMatrix((Matrix *) &arg_sp80);
+    MKModel_GetRefPointMatrix(M2C_FIELD(temp_r3_1468, MKModel **, 0), M2C_FIELD(temp_r3_1468, s32 *, 4) + M2C_FIELD(temp_r3_1468, s32 *, 8), &sp80, 1U);
+    M2C_FIELD(this, f64 *, 0x588) = (f64) sp80.unk30;
+    M2C_FIELD(this, f64 *, 0x590) = (f64) sp80.unk38;
+    Normalise(sp30);
+    sp80 = M2C_BITWISE(f32, sp30);
+    sp80.unk4 = sp30.unk4;
+    sp80.unk8 = sp30.unk8;
+    sp80.unkC = 0.0f;
+    Normalise(sp20);
+    sp80.unk10 = M2C_BITWISE(f32, sp20);
+    sp80.unk14 = sp20.unk4;
+    sp80.unk18 = sp20.unk8;
+    sp80.unk1C = 0.0f;
+    Normalise(sp10);
+    sp80.unk20 = M2C_BITWISE(f32, sp10);
+    sp80.unk24 = sp10.unk4;
+    sp80.unk28 = sp10.unk8;
+    sp80.unk2C = 0.0f;
+    sp80.unk30 = 0.0f;
+    sp80.unk34 = 0.0f;
+    sp80.unk38 = 0.0f;
+    sp80.unk3C = 1.0f;
+    sp40.SetRotateAroundAxis(*((MKVector3 *) &sp80.unk10), 3.1415927f);
+    sp80.Multiply3x3(&sp80, &sp40);
+    sp80.unk30 = (f32) M2C_FIELD(this, f64 *, 0x588);
+    sp80.unk34 = this->unk588.unk0;
+    sp80.unk38 = this->unk588.unk4;
+    sp80.unk3C = 1.0f;
+    SetWorldMatrix(&sp80);
 }
 #endif
 
@@ -1037,37 +1043,52 @@ void CynderTier1::DefrostBall() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp7C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CynderTier1::UpdateFrozenBallMovement() {
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
     f64 temp_f1_2146;
     s32 temp_r3_2067;
     s32 temp_r5_2137;
     u8 temp_r4_2169;
+
     temp_r3_2067 = this->unkB04;
     if ((u32) temp_r3_2067 != 0U) {
-        M2C_STRUCT_COPY((s32) &arg_sp7C + 4, M2C_FIELD(temp_r3_2067, s32 *, 8) - 4 + 4, 0x40);
-        arg_sp60.NormaliseScale();
-        arg_sp30 = -arg_sp90;
-        arg_sp34 = -arg_sp94;
-        arg_sp38 = -arg_sp98;
-        arg_sp40 = (f64) arg_sp30;
-        arg_sp48 = (f64) arg_sp38;
+        M2C_STRUCT_COPY((s32) &sp60.unk1C + 4, M2C_FIELD(temp_r3_2067, s32 *, 8) - 4 + 4, 0x40);
+        sp60.NormaliseScale();
+        sp30 = -sp60.unk30;
+        sp34 = -sp60.unk34;
+        sp38 = -sp60.unk38;
+        sp40 = (f64) sp30;
+        sp48 = (f64) sp38;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        arg_sp50 = arg_sp20;
-        arg_sp28 = (f32) arg_sp48 * 100.0f;
-        arg_sp58 = (f64) arg_sp28;
+        sp50 = sp20;
+        sp28 = (f32) sp48 * 100.0f;
+        sp58 = (f64) sp28;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp70 = arg_sp10;
-        arg_sp18 = arg_spB8 + (f32) arg_sp58;
-        arg_sp78 = (f64) arg_sp18;
-        arg_spB0 = (f32) arg_sp70;
-        arg_spB4 = arg_sp74;
-        arg_spB8 = (f32) arg_sp78;
-        arg_spBC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp80));
-        M2C_FIELD(this, f64 *, 0x588) = (f64) arg_spB0;
-        M2C_FIELD(this, f64 *, 0x590) = (f64) arg_spB8;
+        sp60.unk10 = sp10;
+        sp18 = spB8 + (f32) sp58;
+        sp60.unk18 = (f64) sp18;
+        spB0 = sp60.unk10;
+        spB4 = sp60.unk14;
+        spB8 = (f32) (f64) sp18;
+        spBC = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp60.unk20));
+        M2C_FIELD(this, f64 *, 0x588) = (f64) spB0;
+        M2C_FIELD(this, f64 *, 0x590) = (f64) spB8;
         temp_r5_2137 = this->unkB04;
         this->unk110.unk8 = M2C_FIELD(temp_r5_2137, f64 *, 0x150);
         this->unk110.unk10 = M2C_FIELD(temp_r5_2137, f64 *, 0x158);
@@ -1094,22 +1115,30 @@ void CynderTier1::UpdateFrozenBallMovement() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'Ball *' to
 s32 CynderTier1::TryFreezeBall() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s32 temp_r3_2203;
     s32 temp_r3_2210;
+
     this->unkB04 = checked_cast<Ball *, MKProp>(((MKPropDescriptor *) (M2C_FIELD(this, MKPropDescriptor **, 0xB18)))->CreateInstance());
     temp_r3_2203 = this->unkB04;
     if ((u32) temp_r3_2203 != 0U) {
         M2C_FIELD(M2C_FIELD(temp_r3_2203, void **, 0x44), M2C_UNK (**)(), 0x30)();
         temp_r3_2210 = this->unkB04;
         M2C_FIELD(M2C_FIELD(temp_r3_2210, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_2210);
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-        arg_sp18 = 0.0f;
-        arg_sp10 = 0.0f;
-        arg_sp14 = 175.0f;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-        this->unkB04->SetWorldMatrix((Matrix *) &arg_sp30);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        sp18 = 0.0f;
+        sp10 = 0.0f;
+        sp14 = 175.0f;
+        sp28 = (f64) sp18;
+        sp20 = (f64) sp10;
+        sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+        this->unkB04->SetWorldMatrix(&sp30);
         M2C_FIELD(this->unkB04, f32 *, 0x280) = 1.75f;
         M2C_FIELD(this->unkB04, CynderTier1 **, 0x230) = this;
         this->unkB04->FindClosestGroup();

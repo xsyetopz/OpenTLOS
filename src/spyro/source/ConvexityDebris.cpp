@@ -6,6 +6,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -119,31 +120,37 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
+#if 0 // DRAFT: undefined identifier 'sp18'
 void ConvexityDebris::Draw() {
+    Matrix sp50;
+    f64 sp40;
+    KDSpline sp28;
+    f32 sp20;
+    f32 sp10;
     MKHeap *temp_r31_248;
     MKHeap *var_r30_190;
+
     if ((s32) this->unk64 != 0) {
         var_r30_190 = this->unk4C;
 loop_3:
         if (var_r30_190 != NULL) {
             temp_r31_248 = var_r30_190->unk0;
             if (temp_r31_248 != NULL) {
-                arg_sp50.SetIdentity();
-                arg_sp50.SetRotationPYR(*((MKVector3 *) &temp_r31_248->unk38));
-                arg_sp50.Scale3x3((Matrix *) &arg_sp50, temp_r31_248->unk6C);
-                arg_sp10 = this->unk68 + M2C_BITWISE(f32, temp_r31_248->unk68);
-                arg_sp28.GetMeasure(Clamp<float>(0.0f, arg_sp10, 1.0f), (Matrix *) &this->unk50);
+                sp50.SetIdentity();
+                sp50.SetRotationPYR(*((MKVector3 *) &temp_r31_248->unk38));
+                sp50.Scale3x3(&sp50, temp_r31_248->unk6C);
+                sp10 = this->unk68 + M2C_BITWISE(f32, temp_r31_248->unk68);
+                sp28.GetMeasure(Clamp<float>(0.0f, sp10, 1.0f), (Matrix *) &this->unk50);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp8C = 1.0f;
-                arg_sp38 = arg_sp18;
-                arg_sp20 = arg_sp30 + M2C_BITWISE(f32, temp_r31_248->unk50);
-                arg_sp40 = (f64) arg_sp20;
-                arg_sp80 = (f32) arg_sp38;
-                arg_sp84 = arg_sp3C;
-                arg_sp88 = (f32) arg_sp40;
-                MKModel_SetWorldMatrix((MKModel *) temp_r31_248->unk70, *((Matrix *) &arg_sp50));
+                sp50.unk3C = 1.0f;
+                sp28.unk10 = sp18;
+                sp20 = sp28.unk8 + M2C_BITWISE(f32, temp_r31_248->unk50);
+                sp40 = (f64) sp20;
+                sp50.unk30 = M2C_BITWISE(f32, sp28.unk10);
+                sp50.unk34 = sp3C;
+                sp50.unk38 = (f32) sp40;
+                MKModel_SetWorldMatrix((MKModel *) temp_r31_248->unk70, sp50);
                 MKModel_SetColor((MKModel *) temp_r31_248->unk70, this->unk80);
                 MKModel_Draw((MKModel *) temp_r31_248->unk70, NULL);
                 var_r30_190 += 4;

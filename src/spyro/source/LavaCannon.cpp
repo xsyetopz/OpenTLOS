@@ -216,54 +216,85 @@ void LavaCannon::Reset() {
     M2C_FIELD(this, s8 *, 0x264) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
+#if 0 // DRAFT: expression syntax error
 void LavaCannon::Draw() {
+    Matrix sp110;
+    Matrix spD0;
+    Matrix sp90;
+    f64 sp88;
+    f64 sp80;
+    f32 sp70;
+    M2C_UNK sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp40;
+    M2C_UNK sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s32 temp_r30_590;
     s32 temp_r30_653;
     void *temp_r30_545;
     void *temp_r30_576;
     void *temp_r30_608;
     void *temp_r30_639;
-    arg_sp90.SetIdentity();
-    arg_sp90.SetRotationPitch(M2C_FIELD(this, f32 *, 0x248));
-    arg_sp110.SetIdentity();
+
+    sp90.SetIdentity();
+    sp90.SetRotationPitch(M2C_FIELD(this, f32 *, 0x248));
+    sp110.SetIdentity();
     temp_r30_545 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp70.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    arg_sp20 = -arg_sp70;
-    arg_sp24 = -arg_sp74;
-    arg_sp28 = -arg_sp78;
-    arg_sp80 = (f64) arg_sp20;
-    arg_sp88 = (f64) arg_sp28;
-    arg_sp110.Translate((Matrix *) &arg_sp110, *((MKVector3 *) &arg_sp80));
-    arg_sp110.Multiply((Matrix *) &arg_sp110, (Matrix *) &arg_sp90);
+    sp70.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    sp20 = -sp70;
+    sp24 = -sp74;
+    sp28 = -sp78;
+    sp80 = (f64) sp20;
+    sp88 = (f64) sp28;
+    sp110.Translate(&sp110, *((MKVector3 *) &sp80));
+    sp110.Multiply(&sp110, &sp90);
     temp_r30_576 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp60.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    arg_sp110.Translate((Matrix *) &arg_sp110, *((MKVector3 *) &arg_sp60));
+    sp60.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    sp110.Translate(&sp110, *((MKVector3 *) &sp60));
     temp_r30_590 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188);
-    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, (Matrix *) &arg_sp110, (AnimationMatrixPosition) 2, 0U);
-    arg_sp90.SetIdentity();
-    arg_sp90.SetRotationYaw(this->unk24C);
-    arg_spD0.SetIdentity();
+    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, &sp110, (AnimationMatrixPosition) 2, 0U);
+    sp90.SetIdentity();
+    sp90.SetRotationYaw(this->unk24C);
+    spD0.SetIdentity();
     temp_r30_608 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp40.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    arg_sp10 = -arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -arg_sp48;
-    arg_sp50 = (f64) arg_sp10;
-    arg_sp58 = (f64) arg_sp18;
-    arg_spD0.Translate((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp50));
-    arg_spD0.Multiply((Matrix *) &arg_spD0, (Matrix *) &arg_sp90);
+    sp40.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    sp10 = -sp40;
+    sp14 = -sp44;
+    sp18 = -sp48;
+    sp50 = (f64) sp10;
+    sp58 = (f64) sp18;
+    spD0.Translate(&spD0, *((MKVector3 *) &sp50));
+    spD0.Multiply(&spD0, &sp90);
     temp_r30_639 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    arg_spD0.Translate((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp30));
+    sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    spD0.Translate(&spD0, *((MKVector3 *) &sp30));
     temp_r30_653 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184);
-    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, (Matrix *) &arg_spD0, (AnimationMatrixPosition) 2, 0U);
+    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, &spD0, (AnimationMatrixPosition) 2, 0U);
     Shatterable::Draw();
 }
 #endif
 
 #if 0 // DRAFT: ')' expected
 void LavaCannon::Update() {
+    Matrix sp80;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    MKVector3 sp48;
+    f64 sp40;
+    f64 sp38;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     MKVector3 *temp_r29_1009;
     MKVector3 *temp_r29_1027;
     f32 temp_r0_787;
@@ -280,21 +311,22 @@ void LavaCannon::Update() {
     s32 var_r31_1002;
     u8 var_r29_1039;
     void *temp_r4_809;
+
     Shatterable::Update();
     if (this->unk10 & 0x20000) {
         if (M2C_BITWISE(s32, this->unk250) != 5) {
-            MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), (Matrix *) &arg_sp80, 1U);
-            arg_sp18 = -arg_spA0;
-            arg_sp1C = -arg_spA4;
-            arg_sp20 = -arg_spA8;
-            M2C_FIELD(this, f64 *, 0x1E8) = (f64) arg_sp18;
-            M2C_FIELD(this, f64 *, 0x1F0) = (f64) arg_sp20;
-            arg_sp58 = (f64) arg_sp18;
-            arg_sp60 = (f64) arg_sp20;
+            MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), &sp80, 1U);
+            sp18 = -sp80.unk20;
+            sp1C = -sp80.unk24;
+            sp20 = -sp80.unk28;
+            M2C_FIELD(this, f64 *, 0x1E8) = (f64) sp18;
+            M2C_FIELD(this, f64 *, 0x1F0) = (f64) sp20;
+            sp58 = (f64) sp18;
+            sp60 = (f64) sp20;
             MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), (MKVector3 *) &this->unk1E8);
-            Tools_CalculateVelocity(*((MKVector3 *) &arg_sp48), *((MKVector3 *) &this->unk1E8), 5000.0f, -1960.0f);
-            M2C_FIELD(this, f64 *, 0x218) = arg_sp48;
-            M2C_FIELD(this, f64 *, 0x220) = arg_sp50;
+            Tools_CalculateVelocity(sp48, *((MKVector3 *) &this->unk1E8), 5000.0f, -1960.0f);
+            M2C_FIELD(this, f64 *, 0x218) = M2C_BITWISE(f64, sp48);
+            M2C_FIELD(this, f64 *, 0x220) = (f64) sp48.unk8;
             this->unk218.unk8 = KDMath_GetPitch(*((MKVector3 *) &this->unk208));
             this->unk218.unkC = KDMath_GetYaw(*((MKVector3 *) &this->unk208));
             if ((u8) M2C_FIELD(this, u8 *, 0x238) == 0) {
@@ -319,14 +351,14 @@ void LavaCannon::Update() {
             M2C_FIELD(this, u8 *, 0x239) = 0U;
             this->unk218.unk0 = M2C_BITWISE(f32, MKRand_Int(&gViewSeed, 0, 3));
             temp_r4_809 = this->unk8;
-            arg_sp38 = M2C_FIELD(temp_r4_809, f64 *, 0x30);
-            arg_sp40 = M2C_FIELD(temp_r4_809, f64 *, 0x38);
+            sp38 = M2C_FIELD(temp_r4_809, f64 *, 0x30);
+            sp40 = M2C_FIELD(temp_r4_809, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp68 = arg_sp28;
-            arg_sp30 = M2C_FIELD((this + ((M2C_BITWISE(s32, this->unk218.unk0) * 0x10) + 0x1A8)), f32 *, 8) - (f32) arg_sp40;
-            arg_sp70 = (f64) arg_sp30;
-            var_f4_837 = ((f32) arg_sp70 * (f32) arg_sp70) + (((f32) arg_sp68 * (f32) arg_sp68) + (arg_sp6C * arg_sp6C));
+            sp68 = sp28;
+            sp30 = M2C_FIELD((this + ((M2C_BITWISE(s32, this->unk218.unk0) * 0x10) + 0x1A8)), f32 *, 8) - (f32) sp40;
+            sp70 = (f64) sp30;
+            var_f4_837 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
             if (var_f4_837 > 0.0f) {
                 temp_f1_840 = __frsqrte(var_f4_837);
                 temp_f1_846 = 0.5 * temp_f1_840 * -(((f64) var_f4_837 * (temp_f1_840 * temp_f1_840)) - 3.0);
@@ -335,18 +367,18 @@ void LavaCannon::Update() {
             } else if (var_f4_837 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_837 = __float_nan;
             } else {
-                arg_sp10 = var_f4_837;
-                temp_r3_869 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_837;
+                temp_r3_869 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_869) {              /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_879 = 1;
                     } else {
                         var_r0_879 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_879 = 5;
                     } else {
                         var_r0_879 = 3;
@@ -442,21 +474,29 @@ void LavaCannon::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LavaCannon::LoadDone() {
+    Matrix sp70;
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     Shatterable::LoadDone();
     this->unk234 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
-    M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp18 = 0.0f;
-    arg_sp10 = 0.0f;
-    arg_sp14 = 0.0f;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp70.SetRotationPYR(*((MKVector3 *) &arg_sp20));
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp70));
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp30.Scale3x3((Matrix *) &arg_sp30, MKProp::loadInfo + 0x60);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
+    M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp18 = 0.0f;
+    sp10 = 0.0f;
+    sp14 = 0.0f;
+    sp28 = (f64) sp18;
+    sp20 = (f64) sp10;
+    sp70.SetRotationPYR(*((MKVector3 *) &sp20));
+    MKModel_SetWorldMatrix(this->unk4, sp70);
+    M2C_STRUCT_COPY((s32) &unksp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp30.Scale3x3(&sp30, MKProp::loadInfo + 0x60);
+    MKModel_SetWorldMatrix(this->unk4, sp30);
 }
 #endif
 

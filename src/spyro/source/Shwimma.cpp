@@ -42,9 +42,12 @@ void ShwimmaCritter::Deinit() {
 
 #if 0 // DRAFT: illegal type
 void ShwimmaCritter::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 var_r30_92;
     s32 var_r31_93;
     void *temp_r29_97;
+
     var_r30_92 = 0;
     var_r31_93 = 0;
 loop_4:
@@ -53,8 +56,8 @@ loop_4:
         if ((s32) M2C_FIELD(temp_r29_97, s32 *, 0x60) != 0) {
             this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
             this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
-            M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (temp_r29_97 - 4) + 4, 0x40);
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_97 - 4) + 4, 0x40);
+            MKModel_SetWorldMatrix(this->unk4, sp10);
             MKModel_Draw(this->unk4, NULL);
         }
         var_r30_92 += 1;

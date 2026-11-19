@@ -465,20 +465,28 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SiegeTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s16 temp_r31_855;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = -arg0->unk0;
-    arg_sp14 = -arg0->unk4;
-    arg_sp18 = -arg0->unk8;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-    arg_sp30.RotateYaw((Matrix *) &arg_sp30, arg0->unk10);
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) arg0));
+
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = -arg0->unk0;
+    sp14 = -arg0->unk4;
+    sp18 = -arg0->unk8;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+    sp30.RotateYaw(&sp30, arg0->unk10);
+    sp30.Translate(&sp30, *((MKVector3 *) arg0));
     temp_r31_855 = M2C_FIELD(this->unk20, s16 *, 0x70);
-    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_855, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 4, 0U);
+    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_855, &sp30, (AnimationMatrixPosition) 4, 0U);
 }
 #endif
 

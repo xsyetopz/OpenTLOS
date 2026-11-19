@@ -19,8 +19,126 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp3BC'
+#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
 void CrashSparkPS::Draw() {
+    f32 sp410;
+    f32 sp400;
+    f32 sp3FC;
+    f32 sp3F8;
+    f32 sp3F4;
+    f32 sp3F0;
+    M2C_UNK sp3BC;
+    f64 sp3B0;
+    f64 sp3A8;
+    f64 sp3A0;
+    f64 sp398;
+    f64 sp390;
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;                                      /* compiler-managed */
+    f64 sp368;
+    f64 sp360;                                      /* compiler-managed */
+    f64 sp358;
+    f64 sp350;                                      /* compiler-managed */
+    f64 sp348;
+    f64 sp340;                                      /* compiler-managed */
+    f64 sp338;
+    f64 sp330;                                      /* compiler-managed */
+    f64 sp328;                                      /* compiler-managed */
+    f64 sp320;                                      /* compiler-managed */
+    f64 sp318;                                      /* compiler-managed */
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    MKVector3 sp2E8;
+    MKVector3 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    MKVector3 sp2A8;
+    MKVector3 sp298;
+    f64 sp290;
+    f64 sp288;
+    MKVector3 sp278;
+    f64 sp270;
+    f64 sp268;
+    MKVector3 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    MKVector3 sp228;
+    f64 sp220;
+    f64 sp218;
+    MKVector3 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    MKVector4 sp168;
+    M2C_UNK sp158;
+    f32 sp150;
+    f32 sp14C;
+    f32 sp148;
+    f32 sp140;
+    f32 sp13C;
+    f32 sp138;
+    f32 sp134;
+    f32 sp130;
+    f32 sp12C;
+    f32 sp128;
+    f32 sp120;
+    f32 sp110;
+    f32 sp100;
+    f32 spF0;
+    f32 spE0;
+    f32 spD0;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f64 sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f14_665;
     f32 temp_f15_489;
     f32 temp_f1_637;
@@ -44,25 +162,26 @@ void CrashSparkPS::Draw() {
     s32 var_r25_441;
     s32 var_r30_443;
     void *temp_r3_479;
+
     MKMaterial_SetMaterial(M2C_FIELD(this->unk0, MKMaterial **, 0x38));
     MKPrimitive(0xC, 0);
-    M2C_STRUCT_COPY((s32) &arg_sp3BC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp3BC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     var_f6_102 = 0.0f;
-    arg_sp148 = 0.0f;
-    arg_sp14C = 1.0f;
-    arg_sp150 = 0.0f;
-    arg_sp328 = (f64) arg_sp148;
-    arg_sp330 = (f64) arg_sp150;
-    arg_sp140 = 0.0f;
-    arg_sp138 = 1.0f;
-    arg_sp13C = 0.0f;
-    var_f5_123 = ((f32) arg_sp330 * (f32) arg_sp330) + (((f32) arg_sp328 * (f32) arg_sp328) + (arg_sp32C * arg_sp32C));
-    arg_sp3F0 = 0.0f;
-    arg_sp3F4 = 0.0f;
-    arg_sp3F8 = 0.0f;
-    arg_sp3FC = 1.0f;
-    arg_sp318 = (f64) arg_sp138;
-    arg_sp320 = (f64) arg_sp140;
+    sp148 = 0.0f;
+    sp14C = 1.0f;
+    sp150 = 0.0f;
+    sp328 = (f64) sp148;
+    sp330 = (f64) sp150;
+    sp140 = 0.0f;
+    sp138 = 1.0f;
+    sp13C = 0.0f;
+    var_f5_123 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + (unksp32C * unksp32C));
+    sp3F0 = 0.0f;
+    sp3F4 = 0.0f;
+    sp3F8 = 0.0f;
+    sp3FC = 1.0f;
+    sp318 = (f64) sp138;
+    sp320 = (f64) sp140;
     if (var_f5_123 > 0.000001f) {
         if (var_f5_123 > 0.0f) {
             temp_f1_135 = __frsqrte(var_f5_123);
@@ -72,18 +191,18 @@ void CrashSparkPS::Draw() {
         } else if (var_f5_123 < M2C_BITWISE(f32, 0.0)) {
             var_f5_123 = __float_nan;
         } else {
-            arg_sp14 = var_f5_123;
-            temp_r3_164 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f5_123;
+            temp_r3_164 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_164) {                  /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_174 = 1;
                 } else {
                     var_r0_174 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_174 = 5;
                 } else {
                     var_r0_174 = 3;
@@ -99,10 +218,10 @@ void CrashSparkPS::Draw() {
         }
         var_f6_102 = 1.0f / var_f5_123;
     }
-    var_f7_211 = ((f32) arg_sp320 * (f32) arg_sp320) + (((f32) arg_sp318 * (f32) arg_sp318) + (arg_sp31C * arg_sp31C));
-    arg_sp328 = (f32) arg_sp328 * var_f6_102;
-    arg_sp32C *= var_f6_102;
-    arg_sp330 = (f32) arg_sp330 * var_f6_102;
+    var_f7_211 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
+    sp328 = (f32) sp328 * var_f6_102;
+    unksp32C *= var_f6_102;
+    sp330 = (f32) sp330 * var_f6_102;
     if (var_f7_211 > 0.000001f) {
         if (var_f7_211 > 0.0f) {
             temp_f1_221 = __frsqrte(var_f7_211);
@@ -112,18 +231,18 @@ void CrashSparkPS::Draw() {
         } else if (var_f7_211 < M2C_BITWISE(f32, 0.0)) {
             var_f7_211 = __float_nan;
         } else {
-            arg_sp10 = var_f7_211;
-            temp_r3_250 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f7_211;
+            temp_r3_250 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_250) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_260 = 1;
                 } else {
                     var_r0_260 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_260 = 5;
                 } else {
                     var_r0_260 = 3;
@@ -141,79 +260,79 @@ void CrashSparkPS::Draw() {
     } else {
         var_f2_282 = 0.0f;
     }
-    temp_f9_291 = (f32) arg_sp318 * var_f2_282;
-    temp_f8_293 = arg_sp31C * var_f2_282;
-    temp_f7_295 = (f32) arg_sp320 * var_f2_282;
-    arg_sp128 = 1.0f;
-    arg_sp12C = 1.0f;
-    arg_sp50 = -temp_f7_295;
-    arg_sp130 = 1.0f;
-    arg_sp134 = 0.0f;
-    arg_sp48 = -temp_f9_291;
-    arg_sp4C = -temp_f8_293;
-    arg_sp318 = temp_f9_291;
-    arg_sp31C = temp_f8_293;
-    arg_sp320 = temp_f7_295;
-    arg_sp308 = (f64) arg_sp128;
-    arg_sp310 = (f64) arg_sp130;
-    arg_sp2C8 = (f64) arg_sp48;
-    arg_sp2D0 = (f64) arg_sp50;
-    arg_sp2D8.operator*(10.0f);
-    arg_sp2E8.operator*(10.0f);
+    temp_f9_291 = (f32) sp318 * var_f2_282;
+    temp_f8_293 = unksp31C * var_f2_282;
+    temp_f7_295 = (f32) sp320 * var_f2_282;
+    sp128 = 1.0f;
+    sp12C = 1.0f;
+    sp50 = -temp_f7_295;
+    sp130 = 1.0f;
+    sp134 = 0.0f;
+    sp48 = -temp_f9_291;
+    sp4C = -temp_f8_293;
+    sp318 = temp_f9_291;
+    unksp31C = temp_f8_293;
+    sp320 = temp_f7_295;
+    sp308 = (f64) sp128;
+    sp310 = (f64) sp130;
+    sp2C8 = (f64) sp48;
+    sp2D0 = (f64) sp50;
+    sp2D8.operator*(10.0f);
+    sp2E8.operator*(10.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2F8 = arg_sp118;
-    arg_sp120 = arg_sp2F0 + arg_sp2E0;
-    arg_sp378 = arg_sp118;
-    arg_sp300 = (f64) arg_sp120;
-    arg_sp380 = (f64) arg_sp120;
-    arg_sp298.operator*(10.0f);
-    arg_sp2A8.operator*(10.0f);
+    sp2F8 = sp118;
+    sp120 = sp2E8.unk8 + sp2D8.unk8;
+    sp378 = sp118;
+    sp300 = (f64) sp120;
+    sp380 = (f64) sp120;
+    sp298.operator*(10.0f);
+    sp2A8.operator*(10.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp40 = -(f32) arg_sp320;
-    arg_sp110 = arg_sp2B0 + arg_sp2A0;
-    arg_sp38 = -(f32) arg_sp318;
-    arg_sp3C = -arg_sp31C;
-    arg_sp2B8 = arg_sp108;
-    arg_sp2C0 = (f64) arg_sp110;
-    arg_sp388 = arg_sp108;
-    arg_sp390 = (f64) arg_sp110;
-    arg_sp248 = (f64) arg_sp38;
-    arg_sp250 = (f64) arg_sp40;
-    arg_sp258.operator*(10.0f);
-    arg_sp28 = -(f32) arg_sp328;
-    arg_sp2C = -arg_sp32C;
-    arg_sp30 = -(f32) arg_sp330;
-    arg_sp268 = (f64) arg_sp28;
-    arg_sp270 = (f64) arg_sp30;
-    arg_sp278.operator*(10.0f);
+    sp40 = -sp320;
+    sp110 = sp2A8.unk8 + sp298.unk8;
+    sp38 = -sp318;
+    sp3C = -unksp31C;
+    sp2B8 = sp108;
+    sp2C0 = (f64) sp110;
+    sp388 = sp108;
+    sp390 = (f64) sp110;
+    sp248 = (f64) sp38;
+    sp250 = (f64) sp40;
+    sp258.operator*(10.0f);
+    sp28 = -sp328;
+    sp2C = -unksp32C;
+    sp30 = -sp330;
+    sp268 = (f64) sp28;
+    sp270 = (f64) sp30;
+    sp278.operator*(10.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp288 = arg_spF8;
-    arg_sp100 = arg_sp280 + arg_sp260;
-    arg_sp398 = arg_spF8;
-    arg_sp290 = (f64) arg_sp100;
-    arg_sp3A0 = (f64) arg_sp100;
-    arg_sp208.operator*(10.0f);
-    arg_sp18 = -(f32) arg_sp328;
-    arg_sp1C = -arg_sp32C;
-    arg_sp20 = -(f32) arg_sp330;
-    arg_sp218 = (f64) arg_sp18;
-    arg_sp220 = (f64) arg_sp20;
-    arg_sp228.operator*(10.0f);
+    sp288 = spF8;
+    sp100 = sp278.unk8 + sp258.unk8;
+    sp398 = spF8;
+    sp290 = (f64) sp100;
+    sp3A0 = (f64) sp100;
+    sp208.operator*(10.0f);
+    sp18 = -sp328;
+    sp1C = -unksp32C;
+    sp20 = -sp330;
+    sp218 = (f64) sp18;
+    sp220 = (f64) sp20;
+    sp228.operator*(10.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     var_r25_441 = 0;
     var_r30_443 = 0;
-    arg_sp3A8 = arg_spE8;
-    arg_spF0 = arg_sp230 + arg_sp210;
-    arg_sp410 = (f32) arg_sp380;
-    arg_sp238 = arg_spE8;
-    arg_sp3B0 = (f64) arg_spF0;
-    arg_sp240 = (f64) arg_spF0;
+    sp3A8 = spE8;
+    spF0 = sp228.unk8 + sp208.unk8;
+    sp410 = (f32) sp380;
+    sp238 = spE8;
+    sp3B0 = (f64) spF0;
+    sp240 = (f64) spF0;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-    arg_sp400 = (f32) arg_sp390;
+    sp400 = (f32) sp390;
     M2C_ERROR(/* unknown instruction: psq_lx $f31, $zero, $r27, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f29, $zero, $r0, 0x0, qr0 */);
     do {
@@ -222,99 +341,99 @@ void CrashSparkPS::Draw() {
             temp_f15_489 = (1.0f - (M2C_FIELD(temp_r3_479, f32 *, 0x38) / M2C_FIELD(temp_r3_479, f32 *, 0x48))) * M2C_FIELD(temp_r3_479, f32 *, 0x30);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f15 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f0, $f15 */);
-            arg_spE0 = arg_sp410 * temp_f15_489;
-            arg_sp1F8 = arg_spD8;
-            arg_sp200 = (f64) arg_spE0;
-            arg_sp338 = arg_spD8;
-            arg_sp340 = (f64) arg_spE0;
+            spE0 = sp410 * temp_f15_489;
+            sp1F8 = spD8;
+            sp200 = (f64) spE0;
+            sp338 = spD8;
+            sp340 = (f64) spE0;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f31, $f15 */);
-            arg_sp1E8 = arg_spC8;
-            arg_spD0 = arg_sp400 * temp_f15_489;
-            arg_sp348 = arg_spC8;
-            arg_sp1F0 = (f64) arg_spD0;
-            arg_sp350 = (f64) arg_spD0;
+            sp1E8 = spC8;
+            spD0 = sp400 * temp_f15_489;
+            sp348 = spC8;
+            sp1F0 = (f64) spD0;
+            sp350 = (f64) spD0;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f29, $f15 */);
-            arg_spC0 = (f32) arg_sp3A0 * temp_f15_489;
-            arg_sp1D8 = arg_spB8;
-            arg_sp1E0 = (f64) arg_spC0;
-            arg_sp358 = arg_spB8;
-            arg_sp360 = (f64) arg_spC0;
-            arg_spB0 = (f32) arg_sp3B0 * temp_f15_489;
-            arg_sp1C8 = arg_spA8;
-            arg_sp368 = arg_spA8;
-            arg_sp1D0 = (f64) arg_spB0;
-            arg_sp370 = (f64) arg_spB0;
-            arg_sp98 = arg_sp3F0 + (((f32) arg_sp340 * arg_sp3E0) + (((f32) arg_sp338 * arg_sp3C0) + (arg_sp33C * arg_sp3D0)));
-            arg_sp9C = arg_sp3F4 + (((f32) arg_sp340 * arg_sp3E4) + (((f32) arg_sp338 * arg_sp3C4) + (arg_sp33C * arg_sp3D4)));
-            arg_spA0 = arg_sp3F8 + (((f32) arg_sp340 * arg_sp3E8) + (((f32) arg_sp338 * arg_sp3C8) + (arg_sp33C * arg_sp3D8)));
-            arg_sp1B8 = (f64) arg_sp98;
-            arg_sp1C0 = (f64) arg_spA0;
-            arg_sp338 = (f64) arg_sp98;
-            arg_sp340 = (f64) arg_spA0;
-            arg_sp88 = arg_sp3F0 + (((f32) arg_sp350 * arg_sp3E0) + (((f32) arg_sp348 * arg_sp3C0) + (arg_sp34C * arg_sp3D0)));
-            arg_sp8C = arg_sp3F4 + (((f32) arg_sp350 * arg_sp3E4) + (((f32) arg_sp348 * arg_sp3C4) + (arg_sp34C * arg_sp3D4)));
-            arg_sp90 = arg_sp3F8 + (((f32) arg_sp350 * arg_sp3E8) + (((f32) arg_sp348 * arg_sp3C8) + (arg_sp34C * arg_sp3D8)));
-            arg_sp80 = arg_sp3F8 + (((f32) arg_sp360 * arg_sp3E8) + (((f32) arg_sp358 * arg_sp3C8) + (arg_sp35C * arg_sp3D8)));
-            arg_sp70 = arg_sp3F8 + (((f32) arg_sp370 * arg_sp3E8) + (((f32) arg_sp368 * arg_sp3C8) + (arg_sp36C * arg_sp3D8)));
-            arg_sp78 = arg_sp3F0 + (((f32) arg_sp360 * arg_sp3E0) + (((f32) arg_sp358 * arg_sp3C0) + (arg_sp35C * arg_sp3D0)));
-            arg_sp7C = arg_sp3F4 + (((f32) arg_sp360 * arg_sp3E4) + (((f32) arg_sp358 * arg_sp3C4) + (arg_sp35C * arg_sp3D4)));
-            arg_sp68 = arg_sp3F0 + (((f32) arg_sp370 * arg_sp3E0) + (((f32) arg_sp368 * arg_sp3C0) + (arg_sp36C * arg_sp3D0)));
-            arg_sp6C = arg_sp3F4 + (((f32) arg_sp370 * arg_sp3E4) + (((f32) arg_sp368 * arg_sp3C4) + (arg_sp36C * arg_sp3D4)));
-            arg_sp348 = (f64) arg_sp88;
-            arg_sp350 = (f64) arg_sp90;
-            arg_sp358 = (f64) arg_sp78;
-            arg_sp360 = (f64) arg_sp80;
-            arg_sp368 = (f64) arg_sp68;
-            arg_sp370 = (f64) arg_sp70;
-            arg_sp1A8 = (f64) arg_sp88;
-            arg_sp1B0 = (f64) arg_sp90;
-            arg_sp198 = (f64) arg_sp78;
-            arg_sp1A0 = (f64) arg_sp80;
-            arg_sp188 = (f64) arg_sp68;
-            arg_sp190 = (f64) arg_sp70;
+            spC0 = (f32) sp3A0 * temp_f15_489;
+            sp1D8 = spB8;
+            sp1E0 = (f64) spC0;
+            sp358 = spB8;
+            sp360 = (f64) spC0;
+            spB0 = (f32) sp3B0 * temp_f15_489;
+            sp1C8 = spA8;
+            sp368 = spA8;
+            sp1D0 = (f64) spB0;
+            sp370 = (f64) spB0;
+            sp98 = sp3F0 + (((f32) sp340 * sp3E0) + (((f32) sp338 * sp3C0) + (unksp33C * sp3D0)));
+            sp9C = sp3F4 + (((f32) sp340 * sp3E4) + (((f32) sp338 * sp3C4) + (unksp33C * sp3D4)));
+            spA0 = sp3F8 + (((f32) sp340 * sp3E8) + (((f32) sp338 * sp3C8) + (unksp33C * sp3D8)));
+            sp1B8 = (f64) sp98;
+            sp1C0 = (f64) spA0;
+            sp338 = (f64) sp98;
+            sp340 = (f64) spA0;
+            sp88 = sp3F0 + (((f32) sp350 * sp3E0) + (((f32) sp348 * sp3C0) + (unksp34C * sp3D0)));
+            sp8C = sp3F4 + (((f32) sp350 * sp3E4) + (((f32) sp348 * sp3C4) + (unksp34C * sp3D4)));
+            sp90 = sp3F8 + (((f32) sp350 * sp3E8) + (((f32) sp348 * sp3C8) + (unksp34C * sp3D8)));
+            sp80 = sp3F8 + (((f32) sp360 * sp3E8) + (((f32) sp358 * sp3C8) + (unksp35C * sp3D8)));
+            sp70 = sp3F8 + (((f32) sp370 * sp3E8) + (((f32) sp368 * sp3C8) + (unksp36C * sp3D8)));
+            sp78 = sp3F0 + (((f32) sp360 * sp3E0) + (((f32) sp358 * sp3C0) + (unksp35C * sp3D0)));
+            sp7C = sp3F4 + (((f32) sp360 * sp3E4) + (((f32) sp358 * sp3C4) + (unksp35C * sp3D4)));
+            sp68 = sp3F0 + (((f32) sp370 * sp3E0) + (((f32) sp368 * sp3C0) + (unksp36C * sp3D0)));
+            sp6C = sp3F4 + (((f32) sp370 * sp3E4) + (((f32) sp368 * sp3C4) + (unksp36C * sp3D4)));
+            sp348 = (f64) sp88;
+            sp350 = (f64) sp90;
+            sp358 = (f64) sp78;
+            sp360 = (f64) sp80;
+            sp368 = (f64) sp68;
+            sp370 = (f64) sp70;
+            sp1A8 = (f64) sp88;
+            sp1B0 = (f64) sp90;
+            sp198 = (f64) sp78;
+            sp1A0 = (f64) sp80;
+            sp188 = (f64) sp68;
+            sp190 = (f64) sp70;
             M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
             temp_f1_637 = M2C_FIELD(temp_r3_479, f32 *, 8);
-            arg_sp340 = (f32) arg_sp340 + temp_f1_637;
+            sp340 = (f32) sp340 + temp_f1_637;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-            arg_sp350 = (f32) arg_sp350 + temp_f1_637;
+            sp350 = (f32) sp350 + temp_f1_637;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
-            arg_sp360 = (f32) arg_sp360 + temp_f1_637;
+            sp360 = (f32) sp360 + temp_f1_637;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
-            arg_sp370 = (f32) arg_sp370 + temp_f1_637;
+            sp370 = (f32) sp370 + temp_f1_637;
             MKSetMatrix(Matrix::identity);
             temp_f14_665 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
             MKVector(1.0f, 1.0f, 0.8f, 1.0f);
-            arg_sp168.operator*(temp_f14_665);
+            sp168.operator*(temp_f14_665);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f16 */);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f16 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r26, 0x0, qr0 */);
-            arg_sp310 = arg_sp60;
-            arg_sp178 = arg_sp58;
-            arg_sp180 = arg_sp60;
-            arg_sp308 = arg_sp58;
-            arg_sp314 = 1.0f;
+            sp310 = sp60;
+            sp178 = sp58;
+            sp180 = sp60;
+            sp308 = sp58;
+            unksp314 = 1.0f;
             MKBegin(4);
-            MKSetColorV(*((MKVector4 *) &arg_sp308));
+            MKSetColorV(*((MKVector4 *) &sp308));
             MKSetTexCoord1F(0.0f, 0.0f);
-            MKSetPositionV(*((MKVector3 *) &arg_sp338));
-            MKSetColorV(*((MKVector4 *) &arg_sp308));
+            MKSetPositionV(*((MKVector3 *) &sp338));
+            MKSetColorV(*((MKVector4 *) &sp308));
             MKSetTexCoord1F(1.0f, 0.0f);
-            MKSetPositionV(*((MKVector3 *) &arg_sp348));
-            MKSetColorV(*((MKVector4 *) &arg_sp308));
+            MKSetPositionV(*((MKVector3 *) &sp348));
+            MKSetColorV(*((MKVector4 *) &sp308));
             MKSetTexCoord1F(0.0f, 1.0f);
-            MKSetPositionV(*((MKVector3 *) &arg_sp358));
-            MKSetColorV(*((MKVector4 *) &arg_sp308));
+            MKSetPositionV(*((MKVector3 *) &sp358));
+            MKSetColorV(*((MKVector4 *) &sp308));
             MKSetTexCoord1F(1.0f, 1.0f);
-            MKSetPositionV(*((MKVector3 *) &arg_sp368));
+            MKSetPositionV(*((MKVector3 *) &sp368));
             MKEnd();
         }
         var_r25_441 += 1;

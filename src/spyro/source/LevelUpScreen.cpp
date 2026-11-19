@@ -94,8 +94,43 @@ void LevelUpScreen::SetBreathText() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp38'
+#if 0 // DRAFT: undefined identifier 'HasAttack'
 void LevelUpScreen::Draw(const RenderContext &arg0) {
+    Matrix spA0;
+    f32 sp94;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     M2C_UNK *temp_r23_192;
     f32 temp_f28_441;
     f32 temp_f28_458;
@@ -133,15 +168,16 @@ void LevelUpScreen::Draw(const RenderContext &arg0) {
     u8 *temp_r20_187;
     u8 var_r3_214;
     u8 var_r3_237;
-    arg_sp38 = 48.0f;
-    arg_sp3C = 386.0f;
-    arg_sp90 = arg_sp38;
-    arg_sp94 = arg_sp3C;
+
+    sp38 = 48.0f;
+    sp3C = 386.0f;
+    sp90 = sp38;
+    sp94 = sp3C;
     if ((s32 *) pContextFury == NULL) {
         DialogBox_Draw();
     }
-    arg_spA0.SetIdentity();
-    arg_spA0.SetRotationRoll(this->unk148);
+    spA0.SetIdentity();
+    spA0.SetRotationRoll(this->unk148);
     var_f1_149 = M2C_FIELD(GameData::gameData, f32 *, 0x88);
     if (var_f1_149 < 800.0f) {
 
@@ -149,7 +185,7 @@ void LevelUpScreen::Draw(const RenderContext &arg0) {
         var_f1_149 = 800.0f;
     }
     temp_f3_166 = 230.0f * (var_f1_149 / 800.0f);
-    Hud_DrawIcon(0, 0xE, arg_sp90, arg_sp94, temp_f3_166, temp_f3_166, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_spA0));
+    Hud_DrawIcon(0, 0xE, sp90, sp94, temp_f3_166, temp_f3_166, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, spA0);
     var_r19_179 = 0;
     var_r31_180 = 0;
     var_r30_181 = 0;
@@ -191,7 +227,7 @@ loop_8:
                     var_f2_211 = (&(&GameData::gameData[0x70])[var_r26_203] + 0x70)[var_r30_181] / M2C_FIELD((pointsPerUpgrade + var_r28_195), f32 *, 4);
                 }
             }
-            DrawUpgradeBar((UpgradeBar *) &(LevelUpScreen::descriptor + 0x24)[var_r27_202 + var_r29_194], *((MKVector2 *) &arg_sp90), -0.3926991f * (f32) var_r19_179, *((MKVector4 *) temp_r20_187), *(MKVector4 *) (temp_r20_187 + 0x10), var_f2_211);
+            DrawUpgradeBar((UpgradeBar *) &(LevelUpScreen::descriptor + 0x24)[var_r27_202 + var_r29_194], *((MKVector2 *) &sp90), -0.3926991f * (f32) var_r19_179, *((MKVector4 *) temp_r20_187), *(MKVector4 *) (temp_r20_187 + 0x10), var_f2_211);
         }
         var_r17_200 += 1;
         var_r26_203 += 4;
@@ -209,166 +245,198 @@ loop_8:
         var_r30_181 += 0x20;
         var_r31_180 += 0x30;
     } while (var_r19_179 < 4);
-    arg_spA0.SetIdentity();
+    spA0.SetIdentity();
     var_r19_293 = 0;
     do {
-        _table_sincosf((-0.3926991f * (f32) (var_r19_293 + 1)) + -0.044f, arg_sp88, arg_sp8C);
-        temp_f4_310 = arg_sp88 * 194.0f;
-        temp_f3_312 = arg_sp8C * 194.0f;
-        arg_sp30 = arg_sp90 - temp_f4_310;
-        arg_sp34 = arg_sp94 - temp_f3_312;
-        arg_sp60 = arg_sp30;
-        arg_sp64 = arg_sp34;
-        arg_sp88 = temp_f4_310;
-        arg_sp8C = temp_f3_312;
-        arg_sp88 = arg_sp60;
-        arg_sp8C = arg_sp64;
-        arg_spA0.SetRotationRoll(-0.3926991f * (f32) var_r19_293);
-        Hud_DrawIcon(0, 0xF, arg_sp88, arg_sp8C, 124.0f, 72.0f, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_spA0));
+        _table_sincosf((-0.3926991f * (f32) (var_r19_293 + 1)) + -0.044f, sp88, sp8C);
+        temp_f4_310 = sp88 * 194.0f;
+        temp_f3_312 = sp8C * 194.0f;
+        sp30 = sp90 - temp_f4_310;
+        sp34 = sp94 - temp_f3_312;
+        sp60 = sp30;
+        sp64 = sp34;
+        sp88 = temp_f4_310;
+        sp8C = temp_f3_312;
+        sp88 = sp60;
+        sp8C = sp64;
+        spA0.SetRotationRoll(-0.3926991f * (f32) var_r19_293);
+        Hud_DrawIcon(0, 0xF, sp88, sp8C, 124.0f, 72.0f, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, spA0);
         var_r19_293 += 1;
     } while (var_r19_293 < 4);
     var_r19_355 = 0;
     var_r14_357 = 0;
     do {
-        _table_sincosf(-0.3926991f * (f32) (var_r19_355 + 1), arg_sp80, arg_sp84);
-        temp_f3_372 = arg_sp80 * 276.0f;
-        temp_f2_374 = arg_sp84 * 276.0f;
-        arg_sp80 = temp_f3_372;
-        arg_sp28 = arg_sp90 - temp_f3_372;
-        arg_sp2C = arg_sp94 - temp_f2_374;
-        arg_sp58 = arg_sp28;
-        arg_sp5C = arg_sp2C;
-        arg_sp84 = temp_f2_374;
-        arg_sp80 = arg_sp58;
-        arg_sp84 = arg_sp5C;
+        _table_sincosf(-0.3926991f * (f32) (var_r19_355 + 1), sp80, sp84);
+        temp_f3_372 = sp80 * 276.0f;
+        temp_f2_374 = sp84 * 276.0f;
+        sp80 = temp_f3_372;
+        sp28 = sp90 - temp_f3_372;
+        sp2C = sp94 - temp_f2_374;
+        sp58 = sp28;
+        sp5C = sp2C;
+        sp84 = temp_f2_374;
+        sp80 = sp58;
+        sp84 = sp5C;
         if (((s32) selectionAttack != 0) || (var_r19_355 != (s32) selectionElement)) {
-            DrawBreathIcon(arg_sp80, arg_sp84, 1.0f, (LevelUpScreen::descriptor + 0x14)[var_r14_357], 0, MKVector4::one);
+            DrawBreathIcon(sp80, sp84, 1.0f, (LevelUpScreen::descriptor + 0x14)[var_r14_357], 0, MKVector4::one);
         }
         var_r19_355 += 1;
         var_r14_357 += 4;
     } while (var_r19_355 < 4);
     if ((s32) selectionAttack == 0) {
-        _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), arg_sp78, arg_sp7C);
-        temp_f5_431 = arg_sp78 * 276.0f;
-        temp_f4_433 = arg_sp7C * 276.0f;
-        arg_sp78 = temp_f5_431;
+        _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), sp78, sp7C);
+        temp_f5_431 = sp78 * 276.0f;
+        temp_f4_433 = sp7C * 276.0f;
+        sp78 = temp_f5_431;
         temp_f28_441 = pulseMag;
-        arg_sp20 = arg_sp90 - temp_f5_431;
-        arg_sp24 = arg_sp94 - temp_f4_433;
-        arg_sp50 = arg_sp20;
-        arg_sp54 = arg_sp24;
-        arg_sp7C = temp_f4_433;
-        arg_sp78 = arg_sp50;
-        arg_sp7C = arg_sp54;
+        sp20 = sp90 - temp_f5_431;
+        sp24 = sp94 - temp_f4_433;
+        sp50 = sp20;
+        sp54 = sp24;
+        sp7C = temp_f4_433;
+        sp78 = sp50;
+        sp7C = sp54;
         temp_f28_458 = 1.0f + ((temp_f28_441 * _table_sinf(pulseRot * pulseRate)) + temp_f28_441);
-        DrawBreathSelection(arg_sp78, arg_sp7C, 0.9f * temp_f28_458, 1.0f);
-        DrawBreathIcon(arg_sp78, arg_sp7C, temp_f28_458, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 0, MKVector4::one);
+        DrawBreathSelection(sp78, sp7C, 0.9f * temp_f28_458, 1.0f);
+        DrawBreathIcon(sp78, sp7C, temp_f28_458, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 0, MKVector4::one);
     }
     var_r19_477 = 0;
     var_r14_479 = 0;
     do {
-        _table_sincosf(-0.3926991f * (f32) (var_r19_477 + 1), arg_sp70, arg_sp74);
-        temp_f3_494 = arg_sp70 * 150.0f;
-        temp_f2_496 = arg_sp74 * 150.0f;
-        arg_sp70 = temp_f3_494;
-        arg_sp18 = arg_sp90 - temp_f3_494;
-        arg_sp1C = arg_sp94 - temp_f2_496;
-        arg_sp48 = arg_sp18;
-        arg_sp4C = arg_sp1C;
-        arg_sp74 = temp_f2_496;
-        arg_sp70 = arg_sp48;
-        arg_sp74 = arg_sp4C;
+        _table_sincosf(-0.3926991f * (f32) (var_r19_477 + 1), sp70, sp74);
+        temp_f3_494 = sp70 * 150.0f;
+        temp_f2_496 = sp74 * 150.0f;
+        sp70 = temp_f3_494;
+        sp18 = sp90 - temp_f3_494;
+        sp1C = sp94 - temp_f2_496;
+        sp48 = sp18;
+        sp4C = sp1C;
+        sp74 = temp_f2_496;
+        sp70 = sp48;
+        sp74 = sp4C;
         if (((s32) selectionAttack != 1) || (var_r19_477 != (s32) selectionElement)) {
-            DrawBreathIcon(arg_sp70, arg_sp74, 0.55f, (LevelUpScreen::descriptor + 0x14)[var_r14_479], 1, MKVector4::one);
+            DrawBreathIcon(sp70, sp74, 0.55f, (LevelUpScreen::descriptor + 0x14)[var_r14_479], 1, MKVector4::one);
         }
         var_r19_477 += 1;
         var_r14_479 += 4;
     } while (var_r19_477 < 4);
     if ((s32) selectionAttack == 1) {
-        _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), arg_sp68, arg_sp6C);
-        temp_f5_553 = arg_sp68 * 150.0f;
-        temp_f4_555 = arg_sp6C * 150.0f;
-        arg_sp68 = temp_f5_553;
+        _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), sp68, sp6C);
+        temp_f5_553 = sp68 * 150.0f;
+        temp_f4_555 = sp6C * 150.0f;
+        sp68 = temp_f5_553;
         temp_f28_563 = pulseMag;
-        arg_sp10 = arg_sp90 - temp_f5_553;
-        arg_sp14 = arg_sp94 - temp_f4_555;
-        arg_sp40 = arg_sp10;
-        arg_sp44 = arg_sp14;
-        arg_sp6C = temp_f4_555;
-        arg_sp68 = arg_sp40;
-        arg_sp6C = arg_sp44;
+        sp10 = sp90 - temp_f5_553;
+        sp14 = sp94 - temp_f4_555;
+        sp40 = sp10;
+        sp44 = sp14;
+        sp6C = temp_f4_555;
+        sp68 = sp40;
+        sp6C = sp44;
         temp_f28_580 = 1.0f + ((temp_f28_563 * _table_sinf(pulseRot * pulseRate)) + temp_f28_563);
-        DrawBreathSelection(arg_sp68, arg_sp6C, 0.5f * temp_f28_580, 1.0f);
-        DrawBreathIcon(arg_sp68, arg_sp6C, 0.55f * temp_f28_580, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 1, MKVector4::one);
+        DrawBreathSelection(sp68, sp6C, 0.5f * temp_f28_580, 1.0f);
+        DrawBreathIcon(sp68, sp6C, 0.55f * temp_f28_580, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 1, MKVector4::one);
     }
     UIContainer::Draw(arg0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, float arg5) {
+    Matrix sp90;
+    M2C_UNK sp8C;
+    f64 sp88;
+    f64 sp80;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f4_662;
     f32 temp_f5_664;
     f32 temp_f6_667;
     f32 temp_f7_672;
-    M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp90.SetRotationRoll(arg2);
-    arg_sp70 = arg1.unk0;
-    arg_sp74 = arg1.unk4;
-    arg_sp78 = 0.0f;
-    arg_sp80 = (f64) arg_sp70;
-    arg_sp88 = (f64) arg_sp78;
-    arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp80));
+
+    M2C_STRUCT_COPY((s32) &sp8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp90.SetRotationRoll(arg2);
+    sp70 = arg1.unk0;
+    sp74 = arg1.unk4;
+    sp78 = 0.0f;
+    sp80 = (f64) sp70;
+    sp88 = (f64) sp78;
+    sp90.Translate(&sp90, *((MKVector3 *) &sp80));
     temp_f4_662 = arg0->unk0;
     temp_f5_664 = arg0->unk4;
     temp_f6_667 = arg0->unk8;
-    arg_sp38 = arg0->unk10 - temp_f4_662;
+    sp38 = arg0->unk10 - temp_f4_662;
     temp_f7_672 = arg0->unkC;
-    arg_sp3C = arg0->unk14 - temp_f5_664;
-    arg_sp20 = arg0->unk18 - temp_f6_667;
-    arg_sp24 = arg0->unk1C - temp_f7_672;
-    arg_sp50 = arg_sp38;
-    arg_sp54 = arg_sp3C;
-    arg_sp40 = arg_sp20;
-    arg_sp44 = arg_sp24;
-    arg_sp30 = arg_sp50 * arg5;
-    arg_sp34 = arg_sp54 * arg5;
-    arg_sp18 = arg_sp40 * arg5;
-    arg_sp1C = arg_sp44 * arg5;
-    arg_sp58 = arg_sp30;
-    arg_sp5C = arg_sp34;
-    arg_sp48 = arg_sp18;
-    arg_sp4C = arg_sp1C;
-    arg_sp28 = temp_f4_662 + arg_sp58;
-    arg_sp2C = temp_f5_664 + arg_sp5C;
-    arg_sp10 = temp_f6_667 + arg_sp48;
-    arg_sp14 = temp_f7_672 + arg_sp4C;
-    arg_sp68 = arg_sp28;
-    arg_sp6C = arg_sp2C;
-    arg_sp60 = arg_sp10;
-    arg_sp64 = arg_sp14;
+    sp3C = arg0->unk14 - temp_f5_664;
+    sp20 = arg0->unk18 - temp_f6_667;
+    sp24 = arg0->unk1C - temp_f7_672;
+    sp50 = sp38;
+    sp54 = sp3C;
+    sp40 = sp20;
+    sp44 = sp24;
+    sp30 = sp50 * arg5;
+    sp34 = sp54 * arg5;
+    sp18 = sp40 * arg5;
+    sp1C = sp44 * arg5;
+    sp58 = sp30;
+    sp5C = sp34;
+    sp48 = sp18;
+    sp4C = sp1C;
+    sp28 = temp_f4_662 + sp58;
+    sp2C = temp_f5_664 + sp5C;
+    sp10 = temp_f6_667 + sp48;
+    sp14 = temp_f7_672 + sp4C;
+    sp68 = sp28;
+    sp6C = sp2C;
+    sp60 = sp10;
+    sp64 = sp14;
     if (arg5 > 0.0f) {
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKPrimitive(0x10C, 3);
-        MKSetMatrix(*((Matrix *) &arg_sp90));
+        MKSetMatrix(sp90);
         MKBegin(4);
         MKSetColorV(arg3);
         MKSetPositionF(arg0->unk0, arg0->unk4, 0.0f);
-        MKSetPositionF(arg_sp68, arg_sp6C, 0.0f);
+        MKSetPositionF(sp68, sp6C, 0.0f);
         MKSetPositionF(arg0->unk8, arg0->unkC, 0.0f);
-        MKSetPositionF(arg_sp60, arg_sp64, 0.0f);
+        MKSetPositionF(sp60, sp64, 0.0f);
         MKEnd();
         MKEndPrimitive();
     }
     if (arg5 < 1.0f) {
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKPrimitive(0x10C, 3);
-        MKSetMatrix(*((Matrix *) &arg_sp90));
+        MKSetMatrix(sp90);
         MKBegin(4);
         MKSetColorV(arg4);
-        MKSetPositionF(arg_sp68, arg_sp6C, 0.0f);
+        MKSetPositionF(sp68, sp6C, 0.0f);
         MKSetPositionF(arg0->unk10, arg0->unk14, 0.0f);
-        MKSetPositionF(arg_sp60, arg_sp64, 0.0f);
+        MKSetPositionF(sp60, sp64, 0.0f);
         MKSetPositionF(arg0->unk18, arg0->unk1C, 0.0f);
         MKEnd();
         MKEndPrimitive();

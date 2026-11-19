@@ -142,35 +142,43 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unksp2C'
 void ConvexityVortex::Draw() {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKVector3 **var_r29_258;
     MKVector3 *temp_r30_310;
-    arg_sp10 = 1.0f;
-    arg_sp14 = 1.0f;
-    arg_sp18 = 1.0f;
-    arg_sp1C = 1.0f;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
+
+    sp10 = 1.0f;
+    sp14 = 1.0f;
+    sp18 = 1.0f;
+    sp1C = 1.0f;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
     var_r29_258 = this->unkA0;
 loop_5:
     if (var_r29_258 != NULL) {
         temp_r30_310 = *var_r29_258;
         if (temp_r30_310 != NULL) {
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            arg_sp30.SetRotationPYR(*(temp_r30_310 + 0x10));
-            arg_sp30.Scale3x3((Matrix *) &arg_sp30, M2C_FIELD(temp_r30_310, f32 *, 0x30));
-            arg_sp60 = temp_r30_310->unk0;
-            arg_sp64 = temp_r30_310->unk4;
-            arg_sp68 = temp_r30_310->unk8;
-            arg_sp6C = 1.0f;
+            M2C_STRUCT_COPY((s32) &unksp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            sp30.SetRotationPYR(*(temp_r30_310 + 0x10));
+            sp30.Scale3x3(&sp30, M2C_FIELD(temp_r30_310, f32 *, 0x30));
+            sp30.unk30 = temp_r30_310->unk0;
+            sp30.unk34 = temp_r30_310->unk4;
+            sp30.unk38 = temp_r30_310->unk8;
+            sp30.unk3C = 1.0f;
             if ((s32) M2C_FIELD(temp_r30_310, s32 *, 0x38) == 1) {
-                arg_sp2C = 1.0f - (M2C_FIELD(temp_r30_310, f32 *, 0x34) / 0.5f);
+                unksp2C = 1.0f - (M2C_FIELD(temp_r30_310, f32 *, 0x34) / 0.5f);
             } else {
-                arg_sp2C = 1.0f;
+                unksp2C = 1.0f;
             }
-            MKModel_SetColor(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), *((MKVector4 *) &arg_sp20));
-            MKModel_SetWorldMatrix(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), *((Matrix *) &arg_sp30));
+            MKModel_SetColor(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), *((MKVector4 *) &sp20));
+            MKModel_SetWorldMatrix(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), sp30);
             MKModel_Draw(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), NULL);
             var_r29_258 += 4;
             goto loop_5;

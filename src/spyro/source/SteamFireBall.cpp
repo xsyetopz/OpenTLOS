@@ -125,6 +125,41 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
 void SteamFireBall::Update() {
+    Matrix sp190;
+    Matrix sp150;
+    Matrix sp110;
+    M2C_UNK sp10C;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 temp_f0_243;
     f32 temp_f1_242;
     f32 temp_f3_245;
@@ -140,9 +175,10 @@ void SteamFireBall::Update() {
     s32 var_r0_295;
     void *temp_r3_428;
     void *temp_r3_461;
+
     Projectile::Update();
     this->unk180 = (10.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unk180);
-    M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp150.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f1_242 = M2C_FIELD(this, f32 *, 0xC8);
     temp_f0_243 = M2C_FIELD(this, f32 *, 0xCC);
     temp_f3_245 = M2C_FIELD(this, f32 *, 0xD0);
@@ -156,18 +192,18 @@ void SteamFireBall::Update() {
         } else if (var_f4_250 < M2C_BITWISE(f32, 0.0)) {
             var_f4_250 = __float_nan;
         } else {
-            arg_sp10 = var_f4_250;
-            temp_r3_285 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_250;
+            temp_r3_285 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_285) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_295 = 1;
                 } else {
                     var_r0_295 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_295 = 5;
                 } else {
                     var_r0_295 = 3;
@@ -185,42 +221,42 @@ void SteamFireBall::Update() {
     } else {
         var_f3_317 = 0.0f;
     }
-    arg_sp60 = 0.0f;
-    arg_sp70 = M2C_FIELD(this, f32 *, 0xD0) * var_f3_317;
-    arg_sp68 = M2C_FIELD(this, f32 *, 0xC8) * var_f3_317;
-    arg_sp6C = M2C_FIELD(this, f32 *, 0xCC) * var_f3_317;
-    arg_sp58 = 0.0f;
-    arg_sp5C = 1.0f;
-    arg_spF8 = (f64) arg_sp68;
-    arg_sp100 = (f64) arg_sp70;
-    arg_spE8 = (f64) arg_sp58;
-    arg_spF0 = (f64) arg_sp60;
-    KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp190, *((MKVector3 *) &arg_spF8), (MKVector3 *) &arg_spE8);
-    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp150.RotateRoll((Matrix *) &arg_sp150, 2.0f * M2C_BITWISE(f32, this->unk180));
-    arg_sp150.Multiply3x3((Matrix *) &arg_sp150, (Matrix *) &arg_sp190);
+    sp60 = 0.0f;
+    sp70 = M2C_FIELD(this, f32 *, 0xD0) * var_f3_317;
+    sp68 = M2C_FIELD(this, f32 *, 0xC8) * var_f3_317;
+    sp6C = M2C_FIELD(this, f32 *, 0xCC) * var_f3_317;
+    sp58 = 0.0f;
+    sp5C = 1.0f;
+    spF8 = (f64) sp68;
+    sp100 = (f64) sp70;
+    spE8 = (f64) sp58;
+    spF0 = (f64) sp60;
+    KDMath_BuildMatrixFromFwd(&sp190, *((MKVector3 *) &spF8), (MKVector3 *) &spE8);
+    M2C_STRUCT_COPY((s32) &sp110.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp150.RotateRoll(&sp150, 2.0f * M2C_BITWISE(f32, this->unk180));
+    sp150.Multiply3x3(&sp150, &sp190);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_spC8 = arg_sp48;
-    arg_sp50 = arg_sp168 * 100.0f;
-    arg_spD0 = (f64) arg_sp50;
+    spC8 = sp48;
+    sp50 = sp150.unk18 * 100.0f;
+    spD0 = (f64) sp50;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spD8 = arg_sp38;
-    arg_sp40 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) arg_spD0;
-    arg_spE0 = (f64) arg_sp40;
+    spD8 = sp38;
+    sp40 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) spD0;
+    spE0 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp30 = arg_sp168 * 150.0f;
-    arg_spB8 = arg_sp28;
-    arg_spC0 = (f64) arg_sp30;
-    gb.EmitDust(*((MKVector3 *) &arg_spD8), *((MKVector3 *) &arg_spB8), 1.0f, 0.0f);
+    sp30 = sp150.unk18 * 150.0f;
+    spB8 = sp28;
+    spC0 = (f64) sp30;
+    gb.EmitDust(*((MKVector3 *) &spD8), *((MKVector3 *) &spB8), 1.0f, 0.0f);
     if ((u8) this->unk150.unk2C != 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r3_428 = this->unk8;
-        arg_spA8 = M2C_FIELD(temp_r3_428, f64 *, 0x30);
-        arg_spB0 = M2C_FIELD(temp_r3_428, f64 *, 0x38);
-        var_f1_441 = 0.18f * -((0.00022222222f * (arg_spAC - this->unk184)) - 1.0f);
+        spA8 = M2C_FIELD(temp_r3_428, f64 *, 0x30);
+        spB0 = M2C_FIELD(temp_r3_428, f64 *, 0x38);
+        var_f1_441 = 0.18f * -((0.00022222222f * (unkspAC - this->unk184)) - 1.0f);
         if (var_f1_441 < 1.0f) {
 
         } else {
@@ -231,21 +267,21 @@ void SteamFireBall::Update() {
         } else {
             var_f1_441 = 0.001f;
         }
-        arg_sp110.Scale3x3((Matrix *) &arg_sp110, var_f1_441);
-        MKModel_SetWorldMatrix(this->unk180, *((Matrix *) &arg_sp110));
+        sp110.Scale3x3(&sp110, var_f1_441);
+        MKModel_SetWorldMatrix(this->unk180, sp110);
         temp_r3_461 = this->unk8;
         temp_f4_464 = M2C_FIELD(temp_r3_461, f64 *, 0x30);
         temp_f3_465 = M2C_FIELD(temp_r3_461, f64 *, 0x38);
-        arg_sp88 = temp_f4_464;
-        arg_sp80 = temp_f3_465;
-        arg_sp18 = (f32) arg_sp88;
-        arg_sp1C = this->unk184;
-        arg_sp20 = (f32) arg_sp80;
-        arg_sp98 = (f64) arg_sp18;
-        arg_spA0 = (f64) arg_sp20;
-        arg_sp78 = temp_f4_464;
-        arg_sp90 = temp_f3_465;
-        MKModel_SetPosition(this->unk180, *((MKVector3 *) &arg_sp98));
+        sp88 = temp_f4_464;
+        sp80 = temp_f3_465;
+        sp18 = (f32) sp88;
+        sp1C = this->unk184;
+        sp20 = (f32) sp80;
+        sp98 = (f64) sp18;
+        spA0 = (f64) sp20;
+        sp78 = temp_f4_464;
+        sp90 = temp_f3_465;
+        MKModel_SetPosition(this->unk180, *((MKVector3 *) &sp98));
     }
 }
 #endif

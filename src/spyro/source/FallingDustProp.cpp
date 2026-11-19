@@ -36,14 +36,17 @@ void FallingDustProp::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FallingDustProp::Draw() {
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp40 = 0.0f;
-    arg_sp44 = this->unkA0;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    MKMaterial_SetTextureMatrix(this->unkA8, (Matrix *) &arg_sp10);
+    Matrix sp10;
+    M2C_UNK spC;
+
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10.unk30 = 0.0f;
+    sp10.unk34 = this->unkA0;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
+    MKMaterial_SetTextureMatrix(this->unkA8, &sp10);
     MKMaterial_SetColor(this->unkA8, this->unkB0);
     KDProp::Draw();
 }

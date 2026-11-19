@@ -87,8 +87,15 @@ void Hud_DrawIcon(int arg0, int arg1, const MKVector2 &arg2, const MKVector2 &ar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float arg5, const MKVector4 &arg6, float arg7, float arg8, float arg9, float arg10, bool arg11, bool arg12, const Matrix &arg13) {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKMaterial *var_r6_283;
     f32 temp_f0_393;
     f32 temp_f0_399;
@@ -113,6 +120,7 @@ void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float 
     f32 var_f2_355;
     f32 var_f2_368;
     void *var_r31_281;
+
     var_r31_281 = NULL;
     temp_f22_282 = -0.5f * arg4;
     var_r6_283 = NULL;
@@ -203,14 +211,14 @@ void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float 
     }
     MKSetBaseColorV(arg6);
     MKPrimitive(0xC, 0x101);
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&arg13 - 4) + 4, 0x40);
-    arg_sp10 = arg2;
-    arg_sp14 = arg3;
-    arg_sp18 = 0.0f;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-    MKSetMatrix(*((Matrix *) &arg_sp30));
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&arg13 - 4) + 4, 0x40);
+    sp10 = arg2;
+    sp14 = arg3;
+    sp18 = 0.0f;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+    MKSetMatrix(sp30);
     if (arg1 == 3) {
         MKBegin(4);
         MKSetColorV(arg6);

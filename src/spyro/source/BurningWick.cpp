@@ -38,8 +38,69 @@ s32 BurningWick::Burnt() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void BurningWick::Update() {
+    f32 sp24C;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    M2C_UNK sp20C;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;                                      /* compiler-managed */
+    f64 sp1F0;                                      /* compiler-managed */
+    f64 sp1E8;                                      /* compiler-managed */
+    f64 sp1E0;                                      /* compiler-managed */
+    f64 sp1D8;
+    f64 sp1D0;
+    MKVector3 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    MKVector3 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    MKVector3 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    MKVector3 sp150;
+    MKVector3 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f27_139;
     f32 temp_f28_536;
     f32 temp_f29_531;
@@ -72,6 +133,7 @@ void BurningWick::Update() {
     s32 var_r0_300;
     s32 var_r0_404;
     s32 var_r0_600;
+
     if ((u8) this->unk84 != 0) {
         temp_f2_110 = this->unk7C;
         var_f0_111 = this->unk74 + gUpdateTimeDelta;
@@ -93,43 +155,43 @@ void BurningWick::Update() {
     }
     temp_f27_139 = 1.0f - (this->unk74 / this->unk7C);
     this->unk80 = 20.0f * temp_f27_139;
-    M2C_STRUCT_COPY((s32) &arg_sp20C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
-    arg_sp240 = 0.0f;
-    arg_sp244 = 0.0f;
-    arg_sp248 = 0.0f;
-    arg_sp24C = 1.0f;
+    M2C_STRUCT_COPY((s32) &sp20C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
+    sp240 = 0.0f;
+    sp244 = 0.0f;
+    sp248 = 0.0f;
+    sp24C = 1.0f;
     temp_f7_165 = this->unkBC;
     temp_f8_166 = this->unkB8;
     temp_f7_172 = this->unkC0;
-    arg_spE0 = 0.0f + ((temp_f7_172 * arg_sp230) + ((temp_f8_166 * arg_sp210) + (temp_f7_165 * arg_sp220)));
-    arg_spE4 = 0.0f + ((temp_f7_172 * arg_sp234) + ((temp_f8_166 * arg_sp214) + (temp_f7_165 * arg_sp224)));
-    arg_spE8 = 0.0f + ((temp_f7_172 * arg_sp238) + ((temp_f8_166 * arg_sp218) + (temp_f7_165 * arg_sp228)));
-    arg_sp200 = (f64) arg_spE0;
-    arg_sp208 = (f64) arg_spE8;
+    spE0 = 0.0f + ((temp_f7_172 * sp230) + ((temp_f8_166 * sp210) + (temp_f7_165 * sp220)));
+    spE4 = 0.0f + ((temp_f7_172 * sp234) + ((temp_f8_166 * sp214) + (temp_f7_165 * sp224)));
+    spE8 = 0.0f + ((temp_f7_172 * sp238) + ((temp_f8_166 * sp218) + (temp_f7_165 * sp228)));
+    sp200 = (f64) spE0;
+    sp208 = (f64) spE8;
     MKModel_CalculateRefPointWorldPosition(this->unk70, this->unk4C, &this->unk88);
-    arg_sp1C0.operator*(this->unk80);
+    sp1C0.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk98 = arg_sp70;
-    arg_sp78 = this->unk88.unk8 + arg_sp1C8;
-    arg_sp1D0 = arg_sp70;
-    this->unkA0 = (f64) arg_sp78;
-    arg_sp1D8 = (f64) arg_sp78;
-    arg_sp1A0.operator*(this->unk80);
+    this->unk98 = sp70;
+    sp78 = this->unk88.unk8 + sp1C0.unk8;
+    sp1D0 = sp70;
+    this->unkA0 = (f64) sp78;
+    sp1D8 = (f64) sp78;
+    sp1A0.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unkA8 = arg_sp60;
-    arg_sp68 = (f32) M2C_FIELD(this, f64 *, 0xA0) + arg_sp1A8;
-    arg_sp1B0 = arg_sp60;
-    this->unkB0 = (f64) arg_sp68;
-    arg_sp1B8 = (f64) arg_sp68;
+    this->unkA8 = sp60;
+    sp68 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp1A0.unk8;
+    sp1B0 = sp60;
+    this->unkB0 = (f64) sp68;
+    sp1B8 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp1F0 = arg_spD0;
-    arg_spD8 = (f32) M2C_FIELD(this, f64 *, 0xB0) - this->unk58;
-    arg_sp1F8 = (f64) arg_spD8;
-    var_f28_255 = ((f32) arg_sp1F8 * (f32) arg_sp1F8) + (((f32) arg_sp1F0 * (f32) arg_sp1F0) + (arg_sp1F4 * arg_sp1F4));
+    sp1F0 = spD0;
+    spD8 = (f32) M2C_FIELD(this, f64 *, 0xB0) - this->unk58;
+    sp1F8 = (f64) spD8;
+    var_f28_255 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + (unksp1F4 * unksp1F4));
     if (var_f28_255 > 0.000001f) {
         if (var_f28_255 > 0.0f) {
             temp_f1_261 = __frsqrte(var_f28_255);
@@ -139,18 +201,18 @@ void BurningWick::Update() {
         } else if (var_f28_255 < M2C_BITWISE(f32, 0.0)) {
             var_f28_255 = __float_nan;
         } else {
-            arg_sp18 = var_f28_255;
-            temp_r3_290 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f28_255;
+            temp_r3_290 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_290) {                  /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_300 = 1;
                 } else {
                     var_r0_300 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_300 = 5;
                 } else {
                     var_r0_300 = 3;
@@ -169,16 +231,16 @@ void BurningWick::Update() {
         var_f3_322 = 0.0f;
         var_f28_255 = 0.0f;
     }
-    arg_sp1F0 = (f32) arg_sp1F0 * var_f3_322;
-    arg_sp1F4 *= var_f3_322;
-    arg_sp1F8 = (f32) arg_sp1F8 * var_f3_322;
+    sp1F0 = (f32) sp1F0 * var_f3_322;
+    unksp1F4 *= var_f3_322;
+    sp1F8 = (f32) sp1F8 * var_f3_322;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp1E0 = arg_spC0;
-    arg_spC8 = (f32) M2C_FIELD(this, f64 *, 0xA0) - this->unk58;
-    arg_sp1E8 = (f64) arg_spC8;
-    var_f4_359 = ((f32) arg_sp1E8 * (f32) arg_sp1E8) + (((f32) arg_sp1E0 * (f32) arg_sp1E0) + (arg_sp1E4 * arg_sp1E4));
+    sp1E0 = spC0;
+    spC8 = (f32) M2C_FIELD(this, f64 *, 0xA0) - this->unk58;
+    sp1E8 = (f64) spC8;
+    var_f4_359 = ((f32) sp1E8 * (f32) sp1E8) + (((f32) sp1E0 * (f32) sp1E0) + (unksp1E4 * unksp1E4));
     if (var_f4_359 > 0.000001f) {
         if (var_f4_359 > 0.0f) {
             temp_f1_365 = __frsqrte(var_f4_359);
@@ -188,18 +250,18 @@ void BurningWick::Update() {
         } else if (var_f4_359 < M2C_BITWISE(f32, 0.0)) {
             var_f4_359 = __float_nan;
         } else {
-            arg_sp14 = var_f4_359;
-            temp_r3_394 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_359;
+            temp_r3_394 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_394) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_404 = 1;
                 } else {
                     var_r0_404 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_404 = 5;
                 } else {
                     var_r0_404 = 3;
@@ -217,55 +279,55 @@ void BurningWick::Update() {
     } else {
         var_f2_426 = 0.0f;
     }
-    temp_f5_435 = (f32) arg_sp1E0 * var_f2_426;
-    temp_f4_437 = arg_sp1E4 * var_f2_426;
-    temp_f3_438 = (f32) arg_sp1E8 * var_f2_426;
-    arg_sp1E0 = temp_f5_435;
-    arg_sp1E4 = temp_f4_437;
-    arg_sp20 = -temp_f5_435;
-    arg_sp24 = -temp_f4_437;
-    arg_sp28 = -temp_f3_438;
-    arg_sp170 = (f64) arg_sp20;
-    arg_sp178 = (f64) arg_sp28;
-    arg_sp1E8 = temp_f3_438;
-    arg_sp180.operator*(this->unk80);
+    temp_f5_435 = (f32) sp1E0 * var_f2_426;
+    temp_f4_437 = unksp1E4 * var_f2_426;
+    temp_f3_438 = (f32) sp1E8 * var_f2_426;
+    sp1E0 = temp_f5_435;
+    unksp1E4 = temp_f4_437;
+    sp20 = -temp_f5_435;
+    sp24 = -temp_f4_437;
+    sp28 = -temp_f3_438;
+    sp170 = (f64) sp20;
+    sp178 = (f64) sp28;
+    sp1E8 = temp_f3_438;
+    sp180.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk50 = arg_sp50;
-    arg_sp58 = (f32) M2C_FIELD(this, f64 *, 0xA0) + arg_sp188;
-    arg_sp190 = arg_sp50;
-    arg_sp198 = (f64) arg_sp58;
-    M2C_FIELD(this, f32 *, 0x58) = (f64) arg_sp58;
-    arg_sp140.operator*(var_f28_255);
-    arg_sp150.operator*(gUpdateTimeDelta);
+    this->unk50 = sp50;
+    sp58 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp180.unk8;
+    sp190 = sp50;
+    sp198 = (f64) sp58;
+    M2C_FIELD(this, f32 *, 0x58) = (f64) sp58;
+    sp140.operator*(var_f28_255);
+    sp150.operator*(gUpdateTimeDelta);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp160 = arg_sp40;
-    arg_sp48 = arg_sp158 * 15.0f;
-    arg_sp168 = (f64) arg_sp48;
+    sp160 = sp40;
+    sp48 = sp150.unk8 * 15.0f;
+    sp168 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unk68 += (f32) arg_sp168;
+    this->unk68 += (f32) sp168;
     this->unk64 += -25.0f * gUpdateTimeDelta;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp130 = arg_sp30;
-    arg_sp38 = this->unk68 * gUpdateTimeDelta;
-    arg_sp138 = (f64) arg_sp38;
+    sp130 = sp30;
+    sp38 = this->unk68 * gUpdateTimeDelta;
+    sp138 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unk58 += (f32) arg_sp138;
+    this->unk58 += (f32) sp138;
     if ((u8) this->unk84 != 0) {
         temp_f29_531 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_536 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spB4 = temp_f28_536;
-        arg_spB8 = temp_f29_531;
-        arg_spF0 = (f64) arg_spB0;
-        arg_spF8 = (f64) arg_spB8;
-        var_f4_555 = ((f32) arg_spF8 * (f32) arg_spF8) + (((f32) arg_spF0 * (f32) arg_spF0) + (arg_spF4 * arg_spF4));
+        spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        spB4 = temp_f28_536;
+        spB8 = temp_f29_531;
+        spF0 = (f64) spB0;
+        spF8 = (f64) spB8;
+        var_f4_555 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
         if (var_f4_555 > 1e-12f) {
             if (var_f4_555 > 0.0f) {
                 temp_f1_561 = __frsqrte(var_f4_555);
@@ -275,18 +337,18 @@ void BurningWick::Update() {
             } else if (var_f4_555 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_555 = __float_nan;
             } else {
-                arg_sp10 = var_f4_555;
-                temp_r3_590 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_555;
+                temp_r3_590 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_590) {              /* switch 3; irregular */
                 case 0x7F800000:                    /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_600 = 1;
                     } else {
                         var_r0_600 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_600 = 5;
                     } else {
                         var_r0_600 = 3;
@@ -304,27 +366,131 @@ void BurningWick::Update() {
         } else {
             var_f3_622 = 0.0f;
         }
-        arg_sp84 = arg_spF4 * var_f3_622;
-        arg_sp80 = (f32) arg_spF0 * var_f3_622;
-        arg_sp88 = (f32) arg_spF8 * var_f3_622;
-        arg_sp100 = (f64) arg_sp80;
-        arg_sp108 = (f64) arg_sp88;
+        sp84 = unkspF4 * var_f3_622;
+        sp80 = (f32) spF0 * var_f3_622;
+        sp88 = (f32) spF8 * var_f3_622;
+        sp100 = (f64) sp80;
+        sp108 = (f64) sp88;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        arg_sp110 = arg_spA0;
-        arg_spA8 = (f32) arg_sp108 * 500.0f;
-        arg_sp118 = (f64) arg_spA8;
+        sp110 = spA0;
+        spA8 = (f32) sp108 * 500.0f;
+        sp118 = (f64) spA8;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        arg_sp120 = arg_sp90;
-        arg_sp98 = (f32) arg_sp118 * temp_f27_139;
-        arg_sp128 = (f64) arg_sp98;
-        arg_sp1C = temp_f27_139 * MKRand_Float(&gViewSeed, 1.5f, 3.0f);
-        ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(*((MKVector3 *) &this->unk50), *((MKVector3 *) &arg_sp120), arg_sp1C);
+        sp120 = sp90;
+        sp98 = (f32) sp118 * temp_f27_139;
+        sp128 = (f64) sp98;
+        sp1C = temp_f27_139 * MKRand_Float(&gViewSeed, 1.5f, 3.0f);
+        ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp120), sp1C);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1F0'
+#if 0 // DRAFT: undefined identifier 'sp50'
 void BurningWick::Draw() {
+    Matrix sp400;
+    f64 sp3F8;                                      /* compiler-managed */
+    f64 sp3F0;                                      /* compiler-managed */
+    f64 sp3E8;
+    f64 sp3E0;
+    f64 sp3D8;
+    f64 sp3D0;
+    f64 sp3C8;
+    f64 sp3C0;
+    f64 sp3B8;
+    f64 sp3B0;
+    f64 sp3A8;
+    f64 sp3A0;
+    f64 sp398;
+    f64 sp390;
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;
+    f64 sp360;
+    f64 sp358;
+    f64 sp350;
+    f64 sp348;
+    f64 sp340;
+    f64 sp338;
+    f64 sp330;
+    f64 sp328;
+    f64 sp320;
+    f64 sp318;
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    f64 sp2E8;
+    f64 sp2E0;
+    f64 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f32 sp1FC;
+    f32 sp1F8;
+    f32 sp1F4;
+    f32 sp1F0;
+    f32 sp1E8;
+    f32 sp1D8;
+    f32 sp1C8;
+    f32 sp1B8;
+    f32 sp1A8;
+    f32 sp198;
+    f32 sp188;
+    f32 sp178;
+    f32 sp168;
+    f32 sp158;
+    f32 sp148;
+    f32 sp138;
+    f32 sp128;
+    f32 sp118;
+    f32 sp108;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f30_898;
     f32 var_f3_1016;
     f32 var_f3_1262;
@@ -354,31 +520,32 @@ void BurningWick::Draw() {
     s32 var_r0_1422;
     s32 var_r0_806;
     s32 var_r0_994;
-    arg_sp1F0 = 1.0f;
-    arg_sp1F4 = 1.0f;
-    arg_sp68 = 0.0f;
-    arg_sp1F8 = 1.0f;
-    arg_sp1FC = 1.0f;
-    arg_sp60 = 1.0f;
-    arg_sp64 = 0.0f;
-    arg_sp3D0 = (f64) arg_sp1F0;
-    arg_sp3D8 = (f64) arg_sp1F8;
-    arg_sp3E0 = (f64) arg_sp60;
-    arg_sp3E8 = (f64) arg_sp68;
-    arg_sp3C0 = (f64) arg_sp60;
-    arg_sp3C8 = (f64) arg_sp68;
+
+    sp1F0 = 1.0f;
+    sp1F4 = 1.0f;
+    sp68 = 0.0f;
+    sp1F8 = 1.0f;
+    sp1FC = 1.0f;
+    sp60 = 1.0f;
+    sp64 = 0.0f;
+    sp3D0 = (f64) sp1F0;
+    sp3D8 = (f64) sp1F8;
+    sp3E0 = (f64) sp60;
+    sp3E8 = (f64) sp68;
+    sp3C0 = (f64) sp60;
+    sp3C8 = (f64) sp68;
     MKMaterial_SetMaterial(M2C_FIELD(this->unk0, MKMaterial **, 0x38));
     MKPrimitive(0xC, 0x10);
     MKSetMatrix(Matrix::identity);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp3F0 = arg_sp50;
-    arg_sp58 = M2C_FIELD(this, f32 *, 0xA0) - this->unk88.unk8;
-    arg_sp3F8 = (f64) arg_sp58;
-    arg_sp3B0 = arg_sp50;
-    arg_sp3B8 = (f64) arg_sp58;
-    var_f4_761 = ((f32) arg_sp3F8 * (f32) arg_sp3F8) + (((f32) arg_sp3F0 * (f32) arg_sp3F0) + (arg_sp3F4 * arg_sp3F4));
+    sp3F0 = sp50;
+    sp58 = M2C_FIELD(this, f32 *, 0xA0) - this->unk88.unk8;
+    sp3F8 = (f64) sp58;
+    sp3B0 = sp50;
+    sp3B8 = (f64) sp58;
+    var_f4_761 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
     if (var_f4_761 > 0.000001f) {
         if (var_f4_761 > 0.0f) {
             temp_f1_767 = __frsqrte(var_f4_761);
@@ -388,18 +555,18 @@ void BurningWick::Draw() {
         } else if (var_f4_761 < M2C_BITWISE(f32, 0.0)) {
             var_f4_761 = __float_nan;
         } else {
-            arg_sp1C = var_f4_761;
-            temp_r3_796 = M2C_BITWISE(s32, arg_sp1C) & 0x7F800000;
+            sp1C = var_f4_761;
+            temp_r3_796 = M2C_BITWISE(s32, sp1C) & 0x7F800000;
             switch (temp_r3_796) {                  /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                     var_r0_806 = 1;
                 } else {
                     var_r0_806 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                     var_r0_806 = 5;
                 } else {
                     var_r0_806 = 3;
@@ -417,48 +584,48 @@ void BurningWick::Draw() {
     } else {
         var_f3_828 = 0.0f;
     }
-    arg_sp3F0 = (f32) arg_sp3F0 * var_f3_828;
-    arg_sp3F4 *= var_f3_828;
-    arg_sp3F8 = (f32) arg_sp3F8 * var_f3_828;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
+    sp3F0 = (f32) sp3F0 * var_f3_828;
+    unksp3F4 *= var_f3_828;
+    sp3F8 = (f32) sp3F8 * var_f3_828;
+    M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
     MKBegin(6);
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 0.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp390 = arg_sp1E0;
-    arg_sp1E8 = arg_sp418 * 5.0f;
-    arg_sp398 = (f64) arg_sp1E8;
+    sp390 = sp1E0;
+    sp1E8 = sp400.unk18 * 5.0f;
+    sp398 = (f64) sp1E8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp3A0 = arg_sp1D0;
-    arg_sp1D8 = this->unk88.unk8 + (f32) arg_sp398;
-    arg_sp3A8 = (f64) arg_sp1D8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp3A0));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp3A0 = sp1D0;
+    sp1D8 = this->unk88.unk8 + (f32) sp398;
+    sp3A8 = (f64) sp1D8;
+    MKSetPositionV(*((MKVector3 *) &sp3A0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 0.0f);
     temp_f30_898 = -5.0f;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp370 = arg_sp1C0;
-    arg_sp1C8 = arg_sp418 * temp_f30_898;
-    arg_sp378 = (f64) arg_sp1C8;
+    sp370 = sp1C0;
+    sp1C8 = sp400.unk18 * temp_f30_898;
+    sp378 = (f64) sp1C8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp380 = arg_sp1B0;
-    arg_sp1B8 = this->unk88.unk8 + (f32) arg_sp378;
-    arg_sp388 = (f64) arg_sp1B8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp380));
+    sp380 = sp1B0;
+    sp1B8 = this->unk88.unk8 + (f32) sp378;
+    sp388 = (f64) sp1B8;
+    MKSetPositionV(*((MKVector3 *) &sp380));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp3F0 = arg_sp40;
-    arg_sp48 = this->unk58 - M2C_FIELD(this, f32 *, 0xA0);
-    arg_sp3F8 = (f64) arg_sp48;
-    arg_sp360 = arg_sp40;
-    arg_sp368 = (f64) arg_sp48;
-    var_f4_949 = ((f32) arg_sp3F8 * (f32) arg_sp3F8) + (((f32) arg_sp3F0 * (f32) arg_sp3F0) + (arg_sp3F4 * arg_sp3F4));
+    sp3F0 = sp40;
+    sp48 = this->unk58 - M2C_FIELD(this, f32 *, 0xA0);
+    sp3F8 = (f64) sp48;
+    sp360 = sp40;
+    sp368 = (f64) sp48;
+    var_f4_949 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
     if (var_f4_949 > 0.000001f) {
         if (var_f4_949 > 0.0f) {
             temp_f1_955 = __frsqrte(var_f4_949);
@@ -468,18 +635,18 @@ void BurningWick::Draw() {
         } else if (var_f4_949 < M2C_BITWISE(f32, 0.0)) {
             var_f4_949 = __float_nan;
         } else {
-            arg_sp18 = var_f4_949;
-            temp_r3_984 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f4_949;
+            temp_r3_984 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_984) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_994 = 1;
                 } else {
                     var_r0_994 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_994 = 5;
                 } else {
                     var_r0_994 = 3;
@@ -497,74 +664,74 @@ void BurningWick::Draw() {
     } else {
         var_f3_1016 = 0.0f;
     }
-    arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1016;
-    arg_sp3F4 *= var_f3_1016;
-    arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1016;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp3F0 = (f32) sp3F0 * var_f3_1016;
+    unksp3F4 *= var_f3_1016;
+    sp3F8 = (f32) sp3F8 * var_f3_1016;
+    M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp340 = arg_sp1A0;
-    arg_sp1A8 = arg_sp418 * 5.0f;
-    arg_sp348 = (f64) arg_sp1A8;
+    sp340 = sp1A0;
+    sp1A8 = sp400.unk18 * 5.0f;
+    sp348 = (f64) sp1A8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp350 = arg_sp190;
-    arg_sp198 = M2C_FIELD(this, f32 *, 0xA0) + (f32) arg_sp348;
-    arg_sp358 = (f64) arg_sp198;
-    MKSetPositionV(*((MKVector3 *) &arg_sp350));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp350 = sp190;
+    sp198 = M2C_FIELD(this, f32 *, 0xA0) + (f32) sp348;
+    sp358 = (f64) sp198;
+    MKSetPositionV(*((MKVector3 *) &sp350));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp320 = arg_sp180;
-    arg_sp188 = arg_sp418 * temp_f30_898;
-    arg_sp328 = (f64) arg_sp188;
+    sp320 = sp180;
+    sp188 = sp400.unk18 * temp_f30_898;
+    sp328 = (f64) sp188;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp330 = arg_sp170;
-    arg_sp178 = M2C_FIELD(this, f32 *, 0xA0) + (f32) arg_sp328;
-    arg_sp338 = (f64) arg_sp178;
-    MKSetPositionV(*((MKVector3 *) &arg_sp330));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp330 = sp170;
+    sp178 = M2C_FIELD(this, f32 *, 0xA0) + (f32) sp328;
+    sp338 = (f64) sp178;
+    MKSetPositionV(*((MKVector3 *) &sp330));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 1.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp300 = arg_sp160;
-    arg_sp168 = arg_sp418 * 5.0f;
-    arg_sp308 = (f64) arg_sp168;
+    sp300 = sp160;
+    sp168 = sp400.unk18 * 5.0f;
+    sp308 = (f64) sp168;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp310 = arg_sp150;
-    arg_sp158 = this->unk58 + (f32) arg_sp308;
-    arg_sp318 = (f64) arg_sp158;
-    MKSetPositionV(*((MKVector3 *) &arg_sp310));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp310 = sp150;
+    sp158 = this->unk58 + (f32) sp308;
+    sp318 = (f64) sp158;
+    MKSetPositionV(*((MKVector3 *) &sp310));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 1.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp2E0 = arg_sp140;
-    arg_sp148 = arg_sp418 * temp_f30_898;
-    arg_sp2E8 = (f64) arg_sp148;
+    sp2E0 = sp140;
+    sp148 = sp400.unk18 * temp_f30_898;
+    sp2E8 = (f64) sp148;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2F0 = arg_sp130;
-    arg_sp138 = this->unk58 + (f32) arg_sp2E8;
-    arg_sp2F8 = (f64) arg_sp138;
-    MKSetPositionV(*((MKVector3 *) &arg_sp2F0));
+    sp2F0 = sp130;
+    sp138 = this->unk58 + (f32) sp2E8;
+    sp2F8 = (f64) sp138;
+    MKSetPositionV(*((MKVector3 *) &sp2F0));
     MKEnd();
     MKBegin(6);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp3F0 = arg_sp30;
-    arg_sp38 = M2C_FIELD(this, f32 *, 0xA0) - this->unk88.unk8;
-    arg_sp3F8 = (f64) arg_sp38;
-    arg_sp2D0 = arg_sp30;
-    arg_sp2D8 = (f64) arg_sp38;
-    var_f4_1195 = ((f32) arg_sp3F8 * (f32) arg_sp3F8) + (((f32) arg_sp3F0 * (f32) arg_sp3F0) + (arg_sp3F4 * arg_sp3F4));
+    sp3F0 = sp30;
+    sp38 = M2C_FIELD(this, f32 *, 0xA0) - this->unk88.unk8;
+    sp3F8 = (f64) sp38;
+    sp2D0 = sp30;
+    sp2D8 = (f64) sp38;
+    var_f4_1195 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
     if (var_f4_1195 > 0.000001f) {
         if (var_f4_1195 > 0.0f) {
             temp_f1_1201 = __frsqrte(var_f4_1195);
@@ -574,18 +741,18 @@ void BurningWick::Draw() {
         } else if (var_f4_1195 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1195 = __float_nan;
         } else {
-            arg_sp14 = var_f4_1195;
-            temp_r3_1230 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_1195;
+            temp_r3_1230 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_1230) {                 /* switch 3; irregular */
             case 0x7F800000:                        /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1240 = 1;
                 } else {
                     var_r0_1240 = 2;
                 }
                 break;
             case 0x0:                               /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1240 = 5;
                 } else {
                     var_r0_1240 = 3;
@@ -603,44 +770,44 @@ void BurningWick::Draw() {
     } else {
         var_f3_1262 = 0.0f;
     }
-    arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1262;
-    arg_sp3F4 *= var_f3_1262;
-    arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1262;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp3F0 = (f32) sp3F0 * var_f3_1262;
+    unksp3F4 *= var_f3_1262;
+    sp3F8 = (f32) sp3F8 * var_f3_1262;
+    M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 0.0f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp2B0 = arg_sp120;
-    arg_sp128 = arg_sp408 * 5.0f;
-    arg_sp2B8 = (f64) arg_sp128;
+    sp2B0 = sp120;
+    sp128 = sp400.unk8 * 5.0f;
+    sp2B8 = (f64) sp128;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2C0 = arg_sp110;
-    arg_sp118 = this->unk88.unk8 + (f32) arg_sp2B8;
-    arg_sp2C8 = (f64) arg_sp118;
-    MKSetPositionV(*((MKVector3 *) &arg_sp2C0));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp2C0 = sp110;
+    sp118 = this->unk88.unk8 + (f32) sp2B8;
+    sp2C8 = (f64) sp118;
+    MKSetPositionV(*((MKVector3 *) &sp2C0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 0.0f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp290 = arg_sp100;
-    arg_sp108 = arg_sp408 * temp_f30_898;
-    arg_sp298 = (f64) arg_sp108;
+    sp290 = sp100;
+    sp108 = sp400.unk8 * temp_f30_898;
+    sp298 = (f64) sp108;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2A0 = arg_spF0;
-    arg_spF8 = this->unk88.unk8 + (f32) arg_sp298;
-    arg_sp2A8 = (f64) arg_spF8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp2A0));
+    sp2A0 = spF0;
+    spF8 = this->unk88.unk8 + (f32) sp298;
+    sp2A8 = (f64) spF8;
+    MKSetPositionV(*((MKVector3 *) &sp2A0));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp3F0 = arg_sp20;
-    arg_sp28 = this->unk58 - M2C_FIELD(this, f32 *, 0xA0);
-    arg_sp3F8 = (f64) arg_sp28;
-    arg_sp280 = arg_sp20;
-    arg_sp288 = (f64) arg_sp28;
-    var_f4_1377 = ((f32) arg_sp3F8 * (f32) arg_sp3F8) + (((f32) arg_sp3F0 * (f32) arg_sp3F0) + (arg_sp3F4 * arg_sp3F4));
+    sp3F0 = sp20;
+    sp28 = this->unk58 - M2C_FIELD(this, f32 *, 0xA0);
+    sp3F8 = (f64) sp28;
+    sp280 = sp20;
+    sp288 = (f64) sp28;
+    var_f4_1377 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
     if (var_f4_1377 > 0.000001f) {
         if (var_f4_1377 > 0.0f) {
             temp_f1_1383 = __frsqrte(var_f4_1377);
@@ -650,18 +817,18 @@ void BurningWick::Draw() {
         } else if (var_f4_1377 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1377 = __float_nan;
         } else {
-            arg_sp10 = var_f4_1377;
-            temp_r3_1412 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_1377;
+            temp_r3_1412 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_1412) {                 /* switch 4; irregular */
             case 0x7F800000:                        /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1422 = 1;
                 } else {
                     var_r0_1422 = 2;
                 }
                 break;
             case 0x0:                               /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1422 = 5;
                 } else {
                     var_r0_1422 = 3;
@@ -679,59 +846,59 @@ void BurningWick::Draw() {
     } else {
         var_f3_1444 = 0.0f;
     }
-    arg_sp3F0 = (f32) arg_sp3F0 * var_f3_1444;
-    arg_sp3F4 *= var_f3_1444;
-    arg_sp3F8 = (f32) arg_sp3F8 * var_f3_1444;
-    M2C_STRUCT_COPY((s32) &arg_sp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    KDMath_BuildMatrixFromUp((Matrix *) &arg_sp400, *((MKVector3 *) &arg_sp3E0), *((MKVector3 *) &arg_sp3F0));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp3F0 = (f32) sp3F0 * var_f3_1444;
+    unksp3F4 *= var_f3_1444;
+    sp3F8 = (f32) sp3F8 * var_f3_1444;
+    M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 0.5f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp260 = arg_spE0;
-    arg_spE8 = arg_sp408 * 5.0f;
-    arg_sp268 = (f64) arg_spE8;
+    sp260 = spE0;
+    spE8 = sp400.unk8 * 5.0f;
+    sp268 = (f64) spE8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp270 = arg_spD0;
-    arg_spD8 = M2C_FIELD(this, f32 *, 0xA0) + (f32) arg_sp268;
-    arg_sp278 = (f64) arg_spD8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp270));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp270 = spD0;
+    spD8 = M2C_FIELD(this, f32 *, 0xA0) + (f32) sp268;
+    sp278 = (f64) spD8;
+    MKSetPositionV(*((MKVector3 *) &sp270));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 0.5f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp240 = arg_spC0;
-    arg_spC8 = arg_sp408 * temp_f30_898;
-    arg_sp248 = (f64) arg_spC8;
+    sp240 = spC0;
+    spC8 = sp400.unk8 * temp_f30_898;
+    sp248 = (f64) spC8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp250 = arg_spB0;
-    arg_spB8 = M2C_FIELD(this, f32 *, 0xA0) + (f32) arg_sp248;
-    arg_sp258 = (f64) arg_spB8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp250));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp250 = spB0;
+    spB8 = M2C_FIELD(this, f32 *, 0xA0) + (f32) sp248;
+    sp258 = (f64) spB8;
+    MKSetPositionV(*((MKVector3 *) &sp250));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(0.0f, 1.0f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp220 = arg_spA0;
-    arg_spA8 = arg_sp408 * 5.0f;
-    arg_sp228 = (f64) arg_spA8;
+    sp220 = spA0;
+    spA8 = sp400.unk8 * 5.0f;
+    sp228 = (f64) spA8;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp230 = arg_sp90;
-    arg_sp98 = this->unk58 + (f32) arg_sp228;
-    arg_sp238 = (f64) arg_sp98;
-    MKSetPositionV(*((MKVector3 *) &arg_sp230));
-    MKSetColorV(*((MKVector4 *) &arg_sp3D0));
+    sp230 = sp90;
+    sp98 = this->unk58 + (f32) sp228;
+    sp238 = (f64) sp98;
+    MKSetPositionV(*((MKVector3 *) &sp230));
+    MKSetColorV(*((MKVector4 *) &sp3D0));
     MKSetTexCoord1F(1.0f, 1.0f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp200 = arg_sp80;
-    arg_sp88 = arg_sp408 * temp_f30_898;
-    arg_sp208 = (f64) arg_sp88;
+    sp200 = sp80;
+    sp88 = sp400.unk8 * temp_f30_898;
+    sp208 = (f64) sp88;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp210 = arg_sp70;
-    arg_sp78 = this->unk58 + (f32) arg_sp208;
-    arg_sp218 = (f64) arg_sp78;
-    MKSetPositionV(*((MKVector3 *) &arg_sp210));
+    sp210 = sp70;
+    sp78 = this->unk58 + (f32) sp208;
+    sp218 = (f64) sp78;
+    MKSetPositionV(*((MKVector3 *) &sp210));
     MKEnd();
     MKEndPrimitive();
 }
@@ -739,89 +906,127 @@ void BurningWick::Draw() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'const int *' to
 void BurningWick::InitData(const int &arg0, MKModel *arg1, const MKVector3 &arg2) {
+    f32 spCC;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    M2C_UNK sp8C;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f7_1656;
     f32 temp_f7_1663;
     f32 temp_f8_1657;
+
     this->unk70 = arg1;
     this->unk4C = &arg0;
     this->unk80 = 20.0f;
     this->unk78 = 20.0f;
     M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&arg2, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&arg2, f64 *, 8);
-    M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
-    arg_spC0 = 0.0f;
-    arg_spC4 = 0.0f;
-    arg_spC8 = 0.0f;
-    arg_spCC = 1.0f;
+    M2C_STRUCT_COPY((s32) &sp8C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
+    spC0 = 0.0f;
+    spC4 = 0.0f;
+    spC8 = 0.0f;
+    spCC = 1.0f;
     temp_f7_1656 = this->unkBC;
     temp_f8_1657 = this->unkB8;
     temp_f7_1663 = this->unkC0;
-    arg_sp30 = 0.0f + ((temp_f7_1663 * arg_spB0) + ((temp_f8_1657 * arg_sp90) + (temp_f7_1656 * arg_spA0)));
-    arg_sp34 = 0.0f + ((temp_f7_1663 * arg_spB4) + ((temp_f8_1657 * arg_sp94) + (temp_f7_1656 * arg_spA4)));
-    arg_sp38 = 0.0f + ((temp_f7_1663 * arg_spB8) + ((temp_f8_1657 * arg_sp98) + (temp_f7_1656 * arg_spA8)));
-    arg_sp80 = (f64) arg_sp30;
-    arg_sp88 = (f64) arg_sp38;
+    sp30 = 0.0f + ((temp_f7_1663 * spB0) + ((temp_f8_1657 * sp90) + (temp_f7_1656 * spA0)));
+    sp34 = 0.0f + ((temp_f7_1663 * spB4) + ((temp_f8_1657 * sp94) + (temp_f7_1656 * spA4)));
+    sp38 = 0.0f + ((temp_f7_1663 * spB8) + ((temp_f8_1657 * sp98) + (temp_f7_1656 * spA8)));
+    sp80 = (f64) sp30;
+    sp88 = (f64) sp38;
     MKModel_CalculateRefPointWorldPosition(this->unk70, this->unk4C, &this->unk88);
-    arg_sp60.operator*(this->unk80);
+    sp60.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk98 = arg_sp20;
-    arg_sp28 = this->unk88.unk8 + arg_sp68;
-    arg_sp70 = arg_sp20;
-    this->unkA0 = (f64) arg_sp28;
-    arg_sp78 = (f64) arg_sp28;
-    arg_sp40.operator*(this->unk80);
+    this->unk98 = sp20;
+    sp28 = this->unk88.unk8 + sp60.unk8;
+    sp70 = sp20;
+    this->unkA0 = (f64) sp28;
+    sp78 = (f64) sp28;
+    sp40.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk50 = arg_sp10;
-    arg_sp18 = (f32) M2C_FIELD(this, f64 *, 0xA0) + arg_sp48;
-    arg_sp50 = arg_sp10;
-    arg_sp58 = (f64) arg_sp18;
-    M2C_FIELD(this, f64 *, 0x58) = (f64) arg_sp18;
+    this->unk50 = sp10;
+    sp18 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp40.unk8;
+    sp50 = sp10;
+    sp58 = (f64) sp18;
+    M2C_FIELD(this, f64 *, 0x58) = (f64) sp18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void BurningWick::Reset() {
+    f32 spCC;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    M2C_UNK sp8C;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f7_1778;
     f32 temp_f7_1785;
     f32 temp_f8_1779;
+
     MKProp::Reset();
     this->unk74 = 0.0f;
     this->unk80 = this->unk78;
     this->unk84 = 0;
     MKModel_CalculateRefPointWorldPosition(this->unk70, this->unk4C, &this->unk88);
-    M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
-    arg_spC0 = 0.0f;
-    arg_spC4 = 0.0f;
-    arg_spC8 = 0.0f;
-    arg_spCC = 1.0f;
+    M2C_STRUCT_COPY((s32) &sp8C + 4, MKModel_GetWorldMatrix(this->unk70) - 4 + 4, 0x40);
+    spC0 = 0.0f;
+    spC4 = 0.0f;
+    spC8 = 0.0f;
+    spCC = 1.0f;
     temp_f7_1778 = this->unkBC;
     temp_f8_1779 = this->unkB8;
     temp_f7_1785 = this->unkC0;
-    arg_sp30 = 0.0f + ((temp_f7_1785 * arg_spB0) + ((temp_f8_1779 * arg_sp90) + (temp_f7_1778 * arg_spA0)));
-    arg_sp34 = 0.0f + ((temp_f7_1785 * arg_spB4) + ((temp_f8_1779 * arg_sp94) + (temp_f7_1778 * arg_spA4)));
-    arg_sp38 = 0.0f + ((temp_f7_1785 * arg_spB8) + ((temp_f8_1779 * arg_sp98) + (temp_f7_1778 * arg_spA8)));
-    arg_sp80 = (f64) arg_sp30;
-    arg_sp88 = (f64) arg_sp38;
-    arg_sp60.operator*(this->unk80);
+    sp30 = 0.0f + ((temp_f7_1785 * spB0) + ((temp_f8_1779 * sp90) + (temp_f7_1778 * spA0)));
+    sp34 = 0.0f + ((temp_f7_1785 * spB4) + ((temp_f8_1779 * sp94) + (temp_f7_1778 * spA4)));
+    sp38 = 0.0f + ((temp_f7_1785 * spB8) + ((temp_f8_1779 * sp98) + (temp_f7_1778 * spA8)));
+    sp80 = (f64) sp30;
+    sp88 = (f64) sp38;
+    sp60.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk98 = arg_sp20;
-    arg_sp28 = this->unk88.unk8 + arg_sp68;
-    arg_sp70 = arg_sp20;
-    this->unkA0 = (f64) arg_sp28;
-    arg_sp78 = (f64) arg_sp28;
-    arg_sp40.operator*(this->unk80);
+    this->unk98 = sp20;
+    sp28 = this->unk88.unk8 + sp60.unk8;
+    sp70 = sp20;
+    this->unkA0 = (f64) sp28;
+    sp78 = (f64) sp28;
+    sp40.operator*(this->unk80);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk50 = arg_sp10;
-    arg_sp18 = (f32) M2C_FIELD(this, f64 *, 0xA0) + arg_sp48;
-    arg_sp50 = arg_sp10;
-    M2C_FIELD(this, f64 *, 0x58) = (f64) arg_sp18;
+    this->unk50 = sp10;
+    sp18 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp40.unk8;
+    sp50 = sp10;
+    M2C_FIELD(this, f64 *, 0x58) = (f64) sp18;
     this->unk60 = 0.0f;
     this->unk64 = 0.0f;
-    arg_sp58 = (f64) arg_sp18;
+    sp58 = (f64) sp18;
     this->unk68 = 0.0f;
 }
 #endif

@@ -64,8 +64,35 @@ void MagicFireball::Deactivate() {
     GameProp::Deactivate();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
+#if 0 // DRAFT: expression syntax error
 void MagicFireball::Update() {
+    Matrix sp130;
+    Matrix spF0;
+    f64 spE0;                                       /* compiler-managed */
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    MKVector3 spA8;
+    MKVector3 sp98;
+    MKVector3 sp88;
+    M2C_UNK sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
+    s32 sp8;
     MagicFireball *var_r7_150;
     ManagedLight *temp_r3_403;
     ManagedLight *temp_r3_423;
@@ -84,8 +111,9 @@ void MagicFireball::Update() {
     void *temp_r3_308;
     void *temp_r3_410;
     void *temp_r3_426;
+
     Projectile::Update();
-    arg_sp8 = 1;
+    sp8 = 1;
     if (((u8) this->unk14C >> 7U) & 1) {
         var_r7_150 = this;
     } else {
@@ -93,19 +121,19 @@ void MagicFireball::Update() {
     }
     this->unk164.Update(GS_IceOrgeMagicLP, 1U, this->unk18C, (MKProp *) var_r7_150, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp130);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp130);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp12C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spF0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     var_f4_181 = 0.0f;
-    arg_sp50 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    arg_spD0 = (f64) arg_sp50;
-    arg_spC8 = (f64) arg_sp48;
-    arg_spD8 = this->unkC8;
-    arg_spE0 = this->unkD0;
-    var_f5_202 = ((f32) arg_spE0 * (f32) arg_spE0) + (((f32) arg_spD8 * (f32) arg_spD8) + (arg_spDC * arg_spDC));
+    sp50 = 0.0f;
+    sp48 = 0.0f;
+    sp4C = 1.0f;
+    spD0 = (f64) sp50;
+    spC8 = (f64) sp48;
+    spD8 = this->unkC8;
+    spE0 = this->unkD0;
+    var_f5_202 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
     if (var_f5_202 > 0.000001f) {
         if (var_f5_202 > 0.0f) {
             temp_f1_207 = __frsqrte(var_f5_202);
@@ -115,18 +143,18 @@ void MagicFireball::Update() {
         } else if (var_f5_202 < M2C_BITWISE(f32, 0.0)) {
             var_f5_202 = __float_nan;
         } else {
-            arg_sp10 = var_f5_202;
-            temp_r3_236 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_202;
+            temp_r3_236 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_236) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_246 = 1;
                 } else {
                     var_r0_246 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_246 = 5;
                 } else {
                     var_r0_246 = 3;
@@ -144,16 +172,16 @@ void MagicFireball::Update() {
     } else {
         var_f5_202 = 0.0f;
     }
-    arg_spD8 = (f32) arg_spD8 * var_f4_181;
-    arg_spDC *= var_f4_181;
-    arg_spE0 = (f32) arg_spE0 * var_f4_181;
+    spD8 = (f32) spD8 * var_f4_181;
+    unkspDC *= var_f4_181;
+    spE0 = (f32) spE0 * var_f4_181;
     if (var_f5_202 != 0.0f) {
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_spF0, *((MKVector3 *) &arg_spD8), (MKVector3 *) &arg_spC8);
-        arg_sp120 = arg_sp160;
-        arg_sp124 = arg_sp164;
-        arg_sp128 = arg_sp168;
-        arg_sp12C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spF0));
+        KDMath_BuildMatrixFromFwd(&spF0, *((MKVector3 *) &spD8), (MKVector3 *) &spC8);
+        spF0.unk30 = sp130.unk30;
+        spF0.unk34 = sp130.unk34;
+        spF0.unk38 = sp130.unk38;
+        spF0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, spF0);
     }
     temp_r3_302 = checked_cast<MagicFireballDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r3_304 = M2C_FIELD(temp_r3_302, void **, 0xF0);
@@ -162,46 +190,46 @@ void MagicFireball::Update() {
         temp_r28_313 = M2C_FIELD(temp_r3_308, void **, 0x2C);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(*((MKVector3 *) &arg_sp98), *((MKVector3 *) &arg_sp88));
-        arg_spA8.operator*(25.0f);
+        KDRand_Vector(sp98, sp88);
+        spA8.operator*(25.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(temp_r3_308, f64 *, 0) = arg_sp38;
-        arg_sp40 = arg_sp168 + arg_spB0;
-        arg_spB8 = arg_sp38;
-        M2C_FIELD(temp_r3_308, f64 *, 8) = (f64) arg_sp40;
+        M2C_FIELD(temp_r3_308, f64 *, 0) = sp38;
+        sp40 = sp130.unk38 + spA8.unk8;
+        spB8 = sp38;
+        M2C_FIELD(temp_r3_308, f64 *, 8) = (f64) sp40;
         M2C_FIELD(temp_r3_308, f32 *, 0x20) = 0.0f;
-        arg_spC0 = (f64) arg_sp40;
+        spC0 = (f64) sp40;
         M2C_FIELD(temp_r3_308, f32 *, 0x28) = 0.0f;
         temp_f30_352 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-        arg_sp2C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-        arg_sp28 = temp_f30_352;
-        arg_sp30 = temp_f30_352;
-        arg_sp34 = 1.0f;
-        M2C_FIELD(temp_r3_308, f64 *, 0x10) = (f64) arg_sp28;
-        arg_sp68 = (f64) arg_sp28;
-        arg_sp70 = (f64) arg_sp30;
-        M2C_FIELD(temp_r3_308, f64 *, 0x18) = (f64) arg_sp30;
+        sp2C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        sp28 = temp_f30_352;
+        sp30 = temp_f30_352;
+        sp34 = 1.0f;
+        M2C_FIELD(temp_r3_308, f64 *, 0x10) = (f64) sp28;
+        sp68 = (f64) sp28;
+        sp70 = (f64) sp30;
+        M2C_FIELD(temp_r3_308, f64 *, 0x18) = (f64) sp30;
         M2C_FIELD(temp_r3_308, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_FIELD(temp_r28_313, f64 *, 0) = arg_sp18;
-        arg_sp20 = (f32) M2C_FIELD(this, f64 *, 0xD0) * 0.5f;
-        arg_sp58 = arg_sp18;
-        arg_sp60 = (f64) arg_sp20;
-        M2C_FIELD(temp_r28_313, f64 *, 8) = (f64) arg_sp20;
+        M2C_FIELD(temp_r28_313, f64 *, 0) = sp18;
+        sp20 = (f32) M2C_FIELD(this, f64 *, 0xD0) * 0.5f;
+        sp58 = sp18;
+        sp60 = (f64) sp20;
+        M2C_FIELD(temp_r28_313, f64 *, 8) = (f64) sp20;
         M2C_FIELD(temp_r28_313, f32 *, 0x18) = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
         M2C_FIELD(temp_r28_313, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r28_313, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_302, void **, 0xF0), f32 *, 0xF4);
     }
     temp_r3_403 = this->unk160;
     if (temp_r3_403 != NULL) {
-        temp_r3_403->unk10 = (f64) arg_sp160;
-        temp_r3_403->unk18 = (f64) arg_sp168;
+        temp_r3_403->unk10 = (f64) sp130.unk30;
+        temp_r3_403->unk18 = (f64) sp130.unk38;
         temp_r3_410 = temp_r3_403->unk3C;
         if (temp_r3_410 != NULL) {
-            M2C_FIELD(temp_r3_410, f64 *, 0x10) = (f64) arg_sp160;
-            M2C_FIELD(temp_r3_410, f64 *, 0x18) = (f64) arg_sp168;
+            M2C_FIELD(temp_r3_410, f64 *, 0x10) = (f64) sp130.unk30;
+            M2C_FIELD(temp_r3_410, f64 *, 0x18) = (f64) sp130.unk38;
         }
         temp_r3_423 = this->unk160;
         temp_f0_424 = 500.0f * MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -217,8 +245,92 @@ void MagicFireball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C0'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MagicFireball::Collided(MKCollisionResult &arg0) {
+    s8 sp2A9;
+    s8 sp2A8;
+    s32 sp2A4;
+    f32 sp2A0;
+    s32 sp29C;
+    s8 sp29A;
+    s8 sp299;
+    s8 sp298;
+    f64 sp290;                                      /* compiler-managed */
+    f64 sp288;                                      /* compiler-managed */
+    MKProp *sp284;
+    s32 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    s32 sp25C;
+    s32 sp258;
+    u8 sp250;
+    s32 sp24C;
+    void *sp248;
+    s32 sp244;
+    f32 sp240;
+    s32 sp23C;
+    s8 sp23B;
+    s8 sp23A;
+    s16 sp238;
+    f32 sp234;
+    f32 sp230;
+    f32 sp22C;
+    f32 sp228;
+    f32 sp224;
+    f32 sp220;
+    f32 sp218;
+    f32 sp214;
+    f32 sp210;
+    f32 sp208;
+    f32 sp204;
+    f32 sp200;
+    Matrix sp1C0;
+    M2C_UNK sp1BC;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;                                      /* compiler-managed */
+    f64 sp198;                                      /* compiler-managed */
+    f64 sp190;
+    f64 sp188;
+    MKVector3 sp178;
+    MKVector3 sp168;
+    MKVector3 sp158;
+    M2C_UNK sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    MKVector3 sp118;
+    MKVector3 sp108;
+    MKVector3 spF8;
+    M2C_UNK spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 sp98;
+    f64 sp88;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     MKProp *temp_r4_630;
     MKProp *temp_r4_819;
     ManagedLight *temp_r4_921;
@@ -238,17 +350,18 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     void *temp_r3_687;
     void *var_r3_690;
     void *var_r3_906;
+
     Projectile::Collided(arg0);
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp1C0);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp1C0);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp1BC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp1BC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     temp_r27_495 = checked_cast<MagicFireballDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    arg_sp1A8 = this->unkC8;
+    sp1A8 = this->unkC8;
     var_r26_499 = 0;
-    arg_sp1B0 = this->unkD0;
-    arg_sp1AC = 0.0f;
+    sp1B0 = this->unkD0;
+    unksp1AC = 0.0f;
     do {
         temp_r3_505 = M2C_FIELD(temp_r27_495, void **, 0xF0);
         temp_r3_509 = M2C_FIELD(M2C_FIELD(temp_r3_505, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_505);
@@ -256,74 +369,74 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             temp_r25_514 = M2C_FIELD(temp_r3_509, void **, 0x2C);
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(*((MKVector3 *) &arg_sp168), *((MKVector3 *) &arg_sp158));
-            arg_sp178.operator*(25.0f);
+            KDRand_Vector(sp168, sp158);
+            sp178.operator*(25.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_FIELD(temp_r3_509, f64 *, 0) = arg_sp58;
-            arg_sp60 = arg_sp1F8 + arg_sp180;
-            arg_sp188 = arg_sp58;
-            M2C_FIELD(temp_r3_509, f64 *, 8) = (f64) arg_sp60;
+            M2C_FIELD(temp_r3_509, f64 *, 0) = sp58;
+            sp60 = sp1C0.unk38 + sp178.unk8;
+            sp188 = sp58;
+            M2C_FIELD(temp_r3_509, f64 *, 8) = (f64) sp60;
             M2C_FIELD(temp_r3_509, f32 *, 0x20) = 0.0f;
-            arg_sp190 = (f64) arg_sp60;
+            sp190 = (f64) sp60;
             M2C_FIELD(temp_r3_509, f32 *, 0x28) = 0.0f;
             temp_f29_552 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-            arg_sp4C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-            arg_sp48 = temp_f29_552;
-            arg_sp50 = temp_f29_552;
-            arg_sp54 = 1.0f;
-            M2C_FIELD(temp_r3_509, f64 *, 0x10) = (f64) arg_sp48;
-            arg_sp138 = (f64) arg_sp48;
-            arg_sp140 = (f64) arg_sp50;
-            M2C_FIELD(temp_r3_509, f64 *, 0x18) = (f64) arg_sp50;
+            sp4C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+            sp48 = temp_f29_552;
+            sp50 = temp_f29_552;
+            sp54 = 1.0f;
+            M2C_FIELD(temp_r3_509, f64 *, 0x10) = (f64) sp48;
+            sp138 = (f64) sp48;
+            sp140 = (f64) sp50;
+            M2C_FIELD(temp_r3_509, f64 *, 0x18) = (f64) sp50;
             M2C_FIELD(temp_r3_509, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(*((MKVector3 *) &arg_sp108), *((MKVector3 *) &arg_spF8));
-            arg_sp118.operator*(500.0f);
+            KDRand_Vector(sp108, spF8);
+            sp118.operator*(500.0f);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_FIELD(temp_r25_514, f64 *, 0) = arg_sp38;
-            arg_sp40 = (f32) arg_sp1B0 + arg_sp120;
-            arg_sp128 = arg_sp38;
-            arg_sp130 = (f64) arg_sp40;
-            M2C_FIELD(temp_r25_514, f64 *, 8) = (f64) arg_sp40;
+            M2C_FIELD(temp_r25_514, f64 *, 0) = sp38;
+            sp40 = (f32) sp1B0 + sp118.unk8;
+            sp128 = sp38;
+            sp130 = (f64) sp40;
+            M2C_FIELD(temp_r25_514, f64 *, 8) = (f64) sp40;
             M2C_FIELD(temp_r25_514, f32 *, 0x18) = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
             M2C_FIELD(temp_r25_514, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
             M2C_FIELD(temp_r25_514, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r27_495, void **, 0xF0), f32 *, 0xF4);
         }
         var_r26_499 += 1;
     } while (var_r26_499 < 0x14);
-    arg_sp25C = 0;
+    sp25C = 0;
     temp_r4_630 = this->unk130;
-    arg_sp30 = 0.0f;
-    arg_sp28 = 0.0f;
-    arg_sp2C = 0.0f;
-    arg_spE0 = (f64) arg_sp30;
-    arg_spD8 = (f64) arg_sp28;
-    arg_sp258 = 7;
-    arg_sp280 = 1;
-    arg_sp284 = temp_r4_630;
-    arg_sp260 = (f64) arg_sp28;
-    arg_sp268 = (f64) arg_sp30;
-    arg_sp298 = 0;
-    arg_sp2A4 = 2;
-    arg_sp2A0 = 10.0f;
-    arg_sp298 = 0;
-    (s16) arg_sp298 = 1;
-    arg_sp29C = -1;
-    arg_sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-    arg_sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-    arg_sp2A8 = 0;
+    sp30 = 0.0f;
+    sp28 = 0.0f;
+    sp2C = 0.0f;
+    spE0 = (f64) sp30;
+    spD8 = (f64) sp28;
+    sp258 = 7;
+    sp280 = 1;
+    sp284 = temp_r4_630;
+    sp260 = (f64) sp28;
+    sp268 = (f64) sp30;
+    sp298 = 0;
+    sp2A4 = 2;
+    sp2A0 = 10.0f;
+    sp299 = 0;
+    sp29A = 1;
+    sp29C = -1;
+    sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp2A8 = 0;
     if (temp_r4_630 != NULL) {
-        arg_sp98.GetPos();
-        arg_sp288 = arg_sp98;
-        arg_sp290 = arg_spA0;
+        sp98.GetPos();
+        sp288 = sp98;
+        sp290 = spA0;
     } else {
-        arg_sp288 = 0.0f;
-        arg_sp28C = 0.0f;
-        arg_sp290 = 0.0f;
+        sp288 = 0.0f;
+        unksp28C = 0.0f;
+        sp290 = 0.0f;
     }
-    arg_sp2A8 = 0;
+    sp2A9 = 0;
     this->unk18C = 0;
     KDSound_Stop(&this->unk164);
     KDSound_Play3d(GS_IceOrgeMagicExplode, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -333,34 +446,34 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         var_r3_690 = NULL;
     }
     if (var_r3_690 != NULL) {
-        M2C_FIELD(M2C_FIELD(var_r3_690, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp258);
+        M2C_FIELD(M2C_FIELD(var_r3_690, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp258);
     }
     var_f4_705 = 0.0f;
-    arg_sp200 = 0.0f;
-    arg_sp204 = 0.0f;
-    arg_sp208 = 0.0f;
-    arg_sp210 = 0.0f;
-    arg_sp214 = 0.0f;
-    arg_sp218 = 0.0f;
-    arg_sp220 = 0.0f;
-    arg_sp224 = 0.0f;
-    arg_sp228 = 0.0f;
-    arg_sp22C = 1.0f;
-    arg_sp230 = 0.0f;
-    arg_sp234 = 0.0f;
-    arg_sp238 = 0;
-    arg_sp238 = 0;
-    (s8) arg_sp238 = 0;
-    arg_sp23C = 0;
-    arg_sp240 = 3.4028235e38f;
-    arg_sp244 = 0;
-    arg_sp248 = NULL;
-    arg_sp24C = -1;
-    arg_sp250 = 0U;
-    arg_sp198 = this->unkC8;
-    arg_sp1A0 = this->unkD0;
-    arg_sp19C = 0.0f;
-    var_f5_743 = ((f32) arg_sp1A0 * (f32) arg_sp1A0) + (((f32) arg_sp198 * (f32) arg_sp198) + (0.0f * 0.0f));
+    sp200 = 0.0f;
+    sp204 = 0.0f;
+    sp208 = 0.0f;
+    sp210 = 0.0f;
+    sp214 = 0.0f;
+    sp218 = 0.0f;
+    sp220 = 0.0f;
+    sp224 = 0.0f;
+    sp228 = 0.0f;
+    sp22C = 1.0f;
+    sp230 = 0.0f;
+    sp234 = 0.0f;
+    sp238 = 0;
+    sp23A = 0;
+    sp23B = 0;
+    sp23C = 0;
+    sp240 = 3.4028235e38f;
+    sp244 = 0;
+    sp248 = NULL;
+    sp24C = -1;
+    sp250 = 0;
+    sp198 = this->unkC8;
+    sp1A0 = this->unkD0;
+    unksp19C = 0.0f;
+    var_f5_743 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (0.0f * 0.0f));
     if (var_f5_743 > 0.000001f) {
         if (var_f5_743 > 0.0f) {
             temp_f1_748 = __frsqrte(var_f5_743);
@@ -370,18 +483,18 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         } else if (var_f5_743 < M2C_BITWISE(f32, 0.0)) {
             var_f5_743 = __float_nan;
         } else {
-            arg_sp10 = var_f5_743;
-            temp_r3_777 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_743;
+            temp_r3_777 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_777) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_787 = 1;
                 } else {
                     var_r0_787 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_787 = 5;
                 } else {
                     var_r0_787 = 3;
@@ -398,55 +511,55 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         var_f4_705 = 1.0f / var_f5_743;
     }
     temp_r4_819 = this->unk130;
-    arg_sp20 = 0.0f;
-    arg_sp18 = 0.0f;
-    arg_sp1C = 0.0f;
-    arg_sp198 = (f32) arg_sp198 * var_f4_705;
-    arg_sp19C *= var_f4_705;
-    arg_sp1A0 = (f32) arg_sp1A0 * var_f4_705;
-    arg_spC8 = (f64) arg_sp18;
-    arg_spD0 = (f64) arg_sp20;
-    arg_sp258 = 7;
-    arg_sp280 = 1;
-    arg_sp284 = temp_r4_819;
-    arg_sp260 = (f64) arg_sp18;
-    arg_sp268 = (f64) arg_sp20;
-    arg_sp298 = 0;
-    arg_sp2A4 = 2;
-    arg_sp2A0 = 10.0f;
-    arg_sp298 = 0;
-    (s16) arg_sp298 = 1;
-    arg_sp29C = -1;
-    arg_sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-    arg_sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-    arg_sp2A8 = 0;
+    sp20 = 0.0f;
+    sp18 = 0.0f;
+    sp1C = 0.0f;
+    sp198 = (f32) sp198 * var_f4_705;
+    unksp19C *= var_f4_705;
+    sp1A0 = (f32) sp1A0 * var_f4_705;
+    spC8 = (f64) sp18;
+    spD0 = (f64) sp20;
+    sp258 = 7;
+    sp280 = 1;
+    sp284 = temp_r4_819;
+    sp260 = (f64) sp18;
+    sp268 = (f64) sp20;
+    sp298 = 0;
+    sp2A4 = 2;
+    sp2A0 = 10.0f;
+    sp299 = 0;
+    sp29A = 1;
+    sp29C = -1;
+    sp270 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp2A8 = 0;
     if (temp_r4_819 != NULL) {
-        arg_sp88.GetPos();
-        arg_sp288 = arg_sp88;
-        arg_sp290 = arg_sp90;
+        sp88.GetPos();
+        sp288 = sp88;
+        sp290 = sp90;
     } else {
-        arg_sp288 = 0.0f;
-        arg_sp28C = 0.0f;
-        arg_sp290 = 0.0f;
+        sp288 = 0.0f;
+        unksp28C = 0.0f;
+        sp290 = 0.0f;
     }
-    arg_sp2A8 = 0;
+    sp2A9 = 0;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_spA8 = arg_sp78;
-    arg_sp80 = (f32) arg_sp1A0 * 600.0f;
-    arg_spB0 = (f64) arg_sp80;
+    spA8 = sp78;
+    sp80 = sp1A0 * 600.0f;
+    spB0 = (f64) sp80;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spB8 = arg_sp68;
-    arg_sp70 = arg_sp1F8 + (f32) arg_spB0;
-    arg_spC0 = (f64) arg_sp70;
-    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &arg_sp1F0), *((MKVector3 *) &arg_spB8), 200.0f, (MKCollisionResult *) &arg_sp200, (MKCollisionMode) 2, 0x08000000) != 0) {
-        if ((arg_sp250 != 0) && (arg_sp248 != NULL) && (var_r3_906 = M2C_FIELD(arg_sp248, void **, 8), ((var_r3_906 == NULL) == 0))) {
+    spB8 = sp68;
+    sp70 = sp1C0.unk38 + (f32) spB0;
+    spC0 = (f64) sp70;
+    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp1C0.unk30), *((MKVector3 *) &spB8), 200.0f, (MKCollisionResult *) &sp200, (MKCollisionMode) 2, 0x08000000) != 0) {
+        if ((sp250 != 0) && (sp248 != NULL) && (var_r3_906 = M2C_FIELD(sp248, void **, 8), ((var_r3_906 == NULL) == 0))) {
 
         } else {
             var_r3_906 = NULL;
         }
         if (var_r3_906 != NULL) {
-            M2C_FIELD(M2C_FIELD(var_r3_906, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp258);
+            M2C_FIELD(M2C_FIELD(var_r3_906, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp258);
         }
     }
     temp_r4_921 = this->unk160;

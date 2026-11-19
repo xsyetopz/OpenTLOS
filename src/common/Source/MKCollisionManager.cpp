@@ -1704,8 +1704,29 @@ void MKCollisionManager::ForceUpdate(unsigned int arg0) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, MKCollisionMode arg5, MKCollisionInfo *arg6, unsigned int arg7) {
+    Matrix spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
+    MKCollisionManager *spC;
+    u32 sp8;
     MKCollisionCapsuleItem *temp_r31_2671;
     s32 temp_r3_2733;
+
     operator new(0xB0U, NULL, 0);
     temp_r31_2671 = M2C_ERROR(/* Read from unset register $r3 */);
     if (temp_r31_2671 != NULL) {
@@ -1713,31 +1734,31 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
         temp_r31_2671->__vptr = &__vt;
         temp_r31_2671->__vptr = &__vt;
     }
-    arg_spB0.SetIdentity();
-    arg_sp38 = arg2;
-    arg_sp30 = arg2;
-    arg_sp34 = arg2;
-    arg_sp88 = (f64) arg_sp38;
-    arg_sp80 = (f64) arg_sp30;
-    Min(*((MKVector3 *) &arg_sp60), *arg0);
+    spB0.SetIdentity();
+    sp38 = arg2;
+    sp30 = arg2;
+    sp34 = arg2;
+    sp88 = (f64) sp38;
+    sp80 = (f64) sp30;
+    Min(sp60, *arg0);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp70 = arg_sp20;
-    arg_sp28 = arg_sp68 - (f32) arg_sp88;
-    arg_sp90 = arg_sp20;
-    arg_sp78 = (f64) arg_sp28;
-    arg_sp98 = (f64) arg_sp28;
-    Max(*((MKVector3 *) &arg_sp40), *arg0);
+    sp70 = sp20;
+    sp28 = sp60.unk8 - (f32) sp88;
+    sp90 = sp20;
+    sp78 = (f64) sp28;
+    sp98 = (f64) sp28;
+    Max(sp40, *arg0);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp50 = arg_sp10;
-    arg_sp18 = arg_sp48 + (f32) arg_sp88;
-    arg_spA0 = arg_sp10;
-    arg_sp58 = (f64) arg_sp18;
-    arg_spA8 = (f64) arg_sp18;
-    temp_r3_2733 = CalcMaxGridOverlap(*((MKCollisionAABB *) &arg_sp90), (Matrix *) &arg_spB0, arg5);
-    arg_sp8 = arg7;
-    arg_spC = this;
+    sp50 = sp10;
+    sp18 = sp40.unk8 + (f32) sp88;
+    spA0 = sp10;
+    sp58 = (f64) sp18;
+    spA8 = (f64) sp18;
+    temp_r3_2733 = CalcMaxGridOverlap(*((MKCollisionAABB *) &sp90), &spB0, arg5);
+    sp8 = arg7;
+    spC = this;
     temp_r31_2671->Init(arg0, arg1, arg2, arg3, arg4, arg5, arg6, temp_r3_2733, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
     if ((s32) arg5 & 2) {
         temp_r31_2671->unkC = (s32) this->unk30;
@@ -1749,8 +1770,25 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, const MKVector4 &arg3, MKCollisionMode arg4, MKCollisionInfo *arg5, unsigned int arg6) {
+    Matrix sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
     MKCollisionSphereItem *temp_r31_2794;
     f32 temp_f3_2820;
+
     operator new(0x90U, NULL, 0);
     temp_r31_2794 = M2C_ERROR(/* Read from unset register $r3 */);
     if (temp_r31_2794 != NULL) {
@@ -1758,27 +1796,27 @@ void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, cons
         temp_r31_2794->__vptr = &__vt;
         temp_r31_2794->__vptr = &__vt;
     }
-    arg_sp90.SetIdentity();
-    arg_sp30 = arg1;
-    arg_sp34 = arg1;
-    arg_sp38 = arg1;
-    arg_sp60 = (f64) arg_sp30;
-    arg_sp68 = (f64) arg_sp38;
+    sp90.SetIdentity();
+    sp30 = arg1;
+    sp34 = arg1;
+    sp38 = arg1;
+    sp60 = (f64) sp30;
+    sp68 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r26, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f1 */);
     temp_f3_2820 = arg0->unk8;
-    arg_sp50 = arg_sp20;
-    arg_sp70 = arg_sp20;
-    arg_sp28 = temp_f3_2820 - (f32) arg_sp68;
-    arg_sp58 = (f64) arg_sp28;
-    arg_sp78 = (f64) arg_sp28;
-    arg_sp18 = temp_f3_2820 + (f32) arg_sp68;
-    arg_sp40 = arg_sp10;
-    arg_sp48 = (f64) arg_sp18;
-    arg_sp80 = arg_sp10;
-    arg_sp88 = (f64) arg_sp18;
-    temp_r31_2794->Init(arg0, arg1, arg2, arg3, arg4, arg5, CalcMaxGridOverlap(*((MKCollisionAABB *) &arg_sp70), (Matrix *) &arg_sp90, arg4), arg6, this);
+    sp50 = sp20;
+    sp70 = sp20;
+    sp28 = temp_f3_2820 - (f32) sp68;
+    sp58 = (f64) sp28;
+    sp78 = (f64) sp28;
+    sp18 = temp_f3_2820 + (f32) sp68;
+    sp40 = sp10;
+    sp48 = (f64) sp18;
+    sp80 = sp10;
+    sp88 = (f64) sp18;
+    temp_r31_2794->Init(arg0, arg1, arg2, arg3, arg4, arg5, CalcMaxGridOverlap(*((MKCollisionAABB *) &sp70), &sp90, arg4), arg6, this);
     if ((s32) arg4 & 2) {
         temp_r31_2794->unkC = (s32) this->unk30;
         this->unk30 = (MKCollisionCapsuleItem *) temp_r31_2794;
@@ -1787,16 +1825,19 @@ void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, cons
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void MKCollisionManager::AddModel(MKModel *arg0, int arg1, MKCollisionMode arg2, MKCollisionInfo *arg3, unsigned int arg4) {
+    Matrix sp10;
+    MKCollisionManager *sp8;
     MKCollisionModelItem *temp_r30_2914;
     MKHeap *temp_r29_2896;
     s32 temp_r3_2930;
+
     temp_r29_2896 = CreateCollisionModel(arg0, arg1);
     if (MKModel_GetAnimation(arg0) != NULL) {
         MKModel_GetAnimation(arg0);
     }
-    MKModel_CalculateSubObjectLocalToWorldMatrix(arg0, (SubObjectType) 0, arg1, (Matrix *) &arg_sp10);
+    MKModel_CalculateSubObjectLocalToWorldMatrix(arg0, (SubObjectType) 0, arg1, &sp10);
     if (temp_r29_2896 != NULL) {
         operator new(0x130U, NULL, 0);
         temp_r30_2914 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -1805,8 +1846,8 @@ void MKCollisionManager::AddModel(MKModel *arg0, int arg1, MKCollisionMode arg2,
             temp_r30_2914->__vptr = &__vt;
             temp_r30_2914->__vptr = &__vt;
         }
-        temp_r3_2930 = CalcMaxGridOverlap(*((MKCollisionAABB *) &temp_r29_2896->unk8), (Matrix *) &arg_sp10, arg2);
-        arg_sp8 = this;
+        temp_r3_2930 = CalcMaxGridOverlap(*((MKCollisionAABB *) &temp_r29_2896->unk8), &sp10, arg2);
+        sp8 = this;
         temp_r30_2914->Init((MKCollisionModel *) temp_r29_2896, arg0, arg1, arg2, arg3, temp_r3_2930, arg4, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         if ((s32) arg2 & 2) {
             temp_r30_2914->unkC = (s32) this->unk30;

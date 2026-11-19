@@ -354,8 +354,11 @@ void ScriptVideoScreen::Init() {
     this->unk128 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void ImageArc::Draw(const RenderContext &arg0) {
+    RenderContext sp20;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_618;
     f32 temp_f0_649;
     f32 temp_f1_601;
@@ -379,13 +382,14 @@ void ImageArc::Draw(const RenderContext &arg0) {
     s32 temp_r3_603;
     s32 var_r28_702;
     s32 var_r29_679;
+
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (this->unk70 != 0.0f) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk74 == 0.0f) {
             return;
         }
-        arg_sp20.RenderContext(arg0, this->unk18);
+        sp20.RenderContext(arg0, this->unk18);
         temp_f1_601 = this->unk78;
         temp_f4_602 = this->unk7C;
         temp_r3_603 = this->unk18.unk40 & 0x20;
@@ -434,19 +438,19 @@ void ImageArc::Draw(const RenderContext &arg0) {
         temp_f24_687 = this->unk68 - M2C_BITWISE(f32, this->unk60);
         MKMaterial_SetMaterial(this->unk64);
         MKPrimitive(0xC, 1);
-        MKSetMatrix(*((Matrix *) &arg_sp20));
+        MKSetMatrix(*((Matrix *) &sp20));
         MKBegin((var_r29_679 + 1) * 2);
-        MKSetColorV(*((MKVector4 *) &arg_sp60));
+        MKSetColorV(*((MKVector4 *) &sp20.unk40));
         var_r28_702 = 0;
 loop_20:
         if (var_r28_702 <= var_r29_679) {
             temp_f23_717 = (f32) var_r28_702 / (f32) var_r29_679;
-            _table_sincosf((temp_f23_717 * (var_f28_605 - var_f29_604)) + var_f29_604, arg_sp14, arg_sp10);
+            _table_sincosf((temp_f23_717 * (var_f28_605 - var_f29_604)) + var_f29_604, sp14, sp10);
             temp_f23_722 = (temp_f24_687 * temp_f23_717) + M2C_BITWISE(f32, this->unk60);
             MKSetTexCoord1F(temp_f23_722, this->unk6C);
-            MKSetPositionF(arg_sp14 * var_f27_635, arg_sp10 * -var_f2_636, 0.0f);
+            MKSetPositionF(sp14 * var_f27_635, sp10 * -var_f2_636, 0.0f);
             MKSetTexCoord1F(temp_f23_722, M2C_BITWISE(f32, this->unk64));
-            MKSetPositionF(arg_sp14 * var_f26_631, arg_sp10 * temp_f31_667, 0.0f);
+            MKSetPositionF(sp14 * var_f26_631, sp10 * temp_f31_667, 0.0f);
             var_r28_702 += 1;
             goto loop_20;
         }
@@ -773,8 +777,39 @@ void RadialButtonGroup::Init() {
     this->unkFC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp100'
+#if 0 // DRAFT: undefined identifier 'unkspB4'
 void UIPie::Draw(const RenderContext &arg0) {
+    RenderContext sp100;
+    Matrix spC0;
+    f64 spB8;
+    f64 spB0;                                       /* compiler-managed */
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_1659;
     f32 temp_f2_1658;
     f32 temp_f2_1729;
@@ -785,29 +820,30 @@ void UIPie::Draw(const RenderContext &arg0) {
     s32 temp_r3_1579;
     s32 var_r28_1639;
     s32 var_r29_1608;
+
     if (!(this->unk70 < 0.00390625f)) {
         MKMaterial_SetMaterial(this->unk64);
-        arg_sp100.RenderContext(arg0, this->unk18);
-        arg_sp68 = 0.0f;
-        arg_sp60 = 0.0f;
-        arg_sp64 = 0.0f;
-        arg_spB8 = (f64) arg_sp68;
-        arg_spB0 = (f64) arg_sp60;
+        sp100.RenderContext(arg0, this->unk18);
+        sp68 = 0.0f;
+        sp60 = 0.0f;
+        sp64 = 0.0f;
+        spB8 = (f64) sp68;
+        spB0 = (f64) sp60;
         temp_r3_1563 = this->unk18.unk3C;
         if (!(temp_r3_1563 & 3)) {
-            arg_spB0 = 0.5f * this->unk18.unk34;
+            spB0 = 0.5f * this->unk18.unk34;
         } else if (!(temp_r3_1563 & 1)) {
-            arg_spB0 = -0.5f * this->unk18.unk34;
+            spB0 = -0.5f * this->unk18.unk34;
         }
         temp_r3_1579 = this->unk18.unk3C;
         if (!(temp_r3_1579 & 0xC)) {
-            arg_spB4 = 0.5f * this->unk18.unk38;
+            unkspB4 = 0.5f * this->unk18.unk38;
         } else if (!(temp_r3_1579 & 4)) {
-            arg_spB4 = -0.5f * this->unk18.unk38;
+            unkspB4 = -0.5f * this->unk18.unk38;
         }
-        arg_spC0.SetIdentity();
-        arg_spC0.Translate((Matrix *) &arg_spC0, *((MKVector3 *) &arg_spB0));
-        arg_sp100.Multiply((Matrix *) &arg_spC0, (Matrix *) &arg_sp100);
+        spC0.SetIdentity();
+        spC0.Translate(&spC0, *((MKVector3 *) &spB0));
+        sp100.Multiply(&spC0, (Matrix *) &sp100);
         var_r29_1608 = 0;
         temp_f3_1610 = 16.0f * this->unk70;
         temp_r30_1615 = (s32) temp_f3_1610;
@@ -816,50 +852,50 @@ void UIPie::Draw(const RenderContext &arg0) {
         }
         MKPrimitive(0xD, 1);
         MKBegin(temp_r30_1615 + var_r29_1608 + 2);
-        MKSetColorV(*((MKVector4 *) &arg_sp140));
+        MKSetColorV(*((MKVector4 *) &sp100.unk40));
         MKSetTexCoord1F(0.5f, 0.5f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp130));
+        MKSetPositionV(sp100.unk30);
         var_r28_1639 = 0;
 loop_13:
         if (var_r28_1639 <= temp_r30_1615) {
-            _table_sincosf(0.3926991f * (f32) var_r28_1639, arg_sp1C, arg_sp18);
-            temp_f2_1658 = arg_sp1C * -0.5f;
-            temp_f0_1659 = arg_sp18 * -0.5f;
-            arg_sp1C = temp_f2_1658;
-            arg_sp18 = temp_f0_1659;
+            _table_sincosf(0.3926991f * (f32) var_r28_1639, sp1C, sp18);
+            temp_f2_1658 = sp1C * -0.5f;
+            temp_f0_1659 = sp18 * -0.5f;
+            sp1C = temp_f2_1658;
+            sp18 = temp_f0_1659;
             MKSetTexCoord1F(0.5f + temp_f2_1658, 0.5f + temp_f0_1659);
-            arg_sp58 = 0.0f;
-            arg_sp50 = arg_sp1C * this->unk18.unk34;
-            arg_sp54 = arg_sp18 * this->unk18.unk38;
-            arg_sp90 = (f64) arg_sp50;
-            arg_sp98 = (f64) arg_sp58;
-            arg_sp40 = arg_sp130 + (((f32) arg_sp98 * arg_sp120) + (((f32) arg_sp90 * arg_sp100) + (arg_sp94 * arg_sp110)));
-            arg_sp44 = arg_sp134 + (((f32) arg_sp98 * arg_sp124) + (((f32) arg_sp90 * arg_sp104) + (arg_sp94 * arg_sp114)));
-            arg_sp48 = arg_sp138 + (((f32) arg_sp98 * arg_sp128) + (((f32) arg_sp90 * arg_sp108) + (arg_sp94 * arg_sp118)));
-            arg_spA0 = (f64) arg_sp40;
-            arg_spA8 = (f64) arg_sp48;
-            MKSetPositionV(*((MKVector3 *) &arg_spA0));
+            sp58 = 0.0f;
+            sp50 = sp1C * this->unk18.unk34;
+            sp54 = sp18 * this->unk18.unk38;
+            sp90 = (f64) sp50;
+            sp98 = (f64) sp58;
+            sp40 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp98 * sp100.unk20) + (((f32) sp90 * M2C_BITWISE(f32, sp100)) + (unksp94 * sp100.unk10)));
+            sp44 = sp100.unk30.unk4 + (((f32) sp98 * sp100.unk24) + (((f32) sp90 * sp100.unk4) + (unksp94 * sp100.unk14)));
+            sp48 = sp100.unk30.unk8 + (((f32) sp98 * sp100.unk28) + (((f32) sp90 * sp100.unk8) + (unksp94 * sp100.unk18)));
+            spA0 = (f64) sp40;
+            spA8 = (f64) sp48;
+            MKSetPositionV(*((MKVector3 *) &spA0));
             var_r28_1639 += 1;
             goto loop_13;
         }
         if (var_r29_1608 != 0) {
-            _table_sincosf(6.2831855f * this->unk70, arg_sp14, arg_sp10);
-            temp_f2_1729 = arg_sp14 * -0.5f;
-            temp_f3_1731 = arg_sp10 * -0.5f;
-            arg_sp14 = temp_f2_1729;
-            arg_sp10 = temp_f3_1731;
+            _table_sincosf(6.2831855f * this->unk70, sp14, sp10);
+            temp_f2_1729 = sp14 * -0.5f;
+            temp_f3_1731 = sp10 * -0.5f;
+            sp14 = temp_f2_1729;
+            sp10 = temp_f3_1731;
             MKSetTexCoord1F(0.5f + temp_f2_1729, 0.5f + temp_f3_1731);
-            arg_sp30 = arg_sp14 * this->unk18.unk34;
-            arg_sp34 = arg_sp10 * this->unk18.unk38;
-            arg_sp38 = 0.0f;
-            arg_sp70 = (f64) arg_sp30;
-            arg_sp78 = (f64) arg_sp38;
-            arg_sp20 = arg_sp130 + (((f32) arg_sp78 * arg_sp120) + (((f32) arg_sp70 * arg_sp100) + (arg_sp74 * arg_sp110)));
-            arg_sp24 = arg_sp134 + (((f32) arg_sp78 * arg_sp124) + (((f32) arg_sp70 * arg_sp104) + (arg_sp74 * arg_sp114)));
-            arg_sp28 = arg_sp138 + (((f32) arg_sp78 * arg_sp128) + (((f32) arg_sp70 * arg_sp108) + (arg_sp74 * arg_sp118)));
-            arg_sp80 = (f64) arg_sp20;
-            arg_sp88 = (f64) arg_sp28;
-            MKSetPositionV(*((MKVector3 *) &arg_sp80));
+            sp30 = sp14 * this->unk18.unk34;
+            sp34 = sp10 * this->unk18.unk38;
+            sp38 = 0.0f;
+            sp70 = (f64) sp30;
+            sp78 = (f64) sp38;
+            sp20 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp78 * sp100.unk20) + (((f32) sp70 * M2C_BITWISE(f32, sp100)) + (unksp74 * sp100.unk10)));
+            sp24 = sp100.unk30.unk4 + (((f32) sp78 * sp100.unk24) + (((f32) sp70 * sp100.unk4) + (unksp74 * sp100.unk14)));
+            sp28 = sp100.unk30.unk8 + (((f32) sp78 * sp100.unk28) + (((f32) sp70 * sp100.unk8) + (unksp74 * sp100.unk18)));
+            sp80 = (f64) sp20;
+            sp88 = (f64) sp28;
+            MKSetPositionV(*((MKVector3 *) &sp80));
         }
         MKEnd();
         MKEndPrimitive();
@@ -892,6 +928,12 @@ void LocalizedVideoScreen::LoadDone() {
 
 #if 0 // DRAFT: type mismatch
 u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
+    RenderContext sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Attributes *var_r30_1923;
     ScriptProgressBar *temp_r3_1927;
     UIObject *temp_r3_1900;
@@ -905,6 +947,7 @@ u8 MarkerButtonGroup::GetTargetAttributes(Attributes *arg0) {
     s32 temp_r0_1976;
     s32 temp_r3_1959;
     void *temp_r3_1888;
+
     arg0->SetIdentity();
     arg0->unk40 = 0x10;
     temp_r4_1880 = this->unk60;
@@ -943,9 +986,9 @@ block_16:
     M2C_FIELD(arg0, f64 *, 0x28) = (f64) M2C_FIELD(var_r30_1923, f64 *, 0x28);
     arg0->unk34 = M2C_FIELD(temp_r3_1888, f32 *, 0x48) * (var_f31_1898 * var_r30_1923->unk30);
     arg0->unk38 = M2C_FIELD(temp_r3_1888, f32 *, 0x48) * (var_r30_1923->unk38 * var_r30_1923->unk30);
-    arg_sp30.RenderContext();
-    arg_sp30.AddState(*(temp_r3_1888 + 0x18));
-    arg_sp30.AddState(*var_r30_1923);
+    sp30.RenderContext();
+    sp30.AddState(*(temp_r3_1888 + 0x18));
+    sp30.AddState(*var_r30_1923);
     temp_r3_1959 = var_r30_1923->unk3C;
     temp_r0_1960 = temp_r3_1959 & 3;
     if (temp_r0_1960 == 0) {
@@ -963,23 +1006,25 @@ block_16:
     } else {
         var_f6_1980 = -0.5f * var_r30_1923->unk38;
     }
-    arg_sp10 = arg_sp60 + ((0.0f * arg_sp50) + ((var_f7_1964 * arg_sp30) + (var_f6_1980 * arg_sp40)));
-    arg_sp14 = arg_sp64 + ((0.0f * arg_sp54) + ((var_f7_1964 * arg_sp34) + (var_f6_1980 * arg_sp44)));
-    arg_sp18 = arg_sp68 + ((0.0f * arg_sp58) + ((var_f7_1964 * arg_sp38) + (var_f6_1980 * arg_sp48)));
-    M2C_FIELD(arg0, f64 *, 0x10) = (f64) arg_sp10;
-    M2C_FIELD(arg0, f64 *, 0x18) = (f64) arg_sp18;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
+    sp10 = M2C_BITWISE(f32, sp30.unk30) + ((0.0f * sp30.unk20) + ((var_f7_1964 * M2C_BITWISE(f32, sp30)) + (var_f6_1980 * sp30.unk10)));
+    sp14 = sp30.unk30.unk4 + ((0.0f * sp30.unk24) + ((var_f7_1964 * sp30.unk4) + (var_f6_1980 * sp30.unk14)));
+    sp18 = sp30.unk30.unk8 + ((0.0f * sp30.unk28) + ((var_f7_1964 * sp30.unk8) + (var_f6_1980 * sp30.unk18)));
+    M2C_FIELD(arg0, f64 *, 0x10) = (f64) sp10;
+    M2C_FIELD(arg0, f64 *, 0x18) = (f64) sp18;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
     arg0->unk40 = 0x16;
     return temp_r3_1900 != NULL;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unk80'
 void MarkerButtonGroup::Draw(const RenderContext &arg0) {
-    arg_sp10.RenderContext(arg0, this->unk18);
+    RenderContext sp10;
+
+    sp10.RenderContext(arg0, this->unk18);
     if ((u8) this->unkF8 != 0) {
-        M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *, M2C_UNK *), 0x1C)(&this->unk80, &arg_sp10);
+        M2C_FIELD(M2C_FIELD(this, void **, 0x80), M2C_UNK (**)(M2C_UNK *, RenderContext *), 0x1C)(&this->unk80, &sp10);
     }
     UIContainer::Draw(arg0);
 }

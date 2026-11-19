@@ -104,8 +104,32 @@ s32 DreadWing::PickUpDropBox(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spFC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DreadWing::UpdateDropBox() {
+    Matrix sp100;
+    M2C_UNK spFC;
+    MKVector3 spE8;
+    MKVector3 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;                                       /* compiler-managed */
+    f64 spA8;                                       /* compiler-managed */
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    MKVector3 sp68;
+    f64 sp60;
+    f64 sp58;
+    M2C_UNK sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp10;
     f32 var_f7_335;
     f32 var_f8_319;
     f64 temp_f1_348;
@@ -114,31 +138,32 @@ void DreadWing::UpdateDropBox() {
     s32 temp_r3_377;
     s32 var_r0_387;
     void *temp_r4_315;
+
     if ((u32) this->unkAFC != 0U) {
-        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "R_Foot"), (MKVector3 *) &arg_spE8);
-        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Foot"), (MKVector3 *) &arg_spD8);
+        M2C_STRUCT_COPY((s32) &spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "R_Foot"), &spE8);
+        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Foot"), &spD8);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp88 = arg_sp38;
-        arg_sp40 = arg_spF0 - arg_spE0;
-        arg_spC8 = arg_sp38;
-        arg_sp90 = (f64) arg_sp40;
-        arg_spD0 = (f64) arg_sp40;
-        arg_sp68.operator/(2.0f);
+        sp88 = sp38;
+        sp40 = spE8.unk8 - spD8.unk8;
+        spC8 = sp38;
+        sp90 = (f64) sp40;
+        spD0 = (f64) sp40;
+        sp68.operator/(2.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r4_315 = this->unk8;
         var_f8_319 = 0.0f;
-        arg_spA8 = M2C_FIELD(temp_r4_315, f64 *, 0x20);
-        arg_spB0 = M2C_FIELD(temp_r4_315, f64 *, 0x28);
-        arg_sp30 = arg_spE0 + arg_sp70;
-        var_f7_335 = ((f32) arg_spB0 * (f32) arg_spB0) + (((f32) arg_spA8 * (f32) arg_spA8) + (0.0f * 0.0f));
-        arg_sp78 = arg_sp28;
-        arg_spB8 = arg_sp28;
-        arg_sp80 = (f64) arg_sp30;
-        arg_spC0 = (f64) arg_sp30;
-        arg_sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-        arg_spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-        arg_spAC = 0.0f;
+        spA8 = M2C_FIELD(temp_r4_315, f64 *, 0x20);
+        spB0 = M2C_FIELD(temp_r4_315, f64 *, 0x28);
+        sp30 = spD8.unk8 + sp68.unk8;
+        var_f7_335 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (0.0f * 0.0f));
+        sp78 = sp28;
+        spB8 = sp28;
+        sp80 = (f64) sp30;
+        spC0 = (f64) sp30;
+        sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+        spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
+        unkspAC = 0.0f;
         if (var_f7_335 > 0.000001f) {
             if (var_f7_335 > 0.0f) {
                 temp_f1_348 = __frsqrte(var_f7_335);
@@ -148,18 +173,18 @@ void DreadWing::UpdateDropBox() {
             } else if (var_f7_335 < M2C_BITWISE(f32, 0.0)) {
                 var_f7_335 = __float_nan;
             } else {
-                arg_sp10 = var_f7_335;
-                temp_r3_377 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f7_335;
+                temp_r3_377 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_377) {              /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_387 = 1;
                     } else {
                         var_r0_387 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_387 = 5;
                     } else {
                         var_r0_387 = 3;
@@ -175,20 +200,20 @@ void DreadWing::UpdateDropBox() {
             }
             var_f8_319 = 1.0f / var_f7_335;
         }
-        arg_spA8 = (f32) arg_spA8 * var_f8_319;
-        arg_spAC *= var_f8_319;
-        arg_spB0 = (f32) arg_spB0 * var_f8_319;
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp100, *((MKVector3 *) &arg_spA8), (MKVector3 *) &arg_sp98);
+        spA8 = (f32) spA8 * var_f8_319;
+        unkspAC *= var_f8_319;
+        spB0 = (f32) spB0 * var_f8_319;
+        KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &spA8), (MKVector3 *) &sp98);
         MKVector(0.0f, -860.00006f, 0.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp58 = arg_sp18;
-        arg_sp20 = (f32) arg_spC0 + arg_sp50;
-        arg_sp60 = (f64) arg_sp20;
-        arg_sp130 = (f32) arg_sp58;
-        arg_sp134 = arg_sp5C;
-        arg_sp138 = (f32) arg_sp60;
-        arg_sp13C = 1.0f;
-        MKModel_SetWorldMatrix(M2C_FIELD(this->unkAFC, MKModel **, 4), *((Matrix *) &arg_sp100));
+        sp58 = sp18;
+        sp20 = (f32) spC0 + sp50;
+        sp60 = (f64) sp20;
+        sp100.unk30 = (f32) sp58;
+        sp100.unk34 = unksp5C;
+        sp100.unk38 = (f32) sp60;
+        sp100.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(M2C_FIELD(this->unkAFC, MKModel **, 4), sp100);
     }
 }
 #endif

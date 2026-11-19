@@ -1865,38 +1865,63 @@ void KDSpline::Init(int arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp40'
+#if 0 // DRAFT: expression syntax error
 void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, Matrix *arg5) {
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_3307;
-    arg_sp40 = arg2.unk0;
-    arg_sp44 = arg2.unk4;
-    arg_sp48 = arg2.unk8;
-    arg_sp4C = 0.0f;
-    arg_sp50 = arg1.unk0;
-    arg_sp54 = arg1.unk4;
-    arg_sp58 = arg1.unk8;
-    arg_sp5C = 0.0f;
-    arg_sp60 = arg3.unk0;
-    arg_sp64 = arg3.unk4;
-    arg_sp68 = arg3.unk8;
-    arg_sp6C = 0.0f;
-    arg_sp70 = arg5->unk0;
-    arg_sp74 = arg5->unk4;
-    arg_sp78 = arg5->unk8;
-    arg_sp7C = 1.0f;
-    arg_sp40.Multiply4x4(M2C_ERROR(/* Read from unset register $r8 */), (Matrix *) &arg_sp40);
+
+    sp40 = arg2.unk0;
+    sp44 = arg2.unk4;
+    sp48 = arg2.unk8;
+    sp4C = 0.0f;
+    sp50 = arg1.unk0;
+    sp54 = arg1.unk4;
+    sp58 = arg1.unk8;
+    sp5C = 0.0f;
+    sp60 = arg3.unk0;
+    sp64 = arg3.unk4;
+    sp68 = arg3.unk8;
+    sp6C = 0.0f;
+    sp70 = arg5->unk0;
+    sp74 = arg5->unk4;
+    sp78 = arg5->unk8;
+    sp7C = 1.0f;
+    sp40.Multiply4x4(M2C_ERROR(/* Read from unset register $r8 */), (Matrix *) &sp40);
     temp_f3_3307 = arg4 * arg4;
-    arg_sp28 = arg4;
-    arg_sp24 = temp_f3_3307;
-    arg_sp38 = (f64) arg_sp28;
-    arg_sp20 = arg4 * temp_f3_3307;
-    arg_sp30 = (f64) arg_sp20;
-    arg_sp3C = 1.0f;
-    arg_sp10 = arg_sp70 + (((f32) arg_sp38 * arg_sp60) + (((f32) arg_sp30 * arg_sp40) + (arg_sp34 * arg_sp50)));
-    arg_sp14 = arg_sp74 + (((f32) arg_sp38 * arg_sp64) + (((f32) arg_sp30 * arg_sp44) + (arg_sp34 * arg_sp54)));
-    arg_sp18 = arg_sp78 + (((f32) arg_sp38 * arg_sp68) + (((f32) arg_sp30 * arg_sp48) + (arg_sp34 * arg_sp58)));
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) arg_sp18;
+    sp28 = arg4;
+    sp24 = temp_f3_3307;
+    sp38 = (f64) sp28;
+    sp20 = arg4 * temp_f3_3307;
+    sp30 = (f64) sp20;
+    unksp3C = 1.0f;
+    sp10 = sp70 + (((f32) sp38 * sp60) + (((f32) sp30 * sp40) + (unksp34 * sp50)));
+    sp14 = sp74 + (((f32) sp38 * sp64) + (((f32) sp30 * sp44) + (unksp34 * sp54)));
+    sp18 = sp78 + (((f32) sp38 * sp68) + (((f32) sp30 * sp48) + (unksp34 * sp58)));
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
 }
 #endif
 

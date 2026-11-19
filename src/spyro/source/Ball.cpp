@@ -482,6 +482,30 @@ void Ball::SmashHit(MKProp *arg0) {
 
 #if 0 // DRAFT: ')' expected
 void Ball::Smash() {
+    Matrix spC0;
+    M2C_UNK spBC;
+    f32 spB8;
+    M2C_UNK spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    M2C_UNK sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
     MKVector3 *temp_r29_982;
     f32 temp_f1_893;
     f32 temp_f21_888;
@@ -491,6 +515,7 @@ void Ball::Smash() {
     void *temp_r27_928;
     void *temp_r3_923;
     void *temp_r4_926;
+
     temp_r0_822 = M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x124);
     if (temp_r0_822 != 3) {
         if (temp_r0_822 < 3) {
@@ -502,37 +527,37 @@ void Ball::Smash() {
         }
     } else {
 block_4:
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp48 = 0.0f;
-        arg_sp40 = 0.0f;
-        arg_sp44 = 1.0f;
-        arg_spA8 = (f64) arg_sp48;
-        arg_spA0 = (f64) arg_sp40;
+        M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp48 = 0.0f;
+        sp40 = 0.0f;
+        sp44 = 1.0f;
+        spA8 = (f64) sp48;
+        spA0 = (f64) sp40;
         if ((u8) this->unk1A0 != 0) {
-            arg_spA0 = this->unk160;
-            arg_spA8 = this->unk168;
+            spA0 = this->unk160;
+            spA8 = this->unk168;
         }
-        arg_sp30 = 0.0f;
-        arg_sp34 = 0.0f;
-        arg_sp38 = 1.0f;
-        arg_sp90 = (f64) arg_sp30;
-        arg_sp98 = (f64) arg_sp38;
-        KDMath_BuildMatrixFromUp((Matrix *) &arg_spC0, *((MKVector3 *) &arg_spA0), *((MKVector3 *) &arg_sp90));
+        sp30 = 0.0f;
+        sp34 = 0.0f;
+        sp38 = 1.0f;
+        sp90 = (f64) sp30;
+        sp98 = (f64) sp38;
+        KDMath_BuildMatrixFromUp(&spC0, *((MKVector3 *) &spA0), *((MKVector3 *) &sp90));
         var_r28_877 = 0;
         do {
             temp_f21_888 = 6.2831855f * ((f32) var_r28_877 / 19.0f);
             temp_f22_891 = -_table_sinf(1.5707964f + temp_f21_888);
             temp_f1_893 = _table_sinf(temp_f21_888);
-            arg_sp28 = temp_f22_891;
-            arg_sp20 = temp_f1_893;
-            arg_sp24 = 0.0f;
-            arg_sp88 = (f64) arg_sp28;
-            arg_sp80 = (f64) arg_sp20;
+            sp28 = temp_f22_891;
+            sp20 = temp_f1_893;
+            sp24 = 0.0f;
+            sp88 = (f64) sp28;
+            sp80 = (f64) sp20;
             M2C_ERROR(/* unknown instruction: ps_madds0 $f26, $f25, $f23, $f26 */);
             M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f23, $f1 */);
             M2C_ERROR(/* unknown instruction: ps_madds1 $f26, $f24, $f3, $f26 */);
             M2C_ERROR(/* unknown instruction: ps_madds1 $f1, $f0, $f3, $f1 */);
-            arg_spB8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f26, $f25, $f3, $f26 */);
+            spB8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f26, $f25, $f3, $f26 */);
             temp_r3_923 = M2C_FIELD(M2C_FIELD(gb.unk2A0, void **, 0x44), void *(**)(void *, M2C_UNK, M2C_UNK, M2C_UNK), 0x3C)(gb.unk2A0, M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f3, $f1 */), M2C_ERROR(/* psq_l unimplemented */), M2C_ERROR(/* psq_l unimplemented */));
             if (temp_r3_923 != NULL) {
                 temp_r4_926 = this->unk8;
@@ -542,14 +567,14 @@ block_4:
                 M2C_FIELD(temp_r3_923, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_923, f32 *, 0x28) = 0.0f;
                 MKVector(0.0f, 300.0f, 0.0f);
-                arg_sp60.operator*(1000.0f);
+                sp60.operator*(1000.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(temp_r27_928, f64 *, 0) = arg_sp10;
-                arg_sp18 = arg_sp68 + arg_sp58;
-                arg_sp70 = arg_sp10;
-                M2C_FIELD(temp_r27_928, f64 *, 8) = (f64) arg_sp18;
-                arg_sp78 = (f64) arg_sp18;
+                M2C_FIELD(temp_r27_928, f64 *, 0) = sp10;
+                sp18 = sp60.unk8 + sp58;
+                sp70 = sp10;
+                M2C_FIELD(temp_r27_928, f64 *, 8) = (f64) sp18;
+                sp78 = (f64) sp18;
                 M2C_FIELD(temp_r27_928, f32 *, 0x18) = (f32) (M2C_BITWISE(f32, this->unk270) / 100.0f);
                 M2C_FIELD(temp_r27_928, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r27_928, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
@@ -1173,11 +1198,48 @@ void Ball::UpdateShadow() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spD8'
+#if 0 // DRAFT: undefined identifier 'unkspDC'
 void Ball::UpdateOrientation() {
+    Matrix sp130;
+    Matrix spF0;
+    M2C_UNK spEC;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    MKVector3 spA8;
+    f64 spA0;
+    f64 sp98;
+    MKVector3 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_2245;
     f32 temp_f5_2252;
+    f32 temp_f6_2385;
+    f32 temp_f6_2412;
     f32 temp_f7_2247;
+    f32 temp_f9_2419;
     f32 var_f1_2207;
     f32 var_f31_2215;
     f32 var_f3_2339;
@@ -1193,10 +1255,11 @@ void Ball::UpdateOrientation() {
     s32 temp_r3_2307;
     s32 var_r0_2177;
     s32 var_r0_2317;
-    arg_spD8 = this->unkF0;
-    arg_spE0 = M2C_FIELD(this, f64 *, 0xF8);
-    arg_spDC = 0.0f;
-    var_f4_2135 = ((f32) arg_spE0 * (f32) arg_spE0) + (((f32) arg_spD8 * (f32) arg_spD8) + (0.0f * 0.0f));
+
+    spD8 = this->unkF0;
+    spE0 = M2C_FIELD(this, f64 *, 0xF8);
+    unkspDC = 0.0f;
+    var_f4_2135 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (0.0f * 0.0f));
     if (var_f4_2135 > 0.0f) {
         temp_f1_2138 = __frsqrte(var_f4_2135);
         temp_f1_2144 = 0.5 * temp_f1_2138 * -(((f64) var_f4_2135 * (temp_f1_2138 * temp_f1_2138)) - 3.0);
@@ -1205,18 +1268,18 @@ void Ball::UpdateOrientation() {
     } else if (var_f4_2135 < M2C_BITWISE(f32, 0.0)) {
         var_f4_2135 = __float_nan;
     } else {
-        arg_sp14 = var_f4_2135;
-        temp_r3_2167 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+        sp14 = var_f4_2135;
+        temp_r3_2167 = M2C_BITWISE(s32, sp14) & 0x7F800000;
         switch (temp_r3_2167) {                     /* switch 1; irregular */
         case 0x7F800000:                            /* switch 1 */
-            if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                 var_r0_2177 = 1;
             } else {
                 var_r0_2177 = 2;
             }
             break;
         case 0x0:                                   /* switch 1 */
-            if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                 var_r0_2177 = 5;
             } else {
                 var_r0_2177 = 3;
@@ -1240,17 +1303,17 @@ void Ball::UpdateOrientation() {
     if (var_f1_2207 < 0.000001f) {
         var_f31_2215 = 0.0f;
     }
-    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &arg_spEC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spF0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spEC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f3_2245 = this->unkF8;
     temp_f7_2247 = M2C_FIELD(this, f32 *, 0xF4);
     temp_f5_2252 = (f32) M2C_FIELD(this, f64 *, 0xF0);
-    arg_sp58 = (MKVector3::up.unk4 * temp_f3_2245) - (MKVector3::up.unk8 * temp_f7_2247);
-    arg_sp5C = (MKVector3::up.unk8 * temp_f5_2252) - (MKVector3::up.unk0 * temp_f3_2245);
-    arg_sp60 = (MKVector3::up.unk0 * temp_f7_2247) - (MKVector3::up.unk4 * temp_f5_2252);
-    arg_spB8 = (f64) arg_sp58;
-    arg_spC0 = (f64) arg_sp60;
-    var_f4_2272 = ((f32) arg_spC0 * (f32) arg_spC0) + (((f32) arg_spB8 * (f32) arg_spB8) + (arg_spBC * arg_spBC));
+    sp58 = (MKVector3::up.unk4 * temp_f3_2245) - (MKVector3::up.unk8 * temp_f7_2247);
+    sp5C = (MKVector3::up.unk8 * temp_f5_2252) - (MKVector3::up.unk0 * temp_f3_2245);
+    sp60 = (MKVector3::up.unk0 * temp_f7_2247) - (MKVector3::up.unk4 * temp_f5_2252);
+    spB8 = (f64) sp58;
+    spC0 = (f64) sp60;
+    var_f4_2272 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (unkspBC * unkspBC));
     if (var_f4_2272 > 1e-12f) {
         if (var_f4_2272 > 0.0f) {
             temp_f1_2278 = __frsqrte(var_f4_2272);
@@ -1260,18 +1323,18 @@ void Ball::UpdateOrientation() {
         } else if (var_f4_2272 < M2C_BITWISE(f32, 0.0)) {
             var_f4_2272 = __float_nan;
         } else {
-            arg_sp10 = var_f4_2272;
-            temp_r3_2307 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_2272;
+            temp_r3_2307 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_2307) {                 /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2317 = 1;
                 } else {
                     var_r0_2317 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2317 = 5;
                 } else {
                     var_r0_2317 = 3;
@@ -1289,44 +1352,47 @@ void Ball::UpdateOrientation() {
     } else {
         var_f3_2339 = 0.0f;
     }
-    arg_sp4C = arg_spBC * var_f3_2339;
-    arg_sp48 = (f32) arg_spB8 * var_f3_2339;
-    arg_sp50 = (f32) arg_spC0 * var_f3_2339;
-    arg_spC8 = (f64) arg_sp48;
-    arg_spD0 = (f64) arg_sp50;
-    arg_spF0.SetRotateAroundAxis(*((MKVector3 *) &arg_spC8), var_f31_2215);
-    arg_sp130.Multiply3x3((Matrix *) &arg_sp130, (Matrix *) &arg_spF0);
-    arg_sp40 = (arg_sp140 * arg_sp154) - (arg_sp144 * arg_sp150);
-    arg_sp3C = (arg_sp148 * arg_sp150) - (arg_sp140 * arg_sp158);
-    arg_sp38 = (arg_sp144 * arg_sp158) - (arg_sp148 * arg_sp154);
-    arg_spA0 = (f64) arg_sp40;
-    arg_sp98 = (f64) arg_sp38;
-    Normalise(*((MKVector3 *) &arg_spA8));
-    arg_sp130 = arg_spA8;
-    arg_sp134 = arg_spAC;
-    arg_sp30 = (arg_sp150 * arg_spAC) - (arg_sp154 * arg_spA8);
-    arg_sp28 = (arg_sp154 * arg_spB0) - (arg_sp158 * arg_spAC);
-    arg_sp2C = (arg_sp158 * arg_spA8) - (arg_sp150 * arg_spB0);
-    arg_sp138 = arg_spB0;
-    arg_sp13C = 0.0f;
-    arg_sp78 = (f64) arg_sp28;
-    arg_sp80 = (f64) arg_sp30;
-    Normalise(*((MKVector3 *) &arg_sp88));
-    arg_sp140 = arg_sp88;
-    arg_sp144 = arg_sp8C;
-    arg_sp20 = (arg_sp130 * arg_sp8C) - (arg_sp134 * arg_sp88);
-    arg_sp18 = (arg_sp134 * arg_sp90) - (arg_sp138 * arg_sp8C);
-    arg_sp1C = (arg_sp138 * arg_sp88) - (arg_sp130 * arg_sp90);
-    arg_sp70 = (f64) arg_sp20;
-    arg_sp68 = (f64) arg_sp18;
-    arg_sp148 = arg_sp90;
-    arg_sp14C = 0.0f;
-    arg_sp150 = (f32) arg_sp68;
-    arg_sp154 = arg_sp6C;
-    arg_sp158 = (f32) arg_sp70;
-    arg_sp15C = 0.0f;
-    arg_sp130.Scale3x3((Matrix *) &arg_sp130, this->unk27C);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp130));
+    sp4C = unkspBC * var_f3_2339;
+    sp48 = (f32) spB8 * var_f3_2339;
+    sp50 = (f32) spC0 * var_f3_2339;
+    spC8 = (f64) sp48;
+    spD0 = (f64) sp50;
+    spF0.SetRotateAroundAxis(*((MKVector3 *) &spC8), var_f31_2215);
+    sp130.Multiply3x3(&sp130, &spF0);
+    sp40 = (sp130.unk10 * sp130.unk24) - (sp130.unk14 * sp130.unk20);
+    sp3C = (sp130.unk18 * sp130.unk20) - (sp130.unk10 * sp130.unk28);
+    sp38 = (sp130.unk14 * sp130.unk28) - (sp130.unk18 * sp130.unk24);
+    spA0 = (f64) sp40;
+    sp98 = (f64) sp38;
+    Normalise(spA8);
+    temp_f6_2385 = M2C_BITWISE(f32, spA8);
+    sp130 = temp_f6_2385;
+    sp130.unk4 = spA8.unk4;
+    sp30 = (sp130.unk20 * spA8.unk4) - (sp130.unk24 * temp_f6_2385);
+    sp28 = (sp130.unk24 * spA8.unk8) - (sp130.unk28 * spA8.unk4);
+    sp2C = (sp130.unk28 * temp_f6_2385) - (sp130.unk20 * spA8.unk8);
+    sp130.unk8 = spA8.unk8;
+    sp130.unkC = 0.0f;
+    sp78 = (f64) sp28;
+    sp80 = (f64) sp30;
+    Normalise(sp88);
+    temp_f6_2412 = M2C_BITWISE(f32, sp88);
+    temp_f9_2419 = M2C_BITWISE(f32, sp130);
+    sp130.unk10 = temp_f6_2412;
+    sp130.unk14 = sp88.unk4;
+    sp20 = (temp_f9_2419 * sp88.unk4) - (sp130.unk4 * temp_f6_2412);
+    sp18 = (sp130.unk4 * sp88.unk8) - (sp130.unk8 * sp88.unk4);
+    sp1C = (sp130.unk8 * temp_f6_2412) - (temp_f9_2419 * sp88.unk8);
+    sp70 = (f64) sp20;
+    sp68 = (f64) sp18;
+    sp130.unk18 = sp88.unk8;
+    sp130.unk1C = 0.0f;
+    sp130.unk20 = (f32) sp68;
+    sp130.unk24 = unksp6C;
+    sp130.unk28 = (f32) sp70;
+    sp130.unk2C = 0.0f;
+    sp130.Scale3x3(&sp130, this->unk27C);
+    MKModel_SetWorldMatrix(this->unk4, sp130);
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &this->unkE0));
 }
 #endif

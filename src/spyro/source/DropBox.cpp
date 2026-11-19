@@ -47,8 +47,47 @@ void DropBox::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp58'
+#if 0 // DRAFT: illegal type
 void DropBox::Drop() {
+    MKCollisionResult sp170;
+    Matrix sp130;
+    M2C_UNK sp12C;
+    f32 sp120;
+    f64 sp118;
+    f64 sp110;
+    s32 sp10C;
+    s32 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f64 sp40;
+    f64 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
     f32 temp_f4_135;
     f32 var_f0_329;
     f32 var_f1_358;
@@ -62,56 +101,57 @@ void DropBox::Drop() {
     void *temp_r3_347;
     void *var_r0_188;
     void *var_r3_311;
+
     this->unk1B8 = 1e-45f;
     SetAnim(0);
-    arg_sp58 = 0.0f;
-    arg_sp5C = -8000.0f;
-    arg_sp60 = 0.0f;
-    arg_spC8 = (f64) arg_sp58;
-    arg_spD0 = (f64) arg_sp60;
+    sp58 = 0.0f;
+    sp5C = -8000.0f;
+    sp60 = 0.0f;
+    spC8 = (f64) sp58;
+    spD0 = (f64) sp60;
     M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    arg_sp80 = 0.0f;
+    sp80 = 0.0f;
     temp_f4_135 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
-    arg_sp78 = 0.0f;
-    arg_sp7C = -100.0f;
-    arg_sp50 = temp_f4_135 + (f32) arg_spD0;
-    arg_spE8 = (f64) arg_sp78;
-    arg_spD8 = arg_sp48;
-    arg_spE0 = (f64) arg_sp50;
-    arg_spF0 = (f64) arg_sp80;
+    sp78 = 0.0f;
+    sp7C = -100.0f;
+    sp50 = temp_f4_135 + (f32) spD0;
+    spE8 = (f64) sp78;
+    spD8 = sp48;
+    spE0 = (f64) sp50;
+    spF0 = (f64) sp80;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    arg_spF8 = arg_sp68;
-    arg_sp70 = temp_f4_135 + (f32) arg_spF0;
-    arg_sp100 = (f64) arg_sp70;
-    if (MKCollision_RayCollide(*((MKVector3 *) &arg_spF8), *((MKVector3 *) &arg_spD8), (MKCollisionResult *) &arg_sp170, (MKCollisionMode) 7, 0x0C000000) != 0) {
-        this->unk1AC = arg_sp174;
-        arg_sp30 = 0.0f;
-        arg_sp28 = 0.0f;
-        arg_sp2C = -3000.0f;
+    spF8 = sp68;
+    sp70 = temp_f4_135 + (f32) spF0;
+    sp100 = (f64) sp70;
+    if (MKCollision_RayCollide(*((MKVector3 *) &spF8), *((MKVector3 *) &spD8), &sp170, (MKCollisionMode) 7, 0x0C000000) != 0) {
+        this->unk1AC = sp170.unk4;
+        sp30 = 0.0f;
+        sp28 = 0.0f;
+        sp2C = -3000.0f;
         this->unk1B8 = 1e-45f;
-        M2C_FIELD(this, f64 *, 0x1A8) = (f64) arg_sp28;
-        M2C_FIELD(this, f64 *, 0x1B0) = (f64) arg_sp30;
-        arg_spB8 = (f64) arg_sp28;
-        arg_spC0 = (f64) arg_sp30;
-        if ((arg_sp1C0 != 0) && (arg_sp1B8 != NULL) && (var_r0_188 = M2C_FIELD(arg_sp1B8, void **, 8), ((var_r0_188 == NULL) == 0))) {
+        M2C_FIELD(this, f64 *, 0x1A8) = (f64) sp28;
+        M2C_FIELD(this, f64 *, 0x1B0) = (f64) sp30;
+        spB8 = (f64) sp28;
+        spC0 = (f64) sp30;
+        if ((sp170.unk50 != 0) && (sp170.unk48 != NULL) && (var_r0_188 = M2C_FIELD(sp170.unk48, void **, 8), ((var_r0_188 == NULL) == 0))) {
 
         } else {
             var_r0_188 = NULL;
         }
         if (var_r0_188 != NULL) {
-            arg_sp10C = 0;
+            sp10C = 0;
             temp_r3_200 = this->unk8;
-            arg_spA8 = M2C_FIELD(temp_r3_200, f64 *, 0x30);
-            arg_sp98 = M2C_FIELD(this, f64 *, 0x1A8);
-            arg_spA0 = M2C_FIELD(this, f64 *, 0x1B0);
-            arg_spB0 = M2C_FIELD(temp_r3_200, f64 *, 0x38);
-            arg_sp108 = 0x91;
+            spA8 = M2C_FIELD(temp_r3_200, f64 *, 0x30);
+            sp98 = M2C_FIELD(this, f64 *, 0x1A8);
+            spA0 = M2C_FIELD(this, f64 *, 0x1B0);
+            spB0 = M2C_FIELD(temp_r3_200, f64 *, 0x38);
+            sp108 = 0x91;
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp38 = arg_sp18;
-            arg_sp20 = (f32) arg_spB0 - arg_sp178;
-            arg_sp40 = (f64) arg_sp20;
-            var_f4_237 = (((f32) arg_sp40 * (f32) arg_sp40) + (((f32) arg_sp38 * (f32) arg_sp38) + (arg_sp3C * arg_sp3C))) / (((f32) arg_spA0 * (f32) arg_spA0) + (((f32) arg_sp98 * (f32) arg_sp98) + (arg_sp9C * arg_sp9C)));
+            sp38 = sp18;
+            sp20 = (f32) spB0 - sp170.unk8;
+            sp40 = (f64) sp20;
+            var_f4_237 = (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) / (((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C)));
             if (var_f4_237 > 0.0f) {
                 temp_f1_240 = __frsqrte(var_f4_237);
                 temp_f1_246 = 0.5 * temp_f1_240 * -(((f64) var_f4_237 * (temp_f1_240 * temp_f1_240)) - 3.0);
@@ -120,18 +160,18 @@ void DropBox::Drop() {
             } else if (var_f4_237 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_237 = __float_nan;
             } else {
-                arg_sp10 = var_f4_237;
-                temp_r3_269 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_237;
+                temp_r3_269 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_269) {              /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_279 = 1;
                     } else {
                         var_r0_279 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_279 = 5;
                     } else {
                         var_r0_279 = 3;
@@ -145,15 +185,15 @@ void DropBox::Drop() {
                     var_f4_237 = __float_nan;
                 }
             }
-            arg_sp120 = var_f4_237;
-            arg_sp110 = arg_sp170;
-            arg_sp118 = (f64) arg_sp178;
-            if ((arg_sp1C0 != 0) && (arg_sp1B8 != NULL) && (var_r3_311 = M2C_FIELD(arg_sp1B8, void **, 8), ((var_r3_311 == NULL) == 0))) {
+            sp120 = var_f4_237;
+            sp110 = M2C_BITWISE(f64, sp170);
+            sp118 = (f64) sp170.unk8;
+            if ((sp170.unk50 != 0) && (sp170.unk48 != NULL) && (var_r3_311 = M2C_FIELD(sp170.unk48, void **, 8), ((var_r3_311 == NULL) == 0))) {
 
             } else {
                 var_r3_311 = NULL;
             }
-            M2C_FIELD(M2C_FIELD(var_r3_311, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp108);
+            M2C_FIELD(M2C_FIELD(var_r3_311, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp108);
         }
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x1C0) != 0) {
@@ -162,11 +202,11 @@ void DropBox::Drop() {
         var_f0_329 = this->unk204;
     }
     this->unk1A8 = var_f0_329;
-    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_r3_347 = this->unk8;
-    arg_sp88 = M2C_FIELD(temp_r3_347, f64 *, 0x30);
-    arg_sp90 = M2C_FIELD(temp_r3_347, f64 *, 0x38);
-    var_f1_358 = -((0.00022222222f * (arg_sp8C - this->unk1AC)) - 1.0f);
+    sp88 = M2C_FIELD(temp_r3_347, f64 *, 0x30);
+    sp90 = M2C_FIELD(temp_r3_347, f64 *, 0x38);
+    var_f1_358 = -((0.00022222222f * (unksp8C - this->unk1AC)) - 1.0f);
     if (var_f1_358 < 1.0f) {
 
     } else {
@@ -177,9 +217,9 @@ void DropBox::Drop() {
     } else {
         var_f1_358 = 0.1f;
     }
-    arg_sp130.Scale3x3((Matrix *) &arg_sp130, var_f1_358);
-    MKModel_SetWorldMatrix(this->unk1C4, *((Matrix *) &arg_sp130));
-    MKModel_SetPosition(this->unk1C4, *((MKVector3 *) &arg_sp170));
+    sp130.Scale3x3(&sp130, var_f1_358);
+    MKModel_SetWorldMatrix(this->unk1C4, sp130);
+    MKModel_SetPosition(this->unk1C4, *((MKVector3 *) &sp170));
     this->unkD0.Show(1U);
 }
 #endif
@@ -331,6 +371,11 @@ void DropBox::Message(MKMessage *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'RemoveAllSpawnPoints'
 void DropBox::SpawnEnemies() {
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    MKVector3 sp10;
     MKModel *temp_r4_724;
     f32 temp_r0_747;
     f32 temp_r0_777;
@@ -340,20 +385,21 @@ void DropBox::SpawnEnemies() {
     s32 var_r29_670;
     s32 var_r31_668;
     void *temp_r27_683;
+
     this->unk1C4->RemoveAllSpawnPoints(0U);
     var_r31_668 = 0;
     this->unk1C4->unk10.unk8 = M2C_BITWISE(f32, this->unk18);
     var_r29_670 = 0;
 loop_2:
     if ((var_r31_668 < 4) && (var_r31_668 < M2C_BITWISE(s32, this->unk200.unk0))) {
-        M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r27_683 = this + var_r29_670;
-        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r27_683, s32 *, 0x1E0), (MKVector3 *) &arg_sp10);
-        arg_sp50 = arg_sp10;
-        arg_sp54 = arg_sp14;
-        arg_sp58 = arg_sp18;
-        arg_sp5C = 1.0f;
-        M2C_STRUCT_COPY(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC) + 0xC + 4, (s32) &arg_sp1C + 4, 0x40);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r27_683, s32 *, 0x1E0), &sp10);
+        sp50 = M2C_BITWISE(f32, sp10);
+        sp54 = sp10.unk4;
+        sp58 = sp10.unk8;
+        sp5C = 1.0f;
+        M2C_STRUCT_COPY(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC) + 0xC + 4, (s32) &sp10.unkC + 4, 0x40);
         M2C_FIELD(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC)->unk4, s32 *, 4) = 0x4000;
         this->unk1C4->AddSpawnPoint(M2C_FIELD(temp_r27_683, SpawnPointObject **, 0x1DC));
         var_r31_668 += 1;
@@ -429,6 +475,75 @@ loop_2:
 
 #if 0 // DRAFT: undefined identifier 'GetNumberActive'
 void DropBox::Update() {
+    s8 sp271;
+    s8 sp270;
+    s32 sp26C;
+    f32 sp268;
+    s32 sp264;
+    s8 sp262;
+    s8 sp261;
+    s8 sp260;
+    f64 sp258;                                      /* compiler-managed */
+    f64 sp250;                                      /* compiler-managed */
+    DropBox *sp24C;
+    s32 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    s32 sp224;
+    s32 sp220;
+    Matrix sp1E0;
+    Matrix sp1A0;
+    M2C_UNK sp19C;
+    s8 sp198;
+    f64 sp190;
+    f64 sp188;
+    s32 sp184;
+    s32 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    M2C_UNK sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    M2C_UNK spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f64 sp50;
+    f32 sp48;
+    f32 sp38;
+    s32 sp28;
+    s32 sp24;
+    s32 sp20;
+    s32 sp1C;
+    s32 sp18;
+    s32 sp14;
+    f32 sp10;
+    s32 sp8;
     f32 temp_f0_1019;
     f32 temp_f29_927;
     f32 temp_r0_913;
@@ -449,6 +564,7 @@ void DropBox::Update() {
     void *temp_r3_995;
     void *temp_r4_1215;
     void *temp_r5_1190;
+
     if (((u8) this->unk1FD == 0) && ((u8) this->unk1FC != 0)) {
         this->unk1C4->GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
@@ -464,72 +580,72 @@ void DropBox::Update() {
         MKVector(0.0f, -3000.0f, 0.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        arg_sp140 = arg_sp40;
-        arg_sp48 = arg_sp138 * temp_f29_927;
-        arg_sp148 = (f64) arg_sp48;
+        sp140 = sp40;
+        sp48 = sp138 * temp_f29_927;
+        sp148 = (f64) sp48;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_FIELD(this, f32 *, 0x1B0) = (f32) (M2C_FIELD(this, f32 *, 0x1B0) + (f32) arg_sp148);
-        M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        M2C_FIELD(this, f32 *, 0x1B0) = (f32) (M2C_FIELD(this, f32 *, 0x1B0) + (f32) sp148);
+        M2C_STRUCT_COPY((s32) &sp1A0.unk3C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        arg_sp120 = arg_sp90;
-        arg_sp98 = M2C_FIELD(this, f32 *, 0x1B0) * gUpdateTimeDelta;
-        arg_sp128 = (f64) arg_sp98;
+        sp120 = sp90;
+        sp98 = M2C_FIELD(this, f32 *, 0x1B0) * gUpdateTimeDelta;
+        sp128 = (f64) sp98;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp170 = arg_sp80;
-        arg_sp88 = arg_sp218 + (f32) arg_sp128;
-        arg_sp178 = (f64) arg_sp88;
-        if ((M2C_BITWISE(s32, this->unk200.unk8) == 0) && ((temp_cr0_eq_992 = (u8) M2C_FIELD(this, u8 *, 0x1C0) == 0, (temp_cr0_eq_992 != 0)) || ((temp_cr0_eq_992 == 0) && (temp_r3_995 = this->unk8, arg_sp110 = M2C_FIELD(temp_r3_995, f64 *, 0x30), arg_sp118 = M2C_FIELD(temp_r3_995, f64 *, 0x38), M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((arg_sp114 == this->unk1A8) != 0))))) {
+        sp170 = sp80;
+        sp88 = sp1E0.unk38 + (f32) sp128;
+        sp178 = (f64) sp88;
+        if ((M2C_BITWISE(s32, this->unk200.unk8) == 0) && ((temp_cr0_eq_992 = (u8) M2C_FIELD(this, u8 *, 0x1C0) == 0, (temp_cr0_eq_992 != 0)) || ((temp_cr0_eq_992 == 0) && (temp_r3_995 = this->unk8, sp110 = M2C_FIELD(temp_r3_995, f64 *, 0x30), sp118 = M2C_FIELD(temp_r3_995, f64 *, 0x38), M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((unksp114 == this->unk1A8) != 0))))) {
             this->unk200.unk8 = M2C_BITWISE(f32, KDSound_Play3d(GS_DreadwingScream1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U));
         }
         temp_f0_1019 = this->unk1AC - 25.0f;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (arg_sp174 == temp_f0_1019) {
-            arg_sp174 = temp_f0_1019;
+        if (unksp174 == temp_f0_1019) {
+            unksp174 = temp_f0_1019;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
-                arg_sp184 = 0;
+                sp184 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                arg_sp180 = 0x417;
-                arg_sp188 = arg_sp30;
-                arg_sp38 = arg_spF8 * 250.0f;
-                arg_sp198 = 1;
-                arg_sp190 = (f64) arg_sp38;
-                arg_sp100 = arg_sp30;
-                arg_sp108 = (f64) arg_sp38;
-                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp180, arg_sp30);
+                sp180 = 0x417;
+                sp188 = sp30;
+                sp38 = spF8 * 250.0f;
+                sp198 = 1;
+                sp190 = (f64) sp38;
+                sp100 = sp30;
+                sp108 = (f64) sp38;
+                M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp180, sp30);
             }
             this->unk1B8 = 3e-45f;
-            arg_sp18 = 0;
-            arg_sp14 = 0xBA;
-            Message(&arg_sp14, 0);
+            sp18 = 0;
+            sp14 = 0xBA;
+            Message(&sp14, 0);
             temp_r3_1073 = this->unk8;
-            arg_spE0 = M2C_FIELD(temp_r3_1073, f64 *, 0x30);
-            arg_spE8 = M2C_FIELD(temp_r3_1073, f64 *, 0x38);
+            spE0 = M2C_FIELD(temp_r3_1073, f64 *, 0x30);
+            spE8 = M2C_FIELD(temp_r3_1073, f64 *, 0x38);
             temp_r3_1079 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            arg_sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_1079, Explosion4 **, 0x16C)))->Trigger(*((MKVector3 *) &arg_spE0), 0.66f, 1U, NULL, 0, 1U, 0U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_1079, Explosion4 **, 0x16C)))->Trigger(*((MKVector3 *) &spE0), 0.66f, 1U, NULL, 0, 1U, 0U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             KDSound_Play3d(GS_DBIceShake, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             KDSound_Stop((s32 *) &this->unk200.unk8);
             this->unkD0.Show(0U);
-            arg_sp28 = 0;
-            arg_sp24 = 0xE0;
-            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &arg_sp24, 8, 0, &arg_sp170, 1, 250.0f);
+            sp28 = 0;
+            sp24 = 0xE0;
+            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp24, 8, 0, &sp170, 1, 250.0f);
         }
-        arg_sp210 = (f32) arg_sp170;
-        arg_sp214 = arg_sp174;
-        arg_sp218 = (f32) arg_sp178;
-        arg_sp21C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp1E0));
-        M2C_STRUCT_COPY((s32) &arg_sp19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp1E0.unk30 = (f32) sp170;
+        sp1E0.unk34 = unksp174;
+        sp1E0.unk38 = (f32) sp178;
+        sp1E0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp1E0);
+        M2C_STRUCT_COPY((s32) &sp19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_r3_1144 = this->unk8;
-        arg_spD0 = M2C_FIELD(temp_r3_1144, f64 *, 0x30);
-        arg_spD8 = M2C_FIELD(temp_r3_1144, f64 *, 0x38);
-        var_f1_1155 = -((0.00022222222f * (arg_spD4 - this->unk1AC)) - 1.0f);
+        spD0 = M2C_FIELD(temp_r3_1144, f64 *, 0x30);
+        spD8 = M2C_FIELD(temp_r3_1144, f64 *, 0x38);
+        var_f1_1155 = -((0.00022222222f * (unkspD4 - this->unk1AC)) - 1.0f);
         if (var_f1_1155 < 1.0f) {
 
         } else {
@@ -540,36 +656,36 @@ void DropBox::Update() {
         } else {
             var_f1_1155 = 0.1f;
         }
-        arg_sp1A0.Scale3x3((Matrix *) &arg_sp1A0, var_f1_1155);
-        MKModel_SetWorldMatrix(this->unk1C4, *((Matrix *) &arg_sp1A0));
-        arg_sp70 = (f32) arg_sp170;
-        arg_sp74 = this->unk1AC;
-        arg_sp78 = (f32) arg_sp178;
-        arg_spC0 = (f64) arg_sp70;
-        arg_spC8 = (f64) arg_sp78;
-        MKModel_SetPosition(this->unk1C4, *((MKVector3 *) &arg_spC0));
+        sp1A0.Scale3x3(&sp1A0, var_f1_1155);
+        MKModel_SetWorldMatrix(this->unk1C4, sp1A0);
+        sp70 = (f32) sp170;
+        sp74 = this->unk1AC;
+        sp78 = (f32) sp178;
+        spC0 = (f64) sp70;
+        spC8 = (f64) sp78;
+        MKModel_SetPosition(this->unk1C4, *((MKVector3 *) &spC0));
         break;
     case 2:                                         /* switch 1 */
         temp_r5_1190 = this->unk8;
         temp_f2_1194 = M2C_FIELD(temp_r5_1190, f64 *, 0x30);
-        arg_sp160 = temp_f2_1194;
-        arg_sp168 = M2C_FIELD(temp_r5_1190, f64 *, 0x38);
-        arg_sp20 = 0;
-        arg_sp1C = 0xE0;
-        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, M2C_UNK, f32, f64), 0x94)(gMK, &arg_sp1C, 8, 0, &arg_sp160, 1, 0, 350.0f, temp_f2_1194);
+        sp160 = temp_f2_1194;
+        sp168 = M2C_FIELD(temp_r5_1190, f64 *, 0x38);
+        sp20 = 0;
+        sp1C = 0xE0;
+        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, M2C_UNK, f32, f64), 0x94)(gMK, &sp1C, 8, 0, &sp160, 1, 0, 350.0f, temp_f2_1194);
         if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
             temp_r4_1215 = this->unk8;
             temp_f1_1217 = M2C_FIELD(temp_r4_1215, f64 *, 0x30);
-            arg_spA0 = temp_f1_1217;
-            arg_spA8 = M2C_FIELD(temp_r4_1215, f64 *, 0x38);
+            spA0 = temp_f1_1217;
+            spA8 = M2C_FIELD(temp_r4_1215, f64 *, 0x38);
             temp_r3_1224 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void *, f64), 0xC)(temp_r4_1215, temp_f1_1217), void **, 8);
-            arg_spB0 = M2C_FIELD(temp_r3_1224, f64 *, 0x30);
-            arg_spB8 = M2C_FIELD(temp_r3_1224, f64 *, 0x38);
+            spB0 = M2C_FIELD(temp_r3_1224, f64 *, 0x30);
+            spB8 = M2C_FIELD(temp_r3_1224, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp150 = arg_sp60;
-            arg_sp68 = (f32) arg_spB8 - (f32) arg_spA8;
-            arg_sp158 = (f64) arg_sp68;
-            var_f29_1248 = ((f32) arg_sp158 * (f32) arg_sp158) + (((f32) arg_sp150 * (f32) arg_sp150) + (arg_sp154 * arg_sp154));
+            sp150 = sp60;
+            sp68 = (f32) spB8 - (f32) spA8;
+            sp158 = (f64) sp68;
+            var_f29_1248 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + (unksp154 * unksp154));
             if (var_f29_1248 > 0.0f) {
                 temp_f1_1251 = __frsqrte(var_f29_1248);
                 temp_f1_1257 = 0.5 * temp_f1_1251 * -(((f64) var_f29_1248 * (temp_f1_1251 * temp_f1_1251)) - 3.0);
@@ -578,18 +694,18 @@ void DropBox::Update() {
             } else if (var_f29_1248 < M2C_BITWISE(f32, 0.0)) {
                 var_f29_1248 = __float_nan;
             } else {
-                arg_sp10 = var_f29_1248;
-                temp_r3_1280 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f29_1248;
+                temp_r3_1280 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_1280) {             /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1290 = 1;
                     } else {
                         var_r0_1290 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1290 = 5;
                     } else {
                         var_r0_1290 = 3;
@@ -604,32 +720,32 @@ void DropBox::Update() {
                 }
             }
             if (var_f29_1248 < M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0xC)) {
-                arg_sp224 = 0;
-                arg_sp220 = 7;
-                arg_sp248 = 2;
-                arg_sp24C = this;
-                arg_sp228 = arg_sp150;
-                arg_sp230 = arg_sp158;
-                arg_sp260 = 1;
-                arg_sp26C = 2;
-                arg_sp268 = 10.0f;
-                arg_sp260 = 0;
-                (s16) arg_sp260 = 1;
-                arg_sp264 = -1;
-                arg_sp238 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-                arg_sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-                arg_sp270 = 0;
+                sp224 = 0;
+                sp220 = 7;
+                sp248 = 2;
+                sp24C = this;
+                sp228 = sp150;
+                sp230 = sp158;
+                sp260 = 1;
+                sp26C = 2;
+                sp268 = 10.0f;
+                sp261 = 0;
+                sp262 = 1;
+                sp264 = -1;
+                sp238 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+                sp270 = 0;
                 if (this != NULL) {
-                    arg_sp50.GetPos();
-                    arg_sp250 = arg_sp50;
-                    arg_sp258 = arg_sp58;
+                    sp50.GetPos();
+                    sp250 = sp50;
+                    sp258 = sp58;
                 } else {
-                    arg_sp250 = 0.0f;
-                    arg_sp254 = 0.0f;
-                    arg_sp258 = 0.0f;
+                    sp250 = 0.0f;
+                    unksp254 = 0.0f;
+                    sp258 = 0.0f;
                 }
-                arg_sp270 = 0;
-                M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), M2C_UNK (**)(void **, s32 *), 0x1C)(M2C_FIELD(&gb, void ***, 0), &arg_sp220);
+                sp271 = 0;
+                M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), M2C_UNK (**)(void **, s32 *), 0x1C)(M2C_FIELD(&gb, void ***, 0), &sp220);
             }
         }
         if (M2C_BITWISE(s32, this->unk200.unk0) != 0) {

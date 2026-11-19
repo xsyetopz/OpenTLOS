@@ -436,22 +436,30 @@ void SonicAttack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SonicAttack::LoadDone() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     Projectile::LoadDone();
     this->unk168 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
     this->unk160 = Tools_GetMatchingMaterial(this->unk168, "fx0031_sonicring");
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = 0.01f;
-    arg_sp14 = -0.01f;
-    arg_sp18 = 0.0f;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp60 = (f32) arg_sp20;
-    arg_sp64 = arg_sp24;
-    arg_sp68 = (f32) arg_sp28;
-    arg_sp6C = 1.0f;
-    MKMaterial_SetTextureMatrix(this->unk160, (Matrix *) &arg_sp30);
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = 0.01f;
+    sp14 = -0.01f;
+    sp18 = 0.0f;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp30.unk30 = (f32) sp20;
+    sp30.unk34 = unksp24;
+    sp30.unk38 = (f32) sp28;
+    sp30.unk3C = 1.0f;
+    MKMaterial_SetTextureMatrix(this->unk160, &sp30);
 }
 #endif
 

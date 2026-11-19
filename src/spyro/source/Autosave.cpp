@@ -43,9 +43,10 @@ void Autosave_CopyGameData() {
     ((GameData *) ((GameData *) GameData::gameData))->CopyFromGameData(pGameDataCopy);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void Autosave_Draw() {
+    RenderContext sp10;
     f32 var_f0_66;
+
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (autosaveIconOffset != 0.0f) {
         ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
@@ -56,11 +57,10 @@ void Autosave_Draw() {
         }
         autosaveIcon.unk18.unk10.unk0 = ((128.0f * autosaveIconOffset) - 24.0f) - var_f0_66;
         autosaveIcon.unk18.unk30 = (0.25f * _table_sinf(autosaveIconThrob)) + 0.75f;
-        arg_sp10.RenderContext();
-        autosaveIcon.UIImage::Draw(*((RenderContext *) &arg_sp10));
+        sp10.RenderContext();
+        autosaveIcon.UIImage::Draw(sp10);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Autosave_Abort'
 void Autosave_ConfirmCard() {

@@ -94,49 +94,49 @@ void Matrix::Inverse(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void Matrix::RotatePYR(const Matrix *arg0, const MKVector3 &arg1) {
-    arg_sp10.SetRotationPYR(arg1);
-    arg_sp40 = 0.0f;
-    arg_sp44 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    Multiply4x4(arg0, (Matrix *) &arg_sp10);
-}
-#endif
+    Matrix sp10;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+    sp10.SetRotationPYR(arg1);
+    sp10.unk30 = 0.0f;
+    sp10.unk34 = 0.0f;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
+    Multiply4x4(arg0, &sp10);
+}
+
 void Matrix::RotateRoll(const Matrix *arg0, float arg1) {
-    arg_sp10.SetRotationRoll(arg1);
-    arg_sp40 = 0.0f;
-    arg_sp44 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    Multiply4x4(arg0, (Matrix *) &arg_sp10);
-}
-#endif
+    Matrix sp10;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+    sp10.SetRotationRoll(arg1);
+    sp10.unk30 = 0.0f;
+    sp10.unk34 = 0.0f;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
+    Multiply4x4(arg0, &sp10);
+}
+
 void Matrix::RotateYaw(const Matrix *arg0, float arg1) {
-    arg_sp10.SetRotationYaw(arg1);
-    arg_sp40 = 0.0f;
-    arg_sp44 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    Multiply4x4(arg0, (Matrix *) &arg_sp10);
-}
-#endif
+    Matrix sp10;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
-void Matrix::RotatePitch(const Matrix *arg0, float arg1) {
-    arg_sp10.SetRotationPitch(arg1);
-    arg_sp40 = 0.0f;
-    arg_sp44 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    Multiply4x4(arg0, (Matrix *) &arg_sp10);
+    sp10.SetRotationYaw(arg1);
+    sp10.unk30 = 0.0f;
+    sp10.unk34 = 0.0f;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
+    Multiply4x4(arg0, &sp10);
 }
-#endif
+
+void Matrix::RotatePitch(const Matrix *arg0, float arg1) {
+    Matrix sp10;
+
+    sp10.SetRotationPitch(arg1);
+    sp10.unk30 = 0.0f;
+    sp10.unk34 = 0.0f;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
+    Multiply4x4(arg0, &sp10);
+}
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector4'
 void Matrix::Translate(const Matrix *arg0, const MKVector4 &arg1) {
@@ -219,8 +219,30 @@ void Matrix::Scale3x3(const Matrix *arg0, float arg1) {
     this->unk3C = arg0->unk3C;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    M2C_UNK spC;
     f32 temp_f0_582;
     f32 temp_f0_615;
     f32 temp_f10_597;
@@ -253,6 +275,7 @@ void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     f32 temp_f30_611;
     f32 temp_f31_663;
     f32 temp_f9_584;
+
     temp_f0_582 = arg0->unk4;
     temp_f17_583 = arg1->unk10;
     temp_f9_584 = arg0->unk14;
@@ -266,7 +289,7 @@ void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     temp_f14_598 = arg0->unk20;
     temp_f2_601 = arg0->unk10;
     temp_f15_602 = arg1->unk4;
-    arg_sp50 = (f64) ((temp_f14_598 * temp_f10_597) + (temp_f16_587 * temp_f17_583));
+    sp50 = (f64) ((temp_f14_598 * temp_f10_597) + (temp_f16_587 * temp_f17_583));
     temp_f26_606 = arg1->unk8;
     temp_f25_609 = arg1->unkC;
     temp_f30_611 = arg0->unk30;
@@ -274,11 +297,11 @@ void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     temp_f22_617 = arg1->unk20;
     temp_f21_621 = arg1->unk24;
     temp_f20_623 = arg1->unk28;
-    arg_sp68 = (f64) ((temp_f30_611 * temp_f10_597) + (temp_f29_592 * temp_f17_583));
+    sp68 = (f64) ((temp_f30_611 * temp_f10_597) + (temp_f29_592 * temp_f17_583));
     temp_f19_629 = arg1->unk2C;
-    unksp58 = (f64) ((temp_f14_598 * temp_f15_602) + (temp_f16_587 * temp_f19_585));
-    arg_sp70 = (f64) ((temp_f30_611 * temp_f15_602) + (temp_f29_592 * temp_f19_585));
-    unksp60 = (f64) ((temp_f14_598 * temp_f26_606) + (temp_f16_587 * temp_f24_589));
+    sp58 = (f64) ((temp_f14_598 * temp_f15_602) + (temp_f16_587 * temp_f19_585));
+    sp70 = (f64) ((temp_f30_611 * temp_f15_602) + (temp_f29_592 * temp_f19_585));
+    sp60 = (f64) ((temp_f14_598 * temp_f26_606) + (temp_f16_587 * temp_f24_589));
     temp_f1_640 = arg0->unk18;
     temp_f13_641 = arg0->unk28;
     temp_f28_646 = arg0->unk38;
@@ -289,24 +312,24 @@ void Matrix::Multiply4x4(const Matrix *arg0, const Matrix *arg1) {
     temp_f15_657 = arg1->unk3C;
     temp_f18_659 = arg1->unk30;
     temp_f31_663 = arg0->unk2C;
-    arg_sp14 = (temp_f11_650 * temp_f17_653) + ((temp_f0_615 * temp_f21_621) + ((temp_f13_595 * temp_f15_602) + (temp_f0_582 * temp_f19_585)));
+    sp14 = (temp_f11_650 * temp_f17_653) + ((temp_f0_615 * temp_f21_621) + ((temp_f13_595 * temp_f15_602) + (temp_f0_582 * temp_f19_585)));
     temp_f27_671 = arg0->unk3C;
-    arg_sp18 = (temp_f11_650 * temp_f16_655) + ((temp_f0_615 * temp_f20_623) + ((temp_f13_595 * temp_f26_606) + (temp_f0_582 * temp_f24_589)));
-    arg_sp1C = (temp_f11_650 * temp_f15_657) + ((temp_f0_615 * temp_f19_629) + ((temp_f13_595 * temp_f25_609) + (temp_f0_582 * temp_f23_591)));
-    arg_sp10 = (temp_f11_650 * temp_f18_659) + ((temp_f0_615 * temp_f22_617) + ((temp_f13_595 * temp_f10_597) + (temp_f0_582 * temp_f17_583)));
-    arg_sp20 = (temp_f12_656 * temp_f18_659) + ((temp_f1_640 * temp_f22_617) + ((temp_f2_601 * temp_f10_597) + (temp_f9_584 * temp_f17_583)));
-    arg_sp24 = (temp_f12_656 * temp_f17_653) + ((temp_f1_640 * temp_f21_621) + ((temp_f2_601 * temp_f15_602) + (temp_f9_584 * temp_f19_585)));
-    arg_sp28 = (temp_f12_656 * temp_f16_655) + ((temp_f1_640 * temp_f20_623) + ((temp_f2_601 * temp_f26_606) + (temp_f9_584 * temp_f24_589)));
-    arg_sp2C = (temp_f12_656 * temp_f15_657) + ((temp_f1_640 * temp_f19_629) + ((temp_f2_601 * temp_f25_609) + (temp_f9_584 * temp_f23_591)));
-    arg_sp30 = (temp_f31_663 * temp_f18_659) + ((temp_f13_641 * temp_f22_617) + (f32) arg_sp50);
-    arg_sp34 = (temp_f31_663 * temp_f17_653) + ((temp_f13_641 * temp_f21_621) + (f32) unksp58);
-    arg_sp38 = (temp_f31_663 * temp_f16_655) + ((temp_f13_641 * temp_f20_623) + (f32) unksp60);
-    arg_sp3C = (temp_f31_663 * temp_f15_657) + ((temp_f13_641 * temp_f19_629) + ((temp_f14_598 * temp_f25_609) + (temp_f16_587 * temp_f23_591)));
-    arg_sp40 = (temp_f27_671 * temp_f18_659) + ((temp_f28_646 * temp_f22_617) + (f32) arg_sp68);
-    arg_sp44 = (temp_f27_671 * temp_f17_653) + ((temp_f28_646 * temp_f21_621) + (f32) arg_sp70);
-    arg_sp48 = (temp_f27_671 * temp_f16_655) + ((temp_f28_646 * temp_f20_623) + ((temp_f30_611 * temp_f26_606) + (temp_f29_592 * temp_f24_589)));
-    arg_sp4C = (temp_f27_671 * temp_f15_657) + ((temp_f28_646 * temp_f19_629) + ((temp_f30_611 * temp_f25_609) + (temp_f29_592 * temp_f23_591)));
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_spC + 4, 0x40);
+    sp18 = (temp_f11_650 * temp_f16_655) + ((temp_f0_615 * temp_f20_623) + ((temp_f13_595 * temp_f26_606) + (temp_f0_582 * temp_f24_589)));
+    sp1C = (temp_f11_650 * temp_f15_657) + ((temp_f0_615 * temp_f19_629) + ((temp_f13_595 * temp_f25_609) + (temp_f0_582 * temp_f23_591)));
+    sp10 = (temp_f11_650 * temp_f18_659) + ((temp_f0_615 * temp_f22_617) + ((temp_f13_595 * temp_f10_597) + (temp_f0_582 * temp_f17_583)));
+    sp20 = (temp_f12_656 * temp_f18_659) + ((temp_f1_640 * temp_f22_617) + ((temp_f2_601 * temp_f10_597) + (temp_f9_584 * temp_f17_583)));
+    sp24 = (temp_f12_656 * temp_f17_653) + ((temp_f1_640 * temp_f21_621) + ((temp_f2_601 * temp_f15_602) + (temp_f9_584 * temp_f19_585)));
+    sp28 = (temp_f12_656 * temp_f16_655) + ((temp_f1_640 * temp_f20_623) + ((temp_f2_601 * temp_f26_606) + (temp_f9_584 * temp_f24_589)));
+    sp2C = (temp_f12_656 * temp_f15_657) + ((temp_f1_640 * temp_f19_629) + ((temp_f2_601 * temp_f25_609) + (temp_f9_584 * temp_f23_591)));
+    sp30 = (temp_f31_663 * temp_f18_659) + ((temp_f13_641 * temp_f22_617) + (f32) sp50);
+    sp34 = (temp_f31_663 * temp_f17_653) + ((temp_f13_641 * temp_f21_621) + (f32) sp58);
+    sp38 = (temp_f31_663 * temp_f16_655) + ((temp_f13_641 * temp_f20_623) + (f32) sp60);
+    sp3C = (temp_f31_663 * temp_f15_657) + ((temp_f13_641 * temp_f19_629) + ((temp_f14_598 * temp_f25_609) + (temp_f16_587 * temp_f23_591)));
+    sp40 = (temp_f27_671 * temp_f18_659) + ((temp_f28_646 * temp_f22_617) + (f32) sp68);
+    sp44 = (temp_f27_671 * temp_f17_653) + ((temp_f28_646 * temp_f21_621) + (f32) sp70);
+    sp48 = (temp_f27_671 * temp_f16_655) + ((temp_f28_646 * temp_f20_623) + ((temp_f30_611 * temp_f26_606) + (temp_f29_592 * temp_f24_589)));
+    sp4C = (temp_f27_671 * temp_f15_657) + ((temp_f28_646 * temp_f19_629) + ((temp_f30_611 * temp_f25_609) + (temp_f29_592 * temp_f23_591)));
+    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
 #endif
 
@@ -395,25 +418,28 @@ f32 Matrix::Multiply(const Matrix *arg0, const Matrix *arg1) {
     return arg0->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::InverseSimple(const Matrix *arg0) {
+    Matrix sp10;
+    M2C_UNK spC;
     f32 temp_f3_924;
     f32 temp_f6_933;
     f32 temp_f7_939;
     f32 temp_f8_947;
-    arg_sp10.Transpose3x3(arg0);
+
+    sp10.Transpose3x3(arg0);
     temp_f3_924 = arg0->unk34;
     temp_f6_933 = arg0->unk30;
     temp_f7_939 = arg0->unk38;
     temp_f8_947 = arg0->unk3C;
-    arg_sp3C = 0.0f;
-    arg_sp2C = 0.0f;
-    arg_sp40 = -((temp_f8_947 * arg0->unkC) + ((temp_f7_939 * arg0->unk8) + ((temp_f6_933 * arg0->unk0) + (temp_f3_924 * arg0->unk4))));
-    arg_sp44 = -((temp_f8_947 * arg0->unk1C) + ((temp_f7_939 * arg0->unk18) + ((temp_f6_933 * arg0->unk10) + (temp_f3_924 * arg0->unk14))));
-    arg_sp48 = -((temp_f8_947 * arg0->unk2C) + ((temp_f7_939 * arg0->unk28) + ((temp_f6_933 * arg0->unk20) + (temp_f3_924 * arg0->unk24))));
-    arg_sp1C = 0.0f;
-    arg_sp4C = 1.0f;
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_spC + 4, 0x40);
+    sp10.unk2C = 0.0f;
+    sp10.unk1C = 0.0f;
+    sp10.unk30 = -((temp_f8_947 * arg0->unkC) + ((temp_f7_939 * arg0->unk8) + ((temp_f6_933 * arg0->unk0) + (temp_f3_924 * arg0->unk4))));
+    sp10.unk34 = -((temp_f8_947 * arg0->unk1C) + ((temp_f7_939 * arg0->unk18) + ((temp_f6_933 * arg0->unk10) + (temp_f3_924 * arg0->unk14))));
+    sp10.unk38 = -((temp_f8_947 * arg0->unk2C) + ((temp_f7_939 * arg0->unk28) + ((temp_f6_933 * arg0->unk20) + (temp_f3_924 * arg0->unk24))));
+    sp10.unkC = 0.0f;
+    sp10.unk3C = 1.0f;
+    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
 #endif
 
@@ -439,25 +465,43 @@ void Matrix::Transpose3x3(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::Transpose(const Matrix *arg0) {
-    arg_sp10 = arg0->unk0;
-    arg_sp14 = arg0->unk10;
-    arg_sp18 = arg0->unk20;
-    arg_sp1C = arg0->unk30;
-    arg_sp20 = arg0->unk4;
-    arg_sp24 = arg0->unk14;
-    arg_sp28 = arg0->unk24;
-    arg_sp2C = arg0->unk34;
-    arg_sp30 = arg0->unk8;
-    arg_sp34 = arg0->unk18;
-    arg_sp38 = arg0->unk28;
-    arg_sp3C = arg0->unk38;
-    arg_sp40 = arg0->unkC;
-    arg_sp44 = arg0->unk1C;
-    arg_sp48 = arg0->unk2C;
-    arg_sp4C = arg0->unk3C;
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_spC + 4, 0x40);
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    M2C_UNK spC;
+
+    sp10 = arg0->unk0;
+    sp14 = arg0->unk10;
+    sp18 = arg0->unk20;
+    sp1C = arg0->unk30;
+    sp20 = arg0->unk4;
+    sp24 = arg0->unk14;
+    sp28 = arg0->unk24;
+    sp2C = arg0->unk34;
+    sp30 = arg0->unk8;
+    sp34 = arg0->unk18;
+    sp38 = arg0->unk28;
+    sp3C = arg0->unk38;
+    sp40 = arg0->unkC;
+    sp44 = arg0->unk1C;
+    sp48 = arg0->unk2C;
+    sp4C = arg0->unk3C;
+    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
 #endif
 
@@ -541,118 +585,140 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::GetRotationRPY() const {
+    Matrix sp20;
+    M2C_UNK sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_1262;
     f32 temp_f1_1271;
     f64 temp_f1_1254;
     s32 temp_r4_1235;
+
     temp_r4_1235 = M2C_ERROR(/* Read from unset register $r4 */) - 4;
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, temp_r4_1235 + 4, 0x40);
-    temp_f1_1254 = -(f32) atan2(temp_r4_1235 + 0x40, &arg_sp1C + 0x40, arg_sp40, arg_sp48);
-    arg_sp14 = (f32) temp_f1_1254;
-    arg_sp20.RotateYaw((Matrix *) &arg_sp20, -(f32) temp_f1_1254);
-    temp_f0_1262 = (f32) atan2(M2C_BITWISE(s32, arg_sp44), M2C_BITWISE(void *, arg_sp48));
-    arg_sp10 = temp_f0_1262;
-    arg_sp20.RotatePitch((Matrix *) &arg_sp20, -temp_f0_1262);
-    temp_f1_1271 = (f32) atan2(M2C_BITWISE(s32, arg_sp24), M2C_BITWISE(void *, arg_sp20));
-    M2C_FIELD(this, f64 *, 0) = (f64) arg_sp10;
-    arg_sp18 = -temp_f1_1271;
-    M2C_FIELD(this, f64 *, 8) = (f64) arg_sp18;
+    M2C_STRUCT_COPY((s32) &sp1C + 4, temp_r4_1235 + 4, 0x40);
+    temp_f1_1254 = -(f32) atan2(temp_r4_1235 + 0x40, &sp1C + 0x40, sp20.unk20, sp20.unk28);
+    sp14 = (f32) temp_f1_1254;
+    sp20.RotateYaw(&sp20, -(f32) temp_f1_1254);
+    temp_f0_1262 = (f32) atan2(M2C_BITWISE(s32, sp20.unk24), M2C_BITWISE(void *, sp20.unk28));
+    sp10 = temp_f0_1262;
+    sp20.RotatePitch(&sp20, -temp_f0_1262);
+    temp_f1_1271 = (f32) atan2(M2C_BITWISE(s32, sp20.unk4), M2C_BITWISE(void *, M2C_BITWISE(f32, sp20)));
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10;
+    sp18 = -temp_f1_1271;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: function call 'memcpy(long, int, int)' does not match
 void Matrix::GetRotationPRY() const {
+    f32 sp20;
+    M2C_UNK sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 var_f1_1311;
     f32 var_f1_1319;
     f64 temp_f1_1365;
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, M2C_ERROR(/* Read from unset register $r4 */) - 4 + 4, 0x40);
-    if (arg_sp20 < 0.0f) {
-        var_f1_1311 = -arg_sp20;
+
+    M2C_STRUCT_COPY((s32) &sp1C + 4, M2C_ERROR(/* Read from unset register $r4 */) - 4 + 4, 0x40);
+    if (sp20 < 0.0f) {
+        var_f1_1311 = -sp20;
     } else {
-        var_f1_1311 = arg_sp20;
+        var_f1_1311 = sp20;
     }
     if (var_f1_1311 < 0.001f) {
-        var_f1_1319 = arg_sp28;
+        var_f1_1319 = sp28;
         if (var_f1_1319 < 0.0f) {
             var_f1_1319 = -var_f1_1319;
         }
         if (var_f1_1319 < 0.001f) {
-            arg_sp14 = 0.0f;
+            sp14 = 0.0f;
         } else {
             goto block_8;
         }
     } else {
 block_8:
-        if (arg_sp20 > 0.0f) {
-            arg_sp14 = -(f32) atan2(M2C_BITWISE(s32, arg_sp28), M2C_BITWISE(void *, -arg_sp20));
-        } else if (arg_sp20 < 0.0f) {
-            arg_sp14 = -(f32) atan2(M2C_BITWISE(s32, -arg_sp28));
+        if (sp20 > 0.0f) {
+            sp14 = -(f32) atan2(M2C_BITWISE(s32, sp28), M2C_BITWISE(void *, -sp20));
+        } else if (sp20 < 0.0f) {
+            sp14 = -(f32) atan2(M2C_BITWISE(s32, -sp28));
         } else {
-            arg_sp14 = 0.0f;
+            sp14 = 0.0f;
         }
     }
-    arg_sp20.RotateYaw((Matrix *) &arg_sp20, -arg_sp14);
-    temp_f1_1365 = -(f32) atan2(M2C_BITWISE(s32, arg_sp24), M2C_BITWISE(void *, arg_sp20));
-    arg_sp18 = (f32) temp_f1_1365;
-    arg_sp20.RotateRoll((Matrix *) &arg_sp20, -(f32) temp_f1_1365);
-    arg_sp10 = (f32) atan2(M2C_BITWISE(s32, arg_sp44), M2C_BITWISE(void *, arg_sp48));
-    M2C_FIELD(this, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(this, f64 *, 8) = (f64) arg_sp18;
+    sp20.RotateYaw((Matrix *) &sp20, -sp14);
+    temp_f1_1365 = -(f32) atan2(M2C_BITWISE(s32, sp24), M2C_BITWISE(void *, sp20));
+    sp18 = (f32) temp_f1_1365;
+    sp20.RotateRoll((Matrix *) &sp20, -(f32) temp_f1_1365);
+    sp10 = (f32) atan2(M2C_BITWISE(s32, sp44), M2C_BITWISE(void *, sp48));
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: function call 'memcpy(long, int, int)' does not match
 void Matrix::GetRotationPYR() const {
+    f32 sp20;
+    M2C_UNK sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_1461;
     f32 var_f1_1412;
     f32 var_f1_1420;
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, M2C_ERROR(/* Read from unset register $r4 */) - 4 + 4, 0x40);
-    if (arg_sp20 < 0.0f) {
-        var_f1_1412 = -arg_sp20;
+
+    M2C_STRUCT_COPY((s32) &sp1C + 4, M2C_ERROR(/* Read from unset register $r4 */) - 4 + 4, 0x40);
+    if (sp20 < 0.0f) {
+        var_f1_1412 = -sp20;
     } else {
-        var_f1_1412 = arg_sp20;
+        var_f1_1412 = sp20;
     }
     if (var_f1_1412 < 0.001f) {
-        var_f1_1420 = arg_sp24;
+        var_f1_1420 = sp24;
         if (var_f1_1420 < 0.0f) {
             var_f1_1420 = -var_f1_1420;
         }
         if (var_f1_1420 < 0.001f) {
-            arg_sp18 = 0.0f;
+            sp18 = 0.0f;
         } else {
             goto block_8;
         }
     } else {
 block_8:
-        if (arg_sp20 > 0.0f) {
-            arg_sp18 = (f32) atan2(M2C_BITWISE(s32, -arg_sp24));
-        } else if (arg_sp20 < 0.0f) {
-            arg_sp18 = (f32) atan2(M2C_BITWISE(s32, arg_sp24), M2C_BITWISE(void *, -arg_sp20));
+        if (sp20 > 0.0f) {
+            sp18 = (f32) atan2(M2C_BITWISE(s32, -sp24));
+        } else if (sp20 < 0.0f) {
+            sp18 = (f32) atan2(M2C_BITWISE(s32, sp24), M2C_BITWISE(void *, -sp20));
         } else {
-            arg_sp18 = 0.0f;
+            sp18 = 0.0f;
         }
     }
-    arg_sp20.RotateRoll((Matrix *) &arg_sp20, -arg_sp18);
-    temp_f0_1461 = (f32) atan2(M2C_BITWISE(s32, arg_sp28), M2C_BITWISE(void *, arg_sp20));
-    arg_sp14 = temp_f0_1461;
-    arg_sp20.RotateYaw((Matrix *) &arg_sp20, -temp_f0_1461);
-    arg_sp10 = (f32) atan2(M2C_BITWISE(s32, arg_sp44), M2C_BITWISE(void *, arg_sp48));
-    M2C_FIELD(this, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(this, f64 *, 8) = (f64) arg_sp18;
+    sp20.RotateRoll((Matrix *) &sp20, -sp18);
+    temp_f0_1461 = (f32) atan2(M2C_BITWISE(s32, sp28), M2C_BITWISE(void *, sp20));
+    sp14 = temp_f0_1461;
+    sp20.RotateYaw((Matrix *) &sp20, -temp_f0_1461);
+    sp10 = (f32) atan2(M2C_BITWISE(s32, sp44), M2C_BITWISE(void *, sp48));
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unksp14'
 void Matrix::SetRotationPYR(const MKVector3 &arg0) {
-    arg_sp10 = M2C_FIELD(&arg0, f64 *, 0);
-    arg_sp18 = M2C_FIELD(&arg0, f64 *, 8);
-    SetRotationPitch((f32) arg_sp10);
-    arg_sp20.SetRotationYaw(arg_sp14);
-    Multiply3x3(this, (Matrix *) &arg_sp20);
-    arg_sp20.SetRotationRoll((f32) arg_sp18);
-    Multiply3x3(this, (Matrix *) &arg_sp20);
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
+
+    sp10 = M2C_FIELD(&arg0, f64 *, 0);
+    sp18 = M2C_FIELD(&arg0, f64 *, 8);
+    SetRotationPitch((f32) sp10);
+    sp20.SetRotationYaw(unksp14);
+    Multiply3x3(this, &sp20);
+    sp20.SetRotationRoll((f32) sp18);
+    Multiply3x3(this, &sp20);
 }
 #endif
 

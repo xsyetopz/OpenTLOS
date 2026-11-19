@@ -12,15 +12,19 @@
 
 #if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::Reset() {
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
+
     Shatterable::Reset();
     this->unk1A8.unk8.Reset();
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(this, f64 *, 0x208);
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(this, f64 *, 0x210);
-    arg_sp10 = M2C_FIELD(this, f64 *, 0x1C8);
-    arg_sp18 = M2C_FIELD(this, f64 *, 0x1D0);
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp20.SetRotationPYR(*((MKVector3 *) &arg_sp10));
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp20));
+    sp10 = M2C_FIELD(this, f64 *, 0x1C8);
+    sp18 = M2C_FIELD(this, f64 *, 0x1D0);
+    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp20.SetRotationPYR(*((MKVector3 *) &sp10));
+    MKModel_SetWorldMatrix(this->unk4, sp20);
 }
 #endif
 

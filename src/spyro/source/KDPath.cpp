@@ -605,6 +605,13 @@ void KDSplinePathSegment::Init() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void KDLocalPathSegmentProp::Resolve() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f10_1283;
     f32 temp_f5_1280;
     f32 temp_f8_1281;
@@ -615,6 +622,7 @@ void KDLocalPathSegmentProp::Resolve() {
     s32 var_ctr_1266;
     s32 var_r5_1265;
     void *temp_r3_1278;
+
     MKProp::Resolve();
     temp_r3_1240 = this->unk4C.unk34;
     if (M2C_BITWISE(u32, temp_r3_1240) != 0U) {
@@ -622,8 +630,8 @@ void KDLocalPathSegmentProp::Resolve() {
         temp_r3_1245 = this->unk4C.unk34;
         if (M2C_BITWISE(u32, temp_r3_1245) != 0U) {
             this->unk4C.unk2C = M2C_FIELD(temp_r3_1245, s32 *, 8);
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, this->unk4C.unk2C - 4 + 4, 0x40);
-            arg_sp30.Inverse((Matrix *) &arg_sp30);
+            M2C_STRUCT_COPY((s32) &sp2C + 4, this->unk4C.unk2C - 4 + 4, 0x40);
+            sp30.Inverse(&sp30);
             temp_r0_1264 = this->unk4C.unk1C;
             var_r5_1265 = 0;
             var_ctr_1266 = temp_r0_1264;
@@ -633,15 +641,15 @@ void KDLocalPathSegmentProp::Resolve() {
                     temp_f5_1280 = M2C_FIELD(temp_r3_1278, f32 *, 4);
                     temp_f8_1281 = M2C_FIELD(temp_r3_1278, f32 *, 0);
                     temp_f10_1283 = M2C_FIELD(temp_r3_1278, f32 *, 8);
-                    arg_sp10 = arg_sp60 + ((temp_f10_1283 * arg_sp50) + ((temp_f8_1281 * arg_sp30) + (temp_f5_1280 * arg_sp40)));
-                    arg_sp14 = arg_sp64 + ((temp_f10_1283 * arg_sp54) + ((temp_f8_1281 * arg_sp34) + (temp_f5_1280 * arg_sp44)));
-                    arg_sp18 = arg_sp68 + ((temp_f10_1283 * arg_sp58) + ((temp_f8_1281 * arg_sp38) + (temp_f5_1280 * arg_sp48)));
-                    M2C_FIELD(temp_r3_1278, f32 *, 0) = (f64) arg_sp10;
-                    M2C_FIELD(temp_r3_1278, f32 *, 8) = (f64) arg_sp18;
+                    sp10 = sp30.unk30 + ((temp_f10_1283 * sp30.unk20) + ((temp_f8_1281 * M2C_BITWISE(f32, sp30)) + (temp_f5_1280 * sp30.unk10)));
+                    sp14 = sp30.unk34 + ((temp_f10_1283 * sp30.unk24) + ((temp_f8_1281 * sp30.unk4) + (temp_f5_1280 * sp30.unk14)));
+                    sp18 = sp30.unk38 + ((temp_f10_1283 * sp30.unk28) + ((temp_f8_1281 * sp30.unk8) + (temp_f5_1280 * sp30.unk18)));
+                    M2C_FIELD(temp_r3_1278, f32 *, 0) = (f64) sp10;
+                    M2C_FIELD(temp_r3_1278, f32 *, 8) = (f64) sp18;
                     temp_r3_1311 = var_r5_1265 * M2C_FIELD(this, s32 *, 0x68);
-                    arg_sp20 = (f64) arg_sp10;
+                    sp20 = (f64) sp10;
                     var_r5_1265 += 1;
-                    arg_sp28 = (f64) arg_sp18;
+                    sp28 = (f64) sp18;
                     *(this->unk4C.unk20 + (temp_r3_1311 + 0xC)) = M2C_FIELD(temp_r3_1278, f32 *, 0xC);
                     var_ctr_1266 -= 1;
                 } while (var_ctr_1266 != 0);

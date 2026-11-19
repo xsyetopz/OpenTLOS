@@ -293,16 +293,19 @@ s32 DisableShadowCE::LoadLine() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void BreathEffectCE::Update() {
+    Matrix sp20;
+    MKVector3 sp10;
     s32 temp_r0_673;
-    MKModel_CalculateNodeWorldMatrix(this->unk48, this->unk58, (Matrix *) &arg_sp20);
-    MKModel_CalculateRefPointWorldPosition(this->unk48, this->unk54, (MKVector3 *) &arg_sp10);
-    arg_sp50 = arg_sp10;
-    arg_sp54 = arg_sp14;
-    arg_sp58 = arg_sp18;
-    arg_sp5C = 1.0f;
-    this->unk28 = &arg_sp20;
+
+    MKModel_CalculateNodeWorldMatrix(this->unk48, this->unk58, &sp20);
+    MKModel_CalculateRefPointWorldPosition(this->unk48, this->unk54, &sp10);
+    sp20.unk30 = M2C_BITWISE(f32, sp10);
+    sp20.unk34 = sp10.unk4;
+    sp20.unk38 = sp10.unk8;
+    sp20.unk3C = 1.0f;
+    this->unk28 = &sp20;
     temp_r0_673 = this->unk4C;
     switch (temp_r0_673) {                          /* irregular */
     case 0:
@@ -713,22 +716,30 @@ void ScriptCE::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosionNodeCE::Update() {
+    Matrix sp70;
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp20;
+    f64 sp18;
+    s16 sp10;
+    s32 sp8;
     Animation *temp_r3_1852;
     MKModel *temp_r3_1833;
     s32 temp_r31_1850;
+
     temp_r3_1833 = this->unk4;
     if ((temp_r3_1833 != NULL) && ((u8) bIgnoreEvent == 0)) {
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(temp_r3_1833) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, MKModel_GetWorldMatrix(temp_r3_1833) - 4 + 4, 0x40);
         temp_r31_1850 = this->unk8;
         temp_r3_1852 = MKModel_GetAnimation(this->unk4);
-        arg_sp10 = (s16) temp_r31_1850;
-        temp_r3_1852->CalculateMatrices((Matrix *) &arg_sp70, 1, &arg_sp10, (Matrix *) &arg_sp30);
-        arg_sp18 = arg_spA0;
-        arg_sp20 = arg_spA8;
-        arg_sp8 = 1;
-        ((Explosion4 *) (M2C_FIELD(&gb, Explosion4 **, 0x2C0)))->Trigger(*((MKVector3 *) &arg_sp18), this->unkC, 0U, NULL, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        sp10 = (s16) temp_r31_1850;
+        temp_r3_1852->CalculateMatrices(&sp70, 1, &sp10, &sp30);
+        sp18 = (f64) sp70.unk30;
+        sp20 = (f64) sp70.unk38;
+        sp8 = 1;
+        ((Explosion4 *) (M2C_FIELD(&gb, Explosion4 **, 0x2C0)))->Trigger(*((MKVector3 *) &sp18), this->unkC, 0U, NULL, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
 #endif
@@ -773,21 +784,24 @@ s32 ExplosionCE::LoadLine() {
     return var_r31_1982;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void AttachScaleOffsetCE::Update() {
+    Matrix sp20;
+    MKVector3 sp10;
     f32 temp_f31_2037;
-    arg_sp20.SetIdentity();
-    MKModel_CalculateNodeWorldPosition(this->unk1C, this->unk20, (MKVector3 *) &arg_sp10);
-    arg_sp50 = arg_sp10;
-    arg_sp54 = arg_sp14;
-    arg_sp58 = arg_sp18;
-    arg_sp5C = 1.0f;
-    arg_sp20.Scale3x3((Matrix *) &arg_sp20, this->unk8.unkC);
+
+    sp20.SetIdentity();
+    MKModel_CalculateNodeWorldPosition(this->unk1C, this->unk20, &sp10);
+    sp20.unk30 = M2C_BITWISE(f32, sp10);
+    sp20.unk34 = sp10.unk4;
+    sp20.unk38 = sp10.unk8;
+    sp20.unk3C = 1.0f;
+    sp20.Scale3x3(&sp20, this->unk8.unkC);
     temp_f31_2037 = this->unk8.unkC;
     this->unk8.unkC = 0.0f;
-    arg_sp20.Translate((Matrix *) &arg_sp20, this->unk8);
+    sp20.Translate(&sp20, this->unk8);
     this->unk8.unkC = temp_f31_2037;
-    MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &arg_sp20));
+    MKModel_SetWorldMatrix(this->unk18, sp20);
 }
 #endif
 
@@ -803,19 +817,27 @@ s32 AttachScaleOffsetCE::LoadLine() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp3C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ScaleCE::Update() {
-    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
-    arg_sp30 = arg_sp70;
-    arg_sp38 = arg_sp78;
+    M2C_UNK sp40;
+    M2C_UNK sp3C;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+
+    M2C_STRUCT_COPY((s32) &sp3C + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
+    sp30 = sp70;
+    sp38 = sp78;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp20 = arg_sp10;
-    arg_sp18 = (f32) arg_sp38 * -1.0f;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp40.Translate((Matrix *) &arg_sp40, *((MKVector3 *) &arg_sp20));
-    arg_sp40.Scale3x3((Matrix *) &arg_sp40, this->unk8);
-    arg_sp40.Translate((Matrix *) &arg_sp40, *((MKVector3 *) &arg_sp30));
-    MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &arg_sp40));
+    sp20 = sp10;
+    sp18 = (f32) sp38 * -1.0f;
+    sp28 = (f64) sp18;
+    sp40.Translate((Matrix *) &sp40, *((MKVector3 *) &sp20));
+    sp40.Scale3x3((Matrix *) &sp40, this->unk8);
+    sp40.Translate((Matrix *) &sp40, *((MKVector3 *) &sp30));
+    MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &sp40));
 }
 #endif
 
@@ -870,16 +892,20 @@ void AlphaChangeCE::Init() {
     this->unk8 = 1.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void AttachPropToRefPointCE::Update() {
+    Matrix sp50;
+    Matrix sp10;
+    M2C_UNK spC;
     MKProp *temp_r3_2335;
+
     temp_r3_2335 = this->unk4;
     if ((void *) temp_r3_2335->unk8 != NULL) {
         MKModel_SetWorldMatrix(temp_r3_2335->unk4, Matrix::identity);
-        MKModel_GetRefPointMatrix(this->unk8, this->unkC, (Matrix *) &arg_sp50, 1U);
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
-        arg_sp10.Multiply((Matrix *) &arg_sp10, (Matrix *) &arg_sp50);
-        MKModel_SetWorldMatrix(this->unk4->unk4, *((Matrix *) &arg_sp10));
+        MKModel_GetRefPointMatrix(this->unk8, this->unkC, &sp50, 1U);
+        M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
+        sp10.Multiply(&sp10, &sp50);
+        MKModel_SetWorldMatrix(this->unk4->unk4, sp10);
     }
 }
 #endif
@@ -913,23 +939,27 @@ void AttachPropToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void AttachPropCE::Update() {
+    Matrix sp70;
+    Animation sp18;
+    s16 sp10;
     Animation *temp_r3_2474;
     s16 temp_r30_2473;
     s32 temp_r29_2471;
+
     if (((void *) this->unk4->unk8 != NULL) && (MKModel_GetAnimation(this->unk8) != NULL)) {
         MKModel_SetWorldMatrix(this->unk4->unk4, Matrix::identity);
         temp_r29_2471 = MKModel_GetWorldMatrix(this->unk8);
         temp_r30_2473 = (s16) this->unkC;
         temp_r3_2474 = MKModel_GetAnimation(this->unk8);
-        arg_sp10 = temp_r30_2473;
-        temp_r3_2474->CalculateMatrices((Matrix *) &arg_sp70, 1, &arg_sp10, (Matrix *) temp_r29_2471);
-        arg_sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk8));
-        MKModel_SetPosition(this->unk4->unk4, *((MKVector3 *) &arg_sp18));
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
-        arg_sp30.Multiply((Matrix *) &arg_sp30, (Matrix *) &arg_sp70);
-        MKModel_SetWorldMatrix(this->unk4->unk4, *((Matrix *) &arg_sp30));
+        sp10 = temp_r30_2473;
+        temp_r3_2474->CalculateMatrices(&sp70, 1, &sp10, (Matrix *) temp_r29_2471);
+        sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk8));
+        MKModel_SetPosition(this->unk4->unk4, *((MKVector3 *) &sp18));
+        M2C_STRUCT_COPY((s32) &sp18.unk14 + 4, MKModel_GetWorldMatrix(this->unk4->unk4) - 4 + 4, 0x40);
+        sp18.unk18.Multiply((Matrix *) &sp18.unk18, &sp70);
+        MKModel_SetWorldMatrix(this->unk4->unk4, *((Matrix *) &sp18.unk18));
     }
 }
 #endif
@@ -951,12 +981,12 @@ void AttachPropCE::Init() {
     this->unk4 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void AttachActorToRefPointCE::Update() {
-    MKModel_GetRefPointMatrix(this->unk8, this->unkC, (Matrix *) &arg_sp10, 1U);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    Matrix sp10;
+
+    MKModel_GetRefPointMatrix(this->unk8, this->unkC, &sp10, 1U);
+    MKModel_SetWorldMatrix(this->unk4, sp10);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 AttachActorToRefPointCE::LoadLine() {
@@ -987,34 +1017,38 @@ void AttachActorToRefPointCE::Init() {
     this->unkC = -1;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void AttachCE::Update() {
+    Matrix sp80;
+    Animation sp18;
+    s16 sp10;
     Animation *temp_r3_2682;
     s32 temp_r30_2679;
     s32 temp_r31_2680;
+
     if ((s32) this->unk24 != 0) {
         MKModel_SetWorldMatrix(this->unk18, Matrix::identity);
         temp_r30_2679 = MKModel_GetWorldMatrix(this->unk1C);
         temp_r31_2680 = this->unk20;
         temp_r3_2682 = MKModel_GetAnimation(this->unk1C);
-        arg_sp10 = (s16) temp_r31_2680;
-        temp_r3_2682->CalculateMatrices((Matrix *) &arg_sp80, 1, &arg_sp10, (Matrix *) temp_r30_2679);
-        arg_sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk1C));
-        MKModel_SetPosition(this->unk18, *((MKVector3 *) &arg_sp18));
-        M2C_STRUCT_COPY((s32) &arg_sp3C + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
-        arg_sp40.Multiply((Matrix *) &arg_sp40, (Matrix *) &arg_sp80);
-        arg_sp40.Translate((Matrix *) &arg_sp40, this->unk8);
-        MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &arg_sp40));
+        sp10 = (s16) temp_r31_2680;
+        temp_r3_2682->CalculateMatrices(&sp80, 1, &sp10, (Matrix *) temp_r30_2679);
+        sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk1C));
+        MKModel_SetPosition(this->unk18, *((MKVector3 *) &sp18));
+        M2C_STRUCT_COPY((s32) &sp18.unk24 + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
+        sp18.unk28.Multiply((Matrix *) &sp18.unk28, &sp80);
+        sp18.unk28.Translate((Matrix *) &sp18.unk28, this->unk8);
+        MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &sp18.unk28));
         return;
     }
-    MKModel_CalculateNodeWorldPosition(this->unk1C, this->unk20, (MKVector3 *) &arg_sp28);
-    arg_sp80.SetIdentity();
-    arg_spB0 = arg_sp28;
-    arg_spB4 = arg_sp2C;
-    arg_spB8 = arg_sp30;
-    arg_spBC = 1.0f;
-    arg_sp80.Translate((Matrix *) &arg_sp80, this->unk8);
-    MKModel_SetWorldMatrix(this->unk18, *((Matrix *) &arg_sp80));
+    MKModel_CalculateNodeWorldPosition(this->unk1C, this->unk20, (MKVector3 *) &sp18.unk10);
+    sp80.SetIdentity();
+    sp80.unk30 = M2C_BITWISE(f32, sp18.unk10);
+    sp80.unk34 = M2C_BITWISE(f32, sp18.unk14);
+    sp80.unk38 = M2C_BITWISE(f32, sp18.unk18);
+    sp80.unk3C = 1.0f;
+    sp80.Translate(&sp80, this->unk8);
+    MKModel_SetWorldMatrix(this->unk18, sp80);
 }
 #endif
 

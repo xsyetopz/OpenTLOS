@@ -84,11 +84,12 @@ void MKWidget_GetWidgetUnderPoint(MKWidgetSystem *arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 f32 MKWidget_GetLocalMousePos(MKWidget *arg0, MKVector3 *arg1) {
+    Matrix sp10;
+
     MKWidget_GetMousePos(arg1);
-    arg0->GetLocalToWorldMatrix(&arg_sp10);
-    arg_sp10.Inverse((Matrix *) &arg_sp10);
+    arg0->GetLocalToWorldMatrix(&sp10);
+    sp10.Inverse(&sp10);
     M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f28, $f31 */);
     M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f28, $f0 */);
     M2C_ERROR(/* unknown instruction: ps_madds1 $f31, $f29, $f2, $f31 */);
@@ -97,7 +98,6 @@ f32 MKWidget_GetLocalMousePos(MKWidget *arg0, MKVector3 *arg1) {
     arg1->unk8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f2, $f31 */);
     return M2C_ERROR(/* psq_l unimplemented */);
 }
-#endif
 
 void MKWidget_BringToFront(MKWidget *arg0) {
     MKWidget *temp_r3_151;

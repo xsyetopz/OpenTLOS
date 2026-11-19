@@ -358,59 +358,82 @@ void GuardianCage::StateDyingExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spCC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GuardianCage::StateDyingUpdate() {
+    Matrix spD0;
+    M2C_UNK spCC;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f28_453;
     f32 temp_f29_456;
     f32 temp_f2_496;
+
     this->unk11C += -1960.0f * gUpdateTimeDelta;
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    arg_sp90 = arg_sp10;
-    arg_sp18 = this->unk120 * gUpdateTimeDelta;
-    arg_sp98 = (f64) arg_sp18;
+    sp90 = sp10;
+    sp18 = this->unk120 * gUpdateTimeDelta;
+    sp98 = (f64) sp18;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unk130 += (f32) arg_sp98;
+    this->unk130 += (f32) sp98;
     temp_f28_453 = _table_sinf(this->unkF0);
     temp_f29_456 = _table_sinf(this->unkEC);
-    arg_sp60 = _table_sinf(this->unkE8);
-    arg_sp64 = temp_f29_456;
-    arg_sp68 = temp_f28_453;
-    arg_spC0 = (f64) arg_sp60;
-    arg_spC8 = (f64) arg_sp68;
+    sp60 = _table_sinf(this->unkE8);
+    sp64 = temp_f29_456;
+    sp68 = temp_f28_453;
+    spC0 = (f64) sp60;
+    spC8 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_spB0 = arg_sp50;
-    arg_sp58 = (f32) arg_spC8 * 0.1f;
-    arg_spB8 = (f64) arg_sp58;
+    spB0 = sp50;
+    sp58 = (f32) spC8 * 0.1f;
+    spB8 = (f64) sp58;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp48 = (f32) arg_spC8 * 100.0f;
-    arg_sp80 = arg_sp40;
-    arg_sp88 = (f64) arg_sp48;
+    sp48 = (f32) spC8 * 100.0f;
+    sp80 = sp40;
+    sp88 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     temp_f2_496 = this->unk10C;
-    arg_spA0 = arg_sp30;
-    arg_sp38 = this->unk130 + (f32) arg_sp88;
-    arg_spA8 = (f64) arg_sp38;
+    spA0 = sp30;
+    sp38 = this->unk130 + (f32) sp88;
+    spA8 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (arg_spA4 == temp_f2_496) {
-        arg_spA4 = temp_f2_496;
+    if (unkspA4 == temp_f2_496) {
+        unkspA4 = temp_f2_496;
         this->unk14C.SetState(this, 3, 0U);
     }
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp70 = arg_sp20;
-    arg_sp28 = this->unk100 + (f32) arg_spB8;
-    arg_sp78 = (f64) arg_sp28;
-    arg_spD0.SetRotationPYR(*((MKVector3 *) &arg_sp70));
-    arg_sp100 = (f32) arg_spA0;
-    arg_sp104 = arg_spA4;
-    arg_sp108 = (f32) arg_spA8;
-    arg_sp10C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spD0));
+    sp70 = sp20;
+    sp28 = this->unk100 + (f32) spB8;
+    sp78 = (f64) sp28;
+    spD0.SetRotationPYR(*((MKVector3 *) &sp70));
+    spD0.unk30 = (f32) spA0;
+    spD0.unk34 = unkspA4;
+    spD0.unk38 = (f32) spA8;
+    spD0.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, spD0);
 }
 #endif
 
@@ -518,52 +541,76 @@ void GuardianCage::StateFloatingExit() {
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 void GuardianCage::StateFloatingUpdate() {
+    Matrix spE0;
+    M2C_UNK spDC;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    M2C_UNK sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f28_703;
     f32 temp_f28_744;
     f32 temp_f29_747;
+
     temp_f28_703 = gUpdateTimeDelta;
     MKVector(1.0f, 3.0f, 2.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-    arg_spA0 = arg_sp10;
-    arg_sp18 = arg_sp98 * temp_f28_703;
-    arg_spA8 = (f64) arg_sp18;
+    spA0 = sp10;
+    sp18 = sp98 * temp_f28_703;
+    spA8 = (f64) sp18;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unkF0 += (f32) arg_spA8;
-    M2C_STRUCT_COPY((s32) &arg_spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    this->unkF0 += (f32) spA8;
+    M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f28_744 = _table_sinf(this->unkF0);
     temp_f29_747 = _table_sinf(this->unkEC);
-    arg_sp60 = _table_sinf(this->unkE8);
-    arg_sp64 = temp_f29_747;
-    arg_sp68 = temp_f28_744;
-    arg_spD0 = (f64) arg_sp60;
-    arg_spD8 = (f64) arg_sp68;
+    sp60 = _table_sinf(this->unkE8);
+    sp64 = temp_f29_747;
+    sp68 = temp_f28_744;
+    spD0 = (f64) sp60;
+    spD8 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_spC0 = arg_sp50;
-    arg_sp58 = (f32) arg_spD8 * 0.1f;
-    arg_spC8 = (f64) arg_sp58;
+    spC0 = sp50;
+    sp58 = (f32) spD8 * 0.1f;
+    spC8 = (f64) sp58;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp48 = (f32) arg_spD8 * 100.0f;
-    arg_sp80 = arg_sp40;
-    arg_sp88 = (f64) arg_sp48;
+    sp48 = (f32) spD8 * 100.0f;
+    sp80 = sp40;
+    sp88 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spB0 = arg_sp30;
-    arg_sp38 = M2C_FIELD(this, f32 *, 0xE0) + (f32) arg_sp88;
-    arg_spB8 = (f64) arg_sp38;
+    spB0 = sp30;
+    sp38 = M2C_FIELD(this, f32 *, 0xE0) + (f32) sp88;
+    spB8 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp70 = arg_sp20;
-    arg_sp28 = this->unk100 + (f32) arg_spC8;
-    arg_sp78 = (f64) arg_sp28;
-    arg_spE0.SetRotationPYR(*((MKVector3 *) &arg_sp70));
-    arg_sp110 = (f32) arg_spB0;
-    arg_sp114 = arg_spB4;
-    arg_sp118 = (f32) arg_spB8;
-    arg_sp11C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spE0));
+    sp70 = sp20;
+    sp28 = this->unk100 + (f32) spC8;
+    sp78 = (f64) sp28;
+    spE0.SetRotationPYR(*((MKVector3 *) &sp70));
+    spE0.unk30 = (f32) spB0;
+    spE0.unk34 = unkspB4;
+    spE0.unk38 = (f32) spB8;
+    spE0.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, spE0);
 }
 #endif
 
@@ -623,16 +670,19 @@ void GuardianCage::Draw() {
 
 #if 0 // DRAFT: expression syntax error
 void GuardianCage::Update() {
+    Matrix sp20;
+    MKVector3 sp10;
+
     GameProp::Update();
     this->unk14C.Update(this, 0);
     if ((Guardian *) this->unk144 != NULL) {
-        M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkD0, (MKVector3 *) &arg_sp10);
-        arg_sp50 = arg_sp10;
-        arg_sp54 = arg_sp14;
-        arg_sp58 = arg_sp18;
-        arg_sp5C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk144->unk4, *((Matrix *) &arg_sp20));
+        M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkD0, &sp10);
+        sp20.unk30 = M2C_BITWISE(f32, sp10);
+        sp20.unk34 = sp10.unk4;
+        sp20.unk38 = sp10.unk8;
+        sp20.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk144->unk4, sp20);
     }
 }
 #endif
@@ -686,16 +736,19 @@ s32 GuardianCage::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GuardianCage::Reset() {
+    Matrix sp10;
+    M2C_UNK spC;
+
     GameProp::Reset();
     this->unk13C = this->unk138;
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp40 = M2C_FIELD(this, f32 *, 0xD8);
-    arg_sp44 = M2C_FIELD(this, f32 *, 0xDC);
-    arg_sp48 = M2C_FIELD(this, f32 *, 0xE0);
-    arg_sp4C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp10.unk30 = M2C_FIELD(this, f32 *, 0xD8);
+    sp10.unk34 = M2C_FIELD(this, f32 *, 0xDC);
+    sp10.unk38 = M2C_FIELD(this, f32 *, 0xE0);
+    sp10.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, sp10);
     this->unk14C.SetState(this, 1, 0U);
 }
 #endif

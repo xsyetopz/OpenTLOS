@@ -13,6 +13,7 @@
 #include "spyro/source/MCQueryScreen.h"
 #include "spyro/source/MCSelectCardScreen.h"
 #include "spyro/source/MCSelectFileScreen.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
@@ -38,67 +39,83 @@ static s8 *pDirectoryName = "BASLUS-21372s06";
 #endif
 u8 operation__16MemoryCardScreen[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-#if 0 // DRAFT: undefined identifier 'arg_sp58'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 void MCText::Draw(const RenderContext &arg0) {
+    s8 spF0;
+    RenderContext spA0;
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;                                       /* compiler-managed */
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKFont *temp_r4_123;
     f32 temp_f3_134;
     s32 temp_r3_93;
     s32 temp_r4_72;
-    arg_sp58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    arg_sp5C = 1.0f;
+
+    sp58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    unksp5C = 1.0f;
     if (((MKFont *) this->unk64 >= 0) && ((MKFont *) this->unk64 != NULL) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk18.unk34 == 0.0f) == 0))) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk18.unk38 == 0.0f) {
             return;
         }
-        arg_spA0.RenderContext();
-        arg_spA0.AddState(arg0, this->unk18);
+        spA0.RenderContext();
+        spA0.AddState(arg0, this->unk18);
         temp_r4_72 = this->unk18.unk3C;
         if (!(temp_r4_72 & 3)) {
-            arg_sp50 = this->unk18.unk34 * 0.5f;
+            sp50 = this->unk18.unk34 * 0.5f;
         } else if (temp_r4_72 & 1) {
-            arg_sp50 = 0.0f;
+            sp50 = 0.0f;
         } else {
-            arg_sp50 = this->unk18.unk34 / -2.0f;
+            sp50 = this->unk18.unk34 / -2.0f;
         }
         temp_r3_93 = this->unk18.unk3C;
         if (!(temp_r3_93 & 0xC)) {
-            arg_sp54 = this->unk18.unk38 * 0.5f;
+            unksp54 = this->unk18.unk38 * 0.5f;
         } else if (temp_r3_93 & 4) {
-            arg_sp54 = 0.0f;
+            unksp54 = 0.0f;
         } else {
-            arg_sp54 = this->unk18.unk38 / -2.0f;
+            unksp54 = this->unk18.unk38 / -2.0f;
         }
-        arg_sp60.SetIdentity();
-        arg_sp60.Translate((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp50));
-        arg_spA0.Multiply((Matrix *) &arg_sp60, (Matrix *) &arg_spA0);
+        sp60.SetIdentity();
+        sp60.Translate(&sp60, *((MKVector3 *) &sp50));
+        spA0.Multiply(&sp60, (Matrix *) &spA0);
         temp_r4_123 = this->unk64;
         if ((temp_r4_123 >= 0) && ((u32) *(gpTranslation_StringArray + ((s32) temp_r4_123 * 4)) != 0U)) {
-            MemoryCard_String(&arg_spF0, (s32) temp_r4_123);
+            MemoryCard_String(&spF0, (s32) temp_r4_123);
             temp_f3_134 = M2C_BITWISE(f32, this->unk68);
             if ((temp_f3_134 != 0.0f) || (M2C_BITWISE(f32, this->unk6C) != 0.0f)) {
-                arg_sp28 = arg_spD8;
-                arg_sp20 = arg_spD0 + temp_f3_134;
-                arg_sp24 = arg_spD4 + M2C_BITWISE(f32, this->unk6C);
-                arg_sp48 = (f64) arg_sp28;
-                arg_sp40 = (f64) arg_sp20;
-                arg_spD0 = (f32) arg_sp40;
-                arg_spD4 = arg_sp44;
-                arg_spD8 = (f32) arg_sp48;
-                arg_spDC = 1.0f;
-                this->unk64->DrawString(&arg_spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &arg_spA0, this->unk18.unk3C, 0x80000000U, 1.0f, 1.0f, NULL, 1U);
-                arg_sp18 = arg_spD8;
-                arg_sp10 = arg_spD0 - M2C_BITWISE(f32, this->unk68);
-                arg_sp14 = arg_spD4 - M2C_BITWISE(f32, this->unk6C);
-                arg_sp38 = (f64) arg_sp18;
-                arg_sp30 = (f64) arg_sp10;
-                arg_spD0 = (f32) arg_sp30;
-                arg_spD4 = arg_sp34;
-                arg_spD8 = (f32) arg_sp38;
-                arg_spDC = 1.0f;
+                sp28 = spA0.unk38;
+                sp20 = spA0.unk30 + temp_f3_134;
+                sp24 = spA0.unk34 + M2C_BITWISE(f32, this->unk6C);
+                sp48 = (f64) sp28;
+                sp40 = (f64) sp20;
+                spA0.unk30 = (f32) sp40;
+                spA0.unk34 = unksp44;
+                spA0.unk38 = (f32) sp48;
+                spA0.unk3C = 1.0f;
+                this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, 0x80000000U, 1.0f, 1.0f, NULL, 1U);
+                sp18 = spA0.unk38;
+                sp10 = spA0.unk30 - M2C_BITWISE(f32, this->unk68);
+                sp14 = spA0.unk34 - M2C_BITWISE(f32, this->unk6C);
+                sp38 = (f64) sp18;
+                sp30 = (f64) sp10;
+                spA0.unk30 = (f32) sp30;
+                spA0.unk34 = unksp34;
+                spA0.unk38 = (f32) sp38;
+                spA0.unk3C = 1.0f;
             }
-            this->unk64->DrawString(&arg_spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &arg_spA0, this->unk18.unk3C, (u32) (128.0f * arg_spE0) | (((u32) (128.0f * arg_spE4) << 8) | (((u32) (128.0f * arg_spEC) << 0x18) | ((u32) (128.0f * arg_spE8) << 0x10))), 1.0f, 1.0f, NULL, 1U);
+            this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, (u32) (128.0f * (f32) spA0.unk40) | (((u32) (128.0f * unkspE4) << 8) | (((u32) (128.0f * unkspEC) << 0x18) | ((u32) (128.0f * (f32) spA0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
         }
     }
 }

@@ -191,8 +191,21 @@ void EnemyGeneratorDoor::GetSpawnPos() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp80'
+#if 0 // DRAFT: expression syntax error
 void EnemyGeneratorDoor::GetDoorDir() {
+    Matrix sp80;
+    EnemyGeneratorDoor sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
+    f32 temp_f2_542;
+    f32 temp_f5_539;
+    f32 temp_f6_544;
     f32 var_f3_614;
     f32 var_f4_547;
     f64 temp_f1_553;
@@ -201,23 +214,27 @@ void EnemyGeneratorDoor::GetDoorDir() {
     s32 temp_r3_582;
     s32 var_r0_592;
     void *temp_r31_490;
+
     temp_r31_490 = M2C_ERROR(/* Read from unset register $r4 */);
-    if (((u8) M2C_FIELD(MKModel_GetRefPointData(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x10)), u8 *, 0x16) == 5) && (MKModel_GetRefPointMatrix(M2C_FIELD(M2C_FIELD(temp_r31_490, void **, 8), MKModel **, 4), M2C_FIELD(temp_r31_490, s32 *, 0x10), (Matrix *) &arg_sp80, 1U) != 0)) {
-        arg_sp38 = -arg_spA0;
-        arg_sp3C = -arg_spA4;
-        arg_sp40 = -arg_spA8;
-        this->unk0 = (f64) arg_sp38;
-        this->unk8 = (f64) arg_sp40;
+    if (((u8) M2C_FIELD(MKModel_GetRefPointData(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x10)), u8 *, 0x16) == 5) && (MKModel_GetRefPointMatrix(M2C_FIELD(M2C_FIELD(temp_r31_490, void **, 8), MKModel **, 4), M2C_FIELD(temp_r31_490, s32 *, 0x10), &sp80, 1U) != 0)) {
+        sp38 = -sp80.unk20;
+        sp3C = -sp80.unk24;
+        sp40 = -sp80.unk28;
+        this->unk0 = (f64) sp38;
+        this->unk8 = (f64) sp40;
         return;
     }
-    arg_sp48.GetSpawnPos();
-    arg_sp58.GetDoorPos();
+    sp48.GetSpawnPos();
+    sp48.unk10.GetDoorPos();
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp68 = arg_sp18;
-    arg_sp20 = arg_sp60 - arg_sp50;
-    arg_sp70 = (f64) arg_sp20;
-    var_f4_547 = ((f32) arg_sp70 * (f32) arg_sp70) + (((f32) arg_sp68 * (f32) arg_sp68) + (arg_sp6C * arg_sp6C));
+    sp48.unk20 = sp18;
+    sp20 = M2C_BITWISE(f32, sp48.unk18) - (f32) sp48.unk8;
+    temp_f5_539 = M2C_BITWISE(f32, sp48.unk24);
+    temp_f2_542 = M2C_BITWISE(f32, sp48.unk20);
+    sp48.unk28 = (f64) sp20;
+    temp_f6_544 = M2C_BITWISE(f32, sp48.unk28);
+    var_f4_547 = (temp_f6_544 * temp_f6_544) + ((temp_f2_542 * temp_f2_542) + (temp_f5_539 * temp_f5_539));
     if (var_f4_547 > 1e-12f) {
         if (var_f4_547 > 0.0f) {
             temp_f1_553 = __frsqrte(var_f4_547);
@@ -227,18 +244,18 @@ void EnemyGeneratorDoor::GetDoorDir() {
         } else if (var_f4_547 < M2C_BITWISE(f32, 0.0)) {
             var_f4_547 = __float_nan;
         } else {
-            arg_sp10 = var_f4_547;
-            temp_r3_582 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_547;
+            temp_r3_582 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_582) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_592 = 1;
                 } else {
                     var_r0_592 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_592 = 5;
                 } else {
                     var_r0_592 = 3;
@@ -256,11 +273,11 @@ void EnemyGeneratorDoor::GetDoorDir() {
     } else {
         var_f3_614 = 0.0f;
     }
-    arg_sp2C = arg_sp6C * var_f3_614;
-    arg_sp28 = (f32) arg_sp68 * var_f3_614;
-    arg_sp30 = (f32) arg_sp70 * var_f3_614;
-    this->unk0 = (f64) arg_sp28;
-    this->unk8 = (f64) arg_sp30;
+    sp2C = temp_f5_539 * var_f3_614;
+    sp28 = M2C_BITWISE(f32, sp48.unk20) * var_f3_614;
+    sp30 = temp_f6_544 * var_f3_614;
+    this->unk0 = (f64) sp28;
+    this->unk8 = (f64) sp30;
 }
 #endif
 

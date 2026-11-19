@@ -29,7 +29,9 @@ extern s32 shadowsRendered;
 static s32 lit_674 = 0x04040404;                       /* const */
 
 void MKShadow_EndScene(bool arg0, bool arg1, MKVector4 *arg2) {
+    GXTexObj sp20;
     GXRenderModeObj *temp_r3_214;
+
     if ((s32) shadowsRendered != 0) {
         MKView_Push();
         GXSetViewport(0.0f, 0.0f, 640.0f, 400.0f, 0.0f, 1.0f);
@@ -63,12 +65,12 @@ void MKShadow_EndScene(bool arg0, bool arg1, MKVector4 *arg2) {
         GXSetZMode(1U, GX_ALWAYS, 0U);
         GXPixModeSync();
         GXInvalidateTexAll();
-        GXInitTexObj((GXTexObj *) &arg_sp20, &MKMat_MK2_Standard_CaptureTextureData, 0x280U, 0x190U, GX_TF_I8, GX_CLAMP, GX_CLAMP, 0U);
-        GXLoadTexObj((GXTexObj *) &arg_sp20, GX_TEXMAP0);
+        GXInitTexObj(&sp20, &MKMat_MK2_Standard_CaptureTextureData, 0x280U, 0x190U, GX_TF_I8, GX_CLAMP, GX_CLAMP, 0U);
+        GXLoadTexObj(&sp20, GX_TEXMAP0);
         MK_SetVDMode((MK_VertexDescriptorMode) 2);
-        C_MTXOrtho((f32 (*)[4]) &arg_sp40, 0.0f, 399.0f, 0.0f, 639.0f, 0.0f, 1.0f);
+        C_MTXOrtho((f32 (*)[4]) &sp40[0], 0.0f, 399.0f, 0.0f, 639.0f, 0.0f, 1.0f);
         GXSetCurrentMtx(3U);
-        GXSetProjection((f32 (*)[4]) &arg_sp40, GX_ORTHOGRAPHIC);
+        GXSetProjection((f32 (*)[4]) &sp40[0], GX_ORTHOGRAPHIC);
         GXBegin(GX_TRIANGLESTRIP, GX_VTXFMT4, 4U);
         *(f32 *)0xCC008000 = 0.0f;
         *(f32 *)0xCC008000 = 0.0f;

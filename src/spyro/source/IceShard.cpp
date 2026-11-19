@@ -11,8 +11,18 @@
 
 extern MKPropDescriptor *pIceShardDescriptor;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void IceShard::Update() {
+    Matrix sp90;
+    Matrix sp50;
+    f64 sp40;                                       /* compiler-managed */
+    f64 sp38;                                       /* compiler-managed */
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 var_f4_70;
     f32 var_f5_91;
     f64 temp_f1_102;
@@ -20,21 +30,22 @@ void IceShard::Update() {
     f64 temp_f1_96;
     s32 temp_r3_125;
     s32 var_r0_135;
+
     Projectile::Update();
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp90);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp90);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     var_f4_70 = 0.0f;
-    arg_sp20 = 0.0f;
-    arg_sp18 = 0.0f;
-    arg_sp1C = 1.0f;
-    arg_sp30 = (f64) arg_sp20;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp38 = this->unkC8;
-    arg_sp40 = this->unkD0;
-    var_f5_91 = ((f32) arg_sp40 * (f32) arg_sp40) + (((f32) arg_sp38 * (f32) arg_sp38) + (arg_sp3C * arg_sp3C));
+    sp20 = 0.0f;
+    sp18 = 0.0f;
+    sp1C = 1.0f;
+    sp30 = (f64) sp20;
+    sp28 = (f64) sp18;
+    sp38 = this->unkC8;
+    sp40 = this->unkD0;
+    var_f5_91 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
     if (var_f5_91 > 0.000001f) {
         if (var_f5_91 > 0.0f) {
             temp_f1_96 = __frsqrte(var_f5_91);
@@ -44,18 +55,18 @@ void IceShard::Update() {
         } else if (var_f5_91 < M2C_BITWISE(f32, 0.0)) {
             var_f5_91 = __float_nan;
         } else {
-            arg_sp10 = var_f5_91;
-            temp_r3_125 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_91;
+            temp_r3_125 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_125) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_135 = 1;
                 } else {
                     var_r0_135 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_135 = 5;
                 } else {
                     var_r0_135 = 3;
@@ -73,16 +84,16 @@ void IceShard::Update() {
     } else {
         var_f5_91 = 0.0f;
     }
-    arg_sp38 = (f32) arg_sp38 * var_f4_70;
-    arg_sp3C *= var_f4_70;
-    arg_sp40 = (f32) arg_sp40 * var_f4_70;
+    sp38 = (f32) sp38 * var_f4_70;
+    unksp3C *= var_f4_70;
+    sp40 = (f32) sp40 * var_f4_70;
     if (var_f5_91 != 0.0f) {
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp38), (MKVector3 *) &arg_sp28);
-        arg_sp80 = arg_spC0;
-        arg_sp84 = arg_spC4;
-        arg_sp88 = arg_spC8;
-        arg_sp8C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+        KDMath_BuildMatrixFromFwd(&sp50, *((MKVector3 *) &sp38), (MKVector3 *) &sp28);
+        sp50.unk30 = sp90.unk30;
+        sp50.unk34 = sp90.unk34;
+        sp50.unk38 = sp90.unk38;
+        sp50.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp50);
     }
 }
 #endif

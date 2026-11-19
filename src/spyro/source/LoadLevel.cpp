@@ -7,6 +7,8 @@
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/MCLoadCheckScreen.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
@@ -56,11 +58,14 @@ static M2C_UNK .L_8035BDE2;                         /* unable to generate initia
 static M2C_UNK .L_8035BE03;                         /* unable to generate initializer: unknown type; const */
 
 void LoadLevel_Draw() {
+    RenderContext sp20;
+    Tools_Ortho sp10;
+
     if ((void **) pLoadingScreenSystem != NULL) {
-        arg_sp10.Tools_Ortho();
-        arg_sp20.RenderContext();
-        M2C_FIELD(*pLoadingScreenSystem, M2C_UNK (**)(void **, M2C_UNK *), 0x1C)(pLoadingScreenSystem, &arg_sp20);
-        arg_sp10.~Tools_Ortho(-1);
+        sp10.Tools_Ortho();
+        sp20.RenderContext();
+        M2C_FIELD(*pLoadingScreenSystem, M2C_UNK (**)(void **, RenderContext *), 0x1C)(pLoadingScreenSystem, &sp20);
+        sp10.~Tools_Ortho(-1);
     }
 }
 #endif

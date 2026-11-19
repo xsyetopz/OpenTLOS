@@ -288,24 +288,24 @@ void BigBeetleHive::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void BigBeetleHive::UpdateAttachedNests() {
+    Matrix sp10;
     s32 var_r29_518;
     s32 var_r31_519;
     void *temp_r30_521;
+
     var_r29_518 = 0;
     var_r31_519 = 0;
     do {
         temp_r30_521 = this + var_r31_519;
         if ((void *) M2C_FIELD(temp_r30_521, void **, 0x1AC) != NULL) {
-            MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(temp_r30_521, s32 *, 0x1B4), (Matrix *) &arg_sp10, 1U);
-            MKModel_SetWorldMatrix(M2C_FIELD(M2C_FIELD(temp_r30_521, void **, 0x1AC), MKModel **, 4), *((Matrix *) &arg_sp10));
+            MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(temp_r30_521, s32 *, 0x1B4), &sp10, 1U);
+            MKModel_SetWorldMatrix(M2C_FIELD(M2C_FIELD(temp_r30_521, void **, 0x1AC), MKModel **, 4), sp10);
         }
         var_r29_518 += 1;
         var_r31_519 += 0xC;
     } while (var_r29_518 < 5);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void BigBeetleHive::Update() {

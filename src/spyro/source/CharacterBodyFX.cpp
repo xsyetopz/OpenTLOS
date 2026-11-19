@@ -321,6 +321,22 @@ void CharacterBodyFX::Update() {
 
 #if 0 // DRAFT: pointer/array required
 void CharacterBodyFX::CalculateNodeData(int arg0) {
+    Matrix spC0;
+    M2C_UNK spBC;
+    MKVector3 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    MKVector3 sp68;
+    MKVector3 sp58;
+    MKVector3 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    s16 sp10;
     Animation *temp_r25_593;
     CharacterBodyFXData *temp_r3_546;
     s32 temp_r7_596;
@@ -330,6 +346,7 @@ void CharacterBodyFX::CalculateNodeData(int arg0) {
     s32 var_r29_550;
     void *temp_r3_679;
     void *temp_r4_581;
+
     temp_r3_546 = this->unk8;
     if (temp_r3_546 != NULL) {
         var_r29_550 = temp_r3_546->unk4;
@@ -343,37 +360,37 @@ void CharacterBodyFX::CalculateNodeData(int arg0) {
 loop_10:
         if (var_r28_557 < var_r29_550) {
             if ((u32) M2C_FIELD(*(this->unk4 + var_r26_556), u32 *, 8) != -1U) {
-                M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_r4_581 = *(this->unk4 + var_r26_556);
                 if ((s32) M2C_FIELD(temp_r4_581, s32 *, 0) == 0) {
-                    MKModel_CalculateNodeWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), (MKVector3 *) &arg_spA8);
+                    MKModel_CalculateNodeWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), &spA8);
                     temp_r25_593 = MKModel_GetAnimation(this->unkC);
                     temp_r7_596 = MKModel_GetWorldMatrix(this->unkC);
-                    arg_sp10 = (s16) M2C_FIELD(*(this->unk4 + var_r26_556), s32 *, 8);
-                    temp_r25_593->CalculateMatrices((Matrix *) &arg_spC0, 1, &arg_sp10, (Matrix *) temp_r7_596);
+                    sp10 = (s16) M2C_FIELD(*(this->unk4 + var_r26_556), s32 *, 8);
+                    temp_r25_593->CalculateMatrices(&spC0, 1, &sp10, (Matrix *) temp_r7_596);
                 } else {
-                    MKModel_CalculateRefPointWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), (MKVector3 *) &arg_spA8);
+                    MKModel_CalculateRefPointWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), &spA8);
                 }
                 *(this->unk4 + (var_r26_556 + 0x60)) = 1;
-                M2C_STRUCT_COPY((this->unk4 + (var_r26_556 + 0x20)) - 4 + 4, (s32) &arg_spBC + 4, 0x40);
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x28), *((MKVector3 *) &arg_sp48));
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x24), *((MKVector3 *) &arg_sp58));
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x20), *((MKVector3 *) &arg_sp68));
+                M2C_STRUCT_COPY((this->unk4 + (var_r26_556 + 0x20)) - 4 + 4, (s32) &spBC + 4, 0x40);
+                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x28), sp48);
+                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x24), sp58);
+                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x20), sp68);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp78 = arg_sp28;
-                arg_sp30 = arg_spB0 + arg_sp70;
-                arg_sp80 = (f64) arg_sp30;
+                sp78 = sp28;
+                sp30 = spA8.unk8 + sp68.unk8;
+                sp80 = (f64) sp30;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp88 = arg_sp18;
-                arg_sp20 = (f32) arg_sp80 + arg_sp60;
-                arg_sp90 = (f64) arg_sp20;
+                sp88 = sp18;
+                sp20 = (f32) sp80 + sp58.unk8;
+                sp90 = (f64) sp20;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 temp_r3_679 = this->unk4 + (var_r26_556 + 8);
-                arg_sp98 = arg_sp38;
-                M2C_FIELD(temp_r3_679, f64 *, 0) = arg_sp38;
-                arg_sp40 = (f32) arg_sp90 + arg_sp50;
-                arg_spA0 = (f64) arg_sp40;
-                M2C_FIELD(temp_r3_679, f64 *, 8) = (f64) arg_sp40;
+                sp98 = sp38;
+                M2C_FIELD(temp_r3_679, f64 *, 0) = sp38;
+                sp40 = (f32) sp90 + sp48.unk8;
+                spA0 = (f64) sp40;
+                M2C_FIELD(temp_r3_679, f64 *, 8) = (f64) sp40;
             }
             var_r28_557 += 1;
             var_r26_556 += 0x70;

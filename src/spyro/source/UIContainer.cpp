@@ -3,6 +3,7 @@
 #include "common/Source/MKIni.h"
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include <m2c_macros.h>
@@ -98,21 +99,21 @@ loop_4:
     UIObject::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void UIContainer::Draw(const RenderContext &arg0) {
+    RenderContext sp10;
     UIObject *var_r31_172;
-    arg_sp10.RenderContext(arg0, this->unk18);
+
+    sp10.RenderContext(arg0, this->unk18);
     var_r31_172 = this->unk60;
 loop_4:
     if (var_r31_172 != NULL) {
         if ((u8) var_r31_172->unk14 != 0) {
-            var_r31_172->Draw(arg_sp10);
+            var_r31_172->Draw(sp10);
         }
         var_r31_172 = var_r31_172->unk10;
         goto loop_4;
     }
 }
-#endif
 
 void UIContainer::Update() {
     UIObject *var_r31_204;

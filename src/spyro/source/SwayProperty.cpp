@@ -52,6 +52,16 @@ s32 SwayProperty::ResolveCommand(const char *arg0) const {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void SwayProperty::Update() {
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Matrix *temp_r3_270;
     Matrix *temp_r3_288;
     Matrix *temp_r3_294;
@@ -68,6 +78,7 @@ void SwayProperty::Update() {
     void *temp_r3_149;
     void *temp_r3_170;
     void *temp_r6_269;
+
     temp_r3_130 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) M2C_FIELD(temp_r3_130, u8 *, 0x88) != 0) {
         temp_f1_138 = (gUpdateTimeDelta * this->unk30) + M2C_FIELD(temp_r3_130, f32 *, 0x80);
@@ -78,18 +89,18 @@ void SwayProperty::Update() {
         }
         M2C_FIELD(temp_r3_130, f32 *, 0x80) = var_f0_141;
         temp_r3_149 = *KDProperty::pInstanceMem + this->unk8;
-        arg_sp40.operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
+        sp40.operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp28 = arg_sp48 + M2C_FIELD((temp_r3_149 + 0x40), f32 *, 8);
+        sp28 = sp40.unk8 + M2C_FIELD((temp_r3_149 + 0x40), f32 *, 8);
         temp_r3_170 = *KDProperty::pInstanceMem + (this->unk8 + 0x50);
-        M2C_FIELD(temp_r3_170, f64 *, 0) = arg_sp20;
-        M2C_FIELD(temp_r3_170, f64 *, 8) = (f64) arg_sp28;
+        M2C_FIELD(temp_r3_170, f64 *, 0) = sp20;
+        M2C_FIELD(temp_r3_170, f64 *, 8) = (f64) sp28;
         temp_r0_176 = this->unk8 + 0x50;
-        arg_sp50 = arg_sp20;
+        sp50 = sp20;
         temp_f2_178 = *(*KDProperty::pInstanceMem + temp_r0_176);
-        arg_sp58 = (f64) arg_sp28;
+        sp58 = (f64) sp28;
         if (temp_f2_178 > 6.2831855f) {
             *(*KDProperty::pInstanceMem + temp_r0_176) = temp_f2_178 - 6.2831855f;
         } else if (temp_f2_178 < 0.0f) {
@@ -111,21 +122,21 @@ void SwayProperty::Update() {
         }
         if ((s32) this->unk34 < 0) {
             MKModel_SetRotation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), *(*KDProperty::pInstanceMem + (this->unk8 + 0x50)));
-            M2C_STRUCT_COPY((s32) &arg_sp5C + 4, MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)) - 4 + 4, 0x40);
-            arg_sp60.Scale3x3((Matrix *) &arg_sp60, *(*KDProperty::pInstanceMem + (this->unk8 + 0x60)));
-            MKModel_SetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), *((Matrix *) &arg_sp60));
+            M2C_STRUCT_COPY((s32) &unksp5C + 4, MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)) - 4 + 4, 0x40);
+            sp60.Scale3x3(&sp60, *(*KDProperty::pInstanceMem + (this->unk8 + 0x60)));
+            MKModel_SetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), sp60);
             return;
         }
         ((Matrix *) (*KDProperty::pInstanceMem + this->unk8))->SetIdentity();
         temp_r3_265 = this->unk8;
         temp_r6_269 = *KDProperty::pInstanceMem + (temp_r3_265 + 0x70);
         temp_r3_270 = *KDProperty::pInstanceMem + temp_r3_265;
-        arg_sp10 = -M2C_FIELD(temp_r6_269, f32 *, 0);
-        arg_sp14 = -M2C_FIELD(temp_r6_269, f32 *, 4);
-        arg_sp18 = -M2C_FIELD(temp_r6_269, f32 *, 8);
-        arg_sp30 = (f64) arg_sp10;
-        arg_sp38 = (f64) arg_sp18;
-        temp_r3_270->Translate(temp_r3_270, *((MKVector3 *) &arg_sp30));
+        sp10 = -M2C_FIELD(temp_r6_269, f32 *, 0);
+        sp14 = -M2C_FIELD(temp_r6_269, f32 *, 4);
+        sp18 = -M2C_FIELD(temp_r6_269, f32 *, 8);
+        sp30 = (f64) sp10;
+        sp38 = (f64) sp18;
+        temp_r3_270->Translate(temp_r3_270, *((MKVector3 *) &sp30));
         temp_r3_288 = *KDProperty::pInstanceMem + this->unk8;
         temp_r3_288->RotatePYR(temp_r3_288, *(temp_r3_288 + 0x50));
         temp_r3_294 = *KDProperty::pInstanceMem + this->unk8;
@@ -136,6 +147,15 @@ void SwayProperty::Update() {
 
 #if 0 // DRAFT: ')' expected
 void SwayProperty::ResolveInstance() {
+    Matrix sp60;
+    f64 sp50;
+    f64 sp48;
+    f64 sp38;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    u16 sp10;
     Animation *temp_r3_402;
     f32 temp_f30_338;
     f32 temp_f31_342;
@@ -147,22 +167,23 @@ void SwayProperty::ResolveInstance() {
     void *temp_r3_397;
     void *temp_r3_418;
     void *temp_r5_431;
+
     if (((u32) this->unk14 != 0) && ((s8 *) this->unk10 != NULL) && (stricmp"localToWorld" == 0)) {
         temp_f30_338 = M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)), f32 *, 0x28);
         temp_f31_342 = M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)), f32 *, 0x14);
-        arg_sp18 = *MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-        arg_sp1C = temp_f31_342;
+        sp18 = *MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
+        sp1C = temp_f31_342;
         temp_r3_351 = *KDProperty::pInstanceMem + (this->unk8 + 0x60);
-        arg_sp20 = temp_f30_338;
-        M2C_FIELD(temp_r3_351, f64 *, 0) = (f64) arg_sp18;
-        M2C_FIELD(temp_r3_351, f64 *, 8) = (f64) arg_sp20;
-        arg_sp48 = (f64) arg_sp18;
-        arg_sp50 = (f64) arg_sp20;
+        sp20 = temp_f30_338;
+        M2C_FIELD(temp_r3_351, f64 *, 0) = (f64) sp18;
+        M2C_FIELD(temp_r3_351, f64 *, 8) = (f64) sp20;
+        sp48 = (f64) sp18;
+        sp50 = (f64) sp20;
         MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-        arg_sp38.GetRotationPYR();
+        sp38.GetRotationPYR();
         temp_r3_370 = *KDProperty::pInstanceMem + (this->unk8 + 0x40);
-        M2C_FIELD(temp_r3_370, f64 *, 0) = arg_sp38;
-        M2C_FIELD(temp_r3_370, f64 *, 8) = arg_sp40;
+        M2C_FIELD(temp_r3_370, f64 *, 0) = sp38;
+        M2C_FIELD(temp_r3_370, f64 *, 8) = sp40;
         return;
     }
     this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (SubObjectType) 0, this->unk10);
@@ -172,12 +193,12 @@ void SwayProperty::ResolveInstance() {
     M2C_FIELD(temp_r3_397, f64 *, 0) = (f64) M2C_FIELD(temp_r3_391, f64 *, 0);
     M2C_FIELD(temp_r3_397, f64 *, 8) = (f64) M2C_FIELD(temp_r3_391, f64 *, 8);
     temp_r3_402 = MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-    arg_sp10 = temp_r30_387;
-    temp_r3_402->CalculateMatrices((Matrix *) &arg_sp60, 1, (s16 *) &arg_sp10, NULL);
-    arg_sp28.GetRotationPYR();
+    sp10 = temp_r30_387;
+    temp_r3_402->CalculateMatrices(&sp60, 1, (s16 *) &sp10, NULL);
+    sp28.GetRotationPYR();
     temp_r3_418 = *KDProperty::pInstanceMem + (this->unk8 + 0x40);
-    M2C_FIELD(temp_r3_418, f64 *, 0) = arg_sp28;
-    M2C_FIELD(temp_r3_418, f64 *, 8) = arg_sp30;
+    M2C_FIELD(temp_r3_418, f64 *, 0) = sp28;
+    M2C_FIELD(temp_r3_418, f64 *, 8) = sp30;
     temp_r30_424 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r30_424, void **, 0x84) = MKDynamicBone_AddDynamicBone(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (s32) temp_r30_387);
     temp_r5_431 = *KDProperty::pInstanceMem + this->unk8;

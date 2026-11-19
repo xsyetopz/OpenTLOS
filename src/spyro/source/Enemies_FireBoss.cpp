@@ -439,10 +439,17 @@ block_7:
 
 #if 0 // DRAFT: expression syntax error
 void FireBoss::LaunchFireball() {
+    Matrix sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp10;
     f32 temp_r4_683;
     s32 temp_r3_702;
     s32 temp_r3_732;
     u8 var_r31_670;
+
     var_r31_670 = 0;
     if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
         var_r31_670 = 1;
@@ -450,16 +457,16 @@ void FireBoss::LaunchFireball() {
     if (var_r31_670 != 0) {
         temp_r4_683 = this->unkF50;
         if ((M2C_BITWISE(u32, temp_r4_683) != 0U) && ((u32) M2C_FIELD(temp_r4_683, u32 *, 0x84) != -1U) && ((u32) M2C_FIELD(temp_r4_683, u32 *, 0) != 0U)) {
-            arg_sp40.SetIdentity();
-            temp_r3_702 = ((Projectile *) (M2C_FIELD(this->unkF50, Projectile **, 0x80)))->CreateInstance((ProjectileType) (u32) (u64) MKModel_GetRefPointMatrix(this->unk4, this->unkD10.unk1E8, (Matrix *) &arg_sp40, 1U));
+            sp40.SetIdentity();
+            temp_r3_702 = ((Projectile *) (M2C_FIELD(this->unkF50, Projectile **, 0x80)))->CreateInstance((ProjectileType) (u32) (u64) MKModel_GetRefPointMatrix(this->unk4, this->unkD10.unk1E8, &sp40, 1U));
             if (temp_r3_702 != 0) {
-                arg_sp30 = arg_sp70;
-                arg_sp38 = arg_sp78;
-                arg_sp10.GetPos();
-                arg_sp20 = arg_sp10;
-                arg_sp28 = arg_sp18;
-                arg_sp24 = arg_sp34;
-                M2C_FIELD(M2C_FIELD(temp_r3_702, void **, 0x44), M2C_UNK (**)(s32, f64 *, f64 *, FireBoss *, s32, M2C_UNK, f32), 0x4C)(temp_r3_702, &arg_sp30, &arg_sp20, this, GS_TrainBossMissle01, 0, 1000.0f);
+                sp30 = (f64) sp40.unk30;
+                sp38 = (f64) sp40.unk38;
+                sp10.GetPos();
+                sp20 = sp10;
+                sp28 = sp18;
+                unksp24 = unksp34;
+                M2C_FIELD(M2C_FIELD(temp_r3_702, void **, 0x44), M2C_UNK (**)(s32, f64 *, f64 *, FireBoss *, s32, M2C_UNK, f32), 0x4C)(temp_r3_702, &sp30, &sp20, this, GS_TrainBossMissle01, 0, 1000.0f);
                 this->unkD10.EmitSmoke();
                 temp_r3_732 = this->unk1070 - 4;
                 this->unk1070 = temp_r3_732;
@@ -825,61 +832,86 @@ u8 FireBoss::SpyroIsInFront() {
 
 #if 0 // DRAFT: expression syntax error
 void FireBoss::CheckFlameThrowerHit() {
+    MKCollisionResult sp160;
+    Matrix sp120;
+    Matrix spE0;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    u8 sp14;
+    void *sp10;
+    s32 sp8;
     u32 var_r29_1569;
     u32 var_r30_1503;
     u8 var_r30_1383;
     u8 var_r30_1485;
     u8 var_r30_1551;
     void *temp_r4_1405;
+
     if ((u8) this->unkD10.unk78 != 0) {
         var_r30_1383 = 0;
         if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
             var_r30_1383 = 1;
         }
         if (var_r30_1383 != 0) {
-            MKModel_GetRefPointMatrix(this->unkD14, (s32) this->unkD10.unk1D8, (Matrix *) &arg_sp120, 1U);
-            MKModel_GetRefPointMatrix(this->unkD14, (s32) this->unkD10.unk1E0, (Matrix *) &arg_spE0, 1U);
+            MKModel_GetRefPointMatrix(this->unkD14, (s32) this->unkD10.unk1D8, &sp120, 1U);
+            MKModel_GetRefPointMatrix(this->unkD14, (s32) this->unkD10.unk1E0, &spE0, 1U);
             temp_r4_1405 = this->unk634;
-            arg_sp10 = temp_r4_1405;
+            sp10 = temp_r4_1405;
             if (temp_r4_1405 != NULL) {
-                arg_sp14 = M2C_FIELD(temp_r4_1405, u8 *, 4);
+                sp14 = M2C_FIELD(temp_r4_1405, u8 *, 4);
                 M2C_FIELD(temp_r4_1405, u8 *, 4) = 0U;
             }
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            arg_spC8 = arg_sp28;
-            arg_sp30 = arg_sp148 * -1.0f;
-            arg_spD0 = (f64) arg_sp30;
-            arg_sp140 = (f32) arg_spC8;
-            arg_sp144 = arg_spCC;
-            arg_sp148 = (f32) arg_spD0;
-            arg_sp14C = 0.0f;
+            spC8 = sp28;
+            sp30 = sp120.unk28 * -1.0f;
+            spD0 = (f64) sp30;
+            sp120.unk20 = (f32) spC8;
+            sp120.unk24 = unkspCC;
+            sp120.unk28 = (f32) spD0;
+            sp120.unk2C = 0.0f;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            arg_sp10C = 0.0f;
-            arg_spB8 = arg_sp18;
-            arg_sp20 = arg_sp108 * -1.0f;
-            arg_spC0 = (f64) arg_sp20;
-            arg_sp100 = (f32) arg_spB8;
-            arg_sp104 = arg_spBC;
-            arg_sp108 = (f32) arg_spC0;
+            spE0.unk2C = 0.0f;
+            spB8 = sp18;
+            sp20 = spE0.unk28 * -1.0f;
+            spC0 = (f64) sp20;
+            spE0.unk20 = (f32) spB8;
+            spE0.unk24 = unkspBC;
+            spE0.unk28 = (f32) spC0;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            arg_sp70 = (f32) arg_spD0 * 500.0f;
-            arg_sp98 = arg_sp68;
-            arg_spA0 = (f64) arg_sp70;
+            sp70 = (f32) spD0 * 500.0f;
+            sp98 = sp68;
+            spA0 = (f64) sp70;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_spA8 = arg_sp58;
-            arg_sp60 = arg_sp158 + (f32) arg_spA0;
-            arg_spB0 = (f64) arg_sp60;
-            if (MKCollision_SweepSphereCollide(*((MKVector3 *) &arg_sp150), *((MKVector3 *) &arg_spA8), 200.0f, (MKCollisionResult *) &arg_sp160, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
+            spA8 = sp58;
+            sp60 = sp120.unk38 + (f32) spA0;
+            spB0 = (f64) sp60;
+            if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp120.unk30), *((MKVector3 *) &spA8), 200.0f, &sp160, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
                 var_r30_1485 = 0;
                 if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
                     var_r30_1485 = 1;
                 }
                 if (var_r30_1485 != 0) {
-                    if ((arg_sp1B0 != 0) && (arg_sp1A8 != NULL) && (var_r30_1503 = M2C_FIELD(arg_sp1A8, u32 *, 8), ((var_r30_1503 == 0U) == 0))) {
+                    if ((sp160.unk50 != 0) && (sp160.unk48 != NULL) && (var_r30_1503 = M2C_FIELD(sp160.unk48, u32 *, 8), ((var_r30_1503 == 0U) == 0))) {
 
                     } else {
                         var_r30_1503 = 0U;
@@ -891,21 +923,21 @@ void FireBoss::CheckFlameThrowerHit() {
             }
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp78 = arg_sp48;
-            arg_sp50 = arg_sp108 * 500.0f;
-            arg_sp80 = (f64) arg_sp50;
+            sp78 = sp48;
+            sp50 = spE0.unk28 * 500.0f;
+            sp80 = (f64) sp50;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp88 = arg_sp38;
-            arg_sp40 = arg_sp118 + (f32) arg_sp80;
-            arg_sp90 = (f64) arg_sp40;
-            if (MKCollision_SweepSphereCollide(*((MKVector3 *) &arg_sp110), *((MKVector3 *) &arg_sp88), 200.0f, (MKCollisionResult *) &arg_sp160, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
+            sp88 = sp38;
+            sp40 = spE0.unk38 + (f32) sp80;
+            sp90 = (f64) sp40;
+            if (MKCollision_SweepSphereCollide(*((MKVector3 *) &spE0.unk30), *((MKVector3 *) &sp88), 200.0f, &sp160, (MKCollisionMode) 2, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
                 var_r30_1551 = 0;
                 if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
                     var_r30_1551 = 1;
                 }
                 if (var_r30_1551 != 0) {
-                    if ((arg_sp1B0 != 0) && (arg_sp1A8 != NULL) && (var_r29_1569 = M2C_FIELD(arg_sp1A8, u32 *, 8), ((var_r29_1569 == 0U) == 0))) {
+                    if ((sp160.unk50 != 0) && (sp160.unk48 != NULL) && (var_r29_1569 = M2C_FIELD(sp160.unk48, u32 *, 8), ((var_r29_1569 == 0U) == 0))) {
 
                     } else {
                         var_r29_1569 = 0U;
@@ -916,10 +948,10 @@ void FireBoss::CheckFlameThrowerHit() {
                 }
             }
             M2C_FIELD(this, s8 *, 0xFCB) = 0;
-            arg_sp8 = 1;
+            sp8 = 1;
             this->unkF70.unk44.Update(GS_TrainBossMissle02, 1U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-            if (arg_sp10 != NULL) {
-                M2C_FIELD(arg_sp10, u8 *, 4) = arg_sp14;
+            if (sp10 != NULL) {
+                M2C_FIELD(sp10, u8 *, 4) = sp14;
             }
         } else {
             goto block_33;
@@ -927,7 +959,7 @@ void FireBoss::CheckFlameThrowerHit() {
     } else {
 block_33:
         M2C_FIELD(this, s8 *, 0xFCB) = 1;
-        arg_sp8 = 1;
+        sp8 = 1;
         this->unkF70.unk44.Update(GS_TrainBossMissle02, 1U, 0U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }

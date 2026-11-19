@@ -26,8 +26,53 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pHotSpitDescriptor;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1F0'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void HotSpit::Update() {
+    Matrix sp1F0;
+    Matrix sp1B0;
+    f64 sp1A0;                                      /* compiler-managed */
+    f64 sp198;                                      /* compiler-managed */
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    MKVector3 sp158;
+    M2C_UNK sp148;
+    f64 sp140;
+    f64 sp138;
+    M2C_UNK sp128;
+    M2C_UNK sp118;
+    f64 sp110;
+    f64 sp108;
+    MKVector3 spF8;
+    M2C_UNK spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    MKVector3 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_230;
     f32 temp_f1_240;
     f32 temp_f28_192;
@@ -43,21 +88,22 @@ void HotSpit::Update() {
     f64 temp_f1_114;
     s32 temp_r3_133;
     s32 var_r0_143;
+
     Projectile::Update();
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp1F0);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp1F0);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp1EC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp1B0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     var_f4_78 = 0.0f;
-    arg_sp90 = 0.0f;
-    arg_sp88 = 0.0f;
-    arg_sp8C = 1.0f;
-    arg_sp190 = (f64) arg_sp90;
-    arg_sp188 = (f64) arg_sp88;
-    arg_sp198 = this->unkC8;
-    arg_sp1A0 = this->unkD0;
-    var_f5_99 = ((f32) arg_sp1A0 * (f32) arg_sp1A0) + (((f32) arg_sp198 * (f32) arg_sp198) + (arg_sp19C * arg_sp19C));
+    sp90 = 0.0f;
+    sp88 = 0.0f;
+    sp8C = 1.0f;
+    sp190 = (f64) sp90;
+    sp188 = (f64) sp88;
+    sp198 = this->unkC8;
+    sp1A0 = this->unkD0;
+    var_f5_99 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
     if (var_f5_99 > 0.000001f) {
         if (var_f5_99 > 0.0f) {
             temp_f1_104 = __frsqrte(var_f5_99);
@@ -67,18 +113,18 @@ void HotSpit::Update() {
         } else if (var_f5_99 < M2C_BITWISE(f32, 0.0)) {
             var_f5_99 = __float_nan;
         } else {
-            arg_sp10 = var_f5_99;
-            temp_r3_133 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_99;
+            temp_r3_133 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_133) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_143 = 1;
                 } else {
                     var_r0_143 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_143 = 5;
                 } else {
                     var_r0_143 = 3;
@@ -96,25 +142,25 @@ void HotSpit::Update() {
     } else {
         var_f5_99 = 0.0f;
     }
-    arg_sp198 = (f32) arg_sp198 * var_f4_78;
-    arg_sp19C *= var_f4_78;
-    arg_sp1A0 = (f32) arg_sp1A0 * var_f4_78;
+    sp198 = (f32) sp198 * var_f4_78;
+    unksp19C *= var_f4_78;
+    sp1A0 = (f32) sp1A0 * var_f4_78;
     if (var_f5_99 != 0.0f) {
         temp_f31_182 = gUpdateTimeDelta;
         temp_f29_187 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
         temp_f28_192 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
         MKVector(MKRand_Float(&gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
-        arg_sp158.operator*(3.0f);
+        sp158.operator*(3.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        arg_sp168 = arg_sp38;
-        arg_sp40 = arg_sp160 * temp_f31_182;
-        arg_sp170 = (f64) arg_sp40;
+        sp168 = sp38;
+        sp40 = sp158.unk8 * temp_f31_182;
+        sp170 = (f64) sp40;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-        this->unk158 += (f32) arg_sp170;
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp1B0, *((MKVector3 *) &arg_sp198), (MKVector3 *) &arg_sp188);
+        this->unk158 += (f32) sp170;
+        KDMath_BuildMatrixFromFwd(&sp1B0, *((MKVector3 *) &sp198), (MKVector3 *) &sp188);
         temp_f1_230 = _table_sinf(this->unk158);
         if (temp_f1_230 < 0.0f) {
             var_f28_234 = -temp_f1_230;
@@ -135,53 +181,140 @@ void HotSpit::Update() {
         MKVector(1.0f, 1.0f, 1.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp138 = arg_sp28;
-        arg_sp30 = arg_sp130 + arg_sp120;
-        arg_sp140 = (f64) arg_sp30;
-        arg_sp1B0.Scale3x3((Matrix *) &arg_sp1B0, *((MKVector3 *) &arg_sp138));
-        arg_sp1E0 = arg_sp220;
-        arg_sp1E4 = arg_sp224;
-        arg_sp1E8 = arg_sp228;
-        arg_sp1EC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp1B0));
+        sp138 = sp28;
+        sp30 = sp130 + sp120;
+        sp140 = (f64) sp30;
+        sp1B0.Scale3x3(&sp1B0, *((MKVector3 *) &sp138));
+        sp1B0.unk30 = sp1F0.unk30;
+        sp1B0.unk34 = sp1F0.unk34;
+        sp1B0.unk38 = sp1F0.unk38;
+        sp1B0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp1B0);
     }
     MKVector(0.0f, 200.0f, 0.0f);
-    arg_spF8.operator*(0.5f);
+    spF8.operator*(0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp80 = -1.0f;
-    arg_sp70 = 1.0f;
-    arg_sp20 = arg_sp100 + arg_spF0;
-    arg_sp78 = -1.0f;
-    arg_sp7C = -1.0f;
-    arg_sp68 = 1.0f;
-    arg_sp6C = -1.0f;
-    arg_sp108 = arg_sp18;
-    arg_sp110 = (f64) arg_sp20;
-    arg_sp178 = arg_sp18;
-    arg_sp180 = (f64) arg_sp20;
-    arg_spA8 = (f64) arg_sp78;
-    arg_spB0 = (f64) arg_sp80;
-    arg_sp98 = (f64) arg_sp68;
-    arg_spA0 = (f64) arg_sp70;
-    KDRand_Vector(*((MKVector3 *) &arg_spB8), *((MKVector3 *) &arg_spA8));
+    sp80 = -1.0f;
+    sp70 = 1.0f;
+    sp20 = spF8.unk8 + spF0;
+    sp78 = -1.0f;
+    sp7C = -1.0f;
+    sp68 = 1.0f;
+    sp6C = -1.0f;
+    sp108 = sp18;
+    sp110 = (f64) sp20;
+    sp178 = sp18;
+    sp180 = (f64) sp20;
+    spA8 = (f64) sp78;
+    spB0 = (f64) sp80;
+    sp98 = (f64) sp68;
+    spA0 = (f64) sp70;
+    KDRand_Vector(spB8, *((MKVector3 *) &spA8));
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_spC8 = arg_sp58;
-    arg_sp60 = arg_spC0 * 25.0f;
-    arg_spD0 = (f64) arg_sp60;
+    spC8 = sp58;
+    sp60 = spB8.unk8 * 25.0f;
+    spD0 = (f64) sp60;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spD8 = arg_sp48;
-    arg_sp50 = arg_sp228 + (f32) arg_spD0;
-    arg_spE0 = (f64) arg_sp50;
-    arg_sp14 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-    ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &arg_spD8), *((MKVector3 *) &arg_sp178), arg_sp14);
+    spD8 = sp48;
+    sp50 = sp1F0.unk38 + (f32) spD0;
+    spE0 = (f64) sp50;
+    sp14 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+    ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &sp178), sp14);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1E0'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void HotSpit::Collided(MKCollisionResult &arg0) {
+    s8 sp2C9;
+    s8 sp2C8;
+    s32 sp2C4;
+    f32 sp2C0;
+    s32 sp2BC;
+    s8 sp2BA;
+    s8 sp2B9;
+    s8 sp2B8;
+    f64 sp2B0;                                      /* compiler-managed */
+    f64 sp2A8;                                      /* compiler-managed */
+    MKProp *sp2A4;
+    s32 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    s32 sp27C;
+    s32 sp278;
+    u8 sp270;
+    s32 sp26C;
+    void *sp268;
+    s32 sp264;
+    f32 sp260;
+    s32 sp25C;
+    s8 sp25B;
+    s8 sp25A;
+    s16 sp258;
+    f32 sp254;
+    f32 sp250;
+    f32 sp24C;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f32 sp238;
+    f32 sp234;
+    f32 sp230;
+    f32 sp228;
+    f32 sp224;
+    f32 sp220;
+    Matrix sp1E0;
+    M2C_UNK sp1DC;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;                                      /* compiler-managed */
+    f64 sp1B8;                                      /* compiler-managed */
+    f64 sp1B0;
+    f64 sp1A8;
+    MKVector3 sp198;
+    MKVector3 sp188;
+    MKVector3 sp178;
+    MKVector3 sp168;
+    M2C_UNK sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKVector3 sp128;
+    MKVector3 sp118;
+    MKVector3 sp108;
+    MKVector3 spF8;
+    M2C_UNK spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f64 sp88;
+    f64 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKProp *temp_r4_555;
     MKProp *temp_r4_764;
     MKPtrList<MKProp> *temp_r4_860;
@@ -205,87 +338,88 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     void *temp_r3_608;
     void *var_r3_611;
     void *var_r3_851;
+
     Projectile::Collided(arg0);
     temp_r28_411 = checked_cast<HotSpitDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp1E0);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp1E0);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp1DC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     var_r26_437 = 0;
     do {
         MKVector(1.0f, 1.5f, 1.0f);
         MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(*((MKVector3 *) &arg_sp178), *((MKVector3 *) &arg_sp168));
-        arg_sp188.operator*(3000.0f);
-        arg_sp198.operator*(2.0f);
+        KDRand_Vector(sp178, sp168);
+        sp188.operator*(3000.0f);
+        sp198.operator*(2.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp98 = 1.0f;
-        arg_sp9C = 1.0f;
-        arg_sp50 = arg_sp1A0 + arg_sp190;
-        arg_spA0 = 1.0f;
-        arg_spA4 = 1.0f;
-        arg_sp1C8 = arg_sp48;
-        arg_sp1D0 = (f64) arg_sp50;
-        arg_sp148 = (f64) arg_sp98;
-        arg_sp150 = (f64) arg_spA0;
+        sp98 = 1.0f;
+        sp9C = 1.0f;
+        sp50 = sp198.unk8 + sp188.unk8;
+        spA0 = 1.0f;
+        spA4 = 1.0f;
+        sp1C8 = sp48;
+        sp1D0 = (f64) sp50;
+        sp148 = (f64) sp98;
+        sp150 = (f64) spA0;
         temp_r3_485 = M2C_FIELD(temp_r28_411, void **, 0xF0);
-        arg_sp1A8 = arg_sp48;
-        arg_sp1B0 = (f64) arg_sp50;
-        M2C_FIELD(M2C_FIELD(temp_r3_485, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *, f64 *, f64 *, f32, f64, f64, f64), 0x3C)(temp_r3_485, &arg_sp210, &arg_sp1C8, &arg_sp148, 2.0f, (f64) arg_sp98, (f64) arg_sp50, arg_sp48);
+        sp1A8 = sp48;
+        sp1B0 = (f64) sp50;
+        M2C_FIELD(M2C_FIELD(temp_r3_485, void **, 0x44), M2C_UNK (**)(void *, f32 *, f64 *, f64 *, f32, f64, f64, f64), 0x3C)(temp_r3_485, &sp1E0.unk30, &sp1C8, &sp148, 2.0f, (f64) sp98, (f64) sp50, sp48);
         var_r26_437 += 1;
     } while (var_r26_437 < 5);
     var_r26_498 = 0;
     do {
         MKVector(1.0f, 1.5f, 1.0f);
         MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(*((MKVector3 *) &arg_sp108), *((MKVector3 *) &arg_spF8));
-        arg_sp118.operator*(1000.0f);
-        arg_sp128.operator*(0.5f);
+        KDRand_Vector(sp108, spF8);
+        sp118.operator*(1000.0f);
+        sp128.operator*(0.5f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp138 = arg_sp38;
-        arg_sp40 = arg_sp130 + arg_sp120;
-        arg_sp1C8 = arg_sp38;
-        arg_sp140 = (f64) arg_sp40;
-        arg_sp1D0 = (f64) arg_sp40;
-        arg_sp14 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
-        ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &arg_sp210), *((MKVector3 *) &arg_sp1C8), arg_sp14);
+        sp138 = sp38;
+        sp40 = sp128.unk8 + sp118.unk8;
+        sp1C8 = sp38;
+        sp140 = (f64) sp40;
+        sp1D0 = (f64) sp40;
+        sp14 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp1E0.unk30), *((MKVector3 *) &sp1C8), sp14);
         var_r26_498 += 1;
     } while (var_r26_498 < 0xA);
-    arg_sp27C = 0;
+    sp27C = 0;
     temp_r4_555 = this->unk130;
-    arg_sp30 = 0.0f;
-    arg_sp28 = 0.0f;
-    arg_sp2C = 0.0f;
-    arg_spE0 = (f64) arg_sp30;
-    arg_spD8 = (f64) arg_sp28;
-    arg_sp278 = 7;
-    arg_sp2A0 = 1;
-    arg_sp2A4 = temp_r4_555;
-    arg_sp280 = (f64) arg_sp28;
-    arg_sp288 = (f64) arg_sp30;
-    arg_sp2B8 = 0;
-    arg_sp2C4 = 2;
-    arg_sp2C0 = 10.0f;
-    arg_sp2B8 = 0;
-    (s16) arg_sp2B8 = 1;
-    arg_sp2BC = -1;
-    arg_sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-    arg_sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-    arg_sp2C8 = 0;
+    sp30 = 0.0f;
+    sp28 = 0.0f;
+    sp2C = 0.0f;
+    spE0 = (f64) sp30;
+    spD8 = (f64) sp28;
+    sp278 = 7;
+    sp2A0 = 1;
+    sp2A4 = temp_r4_555;
+    sp280 = (f64) sp28;
+    sp288 = (f64) sp30;
+    sp2B8 = 0;
+    sp2C4 = 2;
+    sp2C0 = 10.0f;
+    sp2B9 = 0;
+    sp2BA = 1;
+    sp2BC = -1;
+    sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp2C8 = 0;
     if (temp_r4_555 != NULL) {
-        arg_sp88.GetPos();
-        arg_sp2A8 = arg_sp88;
-        arg_sp2B0 = arg_sp90;
+        sp88.GetPos();
+        sp2A8 = sp88;
+        sp2B0 = sp90;
     } else {
-        arg_sp2A8 = 0.0f;
-        arg_sp2AC = 0.0f;
-        arg_sp2B0 = 0.0f;
+        sp2A8 = 0.0f;
+        unksp2AC = 0.0f;
+        sp2B0 = 0.0f;
     }
-    arg_sp2C8 = 0;
-    KDSound_Play3d(GS_BBFireballSplat, (MKVector3 *) &arg_sp210, 0U, -1, 0.0f, 0U);
+    sp2C9 = 0;
+    KDSound_Play3d(GS_BBFireballSplat, (MKVector3 *) &sp1E0.unk30, 0U, -1, 0.0f, 0U);
     if (((u8) arg0.unk50 != 0) && (temp_r3_608 = arg0.unk48, ((temp_r3_608 == NULL) == 0)) && (var_r3_611 = M2C_FIELD(temp_r3_608, void **, 8), ((var_r3_611 == NULL) == 0))) {
 
     } else {
@@ -313,35 +447,35 @@ block_24:
             temp_r5_642 = *temp_r6_620 - 4;
             *temp_r6_620 = temp_r5_642;
             *temp_r5_642 = var_r3_611;
-            M2C_FIELD(M2C_FIELD(var_r3_611, void **, 0x44), M2C_UNK (**)(s32 *, void **), 0x2C)(&arg_sp278, temp_r5_642);
+            M2C_FIELD(M2C_FIELD(var_r3_611, void **, 0x44), M2C_UNK (**)(s32 *, void **), 0x2C)(&sp278, temp_r5_642);
         }
     }
     var_f4_650 = 0.0f;
-    arg_sp220 = 0.0f;
-    arg_sp224 = 0.0f;
-    arg_sp228 = 0.0f;
-    arg_sp230 = 0.0f;
-    arg_sp234 = 0.0f;
-    arg_sp238 = 0.0f;
-    arg_sp240 = 0.0f;
-    arg_sp244 = 0.0f;
-    arg_sp248 = 0.0f;
-    arg_sp24C = 1.0f;
-    arg_sp250 = 0.0f;
-    arg_sp254 = 0.0f;
-    arg_sp258 = 0;
-    arg_sp258 = 0;
-    (s8) arg_sp258 = 0;
-    arg_sp25C = 0;
-    arg_sp260 = 3.4028235e38f;
-    arg_sp264 = 0;
-    arg_sp268 = NULL;
-    arg_sp26C = -1;
-    arg_sp270 = 0U;
-    arg_sp1B8 = this->unkC8;
-    arg_sp1C0 = this->unkD0;
-    arg_sp1BC = 0.0f;
-    var_f5_688 = ((f32) arg_sp1C0 * (f32) arg_sp1C0) + (((f32) arg_sp1B8 * (f32) arg_sp1B8) + (0.0f * 0.0f));
+    sp220 = 0.0f;
+    sp224 = 0.0f;
+    sp228 = 0.0f;
+    sp230 = 0.0f;
+    sp234 = 0.0f;
+    sp238 = 0.0f;
+    sp240 = 0.0f;
+    sp244 = 0.0f;
+    sp248 = 0.0f;
+    sp24C = 1.0f;
+    sp250 = 0.0f;
+    sp254 = 0.0f;
+    sp258 = 0;
+    sp25A = 0;
+    sp25B = 0;
+    sp25C = 0;
+    sp260 = 3.4028235e38f;
+    sp264 = 0;
+    sp268 = NULL;
+    sp26C = -1;
+    sp270 = 0;
+    sp1B8 = this->unkC8;
+    sp1C0 = this->unkD0;
+    unksp1BC = 0.0f;
+    var_f5_688 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (0.0f * 0.0f));
     if (var_f5_688 > 0.000001f) {
         if (var_f5_688 > 0.0f) {
             temp_f1_693 = __frsqrte(var_f5_688);
@@ -351,18 +485,18 @@ block_24:
         } else if (var_f5_688 < M2C_BITWISE(f32, 0.0)) {
             var_f5_688 = __float_nan;
         } else {
-            arg_sp10 = var_f5_688;
-            temp_r3_722 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_688;
+            temp_r3_722 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_722) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_732 = 1;
                 } else {
                     var_r0_732 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_732 = 5;
                 } else {
                     var_r0_732 = 3;
@@ -379,49 +513,49 @@ block_24:
         var_f4_650 = 1.0f / var_f5_688;
     }
     temp_r4_764 = this->unk130;
-    arg_sp20 = 0.0f;
-    arg_sp18 = 0.0f;
-    arg_sp1C = 0.0f;
-    arg_sp1B8 = (f32) arg_sp1B8 * var_f4_650;
-    arg_sp1BC *= var_f4_650;
-    arg_sp1C0 = (f32) arg_sp1C0 * var_f4_650;
-    arg_spC8 = (f64) arg_sp18;
-    arg_spD0 = (f64) arg_sp20;
-    arg_sp278 = 7;
-    arg_sp2A0 = 1;
-    arg_sp2A4 = temp_r4_764;
-    arg_sp280 = (f64) arg_sp18;
-    arg_sp288 = (f64) arg_sp20;
-    arg_sp2B8 = 0;
-    arg_sp2C4 = 2;
-    arg_sp2C0 = 10.0f;
-    arg_sp2B8 = 0;
-    (s16) arg_sp2B8 = 1;
-    arg_sp2BC = -1;
-    arg_sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-    arg_sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-    arg_sp2C8 = 0;
+    sp20 = 0.0f;
+    sp18 = 0.0f;
+    sp1C = 0.0f;
+    sp1B8 = (f32) sp1B8 * var_f4_650;
+    unksp1BC *= var_f4_650;
+    sp1C0 = (f32) sp1C0 * var_f4_650;
+    spC8 = (f64) sp18;
+    spD0 = (f64) sp20;
+    sp278 = 7;
+    sp2A0 = 1;
+    sp2A4 = temp_r4_764;
+    sp280 = (f64) sp18;
+    sp288 = (f64) sp20;
+    sp2B8 = 0;
+    sp2C4 = 2;
+    sp2C0 = 10.0f;
+    sp2B9 = 0;
+    sp2BA = 1;
+    sp2BC = -1;
+    sp290 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp2C8 = 0;
     if (temp_r4_764 != NULL) {
-        arg_sp78.GetPos();
-        arg_sp2A8 = arg_sp78;
-        arg_sp2B0 = arg_sp80;
+        sp78.GetPos();
+        sp2A8 = sp78;
+        sp2B0 = sp80;
     } else {
-        arg_sp2A8 = 0.0f;
-        arg_sp2AC = 0.0f;
-        arg_sp2B0 = 0.0f;
+        sp2A8 = 0.0f;
+        unksp2AC = 0.0f;
+        sp2B0 = 0.0f;
     }
-    arg_sp2C8 = 0;
+    sp2C9 = 0;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_spA8 = arg_sp68;
-    arg_sp70 = (f32) arg_sp1C0 * 600.0f;
-    arg_spB0 = (f64) arg_sp70;
+    spA8 = sp68;
+    sp70 = sp1C0 * 600.0f;
+    spB0 = (f64) sp70;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spB8 = arg_sp58;
-    arg_sp60 = arg_sp218 + (f32) arg_spB0;
-    arg_spC0 = (f64) arg_sp60;
-    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &arg_sp210), *((MKVector3 *) &arg_spB8), 200.0f, (MKCollisionResult *) &arg_sp220, (MKCollisionMode) 2, 0x08000000) != 0) {
-        if ((arg_sp270 != 0) && (arg_sp268 != NULL) && (var_r3_851 = M2C_FIELD(arg_sp268, void **, 8), ((var_r3_851 == NULL) == 0))) {
+    spB8 = sp58;
+    sp60 = sp1E0.unk38 + (f32) spB0;
+    spC0 = (f64) sp60;
+    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp1E0.unk30), *((MKVector3 *) &spB8), 200.0f, (MKCollisionResult *) &sp220, (MKCollisionMode) 2, 0x08000000) != 0) {
+        if ((sp270 != 0) && (sp268 != NULL) && (var_r3_851 = M2C_FIELD(sp268, void **, 8), ((var_r3_851 == NULL) == 0))) {
 
         } else {
             var_r3_851 = NULL;
@@ -445,7 +579,7 @@ loop_59:
                 }
             } else {
 block_62:
-                M2C_FIELD(M2C_FIELD(var_r3_851, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp278);
+                M2C_FIELD(M2C_FIELD(var_r3_851, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp278);
             }
         }
     }

@@ -1,6 +1,7 @@
 #include "spyro/source/DragonStatue.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
@@ -394,13 +395,94 @@ void DragonStatue::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
+#if 0 // DRAFT: expression syntax error
 void DragonStatue::Update() {
+    Matrix sp330;
+    Matrix sp2F0;
+    Matrix sp2B0;
+    M2C_UNK sp2AC;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKCollisionInfo sp128;
+    MKCollisionInfo sp118;
+    f32 sp110;
+    f32 sp100;
+    f32 spF0;
+    f32 spE0;
+    f32 spD0;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    s32 sp8;
     Frustum *temp_r31_1928;
     f32 temp_f0_1002;
     f32 temp_f0_1404;
     f32 temp_f0_1408;
     f32 temp_f0_1476;
+    f32 temp_f0_1931;
+    f32 temp_f0_2037;
     f32 temp_f0_930;
     f32 temp_f0_934;
     f32 temp_f1_1001;
@@ -409,12 +491,16 @@ void DragonStatue::Update() {
     f32 temp_f1_1466;
     f32 temp_f1_1475;
     f32 temp_f1_1812;
+    f32 temp_f1_1930;
+    f32 temp_f1_2036;
     f32 temp_f1_915;
     f32 temp_f1_932;
     f32 temp_f1_992;
     f32 temp_f2_1405;
     f32 temp_f2_1811;
     f32 temp_f2_931;
+    f32 temp_f3_1933;
+    f32 temp_f3_2039;
     f32 temp_f4_1410;
     f32 temp_f4_1814;
     f32 temp_f4_1938;
@@ -497,14 +583,15 @@ void DragonStatue::Update() {
     void *temp_r3_977;
     void *temp_r4_1044;
     void *temp_r4_1518;
-    arg_sp8 = 1;
+
+    sp8 = 1;
     var_r6_846 = 0;
     temp_r0_847 = this->unk100;
     if ((temp_r0_847 == 3) || (temp_r0_847 == 2)) {
         var_r6_846 = 1;
     }
     this->unk104.Update(GS_DragonStatueRumble, 1U, var_r6_846, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    arg_sp8 = 1;
+    sp8 = 1;
     var_r6_865 = 0;
     temp_r0_866 = this->unk100;
     if ((temp_r0_866 == 3) || (temp_r0_866 == 2)) {
@@ -540,27 +627,27 @@ void DragonStatue::Update() {
         if (((temp_f4_936 * temp_f4_936) + ((temp_f0_930 * temp_f0_930) + (temp_f2_931 * temp_f2_931))) < ((temp_f5_939 * temp_f5_939) + ((temp_f1_932 * temp_f1_932) + (temp_f0_934 * temp_f0_934)))) {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp258 = arg_sp58;
-            arg_sp60 = this->unkD0 * gUpdateTimeDelta;
-            arg_sp260 = (f64) arg_sp60;
+            sp258 = sp58;
+            sp60 = this->unkD0 * gUpdateTimeDelta;
+            sp260 = (f64) sp60;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
-            this->unkB0 += (f32) arg_sp260;
+            this->unkB0 += (f32) sp260;
         } else {
             M2C_FIELD(this, f32 *, 0xA8) = (f64) M2C_FIELD(this, f32 *, 0xB8);
             M2C_FIELD(this, f32 *, 0xB0) = (f64) M2C_FIELD(this, f32 *, 0xC0);
         }
         temp_r3_977 = this->unk8;
-        arg_sp238 = M2C_FIELD(temp_r3_977, f64 *, 0x30);
-        arg_sp240 = M2C_FIELD(temp_r3_977, f64 *, 0x38);
+        sp238 = M2C_FIELD(temp_r3_977, f64 *, 0x30);
+        sp240 = M2C_FIELD(temp_r3_977, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        temp_f1_992 = (f32) arg_sp240 + this->unkB0;
-        arg_sp248 = arg_sp108;
-        arg_sp110 = temp_f1_992;
-        arg_sp250 = (f64) arg_sp110;
-        SetPos(arg_sp248, temp_f1_992, (f32) arg_sp240);
+        temp_f1_992 = (f32) sp240 + this->unkB0;
+        sp248 = sp108;
+        sp110 = temp_f1_992;
+        sp250 = (f64) sp110;
+        SetPos(sp248, temp_f1_992, (f32) sp240);
         temp_f1_1001 = this->unkEC;
         temp_f0_1002 = this->unkE8;
         if (temp_f1_1001 < temp_f0_1002) {
@@ -569,23 +656,23 @@ void DragonStatue::Update() {
             this->unkEC = temp_f0_1002;
         }
         this->unkF4 += this->unkEC * gUpdateTimeDelta;
-        M2C_STRUCT_COPY((s32) &arg_sp32C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp330.SetRotateAroundAxis(MKVector3::up, this->unkF4);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp330));
+        M2C_STRUCT_COPY((s32) &sp2F0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        sp330.SetRotateAroundAxis(MKVector3::up, this->unkF4);
+        MKModel_SetWorldMatrix(this->unk4, sp330);
         temp_r4_1044 = this->unk8;
         temp_r3_1045 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_f3_1047 = M2C_FIELD(temp_r3_1045, f64 *, 0x30);
         temp_f2_1048 = M2C_FIELD(temp_r3_1045, f64 *, 0x38);
-        arg_sp288 = M2C_FIELD(temp_r4_1044, f64 *, 0x30);
-        arg_sp298 = temp_f3_1047;
-        arg_sp2A0 = temp_f2_1048;
-        arg_sp290 = M2C_FIELD(temp_r4_1044, f64 *, 0x38);
+        sp288 = M2C_FIELD(temp_r4_1044, f64 *, 0x30);
+        sp298 = temp_f3_1047;
+        sp2A0 = temp_f2_1048;
+        sp290 = M2C_FIELD(temp_r4_1044, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp228 = arg_spF8;
-        arg_sp100 = (f32) arg_sp290 - this->unkE0;
-        arg_sp230 = (f64) arg_sp100;
-        var_f4_1074 = ((f32) arg_sp230 * (f32) arg_sp230) + (((f32) arg_sp228 * (f32) arg_sp228) + (arg_sp22C * arg_sp22C));
+        sp228 = spF8;
+        sp100 = (f32) sp290 - this->unkE0;
+        sp230 = (f64) sp100;
+        var_f4_1074 = ((f32) sp230 * (f32) sp230) + (((f32) sp228 * (f32) sp228) + (unksp22C * unksp22C));
         if (var_f4_1074 > 0.0f) {
             temp_f1_1077 = __frsqrte(var_f4_1074);
             temp_f1_1083 = 0.5 * temp_f1_1077 * -(((f64) var_f4_1074 * (temp_f1_1077 * temp_f1_1077)) - 3.0);
@@ -594,18 +681,18 @@ void DragonStatue::Update() {
         } else if (var_f4_1074 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1074 = __float_nan;
         } else {
-            arg_sp30 = var_f4_1074;
-            temp_r3_1106 = M2C_BITWISE(s32, arg_sp30) & 0x7F800000;
+            sp30 = var_f4_1074;
+            temp_r3_1106 = M2C_BITWISE(s32, sp30) & 0x7F800000;
             switch (temp_r3_1106) {                 /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp30) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp30) & 0x7FFFFF) {
                     var_r0_1116 = 1;
                 } else {
                     var_r0_1116 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp30) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp30) & 0x7FFFFF) {
                     var_r0_1116 = 5;
                 } else {
                     var_r0_1116 = 3;
@@ -622,14 +709,14 @@ void DragonStatue::Update() {
         if (var_f4_1074 < 4600.0f) {
             EmitDust();
         }
-        arg_sp28C = arg_sp29C;
+        unksp28C = unksp29C;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (gb.unk30C == this->unkA0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp218 = arg_spE8;
-            arg_spF0 = (f32) arg_sp290 - (f32) arg_sp2A0;
-            arg_sp220 = (f64) arg_spF0;
-            var_f4_1171 = ((f32) arg_sp220 * (f32) arg_sp220) + (((f32) arg_sp218 * (f32) arg_sp218) + (arg_sp21C * arg_sp21C));
+            sp218 = spE8;
+            spF0 = (f32) sp290 - (f32) sp2A0;
+            sp220 = (f64) spF0;
+            var_f4_1171 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + (unksp21C * unksp21C));
             if (var_f4_1171 > 0.0f) {
                 temp_f1_1174 = __frsqrte(var_f4_1171);
                 temp_f1_1180 = 0.5 * temp_f1_1174 * -(((f64) var_f4_1171 * (temp_f1_1174 * temp_f1_1174)) - 3.0);
@@ -638,18 +725,18 @@ void DragonStatue::Update() {
             } else if (var_f4_1171 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_1171 = __float_nan;
             } else {
-                arg_sp2C = var_f4_1171;
-                temp_r3_1203 = M2C_BITWISE(s32, arg_sp2C) & 0x7F800000;
+                sp2C = var_f4_1171;
+                temp_r3_1203 = M2C_BITWISE(s32, sp2C) & 0x7F800000;
                 switch (temp_r3_1203) {             /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp2C) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp2C) & 0x7FFFFF) {
                         var_r0_1213 = 1;
                     } else {
                         var_r0_1213 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp2C) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp2C) & 0x7FFFFF) {
                         var_r0_1213 = 5;
                     } else {
                         var_r0_1213 = 3;
@@ -671,14 +758,14 @@ void DragonStatue::Update() {
             this->unkA0 = gb.unk30C + 0.2f;
         }
         temp_r3_1249 = this->unk8;
-        arg_sp1F8 = M2C_FIELD(temp_r3_1249, f64 *, 0x30);
-        arg_sp200 = M2C_FIELD(temp_r3_1249, f64 *, 0x38);
+        sp1F8 = M2C_FIELD(temp_r3_1249, f64 *, 0x30);
+        sp200 = M2C_FIELD(temp_r3_1249, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp208 = arg_spD8;
-        arg_spE0 = this->unkE0 - (f32) arg_sp200;
-        arg_sp210 = (f64) arg_spE0;
-        var_f4_1274 = ((f32) arg_sp210 * (f32) arg_sp210) + (((f32) arg_sp208 * (f32) arg_sp208) + (arg_sp20C * arg_sp20C));
+        sp208 = spD8;
+        spE0 = this->unkE0 - (f32) sp200;
+        sp210 = (f64) spE0;
+        var_f4_1274 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
         if (var_f4_1274 > 0.0f) {
             temp_f1_1277 = __frsqrte(var_f4_1274);
             temp_f1_1283 = 0.5 * temp_f1_1277 * -(((f64) var_f4_1274 * (temp_f1_1277 * temp_f1_1277)) - 3.0);
@@ -687,18 +774,18 @@ void DragonStatue::Update() {
         } else if (var_f4_1274 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1274 = __float_nan;
         } else {
-            arg_sp28 = var_f4_1274;
-            temp_r3_1306 = M2C_BITWISE(s32, arg_sp28) & 0x7F800000;
+            sp28 = var_f4_1274;
+            temp_r3_1306 = M2C_BITWISE(s32, sp28) & 0x7F800000;
             switch (temp_r3_1306) {                 /* switch 3; irregular */
             case 0x7F800000:                        /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp28) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp28) & 0x7FFFFF) {
                     var_r0_1316 = 1;
                 } else {
                     var_r0_1316 = 2;
                 }
                 break;
             case 0x0:                               /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp28) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp28) & 0x7FFFFF) {
                     var_r0_1316 = 5;
                 } else {
                     var_r0_1316 = 3;
@@ -714,9 +801,9 @@ void DragonStatue::Update() {
         }
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (var_f4_1274 == 4600.0f) {
-            arg_sp40 = 0;
-            arg_sp3C = 0x41A;
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp3C);
+            sp40 = 0;
+            sp3C = 0x41A;
+            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp3C);
             this->unk100 = 1;
             this->unk94.Send(NULL);
             KDSound_Play3d(GS_DragonStatueEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -725,15 +812,15 @@ void DragonStatue::Update() {
             this->unkAC = -2000.0f;
             this->unkB0 = 0.0f;
             temp_r3_1372 = this->unk8;
-            arg_sp1D8 = M2C_FIELD(temp_r3_1372, f64 *, 0x30);
-            arg_sp1E0 = M2C_FIELD(temp_r3_1372, f64 *, 0x38);
+            sp1D8 = M2C_FIELD(temp_r3_1372, f64 *, 0x30);
+            sp1E0 = M2C_FIELD(temp_r3_1372, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            temp_f1_1387 = (f32) arg_sp1E0 + this->unkB0;
-            arg_sp1E8 = arg_spC8;
-            arg_spD0 = temp_f1_1387;
-            arg_sp1F0 = (f64) arg_spD0;
-            SetPos(arg_sp1E8, temp_f1_1387, (f32) arg_sp1E0);
+            temp_f1_1387 = (f32) sp1E0 + this->unkB0;
+            sp1E8 = spC8;
+            spD0 = temp_f1_1387;
+            sp1F0 = (f64) spD0;
+            SetPos(sp1E8, temp_f1_1387, (f32) sp1E0);
             this->unkA8 = 0.0f;
             this->unkAC = 0.0f;
             this->unkB0 = 0.0f;
@@ -748,27 +835,27 @@ void DragonStatue::Update() {
         if (((temp_f4_1410 * temp_f4_1410) + ((temp_f0_1404 * temp_f0_1404) + (temp_f2_1405 * temp_f2_1405))) < ((temp_f5_1413 * temp_f5_1413) + ((temp_f1_1406 * temp_f1_1406) + (temp_f0_1408 * temp_f0_1408)))) {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp1C8 = arg_sp48;
-            arg_sp50 = this->unkD0 * gUpdateTimeDelta;
-            arg_sp1D0 = (f64) arg_sp50;
+            sp1C8 = sp48;
+            sp50 = this->unkD0 * gUpdateTimeDelta;
+            sp1D0 = (f64) sp50;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
-            this->unkB0 += (f32) arg_sp1D0;
+            this->unkB0 += (f32) sp1D0;
         } else {
             M2C_FIELD(this, f32 *, 0xA8) = (f64) M2C_FIELD(this, f32 *, 0xB8);
             M2C_FIELD(this, f32 *, 0xB0) = (f64) M2C_FIELD(this, f32 *, 0xC0);
         }
         temp_r3_1451 = this->unk8;
-        arg_sp1A8 = M2C_FIELD(temp_r3_1451, f64 *, 0x30);
-        arg_sp1B0 = M2C_FIELD(temp_r3_1451, f64 *, 0x38);
+        sp1A8 = M2C_FIELD(temp_r3_1451, f64 *, 0x30);
+        sp1B0 = M2C_FIELD(temp_r3_1451, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        temp_f1_1466 = (f32) arg_sp1B0 + this->unkB0;
-        arg_sp1B8 = arg_spB8;
-        arg_spC0 = temp_f1_1466;
-        arg_sp1C0 = (f64) arg_spC0;
-        SetPos(arg_sp1B8, temp_f1_1466, (f32) arg_sp1B0);
+        temp_f1_1466 = (f32) sp1B0 + this->unkB0;
+        sp1B8 = spB8;
+        spC0 = temp_f1_1466;
+        sp1C0 = (f64) spC0;
+        SetPos(sp1B8, temp_f1_1466, (f32) sp1B0);
         temp_f1_1475 = this->unkEC;
         temp_f0_1476 = this->unkE8;
         if (temp_f1_1475 > temp_f0_1476) {
@@ -777,23 +864,23 @@ void DragonStatue::Update() {
             this->unkEC = temp_f0_1476;
         }
         this->unkF4 += this->unkEC * gUpdateTimeDelta;
-        M2C_STRUCT_COPY((s32) &arg_sp2EC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp2F0.SetRotateAroundAxis(MKVector3::up, this->unkF4);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp2F0));
+        M2C_STRUCT_COPY((s32) &sp2B0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        sp2F0.SetRotateAroundAxis(MKVector3::up, this->unkF4);
+        MKModel_SetWorldMatrix(this->unk4, sp2F0);
         temp_r4_1518 = this->unk8;
         temp_r3_1519 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_f3_1521 = M2C_FIELD(temp_r3_1519, f64 *, 0x30);
         temp_f2_1522 = M2C_FIELD(temp_r3_1519, f64 *, 0x38);
-        arg_sp268 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
-        arg_sp278 = temp_f3_1521;
-        arg_sp280 = temp_f2_1522;
-        arg_sp270 = M2C_FIELD(temp_r4_1518, f64 *, 0x38);
+        sp268 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
+        sp278 = temp_f3_1521;
+        sp280 = temp_f2_1522;
+        sp270 = M2C_FIELD(temp_r4_1518, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp198 = arg_spA8;
-        arg_spB0 = (f32) arg_sp270 - this->unkE0;
-        arg_sp1A0 = (f64) arg_spB0;
-        var_f4_1548 = ((f32) arg_sp1A0 * (f32) arg_sp1A0) + (((f32) arg_sp198 * (f32) arg_sp198) + (arg_sp19C * arg_sp19C));
+        sp198 = spA8;
+        spB0 = (f32) sp270 - this->unkE0;
+        sp1A0 = (f64) spB0;
+        var_f4_1548 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
         if (var_f4_1548 > 0.0f) {
             temp_f1_1551 = __frsqrte(var_f4_1548);
             temp_f1_1557 = 0.5 * temp_f1_1551 * -(((f64) var_f4_1548 * (temp_f1_1551 * temp_f1_1551)) - 3.0);
@@ -802,18 +889,18 @@ void DragonStatue::Update() {
         } else if (var_f4_1548 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1548 = __float_nan;
         } else {
-            arg_sp24 = var_f4_1548;
-            temp_r3_1580 = M2C_BITWISE(s32, arg_sp24) & 0x7F800000;
+            sp24 = var_f4_1548;
+            temp_r3_1580 = M2C_BITWISE(s32, sp24) & 0x7F800000;
             switch (temp_r3_1580) {                 /* switch 4; irregular */
             case 0x7F800000:                        /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp24) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp24) & 0x7FFFFF) {
                     var_r0_1590 = 1;
                 } else {
                     var_r0_1590 = 2;
                 }
                 break;
             case 0x0:                               /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp24) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp24) & 0x7FFFFF) {
                     var_r0_1590 = 5;
                 } else {
                     var_r0_1590 = 3;
@@ -830,14 +917,14 @@ void DragonStatue::Update() {
         if (var_f4_1548 < 4900.0f) {
             EmitDust();
         }
-        arg_sp26C = arg_sp27C;
+        unksp26C = unksp27C;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (gb.unk30C == this->unkA0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp188 = arg_sp98;
-            arg_spA0 = (f32) arg_sp270 - (f32) arg_sp280;
-            arg_sp190 = (f64) arg_spA0;
-            var_f4_1645 = ((f32) arg_sp190 * (f32) arg_sp190) + (((f32) arg_sp188 * (f32) arg_sp188) + (arg_sp18C * arg_sp18C));
+            sp188 = sp98;
+            spA0 = (f32) sp270 - (f32) sp280;
+            sp190 = (f64) spA0;
+            var_f4_1645 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + (unksp18C * unksp18C));
             if (var_f4_1645 > 0.0f) {
                 temp_f1_1648 = __frsqrte(var_f4_1645);
                 temp_f1_1654 = 0.5 * temp_f1_1648 * -(((f64) var_f4_1645 * (temp_f1_1648 * temp_f1_1648)) - 3.0);
@@ -846,18 +933,18 @@ void DragonStatue::Update() {
             } else if (var_f4_1645 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_1645 = __float_nan;
             } else {
-                arg_sp20 = var_f4_1645;
-                temp_r3_1677 = M2C_BITWISE(s32, arg_sp20) & 0x7F800000;
+                sp20 = var_f4_1645;
+                temp_r3_1677 = M2C_BITWISE(s32, sp20) & 0x7F800000;
                 switch (temp_r3_1677) {             /* switch 5; irregular */
                 case 0x7F800000:                    /* switch 5 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_1687 = 1;
                     } else {
                         var_r0_1687 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 5 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_1687 = 5;
                     } else {
                         var_r0_1687 = 3;
@@ -879,14 +966,14 @@ void DragonStatue::Update() {
             this->unkA0 = gb.unk30C + 0.2f;
         }
         temp_r3_1723 = this->unk8;
-        arg_sp168 = M2C_FIELD(temp_r3_1723, f64 *, 0x30);
-        arg_sp170 = M2C_FIELD(temp_r3_1723, f64 *, 0x38);
+        sp168 = M2C_FIELD(temp_r3_1723, f64 *, 0x30);
+        sp170 = M2C_FIELD(temp_r3_1723, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        arg_sp178 = arg_sp88;
-        arg_sp90 = this->unkE0 - (f32) arg_sp170;
-        arg_sp180 = (f64) arg_sp90;
-        var_f0_1748 = ((f32) arg_sp180 * (f32) arg_sp180) + (((f32) arg_sp178 * (f32) arg_sp178) + (arg_sp17C * arg_sp17C));
+        sp178 = sp88;
+        sp90 = this->unkE0 - (f32) sp170;
+        sp180 = (f64) sp90;
+        var_f0_1748 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
         if (var_f0_1748 > 0.0f) {
             temp_f2_1751 = __frsqrte(var_f0_1748);
             temp_f2_1757 = 0.5 * temp_f2_1751 * -(((f64) var_f0_1748 * (temp_f2_1751 * temp_f2_1751)) - 3.0);
@@ -895,18 +982,18 @@ void DragonStatue::Update() {
         } else if (var_f0_1748 < M2C_BITWISE(f32, 0.0)) {
             var_f0_1748 = __float_nan;
         } else {
-            arg_sp1C = var_f0_1748;
-            temp_r3_1780 = M2C_BITWISE(s32, arg_sp1C) & 0x7F800000;
+            sp1C = var_f0_1748;
+            temp_r3_1780 = M2C_BITWISE(s32, sp1C) & 0x7F800000;
             switch (temp_r3_1780) {                 /* switch 6; irregular */
             case 0x7F800000:                        /* switch 6 */
-                if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                     var_r0_1790 = 1;
                 } else {
                     var_r0_1790 = 2;
                 }
                 break;
             case 0x0:                               /* switch 6 */
-                if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                     var_r0_1790 = 5;
                 } else {
                     var_r0_1790 = 3;
@@ -932,18 +1019,18 @@ void DragonStatue::Update() {
         } else if (var_f5_1819 < M2C_BITWISE(f32, 0.0)) {
             var_f5_1819 = __float_nan;
         } else {
-            arg_sp18 = var_f5_1819;
-            temp_r3_1851 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f5_1819;
+            temp_r3_1851 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_1851) {                 /* switch 7; irregular */
             case 0x7F800000:                        /* switch 7 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_1861 = 1;
                 } else {
                     var_r0_1861 = 2;
                 }
                 break;
             case 0x0:                               /* switch 7 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_1861 = 5;
                 } else {
                     var_r0_1861 = 3;
@@ -960,9 +1047,9 @@ void DragonStatue::Update() {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (var_f0_1748 == var_f5_1819) {
             SetPos(this->unkD8);
-            arg_sp38 = 0;
-            arg_sp34 = 0x41A;
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp34);
+            sp38 = 0;
+            sp34 = 0x41A;
+            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp34);
             this->unk100 = 0;
             this->unk9C.Send(NULL);
             KDSound_Play3d(GS_DragonStatueEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -973,8 +1060,11 @@ void DragonStatue::Update() {
         }
     } else {
         temp_r31_1928 = M2C_FIELD(&gb, void **, 0x3B8) + 0xB0;
-        arg_sp128.GetRadius();
-        temp_f4_1938 = (arg_sp130 * arg_sp130) + ((arg_sp128 * arg_sp128) + (arg_sp12C * arg_sp12C));
+        sp128.GetRadius();
+        temp_f1_1930 = M2C_BITWISE(f32, sp128);
+        temp_f0_1931 = M2C_BITWISE(f32, sp128.unk4);
+        temp_f3_1933 = M2C_BITWISE(f32, sp128.unk8);
+        temp_f4_1938 = (temp_f3_1933 * temp_f3_1933) + ((temp_f1_1930 * temp_f1_1930) + (temp_f0_1931 * temp_f0_1931));
         if (temp_f4_1938 > 0.0f) {
             temp_f1_1941 = __frsqrte(temp_f4_1938);
             temp_f1_1947 = 0.5 * temp_f1_1941 * -(((f64) temp_f4_1938 * (temp_f1_1941 * temp_f1_1941)) - 3.0);
@@ -983,18 +1073,18 @@ void DragonStatue::Update() {
         } else if (temp_f4_1938 < M2C_BITWISE(f32, 0.0)) {
             var_f31_1957 = __float_nan;
         } else {
-            arg_sp14 = temp_f4_1938;
-            temp_r3_1970 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = temp_f4_1938;
+            temp_r3_1970 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_1970) {                 /* switch 8; irregular */
             case 0x7F800000:                        /* switch 8 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1980 = 1;
                 } else {
                     var_r0_1980 = 2;
                 }
                 break;
             case 0x0:                               /* switch 8 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1980 = 5;
                 } else {
                     var_r0_1980 = 3;
@@ -1013,17 +1103,20 @@ void DragonStatue::Update() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
         temp_r3_2010 = this->unk8;
-        arg_sp80 = MKVector3::up.unk8 * var_f31_1957;
-        arg_sp138 = arg_sp78;
-        arg_sp148 = M2C_FIELD(temp_r3_2010, f64 *, 0x30);
-        arg_sp140 = (f64) arg_sp80;
-        arg_sp150 = M2C_FIELD(temp_r3_2010, f64 *, 0x38);
+        sp80 = MKVector3::up.unk8 * var_f31_1957;
+        sp138 = sp78;
+        sp148 = M2C_FIELD(temp_r3_2010, f64 *, 0x30);
+        sp140 = (f64) sp80;
+        sp150 = M2C_FIELD(temp_r3_2010, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp158 = arg_sp68;
-        arg_sp70 = (f32) arg_sp150 + (f32) arg_sp140;
-        arg_sp160 = (f64) arg_sp70;
-        arg_sp118.GetRadius();
-        var_f1_2044 = (arg_sp120 * arg_sp120) + ((arg_sp118 * arg_sp118) + (arg_sp11C * arg_sp11C));
+        sp158 = sp68;
+        sp70 = (f32) sp150 + (f32) sp140;
+        sp160 = (f64) sp70;
+        sp118.GetRadius();
+        temp_f1_2036 = M2C_BITWISE(f32, sp118);
+        temp_f0_2037 = M2C_BITWISE(f32, sp118.unk4);
+        temp_f3_2039 = M2C_BITWISE(f32, sp118.unk8);
+        var_f1_2044 = (temp_f3_2039 * temp_f3_2039) + ((temp_f1_2036 * temp_f1_2036) + (temp_f0_2037 * temp_f0_2037));
         if (var_f1_2044 > 0.0f) {
             temp_f2_2047 = __frsqrte(var_f1_2044);
             temp_f2_2053 = 0.5 * temp_f2_2047 * -(((f64) var_f1_2044 * (temp_f2_2047 * temp_f2_2047)) - 3.0);
@@ -1032,18 +1125,18 @@ void DragonStatue::Update() {
         } else if (var_f1_2044 < M2C_BITWISE(f32, 0.0)) {
             var_f1_2044 = __float_nan;
         } else {
-            arg_sp10 = var_f1_2044;
-            temp_r3_2076 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f1_2044;
+            temp_r3_2076 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_2076) {                 /* switch 9; irregular */
             case 0x7F800000:                        /* switch 9 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2086 = 1;
                 } else {
                     var_r0_2086 = 2;
                 }
                 break;
             case 0x0:                               /* switch 9 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2086 = 5;
                 } else {
                     var_r0_2086 = 3;
@@ -1057,10 +1150,10 @@ void DragonStatue::Update() {
                 var_f1_2044 = __float_nan;
             }
         }
-        if (temp_r31_1928->IsVisible(*((MKVector3 *) &arg_sp158), var_f1_2044) == 0) {
-            M2C_STRUCT_COPY((s32) &arg_sp2AC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-            arg_sp2B0.SetRotateAroundAxis(MKVector3::up, 0.0f);
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp2B0));
+        if (temp_r31_1928->IsVisible(*((MKVector3 *) &sp158), var_f1_2044) == 0) {
+            M2C_STRUCT_COPY((s32) &sp2AC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+            sp2B0.SetRotateAroundAxis(MKVector3::up, 0.0f);
+            MKModel_SetWorldMatrix(this->unk4, sp2B0);
         }
     }
     KDProp::Update();

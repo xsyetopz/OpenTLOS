@@ -568,8 +568,23 @@ void DialogBox_InitModule() {
     memset(themes, 0, 0x40U);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2A0'
+#if 0 // DRAFT: undefined identifier 'DialogBox_BuildLines'
 void DialogBox_DrawText(DialogBoxContext *arg0) {
+    DialogBoxLine sp2A0;
+    s8 spA0;
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     DialogBoxLine *temp_r28_904;
     MKFont *var_r30_810;
     f32 temp_f25_1098;
@@ -603,6 +618,7 @@ void DialogBox_DrawText(DialogBoxContext *arg0) {
     u32 temp_r21_1155;
     u32 temp_r21_856;
     u8 var_r24_894;
+
     if ((s8 *) arg0->unk30 != NULL) {
         temp_r3_789 = arg0->unk0;
         if ((u32) temp_r3_789 != 0U) {
@@ -628,24 +644,24 @@ void DialogBox_DrawText(DialogBoxContext *arg0) {
         if (arg0->unkC & 0x70) {
             var_r27_853 -= 1;
         }
-        temp_r26_867 = DialogBox_BuildLines(var_r30_810, arg0->unk30, (DialogBoxLine *) &arg_sp2A0, temp_f29_806, temp_f27_807);
-        arg_sp60.SetIdentity();
+        temp_r26_867 = DialogBox_BuildLines(var_r30_810, arg0->unk30, &sp2A0, temp_f29_806, temp_f27_807);
+        sp60.SetIdentity();
         var_r3_870 = var_r27_853;
         if ((arg0->unkC & 4) && (temp_r26_867 < var_r27_853)) {
             var_r3_870 = temp_r26_867;
         }
         var_r25_889 = 0;
         var_r21_891 = 0;
-        arg_sp90 = (0.5f * temp_f29_806) + temp_f30_803;
+        sp60.unk30 = (0.5f * temp_f29_806) + temp_f30_803;
         var_r24_894 = 0;
-        arg_sp98 = 0.0f;
-        arg_sp9C = 1.0f;
-        arg_sp94 = -((0.5f * ((f32) (var_r3_870 - 1) * temp_f26_820)) - ((0.5f * temp_f28_808) + temp_f31_805));
+        sp60.unk38 = 0.0f;
+        sp60.unk3C = 1.0f;
+        sp60.unk34 = -((0.5f * ((f32) (var_r3_870 - 1) * temp_f26_820)) - ((0.5f * temp_f28_808) + temp_f31_805));
 loop_33:
         if (var_r25_889 < temp_r26_867) {
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if ((var_f25_830 == 1.0f) && ((u8) arg0->unk44 == 0)) {
-                temp_r28_904 = &arg_sp2A0 + var_r21_891;
+                temp_r28_904 = &sp2A0 + var_r21_891;
                 var_r23_905 = temp_r28_904->unk4;
                 temp_r0_907 = (s32) var_f25_830;
                 if (var_r23_905 > temp_r0_907) {
@@ -654,7 +670,7 @@ loop_33:
                 }
                 var_f25_830 -= (f32) var_r23_905;
                 if (var_r25_889 >= (s32) arg0->unk40) {
-                    var_r3_923 = &arg_spA0;
+                    var_r3_923 = &spA0;
                     if (var_r23_905 > 0) {
                         var_r6_927 = var_r23_905;
                         if (var_r24_894 != 0) {
@@ -664,40 +680,40 @@ loop_33:
                     }
                     var_f28_935 = 0.0f;
                     *var_r3_923 = 0;
-                    if ((s8) (u8) arg_spA0 != 0) {
-                        var_f28_935 = temp_f27_807 * var_r30_810->CalcLength(&arg_spA0);
+                    if ((s8) (u8) spA0 != 0) {
+                        var_f28_935 = temp_f27_807 * var_r30_810->CalcLength(&spA0);
                         if (arg0->unkC & 8) {
                             var_f1_949 = temp_r28_904->unk10;
                         } else {
                             var_f1_949 = temp_f29_806;
                         }
-                        var_r30_810->DrawString(&arg_spA0, var_f1_949, temp_f26_820, (Matrix *) &arg_sp60, 0, temp_r21_856, temp_f27_807, temp_f27_807, NULL, 1U);
+                        var_r30_810->DrawString(&spA0, var_f1_949, temp_f26_820, &sp60, 0, temp_r21_856, temp_f27_807, temp_f27_807, NULL, 1U);
                     }
                     if (var_r24_894 != 0) {
-                        arg_sp20 = var_f28_935;
-                        arg_sp24 = 0.0f;
-                        arg_sp28 = 0.0f;
-                        arg_sp40 = (f64) arg_sp20;
-                        arg_sp48 = (f64) arg_sp28;
-                        arg_sp60.Translate((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp40));
-                        *DialogBox_strncpy(&arg_spA0, temp_r28_904, var_r23_905 - 1, 1) = 0;
-                        arg_sp58 = (f64) M2C_FIELD(arg0, f32 *, 0x28);
-                        arg_sp50 = (f64) M2C_FIELD(arg0, f32 *, 0x20);
-                        temp_f5_995 = arg_sp5C * var_f25_830;
-                        arg_sp5C = temp_f5_995;
+                        sp20 = var_f28_935;
+                        sp24 = 0.0f;
+                        sp28 = 0.0f;
+                        sp40 = (f64) sp20;
+                        sp48 = (f64) sp28;
+                        sp60.Translate(&sp60, *((MKVector3 *) &sp40));
+                        *DialogBox_strncpy(&spA0, temp_r28_904, var_r23_905 - 1, 1) = 0;
+                        sp58 = (f64) M2C_FIELD(arg0, f32 *, 0x28);
+                        sp50 = (f64) M2C_FIELD(arg0, f32 *, 0x20);
+                        temp_f5_995 = unksp5C * var_f25_830;
+                        unksp5C = temp_f5_995;
                         if (arg0->unkC & 8) {
                             var_f1_1023 = temp_r28_904->unk10;
                         } else {
                             var_f1_1023 = temp_f29_806;
                         }
-                        var_r30_810->DrawString(&arg_spA0, var_f1_1023, temp_f26_820, (Matrix *) &arg_sp60, 0, (s32) (128.0f * (f32) arg_sp50) | (((s32) (128.0f * arg_sp54) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) arg_sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
+                        var_r30_810->DrawString(&spA0, var_f1_1023, temp_f26_820, &sp60, 0, (s32) (128.0f * (f32) sp50) | (((s32) (128.0f * unksp54) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
                     }
-                    arg_sp14 = temp_f26_820;
-                    arg_sp10 = 0.0f;
-                    arg_sp18 = 0.0f;
-                    arg_sp30 = (f64) arg_sp10;
-                    arg_sp38 = (f64) arg_sp18;
-                    arg_sp60.Translate((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp30));
+                    sp14 = temp_f26_820;
+                    sp10 = 0.0f;
+                    sp18 = 0.0f;
+                    sp30 = (f64) sp10;
+                    sp38 = (f64) sp18;
+                    sp60.Translate(&sp60, *((MKVector3 *) &sp30));
                 }
                 var_r25_889 += 1;
                 var_r21_891 += 0x14;
@@ -726,20 +742,20 @@ loop_33:
                 } else {
                     var_f27_1103 = 0.0f;
                 }
-                arg_sp60.SetIdentity();
-                arg_sp98 = 0.0f;
-                arg_sp9C = 1.0f;
-                arg_sp94 = -((0.5f * temp_f26_820) - (var_f27_1103 + (arg0->unk14 + arg0->unk1C)));
-                arg_sp90 = -((0.5f * temp_f25_1098) - (var_f27_1103 + (arg0->unk10 + arg0->unk18)));
+                sp60.SetIdentity();
+                sp60.unk38 = 0.0f;
+                sp60.unk3C = 1.0f;
+                sp60.unk34 = -((0.5f * temp_f26_820) - (var_f27_1103 + (arg0->unk14 + arg0->unk1C)));
+                sp60.unk30 = -((0.5f * temp_f25_1098) - (var_f27_1103 + (arg0->unk10 + arg0->unk18)));
                 temp_r21_1155 = (s32) (128.0f * arg0->unk98) | (((s32) (128.0f * arg0->unk9C) << 8) | (((s32) (128.0f * arg0->unkA4) << 0x18) | ((s32) (128.0f * arg0->unkA0) << 0x10)));
                 if (arg0->unkC & 0x10) {
-                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x14), temp_f29_806, temp_f26_820, (Matrix *) &arg_sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
+                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x14), temp_f29_806, temp_f26_820, &sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
                 }
                 if (arg0->unkC & 0x20) {
-                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x18), temp_f29_806, temp_f26_820, (Matrix *) &arg_sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
+                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x18), temp_f29_806, temp_f26_820, &sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
                 }
                 if (arg0->unkC & 0x40) {
-                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x1C), temp_f29_806, temp_f26_820, (Matrix *) &arg_sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
+                    var_r30_810->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x1C), temp_f29_806, temp_f26_820, &sp60, 5, temp_r21_1155, 1.0f, 1.0f, NULL, 1U);
                 }
             }
         }
@@ -1114,8 +1130,9 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void DialogBox_DrawTab(DialogBoxContext *arg0) {
+    Matrix sp10;
     f32 temp_f27_1807;
     f32 temp_f28_1805;
     f32 temp_f29_1803;
@@ -1124,6 +1141,7 @@ void DialogBox_DrawTab(DialogBoxContext *arg0) {
     f32 temp_f31_1796;
     f32 temp_f5_1793;
     s32 temp_r3_1791;
+
     if (arg0->unkC & 1) {
         if ((u8 *) arg0->unk58 == NULL) {
             return;
@@ -1136,19 +1154,19 @@ void DialogBox_DrawTab(DialogBoxContext *arg0) {
         temp_f29_1803 = (arg0->unk14 - temp_f5_1793) - 32.0f;
         temp_f28_1805 = (2.0f * temp_f5_1793) + arg0->unk5C;
         temp_f27_1807 = ((MKFont *) (M2C_FIELD(temp_r3_1791, MKFont **, 0x1C)))->GetHeight();
-        arg_sp10.SetIdentity();
+        sp10.SetIdentity();
         if (arg0->unkC & 2) {
-            arg_sp48 = 0.0f;
-            arg_sp40 = -((temp_f28_1805 * 0.5f) - temp_f30_1802);
-            arg_sp44 = (temp_f27_1807 * 0.5f) + temp_f29_1803;
-            arg_sp4C = 1.0f;
+            sp10.unk38 = 0.0f;
+            sp10.unk30 = -((temp_f28_1805 * 0.5f) - temp_f30_1802);
+            sp10.unk34 = (temp_f27_1807 * 0.5f) + temp_f29_1803;
+            sp10.unk3C = 1.0f;
         } else {
-            arg_sp48 = 0.0f;
-            arg_sp40 = (temp_f28_1805 * 0.5f) + temp_f31_1796;
-            arg_sp44 = (temp_f27_1807 * 0.5f) + temp_f29_1803;
-            arg_sp4C = 1.0f;
+            sp10.unk38 = 0.0f;
+            sp10.unk30 = (temp_f28_1805 * 0.5f) + temp_f31_1796;
+            sp10.unk34 = (temp_f27_1807 * 0.5f) + temp_f29_1803;
+            sp10.unk3C = 1.0f;
         }
-        ((MKFont *) (M2C_FIELD(arg0->unk0, MKFont **, 0x1C)))->DrawString((s8 *) arg0->unk58, temp_f28_1805, temp_f27_1807, (Matrix *) &arg_sp10, 5, (s32) (128.0f * arg0->unk48) | (((s32) (128.0f * arg0->unk4C) << 8) | (((s32) (128.0f * arg0->unk54) << 0x18) | ((s32) (128.0f * arg0->unk50) << 0x10))), 1.0f, 1.0f, NULL, 1U);
+        ((MKFont *) (M2C_FIELD(arg0->unk0, MKFont **, 0x1C)))->DrawString((s8 *) arg0->unk58, temp_f28_1805, temp_f27_1807, &sp10, 5, (s32) (128.0f * arg0->unk48) | (((s32) (128.0f * arg0->unk4C) << 8) | (((s32) (128.0f * arg0->unk54) << 0x18) | ((s32) (128.0f * arg0->unk50) << 0x10))), 1.0f, 1.0f, NULL, 1U);
     }
 }
 #endif

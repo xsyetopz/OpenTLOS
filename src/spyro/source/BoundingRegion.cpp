@@ -96,35 +96,44 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 u8 BoundingRegion::IsPointInBoundaryRect(const MKVector3 &arg0) {
+    Matrix sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Matrix *temp_r4_189;
     f32 temp_f3_194;
     f32 temp_f6_200;
     f32 temp_f7_206;
     u8 var_r3_232;
     void *temp_r3_185;
-    arg_sp30 = M2C_FIELD(&arg0, f64 *, 0);
+
+    sp30 = M2C_FIELD(&arg0, f64 *, 0);
     temp_r3_185 = M2C_FIELD(this, void **, 0);
-    arg_sp38 = M2C_FIELD(&arg0, f64 *, 8);
+    sp38 = M2C_FIELD(&arg0, f64 *, 8);
     if (temp_r3_185 != NULL) {
         temp_r4_189 = M2C_FIELD(temp_r3_185, Matrix **, 0x30);
         if (temp_r4_189 != NULL) {
-            arg_sp40.Inverse(temp_r4_189);
+            sp40.Inverse(temp_r4_189);
             temp_f3_194 = arg0.unk4;
             temp_f6_200 = arg0.unk0;
             temp_f7_206 = arg0.unk8;
-            arg_sp10 = arg_sp70 + ((temp_f7_206 * arg_sp60) + ((temp_f6_200 * arg_sp40) + (temp_f3_194 * arg_sp50)));
-            arg_sp14 = arg_sp74 + ((temp_f7_206 * arg_sp64) + ((temp_f6_200 * arg_sp44) + (temp_f3_194 * arg_sp54)));
-            arg_sp18 = arg_sp78 + ((temp_f7_206 * arg_sp68) + ((temp_f6_200 * arg_sp48) + (temp_f3_194 * arg_sp58)));
-            arg_sp20 = (f64) arg_sp10;
-            arg_sp28 = (f64) arg_sp18;
-            arg_sp30 = (f64) arg_sp10;
-            arg_sp38 = (f64) arg_sp18;
+            sp10 = sp40.unk30 + ((temp_f7_206 * sp40.unk20) + ((temp_f6_200 * M2C_BITWISE(f32, sp40)) + (temp_f3_194 * sp40.unk10)));
+            sp14 = sp40.unk34 + ((temp_f7_206 * sp40.unk24) + ((temp_f6_200 * sp40.unk4) + (temp_f3_194 * sp40.unk14)));
+            sp18 = sp40.unk38 + ((temp_f7_206 * sp40.unk28) + ((temp_f6_200 * sp40.unk8) + (temp_f3_194 * sp40.unk18)));
+            sp20 = (f64) sp10;
+            sp28 = (f64) sp18;
+            sp30 = (f64) sp10;
+            sp38 = (f64) sp18;
         }
     }
     var_r3_232 = 0;
-    if (((f32) arg_sp30 > M2C_FIELD(this, f32 *, 0xC)) && ((f32) arg_sp30 < this->unk10) && ((f32) arg_sp38 > this->unk14) && ((f32) arg_sp38 < this->unk18)) {
+    if (((f32) sp30 > M2C_FIELD(this, f32 *, 0xC)) && ((f32) sp30 < this->unk10) && ((f32) sp38 > this->unk14) && ((f32) sp38 < this->unk18)) {
         var_r3_232 = 1;
     }
     return var_r3_232;
@@ -157,9 +166,17 @@ s32 BoundingRegion::IsPointWithin(const MKVector3 &arg0) {
 
 #if 0 // DRAFT: undefined identifier '__float_max'
 void BoundingRegion::InitBoundaryRect() {
+    Matrix sp50;
+    BoundingRegion sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Matrix *temp_r4_334;
     s32 var_r31_314;
     void *temp_r3_327;
+
     var_r31_314 = 0;
     this->unk14 = __float_max;
     M2C_FIELD(this, f32 *, 0xC) = (f32) __float_max;
@@ -167,34 +184,34 @@ void BoundingRegion::InitBoundaryRect() {
     this->unk10 = __float_min;
 loop_13:
     if (var_r31_314 < (s32) M2C_FIELD(this, s32 *, 8)) {
-        arg_sp30.GetPos((s32) this);
+        sp30.GetPos((s32) this);
         temp_r3_327 = M2C_FIELD(this, void **, 0);
-        arg_sp40 = arg_sp30;
-        arg_sp48 = arg_sp38;
+        sp30.unk10 = M2C_BITWISE(f64, sp30);
+        sp30.unk18 = sp30.unk8;
         if (temp_r3_327 != NULL) {
             temp_r4_334 = M2C_FIELD(temp_r3_327, Matrix **, 0x30);
             if (temp_r4_334 != NULL) {
-                arg_sp50.Inverse(temp_r4_334);
-                arg_sp10 = arg_sp80 + (((f32) arg_sp48 * arg_sp70) + (((f32) arg_sp40 * arg_sp50) + (arg_sp44 * arg_sp60)));
-                arg_sp14 = arg_sp84 + (((f32) arg_sp48 * arg_sp74) + (((f32) arg_sp40 * arg_sp54) + (arg_sp44 * arg_sp64)));
-                arg_sp18 = arg_sp88 + (((f32) arg_sp48 * arg_sp78) + (((f32) arg_sp40 * arg_sp58) + (arg_sp44 * arg_sp68)));
-                arg_sp20 = (f64) arg_sp10;
-                arg_sp28 = (f64) arg_sp18;
-                arg_sp40 = (f64) arg_sp10;
-                arg_sp48 = (f64) arg_sp18;
+                sp50.Inverse(temp_r4_334);
+                sp10 = sp50.unk30 + ((sp30.unk18 * sp50.unk20) + ((sp30.unk10 * M2C_BITWISE(f32, sp50)) + (sp30.unk14 * sp50.unk10)));
+                sp14 = sp50.unk34 + ((sp30.unk18 * sp50.unk24) + ((sp30.unk10 * sp50.unk4) + (sp30.unk14 * sp50.unk14)));
+                sp18 = sp50.unk38 + ((sp30.unk18 * sp50.unk28) + ((sp30.unk10 * sp50.unk8) + (sp30.unk14 * sp50.unk18)));
+                sp20 = (f64) sp10;
+                sp28 = (f64) sp18;
+                sp30.unk10 = (f64) sp10;
+                sp30.unk18 = (f64) sp18;
             }
         }
-        if ((f32) arg_sp40 < M2C_FIELD(this, f32 *, 0xC)) {
-            M2C_FIELD(this, f32 *, 0xC) = (f32) arg_sp40;
+        if ((f32) sp30.unk10 < M2C_FIELD(this, f32 *, 0xC)) {
+            M2C_FIELD(this, f32 *, 0xC) = (f32) sp30.unk10;
         }
-        if ((f32) arg_sp40 > this->unk10) {
-            this->unk10 = (f32) arg_sp40;
+        if ((f32) sp30.unk10 > this->unk10) {
+            this->unk10 = (f32) sp30.unk10;
         }
-        if ((f32) arg_sp48 < this->unk14) {
-            this->unk14 = (f32) arg_sp48;
+        if ((f32) sp30.unk18 < this->unk14) {
+            this->unk14 = (f32) sp30.unk18;
         }
-        if ((f32) arg_sp48 > this->unk18) {
-            this->unk18 = (f32) arg_sp48;
+        if ((f32) sp30.unk18 > this->unk18) {
+            this->unk18 = (f32) sp30.unk18;
         }
         var_r31_314 += 1;
         goto loop_13;

@@ -318,6 +318,14 @@ void MobilePlatform::UpdateMove() {
 
 #if 0 // DRAFT: ')' expected
 void MobilePlatform::Message(MKMessage *arg0) {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    s32 sp1C;
+    s32 sp18;
+    s32 sp14;
+    s32 sp10;
     MKVector3 *temp_r29_1046;
     MKVector3 *temp_r29_1073;
     MKVector3 *temp_r29_1116;
@@ -330,6 +338,7 @@ void MobilePlatform::Message(MKMessage *arg0) {
     s32 temp_r0_745;
     void *temp_r29_934;
     void *temp_r29_988;
+
     temp_r0_745 = arg0->unk0;
     switch (temp_r0_745) {                          /* irregular */
     case 0xB5:
@@ -369,11 +378,11 @@ block_73:
             if (this->unk180 > 0.0f) {
                 SetYaw(0.0f, 6.2831855f);
             }
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-            arg_sp20 = M2C_FIELD(this, f64 *, 0x110);
-            arg_sp28 = M2C_FIELD(this, f64 *, 0x118);
-            arg_sp30.SetRotationPYR(*((MKVector3 *) &arg_sp20));
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
+            M2C_STRUCT_COPY((s32) &sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+            sp20 = M2C_FIELD(this, f64 *, 0x110);
+            sp28 = M2C_FIELD(this, f64 *, 0x118);
+            sp30.SetRotationPYR(*((MKVector3 *) &sp20));
+            MKModel_SetWorldMatrix(this->unk4, sp30);
         }
         if ((s32) this->unk19C.unk1C > 0) {
             MKModel_SetPosition(this->unk4, *((MKVector3 *) this->unk19C.unk20));
@@ -430,9 +439,9 @@ block_73:
             } else {
                 this->unk1F0 = 1.0f;
             }
-            arg_sp1C = 0;
-            arg_sp18 = 0xB5;
-            Message(&arg_sp18);
+            sp1C = 0;
+            sp18 = 0xB5;
+            Message(&sp18);
             if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
                 temp_r29_1046 = this->unk8 + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r29_1046, 0U, -1, 0.0f, 0U);
@@ -440,9 +449,9 @@ block_73:
         }
         goto block_73;
     case 0xC5:
-        arg_sp14 = 0;
-        arg_sp10 = 0xB5;
-        Message(&arg_sp10);
+        sp14 = 0;
+        sp10 = 0xB5;
+        Message(&sp10);
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
             temp_r29_1073 = this->unk8 + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r29_1073, 0U, -1, 0.0f, 0U);
@@ -520,23 +529,29 @@ void MobilePlatform::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: undefined identifier 'unk11'
 void MobilePlatform::LoadDone() {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 temp_r4_1305;
     f32 var_f1_1389;
     f64 temp_f0_1285;
     f64 temp_f1_1284;
     void *temp_r3_1283;
     void *temp_r3_1315;
+
     Platform::LoadDone();
     this->unk19C.LoadDone();
     temp_r3_1283 = this->unk8;
     temp_f1_1284 = M2C_FIELD(temp_r3_1283, f64 *, 0x30);
     temp_f0_1285 = M2C_FIELD(temp_r3_1283, f64 *, 0x38);
-    arg_sp20 = temp_f1_1284;
+    sp20 = temp_f1_1284;
     M2C_FIELD(this, f64 *, 0x250) = temp_f1_1284;
     this->unk250 = temp_f0_1285;
-    arg_sp28 = temp_f0_1285;
+    sp28 = temp_f0_1285;
     if ((s32) this->unk19C.unk1C > 0) {
         MKModel_SetPosition(this->unk4, *((MKVector3 *) this->unk19C.unk20));
     }
@@ -555,11 +570,11 @@ void MobilePlatform::LoadDone() {
         if (this->unk180 > 0.0f) {
             SetYaw(0.0f, 6.2831855f);
         }
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp10 = M2C_FIELD(this, f64 *, 0x110);
-        arg_sp18 = M2C_FIELD(this, f64 *, 0x118);
-        arg_sp30.SetRotationPYR(*((MKVector3 *) &arg_sp10));
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
+        M2C_STRUCT_COPY((s32) &unksp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        sp10 = M2C_FIELD(this, f64 *, 0x110);
+        sp18 = M2C_FIELD(this, f64 *, 0x118);
+        sp30.SetRotationPYR(*((MKVector3 *) &sp10));
+        MKModel_SetWorldMatrix(this->unk4, sp30);
         if (M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4) > 0.0f) {
             M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0) = (f32) (M2C_BITWISE(f32, this->unk19C.unk30.unk4) / M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 4));
         }

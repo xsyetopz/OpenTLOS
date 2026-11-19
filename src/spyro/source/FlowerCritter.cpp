@@ -45,11 +45,22 @@ void FlowerCritter::Deinit() {
 
 #if 0 // DRAFT: illegal type
 void FlowerCritter::Draw() {
+    Matrix sp50;
+    M2C_UNK sp4C;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
     f32 temp_f1_132;
     s32 temp_r0_120;
     s32 var_r29_93;
     s32 var_r31_94;
     void *temp_r28_101;
+
     var_r29_93 = 0;
     var_r31_94 = 0;
 loop_6:
@@ -57,26 +68,26 @@ loop_6:
         temp_r28_101 = this->unk170 + var_r31_94;
         this->unk80->SetAnim(M2C_FIELD(temp_r28_101, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r28_101, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (temp_r28_101 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (temp_r28_101 - 4) + 4, 0x40);
         temp_r0_120 = M2C_FIELD(temp_r28_101, s32 *, 0x60);
         if ((temp_r0_120 == 3) || (temp_r0_120 == 4) || (temp_r0_120 == 5)) {
             temp_f1_132 = 300.0f * _table_sinf(M2C_FIELD(temp_r28_101, f32 *, 0x68));
-            arg_sp28 = 0.0f;
-            arg_sp20 = 0.0f;
-            arg_sp24 = temp_f1_132;
-            arg_sp38 = (f64) arg_sp28;
-            arg_sp30 = (f64) arg_sp20;
+            sp28 = 0.0f;
+            sp20 = 0.0f;
+            sp24 = temp_f1_132;
+            sp38 = (f64) sp28;
+            sp30 = (f64) sp20;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp40 = arg_sp10;
-            arg_sp18 = arg_sp88 + (f32) arg_sp38;
-            arg_sp48 = (f64) arg_sp18;
-            arg_sp80 = (f32) arg_sp40;
-            arg_sp84 = arg_sp44;
-            arg_sp88 = (f32) arg_sp48;
-            arg_sp8C = 1.0f;
+            sp40 = sp10;
+            sp18 = sp50.unk38 + (f32) sp38;
+            sp48 = (f64) sp18;
+            sp50.unk30 = (f32) sp40;
+            sp50.unk34 = unksp44;
+            sp50.unk38 = (f32) sp48;
+            sp50.unk3C = 1.0f;
         }
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+        MKModel_SetWorldMatrix(this->unk4, sp50);
         MKModel_Draw(this->unk4, NULL);
         var_r29_93 += 1;
         var_r31_94 += 0x70;

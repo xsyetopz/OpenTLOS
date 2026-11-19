@@ -66,9 +66,12 @@ loop_5:
 
 #if 0 // DRAFT: illegal type
 void BirdCritter::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 var_r30_120;
     s32 var_r31_121;
     void *temp_r29_128;
+
     var_r30_120 = 0;
     var_r31_121 = 0;
 loop_2:
@@ -76,8 +79,8 @@ loop_2:
         temp_r29_128 = this->unk170 + var_r31_121;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_128, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_128, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (temp_r29_128 - 4) + 4, 0x40);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_128 - 4) + 4, 0x40);
+        MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_120 += 1;
         var_r31_121 += 0x90;

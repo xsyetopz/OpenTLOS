@@ -25,28 +25,33 @@ extern M2C_UNK gb;
 static s32 lit_598 = 0;
 static u8 lit_599 = 0;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: undefined identifier 'unkCC'
 void CynderEnergyCrystal::UpdateModel() {
+    Matrix sp20;
+    M2C_UNK sp1C;
+    f64 sp18;
+    f64 sp10;
     ManagedLight *temp_r3_78;
     Matrix *temp_r5_57;
     void *temp_r3_82;
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) &this->unkCC + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp1C + 4, (s32) &this->unkCC + 4, 0x40);
     temp_r5_57 = this->unkC8;
     if (temp_r5_57 != NULL) {
-        arg_sp20.Multiply((Matrix *) &arg_sp20, temp_r5_57);
+        sp20.Multiply(&sp20, temp_r5_57);
     }
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp20));
+    MKModel_SetWorldMatrix(this->unk4, sp20);
     if ((ManagedLight *) this->unk5E4 != NULL) {
-        MKModel_CalculateNodeWorldMatrix(this->unk4, (s32) M2C_FIELD(this->unk5E0->unk20, s16 *, 0x70), (Matrix *) &arg_sp20);
+        MKModel_CalculateNodeWorldMatrix(this->unk4, (s32) M2C_FIELD(this->unk5E0->unk20, s16 *, 0x70), &sp20);
         temp_r3_78 = this->unk5E4;
-        arg_sp10 = arg_sp50;
-        temp_r3_78->unk10 = arg_sp50;
-        temp_r3_78->unk18 = arg_sp58;
+        sp10 = (f64) sp20.unk30;
+        temp_r3_78->unk10 = (f64) sp20.unk30;
+        temp_r3_78->unk18 = (f64) sp20.unk38;
         temp_r3_82 = temp_r3_78->unk3C;
-        arg_sp18 = arg_sp58;
+        sp18 = (f64) sp20.unk38;
         if (temp_r3_82 != NULL) {
-            M2C_FIELD(temp_r3_82, f64 *, 0x10) = arg_sp50;
-            M2C_FIELD(temp_r3_82, f64 *, 0x18) = arg_sp58;
+            M2C_FIELD(temp_r3_82, f64 *, 0x10) = (f64) sp20.unk30;
+            M2C_FIELD(temp_r3_82, f64 *, 0x18) = (f64) sp20.unk38;
         }
     }
 }

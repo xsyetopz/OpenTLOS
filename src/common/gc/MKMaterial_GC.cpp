@@ -559,35 +559,47 @@ void MKMaterial_SetAnimationMatrices(const Matrix *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp60'
 void MKMaterial_SetLocalToWorld(const Matrix *arg0, float arg1) {
+    Matrix sp60;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
     Matrix *var_r5_1580;
+
     var_r5_1580 = MKView_GetWorldToViewMatrix();
     if (arg0 != NULL) {
-        arg_sp60.Multiply(arg0, var_r5_1580);
-        var_r5_1580 = (Matrix *) &arg_sp60;
+        sp60.Multiply(arg0, var_r5_1580);
+        var_r5_1580 = &sp60;
     }
-    arg_sp20 = var_r5_1580->unk0;
-    arg_sp24 = var_r5_1580->unk10;
-    arg_sp28 = var_r5_1580->unk20;
-    arg_sp2C = var_r5_1580->unk30;
-    arg_sp30 = var_r5_1580->unk4;
-    arg_sp34 = var_r5_1580->unk14;
-    arg_sp38 = var_r5_1580->unk24;
-    arg_sp3C = var_r5_1580->unk34;
-    arg_sp40 = -var_r5_1580->unk8;
-    arg_sp44 = -var_r5_1580->unk18;
-    arg_sp48 = -var_r5_1580->unk28;
-    arg_sp4C = -var_r5_1580->unk38;
-    GXLoadPosMtxImm((f32 (*)[4]) &arg_sp20, 0U);
-    GXLoadNrmMtxImm((f32 (*)[4]) &arg_sp20, 0U);
-    arg_sp2C = 0.0f;
-    arg_sp3C = 0.0f;
-    arg_sp4C = 0.0f;
-    GXLoadPosMtxImm((f32 (*)[4]) &arg_sp20, 6U);
-    GXLoadNrmMtxImm((f32 (*)[4]) &arg_sp20, 6U);
+    sp20 = var_r5_1580->unk0;
+    sp24 = var_r5_1580->unk10;
+    sp28 = var_r5_1580->unk20;
+    sp2C = var_r5_1580->unk30;
+    sp30 = var_r5_1580->unk4;
+    sp34 = var_r5_1580->unk14;
+    sp38 = var_r5_1580->unk24;
+    sp3C = var_r5_1580->unk34;
+    sp40 = -var_r5_1580->unk8;
+    sp44 = -var_r5_1580->unk18;
+    sp48 = -var_r5_1580->unk28;
+    sp4C = -var_r5_1580->unk38;
+    GXLoadPosMtxImm((f32 (*)[4]) &sp20, 0U);
+    GXLoadNrmMtxImm((f32 (*)[4]) &sp20, 0U);
+    sp2C = 0.0f;
+    sp3C = 0.0f;
+    sp4C = 0.0f;
+    GXLoadPosMtxImm((f32 (*)[4]) &sp20, 6U);
+    GXLoadNrmMtxImm((f32 (*)[4]) &sp20, 6U);
 }
-#endif
 
 void MKMaterial_DeinitModule_PlatformSpecific() {
 

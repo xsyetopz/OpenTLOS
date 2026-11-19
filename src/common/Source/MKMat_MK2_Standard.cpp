@@ -139,75 +139,101 @@ void Updater_Animate(MKMaterial *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp28'
+#if 0 // DRAFT: undefined identifier 'unksp44'
 void Updater_SinRotate(MKMaterial *arg0, void *arg1) {
+    Matrix sp90;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_242;
     f32 temp_f29_247;
     f32 temp_f30_236;
     f32 temp_f31_234;
     void *temp_r3_227;
+
     temp_r3_227 = arg0->unk24;
     temp_f31_234 = M2C_FIELD(temp_r3_227, f32 *, 0x150);
     temp_f30_236 = M2C_FIELD(temp_r3_227, f32 *, 0x154);
     M2C_FIELD(arg1, f32 *, 0) = (f32) ((3.1415927f * (2.0f * (gUpdateTimeDelta * M2C_FIELD(temp_r3_227, f32 *, 0x158)))) + M2C_FIELD(arg1, f32 *, 0));
     NormaliseAngle(M2C_FIELD(arg1, f32 *, 0));
     temp_f1_242 = _table_sinf(M2C_FIELD(arg1, f32 *, 0));
-    arg_sp28 = 0.0f;
+    sp28 = 0.0f;
     temp_f29_247 = M2C_FIELD(arg1, f32 *, 4) * temp_f1_242;
-    arg_sp20 = temp_f31_234;
-    arg_sp24 = temp_f30_236;
-    arg_sp48 = (f64) arg_sp28;
-    arg_sp40 = (f64) arg_sp20;
-    arg_sp90.SetRotationToNone();
-    arg_sp10 = -(f32) arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -(f32) arg_sp48;
-    arg_sp30 = (f64) arg_sp10;
-    arg_sp38 = (f64) arg_sp18;
-    arg_spC0 = (f32) arg_sp30;
-    arg_spC4 = arg_sp34;
-    arg_spC8 = (f32) arg_sp38;
-    arg_spCC = 1.0f;
-    arg_sp50.SetRotationRoll(temp_f29_247);
-    arg_sp80 = (f32) arg_sp40;
-    arg_sp84 = arg_sp44;
-    arg_sp88 = (f32) arg_sp48;
-    arg_sp8C = 1.0f;
-    ((Matrix *) (arg0->unk24 + 0x40))->Multiply((Matrix *) &arg_sp90, (Matrix *) &arg_sp50);
+    sp20 = temp_f31_234;
+    sp24 = temp_f30_236;
+    sp48 = (f64) sp28;
+    sp40 = (f64) sp20;
+    sp90.SetRotationToNone();
+    sp10 = -(f32) sp40;
+    sp14 = -unksp44;
+    sp18 = -(f32) sp48;
+    sp30 = (f64) sp10;
+    sp38 = (f64) sp18;
+    sp90.unk30 = (f32) sp30;
+    sp90.unk34 = unksp34;
+    sp90.unk38 = (f32) sp38;
+    sp90.unk3C = 1.0f;
+    sp50.SetRotationRoll(temp_f29_247);
+    sp50.unk30 = (f32) sp40;
+    sp50.unk34 = unksp44;
+    sp50.unk38 = (f32) sp48;
+    sp50.unk3C = 1.0f;
+    ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: undefined identifier 'unksp44'
 void Updater_Rotate(MKMaterial *arg0, void *arg1) {
+    Matrix sp90;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f30_328;
     f32 temp_f31_326;
     void *temp_r3_323;
+
     temp_r3_323 = arg0->unk24;
     temp_f31_326 = M2C_FIELD(temp_r3_323, f32 *, 0x134);
     temp_f30_328 = M2C_FIELD(temp_r3_323, f32 *, 0x138);
     M2C_FIELD(arg1, f32 *, 4) = (f32) ((gUpdateTimeDelta * M2C_FIELD(arg1, f32 *, 0)) + M2C_FIELD(arg1, f32 *, 4));
     NormaliseAngle(M2C_FIELD(arg1, f32 *, 4));
-    arg_sp20 = temp_f31_326;
-    arg_sp24 = temp_f30_328;
-    arg_sp28 = 0.0f;
-    arg_sp40 = (f64) arg_sp20;
-    arg_sp48 = (f64) arg_sp28;
-    arg_sp90.SetRotationToNone();
-    arg_sp10 = -(f32) arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -(f32) arg_sp48;
-    arg_sp30 = (f64) arg_sp10;
-    arg_sp38 = (f64) arg_sp18;
-    arg_spC0 = (f32) arg_sp30;
-    arg_spC4 = arg_sp34;
-    arg_spC8 = (f32) arg_sp38;
-    arg_spCC = 1.0f;
-    arg_sp50.SetRotationRoll(M2C_FIELD(arg1, f32 *, 4));
-    arg_sp80 = (f32) arg_sp40;
-    arg_sp84 = arg_sp44;
-    arg_sp88 = (f32) arg_sp48;
-    arg_sp8C = 1.0f;
-    ((Matrix *) (arg0->unk24 + 0x40))->Multiply((Matrix *) &arg_sp90, (Matrix *) &arg_sp50);
+    sp20 = temp_f31_326;
+    sp24 = temp_f30_328;
+    sp28 = 0.0f;
+    sp40 = (f64) sp20;
+    sp48 = (f64) sp28;
+    sp90.SetRotationToNone();
+    sp10 = -(f32) sp40;
+    sp14 = -unksp44;
+    sp18 = -(f32) sp48;
+    sp30 = (f64) sp10;
+    sp38 = (f64) sp18;
+    sp90.unk30 = (f32) sp30;
+    sp90.unk34 = unksp34;
+    sp90.unk38 = (f32) sp38;
+    sp90.unk3C = 1.0f;
+    sp50.SetRotationRoll(M2C_FIELD(arg1, f32 *, 4));
+    sp50.unk30 = (f32) sp40;
+    sp50.unk34 = unksp44;
+    sp50.unk38 = (f32) sp48;
+    sp50.unk3C = 1.0f;
+    ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
 }
 #endif
 

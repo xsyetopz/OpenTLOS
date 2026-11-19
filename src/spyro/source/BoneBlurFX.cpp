@@ -77,29 +77,32 @@ void BoneBlurFX::Teleport() {
     TakeFrameSnapshot();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
 void BoneBlurFX::CalcUVs() {
+    Matrix sp20;
+    MKVector3 sp10;
     s32 temp_r0_182;
     s32 temp_r3_181;
     s32 var_r28_170;
     s32 var_r29_153;
     s32 var_r30_171;
+
     var_r29_153 = this->unk4C - 1;
     if (var_r29_153 < 0) {
         var_r29_153 = this->unk54 - 1;
     }
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, MKView_GetWorldToScreenMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp10.unkC + 4, MKView_GetWorldToScreenMatrix() - 4 + 4, 0x40);
     var_r28_170 = 0;
     var_r30_171 = 0;
 loop_4:
     if (var_r28_170 < (s32) this->unk68) {
-        Xform3D2D((MKVector3 *) &arg_sp10, *(this->unk58[var_r29_153] + var_r30_171), (Matrix *) &arg_sp20);
+        Xform3D2D(&sp10, *(this->unk58[var_r29_153] + var_r30_171), &sp20);
         temp_r3_181 = var_r30_171 + 0x10;
         temp_r0_182 = var_r30_171 + 0x14;
         var_r28_170 += 1;
         var_r30_171 += 0x20;
-        *(this->unk58[var_r29_153] + temp_r3_181) = arg_sp10;
-        *(this->unk58[var_r29_153] + temp_r0_182) = arg_sp14;
+        *(this->unk58[var_r29_153] + temp_r3_181) = M2C_BITWISE(f32, sp10);
+        *(this->unk58[var_r29_153] + temp_r0_182) = sp10.unk4;
         goto loop_4;
     }
 }

@@ -12,6 +12,7 @@
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/OptionsScreen.h"
 #include "spyro/source/PauseMainScreen.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UISystem.h"
@@ -60,25 +61,44 @@ void PauseMenu_AllowStartToQuit(bool arg0) {
     bAllowStartToQuit = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
 void PauseMenu_Draw() {
-    arg_sp30 = 1.0f;
-    arg_sp34 = 1.0f;
-    arg_sp38 = 1.0f;
-    arg_sp3C = 1.0f;
-    arg_sp60 = (f64) arg_sp30;
-    arg_sp68 = (f64) arg_sp38;
-    MKSetBaseColorV(*((MKVector4 *) &arg_sp60));
+    RenderContext sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
+    sp30 = 1.0f;
+    sp34 = 1.0f;
+    sp38 = 1.0f;
+    sp3C = 1.0f;
+    sp60 = (f64) sp30;
+    sp68 = (f64) sp38;
+    MKSetBaseColorV(*((MKVector4 *) &sp60));
     MKMaterial_SetMaterial(M2C_FIELD(&pBackground, MKMaterial **, 0));
     MKPrimitive(0xC, 1);
     MKBegin(4);
-    arg_sp20 = 1.0f;
-    arg_sp24 = 1.0f;
-    arg_sp28 = 1.0f;
-    arg_sp2C = 1.0f;
-    arg_sp50 = (f64) arg_sp20;
-    arg_sp58 = (f64) arg_sp28;
-    MKSetColorV(*((MKVector4 *) &arg_sp50));
+    sp20 = 1.0f;
+    sp24 = 1.0f;
+    sp28 = 1.0f;
+    sp2C = 1.0f;
+    sp50 = (f64) sp20;
+    sp58 = (f64) sp28;
+    MKSetColorV(*((MKVector4 *) &sp50));
     MKSetTexCoord1F(0.0f, 0.0f);
     MKSetPositionF(-108.0f, 0.0f, 0.0f);
     MKSetTexCoord1F(1.0f, 0.0f);
@@ -92,13 +112,13 @@ void PauseMenu_Draw() {
     MKMaterial_SetMaterial(M2C_FIELD(&pBackground, MKMaterial **, 4));
     MKPrimitive(0xC, 1);
     MKBegin(4);
-    arg_sp10 = 1.0f;
-    arg_sp14 = 1.0f;
-    arg_sp18 = 1.0f;
-    arg_sp1C = 1.0f;
-    arg_sp40 = (f64) arg_sp10;
-    arg_sp48 = (f64) arg_sp18;
-    MKSetColorV(*((MKVector4 *) &arg_sp40));
+    sp10 = 1.0f;
+    sp14 = 1.0f;
+    sp18 = 1.0f;
+    sp1C = 1.0f;
+    sp40 = (f64) sp10;
+    sp48 = (f64) sp18;
+    MKSetColorV(*((MKVector4 *) &sp40));
     MKSetTexCoord1F(0.0f, 0.0f);
     MKSetPositionF(320.0f, 0.0f, 0.0f);
     MKSetTexCoord1F(1.0f, 0.0f);
@@ -110,11 +130,10 @@ void PauseMenu_Draw() {
     MKEnd();
     MKEndPrimitive();
     if ((UISystem *) pSystem != NULL) {
-        arg_sp70.RenderContext();
-        pSystem->Draw(arg_sp70);
+        sp70.RenderContext();
+        pSystem->Draw(sp70);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to
 s32 PauseMenu_Update() {

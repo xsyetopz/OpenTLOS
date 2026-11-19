@@ -337,8 +337,38 @@ void LightningStrikeFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp60'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LightningStrikeFX::LoadDone() {
+    Matrix sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    MKVector3 spD0;
+    MKVector3 spC0;
+    f64 spB8;
+    f64 spB0;
+    MKVector3 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
     f32 temp_f3_673;
     f32 temp_f3_708;
     f32 temp_f6_680;
@@ -346,71 +376,72 @@ void LightningStrikeFX::LoadDone() {
     f32 temp_f8_714;
     f32 temp_f9_720;
     s32 var_r30_574;
+
     MKProp::LoadDone();
     var_r30_574 = 0;
-    arg_sp60 = 1e11f;
-    arg_sp64 = 1e11f;
-    arg_sp68 = 1e11f;
-    this->unk60 = (f64) arg_sp60;
-    arg_sp58 = -1e11f;
-    arg_sp50 = -1e11f;
-    arg_sp54 = -1e11f;
-    this->unk68 = (f64) arg_sp68;
-    this->unk70 = (f64) arg_sp50;
-    arg_spF0 = (f64) arg_sp60;
-    arg_spF8 = (f64) arg_sp68;
-    arg_spE0 = (f64) arg_sp50;
-    arg_spE8 = (f64) arg_sp58;
-    this->unk78 = (f64) arg_sp58;
+    sp60 = 1e11f;
+    sp64 = 1e11f;
+    sp68 = 1e11f;
+    this->unk60 = (f64) sp60;
+    sp58 = -1e11f;
+    sp50 = -1e11f;
+    sp54 = -1e11f;
+    this->unk68 = (f64) sp68;
+    this->unk70 = (f64) sp50;
+    spF0 = (f64) sp60;
+    spF8 = (f64) sp68;
+    spE0 = (f64) sp50;
+    spE8 = (f64) sp58;
+    this->unk78 = (f64) sp58;
 loop_2:
     if (var_r30_574 < (s32) this->unk50) {
-        Min(*((MKVector3 *) &arg_spD0), *((MKVector3 *) &this->unk60));
-        this->unk60 = arg_spD0;
-        this->unk68 = arg_spD8;
-        Max(*((MKVector3 *) &arg_spC0), *((MKVector3 *) &this->unk70));
+        Min(spD0, *((MKVector3 *) &this->unk60));
+        this->unk60 = M2C_BITWISE(f64, spD0);
+        this->unk68 = (f64) spD0.unk8;
+        Max(spC0, *((MKVector3 *) &this->unk70));
         var_r30_574 += 1;
-        this->unk70 = arg_spC0;
-        this->unk78 = arg_spC8;
+        this->unk70 = M2C_BITWISE(f64, spC0);
+        this->unk78 = (f64) spC0.unk8;
         goto loop_2;
     }
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp90 = arg_sp10;
-    arg_sp18 = (f32) M2C_FIELD(this, f64 *, 0x78) - (f32) M2C_FIELD(this, f64 *, 0x68);
-    arg_sp98 = (f64) arg_sp18;
-    arg_spA0.operator*(0.5f);
+    sp90 = sp10;
+    sp18 = (f32) M2C_FIELD(this, f64 *, 0x78) - (f32) M2C_FIELD(this, f64 *, 0x68);
+    sp98 = (f64) sp18;
+    spA0.operator*(0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spB0 = arg_sp40;
-    arg_sp48 = (f32) M2C_FIELD(this, f64 *, 0x68) + arg_spA8;
-    this->unkB0 = (f32) arg_spB0;
-    arg_spB8 = (f64) arg_sp48;
-    this->unkB4 = arg_spB4;
-    this->unkB8 = (f32) arg_spB8;
+    spB0 = sp40;
+    sp48 = (f32) M2C_FIELD(this, f64 *, 0x68) + spA0.unk8;
+    this->unkB0 = (f32) spB0;
+    spB8 = (f64) sp48;
+    this->unkB4 = unkspB4;
+    this->unkB8 = (f32) spB8;
     this->unkBC = 1.0f;
-    M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (this + 0x7C) + 4, 0x40);
-    arg_sp100.Inverse((Matrix *) &arg_sp100);
+    M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (this + 0x7C) + 4, 0x40);
+    sp100.Inverse(&sp100);
     temp_f3_673 = M2C_FIELD(this, f32 *, 0x64);
     temp_f6_680 = (f32) M2C_FIELD(this, f64 *, 0x60);
     temp_f7_686 = (f32) M2C_FIELD(this, f64 *, 0x68);
-    arg_sp30 = arg_sp130 + ((temp_f7_686 * arg_sp120) + ((temp_f6_680 * arg_sp100) + (temp_f3_673 * arg_sp110)));
-    arg_sp34 = arg_sp134 + ((temp_f7_686 * arg_sp124) + ((temp_f6_680 * arg_sp104) + (temp_f3_673 * arg_sp114)));
-    arg_sp38 = arg_sp138 + ((temp_f7_686 * arg_sp128) + ((temp_f6_680 * arg_sp108) + (temp_f3_673 * arg_sp118)));
-    this->unk60 = (f64) arg_sp30;
-    this->unk68 = (f64) arg_sp38;
+    sp30 = sp100.unk30 + ((temp_f7_686 * sp100.unk20) + ((temp_f6_680 * M2C_BITWISE(f32, sp100)) + (temp_f3_673 * sp100.unk10)));
+    sp34 = sp100.unk34 + ((temp_f7_686 * sp100.unk24) + ((temp_f6_680 * sp100.unk4) + (temp_f3_673 * sp100.unk14)));
+    sp38 = sp100.unk38 + ((temp_f7_686 * sp100.unk28) + ((temp_f6_680 * sp100.unk8) + (temp_f3_673 * sp100.unk18)));
+    this->unk60 = (f64) sp30;
+    this->unk68 = (f64) sp38;
     temp_f3_708 = M2C_FIELD(this, f32 *, 0x74);
     temp_f8_714 = (f32) M2C_FIELD(this, f64 *, 0x70);
     temp_f9_720 = (f32) M2C_FIELD(this, f64 *, 0x78);
-    arg_sp80 = (f64) arg_sp30;
-    arg_sp20 = arg_sp130 + ((temp_f9_720 * arg_sp120) + ((temp_f8_714 * arg_sp100) + (temp_f3_708 * arg_sp110)));
-    arg_sp24 = arg_sp134 + ((temp_f9_720 * arg_sp124) + ((temp_f8_714 * arg_sp104) + (temp_f3_708 * arg_sp114)));
-    arg_sp28 = arg_sp138 + ((temp_f9_720 * arg_sp128) + ((temp_f8_714 * arg_sp108) + (temp_f3_708 * arg_sp118)));
-    this->unk70 = (f64) arg_sp20;
-    this->unk78 = (f64) arg_sp28;
-    arg_sp88 = (f64) arg_sp38;
-    arg_sp70 = (f64) arg_sp20;
-    arg_sp78 = (f64) arg_sp28;
+    sp80 = (f64) sp30;
+    sp20 = sp100.unk30 + ((temp_f9_720 * sp100.unk20) + ((temp_f8_714 * M2C_BITWISE(f32, sp100)) + (temp_f3_708 * sp100.unk10)));
+    sp24 = sp100.unk34 + ((temp_f9_720 * sp100.unk24) + ((temp_f8_714 * sp100.unk4) + (temp_f3_708 * sp100.unk14)));
+    sp28 = sp100.unk38 + ((temp_f9_720 * sp100.unk28) + ((temp_f8_714 * sp100.unk8) + (temp_f3_708 * sp100.unk18)));
+    this->unk70 = (f64) sp20;
+    this->unk78 = (f64) sp28;
+    sp88 = (f64) sp38;
+    sp70 = (f64) sp20;
+    sp78 = (f64) sp28;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -714,8 +745,105 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2E0'
+#if 0 // DRAFT: undefined identifier 'sp1A0'
 void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::StrikeArc *arg1) {
+    f64 sp348;                                      /* compiler-managed */
+    f64 sp340;
+    f64 sp338;                                      /* compiler-managed */
+    f64 sp330;                                      /* compiler-managed */
+    f64 sp328;
+    f64 sp320;
+    f64 sp318;
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    f64 sp2E8;
+    f64 sp2E0;
+    f64 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f32 sp1A8;
+    f32 sp198;
+    f32 sp188;
+    f32 sp178;
+    f32 sp174;
+    f32 sp170;
+    f32 sp168;
+    f32 sp158;
+    f32 sp154;
+    f32 sp150;
+    f32 sp14C;
+    f32 sp148;
+    f32 sp144;
+    f32 sp140;
+    f32 sp138;
+    f32 sp128;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp108;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    f32 spB8;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_1379;
     f32 temp_f25_1818;
     f32 temp_f25_1882;
@@ -748,32 +876,33 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     s32 var_r0_1456;
     s32 var_r0_1562;
     s32 var_r0_1692;
+
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f3, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
     temp_f5_1337 = M2C_FIELD(arg1, f32 *, 0x20);
-    arg_sp2E0 = arg_sp1A0;
-    arg_sp1A8 = M2C_FIELD(arg1, f32 *, 0x30) - temp_f5_1337;
-    arg_sp2E8 = (f64) arg_sp1A8;
+    sp2E0 = sp1A0;
+    sp1A8 = M2C_FIELD(arg1, f32 *, 0x30) - temp_f5_1337;
+    sp2E8 = (f64) sp1A8;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    arg_sp2F0 = arg_sp190;
-    arg_sp198 = (f32) arg_sp2E8 * 0.5f;
-    arg_sp2F8 = (f64) arg_sp198;
+    sp2F0 = sp190;
+    sp198 = (f32) sp2E8 * 0.5f;
+    sp2F8 = (f64) sp198;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    arg_sp340 = arg_sp180;
+    sp340 = sp180;
     temp_f27_1367 = 1.0f - (M2C_FIELD(arg1, f32 *, 0x10) / M2C_FIELD(arg1, f32 *, 0x4C));
-    arg_sp188 = temp_f5_1337 + (f32) arg_sp2F8;
-    arg_sp348 = (f64) arg_sp188;
+    sp188 = temp_f5_1337 + (f32) sp2F8;
+    sp348 = (f64) sp188;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     temp_f1_1379 = M2C_FIELD(arg1, f32 *, 8) * _table_sinf(6.2831855f * temp_f27_1367);
-    arg_sp2D0 = arg_sp40;
-    arg_sp48 = temp_f1_1379;
-    arg_sp2D8 = (f64) arg_sp48;
+    sp2D0 = sp40;
+    sp48 = temp_f1_1379;
+    sp2D8 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp348 = (f32) arg_sp348 + (f32) arg_sp2D8;
-    M2C_STRUCT_COPY((s32) &arg_sp34C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
-    var_f4_1411 = (arg_sp358 * arg_sp358) + ((arg_sp350 * arg_sp350) + (arg_sp354 * arg_sp354));
+    sp348 = (f32) sp348 + (f32) sp2D8;
+    M2C_STRUCT_COPY((s32) &unksp34C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    var_f4_1411 = (sp358 * sp358) + ((sp350 * sp350) + (sp354 * sp354));
     if (var_f4_1411 > 1e-12f) {
         if (var_f4_1411 > 0.0f) {
             temp_f1_1417 = __frsqrte(var_f4_1411);
@@ -783,18 +912,18 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
         } else if (var_f4_1411 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1411 = __float_nan;
         } else {
-            arg_sp18 = var_f4_1411;
-            temp_r3_1446 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f4_1411;
+            temp_r3_1446 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_1446) {                 /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_1456 = 1;
                 } else {
                     var_r0_1456 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_1456 = 5;
                 } else {
                     var_r0_1456 = 3;
@@ -812,18 +941,18 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     } else {
         var_f3_1478 = 0.0f;
     }
-    arg_sp170 = arg_sp350 * var_f3_1478;
-    arg_sp174 = arg_sp354 * var_f3_1478;
-    arg_sp178 = arg_sp358 * var_f3_1478;
-    arg_sp320 = (f64) arg_sp170;
-    arg_sp328 = (f64) arg_sp178;
+    sp170 = sp350 * var_f3_1478;
+    sp174 = sp354 * var_f3_1478;
+    sp178 = sp358 * var_f3_1478;
+    sp320 = (f64) sp170;
+    sp328 = (f64) sp178;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp2C0 = arg_sp160;
-    arg_sp168 = M2C_FIELD(arg1, f32 *, 0x30) - M2C_FIELD(arg1, f32 *, 0x20);
-    arg_sp2C8 = (f64) arg_sp168;
-    var_f4_1517 = ((f32) arg_sp2C8 * (f32) arg_sp2C8) + (((f32) arg_sp2C0 * (f32) arg_sp2C0) + (arg_sp2C4 * arg_sp2C4));
+    sp2C0 = sp160;
+    sp168 = M2C_FIELD(arg1, f32 *, 0x30) - M2C_FIELD(arg1, f32 *, 0x20);
+    sp2C8 = (f64) sp168;
+    var_f4_1517 = ((f32) sp2C8 * (f32) sp2C8) + (((f32) sp2C0 * (f32) sp2C0) + (unksp2C4 * unksp2C4));
     if (var_f4_1517 > 1e-12f) {
         if (var_f4_1517 > 0.0f) {
             temp_f1_1523 = __frsqrte(var_f4_1517);
@@ -833,18 +962,18 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
         } else if (var_f4_1517 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1517 = __float_nan;
         } else {
-            arg_sp14 = var_f4_1517;
-            temp_r3_1552 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_1517;
+            temp_r3_1552 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_1552) {                 /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1562 = 1;
                 } else {
                     var_r0_1562 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1562 = 5;
                 } else {
                     var_r0_1562 = 3;
@@ -862,26 +991,26 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     } else {
         var_f3_1584 = 0.0f;
     }
-    arg_sp154 = arg_sp2C4 * var_f3_1584;
-    arg_sp150 = (f32) arg_sp2C0 * var_f3_1584;
-    arg_sp158 = (f32) arg_sp2C8 * var_f3_1584;
-    arg_sp310 = (f64) arg_sp150;
-    arg_sp318 = (f64) arg_sp158;
-    arg_sp38 = ((f32) arg_sp310 * arg_sp324) - (arg_sp314 * (f32) arg_sp320);
-    arg_sp30 = (arg_sp314 * (f32) arg_sp328) - ((f32) arg_sp318 * arg_sp324);
-    arg_sp34 = ((f32) arg_sp318 * (f32) arg_sp320) - ((f32) arg_sp310 * (f32) arg_sp328);
-    arg_sp338 = (f64) arg_sp38;
-    arg_sp330 = (f64) arg_sp30;
-    arg_sp2B0 = (f64) arg_sp30;
-    arg_sp2B8 = (f64) arg_sp38;
-    arg_sp24 = ((f32) arg_sp318 * (f32) arg_sp330) - ((f32) arg_sp310 * (f32) arg_sp338);
-    arg_sp20 = (arg_sp314 * (f32) arg_sp338) - ((f32) arg_sp318 * arg_sp334);
-    arg_sp28 = ((f32) arg_sp310 * arg_sp334) - (arg_sp314 * (f32) arg_sp330);
-    arg_sp330 = (f64) arg_sp20;
-    arg_sp338 = (f64) arg_sp28;
-    arg_sp2A0 = (f64) arg_sp20;
-    arg_sp2A8 = (f64) arg_sp28;
-    var_f4_1647 = ((f32) arg_sp338 * (f32) arg_sp338) + (((f32) arg_sp330 * (f32) arg_sp330) + (arg_sp334 * arg_sp334));
+    sp154 = unksp2C4 * var_f3_1584;
+    sp150 = (f32) sp2C0 * var_f3_1584;
+    sp158 = (f32) sp2C8 * var_f3_1584;
+    sp310 = (f64) sp150;
+    sp318 = (f64) sp158;
+    sp38 = ((f32) sp310 * unksp324) - (unksp314 * (f32) sp320);
+    sp30 = (unksp314 * (f32) sp328) - ((f32) sp318 * unksp324);
+    sp34 = ((f32) sp318 * (f32) sp320) - ((f32) sp310 * (f32) sp328);
+    sp338 = (f64) sp38;
+    sp330 = (f64) sp30;
+    sp2B0 = (f64) sp30;
+    sp2B8 = (f64) sp38;
+    sp24 = ((f32) sp318 * (f32) sp330) - ((f32) sp310 * (f32) sp338);
+    sp20 = (unksp314 * (f32) sp338) - ((f32) sp318 * unksp334);
+    sp28 = ((f32) sp310 * unksp334) - (unksp314 * (f32) sp330);
+    sp330 = (f64) sp20;
+    sp338 = (f64) sp28;
+    sp2A0 = (f64) sp20;
+    sp2A8 = (f64) sp28;
+    var_f4_1647 = ((f32) sp338 * (f32) sp338) + (((f32) sp330 * (f32) sp330) + (unksp334 * unksp334));
     if (var_f4_1647 > 0.000001f) {
         if (var_f4_1647 > 0.0f) {
             temp_f1_1653 = __frsqrte(var_f4_1647);
@@ -891,18 +1020,18 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
         } else if (var_f4_1647 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1647 = __float_nan;
         } else {
-            arg_sp10 = var_f4_1647;
-            temp_r3_1682 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_1647;
+            temp_r3_1682 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_1682) {                 /* switch 3; irregular */
             case 0x7F800000:                        /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1692 = 1;
                 } else {
                     var_r0_1692 = 2;
                 }
                 break;
             case 0x0:                               /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1692 = 5;
                 } else {
                     var_r0_1692 = 3;
@@ -921,108 +1050,108 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
         var_f6_1714 = 0.0f;
     }
     temp_f7_1722 = 1.0f - temp_f27_1367;
-    arg_sp14C = 1.0f;
-    arg_sp148 = temp_f7_1722;
-    arg_sp140 = temp_f7_1722;
-    arg_sp144 = temp_f7_1722;
-    arg_sp308 = (f64) arg_sp148;
-    arg_sp300 = (f64) arg_sp140;
-    arg_sp330 = (f32) arg_sp330 * var_f6_1714;
+    sp14C = 1.0f;
+    sp148 = temp_f7_1722;
+    sp140 = temp_f7_1722;
+    sp144 = temp_f7_1722;
+    sp308 = (f64) sp148;
+    sp300 = (f64) sp140;
+    sp330 = (f32) sp330 * var_f6_1714;
     temp_f26_1740 = 30.000002f * M2C_FIELD(arg1, f32 *, 0x48);
-    arg_sp334 *= var_f6_1714;
-    arg_sp338 = (f32) arg_sp338 * var_f6_1714;
+    unksp334 *= var_f6_1714;
+    sp338 = (f32) sp338 * var_f6_1714;
     MKBegin(6);
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, 0.0f);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    temp_f31_1755 = (f32) arg_sp338 * temp_f26_1740;
-    arg_sp280 = arg_sp130;
-    arg_sp138 = temp_f31_1755;
-    arg_sp288 = (f64) arg_sp138;
+    temp_f31_1755 = sp338 * temp_f26_1740;
+    sp280 = sp130;
+    sp138 = temp_f31_1755;
+    sp288 = (f64) sp138;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp290 = arg_sp120;
-    arg_sp128 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) arg_sp288;
-    arg_sp298 = (f64) arg_sp128;
-    MKSetPositionV(*((MKVector3 *) &arg_sp290));
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    sp290 = sp120;
+    sp128 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) sp288;
+    sp298 = (f64) sp128;
+    MKSetPositionV(*((MKVector3 *) &sp290));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(1.0f, 0.0f);
-    temp_f28_1780 = -(f32) arg_sp338;
-    temp_f30_1782 = -(f32) arg_sp330;
-    temp_f29_1783 = -arg_sp334;
-    arg_sp118 = temp_f28_1780;
-    arg_sp110 = temp_f30_1782;
-    arg_sp114 = temp_f29_1783;
-    arg_sp258 = (f64) arg_sp118;
-    arg_sp250 = (f64) arg_sp110;
+    temp_f28_1780 = -sp338;
+    temp_f30_1782 = -sp330;
+    temp_f29_1783 = -unksp334;
+    sp118 = temp_f28_1780;
+    sp110 = temp_f30_1782;
+    sp114 = temp_f29_1783;
+    sp258 = (f64) sp118;
+    sp250 = (f64) sp110;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    arg_sp260 = arg_sp100;
-    arg_sp108 = (f32) arg_sp258 * temp_f26_1740;
-    arg_sp268 = (f64) arg_sp108;
+    sp260 = sp100;
+    sp108 = (f32) sp258 * temp_f26_1740;
+    sp268 = (f64) sp108;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp270 = arg_spF0;
-    arg_spF8 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) arg_sp268;
-    arg_sp278 = (f64) arg_spF8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp270));
+    sp270 = spF0;
+    spF8 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) sp268;
+    sp278 = (f64) spF8;
+    MKSetPositionV(*((MKVector3 *) &sp270));
     temp_f25_1818 = 0.0f + 1.0f;
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, temp_f25_1818);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    arg_spE8 = temp_f31_1755;
-    arg_sp230 = arg_spE0;
-    arg_sp238 = (f64) arg_spE8;
+    spE8 = temp_f31_1755;
+    sp230 = spE0;
+    sp238 = (f64) spE8;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp240 = arg_spD0;
-    arg_spD8 = (f32) arg_sp348 + (f32) arg_sp238;
-    arg_sp248 = (f64) arg_spD8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp240));
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    sp240 = spD0;
+    spD8 = sp348 + (f32) sp238;
+    sp248 = (f64) spD8;
+    MKSetPositionV(*((MKVector3 *) &sp240));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(1.0f, temp_f25_1818);
-    arg_spC0 = temp_f30_1782;
-    arg_spC4 = temp_f29_1783;
-    arg_spC8 = temp_f28_1780;
-    arg_sp200 = (f64) arg_spC0;
-    arg_sp208 = (f64) arg_spC8;
+    spC0 = temp_f30_1782;
+    spC4 = temp_f29_1783;
+    spC8 = temp_f28_1780;
+    sp200 = (f64) spC0;
+    sp208 = (f64) spC8;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    arg_sp210 = arg_spB0;
-    arg_spB8 = (f32) arg_sp208 * temp_f26_1740;
-    arg_sp218 = (f64) arg_spB8;
+    sp210 = spB0;
+    spB8 = (f32) sp208 * temp_f26_1740;
+    sp218 = (f64) spB8;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp220 = arg_spA0;
-    arg_spA8 = (f32) arg_sp348 + (f32) arg_sp218;
-    arg_sp228 = (f64) arg_spA8;
-    MKSetPositionV(*((MKVector3 *) &arg_sp220));
+    sp220 = spA0;
+    spA8 = sp348 + (f32) sp218;
+    sp228 = (f64) spA8;
+    MKSetPositionV(*((MKVector3 *) &sp220));
     temp_f25_1882 = temp_f25_1818 + 1.0f;
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, temp_f25_1882);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    arg_sp98 = temp_f31_1755;
-    arg_sp1E0 = arg_sp90;
-    arg_sp1E8 = (f64) arg_sp98;
+    sp98 = temp_f31_1755;
+    sp1E0 = sp90;
+    sp1E8 = (f64) sp98;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp1F0 = arg_sp80;
-    arg_sp88 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) arg_sp1E8;
-    arg_sp1F8 = (f64) arg_sp88;
-    MKSetPositionV(*((MKVector3 *) &arg_sp1F0));
-    MKSetColorV(*((MKVector4 *) &arg_sp300));
+    sp1F0 = sp80;
+    sp88 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) sp1E8;
+    sp1F8 = (f64) sp88;
+    MKSetPositionV(*((MKVector3 *) &sp1F0));
+    MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(1.0f, temp_f25_1882);
-    arg_sp70 = temp_f30_1782;
-    arg_sp74 = temp_f29_1783;
-    arg_sp78 = temp_f28_1780;
-    arg_sp1B0 = (f64) arg_sp70;
-    arg_sp1B8 = (f64) arg_sp78;
+    sp70 = temp_f30_1782;
+    sp74 = temp_f29_1783;
+    sp78 = temp_f28_1780;
+    sp1B0 = (f64) sp70;
+    sp1B8 = (f64) sp78;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    arg_sp1C0 = arg_sp60;
-    arg_sp68 = (f32) arg_sp1B8 * temp_f26_1740;
-    arg_sp1C8 = (f64) arg_sp68;
+    sp1C0 = sp60;
+    sp68 = (f32) sp1B8 * temp_f26_1740;
+    sp1C8 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp1D0 = arg_sp50;
-    arg_sp58 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) arg_sp1C8;
-    arg_sp1D8 = (f64) arg_sp58;
-    MKSetPositionV(*((MKVector3 *) &arg_sp1D0));
+    sp1D0 = sp50;
+    sp58 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) sp1C8;
+    sp1D8 = (f64) sp58;
+    MKSetPositionV(*((MKVector3 *) &sp1D0));
     MKEnd();
 }
 #endif

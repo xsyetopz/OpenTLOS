@@ -5777,6 +5777,32 @@ void DojoController::Update() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DojoController::SetupSmashPropsVanguard(int arg0, MKVector3 arg1, MKVector3 arg2, float arg3, bool arg4, bool arg5, float arg6) {
+    Matrix sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    MKVector3 spB0;
+    MKVector3 spA0;
+    MKVector3 sp90;
+    MKVector3 sp80;
+    MKVector3 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
     f32 temp_f1_11435;
     f32 temp_f3_11250;
     f32 temp_f6_11246;
@@ -5787,81 +5813,82 @@ void DojoController::SetupSmashPropsVanguard(int arg0, MKVector3 arg1, MKVector3
     s32 var_r30_11274;
     void *temp_r3_11490;
     void *temp_r3_11495;
+
     temp_f7_11244 = M2C_FIELD(arg2, f32 *, 0);
     temp_f6_11246 = M2C_FIELD(arg2, f32 *, 8);
     temp_f3_11250 = M2C_FIELD(arg2, f32 *, 4);
-    arg_sp28 = (MKVector3::up.unk0 * temp_f3_11250) - (MKVector3::up.unk4 * temp_f7_11244);
-    arg_sp24 = (MKVector3::up.unk8 * temp_f7_11244) - (MKVector3::up.unk0 * temp_f6_11246);
-    arg_sp20 = (MKVector3::up.unk4 * temp_f6_11246) - (MKVector3::up.unk8 * temp_f3_11250);
-    arg_spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp28 = (MKVector3::up.unk0 * temp_f3_11250) - (MKVector3::up.unk4 * temp_f7_11244);
+    sp24 = (MKVector3::up.unk8 * temp_f7_11244) - (MKVector3::up.unk0 * temp_f6_11246);
+    sp20 = (MKVector3::up.unk4 * temp_f6_11246) - (MKVector3::up.unk8 * temp_f3_11250);
+    spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r30_11274 = 0;
     var_r23_11275 = 0;
-    arg_spD8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_spC0 = (f64) arg_sp20;
-    arg_spC8 = (f64) arg_sp28;
-    arg_spE0 = (f64) arg_sp20;
-    arg_spE8 = (f64) arg_sp28;
+    spD8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    spC0 = (f64) sp20;
+    spC8 = (f64) sp28;
+    spE0 = (f64) sp20;
+    spE8 = (f64) sp28;
 loop_17:
     if ((var_r30_11274 < arg0) && (var_r30_11274 < 4)) {
         if ((arg4 != 0) && (var_r30_11274 == 0)) {
-            arg_spF0 = M2C_FIELD(arg1, f64 *, 0);
-            arg_spF8 = M2C_FIELD(arg1, f64 *, 8);
+            spF0 = M2C_FIELD(arg1, f64 *, 0);
+            spF8 = M2C_FIELD(arg1, f64 *, 8);
         } else if ((arg4 != 0) && (arg5 != 0)) {
             if (var_r30_11274 & 1) {
-                KDMath_Slerp(*((MKVector3 *) &arg_spB0), *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
-                arg_spD0 = arg_spB0;
-                arg_spD8 = arg_spB8;
+                KDMath_Slerp(spB0, *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
+                spD0 = M2C_BITWISE(f64, spB0);
+                spD8 = (f64) spB0.unk8;
             } else {
-                KDMath_Slerp(*((MKVector3 *) &arg_spA0), *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
-                arg_spD0 = arg_spA0;
-                arg_spD8 = arg_spA8;
+                KDMath_Slerp(spA0, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
+                spD0 = M2C_BITWISE(f64, spA0);
+                spD8 = (f64) spA0.unk8;
             }
         } else if (arg5 != 0) {
             if (var_r30_11274 & 1) {
-                KDMath_Slerp(*((MKVector3 *) &arg_sp90), *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
-                arg_spD0 = arg_sp90;
-                arg_spD8 = arg_sp98;
+                KDMath_Slerp(sp90, *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
+                spD0 = M2C_BITWISE(f64, sp90);
+                spD8 = (f64) sp90.unk8;
             } else {
-                KDMath_Slerp(*((MKVector3 *) &arg_sp80), *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
-                arg_spD0 = arg_sp80;
-                arg_spD8 = arg_sp88;
+                KDMath_Slerp(sp80, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
+                spD0 = M2C_BITWISE(f64, sp80);
+                spD8 = (f64) sp80.unk8;
             }
         } else {
             temp_r3_11385 = var_r30_11274 + 1;
             if (temp_r3_11385 & 1) {
-                KDMath_Slerp(*((MKVector3 *) &arg_sp70), *((MKVector3 *) arg2), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_11385 / 2)));
-                arg_spD0 = arg_sp70;
-                arg_spD8 = arg_sp78;
+                KDMath_Slerp(sp70, *((MKVector3 *) arg2), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_11385 / 2)));
+                spD0 = M2C_BITWISE(f64, sp70);
+                spD8 = (f64) sp70.unk8;
             } else {
-                KDMath_Slerp(*((MKVector3 *) &arg_sp60), *((MKVector3 *) arg2), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_11385 / 2)));
-                arg_spD0 = arg_sp60;
-                arg_spD8 = arg_sp68;
+                KDMath_Slerp(sp60, *((MKVector3 *) arg2), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_11385 / 2)));
+                spD0 = M2C_BITWISE(f64, sp60);
+                spD8 = (f64) sp60.unk8;
             }
         }
         M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f30 */);
-        temp_f1_11435 = (f32) arg_spD8 * arg3;
-        arg_spD8 = temp_f1_11435;
+        temp_f1_11435 = (f32) spD8 * arg3;
+        spD8 = temp_f1_11435;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
-        arg_spF0 = arg_sp10;
-        arg_sp18 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f1_11435;
-        arg_sp50 = arg_sp10;
-        arg_sp58 = (f64) arg_sp18;
-        arg_spF8 = (f64) arg_sp18;
-        arg_spF4 = this->unk37C;
-        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp30 = -M2C_FIELD(arg2, f32 *, 0);
-        arg_sp34 = -M2C_FIELD(arg2, f32 *, 4);
-        arg_sp38 = -M2C_FIELD(arg2, f32 *, 8);
-        arg_sp40 = (f64) arg_sp30;
-        arg_sp48 = (f64) arg_sp38;
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp100, *((MKVector3 *) &arg_sp40), NULL);
+        spF0 = sp10;
+        sp18 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f1_11435;
+        sp50 = sp10;
+        sp58 = (f64) sp18;
+        spF8 = (f64) sp18;
+        unkspF4 = this->unk37C;
+        M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp30 = -M2C_FIELD(arg2, f32 *, 0);
+        sp34 = -M2C_FIELD(arg2, f32 *, 4);
+        sp38 = -M2C_FIELD(arg2, f32 *, 8);
+        sp40 = (f64) sp30;
+        sp48 = (f64) sp38;
+        KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &sp40), NULL);
         temp_r21_11479 = var_r23_11275 + 0x3F4;
-        arg_sp130 = (f32) arg_spF0;
-        arg_sp134 = arg_spF4;
-        arg_sp138 = (f32) arg_spF8;
-        arg_sp13C = 1.0f;
-        MKModel_SetWorldMatrix(M2C_FIELD(*(this + temp_r21_11479), MKModel **, 4), *((Matrix *) &arg_sp100));
+        sp100.unk30 = (f32) spF0;
+        sp100.unk34 = unkspF4;
+        sp100.unk38 = (f32) spF8;
+        sp100.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(M2C_FIELD(*(this + temp_r21_11479), MKModel **, 4), sp100);
         temp_r3_11490 = *(this + temp_r21_11479);
         M2C_FIELD(M2C_FIELD(temp_r3_11490, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r3_11490);
         temp_r3_11495 = *(this + temp_r21_11479);

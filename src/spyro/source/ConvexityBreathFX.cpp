@@ -467,19 +467,28 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: undefined identifier 'unkCC'
 void ConvexityBreathFX::Draw() {
+    Matrix sp70;
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f5_931;
     f32 var_f1_912;
     void ***temp_r31_958;
+
     if ((s32) this->unkAC != 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) &this->unkCC + 4, 0x40);
-        arg_sp70.Scale3x3((Matrix *) &arg_sp70, *((MKVector3 *) &this->unkB8));
-        MKModel_SetWorldMatrix(this->unkA8, *((Matrix *) &arg_sp70));
+        M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, (s32) &this->unkCC + 4, 0x40);
+        sp70.Scale3x3(&sp70, *((MKVector3 *) &this->unkB8));
+        MKModel_SetWorldMatrix(this->unkA8, sp70);
         MKModel_Draw(this->unkA8, NULL);
     }
     if (this->unk1B0 > 0.0f) {
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) &this->unk16C + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &this->unk16C + 4, 0x40);
         var_f1_912 = this->unk1B0;
         if (var_f1_912 < 0.25f) {
 
@@ -492,13 +501,13 @@ void ConvexityBreathFX::Draw() {
             var_f1_912 = 0.0f;
         }
         temp_f5_931 = var_f1_912 / 0.25f;
-        arg_sp10 = 10.0f * temp_f5_931;
-        arg_sp14 = (8.0f * (1.0f - temp_f5_931)) + 2.0f;
-        arg_sp18 = 20.0f * temp_f5_931;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp30.Scale3x3((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-        MKModel_SetWorldMatrix(this->unk160, *((Matrix *) &arg_sp30));
+        sp10 = 10.0f * temp_f5_931;
+        sp14 = (8.0f * (1.0f - temp_f5_931)) + 2.0f;
+        sp18 = 20.0f * temp_f5_931;
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        sp30.Scale3x3(&sp30, *((MKVector3 *) &sp20));
+        MKModel_SetWorldMatrix(this->unk160, sp30);
         MKModel_Draw(this->unk160, NULL);
     }
     temp_r31_958 = &gb + 0x24;
@@ -749,8 +758,21 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp4C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ConvexityBreathFX::Init() {
+    Matrix sp50;
+    M2C_UNK sp4C;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap *temp_r3_1473;
     MKModel *temp_r3_1523;
     Matrix **temp_r3_1495;
@@ -758,23 +780,24 @@ void ConvexityBreathFX::Init() {
     Matrix **var_r3_1480;
     Matrix **var_r5_1489;
     s32 var_ctr_1493;
+
     BaseBreathFX::Init();
     this->unkA8 = MKModel_Create("FX0015_EarthRocket", NULL, 2, NULL);
     this->unkAC = 0;
     this->unkB0 = 0.0f;
     this->unk110 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
     this->unk114 = Tools_GetMatchingMaterial(this->unk110, "fx0031_sonicring");
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = 0.01f;
-    arg_sp14 = -0.01f;
-    arg_sp18 = 0.0f;
-    arg_sp40 = (f64) arg_sp10;
-    arg_sp48 = (f64) arg_sp18;
-    arg_sp80 = (f32) arg_sp40;
-    arg_sp84 = arg_sp44;
-    arg_sp88 = (f32) arg_sp48;
-    arg_sp8C = 1.0f;
-    MKMaterial_SetTextureMatrix(this->unk114, (Matrix *) &arg_sp50);
+    M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = 0.01f;
+    sp14 = -0.01f;
+    sp18 = 0.0f;
+    sp40 = (f64) sp10;
+    sp48 = (f64) sp18;
+    sp50.unk30 = (f32) sp40;
+    sp50.unk34 = unksp44;
+    sp50.unk38 = (f32) sp48;
+    sp50.unk3C = 1.0f;
+    MKMaterial_SetTextureMatrix(this->unk114, &sp50);
     temp_r3_1473 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_1473 != NULL) {
         var_r3_1480 = ((MKHeap *) (temp_r3_1473->Current()))->Alloc(0x4F4, NULL, 0);
@@ -803,14 +826,14 @@ void ConvexityBreathFX::Init() {
     M2C_FIELD(this, f32 *, 0x154) = 0.0f;
     M2C_FIELD(this, f32 *, 0x158) = 0.0f;
     temp_r3_1523 = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
-    arg_sp20 = 1.0f;
-    arg_sp24 = 0.0f;
-    arg_sp28 = 0.2f;
-    arg_sp2C = 1.0f;
+    sp20 = 1.0f;
+    sp24 = 0.0f;
+    sp28 = 0.2f;
+    sp2C = 1.0f;
     this->unk160 = temp_r3_1523;
-    arg_sp30 = (f64) arg_sp20;
-    arg_sp38 = (f64) arg_sp28;
-    MKModel_SetColor(this->unk160, *((MKVector4 *) &arg_sp30));
+    sp30 = (f64) sp20;
+    sp38 = (f64) sp28;
+    MKModel_SetColor(this->unk160, *((MKVector4 *) &sp30));
     this->unk170.SetIdentity();
     this->unk1B0 = 0.0f;
 }

@@ -145,34 +145,42 @@ void Attributes::SetIdentity() {
 
 #if 0 // DRAFT: illegal function overloading
 void RenderContext::AddState(const Attributes &arg0) {
+    Matrix sp70;
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_351;
     f32 temp_f6_359;
     f32 temp_f7_365;
+
     if (arg0.unk40 & 2) {
         temp_f3_351 = arg0.unk10.unk4;
         temp_f6_359 = arg0.unk10.unk0;
         temp_f7_365 = arg0.unk10.unk8;
-        arg_sp10 = (temp_f7_365 * this->unk20) + ((temp_f6_359 * this->unk0) + (temp_f3_351 * this->unk10));
-        arg_sp14 = (temp_f7_365 * this->unk24) + ((temp_f6_359 * this->unk4) + (temp_f3_351 * this->unk14));
-        arg_sp18 = (temp_f7_365 * this->unk28) + ((temp_f6_359 * this->unk8) + (temp_f3_351 * this->unk18));
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        Matrix::Translate((Matrix *) this, *((MKVector3 *) &arg_sp20));
+        sp10 = (temp_f7_365 * this->unk20) + ((temp_f6_359 * this->unk0) + (temp_f3_351 * this->unk10));
+        sp14 = (temp_f7_365 * this->unk24) + ((temp_f6_359 * this->unk4) + (temp_f3_351 * this->unk14));
+        sp18 = (temp_f7_365 * this->unk28) + ((temp_f6_359 * this->unk8) + (temp_f3_351 * this->unk18));
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        Matrix::Translate((Matrix *) this, *((MKVector3 *) &sp20));
     }
     if (arg0.unk40 & 4) {
-        arg_spA0 = 0.0f;
-        arg_spA4 = 0.0f;
-        arg_spA8 = 0.0f;
-        arg_spAC = 1.0f;
-        arg_sp70.SetRotationRoll(arg0.unk20.unk8);
-        arg_sp70.RotateYaw((Matrix *) &arg_sp70, arg0.unk20.unk4);
-        arg_sp70.RotatePitch((Matrix *) &arg_sp70, arg0.unk20.unk0);
-        Matrix::Multiply((Matrix *) &arg_sp70, (Matrix *) this);
+        sp70.unk30 = 0.0f;
+        sp70.unk34 = 0.0f;
+        sp70.unk38 = 0.0f;
+        sp70.unk3C = 1.0f;
+        sp70.SetRotationRoll(arg0.unk20.unk8);
+        sp70.RotateYaw(&sp70, arg0.unk20.unk4);
+        sp70.RotatePitch(&sp70, arg0.unk20.unk0);
+        Matrix::Multiply(&sp70, (Matrix *) this);
     }
     if (arg0.unk40 & 8) {
-        arg_sp30.SetIdentity();
-        arg_sp30.Scale4x3((Matrix *) &arg_sp30, arg0.unk30);
-        Matrix::Multiply((Matrix *) &arg_sp30, (Matrix *) this);
+        sp30.SetIdentity();
+        sp30.Scale4x3(&sp30, arg0.unk30);
+        Matrix::Multiply(&sp30, (Matrix *) this);
     }
     if (arg0.unk40 & 1) {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);

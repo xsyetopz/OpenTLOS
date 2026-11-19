@@ -6,6 +6,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
 #include "spyro/source/MineCart.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
@@ -49,14 +50,126 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp60'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void MineCartTrack::Update() {
+    f32 sp33C;
+    f32 sp338;
+    f32 sp334;
+    f32 sp330;
+    f32 sp32C;
+    f32 sp328;
+    f32 sp324;
+    f32 sp320;
+    f32 sp31C;
+    f32 sp318;
+    f32 sp314;
+    f32 sp310;
+    f32 sp30C;
+    f32 sp308;
+    f32 sp304;
+    f32 sp300;
+    M2C_UNK sp2FC;
+    f64 sp2F0;
+    f64 sp2E8;
+    f64 sp2E0;
+    f64 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    KDUniformSpline sp258;
+    f64 sp248;
+    f64 sp238;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f32 sp140;
+    f32 sp130;
+    f32 sp120;
+    f32 sp110;
+    f32 sp100;
+    f32 spF0;
+    f32 spEC;
+    f32 spE8;
+    f32 spE0;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    s32 sp60;
+    s32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    s32 sp50;
+    s32 sp4C;
+    s32 sp48;
+    s32 sp44;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 sp34;
+    s32 sp30;
+    s32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MineCart *temp_r3_116;
     MineCart *temp_r3_143;
     MineCart *temp_r3_153;
     MineCart *temp_r3_160;
     MineCart *temp_r3_614;
     f32 temp_f1_860;
+    f32 temp_f2_587;
     f32 temp_f30_128;
     f32 var_f29_131;
     f32 var_f3_345;
@@ -98,6 +211,7 @@ void MineCartTrack::Update() {
     void *temp_r4_747;
     void *temp_r5_674;
     void *temp_r5_746;
+
     MKProp::Update();
     var_r30_111 = 0;
     var_r29_112 = 0;
@@ -115,51 +229,51 @@ void MineCartTrack::Update() {
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if ((temp_f30_128 == 0.99f) && ((u8) this->unk144 != 0)) {
                 temp_r3_143 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
-                arg_sp60 = 0;
-                arg_sp5C = 0xBF;
-                temp_r3_143->Message(&arg_sp5C, 0);
+                sp60 = 0;
+                sp5C = 0xBF;
+                temp_r3_143->Message(&sp5C, 0);
                 temp_r3_153 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
                 temp_r3_153->Disable();
             } else {
                 temp_r3_160 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
                 temp_r3_160->Enable();
-                arg_sp28 = 0.0f;
-                arg_sp258.GetMeasure(temp_f30_128, &this->unk50, KDSpline_PositionMixer);
-                arg_sp2E8 = arg_sp258;
-                arg_sp2F0 = arg_sp260;
-                arg_sp24 = 0.0f;
-                arg_sp248.GetMeasure(temp_f30_128, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
-                arg_sp2D8 = arg_sp248;
-                arg_sp2E0 = arg_sp250;
-                arg_sp20 = 0.0f;
-                arg_sp238.GetMeasure(var_f29_131, &this->unk50, KDSpline_PositionMixer);
-                arg_sp2C8 = arg_sp238;
-                arg_sp2D0 = arg_sp240;
-                arg_sp1C = 0.0f;
-                arg_sp228.GetMeasure(var_f29_131, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
-                arg_sp2B8 = arg_sp228;
-                arg_sp2C0 = arg_sp230;
+                sp28 = 0.0f;
+                sp258.GetMeasure(temp_f30_128, &this->unk50, KDSpline_PositionMixer);
+                sp2E8 = M2C_BITWISE(f64, sp258);
+                sp2F0 = (f64) sp258.unk8;
+                sp24 = 0.0f;
+                sp248.GetMeasure(temp_f30_128, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+                sp2D8 = sp248;
+                sp2E0 = sp250;
+                sp20 = 0.0f;
+                sp238.GetMeasure(var_f29_131, &this->unk50, KDSpline_PositionMixer);
+                sp2C8 = sp238;
+                sp2D0 = sp240;
+                sp1C = 0.0f;
+                sp228.GetMeasure(var_f29_131, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+                sp2B8 = sp228;
+                sp2C0 = sp230;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp218 = arg_sp138;
-                arg_sp140 = (f32) arg_sp2F0 + (f32) arg_sp2E0;
-                arg_sp220 = (f64) arg_sp140;
+                sp218 = sp138;
+                sp140 = (f32) sp2F0 + (f32) sp2E0;
+                sp220 = (f64) sp140;
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                arg_sp2A8 = arg_sp128;
-                arg_sp130 = (f32) arg_sp220 * 0.5f;
-                arg_sp2B0 = (f64) arg_sp130;
+                sp2A8 = sp128;
+                sp130 = (f32) sp220 * 0.5f;
+                sp2B0 = (f64) sp130;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp208 = arg_sp118;
-                arg_sp120 = (f32) arg_sp2D0 + (f32) arg_sp2C0;
-                arg_sp210 = (f64) arg_sp120;
+                sp208 = sp118;
+                sp120 = (f32) sp2D0 + (f32) sp2C0;
+                sp210 = (f64) sp120;
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                arg_sp298 = arg_sp108;
-                arg_sp110 = (f32) arg_sp210 * 0.5f;
-                arg_sp2A0 = (f64) arg_sp110;
+                sp298 = sp108;
+                sp110 = (f32) sp210 * 0.5f;
+                sp2A0 = (f64) sp110;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp1F8 = arg_spF8;
-                arg_sp100 = (f32) arg_sp2B0 - (f32) arg_sp2A0;
-                arg_sp200 = (f64) arg_sp100;
-                var_f4_278 = ((f32) arg_sp200 * (f32) arg_sp200) + (((f32) arg_sp1F8 * (f32) arg_sp1F8) + (arg_sp1FC * arg_sp1FC));
+                sp1F8 = spF8;
+                sp100 = (f32) sp2B0 - (f32) sp2A0;
+                sp200 = (f64) sp100;
+                var_f4_278 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
                 if (var_f4_278 > 1e-12f) {
                     if (var_f4_278 > 0.0f) {
                         temp_f1_284 = __frsqrte(var_f4_278);
@@ -169,18 +283,18 @@ void MineCartTrack::Update() {
                     } else if (var_f4_278 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_278 = __float_nan;
                     } else {
-                        arg_sp18 = var_f4_278;
-                        temp_r3_313 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                        sp18 = var_f4_278;
+                        temp_r3_313 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                         switch (temp_r3_313) {      /* switch 1; irregular */
                         case 0x7F800000:            /* switch 1 */
-                            if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                 var_r0_323 = 1;
                             } else {
                                 var_r0_323 = 2;
                             }
                             break;
                         case 0x0:                   /* switch 1 */
-                            if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                 var_r0_323 = 5;
                             } else {
                                 var_r0_323 = 3;
@@ -198,16 +312,16 @@ void MineCartTrack::Update() {
                 } else {
                     var_f3_345 = 0.0f;
                 }
-                arg_spE8 = (f32) arg_sp1F8 * var_f3_345;
-                arg_spEC = arg_sp1FC * var_f3_345;
-                arg_spF0 = (f32) arg_sp200 * var_f3_345;
-                arg_sp288 = (f64) arg_spE8;
-                arg_sp290 = (f64) arg_spF0;
+                spE8 = (f32) sp1F8 * var_f3_345;
+                spEC = unksp1FC * var_f3_345;
+                spF0 = (f32) sp200 * var_f3_345;
+                sp288 = (f64) spE8;
+                sp290 = (f64) spF0;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp1E8 = arg_spD8;
-                arg_spE0 = (f32) arg_sp2F0 - (f32) arg_sp2E0;
-                arg_sp1F0 = (f64) arg_spE0;
-                var_f4_383 = ((f32) arg_sp1F0 * (f32) arg_sp1F0) + (((f32) arg_sp1E8 * (f32) arg_sp1E8) + (arg_sp1EC * arg_sp1EC));
+                sp1E8 = spD8;
+                spE0 = (f32) sp2F0 - (f32) sp2E0;
+                sp1F0 = (f64) spE0;
+                var_f4_383 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + (unksp1EC * unksp1EC));
                 if (var_f4_383 > 1e-12f) {
                     if (var_f4_383 > 0.0f) {
                         temp_f1_389 = __frsqrte(var_f4_383);
@@ -217,18 +331,18 @@ void MineCartTrack::Update() {
                     } else if (var_f4_383 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_383 = __float_nan;
                     } else {
-                        arg_sp14 = var_f4_383;
-                        temp_r3_418 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                        sp14 = var_f4_383;
+                        temp_r3_418 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                         switch (temp_r3_418) {      /* switch 2; irregular */
                         case 0x7F800000:            /* switch 2 */
-                            if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                 var_r0_428 = 1;
                             } else {
                                 var_r0_428 = 2;
                             }
                             break;
                         case 0x0:                   /* switch 2 */
-                            if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                 var_r0_428 = 5;
                             } else {
                                 var_r0_428 = 3;
@@ -246,17 +360,17 @@ void MineCartTrack::Update() {
                 } else {
                     var_f4_450 = 0.0f;
                 }
-                arg_spC8 = (f32) arg_sp1E8 * var_f4_450;
-                arg_spCC = arg_sp1EC * var_f4_450;
-                arg_spD0 = (f32) arg_sp1F0 * var_f4_450;
-                arg_sp278 = (f64) arg_spC8;
-                arg_sp280 = (f64) arg_spD0;
-                arg_spB8 = (arg_sp28C * (f32) arg_sp280) - ((f32) arg_sp290 * arg_sp27C);
-                arg_spBC = ((f32) arg_sp290 * (f32) arg_sp278) - ((f32) arg_sp288 * (f32) arg_sp280);
-                arg_spC0 = ((f32) arg_sp288 * arg_sp27C) - (arg_sp28C * (f32) arg_sp278);
-                arg_sp1D8 = (f64) arg_spB8;
-                arg_sp1E0 = (f64) arg_spC0;
-                var_f4_495 = ((f32) arg_sp1E0 * (f32) arg_sp1E0) + (((f32) arg_sp1D8 * (f32) arg_sp1D8) + (arg_sp1DC * arg_sp1DC));
+                spC8 = (f32) sp1E8 * var_f4_450;
+                spCC = unksp1EC * var_f4_450;
+                spD0 = (f32) sp1F0 * var_f4_450;
+                sp278 = (f64) spC8;
+                sp280 = (f64) spD0;
+                spB8 = (unksp28C * (f32) sp280) - ((f32) sp290 * unksp27C);
+                spBC = ((f32) sp290 * (f32) sp278) - ((f32) sp288 * (f32) sp280);
+                spC0 = ((f32) sp288 * unksp27C) - (unksp28C * (f32) sp278);
+                sp1D8 = (f64) spB8;
+                sp1E0 = (f64) spC0;
+                var_f4_495 = ((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (unksp1DC * unksp1DC));
                 if (var_f4_495 > 1e-12f) {
                     if (var_f4_495 > 0.0f) {
                         temp_f1_501 = __frsqrte(var_f4_495);
@@ -266,18 +380,18 @@ void MineCartTrack::Update() {
                     } else if (var_f4_495 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_495 = __float_nan;
                     } else {
-                        arg_sp10 = var_f4_495;
-                        temp_r3_530 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                        sp10 = var_f4_495;
+                        temp_r3_530 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                         switch (temp_r3_530) {      /* switch 3; irregular */
                         case 0x7F800000:            /* switch 3 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_540 = 1;
                             } else {
                                 var_r0_540 = 2;
                             }
                             break;
                         case 0x0:                   /* switch 3 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_540 = 5;
                             } else {
                                 var_r0_540 = 3;
@@ -295,43 +409,44 @@ void MineCartTrack::Update() {
                 } else {
                     var_f3_562 = 0.0f;
                 }
-                arg_spA8 = (f32) arg_sp1D8 * var_f3_562;
-                arg_spAC = arg_sp1DC * var_f3_562;
-                arg_spB0 = (f32) arg_sp1E0 * var_f3_562;
-                arg_sp268 = (f64) arg_spA8;
-                arg_sp270 = (f64) arg_spB0;
-                arg_sp80 = ((f32) arg_sp268 * arg_sp28C) - (arg_sp26C * (f32) arg_sp288);
-                arg_sp78 = (arg_sp26C * (f32) arg_sp290) - ((f32) arg_sp270 * arg_sp28C);
-                arg_sp7C = ((f32) arg_sp270 * (f32) arg_sp288) - ((f32) arg_sp268 * (f32) arg_sp290);
-                arg_sp1D0 = (f64) arg_sp80;
-                arg_sp1C8 = (f64) arg_sp78;
-                arg_sp278 = (f64) arg_sp78;
-                arg_sp280 = (f64) arg_sp80;
-                M2C_STRUCT_COPY((s32) &arg_sp2FC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk4) - 4 + 4, 0x40);
+                spA8 = (f32) sp1D8 * var_f3_562;
+                spAC = unksp1DC * var_f3_562;
+                spB0 = (f32) sp1E0 * var_f3_562;
+                sp258.unk10 = (f64) spA8;
+                sp270 = (f64) spB0;
+                temp_f2_587 = M2C_BITWISE(f32, sp258.unk10);
+                sp80 = (temp_f2_587 * unksp28C) - (sp26C * (f32) sp288);
+                sp78 = (sp26C * (f32) sp290) - ((f32) sp270 * unksp28C);
+                sp7C = ((f32) sp270 * (f32) sp288) - (temp_f2_587 * (f32) sp290);
+                sp1D0 = (f64) sp80;
+                sp1C8 = (f64) sp78;
+                sp278 = (f64) sp78;
+                sp280 = (f64) sp80;
+                M2C_STRUCT_COPY((s32) &sp2FC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk4) - 4 + 4, 0x40);
                 temp_r3_614 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
-                arg_sp1A8 = temp_r3_614->unk168;
-                arg_sp1B0 = temp_r3_614->unk168;
+                sp1A8 = temp_r3_614->unk168;
+                sp1B0 = temp_r3_614->unk168;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp1B8 = arg_sp68;
-                arg_sp70 = (f32) arg_sp2B0 + (f32) arg_sp1B0;
-                arg_sp1C0 = (f64) arg_sp70;
-                arg_sp330 = (f32) arg_sp1B8;
-                arg_sp334 = arg_sp1BC;
-                arg_sp338 = (f32) arg_sp1C0;
-                arg_sp33C = 1.0f;
-                arg_sp300 = (f32) arg_sp278;
-                arg_sp304 = arg_sp27C;
-                arg_sp308 = (f32) arg_sp280;
-                arg_sp30C = 0.0f;
-                arg_sp310 = (f32) arg_sp268;
-                arg_sp314 = arg_sp26C;
-                arg_sp318 = (f32) arg_sp270;
-                arg_sp31C = 0.0f;
-                arg_sp320 = (f32) arg_sp288;
-                arg_sp324 = arg_sp28C;
-                arg_sp328 = (f32) arg_sp290;
-                arg_sp32C = 0.0f;
-                MKModel_SetWorldMatrix(temp_r3_614->unk4, *((Matrix *) &arg_sp300));
+                sp1B8 = sp68;
+                sp70 = (f32) sp2B0 + (f32) sp1B0;
+                sp1C0 = (f64) sp70;
+                sp330 = (f32) sp1B8;
+                sp334 = unksp1BC;
+                sp338 = (f32) sp1C0;
+                sp33C = 1.0f;
+                sp300 = (f32) sp278;
+                sp304 = unksp27C;
+                sp308 = (f32) sp280;
+                sp30C = 0.0f;
+                sp310 = M2C_BITWISE(f32, sp258.unk10);
+                sp314 = sp26C;
+                sp318 = (f32) sp270;
+                sp31C = 0.0f;
+                sp320 = (f32) sp288;
+                sp324 = unksp28C;
+                sp328 = (f32) sp290;
+                sp32C = 0.0f;
+                MKModel_SetWorldMatrix(temp_r3_614->unk4, *((Matrix *) &sp300));
                 ((MineCart *) (M2C_FIELD(temp_r31_115, MineCart **, 0x78)))->UpdateEffects();
                 var_r28_666 = 0;
                 var_r25_667 = 0;
@@ -341,48 +456,48 @@ void MineCartTrack::Update() {
                     if (temp_r3_670 != NULL) {
                         temp_r5_674 = M2C_FIELD(temp_r3_670, void **, 8);
                         temp_r4_675 = M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk8;
-                        arg_sp178 = M2C_FIELD(temp_r5_674, f64 *, 0x30);
-                        arg_sp188 = M2C_FIELD(temp_r4_675, f64 *, 0x30);
-                        arg_sp180 = M2C_FIELD(temp_r5_674, f64 *, 0x38);
-                        arg_sp190 = M2C_FIELD(temp_r4_675, f64 *, 0x38);
+                        sp178 = M2C_FIELD(temp_r5_674, f64 *, 0x30);
+                        sp188 = M2C_FIELD(temp_r4_675, f64 *, 0x30);
+                        sp180 = M2C_FIELD(temp_r5_674, f64 *, 0x38);
+                        sp190 = M2C_FIELD(temp_r4_675, f64 *, 0x38);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        arg_sp198 = arg_sp98;
-                        arg_spA0 = (f32) arg_sp190 - (f32) arg_sp180;
-                        arg_sp1A0 = (f64) arg_spA0;
-                        if ((((f32) arg_sp1A0 * (f32) arg_sp1A0) + (((f32) arg_sp198 * (f32) arg_sp198) + (arg_sp19C * arg_sp19C))) < 640000.0f) {
+                        sp198 = sp98;
+                        spA0 = (f32) sp190 - (f32) sp180;
+                        sp1A0 = (f64) spA0;
+                        if ((((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C))) < 640000.0f) {
                             if ((f32) fabs((M2C_FIELD(temp_r4_675, f32 *, 0x28) * M2C_FIELD(temp_r5_674, f32 *, 0x28)) + ((M2C_FIELD(temp_r4_675, f32 *, 0x20) * M2C_FIELD(temp_r5_674, f32 *, 0x20)) + (M2C_FIELD(temp_r4_675, f32 *, 0x24) * M2C_FIELD(temp_r5_674, f32 *, 0x24)))) > 0.5f) {
-                                arg_sp58 = 0;
-                                arg_sp54 = 0xBB;
-                                M2C_FIELD(M2C_FIELD(temp_r3_670, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp54);
+                                sp58 = 0;
+                                sp54 = 0xBB;
+                                M2C_FIELD(M2C_FIELD(temp_r3_670, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp54);
                             }
                         } else {
-                            arg_sp50 = 0;
-                            arg_sp4C = 0xBC;
-                            M2C_FIELD(M2C_FIELD(temp_r3_670, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp4C);
+                            sp50 = 0;
+                            sp4C = 0xBC;
+                            M2C_FIELD(M2C_FIELD(temp_r3_670, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp4C);
                         }
                     }
                     temp_r3_742 = M2C_FIELD(temp_r24_669, void **, 0x128);
                     if (temp_r3_742 != NULL) {
                         temp_r5_746 = M2C_FIELD(temp_r3_742, void **, 8);
                         temp_r4_747 = M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk8;
-                        arg_sp148 = M2C_FIELD(temp_r5_746, f64 *, 0x30);
-                        arg_sp158 = M2C_FIELD(temp_r4_747, f64 *, 0x30);
-                        arg_sp150 = M2C_FIELD(temp_r5_746, f64 *, 0x38);
-                        arg_sp160 = M2C_FIELD(temp_r4_747, f64 *, 0x38);
+                        sp148 = M2C_FIELD(temp_r5_746, f64 *, 0x30);
+                        sp158 = M2C_FIELD(temp_r4_747, f64 *, 0x30);
+                        sp150 = M2C_FIELD(temp_r5_746, f64 *, 0x38);
+                        sp160 = M2C_FIELD(temp_r4_747, f64 *, 0x38);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        arg_sp168 = arg_sp88;
-                        arg_sp90 = (f32) arg_sp160 - (f32) arg_sp150;
-                        arg_sp170 = (f64) arg_sp90;
-                        if ((((f32) arg_sp170 * (f32) arg_sp170) + (((f32) arg_sp168 * (f32) arg_sp168) + (arg_sp16C * arg_sp16C))) < 640000.0f) {
+                        sp168 = sp88;
+                        sp90 = (f32) sp160 - (f32) sp150;
+                        sp170 = (f64) sp90;
+                        if ((((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C))) < 640000.0f) {
                             if ((f32) fabs((M2C_FIELD(temp_r4_747, f32 *, 0x28) * M2C_FIELD(temp_r5_746, f32 *, 0x28)) + ((M2C_FIELD(temp_r4_747, f32 *, 0x20) * M2C_FIELD(temp_r5_746, f32 *, 0x20)) + (M2C_FIELD(temp_r4_747, f32 *, 0x24) * M2C_FIELD(temp_r5_746, f32 *, 0x24)))) > 0.5f) {
-                                arg_sp48 = 0;
-                                arg_sp44 = 0xBB;
-                                M2C_FIELD(M2C_FIELD(temp_r3_742, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp44);
+                                sp48 = 0;
+                                sp44 = 0xBB;
+                                M2C_FIELD(M2C_FIELD(temp_r3_742, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp44);
                             }
                         } else {
-                            arg_sp40 = 0;
-                            arg_sp3C = 0xBC;
-                            M2C_FIELD(M2C_FIELD(temp_r3_742, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp3C);
+                            sp40 = 0;
+                            sp3C = 0xBC;
+                            M2C_FIELD(M2C_FIELD(temp_r3_742, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp3C);
                         }
                     }
                     var_r28_666 += 1;
@@ -400,15 +515,15 @@ void MineCartTrack::Update() {
             temp_r24_828 = this + var_r28_826;
             temp_r3_829 = M2C_FIELD(temp_r24_828, void **, 0x124);
             if (temp_r3_829 != NULL) {
-                arg_sp38 = 0;
-                arg_sp34 = 0xBC;
-                M2C_FIELD(M2C_FIELD(temp_r3_829, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp34);
+                sp38 = 0;
+                sp34 = 0xBC;
+                M2C_FIELD(M2C_FIELD(temp_r3_829, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp34);
             }
             temp_r3_842 = M2C_FIELD(temp_r24_828, void **, 0x128);
             if (temp_r3_842 != NULL) {
-                arg_sp30 = 0;
-                arg_sp2C = 0xBC;
-                M2C_FIELD(M2C_FIELD(temp_r3_842, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp2C);
+                sp30 = 0;
+                sp2C = 0xBC;
+                M2C_FIELD(M2C_FIELD(temp_r3_842, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp2C);
             }
             var_r25_825 += 1;
             var_r28_826 += 8;

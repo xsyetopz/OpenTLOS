@@ -383,9 +383,60 @@ loop_10:
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) {
+    s32 sp2AC;
+    s32 sp2A8;
+    Matrix sp220;
+    Matrix sp1E0;
+    Matrix sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;                                      /* compiler-managed */
+    f64 sp180;                                      /* compiler-managed */
+    f64 sp178;                                      /* compiler-managed */
+    f64 sp170;                                      /* compiler-managed */
+    f64 sp168;                                      /* compiler-managed */
+    f64 sp160;                                      /* compiler-managed */
+    MKVector3 sp150;
+    MKVector3 sp140;
+    MKVector3 sp130;
+    MKVector3 sp120;
+    MKVector3 sp110;
+    MKVector3 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    MKVector3 spC0;
+    f64 spB8;
+    f64 spB0;
+    MKVector3 spA0;
+    f64 sp90;
+    f64 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    s32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     KDSP_Actor *temp_r5_954;
     KDSP_Bar *temp_r28_927;
     f32 *temp_r4_1897;
+    f32 temp_f0_1301;
+    f32 temp_f0_1709;
     f32 temp_f1_1171;
     f32 temp_f1_1753;
     f32 temp_f1_1761;
@@ -450,6 +501,7 @@ void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) 
     void *temp_r29_1799;
     void *temp_r3_880;
     void *temp_r5_900;
+
     var_r4_870 = 0;
     this->unk6C = 0;
     temp_r6_877 = this->unk8C;
@@ -514,24 +566,24 @@ loop_21:
             }
         }
         temp_r27_994 = var_r28_966 + 0x30;
-        arg_sp220.SetIdentity();
-        arg_sp220 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 4)) / 16384.0f;
-        arg_sp224 = (f32) Endian<short>(*(var_r28_966 + 6)) / 16384.0f;
-        arg_sp228 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 8)) / 16384.0f;
-        arg_sp230 = (f32) Endian<short>(*(var_r28_966 + 0xA)) / 16384.0f;
-        arg_sp234 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0xC)) / 16384.0f;
-        arg_sp238 = (f32) Endian<short>(*(var_r28_966 + 0xE)) / 16384.0f;
-        arg_sp240 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0x10)) / 16384.0f;
-        arg_sp244 = (f32) Endian<short>(*(var_r28_966 + 0x12)) / 16384.0f;
-        arg_sp248 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0x14)) / 16384.0f;
-        arg_sp250 = Endian<float>(*(f32 *) (var_r28_966 + 0x18));
-        arg_sp254 = Endian<float>(*(f32 *) (var_r28_966 + 0x1C));
-        arg_sp258 = Endian<float>(*(f32 *) (var_r28_966 + 0x20));
+        sp220.SetIdentity();
+        sp220 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 4)) / 16384.0f;
+        sp220.unk4 = (f32) Endian<short>(*(var_r28_966 + 6)) / 16384.0f;
+        sp220.unk8 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 8)) / 16384.0f;
+        sp220.unk10 = (f32) Endian<short>(*(var_r28_966 + 0xA)) / 16384.0f;
+        sp220.unk14 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0xC)) / 16384.0f;
+        sp220.unk18 = (f32) Endian<short>(*(var_r28_966 + 0xE)) / 16384.0f;
+        sp220.unk20 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0x10)) / 16384.0f;
+        sp220.unk24 = (f32) Endian<short>(*(var_r28_966 + 0x12)) / 16384.0f;
+        sp220.unk28 = (f32) Endian<short>(*(s16 *) (var_r28_966 + 0x14)) / 16384.0f;
+        sp220.unk30 = Endian<float>(*(f32 *) (var_r28_966 + 0x18));
+        sp220.unk34 = Endian<float>(*(f32 *) (var_r28_966 + 0x1C));
+        sp220.unk38 = Endian<float>(*(f32 *) (var_r28_966 + 0x20));
         temp_r25_1128 = Endian<int>(*temp_r27_994);
         temp_r3_1131 = temp_r25_1128 - Endian<int>(*var_r28_966);
         temp_r3_1133 = temp_r3_1131 ^ 0x80000000;
-        arg_sp2A8 = 0x43300000;
-        arg_sp2AC = temp_r3_1133;
+        sp2A8 = 0x43300000;
+        sp2AC = temp_r3_1133;
         temp_f29_1139 = (f32) temp_r3_1131;
         if (temp_f29_1139 == 1.0f) {
             var_f1_1152 = (temp_f31_975 - (f32) Endian<int>(*var_r28_966)) / temp_f29_1139;
@@ -540,31 +592,32 @@ loop_21:
         }
         var_f31_1158 = var_f1_1152;
         if (temp_f29_1139 == 1.0f) {
-            arg_sp1E0.SetIdentity();
-            arg_sp210 = Endian<float>(*(f32 *) (temp_r27_994 + 0x18));
-            arg_sp214 = Endian<float>(*(f32 *) (temp_r27_994 + 0x1C));
+            sp1E0.SetIdentity();
+            sp1E0.unk30 = Endian<float>(*(f32 *) (temp_r27_994 + 0x18));
+            sp1E0.unk34 = Endian<float>(*(f32 *) (temp_r27_994 + 0x1C));
             temp_f1_1171 = Endian<float>(*(f32 *) (temp_r27_994 + 0x20));
-            arg_sp218 = temp_f1_1171;
+            sp1E0.unk38 = temp_f1_1171;
             M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r31, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r25, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
-            arg_sp190 = arg_sp70;
-            arg_sp78 = arg_sp258 - (f32) temp_f1_1171;
-            arg_sp198 = (f64) arg_sp78;
-            if ((((f32) arg_sp198 * (f32) arg_sp198) + (((f32) arg_sp190 * (f32) arg_sp190) + (arg_sp194 * arg_sp194))) > 6400.0f) {
+            sp190 = sp70;
+            sp78 = sp220.unk38 - (f32) temp_f1_1171;
+            sp198 = (f64) sp78;
+            if ((((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194))) > 6400.0f) {
                 var_f31_1158 = 0.0f;
             } else {
-                arg_sp1E0 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 4)) / 16384.0f;
-                arg_sp1E4 = (f32) Endian<short>(*(temp_r27_994 + 6)) / 16384.0f;
-                arg_sp1E8 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 8)) / 16384.0f;
-                arg_sp1F0 = (f32) Endian<short>(*(temp_r27_994 + 0xA)) / 16384.0f;
-                arg_sp1F4 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 0xC)) / 16384.0f;
-                arg_sp1F8 = (f32) Endian<short>(*(temp_r27_994 + 0xE)) / 16384.0f;
-                arg_sp200 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 0x10)) / 16384.0f;
-                arg_sp204 = (f32) Endian<short>(*(temp_r27_994 + 0x12)) / 16384.0f;
+                sp1E0 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 4)) / 16384.0f;
+                sp1E0.unk4 = (f32) Endian<short>(*(temp_r27_994 + 6)) / 16384.0f;
+                sp1E0.unk8 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 8)) / 16384.0f;
+                sp1E0.unk10 = (f32) Endian<short>(*(temp_r27_994 + 0xA)) / 16384.0f;
+                sp1E0.unk14 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 0xC)) / 16384.0f;
+                sp1E0.unk18 = (f32) Endian<short>(*(temp_r27_994 + 0xE)) / 16384.0f;
+                sp1E0.unk20 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 0x10)) / 16384.0f;
+                temp_f0_1301 = (f32) Endian<short>(*(temp_r27_994 + 0x12)) / 16384.0f;
+                sp1E0.unk24 = temp_f0_1301;
                 temp_f5_1318 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 0x14)) / 16384.0f;
-                arg_sp208 = temp_f5_1318;
-                if (((arg_sp248 * temp_f5_1318) + ((arg_sp240 * arg_sp200) + (arg_sp244 * arg_sp204))) < _table_sinf(1.9198623f)) {
+                sp1E0.unk28 = temp_f5_1318;
+                if (((sp220.unk28 * temp_f5_1318) + ((sp220.unk20 * sp1E0.unk20) + (sp220.unk24 * temp_f0_1301))) < _table_sinf(1.9198623f)) {
                     var_f31_1158 = 0.0f;
                 }
             }
@@ -572,45 +625,45 @@ loop_21:
         if (var_f31_1158 == 0.0f) {
             this->unk6C = 1;
             Matrix::SetIdentity();
-            M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_sp21C + 4, 0x40);
+            M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &sp1E0.unk3C + 4, 0x40);
             this->unk60 = Endian<float>(*(f32 *) (var_r28_966 + 0x24));
             this->unk64 = Endian<float>(*(f32 *) (var_r28_966 + 0x28));
             this->unk68 = Endian<float>(*(f32 *) (var_r28_966 + 0x2C));
         } else {
-            InterpolateLinear(*((MKVector3 *) &arg_sp140), *((MKVector3 *) &arg_sp220), var_f31_1158);
-            Normalise(*((MKVector3 *) &arg_sp150));
-            arg_sp180 = arg_sp150;
-            arg_sp188 = arg_sp158;
-            InterpolateLinear(*((MKVector3 *) &arg_sp120), *((MKVector3 *) &arg_sp230), var_f31_1158);
-            Normalise(*((MKVector3 *) &arg_sp130));
-            arg_sp170 = arg_sp130;
-            arg_sp178 = arg_sp138;
-            InterpolateLinear(*((MKVector3 *) &arg_sp100), *((MKVector3 *) &arg_sp240), var_f31_1158);
-            Normalise(*((MKVector3 *) &arg_sp110));
-            arg_sp160 = arg_sp110;
-            arg_sp168 = arg_sp118;
-            arg_sp64 = ((f32) arg_sp168 * (f32) arg_sp180) - ((f32) arg_sp160 * (f32) arg_sp188);
-            arg_sp68 = ((f32) arg_sp160 * arg_sp184) - (arg_sp164 * (f32) arg_sp180);
-            arg_sp60 = (arg_sp164 * (f32) arg_sp188) - ((f32) arg_sp168 * arg_sp184);
-            arg_sp178 = (f64) arg_sp68;
-            arg_sp170 = (f64) arg_sp60;
-            arg_spF0 = (f64) arg_sp60;
-            arg_spF8 = (f64) arg_sp68;
-            arg_sp50 = (arg_sp174 * (f32) arg_sp168) - ((f32) arg_sp178 * arg_sp164);
-            arg_sp54 = ((f32) arg_sp178 * (f32) arg_sp160) - ((f32) arg_sp170 * (f32) arg_sp168);
-            arg_sp58 = ((f32) arg_sp170 * arg_sp164) - (arg_sp174 * (f32) arg_sp160);
-            arg_sp180 = (f64) arg_sp50;
-            arg_sp188 = (f64) arg_sp58;
-            arg_spE0 = (f64) arg_sp50;
-            arg_spE8 = (f64) arg_sp58;
-            arg_sp48 = ((f32) arg_sp180 * arg_sp174) - (arg_sp184 * (f32) arg_sp170);
-            var_f5_1446 = ((f32) arg_sp188 * (f32) arg_sp188) + (((f32) arg_sp180 * (f32) arg_sp180) + (arg_sp184 * arg_sp184));
-            arg_sp40 = (arg_sp184 * (f32) arg_sp178) - ((f32) arg_sp188 * arg_sp174);
-            arg_sp44 = ((f32) arg_sp188 * (f32) arg_sp170) - ((f32) arg_sp180 * (f32) arg_sp178);
-            arg_spD8 = (f64) arg_sp48;
-            arg_spD0 = (f64) arg_sp40;
-            arg_sp160 = (f64) arg_sp40;
-            arg_sp168 = (f64) arg_sp48;
+            InterpolateLinear(sp140, *((MKVector3 *) &sp220), var_f31_1158);
+            Normalise(sp150);
+            sp180 = M2C_BITWISE(f64, sp150);
+            sp188 = (f64) sp150.unk8;
+            InterpolateLinear(sp120, *((MKVector3 *) &sp220.unk10), var_f31_1158);
+            Normalise(sp130);
+            sp170 = M2C_BITWISE(f64, sp130);
+            sp178 = (f64) sp130.unk8;
+            InterpolateLinear(sp100, *((MKVector3 *) &sp220.unk20), var_f31_1158);
+            Normalise(sp110);
+            sp160 = M2C_BITWISE(f64, sp110);
+            sp168 = (f64) sp110.unk8;
+            sp64 = ((f32) sp168 * (f32) sp180) - ((f32) sp160 * (f32) sp188);
+            sp68 = ((f32) sp160 * unksp184) - (unksp164 * (f32) sp180);
+            sp60 = (unksp164 * (f32) sp188) - ((f32) sp168 * unksp184);
+            sp178 = (f64) sp68;
+            sp170 = (f64) sp60;
+            spF0 = (f64) sp60;
+            spF8 = (f64) sp68;
+            sp50 = (unksp174 * (f32) sp168) - ((f32) sp178 * unksp164);
+            sp54 = ((f32) sp178 * (f32) sp160) - ((f32) sp170 * (f32) sp168);
+            sp58 = ((f32) sp170 * unksp164) - (unksp174 * (f32) sp160);
+            sp180 = (f64) sp50;
+            sp188 = (f64) sp58;
+            spE0 = (f64) sp50;
+            spE8 = (f64) sp58;
+            sp48 = ((f32) sp180 * unksp174) - (unksp184 * (f32) sp170);
+            var_f5_1446 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
+            sp40 = (unksp184 * (f32) sp178) - ((f32) sp188 * unksp174);
+            sp44 = ((f32) sp188 * (f32) sp170) - ((f32) sp180 * (f32) sp178);
+            spD8 = (f64) sp48;
+            spD0 = (f64) sp40;
+            sp160 = (f64) sp40;
+            sp168 = (f64) sp48;
             if (var_f5_1446 > 0.000001f) {
                 if (var_f5_1446 > 0.0f) {
                     temp_f1_1459 = __frsqrte(var_f5_1446);
@@ -620,18 +673,18 @@ loop_21:
                 } else if (var_f5_1446 < M2C_BITWISE(f32, 0.0)) {
                     var_f5_1446 = __float_nan;
                 } else {
-                    arg_sp18 = var_f5_1446;
-                    temp_r3_1488 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                    sp18 = var_f5_1446;
+                    temp_r3_1488 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                     switch (temp_r3_1488) {         /* switch 1; irregular */
                     case 0x7F800000:                /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                             var_r0_1498 = 1;
                         } else {
                             var_r0_1498 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                             var_r0_1498 = 5;
                         } else {
                             var_r0_1498 = 3;
@@ -649,10 +702,10 @@ loop_21:
             } else {
                 var_f6_1520 = 0.0f;
             }
-            var_f7_1538 = ((f32) arg_sp178 * (f32) arg_sp178) + (((f32) arg_sp170 * (f32) arg_sp170) + (arg_sp174 * arg_sp174));
-            arg_sp180 = (f32) arg_sp180 * var_f6_1520;
-            arg_sp184 *= var_f6_1520;
-            arg_sp188 = (f32) arg_sp188 * var_f6_1520;
+            var_f7_1538 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + (unksp174 * unksp174));
+            sp180 = (f32) sp180 * var_f6_1520;
+            unksp184 *= var_f6_1520;
+            sp188 = (f32) sp188 * var_f6_1520;
             if (var_f7_1538 > 0.000001f) {
                 if (var_f7_1538 > 0.0f) {
                     temp_f1_1548 = __frsqrte(var_f7_1538);
@@ -662,18 +715,18 @@ loop_21:
                 } else if (var_f7_1538 < M2C_BITWISE(f32, 0.0)) {
                     var_f7_1538 = __float_nan;
                 } else {
-                    arg_sp14 = var_f7_1538;
-                    temp_r3_1577 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                    sp14 = var_f7_1538;
+                    temp_r3_1577 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                     switch (temp_r3_1577) {         /* switch 2; irregular */
                     case 0x7F800000:                /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_1587 = 1;
                         } else {
                             var_r0_1587 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_1587 = 5;
                         } else {
                             var_r0_1587 = 3;
@@ -691,10 +744,10 @@ loop_21:
             } else {
                 var_f6_1609 = 0.0f;
             }
-            var_f7_1627 = ((f32) arg_sp168 * (f32) arg_sp168) + (((f32) arg_sp160 * (f32) arg_sp160) + (arg_sp164 * arg_sp164));
-            arg_sp170 = (f32) arg_sp170 * var_f6_1609;
-            arg_sp174 *= var_f6_1609;
-            arg_sp178 = (f32) arg_sp178 * var_f6_1609;
+            var_f7_1627 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + (unksp164 * unksp164));
+            sp170 = (f32) sp170 * var_f6_1609;
+            unksp174 *= var_f6_1609;
+            sp178 = (f32) sp178 * var_f6_1609;
             if (var_f7_1627 > 0.000001f) {
                 if (var_f7_1627 > 0.0f) {
                     temp_f1_1637 = __frsqrte(var_f7_1627);
@@ -704,18 +757,18 @@ loop_21:
                 } else if (var_f7_1627 < M2C_BITWISE(f32, 0.0)) {
                     var_f7_1627 = __float_nan;
                 } else {
-                    arg_sp10 = var_f7_1627;
-                    temp_r3_1666 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f7_1627;
+                    temp_r3_1666 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_1666) {         /* switch 3; irregular */
                     case 0x7F800000:                /* switch 3 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1676 = 1;
                         } else {
                             var_r0_1676 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 3 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1676 = 5;
                         } else {
                             var_r0_1676 = 3;
@@ -733,26 +786,27 @@ loop_21:
             } else {
                 var_f3_1698 = 0.0f;
             }
-            arg_sp160 = (f32) arg_sp160 * var_f3_1698;
-            arg_sp164 *= var_f3_1698;
-            arg_sp168 = (f32) arg_sp168 * var_f3_1698;
+            temp_f0_1709 = (f32) sp168 * var_f3_1698;
+            sp160 = (f32) sp160 * var_f3_1698;
+            unksp164 *= var_f3_1698;
+            sp168 = temp_f0_1709;
             Matrix::SetIdentity();
-            this->unk0 = (f32) arg_sp180;
-            this->unk4 = arg_sp184;
-            this->unk8 = (f32) arg_sp188;
+            this->unk0 = sp180;
+            this->unk4 = unksp184;
+            this->unk8 = sp188;
             this->unkC = 0.0f;
-            this->unk10 = (f32) arg_sp170;
-            this->unk14 = arg_sp174;
-            this->unk18 = (f32) arg_sp178;
+            this->unk10 = sp170;
+            this->unk14 = unksp174;
+            this->unk18 = sp178;
             this->unk1C = 0.0f;
-            this->unk20 = (f32) arg_sp160;
-            this->unk24 = arg_sp164;
-            this->unk28 = (f32) arg_sp168;
+            this->unk20 = sp160;
+            this->unk24 = unksp164;
+            this->unk28 = temp_f0_1709;
             this->unk2C = 0.0f;
-            InterpolateLinear(*((MKVector3 *) &arg_spC0), *((MKVector3 *) &arg_sp250), var_f31_1158);
-            this->unk30 = arg_spC0;
-            this->unk34 = arg_spC4;
-            this->unk38 = arg_spC8;
+            InterpolateLinear(spC0, *((MKVector3 *) &sp220.unk30), var_f31_1158);
+            this->unk30 = M2C_BITWISE(f32, spC0);
+            this->unk34 = spC0.unk4;
+            this->unk38 = spC0.unk8;
             this->unk3C = 1.0f;
             temp_f30_1751 = Endian<float>(*(f32 *) (temp_r27_994 + 0x24));
             temp_f1_1753 = Endian<float>(*(f32 *) (var_r28_966 + 0x24));
@@ -766,14 +820,14 @@ loop_21:
         }
         this->unk40 = (f64) M2C_FIELD(this, f32 *, 0x30);
         this->unk48 = (f64) M2C_FIELD(this, f32 *, 0x38);
-        __ml(50.0f, *((MKVector3 *) &arg_spA0));
+        __ml(50.0f, spA0);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r26, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        this->unk50 = arg_sp30;
-        arg_sp38 = (f32) M2C_FIELD(this, f64 *, 0x48) + arg_spA8;
-        arg_spB0 = arg_sp30;
-        arg_spB8 = (f64) arg_sp38;
-        this->unk58 = (f64) arg_sp38;
+        this->unk50 = sp30;
+        sp38 = (f32) M2C_FIELD(this, f64 *, 0x48) + spA0.unk8;
+        spB0 = sp30;
+        spB8 = (f64) sp38;
+        this->unk58 = (f64) sp38;
         return;
     }
     temp_r29_1799 = temp_r28_927->unk8;
@@ -792,30 +846,30 @@ loop_21:
     if (temp_r3_1802 != NULL) {
         var_f31_955 = temp_r3_1802->GetValue(var_f29_1819);
     }
-    arg_sp20 = 0.0f;
-    arg_sp90.GetMeasure(var_f31_955, temp_r29_1799 + 0x18, KDSpline_PositionMixer);
-    this->unk40 = arg_sp90;
-    this->unk48 = arg_sp98;
+    sp20 = 0.0f;
+    sp90.GetMeasure(var_f31_955, temp_r29_1799 + 0x18, KDSpline_PositionMixer);
+    this->unk40 = sp90;
+    this->unk48 = sp98;
     this->unk60 = (M2C_FIELD(temp_r29_1799, f32 *, 8) * var_f31_955) + (M2C_FIELD(temp_r29_1799, f32 *, 4) * (1.0f - var_f31_955));
     temp_r3_1860 = arg2->GetEnvelope(temp_r28_927->unk14);
     if (temp_r3_1860 != NULL) {
         var_f31_955 = temp_r3_1860->GetValue(var_f29_1819);
     }
-    arg_sp1C = 0.0f;
-    arg_sp80.GetMeasure(var_f31_955, temp_r29_1799 + 0x2C, KDSpline_PositionMixer);
-    this->unk50 = arg_sp80;
-    this->unk58 = arg_sp88;
+    sp1C = 0.0f;
+    sp80.GetMeasure(var_f31_955, temp_r29_1799 + 0x2C, KDSpline_PositionMixer);
+    this->unk50 = sp80;
+    this->unk58 = sp88;
     this->unk64 = M2C_FIELD(temp_r29_1799, f32 *, 0xC);
     this->unk68 = M2C_FIELD(temp_r29_1799, f32 *, 0x10);
-    arg_sp28 = 0;
-    arg_sp24 = 0.0f;
-    if (KDSP_ToolsGetSplinePercent(temp_r28_927, temp_r29_1799 + 0x18, (KDBasicEnvelope *) temp_r3_1860, arg1, arg_sp28, arg_sp24) != 0) {
+    sp28 = 0;
+    sp24 = 0.0f;
+    if (KDSP_ToolsGetSplinePercent(temp_r28_927, temp_r29_1799 + 0x18, (KDBasicEnvelope *) temp_r3_1860, arg1, sp28, sp24) != 0) {
         temp_r4_1897 = M2C_FIELD(temp_r29_1799, f32 **, 0x14);
-        temp_r0_1898 = arg_sp28 * 4;
+        temp_r0_1898 = sp28 * 4;
         temp_f1_1900 = *(temp_r4_1897 + temp_r0_1898);
         temp_f2_1901 = M2C_FIELD((temp_r4_1897 + temp_r0_1898), f32 *, 4);
         if (temp_f1_1900 != temp_f2_1901) {
-            KDMath_SmoothToAngle(temp_f1_1900, temp_f2_1901, arg_sp24);
+            KDMath_SmoothToAngle(temp_f1_1900, temp_f2_1901, sp24);
             var_f29_1906 = M2C_ERROR(/* Read from unset register $f1 */);
         } else {
             var_f29_1906 = temp_f2_1901;
@@ -823,16 +877,16 @@ loop_21:
     } else {
         var_f29_1906 = *M2C_FIELD(temp_r29_1799, f32 **, 0x14);
     }
-    arg_sp1A0.SetIdentity();
-    arg_sp1A0.RotateRoll((Matrix *) &arg_sp1A0, var_f29_1906);
+    sp1A0.SetIdentity();
+    sp1A0.RotateRoll(&sp1A0, var_f29_1906);
     Matrix::SetIdentity();
     Matrix::SetLookAt(*((MKVector3 *) &this->unk40), *((MKVector3 *) &this->unk50));
     this->unk30 = (f32) M2C_FIELD(this, f64 *, 0x40);
     this->unk34 = M2C_FIELD(this, f32 *, 0x44);
     this->unk38 = (f32) M2C_FIELD(this, f64 *, 0x48);
     this->unk3C = 1.0f;
-    arg_sp1A0.Multiply((Matrix *) &arg_sp1A0, (Matrix *) this);
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &arg_sp19C + 4, 0x40);
+    sp1A0.Multiply(&sp1A0, (Matrix *) this);
+    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &unksp19C + 4, 0x40);
 }
 #endif
 

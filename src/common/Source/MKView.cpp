@@ -296,8 +296,15 @@ Frustum *MKView_GetWorldFrustum() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoundingVolume'
 s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
+    Matrix sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f5_720;
     f32 temp_f6_718;
     f32 temp_f7_716;
@@ -306,18 +313,19 @@ s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
     s32 var_r30_708;
     s32 var_r31_707;
     s32 var_r3_805;
+
     var_r31_707 = 0x3F;
     var_r30_708 = 0;
-    arg_sp30.Multiply4x4(&arg1, MKView_GetWorldToScreenMatrix());
+    sp30.Multiply4x4(&arg1, MKView_GetWorldToScreenMatrix());
     temp_f7_716 = arg0.unk0;
     temp_f6_718 = arg0.unk4;
     temp_f5_720 = arg0.unk8;
-    arg_sp10 = temp_f7_716;
-    arg_sp14 = temp_f6_718;
-    arg_sp18 = temp_f5_720;
-    arg_sp20 = temp_f7_716 + arg0.unk10;
-    arg_sp24 = temp_f6_718 + arg0.unk14;
-    arg_sp28 = temp_f5_720 + arg0.unk18;
+    sp10 = temp_f7_716;
+    sp14 = temp_f6_718;
+    sp18 = temp_f5_720;
+    sp20 = temp_f7_716 + arg0.unk10;
+    sp24 = temp_f6_718 + arg0.unk14;
+    sp28 = temp_f5_720 + arg0.unk18;
     var_ctr_749 = 8;
     do {
         temp_r5_795 = (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 2 & ~1) | ((u32) M2C_ERROR(/* unknown instruction: mfcr $r3 */) >> 0x1FU) | (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 4) | (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1CU) & 8) | (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1AU) & 0x10) | (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x19U) & 0x20);
@@ -592,8 +600,31 @@ void MKView_SetCameraMatrix(const Matrix &arg0) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp88'
+#if 0 // DRAFT: undefined identifier 'sp38'
 void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
+    Matrix spB0;
+    f64 spA0;                                       /* compiler-managed */
+    f64 sp98;                                       /* compiler-managed */
+    f32 sp90;                                       /* compiler-managed */
+    f32 sp8C;
+    f32 sp88;                                       /* compiler-managed */
+    f64 sp80;                                       /* compiler-managed */
+    f64 sp78;                                       /* compiler-managed */
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f27_1640;
     f32 temp_f28_1642;
     f32 temp_f30_1531;
@@ -614,19 +645,20 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     s32 temp_r3_1599;
     s32 var_r0_1505;
     s32 var_r0_1609;
+
     var_f5_1432 = 0.0f;
-    arg_sp88 = 0.0f;
-    arg_sp8C = 1.0f;
-    arg_sp90 = 0.0f;
+    sp88 = 0.0f;
+    sp8C = 1.0f;
+    sp90 = 0.0f;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp78 = arg_sp38;
-    arg_sp40 = arg1.unk8 - arg0.unk8;
-    arg_sp80 = (f64) arg_sp40;
-    arg_sp68 = arg_sp38;
-    arg_sp70 = (f64) arg_sp40;
-    var_f4_1461 = ((f32) arg_sp80 * (f32) arg_sp80) + (((f32) arg_sp78 * (f32) arg_sp78) + (arg_sp7C * arg_sp7C));
+    sp78 = sp38;
+    sp40 = arg1.unk8 - arg0.unk8;
+    sp80 = (f64) sp40;
+    sp68 = sp38;
+    sp70 = (f64) sp40;
+    var_f4_1461 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
     if (var_f4_1461 > 0.000001f) {
         if (var_f4_1461 > 0.0f) {
             temp_f1_1466 = __frsqrte(var_f4_1461);
@@ -636,18 +668,18 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
         } else if (var_f4_1461 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1461 = __float_nan;
         } else {
-            arg_sp14 = var_f4_1461;
-            temp_r3_1495 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_1461;
+            temp_r3_1495 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_1495) {                 /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1505 = 1;
                 } else {
                     var_r0_1505 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_1505 = 5;
                 } else {
                     var_r0_1505 = 3;
@@ -663,20 +695,20 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
         }
         var_f5_1432 = 1.0f / var_f4_1461;
     }
-    temp_f30_1531 = arg_sp7C * var_f5_1432;
-    temp_f31_1533 = (f32) arg_sp80 * var_f5_1432;
-    temp_f4_1536 = (f32) arg_sp78 * var_f5_1432;
-    arg_sp78 = temp_f4_1536;
-    arg_sp7C = temp_f30_1531;
-    arg_sp80 = temp_f31_1533;
-    arg_sp28 = (arg_sp8C * temp_f31_1533) - (arg_sp90 * temp_f30_1531);
-    arg_sp2C = (arg_sp90 * temp_f4_1536) - (arg_sp88 * temp_f31_1533);
-    arg_sp30 = (arg_sp88 * temp_f30_1531) - (arg_sp8C * temp_f4_1536);
-    arg_sp98 = (f64) arg_sp28;
-    arg_spA0 = (f64) arg_sp30;
-    arg_sp58 = (f64) arg_sp28;
-    arg_sp60 = (f64) arg_sp30;
-    var_f4_1564 = ((f32) arg_spA0 * (f32) arg_spA0) + (((f32) arg_sp98 * (f32) arg_sp98) + (arg_sp9C * arg_sp9C));
+    temp_f30_1531 = unksp7C * var_f5_1432;
+    temp_f31_1533 = (f32) sp80 * var_f5_1432;
+    temp_f4_1536 = (f32) sp78 * var_f5_1432;
+    sp78 = temp_f4_1536;
+    unksp7C = temp_f30_1531;
+    sp80 = temp_f31_1533;
+    sp28 = (sp8C * temp_f31_1533) - (sp90 * temp_f30_1531);
+    sp2C = (sp90 * temp_f4_1536) - (sp88 * temp_f31_1533);
+    sp30 = (sp88 * temp_f30_1531) - (sp8C * temp_f4_1536);
+    sp98 = (f64) sp28;
+    spA0 = (f64) sp30;
+    sp58 = (f64) sp28;
+    sp60 = (f64) sp30;
+    var_f4_1564 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
     if (var_f4_1564 > 0.000001f) {
         if (var_f4_1564 > 0.0f) {
             temp_f1_1570 = __frsqrte(var_f4_1564);
@@ -686,18 +718,18 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
         } else if (var_f4_1564 < M2C_BITWISE(f32, 0.0)) {
             var_f4_1564 = __float_nan;
         } else {
-            arg_sp10 = var_f4_1564;
-            temp_r3_1599 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_1564;
+            temp_r3_1599 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_1599) {                 /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1609 = 1;
                 } else {
                     var_r0_1609 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_1609 = 5;
                 } else {
                     var_r0_1609 = 3;
@@ -715,35 +747,35 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_f2_1631 = 0.0f;
     }
-    temp_f3_1638 = (f32) arg_sp98 * var_f2_1631;
-    temp_f27_1640 = arg_sp9C * var_f2_1631;
-    temp_f28_1642 = (f32) arg_spA0 * var_f2_1631;
-    arg_sp98 = temp_f3_1638;
-    arg_sp9C = temp_f27_1640;
-    arg_spA0 = temp_f28_1642;
-    arg_sp18 = (temp_f30_1531 * temp_f28_1642) - (temp_f31_1533 * temp_f27_1640);
-    arg_sp1C = (temp_f31_1533 * temp_f3_1638) - ((f32) arg_sp78 * temp_f28_1642);
-    arg_sp20 = ((f32) arg_sp78 * temp_f27_1640) - (temp_f30_1531 * temp_f3_1638);
-    arg_sp48 = (f64) arg_sp18;
-    arg_sp50 = (f64) arg_sp20;
-    arg_sp88 = (f64) arg_sp18;
-    arg_sp90 = (f64) arg_sp20;
+    temp_f3_1638 = (f32) sp98 * var_f2_1631;
+    temp_f27_1640 = unksp9C * var_f2_1631;
+    temp_f28_1642 = (f32) spA0 * var_f2_1631;
+    sp98 = temp_f3_1638;
+    unksp9C = temp_f27_1640;
+    spA0 = temp_f28_1642;
+    sp18 = (temp_f30_1531 * temp_f28_1642) - (temp_f31_1533 * temp_f27_1640);
+    sp1C = (temp_f31_1533 * temp_f3_1638) - (sp78 * temp_f28_1642);
+    sp20 = (sp78 * temp_f27_1640) - (temp_f30_1531 * temp_f3_1638);
+    sp48 = (f64) sp18;
+    sp50 = (f64) sp20;
+    sp88 = (f64) sp18;
+    sp90 = (f64) sp20;
     pStack->SetIdentity();
-    pStack->unk0 = (f32) arg_sp98;
+    pStack->unk0 = sp98;
     pStack->unk4 = temp_f27_1640;
     pStack->unk8 = temp_f28_1642;
     pStack->unkC = 0.0f;
-    pStack->unk10 = arg_sp88;
-    pStack->unk14 = arg_sp8C;
-    pStack->unk18 = arg_sp90;
+    pStack->unk10 = (f32) sp88;
+    pStack->unk14 = sp8C;
+    pStack->unk18 = (f32) sp90;
     pStack->unk1C = 0.0f;
-    pStack->unk20 = (f32) arg_sp78;
+    pStack->unk20 = sp78;
     pStack->unk24 = temp_f30_1531;
     pStack->unk28 = temp_f31_1533;
     pStack->unk2C = 0.0f;
     if (arg2 != 0.0f) {
-        arg_spB0.SetRotationRoll(arg2);
-        pStack->Multiply3x3((Matrix *) &arg_spB0, pStack);
+        spB0.SetRotationRoll(arg2);
+        pStack->Multiply3x3(&spB0, pStack);
     }
     pStack->unk30 = arg0.unk0;
     pStack->unk34 = arg0.unk4;

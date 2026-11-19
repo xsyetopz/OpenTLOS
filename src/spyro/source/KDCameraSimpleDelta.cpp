@@ -1,6 +1,7 @@
 #include "spyro/source/KDCameraSimpleDelta.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -421,23 +422,30 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: undefined identifier 'unksp24'
 void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_844;
     f32 temp_f1_839;
     f32 temp_f2_842;
-    arg_sp30.SetIdentity();
-    arg_sp30.SetRotationPitch(arg0);
-    arg_sp20 = arg_sp50;
-    arg_sp28 = arg_sp58;
+
+    sp30.SetIdentity();
+    sp30.SetRotationPitch(arg0);
+    sp20 = (f64) sp30.unk20;
+    sp28 = (f64) sp30.unk28;
     temp_f1_839 = ((KDCameraSimpleDelta *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetCurrentDelta();
-    temp_f2_842 = arg_sp24 * temp_f1_839;
-    temp_f0_844 = (f32) arg_sp28 * temp_f1_839;
-    arg_sp10 = 0.0f;
-    arg_sp14 = temp_f2_842;
-    arg_sp18 = temp_f0_844;
-    M2C_FIELD(this, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(this, f64 *, 8) = (f64) arg_sp18;
+    temp_f2_842 = unksp24 * temp_f1_839;
+    temp_f0_844 = (f32) sp28 * temp_f1_839;
+    sp10 = 0.0f;
+    sp14 = temp_f2_842;
+    sp18 = temp_f0_844;
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
 
@@ -550,12 +558,16 @@ void KDCameraSimpleDelta::Init(const KDCameraDeltaStages &arg0, float arg1, floa
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: undefined identifier 'unksp14'
 f32 KDCameraDeltaStagesEx::GetYDelta() {
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
     f32 temp_f0_1193;
     f32 temp_f0_1201;
     f32 var_f1_1192;
-    arg_sp20.SetIdentity();
+
+    sp20.SetIdentity();
     var_f1_1192 = this->unk0;
     temp_f0_1193 = *this->unk10;
     if (var_f1_1192 < temp_f0_1193) {
@@ -569,19 +581,22 @@ f32 KDCameraDeltaStagesEx::GetYDelta() {
     } else {
         var_f1_1192 = temp_f0_1201;
     }
-    arg_sp20.SetRotationPitch(var_f1_1192);
-    arg_sp10 = arg_sp40;
-    arg_sp18 = arg_sp48;
-    return arg_sp14 * this->unk4;
+    sp20.SetRotationPitch(var_f1_1192);
+    sp10 = (f64) sp20.unk20;
+    sp18 = (f64) sp20.unk28;
+    return unksp14 * this->unk4;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
 f32 KDCameraDeltaStagesEx::GetZDelta() {
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
     f32 temp_f0_1240;
     f32 temp_f0_1248;
     f32 var_f1_1239;
-    arg_sp20.SetIdentity();
+
+    sp20.SetIdentity();
     var_f1_1239 = this->unk0;
     temp_f0_1240 = *this->unk10;
     if (var_f1_1239 < temp_f0_1240) {
@@ -595,12 +610,11 @@ f32 KDCameraDeltaStagesEx::GetZDelta() {
     } else {
         var_f1_1239 = temp_f0_1248;
     }
-    arg_sp20.SetRotationPitch(var_f1_1239);
-    arg_sp18 = arg_sp48;
-    arg_sp10 = arg_sp40;
-    return (f32) arg_sp18 * this->unk4;
+    sp20.SetRotationPitch(var_f1_1239);
+    sp18 = (f64) sp20.unk28;
+    sp10 = (f64) sp20.unk20;
+    return (f32) sp18 * this->unk4;
 }
-#endif
 
 void KDCameraDeltaStagesEx::SetStages(float arg0, float arg1, float arg2) {
     f32 temp_f0_1283;

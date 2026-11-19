@@ -168,30 +168,43 @@ void Leviathan::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp3C'
+#if 0 // DRAFT: illegal type
 void Leviathan::Draw() {
+    f64 sp78;
+    f64 sp70;
+    M2C_UNK sp40;
+    M2C_UNK sp3C;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_120;
     u8 temp_r30_152;
     u8 temp_r31_135;
+
     GameProp::Draw();
-    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-    arg_sp30 = arg_sp70;
+    M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    sp30 = sp70;
     temp_f3_120 = this->unk1BC;
-    arg_sp38 = arg_sp78;
-    arg_sp70 = (f32) arg_sp30;
-    arg_sp74 = temp_f3_120;
-    arg_sp78 = (f32) arg_sp38;
-    arg_sp7C = 1.0f;
-    arg_sp34 = temp_f3_120;
-    MKModel_SetWorldMatrix(this->unk1B8, *((Matrix *) &arg_sp40));
+    sp38 = sp78;
+    sp70 = (f32) sp30;
+    unksp74 = temp_f3_120;
+    sp78 = (f32) sp38;
+    unksp7C = 1.0f;
+    unksp34 = temp_f3_120;
+    MKModel_SetWorldMatrix(this->unk1B8, *((Matrix *) &sp40));
     temp_r31_135 = MKMaterial_EnableFog(0U);
-    arg_sp10 = 1.0f;
-    arg_sp14 = 1.0f;
-    arg_sp18 = 1.0f;
-    arg_sp1C = this->unk20;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    MKModel_SetColor(this->unk1B8, *((MKVector4 *) &arg_sp20));
+    sp10 = 1.0f;
+    sp14 = 1.0f;
+    sp18 = 1.0f;
+    sp1C = this->unk20;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    MKModel_SetColor(this->unk1B8, *((MKVector4 *) &sp20));
     temp_r30_152 = OmniLight_SuspendAll(1U);
     MKModel_Draw(this->unk1B8, NULL);
     OmniLight_SuspendAll(temp_r30_152);
@@ -671,8 +684,36 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void Leviathan::UpdateMove() {
+    Matrix spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;                                       /* compiler-managed */
+    f64 spC8;                                       /* compiler-managed */
+    f64 spC0;                                       /* compiler-managed */
+    f64 spB8;                                       /* compiler-managed */
+    f64 spB0;                                       /* compiler-managed */
+    f64 spA8;
+    KDUniformSpline sp90;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f5_1263;
     f32 temp_f6_1259;
     f32 temp_f7_1176;
@@ -703,6 +744,7 @@ void Leviathan::UpdateMove() {
     s32 var_r0_1036;
     s32 var_r0_1135;
     s32 var_r0_1233;
+
     if ((u32) this->unk18C != 0U) {
         if ((s32) this->unk19C != 2) {
             var_f0_909 = (this->unk198 * gUpdateTimeDelta) + this->unk194;
@@ -718,11 +760,11 @@ void Leviathan::UpdateMove() {
             }
             this->unk194 = var_f0_909;
         }
-        arg_sp1C = 0.0f;
-        arg_sp90.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+        sp1C = 0.0f;
+        sp90.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
         var_f1_936 = this->unk194 - 0.001f;
-        arg_spE0 = arg_sp90;
-        arg_spE8 = arg_sp98;
+        spE0 = M2C_BITWISE(f64, sp90);
+        spE8 = (f64) sp90.unk8;
         if (var_f1_936 < 1.0f) {
 
         } else {
@@ -733,16 +775,16 @@ void Leviathan::UpdateMove() {
         } else {
             var_f1_936 = 0.0f;
         }
-        arg_sp80.GetVelocity(var_f1_936);
-        arg_spD0 = arg_sp80;
-        arg_spD8 = arg_sp88;
+        sp80.GetVelocity(var_f1_936);
+        spD0 = sp80;
+        spD8 = sp88;
         if ((this->unk194 == 1.0f) && ((s32) this->unk19C != 2)) {
             this->unk19C = 2;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp12C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spF0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f7_983 = 0.0f;
-        arg_spD4 = 0.0f;
-        var_f4_992 = ((f32) arg_spD8 * (f32) arg_spD8) + (((f32) arg_spD0 * (f32) arg_spD0) + (0.0f * 0.0f));
+        unkspD4 = 0.0f;
+        var_f4_992 = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (0.0f * 0.0f));
         if (var_f4_992 > 0.000001f) {
             if (var_f4_992 > 0.0f) {
                 temp_f1_997 = __frsqrte(var_f4_992);
@@ -752,18 +794,18 @@ void Leviathan::UpdateMove() {
             } else if (var_f4_992 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_992 = __float_nan;
             } else {
-                arg_sp18 = var_f4_992;
-                temp_r3_1026 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                sp18 = var_f4_992;
+                temp_r3_1026 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                 switch (temp_r3_1026) {             /* switch 1; irregular */
                 case 0x7F800000:                    /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                         var_r0_1036 = 1;
                     } else {
                         var_r0_1036 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                         var_r0_1036 = 5;
                     } else {
                         var_r0_1036 = 3;
@@ -780,16 +822,16 @@ void Leviathan::UpdateMove() {
             var_f7_983 = 1.0f / var_f4_992;
         }
         var_f10_1065 = 0.0f;
-        arg_sp40 = -arg_sp150;
-        arg_sp44 = -arg_sp154;
-        arg_sp48 = -arg_sp158;
-        arg_spC0 = (f64) arg_sp40;
-        arg_spC8 = (f64) arg_sp48;
-        arg_spD0 = (f32) arg_spD0 * var_f7_983;
-        arg_spD4 *= var_f7_983;
-        arg_spD8 = (f32) arg_spD8 * var_f7_983;
-        var_f4_1090 = ((f32) arg_spC8 * (f32) arg_spC8) + (((f32) arg_spC0 * (f32) arg_spC0) + (0.0f * 0.0f));
-        arg_spC4 = 0.0f;
+        sp40 = -sp150;
+        sp44 = -sp154;
+        sp48 = -sp158;
+        spC0 = (f64) sp40;
+        spC8 = (f64) sp48;
+        spD0 = (f32) spD0 * var_f7_983;
+        unkspD4 *= var_f7_983;
+        spD8 = (f32) spD8 * var_f7_983;
+        var_f4_1090 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (0.0f * 0.0f));
+        unkspC4 = 0.0f;
         if (var_f4_1090 > 0.000001f) {
             if (var_f4_1090 > 0.0f) {
                 temp_f1_1096 = __frsqrte(var_f4_1090);
@@ -799,18 +841,18 @@ void Leviathan::UpdateMove() {
             } else if (var_f4_1090 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_1090 = __float_nan;
             } else {
-                arg_sp14 = var_f4_1090;
-                temp_r3_1125 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                sp14 = var_f4_1090;
+                temp_r3_1125 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                 switch (temp_r3_1125) {             /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_1135 = 1;
                     } else {
                         var_r0_1135 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_1135 = 5;
                     } else {
                         var_r0_1135 = 3;
@@ -826,18 +868,18 @@ void Leviathan::UpdateMove() {
             }
             var_f10_1065 = 1.0f / var_f4_1090;
         }
-        arg_spB0 = arg_sp130;
-        temp_f8_1162 = arg_spC4 * var_f10_1065;
+        spB0 = sp130;
+        temp_f8_1162 = unkspC4 * var_f10_1065;
         var_f11_1164 = 0.0f;
-        temp_f9_1169 = (f32) arg_spC0 * var_f10_1065;
-        arg_spB8 = arg_sp138;
-        temp_f7_1176 = (f32) arg_spC8 * var_f10_1065;
-        var_f10_1184 = ((f32) arg_spB8 * (f32) arg_spB8) + (((f32) arg_spB0 * (f32) arg_spB0) + (0.0f * 0.0f));
-        arg_spC0 = temp_f9_1169;
-        var_f2_1186 = 1.0f - ((temp_f7_1176 * (f32) arg_spD8) + ((temp_f9_1169 * (f32) arg_spD0) + (temp_f8_1162 * arg_spD4)));
-        arg_spC4 = temp_f8_1162;
-        arg_spC8 = temp_f7_1176;
-        arg_spB4 = 0.0f;
+        temp_f9_1169 = (f32) spC0 * var_f10_1065;
+        spB8 = sp138;
+        temp_f7_1176 = (f32) spC8 * var_f10_1065;
+        var_f10_1184 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (0.0f * 0.0f));
+        spC0 = temp_f9_1169;
+        var_f2_1186 = 1.0f - ((temp_f7_1176 * spD8) + ((temp_f9_1169 * spD0) + (temp_f8_1162 * unkspD4)));
+        unkspC4 = temp_f8_1162;
+        spC8 = temp_f7_1176;
+        unkspB4 = 0.0f;
         if (var_f10_1184 > 0.000001f) {
             if (var_f10_1184 > 0.0f) {
                 temp_f4_1194 = __frsqrte(var_f10_1184);
@@ -847,18 +889,18 @@ void Leviathan::UpdateMove() {
             } else if (var_f10_1184 < M2C_BITWISE(f32, 0.0)) {
                 var_f10_1184 = __float_nan;
             } else {
-                arg_sp10 = var_f10_1184;
-                temp_r3_1223 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f10_1184;
+                temp_r3_1223 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_1223) {             /* switch 3; irregular */
                 case 0x7F800000:                    /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1233 = 1;
                     } else {
                         var_r0_1233 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1233 = 5;
                     } else {
                         var_r0_1233 = 3;
@@ -874,35 +916,35 @@ void Leviathan::UpdateMove() {
             }
             var_f11_1164 = 1.0f / var_f10_1184;
         }
-        temp_f6_1259 = arg_spB4 * var_f11_1164;
-        temp_f7_1261 = (f32) arg_spB0 * var_f11_1164;
-        temp_f5_1263 = (f32) arg_spB8 * var_f11_1164;
-        arg_spB0 = temp_f7_1261;
-        arg_spB4 = temp_f6_1259;
-        arg_spB8 = temp_f5_1263;
-        if ((((f32) arg_spD8 * temp_f5_1263) + (((f32) arg_spD0 * temp_f7_1261) + (arg_spD4 * temp_f6_1259))) < 0.0f) {
+        temp_f6_1259 = unkspB4 * var_f11_1164;
+        temp_f7_1261 = (f32) spB0 * var_f11_1164;
+        temp_f5_1263 = (f32) spB8 * var_f11_1164;
+        spB0 = temp_f7_1261;
+        unkspB4 = temp_f6_1259;
+        spB8 = temp_f5_1263;
+        if (((spD8 * temp_f5_1263) + ((spD0 * temp_f7_1261) + (unkspD4 * temp_f6_1259))) < 0.0f) {
             var_f2_1186 = -var_f2_1186;
         }
-        arg_sp30 = 0.0f;
-        arg_sp34 = var_f2_1186;
-        arg_sp38 = 0.0f;
-        arg_spA0 = (f64) arg_sp30;
-        arg_sp60 = M2C_FIELD(this, f64 *, 0x110);
-        arg_spA8 = (f64) arg_sp38;
-        arg_sp68 = M2C_FIELD(this, f64 *, 0x118);
+        sp30 = 0.0f;
+        sp34 = var_f2_1186;
+        sp38 = 0.0f;
+        sp90.unk10 = (f64) sp30;
+        sp60 = M2C_FIELD(this, f64 *, 0x110);
+        spA8 = (f64) sp38;
+        sp68 = M2C_FIELD(this, f64 *, 0x118);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp70 = arg_sp20;
-        arg_sp28 = (f32) arg_sp68 + (f32) arg_spA8;
-        arg_sp78 = (f64) arg_sp28;
-        arg_spF0.SetRotationPYR(*((MKVector3 *) &arg_sp70));
-        arg_sp120 = (f32) arg_spE0;
-        arg_sp124 = arg_spE4;
-        arg_sp128 = (f32) arg_spE8;
-        arg_sp12C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spF0));
-        arg_sp50.GetRotationPYR();
-        M2C_FIELD(this, f64 *, 0x110) = arg_sp50;
-        M2C_FIELD(this, f64 *, 0x118) = arg_sp58;
+        sp70 = sp20;
+        sp28 = (f32) sp68 + (f32) spA8;
+        sp78 = (f64) sp28;
+        spF0.SetRotationPYR(*((MKVector3 *) &sp70));
+        spF0.unk30 = (f32) spE0;
+        spF0.unk34 = unkspE4;
+        spF0.unk38 = (f32) spE8;
+        spF0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, spF0);
+        sp50.GetRotationPYR();
+        M2C_FIELD(this, f64 *, 0x110) = sp50;
+        M2C_FIELD(this, f64 *, 0x118) = sp58;
     }
 }
 #endif

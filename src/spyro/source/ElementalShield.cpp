@@ -71,23 +71,26 @@ void ElementalShield::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElementalShield::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     MKMaterial *temp_r0_222;
     MKVector3 *temp_r3_210;
+
     if ((s32) this->unk90 != 0) {
         if ((MKVector3 *) this->unkAC == NULL) {
             return;
         }
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp10.SetRotationYaw(this->unkA0);
-        arg_sp10.Scale3x3((Matrix *) &arg_sp10, this->unk9C * this->unk98);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp10.SetRotationYaw(this->unkA0);
+        sp10.Scale3x3(&sp10, this->unk9C * this->unk98);
         temp_r3_210 = this->unkAC;
-        arg_sp40 = temp_r3_210->unk0;
-        arg_sp44 = temp_r3_210->unk4;
-        arg_sp48 = temp_r3_210->unk8;
-        arg_sp4C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+        sp10.unk30 = temp_r3_210->unk0;
+        sp10.unk34 = temp_r3_210->unk4;
+        sp10.unk38 = temp_r3_210->unk8;
+        sp10.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp10);
         temp_r0_222 = this->unkB0;
         if (temp_r0_222 != NULL) {
             gRenderState = temp_r0_222;

@@ -160,8 +160,25 @@ void MKModel_ExploreBegin(const MKModel *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spCC'
+#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
+    M2C_UNK *spDC;
+    f64 *spD8;                                      /* compiler-managed */
+    MKModel *spD4;
+    s32 spD0;
+    u8 spCC;
+    void *spC8;
+    void *spC4;
+    s32 spC0;
+    Matrix sp80;
+    Matrix sp40;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    s32 sp14;
+    s32 sp10;
     Animation *var_r26_538;
     MKAttachment *temp_r7_586;
     MKMaterial *temp_r23_588;
@@ -201,11 +218,12 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     void *temp_r4_822;
     void *temp_r4_859;
     void *var_r25_556;
+
     temp_r4_510 = ((u8) arg0->unk4 >> 5U) & 7;
     gpMKcurrentMaterialEffectorMask = 3;
-    arg_spCC = 0U;
-    arg_sp10 = M2C_FIELD(&lit_676, s32 *, 0);
-    arg_sp14 = M2C_FIELD(&lit_676, s32 *, 4);
+    spCC = 0;
+    sp10 = M2C_FIELD(&lit_676, s32 *, 0);
+    sp14 = M2C_FIELD(&lit_676, s32 *, 4);
     if (temp_r4_510 >= 1U) {
         var_r14_519 = &arg0->unk10;
     } else {
@@ -213,9 +231,9 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     }
     var_r27_526 = var_r14_519;
     if (temp_r4_510 >= 1U) {
-        arg_spD8 = &arg0->unk50;
+        spD8 = &arg0->unk50;
     } else {
-        arg_spD8 = (f64 *) &MKVector4::one;
+        spD8 = &MKVector4::one;
     }
     if (temp_r4_510 >= 1U) {
         var_r26_538 = arg0->unk70;
@@ -223,9 +241,9 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
         var_r26_538 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spC8 = arg0->unk80;
+        spC8 = arg0->unk80;
     } else {
-        arg_spC8 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), void **, 0x54);
+        spC8 = M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), void **, 0x54);
     }
     if (temp_r4_510 >= 2U) {
         var_r25_556 = arg0->unk88;
@@ -233,14 +251,14 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
         var_r25_556 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spC4 = arg0->unk8C;
+        spC4 = arg0->unk8C;
     } else {
-        arg_spC4 = NULL;
+        spC4 = NULL;
     }
     if (temp_r4_510 >= 2U) {
-        arg_spD4 = arg0 + 0x90;
+        spD4 = arg0 + 0x90;
     } else {
-        arg_spD4 = NULL;
+        spD4 = NULL;
     }
     if (temp_r4_510 >= 2U) {
         var_r24_581 = arg0->unk84;
@@ -253,25 +271,25 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
         temp_r0_592 = ((u8) temp_r7_586->unk4 >> 4U) & 0xF;
         switch (temp_r0_592) {                      /* irregular */
         case 0:
-            M2C_STRUCT_COPY((s32) &arg_sp7C + 4, temp_r7_586->unk0 - 4 + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &sp40.unk3C + 4, temp_r7_586->unk0 - 4 + 4, 0x40);
             /* fallthrough */
         case 1:
-            M2C_STRUCT_COPY((s32) &arg_sp7C + 4, MKModel_GetWorldMatrix((MKModel *) temp_r7_586->unk0) - 4 + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &sp40.unk3C + 4, MKModel_GetWorldMatrix((MKModel *) temp_r7_586->unk0) - 4 + 4, 0x40);
             break;
         case 2:
-            MKModel_CalculateSubObjectLocalToWorldMatrix((MKModel *) temp_r7_586->unk0, (SubObjectType) 0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp80);
+            MKModel_CalculateSubObjectLocalToWorldMatrix((MKModel *) temp_r7_586->unk0, (SubObjectType) 0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, &sp80);
             break;
         case 3:
-            MKModel_GetRefPointMatrix((MKModel *) temp_r7_586->unk0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp80, 1U);
+            MKModel_GetRefPointMatrix((MKModel *) temp_r7_586->unk0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, &sp80, 1U);
             break;
         case 4:
-            MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_586->unk0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp80);
+            MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_586->unk0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, &sp80);
             break;
         }
         if ((var_r14_519 != NULL) && (var_r14_519 != &Matrix::identity)) {
-            arg_sp80.Multiply(var_r14_519, (Matrix *) &arg_sp80);
+            sp80.Multiply(var_r14_519, &sp80);
         }
-        var_r27_526 = (Matrix *) &arg_sp80;
+        var_r27_526 = &sp80;
     }
     if (var_r26_538 != NULL) {
         var_r30_675 = var_r26_538->CalculateMatrices(NULL, -1, NULL, var_r27_526);
@@ -318,16 +336,16 @@ loop_65:
     }
     var_r20_782 = 0;
     var_r14_784 = 0;
-    arg_spDC = &gShockWaveData;
+    spDC = &gShockWaveData;
 loop_137:
     if (var_r20_782 < (s16) M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 6)) {
-        var_r19_790 = *(arg_spC8 + var_r14_784);
+        var_r19_790 = *(spC8 + var_r14_784);
         if ((temp_r23_588 != NULL) && ((s32) var_r19_790->unk30 == (s32) temp_r23_588->unk30)) {
             var_r19_790 = temp_r23_588;
         }
         if ((s8) M2C_FIELD(var_r19_790->unk24, u8 *, 0xE1) == 0) {
             MKMaterial_SetMaterial(var_r19_790);
-            MKMaterial_SetGeometryColor(*((MKVector4 *) arg_spD8));
+            MKMaterial_SetGeometryColor(*spD8);
 loop_135:
             if (MKMaterial_Begin() != 0) {
                 var_r18_808 = 0;
@@ -353,15 +371,15 @@ loop_131:
                     }
                     if ((var_r28_832 != NULL) && ((var_r25_556 == NULL) || !(*(var_r25_556 + var_r29_816) & 0x4F))) {
                         temp_r0_846 = var_r29_816 << 6;
-                        arg_spD0 = temp_r0_846;
+                        spD0 = temp_r0_846;
                         temp_r17_848 = M2C_FIELD(temp_r4_822, s32 *, 0x50) + temp_r0_846;
                         temp_r3_849 = M2C_FIELD(temp_r17_848, u8 *, 0x38);
                         if ((temp_r3_849 == 5) || (temp_r3_849 == 4)) {
-                            temp_r0_856 = *(arg_spC4 + var_r29_816);
+                            temp_r0_856 = *(spC4 + var_r29_816);
                             if (temp_r0_856 != 0xFF) {
                                 temp_r4_859 = var_r26_538->unk1C;
                                 if (temp_r4_859 != NULL) {
-                                    arg_spC0 = 3;
+                                    spC0 = 3;
                                     temp_r3_865 = temp_r4_859 + (temp_r0_856 * 0x48);
                                     MKModel_pBlendShapeWeights = temp_r3_865 + 8;
                                     MKModel_BlendShapeTargets = M2C_FIELD(temp_r3_865, s32 *, 4);
@@ -376,28 +394,28 @@ loop_131:
                             if (var_r0_873 != 0) {
                                 var_r3_880 = 2;
                             }
-                            arg_spC0 = var_r3_880;
+                            spC0 = var_r3_880;
                         }
-                        if (arg_spC0 != arg_sp10) {
-                            arg_sp10 = arg_spC0;
-                            MKMaterial_SetGeometryTransformInfo((GeometryTransformationInfo *) &arg_sp10);
+                        if (spC0 != sp10) {
+                            sp10 = spC0;
+                            MKMaterial_SetGeometryTransformInfo((GeometryTransformationInfo *) &sp10);
                         }
-                        if ((arg_sp10 == 1) && ((u8) M2C_FIELD(temp_r17_848, u8 *, 0x38) != 0)) {
+                        if ((sp10 == 1) && ((u8) M2C_FIELD(temp_r17_848, u8 *, 0x38) != 0)) {
                             MKMaterialGC_bForceSkinnedVertexFormat = 1;
                         } else {
                             MKMaterialGC_bForceSkinnedVertexFormat = 0;
                         }
                         if (var_r21_690 != 0) {
                             MKMaterial_UseLocality(var_r29_816);
-                            arg_spCC = 0U;
-                            if (((u8) M2C_FIELD(arg_spDC, u8 *, 0x60) != 0) && ((s32) M2C_FIELD(var_r19_790->unk24, s32 *, 0x28) == 3) && (arg_sp10 == 1)) {
-                                arg_sp18 = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x10)) + M2C_FIELD(temp_r17_848, f32 *, 0);
-                                arg_sp1C = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x14)) + M2C_FIELD(temp_r17_848, f32 *, 4);
-                                arg_sp20 = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x18)) + M2C_FIELD(temp_r17_848, f32 *, 8);
-                                arg_sp28 = (f64) arg_sp18;
-                                arg_sp30 = (f64) arg_sp20;
-                                if (MKShockWave_IsWithin(*((MKVector3 *) &arg_sp28), M2C_FIELD(temp_r17_848, f32 *, 0xC)) != 0) {
-                                    arg_spCC = 1U;
+                            spCC = 0;
+                            if (((u8) M2C_FIELD(spDC, u8 *, 0x60) != 0) && ((s32) M2C_FIELD(var_r19_790->unk24, s32 *, 0x28) == 3) && (sp10 == 1)) {
+                                sp18 = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x10)) + M2C_FIELD(temp_r17_848, f32 *, 0);
+                                sp1C = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x14)) + M2C_FIELD(temp_r17_848, f32 *, 4);
+                                sp20 = (0.5f * M2C_FIELD(temp_r17_848, f32 *, 0x18)) + M2C_FIELD(temp_r17_848, f32 *, 8);
+                                sp28 = (f64) sp18;
+                                sp30 = (f64) sp20;
+                                if (MKShockWave_IsWithin(*((MKVector3 *) &sp28), M2C_FIELD(temp_r17_848, f32 *, 0xC)) != 0) {
+                                    spCC = 1;
                                 }
                             }
                         }
@@ -407,17 +425,17 @@ loop_131:
                                 var_r22_689 = NULL;
                                 MKMaterial_SetLocalToWorld(NULL, 1.0f);
                             }
-                        } else if ((var_r30_675 != NULL) && (temp_r0_972 = *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg_spD0 + 0x3A)), ((temp_r0_972 == -1) == 0))) {
+                        } else if ((var_r30_675 != NULL) && (temp_r0_972 = *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (spD0 + 0x3A)), ((temp_r0_972 == -1) == 0))) {
                             temp_r3_976 = &var_r30_675[temp_r0_972];
                             if (temp_r3_976 != var_r22_689) {
                                 var_r22_689 = temp_r3_976;
                                 MKMaterial_SetLocalToWorld(temp_r3_976, 1.0f);
                             }
-                        } else if ((arg_spD4 != NULL) && (temp_r0_989 = *(arg_spD4 + (var_r29_816 * 4)), ((temp_r0_989 == NULL) == 0))) {
+                        } else if ((spD4 != NULL) && (temp_r0_989 = *(spD4 + (var_r29_816 * 4)), ((temp_r0_989 == NULL) == 0))) {
                             if (temp_r0_989 != var_r22_689) {
-                                arg_sp40.SetIdentity();
-                                arg_sp40.Multiply(temp_r0_989, var_r27_526);
-                                MKMaterial_SetLocalToWorld((Matrix *) &arg_sp40, 1.0f);
+                                sp40.SetIdentity();
+                                sp40.Multiply(temp_r0_989, var_r27_526);
+                                MKMaterial_SetLocalToWorld(&sp40, 1.0f);
                                 var_r22_689 = temp_r0_989;
                             }
                         } else if (var_r27_526 != var_r22_689) {
@@ -426,8 +444,8 @@ loop_131:
                         }
 loop_129:
                         if (MKMaterial_BeginInternal() != 0) {
-                            if (arg_spCC != 0) {
-                                Model_DrawShockwave(var_r28_832, 0xC, *((GeometryTransformationInfo *) &arg_sp10));
+                            if (spCC != 0) {
+                                Model_DrawShockwave(var_r28_832, 0xC, *((GeometryTransformationInfo *) &sp10));
                             } else {
                                 MKMaterial_RenderMeshChunk((MeshChunk *) var_r28_832);
                             }

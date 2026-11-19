@@ -2467,13 +2467,15 @@ void *CreateStreamingVoice(unsigned long arg0, unsigned long arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: undefined identifier 'ARAMTransferCallback'
 void ARAMTransfer(unsigned long arg0, unsigned long arg1, unsigned long arg2) {
+    ARQRequest sp20;
+
     if (arg0 >= 0x80000000U) {
         DCStoreRange((void *) arg0, arg2);
     }
     transferComplete = 0;
-    ARQPostRequest((ARQRequest *) &arg_sp20, 1U, arg0 < 0x80000000U, 0U, arg0, arg1, arg2, ARAMTransferCallback);
+    ARQPostRequest(&sp20, 1U, arg0 < 0x80000000U, 0U, arg0, arg1, arg2, ARAMTransferCallback);
     do {
 
     } while ((u8) transferComplete == 0);

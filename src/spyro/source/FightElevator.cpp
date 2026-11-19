@@ -431,21 +431,28 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void FightElevator::UpdateMove() {
-    arg_sp10 = 0.0f;
-    arg_sp28.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
-    arg_sp38 = arg_sp28;
-    arg_sp40 = arg_sp30;
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp80 = (f32) arg_sp38;
-    arg_sp84 = arg_sp3C;
-    arg_sp88 = (f32) arg_sp40;
-    arg_sp8C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
-    arg_sp18.GetRotationPYR();
-    M2C_FIELD(this, f64 *, 0x110) = arg_sp18;
-    M2C_FIELD(this, f64 *, 0x118) = arg_sp20;
+    Matrix sp50;
+    M2C_UNK sp4C;
+    f64 sp40;
+    KDUniformSpline sp28;
+    f64 sp18;
+    f32 sp10;
+
+    sp10 = 0.0f;
+    sp28.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
+    sp28.unk10 = M2C_BITWISE(f64, sp28);
+    sp40 = (f64) sp28.unk8;
+    M2C_STRUCT_COPY((s32) &sp4C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp50.unk30 = M2C_BITWISE(f32, sp28.unk10);
+    sp50.unk34 = sp3C;
+    sp50.unk38 = (f32) sp40;
+    sp50.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, sp50);
+    sp18.GetRotationPYR();
+    M2C_FIELD(this, f64 *, 0x110) = sp18;
+    M2C_FIELD(this, f64 *, 0x118) = sp20;
 }
 #endif
 

@@ -445,48 +445,59 @@ s32 Collectable::PlayCollectSound() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp9C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable::RotateCameraFacing() {
+    Matrix spA0;
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp10;
     MKHeap *temp_r3_868;
     f32 temp_f3_939;
     f64 temp_f1_892;
     f64 temp_f1_905;
     void *temp_r5_891;
     void *temp_r5_902;
-    M2C_STRUCT_COPY((s32) &arg_sp9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp60.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     if ((s32) this->unk124->unk9C & 2) {
-        arg_spA0.SetRotationYaw(this->unk60.unk4);
+        spA0.SetRotationYaw(this->unk60.unk4);
     }
-    arg_sp60.SetIdentity();
+    sp60.SetIdentity();
     temp_r3_868 = this->unk124;
     if ((s32) temp_r3_868->unk9C & 0x40) {
-        arg_sp60.SetRotationPitch(M2C_BITWISE(f32, temp_r3_868->unk70));
+        sp60.SetRotationPitch(M2C_BITWISE(f32, temp_r3_868->unk70));
     }
-    arg_spA0.Multiply3x3((Matrix *) &arg_spA0, (Matrix *) &arg_sp60);
+    spA0.Multiply3x3(&spA0, &sp60);
     if ((s32) this->unk124->unk9C & 4) {
         temp_r5_891 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         temp_f1_892 = M2C_FIELD(temp_r5_891, f64 *, 0x30);
-        arg_sp20 = temp_f1_892;
-        arg_sp28 = M2C_FIELD(temp_r5_891, f64 *, 0x38);
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(f32 *, Collectable *, void *, f64, f32, f32), 0x44)(&arg_sp10, this, temp_r5_891, temp_f1_892);
+        sp20 = temp_f1_892;
+        sp28 = M2C_FIELD(temp_r5_891, f64 *, 0x38);
+        M2C_FIELD(this->__vptr, M2C_UNK (**)(f32 *, Collectable *, void *, f64, f32, f32), 0x44)(&sp10, this, temp_r5_891, temp_f1_892);
         temp_r5_902 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         temp_f1_905 = M2C_FIELD(temp_r5_902, f64 *, 0x30);
-        arg_sp40 = temp_f1_905;
-        arg_sp48 = M2C_FIELD(temp_r5_902, f64 *, 0x38);
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(f32 *, Collectable *, void *, f64, f32, f32), 0x44)(&arg_sp30, this, temp_r5_902, temp_f1_905, (f32) arg_sp28, arg_sp18);
-        arg_sp60.SetRotationYaw(3.1415927f - (f32) atan2((f32) arg_sp40 - arg_sp30, (f32) arg_sp28 - arg_sp18));
+        sp40 = temp_f1_905;
+        sp48 = M2C_FIELD(temp_r5_902, f64 *, 0x38);
+        M2C_FIELD(this->__vptr, M2C_UNK (**)(f32 *, Collectable *, void *, f64, f32, f32), 0x44)(&sp30, this, temp_r5_902, temp_f1_905, (f32) sp28, sp18);
+        sp60.SetRotationYaw(3.1415927f - (f32) atan2((f32) sp40 - sp30, (f32) sp28 - sp18));
     }
-    arg_spA0.Multiply3x3((Matrix *) &arg_spA0, (Matrix *) &arg_sp60);
-    arg_spA0.Scale3x3((Matrix *) &arg_spA0, this->unkE0);
-    arg_sp50 = this->unk50;
-    arg_sp58 = this->unk58;
-    temp_f3_939 = arg_sp54 + this->unkF4;
-    arg_spD0 = (f32) arg_sp50;
-    arg_spD4 = temp_f3_939;
-    arg_spD8 = (f32) arg_sp58;
-    arg_spDC = 1.0f;
-    arg_sp54 = temp_f3_939;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spA0));
+    spA0.Multiply3x3(&spA0, &sp60);
+    spA0.Scale3x3(&spA0, this->unkE0);
+    sp50 = this->unk50;
+    sp58 = this->unk58;
+    temp_f3_939 = unksp54 + this->unkF4;
+    spA0.unk30 = (f32) sp50;
+    spA0.unk34 = temp_f3_939;
+    spA0.unk38 = (f32) sp58;
+    spA0.unk3C = 1.0f;
+    unksp54 = temp_f3_939;
+    MKModel_SetWorldMatrix(this->unk4, spA0);
 }
 #endif
 
@@ -545,9 +556,12 @@ void Collectable::SetState(CollectableState arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable::CollectedState() {
+    Matrix sp10;
+    M2C_UNK spC;
     f32 var_f0_1114;
+
     if ((M2C_FIELD(&gb, f32 *, 0x30C) > this->unkF8) && ((s32) this->unk124->unk9C & 0x1000)) {
         var_f0_1114 = (4.0f * gUpdateTimeDelta) + this->unkE0;
         if (var_f0_1114 < 1.0f) {
@@ -557,9 +571,9 @@ void Collectable::CollectedState() {
         }
         this->unkE0 = var_f0_1114;
         this->unkE8 = var_f0_1114;
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        Tools_SetMatrixScale((Matrix *) &arg_sp10, this->unkE0);
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+        M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        Tools_SetMatrixScale(&sp10, this->unkE0);
+        MKModel_SetWorldMatrix(this->unk4, sp10);
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (this->unkE0 == 1.0f) {
             this->unkF8 = 0.0f;
@@ -596,7 +610,10 @@ void Collectable::PresentingState() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::CollectingState() {
+    Matrix sp10;
+    M2C_UNK spC;
     f32 temp_f2_1226;
+
     this->unkE8 = -((2.0f * gUpdateTimeDelta) - this->unkE8);
     temp_f2_1226 = this->unkE0;
     if (temp_f2_1226 > 0.0f) {
@@ -608,9 +625,9 @@ void Collectable::CollectingState() {
         this->unkE0 = 0.0f;
         SetState(0xA);
     }
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    Tools_SetMatrixScale((Matrix *) &arg_sp10, this->unkE0);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    Tools_SetMatrixScale(&sp10, this->unkE0);
+    MKModel_SetWorldMatrix(this->unk4, sp10);
 }
 #endif
 
@@ -2072,11 +2089,22 @@ void Collectable::DrawShadow() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp3C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Collectable::Draw() {
+    Matrix sp40;
+    M2C_UNK sp3C;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap *temp_r3_4160;
     MKHeap *temp_r3_4221;
     MKModel *temp_r3_4171;
+
     if (this->unk10 & 0x40000) {
         temp_r3_4160 = this->unk124;
         if ((s32) temp_r3_4160->unk9C & 8) {
@@ -2089,23 +2117,23 @@ void Collectable::Draw() {
         } else if ((s32) temp_r3_4171 & 0x4003) {
             MKModel_SetWorldMatrix(this->unk4, Matrix::identity);
             MKModel_SetRotation(this->unk4, this->unk60);
-            M2C_STRUCT_COPY((s32) &arg_sp3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-            arg_sp40.Scale3x3((Matrix *) &arg_sp40, this->unkE0);
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp40));
-            arg_sp30 = this->unk50;
-            arg_sp38 = this->unk58;
-            arg_sp34 += this->unkF4;
-            MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_sp30));
+            M2C_STRUCT_COPY((s32) &sp3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+            sp40.Scale3x3(&sp40, this->unkE0);
+            MKModel_SetWorldMatrix(this->unk4, sp40);
+            sp30 = this->unk50;
+            sp38 = this->unk58;
+            unksp34 += this->unkF4;
+            MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp30));
         }
         temp_r3_4221 = this->unk124;
         if ((u8) M2C_FIELD(temp_r3_4221, u8 *, 0x66) != 0) {
-            arg_sp10 = temp_r3_4221->unkA8;
-            arg_sp14 = temp_r3_4221->unkAC;
-            arg_sp18 = temp_r3_4221->unkB0;
-            arg_sp1C = this->unk20;
-            arg_sp20 = (f64) arg_sp10;
-            arg_sp28 = (f64) arg_sp18;
-            MKModel_SetColor(this->unk4, *((MKVector4 *) &arg_sp20));
+            sp10 = temp_r3_4221->unkA8;
+            sp14 = temp_r3_4221->unkAC;
+            sp18 = temp_r3_4221->unkB0;
+            sp1C = this->unk20;
+            sp20 = (f64) sp10;
+            sp28 = (f64) sp18;
+            MKModel_SetColor(this->unk4, *((MKVector4 *) &sp20));
         } else {
             MKModel_SetAlpha(this->unk4, this->unk20);
         }

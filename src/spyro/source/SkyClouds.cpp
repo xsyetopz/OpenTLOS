@@ -304,92 +304,157 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spA0'
+#if 0 // DRAFT: undefined identifier 'unksp1CC'
 void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
+    f64 sp2E8;
+    f64 sp2E0;
+    f64 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    f64 sp2B0;
+    Matrix sp270;
+    Matrix sp230;
+    Matrix sp1F0;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    MKVector3 sp198;
+    MKVector3 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    MKVector3 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKVector3 sp128;
+    f64 sp120;
+    f64 sp118;
+    MKVector3 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    MKVector3 spD8;
+    f64 spD0;
+    f64 spC8;
+    MKVector3 spB8;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 var_f4_736;
     f64 temp_f1_739;
     f64 temp_f1_745;
     f64 temp_f1_749;
     s32 temp_r3_768;
     s32 var_r0_778;
-    arg_spA0 = 0.0f;
-    arg_sp98 = 1.0f;
-    arg_sp9C = 0.0f;
-    arg_sp1D0 = (f64) arg_spA0;
-    arg_sp1C8 = (f64) arg_sp98;
-    arg_spB0 = 0.0f;
-    arg_sp50 = -(f32) arg_sp1D0;
-    arg_spA8 = 0.0f;
-    arg_spAC = 1.0f;
-    arg_sp48 = -(f32) arg_sp1C8;
-    arg_sp4C = -arg_sp1CC;
-    arg_sp1D8 = (f64) arg_spA8;
-    arg_sp1E0 = (f64) arg_spB0;
-    arg_sp178 = (f64) arg_sp48;
-    arg_sp180 = (f64) arg_sp50;
-    arg_sp188.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    arg_sp198.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+
+    spA0 = 0.0f;
+    sp98 = 1.0f;
+    sp9C = 0.0f;
+    sp1D0 = (f64) spA0;
+    sp1C8 = (f64) sp98;
+    spB0 = 0.0f;
+    sp50 = -(f32) sp1D0;
+    spA8 = 0.0f;
+    spAC = 1.0f;
+    sp48 = -(f32) sp1C8;
+    sp4C = -unksp1CC;
+    sp1D8 = (f64) spA8;
+    sp1E0 = (f64) spB0;
+    sp178 = (f64) sp48;
+    sp180 = (f64) sp50;
+    sp188.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp198.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2B0 = arg_sp88;
-    arg_sp90 = arg_sp1A0 + arg_sp190;
-    arg_sp1A8 = arg_sp88;
-    arg_sp2B8 = (f64) arg_sp90;
-    arg_sp1B0 = (f64) arg_sp90;
-    arg_sp148.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    arg_sp158.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp2B0 = sp88;
+    sp90 = sp198.unk8 + sp188.unk8;
+    sp1A8 = sp88;
+    sp2B8 = (f64) sp90;
+    sp1B0 = (f64) sp90;
+    sp148.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp158.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp40 = -(f32) arg_sp1D0;
-    arg_sp80 = arg_sp160 + arg_sp150;
-    arg_sp38 = -(f32) arg_sp1C8;
-    arg_sp3C = -arg_sp1CC;
-    arg_sp2C0 = arg_sp78;
-    arg_sp2C8 = (f64) arg_sp80;
-    arg_spF8 = (f64) arg_sp38;
-    arg_sp100 = (f64) arg_sp40;
-    arg_sp168 = arg_sp78;
-    arg_sp170 = (f64) arg_sp80;
-    arg_sp108.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    arg_sp28 = -(f32) arg_sp1D8;
-    arg_sp2C = -arg_sp1DC;
-    arg_sp30 = -(f32) arg_sp1E0;
-    arg_sp118 = (f64) arg_sp28;
-    arg_sp120 = (f64) arg_sp30;
-    arg_sp128.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp40 = -(f32) sp1D0;
+    sp80 = sp158.unk8 + sp148.unk8;
+    sp38 = -(f32) sp1C8;
+    sp3C = -unksp1CC;
+    sp2C0 = sp78;
+    sp2C8 = (f64) sp80;
+    spF8 = (f64) sp38;
+    sp100 = (f64) sp40;
+    sp168 = sp78;
+    sp170 = (f64) sp80;
+    sp108.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp28 = -(f32) sp1D8;
+    sp2C = -unksp1DC;
+    sp30 = -(f32) sp1E0;
+    sp118 = (f64) sp28;
+    sp120 = (f64) sp30;
+    sp128.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp2D0 = arg_sp68;
-    arg_sp70 = arg_sp130 + arg_sp110;
-    arg_sp138 = arg_sp68;
-    arg_sp2D8 = (f64) arg_sp70;
-    arg_sp140 = (f64) arg_sp70;
-    arg_spB8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    arg_sp18 = -(f32) arg_sp1D8;
-    arg_sp1C = -arg_sp1DC;
-    arg_sp20 = -(f32) arg_sp1E0;
-    arg_spC8 = (f64) arg_sp18;
-    arg_spD0 = (f64) arg_sp20;
-    arg_spD8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp2D0 = sp68;
+    sp70 = sp128.unk8 + sp108.unk8;
+    sp138 = sp68;
+    sp2D8 = (f64) sp70;
+    sp140 = (f64) sp70;
+    spB8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
+    sp18 = -(f32) sp1D8;
+    sp1C = -unksp1DC;
+    sp20 = -(f32) sp1E0;
+    spC8 = (f64) sp18;
+    spD0 = (f64) sp20;
+    spD8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spE8 = arg_sp58;
-    arg_sp60 = arg_spE0 + arg_spC0;
-    arg_sp2E0 = arg_sp58;
-    arg_spF0 = (f64) arg_sp60;
-    arg_sp2E8 = (f64) arg_sp60;
-    M2C_STRUCT_COPY((s32) &arg_sp26C + 4, (s32) (arg2 - 4) + 4, 0x40);
-    arg_sp230.SetIdentity();
-    arg_sp230.RotateRoll((Matrix *) &arg_sp230, M2C_FIELD(arg1, f32 *, 0x30));
-    arg_sp270.Multiply3x3((Matrix *) &arg_sp230, (Matrix *) &arg_sp270);
-    arg_sp2A0 = M2C_FIELD(arg1, f32 *, 0);
-    arg_sp2A4 = M2C_FIELD(arg1, f32 *, 4);
-    arg_sp2A8 = M2C_FIELD(arg1, f32 *, 8);
-    arg_sp2AC = 1.0f;
-    MKSetMatrix(*((Matrix *) &arg_sp1F0));
-    MKSetMatrix(*((Matrix *) &arg_sp270));
-    arg_sp1B8 = M2C_FIELD(arg1, f64 *, 0x10);
-    arg_sp1C0 = M2C_FIELD(arg1, f64 *, 0x18);
+    spE8 = sp58;
+    sp60 = spD8.unk8 + spB8.unk8;
+    sp2E0 = sp58;
+    spF0 = (f64) sp60;
+    sp2E8 = (f64) sp60;
+    M2C_STRUCT_COPY((s32) &sp230.unk3C + 4, (s32) (arg2 - 4) + 4, 0x40);
+    sp230.SetIdentity();
+    sp230.RotateRoll(&sp230, M2C_FIELD(arg1, f32 *, 0x30));
+    sp270.Multiply3x3(&sp230, &sp270);
+    sp270.unk30 = M2C_FIELD(arg1, f32 *, 0);
+    sp270.unk34 = M2C_FIELD(arg1, f32 *, 4);
+    sp270.unk38 = M2C_FIELD(arg1, f32 *, 8);
+    sp270.unk3C = 1.0f;
+    MKSetMatrix(sp1F0);
+    MKSetMatrix(sp270);
+    sp1B8 = M2C_FIELD(arg1, f64 *, 0x10);
+    sp1C0 = M2C_FIELD(arg1, f64 *, 0x18);
     var_f4_736 = M2C_FIELD(arg1, f32 *, 0x38);
     if (var_f4_736 > 0.0f) {
         temp_f1_739 = __frsqrte(var_f4_736);
@@ -399,18 +464,18 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     } else if (var_f4_736 < M2C_BITWISE(f32, 0.0)) {
         var_f4_736 = __float_nan;
     } else {
-        arg_sp10 = var_f4_736;
-        temp_r3_768 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+        sp10 = var_f4_736;
+        temp_r3_768 = M2C_BITWISE(s32, sp10) & 0x7F800000;
         switch (temp_r3_768) {                      /* irregular */
         case 0x7F800000:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_778 = 1;
             } else {
                 var_r0_778 = 2;
             }
             break;
         case 0x0:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_778 = 5;
             } else {
                 var_r0_778 = 3;
@@ -434,37 +499,40 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     } else {
         var_f4_736 = 0.0f;
     }
-    arg_sp1C4 *= -((M2C_FIELD(arg1, f32 *, 0x40) * 0.5f) - 1.0f) * (var_f4_736 / 800.0f);
+    unksp1C4 *= -((M2C_FIELD(arg1, f32 *, 0x40) * 0.5f) - 1.0f) * (var_f4_736 / 800.0f);
     MKBegin(4);
-    MKSetColorV(*((MKVector4 *) &arg_sp1B8));
+    MKSetColorV(*((MKVector4 *) &sp1B8));
     MKSetTexCoord1F(0.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp2B0));
-    MKSetColorV(*((MKVector4 *) &arg_sp1B8));
+    MKSetPositionV(*((MKVector3 *) &sp2B0));
+    MKSetColorV(*((MKVector4 *) &sp1B8));
     MKSetTexCoord1F(1.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp2C0));
-    MKSetColorV(*((MKVector4 *) &arg_sp1B8));
+    MKSetPositionV(*((MKVector3 *) &sp2C0));
+    MKSetColorV(*((MKVector4 *) &sp1B8));
     MKSetTexCoord1F(0.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp2D0));
-    MKSetColorV(*((MKVector4 *) &arg_sp1B8));
+    MKSetPositionV(*((MKVector3 *) &sp2D0));
+    MKSetColorV(*((MKVector4 *) &sp1B8));
     MKSetTexCoord1F(1.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp2E0));
+    MKSetPositionV(*((MKVector3 *) &sp2E0));
     MKEnd();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'CloudParticleCompare'
 void SkyClouds::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 var_r30_895;
     s32 var_r31_896;
+
     qsort(this->unk54, this->unk4C, 4, CloudParticleCompare);
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     MKMaterial_SetMaterial(this->unk58);
     MKPrimitive(0xC, 0);
     var_r30_895 = 0;
     var_r31_896 = 0;
 loop_2:
     if (var_r30_895 < (s32) this->unk4C) {
-        DrawCloudlet(*(this->unk54 + var_r31_896), (Matrix *) &arg_sp10);
+        DrawCloudlet(*(this->unk54 + var_r31_896), &sp10);
         var_r30_895 += 1;
         var_r31_896 += 4;
         goto loop_2;

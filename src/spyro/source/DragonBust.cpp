@@ -541,8 +541,20 @@ void DragonBust::ActivatingBEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp40'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DragonBust::ActivatingAUpdate() {
+    Matrix sp50;
+    M2C_UNK sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     ManagedLight *temp_r3_631;
     f32 temp_f1_623;
     f32 temp_f1_627;
@@ -553,6 +565,7 @@ void DragonBust::ActivatingAUpdate() {
     f32 var_f5_600;
     void *temp_r3_635;
     void *temp_r3_674;
+
     var_f5_600 = this->unkE4 * 0.5f;
     if (var_f5_600 < 2.0f) {
 
@@ -567,11 +580,11 @@ void DragonBust::ActivatingAUpdate() {
     temp_f4_615 = this->unk108;
     temp_f7_616 = 1.0f - var_f5_600;
     temp_f6_620 = (temp_f7_616 * 400.0f) + 100.0f;
-    arg_sp40 = (temp_f7_616 * (1.0f - temp_f4_615)) + temp_f4_615;
+    sp40 = (temp_f7_616 * (1.0f - temp_f4_615)) + temp_f4_615;
     temp_f1_623 = this->unk10C;
-    arg_sp48 = (temp_f7_616 * (1.0f - temp_f1_623)) + temp_f1_623;
+    sp48 = (temp_f7_616 * (1.0f - temp_f1_623)) + temp_f1_623;
     temp_f1_627 = this->unk110;
-    arg_sp44 = (temp_f7_616 * (1.0f - temp_f1_627)) + temp_f1_627;
+    sp44 = (temp_f7_616 * (1.0f - temp_f1_627)) + temp_f1_627;
     temp_r3_631 = this->unk118;
     if (temp_r3_631 != NULL) {
         temp_r3_631->unk38 = temp_f6_620;
@@ -583,23 +596,23 @@ void DragonBust::ActivatingAUpdate() {
             M2C_FIELD(temp_r3_635, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_635, f32 *, 0x24));
         }
     }
-    M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f2_663 = 5.0f * var_f5_600;
-    arg_sp18 = temp_f2_663;
-    arg_sp10 = temp_f2_663;
-    arg_sp14 = 10.0f * temp_f7_616;
-    arg_sp38 = (f64) arg_sp18;
-    arg_sp30 = (f64) arg_sp10;
-    arg_sp50.Scale3x3((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp30));
+    sp18 = temp_f2_663;
+    sp10 = temp_f2_663;
+    sp14 = 10.0f * temp_f7_616;
+    sp38 = (f64) sp18;
+    sp30 = (f64) sp10;
+    sp50.Scale3x3(&sp50, *((MKVector3 *) &sp30));
     temp_r3_674 = this->unk8;
-    arg_sp20 = M2C_FIELD(temp_r3_674, f64 *, 0x30);
-    arg_sp28 = M2C_FIELD(temp_r3_674, f64 *, 0x38);
-    arg_sp80 = (f32) arg_sp20;
-    arg_sp84 = arg_sp24;
-    arg_sp88 = (f32) arg_sp28;
-    arg_sp8C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk11C, *((Matrix *) &arg_sp50));
-    MKModel_SetColor(this->unk4, *((MKVector4 *) &arg_sp40));
+    sp20 = M2C_FIELD(temp_r3_674, f64 *, 0x30);
+    sp28 = M2C_FIELD(temp_r3_674, f64 *, 0x38);
+    sp50.unk30 = (f32) sp20;
+    sp50.unk34 = unksp24;
+    sp50.unk38 = (f32) sp28;
+    sp50.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk11C, sp50);
+    MKModel_SetColor(this->unk4, *((MKVector4 *) &sp40));
     this->unkE4 -= gUpdateTimeDelta;
     if (this->unkE4 < 0.0f) {
         SetState((DragonBust::State) 4);
@@ -607,43 +620,53 @@ void DragonBust::ActivatingAUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp5C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void DragonBust::ActivatingAEnter() {
+    Matrix sp60;
+    M2C_UNK sp5C;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    M2C_UNK sp30;
+    MKVector3 sp20;
+    f32 sp18;
     ManagedLight *temp_r3_791;
     ManagedLight *temp_r3_804;
     ManagedLight *temp_r4_766;
     void *temp_r3_743;
     void *temp_r3_797;
     void *temp_r3_807;
-    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk158 = 0;
-    arg_sp60.Scale3x3((Matrix *) &arg_sp60, MKVector3::zero);
+    sp60.Scale3x3(&sp60, MKVector3::zero);
     temp_r3_743 = this->unk8;
-    arg_sp50 = M2C_FIELD(temp_r3_743, f64 *, 0x30);
-    arg_sp58 = M2C_FIELD(temp_r3_743, f64 *, 0x38);
-    arg_sp90 = (f32) arg_sp50;
-    arg_sp94 = arg_sp54;
-    arg_sp98 = (f32) arg_sp58;
-    arg_sp9C = 1.0f;
+    sp50 = M2C_FIELD(temp_r3_743, f64 *, 0x30);
+    sp58 = M2C_FIELD(temp_r3_743, f64 *, 0x38);
+    sp60.unk30 = (f32) sp50;
+    sp60.unk34 = unksp54;
+    sp60.unk38 = (f32) sp58;
+    sp60.unk3C = 1.0f;
     KDSound_Play3d(GS_StatueLightBurst, temp_r3_743 + 0x30, 0U, -1, 0.0f, 0U);
-    MKModel_SetWorldMatrix(this->unk11C, *((Matrix *) &arg_sp60));
+    MKModel_SetWorldMatrix(this->unk11C, sp60);
     temp_r4_766 = this->unk118;
     if (temp_r4_766 != NULL) {
         gb.unk80->EnableLight(temp_r4_766, 1U);
-        arg_sp20.operator*(150.0f);
-        arg_sp30.GetPos();
+        sp20.operator*(150.0f);
+        sp30.GetPos();
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_791 = this->unk118;
-        arg_sp40 = arg_sp10;
-        arg_sp18 = arg_sp38 + arg_sp28;
-        temp_r3_791->unk10 = arg_sp10;
-        temp_r3_791->unk18 = (f64) arg_sp18;
+        sp40 = sp10;
+        sp18 = sp38 + sp20.unk8;
+        temp_r3_791->unk10 = sp10;
+        temp_r3_791->unk18 = (f64) sp18;
         temp_r3_797 = temp_r3_791->unk3C;
-        arg_sp48 = (f64) arg_sp18;
+        sp48 = (f64) sp18;
         if (temp_r3_797 != NULL) {
-            M2C_FIELD(temp_r3_797, f64 *, 0x10) = arg_sp10;
-            M2C_FIELD(temp_r3_797, f64 *, 0x18) = (f64) arg_sp18;
+            M2C_FIELD(temp_r3_797, f64 *, 0x10) = sp10;
+            M2C_FIELD(temp_r3_797, f64 *, 0x18) = (f64) sp18;
         }
         temp_r3_804 = this->unk118;
         temp_r3_804->unk38 = 500.0f;

@@ -316,8 +316,10 @@ void TotemPolePiece::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TotemPolePiece::Update() {
+    Matrix sp10;
+    M2C_UNK spC;
     f32 temp_f2_589;
     f32 temp_f2_593;
     f32 temp_f2_598;
@@ -325,6 +327,7 @@ void TotemPolePiece::Update() {
     f32 var_f1_599;
     f32 var_f3_582;
     void *temp_r3_626;
+
     GameProp::Update();
     var_f3_582 = 0.5f * (1.5f * gUpdateTimeDelta);
     if (var_f3_582 < 1.0f) {
@@ -345,14 +348,14 @@ void TotemPolePiece::Update() {
     if (var_f1_599 == 0.000001f) {
         this->unkDC = temp_f2_598;
     }
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10.RotateYaw((Matrix *) &arg_sp10, this->unkDC);
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10.RotateYaw(&sp10, this->unkDC);
     temp_r3_626 = this->unk8;
-    arg_sp40 = M2C_FIELD(temp_r3_626, f32 *, 0x30);
-    arg_sp44 = M2C_FIELD(temp_r3_626, f32 *, 0x34);
-    arg_sp48 = M2C_FIELD(temp_r3_626, f32 *, 0x38);
-    arg_sp4C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    sp10.unk30 = M2C_FIELD(temp_r3_626, f32 *, 0x30);
+    sp10.unk34 = M2C_FIELD(temp_r3_626, f32 *, 0x34);
+    sp10.unk38 = M2C_FIELD(temp_r3_626, f32 *, 0x38);
+    sp10.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, sp10);
 }
 #endif
 

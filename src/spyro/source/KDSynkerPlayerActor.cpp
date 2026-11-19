@@ -235,73 +235,171 @@ void KDSP_Actor::UpdateLookat() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp120'
+#if 0 // DRAFT: undefined identifier 'unksp94'
 void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
+    f32 sp13C;
+    f32 sp138;
+    f32 sp134;
+    f32 sp130;
+    f32 sp12C;
+    f32 sp128;
+    f32 sp124;
+    f32 sp120;
+    f32 sp11C;
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp10C;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    Matrix spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    MKVector3 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f7_368;
+    f32 temp_f7_397;
     f32 temp_f8_365;
     f32 temp_f9_360;
+
     if (arg2 != -1) {
         temp_f9_360 = arg1.unk0;
-        arg_sp120 = temp_f9_360;
-        arg_sp38 = 0.0f;
+        sp120 = temp_f9_360;
+        sp38 = 0.0f;
         temp_f8_365 = arg1.unk4;
-        arg_sp124 = temp_f8_365;
+        sp124 = temp_f8_365;
         temp_f7_368 = arg1.unk8;
-        arg_sp98 = (f64) arg_sp38;
-        arg_sp30 = 0.0f;
-        arg_sp34 = 1.0f;
-        arg_sp128 = temp_f7_368;
-        arg_sp90 = (f64) arg_sp30;
-        arg_sp12C = 0.0f;
-        arg_sp110 = (f32) arg_sp90;
-        arg_sp114 = arg_sp94;
-        arg_sp28 = ((f32) arg_sp90 * temp_f8_365) - (arg_sp94 * temp_f9_360);
-        arg_sp20 = (arg_sp94 * temp_f7_368) - ((f32) arg_sp98 * temp_f8_365);
-        arg_sp24 = ((f32) arg_sp98 * temp_f9_360) - ((f32) arg_sp90 * temp_f7_368);
-        arg_sp118 = (f32) arg_sp98;
-        arg_sp11C = 0.0f;
-        arg_sp70 = (f64) arg_sp20;
-        arg_sp78 = (f64) arg_sp28;
-        Normalise(*((MKVector3 *) &arg_sp80));
-        arg_sp100 = arg_sp80;
-        arg_sp18 = (arg_sp120 * arg_sp84) - (arg_sp124 * arg_sp80);
-        arg_sp10 = (arg_sp124 * arg_sp88) - (arg_sp128 * arg_sp84);
-        arg_sp14 = (arg_sp128 * arg_sp80) - (arg_sp120 * arg_sp88);
-        arg_sp68 = (f64) arg_sp18;
-        arg_sp60 = (f64) arg_sp10;
-        arg_sp104 = arg_sp84;
-        arg_sp108 = arg_sp88;
-        arg_sp10C = 0.0f;
-        arg_sp110 = (f32) arg_sp60;
-        arg_sp114 = arg_sp64;
-        arg_sp118 = (f32) arg_sp68;
-        arg_sp11C = 0.0f;
-        arg_sp130 = 0.0f;
-        arg_sp134 = 0.0f;
-        arg_sp138 = 0.0f;
-        arg_sp13C = 1.0f;
-        arg_sp50.GetNodeOrigin(MKModel_GetAnimation(arg0->unk8));
-        arg_spB0 = arg_sp50;
-        arg_spB8 = arg_sp58;
-        arg_sp40 = -(f32) arg_spB0;
-        arg_sp44 = -arg_spB4;
-        arg_sp48 = -(f32) arg_spB8;
-        arg_spA0 = (f64) arg_sp40;
-        arg_spA8 = (f64) arg_sp48;
-        arg_spC0.SetIdentity();
-        arg_spF0 = (f32) arg_spA0;
-        arg_spF4 = arg_spA4;
-        arg_spF8 = (f32) arg_spA8;
-        arg_spFC = 1.0f;
-        arg_spC0.Multiply((Matrix *) &arg_spC0, (Matrix *) &arg_sp100);
-        arg_spC0.Translate((Matrix *) &arg_spC0, *((MKVector3 *) &arg_spB0));
-        ((Animation *) (MKModel_GetAnimation(arg0->unk8)))->SetCustomMatrix(arg2, (Matrix *) &arg_spC0, (AnimationMatrixPosition) 2, 0U);
+        sp98 = (f64) sp38;
+        sp30 = 0.0f;
+        sp34 = 1.0f;
+        sp128 = temp_f7_368;
+        sp90 = (f64) sp30;
+        sp12C = 0.0f;
+        sp110 = (f32) sp90;
+        sp114 = unksp94;
+        sp28 = ((f32) sp90 * temp_f8_365) - (unksp94 * temp_f9_360);
+        sp20 = (unksp94 * temp_f7_368) - ((f32) sp98 * temp_f8_365);
+        sp24 = ((f32) sp98 * temp_f9_360) - ((f32) sp90 * temp_f7_368);
+        sp118 = (f32) sp98;
+        sp11C = 0.0f;
+        sp70 = (f64) sp20;
+        sp78 = (f64) sp28;
+        Normalise(sp80);
+        temp_f7_397 = M2C_BITWISE(f32, sp80);
+        sp100 = temp_f7_397;
+        sp18 = (sp120 * sp80.unk4) - (sp124 * temp_f7_397);
+        sp10 = (sp124 * sp80.unk8) - (sp128 * sp80.unk4);
+        sp14 = (sp128 * temp_f7_397) - (sp120 * sp80.unk8);
+        sp68 = (f64) sp18;
+        sp60 = (f64) sp10;
+        sp104 = sp80.unk4;
+        sp108 = sp80.unk8;
+        sp10C = 0.0f;
+        sp110 = (f32) sp60;
+        sp114 = unksp64;
+        sp118 = (f32) sp68;
+        sp11C = 0.0f;
+        sp130 = 0.0f;
+        sp134 = 0.0f;
+        sp138 = 0.0f;
+        sp13C = 1.0f;
+        sp50.GetNodeOrigin(MKModel_GetAnimation(arg0->unk8));
+        spB0 = sp50;
+        spB8 = sp58;
+        sp40 = -(f32) spB0;
+        sp44 = -unkspB4;
+        sp48 = -(f32) spB8;
+        spA0 = (f64) sp40;
+        spA8 = (f64) sp48;
+        spC0.SetIdentity();
+        spC0.unk30 = (f32) spA0;
+        spC0.unk34 = unkspA4;
+        spC0.unk38 = (f32) spA8;
+        spC0.unk3C = 1.0f;
+        spC0.Multiply(&spC0, (Matrix *) &sp100);
+        spC0.Translate(&spC0, *((MKVector3 *) &spB0));
+        ((Animation *) (MKModel_GetAnimation(arg0->unk8)))->SetCustomMatrix(arg2, &spC0, (AnimationMatrixPosition) 2, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1CC'
+#if 0 // DRAFT: undefined identifier 'unk4'
 void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int arg3, KDSP_LookBar &arg4, MKProp *arg5, MKVector3 &arg6, MKVector3 &arg7, float arg8, float arg9, bool *arg10, float arg11, bool *arg12, bool arg13, float arg14) {
+    Matrix sp260;
+    Matrix sp220;
+    Matrix sp1E0;
+    M2C_UNK sp1DC;
+    KDS_Message_PropLookUpdate sp1C8;
+    MKVector3 sp1B8;
+    f64 sp1B0;                                      /* compiler-managed */
+    f64 sp1A8;                                      /* compiler-managed */
+    f64 sp1A0;
+    f64 sp198;
+    f32 sp190;
+    f32 sp18C;
+    f32 sp188;
+    f64 sp180;
+    f64 sp178;
+    MKVector3 sp168;
+    f64 sp160;
+    f64 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    MKVector3 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f32 spC0;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp20;
+    f32 sp10;
     KDSP_Actor *temp_r24_513;
     MKModel *temp_r3_538;
     Matrix *temp_r3_559;
@@ -322,14 +420,17 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
     u8 temp_r31_525;
     u8 var_r0_967;
     void *temp_r28_520;
+    void *temp_r3_509;
     void *temp_r3_549;
+
+    temp_r3_509 = M2C_ERROR(/* Read from unset register $r12 */);
     temp_r24_513 = arg4.unkC;
-    arg_sp1CC = 0;
-    temp_r28_520 = M2C_FIELD(sp, void **, 8);
-    temp_r29_522 = M2C_FIELD(sp, s8 **, 0xC);
-    temp_r30_523 = M2C_FIELD(sp, u8 **, 0x10);
-    temp_r31_525 = M2C_FIELD(sp, u8 *, 0x17);
-    arg_sp1C8.Init(NULL, NULL);
+    sp1C8.unk4 = 0;
+    temp_r28_520 = M2C_FIELD(temp_r3_509, void **, 8);
+    temp_r29_522 = M2C_FIELD(temp_r3_509, s8 **, 0xC);
+    temp_r30_523 = M2C_FIELD(temp_r3_509, u8 **, 0x10);
+    temp_r31_525 = M2C_FIELD(temp_r3_509, u8 *, 0x17);
+    sp1C8.Init(NULL, NULL);
     if ((arg3 != -1) && (temp_r24_513 != NULL)) {
         temp_r3_538 = temp_r24_513->GetModel();
         if (temp_r3_538 != NULL) {
@@ -347,48 +448,48 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             M2C_FIELD(&arg6, f64 *, 8) = (f64) M2C_FIELD(temp_r3_559, f64 *, 0x38);
         }
         if (temp_r31_525 != 0) {
-            arg_sp1C8.Init(&arg6, (MKProp *) temp_r24_513->unk30);
+            sp1C8.Init(&arg6, (MKProp *) temp_r24_513->unk30);
             if (arg5 != NULL) {
-                arg5->Message(&arg_sp1C8);
+                arg5->Message(&sp1C8);
             }
         }
-        if (((temp_r31_525 == 0) || (arg_sp1D8 == 0)) && (arg2 != -1)) {
-            MKModel_CalculateNodeWorldPosition(arg0->unk8, arg2, (MKVector3 *) &arg_sp1B8);
+        if (((temp_r31_525 == 0) || ((u8) sp1C8.unk10 == 0)) && (arg2 != -1)) {
+            MKModel_CalculateNodeWorldPosition(arg0->unk8, arg2, &sp1B8);
             if (arg1 >= 0) {
-                MKModel_CalculateNodeWorldMatrix(arg0->unk8, arg1, (Matrix *) &arg_sp220);
-                arg_sp260.InverseSimple((Matrix *) &arg_sp220);
+                MKModel_CalculateNodeWorldMatrix(arg0->unk8, arg1, &sp220);
+                sp260.InverseSimple(&sp220);
             } else {
-                arg_sp260.InverseSimple(MKModel_GetWorldMatrix(arg0->unk8));
+                sp260.InverseSimple(MKModel_GetWorldMatrix(arg0->unk8));
             }
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp178 = arg_spB8;
-            arg_spC0 = arg_sp1C0 - arg6.unk8;
-            arg_sp180 = (f64) arg_spC0;
-            arg_spA8 = ((f32) arg_sp180 * arg_sp280) + (((f32) arg_sp178 * arg_sp260) + (arg_sp17C * arg_sp270));
-            arg_spAC = ((f32) arg_sp180 * arg_sp284) + (((f32) arg_sp178 * arg_sp264) + (arg_sp17C * arg_sp274));
-            arg_spB0 = ((f32) arg_sp180 * arg_sp288) + (((f32) arg_sp178 * arg_sp268) + (arg_sp17C * arg_sp278));
-            arg_sp1A8 = (f64) arg_spA8;
-            arg_spA0 = 1.0f;
-            arg_sp1B0 = (f64) arg_spB0;
-            arg_sp98 = 0.0f;
-            arg_sp9C = 0.0f;
-            var_f3_664 = ((f32) arg_sp1B0 * (f32) arg_sp1B0) + (((f32) arg_sp1A8 * (f32) arg_sp1A8) + (arg_sp1AC * arg_sp1AC));
-            arg_sp1A0 = (f64) arg_spA0;
-            arg_sp198 = (f64) arg_sp98;
+            sp178 = spB8;
+            spC0 = sp1B8.unk8 - arg6.unk8;
+            sp180 = (f64) spC0;
+            spA8 = ((f32) sp180 * sp260.unk20) + (((f32) sp178 * M2C_BITWISE(f32, sp260)) + (unksp17C * sp260.unk10));
+            spAC = ((f32) sp180 * sp260.unk24) + (((f32) sp178 * sp260.unk4) + (unksp17C * sp260.unk14));
+            spB0 = ((f32) sp180 * sp260.unk28) + (((f32) sp178 * sp260.unk8) + (unksp17C * sp260.unk18));
+            sp1A8 = (f64) spA8;
+            spA0 = 1.0f;
+            sp1B0 = (f64) spB0;
+            sp98 = 0.0f;
+            sp9C = 0.0f;
+            var_f3_664 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC));
+            sp1A0 = (f64) spA0;
+            sp198 = (f64) sp98;
             if (var_f3_664 > 0.000001f) {
-                Normalise(*((MKVector3 *) &arg_sp168));
-                arg_sp1A8 = arg_sp168;
-                arg_sp1B0 = arg_sp170;
-                var_f3_664 = ((f32) arg_sp1B0 * (f32) arg_sp1A0) + (((f32) arg_sp1A8 * (f32) arg_sp198) + (arg_sp1AC * arg_sp19C));
+                Normalise(sp168);
+                sp1A8 = M2C_BITWISE(f64, sp168);
+                sp1B0 = (f64) sp168.unk8;
+                var_f3_664 = ((f32) sp1B0 * (f32) sp1A0) + (((f32) sp1A8 * (f32) sp198) + (unksp1AC * unksp19C));
             }
             if ((var_f3_664 < arg8) && (var_f3_664 > arg9)) {
-                temp_f5_698 = (arg_sp19C * (f32) arg_sp1B0) - ((f32) arg_sp1A0 * arg_sp1AC);
-                temp_f3_701 = ((f32) arg_sp1A0 * (f32) arg_sp1A8) - ((f32) arg_sp198 * (f32) arg_sp1B0);
-                arg_sp188 = temp_f5_698;
-                temp_f4_704 = ((f32) arg_sp198 * arg_sp1AC) - (arg_sp19C * (f32) arg_sp1A8);
-                arg_sp18C = temp_f3_701;
-                arg_sp190 = temp_f4_704;
+                temp_f5_698 = (unksp19C * (f32) sp1B0) - ((f32) sp1A0 * unksp1AC);
+                temp_f3_701 = ((f32) sp1A0 * (f32) sp1A8) - ((f32) sp198 * (f32) sp1B0);
+                sp188 = temp_f5_698;
+                temp_f4_704 = ((f32) sp198 * unksp1AC) - (unksp19C * (f32) sp1A8);
+                sp18C = temp_f3_701;
+                sp190 = temp_f4_704;
                 var_f4_710 = (temp_f4_704 * temp_f4_704) + ((temp_f5_698 * temp_f5_698) + (temp_f3_701 * temp_f3_701));
                 if (var_f4_710 > 0.000001f) {
                     if (var_f4_710 > 0.0f) {
@@ -399,18 +500,18 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
                     } else if (var_f4_710 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_710 = __float_nan;
                     } else {
-                        arg_sp10 = var_f4_710;
-                        temp_r3_745 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                        sp10 = var_f4_710;
+                        temp_r3_745 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                         switch (temp_r3_745) {      /* irregular */
                         case 0x7F800000:
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_755 = 1;
                             } else {
                                 var_r0_755 = 2;
                             }
                             break;
                         case 0x0:
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_755 = 5;
                             } else {
                                 var_r0_755 = 3;
@@ -428,74 +529,74 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
                 } else {
                     var_f3_777 = 0.0f;
                 }
-                arg_sp188 *= var_f3_777;
-                arg_sp18C *= var_f3_777;
-                arg_sp190 *= var_f3_777;
-                M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                arg_sp1E0.SetRotateAroundAxis(*((MKVector3 *) &arg_sp188), arg11);
-                arg_sp88 = ((f32) arg_sp1A0 * arg_sp200) + (((f32) arg_sp198 * arg_sp1E0) + (arg_sp19C * arg_sp1F0));
-                arg_sp8C = ((f32) arg_sp1A0 * arg_sp204) + (((f32) arg_sp198 * arg_sp1E4) + (arg_sp19C * arg_sp1F4));
-                arg_sp90 = ((f32) arg_sp1A0 * arg_sp208) + (((f32) arg_sp198 * arg_sp1E8) + (arg_sp19C * arg_sp1F8));
-                arg_sp1A8 = (f64) arg_sp88;
-                arg_sp1B0 = (f64) arg_sp90;
-                arg_sp158 = (f64) arg_sp88;
-                arg_sp160 = (f64) arg_sp90;
+                sp188 *= var_f3_777;
+                sp18C *= var_f3_777;
+                sp190 *= var_f3_777;
+                M2C_STRUCT_COPY((s32) &sp1DC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                sp1E0.SetRotateAroundAxis(*((MKVector3 *) &sp188), arg11);
+                sp88 = ((f32) sp1A0 * sp1E0.unk20) + (((f32) sp198 * M2C_BITWISE(f32, sp1E0)) + (unksp19C * sp1E0.unk10));
+                sp8C = ((f32) sp1A0 * sp1E0.unk24) + (((f32) sp198 * sp1E0.unk4) + (unksp19C * sp1E0.unk14));
+                sp90 = ((f32) sp1A0 * sp1E0.unk28) + (((f32) sp198 * sp1E0.unk8) + (unksp19C * sp1E0.unk18));
+                sp1A8 = (f64) sp88;
+                sp1B0 = (f64) sp90;
+                sp158 = (f64) sp88;
+                sp160 = (f64) sp90;
                 *temp_r29_522 = 1;
             } else if (var_f3_664 < arg9) {
-                arg_sp1A8 = 0.0f;
-                arg_sp1AC = 0.0f;
-                arg_sp1B0 = 1.0f;
+                sp1A8 = 0.0f;
+                unksp1AC = 0.0f;
+                sp1B0 = 1.0f;
                 *temp_r29_522 = 0;
             } else {
                 *temp_r29_522 = 1;
             }
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            arg_sp118 = arg_sp68;
-            arg_sp70 = (f32) arg_sp1B0 * arg14;
-            arg_sp120 = (f64) arg_sp70;
+            sp118 = sp68;
+            sp70 = sp1B0 * arg14;
+            sp120 = (f64) sp70;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp128 = arg_sp78;
-            arg_sp80 = M2C_FIELD(temp_r28_520, f32 *, 8) * (1.0f - arg14);
-            arg_sp130 = (f64) arg_sp80;
+            sp128 = sp78;
+            sp80 = M2C_FIELD(temp_r28_520, f32 *, 8) * (1.0f - arg14);
+            sp130 = (f64) sp80;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp138 = arg_sp58;
-            arg_sp60 = (f32) arg_sp130 + (f32) arg_sp120;
-            arg_sp140 = (f64) arg_sp60;
-            Normalise(*((MKVector3 *) &arg_sp148));
-            M2C_FIELD(temp_r28_520, f64 *, 0) = arg_sp148;
-            M2C_FIELD(temp_r28_520, f32 *, 8) = arg_sp150;
+            sp138 = sp58;
+            sp60 = (f32) sp130 + (f32) sp120;
+            sp140 = (f64) sp60;
+            Normalise(sp148);
+            M2C_FIELD(temp_r28_520, f64 *, 0) = M2C_BITWISE(f64, sp148);
+            M2C_FIELD(temp_r28_520, f32 *, 8) = (f64) sp148.unk8;
         }
     } else {
         if ((arg5 != NULL) && (temp_r31_525 == 0)) {
-            arg5->Message(&arg_sp1C8);
+            arg5->Message(&sp1C8);
         }
-        if ((temp_r31_525 == 0) || (arg_sp1D8 == 0)) {
-            arg_sp38 = 0.0f;
-            arg_sp3C = 0.0f;
-            arg_sp40 = 1.0f;
-            arg_spC8 = (f64) arg_sp38;
-            arg_spD0 = (f64) arg_sp40;
+        if ((temp_r31_525 == 0) || ((u8) sp1C8.unk10 == 0)) {
+            sp38 = 0.0f;
+            sp3C = 0.0f;
+            sp40 = 1.0f;
+            spC8 = (f64) sp38;
+            spD0 = (f64) sp40;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            arg_spD8 = arg_sp28;
-            arg_sp30 = (f32) arg_spD0 * arg14;
-            arg_spE0 = (f64) arg_sp30;
+            spD8 = sp28;
+            sp30 = (f32) spD0 * arg14;
+            spE0 = (f64) sp30;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_spE8 = arg_sp48;
-            arg_sp50 = M2C_FIELD(temp_r28_520, f32 *, 8) * (1.0f - arg14);
-            arg_spF0 = (f64) arg_sp50;
+            spE8 = sp48;
+            sp50 = M2C_FIELD(temp_r28_520, f32 *, 8) * (1.0f - arg14);
+            spF0 = (f64) sp50;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_spF8 = arg_sp18;
-            arg_sp20 = (f32) arg_spF0 + (f32) arg_spE0;
-            arg_sp100 = (f64) arg_sp20;
-            Normalise(*((MKVector3 *) &arg_sp108));
-            M2C_FIELD(temp_r28_520, f64 *, 0) = arg_sp108;
-            M2C_FIELD(temp_r28_520, f32 *, 8) = arg_sp110;
+            spF8 = sp18;
+            sp20 = (f32) spF0 + (f32) spE0;
+            sp100 = (f64) sp20;
+            Normalise(sp108);
+            M2C_FIELD(temp_r28_520, f64 *, 0) = M2C_BITWISE(f64, sp108);
+            M2C_FIELD(temp_r28_520, f32 *, 8) = (f64) sp108.unk8;
         }
     }
     if (temp_r31_525 != 0) {
-        var_r0_967 = arg_sp1D8;
+        var_r0_967 = (u8) sp1C8.unk10;
     } else {
         var_r0_967 = temp_r31_525;
     }
@@ -825,6 +926,59 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
 
 #if 0 // DRAFT: illegal type
 void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
+    s8 sp280;
+    s32 sp27C;
+    s32 sp278;
+    s32 sp274;
+    f32 sp270;
+    s32 sp26C;
+    s8 sp26B;
+    s8 sp26A;
+    s16 sp268;
+    f32 sp264;
+    f32 sp260;
+    f32 sp25C;
+    f32 sp258;
+    f32 sp254;
+    f32 sp250;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f32 sp238;
+    f32 sp234;
+    f32 sp230;
+    Matrix sp1F0;
+    Matrix sp1B0;
+    M2C_UNK sp1AC;
+    KDS_Message_PropSetPosRot sp180;
+    Matrix sp140;
+    Matrix sp100;
+    f64 spF8;
+    f64 spF0;
+    f32 spEC;
+    f32 spE8;                                       /* compiler-managed */
+    f32 spE4;
+    f32 spE0;                                       /* compiler-managed */
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    KDUniformSpline sp80;
+    f64 sp70;
+    f64 sp68;                                       /* compiler-managed */
+    f64 sp60;                                       /* compiler-managed */
+    Matrix sp50;
+    Matrix sp40;
+    M2C_UNK sp30;
+    f32 sp28;
+    s32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     KDBasicEnvelope *temp_r26_1765;
     KDSP_Bar *temp_r27_1758;
     MKModel *temp_r3_1916;
@@ -844,6 +998,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     void *temp_r3_1905;
     void *temp_r4_1854;
     void *temp_r5_1851;
+
     *arg2 = 0;
     *arg1 = 0;
     temp_r0_1753 = this->unkCC;
@@ -873,19 +1028,19 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         if (var_f1_1794 > var_f31_1802) {
             var_f31_1802 = var_f1_1794;
         }
-        arg_sp14 = 0.0f;
-        arg_sp80.GetMeasure(var_f31_1802, temp_r31_1759 + 8, KDSpline_PositionMixer);
-        arg_spF0 = arg_sp80;
-        arg_spF8 = arg_sp88;
+        sp14 = 0.0f;
+        sp80.GetMeasure(var_f31_1802, temp_r31_1759 + 8, KDSpline_PositionMixer);
+        spF0 = M2C_BITWISE(f64, sp80);
+        spF8 = (f64) sp80.unk8;
         *arg1 = M2C_FIELD(temp_r31_1759, u8 *, 5);
-        arg_sp1C = 0;
-        arg_sp18 = 0.0f;
-        if (KDSP_ToolsGetSplinePercent(temp_r27_1758, temp_r31_1759 + 8, temp_r26_1765, arg0, arg_sp1C, arg_sp18) != 0) {
+        sp1C = 0;
+        sp18 = 0.0f;
+        if (KDSP_ToolsGetSplinePercent(temp_r27_1758, temp_r31_1759 + 8, temp_r26_1765, arg0, sp1C, sp18) != 0) {
             var_f0_1834 = 0.0f;
-            if (var_f0_1834 > arg_sp18) {
+            if (var_f0_1834 > sp18) {
 
             } else {
-                var_f0_1834 = arg_sp18;
+                var_f0_1834 = sp18;
             }
             var_f3_1842 = 1.0f;
             if (var_f3_1842 < var_f0_1834) {
@@ -893,33 +1048,33 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             } else {
                 var_f3_1842 = var_f0_1834;
             }
-            arg_sp18 = var_f3_1842;
+            sp18 = var_f3_1842;
             temp_r5_1851 = M2C_FIELD(temp_r31_1759, void **, 0x28);
-            temp_r4_1854 = temp_r5_1851 + (arg_sp1C << 5);
-            temp_r3_1858 = temp_r5_1851 + ((arg_sp1C + 1) << 5);
+            temp_r4_1854 = temp_r5_1851 + (sp1C << 5);
+            temp_r3_1858 = temp_r5_1851 + ((sp1C + 1) << 5);
             temp_f7_1863 = 1.0f - var_f3_1842;
-            arg_spD0 = M2C_FIELD(temp_r4_1854, f64 *, 0);
-            arg_spD8 = M2C_FIELD(temp_r4_1854, f64 *, 8);
-            arg_spC0 = M2C_FIELD(temp_r3_1858, f64 *, 0);
-            arg_spC8 = M2C_FIELD(temp_r3_1858, f64 *, 8);
+            spD0 = M2C_FIELD(temp_r4_1854, f64 *, 0);
+            spD8 = M2C_FIELD(temp_r4_1854, f64 *, 8);
+            spC0 = M2C_FIELD(temp_r3_1858, f64 *, 0);
+            spC8 = M2C_FIELD(temp_r3_1858, f64 *, 8);
             if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
-                arg_spE0 = ((f32) arg_spD0 * temp_f7_1863) + ((f32) arg_spC0 * var_f3_1842);
-                arg_spE4 = (arg_spD4 * temp_f7_1863) + (arg_spC4 * var_f3_1842);
-                arg_spE8 = ((f32) arg_spD8 * temp_f7_1863) + ((f32) arg_spC8 * var_f3_1842);
+                spE0 = ((f32) spD0 * temp_f7_1863) + ((f32) spC0 * var_f3_1842);
+                spE4 = (unkspD4 * temp_f7_1863) + (unkspC4 * var_f3_1842);
+                spE8 = ((f32) spD8 * temp_f7_1863) + ((f32) spC8 * var_f3_1842);
             } else {
-                KDMath_SmoothToAngle((f32) arg_spD8, (f32) arg_spC8, var_f3_1842);
-                KDMath_SmoothToAngle(arg_spD4, arg_spC4, arg_sp18);
-                KDMath_SmoothToAngle((f32) arg_spD0, (f32) arg_spC0, arg_sp18);
-                arg_spE0 = M2C_ERROR(/* Read from unset register $f1 */);
-                arg_spE4 = M2C_ERROR(/* Read from unset register $f1 */);
-                arg_spE8 = M2C_ERROR(/* Read from unset register $f1 */);
+                KDMath_SmoothToAngle((f32) spD8, (f32) spC8, var_f3_1842);
+                KDMath_SmoothToAngle(unkspD4, unkspC4, sp18);
+                KDMath_SmoothToAngle((f32) spD0, (f32) spC0, sp18);
+                spE0 = M2C_ERROR(/* Read from unset register $f1 */);
+                spE4 = M2C_ERROR(/* Read from unset register $f1 */);
+                spE8 = M2C_ERROR(/* Read from unset register $f1 */);
             }
         } else {
             temp_r3_1905 = M2C_FIELD(temp_r31_1759, void **, 0x28);
-            arg_spE0 = M2C_FIELD(temp_r3_1905, f32 *, 0);
-            arg_spE4 = M2C_FIELD(temp_r3_1905, f32 *, 4);
-            arg_spE8 = M2C_FIELD(temp_r3_1905, f32 *, 8);
-            arg_spEC = 1.0f;
+            spE0 = M2C_FIELD(temp_r3_1905, f32 *, 0);
+            spE4 = M2C_FIELD(temp_r3_1905, f32 *, 4);
+            spE8 = M2C_FIELD(temp_r3_1905, f32 *, 8);
+            spEC = 1.0f;
         }
         temp_r3_1916 = GetModel();
         if (this->unk40 & 4) {
@@ -934,96 +1089,96 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             } else {
                 var_f1_1932 = 1.0f;
             }
-            arg_sp10 = 0.0f;
-            arg_sp70.GetMeasure(var_f1_1932, temp_r31_1759 + 8, KDSpline_PositionMixer);
-            arg_spB0 = arg_sp70;
-            arg_spB8 = arg_sp78;
+            sp10 = 0.0f;
+            sp70.GetMeasure(var_f1_1932, temp_r31_1759 + 8, KDSpline_PositionMixer);
+            spB0 = sp70;
+            spB8 = sp78;
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp60 = arg_sp20;
-            arg_sp28 = (f32) arg_spB8 - (f32) arg_spF8;
-            arg_spA0 = arg_sp20;
-            arg_sp68 = (f64) arg_sp28;
-            arg_spA8 = (f64) arg_sp28;
+            sp60 = sp20;
+            sp28 = (f32) spB8 - (f32) spF8;
+            spA0 = sp20;
+            sp68 = (f64) sp28;
+            spA8 = (f64) sp28;
         }
         if ((this->unk40 & 4) || ((u32) this->unk30 != 0)) {
             if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
-                if ((((f32) arg_spA8 * (f32) arg_spA8) + (((f32) arg_spA0 * (f32) arg_spA0) + (arg_spA4 * arg_spA4))) > 0.000001f) {
-                    M2C_STRUCT_COPY((s32) &arg_sp1EC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                    arg_sp1F0.SetRotationPYR(*((MKVector3 *) &arg_spE0));
-                    M2C_STRUCT_COPY((s32) &arg_sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                    arg_sp1B0.SetLookAt(*((MKVector3 *) &arg_spB0), *((MKVector3 *) &arg_spF0));
-                    arg_sp1F0.Multiply3x3((Matrix *) &arg_sp1F0, (Matrix *) &arg_sp1B0);
-                    arg_sp50.GetRotationPYR();
-                    arg_spE0 = arg_sp50;
-                    arg_spE8 = arg_sp58;
+                if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) > 0.000001f) {
+                    M2C_STRUCT_COPY((s32) &sp1B0.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                    sp1F0.SetRotationPYR(*((MKVector3 *) &spE0));
+                    M2C_STRUCT_COPY((s32) &sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                    sp1B0.SetLookAt(*((MKVector3 *) &spB0), *((MKVector3 *) &spF0));
+                    sp1F0.Multiply3x3(&sp1F0, &sp1B0);
+                    sp50.GetRotationPYR();
+                    spE0 = M2C_BITWISE(f64, sp50);
+                    spE8 = (f64) sp50.unk8;
                 } else {
-                    arg_sp40.GetRotationPYR();
-                    arg_spE0 = arg_sp40;
-                    arg_spE4 = arg_sp44;
-                    arg_spE8 = arg_sp48;
-                    arg_spEC = 1.0f;
+                    sp40.GetRotationPYR();
+                    spE0 = M2C_BITWISE(f32, sp40);
+                    spE4 = sp40.unk4;
+                    spE8 = sp40.unk8;
+                    spEC = 1.0f;
                 }
             }
             if (this->unk40 & 4) {
-                this->unk34->SetRotationPYR(*((MKVector3 *) &arg_spE0));
+                this->unk34->SetRotationPYR(*((MKVector3 *) &spE0));
                 temp_r3_2047 = this->unk34;
-                temp_r3_2047->unk30 = (f32) arg_spF0;
-                temp_r3_2047->unk34 = arg_spF4;
-                temp_r3_2047->unk38 = (f32) arg_spF8;
+                temp_r3_2047->unk30 = (f32) spF0;
+                temp_r3_2047->unk34 = unkspF4;
+                temp_r3_2047->unk38 = (f32) spF8;
                 temp_r3_2047->unk3C = 1.0f;
                 return;
             }
-            arg_sp184 = 0;
-            arg_sp180.Init(*((MKVector3 *) &arg_spF0), *((MKVector3 *) &arg_spE0));
+            sp180.unk4 = 0;
+            sp180.Init(*((MKVector3 *) &spF0), *((MKVector3 *) &spE0));
             temp_r3_2064 = this->unk30;
-            M2C_FIELD(M2C_FIELD(temp_r3_2064, void **, 0x44), M2C_UNK (**)(u32, M2C_UNK *), 0x2C)(temp_r3_2064, &arg_sp180);
+            M2C_FIELD(M2C_FIELD(temp_r3_2064, void **, 0x44), M2C_UNK (**)(u32, KDS_Message_PropSetPosRot *), 0x2C)(temp_r3_2064, &sp180);
             return;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp13C + 4, (s32) (var_r3_1921 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp100.unk3C + 4, (s32) (var_r3_1921 - 4) + 4, 0x40);
         if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
-            if ((((f32) arg_spA8 * (f32) arg_spA8) + (((f32) arg_spA0 * (f32) arg_spA0) + (arg_spA4 * arg_spA4))) > 0.000001f) {
-                arg_sp140.SetRotationPYR(*((MKVector3 *) &arg_spE0));
-                M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                arg_sp100.SetLookAt(*((MKVector3 *) &arg_spB0), *((MKVector3 *) &arg_spF0));
-                arg_sp140.Multiply3x3((Matrix *) &arg_sp140, (Matrix *) &arg_sp100);
+            if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) > 0.000001f) {
+                sp140.SetRotationPYR(*((MKVector3 *) &spE0));
+                M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                sp100.SetLookAt(*((MKVector3 *) &spB0), *((MKVector3 *) &spF0));
+                sp140.Multiply3x3(&sp140, &sp100);
             }
         } else {
-            arg_sp140.SetRotationPYR(*((MKVector3 *) &arg_spE0));
+            sp140.SetRotationPYR(*((MKVector3 *) &spE0));
         }
-        arg_sp170 = (f32) arg_spF0;
-        arg_sp174 = arg_spF4;
-        arg_sp178 = (f32) arg_spF8;
-        arg_sp17C = 1.0f;
-        MKModel_SetWorldMatrix(temp_r3_1916, *((Matrix *) &arg_sp140));
+        sp140.unk30 = (f32) spF0;
+        sp140.unk34 = unkspF4;
+        sp140.unk38 = (f32) spF8;
+        sp140.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(temp_r3_1916, sp140);
         if (this->unk40 & 1) {
-            arg_sp230 = 0.0f;
-            arg_sp234 = 0.0f;
-            arg_sp238 = 0.0f;
-            arg_sp240 = 0.0f;
-            arg_sp244 = 0.0f;
-            arg_sp248 = 0.0f;
-            arg_sp250 = 0.0f;
-            arg_sp254 = 0.0f;
-            arg_sp258 = 0.0f;
-            arg_sp25C = 1.0f;
-            arg_sp260 = 0.0f;
-            arg_sp264 = 0.0f;
-            arg_sp268 = 0;
-            arg_sp268 = 0;
-            (s8) arg_sp268 = 0;
-            arg_sp26C = 0;
-            arg_sp270 = 3.4028235e38f;
-            arg_sp274 = 0;
-            arg_sp278 = 0;
-            arg_sp27C = -1;
-            arg_sp280 = 0;
-            MKModel_CalculateCentre(GetModel(), (MKVector3 *) &arg_sp90);
-            if (MKCollision_GetGroundPoint(*((MKVector3 *) &arg_sp90), 5000.0f, (MKCollisionResult *) &arg_sp230, 0, 4, NULL, (MKCollisionMode) 7) != 0) {
-                *arg2 = arg_sp274;
-                Tools_GroundColor((MKCollisionResult *) &arg_sp30);
-                MKModel_SetColor(GetModel(), *((MKVector4 *) &arg_sp30));
+            sp230 = 0.0f;
+            sp234 = 0.0f;
+            sp238 = 0.0f;
+            sp240 = 0.0f;
+            sp244 = 0.0f;
+            sp248 = 0.0f;
+            sp250 = 0.0f;
+            sp254 = 0.0f;
+            sp258 = 0.0f;
+            sp25C = 1.0f;
+            sp260 = 0.0f;
+            sp264 = 0.0f;
+            sp268 = 0;
+            sp26A = 0;
+            sp26B = 0;
+            sp26C = 0;
+            sp270 = 3.4028235e38f;
+            sp274 = 0;
+            sp278 = 0;
+            sp27C = -1;
+            sp280 = 0;
+            MKModel_CalculateCentre(GetModel(), (MKVector3 *) &sp80.unk10);
+            if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp80.unk10), 5000.0f, (MKCollisionResult *) &sp230, 0, 4, NULL, (MKCollisionMode) 7) != 0) {
+                *arg2 = sp274;
+                Tools_GroundColor((MKCollisionResult *) &sp30);
+                MKModel_SetColor(GetModel(), *((MKVector4 *) &sp30));
             }
-            this->unk28 = arg_sp234;
+            this->unk28 = sp234;
         }
     }
 }

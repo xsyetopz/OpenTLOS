@@ -198,58 +198,82 @@ s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp3C'
+#if 0 // DRAFT: undefined identifier 'spC0'
 void Texture::CaptureDrawBuffer(float arg0, float arg1, float arg2, float arg3) {
+    GXTexObj spA0;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f64 sp68;
+    f64 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    enum _GXTexFmt sp48;
+    enum _GXTexWrapMode sp44;
+    enum _GXTexWrapMode sp40;
+    void *sp3C;
+    u32 sp38;
+    u32 sp34;
+    u32 sp30;
+    u32 sp2C;
+    s32 sp28;
+    u16 sp24;
+    u16 sp22;
+    u8 sp20;
     GXRenderModeObj *temp_r31_398;
     f32 temp_f28_411;
     f32 temp_f31_405;
-    GXGetTexObjAll(&this->unk60, &arg_sp3C, &arg_sp24, &arg_sp20, &arg_sp48, &arg_sp44, &arg_sp40, (u8 *) &arg_sp20);
-    arg_sp78 = M2C_FIELD(&lit_515, f32 *, 8);
-    arg_sp7C = M2C_FIELD(&lit_515, f32 *, 0xC);
-    arg_sp70 = M2C_FIELD(&lit_515, f32 *, 0);
-    arg_sp74 = M2C_FIELD(&lit_515, f32 *, 4);
-    arg_sp78 = (f32) M2C_FIELD(&gDisplay, s32 *, 0x10);
-    arg_sp7C = (f32) M2C_FIELD(&gDisplay, s32 *, 0x14);
+
+    GXGetTexObjAll(&this->unk60, &sp3C, &sp24, &sp22, &sp48, &sp44, &sp40, &sp20);
+    sp78 = M2C_FIELD(&lit_515, f32 *, 8);
+    sp7C = M2C_FIELD(&lit_515, f32 *, 0xC);
+    sp70 = M2C_FIELD(&lit_515, f32 *, 0);
+    sp74 = M2C_FIELD(&lit_515, f32 *, 4);
+    sp78 = (f32) M2C_FIELD(&gDisplay, s32 *, 0x10);
+    sp7C = (f32) M2C_FIELD(&gDisplay, s32 *, 0x14);
     temp_r31_398 = GPGetRenderModeObj();
-    temp_f31_405 = arg_sp78 * 0.5f;
-    if ((f32) arg_sp24 == temp_f31_405) {
-        temp_f28_411 = arg_sp7C * 0.5f;
-        if ((f32) arg_sp20 == temp_f28_411) {
+    temp_f31_405 = sp78 * 0.5f;
+    if ((f32) sp24 == temp_f31_405) {
+        temp_f28_411 = sp7C * 0.5f;
+        if ((f32) sp22 == temp_f28_411) {
             GXSetCopyFilter(0U, NULL, 0U, NULL);
-            GXSetTexCopySrc((u16) (s32) arg_sp70, (u16) (s32) arg_sp74, (u16) (s32) arg_sp78, (u16) (s32) arg_sp7C);
+            GXSetTexCopySrc((u16) (s32) sp70, (u16) (s32) sp74, (u16) (s32) sp78, (u16) (s32) sp7C);
             GXSetTexCopyDst((u16) (s32) temp_f31_405, (u16) (s32) temp_f28_411, GX_TF_RGBA8, 1U);
-            GXCopyTex(arg_sp3C, 0U);
+            GXCopyTex(sp3C, 0U);
             GXSetCopyFilter(temp_r31_398->aa, (u8 (*)[2]) temp_r31_398->sample_pattern[0], 1U, temp_r31_398->vfilter);
             return;
         }
     }
-    GXInitTexObj((GXTexObj *) &arg_spA0, &MKMat_MK2_Standard_CaptureTextureData, 0x140U, 0xC8U, GX_TF_RGBA8, GX_CLAMP, GX_CLAMP, 0U);
-    GXInitTexObjLOD((GXTexObj *) &arg_spA0, GX_LINEAR, GX_LINEAR, 0.0f, 0.0f, 0.0f, 0U, 0U, GX_ANISO_1);
+    GXInitTexObj(&spA0, &MKMat_MK2_Standard_CaptureTextureData, 0x140U, 0xC8U, GX_TF_RGBA8, GX_CLAMP, GX_CLAMP, 0U);
+    GXInitTexObjLOD(&spA0, GX_LINEAR, GX_LINEAR, 0.0f, 0.0f, 0.0f, 0U, 0U, GX_ANISO_1);
     GXSetCopyFilter(0U, NULL, 0U, NULL);
-    GXSetTexCopySrc((u16) (s32) arg_sp70, (u16) (s32) arg_sp74, (u16) (s32) arg_sp78, (u16) (s32) arg_sp7C);
-    GXSetTexCopyDst((u16) (s32) temp_f31_405, (u16) (s32) (arg_sp7C * 0.5f), GX_TF_RGBA8, 1U);
+    GXSetTexCopySrc((u16) (s32) sp70, (u16) (s32) sp74, (u16) (s32) sp78, (u16) (s32) sp7C);
+    GXSetTexCopyDst((u16) (s32) temp_f31_405, (u16) (s32) (sp7C * 0.5f), GX_TF_RGBA8, 1U);
     GXCopyTex(&MKMat_MK2_Standard_CaptureTextureData, 0U);
     GXPixModeSync();
     GXInvalidateTexAll();
-    GXGetViewportv(&arg_sp80);
-    GXGetScissor(&arg_sp38, &arg_sp34, &arg_sp30, &arg_sp2C);
+    GXGetViewportv(&sp80);
+    GXGetScissor(&sp38, &sp34, &sp30, &sp2C);
     MKView_Push();
-    C_MTXOrtho((f32 (*)[4]) &arg_spC0, 0.0f, (f32) arg_sp20, 0.0f, (f32) arg_sp24, 0.0f, 1.0f);
+    C_MTXOrtho((f32 (*)[4]) &spC0[0], 0.0f, (f32) sp22, 0.0f, (f32) sp24, 0.0f, 1.0f);
     GXSetCurrentMtx(3U);
-    GXSetProjection((f32 (*)[4]) &arg_spC0, GX_ORTHOGRAPHIC);
+    GXSetProjection((f32 (*)[4]) &spC0[0], GX_ORTHOGRAPHIC);
     MKMaterial_SetMaterial(NULL);
     GXSetDither(0U);
-    GXSetViewport(0.0f, 400.0f, (f32) arg_sp24, (f32) arg_sp20, 0.0f, 1.0f);
-    GXSetScissor(0U, 0x190U, (u32) arg_sp24, (u32) arg_sp20);
+    GXSetViewport(0.0f, 400.0f, (f32) sp24, (f32) sp22, 0.0f, 1.0f);
+    GXSetScissor(0U, 0x190U, (u32) sp24, (u32) sp22);
     GXSetChanCtrl(GX_COLOR0A0, 0U, GX_SRC_REG, GX_SRC_VTX, 0U, GX_DF_CLAMP, GX_AF_SPOT);
-    arg_sp28 = lit_520;
-    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &arg_sp28);
+    sp28 = lit_520;
+    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &sp28);
     GXSetPixelFmt(GX_PF_RGB8_Z24, GX_ZC_LINEAR);
     GXSetCullMode(GX_CULL_NONE);
     GXSetZMode(0U, GX_ALWAYS, 0U);
     GXSetAlphaCompare(GX_ALWAYS, 0U, GX_AOP_OR, GX_ALWAYS, 0U);
     GXSetBlendMode(GX_BM_BLEND, GX_BL_ONE, GX_BL_ZERO, GX_LO_NOOP);
-    GXLoadTexObj((GXTexObj *) &arg_spA0, GX_TEXMAP0);
+    GXLoadTexObj(&spA0, GX_TEXMAP0);
     GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 0x3CU, 0U, 0x7DU);
     GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP0, GX_COLOR0A0);
     GXSetTevColorIn(GX_TEVSTAGE0, GX_CC_ZERO, GX_CC_ZERO, GX_CC_ZERO, GX_CC_TEXC);
@@ -259,19 +283,19 @@ void Texture::CaptureDrawBuffer(float arg0, float arg1, float arg2, float arg3) 
     GXSetNumTevStages(1U);
     GXSetNumTexGens(1U);
     GXSetNumIndStages(0U);
-    arg_sp58 = 0.0f;
-    arg_sp50 = (f32) arg_sp20;
-    arg_sp54 = (f32) arg_sp24;
-    arg_sp68 = (f64) arg_sp58;
-    arg_sp60 = (f64) arg_sp50;
-    DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp60), MKVector3::zero, MKVector3::one, -1U);
-    GXSetTexCopySrc(0U, 0x190U, arg_sp24, arg_sp20);
-    GXSetTexCopyDst(arg_sp24, arg_sp20, GX_TF_RGBA8, 0U);
-    GXCopyTex(arg_sp3C, 1U);
+    sp58 = 0.0f;
+    sp50 = (f32) sp22;
+    sp54 = (f32) sp24;
+    sp68 = (f64) sp58;
+    sp60 = (f64) sp50;
+    DrawQuad(MKVector3::zero, *((MKVector3 *) &sp60), MKVector3::zero, MKVector3::one, -1U);
+    GXSetTexCopySrc(0U, 0x190U, sp24, sp22);
+    GXSetTexCopyDst(sp24, sp22, GX_TF_RGBA8, 0U);
+    GXCopyTex(sp3C, 1U);
     GXPixModeSync();
     GXInvalidateTexAll();
-    GXSetViewport(arg_sp80, arg_sp84, arg_sp88, arg_sp8C, arg_sp90, arg_sp94);
-    GXSetScissor(arg_sp38, arg_sp34, arg_sp30, arg_sp2C);
+    GXSetViewport(sp80, sp84, sp88, sp8C, sp90, sp94);
+    GXSetScissor(sp38, sp34, sp30, sp2C);
     GXSetCurrentMtx(0U);
     GXSetPixelFmt(GX_PF_RGBA6_Z24, GX_ZC_LINEAR);
     GXSetDither(1U);

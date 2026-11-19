@@ -4,8 +4,52 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'arg_sp130'
+#if 0 // DRAFT: undefined identifier 'sp60'
 s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
+    Matrix sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f32 sp98;
+    f32 sp94;
+    f32 sp90;
+    f32 sp88;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_107;
     f32 temp_f0_174;
     f32 temp_f0_225;
@@ -23,6 +67,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     f32 temp_f28_275;
     f32 temp_f28_326;
     f32 temp_f2_117;
+    f32 temp_f4_112;
     f32 var_f13_141;
     f32 var_f27_200;
     f32 var_f27_251;
@@ -38,154 +83,156 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     f32 var_f5_361;
     f32 var_f6_345;
     f32 var_f7_353;
+
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r5, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    arg_sp130 = arg_sp60;
-    arg_sp68 = arg1->unk18 * 0.5f;
-    arg_sp100 = arg_sp60;
-    arg_sp108 = (f64) arg_sp68;
-    arg_sp138 = (f64) arg_sp68;
+    sp130 = sp60;
+    sp68 = arg1->unk18 * 0.5f;
+    sp100 = sp60;
+    sp108 = (f64) sp68;
+    sp138 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp140 = arg_sp50;
-    arg_sp58 = arg1->unk8 + (f32) arg_sp138;
-    arg_sp148 = (f64) arg_sp58;
-    arg_spF0 = arg_sp50;
-    arg_sp90 = arg0->unk30 + (((f32) arg_sp148 * arg0->unk20) + (((f32) arg_sp140 * arg0->unk0) + (arg_sp144 * arg0->unk10)));
-    arg_sp94 = arg0->unk34 + (((f32) arg_sp148 * arg0->unk24) + (((f32) arg_sp140 * arg0->unk4) + (arg_sp144 * arg0->unk14)));
-    arg_sp98 = arg0->unk38 + (((f32) arg_sp148 * arg0->unk28) + (((f32) arg_sp140 * arg0->unk8) + (arg_sp144 * arg0->unk18)));
-    arg_spE0 = (f64) arg_sp90;
-    arg_spF8 = (f64) arg_sp58;
-    arg_spE8 = (f64) arg_sp98;
+    sp140 = sp50;
+    sp58 = arg1->unk8 + (f32) sp138;
+    sp148 = (f64) sp58;
+    spF0 = sp50;
+    sp90 = arg0->unk30 + (((f32) sp148 * arg0->unk20) + (((f32) sp140 * arg0->unk0) + (unksp144 * arg0->unk10)));
+    sp94 = arg0->unk34 + (((f32) sp148 * arg0->unk24) + (((f32) sp140 * arg0->unk4) + (unksp144 * arg0->unk14)));
+    sp98 = arg0->unk38 + (((f32) sp148 * arg0->unk28) + (((f32) sp140 * arg0->unk8) + (unksp144 * arg0->unk18)));
+    spE0 = (f64) sp90;
+    spF8 = (f64) sp58;
+    spE8 = (f64) sp98;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp120 = arg_sp80;
-    arg_sp88 = (f32) arg_spE8 - this->unk58;
-    arg_sp128 = (f64) arg_sp88;
-    arg_sp150.Scale3x3(arg0, *((MKVector3 *) &arg_sp130));
+    sp120 = sp80;
+    sp88 = (f32) spE8 - this->unk58;
+    sp128 = (f64) sp88;
+    sp150.Scale3x3(arg0, *((MKVector3 *) &sp130));
     temp_f0_107 = this->unk4;
     temp_f1_111 = this->unk0;
+    temp_f4_112 = M2C_BITWISE(f32, sp150);
     temp_f2_117 = this->unk8;
-    arg_sp70 = (temp_f2_117 * arg_sp170) + ((temp_f1_111 * arg_sp150) + (temp_f0_107 * arg_sp160));
-    arg_sp74 = (temp_f2_117 * arg_sp174) + ((temp_f1_111 * arg_sp154) + (temp_f0_107 * arg_sp164));
-    arg_sp78 = (temp_f2_117 * arg_sp178) + ((temp_f1_111 * arg_sp158) + (temp_f0_107 * arg_sp168));
-    arg_sp110 = (f64) arg_sp70;
-    var_f29_135 = arg_sp114;
-    arg_sp118 = (f64) arg_sp78;
+    sp70 = (temp_f2_117 * sp150.unk20) + ((temp_f1_111 * temp_f4_112) + (temp_f0_107 * sp150.unk10));
+    sp74 = (temp_f2_117 * sp150.unk24) + ((temp_f1_111 * sp150.unk4) + (temp_f0_107 * sp150.unk14));
+    sp78 = (temp_f2_117 * sp150.unk28) + ((temp_f1_111 * sp150.unk8) + (temp_f0_107 * sp150.unk18));
+    sp110 = (f64) sp70;
+    var_f29_135 = unksp114;
+    sp118 = (f64) sp78;
     if (var_f29_135 < 0.0f) {
         var_f29_135 = -var_f29_135;
     }
-    var_f13_141 = (f32) arg_sp110;
+    var_f13_141 = (f32) sp110;
     if (var_f13_141 < 0.0f) {
         var_f13_141 = -var_f13_141;
     }
-    var_f28_147 = (f32) arg_sp118;
+    var_f28_147 = (f32) sp118;
     if (var_f28_147 < 0.0f) {
         var_f28_147 = -var_f28_147;
     }
     temp_f27_158 = var_f28_147 + (var_f13_141 + var_f29_135);
-    temp_f1_162 = ((f32) arg_sp128 * temp_f2_117) + (((f32) arg_sp120 * temp_f1_111) + (arg_sp124 * temp_f0_107));
+    temp_f1_162 = ((f32) sp128 * temp_f2_117) + (((f32) sp120 * temp_f1_111) + (unksp124 * temp_f0_107));
     if ((temp_f1_162 < (this->unk60 - temp_f27_158)) || (temp_f1_162 > (this->unk64 + temp_f27_158))) {
         return 0;
     }
     temp_f28_173 = this->unk14;
     temp_f0_174 = this->unk10;
     temp_f1_176 = this->unk18;
-    arg_sp40 = (temp_f1_176 * arg_sp170) + ((temp_f0_174 * arg_sp150) + (temp_f28_173 * arg_sp160));
-    arg_sp44 = (temp_f1_176 * arg_sp174) + ((temp_f0_174 * arg_sp154) + (temp_f28_173 * arg_sp164));
-    arg_sp48 = (temp_f1_176 * arg_sp178) + ((temp_f0_174 * arg_sp158) + (temp_f28_173 * arg_sp168));
-    arg_sp110 = (f64) arg_sp40;
-    var_f31_192 = arg_sp114;
-    arg_spD0 = (f64) arg_sp40;
-    arg_spD8 = (f64) arg_sp48;
-    arg_sp118 = (f64) arg_sp48;
+    sp40 = (temp_f1_176 * sp150.unk20) + ((temp_f0_174 * temp_f4_112) + (temp_f28_173 * sp150.unk10));
+    sp44 = (temp_f1_176 * sp150.unk24) + ((temp_f0_174 * sp150.unk4) + (temp_f28_173 * sp150.unk14));
+    sp48 = (temp_f1_176 * sp150.unk28) + ((temp_f0_174 * sp150.unk8) + (temp_f28_173 * sp150.unk18));
+    sp110 = (f64) sp40;
+    var_f31_192 = unksp114;
+    spD0 = (f64) sp40;
+    spD8 = (f64) sp48;
+    sp118 = (f64) sp48;
     if (var_f31_192 < 0.0f) {
         var_f31_192 = -var_f31_192;
     }
-    var_f27_200 = (f32) arg_sp110;
+    var_f27_200 = (f32) sp110;
     if (var_f27_200 < 0.0f) {
         var_f27_200 = -var_f27_200;
     }
-    var_f28_208 = (f32) arg_sp118;
+    var_f28_208 = (f32) sp118;
     if (var_f28_208 < 0.0f) {
         var_f28_208 = -var_f28_208;
     }
-    if ((((f32) arg_sp128 * temp_f1_176) + (((f32) arg_sp120 * temp_f0_174) + (arg_sp124 * temp_f28_173))) < -(var_f28_208 + (var_f27_200 + var_f31_192))) {
+    if ((((f32) sp128 * temp_f1_176) + (((f32) sp120 * temp_f0_174) + (unksp124 * temp_f28_173))) < -(var_f28_208 + (var_f27_200 + var_f31_192))) {
         return 0;
     }
     temp_f28_224 = this->unk24;
     temp_f0_225 = this->unk20;
     temp_f1_227 = this->unk28;
-    arg_sp30 = (temp_f1_227 * arg_sp170) + ((temp_f0_225 * arg_sp150) + (temp_f28_224 * arg_sp160));
-    arg_sp34 = (temp_f1_227 * arg_sp174) + ((temp_f0_225 * arg_sp154) + (temp_f28_224 * arg_sp164));
-    arg_sp38 = (temp_f1_227 * arg_sp178) + ((temp_f0_225 * arg_sp158) + (temp_f28_224 * arg_sp168));
-    arg_sp110 = (f64) arg_sp30;
-    var_f31_243 = arg_sp114;
-    arg_spC0 = (f64) arg_sp30;
-    arg_spC8 = (f64) arg_sp38;
-    arg_sp118 = (f64) arg_sp38;
+    sp30 = (temp_f1_227 * sp150.unk20) + ((temp_f0_225 * temp_f4_112) + (temp_f28_224 * sp150.unk10));
+    sp34 = (temp_f1_227 * sp150.unk24) + ((temp_f0_225 * sp150.unk4) + (temp_f28_224 * sp150.unk14));
+    sp38 = (temp_f1_227 * sp150.unk28) + ((temp_f0_225 * sp150.unk8) + (temp_f28_224 * sp150.unk18));
+    sp110 = (f64) sp30;
+    var_f31_243 = unksp114;
+    spC0 = (f64) sp30;
+    spC8 = (f64) sp38;
+    sp118 = (f64) sp38;
     if (var_f31_243 < 0.0f) {
         var_f31_243 = -var_f31_243;
     }
-    var_f27_251 = (f32) arg_sp110;
+    var_f27_251 = (f32) sp110;
     if (var_f27_251 < 0.0f) {
         var_f27_251 = -var_f27_251;
     }
-    var_f28_259 = (f32) arg_sp118;
+    var_f28_259 = (f32) sp118;
     if (var_f28_259 < 0.0f) {
         var_f28_259 = -var_f28_259;
     }
-    if ((((f32) arg_sp128 * temp_f1_227) + (((f32) arg_sp120 * temp_f0_225) + (arg_sp124 * temp_f28_224))) < -(var_f28_259 + (var_f27_251 + var_f31_243))) {
+    if ((((f32) sp128 * temp_f1_227) + (((f32) sp120 * temp_f0_225) + (unksp124 * temp_f28_224))) < -(var_f28_259 + (var_f27_251 + var_f31_243))) {
         return 0;
     }
     temp_f28_275 = this->unk34;
     temp_f0_276 = this->unk30;
     temp_f1_278 = this->unk38;
-    arg_sp20 = (temp_f1_278 * arg_sp170) + ((temp_f0_276 * arg_sp150) + (temp_f28_275 * arg_sp160));
-    arg_sp24 = (temp_f1_278 * arg_sp174) + ((temp_f0_276 * arg_sp154) + (temp_f28_275 * arg_sp164));
-    arg_sp28 = (temp_f1_278 * arg_sp178) + ((temp_f0_276 * arg_sp158) + (temp_f28_275 * arg_sp168));
-    arg_sp110 = (f64) arg_sp20;
-    var_f29_294 = arg_sp114;
-    arg_spB0 = (f64) arg_sp20;
-    arg_spB8 = (f64) arg_sp28;
-    arg_sp118 = (f64) arg_sp28;
+    sp20 = (temp_f1_278 * sp150.unk20) + ((temp_f0_276 * temp_f4_112) + (temp_f28_275 * sp150.unk10));
+    sp24 = (temp_f1_278 * sp150.unk24) + ((temp_f0_276 * sp150.unk4) + (temp_f28_275 * sp150.unk14));
+    sp28 = (temp_f1_278 * sp150.unk28) + ((temp_f0_276 * sp150.unk8) + (temp_f28_275 * sp150.unk18));
+    sp110 = (f64) sp20;
+    var_f29_294 = unksp114;
+    spB0 = (f64) sp20;
+    spB8 = (f64) sp28;
+    sp118 = (f64) sp28;
     if (var_f29_294 < 0.0f) {
         var_f29_294 = -var_f29_294;
     }
-    var_f27_302 = (f32) arg_sp110;
+    var_f27_302 = (f32) sp110;
     if (var_f27_302 < 0.0f) {
         var_f27_302 = -var_f27_302;
     }
-    var_f28_310 = (f32) arg_sp118;
+    var_f28_310 = (f32) sp118;
     if (var_f28_310 < 0.0f) {
         var_f28_310 = -var_f28_310;
     }
-    if ((((f32) arg_sp128 * temp_f1_278) + (((f32) arg_sp120 * temp_f0_276) + (arg_sp124 * temp_f28_275))) < -(var_f28_310 + (var_f27_302 + var_f29_294))) {
+    if ((((f32) sp128 * temp_f1_278) + (((f32) sp120 * temp_f0_276) + (unksp124 * temp_f28_275))) < -(var_f28_310 + (var_f27_302 + var_f29_294))) {
         return 0;
     }
     temp_f28_326 = this->unk44;
     temp_f0_327 = this->unk40;
     temp_f1_329 = this->unk48;
-    arg_sp10 = (temp_f1_329 * arg_sp170) + ((temp_f0_327 * arg_sp150) + (temp_f28_326 * arg_sp160));
-    arg_sp14 = (temp_f1_329 * arg_sp174) + ((temp_f0_327 * arg_sp154) + (temp_f28_326 * arg_sp164));
-    arg_sp18 = (temp_f1_329 * arg_sp178) + ((temp_f0_327 * arg_sp158) + (temp_f28_326 * arg_sp168));
-    arg_sp110 = (f64) arg_sp10;
-    var_f6_345 = arg_sp114;
-    arg_spA0 = (f64) arg_sp10;
-    arg_spA8 = (f64) arg_sp18;
-    arg_sp118 = (f64) arg_sp18;
+    sp10 = (temp_f1_329 * sp150.unk20) + ((temp_f0_327 * temp_f4_112) + (temp_f28_326 * sp150.unk10));
+    sp14 = (temp_f1_329 * sp150.unk24) + ((temp_f0_327 * sp150.unk4) + (temp_f28_326 * sp150.unk14));
+    sp18 = (temp_f1_329 * sp150.unk28) + ((temp_f0_327 * sp150.unk8) + (temp_f28_326 * sp150.unk18));
+    sp110 = (f64) sp10;
+    var_f6_345 = unksp114;
+    spA0 = (f64) sp10;
+    spA8 = (f64) sp18;
+    sp118 = (f64) sp18;
     if (var_f6_345 < 0.0f) {
         var_f6_345 = -var_f6_345;
     }
-    var_f7_353 = (f32) arg_sp110;
+    var_f7_353 = (f32) sp110;
     if (var_f7_353 < 0.0f) {
         var_f7_353 = -var_f7_353;
     }
-    var_f5_361 = (f32) arg_sp118;
+    var_f5_361 = (f32) sp118;
     if (var_f5_361 < 0.0f) {
         var_f5_361 = -var_f5_361;
     }
-    if ((((f32) arg_sp128 * temp_f1_329) + (((f32) arg_sp120 * temp_f0_327) + (arg_sp124 * temp_f28_326))) < -(var_f5_361 + (var_f7_353 + var_f6_345))) {
+    if ((((f32) sp128 * temp_f1_329) + (((f32) sp120 * temp_f0_327) + (unksp124 * temp_f28_326))) < -(var_f5_361 + (var_f7_353 + var_f6_345))) {
         return 0;
     }
     return 1;

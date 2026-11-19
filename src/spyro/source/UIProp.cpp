@@ -3,6 +3,8 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UISystem.h"
@@ -13,17 +15,20 @@ M2C_UNK free(void **);                              /* extern */
 UIObject *malloc(s32);                              /* extern */
 extern void **gMK;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: ')' expected
 void UIProp::Draw() {
+    RenderContext sp20;
+    Tools_Ortho sp10;
     void **temp_r3_54;
+
     MKProp::Draw();
-    arg_sp10.Tools_Ortho();
-    arg_sp20.RenderContext();
+    sp10.Tools_Ortho();
+    sp20.RenderContext();
     temp_r3_54 = this->unk54;
     if (temp_r3_54 != NULL) {
-        M2C_FIELD(*temp_r3_54, M2C_UNK (**)(M2C_UNK *), 0x1C)(&arg_sp20);
+        M2C_FIELD(*temp_r3_54, M2C_UNK (**)(RenderContext *), 0x1C)(&sp20);
     }
-    arg_sp10.~Tools_Ortho(-1);
+    sp10.~Tools_Ortho(-1);
 }
 #endif
 

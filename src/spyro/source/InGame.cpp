@@ -539,11 +539,20 @@ loop_60:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unkC'
 void InGame_DrawOverlays() {
+    Matrix sp40;
+    M2C_UNK sp3C;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    Tools_Ortho sp10;
     u8 var_r31_1002;
     u8 var_r3_988;
-    arg_sp10.Tools_Ortho();
+
+    sp10.Tools_Ortho();
     var_r3_988 = 0;
     if (((MKVector3 *) gb.unkC->unk78 != NULL) && ((u8) gb.unkC->unk70 != 0)) {
         var_r3_988 = 1;
@@ -559,16 +568,16 @@ void InGame_DrawOverlays() {
     }
     Autosave_Draw();
     if (((s8 *) pMessage != NULL) && (msgAlpha > 0.0f) && ((u8) gb.unk32C->unk8 == 0)) {
-        M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp18 = 320.0f;
-        arg_sp1C = 256.0f;
-        arg_sp20 = 0.0f;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp30 = (f64) arg_sp20;
-        arg_sp40.Translate((Matrix *) &arg_sp40, *((MKVector3 *) &arg_sp28));
-        gb.unk318->DrawString(pMessage, 544.0f, 435.2f, (Matrix *) &arg_sp40, 8, ((s32) (128.0f * msgAlpha) << 0x18) | 0x800000 | 0x8080, 1.0f, 1.0f, NULL, 1U);
+        M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp18 = 320.0f;
+        sp1C = 256.0f;
+        sp20 = 0.0f;
+        sp28 = (f64) sp18;
+        sp30 = (f64) sp20;
+        sp40.Translate(&sp40, *((MKVector3 *) &sp28));
+        gb.unk318->DrawString(pMessage, 544.0f, 435.2f, &sp40, 8, ((s32) (128.0f * msgAlpha) << 0x18) | 0x800000 | 0x8080, 1.0f, 1.0f, NULL, 1U);
     }
-    arg_sp10.~Tools_Ortho(-1);
+    sp10.~Tools_Ortho(-1);
 }
 #endif
 

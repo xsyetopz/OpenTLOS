@@ -18,6 +18,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/LightProp.h"
@@ -843,8 +844,83 @@ u8 TrainChaseSpyro::DealDamage(float arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::RepositionLightProp() {
+    s8 sp290;
+    s32 sp28C;
+    s32 sp288;
+    s32 sp284;
+    f32 sp280;
+    s32 sp27C;
+    s8 sp27B;
+    s8 sp27A;
+    s16 sp278;
+    f32 sp274;
+    f32 sp270;
+    f32 sp26C;
+    f32 sp268;
+    f32 sp264;
+    f32 sp260;
+    f32 sp258;
+    f32 sp254;
+    f32 sp250;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f32 sp23C;
+    f32 sp238;
+    f32 sp234;
+    TrainTrack sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp178;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     f32 temp_f1_1613;
     f32 temp_f1_1755;
+    f32 temp_f2_1705;
+    f32 temp_f4_1707;
+    f32 temp_f5_1704;
+    f32 temp_f6_1708;
+    f32 temp_f7_1703;
     f32 temp_r3_1914;
     f32 var_f0_1616;
     f32 var_f27_1925;
@@ -858,6 +934,7 @@ void TrainChaseSpyro::RepositionLightProp() {
     s32 temp_ret_1603;
     s32 var_r0_1824;
     u8 var_r0_1915;
+
     temp_ret_1603 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     temp_r3_1603 = temp_ret_1603;
     if ((temp_r3_1603 != 0) && (checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1FC)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_1603)) != NULL)) {
@@ -874,66 +951,71 @@ void TrainChaseSpyro::RepositionLightProp() {
             var_f0_1616 = 0.0f;
         }
         this->unk284 = var_f0_1616;
-        arg_sp198.GetTrackPos(temp_r3_1603, M2C_BITWISE(f32, this->unk284), 0);
-        arg_sp48 = 0.0f;
-        arg_sp4C = 400.0f;
-        arg_sp50 = 0.0f;
-        arg_sp1E8 = arg_sp198;
-        arg_sp188 = (f64) arg_sp48;
-        arg_sp1F0 = arg_sp1A0;
-        arg_sp190 = (f64) arg_sp50;
+        sp198.GetTrackPos(temp_r3_1603, M2C_BITWISE(f32, this->unk284), 0);
+        sp48 = 0.0f;
+        sp4C = 400.0f;
+        sp50 = 0.0f;
+        sp198.unk4C.unk4 = M2C_BITWISE(f64, sp198);
+        sp188 = (f64) sp48;
+        sp198.unk4C.unkC = M2C_BITWISE(f64, sp198.unk8);
+        sp190 = (f64) sp50;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp240 = 0.0f;
-        arg_sp244 = 0.0f;
-        arg_sp1F0 = (f32) arg_sp1F0 + (f32) arg_sp190;
-        arg_sp248 = 0.0f;
-        arg_sp250 = 0.0f;
-        arg_sp254 = 0.0f;
-        arg_sp258 = 0.0f;
-        arg_sp260 = 0.0f;
-        arg_sp264 = 0.0f;
-        arg_sp268 = 0.0f;
-        arg_sp26C = 1.0f;
-        arg_sp270 = 0.0f;
-        arg_sp274 = 0.0f;
-        arg_sp278 = 0;
-        arg_sp278 = 0;
-        (s8) arg_sp278 = 0;
-        arg_sp27C = 0;
-        arg_sp280 = 3.4028235e38f;
-        arg_sp284 = 0;
-        arg_sp288 = 0;
-        arg_sp28C = -1;
-        arg_sp290 = 0;
-        arg_sp178.GetTrackXAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
-        arg_sp1D8 = arg_sp178;
-        arg_sp1E0 = arg_sp180;
-        arg_sp168.GetTrackZAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
-        arg_sp1C8 = arg_sp168;
-        arg_sp1D0 = arg_sp170;
-        arg_spCC = ((f32) arg_sp1D0 * (f32) arg_sp1D8) - ((f32) arg_sp1C8 * (f32) arg_sp1E0);
-        arg_spD0 = ((f32) arg_sp1C8 * arg_sp1DC) - (arg_sp1CC * (f32) arg_sp1D8);
-        arg_spC8 = (arg_sp1CC * (f32) arg_sp1E0) - ((f32) arg_sp1D0 * arg_sp1DC);
-        arg_sp1C0 = (f64) arg_spD0;
-        arg_sp1B8 = (f64) arg_spC8;
+        sp240 = 0.0f;
+        sp244 = 0.0f;
+        sp198.unk4C.unkC = M2C_BITWISE(f32, sp198.unk4C.unkC) + (f32) sp190;
+        sp248 = 0.0f;
+        sp250 = 0.0f;
+        sp254 = 0.0f;
+        sp258 = 0.0f;
+        sp260 = 0.0f;
+        sp264 = 0.0f;
+        sp268 = 0.0f;
+        sp26C = 1.0f;
+        sp270 = 0.0f;
+        sp274 = 0.0f;
+        sp278 = 0;
+        sp27A = 0;
+        sp27B = 0;
+        sp27C = 0;
+        sp280 = 3.4028235e38f;
+        sp284 = 0;
+        sp288 = 0;
+        sp28C = -1;
+        sp290 = 0;
+        sp178.GetTrackXAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
+        sp198.unk40 = sp178;
+        sp198.unk48 = sp180;
+        sp168.GetTrackZAxis(temp_r3_1603, M2C_BITWISE(f32, this->unk284));
+        sp198.unk30 = sp168;
+        sp198.unk38 = sp170;
+        temp_f7_1703 = M2C_BITWISE(f32, sp198.unk30);
+        temp_f5_1704 = M2C_BITWISE(f32, sp198.unk34);
+        temp_f2_1705 = M2C_BITWISE(f32, sp198.unk40);
+        temp_f4_1707 = M2C_BITWISE(f32, sp198.unk38);
+        temp_f6_1708 = M2C_BITWISE(f32, sp198.__vptr);
+        spCC = (temp_f4_1707 * temp_f2_1705) - (temp_f7_1703 * sp198.unk48);
+        spD0 = (temp_f7_1703 * temp_f6_1708) - (temp_f5_1704 * temp_f2_1705);
+        spC8 = (temp_f5_1704 * sp198.unk48) - (temp_f4_1707 * temp_f6_1708);
+        sp198.unk28 = (f64) spD0;
+        sp198.unk20 = (f64) spC8;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        arg_spB0 = (f32) arg_sp1E0 * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_sp128 = arg_spA8;
-        arg_sp130 = (f64) arg_spB0;
+        spB0 = sp198.unk48 * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        sp128 = spA8;
+        sp130 = (f64) spB0;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        arg_sp138 = arg_sp98;
-        arg_spA0 = (f32) arg_sp130 * 0.5f;
-        arg_sp140 = (f64) arg_spA0;
+        sp138 = sp98;
+        spA0 = (f32) sp130 * 0.5f;
+        sp140 = (f64) spA0;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_1755 = (f32) arg_sp1C0 * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-        arg_sp148 = arg_spB8;
-        arg_spC0 = temp_f1_1755;
-        arg_sp150 = (f64) arg_spC0;
+        temp_f1_1755 = M2C_BITWISE(f32, sp198.unk28) * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        sp148 = spB8;
+        spC0 = temp_f1_1755;
+        sp150 = (f64) spC0;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp158 = arg_sp88;
-        arg_sp90 = (f32) arg_sp150 + (f32) arg_sp140;
-        arg_sp160 = (f64) arg_sp90;
-        var_f4_1779 = ((f32) arg_sp160 * (f32) arg_sp160) + (((f32) arg_sp158 * (f32) arg_sp158) + (arg_sp15C * arg_sp15C));
+        sp158 = sp88;
+        sp90 = (f32) sp150 + (f32) sp140;
+        sp160 = (f64) sp90;
+        var_f4_1779 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + (unksp15C * unksp15C));
         if (var_f4_1779 > 1e-12f) {
             if (var_f4_1779 > 0.0f) {
                 temp_f1_1785 = __frsqrte(var_f4_1779);
@@ -943,18 +1025,18 @@ void TrainChaseSpyro::RepositionLightProp() {
             } else if (var_f4_1779 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_1779 = __float_nan;
             } else {
-                arg_sp10 = var_f4_1779;
-                temp_r3_1814 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_1779;
+                temp_r3_1814 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_1814) {             /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1824 = 1;
                     } else {
                         var_r0_1824 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_1824 = 5;
                     } else {
                         var_r0_1824 = 3;
@@ -972,29 +1054,29 @@ void TrainChaseSpyro::RepositionLightProp() {
         } else {
             var_f3_1846 = 0.0f;
         }
-        arg_sp7C = arg_sp15C * var_f3_1846;
-        arg_sp78 = (f32) arg_sp158 * var_f3_1846;
-        arg_sp80 = (f32) arg_sp160 * var_f3_1846;
-        arg_sp1A8 = (f64) arg_sp78;
-        arg_sp1B0 = (f64) arg_sp80;
+        sp7C = unksp15C * var_f3_1846;
+        sp78 = (f32) sp158 * var_f3_1846;
+        sp80 = (f32) sp160 * var_f3_1846;
+        sp198.unk10 = (f64) sp78;
+        sp198.unk18 = (f64) sp80;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        arg_sp108 = arg_sp68;
-        arg_sp70 = (f32) arg_sp1B0 * 2000.0f;
-        arg_sp110 = (f64) arg_sp70;
+        sp108 = sp68;
+        sp70 = M2C_BITWISE(f32, sp198.unk18) * 2000.0f;
+        sp110 = (f64) sp70;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp118 = arg_sp58;
-        arg_sp60 = (f32) arg_sp1F0 + (f32) arg_sp110;
-        arg_sp120 = (f64) arg_sp60;
-        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp1E8), *((MKVector3 *) &arg_sp118), (MKCollisionResult *) &arg_sp240, (MKCollisionMode) 7, 0) != 0) {
-            arg_sp38 = -(f32) arg_sp1A8;
-            arg_sp3C = -arg_sp1AC;
-            arg_sp40 = -(f32) arg_sp1B0;
-            arg_sp1E8 = (f64) arg_sp240;
-            arg_sp1F0 = (f64) arg_sp248;
-            arg_spF8 = (f64) arg_sp38;
-            arg_sp100 = (f64) arg_sp40;
-            arg_sp1A8 = (f64) arg_sp38;
-            arg_sp1B0 = (f64) arg_sp40;
+        sp118 = sp58;
+        sp60 = sp198.unk4C.unkC + (f32) sp110;
+        sp120 = (f64) sp60;
+        if (MKCollision_RayCollide(*((MKVector3 *) &sp198.unk4C.unk4), *((MKVector3 *) &sp118), (MKCollisionResult *) &sp240, (MKCollisionMode) 7, 0) != 0) {
+            sp38 = -M2C_BITWISE(f32, sp198.unk10);
+            sp3C = -M2C_BITWISE(f32, sp198.unk14);
+            sp40 = -M2C_BITWISE(f32, sp198.unk18);
+            sp198.unk4C.unk4 = (f64) sp240;
+            sp198.unk4C.unkC = (f64) sp248;
+            spF8 = (f64) sp38;
+            sp100 = (f64) sp40;
+            sp198.unk10 = (f64) sp38;
+            sp198.unk18 = (f64) sp40;
         } else {
             temp_r3_1914 = this->unk730;
             var_r0_1915 = 0;
@@ -1007,26 +1089,26 @@ void TrainChaseSpyro::RepositionLightProp() {
                 var_f27_1925 = 1000.0f;
             }
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            arg_spE8 = arg_sp28;
-            arg_sp30 = (f32) arg_sp1B0 * var_f27_1925;
-            arg_spF0 = (f64) arg_sp30;
+            spE8 = sp28;
+            sp30 = (f32) sp198.unk18 * var_f27_1925;
+            spF0 = (f64) sp30;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp20 = -(f32) arg_sp1B0;
-            arg_sp18 = -(f32) arg_sp1A8;
-            arg_sp1C = -arg_sp1AC;
-            arg_sp1F0 = (f32) arg_sp1F0 + (f32) arg_spF0;
-            arg_spD8 = (f64) arg_sp18;
-            arg_spE0 = (f64) arg_sp20;
-            arg_sp1A8 = (f64) arg_sp18;
-            arg_sp1B0 = (f64) arg_sp20;
+            sp20 = -(f32) sp198.unk18;
+            sp18 = -(f32) sp198.unk10;
+            sp1C = -M2C_BITWISE(f32, sp198.unk14);
+            sp198.unk4C.unkC = (f32) sp198.unk4C.unkC + (f32) spF0;
+            spD8 = (f64) sp18;
+            spE0 = (f64) sp20;
+            sp198.unk10 = (f64) sp18;
+            sp198.unk18 = (f64) sp20;
         }
-        M2C_STRUCT_COPY((s32) &arg_sp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        KDMath_BuildMatrixFromUp((Matrix *) &arg_sp200, *((MKVector3 *) &arg_sp1A8), *((MKVector3 *) &arg_sp1C8));
-        arg_sp230 = (f32) arg_sp1E8;
-        arg_sp234 = arg_sp1EC;
-        arg_sp238 = (f32) arg_sp1F0;
-        arg_sp23C = 1.0f;
-        this->unk280->SetOrientation((Matrix *) &arg_sp200);
+        M2C_STRUCT_COPY((s32) &sp198.unk60.unk4 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        KDMath_BuildMatrixFromUp((Matrix *) &sp198.unk60.unk8, *((MKVector3 *) &sp198.unk10), *((MKVector3 *) &sp198.unk30));
+        sp198.unk88.unk10 = (f32) sp198.unk4C.unk4;
+        sp234 = sp198.unk4C.unk8;
+        sp238 = sp198.unk4C.unkC;
+        sp23C = 1.0f;
+        this->unk280->SetOrientation((Matrix *) &sp198.unk60.unk8);
     }
 }
 #endif
@@ -1057,8 +1139,59 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp634'
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void TrainChaseSpyro::UpdateCameraInfo() {
+    HeroDataMessage sp630;
+    Matrix sp5F0;
+    M2C_UNK sp5EC;
+    MKProp sp580;
+    TrainTrack sp560;
+    MKVector3 sp550;
+    M2C_UNK sp540;
+    f64 sp538;
+    f64 sp530;
+    TrainTrack sp490;
+    TrainTrack sp3F0;
+    TrainTrack sp350;
+    TrainTrack sp330;
+    MKVector3 sp320;
+    MKVector3 sp310;
+    MKVector3 sp300;
+    MKVector3 sp2F0;
+    M2C_UNK sp2E0;
+    f64 sp2D8;
+    f64 sp2D0;
+    TrainTrack sp230;
+    TrainTrack sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    HeroInterface sp160;
+    MKVector3 sp150;
+    MKVector3 sp140;
+    f64 sp138;
+    f64 sp130;
+    HeroInterface sp120;
+    MKVector3 sp110;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
     f32 temp_f1_2194;
     f32 temp_f29_2348;
     f32 temp_f30_2153;
@@ -1068,48 +1201,49 @@ void TrainChaseSpyro::UpdateCameraInfo() {
     f32 var_f0_2612;
     f32 var_f31_2200;
     s32 temp_r3_2137;
-    arg_sp634 = 0;
-    arg_sp630.ClearData();
-    M2C_STRUCT_COPY((s32) &arg_sp5EC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-    arg_sp630.Init((Matrix *) &arg_sp5F0);
-    arg_sp6C4 = 0;
-    arg_sp6C8 = 400.0f;
-    arg_sp6CC = 0;
-    arg_sp6D0 = 7;
-    arg_sp580.GetPos();
-    arg_sp590.GetPos();
-    arg_sp5A0.GetPos();
-    arg_sp108 = arg_sp588;
-    arg_sp100 = arg_sp5A0;
-    arg_sp104 = 400.0f + arg_sp594;
-    arg_sp688 = (f64) arg_sp108;
-    arg_sp680 = (f64) arg_sp100;
-    arg_sp6D4 = 0;
-    arg_sp6DC = 150.0f;
-    arg_sp6E0 = 100.0f;
-    arg_sp5B0 = (f64) arg_sp100;
-    arg_sp5B8 = (f64) arg_sp108;
-    temp_r3_2137 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve((s32) (u32) M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), u64 (**)(void *, M2C_UNK *, f32, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp630, 150.0f, (f64) arg_sp108, (f64) arg_sp100)));
+
+    sp630.unk4 = 0;
+    sp630.ClearData();
+    M2C_STRUCT_COPY((s32) &sp5EC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    sp630.Init(&sp5F0);
+    sp630.unk94 = 0;
+    sp630.unk98 = 400.0f;
+    sp630.unk9C = 0;
+    sp630.unkA0 = 7;
+    sp580.GetPos();
+    sp580.unk10.GetPos();
+    sp580.unk20.GetPos();
+    sp108 = M2C_BITWISE(f32, sp580.unk8);
+    sp100 = sp580.unk20;
+    sp104 = 400.0f + M2C_BITWISE(f32, sp580.unk14);
+    sp630.unk58 = (f64) sp108;
+    sp630.unk50 = (f64) sp100;
+    sp630.unkA4 = NULL;
+    sp630.unkAC = 150.0f;
+    sp630.unkB0 = 100.0f;
+    sp580.unk30 = (f64) sp100;
+    sp580.unk38 = (f64) sp108;
+    temp_r3_2137 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve((s32) (u32) M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), u64 (**)(void *, HeroDataMessage *, f32, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp630, 150.0f, (f64) sp108, (f64) sp100)));
     if (temp_r3_2137 != 0) {
-        arg_sp5C4 = 0;
-        arg_sp5C0 = 0x426;
-        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk27C, (MKVector3 *) &arg_sp5C8);
+        sp580.__vptr = NULL;
+        sp580.unk40 = 0x426;
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk27C, (MKVector3 *) &sp580.unk48);
         temp_r0_2149 = this->unk730;
         temp_f30_2153 = this->unkE0 + cameraZDistance;
         if (M2C_BITWISE(u32, temp_r0_2149) <= 8U) {
             switch (M2C_BITWISE(s32, temp_r0_2149)) {
             case 0:
             case 4:
-                arg_sp540.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                arg_sp550.operator*(cameraYOffset);
-                arg_sp560.GetTrackPos(temp_r3_2137, temp_f30_2153, 0);
+                sp540.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                sp550.operator*(cameraYOffset);
+                sp560.GetTrackPos(temp_r3_2137, temp_f30_2153, 0);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp570 = arg_spF0;
-                arg_spF8 = arg_sp568 + arg_sp558;
-                arg_sp5D8 = arg_spF0;
-                arg_sp578 = (f64) arg_spF8;
-                arg_sp5E0 = (f64) arg_spF8;
+                sp560.unk10 = spF0;
+                spF8 = M2C_BITWISE(f32, sp560.unk8) + sp550.unk8;
+                sp560.unk74.unk4 = spF0;
+                sp560.unk18 = (f64) spF8;
+                sp560.unk74.unkC = (f64) spF8;
                 break;
             case 1:
             case 2:
@@ -1123,84 +1257,84 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     } else {
                         var_f31_2200 = 1.0f;
                     }
-                    arg_sp490.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp4A0.operator*(cameraYOffset);
-                    arg_sp4B0.operator*(var_f31_2200);
-                    arg_sp4C0.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp4D0.operator*(2100.0f);
-                    arg_sp4E0.operator*(var_f31_2200);
-                    arg_sp4F0.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                    arg_sp500.operator*(cameraXOffset);
-                    arg_sp510.operator*(var_f31_2200);
+                    sp490.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                    sp490.unk10.operator*(cameraYOffset);
+                    sp490.unk20.operator*(var_f31_2200);
+                    sp490.unk30.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    sp490.unk40.operator*(2100.0f);
+                    sp490.unk4C.unk4.operator*(var_f31_2200);
+                    sp490.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
+                    sp490.unk60.unk10.operator*(cameraXOffset);
+                    sp490.unk74.unkC.operator*(var_f31_2200);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp520 = arg_sp60;
-                    arg_sp68 = arg_sp518 - arg_sp4E8;
-                    arg_sp528 = (f64) arg_sp68;
+                    sp490.unk88.unk8 = sp60;
+                    sp68 = M2C_BITWISE(f32, sp490.unk88) - M2C_BITWISE(f32, sp490.unk4C.unkC);
+                    sp490.unk88.unk10 = (f64) sp68;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp530 = arg_spE0;
-                    arg_spE8 = (f32) arg_sp528 - arg_sp4B8;
-                    arg_sp538 = (f64) arg_spE8;
+                    sp530 = spE0;
+                    spE8 = M2C_BITWISE(f32, sp490.unk88.unk10) - M2C_BITWISE(f32, sp490.unk28);
+                    sp538 = (f64) spE8;
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                    arg_sp5D0 += (f32) arg_sp538;
-                    arg_sp3F0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp400.operator*(cameraYOffset);
-                    arg_sp410.operator*(2.0f);
-                    arg_sp420.operator*(var_f31_2200);
-                    arg_sp430.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp440.operator*(1428.0f);
-                    arg_sp450.operator*(var_f31_2200);
-                    arg_sp460.GetTrackPos(temp_r3_2137, this->unkE0, 0);
+                    sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + (f32) sp538;
+                    sp3F0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                    sp3F0.unk10.operator*(cameraYOffset);
+                    sp3F0.unk20.operator*(2.0f);
+                    sp3F0.unk30.operator*(var_f31_2200);
+                    sp3F0.unk40.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    sp3F0.unk4C.unk4.operator*(1428.0f);
+                    sp3F0.unk60.operator*(var_f31_2200);
+                    sp3F0.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp470 = arg_sp50;
-                    arg_sp58 = arg_sp468 - arg_sp458;
-                    arg_sp478 = (f64) arg_sp58;
+                    sp3F0.unk74.unkC = sp50;
+                    sp58 = M2C_BITWISE(f32, sp3F0.unk74.unk4) - sp3F0.unk60.unk8;
+                    sp3F0.unk88 = (f64) sp58;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp480 = arg_spD0;
-                    arg_sp5D8 = arg_spD0;
-                    arg_spD8 = (f32) arg_sp478 - arg_sp428;
-                    arg_sp488 = (f64) arg_spD8;
-                    arg_sp5E0 = (f64) arg_spD8;
+                    sp3F0.unk88.unk8 = spD0;
+                    sp560.unk74.unk4 = spD0;
+                    spD8 = M2C_BITWISE(f32, sp3F0.unk88) - M2C_BITWISE(f32, sp3F0.unk38);
+                    sp3F0.unk88.unk10 = (f64) spD8;
+                    sp560.unk74.unkC = (f64) spD8;
                 } else {
                     temp_f31_2344 = M2C_BITWISE(f32, this->unk738);
                     temp_f29_2348 = 750.0f * temp_f31_2344;
-                    arg_sp350.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp360.operator*(cameraYOffset);
-                    arg_sp370.operator*(0.375f);
-                    arg_sp380.operator*(temp_f31_2344);
-                    arg_sp390.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp3A0.operator*(temp_f29_2348);
-                    arg_sp3B0.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                    arg_sp3C0.operator*(-temp_f29_2348);
+                    sp350.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                    sp350.unk10.operator*(cameraYOffset);
+                    sp350.unk20.operator*(0.375f);
+                    sp350.unk30.operator*(temp_f31_2344);
+                    sp350.unk40.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                    sp350.unk4C.unk4.operator*(temp_f29_2348);
+                    sp350.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
+                    sp350.unk60.unk10.operator*(-temp_f29_2348);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp3D0 = arg_sp40;
-                    arg_sp48 = arg_sp3C8 - arg_sp3A8;
-                    arg_sp3D8 = (f64) arg_sp48;
+                    sp350.unk74.unkC = sp40;
+                    sp48 = M2C_BITWISE(f32, sp350.unk74.unk4) - M2C_BITWISE(f32, sp350.unk4C.unkC);
+                    sp350.unk88 = (f64) sp48;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp3E0 = arg_spC0;
-                    arg_spC8 = (f32) arg_sp3D8 - arg_sp388;
-                    arg_sp3E8 = (f64) arg_spC8;
+                    sp350.unk88.unk8 = spC0;
+                    spC8 = M2C_BITWISE(f32, sp350.unk88) - M2C_BITWISE(f32, sp350.unk38);
+                    sp350.unk88.unk10 = (f64) spC8;
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                    arg_sp5D0 += (f32) arg_sp3E8;
-                    arg_sp2E0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                    arg_sp2F0.operator*(cameraYOffset);
-                    arg_sp300.operator*(2.0f);
-                    arg_sp310.operator*(0.375f);
-                    arg_sp320.operator*(1.0f - M2C_BITWISE(f32, this->unk738));
-                    arg_sp330.GetTrackPos(temp_r3_2137, this->unkE0, 0);
+                    sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + M2C_BITWISE(f32, sp350.unk88.unk10);
+                    sp2E0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                    sp2F0.operator*(cameraYOffset);
+                    sp300.operator*(2.0f);
+                    sp310.operator*(0.375f);
+                    sp320.operator*(1.0f - M2C_BITWISE(f32, this->unk738));
+                    sp330.GetTrackPos(temp_r3_2137, this->unkE0, 0);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp5D8 = arg_spB0;
-                    arg_spB8 = arg_sp338 - arg_sp328;
-                    arg_sp340 = arg_spB0;
-                    arg_sp5E0 = (f64) arg_spB8;
-                    arg_sp348 = (f64) arg_spB8;
+                    sp560.unk74.unk4 = spB0;
+                    spB8 = M2C_BITWISE(f32, sp330.unk8) - sp320.unk8;
+                    sp330.unk10 = spB0;
+                    sp560.unk74.unkC = (f64) spB8;
+                    sp330.unk18 = (f64) spB8;
                     this->unk738 = M2C_BITWISE(f32, this->unk738) + gUpdateTimeDelta;
                     var_f0_2462 = M2C_BITWISE(f32, this->unk738);
                     if (var_f0_2462 < 1.0f) {
@@ -1213,47 +1347,47 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 break;
             case 3:
             case 7:
-                arg_sp230.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                arg_sp240.operator*(cameraYOffset);
-                arg_sp250.operator*(M2C_BITWISE(f32, this->unk738));
-                arg_sp260.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
-                arg_sp270.operator*(2100.0f);
-                arg_sp280.operator*(M2C_BITWISE(f32, this->unk738));
-                arg_sp290.GetTrackXAxis(temp_r3_2137, this->unkE0);
-                arg_sp2A0.operator*(cameraXOffset);
-                arg_sp2B0.operator*(M2C_BITWISE(f32, this->unk738));
+                sp230.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                sp230.unk10.operator*(cameraYOffset);
+                sp230.unk20.operator*(M2C_BITWISE(f32, this->unk738));
+                sp230.unk30.GetTrackZAxis(temp_r3_2137, temp_f30_2153);
+                sp230.unk40.operator*(2100.0f);
+                sp230.unk4C.unk4.operator*(M2C_BITWISE(f32, this->unk738));
+                sp230.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
+                sp230.unk60.unk10.operator*(cameraXOffset);
+                sp230.unk74.unkC.operator*(M2C_BITWISE(f32, this->unk738));
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp2C0 = arg_sp30;
-                arg_sp38 = arg_sp2B8 - arg_sp288;
-                arg_sp2C8 = (f64) arg_sp38;
+                sp230.unk88.unk8 = sp30;
+                sp38 = M2C_BITWISE(f32, sp230.unk88) - M2C_BITWISE(f32, sp230.unk4C.unkC);
+                sp230.unk88.unk10 = (f64) sp38;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp2D0 = arg_spA0;
-                arg_spA8 = (f32) arg_sp2C8 - arg_sp258;
-                arg_sp2D8 = (f64) arg_spA8;
+                sp2D0 = spA0;
+                spA8 = M2C_BITWISE(f32, sp230.unk88.unk10) - M2C_BITWISE(f32, sp230.unk28);
+                sp2D8 = (f64) spA8;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                arg_sp5D0 += (f32) arg_sp2D8;
-                arg_sp190.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                arg_sp1A0.operator*(cameraYOffset);
-                arg_sp1B0.operator*(2.0f);
-                arg_sp1C0.operator*(M2C_BITWISE(f32, this->unk738));
-                arg_sp1D0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
-                arg_sp1E0.operator*(1428.0f);
-                arg_sp1F0.operator*(M2C_BITWISE(f32, this->unk738));
-                arg_sp200.GetTrackPos(temp_r3_2137, this->unkE0, 0);
+                sp560.unk60.unk10 += (f32) sp2D8;
+                sp190.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                sp190.unk10.operator*(cameraYOffset);
+                sp190.unk20.operator*(2.0f);
+                sp190.unk30.operator*(M2C_BITWISE(f32, this->unk738));
+                sp190.unk40.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
+                sp190.unk4C.unk4.operator*(1428.0f);
+                sp190.unk60.operator*(M2C_BITWISE(f32, this->unk738));
+                sp190.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp210 = arg_sp20;
-                arg_sp28 = arg_sp208 - arg_sp1F8;
-                arg_sp218 = (f64) arg_sp28;
+                sp190.unk74.unkC = sp20;
+                sp28 = M2C_BITWISE(f32, sp190.unk74.unk4) - sp190.unk60.unk8;
+                sp190.unk88 = (f64) sp28;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp5D8 = arg_sp90;
-                arg_sp220 = arg_sp90;
-                arg_sp98 = (f32) arg_sp218 - arg_sp1C8;
-                arg_sp5E0 = (f64) arg_sp98;
-                arg_sp228 = (f64) arg_sp98;
+                sp560.unk74.unk4 = sp90;
+                sp190.unk88.unk8 = sp90;
+                sp98 = M2C_BITWISE(f32, sp190.unk88) - M2C_BITWISE(f32, sp190.unk38);
+                sp560.unk74.unkC = (f64) sp98;
+                sp190.unk88.unk10 = (f64) sp98;
                 this->unk738 = M2C_BITWISE(f32, this->unk738) - gUpdateTimeDelta;
                 var_f0_2612 = M2C_BITWISE(f32, this->unk738);
                 if (var_f0_2612 > 0.0f) {
@@ -1267,34 +1401,34 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 }
                 break;
             case 8:
-                arg_sp140.operator*(300.0f);
+                sp140.operator*(300.0f);
                 gb.unk0->GetProp();
-                arg_sp150.operator*(700.0f);
-                arg_sp160.GetPos();
+                sp150.operator*(700.0f);
+                sp160.GetPos();
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp170 = arg_sp10;
-                arg_sp18 = arg_sp168 - arg_sp158;
-                arg_sp178 = (f64) arg_sp18;
+                sp170 = sp10;
+                sp18 = sp168 - sp150.unk8;
+                sp178 = (f64) sp18;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp180 = arg_sp80;
-                arg_sp5C8 = arg_sp80;
-                arg_sp88 = (f32) arg_sp178 + arg_sp148;
-                arg_sp188 = (f64) arg_sp88;
-                arg_sp5D0 = (f64) arg_sp88;
-                arg_sp110.operator*(300.0f);
-                arg_sp120.GetPos();
+                sp180 = sp80;
+                sp560.unk60.unk8 = sp80;
+                sp88 = (f32) sp178 + sp140.unk8;
+                sp188 = (f64) sp88;
+                sp560.unk60.unk10 = (f64) sp88;
+                sp110.operator*(300.0f);
+                sp120.GetPos();
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp130 = arg_sp70;
-                arg_sp78 = arg_sp128 + arg_sp118;
-                arg_sp5D8 = arg_sp70;
-                arg_sp138 = (f64) arg_sp78;
-                arg_sp5E0 = (f64) arg_sp78;
+                sp130 = sp70;
+                sp78 = sp128 + sp110.unk8;
+                sp560.unk74.unk4 = sp70;
+                sp138 = (f64) sp78;
+                sp560.unk74.unkC = (f64) sp78;
                 break;
             }
         }
-        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp5C0);
+        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s8 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp560.unk60);
     }
 }
 #endif
@@ -1308,21 +1442,29 @@ void TrainChaseSpyro::UpdateAnimEvents() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TrainChaseSpyro::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s16 temp_r31_2814;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp10 = -arg0->unk0;
-    arg_sp14 = -arg0->unk4;
-    arg_sp18 = -arg0->unk8;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-    arg_sp30.RotatePitch((Matrix *) &arg_sp30, arg0->unk10);
-    arg_sp30.RotateRoll((Matrix *) &arg_sp30, arg0->unk14);
-    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) arg0));
+
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp10 = -arg0->unk0;
+    sp14 = -arg0->unk4;
+    sp18 = -arg0->unk8;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+    sp30.RotatePitch(&sp30, arg0->unk10);
+    sp30.RotateRoll(&sp30, arg0->unk14);
+    sp30.Translate(&sp30, *((MKVector3 *) arg0));
     temp_r31_2814 = M2C_FIELD(this->unk20, s16 *, 0x70);
-    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_2814, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 4, 0U);
+    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_2814, &sp30, (AnimationMatrixPosition) 4, 0U);
 }
 #endif
 
@@ -2085,60 +2227,101 @@ void TrainChaseSpyro::UpdateCartPosition() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::UpdateCartOrientation() {
+    f32 spFC;
+    f32 spF8;
+    f32 spF4;
+    f32 spF0;
+    f32 spEC;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    M2C_UNK spBC;
+    f64 spB8;
+    f64 spB0;
+    f64 spA0;
+    f32 sp90;
+    f32 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    MKVector3 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 temp_f2_4240;
     s32 temp_r3_4148;
     void *temp_r4_4156;
+
     temp_r3_4148 = checked_cast<TrainTrack *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1F8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_4148 != 0) {
-        arg_spA0.GetTrackZAxis(temp_r3_4148, this->unkE0);
+        spA0.GetTrackZAxis(temp_r3_4148, this->unkE0);
         temp_r4_4156 = this->unk8;
-        arg_spB0 = arg_spA0;
+        spB0 = spA0;
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x30);
-        arg_spB8 = arg_spA8;
+        spB8 = spA8;
         this->unk1E8 = M2C_FIELD(temp_r4_4156, f64 *, 0x38);
-        M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        arg_sp90.GetTrackPos(temp_r3_4148, this->unkE0, 0);
-        arg_spF0 = arg_sp90;
-        arg_spF4 = arg_sp94;
-        arg_spF8 = arg_sp98;
-        arg_spFC = 1.0f;
-        arg_sp80.GetTrackXAxis(temp_r3_4148, this->unkE0);
-        arg_spC0 = arg_sp80;
-        arg_sp38 = ((f32) arg_spB0 * arg_sp84) - (arg_spB4 * arg_sp80);
-        arg_sp30 = (arg_spB4 * arg_sp88) - ((f32) arg_spB8 * arg_sp84);
-        arg_sp34 = ((f32) arg_spB8 * arg_sp80) - ((f32) arg_spB0 * arg_sp88);
-        arg_sp78 = (f64) arg_sp38;
-        arg_sp70 = (f64) arg_sp30;
-        arg_spC4 = arg_sp84;
-        arg_spC8 = arg_sp88;
-        arg_spCC = 0.0f;
-        arg_spE0 = (f32) arg_spB0;
-        arg_spE4 = arg_spB4;
-        arg_spE8 = (f32) arg_spB8;
-        arg_spEC = 0.0f;
-        arg_spD0 = (f32) arg_sp70;
-        arg_spD4 = arg_sp74;
-        arg_spD8 = (f32) arg_sp78;
-        arg_spDC = 0.0f;
-        Normalise(*((MKVector3 *) &arg_sp50));
-        arg_spCC = 0.0f;
-        arg_spDC = 0.0f;
-        arg_sp28 = (arg_sp50 * arg_spE4) - (arg_sp54 * arg_spE0);
-        arg_sp20 = (arg_sp54 * arg_spE8) - (arg_sp58 * arg_spE4);
-        arg_sp24 = (arg_sp58 * arg_spE0) - (arg_sp50 * arg_spE8);
-        arg_sp68 = (f64) arg_sp28;
-        arg_sp60 = (f64) arg_sp20;
-        arg_spC0 = (f32) arg_sp60;
-        arg_spC4 = arg_sp64;
-        arg_spC8 = (f32) arg_sp68;
-        arg_sp18 = (arg_spE0 * arg_sp64) - (arg_spE4 * (f32) arg_sp60);
-        arg_sp10 = (arg_spE4 * (f32) arg_sp68) - (arg_spE8 * arg_sp64);
-        arg_sp14 = (arg_spE8 * (f32) arg_sp60) - (arg_spE0 * (f32) arg_sp68);
-        arg_sp48 = (f64) arg_sp18;
-        arg_sp40 = (f64) arg_sp10;
-        arg_spD0 = (f32) arg_sp40;
-        arg_spD4 = arg_sp44;
-        arg_spD8 = (f32) arg_sp48;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spC0));
+        M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp90.GetTrackPos(temp_r3_4148, this->unkE0, 0);
+        spF0 = sp90;
+        spF4 = sp94;
+        spF8 = sp98;
+        spFC = 1.0f;
+        sp80.GetTrackXAxis(temp_r3_4148, this->unkE0);
+        spC0 = sp80;
+        sp38 = ((f32) spB0 * sp84) - (unkspB4 * sp80);
+        sp30 = (unkspB4 * sp88) - ((f32) spB8 * sp84);
+        sp34 = ((f32) spB8 * sp80) - ((f32) spB0 * sp88);
+        sp78 = (f64) sp38;
+        sp70 = (f64) sp30;
+        spC4 = sp84;
+        spC8 = sp88;
+        spCC = 0.0f;
+        spE0 = (f32) spB0;
+        spE4 = unkspB4;
+        spE8 = (f32) spB8;
+        spEC = 0.0f;
+        spD0 = (f32) sp70;
+        spD4 = unksp74;
+        spD8 = (f32) sp78;
+        spDC = 0.0f;
+        Normalise(sp50);
+        temp_f2_4240 = M2C_BITWISE(f32, sp50);
+        spCC = 0.0f;
+        spDC = 0.0f;
+        sp28 = (temp_f2_4240 * spE4) - (sp50.unk4 * spE0);
+        sp20 = (sp50.unk4 * spE8) - (sp50.unk8 * spE4);
+        sp24 = (sp50.unk8 * spE0) - (temp_f2_4240 * spE8);
+        sp68 = (f64) sp28;
+        sp60 = (f64) sp20;
+        spC0 = (f32) sp60;
+        spC4 = unksp64;
+        spC8 = (f32) sp68;
+        sp18 = (spE0 * unksp64) - (spE4 * (f32) sp60);
+        sp10 = (spE4 * (f32) sp68) - (spE8 * unksp64);
+        sp14 = (spE8 * (f32) sp60) - (spE0 * (f32) sp68);
+        sp48 = (f64) sp18;
+        sp40 = (f64) sp10;
+        spD0 = (f32) sp40;
+        spD4 = unksp44;
+        spD8 = (f32) sp48;
+        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &spC0));
     }
 }
 #endif
@@ -2343,8 +2526,36 @@ void TrainChaseSpyro::Draw() {
     MKModel_Draw(this->unk720, NULL);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp150'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void TrainChaseSpyro::UpdateSpyro() {
+    Matrix sp150;
+    Matrix sp110;
+    Matrix spD0;
+    s8 spC5;
+    s8 spC4;
+    s32 spC0;
+    s8 spBC;
+    HeroInterface **spB8;
+    s8 spB4;
+    Matrix *spA8;
+    f64 sp90;
+    f64 sp88;
+    MKVector3 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    s16 sp10;
     Animation *temp_r3_4756;
     MKAnimScript *temp_r3_4737;
     MKModel *temp_r30_4754;
@@ -2357,19 +2568,20 @@ void TrainChaseSpyro::UpdateSpyro() {
     s32 temp_r3_4812;
     s32 var_r0_4822;
     s8 temp_r5_4911;
-    arg_sp150.SetIdentity();
-    MKModel_GetRefPointMatrix(this->unk4, this->unk274, (Matrix *) &arg_sp150, 1U);
-    MKModel_SetWorldMatrix(this->unk720, *((Matrix *) &arg_sp150));
+
+    sp150.SetIdentity();
+    MKModel_GetRefPointMatrix(this->unk4, this->unk274, &sp150, 1U);
+    MKModel_SetWorldMatrix(this->unk720, sp150);
     temp_r3_4737 = this->unk724;
     if ((temp_r3_4737 == NULL) || ((u32) temp_r3_4737->unk20 != 0)) {
         this->unk724->Animate(MKModel_GetAnimation(temp_r3_4737->unk8), -1, NULL);
         temp_r29_4753 = MKModel_GetWorldMatrix(this->unk720);
         temp_r30_4754 = this->unk720;
         temp_r3_4756 = MKModel_GetAnimation(this->unk720);
-        arg_sp10 = (s16) temp_r30_4754;
-        temp_r3_4756->CalculateMatrices((Matrix *) &arg_sp110, 1, &arg_sp10, (Matrix *) temp_r29_4753);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(M2C_FIELD(this->unk294, void **, 4), s32 *, 0x38), (MKVector3 *) &arg_sp78);
-        var_f4_4777 = (arg_sp138 * arg_sp138) + ((arg_sp130 * arg_sp130) + (arg_sp134 * arg_sp134));
+        sp10 = (s16) temp_r30_4754;
+        temp_r3_4756->CalculateMatrices(&sp110, 1, &sp10, (Matrix *) temp_r29_4753);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(M2C_FIELD(this->unk294, void **, 4), s32 *, 0x38), &sp78);
+        var_f4_4777 = (sp110.unk28 * sp110.unk28) + ((sp110.unk20 * sp110.unk20) + (sp110.unk24 * sp110.unk24));
         if (var_f4_4777 > 1e-12f) {
             if (var_f4_4777 > 0.0f) {
                 temp_f1_4783 = __frsqrte(var_f4_4777);
@@ -2379,18 +2591,18 @@ void TrainChaseSpyro::UpdateSpyro() {
             } else if (var_f4_4777 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_4777 = __float_nan;
             } else {
-                arg_sp14 = var_f4_4777;
-                temp_r3_4812 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                sp14 = var_f4_4777;
+                temp_r3_4812 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                 switch (temp_r3_4812) {             /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_4822 = 1;
                     } else {
                         var_r0_4822 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_4822 = 5;
                     } else {
                         var_r0_4822 = 3;
@@ -2408,35 +2620,35 @@ void TrainChaseSpyro::UpdateSpyro() {
         } else {
             var_f5_4844 = 0.0f;
         }
-        arg_sp18 = arg_sp130 * var_f5_4844;
-        arg_sp1C = arg_sp134 * var_f5_4844;
-        arg_sp20 = arg_sp138 * var_f5_4844;
-        arg_sp48 = (f64) arg_sp18;
-        arg_sp50 = (f64) arg_sp20;
-        arg_sp58 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-        arg_sp28 = -(f32) arg_sp48;
-        arg_sp2C = -arg_sp4C;
-        arg_sp30 = -(f32) arg_sp50;
-        arg_sp68 = (f64) arg_sp28;
-        arg_sp70 = (f64) arg_sp30;
-        arg_sp60 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp68), (MKVector3 *) &arg_sp58);
-        arg_sp140 = arg_sp78;
-        arg_sp144 = arg_sp7C;
-        arg_sp148 = arg_sp80;
-        arg_sp14C = 1.0f;
-        arg_spA8 = &arg_sp110;
-        arg_sp38.GetEffectsVelocity();
-        arg_sp88 = arg_sp38;
-        arg_sp90 = arg_sp40;
-        arg_spB4 = 0;
-        arg_spB8 = &this->unk298;
+        sp18 = sp110.unk20 * var_f5_4844;
+        sp1C = sp110.unk24 * var_f5_4844;
+        sp20 = sp110.unk28 * var_f5_4844;
+        sp48 = (f64) sp18;
+        sp50 = (f64) sp20;
+        sp58 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+        sp28 = -(f32) sp48;
+        sp2C = -unksp4C;
+        sp30 = -(f32) sp50;
+        sp68 = (f64) sp28;
+        sp70 = (f64) sp30;
+        sp60 = M2C_FIELD(&MKVector3::up, f64 *, 8);
+        KDMath_BuildMatrixFromFwd(&spD0, *((MKVector3 *) &sp68), (MKVector3 *) &sp58);
+        sp110.unk30 = M2C_BITWISE(f32, sp78);
+        sp110.unk34 = sp78.unk4;
+        sp110.unk38 = sp78.unk8;
+        sp110.unk3C = 1.0f;
+        spA8 = &sp110;
+        sp38.GetEffectsVelocity();
+        sp88 = sp38;
+        sp90 = sp40;
+        spB4 = 0;
+        spB8 = &this->unk298;
         temp_r5_4911 = this->unk260.GetState() == 1;
-        arg_spC0 = 0;
-        arg_spBC = temp_r5_4911;
-        arg_spC4 = 0;
-        arg_spC4 = 1;
-        this->unk294->Update((SpyroEffectsUpdateData *) &arg_sp88, GetInput());
+        spC0 = 0;
+        spBC = temp_r5_4911;
+        spC4 = 0;
+        spC5 = 1;
+        this->unk294->Update((SpyroEffectsUpdateData *) &sp88, GetInput());
         this->unk2A8.Update();
         KDSound_Play(this->unk724, 0U);
     }

@@ -11,6 +11,7 @@
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
@@ -897,6 +898,186 @@ void EventCamera::GetTargetStart() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'EnemySpawner *' to
 void EventCamera::Update() {
+    s32 sp814;
+    KDS_Message_SetCameraSimple sp810;
+    Matrix sp7D0;
+    f64 sp7C8;
+    f64 sp7C0;
+    f64 sp7B8;
+    f64 sp7B0;
+    f64 sp7A8;
+    f64 sp7A0;
+    f64 sp798;
+    f64 sp790;
+    f64 sp788;
+    f64 sp780;
+    f64 sp778;
+    f64 sp770;
+    f64 sp768;
+    f64 sp760;
+    f64 sp758;
+    f64 sp750;
+    M2C_UNK sp740;
+    MKVector3 sp730;
+    f64 sp728;
+    f64 sp720;
+    f64 sp718;
+    f64 sp710;
+    f64 sp700;
+    f64 sp6F0;
+    f64 sp6E8;
+    f64 sp6E0;
+    f64 sp6D8;
+    f64 sp6D0;
+    f64 sp6C8;
+    f64 sp6C0;
+    f64 sp6B0;
+    f64 sp6A0;
+    f64 sp698;
+    f64 sp690;
+    f64 sp680;
+    f64 sp678;
+    f64 sp670;
+    f64 sp668;
+    f64 sp660;
+    f64 sp658;
+    f64 sp650;
+    f64 sp648;
+    f64 sp640;
+    f64 sp630;
+    f64 sp628;
+    f64 sp620;
+    f64 sp618;
+    f64 sp610;
+    MKVector3 sp600;
+    f64 sp5F0;
+    f64 sp5E8;
+    f64 sp5E0;
+    MKVector3 sp5D0;
+    f64 sp5C0;
+    f64 sp5B8;
+    f64 sp5B0;
+    f64 sp5A8;
+    f64 sp5A0;
+    f64 sp590;
+    f64 sp580;
+    f64 sp578;
+    f64 sp570;
+    f64 sp568;
+    f64 sp560;
+    f64 sp558;
+    f64 sp550;
+    f64 sp548;
+    f64 sp540;
+    M2C_UNK sp530;
+    f64 sp528;                                      /* compiler-managed */
+    f64 sp520;                                      /* compiler-managed */
+    MKVector3 sp510;
+    f64 sp500;
+    f64 sp4F8;                                      /* compiler-managed */
+    f64 sp4F0;                                      /* compiler-managed */
+    MKVector3 sp4E0;
+    f64 sp4D0;
+    f64 sp4C8;
+    f64 sp4C0;
+    f64 sp4B8;
+    f64 sp4B0;
+    f64 sp4A8;
+    f64 sp4A0;
+    MKVector3 sp490;
+    f64 sp488;                                      /* compiler-managed */
+    f64 sp480;                                      /* compiler-managed */
+    f64 sp470;
+    f64 sp460;
+    EventCamera sp420;
+    M2C_UNK sp410;
+    f64 sp408;
+    KDUniformSpline sp3F0;
+    KDUniformSpline sp3D0;
+    f64 sp3C8;                                      /* compiler-managed */
+    f64 sp3C0;                                      /* compiler-managed */
+    KDUniformSpline sp3A0;
+    EventCamera sp380;
+    M2C_UNK sp370;
+    f64 sp368;
+    KDUniformSpline sp350;
+    KDUniformSpline sp330;
+    f64 sp328;
+    f64 sp320;
+    KDUniformSpline sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    f64 sp2E8;
+    f64 sp2E0;
+    MKVector3 sp2D0;
+    f64 sp2C0;
+    f64 sp2B0;
+    MKVector3 sp2A0;
+    M2C_UNK sp290;
+    MKVector3 sp280;
+    M2C_UNK sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f32 sp208;
+    f32 sp1F8;
+    f32 sp1E8;
+    f32 sp1D8;
+    f32 sp1C8;
+    f32 sp1B8;
+    f32 sp1A8;
+    f32 sp1A4;
+    f32 sp1A0;
+    f32 sp198;
+    f32 sp188;
+    f32 sp178;
+    f32 sp168;
+    f32 sp158;
+    f32 sp148;
+    f32 sp138;
+    f32 sp128;
+    f32 sp118;
+    f32 sp108;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp78;
+    f32 sp68;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     EventCamera *temp_r3_2815;
     f32 temp_f0_1756;
     f32 temp_f0_1805;
@@ -954,6 +1135,7 @@ void EventCamera::Update() {
     void *temp_r4_1578;
     void *temp_r4_2319;
     void *temp_r4_2705;
+
     MKProp::Update();
     temp_ret_1483 = gb.unk0->IsDying();
     var_r4_1483 = (u32) temp_ret_1483;
@@ -970,82 +1152,82 @@ void EventCamera::Update() {
                 if ((u8) this->unk103 != 0) {
                     if ((u8) this->unk104 != 0) {
                         ((Matrix *) (((SpawnerObject *) (temp_r3_1512 + 0x90))->GetActive(0)->unk8))->ZAxis3();
-                        arg_sp40 = -*M2C_ERROR(/* Read from unset register $r3 */);
-                        arg_sp44 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
-                        arg_sp48 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
-                        M2C_FIELD(&cameraDir, f64 *, 0) = (f64) arg_sp40;
-                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) arg_sp48;
-                        arg_sp760 = (f64) arg_sp40;
-                        arg_sp768 = (f64) arg_sp48;
-                        arg_sp730.operator*(this->unkDC);
+                        sp40 = -*M2C_ERROR(/* Read from unset register $r3 */);
+                        sp44 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
+                        sp48 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
+                        M2C_FIELD(&cameraDir, f64 *, 0) = (f64) sp40;
+                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) sp48;
+                        sp760 = (f64) sp40;
+                        sp768 = (f64) sp48;
+                        sp730.operator*(this->unkDC);
                         ((SpawnerObject *) (temp_r3_1512 + 0x90))->GetActive(0);
-                        arg_sp740.GetPos();
+                        sp740.GetPos();
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        M2C_FIELD(&cameraPos, f64 *, 0) = arg_sp1C0;
-                        arg_sp1C8 = arg_sp748 - arg_sp738;
-                        arg_sp750 = arg_sp1C0;
-                        M2C_FIELD(&cameraPos, f64 *, 8) = (f64) arg_sp1C8;
-                        arg_sp758 = (f64) arg_sp1C8;
+                        M2C_FIELD(&cameraPos, f64 *, 0) = sp1C0;
+                        sp1C8 = sp748 - sp730.unk8;
+                        sp750 = sp1C0;
+                        M2C_FIELD(&cameraPos, f64 *, 8) = (f64) sp1C8;
+                        sp758 = (f64) sp1C8;
                         M2C_FIELD(&cameraPos, f32 *, 4) = (f32) (M2C_FIELD(&cameraPos, f32 *, 4) + this->unkE0);
                         temp_r4_1578 = ((SpawnerObject *) (temp_r3_1512 + 0x90))->GetActive(0)->unk8;
                         temp_f0_1580 = M2C_FIELD(temp_r4_1578, f64 *, 0x30);
                         temp_f2_1581 = M2C_FIELD(temp_r4_1578, f64 *, 0x38);
-                        arg_sp720 = temp_f0_1580;
+                        sp720 = temp_f0_1580;
                         M2C_FIELD(&cameraDir, f64 *, 0) = temp_f0_1580;
                         M2C_FIELD(&cameraDir, f64 *, 8) = temp_f2_1581;
-                        arg_sp728 = temp_f2_1581;
+                        sp728 = temp_f2_1581;
                         cameraDir.unk4 += this->unkEC;
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        arg_sp710 = arg_sp1B0;
-                        arg_sp1B8 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
-                        M2C_FIELD(&cameraDir, f64 *, 0) = arg_sp1B0;
-                        arg_sp718 = (f64) arg_sp1B8;
-                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) arg_sp1B8;
+                        sp710 = sp1B0;
+                        sp1B8 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
+                        M2C_FIELD(&cameraDir, f64 *, 0) = sp1B0;
+                        sp718 = (f64) sp1B8;
+                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) sp1B8;
                         cameraDir.Normalise();
                     } else {
-                        arg_sp700.GetTargetStart();
-                        M2C_FIELD(&cameraDir, f64 *, 0) = arg_sp700;
-                        M2C_FIELD(&cameraDir, f64 *, 8) = arg_sp708;
-                        arg_sp6D0 = this->unk90;
-                        arg_sp6D8 = this->unk98;
-                        arg_sp1A8 = cameraDir.unk8;
-                        arg_sp1A0 = cameraDir.unk0;
-                        arg_sp1A4 = cameraDir.unk4 - this->unkEC;
-                        arg_sp6E8 = (f64) arg_sp1A8;
-                        arg_sp6E0 = (f64) arg_sp1A0;
-                        arg_sp6F0.CalculateCircleTangent((MKVector3) this, (MKVector3) &arg_sp6E0, this->unkDC);
-                        M2C_FIELD(&cameraPos, f64 *, 0) = arg_sp6F0;
-                        M2C_FIELD(&cameraPos, f64 *, 8) = arg_sp6F8;
+                        sp700.GetTargetStart();
+                        M2C_FIELD(&cameraDir, f64 *, 0) = sp700;
+                        M2C_FIELD(&cameraDir, f64 *, 8) = sp708;
+                        sp6D0 = this->unk90;
+                        sp6D8 = this->unk98;
+                        sp1A8 = cameraDir.unk8;
+                        sp1A0 = cameraDir.unk0;
+                        sp1A4 = cameraDir.unk4 - this->unkEC;
+                        sp6E8 = (f64) sp1A8;
+                        sp6E0 = (f64) sp1A0;
+                        sp6F0.CalculateCircleTangent((MKVector3) this, (MKVector3) &sp6E0, this->unkDC);
+                        M2C_FIELD(&cameraPos, f64 *, 0) = sp6F0;
+                        M2C_FIELD(&cameraPos, f64 *, 8) = sp6F8;
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        arg_sp6C0 = arg_sp190;
-                        arg_sp198 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
-                        M2C_FIELD(&cameraDir, f64 *, 0) = arg_sp190;
-                        arg_sp6C8 = (f64) arg_sp198;
-                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) arg_sp198;
+                        sp6C0 = sp190;
+                        sp198 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
+                        M2C_FIELD(&cameraDir, f64 *, 0) = sp190;
+                        sp6C8 = (f64) sp198;
+                        M2C_FIELD(&cameraDir, f64 *, 8) = (f64) sp198;
                         cameraDir.Normalise();
                     }
                 } else {
-                    arg_sp6B0.GetTargetStart();
-                    M2C_FIELD(&cameraDir, f64 *, 0) = arg_sp6B0;
-                    M2C_FIELD(&cameraDir, f64 *, 8) = arg_sp6B8;
-                    this->unk80 = arg_sp6B0;
-                    this->unk88 = arg_sp6B8;
-                    arg_sp6A0.GetSourceStart();
-                    M2C_FIELD(&cameraPos, f64 *, 0) = arg_sp6A0;
-                    M2C_FIELD(&cameraPos, f64 *, 8) = arg_sp6A8;
+                    sp6B0.GetTargetStart();
+                    M2C_FIELD(&cameraDir, f64 *, 0) = sp6B0;
+                    M2C_FIELD(&cameraDir, f64 *, 8) = sp6B8;
+                    this->unk80 = sp6B0;
+                    this->unk88 = sp6B8;
+                    sp6A0.GetSourceStart();
+                    M2C_FIELD(&cameraPos, f64 *, 0) = sp6A0;
+                    M2C_FIELD(&cameraPos, f64 *, 8) = sp6A8;
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp690 = arg_sp180;
-                    arg_sp188 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
-                    M2C_FIELD(&cameraDir, f64 *, 0) = arg_sp180;
-                    arg_sp698 = (f64) arg_sp188;
-                    M2C_FIELD(&cameraDir, f64 *, 8) = (f64) arg_sp188;
+                    sp690 = sp180;
+                    sp188 = cameraDir.unk8 - (f32) M2C_FIELD(&cameraPos, f64 *, 8);
+                    M2C_FIELD(&cameraDir, f64 *, 0) = sp180;
+                    sp698 = (f64) sp188;
+                    M2C_FIELD(&cameraDir, f64 *, 8) = (f64) sp188;
                     cameraDir.Normalise();
                 }
             }
@@ -1073,13 +1255,13 @@ void EventCamera::Update() {
         temp_f1_1777 = this->unkC8 / this->unkD0;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (temp_f1_1777 == 1.0f) {
-            arg_sp660 = M2C_FIELD(&cameraPos, f64 *, 0);
-            arg_sp668 = M2C_FIELD(&cameraPos, f64 *, 8);
-            arg_sp670 = this->unk90;
-            arg_sp678 = this->unk98;
-            Lerp((MKVector3) &arg_sp680, (MKVector3) &arg_sp670, temp_f1_1777);
-            this->unk50 = arg_sp680;
-            this->unk58 = arg_sp688;
+            sp660 = M2C_FIELD(&cameraPos, f64 *, 0);
+            sp668 = M2C_FIELD(&cameraPos, f64 *, 8);
+            sp670 = this->unk90;
+            sp678 = this->unk98;
+            Lerp((MKVector3) &sp680, (MKVector3) &sp670, temp_f1_1777);
+            this->unk50 = sp680;
+            this->unk58 = sp688;
             if ((u8) this->unk100 != 0) {
                 temp_f1_1803 = this->unkD0;
                 var_f30_1804 = 2.5f;
@@ -1090,66 +1272,66 @@ void EventCamera::Update() {
                     var_f30_1804 = temp_f0_1805;
                 }
                 if (this->unkC8 < var_f30_1804) {
-                    arg_sp640 = M2C_FIELD(&cameraPos, f64 *, 0);
-                    arg_sp650 = this->unk90;
-                    arg_sp648 = M2C_FIELD(&cameraPos, f64 *, 8);
-                    arg_sp658 = this->unk98;
+                    sp640 = M2C_FIELD(&cameraPos, f64 *, 0);
+                    sp650 = this->unk90;
+                    sp648 = M2C_FIELD(&cameraPos, f64 *, 8);
+                    sp658 = this->unk98;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-                    arg_sp240 = arg_sp170;
-                    arg_sp178 = (f32) arg_sp648 - (f32) arg_sp658;
-                    arg_sp248 = (f64) arg_sp178;
+                    sp240 = sp170;
+                    sp178 = (f32) sp648 - (f32) sp658;
+                    sp248 = (f64) sp178;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    arg_sp230 = arg_sp160;
-                    arg_sp168 = (f32) arg_sp248 * (var_f30_1804 / temp_f1_1803);
-                    arg_sp238 = (f64) arg_sp168;
+                    sp230 = sp160;
+                    sp168 = (f32) sp248 * (var_f30_1804 / temp_f1_1803);
+                    sp238 = (f64) sp168;
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                    arg_sp7C0 = arg_sp150;
-                    arg_sp158 = (f32) arg_sp658 + (f32) arg_sp238;
-                    arg_sp7C8 = (f64) arg_sp158;
-                    arg_sp630.GetTargetStart();
-                    arg_sp7B0 = arg_sp630;
-                    arg_sp7B8 = arg_sp638;
+                    sp7C0 = sp150;
+                    sp158 = (f32) sp658 + (f32) sp238;
+                    sp7C8 = (f64) sp158;
+                    sp630.GetTargetStart();
+                    sp7B0 = sp630;
+                    sp7B8 = sp638;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp620 = arg_sp140;
-                    arg_sp148 = (f32) arg_sp7B8 - (f32) arg_sp7C8;
-                    arg_sp7B0 = arg_sp140;
-                    arg_sp628 = (f64) arg_sp148;
-                    arg_sp7B8 = (f64) arg_sp148;
-                    arg_sp7B0.Normalise();
-                    KDMath_NormalisedSlerp(*((MKVector3 *) &arg_sp600), *((MKVector3 *) &this->unkA0), this->unkC8 / var_f30_1804);
+                    sp620 = sp140;
+                    sp148 = (f32) sp7B8 - (f32) sp7C8;
+                    sp7B0 = sp140;
+                    sp628 = (f64) sp148;
+                    sp7B8 = (f64) sp148;
+                    sp7B0.Normalise();
+                    KDMath_NormalisedSlerp(sp600, *((MKVector3 *) &this->unkA0), this->unkC8 / var_f30_1804);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_FIELD(this, f64 *, 0x60) = arg_sp130;
-                    arg_sp138 = (f32) M2C_FIELD(this, f64 *, 0x58) + arg_sp608;
-                    arg_sp610 = arg_sp130;
-                    arg_sp618 = (f64) arg_sp138;
-                    M2C_FIELD(this, f64 *, 0x68) = (f64) arg_sp138;
+                    M2C_FIELD(this, f64 *, 0x60) = sp130;
+                    sp138 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp600.unk8;
+                    sp610 = sp130;
+                    sp618 = (f64) sp138;
+                    M2C_FIELD(this, f64 *, 0x68) = (f64) sp138;
                 } else {
-                    arg_sp5F0.GetTargetStart();
-                    M2C_FIELD(this, f64 *, 0x60) = arg_sp5F0;
-                    M2C_FIELD(this, f64 *, 0x68) = arg_sp5F8;
+                    sp5F0.GetTargetStart();
+                    M2C_FIELD(this, f64 *, 0x60) = sp5F0;
+                    M2C_FIELD(this, f64 *, 0x68) = sp5F8;
                 }
             } else {
-                KDMath_NormalisedSlerp(*((MKVector3 *) &arg_sp5D0), *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkD0);
+                KDMath_NormalisedSlerp(sp5D0, *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkD0);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp120;
-                arg_sp128 = (f32) M2C_FIELD(this, f64 *, 0x58) + arg_sp5D8;
-                arg_sp5E0 = arg_sp120;
-                arg_sp5E8 = (f64) arg_sp128;
-                M2C_FIELD(this, f64 *, 0x68) = (f64) arg_sp128;
+                M2C_FIELD(this, f64 *, 0x60) = sp120;
+                sp128 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp5D0.unk8;
+                sp5E0 = sp120;
+                sp5E8 = (f64) sp128;
+                M2C_FIELD(this, f64 *, 0x68) = (f64) sp128;
             }
         } else {
-            arg_sp5A0 = M2C_FIELD(&cameraPos, f64 *, 0);
-            arg_sp5A8 = M2C_FIELD(&cameraPos, f64 *, 8);
-            arg_sp5B0 = this->unk90;
-            arg_sp5B8 = this->unk98;
-            Lerp((MKVector3) &arg_sp5C0, (MKVector3) &arg_sp5B0, 1.0f);
-            this->unk50 = arg_sp5C0;
-            this->unk58 = arg_sp5C8;
-            arg_sp590.GetTargetStart();
-            M2C_FIELD(this, f64 *, 0x60) = arg_sp590;
-            M2C_FIELD(this, f64 *, 0x68) = arg_sp598;
+            sp5A0 = M2C_FIELD(&cameraPos, f64 *, 0);
+            sp5A8 = M2C_FIELD(&cameraPos, f64 *, 8);
+            sp5B0 = this->unk90;
+            sp5B8 = this->unk98;
+            Lerp((MKVector3) &sp5C0, (MKVector3) &sp5B0, 1.0f);
+            this->unk50 = sp5C0;
+            this->unk58 = sp5C8;
+            sp590.GetTargetStart();
+            M2C_FIELD(this, f64 *, 0x60) = sp590;
+            M2C_FIELD(this, f64 *, 0x68) = sp598;
             this->unk101 = 0;
             this->unkC8 = 0.0f;
             if (((u8) this->unk102 == 0) && ((void *) this->unkB4 == NULL) && ((void *) this->unkB0 == NULL)) {
@@ -1188,13 +1370,13 @@ void EventCamera::Update() {
         temp_f1_2063 = this->unkC8 / this->unkCC;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (temp_f1_2063 == 1.0f) {
-            arg_sp560 = M2C_FIELD(&cameraPos, f64 *, 0);
-            arg_sp568 = M2C_FIELD(&cameraPos, f64 *, 8);
-            arg_sp570 = this->unk90;
-            arg_sp578 = this->unk98;
-            Lerp((MKVector3) &arg_sp580, (MKVector3) &arg_sp570, temp_f1_2063);
-            this->unk50 = arg_sp580;
-            this->unk58 = arg_sp588;
+            sp560 = M2C_FIELD(&cameraPos, f64 *, 0);
+            sp568 = M2C_FIELD(&cameraPos, f64 *, 8);
+            sp570 = this->unk90;
+            sp578 = this->unk98;
+            Lerp((MKVector3) &sp580, (MKVector3) &sp570, temp_f1_2063);
+            this->unk50 = sp580;
+            this->unk58 = sp588;
             if ((u8) this->unkFE != 0) {
                 temp_f2_2089 = this->unkCC;
                 var_f1_2090 = 2.5f;
@@ -1206,68 +1388,68 @@ void EventCamera::Update() {
                 }
                 temp_f30_2098 = temp_f2_2089 - var_f1_2090;
                 if (this->unkC8 > temp_f30_2098) {
-                    arg_sp540 = M2C_FIELD(&cameraPos, f64 *, 0);
-                    arg_sp550 = this->unk90;
-                    arg_sp548 = M2C_FIELD(&cameraPos, f64 *, 8);
-                    arg_sp558 = this->unk98;
+                    sp540 = M2C_FIELD(&cameraPos, f64 *, 0);
+                    sp550 = this->unk90;
+                    sp548 = M2C_FIELD(&cameraPos, f64 *, 8);
+                    sp558 = this->unk98;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-                    arg_sp220 = arg_sp110;
-                    arg_sp118 = (f32) arg_sp548 - (f32) arg_sp558;
-                    arg_sp228 = (f64) arg_sp118;
+                    sp220 = sp110;
+                    sp118 = (f32) sp548 - (f32) sp558;
+                    sp228 = (f64) sp118;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    arg_sp210 = arg_sp100;
-                    arg_sp108 = (f32) arg_sp228 * (temp_f30_2098 / temp_f2_2089);
-                    arg_sp218 = (f64) arg_sp108;
+                    sp210 = sp100;
+                    sp108 = (f32) sp228 * (temp_f30_2098 / temp_f2_2089);
+                    sp218 = (f64) sp108;
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                    arg_sp7A0 = arg_spF0;
-                    arg_spF8 = (f32) arg_sp558 + (f32) arg_sp218;
-                    arg_sp7A8 = (f64) arg_spF8;
-                    arg_sp530.GetTargetStart();
+                    sp7A0 = spF0;
+                    spF8 = (f32) sp558 + (f32) sp218;
+                    sp7A8 = (f64) spF8;
+                    sp530.GetTargetStart();
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp790 = arg_sp200;
-                    arg_sp208 = arg_sp538 - (f32) arg_sp7A8;
-                    arg_sp798 = (f64) arg_sp208;
-                    arg_sp790.Normalise();
-                    KDMath_NormalisedSlerp(*((MKVector3 *) &arg_sp510), *((MKVector3 *) &arg_sp790), (this->unkC8 - temp_f30_2098) / temp_f30_2098);
+                    sp790 = sp200;
+                    sp208 = sp538 - (f32) sp7A8;
+                    sp798 = (f64) sp208;
+                    sp790.Normalise();
+                    KDMath_NormalisedSlerp(sp510, *((MKVector3 *) &sp790), (this->unkC8 - temp_f30_2098) / temp_f30_2098);
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_FIELD(this, f64 *, 0x60) = arg_spE0;
-                    arg_spE8 = (f32) M2C_FIELD(this, f64 *, 0x58) + arg_sp518;
-                    arg_sp520 = arg_spE0;
-                    arg_sp528 = (f64) arg_spE8;
-                    M2C_FIELD(this, f64 *, 0x68) = (f64) arg_spE8;
+                    M2C_FIELD(this, f64 *, 0x60) = spE0;
+                    spE8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp510.unk8;
+                    sp520 = spE0;
+                    sp528 = (f64) spE8;
+                    M2C_FIELD(this, f64 *, 0x68) = (f64) spE8;
                 } else {
-                    arg_sp500.GetTargetStart();
-                    M2C_FIELD(this, f64 *, 0x60) = arg_sp500;
-                    M2C_FIELD(this, f64 *, 0x68) = arg_sp508;
+                    sp500.GetTargetStart();
+                    M2C_FIELD(this, f64 *, 0x60) = sp500;
+                    M2C_FIELD(this, f64 *, 0x68) = sp508;
                 }
             } else {
-                KDMath_NormalisedSlerp(*((MKVector3 *) &arg_sp4E0), *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkCC);
+                KDMath_NormalisedSlerp(sp4E0, *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkCC);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(this, f64 *, 0x60) = arg_spD0;
-                arg_spD8 = (f32) M2C_FIELD(this, f64 *, 0x58) + arg_sp4E8;
-                arg_sp4F0 = arg_spD0;
-                arg_sp4F8 = (f64) arg_spD8;
-                M2C_FIELD(this, f64 *, 0x68) = (f64) arg_spD8;
+                M2C_FIELD(this, f64 *, 0x60) = spD0;
+                spD8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp4E0.unk8;
+                sp4F0 = spD0;
+                sp4F8 = (f64) spD8;
+                M2C_FIELD(this, f64 *, 0x68) = (f64) spD8;
             }
         } else {
-            arg_sp4B0 = M2C_FIELD(&cameraPos, f64 *, 0);
-            arg_sp4B8 = M2C_FIELD(&cameraPos, f64 *, 8);
-            arg_sp4C0 = this->unk90;
-            arg_sp4C8 = this->unk98;
-            Lerp((MKVector3) &arg_sp4D0, (MKVector3) &arg_sp4C0, 1.0f);
-            this->unk50 = arg_sp4D0;
-            this->unk58 = arg_sp4D8;
-            KDMath_NormalisedSlerp(*((MKVector3 *) &arg_sp490), *((MKVector3 *) &this->unkA0), 1.0f);
+            sp4B0 = M2C_FIELD(&cameraPos, f64 *, 0);
+            sp4B8 = M2C_FIELD(&cameraPos, f64 *, 8);
+            sp4C0 = this->unk90;
+            sp4C8 = this->unk98;
+            Lerp((MKVector3) &sp4D0, (MKVector3) &sp4C0, 1.0f);
+            this->unk50 = sp4D0;
+            this->unk58 = sp4D8;
+            KDMath_NormalisedSlerp(sp490, *((MKVector3 *) &this->unkA0), 1.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_FIELD(this, f64 *, 0x60) = arg_spC0;
-            arg_spC8 = (f32) M2C_FIELD(this, f64 *, 0x58) + arg_sp498;
-            arg_sp4A0 = arg_spC0;
-            arg_sp4A8 = (f64) arg_spC8;
-            M2C_FIELD(this, f64 *, 0x68) = (f64) arg_spC8;
+            M2C_FIELD(this, f64 *, 0x60) = spC0;
+            spC8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp490.unk8;
+            sp4A0 = spC0;
+            sp4A8 = (f64) spC8;
+            M2C_FIELD(this, f64 *, 0x68) = (f64) spC8;
             FunctionOff();
             this->unkFC = 1;
             this->unkFD = 0;
@@ -1282,14 +1464,14 @@ void EventCamera::Update() {
             if ((u8) this->unkFA == 0) {
                 gb.unk30.FadeIn(NULL);
             } else {
-                arg_spB0 = 0.0f;
-                arg_spB4 = 0.0f;
-                arg_spB8 = 0.0f;
-                arg_spBC = 1.0f;
-                arg_sp480 = (f64) arg_spB0;
-                arg_sp488 = (f64) arg_spB8;
-                gb.unk40 = (f64) arg_spB0;
-                gb.unk48 = (f64) arg_spB8;
+                spB0 = 0.0f;
+                spB4 = 0.0f;
+                spB8 = 0.0f;
+                spBC = 1.0f;
+                sp480 = (f64) spB0;
+                sp488 = (f64) spB8;
+                gb.unk40 = (f64) spB0;
+                gb.unk48 = (f64) spB8;
             }
             this->unkF9 = 1;
             return;
@@ -1299,15 +1481,15 @@ void EventCamera::Update() {
             temp_f1_2322 = this->unkC4;
             temp_f0_2323 = this->unkC0;
             if (temp_f1_2322 < temp_f0_2323) {
-                arg_sp2C = 0.0f;
-                arg_sp470.GetMeasure(temp_f1_2322 / temp_f0_2323, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp470;
-                M2C_FIELD(this, f64 *, 0x68) = arg_sp478;
+                sp2C = 0.0f;
+                sp470.GetMeasure(temp_f1_2322 / temp_f0_2323, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                M2C_FIELD(this, f64 *, 0x60) = sp470;
+                M2C_FIELD(this, f64 *, 0x68) = sp478;
             } else {
-                arg_sp28 = 0.0f;
-                arg_sp460.GetMeasure(1.0f, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp460;
-                M2C_FIELD(this, f64 *, 0x68) = arg_sp468;
+                sp28 = 0.0f;
+                sp460.GetMeasure(1.0f, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                M2C_FIELD(this, f64 *, 0x60) = sp460;
+                M2C_FIELD(this, f64 *, 0x68) = sp468;
             }
         } else if (((MKSceneManager *) this->unkF0 != NULL) || ((u8) this->unkFB != 0)) {
             if ((u8) this->unkFB != 0) {
@@ -1316,10 +1498,10 @@ void EventCamera::Update() {
             if ((u8) this->unk102 != 0) {
                 ((SpawnerObject *) (checked_cast<P12EnemySpawner))->GetNumberActive(6MKProp>__FP6MKProp(this->unkF0->PropResolver_Resolve((s32) temp_r4_2319)) + 0x90);
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                    arg_sp450.GetTargetStart();
+                    sp380.unkD0.GetTargetStart();
                     var_r30_1504 = 0;
-                    M2C_FIELD(this, f64 *, 0x60) = arg_sp450;
-                    M2C_FIELD(this, f64 *, 0x68) = arg_sp458;
+                    M2C_FIELD(this, f64 *, 0x60) = (f64) sp380.unkD0;
+                    M2C_FIELD(this, f64 *, 0x68) = (f64) sp380.unkD8;
                 }
             } else {
                 temp_r3_2388 = this->unkF0->PropResolver_Resolve((s32) temp_r4_2319);
@@ -1328,10 +1510,10 @@ void EventCamera::Update() {
                     var_r30_1504 = 0;
                     temp_f0_2393 = M2C_FIELD(temp_r3_2391, f64 *, 0x30);
                     temp_f2_2394 = M2C_FIELD(temp_r3_2391, f64 *, 0x38);
-                    arg_sp440 = temp_f0_2393;
+                    sp380.unkC0 = temp_f0_2393;
                     M2C_FIELD(this, f64 *, 0x60) = temp_f0_2393;
                     M2C_FIELD(this, f64 *, 0x68) = temp_f2_2394;
-                    arg_sp448 = temp_f2_2394;
+                    sp380.unkC8 = temp_f2_2394;
                     this->unk60.unk4 += this->unkEC;
                 }
             }
@@ -1340,64 +1522,64 @@ void EventCamera::Update() {
             temp_f0_2412 = this->unkBC;
             if (temp_f1_2411 < temp_f0_2412) {
                 if ((EventCamera *) this->unkB8 != NULL) {
-                    arg_sp410.GetSourceStart();
-                    arg_sp420.GetTargetStart();
+                    sp410.GetSourceStart();
+                    sp420.GetTargetStart();
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp430 = arg_sp1F0;
-                    arg_sp1F8 = arg_sp428 - arg_sp418;
-                    arg_sp438 = (f64) arg_sp1F8;
-                    temp_f30_2445 = arg_sp430.Magnitude();
-                    arg_sp3D0.GetVelocity(this->unkC4 / this->unkBC);
-                    arg_sp3E0.operator*(temp_f30_2445);
-                    arg_sp1C = 0.0f;
-                    arg_sp3F0.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                    sp420.unk10 = sp1F0;
+                    sp1F8 = M2C_BITWISE(f32, sp420.unk8) - sp418;
+                    sp420.unk18 = (f64) sp1F8;
+                    temp_f30_2445 = sp420.unk10.Magnitude();
+                    sp3D0.GetVelocity(this->unkC4 / this->unkBC);
+                    sp3D0.unk10.operator*(temp_f30_2445);
+                    sp1C = 0.0f;
+                    sp3F0.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_FIELD(this, f64 *, 0x60) = arg_spA0;
-                    arg_spA8 = arg_sp3F8 + arg_sp3E8;
-                    arg_sp400 = arg_spA0;
-                    arg_sp408 = (f64) arg_spA8;
-                    M2C_FIELD(this, f64 *, 0x68) = (f64) arg_spA8;
+                    M2C_FIELD(this, f64 *, 0x60) = spA0;
+                    spA8 = sp3F0.unk8 + sp3E8;
+                    sp3F0.unk10 = spA0;
+                    sp408 = (f64) spA8;
+                    M2C_FIELD(this, f64 *, 0x68) = (f64) spA8;
                 } else {
-                    arg_sp3A0.GetVelocity(temp_f1_2411 / temp_f0_2412);
-                    arg_sp18 = 0.0f;
-                    arg_sp3B0.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                    sp3A0.GetVelocity(temp_f1_2411 / temp_f0_2412);
+                    sp18 = 0.0f;
+                    sp3A0.unk10.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_FIELD(this, f64 *, 0x60) = arg_sp90;
-                    arg_sp98 = arg_sp3B8 + arg_sp3A8;
-                    arg_sp3C0 = arg_sp90;
-                    arg_sp3C8 = (f64) arg_sp98;
-                    M2C_FIELD(this, f64 *, 0x68) = (f64) arg_sp98;
+                    M2C_FIELD(this, f64 *, 0x60) = sp90;
+                    sp98 = sp3B8 + sp3A0.unk8;
+                    sp3C0 = sp90;
+                    sp3C8 = (f64) sp98;
+                    M2C_FIELD(this, f64 *, 0x68) = (f64) sp98;
                 }
             } else if ((EventCamera *) this->unkB8 != NULL) {
-                arg_sp370.GetSourceStart();
-                arg_sp380.GetTargetStart();
+                sp370.GetSourceStart();
+                sp380.GetTargetStart();
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                arg_sp390 = arg_sp1E0;
-                arg_sp1E8 = arg_sp388 - arg_sp378;
-                arg_sp398 = (f64) arg_sp1E8;
-                temp_f30_2537 = arg_sp390.Magnitude();
-                arg_sp330.GetVelocity(1.0f);
-                arg_sp340.operator*(temp_f30_2537);
-                arg_sp14 = 0.0f;
-                arg_sp350.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                sp380.unk10 = sp1E0;
+                sp1E8 = M2C_BITWISE(f32, sp380.unk8) - sp378;
+                sp380.unk18 = (f64) sp1E8;
+                temp_f30_2537 = sp380.unk10.Magnitude();
+                sp330.GetVelocity(1.0f);
+                sp330.unk10.operator*(temp_f30_2537);
+                sp14 = 0.0f;
+                sp350.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp80;
-                arg_sp88 = arg_sp358 + arg_sp348;
-                arg_sp360 = arg_sp80;
-                arg_sp368 = (f64) arg_sp88;
-                M2C_FIELD(this, f64 *, 0x68) = (f64) arg_sp88;
+                M2C_FIELD(this, f64 *, 0x60) = sp80;
+                sp88 = sp350.unk8 + sp348;
+                sp350.unk10 = sp80;
+                sp368 = (f64) sp88;
+                M2C_FIELD(this, f64 *, 0x68) = (f64) sp88;
             } else {
-                arg_sp300.GetVelocity(1.0f);
-                arg_sp10 = 0.0f;
-                arg_sp310.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                sp300.GetVelocity(1.0f);
+                sp10 = 0.0f;
+                sp300.unk10.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp70;
-                arg_sp78 = arg_sp318 + arg_sp308;
-                arg_sp320 = arg_sp70;
-                arg_sp328 = (f64) arg_sp78;
-                M2C_FIELD(this, f64 *, 0x68) = (f64) arg_sp78;
+                M2C_FIELD(this, f64 *, 0x60) = sp70;
+                sp78 = sp318 + sp300.unk8;
+                sp320 = sp70;
+                sp328 = (f64) sp78;
+                M2C_FIELD(this, f64 *, 0x68) = (f64) sp78;
             }
         }
         if ((u8) this->unk103 != 0) {
@@ -1406,22 +1588,22 @@ void EventCamera::Update() {
                 ((SpawnerObject *) (temp_r3_2607 + 0x90))->GetNumberActive();
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     ((Matrix *) (((SpawnerObject *) (temp_r3_2607 + 0x90))->GetActive(0)->unk8))->ZAxis3();
-                    arg_sp30 = -*M2C_ERROR(/* Read from unset register $r3 */);
-                    arg_sp34 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
-                    arg_sp38 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
-                    arg_sp2F0 = (f64) arg_sp30;
-                    arg_sp2F8 = (f64) arg_sp38;
-                    arg_sp780 = (f64) arg_sp30;
-                    arg_sp788 = (f64) arg_sp38;
+                    sp30 = -*M2C_ERROR(/* Read from unset register $r3 */);
+                    sp34 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
+                    sp38 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
+                    sp2F0 = (f64) sp30;
+                    sp2F8 = (f64) sp38;
+                    sp780 = (f64) sp30;
+                    sp788 = (f64) sp38;
                 }
-                arg_sp2D0.operator*(this->unkDC);
+                sp2D0.operator*(this->unkDC);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                this->unk50 = arg_sp60;
-                arg_sp68 = this->unk60.unk8 - arg_sp2D8;
-                arg_sp2E0 = arg_sp60;
-                this->unk58 = (f64) arg_sp68;
-                arg_sp2E8 = (f64) arg_sp68;
+                this->unk50 = sp60;
+                sp68 = this->unk60.unk8 - sp2D0.unk8;
+                sp2E0 = sp60;
+                this->unk58 = (f64) sp68;
+                sp2E8 = (f64) sp68;
                 M2C_FIELD(this, f32 *, 0x54) = (f32) (M2C_FIELD(this, f32 *, 0x54) + this->unkE0);
             } else {
                 this->unkE8 += this->unkD8 * gUpdateTimeDelta;
@@ -1446,15 +1628,15 @@ void EventCamera::Update() {
                 temp_f1_2708 = this->unkC4;
                 temp_f0_2709 = this->unkBC;
                 if (temp_f1_2708 < temp_f0_2709) {
-                    arg_sp24 = 0.0f;
-                    arg_sp2C0.GetMeasure(temp_f1_2708 / temp_f0_2709, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
-                    this->unk50 = arg_sp2C0;
-                    this->unk58 = arg_sp2C8;
+                    sp24 = 0.0f;
+                    sp2C0.GetMeasure(temp_f1_2708 / temp_f0_2709, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    this->unk50 = sp2C0;
+                    this->unk58 = sp2C8;
                 } else {
-                    arg_sp20 = 0.0f;
-                    arg_sp2B0.GetMeasure(1.0f, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
-                    this->unk50 = arg_sp2B0;
-                    this->unk58 = arg_sp2B8;
+                    sp20 = 0.0f;
+                    sp2B0.GetMeasure(1.0f, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    this->unk50 = sp2B0;
+                    this->unk58 = sp2B8;
                 }
             }
         }
@@ -1469,14 +1651,14 @@ void EventCamera::Update() {
             temp_f2_2753 = this->unkD4;
             if ((var_f1_2747 < temp_f2_2753) && (var_f1_2747 > 0.0f)) {
                 temp_f30_2761 = (temp_f2_2753 - var_f1_2747) / temp_f2_2753;
-                arg_sp290.GetSourceStart();
-                InterpolateLinear(*((MKVector3 *) &arg_sp2A0), *((MKVector3 *) &this->unk50), temp_f30_2761);
-                this->unk50 = arg_sp2A0;
-                this->unk58 = arg_sp2A8;
-                arg_sp270.GetTargetStart();
-                InterpolateLinear(*((MKVector3 *) &arg_sp280), this->unk60, temp_f30_2761);
-                M2C_FIELD(this, f64 *, 0x60) = arg_sp280;
-                M2C_FIELD(this, f64 *, 0x68) = arg_sp288;
+                sp290.GetSourceStart();
+                InterpolateLinear(sp2A0, *((MKVector3 *) &this->unk50), temp_f30_2761);
+                this->unk50 = M2C_BITWISE(f64, sp2A0);
+                this->unk58 = (f64) sp2A0.unk8;
+                sp270.GetTargetStart();
+                InterpolateLinear(sp280, this->unk60, temp_f30_2761);
+                M2C_FIELD(this, f64 *, 0x60) = M2C_BITWISE(f64, sp280);
+                M2C_FIELD(this, f64 *, 0x68) = (f64) sp280.unk8;
             }
         }
         temp_r3_2785 = this->unkB0;
@@ -1496,14 +1678,14 @@ void EventCamera::Update() {
                             if ((u8) this->unkFA == 0) {
                                 gb.unk30.FadeIn(NULL);
                             } else {
-                                arg_sp50 = 0.0f;
-                                arg_sp54 = 0.0f;
-                                arg_sp58 = 0.0f;
-                                arg_sp5C = 1.0f;
-                                arg_sp260 = (f64) arg_sp50;
-                                arg_sp268 = (f64) arg_sp58;
-                                gb.unk40 = (f64) arg_sp50;
-                                gb.unk48 = (f64) arg_sp58;
+                                sp50 = 0.0f;
+                                sp54 = 0.0f;
+                                sp58 = 0.0f;
+                                sp5C = 1.0f;
+                                sp260 = (f64) sp50;
+                                sp268 = (f64) sp58;
+                                gb.unk40 = (f64) sp50;
+                                gb.unk48 = (f64) sp58;
                             }
                             this->unkF9 = 1;
                             return;
@@ -1533,25 +1715,25 @@ block_145:
             }
         } else {
 block_149:
-            arg_sp770 = M2C_FIELD(this, f64 *, 0x60);
-            arg_sp778 = M2C_FIELD(this, f64 *, 0x68);
+            sp770 = M2C_FIELD(this, f64 *, 0x60);
+            sp778 = M2C_FIELD(this, f64 *, 0x68);
             if (((u8) this->unkFD == 0) && ((u8) this->unk101 == 0) && (var_r30_1504 != 0)) {
-                arg_sp774 += this->unkEC;
+                unksp774 += this->unkEC;
             }
-            arg_sp7D0.SetIdentity();
+            sp7D0.SetIdentity();
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp250 = arg_sp1D0;
-            arg_sp1D8 = (f32) M2C_FIELD(this, f64 *, 0x58) - (f32) arg_sp778;
-            arg_sp258 = (f64) arg_sp1D8;
-            KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp7D0, *((MKVector3 *) &arg_sp250), NULL);
-            arg_sp800 = (f32) M2C_FIELD(this, f64 *, 0x50);
-            arg_sp804 = M2C_FIELD(this, f32 *, 0x54);
-            arg_sp808 = (f32) M2C_FIELD(this, f64 *, 0x58);
-            arg_sp80C = 1.0f;
-            arg_sp814 = 0;
-            arg_sp810.Init(*((Matrix *) &arg_sp7D0));
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp810);
+            sp250 = sp1D0;
+            sp1D8 = (f32) M2C_FIELD(this, f64 *, 0x58) - (f32) sp778;
+            sp258 = (f64) sp1D8;
+            KDMath_BuildMatrixFromFwd(&sp7D0, *((MKVector3 *) &sp250), NULL);
+            sp7D0.unk30 = (f32) M2C_FIELD(this, f64 *, 0x50);
+            sp7D0.unk34 = M2C_FIELD(this, f32 *, 0x54);
+            sp7D0.unk38 = (f32) M2C_FIELD(this, f64 *, 0x58);
+            sp7D0.unk3C = 1.0f;
+            sp814 = 0;
+            sp810.Init(sp7D0);
+            M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, KDS_Message_SetCameraSimple *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp810);
         }
     }
 }

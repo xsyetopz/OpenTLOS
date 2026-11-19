@@ -99,8 +99,100 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp28'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg1) {
+    MKCollisionResult sp320;
+    f32 sp31C;
+    f32 sp318;
+    f32 sp314;
+    f32 sp310;
+    f32 sp30C;
+    f32 sp308;
+    f32 sp304;
+    f32 sp300;
+    f32 sp2FC;
+    f32 sp2F8;
+    f32 sp2F4;
+    f32 sp2F0;
+    f32 sp2EC;
+    f32 sp2E8;
+    f32 sp2E4;
+    f32 sp2E0;
+    Matrix sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    KDUniformSpline sp1F0;
+    f64 sp1E0;
+    f64 sp1D0;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    M2C_UNK sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    M2C_UNK sp110;
+    f32 sp108;
+    f32 spF8;
+    f32 spE8;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spA8;
+    f32 sp98;
+    f32 sp94;
+    f32 sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f29_225;
     f32 var_f28_228;
     f32 var_f3_512;
@@ -125,49 +217,50 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     s32 var_r0_490;
     s32 var_r0_599;
     void *temp_r31_221;
+
     temp_r31_221 = arg1->unk0;
     temp_f29_225 = (f32) fmod(arg1->unk4, 1.0);
     var_f28_228 = 0.01f + temp_f29_225;
     if (var_f28_228 > 1.0f) {
         var_f28_228 = 1.0f;
     }
-    arg_sp28 = 0.0f;
-    arg_sp1F0.GetMeasure(temp_f29_225, &this->unk50, KDSpline_PositionMixer);
-    arg_sp290 = arg_sp1F0;
-    arg_sp298 = arg_sp1F8;
-    arg_sp24 = 0.0f;
-    arg_sp1E0.GetMeasure(temp_f29_225, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
-    arg_sp280 = arg_sp1E0;
-    arg_sp288 = arg_sp1E8;
-    arg_sp20 = 0.0f;
-    arg_sp1D0.GetMeasure(var_f28_228, &this->unk50, KDSpline_PositionMixer);
-    arg_sp270 = arg_sp1D0;
-    arg_sp278 = arg_sp1D8;
-    arg_sp1C = 0.0f;
-    arg_sp1C0.GetMeasure(var_f28_228, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
-    arg_sp260 = arg_sp1C0;
-    arg_sp268 = arg_sp1C8;
+    sp28 = 0.0f;
+    sp1F0.GetMeasure(temp_f29_225, &this->unk50, KDSpline_PositionMixer);
+    sp290 = M2C_BITWISE(f64, sp1F0);
+    sp298 = (f64) sp1F0.unk8;
+    sp24 = 0.0f;
+    sp1E0.GetMeasure(temp_f29_225, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+    sp280 = sp1E0;
+    sp288 = sp1E8;
+    sp20 = 0.0f;
+    sp1D0.GetMeasure(var_f28_228, &this->unk50, KDSpline_PositionMixer);
+    sp270 = sp1D0;
+    sp278 = sp1D8;
+    sp1C = 0.0f;
+    sp1C0.GetMeasure(var_f28_228, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
+    sp260 = sp1C0;
+    sp268 = sp1C8;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp1B0 = arg_sp100;
-    arg_sp108 = (f32) arg_sp298 + (f32) arg_sp288;
-    arg_sp1B8 = (f64) arg_sp108;
+    sp1B0 = sp100;
+    sp108 = (f32) sp298 + (f32) sp288;
+    sp1B8 = (f64) sp108;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    arg_sp250 = arg_spF0;
-    arg_spF8 = (f32) arg_sp1B8 * 0.5f;
-    arg_sp258 = (f64) arg_spF8;
+    sp250 = spF0;
+    spF8 = (f32) sp1B8 * 0.5f;
+    sp258 = (f64) spF8;
     M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-    arg_sp1A0 = arg_spE0;
-    arg_spE8 = (f32) arg_sp278 + (f32) arg_sp268;
-    arg_sp1A8 = (f64) arg_spE8;
+    sp1A0 = spE0;
+    spE8 = (f32) sp278 + (f32) sp268;
+    sp1A8 = (f64) spE8;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    arg_sp240 = arg_spD0;
-    arg_spD8 = (f32) arg_sp1A8 * 0.5f;
-    arg_sp248 = (f64) arg_spD8;
+    sp240 = spD0;
+    spD8 = (f32) sp1A8 * 0.5f;
+    sp248 = (f64) spD8;
     M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-    arg_sp190 = arg_spC0;
-    arg_spC8 = (f32) arg_sp258 - (f32) arg_sp248;
-    arg_sp198 = (f64) arg_spC8;
-    var_f5_345 = ((f32) arg_sp198 * (f32) arg_sp198) + (((f32) arg_sp190 * (f32) arg_sp190) + (arg_sp194 * arg_sp194));
+    sp190 = spC0;
+    spC8 = (f32) sp258 - (f32) sp248;
+    sp198 = (f64) spC8;
+    var_f5_345 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
     if (var_f5_345 > 1e-12f) {
         if (var_f5_345 > 0.0f) {
             temp_f2_351 = __frsqrte(var_f5_345);
@@ -177,18 +270,18 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
         } else if (var_f5_345 < M2C_BITWISE(f32, 0.0)) {
             var_f5_345 = __float_nan;
         } else {
-            arg_sp18 = var_f5_345;
-            temp_r3_380 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f5_345;
+            temp_r3_380 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_380) {                  /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_390 = 1;
                 } else {
                     var_r0_390 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_390 = 5;
                 } else {
                     var_r0_390 = 3;
@@ -206,16 +299,16 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f4_412 = 0.0f;
     }
-    arg_spB4 = arg_sp194 * var_f4_412;
-    arg_spB0 = (f32) arg_sp190 * var_f4_412;
-    arg_spB8 = (f32) arg_sp198 * var_f4_412;
-    arg_sp230 = (f64) arg_spB0;
-    arg_sp238 = (f64) arg_spB8;
+    spB4 = unksp194 * var_f4_412;
+    spB0 = (f32) sp190 * var_f4_412;
+    spB8 = (f32) sp198 * var_f4_412;
+    sp230 = (f64) spB0;
+    sp238 = (f64) spB8;
     M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-    arg_spA8 = (f32) arg_sp298 - (f32) arg_sp288;
-    arg_sp180 = arg_spA0;
-    arg_sp188 = (f64) arg_spA8;
-    var_f4_445 = ((f32) arg_sp188 * (f32) arg_sp188) + (((f32) arg_sp180 * (f32) arg_sp180) + (arg_sp184 * arg_sp184));
+    spA8 = (f32) sp298 - (f32) sp288;
+    sp180 = spA0;
+    sp188 = (f64) spA8;
+    var_f4_445 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
     if (var_f4_445 > 1e-12f) {
         if (var_f4_445 > 0.0f) {
             temp_f1_451 = __frsqrte(var_f4_445);
@@ -225,18 +318,18 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
         } else if (var_f4_445 < M2C_BITWISE(f32, 0.0)) {
             var_f4_445 = __float_nan;
         } else {
-            arg_sp14 = var_f4_445;
-            temp_r3_480 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_445;
+            temp_r3_480 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_480) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_490 = 1;
                 } else {
                     var_r0_490 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_490 = 5;
                 } else {
                     var_r0_490 = 3;
@@ -254,17 +347,17 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f3_512 = 0.0f;
     }
-    arg_sp94 = arg_sp184 * var_f3_512;
-    arg_sp90 = (f32) arg_sp180 * var_f3_512;
-    arg_sp98 = (f32) arg_sp188 * var_f3_512;
-    arg_sp220 = (f64) arg_sp90;
-    arg_sp228 = (f64) arg_sp98;
-    arg_sp80 = (arg_sp234 * (f32) arg_sp228) - ((f32) arg_sp238 * arg_sp224);
-    arg_sp84 = ((f32) arg_sp238 * (f32) arg_sp220) - ((f32) arg_sp230 * (f32) arg_sp228);
-    arg_sp88 = ((f32) arg_sp230 * arg_sp224) - (arg_sp234 * (f32) arg_sp220);
-    arg_sp170 = (f64) arg_sp80;
-    arg_sp178 = (f64) arg_sp88;
-    var_f4_554 = ((f32) arg_sp178 * (f32) arg_sp178) + (((f32) arg_sp170 * (f32) arg_sp170) + (arg_sp174 * arg_sp174));
+    sp94 = unksp184 * var_f3_512;
+    sp90 = (f32) sp180 * var_f3_512;
+    sp98 = (f32) sp188 * var_f3_512;
+    sp220 = (f64) sp90;
+    sp228 = (f64) sp98;
+    sp80 = (unksp234 * (f32) sp228) - ((f32) sp238 * unksp224);
+    sp84 = ((f32) sp238 * (f32) sp220) - ((f32) sp230 * (f32) sp228);
+    sp88 = ((f32) sp230 * unksp224) - (unksp234 * (f32) sp220);
+    sp170 = (f64) sp80;
+    sp178 = (f64) sp88;
+    var_f4_554 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + (unksp174 * unksp174));
     if (var_f4_554 > 1e-12f) {
         if (var_f4_554 > 0.0f) {
             temp_f1_560 = __frsqrte(var_f4_554);
@@ -274,18 +367,18 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
         } else if (var_f4_554 < M2C_BITWISE(f32, 0.0)) {
             var_f4_554 = __float_nan;
         } else {
-            arg_sp10 = var_f4_554;
-            temp_r3_589 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_554;
+            temp_r3_589 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_589) {                  /* switch 3; irregular */
             case 0x7F800000:                        /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_599 = 1;
                 } else {
                     var_r0_599 = 2;
                 }
                 break;
             case 0x0:                               /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_599 = 5;
                 } else {
                     var_r0_599 = 3;
@@ -303,59 +396,59 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f3_621 = 0.0f;
     }
-    arg_sp74 = arg_sp174 * var_f3_621;
-    arg_sp70 = (f32) arg_sp170 * var_f3_621;
-    arg_sp78 = (f32) arg_sp178 * var_f3_621;
-    arg_sp210 = (f64) arg_sp70;
-    arg_sp218 = (f64) arg_sp78;
-    arg_sp48 = ((f32) arg_sp210 * arg_sp234) - (arg_sp214 * (f32) arg_sp230);
-    arg_sp40 = (arg_sp214 * (f32) arg_sp238) - ((f32) arg_sp218 * arg_sp234);
-    arg_sp44 = ((f32) arg_sp218 * (f32) arg_sp230) - ((f32) arg_sp210 * (f32) arg_sp238);
-    arg_sp168 = (f64) arg_sp48;
-    arg_sp160 = (f64) arg_sp40;
-    arg_sp220 = (f64) arg_sp40;
-    arg_sp228 = (f64) arg_sp48;
-    M2C_STRUCT_COPY((s32) &arg_sp2DC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4)) - 4 + 4, 0x40);
+    sp74 = unksp174 * var_f3_621;
+    sp70 = (f32) sp170 * var_f3_621;
+    sp78 = (f32) sp178 * var_f3_621;
+    sp210 = (f64) sp70;
+    sp218 = (f64) sp78;
+    sp48 = ((f32) sp210 * unksp234) - (unksp214 * (f32) sp230);
+    sp40 = (unksp214 * (f32) sp238) - ((f32) sp218 * unksp234);
+    sp44 = ((f32) sp218 * (f32) sp230) - ((f32) sp210 * (f32) sp238);
+    sp168 = (f64) sp48;
+    sp160 = (f64) sp40;
+    sp220 = (f64) sp40;
+    sp228 = (f64) sp48;
+    M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4)) - 4 + 4, 0x40);
     MKVector(0.0f, arg1->unk10, 0.0f);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp150 = arg_sp30;
-    arg_sp38 = (f32) arg_sp298 + arg_sp148;
-    arg_sp158 = (f64) arg_sp38;
-    arg_sp310 = (f32) arg_sp150;
-    arg_sp314 = arg_sp154;
-    arg_sp318 = (f32) arg_sp158;
-    arg_sp31C = 1.0f;
-    arg_sp2E0 = (f32) arg_sp220;
-    arg_sp2E4 = arg_sp224;
-    arg_sp2E8 = (f32) arg_sp228;
-    arg_sp2EC = 0.0f;
-    arg_sp2F0 = (f32) arg_sp210;
-    arg_sp2F4 = arg_sp214;
-    arg_sp2F8 = (f32) arg_sp218;
-    arg_sp2FC = 0.0f;
-    arg_sp300 = (f32) arg_sp230;
-    arg_sp304 = arg_sp234;
-    arg_sp308 = (f32) arg_sp238;
-    arg_sp30C = 0.0f;
-    arg_sp2A0.SetRotateAroundAxis(*((MKVector3 *) &arg_sp300), 1.5707964f);
-    arg_sp2E0.Multiply3x3((Matrix *) &arg_sp2E0, (Matrix *) &arg_sp2A0);
-    arg_sp2A0.SetRotateAroundAxis(*((MKVector3 *) &arg_sp2F0), arg1->unk8);
-    arg_sp2E0.Multiply3x3((Matrix *) &arg_sp2E0, (Matrix *) &arg_sp2A0);
-    MKModel_SetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4), *((Matrix *) &arg_sp2E0));
-    arg_sp200 = (f64) arg_sp310;
-    arg_sp208 = (f64) arg_sp318;
+    sp150 = sp30;
+    sp38 = (f32) sp298 + sp148;
+    sp158 = (f64) sp38;
+    sp310 = (f32) sp150;
+    sp314 = unksp154;
+    sp318 = (f32) sp158;
+    sp31C = 1.0f;
+    sp2E0 = (f32) sp220;
+    sp2E4 = unksp224;
+    sp2E8 = (f32) sp228;
+    sp2EC = 0.0f;
+    sp2F0 = (f32) sp210;
+    sp2F4 = unksp214;
+    sp2F8 = (f32) sp218;
+    sp2FC = 0.0f;
+    sp300 = (f32) sp230;
+    sp304 = unksp234;
+    sp308 = (f32) sp238;
+    sp30C = 0.0f;
+    sp2A0.SetRotateAroundAxis(*((MKVector3 *) &sp300), 1.5707964f);
+    sp2E0.Multiply3x3((Matrix *) &sp2E0, &sp2A0);
+    sp2A0.SetRotateAroundAxis(*((MKVector3 *) &sp2F0), arg1->unk8);
+    sp2E0.Multiply3x3((Matrix *) &sp2E0, &sp2A0);
+    MKModel_SetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4), *((Matrix *) &sp2E0));
+    sp1F0.unk10 = (f64) sp310;
+    sp208 = (f64) sp318;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp120 = arg_sp60;
-    arg_sp68 = MKVector3::up.unk8 * 500.0f;
-    arg_sp128 = (f64) arg_sp68;
+    sp120 = sp60;
+    sp68 = MKVector3::up.unk8 * 500.0f;
+    sp128 = (f64) sp68;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp130 = arg_sp50;
-    arg_sp58 = (f32) arg_sp208 - (f32) arg_sp128;
-    arg_sp138 = (f64) arg_sp58;
-    if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp200), *((MKVector3 *) &arg_sp130), (MKCollisionResult *) &arg_sp320, (MKCollisionMode) 4, 0) != 0) {
-        Tools_GroundColor((MKCollisionResult *) &arg_sp110);
-        MKModel_SetColor(M2C_FIELD(temp_r31_221, MKModel **, 4), *((MKVector4 *) &arg_sp110));
+    sp130 = sp50;
+    sp58 = (f32) sp208 - (f32) sp128;
+    sp138 = (f64) sp58;
+    if (MKCollision_RayCollide(*((MKVector3 *) &sp1F0.unk10), *((MKVector3 *) &sp130), &sp320, (MKCollisionMode) 4, 0) != 0) {
+        Tools_GroundColor((MKCollisionResult *) &sp110);
+        MKModel_SetColor(M2C_FIELD(temp_r31_221, MKModel **, 4), *((MKVector4 *) &sp110));
     }
 }
 #endif

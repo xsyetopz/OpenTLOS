@@ -686,42 +686,58 @@ void SpyroLighting::Reset() {
     this->unk24 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp9C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
+    f64 spD8;
+    f64 spD0;
+    M2C_UNK spA0;
+    M2C_UNK sp9C;
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s32 temp_r31_1349;
+
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk8 = M2C_FIELD(&arg0, f64 *, 8);
     if ((s32) this->unk10 < 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp9C + 4, MKModel_GetWorldMatrix(this->unk14) - 4 + 4, 0x40);
-        arg_sp50 = arg_spD0;
-        arg_sp58 = arg_spD8;
-        arg_spA0.SetIdentity();
-        arg_spA0.RotateRoll((Matrix *) &arg_spA0, (f32) M2C_FIELD(this, f64 *, 8));
-        arg_spA0.RotatePitch((Matrix *) &arg_spA0, (f32) M2C_FIELD(this, f64 *, 0));
-        arg_spA0.RotateYaw((Matrix *) &arg_spA0, M2C_FIELD(this, f32 *, 4));
-        arg_spD0 = (f32) arg_sp50;
-        arg_spD4 = arg_sp54;
-        arg_spD8 = (f32) arg_sp58;
-        arg_spDC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk14, *((Matrix *) &arg_spA0));
+        M2C_STRUCT_COPY((s32) &sp9C + 4, MKModel_GetWorldMatrix(this->unk14) - 4 + 4, 0x40);
+        sp50 = spD0;
+        sp58 = spD8;
+        spA0.SetIdentity();
+        spA0.RotateRoll((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 8));
+        spA0.RotatePitch((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 0));
+        spA0.RotateYaw((Matrix *) &spA0, M2C_FIELD(this, f32 *, 4));
+        spD0 = (f32) sp50;
+        unkspD4 = unksp54;
+        spD8 = (f32) sp58;
+        unkspDC = 1.0f;
+        MKModel_SetWorldMatrix(this->unk14, *((Matrix *) &spA0));
         return;
     }
-    arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk14));
-    arg_sp40 = arg_sp30;
-    arg_sp48 = arg_sp38;
-    arg_sp60.SetIdentity();
-    arg_sp10 = -(f32) arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -(f32) arg_sp48;
-    arg_sp20 = (f64) arg_sp10;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp60.Translate((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp20));
-    arg_sp60.RotateYaw((Matrix *) &arg_sp60, M2C_FIELD(this, f32 *, 4));
-    arg_sp60.RotatePitch((Matrix *) &arg_sp60, (f32) M2C_FIELD(this, f64 *, 0));
-    arg_sp60.RotateRoll((Matrix *) &arg_sp60, (f32) M2C_FIELD(this, f64 *, 8));
-    arg_sp60.Translate((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp40));
+    sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk14));
+    sp40 = sp30;
+    sp48 = sp38;
+    sp60.SetIdentity();
+    sp10 = -(f32) sp40;
+    sp14 = -unksp44;
+    sp18 = -(f32) sp48;
+    sp20 = (f64) sp10;
+    sp28 = (f64) sp18;
+    sp60.Translate(&sp60, *((MKVector3 *) &sp20));
+    sp60.RotateYaw(&sp60, M2C_FIELD(this, f32 *, 4));
+    sp60.RotatePitch(&sp60, (f32) M2C_FIELD(this, f64 *, 0));
+    sp60.RotateRoll(&sp60, (f32) M2C_FIELD(this, f64 *, 8));
+    sp60.Translate(&sp60, *((MKVector3 *) &sp40));
     temp_r31_1349 = this->unk10;
-    ((Animation *) (MKModel_GetAnimation(this->unk14)))->SetCustomMatrix(temp_r31_1349, (Matrix *) &arg_sp60, (AnimationMatrixPosition) 2, 0U);
+    ((Animation *) (MKModel_GetAnimation(this->unk14)))->SetCustomMatrix(temp_r31_1349, &sp60, (AnimationMatrixPosition) 2, 0U);
 }
 #endif
 

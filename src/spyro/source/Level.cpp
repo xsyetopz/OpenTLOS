@@ -930,6 +930,27 @@ void Level::ResolveGameProps(const char *arg0) {
 
 #if 0 // DRAFT: illegal type
 void Level::CreateNormalResources() {
+    void (*spF0)(Level *, s8 *);
+    s32 spEC;
+    s32 *sp70;
+    s8 sp6C;
+    s32 sp68;
+    s32 sp64;
+    s32 sp60;
+    s32 sp5C;
+    f32 sp58;
+    s32 sp54;
+    M2C_UNK *sp50;
+    s32 sp4C;
+    s32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     MKHeap *temp_r3_2122;
     MKHeap *temp_r3_2127;
     MKHeap *temp_r3_2145;
@@ -987,6 +1008,7 @@ void Level::CreateNormalResources() {
     void *var_r4_2103;
     void *var_r5_2020;
     void *var_r8_2076;
+
     temp_r5_1823 = this->unk18;
     if ((u32) temp_r5_1823 != 0U) {
         var_r4_1826 = M2C_FIELD(temp_r5_1823, void **, 4);
@@ -1042,40 +1064,40 @@ void Level::CreateNormalResources() {
     }
     temp_r30_1924 = M2C_FIELD(var_r3_1906, s32 *, 0x20) > 1;
     this->unk78 += temp_r30_1924;
-    arg_sp20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    arg_sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    arg_sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_sp48 = *Level::pGlobalModelIni;
-    arg_sp50 = &gCreationTable;
-    arg_sp4C = *Level::pGlobalLevelIni;
+    sp20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp48 = *Level::pGlobalModelIni;
+    sp50 = &gCreationTable;
+    sp4C = *Level::pGlobalLevelIni;
     temp_r26_1944 = this->unk78;
-    arg_sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    arg_sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    arg_sp54 = temp_r26_1944;
-    arg_spEC = 0;
-    arg_spF0 = &Level::ResolveGameProps;
-    arg_sp58 = 2.0f;
-    arg_sp40 = 1.0f;
-    arg_sp44 = 500.0f;
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp54 = temp_r26_1944;
+    spEC = 0;
+    spF0 = &Level::ResolveGameProps;
+    sp58 = 2.0f;
+    sp40 = 1.0f;
+    sp44 = 500.0f;
     operator new[]((temp_r26_1944 * 0x10) + 0x10, NULL, 0);
     temp_r3_1961 = __construct_new_array();
     pChunkData = temp_r3_1961;
     var_r4_1965 = 0;
-    arg_sp5C = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x3C);
-    arg_sp60 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x5C);
-    arg_sp68 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x4C);
-    arg_sp64 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x2C);
-    arg_sp6C = 1;
+    sp5C = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x3C);
+    sp60 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x5C);
+    sp68 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x4C);
+    sp64 = M2C_FIELD(*Level::pWorldInfo, s32 *, 0x2C);
+    sp6C = 1;
     *temp_r3_1961 = 0;
     M2C_FIELD(pChunkData, s32 *, 4) = 0;
-    arg_sp70 = pChunkData;
+    sp70 = pChunkData;
     var_ctr_1980 = temp_r30_1924;
     if (temp_r30_1924 > 0) {
         do {
             temp_r3_1984 = var_r4_1965 + 1;
             temp_r10_1988 = temp_r3_1984 * 0x10;
-            temp_r9_1992 = &arg_sp20 + (temp_r3_1984 * 0x18);
+            temp_r9_1992 = &sp20 + (temp_r3_1984 * 0x18);
             M2C_FIELD(temp_r9_1992, s32 *, 0x3C) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x40);
             var_r4_1965 += 1;
             M2C_FIELD(temp_r9_1992, s32 *, 0x40) = (s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x60);
@@ -1103,7 +1125,7 @@ loop_39:
             var_r5_2020 = M2C_FIELD(this->unk24, void **, 4);
         }
         temp_r0_2027 = temp_r30_1924 + 1 + var_r6_2015;
-        temp_r5_2033 = &arg_sp20 + (temp_r0_2027 * 0x18);
+        temp_r5_2033 = &sp20 + (temp_r0_2027 * 0x18);
         M2C_FIELD(temp_r5_2033, s32 *, 0x3C) = (s32) ((s32) M2C_FIELD(*Level::pWorldInfo, s32 *, 0x48) / (s32) M2C_FIELD(var_r5_2020, s32 *, 0x20));
         temp_r8_2035 = this->unk18;
         if ((u32) temp_r8_2035 != 0U) {
@@ -1134,7 +1156,7 @@ loop_39:
         M2C_FIELD(temp_r5_2033, void **, 0x50) = (void *) (pChunkData + temp_r11_2083);
         goto loop_39;
     }
-    M2C_FIELD(*gMK, M2C_UNK (**)(void **, f64 *), 8)(gMK, &arg_sp20);
+    M2C_FIELD(*gMK, M2C_UNK (**)(void **, f64 *), 8)(gMK, &sp20);
     temp_r3_2122 = M2C_FIELD(*gMK, MKHeap *(**)(void **), 0x2C)(gMK);
     temp_r26_2126 = (this->unk78 + 1) * 4;
     temp_r3_2127 = temp_r3_2122->Current();

@@ -23,10 +23,21 @@ void RefFXEmitter::Message(MKMessage *arg0) {
 
 #if 0 // DRAFT: ')' expected
 void RefFXEmitter::Update() {
+    Matrix sp60;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
     f32 temp_f2_71;
     f32 temp_f31_137;
     u8 var_r0_70;
     void *temp_r31_132;
+
     KDProp::Update();
     var_r0_70 = 0;
     temp_f2_71 = this->unk90;
@@ -48,20 +59,20 @@ void RefFXEmitter::Update() {
         }
     }
     if (var_r0_70 != 0) {
-        MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD((checked_cast<RefFXEmitterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk94 * 4)), s32 *, 0x70), (Matrix *) &arg_sp60, 1U);
+        MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD((checked_cast<RefFXEmitterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk94 * 4)), s32 *, 0x70), &sp60, 1U);
         temp_r31_132 = checked_cast<RefFXEmitterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         temp_f31_137 = MKRand_Float(&gViewSeed, -700.0f, -300.0f);
-        arg_sp28 = -arg_sp70;
-        arg_sp2C = -arg_sp74;
-        arg_sp30 = -arg_sp78;
-        arg_sp38 = (f64) arg_sp28;
-        arg_sp40 = (f64) arg_sp30;
+        sp28 = -sp60.unk10;
+        sp2C = -sp60.unk14;
+        sp30 = -sp60.unk18;
+        sp38 = (f64) sp28;
+        sp40 = (f64) sp30;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        arg_sp48 = arg_sp18;
-        arg_sp20 = (f32) arg_sp40 * temp_f31_137;
-        arg_sp50 = (f64) arg_sp20;
-        arg_sp10 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-        ((Steam *) (M2C_FIELD(temp_r31_132, Steam **, 0x9C)))->Emit(*((MKVector3 *) &arg_sp90), *((MKVector3 *) &arg_sp48), arg_sp10);
+        sp48 = sp18;
+        sp20 = (f32) sp40 * temp_f31_137;
+        sp50 = (f64) sp20;
+        sp10 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+        ((Steam *) (M2C_FIELD(temp_r31_132, Steam **, 0x9C)))->Emit(*((MKVector3 *) &sp60.unk30), *((MKVector3 *) &sp48), sp10);
     }
 }
 #endif

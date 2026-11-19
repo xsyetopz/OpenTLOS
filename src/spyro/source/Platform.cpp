@@ -284,17 +284,21 @@ void Platform::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 void Platform::Reset() {
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
+
     GameProp::Reset();
     this->unk108.Reset();
     M2C_FIELD(this, f64 *, 0x110) = (f64) this->unkC8;
     M2C_FIELD(this, f64 *, 0x118) = (f64) this->unkD0;
-    arg_sp10 = M2C_FIELD(this, f64 *, 0x110);
-    arg_sp18 = M2C_FIELD(this, f64 *, 0x118);
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp20.SetRotationPYR(*((MKVector3 *) &arg_sp10));
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp20));
+    sp10 = M2C_FIELD(this, f64 *, 0x110);
+    sp18 = M2C_FIELD(this, f64 *, 0x118);
+    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp20.SetRotationPYR(*((MKVector3 *) &sp10));
+    MKModel_SetWorldMatrix(this->unk4, sp20);
     this->unk16C = MKRand_Float(&gViewSeed, 0.9f, 1.1f);
     this->unk170 = MKRand_Float(&gViewSeed, 0.9f, 1.1f);
 }

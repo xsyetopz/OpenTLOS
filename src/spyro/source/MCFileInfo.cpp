@@ -4,6 +4,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/MemoryCard.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
@@ -18,8 +19,8 @@
 s32 stricmp(void *, void *);                        /* extern */
 extern void *gpTranslation_StringArray;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void MCFileInfo::Draw(const RenderContext &arg0) {
+    RenderContext sp10;
     f32 temp_f25_74;
     f32 temp_f26_72;
     f32 temp_f27_48;
@@ -31,8 +32,9 @@ void MCFileInfo::Draw(const RenderContext &arg0) {
     s32 temp_r0_41;
     s32 temp_r0_58;
     s32 temp_r3_39;
+
     UIContainer::Draw(arg0);
-    arg_sp10.RenderContext(arg0, this->unk18);
+    sp10.RenderContext(arg0, this->unk18);
     temp_r3_39 = this->unk18.unk3C;
     var_f30_40 = 0.0f;
     temp_r0_41 = temp_r3_39 & 3;
@@ -52,18 +54,17 @@ void MCFileInfo::Draw(const RenderContext &arg0) {
     }
     temp_f26_72 = var_f30_40 + temp_f28_47;
     temp_f25_74 = var_f29_44 + temp_f27_48;
-    Hud_DrawIcon(0, 4, var_f30_40 - 2.0f, var_f29_44 - 2.0f, 6.0f, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
-    Hud_DrawIcon(0, 5, temp_f26_72 + 2.0f, var_f29_44 - 2.0f, 6.0f, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
-    Hud_DrawIcon(0, 6, temp_f26_72 + 2.0f, temp_f25_74 + 2.0f, 6.0f, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
-    Hud_DrawIcon(0, 7, var_f30_40 - 2.0f, temp_f25_74 + 2.0f, 6.0f, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
+    Hud_DrawIcon(0, 4, var_f30_40 - 2.0f, var_f29_44 - 2.0f, 6.0f, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
+    Hud_DrawIcon(0, 5, temp_f26_72 + 2.0f, var_f29_44 - 2.0f, 6.0f, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
+    Hud_DrawIcon(0, 6, temp_f26_72 + 2.0f, temp_f25_74 + 2.0f, 6.0f, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
+    Hud_DrawIcon(0, 7, var_f30_40 - 2.0f, temp_f25_74 + 2.0f, 6.0f, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
     temp_f31_140 = (0.5f * temp_f28_47) + var_f30_40;
-    Hud_DrawIcon(0, 9, temp_f31_140, var_f29_44 - 2.0f, temp_f28_47, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
-    Hud_DrawIcon(0, 0xA, temp_f31_140, temp_f25_74 + 2.0f, temp_f28_47, 6.0f, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
+    Hud_DrawIcon(0, 9, temp_f31_140, var_f29_44 - 2.0f, temp_f28_47, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
+    Hud_DrawIcon(0, 0xA, temp_f31_140, temp_f25_74 + 2.0f, temp_f28_47, 6.0f, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
     temp_f31_174 = (0.5f * temp_f27_48) + var_f29_44;
-    Hud_DrawIcon(0, 0xB, var_f30_40 - 2.0f, temp_f31_174, 6.0f, temp_f27_48, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
-    Hud_DrawIcon(0, 0xC, temp_f26_72 + 2.0f, temp_f31_174, 6.0f, temp_f27_48, *((MKVector4 *) &arg_sp50), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &arg_sp10));
+    Hud_DrawIcon(0, 0xB, var_f30_40 - 2.0f, temp_f31_174, 6.0f, temp_f27_48, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
+    Hud_DrawIcon(0, 0xC, temp_f26_72 + 2.0f, temp_f31_174, 6.0f, temp_f27_48, *((MKVector4 *) &sp10.unk40), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, *((Matrix *) &sp10));
 }
-#endif
 
 void MCFileInfo::Message(UIMessage *arg0) {
     if ((s32) arg0->unk0 == 1) {

@@ -1,4 +1,5 @@
 #include "common/gc/MKView_GC.h"
+#include "common/Source/Matrix.h"
 #include "dolphin/gx.h"
 #include "dolphin/os.h"
 #include "common/Source/MKView.h"
@@ -93,8 +94,26 @@ void MKView_SetLightDirection(int arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp40'
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to
 void UpdateLighting() {
+    Matrix sp90;
+    M2C_UNK sp8C;
+    f32 sp88;                                       /* compiler-managed */
+    f32 sp84;
+    f32 sp80;                                       /* compiler-managed */
+    f64 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    s8 sp43;
+    u8 sp42;
+    u8 sp41;
+    u8 sp40;
+    s32 sp2C;                                       /* compiler-managed */
+    s32 sp28;
+    s32 sp24;
+    f32 sp20;
     f32 temp_f0_402;
     f32 temp_f2_409;
     f32 temp_f7_295;
@@ -109,54 +128,55 @@ void UpdateLighting() {
     s32 var_r0_369;
     s32 var_r29_213;
     s32 var_r30_212;
-    s8 var_r3_222;
-    s8 var_r3_234;
-    s8 var_r3_246;
+    s32 var_r3_222;
+    s32 var_r3_234;
+    s32 var_r3_246;
     struct _struct_lightColors_0x10 *temp_r5_457;
     void *temp_r4_262;
     void *temp_r5_217;
+
     var_r30_212 = 0;
     var_r29_213 = 0;
     do {
         temp_r5_217 = lightColors + var_r29_213;
-        var_r3_222 = (s8) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 0));
+        var_r3_222 = (s32) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 0));
         if ((u8) lit_423 < (u8) var_r3_222) {
-            var_r3_222 = (s8) lit_423;
+            var_r3_222 = (s32) lit_423;
         }
-        arg_sp40 = var_r3_222;
-        var_r3_234 = (s8) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 4));
+        sp40 = (u8) var_r3_222;
+        var_r3_234 = (s32) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 4));
         if ((u8) lit_425 < (u8) var_r3_234) {
-            var_r3_234 = (s8) lit_425;
+            var_r3_234 = (s32) lit_425;
         }
-        arg_sp40 = var_r3_234;
-        var_r3_246 = (s8) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 8));
+        sp41 = (u8) var_r3_234;
+        var_r3_246 = (s32) (255.0f * M2C_FIELD(temp_r5_217, f32 *, 8));
         if ((u8) lit_427 < (u8) var_r3_246) {
-            var_r3_246 = (s8) lit_427;
+            var_r3_246 = (s32) lit_427;
         }
-        (s16) arg_sp40 = var_r3_246;
-        arg_sp40 = -1;
-        arg_sp28 = (s32) arg_sp40;
-        GXInitLightColor((GXLightObj *) (lightColors + 0x80), (GXColor) &arg_sp28);
+        sp42 = (u8) var_r3_246;
+        sp43 = 0xFF;
+        sp28 = (s32) sp40;
+        GXInitLightColor((GXLightObj *) (lightColors + 0x80), (GXColor) &sp28);
         temp_r4_262 = lightColors + 0x40 + var_r29_213;
-        arg_sp80 = M2C_FIELD(temp_r4_262, f32 *, 0);
-        arg_sp84 = M2C_FIELD(temp_r4_262, f32 *, 4);
-        arg_sp88 = M2C_FIELD(temp_r4_262, f32 *, 8);
-        arg_sp90.SetIdentity();
-        M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKView_GetWorldToViewMatrix() - 4 + 4, 0x40);
-        temp_f8_283 = arg_spA8 * -1.0f;
-        temp_f9_289 = arg_sp98 * -1.0f;
-        temp_f7_295 = arg_spB8 * -1.0f;
-        arg_sp98 = temp_f9_289;
-        arg_spA8 = temp_f8_283;
-        arg_sp60 = (arg_sp88 * arg_spB0) + ((arg_sp80 * arg_sp90) + (arg_sp84 * arg_spA0));
-        arg_sp64 = (arg_sp88 * arg_spB4) + ((arg_sp80 * arg_sp94) + (arg_sp84 * arg_spA4));
-        arg_sp68 = (arg_sp88 * temp_f7_295) + ((arg_sp80 * temp_f9_289) + (arg_sp84 * temp_f8_283));
-        arg_sp80 = (f64) arg_sp60;
-        arg_sp88 = (f64) arg_sp68;
-        arg_spB8 = temp_f7_295;
-        arg_sp70 = (f64) arg_sp60;
-        arg_sp78 = (f64) arg_sp68;
-        var_f4_324 = (arg_sp88 * arg_sp88) + ((arg_sp80 * arg_sp80) + (arg_sp84 * arg_sp84));
+        sp80 = M2C_FIELD(temp_r4_262, f32 *, 0);
+        sp84 = M2C_FIELD(temp_r4_262, f32 *, 4);
+        sp88 = M2C_FIELD(temp_r4_262, f32 *, 8);
+        sp90.SetIdentity();
+        M2C_STRUCT_COPY((s32) &sp8C + 4, MKView_GetWorldToViewMatrix() - 4 + 4, 0x40);
+        temp_f8_283 = sp90.unk18 * -1.0f;
+        temp_f9_289 = sp90.unk8 * -1.0f;
+        temp_f7_295 = sp90.unk28 * -1.0f;
+        sp90.unk8 = temp_f9_289;
+        sp90.unk18 = temp_f8_283;
+        sp60 = (sp88 * sp90.unk20) + ((sp80 * M2C_BITWISE(f32, sp90)) + (sp84 * sp90.unk10));
+        sp64 = (sp88 * sp90.unk24) + ((sp80 * sp90.unk4) + (sp84 * sp90.unk14));
+        sp68 = (sp88 * temp_f7_295) + ((sp80 * temp_f9_289) + (sp84 * temp_f8_283));
+        sp80 = (f64) sp60;
+        sp88 = (f64) sp68;
+        sp90.unk28 = temp_f7_295;
+        sp70 = (f64) sp60;
+        sp78 = (f64) sp68;
+        var_f4_324 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (sp84 * sp84));
         if (var_f4_324 > 0.000001f) {
             if (var_f4_324 > 0.0f) {
                 temp_f1_330 = __frsqrte(var_f4_324);
@@ -166,18 +186,18 @@ void UpdateLighting() {
             } else if (var_f4_324 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_324 = __float_nan;
             } else {
-                arg_sp20 = var_f4_324;
-                temp_r3_359 = M2C_BITWISE(s32, arg_sp20) & 0x7F800000;
+                sp20 = var_f4_324;
+                temp_r3_359 = M2C_BITWISE(s32, sp20) & 0x7F800000;
                 switch (temp_r3_359) {              /* switch 1; irregular */
                 case 0x7F800000:                    /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_369 = 1;
                     } else {
                         var_r0_369 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_369 = 5;
                     } else {
                         var_r0_369 = 3;
@@ -195,14 +215,14 @@ void UpdateLighting() {
         } else {
             var_f3_391 = 0.0f;
         }
-        temp_f0_402 = arg_sp88 * var_f3_391;
-        arg_sp80 *= var_f3_391;
-        arg_sp84 *= var_f3_391;
-        arg_sp88 = temp_f0_402;
+        temp_f0_402 = (f32) sp88 * var_f3_391;
+        sp80 = (f32) sp80 * var_f3_391;
+        sp84 *= var_f3_391;
+        sp88 = temp_f0_402;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f28 */);
         temp_f2_409 = temp_f0_402 * 1000000.0f;
-        arg_sp88 = temp_f2_409;
-        GXInitLightPos((GXLightObj *) (lightColors + 0x80), -arg_sp80, -arg_sp84, -temp_f2_409);
+        sp88 = temp_f2_409;
+        GXInitLightPos((GXLightObj *) (lightColors + 0x80), -sp80, -sp84, -temp_f2_409);
         GXInitLightAttnA((GXLightObj *) (lightColors + 0x80), 1.0f, 0.0f, 0.0f);
         GXInitLightDistAttn((GXLightObj *) (lightColors + 0x80), 0.0f, 0.0f, GX_DA_OFF);
         switch (var_r30_212) {                      /* switch 2; irregular */
@@ -220,11 +240,11 @@ void UpdateLighting() {
         var_r29_213 += 0x10;
     } while (var_r30_212 < 3);
     temp_r5_457 = lightColors + 0x30;
-    arg_sp2C = lit_435;
-    arg_sp2C = (s8) (255.0f * M2C_FIELD(lightColors, f32 *, 0x30));
-    arg_sp2C = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 4));
-    (s16) arg_sp2C = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 8));
-    arg_sp24 = arg_sp2C;
-    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &arg_sp24);
+    sp2C = lit_435;
+    sp2C = (s8) (255.0f * M2C_FIELD(lightColors, f32 *, 0x30));
+    unksp2D = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 4));
+    unksp2E = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 8));
+    sp24 = (s32) sp2C;
+    GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &sp24);
 }
 #endif

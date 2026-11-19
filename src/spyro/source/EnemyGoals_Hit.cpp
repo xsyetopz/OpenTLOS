@@ -4,6 +4,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/CollisionObject.h"
@@ -57,12 +58,19 @@ void EnemyGoal_HitSquished::Terminate() {
 
 #if 0 // DRAFT: undefined identifier 'unkAC8'
 u8 EnemyGoal_HitSquished::Update() {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Character *temp_r3_146;
     f32 temp_f30_136;
     f32 temp_f31_110;
     f32 temp_f3_139;
     f32 var_f0_56;
     s32 temp_r0_71;
+
     ActivateIfInactive();
     var_f0_56 = this->unk14 - gUpdateTimeDelta;
     if (var_f0_56 < 4.0f) {
@@ -93,18 +101,18 @@ u8 EnemyGoal_HitSquished::Update() {
         break;
     case 1:
         temp_f31_110 = this->unk14 / 0.75f;
-        M2C_STRUCT_COPY((s32) &arg_sp3C + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
-        arg_sp30.NormaliseScale();
+        M2C_STRUCT_COPY((s32) &sp30.unkC + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
+        sp30.NormaliseScale();
         temp_f30_136 = (0.25f * (temp_f31_110 * _table_sinf((35.0f * this->unk14) + 1.5707964f))) + 1.0f;
         temp_f3_139 = temp_f31_110 * _table_sinf(25.0f * this->unk14);
-        arg_sp18 = temp_f30_136;
-        arg_sp10 = temp_f30_136;
+        sp18 = temp_f30_136;
+        sp10 = temp_f30_136;
         temp_r3_146 = this->unkC;
-        arg_sp14 = (0.5f * temp_f3_139) + 1.0f;
-        arg_sp28 = (f64) arg_sp18;
-        temp_r3_146->unk730 = (f64) arg_sp10;
-        temp_r3_146->unk738 = (f64) arg_sp18;
-        arg_sp20 = (f64) arg_sp10;
+        sp14 = (0.5f * temp_f3_139) + 1.0f;
+        sp28 = (f64) sp18;
+        temp_r3_146->unk730 = (f64) sp10;
+        temp_r3_146->unk738 = (f64) sp18;
+        sp20 = (f64) sp10;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk14 == 0.0f) {
             this->unk8 = 2;

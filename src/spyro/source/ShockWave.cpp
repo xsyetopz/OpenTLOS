@@ -21,8 +21,26 @@
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp14'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ShockWave::UpdateShockWave(int arg0) {
+    MKCollisionResult spD0;
+    Matrix sp90;
+    f64 sp88;
+    f64 sp80;
+    MKVector3 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_115;
     f32 temp_f0_181;
     f32 temp_f0_247;
@@ -46,117 +64,124 @@ void ShockWave::UpdateShockWave(int arg0) {
     void *temp_r30_154;
     void *temp_r30_220;
     void *temp_r31_77;
+
     if ((u8) this->unk160 != 0) {
         temp_r29_58 = arg0 * 0x28;
-        arg_sp14 = 1.0f;
+        sp14 = 1.0f;
         temp_f0_65 = M2C_FIELD((this + temp_r29_58), f32 *, 0x9C) / 500.0f;
-        arg_sp10 = temp_f0_65;
-        arg_sp18 = temp_f0_65;
-        arg_sp80 = (f64) arg_sp10;
-        arg_sp88 = (f64) arg_sp18;
-        arg_sp90.SetIdentity();
-        arg_sp90.Scale3x3((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp80));
+        sp10 = temp_f0_65;
+        sp18 = temp_f0_65;
+        sp80 = (f64) sp10;
+        sp88 = (f64) sp18;
+        sp90.SetIdentity();
+        sp90.Scale3x3(&sp90, *((MKVector3 *) &sp80));
         temp_r31_77 = this + temp_r29_58;
         temp_r30_78 = M2C_FIELD(temp_r31_77, s32 *, 0xA4);
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_78, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
-        arg_sp90.SetIdentity();
-        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r31_77, s32 *, 0xA8), (MKVector3 *) &arg_sp70);
-        arg_sp60 = arg_sp70;
-        temp_f31_99 = arg_sp74;
-        arg_sp68 = arg_sp78;
-        arg_sp74 = temp_f31_99 + 200.0f;
-        arg_sp64 -= 600.0f;
-        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
-            temp_f0_115 = arg_spD4 + 20.0f;
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_78, &sp90, (AnimationMatrixPosition) 2, 0U);
+        sp90.SetIdentity();
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r31_77, s32 *, 0xA8), &sp70);
+        sp60 = M2C_BITWISE(f64, sp70);
+        temp_f31_99 = sp70.unk4;
+        sp68 = (f64) sp70.unk8;
+        sp70.unk4 = temp_f31_99 + 200.0f;
+        unksp64 -= 600.0f;
+        if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_115 = spD0.unk4 + 20.0f;
             if ((temp_f31_99 < temp_f0_115) && ((temp_f0_115 - temp_f31_99) > 20.0f)) {
-                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+                spD0.unk4 = (0.4f * (spD0.unk4 - 20.0f)) + 20.0f;
             }
-            arg_sp50 = arg_spC0;
-            arg_sp58 = arg_spC8;
-            temp_f3_139 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
-            arg_spC0 = (f32) arg_sp50;
-            arg_spC8 = (f32) arg_sp58;
-            arg_sp54 = temp_f3_139;
-            arg_spC4 = temp_f3_139;
-            arg_spCC = 1.0f;
+            sp50 = (f64) sp90.unk30;
+            sp58 = (f64) sp90.unk38;
+            temp_f3_139 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            sp90.unk30 = (f32) sp50;
+            sp90.unk38 = (f32) sp58;
+            unksp54 = temp_f3_139;
+            sp90.unk34 = temp_f3_139;
+            sp90.unk3C = 1.0f;
         }
         temp_r30_146 = M2C_FIELD(temp_r31_77, s32 *, 0xA8);
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_146, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_146, &sp90, (AnimationMatrixPosition) 2, 0U);
         temp_r30_154 = this + temp_r29_58;
-        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_154, s32 *, 0xAC), (MKVector3 *) &arg_sp70);
-        arg_sp60 = arg_sp70;
-        temp_f31_165 = arg_sp74;
-        arg_sp68 = arg_sp78;
-        arg_sp74 = temp_f31_165 + 200.0f;
-        arg_sp64 -= 600.0f;
-        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
-            temp_f0_181 = arg_spD4 + 20.0f;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_154, s32 *, 0xAC), &sp70);
+        sp60 = M2C_BITWISE(f64, sp70);
+        temp_f31_165 = sp70.unk4;
+        sp68 = (f64) sp70.unk8;
+        sp70.unk4 = temp_f31_165 + 200.0f;
+        unksp64 -= 600.0f;
+        if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_181 = spD0.unk4 + 20.0f;
             if ((temp_f31_165 < temp_f0_181) && ((temp_f0_181 - temp_f31_165) > 20.0f)) {
-                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+                spD0.unk4 = (0.4f * (spD0.unk4 - 20.0f)) + 20.0f;
             }
-            arg_sp40 = arg_spC0;
-            arg_sp48 = arg_spC8;
-            temp_f3_205 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
-            arg_spC0 = (f32) arg_sp40;
-            arg_spC8 = (f32) arg_sp48;
-            arg_sp44 = temp_f3_205;
-            arg_spC4 = temp_f3_205;
-            arg_spCC = 1.0f;
+            sp40 = (f64) sp90.unk30;
+            sp48 = (f64) sp90.unk38;
+            temp_f3_205 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            sp90.unk30 = (f32) sp40;
+            sp90.unk38 = (f32) sp48;
+            unksp44 = temp_f3_205;
+            sp90.unk34 = temp_f3_205;
+            sp90.unk3C = 1.0f;
         }
         temp_r30_212 = M2C_FIELD(temp_r30_154, s32 *, 0xAC);
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_212, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_212, &sp90, (AnimationMatrixPosition) 2, 0U);
         temp_r30_220 = this + temp_r29_58;
-        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_220, s32 *, 0xB0), (MKVector3 *) &arg_sp70);
-        arg_sp60 = arg_sp70;
-        temp_f31_231 = arg_sp74;
-        arg_sp68 = arg_sp78;
-        arg_sp74 = temp_f31_231 + 200.0f;
-        arg_sp64 -= 600.0f;
-        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
-            temp_f0_247 = arg_spD4 + 20.0f;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_220, s32 *, 0xB0), &sp70);
+        sp60 = M2C_BITWISE(f64, sp70);
+        temp_f31_231 = sp70.unk4;
+        sp68 = (f64) sp70.unk8;
+        sp70.unk4 = temp_f31_231 + 200.0f;
+        unksp64 -= 600.0f;
+        if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_247 = spD0.unk4 + 20.0f;
             if ((temp_f31_231 < temp_f0_247) && ((temp_f0_247 - temp_f31_231) > 20.0f)) {
-                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+                spD0.unk4 = (0.4f * (spD0.unk4 - 20.0f)) + 20.0f;
             }
-            arg_sp30 = arg_spC0;
-            arg_sp38 = arg_spC8;
-            temp_f3_271 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
-            arg_spC0 = (f32) arg_sp30;
-            arg_spC8 = (f32) arg_sp38;
-            arg_sp34 = temp_f3_271;
-            arg_spC4 = temp_f3_271;
-            arg_spCC = 1.0f;
+            sp30 = (f64) sp90.unk30;
+            sp38 = (f64) sp90.unk38;
+            temp_f3_271 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            sp90.unk30 = (f32) sp30;
+            sp90.unk38 = (f32) sp38;
+            unksp34 = temp_f3_271;
+            sp90.unk34 = temp_f3_271;
+            sp90.unk3C = 1.0f;
         }
         temp_r30_278 = M2C_FIELD(temp_r30_220, s32 *, 0xB0);
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_278, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_278, &sp90, (AnimationMatrixPosition) 2, 0U);
         temp_r29_286 = this + temp_r29_58;
-        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r29_286, s32 *, 0xB4), (MKVector3 *) &arg_sp70);
-        arg_sp60 = arg_sp70;
-        temp_f31_297 = arg_sp74;
-        arg_sp68 = arg_sp78;
-        arg_sp74 = temp_f31_297 + 200.0f;
-        arg_sp64 -= 600.0f;
-        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
-            temp_f0_313 = arg_spD4 + 20.0f;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r29_286, s32 *, 0xB4), &sp70);
+        sp60 = M2C_BITWISE(f64, sp70);
+        temp_f31_297 = sp70.unk4;
+        sp68 = (f64) sp70.unk8;
+        sp70.unk4 = temp_f31_297 + 200.0f;
+        unksp64 -= 600.0f;
+        if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_313 = spD0.unk4 + 20.0f;
             if ((temp_f31_297 < temp_f0_313) && ((temp_f0_313 - temp_f31_297) > 20.0f)) {
-                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+                spD0.unk4 = (0.4f * (spD0.unk4 - 20.0f)) + 20.0f;
             }
-            arg_sp20 = arg_spC0;
-            arg_sp28 = arg_spC8;
-            temp_f3_337 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
-            arg_spC0 = (f32) arg_sp20;
-            arg_spC8 = (f32) arg_sp28;
-            arg_sp24 = temp_f3_337;
-            arg_spC4 = temp_f3_337;
-            arg_spCC = 1.0f;
+            sp20 = (f64) sp90.unk30;
+            sp28 = (f64) sp90.unk38;
+            temp_f3_337 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            sp90.unk30 = (f32) sp20;
+            sp90.unk38 = (f32) sp28;
+            unksp24 = temp_f3_337;
+            sp90.unk34 = temp_f3_337;
+            sp90.unk3C = 1.0f;
         }
         temp_r30_344 = M2C_FIELD(temp_r29_286, s32 *, 0xB4);
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_344, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_344, &sp90, (AnimationMatrixPosition) 2, 0U);
     }
 }
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'ShockWave' to
 s32 ShockWave::Start(MKVector3 arg0, float arg1, float arg2, bool arg3, bool arg4, bool arg5) {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_415;
     s32 temp_r25_452;
     s32 temp_r25_478;
@@ -170,6 +195,7 @@ s32 ShockWave::Start(MKVector3 arg0, float arg1, float arg2, bool arg3, bool arg
     void *temp_r3_435;
     void *temp_r3_446;
     void *temp_r4_460;
+
     var_r31_387 = 0;
     var_r3_388 = 0;
     var_ctr_389 = 4;
@@ -190,11 +216,11 @@ loop_1:
         MKModel_SetPosition(this->unk4, *((MKVector3 *) arg0));
     }
     temp_f1_415 = arg2 / 500.0f;
-    arg_sp18 = temp_f1_415;
-    arg_sp10 = temp_f1_415;
-    arg_sp14 = temp_f1_415;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp20 = (f64) arg_sp10;
+    sp18 = temp_f1_415;
+    sp10 = temp_f1_415;
+    sp14 = temp_f1_415;
+    sp28 = (f64) sp18;
+    sp20 = (f64) sp10;
     temp_r3_424 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
     M2C_FIELD(temp_r3_424, f64 *, 0) = (f64) this->unk130;
     M2C_FIELD(temp_r3_424, f64 *, 8) = (f64) this->unk138;
@@ -204,13 +230,13 @@ loop_1:
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_FIELD(temp_r3_435, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_435, f32 *, 8) * (f32) arg_sp28);
+    M2C_FIELD(temp_r3_435, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_435, f32 *, 8) * (f32) sp28);
     temp_r3_446 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
     temp_r25_452 = var_r31_387 * 0x28;
-    M2C_FIELD((temp_r3_446 + 0x10), f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) arg_sp28);
+    M2C_FIELD((temp_r3_446 + 0x10), f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) sp28);
     MKModel_SetPosition(M2C_FIELD((this + temp_r25_452), MKModel **, 0xA0), *((MKVector3 *) arg0));
     temp_r4_460 = this + temp_r25_452;
     M2C_FIELD(temp_r4_460, f32 *, 0x9C) = arg1;
@@ -218,13 +244,13 @@ loop_1:
     M2C_FIELD(temp_r4_460, s8 *, 0x90) = 1;
     M2C_FIELD(temp_r4_460, f32 *, 0x98) = 0.0f;
     this->unk150 += 1;
-    arg_sp30.SetIdentity();
+    sp30.SetIdentity();
     temp_r24_472 = this + temp_r25_452;
     var_r23_473 = 0;
     var_r26_474 = 0;
     do {
         temp_r25_478 = *(temp_r24_472 + (var_r26_474 + 0xA4));
-        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r24_472, MKModel **, 0xA0))))->SetCustomMatrix(temp_r25_478, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 2, 0U);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r24_472, MKModel **, 0xA0))))->SetCustomMatrix(temp_r25_478, &sp30, (AnimationMatrixPosition) 2, 0U);
         var_r23_473 += 1;
         var_r26_474 += 4;
     } while (var_r23_473 <= 4);

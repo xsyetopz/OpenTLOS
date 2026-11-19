@@ -3,6 +3,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "unplaced_enums.h"
@@ -14,8 +15,26 @@
 
 extern MKMaterial *gpMKWhiteMaterial;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
+#if 0 // DRAFT: undefined identifier 'sp10'
 void UIImage::Draw(const RenderContext &arg0) {
+    RenderContext sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f64 sp48;
+    f64 sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
+    f32 sp18;
     MKMaterial *temp_r3_103;
     f32 temp_f0_90;
     f32 temp_f0_96;
@@ -23,8 +42,9 @@ void UIImage::Draw(const RenderContext &arg0) {
     f32 var_f1_51;
     s32 temp_r3_29;
     s32 temp_r3_48;
-    arg_sp90.RenderContext();
-    arg_sp90.AddState(arg0, this->unk18);
+
+    sp90.RenderContext();
+    sp90.AddState(arg0, this->unk18);
     if (this->unk18.unk40 & 0x20) {
         temp_r3_29 = this->unk18.unk3C;
         if (!(temp_r3_29 & 0xC)) {
@@ -34,7 +54,7 @@ void UIImage::Draw(const RenderContext &arg0) {
         } else {
             var_f1_32 = -this->unk18.unk38;
         }
-        arg_sp20.operator*(var_f1_32);
+        sp20.operator*(var_f1_32);
         temp_r3_48 = this->unk18.unk3C;
         if (!(temp_r3_48 & 3)) {
             var_f1_51 = 0.0f;
@@ -43,28 +63,28 @@ void UIImage::Draw(const RenderContext &arg0) {
         } else {
             var_f1_51 = -this->unk18.unk34;
         }
-        arg_sp30.operator*(var_f1_51);
+        sp30.operator*(var_f1_51);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp40 = arg_sp10;
-        arg_sp18 = arg_sp38 + arg_sp28;
-        arg_sp48 = (f64) arg_sp18;
-        arg_sp90.Translate((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp40));
+        sp40 = sp10;
+        sp18 = sp30.unk8 + sp20.unk8;
+        sp48 = (f64) sp18;
+        sp90.Translate((Matrix *) &sp90, *((MKVector3 *) &sp40));
     }
-    arg_sp50 = 0.0f;
+    sp50 = 0.0f;
     temp_f0_90 = this->unk18.unk34;
-    arg_sp60 = temp_f0_90;
-    arg_sp70 = 0.0f;
-    arg_sp80 = temp_f0_90;
-    arg_sp54 = 0.0f;
-    arg_sp64 = 0.0f;
+    sp60 = temp_f0_90;
+    sp70 = 0.0f;
+    sp80 = temp_f0_90;
+    sp54 = 0.0f;
+    sp64 = 0.0f;
     temp_f0_96 = this->unk18.unk38;
-    arg_sp74 = temp_f0_96;
-    arg_sp84 = temp_f0_96;
-    arg_sp58 = 0.0f;
-    arg_sp68 = 0.0f;
-    arg_sp78 = 0.0f;
-    arg_sp88 = 0.0f;
+    sp74 = temp_f0_96;
+    sp84 = temp_f0_96;
+    sp58 = 0.0f;
+    sp68 = 0.0f;
+    sp78 = 0.0f;
+    sp88 = 0.0f;
     temp_r3_103 = this->unk64;
     if (temp_r3_103 != NULL) {
         MKMaterial_SetMaterial(temp_r3_103);
@@ -72,17 +92,17 @@ void UIImage::Draw(const RenderContext &arg0) {
         MKMaterial_SetMaterial(gpMKWhiteMaterial);
     }
     MKPrimitive(0xC, 1);
-    MKSetMatrix(*((Matrix *) &arg_sp90));
+    MKSetMatrix(*((Matrix *) &sp90));
     MKBegin(4);
-    MKSetColorV(*((MKVector4 *) &arg_spD0));
+    MKSetColorV(*((MKVector4 *) &sp90.unk40));
     MKSetTexCoord1F(M2C_BITWISE(f32, this->unk60), M2C_BITWISE(f32, this->unk64));
-    MKSetPositionV(*((MKVector3 *) &arg_sp50));
+    MKSetPositionV(*((MKVector3 *) &sp50));
     MKSetTexCoord1F(this->unk68, M2C_BITWISE(f32, this->unk64));
-    MKSetPositionV(*((MKVector3 *) &arg_sp60));
+    MKSetPositionV(*((MKVector3 *) &sp60));
     MKSetTexCoord1F(M2C_BITWISE(f32, this->unk60), this->unk6C);
-    MKSetPositionV(*((MKVector3 *) &arg_sp70));
+    MKSetPositionV(*((MKVector3 *) &sp70));
     MKSetTexCoord1F(this->unk68, this->unk6C);
-    MKSetPositionV(*((MKVector3 *) &arg_sp80));
+    MKSetPositionV(*((MKVector3 *) &sp80));
     MKEnd();
     MKEndPrimitive();
 }

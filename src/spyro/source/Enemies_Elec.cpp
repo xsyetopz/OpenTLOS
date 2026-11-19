@@ -176,52 +176,88 @@ void ElecTier3::DrawScan() {
 
 #if 0 // DRAFT: ')' expected
 void ElecTier3::UpdateScan() {
+    Matrix sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    MKVector3 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    M2C_UNK sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     u8 var_r31_382;
-    MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(checked_cast<ElecTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), (Matrix *) &arg_sp120);
-    arg_sp30 = -arg_sp140;
-    arg_sp34 = -arg_sp144;
-    arg_sp38 = -arg_sp148;
-    arg_spF0 = (f64) arg_sp30;
-    arg_spF8 = (f64) arg_sp38;
-    arg_spE0 = (f64) arg_sp30;
-    arg_spE8 = (f64) arg_sp38;
-    arg_sp20 = (MKVector3::up.unk4 * (f32) arg_spF8) - (MKVector3::up.unk8 * arg_spF4);
-    arg_sp24 = (MKVector3::up.unk8 * (f32) arg_spF0) - (MKVector3::up.unk0 * (f32) arg_spF8);
-    arg_sp28 = (MKVector3::up.unk0 * arg_spF4) - (MKVector3::up.unk4 * (f32) arg_spF0);
-    arg_spC0 = (f64) arg_sp20;
-    arg_spC8 = (f64) arg_sp28;
-    Normalise(*((MKVector3 *) &arg_spD0));
-    arg_sp110 = arg_spD0;
-    arg_sp118 = arg_spD8;
-    this->unkAF8 = (f32) arg_sp110;
-    this->unkAFC = arg_sp114;
-    M2C_FIELD(this, f32 *, 0xB18) = (f32) arg_sp118;
-    arg_sp18 = ((f32) arg_spF0 * arg_sp114) - (arg_spF4 * (f32) arg_sp110);
-    arg_sp10 = (arg_spF4 * (f32) arg_sp118) - ((f32) arg_spF8 * arg_sp114);
-    arg_sp14 = ((f32) arg_spF8 * (f32) arg_sp110) - ((f32) arg_spF0 * (f32) arg_sp118);
-    arg_sp108 = (f64) arg_sp18;
-    arg_sp100 = (f64) arg_sp10;
+
+    MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(checked_cast<ElecTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), &sp120);
+    sp30 = -sp120.unk20;
+    sp34 = -sp120.unk24;
+    sp38 = -sp120.unk28;
+    spF0 = (f64) sp30;
+    spF8 = (f64) sp38;
+    spE0 = (f64) sp30;
+    spE8 = (f64) sp38;
+    sp20 = (MKVector3::up.unk4 * (f32) spF8) - (MKVector3::up.unk8 * unkspF4);
+    sp24 = (MKVector3::up.unk8 * (f32) spF0) - (MKVector3::up.unk0 * (f32) spF8);
+    sp28 = (MKVector3::up.unk0 * unkspF4) - (MKVector3::up.unk4 * (f32) spF0);
+    spC0 = (f64) sp20;
+    spC8 = (f64) sp28;
+    Normalise(spD0);
+    sp110 = M2C_BITWISE(f64, spD0);
+    sp118 = (f64) spD0.unk8;
+    this->unkAF8 = (f32) sp110;
+    this->unkAFC = unksp114;
+    M2C_FIELD(this, f32 *, 0xB18) = (f32) sp118;
+    sp18 = ((f32) spF0 * unksp114) - (unkspF4 * (f32) sp110);
+    sp10 = (unkspF4 * (f32) sp118) - ((f32) spF8 * unksp114);
+    sp14 = ((f32) spF8 * (f32) sp110) - ((f32) spF0 * (f32) sp118);
+    sp108 = (f64) sp18;
+    sp100 = (f64) sp10;
     this->unkB04 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB20) = (f32) arg_sp100;
-    this->unkB24 = arg_sp104;
-    this->unkB10.unk0 = (f32) arg_sp108;
+    M2C_FIELD(this, f32 *, 0xB20) = (f32) sp100;
+    this->unkB24 = unksp104;
+    this->unkB10.unk0 = (f32) sp108;
     this->unkB10.unk4 = 0.0f;
-    arg_sp68 = 0.0f;
-    this->unkB10.unk8 = (f32) arg_spF0;
-    arg_sp60 = 0.0f;
-    this->unkB10.unkC = arg_spF4;
-    arg_sp64 = 1.0f;
-    this->unkB10.unk10 = (f32) arg_spF8;
+    sp68 = 0.0f;
+    this->unkB10.unk8 = (f32) spF0;
+    sp60 = 0.0f;
+    this->unkB10.unkC = unkspF4;
+    sp64 = 1.0f;
+    this->unkB10.unk10 = (f32) spF8;
     this->unkB10.unk14 = 0.0f;
-    arg_spB0 = (f64) arg_sp10;
-    this->unkB10.unk18 = arg_sp150;
-    arg_spB8 = (f64) arg_sp18;
-    this->unkB10.unk1C = arg_sp154;
-    this->unkB10.unk20 = arg_sp158;
+    spB0 = (f64) sp10;
+    this->unkB10.unk18 = sp120.unk30;
+    spB8 = (f64) sp18;
+    this->unkB10.unk1C = sp120.unk34;
+    this->unkB10.unk20 = sp120.unk38;
     this->unkB10.unk24 = 1.0f;
-    arg_spA0 = (f64) arg_sp60;
-    arg_spA8 = (f64) arg_sp68;
-    Tools_RotateMatrixToDirection((Matrix *) &this->unkAF8, *((MKVector3 *) &arg_spF0), *((MKVector3 *) &arg_spA0), -0.3926991f);
+    spA0 = (f64) sp60;
+    spA8 = (f64) sp68;
+    Tools_RotateMatrixToDirection((Matrix *) &this->unkAF8, *((MKVector3 *) &spF0), *((MKVector3 *) &spA0), -0.3926991f);
     if ((u8) M2C_FIELD(this, u8 *, 0xB55) == 0) {
         var_r31_382 = 0;
         if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
@@ -230,16 +266,16 @@ void ElecTier3::UpdateScan() {
         if (var_r31_382 != 0) {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            arg_sp80 = arg_sp50;
-            arg_sp58 = this->unkB10.unk10 * 2500.0f;
-            arg_sp88 = (f64) arg_sp58;
+            sp80 = sp50;
+            sp58 = this->unkB10.unk10 * 2500.0f;
+            sp88 = (f64) sp58;
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp90 = arg_sp40;
-            arg_sp48 = this->unkB10.unk20 + (f32) arg_sp88;
-            arg_sp98 = (f64) arg_sp48;
-            arg_sp70.GetPos();
-            M2C_FIELD(this, u8 *, 0xB55) = (u8) (Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk18), *((MKVector3 *) &arg_sp90), 525.0f, *((MKVector3 *) &arg_sp70)) > 0.0f);
+            sp90 = sp40;
+            sp48 = this->unkB10.unk20 + (f32) sp88;
+            sp98 = (f64) sp48;
+            sp70.GetPos();
+            M2C_FIELD(this, u8 *, 0xB55) = (u8) (Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk18), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f);
             if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
                 KDSound_Play3d(GS_ConduitAlert, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             }
@@ -279,13 +315,16 @@ void ElecTier3::Update() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElecTier3::UpdateMovementCustom() {
+    Matrix sp10;
+    M2C_UNK spC;
+
     UpdateRotation();
     UpdateModel();
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    arg_sp10.Scale3x3((Matrix *) &arg_sp10, this->unkB10.unk28);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    sp10.Scale3x3(&sp10, this->unkB10.unk28);
+    MKModel_SetWorldMatrix(this->unk4, sp10);
 }
 #endif
 
@@ -504,74 +543,109 @@ void ElecTier2::Despawn(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp12C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+    MKCollisionResult sp170;
+    Matrix sp130;
+    MKVector3 sp120;
+    MKVector3 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     u8 var_r3_1112;
     void *temp_r4_1117;
-    M2C_STRUCT_COPY((s32) &arg_sp12C + 4, (s32) (arg0 - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp120.unkC + 4, (s32) (arg0 - 4) + 4, 0x40);
     MKModel_SetWorldMatrix(this->unk4, Matrix::identity);
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), (MKVector3 *) &arg_sp120);
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2BC), (MKVector3 *) &arg_sp110);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), &sp120);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2BC), &sp110);
     var_r3_1112 = 0;
-    arg_sp120 = 0.0f;
-    arg_sp128 = 0.0f;
-    arg_sp110 = 0.0f;
-    arg_sp118 = 0.0f;
+    sp120 = 0.0f;
+    sp120.unk8 = 0.0f;
+    sp110 = 0.0f;
+    sp110.unk8 = 0.0f;
     temp_r4_1117 = this->unkA2C;
     if ((temp_r4_1117 != NULL) && (M2C_FIELD(temp_r4_1117, s32 *, 4) & 0x200)) {
         var_r3_1112 = 1;
     }
-    arg_sp80 = 0.0f;
-    arg_sp84 = 100.0f;
-    arg_sp88 = 0.0f;
+    sp80 = 0.0f;
+    sp84 = 100.0f;
+    sp88 = 0.0f;
     M2C_FIELD(this, u8 *, 0xB10) = var_r3_1112;
-    arg_spE0 = (f64) arg_sp80;
-    arg_spE8 = (f64) arg_sp88;
+    spE0 = (f64) sp80;
+    spE8 = (f64) sp88;
     M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r30, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    arg_sp100 = arg_sp70;
-    arg_sp78 = arg_sp168 + (f32) arg_spE8;
-    arg_sp108 = (f64) arg_sp78;
+    sp100 = sp70;
+    sp78 = sp130.unk38 + (f32) spE8;
+    sp108 = (f64) sp78;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    arg_spF0 = arg_sp60;
-    arg_sp68 = arg_sp168 + arg_sp128;
-    arg_spF8 = (f64) arg_sp68;
-    if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp100), *((MKVector3 *) &arg_spF0), (MKCollisionResult *) &arg_sp170, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
+    spF0 = sp60;
+    sp68 = sp130.unk38 + sp120.unk8;
+    spF8 = (f64) sp68;
+    if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *((MKVector3 *) &spF0), &sp170, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
         if ((u8) M2C_FIELD(this, u8 *, 0xB10) != 0) {
-            arg_sp20 = -arg_sp110;
-            arg_sp24 = -arg_sp114;
-            arg_sp28 = -arg_sp118;
-            arg_spC0 = (f64) arg_sp20;
-            arg_spC8 = (f64) arg_sp28;
+            sp20 = -M2C_BITWISE(f32, sp110);
+            sp24 = -sp110.unk4;
+            sp28 = -sp110.unk8;
+            spC0 = (f64) sp20;
+            spC8 = (f64) sp28;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_spD0 = arg_sp40;
-            arg_sp48 = arg_sp178 + (f32) arg_spC8;
-            arg_spD8 = (f64) arg_sp48;
-            arg_sp160 = (f32) arg_spD0;
-            arg_sp164 = arg_spD4;
-            arg_sp168 = (f32) arg_spD8;
-            arg_sp16C = 1.0f;
+            spD0 = sp40;
+            sp48 = sp170.unk8 + (f32) spC8;
+            spD8 = (f64) sp48;
+            sp130.unk30 = (f32) spD0;
+            sp130.unk34 = unkspD4;
+            sp130.unk38 = (f32) spD8;
+            sp130.unk3C = 1.0f;
         } else {
-            arg_sp10 = -arg_sp120;
-            arg_sp14 = -arg_sp124;
-            arg_sp18 = -arg_sp128;
-            arg_spA0 = (f64) arg_sp10;
-            arg_spA8 = (f64) arg_sp18;
+            sp10 = -M2C_BITWISE(f32, sp120);
+            sp14 = -sp120.unk4;
+            sp18 = -sp120.unk8;
+            spA0 = (f64) sp10;
+            spA8 = (f64) sp18;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_spB0 = arg_sp30;
-            arg_sp38 = arg_sp178 + (f32) arg_spA8;
-            arg_spB8 = (f64) arg_sp38;
-            arg_sp160 = (f32) arg_spB0;
-            arg_sp164 = arg_spB4;
-            arg_sp168 = (f32) arg_spB8;
-            arg_sp16C = 1.0f;
+            spB0 = sp30;
+            sp38 = sp170.unk8 + (f32) spA8;
+            spB8 = (f64) sp38;
+            sp130.unk30 = (f32) spB0;
+            sp130.unk34 = unkspB4;
+            sp130.unk38 = (f32) spB8;
+            sp130.unk3C = 1.0f;
         }
         M2C_FIELD(this, s8 *, 0xB13) = 1;
     } else {
         M2C_FIELD(this, u8 *, 0xB10) = 0U;
         M2C_FIELD(this, s8 *, 0xB13) = 0;
     }
-    if (Enemy::Spawn((Matrix *) &arg_sp130, NULL) != 0) {
+    if (Enemy::Spawn(&sp130, NULL) != 0) {
         this->unk6B5 |= 0x10;
         this->unk6B5 &= ~0x20;
         M2C_FIELD(this, s8 *, 0xB12) = 1;
@@ -581,10 +655,10 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         if ((u8) M2C_FIELD(this, u8 *, 0xB11) != 0) {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp90 = arg_sp50;
-            arg_sp58 = arg_sp118 + arg_sp168;
-            arg_sp98 = (f64) arg_sp58;
-            SetupEnemyRegion(*((MKVector3 *) &arg_sp90), 1500.0f);
+            sp90 = sp50;
+            sp58 = sp110.unk8 + sp130.unk38;
+            sp98 = (f64) sp58;
+            SetupEnemyRegion(*((MKVector3 *) &sp90), 1500.0f);
         }
         this->unkAFC = 0;
         this->unkB10.Reset();

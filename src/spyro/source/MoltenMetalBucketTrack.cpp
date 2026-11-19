@@ -135,8 +135,86 @@ loop_6:
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void MoltenMetalBucketTrack::Update() {
+    f32 sp24C;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f32 sp23C;
+    f32 sp238;
+    f32 sp234;
+    f32 sp230;
+    f32 sp22C;
+    f32 sp228;
+    f32 sp224;
+    f32 sp220;
+    f32 sp21C;
+    f32 sp218;
+    f32 sp214;
+    f32 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    KDUniformSpline sp170;
+    f64 sp160;
+    f64 sp150;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f32 spD8;
+    f32 spC8;
+    f32 spB8;
+    f32 spA8;
+    f32 sp98;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f30_397;
     f32 temp_f3_276;
+    f32 temp_f8_820;
     f32 var_f29_400;
     f32 var_f3_688;
     f32 var_f3_797;
@@ -160,6 +238,7 @@ void MoltenMetalBucketTrack::Update() {
     s32 var_r0_566;
     s32 var_r0_666;
     s32 var_r0_775;
+
     MKProp::Update();
     temp_r0_275 = this->unkE4;
     temp_f3_276 = 500.0f / this->unk4C.unk8;
@@ -226,45 +305,45 @@ void MoltenMetalBucketTrack::Update() {
     if (var_f29_400 > 1.0f) {
         var_f29_400 = 1.0f;
     }
-    arg_sp28 = 0.0f;
-    arg_sp170.GetMeasure(temp_f30_397, &this->unk4C, KDSpline_PositionMixer);
-    arg_sp200 = arg_sp170;
-    arg_sp208 = arg_sp178;
-    arg_sp24 = 0.0f;
-    arg_sp160.GetMeasure(temp_f30_397, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
-    arg_sp1F0 = arg_sp160;
-    arg_sp1F8 = arg_sp168;
-    arg_sp20 = 0.0f;
-    arg_sp150.GetMeasure(var_f29_400, &this->unk4C, KDSpline_PositionMixer);
-    arg_sp1E0 = arg_sp150;
-    arg_sp1E8 = arg_sp158;
-    arg_sp1C = 0.0f;
-    arg_sp140.GetMeasure(var_f29_400, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
-    arg_sp1D0 = arg_sp140;
-    arg_sp1D8 = arg_sp148;
-    arg_sp1E4 = arg_sp204;
-    arg_sp1D4 = arg_sp1F4;
+    sp28 = 0.0f;
+    sp170.GetMeasure(temp_f30_397, &this->unk4C, KDSpline_PositionMixer);
+    sp200 = M2C_BITWISE(f64, sp170);
+    sp208 = (f64) sp170.unk8;
+    sp24 = 0.0f;
+    sp160.GetMeasure(temp_f30_397, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
+    sp1F0 = sp160;
+    sp1F8 = sp168;
+    sp20 = 0.0f;
+    sp150.GetMeasure(var_f29_400, &this->unk4C, KDSpline_PositionMixer);
+    sp1E0 = sp150;
+    sp1E8 = sp158;
+    sp1C = 0.0f;
+    sp140.GetMeasure(var_f29_400, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
+    sp1D0 = sp140;
+    sp1D8 = sp148;
+    unksp1E4 = unksp204;
+    unksp1D4 = unksp1F4;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp130 = arg_spD0;
-    arg_spD8 = (f32) arg_sp208 + (f32) arg_sp1F8;
-    arg_sp138 = (f64) arg_spD8;
+    sp130 = spD0;
+    spD8 = (f32) sp208 + (f32) sp1F8;
+    sp138 = (f64) spD8;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-    arg_sp1C0 = arg_spC0;
-    arg_spC8 = (f32) arg_sp138 * 0.5f;
-    arg_sp1C8 = (f64) arg_spC8;
+    sp1C0 = spC0;
+    spC8 = (f32) sp138 * 0.5f;
+    sp1C8 = (f64) spC8;
     M2C_ERROR(/* unknown instruction: ps_add $f2, $f3, $f2 */);
-    arg_sp120 = arg_spB0;
-    arg_spB8 = (f32) arg_sp1E8 + (f32) arg_sp1D8;
-    arg_sp128 = (f64) arg_spB8;
+    sp120 = spB0;
+    spB8 = (f32) sp1E8 + (f32) sp1D8;
+    sp128 = (f64) spB8;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-    arg_sp1B0 = arg_spA0;
-    arg_spA8 = (f32) arg_sp128 * 0.5f;
-    arg_sp1B8 = (f64) arg_spA8;
+    sp1B0 = spA0;
+    spA8 = (f32) sp128 * 0.5f;
+    sp1B8 = (f64) spA8;
     M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
-    arg_sp110 = arg_sp90;
-    arg_sp98 = (f32) arg_sp1C8 - (f32) arg_sp1B8;
-    arg_sp118 = (f64) arg_sp98;
-    var_f6_521 = ((f32) arg_sp118 * (f32) arg_sp118) + (((f32) arg_sp110 * (f32) arg_sp110) + (arg_sp114 * arg_sp114));
+    sp110 = sp90;
+    sp98 = (f32) sp1C8 - (f32) sp1B8;
+    sp118 = (f64) sp98;
+    var_f6_521 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
     if (var_f6_521 > 1e-12f) {
         if (var_f6_521 > 0.0f) {
             temp_f3_527 = __frsqrte(var_f6_521);
@@ -274,18 +353,18 @@ void MoltenMetalBucketTrack::Update() {
         } else if (var_f6_521 < M2C_BITWISE(f32, 0.0)) {
             var_f6_521 = __float_nan;
         } else {
-            arg_sp18 = var_f6_521;
-            temp_r3_556 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+            sp18 = var_f6_521;
+            temp_r3_556 = M2C_BITWISE(s32, sp18) & 0x7F800000;
             switch (temp_r3_556) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_566 = 1;
                 } else {
                     var_r0_566 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                     var_r0_566 = 5;
                 } else {
                     var_r0_566 = 3;
@@ -303,16 +382,16 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f5_588 = 0.0f;
     }
-    arg_sp84 = arg_sp114 * var_f5_588;
-    arg_sp80 = (f32) arg_sp110 * var_f5_588;
-    arg_sp88 = (f32) arg_sp118 * var_f5_588;
-    arg_sp1A0 = (f64) arg_sp80;
-    arg_sp1A8 = (f64) arg_sp88;
+    sp84 = unksp114 * var_f5_588;
+    sp80 = (f32) sp110 * var_f5_588;
+    sp88 = (f32) sp118 * var_f5_588;
+    sp1A0 = (f64) sp80;
+    sp1A8 = (f64) sp88;
     M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
-    arg_sp78 = (f32) arg_sp208 - (f32) arg_sp1F8;
-    arg_sp100 = arg_sp70;
-    arg_sp108 = (f64) arg_sp78;
-    var_f4_621 = ((f32) arg_sp108 * (f32) arg_sp108) + (((f32) arg_sp100 * (f32) arg_sp100) + (arg_sp104 * arg_sp104));
+    sp78 = (f32) sp208 - (f32) sp1F8;
+    sp100 = sp70;
+    sp108 = (f64) sp78;
+    var_f4_621 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
     if (var_f4_621 > 1e-12f) {
         if (var_f4_621 > 0.0f) {
             temp_f1_627 = __frsqrte(var_f4_621);
@@ -322,18 +401,18 @@ void MoltenMetalBucketTrack::Update() {
         } else if (var_f4_621 < M2C_BITWISE(f32, 0.0)) {
             var_f4_621 = __float_nan;
         } else {
-            arg_sp14 = var_f4_621;
-            temp_r3_656 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_621;
+            temp_r3_656 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_656) {                  /* switch 3; irregular */
             case 0x7F800000:                        /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_666 = 1;
                 } else {
                     var_r0_666 = 2;
                 }
                 break;
             case 0x0:                               /* switch 3 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_666 = 5;
                 } else {
                     var_r0_666 = 3;
@@ -351,17 +430,17 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f3_688 = 0.0f;
     }
-    arg_sp64 = arg_sp104 * var_f3_688;
-    arg_sp60 = (f32) arg_sp100 * var_f3_688;
-    arg_sp68 = (f32) arg_sp108 * var_f3_688;
-    arg_sp190 = (f64) arg_sp60;
-    arg_sp198 = (f64) arg_sp68;
-    arg_sp50 = (arg_sp1A4 * (f32) arg_sp198) - ((f32) arg_sp1A8 * arg_sp194);
-    arg_sp54 = ((f32) arg_sp1A8 * (f32) arg_sp190) - ((f32) arg_sp1A0 * (f32) arg_sp198);
-    arg_sp58 = ((f32) arg_sp1A0 * arg_sp194) - (arg_sp1A4 * (f32) arg_sp190);
-    arg_spF0 = (f64) arg_sp50;
-    arg_spF8 = (f64) arg_sp58;
-    var_f4_730 = ((f32) arg_spF8 * (f32) arg_spF8) + (((f32) arg_spF0 * (f32) arg_spF0) + (arg_spF4 * arg_spF4));
+    sp64 = unksp104 * var_f3_688;
+    sp60 = (f32) sp100 * var_f3_688;
+    sp68 = (f32) sp108 * var_f3_688;
+    sp190 = (f64) sp60;
+    sp198 = (f64) sp68;
+    sp50 = (unksp1A4 * (f32) sp198) - ((f32) sp1A8 * unksp194);
+    sp54 = ((f32) sp1A8 * (f32) sp190) - ((f32) sp1A0 * (f32) sp198);
+    sp58 = ((f32) sp1A0 * unksp194) - (unksp1A4 * (f32) sp190);
+    spF0 = (f64) sp50;
+    spF8 = (f64) sp58;
+    var_f4_730 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
     if (var_f4_730 > 1e-12f) {
         if (var_f4_730 > 0.0f) {
             temp_f1_736 = __frsqrte(var_f4_730);
@@ -371,18 +450,18 @@ void MoltenMetalBucketTrack::Update() {
         } else if (var_f4_730 < M2C_BITWISE(f32, 0.0)) {
             var_f4_730 = __float_nan;
         } else {
-            arg_sp10 = var_f4_730;
-            temp_r3_765 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f4_730;
+            temp_r3_765 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_765) {                  /* switch 4; irregular */
             case 0x7F800000:                        /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_775 = 1;
                 } else {
                     var_r0_775 = 2;
                 }
                 break;
             case 0x0:                               /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_775 = 5;
                 } else {
                     var_r0_775 = 3;
@@ -400,36 +479,37 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f3_797 = 0.0f;
     }
-    arg_sp44 = arg_spF4 * var_f3_797;
-    arg_sp40 = (f32) arg_spF0 * var_f3_797;
-    arg_sp48 = (f32) arg_spF8 * var_f3_797;
-    arg_sp180 = (f64) arg_sp40;
-    arg_sp188 = (f64) arg_sp48;
-    arg_sp38 = ((f32) arg_sp180 * arg_sp1A4) - (arg_sp184 * (f32) arg_sp1A0);
-    arg_sp30 = (arg_sp184 * (f32) arg_sp1A8) - ((f32) arg_sp188 * arg_sp1A4);
-    arg_sp34 = ((f32) arg_sp188 * (f32) arg_sp1A0) - ((f32) arg_sp180 * (f32) arg_sp1A8);
-    arg_spE8 = (f64) arg_sp38;
-    arg_spE0 = (f64) arg_sp30;
-    arg_sp190 = (f64) arg_sp30;
-    arg_sp198 = (f64) arg_sp38;
-    M2C_STRUCT_COPY((s32) &arg_sp20C + 4, MKModel_GetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4)) - 4 + 4, 0x40);
-    arg_sp240 = (f32) arg_sp1C0;
-    arg_sp244 = arg_sp1C4;
-    arg_sp248 = (f32) arg_sp1C8;
-    arg_sp24C = 1.0f;
-    arg_sp210 = (f32) arg_sp190;
-    arg_sp214 = arg_sp194;
-    arg_sp218 = (f32) arg_sp198;
-    arg_sp21C = 0.0f;
-    arg_sp220 = (f32) arg_sp180;
-    arg_sp224 = arg_sp184;
-    arg_sp228 = (f32) arg_sp188;
-    arg_sp22C = 0.0f;
-    arg_sp230 = (f32) arg_sp1A0;
-    arg_sp234 = arg_sp1A4;
-    arg_sp238 = (f32) arg_sp1A8;
-    arg_sp23C = 0.0f;
-    MKModel_SetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4), *((Matrix *) &arg_sp210));
+    sp44 = unkspF4 * var_f3_797;
+    sp40 = (f32) spF0 * var_f3_797;
+    sp48 = (f32) spF8 * var_f3_797;
+    sp170.unk10 = (f64) sp40;
+    sp188 = (f64) sp48;
+    temp_f8_820 = M2C_BITWISE(f32, sp170.unk10);
+    sp38 = (temp_f8_820 * unksp1A4) - (sp184 * (f32) sp1A0);
+    sp30 = (sp184 * (f32) sp1A8) - ((f32) sp188 * unksp1A4);
+    sp34 = ((f32) sp188 * (f32) sp1A0) - (temp_f8_820 * (f32) sp1A8);
+    spE8 = (f64) sp38;
+    spE0 = (f64) sp30;
+    sp190 = (f64) sp30;
+    sp198 = (f64) sp38;
+    M2C_STRUCT_COPY((s32) &unksp20C + 4, MKModel_GetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4)) - 4 + 4, 0x40);
+    sp240 = (f32) sp1C0;
+    sp244 = unksp1C4;
+    sp248 = (f32) sp1C8;
+    sp24C = 1.0f;
+    sp210 = (f32) sp190;
+    sp214 = unksp194;
+    sp218 = (f32) sp198;
+    sp21C = 0.0f;
+    sp220 = M2C_BITWISE(f32, sp170.unk10);
+    sp224 = sp184;
+    sp228 = (f32) sp188;
+    sp22C = 0.0f;
+    sp230 = (f32) sp1A0;
+    sp234 = unksp1A4;
+    sp238 = (f32) sp1A8;
+    sp23C = 0.0f;
+    MKModel_SetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4), *((Matrix *) &sp210));
 }
 #endif
 

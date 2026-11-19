@@ -194,14 +194,17 @@ void Lever::Resolve() {
 
 #if 0 // DRAFT: ')' expected
 void Lever::LoadDone() {
+    Matrix sp50;
+    Matrix sp10;
+
     GameProp::LoadDone();
-    MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), (Matrix *) &arg_sp50, 1U);
-    arg_sp10.SetRotateAroundAxis(MKVector3::up, 3.1415927f);
-    arg_sp50.Multiply3x3((Matrix *) &arg_sp50, (Matrix *) &arg_sp10);
-    this->unkD8 = arg_sp80;
-    this->unkE0 = arg_sp88;
-    this->unkE8 = arg_sp70;
-    this->unkF0 = arg_sp78;
+    MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), &sp50, 1U);
+    sp10.SetRotateAroundAxis(MKVector3::up, 3.1415927f);
+    sp50.Multiply3x3(&sp50, &sp10);
+    this->unkD8 = (f64) sp50.unk30;
+    this->unkE0 = (f64) sp50.unk38;
+    this->unkE8 = (f64) sp50.unk20;
+    this->unkF0 = (f64) sp50.unk28;
     this->unkC8.RegisterTargetable();
     if ((s32) M2C_FIELD(checked_cast<LeverDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
         operator new(0x28U, NULL, 0);

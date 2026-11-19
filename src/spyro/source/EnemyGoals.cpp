@@ -1659,9 +1659,19 @@ void EnemyGoal_Kong::Terminate() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyGoal_Kong::Update() {
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKProp *temp_r3_3091;
     u8 temp_r31_3025;
     u8 temp_r3_3014;
+
     ActivateIfInactive();
     temp_r3_3014 = this->unk8;
     if (temp_r3_3014 == 3) {
@@ -1671,29 +1681,29 @@ u8 EnemyGoal_Kong::Update() {
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 == 2) {
         if (temp_r31_3025 != 0) {
-            arg_sp60.SetIdentity();
-            arg_sp40.GetStandDir();
-            arg_sp6C = 0.0f;
-            arg_sp14 = (MKVector3::up.unk8 * arg_sp40) - (MKVector3::up.unk0 * arg_sp48);
-            arg_sp18 = (MKVector3::up.unk0 * arg_sp44) - (MKVector3::up.unk4 * arg_sp40);
-            arg_sp10 = (MKVector3::up.unk4 * arg_sp48) - (MKVector3::up.unk8 * arg_sp44);
-            arg_sp58 = (f64) arg_sp18;
-            arg_sp50 = (f64) arg_sp10;
-            arg_sp60 = (f32) arg_sp50;
-            arg_sp64 = arg_sp54;
-            arg_sp68 = (f32) arg_sp58;
-            arg_sp30.GetStandDir();
-            arg_sp80 = arg_sp30;
-            arg_sp84 = arg_sp34;
-            arg_sp88 = arg_sp38;
-            arg_sp8C = 0.0f;
-            arg_sp20.GetStandPos();
-            arg_sp90 = arg_sp20;
-            arg_sp94 = arg_sp24;
-            arg_sp98 = arg_sp28;
-            arg_sp9C = 1.0f;
+            sp60.SetIdentity();
+            sp40.GetStandDir();
+            sp60.unkC = 0.0f;
+            sp14 = (MKVector3::up.unk8 * sp40) - (MKVector3::up.unk0 * sp48);
+            sp18 = (MKVector3::up.unk0 * sp44) - (MKVector3::up.unk4 * sp40);
+            sp10 = (MKVector3::up.unk4 * sp48) - (MKVector3::up.unk8 * sp44);
+            sp58 = (f64) sp18;
+            sp50 = (f64) sp10;
+            sp60 = (f32) sp50;
+            sp60.unk4 = unksp54;
+            sp60.unk8 = (f32) sp58;
+            sp30.GetStandDir();
+            sp60.unk20 = sp30;
+            sp60.unk24 = sp34;
+            sp60.unk28 = sp38;
+            sp60.unk2C = 0.0f;
+            sp20.GetStandPos();
+            sp60.unk30 = sp20;
+            sp60.unk34 = sp24;
+            sp60.unk38 = sp28;
+            sp60.unk3C = 1.0f;
             temp_r3_3091 = this->unkC;
-            M2C_FIELD(temp_r3_3091->__vptr, M2C_UNK (**)(MKProp *, f32 *, f32, f32, f32), 0x5C)(temp_r3_3091, &arg_sp60, arg_sp28, arg_sp24, arg_sp20);
+            M2C_FIELD(temp_r3_3091->__vptr, M2C_UNK (**)(MKProp *, Matrix *, f32, f32, f32), 0x5C)(temp_r3_3091, &sp60, sp28, sp24, sp20);
         }
         this->unk8 = 1;
         ActivateIfInactive();
@@ -2029,9 +2039,19 @@ void EnemyGoal_OperateLever::Terminate() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 EnemyGoal_OperateLever::Update() {
+    Matrix sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Enemy *temp_r3_3875;
     u8 temp_r31_3809;
     u8 temp_r3_3798;
+
     ActivateIfInactive();
     if (this->unk24.Get() != NULL) {
         checked_cast<Lever *, MKProp>(M2C_FIELD(this->unk24.Get()->__vptr, MKProp *(**)(), 8)());
@@ -2046,29 +2066,29 @@ u8 EnemyGoal_OperateLever::Update() {
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 == 2) {
         if (temp_r31_3809 != 0) {
-            arg_sp60.SetIdentity();
-            arg_sp40.GetStandDir();
-            arg_sp6C = 0.0f;
-            arg_sp14 = (MKVector3::up.unk8 * arg_sp40) - (MKVector3::up.unk0 * arg_sp48);
-            arg_sp18 = (MKVector3::up.unk0 * arg_sp44) - (MKVector3::up.unk4 * arg_sp40);
-            arg_sp10 = (MKVector3::up.unk4 * arg_sp48) - (MKVector3::up.unk8 * arg_sp44);
-            arg_sp58 = (f64) arg_sp18;
-            arg_sp50 = (f64) arg_sp10;
-            arg_sp60 = (f32) arg_sp50;
-            arg_sp64 = arg_sp54;
-            arg_sp68 = (f32) arg_sp58;
-            arg_sp30.GetStandDir();
-            arg_sp80 = arg_sp30;
-            arg_sp84 = arg_sp34;
-            arg_sp88 = arg_sp38;
-            arg_sp8C = 0.0f;
-            arg_sp20.GetStandPos();
-            arg_sp90 = arg_sp20;
-            arg_sp94 = arg_sp24;
-            arg_sp98 = arg_sp28;
-            arg_sp9C = 1.0f;
+            sp60.SetIdentity();
+            sp40.GetStandDir();
+            sp60.unkC = 0.0f;
+            sp14 = (MKVector3::up.unk8 * sp40) - (MKVector3::up.unk0 * sp48);
+            sp18 = (MKVector3::up.unk0 * sp44) - (MKVector3::up.unk4 * sp40);
+            sp10 = (MKVector3::up.unk4 * sp48) - (MKVector3::up.unk8 * sp44);
+            sp58 = (f64) sp18;
+            sp50 = (f64) sp10;
+            sp60 = (f32) sp50;
+            sp60.unk4 = unksp54;
+            sp60.unk8 = (f32) sp58;
+            sp30.GetStandDir();
+            sp60.unk20 = sp30;
+            sp60.unk24 = sp34;
+            sp60.unk28 = sp38;
+            sp60.unk2C = 0.0f;
+            sp20.GetStandPos();
+            sp60.unk30 = sp20;
+            sp60.unk34 = sp24;
+            sp60.unk38 = sp28;
+            sp60.unk3C = 1.0f;
             temp_r3_3875 = this->unkC;
-            temp_r3_3875->Teleport(&arg_sp60, arg_sp28, arg_sp24, arg_sp20);
+            temp_r3_3875->Teleport(&sp60, sp28, sp24, sp20);
         }
         this->unk8 = 1;
         ActivateIfInactive();

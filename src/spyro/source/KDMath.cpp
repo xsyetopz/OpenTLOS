@@ -276,55 +276,68 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: function call 'KDMath_BuildMatrixFromFwd(Matrix *, MKVector3, const
 void KDMath_LocaliseVector(const MKVector3 &arg0, MKVector3 *arg1, const MKVector3 &arg2) {
-    arg_sp10.SetIdentity();
-    gAssertBool = KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp10, *arg1, &arg2);
-    KDMath_LocaliseVector((Matrix *) &arg0, *((MKVector3 *) &arg_sp10));
+    Matrix sp10;
+
+    sp10.SetIdentity();
+    gAssertBool = KDMath_BuildMatrixFromFwd(&sp10, *arg1, &arg2);
+    KDMath_LocaliseVector((Matrix *) &arg0, *((MKVector3 *) &sp10));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp1C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
+    Matrix sp20;
+    M2C_UNK sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_574;
     f32 temp_f7_579;
     f32 temp_f8_589;
     void *temp_r31_561;
+
     temp_r31_561 = M2C_ERROR(/* Read from unset register $r5 */);
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, (s32) (&arg1 - 4) + 4, 0x40);
-    arg_sp20.Inverse((Matrix *) &arg_sp20);
+    M2C_STRUCT_COPY((s32) &sp1C + 4, (s32) (&arg1 - 4) + 4, 0x40);
+    sp20.Inverse(&sp20);
     temp_f3_574 = M2C_FIELD(temp_r31_561, f32 *, 4);
     temp_f7_579 = M2C_FIELD(temp_r31_561, f32 *, 0);
     temp_f8_589 = M2C_FIELD(temp_r31_561, f32 *, 8);
-    arg_sp50 = 0.0f;
-    arg_sp54 = 0.0f;
-    arg_sp58 = 0.0f;
-    arg_sp10 = 0.0f + ((temp_f8_589 * arg_sp40) + ((temp_f7_579 * arg_sp20) + (temp_f3_574 * arg_sp30)));
-    arg_sp14 = 0.0f + ((temp_f8_589 * arg_sp44) + ((temp_f7_579 * arg_sp24) + (temp_f3_574 * arg_sp34)));
-    arg_sp18 = 0.0f + ((temp_f8_589 * arg_sp48) + ((temp_f7_579 * arg_sp28) + (temp_f3_574 * arg_sp38)));
-    arg_sp5C = 1.0f;
-    M2C_FIELD(arg0, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) arg_sp18;
+    sp20.unk30 = 0.0f;
+    sp20.unk34 = 0.0f;
+    sp20.unk38 = 0.0f;
+    sp10 = 0.0f + ((temp_f8_589 * sp20.unk20) + ((temp_f7_579 * M2C_BITWISE(f32, sp20)) + (temp_f3_574 * sp20.unk10)));
+    sp14 = 0.0f + ((temp_f8_589 * sp20.unk24) + ((temp_f7_579 * sp20.unk4) + (temp_f3_574 * sp20.unk14)));
+    sp18 = 0.0f + ((temp_f8_589 * sp20.unk28) + ((temp_f7_579 * sp20.unk8) + (temp_f3_574 * sp20.unk18)));
+    sp20.unk3C = 1.0f;
+    M2C_FIELD(arg0, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(arg0, f64 *, 8) = (f64) sp18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 void KDMath_RotateVectorByYaw(const MKVector3 &arg0, float arg1) {
+    Matrix sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_639;
     f32 temp_f6_644;
     f32 temp_f7_653;
     void *temp_r31_633;
+
     temp_r31_633 = M2C_ERROR(/* Read from unset register $r4 */);
-    arg_sp20.SetIdentity();
-    arg_sp20.SetRotationYaw(arg1);
+    sp20.SetIdentity();
+    sp20.SetRotationYaw(arg1);
     temp_f3_639 = M2C_FIELD(temp_r31_633, f32 *, 4);
     temp_f6_644 = M2C_FIELD(temp_r31_633, f32 *, 0);
     temp_f7_653 = M2C_FIELD(temp_r31_633, f32 *, 8);
-    arg_sp10 = arg_sp50 + ((temp_f7_653 * arg_sp40) + ((temp_f6_644 * arg_sp20) + (temp_f3_639 * arg_sp30)));
-    arg_sp14 = arg_sp54 + ((temp_f7_653 * arg_sp44) + ((temp_f6_644 * arg_sp24) + (temp_f3_639 * arg_sp34)));
-    arg_sp18 = arg_sp58 + ((temp_f7_653 * arg_sp48) + ((temp_f6_644 * arg_sp28) + (temp_f3_639 * arg_sp38)));
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) arg_sp18;
+    sp10 = sp20.unk30 + ((temp_f7_653 * sp20.unk20) + ((temp_f6_644 * M2C_BITWISE(f32, sp20)) + (temp_f3_639 * sp20.unk10)));
+    sp14 = sp20.unk34 + ((temp_f7_653 * sp20.unk24) + ((temp_f6_644 * sp20.unk4) + (temp_f3_639 * sp20.unk14)));
+    sp18 = sp20.unk38 + ((temp_f7_653 * sp20.unk28) + ((temp_f6_644 * sp20.unk8) + (temp_f3_639 * sp20.unk18)));
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
 }
 #endif
 
@@ -764,32 +777,38 @@ void KDMath_GetYaw(const Matrix *arg0) {
     KDMath_GetYaw(*((MKVector3 *) &sp8));
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
 void KDMath_GetDirection(float arg0, float arg1) {
+    Matrix sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     void *temp_r31_1407;
-    temp_r31_1407 = M2C_ERROR(/* Read from unset register $r3 */);
-    arg_sp20.SetRotationPitch(arg1);
-    arg_sp20.RotateYaw((Matrix *) &arg_sp20, arg0);
-    arg_sp10 = -arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -arg_sp48;
-    M2C_FIELD(temp_r31_1407, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(temp_r31_1407, f64 *, 8) = (f64) arg_sp18;
-}
-#endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp20'
-void KDMath_GetDirection(float arg0) {
-    void *temp_r31_1448;
-    temp_r31_1448 = M2C_ERROR(/* Read from unset register $r3 */);
-    arg_sp20.SetRotationYaw(arg0);
-    arg_sp10 = -arg_sp40;
-    arg_sp14 = -arg_sp44;
-    arg_sp18 = -arg_sp48;
-    M2C_FIELD(temp_r31_1448, f64 *, 0) = (f64) arg_sp10;
-    M2C_FIELD(temp_r31_1448, f64 *, 8) = (f64) arg_sp18;
+    temp_r31_1407 = M2C_ERROR(/* Read from unset register $r3 */);
+    sp20.SetRotationPitch(arg1);
+    sp20.RotateYaw(&sp20, arg0);
+    sp10 = -sp20.unk20;
+    sp14 = -sp20.unk24;
+    sp18 = -sp20.unk28;
+    M2C_FIELD(temp_r31_1407, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(temp_r31_1407, f64 *, 8) = (f64) sp18;
 }
-#endif
+
+void KDMath_GetDirection(float arg0) {
+    Matrix sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    void *temp_r31_1448;
+
+    temp_r31_1448 = M2C_ERROR(/* Read from unset register $r3 */);
+    sp20.SetRotationYaw(arg0);
+    sp10 = -sp20.unk20;
+    sp14 = -sp20.unk24;
+    sp18 = -sp20.unk28;
+    M2C_FIELD(temp_r31_1448, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(temp_r31_1448, f64 *, 8) = (f64) sp18;
+}
 
 void KDMath_GetDirection(const Matrix *arg0) {
     f32 sp10;

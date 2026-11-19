@@ -12,15 +12,18 @@ extern void **gb;
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void ControllerRumbleProperty::DoRumble() {
+    MKVector3 sp40;
+    M2C_UNK sp10;
     void **temp_r3_49;
     void *temp_r31_45;
     void *temp_r31_60;
+
     temp_r31_45 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) M2C_FIELD(temp_r31_45, u8 *, 0x10) != 0) {
         temp_r3_49 = this->unk14;
-        M2C_FIELD(*temp_r3_49, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_49, &arg_sp10);
+        M2C_FIELD(*temp_r3_49, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_49, &sp10);
         temp_r31_60 = *KDProperty::pInstanceMem + this->unk8;
-        ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **, s32), 0x40)(gb, *KDProperty::pInstanceMem)))->RumblePlay3D(M2C_FIELD(temp_r31_60, f32 *, 0), M2C_FIELD(temp_r31_60, f32 *, 4), M2C_FIELD(temp_r31_60, f32 *, 8), (MKVector3 *) &arg_sp40, M2C_FIELD(temp_r31_60, f32 *, 0xC), 0, 4.0f, 0U);
+        ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **, s32), 0x40)(gb, *KDProperty::pInstanceMem)))->RumblePlay3D(M2C_FIELD(temp_r31_60, f32 *, 0), M2C_FIELD(temp_r31_60, f32 *, 4), M2C_FIELD(temp_r31_60, f32 *, 8), &sp40, M2C_FIELD(temp_r31_60, f32 *, 0xC), 0, 4.0f, 0U);
         return;
     }
     ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **), 0x40)(gb)))->RumblePlay(M2C_FIELD(temp_r31_45, f32 *, 0), M2C_FIELD(temp_r31_45, f32 *, 4), M2C_FIELD(temp_r31_45, f32 *, 8), 0, 4.0f, 0U);

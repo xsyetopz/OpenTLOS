@@ -553,12 +553,16 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: ')' expected
 void Crate::Spin() {
+    Matrix sp20;
+    f64 sp18;
+    f64 sp10;
     f32 temp_f1_1063;
     f32 temp_f1_1100;
     f32 temp_f31_1086;
     void *temp_r4_1074;
+
     temp_f1_1063 = this->unk168 - gUpdateTimeDelta;
     this->unk168 = temp_f1_1063;
     if (temp_f1_1063 < 0.0f) {
@@ -566,13 +570,13 @@ void Crate::Spin() {
         return;
     }
     temp_r4_1074 = this->unk8;
-    arg_sp10 = M2C_FIELD(temp_r4_1074, f64 *, 0x10);
-    arg_sp18 = M2C_FIELD(temp_r4_1074, f64 *, 0x18);
+    sp10 = M2C_FIELD(temp_r4_1074, f64 *, 0x10);
+    sp18 = M2C_FIELD(temp_r4_1074, f64 *, 0x18);
     temp_f31_1086 = 0.5f * (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE4) - this->unk168);
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, MKModel_GetWorldMatrix((MKModel *) this->unk184) - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix((MKModel *) this->unk184) - 4 + 4, 0x40);
     temp_f1_1100 = temp_f31_1086 - 0.5f;
-    arg_sp20.SetRotationYaw(KDMath_NormaliseAngle(arg_sp14 + (6.2831855f * -((4.0f * (temp_f1_1100 * temp_f1_1100)) - 1.0f))));
-    MKModel_SetWorldMatrix((MKModel *) this->unk184, *((Matrix *) &arg_sp20));
+    sp20.SetRotationYaw(KDMath_NormaliseAngle(unksp14 + (6.2831855f * -((4.0f * (temp_f1_1100 * temp_f1_1100)) - 1.0f))));
+    MKModel_SetWorldMatrix((MKModel *) this->unk184, sp20);
 }
 #endif
 
@@ -703,8 +707,22 @@ block_38:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp60'
+#if 0 // DRAFT: undefined identifier 'unksp64'
 void Crate::Update() {
+    MKCollisionResult spB0;
+    Matrix sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
     f32 temp_f1_1469;
     f32 temp_f1_1521;
     f32 temp_f2_1488;
@@ -714,6 +732,7 @@ void Crate::Update() {
     s32 temp_r0_1400;
     s32 temp_r0_1565;
     void *temp_r30_1401;
+
     if ((s32) this->unkC8 != 0) {
         temp_r0_1400 = this->unkC8;
         temp_r30_1401 = checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -721,23 +740,23 @@ void Crate::Update() {
             UpdateShadow(temp_r0_1400 == 2);
             if (M2C_FIELD(temp_r30_1401, s32 *, 0x100) & 0x20) {
                 temp_f3_1416 = this->unkD8;
-                arg_sp60 = this->unkD0;
-                arg_sp68 = temp_f3_1416;
-                arg_sp64 += M2C_FIELD(temp_r30_1401, f32 *, 0xF4) * _table_sinf(M2C_FIELD(temp_r30_1401, f32 *, 0xF8) * (f32) fmod(&gb, M2C_FIELD(&gb, f32 *, 0x30C) + (f32) arg_sp60, 3.141590118408203, temp_f3_1416));
-                MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_sp60));
+                sp60 = this->unkD0;
+                sp68 = temp_f3_1416;
+                unksp64 += M2C_FIELD(temp_r30_1401, f32 *, 0xF4) * _table_sinf(M2C_FIELD(temp_r30_1401, f32 *, 0xF8) * (f32) fmod(&gb, M2C_FIELD(&gb, f32 *, 0x30C) + (f32) sp60, 3.141590118408203, temp_f3_1416));
+                MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp60));
             }
             if ((u32) this->unk184 != 0U) {
-                M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &unksp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 temp_f31_1461 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
                 temp_f1_1469 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1461;
-                arg_sp28 = 0.0f;
-                arg_sp20 = 0.0f;
-                arg_sp24 = temp_f1_1469;
-                arg_sp58 = (f64) arg_sp28;
-                arg_sp50 = (f64) arg_sp20;
-                arg_sp70.Translate((Matrix *) &arg_sp70, *((MKVector3 *) &arg_sp50));
-                arg_sp70.Multiply((Matrix *) &arg_sp70, (Matrix *) this->unk8);
-                MKModel_SetWorldMatrix((MKModel *) this->unk184, *((Matrix *) &arg_sp70));
+                sp28 = 0.0f;
+                sp20 = 0.0f;
+                sp24 = temp_f1_1469;
+                sp58 = (f64) sp28;
+                sp50 = (f64) sp20;
+                sp70.Translate(&sp70, *((MKVector3 *) &sp50));
+                sp70.Multiply(&sp70, (Matrix *) this->unk8);
+                MKModel_SetWorldMatrix((MKModel *) this->unk184, sp70);
             }
         }
         GameProp::Update();
@@ -752,12 +771,12 @@ void Crate::Update() {
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 temp_f1_1521 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - M2C_FIELD(((HeroInterface *) ((HeroInterface *) M2C_FIELD(&gb, void ***, 0)))->GetPosPtr(), f32 *, 8);
-                arg_sp30 = arg_sp10;
-                arg_sp18 = temp_f1_1521;
-                arg_sp38 = (f64) arg_sp18;
-                arg_sp40 = arg_sp10;
-                arg_sp48 = (f64) arg_sp18;
-                if (!((((f32) arg_sp38 * (f32) arg_sp38) + (((f32) arg_sp30 * (f32) arg_sp30) + (arg_sp34 * arg_sp34))) < (temp_f31_1509 * temp_f31_1509)) && (MKCollision_SphereCollide(*(this->unk8 + 0x30), M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC), (MKCollisionResult *) &arg_spB0, 1, (MKCollisionMode) 2, 0) == 0)) {
+                sp30 = sp10;
+                sp18 = temp_f1_1521;
+                sp38 = (f64) sp18;
+                sp40 = sp10;
+                sp48 = (f64) sp18;
+                if (!((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34))) < (temp_f31_1509 * temp_f31_1509)) && (MKCollision_SphereCollide(*(this->unk8 + 0x30), M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC), &spB0, 1, (MKCollisionMode) 2, 0) == 0)) {
                     this->unk70.unk4 = 1;
                     this->unkE0.Reset();
                     this->unkC8 = 6;
@@ -859,11 +878,19 @@ void Crate::Resolve() {
 
 #if 0 // DRAFT: undefined identifier 'collectableTypes'
 void Crate::LoadDone() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_1840;
     f32 temp_f31_1832;
     u32 temp_r0_1788;
     u32 temp_r29_1769;
     void *temp_r3_1865;
+
     GameProp::LoadDone();
     this->unkE0.LoadDone();
     this->unk190.LoadDone((MKProp *) this, NULL);
@@ -882,17 +909,17 @@ loop_3:
     if ((u8) M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x124) != 0) {
         this->unk184 = MKModel_Create(collectableTypes[M2C_FIELD(this, u32 *, 0x17C)].unk10, NULL, 2, NULL);
         if ((u32) this->unk184 != 0U) {
-            M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_f31_1832 = M2C_FIELD(MKModel_GetBoundingVolume((MKModel *) this->unk184, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f;
             temp_f1_1840 = (M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0x14) * 0.5f) - temp_f31_1832;
-            arg_sp18 = 0.0f;
-            arg_sp10 = 0.0f;
-            arg_sp14 = temp_f1_1840;
-            arg_sp28 = (f64) arg_sp18;
-            arg_sp20 = (f64) arg_sp10;
-            arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-            arg_sp30.Multiply((Matrix *) &arg_sp30, (Matrix *) this->unk8);
-            MKModel_SetWorldMatrix((MKModel *) this->unk184, *((Matrix *) &arg_sp30));
+            sp18 = 0.0f;
+            sp10 = 0.0f;
+            sp14 = temp_f1_1840;
+            sp28 = (f64) sp18;
+            sp20 = (f64) sp10;
+            sp30.Translate(&sp30, *((MKVector3 *) &sp20));
+            sp30.Multiply(&sp30, (Matrix *) this->unk8);
+            MKModel_SetWorldMatrix((MKModel *) this->unk184, sp30);
         }
     }
     this->unk20 = M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC);

@@ -16,6 +16,8 @@
 #include "spyro/source/MainMenuScreen.h"
 #include "spyro/source/OptionsScreen.h"
 #include "spyro/source/TitleScreen.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UITools.h"
@@ -67,9 +69,10 @@ void FrontEnd_GoToNewGame() {
     timeout = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void ErrorMessage_Draw(const char *arg0) {
+    Matrix sp10;
     MKFont *var_r3_78;
+
     MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
     MKPrimitive(0xC, 3);
     MKBegin(4);
@@ -80,20 +83,19 @@ void ErrorMessage_Draw(const char *arg0) {
     MKSetPositionF(748.0f, 512.0f, 0.0f);
     MKEnd();
     MKEndPrimitive();
-    arg_sp10.SetIdentity();
+    sp10.SetIdentity();
     var_r3_78 = M2C_FIELD(&gb, MKFont **, 0x318);
-    arg_sp40 = 320.0f;
-    arg_sp44 = 256.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
+    sp10.unk30 = 320.0f;
+    sp10.unk34 = 256.0f;
+    sp10.unk38 = 0.0f;
+    sp10.unk3C = 1.0f;
     if (var_r3_78 != NULL) {
 
     } else {
         var_r3_78 = gpDebugFont;
     }
-    var_r3_78->DrawString(arg0, 544.0f, 435.2f, (Matrix *) &arg_sp10, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
+    var_r3_78->DrawString(arg0, 544.0f, 435.2f, &sp10, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
 }
-#endif
 
 void FrontEnd_UpdateAutoLevelSwitch() {
     if ((s8) init_746 == 0) {
@@ -136,10 +138,13 @@ void FrontEnd_SetFade(float arg0) {
     KDSound_SetMasterVolume(temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: ')' expected
 void FrontEnd_Draw() {
+    RenderContext sp20;
+    Tools_Ortho sp10;
+
     if ((void **) pFrontEndSystem != NULL) {
-        arg_sp10.Tools_Ortho();
+        sp10.Tools_Ortho();
         GameVideo_Draw(pVideo);
         if (videoFade > 0.0f) {
             MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
@@ -153,8 +158,8 @@ void FrontEnd_Draw() {
             MKEnd();
             MKEndPrimitive();
         }
-        arg_sp20.RenderContext();
-        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, M2C_UNK *), 0x1C)(pFrontEndSystem, &arg_sp20);
+        sp20.RenderContext();
+        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, RenderContext *), 0x1C)(pFrontEndSystem, &sp20);
         if (fade > 0.0f) {
             MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
             MKPrimitive(0xC, 3);
@@ -171,7 +176,7 @@ void FrontEnd_Draw() {
                 fade = 0.0f;
             }
         }
-        arg_sp10.~Tools_Ortho(-1);
+        sp10.~Tools_Ortho(-1);
     }
 }
 #endif

@@ -488,23 +488,26 @@ PoisonBomb *PoisonBomb::CreateInstance() {
 
 #if 0 // DRAFT: expression syntax error
 void PoisonBomb::Message(MKMessage *arg0) {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 temp_r0_983;
     void *temp_r31_993;
     void *temp_r3_1014;
+
     this->unk190.Message(arg0);
     temp_r0_983 = arg0->unk0;
     switch (temp_r0_983) {                          /* irregular */
     case 34:
         temp_r31_993 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        arg_sp10.Multiply3x3((Matrix *) &arg_sp10, M2C_FIELD(temp_r31_993, Matrix **, 0x10));
-        arg_sp10.Multiply3x3((Matrix *) &arg_sp10, M2C_FIELD(temp_r31_993, Matrix **, 0x14));
+        M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        sp10.Multiply3x3(&sp10, M2C_FIELD(temp_r31_993, Matrix **, 0x10));
+        sp10.Multiply3x3(&sp10, M2C_FIELD(temp_r31_993, Matrix **, 0x14));
         temp_r3_1014 = M2C_FIELD(temp_r31_993, void **, 8);
-        arg_sp40 = M2C_FIELD(temp_r3_1014, f32 *, 0);
-        arg_sp44 = M2C_FIELD(temp_r3_1014, f32 *, 4);
-        arg_sp48 = M2C_FIELD(temp_r3_1014, f32 *, 8);
-        arg_sp4C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+        sp10.unk30 = M2C_FIELD(temp_r3_1014, f32 *, 0);
+        sp10.unk34 = M2C_FIELD(temp_r3_1014, f32 *, 4);
+        sp10.unk38 = M2C_FIELD(temp_r3_1014, f32 *, 8);
+        sp10.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp10);
         break;
     case 38:
         PlatformDetach();
@@ -530,6 +533,52 @@ void PoisonBomb::Deinit() {
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void PoisonBomb::Draw() {
+    Matrix sp110;
+    f32 sp10C;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spFC;
+    f32 spF8;
+    f32 spF4;
+    f32 spF0;
+    f32 spEC;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f64 spC0;                                       /* compiler-managed */
+    f64 spB8;                                       /* compiler-managed */
+    f64 spB0;                                       /* compiler-managed */
+    f64 spA8;                                       /* compiler-managed */
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f10_1403;
     f32 temp_f11_1402;
     f32 temp_f12_1397;
@@ -560,49 +609,50 @@ void PoisonBomb::Draw() {
     s32 var_r0_1364;
     void *temp_r3_1435;
     void *temp_r4_1201;
+
     if ((s32) this->unk180 != 4) {
         Projectile::Draw();
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x118) != 0) {
         this->unk1C8 += 6.2831855f * gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-        M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f29_1134 = (fTexScale - 1.0f) * fScaleMul;
         temp_f31_1135 = -((this->unk1D0 * 0.5f) - 1.0f);
-        arg_sp110.Scale3x3((Matrix *) &arg_sp110, fTexScale);
+        sp110.Scale3x3(&sp110, fTexScale);
         temp_f29_1143 = 0.0f - temp_f29_1134;
         temp_f30_1144 = (0.005f * _table_sinf(1.5707964f + this->unk1C8)) + temp_f29_1143;
         temp_f1_1150 = (0.005f * _table_sinf(this->unk1C8)) + temp_f29_1143;
-        arg_sp40 = 0.0f;
-        arg_sp38 = temp_f1_1150;
-        arg_sp3C = temp_f30_1144;
-        arg_sp90 = (f64) arg_sp40;
-        arg_sp88 = (f64) arg_sp38;
-        arg_sp140 = (f32) arg_sp88;
-        arg_sp144 = arg_sp8C;
-        arg_sp148 = (f32) arg_sp90;
-        arg_sp14C = 1.0f;
-        MKMaterial_SetTextureMatrix(this->unk1CC, (Matrix *) &arg_sp110);
+        sp40 = 0.0f;
+        sp38 = temp_f1_1150;
+        sp3C = temp_f30_1144;
+        sp90 = (f64) sp40;
+        sp88 = (f64) sp38;
+        sp110.unk30 = (f32) sp88;
+        sp110.unk34 = unksp8C;
+        sp110.unk38 = (f32) sp90;
+        sp110.unk3C = 1.0f;
+        MKMaterial_SetTextureMatrix(this->unk1CC, &sp110);
         var_f0_1169 = 1.0f;
         if ((s32) this->unk180 == 4) {
             var_f0_1169 = this->unk160 * 0.5f;
         }
-        arg_sp54 = var_f0_1169;
-        arg_sp50 = 1.0f;
-        arg_sp48 = 1.0f;
-        arg_sp4C = 1.0f;
-        arg_sp80 = (f64) arg_sp50;
-        arg_sp78 = (f64) arg_sp48;
-        MKMaterial_SetColor(this->unk1CC, *((MKVector4 *) &arg_sp78));
+        sp54 = var_f0_1169;
+        sp50 = 1.0f;
+        sp48 = 1.0f;
+        sp4C = 1.0f;
+        sp80 = (f64) sp50;
+        sp78 = (f64) sp48;
+        MKMaterial_SetColor(this->unk1CC, *((MKVector4 *) &sp78));
         temp_r0_1188 = this->unk180;
         if ((temp_r0_1188 == 3) || (temp_r0_1188 == 4)) {
             var_f6_1195 = 0.0f;
             temp_r4_1201 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-            arg_spB8 = M2C_FIELD(temp_r4_1201, f64 *, 0x20);
-            arg_spC0 = M2C_FIELD(temp_r4_1201, f64 *, 0x28);
-            arg_sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-            arg_spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-            arg_spBC = 0.0f;
-            var_f4_1216 = ((f32) arg_spC0 * (f32) arg_spC0) + (((f32) arg_spB8 * (f32) arg_spB8) + (0.0f * 0.0f));
+            spB8 = M2C_FIELD(temp_r4_1201, f64 *, 0x20);
+            spC0 = M2C_FIELD(temp_r4_1201, f64 *, 0x28);
+            sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+            spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
+            unkspBC = 0.0f;
+            var_f4_1216 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (0.0f * 0.0f));
             if (var_f4_1216 > 0.000001f) {
                 if (var_f4_1216 > 0.0f) {
                     temp_f1_1221 = __frsqrte(var_f4_1216);
@@ -612,18 +662,18 @@ void PoisonBomb::Draw() {
                 } else if (var_f4_1216 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_1216 = __float_nan;
                 } else {
-                    arg_sp14 = var_f4_1216;
-                    temp_r3_1250 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                    sp14 = var_f4_1216;
+                    temp_r3_1250 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                     switch (temp_r3_1250) {         /* switch 1; irregular */
                     case 0x7F800000:                /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_1260 = 1;
                         } else {
                             var_r0_1260 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_1260 = 5;
                         } else {
                             var_r0_1260 = 3;
@@ -639,20 +689,20 @@ void PoisonBomb::Draw() {
                 }
                 var_f6_1195 = 1.0f / var_f4_1216;
             }
-            temp_f5_1286 = arg_spBC * var_f6_1195;
-            temp_f4_1288 = (f32) arg_spC0 * var_f6_1195;
-            temp_f6_1291 = (f32) arg_spB8 * var_f6_1195;
-            arg_spB8 = temp_f6_1291;
-            arg_spBC = temp_f5_1286;
-            arg_spC0 = temp_f4_1288;
-            arg_sp28 = (arg_sp9C * temp_f4_1288) - ((f32) arg_spA0 * temp_f5_1286);
-            arg_sp2C = ((f32) arg_spA0 * temp_f6_1291) - ((f32) arg_sp98 * temp_f4_1288);
-            arg_sp30 = ((f32) arg_sp98 * temp_f5_1286) - (arg_sp9C * temp_f6_1291);
-            arg_spA8 = (f64) arg_sp28;
-            arg_spB0 = (f64) arg_sp30;
-            arg_sp68 = (f64) arg_sp28;
-            arg_sp70 = (f64) arg_sp30;
-            var_f4_1319 = ((f32) arg_spB0 * (f32) arg_spB0) + (((f32) arg_spA8 * (f32) arg_spA8) + (arg_spAC * arg_spAC));
+            temp_f5_1286 = unkspBC * var_f6_1195;
+            temp_f4_1288 = (f32) spC0 * var_f6_1195;
+            temp_f6_1291 = (f32) spB8 * var_f6_1195;
+            spB8 = temp_f6_1291;
+            unkspBC = temp_f5_1286;
+            spC0 = temp_f4_1288;
+            sp28 = (unksp9C * temp_f4_1288) - ((f32) spA0 * temp_f5_1286);
+            sp2C = ((f32) spA0 * temp_f6_1291) - ((f32) sp98 * temp_f4_1288);
+            sp30 = ((f32) sp98 * temp_f5_1286) - (unksp9C * temp_f6_1291);
+            spA8 = (f64) sp28;
+            spB0 = (f64) sp30;
+            sp68 = (f64) sp28;
+            sp70 = (f64) sp30;
+            var_f4_1319 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
             if (var_f4_1319 > 0.000001f) {
                 if (var_f4_1319 > 0.0f) {
                     temp_f1_1325 = __frsqrte(var_f4_1319);
@@ -662,18 +712,18 @@ void PoisonBomb::Draw() {
                 } else if (var_f4_1319 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_1319 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_1319;
-                    temp_r3_1354 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_1319;
+                    temp_r3_1354 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_1354) {         /* switch 2; irregular */
                     case 0x7F800000:                /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1364 = 1;
                         } else {
                             var_r0_1364 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1364 = 5;
                         } else {
                             var_r0_1364 = 3;
@@ -692,36 +742,36 @@ void PoisonBomb::Draw() {
                 var_f3_1386 = 0.0f;
             }
             temp_f12_1397 = (10.0f * temp_f31_1135) + 0.25f;
-            temp_f11_1402 = (f32) arg_spA8 * var_f3_1386;
-            temp_f10_1403 = arg_spAC * var_f3_1386;
-            arg_sp20 = temp_f12_1397;
-            temp_f9_1406 = (f32) arg_spB0 * var_f3_1386;
-            arg_sp18 = temp_f12_1397;
-            arg_sp1C = (6.0f * temp_f31_1135) + 0.25f;
-            arg_spA8 = temp_f11_1402;
-            arg_spAC = temp_f10_1403;
-            arg_spB0 = temp_f9_1406;
-            arg_spD0 = temp_f11_1402;
-            arg_spD4 = temp_f10_1403;
-            arg_spD8 = temp_f9_1406;
-            arg_spDC = 0.0f;
-            arg_spE0 = (f32) arg_sp98;
-            arg_spE4 = arg_sp9C;
-            arg_spE8 = (f32) arg_spA0;
-            arg_spEC = 0.0f;
-            arg_spF0 = (f32) arg_spB8;
-            arg_spF4 = arg_spBC;
-            arg_spF8 = (f32) arg_spC0;
-            arg_spFC = 0.0f;
-            arg_sp58 = (f64) arg_sp18;
-            arg_sp60 = (f64) arg_sp20;
-            arg_spD0.Scale3x3((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp58));
+            temp_f11_1402 = (f32) spA8 * var_f3_1386;
+            temp_f10_1403 = unkspAC * var_f3_1386;
+            sp20 = temp_f12_1397;
+            temp_f9_1406 = (f32) spB0 * var_f3_1386;
+            sp18 = temp_f12_1397;
+            sp1C = (6.0f * temp_f31_1135) + 0.25f;
+            spA8 = temp_f11_1402;
+            unkspAC = temp_f10_1403;
+            spB0 = temp_f9_1406;
+            spD0 = temp_f11_1402;
+            spD4 = temp_f10_1403;
+            spD8 = temp_f9_1406;
+            spDC = 0.0f;
+            spE0 = (f32) sp98;
+            spE4 = unksp9C;
+            spE8 = (f32) spA0;
+            spEC = 0.0f;
+            spF0 = spB8;
+            spF4 = unkspBC;
+            spF8 = spC0;
+            spFC = 0.0f;
+            sp58 = (f64) sp18;
+            sp60 = (f64) sp20;
+            spD0.Scale3x3((Matrix *) &spD0, *((MKVector3 *) &sp58));
             temp_r3_1435 = this->unk8;
-            arg_sp100 = M2C_FIELD(temp_r3_1435, f32 *, 0x30);
-            arg_sp104 = M2C_FIELD(temp_r3_1435, f32 *, 0x34);
-            arg_sp108 = M2C_FIELD(temp_r3_1435, f32 *, 0x38);
-            arg_sp10C = 1.0f;
-            MKModel_SetWorldMatrix(this->unk1C4, *((Matrix *) &arg_spD0));
+            sp100 = M2C_FIELD(temp_r3_1435, f32 *, 0x30);
+            sp104 = M2C_FIELD(temp_r3_1435, f32 *, 0x34);
+            sp108 = M2C_FIELD(temp_r3_1435, f32 *, 0x38);
+            sp10C = 1.0f;
+            MKModel_SetWorldMatrix(this->unk1C4, *((Matrix *) &spD0));
             MKModel_Draw(this->unk1C4, NULL);
         }
     }

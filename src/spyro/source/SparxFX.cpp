@@ -37,8 +37,83 @@ void SparxFX::SetColor(const MKVector4 &arg0) {
     this->unk80 = this->unkE0;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_spD0'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3, Matrix *arg4, bool arg5) {
+    Matrix sp2E0;
+    Matrix sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    f64 sp260;
+    Matrix sp220;
+    M2C_UNK sp21C;
+    f64 sp210;                                      /* compiler-managed */
+    f64 sp208;                                      /* compiler-managed */
+    f64 sp200;                                      /* compiler-managed */
+    f64 sp1F8;                                      /* compiler-managed */
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    MKVector3 sp1B8;
+    MKVector3 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    MKVector3 sp178;
+    MKVector3 sp168;
+    f64 sp160;
+    f64 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKVector3 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    MKVector3 spF8;
+    f64 spF0;
+    f64 spE8;
+    MKVector3 spD8;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 temp_f28_114;
     f32 temp_f4_343;
     f32 temp_f5_342;
     f32 temp_f6_340;
@@ -56,33 +131,35 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     s32 temp_r3_299;
     s32 var_r0_220;
     s32 var_r0_309;
-    arg_spD0 = 0.0f;
-    arg_spC0 = 0.0f;
-    arg_spC8 = 0.0f;
-    arg_spCC = 1.0f;
-    arg_spB8 = 1.0f;
-    arg_spBC = 0.0f;
-    arg_sp208 = (f64) arg_spC8;
-    arg_sp210 = (f64) arg_spD0;
-    arg_sp1F8 = (f64) arg_spB8;
-    arg_sp200 = (f64) arg_spC0;
-    arg_sp2A0.SetIdentity();
-    arg_sp2A0.RotateRoll((Matrix *) &arg_sp2A0, arg1);
-    arg_spA8 = arg_sp2D0 + (((f32) arg_sp210 * arg_sp2C0) + (((f32) arg_sp208 * arg_sp2A0) + (arg_sp20C * arg_sp2B0)));
-    arg_spAC = arg_sp2D4 + (((f32) arg_sp210 * arg_sp2C4) + (((f32) arg_sp208 * arg_sp2A4) + (arg_sp20C * arg_sp2B4)));
-    arg_spB0 = arg_sp2D8 + (((f32) arg_sp210 * arg_sp2C8) + (((f32) arg_sp208 * arg_sp2A8) + (arg_sp20C * arg_sp2B8)));
-    arg_sp208 = (f64) arg_spA8;
-    arg_sp210 = (f64) arg_spB0;
-    arg_sp98 = arg_sp2D0 + (((f32) arg_sp200 * arg_sp2C0) + (((f32) arg_sp1F8 * arg_sp2A0) + (arg_sp1FC * arg_sp2B0)));
-    arg_sp9C = arg_sp2D4 + (((f32) arg_sp200 * arg_sp2C4) + (((f32) arg_sp1F8 * arg_sp2A4) + (arg_sp1FC * arg_sp2B4)));
-    arg_spA0 = arg_sp2D8 + (((f32) arg_sp200 * arg_sp2C8) + (((f32) arg_sp1F8 * arg_sp2A8) + (arg_sp1FC * arg_sp2B8)));
-    var_f4_169 = ((f32) arg_sp210 * (f32) arg_sp210) + (((f32) arg_sp208 * (f32) arg_sp208) + (arg_sp20C * arg_sp20C));
-    arg_sp1E8 = (f64) arg_spA8;
-    arg_sp1F0 = (f64) arg_spB0;
-    arg_sp1D8 = (f64) arg_sp98;
-    arg_sp1E0 = (f64) arg_spA0;
-    arg_sp1F8 = (f64) arg_sp98;
-    arg_sp200 = (f64) arg_spA0;
+
+    spD0 = 0.0f;
+    spC0 = 0.0f;
+    spC8 = 0.0f;
+    spCC = 1.0f;
+    spB8 = 1.0f;
+    spBC = 0.0f;
+    sp208 = (f64) spC8;
+    sp210 = (f64) spD0;
+    sp1F8 = (f64) spB8;
+    sp200 = (f64) spC0;
+    sp2A0.SetIdentity();
+    sp2A0.RotateRoll(&sp2A0, arg1);
+    temp_f28_114 = M2C_BITWISE(f32, sp2A0);
+    spA8 = sp2A0.unk30 + (((f32) sp210 * sp2A0.unk20) + (((f32) sp208 * temp_f28_114) + (unksp20C * sp2A0.unk10)));
+    spAC = sp2A0.unk34 + (((f32) sp210 * sp2A0.unk24) + (((f32) sp208 * sp2A0.unk4) + (unksp20C * sp2A0.unk14)));
+    spB0 = sp2A0.unk38 + (((f32) sp210 * sp2A0.unk28) + (((f32) sp208 * sp2A0.unk8) + (unksp20C * sp2A0.unk18)));
+    sp208 = (f64) spA8;
+    sp210 = (f64) spB0;
+    sp98 = sp2A0.unk30 + (((f32) sp200 * sp2A0.unk20) + (((f32) sp1F8 * temp_f28_114) + (unksp1FC * sp2A0.unk10)));
+    sp9C = sp2A0.unk34 + (((f32) sp200 * sp2A0.unk24) + (((f32) sp1F8 * sp2A0.unk4) + (unksp1FC * sp2A0.unk14)));
+    spA0 = sp2A0.unk38 + (((f32) sp200 * sp2A0.unk28) + (((f32) sp1F8 * sp2A0.unk8) + (unksp1FC * sp2A0.unk18)));
+    var_f4_169 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+    sp1E8 = (f64) spA8;
+    sp1F0 = (f64) spB0;
+    sp1D8 = (f64) sp98;
+    sp1E0 = (f64) spA0;
+    sp1F8 = (f64) sp98;
+    sp200 = (f64) spA0;
     if (var_f4_169 > 0.000001f) {
         if (var_f4_169 > 0.0f) {
             temp_f1_181 = __frsqrte(var_f4_169);
@@ -92,18 +169,18 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
         } else if (var_f4_169 < M2C_BITWISE(f32, 0.0)) {
             var_f4_169 = __float_nan;
         } else {
-            arg_sp14 = var_f4_169;
-            temp_r3_210 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f4_169;
+            temp_r3_210 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_210) {                  /* switch 1; irregular */
             case 0x7F800000:                        /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_220 = 1;
                 } else {
                     var_r0_220 = 2;
                 }
                 break;
             case 0x0:                               /* switch 1 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_220 = 5;
                 } else {
                     var_r0_220 = 3;
@@ -121,10 +198,10 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     } else {
         var_f6_242 = 0.0f;
     }
-    var_f7_260 = ((f32) arg_sp200 * (f32) arg_sp200) + (((f32) arg_sp1F8 * (f32) arg_sp1F8) + (arg_sp1FC * arg_sp1FC));
-    arg_sp208 = (f32) arg_sp208 * var_f6_242;
-    arg_sp20C *= var_f6_242;
-    arg_sp210 = (f32) arg_sp210 * var_f6_242;
+    var_f7_260 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+    sp208 = (f32) sp208 * var_f6_242;
+    unksp20C *= var_f6_242;
+    sp210 = (f32) sp210 * var_f6_242;
     if (var_f7_260 > 0.000001f) {
         if (var_f7_260 > 0.0f) {
             temp_f1_270 = __frsqrte(var_f7_260);
@@ -134,18 +211,18 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
         } else if (var_f7_260 < M2C_BITWISE(f32, 0.0)) {
             var_f7_260 = __float_nan;
         } else {
-            arg_sp10 = var_f7_260;
-            temp_r3_299 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f7_260;
+            temp_r3_299 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_299) {                  /* switch 2; irregular */
             case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_309 = 1;
                 } else {
                     var_r0_309 = 2;
                 }
                 break;
             case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_309 = 5;
                 } else {
                     var_r0_309 = 3;
@@ -163,98 +240,98 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     } else {
         var_f3_331 = 0.0f;
     }
-    temp_f6_340 = (f32) arg_sp1F8 * var_f3_331;
-    temp_f5_342 = arg_sp1FC * var_f3_331;
-    temp_f4_343 = (f32) arg_sp200 * var_f3_331;
-    arg_sp1F8 = temp_f6_340;
-    arg_sp48 = -temp_f6_340;
-    arg_sp4C = -temp_f5_342;
-    arg_sp50 = -temp_f4_343;
-    arg_sp1FC = temp_f5_342;
-    arg_sp200 = temp_f4_343;
-    arg_sp198 = (f64) arg_sp48;
-    arg_sp1A0 = (f64) arg_sp50;
-    arg_sp1A8.operator*(arg2);
-    arg_sp1B8.operator*(arg2);
+    temp_f6_340 = (f32) sp1F8 * var_f3_331;
+    temp_f5_342 = unksp1FC * var_f3_331;
+    temp_f4_343 = (f32) sp200 * var_f3_331;
+    sp1F8 = temp_f6_340;
+    sp48 = -temp_f6_340;
+    sp4C = -temp_f5_342;
+    sp50 = -temp_f4_343;
+    unksp1FC = temp_f5_342;
+    sp200 = temp_f4_343;
+    sp198 = (f64) sp48;
+    sp1A0 = (f64) sp50;
+    sp1A8.operator*(arg2);
+    sp1B8.operator*(arg2);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp1C8 = arg_sp88;
-    arg_sp90 = arg_sp1C0 + arg_sp1B0;
-    arg_sp260 = arg_sp88;
-    arg_sp1D0 = (f64) arg_sp90;
-    arg_sp268 = (f64) arg_sp90;
-    arg_sp168.operator*(arg2);
-    arg_sp178.operator*(arg2);
+    sp1C8 = sp88;
+    sp90 = sp1B8.unk8 + sp1A8.unk8;
+    sp260 = sp88;
+    sp1D0 = (f64) sp90;
+    sp268 = (f64) sp90;
+    sp168.operator*(arg2);
+    sp178.operator*(arg2);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp38 = -(f32) arg_sp1F8;
-    arg_sp3C = -arg_sp1FC;
-    arg_sp80 = arg_sp180 + arg_sp170;
-    arg_sp40 = -(f32) arg_sp200;
-    arg_sp188 = arg_sp78;
-    arg_sp190 = (f64) arg_sp80;
-    arg_sp270 = arg_sp78;
-    arg_sp278 = (f64) arg_sp80;
-    arg_sp118 = (f64) arg_sp38;
-    arg_sp120 = (f64) arg_sp40;
-    arg_sp128.operator*(arg2);
-    arg_sp28 = -(f32) arg_sp208;
-    arg_sp2C = -arg_sp20C;
-    arg_sp30 = -(f32) arg_sp210;
-    arg_sp138 = (f64) arg_sp28;
-    arg_sp140 = (f64) arg_sp30;
-    arg_sp148.operator*(arg2);
+    sp38 = -sp1F8;
+    sp3C = -unksp1FC;
+    sp80 = sp178.unk8 + sp168.unk8;
+    sp40 = -sp200;
+    sp188 = sp78;
+    sp190 = (f64) sp80;
+    sp270 = sp78;
+    sp278 = (f64) sp80;
+    sp118 = (f64) sp38;
+    sp120 = (f64) sp40;
+    sp128.operator*(arg2);
+    sp28 = -sp208;
+    sp2C = -unksp20C;
+    sp30 = -sp210;
+    sp138 = (f64) sp28;
+    sp140 = (f64) sp30;
+    sp148.operator*(arg2);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp158 = arg_sp68;
-    arg_sp70 = arg_sp150 + arg_sp130;
-    arg_sp280 = arg_sp68;
-    arg_sp160 = (f64) arg_sp70;
-    arg_sp288 = (f64) arg_sp70;
-    arg_spD8.operator*(arg2);
-    arg_sp18 = -(f32) arg_sp208;
-    arg_sp1C = -arg_sp20C;
-    arg_sp20 = -(f32) arg_sp210;
-    arg_spE8 = (f64) arg_sp18;
-    arg_spF0 = (f64) arg_sp20;
-    arg_spF8.operator*(arg2);
+    sp158 = sp68;
+    sp70 = sp148.unk8 + sp128.unk8;
+    sp280 = sp68;
+    sp160 = (f64) sp70;
+    sp288 = (f64) sp70;
+    spD8.operator*(arg2);
+    sp18 = -sp208;
+    sp1C = -unksp20C;
+    sp20 = -sp210;
+    spE8 = (f64) sp18;
+    spF0 = (f64) sp20;
+    spF8.operator*(arg2);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp108 = arg_sp58;
-    arg_sp60 = arg_sp100 + arg_spE0;
-    arg_sp290 = arg_sp58;
-    arg_sp110 = (f64) arg_sp60;
-    arg_sp298 = (f64) arg_sp60;
-    M2C_STRUCT_COPY((s32) &arg_sp2DC + 4, (s32) (arg4 - 4) + 4, 0x40);
-    arg_sp310 = this->unk50;
-    arg_sp314 = this->unk54;
-    arg_sp318 = this->unk58;
-    arg_sp31C = 1.0f;
+    sp108 = sp58;
+    sp60 = spF8.unk8 + spD8.unk8;
+    sp290 = sp58;
+    sp110 = (f64) sp60;
+    sp298 = (f64) sp60;
+    M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, (s32) (arg4 - 4) + 4, 0x40);
+    sp2E0.unk30 = this->unk50;
+    sp2E0.unk34 = this->unk54;
+    sp2E0.unk38 = this->unk58;
+    sp2E0.unk3C = 1.0f;
     if ((arg5 != 0) && ((MKModel *) this->unk4 != NULL)) {
-        M2C_STRUCT_COPY((s32) &arg_sp21C + 4, (s32) &arg_sp2DC + 4, 0x40);
-        arg_sp250 = this->unk50;
-        arg_sp254 = this->unk54;
-        arg_sp258 = this->unk58;
-        arg_sp25C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp220));
+        M2C_STRUCT_COPY((s32) &sp21C + 4, (s32) &sp2A0.unk3C + 4, 0x40);
+        sp220.unk30 = this->unk50;
+        sp220.unk34 = this->unk54;
+        sp220.unk38 = this->unk58;
+        sp220.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp220);
         MKModel_Draw(this->unk4, NULL);
     }
     MKMaterial_SetMaterial(arg0);
     MKPrimitive(0xC, 0);
-    MKSetMatrix(*((Matrix *) &arg_sp2E0));
+    MKSetMatrix(sp2E0);
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) arg3));
     MKSetTexCoord1F(0.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp260));
+    MKSetPositionV(*((MKVector3 *) &sp260));
     MKSetColorV(*((MKVector4 *) arg3));
     MKSetTexCoord1F(1.0f, 1.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp270));
+    MKSetPositionV(*((MKVector3 *) &sp270));
     MKSetColorV(*((MKVector4 *) arg3));
     MKSetTexCoord1F(0.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp280));
+    MKSetPositionV(*((MKVector3 *) &sp280));
     MKSetColorV(*((MKVector4 *) arg3));
     MKSetTexCoord1F(1.0f, 0.0f);
-    MKSetPositionV(*((MKVector3 *) &arg_sp290));
+    MKSetPositionV(*((MKVector3 *) &sp290));
     MKEnd();
     MKEndPrimitive();
 }
@@ -326,34 +403,54 @@ void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp18'
+#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
 void SparxFX::Draw() {
+    Matrix sp70;
+    M2C_UNK sp6C;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f2_802;
+
     if ((u8) gb.unk35E != 0) {
         MKView_Push();
-        MKView_GetProjection(NULL, &arg_sp18, NULL);
-        temp_f2_802 = arg_sp18 + 3.0f;
-        arg_sp18 = temp_f2_802;
+        MKView_GetProjection(NULL, &sp18, NULL);
+        temp_f2_802 = sp18 + 3.0f;
+        sp18 = temp_f2_802;
         MKView_SetProjection(0.0f, temp_f2_802, 0.0f);
-        M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
-        GetGlowDrawParams(arg_sp14, arg_sp10);
-        arg_sp2C = 1.0f;
-        arg_sp20 = 0.75f * this->unk68;
-        arg_sp24 = 0.75f * this->unk6C;
-        arg_sp28 = 0.75f * this->unk70;
-        arg_sp60 = (f64) arg_sp20;
-        arg_sp68 = (f64) arg_sp28;
-        arg_sp30 = 1.0f;
-        arg_sp34 = 1.0f;
-        arg_sp38 = 1.0f;
-        arg_sp3C = 1.0f;
-        DrawGlow(this->unk94, this->unkA8, arg_sp10 * this->unkC8, (MKVector4) &arg_sp60, (Matrix *) &arg_sp70, 0U);
-        arg_sp50 = (f64) arg_sp20;
-        arg_sp58 = (f64) arg_sp28;
-        DrawGlow(this->unk94, -this->unkA8, arg_sp10 * this->unkC8, (MKVector4) &arg_sp50, (Matrix *) &arg_sp70, 0U);
-        arg_sp40 = (f64) arg_sp30;
-        arg_sp48 = (f64) arg_sp38;
-        DrawGlow(this->unk90, 0.0f, arg_sp14 * this->unkC8, (MKVector4) &arg_sp40, (Matrix *) &arg_sp70, 1U);
+        M2C_STRUCT_COPY((s32) &sp6C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+        GetGlowDrawParams(sp14, sp10);
+        sp2C = 1.0f;
+        sp20 = 0.75f * this->unk68;
+        sp24 = 0.75f * this->unk6C;
+        sp28 = 0.75f * this->unk70;
+        sp60 = (f64) sp20;
+        sp68 = (f64) sp28;
+        sp30 = 1.0f;
+        sp34 = 1.0f;
+        sp38 = 1.0f;
+        sp3C = 1.0f;
+        DrawGlow(this->unk94, this->unkA8, sp10 * this->unkC8, (MKVector4) &sp60, &sp70, 0U);
+        sp50 = (f64) sp20;
+        sp58 = (f64) sp28;
+        DrawGlow(this->unk94, -this->unkA8, sp10 * this->unkC8, (MKVector4) &sp50, &sp70, 0U);
+        sp40 = (f64) sp30;
+        sp48 = (f64) sp38;
+        DrawGlow(this->unk90, 0.0f, sp14 * this->unkC8, (MKVector4) &sp40, &sp70, 1U);
         MKView_Pop();
     }
 }

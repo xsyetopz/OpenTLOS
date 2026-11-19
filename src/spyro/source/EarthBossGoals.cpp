@@ -1831,8 +1831,31 @@ u8 EarthBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spAC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void EarthBossGoal_Think::Arbitrate() {
+    f32 spEC;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    EnemyDamageFeedback sp78;
+    EnemyHudData sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
     EarthBossArm *temp_r3_3883;
     Enemy *temp_r3_3608;
     Enemy *temp_r3_3659;
@@ -1861,17 +1884,18 @@ void EarthBossGoal_Think::Arbitrate() {
     u8 var_r0_3728;
     void *temp_r6_3778;
     void *temp_r7_3741;
-    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_spAC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, arg_spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, arg_spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, arg_sp30 = (MKVector3::up.unk0 * temp_f1_3619) - (MKVector3::up.unk4 * temp_f6_3612), arg_spD8 = temp_f5_3625, arg_sp50 = (f64) arg_sp30, arg_sp28 = (MKVector3::up.unk4 * temp_f5_3625) - (MKVector3::up.unk8 * temp_f1_3619), arg_sp2C = (MKVector3::up.unk8 * temp_f6_3612) - (MKVector3::up.unk0 * temp_f5_3625), arg_spDC = 0.0f, arg_sp48 = (f64) arg_sp28, arg_spB0 = (f32) arg_sp48, arg_spB4 = arg_sp4C, arg_spB8 = (f32) arg_sp50, arg_spBC = 0.0f, arg_spE0 = temp_r3_3608->unk5B8, arg_spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, arg_spE8 = temp_f1_3649, arg_spEC = 1.0f, ((temp_r3_3608->Spawn(&arg_spB0, 0, &MKVector3::up, temp_f1_3649, arg_sp4C, (f32) arg_sp48, 0.0f, temp_f5_3625, temp_f6_3612, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) {
+
+    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &sp78.unk34 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, sp30 = (MKVector3::up.unk0 * temp_f1_3619) - (MKVector3::up.unk4 * temp_f6_3612), spD8 = temp_f5_3625, sp50 = (f64) sp30, sp28 = (MKVector3::up.unk4 * temp_f5_3625) - (MKVector3::up.unk8 * temp_f1_3619), sp2C = (MKVector3::up.unk8 * temp_f6_3612) - (MKVector3::up.unk0 * temp_f5_3625), spDC = 0.0f, sp48 = (f64) sp28, spB0 = (f32) sp48, spB4 = unksp4C, spB8 = (f32) sp50, spBC = 0.0f, spE0 = temp_r3_3608->unk5B8, spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, spE8 = temp_f1_3649, spEC = 1.0f, ((temp_r3_3608->Spawn(&spB0, 0, &MKVector3::up, temp_f1_3649, unksp4C, (f32) sp48, 0.0f, temp_f5_3625, temp_f6_3612, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) {
         temp_r3_3659 = this->unkC;
         if ((u8) M2C_FIELD(temp_r3_3659, u8 *, 0xCDD) == 0) {
             AddGoal_Spawn();
             return;
         }
         if (temp_r3_3659->WasHit() != 0) {
-            arg_sp78.Init();
+            sp78.Init();
             this->unkC->InterceptDamage();
-            this->unkC->TakeDamage((EnemyDamageFeedback *) &arg_sp78, 0U);
-            if ((arg_sp9C != 0.0f) && (KDSound_IsVoicePlaying(M2C_FIELD(this->unkC, s32 *, 0xCE0)) == 0)) {
+            this->unkC->TakeDamage(&sp78, 0U);
+            if ((sp78.unk24 != 0.0f) && (KDSound_IsVoicePlaying(M2C_FIELD(this->unkC, s32 *, 0xCE0)) == 0)) {
                 M2C_FIELD(this->unkC, s32 *, 0xCE0) = KDSound_Play3d(GS_SSFlinch, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             }
             temp_r5_3699 = this->unkC;
@@ -1881,29 +1905,29 @@ void EarthBossGoal_Think::Arbitrate() {
                 if (M2C_BITWISE(s32, temp_r4_3706) < (s32) (M2C_FIELD(temp_r5_3699->unkA20, s32 *, 0x11C) - 1)) {
                     temp_r5_3699->unkAD0 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r4_3706) + 1));
                     this->unkC->RestartStage();
-                    arg_sp58.EnemyHudData();
+                    sp58.EnemyHudData();
                     this->unkC->GetMaxHealth();
-                    arg_sp58.Init(this->unkC, 0.0f, M2C_ERROR(/* Read from unset register $f1 */));
-                    EnemyHud_Modified(*((EnemyHudData *) &arg_sp58));
+                    sp58.Init(this->unkC, 0.0f, M2C_ERROR(/* Read from unset register $f1 */));
+                    EnemyHud_Modified(sp58);
                 }
             }
             var_r0_3728 = 0;
-            if (arg_sp98 & 0x47F0) {
+            if (sp78.unk20 & 0x47F0) {
                 var_r8_3733 = 0;
                 var_r4_3734 = 0;
                 var_ctr_3735 = 6;
 loop_13:
-                if (((u32) (var_r8_3733 - 4) > 1U) && (temp_r6_3740 = this->unkC, temp_r7_3741 = temp_r6_3740 + var_r4_3734, ((arg_sp88 == (u32) M2C_FIELD(temp_r7_3741, u32 *, 0xB10)) != 0)) && ((u8) M2C_FIELD(temp_r7_3741, u8 *, 0xB55) == 0)) {
+                if (((u32) (var_r8_3733 - 4) > 1U) && (temp_r6_3740 = this->unkC, temp_r7_3741 = temp_r6_3740 + var_r4_3734, (((u32) sp78.unk10 == (u32) M2C_FIELD(temp_r7_3741, u32 *, 0xB10)) != 0)) && ((u8) M2C_FIELD(temp_r7_3741, u8 *, 0xB55) == 0)) {
                     if ((var_r8_3733 != 2) || ((s32) M2C_FIELD(temp_r6_3740, EarthBossArm **, 0xCC0)->unk38C == 0)) {
                         var_r0_3728 = 1;
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                         var_f4_3766 = 0.0f;
-                        M2C_FIELD(temp_r7_3741, f64 *, 0xB38) = arg_sp18;
-                        arg_sp20 = M2C_FIELD(temp_r7_3741, f32 *, 0xB20) - arg_sp80;
-                        arg_sp38 = arg_sp18;
-                        M2C_FIELD(temp_r7_3741, f64 *, 0xB40) = (f64) arg_sp20;
-                        arg_sp40 = (f64) arg_sp20;
+                        M2C_FIELD(temp_r7_3741, f64 *, 0xB38) = sp18;
+                        sp20 = M2C_FIELD(temp_r7_3741, f32 *, 0xB20) - (f32) sp78.unk8;
+                        sp38 = sp18;
+                        M2C_FIELD(temp_r7_3741, f64 *, 0xB40) = (f64) sp20;
+                        sp40 = (f64) sp20;
                         M2C_FIELD((this->unkC + var_r4_3734), f32 *, 0xB3C) = 0.0f;
                         temp_r6_3778 = this->unkC + (var_r4_3734 + 0xB38);
                         temp_f2_3779 = M2C_FIELD(temp_r6_3778, f32 *, 0);
@@ -1919,18 +1943,18 @@ loop_13:
                             } else if (var_f5_3786 < M2C_BITWISE(f32, 0.0)) {
                                 var_f5_3786 = __float_nan;
                             } else {
-                                arg_sp10 = var_f5_3786;
-                                temp_r5_3820 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                                sp10 = var_f5_3786;
+                                temp_r5_3820 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                                 switch (temp_r5_3820) { /* switch 1; irregular */
                                 case 0x7F800000:    /* switch 1 */
-                                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                         var_r3_3830 = 1;
                                     } else {
                                         var_r3_3830 = 2;
                                     }
                                     break;
                                 case 0x0:           /* switch 1 */
-                                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                         var_r3_3830 = 5;
                                     } else {
                                         var_r3_3830 = 3;
@@ -1969,22 +1993,22 @@ loop_13:
                     temp_r3_3883->Retract();
                 }
                 this->unkC->ClearHitAndDeathFX();
-                AddGoal_Death((EnemyDamageFeedback *) &arg_sp78);
+                AddGoal_Death(&sp78);
                 return;
             }
-            if (arg_spA0 < 6) {
-                if (arg_spA0 < 4) {
+            if (sp78.unk28 < 6) {
+                if (sp78.unk28 < 4) {
                     goto block_47;
                 }
-                arg_spA0 = 0xE;
+                sp78.unk28 = 0xE;
             } else {
 block_47:
                 if (var_r0_3728 != 0) {
-                    arg_spA0 = 0xE;
+                    sp78.unk28 = 0xE;
                 }
             }
-            if (arg_spA0 != 0xE) {
-                AddGoal_Hit((EnemyDamageFeedback *) &arg_sp78);
+            if (sp78.unk28 != 0xE) {
+                AddGoal_Hit(&sp78);
                 return;
             }
             goto block_51;

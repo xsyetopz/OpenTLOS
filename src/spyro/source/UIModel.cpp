@@ -62,58 +62,67 @@ void UIAnimatedModel::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp28'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void UIModel::UpdateMatrix(RenderContext *arg0) {
+    Matrix sp40;
+    MKVector3 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     if ((s8) init_577 == 0) {
-        arg_sp28 = 0.0f;
-        arg_sp20 = 0.0f;
-        arg_sp24 = 0.0f;
-        M2C_FIELD(&camera_576, f64 *, 8) = (f64) arg_sp28;
-        M2C_FIELD(&camera_576, f64 *, 0) = (f64) arg_sp20;
+        sp28 = 0.0f;
+        sp20 = 0.0f;
+        sp24 = 0.0f;
+        M2C_FIELD(&camera_576, f64 *, 8) = (f64) sp28;
+        M2C_FIELD(&camera_576, f64 *, 0) = (f64) sp20;
         init_577 = 1;
     }
     if ((s8) init_580 == 0) {
-        arg_sp10 = 0.0f;
-        arg_sp14 = 0.0f;
-        arg_sp18 = 1.0f;
-        M2C_FIELD(&lookat_579, f64 *, 0) = (f64) arg_sp10;
-        M2C_FIELD(&lookat_579, f64 *, 8) = (f64) arg_sp18;
+        sp10 = 0.0f;
+        sp14 = 0.0f;
+        sp18 = 1.0f;
+        M2C_FIELD(&lookat_579, f64 *, 0) = (f64) sp10;
+        M2C_FIELD(&lookat_579, f64 *, 8) = (f64) sp18;
         init_580 = 1;
     }
     MKView_SetCameraLookAt(camera_576, lookat_579, 0.0f);
-    M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (arg0 - 4) + 4, 0x40);
-    arg_sp44 *= -1.0f;
-    arg_sp50 *= -1.0f;
-    arg_sp58 *= -1.0f;
-    arg_sp5C *= -1.0f;
-    arg_sp64 *= -1.0f;
-    arg_sp74 *= -1.0f;
-    MKView_TransformPoint2Dto3D(arg0->unk30, arg0->unk34, (1000.0f * arg0->unk38) + 1000.0f, (MKVector3 *) &arg_sp30);
-    arg_sp7C = 1.0f;
-    arg_sp70 = arg_sp30;
-    arg_sp74 = arg_sp34;
-    arg_sp78 = arg_sp38;
-    arg_sp6C = 0.0f;
-    arg_sp5C = 0.0f;
-    arg_sp4C = 0.0f;
-    arg_sp7C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk64, *((Matrix *) &arg_sp40));
+    M2C_STRUCT_COPY((s32) &sp30.unkC + 4, (s32) (arg0 - 4) + 4, 0x40);
+    sp40.unk4 *= -1.0f;
+    sp40.unk10 *= -1.0f;
+    sp40.unk18 *= -1.0f;
+    sp40.unk1C *= -1.0f;
+    sp40.unk24 *= -1.0f;
+    sp40.unk34 *= -1.0f;
+    MKView_TransformPoint2Dto3D(arg0->unk30, arg0->unk34, (1000.0f * arg0->unk38) + 1000.0f, &sp30);
+    sp40.unk3C = 1.0f;
+    sp40.unk30 = M2C_BITWISE(f32, sp30);
+    sp40.unk34 = sp30.unk4;
+    sp40.unk38 = sp30.unk8;
+    sp40.unk2C = 0.0f;
+    sp40.unk1C = 0.0f;
+    sp40.unkC = 0.0f;
+    sp40.unk3C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk64, sp40);
     MKModel_SetColor(this->unk64, *((MKVector4 *) &arg0->unk40));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void UIModel::Draw(const RenderContext &arg0) {
+    RenderContext sp10;
+
     if ((MKModel *) this->unk64 != NULL) {
         MKView_Push();
         MKView_SetProjection(0.0f, 0.0f, 0.0f);
-        arg_sp10.RenderContext(arg0, this->unk18);
-        UpdateMatrix((RenderContext *) &arg_sp10);
+        sp10.RenderContext(arg0, this->unk18);
+        UpdateMatrix(&sp10);
         MKModel_Draw(this->unk64, NULL);
         MKView_Pop();
     }
 }
-#endif
 
 void UIModel::Update() {
 

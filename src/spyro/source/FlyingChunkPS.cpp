@@ -26,6 +26,30 @@ extern GameGlobals gb;
 
 #if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
 void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, const MKVector4 &arg5, int arg6, MKProp *arg7) {
+    Matrix spB0;
+    MKVector3 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap **temp_r3_94;
     MKHeap *temp_r5_67;
     Matrix **temp_r3_50;
@@ -54,6 +78,7 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
     s32 temp_r3_284;
     s32 var_r0_185;
     s32 var_r0_294;
+
     temp_r3_50 = this->unkD8;
     if ((u32) M2C_FIELD(temp_r3_50, u32 *, -4) != 0U) {
         temp_r3_59 = temp_r3_50 - 4;
@@ -74,23 +99,23 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             M2C_FIELD(temp_r31_61, s32 *, 0x98) = arg6;
             M2C_FIELD(temp_r31_61, MKProp **, 0x80) = arg7;
             temp_r3_94 = MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r31_61, s32 *, 0x94));
-            arg_sp30 = 0.0f;
-            arg_sp28 = 0.0f;
+            sp30 = 0.0f;
+            sp28 = 0.0f;
             M2C_FIELD(temp_r31_61, f32 *, 0x90) = (f32) M2C_FIELD(temp_r3_94, f32 *, 0xC);
-            arg_sp2C = -1.0f;
+            sp2C = -1.0f;
             temp_f6_105 = M2C_FIELD(temp_r31_61, f32 *, 0x54);
-            arg_sp80 = (f64) arg_sp30;
+            sp80 = (f64) sp30;
             temp_f5_108 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x58);
-            arg_sp78 = (f64) arg_sp28;
+            sp78 = (f64) sp28;
             temp_f8_113 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x50);
-            arg_sp18 = (temp_f6_105 * (f32) arg_sp80) - (temp_f5_108 * arg_sp7C);
-            arg_sp1C = (temp_f5_108 * (f32) arg_sp78) - (temp_f8_113 * (f32) arg_sp80);
-            arg_sp20 = (temp_f8_113 * arg_sp7C) - (temp_f6_105 * (f32) arg_sp78);
-            arg_sp88 = (f64) arg_sp18;
-            arg_sp90 = (f64) arg_sp20;
-            Normalise(*((MKVector3 *) &arg_sp98));
-            M2C_FIELD(temp_r31_61, f64 *, 0x70) = arg_sp98;
-            M2C_FIELD(temp_r31_61, f64 *, 0x78) = arg_spA0;
+            sp18 = (temp_f6_105 * (f32) sp80) - (temp_f5_108 * unksp7C);
+            sp1C = (temp_f5_108 * (f32) sp78) - (temp_f8_113 * (f32) sp80);
+            sp20 = (temp_f8_113 * unksp7C) - (temp_f6_105 * (f32) sp78);
+            sp88 = (f64) sp18;
+            sp90 = (f64) sp20;
+            Normalise(sp98);
+            M2C_FIELD(temp_r31_61, f64 *, 0x70) = M2C_BITWISE(f64, sp98);
+            M2C_FIELD(temp_r31_61, f64 *, 0x78) = (f64) sp98.unk8;
             temp_f2_133 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x50);
             temp_f1_134 = M2C_FIELD(temp_r31_61, f32 *, 0x54);
             temp_f3_135 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x58);
@@ -104,18 +129,18 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
                 } else if (var_f4_140 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_140 = __float_nan;
                 } else {
-                    arg_sp14 = var_f4_140;
-                    temp_r3_175 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                    sp14 = var_f4_140;
+                    temp_r3_175 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                     switch (temp_r3_175) {          /* switch 1; irregular */
                     case 0x7F800000:                /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_185 = 1;
                         } else {
                             var_r0_185 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_185 = 5;
                         } else {
                             var_r0_185 = 3;
@@ -136,17 +161,17 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             temp_f8_212 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x50);
             temp_f7_213 = M2C_FIELD(temp_r31_61, f32 *, 0x54);
             temp_f9_218 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x58);
-            arg_sp38 = temp_f8_212 * var_f3_207;
-            arg_sp3C = temp_f7_213 * var_f3_207;
-            arg_sp48 = 1.0f;
-            arg_sp58 = (f64) arg_sp38;
-            arg_sp4C = -1.0f;
-            arg_sp40 = temp_f9_218 * var_f3_207;
-            arg_sp68 = (f64) arg_sp48;
-            arg_sp50 = 0.0f;
-            arg_sp60 = (f64) arg_sp40;
-            arg_sp70 = (f64) arg_sp50;
-            var_f2_243 = ((f32) arg_sp70 * (f32) arg_sp60) + (((f32) arg_sp68 * (f32) arg_sp58) + (arg_sp6C * arg_sp5C));
+            sp38 = temp_f8_212 * var_f3_207;
+            sp3C = temp_f7_213 * var_f3_207;
+            sp48 = 1.0f;
+            sp58 = (f64) sp38;
+            sp4C = -1.0f;
+            sp40 = temp_f9_218 * var_f3_207;
+            sp68 = (f64) sp48;
+            sp50 = 0.0f;
+            sp60 = (f64) sp40;
+            sp70 = (f64) sp50;
+            var_f2_243 = ((f32) sp70 * (f32) sp60) + (((f32) sp68 * (f32) sp58) + (unksp6C * unksp5C));
             if (var_f2_243 < 0.0f) {
                 var_f2_243 = -var_f2_243;
             }
@@ -159,18 +184,18 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             } else if (var_f4_252 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_252 = __float_nan;
             } else {
-                arg_sp10 = var_f4_252;
-                temp_r3_284 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_252;
+                temp_r3_284 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_284) {              /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_294 = 1;
                     } else {
                         var_r0_294 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_294 = 5;
                     } else {
                         var_r0_294 = 3;
@@ -187,8 +212,8 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             M2C_FIELD(temp_r31_61, f32 *, 0x8C) = (f32) (2.5f * ((1.0f - var_f2_243) * (gUpdateTimeDelta * (var_f4_252 / (0.7853982f * M2C_FIELD(temp_r31_61, f32 *, 0x90))))));
             M2C_STRUCT_COPY(temp_r31_61, &Matrix::identity, 0x40);
             temp_r31_61->Scale3x3(temp_r31_61, M2C_FIELD(temp_r31_61, f32 *, 0x88));
-            arg_spB0.SetRotateAroundAxis(*(temp_r31_61 + 0x70), M2C_FIELD(temp_r31_61, f32 *, 0x8C));
-            temp_r31_61->Multiply3x3(temp_r31_61, (Matrix *) &arg_spB0);
+            spB0.SetRotateAroundAxis(*(temp_r31_61 + 0x70), M2C_FIELD(temp_r31_61, f32 *, 0x8C));
+            temp_r31_61->Multiply3x3(temp_r31_61, &spB0);
             temp_r31_61->unk30 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x40);
             temp_r31_61->unk34 = M2C_FIELD(temp_r31_61, f32 *, 0x44);
             temp_r31_61->unk38 = (f32) M2C_FIELD(temp_r31_61, f64 *, 0x48);
@@ -243,17 +268,20 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FlyingChunkPS::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     Matrix **var_r30_438;
     Matrix *temp_r31_470;
+
     var_r30_438 = this->unkD8;
 loop_2:
     if (var_r30_438 != NULL) {
         temp_r31_470 = *var_r30_438;
         if (temp_r31_470 != NULL) {
-            M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (temp_r31_470 - 4) + 4, 0x40);
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r31_470 - 4) + 4, 0x40);
+            MKModel_SetWorldMatrix(this->unk4, sp10);
             MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r31_470, s32 *, 0x94), 1U, 1U);
             MKModel_SetColor(this->unk4, *(temp_r31_470 + 0x60));
             MKModel_Draw(this->unk4, NULL);
@@ -266,6 +294,185 @@ loop_2:
 
 #if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
 void FlyingChunkPS::Update() {
+    u8 sp5C0;
+    s32 sp5BC;
+    void *sp5B8;
+    s32 sp5B4;
+    f32 sp5B0;
+    s32 sp5AC;
+    s8 sp5AB;
+    s8 sp5AA;
+    s16 sp5A8;
+    f32 sp5A4;
+    f32 sp5A0;
+    f32 sp59C;
+    f32 sp598;
+    f32 sp594;
+    f32 sp590;
+    f32 sp588;
+    f32 sp584;
+    f32 sp580;
+    f32 sp578;
+    f32 sp574;
+    f32 sp570;
+    s8 sp56E;
+    s8 sp56D;
+    s8 sp56C;
+    s32 sp568;
+    s32 sp564;
+    s32 sp560;
+    s32 sp55C;
+    s32 sp558;
+    f32 sp554;
+    f32 sp550;
+    f64 sp548;
+    f64 sp540;
+    s32 sp538;
+    s32 sp534;
+    s32 sp530;
+    Matrix sp4F0;
+    Matrix sp4A8;
+    f64 sp4A0;
+    f64 sp498;
+    f64 sp490;
+    f64 sp488;
+    f64 sp480;
+    f64 sp478;
+    f64 sp470;
+    f64 sp468;
+    f64 sp460;
+    f64 sp458;
+    MKVector3 sp448;
+    M2C_UNK sp438;
+    f64 sp430;
+    f64 sp428;
+    f64 sp420;
+    f64 sp418;
+    f64 sp410;
+    f64 sp408;
+    f32 sp3F8;
+    MKVector3 sp3E8;
+    f64 sp3E0;
+    f64 sp3D8;
+    f64 sp3D0;
+    f64 sp3C8;
+    f64 sp3C0;
+    f64 sp3B8;
+    f64 sp3B0;
+    f64 sp3A8;
+    f64 sp3A0;
+    f64 sp398;
+    f64 sp390;
+    f64 sp388;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;
+    MKVector3 sp358;
+    f64 sp350;
+    f64 sp348;
+    f64 sp340;
+    f64 sp338;
+    MKVector3 sp328;
+    f64 sp320;
+    f64 sp318;
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    f64 sp2F0;
+    f64 sp2E8;
+    MKVector3 sp2D8;
+    f64 sp2D0;
+    f64 sp2C8;
+    f64 sp2C0;
+    f64 sp2B8;
+    MKVector3 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
+    MKVector3 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f32 sp230;
+    f32 sp220;
+    f32 sp210;
+    f32 sp20C;
+    f32 sp208;
+    f32 sp200;
+    f32 sp1F0;
+    f32 sp1EC;
+    f32 sp1E8;
+    f32 sp1E0;
+    f32 sp1D0;
+    f32 sp1C0;
+    f32 sp1B0;
+    f32 sp1AC;
+    f32 sp1A8;
+    f32 sp1A0;
+    f32 sp19C;
+    f32 sp198;
+    f32 sp190;
+    f32 sp180;
+    f32 sp17C;
+    f32 sp178;
+    f32 sp170;
+    f32 sp16C;
+    f32 sp168;
+    f32 sp160;
+    f32 sp150;
+    f32 sp140;
+    f32 sp13C;
+    f32 sp138;
+    f32 sp130;
+    f32 sp12C;
+    f32 sp128;
+    f32 sp120;
+    f32 sp110;
+    f32 sp100;
+    f32 spF0;
+    f32 spE0;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap *temp_r30_526;
     Matrix **temp_r3_607;
     Matrix **var_r27_524;
@@ -365,6 +572,7 @@ void FlyingChunkPS::Update() {
     s32 var_r25_1807;
     s32 var_r4_1333;
     void *var_r3_1287;
+
     var_r27_524 = this->unkD8;
     temp_r30_526 = checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
 loop_208:
@@ -402,7 +610,7 @@ loop_208:
                     var_f0_564 = 0.0f;
                 }
                 M2C_FIELD(temp_r28_1998, f32 *, 0x6C) = var_f0_564;
-                arg_sp4A8.NormaliseScale();
+                sp4A8.NormaliseScale();
                 var_f1_582 = M2C_FIELD(temp_r28_1998, f32 *, 0x6C);
                 if (var_f1_582 < 1.0f) {
 
@@ -429,67 +637,67 @@ loop_208:
 block_24:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
-                arg_sp498 = arg_spF8;
-                arg_sp100 = temp_r30_526->unk100 * gUpdateTimeDelta;
-                arg_sp4A0 = (f64) arg_sp100;
+                sp498 = spF8;
+                sp100 = temp_r30_526->unk100 * gUpdateTimeDelta;
+                sp4A0 = (f64) sp100;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
-                M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) + (f32) arg_sp4A0);
+                M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) + (f32) sp4A0);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
-                arg_sp488 = arg_sp228;
-                arg_sp230 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * gUpdateTimeDelta;
-                arg_sp490 = (f64) arg_sp230;
+                sp488 = sp228;
+                sp230 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * gUpdateTimeDelta;
+                sp490 = (f64) sp230;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp4D8 = arg_sp218;
-                arg_sp220 = M2C_FIELD(temp_r28_1998, f32 *, 0x48) + (f32) arg_sp490;
-                arg_sp4E0 = (f64) arg_sp220;
+                sp4A8.unk30 = sp218;
+                sp220 = M2C_FIELD(temp_r28_1998, f32 *, 0x48) + (f32) sp490;
+                sp4A8.unk38 = (f64) sp220;
                 if ((u8) M2C_FIELD(temp_r30_526, u8 *, 0xF4) != 0) {
-                    arg_sp570 = 0.0f;
-                    arg_sp574 = 0.0f;
-                    arg_sp578 = 0.0f;
-                    arg_sp580 = 0.0f;
-                    arg_sp584 = 0.0f;
-                    arg_sp588 = 0.0f;
-                    arg_sp590 = 0.0f;
-                    arg_sp594 = 0.0f;
-                    arg_sp598 = 0.0f;
-                    arg_sp59C = 1.0f;
-                    arg_sp5A0 = 0.0f;
-                    arg_sp5A4 = 0.0f;
-                    arg_sp5A8 = 0;
-                    arg_sp5A8 = 0;
-                    (s8) arg_sp5A8 = 0;
-                    arg_sp5AC = 0;
-                    arg_sp5B0 = 3.4028235e38f;
-                    arg_sp5B4 = 0;
-                    arg_sp5B8 = NULL;
-                    arg_sp5BC = -1;
-                    arg_sp5C0 = 0U;
+                    sp570 = 0.0f;
+                    sp574 = 0.0f;
+                    sp578 = 0.0f;
+                    sp580 = 0.0f;
+                    sp584 = 0.0f;
+                    sp588 = 0.0f;
+                    sp590 = 0.0f;
+                    sp594 = 0.0f;
+                    sp598 = 0.0f;
+                    sp59C = 1.0f;
+                    sp5A0 = 0.0f;
+                    sp5A4 = 0.0f;
+                    sp5A8 = 0;
+                    sp5AA = 0;
+                    sp5AB = 0;
+                    sp5AC = 0;
+                    sp5B0 = 3.4028235e38f;
+                    sp5B4 = 0;
+                    sp5B8 = NULL;
+                    sp5BC = -1;
+                    sp5C0 = 0;
                     if ((u8) M2C_FIELD(temp_r28_1998, u8 *, 0x9D) != 0) {
-                        arg_sp210 = 0.0f;
-                        arg_sp208 = 0.0f;
-                        arg_sp20C = -((M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88)) + 2.0f);
-                        arg_sp470 = (f64) arg_sp210;
-                        arg_sp468 = (f64) arg_sp208;
+                        sp210 = 0.0f;
+                        sp208 = 0.0f;
+                        sp20C = -((M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88)) + 2.0f);
+                        sp470 = (f64) sp210;
+                        sp468 = (f64) sp208;
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        arg_sp478 = arg_sp1F8;
-                        arg_sp200 = (f32) arg_sp4E0 + (f32) arg_sp470;
-                        arg_sp480 = (f64) arg_sp200;
-                        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp4D8), *((MKVector3 *) &arg_sp478), (MKCollisionResult *) &arg_sp570, (MKCollisionMode) 7, 0x08000000) != 0) {
+                        sp478 = sp1F8;
+                        sp200 = sp4A8.unk38 + (f32) sp470;
+                        sp480 = (f64) sp200;
+                        if (MKCollision_RayCollide(*((MKVector3 *) &sp4A8.unk30), *((MKVector3 *) &sp478), (MKCollisionResult *) &sp570, (MKCollisionMode) 7, 0x08000000) != 0) {
                             MKVector(0.0f, 1.0f, 0.0f);
-                            arg_sp448.operator*(M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88));
+                            sp448.operator*(M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88));
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            arg_sp4D8 = arg_spE8;
-                            arg_spF0 = arg_sp578 + arg_sp450;
-                            arg_sp458 = arg_spE8;
-                            arg_sp4E0 = (f64) arg_spF0;
+                            sp4A8.unk30 = spE8;
+                            spF0 = sp578 + sp448.unk8;
+                            sp458 = spE8;
+                            sp4A8.unk38 = (f64) spF0;
                             temp_f2_751 = M2C_FIELD(temp_r28_1998, f32 *, 0x50);
                             temp_f1_752 = M2C_FIELD(temp_r28_1998, f32 *, 0x54);
                             temp_f4_753 = M2C_FIELD(temp_r28_1998, f32 *, 0x58);
-                            arg_sp460 = (f64) arg_spF0;
+                            sp460 = (f64) spF0;
                             var_f19_759 = (temp_f4_753 * temp_f4_753) + ((temp_f2_751 * temp_f2_751) + (temp_f1_752 * temp_f1_752));
                             if (var_f19_759 > 0.000001f) {
                                 if (var_f19_759 > 0.0f) {
@@ -500,18 +708,18 @@ block_24:
                                 } else if (var_f19_759 < M2C_BITWISE(f32, 0.0)) {
                                     var_f19_759 = __float_nan;
                                 } else {
-                                    arg_sp2C = var_f19_759;
-                                    temp_r3_794 = M2C_BITWISE(s32, arg_sp2C) & 0x7F800000;
+                                    sp2C = var_f19_759;
+                                    temp_r3_794 = M2C_BITWISE(s32, sp2C) & 0x7F800000;
                                     switch (temp_r3_794) { /* switch 1; irregular */
                                     case 0x7F800000: /* switch 1 */
-                                        if (M2C_BITWISE(s32, arg_sp2C) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp2C) & 0x7FFFFF) {
                                             var_r0_804 = 1;
                                         } else {
                                             var_r0_804 = 2;
                                         }
                                         break;
                                     case 0x0:       /* switch 1 */
-                                        if (M2C_BITWISE(s32, arg_sp2C) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp2C) & 0x7FFFFF) {
                                             var_r0_804 = 5;
                                         } else {
                                             var_r0_804 = 3;
@@ -534,44 +742,44 @@ block_24:
                             M2C_FIELD(temp_r28_1998, f32 *, 0x54) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f4_826);
                             M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f4_826);
                             MKVector(0.0f, 1.0f, 0.0f);
-                            arg_sp60 = (arg_sp3F8 * arg_sp584) - (arg_sp3FC * arg_sp580);
-                            arg_sp5C = (arg_sp400 * arg_sp580) - (arg_sp3F8 * arg_sp588);
-                            arg_sp58 = (arg_sp3FC * arg_sp588) - (arg_sp400 * arg_sp584);
-                            arg_sp410 = (f64) arg_sp60;
-                            arg_sp408 = (f64) arg_sp58;
-                            arg_sp48 = (arg_sp40C * arg_sp588) - ((f32) arg_sp410 * arg_sp584);
-                            arg_sp4C = ((f32) arg_sp410 * arg_sp580) - ((f32) arg_sp408 * arg_sp588);
-                            arg_sp50 = ((f32) arg_sp408 * arg_sp584) - (arg_sp40C * arg_sp580);
-                            arg_sp418 = (f64) arg_sp48;
-                            arg_sp420 = (f64) arg_sp50;
+                            sp60 = (sp3F8 * sp584) - (sp3FC * sp580);
+                            sp5C = (sp400 * sp580) - (sp3F8 * sp588);
+                            sp58 = (sp3FC * sp588) - (sp400 * sp584);
+                            sp410 = (f64) sp60;
+                            sp408 = (f64) sp58;
+                            sp48 = (unksp40C * sp588) - ((f32) sp410 * sp584);
+                            sp4C = ((f32) sp410 * sp580) - ((f32) sp408 * sp588);
+                            sp50 = ((f32) sp408 * sp584) - (unksp40C * sp580);
+                            sp418 = (f64) sp48;
+                            sp420 = (f64) sp50;
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                            arg_sp428 = arg_spD8;
-                            arg_spE0 = (f32) arg_sp420 * 0.5f;
-                            arg_sp430 = (f64) arg_spE0;
+                            sp428 = spD8;
+                            spE0 = (f32) sp420 * 0.5f;
+                            sp430 = (f64) spE0;
                             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
-                            M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) + (f32) arg_sp430);
+                            M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) + (f32) sp430);
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
                             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
                             M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) * (0.75f * var_f19_759));
                             temp_f5_915 = M2C_FIELD(temp_r28_1998, f32 *, 0x58);
                             temp_f6_917 = M2C_FIELD(temp_r28_1998, f32 *, 0x54);
-                            arg_spC8 = -arg_sp580;
-                            arg_spCC = -arg_sp584;
-                            arg_spD0 = -arg_sp588;
-                            arg_sp3C8 = (f64) arg_spC8;
-                            arg_sp3D0 = (f64) arg_spD0;
-                            arg_spB8 = (temp_f6_917 * (f32) arg_sp3D0) - (temp_f5_915 * arg_sp3CC);
+                            spC8 = -sp580;
+                            spCC = -sp584;
+                            spD0 = -sp588;
+                            sp3C8 = (f64) spC8;
+                            sp3D0 = (f64) spD0;
+                            spB8 = (temp_f6_917 * (f32) sp3D0) - (temp_f5_915 * unksp3CC);
                             temp_f2_932 = M2C_FIELD(temp_r28_1998, f32 *, 0x50);
-                            arg_spC0 = (temp_f2_932 * arg_sp3CC) - (temp_f6_917 * (f32) arg_sp3C8);
-                            arg_spBC = (temp_f5_915 * (f32) arg_sp3C8) - (temp_f2_932 * (f32) arg_sp3D0);
-                            arg_sp3E0 = (f64) arg_spC0;
-                            arg_sp3D8 = (f64) arg_spB8;
-                            Normalise(*((MKVector3 *) &arg_sp3E8));
-                            M2C_FIELD(temp_r28_1998, f64 *, 0x70) = arg_sp3E8;
-                            M2C_FIELD(temp_r28_1998, f64 *, 0x78) = arg_sp3F0;
+                            spC0 = (temp_f2_932 * unksp3CC) - (temp_f6_917 * (f32) sp3C8);
+                            spBC = (temp_f5_915 * (f32) sp3C8) - (temp_f2_932 * (f32) sp3D0);
+                            sp3E0 = (f64) spC0;
+                            sp3D8 = (f64) spB8;
+                            Normalise(sp3E8);
+                            M2C_FIELD(temp_r28_1998, f64 *, 0x70) = M2C_BITWISE(f64, sp3E8);
+                            M2C_FIELD(temp_r28_1998, f64 *, 0x78) = (f64) sp3E8.unk8;
                             temp_f2_950 = M2C_FIELD(temp_r28_1998, f32 *, 0x50);
                             temp_f1_951 = M2C_FIELD(temp_r28_1998, f32 *, 0x54);
                             temp_f3_952 = M2C_FIELD(temp_r28_1998, f32 *, 0x58);
@@ -585,18 +793,18 @@ block_24:
                                 } else if (var_f4_957 < M2C_BITWISE(f32, 0.0)) {
                                     var_f4_957 = __float_nan;
                                 } else {
-                                    arg_sp28 = var_f4_957;
-                                    temp_r3_992 = M2C_BITWISE(s32, arg_sp28) & 0x7F800000;
+                                    sp28 = var_f4_957;
+                                    temp_r3_992 = M2C_BITWISE(s32, sp28) & 0x7F800000;
                                     switch (temp_r3_992) { /* switch 2; irregular */
                                     case 0x7F800000: /* switch 2 */
-                                        if (M2C_BITWISE(s32, arg_sp28) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp28) & 0x7FFFFF) {
                                             var_r0_1002 = 1;
                                         } else {
                                             var_r0_1002 = 2;
                                         }
                                         break;
                                     case 0x0:       /* switch 2 */
-                                        if (M2C_BITWISE(s32, arg_sp28) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp28) & 0x7FFFFF) {
                                             var_r0_1002 = 5;
                                         } else {
                                             var_r0_1002 = 3;
@@ -614,12 +822,12 @@ block_24:
                             } else {
                                 var_f4_1024 = 0.0f;
                             }
-                            arg_sp1E8 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f4_1024;
-                            arg_sp1EC = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f4_1024;
-                            arg_sp1F0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f4_1024;
-                            arg_sp3B8 = (f64) arg_sp1E8;
-                            arg_sp3C0 = (f64) arg_sp1F0;
-                            var_f2_1053 = -((arg_sp588 * (f32) arg_sp3C0) + ((arg_sp580 * (f32) arg_sp3B8) + (arg_sp584 * arg_sp3BC)));
+                            sp1E8 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f4_1024;
+                            sp1EC = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f4_1024;
+                            sp1F0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f4_1024;
+                            sp3B8 = (f64) sp1E8;
+                            sp3C0 = (f64) sp1F0;
+                            var_f2_1053 = -((sp588 * (f32) sp3C0) + ((sp580 * (f32) sp3B8) + (sp584 * unksp3BC)));
                             if (var_f2_1053 < 0.0f) {
                                 var_f2_1053 = -var_f2_1053;
                             }
@@ -635,18 +843,18 @@ block_24:
                             } else if (var_f5_1067 < M2C_BITWISE(f32, 0.0)) {
                                 var_f5_1067 = __float_nan;
                             } else {
-                                arg_sp24 = var_f5_1067;
-                                temp_r3_1099 = M2C_BITWISE(s32, arg_sp24) & 0x7F800000;
+                                sp24 = var_f5_1067;
+                                temp_r3_1099 = M2C_BITWISE(s32, sp24) & 0x7F800000;
                                 switch (temp_r3_1099) { /* switch 3; irregular */
                                 case 0x7F800000:    /* switch 3 */
-                                    if (M2C_BITWISE(s32, arg_sp24) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp24) & 0x7FFFFF) {
                                         var_r0_1109 = 1;
                                     } else {
                                         var_r0_1109 = 2;
                                     }
                                     break;
                                 case 0x0:           /* switch 3 */
-                                    if (M2C_BITWISE(s32, arg_sp24) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp24) & 0x7FFFFF) {
                                         var_r0_1109 = 5;
                                     } else {
                                         var_r0_1109 = 3;
@@ -679,18 +887,18 @@ block_24:
                             } else if (var_f4_1156 < M2C_BITWISE(f32, 0.0)) {
                                 var_f4_1156 = __float_nan;
                             } else {
-                                arg_sp20 = var_f4_1156;
-                                temp_r3_1191 = M2C_BITWISE(s32, arg_sp20) & 0x7F800000;
+                                sp20 = var_f4_1156;
+                                temp_r3_1191 = M2C_BITWISE(s32, sp20) & 0x7F800000;
                                 switch (temp_r3_1191) { /* switch 4; irregular */
                                 case 0x7F800000:    /* switch 4 */
-                                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                                         var_r0_1201 = 1;
                                     } else {
                                         var_r0_1201 = 2;
                                     }
                                     break;
                                 case 0x0:           /* switch 4 */
-                                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                                         var_r0_1201 = 5;
                                     } else {
                                         var_r0_1201 = 3;
@@ -708,48 +916,48 @@ block_24:
                         } else {
                             var_f3_1223 = 0.0f;
                         }
-                        arg_sp1A8 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f3_1223;
-                        arg_sp1AC = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f3_1223;
-                        arg_sp1B0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f3_1223;
-                        arg_sp378 = (f64) arg_sp1A8;
-                        arg_sp380 = (f64) arg_sp1B0;
+                        sp1A8 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f3_1223;
+                        sp1AC = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f3_1223;
+                        sp1B0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f3_1223;
+                        sp378 = (f64) sp1A8;
+                        sp380 = (f64) sp1B0;
                         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-                        arg_sp388 = arg_sp1D8;
-                        arg_sp1E0 = (f32) arg_sp380 * M2C_FIELD(temp_r28_1998, f32 *, 0x90);
-                        arg_sp390 = (f64) arg_sp1E0;
+                        sp388 = sp1D8;
+                        sp1E0 = (f32) sp380 * M2C_FIELD(temp_r28_1998, f32 *, 0x90);
+                        sp390 = (f64) sp1E0;
                         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-                        arg_sp398 = arg_sp1C8;
-                        arg_sp1D0 = (f32) arg_sp390 * M2C_FIELD(temp_r28_1998, f32 *, 0x88);
-                        arg_sp3A0 = (f64) arg_sp1D0;
+                        sp398 = sp1C8;
+                        sp1D0 = (f32) sp390 * M2C_FIELD(temp_r28_1998, f32 *, 0x88);
+                        sp3A0 = (f64) sp1D0;
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        arg_sp3A8 = arg_sp1B8;
-                        arg_sp1C0 = (f32) arg_sp4E0 + (f32) arg_sp3A0;
-                        arg_sp3B0 = (f64) arg_sp1C0;
-                        if (MKCollision_RayCollide(*(MKVector3 *) (temp_r28_1998 + 0x40), *((MKVector3 *) &arg_sp3A8), (MKCollisionResult *) &arg_sp570, (MKCollisionMode) 7, 0) != 0) {
-                            if ((arg_sp5C0 != 0) && (arg_sp5B8 != NULL) && (var_r3_1287 = M2C_FIELD(arg_sp5B8, void **, 8), ((var_r3_1287 == NULL) == 0))) {
+                        sp3A8 = sp1B8;
+                        sp1C0 = (f32) sp4A8.unk38 + (f32) sp3A0;
+                        sp3B0 = (f64) sp1C0;
+                        if (MKCollision_RayCollide(*(MKVector3 *) (temp_r28_1998 + 0x40), *((MKVector3 *) &sp3A8), (MKCollisionResult *) &sp570, (MKCollisionMode) 7, 0) != 0) {
+                            if ((sp5C0 != 0) && (sp5B8 != NULL) && (var_r3_1287 = M2C_FIELD(sp5B8, void **, 8), ((var_r3_1287 == NULL) == 0))) {
 
                             } else {
                                 var_r3_1287 = NULL;
                             }
                             if ((var_r3_1287 != NULL) && (M2C_FIELD(M2C_FIELD(var_r3_1287, void **, 0), s32 *, 0xC) & 8) && (var_r3_1287 != (u32) M2C_FIELD(temp_r28_1998, u32 *, 0x80))) {
-                                arg_sp530 = 4;
-                                arg_sp534 = 0;
-                                arg_sp538 = 0;
+                                sp530 = 4;
+                                sp534 = 0;
+                                sp538 = 0;
                                 temp_f3_1314 = M2C_FIELD(temp_r28_1998, f64 *, 0x40);
                                 temp_f2_1315 = (f64) M2C_FIELD(temp_r28_1998, f32 *, 0x48);
-                                arg_sp540 = temp_f3_1314;
-                                arg_sp548 = temp_f2_1315;
-                                arg_sp550 = 0.0f;
-                                arg_sp56C = 0;
-                                arg_sp558 = 1;
-                                arg_sp560 = 0x4000;
-                                arg_sp56C = 0;
-                                (s16) arg_sp56C = 0;
-                                arg_sp55C = -1;
-                                arg_sp564 = 0;
-                                arg_sp568 = 0;
-                                arg_sp554 = 1.0f;
-                                M2C_FIELD(M2C_FIELD(var_r3_1287, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK, M2C_UNK, f32, f64, f64), 0x2C)(&arg_sp530, 0x4000, 1, 0, 0.0f, temp_f2_1315, temp_f3_1314);
+                                sp540 = temp_f3_1314;
+                                sp548 = temp_f2_1315;
+                                sp550 = 0.0f;
+                                sp56C = 0;
+                                sp558 = 1;
+                                sp560 = 0x4000;
+                                sp56D = 0;
+                                sp56E = 0;
+                                sp55C = -1;
+                                sp564 = 0;
+                                sp568 = 0;
+                                sp554 = 1.0f;
+                                M2C_FIELD(M2C_FIELD(var_r3_1287, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK, M2C_UNK, f32, f64, f64), 0x2C)(&sp530, 0x4000, 1, 0, 0.0f, temp_f2_1315, temp_f3_1314);
                             }
                             var_r4_1333 = 1;
                             M2C_FIELD(temp_r28_1998, u8 *, 0x9D) = 1U;
@@ -766,18 +974,18 @@ block_24:
                                 } else if (var_f19_1343 < M2C_BITWISE(f32, 0.0)) {
                                     var_f19_1343 = __float_nan;
                                 } else {
-                                    arg_sp1C = var_f19_1343;
-                                    temp_r3_1378 = M2C_BITWISE(s32, arg_sp1C) & 0x7F800000;
+                                    sp1C = var_f19_1343;
+                                    temp_r3_1378 = M2C_BITWISE(s32, sp1C) & 0x7F800000;
                                     switch (temp_r3_1378) { /* switch 5; irregular */
                                     case 0x7F800000: /* switch 5 */
-                                        if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
 
                                         } else {
                                             var_r4_1333 = 2;
                                         }
                                         break;
                                     case 0x0:       /* switch 5 */
-                                        if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                                             var_r4_1333 = 5;
                                         } else {
                                             var_r4_1333 = 3;
@@ -799,18 +1007,18 @@ block_24:
                             M2C_FIELD(temp_r28_1998, f32 *, 0x50) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f1_1409);
                             M2C_FIELD(temp_r28_1998, f32 *, 0x54) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f1_1409);
                             M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f1_1409);
-                            arg_sp38 = -M2C_FIELD(temp_r28_1998, f32 *, 0x50);
-                            arg_sp3C = -M2C_FIELD(temp_r28_1998, f32 *, 0x54);
-                            arg_sp40 = -M2C_FIELD(temp_r28_1998, f32 *, 0x58);
-                            arg_sp348 = (f64) arg_sp38;
-                            arg_sp350 = (f64) arg_sp40;
-                            arg_sp358.operator*(M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88));
+                            sp38 = -M2C_FIELD(temp_r28_1998, f32 *, 0x50);
+                            sp3C = -M2C_FIELD(temp_r28_1998, f32 *, 0x54);
+                            sp40 = -M2C_FIELD(temp_r28_1998, f32 *, 0x58);
+                            sp348 = (f64) sp38;
+                            sp350 = (f64) sp40;
+                            sp358.operator*(M2C_FIELD(temp_r28_1998, f32 *, 0x90) * M2C_FIELD(temp_r28_1998, f32 *, 0x88));
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            arg_sp368 = arg_spA8;
-                            arg_spB0 = arg_sp578 + arg_sp360;
-                            arg_sp4D8 = arg_spA8;
-                            arg_sp370 = (f64) arg_spB0;
-                            arg_sp4E0 = (f64) arg_spB0;
+                            sp368 = spA8;
+                            spB0 = sp578 + sp358.unk8;
+                            sp4A8.unk30 = spA8;
+                            sp370 = (f64) spB0;
+                            sp4A8.unk38 = (f64) spB0;
                             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                             if (var_f19_1343 == 100.0f) {
                                 M2C_FIELD(temp_r28_1998, f32 *, 0x84) = 0.0f;
@@ -818,31 +1026,31 @@ block_24:
                             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            M2C_FIELD(temp_r28_1998, f32 *, 0x50) = arg_sp98;
-                            arg_spA0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) + arg_sp588;
-                            arg_sp338 = arg_sp98;
-                            M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f64) arg_spA0;
-                            arg_sp340 = (f64) arg_spA0;
+                            M2C_FIELD(temp_r28_1998, f32 *, 0x50) = sp98;
+                            spA0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) + sp588;
+                            sp338 = sp98;
+                            M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f64) spA0;
+                            sp340 = (f64) spA0;
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
                             M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
                             M2C_FIELD(temp_r28_1998, f32 *, 0x58) = (f32) (M2C_FIELD(temp_r28_1998, f32 *, 0x58) * (0.75f * var_f19_1343));
                             temp_f8_1495 = M2C_FIELD(temp_r28_1998, f32 *, 0x54);
                             temp_f6_1497 = M2C_FIELD(temp_r28_1998, f32 *, 0x58);
-                            arg_sp88 = -arg_sp580;
+                            sp88 = -sp580;
                             temp_f2_1499 = M2C_FIELD(temp_r28_1998, f32 *, 0x50);
-                            arg_sp8C = -arg_sp584;
-                            arg_sp90 = -arg_sp588;
-                            arg_sp308 = (f64) arg_sp88;
-                            arg_sp310 = (f64) arg_sp90;
-                            arg_sp78 = (temp_f8_1495 * (f32) arg_sp310) - (temp_f6_1497 * arg_sp30C);
-                            arg_sp7C = (temp_f6_1497 * (f32) arg_sp308) - (temp_f2_1499 * (f32) arg_sp310);
-                            arg_sp80 = (temp_f2_1499 * arg_sp30C) - (temp_f8_1495 * (f32) arg_sp308);
-                            arg_sp318 = (f64) arg_sp78;
-                            arg_sp320 = (f64) arg_sp80;
-                            Normalise(*((MKVector3 *) &arg_sp328));
-                            M2C_FIELD(temp_r28_1998, f64 *, 0x70) = arg_sp328;
-                            M2C_FIELD(temp_r28_1998, f64 *, 0x78) = arg_sp330;
+                            sp8C = -sp584;
+                            sp90 = -sp588;
+                            sp308 = (f64) sp88;
+                            sp310 = (f64) sp90;
+                            sp78 = (temp_f8_1495 * (f32) sp310) - (temp_f6_1497 * unksp30C);
+                            sp7C = (temp_f6_1497 * (f32) sp308) - (temp_f2_1499 * (f32) sp310);
+                            sp80 = (temp_f2_1499 * unksp30C) - (temp_f8_1495 * (f32) sp308);
+                            sp318 = (f64) sp78;
+                            sp320 = (f64) sp80;
+                            Normalise(sp328);
+                            M2C_FIELD(temp_r28_1998, f64 *, 0x70) = M2C_BITWISE(f64, sp328);
+                            M2C_FIELD(temp_r28_1998, f64 *, 0x78) = (f64) sp328.unk8;
                             temp_f2_1528 = M2C_FIELD(temp_r28_1998, f32 *, 0x50);
                             temp_f1_1529 = M2C_FIELD(temp_r28_1998, f32 *, 0x54);
                             temp_f3_1530 = M2C_FIELD(temp_r28_1998, f32 *, 0x58);
@@ -856,18 +1064,18 @@ block_24:
                                 } else if (var_f4_1535 < M2C_BITWISE(f32, 0.0)) {
                                     var_f4_1535 = __float_nan;
                                 } else {
-                                    arg_sp18 = var_f4_1535;
-                                    temp_r3_1570 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                                    sp18 = var_f4_1535;
+                                    temp_r3_1570 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                                     switch (temp_r3_1570) { /* switch 6; irregular */
                                     case 0x7F800000: /* switch 6 */
-                                        if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                             var_r0_1580 = 1;
                                         } else {
                                             var_r0_1580 = 2;
                                         }
                                         break;
                                     case 0x0:       /* switch 6 */
-                                        if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                                        if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                                             var_r0_1580 = 5;
                                         } else {
                                             var_r0_1580 = 3;
@@ -885,12 +1093,12 @@ block_24:
                             } else {
                                 var_f4_1602 = 0.0f;
                             }
-                            arg_sp198 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f4_1602;
-                            arg_sp19C = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f4_1602;
-                            arg_sp1A0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f4_1602;
-                            arg_sp2F8 = (f64) arg_sp198;
-                            arg_sp300 = (f64) arg_sp1A0;
-                            var_f2_1631 = -((arg_sp588 * (f32) arg_sp300) + ((arg_sp580 * (f32) arg_sp2F8) + (arg_sp584 * arg_sp2FC)));
+                            sp198 = M2C_FIELD(temp_r28_1998, f32 *, 0x50) * var_f4_1602;
+                            sp19C = M2C_FIELD(temp_r28_1998, f32 *, 0x54) * var_f4_1602;
+                            sp1A0 = M2C_FIELD(temp_r28_1998, f32 *, 0x58) * var_f4_1602;
+                            sp2F8 = (f64) sp198;
+                            sp300 = (f64) sp1A0;
+                            var_f2_1631 = -((sp588 * (f32) sp300) + ((sp580 * (f32) sp2F8) + (sp584 * unksp2FC)));
                             if (var_f2_1631 < 0.0f) {
                                 var_f2_1631 = -var_f2_1631;
                             }
@@ -906,18 +1114,18 @@ block_24:
                             } else if (var_f5_1645 < M2C_BITWISE(f32, 0.0)) {
                                 var_f5_1645 = __float_nan;
                             } else {
-                                arg_sp14 = var_f5_1645;
-                                temp_r3_1677 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                                sp14 = var_f5_1645;
+                                temp_r3_1677 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                                 switch (temp_r3_1677) { /* switch 7; irregular */
                                 case 0x7F800000:    /* switch 7 */
-                                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                         var_r0_1687 = 1;
                                     } else {
                                         var_r0_1687 = 2;
                                     }
                                     break;
                                 case 0x0:           /* switch 7 */
-                                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                                         var_r0_1687 = 5;
                                     } else {
                                         var_r0_1687 = 3;
@@ -938,10 +1146,10 @@ block_24:
                 if ((u8) M2C_FIELD(temp_r28_1998, u8 *, 0x9D) == 0) {
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    arg_sp4C8 = arg_sp188;
-                    arg_sp190 = (f32) arg_sp4E0 - M2C_FIELD(temp_r28_1998, f32 *, 0x48);
-                    arg_sp4D0 = (f64) arg_sp190;
-                    var_f4_1741 = ((f32) arg_sp4D0 * (f32) arg_sp4D0) + (((f32) arg_sp4C8 * (f32) arg_sp4C8) + (arg_sp4CC * arg_sp4CC));
+                    sp4A8.unk20 = sp188;
+                    sp190 = (f32) sp4A8.unk38 - M2C_FIELD(temp_r28_1998, f32 *, 0x48);
+                    sp4A8.unk28 = (f64) sp190;
+                    var_f4_1741 = (sp4A8.unk28 * sp4A8.unk28) + ((sp4A8.unk20 * sp4A8.unk20) + (sp4A8.unk24 * sp4A8.unk24));
                     if (var_f4_1741 > 0.0f) {
                         temp_f1_1744 = __frsqrte(var_f4_1741);
                         temp_f1_1750 = 0.5 * temp_f1_1744 * -(((f64) var_f4_1741 * (temp_f1_1744 * temp_f1_1744)) - 3.0);
@@ -950,18 +1158,18 @@ block_24:
                     } else if (var_f4_1741 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_1741 = __float_nan;
                     } else {
-                        arg_sp10 = var_f4_1741;
-                        temp_r3_1773 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                        sp10 = var_f4_1741;
+                        temp_r3_1773 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                         switch (temp_r3_1773) {     /* switch 8; irregular */
                         case 0x7F800000:            /* switch 8 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_1783 = 1;
                             } else {
                                 var_r0_1783 = 2;
                             }
                             break;
                         case 0x0:                   /* switch 8 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_1783 = 5;
                             } else {
                                 var_r0_1783 = 3;
@@ -980,72 +1188,72 @@ block_24:
                     temp_f18_1821 = 1.0f / (f32) (temp_r26_1815 - 1);
 loop_205:
                     if (var_r25_1807 < temp_r26_1815) {
-                        __ml((f32) var_r25_1807 * temp_f18_1821, *((MKVector3 *) &arg_sp2D8));
+                        __ml((f32) var_r25_1807 * temp_f18_1821, sp2D8);
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        arg_sp4B8 = arg_sp68;
-                        arg_sp70 = M2C_FIELD(temp_r28_1998, f32 *, 0x48) + arg_sp2E0;
-                        arg_sp2E8 = arg_sp68;
-                        arg_sp4C0 = (f64) arg_sp70;
-                        arg_sp2F0 = (f64) arg_sp70;
+                        sp4A8.unk10 = sp68;
+                        sp70 = M2C_FIELD(temp_r28_1998, f32 *, 0x48) + sp2D8.unk8;
+                        sp2E8 = sp68;
+                        sp4A8.unk18 = (f64) sp70;
+                        sp2F0 = (f64) sp70;
                         if (M2C_FIELD(temp_r28_1998, s32 *, 0x98) & 2) {
-                            arg_sp180 = -1.0f;
+                            sp180 = -1.0f;
                             temp_f27_1857 = M2C_FIELD(temp_r28_1998, f32 *, 0x88);
-                            arg_sp170 = 1.0f;
-                            arg_sp178 = -1.0f;
-                            arg_sp17C = -1.0f;
-                            arg_sp168 = 1.0f;
-                            arg_sp16C = 1.0f;
-                            arg_sp298 = (f64) arg_sp178;
-                            arg_sp2A0 = (f64) arg_sp180;
-                            arg_sp288 = (f64) arg_sp168;
-                            arg_sp290 = (f64) arg_sp170;
-                            KDRand_Vector(*((MKVector3 *) &arg_sp2A8), *((MKVector3 *) &arg_sp298));
+                            sp170 = 1.0f;
+                            sp178 = -1.0f;
+                            sp17C = -1.0f;
+                            sp168 = 1.0f;
+                            sp16C = 1.0f;
+                            sp298 = (f64) sp178;
+                            sp2A0 = (f64) sp180;
+                            sp288 = (f64) sp168;
+                            sp290 = (f64) sp170;
+                            KDRand_Vector(sp2A8, *((MKVector3 *) &sp298));
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                            arg_sp2B8 = arg_sp158;
-                            arg_sp160 = arg_sp2B0 * 175.0f;
-                            arg_sp2C0 = (f64) arg_sp160;
+                            sp2B8 = sp158;
+                            sp160 = sp2A8.unk8 * 175.0f;
+                            sp2C0 = (f64) sp160;
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                            arg_sp2C8 = arg_sp148;
-                            arg_sp150 = (f32) arg_sp2C0 * temp_f27_1857;
-                            arg_sp2D0 = (f64) arg_sp150;
-                            arg_sp34 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 0.6f, 0.9f);
-                            gb.EmitDust(*((MKVector3 *) &arg_sp4B8), *((MKVector3 *) &arg_sp2C8), arg_sp34, 0.0f);
+                            sp2C8 = sp148;
+                            sp150 = (f32) sp2C0 * temp_f27_1857;
+                            sp2D0 = (f64) sp150;
+                            sp34 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 0.6f, 0.9f);
+                            gb.EmitDust(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp2C8), sp34, 0.0f);
                         }
                         if (M2C_FIELD(temp_r28_1998, s32 *, 0x98) & 8) {
-                            arg_sp140 = -1.0f;
+                            sp140 = -1.0f;
                             temp_f28_1918 = M2C_FIELD(temp_r28_1998, f32 *, 0x88);
-                            arg_sp130 = 1.0f;
-                            arg_sp138 = -1.0f;
-                            arg_sp13C = -1.0f;
-                            arg_sp128 = 1.0f;
-                            arg_sp12C = 1.0f;
-                            arg_sp248 = (f64) arg_sp138;
-                            arg_sp250 = (f64) arg_sp140;
-                            arg_sp238 = (f64) arg_sp128;
-                            arg_sp240 = (f64) arg_sp130;
-                            KDRand_Vector(*((MKVector3 *) &arg_sp258), *((MKVector3 *) &arg_sp248));
+                            sp130 = 1.0f;
+                            sp138 = -1.0f;
+                            sp13C = -1.0f;
+                            sp128 = 1.0f;
+                            sp12C = 1.0f;
+                            sp248 = (f64) sp138;
+                            sp250 = (f64) sp140;
+                            sp238 = (f64) sp128;
+                            sp240 = (f64) sp130;
+                            KDRand_Vector(sp258, *((MKVector3 *) &sp248));
                             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                            arg_sp268 = arg_sp118;
-                            arg_sp120 = arg_sp260 * 175.0f;
-                            arg_sp270 = (f64) arg_sp120;
+                            sp268 = sp118;
+                            sp120 = sp258.unk8 * 175.0f;
+                            sp270 = (f64) sp120;
                             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                            arg_sp278 = arg_sp108;
-                            arg_sp110 = (f32) arg_sp270 * temp_f28_1918;
-                            arg_sp280 = (f64) arg_sp110;
-                            arg_sp30 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 3.5f, 3.6f);
-                            gb.unk68->Emit(*((MKVector3 *) &arg_sp4B8), *((MKVector3 *) &arg_sp278), arg_sp30);
+                            sp278 = sp108;
+                            sp110 = (f32) sp270 * temp_f28_1918;
+                            sp280 = (f64) sp110;
+                            sp30 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 3.5f, 3.6f);
+                            gb.unk68->Emit(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp278), sp30);
                         }
                         var_r25_1807 += 1;
                         goto loop_205;
                     }
                 }
-                M2C_FIELD(temp_r28_1998, f64 *, 0x40) = arg_sp4D8;
-                M2C_FIELD(temp_r28_1998, f32 *, 0x48) = arg_sp4E0;
-                arg_sp4F0.SetRotateAroundAxis(*(temp_r28_1998 + 0x70), M2C_FIELD(temp_r28_1998, f32 *, 0x8C));
-                temp_r28_1998->Multiply3x3(temp_r28_1998, (Matrix *) &arg_sp4F0);
+                M2C_FIELD(temp_r28_1998, f64 *, 0x40) = sp4A8.unk30;
+                M2C_FIELD(temp_r28_1998, f32 *, 0x48) = sp4A8.unk38;
+                sp4F0.SetRotateAroundAxis(*(temp_r28_1998 + 0x70), M2C_FIELD(temp_r28_1998, f32 *, 0x8C));
+                temp_r28_1998->Multiply3x3(temp_r28_1998, &sp4F0);
                 temp_r28_1998->unk30 = (f32) M2C_FIELD(temp_r28_1998, f64 *, 0x40);
                 temp_r28_1998->unk34 = M2C_FIELD(temp_r28_1998, f32 *, 0x44);
                 temp_r28_1998->unk38 = M2C_FIELD(temp_r28_1998, f32 *, 0x48);

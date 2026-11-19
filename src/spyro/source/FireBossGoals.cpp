@@ -118,30 +118,33 @@ u8 FireBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: pointer/array required
 void FireBossGoal_Think::Activate() {
+    Matrix sp30;
+    EnemyHudData sp10;
     f32 temp_f1_197;
     f32 temp_f31_209;
     s32 temp_r3_189;
     s32 temp_r3_208;
     s32 temp_r4_223;
+
     this->unk8 = 0;
     RemoveAllSubgoals();
     if (!(((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1)) {
-        arg_sp30.SetIdentity();
+        sp30.SetIdentity();
         temp_r3_189 = this->unkC;
-        arg_sp60 = M2C_FIELD(temp_r3_189, f32 *, 0x5B8);
-        arg_sp64 = M2C_FIELD(temp_r3_189, f32 *, 0x5BC);
+        sp30.unk30 = M2C_FIELD(temp_r3_189, f32 *, 0x5B8);
+        sp30.unk34 = M2C_FIELD(temp_r3_189, f32 *, 0x5BC);
         temp_f1_197 = M2C_FIELD(temp_r3_189, f32 *, 0x5C0);
-        arg_sp68 = temp_f1_197;
-        arg_sp6C = 1.0f;
-        if (M2C_FIELD(M2C_FIELD(temp_r3_189, void **, 0x44), u8 (**)(s32, M2C_UNK *, M2C_UNK, f32), 0x120)(temp_r3_189, &arg_sp30, 0, temp_f1_197) != 0) {
-            arg_sp10.EnemyHudData();
+        sp30.unk38 = temp_f1_197;
+        sp30.unk3C = 1.0f;
+        if (M2C_FIELD(M2C_FIELD(temp_r3_189, void **, 0x44), u8 (**)(s32, Matrix *, M2C_UNK, f32), 0x120)(temp_r3_189, &sp30, 0, temp_f1_197) != 0) {
+            sp10.EnemyHudData();
             temp_r3_208 = this->unkC;
             temp_f31_209 = M2C_FIELD(temp_r3_208, f32 *, 0xAC8);
             temp_r3_208->GetMaxHealth();
-            arg_sp10.Init((Enemy *) this->unkC, temp_f31_209, M2C_ERROR(/* Read from unset register $f1 */));
-            EnemyHud_Modified(*((EnemyHudData *) &arg_sp10));
+            sp10.Init((Enemy *) this->unkC, temp_f31_209, M2C_ERROR(/* Read from unset register $f1 */));
+            EnemyHud_Modified(sp10);
             M2C_FIELD(&gb, s32 *, 0x360) = (s32) this->unkC;
         }
     }

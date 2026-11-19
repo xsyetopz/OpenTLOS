@@ -5,6 +5,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDMatrixProperty.h"
 #include "spyro/source/KDModelProperty.h"
 #include "spyro/source/KDParticleEmitter.h"
@@ -23,16 +24,19 @@ u8 classInfo__28KDParticleBoxEmitterProperty[0x10];
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::Command(int arg0) {
+    f64 sp40;
+    M2C_UNK sp10;
     void **temp_r3_127;
     void *temp_r31_133;
+
     if (arg0 == 3) {
         temp_r3_127 = this->unk20;
         temp_r31_133 = *KDProperty::pInstanceMem + this->unk8;
-        M2C_FIELD(*temp_r3_127, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_127, &arg_sp10, *KDProperty::pInstanceMem);
-        M2C_FIELD(temp_r31_133, M2C_UNK **, 0x70) = &arg_sp10;
-        M2C_FIELD(temp_r31_133, f64 *, 0x18) = arg_sp40;
-        M2C_FIELD(temp_r31_133, f64 *, 0x20) = arg_sp48;
-        M2C_FIELD(temp_r31_133, f64 **, 0x6C) = &arg_sp40;
+        M2C_FIELD(*temp_r3_127, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_127, &sp10, *KDProperty::pInstanceMem);
+        M2C_FIELD(temp_r31_133, M2C_UNK **, 0x70) = &sp10;
+        M2C_FIELD(temp_r31_133, f64 *, 0x18) = sp40;
+        M2C_FIELD(temp_r31_133, f64 *, 0x20) = sp48;
+        M2C_FIELD(temp_r31_133, f64 **, 0x6C) = &sp40;
         ((KDParticleEmitter *) (*KDProperty::pInstanceMem + this->unk8))->Burst();
         return;
     }
@@ -42,16 +46,19 @@ void KDParticleBoxEmitterProperty::Command(int arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleBoxEmitterProperty::Update() {
+    f64 sp40;
+    M2C_UNK sp10;
     KDParticleEmitter *temp_r31_172;
     void **temp_r3_176;
+
     temp_r31_172 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_172->unk40 != 0) {
         temp_r3_176 = this->unk20;
-        M2C_FIELD(*temp_r3_176, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_176, &arg_sp10);
-        temp_r31_172->unk70 = &arg_sp10;
-        temp_r31_172->unk18 = arg_sp40;
-        M2C_FIELD(temp_r31_172, f64 *, 0x20) = arg_sp48;
-        temp_r31_172->unk6C = &arg_sp40;
+        M2C_FIELD(*temp_r3_176, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_176, &sp10);
+        temp_r31_172->unk70 = &sp10;
+        temp_r31_172->unk18 = sp40;
+        M2C_FIELD(temp_r31_172, f64 *, 0x20) = sp48;
+        temp_r31_172->unk6C = &sp40;
         temp_r31_172->Update();
     }
 }
@@ -111,13 +118,15 @@ s32 KDParticleBoxEmitterProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleLineEmitterProperty::Command(int arg0) {
+    M2C_UNK sp10;
     void **temp_r3_351;
     void *temp_r31_357;
+
     if (arg0 == 3) {
         temp_r3_351 = this->unk20;
         temp_r31_357 = *KDProperty::pInstanceMem + this->unk8;
-        M2C_FIELD(*temp_r3_351, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_351, &arg_sp10, *KDProperty::pInstanceMem);
-        M2C_FIELD(temp_r31_357, M2C_UNK **, 0x70) = &arg_sp10;
+        M2C_FIELD(*temp_r3_351, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_351, &sp10, *KDProperty::pInstanceMem);
+        M2C_FIELD(temp_r31_357, M2C_UNK **, 0x70) = &sp10;
         M2C_FIELD(temp_r31_357, f64 *, 0x18) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
         M2C_FIELD(temp_r31_357, f64 *, 0x20) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
         M2C_FIELD(temp_r31_357, MKVector3 **, 0x6C) = &MKVector3::zero;
@@ -130,13 +139,15 @@ void KDParticleLineEmitterProperty::Command(int arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleLineEmitterProperty::Update() {
+    Matrix sp10;
     KDParticleEmitter *temp_r31_396;
     void **temp_r3_400;
+
     temp_r31_396 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_396->unk40 != 0) {
         temp_r3_400 = this->unk20;
-        M2C_FIELD(*temp_r3_400, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_400, &arg_sp10);
-        temp_r31_396->unk70 = &arg_sp10;
+        M2C_FIELD(*temp_r3_400, M2C_UNK (**)(void **, Matrix *), 0x58)(temp_r3_400, &sp10);
+        temp_r31_396->unk70 = &sp10;
         temp_r31_396->unk18 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
         M2C_FIELD(temp_r31_396, f64 *, 0x20) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r31_396->unk6C = &MKVector3::zero;
@@ -210,10 +221,13 @@ s32 KDParticleLineEmitterProperty::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: pointer/array required
 void KDParticleEmitterProperty::Command(int arg0) {
+    M2C_UNK sp40;
+    M2C_UNK sp10;
     void **temp_r3_601;
     void *temp_r31_607;
     void *temp_r3_596;
     void *temp_r3_629;
+
     switch (arg0) {                                 /* irregular */
     case 1:
         *(*KDProperty::pInstanceMem + (this->unk8 + 0x40)) = 1;
@@ -226,9 +240,9 @@ void KDParticleEmitterProperty::Command(int arg0) {
     case 3:
         temp_r3_601 = this->unk20;
         temp_r31_607 = *KDProperty::pInstanceMem + this->unk8;
-        M2C_FIELD(*temp_r3_601, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_601, &arg_sp10, *KDProperty::pInstanceMem);
-        M2C_FIELD(temp_r31_607, M2C_UNK **, 0x70) = &arg_sp10;
-        M2C_FIELD(temp_r31_607, M2C_UNK **, 0x6C) = &arg_sp40;
+        M2C_FIELD(*temp_r3_601, M2C_UNK (**)(void **, M2C_UNK *, s32), 0x58)(temp_r3_601, &sp10, *KDProperty::pInstanceMem);
+        M2C_FIELD(temp_r31_607, M2C_UNK **, 0x70) = &sp10;
+        M2C_FIELD(temp_r31_607, M2C_UNK **, 0x6C) = &sp40;
         ((KDParticleEmitter *) (*KDProperty::pInstanceMem + this->unk8))->Burst();
         return;
     case 4:
@@ -261,18 +275,20 @@ s32 KDParticleEmitterProperty::ResolveCommand(const char *arg0) const {
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDParticleEmitterProperty::Update() {
+    Matrix sp10;
     KDParticleEmitter *temp_r31_708;
     void **temp_r3_720;
+
     temp_r31_708 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) temp_r31_708->unk40 != 0) {
         if ((u8) this->unk18->unk18 != 0) {
-            arg_sp10.SetIdentity();
+            sp10.SetIdentity();
         } else {
             temp_r3_720 = this->unk20;
-            M2C_FIELD(*temp_r3_720, M2C_UNK (**)(void **, M2C_UNK *), 0x58)(temp_r3_720, &arg_sp10);
+            M2C_FIELD(*temp_r3_720, M2C_UNK (**)(void **, Matrix *), 0x58)(temp_r3_720, &sp10);
         }
-        temp_r31_708->unk70 = &arg_sp10;
-        temp_r31_708->unk6C = &arg_sp40;
+        temp_r31_708->unk70 = &sp10;
+        temp_r31_708->unk6C = &sp10.unk30;
         temp_r31_708->Update();
     }
 }

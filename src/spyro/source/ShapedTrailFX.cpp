@@ -61,6 +61,42 @@ void ShapedTrailFX::Deinit() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
 void ShapedTrailFX::Draw() {
+    M2C_UNK sp290;
+    MKVector3 sp1F0;
+    MKVector3 sp150;
+    Matrix sp110;
+    M2C_UNK sp10C;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;                                       /* compiler-managed */
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;
+    f64 spC8;
+    f64 spB8;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp88;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f18_223;
     f32 temp_f18_682;
     f32 temp_f19_684;
@@ -107,6 +143,7 @@ void ShapedTrailFX::Draw() {
     void *temp_r4_657;
     void *temp_r4_740;
     void *temp_r5_741;
+
     if ((EventCamera_GetCurrent() == NULL) && (((u8) this->unkA0 >> 6U) & 1)) {
         this->unk60.unk8 = 0.0f;
         this->unk60.unk4 = 0;
@@ -134,41 +171,41 @@ loop_13:
             if (var_r23_211 < (s32) this->unk90) {
                 temp_f18_223 = this->unk94 * _table_sinf(1.5707964f + var_f27_204);
                 temp_f1_225 = _table_sinf(var_f27_204);
-                temp_r3_227 = &arg_sp290 + var_r28_213;
-                arg_sp4C = temp_f18_223;
+                temp_r3_227 = &sp290 + var_r28_213;
+                sp4C = temp_f18_223;
                 var_f27_204 += temp_f21_217;
                 var_r23_211 += 1;
-                arg_sp50 = 0.0f;
+                sp50 = 0.0f;
                 var_r28_213 += 0x10;
-                arg_sp48 = this->unk94 * temp_f1_225;
-                arg_spD0 = (f64) arg_sp50;
-                M2C_FIELD(temp_r3_227, f64 *, 0) = (f64) arg_sp48;
-                arg_spC8 = (f64) arg_sp48;
-                M2C_FIELD(temp_r3_227, f64 *, 8) = (f64) arg_sp50;
+                sp48 = this->unk94 * temp_f1_225;
+                spD0 = (f64) sp50;
+                M2C_FIELD(temp_r3_227, f64 *, 0) = (f64) sp48;
+                spC8 = (f64) sp48;
+                M2C_FIELD(temp_r3_227, f64 *, 8) = (f64) sp50;
                 goto loop_13;
             }
             MKMaterial_SetMaterial(this->unk7C);
             MKPrimitive(0xC, 0x10);
             MKSetMatrix(Matrix::identity);
-            arg_sp20 = 0.0f;
+            sp20 = 0.0f;
             temp_f27_267 = 1.0f / (f32) var_r30_176;
-            arg_spB8.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_PositionMixer);
-            arg_sp80 = 0.0f;
-            arg_sp78 = 0.0f;
-            arg_sp7C = 1.0f;
-            arg_spF8 = arg_spB8;
-            arg_sp100 = arg_spC0;
-            arg_spE8 = (f64) arg_sp78;
-            arg_spF0 = (f64) arg_sp80;
-            arg_sp1C = 0.0f;
-            arg_sp68.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_VelocityMixer);
-            arg_sp58 = arg_sp68;
-            arg_sp60 = arg_sp70;
+            spB8.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_PositionMixer);
+            sp80 = 0.0f;
+            sp78 = 0.0f;
+            sp7C = 1.0f;
+            spF8 = spB8;
+            sp100 = spC0;
+            spE8 = (f64) sp78;
+            spF0 = (f64) sp80;
+            sp1C = 0.0f;
+            sp68.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_VelocityMixer);
+            sp58 = sp68;
+            sp60 = sp70;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
-            arg_spD8 = arg_sp38;
-            arg_sp40 = (f32) arg_sp60 * arg_sp1C;
-            arg_spE0 = (f64) arg_sp40;
-            var_f4_311 = ((f32) arg_spE0 * (f32) arg_spE0) + (((f32) arg_spD8 * (f32) arg_spD8) + (arg_spDC * arg_spDC));
+            spD8 = sp38;
+            sp40 = (f32) sp60 * sp1C;
+            spE0 = (f64) sp40;
+            var_f4_311 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
             if (var_f4_311 > 0.000001f) {
                 if (var_f4_311 > 0.0f) {
                     temp_f1_317 = __frsqrte(var_f4_311);
@@ -178,18 +215,18 @@ loop_13:
                 } else if (var_f4_311 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_311 = __float_nan;
                 } else {
-                    arg_sp14 = var_f4_311;
-                    temp_r3_346 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                    sp14 = var_f4_311;
+                    temp_r3_346 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                     switch (temp_r3_346) {          /* switch 1; irregular */
                     case 0x7F800000:                /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_356 = 1;
                         } else {
                             var_r0_356 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 1 */
-                        if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                             var_r0_356 = 5;
                         } else {
                             var_r0_356 = 3;
@@ -207,21 +244,21 @@ loop_13:
             } else {
                 var_f3_378 = 0.0f;
             }
-            arg_spD8 = (f32) arg_spD8 * var_f3_378;
-            arg_spDC *= var_f3_378;
-            arg_spE0 = (f32) arg_spE0 * var_f3_378;
-            M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp110, *((MKVector3 *) &arg_spD8), (MKVector3 *) &arg_spE8);
-            arg_sp110.Scale3x3((Matrix *) &arg_sp110, this->unk98);
+            spD8 = (f32) spD8 * var_f3_378;
+            unkspDC *= var_f3_378;
+            spE0 = (f32) spE0 * var_f3_378;
+            M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            KDMath_BuildMatrixFromFwd(&sp110, *((MKVector3 *) &spD8), (MKVector3 *) &spE8);
+            sp110.Scale3x3(&sp110, this->unk98);
             var_r6_413 = 0;
             var_r3_415 = 0;
-            arg_sp140 = (f32) arg_spF8;
-            arg_sp144 = arg_spFC;
-            arg_sp148 = (f32) arg_sp100;
-            arg_sp14C = 1.0f;
+            sp110.unk30 = (f32) spF8;
+            sp110.unk34 = unkspFC;
+            sp110.unk38 = (f32) sp100;
+            sp110.unk3C = 1.0f;
 loop_36:
             if (var_r6_413 < (s32) this->unk90) {
-                temp_r4_430 = &arg_sp1F0 + var_r3_415;
+                temp_r4_430 = &sp1F0 + var_r3_415;
                 var_r6_413 += 1;
                 var_r3_415 += 0x10;
                 M2C_ERROR(/* unknown instruction: ps_madds0 $f23, $f24, $f26, $f23 */);
@@ -257,21 +294,21 @@ loop_80:
                 } else {
                     var_f21_492 = 0.0f;
                 }
-                arg_sp18 = 0.0f;
-                arg_spA8.GetMeasure(var_f21_492, (Matrix *) &this->unk60, KDSpline_PositionMixer);
-                arg_sp30 = 0.0f;
-                arg_sp28 = 0.0f;
-                arg_sp2C = 1.0f;
-                arg_spF8 = arg_spA8;
-                arg_sp100 = arg_spB0;
-                arg_sp98 = (f64) arg_sp28;
-                arg_spA0 = (f64) arg_sp30;
-                arg_spE8 = (f64) arg_sp28;
-                arg_spF0 = (f64) arg_sp30;
-                arg_sp88.GetVelocity(var_f21_492);
-                arg_spD8 = arg_sp88;
-                arg_spE0 = arg_sp90;
-                var_f4_541 = ((f32) arg_spE0 * (f32) arg_spE0) + (((f32) arg_spD8 * (f32) arg_spD8) + (arg_spDC * arg_spDC));
+                sp18 = 0.0f;
+                spA8.GetMeasure(var_f21_492, (Matrix *) &this->unk60, KDSpline_PositionMixer);
+                sp30 = 0.0f;
+                sp28 = 0.0f;
+                sp2C = 1.0f;
+                spF8 = spA8;
+                sp100 = spB0;
+                sp98 = (f64) sp28;
+                spA0 = (f64) sp30;
+                spE8 = (f64) sp28;
+                spF0 = (f64) sp30;
+                sp88.GetVelocity(var_f21_492);
+                spD8 = sp88;
+                spE0 = sp90;
+                var_f4_541 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
                 if (var_f4_541 > 0.000001f) {
                     if (var_f4_541 > 0.0f) {
                         temp_f1_547 = __frsqrte(var_f4_541);
@@ -281,18 +318,18 @@ loop_80:
                     } else if (var_f4_541 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_541 = __float_nan;
                     } else {
-                        arg_sp10 = var_f4_541;
-                        temp_r3_576 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                        sp10 = var_f4_541;
+                        temp_r3_576 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                         switch (temp_r3_576) {      /* switch 2; irregular */
                         case 0x7F800000:            /* switch 2 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_586 = 1;
                             } else {
                                 var_r0_586 = 2;
                             }
                             break;
                         case 0x0:                   /* switch 2 */
-                            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                                 var_r0_586 = 5;
                             } else {
                                 var_r0_586 = 3;
@@ -310,22 +347,22 @@ loop_80:
                 } else {
                     var_f3_608 = 0.0f;
                 }
-                arg_spD8 = (f32) arg_spD8 * var_f3_608;
-                arg_spDC *= var_f3_608;
-                arg_spE0 = (f32) arg_spE0 * var_f3_608;
-                M2C_STRUCT_COPY((s32) &arg_sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp110, *((MKVector3 *) &arg_spD8), (MKVector3 *) &arg_spE8);
-                arg_sp110.Scale3x3((Matrix *) &arg_sp110, this->unk98);
+                spD8 = (f32) spD8 * var_f3_608;
+                unkspDC *= var_f3_608;
+                spE0 = (f32) spE0 * var_f3_608;
+                M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+                KDMath_BuildMatrixFromFwd(&sp110, *((MKVector3 *) &spD8), (MKVector3 *) &spE8);
+                sp110.Scale3x3(&sp110, this->unk98);
                 var_r6_641 = 0;
                 var_r3_643 = 0;
-                arg_sp140 = (f32) arg_spF8;
-                arg_sp144 = arg_spFC;
-                arg_sp148 = (f32) arg_sp100;
-                arg_sp14C = 1.0f;
+                sp110.unk30 = (f32) spF8;
+                sp110.unk34 = unkspFC;
+                sp110.unk38 = (f32) sp100;
+                sp110.unk3C = 1.0f;
 loop_72:
                 temp_r4_676 = this->unk90;
                 if (var_r6_641 < temp_r4_676) {
-                    temp_r4_657 = &arg_sp150 + var_r3_643;
+                    temp_r4_657 = &sp150 + var_r3_643;
                     var_r6_641 += 1;
                     var_r3_643 += 0x10;
                     M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f28, $f31 */);
@@ -347,27 +384,27 @@ loop_75:
                     temp_f20_699 = (f32) var_r23_683 / (f32) temp_r0_718;
                     MKSetColorV(this->unk50);
                     MKSetTexCoord1F(temp_f20_699, temp_f18_682);
-                    MKSetPositionV(arg_sp1F0 + var_r28_685);
+                    MKSetPositionV(sp1F0 + var_r28_685);
                     MKSetColorV(this->unk50);
                     MKSetTexCoord1F(temp_f20_699, temp_f19_684);
-                    MKSetPositionV(arg_sp150 + var_r28_685);
+                    MKSetPositionV(sp150 + var_r28_685);
                     var_r23_683 += 1;
                     var_r28_685 += 0x10;
                     goto loop_75;
                 }
                 MKSetColorV(this->unk50);
                 MKSetTexCoord1F(1.0f, temp_f18_682);
-                MKSetPositionV(*((MKVector3 *) &arg_sp1F0));
+                MKSetPositionV(sp1F0);
                 MKSetColorV(this->unk50);
                 MKSetTexCoord1F(1.0f, temp_f19_684);
-                MKSetPositionV(*((MKVector3 *) &arg_sp150));
+                MKSetPositionV(sp150);
                 MKEnd();
                 var_r6_736 = 0;
                 var_r3_737 = 0;
 loop_78:
                 if (var_r6_736 < (s32) this->unk90) {
-                    temp_r4_740 = &arg_sp150 + var_r3_737;
-                    temp_r5_741 = &arg_sp1F0 + var_r3_737;
+                    temp_r4_740 = &sp150 + var_r3_737;
+                    temp_r5_741 = &sp1F0 + var_r3_737;
                     temp_f1_742 = M2C_FIELD(temp_r4_740, f64 *, 0);
                     var_r6_736 += 1;
                     temp_f0_744 = M2C_FIELD(temp_r4_740, f64 *, 8);

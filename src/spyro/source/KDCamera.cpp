@@ -1102,13 +1102,16 @@ u8 KDCamera::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisio
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::CutSceneUpdate() {
+    Matrix sp10;
+    M2C_UNK spC;
+
     if ((this->unk58->IsMessageStored(0x800) != 0) || (this->unk58->IsMessageStored(0x801) != 0)) {
         if (this->unk58->IsMessageStored(0x800) != 0) {
-            M2C_STRUCT_COPY((s32) &arg_spC + 4, M2C_FIELD(checked_cast<KDS_Message_SetCamera *, MKMessage>(this->unk58->GetMessage(0x800)), s32 *, 8) - 4 + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, M2C_FIELD(checked_cast<KDS_Message_SetCamera *, MKMessage>(this->unk58->GetMessage(0x800)), s32 *, 8) - 4 + 4, 0x40);
         } else {
-            M2C_STRUCT_COPY((s32) &arg_spC + 4, checked_cast<KDS_Message_SetCameraSimple *, MKMessage>(this->unk58->GetMessage(0x801)) + 0xC + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, checked_cast<KDS_Message_SetCameraSimple *, MKMessage>(this->unk58->GetMessage(0x801)) + 0xC + 4, 0x40);
         }
-        SetLTW(*((Matrix *) &arg_sp10));
+        SetLTW(sp10);
     }
 }
 #endif
@@ -2352,8 +2355,27 @@ u32 KDCamera::PlayerRotatedCamera() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp80'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 void KDCamera::UpdateLTW() {
+    Matrix spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     KDCameraPoint *temp_r3_4602;
     KDCameraPoint *temp_r4_4601;
     KDCameraPoint *temp_r6_4646;
@@ -2363,46 +2385,47 @@ void KDCamera::UpdateLTW() {
     f64 temp_f3_4604;
     f64 temp_f4_4606;
     f64 temp_f5_4603;
+
     temp_r31_4600 = &this->unk60;
     temp_r4_4601 = this->unkA4;
     temp_r3_4602 = this->unkA0;
     temp_f5_4603 = temp_r4_4601->unk0;
     temp_f3_4604 = temp_r3_4602->unk0;
-    arg_sp80 = temp_f5_4603;
+    sp80 = temp_f5_4603;
     temp_f4_4606 = M2C_FIELD(temp_r4_4601, f64 *, 8);
-    arg_sp90 = temp_f3_4604;
+    sp90 = temp_f3_4604;
     temp_f2_4608 = M2C_FIELD(temp_r3_4602, f64 *, 8);
-    arg_sp20 = temp_f5_4603;
-    arg_sp28 = temp_f4_4606;
-    arg_sp88 = temp_f4_4606;
-    arg_sp10 = temp_f3_4604;
-    arg_sp18 = temp_f2_4608;
-    arg_sp98 = temp_f2_4608;
-    if ((f32) arg_sp90 == (f32) arg_sp80) {
-        arg_sp68 = temp_f4_4606;
-        arg_sp78 = temp_f2_4608;
-        arg_sp60 = temp_f5_4603;
-        arg_sp70 = temp_f3_4604;
-        if ((f32) arg_sp78 == (f32) arg_sp68) {
-            arg_sp50 = temp_f3_4604;
-            arg_sp58 = temp_f2_4608;
-            this->unk60.unk30 = (f32) arg_sp50;
-            this->unk60.unk34 = arg_sp54;
-            this->unk60.unk38 = (f32) arg_sp58;
+    sp20 = temp_f5_4603;
+    sp28 = temp_f4_4606;
+    sp88 = temp_f4_4606;
+    sp10 = temp_f3_4604;
+    sp18 = temp_f2_4608;
+    sp98 = temp_f2_4608;
+    if ((f32) sp90 == (f32) sp80) {
+        sp68 = temp_f4_4606;
+        sp78 = temp_f2_4608;
+        sp60 = temp_f5_4603;
+        sp70 = temp_f3_4604;
+        if ((f32) sp78 == (f32) sp68) {
+            sp50 = temp_f3_4604;
+            sp58 = temp_f2_4608;
+            this->unk60.unk30 = (f32) sp50;
+            this->unk60.unk34 = unksp54;
+            this->unk60.unk38 = (f32) sp58;
             this->unk60.unk3C = 1.0f;
             return;
         }
     }
-    arg_sp30 = arg_sp20;
-    arg_sp38 = arg_sp28;
+    sp30 = sp20;
+    sp38 = sp28;
     temp_r6_4646 = this->unkA0;
-    arg_sp40 = temp_r6_4646->unk0;
-    arg_sp48 = M2C_FIELD(temp_r6_4646, f64 *, 8);
-    temp_r31_4600->SetLookAt(*((MKVector3 *) &arg_sp40), *((MKVector3 *) &arg_sp30));
+    sp40 = temp_r6_4646->unk0;
+    sp48 = M2C_FIELD(temp_r6_4646, f64 *, 8);
+    temp_r31_4600->SetLookAt(*((MKVector3 *) &sp40), *((MKVector3 *) &sp30));
     temp_f1_4652 = this->unkA8;
     if (temp_f1_4652 != 0.0f) {
-        arg_spA0.SetRotationRoll(temp_f1_4652);
-        temp_r31_4600->Multiply3x3((Matrix *) &arg_spA0, temp_r31_4600);
+        spA0.SetRotationRoll(temp_f1_4652);
+        temp_r31_4600->Multiply3x3(&spA0, temp_r31_4600);
     }
 }
 #endif
@@ -2448,21 +2471,27 @@ KDCamera::KDCamera() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+#if 0 // DRAFT: illegal type
 void KDCamera::Use() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
     Frustum *temp_r3_4795;
-    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp20 = arg_sp10;
-    arg_sp18 = arg_sp68 + this->unk190;
-    arg_sp28 = (f64) arg_sp18;
-    arg_sp60 = (f32) arg_sp20;
-    arg_sp64 = arg_sp24;
-    arg_sp68 = (f32) arg_sp28;
-    arg_sp6C = 1.0f;
-    MKView_SetCameraMatrix(*((Matrix *) &arg_sp30));
+    sp20 = sp10;
+    sp18 = sp30.unk38 + this->unk190;
+    sp28 = (f64) sp18;
+    sp30.unk30 = (f32) sp20;
+    sp30.unk34 = unksp24;
+    sp30.unk38 = (f32) sp28;
+    sp30.unk3C = 1.0f;
+    MKView_SetCameraMatrix(sp30);
     temp_r3_4795 = MKView_GetWorldFrustum();
     this->unkB0 = M2C_FIELD(temp_r3_4795, f64 *, 0);
     this->unkB8 = M2C_FIELD(temp_r3_4795, f64 *, 8);

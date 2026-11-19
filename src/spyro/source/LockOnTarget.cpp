@@ -12,8 +12,36 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
+#if 0 // DRAFT: undefined identifier 'sp48'
 void LockOnTarget::Draw() {
+    f32 sp118;
+    f32 sp114;
+    f32 sp110;
+    f32 sp108;
+    f32 sp104;
+    f32 sp100;
+    f32 spF8;
+    f32 spF4;
+    f32 spF0;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    Matrix spA0;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;                                       /* compiler-managed */
+    f64 sp78;                                       /* compiler-managed */
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
     f32 temp_f0_241;
     f32 temp_f11_264;
     f32 temp_f28_267;
@@ -29,6 +57,7 @@ void LockOnTarget::Draw() {
     s32 var_r0_206;
     s32 var_r3_236;
     void *temp_r4_257;
+
     if ((s32) this->unk60 != 0) {
         if ((u8) this->unk78 == 0) {
             return;
@@ -36,30 +65,30 @@ void LockOnTarget::Draw() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp50 = M2C_FIELD(this->unk4C, f32 *, 8) + this->unk58;
-        arg_spE0 = -35.0f;
-        arg_spE4 = -35.0f;
-        arg_spE8 = 0.0f;
-        arg_spF0 = 35.0f;
-        arg_spF4 = -35.0f;
-        arg_spF8 = 0.0f;
-        arg_sp100 = -35.0f;
-        arg_sp104 = 35.0f;
-        arg_sp108 = 0.0f;
-        arg_sp110 = 35.0f;
-        arg_sp114 = 35.0f;
-        arg_sp118 = 0.0f;
-        arg_sp88 = arg_sp48;
-        arg_sp90 = (f64) arg_sp50;
-        arg_spA0.SetRotationRoll(this->unk6C);
-        arg_spA0.Multiply3x3((Matrix *) &arg_spA0, MKView_GetCameraMatrix());
+        sp50 = M2C_FIELD(this->unk4C, f32 *, 8) + this->unk58;
+        spE0 = -35.0f;
+        spE4 = -35.0f;
+        spE8 = 0.0f;
+        spF0 = 35.0f;
+        spF4 = -35.0f;
+        spF8 = 0.0f;
+        sp100 = -35.0f;
+        sp104 = 35.0f;
+        sp108 = 0.0f;
+        sp110 = 35.0f;
+        sp114 = 35.0f;
+        sp118 = 0.0f;
+        sp88 = sp48;
+        sp90 = (f64) sp50;
+        spA0.SetRotationRoll(this->unk6C);
+        spA0.Multiply3x3(&spA0, MKView_GetCameraMatrix());
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        temp_f2_148 = M2C_FIELD((MKView_GetCameraMatrix() + 0x30), f32 *, 8) - (f32) arg_sp90;
-        arg_sp78 = arg_sp38;
-        arg_sp40 = temp_f2_148;
-        arg_sp80 = (f64) arg_sp40;
-        var_f4_161 = ((f32) arg_sp80 * (f32) arg_sp80) + (((f32) arg_sp78 * (f32) arg_sp78) + (arg_sp7C * arg_sp7C));
+        temp_f2_148 = M2C_FIELD((MKView_GetCameraMatrix() + 0x30), f32 *, 8) - (f32) sp90;
+        sp78 = sp38;
+        sp40 = temp_f2_148;
+        sp80 = (f64) sp40;
+        var_f4_161 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
         if (var_f4_161 > 0.000001f) {
             if (var_f4_161 > 0.0f) {
                 temp_f1_167 = __frsqrte(var_f4_161);
@@ -69,18 +98,18 @@ void LockOnTarget::Draw() {
             } else if (var_f4_161 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_161 = __float_nan;
             } else {
-                arg_sp10 = var_f4_161;
-                temp_r3_196 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_161;
+                temp_r3_196 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_196) {              /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_206 = 1;
                     } else {
                         var_r0_206 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_206 = 5;
                     } else {
                         var_r0_206 = 3;
@@ -99,13 +128,13 @@ void LockOnTarget::Draw() {
             var_f5_228 = 0.0f;
         }
         var_r3_236 = 0;
-        temp_f0_241 = (f32) arg_sp80 * var_f5_228;
-        arg_sp78 = (f32) arg_sp78 * var_f5_228;
-        arg_sp7C *= var_f5_228;
-        arg_sp80 = temp_f0_241;
+        temp_f0_241 = (f32) sp80 * var_f5_228;
+        sp78 = (f32) sp78 * var_f5_228;
+        unksp7C *= var_f5_228;
+        sp80 = temp_f0_241;
         var_ctr_253 = 4;
         do {
-            temp_r4_257 = &arg_spE0 + var_r3_236;
+            temp_r4_257 = &spE0 + var_r3_236;
             M2C_ERROR(/* unknown instruction: psq_lx $f11, $zero, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f31 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
@@ -113,26 +142,26 @@ void LockOnTarget::Draw() {
             temp_f11_264 = M2C_FIELD(temp_r4_257, f32 *, 4);
             temp_f29_265 = M2C_FIELD(temp_r4_257, f32 *, 0);
             temp_f28_267 = M2C_FIELD(temp_r4_257, f32 *, 8);
-            arg_sp28 = (temp_f28_267 * arg_spC0) + ((temp_f29_265 * arg_spA0) + (temp_f11_264 * arg_spB0));
-            arg_sp2C = (temp_f28_267 * arg_spC4) + ((temp_f29_265 * arg_spA4) + (temp_f11_264 * arg_spB4));
-            arg_sp30 = (temp_f28_267 * arg_spC8) + ((temp_f29_265 * arg_spA8) + (temp_f11_264 * arg_spB8));
-            M2C_FIELD(temp_r4_257, f32 *, 0) = (f64) arg_sp28;
-            M2C_FIELD(temp_r4_257, f32 *, 8) = (f64) arg_sp30;
-            arg_sp68 = (f64) arg_sp28;
-            arg_sp70 = (f64) arg_sp30;
+            sp28 = (temp_f28_267 * spA0.unk20) + ((temp_f29_265 * M2C_BITWISE(f32, spA0)) + (temp_f11_264 * spA0.unk10));
+            sp2C = (temp_f28_267 * spA0.unk24) + ((temp_f29_265 * spA0.unk4) + (temp_f11_264 * spA0.unk14));
+            sp30 = (temp_f28_267 * spA0.unk28) + ((temp_f29_265 * spA0.unk8) + (temp_f11_264 * spA0.unk18));
+            M2C_FIELD(temp_r4_257, f32 *, 0) = (f64) sp28;
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f64) sp30;
+            sp68 = (f64) sp28;
+            sp70 = (f64) sp30;
             M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
-            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) arg_sp90);
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) sp90);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f30 */);
-            arg_sp20 = temp_f0_241 * this->unk68;
-            arg_sp58 = arg_sp18;
-            arg_sp60 = (f64) arg_sp20;
+            sp20 = temp_f0_241 * this->unk68;
+            sp58 = sp18;
+            sp60 = (f64) sp20;
             M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
             M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
             var_r3_236 += 0x10;
-            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) arg_sp60);
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) sp60);
             var_ctr_253 -= 1;
         } while (var_ctr_253 != 0);
         if ((u8) this->unk79 != 0) {
@@ -144,13 +173,13 @@ void LockOnTarget::Draw() {
         MKBegin(4);
         MKSetColorF(1.0f, 1.0f, 1.0f, this->unk74);
         MKSetTexCoord1F(0.0f, 0.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_spE0));
+        MKSetPositionV(*((MKVector3 *) &spE0));
         MKSetTexCoord1F(1.0f, 0.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_spF0));
+        MKSetPositionV(*((MKVector3 *) &spF0));
         MKSetTexCoord1F(0.0f, 1.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp100));
+        MKSetPositionV(*((MKVector3 *) &sp100));
         MKSetTexCoord1F(1.0f, 1.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp110));
+        MKSetPositionV(*((MKVector3 *) &sp110));
         MKEnd();
         MKEndPrimitive();
     }

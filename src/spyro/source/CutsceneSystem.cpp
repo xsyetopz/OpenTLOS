@@ -449,25 +449,33 @@ s32 CutsceneSystem::Play(const char *arg0, float arg1, void (*arg3)(const char *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal type
 void CutsceneSystem::DrawSubtitles() {
+    Matrix sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKHeap *temp_ret_1043;
     MKVector3 *temp_r3_991;
     f32 temp_f1_1084;
     s32 var_r30_1063;
     s8 *temp_r4_1081;
     s8 *temp_r4_1172;
-    arg_sp30.SetIdentity();
-    arg_sp60 = 320.0f;
-    arg_sp64 = 256.0f;
-    arg_sp68 = 0.0f;
-    arg_sp6C = 1.0f;
+
+    sp30.SetIdentity();
+    sp30.unk30 = 320.0f;
+    sp30.unk34 = 256.0f;
+    sp30.unk38 = 0.0f;
+    sp30.unk3C = 1.0f;
     if (this->unk10 > 0.0f) {
-        ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(*(gpTranslation_StringArray + (this->unk4 * 4)), 544.0f, 435.2f, (Matrix *) &arg_sp30, 8, 1U, 1.0f, 1.0f, NULL, 1U);
+        ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(*(gpTranslation_StringArray + (this->unk4 * 4)), 544.0f, 435.2f, &sp30, 8, 1U, 1.0f, 1.0f, NULL, 1U);
     }
     temp_r3_991 = this->unk78;
     if ((temp_r3_991 != NULL) && (temp_r3_991->IsPlaying() != 0) && ((u8) M2C_FIELD(this->unk78, u8 *, 0x240) != 0)) {
-        ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xE8), 544.0f, 435.2f, (Matrix *) &arg_sp30, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
+        ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xE8), 544.0f, 435.2f, &sp30, 5, 0x80808080U, 1.0f, 1.0f, NULL, 1U);
     }
     ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
     if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x10) == 0) || ((s32) this->unk74 == 1)) {
@@ -500,13 +508,13 @@ loop_20:
         if (temp_r4_1081 != NULL) {
             temp_f1_1084 = this->unk90;
             if (temp_f1_1084 > 0.0f) {
-                arg_sp1C = temp_f1_1084;
-                arg_sp18 = 1.0f;
-                arg_sp10 = 1.0f;
-                arg_sp14 = 1.0f;
-                arg_sp28 = (f64) arg_sp18;
-                arg_sp20 = (f64) arg_sp10;
-                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1081, 544.0f, 435.2f, (Matrix *) &arg_sp30, this->unk8C, (s32) (128.0f * (f32) arg_sp20) | (((s32) (128.0f * arg_sp24) << 8) | (((s32) (128.0f * arg_sp2C) << 0x18) | ((s32) (128.0f * (f32) arg_sp28) << 0x10))), 1.15f, 1.15f, NULL, 1U);
+                sp1C = temp_f1_1084;
+                sp18 = 1.0f;
+                sp10 = 1.0f;
+                sp14 = 1.0f;
+                sp28 = (f64) sp18;
+                sp20 = (f64) sp10;
+                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1081, 544.0f, 435.2f, &sp30, this->unk8C, (s32) (128.0f * (f32) sp20) | (((s32) (128.0f * unksp24) << 8) | (((s32) (128.0f * unksp2C) << 0x18) | ((s32) (128.0f * (f32) sp28) << 0x10))), 1.15f, 1.15f, NULL, 1U);
             }
             if ((u8) this->unk9C != 0) {
                 this->unk90 += gUpdateTimeDelta;
@@ -527,7 +535,7 @@ loop_20:
         } else {
             temp_r4_1172 = this->unk7C;
             if ((s8) (u8) *temp_r4_1172 != 0) {
-                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1172, 544.0f, 435.2f, (Matrix *) &arg_sp30, 9, 0x80808080U, 1.15f, 1.15f, NULL, 1U);
+                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1172, 544.0f, 435.2f, &sp30, 9, 0x80808080U, 1.15f, 1.15f, NULL, 1U);
             }
         }
     }

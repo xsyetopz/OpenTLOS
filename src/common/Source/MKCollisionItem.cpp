@@ -780,8 +780,78 @@ void MKCollisionSphereItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp24C'
+#if 0 // DRAFT: undefined identifier 'unk8EC'
 void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult *arg1, MKBestResult *arg2, MKBestResult *arg3, int arg4) {
+    Matrix sp250;
+    M2C_UNK sp24C;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;                                      /* compiler-managed */
+    f64 sp218;                                      /* compiler-managed */
+    f64 sp210;                                      /* compiler-managed */
+    f64 sp208;                                      /* compiler-managed */
+    f64 sp200;
+    f64 sp1F8;
+    MKVector3 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    MKVector3 sp138;
+    f32 sp130;
+    f32 sp12C;
+    f32 sp128;
+    f32 sp120;
+    f32 sp11C;
+    f32 sp118;
+    MKVector3 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f0_2201;
     f32 temp_f10_2224;
     f32 temp_f11_2210;
@@ -838,39 +908,40 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     void *temp_r30_2263;
     void *temp_r3_2285;
     void *temp_r5_2272;
-    M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) arg0.unk8EC + 4, 0x40);
-    arg_sp250.InverseSimple((Matrix *) &arg_sp250);
+
+    M2C_STRUCT_COPY((s32) &sp24C + 4, (s32) arg0.unk8EC + 4, 0x40);
+    sp250.InverseSimple(&sp250);
     temp_f3_1584 = M2C_FIELD(this, f32 *, 0x64);
     temp_f6_1593 = M2C_FIELD(this, f32 *, 0x60);
     temp_f9_1599 = M2C_FIELD(this, f32 *, 0x68);
-    arg_sp128 = arg_sp280 + ((temp_f9_1599 * arg_sp270) + ((temp_f6_1593 * arg_sp250) + (temp_f3_1584 * arg_sp260)));
-    arg_sp12C = arg_sp284 + ((temp_f9_1599 * arg_sp274) + ((temp_f6_1593 * arg_sp254) + (temp_f3_1584 * arg_sp264)));
-    arg_sp130 = arg_sp288 + ((temp_f9_1599 * arg_sp278) + ((temp_f6_1593 * arg_sp258) + (temp_f3_1584 * arg_sp268)));
-    arg_sp120 = -M2C_FIELD(&arg0, f32 *, 0x958);
-    arg_sp118 = -M2C_FIELD(&arg0, f32 *, 0x950);
-    arg_sp11C = -M2C_FIELD(&arg0, f32 *, 0x954);
-    arg_sp238 = (f64) arg_sp128;
-    arg_sp240 = (f64) arg_sp130;
-    arg_sp1D8 = (f64) arg_sp118;
-    arg_sp1E0 = (f64) arg_sp120;
-    Min(*((MKVector3 *) &arg_sp108), *((MKVector3 *) &arg_sp238));
-    Max(*((MKVector3 *) &arg_sp1E8), *((MKVector3 *) &arg_sp108));
-    arg_sp228 = arg_sp1E8;
+    sp128 = sp250.unk30 + ((temp_f9_1599 * sp250.unk20) + ((temp_f6_1593 * M2C_BITWISE(f32, sp250)) + (temp_f3_1584 * sp250.unk10)));
+    sp12C = sp250.unk34 + ((temp_f9_1599 * sp250.unk24) + ((temp_f6_1593 * sp250.unk4) + (temp_f3_1584 * sp250.unk14)));
+    sp130 = sp250.unk38 + ((temp_f9_1599 * sp250.unk28) + ((temp_f6_1593 * sp250.unk8) + (temp_f3_1584 * sp250.unk18)));
+    sp120 = -M2C_FIELD(&arg0, f32 *, 0x958);
+    sp118 = -M2C_FIELD(&arg0, f32 *, 0x950);
+    sp11C = -M2C_FIELD(&arg0, f32 *, 0x954);
+    sp238 = (f64) sp128;
+    sp240 = (f64) sp130;
+    sp1D8 = (f64) sp118;
+    sp1E0 = (f64) sp120;
+    Min(sp108, *((MKVector3 *) &sp238));
+    Max(sp1E8, sp108);
+    sp228 = M2C_BITWISE(f64, sp1E8);
     temp_f2_1642 = this->unk84;
-    arg_sp230 = arg_sp1F0;
+    sp230 = (f64) sp1E8.unk8;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_spE8 = arg_sp38;
-    arg_sp40 = (f32) arg_sp240 - (f32) arg_sp230;
-    arg_spF8 = arg_sp38;
-    arg_spF0 = (f64) arg_sp40;
-    arg_sp100 = (f64) arg_sp40;
-    if ((((f32) arg_spF0 * (f32) arg_spF0) + (((f32) arg_spE8 * (f32) arg_spE8) + (arg_spEC * arg_spEC))) < (temp_f2_1642 * temp_f2_1642)) {
-        arg_spE0 = -(f32) arg_sp240;
-        arg_spD8 = -(f32) arg_sp238;
-        arg_spDC = -arg_sp23C;
-        arg_sp1D0 = (f64) arg_spE0;
-        arg_sp1C8 = (f64) arg_spD8;
-        var_f5_1687 = ((f32) arg_sp1D0 * (f32) arg_sp1D0) + (((f32) arg_sp1C8 * (f32) arg_sp1C8) + (arg_sp1CC * arg_sp1CC));
+    spE8 = sp38;
+    sp40 = (f32) sp240 - (f32) sp230;
+    spF8 = sp38;
+    spF0 = (f64) sp40;
+    sp100 = (f64) sp40;
+    if ((((f32) spF0 * (f32) spF0) + (((f32) spE8 * (f32) spE8) + (unkspEC * unkspEC))) < (temp_f2_1642 * temp_f2_1642)) {
+        spE0 = -(f32) sp240;
+        spD8 = -(f32) sp238;
+        spDC = -unksp23C;
+        sp1D0 = (f64) spE0;
+        sp1C8 = (f64) spD8;
+        var_f5_1687 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC));
         if (var_f5_1687 > 1e-12f) {
             if (var_f5_1687 > 0.0f) {
                 temp_f2_1693 = __frsqrte(var_f5_1687);
@@ -880,18 +951,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
             } else if (var_f5_1687 < M2C_BITWISE(f32, 0.0)) {
                 var_f5_1687 = __float_nan;
             } else {
-                arg_sp20 = var_f5_1687;
-                temp_r3_1722 = M2C_BITWISE(s32, arg_sp20) & 0x7F800000;
+                sp20 = var_f5_1687;
+                temp_r3_1722 = M2C_BITWISE(s32, sp20) & 0x7F800000;
                 switch (temp_r3_1722) {             /* switch 1; irregular */
                 case 0x7F800000:                    /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_1732 = 1;
                     } else {
                         var_r0_1732 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp20) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp20) & 0x7FFFFF) {
                         var_r0_1732 = 5;
                     } else {
                         var_r0_1732 = 3;
@@ -909,23 +980,23 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         } else {
             var_f5_1754 = 0.0f;
         }
-        arg_spCC = arg_sp1CC * var_f5_1754;
-        arg_spC8 = (f32) arg_sp1C8 * var_f5_1754;
+        spCC = unksp1CC * var_f5_1754;
+        spC8 = (f32) sp1C8 * var_f5_1754;
         var_r0_1768 = 0;
-        arg_spD0 = (f32) arg_sp1D0 * var_f5_1754;
-        arg_sp208 = (f64) arg_spC8;
-        arg_sp210 = (f64) arg_spD0;
-        if (((f32) arg_sp228 == (f32) arg_sp238) && (arg_sp22C == arg_sp23C) && ((f32) arg_sp230 == (f32) arg_sp240)) {
+        spD0 = (f32) sp1D0 * var_f5_1754;
+        sp208 = (f64) spC8;
+        sp210 = (f64) spD0;
+        if (((f32) sp228 == (f32) sp238) && (unksp22C == unksp23C) && ((f32) sp230 == (f32) sp240)) {
             var_r0_1768 = 1;
         }
         if (var_r0_1768 == 0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-            arg_sp218 = arg_sp88;
-            arg_sp90 = (f32) arg_sp230 - (f32) arg_sp240;
-            arg_sp220 = (f64) arg_sp90;
-            arg_sp1B8 = arg_sp88;
-            arg_sp1C0 = (f64) arg_sp90;
-            var_f6_1807 = ((f32) arg_sp220 * (f32) arg_sp220) + (((f32) arg_sp218 * (f32) arg_sp218) + (arg_sp21C * arg_sp21C));
+            sp218 = sp88;
+            sp90 = (f32) sp230 - (f32) sp240;
+            sp220 = (f64) sp90;
+            sp1B8 = sp88;
+            sp1C0 = (f64) sp90;
+            var_f6_1807 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + (unksp21C * unksp21C));
             if (var_f6_1807 > 0.000001f) {
                 if (var_f6_1807 > 0.0f) {
                     temp_f2_1813 = __frsqrte(var_f6_1807);
@@ -935,18 +1006,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
                 } else if (var_f6_1807 < M2C_BITWISE(f32, 0.0)) {
                     var_f6_1807 = __float_nan;
                 } else {
-                    arg_sp1C = var_f6_1807;
-                    temp_r3_1842 = M2C_BITWISE(s32, arg_sp1C) & 0x7F800000;
+                    sp1C = var_f6_1807;
+                    temp_r3_1842 = M2C_BITWISE(s32, sp1C) & 0x7F800000;
                     switch (temp_r3_1842) {         /* switch 2; irregular */
                     case 0x7F800000:                /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                             var_r0_1852 = 1;
                         } else {
                             var_r0_1852 = 2;
                         }
                         break;
                     case 0x0:                       /* switch 2 */
-                        if (M2C_BITWISE(s32, arg_sp1C) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp1C) & 0x7FFFFF) {
                             var_r0_1852 = 5;
                         } else {
                             var_r0_1852 = 3;
@@ -965,22 +1036,22 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
                 var_f5_1874 = 0.0f;
                 var_f6_1807 = 0.0f;
             }
-            temp_f3_1887 = (f32) arg_sp220 * var_f5_1874;
-            arg_sp218 = (f32) arg_sp218 * var_f5_1874;
-            arg_sp21C *= var_f5_1874;
-            arg_sp220 = temp_f3_1887;
+            temp_f3_1887 = (f32) sp220 * var_f5_1874;
+            sp218 = (f32) sp218 * var_f5_1874;
+            unksp21C *= var_f5_1874;
+            sp220 = temp_f3_1887;
             M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-            arg_sp198 = arg_sp28;
-            arg_sp30 = temp_f3_1887 - (f32) arg_sp210;
-            arg_sp1A0 = (f64) arg_sp30;
+            sp198 = sp28;
+            sp30 = temp_f3_1887 - (f32) sp210;
+            sp1A0 = (f64) sp30;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
-            arg_sp1A8 = arg_sp78;
-            arg_sp80 = (f32) arg_sp1A0 * (var_f6_1807 / this->unk84);
-            arg_sp1B0 = (f64) arg_sp80;
+            sp1A8 = sp78;
+            sp80 = (f32) sp1A0 * (var_f6_1807 / this->unk84);
+            sp1B0 = (f64) sp80;
             M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-            arg_sp210 = (f32) arg_sp210 + (f32) arg_sp1B0;
+            sp210 = (f32) sp210 + (f32) sp1B0;
         }
-        var_f5_1930 = ((f32) arg_sp210 * (f32) arg_sp210) + (((f32) arg_sp208 * (f32) arg_sp208) + (arg_sp20C * arg_sp20C));
+        var_f5_1930 = (sp210 * sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
         if (var_f5_1930 > 0.000001f) {
             if (var_f5_1930 > 0.0f) {
                 temp_f2_1936 = __frsqrte(var_f5_1930);
@@ -990,18 +1061,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
             } else if (var_f5_1930 < M2C_BITWISE(f32, 0.0)) {
                 var_f5_1930 = __float_nan;
             } else {
-                arg_sp18 = var_f5_1930;
-                temp_r3_1965 = M2C_BITWISE(s32, arg_sp18) & 0x7F800000;
+                sp18 = var_f5_1930;
+                temp_r3_1965 = M2C_BITWISE(s32, sp18) & 0x7F800000;
                 switch (temp_r3_1965) {             /* switch 3; irregular */
                 case 0x7F800000:                    /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                         var_r0_1975 = 1;
                     } else {
                         var_r0_1975 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 3 */
-                    if (M2C_BITWISE(s32, arg_sp18) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp18) & 0x7FFFFF) {
                         var_r0_1975 = 5;
                     } else {
                         var_r0_1975 = 3;
@@ -1019,23 +1090,23 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         } else {
             var_f4_1997 = 0.0f;
         }
-        temp_f1_2007 = (f32) arg_sp210 * var_f4_1997;
-        arg_sp208 = (f32) arg_sp208 * var_f4_1997;
-        arg_sp20C *= var_f4_1997;
-        arg_sp210 = temp_f1_2007;
+        temp_f1_2007 = sp210 * var_f4_1997;
+        sp208 = (f32) sp208 * var_f4_1997;
+        unksp20C *= var_f4_1997;
+        sp210 = temp_f1_2007;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-        arg_spC0 = temp_f1_2007 * this->unk84;
-        arg_sp188 = arg_spB8;
-        arg_sp190 = (f64) arg_spC0;
+        spC0 = temp_f1_2007 * this->unk84;
+        sp188 = spB8;
+        sp190 = (f64) spC0;
         M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-        arg_sp1F8 = arg_spA8;
-        arg_spB0 = (f32) arg_sp240 + (f32) arg_sp190;
-        arg_sp200 = (f64) arg_spB0;
+        sp1F8 = spA8;
+        spB0 = (f32) sp240 + (f32) sp190;
+        sp200 = (f64) spB0;
         M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-        arg_sp178 = arg_sp98;
-        arg_spA0 = (f32) arg_sp200 - (f32) arg_sp230;
-        arg_sp180 = (f64) arg_spA0;
-        var_f1_2052 = ((f32) arg_sp180 * (f32) arg_sp180) + (((f32) arg_sp178 * (f32) arg_sp178) + (arg_sp17C * arg_sp17C));
+        sp178 = sp98;
+        spA0 = (f32) sp200 - (f32) sp230;
+        sp180 = (f64) spA0;
+        var_f1_2052 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
         if (var_f1_2052 > 0.0f) {
             temp_f4_2055 = __frsqrte(var_f1_2052);
             temp_f4_2061 = 0.5 * temp_f4_2055 * -(((f64) var_f1_2052 * (temp_f4_2055 * temp_f4_2055)) - 3.0);
@@ -1044,18 +1115,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         } else if (var_f1_2052 < M2C_BITWISE(f32, 0.0)) {
             var_f1_2052 = __float_nan;
         } else {
-            arg_sp14 = var_f1_2052;
-            temp_r3_2084 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+            sp14 = var_f1_2052;
+            temp_r3_2084 = M2C_BITWISE(s32, sp14) & 0x7F800000;
             switch (temp_r3_2084) {                 /* switch 4; irregular */
             case 0x7F800000:                        /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_2094 = 1;
                 } else {
                     var_r0_2094 = 2;
                 }
                 break;
             case 0x0:                               /* switch 4 */
-                if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                     var_r0_2094 = 5;
                 } else {
                     var_r0_2094 = 3;
@@ -1069,7 +1140,7 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
                 var_f1_2052 = __float_nan;
             }
         }
-        var_f6_2120 = ((f32) arg_sp230 * (f32) arg_sp230) + (((f32) arg_sp228 * (f32) arg_sp228) + (arg_sp22C * arg_sp22C));
+        var_f6_2120 = ((f32) sp230 * (f32) sp230) + (((f32) sp228 * (f32) sp228) + (unksp22C * unksp22C));
         if (var_f6_2120 > 0.0f) {
             temp_f3_2123 = __frsqrte(var_f6_2120);
             temp_f3_2129 = 0.5 * temp_f3_2123 * -(((f64) var_f6_2120 * (temp_f3_2123 * temp_f3_2123)) - 3.0);
@@ -1078,18 +1149,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         } else if (var_f6_2120 < M2C_BITWISE(f32, 0.0)) {
             var_f6_2120 = __float_nan;
         } else {
-            arg_sp10 = var_f6_2120;
-            temp_r3_2152 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f6_2120;
+            temp_r3_2152 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_2152) {                 /* switch 5; irregular */
             case 0x7F800000:                        /* switch 5 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2162 = 1;
                 } else {
                     var_r0_2162 = 2;
                 }
                 break;
             case 0x0:                               /* switch 5 */
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_2162 = 5;
                 } else {
                     var_r0_2162 = 3;
@@ -1124,20 +1195,20 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         temp_f31_2220 = arg0.unk910;
         temp_f12_2222 = arg0.unk914;
         temp_f10_2224 = arg0.unk918;
-        arg_sp68 = ((f32) arg_sp210 * temp_f31_2220) + (((f32) arg_sp208 * temp_f11_2210) + (arg_sp20C * temp_f0_2201));
-        arg_sp6C = ((f32) arg_sp210 * temp_f12_2222) + (((f32) arg_sp208 * temp_f8_2213) + (arg_sp20C * temp_f7_2205));
-        arg_sp70 = ((f32) arg_sp210 * temp_f10_2224) + (((f32) arg_sp208 * temp_f6_2215) + (arg_sp20C * temp_f5_2208));
-        arg_sp60 = arg0.unk928 + (((f32) arg_sp200 * temp_f10_2224) + (((f32) arg_sp1F8 * temp_f6_2215) + (arg_sp1FC * temp_f5_2208)));
-        arg_sp58 = arg0.unk920 + (((f32) arg_sp200 * temp_f31_2220) + (((f32) arg_sp1F8 * temp_f11_2210) + (arg_sp1FC * temp_f0_2201)));
-        arg_sp5C = arg0.unk924 + (((f32) arg_sp200 * temp_f12_2222) + (((f32) arg_sp1F8 * temp_f8_2213) + (arg_sp1FC * temp_f7_2205)));
-        arg_sp168 = (f64) arg_sp68;
-        arg_sp170 = (f64) arg_sp70;
-        arg_sp208 = (f64) arg_sp68;
-        arg_sp210 = (f64) arg_sp70;
-        arg_sp158 = (f64) arg_sp58;
-        arg_sp160 = (f64) arg_sp60;
-        arg_sp1F8 = (f64) arg_sp58;
-        arg_sp200 = (f64) arg_sp60;
+        sp68 = (sp210 * temp_f31_2220) + ((sp208 * temp_f11_2210) + (unksp20C * temp_f0_2201));
+        sp6C = (sp210 * temp_f12_2222) + ((sp208 * temp_f8_2213) + (unksp20C * temp_f7_2205));
+        sp70 = (sp210 * temp_f10_2224) + ((sp208 * temp_f6_2215) + (unksp20C * temp_f5_2208));
+        sp60 = arg0.unk928 + (((f32) sp200 * temp_f10_2224) + (((f32) sp1F8 * temp_f6_2215) + (unksp1FC * temp_f5_2208)));
+        sp58 = arg0.unk920 + (((f32) sp200 * temp_f31_2220) + (((f32) sp1F8 * temp_f11_2210) + (unksp1FC * temp_f0_2201)));
+        sp5C = arg0.unk924 + (((f32) sp200 * temp_f12_2222) + (((f32) sp1F8 * temp_f8_2213) + (unksp1FC * temp_f7_2205)));
+        sp168 = (f64) sp68;
+        sp170 = (f64) sp70;
+        sp208 = (f64) sp68;
+        sp210 = (f64) sp70;
+        sp158 = (f64) sp58;
+        sp160 = (f64) sp60;
+        sp1F8 = (f64) sp58;
+        sp200 = (f64) sp60;
         var_ctr_2261 = 0xC;
 loop_108:
         temp_r30_2263 = arg2 + var_r28_2204;
@@ -1146,19 +1217,19 @@ loop_108:
         if ((temp_f2_2264 == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f2_2264 == 1.0f) != 0))) {
             temp_r5_2272 = arg2 + var_r28_2204;
             M2C_FIELD(temp_r5_2272, f32 *, 0x30) = var_f1_2052;
-            M2C_FIELD(temp_r5_2272, f64 *, 0x10) = arg_sp1F8;
-            M2C_FIELD(temp_r5_2272, f64 *, 0x18) = arg_sp200;
-            arg_sp138.operator*(var_f1_2052);
+            M2C_FIELD(temp_r5_2272, f64 *, 0x10) = sp1F8;
+            M2C_FIELD(temp_r5_2272, f64 *, 0x18) = sp200;
+            sp138.operator*(var_f1_2052);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             temp_r3_2285 = arg2 + var_r28_2204;
-            M2C_FIELD(temp_r30_2263, f64 *, 0) = arg_sp48;
-            arg_sp50 = (f32) arg_sp200 - arg_sp140;
-            arg_sp148 = arg_sp48;
-            M2C_FIELD(temp_r30_2263, f64 *, 8) = (f64) arg_sp50;
+            M2C_FIELD(temp_r30_2263, f64 *, 0) = sp48;
+            sp50 = (f32) sp200 - sp138.unk8;
+            sp148 = sp48;
+            M2C_FIELD(temp_r30_2263, f64 *, 8) = (f64) sp50;
             M2C_FIELD(temp_r3_2285, f32 *, 0x34) = var_f30_2187;
-            arg_sp150 = (f64) arg_sp50;
-            M2C_FIELD(temp_r3_2285, f64 *, 0x20) = arg_sp208;
-            M2C_FIELD(temp_r3_2285, f64 *, 0x28) = arg_sp210;
+            sp150 = (f64) sp50;
+            M2C_FIELD(temp_r3_2285, f64 *, 0x20) = sp208;
+            M2C_FIELD(temp_r3_2285, f64 *, 0x28) = sp210;
             M2C_FIELD(temp_r3_2285, u32 *, 0x38) = (u32) this->unk54;
             M2C_FIELD(temp_r3_2285, MKCollisionInfo **, 0x3C) = (MKCollisionInfo *) this->unk8;
             return;
@@ -1813,8 +1884,12 @@ void MKCollisionModelItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: undefined identifier 'unk3C'
 void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
+    MKCollisionEllipsoid sp30;
+    M2C_UNK sp2C;
+    M2C_UNK sp10;
+    M2C_UNK spC;
     MKCollisionEllipsoid *temp_r3_3511;
     f64 *temp_r5_3568;
     f64 temp_f1_3570;
@@ -1826,38 +1901,39 @@ void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, 
     s32 var_r4_3561;
     void *temp_r5_3514;
     void *temp_r6_3567;
+
     if ((MKModel *) this->unk128 != NULL) {
         this->unk120->unk28 = &this->unk60;
-        M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) &this->unk5C + 4, 0x40);
-        arg_sp70.Inverse((Matrix *) &arg_sp70);
+        M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, (s32) &this->unk5C + 4, 0x40);
+        sp30.unk40.Inverse(&sp30.unk40);
         var_r25_3506 = 0;
         var_r27_3507 = 0;
         var_r26_3508 = 0;
 loop_3:
         if (var_r25_3506 < arg1) {
             temp_r3_3511 = arg0 + var_r26_3508;
-            temp_r5_3514 = &arg_spB0 + var_r27_3507;
+            temp_r5_3514 = &sp30.unk80 + var_r27_3507;
             M2C_FIELD(temp_r5_3514, f64 *, 0) = (f64) temp_r3_3511->unk90;
             M2C_FIELD(temp_r5_3514, f64 *, 8) = (f64) M2C_FIELD(temp_r3_3511, f64 *, 0x98);
             M2C_FIELD(temp_r5_3514, f64 *, 0x10) = (f64) temp_r3_3511->unkA0;
             M2C_FIELD(temp_r5_3514, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_3511, f64 *, 0xA8);
-            temp_r3_3511->CreateAABB((Matrix *) &arg_sp70);
+            temp_r3_3511->CreateAABB(&sp30.unk40);
             var_r25_3506 += 1;
             var_r27_3507 += 0x20;
             var_r26_3508 += 0xB0;
             goto loop_3;
         }
-        arg_sp30.GetTotalAABB(arg0, arg1);
-        M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) &arg_sp2C + 4, 0x20);
-        M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &arg_sp4C + 4, 0x20);
-        this->unk120->EllipsoidsTest(arg0, arg1, (MKCollisionAABB) &arg_sp10, arg3);
+        sp30.GetTotalAABB(arg0, arg1);
+        M2C_STRUCT_COPY((s32) &sp30.unk1C + 4, (s32) &sp2C + 4, 0x20);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) &sp30.unk1C + 4, 0x20);
+        this->unk120->EllipsoidsTest(arg0, arg1, (MKCollisionAABB) &sp10, arg3);
         var_r3_3560 = 0;
         var_r4_3561 = 0;
         var_ctr_3562 = arg1;
         if (arg1 > 0) {
             do {
                 temp_r6_3567 = arg0 + var_r3_3560;
-                temp_r5_3568 = &arg_spB0 + var_r4_3561;
+                temp_r5_3568 = &sp30.unk80 + var_r4_3561;
                 var_r3_3560 += 0xB0;
                 temp_f1_3570 = M2C_FIELD(temp_r5_3568, f64 *, 0);
                 var_r4_3561 += 0x20;
@@ -1873,44 +1949,57 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult *arg1, MKBestResult *arg2, MKBestResult *arg3, int arg4) {
+    MKSweptBox sp70;
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_3636;
     f32 temp_f6_3645;
     f32 temp_f7_3651;
+
     if ((MKModel *) this->unk128 != NULL) {
-        M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&arg0 - 4) + 4, 0x970);
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) arg0.unk8EC + 4, 0x40);
-        arg_sp30.Multiply((Matrix *) &arg_sp30, &this->unkA0);
+        M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, (s32) (&arg0 - 4) + 4, 0x970);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) arg0.unk8EC + 4, 0x40);
+        sp30.Multiply(&sp30, &this->unkA0);
         temp_f3_3636 = arg0.unk8E4;
         temp_f6_3645 = arg0.unk8E0;
         temp_f7_3651 = arg0.unk8E8;
-        arg_sp10 = this->unkA0.unk30 + ((temp_f7_3651 * this->unkA0.unk20) + ((temp_f6_3645 * this->unkA0.unk0) + (temp_f3_3636 * this->unkA0.unk10)));
-        arg_sp14 = this->unkA0.unk34 + ((temp_f7_3651 * this->unkA0.unk24) + ((temp_f6_3645 * this->unkA0.unk4) + (temp_f3_3636 * this->unkA0.unk14)));
-        arg_sp18 = this->unkA0.unk38 + ((temp_f7_3651 * this->unkA0.unk28) + ((temp_f6_3645 * this->unkA0.unk8) + (temp_f3_3636 * this->unkA0.unk18)));
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp70.SetAABB(*((Matrix *) &arg_sp30), (&arg0 + 0x950)->unk0, *((MKVector3 *) &arg_sp20), M2C_FIELD(&arg0, f32 *, 0x960));
+        sp10 = this->unkA0.unk30 + ((temp_f7_3651 * this->unkA0.unk20) + ((temp_f6_3645 * this->unkA0.unk0) + (temp_f3_3636 * this->unkA0.unk10)));
+        sp14 = this->unkA0.unk34 + ((temp_f7_3651 * this->unkA0.unk24) + ((temp_f6_3645 * this->unkA0.unk4) + (temp_f3_3636 * this->unkA0.unk14)));
+        sp18 = this->unkA0.unk38 + ((temp_f7_3651 * this->unkA0.unk28) + ((temp_f6_3645 * this->unkA0.unk8) + (temp_f3_3636 * this->unkA0.unk18)));
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        sp70.SetAABB(sp30, (&arg0 + 0x950)->unk0, *((MKVector3 *) &sp20), M2C_FIELD(&arg0, f32 *, 0x960));
         this->unk120->unk28 = &this->unk60;
-        this->unk120->SweepBoxTest(*((MKSweptBox *) &arg_sp70), arg1, arg2, arg3, arg4, this->unk8);
+        this->unk120->SweepBoxTest(sp70, arg1, arg2, arg3, arg4, this->unk8);
         this->unk120->unk28 = NULL;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 s32 MKCollisionModelItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
+    MKCollisionBox sp50;
+    Matrix sp10;
+    M2C_UNK spC;
     MKCollisionResult *temp_r28_3749;
     s32 temp_r3_3742;
     s32 var_r26_3745;
     s32 var_r29_3746;
+
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    arg_sp10.Multiply((Matrix *) &arg_sp10, &this->unkA0);
-    arg_sp50.Init(*((Matrix *) &arg_sp10), *((MKVector3 *) arg0.unk80), arg0.unkB0);
-    temp_r3_3742 = this->unk120->BoxTest(*((MKCollisionBox *) &arg_sp50), arg1, arg2);
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&arg0 - 4) + 4, 0x40);
+    sp10.Multiply(&sp10, &this->unkA0);
+    sp50.Init(sp10, *((MKVector3 *) arg0.unk80), arg0.unkB0);
+    temp_r3_3742 = this->unk120->BoxTest(sp50, arg1, arg2);
     if (temp_r3_3742 > 0) {
         var_r26_3745 = 0;
         var_r29_3746 = 0;

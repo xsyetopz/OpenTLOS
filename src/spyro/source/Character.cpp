@@ -664,57 +664,90 @@ block_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Character::UpdateModel() {
+    f32 spAC;
+    f32 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp94;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    M2C_UNK sp6C;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f10_1146;
     f32 temp_f12_1150;
     f32 temp_f2_1147;
     f32 temp_f7_1145;
     f32 temp_f8_1143;
     f32 temp_f9_1148;
-    M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &sp6C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     temp_f8_1143 = -this->unkC0;
     temp_f7_1145 = -this->unkC4;
     temp_f10_1146 = this->unkD4;
     temp_f2_1147 = -this->unkC8;
     temp_f9_1148 = this->unkD8;
-    arg_sp10 = temp_f8_1143;
+    sp10 = temp_f8_1143;
     temp_f12_1150 = this->unkD0;
-    arg_sp14 = temp_f7_1145;
-    arg_sp18 = temp_f2_1147;
-    arg_sp50 = (f64) arg_sp10;
-    arg_sp58 = (f64) arg_sp18;
-    arg_sp28 = temp_f2_1147;
-    arg_sp48 = (f64) arg_sp28;
-    arg_sp38 = (temp_f12_1150 * arg_sp54) - (temp_f10_1146 * (f32) arg_sp50);
-    arg_sp30 = (temp_f10_1146 * (f32) arg_sp58) - (temp_f9_1148 * arg_sp54);
-    arg_sp34 = (temp_f9_1148 * (f32) arg_sp50) - (temp_f12_1150 * (f32) arg_sp58);
-    arg_sp68 = (f64) arg_sp38;
-    arg_sp60 = (f64) arg_sp30;
-    arg_sp20 = temp_f8_1143;
-    arg_sp24 = temp_f7_1145;
-    arg_sp70 = (f32) arg_sp60;
-    arg_sp40 = (f64) arg_sp20;
-    arg_sp74 = arg_sp64;
-    arg_sp78 = (f32) arg_sp68;
-    arg_sp7C = 0.0f;
-    arg_sp80 = temp_f12_1150;
-    arg_sp84 = temp_f10_1146;
-    arg_sp88 = temp_f9_1148;
-    arg_sp8C = 0.0f;
-    arg_sp90 = (f32) arg_sp40;
-    arg_sp94 = arg_sp44;
-    arg_sp98 = (f32) arg_sp48;
-    arg_sp9C = 0.0f;
-    arg_spA0 = M2C_FIELD(this, f32 *, 0x588);
-    arg_spA4 = this->unk588.unk0;
-    arg_spA8 = this->unk588.unk4;
-    arg_spAC = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp70));
+    sp14 = temp_f7_1145;
+    sp18 = temp_f2_1147;
+    sp50 = (f64) sp10;
+    sp58 = (f64) sp18;
+    sp28 = temp_f2_1147;
+    sp48 = (f64) sp28;
+    sp38 = (temp_f12_1150 * unksp54) - (temp_f10_1146 * (f32) sp50);
+    sp30 = (temp_f10_1146 * (f32) sp58) - (temp_f9_1148 * unksp54);
+    sp34 = (temp_f9_1148 * (f32) sp50) - (temp_f12_1150 * (f32) sp58);
+    sp68 = (f64) sp38;
+    sp60 = (f64) sp30;
+    sp20 = temp_f8_1143;
+    sp24 = temp_f7_1145;
+    sp70 = (f32) sp60;
+    sp40 = (f64) sp20;
+    sp74 = unksp64;
+    sp78 = (f32) sp68;
+    sp7C = 0.0f;
+    sp80 = temp_f12_1150;
+    sp84 = temp_f10_1146;
+    sp88 = temp_f9_1148;
+    sp8C = 0.0f;
+    sp90 = (f32) sp40;
+    sp94 = unksp44;
+    sp98 = (f32) sp48;
+    sp9C = 0.0f;
+    spA0 = M2C_FIELD(this, f32 *, 0x588);
+    spA4 = this->unk588.unk0;
+    spA8 = this->unk588.unk4;
+    spAC = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp70));
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
+#if 0 // DRAFT: ';' expected
 void Character::StopMovement(bool arg0) {
     MKVector3 sp8;
     f32 temp_f1_1240;
@@ -738,7 +771,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp304'
+#if 0 // DRAFT: ';' expected
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -1389,62 +1422,83 @@ void Character::PlatformUpdate() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
+    Animation sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     if (arg0 >= 0) {
-        arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        arg_sp40 = arg_sp30;
-        arg_sp48 = arg_sp38;
-        arg_sp50.SetIdentity();
-        arg_sp10 = -(f32) arg_sp40;
-        arg_sp14 = -arg_sp44;
-        arg_sp18 = -(f32) arg_sp48;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp20));
-        arg_sp50.RotatePYR((Matrix *) &arg_sp50, arg1);
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp40));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &arg_sp50, (AnimationMatrixPosition) 2, 0U);
+        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+        sp30.unk10 = M2C_BITWISE(f64, sp30);
+        sp30.unk18 = sp30.unk8;
+        sp30.unk20.SetIdentity();
+        sp10 = -M2C_BITWISE(f32, sp30.unk10);
+        sp14 = -M2C_BITWISE(f32, sp30.unk14);
+        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        sp30.unk20.RotatePYR((Matrix *) &sp30.unk20, arg1);
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void Character::RotateNodePitch(int arg0, float arg1) {
+    Animation sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     if (arg0 >= 0) {
-        arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        arg_sp40 = arg_sp30;
-        arg_sp48 = arg_sp38;
-        arg_sp50.SetIdentity();
-        arg_sp10 = -(f32) arg_sp40;
-        arg_sp14 = -arg_sp44;
-        arg_sp18 = -(f32) arg_sp48;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp20));
-        arg_sp50.RotatePitch((Matrix *) &arg_sp50, arg1);
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp40));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &arg_sp50, (AnimationMatrixPosition) 2, 0U);
+        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+        sp30.unk10 = M2C_BITWISE(f64, sp30);
+        sp30.unk18 = sp30.unk8;
+        sp30.unk20.SetIdentity();
+        sp10 = -M2C_BITWISE(f32, sp30.unk10);
+        sp14 = -M2C_BITWISE(f32, sp30.unk14);
+        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        sp30.unk20.RotatePitch((Matrix *) &sp30.unk20, arg1);
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp30'
+#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to
 void Character::RotateNodeYaw(int arg0, float arg1) {
+    Animation sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+
     if (arg0 >= 0) {
-        arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        arg_sp40 = arg_sp30;
-        arg_sp48 = arg_sp38;
-        arg_sp50.SetIdentity();
-        arg_sp10 = -(f32) arg_sp40;
-        arg_sp14 = -arg_sp44;
-        arg_sp18 = -(f32) arg_sp48;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp20));
-        arg_sp50.RotateYaw((Matrix *) &arg_sp50, arg1);
-        arg_sp50.Translate((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp40));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &arg_sp50, (AnimationMatrixPosition) 2, 0U);
+        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+        sp30.unk10 = M2C_BITWISE(f64, sp30);
+        sp30.unk18 = sp30.unk8;
+        sp30.unk20.SetIdentity();
+        sp10 = -M2C_BITWISE(f32, sp30.unk10);
+        sp14 = -M2C_BITWISE(f32, sp30.unk14);
+        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp20 = (f64) sp10;
+        sp28 = (f64) sp18;
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
+        sp30.unk20.RotateYaw((Matrix *) &sp30.unk20, arg1);
+        sp30.unk20.Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
     }
 }
 #endif
@@ -1983,6 +2037,26 @@ void Character::Enable() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Character::Message(MKMessage *arg0) {
+    Matrix sp90;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp30;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_3856;
     f32 temp_f2_3988;
     f32 temp_f3_3994;
@@ -2003,6 +2077,7 @@ void Character::Message(MKMessage *arg0) {
     void *temp_r3_3844;
     void *temp_r5_4024;
     void *temp_r5_4057;
+
     temp_r0_3681 = arg0->unk0;
     if (temp_r0_3681 != 0x9C) {
         switch (temp_r0_3681) {                     /* irregular */
@@ -2043,13 +2118,13 @@ void Character::Message(MKMessage *arg0) {
             goto block_88;
         case 2053:
             temp_r3_3844 = checked_cast<KDS_Message_PropSetPosRot *, MKMessage>(arg0);
-            arg_sp90.SetRotationPYR(*(temp_r3_3844 + 0x18));
-            arg_spC0 = M2C_FIELD(temp_r3_3844, f32 *, 8);
-            arg_spC4 = M2C_FIELD(temp_r3_3844, f32 *, 0xC);
+            sp90.SetRotationPYR(*(temp_r3_3844 + 0x18));
+            sp90.unk30 = M2C_FIELD(temp_r3_3844, f32 *, 8);
+            sp90.unk34 = M2C_FIELD(temp_r3_3844, f32 *, 0xC);
             temp_f1_3856 = M2C_FIELD(temp_r3_3844, f32 *, 0x10);
-            arg_spC8 = temp_f1_3856;
-            arg_spCC = 1.0f;
-            Teleport(&arg_sp90, temp_f1_3856);
+            sp90.unk38 = temp_f1_3856;
+            sp90.unk3C = 1.0f;
+            Teleport(&sp90, temp_f1_3856);
             return;
         case -3:
             this->unk110.ResetResults();
@@ -2105,39 +2180,39 @@ void Character::Message(MKMessage *arg0) {
             if ((void *) this->unk634 != NULL) {
                 temp_f8_3977 = this->unkC0;
                 temp_r31_3978 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
-                arg_sp70 = temp_f8_3977;
+                sp70 = temp_f8_3977;
                 temp_f7_3983 = this->unkC4;
-                arg_sp74 = temp_f7_3983;
+                sp74 = temp_f7_3983;
                 temp_f6_3985 = this->unkC8;
-                arg_sp78 = temp_f6_3985;
-                arg_sp7C = 0.0f;
+                sp78 = temp_f6_3985;
+                sp7C = 0.0f;
                 temp_f2_3988 = this->unkD0;
-                arg_sp60 = temp_f2_3988;
+                sp60 = temp_f2_3988;
                 temp_f4_3991 = this->unkD4;
-                arg_sp64 = temp_f4_3991;
+                sp64 = temp_f4_3991;
                 temp_f3_3994 = this->unkD8;
-                arg_sp68 = temp_f3_3994;
-                arg_sp18 = (temp_f2_3988 * temp_f7_3983) - (temp_f4_3991 * temp_f8_3977);
-                arg_sp14 = (temp_f3_3994 * temp_f8_3977) - (temp_f2_3988 * temp_f6_3985);
-                arg_sp10 = (temp_f4_3991 * temp_f6_3985) - (temp_f3_3994 * temp_f7_3983);
-                arg_sp48 = (f64) arg_sp18;
-                arg_sp40 = (f64) arg_sp10;
-                arg_sp6C = 0.0f;
-                arg_sp50 = (f32) arg_sp40;
-                arg_sp54 = arg_sp44;
-                arg_sp58 = (f32) arg_sp48;
-                arg_sp5C = 0.0f;
-                arg_sp50.RotateYaw((Matrix *) &arg_sp50, M2C_FIELD(M2C_FIELD(temp_r31_3978, void **, 0xC), f32 *, 4));
-                M2C_FIELD(this, f32 *, 0xC0) = (f64) arg_sp70;
-                M2C_FIELD(this, f32 *, 0xC8) = (f64) arg_sp78;
+                sp68 = temp_f3_3994;
+                sp18 = (temp_f2_3988 * temp_f7_3983) - (temp_f4_3991 * temp_f8_3977);
+                sp14 = (temp_f3_3994 * temp_f8_3977) - (temp_f2_3988 * temp_f6_3985);
+                sp10 = (temp_f4_3991 * temp_f6_3985) - (temp_f3_3994 * temp_f7_3983);
+                sp48 = (f64) sp18;
+                sp40 = (f64) sp10;
+                sp6C = 0.0f;
+                sp50 = (f32) sp40;
+                sp54 = unksp44;
+                sp58 = (f32) sp48;
+                sp5C = 0.0f;
+                sp50.RotateYaw((Matrix *) &sp50, M2C_FIELD(M2C_FIELD(temp_r31_3978, void **, 0xC), f32 *, 4));
+                M2C_FIELD(this, f32 *, 0xC0) = (f64) sp70;
+                M2C_FIELD(this, f32 *, 0xC8) = (f64) sp78;
                 temp_r5_4024 = M2C_FIELD(temp_r31_3978, void **, 8);
                 temp_f1_4025 = M2C_FIELD(temp_r5_4024, f64 *, 0);
                 this->unk110.unk450 = temp_f1_4025;
                 this->unk110.unk458 = M2C_FIELD(temp_r5_4024, f64 *, 8);
-                M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *, void *, f64), 0x4C)(&arg_sp30, &this->unk110, temp_r5_4024, temp_f1_4025);
-                M2C_FIELD(this, f64 *, 0x588) = arg_sp30;
-                M2C_FIELD(this, f64 *, 0x590) = arg_sp38;
-                UpdateCollisionItems(arg_sp30);
+                M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *, void *, f64), 0x4C)(&sp30, &this->unk110, temp_r5_4024, temp_f1_4025);
+                M2C_FIELD(this, f64 *, 0x588) = sp30;
+                M2C_FIELD(this, f64 *, 0x590) = sp38;
+                UpdateCollisionItems(sp30);
                 UpdateModel();
             }
             goto block_88;
@@ -2146,10 +2221,10 @@ void Character::Message(MKMessage *arg0) {
             temp_f1_4060 = M2C_FIELD(temp_r5_4057, f64 *, 0);
             this->unk110.unk450 = temp_f1_4060;
             this->unk110.unk458 = M2C_FIELD(temp_r5_4057, f64 *, 8);
-            M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *, void *, f64), 0x4C)(&arg_sp20, &this->unk110, temp_r5_4057, temp_f1_4060);
-            M2C_FIELD(this, f64 *, 0x588) = arg_sp20;
-            M2C_FIELD(this, f64 *, 0x590) = arg_sp28;
-            UpdateCollisionItems(arg_sp20);
+            M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *, void *, f64), 0x4C)(&sp20, &this->unk110, temp_r5_4057, temp_f1_4060);
+            M2C_FIELD(this, f64 *, 0x588) = sp20;
+            M2C_FIELD(this, f64 *, 0x590) = sp28;
+            UpdateCollisionItems(sp20);
             UpdateModel();
             goto block_88;
         case 91:

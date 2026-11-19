@@ -178,13 +178,27 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MeleeTrails::Draw() {
+    Matrix sp90;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f1_381;
     f32 temp_f29_327;
     s32 *temp_r3_324;
     void **var_r30_316;
     void *temp_r31_427;
+
     var_r30_316 = M2C_FIELD(this, void ***, 0xD4);
 loop_7:
     if (var_r30_316 != NULL) {
@@ -193,34 +207,34 @@ loop_7:
             temp_r3_324 = *M2C_FIELD(temp_r31_427, s32 ***, 0x58);
             temp_f29_327 = M2C_FIELD(temp_r31_427, f32 *, 0x40) / M2C_FIELD(temp_r3_324, f32 *, 8);
             if ((u8) M2C_FIELD(temp_r3_324, u8 *, 0xC) != 0) {
-                M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKModel_GetWorldMatrix(this->unkC8->unk8) - 4 + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, MKModel_GetWorldMatrix(this->unkC8->unk8) - 4 + 4, 0x40);
             } else {
-                M2C_STRUCT_COPY((s32) &arg_sp8C + 4, (s32) (temp_r31_427 - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) (temp_r31_427 - 4) + 4, 0x40);
             }
             if ((u8) M2C_FIELD(temp_r31_427, u8 *, 0x5C) != 0) {
-                arg_sp90.Scale3x3((Matrix *) &arg_sp90, ((1.0f - temp_f29_327) * M2C_FIELD(temp_r31_427, f32 *, 0x50)) + 1.0f);
+                sp90.Scale3x3(&sp90, ((1.0f - temp_f29_327) * M2C_FIELD(temp_r31_427, f32 *, 0x50)) + 1.0f);
             }
-            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp90));
+            MKModel_SetWorldMatrix(this->unk4, sp90);
             MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, **M2C_FIELD(temp_r31_427, s32 ***, 0x58), 1U, 1U);
-            arg_sp2C = 1.0f;
+            sp2C = 1.0f;
             temp_f1_381 = temp_f29_327 * M2C_FIELD(temp_r31_427, f32 *, 0x4C);
-            arg_sp28 = temp_f1_381;
-            arg_sp20 = temp_f1_381;
-            arg_sp24 = temp_f1_381;
-            arg_sp48 = (f64) arg_sp28;
-            arg_sp40 = (f64) arg_sp20;
-            MKModel_SetColor(this->unk4, *((MKVector4 *) &arg_sp40));
-            M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            arg_sp18 = 0.0f;
-            arg_sp10 = M2C_FIELD(temp_r31_427, f32 *, 0x44);
-            arg_sp14 = M2C_FIELD(temp_r31_427, f32 *, 0x48);
-            arg_sp38 = (f64) arg_sp18;
-            arg_sp30 = (f64) arg_sp10;
-            arg_sp80 = (f32) arg_sp30;
-            arg_sp84 = arg_sp34;
-            arg_sp88 = (f32) arg_sp38;
-            arg_sp8C = 1.0f;
-            MKMaterial_SetTextureMatrix(this->unkCC, (Matrix *) &arg_sp50);
+            sp28 = temp_f1_381;
+            sp20 = temp_f1_381;
+            sp24 = temp_f1_381;
+            sp48 = (f64) sp28;
+            sp40 = (f64) sp20;
+            MKModel_SetColor(this->unk4, *((MKVector4 *) &sp40));
+            M2C_STRUCT_COPY((s32) &unksp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            sp18 = 0.0f;
+            sp10 = M2C_FIELD(temp_r31_427, f32 *, 0x44);
+            sp14 = M2C_FIELD(temp_r31_427, f32 *, 0x48);
+            sp38 = (f64) sp18;
+            sp30 = (f64) sp10;
+            sp50.unk30 = (f32) sp30;
+            sp50.unk34 = unksp34;
+            sp50.unk38 = (f32) sp38;
+            sp50.unk3C = 1.0f;
+            MKMaterial_SetTextureMatrix(this->unkCC, &sp50);
             MKModel_Draw(this->unk4, NULL);
             var_r30_316 += 4;
             goto loop_7;

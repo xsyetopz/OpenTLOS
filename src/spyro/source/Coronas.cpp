@@ -118,22 +118,25 @@ void Coronas::Update() {
     MKProp::Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, Matrix *, int)' does not match
 void Coronas::Draw() {
+    Matrix sp10;
+    M2C_UNK spC;
     Corona *temp_r4_226;
     s32 var_r29_222;
     s32 var_r31_223;
     u8 temp_r30_209;
     u8 temp_r3_227;
+
     temp_r30_209 = EventCamera_GetCurrent() != NULL;
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spC + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     var_r29_222 = 0;
     var_r31_223 = 0;
     do {
         temp_r4_226 = this->unk4C + var_r31_223;
         temp_r3_227 = temp_r4_226->unk31;
         if (((temp_r3_227 >> 7U) & 1) && ((temp_r3_227 >> 6U) & 1) && ((temp_r30_209 == 0) || ((temp_r3_227 >> 4U) & 1))) {
-            DrawCorona(temp_r4_226, (Matrix *) &arg_sp10);
+            DrawCorona(temp_r4_226, &sp10);
         }
         var_r29_222 += 1;
         var_r31_223 += 0x38;
@@ -143,7 +146,79 @@ void Coronas::Draw() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'CoronasDescriptor *' to
 void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
+    Matrix sp260;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;                                      /* compiler-managed */
+    f64 sp208;                                      /* compiler-managed */
+    f64 sp200;                                      /* compiler-managed */
+    f64 sp1F8;                                      /* compiler-managed */
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    MKVector3 sp1B8;
+    MKVector3 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    MKVector3 sp178;
+    MKVector3 sp168;
+    f64 sp160;
+    f64 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    MKVector3 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    MKVector3 spF8;
+    f64 spF0;
+    f64 spE8;
+    MKVector3 spD8;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKZRequest *temp_r3_285;
+    f32 temp_f28_396;
     f32 temp_f31_317;
     f32 temp_f4_625;
     f32 temp_f5_624;
@@ -168,6 +243,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
     s32 var_r0_591;
     s8 temp_r31_330;
     u32 temp_r0_296;
+
     if (((u8) arg0->unk31 >> 5U) & 1) {
         temp_r3_285 = arg0->unk20;
         if (temp_r3_285 != NULL) {
@@ -194,33 +270,34 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
             MKMaterial_SetParameter(M2C_FIELD((checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0->unk30 * 4)), MKMaterial **, 0x60), (MKMaterialParameter) 4, 0);
         }
         MKMaterial_SetMaterial(M2C_FIELD((checked_cast<CoronasDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0->unk30 * 4)), MKMaterial **, 0x60));
-        arg_spD0 = 0.0f;
-        arg_spC0 = 0.0f;
-        arg_spC8 = 0.0f;
-        arg_spCC = 1.0f;
-        arg_spB8 = 1.0f;
-        arg_spBC = 0.0f;
-        arg_sp208 = (f64) arg_spC8;
-        arg_sp210 = (f64) arg_spD0;
-        arg_sp1F8 = (f64) arg_spB8;
-        arg_sp200 = (f64) arg_spC0;
-        arg_sp260.SetIdentity();
-        arg_sp260.RotateRoll((Matrix *) &arg_sp260, arg0->unk2C);
-        arg_spA8 = arg_sp290 + (((f32) arg_sp210 * arg_sp280) + (((f32) arg_sp208 * arg_sp260) + (arg_sp20C * arg_sp270)));
-        arg_spAC = arg_sp294 + (((f32) arg_sp210 * arg_sp284) + (((f32) arg_sp208 * arg_sp264) + (arg_sp20C * arg_sp274)));
-        arg_spB0 = arg_sp298 + (((f32) arg_sp210 * arg_sp288) + (((f32) arg_sp208 * arg_sp268) + (arg_sp20C * arg_sp278)));
-        arg_sp208 = (f64) arg_spA8;
-        arg_sp210 = (f64) arg_spB0;
-        arg_sp98 = arg_sp290 + (((f32) arg_sp200 * arg_sp280) + (((f32) arg_sp1F8 * arg_sp260) + (arg_sp1FC * arg_sp270)));
-        arg_sp9C = arg_sp294 + (((f32) arg_sp200 * arg_sp284) + (((f32) arg_sp1F8 * arg_sp264) + (arg_sp1FC * arg_sp274)));
-        arg_spA0 = arg_sp298 + (((f32) arg_sp200 * arg_sp288) + (((f32) arg_sp1F8 * arg_sp268) + (arg_sp1FC * arg_sp278)));
-        var_f4_451 = ((f32) arg_sp210 * (f32) arg_sp210) + (((f32) arg_sp208 * (f32) arg_sp208) + (arg_sp20C * arg_sp20C));
-        arg_sp1E8 = (f64) arg_spA8;
-        arg_sp1F0 = (f64) arg_spB0;
-        arg_sp1D8 = (f64) arg_sp98;
-        arg_sp1E0 = (f64) arg_spA0;
-        arg_sp1F8 = (f64) arg_sp98;
-        arg_sp200 = (f64) arg_spA0;
+        spD0 = 0.0f;
+        spC0 = 0.0f;
+        spC8 = 0.0f;
+        spCC = 1.0f;
+        spB8 = 1.0f;
+        spBC = 0.0f;
+        sp208 = (f64) spC8;
+        sp210 = (f64) spD0;
+        sp1F8 = (f64) spB8;
+        sp200 = (f64) spC0;
+        sp260.SetIdentity();
+        sp260.RotateRoll(&sp260, arg0->unk2C);
+        temp_f28_396 = M2C_BITWISE(f32, sp260);
+        spA8 = sp260.unk30 + (((f32) sp210 * sp260.unk20) + (((f32) sp208 * temp_f28_396) + (unksp20C * sp260.unk10)));
+        spAC = sp260.unk34 + (((f32) sp210 * sp260.unk24) + (((f32) sp208 * sp260.unk4) + (unksp20C * sp260.unk14)));
+        spB0 = sp260.unk38 + (((f32) sp210 * sp260.unk28) + (((f32) sp208 * sp260.unk8) + (unksp20C * sp260.unk18)));
+        sp208 = (f64) spA8;
+        sp210 = (f64) spB0;
+        sp98 = sp260.unk30 + (((f32) sp200 * sp260.unk20) + (((f32) sp1F8 * temp_f28_396) + (unksp1FC * sp260.unk10)));
+        sp9C = sp260.unk34 + (((f32) sp200 * sp260.unk24) + (((f32) sp1F8 * sp260.unk4) + (unksp1FC * sp260.unk14)));
+        spA0 = sp260.unk38 + (((f32) sp200 * sp260.unk28) + (((f32) sp1F8 * sp260.unk8) + (unksp1FC * sp260.unk18)));
+        var_f4_451 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+        sp1E8 = (f64) spA8;
+        sp1F0 = (f64) spB0;
+        sp1D8 = (f64) sp98;
+        sp1E0 = (f64) spA0;
+        sp1F8 = (f64) sp98;
+        sp200 = (f64) spA0;
         if (var_f4_451 > 0.000001f) {
             if (var_f4_451 > 0.0f) {
                 temp_f1_463 = __frsqrte(var_f4_451);
@@ -230,18 +307,18 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
             } else if (var_f4_451 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_451 = __float_nan;
             } else {
-                arg_sp14 = var_f4_451;
-                temp_r3_492 = M2C_BITWISE(s32, arg_sp14) & 0x7F800000;
+                sp14 = var_f4_451;
+                temp_r3_492 = M2C_BITWISE(s32, sp14) & 0x7F800000;
                 switch (temp_r3_492) {              /* switch 1; irregular */
                 case 0x7F800000:                    /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_502 = 1;
                     } else {
                         var_r0_502 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 1 */
-                    if (M2C_BITWISE(s32, arg_sp14) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp14) & 0x7FFFFF) {
                         var_r0_502 = 5;
                     } else {
                         var_r0_502 = 3;
@@ -259,10 +336,10 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         } else {
             var_f6_524 = 0.0f;
         }
-        var_f7_542 = ((f32) arg_sp200 * (f32) arg_sp200) + (((f32) arg_sp1F8 * (f32) arg_sp1F8) + (arg_sp1FC * arg_sp1FC));
-        arg_sp208 = (f32) arg_sp208 * var_f6_524;
-        arg_sp20C *= var_f6_524;
-        arg_sp210 = (f32) arg_sp210 * var_f6_524;
+        var_f7_542 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+        sp208 = (f32) sp208 * var_f6_524;
+        unksp20C *= var_f6_524;
+        sp210 = (f32) sp210 * var_f6_524;
         if (var_f7_542 > 0.000001f) {
             if (var_f7_542 > 0.0f) {
                 temp_f1_552 = __frsqrte(var_f7_542);
@@ -272,18 +349,18 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
             } else if (var_f7_542 < M2C_BITWISE(f32, 0.0)) {
                 var_f7_542 = __float_nan;
             } else {
-                arg_sp10 = var_f7_542;
-                temp_r3_581 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f7_542;
+                temp_r3_581 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_581) {              /* switch 2; irregular */
                 case 0x7F800000:                    /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_591 = 1;
                     } else {
                         var_r0_591 = 2;
                     }
                     break;
                 case 0x0:                           /* switch 2 */
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_591 = 5;
                     } else {
                         var_r0_591 = 3;
@@ -301,68 +378,68 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         } else {
             var_f3_613 = 0.0f;
         }
-        temp_f6_622 = (f32) arg_sp1F8 * var_f3_613;
-        temp_f5_624 = arg_sp1FC * var_f3_613;
-        temp_f4_625 = (f32) arg_sp200 * var_f3_613;
-        arg_sp1F8 = temp_f6_622;
-        arg_sp48 = -temp_f6_622;
-        arg_sp4C = -temp_f5_624;
-        arg_sp50 = -temp_f4_625;
-        arg_sp1FC = temp_f5_624;
-        arg_sp200 = temp_f4_625;
-        arg_sp198 = (f64) arg_sp48;
-        arg_sp1A0 = (f64) arg_sp50;
-        arg_sp1A8.operator*(temp_f31_317);
-        arg_sp1B8.operator*(temp_f31_317);
+        temp_f6_622 = (f32) sp1F8 * var_f3_613;
+        temp_f5_624 = unksp1FC * var_f3_613;
+        temp_f4_625 = (f32) sp200 * var_f3_613;
+        sp1F8 = temp_f6_622;
+        sp48 = -temp_f6_622;
+        sp4C = -temp_f5_624;
+        sp50 = -temp_f4_625;
+        unksp1FC = temp_f5_624;
+        sp200 = temp_f4_625;
+        sp198 = (f64) sp48;
+        sp1A0 = (f64) sp50;
+        sp1A8.operator*(temp_f31_317);
+        sp1B8.operator*(temp_f31_317);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp1C8 = arg_sp88;
-        arg_sp90 = arg_sp1C0 + arg_sp1B0;
-        arg_sp218 = arg_sp88;
-        arg_sp1D0 = (f64) arg_sp90;
-        arg_sp220 = (f64) arg_sp90;
-        arg_sp168.operator*(temp_f31_317);
-        arg_sp178.operator*(temp_f31_317);
+        sp1C8 = sp88;
+        sp90 = sp1B8.unk8 + sp1A8.unk8;
+        sp218 = sp88;
+        sp1D0 = (f64) sp90;
+        sp220 = (f64) sp90;
+        sp168.operator*(temp_f31_317);
+        sp178.operator*(temp_f31_317);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp38 = -(f32) arg_sp1F8;
-        arg_sp3C = -arg_sp1FC;
-        arg_sp80 = arg_sp180 + arg_sp170;
-        arg_sp40 = -(f32) arg_sp200;
-        arg_sp188 = arg_sp78;
-        arg_sp190 = (f64) arg_sp80;
-        arg_sp228 = arg_sp78;
-        arg_sp230 = (f64) arg_sp80;
-        arg_sp118 = (f64) arg_sp38;
-        arg_sp120 = (f64) arg_sp40;
-        arg_sp128.operator*(temp_f31_317);
-        arg_sp28 = -(f32) arg_sp208;
-        arg_sp2C = -arg_sp20C;
-        arg_sp30 = -(f32) arg_sp210;
-        arg_sp138 = (f64) arg_sp28;
-        arg_sp140 = (f64) arg_sp30;
-        arg_sp148.operator*(temp_f31_317);
+        sp38 = -sp1F8;
+        sp3C = -unksp1FC;
+        sp80 = sp178.unk8 + sp168.unk8;
+        sp40 = -sp200;
+        sp188 = sp78;
+        sp190 = (f64) sp80;
+        sp228 = sp78;
+        sp230 = (f64) sp80;
+        sp118 = (f64) sp38;
+        sp120 = (f64) sp40;
+        sp128.operator*(temp_f31_317);
+        sp28 = -sp208;
+        sp2C = -unksp20C;
+        sp30 = -sp210;
+        sp138 = (f64) sp28;
+        sp140 = (f64) sp30;
+        sp148.operator*(temp_f31_317);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp158 = arg_sp68;
-        arg_sp70 = arg_sp150 + arg_sp130;
-        arg_sp238 = arg_sp68;
-        arg_sp160 = (f64) arg_sp70;
-        arg_sp240 = (f64) arg_sp70;
-        arg_spD8.operator*(temp_f31_317);
-        arg_sp18 = -(f32) arg_sp208;
-        arg_sp1C = -arg_sp20C;
-        arg_sp20 = -(f32) arg_sp210;
-        arg_spE8 = (f64) arg_sp18;
-        arg_spF0 = (f64) arg_sp20;
-        arg_spF8.operator*(temp_f31_317);
+        sp158 = sp68;
+        sp70 = sp148.unk8 + sp128.unk8;
+        sp238 = sp68;
+        sp160 = (f64) sp70;
+        sp240 = (f64) sp70;
+        spD8.operator*(temp_f31_317);
+        sp18 = -sp208;
+        sp1C = -unksp20C;
+        sp20 = -sp210;
+        spE8 = (f64) sp18;
+        spF0 = (f64) sp20;
+        spF8.operator*(temp_f31_317);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp248 = arg_sp58;
-        arg_sp60 = arg_sp100 + arg_spE0;
-        arg_sp108 = arg_sp58;
-        arg_sp250 = (f64) arg_sp60;
-        arg_sp110 = (f64) arg_sp60;
+        sp248 = sp58;
+        sp60 = spF8.unk8 + spD8.unk8;
+        sp108 = sp58;
+        sp250 = (f64) sp60;
+        sp110 = (f64) sp60;
         arg1->unk30 = (f32) M2C_FIELD(arg0, f64 *, 0);
         arg1->unk34 = M2C_FIELD(arg0, f32 *, 4);
         arg1->unk38 = (f32) M2C_FIELD(arg0, f64 *, 8);
@@ -372,16 +449,16 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         MKBegin(4);
         MKSetColorV(arg0->unk10);
         MKSetTexCoord1F(0.0f, 1.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp218));
+        MKSetPositionV(*((MKVector3 *) &sp218));
         MKSetColorV(arg0->unk10);
         MKSetTexCoord1F(1.0f, 1.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp228));
+        MKSetPositionV(*((MKVector3 *) &sp228));
         MKSetColorV(arg0->unk10);
         MKSetTexCoord1F(0.0f, 0.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp238));
+        MKSetPositionV(*((MKVector3 *) &sp238));
         MKSetColorV(arg0->unk10);
         MKSetTexCoord1F(1.0f, 0.0f);
-        MKSetPositionV(*((MKVector3 *) &arg_sp248));
+        MKSetPositionV(*((MKVector3 *) &sp248));
         MKEnd();
         MKEndPrimitive();
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));

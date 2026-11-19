@@ -1250,52 +1250,83 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp14C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
-    M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) (this - 4) + 4, 0x40);
-    arg_sp150.Scale3x3((Matrix *) &arg_sp150, *((MKVector3 *) &this->unk80));
+    Matrix sp150;
+    M2C_UNK sp14C;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    MKVector3 sp100;
+    MKVector3 spF0;
+    MKVector3 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    MKVector3 spB0;
+    MKVector3 spA0;
+    f64 sp98;
+    f64 sp90;
+    MKVector3 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
+
+    M2C_STRUCT_COPY((s32) &sp14C + 4, (s32) (this - 4) + 4, 0x40);
+    sp150.Scale3x3(&sp150, *((MKVector3 *) &this->unk80));
     if (arg0 != NULL) {
-        arg_sp150.Multiply((Matrix *) &arg_sp150, arg0);
+        sp150.Multiply(&sp150, arg0);
     }
-    VectorAbs(*((MKVector3 *) &arg_sp100));
-    arg_sp140 = arg_sp100;
-    arg_sp148 = arg_sp108;
-    VectorAbs(*((MKVector3 *) &arg_spF0));
-    arg_sp130 = arg_spF0;
-    arg_sp138 = arg_spF8;
-    VectorAbs(*((MKVector3 *) &arg_spE0));
-    arg_sp120 = arg_spE0;
-    arg_sp128 = arg_spE8;
-    Max(*((MKVector3 *) &arg_spA0), *((MKVector3 *) &arg_sp130));
-    Max(*((MKVector3 *) &arg_spB0), *((MKVector3 *) &arg_sp140));
+    VectorAbs(sp100);
+    sp140 = M2C_BITWISE(f64, sp100);
+    sp148 = (f64) sp100.unk8;
+    VectorAbs(spF0);
+    sp130 = M2C_BITWISE(f64, spF0);
+    sp138 = (f64) spF0.unk8;
+    VectorAbs(spE0);
+    sp120 = M2C_BITWISE(f64, spE0);
+    sp128 = (f64) spE0.unk8;
+    Max(spA0, *((MKVector3 *) &sp130));
+    Max(spB0, *((MKVector3 *) &sp140));
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spC0 = arg_sp50;
-    arg_sp58 = (f32) arg_sp148 + (f32) arg_sp138;
-    arg_spC8 = (f64) arg_sp58;
+    spC0 = sp50;
+    sp58 = (f32) sp148 + (f32) sp138;
+    spC8 = (f64) sp58;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spD0 = arg_sp40;
-    arg_sp48 = (f32) arg_spC8 + (f32) arg_sp128;
-    arg_spD8 = (f64) arg_sp48;
+    spD0 = sp40;
+    sp48 = (f32) spC8 + (f32) sp128;
+    spD8 = (f64) sp48;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp110 = arg_sp30;
-    arg_sp38 = (f32) arg_spD8 + arg_spB8;
-    arg_sp118 = (f64) arg_sp38;
-    arg_sp80.operator*(0.5f);
+    sp110 = sp30;
+    sp38 = (f32) spD8 + spB0.unk8;
+    sp118 = (f64) sp38;
+    sp80.operator*(0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    this->unk90 = arg_sp20;
-    arg_sp28 = arg_sp188 - arg_sp88;
-    arg_sp90 = arg_sp20;
-    arg_sp98 = (f64) arg_sp28;
-    M2C_FIELD(this, f64 *, 0x98) = (f64) arg_sp28;
-    arg_sp60.operator*(0.5f);
+    this->unk90 = sp20;
+    sp28 = sp150.unk38 - sp80.unk8;
+    sp90 = sp20;
+    sp98 = (f64) sp28;
+    M2C_FIELD(this, f64 *, 0x98) = (f64) sp28;
+    sp60.operator*(0.5f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unkA0 = arg_sp10;
-    arg_sp18 = arg_sp188 + arg_sp68;
-    arg_sp70 = arg_sp10;
-    arg_sp78 = (f64) arg_sp18;
-    M2C_FIELD(this, f64 *, 0xA8) = (f64) arg_sp18;
+    this->unkA0 = sp10;
+    sp18 = sp150.unk38 + sp60.unk8;
+    sp70 = sp10;
+    sp78 = (f64) sp18;
+    M2C_FIELD(this, f64 *, 0xA8) = (f64) sp18;
 }
 #endif
 

@@ -154,24 +154,33 @@ void IceTier2::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void IceTier2::DrawCustomGlow() {
+    Matrix sp70;
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     s32 *temp_r5_373;
+
     if (M2C_BITWISE(s32, this->unkACC) > 0) {
-        M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) &arg_sp6C + 4, 0x40);
-        arg_sp18 = 1.01f;
-        arg_sp10 = 1.01f;
-        arg_sp14 = 1.01f;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp30.Scale3x3((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
+        M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &sp30.unk3C + 4, 0x40);
+        sp18 = 1.01f;
+        sp10 = 1.01f;
+        sp14 = 1.01f;
+        sp28 = (f64) sp18;
+        sp20 = (f64) sp10;
+        sp30.Scale3x3(&sp30, *((MKVector3 *) &sp20));
+        MKModel_SetWorldMatrix(this->unk4, sp30);
         MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), 1U, 1U);
         gRenderState = M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B4);
         Character::Draw();
         gRenderState = 0;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp70));
+        MKModel_SetWorldMatrix(this->unk4, sp70);
         temp_r5_373 = M2C_FIELD(this->unkA20, s32 **, 0x238);
         if (temp_r5_373 != NULL) {
             MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, *temp_r5_373, 0U, 1U);
@@ -312,54 +321,75 @@ void IceTier1::Spawn(EnemyGeneratorDoor *arg0) {
 
 #if 0 // DRAFT: illegal type
 void IceTier1::Update() {
+    Matrix spC0;
+    MKVector3 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp14;
+    u16 sp10;
     Animation *temp_r3_736;
     f32 temp_f1_792;
     f32 temp_f3_820;
     s32 temp_r31_734;
     s32 var_r29_754;
     u16 temp_r30_731;
+
     Enemy::Update();
     if (!(((u8) M2C_FIELD(this, u8 *, 0xB08) >> 1U) & 1) && (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(2) != 0)) {
         KDSound_Play3d(GS_IceTrollHitGround, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         temp_r30_731 = Tools_GetMatchingNodeIndex(this->unk4, "r_hand");
         temp_r31_734 = MKModel_GetWorldMatrix(this->unk4);
         temp_r3_736 = MKModel_GetAnimation(this->unk4);
-        arg_sp10 = temp_r30_731;
-        temp_r3_736->CalculateMatrices((Matrix *) &arg_spC0, 1, (s16 *) &arg_sp10, (Matrix *) temp_r31_734);
-        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r30_731, (MKVector3 *) &arg_spA8);
-        Tools_GetFloor(*((MKVector3 *) &arg_spA8), 100.0f, &arg_spAC);
+        sp10 = temp_r30_731;
+        temp_r3_736->CalculateMatrices(&spC0, 1, (s16 *) &sp10, (Matrix *) temp_r31_734);
+        MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r30_731, &spA8);
+        Tools_GetFloor(spA8, 100.0f, &spA8.unk4);
         var_r29_754 = 0;
         do {
             if (var_r29_754 > 9) {
-                arg_sp48 = -arg_spC0;
-                arg_sp4C = -arg_spC4;
-                arg_sp50 = -arg_spC8;
-                arg_sp88 = (f64) arg_sp48;
-                arg_sp90 = (f64) arg_sp50;
-                arg_sp98 = (f64) arg_sp48;
-                arg_spA0 = (f64) arg_sp50;
+                sp48 = -M2C_BITWISE(f32, spC0);
+                sp4C = -spC0.unk4;
+                sp50 = -spC0.unk8;
+                sp88 = (f64) sp48;
+                sp90 = (f64) sp50;
+                sp98 = (f64) sp48;
+                spA0 = (f64) sp50;
             } else {
-                arg_sp98 = (f64) arg_spC0;
-                arg_spA0 = (f64) arg_spC8;
+                sp98 = M2C_BITWISE(f64, spC0);
+                spA0 = (f64) spC0.unk8;
             }
-            arg_sp9C = 1.0f;
+            unksp9C = 1.0f;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            temp_f1_792 = arg_spE8 * MKRand_Float(&gViewSeed, 80.0f, 150.0f);
-            arg_sp68 = arg_sp38;
-            arg_sp40 = temp_f1_792;
-            arg_sp70 = (f64) arg_sp40;
+            temp_f1_792 = spC0.unk28 * MKRand_Float(&gViewSeed, 80.0f, 150.0f);
+            sp68 = sp38;
+            sp40 = temp_f1_792;
+            sp70 = (f64) sp40;
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp78 = arg_sp28;
-            arg_sp30 = arg_spB0 - (f32) arg_sp70;
-            arg_sp80 = (f64) arg_sp30;
+            sp78 = sp28;
+            sp30 = spA8.unk8 - (f32) sp70;
+            sp80 = (f64) sp30;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            temp_f3_820 = (f32) arg_spA0 * MKRand_Float(&gViewSeed, 200.0f, 400.0f);
-            arg_sp58 = arg_sp18;
-            arg_sp20 = temp_f3_820;
-            arg_sp60 = (f64) arg_sp20;
-            arg_sp14 = MKRand_Float(&gViewSeed, 0.13f, 0.2f);
-            gb.EmitCrud(*((MKVector3 *) &arg_sp78), *((MKVector3 *) &arg_sp58), arg_sp14);
+            temp_f3_820 = (f32) spA0 * MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            sp58 = sp18;
+            sp20 = temp_f3_820;
+            sp60 = (f64) sp20;
+            sp14 = MKRand_Float(&gViewSeed, 0.13f, 0.2f);
+            gb.EmitCrud(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), sp14);
             var_r29_754 += 1;
         } while (var_r29_754 < 0x14);
     }

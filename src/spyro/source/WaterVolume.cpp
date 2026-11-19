@@ -54,11 +54,14 @@ void WaterVolume::Resolve() {
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
 void WaterVolume::LoadDone() {
+    Matrix sp10;
+    M2C_UNK spC;
     s32 temp_r31_161;
+
     KDWaterVolume::LoadDone();
     this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &this->unk50.unk3C + 4, 0x40);
-    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) &this->unk50.unk3C + 4, 0x40);
+    MKModel_SetWorldMatrix(this->unk4, sp10);
     temp_r31_161 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "C_Collide");
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, temp_r31_161, (MKCollisionMode) 1, &this->unkE0, 0U);
 }

@@ -122,12 +122,27 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
 
 #if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVector3 *arg2) {
+    Matrix sp70;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    s16 sp10;
     Animation *temp_r3_329;
     MKAttachment *temp_r7_228;
     Matrix *var_r31_227;
     s32 temp_r0_232;
     u8 temp_r0_321;
     void *temp_r3_320;
+
     var_r31_227 = &arg0->unk10;
     temp_r7_228 = arg0->unk8;
     if (temp_r7_228 != NULL) {
@@ -156,27 +171,27 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
     }
     temp_r3_320 = *(M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x58) + (arg1 * 4));
     temp_r0_321 = M2C_FIELD(temp_r3_320, u8 *, 0x14);
-    arg_sp58 = M2C_FIELD(temp_r3_320, f64 *, 0);
-    arg_sp60 = M2C_FIELD(temp_r3_320, f64 *, 8);
+    sp58 = M2C_FIELD(temp_r3_320, f64 *, 0);
+    sp60 = M2C_FIELD(temp_r3_320, f64 *, 8);
     if (((s8) temp_r0_321 == -1) || (temp_r3_329 = arg0->unk70, ((temp_r3_329 == NULL) != 0))) {
-        arg_sp28 = var_r31_227->unk30 + (((f32) arg_sp60 * var_r31_227->unk20) + (((f32) arg_sp58 * var_r31_227->unk0) + (arg_sp5C * var_r31_227->unk10)));
-        arg_sp2C = var_r31_227->unk34 + (((f32) arg_sp60 * var_r31_227->unk24) + (((f32) arg_sp58 * var_r31_227->unk4) + (arg_sp5C * var_r31_227->unk14)));
-        arg_sp30 = var_r31_227->unk38 + (((f32) arg_sp60 * var_r31_227->unk28) + (((f32) arg_sp58 * var_r31_227->unk8) + (arg_sp5C * var_r31_227->unk18)));
-        M2C_FIELD(arg2, f64 *, 0) = (f64) arg_sp28;
-        arg_sp48 = (f64) arg_sp28;
-        arg_sp50 = (f64) arg_sp30;
-        M2C_FIELD(arg2, f64 *, 8) = (f64) arg_sp30;
+        sp28 = var_r31_227->unk30 + (((f32) sp60 * var_r31_227->unk20) + (((f32) sp58 * var_r31_227->unk0) + (unksp5C * var_r31_227->unk10)));
+        sp2C = var_r31_227->unk34 + (((f32) sp60 * var_r31_227->unk24) + (((f32) sp58 * var_r31_227->unk4) + (unksp5C * var_r31_227->unk14)));
+        sp30 = var_r31_227->unk38 + (((f32) sp60 * var_r31_227->unk28) + (((f32) sp58 * var_r31_227->unk8) + (unksp5C * var_r31_227->unk18)));
+        M2C_FIELD(arg2, f64 *, 0) = (f64) sp28;
+        sp48 = (f64) sp28;
+        sp50 = (f64) sp30;
+        M2C_FIELD(arg2, f64 *, 8) = (f64) sp30;
         return;
     }
-    arg_sp10 = (s16) (s8) temp_r0_321;
-    temp_r3_329->CalculateMatrices((Matrix *) &arg_sp70, 1, &arg_sp10, var_r31_227);
-    arg_sp18 = arg_spA0 + (((f32) arg_sp60 * arg_sp90) + (((f32) arg_sp58 * arg_sp70) + (arg_sp5C * arg_sp80)));
-    arg_sp1C = arg_spA4 + (((f32) arg_sp60 * arg_sp94) + (((f32) arg_sp58 * arg_sp74) + (arg_sp5C * arg_sp84)));
-    arg_sp20 = arg_spA8 + (((f32) arg_sp60 * arg_sp98) + (((f32) arg_sp58 * arg_sp78) + (arg_sp5C * arg_sp88)));
-    M2C_FIELD(arg2, f64 *, 0) = (f64) arg_sp18;
-    arg_sp38 = (f64) arg_sp18;
-    arg_sp40 = (f64) arg_sp20;
-    M2C_FIELD(arg2, f64 *, 8) = (f64) arg_sp20;
+    sp10 = (s16) (s8) temp_r0_321;
+    temp_r3_329->CalculateMatrices(&sp70, 1, &sp10, var_r31_227);
+    sp18 = sp70.unk30 + (((f32) sp60 * sp70.unk20) + (((f32) sp58 * M2C_BITWISE(f32, sp70)) + (unksp5C * sp70.unk10)));
+    sp1C = sp70.unk34 + (((f32) sp60 * sp70.unk24) + (((f32) sp58 * sp70.unk4) + (unksp5C * sp70.unk14)));
+    sp20 = sp70.unk38 + (((f32) sp60 * sp70.unk28) + (((f32) sp58 * sp70.unk8) + (unksp5C * sp70.unk18)));
+    M2C_FIELD(arg2, f64 *, 0) = (f64) sp18;
+    sp38 = (f64) sp18;
+    sp40 = (f64) sp20;
+    M2C_FIELD(arg2, f64 *, 8) = (f64) sp20;
 }
 #endif
 
@@ -235,9 +250,18 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
 
 #if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3 *arg2) {
+    Matrix sp50;
+    f64 sp40;
+    f64 sp38;
+    f32 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    s16 sp10;
     MKAttachment *temp_r7_593;
     Matrix *var_r31_592;
     s32 temp_r0_597;
+
     var_r31_592 = &arg0->unk10;
     temp_r7_593 = arg0->unk8;
     if (temp_r7_593 != NULL) {
@@ -264,16 +288,16 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
         }
         var_r31_592 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
     }
-    arg_sp10 = (s16) arg1;
-    arg0->unk70->CalculateMatrices((Matrix *) &arg_sp50, 1, &arg_sp10, var_r31_592);
-    arg_sp28.GetNodeOrigin((s32) arg0->unk70);
-    arg_sp18 = arg_sp80 + ((arg_sp30 * arg_sp70) + ((arg_sp28 * arg_sp50) + (arg_sp2C * arg_sp60)));
-    arg_sp1C = arg_sp84 + ((arg_sp30 * arg_sp74) + ((arg_sp28 * arg_sp54) + (arg_sp2C * arg_sp64)));
-    arg_sp20 = arg_sp88 + ((arg_sp30 * arg_sp78) + ((arg_sp28 * arg_sp58) + (arg_sp2C * arg_sp68)));
-    M2C_FIELD(arg2, f64 *, 0) = (f64) arg_sp18;
-    arg_sp38 = (f64) arg_sp18;
-    arg_sp40 = (f64) arg_sp20;
-    M2C_FIELD(arg2, f64 *, 8) = (f64) arg_sp20;
+    sp10 = (s16) arg1;
+    arg0->unk70->CalculateMatrices(&sp50, 1, &sp10, var_r31_592);
+    sp28.GetNodeOrigin((s32) arg0->unk70);
+    sp18 = sp50.unk30 + ((sp30 * sp50.unk20) + ((sp28 * M2C_BITWISE(f32, sp50)) + (sp2C * sp50.unk10)));
+    sp1C = sp50.unk34 + ((sp30 * sp50.unk24) + ((sp28 * sp50.unk4) + (sp2C * sp50.unk14)));
+    sp20 = sp50.unk38 + ((sp30 * sp50.unk28) + ((sp28 * sp50.unk8) + (sp2C * sp50.unk18)));
+    M2C_FIELD(arg2, f64 *, 0) = (f64) sp18;
+    sp38 = (f64) sp18;
+    sp40 = (f64) sp20;
+    M2C_FIELD(arg2, f64 *, 8) = (f64) sp20;
 }
 #endif
 
@@ -648,6 +672,8 @@ loop_35:
 
 #if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool arg3) {
+    Matrix sp20;
+    s16 sp10;
     Animation *temp_r3_1571;
     MKAttachment *temp_r3_1445;
     Matrix *var_r31_1443;
@@ -656,6 +682,7 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
     u8 temp_r0_1578;
     u8 var_r29_1442;
     void *temp_r30_1449;
+
     var_r29_1442 = arg3;
     var_r31_1443 = &arg0->unk10;
     temp_r3_1445 = arg0->unk8;
@@ -706,14 +733,14 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
     if ((temp_r3_1571 != NULL) && ((s8) M2C_FIELD(temp_r30_1449, u8 *, 0x15) <= -1)) {
         temp_r0_1578 = M2C_FIELD(temp_r30_1449, u8 *, 0x14);
         if ((s8) temp_r0_1578 > -1) {
-            arg_sp10 = (s16) (s8) temp_r0_1578;
+            sp10 = (s16) (s8) temp_r0_1578;
             if (var_r29_1442 != 0) {
                 var_r7_1588 = var_r31_1443;
             } else {
                 var_r7_1588 = NULL;
             }
-            temp_r3_1571->CalculateMatrices((Matrix *) &arg_sp20, 1, &arg_sp10, var_r7_1588);
-            arg2->Multiply4x4(arg2, (Matrix *) &arg_sp20);
+            temp_r3_1571->CalculateMatrices(&sp20, 1, &sp10, var_r7_1588);
+            arg2->Multiply4x4(arg2, &sp20);
             var_r29_1442 = 0;
         }
     }
@@ -832,13 +859,15 @@ u8 MKModel_IsAtIdentity(const MKModel *arg0) {
     return (u8) ((((u8) arg0->unk5 >> 6U) & 1) != 0);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: pointer/array required
 void MKModel_SetRotation(MKModel *arg0, const MKVector3 &arg1) {
+    Matrix sp10;
     s32 temp_r3_1837;
     s32 var_ctr_1847;
     s32 var_r4_1839;
     s32 var_r5_1844;
     s32 var_r7_1838;
+
     temp_r3_1837 = MKModel_GetWorldMatrix(arg0);
     var_r7_1838 = 0;
     var_r4_1839 = 0;
@@ -846,7 +875,7 @@ void MKModel_SetRotation(MKModel *arg0, const MKVector3 &arg1) {
         var_r5_1844 = 0;
         var_ctr_1847 = 4;
 loop_2:
-        *(&arg_sp10 + var_r4_1839 + var_r5_1844) = *(temp_r3_1837 + var_r4_1839 + var_r5_1844);
+        *(&sp10 + var_r4_1839 + var_r5_1844) = *(temp_r3_1837 + var_r4_1839 + var_r5_1844);
         var_r5_1844 += 4;
         var_ctr_1847 -= 1;
         if (var_ctr_1847 != 0) {
@@ -855,8 +884,8 @@ loop_2:
         var_r7_1838 += 1;
         var_r4_1839 += 0x10;
     } while (var_r7_1838 < 4);
-    arg_sp10.SetRotationPYR(arg1);
-    MKModel_SetWorldMatrix(arg0, *((Matrix *) &arg_sp10));
+    sp10.SetRotationPYR(arg1);
+    MKModel_SetWorldMatrix(arg0, sp10);
 }
 #endif
 

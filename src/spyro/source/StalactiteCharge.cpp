@@ -11,6 +11,7 @@
 #include "spyro/source/IceBossStalactite.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -206,20 +207,53 @@ void StalactiteCharge::StateSCLerpCameraExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp10);
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp14'
+#if 0 // DRAFT: undefined identifier 'sp68'
 void StalactiteCharge::StateSCLerpCameraUpdate() {
+    s32 sp174;
+    KDS_Message_SetCameraSimple sp170;
+    Matrix sp130;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    s32 sp14;
+    s32 sp10;
     f32 temp_f1_600;
     f32 temp_f30_525;
     f32 temp_f4_552;
     f32 var_f0_510;
     void *temp_r3_496;
     void *temp_r4_610;
+
     if (((u8) this->unk140 == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x64)(M2C_FIELD(&gb, void ***, 0)) == 0)) {
         this->unk140 = 1;
         temp_r3_496 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0));
-        arg_sp14 = 0;
-        arg_sp10 = 0xAB;
-        M2C_FIELD(M2C_FIELD(temp_r3_496, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp10);
+        sp14 = 0;
+        sp10 = 0xAB;
+        M2C_FIELD(M2C_FIELD(temp_r3_496, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp10);
     }
     var_f0_510 = this->unkF4 + gUpdateTimeDelta;
     if (var_f0_510 < 3.0f) {
@@ -231,45 +265,45 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     temp_f30_525 = _table_sinf(0.33333334f * (3.1415927f * this->unkF4));
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_spB8 = arg_sp68;
-    arg_sp70 = this->unk128 * 200.0f;
-    arg_spC0 = (f64) arg_sp70;
+    spB8 = sp68;
+    sp70 = this->unk128 * 200.0f;
+    spC0 = (f64) sp70;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp60 = (f32) arg_spC0 * temp_f30_525;
-    arg_spD8 = this->unk110;
+    sp60 = (f32) spC0 * temp_f30_525;
+    spD8 = this->unk110;
     temp_f4_552 = 0.33333334f * this->unkF4;
-    arg_spE8 = this->unk100;
-    arg_spC8 = arg_sp58;
-    arg_spD0 = (f64) arg_sp60;
-    arg_spE0 = this->unk118;
-    arg_spF0 = this->unk108;
+    spE8 = this->unk100;
+    spC8 = sp58;
+    spD0 = (f64) sp60;
+    spE0 = this->unk118;
+    spF0 = this->unk108;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    arg_sp88 = arg_sp38;
-    arg_sp40 = (f32) arg_spE0 - (f32) arg_spF0;
-    arg_sp90 = (f64) arg_sp40;
+    sp88 = sp38;
+    sp40 = (f32) spE0 - (f32) spF0;
+    sp90 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp78 = arg_sp28;
-    arg_sp30 = (f32) arg_sp90 * temp_f4_552;
-    arg_sp80 = (f64) arg_sp30;
+    sp78 = sp28;
+    sp30 = (f32) sp90 * temp_f4_552;
+    sp80 = (f64) sp30;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    arg_spF8 = arg_sp18;
-    arg_sp20 = (f32) arg_spF0 + (f32) arg_sp80;
-    arg_sp100 = (f64) arg_sp20;
+    spF8 = sp18;
+    sp20 = (f32) spF0 + (f32) sp80;
+    sp100 = (f64) sp20;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    temp_f1_600 = (f32) arg_sp100 + (f32) arg_spD0;
-    arg_sp118 = arg_sp48;
-    arg_sp50 = temp_f1_600;
-    arg_sp120 = (f64) arg_sp50;
-    temp_r4_610 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f32, f32, f32, f32, f32, f64, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_600, (f32) arg_sp100, (f32) arg_spF0, temp_f4_552, 0.33333334f, (f64) arg_sp60, arg_sp58), void **, 8);
-    arg_sp98 = M2C_FIELD(temp_r4_610, f64 *, 0x30);
-    arg_spA0 = M2C_FIELD(temp_r4_610, f64 *, 0x38);
-    arg_spA8.GetHeroTargetPos(*(M2C_FIELD(&gb, MKVector3 **, 0x3B8)));
-    arg_sp108 = arg_spA8;
-    arg_sp110 = arg_spB0;
-    arg_sp130.SetLookAt(*((MKVector3 *) &arg_sp118), *((MKVector3 *) &arg_sp108));
-    arg_sp174 = 0;
-    arg_sp170.Init(*((Matrix *) &arg_sp130));
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, MKVector3 **, 0x3B8), void **, 0x44), M2C_UNK (**)(MKVector3 *, M2C_UNK *), 0x2C)(M2C_FIELD(&gb, MKVector3 **, 0x3B8), &arg_sp170);
+    temp_f1_600 = (f32) sp100 + (f32) spD0;
+    sp118 = sp48;
+    sp50 = temp_f1_600;
+    sp120 = (f64) sp50;
+    temp_r4_610 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f32, f32, f32, f32, f32, f64, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_600, (f32) sp100, (f32) spF0, temp_f4_552, 0.33333334f, (f64) sp60, sp58), void **, 8);
+    sp98 = M2C_FIELD(temp_r4_610, f64 *, 0x30);
+    spA0 = M2C_FIELD(temp_r4_610, f64 *, 0x38);
+    spA8.GetHeroTargetPos(*(M2C_FIELD(&gb, MKVector3 **, 0x3B8)));
+    sp108 = spA8;
+    sp110 = spB0;
+    sp130.SetLookAt(*((MKVector3 *) &sp118), *((MKVector3 *) &sp108));
+    sp174 = 0;
+    sp170.Init(sp130);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, MKVector3 **, 0x3B8), void **, 0x44), M2C_UNK (**)(MKVector3 *, KDS_Message_SetCameraSimple *), 0x2C)(M2C_FIELD(&gb, MKVector3 **, 0x3B8), &sp170);
     if (this->unkF4 == 3.0f) {
         this->unk50.SetState(this, 2, 0U);
     }

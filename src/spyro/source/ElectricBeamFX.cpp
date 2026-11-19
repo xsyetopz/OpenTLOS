@@ -7,6 +7,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/ElectricSparks.h"
+#include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
@@ -124,6 +125,26 @@ void ElectricBeam::Update() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
+    Matrix spC0;
+    M2C_UNK spBC;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     Matrix *temp_r3_428;
     f32 temp_f4_281;
     f32 var_f31_300;
@@ -132,6 +153,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     f64 temp_f1_294;
     s32 temp_r3_313;
     s32 var_r0_323;
+
     this->unk10 = M2C_FIELD(arg0, f64 *, 0);
     this->unk18 = M2C_FIELD(arg0, f64 *, 8);
     this->unk20 = M2C_FIELD(arg1, f64 *, 0);
@@ -144,10 +166,10 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp68 = arg_sp58;
-    arg_sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
-    arg_sp70 = (f64) arg_sp60;
-    temp_f4_281 = ((f32) arg_sp70 * (f32) arg_sp70) + (((f32) arg_sp68 * (f32) arg_sp68) + (arg_sp6C * arg_sp6C));
+    sp68 = sp58;
+    sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
+    sp70 = (f64) sp60;
+    temp_f4_281 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
     if (temp_f4_281 > 0.0f) {
         temp_f1_284 = __frsqrte(temp_f4_281);
         temp_f1_290 = 0.5 * temp_f1_284 * -(((f64) temp_f4_281 * (temp_f1_284 * temp_f1_284)) - 3.0);
@@ -156,18 +178,18 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     } else if (temp_f4_281 < M2C_BITWISE(f32, 0.0)) {
         var_f31_300 = __float_nan;
     } else {
-        arg_sp10 = temp_f4_281;
-        temp_r3_313 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+        sp10 = temp_f4_281;
+        temp_r3_313 = M2C_BITWISE(s32, sp10) & 0x7F800000;
         switch (temp_r3_313) {                      /* irregular */
         case 0x7F800000:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_323 = 1;
             } else {
                 var_r0_323 = 2;
             }
             break;
         case 0x0:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_323 = 5;
             } else {
                 var_r0_323 = 3;
@@ -185,31 +207,31 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     }
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp78 = arg_sp48;
-    arg_sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_300;
-    arg_sp80 = (f64) arg_sp50;
+    sp78 = sp48;
+    sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_300;
+    sp80 = (f64) sp50;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp88 = arg_sp38;
-    arg_sp40 = (f32) arg_sp80 * 0.5f;
-    arg_sp90 = (f64) arg_sp40;
+    sp88 = sp38;
+    sp40 = (f32) sp80 * 0.5f;
+    sp90 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spA8 = arg_sp28;
-    arg_sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) arg_sp90;
-    arg_spB0 = (f64) arg_sp30;
-    this->unk30.AddNode(*((MKVector3 *) &arg_spA8));
+    spA8 = sp28;
+    sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
+    spB0 = (f64) sp30;
+    this->unk30.AddNode(*((MKVector3 *) &spA8));
     this->unk30.AddNode(*((MKVector3 *) &this->unk20));
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp20 = 0.0f;
-    arg_sp18 = 0.0f;
-    arg_sp1C = 1.0f;
-    arg_spA0 = (f64) arg_sp20;
-    arg_sp98 = (f64) arg_sp18;
-    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_sp98);
-    M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_spC0.RotateRoll((Matrix *) &arg_spC0, this->unk1E8);
+    sp20 = 0.0f;
+    sp18 = 0.0f;
+    sp1C = 1.0f;
+    spA0 = (f64) sp20;
+    sp98 = (f64) sp18;
+    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &sp98);
+    M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    spC0.RotateRoll(&spC0, this->unk1E8);
     temp_r3_428 = &this->unk1A0;
-    temp_r3_428->Multiply(temp_r3_428, (Matrix *) &arg_spC0);
+    temp_r3_428->Multiply(temp_r3_428, &spC0);
     this->unk1A0.unk30 = (f32) M2C_FIELD(arg0, f64 *, 0);
     this->unk1A0.unk34 = M2C_FIELD(arg0, f32 *, 4);
     this->unk1A0.unk38 = (f32) M2C_FIELD(arg0, f64 *, 8);
@@ -221,6 +243,27 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
+    Matrix spD0;
+    M2C_UNK spCC;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    MKVector3 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     Matrix *temp_r3_664;
     f32 temp_f4_517;
     f32 var_f31_536;
@@ -229,11 +272,12 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     f64 temp_f1_530;
     s32 temp_r3_549;
     s32 var_r0_559;
+
     this->unk10 = M2C_FIELD(arg0, f64 *, 0);
     this->unk18 = M2C_FIELD(arg0, f64 *, 8);
-    KDMath_Smooth<MKVector3>(*((MKVector3 *) &arg_sp98), *((MKVector3 *) &this->unk20), 1.0f, 0.25f);
-    this->unk20 = arg_sp98;
-    this->unk28 = arg_spA0;
+    KDMath_Smooth<MKVector3>(sp98, *((MKVector3 *) &this->unk20), 1.0f, 0.25f);
+    this->unk20 = M2C_BITWISE(f64, sp98);
+    this->unk28 = (f64) sp98.unk8;
     this->unk0 = M2C_FIELD(arg2, f64 *, 0);
     this->unk8 = M2C_FIELD(arg2, f64 *, 8);
     this->unk38 = 0.0f;
@@ -242,10 +286,10 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    arg_sp68 = arg_sp58;
-    arg_sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
-    arg_sp70 = (f64) arg_sp60;
-    temp_f4_517 = ((f32) arg_sp70 * (f32) arg_sp70) + (((f32) arg_sp68 * (f32) arg_sp68) + (arg_sp6C * arg_sp6C));
+    sp68 = sp58;
+    sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
+    sp70 = (f64) sp60;
+    temp_f4_517 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
     if (temp_f4_517 > 0.0f) {
         temp_f1_520 = __frsqrte(temp_f4_517);
         temp_f1_526 = 0.5 * temp_f1_520 * -(((f64) temp_f4_517 * (temp_f1_520 * temp_f1_520)) - 3.0);
@@ -254,18 +298,18 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     } else if (temp_f4_517 < M2C_BITWISE(f32, 0.0)) {
         var_f31_536 = __float_nan;
     } else {
-        arg_sp10 = temp_f4_517;
-        temp_r3_549 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+        sp10 = temp_f4_517;
+        temp_r3_549 = M2C_BITWISE(s32, sp10) & 0x7F800000;
         switch (temp_r3_549) {                      /* irregular */
         case 0x7F800000:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_559 = 1;
             } else {
                 var_r0_559 = 2;
             }
             break;
         case 0x0:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_559 = 5;
             } else {
                 var_r0_559 = 3;
@@ -283,31 +327,31 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     }
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    arg_sp78 = arg_sp48;
-    arg_sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_536;
-    arg_sp80 = (f64) arg_sp50;
+    sp78 = sp48;
+    sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_536;
+    sp80 = (f64) sp50;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_sp88 = arg_sp38;
-    arg_sp40 = (f32) arg_sp80 * 0.5f;
-    arg_sp90 = (f64) arg_sp40;
+    sp88 = sp38;
+    sp40 = (f32) sp80 * 0.5f;
+    sp90 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spB8 = arg_sp28;
-    arg_sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) arg_sp90;
-    arg_spC0 = (f64) arg_sp30;
-    this->unk30.AddNode(*((MKVector3 *) &arg_spB8));
+    spB8 = sp28;
+    sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
+    spC0 = (f64) sp30;
+    this->unk30.AddNode(*((MKVector3 *) &spB8));
     this->unk30.AddNode(*((MKVector3 *) &this->unk20));
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp20 = 0.0f;
-    arg_sp18 = 0.0f;
-    arg_sp1C = 1.0f;
-    arg_spB0 = (f64) arg_sp20;
-    arg_spA8 = (f64) arg_sp18;
-    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_spA8);
-    M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_spD0.RotateRoll((Matrix *) &arg_spD0, this->unk1E8);
+    sp20 = 0.0f;
+    sp18 = 0.0f;
+    sp1C = 1.0f;
+    spB0 = (f64) sp20;
+    spA8 = (f64) sp18;
+    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &spA8);
+    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    spD0.RotateRoll(&spD0, this->unk1E8);
     temp_r3_664 = &this->unk1A0;
-    temp_r3_664->Multiply(temp_r3_664, (Matrix *) &arg_spD0);
+    temp_r3_664->Multiply(temp_r3_664, &spD0);
     this->unk1A0.unk30 = (f32) M2C_FIELD(arg0, f64 *, 0);
     this->unk1A0.unk34 = M2C_FIELD(arg0, f32 *, 4);
     this->unk1A0.unk38 = (f32) M2C_FIELD(arg0, f64 *, 8);
@@ -317,8 +361,78 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp98'
+#if 0 // DRAFT: undefined identifier 'unk19C'
 void ElectricBeam::UpdateWiggleBones() {
+    Matrix sp250;
+    Matrix sp210;
+    f32 sp20C;
+    f32 sp208;
+    f32 sp204;
+    f32 sp200;
+    M2C_UNK sp1CC;
+    f32 sp1BC;
+    f32 sp1B8;
+    f32 sp1B4;
+    f32 sp1B0;
+    f32 sp1AC;
+    f32 sp1A8;
+    f32 sp1A4;
+    f32 sp1A0;
+    f32 sp19C;
+    f32 sp198;
+    f32 sp194;
+    f32 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    KDUniformSpline sp130;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    MKVector3 spF0;
+    f64 spE8;
+    f64 spE0;
+    MKVector3 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f32 sp98;
+    f32 sp94;
+    f32 sp90;
+    f32 sp88;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 temp_f5_1026;
     f32 var_f3_978;
     f32 var_f4_911;
     f64 temp_f1_917;
@@ -329,35 +443,36 @@ void ElectricBeam::UpdateWiggleBones() {
     s32 var_r27_861;
     s32 var_r29_859;
     void *temp_r26_1006;
+
     if ((u8) this->unk1E4 != 0) {
-        arg_sp98 = 0.0f;
-        arg_sp90 = 0.0f;
-        arg_sp94 = 1.0f;
-        arg_sp188 = (f64) arg_sp98;
-        arg_sp180 = (f64) arg_sp90;
-        M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) &this->unk19C + 4, 0x40);
-        arg_sp210.Inverse((Matrix *) &arg_sp210);
-        M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) &arg_sp20C + 4, 0x40);
-        arg_sp200 = 0.0f;
-        arg_sp204 = 0.0f;
-        arg_sp208 = 0.0f;
-        arg_sp20C = 1.0f;
-        arg_sp18 = 0.0f;
-        arg_sp130.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
-        arg_sp150 = arg_sp130;
+        sp98 = 0.0f;
+        sp90 = 0.0f;
+        sp94 = 1.0f;
+        sp188 = (f64) sp98;
+        sp180 = (f64) sp90;
+        M2C_STRUCT_COPY((s32) &sp20C + 4, (s32) &this->unk19C + 4, 0x40);
+        sp210.Inverse(&sp210);
+        M2C_STRUCT_COPY((s32) &sp1CC + 4, (s32) &sp20C + 4, 0x40);
+        sp200 = 0.0f;
+        sp204 = 0.0f;
+        sp208 = 0.0f;
+        sp20C = 1.0f;
+        sp18 = 0.0f;
+        sp130.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+        sp150 = M2C_BITWISE(f64, sp130);
         var_r29_859 = 1;
         var_r27_861 = 0x50;
-        arg_sp158 = arg_sp138;
+        sp158 = (f64) sp130.unk8;
         do {
-            arg_sp14 = 0.0f;
-            arg_sp120.GetMeasure((f32) var_r29_859 / 3.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
-            arg_sp160 = arg_sp120;
-            arg_sp168 = arg_sp128;
+            sp14 = 0.0f;
+            sp120.GetMeasure((f32) var_r29_859 / 3.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
+            sp160 = sp120;
+            sp168 = sp128;
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            arg_sp110 = arg_sp80;
-            arg_sp88 = (f32) arg_sp158 - (f32) arg_sp168;
-            arg_sp118 = (f64) arg_sp88;
-            var_f4_911 = ((f32) arg_sp118 * (f32) arg_sp118) + (((f32) arg_sp110 * (f32) arg_sp110) + (arg_sp114 * arg_sp114));
+            sp110 = sp80;
+            sp88 = (f32) sp158 - (f32) sp168;
+            sp118 = (f64) sp88;
+            var_f4_911 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
             if (var_f4_911 > 1e-12f) {
                 if (var_f4_911 > 0.0f) {
                     temp_f1_917 = __frsqrte(var_f4_911);
@@ -367,18 +482,18 @@ void ElectricBeam::UpdateWiggleBones() {
                 } else if (var_f4_911 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_911 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_911;
-                    temp_r3_946 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_911;
+                    temp_r3_946 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_946) {          /* irregular */
                     case 0x7F800000:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_956 = 1;
                         } else {
                             var_r0_956 = 2;
                         }
                         break;
                     case 0x0:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_956 = 5;
                         } else {
                             var_r0_956 = 3;
@@ -396,79 +511,83 @@ void ElectricBeam::UpdateWiggleBones() {
             } else {
                 var_f3_978 = 0.0f;
             }
-            arg_sp70 = (f32) arg_sp110 * var_f3_978;
-            arg_sp74 = arg_sp114 * var_f3_978;
-            arg_sp78 = (f32) arg_sp118 * var_f3_978;
-            arg_sp140 = (f64) arg_sp70;
-            arg_sp148 = (f64) arg_sp78;
-            M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            sp70 = (f32) sp110 * var_f3_978;
+            sp74 = unksp114 * var_f3_978;
+            sp78 = (f32) sp118 * var_f3_978;
+            sp130.unk10 = (f64) sp70;
+            sp148 = (f64) sp78;
+            M2C_STRUCT_COPY((s32) &sp210.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r26_1006 = this + var_r27_861;
-            arg_sp60 = -M2C_FIELD(temp_r26_1006, f32 *, 0x60);
-            arg_sp64 = -M2C_FIELD(temp_r26_1006, f32 *, 0x64);
-            arg_sp68 = -M2C_FIELD(temp_r26_1006, f32 *, 0x68);
-            arg_sp100 = (f64) arg_sp60;
-            arg_sp108 = (f64) arg_sp68;
-            arg_sp250.Translate((Matrix *) &arg_sp250, *((MKVector3 *) &arg_sp100));
-            arg_sp54 = ((f32) arg_sp148 * arg_sp1F4) + (((f32) arg_sp140 * arg_sp1D4) + (arg_sp144 * arg_sp1E4));
-            arg_sp50 = ((f32) arg_sp148 * arg_sp1F0) + (((f32) arg_sp140 * arg_sp1D0) + (arg_sp144 * arg_sp1E0));
-            arg_sp58 = ((f32) arg_sp148 * arg_sp1F8) + (((f32) arg_sp140 * arg_sp1D8) + (arg_sp144 * arg_sp1E8));
-            arg_spE0 = (f64) arg_sp50;
-            arg_spE8 = (f64) arg_sp58;
-            Normalise(*((MKVector3 *) &arg_spF0));
-            arg_sp140 = arg_spF0;
-            arg_sp148 = arg_spF8;
-            arg_sp48 = ((f32) arg_sp180 * arg_sp144) - (arg_sp184 * (f32) arg_sp140);
-            arg_sp44 = ((f32) arg_sp188 * (f32) arg_sp140) - ((f32) arg_sp180 * (f32) arg_sp148);
-            arg_sp40 = (arg_sp184 * (f32) arg_sp148) - ((f32) arg_sp188 * arg_sp144);
-            arg_spC8 = (f64) arg_sp48;
-            arg_spC0 = (f64) arg_sp40;
-            Normalise(*((MKVector3 *) &arg_spD0));
-            arg_sp170 = arg_spD0;
-            arg_sp178 = arg_spD8;
-            arg_sp38 = ((f32) arg_sp140 * arg_sp174) - (arg_sp144 * (f32) arg_sp170);
-            arg_sp34 = ((f32) arg_sp148 * (f32) arg_sp170) - ((f32) arg_sp140 * (f32) arg_sp178);
-            arg_sp30 = (arg_sp144 * (f32) arg_sp178) - ((f32) arg_sp148 * arg_sp174);
-            arg_spB8 = (f64) arg_sp38;
-            arg_spB0 = (f64) arg_sp30;
-            arg_sp180 = (f64) arg_sp30;
-            arg_sp188 = (f64) arg_sp38;
-            M2C_STRUCT_COPY((s32) &arg_sp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            arg_sp190 = (f32) arg_sp170;
-            arg_sp194 = arg_sp174;
-            arg_sp198 = (f32) arg_sp178;
-            arg_sp19C = 0.0f;
-            arg_sp1A0 = (f32) arg_sp180;
-            arg_sp1A4 = arg_sp184;
-            arg_sp1A8 = (f32) arg_sp188;
-            arg_sp1AC = 0.0f;
-            arg_sp1B0 = (f32) arg_sp140;
-            arg_sp1B4 = arg_sp144;
-            arg_sp1B8 = (f32) arg_sp148;
-            arg_sp1BC = 0.0f;
-            arg_sp250.Multiply((Matrix *) &arg_sp250, (Matrix *) &arg_sp190);
-            arg_sp20 = arg_sp240 + (((f32) arg_sp168 * arg_sp230) + (((f32) arg_sp160 * arg_sp210) + (arg_sp164 * arg_sp220)));
-            arg_sp24 = arg_sp244 + (((f32) arg_sp168 * arg_sp234) + (((f32) arg_sp160 * arg_sp214) + (arg_sp164 * arg_sp224)));
-            arg_sp28 = arg_sp248 + (((f32) arg_sp168 * arg_sp238) + (((f32) arg_sp160 * arg_sp218) + (arg_sp164 * arg_sp228)));
-            arg_spA0 = (f64) arg_sp20;
-            arg_spA8 = (f64) arg_sp28;
-            arg_sp250.Translate((Matrix *) &arg_sp250, *((MKVector3 *) &arg_spA0));
-            M2C_STRUCT_COPY((s32) (temp_r26_1006 + 0x6C) + 4, (s32) &arg_sp24C + 4, 0x40);
+            sp60 = -M2C_FIELD(temp_r26_1006, f32 *, 0x60);
+            sp64 = -M2C_FIELD(temp_r26_1006, f32 *, 0x64);
+            sp68 = -M2C_FIELD(temp_r26_1006, f32 *, 0x68);
+            sp100 = (f64) sp60;
+            sp108 = (f64) sp68;
+            sp250.Translate(&sp250, *((MKVector3 *) &sp100));
+            temp_f5_1026 = M2C_BITWISE(f32, sp130.unk10);
+            sp54 = ((f32) sp148 * sp1F4) + ((temp_f5_1026 * sp1D4) + (sp144 * sp1E4));
+            sp50 = ((f32) sp148 * sp1F0) + ((temp_f5_1026 * sp1D0) + (sp144 * sp1E0));
+            sp58 = ((f32) sp148 * sp1F8) + ((temp_f5_1026 * sp1D8) + (sp144 * sp1E8));
+            spE0 = (f64) sp50;
+            spE8 = (f64) sp58;
+            Normalise(spF0);
+            sp130.unk10 = M2C_BITWISE(f64, spF0);
+            sp148 = (f64) spF0.unk8;
+            sp48 = ((f32) sp180 * sp144) - (unksp184 * (f32) sp130.unk10);
+            sp44 = ((f32) sp188 * (f32) sp130.unk10) - ((f32) sp180 * (f32) sp148);
+            sp40 = (unksp184 * (f32) sp148) - ((f32) sp188 * sp144);
+            spC8 = (f64) sp48;
+            spC0 = (f64) sp40;
+            Normalise(spD0);
+            sp170 = M2C_BITWISE(f64, spD0);
+            sp178 = (f64) spD0.unk8;
+            sp38 = ((f32) sp130.unk10 * unksp174) - (sp144 * (f32) sp170);
+            sp34 = ((f32) sp148 * (f32) sp170) - ((f32) sp130.unk10 * (f32) sp178);
+            sp30 = (sp144 * (f32) sp178) - ((f32) sp148 * unksp174);
+            spB8 = (f64) sp38;
+            spB0 = (f64) sp30;
+            sp180 = (f64) sp30;
+            sp188 = (f64) sp38;
+            M2C_STRUCT_COPY((s32) &unksp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            sp190 = (f32) sp170;
+            sp194 = unksp174;
+            sp198 = (f32) sp178;
+            sp19C = 0.0f;
+            sp1A0 = (f32) sp180;
+            sp1A4 = unksp184;
+            sp1A8 = (f32) sp188;
+            sp1AC = 0.0f;
+            sp1B0 = (f32) sp130.unk10;
+            sp1B4 = sp144;
+            sp1B8 = (f32) sp148;
+            sp1BC = 0.0f;
+            sp250.Multiply(&sp250, (Matrix *) &sp190);
+            sp20 = sp210.unk30 + (((f32) sp168 * sp210.unk20) + (((f32) sp160 * M2C_BITWISE(f32, sp210)) + (unksp164 * sp210.unk10)));
+            sp24 = sp210.unk34 + (((f32) sp168 * sp210.unk24) + (((f32) sp160 * sp210.unk4) + (unksp164 * sp210.unk14)));
+            sp28 = sp210.unk38 + (((f32) sp168 * sp210.unk28) + (((f32) sp160 * sp210.unk8) + (unksp164 * sp210.unk18)));
+            spA0 = (f64) sp20;
+            spA8 = (f64) sp28;
+            sp250.Translate(&sp250, *((MKVector3 *) &spA0));
+            M2C_STRUCT_COPY((s32) (temp_r26_1006 + 0x6C) + 4, (s32) &sp210.unk3C + 4, 0x40);
             var_r29_859 += 1;
-            arg_sp150 = arg_sp160;
+            sp150 = sp160;
             var_r27_861 += 0x50;
-            arg_sp158 = arg_sp168;
+            sp158 = sp168;
         } while (var_r29_859 < 4);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
+    Matrix sp10;
+    M2C_UNK spC;
     s16 temp_r31_1256;
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &arg0->unkC + 4, 0x40);
+
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spC + 4, (s32) &arg0->unkC + 4, 0x40);
     temp_r31_1256 = M2C_FIELD(M2C_FIELD(this, void **, 0x20), s16 *, 0x70);
-    ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, (Matrix *) &arg_sp10, (AnimationMatrixPosition) 4, 0U);
+    ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, &sp10, (AnimationMatrixPosition) 4, 0U);
 }
 #endif
 

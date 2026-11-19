@@ -93,6 +93,18 @@ loop_11:
 
 #if 0 // DRAFT: undefined identifier 'unk4C'
 void ElectricSparks::Draw() {
+    Matrix sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f64 sp40;                                       /* compiler-managed */
+    f64 sp38;                                       /* compiler-managed */
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     M2C_UNK *temp_r3_304;
     M2C_UNK *temp_r3_334;
     M2C_UNK *temp_r6_279;
@@ -108,14 +120,15 @@ void ElectricSparks::Draw() {
     f64 temp_f1_198;
     s32 temp_r3_217;
     s32 var_r0_227;
+
     var_r31_163 = this->unk4C;
 loop_31:
     if (var_r31_163 != NULL) {
         temp_r3_334 = *var_r31_163;
         if (temp_r3_334 != NULL) {
-            arg_sp38 = M2C_FIELD(temp_r3_334, f64 *, 0x10);
-            arg_sp40 = M2C_FIELD(temp_r3_334, f64 *, 0x18);
-            var_f4_182 = ((f32) arg_sp40 * (f32) arg_sp40) + (((f32) arg_sp38 * (f32) arg_sp38) + (arg_sp3C * arg_sp3C));
+            sp38 = M2C_FIELD(temp_r3_334, f64 *, 0x10);
+            sp40 = M2C_FIELD(temp_r3_334, f64 *, 0x18);
+            var_f4_182 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
             if (var_f4_182 > 0.000001f) {
                 if (var_f4_182 > 0.0f) {
                     temp_f1_188 = __frsqrte(var_f4_182);
@@ -125,18 +138,18 @@ loop_31:
                 } else if (var_f4_182 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_182 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_182;
-                    temp_r3_217 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_182;
+                    temp_r3_217 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_217) {          /* irregular */
                     case 0x7F800000:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_227 = 1;
                         } else {
                             var_r0_227 = 2;
                         }
                         break;
                     case 0x0:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_227 = 5;
                         } else {
                             var_r0_227 = 3;
@@ -156,9 +169,9 @@ loop_31:
                 var_f4_182 = 0.0f;
             }
             var_f4_255 = var_f4_182 / 1500.0f;
-            arg_sp38 = (f32) arg_sp38 * var_f3_249;
-            arg_sp3C *= var_f3_249;
-            arg_sp40 = (f32) arg_sp40 * var_f3_249;
+            sp38 = (f32) sp38 * var_f3_249;
+            unksp3C *= var_f3_249;
+            sp40 = (f32) sp40 * var_f3_249;
             if (var_f4_255 < 200.0f) {
 
             } else {
@@ -171,28 +184,28 @@ loop_31:
             }
             temp_r6_279 = *var_r31_163;
             temp_f2_285 = M2C_FIELD(temp_r6_279, f32 *, 0x30);
-            arg_sp48 = 0.0f;
-            arg_sp4C = 1.0f;
-            arg_sp50 = 0.0f;
+            sp48 = 0.0f;
+            sp4C = 1.0f;
+            sp50 = 0.0f;
             temp_f25_290 = temp_f2_285 * (0.01f + var_f4_255);
             temp_f24_291 = temp_f2_285 * (M2C_FIELD(temp_r6_279, f32 *, 0x34) / 0.35f);
-            KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp38), (MKVector3 *) &arg_sp48);
-            arg_sp20 = temp_f25_290;
-            arg_sp18 = temp_f24_291;
-            arg_sp1C = temp_f24_291;
-            arg_sp30 = (f64) arg_sp20;
-            arg_sp28 = (f64) arg_sp18;
-            arg_sp60.Scale3x3((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp28));
+            KDMath_BuildMatrixFromFwd(&sp60, *((MKVector3 *) &sp38), (MKVector3 *) &sp48);
+            sp20 = temp_f25_290;
+            sp18 = temp_f24_291;
+            sp1C = temp_f24_291;
+            sp30 = (f64) sp20;
+            sp28 = (f64) sp18;
+            sp60.Scale3x3(&sp60, *((MKVector3 *) &sp28));
             temp_r3_304 = *var_r31_163;
-            arg_sp90 = M2C_BITWISE(f32, M2C_FIELD(temp_r3_304, M2C_UNK **, 0));
-            arg_sp94 = M2C_FIELD(temp_r3_304, f32 *, 4);
-            arg_sp98 = M2C_FIELD(temp_r3_304, f32 *, 8);
-            arg_sp9C = 1.0f;
+            sp60.unk30 = M2C_BITWISE(f32, M2C_FIELD(temp_r3_304, M2C_UNK **, 0));
+            sp60.unk34 = M2C_FIELD(temp_r3_304, f32 *, 4);
+            sp60.unk38 = M2C_FIELD(temp_r3_304, f32 *, 8);
+            sp60.unk3C = 1.0f;
             if ((u8) M2C_FIELD(temp_r3_304, u8 *, 0x38) == 0) {
-                MKModel_SetWorldMatrix(this->unk54, *((Matrix *) &arg_sp60));
+                MKModel_SetWorldMatrix(this->unk54, sp60);
                 MKModel_Draw(this->unk54, NULL);
             } else {
-                MKModel_SetWorldMatrix(this->unk58, *((Matrix *) &arg_sp60));
+                MKModel_SetWorldMatrix(this->unk58, sp60);
                 MKModel_Draw(this->unk58, NULL);
             }
             var_r31_163 += 4;

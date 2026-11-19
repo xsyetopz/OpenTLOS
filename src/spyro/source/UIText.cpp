@@ -2,6 +2,7 @@
 #include "common/Source/MKFont.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
@@ -24,44 +25,62 @@ void UIText::GetStringWidth() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp38'
+#if 0 // DRAFT: type mismatch
 void UIText::Draw(const RenderContext &arg0) {
+    RenderContext spB0;
+    Matrix sp70;
+    f64 sp68;
+    f64 sp60;                                       /* compiler-managed */
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     MKFont *temp_r0_151;
     f32 temp_f3_162;
     s32 temp_r3_121;
     s32 temp_r4_100;
     s8 *var_r29_156;
-    arg_sp38 = 0.0f;
-    arg_sp30 = 0.0f;
-    arg_sp34 = 0.0f;
-    arg_sp68 = (f64) arg_sp38;
-    arg_sp60 = (f64) arg_sp30;
+
+    sp38 = 0.0f;
+    sp30 = 0.0f;
+    sp34 = 0.0f;
+    sp68 = (f64) sp38;
+    sp60 = (f64) sp30;
     if ((((s8 *) this->unk60 != NULL) || ((MKFont *) this->unk64 >= 0)) && ((MKFont *) this->unk64 != NULL) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk18.unk34 == 0.0f) == 0))) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk18.unk38 == 0.0f) {
             return;
         }
-        arg_spB0.RenderContext();
-        arg_spB0.AddState(arg0, this->unk18);
+        spB0.RenderContext();
+        spB0.AddState(arg0, this->unk18);
         temp_r4_100 = this->unk18.unk3C;
         if (!(temp_r4_100 & 3)) {
-            arg_sp60 = this->unk18.unk34 * 0.5f;
+            sp60 = this->unk18.unk34 * 0.5f;
         } else if (temp_r4_100 & 1) {
-            arg_sp60 = 0.0f;
+            sp60 = 0.0f;
         } else {
-            arg_sp60 = this->unk18.unk34 / -2.0f;
+            sp60 = this->unk18.unk34 / -2.0f;
         }
         temp_r3_121 = this->unk18.unk3C;
         if (!(temp_r3_121 & 0xC)) {
-            arg_sp64 = this->unk18.unk38 * 0.5f;
+            unksp64 = this->unk18.unk38 * 0.5f;
         } else if (temp_r3_121 & 4) {
-            arg_sp64 = 0.0f;
+            unksp64 = 0.0f;
         } else {
-            arg_sp64 = this->unk18.unk38 / -2.0f;
+            unksp64 = this->unk18.unk38 / -2.0f;
         }
-        arg_sp70.SetIdentity();
-        arg_sp70.Translate((Matrix *) &arg_sp70, *((MKVector3 *) &arg_sp60));
-        arg_spB0.Multiply((Matrix *) &arg_sp70, (Matrix *) &arg_spB0);
+        sp70.SetIdentity();
+        sp70.Translate(&sp70, *((MKVector3 *) &sp60));
+        spB0.Multiply(&sp70, (Matrix *) &spB0);
         temp_r0_151 = this->unk64;
         if (temp_r0_151 >= 0) {
             var_r29_156 = *(gpTranslation_StringArray + ((s32) temp_r0_151 * 4));
@@ -70,27 +89,27 @@ void UIText::Draw(const RenderContext &arg0) {
         }
         temp_f3_162 = M2C_BITWISE(f32, this->unk68);
         if ((temp_f3_162 != 0.0f) || (M2C_BITWISE(f32, this->unk6C) != 0.0f)) {
-            arg_sp28 = arg_spE8;
-            arg_sp20 = arg_spE0 + temp_f3_162;
-            arg_sp24 = arg_spE4 + M2C_BITWISE(f32, this->unk6C);
-            arg_sp58 = (f64) arg_sp28;
-            arg_sp50 = (f64) arg_sp20;
-            arg_spE0 = (f32) arg_sp50;
-            arg_spE4 = arg_sp54;
-            arg_spE8 = (f32) arg_sp58;
-            arg_spEC = 1.0f;
-            this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &arg_spB0, this->unk18.unk3C, (u32) (128.0f * arg_spFC) << 0x18, 1.0f, 1.0f, NULL, 1U);
-            arg_sp18 = arg_spE8;
-            arg_sp10 = arg_spE0 - M2C_BITWISE(f32, this->unk68);
-            arg_sp14 = arg_spE4 - M2C_BITWISE(f32, this->unk6C);
-            arg_sp48 = (f64) arg_sp18;
-            arg_sp40 = (f64) arg_sp10;
-            arg_spE0 = (f32) arg_sp40;
-            arg_spE4 = arg_sp44;
-            arg_spE8 = (f32) arg_sp48;
-            arg_spEC = 1.0f;
+            sp28 = spB0.unk38;
+            sp20 = spB0.unk30 + temp_f3_162;
+            sp24 = spB0.unk34 + M2C_BITWISE(f32, this->unk6C);
+            sp58 = (f64) sp28;
+            sp50 = (f64) sp20;
+            spB0.unk30 = (f32) sp50;
+            spB0.unk34 = unksp54;
+            spB0.unk38 = (f32) sp58;
+            spB0.unk3C = 1.0f;
+            this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * unkspFC) << 0x18, 1.0f, 1.0f, NULL, 1U);
+            sp18 = spB0.unk38;
+            sp10 = spB0.unk30 - M2C_BITWISE(f32, this->unk68);
+            sp14 = spB0.unk34 - M2C_BITWISE(f32, this->unk6C);
+            sp48 = (f64) sp18;
+            sp40 = (f64) sp10;
+            spB0.unk30 = (f32) sp40;
+            spB0.unk34 = unksp44;
+            spB0.unk38 = (f32) sp48;
+            spB0.unk3C = 1.0f;
         }
-        this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &arg_spB0, this->unk18.unk3C, (u32) (128.0f * arg_spF0) | (((u32) (128.0f * arg_spF4) << 8) | (((u32) (128.0f * arg_spFC) << 0x18) | ((u32) (128.0f * arg_spF8) << 0x10))), 1.0f, 1.0f, NULL, 1U);
+        this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * (f32) spB0.unk40) | (((u32) (128.0f * unkspF4) << 8) | (((u32) (128.0f * unkspFC) << 0x18) | ((u32) (128.0f * (f32) spB0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
     }
 }
 #endif

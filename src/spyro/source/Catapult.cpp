@@ -284,17 +284,21 @@ void Catapult::SetBall(Ball *arg0) {
 
 #if 0 // DRAFT: ')' expected
 void Catapult::GetAmmoDir() {
-    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), (Matrix *) &arg_sp10, 1U);
-    M2C_FIELD(this, f64 *, 0) = arg_sp20;
-    M2C_FIELD(this, f64 *, 8) = arg_sp28;
+    Matrix sp10;
+
+    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), &sp10, 1U);
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10.unk10;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10.unk18;
 }
 #endif
 
 #if 0 // DRAFT: ')' expected
 void Catapult::GetAmmoPos() {
-    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), (Matrix *) &arg_sp10, 1U);
-    M2C_FIELD(this, f64 *, 0) = arg_sp40;
-    M2C_FIELD(this, f64 *, 8) = arg_sp48;
+    Matrix sp10;
+
+    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), &sp10, 1U);
+    M2C_FIELD(this, f64 *, 0) = (f64) sp10.unk30;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10.unk38;
 }
 #endif
 
@@ -434,45 +438,67 @@ void Catapult::WindBackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spA0'
+#if 0 // DRAFT: expression syntax error
 void Catapult::FireUpdate() {
+    Matrix spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    MKVector3 sp80;
+    MKVector3 sp70;
+    MKVector3 sp60;
+    M2C_UNK sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     Ball *temp_r30_546;
     Ball *temp_r3_576;
-    arg_spA0.GetAmmoPos();
+
+    spA0.GetAmmoPos();
     temp_r30_546 = M2C_FIELD(this, Ball **, 0x12C);
-    arg_spC0 = arg_spA0;
-    arg_spC8 = arg_spA8;
+    spC0 = spA0;
+    spC8 = spA8;
     if (temp_r30_546 != NULL) {
-        arg_sp50.GetAmmoDir();
-        arg_sp60.operator*(temp_r30_546->unk270);
-        arg_sp70.operator*(temp_r30_546->unk27C);
-        arg_sp80.operator*(0.5f);
+        sp50.GetAmmoDir();
+        sp60.operator*(temp_r30_546->unk270);
+        sp70.operator*(temp_r30_546->unk27C);
+        sp80.operator*(0.5f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_576 = M2C_FIELD(this, Ball **, 0x12C);
-        arg_sp90 = arg_sp20;
-        arg_sp28 = (f32) arg_spC8 + arg_sp88;
-        temp_r3_576->unkE0 = arg_sp20;
-        arg_sp98 = (f64) arg_sp28;
-        M2C_FIELD(temp_r3_576, f64 *, 0xE8) = (f64) arg_sp28;
+        sp90 = sp20;
+        sp28 = (f32) spC8 + sp80.unk8;
+        temp_r3_576->unkE0 = sp20;
+        sp98 = (f64) sp28;
+        M2C_FIELD(temp_r3_576, f64 *, 0xE8) = (f64) sp28;
     }
     if ((this->unk80->CheckEvent(0) != 0) && ((Ball *) M2C_FIELD(this, Ball **, 0x12C) != NULL)) {
-        arg_sp30 = 0.0f;
-        arg_sp34 = 0.0f;
-        arg_sp38 = -3950.0f * this->unk13C;
-        arg_spB0 = (f64) arg_sp30;
-        arg_spB8 = (f64) arg_sp38;
-        M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        sp30 = 0.0f;
+        sp34 = 0.0f;
+        sp38 = -3950.0f * this->unk13C;
+        spB0 = (f64) sp30;
+        spB8 = (f64) sp38;
+        M2C_STRUCT_COPY((s32) &unkspCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         KDMath_GetYaw((Matrix *) this->unk8);
-        arg_spD0.RotatePitch((Matrix *) &arg_spD0, -0.7f);
-        arg_spD0.RotateYaw((Matrix *) &arg_spD0, M2C_ERROR(/* Read from unset register $f1 */));
-        arg_sp10 = arg_sp100 + (((f32) arg_spB8 * arg_spF0) + (((f32) arg_spB0 * arg_spD0) + (arg_spB4 * arg_spE0)));
-        arg_sp14 = arg_sp104 + (((f32) arg_spB8 * arg_spF4) + (((f32) arg_spB0 * arg_spD4) + (arg_spB4 * arg_spE4)));
-        arg_sp18 = arg_sp108 + (((f32) arg_spB8 * arg_spF8) + (((f32) arg_spB0 * arg_spD8) + (arg_spB4 * arg_spE8)));
-        arg_spB0 = (f64) arg_sp10;
-        arg_spB8 = (f64) arg_sp18;
-        arg_sp40 = (f64) arg_sp10;
-        arg_sp48 = (f64) arg_sp18;
-        ((Ball *) (M2C_FIELD(this, Ball **, 0x12C)))->Fire(*((MKVector3 *) &arg_spB0));
+        spD0.RotatePitch(&spD0, -0.7f);
+        spD0.RotateYaw(&spD0, M2C_ERROR(/* Read from unset register $f1 */));
+        sp10 = spD0.unk30 + (((f32) spB8 * spD0.unk20) + (((f32) spB0 * M2C_BITWISE(f32, spD0)) + (unkspB4 * spD0.unk10)));
+        sp14 = spD0.unk34 + (((f32) spB8 * spD0.unk24) + (((f32) spB0 * spD0.unk4) + (unkspB4 * spD0.unk14)));
+        sp18 = spD0.unk38 + (((f32) spB8 * spD0.unk28) + (((f32) spB0 * spD0.unk8) + (unkspB4 * spD0.unk18)));
+        spB0 = (f64) sp10;
+        spB8 = (f64) sp18;
+        sp40 = (f64) sp10;
+        sp48 = (f64) sp18;
+        ((Ball *) (M2C_FIELD(this, Ball **, 0x12C)))->Fire(*((MKVector3 *) &spB0));
         M2C_FIELD(this, Ball **, 0x12C) = NULL;
         ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.0f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
     }

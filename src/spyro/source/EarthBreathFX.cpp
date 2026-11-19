@@ -381,12 +381,20 @@ void EarthBreathFX::ResetFury() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
 void EarthBreathFX::DrawShotgunMuzzelFlash() {
+    Matrix sp30;
+    M2C_UNK sp2C;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
     f32 temp_f3_689;
     f32 temp_f3_694;
     f32 var_f2_670;
+
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (M2C_BITWISE(f32, this->unk128) != 0.0f) {
-        M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) &this->unk14C + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &this->unk14C + 4, 0x40);
         var_f2_670 = M2C_BITWISE(f32, this->unk128);
         if (var_f2_670 < 0.25f) {
 
@@ -400,13 +408,13 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
         }
         temp_f3_689 = var_f2_670 / 0.25f;
         temp_f3_694 = 3.0f * temp_f3_689;
-        arg_sp18 = temp_f3_694;
-        arg_sp10 = temp_f3_694;
-        arg_sp14 = (3.0f * (1.0f - temp_f3_689)) + 2.0f;
-        arg_sp28 = (f64) arg_sp18;
-        arg_sp20 = (f64) arg_sp10;
-        arg_sp30.Scale3x3((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
-        MKModel_SetWorldMatrix(M2C_FIELD(this, MKModel **, 0x140), *((Matrix *) &arg_sp30));
+        sp18 = temp_f3_694;
+        sp10 = temp_f3_694;
+        sp14 = (3.0f * (1.0f - temp_f3_689)) + 2.0f;
+        sp28 = (f64) sp18;
+        sp20 = (f64) sp10;
+        sp30.Scale3x3(&sp30, *((MKVector3 *) &sp20));
+        MKModel_SetWorldMatrix(M2C_FIELD(this, MKModel **, 0x140), sp30);
         MKModel_Draw(M2C_FIELD(this, MKModel **, 0x140), NULL);
     }
 }
@@ -414,6 +422,78 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
 
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
+    Matrix sp260;
+    M2C_UNK sp25C;
+    s8 sp250;
+    f64 sp248;
+    f64 sp240;
+    s32 sp23C;
+    s32 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    M2C_UNK sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    M2C_UNK sp118;
+    f32 sp110;
+    f32 sp10C;
+    f32 sp108;
+    f32 sp100;
+    f32 spF0;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD0;
+    f32 spC0;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp20;
+    f32 sp10;
     ManagedLight *temp_r3_1227;
     ManagedLight *temp_r3_1240;
     ManagedLight *temp_r3_1259;
@@ -439,6 +519,7 @@ s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, co
     void *temp_r3_1233;
     void *temp_r3_1243;
     void *temp_r3_1267;
+
     this->unkD0.unk50 = 0;
     this->unkB0 = 1;
     var_f23_763 = 1.125f;
@@ -521,12 +602,12 @@ block_27:
         this->unk128 = 0.25f;
     }
     M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp110 = 0.0f;
-    arg_sp108 = 0.0f;
-    arg_sp10C = 1.0f;
-    arg_sp220 = (f64) arg_sp110;
-    arg_sp218 = (f64) arg_sp108;
-    KDMath_BuildMatrixFromUp((Matrix *) &this->unk150, arg1, *((MKVector3 *) &arg_sp218));
+    sp110 = 0.0f;
+    sp108 = 0.0f;
+    sp10C = 1.0f;
+    sp220 = (f64) sp110;
+    sp218 = (f64) sp108;
+    KDMath_BuildMatrixFromUp((Matrix *) &this->unk150, arg1, *((MKVector3 *) &sp218));
     this->unk150.unk28 = arg0.unk0;
     var_r24_987 = 0;
     temp_f29_988 = arg0.unk8;
@@ -538,80 +619,80 @@ block_27:
     do {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        arg_sp100 = temp_f31_992 * 50.0f;
-        arg_sp1F8 = arg_spF8;
-        arg_sp200 = (f64) arg_sp100;
+        sp100 = temp_f31_992 * 50.0f;
+        sp1F8 = spF8;
+        sp200 = (f64) sp100;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp208 = arg_spE8;
-        arg_spF0 = temp_f29_988 + (f32) arg_sp200;
-        arg_sp210 = (f64) arg_spF0;
+        sp208 = spE8;
+        spF0 = temp_f29_988 + (f32) sp200;
+        sp210 = (f64) spF0;
         temp_f21_1022 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f19_1027 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spD8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spDC = temp_f19_1027;
-        arg_spE0 = temp_f21_1022;
-        arg_sp1C8 = (f64) arg_spD8;
-        arg_sp1D0 = (f64) arg_spE0;
+        spD8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        spDC = temp_f19_1027;
+        spE0 = temp_f21_1022;
+        sp1C8 = (f64) spD8;
+        sp1D0 = (f64) spE0;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        arg_sp1D8 = arg_spC8;
-        arg_spD0 = (f32) arg_sp1D0 * 0.5f;
-        arg_sp1E0 = (f64) arg_spD0;
+        sp1D8 = spC8;
+        spD0 = (f32) sp1D0 * 0.5f;
+        sp1E0 = (f64) spD0;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp1E8 = arg_spB8;
-        arg_spC0 = temp_f31_992 + (f32) arg_sp1E0;
-        arg_sp1F0 = (f64) arg_spC0;
-        SpawnSeedBullet(*((MKVector3 *) &arg_sp208), *((MKVector3 *) &arg_sp1E8), arg2, var_f23_763, var_r29_768);
+        sp1E8 = spB8;
+        spC0 = temp_f31_992 + (f32) sp1E0;
+        sp1F0 = (f64) spC0;
+        SpawnSeedBullet(*((MKVector3 *) &sp208), *((MKVector3 *) &sp1E8), arg2, var_f23_763, var_r29_768);
         temp_f19_1072 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f21_1077 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spA8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        arg_spAC = temp_f21_1077;
-        arg_spB0 = temp_f19_1072;
-        arg_sp178 = (f64) arg_spA8;
-        arg_sp180 = (f64) arg_spB0;
+        spA8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        spAC = temp_f21_1077;
+        spB0 = temp_f19_1072;
+        sp178 = (f64) spA8;
+        sp180 = (f64) spB0;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        arg_sp188 = arg_sp98;
-        arg_spA0 = (f32) arg_sp180 * 0.5f;
-        arg_sp190 = (f64) arg_spA0;
+        sp188 = sp98;
+        spA0 = (f32) sp180 * 0.5f;
+        sp190 = (f64) spA0;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp198 = arg_sp88;
-        arg_sp90 = temp_f31_992 + (f32) arg_sp190;
-        arg_sp1A0 = (f64) arg_sp90;
+        sp198 = sp88;
+        sp90 = temp_f31_992 + (f32) sp190;
+        sp1A0 = (f64) sp90;
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-        arg_sp1A8 = arg_sp78;
-        arg_sp80 = (f32) arg_sp1A0 * 3050.0f;
-        arg_sp1B0 = (f64) arg_sp80;
+        sp1A8 = sp78;
+        sp80 = (f32) sp1A0 * 3050.0f;
+        sp1B0 = (f64) sp80;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        arg_sp1B8 = arg_sp68;
-        arg_sp70 = (f32) arg_sp1B0 + temp_f20_994;
-        arg_sp1C0 = (f64) arg_sp70;
-        arg_sp10 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+        sp1B8 = sp68;
+        sp70 = (f32) sp1B0 + temp_f20_994;
+        sp1C0 = (f64) sp70;
+        sp10 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
         temp_f21_1142 = MKRand_Float(&gViewSeed, 0.0f, 0.5f);
-        arg_sp5C = MKRand_Float(&gViewSeed, 0.6f, 1.0f);
-        arg_sp58 = 0.1f;
-        arg_sp60 = temp_f21_1142;
-        arg_sp64 = 1.0f;
-        arg_sp168 = (f64) arg_sp58;
-        arg_sp170 = (f64) arg_sp60;
-        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &arg_sp1B8), arg_sp10, *((MKVector4 *) &arg_sp168), -800.0f);
+        sp5C = MKRand_Float(&gViewSeed, 0.6f, 1.0f);
+        sp58 = 0.1f;
+        sp60 = temp_f21_1142;
+        sp64 = 1.0f;
+        sp168 = (f64) sp58;
+        sp170 = (f64) sp60;
+        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &sp1B8), sp10, *((MKVector4 *) &sp168), -800.0f);
         var_r24_987 += 1;
     } while (var_r24_987 < 0x14);
-    M2C_STRUCT_COPY((s32) &arg_sp25C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    arg_sp50 = 0.0f;
-    arg_sp48 = 0.0f;
-    arg_sp4C = 1.0f;
-    arg_sp230 = (f64) arg_sp50;
-    arg_sp228 = (f64) arg_sp48;
-    KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp260, arg1, (MKVector3 *) &arg_sp228);
-    arg_sp290 = arg0.unk0;
-    arg_sp294 = arg0.unk4;
-    arg_sp298 = arg0.unk8;
-    arg_sp29C = 1.0f;
+    M2C_STRUCT_COPY((s32) &sp25C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    sp50 = 0.0f;
+    sp48 = 0.0f;
+    sp4C = 1.0f;
+    sp230 = (f64) sp50;
+    sp228 = (f64) sp48;
+    KDMath_BuildMatrixFromFwd(&sp260, arg1, (MKVector3 *) &sp228);
+    sp260.unk30 = arg0.unk0;
+    sp260.unk34 = arg0.unk4;
+    sp260.unk38 = arg0.unk8;
+    sp260.unk3C = 1.0f;
     if (var_r30_767 != 0) {
-        ((ShotgunWarpFX *) (&gb + 0x130))->StartWarp((Matrix *) &arg_sp260);
+        ((ShotgunWarpFX *) (&gb + 0x130))->StartWarp(&sp260);
     }
     temp_r4_1206 = this->unkB8;
     if (temp_r4_1206 != NULL) {
@@ -620,15 +701,15 @@ block_27:
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_1227 = this->unkB8;
-        arg_sp158 = arg_sp38;
-        arg_sp40 = arg0.unk8 + arg_sp150;
-        temp_r3_1227->unk10 = arg_sp38;
-        temp_r3_1227->unk18 = (f64) arg_sp40;
+        sp158 = sp38;
+        sp40 = arg0.unk8 + sp150;
+        temp_r3_1227->unk10 = sp38;
+        temp_r3_1227->unk18 = (f64) sp40;
         temp_r3_1233 = temp_r3_1227->unk3C;
-        arg_sp160 = (f64) arg_sp40;
+        sp160 = (f64) sp40;
         if (temp_r3_1233 != NULL) {
-            M2C_FIELD(temp_r3_1233, f64 *, 0x10) = arg_sp38;
-            M2C_FIELD(temp_r3_1233, f64 *, 0x18) = (f64) arg_sp40;
+            M2C_FIELD(temp_r3_1233, f64 *, 0x10) = sp38;
+            M2C_FIELD(temp_r3_1233, f64 *, 0x18) = (f64) sp40;
         }
         temp_r3_1240 = this->unkB8;
         temp_r3_1240->unk38 = 1000.0f;
@@ -639,34 +720,34 @@ block_27:
             M2C_FIELD(temp_r3_1243, f32 *, 0x28) = 0.001f;
             M2C_FIELD(temp_r3_1243, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1243, f32 *, 0x24));
         }
-        arg_sp28 = 0.0f;
+        sp28 = 0.0f;
         temp_r3_1259 = this->unkB8;
-        arg_sp2C = 1.0f;
-        arg_sp30 = 0.0f;
-        arg_sp34 = 1.0f;
-        temp_r3_1259->unk20 = (f64) arg_sp28;
-        temp_r3_1259->unk28 = (f64) arg_sp30;
+        sp2C = 1.0f;
+        sp30 = 0.0f;
+        sp34 = 1.0f;
+        temp_r3_1259->unk20 = (f64) sp28;
+        temp_r3_1259->unk28 = (f64) sp30;
         temp_r3_1267 = temp_r3_1259->unk3C;
-        arg_sp138 = (f64) arg_sp28;
-        arg_sp140 = (f64) arg_sp30;
+        sp138 = (f64) sp28;
+        sp140 = (f64) sp30;
         if (temp_r3_1267 != NULL) {
-            M2C_FIELD(temp_r3_1267, f64 *, 0) = (f64) arg_sp28;
-            M2C_FIELD(temp_r3_1267, f64 *, 8) = (f64) arg_sp30;
+            M2C_FIELD(temp_r3_1267, f64 *, 0) = (f64) sp28;
+            M2C_FIELD(temp_r3_1267, f64 *, 8) = (f64) sp30;
         }
     }
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
-        arg_sp23C = 0;
+        sp23C = 0;
         MKVector(1.0f, 1.0f, 1.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        arg_sp238 = 0x417;
-        arg_sp240 = arg_sp18;
-        arg_sp20 = arg_sp120 * 50.0f;
-        arg_sp250 = 1;
-        arg_sp248 = (f64) arg_sp20;
-        arg_sp128 = arg_sp18;
-        arg_sp130 = (f64) arg_sp20;
-        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp238, arg_sp18);
+        sp238 = 0x417;
+        sp240 = sp18;
+        sp20 = sp120 * 50.0f;
+        sp250 = 1;
+        sp248 = (f64) sp20;
+        sp128 = sp18;
+        sp130 = (f64) sp20;
+        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp238, sp18);
     }
     return 1;
 }
@@ -741,8 +822,20 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp38'
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 void EarthBreathFX::DrawSeedBullets() {
+    Matrix sp60;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f64 sp40;                                       /* compiler-managed */
+    f64 sp38;                                       /* compiler-managed */
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     MKVector3 **var_r31_1534;
     MKVector3 *temp_r3_1673;
     MKVector3 *temp_r3_1691;
@@ -756,14 +849,15 @@ void EarthBreathFX::DrawSeedBullets() {
     f64 temp_f1_1568;
     s32 temp_r3_1587;
     s32 var_r0_1597;
+
     var_r31_1534 = this->unkC8;
 loop_28:
     if (var_r31_1534 != NULL) {
         temp_r3_1691 = *var_r31_1534;
         if (temp_r3_1691 != NULL) {
-            arg_sp38 = M2C_FIELD(temp_r3_1691, f64 *, 0x10);
-            arg_sp40 = M2C_FIELD(temp_r3_1691, f64 *, 0x18);
-            var_f4_1552 = ((f32) arg_sp40 * (f32) arg_sp40) + (((f32) arg_sp38 * (f32) arg_sp38) + (arg_sp3C * arg_sp3C));
+            sp38 = M2C_FIELD(temp_r3_1691, f64 *, 0x10);
+            sp40 = M2C_FIELD(temp_r3_1691, f64 *, 0x18);
+            var_f4_1552 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
             if (var_f4_1552 > 0.000001f) {
                 if (var_f4_1552 > 0.0f) {
                     temp_f1_1558 = __frsqrte(var_f4_1552);
@@ -773,18 +867,18 @@ loop_28:
                 } else if (var_f4_1552 < M2C_BITWISE(f32, 0.0)) {
                     var_f4_1552 = __float_nan;
                 } else {
-                    arg_sp10 = var_f4_1552;
-                    temp_r3_1587 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                    sp10 = var_f4_1552;
+                    temp_r3_1587 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                     switch (temp_r3_1587) {         /* irregular */
                     case 0x7F800000:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1597 = 1;
                         } else {
                             var_r0_1597 = 2;
                         }
                         break;
                     case 0x0:
-                        if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                             var_r0_1597 = 5;
                         } else {
                             var_r0_1597 = 3;
@@ -804,9 +898,9 @@ loop_28:
                 var_f4_1552 = 0.0f;
             }
             var_f26_1625 = var_f4_1552 / 1000.0f;
-            arg_sp38 = (f32) arg_sp38 * var_f3_1619;
-            arg_sp3C *= var_f3_1619;
-            arg_sp40 = (f32) arg_sp40 * var_f3_1619;
+            sp38 = (f32) sp38 * var_f3_1619;
+            unksp3C *= var_f3_1619;
+            sp40 = (f32) sp40 * var_f3_1619;
             if (var_f26_1625 < 2.0f) {
 
             } else {
@@ -818,23 +912,23 @@ loop_28:
                 var_f26_1625 = 0.0f;
             }
             temp_r6_1649 = *var_r31_1534;
-            arg_sp48 = 0.0f;
-            arg_sp4C = 1.0f;
-            arg_sp50 = 0.0f;
+            sp48 = 0.0f;
+            sp4C = 1.0f;
+            sp50 = 0.0f;
             temp_f25_1659 = 2.0f * (M2C_FIELD(temp_r6_1649, f32 *, 0x20) / M2C_FIELD(temp_r6_1649, f32 *, 0x24));
-            KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp38), (MKVector3 *) &arg_sp48);
-            arg_sp18 = temp_f25_1659;
-            arg_sp1C = temp_f25_1659;
-            arg_sp20 = 2.0f * var_f26_1625;
-            arg_sp28 = (f64) arg_sp18;
-            arg_sp30 = (f64) arg_sp20;
-            arg_sp60.Scale3x3((Matrix *) &arg_sp60, *((MKVector3 *) &arg_sp28));
+            KDMath_BuildMatrixFromFwd(&sp60, *((MKVector3 *) &sp38), (MKVector3 *) &sp48);
+            sp18 = temp_f25_1659;
+            sp1C = temp_f25_1659;
+            sp20 = 2.0f * var_f26_1625;
+            sp28 = (f64) sp18;
+            sp30 = (f64) sp20;
+            sp60.Scale3x3(&sp60, *((MKVector3 *) &sp28));
             temp_r3_1673 = *var_r31_1534;
-            arg_sp90 = temp_r3_1673->unk0;
-            arg_sp94 = temp_r3_1673->unk4;
-            arg_sp98 = temp_r3_1673->unk8;
-            arg_sp9C = 1.0f;
-            MKModel_SetWorldMatrix(this->unk128, *((Matrix *) &arg_sp60));
+            sp60.unk30 = temp_r3_1673->unk0;
+            sp60.unk34 = temp_r3_1673->unk4;
+            sp60.unk38 = temp_r3_1673->unk8;
+            sp60.unk3C = 1.0f;
+            MKModel_SetWorldMatrix(this->unk128, sp60);
             MKModel_Draw(this->unk128, NULL);
             var_r31_1534 += 4;
             goto loop_28;

@@ -45,8 +45,55 @@ void FlyingMonkey::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *ar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
+#if 0 // DRAFT: expression syntax error
 void FlyingMonkey::Update() {
+    MKCollisionResult sp220;
+    Matrix sp1E0;
+    Matrix sp1A0;
+    MKVector3 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;                                      /* compiler-managed */
+    f64 sp168;                                      /* compiler-managed */
+    f64 sp160;
+    f64 sp158;
+    MKVector3 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    MKVector3 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f32 spB0;
+    f32 spA0;
+    f32 sp90;
+    f32 sp80;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp14;
+    f32 sp10;
+    s32 sp8;
     f32 var_f4_284;
     f32 var_f5_305;
     f64 temp_f1_310;
@@ -57,9 +104,10 @@ void FlyingMonkey::Update() {
     u32 var_r3_207;
     u8 temp_r3_159;
     void *temp_r4_129;
+
     if ((s32 *) this->unk138 != NULL) {
         temp_r4_129 = checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        arg_sp8 = 1;
+        sp8 = 1;
         this->unk138->Update(M2C_FIELD(temp_r4_129, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     this->unk140 -= gUpdateTimeDelta;
@@ -70,24 +118,24 @@ void FlyingMonkey::Update() {
     } else {
         temp_r3_159 = this->unk14C;
         if (((temp_r3_159 >> 7U) & 1) && ((temp_r3_159 >> 6U) & 1)) {
-            MKModel_CalculateCentre(this->unk4, (MKVector3 *) &arg_sp188);
+            MKModel_CalculateCentre(this->unk4, &sp188);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            arg_sp138 = arg_spA8;
-            arg_spB0 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
-            arg_sp140 = (f64) arg_spB0;
+            sp138 = spA8;
+            spB0 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
+            sp140 = (f64) spB0;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            arg_sp178 = arg_sp98;
-            arg_spA0 = arg_sp190 + (f32) arg_sp140;
-            arg_sp180 = (f64) arg_spA0;
-            if (MKCollision_SweepSphereCollide(*((MKVector3 *) &arg_sp188), *((MKVector3 *) &arg_sp178), 120.00001f, (MKCollisionResult *) &arg_sp220, (MKCollisionMode) 7, 0) != 0) {
-                if ((arg_sp270 != 0) && (arg_sp268 != NULL) && (var_r3_207 = M2C_FIELD(arg_sp268, u32 *, 8), ((var_r3_207 == 0U) == 0))) {
+            sp178 = sp98;
+            spA0 = sp188.unk8 + (f32) sp140;
+            sp180 = (f64) spA0;
+            if (MKCollision_SweepSphereCollide(sp188, *((MKVector3 *) &sp178), 120.00001f, &sp220, (MKCollisionMode) 7, 0) != 0) {
+                if ((sp220.unk50 != 0) && (sp220.unk48 != NULL) && (var_r3_207 = M2C_FIELD(sp220.unk48, u32 *, 8), ((var_r3_207 == 0U) == 0))) {
 
                 } else {
                     var_r3_207 = 0U;
                 }
                 if (var_r3_207 != (MKProp *) this->unk130) {
-                    Collided(arg_sp220);
+                    Collided(sp220);
                 } else {
                     goto block_14;
                 }
@@ -95,33 +143,33 @@ void FlyingMonkey::Update() {
 block_14:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                arg_sp118 = arg_sp88;
-                arg_sp90 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
-                arg_sp120 = (f64) arg_sp90;
+                sp118 = sp88;
+                sp90 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
+                sp120 = (f64) sp90;
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                arg_sp128 = arg_sp78;
-                arg_sp80 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) arg_sp120;
-                arg_sp130 = (f64) arg_sp80;
-                MKModel_SetPosition(this->unk4, *((MKVector3 *) &arg_sp128));
+                sp128 = sp78;
+                sp80 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) sp120;
+                sp130 = (f64) sp80;
+                MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp128));
             }
             M2C_FIELD(this, f32 *, 0xCC) = (f32) ((-1960.0f * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0xCC));
         }
     }
     if (MKModel_GetAttachment(this->unk4) != NULL) {
-        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp1E0);
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, &sp1E0);
     } else {
-        M2C_STRUCT_COPY((s32) &arg_sp1DC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp1A0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     }
     var_f4_284 = 0.0f;
-    arg_sp70 = 0.0f;
-    arg_sp68 = 0.0f;
-    arg_sp6C = 1.0f;
-    arg_sp160 = (f64) arg_sp70;
-    arg_sp158 = (f64) arg_sp68;
-    arg_sp168 = this->unkC8;
-    arg_sp170 = this->unkD0;
-    var_f5_305 = ((f32) arg_sp170 * (f32) arg_sp170) + (((f32) arg_sp168 * (f32) arg_sp168) + (arg_sp16C * arg_sp16C));
+    sp70 = 0.0f;
+    sp68 = 0.0f;
+    sp6C = 1.0f;
+    sp160 = (f64) sp70;
+    sp158 = (f64) sp68;
+    sp168 = this->unkC8;
+    sp170 = this->unkD0;
+    var_f5_305 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
     if (var_f5_305 > 0.000001f) {
         if (var_f5_305 > 0.0f) {
             temp_f1_310 = __frsqrte(var_f5_305);
@@ -131,18 +179,18 @@ block_14:
         } else if (var_f5_305 < M2C_BITWISE(f32, 0.0)) {
             var_f5_305 = __float_nan;
         } else {
-            arg_sp10 = var_f5_305;
-            temp_r3_339 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            sp10 = var_f5_305;
+            temp_r3_339 = M2C_BITWISE(s32, sp10) & 0x7F800000;
             switch (temp_r3_339) {                  /* irregular */
             case 0x7F800000:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_349 = 1;
                 } else {
                     var_r0_349 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                     var_r0_349 = 5;
                 } else {
                     var_r0_349 = 3;
@@ -160,47 +208,47 @@ block_14:
     } else {
         var_f5_305 = 0.0f;
     }
-    arg_sp168 = (f32) arg_sp168 * var_f4_284;
-    arg_sp16C *= var_f4_284;
-    arg_sp170 = (f32) arg_sp170 * var_f4_284;
+    sp168 = (f32) sp168 * var_f4_284;
+    unksp16C *= var_f4_284;
+    sp170 = (f32) sp170 * var_f4_284;
     if (var_f5_305 != 0.0f) {
-        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp1A0, *((MKVector3 *) &arg_sp168), (MKVector3 *) &arg_sp158);
-        arg_sp1D0 = arg_sp210;
-        arg_sp1D4 = arg_sp214;
-        arg_sp1D8 = arg_sp218;
-        arg_sp1DC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp1A0));
+        KDMath_BuildMatrixFromFwd(&sp1A0, *((MKVector3 *) &sp168), (MKVector3 *) &sp158);
+        sp1A0.unk30 = sp1E0.unk30;
+        sp1A0.unk34 = sp1E0.unk34;
+        sp1A0.unk38 = sp1E0.unk38;
+        sp1A0.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp1A0);
     }
-    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108), (MKVector3 *) &arg_sp148);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108), &sp148);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    arg_sp108 = arg_sp18;
-    arg_sp20 = arg_sp208 * 200.0f;
-    arg_sp110 = (f64) arg_sp20;
+    sp108 = sp18;
+    sp20 = sp1E0.unk28 * 200.0f;
+    sp110 = (f64) sp20;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_sp60 = -1.0f;
-    arg_sp50 = 1.0f;
-    arg_sp58 = -1.0f;
-    arg_sp5C = -1.0f;
-    arg_sp48 = 1.0f;
-    arg_sp4C = 1.0f;
-    arg_sp150 += (f32) arg_sp110;
-    arg_spC8 = (f64) arg_sp58;
-    arg_spD0 = (f64) arg_sp60;
-    arg_spB8 = (f64) arg_sp48;
-    arg_spC0 = (f64) arg_sp50;
-    KDRand_Vector(*((MKVector3 *) &arg_spD8), *((MKVector3 *) &arg_spC8));
+    sp60 = -1.0f;
+    sp50 = 1.0f;
+    sp58 = -1.0f;
+    sp5C = -1.0f;
+    sp48 = 1.0f;
+    sp4C = 1.0f;
+    sp148.unk8 += (f32) sp110;
+    spC8 = (f64) sp58;
+    spD0 = (f64) sp60;
+    spB8 = (f64) sp48;
+    spC0 = (f64) sp50;
+    KDRand_Vector(spD8, *((MKVector3 *) &spC8));
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    arg_spE8 = arg_sp38;
-    arg_sp40 = arg_spE0 * 100.0f;
-    arg_spF0 = (f64) arg_sp40;
+    spE8 = sp38;
+    sp40 = spD8.unk8 * 100.0f;
+    spF0 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    arg_spF8 = arg_sp28;
-    arg_sp30 = arg_sp150 + (f32) arg_spF0;
-    arg_sp100 = (f64) arg_sp30;
-    arg_sp14 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
-    gb.EmitDust(*((MKVector3 *) &arg_spF8), MKVector3::zero, arg_sp14, 0.0f);
+    spF8 = sp28;
+    sp30 = sp148.unk8 + (f32) spF0;
+    sp100 = (f64) sp30;
+    sp14 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
+    gb.EmitDust(*((MKVector3 *) &spF8), MKVector3::zero, sp14, 0.0f);
 }
 #endif
 

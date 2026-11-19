@@ -2142,6 +2142,18 @@ void GameCamera2::StaticPosEnter() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void GameCamera2::TrainUpdate() {
+    Matrix sp80;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    MKVector3 sp48;
+    MKVector3 sp38;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
     KDCameraHeroData *temp_r29_4261;
     f32 temp_f2_4270;
     f32 var_f3_4349;
@@ -2154,6 +2166,7 @@ void GameCamera2::TrainUpdate() {
     u8 var_r0_4359;
     void *temp_r31_4259;
     void *temp_r3_4258;
+
     if (this->unk58->IsMessageStored(0x426) != 0) {
         temp_r3_4258 = checked_cast<TrainCameraUpdateDataMessage *, MKMessage>(this->unk58->GetMessage(0x426));
         temp_r31_4259 = temp_r3_4258;
@@ -2162,10 +2175,10 @@ void GameCamera2::TrainUpdate() {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         temp_f2_4270 = M2C_FIELD(temp_r3_4258, f32 *, 0x10) - M2C_FIELD(temp_r3_4258, f32 *, 0x20);
-        arg_sp58 = arg_sp28;
-        arg_sp30 = temp_f2_4270;
-        arg_sp60 = (f64) arg_sp30;
-        var_f4_4282 = ((f32) arg_sp60 * (f32) arg_sp60) + (((f32) arg_sp58 * (f32) arg_sp58) + (arg_sp5C * arg_sp5C));
+        sp58 = sp28;
+        sp30 = temp_f2_4270;
+        sp60 = (f64) sp30;
+        var_f4_4282 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
         if (var_f4_4282 > 1e-12f) {
             if (var_f4_4282 > 0.0f) {
                 temp_f1_4288 = __frsqrte(var_f4_4282);
@@ -2175,18 +2188,18 @@ void GameCamera2::TrainUpdate() {
             } else if (var_f4_4282 < M2C_BITWISE(f32, 0.0)) {
                 var_f4_4282 = __float_nan;
             } else {
-                arg_sp10 = var_f4_4282;
-                temp_r3_4317 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                sp10 = var_f4_4282;
+                temp_r3_4317 = M2C_BITWISE(s32, sp10) & 0x7F800000;
                 switch (temp_r3_4317) {             /* irregular */
                 case 0x7F800000:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_4327 = 1;
                     } else {
                         var_r0_4327 = 2;
                     }
                     break;
                 case 0x0:
-                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                         var_r0_4327 = 5;
                     } else {
                         var_r0_4327 = 3;
@@ -2205,30 +2218,30 @@ void GameCamera2::TrainUpdate() {
             var_f3_4349 = 0.0f;
         }
         var_r0_4359 = 0;
-        arg_sp1C = arg_sp5C * var_f3_4349;
-        arg_sp18 = (f32) arg_sp58 * var_f3_4349;
-        arg_sp20 = (f32) arg_sp60 * var_f3_4349;
-        arg_sp68 = (f64) arg_sp18;
-        arg_sp70 = (f64) arg_sp20;
+        sp1C = unksp5C * var_f3_4349;
+        sp18 = (f32) sp58 * var_f3_4349;
+        sp20 = (f32) sp60 * var_f3_4349;
+        sp68 = (f64) sp18;
+        sp70 = (f64) sp20;
         if ((this->unk220 == MKVector3::zero.unk0) && (this->unk224 == MKVector3::zero.unk4) && (this->unk228 == MKVector3::zero.unk8)) {
             var_r0_4359 = 1;
         }
         if (var_r0_4359 != 0) {
-            M2C_FIELD(this, f32 *, 0x220) = arg_sp68;
-            M2C_FIELD(this, f32 *, 0x228) = arg_sp70;
+            M2C_FIELD(this, f32 *, 0x220) = sp68;
+            M2C_FIELD(this, f32 *, 0x228) = sp70;
         }
-        KDMath_Smooth<MKVector3>(*((MKVector3 *) &arg_sp38), *((MKVector3 *) &this->unk220), 3.0f, gUpdateTimeDelta);
-        Normalise(*((MKVector3 *) &arg_sp48));
-        M2C_FIELD(this, f32 *, 0x220) = arg_sp48;
-        M2C_FIELD(this, f32 *, 0x228) = arg_sp50;
+        KDMath_Smooth<MKVector3>(sp38, *((MKVector3 *) &this->unk220), 3.0f, gUpdateTimeDelta);
+        Normalise(sp48);
+        M2C_FIELD(this, f32 *, 0x220) = M2C_BITWISE(f64, sp48);
+        M2C_FIELD(this, f32 *, 0x228) = (f64) sp48.unk8;
         M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r29_4261, f64 *, 0x20);
         M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r29_4261, f64 *, 0x28);
-        if (KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp80, *((MKVector3 *) &this->unk220), &this->unk230) != 0) {
-            arg_spB0 = M2C_FIELD(temp_r31_4259, f32 *, 8);
-            arg_spB4 = M2C_FIELD(temp_r31_4259, f32 *, 0xC);
-            arg_spB8 = M2C_FIELD(temp_r31_4259, f32 *, 0x10);
-            arg_spBC = 1.0f;
-            SetLTW(*((Matrix *) &arg_sp80));
+        if (KDMath_BuildMatrixFromFwd(&sp80, *((MKVector3 *) &this->unk220), &this->unk230) != 0) {
+            sp80.unk30 = M2C_FIELD(temp_r31_4259, f32 *, 8);
+            sp80.unk34 = M2C_FIELD(temp_r31_4259, f32 *, 0xC);
+            sp80.unk38 = M2C_FIELD(temp_r31_4259, f32 *, 0x10);
+            sp80.unk3C = 1.0f;
+            SetLTW(sp80);
         }
     }
 }

@@ -254,6 +254,8 @@ void WobbleProperty::ResolveInstance() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void WobbleProperty::LoadDoneInstance() {
+    M2C_UNK sp1C;
+    f32 sp10;
     MKModel *temp_r28_479;
     f32 var_f4_510;
     f64 temp_f1_513;
@@ -264,12 +266,13 @@ void WobbleProperty::LoadDoneInstance() {
     s32 var_r0_552;
     void *temp_r29_484;
     void *temp_r3_586;
+
     temp_r28_479 = M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4);
     temp_r29_484 = *KDProperty::pInstanceMem;
     temp_r30_486 = this->unk8;
     *(temp_r29_484 + temp_r30_486) = MKDynamicBone_GetDynamicBone(temp_r28_479, ((Animation *) (MKModel_GetAnimation(temp_r28_479)))->GetNodeIndex(M2C_BITWISE(s8 *, this->unk14)));
-    M2C_STRUCT_COPY((s32) &arg_sp1C + 4, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) - 4 + 4, 0x40);
-    var_f4_510 = (arg_sp28 * arg_sp28) + ((arg_sp20 * arg_sp20) + (arg_sp24 * arg_sp24));
+    M2C_STRUCT_COPY((s32) &sp1C + 4, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) - 4 + 4, 0x40);
+    var_f4_510 = (sp28 * sp28) + ((sp20 * sp20) + (sp24 * sp24));
     if (var_f4_510 > 0.0f) {
         temp_f1_513 = __frsqrte(var_f4_510);
         temp_f1_519 = 0.5 * temp_f1_513 * -(((f64) var_f4_510 * (temp_f1_513 * temp_f1_513)) - 3.0);
@@ -278,18 +281,18 @@ void WobbleProperty::LoadDoneInstance() {
     } else if (var_f4_510 < M2C_BITWISE(f32, 0.0)) {
         var_f4_510 = __float_nan;
     } else {
-        arg_sp10 = var_f4_510;
-        temp_r3_542 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+        sp10 = var_f4_510;
+        temp_r3_542 = M2C_BITWISE(s32, sp10) & 0x7F800000;
         switch (temp_r3_542) {                      /* irregular */
         case 0x7F800000:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_552 = 1;
             } else {
                 var_r0_552 = 2;
             }
             break;
         case 0x0:
-            if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
                 var_r0_552 = 5;
             } else {
                 var_r0_552 = 3;
