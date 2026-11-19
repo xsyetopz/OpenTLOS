@@ -235,19 +235,28 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void ShockWave::Draw() {
     s32 var_r29_525;
     s32 var_r31_526;
     void *temp_r30_528;
     void *temp_r3_565;
+    Matrix arg_sp30;
+    Matrix arg_sp20;
+    f32 arg_sp24;
+    f64 arg_sp10;
+    f64 arg_sp18;
+    f32 arg_sp60;
+    f32 arg_sp64;
+    f32 arg_sp68;
+    f32 arg_sp6C;
+
     if ((u8) this->unk160 != 0) {
         var_r29_525 = 0;
         var_r31_526 = 0;
         do {
-            temp_r30_528 = this + var_r31_526;
+            temp_r30_528 = (s8 *) this + var_r31_526;
             if ((u8) M2C_FIELD(temp_r30_528, u8 *, 0x90) != 0) {
-                M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk15C) - 4 + 4, 0x40);
+                M2C_STRUCT_COPY(&arg_sp30, (void *) (MKModel_GetWorldMatrix(this->unk15C) - 4 + 4), 0x40);
                 arg_sp30.SetIdentity();
                 MKView_GetCameraMatrix();
                 arg_sp20.GetRotationPYR();
@@ -258,7 +267,7 @@ void ShockWave::Draw() {
                 arg_sp10 = M2C_FIELD(temp_r3_565, f64 *, 0x30);
                 arg_sp18 = M2C_FIELD(temp_r3_565, f64 *, 0x38);
                 arg_sp60 = (f32) arg_sp10;
-                arg_sp64 = arg_sp14;
+                arg_sp64 = ((f32 *) &arg_sp10)[1];
                 arg_sp68 = (f32) arg_sp18;
                 arg_sp6C = 1.0f;
                 MKModel_SetAlpha(this->unk15C, 1.0f - (M2C_FIELD(temp_r30_528, f32 *, 0x9C) / M2C_FIELD(temp_r30_528, f32 *, 0x94)));
@@ -272,7 +281,6 @@ void ShockWave::Draw() {
         } while (var_r29_525 < 4);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void ShockWave::Update() {
@@ -479,14 +487,11 @@ void ShockWave::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void ShockWave::SetMessage(int arg0, const char *arg1) {
     this->unk154 = arg0;
-    this->unk158 = arg1;
+    this->unk158 = (s8 *) arg1;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void ShockWave::Reset() {
     s32 temp_r0_1002;
     s32 var_ctr_1000;
@@ -499,14 +504,12 @@ void ShockWave::Reset() {
     do {
         temp_r0_1002 = var_r3_998 + 0x90;
         var_r3_998 += 0x28;
-        *(this + temp_r0_1002) = 0;
+        *((s8 *) this + temp_r0_1002) = 0;
         var_ctr_1000 -= 1;
     } while (var_ctr_1000 != 0);
     MKShockWave_Disable();
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKModel_Destroy(ShockWave)' does not match
 void ShockWave::Deinit() {
     s32 var_r30_1022;
     s32 var_r31_1023;
@@ -514,7 +517,7 @@ void ShockWave::Deinit() {
     var_r30_1022 = 0;
     var_r31_1023 = 0;
     do {
-        MKModel_Destroy(*(this + (var_r31_1023 + 0xA0)));
+        MKModel_Destroy(*(MKModel **) ((s8 *) this + (var_r31_1023 + 0xA0)));
         var_r30_1022 += 1;
         var_r31_1023 += 0x28;
     } while (var_r30_1022 < 4);
@@ -522,7 +525,6 @@ void ShockWave::Deinit() {
     MKShockWave_Disable();
     KDProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ShockWave::LoadDone() {
