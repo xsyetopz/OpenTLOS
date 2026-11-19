@@ -882,29 +882,22 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void LitCloudPS::Init() {
-    MKHeap *var_r3_1411;
-    MKHeap *var_r3_1425;
-    s32 temp_r0_1447;
-    s32 var_ctr_1444;
-    s32 var_r3_1436;
+    s32 i;
+    s32 off;
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1411 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2580, NULL, 0));
+        this->unk7C = (MKHeap *) MKHeap::Current()->Alloc(0x2580, NULL, 0);
     } else {
-        var_r3_1411 = malloc(0x2580);
+        this->unk7C = malloc(0x2580);
     }
-    this->unk7C = var_r3_1411;
     if (MKHeap::Current() != NULL) {
-        var_r3_1425 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x190, NULL, 0));
+        this->unk80 = (MKHeap *) MKHeap::Current()->Alloc(0x190, NULL, 0);
     } else {
-        var_r3_1425 = malloc(0x190);
+        this->unk80 = malloc(0x190);
     }
-    this->unk80 = var_r3_1425;
     this->unk74 = 0;
-    var_r3_1436 = 0;
     M2C_FIELD(this, f32 *, 0x50) = 0.0f;
     M2C_FIELD(this, f32 *, 0x54) = 0.0f;
     M2C_FIELD(this, f32 *, 0x58) = 0.0f;
@@ -912,21 +905,23 @@ void LitCloudPS::Init() {
     M2C_FIELD(this, f32 *, 0x64) = 0.0f;
     M2C_FIELD(this, f32 *, 0x68) = 0.0f;
     M2C_FIELD(this, f32 *, 0x6C) = 0.0f;
-    var_ctr_1444 = 0x64;
+    i = 0x64;
+    off = 0;
     do {
-        temp_r0_1447 = var_r3_1436 + 0x50;
-        var_r3_1436 += 0x60;
-        *(this->unk7C + temp_r0_1447) = 0;
-        var_ctr_1444 -= 1;
-    } while (var_ctr_1444 != 0);
-    this->unk84 = (MKMaterial *) (MKMaterial_Create("FX_381"));
+        ((u8 *) this->unk7C)[off + 0x50] = 0;
+        off += 0x60;
+        i -= 1;
+    } while (i != 0);
+    this->unk84 = (MKMaterial *) MKMaterial_Create("FX_381");
     this->unk78 = 0.0f;
     this->unk98 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 LitParticleCompare(const void *arg0, const void *arg1) {
-    return -(s32) (M2C_FIELD(*arg0, f32 *, 0x38) - M2C_FIELD(*arg1, f32 *, 0x38));
+    void *p0;
+    void *p1;
+
+    p0 = *(void *const *) arg0;
+    p1 = *(void *const *) arg1;
+    return -(s32) (M2C_FIELD(p0, f32 *, 0x38) - M2C_FIELD(p1, f32 *, 0x38));
 }
-#endif
