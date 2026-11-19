@@ -48,66 +48,58 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'SnowballTree' to 'signed char *'
 void SnowballTree::DropABall() {
-    s32 var_ctr_50;
-    s32 var_r4_47;
+    s32 i;
 
-    var_r4_47 = 0;
-    var_ctr_50 = 3;
-loop_1:
-    if ((s32) M2C_FIELD(*(this + (var_r4_47 + 0x90)), s32 *, 0x270) == 1) {
-        ((Ball *) (M2C_FIELD((this + var_r4_47), Ball **, 0x90)))->DropFromTree();
-        return;
-    }
-    var_r4_47 += 4;
-    var_ctr_50 -= 1;
-    if (var_ctr_50 == 0) {
-        return;
-    }
-    goto loop_1;
-}
-#endif
-
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
-void SnowballTree::Message(MKMessage *arg0) {
-    if ((s32) arg0->unk0 != 4) {
-
-    } else {
-        DropABall();
-        if (KDSound_IsVoicePlaying(this->unkB4) == 0) {
-            this->unkB4 = KDSound_Play3d(GS_SnowTreeHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+    for (i = 0; i < 3; i++) {
+        if ((*(Ball **) ((u8 *) this + 0x90 + i * 4))->unk270 == 1) {
+            (*(Ball **) ((u8 *) this + 0x90 + i * 4))->DropFromTree();
+            return;
         }
-        this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x8C), 1.0f, 0.0f, 0, -1);
+    }
+}
+
+void SnowballTree::Message(MKMessage *arg0) {
+    SnowballTreeDescriptor *desc;
+
+    if (arg0->unk0 == 4) {
+        DropABall();
+        if ((u8) KDSound_IsVoicePlaying(this->unkB4) == 0) {
+            this->unkB4 = KDSound_Play3d(GS_SnowTreeHit, (const MKVector3 *) ((u8 *) this->unk8 + 0x30), 0U, -1, 0.0f, false);
+        }
+        desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk80->SetAnim((MKAnim *) desc->unk8C, 1.0f, 0.0f, 0, -1);
         this->unkC4 = 1;
     }
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void *SnowballTree::Update() {
-    f32 temp_f2_134;
-    f32 temp_f31_172;
+    SnowballTreeDescriptor *desc;
+    f32 timer;
 
     KDProp::Update();
-    temp_f2_134 = this->unkBC;
-    if (temp_f2_134 > 0.0f) {
-        this->unkBC = temp_f2_134 - gUpdateTimeDelta;
+    timer = this->unkBC;
+    if (timer > 0.0f) {
+        this->unkBC = timer - gUpdateTimeDelta;
         if (this->unkBC <= 0.0f) {
-            this->unkB8 = KDSound_Play3d(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C), &this->unkA0, 0U, -1, 0.0f, 0U);
+            desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            this->unkB8 = KDSound_Play3d(desc->unk7C, &this->unkA0, 0U, -1, 0.0f, false);
         }
     }
-    if (((s32) M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C) != 0) && (KDSound_IsVoicePlaying(this->unkB8) == 0) && (this->unkBC <= 0.0f)) {
-        temp_f31_172 = M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
-        this->unkBC = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80), temp_f31_172);
+    desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((desc->unk7C != 0) && ((u8) KDSound_IsVoicePlaying(this->unkB8) == 0) && (this->unkBC <= 0.0f)) {
+        desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        timer = desc->unk84;
+        desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unkBC = MKRand_Float((int *) &gViewSeed, desc->unk80, timer);
     }
     if (((u8) this->unkC4 != 0) && (this->unk80->unk2C & 1)) {
-        this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x88), 1.0f, 0.0f, 0, -1);
+        desc = checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk80->SetAnim((MKAnim *) desc->unk88, 1.0f, 0.0f, 0, -1);
         this->unkC4 = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 SnowballTree::LoadDone() {

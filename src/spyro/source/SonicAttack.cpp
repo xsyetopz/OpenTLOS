@@ -51,49 +51,45 @@ extern M2C_UNK gb;
 #endif
 extern MKPropDescriptor *pSonicAttackDescriptor;
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void SonicAttack::Deinit() {
-    MKHeap *temp_r0_56;
-    MKHeap *temp_r0_75;
-    MKHeap *var_r31_52;
-    MKHeap *var_r3_53;
-    MKHeap *var_r4_51;
-    u32 temp_r0_61;
+    u32 *cursor_r4;
+    u32 *cursor_r3;
+    u32 lowest;
+    u32 value;
 
-    var_r4_51 = this->unk15C;
-    var_r31_52 = var_r4_51;
-    var_r3_53 = var_r4_51;
+    cursor_r4 = (u32 *) this->unk15C;
+    lowest = (u32) cursor_r4;
+    cursor_r3 = cursor_r4;
 loop_3:
-    temp_r0_61 = M2C_FIELD(var_r3_53, u32 *, -4);
-    var_r3_53 -= 4;
-    if (temp_r0_61 != 0U) {
-        temp_r0_56 = var_r3_53->unk0;
-        if (temp_r0_56 < var_r31_52) {
-            var_r31_52 = temp_r0_56;
+    value = *(u32 *) ((u8 *) cursor_r3 - 4);
+    cursor_r3 -= 1;
+    if (value != 0U) {
+        value = cursor_r3[0];
+        if (value < lowest) {
+            lowest = value;
         }
         goto loop_3;
     }
-    if (var_r3_53 != &gEmptyPtrListDL) {
+    if (cursor_r3 != (u32 *) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_75 = var_r4_51->unk0;
-        if (temp_r0_75 != NULL) {
-            if (temp_r0_75 < var_r31_52) {
-                var_r31_52 = temp_r0_75;
+        value = cursor_r4[0];
+        if (value != 0U) {
+            if (value < lowest) {
+                lowest = value;
             }
-            var_r4_51 += 4;
+            cursor_r4 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_52, NULL, 0);
+            MKHeap::Current()->Free((const void *) lowest, NULL, 0);
         } else {
-            free(var_r31_52);
+            free((MKHeap *) lowest);
         }
     }
     this->unk15C = NULL;
     MKModel_Destroy(this->unk168);
     Projectile::Deinit();
 }
-#endif
 
 void SonicAttack::DrawSonicRings() {
     MKHeap *temp_r4_124;
@@ -377,88 +373,74 @@ void SonicAttack::Draw() {
     temp_r31_550->Release();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void *SonicAttack::Update() {
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
+    MKVector3 dir;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 lenSq;
+    f32 inv;
     f32 sp8;
-    MKVector3 *temp_r3_592;
-    MKVector3 *temp_r4_591;
-    f32 var_f4_584;
-    f32 var_f5_612;
-    f64 temp_f1_617;
-    f64 temp_f1_623;
-    f64 temp_f1_627;
-    s32 temp_r3_646;
-    s32 var_r0_656;
+    f64 guess1;
+    f64 guess2;
+    f64 guess3;
+    s32 bits;
+    s32 cls;
 
     Projectile::Update();
-    if (((u8) this->unk158 != 0) && ((MKVector3 *) this->unk150 != NULL) && ((MKVector3 *) this->unk154 != NULL)) {
-        var_f4_584 = 0.0f;
+    if (((u8) this->unk158 != 0) && (this->unk150 != NULL) && (this->unk154 != NULL)) {
+        inv = 0.0f;
         this->unk164 -= gUpdateTimeDelta;
         if (this->unk164 <= 0.0f) {
-            temp_r4_591 = this->unk150;
-            temp_r3_592 = this->unk154;
-            sp20 = M2C_FIELD(temp_r3_592, f64 *, 0) - M2C_FIELD(temp_r4_591, f64 *, 0);
-            sp30 = sp20;
-            sp28 = temp_r3_592->unk8 - temp_r4_591->unk8;
-            sp38 = (f64) sp28;
-            var_f5_612 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
-            if (var_f5_612 > 1e-12f) {
-                if (var_f5_612 > 0.0f) {
-                    temp_f1_617 = __frsqrte(var_f5_612);
-                    temp_f1_623 = 0.5 * temp_f1_617 * -(((f64) var_f5_612 * (temp_f1_617 * temp_f1_617)) - 3.0);
-                    temp_f1_627 = 0.5 * temp_f1_623 * -(((f64) var_f5_612 * (temp_f1_623 * temp_f1_623)) - 3.0);
-                    var_f5_612 = (f32) ((f64) var_f5_612 * (0.5 * temp_f1_627 * -(((f64) var_f5_612 * (temp_f1_627 * temp_f1_627)) - 3.0)));
-                } else if (var_f5_612 < M2C_BITWISE(f32, 0.0)) {
-                    var_f5_612 = __float_nan;
+            dx = this->unk154->unk0 - this->unk150->unk0;
+            dy = this->unk154->unk4 - this->unk150->unk4;
+            dz = this->unk154->unk8 - this->unk150->unk8;
+            lenSq = (dz * dz) + ((dx * dx) + (dy * dy));
+            if (lenSq > 1e-12f) {
+                if (lenSq > 0.0f) {
+                    guess1 = __frsqrte(lenSq);
+                    guess2 = 0.5 * guess1 * -(((f64) lenSq * (guess1 * guess1)) - 3.0);
+                    guess3 = 0.5 * guess2 * -(((f64) lenSq * (guess2 * guess2)) - 3.0);
+                    lenSq = (f32) ((f64) lenSq * (0.5 * guess3 * -(((f64) lenSq * (guess3 * guess3)) - 3.0)));
+                } else if (lenSq < M2C_BITWISE(f32, 0.0)) {
+                    lenSq = __float_nan;
                 } else {
-                    sp8 = var_f5_612;
-                    temp_r3_646 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-                    switch (temp_r3_646) {          /* irregular */
+                    sp8 = lenSq;
+                    bits = M2C_BITWISE(s32, sp8) & 0x7F800000;
+                    switch (bits) {
                     case 0x7F800000:
                         if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                            var_r0_656 = 1;
+                            cls = 1;
                         } else {
-                            var_r0_656 = 2;
+                            cls = 2;
                         }
                         break;
                     case 0x0:
                         if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                            var_r0_656 = 5;
+                            cls = 5;
                         } else {
-                            var_r0_656 = 3;
+                            cls = 3;
                         }
                         break;
                     default:
-                        var_r0_656 = 4;
+                        cls = 4;
                         break;
                     }
-                    if (var_r0_656 == 1) {
-                        var_f5_612 = __float_nan;
+                    if (cls == 1) {
+                        lenSq = __float_nan;
                     }
                 }
-                var_f4_584 = 1.0f / var_f5_612;
+                inv = 1.0f / lenSq;
             }
-            sp14 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_584;
-            sp10 = (f32) sp30 * var_f4_584;
-            sp18 = (f32) sp38 * var_f4_584;
-            sp40 = (f64) sp10;
-            sp48 = (f64) sp18;
-            SpawnSonicRing(*this->unk150, *((MKVector3 *) &sp40));
+            dir.unk0 = dx * inv;
+            dir.unk4 = dy * inv;
+            dir.unk8 = dz * inv;
+            SpawnSonicRing(*this->unk150, dir);
             this->unk164 = 0.075f;
         }
     }
     UpdateSonicRings();
 }
-#endif
 
 s32 SonicAttack::LoadDone() {
     Matrix sp30;
