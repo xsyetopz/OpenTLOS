@@ -693,59 +693,52 @@ void FireBossGoal_Crash::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 FireBossGoal_Crash::Update() {
-    AnimSequence *temp_r4_1196;
-    AnimSequence *temp_r4_1211;
-    AnimSequence *temp_r4_1246;
-    AnimSequence *temp_r4_1259;
-    Character *temp_r29_1190;
-    Character *temp_r29_1253;
-    Character *temp_r3_1208;
-    Character *temp_r3_1245;
-    Character *temp_r3_1273;
-    Character *temp_r5_1218;
-    u8 var_r30_1191;
-    u8 var_r30_1254;
+    Character *chr;
+    AnimSequence *seq;
+    u8 flag;
 
     ActivateIfInactive();
-    temp_r29_1190 = this->unkC;
-    var_r30_1191 = 0;
-    if (temp_r29_1190->HasAnimFinished() != 0) {
-        temp_r4_1196 = temp_r29_1190->unkA50;
-        if ((temp_r4_1196 != NULL) && ((u32) temp_r4_1196->unk0 == (u32) M2C_FIELD(temp_r29_1190->unk630, u32 *, 0x20))) {
-            var_r30_1191 = 1;
+    chr = this->unkC;
+    flag = 0;
+    if (chr->HasAnimFinished() != 0) {
+        seq = M2C_FIELD(chr, AnimSequence **, 0xA50);
+        if (seq != NULL && (u32) seq->unk0 == (u32) M2C_FIELD(chr->unk630, u32 *, 0x20)) {
+            flag = 1;
         }
     }
-    if (var_r30_1191 != 0) {
-        temp_r3_1208 = this->unkC;
-        temp_r4_1211 = temp_r3_1208->unkA50;
-        ((Enemy *) temp_r3_1208)->SetAnim(temp_r4_1211, (AnimTransition *) &temp_r4_1211->unk20, 0.15f, 0U);
+    if (flag != 0) {
+        chr = this->unkC;
+        seq = M2C_FIELD(chr, AnimSequence **, 0xA50);
+        ((Enemy *) chr)->SetAnim(seq, (AnimTransition *) &seq->unk20, 0.15f, 0U);
         M2C_FIELD(this->unkC, s8 *, 0xFC9) = 0;
     }
-    temp_r5_1218 = this->unkC;
-    if (((u32) temp_r5_1218->unkA54 == &temp_r5_1218->unkA50->unk20) && (((s32) M2C_FIELD(temp_r5_1218->unk630, s32 *, 0x44) >= (s32) (4 - M2C_FIELD(temp_r5_1218, s32 *, 0xB10))) || (M2C_FIELD(temp_r5_1218, f32 *, 0xC48) >= 20.0f))) {
-        M2C_FIELD(temp_r5_1218, f32 *, 0xC48) = 0.0f;
+    chr = this->unkC;
+    seq = M2C_FIELD(chr, AnimSequence **, 0xA50);
+    if ((u32) M2C_FIELD(chr, AnimTransition **, 0xA54) == (u32) seq + 0x20 &&
+        ((s32) M2C_FIELD(chr->unk630, s32 *, 0x44) >= (s32) (4 - M2C_FIELD(chr, s32 *, 0xB10)) ||
+         M2C_FIELD(chr, f32 *, 0xC48) >= 20.0f)) {
+        M2C_FIELD(chr, f32 *, 0xC48) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB24) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB1C) = -100.0f;
-        temp_r3_1245 = this->unkC;
-        temp_r4_1246 = temp_r3_1245->unkA50;
-        ((Enemy *) temp_r3_1245)->SetAnim(temp_r4_1246, (AnimTransition *) &temp_r4_1246->unk40, 0.15f, 0U);
-        ((FireBossDriver *) (M2C_FIELD(this->unkC, FireBossDriver **, 0xF64)))->CrashExit();
+        chr = this->unkC;
+        seq = M2C_FIELD(chr, AnimSequence **, 0xA50);
+        ((Enemy *) chr)->SetAnim(seq, (AnimTransition *) &seq->unk40, 0.15f, 0U);
+        ((FireBossDriver *) M2C_FIELD(this->unkC, FireBossDriver **, 0xF64))->CrashExit();
     }
-    temp_r29_1253 = this->unkC;
-    var_r30_1254 = 0;
-    if (temp_r29_1253->HasAnimFinished() != 0) {
-        temp_r4_1259 = temp_r29_1253->unkA50;
-        if ((temp_r4_1259 != NULL) && ((u32) temp_r4_1259->unk40 == (u32) M2C_FIELD(temp_r29_1253->unk630, u32 *, 0x20))) {
-            var_r30_1254 = 1;
+    chr = this->unkC;
+    flag = 0;
+    if (chr->HasAnimFinished() != 0) {
+        seq = M2C_FIELD(chr, AnimSequence **, 0xA50);
+        if (seq != NULL && (u32) seq->unk40 == (u32) M2C_FIELD(chr->unk630, u32 *, 0x20)) {
+            flag = 1;
         }
     }
-    if (var_r30_1254 != 0) {
+    if (flag != 0) {
         this->unk8 = 2;
-        temp_r3_1273 = this->unkC;
-        if ((u8) M2C_FIELD(temp_r3_1273, u8 *, 0xC40) != 0) {
-            KDSound_Play3d(GS_Train3, temp_r3_1273->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        chr = this->unkC;
+        if (M2C_FIELD(chr, u8 *, 0xC40) != 0) {
+            KDSound_Play3d(GS_Train3, (MKVector3 *) ((u8 *) chr->unk8 + 0x30), 0U, -1, 0.0f, 0U);
             M2C_FIELD(this->unkC, u8 *, 0xC40) = 0U;
         }
         M2C_FIELD(this->unkC, s8 *, 0xFCA) = 1;
@@ -753,7 +746,6 @@ u8 FireBossGoal_Crash::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void FireBossGoal_Crash::Activate() {
     this->unk8 = 0;
