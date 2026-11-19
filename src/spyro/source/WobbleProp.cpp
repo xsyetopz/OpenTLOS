@@ -233,15 +233,16 @@ void WobbleProp::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: ')' expected
 s32 WobbleProp::LoadDone() {
+    WobblePropDescriptor *temp_r3;
+
     GameProp::LoadDone();
     this->unkC8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobbler"));
     this->unkCC = 0;
     this->unkD0 = 0.0f;
-    this->unkD4 = Tools_GetMatchingMaterial(this->unk4, M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0xEC));
+    temp_r3 = checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unkD4 = Tools_GetMatchingMaterial(this->unk4, (const char *) M2C_FIELD(temp_r3, s8 **, 0xEC));
 }
-#endif
 
 void WobbleProp::Init() {
     GameProp::Init();
@@ -252,23 +253,19 @@ void WobbleProp::Init() {
     this->unkE8 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 WobblePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_472;
 
     var_r31_472 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unkE8, 0) != 0) || (arg0->LoadString("LampFlickerMatName", &this->unkEC, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &M2C_FIELD(this, f32 *, 0xE8), 0) != 0) || (arg0->LoadString("LampFlickerMatName", (const char **) &M2C_FIELD(this, s8 **, 0xEC), 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &M2C_FIELD(this, s32 *, 0xE4)) != 0)) {
         var_r31_472 = 1;
     }
     return var_r31_472;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void WobblePropDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkEC = NULL;
-    this->unkE4 = GS_PLACEHOLDER;
-    this->unkE8 = 0.05f;
+    M2C_FIELD(this, s8 **, 0xEC) = NULL;
+    M2C_FIELD(this, s32 *, 0xE4) = GS_PLACEHOLDER;
+    M2C_FIELD(this, f32 *, 0xE8) = 0.05f;
 }
-#endif

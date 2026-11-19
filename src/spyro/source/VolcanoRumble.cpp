@@ -516,7 +516,6 @@ void VolcanoRumble::Reset() {
     M2C_FIELD(this, s8 *, 0xF0) = 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(VolcanoRumble *)' does not match 'KDSound_Stop(int *)'
 void VolcanoRumble::Deinit() {
     s32 var_r30_970;
     s32 var_r31_971;
@@ -524,17 +523,16 @@ void VolcanoRumble::Deinit() {
     var_r30_970 = 0;
     var_r31_971 = 0;
     do {
-        KDSound_Stop(this + (var_r31_971 + 0x4C));
+        KDSound_Stop((int *) ((s8 *) this + (var_r31_971 + 0x4C)));
         var_r30_970 += 1;
         var_r31_971 += 0x28;
     } while (var_r30_970 < 4);
     M2C_FIELD(this, s8 *, 0xF0) = 0;
-    if ((u32) M2C_FIELD(&gb, u32 *, 0x2B0) == this) {
+    if ((u32) M2C_FIELD(&gb, u32 *, 0x2B0) == (u32) this) {
         M2C_FIELD(&gb, u32 *, 0x2B0) = 0U;
     }
     MKProp::Deinit();
 }
-#endif
 
 void VolcanoRumble::Init() {
     s32 var_r30_1008;
