@@ -354,10 +354,10 @@ public:
 
 #if 0 // DRAFT: undefined identifier 'vtable6B8'
 inline Enemy::~Enemy() {
-    M2C_UNK *temp_r0_5288;
-    M2C_UNK *temp_r4_5291;
     u8 *temp_r0_5272;
+    u8 *temp_r0_5288;
     u8 *temp_r4_5275;
+    u8 *temp_r4_5291;
 
     if (this != NULL) {
         this->vtable6B8 = &__vt + 0x84;
@@ -382,8 +382,8 @@ inline Enemy::~Enemy() {
                 if (temp_r0_5288 != NULL) {
                     temp_r4_5291 = &this->unk648;
                     if (temp_r0_5288 != temp_r4_5291) {
-                        M2C_FIELD(this->unk66C, M2C_UNK **, 0x20) = temp_r0_5288;
-                        M2C_FIELD(this->unk668, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk66C;
+                        M2C_FIELD(this->unk66C, u8 **, 0x20) = temp_r0_5288;
+                        M2C_FIELD(this->unk668, u8 **, 0x24) = (u8 *) this->unk66C;
                         this->unk66C = temp_r4_5291;
                         this->unk668 = temp_r4_5291;
                     }
@@ -398,8 +398,8 @@ inline Enemy::~Enemy() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 inline Enemy::Enemy() {
-    M2C_UNK *temp_r8_5345;
     u8 *temp_r7_5347;
+    u8 *temp_r8_5345;
 
     this->unk110.__vptr = &__vt;
     this->unk660 = NULL;

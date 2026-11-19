@@ -296,7 +296,8 @@ public:
     /* 0x204 */ InputModifier unk204;
     /* 0x214 */ InputModifier unk214;
     /* 0x224 */ KDCamera* unk224;
-    /* 0x228 */ u8 pad228[0x8];
+    /* 0x228 */ u8 unk228;
+    /* 0x229 */ u8 pad229[0x7];
     /* 0x230 */ s32 unk230;
     /* 0x234 */ u8 pad234[0x4];
     /* 0x238 */ f64 unk238;
@@ -346,10 +347,8 @@ public:
     /* 0x2e8 */ void* unk2E8;
     /* 0x2ec */ s32 unk2EC;
     /* 0x2f0 */ u8 unk2F0;
-    /* 0x2f1 */ u8 pad2F1[0xb];
-    /* 0x2fc */ f32 unk2FC;
-    /* 0x300 */ f32 unk300;
-    /* 0x304 */ u8 pad304[0x4];
+    /* 0x2f1 */ u8 pad2F1[0x7];
+    /* 0x2f8 */ MKVector3 unk2F8;
     /* 0x308 */ f32 unk308;
     /* 0x30c */ u8 pad30C[0x4];
     /* 0x310 */ f32 unk310;
@@ -358,7 +357,8 @@ public:
     /* 0x31c */ u8 pad31C[0x4];
     /* 0x320 */ f32 unk320;
     /* 0x324 */ f32 unk324;
-    /* 0x328 */ u8 pad328[0x4];
+    /* 0x328 */ u8 unk328;
+    /* 0x329 */ u8 pad329[0x3];
     /* 0x32c */ f32 unk32C;
     /* 0x330 */ f32 unk330;
     /* 0x334 */ u8 pad334[0x4];
@@ -411,21 +411,24 @@ public:
     /* 0x3e4 */ f32 unk3E4;
     /* 0x3e8 */ s32 unk3E8;
     /* 0x3ec */ MKProp* unk3EC;
-    /* 0x3f0 */ u8 pad3F0[0x18];
+    /* 0x3f0 */ u8 unk3F0;
+    /* 0x3f1 */ u8 pad3F1[0x17];
     /* 0x408 */ Spyro* unk408;
     /* 0x40c */ u32 unk40C;
-    /* 0x410 */ u8 pad410[0x8];
+    /* 0x410 */ void* unk410;
+    /* 0x414 */ void* unk414;
     /* 0x418 */ u8 unk418;
     /* 0x419 */ u8 pad419[0x3];
     /* 0x41c */ s32 unk41C;
     /* 0x420 */ void* unk420;
-    /* 0x424 */ u8 pad424[0x4];
+    /* 0x424 */ u8* unk424;
     /* 0x428 */ s32 unk428;
     /* 0x42c */ u8 pad42C[0x4];
     /* 0x430 */ SpyroLighting unk430;
     /* 0x45c */ u8 pad45C[0x4];
     /* 0x460 */ CombatStateData unk460;
-    /* 0x4b8 */ u8 pad4B8[0x8];
+    /* 0x4b8 */ f32 unk4B8;
+    /* 0x4bc */ f32 unk4BC;
     /* 0x4c0 */ s32 unk4C0;
     /* 0x4c4 */ f32 unk4C4;
     /* 0x4c8 */ f32 unk4C8;
@@ -502,10 +505,10 @@ extern f32 SPYRO_COMBAT_SCALE_MAG;
 
 #if 0 // DRAFT: undefined identifier '__vt'
 inline Spyro::~Spyro() {
-    M2C_UNK *temp_r0_50;
-    M2C_UNK *temp_r4_53;
     u8 *temp_r4_37;
+    u8 *temp_r4_53;
     void *temp_r0_34;
+    void *temp_r0_50;
 
     if (this != NULL) {
         this->unk4C = &__vt.unk38;
@@ -529,8 +532,8 @@ inline Spyro::~Spyro() {
             if (temp_r0_50 != NULL) {
                 temp_r4_53 = &this->unk3F0;
                 if (temp_r0_50 != temp_r4_53) {
-                    M2C_FIELD(this->unk414, M2C_UNK **, 0x20) = temp_r0_50;
-                    M2C_FIELD(this->unk410, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk414;
+                    M2C_FIELD(this->unk414, void **, 0x20) = temp_r0_50;
+                    M2C_FIELD(this->unk410, void **, 0x24) = (void *) this->unk414;
                     this->unk414 = temp_r4_53;
                     this->unk410 = temp_r4_53;
                 }

@@ -453,12 +453,10 @@ loop_20:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Draw(const RenderContext &arg0) {
-    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x1C)(&this->unk78);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *), 0x1C)(&this->unk78);
     UIContainer::Draw(arg0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'floor'
 void RadialButtonGroup::Update() {
@@ -577,7 +575,7 @@ void RadialButtonGroup::Update() {
             temp_f31_1042 = (-6.2831855f * ((f32) temp_r0_1019 / (f32) this->unkFC)) - (3.1415927f * this->unkF0);
             if ((u8) this->unk8C == 0) {
                 sp8 = 2;
-                M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &sp8);
+                M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *, s32 *), 0x2C)(&this->unk78, &sp8);
                 this->unkB8 = temp_f31_1042;
             } else {
                 KDMath_SmoothToAngle(this->unkB8, temp_f31_1042, 15.0f, gUpdateTimeDelta);
@@ -664,7 +662,7 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
         temp_r3_1198 = this->unk68;
         if (temp_r3_1198 == -1) {
             spC = 3;
-            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &spC);
+            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *, s32 *), 0x2C)(&this->unk78, &spC);
             this->unkB8 = 0.0f;
         } else {
             this->unkB8 = (-6.2831855f * ((f32) temp_r3_1198 / (f32) this->unkFC)) - (3.1415927f * this->unkF0);
@@ -676,7 +674,7 @@ void RadialButtonGroup::Message(UIMessage *arg0) {
                 this->unk98 = M2C_FIELD(&RADIAL_V_DISABLED_COLOR, f64 *, 8);
             }
             sp8 = 2;
-            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *, s32 *), 0x2C)(&this->unk78, &sp8);
+            M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *, s32 *), 0x2C)(&this->unk78, &sp8);
         }
         this->unkA0 = M2C_FIELD(this, f64 *, 0x28);
         this->unkA8 = M2C_FIELD(this, f64 *, 0x30);
@@ -736,32 +734,25 @@ loop_10:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::FreeResources() {
     UIContainer::FreeResources();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x24)(&this->unk78);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *), 0x24)(&this->unk78);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::LoadResources() {
     UIContainer::LoadResources();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0x20)(&this->unk78);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *), 0x20)(&this->unk78);
     this->unkF0 = 0.125f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Deinit() {
     UIContainer::Deinit();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 0xC)(&this->unk78);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *), 0xC)(&this->unk78);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk78'
 void RadialButtonGroup::Init() {
     UIButtonGroup::Init();
-    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(M2C_UNK *), 8)(&this->unk78);
+    M2C_FIELD(M2C_FIELD(this, void **, 0x78), M2C_UNK (**)(u8 *), 8)(&this->unk78);
     this->unkD0 |= 0x37;
     M2C_FIELD(this, f32 *, 0xA0) = 0.0f;
     M2C_FIELD(this, f32 *, 0xA4) = 0.0f;
@@ -777,7 +768,6 @@ void RadialButtonGroup::Init() {
     this->unkF8 = NULL;
     this->unkFC = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'RenderContext' to
 void UIPie::Draw(const RenderContext &arg0) {

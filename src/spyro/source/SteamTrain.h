@@ -41,7 +41,7 @@ public:
     /* 0x000 */ Matrix* unk0;
     /* 0x004 */ MKModel* unk4;
     /* 0x008 */ MKAnimScript* unk8;
-    /* 0x00c */ u8 padC[0x4];
+    /* 0x00c */ SteamTrain* unkC;
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
     /* 0x018 */ u8 pad18[0x8];

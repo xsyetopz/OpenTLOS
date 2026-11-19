@@ -77,7 +77,8 @@ public:
     /* 0x118 */ GlowingProp unk118;
     /* 0x130 */ f64 unk130;
     /* 0x138 */ f64 unk138;
-    /* 0x140 */ u8 pad140[0x10];
+    /* 0x140 */ u8 unk140;
+    /* 0x141 */ u8 pad141[0xf];
     /* 0x150 */ u8 unk150;
     /* 0x151 */ u8 pad151[0x3];
     /* 0x154 */ Attachment* unk154;
@@ -164,9 +165,9 @@ extern DataMap ShatterableHitFXDataMap;
 #if 0 // DRAFT: undefined identifier 'vtableC8'
 inline Shatterable::~Shatterable() {
     Attachment *temp_r0_18991;
-    M2C_UNK *temp_r0_19007;
-    M2C_UNK *temp_r4_19010;
+    u8 *temp_r0_19007;
     u8 *temp_r4_18994;
+    u8 *temp_r4_19010;
 
     if (this != NULL) {
         this->vtableC8 = &__vt + 0x48;
@@ -196,8 +197,8 @@ inline Shatterable::~Shatterable() {
             if (temp_r0_19007 != NULL) {
                 temp_r4_19010 = &this->unk140;
                 if (temp_r0_19007 != temp_r4_19010) {
-                    M2C_FIELD(this->unk14C, M2C_UNK **, 8) = temp_r0_19007;
-                    M2C_FIELD(this->unk148, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk14C;
+                    M2C_FIELD(this->unk14C, u8 **, 8) = temp_r0_19007;
+                    M2C_FIELD(this->unk148, u8 **, 0xC) = (u8 *) this->unk14C;
                     this->unk14C = temp_r4_19010;
                     this->unk148 = temp_r4_19010;
                 }
@@ -209,8 +210,8 @@ inline Shatterable::~Shatterable() {
 
 #if 0 // DRAFT: undefined identifier 'vtableC8'
 inline Shatterable::Shatterable() {
-    M2C_UNK *temp_r4_19055;
     u8 *temp_r0_19056;
+    u8 *temp_r4_19055;
 
     this->vtableC8 = &__vt;
     this->unkCC = -1;

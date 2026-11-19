@@ -168,7 +168,8 @@ public:
     /* 0xf24 */ s32 unkF24;
     /* 0xf28 */ SuckeyPS* unkF28;
     /* 0xf2c */ Corona* unkF2C;
-    /* 0xf30 */ u8 padF30[0x30];
+    /* 0xf30 */ u8 unkF30;
+    /* 0xf31 */ u8 padF31[0x2f];
     /* 0xf60 */ f32 unkF60;
     /* 0xf64 */ f32 unkF64;
     /* 0xf68 */ f32 unkF68;

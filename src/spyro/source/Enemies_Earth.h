@@ -45,6 +45,7 @@ public:
     virtual void Deinit(void);
     virtual void Update(void);
     EarthTier3(void);
+    /* 0xb10 */ void** unkB10;
 };
 
 class EarthTier3Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores

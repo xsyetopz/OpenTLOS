@@ -1347,7 +1347,7 @@ void Character::PlatformDetach() {
     s32 sp20;
     s32 sp1C;
     s8 sp18;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_2246;
@@ -1384,7 +1384,7 @@ void Character::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     s32 sp1C;
     s8 sp18;
     MKCollisionInfo *sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_2314;

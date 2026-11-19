@@ -131,7 +131,7 @@ void Ball::BridgeHit(float arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk238'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp2C;
     u8 sp28;
@@ -173,7 +173,7 @@ void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk238'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Ball::PlatformDetach() {
     s32 sp2C;
     s8 sp28;
@@ -3204,7 +3204,6 @@ void Ball::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk238'
 void Ball::Init() {
     GameProp::Init();
     this->unk274 = 72.0f;
@@ -3256,7 +3255,6 @@ void Ball::Init() {
     this->unk260 = this;
     this->unk2A0 = 200.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'CrashMistPS *' to
 void BallDescriptor::LoadDone() {

@@ -26,7 +26,7 @@ public:
     void CrashEnter(void);
     void ChargeExit(void);
     void ChargeEnter(void);
-    /* 0xb10 */ u8 padB10[0x4];
+    /* 0xb10 */ void** unkB10;
     /* 0xb14 */ s8 unkB14;
 };
 

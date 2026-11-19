@@ -236,7 +236,8 @@ public:
     void SetPositions(void);
     RadialButtonGroup(void);
     static u8 descriptor[0x14];
-    /* 0x078 */ u8 pad78[0x14];
+    /* 0x078 */ u8 unk78;
+    /* 0x079 */ u8 pad79[0x13];
     /* 0x08c */ u8 unk8C;
     /* 0x08d */ u8 pad8D[0x3];
     /* 0x090 */ f64 unk90;

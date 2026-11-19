@@ -1254,11 +1254,11 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk140'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Shatterable::PlatformDetach() {
     s32 sp18;
     s8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_1850;
@@ -1276,11 +1276,11 @@ void Shatterable::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk140'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Shatterable::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp18;
     u8 sp14;
-    M2C_UNK *sp10;
+    u8 *sp10;
     s32 spC;
     s32 sp8;
     MKProp *temp_r3_1888;

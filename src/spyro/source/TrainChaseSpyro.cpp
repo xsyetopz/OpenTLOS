@@ -42,7 +42,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK __destroy_arr(MKModel **, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
 f64 asin(f32);                                      /* extern */
 extern s32 GS_CartClang;
 extern s32 GS_CartLeanLP1;
@@ -2618,7 +2618,7 @@ void TrainChaseSpyro::UpdateSpyro() {
     s8 spC4;
     s32 spC0;
     s8 spBC;
-    M2C_UNK *spB8;
+    u8 *spB8;
     s8 spB4;
     Matrix *spA8;
     f64 sp90;

@@ -40,7 +40,9 @@ public:
     /* 0x1d8 */ s32 unk1D8;
     /* 0x1dc */ u8 pad1DC[0x24];
     /* 0x200 */ BreathHitMessage unk200;
-    /* 0x254 */ u8 pad254[0xc];
+    /* 0x254 */ u8 pad254[0x8];
+    /* 0x25c */ u8 unk25C;
+    /* 0x25d */ u8 pad25D[0x3];
     /* 0x260 */ Matrix unk260;
 };
 

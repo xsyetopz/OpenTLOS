@@ -20,7 +20,6 @@ void EarthTier3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 void EarthTier3::Deinit() {
     void **temp_r3_64;
 
@@ -31,7 +30,6 @@ void EarthTier3::Deinit() {
     }
     Enemy::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
 void EarthTier3::Init() {

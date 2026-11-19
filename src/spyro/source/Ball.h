@@ -125,13 +125,15 @@ public:
     /* 0x22c */ SnowballTree* unk22C;
     /* 0x230 */ void* unk230;
     /* 0x234 */ MKProp* unk234;
-    /* 0x238 */ u8 pad238[0x8];
+    /* 0x238 */ MKProp* unk238;
+    /* 0x23c */ u8 pad23C[0x4];
     /* 0x240 */ MKProp** unk240;
     /* 0x244 */ MKProp** unk244;
-    /* 0x248 */ u8 pad248[0x18];
+    /* 0x248 */ MKProp** unk248;
+    /* 0x24c */ u8 pad24C[0x14];
     /* 0x260 */ Ball* unk260;
     /* 0x264 */ void* unk264;
-    /* 0x268 */ u8 pad268[0x4];
+    /* 0x268 */ MKProp*** unk268;
     /* 0x26c */ MKProp*** unk26C;
     /* 0x270 */ s32 unk270;
     /* 0x274 */ f32 unk274;

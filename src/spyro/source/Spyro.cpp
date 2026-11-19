@@ -3497,7 +3497,7 @@ void Spyro::HornDiveTranstion() {
     TryChangeState(var_r31_6423, 0xCU, (SpyroStateMsg) 0x17B, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4B8'
+#if 0 // DRAFT: undefined identifier 'unk30C'
 u8 Spyro::TailSweepTailStrikeTransition() {
     MKCollisionResult spA8;
     f64 spA0;
@@ -5871,7 +5871,7 @@ void Spyro::DeathReset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4B8'
+#if 0 // DRAFT: ambiguous access to overloaded function
 void Spyro::ClearData() {
     f64 temp_f30_10445;
     f64 temp_f31_10449;
@@ -6641,7 +6641,7 @@ void Spyro::PlatformDetach() {
     s32 sp30;
     s32 sp2C;
     s8 sp28;
-    M2C_UNK *sp20;
+    u8 *sp20;
     s32 sp1C;
     s32 sp18;
     s32 sp14;
@@ -6695,7 +6695,7 @@ void Spyro::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     s32 sp2C;
     s8 sp28;
     MKCollisionInfo *sp24;
-    M2C_UNK *sp20;
+    u8 *sp20;
     s32 sp1C;
     s32 sp18;
     s32 sp14;
@@ -8427,7 +8427,7 @@ void Spyro::UpdateMovement() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk228'
+#if 0 // DRAFT: undefined identifier 'unk340'
 void Spyro::Update() {
     s8 spE9;
     s8 spE8;
@@ -8555,7 +8555,7 @@ block_28:
         if ((void *) this->unkB70 != NULL) {
             this->unk230 = 5;
             temp_r3_15073 = this->unkB70;
-            M2C_FIELD(M2C_FIELD(temp_r3_15073, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(temp_r3_15073, &this->unk228);
+            M2C_FIELD(M2C_FIELD(temp_r3_15073, void **, 0x44), M2C_UNK (**)(void *, u8 *), 0x2C)(temp_r3_15073, &this->unk228);
         }
     }
     this->unk204.Update();
@@ -8593,7 +8593,7 @@ block_28:
         }
         this->unk3C4 = var_f2_15134;
         BridgeHit(0.0f, 50.0f);
-        if (((M2C_UNK *) this->unk410 == &this->unk3F0) && (this->unk428 & 0x800)) {
+        if (((void *) this->unk410 == &this->unk3F0) && (this->unk428 & 0x800)) {
             sp68 = M2C_FIELD(this, f64 *, 0x338);
             sp70 = M2C_FIELD(this, f64 *, 0x340);
             ((SpyroCollisionObject *) this->unk27C)->PushOutOfThings((MKVector3) &sp68);
@@ -9235,7 +9235,7 @@ void Spyro::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2F8'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Spyro::LoadLine(MKIniLine *arg0) {
     f64 sp10;
     f64 sp8;

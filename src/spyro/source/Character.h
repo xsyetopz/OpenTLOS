@@ -147,7 +147,8 @@ public:
     /* 0x63c */ MKProp* unk63C;
     /* 0x640 */ SB2* unk640;
     /* 0x644 */ MKMaterial* unk644;
-    /* 0x648 */ u8 pad648[0x18];
+    /* 0x648 */ u8 unk648;
+    /* 0x649 */ u8 pad649[0x17];
     /* 0x660 */ Character* unk660;
     /* 0x664 */ void* unk664;
     /* 0x668 */ u8 pad668[0x8];
@@ -163,7 +164,8 @@ public:
     /* 0x69c */ f32 unk69C;
     /* 0x6a0 */ f32 unk6A0;
     /* 0x6a4 */ s32 unk6A4;
-    /* 0x6a8 */ u8 pad6A8[0x8];
+    /* 0x6a8 */ u8 unk6A8;
+    /* 0x6a9 */ u8 pad6A9[0x7];
     /* 0x6b0 */ s8 unk6B0;
     /* 0x6b1 */ u8 pad6B1[0x3];
     /* 0x6b4 */ u8 unk6B4;
@@ -180,10 +182,10 @@ inline void Character::UpdateMovementCustom() {
 
 #if 0 // DRAFT: undefined identifier 'unk678'
 inline Character::~Character() {
-    M2C_UNK *temp_r0_5423;
-    M2C_UNK *temp_r5_5426;
     u8 *temp_r0_5407;
+    u8 *temp_r0_5423;
     u8 *temp_r5_5410;
+    u8 *temp_r5_5426;
 
     if (this != NULL) {
         if (&this->unk670 != NULL) {
@@ -203,8 +205,8 @@ inline Character::~Character() {
             if (temp_r0_5423 != NULL) {
                 temp_r5_5426 = &this->unk648;
                 if (temp_r0_5423 != temp_r5_5426) {
-                    M2C_FIELD(this->unk66C, M2C_UNK **, 0x20) = temp_r0_5423;
-                    M2C_FIELD(this->unk668, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk66C;
+                    M2C_FIELD(this->unk66C, u8 **, 0x20) = temp_r0_5423;
+                    M2C_FIELD(this->unk668, u8 **, 0x24) = (u8 *) this->unk66C;
                     this->unk66C = temp_r5_5426;
                     this->unk668 = temp_r5_5426;
                 }

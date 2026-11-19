@@ -314,7 +314,6 @@ void IceBoss::UpdateSummonWeapon() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkEDC'
 void IceBoss::SummonWeapon() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -351,7 +350,6 @@ void IceBoss::SummonWeapon() {
     M2C_STRUCT_COPY((s32) &this->unkEE0.unk3C + 4, (s32) &this->unkEDC + 4, 0x40);
     this->unkFBB = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void IceBoss::DestroyShield() {

@@ -372,7 +372,7 @@ void SquishBoulder::Disable() {
     KDProp::Disable();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk25C'
+#if 0 // DRAFT: illegal type
 void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3) {
     s32 temp_r0_670;
     s32 temp_r28_693;

@@ -6,7 +6,6 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 s32 FireBossDriver::IsCharging() {
     s32 var_r31_53;
     void **temp_r3_54;
@@ -18,31 +17,22 @@ s32 FireBossDriver::IsCharging() {
     }
     return var_r31_53;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::CrashExit() {
     ((FireBossDriverGoal_Think *) this->unkB10)->CrashExit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::CrashEnter() {
     ((FireBossDriverGoal_Think *) this->unkB10)->CrashEnter();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::ChargeExit() {
     ((FireBossDriverGoal_Think *) this->unkB10)->ChargeExit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkB10'
 void FireBossDriver::ChargeEnter() {
     ((FireBossDriverGoal_Think *) this->unkB10)->ChargeEnter();
 }
-#endif
 
 void FireBossDriver::Draw() {
     Enemy::Draw();

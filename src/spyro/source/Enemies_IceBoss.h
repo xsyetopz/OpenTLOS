@@ -107,7 +107,9 @@ public:
     /* 0xecb */ u8 padECB[0x1];
     /* 0xecc */ f32 unkECC;
     /* 0xed0 */ Shatterable* unkED0;
-    /* 0xed4 */ u8 padED4[0xc];
+    /* 0xed4 */ u8 padED4[0x8];
+    /* 0xedc */ u8 unkEDC;
+    /* 0xedd */ u8 padEDD[0x3];
     /* 0xee0 */ Matrix unkEE0;
     /* 0xf20 */ Matrix unkF20;
     /* 0xf60 */ f64 unkF60;

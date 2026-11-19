@@ -165,7 +165,8 @@ public:
     /* 0x294 */ HeroInterface* unk294;
     /* 0x298 */ HeroInterface* unk298;
     /* 0x29c */ SpyroEffects* unk29C;
-    /* 0x2a0 */ u8 pad2A0[0x8];
+    /* 0x2a0 */ u8 unk2A0;
+    /* 0x2a1 */ u8 pad2A1[0x7];
     /* 0x2a8 */ SpyroSoundPlayer unk2A8;
     /* 0x2a9 */ u8 pad2A9[0x477];
     /* 0x720 */ MKModel* unk720;
@@ -218,7 +219,7 @@ inline TrainChaseSpyro::TrainChaseSpyro() {
 inline TrainChaseSpyro::~TrainChaseSpyro() {
     this->unkC8.__vptr = &__vt.unk48;
     if (&this->unk2A8 != NULL) {
-        __destroy_arr((MKModel **) &this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
+        __destroy_arr(&this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
     }
     if ((&this->unk138 != NULL) && (&this->unk138 != NULL)) {
         KDSound_Stop(&this->unk138);
@@ -237,7 +238,7 @@ inline AttackerManager *TrainChaseSpyro::GetAttackerManager() {
 }
 
 inline u8 TrainChaseSpyro::IsAttacking() {
-    return M2C_FIELD(this, u8 *, 0x2A0);
+    return this->unk2A0;
 }
 
 inline f32 TrainChaseSpyro::GetTimeLastHit() {
