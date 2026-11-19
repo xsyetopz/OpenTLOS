@@ -12,6 +12,9 @@ Per class the output records:
   base     inferred base class with "base_evidence":
            "ctor/dtor vtable stores": a __ct__ stores the base vtable then its own
              (a __dt__ the reverse), the strongest evidence short of source;
+           "base ctor call": a __ct__ whose first call, with `this` still in r3,
+             is another class's __ct__, kept only if that class's vtable is a
+             prefix of this one (a member object at offset 0 has no such vtable);
            "inlined ctor vtable stores": the same sequence where a ctor was
              inlined into another function, kept only if the base's vtable is
              a prefix of this one (which also rules out reversed dtor order);
@@ -178,6 +181,31 @@ def vtable_store_pairs(asm_root: Path) -> VtableStores:
     return VtableStores(pairs, inline_pairs, {k: v.most_common(1)[0][0] for k, v in vptr.items()}, dict(secondary))
 
 
+def base_ctor_calls(asm_root: Path) -> dict:
+    """{ctor's class: called class} for each __ct__ whose first call is a ctor on unchanged r3."""
+    out: dict = {}
+    for f in sorted(asm_root.glob("*/**/*.s")):
+        cur = None
+        for line in f.read_text().splitlines():
+            if line.startswith(".fn "):
+                name = line[4:].split(",")[0]
+                cur = name[6:].split("F", 1)[0] if name.startswith("__ct__") else None
+                continue
+            if not cur:
+                continue
+            d = INSN.search(line)
+            if not d:
+                continue
+            if d.group(1) == "bl":
+                m = CT.search(line)
+                if m and m.group(1) != cur:
+                    out[cur] = m.group(1)
+                cur = None
+            elif d.group(2) == "r3" and not d.group(1).startswith(("st", "cmp", "b", "mt", "tw")):
+                cur = None
+    return out
+
+
 NEW = re.compile(r"\tli r3, (0x[0-9a-fA-F]+|\d+)$")
 CT = re.compile(r"\tbl __ct__(\w+?)F")
 
@@ -291,6 +319,8 @@ def main() -> int:
         cls = class_name(mangled)
         if cls in classes:
             classes[cls]["vptr"] = off
+    ctor_calls = base_ctor_calls(ROOT / "build" / VERSION / "asm")
+    mangled_of = {class_name(k): k for k in ctor_calls}
     for (base, derived), _ in pairs.most_common():
         b, d = class_name(base), class_name(derived)
         if b and d and b != d and d not in stored:
@@ -301,6 +331,10 @@ def main() -> int:
             c["base"], c["base_evidence"] = stored[name], "ctor/dtor vtable stores"
             continue
         if not mine:
+            continue
+        b = class_name(ctor_calls.get(mangled_of.get(name), "") or "x")
+        if b in classes and b != name and prefix_of(classes[b]["vtable"], mine, member):
+            c["base"], c["base_evidence"] = b, "base ctor call"
             continue
         inl = [b for (b, d), _ in inline_pairs.most_common()
                if class_name(d) == name and class_name(b) in classes and class_name(b) != name
