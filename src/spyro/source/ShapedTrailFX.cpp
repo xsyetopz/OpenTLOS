@@ -431,85 +431,75 @@ loop_78:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void ShapedTrailFX::UpdateTrail() {
-    f32 temp_f2_859;
-    f32 var_f0_860;
-    s32 temp_r4_918;
-    s32 temp_r6_899;
-    s32 var_ctr_850;
-    s32 var_r4_846;
-    u8 temp_r3_843;
-    void *temp_r3_853;
-    void *temp_r3_877;
-    void *temp_r3_913;
-    void *temp_r3_922;
-    void *temp_r3_928;
-    void *temp_r4_906;
+    u8 *entry;
+    u8 *dst;
+    void *src;
+    void *mat;
+    s32 i;
+    s32 off;
+    s32 idx;
+    f32 t;
+    f64 d0;
+    f64 d1;
 
-    temp_r3_843 = this->unkA0;
-    if ((temp_r3_843 >> 6U) & 1) {
-        var_r4_846 = 0;
-        this->unkA0 = temp_r3_843 & ~0x40;
-        var_ctr_850 = 0xA;
-        do {
-            temp_r3_853 = this->unk80 + var_r4_846;
-            if ((u8) M2C_FIELD(temp_r3_853, u8 *, 4) != 0) {
-                temp_f2_859 = this->unk9C;
-                var_f0_860 = gUpdateTimeDelta + M2C_FIELD(temp_r3_853, f32 *, 0);
-                if (var_f0_860 < temp_f2_859) {
-
+    if ((this->unkA0 >> 6U) & 1) {
+        off = 0;
+        this->unkA0 = this->unkA0 & ~0x40;
+        for (i = 0; i < 0xA; i++) {
+            entry = (u8 *) this->unk80 + off;
+            if (M2C_FIELD(entry, u8 *, 4) != 0) {
+                t = gUpdateTimeDelta + M2C_FIELD(entry, f32 *, 0);
+                if (t < this->unk9C) {
                 } else {
-                    var_f0_860 = temp_f2_859;
+                    t = this->unk9C;
                 }
-                if (var_f0_860 > 0.0f) {
-
+                if (t > 0.0f) {
                 } else {
-                    var_f0_860 = 0.0f;
+                    t = 0.0f;
                 }
-                M2C_FIELD(temp_r3_853, f32 *, 0) = var_f0_860;
-                temp_r3_877 = this->unk80 + var_r4_846;
-                if (M2C_FIELD(temp_r3_877, f32 *, 0) >= this->unk9C) {
-                    M2C_FIELD(temp_r3_877, s8 *, 4) = 0;
-                    *(this->unk80 + var_r4_846) = 0.0f;
+                M2C_FIELD(entry, f32 *, 0) = t;
+                if (M2C_FIELD(entry, f32 *, 0) >= this->unk9C) {
+                    M2C_FIELD(entry, u8 *, 4) = 0;
+                    M2C_FIELD(entry, f32 *, 0) = 0.0f;
                 } else {
                     this->unkA0 |= 0x40;
                 }
             }
-            var_r4_846 += 8;
-            var_ctr_850 -= 1;
-        } while (var_ctr_850 != 0);
-        if (((u8) this->unkA0 >> 7U) & 1) {
-            temp_r6_899 = this->unk88;
-            if ((u8) M2C_FIELD((this->unk80 + (temp_r6_899 * 8)), u8 *, 4) == 0) {
-                temp_r4_906 = this->unk74;
-                if (temp_r4_906 != NULL) {
-                    temp_r3_913 = this->unk84 + (temp_r6_899 * 0x10);
-                    M2C_FIELD(temp_r3_913, f64 *, 0) = (f64) M2C_FIELD(temp_r4_906, f64 *, 0);
-                    M2C_FIELD(temp_r3_913, f64 *, 8) = (f64) M2C_FIELD(temp_r4_906, f64 *, 8);
+            off += 8;
+        }
+        if ((this->unkA0 >> 7U) & 1) {
+            idx = this->unk88;
+            entry = (u8 *) this->unk80 + idx * 8;
+            if (M2C_FIELD(entry, u8 *, 4) == 0) {
+                src = this->unk74;
+                if (src != NULL) {
+                    dst = (u8 *) this->unk84 + idx * 0x10;
+                    d0 = M2C_FIELD(src, f64 *, 0);
+                    d1 = M2C_FIELD(src, f64 *, 8);
+                    M2C_FIELD(dst, f64 *, 0) = d0;
+                    M2C_FIELD(dst, f64 *, 8) = d1;
+                } else if (this->unk8C == -1) {
+                    mat = (void *) MKModel_GetWorldMatrix(this->unk78);
+                    dst = (u8 *) this->unk84 + idx * 0x10;
+                    d0 = M2C_FIELD(mat, f64 *, 0x30);
+                    d1 = M2C_FIELD(mat, f64 *, 0x38);
+                    M2C_FIELD(dst, f64 *, 0) = d0;
+                    M2C_FIELD(dst, f64 *, 8) = d1;
                 } else {
-                    temp_r4_918 = this->unk8C;
-                    if (temp_r4_918 == -1) {
-                        temp_r3_922 = (void *) (MKModel_GetWorldMatrix(this->unk78));
-                        temp_r3_928 = this->unk84 + (this->unk88 * 0x10);
-                        M2C_FIELD(temp_r3_928, f64 *, 0) = (f64) M2C_FIELD(temp_r3_922, f64 *, 0x30);
-                        M2C_FIELD(temp_r3_928, f64 *, 8) = (f64) M2C_FIELD(temp_r3_922, f64 *, 0x38);
-                    } else {
-                        MKModel_CalculateRefPointWorldPosition(this->unk78, temp_r4_918, this->unk84 + (temp_r6_899 * 0x10));
-                    }
+                    MKModel_CalculateRefPointWorldPosition(this->unk78, this->unk8C, (MKVector3 *) ((u8 *) this->unk84 + idx * 0x10));
                 }
-                *(this->unk80 + (this->unk88 * 8)) = 0.0f;
-                M2C_FIELD((this->unk80 + (this->unk88 * 8)), s8 *, 4) = 1;
+                M2C_FIELD((u8 *) this->unk80 + this->unk88 * 8, f32 *, 0) = 0.0f;
+                M2C_FIELD((u8 *) this->unk80 + this->unk88 * 8, u8 *, 4) = 1;
                 this->unkA0 |= 0x40;
                 this->unk88 += 1;
-                if ((s32) this->unk88 >= 0xA) {
+                if (this->unk88 >= 0xA) {
                     this->unk88 = 0;
                 }
             }
         }
     }
 }
-#endif
 
 void *ShapedTrailFX::Update() {
     if (((u8) this->unkA0 >> 5U) & 1) {
@@ -517,19 +507,17 @@ void *ShapedTrailFX::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'const float *' to 'float'
 void ShapedTrailFX::InitData(MKModel *arg0, const int &arg1, char *arg2, const int &arg3, const MKVector4 &arg4, const float &arg5, bool arg6, float arg7) {
     this->unk78 = arg0;
-    this->unk8C = (long) (&arg1);
+    this->unk8C = arg1;
     this->unk7C = (MKMaterial *) (MKMaterial_Create(arg2));
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&arg4, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&arg4, f64 *, 8);
-    this->unk90 = (long) (&arg3 + 1);
-    this->unk98 = &arg5;
+    M2C_FIELD(this, f64 *, 0x50) = M2C_FIELD(&arg4, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x58) = M2C_FIELD(&arg4, f64 *, 8);
+    this->unk90 = arg3 + 1;
+    this->unk98 = arg5;
     this->unkA0 = (this->unkA0 & ~0x20) | ((arg6 << 5) & 0x20);
     this->unk9C = arg7;
 }
-#endif
 
 void ShapedTrailFX::Init() {
     MKHeap *var_r3_1047;

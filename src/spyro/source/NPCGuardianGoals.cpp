@@ -57,14 +57,12 @@ void NPCGuardianGoal_Idle::Reset() {
     this->unk10 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkAEC'
 void NPCGuardianGoal_Idle::Terminate() {
     this->unkC->StopMovement(1U);
-    this->unkC->unkAEC = 0;
-    this->unkC->unk6F8 = 0;
+    ((Enemy *) this->unkC)->unkAEC = 0;
+    M2C_FIELD(this->unkC, u8 *, 0x6F8) = 0;
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkA50'
 u8 NPCGuardianGoal_Idle::Update() {
@@ -145,19 +143,19 @@ u8 NPCGuardianGoal_Idle::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void NPCGuardianGoal_Idle::Activate() {
-    Character *temp_r5_268;
     u32 temp_r3_257;
+    void **temp_r3_262;
+    u8 (*temp_r12_263)(void **, MKVector3 *, M2C_UNK *);
 
     this->unk8 = 0;
     temp_r3_257 = this->unk10;
     if ((temp_r3_257 != 0) && (((TargetContext *) (temp_r3_257 + 0x40))->Get() != NULL)) {
-        temp_r5_268 = this->unkC;
-        if (M2C_FIELD(((TargetContext *) (this->unk10 + 0x40))->Get()->__vptr, u8 (**)(MKVector3 *, M2C_UNK *), 0x28)(&temp_r5_268->unk588, &temp_r5_268->unk700) != 0) {
-            this->unkC->unk6F8 = 1;
+        temp_r3_262 = (void **) ((TargetContext *) (this->unk10 + 0x40))->Get();
+        temp_r12_263 = M2C_FIELD(*temp_r3_262, u8 (**)(void **, MKVector3 *, M2C_UNK *), 0x28);
+        if (temp_r12_263(temp_r3_262, &this->unkC->unk588, (M2C_UNK *) ((u8 *) this->unkC + 0x700)) != 0) {
+            M2C_FIELD(this->unkC, u8 *, 0x6F8) = 1;
         }
     }
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, 1, 0, 0.15f, 0U, 0U);
 }
-#endif
