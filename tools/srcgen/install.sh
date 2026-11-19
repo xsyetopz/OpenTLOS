@@ -14,6 +14,10 @@ cp "$OUT/fence.tsv" build/srcgen/fence.tsv
 cp "$OUT/ctx.c" build/srcgen/ctx2.c
 cp "$OUT/cnames.json" build/srcgen/cnames.json
 rm -rf build/m2c2; cp -R "$OUT/m2c" build/m2c2
-timeout 1800 ninja -k 0 build/G6SE7D/report.json | tail -1
-ninja build/G6SE7D/ok | tail -1
+# Logged rather than piped: a pipeline would hide ninja's exit status from set -e
+# and leave the previous report in place.
+for t in build/G6SE7D/report.json build/G6SE7D/ok; do
+  timeout 1800 ninja -k 0 "$t" > "$OUT/ninja.log" 2>&1 || { tail -20 "$OUT/ninja.log"; exit 1; }
+  tail -1 "$OUT/ninja.log"
+done
 python3 tools/live/progress.py | tail -2
