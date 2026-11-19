@@ -364,12 +364,12 @@ void DreadWing::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk244'
 void DreadWingDescriptor::Deinit() {
-    this->unk244.Deinit();
+    CharacterBodyFXData *body = (CharacterBodyFXData *) ((s8 *) this + 0x244);
+
+    body->Deinit();
     EnemyDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk244'
 void DreadWingDescriptor::LoadDone() {
