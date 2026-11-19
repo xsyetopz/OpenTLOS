@@ -39,21 +39,19 @@ void UIAnimatedModel::FreeResources() {
     this->unk68.unk4 = NULL;
 }
 
-#if 0 // DRAFT: function call 'Init(signed char *, int)' does not match 'MKAnimScript::Init(const char *, MKModel *)' 'MKAnimScript::Init(MKAnimScript *, MKModel *)'
 void UIAnimatedModel::LoadResources() {
-    s8 *temp_r31_51;
+    s8 *animName;
 
     if ((MKModel *) this->unk64 == NULL) {
-        this->unk68.Init(this->unk60, NULL);
-        temp_r31_51 = this->unk68.GetAnimName();
-        this->unk64 = MKModel_Create(this->unk68.GetMeshName(), temp_r31_51, 2, NULL);
+        this->unk68.Init((const char *) this->unk60, (MKModel *) NULL);
+        animName = this->unk68.GetAnimName();
+        this->unk64 = MKModel_Create((const char *) this->unk68.GetMeshName(), (const char *) animName, 2, NULL);
         this->unk68.unk8 = this->unk64;
         this->unk68.CalculateSubObjectIndices();
         this->unk68.SetAnimation(MKModel_GetAnimation(this->unk64));
-        this->unk68.SetAnim(this->unk68.GetAnim(0), 1.0f, 0.0f, 0, -1);
+        this->unk68.SetAnim((MKAnim *) this->unk68.GetAnim(0), 1.0f, 0.0f, 0, -1);
     }
 }
-#endif
 
 void UIAnimatedModel::Update() {
     MKModel *temp_r3_94;
@@ -65,35 +63,27 @@ void UIAnimatedModel::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void UIModel::UpdateMatrix(RenderContext *arg0) {
     Matrix sp40;
     MKVector3 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
 
+    /* Lazily initialise the two static camera vectors on first use. */
     if ((s8) init_577 == 0) {
-        sp28 = 0.0f;
-        sp20 = 0.0f;
-        sp24 = 0.0f;
-        M2C_FIELD(&camera_576, f64 *, 8) = (f64) sp28;
-        M2C_FIELD(&camera_576, f64 *, 0) = (f64) sp20;
+        camera_576.unk0 = 0.0f;
+        camera_576.unk4 = 0.0f;
+        camera_576.unk8 = 0.0f;
         init_577 = 1;
     }
     if ((s8) init_580 == 0) {
-        sp10 = 0.0f;
-        sp14 = 0.0f;
-        sp18 = 1.0f;
-        M2C_FIELD(&lookat_579, f64 *, 0) = (f64) sp10;
-        M2C_FIELD(&lookat_579, f64 *, 8) = (f64) sp18;
+        lookat_579.unk0 = 0.0f;
+        lookat_579.unk4 = 0.0f;
+        lookat_579.unk8 = 1.0f;
         init_580 = 1;
     }
     MKView_SetCameraLookAt(camera_576, lookat_579, 0.0f);
-    M2C_STRUCT_COPY((s32) &sp30.unkC + 4, (s32) (arg0 - 4) + 4, 0x40);
+
+    /* Start from the render context's leading matrix, negate the rotation terms, then rebuild the translation. */
+    sp40 = *(Matrix *) arg0;
     sp40.unk4 *= -1.0f;
     sp40.unk10 *= -1.0f;
     sp40.unk18 *= -1.0f;
@@ -102,7 +92,7 @@ void UIModel::UpdateMatrix(RenderContext *arg0) {
     sp40.unk34 *= -1.0f;
     MKView_TransformPoint2Dto3D(arg0->unk30, arg0->unk34, (1000.0f * arg0->unk38) + 1000.0f, &sp30);
     sp40.unk3C = 1.0f;
-    sp40.unk30 = M2C_BITWISE(f32, sp30);
+    sp40.unk30 = sp30.unk0;
     sp40.unk34 = sp30.unk4;
     sp40.unk38 = sp30.unk8;
     sp40.unk2C = 0.0f;
@@ -112,7 +102,6 @@ void UIModel::UpdateMatrix(RenderContext *arg0) {
     MKModel_SetWorldMatrix(this->unk64, sp40);
     MKModel_SetColor(this->unk64, *((MKVector4 *) &arg0->unk40));
 }
-#endif
 
 void UIModel::Draw(const RenderContext &arg0) {
     RenderContext sp10;
@@ -160,32 +149,27 @@ void UIModel::FreeResources() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 void UIModel::LoadResources() {
-    s32 var_r30_367;
-    s8 *temp_r3_355;
-    s8 *temp_r3_374;
+    s32 index;
+    const char *subName;
+    s8 *modelName;
 
     if ((MKModel *) this->unk64 == NULL) {
-        temp_r3_355 = this->unk60;
-        if (temp_r3_355 != NULL) {
-            this->unk64 = MKModel_Create(temp_r3_355, NULL, 2, NULL);
+        modelName = this->unk60;
+        if (modelName != NULL) {
+            this->unk64 = MKModel_Create((const char *) modelName, NULL, 2, NULL);
             if ((MKModel *) this->unk64 != NULL) {
-                var_r30_367 = 0;
-loop_9:
-                if (var_r30_367 < MKModel_GetNmbrOfSubObjects(this->unk64, (SubObjectType) 0)) {
-                    temp_r3_374 = MKModel_GetSubObjectName(this->unk64, (SubObjectType) 0, var_r30_367);
-                    if ((strnicmp(temp_r3_374, "F_", 2) == 0) || (strnicmp(temp_r3_374, "C_", 2) == 0) || (strnicmp(temp_r3_374, "L_", 2) == 0)) {
-                        MKModel_EnableSubObject(this->unk64, (SubObjectType) 0, var_r30_367, 0U, 1U);
+                /* Enable every sub-object whose name starts with F_, C_ or L_. */
+                for (index = 0; index < MKModel_GetNmbrOfSubObjects(this->unk64, (SubObjectType) 0); index += 1) {
+                    subName = (const char *) MKModel_GetSubObjectName(this->unk64, (SubObjectType) 0, index);
+                    if ((strnicmp(subName, "F_", 2) == 0) || (strnicmp(subName, "C_", 2) == 0) || (strnicmp(subName, "L_", 2) == 0)) {
+                        MKModel_EnableSubObject(this->unk64, (SubObjectType) 0, index, 0, 1U);
                     }
-                    var_r30_367 += 1;
-                    goto loop_9;
                 }
             }
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIModel::Deinit() {

@@ -32,27 +32,24 @@ s32 UIEvent::Send() {
     return M2C_FIELD(*temp_r0_14, s32 (**)(void **, s32 *, s8 *), 0x2C)(temp_r0_14, &sp8, temp_r5_24);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to 'const char *'
 void UIEvent::Resolve(UIObject *arg0) {
-    s8 *temp_r31_69;
-    void **temp_r0_48;
-    void **temp_r3_72;
+    const char *name;
+    s8 *argName;
 
-    temp_r0_48 = this->unk0;
-    if (temp_r0_48 != NULL) {
-        this->unk0 = (const char *) (arg0->Find(temp_r0_48));
-        UIStringTable_Remove((s8 *) temp_r0_48);
+    /* unk0 starts as a name string; the lookup replaces it with the object it names. */
+    name = (const char *) this->unk0;
+    if (name != NULL) {
+        this->unk0 = (void **) arg0->Find(name);
+        UIStringTable_Remove(name);
     }
     if (((void **) this->unk0 != NULL) && (GetScriptArgType(this->unk4) == 1)) {
-        temp_r31_69 = this->unk8;
-        if (temp_r31_69 != NULL) {
-            temp_r3_72 = this->unk0;
-            this->unk8 = M2C_FIELD(*temp_r3_72, s8 *(**)(void **, s8 *), 0x30)(temp_r3_72, temp_r31_69);
-            UIStringTable_Remove(temp_r31_69);
+        argName = this->unk8;
+        if (argName != NULL) {
+            this->unk8 = (s8 *) ((UIObject *) this->unk0)->Find((const char *) argName);
+            UIStringTable_Remove((const char *) argName);
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIEvent::LoadLine(const char *arg0, UIDataLine *arg1) {
@@ -100,22 +97,18 @@ s32 GetScriptArgType(int arg0) {
     return UIMessageArgType[arg0];
 }
 
-#if 0 // DRAFT: illegal operand
-s32 GetMessageFromString(const char *arg0) {
-    s32 var_r29_216;
-    s32 var_r31_217;
+extern "C" s32 stricmp(const char *, const char *);
 
-    var_r29_216 = 0;
-    var_r31_217 = 0;
-loop_1:
-    if (((u32) *(&UIMessageStrings + var_r31_217) == arg0) || (stricmp(arg0) == 0)) {
-        return var_r29_216;
+s32 GetMessageFromString(const char *arg0) {
+    const char *entry;
+    s32 index;
+
+    /* Scan the 16-entry string table: pointer equality first, then a case-insensitive compare. */
+    for (index = 0; index < 0x10; index += 1) {
+        entry = ((const char **) UIMessageStrings)[index];
+        if ((entry == arg0) || (stricmp(entry, arg0) == 0)) {
+            return index;
+        }
     }
-    var_r29_216 += 1;
-    var_r31_217 += 4;
-    if (var_r29_216 >= 0x10) {
-        return 0;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
